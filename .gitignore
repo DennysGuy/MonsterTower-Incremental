@@ -70,3 +70,11 @@ crash_*.txt
 
 .env
 .env.local
+
+
+# =========================
+# Media / Assets (optional)
+# =========================
+
+*.gif
+
