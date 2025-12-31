@@ -1,0 +1,72 @@
+# =========================
+# Godot Engine
+# =========================
+
+# Godot cache & temp files
+.godot/
+.import/
+.export/
+.export_presets.cfg
+
+# Godot editor backups
+*.tmp
+*.bak
+*.old
+*.orig
+
+# Godot Mono / C# (if used)
+.mono/
+data_*/
+*.csproj
+*.sln
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+
+# =========================
+# Build / Export Outputs
+# =========================
+
+# Exported builds
+build/
+builds/
+bin/
+dist/
+export/
+exports/
+
+# =========================
+# OS / Editor Junk
+# =========================
+
+# Windows
+Thumbs.db
+desktop.ini
+
+# macOS
+.DS_Store
+
+# Linux
+*~
+
+# VS Code
+.vscode/
+
+# JetBrains IDEs
+.idea/
+
+# =========================
+# Logs & Crash Reports
+# =========================
+
+*.log
+crash_*.txt
+
+# =========================
+# Optional: Ignore local overrides
+# =========================
+
+.env
+.env.local
