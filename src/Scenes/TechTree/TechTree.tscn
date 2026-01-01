@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7n3fwd3y85wp"]
+
+[ext_resource type="Script" uid="uid://nb5nyiymrgyp" path="res://src/Scripts/TechTree/tech_tree.gd" id="1_1fw0b"]
+
+[node name="TechTree" type="Node2D"]
+script = ExtResource("1_1fw0b")
