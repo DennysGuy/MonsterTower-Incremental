@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://bhimqkbcn26r2"]
+
+[ext_resource type="Script" uid="uid://bf6dj2em3y5l0" path="res://src/Scripts/TechTree/tech_node.gd" id="1_2bhwb"]
+[ext_resource type="Texture2D" uid="uid://8c7qcs1ydb4v" path="res://Assets/StandInNodeGraphic.png" id="1_rnr44"]
+[ext_resource type="PackedScene" uid="uid://bqdrbv6co6410" path="res://src/Scenes/TechTree/ClickArea.tscn" id="3_qmqu0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l673o"]
+size = Vector2(64, 64)
+
+[node name="TechNode" type="Node2D"]
+script = ExtResource("1_2bhwb")
+
+[node name="Icon" type="Sprite2D" parent="."]
+texture = ExtResource("1_rnr44")
+
+[node name="ClickArea" parent="." instance=ExtResource("3_qmqu0")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickArea"]
+shape = SubResource("RectangleShape2D_l673o")
