@@ -19,6 +19,8 @@ config/icon="res://icon.svg"
 
 PlayerStats="*res://src/Scripts/Managers/PlayerStats.gd"
 TechTreeManager="*res://src/Scripts/Managers/TechTreeManager.gd"
+GameManager="*res://src/Scripts/Managers/GameManager.gd"
+SignalBus="*res://src/Scripts/Managers/SignalBus.gd"
 
 [display]
 

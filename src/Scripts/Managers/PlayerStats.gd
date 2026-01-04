@@ -11,6 +11,7 @@ This is for testing purposes
 var player_stats : Dictionary[String,float] = {
 	"Attack Damage" : 10.0,
 	"Movement Speed" : 100.0,
+	"Jump Height" : 300.0,
 	"Crit Chance" : 0.0,
 	"Crit Damage" : 1.5,
 	"Max Health" : 50,

@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://wuy3aelq8aeg"]
+
+[ext_resource type="Script" uid="uid://dm4atx2m8yfn1" path="res://src/Scripts/Player/player.gd" id="1_gw3a7"]
+[ext_resource type="Script" uid="uid://drr0deykmfrvq" path="res://src/Scripts/StateMachine/state_machine.gd" id="2_n7gp4"]
+[ext_resource type="Script" uid="uid://1pman3ol5bxf" path="res://src/Scripts/StateMachine/PlayerStates/player_idle.gd" id="3_g162h"]
+[ext_resource type="Script" uid="uid://m7qrxu2m2bd4" path="res://src/Scripts/StateMachine/PlayerStates/player_move.gd" id="4_pp7ew"]
+[ext_resource type="Script" uid="uid://ec0tth2wuxjw" path="res://src/Scripts/StateMachine/PlayerStates/player_jump.gd" id="5_jq5qv"]
+[ext_resource type="Script" uid="uid://q7dh86d3scqk" path="res://src/Scripts/StateMachine/PlayerStates/player_fall.gd" id="6_k5pak"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k5pak"]
+radius = 18.0
+height = 72.0
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("state_machine")]
+script = ExtResource("1_gw3a7")
+state_machine = NodePath("StateMachine")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_n7gp4")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("move_state", "jump_state", "fall_state")]
+script = ExtResource("3_g162h")
+move_state = NodePath("../Move")
+jump_state = NodePath("../Jump")
+fall_state = NodePath("../Fall")
+
+[node name="Move" type="Node" parent="StateMachine" node_paths=PackedStringArray("jump_state", "fall_state")]
+script = ExtResource("4_pp7ew")
+jump_state = NodePath("../Jump")
+fall_state = NodePath("../Fall")
+
+[node name="Jump" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "fall_state")]
+script = ExtResource("5_jq5qv")
+idle_state = NodePath("../Idle")
+fall_state = NodePath("../Fall")
+
+[node name="Fall" type="Node" parent="StateMachine" node_paths=PackedStringArray("jump_state", "move_state", "idle_state")]
+script = ExtResource("6_k5pak")
+jump_state = NodePath("../Jump")
+move_state = NodePath("../Move")
+idle_state = NodePath("../Idle")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -18.0
+offset_top = -72.0
+offset_right = 18.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -36)
+shape = SubResource("CapsuleShape2D_k5pak")
