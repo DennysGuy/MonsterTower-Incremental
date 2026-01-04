@@ -1,11 +1,157 @@
-[gd_scene load_steps=3 format=3 uid="uid://b7n3fwd3y85wp"]
+[gd_scene load_steps=12 format=3 uid="uid://b7n3fwd3y85wp"]
 
 [ext_resource type="Script" uid="uid://nb5nyiymrgyp" path="res://src/Scripts/TechTree/tech_tree.gd" id="1_1fw0b"]
 [ext_resource type="PackedScene" uid="uid://bhimqkbcn26r2" path="res://src/Scenes/TechTree/TechNode.tscn" id="2_q3n1u"]
+[ext_resource type="Resource" uid="uid://bpf2kexi3o22s" path="res://src/Resources/TechTree/TechNodes/TowerPass.tres" id="3_reuwa"]
+[ext_resource type="Resource" uid="uid://1gmjr0davgp4" path="res://src/Resources/TechTree/TechNodes/Attack1.tres" id="4_xuhbj"]
+[ext_resource type="Resource" uid="uid://u1y3eoe8hx2c" path="res://src/Resources/TechTree/TechNodes/MaxHP1.tres" id="5_2ltmf"]
+[ext_resource type="Resource" uid="uid://bqgnafgyrs4m4" path="res://src/Resources/TechTree/TechNodes/Attack2.tres" id="6_lqswy"]
+[ext_resource type="Resource" uid="uid://cmy8gsm0hbovg" path="res://src/Resources/TechTree/TechNodes/CritChance1.tres" id="7_a6tc3"]
+[ext_resource type="Resource" uid="uid://ttsaddae3bcr" path="res://src/Resources/TechTree/TechNodes/CritDamage1.tres" id="8_wj3rp"]
+[ext_resource type="Texture2D" uid="uid://dt4v1cc43wq4u" path="res://Assets/NodeGraphics/WASD-Controls-Icon.png" id="9_6pqgd"]
+[ext_resource type="Script" uid="uid://co4ox6rujyeod" path="res://src/Scripts/TechTree/tech_tree_camera.gd" id="9_wj3rp"]
+[ext_resource type="PackedScene" uid="uid://bevb4v64mvbbg" path="res://src/Scenes/TechTree/PlayerStatsPanel.tscn" id="10_7l0yi"]
 
 [node name="TechTree" type="Node2D"]
 script = ExtResource("1_1fw0b")
 
-[node name="TechNode" parent="." instance=ExtResource("2_q3n1u")]
+[node name="Nodes" type="Node" parent="."]
+
+[node name="TowerPassNode" parent="Nodes" instance=ExtResource("2_q3n1u")]
+position = Vector2(510, 479)
+tech_node_stats = ExtResource("3_reuwa")
+
+[node name="SwordAttack1Node" parent="Nodes" instance=ExtResource("2_q3n1u")]
+position = Vector2(663, 344)
+tech_node_stats = ExtResource("4_xuhbj")
+
+[node name="Line2D" type="Line2D" parent="Nodes/SwordAttack1Node"]
+position = Vector2(-22, 52)
+points = PackedVector2Array(-11, -18, -96, 48)
+
+[node name="MaxHP1Node" parent="Nodes" instance=ExtResource("2_q3n1u")]
+position = Vector2(660, 632)
+tech_node_stats = ExtResource("5_2ltmf")
+
+[node name="Line2D" type="Line2D" parent="Nodes/MaxHP1Node"]
+position = Vector2(-123, -127)
+points = PackedVector2Array(6, 9, 90, 95)
+
+[node name="SwordAttack2Node" parent="Nodes" instance=ExtResource("2_q3n1u")]
+position = Vector2(816, 210)
+tech_node_stats = ExtResource("6_lqswy")
+
+[node name="Line2D" type="Line2D" parent="Nodes/SwordAttack2Node"]
+points = PackedVector2Array(-119, 101, -34, 34)
+
+[node name="CritChance1Node" parent="Nodes" instance=ExtResource("2_q3n1u")]
+position = Vector2(536, 219)
+tech_node_stats = ExtResource("7_a6tc3")
+
+[node name="Line2D" type="Line2D" parent="Nodes/CritChance1Node"]
+points = PackedVector2Array(93, 92, 33, 34)
+
+[node name="CritDamage1Node2" parent="Nodes" instance=ExtResource("2_q3n1u")]
+position = Vector2(805, 486)
+tech_node_stats = ExtResource("8_wj3rp")
+
+[node name="Line2D" type="Line2D" parent="Nodes/CritDamage1Node2"]
+position = Vector2(-121, -122)
+points = PackedVector2Array(89, 89, 11, 13)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Currency" type="Label" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -293.0
+offset_top = -43.0
+offset_right = -10.0
+offset_bottom = -9.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "Currency : 0"
+horizontal_alignment = 2
+
+[node name="PresitgeTier" type="Label" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -69.0
+offset_right = 69.0
+offset_bottom = 34.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "Prestige: 0"
+
+[node name="PrestigeProgress" type="Label" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -69.0
+offset_top = 78.0
+offset_right = 69.0
+offset_bottom = 112.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "0/10"
+horizontal_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -284.0
+offset_top = 44.0
+offset_right = 285.0
+offset_bottom = 71.0
+grow_horizontal = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = -91.0
+offset_right = 131.0202
+offset_bottom = -11.0
+grow_vertical = 0
+texture = ExtResource("9_6pqgd")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 139.0
+offset_top = -57.0
+offset_right = 248.0
+offset_bottom = -8.0
+grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "Move Around 
+Tech Tree"
+
+[node name="PlayerStats" parent="CanvasLayer" instance=ExtResource("10_7l0yi")]
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 19.0
+offset_top = 15.0
+offset_right = 217.0
+offset_bottom = 133.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(640, 359)
+script = ExtResource("9_wj3rp")
