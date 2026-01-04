@@ -1,0 +1,207 @@
+[gd_scene load_steps=7 format=3 uid="uid://gqi5stq8kadl"]
+
+[ext_resource type="Script" uid="uid://b15y36y5gufr7" path="res://src/Scripts/TechTree/tool_tip.gd" id="1_prrnn"]
+
+[sub_resource type="Theme" id="Theme_l673o"]
+
+[sub_resource type="Animation" id="Animation_vuqno"]
+resource_name = "SpawnIn"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ToolTip:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 20), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ToolTip:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.13541755),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_prrnn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ToolTip:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ToolTip:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_e6w3v"]
+resource_name = "SpawnOut"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ToolTip:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 20)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ToolTip:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.13333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.16666667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e6w3v"]
+_data = {
+&"RESET": SubResource("Animation_prrnn"),
+&"SpawnIn": SubResource("Animation_vuqno"),
+&"SpawnOut": SubResource("Animation_e6w3v")
+}
+
+[node name="ToolTip" type="Node2D" node_paths=PackedStringArray("node_title", "current_benefits", "description", "cost") groups=["ToolTips"]]
+script = ExtResource("1_prrnn")
+node_title = NodePath("ToolTip/NodeTitle")
+current_benefits = NodePath("ToolTip/CurrentBenefits")
+description = NodePath("ToolTip/Description")
+cost = NodePath("ToolTip/Cost")
+
+[node name="ToolTip" type="Panel" parent="."]
+modulate = Color(1, 1, 1, 0)
+z_index = 4096
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 271.0
+offset_bottom = 202.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_l673o")
+
+[node name="NodeTitle" type="Label" parent="ToolTip"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -74.5
+offset_top = 6.0
+offset_right = 74.50001
+offset_bottom = 22.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 15
+text = "Attack 1 (5/5) "
+horizontal_alignment = 1
+
+[node name="Cost" type="Label" parent="ToolTip"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -74.5
+offset_top = -29.0
+offset_right = 74.5
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "Cost: 25"
+horizontal_alignment = 1
+
+[node name="CurrentBenefits" type="Label" parent="ToolTip"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -74.5
+offset_top = 31.0
+offset_right = 74.5
+offset_bottom = 47.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 1
+
+[node name="Panel" type="Panel" parent="ToolTip"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 62.0
+offset_right = 262.0
+offset_bottom = 171.0
+
+[node name="Description" type="RichTextLabel" parent="ToolTip"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -116.5
+offset_top = -28.5
+offset_right = 114.5
+offset_bottom = 52.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 12
+text = "This is the description for the node. 
+
+This should be located in the tech node stats resource which should then "
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_e6w3v")
+}

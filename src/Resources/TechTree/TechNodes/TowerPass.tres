@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="TechNodeStats" load_steps=3 format=3 uid="uid://bpf2kexi3o22s"]
+
+[ext_resource type="Texture2D" uid="uid://btrsrwaxa0k4c" path="res://Assets/NodeGraphics/TowerLicenseNodeIcon.png" id="1_3154w"]
+[ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_u8htc"]
+
+[resource]
+script = ExtResource("1_u8htc")
+node_name = "Tower License"
+icon = ExtResource("1_3154w")
+description = "A license granting an explorer access to the Tower. Access is limited at first and will gradually expand as the explorer proves their competence."
+unlocked = true
+metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

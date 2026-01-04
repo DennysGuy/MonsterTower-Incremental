@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="TechNodeStats" load_steps=3 format=3 uid="uid://bqgnafgyrs4m4"]
+
+[ext_resource type="Texture2D" uid="uid://b06cu0mch0bdq" path="res://Assets/NodeGraphics/SwordAttack2Icon.png" id="1_8vyph"]
+[ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_gpc2m"]
+
+[resource]
+script = ExtResource("1_gpc2m")
+node_name = "Attack 2"
+icon = ExtResource("1_8vyph")
+description = "Each level upgrades weapon attack by 15% for a total of 50% added attack damage when maxed out."
+max_level = 5
+currency_required = 200
+stat_name = "Attack Damage"
+upgrade_interval = 0.15
+prereqs = Array[String](["Attack 1:5"])
+metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"
