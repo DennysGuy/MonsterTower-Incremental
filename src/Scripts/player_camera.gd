@@ -47,7 +47,6 @@ func _physics_process(delta: float) -> void:
 	if shake_strength > 0:
 		shake_strength = lerpf(shake_strength, 0, shake_fade * delta)
 		offset = random_offset()
-	
 
 func zoom_camera(focal_length : float, delta):
 	zoom.x = lerpf(zoom.x, focal_length, 4.0 * delta)
@@ -56,7 +55,6 @@ func zoom_camera(focal_length : float, delta):
 	if abs(zoom.x - focal_length) <= 0.03:
 		zoom.x = focal_length
 		zoom.y = focal_length
-
 
 func set_shake_strength(value : float):
 	shake_strength = value

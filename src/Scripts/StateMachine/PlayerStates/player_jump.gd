@@ -4,6 +4,8 @@ class_name PlayerJump extends State
 @export var fall_state : State
 
 func enter() -> void:
+	super()
+	parent.set_sword_texture(animation_name)
 	parent.velocity.y -= PlayerStats.player_stats["Jump Height"]
 
 func exit() -> void:
@@ -20,6 +22,9 @@ func process_physics(_delta: float) -> State:
 		return fall_state
 	
 	var movement = Input.get_axis("pan_cam_left","pan_cam_right") * PlayerStats.player_stats["Movement Speed"]
+	
+	if movement != 0:
+		parent.flip_textures(movement < 0)
 	
 	parent.velocity.x = movement
 	parent.move_and_slide()

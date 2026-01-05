@@ -8,18 +8,28 @@ This is for testing purposes
 
 '''
 
-var player_stats : Dictionary[String,float] = {
+@onready var player_stats : Dictionary[String,float] = {
 	"Attack Damage" : 10.0,
 	"Movement Speed" : 100.0,
 	"Jump Height" : 300.0,
 	"Crit Chance" : 0.0,
 	"Crit Damage" : 1.5,
 	"Max Health" : 50,
+	"Equipped Sword": 0
 }
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
+
+
+func get_sword_name() -> String:
+	match player_stats["Equipped Sword"]:
+		0:
+			return "Wooden Sword"
+		_:
+			return "Wooden Sword"
+
 
 func upgrade_player_stat(stat_name : String, interval : float) -> void:
 	var stat = player_stats.get(stat_name)

@@ -18,10 +18,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-
 func remove_tool_tip() -> void:
 	animation_player.play("SpawnOut")
-
 
 func update_info(total_bonus : float) -> void:
 	node_title.text = "%s (%s/%s)" % [tech_node_stats.node_name,tech_node_stats.current_level,tech_node_stats.max_level]

@@ -4,9 +4,11 @@ class_name TechTree extends Node2D
 @onready var presitge_tier: Label = $CanvasLayer/PresitgeTier
 @onready var prestige_progress: Label = $CanvasLayer/PrestigeProgress
 @onready var progress_bar: ProgressBar = $CanvasLayer/ProgressBar
+@onready var camera_2d: Camera2D = $Camera2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	camera_2d.make_current()
 	TechTreeManager.update_currency_label.connect(update_currency_label)
 	TechTreeManager.update_prestige_tier_label.connect(update_prestige_label)
 	TechTreeManager.update_prestige_tier_progress_label.connect(update_prestige_progress)

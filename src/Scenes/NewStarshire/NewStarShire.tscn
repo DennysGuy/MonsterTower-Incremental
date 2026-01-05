@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=4 uid="uid://oonjrpabmces"]
+[gd_scene load_steps=10 format=4 uid="uid://oonjrpabmces"]
 
 [ext_resource type="Script" uid="uid://dpqc54c34418w" path="res://src/Scripts/Maps/NewStarShire/new_star_shire.gd" id="1_gq00g"]
 [ext_resource type="Texture2D" uid="uid://d35tn325hxjff" path="res://Assets/EnvironmentalAssets/temp_floor_tile.png" id="1_otxvj"]
 [ext_resource type="PackedScene" uid="uid://c8ov03gkkda4k" path="res://src/Scenes/PlayerCamera.tscn" id="3_wtuhv"]
+[ext_resource type="PackedScene" uid="uid://dkxkwr4us4aak" path="res://src/Scenes/NewStarshire/Facilities/TechTreeComputer.tscn" id="4_cldp6"]
 [ext_resource type="Script" uid="uid://bjq40ntqmf0ih" path="res://src/Scripts/Maps/spawn_point.gd" id="4_gq00g"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3a8aw"]
@@ -62,6 +63,9 @@ drag_horizontal_enabled = true
 drag_horizontal_offset = 0.04
 smoothing_enabled = true
 
+[node name="TechTreeComputer" parent="." instance=ExtResource("4_cldp6")]
+position = Vector2(392, 640)
+
 [node name="SpawnPoint" type="Marker2D" parent="."]
-position = Vector2(167, 640)
+position = Vector2(230, 639)
 script = ExtResource("4_gq00g")

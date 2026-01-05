@@ -4,6 +4,8 @@ class_name PlayerIdle extends State
 @export var jump_state : State
 @export var fall_state : State
 func enter() -> void:
+	super()
+	parent.set_sword_texture(animation_name)
 	parent.velocity.x = 0
 	parent.velocity.y = 0
 	
