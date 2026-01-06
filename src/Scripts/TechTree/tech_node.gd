@@ -23,7 +23,8 @@ func _ready() -> void:
 	
 	icon.texture = tech_node_stats.icon
 	TechTreeManager.check_node_prereqs.connect(check_prereqs)
-	can_click = true
+
+	check_if_can_purchase()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -33,6 +34,7 @@ func _process(delta: float) -> void:
 
 func _on_click_area_mouse_entered() -> void:
 	mouse_entered = true
+	print("hi")
 	create_tool_tip()
 
 
@@ -72,6 +74,12 @@ func deduct_currency() -> void:
 	TechTreeManager.currency -= tech_node_stats.currency_required
 	TechTreeManager.update_currency_label.emit()
 
+func check_if_can_purchase() -> void:
+	if tech_node_stats.current_level == tech_node_stats.max_level:
+		can_click = false
+	elif TechTreeManager.currency >= tech_node_stats.currency_required:
+		can_click = true
+
 func check_prereqs() -> void:
 	if !tech_node_stats.unlocked:
 		if tech_node_stats.prereqs.is_empty():
@@ -88,6 +96,7 @@ func check_prereqs() -> void:
 func unlock_node() -> void:
 	print("WE'VE MET ALL REQUIREMENTS!")
 	tech_node_stats.unlocked = true
+	check_if_can_purchase()
 	show()
 	animation_player.play("clicked")
 
