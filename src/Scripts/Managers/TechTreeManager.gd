@@ -34,7 +34,7 @@ var upgrade_count_to_prestige : int = 0
 	"Attack 2" : 0,
 	"Crit Chance 1" : 0,
 	"Crit Damage 1" : 0,
-	"Movement Speed 1" : 0,
+	"Movement 1" : 0,
 	"Max HP 1":0
 }
 

@@ -13,14 +13,14 @@ func exit() -> void:
 	pass
 
 func process_input(_event: InputEvent) -> State:
-	
-	var key_pressed: bool = _event.is_action_pressed("pan_cam_left") or _event.is_action_pressed("pan_cam_right")
-	
-	if key_pressed and parent.is_on_floor():
-		return move_state
-	
-	if Input.is_action_pressed("add_currency"):
-		return jump_state
+	if GameManager.player_can_move:
+		var key_pressed: bool = _event.is_action_pressed("pan_cam_left") or _event.is_action_pressed("pan_cam_right")
+		
+		if key_pressed and parent.is_on_floor():
+			return move_state
+		
+		if Input.is_action_pressed("add_currency"):
+			return jump_state
 	
 	return null
 
