@@ -11,7 +11,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if player_in_range and Input.is_action_just_pressed("interact"):
+	if GameManager.player_can_move and player_in_range and Input.is_action_just_pressed("interact"):
 		SignalBus.spawn_tech_tree.emit()
 
 func _on_facility_interactable_body_entered(body: Node2D) -> void:

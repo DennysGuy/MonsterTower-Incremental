@@ -2,6 +2,7 @@ class_name Player extends Entity
 
 @onready var sword: Sprite2D = $Sprites/Sword
 @onready var sprites: Node2D = $Sprites
+@onready var timer: Timer = $Timer
 
 func _ready() -> void:
 	print(state_machine)

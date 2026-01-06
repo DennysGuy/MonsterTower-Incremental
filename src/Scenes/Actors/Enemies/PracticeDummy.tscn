@@ -1,0 +1,188 @@
+[gd_scene load_steps=15 format=3 uid="uid://cmog8m28k4ijk"]
+
+[ext_resource type="Texture2D" uid="uid://bys332e3dq3ew" path="res://Assets/Enemies/TempPracticeDummy.png" id="1_ggy1w"]
+[ext_resource type="Script" uid="uid://cfgk20f5exw4y" path="res://src/Scripts/Enemies/PracticeDummy/practice_dummy.gd" id="1_r01py"]
+[ext_resource type="Resource" uid="uid://qbtq6o18o4hc" path="res://src/Resources/Actors/Enemies/StarShire/ScareDummy.tres" id="2_yowb4"]
+[ext_resource type="Script" uid="uid://drr0deykmfrvq" path="res://src/Scripts/StateMachine/state_machine.gd" id="3_7n5f1"]
+[ext_resource type="Script" uid="uid://bwlb4547lknf" path="res://src/Scripts/StateMachine/EnemyStates/GenericEnemyStates/enemy_idle.gd" id="4_110xg"]
+[ext_resource type="PackedScene" uid="uid://bg1ya0qiin47q" path="res://src/Scenes/Actors/Utilities/HurtBox.tscn" id="5_k2yhj"]
+[ext_resource type="PackedScene" uid="uid://vo5sm7p34vo6" path="res://src/Scenes/Actors/Utilities/NameTag.tscn" id="6_uu12o"]
+[ext_resource type="PackedScene" uid="uid://b8lilr7mgc8l1" path="res://src/Scenes/Actors/Enemies/EnemyHealthBar.tscn" id="7_e0aq0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r01py"]
+size = Vector2(32, 79)
+
+[sub_resource type="Animation" id="Animation_r01py"]
+resource_name = "Idle"
+loop_mode = 1
+step = 0.0001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.00019999966, 0.29888093, 0.53795516, 0.7798, 1.0021763),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -39), Vector2(3, -48), Vector2(0, -39), Vector2(-3, -48), Vector2(0, -39)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.00019999966, 0.3002, 0.53795516, 0.77949995, 1.0021763),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 0.8), Vector2(1, 1), Vector2(1, 0.8), Vector2(1, 1), Vector2(1, 0.8)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:skew")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.00019999966, 0.29888093, 0.53795516, 0.7801, 1.0021763),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.08726646, 0.0, -0.08726646259971647, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_7n5f1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -48)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 0.8)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:skew")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.08726646]
+}
+
+[sub_resource type="Animation" id="Animation_110xg"]
+resource_name = "Hurt"
+length = 0.5
+step = 0.0001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0251, 0.051697623, 0.07533996, 0.10193758, 0.124102265, 0.15069988),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -48), Vector2(-3, -48), Vector2(3, -48), Vector2(-3, -48), Vector2(3, -48), Vector2(-3, -48), Vector2(3, -48)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:skew")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15071985, 0.17731747),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.09599311, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.075359926, 0.15071985),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.05, 1.05), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7n5f1"]
+_data = {
+&"Hurt": SubResource("Animation_110xg"),
+&"Idle": SubResource("Animation_r01py"),
+&"RESET": SubResource("Animation_7n5f1")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uu12o"]
+size = Vector2(31, 55)
+
+[node name="PracticeDummy" type="CharacterBody2D" node_paths=PackedStringArray("name_tag", "health_bar", "state_machine", "animation_player")]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_r01py")
+enemy_name = "Practice Dummy"
+enemy_stats = ExtResource("2_yowb4")
+name_tag = NodePath("NameTag")
+health_bar = NodePath("EnemyHealthBar")
+state_machine = NodePath("StateMachine")
+animation_player = NodePath("AnimationPlayer")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-6, -39.5)
+shape = SubResource("RectangleShape2D_r01py")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -48)
+scale = Vector2(1, 0.8)
+skew = 0.08726646
+texture = ExtResource("1_ggy1w")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_7n5f1")
+}
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_7n5f1")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("4_110xg")
+animation_name = "Idle"
+
+[node name="HurtBox" parent="." instance=ExtResource("5_k2yhj")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(-6.5, -27.5)
+shape = SubResource("RectangleShape2D_uu12o")
+
+[node name="NameTag" parent="." instance=ExtResource("6_uu12o")]
+
+[node name="EnemyHealthBar" parent="." instance=ExtResource("7_e0aq0")]

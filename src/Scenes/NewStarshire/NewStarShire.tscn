@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=4 uid="uid://oonjrpabmces"]
+[gd_scene load_steps=11 format=4 uid="uid://oonjrpabmces"]
 
 [ext_resource type="Script" uid="uid://dpqc54c34418w" path="res://src/Scripts/Maps/NewStarShire/new_star_shire.gd" id="1_gq00g"]
 [ext_resource type="Texture2D" uid="uid://d35tn325hxjff" path="res://Assets/EnvironmentalAssets/temp_floor_tile.png" id="1_otxvj"]
 [ext_resource type="PackedScene" uid="uid://c8ov03gkkda4k" path="res://src/Scenes/PlayerCamera.tscn" id="3_wtuhv"]
 [ext_resource type="PackedScene" uid="uid://dkxkwr4us4aak" path="res://src/Scenes/NewStarshire/Facilities/TechTreeComputer.tscn" id="4_cldp6"]
 [ext_resource type="Script" uid="uid://bjq40ntqmf0ih" path="res://src/Scripts/Maps/spawn_point.gd" id="4_gq00g"]
+[ext_resource type="PackedScene" uid="uid://cmog8m28k4ijk" path="res://src/Scenes/Actors/Enemies/PracticeDummy.tscn" id="6_kqfvc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3a8aw"]
 texture = ExtResource("1_otxvj")
@@ -18,7 +19,8 @@ texture_region_size = Vector2i(64, 64)
 
 [sub_resource type="TileSet" id="TileSet_wtuhv"]
 tile_size = Vector2i(64, 64)
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 3
+physics_layer_0/collision_mask = 3
 sources/1 = SubResource("TileSetAtlasSource_3a8aw")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_otxvj"]
@@ -35,7 +37,8 @@ texture_region_size = Vector2i(64, 64)
 
 [sub_resource type="TileSet" id="TileSet_3a8aw"]
 tile_size = Vector2i(64, 64)
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 3
+physics_layer_0/collision_mask = 3
 sources/1 = SubResource("TileSetAtlasSource_otxvj")
 
 [node name="NewStarShire" type="Node2D" node_paths=PackedStringArray("spawn_point", "camera")]
@@ -92,3 +95,6 @@ canvas_item_default_texture_filter = 0
 physics_object_picking = true
 size = Vector2i(640, 361)
 render_target_update_mode = 4
+
+[node name="PracticeDummy" parent="." instance=ExtResource("6_kqfvc")]
+position = Vector2(566, 640)

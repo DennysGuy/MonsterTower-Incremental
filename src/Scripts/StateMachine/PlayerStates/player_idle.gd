@@ -3,6 +3,8 @@ class_name PlayerIdle extends State
 @export var move_state : State
 @export var jump_state : State
 @export var fall_state : State
+@export var attack_1_state : State
+
 func enter() -> void:
 	super()
 	parent.set_sword_texture(animation_name)
@@ -22,6 +24,10 @@ func process_input(_event: InputEvent) -> State:
 		if Input.is_action_pressed("add_currency"):
 			return jump_state
 	
+		if Input.is_action_pressed("swing_sword"):
+			print("BILLBOON!")
+			return attack_1_state
+		
 	return null
 
 func process_frame(_delta: float) -> State:

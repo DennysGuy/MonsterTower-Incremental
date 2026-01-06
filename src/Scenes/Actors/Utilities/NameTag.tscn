@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://vo5sm7p34vo6"]
+
+[ext_resource type="Script" uid="uid://ctb1cjfp5a2cq" path="res://src/Scripts/HUD/name_tag.gd" id="1_sssty"]
+
+[node name="NameTag" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -42.0
+offset_top = 2.0
+offset_right = 46.0
+offset_bottom = 15.0
+script = ExtResource("1_sssty")
+
+[node name="Bg" type="Panel" parent="."]
+layout_mode = 0
+offset_left = -1.0
+offset_right = 87.0
+offset_bottom = 11.0
+
+[node name="Tag" type="Label" parent="."]
+layout_mode = 0
+offset_left = -1.0
+offset_right = 87.0
+offset_bottom = 12.0
+theme_override_font_sizes/font_size = 7
+text = "Lv. 0 Scare Dummy"
+horizontal_alignment = 1
