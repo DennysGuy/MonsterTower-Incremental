@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=3 uid="uid://dkchs27qqogyy"]
+
+[ext_resource type="Script" uid="uid://cqyncf04kq6co" path="res://src/Scripts/Utilities/damage_label.gd" id="1_6618s"]
+[ext_resource type="Texture2D" uid="uid://cyyawskdhc3u5" path="res://Assets/DamageLabelBG.png" id="1_q1s8l"]
+[ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="3_lwc7n"]
+
+[node name="DamageLabel" type="Control" node_paths=PackedStringArray("label", "texture_rect")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 29.0
+offset_bottom = 30.0
+script = ExtResource("1_6618s")
+label = NodePath("TextureRect/Label")
+texture_rect = NodePath("TextureRect")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.5
+offset_top = -29.0
+offset_right = -0.51818085
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(14, 14)
+texture = ExtResource("1_q1s8l")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="TextureRect"]
+layout_mode = 0
+offset_left = 2.9909058
+offset_top = 3.5
+offset_right = 21.990906
+offset_bottom = 22.5
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_lwc7n")
+text = "12"
+horizontal_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 0.3
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

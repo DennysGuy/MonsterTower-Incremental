@@ -13,9 +13,12 @@ This is for testing purposes
 	"Movement Speed" : 100.0,
 	"Jump Height" : 300.0,
 	"Crit Chance" : 0.0,
+	"Defense" : 0.0,
 	"Crit Damage" : 1.5,
+	"Accuracy" : 0.6,
 	"Max Health" : 50,
-	"Equipped Sword": 0
+	"Equipped Sword": 0,
+	"Overlapping Hits" : 1.0
 }
 
 # Called when the node enters the scene tree for the first time.

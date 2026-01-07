@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cmog8m28k4ijk"]
+[gd_scene load_steps=19 format=3 uid="uid://cmog8m28k4ijk"]
 
 [ext_resource type="Texture2D" uid="uid://bys332e3dq3ew" path="res://Assets/Enemies/TempPracticeDummy.png" id="1_ggy1w"]
 [ext_resource type="Script" uid="uid://cfgk20f5exw4y" path="res://src/Scripts/Enemies/PracticeDummy/practice_dummy.gd" id="1_r01py"]
@@ -7,10 +7,54 @@
 [ext_resource type="Script" uid="uid://bwlb4547lknf" path="res://src/Scripts/StateMachine/EnemyStates/GenericEnemyStates/enemy_idle.gd" id="4_110xg"]
 [ext_resource type="PackedScene" uid="uid://bg1ya0qiin47q" path="res://src/Scenes/Actors/Utilities/HurtBox.tscn" id="5_k2yhj"]
 [ext_resource type="PackedScene" uid="uid://vo5sm7p34vo6" path="res://src/Scenes/Actors/Utilities/NameTag.tscn" id="6_uu12o"]
+[ext_resource type="Script" uid="uid://bl81lc5if28vq" path="res://src/Scripts/StateMachine/EnemyStates/GenericEnemyStates/enemy_hit.gd" id="6_ylkjm"]
 [ext_resource type="PackedScene" uid="uid://b8lilr7mgc8l1" path="res://src/Scenes/Actors/Enemies/EnemyHealthBar.tscn" id="7_e0aq0"]
+[ext_resource type="Script" uid="uid://733mi1gdyrrk" path="res://src/Scripts/StateMachine/EnemyStates/GenericEnemyStates/enemy_dead.gd" id="7_qbmd8"]
+[ext_resource type="PackedScene" uid="uid://b73ndgmav7ja2" path="res://src/Scenes/Actors/Utilities/HealthComponent.tscn" id="9_7a17f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r01py"]
 size = Vector2(32, 79)
+
+[sub_resource type="Animation" id="Animation_110xg"]
+resource_name = "Hurt"
+length = 0.18
+step = 0.0001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0251, 0.051697623, 0.07533996, 0.10193758, 0.124102265, 0.15069988),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -48), Vector2(-3, -48), Vector2(3, -48), Vector2(-3, -48), Vector2(3, -48), Vector2(-3, -48), Vector2(3, -48)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:skew")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15071985, 0.17731747),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.09599311, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.075359926, 0.15071985),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.05, 1.05), Vector2(1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_r01py"]
 resource_name = "Idle"
@@ -91,50 +135,64 @@ tracks/2/keys = {
 "update": 0,
 "values": [0.08726646]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
-[sub_resource type="Animation" id="Animation_110xg"]
-resource_name = "Hurt"
-length = 0.5
+[sub_resource type="Animation" id="Animation_qbmd8"]
+resource_name = "Dead"
 step = 0.0001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("Sprite2D:position")
-tracks/0/interp = 1
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0251, 0.051697623, 0.07533996, 0.10193758, 0.124102265, 0.15069988),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.20267913, 0.39882022),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(0, -48), Vector2(-3, -48), Vector2(3, -48), Vector2(-3, -48), Vector2(3, -48), Vector2(-3, -48), Vector2(3, -48)]
+"values": [Vector2(0, -48), Vector2(0, -125), Vector2(0, -12)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:skew")
-tracks/1/interp = 1
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.15071985, 0.17731747),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.39882022),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.0, 0.09599311, 0.0]
+"values": [0.0, 4.735078260660615]
 }
-tracks/2/type = "value"
+tracks/2/type = "method"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:scale")
+tracks/2/path = NodePath(".")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.075359926, 0.15071985),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1.05, 1.05), Vector2(1, 1)]
+"times": PackedFloat32Array(0.9862),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7n5f1"]
 _data = {
+&"Dead": SubResource("Animation_qbmd8"),
 &"Hurt": SubResource("Animation_110xg"),
 &"Idle": SubResource("Animation_r01py"),
 &"RESET": SubResource("Animation_7n5f1")
@@ -143,7 +201,7 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uu12o"]
 size = Vector2(31, 55)
 
-[node name="PracticeDummy" type="CharacterBody2D" node_paths=PackedStringArray("name_tag", "health_bar", "state_machine", "animation_player")]
+[node name="PracticeDummy" type="CharacterBody2D" node_paths=PackedStringArray("name_tag", "health_bar", "state_machine", "animation_player", "health_component", "hurt_box", "hit_state", "dead_state")]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_r01py")
@@ -153,6 +211,10 @@ name_tag = NodePath("NameTag")
 health_bar = NodePath("EnemyHealthBar")
 state_machine = NodePath("StateMachine")
 animation_player = NodePath("AnimationPlayer")
+health_component = NodePath("HealthComponent")
+hurt_box = NodePath("HurtBox")
+hit_state = NodePath("StateMachine/Hit")
+dead_state = NodePath("StateMachine/Dead")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-6, -39.5)
@@ -168,6 +230,7 @@ texture = ExtResource("1_ggy1w")
 libraries = {
 &"": SubResource("AnimationLibrary_7n5f1")
 }
+playback_default_blend_time = 0.15
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_7n5f1")
@@ -176,6 +239,17 @@ initial_state = NodePath("Idle")
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("4_110xg")
 animation_name = "Idle"
+
+[node name="Hit" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state")]
+script = ExtResource("6_ylkjm")
+idle_state = NodePath("../Idle")
+wait_time = 0.18
+animation_name = "Hurt"
+
+[node name="Dead" type="Node" parent="StateMachine"]
+script = ExtResource("7_qbmd8")
+wait_time = 1.0
+animation_name = "Dead"
 
 [node name="HurtBox" parent="." instance=ExtResource("5_k2yhj")]
 
@@ -186,3 +260,14 @@ shape = SubResource("RectangleShape2D_uu12o")
 [node name="NameTag" parent="." instance=ExtResource("6_uu12o")]
 
 [node name="EnemyHealthBar" parent="." instance=ExtResource("7_e0aq0")]
+visible = false
+
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("parent", "health_bar") instance=ExtResource("9_7a17f")]
+parent = NodePath("..")
+health_bar = NodePath("../EnemyHealthBar")
+
+[node name="Timer" type="Timer" parent="."]
+process_callback = 0
+one_shot = true
+
+[connection signal="update_health_bar" from="HealthComponent" to="." method="_on_health_component_update_health_bar"]

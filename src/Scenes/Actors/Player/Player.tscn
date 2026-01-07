@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://wuy3aelq8aeg"]
+[gd_scene load_steps=32 format=3 uid="uid://wuy3aelq8aeg"]
 
 [ext_resource type="Script" uid="uid://dm4atx2m8yfn1" path="res://src/Scripts/Player/player.gd" id="1_gw3a7"]
 [ext_resource type="Script" uid="uid://drr0deykmfrvq" path="res://src/Scripts/StateMachine/state_machine.gd" id="2_n7gp4"]
@@ -13,9 +13,11 @@
 [ext_resource type="Script" uid="uid://cdntaeegiu5oe" path="res://src/Scripts/StateMachine/PlayerStates/player_attack_2.gd" id="8_k1vse"]
 [ext_resource type="Texture2D" uid="uid://cq1mgvfmg3j4l" path="res://Assets/PlayerGraphics/TempPlayer/Jump.png" id="9_0q2cn"]
 [ext_resource type="Script" uid="uid://bqdopmp35ioim" path="res://src/Scripts/StateMachine/PlayerStates/player_attack_3.gd" id="9_er68u"]
+[ext_resource type="PackedScene" uid="uid://b73ndgmav7ja2" path="res://src/Scenes/Actors/Utilities/HealthComponent.tscn" id="10_dwhqw"]
 [ext_resource type="Texture2D" uid="uid://bmpq7q23k5cgy" path="res://Assets/PlayerGraphics/TempPlayer/Climb.png" id="11_k1vse"]
 [ext_resource type="Texture2D" uid="uid://83wb3hhgliie" path="res://Assets/PlayerGraphics/TempPlayer/SwordSwing.png" id="12_er68u"]
 [ext_resource type="PackedScene" uid="uid://xsmgmpbxjc3b" path="res://src/Scenes/Actors/Utilities/HitBox.tscn" id="16_cw62c"]
+[ext_resource type="PackedScene" uid="uid://bg1ya0qiin47q" path="res://src/Scenes/Actors/Utilities/HurtBox.tscn" id="17_45oew"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k5pak"]
 radius = 18.0
@@ -508,12 +510,26 @@ tracks/7/keys = {
 "update": 1,
 "values": [ExtResource("8_j38pk")]
 }
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../..")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.121),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"issue_sword_attack"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_hrnox"]
 resource_name = "SwordSwing2"
 length = 0.6
 loop_mode = 1
-step = 0.12
+step = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -609,12 +625,26 @@ tracks/7/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
 "values": [5, 6, 7, 8, 9]
+}
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../..")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.239),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"issue_sword_attack"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_susmm"]
 resource_name = "SwordSwing3"
 length = 0.6
-step = 0.12
+step = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -710,6 +740,20 @@ tracks/7/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
 "values": [10, 11, 12, 13, 14]
+}
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../..")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.121),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"issue_sword_attack"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pawjx"]
@@ -727,10 +771,16 @@ _data = {
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_45oew"]
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("state_machine", "animation_player")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dwhqw"]
+size = Vector2(33, 46)
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("state_machine", "animation_player", "health_component", "hurt_box", "hit_box") groups=["Player"]]
 script = ExtResource("1_gw3a7")
 state_machine = NodePath("StateMachine")
 animation_player = NodePath("AnimationPlayer")
+health_component = NodePath("HealthComponent")
+hurt_box = NodePath("HurtBox")
+hit_box = NodePath("HitBox")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_n7gp4")
@@ -789,6 +839,8 @@ animation_duration = 0.6
 process_callback = 0
 one_shot = true
 
+[node name="HealthComponent" parent="." instance=ExtResource("10_dwhqw")]
+
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
 offset_left = -18.0
@@ -827,3 +879,10 @@ scale = Vector2(2, 2)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 position = Vector2(2, 0)
 shape = SubResource("RectangleShape2D_45oew")
+
+[node name="HurtBox" parent="." instance=ExtResource("17_45oew")]
+position = Vector2(2, -3)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(-2.5, -20)
+shape = SubResource("RectangleShape2D_dwhqw")

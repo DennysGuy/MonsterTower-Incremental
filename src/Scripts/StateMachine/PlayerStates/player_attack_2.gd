@@ -5,6 +5,7 @@ class_name PlayerAttack2State extends State
 
 func enter() -> void:
 	super()
+	parent.hit_box.position.x = 34 * GameManager.set_player_box_direction(parent.player_sprite.flip_h)
 	parent.set_sword_texture(animation_name)
 	parent.timer.wait_time = animation_duration
 	parent.timer.start()
