@@ -13,6 +13,8 @@ class_name Entity extends CharacterBody2D
 @export var dead_state : State
 
 var damageable : bool = true
+var is_dead : bool = false
+var prev_dir : int = 1
 
 func _ready() -> void:
 	state_machine.init(self)

@@ -6,9 +6,9 @@
 
 [node name="EnemyHealthBar" type="TextureProgressBar"]
 offset_left = -33.0
-offset_top = -102.0
+offset_top = -5.0
 offset_right = 32.0
-offset_bottom = -92.0
+offset_bottom = 5.0
 value = 50.0
 texture_under = ExtResource("1_qips4")
 texture_progress = ExtResource("2_yv8aw")

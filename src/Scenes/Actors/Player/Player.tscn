@@ -1,10 +1,11 @@
-[gd_scene load_steps=32 format=3 uid="uid://wuy3aelq8aeg"]
+[gd_scene load_steps=34 format=3 uid="uid://wuy3aelq8aeg"]
 
 [ext_resource type="Script" uid="uid://dm4atx2m8yfn1" path="res://src/Scripts/Player/player.gd" id="1_gw3a7"]
 [ext_resource type="Script" uid="uid://drr0deykmfrvq" path="res://src/Scripts/StateMachine/state_machine.gd" id="2_n7gp4"]
 [ext_resource type="Script" uid="uid://1pman3ol5bxf" path="res://src/Scripts/StateMachine/PlayerStates/player_idle.gd" id="3_g162h"]
 [ext_resource type="Script" uid="uid://m7qrxu2m2bd4" path="res://src/Scripts/StateMachine/PlayerStates/player_move.gd" id="4_pp7ew"]
 [ext_resource type="Script" uid="uid://ec0tth2wuxjw" path="res://src/Scripts/StateMachine/PlayerStates/player_jump.gd" id="5_jq5qv"]
+[ext_resource type="Script" uid="uid://b3ys3chdjw1qq" path="res://src/Scripts/StateMachine/PlayerStates/player_climb.gd" id="6_hrnox"]
 [ext_resource type="Script" uid="uid://q7dh86d3scqk" path="res://src/Scripts/StateMachine/PlayerStates/player_fall.gd" id="6_k5pak"]
 [ext_resource type="Texture2D" uid="uid://gy4gbpsh25np" path="res://Assets/PlayerGraphics/TempPlayer/Idle.png" id="7_4qtrc"]
 [ext_resource type="Script" uid="uid://cff2efoj6wrst" path="res://src/Scripts/StateMachine/PlayerStates/player_attack_1.gd" id="7_j38pk"]
@@ -774,7 +775,12 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dwhqw"]
 size = Vector2(33, 46)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hrnox"]
+size = Vector2(20, 46)
+
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("state_machine", "animation_player", "health_component", "hurt_box", "hit_box") groups=["Player"]]
+collision_layer = 17
+collision_mask = 17
 script = ExtResource("1_gw3a7")
 state_machine = NodePath("StateMachine")
 animation_player = NodePath("AnimationPlayer")
@@ -786,12 +792,13 @@ hit_box = NodePath("HitBox")
 script = ExtResource("2_n7gp4")
 initial_state = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("move_state", "jump_state", "fall_state", "attack_1_state")]
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("move_state", "jump_state", "fall_state", "attack_1_state", "climb_state")]
 script = ExtResource("3_g162h")
 move_state = NodePath("../Move")
 jump_state = NodePath("../Jump")
 fall_state = NodePath("../Fall")
 attack_1_state = NodePath("../Attack1")
+climb_state = NodePath("../Climb")
 animation_name = "Idle"
 
 [node name="Move" type="Node" parent="StateMachine" node_paths=PackedStringArray("jump_state", "fall_state", "idle_state")]
@@ -807,11 +814,18 @@ idle_state = NodePath("../Idle")
 fall_state = NodePath("../Fall")
 animation_name = "Jump"
 
-[node name="Fall" type="Node" parent="StateMachine" node_paths=PackedStringArray("jump_state", "move_state", "idle_state")]
+[node name="Climb" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "jump_state")]
+script = ExtResource("6_hrnox")
+idle_state = NodePath("../Idle")
+jump_state = NodePath("../Jump")
+animation_name = "Climb"
+
+[node name="Fall" type="Node" parent="StateMachine" node_paths=PackedStringArray("jump_state", "move_state", "idle_state", "climb_state")]
 script = ExtResource("6_k5pak")
 jump_state = NodePath("../Jump")
 move_state = NodePath("../Move")
 idle_state = NodePath("../Idle")
+climb_state = NodePath("../Climb")
 animation_name = "Fall"
 
 [node name="Attack1" type="Node" parent="StateMachine" node_paths=PackedStringArray("attack2_state", "idle_state")]
@@ -886,3 +900,14 @@ position = Vector2(2, -3)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 position = Vector2(-2.5, -20)
 shape = SubResource("RectangleShape2D_dwhqw")
+
+[node name="LadderDetector" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LadderDetector"]
+position = Vector2(0, -13)
+shape = SubResource("RectangleShape2D_hrnox")
+
+[connection signal="area_entered" from="LadderDetector" to="." method="_on_ladder_detector_area_entered"]
+[connection signal="area_exited" from="LadderDetector" to="." method="_on_ladder_detector_area_exited"]

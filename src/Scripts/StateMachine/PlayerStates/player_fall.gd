@@ -3,7 +3,7 @@ class_name PlayerFall extends State
 @export var jump_state : State
 @export var move_state : State
 @export var idle_state : State
-
+@export var climb_state : State
 func enter() -> void:
 	super()
 	parent.set_sword_texture(animation_name)
@@ -25,6 +25,9 @@ func process_physics(_delta: float) -> State:
 	
 	parent.velocity.x = movement
 	parent.move_and_slide()
+	
+	if Input.is_action_pressed("pan_cam_up") and parent.in_ladder_area and parent.global_position.y <= parent.stored_ladder.ladder_bottom_position:
+		return climb_state
 	
 	if parent.is_on_floor():
 		if Input.is_action_pressed("jump"):

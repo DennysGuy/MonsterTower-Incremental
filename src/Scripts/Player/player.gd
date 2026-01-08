@@ -6,9 +6,12 @@ class_name Player extends Entity
 
 @onready var player_sprite: Sprite2D = $Sprites/PlayerSprite
 
+var stored_ladder : LadderArea
+var in_ladder_area : bool = false
+var is_climbing : bool = false
+var prev_input : int
 
 func _ready() -> void:
-	print(state_machine)
 	super()
 
 func _process(delta: float) -> void:
@@ -46,3 +49,17 @@ func check_for_crit() -> bool:
 		return true
 	
 	return false
+
+
+func _on_ladder_detector_area_entered(area: Area2D) -> void:
+	in_ladder_area = true
+	stored_ladder = area
+	if in_ladder_area:
+		print("were in ladder area and the stored ladder is %s " % [stored_ladder])
+
+
+func _on_ladder_detector_area_exited(area: Area2D) -> void:
+	in_ladder_area = false
+	stored_ladder = null
+	if !in_ladder_area:
+		print("were have left ladder area and the stored ladder is %s " % [stored_ladder])

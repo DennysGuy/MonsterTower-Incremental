@@ -15,6 +15,48 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r01py"]
 size = Vector2(32, 79)
 
+[sub_resource type="Animation" id="Animation_qbmd8"]
+resource_name = "Dead"
+step = 0.0001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.20267913, 0.39882022),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -48), Vector2(0, -125), Vector2(0, -12)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.39882022),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 4.735078260660615]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.9862),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
 [sub_resource type="Animation" id="Animation_110xg"]
 resource_name = "Hurt"
 length = 0.18
@@ -148,48 +190,6 @@ tracks/3/keys = {
 "values": [0.0]
 }
 
-[sub_resource type="Animation" id="Animation_qbmd8"]
-resource_name = "Dead"
-step = 0.0001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.20267913, 0.39882022),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(0, -48), Vector2(0, -125), Vector2(0, -12)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:rotation")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.39882022),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 4.735078260660615]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.9862),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"queue_free"
-}]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7n5f1"]
 _data = {
 &"Dead": SubResource("Animation_qbmd8"),
@@ -260,7 +260,8 @@ shape = SubResource("RectangleShape2D_uu12o")
 [node name="NameTag" parent="." instance=ExtResource("6_uu12o")]
 
 [node name="EnemyHealthBar" parent="." instance=ExtResource("7_e0aq0")]
-visible = false
+offset_top = -96.0
+offset_bottom = -86.0
 
 [node name="HealthComponent" parent="." node_paths=PackedStringArray("parent", "health_bar") instance=ExtResource("9_7a17f")]
 parent = NodePath("..")

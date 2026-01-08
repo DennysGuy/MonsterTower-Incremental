@@ -79,6 +79,10 @@ swing_sword={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_4="Ladder Areas"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
