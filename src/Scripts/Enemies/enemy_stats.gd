@@ -1,0 +1,32 @@
+class_name EnemyStats extends Resource
+
+@export_group("Meta Data")
+@export var enemy_name : String
+@export var enemy_level : int
+@export var touch_damage : bool = false
+@export var can_attack : bool = false
+@export var can_move : bool = false
+@export_enum("Aggro", "PassiveAggro", "Passive") var enemy_type : int
+enum ENEMY_TYPE {AGGRO, PASSIVEAGGRO, PASSIVE}
+
+@export_group("Stats")
+@export var max_health : int
+@export var attack : int
+@export var defense : float
+@export var movement_speed : float
+@export var chase_speed : float
+
+@export_group("Audio Files")
+@export var hit_sfx : AudioStream
+@export var die_sfx : AudioStream
+@export var movement_sfx : AudioStream
+
+
+func is_passive() -> bool:
+	return enemy_type == ENEMY_TYPE.PASSIVE
+
+func is_passive_aggro() -> bool:
+	return enemy_type == ENEMY_TYPE.PASSIVEAGGRO
+
+func is_aggro() -> bool:
+	return enemy_type == ENEMY_TYPE.AGGRO 

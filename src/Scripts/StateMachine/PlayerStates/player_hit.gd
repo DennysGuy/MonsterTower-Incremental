@@ -1,0 +1,39 @@
+class_name PlayerHitState extends State
+
+@export var wait_time : float
+@export var invincibility_time : float
+@export var idle_state : State
+ 
+var knock_back_direction : int
+func enter() -> void:
+	super()
+	if parent.stored_enemy:
+		parent.set_sword_texture(animation_name)
+		parent.timer.wait_time = wait_time
+		parent.invincibility_timer.wait_time = invincibility_time
+		var dir = (parent.stored_enemy.global_position - parent.global_position).normalized()
+		knock_back_direction = GameManager.set_direction(dir.x) * -1
+		parent.timer.start()
+		SignalBus.shake_camera.emit(2)
+		HitStopManager.freeze(0.06, 0.0)
+		parent.start_invincibility()
+
+func exit() -> void:
+	parent.stored_enemy = null
+
+func process_input(_event: InputEvent) -> State:
+	return null
+
+func process_frame(_delta: float) -> State:
+	return null
+
+func process_physics(_delta: float) -> State:
+	
+	parent.velocity.x = knock_back_direction * PlayerStats.KNOCKBACK_FORCE
+	
+	if parent.timer.time_left <= 0:
+		return idle_state
+	
+	parent.move_and_slide()
+	return null
+		

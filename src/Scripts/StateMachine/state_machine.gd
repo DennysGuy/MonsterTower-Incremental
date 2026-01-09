@@ -24,7 +24,7 @@ func process_physics(delta: float) -> void:
 	var new_state = current_state.process_physics(delta)
 		
 	if get_parent() is CharacterBody2D:
-		if get_parent().is_on_floor():
+		if get_parent().is_on_floor() or get_parent() is Player and current_state is PlayerClimb:
 			get_parent().velocity.y = 0
 		else:
 			get_parent().velocity.y += GameManager.gravity * delta

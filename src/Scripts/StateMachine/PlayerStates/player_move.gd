@@ -4,6 +4,7 @@ class_name PlayerMove extends State
 @export var fall_state : State
 @export var idle_state : State
 
+
 func enter() -> void:
 	super()
 	parent.set_sword_texture(animation_name)
@@ -23,6 +24,9 @@ func process_frame(_delta: float) -> State:
 func process_physics(_delta: float) -> State:
 	var input = Input.get_axis("pan_cam_left","pan_cam_right")
 	var movement = input * PlayerStats.player_stats["Movement Speed"]
+	
+	if input != 0:
+		parent.prev_input = input
 	
 	if movement != 0:
 		parent.flip_textures(movement < 0)
