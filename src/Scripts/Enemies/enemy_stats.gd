@@ -6,6 +6,8 @@ class_name EnemyStats extends Resource
 @export var touch_damage : bool = false
 @export var can_attack : bool = false
 @export var can_move : bool = false
+@export_enum("Aggro", "PassiveAggro", "Passive") var enemy_type : int
+enum ENEMY_TYPE {AGGRO, PASSIVEAGGRO, PASSIVE}
 
 @export_group("Stats")
 @export var max_health : int
@@ -18,3 +20,13 @@ class_name EnemyStats extends Resource
 @export var hit_sfx : AudioStream
 @export var die_sfx : AudioStream
 @export var movement_sfx : AudioStream
+
+
+func is_passive() -> bool:
+	return enemy_type == ENEMY_TYPE.PASSIVE
+
+func is_passive_aggro() -> bool:
+	return enemy_type == ENEMY_TYPE.PASSIVEAGGRO
+
+func is_aggro() -> bool:
+	return enemy_type == ENEMY_TYPE.AGGRO 

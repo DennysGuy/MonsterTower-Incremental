@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfuh68cf5rs3"]
+
+[ext_resource type="Script" uid="uid://cofqmyrjqp48b" path="res://src/Scripts/Player/ghost_player.gd" id="1_yso5o"]
+[ext_resource type="Texture2D" uid="uid://bavuaat4phvp7" path="res://Assets/PlayerGraphics/TempPlayer/player_ghost_body.png" id="2_aeob4"]
+
+[node name="GhostPlayer" type="Node2D"]
+script = ExtResource("1_yso5o")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(0, -10)
+texture = ExtResource("2_aeob4")

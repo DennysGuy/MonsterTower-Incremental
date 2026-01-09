@@ -5,14 +5,17 @@ class_name Player extends Entity
 @onready var timer: Timer = $Timer
 
 @onready var player_sprite: Sprite2D = $Sprites/PlayerSprite
+@onready var invincibility_timer: Timer = $InvincibilityTimer
 
 var stored_ladder : LadderArea
+var stored_enemy : Enemy
 var in_ladder_area : bool = false
 var is_climbing : bool = false
 var prev_input : int
 
 func _ready() -> void:
 	super()
+	health = PlayerStats.player_stats["Max Health"]
 
 func _process(delta: float) -> void:
 	super(delta)
@@ -27,8 +30,36 @@ func set_sword_texture(animation_name : String) -> void:
 	sword.texture = SwordGraphics.get_sword_graphic(animation_name)
 
 func flip_textures(flip : bool) -> void:
-	for sprite in sprites.get_children():
-		sprite.flip_h = flip
+	for cur_sprite in sprites.get_children():
+		cur_sprite.flip_h = flip
+
+func start_invincibility() -> void:
+	damageable = false
+	blink_effect()
+
+func blink_effect() -> void:
+	
+	var invincibility_duration : float = 3.0
+	var blink_current_time : float = 0.0
+	var blink_wait_time : float = 0.1
+	
+	while blink_current_time < invincibility_duration:
+		set_textures_visibility(false)
+		await get_tree().create_timer(0.1).timeout
+		blink_current_time += blink_wait_time
+		set_textures_visibility(true)
+		await get_tree().create_timer(0.1).timeout
+		blink_current_time += blink_wait_time
+	
+	damageable = true
+
+func set_textures_visibility(value : bool) -> void:
+	sprite.visible = value
+
+func clear_sprites() -> void:
+	animation_player.stop()
+	for cur_sprite in sprites.get_children():
+		cur_sprite.texture = null
 
 func issue_sword_attack() -> void:
 	var enemies_in_range = hit_box.get_overlapping_areas()

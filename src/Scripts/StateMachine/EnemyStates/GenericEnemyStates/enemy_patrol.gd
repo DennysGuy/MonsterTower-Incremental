@@ -14,7 +14,7 @@ func enter() -> void:
 	parent.velocity.x = 0
 	parent.timer.wait_time = randi_range(2, 5)
 
-	_apply_direction(dir)
+	parent.apply_direction(dir)
 
 	parent.timer.start()
 
@@ -31,7 +31,7 @@ func process_physics(_delta: float) -> State:
 	# Turn around if about to fall or hit a wall
 	if not parent.ground_detector.is_colliding() or parent.wall_detector.is_colliding():
 		dir *= -1
-		_apply_direction(dir)
+		parent.apply_direction(dir)
 
 	parent.velocity.x = dir * parent.enemy_stats.movement_speed
 
@@ -43,13 +43,3 @@ func process_physics(_delta: float) -> State:
 		return idle_state
 
 	return null
-
-func _apply_direction(new_dir: int) -> void:
-	parent.ground_detector.position.x = abs(parent.ground_detector.position.x) * new_dir
-	parent.wall_detector.position.x = abs(parent.wall_detector.position.x) * new_dir
-	parent.wall_detector.target_position.x = abs(parent.wall_detector.target_position.x) * new_dir
-	parent.wall_detector.rotation *= new_dir
-	parent.wall_detector.force_raycast_update()
-	
-	parent.prev_dir = new_dir
-	parent.sprite.flip_h = new_dir < 0

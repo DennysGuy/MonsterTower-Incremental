@@ -40,7 +40,9 @@ func attack_enemies(enemies_in_hitbox : Array, number_of_hits : int, player : Pl
 				#enemy.dead = true
 			#await player.get_tree().create_timer(0.1).timeout
 
-func attack_enemy(player : Player, enemy : Enemy, incoming_damage : int, is_crit : bool) -> void:
+func attack_enemy(player : Player, enemy : Enemy, incoming_damage : int, is_crit : bool, hit_freeze : float = 0.02) -> void:
+	SignalBus.shake_camera.emit(0.5)
+	HitStopManager.freeze(hit_freeze, 0.1, 0.0, 0.03)
 	enemy.apply_damage(incoming_damage, is_crit)
 
 func calculate_targets(enemies_in_hitbox : Array, player : Player, number_of_hits : int) -> Array[Entity]:
@@ -69,3 +71,9 @@ func calculate_targets(enemies_in_hitbox : Array, player : Player, number_of_hit
 		targets.append(sorted_enemies[i]["enemy"])
 	
 	return targets
+
+func set_direction(dir : float):
+	if (dir < 0):
+		return -1
+	else:
+		return 1

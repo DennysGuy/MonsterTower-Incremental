@@ -1,15 +1,17 @@
 class_name EnemyHit extends State
 
 @export var idle_state : State
+@export var chase_state : State
 @export var wait_time : float
 
 func enter() -> void:
 	super()
+	parent.hurt_box.get_child(0).disabled = true
 	parent.timer.wait_time = wait_time
 	parent.timer.start()
 
 func exit() -> void:
-	pass
+	parent.hurt_box.get_child(0).disabled = false
 
 func process_input(_event: InputEvent) -> State:
 	return null
@@ -18,6 +20,20 @@ func process_frame(_delta: float) -> State:
 	return null
 
 func process_physics(_delta: float) -> State:
+		#will need to figure out how to dynamically set this so that we can account for an assortment of skills
+	var direction_vector = (parent.global_position - parent.player.global_position).normalized()
+	var direction = GameManager.set_direction(direction_vector.x)
+	if parent.can_knock_back:
+		parent.velocity.x = direction * parent.enemy_stats.movement_speed + 25
+		parent.move_and_slide()
+	
+	if parent.timer.is_stopped():
+		#if the enemy is a passive type, don't do anything
+		if parent.enemy_stats.is_passive():
+			return idle_state
+		else:
+			return chase_state
+
 	if parent.timer.time_left <= 0:
 		return idle_state
 	return null

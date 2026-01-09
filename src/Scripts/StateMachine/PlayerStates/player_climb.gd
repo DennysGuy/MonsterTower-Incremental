@@ -5,6 +5,7 @@ class_name PlayerClimb extends State
 
 func enter() -> void:
 	super()
+	parent.velocity = Vector2.ZERO
 	if parent.stored_ladder:
 		parent.global_position.x = parent.stored_ladder.global_position.x
 	parent.is_climbing = true

@@ -22,6 +22,7 @@ TechTreeManager="*res://src/Scripts/Managers/TechTreeManager.gd"
 GameManager="*res://src/Scripts/Managers/GameManager.gd"
 SignalBus="*res://src/Scripts/Managers/SignalBus.gd"
 SwordGraphics="*res://src/Scripts/Managers/SwordGraphics.gd"
+HitStopManager="*res://src/Scripts/Managers/HitStopManager.gd"
 
 [display]
 

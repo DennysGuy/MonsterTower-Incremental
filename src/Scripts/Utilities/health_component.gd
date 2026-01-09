@@ -19,12 +19,17 @@ func apply_damage(incoming_damage : int, is_crit : bool) -> String:
 	else:
 		damage_text = str(incoming_damage)
 	
-	update_health_bar.emit()
+	if parent is Player:
+		SignalBus.update_player_health.emit(parent.health)
+		
+	if parent is Enemy and parent.health_bar:
+		parent.health_bar.show()	
+		update_health_bar.emit()	
+		
 	if parent.health <= 0:
 		parent.health = 0
 		parent.kill_me()
-	elif parent is Enemy:
-		parent.health_bar.show()		
+	else:
 		parent.send_to_hit_state()
-	
+
 	return damage_text

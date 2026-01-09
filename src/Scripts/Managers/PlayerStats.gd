@@ -8,6 +8,8 @@ This is for testing purposes
 
 '''
 
+const KNOCKBACK_FORCE : int = 300
+
 @onready var player_stats : Dictionary[String,float] = {
 	"Attack Damage" : 10.0,
 	"Movement Speed" : 100.0,
@@ -18,6 +20,7 @@ This is for testing purposes
 	"Crit Damage" : 1.5,
 	"Accuracy" : 0.6,
 	"Max Health" : 50,
+	"Max MP": 50,
 	"Equipped Sword": 0,
 	"Overlapping Hits" : 1.0
 }
