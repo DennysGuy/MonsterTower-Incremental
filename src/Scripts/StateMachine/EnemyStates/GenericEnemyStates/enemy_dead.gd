@@ -6,13 +6,15 @@ func enter() -> void:
 	super()
 	if parent.hit_box:
 		parent.hit_box.get_child(0).disabled = true
-		
+	
+	HitStopManager.freeze(0.15)
 	parent.damageable = false
 	parent.is_dead = true
 	parent.health_bar.hide()
 	parent.timer.wait_time = wait_time
 	parent.timer.start()
 	parent.start_fadeout()
+	
 	
 func exit() -> void:
 	pass

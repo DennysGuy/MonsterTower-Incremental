@@ -289,7 +289,7 @@ size = Vector2(23, 30)
 size = Vector2(23, 30)
 
 [node name="CorruptedMushie" type="CharacterBody2D" node_paths=PackedStringArray("name_tag", "health_bar", "wall_detector", "ground_detector", "state_machine", "animation_player", "health_component", "sprite", "hurt_box", "hit_box", "hit_state", "dead_state")]
-collision_layer = 2
+collision_layer = 128
 collision_mask = 2
 script = ExtResource("1_uospo")
 enemy_stats = ExtResource("2_l3wr6")

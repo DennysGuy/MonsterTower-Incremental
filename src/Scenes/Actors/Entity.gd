@@ -34,6 +34,8 @@ func _process(delta: float) -> void:
 func apply_damage(incoming_damage : int, is_crit : bool):
 	var damage = health_component.apply_damage(incoming_damage, is_crit)
 	var damage_label : DamageLabel = preload("uid://dkchs27qqogyy").instantiate()
+	if is_crit:
+		damage_label.set_crit_bg()
 	damage_label.global_position.y = global_position.y-40
 	damage_label.global_position.x = global_position.x
 	damage_label.label.text = damage

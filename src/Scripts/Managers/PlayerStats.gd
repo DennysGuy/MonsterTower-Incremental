@@ -25,10 +25,16 @@ const KNOCKBACK_FORCE : int = 300
 	"Overlapping Hits" : 1.0
 }
 
+@onready var facilities_unlocked : Dictionary[String, bool] = {
+	"Tower Pass" : false,
+	"Cooking Station" : false,
+	"Crafting Station" : false,
+	"Refinery Station" : false,
+}
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
-
 
 func get_sword_name() -> String:
 	match player_stats["Equipped Sword"]:
@@ -37,8 +43,14 @@ func get_sword_name() -> String:
 		_:
 			return "Wooden Sword"
 
-
-func upgrade_player_stat(stat_name : String, interval : float) -> void:
+func upgrade_player_stat(stat_name : String, interval : float, node_type : TechTreeManager.TECH_NODE_TYPE) -> void:
+	
+	if node_type == TechTreeManager.TECH_NODE_TYPE.FACILITY:
+		facilities_unlocked[stat_name] = true
+		print("stat name: %s is unclocked : %s" % [stat_name, facilities_unlocked[stat_name]])
+		#we'll need a way to figure out how to iniate a cutscene showing unlock sequence
+		return
+	
 	var stat = player_stats.get(stat_name)
 	if stat == null:
 		return

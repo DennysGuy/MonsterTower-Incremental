@@ -28,6 +28,8 @@ var current_prestige : int = 0
 var current_upgrade_count : int = 0
 var upgrade_count_to_prestige : int = 0
 
+enum TECH_NODE_TYPE {ABILITY, FACILITY}
+
 @onready var tech_nodes : Dictionary = {
 	"Tower License" : 0,
 	"Attack 1" : 0,

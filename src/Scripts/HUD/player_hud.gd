@@ -3,6 +3,8 @@ class_name PlayerHUD extends CanvasLayer
 @onready var player_health_bar: TextureProgressBar = $PlayerHUD/PlayerHealthBar
 @onready var player_mp_bar: TextureProgressBar = $PlayerHUD/PlayerMPBar
 @onready var player_hud: Control = $PlayerHUD
+@export var animation_player: AnimationPlayer
+@onready var hp_label: Label = $PlayerHUD/HPLabel
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -14,6 +16,7 @@ func _ready() -> void:
 	
 	player_mp_bar.max_value = PlayerStats.player_stats["Max MP"]
 	player_mp_bar.value = player_mp_bar.max_value
+	update_player_health(int(PlayerStats.player_stats["Max Health"]))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -22,6 +25,7 @@ func _process(delta: float) -> void:
 
 func update_player_health(value : int) -> void:
 	player_health_bar.value = value
+	hp_label.text = "%s/%s" % [int(player_health_bar.value), int(player_health_bar.max_value)]
 
 
 func spawn_respawn_box() -> void:

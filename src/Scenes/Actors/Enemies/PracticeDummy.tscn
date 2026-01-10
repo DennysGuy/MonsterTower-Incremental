@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cmog8m28k4ijk"]
+[gd_scene load_steps=22 format=3 uid="uid://cmog8m28k4ijk"]
 
 [ext_resource type="Texture2D" uid="uid://bys332e3dq3ew" path="res://Assets/Enemies/TempPracticeDummy.png" id="1_ggy1w"]
 [ext_resource type="Script" uid="uid://cfgk20f5exw4y" path="res://src/Scripts/Enemies/PracticeDummy/practice_dummy.gd" id="1_r01py"]
@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://b8lilr7mgc8l1" path="res://src/Scenes/Actors/Enemies/EnemyHealthBar.tscn" id="7_e0aq0"]
 [ext_resource type="Script" uid="uid://733mi1gdyrrk" path="res://src/Scripts/StateMachine/EnemyStates/GenericEnemyStates/enemy_dead.gd" id="7_qbmd8"]
 [ext_resource type="PackedScene" uid="uid://b73ndgmav7ja2" path="res://src/Scenes/Actors/Utilities/HealthComponent.tscn" id="9_7a17f"]
+[ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="12_bf4mq"]
+[ext_resource type="PackedScene" uid="uid://cefpeuevsobfw" path="res://src/Scenes/UI/DirectionsArea.tscn" id="12_q38mr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r01py"]
 size = Vector2(32, 79)
@@ -201,6 +203,9 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uu12o"]
 size = Vector2(31, 55)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q38mr"]
+size = Vector2(137, 56)
+
 [node name="PracticeDummy" type="CharacterBody2D" node_paths=PackedStringArray("name_tag", "health_bar", "state_machine", "animation_player", "health_component", "hurt_box", "hit_state", "dead_state")]
 collision_layer = 2
 collision_mask = 2
@@ -260,8 +265,8 @@ shape = SubResource("RectangleShape2D_uu12o")
 [node name="NameTag" parent="." instance=ExtResource("6_uu12o")]
 
 [node name="EnemyHealthBar" parent="." instance=ExtResource("7_e0aq0")]
-offset_top = -96.0
-offset_bottom = -86.0
+offset_top = -86.0
+offset_bottom = -76.0
 
 [node name="HealthComponent" parent="." node_paths=PackedStringArray("parent", "health_bar") instance=ExtResource("9_7a17f")]
 parent = NodePath("..")
@@ -271,4 +276,27 @@ health_bar = NodePath("../EnemyHealthBar")
 process_callback = 0
 one_shot = true
 
+[node name="DirectionsArea" parent="." instance=ExtResource("12_q38mr")]
+position = Vector2(-6, -32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DirectionsArea"]
+position = Vector2(2.5, 4)
+shape = SubResource("RectangleShape2D_q38mr")
+
+[node name="Directions" type="Label" parent="."]
+visible = false
+offset_left = -88.0
+offset_top = -109.0
+offset_right = 85.0
+offset_bottom = -92.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("12_bf4mq")
+theme_override_font_sizes/font_size = 12
+text = "Press 'F' to Swing Your Sword!"
+horizontal_alignment = 1
+
 [connection signal="update_health_bar" from="HealthComponent" to="." method="_on_health_component_update_health_bar"]
+[connection signal="body_entered" from="DirectionsArea" to="." method="_on_directions_area_body_entered"]
+[connection signal="body_exited" from="DirectionsArea" to="." method="_on_directions_area_body_exited"]

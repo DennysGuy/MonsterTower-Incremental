@@ -5,6 +5,7 @@ class_name Map extends Node2D
 @export var spawn_point : Marker2D
 @export var player_spawn : bool = true
 @export var camera : PlayerCamera
+@export var hud : PlayerHUD
 
 var player : Player
 

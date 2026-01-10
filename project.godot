@@ -83,6 +83,7 @@ swing_sword={
 [layer_names]
 
 2d_physics/layer_4="Ladder Areas"
+2d_physics/layer_7="Enemies"
 
 [rendering]
 
