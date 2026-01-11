@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://d0s6j8mvikv8c"]
+
+[ext_resource type="Texture2D" uid="uid://cu6upr5f3ht4k" path="res://Assets/HUD/ItemSlot.png" id="1_xtjb4"]
+[ext_resource type="Script" uid="uid://0ppf5xv3cq5c" path="res://src/Scripts/HUD/item_slot.gd" id="2_2koek"]
+[ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="3_2koek"]
+
+[node name="Slot" type="TextureRect" node_paths=PackedStringArray("item_icon", "quantity_label")]
+texture = ExtResource("1_xtjb4")
+script = ExtResource("2_2koek")
+item_icon = NodePath("ItemIcon")
+quantity_label = NodePath("QuantityLabel")
+
+[node name="ItemIcon" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.5
+offset_right = 29.0
+offset_bottom = 29.5
+
+[node name="QuantityLabel" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 18.0
+offset_top = 21.5
+offset_right = 39.0
+offset_bottom = 36.5
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_2koek")
+theme_override_font_sizes/font_size = 12
+text = "10"
+horizontal_alignment = 1

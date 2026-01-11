@@ -6,6 +6,10 @@ class_name PlayerHUD extends CanvasLayer
 @export var animation_player: AnimationPlayer
 @onready var hp_label: Label = $PlayerHUD/HPLabel
 
+@onready var bag_animation_player: AnimationPlayer = $BagAnimationPlayer
+
+var bag_showing : bool = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	SignalBus.update_player_health.connect(update_player_health)
@@ -20,8 +24,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
-
+	if Input.is_action_just_pressed("open_bag"):
+		show_bag()
 
 func update_player_health(value : int) -> void:
 	player_health_bar.value = value
@@ -31,3 +35,11 @@ func update_player_health(value : int) -> void:
 func spawn_respawn_box() -> void:
 	var respawn_box : RespawnBox = preload("uid://dv20tfcnkjyux").instantiate()
 	player_hud.add_child(respawn_box)
+
+
+func show_bag() -> void:
+	bag_showing = !bag_showing
+	if bag_showing:
+		bag_animation_player.play("ShowBag")
+	else:
+		bag_animation_player.play("HideBag")

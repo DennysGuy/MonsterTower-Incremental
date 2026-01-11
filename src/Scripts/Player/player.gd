@@ -6,6 +6,7 @@ class_name Player extends Entity
 
 @onready var player_sprite: Sprite2D = $Sprites/PlayerSprite
 @onready var invincibility_timer: Timer = $InvincibilityTimer
+@onready var coin_purse: Marker2D = $CoinPurse
 
 var stored_ladder : LadderArea
 var stored_enemy : Enemy

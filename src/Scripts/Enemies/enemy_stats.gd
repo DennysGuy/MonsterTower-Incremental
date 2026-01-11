@@ -21,6 +21,10 @@ enum ENEMY_TYPE {AGGRO, PASSIVEAGGRO, PASSIVE}
 @export var die_sfx : AudioStream
 @export var movement_sfx : AudioStream
 
+@export_group("Item Drops")
+@export var novelty_item_drop : Item
+@export var cooking_item_drop : Item
+@export var crafting_item_drop : Item
 
 func is_passive() -> bool:
 	return enemy_type == ENEMY_TYPE.PASSIVE

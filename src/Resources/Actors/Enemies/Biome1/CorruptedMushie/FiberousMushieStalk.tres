@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EnemyDrop" load_steps=3 format=3 uid="uid://jn2dh2fyq5ep"]
+
+[ext_resource type="Texture2D" uid="uid://car57iuhehrle" path="res://Assets/Enemies/CorruptedMushie/MushieFiberousStalk.png" id="1_8uduv"]
+[ext_resource type="Script" uid="uid://cubudt76pshmm" path="res://src/Scripts/Enemies/enemy_drop.gd" id="1_w3qp2"]
+
+[resource]
+script = ExtResource("1_w3qp2")
+drop_icon = ExtResource("1_8uduv")
+item_type = 2
+item_name = "Fiberous Mushie Stalk"
+sell_value = 40
+shop_icon = ExtResource("1_8uduv")
+metadata/_custom_type_script = "uid://cubudt76pshmm"

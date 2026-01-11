@@ -22,7 +22,12 @@ const KNOCKBACK_FORCE : int = 300
 	"Max Health" : 50,
 	"Max MP": 50,
 	"Equipped Sword": 0,
-	"Overlapping Hits" : 1.0
+	"Overlapping Hits" : 1.0,
+	"Bag": 2,
+	"Max Bag Slots": 2,
+	"Max Bank Slots": 2,
+	"Max Bag Stack": 4,
+	"Max Bank Stack":10
 }
 
 @onready var facilities_unlocked : Dictionary[String, bool] = {
@@ -42,6 +47,13 @@ func get_sword_name() -> String:
 			return "Wooden Sword"
 		_:
 			return "Wooden Sword"
+
+func get_bag_graphic() -> Texture2D:
+	match int(player_stats["Bag"]):
+		1: return preload("uid://b8s52papxh8ma")
+		2: return preload("uid://cce56y5aedg2d")
+		_: return preload("uid://b8s52papxh8ma")
+			
 
 func upgrade_player_stat(stat_name : String, interval : float, node_type : TechTreeManager.TECH_NODE_TYPE) -> void:
 	

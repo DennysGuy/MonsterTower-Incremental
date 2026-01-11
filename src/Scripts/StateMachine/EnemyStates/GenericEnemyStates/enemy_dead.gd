@@ -6,7 +6,7 @@ func enter() -> void:
 	super()
 	if parent.hit_box:
 		parent.hit_box.get_child(0).disabled = true
-	
+	drop_items()
 	HitStopManager.freeze(0.15)
 	parent.damageable = false
 	parent.is_dead = true
@@ -30,3 +30,11 @@ func process_physics(_delta: float) -> State:
 		pass
 		
 	return null
+
+func drop_items() -> void:
+	var item : EnemyDrop = parent.enemy_stats.novelty_item_drop
+	var item_interactable : ItemInteractable = preload("uid://dgtobkubdjq27").instantiate()
+	item_interactable.item = item
+	item_interactable.icon.texture = item.drop_icon
+	item_interactable.global_position = parent.global_position
+	parent.get_parent().add_child(item_interactable)

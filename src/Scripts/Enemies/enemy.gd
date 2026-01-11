@@ -10,6 +10,8 @@ class_name Enemy extends Entity
 @export var wall_detector : RayCast2D
 @export var ground_detector : RayCast2D
 
+
+
 func _ready() -> void:
 	super()
 	health = enemy_stats.max_health
