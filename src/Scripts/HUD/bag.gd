@@ -15,11 +15,10 @@ func _process(delta: float) -> void:
 
 
 func init_bag() -> void:
-	print(PlayerStats.player_stats["Bag"])
-	texture_rect.texture = PlayerStats.get_bag_graphic()
 	update_grid_container()
 
 func update_grid_container() -> void:
+	texture_rect.texture = PlayerStats.get_bag().texture
 	clear_grid_container()
 	
 	for num in range(InventoryManager.get_max_bag_slots()):

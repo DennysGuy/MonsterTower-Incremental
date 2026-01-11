@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://oonjrpabmces"]
+[gd_scene load_steps=17 format=4 uid="uid://oonjrpabmces"]
 
 [ext_resource type="Script" uid="uid://dpqc54c34418w" path="res://src/Scripts/Maps/NewStarShire/new_star_shire.gd" id="1_gq00g"]
 [ext_resource type="TileSet" uid="uid://74oc55cdwefk" path="res://src/Scenes/NewStarshire/TempFloorTiles.tres" id="2_dvat3"]
@@ -16,6 +16,9 @@
 [ext_resource type="Texture2D" uid="uid://0l7t1v2v8yge" path="res://Assets/NPCs/FreeMarketNPCs/DripDealer_NoOutline.png" id="13_sxpgj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pdf0i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l6435"]
+size = Vector2(168, 145)
 
 [node name="NewStarShire" type="Node2D" node_paths=PackedStringArray("spawn_point", "camera", "hud")]
 script = ExtResource("1_gq00g")
@@ -39,24 +42,24 @@ tile_map_data = PackedByteArray("AAD//w4AAQABAAAAAAD//w8AAQABAAEAAAD//wwAAQABAAA
 tile_set = ExtResource("3_oik5f")
 
 [node name="PlayerCamera" parent="." instance=ExtResource("3_wtuhv")]
-position = Vector2(0, 548)
+position = Vector2(-20, 548)
 limit_left = 0
-limit_top = 20
-limit_right = 2112
-limit_bottom = 702
+limit_top = 23
+limit_right = 2721
+limit_bottom = 705
 drag_horizontal_offset = 0.04
 smoothing_enabled = true
 smoothing_distance = 6
 
 [node name="TechTreeComputer" parent="." instance=ExtResource("4_cldp6")]
-position = Vector2(303, 640)
+position = Vector2(972, 640)
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
-position = Vector2(75, 639)
+position = Vector2(879, 639)
 script = ExtResource("4_gq00g")
 
 [node name="PracticeDummy" parent="." instance=ExtResource("6_kqfvc")]
-position = Vector2(509, 640)
+position = Vector2(1097, 640)
 
 [node name="TowerArea" type="Area2D" parent="."]
 position = Vector2(1911.0001, 539)
@@ -118,7 +121,27 @@ texture = ExtResource("13_sxpgj")
 position = Vector2(1308, 530)
 texture = ExtResource("12_123hf")
 
+[node name="GrandMarketArea" type="Area2D" parent="."]
+position = Vector2(1305, 590)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GrandMarketArea"]
+position = Vector2(11, -25.5)
+shape = SubResource("RectangleShape2D_l6435")
+
+[node name="EnterMarketLabel" type="Label" parent="."]
+visible = false
+offset_left = 1217.0
+offset_top = 513.0
+offset_right = 1407.0
+offset_bottom = 536.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("10_636af")
+text = "Press E to enter Market"
+
 [connection signal="body_entered" from="TowerArea" to="." method="_on_tower_area_body_entered"]
 [connection signal="body_exited" from="TowerArea" to="." method="_on_tower_area_body_exited"]
+[connection signal="body_entered" from="GrandMarketArea" to="." method="_on_grand_market_area_body_entered"]
+[connection signal="body_exited" from="GrandMarketArea" to="." method="_on_grand_market_area_body_exited"]
 
 [editable path="PracticeDummy"]

@@ -13,6 +13,8 @@ this array contains the a dictionary such as:
 signal update_inventory_bag
 @warning_ignore("unused_signal")
 signal update_bank_inventory
+@warning_ignore("unused_signal")
+signal populate_market_menu(item : Item)
 
 @export var inventories : Dictionary = {
 	"Inventory" : [],
@@ -30,6 +32,17 @@ signal update_bank_inventory
 	}
 }
 
+func get_inventory_meta() -> Dictionary:
+	return {
+		"Inventory": {
+			"Max Slots": get_max_bag_slots(),
+			"Max Stack": get_max_bag_stack(),
+		},
+		"Bank": {
+			"Max Slots": get_max_bank_slots(),
+			"Max Stack": get_max_bank_stack(),
+		}
+	}
 
 
 func add_item(inventory_name : String, item : Item, quantity : int = 1) -> bool:
@@ -37,8 +50,8 @@ func add_item(inventory_name : String, item : Item, quantity : int = 1) -> bool:
 		return false
 		
 	var selected_inventory : Array = inventories[inventory_name]
-	var max_slots : int = meta_data[inventory_name]["Max Slots"]
-	var max_stack : int = meta_data[inventory_name]["Max Stack"]
+	var max_slots : int = get_inventory_meta()[inventory_name]["Max Slots"]
+	var max_stack : int = get_inventory_meta()[inventory_name]["Max Stack"]
 	
 	#loop through existing entries.. if we find the item in already, attempt to add the quantity to the stack
 	for slot in range(selected_inventory.size()):
@@ -81,7 +94,8 @@ func get_max_bank_slots() -> int:
 	return int(PlayerStats.player_stats["Max Bank Slots"])
 
 func get_max_bag_slots() -> int:
-	return int(PlayerStats.player_stats["Max Bag Slots"])
+	print("THIS IS THE CURRENT BAG %s" % [PlayerStats.get_bag().item_bag_name])
+	return PlayerStats.get_bag().max_slots
 
 func get_max_bank_stack() -> int:
 	return int(PlayerStats.player_stats["Max Bank Stack"])

@@ -2,8 +2,11 @@ class_name NewStarShireMap extends Map
 
 @onready var sub_viewport: SubViewport = $CanvasLayer/Control/SubViewportContainer/SubViewport
 @onready var guide_log: Label = $GuideLog
+@onready var control: Control = $CanvasLayer/Control
+@onready var enter_market_label: Label = $EnterMarketLabel
 
 var player_in_tower_range : bool = false
+var player_in_market_range : bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super()
@@ -13,6 +16,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("interact") and player_in_tower_range:
 		go_to_test_floor()
+	
+	if Input.is_action_just_pressed("interact") and player_in_market_range:
+		spawn_grand_market()
 
 func add_tech_tree_to_scene() -> void:
 	var tech_tree : TechTree = preload("uid://b7n3fwd3y85wp").instantiate()
@@ -43,3 +49,20 @@ func go_to_test_floor() -> void:
 	hud.animation_player.play("CloseOut")
 	await get_tree().create_timer(1.0).timeout
 	get_tree().change_scene_to_file("res://src/Scenes/Tower/TowerFloors/TestFloor/TestFloor.tscn")
+
+
+func spawn_grand_market() -> void:
+	var market : GrandMarketMenu = preload("uid://cfuw5h0apwpq").instantiate()
+	control.add_child(market)
+
+
+func _on_grand_market_area_body_entered(body: Node2D) -> void:
+	if body is Player:
+		player_in_market_range = true
+		enter_market_label.show()
+
+
+func _on_grand_market_area_body_exited(body: Node2D) -> void:
+	if body is Player:
+		player_in_market_range = false
+		enter_market_label.hide()

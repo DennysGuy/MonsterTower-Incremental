@@ -23,8 +23,7 @@ const KNOCKBACK_FORCE : int = 300
 	"Max MP": 50,
 	"Equipped Sword": 0,
 	"Overlapping Hits" : 1.0,
-	"Bag": 2,
-	"Max Bag Slots": 2,
+	"Bag": 1,
 	"Max Bank Slots": 2,
 	"Max Bag Stack": 4,
 	"Max Bank Stack":10
@@ -35,6 +34,7 @@ const KNOCKBACK_FORCE : int = 300
 	"Cooking Station" : false,
 	"Crafting Station" : false,
 	"Refinery Station" : false,
+	"Bank": false
 }
 
 # Called when the node enters the scene tree for the first time.
@@ -48,12 +48,11 @@ func get_sword_name() -> String:
 		_:
 			return "Wooden Sword"
 
-func get_bag_graphic() -> Texture2D:
+func get_bag() -> ItemBag:
 	match int(player_stats["Bag"]):
-		1: return preload("uid://b8s52papxh8ma")
-		2: return preload("uid://cce56y5aedg2d")
-		_: return preload("uid://b8s52papxh8ma")
-			
+		1: return preload("uid://cuwof21s5e74c")
+		2: return preload("uid://mbne7hjkpnqi")
+		_: return preload("uid://cuwof21s5e74c")
 
 func upgrade_player_stat(stat_name : String, interval : float, node_type : TechTreeManager.TECH_NODE_TYPE) -> void:
 	
@@ -75,5 +74,5 @@ func upgrade_player_stat(stat_name : String, interval : float, node_type : TechT
 	else:
 		player_stats[stat_name] += interval
 		
-	print("The stat %s is now %s" % [stat_name, player_stats[stat_name]])
+	InventoryManager.update_inventory_bag.emit()
 	TechTreeManager.update_player_stats.emit()
