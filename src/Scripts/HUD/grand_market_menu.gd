@@ -12,6 +12,7 @@ class_name GrandMarketMenu extends Control
 @onready var bank_notice: Label = $BankNotice
 @onready var currency: Label = $Currency
 
+@onready var sell_all_button: Button = $SellAllButton
 
 var selected_item : Item
 var selected_inventory : String
@@ -35,7 +36,8 @@ func populate_details_panel(item : Item, slot_location : String) -> void:
 
 
 func _on_sell_all_button_button_up() -> void:
-	pass # Replace with function body.
+	sell_all_items(inventory_container, "Inventory")
+	sell_all_items(bank_container, "Bank")
 
 func _on_sell_button_button_up() -> void:
 	print(selected_inventory)
@@ -67,7 +69,19 @@ func init_market() -> void:
 	currency.text = "Currency: %s" % [TechTreeManager.currency]
 	InventoryManager.update_grid_container(inventory_container, "Inventory")
 	if PlayerStats.facilities_unlocked["Bank"]:
+		sell_all_button.show()
 		InventoryManager.update_grid_container(bank_container, "Bank")
 	else:
 		bank_notice.show()
 	
+func sell_all_items(container : GridContainer, inventory_name : String) -> void:
+	var inventory : Array = InventoryManager.inventories[inventory_name]
+	
+	while !inventory.is_empty():
+		for slot in inventory:
+			for i in range(slot["quantity"]):
+				InventoryManager.remove_item(inventory_name, slot["item"])
+				TechTreeManager.currency += slot["item"].sell_value
+				InventoryManager.update_grid_container(container, inventory_name)
+				currency.text = "Currency: %s" % [TechTreeManager.currency]
+				await get_tree().create_timer(0.1).timeout

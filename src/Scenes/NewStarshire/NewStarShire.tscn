@@ -662,7 +662,6 @@ text = "You need a Tower pass before you can Enter..."
 horizontal_alignment = 1
 
 [node name="HUD" parent="." instance=ExtResource("10_4wn0b")]
-visible = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

@@ -20,7 +20,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-
 func go_to_starshire() -> void:
 	get_tree().change_scene_to_file("res://src/Scenes/NewStarshire/NewStarShire.tscn")
 
@@ -30,16 +29,16 @@ func go_to_tower() -> void:
 func _on_to_town_button_up() -> void:
 	animation_player.play("CloseIn_Town")
 
-
 func _on_new_run_button_up() -> void:
 	animation_player.play("CloseIn_Tower")
-
 
 func init_containers() -> void:
 	InventoryManager.update_grid_container(inventory_container, "Inventory")
 	if PlayerStats.facilities_unlocked["Bank"]:
 		InventoryManager.update_grid_container(bank_container, "Bank")
 	else:
+		new_run.disabled = false
+		to_town.disabled = false
 		bank_notice.show()
 
 func move_inventory_to_bank() -> void:
