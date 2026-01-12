@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b7n3fwd3y85wp"]
+[gd_scene load_steps=16 format=3 uid="uid://b7n3fwd3y85wp"]
 
 [ext_resource type="Script" uid="uid://nb5nyiymrgyp" path="res://src/Scripts/TechTree/tech_tree.gd" id="1_1fw0b"]
 [ext_resource type="PackedScene" uid="uid://bhimqkbcn26r2" path="res://src/Scenes/TechTree/TechNode.tscn" id="2_q3n1u"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://bevb4v64mvbbg" path="res://src/Scenes/TechTree/PlayerStatsPanel.tscn" id="10_7l0yi"]
 [ext_resource type="Resource" uid="uid://ivbqmo1636sm" path="res://src/Resources/TechTree/TechNodes/Bag1.tres" id="10_dwtca"]
 [ext_resource type="Resource" uid="uid://ct7a5kggupi55" path="res://src/Resources/TechTree/TechNodes/DeeperPockets1.tres" id="11_uk0x3"]
+[ext_resource type="Resource" uid="uid://cmbxvekbk2uxx" path="res://src/Resources/TechTree/TechNodes/BankUnlock.tres" id="12_4a6it"]
 
 [node name="TechTree" type="Node2D"]
 script = ExtResource("1_1fw0b")
@@ -78,18 +79,33 @@ position = Vector2(-121, -122)
 points = PackedVector2Array(89, 89, 11, 13)
 
 [node name="ItemBag1Node" parent="Nodes" instance=ExtResource("2_q3n1u")]
-position = Vector2(359, 625)
+position = Vector2(235, 745)
 tech_node_stats = ExtResource("10_dwtca")
 
 [node name="Line2D" type="Line2D" parent="Nodes/ItemBag1Node"]
 points = PackedVector2Array(33, -33, 118, -112)
 
 [node name="DeeperPockets1Node" parent="Nodes" instance=ExtResource("2_q3n1u")]
-position = Vector2(233, 748)
+position = Vector2(385, 599)
 tech_node_stats = ExtResource("11_uk0x3")
 
 [node name="Line2D" type="Line2D" parent="Nodes/DeeperPockets1Node"]
 points = PackedVector2Array(34, -34, 92, -87)
+
+[node name="BankNode" parent="Nodes" instance=ExtResource("2_q3n1u")]
+position = Vector2(513, 747)
+tech_node_stats = ExtResource("12_4a6it")
+
+[node name="Line2D" type="Line2D" parent="Nodes/BankNode"]
+position = Vector2(0, 30)
+points = PackedVector2Array(-33, -32, -240, -32)
+
+[node name="Line2D3" type="Line2D" parent="Nodes/BankNode"]
+position = Vector2(0, 30)
+points = PackedVector2Array(-34, -64, -95, -145)
+
+[node name="Line2D2" type="Line2D" parent="Nodes/BankNode"]
+points = PackedVector2Array(-1, -38, -1, -233)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

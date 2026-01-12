@@ -14,6 +14,7 @@ class_name GrandMarketMenu extends Control
 
 
 var selected_item : Item
+var selected_inventory : String
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	InventoryManager.populate_market_menu.connect(populate_details_panel)
@@ -23,8 +24,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func populate_details_panel(item : Item) -> void:
+func populate_details_panel(item : Item, slot_location : String) -> void:
 	if item:
+		selected_inventory = slot_location
 		selected_item = item
 		item_icon.texture = selected_item.shop_icon
 		item_title.text = selected_item.item_name
@@ -36,10 +38,17 @@ func _on_sell_all_button_button_up() -> void:
 	pass # Replace with function body.
 
 func _on_sell_button_button_up() -> void:
-	if InventoryManager.remove_item("Inventory", selected_item):
+	print(selected_inventory)
+	if InventoryManager.remove_item(selected_inventory, selected_item):
 		TechTreeManager.currency += selected_item.sell_value
-		update_grid_container(inventory_container, "Inventory")
+		match selected_inventory:
+			"Bank":
+				InventoryManager.update_grid_container(bank_container, selected_inventory)
+			"Inventory":
+				InventoryManager.update_grid_container(inventory_container, selected_inventory)
 		currency.text = "Currency: %s" % [TechTreeManager.currency]
+		if !InventoryManager.search_item("Inventory", selected_item) and !InventoryManager.search_item("Bank", selected_item):
+			clear_details()
 	else:
 		clear_details()
 	
@@ -56,30 +65,9 @@ func _on_close_button_up() -> void:
 func init_market() -> void:
 	clear_details()
 	currency.text = "Currency: %s" % [TechTreeManager.currency]
-	update_grid_container(inventory_container, "Inventory")
+	InventoryManager.update_grid_container(inventory_container, "Inventory")
 	if PlayerStats.facilities_unlocked["Bank"]:
-		update_grid_container(bank_container, "Bank")
+		InventoryManager.update_grid_container(bank_container, "Bank")
 	else:
 		bank_notice.show()
 	
-func update_grid_container(grid_container : GridContainer, inventory : String) -> void:
-	clear_grid_container(grid_container)
-	
-	for num in range(InventoryManager.get_max_bag_slots()):
-		var slot : ItemSlot = preload("uid://d0s6j8mvikv8c").instantiate()
-		slot.set_as_shop_slot()
-		var potential_item
-		if num < InventoryManager.inventories[inventory].size():
-			potential_item = InventoryManager.inventories[inventory][num]
-			
-		if potential_item:
-			slot.item = potential_item["item"]
-			slot.item_icon.texture = potential_item["item"].shop_icon
-			slot.show_quantity_label(potential_item["quantity"])
-			grid_container.add_child(slot)
-		else:
-			grid_container.add_child(slot)
-
-func clear_grid_container(grid_container : GridContainer) -> void:
-	for child in grid_container.get_children():
-		child.queue_free()

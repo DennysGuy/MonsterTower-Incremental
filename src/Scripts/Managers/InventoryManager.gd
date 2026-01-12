@@ -14,7 +14,7 @@ signal update_inventory_bag
 @warning_ignore("unused_signal")
 signal update_bank_inventory
 @warning_ignore("unused_signal")
-signal populate_market_menu(item : Item)
+signal populate_market_menu(item : Item, slot_locale : String)
 
 @export var inventories : Dictionary = {
 	"Inventory" : [],
@@ -44,6 +44,17 @@ func get_inventory_meta() -> Dictionary:
 		}
 	}
 
+func search_item(inventory_name : String, item : Item) -> bool:
+	
+	var selected_inventory : Array = inventories[inventory_name]
+	
+	if selected_inventory.is_empty():
+		return false
+	
+	for slot in selected_inventory:
+		if slot["item"] == item:
+			return true
+	return false
 
 func add_item(inventory_name : String, item : Item, quantity : int = 1) -> bool:
 	if not inventories.has(inventory_name):
@@ -128,3 +139,37 @@ func check_if_bank_full() -> bool:
 func update_inventories() -> void:
 	update_inventory_bag.emit()
 	update_bank_inventory.emit()
+
+
+func update_grid_container(grid_container : GridContainer, inventory : String) -> void:
+	clear_grid_container(grid_container)
+	
+	var max_slots : int
+	match inventory:
+		"Inventory":
+			max_slots = InventoryManager.get_max_bag_slots()
+		"Bank":
+			max_slots = InventoryManager.get_max_bank_slots()
+	
+	for num in range(max_slots):
+		var slot : ItemSlot = preload("uid://d0s6j8mvikv8c").instantiate()
+		slot.set_as_shop_slot()
+		
+		if inventory == "Bank":
+			slot.set_locale_as_bank()
+			
+		var potential_item
+		if num < InventoryManager.inventories[inventory].size():
+			potential_item = InventoryManager.inventories[inventory][num]
+			
+		if potential_item:
+			slot.item = potential_item["item"]
+			slot.item_icon.texture = potential_item["item"].shop_icon
+			slot.show_quantity_label(potential_item["quantity"])
+			grid_container.add_child(slot)
+		else:
+			grid_container.add_child(slot)
+
+func clear_grid_container(grid_container : GridContainer) -> void:
+	for child in grid_container.get_children():
+		child.queue_free()

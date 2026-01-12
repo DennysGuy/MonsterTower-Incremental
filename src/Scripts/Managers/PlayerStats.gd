@@ -24,9 +24,9 @@ const KNOCKBACK_FORCE : int = 300
 	"Equipped Sword": 0,
 	"Overlapping Hits" : 1.0,
 	"Bag": 1,
-	"Max Bank Slots": 2,
+	"Max Bank Slots": 4,
 	"Max Bag Stack": 4,
-	"Max Bank Stack":10
+	"Max Bank Stack":6
 }
 
 @onready var facilities_unlocked : Dictionary[String, bool] = {

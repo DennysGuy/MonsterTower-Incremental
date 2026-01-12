@@ -39,7 +39,8 @@ enum TECH_NODE_TYPE {ABILITY, FACILITY}
 	"Movement 1" : 0,
 	"Max HP 1":0,
 	"Item Bag 1":0,
-	"Deeper Pockets 1":0
+	"Deeper Pockets 1":0,
+	"Banking":0
 }
 
 # Called when the node enters the scene tree for the first time.

@@ -1,10 +1,12 @@
-[gd_scene load_steps=17 format=4 uid="uid://oonjrpabmces"]
+[gd_scene load_steps=24 format=4 uid="uid://oonjrpabmces"]
 
 [ext_resource type="Script" uid="uid://dpqc54c34418w" path="res://src/Scripts/Maps/NewStarShire/new_star_shire.gd" id="1_gq00g"]
 [ext_resource type="TileSet" uid="uid://74oc55cdwefk" path="res://src/Scenes/NewStarshire/TempFloorTiles.tres" id="2_dvat3"]
 [ext_resource type="Texture2D" uid="uid://y80fw7n3ai66" path="res://Assets/Facilities/TempTower.png" id="2_oik5f"]
 [ext_resource type="TileSet" uid="uid://b74l1awtkdty5" path="res://src/Scenes/NewStarshire/TempWallTiles.tres" id="3_oik5f"]
+[ext_resource type="TileSet" uid="uid://dbxew7tohbk1m" path="res://src/Scenes/Tower/TowerFloors/TestFloor/TempPlatforms.tres" id="3_sxpgj"]
 [ext_resource type="PackedScene" uid="uid://c8ov03gkkda4k" path="res://src/Scenes/PlayerCamera.tscn" id="3_wtuhv"]
+[ext_resource type="Texture2D" uid="uid://c5oix8wg5x1lw" path="res://Assets/EnvironmentalAssets/poisoned_forest_tiles_sheet.png" id="4_cad3e"]
 [ext_resource type="PackedScene" uid="uid://dkxkwr4us4aak" path="res://src/Scenes/NewStarshire/Facilities/TechTreeComputer.tscn" id="4_cldp6"]
 [ext_resource type="Script" uid="uid://bjq40ntqmf0ih" path="res://src/Scripts/Maps/spawn_point.gd" id="4_gq00g"]
 [ext_resource type="PackedScene" uid="uid://cmog8m28k4ijk" path="res://src/Scenes/Actors/Enemies/PracticeDummy.tscn" id="6_kqfvc"]
@@ -14,11 +16,578 @@
 [ext_resource type="Texture2D" uid="uid://bpmnfqs3ccdep" path="res://Assets/Facilities/TempGrandMarketStand.png" id="12_123hf"]
 [ext_resource type="Texture2D" uid="uid://c0hsdw5hnpef5" path="res://Assets/NPCs/FreeMarketNPCs/GearDealer_WithoutOutline.png" id="12_l6435"]
 [ext_resource type="Texture2D" uid="uid://0l7t1v2v8yge" path="res://Assets/NPCs/FreeMarketNPCs/DripDealer_NoOutline.png" id="13_sxpgj"]
+[ext_resource type="Texture2D" uid="uid://5cetad7bhon0" path="res://Assets/Facilities/StorageArea.png" id="14_jp6xg"]
+[ext_resource type="PackedScene" uid="uid://cr6q5dxlkks" path="res://src/Scenes/Tower/LadderArea.tscn" id="17_jp6xg"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q74qd"]
+texture = ExtResource("4_cad3e")
+1:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+8:0/0 = 0
+9:0/0 = 0
+10:0/0 = 0
+11:0/0 = 0
+12:0/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+9:1/0 = 0
+10:1/0 = 0
+11:1/0 = 0
+12:1/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+8:2/0 = 0
+9:2/0 = 0
+10:2/0 = 0
+11:2/0 = 0
+12:2/0 = 0
+15:2/0 = 0
+16:2/0 = 0
+19:2/0 = 0
+20:2/0 = 0
+21:2/0 = 0
+22:2/0 = 0
+23:2/0 = 0
+24:2/0 = 0
+25:2/0 = 0
+26:2/0 = 0
+27:2/0 = 0
+28:2/0 = 0
+31:2/0 = 0
+32:2/0 = 0
+33:2/0 = 0
+34:2/0 = 0
+35:2/0 = 0
+36:2/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+8:3/0 = 0
+9:3/0 = 0
+10:3/0 = 0
+11:3/0 = 0
+15:3/0 = 0
+16:3/0 = 0
+19:3/0 = 0
+20:3/0 = 0
+21:3/0 = 0
+22:3/0 = 0
+23:3/0 = 0
+24:3/0 = 0
+25:3/0 = 0
+26:3/0 = 0
+27:3/0 = 0
+28:3/0 = 0
+31:3/0 = 0
+32:3/0 = 0
+33:3/0 = 0
+34:3/0 = 0
+35:3/0 = 0
+36:3/0 = 0
+46:3/0 = 0
+47:3/0 = 0
+48:3/0 = 0
+49:3/0 = 0
+50:3/0 = 0
+51:3/0 = 0
+52:3/0 = 0
+53:3/0 = 0
+54:3/0 = 0
+55:3/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+8:4/0 = 0
+9:4/0 = 0
+10:4/0 = 0
+15:4/0 = 0
+16:4/0 = 0
+17:4/0 = 0
+45:4/0 = 0
+46:4/0 = 0
+47:4/0 = 0
+48:4/0 = 0
+49:4/0 = 0
+50:4/0 = 0
+51:4/0 = 0
+52:4/0 = 0
+53:4/0 = 0
+54:4/0 = 0
+55:4/0 = 0
+56:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+8:5/0 = 0
+9:5/0 = 0
+14:5/0 = 0
+15:5/0 = 0
+16:5/0 = 0
+17:5/0 = 0
+18:5/0 = 0
+32:5/0 = 0
+33:5/0 = 0
+34:5/0 = 0
+35:5/0 = 0
+36:5/0 = 0
+44:5/0 = 0
+45:5/0 = 0
+46:5/0 = 0
+47:5/0 = 0
+48:5/0 = 0
+49:5/0 = 0
+50:5/0 = 0
+51:5/0 = 0
+52:5/0 = 0
+53:5/0 = 0
+54:5/0 = 0
+55:5/0 = 0
+56:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+8:6/0 = 0
+14:6/0 = 0
+15:6/0 = 0
+16:6/0 = 0
+17:6/0 = 0
+18:6/0 = 0
+32:6/0 = 0
+33:6/0 = 0
+34:6/0 = 0
+35:6/0 = 0
+36:6/0 = 0
+44:6/0 = 0
+45:6/0 = 0
+46:6/0 = 0
+47:6/0 = 0
+48:6/0 = 0
+49:6/0 = 0
+50:6/0 = 0
+51:6/0 = 0
+52:6/0 = 0
+53:6/0 = 0
+54:6/0 = 0
+55:6/0 = 0
+56:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+7:7/0 = 0
+8:7/0 = 0
+9:7/0 = 0
+14:7/0 = 0
+15:7/0 = 0
+16:7/0 = 0
+17:7/0 = 0
+18:7/0 = 0
+32:7/0 = 0
+33:7/0 = 0
+34:7/0 = 0
+35:7/0 = 0
+45:7/0 = 0
+46:7/0 = 0
+47:7/0 = 0
+48:7/0 = 0
+49:7/0 = 0
+50:7/0 = 0
+51:7/0 = 0
+52:7/0 = 0
+53:7/0 = 0
+54:7/0 = 0
+55:7/0 = 0
+56:7/0 = 0
+1:8/0 = 0
+4:8/0 = 0
+6:8/0 = 0
+7:8/0 = 0
+8:8/0 = 0
+9:8/0 = 0
+14:8/0 = 0
+15:8/0 = 0
+16:8/0 = 0
+17:8/0 = 0
+18:8/0 = 0
+19:8/0 = 0
+22:8/0 = 0
+23:8/0 = 0
+24:8/0 = 0
+25:8/0 = 0
+45:8/0 = 0
+46:8/0 = 0
+47:8/0 = 0
+48:8/0 = 0
+49:8/0 = 0
+50:8/0 = 0
+51:8/0 = 0
+52:8/0 = 0
+53:8/0 = 0
+54:8/0 = 0
+55:8/0 = 0
+56:8/0 = 0
+1:9/0 = 0
+4:9/0 = 0
+5:9/0 = 0
+6:9/0 = 0
+7:9/0 = 0
+8:9/0 = 0
+9:9/0 = 0
+13:9/0 = 0
+14:9/0 = 0
+15:9/0 = 0
+16:9/0 = 0
+17:9/0 = 0
+18:9/0 = 0
+19:9/0 = 0
+22:9/0 = 0
+23:9/0 = 0
+24:9/0 = 0
+25:9/0 = 0
+26:9/0 = 0
+27:9/0 = 0
+44:9/0 = 0
+45:9/0 = 0
+46:9/0 = 0
+47:9/0 = 0
+48:9/0 = 0
+49:9/0 = 0
+50:9/0 = 0
+51:9/0 = 0
+52:9/0 = 0
+53:9/0 = 0
+54:9/0 = 0
+55:9/0 = 0
+56:9/0 = 0
+1:10/0 = 0
+4:10/0 = 0
+5:10/0 = 0
+6:10/0 = 0
+7:10/0 = 0
+8:10/0 = 0
+9:10/0 = 0
+12:10/0 = 0
+13:10/0 = 0
+14:10/0 = 0
+15:10/0 = 0
+16:10/0 = 0
+17:10/0 = 0
+18:10/0 = 0
+19:10/0 = 0
+29:10/0 = 0
+30:10/0 = 0
+31:10/0 = 0
+33:10/0 = 0
+34:10/0 = 0
+45:10/0 = 0
+46:10/0 = 0
+47:10/0 = 0
+48:10/0 = 0
+49:10/0 = 0
+50:10/0 = 0
+51:10/0 = 0
+52:10/0 = 0
+53:10/0 = 0
+54:10/0 = 0
+55:10/0 = 0
+56:10/0 = 0
+57:10/0 = 0
+1:11/0 = 0
+4:11/0 = 0
+5:11/0 = 0
+6:11/0 = 0
+7:11/0 = 0
+8:11/0 = 0
+9:11/0 = 0
+13:11/0 = 0
+14:11/0 = 0
+15:11/0 = 0
+16:11/0 = 0
+17:11/0 = 0
+18:11/0 = 0
+19:11/0 = 0
+20:11/0 = 0
+27:11/0 = 0
+28:11/0 = 0
+29:11/0 = 0
+30:11/0 = 0
+31:11/0 = 0
+32:11/0 = 0
+33:11/0 = 0
+34:11/0 = 0
+1:12/0 = 0
+4:12/0 = 0
+5:12/0 = 0
+6:12/0 = 0
+7:12/0 = 0
+8:12/0 = 0
+9:12/0 = 0
+12:12/0 = 0
+13:12/0 = 0
+14:12/0 = 0
+15:12/0 = 0
+16:12/0 = 0
+17:12/0 = 0
+18:12/0 = 0
+19:12/0 = 0
+20:12/0 = 0
+27:12/0 = 0
+28:12/0 = 0
+29:12/0 = 0
+30:12/0 = 0
+31:12/0 = 0
+32:12/0 = 0
+33:12/0 = 0
+34:12/0 = 0
+1:13/0 = 0
+14:13/0 = 0
+15:13/0 = 0
+16:13/0 = 0
+17:13/0 = 0
+18:13/0 = 0
+19:13/0 = 0
+26:13/0 = 0
+27:13/0 = 0
+28:13/0 = 0
+29:13/0 = 0
+30:13/0 = 0
+31:13/0 = 0
+32:13/0 = 0
+33:13/0 = 0
+34:13/0 = 0
+4:14/0 = 0
+5:14/0 = 0
+6:14/0 = 0
+15:14/0 = 0
+16:14/0 = 0
+17:14/0 = 0
+26:14/0 = 0
+27:14/0 = 0
+28:14/0 = 0
+29:14/0 = 0
+30:14/0 = 0
+31:14/0 = 0
+32:14/0 = 0
+33:14/0 = 0
+34:14/0 = 0
+4:15/0 = 0
+5:15/0 = 0
+6:15/0 = 0
+14:15/0 = 0
+15:15/0 = 0
+16:15/0 = 0
+17:15/0 = 0
+18:15/0 = 0
+26:15/0 = 0
+27:15/0 = 0
+28:15/0 = 0
+29:15/0 = 0
+30:15/0 = 0
+31:15/0 = 0
+32:15/0 = 0
+33:15/0 = 0
+34:15/0 = 0
+4:16/0 = 0
+5:16/0 = 0
+6:16/0 = 0
+10:16/0 = 0
+11:16/0 = 0
+12:16/0 = 0
+13:16/0 = 0
+18:16/0 = 0
+23:16/0 = 0
+24:16/0 = 0
+25:16/0 = 0
+26:16/0 = 0
+29:16/0 = 0
+30:16/0 = 0
+31:16/0 = 0
+32:16/0 = 0
+33:16/0 = 0
+0:17/0 = 0
+1:17/0 = 0
+2:17/0 = 0
+3:17/0 = 0
+4:17/0 = 0
+5:17/0 = 0
+6:17/0 = 0
+7:17/0 = 0
+8:17/0 = 0
+10:17/0 = 0
+11:17/0 = 0
+12:17/0 = 0
+13:17/0 = 0
+14:17/0 = 0
+15:17/0 = 0
+16:17/0 = 0
+17:17/0 = 0
+18:17/0 = 0
+19:17/0 = 0
+20:17/0 = 0
+22:17/0 = 0
+23:17/0 = 0
+24:17/0 = 0
+25:17/0 = 0
+26:17/0 = 0
+29:17/0 = 0
+30:17/0 = 0
+31:17/0 = 0
+32:17/0 = 0
+35:17/0 = 0
+36:17/0 = 0
+37:17/0 = 0
+38:17/0 = 0
+0:18/0 = 0
+1:18/0 = 0
+2:18/0 = 0
+3:18/0 = 0
+4:18/0 = 0
+5:18/0 = 0
+6:18/0 = 0
+7:18/0 = 0
+8:18/0 = 0
+10:18/0 = 0
+11:18/0 = 0
+12:18/0 = 0
+13:18/0 = 0
+14:18/0 = 0
+15:18/0 = 0
+16:18/0 = 0
+17:18/0 = 0
+18:18/0 = 0
+19:18/0 = 0
+20:18/0 = 0
+22:18/0 = 0
+23:18/0 = 0
+24:18/0 = 0
+25:18/0 = 0
+26:18/0 = 0
+29:18/0 = 0
+30:18/0 = 0
+31:18/0 = 0
+32:18/0 = 0
+35:18/0 = 0
+36:18/0 = 0
+37:18/0 = 0
+38:18/0 = 0
+45:18/0 = 0
+46:18/0 = 0
+0:19/0 = 0
+1:19/0 = 0
+2:19/0 = 0
+3:19/0 = 0
+4:19/0 = 0
+5:19/0 = 0
+6:19/0 = 0
+7:19/0 = 0
+8:19/0 = 0
+10:19/0 = 0
+11:19/0 = 0
+12:19/0 = 0
+13:19/0 = 0
+16:19/0 = 0
+17:19/0 = 0
+18:19/0 = 0
+19:19/0 = 0
+20:19/0 = 0
+21:19/0 = 0
+22:19/0 = 0
+23:19/0 = 0
+24:19/0 = 0
+25:19/0 = 0
+26:19/0 = 0
+29:19/0 = 0
+30:19/0 = 0
+31:19/0 = 0
+32:19/0 = 0
+33:19/0 = 0
+34:19/0 = 0
+35:19/0 = 0
+36:19/0 = 0
+37:19/0 = 0
+38:19/0 = 0
+41:19/0 = 0
+42:19/0 = 0
+43:19/0 = 0
+44:19/0 = 0
+45:19/0 = 0
+46:19/0 = 0
+47:19/0 = 0
+48:19/0 = 0
+0:20/0 = 0
+1:20/0 = 0
+2:20/0 = 0
+3:20/0 = 0
+4:20/0 = 0
+5:20/0 = 0
+6:20/0 = 0
+7:20/0 = 0
+8:20/0 = 0
+10:20/0 = 0
+11:20/0 = 0
+12:20/0 = 0
+13:20/0 = 0
+16:20/0 = 0
+17:20/0 = 0
+18:20/0 = 0
+19:20/0 = 0
+20:20/0 = 0
+23:20/0 = 0
+24:20/0 = 0
+25:20/0 = 0
+29:20/0 = 0
+30:20/0 = 0
+31:20/0 = 0
+32:20/0 = 0
+33:20/0 = 0
+34:20/0 = 0
+35:20/0 = 0
+36:20/0 = 0
+37:20/0 = 0
+38:20/0 = 0
+41:20/0 = 0
+42:20/0 = 0
+43:20/0 = 0
+44:20/0 = 0
+45:20/0 = 0
+46:20/0 = 0
+47:20/0 = 0
+48:20/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_vdg01"]
+sources/0 = SubResource("TileSetAtlasSource_q74qd")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pdf0i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l6435"]
 size = Vector2(168, 145)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_05bdh"]
+size = Vector2(21, 140)
 
 [node name="NewStarShire" type="Node2D" node_paths=PackedStringArray("spawn_point", "camera", "hud")]
 script = ExtResource("1_gq00g")
@@ -27,56 +596,64 @@ spawn_point = NodePath("SpawnPoint")
 camera = NodePath("PlayerCamera")
 hud = NodePath("HUD")
 
-[node name="TextureRect" type="Sprite2D" parent="."]
-position = Vector2(1945, 492)
+[node name="TowerEntrance" type="Sprite2D" parent="."]
+position = Vector2(1113, 492)
 texture = ExtResource("2_oik5f")
 
 [node name="TileSets" type="Node2D" parent="."]
 
+[node name="Cliff" type="TileMapLayer" parent="TileSets"]
+tile_map_data = PackedByteArray("AAAHAAkAAQAAAAEAAAAIAAkAAQABAAEAAAAHAAgAAQAAAAEAAAAIAAgAAQABAAEAAAAFAAgAAQAAAAEAAAAGAAgAAQABAAEAAAAFAAkAAQAAAAEAAAAGAAkAAQABAAEAAAADAAgAAQAAAAEAAAAEAAgAAQABAAEAAAADAAkAAQAAAAEAAAAEAAkAAQABAAEAAAABAAgAAQABAAEAAAACAAgAAQABAAEAAAABAAkAAQABAAEAAAACAAkAAQABAAEAAAAAAAgAAQAAAAEAAAAAAAkAAQAAAAEAAAAAAAcAAQAAAAAAAAABAAcAAQABAAAAAAACAAcAAQAAAAAAAAADAAcAAQABAAAAAAAEAAcAAQAAAAAAAAAFAAcAAQABAAAAAAAGAAcAAQAAAAAAAAAHAAcAAQABAAAAAAAIAAcAAQABAAAAAAA=")
+tile_set = ExtResource("3_sxpgj")
+
+[node name="Ladders" type="TileMapLayer" parent="TileSets"]
+tile_map_data = PackedByteArray("AAACACQAAAAAAAcAAAADACQAAAABAAcAAAACACMAAAAAAAYAAAADACMAAAABAAYAAAACACIAAAAAAAYAAAADACIAAAABAAYAAAACACEAAAAAAAYAAAADACEAAAABAAYAAAACACAAAAAAAAYAAAADACAAAAABAAYAAAACAB8AAAAAAAYAAAADAB8AAAABAAYAAAACAB4AAAAAAAYAAAADAB4AAAABAAYAAAACAB0AAAAAAAYAAAADAB0AAAABAAYAAAACABwAAAAAAAUAAAADABwAAAABAAUAAAA=")
+tile_set = SubResource("TileSet_vdg01")
+
 [node name="Floor" type="TileMapLayer" parent="TileSets"]
-tile_map_data = PackedByteArray("AAACAAsAAQAAAAEAAAADAAsAAQABAAEAAAACAAwAAQAAAAEAAAADAAwAAQABAAEAAAACAA0AAQAAAAEAAAADAA0AAQABAAEAAAACAA4AAQAAAAEAAAADAA4AAQABAAEAAAACAA8AAQAAAAEAAAADAA8AAQABAAEAAAAEAAsAAQAAAAEAAAAFAAsAAQABAAEAAAAEAAwAAQAAAAEAAAAFAAwAAQABAAEAAAAEAA0AAQAAAAEAAAAFAA0AAQABAAEAAAAEAA4AAQAAAAEAAAAFAA4AAQABAAEAAAAEAA8AAQAAAAEAAAAFAA8AAQABAAEAAAAGAAsAAQAAAAEAAAAHAAsAAQABAAEAAAAGAAwAAQAAAAEAAAAHAAwAAQABAAEAAAAGAA0AAQAAAAEAAAAHAA0AAQABAAEAAAAGAA4AAQAAAAEAAAAHAA4AAQABAAEAAAAGAA8AAQAAAAEAAAAHAA8AAQABAAEAAAAIAAsAAQAAAAEAAAAJAAsAAQABAAEAAAAIAAwAAQAAAAEAAAAJAAwAAQABAAEAAAAIAA0AAQAAAAEAAAAJAA0AAQABAAEAAAAIAA4AAQAAAAEAAAAJAA4AAQABAAEAAAAIAA8AAQAAAAEAAAAJAA8AAQABAAEAAAAKAA8AAQAAAAEAAAALAA8AAQABAAEAAAAKAAsAAQAAAAEAAAAKAAwAAQAAAAEAAAAKAA0AAQAAAAEAAAAKAA4AAQAAAAEAAAALAA4AAQABAAEAAAALAA0AAQABAAEAAAALAAwAAQABAAEAAAALAAsAAQABAAEAAAACAAoAAQAAAAAAAAADAAoAAQAAAAAAAAAEAAoAAQABAAAAAAAFAAoAAQAAAAAAAAAGAAoAAQABAAAAAAAHAAoAAQAAAAAAAAAIAAoAAQABAAAAAAAJAAoAAQAAAAAAAAAKAAoAAQABAAAAAAALAAoAAQAAAAAAAAABAAoAAQABAAAAAAABAAsAAQABAAEAAAABAAwAAQABAAEAAAABAA0AAQABAAEAAAABAA4AAQABAAEAAAABAA8AAQABAAEAAAAAAAsAAQABAAEAAAAAAAwAAQABAAEAAAAAAA0AAQABAAEAAAAAAA4AAQABAAEAAAAAAA8AAQABAAEAAAAAAAoAAQABAAAAAAAMAAoAAQAAAAAAAAAMAAsAAQAAAAEAAAAMAAwAAQAAAAEAAAAMAA0AAQAAAAEAAAAMAA4AAQAAAAEAAAAMAA8AAQAAAAEAAAANAAoAAQAAAAAAAAANAAsAAQAAAAEAAAAOAAoAAQABAAAAAAAOAAsAAQABAAEAAAAPAAoAAQAAAAAAAAAPAAsAAQAAAAEAAAAQAAoAAQABAAAAAAAQAAsAAQABAAEAAAARAAoAAQAAAAAAAAARAAsAAQAAAAEAAAASAAoAAQABAAAAAAASAAsAAQABAAEAAAATAAoAAQAAAAAAAAATAAsAAQAAAAEAAAAUAAoAAQABAAAAAAAUAAsAAQABAAEAAAAVAAoAAQAAAAAAAAAVAAsAAQAAAAEAAAAWAAoAAQABAAAAAAAWAAsAAQABAAEAAAANAAwAAQAAAAEAAAAOAAwAAQABAAEAAAANAA0AAQAAAAEAAAAOAA0AAQABAAEAAAANAA4AAQAAAAEAAAAOAA4AAQABAAEAAAANAA8AAQAAAAEAAAAOAA8AAQABAAEAAAAPAA8AAQAAAAEAAAAQAA8AAQABAAEAAAARAA8AAQAAAAEAAAASAA8AAQABAAEAAAATAA8AAQAAAAEAAAAUAA8AAQABAAEAAAAVAA8AAQAAAAEAAAAWAA8AAQABAAEAAAAVAA4AAQAAAAEAAAAWAA4AAQABAAEAAAAVAA0AAQAAAAEAAAAWAA0AAQABAAEAAAAVAAwAAQAAAAEAAAAWAAwAAQAAAAEAAAATAAwAAQAAAAEAAAAUAAwAAQABAAEAAAARAAwAAQAAAAEAAAASAAwAAQABAAEAAAAPAAwAAQAAAAEAAAAQAAwAAQABAAEAAAAPAA0AAQAAAAEAAAAQAA0AAQABAAEAAAAPAA4AAQAAAAEAAAAQAA4AAQABAAEAAAARAA4AAQAAAAEAAAASAA4AAQABAAEAAAATAA4AAQAAAAEAAAAUAA4AAQABAAEAAAATAA0AAQAAAAEAAAAUAA0AAQABAAEAAAARAA0AAQAAAAEAAAASAA0AAQABAAEAAAAXAAoAAQAAAAAAAAAYAAoAAQABAAAAAAAZAAoAAQAAAAAAAAAaAAoAAQABAAAAAAAbAAoAAQAAAAAAAAAcAAoAAQABAAAAAAAdAAoAAQAAAAAAAAAeAAoAAQABAAAAAAAfAAoAAQAAAAAAAAAgAAoAAQABAAAAAAAXAAsAAQAAAAEAAAAYAAsAAQABAAEAAAAZAAsAAQAAAAEAAAAaAAsAAQABAAEAAAAbAAsAAQAAAAEAAAAcAAsAAQABAAEAAAAdAAsAAQAAAAEAAAAeAAsAAQABAAEAAAAfAAsAAQAAAAEAAAAgAAsAAQABAAEAAAAYAAwAAQAAAAEAAAAZAAwAAQABAAEAAAAXAAwAAQABAAEAAAAXAA0AAQAAAAEAAAAYAA0AAQABAAEAAAAXAA4AAQAAAAEAAAAYAA4AAQABAAEAAAAZAA4AAQAAAAEAAAAaAA4AAQABAAEAAAAbAA4AAQAAAAEAAAAcAA4AAQABAAEAAAAbAA0AAQAAAAEAAAAcAA0AAQABAAEAAAAdAA0AAQAAAAEAAAAeAA0AAQAAAAEAAAAaAAwAAQAAAAEAAAAbAAwAAQABAAEAAAAcAAwAAQAAAAEAAAAdAAwAAQABAAEAAAAeAAwAAQAAAAEAAAAfAAwAAQAAAAEAAAAfAA0AAQAAAAEAAAAgAA0AAQABAAEAAAAgAAwAAQABAAEAAAAfAA4AAQAAAAEAAAAgAA4AAQABAAEAAAAfAA8AAQAAAAEAAAAgAA8AAQABAAEAAAAdAA8AAQAAAAEAAAAeAA8AAQABAAEAAAAbAA8AAQAAAAEAAAAcAA8AAQABAAEAAAAZAA8AAQAAAAEAAAAaAA8AAQABAAEAAAAZAA0AAQAAAAEAAAAaAA0AAQABAAEAAAAdAA4AAQAAAAEAAAAeAA4AAQABAAEAAAAXAA8AAQAAAAEAAAAYAA8AAQABAAEAAAA=")
+tile_map_data = PackedByteArray("AAACAAsAAQAAAAEAAAADAAsAAQABAAEAAAACAAwAAQAAAAEAAAADAAwAAQABAAEAAAACAA0AAQAAAAEAAAADAA0AAQABAAEAAAACAA4AAQAAAAEAAAADAA4AAQABAAEAAAACAA8AAQAAAAEAAAADAA8AAQABAAEAAAAEAAsAAQAAAAEAAAAFAAsAAQABAAEAAAAEAAwAAQAAAAEAAAAFAAwAAQABAAEAAAAEAA0AAQAAAAEAAAAFAA0AAQABAAEAAAAEAA4AAQAAAAEAAAAFAA4AAQABAAEAAAAEAA8AAQAAAAEAAAAFAA8AAQABAAEAAAAGAAsAAQAAAAEAAAAHAAsAAQABAAEAAAAGAAwAAQAAAAEAAAAHAAwAAQABAAEAAAAGAA0AAQAAAAEAAAAHAA0AAQABAAEAAAAGAA4AAQAAAAEAAAAHAA4AAQABAAEAAAAGAA8AAQAAAAEAAAAHAA8AAQABAAEAAAAIAAsAAQAAAAEAAAAJAAsAAQABAAEAAAAIAAwAAQAAAAEAAAAJAAwAAQABAAEAAAAIAA0AAQAAAAEAAAAJAA0AAQABAAEAAAAIAA4AAQAAAAEAAAAJAA4AAQABAAEAAAAIAA8AAQAAAAEAAAAJAA8AAQABAAEAAAACAAoAAQAAAAAAAAADAAoAAQAAAAAAAAAEAAoAAQABAAAAAAAFAAoAAQAAAAAAAAAGAAoAAQABAAAAAAAHAAoAAQAAAAAAAAAIAAoAAQABAAAAAAABAAoAAQABAAAAAAABAAsAAQABAAEAAAABAAwAAQABAAEAAAABAA0AAQABAAEAAAABAA4AAQABAAEAAAABAA8AAQABAAEAAAAAAAsAAQABAAEAAAAAAAwAAQABAAEAAAAAAA0AAQABAAEAAAAAAA4AAQABAAEAAAAAAA8AAQABAAEAAAAAAAoAAQABAAAAAAAJAAoAAQAAAAAAAAAKAAoAAQAAAAAAAAALAAoAAQABAAAAAAAMAAoAAQAAAAAAAAANAAoAAQABAAAAAAAOAAoAAQAAAAAAAAAPAAoAAQABAAAAAAAQAAoAAQAAAAAAAAARAAoAAQABAAAAAAASAAoAAQAAAAAAAAATAAoAAQABAAAAAAAKAAsAAQAAAAEAAAALAAsAAQABAAEAAAAKAAwAAQAAAAEAAAALAAwAAQABAAEAAAAKAA0AAQAAAAEAAAALAA0AAQABAAEAAAAKAA4AAQAAAAEAAAALAA4AAQABAAEAAAAKAA8AAQAAAAEAAAALAA8AAQABAAEAAAAMAA8AAQAAAAEAAAANAA8AAQABAAEAAAAOAA8AAQAAAAEAAAAPAA8AAQABAAEAAAAQAA8AAQAAAAEAAAARAA8AAQABAAEAAAASAA8AAQAAAAEAAAATAA8AAQABAAEAAAASAAsAAQAAAAEAAAATAAsAAQABAAEAAAASAAwAAQAAAAEAAAATAAwAAQABAAEAAAASAA0AAQAAAAEAAAATAA0AAQABAAEAAAASAA4AAQAAAAEAAAATAA4AAQABAAEAAAAQAAsAAQAAAAEAAAARAAsAAQABAAEAAAAQAAwAAQAAAAEAAAARAAwAAQABAAEAAAAQAA0AAQAAAAEAAAARAA0AAQABAAEAAAAQAA4AAQAAAAEAAAARAA4AAQABAAEAAAAOAAsAAQAAAAEAAAAPAAsAAQABAAEAAAAOAAwAAQAAAAEAAAAPAAwAAQABAAEAAAAOAA0AAQAAAAEAAAAPAA0AAQABAAEAAAAOAA4AAQAAAAEAAAAPAA4AAQABAAEAAAAMAAsAAQAAAAEAAAANAAsAAQABAAEAAAAMAAwAAQAAAAEAAAANAAwAAQABAAEAAAAMAA0AAQAAAAEAAAANAA0AAQABAAEAAAAMAA4AAQAAAAEAAAANAA4AAQABAAEAAAA=")
 tile_set = ExtResource("2_dvat3")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="TileSets"]
-tile_map_data = PackedByteArray("AAD//w4AAQABAAAAAAD//w8AAQABAAEAAAD//wwAAQABAAAAAAD//w0AAQABAAEAAAD//woAAQABAAAAAAD//wsAAQABAAEAAAD//wgAAQABAAAAAAD//wkAAQABAAEAAAD//wYAAQABAAAAAAD//wcAAQABAAEAAAD//wQAAQABAAAAAAD//wUAAQABAAEAAAD//wIAAQABAAAAAAD//wMAAQABAAEAAAD//wAAAQABAAAAAAD//wEAAQABAAEAAAAhAA4AAQAAAAAAAAAhAA8AAQAAAAEAAAAhAAwAAQAAAAAAAAAhAA0AAQAAAAEAAAAhAAoAAQAAAAAAAAAhAAsAAQAAAAEAAAAhAAgAAQAAAAAAAAAhAAkAAQAAAAEAAAAhAAYAAQAAAAAAAAAhAAcAAQAAAAEAAAAhAAQAAQAAAAAAAAAhAAUAAQAAAAEAAAAhAAIAAQAAAAAAAAAhAAMAAQAAAAEAAAA=")
+tile_map_data = PackedByteArray("AAD//w4AAQABAAAAAAD//w8AAQABAAEAAAD//wwAAQABAAAAAAD//w0AAQABAAEAAAD//woAAQABAAAAAAD//wsAAQABAAEAAAD//wgAAQABAAAAAAD//wkAAQABAAEAAAD//wYAAQABAAAAAAD//wcAAQABAAEAAAD//wQAAQABAAAAAAD//wUAAQABAAEAAAD//wIAAQABAAAAAAD//wMAAQABAAEAAAD//wAAAQABAAAAAAD//wEAAQABAAEAAAAUAA4AAQAAAAAAAAAUAA8AAQAAAAEAAAAUAAwAAQAAAAAAAAAUAA0AAQAAAAEAAAAUAAoAAQAAAAAAAAAUAAsAAQAAAAEAAAAUAAgAAQAAAAAAAAAUAAkAAQAAAAEAAAAUAAYAAQAAAAAAAAAUAAcAAQAAAAEAAAAUAAQAAQAAAAAAAAAUAAUAAQAAAAEAAAAUAAIAAQAAAAAAAAAUAAMAAQAAAAEAAAAUAAAAAQAAAAAAAAAUAAEAAQAAAAEAAAA=")
 tile_set = ExtResource("3_oik5f")
 
 [node name="PlayerCamera" parent="." instance=ExtResource("3_wtuhv")]
 position = Vector2(-20, 548)
 limit_left = 0
 limit_top = 23
-limit_right = 2721
+limit_right = 1280
 limit_bottom = 705
 drag_horizontal_offset = 0.04
 smoothing_enabled = true
 smoothing_distance = 6
 
 [node name="TechTreeComputer" parent="." instance=ExtResource("4_cldp6")]
-position = Vector2(972, 640)
+position = Vector2(200, 640)
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
-position = Vector2(879, 639)
+position = Vector2(115, 640)
 script = ExtResource("4_gq00g")
 
 [node name="PracticeDummy" parent="." instance=ExtResource("6_kqfvc")]
-position = Vector2(1097, 640)
+position = Vector2(305, 640)
 
 [node name="TowerArea" type="Area2D" parent="."]
-position = Vector2(1911.0001, 539)
+position = Vector2(1079.0002, 539)
 scale = Vector2(20, 10)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TowerArea"]
 shape = SubResource("RectangleShape2D_pdf0i")
 
 [node name="TowerGuideSprite" parent="." instance=ExtResource("9_636af")]
-position = Vector2(1759, 606)
+position = Vector2(927, 606)
 
 [node name="GuideLog" type="Label" parent="."]
 visible = false
-offset_left = 1634.0
-offset_top = 562.0
-offset_right = 1904.0
-offset_bottom = 579.0
+offset_left = 796.0
+offset_top = 559.0
+offset_right = 1066.0
+offset_bottom = 576.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("10_636af")
@@ -85,6 +662,7 @@ text = "You need a Tower pass before you can Enter..."
 horizontal_alignment = 1
 
 [node name="HUD" parent="." instance=ExtResource("10_4wn0b")]
+visible = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -109,20 +687,8 @@ physics_object_picking = true
 size = Vector2i(640, 361)
 render_target_update_mode = 4
 
-[node name="GearDealerWithoutOutline" type="Sprite2D" parent="."]
-position = Vector2(1254, 587)
-texture = ExtResource("12_l6435")
-
-[node name="DripDealerNoOutline" type="Sprite2D" parent="."]
-position = Vector2(1374, 587)
-texture = ExtResource("13_sxpgj")
-
-[node name="GrandMarket" type="Sprite2D" parent="."]
-position = Vector2(1308, 530)
-texture = ExtResource("12_123hf")
-
 [node name="GrandMarketArea" type="Area2D" parent="."]
-position = Vector2(1305, 590)
+position = Vector2(370.5, 398)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GrandMarketArea"]
 position = Vector2(11, -25.5)
@@ -130,14 +696,50 @@ shape = SubResource("RectangleShape2D_l6435")
 
 [node name="EnterMarketLabel" type="Label" parent="."]
 visible = false
-offset_left = 1217.0
-offset_top = 513.0
-offset_right = 1407.0
-offset_bottom = 536.0
+offset_left = 288.0
+offset_top = 334.0
+offset_right = 478.0
+offset_bottom = 357.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("10_636af")
 text = "Press E to enter Market"
+
+[node name="MarketStand" type="Node2D" parent="."]
+position = Vector2(-88, 87)
+
+[node name="StorageArea" type="Sprite2D" parent="MarketStand"]
+position = Vector2(419, 223)
+texture = ExtResource("14_jp6xg")
+
+[node name="GearDealerWithoutOutline" type="Sprite2D" parent="MarketStand"]
+position = Vector2(407.5, 308)
+texture = ExtResource("12_l6435")
+
+[node name="DripDealerNoOutline" type="Sprite2D" parent="MarketStand"]
+position = Vector2(527.5, 308)
+texture = ExtResource("13_sxpgj")
+
+[node name="GrandMarket" type="Sprite2D" parent="MarketStand"]
+position = Vector2(461.5, 251)
+texture = ExtResource("12_123hf")
+
+[node name="LadderArea" parent="." node_paths=PackedStringArray("ladder_top", "ladder_bottom") instance=ExtResource("17_jp6xg")]
+position = Vector2(48, 508)
+collision_layer = 8
+collision_mask = 8
+ladder_top = NodePath("Top")
+ladder_bottom = NodePath("Bot")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LadderArea"]
+position = Vector2(0.5, 10)
+shape = SubResource("RectangleShape2D_05bdh")
+
+[node name="Top" type="Marker2D" parent="LadderArea"]
+position = Vector2(0, -60)
+
+[node name="Bot" type="Marker2D" parent="LadderArea"]
+position = Vector2(0, 114)
 
 [connection signal="body_entered" from="TowerArea" to="." method="_on_tower_area_body_entered"]
 [connection signal="body_exited" from="TowerArea" to="." method="_on_tower_area_body_exited"]
@@ -145,3 +747,4 @@ text = "Press E to enter Market"
 [connection signal="body_exited" from="GrandMarketArea" to="." method="_on_grand_market_area_body_exited"]
 
 [editable path="PracticeDummy"]
+[editable path="HUD"]
