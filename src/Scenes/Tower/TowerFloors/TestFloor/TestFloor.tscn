@@ -1,32 +1,105 @@
-[gd_scene load_steps=16 format=4 uid="uid://cph2krit7yk0t"]
+[gd_scene load_steps=22 format=4 uid="uid://cph2krit7yk0t"]
 
-[ext_resource type="Script" uid="uid://d3tvs56dr4vcl" path="res://src/Scripts/Maps/map.gd" id="1_km6fo"]
+[ext_resource type="Script" uid="uid://c8p4pei6shyik" path="res://src/Scripts/Maps/test_floor.gd" id="1_a3s6d"]
 [ext_resource type="TileSet" uid="uid://74oc55cdwefk" path="res://src/Scenes/NewStarshire/TempFloorTiles.tres" id="1_tc7oi"]
 [ext_resource type="TileSet" uid="uid://b74l1awtkdty5" path="res://src/Scenes/NewStarshire/TempWallTiles.tres" id="2_boax8"]
-[ext_resource type="Texture2D" uid="uid://d35tn325hxjff" path="res://Assets/EnvironmentalAssets/temp_floor_tile.png" id="3_y7sq8"]
 [ext_resource type="Texture2D" uid="uid://c5oix8wg5x1lw" path="res://Assets/EnvironmentalAssets/poisoned_forest_tiles_sheet.png" id="4_5a8xp"]
+[ext_resource type="TileSet" uid="uid://dbxew7tohbk1m" path="res://src/Scenes/Tower/TowerFloors/TestFloor/TempPlatforms.tres" id="4_orspa"]
 [ext_resource type="PackedScene" uid="uid://c8ov03gkkda4k" path="res://src/Scenes/PlayerCamera.tscn" id="4_y7sq8"]
+[ext_resource type="Texture2D" uid="uid://d35tn325hxjff" path="res://Assets/EnvironmentalAssets/temp_floor_tile.png" id="5_oxyxm"]
 [ext_resource type="PackedScene" uid="uid://bethw5tnlxnnt" path="res://src/Scenes/Actors/Enemies/CorruptedMushie/CorruptedMushie.tscn" id="6_a3s6d"]
 [ext_resource type="PackedScene" uid="uid://cr6q5dxlkks" path="res://src/Scenes/Tower/LadderArea.tscn" id="6_x3mp3"]
 [ext_resource type="PackedScene" uid="uid://dysg5kffvxbql" path="res://src/Scenes/UI/PlayerHUD.tscn" id="9_a3s6d"]
+[ext_resource type="PackedScene" uid="uid://crvhogk2bnq1s" path="res://src/Scenes/NewStarshire/TowerGuideSprite.tscn" id="10_k3vyl"]
+[ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="11_orspa"]
+[ext_resource type="PackedScene" uid="uid://cepv6hcj1jotc" path="res://src/Scenes/Tower/TowerFloors/TowerExitArea.tscn" id="11_vnc44"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5a8xp"]
-texture = ExtResource("3_y7sq8")
-texture_region_size = Vector2i(64, 64)
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vss50"]
+texture = ExtResource("5_oxyxm")
 0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, -32, 32, 32, 32, 32, -32)
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, -8, -8, 8, -8, 8, 8)
 0:0/0/physics_layer_0/polygon_0/one_way = true
 1:0/0 = 0
-1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, -32, 32, 32, 32, 32, -32)
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, -8, -8, 8, -8, 8, 8)
 1:0/0/physics_layer_0/polygon_0/one_way = true
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, -8, -8, 8, -8, 8, 8)
+2:0/0/physics_layer_0/polygon_0/one_way = true
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, -8, -8, 8, -8, 8, 8)
+3:0/0/physics_layer_0/polygon_0/one_way = true
+4:0/0 = 0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, -8, -8, 8, -8, 8, 8)
+4:0/0/physics_layer_0/polygon_0/one_way = true
+5:0/0 = 0
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, -8, -8, 8, -8, 8, 8)
+5:0/0/physics_layer_0/polygon_0/one_way = true
+6:0/0 = 0
+6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, -8, -8, 8, -8, 8, 8)
+6:0/0/physics_layer_0/polygon_0/one_way = true
+7:0/0 = 0
+7:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, -8, -8, 8, -8, 8, 8)
+7:0/0/physics_layer_0/polygon_0/one_way = true
 0:1/0 = 0
 1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+7:7/0 = 0
 
-[sub_resource type="TileSet" id="TileSet_x3mp3"]
-tile_size = Vector2i(64, 64)
-physics_layer_0/collision_layer = 18
-physics_layer_0/collision_mask = 18
-sources/1 = SubResource("TileSetAtlasSource_5a8xp")
+[sub_resource type="TileSet" id="TileSet_drgox"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_vss50")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k3vyl"]
 texture = ExtResource("4_5a8xp")
@@ -591,21 +664,28 @@ texture = ExtResource("4_5a8xp")
 sources/0 = SubResource("TileSetAtlasSource_k3vyl")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5a8xp"]
-size = Vector2(21, 203.5)
+size = Vector2(21, 89.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oxyxm"]
+size = Vector2(21, 126)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x3mp3"]
 size = Vector2(21, 254)
 
-[node name="TestFloor" type="Node2D" node_paths=PackedStringArray("spawn_point", "camera")]
-script = ExtResource("1_km6fo")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_orspa"]
+size = Vector2(113, 61)
+
+[node name="TestFloor" type="Node2D" node_paths=PackedStringArray("spawn_point", "camera", "hud")]
+script = ExtResource("1_a3s6d")
 map_name = "Test Floor"
 spawn_point = NodePath("Marker2D")
 camera = NodePath("PlayerCamera")
+hud = NodePath("HUD")
 
 [node name="Tiles" type="Node2D" parent="."]
 
 [node name="Floor" type="TileMapLayer" parent="Tiles"]
-tile_map_data = PackedByteArray("AAAAAA8AAQABAAAAAAABAA8AAQABAAAAAAACAA8AAQABAAAAAAADAA8AAQABAAAAAAAEAA8AAQABAAAAAAAFAA8AAQABAAAAAAAGAA8AAQABAAAAAAAHAA8AAQABAAAAAAAIAA8AAQABAAAAAAAJAA8AAQABAAAAAAA=")
+tile_map_data = PackedByteArray("AAAAAA8AAQABAAAAAAABAA8AAQABAAAAAAACAA8AAQABAAAAAAADAA8AAQABAAAAAAAEAA8AAQABAAAAAAAFAA8AAQABAAAAAAAGAA8AAQABAAAAAAAHAA8AAQABAAAAAAAIAA8AAQABAAAAAAAJAA8AAQABAAAAAAAGAA4AAQAAAAEAAAAHAA4AAQAAAAEAAAAIAA4AAQAAAAEAAAA=")
 tile_set = ExtResource("1_tc7oi")
 
 [node name="Walls" type="TileMapLayer" parent="Tiles"]
@@ -613,15 +693,16 @@ tile_map_data = PackedByteArray("AAAAAA4AAQABAAAAAAAAAA0AAQABAAAAAAAAAAwAAQABAAA
 tile_set = ExtResource("2_boax8")
 
 [node name="Platforms" type="TileMapLayer" parent="Tiles"]
-tile_map_data = PackedByteArray("AAABAAsAAQAAAAAAAAACAAsAAQABAAAAAAADAAsAAQAAAAAAAAAEAAsAAQABAAAAAAAFAAsAAQAAAAAAAAAGAAsAAQABAAAAAAAHAAsAAQAAAAAAAAAIAAsAAQABAAAAAAABAAcAAQAAAAAAAAACAAcAAQAAAAAAAAADAAcAAQAAAAAAAAAIAAcAAQAAAAAAAAAGAAcAAQAAAAAAAAAHAAcAAQABAAAAAAAEAAcAAQABAAAAAAABAAMAAQAAAAAAAAACAAMAAQABAAAAAAADAAMAAQAAAAAAAAAEAAMAAQABAAAAAAAFAAMAAQAAAAAAAAAGAAMAAQABAAAAAAAHAAMAAQAAAAAAAAAIAAMAAQABAAAAAAA=")
-tile_set = SubResource("TileSet_x3mp3")
+tile_map_data = PackedByteArray("AAAIAAcAAQAAAAAAAAADAAcAAQAAAAAAAAAFAAgAAQABAAAAAAAGAA0AAQAAAAAAAAAHAA0AAQAAAAAAAAAIAA0AAQAAAAAAAAABAAsAAQAAAAAAAAACAAsAAQABAAAAAAADAAsAAQAAAAAAAAAEAAsAAQABAAAAAAAFAAsAAQAAAAAAAAAGAAsAAQABAAAAAAAHAAsAAQAAAAAAAAAIAAsAAQABAAAAAAABAAMAAQAAAAAAAAACAAMAAQABAAAAAAADAAMAAQAAAAAAAAAEAAMAAQABAAAAAAAFAAMAAQAAAAAAAAAGAAMAAQABAAAAAAAHAAMAAQAAAAAAAAAIAAMAAQABAAAAAAABAAcAAQAAAAAAAAACAAcAAQABAAAAAAAGAAgAAQAAAAAAAAA=")
+tile_set = ExtResource("4_orspa")
+
+[node name="SmalPlatforms" type="TileMapLayer" parent="Tiles"]
+tile_map_data = PackedByteArray("AAARADAAAAABAAAAAAASADAAAAACAAAAAAAPADAAAAABAAAAAAAQADAAAAACAAAAAAAKAC8AAAABAAAAAAALAC8AAAACAAAAAAAMAC8AAAABAAAAAAANAC8AAAACAAAAAAAUADEAAAABAAAAAAAVADEAAAACAAAAAAAWADEAAAABAAAAAAAXADEAAAACAAAAAAARAB4AAAABAAAAAAASAB4AAAACAAAAAAAdAB0AAAABAAAAAAAeAB0AAAACAAAAAAA=")
+tile_set = SubResource("TileSet_drgox")
 
 [node name="Ladders" type="TileMapLayer" parent="Tiles"]
-tile_map_data = PackedByteArray("AAAPADcAAAAAAAYAAAAQADcAAAABAAYAAAAPADYAAAAAAAYAAAAQADYAAAABAAYAAAAPADUAAAAAAAYAAAAQADUAAAABAAYAAAAPADQAAAAAAAYAAAAQADQAAAABAAYAAAAPADMAAAAAAAYAAAAQADMAAAABAAYAAAAPADIAAAAAAAYAAAAQADIAAAABAAYAAAAPADEAAAAAAAYAAAAQADEAAAABAAYAAAAPADAAAAAAAAYAAAAQADAAAAABAAYAAAAPAC8AAAAAAAYAAAAQAC8AAAABAAYAAAAPAC4AAAAAAAYAAAAQAC4AAAABAAYAAAAPAC0AAAAAAAYAAAAQAC0AAAABAAYAAAAPACwAAAAAAAUAAAAQACwAAAABAAUAAAAGACsAAAAAAAcAAAAHACsAAAABAAcAAAAGACoAAAAAAAYAAAAHACoAAAABAAYAAAAGACkAAAAAAAYAAAAHACkAAAABAAYAAAAGACgAAAAAAAYAAAAHACgAAAABAAYAAAAGACcAAAAAAAYAAAAHACcAAAABAAYAAAAGACYAAAAAAAYAAAAHACYAAAABAAYAAAAGACUAAAAAAAYAAAAHACUAAAABAAYAAAAGACQAAAAAAAYAAAAHACQAAAABAAYAAAAGACMAAAAAAAYAAAAHACMAAAABAAYAAAAGACIAAAAAAAYAAAAHACIAAAABAAYAAAAGACEAAAAAAAYAAAAHACEAAAABAAYAAAAGACAAAAAAAAYAAAAHACAAAAABAAYAAAAGAB8AAAAAAAYAAAAHAB8AAAABAAYAAAAGAB4AAAAAAAYAAAAHAB4AAAABAAYAAAAGAB0AAAAAAAYAAAAHAB0AAAABAAYAAAAGABwAAAAAAAUAAAAHABwAAAABAAUAAAAgACsAAAAAAAcAAAAhACsAAAABAAcAAAAgABwAAAAAAAUAAAAhABwAAAABAAUAAAAgAB0AAAAAAAYAAAAhAB0AAAABAAYAAAAgAB4AAAAAAAYAAAAhAB4AAAABAAYAAAAgAB8AAAAAAAYAAAAhAB8AAAABAAYAAAAgACAAAAAAAAYAAAAhACAAAAABAAYAAAAgACEAAAAAAAYAAAAhACEAAAABAAYAAAAgACIAAAAAAAYAAAAhACIAAAABAAYAAAAgACMAAAAAAAYAAAAhACMAAAABAAYAAAAgACQAAAAAAAYAAAAhACQAAAABAAYAAAAgACUAAAAAAAYAAAAhACUAAAABAAYAAAAgACYAAAAAAAYAAAAhACYAAAABAAYAAAAgACcAAAAAAAYAAAAhACcAAAABAAYAAAAgACgAAAAAAAYAAAAhACgAAAABAAYAAAAgACkAAAAAAAYAAAAhACkAAAABAAYAAAAgACoAAAAAAAYAAAAhACoAAAABAAYAAAAOABsAAAAAAAcAAAAPABsAAAABAAcAAAAOAAwAAAAAAAUAAAAPAAwAAAABAAUAAAAOAA0AAAAAAAYAAAAPAA0AAAABAAYAAAAOAA4AAAAAAAYAAAAPAA4AAAABAAYAAAAOAA8AAAAAAAYAAAAPAA8AAAABAAYAAAAOABAAAAAAAAYAAAAPABAAAAABAAYAAAAOABEAAAAAAAYAAAAPABEAAAABAAYAAAAOABIAAAAAAAYAAAAPABIAAAABAAYAAAAOABMAAAAAAAYAAAAPABMAAAABAAYAAAAOABQAAAAAAAYAAAAPABQAAAABAAYAAAAOABUAAAAAAAYAAAAPABUAAAABAAYAAAAOABYAAAAAAAYAAAAPABYAAAABAAYAAAAOABcAAAAAAAYAAAAPABcAAAABAAYAAAAOABgAAAAAAAYAAAAPABgAAAABAAYAAAAOABkAAAAAAAYAAAAPABkAAAABAAYAAAAOABoAAAAAAAYAAAAPABoAAAABAAYAAAAPADgAAAAAAAcAAAAQADgAAAABAAcAAAA=")
+tile_map_data = PackedByteArray("AAAgACsAAAAAAAcAAAAhACsAAAABAAcAAAAgABwAAAAAAAUAAAAhABwAAAABAAUAAAAgAB0AAAAAAAYAAAAhAB0AAAABAAYAAAAgAB4AAAAAAAYAAAAhAB4AAAABAAYAAAAgAB8AAAAAAAYAAAAhAB8AAAABAAYAAAAgACAAAAAAAAYAAAAhACAAAAABAAYAAAAgACEAAAAAAAYAAAAhACEAAAABAAYAAAAgACIAAAAAAAYAAAAhACIAAAABAAYAAAAgACMAAAAAAAYAAAAhACMAAAABAAYAAAAgACQAAAAAAAYAAAAhACQAAAABAAYAAAAgACUAAAAAAAYAAAAhACUAAAABAAYAAAAgACYAAAAAAAYAAAAhACYAAAABAAYAAAAgACcAAAAAAAYAAAAhACcAAAABAAYAAAAgACgAAAAAAAYAAAAhACgAAAABAAYAAAAgACkAAAAAAAYAAAAhACkAAAABAAYAAAAgACoAAAAAAAYAAAAhACoAAAABAAYAAAAOABsAAAAAAAcAAAAPABsAAAABAAcAAAAOAAwAAAAAAAUAAAAPAAwAAAABAAUAAAAOAA0AAAAAAAYAAAAPAA0AAAABAAYAAAAOAA4AAAAAAAYAAAAPAA4AAAABAAYAAAAOAA8AAAAAAAYAAAAPAA8AAAABAAYAAAAOABAAAAAAAAYAAAAPABAAAAABAAYAAAAOABEAAAAAAAYAAAAPABEAAAABAAYAAAAOABIAAAAAAAYAAAAPABIAAAABAAYAAAAOABMAAAAAAAYAAAAPABMAAAABAAYAAAAOABQAAAAAAAYAAAAPABQAAAABAAYAAAAOABUAAAAAAAYAAAAPABUAAAABAAYAAAAOABYAAAAAAAYAAAAPABYAAAABAAYAAAAOABcAAAAAAAYAAAAPABcAAAABAAYAAAAOABgAAAAAAAYAAAAPABgAAAABAAYAAAAOABkAAAAAAAYAAAAPABkAAAABAAYAAAAOABoAAAAAAAYAAAAPABoAAAABAAYAAAAYABsAAAAAAAcAAAAZABsAAAABAAcAAAAYABoAAAAAAAYAAAAZABoAAAABAAYAAAAYABkAAAAAAAYAAAAZABkAAAABAAYAAAAYABgAAAAAAAYAAAAZABgAAAABAAYAAAAYABcAAAAAAAYAAAAZABcAAAABAAYAAAAYABYAAAAAAAYAAAAZABYAAAABAAYAAAAYABUAAAAAAAYAAAAZABUAAAABAAYAAAAYABQAAAAAAAYAAAAZABQAAAABAAYAAAAYABMAAAAAAAYAAAAZABMAAAABAAYAAAAYABIAAAAAAAYAAAAZABIAAAABAAYAAAAYABEAAAAAAAYAAAAZABEAAAABAAYAAAAYABAAAAAAAAYAAAAZABAAAAABAAYAAAAYAA8AAAAAAAYAAAAZAA8AAAABAAYAAAAYAA4AAAAAAAYAAAAZAA4AAAABAAYAAAAYAA0AAAAAAAYAAAAZAA0AAAABAAYAAAAYAAwAAAAAAAUAAAAZAAwAAAABAAUAAAAfADgAAAAAAAYAAAAgADgAAAABAAYAAAAfADcAAAAAAAYAAAAgADcAAAABAAYAAAAfADYAAAAAAAYAAAAgADYAAAABAAYAAAAfADUAAAAAAAYAAAAgADUAAAABAAYAAAAfADQAAAAAAAUAAAAgADQAAAABAAUAAAAfADkAAAAAAAcAAAAgADkAAAABAAcAAAAIADMAAAAAAAcAAAAJADMAAAABAAcAAAAIADIAAAAAAAYAAAAJADIAAAABAAYAAAAIADEAAAAAAAYAAAAJADEAAAABAAYAAAAIADAAAAAAAAYAAAAJADAAAAABAAYAAAAIAC8AAAAAAAYAAAAJAC8AAAABAAYAAAAIAC4AAAAAAAYAAAAJAC4AAAABAAYAAAAIAC0AAAAAAAYAAAAJAC0AAAABAAYAAAAIACwAAAAAAAUAAAAJACwAAAABAAUAAAA=")
 tile_set = SubResource("TileSet_vnc44")
-
-[node name="CorruptedMushie" parent="Tiles" instance=ExtResource("6_a3s6d")]
-position = Vector2(419, 960)
 
 [node name="PlayerCamera" parent="." instance=ExtResource("4_y7sq8")]
 position = Vector2(320, 870)
@@ -632,41 +713,40 @@ limit_bottom = 1020
 limit_smoothed = true
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(320, 960)
+position = Vector2(208, 960)
 
 [node name="LadderArea" parent="." node_paths=PackedStringArray("ladder_top", "ladder_bottom") instance=ExtResource("6_x3mp3")]
-position = Vector2(256, 841)
+position = Vector2(513, 968)
 collision_layer = 8
 collision_mask = 8
 ladder_top = NodePath("Top")
 ladder_bottom = NodePath("Bottom")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LadderArea"]
-position = Vector2(0.5, -32.75)
+position = Vector2(0.5, -89.75)
 shape = SubResource("RectangleShape2D_5a8xp")
 
 [node name="Top" type="Marker2D" parent="LadderArea"]
 position = Vector2(1, -137)
 
 [node name="Bottom" type="Marker2D" parent="LadderArea"]
-position = Vector2(1, 87)
+position = Vector2(-1, -32)
 
 [node name="LadderArea2" parent="." node_paths=PackedStringArray("ladder_top", "ladder_bottom") instance=ExtResource("6_x3mp3")]
-position = Vector2(112, 587)
+position = Vector2(145, 767)
 collision_layer = 8
 collision_mask = 8
 ladder_top = NodePath("Top")
 ladder_bottom = NodePath("Bottom")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LadderArea2"]
-position = Vector2(0.5, -10)
-shape = SubResource("RectangleShape2D_x3mp3")
+shape = SubResource("RectangleShape2D_oxyxm")
 
 [node name="Top" type="Marker2D" parent="LadderArea2"]
-position = Vector2(1, -139)
+position = Vector2(0, -63)
 
 [node name="Bottom" type="Marker2D" parent="LadderArea2"]
-position = Vector2(1, 117)
+position = Vector2(1, 63)
 
 [node name="LadderArea3" parent="." node_paths=PackedStringArray("ladder_top", "ladder_bottom") instance=ExtResource("6_x3mp3")]
 position = Vector2(528, 587)
@@ -702,10 +782,78 @@ position = Vector2(1, -138)
 [node name="Bottom" type="Marker2D" parent="LadderArea4"]
 position = Vector2(1, 118)
 
-[node name="CorruptedMushie" parent="." instance=ExtResource("6_a3s6d")]
-position = Vector2(114, 448)
+[node name="LadderArea5" parent="." node_paths=PackedStringArray("ladder_top", "ladder_bottom") instance=ExtResource("6_x3mp3")]
+position = Vector2(401, 330)
+collision_layer = 8
+collision_mask = 8
+ladder_top = NodePath("Top")
+ladder_bottom = NodePath("Bottom")
 
-[node name="CorruptedMushie2" parent="." instance=ExtResource("6_a3s6d")]
-position = Vector2(477, 448)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LadderArea5"]
+position = Vector2(0.5, -9.5)
+shape = SubResource("RectangleShape2D_x3mp3")
+
+[node name="Top" type="Marker2D" parent="LadderArea5"]
+position = Vector2(1, -138)
+
+[node name="Bottom" type="Marker2D" parent="LadderArea5"]
+position = Vector2(1, 118)
 
 [node name="HUD" parent="." instance=ExtResource("9_a3s6d")]
+
+[node name="TowerGuideSprite" parent="." instance=ExtResource("10_k3vyl")]
+position = Vector2(98, 926)
+
+[node name="GuideLog" type="Label" parent="."]
+visible = false
+offset_left = 69.0
+offset_top = 882.0
+offset_right = 222.0
+offset_bottom = 897.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("11_orspa")
+theme_override_font_sizes/font_size = 12
+text = "Press E to end Expedition!"
+
+[node name="TowerExitArea" parent="." instance=ExtResource("11_vnc44")]
+position = Vector2(99, 931)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TowerExitArea"]
+position = Vector2(22.5, -1.5)
+shape = SubResource("RectangleShape2D_orspa")
+
+[node name="CorruptedMushie" parent="." instance=ExtResource("6_a3s6d")]
+position = Vector2(478, 960)
+
+[node name="CorruptedMushie2" parent="." instance=ExtResource("6_a3s6d")]
+position = Vector2(352, 704)
+
+[node name="CorruptedMushie3" parent="." instance=ExtResource("6_a3s6d")]
+position = Vector2(480, 704)
+
+[node name="CorruptedMushie4" parent="." instance=ExtResource("6_a3s6d")]
+position = Vector2(157, 704)
+
+[node name="CorruptedMushie5" parent="." instance=ExtResource("6_a3s6d")]
+position = Vector2(154, 448)
+
+[node name="CorruptedMushie6" parent="." instance=ExtResource("6_a3s6d")]
+position = Vector2(461, 448)
+
+[node name="CorruptedMushie7" parent="." instance=ExtResource("6_a3s6d")]
+position = Vector2(135, 192)
+
+[node name="CorruptedMushie8" parent="." instance=ExtResource("6_a3s6d")]
+position = Vector2(296, 192)
+
+[node name="CorruptedMushie9" parent="." instance=ExtResource("6_a3s6d")]
+position = Vector2(441, 192)
+
+[node name="CorruptedMushie10" parent="." instance=ExtResource("6_a3s6d")]
+position = Vector2(535, 192)
+
+[connection signal="body_entered" from="TowerExitArea" to="." method="_on_tower_exit_area_body_entered"]
+[connection signal="body_exited" from="TowerExitArea" to="." method="_on_tower_exit_area_body_exited"]
+
+[editable path="HUD"]

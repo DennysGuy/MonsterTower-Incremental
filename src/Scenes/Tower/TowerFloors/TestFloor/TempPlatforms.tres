@@ -1,0 +1,21 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://dbxew7tohbk1m"]
+
+[ext_resource type="Texture2D" uid="uid://d35tn325hxjff" path="res://Assets/EnvironmentalAssets/temp_floor_tile.png" id="1_qh0ok"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5a8xp"]
+texture = ExtResource("1_qh0ok")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, -32, 32, 32, 32, 32, -32)
+0:0/0/physics_layer_0/polygon_0/one_way = true
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, -32, 32, 32, 32, 32, -32)
+1:0/0/physics_layer_0/polygon_0/one_way = true
+0:1/0 = 0
+1:1/0 = 0
+
+[resource]
+tile_size = Vector2i(64, 64)
+physics_layer_0/collision_layer = 18
+physics_layer_0/collision_mask = 18
+sources/1 = SubResource("TileSetAtlasSource_5a8xp")

@@ -7,6 +7,8 @@ class_name TechNode extends Node2D
 
 @onready var level_label: Label = $LevelLabel
 
+@export var node_type : TechTreeManager.TECH_NODE_TYPE
+
 var mouse_entered : bool = false
 var can_click : bool = false
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -23,7 +25,7 @@ func _ready() -> void:
 	
 	icon.texture = tech_node_stats.icon
 	TechTreeManager.check_node_prereqs.connect(check_prereqs)
-
+	node_type = tech_node_stats.node_type
 	check_if_can_purchase()
 
 
@@ -53,7 +55,7 @@ func _on_click_area_input_event(viewport: Node, event: InputEvent, shape_idx: in
 		tech_node_stats.current_level += 1
 		
 		TechTreeManager.increment_upgrade_count()
-		PlayerStats.upgrade_player_stat(tech_node_stats.stat_name,tech_node_stats.upgrade_interval)
+		PlayerStats.upgrade_player_stat(tech_node_stats.stat_name,tech_node_stats.upgrade_interval, node_type)
 		deduct_currency()
 		
 		if tech_node_stats.upgrade_interval > 0:

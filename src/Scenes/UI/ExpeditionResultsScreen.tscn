@@ -1,0 +1,466 @@
+[gd_scene load_steps=13 format=3 uid="uid://dc22m3kbxdi50"]
+
+[ext_resource type="Script" uid="uid://b3dtngntwfdw8" path="res://src/Scripts/HUD/expedition_results_screen.gd" id="1_qg4s7"]
+[ext_resource type="Shader" uid="uid://bg20bvdcwspb" path="res://src/Scenes/UI/ExpeditionResultsScreen.gdshader" id="2_cbct7"]
+[ext_resource type="Texture2D" uid="uid://dejy6ivtgw1rl" path="res://Assets/HUD/TempResultsScreenBG.png" id="3_qyln5"]
+[ext_resource type="Texture2D" uid="uid://mmjc1ci2ofjv" path="res://Assets/HUD/TempResultsScreen_Panel.png" id="4_qyln5"]
+[ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="5_47265"]
+[ext_resource type="FontFile" uid="uid://qgj228ltdttv" path="res://Assets/Fonts/alagard.ttf" id="7_xwhdp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_47265"]
+shader = ExtResource("2_cbct7")
+shader_parameter/direction = Vector2(1, 1)
+shader_parameter/speed_scale = 0.04
+
+[sub_resource type="Animation" id="Animation_ra32m"]
+resource_name = "CloseIn_Tower"
+length = 1.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TopRect:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.6333333, 0.79333335),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -360), Vector2(0, -180)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BotRect:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.6333333, 0.79333335),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 360), Vector2(0, 180)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ResultsPanel:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.20436694),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 360)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"go_to_tower"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_xwhdp"]
+resource_name = "CloseIn_Town"
+length = 1.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TopRect:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.6333333, 0.79333335),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -360), Vector2(0, -180)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BotRect:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.6333333, 0.79333335),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 360), Vector2(0, 180)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ResultsPanel:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.20436694),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 360)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"go_to_starshire"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_lseph"]
+resource_name = "CloseOut"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TopRect:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.19999999),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -180), Vector2(0, -360)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BotRect:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.19999999),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 180), Vector2(0, 360)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ResultsPanel:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 1.2017996),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 360), Vector2(0, 360), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ee4bn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ResultsPanel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 360)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ra32m"]
+_data = {
+&"CloseIn_Tower": SubResource("Animation_ra32m"),
+&"CloseIn_Town": SubResource("Animation_xwhdp"),
+&"CloseOut": SubResource("Animation_lseph"),
+&"RESET": SubResource("Animation_ee4bn")
+}
+
+[node name="ExpeditionResultsScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qg4s7")
+
+[node name="BG" type="TextureRect" parent="."]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_47265")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_qyln5")
+stretch_mode = 2
+
+[node name="ResultsPanel" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 360.0
+offset_bottom = 360.00006
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_qyln5")
+
+[node name="TitlePanel" type="Panel" parent="ResultsPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -151.0
+offset_top = -106.0
+offset_right = -81.0
+offset_bottom = -83.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ResultsLabel" type="Label" parent="ResultsPanel/TitlePanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.5
+offset_top = -10.5
+offset_right = 32.5
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("5_47265")
+theme_override_font_sizes/font_size = 18
+text = "Results"
+
+[node name="GoalPanel" type="Panel" parent="ResultsPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -151.0
+offset_top = -70.0
+offset_right = 147.0
+offset_bottom = -23.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RunTime" type="Label" parent="ResultsPanel/GoalPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -145.5
+offset_top = -19.0
+offset_right = 140.5
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("5_47265")
+theme_override_font_sizes/font_size = 14
+text = "Run Time: 00:00:00"
+
+[node name="FloorReached" type="Label" parent="ResultsPanel/GoalPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -145.5
+offset_top = 1.5
+offset_right = 140.5
+offset_bottom = 17.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("5_47265")
+theme_override_font_sizes/font_size = 14
+text = "Floor Reached: Temp Biome - Floor 1"
+
+[node name="InventoryPanel" type="Panel" parent="ResultsPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -151.0
+offset_top = -14.0
+offset_right = 148.0
+offset_bottom = 96.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="InventoryLabel" type="Label" parent="ResultsPanel/InventoryPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -144.0
+offset_top = -52.0
+offset_right = -84.0
+offset_bottom = -37.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("5_47265")
+theme_override_font_sizes/font_size = 12
+text = "Inventory"
+
+[node name="InventoryContainer" type="GridContainer" parent="ResultsPanel/InventoryPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -145.0
+offset_top = 20.0
+offset_right = 142.0
+offset_bottom = 60.0
+grow_horizontal = 2
+columns = 8
+
+[node name="BankLabel" type="Label" parent="ResultsPanel/InventoryPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -144.0
+offset_right = -114.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("5_47265")
+theme_override_font_sizes/font_size = 12
+text = "Bank"
+
+[node name="BankNotice" type="Label" parent="ResultsPanel/InventoryPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -65.5
+offset_top = 25.99997
+offset_right = 65.5
+offset_bottom = 40.99997
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("5_47265")
+theme_override_font_sizes/font_size = 12
+text = "Bank Account Locked!"
+
+[node name="BankContainer" type="GridContainer" parent="ResultsPanel/InventoryPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -144.0
+offset_top = 74.0
+offset_right = 143.0
+offset_bottom = 106.0
+grow_horizontal = 2
+columns = 8
+
+[node name="ToTown" type="Button" parent="ResultsPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 30.0
+offset_top = -108.0
+offset_right = 87.0
+offset_bottom = -88.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("7_xwhdp")
+theme_override_font_sizes/font_size = 12
+disabled = true
+text = "To Town"
+
+[node name="NewRun" type="Button" parent="ResultsPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 90.0
+offset_top = -108.0
+offset_right = 149.0
+offset_bottom = -88.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("7_xwhdp")
+theme_override_font_sizes/font_size = 12
+disabled = true
+text = "Go Again!"
+
+[node name="TopRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -180.0
+offset_bottom = -180.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="BotRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 180.0
+offset_bottom = 180.00061
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ra32m")
+}
+
+[connection signal="button_up" from="ResultsPanel/ToTown" to="." method="_on_to_town_button_up"]
+[connection signal="button_up" from="ResultsPanel/NewRun" to="." method="_on_new_run_button_up"]

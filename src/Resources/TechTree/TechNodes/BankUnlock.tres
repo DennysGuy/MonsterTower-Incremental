@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="TechNodeStats" load_steps=3 format=3 uid="uid://cmbxvekbk2uxx"]
+
+[ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_byv8u"]
+[ext_resource type="Texture2D" uid="uid://pdbeydq1wtsy" path="res://Assets/NodeGraphics/BankNodeIcon.png" id="1_y8g6j"]
+
+[resource]
+script = ExtResource("1_byv8u")
+node_name = "Banking"
+icon = ExtResource("1_y8g6j")
+description = "Open a bank account that grants you 4 extra inventory slots. Items transfer automatically after a Tower Expedition if account has open slots"
+currency_required = 250
+node_type = 1
+stat_name = "Bank"
+prereqs = Array[String](["Item Bag 1:1"])
+metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

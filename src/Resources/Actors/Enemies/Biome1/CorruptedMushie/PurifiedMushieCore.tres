@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EnemyDrop" load_steps=3 format=3 uid="uid://cnd7ngdtcfmgc"]
+
+[ext_resource type="Texture2D" uid="uid://bkj0kj26ahgl8" path="res://Assets/Enemies/CorruptedMushie/PurifiedMushieCore.png" id="1_5ja0g"]
+[ext_resource type="Script" uid="uid://cubudt76pshmm" path="res://src/Scripts/Enemies/enemy_drop.gd" id="1_e7a3s"]
+
+[resource]
+script = ExtResource("1_e7a3s")
+drop_icon = ExtResource("1_5ja0g")
+item_type = 1
+item_name = "Purified Mushie Core"
+sell_value = 30
+shop_icon = ExtResource("1_5ja0g")
+metadata/_custom_type_script = "uid://cubudt76pshmm"

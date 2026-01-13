@@ -9,4 +9,6 @@ node_name = "Tower License"
 icon = ExtResource("1_3154w")
 description = "A license granting an explorer access to the Tower. Access is limited at first and will gradually expand as the explorer proves their competence."
 unlocked = true
+node_type = 1
+stat_name = "Tower Pass"
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

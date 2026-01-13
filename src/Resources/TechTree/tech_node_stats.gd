@@ -7,6 +7,7 @@ class_name TechNodeStats extends Resource
 @export var max_level : int = 1
 @export var current_level : int = 0
 @export var currency_required : int = 0
+@export var node_type : TechTreeManager.TECH_NODE_TYPE
 
 @export_group("Player Stat Data")
 @export var stat_name : String

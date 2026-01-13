@@ -22,13 +22,24 @@ const KNOCKBACK_FORCE : int = 300
 	"Max Health" : 50,
 	"Max MP": 50,
 	"Equipped Sword": 0,
-	"Overlapping Hits" : 1.0
+	"Overlapping Hits" : 1.0,
+	"Bag": 1,
+	"Max Bank Slots": 4,
+	"Max Bag Stack": 4,
+	"Max Bank Stack":6
+}
+
+@onready var facilities_unlocked : Dictionary[String, bool] = {
+	"Tower Pass" : false,
+	"Cooking Station" : false,
+	"Crafting Station" : false,
+	"Refinery Station" : false,
+	"Bank": false
 }
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
-
 
 func get_sword_name() -> String:
 	match player_stats["Equipped Sword"]:
@@ -37,8 +48,20 @@ func get_sword_name() -> String:
 		_:
 			return "Wooden Sword"
 
+func get_bag() -> ItemBag:
+	match int(player_stats["Bag"]):
+		1: return preload("uid://cuwof21s5e74c")
+		2: return preload("uid://mbne7hjkpnqi")
+		_: return preload("uid://cuwof21s5e74c")
 
-func upgrade_player_stat(stat_name : String, interval : float) -> void:
+func upgrade_player_stat(stat_name : String, interval : float, node_type : TechTreeManager.TECH_NODE_TYPE) -> void:
+	
+	if node_type == TechTreeManager.TECH_NODE_TYPE.FACILITY:
+		facilities_unlocked[stat_name] = true
+		print("stat name: %s is unclocked : %s" % [stat_name, facilities_unlocked[stat_name]])
+		#we'll need a way to figure out how to iniate a cutscene showing unlock sequence
+		return
+	
 	var stat = player_stats.get(stat_name)
 	if stat == null:
 		return
@@ -51,5 +74,5 @@ func upgrade_player_stat(stat_name : String, interval : float) -> void:
 	else:
 		player_stats[stat_name] += interval
 		
-	print("The stat %s is now %s" % [stat_name, player_stats[stat_name]])
+	InventoryManager.update_inventory_bag.emit()
 	TechTreeManager.update_player_stats.emit()

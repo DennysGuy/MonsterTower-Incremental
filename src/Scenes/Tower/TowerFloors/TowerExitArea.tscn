@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://cepv6hcj1jotc"]
+
+[node name="TowerExitArea" type="Area2D"]

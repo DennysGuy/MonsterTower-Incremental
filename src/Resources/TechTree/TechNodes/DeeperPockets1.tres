@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="TechNodeStats" load_steps=3 format=3 uid="uid://ct7a5kggupi55"]
+
+[ext_resource type="Texture2D" uid="uid://d1wcojyutphad" path="res://Assets/NodeGraphics/DeeperPockets1.png" id="1_ihwnd"]
+[ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_l4c50"]
+
+[resource]
+script = ExtResource("1_l4c50")
+node_name = "Deeper Pockets 1"
+icon = ExtResource("1_ihwnd")
+description = "Increases Max Inventory Slot Stack by +2"
+currency_required = 100
+stat_name = "Max Bag Stack"
+upgrade_interval = 2.0
+prereqs = Array[String](["Tower License:1"])
+metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"
