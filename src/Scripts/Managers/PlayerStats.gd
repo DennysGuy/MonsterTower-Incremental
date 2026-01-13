@@ -26,7 +26,8 @@ const KNOCKBACK_FORCE : int = 300
 	"Bag": 1,
 	"Max Bank Slots": 4,
 	"Max Bag Stack": 4,
-	"Max Bank Stack":6
+	"Max Bank Stack":6,
+	"Cooking Speed": 0.1
 }
 
 @onready var facilities_unlocked : Dictionary[String, bool] = {

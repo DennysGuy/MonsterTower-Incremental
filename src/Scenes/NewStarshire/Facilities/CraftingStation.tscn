@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://pk5hdfflc6iy"]
+[gd_scene load_steps=13 format=3 uid="uid://pk5hdfflc6iy"]
 
 [ext_resource type="Script" uid="uid://dvf67sbviff5y" path="res://src/Scripts/Facilities/crafting_station.gd" id="1_e3qwp"]
 [ext_resource type="Texture2D" uid="uid://ce4sagacwwdc8" path="res://Assets/Facilities/CraftingMenu.png" id="2_1wrh0"]
@@ -9,8 +9,11 @@
 [ext_resource type="PackedScene" uid="uid://dil4081ni1hb3" path="res://src/Scenes/NewStarshire/Facilities/IngredientsMenuItem.tscn" id="7_0cin3"]
 [ext_resource type="PackedScene" uid="uid://ukimvty3lrab" path="res://src/Scenes/NewStarshire/Facilities/MenuItemPanel.tscn" id="7_k66hp"]
 [ext_resource type="Texture2D" uid="uid://dbbttn25qb7j5" path="res://Assets/Facilities/CraftingProgressRing.png" id="7_ryl52"]
+[ext_resource type="Script" uid="uid://drr0deykmfrvq" path="res://src/Scripts/StateMachine/state_machine.gd" id="10_ksp7y"]
+[ext_resource type="Script" uid="uid://dx08tn1e61j2d" path="res://src/Scripts/StateMachine/Facilities/crafting_station_idle.gd" id="11_8pjqq"]
+[ext_resource type="Script" uid="uid://d2ecwwj8fggfp" path="res://src/Scripts/StateMachine/Facilities/crafting_station_craft.gd" id="12_8jenx"]
 
-[node name="CraftingStation" type="Control"]
+[node name="CraftingStation" type="Control" node_paths=PackedStringArray("state_machine", "idle_state", "crafting_state")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,6 +22,9 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_e3qwp")
 station_name = "Crafting Station"
+state_machine = NodePath("StateMachine")
+idle_state = NodePath("StateMachine/Idle")
+crafting_state = NodePath("StateMachine/Craft")
 
 [node name="MenuGraphic" type="TextureRect" parent="."]
 layout_mode = 1
@@ -263,7 +269,7 @@ layout_mode = 2
 [node name="MenuItemPanel5" parent="RecipePanel/RecipesContainer" instance=ExtResource("7_k66hp")]
 layout_mode = 2
 
-[node name="DishIconPanel" type="Panel" parent="."]
+[node name="CraftingIconPanel" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -277,7 +283,7 @@ offset_bottom = -48.0
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="DishIcon" type="TextureRect" parent="DishIconPanel"]
+[node name="RecipeIcon" type="TextureRect" parent="CraftingIconPanel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -290,13 +296,14 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("5_bne8p")
 
-[node name="CookingProgressBar" type="TextureProgressBar" parent="DishIconPanel"]
+[node name="CraftingProgressBar" type="TextureProgressBar" parent="CraftingIconPanel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+step = 0.1
 fill_mode = 5
 texture_progress = ExtResource("7_ryl52")
 
@@ -410,7 +417,6 @@ mouse_default_cursor_shape = 2
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("4_dxjxu")
 theme_override_font_sizes/font_size = 12
-disabled = true
 text = "Start!"
 
 [node name="StopCrafting" type="Button" parent="."]
@@ -427,7 +433,6 @@ mouse_default_cursor_shape = 2
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("4_dxjxu")
 theme_override_font_sizes/font_size = 12
-disabled = true
 text = "Stop."
 
 [node name="Exit" type="Button" parent="."]
@@ -445,6 +450,17 @@ theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("3_udv0u")
 text = "Exit
 "
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("10_ksp7y")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("11_8pjqq")
+
+[node name="Craft" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state")]
+script = ExtResource("12_8jenx")
+idle_state = NodePath("../Idle")
 
 [connection signal="button_up" from="I" to="." method="_on_i_button_up"]
 [connection signal="button_up" from="II" to="." method="_on_ii_button_up"]

@@ -4,9 +4,11 @@ class_name NewStarShireMap extends Map
 @onready var guide_log: Label = $GuideLog
 @onready var control: Control = $CanvasLayer/Control
 @onready var enter_market_label: Label = $EnterMarketLabel
+@onready var access_crafting_station: Label = $AccessCraftingStation
 
 var player_in_tower_range : bool = false
 var player_in_market_range : bool = false
+var player_in_cooking_range : bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super()
@@ -19,9 +21,12 @@ func _process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("interact") and player_in_market_range:
 		spawn_grand_market()
+		
+	if Input.is_action_just_pressed("interact") and player_in_cooking_range:
+		spawn_cooking_menu()
 
 func add_tech_tree_to_scene() -> void:
-	var tech_tree : TechTree = preload("uid://b7n3fwd3y85wp").instantiate()
+	var tech_tree : TechTree = preload("uid://cotvjq5dygv7p").instantiate()
 	sub_viewport.add_child(tech_tree)
 
 func set_guide_log(show_log : bool) -> void:
@@ -55,6 +60,9 @@ func spawn_grand_market() -> void:
 	var market : GrandMarketMenu = preload("uid://cfuw5h0apwpq").instantiate()
 	control.add_child(market)
 
+func spawn_cooking_menu() -> void:
+	var cooking_range : CraftingStation = preload("uid://pk5hdfflc6iy").instantiate()
+	control.add_child(cooking_range)
 
 func _on_grand_market_area_body_entered(body: Node2D) -> void:
 	if body is Player:
@@ -66,3 +74,15 @@ func _on_grand_market_area_body_exited(body: Node2D) -> void:
 	if body is Player:
 		player_in_market_range = false
 		enter_market_label.hide()
+
+
+func _on_cooking_station_area_body_entered(body: Node2D) -> void:
+	if body is Player:
+		player_in_cooking_range = true
+		access_crafting_station.show()
+
+
+func _on_cooking_station_area_body_exited(body: Node2D) -> void:
+	if body is Player:
+		player_in_cooking_range = false
+		access_crafting_station.hide()

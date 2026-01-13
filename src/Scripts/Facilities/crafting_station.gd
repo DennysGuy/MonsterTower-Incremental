@@ -15,14 +15,23 @@ enum STATION_TYPE {COOKING, CRAFTING}
 @onready var start_crafting: Button = $StartCrafting
 @onready var stop_crafting: Button = $StopCrafting
 
+@export var stored_recipe : CraftingRecipe
 @onready var recipe_name: Label = $RecipeName
 @onready var level: Label = $Level
 @onready var sell_value: Label = $SellValue
 @onready var can_make: Label = $CanMake
 @onready var success_rate: Label = $SuccessRate
-@onready var dish_icon: TextureRect = $DishIconPanel/DishIcon
-@onready var cooking_progress_bar: TextureProgressBar = $DishIconPanel/CookingProgressBar
+@onready var recipe_icon: TextureRect = $CraftingIconPanel/RecipeIcon
+@onready var crafting_progress_bar: TextureProgressBar = $CraftingIconPanel/CraftingProgressBar
 
+
+@onready var description: RichTextLabel = $DetailsPanel/Description
+
+@export var state_machine : StateMachine
+@export var idle_state : State
+@export var crafting_state : State
+
+var is_crafting : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -33,39 +42,37 @@ func _ready() -> void:
 	InventoryManager.clear_grid_container(ingredients_container)
 	
 	CookingManager.populate_description_panel.connect(populate_details_panel)
-	
+	state_machine.init(self)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	state_machine.process_frame(delta)
 
+func _physics_process(delta: float) -> void:
+	state_machine.process_physics(delta)
+
+func _unhandled_input(event: InputEvent) -> void:
+	state_machine.process_input(event)
 
 func _on_i_button_up() -> void:
 	populate_recipes_list(1)
 
-
 func _on_ii_button_up() -> void:
 	pass # Replace with function body.
-
 
 func _on_iii_button_up() -> void:
 	pass # Replace with function body.
 
-
 func _on_iv_button_up() -> void:
 	pass # Replace with function body.
-
 
 func _on_exit_button_up() -> void:
 	get_parent().queue_free()
 
-
 func _on_start_crafting_button_up() -> void:
-	pass # Replace with function body.
-
+	state_machine.change_state(crafting_state)
 
 func _on_stop_crafting_button_up() -> void:
-	pass # Replace with function body.
-
+	state_machine.change_state(idle_state)
 
 func populate_recipes_list(tier : int) -> void:
 	InventoryManager.clear_grid_container(recipes_container)
@@ -85,9 +92,11 @@ func populate_recipes_list(tier : int) -> void:
 		recipes_container.add_child(recipe_menu_item)
 		
 func populate_details_panel(recipe : CraftingRecipe) -> void:
+	stored_recipe = recipe
 	recipe_name.text = recipe.recipe_name
 	level.text = "Tier %s" % [recipe.recipe_tier]
-	dish_icon.texture = recipe.menu_icon
+	recipe_icon.texture = recipe.menu_icon
+	description.text = recipe.description
 	sell_value.text = "Sell Value %s" % [recipe.output_item.sell_value]
 	can_make.text = "Can Make %s" % [InventoryManager.calculate_quantity(recipe)]
 	success_rate.text = "Success Rate " + str(int(recipe.success_rate*100)) + "%"
