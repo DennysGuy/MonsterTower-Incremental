@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://oonjrpabmces"]
+[gd_scene load_steps=25 format=4 uid="uid://oonjrpabmces"]
 
 [ext_resource type="Script" uid="uid://dpqc54c34418w" path="res://src/Scripts/Maps/NewStarShire/new_star_shire.gd" id="1_gq00g"]
 [ext_resource type="TileSet" uid="uid://74oc55cdwefk" path="res://src/Scenes/NewStarshire/TempFloorTiles.tres" id="2_dvat3"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dkxkwr4us4aak" path="res://src/Scenes/NewStarshire/Facilities/TechTreeComputer.tscn" id="4_cldp6"]
 [ext_resource type="Script" uid="uid://bjq40ntqmf0ih" path="res://src/Scripts/Maps/spawn_point.gd" id="4_gq00g"]
 [ext_resource type="PackedScene" uid="uid://cmog8m28k4ijk" path="res://src/Scenes/Actors/Enemies/PracticeDummy.tscn" id="6_kqfvc"]
+[ext_resource type="Texture2D" uid="uid://bry4670ns2btd" path="res://Assets/Facilities/TempCookingRange.png" id="7_q74qd"]
 [ext_resource type="PackedScene" uid="uid://crvhogk2bnq1s" path="res://src/Scenes/NewStarshire/TowerGuideSprite.tscn" id="9_636af"]
 [ext_resource type="PackedScene" uid="uid://dysg5kffvxbql" path="res://src/Scenes/UI/PlayerHUD.tscn" id="10_4wn0b"]
 [ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="10_636af"]
@@ -617,6 +618,10 @@ tile_set = ExtResource("2_dvat3")
 [node name="TileMapLayer" type="TileMapLayer" parent="TileSets"]
 tile_map_data = PackedByteArray("AAD//w4AAQABAAAAAAD//w8AAQABAAEAAAD//wwAAQABAAAAAAD//w0AAQABAAEAAAD//woAAQABAAAAAAD//wsAAQABAAEAAAD//wgAAQABAAAAAAD//wkAAQABAAEAAAD//wYAAQABAAAAAAD//wcAAQABAAEAAAD//wQAAQABAAAAAAD//wUAAQABAAEAAAD//wIAAQABAAAAAAD//wMAAQABAAEAAAD//wAAAQABAAAAAAD//wEAAQABAAEAAAAUAA4AAQAAAAAAAAAUAA8AAQAAAAEAAAAUAAwAAQAAAAAAAAAUAA0AAQAAAAEAAAAUAAoAAQAAAAAAAAAUAAsAAQAAAAEAAAAUAAgAAQAAAAAAAAAUAAkAAQAAAAEAAAAUAAYAAQAAAAAAAAAUAAcAAQAAAAEAAAAUAAQAAQAAAAAAAAAUAAUAAQAAAAEAAAAUAAIAAQAAAAAAAAAUAAMAAQAAAAEAAAAUAAAAAQAAAAAAAAAUAAEAAQAAAAEAAAA=")
 tile_set = ExtResource("3_oik5f")
+
+[node name="TempCookingRange" type="Sprite2D" parent="."]
+position = Vector2(522, 609)
+texture = ExtResource("7_q74qd")
 
 [node name="PlayerCamera" parent="." instance=ExtResource("3_wtuhv")]
 position = Vector2(-20, 548)

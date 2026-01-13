@@ -24,6 +24,7 @@ SignalBus="*res://src/Scripts/Managers/SignalBus.gd"
 SwordGraphics="*res://src/Scripts/Managers/SwordGraphics.gd"
 HitStopManager="*res://src/Scripts/Managers/HitStopManager.gd"
 InventoryManager="*res://src/Scripts/Managers/InventoryManager.gd"
+CookingManager="*res://src/Scripts/Managers/CookingManager.gd"
 
 [display]
 

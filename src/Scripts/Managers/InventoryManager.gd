@@ -141,7 +141,7 @@ func update_inventories() -> void:
 	update_bank_inventory.emit()
 
 
-func update_grid_container(grid_container : GridContainer, inventory : String) -> void:
+func update_grid_container(grid_container : GridContainer, inventory : String, is_shop : bool = true) -> void:
 	clear_grid_container(grid_container)
 	
 	var max_slots : int
@@ -153,7 +153,8 @@ func update_grid_container(grid_container : GridContainer, inventory : String) -
 	
 	for num in range(max_slots):
 		var slot : ItemSlot = preload("uid://d0s6j8mvikv8c").instantiate()
-		slot.set_as_shop_slot()
+		if is_shop:
+			slot.set_as_shop_slot()
 		
 		if inventory == "Bank":
 			slot.set_locale_as_bank()
@@ -173,3 +174,48 @@ func update_grid_container(grid_container : GridContainer, inventory : String) -
 func clear_grid_container(grid_container : GridContainer) -> void:
 	for child in grid_container.get_children():
 		child.queue_free()
+
+
+func calculate_quantity(recipe: CraftingRecipe) -> int:
+	#get recipe material's list
+	#iterate through the list and divide the quantity required by how many is in 
+	#player's inventory
+	#we will return the lowest of the bunch as the number the player can make will be contingent on the lowest resource
+	var inventory : Array = InventoryManager.inventories["Inventory"].duplicate(true)
+	var bank : Array = InventoryManager.inventories["Bank"].duplicate(true)
+	inventory.append_array(bank)
+	var viable_amount = 99999999999
+	
+	for craft_material in recipe.recipe_list:
+		var inventory_amt : int = 0
+		var divisor : int = 0
+		for item in craft_material.keys():
+			var mat = item
+			inventory_amt = get_quantity(mat)
+			divisor  = (inventory_amt/craft_material[item])
+		
+		if divisor < viable_amount:
+			viable_amount = divisor
+		else:
+			return 0 #will end the function here as the player doesn't have the necessary item
+			
+	return viable_amount
+
+func get_quantity(selected_item : Item) -> int:
+	
+	var inventory = InventoryManager.inventories["Inventory"]
+	var bank = InventoryManager.inventories["Bank"]
+	
+	var count : int = 0
+	for item in inventory:
+		if item["item"] == selected_item:
+			for i in range(item["quantity"]):
+				count += 1
+	
+	for item in bank:
+		if item["item"] == selected_item:
+			for i in range(item["quantity"]):
+				count += 1
+	
+	
+	return count

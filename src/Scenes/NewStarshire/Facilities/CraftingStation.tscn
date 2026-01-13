@@ -1,0 +1,455 @@
+[gd_scene load_steps=10 format=3 uid="uid://pk5hdfflc6iy"]
+
+[ext_resource type="Script" uid="uid://dvf67sbviff5y" path="res://src/Scripts/Facilities/crafting_station.gd" id="1_e3qwp"]
+[ext_resource type="Texture2D" uid="uid://ce4sagacwwdc8" path="res://Assets/Facilities/CraftingMenu.png" id="2_1wrh0"]
+[ext_resource type="FontFile" uid="uid://qgj228ltdttv" path="res://Assets/Fonts/alagard.ttf" id="3_udv0u"]
+[ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="4_dxjxu"]
+[ext_resource type="PackedScene" uid="uid://d0s6j8mvikv8c" path="res://src/Scenes/UI/ItemSlot.tscn" id="4_mboji"]
+[ext_resource type="Texture2D" uid="uid://bkj0kj26ahgl8" path="res://Assets/Enemies/CorruptedMushie/PurifiedMushieCore.png" id="5_bne8p"]
+[ext_resource type="PackedScene" uid="uid://dil4081ni1hb3" path="res://src/Scenes/NewStarshire/Facilities/IngredientsMenuItem.tscn" id="7_0cin3"]
+[ext_resource type="PackedScene" uid="uid://ukimvty3lrab" path="res://src/Scenes/NewStarshire/Facilities/MenuItemPanel.tscn" id="7_k66hp"]
+[ext_resource type="Texture2D" uid="uid://dbbttn25qb7j5" path="res://Assets/Facilities/CraftingProgressRing.png" id="7_ryl52"]
+
+[node name="CraftingStation" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_e3qwp")
+station_name = "Crafting Station"
+
+[node name="MenuGraphic" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_1wrh0")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 11.0
+offset_right = 181.0
+offset_bottom = 34.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("3_udv0u")
+theme_override_font_sizes/font_size = 20
+text = "Crafting Station"
+horizontal_alignment = 1
+
+[node name="AvailableRecipes" type="Label" parent="."]
+layout_mode = 0
+offset_left = 211.0
+offset_top = 45.0
+offset_right = 286.0
+offset_bottom = 68.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("4_dxjxu")
+theme_override_font_sizes/font_size = 20
+text = "Recipes"
+
+[node name="Inventory" type="Label" parent="."]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 39.0
+offset_right = 85.0
+offset_bottom = 52.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_udv0u")
+theme_override_font_sizes/font_size = 13
+text = "Inventory"
+
+[node name="Bank" type="Label" parent="."]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 189.0
+offset_right = 56.0
+offset_bottom = 202.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_udv0u")
+theme_override_font_sizes/font_size = 13
+text = "Bank"
+
+[node name="RecipeName" type="Label" parent="."]
+layout_mode = 0
+offset_left = 416.0
+offset_top = 40.0
+offset_right = 581.0
+offset_bottom = 57.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("4_dxjxu")
+theme_override_font_sizes/font_size = 15
+text = "Cooked Gagootz"
+horizontal_alignment = 1
+
+[node name="Level" type="Label" parent="."]
+layout_mode = 0
+offset_left = 500.0
+offset_top = 62.0
+offset_right = 530.0
+offset_bottom = 72.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("4_dxjxu")
+theme_override_font_sizes/font_size = 8
+text = "Tier 1"
+
+[node name="SellValue" type="Label" parent="."]
+layout_mode = 0
+offset_left = 501.0
+offset_top = 74.0
+offset_right = 596.0
+offset_bottom = 84.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("4_dxjxu")
+theme_override_font_sizes/font_size = 8
+text = "Sell Value: 13450"
+
+[node name="CanMake" type="Label" parent="."]
+layout_mode = 0
+offset_left = 501.0
+offset_top = 85.0
+offset_right = 596.0
+offset_bottom = 95.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("4_dxjxu")
+theme_override_font_sizes/font_size = 8
+text = "Can Make: 34567"
+
+[node name="SuccessRate" type="Label" parent="."]
+layout_mode = 0
+offset_left = 501.0
+offset_top = 96.0
+offset_right = 596.0
+offset_bottom = 108.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("4_dxjxu")
+theme_override_font_sizes/font_size = 10
+text = "Success Rate: 100%"
+
+[node name="InventoryContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 54.0
+offset_right = 166.0
+offset_bottom = 158.0
+columns = 4
+
+[node name="Slot" parent="InventoryContainer" instance=ExtResource("4_mboji")]
+layout_mode = 2
+
+[node name="Slot2" parent="InventoryContainer" instance=ExtResource("4_mboji")]
+layout_mode = 2
+
+[node name="Slot3" parent="InventoryContainer" instance=ExtResource("4_mboji")]
+layout_mode = 2
+
+[node name="Slot4" parent="InventoryContainer" instance=ExtResource("4_mboji")]
+layout_mode = 2
+
+[node name="Slot5" parent="InventoryContainer" instance=ExtResource("4_mboji")]
+layout_mode = 2
+
+[node name="Slot6" parent="InventoryContainer" instance=ExtResource("4_mboji")]
+layout_mode = 2
+
+[node name="Slot7" parent="InventoryContainer" instance=ExtResource("4_mboji")]
+layout_mode = 2
+
+[node name="Slot8" parent="InventoryContainer" instance=ExtResource("4_mboji")]
+layout_mode = 2
+
+[node name="Slot9" parent="InventoryContainer" instance=ExtResource("4_mboji")]
+layout_mode = 2
+
+[node name="Slot10" parent="InventoryContainer" instance=ExtResource("4_mboji")]
+layout_mode = 2
+
+[node name="Slot11" parent="InventoryContainer" instance=ExtResource("4_mboji")]
+layout_mode = 2
+
+[node name="Slot12" parent="InventoryContainer" instance=ExtResource("4_mboji")]
+layout_mode = 2
+
+[node name="BankContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 204.0
+offset_right = 167.0
+offset_bottom = 308.0
+columns = 4
+
+[node name="Slot" parent="BankContainer" instance=ExtResource("4_mboji")]
+layout_mode = 2
+
+[node name="Slot2" parent="BankContainer" instance=ExtResource("4_mboji")]
+layout_mode = 2
+
+[node name="Slot3" parent="BankContainer" instance=ExtResource("4_mboji")]
+layout_mode = 2
+
+[node name="Slot4" parent="BankContainer" instance=ExtResource("4_mboji")]
+layout_mode = 2
+
+[node name="Slot5" parent="BankContainer" instance=ExtResource("4_mboji")]
+layout_mode = 2
+
+[node name="Slot6" parent="BankContainer" instance=ExtResource("4_mboji")]
+layout_mode = 2
+
+[node name="Slot7" parent="BankContainer" instance=ExtResource("4_mboji")]
+layout_mode = 2
+
+[node name="Slot8" parent="BankContainer" instance=ExtResource("4_mboji")]
+layout_mode = 2
+
+[node name="Slot9" parent="BankContainer" instance=ExtResource("4_mboji")]
+layout_mode = 2
+
+[node name="Slot10" parent="BankContainer" instance=ExtResource("4_mboji")]
+layout_mode = 2
+
+[node name="Slot11" parent="BankContainer" instance=ExtResource("4_mboji")]
+layout_mode = 2
+
+[node name="Slot12" parent="BankContainer" instance=ExtResource("4_mboji")]
+layout_mode = 2
+
+[node name="RecipePanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -107.0
+offset_top = -66.0
+offset_right = 65.0
+offset_bottom = 111.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RecipesContainer" type="GridContainer" parent="RecipePanel"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 5.0
+offset_right = 169.0
+offset_bottom = 178.0
+
+[node name="MenuItemPanel" parent="RecipePanel/RecipesContainer" instance=ExtResource("7_k66hp")]
+layout_mode = 2
+
+[node name="MenuItemPanel2" parent="RecipePanel/RecipesContainer" instance=ExtResource("7_k66hp")]
+layout_mode = 2
+
+[node name="MenuItemPanel3" parent="RecipePanel/RecipesContainer" instance=ExtResource("7_k66hp")]
+layout_mode = 2
+
+[node name="MenuItemPanel4" parent="RecipePanel/RecipesContainer" instance=ExtResource("7_k66hp")]
+layout_mode = 2
+
+[node name="MenuItemPanel5" parent="RecipePanel/RecipesContainer" instance=ExtResource("7_k66hp")]
+layout_mode = 2
+
+[node name="DishIconPanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -224.0
+offset_top = -118.0
+offset_right = -146.0
+offset_bottom = -48.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="DishIcon" type="TextureRect" parent="DishIconPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 6.0
+offset_right = -4.2352905
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_bne8p")
+
+[node name="CookingProgressBar" type="TextureProgressBar" parent="DishIconPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+fill_mode = 5
+texture_progress = ExtResource("7_ryl52")
+
+[node name="DetailsPanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -226.0
+offset_top = -45.0
+offset_right = -50.0
+offset_bottom = 125.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Description" type="RichTextLabel" parent="DetailsPanel"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 5.0
+offset_right = 167.0
+offset_bottom = 58.0
+theme_override_constants/outline_size = 3
+theme_override_fonts/normal_font = ExtResource("4_dxjxu")
+theme_override_font_sizes/normal_font_size = 12
+text = "Haya it's a gagootz one great diesh!"
+
+[node name="IngredientsContainer" type="GridContainer" parent="DetailsPanel"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 60.0
+offset_right = 171.0
+offset_bottom = 166.0
+
+[node name="IngredientItem" parent="DetailsPanel/IngredientsContainer" instance=ExtResource("7_0cin3")]
+layout_mode = 2
+
+[node name="IngredientItem2" parent="DetailsPanel/IngredientsContainer" instance=ExtResource("7_0cin3")]
+layout_mode = 2
+
+[node name="IngredientItem3" parent="DetailsPanel/IngredientsContainer" instance=ExtResource("7_0cin3")]
+layout_mode = 2
+
+[node name="I" type="Button" parent="."]
+layout_mode = 0
+offset_left = 213.0
+offset_top = 76.0
+offset_right = 244.0
+offset_bottom = 107.0
+mouse_default_cursor_shape = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("4_dxjxu")
+text = "I"
+
+[node name="II" type="Button" parent="."]
+layout_mode = 0
+offset_left = 248.0
+offset_top = 76.0
+offset_right = 279.0
+offset_bottom = 107.0
+mouse_default_cursor_shape = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("4_dxjxu")
+text = "II"
+
+[node name="III" type="Button" parent="."]
+layout_mode = 0
+offset_left = 282.0
+offset_top = 76.0
+offset_right = 313.0
+offset_bottom = 107.0
+mouse_default_cursor_shape = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("4_dxjxu")
+text = "III"
+
+[node name="IV" type="Button" parent="."]
+layout_mode = 0
+offset_left = 317.0
+offset_top = 76.0
+offset_right = 348.0
+offset_bottom = 107.0
+mouse_default_cursor_shape = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("4_dxjxu")
+text = "IV"
+
+[node name="V" type="Button" parent="."]
+layout_mode = 0
+offset_left = 352.0
+offset_top = 76.0
+offset_right = 383.0
+offset_bottom = 107.0
+mouse_default_cursor_shape = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("4_dxjxu")
+text = "V"
+
+[node name="StartCrafting" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -141.0
+offset_top = 110.0
+offset_right = -96.0
+offset_bottom = 133.0
+grow_horizontal = 0
+mouse_default_cursor_shape = 2
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("4_dxjxu")
+theme_override_font_sizes/font_size = 12
+disabled = true
+text = "Start!"
+
+[node name="StopCrafting" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -92.0
+offset_top = 110.0
+offset_right = -52.0
+offset_bottom = 133.0
+grow_horizontal = 0
+mouse_default_cursor_shape = 2
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("4_dxjxu")
+theme_override_font_sizes/font_size = 12
+disabled = true
+text = "Stop."
+
+[node name="Exit" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -75.0
+offset_top = 6.0
+offset_right = -35.0
+offset_bottom = 29.0
+grow_horizontal = 0
+mouse_default_cursor_shape = 2
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_udv0u")
+text = "Exit
+"
+
+[connection signal="button_up" from="I" to="." method="_on_i_button_up"]
+[connection signal="button_up" from="II" to="." method="_on_ii_button_up"]
+[connection signal="button_up" from="III" to="." method="_on_iii_button_up"]
+[connection signal="button_up" from="IV" to="." method="_on_iv_button_up"]
+[connection signal="button_up" from="StartCrafting" to="." method="_on_start_crafting_button_up"]
+[connection signal="button_up" from="StopCrafting" to="." method="_on_stop_crafting_button_up"]
+[connection signal="button_up" from="Exit" to="." method="_on_exit_button_up"]
