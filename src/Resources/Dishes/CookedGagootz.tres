@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://boeryxspsw8uq"]
+
+[ext_resource type="Script" uid="uid://cu8drgivmhfn" path="res://src/Scripts/item.gd" id="1_xv78r"]
+[ext_resource type="Texture2D" uid="uid://c4aj160n4blbs" path="res://Assets/Facilities/CookingStation/CookedGagootz.png" id="2_d7a32"]
+
+[resource]
+script = ExtResource("1_xv78r")
+item_name = "CookedGagootz"
+sell_value = 120
+shop_icon = ExtResource("2_d7a32")
+metadata/_custom_type_script = "uid://cu8drgivmhfn"

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="TechNodeStats" load_steps=3 format=3 uid="uid://bb7206hq4ygo3"]
+
+[ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_bm6gd"]
+[ext_resource type="Texture2D" uid="uid://cepepw66hin08" path="res://Assets/NodeGraphics/CookingStationNodeIcon.png" id="1_farkg"]
+
+[resource]
+script = ExtResource("1_bm6gd")
+node_name = "Cooking Station"
+icon = ExtResource("1_farkg")
+description = "Unlocks Cooking Station - You can cook fancy dishes and Sell em on the market!"
+node_type = 1
+stat_name = "Cooking Station"
+prereqs = Array[String](["Tower License:1"])
+metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

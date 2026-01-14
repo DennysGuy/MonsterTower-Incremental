@@ -62,6 +62,7 @@ func clear_details() -> void:
 	value.text = "N/A"
 
 func _on_close_button_up() -> void:
+	GameManager.player_can_move = true
 	queue_free()
 
 func init_market() -> void:

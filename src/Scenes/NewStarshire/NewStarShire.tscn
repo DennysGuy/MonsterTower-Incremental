@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://oonjrpabmces"]
+[gd_scene load_steps=28 format=4 uid="uid://oonjrpabmces"]
 
 [ext_resource type="Script" uid="uid://dpqc54c34418w" path="res://src/Scripts/Maps/NewStarShire/new_star_shire.gd" id="1_gq00g"]
 [ext_resource type="TileSet" uid="uid://74oc55cdwefk" path="res://src/Scenes/NewStarshire/TempFloorTiles.tres" id="2_dvat3"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://bjq40ntqmf0ih" path="res://src/Scripts/Maps/spawn_point.gd" id="4_gq00g"]
 [ext_resource type="PackedScene" uid="uid://cmog8m28k4ijk" path="res://src/Scenes/Actors/Enemies/PracticeDummy.tscn" id="6_kqfvc"]
 [ext_resource type="Texture2D" uid="uid://bry4670ns2btd" path="res://Assets/Facilities/TempCookingRange.png" id="7_q74qd"]
+[ext_resource type="Texture2D" uid="uid://btbqj1pb1hac" path="res://Assets/Facilities/SmeltingStation.png" id="8_vdg01"]
 [ext_resource type="PackedScene" uid="uid://crvhogk2bnq1s" path="res://src/Scenes/NewStarshire/TowerGuideSprite.tscn" id="9_636af"]
 [ext_resource type="PackedScene" uid="uid://dysg5kffvxbql" path="res://src/Scenes/UI/PlayerHUD.tscn" id="10_4wn0b"]
 [ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="10_636af"]
@@ -593,6 +594,9 @@ size = Vector2(21, 140)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q74qd"]
 size = Vector2(117, 57)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vdg01"]
+size = Vector2(106, 69)
+
 [node name="NewStarShire" type="Node2D" node_paths=PackedStringArray("spawn_point", "camera", "hud")]
 script = ExtResource("1_gq00g")
 map_name = "New StarShire"
@@ -625,6 +629,10 @@ tile_set = ExtResource("3_oik5f")
 [node name="TempCookingRange" type="Sprite2D" parent="."]
 position = Vector2(522, 609)
 texture = ExtResource("7_q74qd")
+
+[node name="TempSmeltingStation" type="Sprite2D" parent="."]
+position = Vector2(695, 560)
+texture = ExtResource("8_vdg01")
 
 [node name="PlayerCamera" parent="." instance=ExtResource("3_wtuhv")]
 position = Vector2(-20, 548)
@@ -670,7 +678,6 @@ text = "You need a Tower pass before you can Enter..."
 horizontal_alignment = 1
 
 [node name="HUD" parent="." instance=ExtResource("10_4wn0b")]
-visible = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -685,14 +692,14 @@ layout_mode = 0
 offset_right = 640.0
 offset_bottom = 361.0
 mouse_filter = 0
-stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="CanvasLayer/Control/SubViewportContainer"]
 transparent_bg = true
 handle_input_locally = false
 canvas_item_default_texture_filter = 0
 physics_object_picking = true
-size = Vector2i(640, 361)
+sdf_scale = 0
+size = Vector2i(640, 360)
 render_target_update_mode = 4
 
 [node name="GrandMarketArea" type="Area2D" parent="."]
@@ -761,6 +768,18 @@ theme_override_fonts/font = ExtResource("10_636af")
 theme_override_font_sizes/font_size = 13
 text = "Press 'E' to Access Cooking Station"
 
+[node name="AccessSmeltingStation" type="Label" parent="."]
+visible = false
+offset_left = 583.0
+offset_top = 529.0
+offset_right = 809.0
+offset_bottom = 545.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("10_636af")
+theme_override_font_sizes/font_size = 13
+text = "Press 'E' to Access SmeltingStation"
+
 [node name="CookingStationArea" type="Area2D" parent="."]
 position = Vector2(527, 620)
 
@@ -768,12 +787,21 @@ position = Vector2(527, 620)
 position = Vector2(-7.5, -9.5)
 shape = SubResource("RectangleShape2D_q74qd")
 
+[node name="SmeltingStationArea" type="Area2D" parent="."]
+position = Vector2(694, 605)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SmeltingStationArea"]
+position = Vector2(2, 0.5)
+shape = SubResource("RectangleShape2D_vdg01")
+
 [connection signal="body_entered" from="TowerArea" to="." method="_on_tower_area_body_entered"]
 [connection signal="body_exited" from="TowerArea" to="." method="_on_tower_area_body_exited"]
 [connection signal="body_entered" from="GrandMarketArea" to="." method="_on_grand_market_area_body_entered"]
 [connection signal="body_exited" from="GrandMarketArea" to="." method="_on_grand_market_area_body_exited"]
 [connection signal="body_entered" from="CookingStationArea" to="." method="_on_cooking_station_area_body_entered"]
 [connection signal="body_exited" from="CookingStationArea" to="." method="_on_cooking_station_area_body_exited"]
+[connection signal="body_entered" from="SmeltingStationArea" to="." method="_on_smelting_station_area_body_entered"]
+[connection signal="body_exited" from="SmeltingStationArea" to="." method="_on_smelting_station_area_body_exited"]
 
 [editable path="PracticeDummy"]
 [editable path="HUD"]

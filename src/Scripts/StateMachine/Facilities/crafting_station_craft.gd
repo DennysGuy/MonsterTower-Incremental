@@ -23,9 +23,13 @@ func enter() -> void:
 	super()
 	parent.is_crafting = true
 	#remove resources from inventory --> we can't get into here unless there is enough inventory space/resources
+	InventoryManager.remove_resources_from_inventory(parent.stored_recipe.recipe_list)
+	parent.populate_recipes_list(parent.selected_tier)
+	parent.update_inventories()
 	parent.crafting_progress_bar.max_value = parent.stored_recipe.crafting_time
 	parent.crafting_progress_bar.value = 0
 func exit() -> void:
+	parent.is_crafting = false
 	parent.crafting_progress_bar.value = 0
 
 func process_input(_event: InputEvent) -> State:
@@ -44,6 +48,22 @@ func process_physics(_delta: float) -> State:
 			parent.crafting_progress_bar.value += PlayerStats.player_stats["Cooking Speed"]
 	
 	if parent.crafting_progress_bar.value >= parent.crafting_progress_bar.max_value:
+		var num_check = randi_range(0,100)
+		if num_check <= parent.stored_recipe.success_rate * 100:
+			if !InventoryManager.add_item("Inventory", parent.stored_recipe.output_item):
+				InventoryManager.add_item("Bank", parent.stored_recipe.output_item)
+			parent.failure_message.hide()
+		else:
+			parent.failure_message.show()
+			
+		parent.update_inventories()
+		
+		if InventoryManager.check_if_can_add_to_inventory(parent.stored_recipe.output_item):
+			var quantity : int = InventoryManager.calculate_quantity(parent.stored_recipe)
+			if quantity > 0:
+				return self #hopefull we restart the cycle
+		
+		parent.clear_details_panel()
 		return idle_state #we'll do this for now just to test
 	
 	

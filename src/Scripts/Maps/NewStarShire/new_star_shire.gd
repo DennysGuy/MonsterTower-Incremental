@@ -9,6 +9,11 @@ class_name NewStarShireMap extends Map
 var player_in_tower_range : bool = false
 var player_in_market_range : bool = false
 var player_in_cooking_range : bool = false
+var player_in_smelting_range : bool = false
+
+@onready var access_smelting_station: Label = $AccessSmeltingStation
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super()
@@ -16,17 +21,23 @@ func _ready() -> void:
 	hud.animation_player.play("CloseIn")
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("interact") and player_in_tower_range:
+	if Input.is_action_just_pressed("interact") and player_in_tower_range and GameManager.player_can_move:
 		go_to_test_floor()
 	
-	if Input.is_action_just_pressed("interact") and player_in_market_range:
+	if Input.is_action_just_pressed("interact") and player_in_market_range and GameManager.player_can_move:
+		GameManager.player_can_move = false
 		spawn_grand_market()
 		
-	if Input.is_action_just_pressed("interact") and player_in_cooking_range:
+	if Input.is_action_just_pressed("interact") and player_in_cooking_range and GameManager.player_can_move:
+		GameManager.player_can_move = false
 		spawn_cooking_menu()
+	
+	if Input.is_action_just_pressed("interact") and player_in_smelting_range and GameManager.player_can_move:
+		GameManager.player_can_move = false
+		spawn_smelting_menu()
 
 func add_tech_tree_to_scene() -> void:
-	var tech_tree : TechTree = preload("uid://cotvjq5dygv7p").instantiate()
+	var tech_tree : TechTree = preload("uid://b7n3fwd3y85wp").instantiate()
 	sub_viewport.add_child(tech_tree)
 
 func set_guide_log(show_log : bool) -> void:
@@ -61,8 +72,12 @@ func spawn_grand_market() -> void:
 	control.add_child(market)
 
 func spawn_cooking_menu() -> void:
-	var cooking_range : CraftingStation = preload("uid://pk5hdfflc6iy").instantiate()
+	var cooking_range : CookingMenu = preload("uid://cotvjq5dygv7p").instantiate()
 	control.add_child(cooking_range)
+
+func spawn_smelting_menu() -> void:
+	var smelting_station : SmeltingMenu = preload("uid://dtf6m65mtihb8").instantiate()
+	control.add_child(smelting_station)
 
 func _on_grand_market_area_body_entered(body: Node2D) -> void:
 	if body is Player:
@@ -86,3 +101,15 @@ func _on_cooking_station_area_body_exited(body: Node2D) -> void:
 	if body is Player:
 		player_in_cooking_range = false
 		access_crafting_station.hide()
+
+
+func _on_smelting_station_area_body_entered(body: Node2D) -> void:
+	if body is Player:
+		player_in_smelting_range = true
+		access_smelting_station.show()
+
+
+func _on_smelting_station_area_body_exited(body: Node2D) -> void:
+	if body is Player:
+		player_in_smelting_range = false
+		access_smelting_station.hide()

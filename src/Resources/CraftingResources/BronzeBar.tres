@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://buu8pdcooh3hc"]
+
+[ext_resource type="Script" uid="uid://cu8drgivmhfn" path="res://src/Scripts/item.gd" id="1_0wsfh"]
+[ext_resource type="Texture2D" uid="uid://ly0aciytxc8y" path="res://Assets/Facilities/SmeltingStation/BronzeBar.png" id="2_1tsc2"]
+
+[resource]
+script = ExtResource("1_0wsfh")
+item_name = "Bronze Bar"
+sell_value = 95
+shop_icon = ExtResource("2_1tsc2")
+metadata/_custom_type_script = "uid://cu8drgivmhfn"
