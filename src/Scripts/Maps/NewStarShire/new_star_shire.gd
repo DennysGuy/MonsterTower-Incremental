@@ -21,18 +21,18 @@ func _ready() -> void:
 	hud.animation_player.play("CloseIn")
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("interact") and player_in_tower_range and GameManager.player_can_move:
+	if Input.is_action_just_pressed("interact") and player_in_tower_range and GameManager.player_can_move and PlayerStats.facilities_unlocked["Tower Pass"]:
 		go_to_test_floor()
 	
 	if Input.is_action_just_pressed("interact") and player_in_market_range and GameManager.player_can_move:
 		GameManager.player_can_move = false
 		spawn_grand_market()
 		
-	if Input.is_action_just_pressed("interact") and player_in_cooking_range and GameManager.player_can_move:
+	if Input.is_action_just_pressed("interact") and player_in_cooking_range and GameManager.player_can_move and PlayerStats.facilities_unlocked["Cooking Station"]:
 		GameManager.player_can_move = false
 		spawn_cooking_menu()
 	
-	if Input.is_action_just_pressed("interact") and player_in_smelting_range and GameManager.player_can_move:
+	if Input.is_action_just_pressed("interact") and player_in_smelting_range and GameManager.player_can_move and PlayerStats.facilities_unlocked["Refinery Station"]:
 		GameManager.player_can_move = false
 		spawn_smelting_menu()
 
@@ -94,6 +94,10 @@ func _on_grand_market_area_body_exited(body: Node2D) -> void:
 func _on_cooking_station_area_body_entered(body: Node2D) -> void:
 	if body is Player:
 		player_in_cooking_range = true
+		if !PlayerStats.facilities_unlocked["Cooking Station"]:
+			access_crafting_station.text = "Cooking Range under construction!"
+		else:
+			access_crafting_station.text = "Press 'E' to access Cooking Range"
 		access_crafting_station.show()
 
 
@@ -106,6 +110,10 @@ func _on_cooking_station_area_body_exited(body: Node2D) -> void:
 func _on_smelting_station_area_body_entered(body: Node2D) -> void:
 	if body is Player:
 		player_in_smelting_range = true
+		if !PlayerStats.facilities_unlocked["Refinery Station"]:
+			access_smelting_station.text = "Refinery under construction!"
+		else:
+			access_smelting_station.text = "Press 'E' to access Refinery"
 		access_smelting_station.show()
 
 

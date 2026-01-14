@@ -10,7 +10,7 @@ func enter() -> void:
 	parent.set_sword_texture(animation_name)
 	parent.timer.wait_time = animation_duration
 	parent.timer.start()
-	
+	parent.velocity = Vector2.ZERO
 
 func exit() -> void:
 	pass

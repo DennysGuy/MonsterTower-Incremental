@@ -779,6 +779,7 @@ theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("10_636af")
 theme_override_font_sizes/font_size = 13
 text = "Press 'E' to Access SmeltingStation"
+horizontal_alignment = 1
 
 [node name="CookingStationArea" type="Area2D" parent="."]
 position = Vector2(527, 620)

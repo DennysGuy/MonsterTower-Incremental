@@ -18,7 +18,7 @@ func process_input(_event: InputEvent) -> State:
 	if !GameManager.player_can_move:
 		return null
 
-	if _event.is_action_pressed("swing_sword"):
+	if _event.is_action_pressed("swing_sword") and GameManager.player_can_move:
 		return attack_1_state
 
 	if _event.is_action_pressed("add_currency"):

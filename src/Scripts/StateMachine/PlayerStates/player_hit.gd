@@ -8,6 +8,7 @@ var knock_back_direction : int
 func enter() -> void:
 	super()
 	if parent.stored_enemy:
+		GameManager.player_can_move = false
 		parent.set_sword_texture(animation_name)
 		parent.timer.wait_time = wait_time
 		parent.invincibility_timer.wait_time = invincibility_time
@@ -19,6 +20,8 @@ func enter() -> void:
 		parent.start_invincibility()
 
 func exit() -> void:
+	parent.velocity = Vector2.ZERO
+	GameManager.player_can_move = true
 	parent.stored_enemy = null
 
 func process_input(_event: InputEvent) -> State:

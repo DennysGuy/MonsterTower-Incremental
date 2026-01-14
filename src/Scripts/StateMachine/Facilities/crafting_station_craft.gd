@@ -28,6 +28,7 @@ func enter() -> void:
 	parent.update_inventories()
 	parent.crafting_progress_bar.max_value = parent.stored_recipe.crafting_time
 	parent.crafting_progress_bar.value = 0
+	
 func exit() -> void:
 	parent.is_crafting = false
 	parent.crafting_progress_bar.value = 0
