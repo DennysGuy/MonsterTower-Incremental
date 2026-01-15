@@ -11,7 +11,7 @@ func enter() -> void:
 	parent.timer.start()
 	
 func exit() -> void:
-	pass
+	parent.clear_effect_texture()
 
 func process_input(_event: InputEvent) -> State:
 	return null

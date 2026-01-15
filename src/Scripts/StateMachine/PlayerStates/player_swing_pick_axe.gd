@@ -10,7 +10,7 @@ func enter() -> void:
 	parent.velocity = Vector2.ZERO
 
 func exit() -> void:
-	pass
+	parent.clear_effect_texture()
 
 func process_input(_event: InputEvent) -> State:
 	return null
@@ -20,7 +20,11 @@ func process_frame(_delta: float) -> State:
 
 func process_physics(_delta: float) -> State:
 	
-	if parent.timer.time_left <= 0:
+	if parent.stored_ore_rock == null:
 		return idle_state
+	
+	if parent.timer.time_left <= 0:
+		if !Input.is_action_pressed("swing_sword"):
+			return idle_state
 	
 	return null

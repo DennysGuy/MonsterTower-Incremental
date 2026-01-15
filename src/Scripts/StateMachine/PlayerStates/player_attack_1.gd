@@ -13,7 +13,7 @@ func enter() -> void:
 	parent.velocity = Vector2.ZERO
 
 func exit() -> void:
-	pass
+	parent.clear_effect_texture()
 
 func process_input(_event: InputEvent) -> State:
 	return null

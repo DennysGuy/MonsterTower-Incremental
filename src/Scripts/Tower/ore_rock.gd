@@ -6,6 +6,7 @@ class_name OreRock extends Node2D
 @onready var ore_rock_graphic: Sprite2D = $OreRockGraphic
 @onready var name_tag: NameTag = $NameTag
 @onready var ore_rock_area: Area2D = $OreRockArea
+@onready var directions: Label = $Directions
 
 var player : Player
 var health : int
@@ -32,12 +33,20 @@ func _unhandled_input(event: InputEvent) -> void:
 	state_machine.process_input(event)
 
 func _on_ore_rock_area_body_entered(body: Node2D) -> void:
-	if body is Player and PlayerStats.facilities_unlocked["Refinery Station"]:
-		body.stored_ore_rock = self
-
+	if body is Player:
+		if PlayerStats.facilities_unlocked["Refinery Station"]:
+			directions.text = "Press/Hold 'F' to Mine!"
+			body.stored_ore_rock = self
+		else:
+			directions.text = "Unlock the Refinery to Mine!"
+	
+	directions.show()
+	
 func _on_ore_rock_area_body_exited(body: Node2D) -> void:
-	if body is Player and PlayerStats.facilities_unlocked["Refinery Station"]:
-		body.stored_ore_rock = null
+	if body is Player: 
+		if PlayerStats.facilities_unlocked["Refinery Station"]:
+			body.stored_ore_rock = null
+		directions.hide()
 
 func damage_ore_rock(damage : int) -> void:
 	enemy_health_bar.show()
