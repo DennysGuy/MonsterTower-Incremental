@@ -11,5 +11,5 @@ description = "Open a bank account that grants you 4 extra inventory slots. Item
 currency_required = 250
 node_type = 1
 stat_name = "Bank"
-prereqs = Array[String](["Item Bag 1:1"])
+prereqs = Array[String](["Item Bag 1:1", "Deeper Pockets 1:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

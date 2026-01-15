@@ -15,15 +15,18 @@ var t : float = 0.0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	base_y = position.y
-	player = get_tree().get_first_node_in_group("Player")
+	
 	animation_player.play("Spawn")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if player == null:
+		player = get_tree().get_first_node_in_group("Player")
+	
 	t += delta * hover_speed
 	position.y = base_y + sin(t) * hover_height
 	if can_pick_up:
-		global_position = global_position.move_toward(player.coin_purse.global_position,1.4)
+		global_position = global_position.move_toward(player.coin_purse.global_position,2.2)
 		var tween : Tween = get_tree().create_tween()
 		tween.tween_property(self, "modulate:a", 0.0, 0.5)
 		if global_position == player.coin_purse.global_position:

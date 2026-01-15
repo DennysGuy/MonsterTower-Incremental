@@ -12,7 +12,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var parent
 
 func enter() -> void:
-	if parent.animation_player:
+	if parent is Entity and parent.animation_player:
 		parent.animation_player.play(animation_name)
 
 func exit() -> void:

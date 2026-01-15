@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="TechNodeStats" load_steps=3 format=3 uid="uid://peiyat841rxh"]
+
+[ext_resource type="Texture2D" uid="uid://b804nepv55f6s" path="res://Assets/NodeGraphics/RefineryStationNodeIcon.png" id="1_70cap"]
+[ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_bi6dd"]
+
+[resource]
+script = ExtResource("1_bi6dd")
+node_name = "Refinery Station"
+icon = ExtResource("1_70cap")
+description = "Refine raw resources dropped from ore rocks"
+currency_required = 500
+node_type = 1
+stat_name = "Refinery Station"
+prereqs = Array[String](["Tower License:1"])
+metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

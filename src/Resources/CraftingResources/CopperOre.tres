@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EnemyDrop" load_steps=3 format=3 uid="uid://dkgm0qg2cosd7"]
+
+[ext_resource type="Texture2D" uid="uid://bd18ogh1y0q1k" path="res://Assets/EnvironmentalAssets/CopperOre.png" id="1_bmdr0"]
+[ext_resource type="Script" uid="uid://cubudt76pshmm" path="res://src/Scripts/Enemies/enemy_drop.gd" id="1_nvioa"]
+
+[resource]
+script = ExtResource("1_nvioa")
+drop_icon = ExtResource("1_bmdr0")
+item_type = 2
+drop_chance = 0.75
+item_name = "Copper Ore"
+sell_value = 30
+shop_icon = ExtResource("1_bmdr0")
+metadata/_custom_type_script = "uid://cubudt76pshmm"

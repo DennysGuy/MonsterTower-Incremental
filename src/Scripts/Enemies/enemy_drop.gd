@@ -5,5 +5,6 @@ class_name EnemyDrop extends Item
 
 enum ITEM_TYPE {NOVELTY, COOKING, CRAFTING}
 @export var item_type : ITEM_TYPE
+@export var drop_chance : float
 
  

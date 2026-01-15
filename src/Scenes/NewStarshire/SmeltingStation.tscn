@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://debxddfwr0kuy"]
+
+[ext_resource type="Texture2D" uid="uid://chhm5f5xmlr0j" path="res://Assets/Facilities/SmeltingStationContructionMode.png" id="1_elr15"]
+[ext_resource type="Script" uid="uid://b6efmxwkcji1r" path="res://src/Scripts/Facilities/smelting_station.gd" id="2_wbtfr"]
+
+[node name="TempSmeltingStation" type="Sprite2D"]
+texture = ExtResource("1_elr15")
+script = ExtResource("2_wbtfr")

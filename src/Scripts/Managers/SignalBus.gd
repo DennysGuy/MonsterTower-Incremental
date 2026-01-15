@@ -8,3 +8,7 @@ signal spawn_tech_tree
 signal update_player_health(value : int)
 @warning_ignore("unused_signal")
 signal spawn_respawn_box
+@warning_ignore("unused_signal")
+signal unlock_refinery
+@warning_ignore("unused_signal")
+signal unlock_cooking_station

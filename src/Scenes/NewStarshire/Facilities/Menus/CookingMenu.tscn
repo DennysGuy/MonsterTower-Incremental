@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://cotvjq5dygv7p"]
+
+[ext_resource type="Script" uid="uid://on0k2r5bt3h1" path="res://src/Scripts/Facilities/Menus/cooking_menu.gd" id="1_obxg0"]
+[ext_resource type="PackedScene" uid="uid://pk5hdfflc6iy" path="res://src/Scenes/NewStarshire/Facilities/CraftingStation.tscn" id="2_o2r2d"]
+
+[node name="CookingMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_obxg0")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CraftingStation" parent="." instance=ExtResource("2_o2r2d")]
+layout_mode = 1
+station_name = "Cooking Range"
+
+[editable path="CraftingStation"]

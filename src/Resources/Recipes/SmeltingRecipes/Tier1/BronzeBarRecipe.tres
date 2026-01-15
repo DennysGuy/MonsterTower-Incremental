@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="CraftingRecipe" load_steps=6 format=3 uid="uid://bxa51f001ecsc"]
+
+[ext_resource type="Texture2D" uid="uid://ly0aciytxc8y" path="res://Assets/Facilities/SmeltingStation/BronzeBar.png" id="1_fjdgp"]
+[ext_resource type="Script" uid="uid://cljygiasf4103" path="res://src/Scripts/Facilities/crafting_recipe.gd" id="1_qoa68"]
+[ext_resource type="Resource" uid="uid://buu8pdcooh3hc" path="res://src/Resources/CraftingResources/BronzeBar.tres" id="2_7dt6a"]
+[ext_resource type="Resource" uid="uid://dkgm0qg2cosd7" path="res://src/Resources/CraftingResources/CopperOre.tres" id="3_pi71e"]
+[ext_resource type="Resource" uid="uid://bcj3s4yvea533" path="res://src/Resources/CraftingResources/TinOre.tres" id="4_3j0td"]
+
+[resource]
+script = ExtResource("1_qoa68")
+recipe_name = "Bronze Bar"
+menu_icon = ExtResource("1_fjdgp")
+description = "Used in crafting low-tier weapons. Great for a noob starting out!"
+recipe_tier = 1
+crafting_time = 90.0
+success_rate = 0.9
+output_item = ExtResource("2_7dt6a")
+recipe_list = Array[Dictionary]([{
+ExtResource("3_pi71e"): 1
+}, {
+ExtResource("4_3j0td"): 1
+}])
+metadata/_custom_type_script = "uid://cljygiasf4103"

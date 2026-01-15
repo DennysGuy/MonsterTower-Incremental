@@ -1,0 +1,73 @@
+[gd_scene load_steps=4 format=3 uid="uid://ukimvty3lrab"]
+
+[ext_resource type="Script" uid="uid://c0j6v88sfql5t" path="res://src/Scripts/Facilities/menu_recipe_panel.gd" id="1_amis3"]
+[ext_resource type="Texture2D" uid="uid://car57iuhehrle" path="res://Assets/Enemies/CorruptedMushie/MushieFiberousStalk.png" id="1_ecfbo"]
+[ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="2_amis3"]
+
+[node name="MenuItemPanel" type="Panel" node_paths=PackedStringArray("recipe_icon", "can_make", "title")]
+custom_minimum_size = Vector2(160, 30)
+script = ExtResource("1_amis3")
+recipe_icon = NodePath("RecipeIcon")
+can_make = NodePath("CanMake")
+title = NodePath("Title")
+
+[node name="RecipeIcon" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 4.0
+offset_top = -12.0
+offset_right = 28.0
+offset_bottom = 12.0
+grow_vertical = 2
+texture = ExtResource("1_ecfbo")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -111.0
+offset_top = -14.5
+offset_right = -2.0
+offset_bottom = 3.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_amis3")
+theme_override_font_sizes/font_size = 12
+text = "Cooked Gagootz"
+horizontal_alignment = 2
+
+[node name="CanMake" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -112.0
+offset_top = 0.5
+offset_right = -3.0
+offset_bottom = 13.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_amis3")
+theme_override_font_sizes/font_size = 10
+text = "Can Make : 50"
+horizontal_alignment = 2
+
+[node name="SelectButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+
+[connection signal="button_up" from="SelectButton" to="." method="_on_select_button_button_up"]

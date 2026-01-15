@@ -3,6 +3,23 @@
 [ext_resource type="Script" uid="uid://br4paa5kpajai" path="res://src/Scenes/Tower/item_interactable.gd" id="1_7i62p"]
 [ext_resource type="Texture2D" uid="uid://bk4miqdmvi7gh" path="res://Assets/Enemies/CorruptedMushie/CorruptedMushieSpore.png" id="1_va8fw"]
 
+[sub_resource type="Animation" id="Animation_m3p64"]
+resource_name = "Hover"
+length = 0.9
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -12), Vector2(0, -14), Vector2(0, -10), Vector2(0, -12)]
+}
+
 [sub_resource type="Animation" id="Animation_rejhq"]
 length = 0.001
 tracks/0/type = "value"
@@ -93,23 +110,6 @@ tracks/3/keys = {
 "args": [],
 "method": &"set_to_pick_up"
 }]
-}
-
-[sub_resource type="Animation" id="Animation_m3p64"]
-resource_name = "Hover"
-length = 0.9
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(0, -12), Vector2(0, -14), Vector2(0, -10), Vector2(0, -12)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rejhq"]
