@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="OreRockStats" load_steps=4 format=3 uid="uid://svq41nllat54"]
+
+[ext_resource type="Texture2D" uid="uid://dr0jk0o8ff1si" path="res://Assets/OreRock/CopperOre.png" id="1_t4crw"]
+[ext_resource type="Script" uid="uid://dkco4nipcf7kc" path="res://src/Scripts/Tower/ore_rock_stats.gd" id="1_yfh7u"]
+[ext_resource type="Resource" uid="uid://dkgm0qg2cosd7" path="res://src/Resources/CraftingResources/CopperOre.tres" id="2_ft426"]
+
+[resource]
+script = ExtResource("1_yfh7u")
+ore_rock_name = "Copper Ore Rock"
+max_health = 50
+graphic = ExtResource("1_t4crw")
+ore_drop_chance = 0.6
+output_item = ExtResource("2_ft426")
+metadata/_custom_type_script = "uid://dkco4nipcf7kc"

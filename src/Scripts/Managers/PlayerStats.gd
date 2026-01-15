@@ -22,12 +22,15 @@ const KNOCKBACK_FORCE : int = 300
 	"Max Health" : 50,
 	"Max MP": 50,
 	"Equipped Sword": 0,
+	"Equipped Pickaxe": 0,
 	"Overlapping Hits" : 1.0,
 	"Bag": 1,
 	"Max Bank Slots": 4,
 	"Max Bag Stack": 4,
 	"Max Bank Stack":6,
-	"Cooking Speed": 0.1
+	"Cooking Speed": 0.1,
+	"Smelting Speed": 0.1,
+	"Mining Damage": 5
 }
 
 @onready var facilities_unlocked : Dictionary[String, bool] = {
@@ -48,6 +51,13 @@ func get_sword_name() -> String:
 			return "Wooden Sword"
 		_:
 			return "Wooden Sword"
+
+func get_pickaxe_name() -> String:
+	match player_stats["Equipped Pickaxe"]:
+		0:
+			return "Stone Pickaxe"
+		_:
+			return "Stone Pickaxe"
 
 func get_bag() -> ItemBag:
 	match int(player_stats["Bag"]):

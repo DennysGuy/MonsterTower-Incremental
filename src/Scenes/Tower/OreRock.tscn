@@ -1,0 +1,80 @@
+[gd_scene load_steps=12 format=3 uid="uid://colj4ff1w8ij1"]
+
+[ext_resource type="Script" uid="uid://ckfoxaqioqxer" path="res://src/Scripts/Tower/ore_rock.gd" id="1_lwbn5"]
+[ext_resource type="Texture2D" uid="uid://dr0jk0o8ff1si" path="res://Assets/OreRock/CopperOre.png" id="2_74bo4"]
+[ext_resource type="Script" uid="uid://drr0deykmfrvq" path="res://src/Scripts/StateMachine/state_machine.gd" id="4_vqt7g"]
+[ext_resource type="Script" uid="uid://b6g71ajrgl8rq" path="res://src/Scripts/StateMachine/OreRock/ore_rock_phase_1.gd" id="5_4l2l4"]
+[ext_resource type="Script" uid="uid://dggtjviwt8xfw" path="res://src/Scripts/StateMachine/OreRock/ore_rock_phase_2.gd" id="5_bk2wi"]
+[ext_resource type="PackedScene" uid="uid://b8lilr7mgc8l1" path="res://src/Scenes/Actors/Enemies/EnemyHealthBar.tscn" id="5_o5e3m"]
+[ext_resource type="Script" uid="uid://b4qjk4npnk3w1" path="res://src/Scripts/StateMachine/OreRock/ore_rock_phase_3.gd" id="6_bk2wi"]
+[ext_resource type="PackedScene" uid="uid://vo5sm7p34vo6" path="res://src/Scenes/Actors/Utilities/NameTag.tscn" id="6_vqt7g"]
+[ext_resource type="Script" uid="uid://cnayjicqwfhao" path="res://src/Scripts/StateMachine/OreRock/ore_rock_depleted_phase.gd" id="7_gtwp3"]
+[ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="10_kmfgm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o5e3m"]
+size = Vector2(64, 30)
+
+[node name="OreRock" type="Node2D" node_paths=PackedStringArray("state_machine")]
+script = ExtResource("1_lwbn5")
+state_machine = NodePath("StateMachine")
+
+[node name="OreRockGraphic" type="Sprite2D" parent="."]
+position = Vector2(0, -17)
+texture = ExtResource("2_74bo4")
+hframes = 4
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("4_vqt7g")
+initial_state = NodePath("OreRockPhase1")
+
+[node name="OreRockPhase1" type="Node" parent="StateMachine" node_paths=PackedStringArray("ore_rock_phase_2")]
+script = ExtResource("5_4l2l4")
+ore_rock_phase_2 = NodePath("../OreRockPhase2")
+
+[node name="OreRockPhase2" type="Node" parent="StateMachine" node_paths=PackedStringArray("ore_rock_phase_3")]
+script = ExtResource("5_bk2wi")
+ore_rock_phase_3 = NodePath("../OreRockPhase3")
+
+[node name="OreRockPhase3" type="Node" parent="StateMachine" node_paths=PackedStringArray("ore_rock_depleted")]
+script = ExtResource("6_bk2wi")
+ore_rock_depleted = NodePath("../OreRockDepletedPhase")
+
+[node name="OreRockDepletedPhase" type="Node" parent="StateMachine"]
+script = ExtResource("7_gtwp3")
+
+[node name="OreRockArea" type="Area2D" parent="."]
+position = Vector2(0, -9)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OreRockArea"]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_o5e3m")
+
+[node name="EnemyHealthBar" parent="." instance=ExtResource("5_o5e3m")]
+visible = false
+z_index = 4096
+offset_left = -30.0
+offset_top = 15.0
+offset_right = 35.0
+offset_bottom = 25.0
+
+[node name="NameTag" parent="." instance=ExtResource("6_vqt7g")]
+offset_left = -37.0
+offset_right = 51.0
+
+[node name="Directions" type="Label" parent="."]
+visible = false
+z_index = 4096
+offset_left = -63.0
+offset_top = -78.0
+offset_right = 63.0
+offset_bottom = -61.0
+theme_override_colors/font_color = Color(1, 0.5492422, 0.4812314, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("10_kmfgm")
+theme_override_font_sizes/font_size = 9
+text = "Press/Hold 'F' to Mine"
+horizontal_alignment = 1
+
+[connection signal="body_entered" from="OreRockArea" to="." method="_on_ore_rock_area_body_entered"]
+[connection signal="body_exited" from="OreRockArea" to="." method="_on_ore_rock_area_body_exited"]

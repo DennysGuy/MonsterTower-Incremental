@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://cph2krit7yk0t"]
+[gd_scene load_steps=25 format=4 uid="uid://cph2krit7yk0t"]
 
 [ext_resource type="Script" uid="uid://c8p4pei6shyik" path="res://src/Scripts/Maps/test_floor.gd" id="1_a3s6d"]
 [ext_resource type="TileSet" uid="uid://74oc55cdwefk" path="res://src/Scenes/NewStarshire/TempFloorTiles.tres" id="1_tc7oi"]
@@ -9,10 +9,13 @@
 [ext_resource type="Texture2D" uid="uid://d35tn325hxjff" path="res://Assets/EnvironmentalAssets/temp_floor_tile.png" id="5_oxyxm"]
 [ext_resource type="PackedScene" uid="uid://bethw5tnlxnnt" path="res://src/Scenes/Actors/Enemies/CorruptedMushie/CorruptedMushie.tscn" id="6_a3s6d"]
 [ext_resource type="PackedScene" uid="uid://cr6q5dxlkks" path="res://src/Scenes/Tower/LadderArea.tscn" id="6_x3mp3"]
+[ext_resource type="PackedScene" uid="uid://colj4ff1w8ij1" path="res://src/Scenes/Tower/OreRock.tscn" id="7_vss50"]
+[ext_resource type="Resource" uid="uid://svq41nllat54" path="res://src/Resources/OreRock/CopperOreRock.tres" id="8_drgox"]
 [ext_resource type="PackedScene" uid="uid://dysg5kffvxbql" path="res://src/Scenes/UI/PlayerHUD.tscn" id="9_a3s6d"]
 [ext_resource type="PackedScene" uid="uid://crvhogk2bnq1s" path="res://src/Scenes/NewStarshire/TowerGuideSprite.tscn" id="10_k3vyl"]
 [ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="11_orspa"]
 [ext_resource type="PackedScene" uid="uid://cepv6hcj1jotc" path="res://src/Scenes/Tower/TowerFloors/TowerExitArea.tscn" id="11_vnc44"]
+[ext_resource type="Resource" uid="uid://dxfrcyw0rux0q" path="res://src/Resources/OreRock/TinOreRock.tres" id="16_spv67"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vss50"]
 texture = ExtResource("5_oxyxm")
@@ -852,6 +855,14 @@ position = Vector2(441, 192)
 
 [node name="CorruptedMushie10" parent="." instance=ExtResource("6_a3s6d")]
 position = Vector2(535, 192)
+
+[node name="OreRock" parent="." instance=ExtResource("7_vss50")]
+position = Vector2(425, 831)
+ore_rock_stats = ExtResource("8_drgox")
+
+[node name="OreRock2" parent="." instance=ExtResource("7_vss50")]
+position = Vector2(544, 832)
+ore_rock_stats = ExtResource("16_spv67")
 
 [connection signal="body_entered" from="TowerExitArea" to="." method="_on_tower_exit_area_body_entered"]
 [connection signal="body_exited" from="TowerExitArea" to="." method="_on_tower_exit_area_body_exited"]

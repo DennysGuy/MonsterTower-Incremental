@@ -1,13 +1,10 @@
-class_name PlayerAttack1State extends State
+class_name PlayerSwingPickAxe extends State
 
-@export var attack2_state : State
 @export var idle_state : State
-
 
 func enter() -> void:
 	super()
-	parent.hit_box.position.x = 34 * GameManager.set_player_box_direction(parent.player_sprite.flip_h)
-	parent.set_sword_texture(animation_name)
+	parent.set_pickaxe_texture()
 	parent.timer.wait_time = animation_duration
 	parent.timer.start()
 	parent.velocity = Vector2.ZERO
@@ -22,9 +19,12 @@ func process_frame(_delta: float) -> State:
 	return null
 
 func process_physics(_delta: float) -> State:
-	if parent.is_on_floor() and parent.timer.time_left <= 0:
-		if Input.is_action_pressed("swing_sword"):
-			return attack2_state
+	
+	if parent.stored_ore_rock == null:
 		return idle_state
+	
+	if parent.timer.time_left <= 0:
+		if !Input.is_action_pressed("swing_sword"):
+			return idle_state
+	
 	return null
-		
