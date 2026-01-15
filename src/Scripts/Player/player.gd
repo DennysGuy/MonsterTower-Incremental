@@ -10,6 +10,7 @@ class_name Player extends Entity
 
 var stored_ladder : LadderArea
 var stored_enemy : Enemy
+var stored_ore_rock : OreRock
 var in_ladder_area : bool = false
 var is_climbing : bool = false
 var prev_input : int
@@ -29,6 +30,9 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func set_sword_texture(animation_name : String) -> void:
 	sword.texture = SwordGraphics.get_sword_graphic(animation_name)
+
+func set_pickaxe_texture() -> void:
+	sword.texture = SwordGraphics.get_pickaxe_graphic()
 
 func flip_textures(flip : bool) -> void:
 	for cur_sprite in sprites.get_children():
@@ -95,3 +99,10 @@ func _on_ladder_detector_area_exited(area: Area2D) -> void:
 	stored_ladder = null
 	if !in_ladder_area:
 		print("were have left ladder area and the stored ladder is %s " % [stored_ladder])
+
+func attack_ore_rock() -> void:
+	if stored_ore_rock:
+		SignalBus.shake_camera.emit(0.3)
+		var stats_damage : int = int(PlayerStats.player_stats["Mining Damage"])
+		var random_hit : int = randi_range(int(stats_damage * 0.8), stats_damage)
+		stored_ore_rock.damage_ore_rock(random_hit)

@@ -4,6 +4,7 @@ class_name PlayerIdle extends State
 @export var jump_state : State
 @export var fall_state : State
 @export var attack_1_state : State
+@export var swing_pick_axe_state : State
 @export var climb_state : State
 
 func enter() -> void:
@@ -19,6 +20,8 @@ func process_input(_event: InputEvent) -> State:
 		return null
 
 	if _event.is_action_pressed("swing_sword") and GameManager.player_can_move:
+		if parent.stored_ore_rock and PlayerStats.facilities_unlocked["Refinery Station"]:
+			return swing_pick_axe_state
 		return attack_1_state
 
 	if _event.is_action_pressed("add_currency"):

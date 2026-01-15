@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://wuy3aelq8aeg"]
+[gd_scene load_steps=41 format=3 uid="uid://wuy3aelq8aeg"]
 
 [ext_resource type="Script" uid="uid://dm4atx2m8yfn1" path="res://src/Scripts/Player/player.gd" id="1_gw3a7"]
 [ext_resource type="Script" uid="uid://drr0deykmfrvq" path="res://src/Scripts/StateMachine/state_machine.gd" id="2_n7gp4"]
@@ -19,8 +19,12 @@
 [ext_resource type="Script" uid="uid://cjcya703mxlpp" path="res://src/Scripts/StateMachine/PlayerStates/player_hit.gd" id="11_susmm"]
 [ext_resource type="Texture2D" uid="uid://83wb3hhgliie" path="res://Assets/PlayerGraphics/TempPlayer/SwordSwing.png" id="12_er68u"]
 [ext_resource type="Script" uid="uid://bfgl8g5bf5ud4" path="res://src/Scripts/StateMachine/PlayerStates/player_die.gd" id="12_omh5u"]
+[ext_resource type="Script" uid="uid://5srteptn8day" path="res://src/Scripts/StateMachine/PlayerStates/player_swing_pick_axe.gd" id="13_1twwa"]
 [ext_resource type="PackedScene" uid="uid://xsmgmpbxjc3b" path="res://src/Scenes/Actors/Utilities/HitBox.tscn" id="16_cw62c"]
 [ext_resource type="PackedScene" uid="uid://bg1ya0qiin47q" path="res://src/Scenes/Actors/Utilities/HurtBox.tscn" id="17_45oew"]
+[ext_resource type="Texture2D" uid="uid://sgtkxjunvmnq" path="res://Assets/PlayerGraphics/TempPlayer/PickaxeSwing.png" id="20_5so87"]
+[ext_resource type="Texture2D" uid="uid://clgyjtsgxrepg" path="res://Assets/PlayerGraphics/TempPlayer/Pickaxes/PickaxeSwing_Effect.png" id="21_1twwa"]
+[ext_resource type="Texture2D" uid="uid://c1dxfmrpwv7a4" path="res://Assets/PlayerGraphics/TempPlayer/Pickaxes/PickaxeSwing_StonePickaxe.png" id="22_yawj3"]
 
 [sub_resource type="Animation" id="Animation_45oew"]
 resource_name = "Climb"
@@ -755,12 +759,128 @@ tracks/8/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_a5kf2"]
+resource_name = "PickaxeSwing"
+length = 0.5
+step = 0.07
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.21428572, 0.28428572, 0.35428572),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Sword:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Sword:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.21428572, 0.28428572, 0.35428572),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:texture")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("20_5so87")]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Effect:texture")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("21_1twwa")]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Effect:hframes")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Effect:frame")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.21285713, 0.28285712, 0.35285714, 0.42285714),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../..")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.35714287),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"attack_ore_rock"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pawjx"]
 _data = {
 &"Climb": SubResource("Animation_45oew"),
 &"Fall": SubResource("Animation_4xbk8"),
 &"Idle": SubResource("Animation_cgv26"),
 &"Jump": SubResource("Animation_pawjx"),
+&"PickaxeSwing": SubResource("Animation_a5kf2"),
 &"RESET": SubResource("Animation_0q2cn"),
 &"Run": SubResource("Animation_c8gk4"),
 &"SwordSwing1": SubResource("Animation_dwhqw"),
@@ -796,12 +916,13 @@ dead_state = NodePath("StateMachine/Die")
 script = ExtResource("2_n7gp4")
 initial_state = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("move_state", "jump_state", "fall_state", "attack_1_state", "climb_state")]
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("move_state", "jump_state", "fall_state", "attack_1_state", "swing_pick_axe_state", "climb_state")]
 script = ExtResource("3_g162h")
 move_state = NodePath("../Move")
 jump_state = NodePath("../Jump")
 fall_state = NodePath("../Fall")
 attack_1_state = NodePath("../Attack1")
+swing_pick_axe_state = NodePath("../SwingPickAxe")
 climb_state = NodePath("../Climb")
 animation_name = "Idle"
 
@@ -863,6 +984,12 @@ animation_name = "Jump"
 [node name="Die" type="Node" parent="StateMachine"]
 script = ExtResource("12_omh5u")
 
+[node name="SwingPickAxe" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state")]
+script = ExtResource("13_1twwa")
+idle_state = NodePath("../Idle")
+animation_name = "PickaxeSwing"
+animation_duration = 0.5
+
 [node name="Timer" type="Timer" parent="."]
 process_callback = 0
 one_shot = true
@@ -890,6 +1017,7 @@ libraries = {
 
 [node name="Sword" type="Sprite2D" parent="Sprites"]
 position = Vector2(0, -37)
+texture = ExtResource("22_yawj3")
 hframes = 15
 
 [node name="PlayerSprite" type="Sprite2D" parent="Sprites"]

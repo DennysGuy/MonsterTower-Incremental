@@ -236,7 +236,7 @@ func calculate_quantity(recipe: CraftingRecipe) -> int:
 			inventory_amt = get_quantity(mat)
 			divisor  = (inventory_amt/craft_material[item])
 		
-		if divisor < viable_amount:
+		if divisor <= viable_amount:
 			viable_amount = divisor
 		else:
 			return 0 #will end the function here as the player doesn't have the necessary item

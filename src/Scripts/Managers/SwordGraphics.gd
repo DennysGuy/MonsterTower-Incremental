@@ -12,8 +12,15 @@ var sword_textures : Dictionary = {
 	}
 }
 
+var pickaxe_textures : Dictionary = {
+	"Stone Pickaxe": preload("uid://c1dxfmrpwv7a4")
+}
+
+
 func get_sword_graphic(texture_name : String) -> Texture2D:
 	var sword_name : String = PlayerStats.get_sword_name()
-	print(sword_name)
-	print(texture_name)
 	return sword_textures[sword_name][texture_name]
+
+func get_pickaxe_graphic() -> Texture2D:
+	var pickaxe_name : String = PlayerStats.get_pickaxe_name()
+	return pickaxe_textures[pickaxe_name]

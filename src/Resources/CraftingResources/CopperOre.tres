@@ -7,7 +7,7 @@
 script = ExtResource("1_nvioa")
 drop_icon = ExtResource("1_bmdr0")
 item_type = 2
-drop_chance = 0.75
+drop_chance = 0.7
 item_name = "Copper Ore"
 sell_value = 30
 shop_icon = ExtResource("1_bmdr0")
