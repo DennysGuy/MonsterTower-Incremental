@@ -23,3 +23,5 @@ grow_vertical = 2
 [node name="CraftingStation" parent="." instance=ExtResource("2_o2r2d")]
 layout_mode = 1
 station_name = "Cooking Range"
+
+[editable path="CraftingStation"]

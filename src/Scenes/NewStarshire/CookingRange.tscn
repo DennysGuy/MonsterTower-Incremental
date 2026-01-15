@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://dno74kdw4imhn"]
+
+[ext_resource type="Texture2D" uid="uid://53gha3pmge8a" path="res://Assets/Facilities/TempCookingRangeContstruction.png" id="1_7lewm"]
+[ext_resource type="Script" uid="uid://ckddq3vnn0flw" path="res://src/Scripts/Facilities/cooking_range.gd" id="2_y5a3w"]
+
+[node name="TempCookingRange" type="Sprite2D"]
+texture = ExtResource("1_7lewm")
+script = ExtResource("2_y5a3w")

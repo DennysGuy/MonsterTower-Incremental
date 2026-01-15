@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b7n3fwd3y85wp"]
+[gd_scene load_steps=18 format=3 uid="uid://b7n3fwd3y85wp"]
 
 [ext_resource type="Script" uid="uid://nb5nyiymrgyp" path="res://src/Scripts/TechTree/tech_tree.gd" id="1_1fw0b"]
 [ext_resource type="PackedScene" uid="uid://bhimqkbcn26r2" path="res://src/Scenes/TechTree/TechNode.tscn" id="2_q3n1u"]
@@ -16,6 +16,7 @@
 [ext_resource type="Resource" uid="uid://ct7a5kggupi55" path="res://src/Resources/TechTree/TechNodes/DeeperPockets1.tres" id="11_uk0x3"]
 [ext_resource type="Resource" uid="uid://cmbxvekbk2uxx" path="res://src/Resources/TechTree/TechNodes/BankUnlock.tres" id="12_4a6it"]
 [ext_resource type="Resource" uid="uid://bb7206hq4ygo3" path="res://src/Resources/TechTree/TechNodes/CookingStation.tres" id="12_ice2v"]
+[ext_resource type="Resource" uid="uid://peiyat841rxh" path="res://src/Resources/TechTree/TechNodes/RefineryStation.tres" id="13_fdiaf"]
 
 [node name="TechTree" type="Node2D"]
 script = ExtResource("1_1fw0b")
@@ -76,12 +77,12 @@ tech_node_stats = ExtResource("8_dkx06")
 points = PackedVector2Array(125, 99, 34, 34)
 
 [node name="CritDamage1Node2" parent="Nodes" instance=ExtResource("2_q3n1u")]
-position = Vector2(805, 486)
+position = Vector2(813, 343)
 tech_node_stats = ExtResource("8_wj3rp")
 
 [node name="Line2D" type="Line2D" parent="Nodes/CritDamage1Node2"]
-position = Vector2(-121, -122)
-points = PackedVector2Array(89, 89, 11, 13)
+position = Vector2(-121, -89)
+points = PackedVector2Array(89, 89, 7, 89)
 
 [node name="ItemBag1Node" parent="Nodes" instance=ExtResource("2_q3n1u")]
 position = Vector2(235, 745)
@@ -96,6 +97,11 @@ tech_node_stats = ExtResource("11_uk0x3")
 
 [node name="Line2D" type="Line2D" parent="Nodes/DeeperPockets1Node"]
 points = PackedVector2Array(34, -34, 92, -87)
+
+[node name="RefineryStationNode" parent="Nodes" instance=ExtResource("2_q3n1u")]
+position = Vector2(816, 476)
+tech_node_stats = ExtResource("13_fdiaf")
+node_type = 1
 
 [node name="BankNode" parent="Nodes" instance=ExtResource("2_q3n1u")]
 position = Vector2(513, 747)

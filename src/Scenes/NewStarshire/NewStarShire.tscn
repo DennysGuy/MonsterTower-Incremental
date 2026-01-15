@@ -10,8 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://dkxkwr4us4aak" path="res://src/Scenes/NewStarshire/Facilities/TechTreeComputer.tscn" id="4_cldp6"]
 [ext_resource type="Script" uid="uid://bjq40ntqmf0ih" path="res://src/Scripts/Maps/spawn_point.gd" id="4_gq00g"]
 [ext_resource type="PackedScene" uid="uid://cmog8m28k4ijk" path="res://src/Scenes/Actors/Enemies/PracticeDummy.tscn" id="6_kqfvc"]
-[ext_resource type="Texture2D" uid="uid://bry4670ns2btd" path="res://Assets/Facilities/TempCookingRange.png" id="7_q74qd"]
-[ext_resource type="Texture2D" uid="uid://btbqj1pb1hac" path="res://Assets/Facilities/SmeltingStation.png" id="8_vdg01"]
 [ext_resource type="PackedScene" uid="uid://crvhogk2bnq1s" path="res://src/Scenes/NewStarshire/TowerGuideSprite.tscn" id="9_636af"]
 [ext_resource type="PackedScene" uid="uid://dysg5kffvxbql" path="res://src/Scenes/UI/PlayerHUD.tscn" id="10_4wn0b"]
 [ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="10_636af"]
@@ -20,6 +18,8 @@
 [ext_resource type="Texture2D" uid="uid://0l7t1v2v8yge" path="res://Assets/NPCs/FreeMarketNPCs/DripDealer_NoOutline.png" id="13_sxpgj"]
 [ext_resource type="Texture2D" uid="uid://5cetad7bhon0" path="res://Assets/Facilities/StorageArea.png" id="14_jp6xg"]
 [ext_resource type="PackedScene" uid="uid://cr6q5dxlkks" path="res://src/Scenes/Tower/LadderArea.tscn" id="17_jp6xg"]
+[ext_resource type="PackedScene" uid="uid://dno74kdw4imhn" path="res://src/Scenes/NewStarshire/CookingRange.tscn" id="19_vdg01"]
+[ext_resource type="PackedScene" uid="uid://debxddfwr0kuy" path="res://src/Scenes/NewStarshire/SmeltingStation.tscn" id="20_05bdh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q74qd"]
 texture = ExtResource("4_cad3e")
@@ -626,14 +626,6 @@ tile_set = ExtResource("2_dvat3")
 tile_map_data = PackedByteArray("AAD//w4AAQABAAAAAAD//w8AAQABAAEAAAD//wwAAQABAAAAAAD//w0AAQABAAEAAAD//woAAQABAAAAAAD//wsAAQABAAEAAAD//wgAAQABAAAAAAD//wkAAQABAAEAAAD//wYAAQABAAAAAAD//wcAAQABAAEAAAD//wQAAQABAAAAAAD//wUAAQABAAEAAAD//wIAAQABAAAAAAD//wMAAQABAAEAAAD//wAAAQABAAAAAAD//wEAAQABAAEAAAAUAA4AAQAAAAAAAAAUAA8AAQAAAAEAAAAUAAwAAQAAAAAAAAAUAA0AAQAAAAEAAAAUAAoAAQAAAAAAAAAUAAsAAQAAAAEAAAAUAAgAAQAAAAAAAAAUAAkAAQAAAAEAAAAUAAYAAQAAAAAAAAAUAAcAAQAAAAEAAAAUAAQAAQAAAAAAAAAUAAUAAQAAAAEAAAAUAAIAAQAAAAAAAAAUAAMAAQAAAAEAAAAUAAAAAQAAAAAAAAAUAAEAAQAAAAEAAAA=")
 tile_set = ExtResource("3_oik5f")
 
-[node name="TempCookingRange" type="Sprite2D" parent="."]
-position = Vector2(522, 609)
-texture = ExtResource("7_q74qd")
-
-[node name="TempSmeltingStation" type="Sprite2D" parent="."]
-position = Vector2(695, 560)
-texture = ExtResource("8_vdg01")
-
 [node name="PlayerCamera" parent="." instance=ExtResource("3_wtuhv")]
 position = Vector2(-20, 548)
 limit_left = 0
@@ -756,6 +748,26 @@ position = Vector2(0, -60)
 [node name="Bot" type="Marker2D" parent="LadderArea"]
 position = Vector2(0, 114)
 
+[node name="TempCookingRange" parent="." instance=ExtResource("19_vdg01")]
+position = Vector2(521, 592)
+
+[node name="CookingStationArea" type="Area2D" parent="."]
+position = Vector2(527, 617)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CookingStationArea"]
+position = Vector2(-7.5, -9.5)
+shape = SubResource("RectangleShape2D_q74qd")
+
+[node name="TempSmeltingStation" parent="." instance=ExtResource("20_05bdh")]
+position = Vector2(716, 560)
+
+[node name="SmeltingStationArea" type="Area2D" parent="."]
+position = Vector2(715, 605)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SmeltingStationArea"]
+position = Vector2(2, 0.5)
+shape = SubResource("RectangleShape2D_vdg01")
+
 [node name="AccessCraftingStation" type="Label" parent="."]
 visible = false
 offset_left = 418.0
@@ -780,20 +792,6 @@ theme_override_fonts/font = ExtResource("10_636af")
 theme_override_font_sizes/font_size = 13
 text = "Press 'E' to Access SmeltingStation"
 horizontal_alignment = 1
-
-[node name="CookingStationArea" type="Area2D" parent="."]
-position = Vector2(527, 620)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CookingStationArea"]
-position = Vector2(-7.5, -9.5)
-shape = SubResource("RectangleShape2D_q74qd")
-
-[node name="SmeltingStationArea" type="Area2D" parent="."]
-position = Vector2(694, 605)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SmeltingStationArea"]
-position = Vector2(2, 0.5)
-shape = SubResource("RectangleShape2D_vdg01")
 
 [connection signal="body_entered" from="TowerArea" to="." method="_on_tower_area_body_entered"]
 [connection signal="body_exited" from="TowerArea" to="." method="_on_tower_area_body_exited"]

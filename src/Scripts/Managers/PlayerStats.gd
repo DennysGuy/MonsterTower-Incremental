@@ -60,6 +60,11 @@ func upgrade_player_stat(stat_name : String, interval : float, node_type : TechT
 	if node_type == TechTreeManager.TECH_NODE_TYPE.FACILITY:
 		facilities_unlocked[stat_name] = true
 		print("stat name: %s is unclocked : %s" % [stat_name, facilities_unlocked[stat_name]])
+		
+		if stat_name == "Cooking Station":
+			SignalBus.unlock_cooking_station.emit()
+		elif stat_name == "Refinery Station":
+			SignalBus.unlock_refinery.emit()
 		#we'll need a way to figure out how to iniate a cutscene showing unlock sequence
 		return
 	
