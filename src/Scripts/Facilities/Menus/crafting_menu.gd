@@ -1,0 +1,67 @@
+class_name CraftingStationMenu extends Control
+
+@onready var sword_name: Label = $SwordName
+@onready var sword_description: RichTextLabel = $SwordDescription
+@onready var sword_stats: RichTextLabel = $SwordStats
+
+@onready var ingredients_list: GridContainer = $IngredientsList
+
+@onready var sword_mold_graphic: TextureRect = $SwordMoldGraphic
+@onready var sword_graphic: TextureRect = $SwordGraphic
+
+@onready var inventory_container: GridContainer = $InventoryContainer
+@onready var bank_container: GridContainer = $BankContainer
+@onready var bank_notice: Label = $BankNotice
+
+var sword : Sword
+@onready var button: Button = $Button
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	update_inventory_containers()
+	update_sword()
+	#we need to go into player stats, grab equipped sword index and find the recipe and the actual sword resource
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+
+func _on_button_button_up() -> void:
+	pass # Replace with function body.
+
+
+func update_inventory_containers() -> void:
+	InventoryManager.update_grid_container(inventory_container, "Inventory",false)
+	if PlayerStats.facilities_unlocked["Bank"]:
+		InventoryManager.update_grid_container(bank_container, "Bank",false)
+	else:
+		bank_notice.show()
+
+func update_sword() -> void: #run this function when we upgrade the sword.
+	var next_sword_index = PlayerStats.player_stats["Equipped Sword"]+1
+	
+	if next_sword_index < PlayerStats.MAX_SWORD_COUNT:
+		var sword_index = int(next_sword_index)
+		sword = PlayerStats.get_sword(sword_index)
+		sword_name.text = sword.sword_name
+		sword_stats.text = sword.get_stats_description()
+		sword_description.text = sword.recipe.description
+		
+		InventoryManager.clear_grid_container(ingredients_list)
+		for ingredient in sword.recipe.recipe_list:
+			var ingredient_menu_item : IngredientItem = preload("uid://dil4081ni1hb3").instantiate()
+			for key in ingredient.keys():
+
+				ingredient_menu_item.ingredient_icon.texture = key.shop_icon
+				ingredient_menu_item.quantity.text = "%s x%s" % [key.item_name, ingredient[key]]
+			
+			ingredients_list.add_child(ingredient_menu_item)
+
+		var can_craft : bool = InventoryManager.calculate_quantity(sword.recipe)
+		
+		if can_craft:
+			button.disabled = false
+		else:
+			button.disabled = true

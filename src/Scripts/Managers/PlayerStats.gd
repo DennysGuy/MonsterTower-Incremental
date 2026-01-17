@@ -41,16 +41,24 @@ const KNOCKBACK_FORCE : int = 300
 	"Bank": false
 }
 
+const MAX_SWORD_COUNT := 4
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
 
-func get_sword_name() -> String:
-	match player_stats["Equipped Sword"]:
+func get_sword(sword_index : int = 0) -> Sword:
+	match sword_index:
 		0:
-			return "Wooden Sword"
+			return 	preload("uid://di3xaosm85tjx")#"Wooden Sword"
+		1:
+			return preload("uid://gj2gdethgc68")#"Shroom Fibre Blade"
+		2:
+			return preload("uid://hnq8o34pxm0h") #Bronze Sword
+		3:
+			return preload("uid://do5v83xsd4n70") #Steel Sword
 		_:
-			return "Wooden Sword"
+			return preload("uid://di3xaosm85tjx")#"Wooden Sword"
 
 func get_pickaxe_name() -> String:
 	match player_stats["Equipped Pickaxe"]:

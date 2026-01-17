@@ -1,0 +1,381 @@
+[gd_scene load_steps=12 format=3 uid="uid://cc1xppx3tkq4f"]
+
+[ext_resource type="Script" uid="uid://cbuffb253p3na" path="res://src/Scripts/Facilities/Menus/crafting_menu.gd" id="1_1fqc8"]
+[ext_resource type="Texture2D" uid="uid://cfo2whg1w2q42" path="res://Assets/Facilities/CraftingStationMenu.png" id="2_lfawm"]
+[ext_resource type="FontFile" uid="uid://qgj228ltdttv" path="res://Assets/Fonts/alagard.ttf" id="3_1tol8"]
+[ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="4_1tol8"]
+[ext_resource type="PackedScene" uid="uid://dil4081ni1hb3" path="res://src/Scenes/NewStarshire/Facilities/IngredientsMenuItem.tscn" id="5_re6m4"]
+[ext_resource type="Texture2D" uid="uid://coogimgiiqd7x" path="res://Assets/CraftingMiniGame/Swords/BronzeSword/BronzeSwordMoldWhole.png" id="6_octel"]
+[ext_resource type="Texture2D" uid="uid://dqdnfqgin24gv" path="res://Assets/CraftingMiniGame/Swords/BronzeSword/BronzeSwordWhole.png" id="7_08er8"]
+[ext_resource type="PackedScene" uid="uid://d0s6j8mvikv8c" path="res://src/Scenes/UI/ItemSlot.tscn" id="8_octel"]
+
+[sub_resource type="Animation" id="Animation_octel"]
+resource_name = "CraftingFlash"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Flash:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_08er8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Flash:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_08er8"]
+_data = {
+&"CraftingFlash": SubResource("Animation_octel"),
+&"RESET": SubResource("Animation_08er8")
+}
+
+[node name="CraftingMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1fqc8")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_lfawm")
+
+[node name="SwordName" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -77.0
+offset_top = 46.0
+offset_right = 72.0
+offset_bottom = 61.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_1tol8")
+text = "Sword Name"
+horizontal_alignment = 1
+
+[node name="Bag" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -285.0
+offset_top = 16.0
+offset_right = -136.0
+offset_bottom = 31.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_1tol8")
+text = "BAG"
+horizontal_alignment = 1
+
+[node name="Inventory" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -276.0
+offset_top = 43.0
+offset_right = -222.0
+offset_bottom = 55.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_1tol8")
+theme_override_font_sizes/font_size = 12
+text = "Inventory"
+
+[node name="Bank" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -276.0
+offset_top = 190.0
+offset_right = -248.0
+offset_bottom = 202.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_1tol8")
+theme_override_font_sizes/font_size = 12
+text = "Bank"
+
+[node name="BankNotice" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -274.0
+offset_top = 237.0
+offset_right = -147.0
+offset_bottom = 249.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_1tol8")
+theme_override_font_sizes/font_size = 12
+text = "Bank Account Locked..."
+
+[node name="Panel2" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -249.0
+offset_top = -117.0
+offset_right = -77.0
+offset_bottom = 106.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Details" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 80.0
+offset_top = 67.0
+offset_right = 229.0
+offset_bottom = 82.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_1tol8")
+text = "Details"
+horizontal_alignment = 1
+
+[node name="Recipe" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 80.0
+offset_top = 135.0
+offset_right = 116.0
+offset_bottom = 147.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_1tol8")
+theme_override_font_sizes/font_size = 14
+text = "Recipe"
+horizontal_alignment = 1
+
+[node name="SwordDescription" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -242.0
+offset_top = -95.0
+offset_right = -82.0
+offset_bottom = -55.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/outline_size = 4
+theme_override_fonts/normal_font = ExtResource("4_1tol8")
+theme_override_font_sizes/normal_font_size = 10
+text = "A sword made out slime jellies! Really dull. Really mull."
+
+[node name="SwordStats" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -380.0
+offset_top = 61.0
+offset_right = -251.0
+offset_bottom = 101.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/outline_size = 4
+theme_override_fonts/normal_font = ExtResource("4_1tol8")
+theme_override_font_sizes/normal_font_size = 8
+text = "+50 Attack
++10 Defense
++1% Crit Chance
++10% Crit Damage"
+
+[node name="IngredientsList" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -247.0
+offset_top = -26.0
+offset_right = -79.0
+offset_bottom = 94.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/v_separation = 1
+
+[node name="IngredientItem" parent="IngredientsList" instance=ExtResource("5_re6m4")]
+layout_mode = 2
+
+[node name="IngredientItem2" parent="IngredientsList" instance=ExtResource("5_re6m4")]
+layout_mode = 2
+
+[node name="IngredientItem3" parent="IngredientsList" instance=ExtResource("5_re6m4")]
+layout_mode = 2
+
+[node name="SwordMoldGraphic" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -57.0
+offset_top = -120.0
+offset_right = 51.0
+offset_bottom = 70.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_octel")
+
+[node name="SwordGraphic" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -57.0
+offset_top = -120.0
+offset_right = 51.0
+offset_bottom = 70.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_08er8")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -189.0
+offset_top = -103.0
+offset_right = -137.0
+offset_bottom = -79.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("4_1tol8")
+theme_override_font_sizes/font_size = 14
+text = "Craft!"
+
+[node name="InventoryContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 41.0
+offset_top = -122.0
+offset_right = 181.0
+offset_bottom = -13.0
+grow_vertical = 2
+columns = 4
+
+[node name="Slot" parent="InventoryContainer" instance=ExtResource("8_octel")]
+layout_mode = 2
+
+[node name="Slot2" parent="InventoryContainer" instance=ExtResource("8_octel")]
+layout_mode = 2
+
+[node name="Slot3" parent="InventoryContainer" instance=ExtResource("8_octel")]
+layout_mode = 2
+
+[node name="Slot4" parent="InventoryContainer" instance=ExtResource("8_octel")]
+layout_mode = 2
+
+[node name="Slot5" parent="InventoryContainer" instance=ExtResource("8_octel")]
+layout_mode = 2
+
+[node name="Slot6" parent="InventoryContainer" instance=ExtResource("8_octel")]
+layout_mode = 2
+
+[node name="Slot7" parent="InventoryContainer" instance=ExtResource("8_octel")]
+layout_mode = 2
+
+[node name="Slot8" parent="InventoryContainer" instance=ExtResource("8_octel")]
+layout_mode = 2
+
+[node name="Slot9" parent="InventoryContainer" instance=ExtResource("8_octel")]
+layout_mode = 2
+
+[node name="Slot10" parent="InventoryContainer" instance=ExtResource("8_octel")]
+layout_mode = 2
+
+[node name="Slot11" parent="InventoryContainer" instance=ExtResource("8_octel")]
+layout_mode = 2
+
+[node name="Slot12" parent="InventoryContainer" instance=ExtResource("8_octel")]
+layout_mode = 2
+
+[node name="BankContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 42.0
+offset_top = 24.0
+offset_right = 182.0
+offset_bottom = 133.0
+grow_vertical = 2
+columns = 4
+
+[node name="Flash" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_08er8")
+}
+
+[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]

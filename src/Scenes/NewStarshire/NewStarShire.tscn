@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://oonjrpabmces"]
+[gd_scene load_steps=30 format=4 uid="uid://oonjrpabmces"]
 
 [ext_resource type="Script" uid="uid://dpqc54c34418w" path="res://src/Scripts/Maps/NewStarShire/new_star_shire.gd" id="1_gq00g"]
 [ext_resource type="TileSet" uid="uid://74oc55cdwefk" path="res://src/Scenes/NewStarshire/TempFloorTiles.tres" id="2_dvat3"]
@@ -598,6 +598,9 @@ size = Vector2(117, 57)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vdg01"]
 size = Vector2(106, 69)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bl45m"]
+size = Vector2(21, 88)
+
 [node name="NewStarShire" type="Node2D" node_paths=PackedStringArray("spawn_point", "camera", "hud")]
 script = ExtResource("1_gq00g")
 map_name = "New StarShire"
@@ -612,11 +615,11 @@ texture = ExtResource("2_oik5f")
 [node name="TileSets" type="Node2D" parent="."]
 
 [node name="Cliff" type="TileMapLayer" parent="TileSets"]
-tile_map_data = PackedByteArray("AAAHAAkAAQAAAAEAAAAIAAkAAQABAAEAAAAHAAgAAQAAAAEAAAAIAAgAAQABAAEAAAAFAAgAAQAAAAEAAAAGAAgAAQABAAEAAAAFAAkAAQAAAAEAAAAGAAkAAQABAAEAAAADAAgAAQAAAAEAAAAEAAgAAQABAAEAAAADAAkAAQAAAAEAAAAEAAkAAQABAAEAAAABAAgAAQABAAEAAAACAAgAAQABAAEAAAABAAkAAQABAAEAAAACAAkAAQABAAEAAAAAAAgAAQAAAAEAAAAAAAkAAQAAAAEAAAAAAAcAAQAAAAAAAAABAAcAAQABAAAAAAACAAcAAQAAAAAAAAADAAcAAQABAAAAAAAEAAcAAQAAAAAAAAAFAAcAAQABAAAAAAAGAAcAAQAAAAAAAAAHAAcAAQABAAAAAAAIAAcAAQABAAAAAAA=")
+tile_map_data = PackedByteArray("AAAHAAkAAQAAAAEAAAAIAAkAAQABAAEAAAAHAAgAAQAAAAEAAAAIAAgAAQABAAEAAAAFAAgAAQAAAAEAAAAGAAgAAQABAAEAAAAFAAkAAQAAAAEAAAAGAAkAAQABAAEAAAADAAgAAQAAAAEAAAAEAAgAAQABAAEAAAADAAkAAQAAAAEAAAAEAAkAAQABAAEAAAABAAgAAQABAAEAAAACAAgAAQABAAEAAAABAAkAAQABAAEAAAACAAkAAQABAAEAAAAAAAgAAQAAAAEAAAAAAAkAAQAAAAEAAAAAAAcAAQAAAAAAAAABAAcAAQABAAAAAAACAAcAAQAAAAAAAAADAAcAAQABAAAAAAAEAAcAAQAAAAAAAAAFAAcAAQABAAAAAAAGAAcAAQAAAAAAAAAHAAcAAQABAAAAAAAIAAcAAQABAAAAAAAJAAkAAQAAAAEAAAAKAAkAAQABAAEAAAALAAkAAQAAAAEAAAAMAAkAAQABAAEAAAALAAgAAQAAAAAAAAAMAAgAAQABAAAAAAAJAAgAAQAAAAAAAAAKAAgAAQABAAAAAAANAAgAAQABAAAAAAANAAkAAQABAAEAAAA=")
 tile_set = ExtResource("3_sxpgj")
 
 [node name="Ladders" type="TileMapLayer" parent="TileSets"]
-tile_map_data = PackedByteArray("AAACACQAAAAAAAcAAAADACQAAAABAAcAAAACACMAAAAAAAYAAAADACMAAAABAAYAAAACACIAAAAAAAYAAAADACIAAAABAAYAAAACACEAAAAAAAYAAAADACEAAAABAAYAAAACACAAAAAAAAYAAAADACAAAAABAAYAAAACAB8AAAAAAAYAAAADAB8AAAABAAYAAAACAB4AAAAAAAYAAAADAB4AAAABAAYAAAACAB0AAAAAAAYAAAADAB0AAAABAAYAAAACABwAAAAAAAUAAAADABwAAAABAAUAAAA=")
+tile_map_data = PackedByteArray("AAACACQAAAAAAAcAAAADACQAAAABAAcAAAACACMAAAAAAAYAAAADACMAAAABAAYAAAACACIAAAAAAAYAAAADACIAAAABAAYAAAACACEAAAAAAAYAAAADACEAAAABAAYAAAACACAAAAAAAAYAAAADACAAAAABAAYAAAACAB8AAAAAAAYAAAADAB8AAAABAAYAAAACAB4AAAAAAAYAAAADAB4AAAABAAYAAAACAB0AAAAAAAYAAAADAB0AAAABAAYAAAACABwAAAAAAAUAAAADABwAAAABAAUAAAA1ACAAAAAAAAUAAAA2ACAAAAABAAUAAAA1ACEAAAAAAAYAAAA2ACEAAAABAAYAAAA1ACIAAAAAAAYAAAA2ACIAAAABAAYAAAA1ACMAAAAAAAYAAAA2ACMAAAABAAYAAAA1ACQAAAAAAAYAAAA2ACQAAAABAAYAAAA1ACUAAAAAAAcAAAA2ACUAAAABAAcAAAA=")
 tile_set = SubResource("TileSet_vdg01")
 
 [node name="Floor" type="TileMapLayer" parent="TileSets"]
@@ -659,10 +662,10 @@ position = Vector2(1168, 606)
 
 [node name="GuideLog" type="Label" parent="."]
 visible = false
-offset_left = 796.0
-offset_top = 559.0
-offset_right = 1066.0
-offset_bottom = 576.0
+offset_left = 1035.0
+offset_top = 561.0
+offset_right = 1305.0
+offset_bottom = 578.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("10_636af")
@@ -749,6 +752,10 @@ position = Vector2(0, -60)
 [node name="Bot" type="Marker2D" parent="LadderArea"]
 position = Vector2(0, 114)
 
+[node name="SmithingStation" type="Sprite2D" parent="."]
+position = Vector2(766, 432)
+texture = ExtResource("21_05bdh")
+
 [node name="TempCookingRange" parent="." instance=ExtResource("19_vdg01")]
 position = Vector2(521, 592)
 
@@ -760,18 +767,14 @@ position = Vector2(-7.5, -9.5)
 shape = SubResource("RectangleShape2D_q74qd")
 
 [node name="TempSmeltingStation" parent="." instance=ExtResource("20_05bdh")]
-position = Vector2(716, 560)
+position = Vector2(689, 560)
 
 [node name="SmeltingStationArea" type="Area2D" parent="."]
-position = Vector2(715, 605)
+position = Vector2(688, 605)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SmeltingStationArea"]
 position = Vector2(2, 0.5)
 shape = SubResource("RectangleShape2D_vdg01")
-
-[node name="SmithingStation" type="Sprite2D" parent="."]
-position = Vector2(920, 560)
-texture = ExtResource("21_05bdh")
 
 [node name="AccessCraftingStation" type="Label" parent="."]
 visible = false
@@ -797,6 +800,23 @@ theme_override_fonts/font = ExtResource("10_636af")
 theme_override_font_sizes/font_size = 13
 text = "Press 'E' to Access SmeltingStation"
 horizontal_alignment = 1
+
+[node name="LadderArea2" parent="." node_paths=PackedStringArray("ladder_top", "ladder_bottom") instance=ExtResource("17_jp6xg")]
+position = Vector2(864, 556)
+collision_layer = 8
+collision_mask = 8
+ladder_top = NodePath("Top")
+ladder_bottom = NodePath("Bottom")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LadderArea2"]
+position = Vector2(0.5, 6)
+shape = SubResource("RectangleShape2D_bl45m")
+
+[node name="Top" type="Marker2D" parent="LadderArea2"]
+position = Vector2(0, -44)
+
+[node name="Bottom" type="Marker2D" parent="LadderArea2"]
+position = Vector2(0, 73)
 
 [connection signal="body_entered" from="TowerArea" to="." method="_on_tower_area_body_entered"]
 [connection signal="body_exited" from="TowerArea" to="." method="_on_tower_area_body_exited"]

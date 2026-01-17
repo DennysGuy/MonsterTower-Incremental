@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Sword" load_steps=3 format=3 uid="uid://gj2gdethgc68"]
+
+[ext_resource type="Resource" uid="uid://dra8e03por4eq" path="res://src/Resources/Recipes/SwordRecipes/ShroomFibreBladRecipe.tres" id="1_4e3vn"]
+[ext_resource type="Script" uid="uid://im2igg6pop1u" path="res://src/Scripts/sword.gd" id="1_8ta2n"]
+
+[resource]
+script = ExtResource("1_8ta2n")
+sword_name = "Shroom Fibre Sword"
+attack_bonus = 5.0
+defense_bonus = 0.1
+attack_speed = 1.05
+crit_bonus = 0.05
+crit_damage_bonus = 0.05
+recipe = ExtResource("1_4e3vn")
+metadata/_custom_type_script = "uid://im2igg6pop1u"

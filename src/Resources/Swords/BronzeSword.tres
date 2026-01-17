@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Sword" load_steps=2 format=3 uid="uid://hnq8o34pxm0h"]
+
+[ext_resource type="Script" uid="uid://im2igg6pop1u" path="res://src/Scripts/sword.gd" id="1_vdyun"]
+
+[resource]
+script = ExtResource("1_vdyun")
+sword_name = "Bronze Sword"
+attack_bonus = 15.0
+defense_bonus = 2.0
+attack_speed = 1.2
+crit_bonus = 0.1
+crit_damage_bonus = 0.1
+metadata/_custom_type_script = "uid://im2igg6pop1u"
