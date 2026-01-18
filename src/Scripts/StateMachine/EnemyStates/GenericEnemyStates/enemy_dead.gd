@@ -45,11 +45,17 @@ func drop_items() -> void:
 		if random_check <= int(cooking_item.drop_chance * 100):
 			cooking_item_interactable.item = cooking_item
 			cooking_item_interactable.icon.texture = cooking_item.drop_icon
-			item_interactable.global_position = Vector2(parent.global_position.x - 20,parent.global_position.y)
 			cooking_item_interactable.global_position = Vector2(parent.global_position.x + 20,parent.global_position.y)
-			parent.get_parent().add_child(item_interactable)
 			parent.get_parent().add_child(cooking_item_interactable)
-		else:
-			parent.get_parent().add_child(item_interactable)
-	else:
-		parent.get_parent().add_child(item_interactable)
+	
+	if parent.enemy_stats.crafting_item_drop:
+		var crafting_item : EnemyDrop = parent.enemy_stats.crafting_item_drop
+		var crafting_item_interactable : ItemInteractable = preload("uid://dgtobkubdjq27").instantiate()
+		var random_check_2 : int = randi_range(0,100)
+		if random_check_2 <= int(crafting_item.drop_chance * 100):
+			crafting_item_interactable.item = crafting_item
+			crafting_item_interactable.icon.texture = crafting_item.drop_icon
+			crafting_item_interactable.global_position = Vector2(parent.global_position.x - 20, parent.global_position.y)
+			parent.get_parent().add_child(crafting_item_interactable)
+	
+	parent.get_parent().add_child(item_interactable)

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Sword" load_steps=2 format=3 uid="uid://do5v83xsd4n70"]
+
+[ext_resource type="Script" uid="uid://im2igg6pop1u" path="res://src/Scripts/sword.gd" id="1_cbqon"]
+
+[resource]
+script = ExtResource("1_cbqon")
+sword_name = "Steel Sword"
+attack_bonus = 30.0
+defense_bonus = 0.2
+attack_speed = 1.2
+crit_bonus = 0.2
+metadata/_custom_type_script = "uid://im2igg6pop1u"

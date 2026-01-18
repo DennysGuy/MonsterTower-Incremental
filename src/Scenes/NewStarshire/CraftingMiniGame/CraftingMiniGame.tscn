@@ -1,0 +1,316 @@
+[gd_scene load_steps=20 format=4 uid="uid://cjavmwc4bjhvl"]
+
+[ext_resource type="Texture2D" uid="uid://d35tn325hxjff" path="res://Assets/EnvironmentalAssets/temp_floor_tile.png" id="1_8nk7n"]
+[ext_resource type="Script" uid="uid://vooiphe1cxj7" path="res://src/Scripts/Facilities/CraftingMiniGame/crafting_mini_game.gd" id="1_da125"]
+[ext_resource type="Texture2D" uid="uid://dkt8ow6g7svm" path="res://Assets/CraftingMiniGame/SwordMold.png" id="2_6w605"]
+[ext_resource type="Texture2D" uid="uid://dqdnfqgin24gv" path="res://Assets/CraftingMiniGame/Swords/BronzeSword/BronzeSwordWhole.png" id="3_pscay"]
+[ext_resource type="Texture2D" uid="uid://fc67u5lng7ds" path="res://Assets/CraftingMiniGame/Swords/BronzeSword/Hilt_Bar.png" id="3_r1fjq"]
+[ext_resource type="Texture2D" uid="uid://g1177p52r5x1" path="res://Assets/CraftingMiniGame/Swords/BronzeSword/Hilt_Fill.png" id="4_ionq1"]
+[ext_resource type="Texture2D" uid="uid://c0lmqbbxkie1i" path="res://Assets/CraftingMiniGame/Swords/BronzeSword/Blade_1_Bar.png" id="5_n1elc"]
+[ext_resource type="Texture2D" uid="uid://dvee3v8emrnic" path="res://Assets/CraftingMiniGame/Swords/BronzeSword/Blade_1_Fill.png" id="6_wbvl7"]
+[ext_resource type="Texture2D" uid="uid://b87021iuokbug" path="res://Assets/CraftingMiniGame/Swords/BronzeSword/Blade_2_Bar.png" id="7_cx80g"]
+[ext_resource type="Texture2D" uid="uid://d2rxkbrehrjlx" path="res://Assets/CraftingMiniGame/Swords/BronzeSword/Blade_2_Fill.png" id="8_fgnpo"]
+[ext_resource type="Texture2D" uid="uid://3nrj1megy0xt" path="res://Assets/CraftingMiniGame/DetailsPanel.png" id="10_1216c"]
+[ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="10_n8by2"]
+[ext_resource type="FontFile" uid="uid://qgj228ltdttv" path="res://Assets/Fonts/alagard.ttf" id="11_1216c"]
+[ext_resource type="Texture2D" uid="uid://dwc8fsp57bkvk" path="res://Assets/CraftingMiniGame/SmithingStation_Furnace.png" id="14_l4xgt"]
+[ext_resource type="Texture2D" uid="uid://be1lwrwgrbwbb" path="res://Assets/PlayerGraphics/TempPlayer/PlayerCraftingGame_Idle.png" id="15_cn056"]
+[ext_resource type="Texture2D" uid="uid://tx5qk2rko1l6" path="res://Assets/CraftingMiniGame/SmithingStation_IronGrinder.png" id="15_qkphk"]
+[ext_resource type="Texture2D" uid="uid://c664t2qw12fh" path="res://Assets/CraftingMiniGame/SmithingIron.png" id="17_myphn"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6w605"]
+texture = ExtResource("1_8nk7n")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+7:7/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_aowj8"]
+sources/0 = SubResource("TileSetAtlasSource_6w605")
+
+[node name="CraftingMiniGame" type="Node2D"]
+script = ExtResource("1_da125")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAAABMAAAAAAAAAAAAAABQAAAAAAAEAAAAAABUAAAAAAAIAAAAAABYAAAAAAAMAAAABABMAAAABAAAAAAABABQAAAABAAEAAAABABUAAAABAAIAAAABABYAAAABAAMAAAACABMAAAACAAAAAAACABQAAAACAAEAAAACABUAAAACAAIAAAACABYAAAACAAMAAAADABMAAAADAAAAAAADABQAAAADAAEAAAADABUAAAADAAIAAAADABYAAAADAAMAAAAEABMAAAAEAAAAAAAEABQAAAAEAAEAAAAEABUAAAAEAAIAAAAEABYAAAAEAAMAAAAFABMAAAAFAAAAAAAFABQAAAAFAAEAAAAFABUAAAAFAAIAAAAFABYAAAAFAAMAAAAGABMAAAAGAAAAAAAGABQAAAAGAAEAAAAGABUAAAAGAAIAAAAGABYAAAAGAAMAAAAHABMAAAAHAAAAAAAHABQAAAAHAAEAAAAHABUAAAAHAAIAAAAHABYAAAAHAAMAAAAIABMAAAAAAAAAAAAIABQAAAAAAAEAAAAIABUAAAAAAAIAAAAIABYAAAAAAAMAAAAJABMAAAABAAAAAAAJABQAAAABAAEAAAAJABUAAAABAAIAAAAJABYAAAABAAMAAAAKABMAAAACAAAAAAAKABQAAAACAAEAAAAKABUAAAACAAIAAAAKABYAAAACAAMAAAALABMAAAADAAAAAAALABQAAAADAAEAAAALABUAAAADAAIAAAALABYAAAADAAMAAAAMABMAAAAEAAAAAAAMABQAAAAEAAEAAAAMABUAAAAEAAIAAAAMABYAAAAEAAMAAAANABMAAAAFAAAAAAANABQAAAAFAAEAAAANABUAAAAFAAIAAAANABYAAAAFAAMAAAAOABMAAAAGAAAAAAAOABQAAAAGAAEAAAAOABUAAAAGAAIAAAAOABYAAAAGAAMAAAAPABMAAAAHAAAAAAAPABQAAAAHAAEAAAAPABUAAAAHAAIAAAAPABYAAAAHAAMAAAAQABMAAAAAAAAAAAAQABQAAAAAAAEAAAAQABUAAAAAAAIAAAAQABYAAAAAAAMAAAARABMAAAABAAAAAAARABQAAAABAAEAAAARABUAAAABAAIAAAARABYAAAABAAMAAAASABMAAAACAAAAAAASABQAAAACAAEAAAASABUAAAACAAIAAAASABYAAAACAAMAAAATABMAAAADAAAAAAATABQAAAADAAEAAAATABUAAAADAAIAAAATABYAAAADAAMAAAAUABMAAAAEAAAAAAAUABQAAAAEAAEAAAAUABUAAAAEAAIAAAAUABYAAAAEAAMAAAAVABMAAAAFAAAAAAAVABQAAAAFAAEAAAAVABUAAAAFAAIAAAAVABYAAAAFAAMAAAAWABMAAAAGAAAAAAAWABQAAAAGAAEAAAAWABUAAAAGAAIAAAAWABYAAAAGAAMAAAAXABMAAAAHAAAAAAAXABQAAAAHAAEAAAAXABUAAAAHAAIAAAAXABYAAAAHAAMAAAAYABMAAAAAAAAAAAAYABQAAAAAAAEAAAAYABUAAAAAAAIAAAAYABYAAAAAAAMAAAAZABMAAAABAAAAAAAZABQAAAABAAEAAAAZABUAAAABAAIAAAAZABYAAAABAAMAAAAaABMAAAACAAAAAAAaABQAAAACAAEAAAAaABUAAAACAAIAAAAaABYAAAACAAMAAAAbABMAAAADAAAAAAAbABQAAAADAAEAAAAbABUAAAADAAIAAAAbABYAAAADAAMAAAAcABMAAAAEAAAAAAAcABQAAAAEAAEAAAAcABUAAAAEAAIAAAAcABYAAAAEAAMAAAAdABMAAAAFAAAAAAAdABQAAAAFAAEAAAAdABUAAAAFAAIAAAAdABYAAAAFAAMAAAAeABMAAAAGAAAAAAAeABQAAAAGAAEAAAAeABUAAAAGAAIAAAAeABYAAAAGAAMAAAAfABMAAAAHAAAAAAAfABQAAAAHAAEAAAAfABUAAAAHAAIAAAAfABYAAAAHAAMAAAAgABMAAAAAAAAAAAAgABQAAAAAAAEAAAAgABUAAAAAAAIAAAAgABYAAAAAAAMAAAAhABMAAAABAAAAAAAhABQAAAABAAEAAAAhABUAAAABAAIAAAAhABYAAAABAAMAAAAiABMAAAACAAAAAAAiABQAAAACAAEAAAAiABUAAAACAAIAAAAiABYAAAACAAMAAAAjABMAAAADAAAAAAAjABQAAAADAAEAAAAjABUAAAADAAIAAAAjABYAAAADAAMAAAAkABMAAAAEAAAAAAAkABQAAAAEAAEAAAAkABUAAAAEAAIAAAAkABYAAAAEAAMAAAAlABMAAAAFAAAAAAAlABQAAAAFAAEAAAAlABUAAAAFAAIAAAAlABYAAAAFAAMAAAAmABMAAAAGAAAAAAAmABQAAAAGAAEAAAAmABUAAAAGAAIAAAAmABYAAAAGAAMAAAAnABMAAAAHAAAAAAAnABQAAAAHAAEAAAAnABUAAAAHAAIAAAAnABYAAAAHAAMAAAAAABcAAAAAAAAAAAAAABgAAAAAAAEAAAAAABkAAAAAAAIAAAAAABoAAAAAAAMAAAABABcAAAABAAAAAAABABgAAAABAAEAAAABABkAAAABAAIAAAABABoAAAABAAMAAAACABcAAAACAAAAAAACABgAAAACAAEAAAACABkAAAACAAIAAAACABoAAAACAAMAAAADABcAAAADAAAAAAADABgAAAADAAEAAAADABkAAAADAAIAAAADABoAAAADAAMAAAAEABcAAAAEAAAAAAAEABgAAAAEAAEAAAAEABkAAAAEAAIAAAAEABoAAAAEAAMAAAAFABcAAAAFAAAAAAAFABgAAAAFAAEAAAAFABkAAAAFAAIAAAAFABoAAAAFAAMAAAAGABcAAAAGAAAAAAAGABgAAAAGAAEAAAAGABkAAAAGAAIAAAAGABoAAAAGAAMAAAAHABcAAAAHAAAAAAAHABgAAAAHAAEAAAAHABkAAAAHAAIAAAAHABoAAAAHAAMAAAAIABcAAAAAAAAAAAAIABgAAAAAAAEAAAAIABkAAAAAAAIAAAAIABoAAAAAAAMAAAAJABcAAAABAAAAAAAJABgAAAABAAEAAAAJABkAAAABAAIAAAAJABoAAAABAAMAAAAKABcAAAACAAAAAAAKABgAAAACAAEAAAAKABkAAAACAAIAAAAKABoAAAACAAMAAAALABcAAAADAAAAAAALABgAAAADAAEAAAALABkAAAADAAIAAAALABoAAAADAAMAAAAMABcAAAAEAAAAAAAMABgAAAAEAAEAAAAMABkAAAAEAAIAAAAMABoAAAAEAAMAAAANABcAAAAFAAAAAAANABgAAAAFAAEAAAANABkAAAAFAAIAAAANABoAAAAFAAMAAAAOABcAAAAGAAAAAAAOABgAAAAGAAEAAAAOABkAAAAGAAIAAAAOABoAAAAGAAMAAAAPABcAAAAHAAAAAAAPABgAAAAHAAEAAAAPABkAAAAHAAIAAAAPABoAAAAHAAMAAAAQABcAAAAAAAAAAAAQABgAAAAAAAEAAAAQABkAAAAAAAIAAAAQABoAAAAAAAMAAAARABcAAAABAAAAAAARABgAAAABAAEAAAARABkAAAABAAIAAAARABoAAAABAAMAAAASABcAAAACAAAAAAASABgAAAACAAEAAAASABkAAAACAAIAAAASABoAAAACAAMAAAATABcAAAADAAAAAAATABgAAAADAAEAAAATABkAAAADAAIAAAATABoAAAADAAMAAAAUABcAAAAEAAAAAAAUABgAAAAEAAEAAAAUABkAAAAEAAIAAAAUABoAAAAEAAMAAAAVABcAAAAFAAAAAAAVABgAAAAFAAEAAAAVABkAAAAFAAIAAAAVABoAAAAFAAMAAAAWABcAAAAGAAAAAAAWABgAAAAGAAEAAAAWABkAAAAGAAIAAAAWABoAAAAGAAMAAAAXABcAAAAHAAAAAAAXABgAAAAHAAEAAAAXABkAAAAHAAIAAAAXABoAAAAHAAMAAAAgABcAAAAAAAAAAAAgABgAAAAAAAEAAAAgABkAAAAAAAIAAAAgABoAAAAAAAMAAAAhABcAAAABAAAAAAAhABgAAAABAAEAAAAhABkAAAABAAIAAAAhABoAAAABAAMAAAAiABcAAAACAAAAAAAiABgAAAACAAEAAAAiABkAAAACAAIAAAAiABoAAAACAAMAAAAjABcAAAADAAAAAAAjABgAAAADAAEAAAAjABkAAAADAAIAAAAjABoAAAADAAMAAAAkABcAAAAEAAAAAAAkABgAAAAEAAEAAAAkABkAAAAEAAIAAAAkABoAAAAEAAMAAAAlABcAAAAFAAAAAAAlABgAAAAFAAEAAAAlABkAAAAFAAIAAAAlABoAAAAFAAMAAAAmABcAAAAGAAAAAAAmABgAAAAGAAEAAAAmABkAAAAGAAIAAAAmABoAAAAGAAMAAAAnABcAAAAHAAAAAAAnABgAAAAHAAEAAAAnABkAAAAHAAIAAAAnABoAAAAHAAMAAAAYABcAAAAAAAAAAAAYABgAAAAAAAEAAAAYABkAAAAAAAIAAAAYABoAAAAAAAMAAAAZABcAAAABAAAAAAAZABgAAAABAAEAAAAZABkAAAABAAIAAAAZABoAAAABAAMAAAAaABcAAAACAAAAAAAaABgAAAACAAEAAAAaABkAAAACAAIAAAAaABoAAAACAAMAAAAbABcAAAADAAAAAAAbABgAAAADAAEAAAAbABkAAAADAAIAAAAbABoAAAADAAMAAAAcABcAAAAEAAAAAAAcABgAAAAEAAEAAAAcABkAAAAEAAIAAAAcABoAAAAEAAMAAAAdABcAAAAFAAAAAAAdABgAAAAFAAEAAAAdABkAAAAFAAIAAAAdABoAAAAFAAMAAAAeABcAAAAGAAAAAAAeABgAAAAGAAEAAAAeABkAAAAGAAIAAAAeABoAAAAGAAMAAAAfABcAAAAHAAAAAAAfABgAAAAHAAEAAAAfABkAAAAHAAIAAAAfABoAAAAHAAMAAAA=")
+tile_set = SubResource("TileSet_aowj8")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CraftingMold" type="Control" parent="CanvasLayer/UI"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 87.0
+offset_top = -120.0
+offset_right = 199.0
+offset_bottom = 68.0
+grow_vertical = 2
+
+[node name="Mold" type="TextureRect" parent="CanvasLayer/UI/CraftingMold"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_6w605")
+
+[node name="FullSword" type="TextureRect" parent="CanvasLayer/UI/CraftingMold"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_pscay")
+
+[node name="HiltProgressBar" type="TextureProgressBar" parent="CanvasLayer/UI/CraftingMold"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -22.0
+offset_top = -72.0
+offset_right = 18.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 0
+value = 70.0
+fill_mode = 3
+texture_under = ExtResource("3_r1fjq")
+texture_progress = ExtResource("4_ionq1")
+
+[node name="Blade1ProgressBar" type="TextureProgressBar" parent="CanvasLayer/UI/CraftingMold"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -12.0
+offset_top = -126.0
+offset_right = 8.0
+offset_bottom = -74.0
+grow_horizontal = 2
+grow_vertical = 0
+fill_mode = 3
+texture_under = ExtResource("5_n1elc")
+texture_progress = ExtResource("6_wbvl7")
+
+[node name="Blade2ProgressBar" type="TextureProgressBar" parent="CanvasLayer/UI/CraftingMold"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -14.0
+offset_top = -175.0
+offset_right = 9.0
+offset_bottom = -129.0
+grow_horizontal = 2
+grow_vertical = 0
+fill_mode = 3
+texture_under = ExtResource("7_cx80g")
+texture_progress = ExtResource("8_fgnpo")
+
+[node name="DetailsPanel" type="TextureRect" parent="CanvasLayer/UI"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -219.0
+offset_top = -118.0
+offset_right = -24.0
+offset_bottom = 12.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("10_1216c")
+
+[node name="NameOfSword" type="Label" parent="CanvasLayer/UI/DetailsPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -45.0
+offset_top = 8.0
+offset_right = 45.0
+offset_bottom = 22.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("11_1216c")
+theme_override_font_sizes/font_size = 14
+text = "Bronze Sword"
+
+[node name="MoldsCompleted" type="Label" parent="CanvasLayer/UI/DetailsPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -69.5
+offset_top = 30.0
+offset_right = 70.5
+offset_bottom = 46.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("10_n8by2")
+theme_override_font_sizes/font_size = 14
+text = "1/3 Molds Completed"
+
+[node name="RemainingResources" type="Label" parent="CanvasLayer/UI/DetailsPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -68.5
+offset_top = 54.0
+offset_right = 71.5
+offset_bottom = 70.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("10_n8by2")
+theme_override_font_sizes/font_size = 12
+text = "Remaining Resources: 2"
+
+[node name="SaveQuantity" type="Label" parent="CanvasLayer/UI/DetailsPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -47.5
+offset_top = 96.0
+offset_right = 45.5
+offset_bottom = 112.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("10_n8by2")
+theme_override_font_sizes/font_size = 12
+text = "(Save 2/2)"
+horizontal_alignment = 2
+
+[node name="Button" type="Button" parent="CanvasLayer/UI/DetailsPanel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -49.0
+offset_top = -39.0
+offset_right = -16.0
+offset_bottom = -15.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("10_n8by2")
+theme_override_font_sizes/font_size = 14
+text = "End"
+
+[node name="Timer" type="Label" parent="CanvasLayer/UI"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -49.0
+offset_top = 2.0
+offset_right = 50.0
+offset_bottom = 46.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("10_n8by2")
+theme_override_font_sizes/font_size = 38
+text = "30.0"
+horizontal_alignment = 1
+
+[node name="SmithingStationFurnace" type="Sprite2D" parent="."]
+position = Vector2(292, 224)
+texture = ExtResource("14_l4xgt")
+
+[node name="Player" type="Sprite2D" parent="."]
+position = Vector2(316, 268)
+texture = ExtResource("15_cn056")
+hframes = 2
+
+[node name="SmithingStationIronGrinder" type="Sprite2D" parent="."]
+position = Vector2(301, 224)
+texture = ExtResource("15_qkphk")
+
+[node name="SmithingIron" type="Sprite2D" parent="."]
+position = Vector2(336, 291)
+texture = ExtResource("17_myphn")
+
+[connection signal="button_up" from="CanvasLayer/UI/DetailsPanel/Button" to="." method="_on_button_button_up"]

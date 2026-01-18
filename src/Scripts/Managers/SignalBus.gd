@@ -12,3 +12,5 @@ signal spawn_respawn_box
 signal unlock_refinery
 @warning_ignore("unused_signal")
 signal unlock_cooking_station
+@warning_ignore("unused_signal")
+signal update_sword_texture(animation_name : String)

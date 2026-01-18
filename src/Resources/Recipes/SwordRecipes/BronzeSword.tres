@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CraftingRecipe" load_steps=3 format=3 uid="uid://8ol4o8ecjwos"]
+
+[ext_resource type="Resource" uid="uid://buu8pdcooh3hc" path="res://src/Resources/CraftingResources/BronzeBar.tres" id="1_2kto0"]
+[ext_resource type="Script" uid="uid://cljygiasf4103" path="res://src/Scripts/Facilities/crafting_recipe.gd" id="1_vpbwh"]
+
+[resource]
+script = ExtResource("1_vpbwh")
+recipe_name = "Bronze Sword"
+description = "A metalic sword made from refined bronze and tin ore. Great for getting started."
+recipe_tier = 1
+recipe_list = Array[Dictionary]([{
+ExtResource("1_2kto0"): 8
+}])
+metadata/_custom_type_script = "uid://cljygiasf4103"

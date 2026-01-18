@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Sword" load_steps=2 format=3 uid="uid://di3xaosm85tjx"]
+
+[ext_resource type="Script" uid="uid://im2igg6pop1u" path="res://src/Scripts/sword.gd" id="1_g5sve"]
+
+[resource]
+script = ExtResource("1_g5sve")
+sword_name = "Wooden Sword"
+metadata/_custom_type_script = "uid://im2igg6pop1u"

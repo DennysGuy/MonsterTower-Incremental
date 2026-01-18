@@ -219,29 +219,21 @@ func clear_grid_container(grid_container : GridContainer) -> void:
 
 
 func calculate_quantity(recipe: CraftingRecipe) -> int:
-	#get recipe material's list
-	#iterate through the list and divide the quantity required by how many is in 
-	#player's inventory
-	#we will return the lowest of the bunch as the number the player can make will be contingent on the lowest resource
-	var inventory : Array = InventoryManager.inventories["Inventory"].duplicate(true)
-	var bank : Array = InventoryManager.inventories["Bank"].duplicate(true)
-	inventory.append_array(bank)
-	var viable_amount = 99999999999
+	var viable_amount := INF
 	
 	for craft_material in recipe.recipe_list:
-		var inventory_amt : int = 0
-		var divisor : int = 0
-		for item in craft_material.keys():
-			var mat = item
-			inventory_amt = get_quantity(mat)
-			divisor  = (inventory_amt/craft_material[item])
-		
-		if divisor <= viable_amount:
-			viable_amount = divisor
-		else:
-			return 0 #will end the function here as the player doesn't have the necessary item
-			
+		for mat in craft_material.keys():
+			var required = craft_material[mat]
+			var inventory_amt := get_quantity(mat)
+
+			if inventory_amt < required:
+				return 0
+
+			var crafts = inventory_amt / required
+			viable_amount = min(viable_amount, crafts)
+
 	return viable_amount
+
 
 func get_quantity(selected_item : Item) -> int:
 	

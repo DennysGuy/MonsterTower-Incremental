@@ -42,17 +42,18 @@ func init_containers() -> void:
 		bank_notice.show()
 
 func move_inventory_to_bank() -> void:
-	var inventory : Array = InventoryManager.inventories["Inventory"]
-	
-	while !inventory.is_empty() and !InventoryManager.check_if_bank_full():
-		for slot in inventory:
-			for i in range(slot["quantity"]):
-				var added : bool = InventoryManager.add_item("Bank",slot["item"])
-				if added:
-					InventoryManager.remove_item("Inventory", slot["item"])
-					InventoryManager.update_grid_container(inventory_container, "Inventory")
-					InventoryManager.update_grid_container(bank_container, "Bank")
-					await get_tree().create_timer(0.12).timeout
-		
+	var inventory_snapshot = InventoryManager.inventories["Inventory"].duplicate(true)
+
+	for slot in inventory_snapshot:
+		var qty = slot["quantity"]
+		var item = slot["item"]
+
+		for i in range(qty):
+			if InventoryManager.add_item("Bank", item):
+				InventoryManager.remove_item("Inventory", item)
+				InventoryManager.update_grid_container(inventory_container, "Inventory")
+				InventoryManager.update_grid_container(bank_container, "Bank")
+				await get_tree().create_timer(0.1).timeout
+
 	to_town.disabled = false
 	new_run.disabled = false

@@ -18,6 +18,7 @@ var prev_input : int
 
 func _ready() -> void:
 	super()
+	SignalBus.update_sword_texture.connect(set_sword_texture)
 	health = PlayerStats.player_stats["Max Health"]
 
 func _process(delta: float) -> void:
@@ -70,19 +71,20 @@ func clear_sprites() -> void:
 func issue_sword_attack() -> void:
 	var enemies_in_range = hit_box.get_overlapping_areas()
 	var overlapping_hits : int = int(PlayerStats.player_stats["Overlapping Hits"])
-	var min_damage : int = int(PlayerStats.player_stats["Attack Damage"] * PlayerStats.player_stats["Accuracy"])
-	var max_damage : int = int(PlayerStats.player_stats["Attack Damage"])
+	var base_damage : int = int(PlayerStats.player_stats["Attack Damage"] + PlayerStats.get_sword(PlayerStats.player_stats["Equipped Sword"]).attack_bonus)
+	var min_damage : int = int(base_damage * PlayerStats.player_stats["Accuracy"])
+	var max_damage : int = int(base_damage)
 	var is_crit = check_for_crit()
 	var incoming_damage : int = randi_range(min_damage,max_damage)
 	
 	if is_crit:
-		incoming_damage = int(PlayerStats.player_stats["Crit Damage"] * incoming_damage)
+		incoming_damage = int((PlayerStats.player_stats["Crit Damage"] + PlayerStats.get_sword(PlayerStats.player_stats["Equipped Sword"]).crit_bonus) * incoming_damage)
 
 	GameManager.attack_enemies(enemies_in_range, overlapping_hits, self, incoming_damage, is_crit)
 
 func check_for_crit() -> bool:
 	var crit_roll : int = randi_range(0,100)
-	if crit_roll < int(100 * PlayerStats.player_stats["Crit Chance"]):
+	if crit_roll < int(100 * (PlayerStats.player_stats["Crit Chance"] + PlayerStats.get_sword(PlayerStats.player_stats["Equipped Sword"]).crit_bonus)):
 		return true
 	
 	return false
