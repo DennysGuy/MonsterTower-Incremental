@@ -8,6 +8,10 @@ class_name Sword extends Resource
 @export var crit_damage_bonus : float
 @export var recipe : CraftingRecipe
 
+@export_group("Graphics")
+@export var graphic : Texture2D
+@export var mold_graphic : Texture2D
+
 func get_stats_dict() -> Dictionary:
 	return {
 		"Attack Bonus": attack_bonus,

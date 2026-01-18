@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://oonjrpabmces"]
+[gd_scene load_steps=31 format=4 uid="uid://oonjrpabmces"]
 
 [ext_resource type="Script" uid="uid://dpqc54c34418w" path="res://src/Scripts/Maps/NewStarShire/new_star_shire.gd" id="1_gq00g"]
 [ext_resource type="TileSet" uid="uid://74oc55cdwefk" path="res://src/Scenes/NewStarshire/TempFloorTiles.tres" id="2_dvat3"]
@@ -598,6 +598,9 @@ size = Vector2(117, 57)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vdg01"]
 size = Vector2(106, 69)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5xris"]
+size = Vector2(102, 64)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bl45m"]
 size = Vector2(21, 88)
 
@@ -776,6 +779,13 @@ position = Vector2(688, 605)
 position = Vector2(2, 0.5)
 shape = SubResource("RectangleShape2D_vdg01")
 
+[node name="CraftingStationArea" type="Area2D" parent="."]
+position = Vector2(789, 486)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CraftingStationArea"]
+position = Vector2(2, -5)
+shape = SubResource("RectangleShape2D_5xris")
+
 [node name="AccessCraftingStation" type="Label" parent="."]
 visible = false
 offset_left = 418.0
@@ -799,6 +809,19 @@ theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("10_636af")
 theme_override_font_sizes/font_size = 13
 text = "Press 'E' to Access SmeltingStation"
+horizontal_alignment = 1
+
+[node name="AccessSwordCraftingStation" type="Label" parent="."]
+visible = false
+offset_left = 648.0
+offset_top = 416.0
+offset_right = 921.0
+offset_bottom = 432.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("10_636af")
+theme_override_font_sizes/font_size = 13
+text = "Press 'E' to Access Sword Crafting Station"
 horizontal_alignment = 1
 
 [node name="LadderArea2" parent="." node_paths=PackedStringArray("ladder_top", "ladder_bottom") instance=ExtResource("17_jp6xg")]
@@ -826,6 +849,8 @@ position = Vector2(0, 73)
 [connection signal="body_exited" from="CookingStationArea" to="." method="_on_cooking_station_area_body_exited"]
 [connection signal="body_entered" from="SmeltingStationArea" to="." method="_on_smelting_station_area_body_entered"]
 [connection signal="body_exited" from="SmeltingStationArea" to="." method="_on_smelting_station_area_body_exited"]
+[connection signal="body_entered" from="CraftingStationArea" to="." method="_on_crafting_station_area_body_entered"]
+[connection signal="body_exited" from="CraftingStationArea" to="." method="_on_crafting_station_area_body_exited"]
 
 [editable path="PracticeDummy"]
 [editable path="HUD"]

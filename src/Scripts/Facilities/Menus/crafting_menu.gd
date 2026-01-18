@@ -6,12 +6,12 @@ class_name CraftingStationMenu extends Control
 
 @onready var ingredients_list: GridContainer = $IngredientsList
 
-@onready var sword_mold_graphic: TextureRect = $SwordMoldGraphic
 @onready var sword_graphic: TextureRect = $SwordGraphic
 
 @onready var inventory_container: GridContainer = $InventoryContainer
 @onready var bank_container: GridContainer = $BankContainer
 @onready var bank_notice: Label = $BankNotice
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 var sword : Sword
 @onready var button: Button = $Button
@@ -27,11 +27,19 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-
 func _on_button_button_up() -> void:
-	pass # Replace with function body.
+	animation_player.play("CraftingFlash")
 
-
+func upgrade_sword() -> void:
+	InventoryManager.remove_resources_from_inventory(sword.recipe.recipe_list)
+	var next_sword_index = PlayerStats.player_stats["Equipped Sword"]+1
+	if next_sword_index < PlayerStats.MAX_SWORD_COUNT:
+		PlayerStats.player_stats["Equipped Sword"] += 1
+		update_sword()
+		
+		update_inventory_containers()
+		SignalBus.update_sword_texture.emit("Idle")
+		
 func update_inventory_containers() -> void:
 	InventoryManager.update_grid_container(inventory_container, "Inventory",false)
 	if PlayerStats.facilities_unlocked["Bank"]:
@@ -63,5 +71,11 @@ func update_sword() -> void: #run this function when we upgrade the sword.
 		
 		if can_craft:
 			button.disabled = false
+			sword_graphic.texture = sword.graphic
 		else:
 			button.disabled = true
+			sword_graphic.texture = sword.mold_graphic
+
+func _on_close_button_up() -> void:
+	GameManager.player_can_move = true
+	queue_free()

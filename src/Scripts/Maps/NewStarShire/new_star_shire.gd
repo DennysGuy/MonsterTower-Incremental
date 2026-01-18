@@ -10,8 +10,10 @@ var player_in_tower_range : bool = false
 var player_in_market_range : bool = false
 var player_in_cooking_range : bool = false
 var player_in_smelting_range : bool = false
+var player_in_crafting_range : bool = false
 
 @onready var access_smelting_station: Label = $AccessSmeltingStation
+@onready var access_sword_crafting_station: Label = $AccessSwordCraftingStation
 
 
 # Called when the node enters the scene tree for the first time.
@@ -35,6 +37,10 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("interact") and player_in_smelting_range and GameManager.player_can_move and PlayerStats.facilities_unlocked["Refinery Station"]:
 		GameManager.player_can_move = false
 		spawn_smelting_menu()
+	
+	if Input.is_action_just_pressed("interact") and player_in_crafting_range and GameManager.player_can_move:
+		GameManager.player_can_move = false
+		spawn_crafting_menu()
 
 func add_tech_tree_to_scene() -> void:
 	var tech_tree : TechTree = preload("uid://b7n3fwd3y85wp").instantiate()
@@ -79,6 +85,10 @@ func spawn_smelting_menu() -> void:
 	var smelting_station : SmeltingMenu = preload("uid://dtf6m65mtihb8").instantiate()
 	control.add_child(smelting_station)
 
+func spawn_crafting_menu() -> void:
+	var sword_crafting_station : CraftingStationMenu = preload("uid://cc1xppx3tkq4f").instantiate()
+	control.add_child(sword_crafting_station)
+
 func _on_grand_market_area_body_entered(body: Node2D) -> void:
 	if body is Player:
 		player_in_market_range = true
@@ -121,3 +131,15 @@ func _on_smelting_station_area_body_exited(body: Node2D) -> void:
 	if body is Player:
 		player_in_smelting_range = false
 		access_smelting_station.hide()
+
+
+func _on_crafting_station_area_body_entered(body: Node2D) -> void:
+	if body is Player:
+		player_in_crafting_range = true
+		access_sword_crafting_station.show()
+
+
+func _on_crafting_station_area_body_exited(body: Node2D) -> void:
+		if body is Player:
+			player_in_crafting_range = false
+			access_sword_crafting_station.hide()

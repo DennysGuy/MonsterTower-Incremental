@@ -9,6 +9,15 @@ var sword_textures : Dictionary = {
 		"SwordSwing1":preload("uid://bdefqkaq2k4dr"),
 		"SwordSwing2":preload("uid://bdefqkaq2k4dr"),
 		"SwordSwing3":preload("uid://bdefqkaq2k4dr")
+	},
+	"Shroom Fibre Blade" : {
+		"Idle": preload("uid://cqrcj00btxto0"),
+		"Run": preload("uid://dyoe7q5f07ia2"),
+		"Jump": preload("uid://bhbydpkw1wwkn"),
+		"Fall": preload("uid://bhbydpkw1wwkn"),
+		"SwordSwing1": preload("uid://j7jrnmqku872"),
+		"SwordSwing2": preload("uid://j7jrnmqku872"),
+		"SwordSwing3": preload("uid://j7jrnmqku872")
 	}
 }
 
@@ -17,7 +26,8 @@ var pickaxe_textures : Dictionary = {
 }
 
 func get_sword_graphic(texture_name : String) -> Texture2D:
-	var sword_name : String = PlayerStats.get_sword().sword_name
+	var sword_index : int = int(PlayerStats.player_stats["Equipped Sword"])
+	var sword_name : String = PlayerStats.get_sword(sword_index).sword_name
 	return sword_textures[sword_name][texture_name]
 
 func get_pickaxe_graphic() -> Texture2D:
