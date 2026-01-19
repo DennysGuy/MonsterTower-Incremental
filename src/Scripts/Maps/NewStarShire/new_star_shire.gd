@@ -70,7 +70,7 @@ func _on_tower_area_body_exited(body: Node2D) -> void:
 func go_to_test_floor() -> void:
 	hud.animation_player.play("CloseOut")
 	await get_tree().create_timer(1.0).timeout
-	get_tree().change_scene_to_file("res://src/Scenes/Tower/TowerFloors/TestFloor/TestFloor.tscn")
+	get_tree().change_scene_to_file("res://src/Scenes/Tower/TowerFloors/Biome1/Floor1-1.tscn")
 
 
 func spawn_grand_market() -> void:

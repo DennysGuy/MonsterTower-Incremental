@@ -96,24 +96,6 @@ _data = {
 &"RESET": SubResource("Animation_nt012")
 }
 
-[sub_resource type="Animation" id="Animation_g3oel"]
-resource_name = "ShowBag"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerHUD/Bag:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.14),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-171, 56.5), Vector2(0, 56.5)]
-}
-
-[sub_resource type="Animation" id="Animation_65fhw"]
-length = 0.001
-
 [sub_resource type="Animation" id="Animation_jyqen"]
 resource_name = "HideBag"
 tracks/0/type = "value"
@@ -129,6 +111,24 @@ tracks/0/keys = {
 "values": [Vector2(0, 56.5), Vector2(-171, 56.5)]
 }
 
+[sub_resource type="Animation" id="Animation_65fhw"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_g3oel"]
+resource_name = "ShowBag"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerHUD/Bag:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.14),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-171, 56.5), Vector2(0, 56.5)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jyqen"]
 _data = {
 &"HideBag": SubResource("Animation_jyqen"),
@@ -136,9 +136,10 @@ _data = {
 &"ShowBag": SubResource("Animation_g3oel")
 }
 
-[node name="HUD" type="CanvasLayer" node_paths=PackedStringArray("animation_player")]
+[node name="HUD" type="CanvasLayer" node_paths=PackedStringArray("animation_player", "map_name_label")]
 script = ExtResource("1_m8qo1")
 animation_player = NodePath("AnimationPlayer")
+map_name_label = NodePath("PlayerHUD/MapeName")
 
 [node name="PlayerHUD" type="Control" parent="."]
 layout_mode = 3
@@ -148,28 +149,37 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Panel" type="Panel" parent="PlayerHUD"]
+layout_mode = 0
+offset_right = 155.0
+offset_bottom = 43.0
+
 [node name="PlayerHealthBar" type="TextureProgressBar" parent="PlayerHUD"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 154.0
+offset_bottom = 44.0
 value = 80.0
 texture_under = ExtResource("1_eowti")
 texture_progress = ExtResource("2_m8qo1")
 
 [node name="PlayerMPBar" type="TextureProgressBar" parent="PlayerHUD"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 154.0
+offset_bottom = 44.0
 step = 0.1
 value = 60.0
 texture_progress = ExtResource("3_nt012")
 
 [node name="HPLabel" type="Label" parent="PlayerHUD"]
 layout_mode = 0
-offset_left = 65.0
-offset_top = 1.0
-offset_right = 132.0
-offset_bottom = 13.0
+offset_left = 66.0
+offset_top = 2.0
+offset_right = 133.0
+offset_bottom = 14.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("5_nt012")
@@ -205,6 +215,22 @@ offset_bottom = 174.99988
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+
+[node name="MapeName" type="Label" parent="PlayerHUD"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -132.0
+offset_top = 8.0
+offset_right = -9.0
+offset_bottom = 24.0
+grow_horizontal = 0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("5_nt012")
+theme_override_font_sizes/font_size = 14
+text = "Floor 1 -1"
+horizontal_alignment = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

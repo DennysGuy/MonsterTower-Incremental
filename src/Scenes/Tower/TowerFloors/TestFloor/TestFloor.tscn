@@ -808,7 +808,6 @@ position = Vector2(1, 118)
 position = Vector2(98, 926)
 
 [node name="GuideLog" type="Label" parent="."]
-visible = false
 offset_left = 69.0
 offset_top = 882.0
 offset_right = 222.0

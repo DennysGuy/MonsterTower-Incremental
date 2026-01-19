@@ -606,7 +606,7 @@ size = Vector2(21, 88)
 
 [node name="NewStarShire" type="Node2D" node_paths=PackedStringArray("spawn_point", "camera", "hud")]
 script = ExtResource("1_gq00g")
-map_name = "New StarShire"
+map_name = "New Starshire"
 spawn_point = NodePath("SpawnPoint")
 camera = NodePath("PlayerCamera")
 hud = NodePath("HUD")

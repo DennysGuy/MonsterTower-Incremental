@@ -1,0 +1,1865 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+  <!--
+   If there are scripts that are added here that will be rendered on payments flow as well,
+   it must add the content-security-policy nonce to the element via
+      javascript_include_tag ... nonce: true
+      or
+      <script nonce="s8LMblXQ+8h94OtznJ+7IQ=="></script>
+  otherwise, the payments page will reject the script
+  -->
+
+  <head>
+    
+      <script async type="text/javascript" nonce="s8LMblXQ+8h94OtznJ+7IQ==" src='https://h.online-metrix.net/fp/tags.js?org_id=5kfca2gp&amp;session_id=83ea10bb-b579-486b-b6a9-401049502851'></script>
+<meta charset="utf-8">
+<script src="https://public.cdn.appfolio.com/public/assets/scripts/ios12-array-reverse-fix-polyfill.js"></script>
+<script src="https://public.cdn.appfolio.com/public/assets/scripts/fingerprintjs/1.2.0/af_fingerprint.js" defer="defer"></script>
+<meta name="msapplication-config" content="none" />
+
+
+<link rel="icon" type="image/x-icon" href="https://public.cdn.appfolio.com/public/favicons/favicon.ico" sizes="16x16 24x24 32x32 48x48 64x64" /><link rel="apple-touch-icon-precomposed" type="image/x-icon" href="https://tportal.cdn.appfolio.com/connect/assets/tportal/appfolio_touch-90fc6855d75f24e7ec2e1b36f2ff871a6ff2e70d4b5faf28c861363994b44ae8.png" /><link rel="apple-touch-startup-image" type="image/x-icon" href="https://tportal.cdn.appfolio.com/connect/assets/tportal/appfolio_startup-d9243797170560b61e4ad09679cfb1c2fab7410ebc95c245b9e1dff89a3fac82.png" />
+
+<title>Black Realty Management - Account Ledger</title>
+
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="cleartype" content="on">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="">
+
+<meta name="apple-itunes-app" content="app-id=1376350358">
+
+<meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="I4Nm9XC6S4seTasj-AJSr9Hz-WK2NCW8kB4okhtHT3b7pMxwLfLxxnXbG1mar99x_vVdCRrpytsgh6gJM_-S3Q" />
+
+<!-- APPLICATION_NAME   : tportal -->
+<!-- APPLICATION_CLUSTER: fa1d287d1fde427f304bc9543fc4636bc991c7d9 -->
+
+    
+<script src="https://www.datadoghq-browser-agent.com/us1/v6/datadog-rum.js" type="text/javascript" nonce="s8LMblXQ+8h94OtznJ+7IQ==">
+</script>
+
+<script nonce="s8LMblXQ+8h94OtznJ+7IQ==">
+  window.DD_RUM && window.DD_RUM.init({
+    clientToken: 'pub9d1a67e2b3ca6091cf8d870575573098',
+    applicationId: 'f035c283-963a-42da-98e1-9c540aa617e3',
+    site: 'datadoghq.com',
+    service: 'tportal',
+    env: 'production',
+    version: 'live-fa1d287d1fde427f304bc9543fc4636bc991c7d9',
+    sessionSampleRate: 25,
+    sessionReplaySampleRate: 2.0,
+    trackUserInteractions: true,
+    trackResources: true,
+    trackLongTasks: true,
+    traceSampleRate: 12,
+    traceContextInjection: 'all',
+    defaultPrivacyLevel: 'mask',
+    allowedTracingUrls: [/https:\/\/.*\.appfolio\.com/, /https:\/\/(?!snowplow-collector\.).*\.appf\.io/, /https:\/\/.*\.appfolioinc\.com/, /https:\/\/.*\.foliospace\.com/],
+  });
+</script>
+
+
+    <script nonce="s8LMblXQ+8h94OtznJ+7IQ==">
+  let AfObservability = (function () {
+    if (!window.DD_RUM) {
+      console.error("AfObservability: window.DD_RUM is not available.");
+      return {};
+    }
+
+    function createFacadeFunction(ddFuncName) {
+      return function () {
+        window.DD_RUM[ddFuncName].apply(window.DD_RUM, arguments);
+      };
+    }
+
+    let facade = {};
+
+    for (let ddFuncName in window.DD_RUM) {
+      if (typeof window.DD_RUM[ddFuncName] === 'function') {
+        facade[ddFuncName] = createFacadeFunction(ddFuncName);
+      }
+    }
+
+    return facade;
+  })();
+</script>
+
+
+  <script  nonce="s8LMblXQ+8h94OtznJ+7IQ==">
+    (
+      function (p, l, o, w, i, n, g) {
+        if (!p[i]) {
+          p.GlobalSnowplowNamespace = p.GlobalSnowplowNamespace || [];
+          p.GlobalSnowplowNamespace.push(i);
+          p[i] = function () {
+            (p[i].q = p[i].q || []).push(arguments)
+          };
+          p[i].q = p[i].q || [];
+          n = l.createElement(o);
+          g = l.getElementsByTagName(o)[0];
+          n.async = 1;
+          n.src = w;
+          g.parentNode.insertBefore(n, g)
+        }
+      }(window,document,"script","https://public.cdn.appfolio.com/public/assets/scripts/snowfolio/4.3.1/snowfolio.js","snowplow")
+    );
+    const collector_url = 'https://snowplow-collector.dataplatform.appfolio.net';
+    window.snowplow('newTracker', 'sp1', collector_url, {
+      appId: 'tportal',
+      postPath: '/io.augur.snowplow/1-0-0'
+    })
+
+    const email = 'mattmatriciano@gmail.com';
+    const vhost_id = 'ac529e469ea6dad8a6ad07bd0f0b70a03eade516';
+    const vhost_name = 'blackrealtymanagement'
+    const rentersInsuranceUuid = 'ac529e469ea6dad8a6ad07bd0f0b70a03eade516-c310d150-ee2c-11ef-9c48-0e6d7dc95603';
+    const isPmSession = 'false';
+    const propertyType = 'mfr';
+    const user_id = '7bca27c9-ee2c-11ef-9c48-0e6d7dc95603';
+
+    if (user_id) {
+      snowplow('setUserId', user_id);
+    }
+
+    snowplow('enableActivityTracking', {
+      minimumVisitLength: 60,
+      heartbeatDelay: 60
+    });
+
+    const pageAccessedByReload = (
+      (window.performance.navigation && window.performance.navigation.type === 1) ||
+        window.performance
+          .getEntriesByType('navigation')
+          .map((nav) => nav.type)
+          .includes('reload')
+    );
+
+    window.snowplow('trackPageView', {
+      context: [{
+        schema: 'iglu:io.augur.snowplow/identity_lite/jsonschema/1-0-0', // TODO: What is this schema?  Why do we need it?  Do we have to host iglu?
+        data: {
+          email: email,
+          vhost_id: vhost_id,
+          vhost_name: vhost_name,
+          rentersInsuranceUuid: rentersInsuranceUuid,
+          isPmSession: isPmSession,
+          propertyType: propertyType,
+          is_page_reload: pageAccessedByReload
+        }
+      }]
+    });
+
+    var window_URL = window.location.pathname
+
+    const targetNode = document;
+    const observerOptions = {
+      childList: true,
+      attributes: true,
+
+      // Omit (or set to false) to observe only changes to the parent node
+      subtree: true
+    }
+
+    const observer = new MutationObserver(on_click_plow_page);
+    observer.observe(targetNode, observerOptions);
+
+    /*
+     * Adds a click event listener to an iframe identified by its name.
+     *
+     * @param {string} name - The name attribute of the iframe to which the event listener is to be added.
+     * @param {function} listener - The event listener function to be added to the iframe.
+     */
+    function addEventListenerToIframe(name, listener) {
+      // Get all iframes with the given name. It returns a NodeList.
+      const iframes = document.getElementsByName(name);
+
+      // Check if there's at least one iframe with the given name.
+      if (iframes.length > 0) {
+        // Check if the contentWindow and document properties exist on the first iframe.
+        if (iframes[0].contentWindow && iframes[0].contentWindow.document) {
+          // Add a click event listener to the document within the iframe's contentWindow.
+          iframes[0].contentWindow.document.addEventListener('click', listener, true);
+        }
+      }
+    }
+
+    function on_click_plow_page () {
+      var new_window_URL=window.location.pathname
+      if (window_URL!=new_window_URL) {
+        window.snowplow('trackPageView', {
+          context: [{
+            schema: 'iglu:io.augur.snowplow/identity_lite/jsonschema/1-0-0', // TODO: What is this schema?  Why do we need it?  Do we have to host iglu?
+            data: {
+              email: email,
+              vhost_id: vhost_id,
+              vhost_name: vhost_name,
+              rentersInsuranceUuid: rentersInsuranceUuid,
+              isPmSession: isPmSession,
+              propertyType: propertyType,
+              is_page_reload: false
+            }
+          }]
+        });
+        window_URL=new_window_URL
+      }
+      // Add a click event listener to the iframe with name 'intercom-launcher-frame' using the on_click_plow function.
+      addEventListenerToIframe('intercom-launcher-frame', on_click_plow);
+      // Add a click event listener to the iframe with name 'intercom-messenger-frame' using the on_click_plow function.
+      addEventListenerToIframe('intercom-messenger-frame', on_click_plow);
+    }
+    function get_parents(e){
+      /*
+        Traverse upwards and adds each parent node to the nodes array as it goes
+        Once it runs into an undefined parent node or the current node is the document, exit the loop
+        At each element upwards, grab the label(s)' text contents, the id value and the classes (that don't start with 'supports')
+        Return the three separate arrays of Ids, Labels, Classes packed into a single array
+      */
+      var element = e.target
+      var allParentElementIds = []; // Array to hold all parent node element IDs
+      var allParentElementLabels = []; // Array to hold all parent node labels
+      var allParentClasses = []; // Array to hold all parent node element classes
+      while(element && element !== document) {
+        if(element.id) {
+          allParentElementIds.push(element.id);
+        }
+        if(element.labels){
+          element.labels.forEach((label) => {
+            if (label.textContent) {
+              allParentElementLabels.push(label.textContent)
+            }
+          });
+        };
+        element.classList.forEach((classes) => {
+          if(classes && !classes.startsWith('supports')){
+              allParentClasses.push(classes)
+            }
+        });
+
+        element = element.parentNode;
+      }
+
+      return [allParentElementIds, allParentClasses, allParentElementLabels];
+    };
+    function is_data_pair_click(e) {
+      var classes=[...e.target.classList];
+      return classes.includes('datapair__value'); // just returning whether it was a datapair__value element that was clicked, True if yes, False if no.
+    }
+    function on_click_plow(e) {
+      if (is_data_pair_click(e)) { // check if the click happened on a datapair__value element (often contain PII/Sensitive data) and skip it if so.
+        return false
+      }
+      var parentResults = get_parents(e); // retrieve parent element Ids, classes and labels arrays
+      var allElementIds = parentResults[0]; // retrieve allParentElementIds array into allElementIds
+      var allParentClasses = parentResults[1]; // retrieve allParentClasses array into allElementIds
+      var allParentLabels = parentResults[2] // retrieve allParentElementLabels array into allElementIds
+      /*
+        targetUrl is a REQUIRED field in the final payload
+        First, attempt to set the targetURL variable to be the href attribute of the clicked element
+        If that results in an empty string or an undefined value for targetURL variable, set the targetURL variable to be the current page URL
+      */
+      var targetURL = e.target.getAttribute('href');
+      if(e.target.parentNode) {
+        var parentTargetURL = e.target.parentNode.getAttribute('href');
+      };
+      if (targetURL=="" || !targetURL){
+        if(parentTargetURL) {
+          targetURL=parentTargetURL;
+        } else {
+          targetURL='N/A';
+        }
+      };
+      /*
+        parse attribute name/values into key/value pair json blob for ease of querying final event structure
+      */
+      const getAllAttributes = {};
+      if(e.target.attributes instanceof Array){
+        attributes_ = e.target.attributes; // if the attributes are an array, we can just use them as is
+      } else {
+        attributes_ = [...e.target.attributes]; // otherwise, they need to be put into an array so we can use them to build out the attribute json blob
+      };
+      attributes_.forEach((element) => {
+        // Do not record `src` attribute
+        if (element.name === 'src') {
+          return;
+        }
+
+        // Check if the attribute is 'value' or contains 'cache'
+        const isPossiblySensitive = element.name == 'value' || element.name.toLowerCase().includes('cache');
+
+        // Check if 'snowplow-allow-value' is present in the element attribute values or in the list of parent classes
+        const isWhitelisted = Object.values(attributes_).includes('snowplow-allow-value') || allParentClasses.includes('snowplow-allow-value');
+
+        // If the attribute is not sensitive, or is whitelisted, record the attribute
+        if (!isPossiblySensitive || isWhitelisted) {
+          getAllAttributes[element.name] = element.value;
+        }
+      });
+      /*
+        send trackLinkClick event to the snowplow event collector
+      */
+      snowplow('trackLinkClick', {
+        targetUrl: targetURL,
+        elementId: e.target.id,
+        elementClasses: [...e.target.classList],
+        elementContent: e.target.innerText,
+        context: [{
+          schema: 'iglu:io.augur.snowplow/identity_lite/jsonschema/1-0-0',
+          data: {
+            email: email,
+            vhost_id: vhost_id,
+            vhost_name: vhost_name,
+            rentersInsuranceUuid: rentersInsuranceUuid,
+            isPmSession: isPmSession,
+            propertyType: propertyType,
+            elementType: e.target.tagName,
+            elementAttributes: getAllAttributes,
+            pageURLComponents: window.location.pathname.split("/").filter(function(a){ if(a!=''){return a}}), // parse the pathname into each individual element separated by "/"
+            elementParentClasses: allParentClasses,
+            elementParentElementIds: allElementIds,
+            elementParentLabels: allParentLabels
+          }
+        }]
+      });
+    };
+
+    document.addEventListener("click", on_click_plow, true);
+    // Add a click event listener to the iframe with name 'intercom-launcher-frame' using the on_click_plow function.
+    addEventListenerToIframe('intercom-launcher-frame', on_click_plow);
+    // Add a click event listener to the iframe with name 'intercom-messenger-frame' using the on_click_plow function.
+    addEventListenerToIframe('intercom-messenger-frame', on_click_plow);
+  </script>
+
+
+<link rel="manifest" href="https://s3.amazonaws.com/appfolio-mobile/manifest.json">
+<link rel="stylesheet" href="https://public.cdn.appfolio.com/bootstrap-coastline/6.6.3/bootstrap-coastline.min.css" />
+<link rel="stylesheet" href="https://public.cdn.appfolio.com/public/icons/font-awesome/6.2.0/css/all.min.css" />
+<link rel="stylesheet" href="https://public.cdn.appfolio.com/public/icons/font-awesome/6.2.0/css/v4-shims.min.css" />
+
+<link rel="stylesheet" href="https://tportal.cdn.appfolio.com/connect/assets/tportal/application-c61baa0d4cc95f1f83e45f8a359d4e0156ab28ff111190495459eaa69f3d7365.css" />
+
+
+    <script id="tenant_experiments" nonce="s8LMblXQ+8h94OtznJ+7IQ==">
+  window.tenantVariations = [];
+  window.__OPTLY_SDK_KEY__ = "2eBj6aX8usevREYopKq2D";
+  window.__OPTLY_DATAFILE__ = "{\"accountId\":\"20035616984\",\"projectId\":\"20048342109\",\"revision\":\"3595\",\"attributes\":[{\"id\":\"20085360254\",\"key\":\"uuid\"},{\"id\":\"20089090398\",\"key\":\"address-state\"},{\"id\":\"20098866893\",\"key\":\"react-payments-flow-current-users-experiment-variation\"},{\"id\":\"20120095543\",\"key\":\"react-payments-flow-new-users-experiment-variation\"},{\"id\":\"20121956065\",\"key\":\"locale\"},{\"id\":\"20136037723\",\"key\":\"allow-online-ach-payments\"},{\"id\":\"20136248574\",\"key\":\"allow-online-cc-payments\"},{\"id\":\"20142646852\",\"key\":\"property-type\"},{\"id\":\"20142678052\",\"key\":\"is-new-user\"},{\"id\":\"20144266362\",\"key\":\"react-payments-autopay-new-users-experiment-variation\"},{\"id\":\"20153467006\",\"key\":\"is-new-user-march-round\"},{\"id\":\"20163007894\",\"key\":\"react-payments-autopay-current-users-experiment-variation\"},{\"id\":\"20164334097\",\"key\":\"user-has-autopay\"},{\"id\":\"20164814803\",\"key\":\"turtle\"},{\"id\":\"20173791925\",\"key\":\"release\"},{\"id\":\"20173820973\",\"key\":\"vhost\"},{\"id\":\"20182628772\",\"key\":\"allow-auto-payments\"},{\"id\":\"20182752068\",\"key\":\"in-payment-experiment\"},{\"id\":\"20186017899\",\"key\":\"made-payment-in-old-flow\"},{\"id\":\"20219690158\",\"key\":\"project-id\"},{\"id\":\"20247435524\",\"key\":\"months-since-move-in\"},{\"id\":\"20344410034\",\"key\":\"has-roost\"},{\"id\":\"20349677648\",\"key\":\"ri-enabled\"},{\"id\":\"20357653575\",\"key\":\"has-tpi\"},{\"id\":\"21550971021\",\"key\":\"apple-pay-enabled\"},{\"id\":\"21551550212\",\"key\":\"device-type\"},{\"id\":\"21596860228\",\"key\":\"has-visited-payment-flow\"},{\"id\":\"21721070699\",\"key\":\"has-open-escrow-charges\"},{\"id\":\"21952100640\",\"key\":\"occupancy-rent-range\"},{\"id\":\"26172931079\",\"key\":\"in-security-deposit-alternative\"},{\"id\":\"26189690209\",\"key\":\"in-tportal-new-user-flow\"},{\"id\":\"26215840063\",\"key\":\"nav-poc-opt-in\"}],\"audiences\":[{\"id\":\"20243957234\",\"conditions\":\"[\\\"and\\\", [\\\"or\\\", [\\\"not\\\", [\\\"or\\\", {\\\"match\\\": \\\"exact\\\", \\\"name\\\": \\\"months-since-move-in\\\", \\\"type\\\": \\\"custom_attribute\\\", \\\"value\\\": \\\"3+\\\"}]], [\\\"not\\\", [\\\"or\\\", {\\\"match\\\": \\\"exact\\\", \\\"name\\\": \\\"vhost\\\", \\\"type\\\": \\\"custom_attribute\\\", \\\"value\\\": \\\"hoaassist\\\"}, {\\\"match\\\": \\\"exact\\\", \\\"name\\\": \\\"vhost\\\", \\\"type\\\": \\\"custom_attribute\\\", \\\"value\\\": \\\"gassen\\\"}]]], [\\\"or\\\", [\\\"or\\\", {\\\"match\\\": \\\"exact\\\", \\\"name\\\": \\\"release\\\", \\\"type\\\": \\\"custom_attribute\\\", \\\"value\\\": \\\"internal\\\"}, {\\\"match\\\": \\\"exact\\\", \\\"name\\\": \\\"release\\\", \\\"type\\\": \\\"custom_attribute\\\", \\\"value\\\": \\\"live_1\\\"}, {\\\"match\\\": \\\"exact\\\", \\\"name\\\": \\\"release\\\", \\\"type\\\": \\\"custom_attribute\\\", \\\"value\\\": \\\"live_2\\\"}, {\\\"match\\\": \\\"exact\\\", \\\"name\\\": \\\"release\\\", \\\"type\\\": \\\"custom_attribute\\\", \\\"value\\\": \\\"live\\\"}, {\\\"match\\\": \\\"exact\\\", \\\"name\\\": \\\"release\\\", \\\"type\\\": \\\"custom_attribute\\\", \\\"value\\\": \\\"demo\\\"}]]]\",\"name\":\"Tportal Home Page Account Setup Test - v1 - May 2021\"},{\"name\":\"Apple Pay Test Audience\",\"conditions\":\"[\\\"or\\\", {\\\"match\\\": \\\"exact\\\", \\\"name\\\": \\\"$opt_dummy_attribute\\\", \\\"type\\\": \\\"custom_attribute\\\", \\\"value\\\": \\\"$opt_dummy_value\\\"}]\",\"id\":\"21575050580\"},{\"name\":\"User Never Used Payment Flow Before\",\"conditions\":\"[\\\"or\\\", {\\\"match\\\": \\\"exact\\\", \\\"name\\\": \\\"$opt_dummy_attribute\\\", \\\"type\\\": \\\"custom_attribute\\\", \\\"value\\\": \\\"$opt_dummy_value\\\"}]\",\"id\":\"5111318949134336\"},{\"name\":\"User Has Used Payment Flow Before\",\"conditions\":\"[\\\"or\\\", {\\\"match\\\": \\\"exact\\\", \\\"name\\\": \\\"$opt_dummy_attribute\\\", \\\"type\\\": \\\"custom_attribute\\\", \\\"value\\\": \\\"$opt_dummy_value\\\"}]\",\"id\":\"6066568195473408\"},{\"id\":\"$opt_dummy_audience\",\"name\":\"Optimizely-Generated Audience for Backwards Compatibility\",\"conditions\":\"[\\\"or\\\", {\\\"match\\\": \\\"exact\\\", \\\"name\\\": \\\"$opt_dummy_attribute\\\", \\\"type\\\": \\\"custom_attribute\\\", \\\"value\\\": \\\"$opt_dummy_value\\\"}]\"}],\"version\":\"4\",\"events\":[{\"id\":\"20066240001\",\"experimentIds\":[],\"key\":\"insurance_page_submit_policy_button_click\"},{\"id\":\"20083244320\",\"experimentIds\":[],\"key\":\"payments_tenant_profile_insurance_action_click\"},{\"id\":\"20089036912\",\"experimentIds\":[],\"key\":\"insurance_page_get_renters_insurance_button_click\"},{\"id\":\"20089130034\",\"experimentIds\":[],\"key\":\"home_page_purchase_renters_insurance_button_click\"},{\"id\":\"20106447263\",\"experimentIds\":[\"26822140008\",\"24117010538\",\"24209200627\",\"27589580521\",\"26165811290\"],\"key\":\"ri_buyflow_property_information_load\"},{\"id\":\"20110126693\",\"experimentIds\":[],\"key\":\"ri_tokenized_landing_page_get_renters_insurance_button_click\"},{\"id\":\"20124130965\",\"experimentIds\":[\"25832180015\",\"27808450453\",\"24117010538\",\"26822140008\",\"24296700498\",\"24209200627\",\"28184100100\",\"29233200179\",\"27589580521\",\"26165811290\"],\"key\":\"ri_buyflow_payment_information_load\"},{\"id\":\"20144336405\",\"experimentIds\":[\"26165811290\"],\"key\":\"home_page_renters_insurance_learn_more_button_click\"},{\"id\":\"20145220133\",\"experimentIds\":[\"25832180015\",\"27808450453\",\"24117010538\",\"26822140008\",\"24296700498\",\"24209200627\",\"28184100100\",\"29233200179\",\"27589580521\",\"26165811290\"],\"key\":\"ri_buyflow_congratulations_load\"},{\"id\":\"20147808359\",\"experimentIds\":[],\"key\":\"home_page_roost_banner_link_click\"},{\"id\":\"20150269253\",\"experimentIds\":[],\"key\":\"home_page_renters_insurance_requirement_banner_link_click\"},{\"id\":\"20161007167\",\"experimentIds\":[],\"key\":\"insurance_page_renters_insurance_requirement_banner_link_click\"},{\"id\":\"20162946112\",\"experimentIds\":[],\"key\":\"payment_confirmation_page_insurance_sidebar_button_click\"},{\"id\":\"20282293550\",\"experimentIds\":[],\"key\":\"bundle_policies_button_click\"},{\"id\":\"20297083849\",\"experimentIds\":[],\"key\":\"lease_signed_modal_account_setup_card_insurance_action_click\"},{\"id\":\"20297126507\",\"experimentIds\":[],\"key\":\"pet_insurance_button_click\"},{\"id\":\"20299014497\",\"experimentIds\":[],\"key\":\"lease_signed_modal_account_setup_card_autopay_action_click\"},{\"id\":\"20313210707\",\"experimentIds\":[],\"key\":\"auto_insurance_button_click\"},{\"id\":\"20498503733\",\"experimentIds\":[],\"key\":\"account_setup_card_insurance_action_click\"},{\"id\":\"20522500262\",\"experimentIds\":[],\"key\":\"account_setup_card_make_payment_action_click\"},{\"id\":\"20531613541\",\"experimentIds\":[],\"key\":\"account_setup_card_autopay_action_click\"},{\"id\":\"21479821168\",\"experimentIds\":[\"25832180015\",\"27808450453\",\"26822140008\",\"24117010538\",\"24209200627\",\"29233200179\",\"27589580521\",\"26165811290\"],\"key\":\"ri_buyflow_coverage_details_load\"},{\"id\":\"21480031166\",\"experimentIds\":[\"27808450453\",\"26822140008\",\"24117010538\",\"24209200627\",\"29233200179\",\"27589580521\",\"26165811290\"],\"key\":\"ri_buyflow_additional_occupants_covered_load\"},{\"id\":\"21491800152\",\"experimentIds\":[\"25832180015\",\"27808450453\",\"26822140008\",\"24117010538\",\"24209200627\",\"29233200179\",\"27589580521\",\"26165811290\"],\"key\":\"ri_buyflow_coverage_date_load\"},{\"id\":\"21532301299\",\"experimentIds\":[\"25832180015\",\"27808450453\",\"24117010538\",\"26822140008\",\"24296700498\",\"24209200627\",\"29233200179\",\"27589580521\",\"26165811290\"],\"key\":\"ri_buyflow_payment_plan_details_load\"},{\"id\":\"22159930877\",\"experimentIds\":[],\"key\":\"ri_saved_progress_modal_start_over_button_click\"},{\"id\":\"22192210955\",\"experimentIds\":[],\"key\":\"ri_saved_progress_modal_continue_button_click\"},{\"id\":\"22223820088\",\"experimentIds\":[],\"key\":\"ri_back_button_click_after_saved_progress_modal_continue\"},{\"id\":\"22350481466\",\"experimentIds\":[],\"key\":\"ri_one_click_bind_payment_flow_check_box_clicked\"},{\"id\":\"22362572587\",\"experimentIds\":[],\"key\":\"ri_one_click_bind_payment_flow_ri_alert_displayed\"},{\"id\":\"22524490026\",\"experimentIds\":[\"26822140008\",\"24117010538\",\"24209200627\",\"27589580521\",\"26165811290\"],\"key\":\"ri_buyflow_policy_holder_details_load\"},{\"id\":\"23551080085\",\"experimentIds\":[\"26165811290\"],\"key\":\"ri_overview_cta_button_top_click\"},{\"id\":\"23659510650\",\"experimentIds\":[\"24296700498\"],\"key\":\"ri_purchased_policy_with_apple_pay\"},{\"id\":\"23888181008\",\"experimentIds\":[],\"key\":\"ri_buyflow_coverage_date_help_bubble_click\"},{\"id\":\"23991041777\",\"experimentIds\":[],\"key\":\"ri_buyflow_coverage_details_billed_annually\"},{\"id\":\"24048491002\",\"experimentIds\":[],\"key\":\"ri_buyflow_coverage_details_billed_monthly\"},{\"id\":\"24074431056\",\"experimentIds\":[],\"key\":\"ri_user_intent_comprehensive_coverage_selected\"},{\"id\":\"24107341029\",\"experimentIds\":[],\"key\":\"ri_user_intent_step_load\"},{\"id\":\"24108380285\",\"experimentIds\":[],\"key\":\"ri_valid_property_address_eligible_for_correction\"},{\"id\":\"24135180460\",\"experimentIds\":[],\"key\":\"ri_user_intent_lower_cost_selected\"},{\"id\":\"24175810961\",\"experimentIds\":[\"24209200627\"],\"key\":\"ri_home_survey_skip_click\"},{\"id\":\"24195610026\",\"experimentIds\":[],\"key\":\"ri_hide_policy_details_click\"},{\"id\":\"24197300413\",\"experimentIds\":[\"24209200627\"],\"key\":\"ri_buyflow_home_button_click\"},{\"id\":\"24200320133\",\"experimentIds\":[],\"key\":\"ri_show_policy_details_click\"},{\"id\":\"24217980090\",\"experimentIds\":[\"24209200627\"],\"key\":\"ri_home_survey_submit_click\"},{\"id\":\"24290970188\",\"experimentIds\":[\"24296700498\"],\"key\":\"ri_apple_pay_button_click\"},{\"id\":\"24300080138\",\"experimentIds\":[\"24296700498\"],\"key\":\"ri_purchased_policy_with_card\"},{\"id\":\"24336460811\",\"experimentIds\":[],\"key\":\"ri_user_intent_something_else_selected\"},{\"id\":\"24340040259\",\"experimentIds\":[],\"key\":\"flexible_rent_placeholder\"},{\"id\":\"24499460661\",\"experimentIds\":[],\"key\":\"ri_optimizely_tech_talk_event\"},{\"id\":\"24612130238\",\"experimentIds\":[\"28861090297\",\"25015530022\"],\"key\":\"ri_change_payment_method_success\"},{\"id\":\"24781881348\",\"experimentIds\":[],\"key\":\"ri_buyflow_personal_belongings_load\"},{\"id\":\"24782031750\",\"experimentIds\":[],\"key\":\"ri_tportal_home_pending_cancel_warning_link_click\"},{\"id\":\"24782690236\",\"experimentIds\":[],\"key\":\"ri_buyflow_faq_chat_button_click\"},{\"id\":\"24789231211\",\"experimentIds\":[],\"key\":\"ri_precious_personal_belongings_selected\"},{\"id\":\"24814160414\",\"experimentIds\":[],\"key\":\"ri_skipped_personal_belongings\"},{\"id\":\"24820630057\",\"experimentIds\":[\"28861090297\",\"25015530022\"],\"key\":\"ri_change_payment_method_block_load\"},{\"id\":\"24835830206\",\"experimentIds\":[],\"key\":\"ri_hobby_personal_belongings_selected\"},{\"id\":\"24841060234\",\"experimentIds\":[],\"key\":\"ri_none_personal_belongings_selected\"},{\"id\":\"24841430189\",\"experimentIds\":[],\"key\":\"ri_electronics_personal_belongings_selected\"},{\"id\":\"24987501359\",\"experimentIds\":[\"28861090297\",\"25015530022\"],\"key\":\"ri_change_payment_method_cancel_button_click\"},{\"id\":\"24995690441\",\"experimentIds\":[\"28861090297\",\"25015530022\"],\"key\":\"ri_change_payment_method_toggle_close_button_click\"},{\"id\":\"25009510338\",\"experimentIds\":[\"28861090297\",\"25015530022\"],\"key\":\"ri_change_payment_method_edit_button_click\"},{\"id\":\"25038980008\",\"experimentIds\":[\"28861090297\",\"25015530022\"],\"key\":\"ri_change_payment_method_save_button_click\"},{\"id\":\"25137881435\",\"experimentIds\":[],\"key\":\"ri_helper_what_if_i_need_more_coverage_expand_click\"},{\"id\":\"25138890645\",\"experimentIds\":[],\"key\":\"ri_helper_what_is_loss_of_use_expand_click\"},{\"id\":\"25186440032\",\"experimentIds\":[],\"key\":\"ri_helper_what_does_primary_policyholder_mean_expand_click\"},{\"id\":\"25192250232\",\"experimentIds\":[],\"key\":\"ri_helper_where_can_i_see_my_documents_expand_click\"},{\"id\":\"25203840076\",\"experimentIds\":[],\"key\":\"ri_helper_what_if_i_need_to_cancel_expand_click\"},{\"id\":\"25205080236\",\"experimentIds\":[],\"key\":\"ri_helper_who_can_i_add_expand_click\"},{\"id\":\"25207530037\",\"experimentIds\":[],\"key\":\"ri_helper_what_are_these_fees_expand_click\"},{\"id\":\"25209250077\",\"experimentIds\":[],\"key\":\"ri_helper_my_address_is_incorrect_expand_click\"},{\"id\":\"25231040060\",\"experimentIds\":[],\"key\":\"fr_disclosure_page_apply_now_with_best_egg\"},{\"id\":\"25419590238\",\"experimentIds\":[\"28861090297\",\"25015530022\"],\"key\":\"ri_one_time_payment_toggle_close_button_clicked\"},{\"id\":\"25420260156\",\"experimentIds\":[\"28861090297\",\"25015530022\"],\"key\":\"ri_one_time_payment_block_load\"},{\"id\":\"25423730197\",\"experimentIds\":[\"28861090297\",\"25015530022\"],\"key\":\"ri_one_time_payment_pay_now_button_click\"},{\"id\":\"25435190172\",\"experimentIds\":[\"28861090297\",\"25015530022\"],\"key\":\"ri_one_time_payment_cancel_button_click\"},{\"id\":\"25435860174\",\"experimentIds\":[\"28861090297\",\"25015530022\"],\"key\":\"ri_one_time_payment_make_payment_button_click\"},{\"id\":\"25453770083\",\"experimentIds\":[\"28861090297\",\"25015530022\",\"26081142019\"],\"key\":\"ri_one_time_payment_success\"},{\"id\":\"25864620398\",\"experimentIds\":[],\"key\":\"fr_enrollment_status_updated_to_started\"},{\"id\":\"25866800290\",\"experimentIds\":[],\"key\":\"fr_enrollment_status_updated_to_enrolled\"},{\"id\":\"25866890795\",\"experimentIds\":[],\"key\":\"fr_enrollment_status_updated_to_ineligible\"},{\"id\":\"25876120460\",\"experimentIds\":[],\"key\":\"fr_enrollment_status_updated_to_eligible\"},{\"id\":\"25920450004\",\"experimentIds\":[],\"key\":\"fr_enrollment_status_updated_to_paused\"},{\"id\":\"26004820019\",\"experimentIds\":[\"26081142019\"],\"key\":\"tpn_payment_confirmation_loaded\"},{\"id\":\"26092050115\",\"experimentIds\":[],\"key\":\"ri_tportal_home_ri_block_show_lowest_price_info_bubble_click\"},{\"id\":\"26159751081\",\"experimentIds\":[],\"key\":\"tpn_sorceress_final_step_cta_clicked\"},{\"id\":\"26168310137\",\"experimentIds\":[\"26081142019\"],\"key\":\"tame_navigation_poc_disabled_by_user\"},{\"id\":\"26194580047\",\"experimentIds\":[\"26081142019\"],\"key\":\"tame_navigation_poc_enabled_by_user\"},{\"id\":\"26278370259\",\"experimentIds\":[\"26165811290\"],\"key\":\"ri_overview_redesign_2_see_my_quote\"},{\"id\":\"26282790096\",\"experimentIds\":[],\"key\":\"ri_learn_more_modal_coverage_date_click\"},{\"id\":\"26306080074\",\"experimentIds\":[],\"key\":\"ri_learn_more_modal_payment_plan_details_click\"},{\"id\":\"26316100010\",\"experimentIds\":[],\"key\":\"ri_learn_more_modal_coverage_details_click\"},{\"id\":\"26323700010\",\"experimentIds\":[],\"key\":\"ri_learn_more_modal_additional_occupants_covered_click\"},{\"id\":\"26492860014\",\"experimentIds\":[],\"key\":\"ri_home_page_upsell_get_a_quote_click\"},{\"id\":\"26512130004\",\"experimentIds\":[],\"key\":\"ri_home_page_upsell_learn_more_click\"},{\"id\":\"26537050004\",\"experimentIds\":[],\"key\":\"ri_home_page_upsell_dismiss_button_click\"},{\"id\":\"26814730250\",\"experimentIds\":[\"26822140008\"],\"key\":\"ri_additional_interest_info_button_clicked\"},{\"id\":\"26904740031\",\"experimentIds\":[],\"key\":\"ri_help_button_clicked_policy_holder_details\"},{\"id\":\"26911881373\",\"experimentIds\":[],\"key\":\"ri_help_button_clicked_coverage_details\"},{\"id\":\"26912600123\",\"experimentIds\":[],\"key\":\"ri_help_button_clicked_property_information\"},{\"id\":\"26927691636\",\"experimentIds\":[],\"key\":\"ri_help_button_clicked_additional_occupants_covered\"},{\"id\":\"26943461413\",\"experimentIds\":[],\"key\":\"ri_help_button_clicked_payment_information\"},{\"id\":\"27091170516\",\"experimentIds\":[],\"key\":\"ri_help_button_clicked_coverage_date\"},{\"id\":\"27120300168\",\"experimentIds\":[],\"key\":\"ri_help_button_clicked_payment_plan_details\"},{\"id\":\"27414881653\",\"experimentIds\":[\"27589580521\"],\"key\":\"ri_property_information_navbar_faq_click\"},{\"id\":\"27426741834\",\"experimentIds\":[\"27589580521\"],\"key\":\"ri_payment_plan_details_navbar_faq_click\"},{\"id\":\"27426771264\",\"experimentIds\":[\"27589580521\"],\"key\":\"ri_payment_information_navbar_faq_click\"},{\"id\":\"27428851500\",\"experimentIds\":[],\"key\":\"ri_faq_should_i_add_renters_to_my_policy_if_they_are_visiting_c\"},{\"id\":\"27434081640\",\"experimentIds\":[],\"key\":\"ri_faq_who_underwrites_the_policy_click\"},{\"id\":\"27434320695\",\"experimentIds\":[],\"key\":\"ri_additional_liability_option_clicked\"},{\"id\":\"27438761377\",\"experimentIds\":[],\"key\":\"ri_faq_what_all_is_covered_in_personal_property_what_all_is_not\"},{\"id\":\"27440461398\",\"experimentIds\":[],\"key\":\"ri_faq_can_i_take_a_policy_for_a_shorter_period_click\"},{\"id\":\"27442291367\",\"experimentIds\":[],\"key\":\"ri_faq_what_does_water_backup_of_sewers_and_drains_mean_click\"},{\"id\":\"27451441250\",\"experimentIds\":[],\"key\":\"ri_faq_what_if_i_do_not_have_a_us_phone_number_yet_click\"},{\"id\":\"27454101057\",\"experimentIds\":[\"27589580521\"],\"key\":\"ri_coverage_date_navbar_faq_click\"},{\"id\":\"27459531723\",\"experimentIds\":[],\"key\":\"ri_faq_what_do_i_need_to_pay_today_click\"},{\"id\":\"27461491532\",\"experimentIds\":[],\"key\":\"ri_faq_if_my_spouse_and_i_are_on_the_lease_do_we_need_both_name\"},{\"id\":\"27470991567\",\"experimentIds\":[],\"key\":\"ri_personal_belongings_faq_button_click\"},{\"id\":\"27499441111\",\"experimentIds\":[],\"key\":\"ri_faq_whom_can_i_add_to_my_policy_as_a_roommate_click\"},{\"id\":\"27499890635\",\"experimentIds\":[],\"key\":\"ri_faq_how_do_i_cancel_are_there_any_fees_click\"},{\"id\":\"27501341132\",\"experimentIds\":[\"27589580521\"],\"key\":\"ri_additional_occupants_covered_navbar_faq_click\"},{\"id\":\"27501570680\",\"experimentIds\":[\"27589580521\"],\"key\":\"ri_faq_page_load\"},{\"id\":\"27503181605\",\"experimentIds\":[\"27589580521\"],\"key\":\"ri_policy_holder_details_navbar_faq_click\"},{\"id\":\"27503951214\",\"experimentIds\":[],\"key\":\"ri_faq_why_do_you_need_a_phone_number_click\"},{\"id\":\"27512000825\",\"experimentIds\":[],\"key\":\"ri_faq_do_you_support_purchasing_a_higher_liability_coverage_cl\"},{\"id\":\"27544100670\",\"experimentIds\":[],\"key\":\"ri_faq_can_i_change_my_payment_method_after_i_buy_click\"},{\"id\":\"27551600189\",\"experimentIds\":[],\"key\":\"ri_300k_liability_help_phone_clicked\"},{\"id\":\"27555520780\",\"experimentIds\":[],\"key\":\"ri_faq_what_is_the_starting_price_for_policies_that_you_offer_c\"},{\"id\":\"27555551057\",\"experimentIds\":[],\"key\":\"ri_faq_do_i_get_a_prorated_refund_click\"},{\"id\":\"27559320822\",\"experimentIds\":[],\"key\":\"ri_faq_what_does_deductible_mean_click\"},{\"id\":\"27563900746\",\"experimentIds\":[],\"key\":\"ri_faq_who_all_are_covered_by_this_policy_click\"},{\"id\":\"27568090698\",\"experimentIds\":[\"27589580521\"],\"key\":\"ri_faq_page_back_button_click\"},{\"id\":\"27571370024\",\"experimentIds\":[],\"key\":\"ri_faq_button_clicked_property_information\"},{\"id\":\"27572260485\",\"experimentIds\":[],\"key\":\"ri_faq_how_do_i_change_policy_holders_click\"},{\"id\":\"27578080591\",\"experimentIds\":[],\"key\":\"ri_faq_do_you_support_a_3_or_6_month_policy_term_click\"},{\"id\":\"27582750601\",\"experimentIds\":[],\"key\":\"ri_faq_im_moving_places_how_do_i_transfer_the_policy_click\"},{\"id\":\"27593510647\",\"experimentIds\":[],\"key\":\"ri_faq_how_do_i_know_if_i_have_insurance_click\"},{\"id\":\"27596410630\",\"experimentIds\":[],\"key\":\"ri_faq_can_i_pay_for_insurance_with_an_international_credit_or_\"},{\"id\":\"27602020390\",\"experimentIds\":[],\"key\":\"ri_faq_what_fees_do_you_charge_click\"},{\"id\":\"27605950690\",\"experimentIds\":[],\"key\":\"ri_faq_where_do_i_find_my_policy_details_click\"},{\"id\":\"27607540492\",\"experimentIds\":[\"27589580521\"],\"key\":\"ri_confirmation_navbar_faq_click\"},{\"id\":\"27609870139\",\"experimentIds\":[],\"key\":\"ri_faq_who_is_millennial_specialty_insurance_msi_click\"},{\"id\":\"27618900375\",\"experimentIds\":[],\"key\":\"ri_faq_will_my_property_manager_know_that_i_have_purchased_insu\"},{\"id\":\"27629540018\",\"experimentIds\":[],\"key\":\"ri_faq_can_i_add_a_roommate_to_my_policy_at_a_later_time_click\"},{\"id\":\"27630310398\",\"experimentIds\":[],\"key\":\"ri_faq_what_does_loss_of_use_mean_click\"},{\"id\":\"27634330355\",\"experimentIds\":[],\"key\":\"ri_faq_who_do_i_contact_regarding_renters_insurance_related_que\"},{\"id\":\"27639730382\",\"experimentIds\":[],\"key\":\"ri_faq_can_i_customize_the_policy_click\"},{\"id\":\"27641840214\",\"experimentIds\":[],\"key\":\"ri_faq_what_does_personal_property_mean_click\"},{\"id\":\"27642040311\",\"experimentIds\":[],\"key\":\"ri_faq_is_the_renters_insurance_just_added_to_our_monthly_rent_\"},{\"id\":\"27643360017\",\"experimentIds\":[],\"key\":\"ri_faq_i_added_a_roommate_but_he_does_not_see_the_policy_click\"},{\"id\":\"27643550129\",\"experimentIds\":[],\"key\":\"ri_faq_is_renters_insurance_a_mandatory_requirement_click\"},{\"id\":\"27643940074\",\"experimentIds\":[],\"key\":\"ri_faq_i_am_buying_this_policy_for_my_child_or_another_family_m\"},{\"id\":\"27651670324\",\"experimentIds\":[],\"key\":\"ri_faq_how_can_i_change_my_policy_start_date_click\"},{\"id\":\"27653320216\",\"experimentIds\":[\"27589580521\"],\"key\":\"ri_coverage_details_navbar_faq_click\"},{\"id\":\"27660470009\",\"experimentIds\":[],\"key\":\"ri_faq_can_i_use_this_insurance_for_another_property_click\"},{\"id\":\"27666910469\",\"experimentIds\":[\"27589580521\"],\"key\":\"ri_faq_getting_started_i_already_have_click\"},{\"id\":\"27669020248\",\"experimentIds\":[],\"key\":\"ri_faq_how_much_are_the_monthly_installment_fees_click\"},{\"id\":\"27670880007\",\"experimentIds\":[],\"key\":\"ri_faq_what_does_liability_coverage_mean_click\"},{\"id\":\"27673900087\",\"experimentIds\":[],\"key\":\"ri_faq_is_there_a_limit_to_the_number_of_roommates_click\"},{\"id\":\"27674770074\",\"experimentIds\":[\"27589580521\"],\"key\":\"ri_payment_information_faq_button_click\"},{\"id\":\"27678120005\",\"experimentIds\":[],\"key\":\"ri_faq_i_am_unable_to_verify_the_address_click\"},{\"id\":\"27678810461\",\"experimentIds\":[\"27589580521\"],\"key\":\"ri_faq_policies_and_coverage_where_do_i_find_my_policy_click\"},{\"id\":\"27681940048\",\"experimentIds\":[],\"key\":\"ri_personal_belongings_navbar_faq_click\"},{\"id\":\"27682500408\",\"experimentIds\":[\"27589580521\"],\"key\":\"ri_faq_policies_and_coverage_will_my_property_manager_know_ffas0\"},{\"id\":\"27682760308\",\"experimentIds\":[\"27589580521\"],\"key\":\"ri_faq_general_questions_who_is_millenial_click\"},{\"id\":\"27683090010\",\"experimentIds\":[],\"key\":\"ri_faq_will_adding_a_roommate_add_to_the_lease_or_just_the_insu\"},{\"id\":\"27684190816\",\"experimentIds\":[\"27589580521\"],\"key\":\"ri_faq_policyholders_and_roommates_whom_can_i_add_click\"},{\"id\":\"27684460066\",\"experimentIds\":[\"27589580521\"],\"key\":\"ri_additional_occupants_covered_faq_button_click\"},{\"id\":\"27684520683\",\"experimentIds\":[\"27589580521\"],\"key\":\"ri_faq_payment_and_fees_can_i_change_my_payment_method_click\"},{\"id\":\"27684720505\",\"experimentIds\":[\"27589580521\"],\"key\":\"ri_faq_policyholders_and_roommates_if_my_spouse_click\"},{\"id\":\"27686300061\",\"experimentIds\":[\"27589580521\"],\"key\":\"ri_property_information_faq_button_click\"},{\"id\":\"27687340090\",\"experimentIds\":[],\"key\":\"ri_faq_what_to_do_if_my_payment_method_is_not_accepted_click\"},{\"id\":\"27696110733\",\"experimentIds\":[\"27589580521\"],\"key\":\"ri_faq_payment_and_fees_what_fees_do_you_charge_click\"},{\"id\":\"27696180607\",\"experimentIds\":[\"27589580521\"],\"key\":\"ri_faq_getting_started_why_do_you_need_click\"},{\"id\":\"27697180005\",\"experimentIds\":[],\"key\":\"ri_faq_i_already_have_insurance_where_can_i_upload_my_policy_cl\"},{\"id\":\"27698570421\",\"experimentIds\":[\"27589580521\"],\"key\":\"ri_faq_policies_and_coverage_do_you_support_purchasing_click\"},{\"id\":\"27700360038\",\"experimentIds\":[\"27589580521\"],\"key\":\"ri_policy_holder_details_faq_button_click\"},{\"id\":\"27700610028\",\"experimentIds\":[\"27589580521\"],\"key\":\"ri_coverage_details_faq_button_click\"},{\"id\":\"27700720018\",\"experimentIds\":[\"27589580521\"],\"key\":\"ri_confirmation_faq_button_click\"},{\"id\":\"27702270607\",\"experimentIds\":[\"27589580521\"],\"key\":\"ri_faq_policies_and_coverage_who_is_covered_click\"},{\"id\":\"27704240556\",\"experimentIds\":[\"27589580521\"],\"key\":\"ri_faq_insurance_terms_what_does_personal_property_click\"},{\"id\":\"27707150668\",\"experimentIds\":[\"27589580521\"],\"key\":\"ri_faq_payment_and_fees_how_much_are_the_monthly_click\"},{\"id\":\"27707900319\",\"experimentIds\":[\"27589580521\"],\"key\":\"ri_faq_policyholders_and_roommates_should_i_add_renters_click\"},{\"id\":\"27708870450\",\"experimentIds\":[\"27589580521\"],\"key\":\"ri_faq_insurance_terms_what_does_deductible_click\"},{\"id\":\"27709060432\",\"experimentIds\":[\"27589580521\"],\"key\":\"ri_faq_policies_and_coverage_do_you_support_a_3_or_6_click\"},{\"id\":\"27710970055\",\"experimentIds\":[\"27589580521\"],\"key\":\"ri_payment_plan_details_faq_button_click\"},{\"id\":\"27711020410\",\"experimentIds\":[\"27589580521\"],\"key\":\"ri_faq_payment_and_fees_can_i_pay_for_insurance_with_click\"},{\"id\":\"27711310520\",\"experimentIds\":[\"27589580521\"],\"key\":\"ri_faq_insurance_terms_what_does_water_backup_click\"},{\"id\":\"27713280029\",\"experimentIds\":[\"27589580521\"],\"key\":\"ri_coverage_date_faq_button_click\"},{\"id\":\"27718310540\",\"experimentIds\":[\"27589580521\"],\"key\":\"ri_faq_payment_and_fees_what_i_need_to_pay_today_click\"},{\"id\":\"27718540531\",\"experimentIds\":[\"27589580521\"],\"key\":\"ri_faq_getting_started_who_do_i_contact_click\"},{\"id\":\"27729570532\",\"experimentIds\":[\"27589580521\"],\"key\":\"ri_faq_policyholders_and_roommates_how_do_i_change_click\"},{\"id\":\"27729700542\",\"experimentIds\":[\"27589580521\"],\"key\":\"ri_faq_policyholders_and_roommates_i_added_a_roommate_but_click\"},{\"id\":\"27734010405\",\"experimentIds\":[\"27589580521\"],\"key\":\"ri_faq_troubleshooting_who_do_i_contact_regarding_click\"},{\"id\":\"27735630356\",\"experimentIds\":[\"27589580521\"],\"key\":\"ri_faq_troubleshooting_what_if_i_do_not_have_a_us_phone_click\"},{\"id\":\"27738470263\",\"experimentIds\":[\"27589580521\"],\"key\":\"ri_faq_payment_and_fees_is_the_renters_insurance_charge_click\"},{\"id\":\"27747610416\",\"experimentIds\":[\"27589580521\"],\"key\":\"ri_faq_policyholders_and_roommates_is_there_a_limit_click\"},{\"id\":\"27748840210\",\"experimentIds\":[\"27589580521\"],\"key\":\"ri_faq_payment_and_fees_what_is_the_starting_price_click\"},{\"id\":\"27752760216\",\"experimentIds\":[\"27589580521\"],\"key\":\"ri_faq_insurance_terms_what_does_liability_coverage_click\"},{\"id\":\"27766910070\",\"experimentIds\":[\"27589580521\"],\"key\":\"ri_faq_policies_and_coverage_can_i_take_click\"},{\"id\":\"27770540075\",\"experimentIds\":[\"27589580521\"],\"key\":\"ri_faq_policies_and_coverage_can_i_customize_click\"},{\"id\":\"27772710025\",\"experimentIds\":[\"27589580521\"],\"key\":\"ri_faq_policies_and_coverage_what_is_covered_under_click\"},{\"id\":\"27773930073\",\"experimentIds\":[\"27589580521\"],\"key\":\"ri_faq_insurance_terms_what_does_loss_of_use_click\"},{\"id\":\"27776460025\",\"experimentIds\":[],\"key\":\"ri_faq_policies_and_coverage_im_moving_places_click\"},{\"id\":\"27776720016\",\"experimentIds\":[\"27589580521\"],\"key\":\"ri_faq_troubleshooting_what_should_i_do_if_my_payment_click\"},{\"id\":\"27779420244\",\"experimentIds\":[\"27589580521\"],\"key\":\"ri_faq_getting_started_how_do_i_know_click\"},{\"id\":\"27782270018\",\"experimentIds\":[\"27589580521\"],\"key\":\"ri_faq_policies_and_coverage_can_i_use_this_click\"},{\"id\":\"27784340015\",\"experimentIds\":[\"27589580521\"],\"key\":\"ri_faq_policyholders_and_roommates_can_i_add_a_roommate_click\"},{\"id\":\"27791630090\",\"experimentIds\":[\"27589580521\"],\"key\":\"ri_faq_troubleshooting_i_am_unable_to_verify_the_address_click\"},{\"id\":\"27793630075\",\"experimentIds\":[\"27589580521\"],\"key\":\"ri_faq_general_questions_how_do_i_cancel_click\"},{\"id\":\"27801150025\",\"experimentIds\":[\"27589580521\"],\"key\":\"ri_faq_getting_started_is_renters_insurance_a_mandatory_click\"},{\"id\":\"27803300007\",\"experimentIds\":[\"27589580521\"],\"key\":\"ri_faq_policyholders_and_roommates_can_i_buy_this_policy_click\"},{\"id\":\"27804940025\",\"experimentIds\":[\"27589580521\"],\"key\":\"ri_faq_general_questions_do_i_get_a_prorated_click\"},{\"id\":\"27805080025\",\"experimentIds\":[\"27589580521\"],\"key\":\"ri_faq_policyholders_and_roommates_will_adding_a_roommate_click\"},{\"id\":\"27807020027\",\"experimentIds\":[\"27589580521\"],\"key\":\"ri_faq_policies_and_coverage_how_can_i_change_my_click\"},{\"id\":\"27808980008\",\"experimentIds\":[\"27589580521\"],\"key\":\"ri_faq_general_questions_who_underwrites_click\"},{\"id\":\"28168370491\",\"experimentIds\":[],\"key\":\"ri_policy_fee_tooltip_click\"},{\"id\":\"28209340238\",\"experimentIds\":[\"28184100100\"],\"key\":\"ri_buyflow_payment_information_purchase_button_clicked\"},{\"id\":\"28552280056\",\"experimentIds\":[],\"key\":\"ri_checkout_gateway_purchase_button_clicked\"},{\"id\":\"28571570082\",\"experimentIds\":[],\"key\":\"ri_payeezy_gateway_purchase_button_clicked\"},{\"id\":\"29328280236\",\"experimentIds\":[\"29233200179\"],\"key\":\"ri_policy_summary_water_backup_checkbox_unchecked\"},{\"id\":\"29333890178\",\"experimentIds\":[\"29233200179\"],\"key\":\"ri_policy_summary_pet_damage_checkbox_unchecked\"},{\"id\":\"29338350210\",\"experimentIds\":[\"29233200179\"],\"key\":\"ri_policy_summary_water_backup_checkbox_checked\"},{\"id\":\"29369180177\",\"experimentIds\":[\"29233200179\"],\"key\":\"ri_policy_summary_pet_damage_checkbox_checked\"},{\"id\":\"4851540201046016\",\"experimentIds\":[\"9300002825901\",\"9300002825902\"],\"key\":\"payment_flow_-_payment_method_page\"}],\"integrations\":[],\"holdouts\":[],\"anonymizeIP\":true,\"botFiltering\":false,\"typedAudiences\":[{\"name\":\"Apple Pay Test Audience\",\"conditions\":[\"and\",[\"or\",[\"or\",{\"match\":\"exact\",\"name\":\"apple-pay-enabled\",\"type\":\"custom_attribute\",\"value\":true}]],[\"or\",[\"or\",{\"match\":\"exact\",\"name\":\"allow-auto-payments\",\"type\":\"custom_attribute\",\"value\":true}]],[\"or\",[\"or\",{\"match\":\"exact\",\"name\":\"allow-online-ach-payments\",\"type\":\"custom_attribute\",\"value\":true}]],[\"or\",[\"or\",{\"match\":\"exact\",\"name\":\"allow-online-cc-payments\",\"type\":\"custom_attribute\",\"value\":true}]],[\"or\",[\"or\",{\"match\":\"exact\",\"name\":\"release\",\"type\":\"custom_attribute\",\"value\":\"qa\"},{\"match\":\"exact\",\"name\":\"release\",\"type\":\"custom_attribute\",\"value\":\"demo\"},{\"match\":\"exact\",\"name\":\"release\",\"type\":\"custom_attribute\",\"value\":\"internal\"},{\"match\":\"exact\",\"name\":\"release\",\"type\":\"custom_attribute\",\"value\":\"live_1\"},{\"match\":\"exact\",\"name\":\"release\",\"type\":\"custom_attribute\",\"value\":\"live_2\"},{\"match\":\"exact\",\"name\":\"release\",\"type\":\"custom_attribute\",\"value\":\"live\"}]]],\"id\":\"21575050580\"},{\"name\":\"User Never Used Payment Flow Before\",\"conditions\":[\"and\",[\"or\",[\"or\",{\"match\":\"exact\",\"name\":\"has-visited-payment-flow\",\"type\":\"custom_attribute\",\"value\":false}]]],\"id\":\"5111318949134336\"},{\"name\":\"User Has Used Payment Flow Before\",\"conditions\":[\"and\",[\"or\",[\"or\",{\"match\":\"exact\",\"name\":\"has-visited-payment-flow\",\"type\":\"custom_attribute\",\"value\":true}]]],\"id\":\"6066568195473408\"}],\"variables\":[],\"environmentKey\":\"production\",\"sdkKey\":\"2eBj6aX8usevREYopKq2D\",\"featureFlags\":[{\"id\":\"20087455254\",\"key\":\"payments_tenant_profile\",\"rolloutId\":\"20074344713\",\"experimentIds\":[],\"variables\":[]},{\"id\":\"20125524583\",\"key\":\"recent_bind_count_social_proof\",\"rolloutId\":\"20119974188\",\"experimentIds\":[],\"variables\":[]},{\"id\":\"20189989933\",\"key\":\"fee_test_variable\",\"rolloutId\":\"20205319452\",\"experimentIds\":[],\"variables\":[{\"id\":\"20188456688\",\"key\":\"fee\",\"type\":\"double\",\"defaultValue\":\"4.99\"},{\"id\":\"21507541247\",\"key\":\"stub\",\"type\":\"boolean\",\"defaultValue\":\"false\"}]},{\"id\":\"20226780744\",\"key\":\"home_page_account_setup_card\",\"rolloutId\":\"20229454958\",\"experimentIds\":[],\"variables\":[]},{\"id\":\"20254198905\",\"key\":\"lease_signing_account_setup\",\"rolloutId\":\"20252330439\",\"experimentIds\":[],\"variables\":[]},{\"id\":\"20958560487\",\"key\":\"modular_buyflow_sample\",\"rolloutId\":\"20991430301\",\"experimentIds\":[],\"variables\":[{\"id\":\"20991041014\",\"key\":\"schema\",\"type\":\"string\",\"defaultValue\":\"{\\\"start\\\":\\\"ContactInformation\\\",\\\"steps\\\":{\\\"ContactInformation\\\":{\\\"cues\\\":{\\\"_next\\\":\\\"PropertyInformation\\\"}},\\\"PropertyInformation\\\":{\\\"cues\\\":{\\\"_next\\\":\\\"CoverageInformation\\\"}},\\\"CoverageInformation\\\":{\\\"cues\\\":{\\\"_next\\\":\\\"PaymentInformation\\\"}},\\\"PaymentInformation\\\":{\\\"cues\\\":{\\\"_next\\\":\\\"Confirmation\\\"}},\\\"Confirmation\\\":{\\\"cues\\\":{\\\"_next\\\":\\\"ContactInformation\\\"}}}}\",\"subType\":\"json\"}]},{\"id\":\"21477180122\",\"key\":\"ri_1qps_modular_flow\",\"rolloutId\":\"21477560136\",\"experimentIds\":[],\"variables\":[]},{\"id\":\"22554330126\",\"key\":\"cashmouth_pricing_disable_test_kite\",\"rolloutId\":\"22535192132\",\"experimentIds\":[],\"variables\":[{\"id\":\"22530031365\",\"key\":\"notification_days\",\"type\":\"integer\",\"defaultValue\":\"21\"},{\"id\":\"22530432018\",\"key\":\"enabled_on\",\"type\":\"string\",\"defaultValue\":\"2022-11-11\"},{\"id\":\"22535381630\",\"key\":\"is_default\",\"type\":\"boolean\",\"defaultValue\":\"true\"},{\"id\":\"22542221851\",\"key\":\"payment_type\",\"type\":\"string\",\"defaultValue\":\"ach\"},{\"id\":\"22571510138\",\"key\":\"fixed_amount\",\"type\":\"double\",\"defaultValue\":\"1.49\"}]},{\"id\":\"23576470479\",\"key\":\"flexible_rent\",\"rolloutId\":\"23534770639\",\"experimentIds\":[],\"variables\":[]},{\"id\":\"240964\",\"key\":\"QgkKkBy9Np2ZXHdYczvUkv\",\"rolloutId\":\"rollout-240964-20038768137\",\"experimentIds\":[\"21518961615\"],\"variables\":[]},{\"id\":\"240965\",\"key\":\"amoJ3WPvUoAgRucaw4kPEv\",\"rolloutId\":\"rollout-240965-20038768137\",\"experimentIds\":[\"24117010538\"],\"variables\":[]},{\"id\":\"240966\",\"key\":\"GazJHwrMDSuyY7u4XfGTBw\",\"rolloutId\":\"rollout-240966-20038768137\",\"experimentIds\":[\"24209200627\"],\"variables\":[]},{\"id\":\"240967\",\"key\":\"a6HkCVGMSo9qmhtaRwGKfC\",\"rolloutId\":\"rollout-240967-20038768137\",\"experimentIds\":[\"24296700498\"],\"variables\":[]},{\"id\":\"240968\",\"key\":\"PhZCbiCCHikFWWWRJnYGT9\",\"rolloutId\":\"rollout-240968-20038768137\",\"experimentIds\":[\"25015530022\"],\"variables\":[]},{\"id\":\"240969\",\"key\":\"Kusd3Hvb6weieaRgL43WJe\",\"rolloutId\":\"rollout-240969-20038768137\",\"experimentIds\":[],\"variables\":[]},{\"id\":\"240970\",\"key\":\"dGA8TzMknFzcLJeWjeqgFc\",\"rolloutId\":\"rollout-240970-20038768137\",\"experimentIds\":[\"25832180015\"],\"variables\":[]},{\"id\":\"240971\",\"key\":\"Xt2C5xoCyxcX29PuDbaxzp\",\"rolloutId\":\"rollout-240971-20038768137\",\"experimentIds\":[\"26081142019\"],\"variables\":[]},{\"id\":\"240972\",\"key\":\"S4jymAMcJmq35QEHqb3aCM\",\"rolloutId\":\"rollout-240972-20038768137\",\"experimentIds\":[\"26165811290\"],\"variables\":[]},{\"id\":\"240973\",\"key\":\"bxy286X7Umig6vgPDoGkTp\",\"rolloutId\":\"rollout-240973-20038768137\",\"experimentIds\":[\"26822140008\"],\"variables\":[]},{\"id\":\"240974\",\"key\":\"eyvdjszMrBwjhABCLtP4G2\",\"rolloutId\":\"rollout-240974-20038768137\",\"experimentIds\":[\"27589580521\"],\"variables\":[]},{\"id\":\"240975\",\"key\":\"jB4UtUfNTcmCcsV8h87KCs\",\"rolloutId\":\"rollout-240975-20038768137\",\"experimentIds\":[\"27808450453\"],\"variables\":[]},{\"id\":\"240976\",\"key\":\"dfXQLuCDpHZyFJJxhGAXtw\",\"rolloutId\":\"rollout-240976-20038768137\",\"experimentIds\":[\"28184100100\"],\"variables\":[]},{\"id\":\"240977\",\"key\":\"KxiFi5DCry7qTFjzc6qkNZ\",\"rolloutId\":\"rollout-240977-20038768137\",\"experimentIds\":[\"28861090297\"],\"variables\":[]},{\"id\":\"240978\",\"key\":\"n9WGuBxZcgwSosBTa27p9X\",\"rolloutId\":\"rollout-240978-20038768137\",\"experimentIds\":[\"29233200179\"],\"variables\":[]},{\"id\":\"240979\",\"key\":\"jYPHCZ7iru9LqNRcvUgqVD\",\"rolloutId\":\"rollout-240979-20038768137\",\"experimentIds\":[],\"variables\":[]},{\"id\":\"240980\",\"key\":\"Q3mUwfEE6kv7xUynuMhUhu\",\"rolloutId\":\"rollout-240980-20038768137\",\"experimentIds\":[],\"variables\":[]},{\"id\":\"240981\",\"key\":\"RuwmhpbdgicjmLAPdhTqyo\",\"rolloutId\":\"rollout-240981-20038768137\",\"experimentIds\":[],\"variables\":[]},{\"id\":\"240982\",\"key\":\"LXSASwo6bjvAfj8x6NGNZ4\",\"rolloutId\":\"rollout-240982-20038768137\",\"experimentIds\":[],\"variables\":[]},{\"id\":\"240983\",\"key\":\"7NoMDfijeXBSZKD4mi3rLN\",\"rolloutId\":\"rollout-240983-20038768137\",\"experimentIds\":[],\"variables\":[]},{\"id\":\"240984\",\"key\":\"aWAfKyJvFUAzSbrZ57GtHY\",\"rolloutId\":\"rollout-240984-20038768137\",\"experimentIds\":[],\"variables\":[]},{\"id\":\"240985\",\"key\":\"BBKmv95ijomAmWHDkCfpqS\",\"rolloutId\":\"rollout-240985-20038768137\",\"experimentIds\":[],\"variables\":[]},{\"id\":\"240986\",\"key\":\"emGJZXZszuyBYudNSwcqp6\",\"rolloutId\":\"rollout-240986-20038768137\",\"experimentIds\":[],\"variables\":[]},{\"id\":\"240987\",\"key\":\"MzJc8VdFFYHynKeVpt6ZqP\",\"rolloutId\":\"rollout-240987-20038768137\",\"experimentIds\":[],\"variables\":[]},{\"id\":\"240988\",\"key\":\"fNuS9c8J29Ti4pQDZe9rHA\",\"rolloutId\":\"rollout-240988-20038768137\",\"experimentIds\":[],\"variables\":[]},{\"id\":\"240989\",\"key\":\"Rx6vUt8gmHbCF5LHyA4GVX\",\"rolloutId\":\"rollout-240989-20038768137\",\"experimentIds\":[],\"variables\":[]},{\"id\":\"240990\",\"key\":\"QNfdnmmWEXVZYnt5F9xWB6\",\"rolloutId\":\"rollout-240990-20038768137\",\"experimentIds\":[],\"variables\":[]},{\"id\":\"240991\",\"key\":\"esRhkBvkpo2Z8Ws8LCqtcH\",\"rolloutId\":\"rollout-240991-20038768137\",\"experimentIds\":[],\"variables\":[]},{\"id\":\"240992\",\"key\":\"jGGj3rPC9hKZHrfrCgpvdo\",\"rolloutId\":\"rollout-240992-20038768137\",\"experimentIds\":[],\"variables\":[]},{\"id\":\"471699\",\"key\":\"ri_default_300k_liability_tportal_buy_flow\",\"rolloutId\":\"rollout-471699-20038768137\",\"experimentIds\":[],\"variables\":[]},{\"id\":\"477726\",\"key\":\"bank_instead_of_echeck\",\"rolloutId\":\"rollout-477726-20038768137\",\"experimentIds\":[],\"variables\":[]},{\"id\":\"482732\",\"key\":\"stacked_new_payment_method_component\",\"rolloutId\":\"rollout-482732-20038768137\",\"experimentIds\":[\"9300002825901\",\"9300002825902\"],\"variables\":[]}],\"rollouts\":[{\"id\":\"20074344713\",\"experiments\":[{\"id\":\"default-20074344713\",\"key\":\"default-20074344713\",\"status\":\"Running\",\"layerId\":\"20074344713\",\"variations\":[{\"id\":\"20077943067\",\"key\":\"20077943067\",\"featureEnabled\":true,\"variables\":[]}],\"trafficAllocation\":[{\"entityId\":\"20077943067\",\"endOfRange\":10000}],\"forcedVariations\":{},\"audienceIds\":[],\"audienceConditions\":[]}]},{\"id\":\"20119974188\",\"experiments\":[{\"id\":\"default-20119974188\",\"key\":\"default-20119974188\",\"status\":\"Running\",\"layerId\":\"20119974188\",\"variations\":[{\"id\":\"802092\",\"key\":\"off\",\"featureEnabled\":false,\"variables\":[]}],\"trafficAllocation\":[{\"entityId\":\"802092\",\"endOfRange\":10000}],\"forcedVariations\":{},\"audienceIds\":[],\"audienceConditions\":[]}]},{\"id\":\"20205319452\",\"experiments\":[{\"id\":\"default-20205319452\",\"key\":\"default-20205319452\",\"status\":\"Running\",\"layerId\":\"20205319452\",\"variations\":[{\"id\":\"802093\",\"key\":\"off\",\"featureEnabled\":false,\"variables\":[{\"id\":\"20188456688\",\"value\":\"4.99\"},{\"id\":\"21507541247\",\"value\":\"false\"}]}],\"trafficAllocation\":[{\"entityId\":\"802093\",\"endOfRange\":10000}],\"forcedVariations\":{},\"audienceIds\":[],\"audienceConditions\":[]}]},{\"id\":\"20229454958\",\"experiments\":[{\"id\":\"20236096753\",\"key\":\"20236096753\",\"status\":\"Running\",\"layerId\":\"20229454958\",\"variations\":[{\"id\":\"20224898560\",\"key\":\"20224898560\",\"featureEnabled\":true,\"variables\":[]}],\"trafficAllocation\":[{\"entityId\":\"20224898560\",\"endOfRange\":9000}],\"forcedVariations\":{},\"audienceIds\":[\"20243957234\"],\"audienceConditions\":[\"or\",\"20243957234\"]},{\"id\":\"default-20229454958\",\"key\":\"default-20229454958\",\"status\":\"Running\",\"layerId\":\"20229454958\",\"variations\":[{\"id\":\"802094\",\"key\":\"off\",\"featureEnabled\":false,\"variables\":[]}],\"trafficAllocation\":[{\"entityId\":\"802094\",\"endOfRange\":10000}],\"forcedVariations\":{},\"audienceIds\":[],\"audienceConditions\":[]}]},{\"id\":\"20252330439\",\"experiments\":[{\"id\":\"default-20252330439\",\"key\":\"default-20252330439\",\"status\":\"Running\",\"layerId\":\"20252330439\",\"variations\":[{\"id\":\"802095\",\"key\":\"off\",\"featureEnabled\":false,\"variables\":[]}],\"trafficAllocation\":[{\"entityId\":\"802095\",\"endOfRange\":10000}],\"forcedVariations\":{},\"audienceIds\":[],\"audienceConditions\":[]}]},{\"id\":\"20991430301\",\"experiments\":[{\"id\":\"default-20991430301\",\"key\":\"default-20991430301\",\"status\":\"Running\",\"layerId\":\"20991430301\",\"variations\":[{\"id\":\"802096\",\"key\":\"off\",\"featureEnabled\":false,\"variables\":[{\"id\":\"20991041014\",\"value\":\"{\\\"start\\\":\\\"ContactInformation\\\",\\\"steps\\\":{\\\"ContactInformation\\\":{\\\"cues\\\":{\\\"_next\\\":\\\"PropertyInformation\\\"}},\\\"PropertyInformation\\\":{\\\"cues\\\":{\\\"_next\\\":\\\"CoverageInformation\\\"}},\\\"CoverageInformation\\\":{\\\"cues\\\":{\\\"_next\\\":\\\"PaymentInformation\\\"}},\\\"PaymentInformation\\\":{\\\"cues\\\":{\\\"_next\\\":\\\"Confirmation\\\"}},\\\"Confirmation\\\":{\\\"cues\\\":{\\\"_next\\\":\\\"ContactInformation\\\"}}}}\"}]}],\"trafficAllocation\":[{\"entityId\":\"802096\",\"endOfRange\":10000}],\"forcedVariations\":{},\"audienceIds\":[],\"audienceConditions\":[]}]},{\"id\":\"21477560136\",\"experiments\":[{\"id\":\"default-21477560136\",\"key\":\"default-21477560136\",\"status\":\"Running\",\"layerId\":\"21477560136\",\"variations\":[{\"id\":\"802097\",\"key\":\"off\",\"featureEnabled\":false,\"variables\":[]}],\"trafficAllocation\":[{\"entityId\":\"802097\",\"endOfRange\":10000}],\"forcedVariations\":{},\"audienceIds\":[],\"audienceConditions\":[]}]},{\"id\":\"22535192132\",\"experiments\":[{\"id\":\"default-22535192132\",\"key\":\"default-22535192132\",\"status\":\"Running\",\"layerId\":\"22535192132\",\"variations\":[{\"id\":\"802103\",\"key\":\"off\",\"featureEnabled\":false,\"variables\":[{\"id\":\"22530031365\",\"value\":\"21\"},{\"id\":\"22530432018\",\"value\":\"2022-11-11\"},{\"id\":\"22535381630\",\"value\":\"true\"},{\"id\":\"22542221851\",\"value\":\"ach\"},{\"id\":\"22571510138\",\"value\":\"1.49\"}]}],\"trafficAllocation\":[{\"entityId\":\"802103\",\"endOfRange\":10000}],\"forcedVariations\":{},\"audienceIds\":[],\"audienceConditions\":[]}]},{\"id\":\"23534770639\",\"experiments\":[{\"id\":\"default-23534770639\",\"key\":\"default-23534770639\",\"status\":\"Running\",\"layerId\":\"23534770639\",\"variations\":[{\"id\":\"802104\",\"key\":\"off\",\"featureEnabled\":false,\"variables\":[]}],\"trafficAllocation\":[{\"entityId\":\"802104\",\"endOfRange\":10000}],\"forcedVariations\":{},\"audienceIds\":[],\"audienceConditions\":[]}]},{\"id\":\"rollout-240964-20038768137\",\"experiments\":[{\"id\":\"default-rollout-240964-20038768137\",\"key\":\"default-rollout-240964-20038768137\",\"status\":\"Running\",\"layerId\":\"rollout-240964-20038768137\",\"variations\":[{\"id\":\"802105\",\"key\":\"off\",\"featureEnabled\":false,\"variables\":[]}],\"trafficAllocation\":[{\"entityId\":\"802105\",\"endOfRange\":10000}],\"forcedVariations\":{},\"audienceIds\":[],\"audienceConditions\":[]}]},{\"id\":\"rollout-240965-20038768137\",\"experiments\":[{\"id\":\"default-rollout-240965-20038768137\",\"key\":\"default-rollout-240965-20038768137\",\"status\":\"Running\",\"layerId\":\"rollout-240965-20038768137\",\"variations\":[{\"id\":\"802106\",\"key\":\"off\",\"featureEnabled\":false,\"variables\":[]}],\"trafficAllocation\":[{\"entityId\":\"802106\",\"endOfRange\":10000}],\"forcedVariations\":{},\"audienceIds\":[],\"audienceConditions\":[]}]},{\"id\":\"rollout-240966-20038768137\",\"experiments\":[{\"id\":\"default-rollout-240966-20038768137\",\"key\":\"default-rollout-240966-20038768137\",\"status\":\"Running\",\"layerId\":\"rollout-240966-20038768137\",\"variations\":[{\"id\":\"802107\",\"key\":\"off\",\"featureEnabled\":false,\"variables\":[]}],\"trafficAllocation\":[{\"entityId\":\"802107\",\"endOfRange\":10000}],\"forcedVariations\":{},\"audienceIds\":[],\"audienceConditions\":[]}]},{\"id\":\"rollout-240967-20038768137\",\"experiments\":[{\"id\":\"default-rollout-240967-20038768137\",\"key\":\"default-rollout-240967-20038768137\",\"status\":\"Running\",\"layerId\":\"rollout-240967-20038768137\",\"variations\":[{\"id\":\"802108\",\"key\":\"off\",\"featureEnabled\":false,\"variables\":[]}],\"trafficAllocation\":[{\"entityId\":\"802108\",\"endOfRange\":10000}],\"forcedVariations\":{},\"audienceIds\":[],\"audienceConditions\":[]}]},{\"id\":\"rollout-240968-20038768137\",\"experiments\":[{\"id\":\"default-rollout-240968-20038768137\",\"key\":\"default-rollout-240968-20038768137\",\"status\":\"Running\",\"layerId\":\"rollout-240968-20038768137\",\"variations\":[{\"id\":\"802109\",\"key\":\"off\",\"featureEnabled\":false,\"variables\":[]}],\"trafficAllocation\":[{\"entityId\":\"802109\",\"endOfRange\":10000}],\"forcedVariations\":{},\"audienceIds\":[],\"audienceConditions\":[]}]},{\"id\":\"rollout-240969-20038768137\",\"experiments\":[{\"id\":\"default-rollout-240969-20038768137\",\"key\":\"default-rollout-240969-20038768137\",\"status\":\"Running\",\"layerId\":\"rollout-240969-20038768137\",\"variations\":[{\"id\":\"802110\",\"key\":\"off\",\"featureEnabled\":false,\"variables\":[]}],\"trafficAllocation\":[{\"entityId\":\"802110\",\"endOfRange\":10000}],\"forcedVariations\":{},\"audienceIds\":[],\"audienceConditions\":[]}]},{\"id\":\"rollout-240970-20038768137\",\"experiments\":[{\"id\":\"default-rollout-240970-20038768137\",\"key\":\"default-rollout-240970-20038768137\",\"status\":\"Running\",\"layerId\":\"rollout-240970-20038768137\",\"variations\":[{\"id\":\"802111\",\"key\":\"off\",\"featureEnabled\":false,\"variables\":[]}],\"trafficAllocation\":[{\"entityId\":\"802111\",\"endOfRange\":10000}],\"forcedVariations\":{},\"audienceIds\":[],\"audienceConditions\":[]}]},{\"id\":\"rollout-240971-20038768137\",\"experiments\":[{\"id\":\"default-rollout-240971-20038768137\",\"key\":\"default-rollout-240971-20038768137\",\"status\":\"Running\",\"layerId\":\"rollout-240971-20038768137\",\"variations\":[{\"id\":\"802112\",\"key\":\"off\",\"featureEnabled\":false,\"variables\":[]}],\"trafficAllocation\":[{\"entityId\":\"802112\",\"endOfRange\":10000}],\"forcedVariations\":{},\"audienceIds\":[],\"audienceConditions\":[]}]},{\"id\":\"rollout-240972-20038768137\",\"experiments\":[{\"id\":\"default-rollout-240972-20038768137\",\"key\":\"default-rollout-240972-20038768137\",\"status\":\"Running\",\"layerId\":\"rollout-240972-20038768137\",\"variations\":[{\"id\":\"802113\",\"key\":\"off\",\"featureEnabled\":false,\"variables\":[]}],\"trafficAllocation\":[{\"entityId\":\"802113\",\"endOfRange\":10000}],\"forcedVariations\":{},\"audienceIds\":[],\"audienceConditions\":[]}]},{\"id\":\"rollout-240973-20038768137\",\"experiments\":[{\"id\":\"default-rollout-240973-20038768137\",\"key\":\"default-rollout-240973-20038768137\",\"status\":\"Running\",\"layerId\":\"rollout-240973-20038768137\",\"variations\":[{\"id\":\"802114\",\"key\":\"off\",\"featureEnabled\":false,\"variables\":[]}],\"trafficAllocation\":[{\"entityId\":\"802114\",\"endOfRange\":10000}],\"forcedVariations\":{},\"audienceIds\":[],\"audienceConditions\":[]}]},{\"id\":\"rollout-240974-20038768137\",\"experiments\":[{\"id\":\"default-rollout-240974-20038768137\",\"key\":\"default-rollout-240974-20038768137\",\"status\":\"Running\",\"layerId\":\"rollout-240974-20038768137\",\"variations\":[{\"id\":\"802115\",\"key\":\"off\",\"featureEnabled\":false,\"variables\":[]}],\"trafficAllocation\":[{\"entityId\":\"802115\",\"endOfRange\":10000}],\"forcedVariations\":{},\"audienceIds\":[],\"audienceConditions\":[]}]},{\"id\":\"rollout-240975-20038768137\",\"experiments\":[{\"id\":\"default-rollout-240975-20038768137\",\"key\":\"default-rollout-240975-20038768137\",\"status\":\"Running\",\"layerId\":\"rollout-240975-20038768137\",\"variations\":[{\"id\":\"802116\",\"key\":\"off\",\"featureEnabled\":false,\"variables\":[]}],\"trafficAllocation\":[{\"entityId\":\"802116\",\"endOfRange\":10000}],\"forcedVariations\":{},\"audienceIds\":[],\"audienceConditions\":[]}]},{\"id\":\"rollout-240976-20038768137\",\"experiments\":[{\"id\":\"default-rollout-240976-20038768137\",\"key\":\"default-rollout-240976-20038768137\",\"status\":\"Running\",\"layerId\":\"rollout-240976-20038768137\",\"variations\":[{\"id\":\"802117\",\"key\":\"off\",\"featureEnabled\":false,\"variables\":[]}],\"trafficAllocation\":[{\"entityId\":\"802117\",\"endOfRange\":10000}],\"forcedVariations\":{},\"audienceIds\":[],\"audienceConditions\":[]}]},{\"id\":\"rollout-240977-20038768137\",\"experiments\":[{\"id\":\"default-rollout-240977-20038768137\",\"key\":\"default-rollout-240977-20038768137\",\"status\":\"Running\",\"layerId\":\"rollout-240977-20038768137\",\"variations\":[{\"id\":\"802118\",\"key\":\"off\",\"featureEnabled\":false,\"variables\":[]}],\"trafficAllocation\":[{\"entityId\":\"802118\",\"endOfRange\":10000}],\"forcedVariations\":{},\"audienceIds\":[],\"audienceConditions\":[]}]},{\"id\":\"rollout-240978-20038768137\",\"experiments\":[{\"id\":\"default-rollout-240978-20038768137\",\"key\":\"default-rollout-240978-20038768137\",\"status\":\"Running\",\"layerId\":\"rollout-240978-20038768137\",\"variations\":[{\"id\":\"802119\",\"key\":\"off\",\"featureEnabled\":false,\"variables\":[]}],\"trafficAllocation\":[{\"entityId\":\"802119\",\"endOfRange\":10000}],\"forcedVariations\":{},\"audienceIds\":[],\"audienceConditions\":[]}]},{\"id\":\"rollout-240979-20038768137\",\"experiments\":[{\"id\":\"default-rollout-240979-20038768137\",\"key\":\"default-rollout-240979-20038768137\",\"status\":\"Running\",\"layerId\":\"rollout-240979-20038768137\",\"variations\":[{\"id\":\"802120\",\"key\":\"off\",\"featureEnabled\":false,\"variables\":[]}],\"trafficAllocation\":[{\"entityId\":\"802120\",\"endOfRange\":10000}],\"forcedVariations\":{},\"audienceIds\":[],\"audienceConditions\":[]}]},{\"id\":\"rollout-240980-20038768137\",\"experiments\":[{\"id\":\"default-rollout-240980-20038768137\",\"key\":\"default-rollout-240980-20038768137\",\"status\":\"Running\",\"layerId\":\"rollout-240980-20038768137\",\"variations\":[{\"id\":\"802121\",\"key\":\"off\",\"featureEnabled\":false,\"variables\":[]}],\"trafficAllocation\":[{\"entityId\":\"802121\",\"endOfRange\":10000}],\"forcedVariations\":{},\"audienceIds\":[],\"audienceConditions\":[]}]},{\"id\":\"rollout-240981-20038768137\",\"experiments\":[{\"id\":\"default-rollout-240981-20038768137\",\"key\":\"default-rollout-240981-20038768137\",\"status\":\"Running\",\"layerId\":\"rollout-240981-20038768137\",\"variations\":[{\"id\":\"802122\",\"key\":\"off\",\"featureEnabled\":false,\"variables\":[]}],\"trafficAllocation\":[{\"entityId\":\"802122\",\"endOfRange\":10000}],\"forcedVariations\":{},\"audienceIds\":[],\"audienceConditions\":[]}]},{\"id\":\"rollout-240982-20038768137\",\"experiments\":[{\"id\":\"default-rollout-240982-20038768137\",\"key\":\"default-rollout-240982-20038768137\",\"status\":\"Running\",\"layerId\":\"rollout-240982-20038768137\",\"variations\":[{\"id\":\"802123\",\"key\":\"off\",\"featureEnabled\":false,\"variables\":[]}],\"trafficAllocation\":[{\"entityId\":\"802123\",\"endOfRange\":10000}],\"forcedVariations\":{},\"audienceIds\":[],\"audienceConditions\":[]}]},{\"id\":\"rollout-240983-20038768137\",\"experiments\":[{\"id\":\"default-rollout-240983-20038768137\",\"key\":\"default-rollout-240983-20038768137\",\"status\":\"Running\",\"layerId\":\"rollout-240983-20038768137\",\"variations\":[{\"id\":\"802124\",\"key\":\"off\",\"featureEnabled\":false,\"variables\":[]}],\"trafficAllocation\":[{\"entityId\":\"802124\",\"endOfRange\":10000}],\"forcedVariations\":{},\"audienceIds\":[],\"audienceConditions\":[]}]},{\"id\":\"rollout-240984-20038768137\",\"experiments\":[{\"id\":\"default-rollout-240984-20038768137\",\"key\":\"default-rollout-240984-20038768137\",\"status\":\"Running\",\"layerId\":\"rollout-240984-20038768137\",\"variations\":[{\"id\":\"802125\",\"key\":\"off\",\"featureEnabled\":false,\"variables\":[]}],\"trafficAllocation\":[{\"entityId\":\"802125\",\"endOfRange\":10000}],\"forcedVariations\":{},\"audienceIds\":[],\"audienceConditions\":[]}]},{\"id\":\"rollout-240985-20038768137\",\"experiments\":[{\"id\":\"default-rollout-240985-20038768137\",\"key\":\"default-rollout-240985-20038768137\",\"status\":\"Running\",\"layerId\":\"rollout-240985-20038768137\",\"variations\":[{\"id\":\"802126\",\"key\":\"off\",\"featureEnabled\":false,\"variables\":[]}],\"trafficAllocation\":[{\"entityId\":\"802126\",\"endOfRange\":10000}],\"forcedVariations\":{},\"audienceIds\":[],\"audienceConditions\":[]}]},{\"id\":\"rollout-240986-20038768137\",\"experiments\":[{\"id\":\"default-rollout-240986-20038768137\",\"key\":\"default-rollout-240986-20038768137\",\"status\":\"Running\",\"layerId\":\"rollout-240986-20038768137\",\"variations\":[{\"id\":\"802127\",\"key\":\"off\",\"featureEnabled\":false,\"variables\":[]}],\"trafficAllocation\":[{\"entityId\":\"802127\",\"endOfRange\":10000}],\"forcedVariations\":{},\"audienceIds\":[],\"audienceConditions\":[]}]},{\"id\":\"rollout-240987-20038768137\",\"experiments\":[{\"id\":\"default-rollout-240987-20038768137\",\"key\":\"default-rollout-240987-20038768137\",\"status\":\"Running\",\"layerId\":\"rollout-240987-20038768137\",\"variations\":[{\"id\":\"802128\",\"key\":\"off\",\"featureEnabled\":false,\"variables\":[]}],\"trafficAllocation\":[{\"entityId\":\"802128\",\"endOfRange\":10000}],\"forcedVariations\":{},\"audienceIds\":[],\"audienceConditions\":[]}]},{\"id\":\"rollout-240988-20038768137\",\"experiments\":[{\"id\":\"default-rollout-240988-20038768137\",\"key\":\"default-rollout-240988-20038768137\",\"status\":\"Running\",\"layerId\":\"rollout-240988-20038768137\",\"variations\":[{\"id\":\"802129\",\"key\":\"off\",\"featureEnabled\":false,\"variables\":[]}],\"trafficAllocation\":[{\"entityId\":\"802129\",\"endOfRange\":10000}],\"forcedVariations\":{},\"audienceIds\":[],\"audienceConditions\":[]}]},{\"id\":\"rollout-240989-20038768137\",\"experiments\":[{\"id\":\"default-rollout-240989-20038768137\",\"key\":\"default-rollout-240989-20038768137\",\"status\":\"Running\",\"layerId\":\"rollout-240989-20038768137\",\"variations\":[{\"id\":\"802130\",\"key\":\"off\",\"featureEnabled\":false,\"variables\":[]}],\"trafficAllocation\":[{\"entityId\":\"802130\",\"endOfRange\":10000}],\"forcedVariations\":{},\"audienceIds\":[],\"audienceConditions\":[]}]},{\"id\":\"rollout-240990-20038768137\",\"experiments\":[{\"id\":\"default-rollout-240990-20038768137\",\"key\":\"default-rollout-240990-20038768137\",\"status\":\"Running\",\"layerId\":\"rollout-240990-20038768137\",\"variations\":[{\"id\":\"802131\",\"key\":\"off\",\"featureEnabled\":false,\"variables\":[]}],\"trafficAllocation\":[{\"entityId\":\"802131\",\"endOfRange\":10000}],\"forcedVariations\":{},\"audienceIds\":[],\"audienceConditions\":[]}]},{\"id\":\"rollout-240991-20038768137\",\"experiments\":[{\"id\":\"default-rollout-240991-20038768137\",\"key\":\"default-rollout-240991-20038768137\",\"status\":\"Running\",\"layerId\":\"rollout-240991-20038768137\",\"variations\":[{\"id\":\"802132\",\"key\":\"off\",\"featureEnabled\":false,\"variables\":[]}],\"trafficAllocation\":[{\"entityId\":\"802132\",\"endOfRange\":10000}],\"forcedVariations\":{},\"audienceIds\":[],\"audienceConditions\":[]}]},{\"id\":\"rollout-240992-20038768137\",\"experiments\":[{\"id\":\"default-rollout-240992-20038768137\",\"key\":\"default-rollout-240992-20038768137\",\"status\":\"Running\",\"layerId\":\"rollout-240992-20038768137\",\"variations\":[{\"id\":\"802133\",\"key\":\"off\",\"featureEnabled\":false,\"variables\":[]}],\"trafficAllocation\":[{\"entityId\":\"802133\",\"endOfRange\":10000}],\"forcedVariations\":{},\"audienceIds\":[],\"audienceConditions\":[]}]},{\"id\":\"rollout-471699-20038768137\",\"experiments\":[{\"id\":\"default-rollout-471699-20038768137\",\"key\":\"default-rollout-471699-20038768137\",\"status\":\"Running\",\"layerId\":\"rollout-471699-20038768137\",\"variations\":[{\"id\":\"1497786\",\"key\":\"off\",\"featureEnabled\":false,\"variables\":[]}],\"trafficAllocation\":[{\"entityId\":\"1497786\",\"endOfRange\":10000}],\"forcedVariations\":{},\"audienceIds\":[],\"audienceConditions\":[]}]},{\"id\":\"rollout-477726-20038768137\",\"experiments\":[{\"id\":\"default-rollout-477726-20038768137\",\"key\":\"default-rollout-477726-20038768137\",\"status\":\"Running\",\"layerId\":\"rollout-477726-20038768137\",\"variations\":[{\"id\":\"1516142\",\"key\":\"off\",\"featureEnabled\":false,\"variables\":[]}],\"trafficAllocation\":[{\"entityId\":\"1516142\",\"endOfRange\":10000}],\"forcedVariations\":{},\"audienceIds\":[],\"audienceConditions\":[]}]},{\"id\":\"rollout-482732-20038768137\",\"experiments\":[{\"id\":\"default-rollout-482732-20038768137\",\"key\":\"default-rollout-482732-20038768137\",\"status\":\"Running\",\"layerId\":\"rollout-482732-20038768137\",\"variations\":[{\"id\":\"1532446\",\"key\":\"off\",\"featureEnabled\":false,\"variables\":[]}],\"trafficAllocation\":[{\"entityId\":\"1532446\",\"endOfRange\":10000}],\"forcedVariations\":{},\"audienceIds\":[],\"audienceConditions\":[]}]}],\"experiments\":[{\"id\":\"21518961615\",\"key\":\"tportal_apple_pay\",\"status\":\"Running\",\"layerId\":\"21500260785\",\"variations\":[{\"id\":\"21508341101\",\"key\":\"enabled\",\"featureEnabled\":true,\"variables\":[]},{\"id\":\"21504091520\",\"key\":\"disabled\",\"featureEnabled\":true,\"variables\":[]}],\"trafficAllocation\":[{\"entityId\":\"21508341101\",\"endOfRange\":500},{\"entityId\":\"21508341101\",\"endOfRange\":2000},{\"entityId\":\"21508341101\",\"endOfRange\":5000},{\"entityId\":\"21508341101\",\"endOfRange\":10000}],\"forcedVariations\":{},\"audienceIds\":[\"21575050580\"],\"audienceConditions\":[\"or\",\"21575050580\"]},{\"id\":\"24117010538\",\"key\":\"ri_smart_ensure_lease_confirmation\",\"status\":\"Running\",\"layerId\":\"24078440671\",\"variations\":[{\"id\":\"24149520019\",\"key\":\"disabled\",\"featureEnabled\":true,\"variables\":[]},{\"id\":\"24093890422\",\"key\":\"enabled\",\"featureEnabled\":true,\"variables\":[]}],\"trafficAllocation\":[{\"entityId\":\"24093890422\",\"endOfRange\":5000},{\"entityId\":\"24093890422\",\"endOfRange\":10000}],\"forcedVariations\":{},\"audienceIds\":[],\"audienceConditions\":[]},{\"id\":\"24209200627\",\"key\":\"ri_add_home_button_survey\",\"status\":\"Running\",\"layerId\":\"24243680040\",\"variations\":[{\"id\":\"24207540540\",\"key\":\"disabled\",\"featureEnabled\":true,\"variables\":[]},{\"id\":\"24191670793\",\"key\":\"enabled\",\"featureEnabled\":true,\"variables\":[]}],\"trafficAllocation\":[{\"entityId\":\"24191670793\",\"endOfRange\":5000},{\"entityId\":\"24207540540\",\"endOfRange\":10000}],\"forcedVariations\":{},\"audienceIds\":[],\"audienceConditions\":[]},{\"id\":\"24296700498\",\"key\":\"ri_apple_pay_button_retest\",\"status\":\"Running\",\"layerId\":\"24321490529\",\"variations\":[{\"id\":\"24327530503\",\"key\":\"disabled\",\"featureEnabled\":true,\"variables\":[]},{\"id\":\"24331220475\",\"key\":\"enabled\",\"featureEnabled\":true,\"variables\":[]}],\"trafficAllocation\":[{\"entityId\":\"24331220475\",\"endOfRange\":5000},{\"entityId\":\"24331220475\",\"endOfRange\":10000}],\"forcedVariations\":{},\"audienceIds\":[],\"audienceConditions\":[]},{\"id\":\"25015530022\",\"key\":\"ri_change_payment_method_v1\",\"status\":\"Running\",\"layerId\":\"24995280710\",\"variations\":[{\"id\":\"25021440031\",\"key\":\"disabled\",\"featureEnabled\":true,\"variables\":[]},{\"id\":\"24987160419\",\"key\":\"enabled\",\"featureEnabled\":true,\"variables\":[]}],\"trafficAllocation\":[{\"entityId\":\"24987160419\",\"endOfRange\":5000},{\"entityId\":\"24987160419\",\"endOfRange\":10000}],\"forcedVariations\":{},\"audienceIds\":[],\"audienceConditions\":[]},{\"id\":\"25832180015\",\"key\":\"ri_lease_start_date_as_effective_date\",\"status\":\"Running\",\"layerId\":\"25845070026\",\"variations\":[{\"id\":\"25827990064\",\"key\":\"disabled\",\"featureEnabled\":true,\"variables\":[]},{\"id\":\"25760630793\",\"key\":\"enabled\",\"featureEnabled\":true,\"variables\":[]}],\"trafficAllocation\":[{\"entityId\":\"25760630793\",\"endOfRange\":5000},{\"entityId\":\"25760630793\",\"endOfRange\":10000}],\"forcedVariations\":{},\"audienceIds\":[],\"audienceConditions\":[]},{\"id\":\"26081142019\",\"key\":\"tame_new_tportal_nav_poc\",\"status\":\"Running\",\"layerId\":\"26026062082\",\"variations\":[{\"id\":\"25991364068\",\"key\":\"enabled\",\"featureEnabled\":true,\"variables\":[]},{\"id\":\"26107201096\",\"key\":\"disabled\",\"featureEnabled\":true,\"variables\":[]}],\"trafficAllocation\":[{\"entityId\":\"25991364068\",\"endOfRange\":5000},{\"entityId\":\"25991364068\",\"endOfRange\":10000}],\"forcedVariations\":{},\"audienceIds\":[],\"audienceConditions\":[]},{\"id\":\"26165811290\",\"key\":\"ri_landing_page_redesign_2\",\"status\":\"Running\",\"layerId\":\"26173151419\",\"variations\":[{\"id\":\"26296490010\",\"key\":\"disabled\",\"featureEnabled\":true,\"variables\":[]},{\"id\":\"26168001879\",\"key\":\"enabled\",\"featureEnabled\":true,\"variables\":[]}],\"trafficAllocation\":[{\"entityId\":\"26168001879\",\"endOfRange\":5000},{\"entityId\":\"26168001879\",\"endOfRange\":10000}],\"forcedVariations\":{},\"audienceIds\":[],\"audienceConditions\":[]},{\"id\":\"26822140008\",\"key\":\"ri_add_text_for_additional_interest\",\"status\":\"Running\",\"layerId\":\"26792590077\",\"variations\":[{\"id\":\"26589642147\",\"key\":\"disabled\",\"featureEnabled\":true,\"variables\":[]},{\"id\":\"26711651633\",\"key\":\"enabled\",\"featureEnabled\":true,\"variables\":[]}],\"trafficAllocation\":[{\"entityId\":\"26711651633\",\"endOfRange\":5000},{\"entityId\":\"26711651633\",\"endOfRange\":10000}],\"forcedVariations\":{},\"audienceIds\":[],\"audienceConditions\":[]},{\"id\":\"27589580521\",\"key\":\"ri_faq_page\",\"status\":\"Running\",\"layerId\":\"27509720957\",\"variations\":[{\"id\":\"27457301279\",\"key\":\"disabled\",\"featureEnabled\":true,\"variables\":[]},{\"id\":\"27467751221\",\"key\":\"enabled\",\"featureEnabled\":true,\"variables\":[]}],\"trafficAllocation\":[{\"entityId\":\"27467751221\",\"endOfRange\":5000},{\"entityId\":\"27467751221\",\"endOfRange\":10000}],\"forcedVariations\":{},\"audienceIds\":[],\"audienceConditions\":[]},{\"id\":\"27808450453\",\"key\":\"ri_pricing_experiment_decoy_package\",\"status\":\"Running\",\"layerId\":\"27885930009\",\"variations\":[{\"id\":\"27817680640\",\"key\":\"disabled\",\"featureEnabled\":true,\"variables\":[]},{\"id\":\"27887560019\",\"key\":\"enabled\",\"featureEnabled\":true,\"variables\":[]}],\"trafficAllocation\":[{\"entityId\":\"27887560019\",\"endOfRange\":5000},{\"entityId\":\"27887560019\",\"endOfRange\":10000}],\"forcedVariations\":{},\"audienceIds\":[],\"audienceConditions\":[]},{\"id\":\"28184100100\",\"key\":\"ri_payment_gateway\",\"status\":\"Running\",\"layerId\":\"28181440129\",\"variations\":[{\"id\":\"28180380087\",\"key\":\"FirstDataE4\",\"featureEnabled\":true,\"variables\":[]},{\"id\":\"28174530061\",\"key\":\"CheckOut\",\"featureEnabled\":true,\"variables\":[]}],\"trafficAllocation\":[{\"entityId\":\"28174530061\",\"endOfRange\":5000},{\"entityId\":\"28174530061\",\"endOfRange\":7500},{\"entityId\":\"28174530061\",\"endOfRange\":9000},{\"entityId\":\"28174530061\",\"endOfRange\":9900},{\"entityId\":\"28174530061\",\"endOfRange\":10000}],\"forcedVariations\":{},\"audienceIds\":[],\"audienceConditions\":[]},{\"id\":\"28861090297\",\"key\":\"ri_change_payment_method_in_checkout_gateway\",\"status\":\"Running\",\"layerId\":\"28881810039\",\"variations\":[{\"id\":\"28897190060\",\"key\":\"FirstDataE4\",\"featureEnabled\":true,\"variables\":[]},{\"id\":\"28851470241\",\"key\":\"CheckOut\",\"featureEnabled\":true,\"variables\":[]}],\"trafficAllocation\":[{\"entityId\":\"28851470241\",\"endOfRange\":5000},{\"entityId\":\"28851470241\",\"endOfRange\":10000}],\"forcedVariations\":{},\"audienceIds\":[],\"audienceConditions\":[]},{\"id\":\"29233200179\",\"key\":\"ri_make_endorsements_optional\",\"status\":\"Running\",\"layerId\":\"29224850161\",\"variations\":[{\"id\":\"29275120185\",\"key\":\"disabled\",\"featureEnabled\":true,\"variables\":[]},{\"id\":\"29240590188\",\"key\":\"enabled\",\"featureEnabled\":true,\"variables\":[]}],\"trafficAllocation\":[{\"entityId\":\"29240590188\",\"endOfRange\":5000},{\"entityId\":\"29240590188\",\"endOfRange\":10000}],\"forcedVariations\":{},\"audienceIds\":[],\"audienceConditions\":[]},{\"id\":\"9300002825901\",\"key\":\"stacked_new_payment_method_component_existing_users\",\"status\":\"Running\",\"layerId\":\"9300002080187\",\"variations\":[{\"id\":\"1532447\",\"key\":\"on\",\"featureEnabled\":true,\"variables\":[]},{\"id\":\"1532446\",\"key\":\"off\",\"featureEnabled\":false,\"variables\":[]}],\"trafficAllocation\":[{\"entityId\":\"\",\"endOfRange\":150},{\"entityId\":\"\",\"endOfRange\":300},{\"entityId\":\"\",\"endOfRange\":325},{\"entityId\":\"\",\"endOfRange\":450},{\"entityId\":\"\",\"endOfRange\":850},{\"entityId\":\"\",\"endOfRange\":875},{\"entityId\":\"\",\"endOfRange\":1000},{\"entityId\":\"\",\"endOfRange\":1400}],\"forcedVariations\":{},\"audienceIds\":[\"6066568195473408\"],\"audienceConditions\":[\"or\",\"6066568195473408\"]},{\"id\":\"9300002825902\",\"key\":\"stacked_new_payment_method_component_new_users\",\"status\":\"Running\",\"layerId\":\"9300002080188\",\"variations\":[{\"id\":\"1532447\",\"key\":\"on\",\"featureEnabled\":true,\"variables\":[]},{\"id\":\"1532446\",\"key\":\"off\",\"featureEnabled\":false,\"variables\":[]}],\"trafficAllocation\":[{\"entityId\":\"\",\"endOfRange\":550},{\"entityId\":\"\",\"endOfRange\":1100},{\"entityId\":\"\",\"endOfRange\":1250},{\"entityId\":\"\",\"endOfRange\":1400},{\"entityId\":\"\",\"endOfRange\":1500},{\"entityId\":\"\",\"endOfRange\":2250},{\"entityId\":\"\",\"endOfRange\":2350},{\"entityId\":\"\",\"endOfRange\":3100}],\"forcedVariations\":{},\"audienceIds\":[\"5111318949134336\"],\"audienceConditions\":[\"or\",\"5111318949134336\"]}],\"groups\":[],\"region\":\"US\"}";
+</script>
+  <script nonce="s8LMblXQ+8h94OtznJ+7IQ==">
+    const attributes = {"address-state":"WA","age-range":"25-34","allow-online-ach-payments":true,"allow-online-cc-payments":true,"allow-auto-payments":true,"has-folioguard-ri":false,"has-tpi":true,"in-payment-experiment":false,"apple-pay-enabled":false,"tportal-activated-on-or-after-20221025":true,"locale":"en","months-since-move-in":"3+","months-until-move-out":"Not moving out","occupancy-rent-range":"2500-3000","occupancy-tenants-count":2,"primary-tenant":false,"project-id":"20048342109","property-type":"mfr","release":"live","ri-enabled":true,"tenant-type":"Financially Responsible","using-tokenized-auth-flow":false,"user-has-autopay":false,"uuid":"7bca27c9-ee2c-11ef-9c48-0e6d7dc95603","vhost":"blackrealtymanagement","has-visited-payment-flow":true,"has-open-escrow-charges":false,"has-multiple-cash-offset-charges":false,"in-tportal-new-user-flow":false,"in-security-deposit-alternative":true,"nav-poc-opt-in":true,"device-type":"desktop","device-name":"Other"}
+    const userProfile = {"user_id":"7bca27c9-ee2c-11ef-9c48-0e6d7dc95603","experiment_bucket_map":{"26081142019":{"variation_id":"25991364068"},"24209200627":{"variation_id":"24191670793"},"29233200179":{"variation_id":"29240590188"}}}
+    window.__USER_ATTRIBUTES__ = attributes;
+    window.__USER_PROFILE__ = userProfile;
+    window.optimizely = window.optimizely || [];
+    const webProjectId = 20036509323
+    attributes['project-id'] = webProjectId;
+    window.optimizely.push({
+      type: 'user',
+      attributes
+    });
+  </script>
+
+<script nonce="s8LMblXQ+8h94OtznJ+7IQ==" src='https://cdn.optimizely.com/js/20036509323.js'></script>
+
+    
+
+    <script nonce="s8LMblXQ+8h94OtznJ+7IQ==" src='https://checkout.getflex.com/7629cbd6-1a00-4452-8947-01946ff5eb2a/sdk.js' defer="false"></script>
+
+    <script src="https://tportal.cdn.appfolio.com/connect/assets/tportal/jquery-1.11.1.min-39623d268b6f2ace73a0a6aad3d490be9b9e533dce9624c6f19973509f475466.js" nonce="s8LMblXQ+8h94OtznJ+7IQ=="></script>
+  </head>
+
+  <body class="">
+    <noscript>
+      <iframe style="width: 100px; height: 100px; border: 0; position: absolute; top: -5000px;" nonce="s8LMblXQ+8h94OtznJ+7IQ==" src='https://h.online-metrix.net/fp/tags?org_id=5kfca2gp&amp;session_id=83ea10bb-b579-486b-b6a9-401049502851'></iframe>
+    </noscript>
+
+    <div class="preserveHtml position-fixed" id="flex-app-container" style="z-index:1000"></div>
+
+
+      
+
+
+<div id="flash_messages" class="alert--flash-container fixed-top" style="display: none; word-break: break-word;"></div>
+
+
+<div class="layout js-page-layout bg-dark">
+  <div class="layout__sidebar">
+    <link rel="stylesheet" href="https://tportal.cdn.appfolio.com/connect/assets/tportal/packs/css/notifications-48ebd05e.css" />
+<aside class="sidebar">
+  <a href="#main_content" class="screen-reader-only">Skip to main content</a>
+
+  <div class="sidebar__title">
+    <div class="d-flex align-items-center justify-content-between mt-3">
+      <span class="sidebar__salutation" aria-hidden="true">Hello</span>
+      <span id="notifications_root"></span>
+    </div>
+    <p class="sidebar__name"><a class="js-name" aria-label="Matthew Matriciano Account Profile" href="/connect/users/edit">Matthew Matriciano</a></p>
+  </div>
+
+
+  <ul class="sidebar__nav" role="menubar">
+    <li class="js-summary sidebar__item" role="presentation"><a role="menuitem" href="/connect/">Home</a></li>
+
+    <li class="js-payments sidebar__item sidebar__item--selected sidebar__item--payments" role="presentation"><a role="menuitem" aria-selected="true" href="/connect/payments">Payments</a></li>
+
+
+
+
+      <li class="js-maintenance sidebar__item" role="presentation"><a role="menuitem" href="/connect/online_work_orders">Maintenance</a></li>
+
+      <li class="js-contact-us sidebar__item" role="presentation"><a role="menuitem" href="/connect/contact_us">Contact Us</a></li>
+
+    <li class="js-shared-documents sidebar__item" role="presentation"><a role="menuitem" href="https://blackrealtymanagement.appfolio.com/connect/shared_documents">Shared Documents</a></li>
+
+      <li class="js-insurance sidebar__item" role="presentation"><a role="menuitem" href="/connect/insurance">Insurance</a></li>
+
+
+
+    <li class="js-residence-info sidebar__item" role="presentation"><a role="menuitem" href="/connect/info">Property Details</a></li>
+
+
+    <li class="js-account-info sidebar__item" role="presentation"><a role="menuitem" href="/connect/users/edit">Account Profile</a></li>
+
+    <li class="js-help sidebar__item" role="presentation"><a target="_blank" role="menuitem" href="https://www.appfolio.com/help/online-portal">Help</a></li>
+
+      <li class="js-logout u-medium-hidden u-large-hidden sidebar__item" role="presentation"><a role="menuitem" rel="nofollow" data-method="delete" href="/connect/signout">Log Out</a></li>
+
+  </ul>
+</aside>
+
+  </div>
+  <header class="layout__topbar-placeholder" role="banner">
+    <div class="js-topbar layout__topbar">
+      <div class="topbar js-topbar">
+
+  <div class="topbar__company-info">
+    <div class="topbar__logo-container">
+      <div class="topbar__logo-image-container d-flex align-items-center">
+        <img alt="Black Realty Management" class="topbar__logo img-fluid" src="https://images.cdn.appfolio.com/blackrealtymanagement/images/a22a9525-ee47-42e5-b9ff-ed92ebcba4bf/large.jpg" />
+      </div>
+    </div>
+  </div>
+
+  <div class="topbar__user-info u-small-hidden">
+      <span class="js-property-address me-2 pe-2">
+        <span class="text-body-secondary u-space-ls mb-1">
+          Property Address
+        </span>
+        910 S. Carnahan Rd. - B-305, Spokane Valley, WA 99212
+      </span>
+    <span class="topbar__logout">
+        <a class="js-logout text-primary" rel="nofollow" data-method="delete" href="/connect/signout">
+          <i class="fa-solid fa-right-from-bracket"></i>
+          <span>
+            Log Out
+          </span>
+        </a>
+    </span>
+  </div>
+
+  <a href="#" class="js-menu-toggle topbar__menu u-medium-hidden u-large-hidden">
+    <div>
+      <p class="u-space-an"><i class="fa-solid fa-bars"></i></p>
+      <p class="u-space-an topbar__menu--text">menu</p>
+    </div>
+  </a>
+
+</div>
+
+    </div>
+  </header>
+  <div class="layout__body layout__body--with-topbar-sidebar">
+    <main class="layout__body-content">
+      <section class="page">
+        <a name="main_content" id="main_content" tabindex="-1"></a>
+          <h1 class="page__title">Account Ledger</h1>
+
+        
+        
+
+
+              
+
+
+<div class="card card-body mb-3">
+
+    <p class="js-filter-summary card__info">
+      Showing all transactions
+    </p>
+
+    <section class="u-space-vm u-clearfix">
+      <div class="u-float-left">
+        <span class="u-space-lm">
+          Starting Balance
+        </span>
+      </div>
+      <div class="u-float-right">
+        <span class="js-starting-balance u-space-rm">
+        0.00
+        </span>
+      </div>
+    </section>
+
+    <table class="js-footable table table--no-border tenant-ledger-table">
+      <thead>
+      <tr>
+        <th>Date</th>
+        <th data-breakpoints="small medium">Description</th>
+        <th data-breakpoints="small medium">Paid By</th>
+        <th class="u-text-right">Charge</th>
+        <th class="u-text-right">Payment</th>
+        <th class="u-text-right">Balance</th>
+      </tr>
+      </thead>
+
+      <tbody>
+        <tr class="tenant-ledger-table__row--grey">
+          <td class="js-date">
+            02/07/2025
+          </td>
+          <td class="js-description">
+            App Fees
+          </td>
+          <td class="js-paid-by">
+            
+          </td>
+          <td class="js-charge u-text-right">
+            35.00
+          </td>
+          <td class="js-payment u-text-right">
+            
+          </td>
+          <td class="js-balance u-text-right">
+            35.00
+          </td>
+        </tr>
+        <tr class="tenant-ledger-table__row--white">
+          <td class="js-date">
+            02/07/2025
+          </td>
+          <td class="js-description">
+            Credit Card Payment (Reference #8B96-F270)
+          </td>
+          <td class="js-paid-by">
+            Kristine R. Mora
+          </td>
+          <td class="js-charge u-text-right">
+            
+          </td>
+          <td class="js-payment u-text-right">
+            35.00
+          </td>
+          <td class="js-balance u-text-right">
+            0.00
+          </td>
+        </tr>
+        <tr class="tenant-ledger-table__row--grey">
+          <td class="js-date">
+            02/08/2025
+          </td>
+          <td class="js-description">
+            App Fees
+          </td>
+          <td class="js-paid-by">
+            
+          </td>
+          <td class="js-charge u-text-right">
+            35.00
+          </td>
+          <td class="js-payment u-text-right">
+            
+          </td>
+          <td class="js-balance u-text-right">
+            35.00
+          </td>
+        </tr>
+        <tr class="tenant-ledger-table__row--white">
+          <td class="js-date">
+            02/08/2025
+          </td>
+          <td class="js-description">
+            Credit Card Payment (Reference #D5A2-2560)
+          </td>
+          <td class="js-paid-by">
+            Matthew P. Matriciano
+          </td>
+          <td class="js-charge u-text-right">
+            
+          </td>
+          <td class="js-payment u-text-right">
+            35.00
+          </td>
+          <td class="js-balance u-text-right">
+            0.00
+          </td>
+        </tr>
+        <tr class="tenant-ledger-table__row--grey">
+          <td class="js-date">
+            02/18/2025
+          </td>
+          <td class="js-description">
+            Security Dep Liability - Move In Charge: Increased Security Deposit, Refundable
+          </td>
+          <td class="js-paid-by">
+            
+          </td>
+          <td class="js-charge u-text-right">
+            400.00
+          </td>
+          <td class="js-payment u-text-right">
+            
+          </td>
+          <td class="js-balance u-text-right">
+            400.00
+          </td>
+        </tr>
+        <tr class="tenant-ledger-table__row--white">
+          <td class="js-date">
+            02/19/2025
+          </td>
+          <td class="js-description">
+            ACH Payment (Reference #3E1E-E0A0)
+          </td>
+          <td class="js-paid-by">
+            Matthew P. Matriciano
+          </td>
+          <td class="js-charge u-text-right">
+            
+          </td>
+          <td class="js-payment u-text-right">
+            400.00
+          </td>
+          <td class="js-balance u-text-right">
+            0.00
+          </td>
+        </tr>
+        <tr class="tenant-ledger-table__row--grey">
+          <td class="js-date">
+            02/26/2025
+          </td>
+          <td class="js-description">
+            ACH Payment (Reference #F346-1390)
+          </td>
+          <td class="js-paid-by">
+            Matthew P. Matriciano
+          </td>
+          <td class="js-charge u-text-right">
+            
+          </td>
+          <td class="js-payment u-text-right">
+            1,800.00
+          </td>
+          <td class="js-balance u-text-right">
+            -1,800.00
+          </td>
+        </tr>
+        <tr class="tenant-ledger-table__row--white">
+          <td class="js-date">
+            03/01/2025
+          </td>
+          <td class="js-description">
+            Tenant Rents - Move In Charge: Rent
+          </td>
+          <td class="js-paid-by">
+            
+          </td>
+          <td class="js-charge u-text-right">
+            1,325.00
+          </td>
+          <td class="js-payment u-text-right">
+            
+          </td>
+          <td class="js-balance u-text-right">
+            -475.00
+          </td>
+        </tr>
+        <tr class="tenant-ledger-table__row--grey">
+          <td class="js-date">
+            03/01/2025
+          </td>
+          <td class="js-description">
+            Recovery - Utilities - Move In Charge: WSG
+          </td>
+          <td class="js-paid-by">
+            
+          </td>
+          <td class="js-charge u-text-right">
+            25.00
+          </td>
+          <td class="js-payment u-text-right">
+            
+          </td>
+          <td class="js-balance u-text-right">
+            -450.00
+          </td>
+        </tr>
+        <tr class="tenant-ledger-table__row--white">
+          <td class="js-date">
+            03/01/2025
+          </td>
+          <td class="js-description">
+            Admin Processing Fees - Move In Charge: Admin Fee 1 of 2
+          </td>
+          <td class="js-paid-by">
+            
+          </td>
+          <td class="js-charge u-text-right">
+            50.00
+          </td>
+          <td class="js-payment u-text-right">
+            
+          </td>
+          <td class="js-balance u-text-right">
+            -400.00
+          </td>
+        </tr>
+        <tr class="tenant-ledger-table__row--grey">
+          <td class="js-date">
+            03/01/2025
+          </td>
+          <td class="js-description">
+            Non-Refundable Fees - Move In Charge: Admin Fee 2 of 2
+          </td>
+          <td class="js-paid-by">
+            
+          </td>
+          <td class="js-charge u-text-right">
+            400.00
+          </td>
+          <td class="js-payment u-text-right">
+            
+          </td>
+          <td class="js-balance u-text-right">
+            0.00
+          </td>
+        </tr>
+        <tr class="tenant-ledger-table__row--white">
+          <td class="js-date">
+            03/01/2025
+          </td>
+          <td class="js-description">
+            Tenant Concessions - March 2025 - Rent concession
+          </td>
+          <td class="js-paid-by">
+            
+          </td>
+          <td class="js-charge u-text-right">
+            -112.00
+          </td>
+          <td class="js-payment u-text-right">
+            
+          </td>
+          <td class="js-balance u-text-right">
+            -112.00
+          </td>
+        </tr>
+        <tr class="tenant-ledger-table__row--grey">
+          <td class="js-date">
+            03/21/2025
+          </td>
+          <td class="js-description">
+            ACH Payment (Reference #6377-A6B0)
+          </td>
+          <td class="js-paid-by">
+            Matthew P. Matriciano
+          </td>
+          <td class="js-charge u-text-right">
+            
+          </td>
+          <td class="js-payment u-text-right">
+            1,126.00
+          </td>
+          <td class="js-balance u-text-right">
+            -1,238.00
+          </td>
+        </tr>
+        <tr class="tenant-ledger-table__row--white">
+          <td class="js-date">
+            04/01/2025
+          </td>
+          <td class="js-description">
+            Tenant Concessions - April 2025 - Rent concession
+          </td>
+          <td class="js-paid-by">
+            
+          </td>
+          <td class="js-charge u-text-right">
+            -112.00
+          </td>
+          <td class="js-payment u-text-right">
+            
+          </td>
+          <td class="js-balance u-text-right">
+            -1,350.00
+          </td>
+        </tr>
+        <tr class="tenant-ledger-table__row--grey">
+          <td class="js-date">
+            04/01/2025
+          </td>
+          <td class="js-description">
+            Tenant Rents - April 2025 - Rent
+          </td>
+          <td class="js-paid-by">
+            
+          </td>
+          <td class="js-charge u-text-right">
+            1,325.00
+          </td>
+          <td class="js-payment u-text-right">
+            
+          </td>
+          <td class="js-balance u-text-right">
+            -25.00
+          </td>
+        </tr>
+        <tr class="tenant-ledger-table__row--white">
+          <td class="js-date">
+            04/01/2025
+          </td>
+          <td class="js-description">
+            Recovery - Utilities - April 2025 - WSG
+          </td>
+          <td class="js-paid-by">
+            
+          </td>
+          <td class="js-charge u-text-right">
+            25.00
+          </td>
+          <td class="js-payment u-text-right">
+            
+          </td>
+          <td class="js-balance u-text-right">
+            0.00
+          </td>
+        </tr>
+        <tr class="tenant-ledger-table__row--grey">
+          <td class="js-date">
+            04/29/2025
+          </td>
+          <td class="js-description">
+            ACH Payment (Reference #AAC1-1D60)
+          </td>
+          <td class="js-paid-by">
+            Matthew P. Matriciano
+          </td>
+          <td class="js-charge u-text-right">
+            
+          </td>
+          <td class="js-payment u-text-right">
+            1,238.00
+          </td>
+          <td class="js-balance u-text-right">
+            -1,238.00
+          </td>
+        </tr>
+        <tr class="tenant-ledger-table__row--white">
+          <td class="js-date">
+            05/01/2025
+          </td>
+          <td class="js-description">
+            Tenant Concessions - May 2025 - Rent concession
+          </td>
+          <td class="js-paid-by">
+            
+          </td>
+          <td class="js-charge u-text-right">
+            -112.00
+          </td>
+          <td class="js-payment u-text-right">
+            
+          </td>
+          <td class="js-balance u-text-right">
+            -1,350.00
+          </td>
+        </tr>
+        <tr class="tenant-ledger-table__row--grey">
+          <td class="js-date">
+            05/01/2025
+          </td>
+          <td class="js-description">
+            Tenant Rents - May 2025 - Rent
+          </td>
+          <td class="js-paid-by">
+            
+          </td>
+          <td class="js-charge u-text-right">
+            1,325.00
+          </td>
+          <td class="js-payment u-text-right">
+            
+          </td>
+          <td class="js-balance u-text-right">
+            -25.00
+          </td>
+        </tr>
+        <tr class="tenant-ledger-table__row--white">
+          <td class="js-date">
+            05/01/2025
+          </td>
+          <td class="js-description">
+            Recovery - Utilities - May 2025 - WSG
+          </td>
+          <td class="js-paid-by">
+            
+          </td>
+          <td class="js-charge u-text-right">
+            25.00
+          </td>
+          <td class="js-payment u-text-right">
+            
+          </td>
+          <td class="js-balance u-text-right">
+            0.00
+          </td>
+        </tr>
+        <tr class="tenant-ledger-table__row--grey">
+          <td class="js-date">
+            05/21/2025
+          </td>
+          <td class="js-description">
+            ACH Payment (Reference #28B2-B850) Reversed by NSF
+          </td>
+          <td class="js-paid-by">
+            Matthew P. Matriciano
+          </td>
+          <td class="js-charge u-text-right">
+            
+          </td>
+          <td class="js-payment u-text-right">
+            1,238.00
+          </td>
+          <td class="js-balance u-text-right">
+            -1,238.00
+          </td>
+        </tr>
+        <tr class="tenant-ledger-table__row--white">
+          <td class="js-date">
+            05/27/2025
+          </td>
+          <td class="js-description">
+            NSF reversal receipt for Reference #28B2-B850
+          </td>
+          <td class="js-paid-by">
+            Matthew P. Matriciano
+          </td>
+          <td class="js-charge u-text-right">
+            
+          </td>
+          <td class="js-payment u-text-right">
+            -1,238.00
+          </td>
+          <td class="js-balance u-text-right">
+            0.00
+          </td>
+        </tr>
+        <tr class="tenant-ledger-table__row--grey">
+          <td class="js-date">
+            05/27/2025
+          </td>
+          <td class="js-description">
+            NSF Fees - NSF Charge
+          </td>
+          <td class="js-paid-by">
+            
+          </td>
+          <td class="js-charge u-text-right">
+            35.00
+          </td>
+          <td class="js-payment u-text-right">
+            
+          </td>
+          <td class="js-balance u-text-right">
+            35.00
+          </td>
+        </tr>
+        <tr class="tenant-ledger-table__row--white">
+          <td class="js-date">
+            05/27/2025
+          </td>
+          <td class="js-description">
+            ACH Payment (Reference #95DD-FEC0)
+          </td>
+          <td class="js-paid-by">
+            Matthew P. Matriciano
+          </td>
+          <td class="js-charge u-text-right">
+            
+          </td>
+          <td class="js-payment u-text-right">
+            1,273.00
+          </td>
+          <td class="js-balance u-text-right">
+            -1,238.00
+          </td>
+        </tr>
+        <tr class="tenant-ledger-table__row--grey">
+          <td class="js-date">
+            06/01/2025
+          </td>
+          <td class="js-description">
+            Tenant Concessions - June 2025 - Rent concession
+          </td>
+          <td class="js-paid-by">
+            
+          </td>
+          <td class="js-charge u-text-right">
+            -112.00
+          </td>
+          <td class="js-payment u-text-right">
+            
+          </td>
+          <td class="js-balance u-text-right">
+            -1,350.00
+          </td>
+        </tr>
+        <tr class="tenant-ledger-table__row--white">
+          <td class="js-date">
+            06/01/2025
+          </td>
+          <td class="js-description">
+            Tenant Rents - June 2025 - Rent
+          </td>
+          <td class="js-paid-by">
+            
+          </td>
+          <td class="js-charge u-text-right">
+            1,325.00
+          </td>
+          <td class="js-payment u-text-right">
+            
+          </td>
+          <td class="js-balance u-text-right">
+            -25.00
+          </td>
+        </tr>
+        <tr class="tenant-ledger-table__row--grey">
+          <td class="js-date">
+            06/01/2025
+          </td>
+          <td class="js-description">
+            Recovery - Utilities - June 2025 - WSG
+          </td>
+          <td class="js-paid-by">
+            
+          </td>
+          <td class="js-charge u-text-right">
+            25.00
+          </td>
+          <td class="js-payment u-text-right">
+            
+          </td>
+          <td class="js-balance u-text-right">
+            0.00
+          </td>
+        </tr>
+        <tr class="tenant-ledger-table__row--white">
+          <td class="js-date">
+            06/21/2025
+          </td>
+          <td class="js-description">
+            ACH Payment (Reference #9DF5-5170)
+          </td>
+          <td class="js-paid-by">
+            Matthew P. Matriciano
+          </td>
+          <td class="js-charge u-text-right">
+            
+          </td>
+          <td class="js-payment u-text-right">
+            1,238.00
+          </td>
+          <td class="js-balance u-text-right">
+            -1,238.00
+          </td>
+        </tr>
+        <tr class="tenant-ledger-table__row--grey">
+          <td class="js-date">
+            07/01/2025
+          </td>
+          <td class="js-description">
+            Tenant Concessions - July 2025 - Rent concession
+          </td>
+          <td class="js-paid-by">
+            
+          </td>
+          <td class="js-charge u-text-right">
+            -112.00
+          </td>
+          <td class="js-payment u-text-right">
+            
+          </td>
+          <td class="js-balance u-text-right">
+            -1,350.00
+          </td>
+        </tr>
+        <tr class="tenant-ledger-table__row--white">
+          <td class="js-date">
+            07/01/2025
+          </td>
+          <td class="js-description">
+            Tenant Rents - July 2025 - Rent
+          </td>
+          <td class="js-paid-by">
+            
+          </td>
+          <td class="js-charge u-text-right">
+            1,325.00
+          </td>
+          <td class="js-payment u-text-right">
+            
+          </td>
+          <td class="js-balance u-text-right">
+            -25.00
+          </td>
+        </tr>
+        <tr class="tenant-ledger-table__row--grey">
+          <td class="js-date">
+            07/01/2025
+          </td>
+          <td class="js-description">
+            Recovery - Utilities - July 2025 - WSG
+          </td>
+          <td class="js-paid-by">
+            
+          </td>
+          <td class="js-charge u-text-right">
+            25.00
+          </td>
+          <td class="js-payment u-text-right">
+            
+          </td>
+          <td class="js-balance u-text-right">
+            0.00
+          </td>
+        </tr>
+        <tr class="tenant-ledger-table__row--white">
+          <td class="js-date">
+            07/21/2025
+          </td>
+          <td class="js-description">
+            ACH Payment (Reference #B5E0-6C10)
+          </td>
+          <td class="js-paid-by">
+            Matthew P. Matriciano
+          </td>
+          <td class="js-charge u-text-right">
+            
+          </td>
+          <td class="js-payment u-text-right">
+            1,238.00
+          </td>
+          <td class="js-balance u-text-right">
+            -1,238.00
+          </td>
+        </tr>
+        <tr class="tenant-ledger-table__row--grey">
+          <td class="js-date">
+            08/01/2025
+          </td>
+          <td class="js-description">
+            Tenant Concessions - August 2025 - Rent concession
+          </td>
+          <td class="js-paid-by">
+            
+          </td>
+          <td class="js-charge u-text-right">
+            -112.00
+          </td>
+          <td class="js-payment u-text-right">
+            
+          </td>
+          <td class="js-balance u-text-right">
+            -1,350.00
+          </td>
+        </tr>
+        <tr class="tenant-ledger-table__row--white">
+          <td class="js-date">
+            08/01/2025
+          </td>
+          <td class="js-description">
+            Tenant Rents - August 2025 - Rent
+          </td>
+          <td class="js-paid-by">
+            
+          </td>
+          <td class="js-charge u-text-right">
+            1,325.00
+          </td>
+          <td class="js-payment u-text-right">
+            
+          </td>
+          <td class="js-balance u-text-right">
+            -25.00
+          </td>
+        </tr>
+        <tr class="tenant-ledger-table__row--grey">
+          <td class="js-date">
+            08/01/2025
+          </td>
+          <td class="js-description">
+            Recovery - Utilities - August 2025 - WSG
+          </td>
+          <td class="js-paid-by">
+            
+          </td>
+          <td class="js-charge u-text-right">
+            25.00
+          </td>
+          <td class="js-payment u-text-right">
+            
+          </td>
+          <td class="js-balance u-text-right">
+            0.00
+          </td>
+        </tr>
+        <tr class="tenant-ledger-table__row--white">
+          <td class="js-date">
+            08/21/2025
+          </td>
+          <td class="js-description">
+            ACH Payment (Reference #D93B-1990)
+          </td>
+          <td class="js-paid-by">
+            Matthew P. Matriciano
+          </td>
+          <td class="js-charge u-text-right">
+            
+          </td>
+          <td class="js-payment u-text-right">
+            1,238.00
+          </td>
+          <td class="js-balance u-text-right">
+            -1,238.00
+          </td>
+        </tr>
+        <tr class="tenant-ledger-table__row--grey">
+          <td class="js-date">
+            09/01/2025
+          </td>
+          <td class="js-description">
+            Tenant Concessions - September 2025 - Rent concession
+          </td>
+          <td class="js-paid-by">
+            
+          </td>
+          <td class="js-charge u-text-right">
+            -112.00
+          </td>
+          <td class="js-payment u-text-right">
+            
+          </td>
+          <td class="js-balance u-text-right">
+            -1,350.00
+          </td>
+        </tr>
+        <tr class="tenant-ledger-table__row--white">
+          <td class="js-date">
+            09/01/2025
+          </td>
+          <td class="js-description">
+            Tenant Rents - September 2025 - Rent
+          </td>
+          <td class="js-paid-by">
+            
+          </td>
+          <td class="js-charge u-text-right">
+            1,325.00
+          </td>
+          <td class="js-payment u-text-right">
+            
+          </td>
+          <td class="js-balance u-text-right">
+            -25.00
+          </td>
+        </tr>
+        <tr class="tenant-ledger-table__row--grey">
+          <td class="js-date">
+            09/01/2025
+          </td>
+          <td class="js-description">
+            Recovery - Utilities - September 2025 - WSG
+          </td>
+          <td class="js-paid-by">
+            
+          </td>
+          <td class="js-charge u-text-right">
+            25.00
+          </td>
+          <td class="js-payment u-text-right">
+            
+          </td>
+          <td class="js-balance u-text-right">
+            0.00
+          </td>
+        </tr>
+        <tr class="tenant-ledger-table__row--white">
+          <td class="js-date">
+            09/30/2025
+          </td>
+          <td class="js-description">
+            ACH Payment (Reference #C49D-5EA0)
+          </td>
+          <td class="js-paid-by">
+            Matthew P. Matriciano
+          </td>
+          <td class="js-charge u-text-right">
+            
+          </td>
+          <td class="js-payment u-text-right">
+            1,238.00
+          </td>
+          <td class="js-balance u-text-right">
+            -1,238.00
+          </td>
+        </tr>
+        <tr class="tenant-ledger-table__row--grey">
+          <td class="js-date">
+            10/01/2025
+          </td>
+          <td class="js-description">
+            Tenant Concessions - October 2025 - Rent concession
+          </td>
+          <td class="js-paid-by">
+            
+          </td>
+          <td class="js-charge u-text-right">
+            -112.00
+          </td>
+          <td class="js-payment u-text-right">
+            
+          </td>
+          <td class="js-balance u-text-right">
+            -1,350.00
+          </td>
+        </tr>
+        <tr class="tenant-ledger-table__row--white">
+          <td class="js-date">
+            10/01/2025
+          </td>
+          <td class="js-description">
+            Tenant Rents - October 2025 - Rent
+          </td>
+          <td class="js-paid-by">
+            
+          </td>
+          <td class="js-charge u-text-right">
+            1,325.00
+          </td>
+          <td class="js-payment u-text-right">
+            
+          </td>
+          <td class="js-balance u-text-right">
+            -25.00
+          </td>
+        </tr>
+        <tr class="tenant-ledger-table__row--grey">
+          <td class="js-date">
+            10/01/2025
+          </td>
+          <td class="js-description">
+            Recovery - Utilities - October 2025 - WSG
+          </td>
+          <td class="js-paid-by">
+            
+          </td>
+          <td class="js-charge u-text-right">
+            25.00
+          </td>
+          <td class="js-payment u-text-right">
+            
+          </td>
+          <td class="js-balance u-text-right">
+            0.00
+          </td>
+        </tr>
+        <tr class="tenant-ledger-table__row--white">
+          <td class="js-date">
+            10/21/2025
+          </td>
+          <td class="js-description">
+            ACH Payment (Reference #812A-C430) Reversed by NSF
+          </td>
+          <td class="js-paid-by">
+            Matthew P. Matriciano
+          </td>
+          <td class="js-charge u-text-right">
+            
+          </td>
+          <td class="js-payment u-text-right">
+            1,238.00
+          </td>
+          <td class="js-balance u-text-right">
+            -1,238.00
+          </td>
+        </tr>
+        <tr class="tenant-ledger-table__row--grey">
+          <td class="js-date">
+            10/24/2025
+          </td>
+          <td class="js-description">
+            NSF reversal receipt for Reference #812A-C430
+          </td>
+          <td class="js-paid-by">
+            Matthew P. Matriciano
+          </td>
+          <td class="js-charge u-text-right">
+            
+          </td>
+          <td class="js-payment u-text-right">
+            -1,238.00
+          </td>
+          <td class="js-balance u-text-right">
+            0.00
+          </td>
+        </tr>
+        <tr class="tenant-ledger-table__row--white">
+          <td class="js-date">
+            10/24/2025
+          </td>
+          <td class="js-description">
+            NSF Fees - NSF Charge
+          </td>
+          <td class="js-paid-by">
+            
+          </td>
+          <td class="js-charge u-text-right">
+            35.00
+          </td>
+          <td class="js-payment u-text-right">
+            
+          </td>
+          <td class="js-balance u-text-right">
+            35.00
+          </td>
+        </tr>
+        <tr class="tenant-ledger-table__row--grey">
+          <td class="js-date">
+            10/30/2025
+          </td>
+          <td class="js-description">
+            ACH Payment (Reference #0D4D-12A0)
+          </td>
+          <td class="js-paid-by">
+            Matthew P. Matriciano
+          </td>
+          <td class="js-charge u-text-right">
+            
+          </td>
+          <td class="js-payment u-text-right">
+            1,273.00
+          </td>
+          <td class="js-balance u-text-right">
+            -1,238.00
+          </td>
+        </tr>
+        <tr class="tenant-ledger-table__row--white">
+          <td class="js-date">
+            11/01/2025
+          </td>
+          <td class="js-description">
+            Tenant Concessions - November 2025 - Rent concession
+          </td>
+          <td class="js-paid-by">
+            
+          </td>
+          <td class="js-charge u-text-right">
+            -112.00
+          </td>
+          <td class="js-payment u-text-right">
+            
+          </td>
+          <td class="js-balance u-text-right">
+            -1,350.00
+          </td>
+        </tr>
+        <tr class="tenant-ledger-table__row--grey">
+          <td class="js-date">
+            11/01/2025
+          </td>
+          <td class="js-description">
+            Tenant Rents - November 2025 - Rent
+          </td>
+          <td class="js-paid-by">
+            
+          </td>
+          <td class="js-charge u-text-right">
+            1,325.00
+          </td>
+          <td class="js-payment u-text-right">
+            
+          </td>
+          <td class="js-balance u-text-right">
+            -25.00
+          </td>
+        </tr>
+        <tr class="tenant-ledger-table__row--white">
+          <td class="js-date">
+            11/01/2025
+          </td>
+          <td class="js-description">
+            Recovery - Utilities - November 2025 - WSG
+          </td>
+          <td class="js-paid-by">
+            
+          </td>
+          <td class="js-charge u-text-right">
+            25.00
+          </td>
+          <td class="js-payment u-text-right">
+            
+          </td>
+          <td class="js-balance u-text-right">
+            0.00
+          </td>
+        </tr>
+        <tr class="tenant-ledger-table__row--grey">
+          <td class="js-date">
+            12/01/2025
+          </td>
+          <td class="js-description">
+            Tenant Concessions - December 2025
+          </td>
+          <td class="js-paid-by">
+            
+          </td>
+          <td class="js-charge u-text-right">
+            -112.00
+          </td>
+          <td class="js-payment u-text-right">
+            
+          </td>
+          <td class="js-balance u-text-right">
+            -112.00
+          </td>
+        </tr>
+        <tr class="tenant-ledger-table__row--white">
+          <td class="js-date">
+            12/01/2025
+          </td>
+          <td class="js-description">
+            Tenant Rents - December 2025 - Rent
+          </td>
+          <td class="js-paid-by">
+            
+          </td>
+          <td class="js-charge u-text-right">
+            1,325.00
+          </td>
+          <td class="js-payment u-text-right">
+            
+          </td>
+          <td class="js-balance u-text-right">
+            1,213.00
+          </td>
+        </tr>
+        <tr class="tenant-ledger-table__row--grey">
+          <td class="js-date">
+            12/01/2025
+          </td>
+          <td class="js-description">
+            Recovery - Utilities - December 2025 - WSG
+          </td>
+          <td class="js-paid-by">
+            
+          </td>
+          <td class="js-charge u-text-right">
+            25.00
+          </td>
+          <td class="js-payment u-text-right">
+            
+          </td>
+          <td class="js-balance u-text-right">
+            1,238.00
+          </td>
+        </tr>
+        <tr class="tenant-ledger-table__row--white">
+          <td class="js-date">
+            12/01/2025
+          </td>
+          <td class="js-description">
+            ACH Payment (Reference #23E8-B260)
+          </td>
+          <td class="js-paid-by">
+            Matthew P. Matriciano
+          </td>
+          <td class="js-charge u-text-right">
+            
+          </td>
+          <td class="js-payment u-text-right">
+            1,238.00
+          </td>
+          <td class="js-balance u-text-right">
+            0.00
+          </td>
+        </tr>
+        <tr class="tenant-ledger-table__row--grey">
+          <td class="js-date">
+            12/19/2025
+          </td>
+          <td class="js-description">
+            Credit Card Payment (Reference #3F08-02C0)
+          </td>
+          <td class="js-paid-by">
+            Matthew P. Matriciano
+          </td>
+          <td class="js-charge u-text-right">
+            
+          </td>
+          <td class="js-payment u-text-right">
+            300.00
+          </td>
+          <td class="js-balance u-text-right">
+            -300.00
+          </td>
+        </tr>
+        <tr class="tenant-ledger-table__row--white">
+          <td class="js-date">
+            12/19/2025
+          </td>
+          <td class="js-description">
+            ACH Payment (Reference #63B6-BC20)
+          </td>
+          <td class="js-paid-by">
+            Matthew P. Matriciano
+          </td>
+          <td class="js-charge u-text-right">
+            
+          </td>
+          <td class="js-payment u-text-right">
+            938.00
+          </td>
+          <td class="js-balance u-text-right">
+            -1,238.00
+          </td>
+        </tr>
+        <tr class="tenant-ledger-table__row--grey">
+          <td class="js-date">
+            01/01/2026
+          </td>
+          <td class="js-description">
+            Tenant Concessions - January 2026
+          </td>
+          <td class="js-paid-by">
+            
+          </td>
+          <td class="js-charge u-text-right">
+            -112.00
+          </td>
+          <td class="js-payment u-text-right">
+            
+          </td>
+          <td class="js-balance u-text-right">
+            -1,350.00
+          </td>
+        </tr>
+        <tr class="tenant-ledger-table__row--white">
+          <td class="js-date">
+            01/01/2026
+          </td>
+          <td class="js-description">
+            Tenant Rents - January 2026 - Rent
+          </td>
+          <td class="js-paid-by">
+            
+          </td>
+          <td class="js-charge u-text-right">
+            1,325.00
+          </td>
+          <td class="js-payment u-text-right">
+            
+          </td>
+          <td class="js-balance u-text-right">
+            -25.00
+          </td>
+        </tr>
+        <tr class="tenant-ledger-table__row--grey">
+          <td class="js-date">
+            01/01/2026
+          </td>
+          <td class="js-description">
+            Recovery - Utilities - January 2026 - WSG
+          </td>
+          <td class="js-paid-by">
+            
+          </td>
+          <td class="js-charge u-text-right">
+            25.00
+          </td>
+          <td class="js-payment u-text-right">
+            
+          </td>
+          <td class="js-balance u-text-right">
+            0.00
+          </td>
+        </tr>
+      </tbody>
+
+    </table>
+
+    <section class="u-space-vm u-clearfix">
+      <div class="u-float-left">
+        <div class="u-space-lm">
+          <div>
+            Ending Balance
+          </div>
+        </div>
+      </div>
+      <div class="u-float-right">
+        <div class="u-space-rm u-text-right">
+          <div class="js-ending-balance">
+            0.00
+          </div>
+        </div>
+      </div>
+    </section>
+</div>
+
+
+      </section>
+    </main>
+
+    <footer class="layout__footer bg-dark" role="contentinfo">
+      <section class="footer">
+  <div class="footer__info">
+    <p class="u-space-an js-company-name">Black Realty Management</p>
+    <a class="u-space-an js-company-phone-number" href="tel:5098388100">(509) 838-8100</a>
+
+      <p class="u-space-an js-company-website">
+        <a target="_blank" href="http://www.blackrealtymanagement.com">Visit Our Website</a>
+        <span class="px-1">&middot;</span>
+        <a target="_blank" href="https://www.appfolio.com/help/online-portal">Help</a>
+        <span class="px-1">&middot;</span>
+        <a target="legal_document" class="js-open-legal-document" href="https://www.appfolio.com/terms/homeowner_tenant_portal">Terms</a>
+        <span class="px-1">&middot;</span>
+        <a target="legal_document" class="js-open-legal-document" href="https://www.appfolio.com/privacy">Privacy</a>
+      </p>
+  </div>
+  <img alt="AppFolio Property Manager" style="height: 25px;" src="https://tportal.cdn.appfolio.com/connect/assets/tportal/logos/af-white-752678d0cd0021ecc3b155cabf0cb9928004abf4cbded58f82f056cbaf4bd3fa.svg" />
+</section>
+
+    </footer>
+
+    <div class="js-menu-toggle layout__overlay"></div>
+  </div>
+</div>
+
+
+    <script src="https://tportal.cdn.appfolio.com/connect/assets/tportal/packs/js/runtime-cd4a6464ddd3b95f82f5.js" crossorigin="anonymous" nonce="s8LMblXQ+8h94OtznJ+7IQ=="></script>
+<script src="https://tportal.cdn.appfolio.com/connect/assets/tportal/packs/js/8826-7efad15f975983f05a7d.js" crossorigin="anonymous" nonce="s8LMblXQ+8h94OtznJ+7IQ=="></script>
+<script src="https://tportal.cdn.appfolio.com/connect/assets/tportal/packs/js/views/tenant_ledger-1c900b44fe168b0a6bfa.js" crossorigin="anonymous" nonce="s8LMblXQ+8h94OtznJ+7IQ=="></script>
+<script src="https://tportal.cdn.appfolio.com/connect/assets/tportal/packs/js/9904-d864f21ca3f31bb07f92.js" crossorigin="anonymous" nonce="s8LMblXQ+8h94OtznJ+7IQ=="></script>
+<script src="https://tportal.cdn.appfolio.com/connect/assets/tportal/packs/js/rollbar_logger-b44ee29e1320e0505360.js" crossorigin="anonymous" nonce="s8LMblXQ+8h94OtznJ+7IQ=="></script>
+<script src="https://tportal.cdn.appfolio.com/connect/assets/tportal/packs/js/2543-c5854ba319b8f16c5e0e.js" crossorigin="anonymous" nonce="s8LMblXQ+8h94OtznJ+7IQ=="></script>
+<script src="https://tportal.cdn.appfolio.com/connect/assets/tportal/packs/js/3295-0005e262e5f6799ffbb3.js" crossorigin="anonymous" nonce="s8LMblXQ+8h94OtznJ+7IQ=="></script>
+<script src="https://tportal.cdn.appfolio.com/connect/assets/tportal/packs/js/8993-c3d25a1f55423ab16144.js" crossorigin="anonymous" nonce="s8LMblXQ+8h94OtznJ+7IQ=="></script>
+<script src="https://tportal.cdn.appfolio.com/connect/assets/tportal/packs/js/5178-a2b082d2f0961a39c8eb.js" crossorigin="anonymous" nonce="s8LMblXQ+8h94OtznJ+7IQ=="></script>
+<script src="https://tportal.cdn.appfolio.com/connect/assets/tportal/packs/js/views/optimizely_hooks-b93f1c87131d56a8bdd3.js" crossorigin="anonymous" nonce="s8LMblXQ+8h94OtznJ+7IQ=="></script>
+<script src="https://tportal.cdn.appfolio.com/connect/assets/tportal/packs/js/9533-37162e9d458459b86e30.js" crossorigin="anonymous" nonce="s8LMblXQ+8h94OtznJ+7IQ=="></script>
+<script src="https://tportal.cdn.appfolio.com/connect/assets/tportal/packs/js/views/event_stream-b9a9e91208b07d3f2909.js" crossorigin="anonymous" nonce="s8LMblXQ+8h94OtznJ+7IQ=="></script>
+<script src="https://tportal.cdn.appfolio.com/connect/assets/tportal/packs/js/3549-3c41e982e3fb23028455.js" crossorigin="anonymous" nonce="s8LMblXQ+8h94OtznJ+7IQ=="></script>
+<script src="https://tportal.cdn.appfolio.com/connect/assets/tportal/packs/js/7595-9ca78f73a6f00c93f71e.js" crossorigin="anonymous" nonce="s8LMblXQ+8h94OtznJ+7IQ=="></script>
+<script src="https://tportal.cdn.appfolio.com/connect/assets/tportal/packs/js/7971-9aaf7b1d406bcfc7d160.js" crossorigin="anonymous" nonce="s8LMblXQ+8h94OtznJ+7IQ=="></script>
+<script src="https://tportal.cdn.appfolio.com/connect/assets/tportal/packs/js/2057-9842bc46faf70df5a181.js" crossorigin="anonymous" nonce="s8LMblXQ+8h94OtznJ+7IQ=="></script>
+<script src="https://tportal.cdn.appfolio.com/connect/assets/tportal/packs/js/gears_setup-574d9c014988a200ed7f.js" crossorigin="anonymous" nonce="s8LMblXQ+8h94OtznJ+7IQ=="></script>
+<script src="https://tportal.cdn.appfolio.com/connect/assets/tportal/packs/js/3676-7915e35e59d99156b7d8.js" crossorigin="anonymous" nonce="s8LMblXQ+8h94OtznJ+7IQ=="></script>
+<script src="https://tportal.cdn.appfolio.com/connect/assets/tportal/packs/js/flex_sdk-7d371784688f47610a09.js" crossorigin="anonymous" nonce="s8LMblXQ+8h94OtznJ+7IQ=="></script>
+<script src="https://tportal.cdn.appfolio.com/connect/assets/tportal/packs/js/sidebar-c33fb0bf369792c8a107.js" crossorigin="anonymous" nonce="s8LMblXQ+8h94OtznJ+7IQ=="></script>
+<script src="https://tportal.cdn.appfolio.com/connect/assets/tportal/packs/js/7618-ae5c33ba438170bc24e5.js" crossorigin="anonymous" nonce="s8LMblXQ+8h94OtznJ+7IQ=="></script>
+<script src="https://tportal.cdn.appfolio.com/connect/assets/tportal/packs/js/5523-117b7604f2795b052ba5.js" crossorigin="anonymous" nonce="s8LMblXQ+8h94OtznJ+7IQ=="></script>
+<script src="https://tportal.cdn.appfolio.com/connect/assets/tportal/packs/js/1666-e78faa5121711b155115.js" crossorigin="anonymous" nonce="s8LMblXQ+8h94OtznJ+7IQ=="></script>
+<script src="https://tportal.cdn.appfolio.com/connect/assets/tportal/packs/js/7878-3bb8cdb3090e35caa8c8.js" crossorigin="anonymous" nonce="s8LMblXQ+8h94OtznJ+7IQ=="></script>
+<script src="https://tportal.cdn.appfolio.com/connect/assets/tportal/packs/js/6760-b654e3541778b1eb2f11.js" crossorigin="anonymous" nonce="s8LMblXQ+8h94OtznJ+7IQ=="></script>
+<script src="https://tportal.cdn.appfolio.com/connect/assets/tportal/packs/js/3995-315db6ac8c12203595ac.js" crossorigin="anonymous" nonce="s8LMblXQ+8h94OtznJ+7IQ=="></script>
+<script src="https://tportal.cdn.appfolio.com/connect/assets/tportal/packs/js/813-db106487c476d424cde5.js" crossorigin="anonymous" nonce="s8LMblXQ+8h94OtznJ+7IQ=="></script>
+<script src="https://tportal.cdn.appfolio.com/connect/assets/tportal/packs/js/514-2cd481909716009756ef.js" crossorigin="anonymous" nonce="s8LMblXQ+8h94OtznJ+7IQ=="></script>
+<script src="https://tportal.cdn.appfolio.com/connect/assets/tportal/packs/js/3051-0faea86eccbe0d919c65.js" crossorigin="anonymous" nonce="s8LMblXQ+8h94OtznJ+7IQ=="></script>
+<script src="https://tportal.cdn.appfolio.com/connect/assets/tportal/packs/js/1683-e822343e04d6622824da.js" crossorigin="anonymous" nonce="s8LMblXQ+8h94OtznJ+7IQ=="></script>
+<script src="https://tportal.cdn.appfolio.com/connect/assets/tportal/packs/js/notifications-315f5a623ea0c85068b7.js" crossorigin="anonymous" nonce="s8LMblXQ+8h94OtznJ+7IQ=="></script>
+<script src="https://tportal.cdn.appfolio.com/connect/assets/tportal/packs/js/7766-c5186e90186b46217b1d.js" crossorigin="anonymous" nonce="s8LMblXQ+8h94OtznJ+7IQ=="></script>
+<script src="https://tportal.cdn.appfolio.com/connect/assets/tportal/packs/js/application-e1616eb6919a7d882be7.js" crossorigin="anonymous" nonce="s8LMblXQ+8h94OtznJ+7IQ=="></script>
+
+    
+  <script>
+    new TenantLedger();
+  </script>
+
+
+  <script nonce="s8LMblXQ+8h94OtznJ+7IQ==">
+    $('#flash_messages').slideDown(null, function () { $(this).addClass('js-visible'); });
+  </script>
+
+    <script src="https://public.cdn.appfolio.com/public/assets/scripts/bootstrap/5.3.1/bootstrap.bundle.min.js" nonce="s8LMblXQ+8h94OtznJ+7IQ=="></script>
+
+      <script nonce="s8LMblXQ+8h94OtznJ+7IQ==">
+    (function (apiKey) {
+      (function (p, e, n, d, o) {
+        var v, w, x, y, z;
+        o = p[d] = p[d] || {};
+        o._q = [];
+        v = ['initialize', 'identify', 'updateOptions', 'pageLoad'];
+        for (w = 0, x = v.length; w < x; ++w) (function (m) {
+          o[m] = o[m] || function () {
+            o._q[m === v[0] ? 'unshift' : 'push']([m].concat([].slice.call(arguments, 0)));
+          };
+        })(v[w]);
+        y = e.createElement(n);
+        y.async = !0;
+        y.src = 'https://tenant-content.apm.appfolio-analytics.com/agent/static/' + apiKey + '/pendo.js';
+        z = e.getElementsByTagName(n)[0];
+        z.parentNode.insertBefore(y, z);
+      })(window, document, 'script', 'pendo');
+      pendo.initialize({
+        visitor: {
+          id: '7bca27c9-ee2c-11ef-9c48-0e6d7dc95603',
+          email: 'mattmatriciano@gmail.com',
+          // You can add any additional visitor level key-values here,
+          // as long as it's not one of the reserved names: id, email, role.
+          rentersInsuranceUuid: 'ac529e469ea6dad8a6ad07bd0f0b70a03eade516-c310d150-ee2c-11ef-9c48-0e6d7dc95603',
+          isPmSession: false,
+          propertyType: 'mfr'
+        },
+        account: {
+          id: 'ac529e469ea6dad8a6ad07bd0f0b70a03eade516',
+          name: 'blackrealtymanagement'
+        }
+      });
+    })('efcc79d1-c700-4e01-4874-c600c8d8311d');
+  </script>
+
+      <script nonce="s8LMblXQ+8h94OtznJ+7IQ==">
+    // Docs: https://docs.rollbar.com/docs/rollbarjs-configuration-reference#payload-1
+    var _rollbarConfig = {
+      accessToken: '176b2ef7b2524b45ae2f2bc0a02e29de',
+      captureUncaught: true,
+      captureUnhandledRejections: false,
+      scrubTelemetryInputs: true,
+      payload: {
+        environment: 'live',
+        client: {
+          javascript: {
+            source_map_enabled: true, //this is now true by default
+            code_version: 'fa1d287d1fde427f304bc9543fc4636bc991c7d9',
+            // Optionally have Rollbar guess which frames the error was thrown from
+            // when the browser does not provide line and column numbers.
+            guess_uncaught_frames: true
+          }
+        },
+        person: {
+          id: 'blackrealtymanagement',
+          user_id: '20298'
+        }
+      }
+    };
+
+    // Rollbar Snippet (2.21.1)
+    !function(r){var e={};function o(n){if(e[n])return e[n].exports;var t=e[n]={i:n,l:!1,exports:{}};return r[n].call(t.exports,t,t.exports,o),t.l=!0,t.exports}o.m=r,o.c=e,o.d=function(r,e,n){o.o(r,e)||Object.defineProperty(r,e,{enumerable:!0,get:n})},o.r=function(r){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(r,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(r,"__esModule",{value:!0})},o.t=function(r,e){if(1&e&&(r=o(r)),8&e)return r;if(4&e&&"object"==typeof r&&r&&r.__esModule)return r;var n=Object.create(null);if(o.r(n),Object.defineProperty(n,"default",{enumerable:!0,value:r}),2&e&&"string"!=typeof r)for(var t in r)o.d(n,t,function(e){return r[e]}.bind(null,t));return n},o.n=function(r){var e=r&&r.__esModule?function(){return r.default}:function(){return r};return o.d(e,"a",e),e},o.o=function(r,e){return Object.prototype.hasOwnProperty.call(r,e)},o.p="",o(o.s=0)}([function(r,e,o){"use strict";var n=o(1),t=o(5);_rollbarConfig=_rollbarConfig||{},_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||"https://cdn.rollbar.com/rollbarjs/refs/tags/v2.21.1/rollbar.min.js",_rollbarConfig.async=void 0===_rollbarConfig.async||_rollbarConfig.async;var a=n.setupShim(window,_rollbarConfig),l=t(_rollbarConfig);window.rollbar=n.Rollbar,a.loadFull(window,document,!_rollbarConfig.async,_rollbarConfig,l)},function(r,e,o){"use strict";var n=o(2),t=o(3);function a(r){return function(){try{return r.apply(this,arguments)}catch(r){try{console.error("[Rollbar]: Internal error",r)}catch(r){}}}}var l=0;function i(r,e){this.options=r,this._rollbarOldOnError=null;var o=l++;this.shimId=function(){return o},"undefined"!=typeof window&&window._rollbarShims&&(window._rollbarShims[o]={handler:e,messages:[]})}var s=o(4),d=function(r,e){return new i(r,e)},c=function(r){return new s(d,r)};function u(r){return a((function(){var e=this,o=Array.prototype.slice.call(arguments,0),n={shim:e,method:r,args:o,ts:new Date};window._rollbarShims[this.shimId()].messages.push(n)}))}i.prototype.loadFull=function(r,e,o,n,t){var l=!1,i=e.createElement("script"),s=e.getElementsByTagName("script")[0],d=s.parentNode;i.crossOrigin="",i.src=n.rollbarJsUrl,o||(i.async=!0),i.onload=i.onreadystatechange=a((function(){if(!(l||this.readyState&&"loaded"!==this.readyState&&"complete"!==this.readyState)){i.onload=i.onreadystatechange=null;try{d.removeChild(i)}catch(r){}l=!0,function(){var e;if(void 0===r._rollbarDidLoad){e=new Error("rollbar.js did not load");for(var o,n,a,l,i=0;o=r._rollbarShims[i++];)for(o=o.messages||[];n=o.shift();)for(a=n.args||[],i=0;i<a.length;++i)if("function"==typeof(l=a[i])){l(e);break}}"function"==typeof t&&t(e)}()}})),d.insertBefore(i,s)},i.prototype.wrap=function(r,e,o){try{var n;if(n="function"==typeof e?e:function(){return e||{}},"function"!=typeof r)return r;if(r._isWrap)return r;if(!r._rollbar_wrapped&&(r._rollbar_wrapped=function(){o&&"function"==typeof o&&o.apply(this,arguments);try{return r.apply(this,arguments)}catch(o){var e=o;throw e&&("string"==typeof e&&(e=new String(e)),e._rollbarContext=n()||{},e._rollbarContext._wrappedSource=r.toString(),window._rollbarWrappedError=e),e}},r._rollbar_wrapped._isWrap=!0,r.hasOwnProperty))for(var t in r)r.hasOwnProperty(t)&&(r._rollbar_wrapped[t]=r[t]);return r._rollbar_wrapped}catch(e){return r}};for(var p="log,debug,info,warn,warning,error,critical,global,configure,handleUncaughtException,handleAnonymousErrors,handleUnhandledRejection,captureEvent,captureDomContentLoaded,captureLoad".split(","),f=0;f<p.length;++f)i.prototype[p[f]]=u(p[f]);r.exports={setupShim:function(r,e){if(r){var o=e.globalAlias||"Rollbar";if("object"==typeof r[o])return r[o];r._rollbarShims={},r._rollbarWrappedError=null;var l=new c(e);return a((function(){e.captureUncaught&&(l._rollbarOldOnError=r.onerror,n.captureUncaughtExceptions(r,l,!0),e.wrapGlobalEventHandlers&&t(r,l,!0)),e.captureUnhandledRejections&&n.captureUnhandledRejections(r,l,!0);var a=e.autoInstrument;return!1!==e.enabled&&(void 0===a||!0===a||"object"==typeof a&&a.network)&&r.addEventListener&&(r.addEventListener("load",l.captureLoad.bind(l)),r.addEventListener("DOMContentLoaded",l.captureDomContentLoaded.bind(l))),r[o]=l,l}))()}},Rollbar:c}},function(r,e,o){"use strict";function n(r,e,o,n){r._rollbarWrappedError&&(n[4]||(n[4]=r._rollbarWrappedError),n[5]||(n[5]=r._rollbarWrappedError._rollbarContext),r._rollbarWrappedError=null);var t=e.handleUncaughtException.apply(e,n);o&&o.apply(r,n),"anonymous"===t&&(e.anonymousErrorsPending+=1)}r.exports={captureUncaughtExceptions:function(r,e,o){if(r){var t;if("function"==typeof e._rollbarOldOnError)t=e._rollbarOldOnError;else if(r.onerror){for(t=r.onerror;t._rollbarOldOnError;)t=t._rollbarOldOnError;e._rollbarOldOnError=t}e.handleAnonymousErrors();var a=function(){var o=Array.prototype.slice.call(arguments,0);n(r,e,t,o)};o&&(a._rollbarOldOnError=t),r.onerror=a}},captureUnhandledRejections:function(r,e,o){if(r){"function"==typeof r._rollbarURH&&r._rollbarURH.belongsToShim&&r.removeEventListener("unhandledrejection",r._rollbarURH);var n=function(r){var o,n,t;try{o=r.reason}catch(r){o=void 0}try{n=r.promise}catch(r){n="[unhandledrejection] error getting `promise` from event"}try{t=r.detail,!o&&t&&(o=t.reason,n=t.promise)}catch(r){}o||(o="[unhandledrejection] error getting `reason` from event"),e&&e.handleUnhandledRejection&&e.handleUnhandledRejection(o,n)};n.belongsToShim=o,r._rollbarURH=n,r.addEventListener("unhandledrejection",n)}}}},function(r,e,o){"use strict";function n(r,e,o){if(e.hasOwnProperty&&e.hasOwnProperty("addEventListener")){for(var n=e.addEventListener;n._rollbarOldAdd&&n.belongsToShim;)n=n._rollbarOldAdd;var t=function(e,o,t){n.call(this,e,r.wrap(o),t)};t._rollbarOldAdd=n,t.belongsToShim=o,e.addEventListener=t;for(var a=e.removeEventListener;a._rollbarOldRemove&&a.belongsToShim;)a=a._rollbarOldRemove;var l=function(r,e,o){a.call(this,r,e&&e._rollbar_wrapped||e,o)};l._rollbarOldRemove=a,l.belongsToShim=o,e.removeEventListener=l}}r.exports=function(r,e,o){if(r){var t,a,l="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(t=0;t<l.length;++t)r[a=l[t]]&&r[a].prototype&&n(e,r[a].prototype,o)}}},function(r,e,o){"use strict";function n(r,e){this.impl=r(e,this),this.options=e,function(r){for(var e=function(r){return function(){var e=Array.prototype.slice.call(arguments,0);if(this.impl[r])return this.impl[r].apply(this.impl,e)}},o="log,debug,info,warn,warning,error,critical,global,configure,handleUncaughtException,handleAnonymousErrors,handleUnhandledRejection,_createItem,wrap,loadFull,shimId,captureEvent,captureDomContentLoaded,captureLoad".split(","),n=0;n<o.length;n++)r[o[n]]=e(o[n])}(n.prototype)}n.prototype._swapAndProcessMessages=function(r,e){var o,n,t;for(this.impl=r(this.options);o=e.shift();)n=o.method,t=o.args,this[n]&&"function"==typeof this[n]&&("captureDomContentLoaded"===n||"captureLoad"===n?this[n].apply(this,[t[0],o.ts]):this[n].apply(this,t));return this},r.exports=n},function(r,e,o){"use strict";r.exports=function(r){return function(e){if(!e&&!window._rollbarInitialized){for(var o,n,t=(r=r||{}).globalAlias||"Rollbar",a=window.rollbar,l=function(r){return new a(r)},i=0;o=window._rollbarShims[i++];)n||(n=o.handler),o.handler._swapAndProcessMessages(l,o.messages);window[t]=n,window._rollbarInitialized=!0}}}}]);
+  </script>
+
+  </body>
+</html>
