@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://crf0fypg7rf6a"]
+
+[ext_resource type="Script" uid="uid://2hxj0xeomf4c" path="res://src/Scripts/Maps/monster_spawn_area.gd" id="1_qimpl"]
+
+[node name="MonsterSpawnArea" type="Area2D"]
+monitoring = false
+monitorable = false
+script = ExtResource("1_qimpl")

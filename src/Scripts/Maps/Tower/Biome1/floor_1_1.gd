@@ -4,10 +4,12 @@ class_name Floor1 extends Map
 @onready var guide_log: Label = $GuideLog
 
 var player_in_range : bool = false
+@onready var monster_spawn_area: MonsterSpawnArea = $MonsterSpawnArea
 
 func _ready() -> void:
 	super()
 	hud.animation_player.play("CloseIn")
+	SignalBus.spawn_enemies.emit()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

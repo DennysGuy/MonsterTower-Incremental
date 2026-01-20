@@ -38,6 +38,7 @@ window/stretch/mode="canvas_items"
 
 ToolTips="describe currently looked at tech node"
 Player=""
+Enemy=""
 
 [input]
 
