@@ -59,7 +59,9 @@ func start_invincibility() -> void:
 	blink_effect()
 
 func blink_effect() -> void:
-	
+	if not is_inside_tree():
+		return 
+		
 	var invincibility_duration : float = 3.0
 	var blink_current_time : float = 0.0
 	var blink_wait_time : float = 0.1
