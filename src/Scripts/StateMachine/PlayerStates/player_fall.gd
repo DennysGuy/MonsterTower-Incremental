@@ -26,10 +26,11 @@ func process_physics(_delta: float) -> State:
 	parent.velocity.x = movement
 	parent.move_and_slide()
 	
-	if Input.is_action_pressed("pan_cam_up") and parent.in_ladder_area and parent.global_position.y <= parent.stored_ladder.ladder_bottom_position:
+	if Input.is_action_pressed("pan_cam_up") and parent.in_ladder_area and parent.global_position.y <= parent.stored_ladder.ladder_bottom_position and parent.global_position.y > parent.stored_ladder.ladder_top_position:
 		return climb_state
 	
 	if parent.is_on_floor():
+		parent.set_collision_mask_value(5, true)
 		if Input.is_action_pressed("jump"):
 			return jump_state
 		else:

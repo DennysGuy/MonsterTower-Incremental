@@ -18,3 +18,5 @@ signal update_sword_texture(animation_name : String)
 signal spawn_enemies
 @warning_ignore("unused_signal")
 signal spawn_resources
+@warning_ignore("unused_signal")
+signal move_to_next_room

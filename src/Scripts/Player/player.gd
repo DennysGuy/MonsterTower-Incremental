@@ -9,6 +9,8 @@ class_name Player extends Entity
 @onready var invincibility_timer: Timer = $InvincibilityTimer
 @onready var coin_purse: Marker2D = $CoinPurse
 
+@onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
+
 var stored_ladder : LadderArea
 var stored_enemy : Enemy
 var stored_ore_rock : OreRock
@@ -112,3 +114,8 @@ func attack_ore_rock() -> void:
 
 func clear_effect_texture() -> void:
 	effect.texture = null
+
+func pass_through_floor() -> void:
+	set_collision_mask_value(5, false)
+	await get_tree().create_timer(0.15).timeout
+	set_collision_mask_value(5, true)

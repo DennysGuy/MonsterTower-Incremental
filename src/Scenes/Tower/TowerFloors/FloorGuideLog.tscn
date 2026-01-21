@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://cexhahnue1wh6"]
+
+[ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="1_dbv6e"]
+
+[node name="GuideLog" type="Label"]
+visible = false
+offset_left = 117.0
+offset_top = 881.0
+offset_right = 270.0
+offset_bottom = 896.0
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("1_dbv6e")
+theme_override_font_sizes/font_size = 12
+text = "Press E to end Expedition!"

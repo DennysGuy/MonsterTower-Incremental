@@ -7,7 +7,6 @@ class_name PlayerHUD extends CanvasLayer
 @onready var hp_label: Label = $PlayerHUD/HPLabel
 @export var map_name_label: Label
 @onready var bag_animation_player: AnimationPlayer = $BagAnimationPlayer
-
 var bag_showing : bool = false
 var map_name : String = ""
 
