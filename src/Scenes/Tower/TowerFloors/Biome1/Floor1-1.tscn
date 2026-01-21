@@ -1051,7 +1051,6 @@ script = ExtResource("1_u3nwm")
 map_name = "Floor 1-1"
 map_id = 1
 spawn_point = NodePath("PlayerSpawnPoint")
-player_spawn = null
 camera = NodePath("PlayerCamera")
 hud = NodePath("HUD")
 ore_rock_spawn_rate = 0.65
@@ -1108,8 +1107,6 @@ limit_bottom = 1007
 [node name="PlayerSpawnPoint" type="Marker2D" parent="."]
 position = Vector2(216, 960)
 
-[node name="HUD" parent="." instance=ExtResource("4_aah8w")]
-
 [node name="OreRockMarkers" type="Node" parent="."]
 
 [node name="OreRockMarker" parent="OreRockMarkers" node_paths=PackedStringArray("spawn_parent") instance=ExtResource("5_kpd6k")]
@@ -1149,6 +1146,8 @@ position = Vector2(467, 529)
 ore_rock_resource = ExtResource("8_yx3jr")
 ore_rock = ExtResource("7_yx3jr")
 spawn_parent = NodePath("../..")
+
+[node name="HUD" parent="." instance=ExtResource("4_aah8w")]
 
 [node name="LadderArea" parent="." node_paths=PackedStringArray("ladder_top", "ladder_bottom") instance=ExtResource("5_c1fqw")]
 position = Vector2(479, 899)
@@ -1294,5 +1293,3 @@ position = Vector2(201, 81)
 
 [connection signal="body_entered" from="TowerExitArea" to="." method="_on_tower_exit_area_body_entered"]
 [connection signal="body_exited" from="TowerExitArea" to="." method="_on_tower_exit_area_body_exited"]
-
-[editable path="HUD"]

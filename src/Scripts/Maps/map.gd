@@ -20,6 +20,7 @@ var player : Player
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	SignalBus.move_to_next_room.connect(move_to_next_room)
+	SignalBus.return_to_starshire.connect(go_to_starshire)
 	hud.map_name_label.text = map_name
 	if player_spawn:
 		spawn_player()
@@ -44,6 +45,7 @@ func spawn_player() -> void:
 
 
 func go_to_starshire() -> void:
+	GameManager.expedition_timer_started = false
 	hud.animation_player.play("CloseOut")
 	await get_tree().create_timer(1.0).timeout
 	get_tree().change_scene_to_file("res://src/Scenes/UI/ExpeditionResultsScreen.tscn")

@@ -20,3 +20,6 @@ signal spawn_enemies
 signal spawn_resources
 @warning_ignore("unused_signal")
 signal move_to_next_room
+
+@warning_ignore("unused_signal")
+signal return_to_starshire

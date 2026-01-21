@@ -10,7 +10,7 @@ class_name PlayerHUD extends CanvasLayer
 var bag_showing : bool = false
 var map_name : String = ""
 
-@export var expedition_timer: ExpeditionTimer
+@export var expedition_timer: ExpeditionTimerLocal
 
 
 # Called when the node enters the scene tree for the first time.
@@ -48,3 +48,5 @@ func show_bag() -> void:
 
 func start_expedition_timer() -> void:
 	expedition_timer.show()
+	if !GameManager.expedition_timer_started:
+		ExpeditionTimer.start_timer()
