@@ -11,6 +11,10 @@ class_name Map extends Node2D
 
 @export var next_room_path : String
 
+enum MAP_TYPE {HUB, FLOOR, CHECKPOINT_FLOOR}
+
+@export var map_type : MAP_TYPE = MAP_TYPE.HUB
+
 var player : Player
 
 # Called when the node enters the scene tree for the first time.
@@ -22,8 +26,11 @@ func _ready() -> void:
 	
 		if camera:
 			camera.player = player
-	
-
+		
+		match map_type:
+			MAP_TYPE.FLOOR:
+				hud.start_expedition_timer()
+			
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
