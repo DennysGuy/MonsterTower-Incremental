@@ -68,3 +68,21 @@ func drop_ore_rock() -> void:
 		item_interactable.icon.texture = ore_rock_stats.output_item.drop_icon
 		item_interactable.global_position = self.global_position
 		get_parent().add_child(item_interactable)
+
+
+func _on_ore_rock_area_area_entered(area: Area2D) -> void:
+	if area.get_parent() is Player:
+		if PlayerStats.facilities_unlocked["Refinery Station"]:
+			directions.text = "Press/Hold 'F' to Mine!"
+			area.get_parent().stored_ore_rock = self
+		else:
+			directions.text = "Unlock the Refinery to Mine!"
+	
+	directions.show()
+
+
+func _on_ore_rock_area_area_exited(area: Area2D) -> void:
+	if area.get_parent() is Player: 
+		if PlayerStats.facilities_unlocked["Refinery Station"]:
+			area.get_parent().stored_ore_rock = null
+		directions.hide()

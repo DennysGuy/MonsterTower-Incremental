@@ -9,6 +9,9 @@ class_name Player extends Entity
 @onready var invincibility_timer: Timer = $InvincibilityTimer
 @onready var coin_purse: Marker2D = $CoinPurse
 
+@onready var mining_area: Area2D = $MiningArea
+
+
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 
 var stored_ladder : LadderArea
@@ -18,11 +21,14 @@ var in_ladder_area : bool = false
 var is_climbing : bool = false
 var prev_input : int
 
+var mining_area_position : Vector2
+
 func _ready() -> void:
 	super()
 	SignalBus.update_sword_texture.connect(set_sword_texture)
 	health = PlayerStats.player_stats["Max Health"]
-
+	mining_area_position = mining_area.position
+	
 func _process(delta: float) -> void:
 	super(delta)
 
@@ -41,7 +47,13 @@ func set_pickaxe_texture() -> void:
 func flip_textures(flip : bool) -> void:
 	for cur_sprite in sprites.get_children():
 		cur_sprite.flip_h = flip
-
+	
+	if flip:
+		mining_area.position = Vector2(-mining_area_position.x, mining_area_position.y)
+	else:
+		mining_area.position = mining_area_position
+	
+	
 func start_invincibility() -> void:
 	damageable = false
 	blink_effect()
