@@ -22,7 +22,6 @@ var player_in_crafting_range : bool = false
 @onready var temp_cooking_range: CookingRangeGraphic = $TempCookingRange
 @onready var temp_smelting_station: SmeltingStationGraphic = $TempSmeltingStation
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super()
@@ -87,7 +86,6 @@ func go_to_test_floor() -> void:
 	await get_tree().create_timer(1.0).timeout
 	get_tree().change_scene_to_file("res://src/Scenes/Tower/TowerFloors/Biome1/Floor1-1.tscn")
 
-
 func spawn_grand_market() -> void:
 	var market : GrandMarketMenu = preload("uid://cfuw5h0apwpq").instantiate()
 	control.add_child(market)
@@ -103,18 +101,15 @@ func spawn_smelting_menu() -> void:
 func spawn_crafting_menu() -> void:
 	var sword_crafting_station : CraftingStationMenu = preload("uid://cc1xppx3tkq4f").instantiate()
 	control.add_child(sword_crafting_station)
-
 func _on_grand_market_area_body_entered(body: Node2D) -> void:
 	if body is Player:
 		player_in_market_range = true
 		enter_market_label.show()
 
-
 func _on_grand_market_area_body_exited(body: Node2D) -> void:
 	if body is Player:
 		player_in_market_range = false
 		enter_market_label.hide()
-
 
 func _on_cooking_station_area_body_entered(body: Node2D) -> void:
 	if body is Player:
@@ -125,12 +120,10 @@ func _on_cooking_station_area_body_entered(body: Node2D) -> void:
 			access_crafting_station.text = "Press 'E' to access Cooking Range"
 		access_crafting_station.show()
 
-
 func _on_cooking_station_area_body_exited(body: Node2D) -> void:
 	if body is Player:
 		player_in_cooking_range = false
 		access_crafting_station.hide()
-
 
 func _on_smelting_station_area_body_entered(body: Node2D) -> void:
 	if body is Player:
@@ -141,24 +134,20 @@ func _on_smelting_station_area_body_entered(body: Node2D) -> void:
 			access_smelting_station.text = "Press 'E' to access Refinery"
 		access_smelting_station.show()
 
-
 func _on_smelting_station_area_body_exited(body: Node2D) -> void:
 	if body is Player:
 		player_in_smelting_range = false
 		access_smelting_station.hide()
-
 
 func _on_crafting_station_area_body_entered(body: Node2D) -> void:
 	if body is Player:
 		player_in_crafting_range = true
 		access_sword_crafting_station.show()
 
-
 func _on_crafting_station_area_body_exited(body: Node2D) -> void:
 		if body is Player:
 			player_in_crafting_range = false
 			access_sword_crafting_station.hide()
-
 
 func unlock_cooking_station() -> void:
 	camera.player = null
