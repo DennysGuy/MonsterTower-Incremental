@@ -60,10 +60,10 @@ position = Vector2(-18, 4)
 shape = SubResource("RectangleShape2D_lddpm")
 
 [node name="PressE" type="Label" parent="."]
-visible = false
+z_index = 4096
 offset_left = -27.0
 offset_top = -77.0
-offset_right = 121.0
+offset_right = 126.0
 offset_bottom = -63.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_k387v")

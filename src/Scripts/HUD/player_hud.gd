@@ -11,13 +11,14 @@ var bag_showing : bool = false
 var map_name : String = ""
 
 @export var expedition_timer: ExpeditionTimerLocal
-
+@onready var big_notification_label: Label = $PlayerHUD/BigNotificationLabel
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	SignalBus.update_player_health.connect(update_player_health)
 	SignalBus.spawn_respawn_box.connect(spawn_respawn_box)
-	
+	SignalBus.issue_big_notification.connect(issue_big_notification)
+	SignalBus.hide_big_notification.connect(hide_big_notification_label)
 	player_health_bar.max_value = PlayerStats.player_stats["Max Health"]
 	player_health_bar.value = player_health_bar.max_value
 	
@@ -50,3 +51,11 @@ func start_expedition_timer() -> void:
 	expedition_timer.show()
 	if !GameManager.expedition_timer_started:
 		ExpeditionTimer.start_timer()
+
+func issue_big_notification(message : String) -> void:
+	big_notification_label.text = message
+	big_notification_label.show()
+	
+func hide_big_notification_label() -> void:
+	big_notification_label.text = ""
+	big_notification_label.hide()

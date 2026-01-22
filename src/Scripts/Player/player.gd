@@ -66,7 +66,7 @@ func blink_effect() -> void:
 	var blink_current_time : float = 0.0
 	var blink_wait_time : float = 0.1
 	
-	while blink_current_time < invincibility_duration:
+	while blink_current_time < invincibility_duration and is_inside_tree():
 		set_textures_visibility(false)
 		await get_tree().create_timer(0.1).timeout
 		blink_current_time += blink_wait_time

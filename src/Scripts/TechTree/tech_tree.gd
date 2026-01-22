@@ -42,4 +42,12 @@ func _exit_tree() -> void:
 	GameManager.player_can_move = true
 
 func _on_close_button_down() -> void:
+	if PlayerStats.show_cooking_station_unlock_animation:
+		TechTreeManager.unlock_cooking_station.emit()
+		PlayerStats.show_cooking_station_unlock_animation = false
+	
+	if PlayerStats.show_refinery_station_unlock_animation:
+		TechTreeManager.unlock_refinery.emit()
+		PlayerStats.show_refinery_station_unlock_animation = false
+		
 	queue_free()

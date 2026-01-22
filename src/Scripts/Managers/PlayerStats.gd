@@ -45,6 +45,8 @@ const KNOCKBACK_FORCE : int = 300
 
 const MAX_SWORD_COUNT := 4
 
+var show_cooking_station_unlock_animation : bool = false
+var show_refinery_station_unlock_animation : bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -61,6 +63,12 @@ func get_sword(sword_index : int = 0) -> Sword:
 			return preload("uid://do5v83xsd4n70") #Steel Sword
 		_:
 			return preload("uid://di3xaosm85tjx")#"Wooden Sword"
+			
+func can_craft_next_sword() -> bool:
+	var next_sword : Sword = get_sword(int(player_stats["Equipped Sword"])+1)
+	var craft_amount : int = InventoryManager.calculate_quantity(next_sword.recipe)
+	
+	return craft_amount >= 1
 
 func get_pickaxe_name() -> String:
 	match player_stats["Equipped Pickaxe"]:
@@ -82,9 +90,9 @@ func upgrade_player_stat(stat_name : String, interval : float, node_type : TechT
 		print("stat name: %s is unclocked : %s" % [stat_name, facilities_unlocked[stat_name]])
 		
 		if stat_name == "Cooking Station":
-			SignalBus.unlock_cooking_station.emit()
+			show_cooking_station_unlock_animation = true
 		elif stat_name == "Refinery Station":
-			SignalBus.unlock_refinery.emit()
+			show_refinery_station_unlock_animation = true
 		#we'll need a way to figure out how to iniate a cutscene showing unlock sequence
 		return
 	

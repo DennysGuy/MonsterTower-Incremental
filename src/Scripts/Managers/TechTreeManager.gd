@@ -22,6 +22,12 @@ signal update_tool_tip_info(total_bonus : float)
 @warning_ignore("unused_signal")
 signal update_player_stats
 
+@warning_ignore("unused_signal")
+signal unlock_cooking_station
+
+@warning_ignore("unused_signal")
+signal unlock_refinery
+
 var currency : int = 0
 var current_prestige : int = 0
 

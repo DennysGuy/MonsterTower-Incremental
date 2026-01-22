@@ -1262,8 +1262,8 @@ shape = SubResource("RectangleShape2D_gib5v")
 
 [node name="MonsterSpawnArea2" parent="." node_paths=PackedStringArray("spawn_root", "area_collision_shape") instance=ExtResource("9_gib5v")]
 position = Vector2(308, 606)
-min_spawn = 3
-max_spawn = 4
+min_spawn = 2
+max_spawn = 3
 spawn_root = NodePath("..")
 monster_list = Dictionary[PackedScene, int]({
 ExtResource("6_ko10l"): 100
@@ -1277,7 +1277,7 @@ shape = SubResource("RectangleShape2D_0rtsh")
 [node name="MonsterSpawnArea3" parent="." node_paths=PackedStringArray("spawn_root", "area_collision_shape") instance=ExtResource("9_gib5v")]
 position = Vector2(308, 253)
 min_spawn = 3
-max_spawn = 5
+max_spawn = 4
 spawn_root = NodePath("..")
 monster_list = Dictionary[PackedScene, int]({
 ExtResource("6_ko10l"): 100
