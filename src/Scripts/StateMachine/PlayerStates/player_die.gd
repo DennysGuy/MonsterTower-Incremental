@@ -2,6 +2,7 @@ class_name PlayerDieState extends State
 
 
 func enter() -> void:
+	GameManager.expedition_timer_started = false
 	parent.damageable = false
 	parent.clear_sprites()
 	spawn_ghost()

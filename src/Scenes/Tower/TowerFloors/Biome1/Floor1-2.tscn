@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://bla5rhusv2jn5"]
+[gd_scene load_steps=28 format=4 uid="uid://bla5rhusv2jn5"]
 
 [ext_resource type="Script" uid="uid://bgfo5a5l7ay1t" path="res://src/Scripts/Maps/Tower/Biome1/floor_1_2.gd" id="1_1pghk"]
 [ext_resource type="TileSet" uid="uid://cuil6pmpg4xf1" path="res://src/Scenes/Tower/TowerFloors/Biome1/Biome1-Floor.tres" id="2_27fnx"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://cr6q5dxlkks" path="res://src/Scenes/Tower/LadderArea.tscn" id="12_61350"]
 [ext_resource type="PackedScene" uid="uid://crf0fypg7rf6a" path="res://src/Scenes/MonsterSpawnArea.tscn" id="13_jxry2"]
 [ext_resource type="PackedScene" uid="uid://bethw5tnlxnnt" path="res://src/Scenes/Actors/Enemies/CorruptedMushie/CorruptedMushie.tscn" id="14_gi03k"]
+[ext_resource type="PackedScene" uid="uid://b0enmfcqe1mex" path="res://src/Scenes/Actors/Enemies/Batclopse/Batclopse.tscn" id="19_n7xsw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6ds7u"]
 texture = ExtResource("2_aukmg")
@@ -729,8 +730,8 @@ shape = SubResource("RectangleShape2D_qrx52")
 
 [node name="MonsterSpawnArea2" parent="." node_paths=PackedStringArray("spawn_root", "area_collision_shape") instance=ExtResource("13_jxry2")]
 position = Vector2(320, 1088)
-min_spawn = 5
-max_spawn = 7
+min_spawn = 4
+max_spawn = 6
 spawn_root = NodePath("..")
 monster_list = Dictionary[PackedScene, int]({
 ExtResource("14_gi03k"): 100
@@ -738,6 +739,21 @@ ExtResource("14_gi03k"): 100
 area_collision_shape = NodePath("CollisionShape2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MonsterSpawnArea2"]
+position = Vector2(1.5, 0)
+shape = SubResource("RectangleShape2D_n7xsw")
+
+[node name="MonsterSpawnArea3" parent="." node_paths=PackedStringArray("spawn_root", "area_collision_shape") instance=ExtResource("13_jxry2")]
+position = Vector2(320, 655)
+min_spawn = 4
+max_spawn = 6
+spawn_root = NodePath("..")
+monster_list = Dictionary[PackedScene, int]({
+ExtResource("14_gi03k"): 60,
+ExtResource("19_n7xsw"): 40
+})
+area_collision_shape = NodePath("CollisionShape2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MonsterSpawnArea3"]
 position = Vector2(1.5, 0)
 shape = SubResource("RectangleShape2D_n7xsw")
 

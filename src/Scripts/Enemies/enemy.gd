@@ -10,8 +10,6 @@ class_name Enemy extends Entity
 @export var wall_detector : RayCast2D
 @export var ground_detector : RayCast2D
 
-
-
 func _ready() -> void:
 	super()
 	health = enemy_stats.max_health
@@ -23,7 +21,6 @@ func _ready() -> void:
 		health_bar.max_value = health
 		health_bar.value = health
 		
-
 func _process(delta: float) -> void:
 	super(delta)
 	if player == null:
@@ -34,16 +31,13 @@ func _process(delta: float) -> void:
 func update_health_bar() -> void:
 	health_bar.value = health
 
-
 func start_fadeout() -> void:
 	await get_tree().create_timer(1.0).timeout
 	blink_effect()
 
-
 func player_is_dead():
 	if player:
 		player.is_dead = true
-
 
 func apply_direction(new_dir: int) -> void:
 	ground_detector.position.x = abs(ground_detector.position.x) * new_dir
