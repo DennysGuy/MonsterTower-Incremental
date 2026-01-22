@@ -24,8 +24,13 @@ func process_input(_event: InputEvent) -> State:
 			return swing_pick_axe_state
 		return attack_1_state
 
+	if Input.is_action_pressed("pan_cam_down") and Input.is_action_just_pressed("add_currency"):
+		parent.pass_through_floor()
+		return fall_state
+	
 	if _event.is_action_pressed("add_currency"):
 		return jump_state
+	
 
 	return null
 

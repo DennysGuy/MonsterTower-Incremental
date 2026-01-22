@@ -24,7 +24,6 @@
 [ext_resource type="PackedScene" uid="uid://bg1ya0qiin47q" path="res://src/Scenes/Actors/Utilities/HurtBox.tscn" id="17_45oew"]
 [ext_resource type="Texture2D" uid="uid://sgtkxjunvmnq" path="res://Assets/PlayerGraphics/TempPlayer/PickaxeSwing.png" id="20_5so87"]
 [ext_resource type="Texture2D" uid="uid://clgyjtsgxrepg" path="res://Assets/PlayerGraphics/TempPlayer/Pickaxes/PickaxeSwing_Effect.png" id="21_1twwa"]
-[ext_resource type="Texture2D" uid="uid://c1dxfmrpwv7a4" path="res://Assets/PlayerGraphics/TempPlayer/Pickaxes/PickaxeSwing_StonePickaxe.png" id="22_yawj3"]
 
 [sub_resource type="Animation" id="Animation_45oew"]
 resource_name = "Climb"
@@ -531,7 +530,7 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id="Animation_dwhqw"]
 resource_name = "SwordSwing1"
-length = 0.45
+length = 0.7
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -646,7 +645,7 @@ tracks/8/keys = {
 
 [sub_resource type="Animation" id="Animation_hrnox"]
 resource_name = "SwordSwing2"
-length = 0.45
+length = 0.7
 loop_mode = 1
 step = 0.05
 tracks/0/type = "value"
@@ -762,7 +761,7 @@ tracks/8/keys = {
 
 [sub_resource type="Animation" id="Animation_susmm"]
 resource_name = "SwordSwing3"
-length = 0.45
+length = 0.7
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -900,7 +899,10 @@ size = Vector2(33, 46)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hrnox"]
 size = Vector2(20, 46)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5so87"]
+
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("state_machine", "animation_player", "health_component", "sprite", "hurt_box", "hit_box", "hit_state", "dead_state") groups=["Player"]]
+z_index = 4000
 collision_layer = 17
 collision_mask = 17
 script = ExtResource("1_gw3a7")
@@ -959,21 +961,21 @@ script = ExtResource("7_j38pk")
 attack2_state = NodePath("../Attack2")
 idle_state = NodePath("../Idle")
 animation_name = "SwordSwing1"
-animation_duration = 0.45
+animation_duration = 0.6
 
 [node name="Attack2" type="Node" parent="StateMachine" node_paths=PackedStringArray("attack3_state", "idle_state")]
 script = ExtResource("8_k1vse")
 attack3_state = NodePath("../Attack3")
 idle_state = NodePath("../Idle")
 animation_name = "SwordSwing2"
-animation_duration = 0.45
+animation_duration = 0.6
 
 [node name="Attack3" type="Node" parent="StateMachine" node_paths=PackedStringArray("attack1_state", "idle_state")]
 script = ExtResource("9_er68u")
 attack1_state = NodePath("../Attack1")
 idle_state = NodePath("../Idle")
 animation_name = "SwordSwing3"
-animation_duration = 0.45
+animation_duration = 0.6
 
 [node name="Hit" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state")]
 script = ExtResource("11_susmm")
@@ -1018,7 +1020,6 @@ libraries = {
 
 [node name="Sword" type="Sprite2D" parent="Sprites"]
 position = Vector2(0, -37)
-texture = ExtResource("22_yawj3")
 hframes = 15
 
 [node name="PlayerSprite" type="Sprite2D" parent="Sprites"]
@@ -1057,8 +1058,16 @@ collision_mask = 8
 position = Vector2(0, -13)
 shape = SubResource("RectangleShape2D_hrnox")
 
+[node name="MiningArea" type="Area2D" parent="."]
+position = Vector2(19, -10)
+collision_layer = 256
+collision_mask = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MiningArea"]
+shape = SubResource("RectangleShape2D_5so87")
+
 [node name="CoinPurse" type="Marker2D" parent="."]
-position = Vector2(-2, -38)
+position = Vector2(-2, -48)
 
 [connection signal="area_entered" from="LadderDetector" to="." method="_on_ladder_detector_area_entered"]
 [connection signal="area_exited" from="LadderDetector" to="." method="_on_ladder_detector_area_exited"]

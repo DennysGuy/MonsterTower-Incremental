@@ -30,7 +30,9 @@ const KNOCKBACK_FORCE : int = 300
 	"Max Bank Stack":6,
 	"Cooking Speed": 0.1,
 	"Smelting Speed": 0.1,
-	"Mining Damage": 5
+	"Mining Damage": 5,
+	"Monster Cap Bonus": 0,
+	"Expedition Time": 30.0
 }
 
 @onready var facilities_unlocked : Dictionary[String, bool] = {

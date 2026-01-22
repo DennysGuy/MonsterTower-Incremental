@@ -25,6 +25,7 @@ SwordGraphics="*res://src/Scripts/Managers/SwordGraphics.gd"
 HitStopManager="*res://src/Scripts/Managers/HitStopManager.gd"
 InventoryManager="*res://src/Scripts/Managers/InventoryManager.gd"
 CookingManager="*res://src/Scripts/Managers/CookingManager.gd"
+ExpeditionTimer="*res://src/Scripts/HUD/expedition_timer.gd"
 
 [display]
 
@@ -38,6 +39,7 @@ window/stretch/mode="canvas_items"
 
 ToolTips="describe currently looked at tech node"
 Player=""
+Enemy=""
 
 [input]
 
@@ -91,6 +93,7 @@ open_bag={
 
 2d_physics/layer_4="Ladder Areas"
 2d_physics/layer_7="Enemies"
+2d_physics/layer_9="OreRock"
 
 [rendering]
 

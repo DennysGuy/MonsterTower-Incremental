@@ -1,0 +1,139 @@
+[gd_scene load_steps=11 format=3 uid="uid://c11hg5ijdrjjs"]
+
+[ext_resource type="Texture2D" uid="uid://sm0sjtn0eenp" path="res://Assets/Tower/FloorElevator/FloorElevator_Base.png" id="1_cctbe"]
+[ext_resource type="Script" uid="uid://3hxdumxyuob1" path="res://src/Scripts/Tower/exit_elevator_1.gd" id="1_lw48p"]
+[ext_resource type="Texture2D" uid="uid://uvbw72m7upwd" path="res://Assets/Tower/FloorElevator/FloorElevator_LeftDoor.png" id="2_lw48p"]
+[ext_resource type="Texture2D" uid="uid://bx0n6ew6yeyjs" path="res://Assets/Tower/FloorElevator/FloorElevator_RightDoor.png" id="3_4on78"]
+[ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="5_4on78"]
+
+[sub_resource type="Animation" id="Animation_4on78"]
+resource_name = "DoorsOpen"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-22, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../RightDoor:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(22, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_micwh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../RightDoor:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_d23mi"]
+resource_name = "DoorsClose"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-22, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../RightDoor:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(22, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8fvq5"]
+_data = {
+&"DoorsClose": SubResource("Animation_d23mi"),
+&"DoorsOpen": SubResource("Animation_4on78"),
+&"RESET": SubResource("Animation_micwh")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lw48p"]
+size = Vector2(185, 88)
+
+[node name="ExitElevator" type="Node2D"]
+script = ExtResource("1_lw48p")
+
+[node name="Base" type="Sprite2D" parent="."]
+texture = ExtResource("1_cctbe")
+
+[node name="LeftDoor" type="Sprite2D" parent="."]
+texture = ExtResource("2_lw48p")
+
+[node name="RightDoor" type="Sprite2D" parent="."]
+texture = ExtResource("3_4on78")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../LeftDoor")
+libraries = {
+&"": SubResource("AnimationLibrary_8fvq5")
+}
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, 71)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(4.5, -54)
+shape = SubResource("RectangleShape2D_lw48p")
+
+[node name="MoveToNextRoomLabel" type="Label" parent="."]
+visible = false
+offset_left = -78.0
+offset_top = -53.0
+offset_right = 80.0
+offset_bottom = -30.0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("5_4on78")
+theme_override_font_sizes/font_size = 12
+text = "Press 'E' to go to Next Floor"
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

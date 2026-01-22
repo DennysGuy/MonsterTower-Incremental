@@ -24,7 +24,8 @@ func go_to_starshire() -> void:
 	get_tree().change_scene_to_file("res://src/Scenes/NewStarshire/NewStarShire.tscn")
 
 func go_to_tower() -> void:
-	get_tree().change_scene_to_file("res://src/Scenes/Tower/TowerFloors/TestFloor/TestFloor.tscn")
+	#Need to store the previous map we went to - or give them a way to select location
+	get_tree().change_scene_to_file("res://src/Scenes/Tower/TowerFloors/Biome1/Floor1-1.tscn")
 
 func _on_to_town_button_up() -> void:
 	animation_player.play("CloseIn_Town")

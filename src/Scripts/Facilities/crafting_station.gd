@@ -86,7 +86,8 @@ func _on_exit_button_up() -> void:
 	get_parent().queue_free()
 
 func _on_start_crafting_button_up() -> void:
-	state_machine.change_state(crafting_state)
+	if !is_crafting:
+		state_machine.change_state(crafting_state)
 
 func _on_stop_crafting_button_up() -> void:
 	state_machine.change_state(idle_state)

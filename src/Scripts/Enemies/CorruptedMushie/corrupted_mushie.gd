@@ -8,10 +8,9 @@ var can_chase : bool = false
 
 func _ready() -> void:
 	super()
-
+	
 func _on_health_component_update_health_bar() -> void:
 	update_health_bar()
-
 
 func _on_hit_box_area_entered(area: Area2D) -> void:
 	var area_parent = area.get_parent()

@@ -14,3 +14,12 @@ signal unlock_refinery
 signal unlock_cooking_station
 @warning_ignore("unused_signal")
 signal update_sword_texture(animation_name : String)
+@warning_ignore("unused_signal")
+signal spawn_enemies
+@warning_ignore("unused_signal")
+signal spawn_resources
+@warning_ignore("unused_signal")
+signal move_to_next_room
+
+@warning_ignore("unused_signal")
+signal return_to_starshire

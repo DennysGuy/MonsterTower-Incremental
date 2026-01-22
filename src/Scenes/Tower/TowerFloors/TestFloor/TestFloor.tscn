@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://cph2krit7yk0t"]
+[gd_scene load_steps=26 format=4 uid="uid://cph2krit7yk0t"]
 
 [ext_resource type="Script" uid="uid://c8p4pei6shyik" path="res://src/Scripts/Maps/test_floor.gd" id="1_a3s6d"]
 [ext_resource type="TileSet" uid="uid://74oc55cdwefk" path="res://src/Scenes/NewStarshire/TempFloorTiles.tres" id="1_tc7oi"]
@@ -16,6 +16,7 @@
 [ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="11_orspa"]
 [ext_resource type="PackedScene" uid="uid://cepv6hcj1jotc" path="res://src/Scenes/Tower/TowerFloors/TowerExitArea.tscn" id="11_vnc44"]
 [ext_resource type="Resource" uid="uid://dxfrcyw0rux0q" path="res://src/Resources/OreRock/TinOreRock.tres" id="16_spv67"]
+[ext_resource type="PackedScene" uid="uid://b0enmfcqe1mex" path="res://src/Scenes/Actors/Enemies/Batclopse/Batclopse.tscn" id="17_eb55d"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vss50"]
 texture = ExtResource("5_oxyxm")
@@ -808,7 +809,6 @@ position = Vector2(1, 118)
 position = Vector2(98, 926)
 
 [node name="GuideLog" type="Label" parent="."]
-visible = false
 offset_left = 69.0
 offset_top = 882.0
 offset_right = 222.0
@@ -825,9 +825,6 @@ position = Vector2(99, 931)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TowerExitArea"]
 position = Vector2(22.5, -1.5)
 shape = SubResource("RectangleShape2D_orspa")
-
-[node name="CorruptedMushie" parent="." instance=ExtResource("6_a3s6d")]
-position = Vector2(478, 960)
 
 [node name="CorruptedMushie2" parent="." instance=ExtResource("6_a3s6d")]
 position = Vector2(352, 704)
@@ -863,6 +860,9 @@ ore_rock_stats = ExtResource("8_drgox")
 [node name="OreRock2" parent="." instance=ExtResource("7_vss50")]
 position = Vector2(544, 832)
 ore_rock_stats = ExtResource("16_spv67")
+
+[node name="Batclopse" parent="." instance=ExtResource("17_eb55d")]
+position = Vector2(461, 959)
 
 [connection signal="body_entered" from="TowerExitArea" to="." method="_on_tower_exit_area_body_entered"]
 [connection signal="body_exited" from="TowerExitArea" to="." method="_on_tower_exit_area_body_exited"]

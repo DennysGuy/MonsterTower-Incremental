@@ -1,0 +1,20 @@
+class_name ExpeditionTimerLocal extends Control
+
+@onready var timer_label: RichTextLabel = $TimerLabel
+
+func _ready() -> void:
+	pass
+
+func _process(delta: float) -> void:
+	pass
+
+func _physics_process(delta: float) -> void:
+	if GameManager.expedition_timer_started:
+		update_timer_label()
+
+func update_timer_label() -> void:
+	if ExpeditionTimer.seconds <= 10:
+		timer_label.text = "[color=red][font_size=30]%s[/font_size][/color]" % [int(ExpeditionTimer.seconds)]
+		#we'll add play a sfx here and probably any tweens to add effects "pulse" or whatever
+	else:
+		timer_label.text = "[font_size=30]%s[/font_size]" % [int(ExpeditionTimer.seconds)]

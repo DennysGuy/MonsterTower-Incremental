@@ -120,6 +120,7 @@ _data = {
 }
 
 [node name="ItemInteractable" type="Node2D" node_paths=PackedStringArray("icon")]
+z_index = 4096
 script = ExtResource("1_7i62p")
 icon = NodePath("Icon")
 

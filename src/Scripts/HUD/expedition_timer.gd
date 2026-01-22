@@ -1,0 +1,28 @@
+extends Control
+
+@onready var timer_label: RichTextLabel = $TimerLabel
+
+var seconds : float = 0.0
+var milliseconds : float = 0.0
+
+func _ready() -> void:
+	pass
+
+func _process(delta: float) -> void:
+	pass
+
+func _physics_process(delta: float) -> void:
+	if GameManager.expedition_timer_started:
+		milliseconds -= delta
+		if milliseconds <= 0.0:
+			seconds -= 1
+			milliseconds = 0.99
+			if seconds <= 0:
+				GameManager.expedition_timer_started = false
+				SignalBus.return_to_starshire.emit()
+		
+func start_timer() -> void:
+	seconds = PlayerStats.player_stats["Expedition Time"]
+	milliseconds = 0.99
+	GameManager.expedition_timer_started = true
+	

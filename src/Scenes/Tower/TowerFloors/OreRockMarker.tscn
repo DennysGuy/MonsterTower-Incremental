@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dj0ett15s3u5m"]
+
+[ext_resource type="Script" uid="uid://25f1gwo5iyxc" path="res://src/Scripts/Tower/ore_rock_marker.gd" id="1_i4ki0"]
+
+[node name="OreRockMarker" type="Marker2D"]
+script = ExtResource("1_i4ki0")

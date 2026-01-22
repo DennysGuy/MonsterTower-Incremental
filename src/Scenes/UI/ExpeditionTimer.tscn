@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://dngkcgpb2st7c"]
+
+[ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="1_gxrtp"]
+[ext_resource type="Script" uid="uid://dmp07jrdpile2" path="res://src/Scripts/HUD/expedition_timer_local.gd" id="1_w0iq6"]
+
+[node name="ExpeditionTimer" type="Control"]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -80.5
+offset_right = 80.5
+offset_bottom = 54.0
+grow_horizontal = 2
+script = ExtResource("1_w0iq6")
+
+[node name="TimerLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -57.5
+offset_top = -20.5
+offset_right = 57.5
+offset_bottom = 20.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = ExtResource("1_gxrtp")
+bbcode_enabled = true
+horizontal_alignment = 1

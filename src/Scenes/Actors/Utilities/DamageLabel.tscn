@@ -5,6 +5,7 @@
 [ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="3_lwc7n"]
 
 [node name="DamageLabel" type="Control" node_paths=PackedStringArray("label", "texture_rect")]
+z_index = 4096
 layout_mode = 3
 anchors_preset = 0
 offset_right = 29.0
