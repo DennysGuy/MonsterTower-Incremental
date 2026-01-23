@@ -78,4 +78,5 @@ func update_sword() -> void: #run this function when we upgrade the sword.
 
 func _on_close_button_up() -> void:
 	GameManager.player_can_move = true
+	SignalBus.check_can_sword_craft.emit()
 	queue_free()

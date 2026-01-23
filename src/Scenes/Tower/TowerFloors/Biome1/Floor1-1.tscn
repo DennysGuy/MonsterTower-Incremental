@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://bpob51vk7v2cj"]
+[gd_scene load_steps=34 format=4 uid="uid://bpob51vk7v2cj"]
 
 [ext_resource type="Script" uid="uid://bm3rscv8708vb" path="res://src/Scripts/Maps/Tower/Biome1/floor_1_1.gd" id="1_u3nwm"]
 [ext_resource type="Texture2D" uid="uid://bbmpr551mjb20" path="res://Assets/Tower/Biom1/Biome1SpriteSheet.png" id="2_hk0iw"]
@@ -13,7 +13,9 @@
 [ext_resource type="PackedScene" uid="uid://bethw5tnlxnnt" path="res://src/Scenes/Actors/Enemies/CorruptedMushie/CorruptedMushie.tscn" id="6_ko10l"]
 [ext_resource type="TileSet" uid="uid://flobhfna8te" path="res://src/Scenes/Tower/TowerFloors/Biome1/Biome1-Platforms.tres" id="6_om3xh"]
 [ext_resource type="PackedScene" uid="uid://crvhogk2bnq1s" path="res://src/Scenes/NewStarshire/TowerGuideSprite.tscn" id="7_0rtsh"]
+[ext_resource type="PackedScene" uid="uid://dgtobkubdjq27" path="res://src/Scenes/Actors/Enemies/ItemInteractable.tscn" id="7_ck022"]
 [ext_resource type="PackedScene" uid="uid://colj4ff1w8ij1" path="res://src/Scenes/Tower/OreRock.tscn" id="7_yx3jr"]
+[ext_resource type="Resource" uid="uid://jn2dh2fyq5ep" path="res://src/Resources/Actors/Enemies/Biome1/CorruptedMushie/FiberousMushieStalk.tres" id="8_68h8k"]
 [ext_resource type="Resource" uid="uid://svq41nllat54" path="res://src/Resources/OreRock/CopperOreRock.tres" id="8_yx3jr"]
 [ext_resource type="PackedScene" uid="uid://crf0fypg7rf6a" path="res://src/Scenes/MonsterSpawnArea.tscn" id="9_gib5v"]
 [ext_resource type="PackedScene" uid="uid://cepv6hcj1jotc" path="res://src/Scenes/Tower/TowerFloors/TowerExitArea.tscn" id="11_kpd6k"]
@@ -1096,6 +1098,22 @@ tile_set = ExtResource("6_om3xh")
 [node name="Ladders" type="TileMapLayer" parent="Node2D"]
 tile_map_data = PackedByteArray("AAAdADsAAAAXABQAAAAeADsAAAAYABQAAAAdADgAAAAXABEAAAAdADkAAAAXABIAAAAdADoAAAAXABMAAAAeADgAAAAYABEAAAAeADkAAAAYABIAAAAeADoAAAAYABMAAAAdADUAAAAXABAAAAAdADYAAAAXABIAAAAdADcAAAAXABMAAAAeADUAAAAYABAAAAAeADYAAAAYABIAAAAeADcAAAAYABMAAAAKACwAAAAXABEAAAAKAC0AAAAXABIAAAAKAC4AAAAXABQAAAALACwAAAAYABEAAAALAC0AAAAYABIAAAALAC4AAAAYABQAAAAKACkAAAAXABEAAAAKACoAAAAXABIAAAAKACsAAAAXABMAAAALACkAAAAYABEAAAALACoAAAAYABIAAAALACsAAAAYABMAAAAKACYAAAAXABAAAAAKACcAAAAXABIAAAAKACgAAAAXABMAAAALACYAAAAYABAAAAALACcAAAAYABIAAAALACgAAAAYABMAAAAPABAAAAAXABAAAAAQABAAAAAYABAAAAAPABEAAAAXABEAAAAPABIAAAAXABIAAAAPABMAAAAXABMAAAAPABQAAAAXABQAAAAQABEAAAAYABEAAAAQABIAAAAYABIAAAAQABMAAAAYABMAAAAQABQAAAAYABQAAAAXABAAAAAXABAAAAAYABAAAAAYABAAAAAXABEAAAAXABEAAAAXABIAAAAXABIAAAAXABMAAAAXABMAAAAYABEAAAAYABEAAAAYABIAAAAYABIAAAAYABMAAAAYABMAAAAXABQAAAAXABQAAAAYABQAAAAYABQAAAAdACYAAAAXABAAAAAeACYAAAAYABAAAAAdACcAAAAXABEAAAAdACgAAAAXABIAAAAdACkAAAAXABMAAAAeACcAAAAYABEAAAAeACgAAAAYABIAAAAeACkAAAAYABMAAAAdACoAAAAXABIAAAAdACsAAAAXABMAAAAeACoAAAAYABIAAAAeACsAAAAYABMAAAAdACwAAAAXABQAAAAeACwAAAAYABQAAAA=")
 tile_set = SubResource("TileSet_nfktc")
+
+[node name="ItemInteractable" parent="Node2D" instance=ExtResource("7_ck022")]
+position = Vector2(248, 928)
+item = ExtResource("8_68h8k")
+
+[node name="ItemInteractable2" parent="Node2D" instance=ExtResource("7_ck022")]
+position = Vector2(273, 937)
+item = ExtResource("8_68h8k")
+
+[node name="ItemInteractable3" parent="Node2D" instance=ExtResource("7_ck022")]
+position = Vector2(292, 919)
+item = ExtResource("8_68h8k")
+
+[node name="ItemInteractable4" parent="Node2D" instance=ExtResource("7_ck022")]
+position = Vector2(310, 939)
+item = ExtResource("8_68h8k")
 
 [node name="PlayerCamera" parent="." instance=ExtResource("3_aah8w")]
 position = Vector2(320, 829)

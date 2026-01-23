@@ -16,7 +16,6 @@ func _ready() -> void:
 	TechTreeManager.update_prestige_tier_label.connect(update_prestige_label)
 	TechTreeManager.update_prestige_tier_progress_label.connect(update_prestige_progress)
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	

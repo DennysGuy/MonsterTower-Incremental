@@ -63,6 +63,60 @@ tracks/1/keys = {
 "values": [Vector2(0, -362), Vector2(0, -185)]
 }
 
+[sub_resource type="Animation" id="Animation_hl0sk"]
+resource_name = "FadeInOut"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerHUD/Flash:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.40154293, 0.6008905, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerHUD/Flash:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_bsjhc"]
+resource_name = "Flash"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerHUD/Flash:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerHUD/Flash:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_nt012"]
 length = 0.001
 tracks/0/type = "value"
@@ -108,60 +162,6 @@ tracks/3/path = NodePath("PlayerHUD/Flash:color")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0, 0, 0, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_bsjhc"]
-resource_name = "Flash"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerHUD/Flash:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("PlayerHUD/Flash:color")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_hl0sk"]
-resource_name = "FadeInOut"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerHUD/Flash:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.40154293, 0.6008905, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("PlayerHUD/Flash:color")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -296,7 +296,6 @@ horizontal_alignment = 2
 layout_mode = 1
 
 [node name="TopBlackBar" type="ColorRect" parent="PlayerHUD"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -308,7 +307,6 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="BotBlackBar" type="ColorRect" parent="PlayerHUD"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

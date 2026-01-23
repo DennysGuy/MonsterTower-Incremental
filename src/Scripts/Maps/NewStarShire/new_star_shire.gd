@@ -17,6 +17,8 @@ var player_in_crafting_range : bool = false
 
 @onready var cooking_range_position: Node2D = $CookingRangePosition
 @onready var refinery_position: Node2D = $RefineryPosition
+
+@onready var smithing_station: SmithingStation = $SmithingStation
 @onready var sword_crafting_station_position: Node2D = $SwordCraftingStationPosition
 
 @onready var temp_cooking_range: CookingRangeGraphic = $TempCookingRange
@@ -26,6 +28,7 @@ var player_in_crafting_range : bool = false
 func _ready() -> void:
 	super()
 	SignalBus.spawn_tech_tree.connect(add_tech_tree_to_scene)
+	SignalBus.issue_can_craft_sword_scene.connect(new_sword_unlock_notice)
 	TechTreeManager.unlock_cooking_station.connect(unlock_cooking_station)
 	TechTreeManager.unlock_refinery.connect(unlock_refinery_station)
 	
@@ -198,6 +201,7 @@ func new_sword_unlock_notice() -> void:
 	GameManager.player_can_move = false
 	hud.animation_player.play("FadeInOut")
 	await get_tree().create_timer(0.5).timeout
+	smithing_station.notify_can_craft()
 	camera.position = sword_crafting_station_position.position
 	SignalBus.issue_big_notification.emit("A New Sword Can Be Unlocked!")
 	await get_tree().create_timer(3.5).timeout
