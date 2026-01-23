@@ -24,12 +24,14 @@ func _ready() -> void:
 	hud.map_name_label.text = map_name
 	if player_spawn:
 		spawn_player()
-	
+		
 		if camera:
 			camera.player = player
 		
-		match map_type:
-			MAP_TYPE.FLOOR:
+		if map_type == MAP_TYPE.CHECKPOINT_FLOOR:
+			PlayerStats.check_points_unlocked[map_name] = true
+		
+		if map_type ==	MAP_TYPE.FLOOR or map_type == MAP_TYPE.CHECKPOINT_FLOOR:
 				hud.start_expedition_timer()
 			
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -41,7 +43,7 @@ func spawn_player() -> void:
 	player = new_player
 	player.position = spawn_point.position
 	add_child(player)
-	print(player)
+	
 
 
 func go_to_starshire() -> void:

@@ -23,3 +23,18 @@ signal move_to_next_room
 
 @warning_ignore("unused_signal")
 signal return_to_starshire
+@warning_ignore("unused_signal")
+signal store_entrance_data(data : TowerEntranceData)
+
+
+@warning_ignore("unused_signal")
+signal issue_big_notification(notification : String)
+@warning_ignore("unused_signal")
+signal hide_big_notification
+@warning_ignore("unused_signal")
+signal check_can_sword_craft
+@warning_ignore("unused_signal")
+signal issue_can_craft_sword_scene
+
+@warning_ignore("unused_signal")
+signal play_close_out_animation

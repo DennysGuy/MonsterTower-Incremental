@@ -11,5 +11,5 @@ description = "Refine raw resources dropped from ore rocks"
 currency_required = 500
 node_type = 1
 stat_name = "Refinery Station"
-prereqs = Array[String](["Tower License:1"])
+prereqs = Array[String](["Cooking Station:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

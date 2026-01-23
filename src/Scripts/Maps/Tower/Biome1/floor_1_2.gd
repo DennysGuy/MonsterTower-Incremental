@@ -14,14 +14,13 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("interact") and player_in_exit_area:
+	if Input.is_action_just_pressed("interact") and player_in_exit_area and player.damageable:
 		go_to_starshire()
 
 func _on_tower_exit_area_body_entered(body: Node2D) -> void:
 	if body is Player:
 		player_in_exit_area = true
 		guide_log.show()
-
 
 func _on_tower_exit_area_body_exited(body: Node2D) -> void:
 	if body is Player:

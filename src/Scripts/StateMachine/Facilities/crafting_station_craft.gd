@@ -25,6 +25,8 @@ func enter() -> void:
 	#remove resources from inventory --> we can't get into here unless there is enough inventory space/resources
 	InventoryManager.remove_resources_from_inventory(parent.stored_recipe.recipe_list)
 	parent.populate_recipes_list(parent.selected_tier)
+	CookingManager.can_craft_dish.emit()
+	CookingManager.can_craft_bar.emit()
 	parent.update_inventories()
 	parent.crafting_progress_bar.max_value = parent.stored_recipe.crafting_time
 	parent.crafting_progress_bar.value = 0
@@ -55,6 +57,11 @@ func process_physics(_delta: float) -> State:
 		if num_check <= parent.stored_recipe.success_rate * 100:
 			if !InventoryManager.add_item("Inventory", parent.stored_recipe.output_item):
 				InventoryManager.add_item("Bank", parent.stored_recipe.output_item)
+			
+			if parent.station_type == parent.STATION_TYPE.SMELTING:
+				if PlayerStats.can_craft_next_sword():
+					parent.show_can_craft_next_sword_scene = true
+			
 			parent.failure_message.hide()
 		else:
 			parent.failure_message.show()

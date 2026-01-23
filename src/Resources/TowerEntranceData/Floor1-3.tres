@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="TowerEntranceData" load_steps=3 format=3 uid="uid://vibb3cg4b01g"]
+
+[ext_resource type="Script" uid="uid://cyho4aep1qxmu" path="res://src/Scripts/Maps/tower_entrance_data.gd" id="1_1hkmb"]
+[ext_resource type="Texture2D" uid="uid://dmw0muar17a6q" path="res://Assets/FloorPreviews/Floor1-3Preview.png" id="1_nxry3"]
+
+[resource]
+script = ExtResource("1_1hkmb")
+floor_name = "Floor 1-3"
+biome = "Mossy Dungeon"
+scene_path = "uid://b3m3f58qy47jb"
+preview_picture = ExtResource("1_nxry3")
+metadata/_custom_type_script = "uid://cyho4aep1qxmu"

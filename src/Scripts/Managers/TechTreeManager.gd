@@ -22,6 +22,12 @@ signal update_tool_tip_info(total_bonus : float)
 @warning_ignore("unused_signal")
 signal update_player_stats
 
+@warning_ignore("unused_signal")
+signal unlock_cooking_station
+
+@warning_ignore("unused_signal")
+signal unlock_refinery
+
 var currency : int = 0
 var current_prestige : int = 0
 
@@ -71,6 +77,7 @@ func increment_upgrade_count() -> void:
 	
 	if current_upgrade_count >= upgrade_count_to_prestige:
 		current_prestige += 1
+		PlayerStats.player_stats["Expedition Time"] += 30
 		upgrade_count_to_prestige += 25
 		update_prestige_tier_label.emit()
 		update_prestige_tier_progress_label.emit()

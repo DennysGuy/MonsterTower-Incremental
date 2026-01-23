@@ -16,12 +16,11 @@ func _ready() -> void:
 	TechTreeManager.update_prestige_tier_label.connect(update_prestige_label)
 	TechTreeManager.update_prestige_tier_progress_label.connect(update_prestige_progress)
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("add_currency"):
-		TechTreeManager.currency += 25
+		TechTreeManager.currency += 500
 		update_currency_label()
 
 func update_currency_label() -> void:
@@ -42,4 +41,12 @@ func _exit_tree() -> void:
 	GameManager.player_can_move = true
 
 func _on_close_button_down() -> void:
+	if PlayerStats.show_cooking_station_unlock_animation:
+		TechTreeManager.unlock_cooking_station.emit()
+		PlayerStats.show_cooking_station_unlock_animation = false
+	
+	if PlayerStats.show_refinery_station_unlock_animation:
+		TechTreeManager.unlock_refinery.emit()
+		PlayerStats.show_refinery_station_unlock_animation = false
+		
 	queue_free()

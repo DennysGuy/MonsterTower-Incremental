@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://oonjrpabmces"]
+[gd_scene load_steps=33 format=4 uid="uid://oonjrpabmces"]
 
 [ext_resource type="Script" uid="uid://dpqc54c34418w" path="res://src/Scripts/Maps/NewStarShire/new_star_shire.gd" id="1_gq00g"]
 [ext_resource type="TileSet" uid="uid://74oc55cdwefk" path="res://src/Scenes/NewStarshire/TempFloorTiles.tres" id="2_dvat3"]
@@ -18,9 +18,10 @@
 [ext_resource type="Texture2D" uid="uid://0l7t1v2v8yge" path="res://Assets/NPCs/FreeMarketNPCs/DripDealer_NoOutline.png" id="13_sxpgj"]
 [ext_resource type="Texture2D" uid="uid://5cetad7bhon0" path="res://Assets/Facilities/StorageArea.png" id="14_jp6xg"]
 [ext_resource type="PackedScene" uid="uid://cr6q5dxlkks" path="res://src/Scenes/Tower/LadderArea.tscn" id="17_jp6xg"]
+[ext_resource type="PackedScene" uid="uid://vo5sm7p34vo6" path="res://src/Scenes/Actors/Utilities/NameTag.tscn" id="19_bl45m"]
 [ext_resource type="PackedScene" uid="uid://dno74kdw4imhn" path="res://src/Scenes/NewStarshire/CookingRange.tscn" id="19_vdg01"]
 [ext_resource type="PackedScene" uid="uid://debxddfwr0kuy" path="res://src/Scenes/NewStarshire/SmeltingStation.tscn" id="20_05bdh"]
-[ext_resource type="Texture2D" uid="uid://bsg5odr8f2p4i" path="res://Assets/Facilities/SmithingStation.png" id="21_05bdh"]
+[ext_resource type="PackedScene" uid="uid://icxc8mi1q1w4" path="res://src/Scenes/NewStarshire/Facilities/SwordCraftingStation.tscn" id="21_bl45m"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q74qd"]
 texture = ExtResource("4_cad3e")
@@ -602,7 +603,10 @@ size = Vector2(106, 69)
 size = Vector2(102, 64)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bl45m"]
-size = Vector2(21, 88)
+size = Vector2(21, 93)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_te0bi"]
+size = Vector2(21, 78)
 
 [node name="NewStarShire" type="Node2D" node_paths=PackedStringArray("spawn_point", "camera", "hud")]
 script = ExtResource("1_gq00g")
@@ -618,11 +622,11 @@ texture = ExtResource("2_oik5f")
 [node name="TileSets" type="Node2D" parent="."]
 
 [node name="Cliff" type="TileMapLayer" parent="TileSets"]
-tile_map_data = PackedByteArray("AAAHAAkAAQAAAAEAAAAIAAkAAQABAAEAAAAHAAgAAQAAAAEAAAAIAAgAAQABAAEAAAAFAAgAAQAAAAEAAAAGAAgAAQABAAEAAAAFAAkAAQAAAAEAAAAGAAkAAQABAAEAAAADAAgAAQAAAAEAAAAEAAgAAQABAAEAAAADAAkAAQAAAAEAAAAEAAkAAQABAAEAAAABAAgAAQABAAEAAAACAAgAAQABAAEAAAABAAkAAQABAAEAAAACAAkAAQABAAEAAAAAAAgAAQAAAAEAAAAAAAkAAQAAAAEAAAAAAAcAAQAAAAAAAAABAAcAAQABAAAAAAACAAcAAQAAAAAAAAADAAcAAQABAAAAAAAEAAcAAQAAAAAAAAAFAAcAAQABAAAAAAAGAAcAAQAAAAAAAAAHAAcAAQABAAAAAAAIAAcAAQABAAAAAAAJAAkAAQAAAAEAAAAKAAkAAQABAAEAAAALAAkAAQAAAAEAAAAMAAkAAQABAAEAAAALAAgAAQAAAAAAAAAMAAgAAQABAAAAAAAJAAgAAQAAAAAAAAAKAAgAAQABAAAAAAANAAgAAQABAAAAAAANAAkAAQABAAEAAAA=")
+tile_map_data = PackedByteArray("AAAHAAkAAQAAAAEAAAAIAAkAAQABAAEAAAAHAAgAAQAAAAEAAAAIAAgAAQABAAEAAAAFAAgAAQAAAAEAAAAGAAgAAQABAAEAAAAFAAkAAQAAAAEAAAAGAAkAAQABAAEAAAADAAgAAQAAAAEAAAAEAAgAAQABAAEAAAADAAkAAQAAAAEAAAAEAAkAAQABAAEAAAABAAgAAQABAAEAAAACAAgAAQABAAEAAAABAAkAAQABAAEAAAACAAkAAQABAAEAAAAAAAgAAQAAAAEAAAAAAAkAAQAAAAEAAAAAAAcAAQAAAAAAAAABAAcAAQABAAAAAAACAAcAAQAAAAAAAAADAAcAAQABAAAAAAAEAAcAAQAAAAAAAAAFAAcAAQABAAAAAAAGAAcAAQAAAAAAAAAHAAcAAQABAAAAAAAIAAcAAQABAAAAAAAJAAkAAQAAAAEAAAAKAAkAAQABAAEAAAALAAkAAQAAAAEAAAAMAAkAAQABAAEAAAALAAgAAQAAAAAAAAAMAAgAAQABAAAAAAAJAAgAAQAAAAAAAAAKAAgAAQABAAAAAAANAAgAAQABAAAAAAANAAkAAQABAAEAAAAOAAgAAQAAAAAAAAAOAAkAAQAAAAEAAAA=")
 tile_set = ExtResource("3_sxpgj")
 
 [node name="Ladders" type="TileMapLayer" parent="TileSets"]
-tile_map_data = PackedByteArray("AAACACQAAAAAAAcAAAADACQAAAABAAcAAAACACMAAAAAAAYAAAADACMAAAABAAYAAAACACIAAAAAAAYAAAADACIAAAABAAYAAAACACEAAAAAAAYAAAADACEAAAABAAYAAAACACAAAAAAAAYAAAADACAAAAABAAYAAAACAB8AAAAAAAYAAAADAB8AAAABAAYAAAACAB4AAAAAAAYAAAADAB4AAAABAAYAAAACAB0AAAAAAAYAAAADAB0AAAABAAYAAAACABwAAAAAAAUAAAADABwAAAABAAUAAAA1ACAAAAAAAAUAAAA2ACAAAAABAAUAAAA1ACEAAAAAAAYAAAA2ACEAAAABAAYAAAA1ACIAAAAAAAYAAAA2ACIAAAABAAYAAAA1ACMAAAAAAAYAAAA2ACMAAAABAAYAAAA1ACQAAAAAAAYAAAA2ACQAAAABAAYAAAA1ACUAAAAAAAcAAAA2ACUAAAABAAcAAAA=")
+tile_map_data = PackedByteArray("AAACACQAAAAAAAcAAAADACQAAAABAAcAAAACACMAAAAAAAYAAAADACMAAAABAAYAAAACACIAAAAAAAYAAAADACIAAAABAAYAAAACACEAAAAAAAYAAAADACEAAAABAAYAAAACACAAAAAAAAYAAAADACAAAAABAAYAAAACAB8AAAAAAAYAAAADAB8AAAABAAYAAAACAB4AAAAAAAYAAAADAB4AAAABAAYAAAACAB0AAAAAAAYAAAADAB0AAAABAAYAAAACABwAAAAAAAUAAAADABwAAAABAAUAAAAvACAAAAAAAAUAAAAvACEAAAAAAAYAAAAwACAAAAABAAUAAAAwACEAAAABAAYAAAAvACIAAAAAAAYAAAAwACIAAAABAAYAAAAvACMAAAAAAAYAAAAwACMAAAABAAYAAAAvACQAAAAAAAYAAAAwACQAAAABAAYAAAAvACUAAAAAAAcAAAAwACUAAAABAAcAAAAgABwAAAAAAAUAAAAhABwAAAABAAUAAAAgAB0AAAAAAAYAAAAhAB0AAAABAAYAAAAgAB4AAAAAAAYAAAAhAB4AAAABAAYAAAAgAB8AAAAAAAYAAAAhAB8AAAABAAYAAAAgACAAAAAAAAcAAAAhACAAAAABAAcAAAA=")
 tile_set = SubResource("TileSet_vdg01")
 
 [node name="Floor" type="TileMapLayer" parent="TileSets"]
@@ -643,15 +647,12 @@ drag_horizontal_offset = 0.04
 smoothing_enabled = true
 smoothing_distance = 6
 
-[node name="TechTreeComputer" parent="." instance=ExtResource("4_cldp6")]
-position = Vector2(200, 640)
-
 [node name="SpawnPoint" type="Marker2D" parent="."]
 position = Vector2(115, 640)
 script = ExtResource("4_gq00g")
 
 [node name="PracticeDummy" parent="." instance=ExtResource("6_kqfvc")]
-position = Vector2(305, 640)
+position = Vector2(360, 640)
 
 [node name="TowerArea" type="Area2D" parent="."]
 position = Vector2(1335.0001, 539)
@@ -662,19 +663,6 @@ shape = SubResource("RectangleShape2D_pdf0i")
 
 [node name="TowerGuideSprite" parent="." instance=ExtResource("9_636af")]
 position = Vector2(1168, 606)
-
-[node name="GuideLog" type="Label" parent="."]
-visible = false
-offset_left = 1035.0
-offset_top = 561.0
-offset_right = 1305.0
-offset_bottom = 578.0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 2
-theme_override_fonts/font = ExtResource("10_636af")
-theme_override_font_sizes/font_size = 12
-text = "You need a Tower pass before you can Enter..."
-horizontal_alignment = 1
 
 [node name="HUD" parent="." instance=ExtResource("10_4wn0b")]
 
@@ -701,8 +689,35 @@ sdf_scale = 0
 size = Vector2i(640, 360)
 render_target_update_mode = 4
 
+[node name="MarketStand" type="Node2D" parent="."]
+position = Vector2(295, 309)
+
+[node name="StorageArea" type="Sprite2D" parent="MarketStand"]
+texture = ExtResource("14_jp6xg")
+
+[node name="GearDealerWithoutOutline" type="Sprite2D" parent="MarketStand"]
+position = Vector2(-78, 87)
+texture = ExtResource("12_l6435")
+
+[node name="DripDealerNoOutline" type="Sprite2D" parent="MarketStand"]
+position = Vector2(74, 84)
+texture = ExtResource("13_sxpgj")
+
+[node name="GrandMarket" type="Sprite2D" parent="MarketStand"]
+position = Vector2(0, 29)
+texture = ExtResource("12_123hf")
+
+[node name="NameTag5" parent="MarketStand" instance=ExtResource("19_bl45m")]
+offset_left = -45.0
+offset_top = 140.0
+offset_right = 43.0
+offset_bottom = 153.0
+
+[node name="Tag" parent="MarketStand/NameTag5" index="1"]
+text = "Trade Market"
+
 [node name="GrandMarketArea" type="Area2D" parent="."]
-position = Vector2(370.5, 398)
+position = Vector2(284.5, 398)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GrandMarketArea"]
 position = Vector2(11, -25.5)
@@ -710,33 +725,14 @@ shape = SubResource("RectangleShape2D_l6435")
 
 [node name="EnterMarketLabel" type="Label" parent="."]
 visible = false
-offset_left = 288.0
-offset_top = 334.0
-offset_right = 478.0
-offset_bottom = 357.0
+offset_left = 203.0
+offset_top = 333.0
+offset_right = 393.0
+offset_bottom = 356.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("10_636af")
 text = "Press E to enter Market"
-
-[node name="MarketStand" type="Node2D" parent="."]
-position = Vector2(-88, 87)
-
-[node name="StorageArea" type="Sprite2D" parent="MarketStand"]
-position = Vector2(419, 223)
-texture = ExtResource("14_jp6xg")
-
-[node name="GearDealerWithoutOutline" type="Sprite2D" parent="MarketStand"]
-position = Vector2(407.5, 308)
-texture = ExtResource("12_l6435")
-
-[node name="DripDealerNoOutline" type="Sprite2D" parent="MarketStand"]
-position = Vector2(527.5, 308)
-texture = ExtResource("13_sxpgj")
-
-[node name="GrandMarket" type="Sprite2D" parent="MarketStand"]
-position = Vector2(461.5, 251)
-texture = ExtResource("12_123hf")
 
 [node name="LadderArea" parent="." node_paths=PackedStringArray("ladder_top", "ladder_bottom") instance=ExtResource("17_jp6xg")]
 position = Vector2(48, 508)
@@ -755,55 +751,71 @@ position = Vector2(0, -60)
 [node name="Bot" type="Marker2D" parent="LadderArea"]
 position = Vector2(0, 114)
 
-[node name="SmithingStation" type="Sprite2D" parent="."]
-position = Vector2(766, 432)
-texture = ExtResource("21_05bdh")
-
 [node name="TempCookingRange" parent="." instance=ExtResource("19_vdg01")]
-position = Vector2(521, 592)
+position = Vector2(663, 592)
+
+[node name="NameTag2" parent="TempCookingRange" instance=ExtResource("19_bl45m")]
+offset_left = -35.0
+offset_top = 46.0
+offset_right = 53.0
+offset_bottom = 59.0
+
+[node name="Tag" parent="TempCookingRange/NameTag2" index="1"]
+text = "Cooking Range"
+
+[node name="CookingRangePosition" type="Node2D" parent="."]
+position = Vector2(663, 592)
+
+[node name="RefineryPosition" type="Node2D" parent="."]
+position = Vector2(870, 405)
+
+[node name="SwordCraftingStationPosition" type="Node2D" parent="."]
+position = Vector2(686, 398)
 
 [node name="CookingStationArea" type="Area2D" parent="."]
-position = Vector2(527, 617)
+position = Vector2(669, 617)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CookingStationArea"]
 position = Vector2(-7.5, -9.5)
 shape = SubResource("RectangleShape2D_q74qd")
 
-[node name="TempSmeltingStation" parent="." instance=ExtResource("20_05bdh")]
-position = Vector2(689, 560)
-
-[node name="SmeltingStationArea" type="Area2D" parent="."]
-position = Vector2(688, 605)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SmeltingStationArea"]
-position = Vector2(2, 0.5)
-shape = SubResource("RectangleShape2D_vdg01")
-
-[node name="CraftingStationArea" type="Area2D" parent="."]
-position = Vector2(789, 486)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CraftingStationArea"]
-position = Vector2(2, -5)
-shape = SubResource("RectangleShape2D_5xris")
-
 [node name="AccessCraftingStation" type="Label" parent="."]
 visible = false
-offset_left = 418.0
-offset_top = 553.0
-offset_right = 644.0
-offset_bottom = 569.0
+offset_left = 548.0
+offset_top = 540.0
+offset_right = 774.0
+offset_bottom = 556.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("10_636af")
 theme_override_font_sizes/font_size = 13
 text = "Press 'E' to Access Cooking Station"
 
+[node name="TempSmeltingStation" parent="." instance=ExtResource("20_05bdh")]
+position = Vector2(868, 432)
+
+[node name="NameTag3" parent="TempSmeltingStation" instance=ExtResource("19_bl45m")]
+offset_left = -38.0
+offset_top = 84.0
+offset_right = 50.0
+offset_bottom = 97.0
+
+[node name="Tag" parent="TempSmeltingStation/NameTag3" index="1"]
+text = "Refinery"
+
+[node name="SmeltingStationArea" type="Area2D" parent="."]
+position = Vector2(867, 477)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SmeltingStationArea"]
+position = Vector2(2, 0.5)
+shape = SubResource("RectangleShape2D_vdg01")
+
 [node name="AccessSmeltingStation" type="Label" parent="."]
 visible = false
-offset_left = 583.0
-offset_top = 529.0
-offset_right = 809.0
-offset_bottom = 545.0
+offset_left = 757.0
+offset_top = 391.0
+offset_right = 983.0
+offset_bottom = 407.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("10_636af")
@@ -811,12 +823,31 @@ theme_override_font_sizes/font_size = 13
 text = "Press 'E' to Access SmeltingStation"
 horizontal_alignment = 1
 
+[node name="SmithingStation" parent="." instance=ExtResource("21_bl45m")]
+position = Vector2(664, 432)
+
+[node name="NameTag" parent="." instance=ExtResource("19_bl45m")]
+offset_left = 642.0
+offset_top = 515.0
+offset_right = 730.0
+offset_bottom = 528.0
+
+[node name="Tag" parent="NameTag" index="1"]
+text = "Sword Crafting Station"
+
+[node name="CraftingStationArea" type="Area2D" parent="."]
+position = Vector2(687, 486)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CraftingStationArea"]
+position = Vector2(2, -5)
+shape = SubResource("RectangleShape2D_5xris")
+
 [node name="AccessSwordCraftingStation" type="Label" parent="."]
 visible = false
-offset_left = 648.0
-offset_top = 416.0
-offset_right = 921.0
-offset_bottom = 432.0
+offset_left = 547.0
+offset_top = 415.0
+offset_right = 820.0
+offset_bottom = 431.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("10_636af")
@@ -824,15 +855,40 @@ theme_override_font_sizes/font_size = 13
 text = "Press 'E' to Access Sword Crafting Station"
 horizontal_alignment = 1
 
+[node name="GuideLog" type="Label" parent="."]
+visible = false
+offset_left = 1035.0
+offset_top = 561.0
+offset_right = 1305.0
+offset_bottom = 578.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("10_636af")
+theme_override_font_sizes/font_size = 12
+text = "You need a Tower pass before you can Enter..."
+horizontal_alignment = 1
+
+[node name="TechTreeComputer" parent="." instance=ExtResource("4_cldp6")]
+position = Vector2(200, 640)
+
+[node name="NameTag4" parent="TechTreeComputer" instance=ExtResource("19_bl45m")]
+offset_left = -48.0
+offset_top = 3.0
+offset_right = 40.0
+offset_bottom = 16.0
+
+[node name="Tag" parent="TechTreeComputer/NameTag4" index="1"]
+text = "Upgrades PC"
+
 [node name="LadderArea2" parent="." node_paths=PackedStringArray("ladder_top", "ladder_bottom") instance=ExtResource("17_jp6xg")]
-position = Vector2(864, 556)
+position = Vector2(768, 556)
 collision_layer = 8
 collision_mask = 8
 ladder_top = NodePath("Top")
 ladder_bottom = NodePath("Bottom")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LadderArea2"]
-position = Vector2(0.5, 6)
+position = Vector2(0.5, 3.5)
 shape = SubResource("RectangleShape2D_bl45m")
 
 [node name="Top" type="Marker2D" parent="LadderArea2"]
@@ -840,6 +896,23 @@ position = Vector2(0, -44)
 
 [node name="Bottom" type="Marker2D" parent="LadderArea2"]
 position = Vector2(0, 73)
+
+[node name="LadderArea3" parent="." node_paths=PackedStringArray("ladder_top", "ladder_bottom") instance=ExtResource("17_jp6xg")]
+position = Vector2(529, 492)
+collision_layer = 8
+collision_mask = 8
+ladder_top = NodePath("Top")
+ladder_bottom = NodePath("Bottom")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LadderArea3"]
+position = Vector2(0.5, -5)
+shape = SubResource("RectangleShape2D_te0bi")
+
+[node name="Top" type="Marker2D" parent="LadderArea3"]
+position = Vector2(0, -44)
+
+[node name="Bottom" type="Marker2D" parent="LadderArea3"]
+position = Vector2(0, 46)
 
 [connection signal="body_entered" from="TowerArea" to="." method="_on_tower_area_body_entered"]
 [connection signal="body_exited" from="TowerArea" to="." method="_on_tower_area_body_exited"]
@@ -854,3 +927,8 @@ position = Vector2(0, 73)
 
 [editable path="PracticeDummy"]
 [editable path="HUD"]
+[editable path="MarketStand/NameTag5"]
+[editable path="TempCookingRange/NameTag2"]
+[editable path="TempSmeltingStation/NameTag3"]
+[editable path="NameTag"]
+[editable path="TechTreeComputer/NameTag4"]

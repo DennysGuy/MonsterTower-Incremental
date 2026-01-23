@@ -16,7 +16,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("interact") and player_in_range:
+	if Input.is_action_just_pressed("interact") and player_in_range and player.damageable:
 		go_to_starshire()
 
 func _on_tower_exit_area_body_entered(body: Node2D) -> void:

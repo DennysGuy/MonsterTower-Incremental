@@ -15,17 +15,38 @@ var player_in_crafting_range : bool = false
 @onready var access_smelting_station: Label = $AccessSmeltingStation
 @onready var access_sword_crafting_station: Label = $AccessSwordCraftingStation
 
+@onready var cooking_range_position: Node2D = $CookingRangePosition
+@onready var refinery_position: Node2D = $RefineryPosition
+
+@onready var smithing_station: SmithingStation = $SmithingStation
+@onready var sword_crafting_station_position: Node2D = $SwordCraftingStationPosition
+
+@onready var temp_cooking_range: CookingRangeGraphic = $TempCookingRange
+@onready var temp_smelting_station: SmeltingStationGraphic = $TempSmeltingStation
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super()
 	SignalBus.spawn_tech_tree.connect(add_tech_tree_to_scene)
+	SignalBus.issue_can_craft_sword_scene.connect(new_sword_unlock_notice)
+	TechTreeManager.unlock_cooking_station.connect(unlock_cooking_station)
+	TechTreeManager.unlock_refinery.connect(unlock_refinery_station)
+	
 	hud.animation_player.play("CloseIn")
+
+	if PlayerStats.can_craft_next_sword():
+		await get_tree().create_timer(1.0).timeout
+		new_sword_unlock_notice()
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("interact") and player_in_tower_range and GameManager.player_can_move and PlayerStats.facilities_unlocked["Tower Pass"]:
-		go_to_test_floor()
-	
+		GameManager.player_can_move = false
+		if PlayerStats.check_points_unlocked["Floor 1-1"]:
+			spawn_tower_entrance_map() #need to check how many checkpoints unlocked
+		else:
+			go_to_test_floor()
+		
 	if Input.is_action_just_pressed("interact") and player_in_market_range and GameManager.player_can_move:
 		GameManager.player_can_move = false
 		spawn_grand_market()
@@ -69,8 +90,13 @@ func _on_tower_area_body_exited(body: Node2D) -> void:
 
 func go_to_test_floor() -> void:
 	hud.animation_player.play("CloseOut")
+	GameManager.player_can_move = true
 	await get_tree().create_timer(1.0).timeout
 	get_tree().change_scene_to_file("res://src/Scenes/Tower/TowerFloors/Biome1/Floor1-1.tscn")
+
+func spawn_tower_entrance_map() -> void:
+	var tower_entrance_map : TowerEntranceMap = preload("uid://bgurt44iah13x").instantiate()
+	control.add_child(tower_entrance_map)
 
 
 func spawn_grand_market() -> void:
@@ -88,18 +114,15 @@ func spawn_smelting_menu() -> void:
 func spawn_crafting_menu() -> void:
 	var sword_crafting_station : CraftingStationMenu = preload("uid://cc1xppx3tkq4f").instantiate()
 	control.add_child(sword_crafting_station)
-
 func _on_grand_market_area_body_entered(body: Node2D) -> void:
 	if body is Player:
 		player_in_market_range = true
 		enter_market_label.show()
 
-
 func _on_grand_market_area_body_exited(body: Node2D) -> void:
 	if body is Player:
 		player_in_market_range = false
 		enter_market_label.hide()
-
 
 func _on_cooking_station_area_body_entered(body: Node2D) -> void:
 	if body is Player:
@@ -110,12 +133,10 @@ func _on_cooking_station_area_body_entered(body: Node2D) -> void:
 			access_crafting_station.text = "Press 'E' to access Cooking Range"
 		access_crafting_station.show()
 
-
 func _on_cooking_station_area_body_exited(body: Node2D) -> void:
 	if body is Player:
 		player_in_cooking_range = false
 		access_crafting_station.hide()
-
 
 func _on_smelting_station_area_body_entered(body: Node2D) -> void:
 	if body is Player:
@@ -126,20 +147,77 @@ func _on_smelting_station_area_body_entered(body: Node2D) -> void:
 			access_smelting_station.text = "Press 'E' to access Refinery"
 		access_smelting_station.show()
 
-
 func _on_smelting_station_area_body_exited(body: Node2D) -> void:
 	if body is Player:
 		player_in_smelting_range = false
 		access_smelting_station.hide()
-
 
 func _on_crafting_station_area_body_entered(body: Node2D) -> void:
 	if body is Player:
 		player_in_crafting_range = true
 		access_sword_crafting_station.show()
 
-
 func _on_crafting_station_area_body_exited(body: Node2D) -> void:
 		if body is Player:
 			player_in_crafting_range = false
 			access_sword_crafting_station.hide()
+
+func unlock_cooking_station() -> void:
+	camera.player = null
+	GameManager.player_can_move = false
+	hud.animation_player.play("FadeInOut")
+	await get_tree().create_timer(0.5).timeout
+	camera.position = cooking_range_position.position
+	await get_tree().create_timer(1.5).timeout
+	hud.animation_player.play("Flash")
+	await get_tree().create_timer(0.5).timeout
+	temp_cooking_range.unlock_station()
+	SignalBus.issue_big_notification.emit("Cook exotic dishes and sell for big cash!")
+	await get_tree().create_timer(2.0).timeout
+	SignalBus.issue_big_notification.emit("Cooking Resources Drop From Monsters!")
+	await get_tree().create_timer(3.0).timeout
+	SignalBus.hide_big_notification.emit()
+	hud.animation_player.play("FadeInOut")
+	await get_tree().create_timer(0.5).timeout
+	camera.position = player.position
+	camera.player = player
+	GameManager.player_can_move = true
+	
+func unlock_refinery_station() -> void:
+	camera.player = null
+	GameManager.player_can_move = false
+	hud.animation_player.play("FadeInOut")
+	await get_tree().create_timer(0.5).timeout
+	camera.position = refinery_position.position
+	await get_tree().create_timer(1.5).timeout
+	hud.animation_player.play("Flash")
+	await get_tree().create_timer(0.5).timeout
+	temp_smelting_station.unlock_station()
+	SignalBus.issue_big_notification.emit("Refine Raw Resources into Craftable Material!")
+	await get_tree().create_timer(2.0).timeout
+	SignalBus.issue_big_notification.emit("You have unlocked the stone pickaxe.")
+	await get_tree().create_timer(3.0).timeout
+	SignalBus.issue_big_notification.emit("Tin and Copper ore can now be mined in the Tower!")
+	await get_tree().create_timer(3.5).timeout
+	SignalBus.hide_big_notification.emit()
+	hud.animation_player.play("FadeInOut")
+	await get_tree().create_timer(0.5).timeout
+	camera.position = player.position
+	camera.player = player
+	GameManager.player_can_move = true
+
+func new_sword_unlock_notice() -> void:
+	camera.player = null
+	GameManager.player_can_move = false
+	hud.animation_player.play("FadeInOut")
+	await get_tree().create_timer(0.5).timeout
+	smithing_station.notify_can_craft()
+	camera.position = sword_crafting_station_position.position
+	SignalBus.issue_big_notification.emit("A New Sword Can Be Unlocked!")
+	await get_tree().create_timer(3.5).timeout
+	SignalBus.hide_big_notification.emit()
+	hud.animation_player.play("FadeInOut")
+	await get_tree().create_timer(0.5).timeout
+	camera.position = player.position
+	camera.player = player
+	GameManager.player_can_move = true
