@@ -20,6 +20,7 @@ map_id = 3
 spawn_point = NodePath("Marker2D")
 camera = NodePath("PlayerCamera")
 hud = NodePath("HUD")
+map_type = 2
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -46.0

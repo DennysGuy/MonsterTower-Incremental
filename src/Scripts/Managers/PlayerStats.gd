@@ -32,7 +32,7 @@ const KNOCKBACK_FORCE : int = 300
 	"Smelting Speed": 0.1,
 	"Mining Damage": 5,
 	"Monster Cap Bonus": 0,
-	"Expedition Time": 30.0,
+	"Expedition Time": 0.0,
 }
 
 @onready var facilities_unlocked : Dictionary[String, bool] = {
@@ -46,6 +46,7 @@ const KNOCKBACK_FORCE : int = 300
 
 @onready var check_points_unlocked : Dictionary[String, bool] = {
 	"Floor 1-1" : false,
+	"Floor 1-2" : false,
 	"Floor 1-3" : false
 }
 

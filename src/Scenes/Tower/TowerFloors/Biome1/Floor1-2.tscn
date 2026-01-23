@@ -556,6 +556,7 @@ hud = NodePath("HUD")
 ore_rock_spawn_rate = 0.6
 ore_rock_markers = NodePath("OreRockMarkers")
 next_room_path = "uid://b3m3f58qy47jb"
+map_type = 2
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -35.0

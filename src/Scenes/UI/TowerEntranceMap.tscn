@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bgurt44iah13x"]
+[gd_scene load_steps=10 format=3 uid="uid://bgurt44iah13x"]
 
 [ext_resource type="Texture2D" uid="uid://dswsscclwdwya" path="res://Assets/TowerMap/TowerMap.png" id="1_bsb7l"]
 [ext_resource type="Script" uid="uid://b6emfts3ijh7c" path="res://src/Scripts/tower_entrance_map.gd" id="1_p02a1"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://babxiw53a0sh0" path="res://src/Scenes/UI/DungeonEntranceButton.tscn" id="6_4erf6"]
 [ext_resource type="Resource" uid="uid://cnvnsw0143wep" path="res://src/Resources/TowerEntranceData/Floor1-1.tres" id="7_4erf6"]
 [ext_resource type="Resource" uid="uid://vibb3cg4b01g" path="res://src/Resources/TowerEntranceData/Floor1-3.tres" id="8_jtccv"]
+[ext_resource type="Resource" uid="uid://dbb7k6hptjvyy" path="res://src/Resources/TowerEntranceData/Floor1-2.tres" id="8_oavpw"]
 
 [node name="TowerEntranceMap" type="Control"]
 layout_mode = 3
@@ -150,18 +151,26 @@ text = "Go!"
 
 [node name="Floor1-1Entrance" parent="." instance=ExtResource("6_4erf6")]
 layout_mode = 1
-offset_left = 12.0
-offset_top = 64.0
-offset_right = 27.0
-offset_bottom = 77.0
+offset_left = 11.0
+offset_top = 66.0
+offset_right = 26.0
+offset_bottom = 79.0
 tower_entrance_data = ExtResource("7_4erf6")
+
+[node name="Floor1-2Entrance" parent="." instance=ExtResource("6_4erf6")]
+layout_mode = 1
+offset_left = -1.0
+offset_top = 55.0
+offset_right = 14.0
+offset_bottom = 68.0
+tower_entrance_data = ExtResource("8_oavpw")
 
 [node name="Floor1-3Entrance" parent="." instance=ExtResource("6_4erf6")]
 layout_mode = 1
-offset_left = -25.0
-offset_top = 48.0
-offset_right = -10.0
-offset_bottom = 61.0
+offset_left = -23.0
+offset_top = 47.0
+offset_right = -8.0
+offset_bottom = 60.0
 tower_entrance_data = ExtResource("8_jtccv")
 
 [node name="Title" type="Label" parent="."]
