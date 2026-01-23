@@ -224,6 +224,7 @@ map_name_label = NodePath("PlayerHUD/MapeName")
 expedition_timer = NodePath("PlayerHUD/ExpeditionTimer")
 
 [node name="PlayerHUD" type="Control" parent="."]
+z_index = 4096
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

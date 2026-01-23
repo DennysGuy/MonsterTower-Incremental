@@ -32,7 +32,7 @@ const KNOCKBACK_FORCE : int = 300
 	"Smelting Speed": 0.1,
 	"Mining Damage": 5,
 	"Monster Cap Bonus": 0,
-	"Expedition Time": 30.0
+	"Expedition Time": 30.0,
 }
 
 @onready var facilities_unlocked : Dictionary[String, bool] = {
@@ -41,6 +41,12 @@ const KNOCKBACK_FORCE : int = 300
 	"Crafting Station" : false,
 	"Refinery Station" : false,
 	"Bank": false
+}
+
+
+@onready var check_points_unlocked : Dictionary[String, bool] = {
+	"Floor 1-1" : false,
+	"Floor 1-3" : false
 }
 
 const MAX_SWORD_COUNT := 4

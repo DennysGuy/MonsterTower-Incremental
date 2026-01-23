@@ -41,8 +41,12 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("interact") and player_in_tower_range and GameManager.player_can_move and PlayerStats.facilities_unlocked["Tower Pass"]:
-		go_to_test_floor()
-	
+		GameManager.player_can_move = false
+		if PlayerStats.check_points_unlocked["Floor 1-1"]:
+			spawn_tower_entrance_map() #need to check how many checkpoints unlocked
+		else:
+			go_to_test_floor()
+		
 	if Input.is_action_just_pressed("interact") and player_in_market_range and GameManager.player_can_move:
 		GameManager.player_can_move = false
 		spawn_grand_market()
@@ -86,8 +90,14 @@ func _on_tower_area_body_exited(body: Node2D) -> void:
 
 func go_to_test_floor() -> void:
 	hud.animation_player.play("CloseOut")
+	GameManager.player_can_move = true
 	await get_tree().create_timer(1.0).timeout
 	get_tree().change_scene_to_file("res://src/Scenes/Tower/TowerFloors/Biome1/Floor1-1.tscn")
+
+func spawn_tower_entrance_map() -> void:
+	var tower_entrance_map : TowerEntranceMap = preload("uid://bgurt44iah13x").instantiate()
+	control.add_child(tower_entrance_map)
+
 
 func spawn_grand_market() -> void:
 	var market : GrandMarketMenu = preload("uid://cfuw5h0apwpq").instantiate()

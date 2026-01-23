@@ -19,6 +19,7 @@ func _ready() -> void:
 	SignalBus.spawn_respawn_box.connect(spawn_respawn_box)
 	SignalBus.issue_big_notification.connect(issue_big_notification)
 	SignalBus.hide_big_notification.connect(hide_big_notification_label)
+	SignalBus.play_close_out_animation.connect(play_close_out_animation)
 	player_health_bar.max_value = PlayerStats.player_stats["Max Health"]
 	player_health_bar.value = player_health_bar.max_value
 	
@@ -59,3 +60,7 @@ func issue_big_notification(message : String) -> void:
 func hide_big_notification_label() -> void:
 	big_notification_label.text = ""
 	big_notification_label.hide()
+
+
+func play_close_out_animation() -> void:
+	animation_player.play("CloseOut")
