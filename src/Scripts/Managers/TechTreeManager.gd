@@ -77,6 +77,7 @@ func increment_upgrade_count() -> void:
 	
 	if current_upgrade_count >= upgrade_count_to_prestige:
 		current_prestige += 1
+		PlayerStats.player_stats["Expedition Time"] += 30
 		upgrade_count_to_prestige += 25
 		update_prestige_tier_label.emit()
 		update_prestige_tier_progress_label.emit()
