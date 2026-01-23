@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bgurt44iah13x"]
+[gd_scene load_steps=9 format=3 uid="uid://bgurt44iah13x"]
 
 [ext_resource type="Texture2D" uid="uid://dswsscclwdwya" path="res://Assets/TowerMap/TowerMap.png" id="1_bsb7l"]
 [ext_resource type="Script" uid="uid://b6emfts3ijh7c" path="res://src/Scripts/tower_entrance_map.gd" id="1_p02a1"]
@@ -7,6 +7,7 @@
 [ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="4_fqkg3"]
 [ext_resource type="PackedScene" uid="uid://babxiw53a0sh0" path="res://src/Scenes/UI/DungeonEntranceButton.tscn" id="6_4erf6"]
 [ext_resource type="Resource" uid="uid://cnvnsw0143wep" path="res://src/Resources/TowerEntranceData/Floor1-1.tres" id="7_4erf6"]
+[ext_resource type="Resource" uid="uid://vibb3cg4b01g" path="res://src/Resources/TowerEntranceData/Floor1-3.tres" id="8_jtccv"]
 
 [node name="TowerEntranceMap" type="Control"]
 layout_mode = 3
@@ -147,13 +148,21 @@ theme_override_font_sizes/font_size = 14
 disabled = true
 text = "Go!"
 
-[node name="DungeonEntranceButton" parent="." instance=ExtResource("6_4erf6")]
+[node name="Floor1-1Entrance" parent="." instance=ExtResource("6_4erf6")]
 layout_mode = 1
 offset_left = 12.0
 offset_top = 64.0
 offset_right = 27.0
 offset_bottom = 77.0
 tower_entrance_data = ExtResource("7_4erf6")
+
+[node name="Floor1-3Entrance" parent="." instance=ExtResource("6_4erf6")]
+layout_mode = 1
+offset_left = -25.0
+offset_top = 48.0
+offset_right = -10.0
+offset_bottom = 61.0
+tower_entrance_data = ExtResource("8_jtccv")
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 0

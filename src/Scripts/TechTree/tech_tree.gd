@@ -20,7 +20,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("add_currency"):
-		TechTreeManager.currency += 25
+		TechTreeManager.currency += 500
 		update_currency_label()
 
 func update_currency_label() -> void:

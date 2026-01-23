@@ -22,7 +22,6 @@ func _on_tower_exit_area_body_entered(body: Node2D) -> void:
 		player_in_exit_area = true
 		guide_log.show()
 
-
 func _on_tower_exit_area_body_exited(body: Node2D) -> void:
 	if body is Player:
 		player_in_exit_area = true

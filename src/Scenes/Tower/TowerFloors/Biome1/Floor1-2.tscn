@@ -555,6 +555,7 @@ camera = NodePath("PlayerCamera")
 hud = NodePath("HUD")
 ore_rock_spawn_rate = 0.6
 ore_rock_markers = NodePath("OreRockMarkers")
+next_room_path = "uid://b3m3f58qy47jb"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -35.0
@@ -633,7 +634,6 @@ chance_to_spawn = 0.6
 spawn_parent = NodePath("../..")
 
 [node name="HUD" parent="." instance=ExtResource("8_kwf2g")]
-visible = false
 
 [node name="PlayerCamera" parent="." instance=ExtResource("9_w4dci")]
 position = Vector2(321, 1324)
