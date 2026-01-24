@@ -1,8 +1,10 @@
-[gd_scene load_steps=31 format=4 uid="uid://bla5rhusv2jn5"]
+[gd_scene load_steps=33 format=4 uid="uid://bla5rhusv2jn5"]
 
 [ext_resource type="Script" uid="uid://bgfo5a5l7ay1t" path="res://src/Scripts/Maps/Tower/Biome1/floor_1_2.gd" id="1_1pghk"]
 [ext_resource type="TileSet" uid="uid://cuil6pmpg4xf1" path="res://src/Scenes/Tower/TowerFloors/Biome1/Biome1-Floor.tres" id="2_27fnx"]
 [ext_resource type="Texture2D" uid="uid://bbmpr551mjb20" path="res://Assets/Tower/Biom1/Biome1SpriteSheet.png" id="2_aukmg"]
+[ext_resource type="AudioStream" uid="uid://fgrpqq5p7fjq" path="res://Audio/SFX/Biomes/MossyDungeon/Ambience/03 DSGNDron, Dungeon, Ambience, Drone, Dark, Loop.wav" id="2_vcays"]
+[ext_resource type="PackedScene" uid="uid://mwttdrt2cg71" path="res://src/Scenes/Players/ambience_player.tscn" id="3_4lb0i"]
 [ext_resource type="TileSet" uid="uid://cbwyncwtk5kxk" path="res://src/Scenes/Tower/TowerFloors/Biome1/Biome1-Boundaries.tres" id="3_6ds7u"]
 [ext_resource type="TileSet" uid="uid://dr3ft3wh6mi6e" path="res://src/Scenes/Tower/TowerFloors/Biome1/Biome1BGSetPieces1.tres" id="3_ukbus"]
 [ext_resource type="TileSet" uid="uid://flobhfna8te" path="res://src/Scenes/Tower/TowerFloors/Biome1/Biome1-Platforms.tres" id="5_f2nj7"]
@@ -546,7 +548,7 @@ size = Vector2(172, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n7xsw"]
 size = Vector2(391, 20)
 
-[node name="Floor1-2" type="Node2D" node_paths=PackedStringArray("spawn_point", "camera", "hud", "ore_rock_markers")]
+[node name="Floor1-2" type="Node2D" node_paths=PackedStringArray("spawn_point", "camera", "hud", "ore_rock_markers", "ambience_player")]
 script = ExtResource("1_1pghk")
 map_name = "Floor 1-2"
 map_id = 2
@@ -557,6 +559,10 @@ ore_rock_spawn_rate = 0.6
 ore_rock_markers = NodePath("OreRockMarkers")
 next_room_path = "uid://b3m3f58qy47jb"
 map_type = 2
+ambience_player = NodePath("AmbiencePlayer")
+ambience_sfx = ExtResource("2_vcays")
+
+[node name="AmbiencePlayer" parent="." instance=ExtResource("3_4lb0i")]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -35.0

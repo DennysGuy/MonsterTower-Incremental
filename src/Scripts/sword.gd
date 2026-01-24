@@ -12,6 +12,11 @@ class_name Sword extends Resource
 @export var graphic : Texture2D
 @export var mold_graphic : Texture2D
 
+@export_group("Audio")
+@export var swing_1 : AudioStream
+@export var swing_2 : AudioStream
+@export var swing_3 : AudioStream
+
 func get_stats_dict() -> Dictionary:
 	return {
 		"Attack Bonus": attack_bonus,

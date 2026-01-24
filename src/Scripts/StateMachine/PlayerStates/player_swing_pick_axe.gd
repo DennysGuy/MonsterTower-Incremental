@@ -1,6 +1,7 @@
 class_name PlayerSwingPickAxe extends State
 
 @export var idle_state : State
+@export var pick_axe_swing : AudioStream
 
 func enter() -> void:
 	super()
@@ -8,8 +9,10 @@ func enter() -> void:
 	parent.timer.wait_time = animation_duration
 	parent.timer.start()
 	parent.velocity = Vector2.ZERO
+	parent.sfx_player.play_sfx(pick_axe_swing)
 
 func exit() -> void:
+	parent.sfx_player.stop()
 	parent.clear_effect_texture()
 
 func process_input(_event: InputEvent) -> State:

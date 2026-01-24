@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cmog8m28k4ijk"]
+[gd_scene load_steps=27 format=3 uid="uid://cmog8m28k4ijk"]
 
 [ext_resource type="Texture2D" uid="uid://bys332e3dq3ew" path="res://Assets/Enemies/TempPracticeDummy.png" id="1_ggy1w"]
 [ext_resource type="Script" uid="uid://cfgk20f5exw4y" path="res://src/Scripts/Enemies/PracticeDummy/practice_dummy.gd" id="1_r01py"]
@@ -10,9 +10,14 @@
 [ext_resource type="Script" uid="uid://bl81lc5if28vq" path="res://src/Scripts/StateMachine/EnemyStates/GenericEnemyStates/enemy_hit.gd" id="6_ylkjm"]
 [ext_resource type="PackedScene" uid="uid://b8lilr7mgc8l1" path="res://src/Scenes/Actors/Enemies/EnemyHealthBar.tscn" id="7_e0aq0"]
 [ext_resource type="Script" uid="uid://733mi1gdyrrk" path="res://src/Scripts/StateMachine/EnemyStates/GenericEnemyStates/enemy_dead.gd" id="7_qbmd8"]
+[ext_resource type="AudioStream" uid="uid://csenaol1xb4si" path="res://Audio/SFX/DummyHit1.wav" id="7_tq8ge"]
+[ext_resource type="AudioStream" uid="uid://coxal20uuwkyt" path="res://Audio/SFX/DummyHit2.wav" id="8_5ts4l"]
 [ext_resource type="PackedScene" uid="uid://b73ndgmav7ja2" path="res://src/Scenes/Actors/Utilities/HealthComponent.tscn" id="9_7a17f"]
+[ext_resource type="AudioStream" uid="uid://cf3iha5uwmyjw" path="res://Audio/SFX/DummyHit3.wav" id="9_m80ls"]
+[ext_resource type="AudioStream" uid="uid://bbf1m0mxfwyty" path="res://Audio/SFX/DummyDeath1.wav" id="11_5ts4l"]
 [ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="12_bf4mq"]
 [ext_resource type="PackedScene" uid="uid://cefpeuevsobfw" path="res://src/Scenes/UI/DirectionsArea.tscn" id="12_q38mr"]
+[ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="14_jqbk6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r01py"]
 size = Vector2(32, 79)
@@ -206,7 +211,7 @@ size = Vector2(31, 55)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q38mr"]
 size = Vector2(137, 56)
 
-[node name="PracticeDummy" type="CharacterBody2D" node_paths=PackedStringArray("name_tag", "health_bar", "state_machine", "animation_player", "health_component", "hurt_box", "hit_state", "dead_state")]
+[node name="PracticeDummy" type="CharacterBody2D" node_paths=PackedStringArray("name_tag", "health_bar", "state_machine", "animation_player", "health_component", "hurt_box", "hit_state", "dead_state", "sfx_player")]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_r01py")
@@ -220,6 +225,7 @@ health_component = NodePath("HealthComponent")
 hurt_box = NodePath("HurtBox")
 hit_state = NodePath("StateMachine/Hit")
 dead_state = NodePath("StateMachine/Dead")
+sfx_player = NodePath("SfxPlayer")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-6, -39.5)
@@ -249,11 +255,17 @@ animation_name = "Idle"
 script = ExtResource("6_ylkjm")
 idle_state = NodePath("../Idle")
 wait_time = 0.18
+generic_impact_1 = ExtResource("7_tq8ge")
+generic_impact_2 = ExtResource("8_5ts4l")
+generic_impact_3 = ExtResource("9_m80ls")
 animation_name = "Hurt"
 
 [node name="Dead" type="Node" parent="StateMachine"]
 script = ExtResource("7_qbmd8")
 wait_time = 1.0
+death_sound_1 = ExtResource("11_5ts4l")
+death_sound_2 = ExtResource("11_5ts4l")
+death_sound_3 = ExtResource("11_5ts4l")
 animation_name = "Dead"
 
 [node name="HurtBox" parent="." instance=ExtResource("5_k2yhj")]
@@ -296,6 +308,8 @@ theme_override_fonts/font = ExtResource("12_bf4mq")
 theme_override_font_sizes/font_size = 12
 text = "Press 'F' to Swing Your Sword!"
 horizontal_alignment = 1
+
+[node name="SfxPlayer" parent="." instance=ExtResource("14_jqbk6")]
 
 [connection signal="update_health_bar" from="HealthComponent" to="." method="_on_health_component_update_health_bar"]
 [connection signal="body_entered" from="DirectionsArea" to="." method="_on_directions_area_body_entered"]

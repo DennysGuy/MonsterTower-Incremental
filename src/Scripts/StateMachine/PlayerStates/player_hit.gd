@@ -3,7 +3,9 @@ class_name PlayerHitState extends State
 @export var wait_time : float
 @export var invincibility_time : float
 @export var idle_state : State
- 
+
+@export var hit_sfx : AudioStream
+
 var knock_back_direction : int
 func enter() -> void:
 	super()
@@ -14,6 +16,7 @@ func enter() -> void:
 		parent.invincibility_timer.wait_time = invincibility_time
 		var dir = (parent.stored_enemy.global_position - parent.global_position).normalized()
 		knock_back_direction = GameManager.set_direction(dir.x) * -1
+		parent.sfx_player.play_sfx(hit_sfx)
 		parent.timer.start()
 		SignalBus.shake_camera.emit(2)
 		HitStopManager.freeze(0.06, 0.0)

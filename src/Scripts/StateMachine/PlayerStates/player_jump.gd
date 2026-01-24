@@ -3,8 +3,11 @@ class_name PlayerJump extends State
 @export var idle_state : State
 @export var fall_state : State
 
+@export var jump_sfx : AudioStream
+
 func enter() -> void:
 	super()
+	parent.sfx_player.play_sfx(jump_sfx)
 	parent.set_sword_texture(animation_name)
 	parent.velocity.y -= PlayerStats.player_stats["Jump Height"]
 

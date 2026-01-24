@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://b0enmfcqe1mex"]
+[gd_scene load_steps=36 format=3 uid="uid://b0enmfcqe1mex"]
 
 [ext_resource type="Script" uid="uid://cgvncy880e61b" path="res://src/Scripts/Enemies/Batclopse/batclopse.gd" id="1_184l8"]
 [ext_resource type="Texture2D" uid="uid://cpswhrjwnla1t" path="res://Assets/Enemies/CyclopsBat/CyclopseBat_Outline_IdleMove.png" id="2_gfyeb"]
@@ -18,10 +18,141 @@
 [ext_resource type="PackedScene" uid="uid://bsd5w23h513t2" path="res://src/Scenes/Actors/Utilities/WallDetector.tscn" id="13_63me8"]
 [ext_resource type="PackedScene" uid="uid://crrtithryo2j6" path="res://src/Scenes/Actors/Utilities/GroundDetector.tscn" id="14_4bk87"]
 [ext_resource type="PackedScene" uid="uid://bg1ya0qiin47q" path="res://src/Scenes/Actors/Utilities/HurtBox.tscn" id="15_qf5ei"]
+[ext_resource type="AudioStream" uid="uid://ffdv7g8jgp4y" path="res://Audio/SFX/Biomes/MossyDungeon/GenericImpact1.wav" id="15_xjlfg"]
+[ext_resource type="AudioStream" uid="uid://d1bxfv1bv8md8" path="res://Audio/SFX/Biomes/MossyDungeon/GenericImpact2.wav" id="16_b42m5"]
 [ext_resource type="PackedScene" uid="uid://xsmgmpbxjc3b" path="res://src/Scenes/Actors/Utilities/HitBox.tscn" id="16_q1a4v"]
+[ext_resource type="AudioStream" uid="uid://c3puk7hyuliti" path="res://Audio/SFX/Biomes/MossyDungeon/GenericImpact3.wav" id="17_bw633"]
+[ext_resource type="AudioStream" uid="uid://bgkrmxvnh87w" path="res://Audio/SFX/Biomes/MossyDungeon/GenericDeath1.wav" id="19_3i1dd"]
+[ext_resource type="AudioStream" uid="uid://cc4bln4u3i6b8" path="res://Audio/SFX/Biomes/MossyDungeon/GenericDeath2.wav" id="20_0802a"]
+[ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="21_b42m5"]
+[ext_resource type="AudioStream" uid="uid://da4j7oibbpe1j" path="res://Audio/SFX/Biomes/MossyDungeon/GenericDeath3.wav" id="21_ihpwa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f4ywy"]
 size = Vector2(31, 52)
+
+[sub_resource type="Animation" id="Animation_xrh8g"]
+resource_name = "Chase"
+length = 0.56
+loop_mode = 1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.11, 0.22, 0.34, 0.43, 0.53),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("7_o62ak")]
+}
+
+[sub_resource type="Animation" id="Animation_4bk87"]
+resource_name = "Dead"
+length = 0.8
+step = 0.08
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.16, 0.24),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("7_xrh8g")]
+}
+
+[sub_resource type="Animation" id="Animation_63me8"]
+resource_name = "Hurt"
+length = 0.1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_0virf")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_ugsex"]
 resource_name = "Idle"
@@ -104,130 +235,6 @@ tracks/2/keys = {
 "values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_xrh8g"]
-resource_name = "Chase"
-length = 0.56
-loop_mode = 1
-step = 0.01
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:hframes")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [6]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.11, 0.22, 0.34, 0.43, 0.53),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:texture")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("7_o62ak")]
-}
-
-[sub_resource type="Animation" id="Animation_63me8"]
-resource_name = "Hurt"
-length = 0.1
-step = 0.01
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:hframes")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:texture")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("6_0virf")]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_4bk87"]
-resource_name = "Dead"
-length = 0.8
-step = 0.08
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:hframes")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [4]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.08, 0.16, 0.24),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:texture")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("7_xrh8g")]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0virf"]
 _data = {
 &"Chase": SubResource("Animation_xrh8g"),
@@ -243,7 +250,7 @@ size = Vector2(35, 53)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jjppc"]
 size = Vector2(34, 52)
 
-[node name="Batclopse" type="CharacterBody2D" node_paths=PackedStringArray("name_tag", "health_bar", "wall_detector", "ground_detector", "state_machine", "animation_player", "health_component", "sprite", "hurt_box", "hit_box", "hit_state", "dead_state")]
+[node name="Batclopse" type="CharacterBody2D" node_paths=PackedStringArray("name_tag", "health_bar", "wall_detector", "ground_detector", "state_machine", "animation_player", "health_component", "sprite", "hurt_box", "hit_box", "hit_state", "dead_state", "sfx_player")]
 collision_layer = 128
 collision_mask = 2
 script = ExtResource("1_184l8")
@@ -260,6 +267,7 @@ hurt_box = NodePath("HurtBox")
 hit_box = NodePath("HitBox")
 hit_state = NodePath("StateMachine/Hurt")
 dead_state = NodePath("StateMachine/Dead")
+sfx_player = NodePath("SfxPlayer")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(0, -34)
@@ -323,11 +331,17 @@ script = ExtResource("9_63me8")
 idle_state = NodePath("../Idle")
 chase_state = NodePath("../Chase")
 wait_time = 0.32
+generic_impact_1 = ExtResource("15_xjlfg")
+generic_impact_2 = ExtResource("16_b42m5")
+generic_impact_3 = ExtResource("17_bw633")
 animation_name = "Hurt"
 
 [node name="Dead" type="Node" parent="StateMachine"]
 script = ExtResource("10_4bk87")
 wait_time = 0.8
+death_sound_1 = ExtResource("19_3i1dd")
+death_sound_2 = ExtResource("20_0802a")
+death_sound_3 = ExtResource("21_ihpwa")
 animation_name = "Dead"
 
 [node name="WallDetector" parent="." instance=ExtResource("13_63me8")]
@@ -335,6 +349,8 @@ position = Vector2(13, -20)
 
 [node name="GroundDetector" parent="." instance=ExtResource("14_4bk87")]
 position = Vector2(14, -14)
+
+[node name="SfxPlayer" parent="." instance=ExtResource("21_b42m5")]
 
 [node name="HurtBox" parent="." instance=ExtResource("15_qf5ei")]
 position = Vector2(-2, -23)

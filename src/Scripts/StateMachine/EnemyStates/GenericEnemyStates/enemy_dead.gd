@@ -2,6 +2,12 @@ class_name EnemyDead extends State
 
 @export var wait_time : float
 
+@export var death_sound_1 : AudioStream
+@export var death_sound_2 : AudioStream
+@export var death_sound_3 : AudioStream
+
+@onready var death_sounds : Array[AudioStream] = [death_sound_1, death_sound_2, death_sound_3]
+
 func enter() -> void:
 	super()
 	if parent.hit_box:
@@ -12,6 +18,7 @@ func enter() -> void:
 	parent.is_dead = true
 	parent.health_bar.hide()
 	parent.timer.wait_time = wait_time
+	parent.sfx_player.play_sfx(death_sounds.pick_random())
 	parent.timer.start()
 	parent.start_fadeout()
 	

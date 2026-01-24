@@ -1,8 +1,10 @@
-[gd_scene load_steps=11 format=4 uid="uid://b3m3f58qy47jb"]
+[gd_scene load_steps=13 format=4 uid="uid://b3m3f58qy47jb"]
 
 [ext_resource type="Script" uid="uid://b20w1e8n7ilji" path="res://src/Scripts/Maps/Tower/Biome1/floor_1_3.gd" id="1_863wi"]
 [ext_resource type="TileSet" uid="uid://cbwyncwtk5kxk" path="res://src/Scenes/Tower/TowerFloors/Biome1/Biome1-Boundaries.tres" id="2_aybf6"]
 [ext_resource type="TileSet" uid="uid://dr3ft3wh6mi6e" path="res://src/Scenes/Tower/TowerFloors/Biome1/Biome1BGSetPieces1.tres" id="2_i77v6"]
+[ext_resource type="AudioStream" uid="uid://fgrpqq5p7fjq" path="res://Audio/SFX/Biomes/MossyDungeon/Ambience/03 DSGNDron, Dungeon, Ambience, Drone, Dark, Loop.wav" id="2_mdljo"]
+[ext_resource type="PackedScene" uid="uid://mwttdrt2cg71" path="res://src/Scenes/Players/ambience_player.tscn" id="3_la3sh"]
 [ext_resource type="TileSet" uid="uid://cuil6pmpg4xf1" path="res://src/Scenes/Tower/TowerFloors/Biome1/Biome1-Floor.tres" id="3_sfyrd"]
 [ext_resource type="PackedScene" uid="uid://d150vkltffpjo" path="res://src/Scenes/Tower/TowerFloors/CheckPointCampfire.tscn" id="5_llpdw"]
 [ext_resource type="Texture2D" uid="uid://cev7whd13a4oc" path="res://Assets/Tower/Biom1/Blacksmith_NoOutline.png" id="6_ndmld"]
@@ -13,7 +15,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ndmld"]
 size = Vector2(212, 62)
 
-[node name="Floor1-3" type="Node2D" node_paths=PackedStringArray("spawn_point", "camera", "hud")]
+[node name="Floor1-3" type="Node2D" node_paths=PackedStringArray("spawn_point", "camera", "hud", "ambience_player")]
 script = ExtResource("1_863wi")
 map_name = "Floor 1-3"
 map_id = 3
@@ -21,6 +23,10 @@ spawn_point = NodePath("Marker2D")
 camera = NodePath("PlayerCamera")
 hud = NodePath("HUD")
 map_type = 2
+ambience_player = NodePath("AmbiencePlayer")
+ambience_sfx = ExtResource("2_mdljo")
+
+[node name="AmbiencePlayer" parent="." instance=ExtResource("3_la3sh")]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -46.0

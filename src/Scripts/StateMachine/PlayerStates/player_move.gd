@@ -5,12 +5,15 @@ class_name PlayerMove extends State
 @export var idle_state : State
 
 
+@export var move_sfx : AudioStream
+
 func enter() -> void:
 	super()
 	parent.set_sword_texture(animation_name)
+	parent.sfx_player.play_sfx(move_sfx)
 
 func exit() -> void:
-	pass
+	parent.sfx_player.stop()
 
 func process_input(_event: InputEvent) -> State:
 	if Input.is_action_pressed("add_currency") and parent.is_on_floor():

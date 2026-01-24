@@ -3,6 +3,7 @@ class_name PlayerAttack1State extends State
 @export var attack2_state : State
 @export var idle_state : State
 
+@export var swing_sfx : AudioStream
 
 func enter() -> void:
 	super()
@@ -11,6 +12,8 @@ func enter() -> void:
 	parent.timer.wait_time = animation_duration
 	parent.timer.start()
 	parent.velocity = Vector2.ZERO
+	var swing : AudioStream = PlayerStats.get_sword(int(PlayerStats.player_stats["Equipped Sword"])).swing_1
+	parent.sfx_player.play_sfx(swing,3.0)
 
 func exit() -> void:
 	parent.clear_effect_texture()

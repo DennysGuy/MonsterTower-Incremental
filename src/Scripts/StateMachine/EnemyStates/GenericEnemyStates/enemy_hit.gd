@@ -4,11 +4,18 @@ class_name EnemyHit extends State
 @export var chase_state : State
 @export var wait_time : float
 
+@export var generic_impact_1 : AudioStream
+@export var generic_impact_2 : AudioStream
+@export var generic_impact_3 : AudioStream
+
+@onready var impacts : Array[AudioStream] = [generic_impact_1, generic_impact_2, generic_impact_3]
+
 func enter() -> void:
 	super()
 	parent.hurt_box.get_child(0).disabled = true
 	parent.timer.wait_time = wait_time
 	parent.timer.start()
+	parent.sfx_player.play_sfx(impacts.pick_random())
 
 func exit() -> void:
 	parent.hurt_box.get_child(0).disabled = false

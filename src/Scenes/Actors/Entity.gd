@@ -13,6 +13,9 @@ class_name Entity extends CharacterBody2D
 @export var hit_state : State
 @export var dead_state : State
 
+@export_group("Audio")
+@export var sfx_player : AudioStreamPlayer
+
 var damageable : bool = true
 var is_dead : bool = false
 var prev_dir : int = 1

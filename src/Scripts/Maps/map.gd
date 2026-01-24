@@ -17,6 +17,9 @@ enum MAP_TYPE {HUB, FLOOR, CHECKPOINT_FLOOR}
 
 var player : Player
 
+@export var ambience_player : AudioStreamPlayer
+@export var ambience_sfx : AudioStream
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	SignalBus.move_to_next_room.connect(move_to_next_room)
@@ -33,7 +36,11 @@ func _ready() -> void:
 		
 		if map_type ==	MAP_TYPE.FLOOR or map_type == MAP_TYPE.CHECKPOINT_FLOOR:
 				hud.start_expedition_timer()
-			
+	
+	if ambience_player and ambience_sfx:
+		ambience_player.stream = ambience_sfx
+		ambience_player.play()
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass

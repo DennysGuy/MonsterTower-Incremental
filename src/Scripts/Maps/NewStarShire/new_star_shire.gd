@@ -24,6 +24,8 @@ var player_in_crafting_range : bool = false
 @onready var temp_cooking_range: CookingRangeGraphic = $TempCookingRange
 @onready var temp_smelting_station: SmeltingStationGraphic = $TempSmeltingStation
 
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super()
