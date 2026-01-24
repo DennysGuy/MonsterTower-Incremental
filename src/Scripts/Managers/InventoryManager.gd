@@ -100,6 +100,10 @@ func remove_item(inventory_name : String, item : Item, quantity : int = 1) -> bo
 
 	return false
 
+func clear_bag() -> void:
+	var bag : Array = inventories["Inventory"]
+	for item in bag :
+		bag.erase(item)
 
 #this will only run when we know we can remove them.
 func remove_resources_from_inventory(recipe_list : Array[Dictionary]) -> void:

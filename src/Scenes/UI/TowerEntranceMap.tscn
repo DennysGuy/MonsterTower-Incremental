@@ -185,13 +185,24 @@ text = "The Tower"
 
 [node name="Title2" type="Label" parent="."]
 layout_mode = 0
-offset_left = 77.0
-offset_top = 70.0
-offset_right = 210.0
-offset_bottom = 84.0
+offset_left = 398.0
+offset_top = 68.0
+offset_right = 569.0
+offset_bottom = 82.0
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("3_m7ed0")
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 12
 text = "Select an Entrance Point..."
+
+[node name="TimeLimit" type="Label" parent="."]
+layout_mode = 0
+offset_left = 78.0
+offset_top = 67.0
+offset_right = 349.0
+offset_bottom = 81.0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("4_fqkg3")
+theme_override_font_sizes/font_size = 14
+text = "Expedition Time Limit: 1130 seconds"
 
 [connection signal="button_up" from="FloorDescriptionPanel/GoToFloor" to="." method="_on_go_to_floor_button_up"]
