@@ -252,6 +252,7 @@ limit_top = 150
 limit_bottom = 510
 
 [node name="HUD" parent="." instance=ExtResource("6_o6iow")]
+visible = false
 
 [node name="LadderArea" parent="." node_paths=PackedStringArray("ladder_top", "ladder_bottom") instance=ExtResource("7_csukg")]
 position = Vector2(542, 391)
