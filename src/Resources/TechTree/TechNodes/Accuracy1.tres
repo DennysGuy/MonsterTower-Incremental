@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="TechNodeStats" load_steps=3 format=3 uid="uid://by1j5ly8stwkj"]
+
+[ext_resource type="Script" uid="uid://cu8drgivmhfn" path="res://src/Scripts/item.gd" id="1_gwhb2"]
+[ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="2_o372j"]
+
+[resource]
+script = ExtResource("2_o372j")
+node_name = "Accuracy 1"
+description = "Increase Damage Range by +1"
+max_level = 3
+currency_required = 80
+stat_name = "Accuracy"
+upgrade_interval = 0.1
+metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

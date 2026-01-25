@@ -2,6 +2,7 @@ class_name TechNode extends Node2D
 
 @export var tech_node_stats : TechNodeStats
 @onready var icon: Sprite2D = $Icon
+@onready var bg: Sprite2D = $BG
 
 @onready var tool_tip_marker: Marker2D = $ToolTipMarker
 
@@ -13,6 +14,9 @@ var mouse_entered : bool = false
 var can_click : bool = false
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
+const NODE_BASE_DISABLED_V_2 = preload("uid://172gew05sy1s")
+const NODE_BASE_ENABLED_V_2 = preload("uid://bq14rlsnw3mdh")
+
 var total_bonus : float = 0.0
 
 # Called when the node enters the scene tree for the first time.
@@ -20,8 +24,13 @@ func _ready() -> void:
 	set_level_label()
 	if tech_node_stats.unlocked:
 		show()
+		if can_click:
+			bg.texture = NODE_BASE_ENABLED_V_2
+		else:
+			bg.texture = NODE_BASE_DISABLED_V_2
 	else:
 		hide()
+		
 	
 	icon.texture = tech_node_stats.icon
 	TechTreeManager.check_node_prereqs.connect(check_prereqs)

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="TechNodeStats" load_steps=4 format=3 uid="uid://ll3jw1v5omml"]
+
+[ext_resource type="Texture2D" uid="uid://bewj10kfhrc2u" path="res://Assets/NodeGraphics/CritChance1Icon.png" id="1_28dln"]
+[ext_resource type="Script" uid="uid://cu8drgivmhfn" path="res://src/Scripts/item.gd" id="2_p8gha"]
+[ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="3_vboa6"]
+
+[resource]
+script = ExtResource("3_vboa6")
+node_name = "Crit Chance 2"
+icon = ExtResource("1_28dln")
+description = "Each level adds an additional %2 to weapon crit chance for a total of +15% when maxed out. "
+max_level = 3
+currency_required = 75
+stat_name = "Crit Chance"
+upgrade_interval = 0.05
+prereqs = Array[String](["Attack 1:1"])
+metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

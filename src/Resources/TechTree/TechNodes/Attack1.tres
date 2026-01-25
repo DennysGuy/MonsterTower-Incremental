@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="TechNodeStats" load_steps=3 format=3 uid="uid://1gmjr0davgp4"]
 
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_cgde1"]
-[ext_resource type="Texture2D" uid="uid://clhif66dqimyi" path="res://Assets/NodeGraphics/SwordAttack1Icon.png" id="1_lepj1"]
+[ext_resource type="Texture2D" uid="uid://dsesi3w45ebyc" path="res://Assets/NodeGraphics/NodeGraphicsV2/SwordAttack1_V2.png" id="1_lepj1"]
 
 [resource]
 script = ExtResource("1_cgde1")

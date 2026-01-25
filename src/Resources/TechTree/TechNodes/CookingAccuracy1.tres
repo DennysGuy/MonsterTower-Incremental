@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="TechNodeStats" load_steps=3 format=3 uid="uid://ub5h4g7g447"]
+
+[ext_resource type="Script" uid="uid://cu8drgivmhfn" path="res://src/Scripts/item.gd" id="1_qoj4s"]
+[ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="2_082s8"]
+
+[resource]
+script = ExtResource("2_082s8")
+node_name = "Cooking Accuracy 1"
+metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

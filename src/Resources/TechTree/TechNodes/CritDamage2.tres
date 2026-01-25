@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="TechNodeStats" load_steps=4 format=3 uid="uid://c6lrtgrld7bx1"]
+
+[ext_resource type="Texture2D" uid="uid://1bu6wnhvx6xw" path="res://Assets/NodeGraphics/CritDamage1Icon.png" id="1_4ah6g"]
+[ext_resource type="Script" uid="uid://cu8drgivmhfn" path="res://src/Scripts/item.gd" id="2_g5jmf"]
+[ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="3_326nj"]
+
+[resource]
+script = ExtResource("3_326nj")
+node_name = "Crit Damage 2"
+icon = ExtResource("1_4ah6g")
+description = "Each level upgrades crit damage by 5% for a total of 25% added crit damage when maxed out."
+max_level = 5
+currency_required = 80
+stat_name = "Crit Damage"
+upgrade_interval = 0.05
+prereqs = Array[String](["Attack 1:1", "Crit Chance 1:1"])
+metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

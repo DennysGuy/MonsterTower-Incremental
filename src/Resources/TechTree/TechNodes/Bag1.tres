@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="TechNodeStats" load_steps=3 format=3 uid="uid://ivbqmo1636sm"]
 
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_5ehxb"]
-[ext_resource type="Texture2D" uid="uid://dxulxwyjghiqb" path="res://Assets/NodeGraphics/ItemBag1.png" id="1_fhxuj"]
+[ext_resource type="Texture2D" uid="uid://dix63priuogkk" path="res://Assets/NodeGraphics/NodeGraphicsV2/Bag1_V2.png" id="1_fhxuj"]
 
 [resource]
 script = ExtResource("1_5ehxb")
