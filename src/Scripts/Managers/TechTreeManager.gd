@@ -28,11 +28,15 @@ signal unlock_cooking_station
 @warning_ignore("unused_signal")
 signal unlock_refinery
 
+@warning_ignore("unused_signal")
+signal check_if_can_purchase_node
+
 var currency : int = 0
 var current_prestige : int = 0
 
 var current_upgrade_count : int = 0
 var upgrade_count_to_prestige : int = 0
+
 
 enum TECH_NODE_TYPE {ABILITY, FACILITY}
 

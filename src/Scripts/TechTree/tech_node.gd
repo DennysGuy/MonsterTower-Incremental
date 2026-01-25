@@ -16,24 +16,30 @@ var can_click : bool = false
 
 const NODE_BASE_DISABLED_V_2 = preload("uid://172gew05sy1s")
 const NODE_BASE_ENABLED_V_2 = preload("uid://bq14rlsnw3mdh")
+const NODE_BASE_UNLOCKED_V_2 = preload("uid://bdbeuw5un1m3o")
 
 var total_bonus : float = 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	TechTreeManager.check_node_prereqs.connect(check_prereqs)
+	TechTreeManager.check_if_can_purchase_node.connect(check_if_can_purchase)
 	set_level_label()
 	if tech_node_stats.unlocked:
 		show()
 		if can_click:
 			bg.texture = NODE_BASE_ENABLED_V_2
 		else:
-			bg.texture = NODE_BASE_DISABLED_V_2
+			if tech_node_stats.current_level >= tech_node_stats.max_level:
+				bg.texture = NODE_BASE_UNLOCKED_V_2
+			else:
+				bg.texture = NODE_BASE_DISABLED_V_2
 	else:
 		hide()
 		
 	
 	icon.texture = tech_node_stats.icon
-	TechTreeManager.check_node_prereqs.connect(check_prereqs)
+
 	node_type = tech_node_stats.node_type
 	check_if_can_purchase()
 
@@ -55,7 +61,7 @@ func _on_click_area_mouse_exited() -> void:
 
 
 func _on_click_area_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if can_click and TechTreeManager.currency < tech_node_stats.currency_required:
+	if can_click and TechTreeManager.currency < tech_node_stats.currency_required and has_resource_quantity():
 		print("Not enough currency!")
 		return
 	
@@ -66,30 +72,40 @@ func _on_click_area_input_event(viewport: Node, event: InputEvent, shape_idx: in
 		TechTreeManager.increment_upgrade_count()
 		PlayerStats.upgrade_player_stat(tech_node_stats.stat_name,tech_node_stats.upgrade_interval, node_type)
 		deduct_currency()
+		deduct_resources()
 		
 		if tech_node_stats.upgrade_interval > 0:
 			total_bonus += tech_node_stats.upgrade_interval
 			TechTreeManager.update_tool_tip_info.emit(total_bonus)
 			#update label here
 		
-		if tech_node_stats.current_level == tech_node_stats.max_level:
-			can_click = false
-	
 		#print("this is val of dict node before hand: %s" % [TechTreeManager.tech_nodes[tech_node_stats.node_name]])
 		TechTreeManager.tech_nodes[tech_node_stats.node_name] += 1
 		set_level_label()
 		#print("this is val of dict node after: %s" % [TechTreeManager.tech_nodes[tech_node_stats.node_name]] )
+		check_if_can_purchase()
 		TechTreeManager.check_node_prereqs.emit()
+		TechTreeManager.check_if_can_purchase_node.emit()
 
 func deduct_currency() -> void:
 	TechTreeManager.currency -= tech_node_stats.currency_required
 	TechTreeManager.update_currency_label.emit()
 
+func deduct_resources() -> void:
+	InventoryManager.remove_resources_from_inventory(tech_node_stats.materials_required)
+
 func check_if_can_purchase() -> void:
-	if tech_node_stats.current_level == tech_node_stats.max_level:
+	if tech_node_stats.current_level >= tech_node_stats.max_level:
 		can_click = false
-	elif TechTreeManager.currency >= tech_node_stats.currency_required:
+		if tech_node_stats.current_level >= tech_node_stats.max_level:
+			bg.texture = NODE_BASE_UNLOCKED_V_2
+	elif TechTreeManager.currency >= tech_node_stats.currency_required and has_resource_quantity():
 		can_click = true
+		bg.texture = NODE_BASE_ENABLED_V_2
+	else:
+		can_click = false
+		bg.texture = NODE_BASE_DISABLED_V_2
+		
 
 func check_prereqs() -> void:
 	if !tech_node_stats.unlocked:
@@ -105,7 +121,6 @@ func check_prereqs() -> void:
 			unlock_node()
 
 func unlock_node() -> void:
-	print("WE'VE MET ALL REQUIREMENTS!")
 	tech_node_stats.unlocked = true
 	check_if_can_purchase()
 	show()
@@ -138,3 +153,14 @@ func create_tool_tip() -> void:
 	tool_tip.cost.text = "Cost: %s" % [tech_node_stats.currency_required]
 	tool_tip.position = tool_tip_marker.position
 	add_child(tool_tip)
+
+func has_resource_quantity() -> bool:
+	if tech_node_stats.materials_required.size() <= 0:
+		return true
+	
+	for resource in tech_node_stats.materials_required:
+		for item in resource.keys():
+			if InventoryManager.get_quantity(item) >= resource[item]:
+				return true
+	
+	return false

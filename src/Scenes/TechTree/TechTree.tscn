@@ -1,7 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://b7n3fwd3y85wp"]
+[gd_scene load_steps=14 format=3 uid="uid://b7n3fwd3y85wp"]
 
 [ext_resource type="Script" uid="uid://nb5nyiymrgyp" path="res://src/Scripts/TechTree/tech_tree.gd" id="1_1fw0b"]
+[ext_resource type="Resource" uid="uid://bpf2kexi3o22s" path="res://src/Resources/TechTree/TechNodes/TowerPass.tres" id="3_lqswy"]
+[ext_resource type="Resource" uid="uid://1gmjr0davgp4" path="res://src/Resources/TechTree/TechNodes/Attack1.tres" id="4_a6tc3"]
+[ext_resource type="PackedScene" uid="uid://bhimqkbcn26r2" path="res://src/Scenes/TechTree/TechNode.tscn" id="5_2ltmf"]
+[ext_resource type="Resource" uid="uid://bqgnafgyrs4m4" path="res://src/Resources/TechTree/TechNodes/Attack2.tres" id="5_wj3rp"]
+[ext_resource type="Resource" uid="uid://cmy8gsm0hbovg" path="res://src/Resources/TechTree/TechNodes/CritChance1.tres" id="6_wj3rp"]
+[ext_resource type="Resource" uid="uid://ttsaddae3bcr" path="res://src/Resources/TechTree/TechNodes/CritDamage1.tres" id="7_6pqgd"]
+[ext_resource type="Resource" uid="uid://ll3jw1v5omml" path="res://src/Resources/TechTree/TechNodes/CritChance2.tres" id="8_7l0yi"]
+[ext_resource type="Resource" uid="uid://by1j5ly8stwkj" path="res://src/Resources/TechTree/TechNodes/Accuracy1.tres" id="8_dwtca"]
 [ext_resource type="Texture2D" uid="uid://dt4v1cc43wq4u" path="res://Assets/NodeGraphics/WASD-Controls-Icon.png" id="9_6pqgd"]
+[ext_resource type="Resource" uid="uid://c6lrtgrld7bx1" path="res://src/Resources/TechTree/TechNodes/CritDamage2.tres" id="9_dkx06"]
 [ext_resource type="Script" uid="uid://co4ox6rujyeod" path="res://src/Scripts/TechTree/tech_tree_camera.gd" id="9_wj3rp"]
 [ext_resource type="PackedScene" uid="uid://bevb4v64mvbbg" path="res://src/Scenes/TechTree/PlayerStatsPanel.tscn" id="10_7l0yi"]
 
@@ -17,6 +26,69 @@ mouse_filter = 2
 color = Color(0.103743516, 0.10374353, 0.103743516, 1)
 
 [node name="Nodes" type="Node" parent="."]
+
+[node name="TowerPassNode" parent="Nodes" instance=ExtResource("5_2ltmf")]
+position = Vector2(640, 359)
+tech_node_stats = ExtResource("3_lqswy")
+node_type = 1
+
+[node name="Attack1Node" parent="Nodes" instance=ExtResource("5_2ltmf")]
+position = Vector2(715, 252)
+tech_node_stats = ExtResource("4_a6tc3")
+
+[node name="Line2D" type="Line2D" parent="Nodes/Attack1Node"]
+points = PackedVector2Array(-11, 8, -70, 97)
+width = 3.0
+
+[node name="Attack2Node" parent="Nodes" instance=ExtResource("5_2ltmf")]
+position = Vector2(779, 252)
+tech_node_stats = ExtResource("5_wj3rp")
+
+[node name="Line2D" type="Line2D" parent="Nodes/Attack2Node"]
+points = PackedVector2Array(-16, 0, -52, 0)
+width = 3.0
+
+[node name="CritChance1Node" parent="Nodes" instance=ExtResource("5_2ltmf")]
+position = Vector2(715, 208)
+tech_node_stats = ExtResource("6_wj3rp")
+
+[node name="Line2D" type="Line2D" parent="Nodes/CritChance1Node"]
+points = PackedVector2Array(-2, 14, -2, 30)
+width = 3.0
+
+[node name="CritDamage1Node" parent="Nodes" instance=ExtResource("5_2ltmf")]
+position = Vector2(715, 294)
+tech_node_stats = ExtResource("7_6pqgd")
+
+[node name="Line2D" type="Line2D" parent="Nodes/CritDamage1Node"]
+points = PackedVector2Array(-2, -14, -2, -28)
+width = 3.0
+
+[node name="Accuracy1Node" parent="Nodes" instance=ExtResource("5_2ltmf")]
+position = Vector2(715, 162)
+tech_node_stats = ExtResource("8_dwtca")
+
+[node name="Line2D" type="Line2D" parent="Nodes/Accuracy1Node"]
+position = Vector2(1, 0)
+points = PackedVector2Array(-3, 14, -3, 32)
+width = 3.0
+
+[node name="CritChance2Node" parent="Nodes" instance=ExtResource("5_2ltmf")]
+position = Vector2(779, 208)
+tech_node_stats = ExtResource("8_7l0yi")
+
+[node name="Line2D" type="Line2D" parent="Nodes/CritChance2Node"]
+points = PackedVector2Array(-2, 14, -2, 30)
+width = 3.0
+
+[node name="CritDamage2Node" parent="Nodes" instance=ExtResource("5_2ltmf")]
+position = Vector2(779, 294)
+tech_node_stats = ExtResource("9_dkx06")
+
+[node name="Line2D" type="Line2D" parent="Nodes/CritDamage2Node"]
+position = Vector2(1, 0)
+points = PackedVector2Array(-3, -14, -3, -28)
+width = 3.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

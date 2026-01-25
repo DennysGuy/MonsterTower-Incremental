@@ -6,6 +6,8 @@ class_name ToolTip extends Node2D
 @export var description: RichTextLabel
 @export var cost: Label
 
+@onready var resources_list: GridContainer = $ToolTip/ResourcesList
+
 @export var tech_node_stats : TechNodeStats
 
 # Called when the node enters the scene tree for the first time.
@@ -13,6 +15,14 @@ func _ready() -> void:
 	TechTreeManager.update_tool_tip_info.connect(update_info)
 	animation_player.play("SpawnIn")
 
+	if tech_node_stats.materials_required.size() > 0:
+		for ingredient in tech_node_stats.materials_required:
+			var ingredient_menu_item : IngredientItem = preload("uid://dil4081ni1hb3").instantiate()
+			for key in ingredient.keys():
+				ingredient_menu_item.ingredient_icon.texture = key.shop_icon
+				ingredient_menu_item.quantity.text = "%s x%s" % [key.item_name, ingredient[key]]
+			
+			resources_list.add_child(ingredient_menu_item)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
