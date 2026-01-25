@@ -14,6 +14,12 @@ class_name GrandMarketMenu extends Control
 
 @onready var sell_all_button: Button = $SellAllButton
 
+@onready var sfx_player: SFXPlayer = $SfxPlayer
+
+
+const SELL_ITEM = preload("uid://dasd38kajjc2r")
+
+
 var selected_item : Item
 var selected_inventory : String
 # Called when the node enters the scene tree for the first time.
@@ -42,6 +48,7 @@ func _on_sell_all_button_button_up() -> void:
 func _on_sell_button_button_up() -> void:
 	print(selected_inventory)
 	if InventoryManager.remove_item(selected_inventory, selected_item):
+		sfx_player.play_sfx(SELL_ITEM,0,true)
 		TechTreeManager.currency += selected_item.sell_value
 		match selected_inventory:
 			"Bank":
@@ -85,4 +92,5 @@ func sell_all_items(container : GridContainer, inventory_name : String) -> void:
 				TechTreeManager.currency += slot["item"].sell_value
 				InventoryManager.update_grid_container(container, inventory_name)
 				currency.text = "Currency: %s" % [TechTreeManager.currency]
+				sfx_player.play_sfx(SELL_ITEM)
 				await get_tree().create_timer(0.1).timeout

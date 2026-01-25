@@ -7,6 +7,12 @@ class_name ExpeditionResultsScreen extends Control
 
 @onready var to_town: Button = $ResultsPanel/ToTown
 @onready var new_run: Button = $ResultsPanel/NewRun
+@onready var sfx_player: SFXPlayer = $SfxPlayer
+
+const TRANSFER_TO_BANK = preload("uid://ddk7o6mnyi7ji")
+const CLOSE_IN = preload("uid://dc3va7knibxnb")
+const CLOSE_OUT = preload("uid://caj0oih8j2sty")
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -54,7 +60,14 @@ func move_inventory_to_bank() -> void:
 				InventoryManager.remove_item("Inventory", item)
 				InventoryManager.update_grid_container(inventory_container, "Inventory")
 				InventoryManager.update_grid_container(bank_container, "Bank")
+				sfx_player.play_sfx(TRANSFER_TO_BANK, 0, true)
 				await get_tree().create_timer(0.1).timeout
 
 	to_town.disabled = false
 	new_run.disabled = false
+
+func play_close_out_sfx() -> void:
+	sfx_player.play_sfx(CLOSE_OUT)
+
+func play_close_in_sfx() -> void:
+	sfx_player.play_sfx(CLOSE_IN)

@@ -185,10 +185,10 @@ text = "The Tower"
 
 [node name="Title2" type="Label" parent="."]
 layout_mode = 0
-offset_left = 398.0
-offset_top = 68.0
-offset_right = 569.0
-offset_bottom = 82.0
+offset_left = 117.0
+offset_top = 155.0
+offset_right = 263.0
+offset_bottom = 169.0
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("3_m7ed0")
 theme_override_font_sizes/font_size = 12

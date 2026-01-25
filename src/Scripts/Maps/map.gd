@@ -10,6 +10,7 @@ class_name Map extends Node2D
 @export var ore_rock_markers : Node
 
 @export var next_room_path : String
+@export var sfx_player : AudioStreamPlayer
 
 enum MAP_TYPE {HUB, FLOOR, CHECKPOINT_FLOOR}
 
@@ -76,3 +77,5 @@ func spawn_ore_rocks() -> void:
 	for ore_rock_marker in ore_rock_markers.get_children():
 			if roll_ore_spawn_chance():
 				ore_rock_marker.spawn_ore_rock()
+
+	

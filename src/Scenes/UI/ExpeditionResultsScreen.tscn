@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://dc22m3kbxdi50"]
+[gd_scene load_steps=14 format=3 uid="uid://dc22m3kbxdi50"]
 
 [ext_resource type="Script" uid="uid://b3dtngntwfdw8" path="res://src/Scripts/HUD/expedition_results_screen.gd" id="1_qg4s7"]
 [ext_resource type="Shader" uid="uid://bg20bvdcwspb" path="res://src/Scenes/UI/ExpeditionResultsScreen.gdshader" id="2_cbct7"]
 [ext_resource type="Texture2D" uid="uid://dejy6ivtgw1rl" path="res://Assets/HUD/TempResultsScreenBG.png" id="3_qyln5"]
 [ext_resource type="Texture2D" uid="uid://mmjc1ci2ofjv" path="res://Assets/HUD/TempResultsScreen_Panel.png" id="4_qyln5"]
 [ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="5_47265"]
+[ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="7_ee4bn"]
 [ext_resource type="FontFile" uid="uid://qgj228ltdttv" path="res://Assets/Fonts/alagard.ttf" id="7_xwhdp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_47265"]
@@ -65,6 +66,20 @@ tracks/3/keys = {
 "method": &"go_to_tower"
 }]
 }
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_close_in_sfx"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_xwhdp"]
 resource_name = "CloseIn_Town"
@@ -112,9 +127,12 @@ tracks/3/path = NodePath(".")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(1.6),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1.6),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
+"args": [],
+"method": &"play_close_in_sfx"
+}, {
 "args": [],
 "method": &"go_to_starshire"
 }]
@@ -158,6 +176,20 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(0, 360), Vector2(0, 360), Vector2(0, 0)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_close_out_sfx"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_ee4bn"]
@@ -461,6 +493,8 @@ color = Color(0, 0, 0, 1)
 libraries = {
 &"": SubResource("AnimationLibrary_ra32m")
 }
+
+[node name="SfxPlayer" parent="." instance=ExtResource("7_ee4bn")]
 
 [connection signal="button_up" from="ResultsPanel/ToTown" to="." method="_on_to_town_button_up"]
 [connection signal="button_up" from="ResultsPanel/NewRun" to="." method="_on_new_run_button_up"]

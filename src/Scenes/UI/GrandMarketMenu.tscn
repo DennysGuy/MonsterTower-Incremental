@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cfuw5h0apwpq"]
+[gd_scene load_steps=7 format=3 uid="uid://cfuw5h0apwpq"]
 
 [ext_resource type="Script" uid="uid://dlw0u5lkpm11w" path="res://src/Scripts/HUD/grand_market_menu.gd" id="1_72318"]
 [ext_resource type="Texture2D" uid="uid://cd4laeng77f8o" path="res://Assets/HUD/Facilities/GrandMarketMenu.png" id="1_gosvc"]
 [ext_resource type="FontFile" uid="uid://qgj228ltdttv" path="res://Assets/Fonts/alagard.ttf" id="2_oo3yc"]
 [ext_resource type="Texture2D" uid="uid://bkj0kj26ahgl8" path="res://Assets/Enemies/CorruptedMushie/PurifiedMushieCore.png" id="4_x7u5n"]
 [ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="5_oesmi"]
+[ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="6_cr4yk"]
 
 [node name="GrandMarketMenu" type="Control"]
 layout_mode = 3
@@ -244,6 +245,8 @@ theme_override_fonts/font = ExtResource("2_oo3yc")
 theme_override_font_sizes/font_size = 12
 text = "Unlock Bank 
 to Access Slots!"
+
+[node name="SfxPlayer" parent="." instance=ExtResource("6_cr4yk")]
 
 [connection signal="button_up" from="DetailsPanel/SellButton" to="." method="_on_sell_button_button_up"]
 [connection signal="button_up" from="SellAllButton" to="." method="_on_sell_all_button_button_up"]

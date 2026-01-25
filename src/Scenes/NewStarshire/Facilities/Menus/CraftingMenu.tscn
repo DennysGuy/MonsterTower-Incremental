@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://cc1xppx3tkq4f"]
+[gd_scene load_steps=12 format=3 uid="uid://cc1xppx3tkq4f"]
 
 [ext_resource type="Script" uid="uid://cbuffb253p3na" path="res://src/Scripts/Facilities/Menus/crafting_menu.gd" id="1_1fqc8"]
 [ext_resource type="Texture2D" uid="uid://cfo2whg1w2q42" path="res://Assets/Facilities/CraftingStationMenu.png" id="2_lfawm"]
+[ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="2_octel"]
 [ext_resource type="FontFile" uid="uid://qgj228ltdttv" path="res://Assets/Fonts/alagard.ttf" id="3_1tol8"]
 [ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="4_1tol8"]
 [ext_resource type="PackedScene" uid="uid://dil4081ni1hb3" path="res://src/Scenes/NewStarshire/Facilities/IngredientsMenuItem.tscn" id="5_re6m4"]
@@ -66,6 +67,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_1fqc8")
+
+[node name="SfxPlayer" parent="." instance=ExtResource("2_octel")]
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1

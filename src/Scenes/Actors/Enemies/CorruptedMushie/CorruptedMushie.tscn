@@ -295,7 +295,7 @@ size = Vector2(23, 30)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v37cp"]
 size = Vector2(23, 30)
 
-[node name="CorruptedMushie" type="CharacterBody2D" node_paths=PackedStringArray("name_tag", "health_bar", "wall_detector", "ground_detector", "state_machine", "animation_player", "health_component", "sprite", "hurt_box", "hit_box", "hit_state", "dead_state", "sfx_player") groups=["Enemy"]]
+[node name="CorruptedMushie" type="CharacterBody2D" node_paths=PackedStringArray("name_tag", "health_bar", "wall_detector", "ground_detector", "state_machine", "animation_player", "health_component", "sprite", "blink_timer", "hurt_box", "hit_box", "hit_state", "dead_state", "sfx_player") groups=["Enemy"]]
 collision_layer = 128
 collision_mask = 2
 script = ExtResource("1_uospo")
@@ -308,6 +308,7 @@ state_machine = NodePath("StateMachine")
 animation_player = NodePath("AnimationPlayer")
 health_component = NodePath("HealthComponent")
 sprite = NodePath("Sprite2D")
+blink_timer = NodePath("BlinkTimer")
 hurt_box = NodePath("HurtBox")
 hit_box = NodePath("HitBox")
 hit_state = NodePath("StateMachine/Hit")
@@ -409,6 +410,11 @@ process_callback = 0
 one_shot = true
 
 [node name="ItemHolder" type="Node" parent="."]
+
+[node name="BlinkTimer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 0.1
+one_shot = true
 
 [connection signal="update_health_bar" from="HealthComponent" to="." method="_on_health_component_update_health_bar"]
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]

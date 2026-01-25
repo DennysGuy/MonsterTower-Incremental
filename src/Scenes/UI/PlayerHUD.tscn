@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dysg5kffvxbql"]
+[gd_scene load_steps=19 format=3 uid="uid://dysg5kffvxbql"]
 
 [ext_resource type="Texture2D" uid="uid://b2wm5vfsi7r26" path="res://Assets/HUD/PlayerHPBar_Bar.png" id="1_eowti"]
 [ext_resource type="Script" uid="uid://dsdtoyyjdprcp" path="res://src/Scripts/HUD/player_hud.gd" id="1_m8qo1"]
@@ -7,6 +7,7 @@
 [ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="5_nt012"]
 [ext_resource type="PackedScene" uid="uid://bih3bekt2ixjn" path="res://src/Scenes/UI/Bag.tscn" id="6_g1bs5"]
 [ext_resource type="PackedScene" uid="uid://dngkcgpb2st7c" path="res://src/Scenes/UI/ExpeditionTimer.tscn" id="7_g3oel"]
+[ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="8_65fhw"]
 
 [sub_resource type="Animation" id="Animation_g1bs5"]
 resource_name = "CloseIn"
@@ -35,6 +36,20 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(0, -185), Vector2(0, -362)]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_close_in_sfx"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_m8qo1"]
 resource_name = "CloseOut"
@@ -61,6 +76,20 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(0, -362), Vector2(0, -185)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_close_out_sfx"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_hl0sk"]
@@ -347,6 +376,8 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
+
+[node name="SfxPlayer" parent="." instance=ExtResource("8_65fhw")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

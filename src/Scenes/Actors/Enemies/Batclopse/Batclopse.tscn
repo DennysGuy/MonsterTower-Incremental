@@ -250,7 +250,7 @@ size = Vector2(35, 53)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jjppc"]
 size = Vector2(34, 52)
 
-[node name="Batclopse" type="CharacterBody2D" node_paths=PackedStringArray("name_tag", "health_bar", "wall_detector", "ground_detector", "state_machine", "animation_player", "health_component", "sprite", "hurt_box", "hit_box", "hit_state", "dead_state", "sfx_player")]
+[node name="Batclopse" type="CharacterBody2D" node_paths=PackedStringArray("name_tag", "health_bar", "wall_detector", "ground_detector", "state_machine", "animation_player", "health_component", "sprite", "blink_timer", "hurt_box", "hit_box", "hit_state", "dead_state", "sfx_player")]
 collision_layer = 128
 collision_mask = 2
 script = ExtResource("1_184l8")
@@ -263,6 +263,7 @@ state_machine = NodePath("StateMachine")
 animation_player = NodePath("AnimationPlayer")
 health_component = NodePath("HealthComponent")
 sprite = NodePath("Sprite")
+blink_timer = NodePath("BlinkTimer")
 hurt_box = NodePath("HurtBox")
 hit_box = NodePath("HitBox")
 hit_state = NodePath("StateMachine/Hurt")
@@ -365,6 +366,11 @@ position = Vector2(-1, -26)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 position = Vector2(-2, 0)
 shape = SubResource("RectangleShape2D_jjppc")
+
+[node name="BlinkTimer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 0.1
+one_shot = true
 
 [connection signal="update_health_bar" from="HealthComponent" to="." method="_on_health_component_update_health_bar"]
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]

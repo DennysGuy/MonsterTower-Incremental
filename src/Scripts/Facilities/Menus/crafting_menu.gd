@@ -13,6 +13,9 @@ class_name CraftingStationMenu extends Control
 @onready var bank_notice: Label = $BankNotice
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
+@onready var sfx_player: SFXPlayer = $SfxPlayer
+const CRAFT_SWORD = preload("uid://4c6l1w0kpar3")
+
 var sword : Sword
 @onready var button: Button = $Button
 
@@ -28,6 +31,8 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_button_button_up() -> void:
+	sfx_player.play_sfx(CRAFT_SWORD)
+	await get_tree().create_timer(1.5).timeout
 	animation_player.play("CraftingFlash")
 
 func upgrade_sword() -> void:

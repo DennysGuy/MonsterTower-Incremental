@@ -24,6 +24,8 @@ var player_in_crafting_range : bool = false
 @onready var temp_cooking_range: CookingRangeGraphic = $TempCookingRange
 @onready var temp_smelting_station: SmeltingStationGraphic = $TempSmeltingStation
 
+const CRAFT_SWORD = preload("uid://4c6l1w0kpar3")
+const UNLOCK_SHOP = preload("uid://cveiqvxm5r0yw")
 
 
 # Called when the node enters the scene tree for the first time.
@@ -169,8 +171,9 @@ func unlock_cooking_station() -> void:
 	GameManager.player_can_move = false
 	hud.animation_player.play("FadeInOut")
 	await get_tree().create_timer(0.5).timeout
+	sfx_player.play_sfx(UNLOCK_SHOP)
 	camera.position = cooking_range_position.position
-	await get_tree().create_timer(1.5).timeout
+	await get_tree().create_timer(1.0).timeout
 	hud.animation_player.play("Flash")
 	await get_tree().create_timer(0.5).timeout
 	temp_cooking_range.unlock_station()
@@ -190,8 +193,9 @@ func unlock_refinery_station() -> void:
 	GameManager.player_can_move = false
 	hud.animation_player.play("FadeInOut")
 	await get_tree().create_timer(0.5).timeout
+	sfx_player.play_sfx(UNLOCK_SHOP)
 	camera.position = refinery_position.position
-	await get_tree().create_timer(1.5).timeout
+	await get_tree().create_timer(1.0).timeout
 	hud.animation_player.play("Flash")
 	await get_tree().create_timer(0.5).timeout
 	temp_smelting_station.unlock_station()

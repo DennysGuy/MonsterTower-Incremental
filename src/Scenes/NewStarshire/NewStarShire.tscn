@@ -1,7 +1,8 @@
-[gd_scene load_steps=41 format=4 uid="uid://oonjrpabmces"]
+[gd_scene load_steps=42 format=4 uid="uid://oonjrpabmces"]
 
 [ext_resource type="Script" uid="uid://dpqc54c34418w" path="res://src/Scripts/Maps/NewStarShire/new_star_shire.gd" id="1_gq00g"]
 [ext_resource type="Texture2D" uid="uid://c21ee30haolx4" path="res://Assets/EnvironmentalAssets/TowerDistance.png" id="2_bl45m"]
+[ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="2_te0bi"]
 [ext_resource type="Texture2D" uid="uid://h2v184xkm5tc" path="res://Assets/EnvironmentalAssets/StarshireTempAssets.png" id="3_5xris"]
 [ext_resource type="TileSet" uid="uid://b74l1awtkdty5" path="res://src/Scenes/NewStarshire/TempWallTiles.tres" id="3_oik5f"]
 [ext_resource type="Texture2D" uid="uid://m1hch071kuxp" path="res://Assets/EnvironmentalAssets/Ship.png" id="3_te0bi"]
@@ -772,12 +773,15 @@ size = Vector2(21, 78)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jhqac"]
 size = Vector2(20, 375)
 
-[node name="NewStarShire" type="Node2D" node_paths=PackedStringArray("spawn_point", "camera", "hud")]
+[node name="NewStarShire" type="Node2D" node_paths=PackedStringArray("spawn_point", "camera", "hud", "sfx_player")]
 script = ExtResource("1_gq00g")
 map_name = "New Starshire"
 spawn_point = NodePath("SpawnPoint")
 camera = NodePath("PlayerCamera")
 hud = NodePath("HUD")
+sfx_player = NodePath("SfxPlayer")
+
+[node name="SfxPlayer" parent="." instance=ExtResource("2_te0bi")]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_top = 611.0
