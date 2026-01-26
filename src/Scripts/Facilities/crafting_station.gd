@@ -127,7 +127,9 @@ func populate_details_panel(recipe : CraftingRecipe) -> void:
 	var quantity : int = InventoryManager.calculate_quantity(recipe)
 	can_make.text = "Can Make %s" % [quantity]
 	success_rate.text = "Success Rate " + str(int(recipe.success_rate*100)) + "%"
-	
+	match station_type:
+		STATION_TYPE.COOKING: success_rate.text += " (+"+str(int(PlayerStats.player_stats["Cooking Accuracy Bonus"] * 100)) +"%"
+		STATION_TYPE.SMELTING: success_rate.text += " (+"+str(int(PlayerStats.player_stats["Smelting Accuracy Bonus"] * 100)) +"%"
 	var can_add_to_inventory : bool = InventoryManager.check_if_can_add_to_inventory(recipe.output_item)
 	
 	if !can_add_to_inventory:

@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="TechNodeStats" load_steps=4 format=3 uid="uid://ll3jw1v5omml"]
+
+[ext_resource type="Texture2D" uid="uid://dlpqa2p4mvlcq" path="res://Assets/NodeGraphics/NodeGraphicsV2/CritChance2_V2.png" id="1_3pylg"]
+[ext_resource type="Resource" uid="uid://buu8pdcooh3hc" path="res://src/Resources/CraftingResources/BronzeBar.tres" id="2_28dln"]
+[ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="3_vboa6"]
+
+[resource]
+script = ExtResource("3_vboa6")
+node_name = "Crit Chance 2"
+icon = ExtResource("1_3pylg")
+description = "Increase Crit Chance by 5% per level."
+max_level = 3
+currency_required = 150
+materials_required = Array[Dictionary]([{
+ExtResource("2_28dln"): 1
+}])
+stat_name = "Crit Chance"
+upgrade_interval = 0.05
+prereqs = Array[String](["Attack 2:1"])
+metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

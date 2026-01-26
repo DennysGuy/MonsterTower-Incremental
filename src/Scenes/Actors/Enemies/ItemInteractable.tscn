@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dgtobkubdjq27"]
+[gd_scene load_steps=8 format=3 uid="uid://dgtobkubdjq27"]
 
 [ext_resource type="Script" uid="uid://br4paa5kpajai" path="res://src/Scenes/Tower/item_interactable.gd" id="1_7i62p"]
 [ext_resource type="Texture2D" uid="uid://bk4miqdmvi7gh" path="res://Assets/Enemies/CorruptedMushie/CorruptedMushieSpore.png" id="1_va8fw"]
+[ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="2_rejhq"]
 
 [sub_resource type="Animation" id="Animation_m3p64"]
 resource_name = "Hover"
@@ -129,6 +130,8 @@ root_node = NodePath("../Icon")
 libraries = {
 &"": SubResource("AnimationLibrary_rejhq")
 }
+
+[node name="SfxPlayer" parent="." instance=ExtResource("2_rejhq")]
 
 [node name="Icon" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)

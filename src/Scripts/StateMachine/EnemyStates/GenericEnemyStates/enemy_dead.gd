@@ -2,8 +2,15 @@ class_name EnemyDead extends State
 
 @export var wait_time : float
 
+@export var death_sound_1 : AudioStream
+@export var death_sound_2 : AudioStream
+@export var death_sound_3 : AudioStream
+
+@onready var death_sounds : Array[AudioStream] = [death_sound_1, death_sound_2, death_sound_3]
+
 func enter() -> void:
 	super()
+	SignalBus.update_kill_quota.emit()
 	if parent.hit_box:
 		parent.hit_box.get_child(0).disabled = true
 	drop_items()
@@ -12,6 +19,7 @@ func enter() -> void:
 	parent.is_dead = true
 	parent.health_bar.hide()
 	parent.timer.wait_time = wait_time
+	parent.sfx_player.play_sfx(death_sounds.pick_random())
 	parent.timer.start()
 	parent.start_fadeout()
 	
@@ -42,7 +50,7 @@ func drop_items() -> void:
 		var cooking_item : EnemyDrop = parent.enemy_stats.cooking_item_drop
 		var cooking_item_interactable : ItemInteractable = preload("uid://dgtobkubdjq27").instantiate()
 		var random_check : int = randi_range(0, 100)
-		if random_check <= int(cooking_item.drop_chance * 100):
+		if random_check <= int((cooking_item.drop_chance + PlayerStats.player_stats["Cooking Drop Chance Bonus"]) * 100):
 			cooking_item_interactable.item = cooking_item
 			cooking_item_interactable.icon.texture = cooking_item.drop_icon
 			cooking_item_interactable.global_position = Vector2(parent.global_position.x + 20,parent.global_position.y)

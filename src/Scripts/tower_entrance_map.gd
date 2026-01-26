@@ -9,10 +9,12 @@ var stored_entrance_data : TowerEntranceData
 @onready var floor_title: Label = $FloorDescriptionPanel/FloorTitle
 @onready var biome_title: Label = $FloorDescriptionPanel/BiomeTitle
 
+@onready var time_limit: Label = $TimeLimit
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	SignalBus.store_entrance_data.connect(store_entrance_data)
-
+	time_limit.text = "Expedition Time Limit:\n%s Seconds" % [int(PlayerStats.player_stats["Expedition Time"])]
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

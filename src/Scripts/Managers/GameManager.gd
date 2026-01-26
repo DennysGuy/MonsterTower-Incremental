@@ -5,6 +5,7 @@ var gravity : float = ProjectSettings.get_setting("physics/2d/default_gravity")
 var spawn_location : int
 var player_can_move : bool = true
 var expedition_timer_started : bool = false
+var previous_map_path : String
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	player_can_move = true

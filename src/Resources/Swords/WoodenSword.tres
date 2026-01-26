@@ -1,8 +1,14 @@
-[gd_resource type="Resource" script_class="Sword" load_steps=2 format=3 uid="uid://di3xaosm85tjx"]
+[gd_resource type="Resource" script_class="Sword" load_steps=5 format=3 uid="uid://di3xaosm85tjx"]
 
 [ext_resource type="Script" uid="uid://im2igg6pop1u" path="res://src/Scripts/sword.gd" id="1_g5sve"]
+[ext_resource type="AudioStream" uid="uid://7m8clykuejiw" path="res://Audio/SFX/Player/SwordSwing1.wav" id="2_esloh"]
+[ext_resource type="AudioStream" uid="uid://d4hkg0vupj3mj" path="res://Audio/SFX/Player/SwordSwing2.wav" id="3_ujw5s"]
+[ext_resource type="AudioStream" uid="uid://bcc4lh1bponas" path="res://Audio/SFX/Player/SwordSwing3.wav" id="4_64xsp"]
 
 [resource]
 script = ExtResource("1_g5sve")
 sword_name = "Wooden Sword"
+swing_1 = ExtResource("2_esloh")
+swing_2 = ExtResource("3_ujw5s")
+swing_3 = ExtResource("4_64xsp")
 metadata/_custom_type_script = "uid://im2igg6pop1u"

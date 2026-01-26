@@ -1,8 +1,11 @@
-[gd_scene load_steps=32 format=4 uid="uid://bpob51vk7v2cj"]
+[gd_scene load_steps=35 format=4 uid="uid://bpob51vk7v2cj"]
 
 [ext_resource type="Script" uid="uid://bm3rscv8708vb" path="res://src/Scripts/Maps/Tower/Biome1/floor_1_1.gd" id="1_u3nwm"]
+[ext_resource type="AudioStream" uid="uid://nhnh670ord35" path="res://Audio/Music/TemporaryTowerTheme.mp3" id="2_68h8k"]
+[ext_resource type="AudioStream" uid="uid://fgrpqq5p7fjq" path="res://Audio/SFX/Biomes/MossyDungeon/Ambience/03 DSGNDron, Dungeon, Ambience, Drone, Dark, Loop.wav" id="2_ck022"]
 [ext_resource type="Texture2D" uid="uid://bbmpr551mjb20" path="res://Assets/Tower/Biom1/Biome1SpriteSheet.png" id="2_hk0iw"]
 [ext_resource type="TileSet" uid="uid://dr3ft3wh6mi6e" path="res://src/Scenes/Tower/TowerFloors/Biome1/Biome1BGSetPieces1.tres" id="3_4lbed"]
+[ext_resource type="PackedScene" uid="uid://mwttdrt2cg71" path="res://src/Scenes/Players/ambience_player.tscn" id="3_68h8k"]
 [ext_resource type="PackedScene" uid="uid://c8ov03gkkda4k" path="res://src/Scenes/PlayerCamera.tscn" id="3_aah8w"]
 [ext_resource type="PackedScene" uid="uid://dysg5kffvxbql" path="res://src/Scenes/UI/PlayerHUD.tscn" id="4_aah8w"]
 [ext_resource type="TileSet" uid="uid://cuil6pmpg4xf1" path="res://src/Scenes/Tower/TowerFloors/Biome1/Biome1-Floor.tres" id="4_om3xh"]
@@ -1046,17 +1049,24 @@ size = Vector2(166, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0rtsh"]
 size = Vector2(297, 20)
 
-[node name="Floor1-1" type="Node2D" node_paths=PackedStringArray("spawn_point", "camera", "hud", "ore_rock_markers")]
+[node name="Floor1-1" type="Node2D" node_paths=PackedStringArray("spawn_point", "camera", "hud", "ore_rock_markers", "ambience_player")]
 script = ExtResource("1_u3nwm")
 map_name = "Floor 1-1"
 map_id = 1
+map_theme_song = ExtResource("2_68h8k")
 spawn_point = NodePath("PlayerSpawnPoint")
 camera = NodePath("PlayerCamera")
 hud = NodePath("HUD")
 ore_rock_spawn_rate = 0.65
 ore_rock_markers = NodePath("OreRockMarkers")
+path = "uid://bpob51vk7v2cj"
 next_room_path = "res://src/Scenes/Tower/TowerFloors/Biome1/Floor1-2.tscn"
 map_type = 2
+kill_quota = 10
+ambience_player = NodePath("AmbiencePlayer")
+ambience_sfx = ExtResource("2_ck022")
+
+[node name="AmbiencePlayer" parent="." instance=ExtResource("3_68h8k")]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -30.0
@@ -1146,8 +1156,6 @@ position = Vector2(467, 529)
 ore_rock_resource = ExtResource("8_yx3jr")
 ore_rock = ExtResource("7_yx3jr")
 spawn_parent = NodePath("../..")
-
-[node name="HUD" parent="." instance=ExtResource("4_aah8w")]
 
 [node name="LadderArea" parent="." node_paths=PackedStringArray("ladder_top", "ladder_bottom") instance=ExtResource("5_c1fqw")]
 position = Vector2(479, 899)
@@ -1290,6 +1298,8 @@ shape = SubResource("RectangleShape2D_0rtsh")
 
 [node name="ExitElevator" parent="." instance=ExtResource("15_obgwm")]
 position = Vector2(201, 81)
+
+[node name="HUD" parent="." instance=ExtResource("4_aah8w")]
 
 [connection signal="body_entered" from="TowerExitArea" to="." method="_on_tower_exit_area_body_entered"]
 [connection signal="body_exited" from="TowerExitArea" to="." method="_on_tower_exit_area_body_exited"]

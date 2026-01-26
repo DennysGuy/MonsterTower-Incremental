@@ -7,6 +7,7 @@ class_name TechNodeStats extends Resource
 @export var max_level : int = 1
 @export var current_level : int = 0
 @export var currency_required : int = 0
+@export var materials_required : Array[Dictionary]
 @export var node_type : TechTreeManager.TECH_NODE_TYPE
 
 @export_group("Player Stat Data")
@@ -29,4 +30,5 @@ Now that we have node handling, we need to actually mutate the world in some way
 - there are 2 ways the world can change from the tech tree
 	- increasing player abilities
 	- unlocking a new facility
+	- unlocking a new skill
 '''

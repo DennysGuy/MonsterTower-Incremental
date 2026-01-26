@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="TechNodeStats" load_steps=4 format=3 uid="uid://cygetk8cm8cn5"]
+
+[ext_resource type="Texture2D" uid="uid://bsklpn1lddswn" path="res://Assets/NodeGraphics/NodeGraphicsV2/Bag2_V2.png" id="1_fjo4g"]
+[ext_resource type="Resource" uid="uid://boeryxspsw8uq" path="res://src/Resources/Dishes/CookedGagootz.tres" id="2_4us0l"]
+[ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="2_gc8yo"]
+
+[resource]
+script = ExtResource("2_gc8yo")
+node_name = "Item Bag 2"
+icon = ExtResource("1_fjo4g")
+description = "Increase Item Bag slots to 4"
+currency_required = 500
+materials_required = Array[Dictionary]([{
+ExtResource("2_4us0l"): 2
+}])
+stat_name = "Bag"
+upgrade_interval = 1.0
+prereqs = Array[String](["Item Bag 1:1"])
+metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

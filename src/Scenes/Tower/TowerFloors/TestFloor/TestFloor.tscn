@@ -1,7 +1,8 @@
-[gd_scene load_steps=26 format=4 uid="uid://cph2krit7yk0t"]
+[gd_scene load_steps=27 format=4 uid="uid://cph2krit7yk0t"]
 
 [ext_resource type="Script" uid="uid://c8p4pei6shyik" path="res://src/Scripts/Maps/test_floor.gd" id="1_a3s6d"]
 [ext_resource type="TileSet" uid="uid://74oc55cdwefk" path="res://src/Scenes/NewStarshire/TempFloorTiles.tres" id="1_tc7oi"]
+[ext_resource type="AudioStream" uid="uid://nhnh670ord35" path="res://Audio/Music/TemporaryTowerTheme.mp3" id="2_3g1c4"]
 [ext_resource type="TileSet" uid="uid://b74l1awtkdty5" path="res://src/Scenes/NewStarshire/TempWallTiles.tres" id="2_boax8"]
 [ext_resource type="Texture2D" uid="uid://c5oix8wg5x1lw" path="res://Assets/EnvironmentalAssets/poisoned_forest_tiles_sheet.png" id="4_5a8xp"]
 [ext_resource type="TileSet" uid="uid://dbxew7tohbk1m" path="res://src/Scenes/Tower/TowerFloors/TestFloor/TempPlatforms.tres" id="4_orspa"]
@@ -682,6 +683,7 @@ size = Vector2(113, 61)
 [node name="TestFloor" type="Node2D" node_paths=PackedStringArray("spawn_point", "camera", "hud")]
 script = ExtResource("1_a3s6d")
 map_name = "Test Floor"
+map_theme_song = ExtResource("2_3g1c4")
 spawn_point = NodePath("Marker2D")
 camera = NodePath("PlayerCamera")
 hud = NodePath("HUD")

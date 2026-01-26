@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="MonsterTower-Incremental"
-run/main_scene="uid://oonjrpabmces"
+run/main_scene="uid://c3y6ce3xriuwl"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -27,6 +27,7 @@ InventoryManager="*res://src/Scripts/Managers/InventoryManager.gd"
 CookingManager="*res://src/Scripts/Managers/CookingManager.gd"
 ExpeditionTimer="*res://src/Scripts/HUD/expedition_timer.gd"
 NotificationManager="*res://src/Scripts/Managers/NotificationManager.gd"
+MusicPlayer="*res://src/Scenes/Players/MusicPlayer.tscn"
 
 [display]
 

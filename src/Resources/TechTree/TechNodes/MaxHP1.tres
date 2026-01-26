@@ -1,16 +1,16 @@
 [gd_resource type="Resource" script_class="TechNodeStats" load_steps=3 format=3 uid="uid://u1y3eoe8hx2c"]
 
-[ext_resource type="Texture2D" uid="uid://dnyokm0ty3fob" path="res://Assets/NodeGraphics/HP1Icon.png" id="1_bu2rx"]
+[ext_resource type="Texture2D" uid="uid://ch3r8qkoanevo" path="res://Assets/NodeGraphics/NodeGraphicsV2/HP1_V2.png" id="1_bu2rx"]
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_j3vys"]
 
 [resource]
 script = ExtResource("1_j3vys")
 node_name = "Max HP 1"
 icon = ExtResource("1_bu2rx")
-description = "Each level adds +30 Max HP for a total of 150 added HP when maxed out."
+description = "Increase Max HP by 20 for each level"
 max_level = 5
 currency_required = 50
 stat_name = "Max Health"
-upgrade_interval = 30.0
+upgrade_interval = 25.0
 prereqs = Array[String](["Tower License:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

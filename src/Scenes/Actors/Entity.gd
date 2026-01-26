@@ -4,6 +4,7 @@ class_name Entity extends CharacterBody2D
 @export var animation_player : AnimationPlayer
 @export var health_component : HealthComponent
 @export var sprite : Sprite2D
+@export var blink_timer : Timer
 
 @export_group("Detectors")
 @export var hurt_box : HurtBox
@@ -12,6 +13,9 @@ class_name Entity extends CharacterBody2D
 @export_group("States")
 @export var hit_state : State
 @export var dead_state : State
+
+@export_group("Audio")
+@export var sfx_player : AudioStreamPlayer
 
 var damageable : bool = true
 var is_dead : bool = false
@@ -59,10 +63,12 @@ func blink_effect() -> void:
 	
 	while blink_current_time < invincibility_duration and is_inside_tree():
 		set_textures_visibility(false)
-		await get_tree().create_timer(0.1).timeout
+		blink_timer.start()
+		await blink_timer.timeout
 		blink_current_time += blink_wait_time
 		set_textures_visibility(true)
-		await get_tree().create_timer(0.1).timeout
+		blink_timer.start()
+		await blink_timer.timeout
 		blink_current_time += blink_wait_time
 	
 	queue_free()

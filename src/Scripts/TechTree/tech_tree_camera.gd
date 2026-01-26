@@ -1,6 +1,6 @@
 extends Camera2D
 
-const MOVE_SPEED : int = 10
+const MOVE_SPEED : int = 3
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

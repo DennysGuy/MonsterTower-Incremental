@@ -7,11 +7,33 @@ class_name ExpeditionResultsScreen extends Control
 
 @onready var to_town: Button = $ResultsPanel/ToTown
 @onready var new_run: Button = $ResultsPanel/NewRun
+@onready var sfx_player: SFXPlayer = $SfxPlayer
+
+@onready var tips_and_tricks: Label = $ResultsPanel/InventoryPanel/TipsAndTricks
+
+const TRANSFER_TO_BANK = preload("uid://ddk7o6mnyi7ji")
+const CLOSE_IN = preload("uid://dc3va7knibxnb")
+const CLOSE_OUT = preload("uid://caj0oih8j2sty")
+
+const TEMP_RESULTS_SCREEN_THEME = preload("uid://cpyx2c4kjhkag")
+
+var tips : Array[String] = [
+	"Can't reach a ledge? Upgrade your jump!",
+	"Selling cooked items is the best way to make money!",
+	"Enemies beating you down? Upgrade your attack stats!",
+	"Low on inventory space? Unlock the bank! Upgrade your bag!",
+	"Life is like a box chocolates. It's tasty.",
+	"Feeling the grind? Yeah, so are we.",
+	"Jumping up ladders is the fastest way, but look out for enemies above!",
+	"Consecutive expedition runs are a great way to make money fast!"
+]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	init_containers()
 	animation_player.play("CloseOut")
+	tips_and_tricks.text = tips.pick_random()
+	MusicPlayer.play_song(TEMP_RESULTS_SCREEN_THEME)
 	await get_tree().create_timer(2.5).timeout
 	if PlayerStats.facilities_unlocked["Bank"]:
 		move_inventory_to_bank()
@@ -25,7 +47,7 @@ func go_to_starshire() -> void:
 
 func go_to_tower() -> void:
 	#Need to store the previous map we went to - or give them a way to select location
-	get_tree().change_scene_to_file("res://src/Scenes/Tower/TowerFloors/Biome1/Floor1-1.tscn")
+	get_tree().change_scene_to_file(GameManager.previous_map_path)
 
 func _on_to_town_button_up() -> void:
 	animation_player.play("CloseIn_Town")
@@ -54,7 +76,15 @@ func move_inventory_to_bank() -> void:
 				InventoryManager.remove_item("Inventory", item)
 				InventoryManager.update_grid_container(inventory_container, "Inventory")
 				InventoryManager.update_grid_container(bank_container, "Bank")
+				sfx_player.play_sfx(TRANSFER_TO_BANK, 0, true)
 				await get_tree().create_timer(0.1).timeout
 
 	to_town.disabled = false
 	new_run.disabled = false
+
+func play_close_out_sfx() -> void:
+	sfx_player.play_sfx(CLOSE_OUT)
+
+func play_close_in_sfx() -> void:
+	MusicPlayer.stop_player(true)
+	sfx_player.play_sfx(CLOSE_IN)

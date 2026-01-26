@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="TechNodeStats" load_steps=3 format=3 uid="uid://ub5h4g7g447"]
+
+[ext_resource type="Texture2D" uid="uid://d0oy1f00b2ju7" path="res://Assets/NodeGraphics/NodeGraphicsV2/CookingAccuracy1_V2.png" id="1_qoj4s"]
+[ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="2_082s8"]
+
+[resource]
+script = ExtResource("2_082s8")
+node_name = "Cooking Accuracy 1"
+icon = ExtResource("1_qoj4s")
+description = "Increases chance to successfully cook a dish by 3% per level."
+max_level = 5
+currency_required = 250
+stat_name = "Cooking Accuracy Bonus"
+upgrade_interval = 0.03
+prereqs = Array[String](["Cooking Station:1"])
+metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

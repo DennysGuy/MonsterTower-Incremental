@@ -1,7 +1,11 @@
 class_name PlayerDieState extends State
 
+@export var hit : AudioStream
+@export var death_fanfare : AudioStream
 
 func enter() -> void:
+	parent.sfx_player.play_sfx(hit)
+	parent.sfx_player.play_sfx(death_fanfare)
 	GameManager.expedition_timer_started = false
 	parent.damageable = false
 	parent.clear_sprites()

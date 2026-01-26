@@ -54,7 +54,14 @@ func process_physics(_delta: float) -> State:
 			
 	if parent.crafting_progress_bar.value >= parent.crafting_progress_bar.max_value:
 		var num_check = randi_range(0,100)
-		if num_check <= parent.stored_recipe.success_rate * 100:
+		var success_rate : float = parent.stored_recipe.success_rate
+		match parent.station_type:
+			parent.STATION_TYPE.COOKING:
+				success_rate += PlayerStats.player_stats["Cooking Accuracy Bonus"]
+			parent.STATION_TYPE.SMELTING:
+				success_rate += PlayerStats.player_stats["Smelting Accuracy Bonus"]
+			
+		if num_check <= int(success_rate * 100):
 			if !InventoryManager.add_item("Inventory", parent.stored_recipe.output_item):
 				InventoryManager.add_item("Bank", parent.stored_recipe.output_item)
 			

@@ -1,130 +1,318 @@
-[gd_scene load_steps=18 format=3 uid="uid://b7n3fwd3y85wp"]
+[gd_scene load_steps=40 format=3 uid="uid://b7n3fwd3y85wp"]
 
 [ext_resource type="Script" uid="uid://nb5nyiymrgyp" path="res://src/Scripts/TechTree/tech_tree.gd" id="1_1fw0b"]
-[ext_resource type="PackedScene" uid="uid://bhimqkbcn26r2" path="res://src/Scenes/TechTree/TechNode.tscn" id="2_q3n1u"]
-[ext_resource type="Resource" uid="uid://bpf2kexi3o22s" path="res://src/Resources/TechTree/TechNodes/TowerPass.tres" id="3_reuwa"]
-[ext_resource type="Resource" uid="uid://1gmjr0davgp4" path="res://src/Resources/TechTree/TechNodes/Attack1.tres" id="4_xuhbj"]
-[ext_resource type="Resource" uid="uid://u1y3eoe8hx2c" path="res://src/Resources/TechTree/TechNodes/MaxHP1.tres" id="5_2ltmf"]
-[ext_resource type="Resource" uid="uid://bqgnafgyrs4m4" path="res://src/Resources/TechTree/TechNodes/Attack2.tres" id="6_lqswy"]
-[ext_resource type="Resource" uid="uid://cmy8gsm0hbovg" path="res://src/Resources/TechTree/TechNodes/CritChance1.tres" id="7_a6tc3"]
-[ext_resource type="Resource" uid="uid://ds0j00mlqnf55" path="res://src/Resources/TechTree/TechNodes/Movement1.tres" id="8_dkx06"]
-[ext_resource type="Resource" uid="uid://ttsaddae3bcr" path="res://src/Resources/TechTree/TechNodes/CritDamage1.tres" id="8_wj3rp"]
+[ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="2_d4ivd"]
+[ext_resource type="Resource" uid="uid://bpf2kexi3o22s" path="res://src/Resources/TechTree/TechNodes/TowerPass.tres" id="3_lqswy"]
+[ext_resource type="Resource" uid="uid://1gmjr0davgp4" path="res://src/Resources/TechTree/TechNodes/Attack1.tres" id="4_a6tc3"]
+[ext_resource type="PackedScene" uid="uid://bhimqkbcn26r2" path="res://src/Scenes/TechTree/TechNode.tscn" id="5_2ltmf"]
+[ext_resource type="Resource" uid="uid://bqgnafgyrs4m4" path="res://src/Resources/TechTree/TechNodes/Attack2.tres" id="5_wj3rp"]
+[ext_resource type="Resource" uid="uid://cmy8gsm0hbovg" path="res://src/Resources/TechTree/TechNodes/CritChance1.tres" id="6_wj3rp"]
+[ext_resource type="Resource" uid="uid://ttsaddae3bcr" path="res://src/Resources/TechTree/TechNodes/CritDamage1.tres" id="7_6pqgd"]
+[ext_resource type="Resource" uid="uid://ll3jw1v5omml" path="res://src/Resources/TechTree/TechNodes/CritChance2.tres" id="8_7l0yi"]
+[ext_resource type="Resource" uid="uid://by1j5ly8stwkj" path="res://src/Resources/TechTree/TechNodes/Accuracy1.tres" id="8_dwtca"]
 [ext_resource type="Texture2D" uid="uid://dt4v1cc43wq4u" path="res://Assets/NodeGraphics/WASD-Controls-Icon.png" id="9_6pqgd"]
+[ext_resource type="Resource" uid="uid://c6lrtgrld7bx1" path="res://src/Resources/TechTree/TechNodes/CritDamage2.tres" id="9_dkx06"]
 [ext_resource type="Script" uid="uid://co4ox6rujyeod" path="res://src/Scripts/TechTree/tech_tree_camera.gd" id="9_wj3rp"]
 [ext_resource type="PackedScene" uid="uid://bevb4v64mvbbg" path="res://src/Scenes/TechTree/PlayerStatsPanel.tscn" id="10_7l0yi"]
-[ext_resource type="Resource" uid="uid://ivbqmo1636sm" path="res://src/Resources/TechTree/TechNodes/Bag1.tres" id="10_dwtca"]
-[ext_resource type="Resource" uid="uid://ct7a5kggupi55" path="res://src/Resources/TechTree/TechNodes/DeeperPockets1.tres" id="11_uk0x3"]
-[ext_resource type="Resource" uid="uid://cmbxvekbk2uxx" path="res://src/Resources/TechTree/TechNodes/BankUnlock.tres" id="12_4a6it"]
-[ext_resource type="Resource" uid="uid://bb7206hq4ygo3" path="res://src/Resources/TechTree/TechNodes/CookingStation.tres" id="12_ice2v"]
-[ext_resource type="Resource" uid="uid://peiyat841rxh" path="res://src/Resources/TechTree/TechNodes/RefineryStation.tres" id="13_fdiaf"]
+[ext_resource type="Resource" uid="uid://u1y3eoe8hx2c" path="res://src/Resources/TechTree/TechNodes/MaxHP1.tres" id="11_4a6it"]
+[ext_resource type="Resource" uid="uid://y0ttwm5ljxyk" path="res://src/Resources/TechTree/TechNodes/ExpeditionTime1.tres" id="12_ice2v"]
+[ext_resource type="Resource" uid="uid://beqchd24ugnyh" path="res://src/Resources/TechTree/TechNodes/MonsterCap1.tres" id="13_fdiaf"]
+[ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="13_uk0x3"]
+[ext_resource type="Resource" uid="uid://dhp1t1qeeqmau" path="res://src/Resources/TechTree/TechNodes/Defense1.tres" id="14_x01pg"]
+[ext_resource type="Resource" uid="uid://ct7a5kggupi55" path="res://src/Resources/TechTree/TechNodes/DeeperPockets1.tres" id="15_v76mx"]
+[ext_resource type="Resource" uid="uid://ivbqmo1636sm" path="res://src/Resources/TechTree/TechNodes/Bag1.tres" id="16_yexi2"]
+[ext_resource type="Resource" uid="uid://cmbxvekbk2uxx" path="res://src/Resources/TechTree/TechNodes/BankUnlock.tres" id="17_c7r65"]
+[ext_resource type="Resource" uid="uid://cqjeh0yqqse5c" path="res://src/Resources/TechTree/TechNodes/Bank2.tres" id="18_aovij"]
+[ext_resource type="Resource" uid="uid://ydq2itcsk458" path="res://src/Resources/TechTree/TechNodes/DeeperPockets2.tres" id="19_7xsv7"]
+[ext_resource type="Resource" uid="uid://cygetk8cm8cn5" path="res://src/Resources/TechTree/TechNodes/Bag2.tres" id="20_dkc8a"]
+[ext_resource type="Resource" uid="uid://ds0j00mlqnf55" path="res://src/Resources/TechTree/TechNodes/Movement1.tres" id="21_dvfnf"]
+[ext_resource type="Resource" uid="uid://b4xw1euerb1ka" path="res://src/Resources/TechTree/TechNodes/JumpHeight1.tres" id="22_7le32"]
+[ext_resource type="Resource" uid="uid://hqgkc8c13u2a" path="res://src/Resources/TechTree/TechNodes/Movement2.tres" id="22_vbmlq"]
+[ext_resource type="Resource" uid="uid://bvqw5l1mpu3ku" path="res://src/Resources/TechTree/TechNodes/ClimbingSpeed1.tres" id="22_yjrj2"]
+[ext_resource type="Resource" uid="uid://bb7206hq4ygo3" path="res://src/Resources/TechTree/TechNodes/CookingStation.tres" id="25_hvgb8"]
+[ext_resource type="Resource" uid="uid://b1txboikgk5si" path="res://src/Resources/TechTree/TechNodes/CookingDrops1.tres" id="25_tbj8d"]
+[ext_resource type="Resource" uid="uid://cud4tvd0agqm4" path="res://src/Resources/TechTree/TechNodes/CookingSpeed1.tres" id="26_774l3"]
+[ext_resource type="Resource" uid="uid://ub5h4g7g447" path="res://src/Resources/TechTree/TechNodes/CookingAccuracy1.tres" id="27_rvw2x"]
+[ext_resource type="Resource" uid="uid://peiyat841rxh" path="res://src/Resources/TechTree/TechNodes/RefineryStation.tres" id="28_rqb1b"]
+[ext_resource type="Resource" uid="uid://ddxgheqee7kmy" path="res://src/Resources/TechTree/TechNodes/MiningSpeed1.tres" id="29_bksa1"]
+[ext_resource type="Resource" uid="uid://c6cb7c8bqn7ow" path="res://src/Resources/TechTree/TechNodes/RefinerySpeed1.tres" id="30_il84h"]
+[ext_resource type="Resource" uid="uid://licswcd54xsn" path="res://src/Resources/TechTree/TechNodes/RefineryAccuracy1.tres" id="30_yfj5d"]
+[ext_resource type="Resource" uid="uid://ctf4we33chvvs" path="res://src/Resources/TechTree/TechNodes/OreRockDrop1.tres" id="32_pc0xa"]
+[ext_resource type="Resource" uid="uid://burkenucbrobr" path="res://src/Resources/TechTree/TechNodes/ArialAttack.tres" id="35_mdsgt"]
 
 [node name="TechTree" type="Node2D"]
 script = ExtResource("1_1fw0b")
 
+[node name="SfxPlayer" parent="." instance=ExtResource("2_d4ivd")]
+
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -2396.0
-offset_top = -1059.0
-offset_right = 3602.0
-offset_bottom = 2201.0
+offset_left = -3836.0
+offset_top = -2429.0
+offset_right = 5576.0
+offset_bottom = 3757.0
 mouse_filter = 2
-color = Color(0.10496879, 0.31517392, 0.4112318, 1)
+color = Color(0.103743516, 0.10374353, 0.103743516, 1)
 
 [node name="Nodes" type="Node" parent="."]
 
-[node name="CookingStationNode" parent="Nodes" instance=ExtResource("2_q3n1u")]
-position = Vector2(277, 479)
-tech_node_stats = ExtResource("12_ice2v")
-
-[node name="TowerPassNode" parent="Nodes" instance=ExtResource("2_q3n1u")]
-position = Vector2(510, 479)
-tech_node_stats = ExtResource("3_reuwa")
-
-[node name="SwordAttack1Node" parent="Nodes" instance=ExtResource("2_q3n1u")]
-position = Vector2(663, 344)
-tech_node_stats = ExtResource("4_xuhbj")
-
-[node name="Line2D" type="Line2D" parent="Nodes/SwordAttack1Node"]
-position = Vector2(-22, 52)
-points = PackedVector2Array(-11, -18, -96, 48)
-
-[node name="MaxHP1Node" parent="Nodes" instance=ExtResource("2_q3n1u")]
-position = Vector2(660, 632)
-tech_node_stats = ExtResource("5_2ltmf")
-
-[node name="Line2D" type="Line2D" parent="Nodes/MaxHP1Node"]
-position = Vector2(-123, -127)
-points = PackedVector2Array(6, 9, 90, 95)
-
-[node name="SwordAttack2Node" parent="Nodes" instance=ExtResource("2_q3n1u")]
-position = Vector2(816, 210)
-tech_node_stats = ExtResource("6_lqswy")
-
-[node name="Line2D" type="Line2D" parent="Nodes/SwordAttack2Node"]
-points = PackedVector2Array(-119, 101, -34, 34)
-
-[node name="CritChance1Node" parent="Nodes" instance=ExtResource("2_q3n1u")]
-position = Vector2(536, 219)
-tech_node_stats = ExtResource("7_a6tc3")
-
-[node name="Line2D" type="Line2D" parent="Nodes/CritChance1Node"]
-points = PackedVector2Array(93, 92, 33, 34)
-
-[node name="Movement1Node" parent="Nodes" instance=ExtResource("2_q3n1u")]
-position = Vector2(351, 345)
-tech_node_stats = ExtResource("8_dkx06")
-
-[node name="Line2D" type="Line2D" parent="Nodes/Movement1Node"]
-points = PackedVector2Array(125, 99, 34, 34)
-
-[node name="CritDamage1Node2" parent="Nodes" instance=ExtResource("2_q3n1u")]
-position = Vector2(813, 343)
-tech_node_stats = ExtResource("8_wj3rp")
-
-[node name="Line2D" type="Line2D" parent="Nodes/CritDamage1Node2"]
-position = Vector2(-121, -89)
-points = PackedVector2Array(89, 89, 7, 89)
-
-[node name="ItemBag1Node" parent="Nodes" instance=ExtResource("2_q3n1u")]
-position = Vector2(235, 745)
-tech_node_stats = ExtResource("10_dwtca")
-
-[node name="Line2D" type="Line2D" parent="Nodes/ItemBag1Node"]
-points = PackedVector2Array(33, -33, 118, -112)
-
-[node name="DeeperPockets1Node" parent="Nodes" instance=ExtResource("2_q3n1u")]
-position = Vector2(385, 599)
-tech_node_stats = ExtResource("11_uk0x3")
-
-[node name="Line2D" type="Line2D" parent="Nodes/DeeperPockets1Node"]
-points = PackedVector2Array(34, -34, 92, -87)
-
-[node name="RefineryStationNode" parent="Nodes" instance=ExtResource("2_q3n1u")]
-position = Vector2(816, 476)
-tech_node_stats = ExtResource("13_fdiaf")
+[node name="TowerPassNode" parent="Nodes" instance=ExtResource("5_2ltmf")]
+position = Vector2(640, 359)
+tech_node_stats = ExtResource("3_lqswy")
 node_type = 1
 
-[node name="BankNode" parent="Nodes" instance=ExtResource("2_q3n1u")]
-position = Vector2(513, 747)
-tech_node_stats = ExtResource("12_4a6it")
+[node name="Attack1Node" parent="Nodes" instance=ExtResource("5_2ltmf")]
+position = Vector2(715, 252)
+tech_node_stats = ExtResource("4_a6tc3")
 
-[node name="Line2D" type="Line2D" parent="Nodes/BankNode"]
-position = Vector2(0, 30)
-points = PackedVector2Array(-33, -32, -240, -32)
+[node name="Line2D" type="Line2D" parent="Nodes/Attack1Node"]
+points = PackedVector2Array(-11, 8, -70, 97)
+width = 3.0
 
-[node name="Line2D3" type="Line2D" parent="Nodes/BankNode"]
-position = Vector2(0, 30)
-points = PackedVector2Array(-34, -64, -95, -145)
+[node name="Attack2Node" parent="Nodes" instance=ExtResource("5_2ltmf")]
+position = Vector2(779, 252)
+tech_node_stats = ExtResource("5_wj3rp")
 
-[node name="Line2D2" type="Line2D" parent="Nodes/BankNode"]
-points = PackedVector2Array(-1, -38, -1, -233)
+[node name="Line2D" type="Line2D" parent="Nodes/Attack2Node"]
+points = PackedVector2Array(-16, 0, -52, 0)
+width = 3.0
+
+[node name="CritChance1Node" parent="Nodes" instance=ExtResource("5_2ltmf")]
+position = Vector2(715, 208)
+tech_node_stats = ExtResource("6_wj3rp")
+
+[node name="Line2D" type="Line2D" parent="Nodes/CritChance1Node"]
+points = PackedVector2Array(-2, 14, -2, 30)
+width = 3.0
+
+[node name="CritDamage1Node" parent="Nodes" instance=ExtResource("5_2ltmf")]
+position = Vector2(715, 294)
+tech_node_stats = ExtResource("7_6pqgd")
+
+[node name="Line2D" type="Line2D" parent="Nodes/CritDamage1Node"]
+points = PackedVector2Array(-2, -14, -2, -28)
+width = 3.0
+
+[node name="Accuracy1Node" parent="Nodes" instance=ExtResource("5_2ltmf")]
+position = Vector2(715, 162)
+tech_node_stats = ExtResource("8_dwtca")
+
+[node name="Line2D" type="Line2D" parent="Nodes/Accuracy1Node"]
+position = Vector2(1, 0)
+points = PackedVector2Array(-3, 14, -3, 32)
+width = 3.0
+
+[node name="CritChance2Node" parent="Nodes" instance=ExtResource("5_2ltmf")]
+position = Vector2(779, 208)
+tech_node_stats = ExtResource("8_7l0yi")
+
+[node name="Line2D" type="Line2D" parent="Nodes/CritChance2Node"]
+points = PackedVector2Array(-2, 14, -2, 30)
+width = 3.0
+
+[node name="CritDamage2Node" parent="Nodes" instance=ExtResource("5_2ltmf")]
+position = Vector2(779, 294)
+tech_node_stats = ExtResource("9_dkx06")
+
+[node name="Line2D" type="Line2D" parent="Nodes/CritDamage2Node"]
+position = Vector2(1, 0)
+points = PackedVector2Array(-3, -14, -3, -28)
+width = 3.0
+
+[node name="HP1Node" parent="Nodes" instance=ExtResource("5_2ltmf")]
+position = Vector2(714, 450)
+tech_node_stats = ExtResource("11_4a6it")
+
+[node name="Line2D" type="Line2D" parent="Nodes/HP1Node"]
+points = PackedVector2Array(-11, -9, -68, -81)
+width = 3.0
+
+[node name="PassTime1Node" parent="Nodes" instance=ExtResource("5_2ltmf")]
+position = Vector2(714, 503)
+tech_node_stats = ExtResource("12_ice2v")
+
+[node name="Line2D" type="Line2D" parent="Nodes/PassTime1Node"]
+position = Vector2(-1, 0)
+points = PackedVector2Array(-1, -13, -1, -40)
+width = 3.0
+
+[node name="MonsterCap1Node" parent="Nodes" instance=ExtResource("5_2ltmf")]
+position = Vector2(775, 450)
+tech_node_stats = ExtResource("13_fdiaf")
+
+[node name="Line2D" type="Line2D" parent="Nodes/MonsterCap1Node"]
+points = PackedVector2Array(-15, 0, -50, 0)
+width = 3.0
+
+[node name="Defense1Node" parent="Nodes" instance=ExtResource("5_2ltmf")]
+position = Vector2(762, 494)
+tech_node_stats = ExtResource("14_x01pg")
+
+[node name="Line2D" type="Line2D" parent="Nodes/Defense1Node"]
+points = PackedVector2Array(-11, -9, -41, -35)
+width = 3.0
+
+[node name="DeeperPockets1" parent="Nodes" instance=ExtResource("5_2ltmf")]
+position = Vector2(498, 440)
+tech_node_stats = ExtResource("15_v76mx")
+
+[node name="Line2D" type="Line2D" parent="Nodes/DeeperPockets1"]
+points = PackedVector2Array(7, -9, 130, -74)
+width = 3.0
+
+[node name="ItemBag1" parent="Nodes" instance=ExtResource("5_2ltmf")]
+position = Vector2(569, 439)
+tech_node_stats = ExtResource("16_yexi2")
+
+[node name="Line2D" type="Line2D" parent="Nodes/ItemBag1"]
+points = PackedVector2Array(59, -73, 8, -8)
+width = 3.0
+
+[node name="Banking1" parent="Nodes" instance=ExtResource("5_2ltmf")]
+position = Vector2(534, 485)
+tech_node_stats = ExtResource("17_c7r65")
+node_type = 1
+
+[node name="Line2D" type="Line2D" parent="Nodes/Banking1"]
+points = PackedVector2Array(-10, -10, -30, -35)
+width = 3.0
+
+[node name="Line2D2" type="Line2D" parent="Nodes/Banking1"]
+points = PackedVector2Array(7, -9, 27, -35)
+width = 3.0
+
+[node name="Banking2" parent="Nodes" instance=ExtResource("5_2ltmf")]
+position = Vector2(534, 534)
+tech_node_stats = ExtResource("18_aovij")
+
+[node name="Line2D" type="Line2D" parent="Nodes/Banking2"]
+points = PackedVector2Array(-2, -13, -2, -36)
+width = 3.0
+
+[node name="DeeperPockets2" parent="Nodes" instance=ExtResource("5_2ltmf")]
+position = Vector2(461, 480)
+tech_node_stats = ExtResource("19_7xsv7")
+
+[node name="Line2D" type="Line2D" parent="Nodes/DeeperPockets2"]
+points = PackedVector2Array(6, -10, 25, -32)
+width = 3.0
+
+[node name="ItemBag2" parent="Nodes" instance=ExtResource("5_2ltmf")]
+position = Vector2(607, 482)
+tech_node_stats = ExtResource("20_dkc8a")
+
+[node name="Line2D" type="Line2D" parent="Nodes/ItemBag2"]
+points = PackedVector2Array(-11, -9, -31, -34)
+width = 3.0
+
+[node name="MovementSpeed1" parent="Nodes" instance=ExtResource("5_2ltmf")]
+position = Vector2(559, 254)
+tech_node_stats = ExtResource("21_dvfnf")
+
+[node name="Line2D" type="Line2D" parent="Nodes/MovementSpeed1"]
+points = PackedVector2Array(7, 9, 70, 97)
+width = 3.0
+
+[node name="ClimbingSpeed1" parent="Nodes" instance=ExtResource("5_2ltmf")]
+position = Vector2(560, 185)
+tech_node_stats = ExtResource("22_yjrj2")
+
+[node name="Line2D" type="Line2D" parent="Nodes/ClimbingSpeed1"]
+points = PackedVector2Array(-2, 13, -2, 56)
+width = 3.0
+
+[node name="JumpHeight1" parent="Nodes" instance=ExtResource("5_2ltmf")]
+position = Vector2(484, 254)
+tech_node_stats = ExtResource("22_7le32")
+
+[node name="Line2D" type="Line2D" parent="Nodes/JumpHeight1"]
+points = PackedVector2Array(11, 0, 60, 0)
+width = 3.0
+
+[node name="MovementSpeed2" parent="Nodes" instance=ExtResource("5_2ltmf")]
+position = Vector2(487, 186)
+tech_node_stats = ExtResource("22_vbmlq")
+
+[node name="Line2D" type="Line2D" parent="Nodes/MovementSpeed2"]
+points = PackedVector2Array(7, 9, 60, 60)
+width = 3.0
+
+[node name="CookingStationNode" parent="Nodes" instance=ExtResource("5_2ltmf")]
+position = Vector2(430, 343)
+tech_node_stats = ExtResource("25_hvgb8")
+
+[node name="IncreaseCookingDrops1" parent="Nodes" instance=ExtResource("5_2ltmf")]
+position = Vector2(364, 298)
+tech_node_stats = ExtResource("25_tbj8d")
+
+[node name="Line2D" type="Line2D" parent="Nodes/IncreaseCookingDrops1"]
+points = PackedVector2Array(10, 5, 55, 36)
+width = 3.0
+
+[node name="IncreaseCookingSpeed1" parent="Nodes" instance=ExtResource("5_2ltmf")]
+position = Vector2(365, 342)
+tech_node_stats = ExtResource("26_774l3")
+
+[node name="Line2D" type="Line2D" parent="Nodes/IncreaseCookingSpeed1"]
+position = Vector2(0, 1)
+points = PackedVector2Array(12, 0, 49, 0)
+width = 3.0
+
+[node name="IncreaseCookingAccuracy1" parent="Nodes" instance=ExtResource("5_2ltmf")]
+position = Vector2(365, 387)
+tech_node_stats = ExtResource("27_rvw2x")
+
+[node name="Line2D" type="Line2D" parent="Nodes/IncreaseCookingAccuracy1"]
+points = PackedVector2Array(10, -4, 55, -34)
+width = 3.0
+
+[node name="RefineryStationNode" parent="Nodes" instance=ExtResource("5_2ltmf")]
+position = Vector2(777, 372)
+tech_node_stats = ExtResource("28_rqb1b")
+node_type = 1
+
+[node name="MiningSpeed1" parent="Nodes" instance=ExtResource("5_2ltmf")]
+position = Vector2(837, 325)
+tech_node_stats = ExtResource("29_bksa1")
+
+[node name="Line2D" type="Line2D" parent="Nodes/MiningSpeed1"]
+points = PackedVector2Array(-13, 6, -53, 38)
+width = 3.0
+
+[node name="RefinerySpeed1" parent="Nodes" instance=ExtResource("5_2ltmf")]
+position = Vector2(836, 372)
+tech_node_stats = ExtResource("30_il84h")
+
+[node name="Line2D" type="Line2D" parent="Nodes/RefinerySpeed1"]
+position = Vector2(0, -1)
+points = PackedVector2Array(-16, 1, -47, 1)
+width = 3.0
+
+[node name="RefinerySuccessRate1" parent="Nodes" instance=ExtResource("5_2ltmf")]
+position = Vector2(836, 417)
+tech_node_stats = ExtResource("30_yfj5d")
+
+[node name="Line2D" type="Line2D" parent="Nodes/RefinerySuccessRate1"]
+points = PackedVector2Array(-14, -6, -52, -35)
+width = 3.0
+
+[node name="OreRockDrop1" parent="Nodes" instance=ExtResource("5_2ltmf")]
+position = Vector2(901, 326)
+tech_node_stats = ExtResource("32_pc0xa")
+
+[node name="Line2D" type="Line2D" parent="Nodes/OreRockDrop1"]
+position = Vector2(0, -2)
+points = PackedVector2Array(-16, 1, -52, 1)
+width = 3.0
+
+[node name="ArialSlashNode" parent="Nodes" instance=ExtResource("5_2ltmf")]
+position = Vector2(836, 253)
+tech_node_stats = ExtResource("35_mdsgt")
+
+[node name="Line2D" type="Line2D" parent="Nodes/ArialSlashNode"]
+points = PackedVector2Array(-16, -1, -45, -1)
+width = 3.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="PlayerStats" parent="CanvasLayer" instance=ExtResource("10_7l0yi")]
-offset_left = -304.0
-offset_top = -171.0
-offset_right = -198.0
-offset_bottom = -73.0
 
 [node name="Currency" type="Label" parent="CanvasLayer"]
 anchors_preset = 3
@@ -133,13 +321,15 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -293.0
-offset_top = -29.0
+offset_top = -22.0
 offset_right = -10.0
 offset_bottom = -6.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 16
+theme_override_constants/outline_size = 5
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("13_uk0x3")
 text = "Currency : 0"
 horizontal_alignment = 2
 
@@ -150,23 +340,25 @@ anchor_right = 0.5
 offset_left = -166.0
 offset_top = 1.0
 offset_right = -28.0
-offset_bottom = 35.0
+offset_bottom = 17.0
 grow_horizontal = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 14
+theme_override_fonts/font = ExtResource("13_uk0x3")
+theme_override_font_sizes/font_size = 16
 text = "Prestige: 0"
 
 [node name="PrestigeProgress" type="Label" parent="CanvasLayer"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 95.0
-offset_top = 7.0
-offset_right = 158.0
-offset_bottom = 24.0
+offset_left = 96.0
+offset_top = 4.0
+offset_right = 159.0
+offset_bottom = 21.0
 grow_horizontal = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 12
+theme_override_fonts/font = ExtResource("13_uk0x3")
+theme_override_font_sizes/font_size = 16
 text = "0/10"
 horizontal_alignment = 1
 
@@ -175,9 +367,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -168.0
-offset_top = 29.0
+offset_top = 28.0
 offset_right = 162.0
-offset_bottom = 47.0
+offset_bottom = 46.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 10
 
@@ -198,12 +390,14 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 85.0
-offset_top = -44.0
+offset_top = -41.0
 offset_right = 194.0
-offset_bottom = -5.0
+offset_bottom = -6.0
 grow_vertical = 0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 13
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("13_uk0x3")
+theme_override_font_sizes/font_size = 16
 text = "Move Around 
 Tech Tree"
 
@@ -216,12 +410,21 @@ offset_top = 8.0
 offset_right = -8.0
 offset_bottom = 32.0
 grow_horizontal = 0
-theme_override_font_sizes/font_size = 12
+theme_override_fonts/font = ExtResource("13_uk0x3")
+theme_override_font_sizes/font_size = 16
 text = "Close"
 
+[node name="Marker2D" type="Marker2D" parent="CanvasLayer"]
+position = Vector2(321, 79)
+
+[node name="PlayerStats" parent="CanvasLayer" instance=ExtResource("10_7l0yi")]
+offset_left = -317.0
+offset_top = -177.0
+offset_right = -169.0
+offset_bottom = 116.0
+
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(640, 360)
-zoom = Vector2(0.6, 0.6)
+position = Vector2(734, 317)
 script = ExtResource("9_wj3rp")
 
 [connection signal="button_down" from="CanvasLayer/Close" to="." method="_on_close_button_down"]

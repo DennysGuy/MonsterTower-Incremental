@@ -38,3 +38,10 @@ signal issue_can_craft_sword_scene
 
 @warning_ignore("unused_signal")
 signal play_close_out_animation
+
+@warning_ignore("unused_signal")
+signal update_kill_quota_text(message : String, hit_quota : bool)
+@warning_ignore("unused_signal")
+signal update_kill_quota
+@warning_ignore("unused_signal")
+signal unlock_next_room

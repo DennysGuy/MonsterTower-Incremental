@@ -7,6 +7,9 @@ class_name PlayerIdle extends State
 @export var swing_pick_axe_state : State
 @export var climb_state : State
 
+@export_group("Audio")
+@export var jump_sfx : AudioStream
+
 func enter() -> void:
 	parent.set_sword_texture(animation_name)
 	super()
@@ -26,6 +29,7 @@ func process_input(_event: InputEvent) -> State:
 
 	if Input.is_action_pressed("pan_cam_down") and Input.is_action_just_pressed("add_currency"):
 		parent.pass_through_floor()
+		parent.sfx_player.play_sfx(jump_sfx)
 		return fall_state
 	
 	if _event.is_action_pressed("add_currency"):

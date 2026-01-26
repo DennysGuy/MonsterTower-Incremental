@@ -10,8 +10,13 @@ class_name PlayerHUD extends CanvasLayer
 var bag_showing : bool = false
 var map_name : String = ""
 
+@onready var hunt_quota: RichTextLabel = $PlayerHUD/HuntQuota
 @export var expedition_timer: ExpeditionTimerLocal
 @onready var big_notification_label: Label = $PlayerHUD/BigNotificationLabel
+@onready var sfx_player: SFXPlayer = $SfxPlayer
+
+const CLOSE_IN = preload("uid://dc3va7knibxnb")
+const CLOSE_OUT = preload("uid://caj0oih8j2sty")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -20,6 +25,8 @@ func _ready() -> void:
 	SignalBus.issue_big_notification.connect(issue_big_notification)
 	SignalBus.hide_big_notification.connect(hide_big_notification_label)
 	SignalBus.play_close_out_animation.connect(play_close_out_animation)
+	SignalBus.update_kill_quota_text.connect(update_kill_quota_text)
+	
 	player_health_bar.max_value = PlayerStats.player_stats["Max Health"]
 	player_health_bar.value = player_health_bar.max_value
 	
@@ -41,6 +48,13 @@ func spawn_respawn_box() -> void:
 	var respawn_box : RespawnBox = preload("uid://dv20tfcnkjyux").instantiate()
 	player_hud.add_child(respawn_box)
 
+func update_kill_quota_text(message : String, quota_met : bool) -> void:
+	if quota_met:
+		hunt_quota.text = "[color=green]"+message+"[/color]"
+	else:
+		hunt_quota.text = message
+
+	
 func show_bag() -> void:
 	bag_showing = !bag_showing
 	if bag_showing:
@@ -61,6 +75,11 @@ func hide_big_notification_label() -> void:
 	big_notification_label.text = ""
 	big_notification_label.hide()
 
-
 func play_close_out_animation() -> void:
 	animation_player.play("CloseOut")
+
+func play_close_out_sfx() -> void:
+	sfx_player.play_sfx(CLOSE_OUT)
+
+func play_close_in_sfx() -> void:
+	sfx_player.play_sfx(CLOSE_IN)

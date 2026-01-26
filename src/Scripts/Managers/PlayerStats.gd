@@ -13,8 +13,8 @@ const KNOCKBACK_FORCE : int = 300
 @onready var player_stats : Dictionary[String,float] = {
 	"Attack Damage" : 10.0,
 	"Movement Speed" : 100.0,
-	"Climbing Speed" : 75.0,
-	"Jump Height" : 300.0,
+	"Climbing Speed" : 65.0,
+	"Jump Height" : 270.0,
 	"Crit Chance" : 0.0,
 	"Defense" : 0.0,
 	"Crit Damage" : 1.5,
@@ -28,11 +28,15 @@ const KNOCKBACK_FORCE : int = 300
 	"Max Bank Slots": 4,
 	"Max Bag Stack": 4,
 	"Max Bank Stack":6,
-	"Cooking Speed": 0.1,
-	"Smelting Speed": 0.1,
+	"Cooking Speed": 0.15,
+	"Smelting Speed": 0.15,
 	"Mining Damage": 5,
 	"Monster Cap Bonus": 0,
-	"Expedition Time": 30.0,
+	"Expedition Time": 0.0,
+	"Cooking Drop Chance Bonus":0.0,
+	"Cooking Accuracy Bonus":0.0,
+	"Ore Drop Chance Bonus":0.0,
+	"Smelting Accuracy Bonus":0.0
 }
 
 @onready var facilities_unlocked : Dictionary[String, bool] = {
@@ -40,12 +44,14 @@ const KNOCKBACK_FORCE : int = 300
 	"Cooking Station" : false,
 	"Crafting Station" : false,
 	"Refinery Station" : false,
-	"Bank": false
+	"Bank": false,
+	"Arial Slash" : false
 }
 
 
 @onready var check_points_unlocked : Dictionary[String, bool] = {
 	"Floor 1-1" : false,
+	"Floor 1-2" : false,
 	"Floor 1-3" : false
 }
 
@@ -87,6 +93,7 @@ func get_bag() -> ItemBag:
 	match int(player_stats["Bag"]):
 		1: return preload("uid://cuwof21s5e74c")
 		2: return preload("uid://mbne7hjkpnqi")
+		3: return preload("uid://byikht2gbhthk")
 		_: return preload("uid://cuwof21s5e74c")
 
 func upgrade_player_stat(stat_name : String, interval : float, node_type : TechTreeManager.TECH_NODE_TYPE) -> void:
@@ -107,7 +114,7 @@ func upgrade_player_stat(stat_name : String, interval : float, node_type : TechT
 		return
 	
 	if interval < 1.0:
-		if stat_name == "Attack Damage" or stat_name == "Movement Speed":
+		if stat_name == "Attack Damage" or stat_name == "Movement Speed" or stat_name == "Jump Height" or stat_name == "Climbing Speed":
 			player_stats[stat_name] += int(interval * player_stats[stat_name])
 		else:
 			player_stats[stat_name] += interval
