@@ -4,7 +4,7 @@
 [ext_resource type="Shader" uid="uid://bg20bvdcwspb" path="res://src/Scenes/UI/ExpeditionResultsScreen.gdshader" id="2_cbct7"]
 [ext_resource type="Texture2D" uid="uid://dejy6ivtgw1rl" path="res://Assets/HUD/TempResultsScreenBG.png" id="3_qyln5"]
 [ext_resource type="Texture2D" uid="uid://mmjc1ci2ofjv" path="res://Assets/HUD/TempResultsScreen_Panel.png" id="4_qyln5"]
-[ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="5_47265"]
+[ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="5_xwhdp"]
 [ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="7_ee4bn"]
 [ext_resource type="FontFile" uid="uid://qgj228ltdttv" path="res://Assets/Fonts/alagard.ttf" id="7_xwhdp"]
 
@@ -242,7 +242,7 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 360.0
-offset_bottom = 360.00006
+offset_bottom = 360.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_qyln5")
@@ -268,15 +268,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -32.5
-offset_top = -10.5
-offset_right = 32.5
-offset_bottom = 12.5
+offset_left = -27.5
+offset_top = -10.0
+offset_right = 25.5
+offset_bottom = 9.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 7
-theme_override_fonts/font = ExtResource("5_47265")
+theme_override_fonts/font = ExtResource("5_xwhdp")
 theme_override_font_sizes/font_size = 18
 text = "Results"
 
@@ -288,30 +288,11 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -151.0
-offset_top = -70.0
+offset_top = -62.00003
 offset_right = 147.0
 offset_bottom = -23.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="RunTime" type="Label" parent="ResultsPanel/GoalPanel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -145.5
-offset_top = -19.0
-offset_right = 140.5
-offset_bottom = -3.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("5_47265")
-theme_override_font_sizes/font_size = 14
-text = "Run Time: 00:00:00"
 
 [node name="FloorReached" type="Label" parent="ResultsPanel/GoalPanel"]
 layout_mode = 1
@@ -320,16 +301,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -145.5
-offset_top = 1.5
-offset_right = 140.5
-offset_bottom = 17.5
+offset_left = -140.5
+offset_top = -8.5
+offset_right = 145.5
+offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("5_47265")
-theme_override_font_sizes/font_size = 14
+theme_override_fonts/font = ExtResource("5_xwhdp")
+theme_override_font_sizes/font_size = 20
 text = "Floor Reached: Temp Biome - Floor 1"
 
 [node name="InventoryPanel" type="Panel" parent="ResultsPanel"]
@@ -354,15 +335,15 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -144.0
-offset_top = -52.0
-offset_right = -84.0
-offset_bottom = -37.0
+offset_top = -53.5
+offset_right = -80.0
+offset_bottom = -37.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("5_47265")
-theme_override_font_sizes/font_size = 12
+theme_override_fonts/font = ExtResource("5_xwhdp")
+theme_override_font_sizes/font_size = 16
 text = "Inventory"
 
 [node name="InventoryContainer" type="GridContainer" parent="ResultsPanel/InventoryPanel"]
@@ -384,15 +365,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -144.0
-offset_right = -114.0
-offset_bottom = 15.0
+offset_left = -143.5
+offset_top = 0.5
+offset_right = -112.5
+offset_bottom = 16.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("5_47265")
-theme_override_font_sizes/font_size = 12
+theme_override_fonts/font = ExtResource("5_xwhdp")
+theme_override_font_sizes/font_size = 16
 text = "Bank"
 
 [node name="BankNotice" type="Label" parent="ResultsPanel/InventoryPanel"]
@@ -411,8 +393,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("5_47265")
-theme_override_font_sizes/font_size = 12
+theme_override_fonts/font = ExtResource("5_xwhdp")
+theme_override_font_sizes/font_size = 16
 text = "Bank Account Locked!"
 
 [node name="BankContainer" type="GridContainer" parent="ResultsPanel/InventoryPanel"]
@@ -472,8 +454,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -180.0
-offset_bottom = -180.0
+offset_top = -360.0
+offset_bottom = -360.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
@@ -483,8 +465,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 180.0
-offset_bottom = 180.00061
+offset_top = 360.0
+offset_bottom = 360.0006
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)

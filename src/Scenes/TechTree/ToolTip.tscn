@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://gqi5stq8kadl"]
+[gd_scene load_steps=9 format=3 uid="uid://gqi5stq8kadl"]
 
 [ext_resource type="Script" uid="uid://b15y36y5gufr7" path="res://src/Scripts/TechTree/tool_tip.gd" id="1_prrnn"]
-[ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="2_e6w3v"]
+[ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="2_dnaej"]
+[ext_resource type="FontFile" uid="uid://qgj228ltdttv" path="res://Assets/Fonts/alagard.ttf" id="4_p4gy6"]
 
 [sub_resource type="Theme" id="Theme_l673o"]
 
@@ -109,7 +110,15 @@ _data = {
 &"SpawnOut": SubResource("Animation_e6w3v")
 }
 
-[node name="ToolTip" type="Node2D" node_paths=PackedStringArray("node_title", "current_benefits", "description", "cost") groups=["ToolTips"]]
+[node name="ToolTip" type="Control" node_paths=PackedStringArray("node_title", "current_benefits", "description", "cost") groups=["ToolTips"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -355.0
+offset_bottom = -132.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_prrnn")
 node_title = NodePath("ToolTip/NodeTitle")
 current_benefits = NodePath("ToolTip/CurrentBenefits")
@@ -119,16 +128,27 @@ cost = NodePath("ToolTip/Cost")
 [node name="ToolTip" type="Panel" parent="."]
 modulate = Color(1, 1, 1, 0)
 z_index = 4096
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_right = 271.0
-offset_bottom = 224.0
+offset_left = -142.5
+offset_top = -114.0
+offset_right = 128.5
+offset_bottom = 110.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_l673o")
+
+[node name="Panel2" type="ColorRect" parent="ToolTip"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 4.0
+offset_right = 267.0
+offset_bottom = 220.0
+color = Color(1.1070073e-06, 0.5094469, 0.3749851, 1)
 
 [node name="NodeTitle" type="Label" parent="ToolTip"]
 layout_mode = 1
@@ -141,8 +161,8 @@ offset_right = 76.5
 offset_bottom = 23.0
 grow_horizontal = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_e6w3v")
-theme_override_font_sizes/font_size = 15
+theme_override_fonts/font = ExtResource("2_dnaej")
+theme_override_font_sizes/font_size = 16
 text = "Attack 1 (5/5) "
 horizontal_alignment = 1
 
@@ -157,7 +177,7 @@ offset_right = 74.5
 offset_bottom = 43.0
 grow_horizontal = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_e6w3v")
+theme_override_fonts/font = ExtResource("2_dnaej")
 theme_override_font_sizes/font_size = 14
 horizontal_alignment = 1
 
@@ -181,7 +201,8 @@ offset_right = 116.5
 offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/normal_font_size = 12
+theme_override_fonts/normal_font = ExtResource("2_dnaej")
+theme_override_font_sizes/normal_font_size = 16
 text = "This is the description for the node. 
 
 This should be located in the tech node stats resource which should then "
@@ -200,9 +221,9 @@ offset_bottom = -71.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_e6w3v")
-theme_override_font_sizes/font_size = 14
-text = "Cost: 25"
+theme_override_fonts/font = ExtResource("4_p4gy6")
+theme_override_font_sizes/font_size = 16
+text = "Gold: 25"
 horizontal_alignment = 1
 
 [node name="ResourcesList" type="GridContainer" parent="ToolTip"]

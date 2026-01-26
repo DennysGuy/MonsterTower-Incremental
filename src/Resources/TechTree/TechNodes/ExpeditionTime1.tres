@@ -1,9 +1,16 @@
 [gd_resource type="Resource" script_class="TechNodeStats" load_steps=3 format=3 uid="uid://y0ttwm5ljxyk"]
 
-[ext_resource type="Script" uid="uid://cu8drgivmhfn" path="res://src/Scripts/item.gd" id="1_h81jp"]
+[ext_resource type="Texture2D" uid="uid://dahvls2u7onmb" path="res://Assets/NodeGraphics/NodeGraphicsV2/PassTime1_V2.png" id="1_h81jp"]
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="2_bx3cj"]
 
 [resource]
 script = ExtResource("2_bx3cj")
 node_name = "Expedition Time 1"
+icon = ExtResource("1_h81jp")
+description = "Increases limited Tower Expedition Time by 5 seconds per level"
+max_level = 4
+currency_required = 250
+stat_name = "Expedition Time"
+upgrade_interval = 5.0
+prereqs = Array[String](["Max HP 1:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

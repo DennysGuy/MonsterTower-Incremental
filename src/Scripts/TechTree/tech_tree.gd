@@ -5,6 +5,15 @@ class_name TechTree extends Node2D
 @onready var prestige_progress: Label = $CanvasLayer/PrestigeProgress
 @onready var progress_bar: ProgressBar = $CanvasLayer/ProgressBar
 @onready var camera_2d: Camera2D = $Camera2D
+@onready var marker_2d: Marker2D = $CanvasLayer/Marker2D
+
+@onready var canvas_layer: CanvasLayer = $CanvasLayer
+
+@onready var sfx_player: SFXPlayer = $SfxPlayer
+
+const CLOSE_UPGRADE_PC = preload("uid://ckgce5whd3hq7")
+const OPEN_UPGRADE_PC = preload("uid://coaqdaythm28l")
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -15,6 +24,8 @@ func _ready() -> void:
 	TechTreeManager.update_currency_label.connect(update_currency_label)
 	TechTreeManager.update_prestige_tier_label.connect(update_prestige_label)
 	TechTreeManager.update_prestige_tier_progress_label.connect(update_prestige_progress)
+	TechTreeManager.add_tool_tip.connect(add_tool_tip)
+	sfx_player.play_sfx(OPEN_UPGRADE_PC)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -49,5 +60,10 @@ func _on_close_button_down() -> void:
 	if PlayerStats.show_refinery_station_unlock_animation:
 		TechTreeManager.unlock_refinery.emit()
 		PlayerStats.show_refinery_station_unlock_animation = false
-		
+	
+	sfx_player.play_sfx(CLOSE_UPGRADE_PC)
 	queue_free()
+
+func add_tool_tip(tool_tip : ToolTip) -> void:
+	tool_tip.position = marker_2d.position
+	canvas_layer.add_child(tool_tip)

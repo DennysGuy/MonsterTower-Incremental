@@ -1,6 +1,7 @@
-[gd_scene load_steps=33 format=4 uid="uid://bla5rhusv2jn5"]
+[gd_scene load_steps=34 format=4 uid="uid://bla5rhusv2jn5"]
 
 [ext_resource type="Script" uid="uid://bgfo5a5l7ay1t" path="res://src/Scripts/Maps/Tower/Biome1/floor_1_2.gd" id="1_1pghk"]
+[ext_resource type="AudioStream" uid="uid://nhnh670ord35" path="res://Audio/Music/TemporaryTowerTheme.mp3" id="2_4lb0i"]
 [ext_resource type="TileSet" uid="uid://cuil6pmpg4xf1" path="res://src/Scenes/Tower/TowerFloors/Biome1/Biome1-Floor.tres" id="2_27fnx"]
 [ext_resource type="Texture2D" uid="uid://bbmpr551mjb20" path="res://Assets/Tower/Biom1/Biome1SpriteSheet.png" id="2_aukmg"]
 [ext_resource type="AudioStream" uid="uid://fgrpqq5p7fjq" path="res://Audio/SFX/Biomes/MossyDungeon/Ambience/03 DSGNDron, Dungeon, Ambience, Drone, Dark, Loop.wav" id="2_vcays"]
@@ -552,6 +553,7 @@ size = Vector2(391, 20)
 script = ExtResource("1_1pghk")
 map_name = "Floor 1-2"
 map_id = 2
+map_theme_song = ExtResource("2_4lb0i")
 spawn_point = NodePath("PlayerSpawnPoint")
 camera = NodePath("PlayerCamera")
 hud = NodePath("HUD")

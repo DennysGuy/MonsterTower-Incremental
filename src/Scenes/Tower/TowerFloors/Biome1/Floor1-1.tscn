@@ -1,6 +1,7 @@
-[gd_scene load_steps=36 format=4 uid="uid://bpob51vk7v2cj"]
+[gd_scene load_steps=35 format=4 uid="uid://bpob51vk7v2cj"]
 
 [ext_resource type="Script" uid="uid://bm3rscv8708vb" path="res://src/Scripts/Maps/Tower/Biome1/floor_1_1.gd" id="1_u3nwm"]
+[ext_resource type="AudioStream" uid="uid://nhnh670ord35" path="res://Audio/Music/TemporaryTowerTheme.mp3" id="2_68h8k"]
 [ext_resource type="AudioStream" uid="uid://fgrpqq5p7fjq" path="res://Audio/SFX/Biomes/MossyDungeon/Ambience/03 DSGNDron, Dungeon, Ambience, Drone, Dark, Loop.wav" id="2_ck022"]
 [ext_resource type="Texture2D" uid="uid://bbmpr551mjb20" path="res://Assets/Tower/Biom1/Biome1SpriteSheet.png" id="2_hk0iw"]
 [ext_resource type="TileSet" uid="uid://dr3ft3wh6mi6e" path="res://src/Scenes/Tower/TowerFloors/Biome1/Biome1BGSetPieces1.tres" id="3_4lbed"]
@@ -21,8 +22,6 @@
 [ext_resource type="PackedScene" uid="uid://cepv6hcj1jotc" path="res://src/Scenes/Tower/TowerFloors/TowerExitArea.tscn" id="11_kpd6k"]
 [ext_resource type="PackedScene" uid="uid://c11hg5ijdrjjs" path="res://src/Scenes/Tower/TowerFloors/ExitElevator1.tscn" id="15_obgwm"]
 [ext_resource type="PackedScene" uid="uid://cexhahnue1wh6" path="res://src/Scenes/Tower/TowerFloors/FloorGuideLog.tscn" id="15_om3xh"]
-[ext_resource type="PackedScene" uid="uid://dgtobkubdjq27" path="res://src/Scenes/Actors/Enemies/ItemInteractable.tscn" id="22_jmmg4"]
-[ext_resource type="Resource" uid="uid://buu8pdcooh3hc" path="res://src/Resources/CraftingResources/BronzeBar.tres" id="23_n5ad4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c1fqw"]
 texture = ExtResource("2_hk0iw")
@@ -1054,6 +1053,7 @@ size = Vector2(297, 20)
 script = ExtResource("1_u3nwm")
 map_name = "Floor 1-1"
 map_id = 1
+map_theme_song = ExtResource("2_68h8k")
 spawn_point = NodePath("PlayerSpawnPoint")
 camera = NodePath("PlayerCamera")
 hud = NodePath("HUD")
@@ -1298,22 +1298,6 @@ shape = SubResource("RectangleShape2D_0rtsh")
 
 [node name="ExitElevator" parent="." instance=ExtResource("15_obgwm")]
 position = Vector2(201, 81)
-
-[node name="ItemInteractable" parent="." instance=ExtResource("22_jmmg4")]
-position = Vector2(252, 914)
-item = ExtResource("23_n5ad4")
-
-[node name="ItemInteractable2" parent="." instance=ExtResource("22_jmmg4")]
-position = Vector2(252, 914)
-item = ExtResource("23_n5ad4")
-
-[node name="ItemInteractable3" parent="." instance=ExtResource("22_jmmg4")]
-position = Vector2(252, 914)
-item = ExtResource("23_n5ad4")
-
-[node name="ItemInteractable4" parent="." instance=ExtResource("22_jmmg4")]
-position = Vector2(252, 914)
-item = ExtResource("23_n5ad4")
 
 [connection signal="body_entered" from="TowerExitArea" to="." method="_on_tower_exit_area_body_entered"]
 [connection signal="body_exited" from="TowerExitArea" to="." method="_on_tower_exit_area_body_exited"]

@@ -31,6 +31,9 @@ signal unlock_refinery
 @warning_ignore("unused_signal")
 signal check_if_can_purchase_node
 
+@warning_ignore("unused_signal")
+signal add_tool_tip(tool_tip : ToolTip)
+
 var currency : int = 0
 var current_prestige : int = 0
 
@@ -53,6 +56,10 @@ enum TECH_NODE_TYPE {ABILITY, FACILITY}
 	"Crit Damage 2": 0,
 	"Movement 1" : 0,
 	"Movement 2" : 0,
+	"Climb Speed 1" : 0,
+	"Climb Speed 2": 0,
+	"Jump Height 1":0,
+	"Jump Height 2":0,
 	"Max HP 1":0,
 	"Max HP 2": 0,
 	"Defense 1": 0,
@@ -79,7 +86,9 @@ enum TECH_NODE_TYPE {ABILITY, FACILITY}
 	"Refinery Speed 1": 0,
 	"Refinery Speed 2": 0,
 	"Refinery Accuracy 1": 0,
-	"Refinery Accuracy 2": 0
+	"Refinery Accuracy 2": 0,
+	"Ore Drop Chance 1": 0.0,
+	"Ore Drop Chance 2": 0.0
 }
 
 # Called when the node enters the scene tree for the first time.

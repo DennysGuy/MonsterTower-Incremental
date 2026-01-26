@@ -2,6 +2,7 @@ class_name Map extends Node2D
 
 @export var map_name : String
 @export var map_id : int
+@export var map_theme_song : AudioStream
 @export var spawn_point : Marker2D
 @export var player_spawn : bool = true
 @export var camera : PlayerCamera
@@ -23,6 +24,7 @@ var player : Player
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	GameManager.player_can_move = true
 	SignalBus.move_to_next_room.connect(move_to_next_room)
 	SignalBus.return_to_starshire.connect(go_to_starshire)
 	hud.map_name_label.text = map_name
@@ -42,6 +44,10 @@ func _ready() -> void:
 		ambience_player.stream = ambience_sfx
 		ambience_player.play()
 	
+	if MusicPlayer.audio_stream_player.is_playing:
+		if map_theme_song:
+			MusicPlayer.play_song(map_theme_song)
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
@@ -55,6 +61,7 @@ func spawn_player() -> void:
 
 
 func go_to_starshire() -> void:
+	MusicPlayer.stop_player(true)
 	GameManager.expedition_timer_started = false
 	hud.animation_player.play("CloseOut")
 	await get_tree().create_timer(1.0).timeout

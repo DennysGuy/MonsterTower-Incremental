@@ -1,6 +1,7 @@
-[gd_scene load_steps=29 format=4 uid="uid://c3y6ce3xriuwl"]
+[gd_scene load_steps=30 format=4 uid="uid://c3y6ce3xriuwl"]
 
 [ext_resource type="Script" uid="uid://600rhhvqgcep" path="res://src/Scripts/Tower/tutorial_map.gd" id="1_tymde"]
+[ext_resource type="AudioStream" uid="uid://dx8evt0rrfmco" path="res://Audio/Music/TemporaryTutorialTheme.mp3" id="2_7kbtj"]
 [ext_resource type="Texture2D" uid="uid://bodyhalxjbpk6" path="res://Assets/EnvironmentalAssets/TutorialMap.png" id="2_760pt"]
 [ext_resource type="Texture2D" uid="uid://m1hch071kuxp" path="res://Assets/EnvironmentalAssets/Ship.png" id="2_ydw26"]
 [ext_resource type="Texture2D" uid="uid://d0bjvovwo3hm4" path="res://Assets/EnvironmentalAssets/PalmTree.png" id="3_o6iow"]
@@ -8,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://c8ov03gkkda4k" path="res://src/Scenes/PlayerCamera.tscn" id="5_csukg"]
 [ext_resource type="PackedScene" uid="uid://dysg5kffvxbql" path="res://src/Scenes/UI/PlayerHUD.tscn" id="6_o6iow"]
 [ext_resource type="PackedScene" uid="uid://cr6q5dxlkks" path="res://src/Scenes/Tower/LadderArea.tscn" id="7_csukg"]
-[ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="8_p0sy1"]
+[ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="9_7kbtj"]
 [ext_resource type="PackedScene" uid="uid://bethw5tnlxnnt" path="res://src/Scenes/Actors/Enemies/CorruptedMushie/CorruptedMushie.tscn" id="10_ytsg0"]
 [ext_resource type="Resource" uid="uid://cnd7ngdtcfmgc" path="res://src/Resources/Actors/Enemies/Biome1/CorruptedMushie/PurifiedMushieCore.tres" id="11_cqx2w"]
 [ext_resource type="Resource" uid="uid://jn2dh2fyq5ep" path="res://src/Resources/Actors/Enemies/Biome1/CorruptedMushie/FiberousMushieStalk.tres" id="12_7kbtj"]
@@ -402,6 +403,7 @@ size = Vector2(20, 362)
 [node name="TutorialMap" type="Node2D" node_paths=PackedStringArray("spawn_point", "camera", "hud")]
 script = ExtResource("1_tymde")
 map_name = "Billy's Bootcamp "
+map_theme_song = ExtResource("2_7kbtj")
 spawn_point = NodePath("Marker2D")
 camera = NodePath("PlayerCamera")
 hud = NodePath("HUD")
@@ -496,8 +498,8 @@ offset_top = 345.0
 offset_right = 502.0
 offset_bottom = 378.0
 theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("8_p0sy1")
-theme_override_font_sizes/font_size = 12
+theme_override_fonts/font = ExtResource("9_7kbtj")
+theme_override_font_sizes/font_size = 16
 text = "Press 'W' to Climb up 'S' 
 to Climb Down Ladders"
 
@@ -508,8 +510,8 @@ offset_top = 316.0
 offset_right = 207.0
 offset_bottom = 331.0
 theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("8_p0sy1")
-theme_override_font_sizes/font_size = 12
+theme_override_fonts/font = ExtResource("9_7kbtj")
+theme_override_font_sizes/font_size = 16
 text = "Press 'A' or 'D' to Move"
 
 [node name="Label2" type="Label" parent="."]
@@ -519,8 +521,8 @@ offset_top = 238.0
 offset_right = 905.0
 offset_bottom = 271.0
 theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("8_p0sy1")
-theme_override_font_sizes/font_size = 12
+theme_override_fonts/font = ExtResource("9_7kbtj")
+theme_override_font_sizes/font_size = 16
 text = "Press 'Space' To Jump!"
 
 [node name="Label3" type="Label" parent="."]
@@ -529,8 +531,8 @@ offset_top = 297.0
 offset_right = 1365.0
 offset_bottom = 348.0
 theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("8_p0sy1")
-theme_override_font_sizes/font_size = 12
+theme_override_fonts/font = ExtResource("9_7kbtj")
+theme_override_font_sizes/font_size = 16
 text = "Press 'S' + 'Space'
 To Drop Through Floors
 "
@@ -541,8 +543,8 @@ offset_top = 467.0
 offset_right = 1377.0
 offset_bottom = 482.0
 theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("8_p0sy1")
-theme_override_font_sizes/font_size = 12
+theme_override_fonts/font = ExtResource("9_7kbtj")
+theme_override_font_sizes/font_size = 16
 text = "Press 'F' To Attack Enemies"
 
 [node name="Label5" type="Label" parent="."]
@@ -551,31 +553,31 @@ offset_top = 467.0
 offset_right = 1565.0
 offset_bottom = 500.0
 theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("8_p0sy1")
-theme_override_font_sizes/font_size = 12
+theme_override_fonts/font = ExtResource("9_7kbtj")
+theme_override_font_sizes/font_size = 16
 text = "Press 'B' To Open Your
  Inventory Bag"
 
 [node name="Label6" type="Label" parent="."]
 offset_left = 1450.0
-offset_top = 250.0
-offset_right = 1751.0
-offset_bottom = 301.0
+offset_top = 211.0
+offset_right = 1783.0
+offset_bottom = 265.0
 theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("8_p0sy1")
-theme_override_font_sizes/font_size = 12
+theme_override_fonts/font = ExtResource("9_7kbtj")
+theme_override_font_sizes/font_size = 16
 text = "Access The Tower Pass PC 
 and Acquire your entrance pass!
 (You will have limited access - for your own safety)"
 
 [node name="Label7" type="Label" parent="."]
 offset_left = 1452.0
-offset_top = 306.0
-offset_right = 1753.0
+offset_top = 294.0
+offset_right = 1806.0
 offset_bottom = 336.0
 theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("8_p0sy1")
-theme_override_font_sizes/font_size = 6
+theme_override_fonts/font = ExtResource("9_7kbtj")
+theme_override_font_sizes/font_size = 12
 text = "(By accepting your pass, you agree 
 that Tower Guide Inc. is not responsible for any injuries, 
 death, or loss of livelyhood in any stances. Thank you for your business!"
@@ -596,13 +598,13 @@ shape = SubResource("RectangleShape2D_ytsg0")
 
 [node name="GuidLog" type="Label" parent="."]
 visible = false
-offset_left = 1928.0
+offset_left = 1898.0
 offset_top = 271.0
-offset_right = 2162.0
-offset_bottom = 376.0
+offset_right = 2132.0
+offset_bottom = 382.0
 theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("8_p0sy1")
-theme_override_font_sizes/font_size = 12
+theme_override_fonts/font = ExtResource("9_7kbtj")
+theme_override_font_sizes/font_size = 15
 text = "Congratulations. You've Completed
 The Tower Boot Camp. 
 
@@ -610,6 +612,7 @@ Press 'E' to Enter The First Floor.
 
 Good Luck!"
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(-10, 455)

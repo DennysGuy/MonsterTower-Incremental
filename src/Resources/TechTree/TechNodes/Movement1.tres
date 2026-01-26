@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="TechNodeStats" load_steps=3 format=3 uid="uid://ds0j00mlqnf55"]
 
-[ext_resource type="Texture2D" uid="uid://cj7a6mhchk7l2" path="res://Assets/NodeGraphics/Movement1Icon.png" id="1_f7tns"]
+[ext_resource type="Texture2D" uid="uid://dcyuw0bkmf0l5" path="res://Assets/NodeGraphics/NodeGraphicsV2/Movement1_V2.png" id="1_f7tns"]
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_n6cms"]
 
 [resource]
@@ -9,8 +9,8 @@ node_name = "Movement 1"
 icon = ExtResource("1_f7tns")
 description = "For each level, increases movement speed by 5%"
 max_level = 3
-currency_required = 90
+currency_required = 50
 stat_name = "Movement Speed"
-upgrade_interval = 0.1
+upgrade_interval = 0.05
 prereqs = Array[String](["Tower License:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

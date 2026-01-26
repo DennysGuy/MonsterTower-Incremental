@@ -15,6 +15,6 @@ func process_frame(_delta: float) -> State:
 	return null
 
 func process_physics(_delta: float) -> State:
-	if parent.health<= int(parent.ore_rock_stats.max_health * 0.75):
+	if parent.health <= int(parent.ore_rock_stats.max_health * 0.75):
 		return ore_rock_phase_2
 	return null

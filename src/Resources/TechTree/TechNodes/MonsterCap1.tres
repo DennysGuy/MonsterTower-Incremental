@@ -1,9 +1,16 @@
 [gd_resource type="Resource" script_class="TechNodeStats" load_steps=3 format=3 uid="uid://beqchd24ugnyh"]
 
-[ext_resource type="Script" uid="uid://cu8drgivmhfn" path="res://src/Scripts/item.gd" id="1_kqbrx"]
+[ext_resource type="Texture2D" uid="uid://b4x3j6sad7a7y" path="res://Assets/NodeGraphics/NodeGraphicsV2/MonsterCap1_V2.png" id="1_kqbrx"]
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="2_iyx3t"]
 
 [resource]
 script = ExtResource("2_iyx3t")
 node_name = "Monster Cap 1"
+icon = ExtResource("1_kqbrx")
+description = "Increases Monster Spawn Area cap by 1 per level"
+max_level = 3
+currency_required = 135
+stat_name = "Monster Cap Bonus"
+upgrade_interval = 1.0
+prereqs = Array[String](["Max HP 1:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

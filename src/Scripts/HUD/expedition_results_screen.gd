@@ -13,11 +13,13 @@ const TRANSFER_TO_BANK = preload("uid://ddk7o6mnyi7ji")
 const CLOSE_IN = preload("uid://dc3va7knibxnb")
 const CLOSE_OUT = preload("uid://caj0oih8j2sty")
 
+const TEMP_RESULTS_SCREEN_THEME = preload("uid://cpyx2c4kjhkag")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	init_containers()
 	animation_player.play("CloseOut")
+	MusicPlayer.play_song(TEMP_RESULTS_SCREEN_THEME)
 	await get_tree().create_timer(2.5).timeout
 	if PlayerStats.facilities_unlocked["Bank"]:
 		move_inventory_to_bank()
@@ -70,4 +72,5 @@ func play_close_out_sfx() -> void:
 	sfx_player.play_sfx(CLOSE_OUT)
 
 func play_close_in_sfx() -> void:
+	MusicPlayer.stop_player(true)
 	sfx_player.play_sfx(CLOSE_IN)

@@ -1,4 +1,4 @@
-class_name ToolTip extends Node2D
+class_name ToolTip extends Control
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @export var node_title: Label
@@ -46,4 +46,4 @@ func update_info(total_bonus : float) -> void:
 			current_benefits.text = "+%s" %[int(total_bonus)]
 	
 	description.text = tech_node_stats.description
-	cost.text = "Cost: %s" % [tech_node_stats.currency_required]
+	cost.text = "%s Gold" % [tech_node_stats.currency_required]

@@ -27,6 +27,7 @@ InventoryManager="*res://src/Scripts/Managers/InventoryManager.gd"
 CookingManager="*res://src/Scripts/Managers/CookingManager.gd"
 ExpeditionTimer="*res://src/Scripts/HUD/expedition_timer.gd"
 NotificationManager="*res://src/Scripts/Managers/NotificationManager.gd"
+MusicPlayer="*res://src/Scenes/Players/MusicPlayer.tscn"
 
 [display]
 
