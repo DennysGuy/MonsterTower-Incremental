@@ -39,7 +39,7 @@ func update_currency_label() -> void:
 	currency.text = "Currency: %s" % [TechTreeManager.currency]
 
 func update_prestige_label() -> void:
-	presitge_tier.text = "Prestige: %s" % [TechTreeManager.current_prestige]
+	presitge_tier.text = "Pass Tier: %s" % [TechTreeManager.current_prestige]
 
 func update_prestige_progress() -> void:
 	prestige_progress.text = "%s/%s" % [TechTreeManager.current_upgrade_count, TechTreeManager.upgrade_count_to_prestige]
@@ -62,6 +62,8 @@ func _on_close_button_down() -> void:
 		PlayerStats.show_refinery_station_unlock_animation = false
 	
 	sfx_player.play_sfx(CLOSE_UPGRADE_PC)
+
+	await get_tree().create_timer(0.3).timeout
 	queue_free()
 
 func add_tool_tip(tool_tip : ToolTip) -> void:

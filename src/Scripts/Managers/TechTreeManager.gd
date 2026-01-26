@@ -47,7 +47,7 @@ enum TECH_NODE_TYPE {ABILITY, FACILITY}
 	"Tower License" : 0,
 	"Attack 1" : 0,
 	"Attack 2" : 0,
-	"Arial Attack":0,
+	"Arial Slash":0,
 	"Accuracy 1": 0,
 	"Accuracy 2": 0,
 	"Crit Chance 1" : 0,
@@ -117,7 +117,8 @@ func increment_upgrade_count() -> void:
 	
 	if current_upgrade_count >= upgrade_count_to_prestige:
 		current_prestige += 1
-		PlayerStats.player_stats["Expedition Time"] += 30
+		PlayerStats.player_stats["Expedition Time"] += 20
 		upgrade_count_to_prestige += 25
+		current_upgrade_count = 0
 		update_prestige_tier_label.emit()
 		update_prestige_tier_progress_label.emit()

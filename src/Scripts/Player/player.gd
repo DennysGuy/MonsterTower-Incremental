@@ -20,7 +20,7 @@ var stored_ore_rock : OreRock
 var in_ladder_area : bool = false
 var is_climbing : bool = false
 var prev_input : int
-
+var prev_move_speed : float
 var mining_area_position : Vector2
 
 func _ready() -> void:

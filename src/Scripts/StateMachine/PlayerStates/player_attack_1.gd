@@ -16,6 +16,7 @@ func enter() -> void:
 	parent.sfx_player.play_sfx(swing,3.0)
 
 func exit() -> void:
+
 	parent.clear_effect_texture()
 
 func process_input(_event: InputEvent) -> State:
@@ -25,9 +26,23 @@ func process_frame(_delta: float) -> State:
 	return null
 
 func process_physics(_delta: float) -> State:
+	
+	if not parent.is_on_floor():
+		if parent.prev_move_speed != 0:
+			parent.velocity.x = parent.prev_move_speed
+	else:
+		stop_player()
+		
 	if parent.is_on_floor() and parent.timer.time_left <= 0:
+		
 		if Input.is_action_pressed("swing_sword"):
 			return attack2_state
 		return idle_state
+		
+	parent.move_and_slide()
 	return null
 		
+
+func stop_player() -> void:
+	parent.prev_move_speed = 0
+	parent.velocity = Vector2.ZERO

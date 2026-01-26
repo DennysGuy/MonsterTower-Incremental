@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://b7n3fwd3y85wp"]
+[gd_scene load_steps=40 format=3 uid="uid://b7n3fwd3y85wp"]
 
 [ext_resource type="Script" uid="uid://nb5nyiymrgyp" path="res://src/Scripts/TechTree/tech_tree.gd" id="1_1fw0b"]
 [ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="2_d4ivd"]
@@ -38,6 +38,7 @@
 [ext_resource type="Resource" uid="uid://c6cb7c8bqn7ow" path="res://src/Resources/TechTree/TechNodes/RefinerySpeed1.tres" id="30_il84h"]
 [ext_resource type="Resource" uid="uid://licswcd54xsn" path="res://src/Resources/TechTree/TechNodes/RefineryAccuracy1.tres" id="30_yfj5d"]
 [ext_resource type="Resource" uid="uid://ctf4we33chvvs" path="res://src/Resources/TechTree/TechNodes/OreRockDrop1.tres" id="32_pc0xa"]
+[ext_resource type="Resource" uid="uid://burkenucbrobr" path="res://src/Resources/TechTree/TechNodes/ArialAttack.tres" id="35_mdsgt"]
 
 [node name="TechTree" type="Node2D"]
 script = ExtResource("1_1fw0b")
@@ -303,6 +304,14 @@ position = Vector2(0, -2)
 points = PackedVector2Array(-16, 1, -52, 1)
 width = 3.0
 
+[node name="ArialSlashNode" parent="Nodes" instance=ExtResource("5_2ltmf")]
+position = Vector2(836, 253)
+tech_node_stats = ExtResource("35_mdsgt")
+
+[node name="Line2D" type="Line2D" parent="Nodes/ArialSlashNode"]
+points = PackedVector2Array(-16, -1, -45, -1)
+width = 3.0
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Currency" type="Label" parent="CanvasLayer"]
@@ -331,23 +340,25 @@ anchor_right = 0.5
 offset_left = -166.0
 offset_top = 1.0
 offset_right = -28.0
-offset_bottom = 35.0
+offset_bottom = 17.0
 grow_horizontal = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 14
+theme_override_fonts/font = ExtResource("13_uk0x3")
+theme_override_font_sizes/font_size = 16
 text = "Prestige: 0"
 
 [node name="PrestigeProgress" type="Label" parent="CanvasLayer"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 95.0
-offset_top = 7.0
-offset_right = 158.0
-offset_bottom = 24.0
+offset_left = 96.0
+offset_top = 4.0
+offset_right = 159.0
+offset_bottom = 21.0
 grow_horizontal = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 12
+theme_override_fonts/font = ExtResource("13_uk0x3")
+theme_override_font_sizes/font_size = 16
 text = "0/10"
 horizontal_alignment = 1
 
@@ -356,9 +367,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -168.0
-offset_top = 29.0
+offset_top = 28.0
 offset_right = 162.0
-offset_bottom = 47.0
+offset_bottom = 46.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 10
 
@@ -399,7 +410,8 @@ offset_top = 8.0
 offset_right = -8.0
 offset_bottom = 32.0
 grow_horizontal = 0
-theme_override_font_sizes/font_size = 12
+theme_override_fonts/font = ExtResource("13_uk0x3")
+theme_override_font_sizes/font_size = 16
 text = "Close"
 
 [node name="Marker2D" type="Marker2D" parent="CanvasLayer"]

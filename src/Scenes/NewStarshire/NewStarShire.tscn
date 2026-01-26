@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=4 uid="uid://oonjrpabmces"]
+[gd_scene load_steps=47 format=4 uid="uid://oonjrpabmces"]
 
 [ext_resource type="Script" uid="uid://dpqc54c34418w" path="res://src/Scripts/Maps/NewStarShire/new_star_shire.gd" id="1_gq00g"]
 [ext_resource type="Texture2D" uid="uid://c21ee30haolx4" path="res://Assets/EnvironmentalAssets/TowerDistance.png" id="2_bl45m"]
@@ -25,6 +25,10 @@
 [ext_resource type="PackedScene" uid="uid://debxddfwr0kuy" path="res://src/Scenes/NewStarshire/SmeltingStation.tscn" id="20_05bdh"]
 [ext_resource type="PackedScene" uid="uid://icxc8mi1q1w4" path="res://src/Scenes/NewStarshire/Facilities/SwordCraftingStation.tscn" id="21_bl45m"]
 [ext_resource type="PackedScene" uid="uid://mwttdrt2cg71" path="res://src/Scenes/Players/ambience_player.tscn" id="23_5xris"]
+[ext_resource type="Texture2D" uid="uid://14re4sr2xv7s" path="res://Assets/WelcomSign.png" id="26_ejo2t"]
+[ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="27_e7ku4"]
+[ext_resource type="Texture2D" uid="uid://cuwc34c0ympwf" path="res://Assets/DirectionSign.png" id="28_m7r5i"]
+[ext_resource type="Texture2D" uid="uid://b83r1hobjk7vm" path="res://Assets/DirectionSignMessage.png" id="29_hk4f7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_te0bi"]
 texture = ExtResource("3_5xris")
@@ -1137,6 +1141,80 @@ position = Vector2(1210, 710)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
 position = Vector2(0, -177.5)
 shape = SubResource("RectangleShape2D_jhqac")
+
+[node name="WelcomSign" type="TextureRect" parent="."]
+offset_left = 91.0
+offset_top = 457.0
+offset_right = 269.0
+offset_bottom = 577.0
+texture = ExtResource("26_ejo2t")
+
+[node name="Label" type="Label" parent="WelcomSign"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -56.5
+offset_top = -43.0
+offset_right = 54.5
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("27_e7ku4")
+theme_override_font_sizes/font_size = 18
+text = "NEW STARSHIRE
+GRAND MARKET"
+
+[node name="Label2" type="Label" parent="WelcomSign"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.0
+offset_top = 1.5
+offset_right = 69.0
+offset_bottom = 28.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("27_e7ku4")
+theme_override_font_sizes/font_size = 11
+text = "~Sell Your goods to 
+the merchants above!~"
+
+[node name="DirectionSign" type="Sprite2D" parent="."]
+position = Vector2(889, 628)
+texture = ExtResource("28_m7r5i")
+
+[node name="DirectionSignMessage" type="Sprite2D" parent="."]
+position = Vector2(887, 579)
+texture = ExtResource("29_hk4f7")
+
+[node name="Label" type="Label" parent="DirectionSignMessage"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -68.0
+offset_top = -49.5
+offset_right = -10.0
+offset_bottom = -14.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("27_e7ku4")
+theme_override_font_sizes/font_size = 16
+text = "Tower 
+Entrance"
+metadata/_edit_use_anchors_ = true
 
 [connection signal="body_entered" from="TowerArea" to="." method="_on_tower_area_body_entered"]
 [connection signal="body_exited" from="TowerArea" to="." method="_on_tower_area_body_exited"]

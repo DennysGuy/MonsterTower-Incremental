@@ -44,7 +44,8 @@ const KNOCKBACK_FORCE : int = 300
 	"Cooking Station" : false,
 	"Crafting Station" : false,
 	"Refinery Station" : false,
-	"Bank": false
+	"Bank": false,
+	"Arial Slash" : false
 }
 
 
