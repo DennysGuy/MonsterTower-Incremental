@@ -1228,7 +1228,6 @@ metadata/_edit_use_anchors_ = true
 [connection signal="body_exited" from="CraftingStationArea" to="." method="_on_crafting_station_area_body_exited"]
 
 [editable path="PracticeDummy"]
-[editable path="HUD"]
 [editable path="MarketStand/NameTag5"]
 [editable path="TempCookingRange/NameTag2"]
 [editable path="TempSmeltingStation/NameTag3"]

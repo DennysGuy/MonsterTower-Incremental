@@ -24,7 +24,7 @@ map_theme_song = ExtResource("2_la3sh")
 spawn_point = NodePath("Marker2D")
 camera = NodePath("PlayerCamera")
 hud = NodePath("HUD")
-map_type = 2
+path = "uid://b3m3f58qy47jb"
 ambience_player = NodePath("AmbiencePlayer")
 ambience_sfx = ExtResource("2_mdljo")
 

@@ -46,7 +46,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("interact") and player_in_tower_range and GameManager.player_can_move and PlayerStats.facilities_unlocked["Tower Pass"]:
 		GameManager.player_can_move = false
-		if PlayerStats.check_points_unlocked["Floor 1-1"]:
+		if PlayerStats.check_points_unlocked["Floor 1-2"]:
 			spawn_tower_entrance_map() #need to check how many checkpoints unlocked
 		else:
 			go_to_test_floor()

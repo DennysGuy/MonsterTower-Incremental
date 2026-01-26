@@ -1059,8 +1059,10 @@ camera = NodePath("PlayerCamera")
 hud = NodePath("HUD")
 ore_rock_spawn_rate = 0.65
 ore_rock_markers = NodePath("OreRockMarkers")
+path = "uid://bpob51vk7v2cj"
 next_room_path = "res://src/Scenes/Tower/TowerFloors/Biome1/Floor1-2.tscn"
 map_type = 2
+kill_quota = 10
 ambience_player = NodePath("AmbiencePlayer")
 ambience_sfx = ExtResource("2_ck022")
 
@@ -1154,8 +1156,6 @@ position = Vector2(467, 529)
 ore_rock_resource = ExtResource("8_yx3jr")
 ore_rock = ExtResource("7_yx3jr")
 spawn_parent = NodePath("../..")
-
-[node name="HUD" parent="." instance=ExtResource("4_aah8w")]
 
 [node name="LadderArea" parent="." node_paths=PackedStringArray("ladder_top", "ladder_bottom") instance=ExtResource("5_c1fqw")]
 position = Vector2(479, 899)
@@ -1298,6 +1298,8 @@ shape = SubResource("RectangleShape2D_0rtsh")
 
 [node name="ExitElevator" parent="." instance=ExtResource("15_obgwm")]
 position = Vector2(201, 81)
+
+[node name="HUD" parent="." instance=ExtResource("4_aah8w")]
 
 [connection signal="body_entered" from="TowerExitArea" to="." method="_on_tower_exit_area_body_entered"]
 [connection signal="body_exited" from="TowerExitArea" to="." method="_on_tower_exit_area_body_exited"]

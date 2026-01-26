@@ -9,6 +9,7 @@ func _ready() -> void:
 	super()
 	hud.animation_player.play("CloseIn")
 	checkpoint_campfire.play("default")
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

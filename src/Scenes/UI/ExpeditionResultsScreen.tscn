@@ -409,6 +409,17 @@ offset_bottom = 106.0
 grow_horizontal = 2
 columns = 8
 
+[node name="TipsAndTricks" type="Label" parent="ResultsPanel/InventoryPanel"]
+layout_mode = 0
+offset_left = -38.0
+offset_top = 128.0
+offset_right = 355.0
+offset_bottom = 151.0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("5_xwhdp")
+text = "Can't reach a ledge? Upgrade your jump!"
+horizontal_alignment = 1
+
 [node name="ToTown" type="Button" parent="ResultsPanel"]
 layout_mode = 1
 anchors_preset = 8

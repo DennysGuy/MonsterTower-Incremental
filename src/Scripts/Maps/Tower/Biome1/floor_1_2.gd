@@ -8,7 +8,6 @@ func _ready() -> void:
 	super()
 	hud.animation_player.play("CloseIn")
 	SignalBus.spawn_enemies.emit()
-	
 	if ore_rock_markers:
 		spawn_ore_rocks()
 

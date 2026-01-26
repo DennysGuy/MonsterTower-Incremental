@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://bla5rhusv2jn5"]
+[gd_scene load_steps=35 format=4 uid="uid://bla5rhusv2jn5"]
 
 [ext_resource type="Script" uid="uid://bgfo5a5l7ay1t" path="res://src/Scripts/Maps/Tower/Biome1/floor_1_2.gd" id="1_1pghk"]
 [ext_resource type="AudioStream" uid="uid://nhnh670ord35" path="res://Audio/Music/TemporaryTowerTheme.mp3" id="2_4lb0i"]
@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://bethw5tnlxnnt" path="res://src/Scenes/Actors/Enemies/CorruptedMushie/CorruptedMushie.tscn" id="14_gi03k"]
 [ext_resource type="PackedScene" uid="uid://b0enmfcqe1mex" path="res://src/Scenes/Actors/Enemies/Batclopse/Batclopse.tscn" id="19_n7xsw"]
 [ext_resource type="PackedScene" uid="uid://c11hg5ijdrjjs" path="res://src/Scenes/Tower/TowerFloors/ExitElevator1.tscn" id="20_rsjkl"]
+[ext_resource type="PackedScene" uid="uid://cyiot28va881c" path="res://src/Scenes/Actors/Enemies/CorruptedMushie/CorruptedMushie_Level2.tscn" id="22_ykf1y"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6ds7u"]
 texture = ExtResource("2_aukmg")
@@ -559,8 +560,10 @@ camera = NodePath("PlayerCamera")
 hud = NodePath("HUD")
 ore_rock_spawn_rate = 0.6
 ore_rock_markers = NodePath("OreRockMarkers")
+path = "uid://bla5rhusv2jn5"
 next_room_path = "uid://b3m3f58qy47jb"
 map_type = 2
+kill_quota = 30
 ambience_player = NodePath("AmbiencePlayer")
 ambience_sfx = ExtResource("2_vcays")
 
@@ -641,8 +644,6 @@ ore_rock_resource = ExtResource("11_qrx52")
 ore_rock = ExtResource("10_n7xsw")
 chance_to_spawn = 0.6
 spawn_parent = NodePath("../..")
-
-[node name="HUD" parent="." instance=ExtResource("8_kwf2g")]
 
 [node name="PlayerCamera" parent="." instance=ExtResource("9_w4dci")]
 position = Vector2(321, 1324)
@@ -799,8 +800,8 @@ min_spawn = 4
 max_spawn = 6
 spawn_root = NodePath("..")
 monster_list = Dictionary[PackedScene, int]({
-ExtResource("14_gi03k"): 60,
-ExtResource("19_n7xsw"): 40
+ExtResource("19_n7xsw"): 40,
+ExtResource("22_ykf1y"): 60
 })
 area_collision_shape = NodePath("CollisionShape2D")
 
@@ -814,8 +815,8 @@ min_spawn = 5
 max_spawn = 7
 spawn_root = NodePath("..")
 monster_list = Dictionary[PackedScene, int]({
-ExtResource("14_gi03k"): 20,
-ExtResource("19_n7xsw"): 80
+ExtResource("19_n7xsw"): 80,
+ExtResource("22_ykf1y"): 20
 })
 area_collision_shape = NodePath("CollisionShape2D")
 
@@ -826,7 +827,7 @@ shape = SubResource("RectangleShape2D_n7xsw")
 [node name="ExitElevator" parent="." instance=ExtResource("20_rsjkl")]
 position = Vector2(322, 64)
 
+[node name="HUD" parent="." instance=ExtResource("8_kwf2g")]
+
 [connection signal="body_entered" from="TowerExitArea" to="." method="_on_tower_exit_area_body_entered"]
 [connection signal="body_exited" from="TowerExitArea" to="." method="_on_tower_exit_area_body_exited"]
-
-[editable path="HUD"]

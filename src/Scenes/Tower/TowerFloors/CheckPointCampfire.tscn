@@ -90,10 +90,15 @@ animations = [{
 "texture": SubResource("AtlasTexture_o851o")
 }],
 "loop": true,
-"name": &"default",
+"name": &"flame",
 "speed": 15.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"off",
+"speed": 5.0
 }]
 
 [node name="CheckpointCampfire" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_oyf6t")
-frame_progress = 0.8406223
+animation = &"off"

@@ -10,6 +10,7 @@ class_name EnemyDead extends State
 
 func enter() -> void:
 	super()
+	SignalBus.update_kill_quota.emit()
 	if parent.hit_box:
 		parent.hit_box.get_child(0).disabled = true
 	drop_items()
