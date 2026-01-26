@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://d150vkltffpjo"]
+[gd_scene load_steps=16 format=3 uid="uid://d150vkltffpjo"]
 
 [ext_resource type="Texture2D" uid="uid://ddcxqkovhni5t" path="res://Assets/campfire_animated.png" id="1_17y3m"]
+[ext_resource type="Script" uid="uid://1f7na7fnhdri" path="res://src/Scripts/Maps/Tower/check_point_campfire.gd" id="2_ytu7s"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i32dk"]
 atlas = ExtResource("1_17y3m")
@@ -101,4 +102,5 @@ animations = [{
 
 [node name="CheckpointCampfire" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_oyf6t")
-animation = &"off"
+animation = &"flame"
+script = ExtResource("2_ytu7s")

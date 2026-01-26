@@ -36,7 +36,7 @@ func _ready() -> void:
 	hud.map_name_label.text = map_name
 	if player_spawn:
 		spawn_player()
-		
+	
 		if camera:
 			camera.player = player
 		
@@ -54,20 +54,17 @@ func _ready() -> void:
 	if MusicPlayer.audio_stream_player.is_playing:
 		if map_theme_song:
 			MusicPlayer.play_song(map_theme_song)
-	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-
 func spawn_player() -> void:
 	var new_player : Player = preload("uid://wuy3aelq8aeg").instantiate()
 	player = new_player
-	player.position = spawn_point.position
+	var selected_spawn_point : PlayerSpawnPoint = choose_spawn_spoint()
+	player.position = selected_spawn_point.position
 	player.damageable = true
 	add_child(player)
 	
-
-
 func go_to_starshire() -> void:
 	MusicPlayer.stop_player(true)
 	player.damageable = false
@@ -88,6 +85,13 @@ func roll_ore_spawn_chance() -> int:
 	var rand_check : int = randi_range(0,100)
 	return rand_check <= int(100 * ore_rock_spawn_rate)
 
+func choose_spawn_spoint() -> PlayerSpawnPoint:
+	var spawn_points : Array = get_tree().get_nodes_in_group("SpawnPoints")
+	for spawn_local in spawn_points:
+		if spawn_local.index == GameManager.spawn_location:
+			return spawn_local
+			
+	return null
 
 func spawn_ore_rocks() -> void:
 	for ore_rock_marker in ore_rock_markers.get_children():

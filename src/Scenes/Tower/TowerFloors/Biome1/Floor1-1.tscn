@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=4 uid="uid://bpob51vk7v2cj"]
+[gd_scene load_steps=36 format=4 uid="uid://bpob51vk7v2cj"]
 
 [ext_resource type="Script" uid="uid://bm3rscv8708vb" path="res://src/Scripts/Maps/Tower/Biome1/floor_1_1.gd" id="1_u3nwm"]
 [ext_resource type="AudioStream" uid="uid://nhnh670ord35" path="res://Audio/Music/TemporaryTowerTheme.mp3" id="2_68h8k"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://cepv6hcj1jotc" path="res://src/Scenes/Tower/TowerFloors/TowerExitArea.tscn" id="11_kpd6k"]
 [ext_resource type="PackedScene" uid="uid://c11hg5ijdrjjs" path="res://src/Scenes/Tower/TowerFloors/ExitElevator1.tscn" id="15_obgwm"]
 [ext_resource type="PackedScene" uid="uid://cexhahnue1wh6" path="res://src/Scenes/Tower/TowerFloors/FloorGuideLog.tscn" id="15_om3xh"]
+[ext_resource type="PackedScene" uid="uid://c6tv3t1cpeq8f" path="res://src/Scenes/PlayerSpawnPoint.tscn" id="23_jmmg4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c1fqw"]
 texture = ExtResource("2_hk0iw")
@@ -1054,7 +1055,7 @@ script = ExtResource("1_u3nwm")
 map_name = "Floor 1-1"
 map_id = 1
 map_theme_song = ExtResource("2_68h8k")
-spawn_point = NodePath("PlayerSpawnPoint")
+spawn_point = NodePath("")
 camera = NodePath("PlayerCamera")
 hud = NodePath("HUD")
 ore_rock_spawn_rate = 0.65
@@ -1113,9 +1114,6 @@ limit_left = 0
 limit_top = 0
 limit_right = 640
 limit_bottom = 1007
-
-[node name="PlayerSpawnPoint" type="Marker2D" parent="."]
-position = Vector2(216, 960)
 
 [node name="OreRockMarkers" type="Node" parent="."]
 
@@ -1300,6 +1298,9 @@ shape = SubResource("RectangleShape2D_0rtsh")
 position = Vector2(201, 81)
 
 [node name="HUD" parent="." instance=ExtResource("4_aah8w")]
+
+[node name="PlayerSpawnPoint" parent="." instance=ExtResource("23_jmmg4")]
+position = Vector2(222, 961)
 
 [connection signal="body_entered" from="TowerExitArea" to="." method="_on_tower_exit_area_body_entered"]
 [connection signal="body_exited" from="TowerExitArea" to="." method="_on_tower_exit_area_body_exited"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=4 uid="uid://oonjrpabmces"]
+[gd_scene load_steps=48 format=4 uid="uid://oonjrpabmces"]
 
 [ext_resource type="Script" uid="uid://dpqc54c34418w" path="res://src/Scripts/Maps/NewStarShire/new_star_shire.gd" id="1_gq00g"]
 [ext_resource type="Texture2D" uid="uid://c21ee30haolx4" path="res://Assets/EnvironmentalAssets/TowerDistance.png" id="2_bl45m"]
@@ -29,6 +29,7 @@
 [ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="27_e7ku4"]
 [ext_resource type="Texture2D" uid="uid://cuwc34c0ympwf" path="res://Assets/DirectionSign.png" id="28_m7r5i"]
 [ext_resource type="Texture2D" uid="uid://b83r1hobjk7vm" path="res://Assets/DirectionSignMessage.png" id="29_hk4f7"]
+[ext_resource type="PackedScene" uid="uid://c6tv3t1cpeq8f" path="res://src/Scenes/PlayerSpawnPoint.tscn" id="30_cxssj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_te0bi"]
 texture = ExtResource("3_5xris")
@@ -780,7 +781,7 @@ size = Vector2(20, 375)
 
 [node name="NewStarShire" type="Node2D" node_paths=PackedStringArray("spawn_point", "camera", "hud", "sfx_player")]
 script = ExtResource("1_gq00g")
-map_name = "New Starshire"
+map_name = "Starspire - Hub"
 map_theme_song = ExtResource("2_jhqac")
 spawn_point = NodePath("SpawnPoint")
 camera = NodePath("PlayerCamera")
@@ -1167,7 +1168,7 @@ theme_override_constants/shadow_offset_y = 0
 theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("27_e7ku4")
 theme_override_font_sizes/font_size = 18
-text = "NEW STARSHIRE
+text = "STARSPIRE
 GRAND MARKET"
 
 [node name="Label2" type="Label" parent="WelcomSign"]
@@ -1215,6 +1216,9 @@ theme_override_font_sizes/font_size = 16
 text = "Tower 
 Entrance"
 metadata/_edit_use_anchors_ = true
+
+[node name="PlayerSpawnPoint" parent="." instance=ExtResource("30_cxssj")]
+position = Vector2(52, 656)
 
 [connection signal="body_entered" from="TowerArea" to="." method="_on_tower_area_body_entered"]
 [connection signal="body_exited" from="TowerArea" to="." method="_on_tower_area_body_exited"]

@@ -2,7 +2,7 @@ extends Node
 
 
 var gravity : float = ProjectSettings.get_setting("physics/2d/default_gravity")
-var spawn_location : int
+var spawn_location : int = 0
 var player_can_move : bool = true
 var expedition_timer_started : bool = false
 var previous_map_path : String
