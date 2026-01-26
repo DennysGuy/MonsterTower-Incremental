@@ -16,7 +16,7 @@ func exit() -> void:
 	parent.sfx_player.stop()
 
 func process_input(_event: InputEvent) -> State:
-	if Input.is_action_pressed("add_currency") and parent.is_on_floor():
+	if Input.is_action_pressed("add_currency") and parent.is_on_floor() and GameManager.player_can_move:
 		return jump_state
 	
 	return null
@@ -25,6 +25,10 @@ func process_frame(_delta: float) -> State:
 	return null
 
 func process_physics(_delta: float) -> State:
+	
+	if !GameManager.player_can_move:
+		return idle_state
+	
 	var input = Input.get_axis("pan_cam_left","pan_cam_right")
 	var movement = input * PlayerStats.player_stats["Movement Speed"]
 	

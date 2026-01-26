@@ -63,12 +63,14 @@ func spawn_player() -> void:
 	var new_player : Player = preload("uid://wuy3aelq8aeg").instantiate()
 	player = new_player
 	player.position = spawn_point.position
+	player.damageable = true
 	add_child(player)
 	
 
 
 func go_to_starshire() -> void:
 	MusicPlayer.stop_player(true)
+	player.damageable = false
 	GameManager.expedition_timer_started = false
 	hud.animation_player.play("CloseOut")
 	await get_tree().create_timer(1.0).timeout

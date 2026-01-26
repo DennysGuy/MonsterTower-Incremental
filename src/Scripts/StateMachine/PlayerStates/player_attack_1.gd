@@ -27,6 +27,9 @@ func process_frame(_delta: float) -> State:
 
 func process_physics(_delta: float) -> State:
 	
+	if !GameManager.player_can_move:
+		return idle_state
+	
 	if not parent.is_on_floor():
 		if parent.prev_move_speed != 0:
 			parent.velocity.x = parent.prev_move_speed

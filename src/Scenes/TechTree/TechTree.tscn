@@ -204,11 +204,11 @@ tech_node_stats = ExtResource("20_dkc8a")
 points = PackedVector2Array(-11, -9, -31, -34)
 width = 3.0
 
-[node name="MovementSpeed1" parent="Nodes" instance=ExtResource("5_2ltmf")]
+[node name="JumpHeight1" parent="Nodes" instance=ExtResource("5_2ltmf")]
 position = Vector2(559, 254)
-tech_node_stats = ExtResource("21_dvfnf")
+tech_node_stats = ExtResource("22_7le32")
 
-[node name="Line2D" type="Line2D" parent="Nodes/MovementSpeed1"]
+[node name="Line2D" type="Line2D" parent="Nodes/JumpHeight1"]
 points = PackedVector2Array(7, 9, 70, 97)
 width = 3.0
 
@@ -220,20 +220,21 @@ tech_node_stats = ExtResource("22_yjrj2")
 points = PackedVector2Array(-2, 13, -2, 56)
 width = 3.0
 
-[node name="JumpHeight1" parent="Nodes" instance=ExtResource("5_2ltmf")]
+[node name="MovementSpeed1" parent="Nodes" instance=ExtResource("5_2ltmf")]
 position = Vector2(484, 254)
-tech_node_stats = ExtResource("22_7le32")
+tech_node_stats = ExtResource("21_dvfnf")
 
-[node name="Line2D" type="Line2D" parent="Nodes/JumpHeight1"]
+[node name="Line2D" type="Line2D" parent="Nodes/MovementSpeed1"]
 points = PackedVector2Array(11, 0, 60, 0)
 width = 3.0
 
 [node name="MovementSpeed2" parent="Nodes" instance=ExtResource("5_2ltmf")]
-position = Vector2(487, 186)
+position = Vector2(485, 186)
 tech_node_stats = ExtResource("22_vbmlq")
 
 [node name="Line2D" type="Line2D" parent="Nodes/MovementSpeed2"]
-points = PackedVector2Array(7, 9, 60, 60)
+position = Vector2(-1, 0)
+points = PackedVector2Array(-2, 14, -2, 54)
 width = 3.0
 
 [node name="CookingStationNode" parent="Nodes" instance=ExtResource("5_2ltmf")]

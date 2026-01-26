@@ -12,5 +12,5 @@ max_level = 5
 currency_required = 60
 stat_name = "Jump Height"
 upgrade_interval = 0.05
-prereqs = Array[String](["Movement 1:1"])
+prereqs = Array[String](["Tower License:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"
