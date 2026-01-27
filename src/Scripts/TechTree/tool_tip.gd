@@ -55,6 +55,7 @@ func update_info(total_bonus : float) -> void:
 
 func check_resource_quantity() -> void:
 	if tech_node_stats.materials_required.size() > 0:
+		clear_owned_list()
 		owned_list.show()
 		for resource_dict in tech_node_stats.materials_required:
 			var quantity_list_item : QuantityListItem = preload("uid://cq8n5gyropdxm").instantiate()
@@ -65,3 +66,7 @@ func check_resource_quantity() -> void:
 				
 			quantity_list.add_child(quantity_list_item)
 				
+
+func clear_owned_list() -> void:
+	for child in quantity_list.get_children():
+		child.queue_free()

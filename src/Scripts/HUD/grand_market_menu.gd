@@ -81,7 +81,6 @@ func clear_details() -> void:
 	selected_item = null
 	item_icon.texture = null
 	item_title.text = "Selected an Item"
-	item_type.text = "N/A"
 	description.text = ""
 	value.text = "N/A"
 	indicator.texture = null
