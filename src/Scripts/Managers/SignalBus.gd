@@ -47,3 +47,5 @@ signal update_kill_quota
 signal unlock_next_room
 @warning_ignore("unused_signal")
 signal update_entrance_map(index : int)
+@warning_ignore("unused_signal")
+signal update_resource_needed_panel

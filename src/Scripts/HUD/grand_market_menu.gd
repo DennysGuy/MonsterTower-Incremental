@@ -43,6 +43,7 @@ func populate_details_panel(item : Item, slot_location : String) -> void:
 		selected_item = item
 		item_icon.texture = selected_item.shop_icon
 		item_title.text = selected_item.item_name
+		description.text = item.description
 		value.text = "Value: %s" % [item.sell_value]
 		if item is EnemyDrop:
 			match item.item_type:

@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="CraftingRecipe" load_steps=3 format=3 uid="uid://8ol4o8ecjwos"]
+[gd_resource type="Resource" script_class="CraftingRecipe" load_steps=4 format=3 uid="uid://8ol4o8ecjwos"]
 
 [ext_resource type="Resource" uid="uid://buu8pdcooh3hc" path="res://src/Resources/CraftingResources/BronzeBar.tres" id="1_2kto0"]
 [ext_resource type="Script" uid="uid://cljygiasf4103" path="res://src/Scripts/Facilities/crafting_recipe.gd" id="1_vpbwh"]
+[ext_resource type="Resource" uid="uid://d4k5o7mbmw8yw" path="res://src/Resources/Actors/Enemies/Biome1/Batclopse/BatclopseClaw.tres" id="2_quxu8"]
 
 [resource]
 script = ExtResource("1_vpbwh")
@@ -10,6 +11,8 @@ description = "A metalic sword made from refined bronze and tin ore. Great for g
 recipe_tier = 1
 recipe_type = 2
 recipe_list = Array[Dictionary]([{
-ExtResource("1_2kto0"): 2
+ExtResource("1_2kto0"): 4
+}, {
+ExtResource("2_quxu8"): 4
 }])
 metadata/_custom_type_script = "uid://cljygiasf4103"

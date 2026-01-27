@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bgurt44iah13x"]
+[gd_scene load_steps=11 format=3 uid="uid://bgurt44iah13x"]
 
 [ext_resource type="Texture2D" uid="uid://dswsscclwdwya" path="res://Assets/TowerMap/TowerMap.png" id="1_bsb7l"]
 [ext_resource type="Script" uid="uid://b6emfts3ijh7c" path="res://src/Scripts/tower_entrance_map.gd" id="1_p02a1"]
@@ -9,6 +9,7 @@
 [ext_resource type="Resource" uid="uid://cnvnsw0143wep" path="res://src/Resources/TowerEntranceData/Floor1-1.tres" id="7_4erf6"]
 [ext_resource type="Resource" uid="uid://vibb3cg4b01g" path="res://src/Resources/TowerEntranceData/Floor1-3.tres" id="8_jtccv"]
 [ext_resource type="Resource" uid="uid://dbb7k6hptjvyy" path="res://src/Resources/TowerEntranceData/Floor1-2.tres" id="8_oavpw"]
+[ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="10_grwys"]
 
 [node name="TowerEntranceMap" type="Control"]
 layout_mode = 3
@@ -212,6 +213,18 @@ theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("3_m7ed0")
 theme_override_font_sizes/font_size = 12
 text = "Select an Entrance Point..."
+
+[node name="Title3" type="Label" parent="."]
+layout_mode = 0
+offset_left = 155.0
+offset_top = 301.0
+offset_right = 510.0
+offset_bottom = 317.0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("10_grwys")
+theme_override_font_sizes/font_size = 16
+text = "~Items in inventory will be moved to bank if possible~"
+horizontal_alignment = 1
 
 [node name="TimeLimit" type="Label" parent="."]
 layout_mode = 0

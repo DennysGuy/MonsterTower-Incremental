@@ -7,7 +7,7 @@
 script = ExtResource("2_iyx3t")
 node_name = "Monster Cap 1"
 icon = ExtResource("1_kqbrx")
-description = "Increases Monster Spawn Area cap by 1 per level"
+description = "Increase your chance for spoils and hunter quota! Increases Monster Spawn Area cap by 1 per level"
 max_level = 3
 currency_required = 135
 stat_name = "Monster Cap Bonus"

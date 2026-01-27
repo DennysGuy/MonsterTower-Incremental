@@ -44,6 +44,13 @@ func get_inventory_meta() -> Dictionary:
 		}
 	}
 
+func item_in_recipe(item : Item, recipe : CraftingRecipe) -> bool:
+	for resource in recipe.recipe_list:
+		for dict_item in resource.keys():
+			if item == dict_item:
+				return true
+	return false
+
 func search_item(inventory_name : String, item : Item) -> bool:
 	
 	var selected_inventory : Array = inventories[inventory_name]
@@ -258,3 +265,14 @@ func get_quantity(selected_item : Item) -> int:
 	
 	
 	return count
+
+func move_inventory_to_bank() -> void:
+	var inventory_snapshot = InventoryManager.inventories["Inventory"].duplicate(true)
+
+	for slot in inventory_snapshot:
+		var qty = slot["quantity"]
+		var item = slot["item"]
+
+		for i in range(qty):
+			if add_item("Bank", item):
+				remove_item("Inventory", item)

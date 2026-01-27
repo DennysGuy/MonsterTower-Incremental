@@ -52,7 +52,6 @@ const KNOCKBACK_FORCE : int = 300
 @onready var check_points_unlocked : Dictionary[String, bool] = {
 	"Floor 1-1" : false,
 	"Floor 1-2" : false,
-	"Floor 1-2-2": false,
 	"Floor 1-3" : false
 }
 
@@ -76,7 +75,20 @@ func get_sword(sword_index : int = 0) -> Sword:
 			return preload("uid://do5v83xsd4n70") #Steel Sword
 		_:
 			return preload("uid://di3xaosm85tjx")#"Wooden Sword"
-			
+
+func get_next_sword() -> Sword:
+	if player_stats["Equipped Sword"] < MAX_SWORD_COUNT:
+		var next_sword : int = int(player_stats["Equipped Sword"])+1
+		return get_sword(next_sword)
+	return null
+	
+func check_item_in_next_sword_recipe(item : Item) -> bool:
+	var next_sword_recipe : CraftingRecipe = get_next_sword().recipe
+	if next_sword_recipe:
+		return InventoryManager.item_in_recipe(item,next_sword_recipe)
+	else:
+		return false
+
 func can_craft_next_sword() -> bool:
 	var next_sword : Sword = get_sword(int(player_stats["Equipped Sword"])+1)
 	var craft_amount : int = InventoryManager.calculate_quantity(next_sword.recipe)

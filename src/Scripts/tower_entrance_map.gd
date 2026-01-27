@@ -26,6 +26,8 @@ func _on_go_to_floor_button_up() -> void:
 	SignalBus.play_close_out_animation.emit()
 	GameManager.player_can_move = true
 	hide()
+	if PlayerStats.facilities_unlocked["Bank"]:
+		InventoryManager.move_inventory_to_bank()
 	await get_tree().create_timer(1.0).timeout
 	get_tree().change_scene_to_file(stored_entrance_data.scene_path)
 
