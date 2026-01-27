@@ -44,7 +44,7 @@ var upgrade_count_to_prestige : int = 0
 enum TECH_NODE_TYPE {ABILITY, FACILITY}
 
 @onready var tech_nodes : Dictionary = {
-	"Tower License" : 0,
+	"Hunter License" : 0,
 	"Attack 1" : 0,
 	"Attack 2" : 0,
 	"Arial Slash":0,

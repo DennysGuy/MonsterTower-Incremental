@@ -7,7 +7,7 @@
 script = ExtResource("2_qyb1d")
 node_name = "Refinery Speed 1"
 icon = ExtResource("1_21q8o")
-description = "Increase Smelting Speed by 5% per level."
+description = "Decrease your wait time and Increase Smelting Speed by 5% per level."
 max_level = 3
 currency_required = 400
 stat_name = "Smelting Speed"

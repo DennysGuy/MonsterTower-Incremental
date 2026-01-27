@@ -7,7 +7,7 @@
 script = ExtResource("2_5xexd")
 node_name = "Refinery Accuracy 1"
 icon = ExtResource("1_dgdbt")
-description = "Increases Smelting success rate bonus by 3% per level."
+description = "Get more bars! Increases Smelting success rate bonus by 3% per level."
 max_level = 5
 currency_required = 500
 stat_name = "Smelting Accuracy Bonus"

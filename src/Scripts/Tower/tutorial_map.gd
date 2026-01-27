@@ -14,22 +14,22 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("interact") and can_enter_tower and PlayerStats.facilities_unlocked["Tower Pass"]:
+	if Input.is_action_just_pressed("interact") and can_enter_tower and PlayerStats.facilities_unlocked["Hunter License"]:
 		go_to_first_floor()
 
 
 func _on_tower_entrance_area_body_entered(body: Node2D) -> void:
 	if body is Player:
 		guid_log.show()
-		if PlayerStats.facilities_unlocked["Tower Pass"]:
+		if PlayerStats.facilities_unlocked["Hunter License"]:
 			guid_log.text = "Congratulations. You've Completed
-	The Tower Boot Camp. 
+	The Tower Boot Camp. You are officially a Starspire Hunter.
 
 	Press 'E' to Enter The First Floor.
 
 	Good Luck!"
 		else:
-			guid_log.text = "Please acquire your pass from the PC to enter the tower!"
+			guid_log.text = "Please acquire your Hunter License from the PC to enter the tower!"
 		can_enter_tower = true
 
 func _on_tower_entrance_area_body_exited(body: Node2D) -> void:

@@ -7,10 +7,10 @@
 script = ExtResource("1_cgde1")
 node_name = "Attack 1"
 icon = ExtResource("1_lepj1")
-description = "Increase weapon attack by 30%"
+description = "Hit them monsters harder! Increase weapon attack by 30%"
 max_level = 5
 currency_required = 25
 stat_name = "Attack Damage"
 upgrade_interval = 0.3
-prereqs = Array[String](["Tower License:1"])
+prereqs = Array[String](["Hunter License:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

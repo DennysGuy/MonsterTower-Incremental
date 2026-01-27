@@ -7,9 +7,9 @@
 script = ExtResource("1_5ehxb")
 node_name = "Item Bag 1"
 icon = ExtResource("1_fhxuj")
-description = "Increase Item Bag slots to 2"
+description = "Store more items on runs! Increase Item Bag slots to 2"
 currency_required = 100
 stat_name = "Bag"
 upgrade_interval = 1.0
-prereqs = Array[String](["Tower License:1"])
+prereqs = Array[String](["Hunter License:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

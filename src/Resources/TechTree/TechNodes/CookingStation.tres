@@ -11,5 +11,5 @@ description = "Unlocks Cooking Station - You can cook fancy dishes and Sell em o
 currency_required = 300
 node_type = 1
 stat_name = "Cooking Station"
-prereqs = Array[String](["Tower License:1"])
+prereqs = Array[String](["Hunter License:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

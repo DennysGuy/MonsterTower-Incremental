@@ -7,9 +7,9 @@
 script = ExtResource("1_l4c50")
 node_name = "Deeper Pockets 1"
 icon = ExtResource("1_ihwnd")
-description = "Increases Max Inventory Slot Stack by +2"
+description = "Store more items on runs! Increases Max Inventory Slot Stack by +2"
 currency_required = 80
 stat_name = "Max Bag Stack"
 upgrade_interval = 2.0
-prereqs = Array[String](["Tower License:1"])
+prereqs = Array[String](["Hunter License:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

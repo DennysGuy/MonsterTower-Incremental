@@ -40,7 +40,7 @@ const KNOCKBACK_FORCE : int = 300
 }
 
 @onready var facilities_unlocked : Dictionary[String, bool] = {
-	"Tower Pass" : false,
+	"Hunter License" : false,
 	"Cooking Station" : false,
 	"Crafting Station" : false,
 	"Refinery Station" : false,

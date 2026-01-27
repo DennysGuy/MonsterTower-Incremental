@@ -39,7 +39,7 @@ func update_currency_label() -> void:
 	currency.text = "Currency: %s" % [TechTreeManager.currency]
 
 func update_prestige_label() -> void:
-	presitge_tier.text = "Pass Tier: %s" % [TechTreeManager.current_prestige]
+	presitge_tier.text = "License Tier: %s" % [TechTreeManager.current_prestige]
 
 func update_prestige_progress() -> void:
 	prestige_progress.text = "%s/%s" % [TechTreeManager.current_upgrade_count, TechTreeManager.upgrade_count_to_prestige]

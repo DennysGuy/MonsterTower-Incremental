@@ -10,8 +10,8 @@ config_version=5
 
 [application]
 
-config/name="MonsterTower-Incremental"
-run/main_scene="uid://c3y6ce3xriuwl"
+config/name="Starspire Hunters"
+run/main_scene="uid://babypuakc7i7y"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 

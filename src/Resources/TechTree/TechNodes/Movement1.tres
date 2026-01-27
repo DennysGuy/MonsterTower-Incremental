@@ -7,7 +7,7 @@
 script = ExtResource("1_n6cms")
 node_name = "Movement 1"
 icon = ExtResource("1_f7tns")
-description = "For each level, increases movement speed by 5%"
+description = "Speed up Horizontal coverage! For each level, increases movement speed by 5%"
 max_level = 3
 currency_required = 50
 stat_name = "Movement Speed"

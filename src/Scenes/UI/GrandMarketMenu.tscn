@@ -85,7 +85,7 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("2_oo3yc")
 theme_override_font_sizes/font_size = 10
-text = "Click on Item to slot to sell"
+text = "Click on Item slot to sell"
 
 [node name="DetailsPanel" type="Control" parent="."]
 layout_mode = 1

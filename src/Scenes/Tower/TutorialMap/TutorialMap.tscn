@@ -401,11 +401,10 @@ size = Vector2(388, 295)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cqx2w"]
 size = Vector2(20, 362)
 
-[node name="TutorialMap" type="Node2D" node_paths=PackedStringArray("spawn_point", "camera", "hud")]
+[node name="TutorialMap" type="Node2D" node_paths=PackedStringArray("camera", "hud")]
 script = ExtResource("1_tymde")
 map_name = "Billy's Bootcamp "
 map_theme_song = ExtResource("2_7kbtj")
-spawn_point = NodePath("")
 camera = NodePath("PlayerCamera")
 hud = NodePath("HUD")
 
@@ -565,7 +564,7 @@ theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("9_7kbtj")
 theme_override_font_sizes/font_size = 16
 text = "Access The Tower Pass PC 
-and Acquire your entrance pass!
+and Acquire your Hunter License!
 (You will have limited access - for your own safety)"
 
 [node name="Label7" type="Label" parent="."]

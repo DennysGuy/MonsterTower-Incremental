@@ -7,7 +7,7 @@
 script = ExtResource("2_bx3cj")
 node_name = "Expedition Time 1"
 icon = ExtResource("1_h81jp")
-description = "Increases limited Tower Expedition Time by 3 seconds per level"
+description = "Stay in the tower longer! Increases limited Tower Expedition Time by 3 seconds per level"
 max_level = 3
 currency_required = 100
 stat_name = "Expedition Time"

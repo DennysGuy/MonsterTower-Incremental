@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://nb5nyiymrgyp" path="res://src/Scripts/TechTree/tech_tree.gd" id="1_1fw0b"]
 [ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="2_d4ivd"]
-[ext_resource type="Resource" uid="uid://bpf2kexi3o22s" path="res://src/Resources/TechTree/TechNodes/TowerPass.tres" id="3_lqswy"]
+[ext_resource type="Resource" uid="uid://bpf2kexi3o22s" path="res://src/Resources/TechTree/TechNodes/HunterLicense.tres" id="3_lqswy"]
 [ext_resource type="Resource" uid="uid://1gmjr0davgp4" path="res://src/Resources/TechTree/TechNodes/Attack1.tres" id="4_a6tc3"]
 [ext_resource type="PackedScene" uid="uid://bhimqkbcn26r2" path="res://src/Scenes/TechTree/TechNode.tscn" id="5_2ltmf"]
 [ext_resource type="Resource" uid="uid://bqgnafgyrs4m4" path="res://src/Resources/TechTree/TechNodes/Attack2.tres" id="5_wj3rp"]

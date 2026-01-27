@@ -201,6 +201,7 @@ offset_right = 92.0
 offset_bottom = 17.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/outline_size = 5
 theme_override_fonts/normal_font = ExtResource("2_dnaej")
 theme_override_font_sizes/normal_font_size = 16
 text = "This is the description for the node. 
