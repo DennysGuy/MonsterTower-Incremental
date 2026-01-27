@@ -56,11 +56,16 @@ func drop_items() -> void:
 			cooking_item_interactable.global_position = Vector2(parent.global_position.x + 20,parent.global_position.y)
 			parent.get_parent().add_child(cooking_item_interactable)
 	
-	if parent.enemy_stats.crafting_item_drop and PlayerStats.get_bag().max_slots >= 2 and PlayerStats.check_item_in_next_sword_recipe(parent.enemy_stats.crafting_item_drop):
+	if parent.enemy_stats.crafting_item_drop and PlayerStats.get_bag().max_slots >= 2:
 		var crafting_item : EnemyDrop = parent.enemy_stats.crafting_item_drop
 		var crafting_item_interactable : ItemInteractable = preload("uid://dgtobkubdjq27").instantiate()
 		var random_check_2 : int = randi_range(0,100)
-		if random_check_2 <= int(crafting_item.drop_chance * 100):
+		var drop_chance : float = crafting_item.drop_chance
+		
+		if PlayerStats.check_item_in_next_sword_recipe(parent.enemy_stats.crafting_item_drop):
+			drop_chance += 0.15
+			
+		if random_check_2 <= int( drop_chance * 100):
 			crafting_item_interactable.item = crafting_item
 			crafting_item_interactable.icon.texture = crafting_item.drop_icon
 			crafting_item_interactable.global_position = Vector2(parent.global_position.x - 20, parent.global_position.y)
