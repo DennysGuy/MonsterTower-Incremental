@@ -9,6 +9,8 @@ class_name ToolTip extends Control
 @onready var resources_list: GridContainer = $ToolTip/ResourcesList
 
 @export var tech_node_stats : TechNodeStats
+@onready var quantity_list: GridContainer = $ToolTip/OwnedList/QuantityList
+@onready var owned_list: Panel = $ToolTip/OwnedList
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -23,7 +25,8 @@ func _ready() -> void:
 				ingredient_menu_item.quantity.text = "%s x%s" % [key.item_name, ingredient[key]]
 			
 			resources_list.add_child(ingredient_menu_item)
-
+		check_resource_quantity()
+		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
@@ -47,3 +50,18 @@ func update_info(total_bonus : float) -> void:
 	
 	description.text = tech_node_stats.description
 	cost.text = "%s Gold" % [tech_node_stats.currency_required]
+	
+	check_resource_quantity()
+
+func check_resource_quantity() -> void:
+	if tech_node_stats.materials_required.size() > 0:
+		owned_list.show()
+		for resource_dict in tech_node_stats.materials_required:
+			var quantity_list_item : QuantityListItem = preload("uid://cq8n5gyropdxm").instantiate()
+			for resource in resource_dict.keys():
+				quantity_list_item.icon.texture = resource.shop_icon
+				var quantity : int = InventoryManager.get_quantity(resource)
+				quantity_list_item.quantity_label.text = "x%s" % [quantity]
+				
+			quantity_list.add_child(quantity_list_item)
+				

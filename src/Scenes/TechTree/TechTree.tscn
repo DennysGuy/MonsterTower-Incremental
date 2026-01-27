@@ -416,7 +416,7 @@ theme_override_font_sizes/font_size = 16
 text = "Close"
 
 [node name="Marker2D" type="Marker2D" parent="CanvasLayer"]
-position = Vector2(321, 79)
+position = Vector2(326, 79)
 
 [node name="PlayerStats" parent="CanvasLayer" instance=ExtResource("10_7l0yi")]
 offset_left = -317.0
