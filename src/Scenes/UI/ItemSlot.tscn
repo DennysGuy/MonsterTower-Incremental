@@ -1,14 +1,54 @@
-[gd_scene load_steps=4 format=3 uid="uid://d0s6j8mvikv8c"]
+[gd_scene load_steps=8 format=3 uid="uid://d0s6j8mvikv8c"]
 
 [ext_resource type="Texture2D" uid="uid://cu6upr5f3ht4k" path="res://Assets/HUD/ItemSlot.png" id="1_xtjb4"]
 [ext_resource type="Script" uid="uid://0ppf5xv3cq5c" path="res://src/Scripts/HUD/item_slot.gd" id="2_2koek"]
 [ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="3_2koek"]
+[ext_resource type="Texture2D" uid="uid://b6ekacuriin3v" path="res://Assets/HUD/ItemSlot_cooking.png" id="3_naodc"]
+[ext_resource type="Texture2D" uid="uid://x2hshpeeawjm" path="res://Assets/HUD/ItemSlot_novelty.png" id="4_2koek"]
+[ext_resource type="Texture2D" uid="uid://dbe6piv0wn7lq" path="res://Assets/HUD/ItemSlot_crafting.png" id="5_i5ajy"]
+[ext_resource type="Texture2D" uid="uid://blepqdi1qq7bf" path="res://Assets/HUD/ItemSlot_na.png" id="6_g2mhj"]
 
-[node name="Slot" type="TextureRect" node_paths=PackedStringArray("item_icon", "quantity_label")]
+[node name="Slot" type="TextureRect" node_paths=PackedStringArray("item_icon", "quantity_label", "indicator_cooking", "indicator_novelty", "indicator_crafting", "indicator_na")]
 texture = ExtResource("1_xtjb4")
 script = ExtResource("2_2koek")
 item_icon = NodePath("ItemIcon")
 quantity_label = NodePath("QuantityLabel")
+indicator_cooking = NodePath("IndicatorCooking")
+indicator_novelty = NodePath("IndicatorNovelty")
+indicator_crafting = NodePath("IndicatorCrafting")
+indicator_na = NodePath("IndicatorNA")
+
+[node name="IndicatorCooking" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("3_naodc")
+stretch_mode = 2
+
+[node name="IndicatorNovelty" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("4_2koek")
+stretch_mode = 2
+
+[node name="IndicatorCrafting" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("5_i5ajy")
+stretch_mode = 2
+
+[node name="IndicatorNA" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("6_g2mhj")
+stretch_mode = 2
 
 [node name="ItemIcon" type="TextureRect" parent="."]
 layout_mode = 0

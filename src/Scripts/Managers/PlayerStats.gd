@@ -52,6 +52,7 @@ const KNOCKBACK_FORCE : int = 300
 @onready var check_points_unlocked : Dictionary[String, bool] = {
 	"Floor 1-1" : false,
 	"Floor 1-2" : false,
+	"Floor 1-2-2": false,
 	"Floor 1-3" : false
 }
 

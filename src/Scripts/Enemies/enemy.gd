@@ -26,7 +26,6 @@ func _process(delta: float) -> void:
 	if player == null:
 		var spawned_player : Player = get_tree().get_first_node_in_group("Player")
 		player = spawned_player
-		print(player)
 
 func update_health_bar() -> void:
 	health_bar.value = health

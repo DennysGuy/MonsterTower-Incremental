@@ -11,4 +11,5 @@ drop_chance = 0.25
 item_name = "Fiberous Mushie Stalk"
 sell_value = 40
 shop_icon = ExtResource("1_8uduv")
+description = "Stalk scraped from a corrupted mushie's back. Used to craft into weapons."
 metadata/_custom_type_script = "uid://cubudt76pshmm"

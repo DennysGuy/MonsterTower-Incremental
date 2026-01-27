@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpikj7ilsaiqj"]
+
+[ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="1_p1t3v"]
+[ext_resource type="Script" uid="uid://obowalu5p52r" path="res://src/Scripts/HUD/check_point_button.gd" id="2_81f6i"]
+
+[node name="CheckPointButton" type="Button"]
+offset_left = 378.0
+offset_top = 132.0
+offset_right = 419.0
+offset_bottom = 152.0
+mouse_default_cursor_shape = 2
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("1_p1t3v")
+theme_override_font_sizes/font_size = 12
+text = "Point 1"
+script = ExtResource("2_81f6i")
+
+[connection signal="button_up" from="." to="." method="_on_button_up"]

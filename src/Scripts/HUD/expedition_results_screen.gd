@@ -43,6 +43,7 @@ func _process(delta: float) -> void:
 	pass
 
 func go_to_starshire() -> void:
+	GameManager.spawn_location = 0
 	get_tree().change_scene_to_file("res://src/Scenes/NewStarshire/NewStarShire.tscn")
 
 func go_to_tower() -> void:

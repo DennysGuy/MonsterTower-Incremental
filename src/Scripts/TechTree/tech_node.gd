@@ -129,7 +129,9 @@ func unlock_node() -> void:
 	animation_player.play("clicked")
 
 func set_level_label() -> void:
-	
+	if tech_node_stats.current_level >= tech_node_stats.max_level:
+		level_label.text = "Max"
+		return
 	level_label.text = "%s/%s" % [tech_node_stats.current_level,tech_node_stats.max_level]
 
 func remove_tool_tip() -> void:

@@ -7,10 +7,10 @@
 script = ExtResource("1_qtjay")
 node_name = "Pass Time Extension 1"
 icon = ExtResource("1_7mtcc")
-description = "Increases Pass Time by 5 seconds per level"
-max_level = 5
+description = "Increases Pass Time by 3 seconds per level"
+max_level = 3
 currency_required = 150
 stat_name = "Expedition Time"
-upgrade_interval = 5.0
+upgrade_interval = 3.0
 prereqs = Array[String](["Max HP 1:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

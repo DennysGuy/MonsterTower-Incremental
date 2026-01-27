@@ -2,6 +2,7 @@ class_name Map extends Node2D
 
 @export var map_name : String
 @export var map_id : int
+@export var tower_entrance_data : TowerEntranceData
 @export var map_theme_song : AudioStream
 @export var spawn_point : Marker2D
 @export var player_spawn : bool = true
@@ -9,6 +10,7 @@ class_name Map extends Node2D
 @export var hud : PlayerHUD
 @export var ore_rock_spawn_rate : float
 @export var ore_rock_markers : Node
+@export var campfire_list : Node
 
 @export var path : String
 @export var next_room_path : String
@@ -35,6 +37,16 @@ func _ready() -> void:
 	SignalBus.update_kill_quota.connect(update_hunt_quota)
 	hud.map_name_label.text = map_name
 	if player_spawn:
+		if map_type == MAP_TYPE.CHECKPOINT_FLOOR and tower_entrance_data.number_of_spawn_locations <= 0:
+			tower_entrance_data.number_of_spawn_locations += 1
+		
+		if campfire_list:
+			for i in range(0,tower_entrance_data.camp_fires_reached):
+				print("HELLO YOUTUBE!")
+				var checkpoint_campfire : CampFireCheckPoint = campfire_list.get_child(i)
+				checkpoint_campfire.unlocked = true
+				checkpoint_campfire.animation_player.play("On")
+		
 		spawn_player()
 	
 		if camera:

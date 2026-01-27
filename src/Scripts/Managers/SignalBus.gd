@@ -45,3 +45,5 @@ signal update_kill_quota_text(message : String, hit_quota : bool)
 signal update_kill_quota
 @warning_ignore("unused_signal")
 signal unlock_next_room
+@warning_ignore("unused_signal")
+signal update_entrance_map(index : int)

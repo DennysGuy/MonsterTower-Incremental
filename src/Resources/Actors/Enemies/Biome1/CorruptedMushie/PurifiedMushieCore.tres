@@ -11,4 +11,5 @@ drop_chance = 0.45
 item_name = "Purified Mushie Core"
 sell_value = 30
 shop_icon = ExtResource("1_5ja0g")
+description = "Purified Mushie core.. a staple in many dishes."
 metadata/_custom_type_script = "uid://cubudt76pshmm"

@@ -13,11 +13,17 @@ class_name GrandMarketMenu extends Control
 @onready var currency: Label = $Currency
 
 @onready var sell_all_button: Button = $SellAllButton
+@onready var description: RichTextLabel = $DetailsPanel/Description
 
 @onready var sfx_player: SFXPlayer = $SfxPlayer
+@onready var indicator: TextureRect = $DetailsPanel/Indicator
 
 
 const SELL_ITEM = preload("uid://dasd38kajjc2r")
+const ITEM_SLOT_COOKING = preload("uid://b6ekacuriin3v")
+const ITEM_SLOT_CRAFTING = preload("uid://dbe6piv0wn7lq")
+const ITEM_SLOT_NA = preload("uid://blepqdi1qq7bf")
+const ITEM_SLOT_NOVELTY = preload("uid://x2hshpeeawjm")
 
 
 var selected_item : Item
@@ -38,17 +44,27 @@ func populate_details_panel(item : Item, slot_location : String) -> void:
 		item_icon.texture = selected_item.shop_icon
 		item_title.text = selected_item.item_name
 		value.text = "Value: %s" % [item.sell_value]
-		print("THIS IS THE SELECTED ITEM: %s" % [selected_item.item_name])
-
+		if item is EnemyDrop:
+			match item.item_type:
+				item.ITEM_TYPE.COOKING:
+					indicator.texture = ITEM_SLOT_COOKING
+				item.ITEM_TYPE.NOVELTY:
+					indicator.texture = ITEM_SLOT_NOVELTY
+				item.ITEM_TYPE.CRAFTING:
+					indicator.texture = ITEM_SLOT_CRAFTING
+		else:
+			indicator.texture = ITEM_SLOT_NA
+		
+		
+		description.text = item.description
 
 func _on_sell_all_button_button_up() -> void:
 	sell_all_items(inventory_container, "Inventory")
 	sell_all_items(bank_container, "Bank")
 
 func _on_sell_button_button_up() -> void:
-	print(selected_inventory)
 	if InventoryManager.remove_item(selected_inventory, selected_item):
-		sfx_player.play_sfx(SELL_ITEM,0,true)
+		sfx_player.play_sfx(SELL_ITEM)
 		TechTreeManager.currency += selected_item.sell_value
 		match selected_inventory:
 			"Bank":
@@ -66,7 +82,9 @@ func clear_details() -> void:
 	item_icon.texture = null
 	item_title.text = "Selected an Item"
 	item_type.text = "N/A"
+	description.text = ""
 	value.text = "N/A"
+	indicator.texture = null
 
 func _on_close_button_up() -> void:
 	GameManager.player_can_move = true

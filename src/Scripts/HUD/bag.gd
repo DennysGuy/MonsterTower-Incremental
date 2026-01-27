@@ -31,6 +31,7 @@ func update_grid_container() -> void:
 			slot.item = potential_item["item"]
 			slot.item_icon.texture = potential_item["item"].shop_icon
 			slot.show_quantity_label(potential_item["quantity"])
+			slot.set_indicator(potential_item["item"])
 			grid_container.add_child(slot)
 		else:
 			grid_container.add_child(slot)
