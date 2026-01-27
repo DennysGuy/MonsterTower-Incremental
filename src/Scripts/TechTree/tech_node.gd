@@ -6,7 +6,7 @@ class_name TechNode extends Node2D
 
 @onready var tool_tip_marker: Marker2D = $ToolTipMarker
 
-@onready var level_label: Label = $LevelLabel
+@onready var level_label: RichTextLabel = $LevelLabel
 
 @export var node_type : TechTreeManager.TECH_NODE_TYPE
 @onready var sfx_player: SFXPlayer = $SfxPlayer
@@ -101,13 +101,18 @@ func check_if_can_purchase() -> void:
 		can_click = false
 		if tech_node_stats.current_level >= tech_node_stats.max_level:
 			bg.texture = NODE_BASE_UNLOCKED_V_2
-	elif TechTreeManager.currency >= tech_node_stats.currency_required and has_resource_quantity():
+	elif can_purchase():
 		can_click = true
 		bg.texture = NODE_BASE_ENABLED_V_2
 	else:
 		can_click = false
 		bg.texture = NODE_BASE_DISABLED_V_2
+	
+	set_level_label()
 		
+
+func can_purchase() -> bool:
+	return TechTreeManager.currency >= tech_node_stats.currency_required and has_resource_quantity()
 
 func check_prereqs() -> void:
 	if !tech_node_stats.unlocked:
@@ -130,10 +135,12 @@ func unlock_node() -> void:
 
 func set_level_label() -> void:
 	if tech_node_stats.current_level >= tech_node_stats.max_level:
-		level_label.text = "Max"
+		level_label.text = "[color=yellow]Max[/color]"
 		return
-	level_label.text = "%s/%s" % [tech_node_stats.current_level,tech_node_stats.max_level]
-
+	if can_purchase():
+		level_label.text = "[color=green]%s/%s[/color]" % [tech_node_stats.current_level,tech_node_stats.max_level]
+	else:
+		level_label.text = "[color=gray]%s/%s[/color]" % [tech_node_stats.current_level,tech_node_stats.max_level]
 func remove_tool_tip() -> void:
 	for tool_tip in get_tree().get_nodes_in_group("ToolTips"):
 		tool_tip.remove_tool_tip()
