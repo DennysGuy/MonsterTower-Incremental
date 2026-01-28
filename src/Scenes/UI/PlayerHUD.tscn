@@ -302,9 +302,9 @@ horizontal_alignment = 2
 
 [node name="Bag" parent="PlayerHUD" instance=ExtResource("6_g1bs5")]
 layout_mode = 1
-offset_left = -171.0
+offset_left = -320.0
 offset_top = -123.5
-offset_right = 20.0
+offset_right = -128.99995
 offset_bottom = 51.5
 
 [node name="MapeName" type="Label" parent="PlayerHUD"]
@@ -337,6 +337,7 @@ theme_override_fonts/normal_font = ExtResource("9_jyqen")
 bbcode_enabled = true
 
 [node name="TopBlackBar" type="ColorRect" parent="PlayerHUD"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -348,6 +349,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="BotBlackBar" type="ColorRect" parent="PlayerHUD"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -399,3 +401,5 @@ libraries = {
 libraries = {
 &"": SubResource("AnimationLibrary_jyqen")
 }
+
+[editable path="PlayerHUD/Bag"]

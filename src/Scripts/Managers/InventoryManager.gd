@@ -17,8 +17,7 @@ signal update_bank_inventory
 signal populate_market_menu(item : Item, slot_locale : String)
 
 @export var inventories : Dictionary = {
-	"Inventory" : [],
-	"Cooking Inventory": [], #send cooking items here
+	"Inventory" : [], # all other items go here
 	"Crafting Inventory" : [], #send crafting items here
 	"Bank": []
 }

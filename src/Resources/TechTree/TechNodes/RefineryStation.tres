@@ -9,7 +9,7 @@ script = ExtResource("1_bi6dd")
 node_name = "Refinery Station"
 icon = ExtResource("1_70cap")
 description = "Refinery Station allows you to smelt ore retrieved from rocks inthe tower into craftable materials."
-currency_required = 500
+currency_required = 800
 materials_required = Array[Dictionary]([{
 ExtResource("2_qpohm"): 2
 }])
