@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=4 uid="uid://bpob51vk7v2cj"]
+[gd_scene load_steps=40 format=4 uid="uid://bpob51vk7v2cj"]
 
 [ext_resource type="Script" uid="uid://bm3rscv8708vb" path="res://src/Scripts/Maps/Tower/Biome1/floor_1_1.gd" id="1_u3nwm"]
 [ext_resource type="AudioStream" uid="uid://nhnh670ord35" path="res://Audio/Music/TemporaryTowerTheme.mp3" id="2_68h8k"]
@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://cr6q5dxlkks" path="res://src/Scenes/Tower/LadderArea.tscn" id="5_c1fqw"]
 [ext_resource type="PackedScene" uid="uid://dj0ett15s3u5m" path="res://src/Scenes/Tower/TowerFloors/OreRockMarker.tscn" id="5_kpd6k"]
 [ext_resource type="TileSet" uid="uid://cbwyncwtk5kxk" path="res://src/Scenes/Tower/TowerFloors/Biome1/Biome1-Boundaries.tres" id="5_tuy5g"]
-[ext_resource type="Resource" uid="uid://dxfrcyw0rux0q" path="res://src/Resources/OreRock/TinOreRock.tres" id="6_hvi06"]
+[ext_resource type="Resource" uid="uid://dxfrcyw0rux0q" path="res://src/Resources/TinOreRock.tres" id="6_hvi06"]
 [ext_resource type="PackedScene" uid="uid://bethw5tnlxnnt" path="res://src/Scenes/Actors/Enemies/CorruptedMushie/CorruptedMushie.tscn" id="6_ko10l"]
 [ext_resource type="TileSet" uid="uid://flobhfna8te" path="res://src/Scenes/Tower/TowerFloors/Biome1/Biome1-Platforms.tres" id="6_om3xh"]
 [ext_resource type="PackedScene" uid="uid://crvhogk2bnq1s" path="res://src/Scenes/NewStarshire/TowerGuideSprite.tscn" id="7_0rtsh"]
@@ -24,6 +24,9 @@
 [ext_resource type="PackedScene" uid="uid://c11hg5ijdrjjs" path="res://src/Scenes/Tower/TowerFloors/ExitElevator1.tscn" id="15_obgwm"]
 [ext_resource type="PackedScene" uid="uid://cexhahnue1wh6" path="res://src/Scenes/Tower/TowerFloors/FloorGuideLog.tscn" id="15_om3xh"]
 [ext_resource type="PackedScene" uid="uid://c6tv3t1cpeq8f" path="res://src/Scenes/PlayerSpawnPoint.tscn" id="23_jmmg4"]
+[ext_resource type="PackedScene" uid="uid://dgtobkubdjq27" path="res://src/Scenes/Actors/Enemies/ItemInteractable.tscn" id="25_6qxhp"]
+[ext_resource type="Resource" uid="uid://bcj3s4yvea533" path="res://src/Resources/CraftingResources/TinOre.tres" id="26_8wimh"]
+[ext_resource type="Resource" uid="uid://dkgm0qg2cosd7" path="res://src/Resources/CraftingResources/CopperOre.tres" id="27_8wimh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c1fqw"]
 texture = ExtResource("2_hk0iw")
@@ -1302,6 +1305,22 @@ position = Vector2(201, 81)
 
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("23_jmmg4")]
 position = Vector2(222, 961)
+
+[node name="ItemInteractable" parent="." instance=ExtResource("25_6qxhp")]
+position = Vector2(224, 922)
+item = ExtResource("26_8wimh")
+
+[node name="ItemInteractable2" parent="." instance=ExtResource("25_6qxhp")]
+position = Vector2(224, 922)
+item = ExtResource("26_8wimh")
+
+[node name="ItemInteractable3" parent="." instance=ExtResource("25_6qxhp")]
+position = Vector2(224, 922)
+item = ExtResource("27_8wimh")
+
+[node name="ItemInteractable4" parent="." instance=ExtResource("25_6qxhp")]
+position = Vector2(224, 922)
+item = ExtResource("27_8wimh")
 
 [connection signal="body_entered" from="TowerExitArea" to="." method="_on_tower_exit_area_body_entered"]
 [connection signal="body_exited" from="TowerExitArea" to="." method="_on_tower_exit_area_body_exited"]

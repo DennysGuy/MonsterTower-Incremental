@@ -1,10 +1,12 @@
 class_name MainMenu extends Control
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 @export var next_scene_path : String
 
 func _ready() -> void:
+	audio_stream_player.play()
 	animation_player.play("FadeIn")
 
 

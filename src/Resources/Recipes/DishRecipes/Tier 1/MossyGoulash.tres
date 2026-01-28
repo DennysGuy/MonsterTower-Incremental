@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="CraftingRecipe" load_steps=6 format=3 uid="uid://ewuj36wenyg"]
+
+[ext_resource type="Texture2D" uid="uid://bd61e2on2n21b" path="res://Assets/Facilities/CookingStation/MossyGoulash.png" id="1_3lulh"]
+[ext_resource type="Script" uid="uid://cljygiasf4103" path="res://src/Scripts/Facilities/crafting_recipe.gd" id="1_dbvl6"]
+[ext_resource type="Resource" uid="uid://ctjyflf6qr4g" path="res://src/Resources/Dishes/MossyGoulash.tres" id="2_l04ss"]
+[ext_resource type="Resource" uid="uid://bxukrnl1bg7oo" path="res://src/Resources/Actors/Enemies/Biome1/Batclopse/BatclopseWing.tres" id="2_mrkob"]
+[ext_resource type="Resource" uid="uid://bsa2pu1rqjdkt" path="res://src/Resources/Actors/Enemies/Biome1/CorruptedMushie/MushiePuree.tres" id="3_l04ss"]
+
+[resource]
+script = ExtResource("1_dbvl6")
+recipe_name = "Mossy Goulash"
+menu_icon = ExtResource("1_3lulh")
+description = "People who eat this typically look at it for its novelty. Not its taste."
+recipe_tier = 1
+crafting_time = 225.0
+success_rate = 0.8
+output_item = ExtResource("2_l04ss")
+recipe_list = Array[Dictionary]([{
+ExtResource("2_mrkob"): 2
+}, {
+ExtResource("3_l04ss"): 1
+}])
+metadata/_custom_type_script = "uid://cljygiasf4103"

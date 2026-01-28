@@ -48,14 +48,13 @@ const KNOCKBACK_FORCE : int = 300
 	"Arial Slash" : false
 }
 
-
 @onready var check_points_unlocked : Dictionary[String, bool] = {
 	"Floor 1-1" : false,
 	"Floor 1-2" : false,
 	"Floor 1-3" : false
 }
 
-const MAX_SWORD_COUNT := 4
+const MAX_SWORD_COUNT := 2
 
 var show_cooking_station_unlock_animation : bool = false
 var show_refinery_station_unlock_animation : bool = false
@@ -70,9 +69,7 @@ func get_sword(sword_index : int = 0) -> Sword:
 		1:
 			return preload("uid://gj2gdethgc68")#"Shroom Fibre Blade"
 		2:
-			return preload("uid://hnq8o34pxm0h") #Bronze Sword
-		3:
-			return preload("uid://do5v83xsd4n70") #Steel Sword
+			return preload("uid://hnq8o34pxm0h") #Bronze Fang Blade
 		_:
 			return preload("uid://di3xaosm85tjx")#"Wooden Sword"
 

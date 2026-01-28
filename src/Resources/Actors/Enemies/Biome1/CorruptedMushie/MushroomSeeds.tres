@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EnemyDrop" load_steps=3 format=3 uid="uid://buc582qhh7ekv"]
+
+[ext_resource type="Script" uid="uid://cubudt76pshmm" path="res://src/Scripts/Enemies/enemy_drop.gd" id="1_hayyc"]
+[ext_resource type="Texture2D" uid="uid://c1yksrknlcprk" path="res://Assets/Enemies/CorruptedMushie/MushroomSeeds.png" id="1_pswxa"]
+
+[resource]
+script = ExtResource("1_hayyc")
+drop_icon = ExtResource("1_pswxa")
+drop_chance = 100.0
+item_name = "Mushroom Seeds"
+sell_value = 80
+shop_icon = ExtResource("1_pswxa")
+description = "Seeds from a corrupted Mushie. Perhaps you can grow a farm of em - but it's not recommended for one's health."
+metadata/_custom_type_script = "uid://cubudt76pshmm"

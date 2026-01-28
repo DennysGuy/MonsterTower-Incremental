@@ -35,10 +35,10 @@ func _ready() -> void:
 	SignalBus.issue_can_craft_sword_scene.connect(new_sword_unlock_notice)
 	TechTreeManager.unlock_cooking_station.connect(unlock_cooking_station)
 	TechTreeManager.unlock_refinery.connect(unlock_refinery_station)
-	
+	CookingManager.can_craft_bar.emit()
 	hud.animation_player.play("CloseIn")
 
-	if PlayerStats.can_craft_next_sword():
+	if PlayerStats.player_stats["Equipped Sword"] < PlayerStats.MAX_SWORD_COUNT and PlayerStats.can_craft_next_sword():
 		await get_tree().create_timer(1.0).timeout
 		new_sword_unlock_notice()
 	
@@ -53,21 +53,26 @@ func _process(delta: float) -> void:
 		
 	if Input.is_action_just_pressed("interact") and player_in_market_range and GameManager.player_can_move:
 		GameManager.player_can_move = false
+		player.velocity = Vector2.ZERO
 		spawn_grand_market()
 		
 	if Input.is_action_just_pressed("interact") and player_in_cooking_range and GameManager.player_can_move and PlayerStats.facilities_unlocked["Cooking Station"]:
 		GameManager.player_can_move = false
+		player.velocity = Vector2.ZERO
 		spawn_cooking_menu()
 	
 	if Input.is_action_just_pressed("interact") and player_in_smelting_range and GameManager.player_can_move and PlayerStats.facilities_unlocked["Refinery Station"]:
 		GameManager.player_can_move = false
+		player.velocity = Vector2.ZERO
 		spawn_smelting_menu()
 	
 	if Input.is_action_just_pressed("interact") and player_in_crafting_range and GameManager.player_can_move:
 		GameManager.player_can_move = false
+		player.velocity = Vector2.ZERO
 		spawn_crafting_menu()
 
 func add_tech_tree_to_scene() -> void:
+	player.velocity = Vector2.ZERO
 	var tech_tree : TechTree = preload("uid://b7n3fwd3y85wp").instantiate()
 	sub_viewport.add_child(tech_tree)
 

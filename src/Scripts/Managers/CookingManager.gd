@@ -3,6 +3,10 @@ extends Node
 
 #tier 1 cooking recipes
 const COOKED_GAGOOTZ = preload("uid://calxpcwsw1ny1")
+const MOSSY_GOULASH = preload("uid://ewuj36wenyg")
+const MUSHIE_FLAN = preload("uid://bl128q5qwa5a6")
+
+
 
 #tier 1 smelting recipes
 const BRONZE_BAR_RECIPE = preload("uid://bxa51f001ecsc")
@@ -18,7 +22,7 @@ signal can_craft_dish
 signal can_craft_bar
 
 var cooking_recipes : Dictionary[int,Array] = {
-	1 : [COOKED_GAGOOTZ],
+	1 : [COOKED_GAGOOTZ,MUSHIE_FLAN,MOSSY_GOULASH],
 	2 : [],
 	3 : [],
 	4 : [],

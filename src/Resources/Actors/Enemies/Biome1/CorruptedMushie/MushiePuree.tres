@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="EnemyDrop" load_steps=3 format=3 uid="uid://bsa2pu1rqjdkt"]
+
+[ext_resource type="Script" uid="uid://cubudt76pshmm" path="res://src/Scripts/Enemies/enemy_drop.gd" id="1_hx4j8"]
+[ext_resource type="Texture2D" uid="uid://qbqwbdawiv2x" path="res://Assets/Enemies/CorruptedMushie/MushiePuree.png" id="1_kib3k"]
+
+[resource]
+script = ExtResource("1_hx4j8")
+drop_icon = ExtResource("1_kib3k")
+item_type = 2
+drop_chance = 0.42
+item_name = "Mushie Puree"
+sell_value = 90
+shop_icon = ExtResource("1_kib3k")
+description = "Puree extracted from a corrupted mushie. Used to craft some of the tower's best delecacies."
+metadata/_custom_type_script = "uid://cubudt76pshmm"

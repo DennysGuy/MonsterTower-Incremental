@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://crvhogk2bnq1s" path="res://src/Scenes/NewStarshire/TowerGuideSprite.tscn" id="10_k3vyl"]
 [ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="11_orspa"]
 [ext_resource type="PackedScene" uid="uid://cepv6hcj1jotc" path="res://src/Scenes/Tower/TowerFloors/TowerExitArea.tscn" id="11_vnc44"]
-[ext_resource type="Resource" uid="uid://dxfrcyw0rux0q" path="res://src/Resources/OreRock/TinOreRock.tres" id="16_spv67"]
+[ext_resource type="Resource" uid="uid://dxfrcyw0rux0q" path="res://src/Resources/TinOreRock.tres" id="16_spv67"]
 [ext_resource type="PackedScene" uid="uid://b0enmfcqe1mex" path="res://src/Scenes/Actors/Enemies/Batclopse/Batclopse.tscn" id="17_eb55d"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vss50"]

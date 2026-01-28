@@ -1,13 +1,16 @@
-[gd_resource type="Resource" script_class="Sword" load_steps=5 format=3 uid="uid://hnq8o34pxm0h"]
+[gd_resource type="Resource" script_class="Sword" load_steps=8 format=3 uid="uid://hnq8o34pxm0h"]
 
 [ext_resource type="Texture2D" uid="uid://dqdnfqgin24gv" path="res://Assets/CraftingMiniGame/Swords/BronzeSword/BronzeSwordWhole.png" id="1_3rso2"]
 [ext_resource type="Script" uid="uid://im2igg6pop1u" path="res://src/Scripts/sword.gd" id="1_vdyun"]
 [ext_resource type="Texture2D" uid="uid://coogimgiiqd7x" path="res://Assets/CraftingMiniGame/Swords/BronzeSword/BronzeSwordMoldWhole.png" id="2_tmuie"]
 [ext_resource type="Resource" uid="uid://8ol4o8ecjwos" path="res://src/Resources/Recipes/SwordRecipes/BronzeSword.tres" id="3_tmuie"]
+[ext_resource type="AudioStream" uid="uid://7m8clykuejiw" path="res://Audio/SFX/Player/SwordSwing1.wav" id="5_rlnb6"]
+[ext_resource type="AudioStream" uid="uid://d4hkg0vupj3mj" path="res://Audio/SFX/Player/SwordSwing2.wav" id="6_f4kgb"]
+[ext_resource type="AudioStream" uid="uid://bcc4lh1bponas" path="res://Audio/SFX/Player/SwordSwing3.wav" id="7_p2a3q"]
 
 [resource]
 script = ExtResource("1_vdyun")
-sword_name = "Bronze Sword"
+sword_name = "Bronze Fang Blade"
 attack_bonus = 15.0
 defense_bonus = 2.0
 attack_speed = 1.2
@@ -16,4 +19,7 @@ crit_damage_bonus = 0.1
 recipe = ExtResource("3_tmuie")
 graphic = ExtResource("1_3rso2")
 mold_graphic = ExtResource("2_tmuie")
+swing_1 = ExtResource("5_rlnb6")
+swing_2 = ExtResource("6_f4kgb")
+swing_3 = ExtResource("7_p2a3q")
 metadata/_custom_type_script = "uid://im2igg6pop1u"
