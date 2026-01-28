@@ -833,7 +833,7 @@ tile_map_data = PackedByteArray("AAACAAsAAQAAAAEAAAADAAsAAQABAAEAAAACAAwAAQAAAAE
 tile_set = SubResource("TileSet_5xris")
 
 [node name="PlayerCamera" parent="." instance=ExtResource("3_wtuhv")]
-position = Vector2(-20, 548)
+position = Vector2(-20, 371)
 limit_left = 0
 limit_top = 23
 limit_right = 1000
@@ -1153,7 +1153,7 @@ Entrance"
 metadata/_edit_use_anchors_ = true
 
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("30_cxssj")]
-position = Vector2(249, 656)
+position = Vector2(493, 384)
 
 [connection signal="body_entered" from="TowerArea" to="." method="_on_tower_area_body_entered"]
 [connection signal="body_exited" from="TowerArea" to="." method="_on_tower_area_body_exited"]

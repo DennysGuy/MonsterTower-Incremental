@@ -23,9 +23,9 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		
 		if kill_quota_met:
 			move_to_next_room_label.text = "Press 'E' to advance to next floor!"
+			animation_player.play("DoorsOpen")
 		else:
 			move_to_next_room_label.text = "Meet the Floor's Kill Quota to advance."
-			animation_player.play("DoorsOpen")
 
 		
 		move_to_next_room_label.show()

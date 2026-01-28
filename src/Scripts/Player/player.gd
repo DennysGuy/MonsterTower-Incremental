@@ -23,6 +23,8 @@ var prev_input : int
 var prev_move_speed : float
 var mining_area_position : Vector2
 
+@export var idle_state : State
+
 func _ready() -> void:
 	super()
 	SignalBus.update_sword_texture.connect(set_sword_texture)
@@ -128,6 +130,9 @@ func attack_ore_rock() -> void:
 
 func clear_effect_texture() -> void:
 	effect.texture = null
+
+func send_to_idle_state() -> void:
+	state_machine.change_state(idle_state)
 
 func pass_through_floor() -> void:
 	set_collision_mask_value(5, false)

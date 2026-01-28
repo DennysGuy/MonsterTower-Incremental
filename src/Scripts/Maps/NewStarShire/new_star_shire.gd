@@ -176,6 +176,7 @@ func _on_crafting_station_area_body_exited(body: Node2D) -> void:
 func unlock_cooking_station() -> void:
 	camera.player = null
 	GameManager.player_can_move = false
+	player.send_to_idle_state()
 	hud.animation_player.play("FadeInOut")
 	await get_tree().create_timer(0.5).timeout
 	sfx_player.play_sfx(UNLOCK_SHOP)
@@ -198,6 +199,7 @@ func unlock_cooking_station() -> void:
 func unlock_refinery_station() -> void:
 	camera.player = null
 	GameManager.player_can_move = false
+	player.send_to_idle_state()
 	hud.animation_player.play("FadeInOut")
 	await get_tree().create_timer(0.5).timeout
 	sfx_player.play_sfx(UNLOCK_SHOP)
@@ -222,6 +224,7 @@ func unlock_refinery_station() -> void:
 func new_sword_unlock_notice() -> void:
 	camera.player = null
 	GameManager.player_can_move = false
+	player.send_to_idle_state()
 	hud.animation_player.play("FadeInOut")
 	await get_tree().create_timer(0.5).timeout
 	smithing_station.notify_can_craft()
