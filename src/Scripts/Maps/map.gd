@@ -27,7 +27,6 @@ var player : Player
 
 @export var ambience_player : AudioStreamPlayer
 @export var ambience_sfx : AudioStream
-var quota_met : bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	GameManager.player_can_move = true
@@ -52,9 +51,8 @@ func _ready() -> void:
 		
 		if map_type == MAP_TYPE.CHECKPOINT_FLOOR:
 			if tower_entrance_data.kill_quota_hit:
-				quota_met = true
 				SignalBus.unlock_next_room.emit()
-				SignalBus.update_kill_quota_text.emit("Next Floor Unlocked!", quota_met)
+				SignalBus.update_kill_quota_text.emit("Next Floor Unlocked!", tower_entrance_data.kill_quota_hit)
 			else:
 				SignalBus.update_kill_quota.connect(update_hunt_quota)
 				SignalBus.update_kill_quota_text.emit("Floor Hunt Quota %s/%s" % [current_kill_count,kill_quota], false)
@@ -119,9 +117,9 @@ func update_hunt_quota() -> void:
 	if map_type == MAP_TYPE.CHECKPOINT_FLOOR:
 		current_kill_count += 1
 		if current_kill_count >= kill_quota:
-			quota_met = true
+			tower_entrance_data.kill_quota_hit = true
 			SignalBus.unlock_next_room.emit()
-			SignalBus.update_kill_quota_text.emit("Next Floor Unlocked!", quota_met)
+			SignalBus.update_kill_quota_text.emit("Next Floor Unlocked!", tower_entrance_data.kill_quota_hit)
 		else:
-			SignalBus.update_kill_quota_text.emit("Floor Hunt Quota %s/%s" %[current_kill_count,kill_quota], quota_met)	
+			SignalBus.update_kill_quota_text.emit("Floor Hunt Quota %s/%s" %[current_kill_count,kill_quota], tower_entrance_data.kill_quota_hit)	
 	
