@@ -34,7 +34,6 @@ func _ready() -> void:
 	GameManager.previous_map_path = path
 	SignalBus.move_to_next_room.connect(move_to_next_room)
 	SignalBus.return_to_starshire.connect(go_to_starshire)
-	SignalBus.update_kill_quota.connect(update_hunt_quota)
 	hud.map_name_label.text = map_name
 	if player_spawn:
 		if map_type == MAP_TYPE.CHECKPOINT_FLOOR and tower_entrance_data.number_of_spawn_locations <= 0:
@@ -42,7 +41,6 @@ func _ready() -> void:
 		
 		if campfire_list:
 			for i in range(0,tower_entrance_data.camp_fires_reached):
-				print("HELLO YOUTUBE!")
 				var checkpoint_campfire : CampFireCheckPoint = campfire_list.get_child(i)
 				checkpoint_campfire.unlocked = true
 				checkpoint_campfire.animation_player.play("On")
@@ -53,7 +51,14 @@ func _ready() -> void:
 			camera.player = player
 		
 		if map_type == MAP_TYPE.CHECKPOINT_FLOOR:
-			SignalBus.update_kill_quota_text.emit("Floor Hunt Quota %s/%s" % [current_kill_count,kill_quota], false)
+			if tower_entrance_data.kill_quota_hit:
+				quota_met = true
+				SignalBus.unlock_next_room.emit()
+				SignalBus.update_kill_quota_text.emit("Next Floor Unlocked!", quota_met)
+			else:
+				SignalBus.update_kill_quota.connect(update_hunt_quota)
+				SignalBus.update_kill_quota_text.emit("Floor Hunt Quota %s/%s" % [current_kill_count,kill_quota], false)
+
 			PlayerStats.check_points_unlocked[map_name] = true
 		
 		if map_type ==	MAP_TYPE.FLOOR or map_type == MAP_TYPE.CHECKPOINT_FLOOR:

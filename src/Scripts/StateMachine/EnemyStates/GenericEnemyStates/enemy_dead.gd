@@ -65,7 +65,7 @@ func drop_items() -> void:
 		if PlayerStats.check_item_in_next_sword_recipe(parent.enemy_stats.crafting_item_drop):
 			drop_chance += 0.15
 			
-		if random_check_2 <= int( drop_chance * 100):
+		if random_check_2 <= int(drop_chance * 100):
 			crafting_item_interactable.item = crafting_item
 			crafting_item_interactable.icon.texture = crafting_item.drop_icon
 			crafting_item_interactable.global_position = Vector2(parent.global_position.x - 20, parent.global_position.y)

@@ -4,8 +4,8 @@
 [ext_resource type="TileSet" uid="uid://cbwyncwtk5kxk" path="res://src/Scenes/Tower/TowerFloors/Biome1/Biome1-Boundaries.tres" id="2_aybf6"]
 [ext_resource type="TileSet" uid="uid://dr3ft3wh6mi6e" path="res://src/Scenes/Tower/TowerFloors/Biome1/Biome1BGSetPieces1.tres" id="2_i77v6"]
 [ext_resource type="Resource" uid="uid://vibb3cg4b01g" path="res://src/Resources/TowerEntranceData/Floor1-3.tres" id="2_kuvlu"]
-[ext_resource type="AudioStream" uid="uid://nhnh670ord35" path="res://Audio/Music/TemporaryTowerTheme.mp3" id="2_la3sh"]
 [ext_resource type="AudioStream" uid="uid://fgrpqq5p7fjq" path="res://Audio/SFX/Biomes/MossyDungeon/Ambience/03 DSGNDron, Dungeon, Ambience, Drone, Dark, Loop.wav" id="2_mdljo"]
+[ext_resource type="AudioStream" uid="uid://baf1q03xsfmb2" path="res://Audio/Music/TempTowerTheme2.mp3" id="3_kuvlu"]
 [ext_resource type="PackedScene" uid="uid://mwttdrt2cg71" path="res://src/Scenes/Players/ambience_player.tscn" id="3_la3sh"]
 [ext_resource type="TileSet" uid="uid://cuil6pmpg4xf1" path="res://src/Scenes/Tower/TowerFloors/Biome1/Biome1-Floor.tres" id="3_sfyrd"]
 [ext_resource type="PackedScene" uid="uid://d150vkltffpjo" path="res://src/Scenes/Tower/TowerFloors/CheckPointCampfire.tscn" id="5_llpdw"]
@@ -22,7 +22,7 @@ script = ExtResource("1_863wi")
 map_name = "Floor 1-3"
 map_id = 3
 tower_entrance_data = ExtResource("2_kuvlu")
-map_theme_song = ExtResource("2_la3sh")
+map_theme_song = ExtResource("3_kuvlu")
 spawn_point = NodePath("Marker2D")
 camera = NodePath("PlayerCamera")
 hud = NodePath("HUD")

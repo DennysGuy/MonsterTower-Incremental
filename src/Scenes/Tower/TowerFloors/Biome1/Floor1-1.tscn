@@ -1,13 +1,13 @@
-[gd_scene load_steps=40 format=4 uid="uid://bpob51vk7v2cj"]
+[gd_scene load_steps=37 format=4 uid="uid://bpob51vk7v2cj"]
 
 [ext_resource type="Script" uid="uid://bm3rscv8708vb" path="res://src/Scripts/Maps/Tower/Biome1/floor_1_1.gd" id="1_u3nwm"]
-[ext_resource type="AudioStream" uid="uid://nhnh670ord35" path="res://Audio/Music/TemporaryTowerTheme.mp3" id="2_68h8k"]
 [ext_resource type="AudioStream" uid="uid://fgrpqq5p7fjq" path="res://Audio/SFX/Biomes/MossyDungeon/Ambience/03 DSGNDron, Dungeon, Ambience, Drone, Dark, Loop.wav" id="2_ck022"]
 [ext_resource type="Texture2D" uid="uid://bbmpr551mjb20" path="res://Assets/Tower/Biom1/Biome1SpriteSheet.png" id="2_hk0iw"]
 [ext_resource type="Resource" uid="uid://cnvnsw0143wep" path="res://src/Resources/TowerEntranceData/Floor1-1.tres" id="2_n5ad4"]
 [ext_resource type="TileSet" uid="uid://dr3ft3wh6mi6e" path="res://src/Scenes/Tower/TowerFloors/Biome1/Biome1BGSetPieces1.tres" id="3_4lbed"]
 [ext_resource type="PackedScene" uid="uid://mwttdrt2cg71" path="res://src/Scenes/Players/ambience_player.tscn" id="3_68h8k"]
 [ext_resource type="PackedScene" uid="uid://c8ov03gkkda4k" path="res://src/Scenes/PlayerCamera.tscn" id="3_aah8w"]
+[ext_resource type="AudioStream" uid="uid://baf1q03xsfmb2" path="res://Audio/Music/TempTowerTheme2.mp3" id="3_n5ad4"]
 [ext_resource type="PackedScene" uid="uid://dysg5kffvxbql" path="res://src/Scenes/UI/PlayerHUD.tscn" id="4_aah8w"]
 [ext_resource type="TileSet" uid="uid://cuil6pmpg4xf1" path="res://src/Scenes/Tower/TowerFloors/Biome1/Biome1-Floor.tres" id="4_om3xh"]
 [ext_resource type="PackedScene" uid="uid://cr6q5dxlkks" path="res://src/Scenes/Tower/LadderArea.tscn" id="5_c1fqw"]
@@ -24,9 +24,6 @@
 [ext_resource type="PackedScene" uid="uid://c11hg5ijdrjjs" path="res://src/Scenes/Tower/TowerFloors/ExitElevator1.tscn" id="15_obgwm"]
 [ext_resource type="PackedScene" uid="uid://cexhahnue1wh6" path="res://src/Scenes/Tower/TowerFloors/FloorGuideLog.tscn" id="15_om3xh"]
 [ext_resource type="PackedScene" uid="uid://c6tv3t1cpeq8f" path="res://src/Scenes/PlayerSpawnPoint.tscn" id="23_jmmg4"]
-[ext_resource type="PackedScene" uid="uid://dgtobkubdjq27" path="res://src/Scenes/Actors/Enemies/ItemInteractable.tscn" id="25_6qxhp"]
-[ext_resource type="Resource" uid="uid://bcj3s4yvea533" path="res://src/Resources/CraftingResources/TinOre.tres" id="26_8wimh"]
-[ext_resource type="Resource" uid="uid://dkgm0qg2cosd7" path="res://src/Resources/CraftingResources/CopperOre.tres" id="27_8wimh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c1fqw"]
 texture = ExtResource("2_hk0iw")
@@ -1059,7 +1056,7 @@ script = ExtResource("1_u3nwm")
 map_name = "Floor 1-1"
 map_id = 1
 tower_entrance_data = ExtResource("2_n5ad4")
-map_theme_song = ExtResource("2_68h8k")
+map_theme_song = ExtResource("3_n5ad4")
 camera = NodePath("PlayerCamera")
 hud = NodePath("HUD")
 ore_rock_spawn_rate = 0.65
@@ -1305,22 +1302,6 @@ position = Vector2(201, 81)
 
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("23_jmmg4")]
 position = Vector2(222, 961)
-
-[node name="ItemInteractable" parent="." instance=ExtResource("25_6qxhp")]
-position = Vector2(224, 922)
-item = ExtResource("26_8wimh")
-
-[node name="ItemInteractable2" parent="." instance=ExtResource("25_6qxhp")]
-position = Vector2(224, 922)
-item = ExtResource("26_8wimh")
-
-[node name="ItemInteractable3" parent="." instance=ExtResource("25_6qxhp")]
-position = Vector2(224, 922)
-item = ExtResource("27_8wimh")
-
-[node name="ItemInteractable4" parent="." instance=ExtResource("25_6qxhp")]
-position = Vector2(224, 922)
-item = ExtResource("27_8wimh")
 
 [connection signal="body_entered" from="TowerExitArea" to="." method="_on_tower_exit_area_body_entered"]
 [connection signal="body_exited" from="TowerExitArea" to="." method="_on_tower_exit_area_body_exited"]

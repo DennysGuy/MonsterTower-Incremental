@@ -23,11 +23,8 @@ func enter() -> void:
 	super()
 	parent.is_crafting = true
 	#remove resources from inventory --> we can't get into here unless there is enough inventory space/resources
-	InventoryManager.remove_resources_from_inventory(parent.stored_recipe.recipe_list)
-	parent.populate_recipes_list(parent.selected_tier)
 	CookingManager.can_craft_dish.emit()
 	CookingManager.can_craft_bar.emit()
-	parent.update_inventories()
 	parent.crafting_progress_bar.max_value = parent.stored_recipe.crafting_time
 	parent.crafting_progress_bar.value = 0
 	
@@ -62,6 +59,9 @@ func process_physics(_delta: float) -> State:
 				success_rate += PlayerStats.player_stats["Smelting Accuracy Bonus"]
 			
 		if num_check <= int(success_rate * 100):
+			InventoryManager.remove_resources_from_inventory(parent.stored_recipe.recipe_list)
+			parent.populate_recipes_list(parent.selected_tier)
+			parent.update_inventories()
 			if !InventoryManager.add_item("Inventory", parent.stored_recipe.output_item):
 				InventoryManager.add_item("Bank", parent.stored_recipe.output_item)
 			

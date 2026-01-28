@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_hx4j8")
 drop_icon = ExtResource("1_kib3k")
-item_type = 2
+item_type = 1
 drop_chance = 0.42
 item_name = "Mushie Puree"
 sell_value = 90
