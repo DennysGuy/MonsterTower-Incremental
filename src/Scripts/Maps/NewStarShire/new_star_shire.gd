@@ -98,6 +98,7 @@ func _on_tower_area_body_exited(body: Node2D) -> void:
 		set_guide_log(false)
 
 func go_to_test_floor() -> void:
+	GameManager.spawn_location = 0
 	hud.animation_player.play("CloseOut")
 	GameManager.player_can_move = true
 	if PlayerStats.facilities_unlocked["Bank"]:

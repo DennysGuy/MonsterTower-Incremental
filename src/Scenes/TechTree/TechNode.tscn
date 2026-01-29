@@ -138,7 +138,8 @@ text = "10/10"
 horizontal_alignment = 1
 
 [node name="FacilitiesNotify" type="Sprite2D" parent="."]
-position = Vector2(-2.0000017, -38.000004)
+visible = false
+position = Vector2(-1.9999981, 1.1920929e-07)
 scale = Vector2(0.60714287, 0.60714287)
 texture = ExtResource("8_ojxq6")
 

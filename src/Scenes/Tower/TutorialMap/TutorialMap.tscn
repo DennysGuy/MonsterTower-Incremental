@@ -1,9 +1,9 @@
 [gd_scene load_steps=31 format=4 uid="uid://c3y6ce3xriuwl"]
 
 [ext_resource type="Script" uid="uid://600rhhvqgcep" path="res://src/Scripts/Tower/tutorial_map.gd" id="1_tymde"]
-[ext_resource type="AudioStream" uid="uid://dx8evt0rrfmco" path="res://Audio/Music/TemporaryTutorialTheme.mp3" id="2_7kbtj"]
 [ext_resource type="Texture2D" uid="uid://bodyhalxjbpk6" path="res://Assets/EnvironmentalAssets/TutorialMap.png" id="2_760pt"]
 [ext_resource type="Texture2D" uid="uid://m1hch071kuxp" path="res://Assets/EnvironmentalAssets/Ship.png" id="2_ydw26"]
+[ext_resource type="AudioStream" uid="uid://bmtavfsq5pgic" path="res://Audio/Music/BootcampTheme2.mp3" id="2_ys33i"]
 [ext_resource type="Texture2D" uid="uid://d0bjvovwo3hm4" path="res://Assets/EnvironmentalAssets/PalmTree.png" id="3_o6iow"]
 [ext_resource type="Texture2D" uid="uid://y80fw7n3ai66" path="res://Assets/Facilities/TempTower.png" id="4_sdyju"]
 [ext_resource type="PackedScene" uid="uid://c8ov03gkkda4k" path="res://src/Scenes/PlayerCamera.tscn" id="5_csukg"]
@@ -404,9 +404,16 @@ size = Vector2(20, 362)
 [node name="TutorialMap" type="Node2D" node_paths=PackedStringArray("camera", "hud")]
 script = ExtResource("1_tymde")
 map_name = "Billy's Bootcamp "
-map_theme_song = ExtResource("2_7kbtj")
+map_theme_song = ExtResource("2_ys33i")
 camera = NodePath("PlayerCamera")
 hud = NodePath("HUD")
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+offset_left = -10.0
+offset_top = -179.0
+offset_right = 2369.0
+offset_bottom = 584.0
+color = Color(0.4144998, 0.50743866, 0.9217832, 1)
 
 [node name="ColorRect2" type="ColorRect" parent="."]
 offset_left = -10.0

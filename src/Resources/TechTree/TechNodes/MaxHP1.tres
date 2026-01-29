@@ -7,10 +7,10 @@
 script = ExtResource("1_j3vys")
 node_name = "Max HP 1"
 icon = ExtResource("1_bu2rx")
-description = "Sustaine more damage! Increase Max HP by 20 for each level"
+description = "Sustaine more damage! Increase Max HP by 35 for each level"
 max_level = 5
 currency_required = 50
 stat_name = "Max Health"
-upgrade_interval = 25.0
+upgrade_interval = 35.0
 prereqs = Array[String](["Hunter License:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

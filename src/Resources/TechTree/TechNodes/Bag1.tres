@@ -7,7 +7,8 @@
 script = ExtResource("1_5ehxb")
 node_name = "Item Bag 1"
 icon = ExtResource("1_fhxuj")
-description = "Store more items on runs! Increase Item Bag slots to 2"
+description = "Increase Item Bag slots to 2. 
+[color=red]Crafting items can now drop from enemies![/color]"
 currency_required = 100
 stat_name = "Bag"
 upgrade_interval = 1.0

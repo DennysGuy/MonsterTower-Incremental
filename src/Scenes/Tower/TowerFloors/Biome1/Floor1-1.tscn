@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=4 uid="uid://bpob51vk7v2cj"]
+[gd_scene load_steps=38 format=4 uid="uid://bpob51vk7v2cj"]
 
 [ext_resource type="Script" uid="uid://bm3rscv8708vb" path="res://src/Scripts/Maps/Tower/Biome1/floor_1_1.gd" id="1_u3nwm"]
 [ext_resource type="AudioStream" uid="uid://fgrpqq5p7fjq" path="res://Audio/SFX/Biomes/MossyDungeon/Ambience/03 DSGNDron, Dungeon, Ambience, Drone, Dark, Loop.wav" id="2_ck022"]
@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://cepv6hcj1jotc" path="res://src/Scenes/Tower/TowerFloors/TowerExitArea.tscn" id="11_kpd6k"]
 [ext_resource type="PackedScene" uid="uid://c11hg5ijdrjjs" path="res://src/Scenes/Tower/TowerFloors/ExitElevator1.tscn" id="15_obgwm"]
 [ext_resource type="PackedScene" uid="uid://cexhahnue1wh6" path="res://src/Scenes/Tower/TowerFloors/FloorGuideLog.tscn" id="15_om3xh"]
+[ext_resource type="PackedScene" uid="uid://cyiot28va881c" path="res://src/Scenes/Actors/Enemies/CorruptedMushie/CorruptedMushie_Level2.tscn" id="22_o5ei8"]
 [ext_resource type="PackedScene" uid="uid://c6tv3t1cpeq8f" path="res://src/Scenes/PlayerSpawnPoint.tscn" id="23_jmmg4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c1fqw"]
@@ -1283,11 +1284,12 @@ shape = SubResource("RectangleShape2D_0rtsh")
 
 [node name="MonsterSpawnArea3" parent="." node_paths=PackedStringArray("spawn_root", "area_collision_shape") instance=ExtResource("9_gib5v")]
 position = Vector2(308, 253)
-min_spawn = 3
-max_spawn = 4
+min_spawn = 4
+max_spawn = 5
 spawn_root = NodePath("..")
 monster_list = Dictionary[PackedScene, int]({
-ExtResource("6_ko10l"): 100
+ExtResource("6_ko10l"): 70,
+ExtResource("22_o5ei8"): 30
 })
 area_collision_shape = NodePath("CollisionShape2D")
 

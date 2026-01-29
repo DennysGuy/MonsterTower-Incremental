@@ -32,6 +32,7 @@ func _on_go_to_floor_button_up() -> void:
 	get_tree().change_scene_to_file(stored_entrance_data.scene_path)
 
 func store_entrance_data(entrance_data : TowerEntranceData) -> void:
+	GameManager.spawn_location = 0
 	go_to_floor.disabled = false
 	stored_entrance_data = entrance_data
 	biome_preview.texture = entrance_data.preview_pictures[0]

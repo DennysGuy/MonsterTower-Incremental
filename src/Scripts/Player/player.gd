@@ -60,23 +60,6 @@ func start_invincibility() -> void:
 	damageable = false
 	blink_effect()
 
-func blink_effect() -> void:
-	if not is_inside_tree():
-		return 
-		
-	var invincibility_duration : float = 3.0
-	var blink_current_time : float = 0.0
-	var blink_wait_time : float = 0.1
-	
-	while blink_current_time < invincibility_duration and is_inside_tree():
-		set_textures_visibility(false)
-		await get_tree().create_timer(0.1).timeout
-		blink_current_time += blink_wait_time
-		set_textures_visibility(true)
-		await get_tree().create_timer(0.1).timeout
-		blink_current_time += blink_wait_time
-	
-	damageable = true
 
 func set_textures_visibility(value : bool) -> void:
 	sprite.visible = value

@@ -9,7 +9,7 @@ script = ExtResource("2_jrlte")
 node_name = "Banking 2"
 icon = ExtResource("1_div6n")
 description = "Bank Slots increased to 6"
-currency_required = 600
+currency_required = 300
 materials_required = Array[Dictionary]([{
 ExtResource("2_dv4qv"): 3
 }])

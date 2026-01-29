@@ -51,7 +51,7 @@ offset_top = -2429.0
 offset_right = 5576.0
 offset_bottom = 3757.0
 mouse_filter = 2
-color = Color(0.103743516, 0.10374353, 0.103743516, 1)
+color = Color(0.028638711, 0.1994082, 0.3708802, 1)
 
 [node name="Nodes" type="Node" parent="."]
 
@@ -419,10 +419,10 @@ text = "Close"
 position = Vector2(326, 79)
 
 [node name="PlayerStats" parent="CanvasLayer" instance=ExtResource("10_7l0yi")]
-offset_left = -317.0
-offset_top = -177.0
-offset_right = -169.0
-offset_bottom = 116.0
+offset_left = 154.0
+offset_top = -100.0
+offset_right = 302.0
+offset_bottom = 193.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(734, 317)

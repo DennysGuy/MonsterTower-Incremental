@@ -19,7 +19,7 @@ const KNOCKBACK_FORCE : int = 300
 	"Defense" : 0.0,
 	"Crit Damage" : 1.5,
 	"Accuracy" : 0.6,
-	"Max Health" : 50,
+	"Max Health" : 35,
 	"Max MP": 50,
 	"Equipped Sword": 0,
 	"Equipped Pickaxe": 0,
