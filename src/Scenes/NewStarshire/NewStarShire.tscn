@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dpqc54c34418w" path="res://src/Scripts/Maps/NewStarShire/new_star_shire.gd" id="1_gq00g"]
 [ext_resource type="Texture2D" uid="uid://c21ee30haolx4" path="res://Assets/EnvironmentalAssets/TowerDistance.png" id="2_bl45m"]
-[ext_resource type="AudioStream" uid="uid://cvxfqya8ofecv" path="res://Audio/Music/TempStarshireTheme.mp3" id="2_jhqac"]
+[ext_resource type="AudioStream" uid="uid://i8eixbukojm" path="res://Audio/Music/TempStarshireTheme2.mp3" id="2_cxssj"]
 [ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="2_te0bi"]
 [ext_resource type="Texture2D" uid="uid://h2v184xkm5tc" path="res://Assets/EnvironmentalAssets/StarshireTempAssets.png" id="3_5xris"]
 [ext_resource type="TileSet" uid="uid://b74l1awtkdty5" path="res://src/Scenes/NewStarshire/TempWallTiles.tres" id="3_oik5f"]
@@ -776,7 +776,7 @@ size = Vector2(20, 375)
 [node name="NewStarShire" type="Node2D" node_paths=PackedStringArray("spawn_point", "camera", "hud", "sfx_player")]
 script = ExtResource("1_gq00g")
 map_name = "Starspire - Hub"
-map_theme_song = ExtResource("2_jhqac")
+map_theme_song = ExtResource("2_cxssj")
 spawn_point = NodePath("SpawnPoint")
 camera = NodePath("PlayerCamera")
 hud = NodePath("HUD")
@@ -1154,6 +1154,10 @@ metadata/_edit_use_anchors_ = true
 
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("30_cxssj")]
 position = Vector2(493, 384)
+
+[node name="PlayerSpawnPoint2" parent="." instance=ExtResource("30_cxssj")]
+position = Vector2(277, 656)
+index = 1
 
 [connection signal="body_entered" from="TowerArea" to="." method="_on_tower_area_body_entered"]
 [connection signal="body_exited" from="TowerArea" to="." method="_on_tower_area_body_exited"]

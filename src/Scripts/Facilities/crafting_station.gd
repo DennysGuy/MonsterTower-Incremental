@@ -130,7 +130,13 @@ func populate_details_panel(recipe : CraftingRecipe) -> void:
 	match station_type:
 		STATION_TYPE.COOKING: success_rate.text += " (+"+str(int(PlayerStats.player_stats["Cooking Accuracy Bonus"] * 100)) +"%"
 		STATION_TYPE.SMELTING: success_rate.text += " (+"+str(int(PlayerStats.player_stats["Smelting Accuracy Bonus"] * 100)) +"%"
-	var can_add_to_inventory : bool = InventoryManager.check_if_can_add_to_inventory(recipe.output_item)
+	
+	var can_add_to_inventory : bool
+	
+	if STATION_TYPE.COOKING:
+		can_add_to_inventory = InventoryManager.check_if_can_add_to_inventory(recipe.output_item, "Inventory", "Bag","Max Bag Stack")
+	else:
+		can_add_to_inventory = InventoryManager.check_if_can_add_to_inventory(recipe.output_item, "Ore Inventory", "Ore Bag","Max Ore Bag Stack")
 	
 	if !can_add_to_inventory:
 		inventory_full_warning.show()
@@ -171,8 +177,11 @@ func update_inventories() -> void:
 		InventoryManager.update_grid_container(bank_container,"Bank",false)
 	else:
 		bank_notice.show()
-		
-	InventoryManager.update_grid_container(inventory_container,"Inventory",false )
+	
+	if station_type == STATION_TYPE.COOKING:
+		InventoryManager.update_grid_container(inventory_container,"Inventory",false )
+	elif station_type == STATION_TYPE.SMELTING:
+		InventoryManager.update_grid_container(inventory_container,"Ore Inventory",false )
 
 func clear_menu_item_container() -> void:
 	InventoryManager.clear_grid_container(recipes_container)

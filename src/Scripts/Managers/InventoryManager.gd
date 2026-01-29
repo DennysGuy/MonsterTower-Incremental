@@ -18,14 +18,18 @@ signal populate_market_menu(item : Item, slot_locale : String)
 
 @export var inventories : Dictionary = {
 	"Inventory" : [], # all other items go here
-	"Crafting Inventory" : [], #send crafting items here
+	"Ore Inventory" : [], #send crafting items here
 	"Bank": []
 }
 
 @onready var meta_data : Dictionary = {
 	"Inventory" : {
-		"Max Slots" : get_max_bag_slots(), #--- replace these with the player stats
-		"Max Stack" : get_max_bag_stack(),
+		"Max Slots" : get_max_bag_slots("Bag"), #--- replace these with the player stats
+		"Max Stack" : get_max_bag_stack("Max Bag Stack"),
+	},
+	"Ore Inventory": {
+		"Max Slots": get_max_bag_slots("Ore Bag"),
+		"Max Stack": get_max_bag_stack("Max Ore Bag Stack"),			
 	},
 	"Bank" : {
 		"Max Slots" : get_max_bank_slots(),
@@ -36,8 +40,12 @@ signal populate_market_menu(item : Item, slot_locale : String)
 func get_inventory_meta() -> Dictionary:
 	return {
 		"Inventory": {
-			"Max Slots": get_max_bag_slots(),
-			"Max Stack": get_max_bag_stack(),
+			"Max Slots": get_max_bag_slots("Bag"),
+			"Max Stack": get_max_bag_stack("Max Bag Stack"),
+		},
+		"Ore Inventory": {
+			"Max Slots": get_max_bag_slots("Ore Bag"),
+			"Max Stack": get_max_bag_stack("Max Ore Bag Stack"),			
 		},
 		"Bank": {
 			"Max Slots": get_max_bank_slots(),
@@ -117,41 +125,33 @@ func clear_bag() -> void:
 func remove_resources_from_inventory(recipe_list : Array[Dictionary]) -> void:
 	for item in recipe_list:
 		for resource in item.keys():
-			var needed : int = item[resource]
-			print("THIS IS NEEDED AMOUNT: %s" % needed)
-			var removed : int = 0
-
-			# Remove from Inventory first
-			for i in range(needed):
+			var remaining : int = item[resource]
+			
+			while remaining > 0:
 				if remove_item("Inventory", resource):
-					removed += 1
-				else:
-					break
-
-			# Remove remaining from Bank
-			var remaining : int = needed - removed
-			for i in range(remaining):
-				if remove_item("Bank", resource):
-					removed += 1
+					remaining -= 1
+				elif remove_item("Ore Inventory", resource):
+					remaining -= 1
+				elif remove_item("Bank", resource):
+					remaining -= 1
 				else:
 					break
 
 func get_max_bank_slots() -> int:
 	return int(PlayerStats.player_stats["Max Bank Slots"])
 
-func get_max_bag_slots() -> int:
-	print("THIS IS THE CURRENT BAG %s" % [PlayerStats.get_bag().item_bag_name])
-	return PlayerStats.get_bag().max_slots
+func get_max_bag_slots(bag : String) -> int:
+	return PlayerStats.get_bag(bag).max_slots
 
 func get_max_bank_stack() -> int:
 	return int(PlayerStats.player_stats["Max Bank Stack"])
 
-func get_max_bag_stack() -> int:
-	return int(PlayerStats.player_stats["Max Bag Stack"])
+func get_max_bag_stack(bag_stack : String) -> int:
+	return int(PlayerStats.player_stats[bag_stack])
 
-func check_if_inventory_full() -> bool:
-	var total_inventory_size = get_max_bag_slots() * get_max_bag_stack()
-	var inventory = inventories["Inventory"]
+func check_if_inventory_full(inventory_name : String, bag : String, bag_stack : String) -> bool:
+	var total_inventory_size = get_max_bag_slots(bag) * get_max_bag_stack(bag_stack)
+	var inventory = inventories[inventory_name]
 	var total_cur_size : int = 0
 	
 	for item in inventory:
@@ -159,6 +159,7 @@ func check_if_inventory_full() -> bool:
 			total_cur_size += 1
 	
 	return total_cur_size == total_inventory_size
+
 
 func check_if_bank_full() -> bool:
 	var total_inventory_size = get_max_bank_slots() * get_max_bank_stack()
@@ -171,16 +172,16 @@ func check_if_bank_full() -> bool:
 	
 	return total_cur_size == total_inventory_size
 
-func check_if_can_add_to_inventory(selected_item : Item) -> bool:
-	if check_if_bank_full() and check_if_inventory_full():
+func check_if_can_add_to_inventory(selected_item : Item, inventory_name : String,  bag : String, bag_stack : String) -> bool:
+	if check_if_bank_full() and check_if_inventory_full(inventory_name, bag ,bag_stack):
 		return false
 	
-	if inventories["Inventory"].size() < get_max_bag_slots() or inventories["Bank"].size() < get_max_bank_slots():
+	if inventories[inventory_name].size() < get_max_bag_slots(bag) or inventories["Bank"].size() < get_max_bank_slots():
 		return true
 	
-	for item in inventories["Inventory"]:
+	for item in inventories[inventory_name]:
 		if selected_item == item["item"]:
-			if item["quantity"] < PlayerStats.player_stats["Max Bag Stack"]:
+			if item["quantity"] < PlayerStats.player_stats[bag_stack]:
 				return true
 	
 	for item in inventories["Bank"]:
@@ -201,7 +202,9 @@ func update_grid_container(grid_container : GridContainer, inventory : String, i
 	var max_slots : int
 	match inventory:
 		"Inventory":
-			max_slots = InventoryManager.get_max_bag_slots()
+			max_slots = InventoryManager.get_max_bag_slots("Bag")
+		"Ore Inventory":
+			max_slots = InventoryManager.get_max_bag_slots("Ore Bag")
 		"Bank":
 			max_slots = InventoryManager.get_max_bank_slots()
 	
@@ -212,7 +215,10 @@ func update_grid_container(grid_container : GridContainer, inventory : String, i
 		
 		if inventory == "Bank":
 			slot.set_locale_as_bank()
-			
+		elif inventory == "Ore Inventory":
+			slot.set_locale_as_ore_bag()
+		
+		
 		var potential_item
 		if num < InventoryManager.inventories[inventory].size():
 			potential_item = InventoryManager.inventories[inventory][num]
@@ -237,8 +243,14 @@ func calculate_quantity(recipe: CraftingRecipe) -> int:
 	for craft_material in recipe.recipe_list:
 		for mat in craft_material.keys():
 			var required = craft_material[mat]
-			var inventory_amt := get_quantity(mat)
-
+			var inventory_amt
+			if mat is EnemyDrop:
+				if mat.item_type == mat.ITEM_TYPE.ORE:
+					inventory_amt = get_quantity(mat)
+				else:
+					inventory_amt = get_quantity(mat)
+			else:
+				inventory_amt = get_quantity(mat)
 			if inventory_amt < required:
 				return 0
 
@@ -251,10 +263,16 @@ func calculate_quantity(recipe: CraftingRecipe) -> int:
 func get_quantity(selected_item : Item) -> int:
 	
 	var inventory = InventoryManager.inventories["Inventory"]
+	var ore_inventory = InventoryManager.inventories["Ore Inventory"]
 	var bank = InventoryManager.inventories["Bank"]
 	
 	var count : int = 0
 	for item in inventory:
+		if item["item"] == selected_item:
+			for i in range(item["quantity"]):
+				count += 1
+	
+	for item in ore_inventory:
 		if item["item"] == selected_item:
 			for i in range(item["quantity"]):
 				count += 1
@@ -267,6 +285,7 @@ func get_quantity(selected_item : Item) -> int:
 	
 	return count
 
+
 func move_inventory_to_bank() -> void:
 	var inventory_snapshot = InventoryManager.inventories["Inventory"].duplicate(true)
 
@@ -277,3 +296,13 @@ func move_inventory_to_bank() -> void:
 		for i in range(qty):
 			if add_item("Bank", item):
 				remove_item("Inventory", item)
+	
+	var ore_inventory_snapshot = InventoryManager.inventories["Ore Inventory"].duplicate(true)
+
+	for slot in ore_inventory_snapshot:
+		var qty = slot["quantity"]
+		var item = slot["item"]
+
+		for i in range(qty):
+			if add_item("Bank", item):
+				remove_item("Ore Inventory", item)	

@@ -30,7 +30,6 @@ func _process(delta: float) -> void:
 		var tween : Tween = get_tree().create_tween()
 		tween.tween_property(self, "modulate:a", 0.0, 0.5)
 		if abs(global_position) == abs(player.coin_purse.global_position):
-			print(InventoryManager.inventories["Inventory"])
 			if !sfx_player.playing:
 				sfx_player.play_sfx(PICKUP_ITEM)
 			await get_tree().create_timer(2.0).timeout
@@ -40,5 +39,11 @@ func _process(delta: float) -> void:
 		position.y = base_y + sin(t) * hover_height
 
 func set_to_pick_up() -> void:
-	
-	can_pick_up = InventoryManager.add_item("Inventory", item)
+	if item is EnemyDrop:
+		if item.item_type == item.ITEM_TYPE.ORE:
+			can_pick_up = InventoryManager.add_item("Ore Inventory", item)
+		else:
+			can_pick_up = InventoryManager.add_item("Inventory", item)
+	else:
+		can_pick_up = InventoryManager.add_item("Inventory", item)
+		

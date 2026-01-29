@@ -43,7 +43,13 @@ func _ready() -> void:
 				var checkpoint_campfire : CampFireCheckPoint = campfire_list.get_child(i)
 				checkpoint_campfire.unlocked = true
 				checkpoint_campfire.animation_player.play("On")
-		
+
+		if map_type == MAP_TYPE.HUB and map_name == "Starspire - Hub":
+			if PlayerStats.facilities_unlocked["Cooking Station"]:
+				GameManager.spawn_location = 1
+			else:
+				GameManager.spawn_location = 0
+
 		spawn_player()
 	
 		if camera:
@@ -62,6 +68,8 @@ func _ready() -> void:
 		if map_type ==	MAP_TYPE.FLOOR or map_type == MAP_TYPE.CHECKPOINT_FLOOR:
 				hud.start_expedition_timer()
 	
+
+		
 	if ambience_player and ambience_sfx:
 		ambience_player.stream = ambience_sfx
 		ambience_player.play()

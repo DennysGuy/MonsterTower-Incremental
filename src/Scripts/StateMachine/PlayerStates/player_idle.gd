@@ -53,7 +53,7 @@ func process_physics(_delta: float) -> State:
 		Input.is_action_pressed("pan_cam_right")
 	)
 
-	if moving:
+	if moving and GameManager.player_can_move:
 		return move_state
 
 	# Ladder logic (continuous)

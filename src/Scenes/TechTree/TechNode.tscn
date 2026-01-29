@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bhimqkbcn26r2"]
+[gd_scene load_steps=13 format=3 uid="uid://bhimqkbcn26r2"]
 
 [ext_resource type="Script" uid="uid://bf6dj2em3y5l0" path="res://src/Scripts/TechTree/tech_node.gd" id="1_2bhwb"]
 [ext_resource type="Texture2D" uid="uid://bq14rlsnw3mdh" path="res://Assets/NodeGraphics/NodeBaseEnabled_V2.png" id="2_l673o"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bqdrbv6co6410" path="res://src/Scenes/TechTree/ClickArea.tscn" id="3_qmqu0"]
 [ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="5_nhb52"]
 [ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="6_cw315"]
+[ext_resource type="Texture2D" uid="uid://d0y4mpjou53tw" path="res://Assets/HUD/FacilitiesNotify.png" id="8_ojxq6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l673o"]
 size = Vector2(28, 28)
@@ -135,6 +136,11 @@ theme_override_fonts/normal_font = ExtResource("6_cw315")
 bbcode_enabled = true
 text = "10/10"
 horizontal_alignment = 1
+
+[node name="FacilitiesNotify" type="Sprite2D" parent="."]
+position = Vector2(-2.0000017, -38.000004)
+scale = Vector2(0.60714287, 0.60714287)
+texture = ExtResource("8_ojxq6")
 
 [connection signal="input_event" from="ClickArea" to="." method="_on_click_area_input_event"]
 [connection signal="mouse_entered" from="ClickArea" to="." method="_on_click_area_mouse_entered"]

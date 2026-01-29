@@ -4,6 +4,8 @@ class_name ExpeditionResultsScreen extends Control
 @onready var inventory_container: GridContainer = $ResultsPanel/InventoryPanel/InventoryContainer
 @onready var bank_container: GridContainer = $ResultsPanel/InventoryPanel/BankContainer
 @onready var bank_notice: Label = $ResultsPanel/InventoryPanel/BankNotice
+@onready var ore_bag_label: Label = $ResultsPanel/InventoryPanel/OreBagLabel
+@onready var ore_inventory_container: GridContainer = $ResultsPanel/InventoryPanel/OreInventoryContainer
 
 @onready var to_town: Button = $ResultsPanel/ToTown
 @onready var new_run: Button = $ResultsPanel/NewRun
@@ -33,6 +35,7 @@ func _ready() -> void:
 	init_containers()
 	animation_player.play("CloseOut")
 	tips_and_tricks.text = tips.pick_random()
+	
 	MusicPlayer.play_song(TEMP_RESULTS_SCREEN_THEME)
 	await get_tree().create_timer(2.5).timeout
 	if PlayerStats.facilities_unlocked["Bank"]:
@@ -58,6 +61,11 @@ func _on_new_run_button_up() -> void:
 
 func init_containers() -> void:
 	InventoryManager.update_grid_container(inventory_container, "Inventory")
+	
+	if PlayerStats.facilities_unlocked["Refinery Station"]:
+		ore_bag_label.show()
+		InventoryManager.update_grid_container(ore_inventory_container, "Ore Inventory")
+	
 	if PlayerStats.facilities_unlocked["Bank"]:
 		InventoryManager.update_grid_container(bank_container, "Bank")
 	else:
@@ -76,6 +84,20 @@ func move_inventory_to_bank() -> void:
 			if InventoryManager.add_item("Bank", item):
 				InventoryManager.remove_item("Inventory", item)
 				InventoryManager.update_grid_container(inventory_container, "Inventory")
+				InventoryManager.update_grid_container(bank_container, "Bank")
+				sfx_player.play_sfx(TRANSFER_TO_BANK, 0, true)
+				await get_tree().create_timer(0.1).timeout
+
+	var ore_inventory_snapshot = InventoryManager.inventories["Ore Inventory"].duplicate(true)
+
+	for slot in ore_inventory_snapshot:
+		var qty = slot["quantity"]
+		var item = slot["item"]
+
+		for i in range(qty):
+			if InventoryManager.add_item("Bank", item):
+				InventoryManager.remove_item("Ore Inventory", item)
+				InventoryManager.update_grid_container(ore_inventory_container, "Ore Inventory")
 				InventoryManager.update_grid_container(bank_container, "Bank")
 				sfx_player.play_sfx(TRANSFER_TO_BANK, 0, true)
 				await get_tree().create_timer(0.1).timeout

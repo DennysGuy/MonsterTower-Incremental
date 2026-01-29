@@ -18,6 +18,7 @@ class_name GrandMarketMenu extends Control
 @onready var sfx_player: SFXPlayer = $SfxPlayer
 @onready var indicator: TextureRect = $DetailsPanel/Indicator
 
+@onready var ore_inventory_container: GridContainer = $OreInventoryContainer
 
 const SELL_ITEM = preload("uid://dasd38kajjc2r")
 const ITEM_SLOT_COOKING = preload("uid://b6ekacuriin3v")
@@ -25,6 +26,7 @@ const ITEM_SLOT_CRAFTING = preload("uid://dbe6piv0wn7lq")
 const ITEM_SLOT_NA = preload("uid://blepqdi1qq7bf")
 const ITEM_SLOT_NOVELTY = preload("uid://x2hshpeeawjm")
 
+@onready var ore_bag_label: Label = $OreBagLabel
 
 var selected_item : Item
 var selected_inventory : String
@@ -62,6 +64,7 @@ func populate_details_panel(item : Item, slot_location : String) -> void:
 func _on_sell_all_button_button_up() -> void:
 	sell_all_items(inventory_container, "Inventory")
 	sell_all_items(bank_container, "Bank")
+	sell_all_items(ore_inventory_container, "Ore Inventory")
 
 func _on_sell_button_button_up() -> void:
 	if InventoryManager.remove_item(selected_inventory, selected_item):
@@ -72,8 +75,11 @@ func _on_sell_button_button_up() -> void:
 				InventoryManager.update_grid_container(bank_container, selected_inventory)
 			"Inventory":
 				InventoryManager.update_grid_container(inventory_container, selected_inventory)
+			"Ore Inventory":
+				InventoryManager.update_grid_container(ore_inventory_container, selected_inventory)
+				
 		currency.text = "Currency: %s" % [TechTreeManager.currency]
-		if !InventoryManager.search_item("Inventory", selected_item) and !InventoryManager.search_item("Bank", selected_item):
+		if !InventoryManager.search_item("Inventory", selected_item) and !InventoryManager.search_item("Bank", selected_item) and !InventoryManager.search_item("Ore Inventory", selected_item):
 			clear_details()
 	else:
 		clear_details()
@@ -94,6 +100,7 @@ func init_market() -> void:
 	clear_details()
 	currency.text = "Currency: %s" % [TechTreeManager.currency]
 	InventoryManager.update_grid_container(inventory_container, "Inventory")
+	InventoryManager.update_grid_container(ore_inventory_container, "Ore Inventory")
 	if PlayerStats.facilities_unlocked["Bank"]:
 		sell_all_button.show()
 		InventoryManager.update_grid_container(bank_container, "Bank")

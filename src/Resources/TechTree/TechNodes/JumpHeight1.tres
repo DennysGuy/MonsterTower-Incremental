@@ -9,7 +9,7 @@ node_name = "Jump Height 1"
 icon = ExtResource("1_8ke4o")
 description = "Reach higher areas! Increases Jump Height by 10% for each level.
 "
-max_level = 4
+max_level = 2
 currency_required = 60
 stat_name = "Jump Height"
 upgrade_interval = 0.1

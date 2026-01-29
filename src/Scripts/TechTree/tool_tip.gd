@@ -61,7 +61,14 @@ func check_resource_quantity() -> void:
 			var quantity_list_item : QuantityListItem = preload("uid://cq8n5gyropdxm").instantiate()
 			for resource in resource_dict.keys():
 				quantity_list_item.icon.texture = resource.shop_icon
-				var quantity : int = InventoryManager.get_quantity(resource)
+				var quantity : int = 0
+				if resource is EnemyDrop:
+					if resource.item_type == resource.ITEM_TYPE.ORE:
+						quantity  = InventoryManager.get_quantity(resource)
+					else:
+						quantity  = InventoryManager.get_quantity(resource)
+				else:
+					quantity  = InventoryManager.get_quantity(resource)	
 				quantity_list_item.quantity_label.text = "x%s" % [quantity]
 				
 			quantity_list.add_child(quantity_list_item)

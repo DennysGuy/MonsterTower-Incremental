@@ -1,4 +1,4 @@
-class_name InventoryBag extends Control
+class_name OreBag extends Control
 
 @onready var texture_rect: TextureRect = $TextureRect
 @onready var grid_container: GridContainer = $TextureRect/GridContainer
@@ -18,14 +18,14 @@ func init_bag() -> void:
 	update_grid_container()
 
 func update_grid_container() -> void:
-	texture_rect.texture = PlayerStats.get_bag("Bag").texture
+	texture_rect.texture = PlayerStats.get_bag("Ore Bag").texture
 	clear_grid_container()
 	
-	for num in range(InventoryManager.get_max_bag_slots("Bag")):
+	for num in range(InventoryManager.get_max_bag_slots("Ore Bag")):
 		var slot : ItemSlot = preload("uid://d0s6j8mvikv8c").instantiate()
 		var potential_item
-		if num < InventoryManager.inventories["Inventory"].size():
-			potential_item = InventoryManager.inventories["Inventory"][num]
+		if num < InventoryManager.inventories["Ore Inventory"].size():
+			potential_item = InventoryManager.inventories["Ore Inventory"][num]
 			
 		if potential_item:
 			slot.item = potential_item["item"]
@@ -38,7 +38,7 @@ func update_grid_container() -> void:
 	check_if_bag_full()
 
 func check_if_bag_full() -> void:
-	if InventoryManager.check_if_inventory_full("Inventory", "Bag", "Max Bag Stack"):
+	if InventoryManager.check_if_inventory_full("Ore Inventory", "Ore Bag", "Max Ore Bag Stack"):
 		show_bag_full()
 	else:
 		hide_bag_full()

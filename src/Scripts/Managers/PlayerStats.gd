@@ -25,8 +25,10 @@ const KNOCKBACK_FORCE : int = 300
 	"Equipped Pickaxe": 0,
 	"Overlapping Hits" : 1.0,
 	"Bag": 1,
+	"Ore Bag":2,
 	"Max Bank Slots": 4,
 	"Max Bag Stack": 4,
+	"Max Ore Bag Stack": 4,
 	"Max Bank Stack":6,
 	"Cooking Speed": 0.15,
 	"Smelting Speed": 0.15,
@@ -99,8 +101,8 @@ func get_pickaxe_name() -> String:
 		_:
 			return "Stone Pickaxe"
 
-func get_bag() -> ItemBag:
-	match int(player_stats["Bag"]):
+func get_bag(bag : String) -> ItemBag:
+	match int(player_stats[bag]):
 		1: return preload("uid://cuwof21s5e74c")
 		2: return preload("uid://mbne7hjkpnqi")
 		3: return preload("uid://byikht2gbhthk")

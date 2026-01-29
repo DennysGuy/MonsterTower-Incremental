@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dysg5kffvxbql"]
+[gd_scene load_steps=21 format=3 uid="uid://dysg5kffvxbql"]
 
 [ext_resource type="Texture2D" uid="uid://b2wm5vfsi7r26" path="res://Assets/HUD/PlayerHPBar_Bar.png" id="1_eowti"]
 [ext_resource type="Script" uid="uid://dsdtoyyjdprcp" path="res://src/Scripts/HUD/player_hud.gd" id="1_m8qo1"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bih3bekt2ixjn" path="res://src/Scenes/UI/Bag.tscn" id="6_g1bs5"]
 [ext_resource type="PackedScene" uid="uid://dngkcgpb2st7c" path="res://src/Scenes/UI/ExpeditionTimer.tscn" id="7_g3oel"]
 [ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="8_65fhw"]
+[ext_resource type="PackedScene" uid="uid://3rfn3t2sy58b" path="res://src/Scenes/UI/OreBag.tscn" id="9_bsjhc"]
 [ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="9_jyqen"]
 
 [sub_resource type="Animation" id="Animation_g1bs5"]
@@ -221,9 +222,33 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(0, 56.5), Vector2(-171, 56.5)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerHUD/Bag2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.30017844),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(449, 54.5), Vector2(585, 54.5)]
+}
 
 [sub_resource type="Animation" id="Animation_65fhw"]
 length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerHUD/Bag2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(565, 54.5)]
+}
 
 [sub_resource type="Animation" id="Animation_g3oel"]
 resource_name = "ShowBag"
@@ -234,10 +259,22 @@ tracks/0/path = NodePath("PlayerHUD/Bag:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.14),
+"times": PackedFloat32Array(0, 0.16666667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(-171, 56.5), Vector2(0, 56.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerHUD/Bag2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.16669051),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(565, 54.5), Vector2(450, 54.5)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jyqen"]
@@ -302,10 +339,18 @@ horizontal_alignment = 2
 
 [node name="Bag" parent="PlayerHUD" instance=ExtResource("6_g1bs5")]
 layout_mode = 1
-offset_left = -320.0
+offset_left = -491.0
 offset_top = -123.5
-offset_right = -128.99994
+offset_right = -300.00024
 offset_bottom = 51.5
+
+[node name="Bag2" parent="PlayerHUD" instance=ExtResource("9_bsjhc")]
+visible = false
+layout_mode = 1
+offset_left = 245.0
+offset_top = -125.5
+offset_right = 435.99902
+offset_bottom = 49.5
 
 [node name="MapeName" type="Label" parent="PlayerHUD"]
 layout_mode = 1
@@ -337,7 +382,6 @@ theme_override_fonts/normal_font = ExtResource("9_jyqen")
 bbcode_enabled = true
 
 [node name="TopBlackBar" type="ColorRect" parent="PlayerHUD"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -349,7 +393,6 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="BotBlackBar" type="ColorRect" parent="PlayerHUD"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

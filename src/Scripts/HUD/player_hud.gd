@@ -14,6 +14,7 @@ var map_name : String = ""
 @export var expedition_timer: ExpeditionTimerLocal
 @onready var big_notification_label: Label = $PlayerHUD/BigNotificationLabel
 @onready var sfx_player: SFXPlayer = $SfxPlayer
+@onready var bag_2: OreBag = $PlayerHUD/Bag2
 
 const CLOSE_IN = preload("uid://dc3va7knibxnb")
 const CLOSE_OUT = preload("uid://caj0oih8j2sty")
@@ -33,7 +34,9 @@ func _ready() -> void:
 	player_mp_bar.max_value = PlayerStats.player_stats["Max MP"]
 	player_mp_bar.value = player_mp_bar.max_value
 	update_player_health(int(PlayerStats.player_stats["Max Health"]))
-
+	
+	if PlayerStats.facilities_unlocked["Refinery Station"]:
+		bag_2.show()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

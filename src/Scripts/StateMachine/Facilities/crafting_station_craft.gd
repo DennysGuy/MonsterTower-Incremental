@@ -62,7 +62,15 @@ func process_physics(_delta: float) -> State:
 			InventoryManager.remove_resources_from_inventory(parent.stored_recipe.recipe_list)
 			parent.populate_recipes_list(parent.selected_tier)
 			parent.update_inventories()
-			if !InventoryManager.add_item("Inventory", parent.stored_recipe.output_item):
+			
+			var item_added : bool
+			
+			if parent.station_type == parent.STATION_TYPE.COOKING:
+				item_added = InventoryManager.add_item("Inventory",parent.stored_recipe.output_item)
+			elif parent.station_type == parent.STATION_TYPE.SMELTING:
+				item_added =  InventoryManager.add_item("Ore Inventory",parent.stored_recipe.output_item)
+			
+			if !item_added:
 				InventoryManager.add_item("Bank", parent.stored_recipe.output_item)
 			
 			if parent.station_type == parent.STATION_TYPE.SMELTING:
@@ -74,8 +82,14 @@ func process_physics(_delta: float) -> State:
 			parent.failure_message.show()
 			
 		parent.update_inventories()
+		var can_add_to_inventory : bool
 		
-		if InventoryManager.check_if_can_add_to_inventory(parent.stored_recipe.output_item):
+		if parent.station_type == parent.STATION_TYPE.COOKING:
+			can_add_to_inventory = InventoryManager.check_if_can_add_to_inventory(parent.stored_recipe.output_item, "Inventory", "Bag", "Max Bag Stack")
+		elif parent.station_type == parent.STATION_TYPE.SMELTING:
+			can_add_to_inventory = InventoryManager.check_if_can_add_to_inventory(parent.stored_recipe.output_item, "Ore Inventory", "Ore Bag", "Max Ore Bag Stack")
+		
+		if can_add_to_inventory:
 			var quantity : int = InventoryManager.calculate_quantity(parent.stored_recipe)
 			if quantity > 0:
 				return self #hopefull we restart the cycle
