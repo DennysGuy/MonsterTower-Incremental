@@ -8,7 +8,7 @@ script = ExtResource("1_bm6gd")
 node_name = "Cooking Station"
 icon = ExtResource("1_farkg")
 description = "Unlocks Cooking Station - [color=red]You can cook fancy dishes and Sell em on the market![/color]"
-currency_required = 225
+currency_required = 300
 node_type = 1
 stat_name = "Cooking Station"
 prereqs = Array[String](["Banking:1"])

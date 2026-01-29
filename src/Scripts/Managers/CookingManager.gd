@@ -22,7 +22,7 @@ signal can_craft_dish
 signal can_craft_bar
 
 var cooking_recipes : Dictionary[int,Array] = {
-	1 : [COOKED_GAGOOTZ,MUSHIE_FLAN,MOSSY_GOULASH],
+	1 : [COOKED_GAGOOTZ,MOSSY_GOULASH],
 	2 : [],
 	3 : [],
 	4 : [],

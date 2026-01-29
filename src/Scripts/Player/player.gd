@@ -114,6 +114,43 @@ func attack_ore_rock() -> void:
 func clear_effect_texture() -> void:
 	effect.texture = null
 
+
+func blink_effect() -> void:
+	if not is_inside_tree():
+		return 
+		
+	var invincibility_duration : float = 1.5
+	var blink_current_time : float = 0.0
+	var blink_wait_time : float = 0.1
+	
+	while blink_current_time < invincibility_duration:
+		if not is_inside_tree():
+			return  # Exit cleanly if removed from tree
+			
+		set_textures_visibility(false)
+		
+		# Store the timer and check if we're still valid after await
+		var blink_timer = get_tree().create_timer(blink_wait_time)
+		await blink_timer.timeout
+		
+		if not is_inside_tree():
+			return
+			
+		blink_current_time += blink_wait_time
+		set_textures_visibility(true)
+		
+		blink_timer = get_tree().create_timer(blink_wait_time)
+		await blink_timer.timeout
+		
+		if not is_inside_tree():
+			return
+			
+		blink_current_time += blink_wait_time
+	
+	# Final safety check before setting damageable
+	if is_inside_tree():
+		damageable = true
+
 func send_to_idle_state() -> void:
 	state_machine.change_state(idle_state)
 

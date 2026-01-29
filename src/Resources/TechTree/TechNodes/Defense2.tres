@@ -1,9 +1,18 @@
 [gd_resource type="Resource" script_class="TechNodeStats" load_steps=3 format=3 uid="uid://c5l21ge3ylc0e"]
 
-[ext_resource type="Script" uid="uid://cu8drgivmhfn" path="res://src/Scripts/item.gd" id="1_wj17q"]
+[ext_resource type="Resource" uid="uid://buu8pdcooh3hc" path="res://src/Resources/CraftingResources/BronzeBar.tres" id="1_wj17q"]
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="2_3xufc"]
 
 [resource]
 script = ExtResource("2_3xufc")
 node_name = "Defense 2"
+description = "Lowers Damage Received from Monsters by 5% per level (not yet implemented!)"
+max_level = 3
+currency_required = 180
+materials_required = Array[Dictionary]([{
+ExtResource("1_wj17q"): 2
+}])
+stat_name = "Defense"
+upgrade_interval = 0.05
+prereqs = Array[String](["Defense 1:3"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

@@ -56,7 +56,7 @@ const KNOCKBACK_FORCE : int = 300
 	"Floor 1-3" : false
 }
 
-const MAX_SWORD_COUNT := 2
+const MAX_SWORD_COUNT := 3
 
 var show_cooking_station_unlock_animation : bool = false
 var show_refinery_station_unlock_animation : bool = false
@@ -98,6 +98,8 @@ func get_pickaxe_name() -> String:
 	match player_stats["Equipped Pickaxe"]:
 		0:
 			return "Stone Pickaxe"
+		1:
+			return "Bronze Pickaxe"
 		_:
 			return "Stone Pickaxe"
 

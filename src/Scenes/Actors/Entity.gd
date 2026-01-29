@@ -87,7 +87,7 @@ func blink_effect() -> void:
 	
 	# Final safety check before setting damageable
 	if is_inside_tree():
-		damageable = true
+		queue_free()
 
 func set_textures_visibility(value : bool) -> void:
 	sprite.visible = value

@@ -6,6 +6,6 @@
 [resource]
 script = ExtResource("1_0wsfh")
 item_name = "Bronze Bar"
-sell_value = 95
+sell_value = 120
 shop_icon = ExtResource("2_1tsc2")
 metadata/_custom_type_script = "uid://cu8drgivmhfn"
