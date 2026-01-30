@@ -5,7 +5,7 @@ class_name PlayerFall extends State
 @export var idle_state : State
 @export var climb_state : State
 
-@export var attack_1_state : State
+@export var air_attack : State
 func enter() -> void:
 	super()
 	parent.set_sword_texture(animation_name)
@@ -15,7 +15,7 @@ func exit() -> void:
 
 func process_input(_event: InputEvent) -> State:
 	if Input.is_action_just_pressed("swing_sword") and PlayerStats.facilities_unlocked["Arial Slash"]:
-		return attack_1_state
+		return air_attack
 	return null
 
 func process_frame(_delta: float) -> State:

@@ -72,6 +72,8 @@ enum TECH_NODE_TYPE {ABILITY, FACILITY}
 	"Item Bag 2":0,
 	"Deeper Pockets 1":0,
 	"Deeper Pockets 2":0,
+	"Dash Attack":0,
+	"Dash Attack Duration 1":0,
 	"Banking":0,
 	"Banking 2":0,
 	"Cooking Station":0,

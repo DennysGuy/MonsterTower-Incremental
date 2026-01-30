@@ -16,6 +16,7 @@ class_name Sword extends Resource
 @export var swing_1 : AudioStream
 @export var swing_2 : AudioStream
 @export var swing_3 : AudioStream
+@export var dash_attack : AudioStream
 
 func get_stats_dict() -> Dictionary:
 	return {

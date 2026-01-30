@@ -6,18 +6,22 @@ class_name PlayerDashAttackState extends State
 func enter() -> void:
 	super()
 	parent.set_sword_texture(animation_name)
-	parent.timer.wait_time = duration
+	parent.timer.wait_time = PlayerStats.player_stats["Dash Duration"]
 	parent.timer.start()
 	parent.dash_attack_collision_shape.disabled = false
 	parent.damageable = false
 
-	var swing : AudioStream = PlayerStats.get_sword(int(PlayerStats.player_stats["Equipped Sword"])).swing_3
+	var swing : AudioStream = PlayerStats.get_sword(int(PlayerStats.player_stats["Equipped Sword"])).dash_attack
 	parent.sfx_player.play_sfx(swing,3.0)
 
 func exit() -> void:
+	parent.clear_effect_texture()
 	parent.velocity = Vector2.ZERO
 	parent.dash_attack_collision_shape.disabled = true
 	parent.damageable = true
+	parent.can_dash_attack = false
+	parent.ability_cool_down_timer.wait_time = PlayerStats.player_stats["Dash Cooldown"]
+	parent.ability_cool_down_timer.start()
 	
 func process_input(_event: InputEvent) -> State:
 	return null

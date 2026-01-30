@@ -14,7 +14,9 @@ const KNOCKBACK_FORCE : int = 300
 	"Attack Damage" : 10.0,
 	"Movement Speed" : 100.0,
 	"Climbing Speed" : 65.0,
-	"Dash Speed" : 300.0,
+	"Dash Speed" : 350.0,
+	"Dash Cooldown" : 2.0,
+	"Dash Duration" : 0.3,
 	"Jump Height" : 270.0,
 	"Crit Chance" : 0.0,
 	"Defense" : 0.0,
@@ -48,7 +50,8 @@ const KNOCKBACK_FORCE : int = 300
 	"Crafting Station" : false,
 	"Refinery Station" : false,
 	"Bank": false,
-	"Arial Slash" : false
+	"Arial Slash" : false,
+	"Dash Attack": false
 }
 
 @onready var check_points_unlocked : Dictionary[String, bool] = {

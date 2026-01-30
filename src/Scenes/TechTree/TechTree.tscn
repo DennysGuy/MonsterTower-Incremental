@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://b7n3fwd3y85wp"]
+[gd_scene load_steps=44 format=3 uid="uid://b7n3fwd3y85wp"]
 
 [ext_resource type="Script" uid="uid://nb5nyiymrgyp" path="res://src/Scripts/TechTree/tech_tree.gd" id="1_1fw0b"]
 [ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="2_d4ivd"]
@@ -40,7 +40,9 @@
 [ext_resource type="Resource" uid="uid://ctf4we33chvvs" path="res://src/Resources/TechTree/TechNodes/OreRockDrop1.tres" id="32_pc0xa"]
 [ext_resource type="Resource" uid="uid://burkenucbrobr" path="res://src/Resources/TechTree/TechNodes/ArialAttack.tres" id="35_mdsgt"]
 [ext_resource type="Resource" uid="uid://c33bcx7wsq4vk" path="res://src/Resources/TechTree/TechNodes/MaxHP2.tres" id="36_o1bwy"]
+[ext_resource type="Resource" uid="uid://bonlosm00p4kf" path="res://src/Resources/TechTree/TechNodes/DashAttack.tres" id="37_34cer"]
 [ext_resource type="Resource" uid="uid://c5l21ge3ylc0e" path="res://src/Resources/TechTree/TechNodes/Defense2.tres" id="37_pqlb5"]
+[ext_resource type="Resource" uid="uid://ioelpq1d2fhp" path="res://src/Resources/TechTree/TechNodes/DashDuration1.tres" id="39_iyves"]
 
 [node name="TechTree" type="Node2D"]
 script = ExtResource("1_1fw0b")
@@ -324,12 +326,30 @@ position = Vector2(-805, -533)
 points = PackedVector2Array(793, 524, 776, 510)
 width = 3.0
 
+[node name="DashAttackNode" parent="Nodes" instance=ExtResource("5_2ltmf")]
+position = Vector2(837, 208)
+tech_node_stats = ExtResource("37_34cer")
+node_type = 1
+
+[node name="Line2D" type="Line2D" parent="Nodes/DashAttackNode"]
+position = Vector2(-1, 0)
+points = PackedVector2Array(-2, 13, -2, 32)
+width = 3.0
+
 [node name="Defense2" parent="Nodes" instance=ExtResource("5_2ltmf")]
 position = Vector2(836, 554)
 tech_node_stats = ExtResource("37_pqlb5")
 
 [node name="Line2D" type="Line2D" parent="Nodes/Defense2"]
 points = PackedVector2Array(-12, -8, -29, -22)
+width = 3.0
+
+[node name="DashAttackDuration1Node" parent="Nodes" instance=ExtResource("5_2ltmf")]
+position = Vector2(887, 208)
+tech_node_stats = ExtResource("39_iyves")
+
+[node name="Line2D" type="Line2D" parent="Nodes/DashAttackDuration1Node"]
+points = PackedVector2Array(-16, 0, -38, 0)
 width = 3.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

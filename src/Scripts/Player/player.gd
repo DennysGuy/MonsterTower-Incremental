@@ -10,6 +10,7 @@ class_name Player extends Entity
 @onready var coin_purse: Marker2D = $CoinPurse
 
 @onready var mining_area: Area2D = $MiningArea
+@onready var ability_cool_down_timer: Timer = $AbilityCoolDownTimer
 
 
 @onready var collision_shape_2d : CollisionShape2D = $CollisionShape2D
@@ -24,7 +25,7 @@ var is_climbing : bool = false
 var prev_input : int
 var prev_move_speed : float
 var mining_area_position : Vector2
-
+var can_dash_attack : bool = true
 @export var idle_state : State
 
 func _ready() -> void:
@@ -162,3 +163,7 @@ func pass_through_floor() -> void:
 
 func _on_dash_attack_hit_box_body_entered(body: Node2D) -> void:
 	pass
+
+
+func _on_ability_cool_down_timer_timeout() -> void:
+	can_dash_attack = true

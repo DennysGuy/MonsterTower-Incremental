@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="Sword" load_steps=8 format=3 uid="uid://gj2gdethgc68"]
+[gd_resource type="Resource" script_class="Sword" load_steps=9 format=3 uid="uid://gj2gdethgc68"]
 
 [ext_resource type="Resource" uid="uid://dra8e03por4eq" path="res://src/Resources/Recipes/SwordRecipes/ShroomFibreBladRecipe.tres" id="1_4e3vn"]
 [ext_resource type="Script" uid="uid://im2igg6pop1u" path="res://src/Scripts/sword.gd" id="1_8ta2n"]
+[ext_resource type="AudioStream" uid="uid://girddg3nhreu" path="res://Audio/SFX/Player/DashAttack.wav" id="1_jce5f"]
 [ext_resource type="Texture2D" uid="uid://s3sgq3idr0fm" path="res://Assets/CraftingMiniGame/Swords/MushieSword/ShroomFibreBlade.png" id="1_q5mo8"]
 [ext_resource type="Texture2D" uid="uid://bp7s4s8qb5ka" path="res://Assets/CraftingMiniGame/Swords/MushieSword/ShroomFibreBlade_Mold.png" id="2_fpci6"]
 [ext_resource type="AudioStream" uid="uid://7m8clykuejiw" path="res://Audio/SFX/Player/SwordSwing1.wav" id="5_8mxgh"]
@@ -22,4 +23,5 @@ mold_graphic = ExtResource("2_fpci6")
 swing_1 = ExtResource("5_8mxgh")
 swing_2 = ExtResource("6_jce5f")
 swing_3 = ExtResource("7_nx52v")
+dash_attack = ExtResource("1_jce5f")
 metadata/_custom_type_script = "uid://im2igg6pop1u"
