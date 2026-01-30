@@ -356,9 +356,9 @@ width = 3.0
 
 [node name="PlayerStats" parent="CanvasLayer" instance=ExtResource("10_7l0yi")]
 offset_left = 167.0
-offset_top = -116.0
+offset_top = -62.0
 offset_right = 315.0
-offset_bottom = 79.5
+offset_bottom = 133.5
 
 [node name="Currency" type="Label" parent="CanvasLayer"]
 anchors_preset = 3
@@ -464,7 +464,7 @@ text = "Close"
 position = Vector2(326, 79)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(637, 407)
+position = Vector2(666, 389)
 script = ExtResource("9_wj3rp")
 
 [connection signal="button_down" from="CanvasLayer/Close" to="." method="_on_close_button_down"]

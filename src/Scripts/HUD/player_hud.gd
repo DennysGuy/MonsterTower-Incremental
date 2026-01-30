@@ -32,11 +32,11 @@ func _ready() -> void:
 	SignalBus.play_countdown_beep.connect(play_countdown_beep)
 	
 	player_health_bar.max_value = PlayerStats.player_stats["Max Health"]
-	player_health_bar.value = player_health_bar.max_value
+	player_health_bar.value = PlayerStats.player_stats["Current Health"]
 	
-	player_mp_bar.max_value = PlayerStats.player_stats["Max MP"]
+	player_mp_bar.max_value = PlayerStats.player_stats["Current MP"]
 	player_mp_bar.value = player_mp_bar.max_value
-	update_player_health(int(PlayerStats.player_stats["Max Health"]))
+	update_player_health(int(PlayerStats.player_stats["Current Health"]))
 	
 	if PlayerStats.facilities_unlocked["Refinery Station"]:
 		bag_2.show()

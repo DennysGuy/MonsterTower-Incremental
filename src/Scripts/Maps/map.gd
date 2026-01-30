@@ -77,21 +77,36 @@ func _ready() -> void:
 		ambience_player.stream = ambience_sfx
 		ambience_player.play()
 	
-	if MusicPlayer.audio_stream_player.is_playing:
-		if map_theme_song:
+
+	if map_theme_song:
+		if !MusicPlayer.transitioning_floors:
 			MusicPlayer.play_song(map_theme_song)
+		else:
+			MusicPlayer.transitioning_floors = false
+			
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+	
 func spawn_player() -> void:
 	var new_player : Player = preload("uid://wuy3aelq8aeg").instantiate()
 	player = new_player
 	var selected_spawn_point : PlayerSpawnPoint = choose_spawn_spoint()
 	player.position = selected_spawn_point.position
 	player.damageable = true
+	
+	if GameManager.resupply_character:
+		PlayerStats.player_stats["Current Health"] = PlayerStats.player_stats["Max Health"]
+		PlayerStats.player_stats["Current MP"] = PlayerStats.player_stats["Max MP"]
+		GameManager.resupply_character = false
+		
+	player.health = PlayerStats.player_stats["Current Health"]
+	hud.update_player_health(int(PlayerStats.player_stats["Current Health"]))
+	#SignalBus.update_player_health.emit(player.health)
 	add_child(player)
 	
 func go_to_starshire() -> void:
+	
 	MusicPlayer.stop_player(true)
 	player.damageable = false
 	GameManager.expedition_timer_started = false

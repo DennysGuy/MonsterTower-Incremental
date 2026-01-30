@@ -41,6 +41,7 @@ const CRAFTING_MENU = preload("uid://ce4sagacwwdc8")
 const SMELTING_MENU = preload("uid://b4ptfqnoq6qly")
 
 @onready var bank_notice: Label = $BankNotice
+@onready var sfx_player: SFXPlayer = $SFXPlayer
 
 var show_can_craft_next_sword_scene : bool = false
 

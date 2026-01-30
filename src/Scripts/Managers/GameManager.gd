@@ -6,6 +6,7 @@ var spawn_location : int = 0
 var player_can_move : bool = true
 var expedition_timer_started : bool = false
 var previous_map_path : String
+var resupply_character : bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	player_can_move = true

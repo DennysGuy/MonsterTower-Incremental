@@ -14,6 +14,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("interact") and player_in_range and kill_quota_met:
+		MusicPlayer.transitioning_floors = true
 		SignalBus.move_to_next_room.emit()
 
 

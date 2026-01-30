@@ -7,7 +7,7 @@
 script = ExtResource("2_or03a")
 node_name = "Defense 1"
 icon = ExtResource("1_qte16")
-description = "Lowers Damage Received from Monsters by 20% per level (not yet implemented!)"
+description = "Lowers Damage Received from Monsters by 20% per level."
 max_level = 3
 currency_required = 150
 stat_name = "Defense"

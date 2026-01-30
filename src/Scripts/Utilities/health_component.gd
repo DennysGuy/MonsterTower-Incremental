@@ -21,7 +21,8 @@ func apply_damage(incoming_damage : int, is_crit : bool) -> String:
 	
 	if parent is Player:
 		SignalBus.update_player_health.emit(parent.health)
-		
+		PlayerStats.player_stats["Current Health"] = parent.health
+		print("THIS IS CURRENT PLAYER HEALTH IN STATS: %s" % PlayerStats.player_stats["Current Health"])
 	if parent is Enemy and parent.health_bar:
 		parent.health_bar.show()	
 		update_health_bar.emit()	

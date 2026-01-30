@@ -11,9 +11,10 @@ func enter() -> void:
 	super()
 	if parent.stored_enemy:
 		GameManager.player_can_move = false
+		parent.damageable = false
 		parent.set_sword_texture(animation_name)
 		parent.timer.wait_time = wait_time
-		parent.invincibility_timer.wait_time = invincibility_time
+		parent.invincibility_timer.wait_time = PlayerStats.player_stats["Invincibility Duration"]
 		var dir = (parent.stored_enemy.global_position - parent.global_position).normalized()
 		knock_back_direction = GameManager.set_direction(dir.x) * -1
 		parent.sfx_player.play_sfx(hit_sfx)

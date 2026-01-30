@@ -76,8 +76,7 @@ func process_physics(_delta: float) -> State:
 		InventoryManager.remove_resources_from_inventory(parent.stored_recipe.recipe_list)	
 		
 		if num_check <= int(success_rate * 100):
-			parent.populate_recipes_list(parent.selected_tier)
-			parent.update_inventories()
+
 			
 			var item_added : bool
 			
@@ -94,11 +93,12 @@ func process_physics(_delta: float) -> State:
 					parent.show_can_craft_next_sword_scene = true
 			
 			parent.failure_message.hide()
-			sfx_player.play_sfx(SUCCESS)
+			parent.sfx_player.play_sfx(SUCCESS)
 		else:
 			parent.failure_message.show()
-			sfx_player.play_sfx(FAILURE)
+			parent.sfx_player.play_sfx(FAILURE)
 			
+		parent.populate_recipes_list(parent.selected_tier)
 		parent.update_inventories()
 		var can_add_to_inventory : bool
 		

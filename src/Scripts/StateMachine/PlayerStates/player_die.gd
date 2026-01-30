@@ -4,6 +4,7 @@ class_name PlayerDieState extends State
 @export var death_fanfare : AudioStream
 
 func enter() -> void:
+	parent.hurtbox_collision_shape_2d.disabled = true
 	parent.sfx_player.play_sfx(hit)
 	parent.sfx_player.play_sfx(death_fanfare)
 	GameManager.expedition_timer_started = false

@@ -13,7 +13,7 @@ max_level = 3
 currency_required = 400
 materials_required = Array[Dictionary]([{
 ExtResource("1_lfxds"): 1
-}, {}])
+}])
 node_type = 1
 stat_name = "Dash Attack"
 upgrade_interval = 0.05

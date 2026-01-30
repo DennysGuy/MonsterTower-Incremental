@@ -47,10 +47,12 @@ func _process(delta: float) -> void:
 
 func go_to_starshire() -> void:
 	GameManager.spawn_location = 0
+	GameManager.resupply_character = true
 	get_tree().change_scene_to_file("res://src/Scenes/NewStarshire/NewStarShire.tscn")
 
 func go_to_tower() -> void:
 	#Need to store the previous map we went to - or give them a way to select location
+	GameManager.resupply_character = true
 	get_tree().change_scene_to_file(GameManager.previous_map_path)
 
 func _on_to_town_button_up() -> void:

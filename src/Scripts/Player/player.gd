@@ -12,6 +12,7 @@ class_name Player extends Entity
 @onready var mining_area: Area2D = $MiningArea
 @onready var ability_cool_down_timer: Timer = $AbilityCoolDownTimer
 
+@onready var hurtbox_collision_shape_2d : CollisionShape2D = $HurtBox/CollisionShape2D
 
 @onready var collision_shape_2d : CollisionShape2D = $CollisionShape2D
 @onready var dash_attack_collision_shape : CollisionShape2D = $DashAttackHitBox/CollisionShape2D

@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=4 uid="uid://oonjrpabmces"]
+[gd_scene load_steps=46 format=4 uid="uid://oonjrpabmces"]
 
 [ext_resource type="Script" uid="uid://dpqc54c34418w" path="res://src/Scripts/Maps/NewStarShire/new_star_shire.gd" id="1_gq00g"]
 [ext_resource type="Texture2D" uid="uid://c21ee30haolx4" path="res://Assets/EnvironmentalAssets/TowerDistance.png" id="2_bl45m"]
@@ -30,8 +30,6 @@
 [ext_resource type="Texture2D" uid="uid://cuwc34c0ympwf" path="res://Assets/DirectionSign.png" id="28_m7r5i"]
 [ext_resource type="Texture2D" uid="uid://b83r1hobjk7vm" path="res://Assets/DirectionSignMessage.png" id="29_hk4f7"]
 [ext_resource type="PackedScene" uid="uid://c6tv3t1cpeq8f" path="res://src/Scenes/PlayerSpawnPoint.tscn" id="30_cxssj"]
-[ext_resource type="PackedScene" uid="uid://dgtobkubdjq27" path="res://src/Scenes/Actors/Enemies/ItemInteractable.tscn" id="31_nj75w"]
-[ext_resource type="Resource" uid="uid://buu8pdcooh3hc" path="res://src/Resources/CraftingResources/BronzeBar.tres" id="32_d6jc3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_te0bi"]
 texture = ExtResource("3_5xris")
@@ -888,6 +886,7 @@ shape = SubResource("RectangleShape2D_pdf0i")
 position = Vector2(833, 624)
 
 [node name="HUD" parent="." instance=ExtResource("10_4wn0b")]
+visible = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -1152,6 +1151,33 @@ text = "Tower
 Entrance"
 metadata/_edit_use_anchors_ = true
 
+[node name="DirectionSign3" type="Sprite2D" parent="."]
+position = Vector2(49, 500)
+texture = ExtResource("28_m7r5i")
+
+[node name="DirectionSignMessage" type="Sprite2D" parent="DirectionSign3"]
+position = Vector2(-2, -49)
+texture = ExtResource("29_hk4f7")
+
+[node name="Label" type="Label" parent="DirectionSign3/DirectionSignMessage"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -59.0
+offset_top = -49.5
+offset_right = -1.0
+offset_bottom = -14.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("27_e7ku4")
+theme_override_font_sizes/font_size = 16
+text = "Craft
+Sword"
+metadata/_edit_use_anchors_ = true
+
 [node name="NameTag5" parent="." instance=ExtResource("19_bl45m")]
 offset_left = 217.0
 offset_top = 394.0
@@ -1190,22 +1216,6 @@ Items"
 
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("30_cxssj")]
 position = Vector2(522, 384)
-
-[node name="ItemInteractable" parent="." instance=ExtResource("31_nj75w")]
-position = Vector2(239, 628)
-item = ExtResource("32_d6jc3")
-
-[node name="ItemInteractable2" parent="." instance=ExtResource("31_nj75w")]
-position = Vector2(239, 628)
-item = ExtResource("32_d6jc3")
-
-[node name="ItemInteractable3" parent="." instance=ExtResource("31_nj75w")]
-position = Vector2(239, 628)
-item = ExtResource("32_d6jc3")
-
-[node name="ItemInteractable4" parent="." instance=ExtResource("31_nj75w")]
-position = Vector2(239, 628)
-item = ExtResource("32_d6jc3")
 
 [node name="PlayerSpawnPoint2" parent="." instance=ExtResource("30_cxssj")]
 position = Vector2(277, 656)
