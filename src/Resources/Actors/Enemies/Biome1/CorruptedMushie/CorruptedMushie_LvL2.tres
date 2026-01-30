@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="EnemyStats" load_steps=4 format=3 uid="uid://dwtw24hgj7tub"]
 
-[ext_resource type="Resource" uid="uid://bsa2pu1rqjdkt" path="res://src/Resources/Actors/Enemies/Biome1/CorruptedMushie/MushiePuree.tres" id="1_2wbji"]
+[ext_resource type="Resource" uid="uid://cnd7ngdtcfmgc" path="res://src/Resources/Actors/Enemies/Biome1/CorruptedMushie/PurifiedMushieCore.tres" id="1_2wbji"]
 [ext_resource type="Resource" uid="uid://buc582qhh7ekv" path="res://src/Resources/Actors/Enemies/Biome1/CorruptedMushie/MushroomSeeds.tres" id="2_yemqc"]
 [ext_resource type="Script" uid="uid://cbjktr12qagl" path="res://src/Scripts/Enemies/enemy_stats.gd" id="4_6sa1w"]
 
@@ -11,7 +11,7 @@ enemy_level = 2
 touch_damage = true
 can_move = true
 enemy_type = 1
-max_health = 110
+max_health = 120
 attack = 32
 movement_speed = 53.0
 chase_speed = 65.0
