@@ -16,8 +16,10 @@ var map_name : String = ""
 @onready var sfx_player: SFXPlayer = $SfxPlayer
 @onready var bag_2: OreBag = $PlayerHUD/Bag2
 
+
 const CLOSE_IN = preload("uid://dc3va7knibxnb")
 const CLOSE_OUT = preload("uid://caj0oih8j2sty")
+const COUNTDOWN_BEEP = preload("uid://c6caiqmkt2lt0")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -27,6 +29,7 @@ func _ready() -> void:
 	SignalBus.hide_big_notification.connect(hide_big_notification_label)
 	SignalBus.play_close_out_animation.connect(play_close_out_animation)
 	SignalBus.update_kill_quota_text.connect(update_kill_quota_text)
+	SignalBus.play_countdown_beep.connect(play_countdown_beep)
 	
 	player_health_bar.max_value = PlayerStats.player_stats["Max Health"]
 	player_health_bar.value = player_health_bar.max_value
@@ -86,3 +89,6 @@ func play_close_out_sfx() -> void:
 
 func play_close_in_sfx() -> void:
 	sfx_player.play_sfx(CLOSE_IN)
+
+func play_countdown_beep() -> void:
+	sfx_player.play_sfx(COUNTDOWN_BEEP)

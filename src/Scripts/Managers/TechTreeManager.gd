@@ -63,6 +63,7 @@ enum TECH_NODE_TYPE {ABILITY, FACILITY}
 	"Max HP 1":0,
 	"Max HP 2": 0,
 	"Defense 1": 0,
+	"Defense 2":0,
 	"Expedition Time 1": 0,
 	"Expedition Time 2": 0,
 	"Monster Cap 1": 0,

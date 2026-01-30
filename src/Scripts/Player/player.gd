@@ -12,7 +12,9 @@ class_name Player extends Entity
 @onready var mining_area: Area2D = $MiningArea
 
 
-@onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
+@onready var collision_shape_2d : CollisionShape2D = $CollisionShape2D
+@onready var dash_attack_collision_shape : CollisionShape2D = $DashAttackHitBox/CollisionShape2D
+@onready var dash_attack_hit_box: HitBox = $DashAttackHitBox
 
 var stored_ladder : LadderArea
 var stored_enemy : Enemy
@@ -60,7 +62,6 @@ func start_invincibility() -> void:
 	damageable = false
 	blink_effect()
 
-
 func set_textures_visibility(value : bool) -> void:
 	sprite.visible = value
 
@@ -69,8 +70,8 @@ func clear_sprites() -> void:
 	for cur_sprite in sprites.get_children():
 		cur_sprite.texture = null
 
-func issue_sword_attack() -> void:
-	var enemies_in_range = hit_box.get_overlapping_areas()
+func issue_attack(selected_hit_box : HitBox) -> void:
+	var enemies_in_range = selected_hit_box.get_overlapping_areas()
 	var overlapping_hits : int = int(PlayerStats.player_stats["Overlapping Hits"])
 	var base_damage : int = int(PlayerStats.player_stats["Attack Damage"] + PlayerStats.get_sword(PlayerStats.player_stats["Equipped Sword"]).attack_bonus)
 	var min_damage : int = int(base_damage * PlayerStats.player_stats["Accuracy"])
@@ -83,6 +84,9 @@ func issue_sword_attack() -> void:
 
 	GameManager.attack_enemies(enemies_in_range, overlapping_hits, self, incoming_damage, is_crit)
 
+func issue_sword_attack() -> void:
+	issue_attack(hit_box)
+
 func check_for_crit() -> bool:
 	var crit_roll : int = randi_range(0,100)
 	if crit_roll < int(100 * (PlayerStats.player_stats["Crit Chance"] + PlayerStats.get_sword(PlayerStats.player_stats["Equipped Sword"]).crit_bonus)):
@@ -90,13 +94,11 @@ func check_for_crit() -> bool:
 	
 	return false
 
-
 func _on_ladder_detector_area_entered(area: Area2D) -> void:
 	in_ladder_area = true
 	stored_ladder = area
 	if in_ladder_area:
 		print("were in ladder area and the stored ladder is %s " % [stored_ladder])
-
 
 func _on_ladder_detector_area_exited(area: Area2D) -> void:
 	in_ladder_area = false
@@ -113,7 +115,6 @@ func attack_ore_rock() -> void:
 
 func clear_effect_texture() -> void:
 	effect.texture = null
-
 
 func blink_effect() -> void:
 	if not is_inside_tree():
@@ -158,3 +159,6 @@ func pass_through_floor() -> void:
 	set_collision_mask_value(5, false)
 	await get_tree().create_timer(0.15).timeout
 	set_collision_mask_value(5, true)
+
+func _on_dash_attack_hit_box_body_entered(body: Node2D) -> void:
+	pass

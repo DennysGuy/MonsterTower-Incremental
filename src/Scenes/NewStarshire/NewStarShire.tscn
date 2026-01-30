@@ -1160,12 +1160,13 @@ offset_bottom = 407.0
 text = "Trade Market"
 
 [node name="DirectionSign2" type="Sprite2D" parent="."]
-position = Vector2(85, 356)
+position = Vector2(451, 356)
 texture = ExtResource("28_m7r5i")
 
 [node name="DirectionSignMessage" type="Sprite2D" parent="DirectionSign2"]
 position = Vector2(-2, -49)
 texture = ExtResource("29_hk4f7")
+flip_h = true
 
 [node name="Label" type="Label" parent="DirectionSign2/DirectionSignMessage"]
 anchors_preset = 8
@@ -1173,18 +1174,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -69.0
-offset_top = -48.5
-offset_right = -5.0
-offset_bottom = 5.5
+offset_left = -50.0
+offset_top = -51.5
+offset_right = -10.0
+offset_bottom = -14.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("27_e7ku4")
 theme_override_font_sizes/font_size = 16
 text = "Sell 
-Inventory"
-metadata/_edit_use_anchors_ = true
+Items"
 
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("30_cxssj")]
 position = Vector2(522, 384)

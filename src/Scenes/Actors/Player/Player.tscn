@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://wuy3aelq8aeg"]
+[gd_scene load_steps=53 format=3 uid="uid://wuy3aelq8aeg"]
 
 [ext_resource type="Script" uid="uid://dm4atx2m8yfn1" path="res://src/Scripts/Player/player.gd" id="1_gw3a7"]
 [ext_resource type="Script" uid="uid://drr0deykmfrvq" path="res://src/Scripts/StateMachine/state_machine.gd" id="2_n7gp4"]
@@ -28,6 +28,7 @@
 [ext_resource type="AudioStream" uid="uid://bcc4lh1bponas" path="res://Audio/SFX/Player/SwordSwing3.wav" id="16_c7aqh"]
 [ext_resource type="PackedScene" uid="uid://xsmgmpbxjc3b" path="res://src/Scenes/Actors/Utilities/HitBox.tscn" id="16_cw62c"]
 [ext_resource type="PackedScene" uid="uid://bg1ya0qiin47q" path="res://src/Scenes/Actors/Utilities/HurtBox.tscn" id="17_45oew"]
+[ext_resource type="Script" uid="uid://4eouowdm16tv" path="res://src/Scripts/StateMachine/PlayerStates/player_dash_attack.gd" id="17_cfcx3"]
 [ext_resource type="AudioStream" uid="uid://cm3vsmb4a64u4" path="res://Audio/SFX/Player/Hit1.wav" id="18_8xpqf"]
 [ext_resource type="Texture2D" uid="uid://sgtkxjunvmnq" path="res://Assets/PlayerGraphics/TempPlayer/PickaxeSwing.png" id="20_5so87"]
 [ext_resource type="AudioStream" uid="uid://1f5gpbnq1x73" path="res://Audio/SFX/Player/PlayerDeathFanfare.wav" id="20_geieu"]
@@ -884,9 +885,122 @@ tracks/8/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_cfcx3"]
+resource_name = "DashAttack"
+length = 0.7
+step = 0.0001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [15]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("12_er68u")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [10, 11, 12, 13, 14]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Sword:hframes")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [15]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Sword:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [10, 11, 12, 13, 14]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Effect:texture")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("8_j38pk")]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Effect:hframes")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [15]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Effect:frame")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [10, 11, 12, 13, 14]
+}
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../..")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pawjx"]
 _data = {
 &"Climb": SubResource("Animation_45oew"),
+&"DashAttack": SubResource("Animation_cfcx3"),
 &"Fall": SubResource("Animation_4xbk8"),
 &"Idle": SubResource("Animation_cgv26"),
 &"Jump": SubResource("Animation_pawjx"),
@@ -942,11 +1056,12 @@ climb_state = NodePath("../Climb")
 jump_sfx = ExtResource("6_yawj3")
 animation_name = "Idle"
 
-[node name="Move" type="Node" parent="StateMachine" node_paths=PackedStringArray("jump_state", "fall_state", "idle_state")]
+[node name="Move" type="Node" parent="StateMachine" node_paths=PackedStringArray("jump_state", "fall_state", "idle_state", "dash_attack_state")]
 script = ExtResource("4_pp7ew")
 jump_state = NodePath("../Jump")
 fall_state = NodePath("../Fall")
 idle_state = NodePath("../Idle")
+dash_attack_state = NodePath("../DashAttack")
 move_sfx = ExtResource("5_a5kf2")
 animation_name = "Run"
 
@@ -997,6 +1112,12 @@ idle_state = NodePath("../Idle")
 swing_sfx = ExtResource("16_c7aqh")
 animation_name = "SwordSwing3"
 animation_duration = 0.6
+
+[node name="DashAttack" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state")]
+script = ExtResource("17_cfcx3")
+idle_state = NodePath("../Idle")
+duration = 0.5
+animation_name = "SwordSwing3"
 
 [node name="Hit" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state")]
 script = ExtResource("11_susmm")
@@ -1068,6 +1189,15 @@ scale = Vector2(2, 2)
 position = Vector2(2, 0)
 shape = SubResource("RectangleShape2D_45oew")
 
+[node name="DashAttackHitBox" parent="." instance=ExtResource("16_cw62c")]
+position = Vector2(34, -20)
+scale = Vector2(2, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DashAttackHitBox"]
+position = Vector2(2, 0)
+shape = SubResource("RectangleShape2D_45oew")
+disabled = true
+
 [node name="HurtBox" parent="." instance=ExtResource("17_45oew")]
 position = Vector2(2, -3)
 
@@ -1096,5 +1226,6 @@ position = Vector2(-1, -15)
 
 [node name="SfxPlayer" parent="." instance=ExtResource("25_1twwa")]
 
+[connection signal="body_entered" from="DashAttackHitBox" to="." method="_on_dash_attack_hit_box_body_entered"]
 [connection signal="area_entered" from="LadderDetector" to="." method="_on_ladder_detector_area_entered"]
 [connection signal="area_exited" from="LadderDetector" to="." method="_on_ladder_detector_area_exited"]

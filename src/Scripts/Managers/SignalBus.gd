@@ -49,3 +49,5 @@ signal unlock_next_room
 signal update_entrance_map(index : int)
 @warning_ignore("unused_signal")
 signal update_resource_needed_panel
+@warning_ignore("unused_signal")
+signal play_countdown_beep

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dngkcgpb2st7c"]
+[gd_scene load_steps=4 format=3 uid="uid://dngkcgpb2st7c"]
 
 [ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="1_gxrtp"]
 [ext_resource type="Script" uid="uid://dmp07jrdpile2" path="res://src/Scripts/HUD/expedition_timer_local.gd" id="1_w0iq6"]
+[ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="2_5fsv2"]
 
 [node name="ExpeditionTimer" type="Control"]
 layout_mode = 3
@@ -13,6 +14,8 @@ offset_right = 80.5
 offset_bottom = 54.0
 grow_horizontal = 2
 script = ExtResource("1_w0iq6")
+
+[node name="SfxPlayer" parent="." instance=ExtResource("2_5fsv2")]
 
 [node name="TimerLabel" type="RichTextLabel" parent="."]
 layout_mode = 1

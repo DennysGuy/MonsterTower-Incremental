@@ -38,7 +38,7 @@ func _ready() -> void:
 	CookingManager.can_craft_bar.emit()
 	hud.animation_player.play("CloseIn")
 
-	if PlayerStats.player_stats["Equipped Sword"] < PlayerStats.MAX_SWORD_COUNT and PlayerStats.can_craft_next_sword():
+	if PlayerStats.player_stats["Equipped Sword"] < PlayerStats.MAX_SWORD_COUNT-1 and PlayerStats.can_craft_next_sword():
 		await get_tree().create_timer(1.0).timeout
 		new_sword_unlock_notice()
 	

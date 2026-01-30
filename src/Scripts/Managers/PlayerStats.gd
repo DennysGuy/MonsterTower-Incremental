@@ -14,6 +14,7 @@ const KNOCKBACK_FORCE : int = 300
 	"Attack Damage" : 10.0,
 	"Movement Speed" : 100.0,
 	"Climbing Speed" : 65.0,
+	"Dash Speed" : 300.0,
 	"Jump Height" : 270.0,
 	"Crit Chance" : 0.0,
 	"Defense" : 0.0,
@@ -76,22 +77,26 @@ func get_sword(sword_index : int = 0) -> Sword:
 			return preload("uid://di3xaosm85tjx")#"Wooden Sword"
 
 func get_next_sword() -> Sword:
-	if player_stats["Equipped Sword"] < MAX_SWORD_COUNT:
+	if player_stats["Equipped Sword"] < MAX_SWORD_COUNT-1:
 		var next_sword : int = int(player_stats["Equipped Sword"])+1
 		return get_sword(next_sword)
 	return null
 	
 func check_item_in_next_sword_recipe(item : Item) -> bool:
-	var next_sword_recipe : CraftingRecipe = get_next_sword().recipe
-	if next_sword_recipe:
-		return InventoryManager.item_in_recipe(item,next_sword_recipe)
-	else:
-		return false
+	if get_next_sword():
+		var next_sword_recipe : CraftingRecipe = get_next_sword().recipe
+		if next_sword_recipe:
+			return InventoryManager.item_in_recipe(item,next_sword_recipe)
+		else:
+			return false
+	return false
 
 func can_craft_next_sword() -> bool:
+	if int(player_stats["Equipped Sword"])+1 == MAX_SWORD_COUNT:
+		return false
 	var next_sword : Sword = get_sword(int(player_stats["Equipped Sword"])+1)
-	var craft_amount : int = InventoryManager.calculate_quantity(next_sword.recipe)
 	
+	var craft_amount : int = InventoryManager.calculate_quantity(next_sword.recipe)
 	return craft_amount >= 1
 
 func get_pickaxe_name() -> String:

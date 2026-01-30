@@ -3,7 +3,7 @@ class_name PlayerMove extends State
 @export var jump_state : State
 @export var fall_state : State
 @export var idle_state : State
-
+@export var dash_attack_state : State
 
 @export var move_sfx : AudioStream
 
@@ -18,6 +18,9 @@ func exit() -> void:
 func process_input(_event: InputEvent) -> State:
 	if Input.is_action_pressed("add_currency") and parent.is_on_floor() and GameManager.player_can_move:
 		return jump_state
+	
+	if Input.is_action_just_pressed("swing_sword"):
+		return dash_attack_state
 	
 	return null
 

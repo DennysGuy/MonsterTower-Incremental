@@ -444,7 +444,7 @@ text = "Close"
 position = Vector2(326, 79)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(734, 317)
+position = Vector2(637, 407)
 script = ExtResource("9_wj3rp")
 
 [connection signal="button_down" from="CanvasLayer/Close" to="." method="_on_close_button_down"]

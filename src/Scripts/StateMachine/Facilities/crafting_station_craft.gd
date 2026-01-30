@@ -19,6 +19,14 @@ class_name  CraftingStationCraft extends State
 
 @export var idle_state : State
 
+@export var sfx_player : SFXPlayer
+
+const COOKING_SFX = preload("uid://bnslqqjqnb8y2")
+const SMELTING_SFX = preload("uid://ds0to3h3m8yir")
+
+const FAILURE = preload("uid://cv5p7ufgqluno")
+const SUCCESS = preload("uid://dj3e1mi4ks8sr")
+
 func enter() -> void:
 	super()
 	parent.is_crafting = true
@@ -28,9 +36,16 @@ func enter() -> void:
 	parent.crafting_progress_bar.max_value = parent.stored_recipe.crafting_time
 	parent.crafting_progress_bar.value = 0
 	
+	if parent.station_type == parent.STATION_TYPE.COOKING:
+		sfx_player.play_sfx(COOKING_SFX)
+	else:
+		sfx_player.play_sfx(SMELTING_SFX)
+	
+	
 func exit() -> void:
 	parent.is_crafting = false
 	parent.crafting_progress_bar.value = 0
+	sfx_player.stop()
 
 func process_input(_event: InputEvent) -> State:
 	return null
@@ -57,9 +72,10 @@ func process_physics(_delta: float) -> State:
 				success_rate += PlayerStats.player_stats["Cooking Accuracy Bonus"]
 			parent.STATION_TYPE.SMELTING:
 				success_rate += PlayerStats.player_stats["Smelting Accuracy Bonus"]
-			
+		
+		InventoryManager.remove_resources_from_inventory(parent.stored_recipe.recipe_list)	
+		
 		if num_check <= int(success_rate * 100):
-			InventoryManager.remove_resources_from_inventory(parent.stored_recipe.recipe_list)
 			parent.populate_recipes_list(parent.selected_tier)
 			parent.update_inventories()
 			
@@ -78,8 +94,10 @@ func process_physics(_delta: float) -> State:
 					parent.show_can_craft_next_sword_scene = true
 			
 			parent.failure_message.hide()
+			sfx_player.play_sfx(SUCCESS)
 		else:
 			parent.failure_message.show()
+			sfx_player.play_sfx(FAILURE)
 			
 		parent.update_inventories()
 		var can_add_to_inventory : bool
@@ -96,6 +114,5 @@ func process_physics(_delta: float) -> State:
 		
 		parent.clear_details_panel()
 		return idle_state #we'll do this for now just to test
-	
 	
 	return null

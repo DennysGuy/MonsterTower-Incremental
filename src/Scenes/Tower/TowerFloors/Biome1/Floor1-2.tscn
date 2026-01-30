@@ -567,7 +567,7 @@ campfire_list = NodePath("CampfireCheckpoints")
 path = "uid://bla5rhusv2jn5"
 next_room_path = "uid://b3m3f58qy47jb"
 map_type = 2
-kill_quota = 30
+kill_quota = 25
 ambience_player = NodePath("AmbiencePlayer")
 ambience_sfx = ExtResource("2_vcays")
 
@@ -644,6 +644,41 @@ position = Vector2(138, 1153)
 ore_rock_resource = ExtResource("11_qrx52")
 ore_rock = ExtResource("10_n7xsw")
 chance_to_spawn = 0.6
+spawn_parent = NodePath("../..")
+
+[node name="OreRockMarker5" parent="OreRockMarkers" node_paths=PackedStringArray("spawn_parent") instance=ExtResource("8_ujmhj")]
+position = Vector2(431, 801)
+ore_rock_resource = ExtResource("9_qrx52")
+ore_rock = ExtResource("10_n7xsw")
+chance_to_spawn = 0.6
+spawn_parent = NodePath("../..")
+
+[node name="OreRockMarker6" parent="OreRockMarkers" node_paths=PackedStringArray("spawn_parent") instance=ExtResource("8_ujmhj")]
+position = Vector2(205, 801)
+ore_rock_resource = ExtResource("11_qrx52")
+ore_rock = ExtResource("10_n7xsw")
+chance_to_spawn = 0.5
+spawn_parent = NodePath("../..")
+
+[node name="OreRockMarker7" parent="OreRockMarkers" node_paths=PackedStringArray("spawn_parent") instance=ExtResource("8_ujmhj")]
+position = Vector2(139, 1088)
+ore_rock_resource = ExtResource("11_qrx52")
+ore_rock = ExtResource("10_n7xsw")
+chance_to_spawn = 0.5
+spawn_parent = NodePath("../..")
+
+[node name="OreRockMarker8" parent="OreRockMarkers" node_paths=PackedStringArray("spawn_parent") instance=ExtResource("8_ujmhj")]
+position = Vector2(208, 497)
+ore_rock_resource = ExtResource("9_qrx52")
+ore_rock = ExtResource("10_n7xsw")
+chance_to_spawn = 0.55
+spawn_parent = NodePath("../..")
+
+[node name="OreRockMarker9" parent="OreRockMarkers" node_paths=PackedStringArray("spawn_parent") instance=ExtResource("8_ujmhj")]
+position = Vector2(305, 464)
+ore_rock_resource = ExtResource("9_qrx52")
+ore_rock = ExtResource("10_n7xsw")
+chance_to_spawn = 0.4
 spawn_parent = NodePath("../..")
 
 [node name="PlayerCamera" parent="." instance=ExtResource("9_w4dci")]
@@ -770,11 +805,12 @@ position = Vector2(1, 57)
 
 [node name="MonsterSpawnArea" parent="." node_paths=PackedStringArray("spawn_root", "area_collision_shape") instance=ExtResource("13_jxry2")]
 position = Vector2(437, 1457)
-min_spawn = 2
-max_spawn = 3
+min_spawn = 4
+max_spawn = 5
 spawn_root = NodePath("..")
 monster_list = Dictionary[PackedScene, int]({
-ExtResource("14_gi03k"): 100
+ExtResource("14_gi03k"): 50,
+null: 0
 })
 area_collision_shape = NodePath("CollisionShape2D")
 
@@ -783,12 +819,14 @@ shape = SubResource("RectangleShape2D_qrx52")
 
 [node name="MonsterSpawnArea2" parent="." node_paths=PackedStringArray("spawn_root", "area_collision_shape") instance=ExtResource("13_jxry2")]
 position = Vector2(320, 1088)
-min_spawn = 3
-max_spawn = 4
+min_spawn = 4
+max_spawn = 5
 spawn_root = NodePath("..")
 monster_list = Dictionary[PackedScene, int]({
-ExtResource("22_ykf1y"): 90,
-ExtResource("19_n7xsw"): 10
+ExtResource("22_ykf1y"): 60,
+ExtResource("19_n7xsw"): 10,
+null: 0,
+ExtResource("14_gi03k"): 30
 })
 area_collision_shape = NodePath("CollisionShape2D")
 
@@ -798,12 +836,12 @@ shape = SubResource("RectangleShape2D_n7xsw")
 
 [node name="MonsterSpawnArea3" parent="." node_paths=PackedStringArray("spawn_root", "area_collision_shape") instance=ExtResource("13_jxry2")]
 position = Vector2(320, 655)
-min_spawn = 4
-max_spawn = 6
+min_spawn = 5
+max_spawn = 7
 spawn_root = NodePath("..")
 monster_list = Dictionary[PackedScene, int]({
-ExtResource("19_n7xsw"): 40,
-ExtResource("22_ykf1y"): 60
+ExtResource("19_n7xsw"): 50,
+ExtResource("22_ykf1y"): 50
 })
 area_collision_shape = NodePath("CollisionShape2D")
 
@@ -813,8 +851,8 @@ shape = SubResource("RectangleShape2D_n7xsw")
 
 [node name="MonsterSpawnArea4" parent="." node_paths=PackedStringArray("spawn_root", "area_collision_shape") instance=ExtResource("13_jxry2")]
 position = Vector2(320, 255)
-min_spawn = 5
-max_spawn = 7
+min_spawn = 6
+max_spawn = 8
 spawn_root = NodePath("..")
 monster_list = Dictionary[PackedScene, int]({
 ExtResource("19_n7xsw"): 80,
@@ -851,6 +889,13 @@ entrance_data = ExtResource("2_801hy")
 [node name="CheckpointCampfire2" parent="CampfireCheckpoints" instance=ExtResource("26_qbeca")]
 position = Vector2(139, 144)
 entrance_data = ExtResource("2_801hy")
+
+[node name="OreRockMarker" parent="." node_paths=PackedStringArray("spawn_parent") instance=ExtResource("8_ujmhj")]
+position = Vector2(472, 432)
+ore_rock_resource = ExtResource("11_qrx52")
+ore_rock = ExtResource("10_n7xsw")
+chance_to_spawn = 0.7
+spawn_parent = NodePath("..")
 
 [connection signal="body_entered" from="TowerExitArea" to="." method="_on_tower_exit_area_body_entered"]
 [connection signal="body_exited" from="TowerExitArea" to="." method="_on_tower_exit_area_body_exited"]

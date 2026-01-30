@@ -7,10 +7,10 @@
 script = ExtResource("2_or03a")
 node_name = "Defense 1"
 icon = ExtResource("1_qte16")
-description = "Lowers Damage Received from Monsters by 10% per level (not yet implemented!)"
+description = "Lowers Damage Received from Monsters by 20% per level (not yet implemented!)"
 max_level = 3
 currency_required = 150
 stat_name = "Defense"
-upgrade_interval = 0.1
+upgrade_interval = 0.2
 prereqs = Array[String](["Max HP 1:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

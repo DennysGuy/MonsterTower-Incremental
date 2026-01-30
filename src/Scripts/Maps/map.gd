@@ -49,7 +49,10 @@ func _ready() -> void:
 				GameManager.spawn_location = 1
 			else:
 				GameManager.spawn_location = 0
-
+		
+		if hud:
+			hud.show()
+		
 		spawn_player()
 	
 		if camera:
