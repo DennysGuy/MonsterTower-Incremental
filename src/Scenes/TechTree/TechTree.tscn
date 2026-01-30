@@ -73,11 +73,11 @@ points = PackedVector2Array(-11, 8, -70, 97)
 width = 3.0
 
 [node name="Attack2Node" parent="Nodes" instance=ExtResource("5_2ltmf")]
-position = Vector2(779, 252)
+position = Vector2(867, 253)
 tech_node_stats = ExtResource("5_wj3rp")
 
 [node name="Line2D" type="Line2D" parent="Nodes/Attack2Node"]
-points = PackedVector2Array(-16, 0, -52, 0)
+points = PackedVector2Array(-16, 0, -83, 0)
 width = 3.0
 
 [node name="CritChance1Node" parent="Nodes" instance=ExtResource("5_2ltmf")]
@@ -106,7 +106,7 @@ points = PackedVector2Array(-3, 14, -3, 32)
 width = 3.0
 
 [node name="CritChance2Node" parent="Nodes" instance=ExtResource("5_2ltmf")]
-position = Vector2(779, 208)
+position = Vector2(867, 209)
 tech_node_stats = ExtResource("8_7l0yi")
 
 [node name="Line2D" type="Line2D" parent="Nodes/CritChance2Node"]
@@ -114,11 +114,11 @@ points = PackedVector2Array(-2, 14, -2, 30)
 width = 3.0
 
 [node name="CritDamage2Node" parent="Nodes" instance=ExtResource("5_2ltmf")]
-position = Vector2(779, 294)
+position = Vector2(867, 167)
 tech_node_stats = ExtResource("9_dkx06")
 
 [node name="Line2D" type="Line2D" parent="Nodes/CritDamage2Node"]
-position = Vector2(1, 0)
+position = Vector2(1, 42)
 points = PackedVector2Array(-3, -14, -3, -28)
 width = 3.0
 
@@ -310,7 +310,7 @@ points = PackedVector2Array(-16, 1, -52, 1)
 width = 3.0
 
 [node name="ArialSlashNode" parent="Nodes" instance=ExtResource("5_2ltmf")]
-position = Vector2(836, 253)
+position = Vector2(772, 253)
 tech_node_stats = ExtResource("35_mdsgt")
 
 [node name="Line2D" type="Line2D" parent="Nodes/ArialSlashNode"]
@@ -327,7 +327,7 @@ points = PackedVector2Array(793, 524, 776, 510)
 width = 3.0
 
 [node name="DashAttackNode" parent="Nodes" instance=ExtResource("5_2ltmf")]
-position = Vector2(837, 208)
+position = Vector2(773, 207)
 tech_node_stats = ExtResource("37_34cer")
 node_type = 1
 
@@ -345,7 +345,7 @@ points = PackedVector2Array(-12, -8, -29, -22)
 width = 3.0
 
 [node name="DashAttackDuration1Node" parent="Nodes" instance=ExtResource("5_2ltmf")]
-position = Vector2(887, 208)
+position = Vector2(823, 208)
 tech_node_stats = ExtResource("39_iyves")
 
 [node name="Line2D" type="Line2D" parent="Nodes/DashAttackDuration1Node"]

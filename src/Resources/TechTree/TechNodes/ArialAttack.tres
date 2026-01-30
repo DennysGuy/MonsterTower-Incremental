@@ -1,18 +1,14 @@
-[gd_resource type="Resource" script_class="TechNodeStats" load_steps=4 format=3 uid="uid://burkenucbrobr"]
+[gd_resource type="Resource" script_class="TechNodeStats" load_steps=3 format=3 uid="uid://burkenucbrobr"]
 
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_c6r3y"]
 [ext_resource type="Texture2D" uid="uid://bhogxoh774jb8" path="res://Assets/NodeGraphics/NodeGraphicsV2/ArialSlash_V2.png" id="1_hhegx"]
-[ext_resource type="Resource" uid="uid://buu8pdcooh3hc" path="res://src/Resources/CraftingResources/BronzeBar.tres" id="2_3e0cb"]
 
 [resource]
 script = ExtResource("1_c6r3y")
 node_name = "Arial Slash"
 icon = ExtResource("1_hhegx")
 description = "Swing your sword in the air and hit the enemies above you."
-currency_required = 600
-materials_required = Array[Dictionary]([{
-ExtResource("2_3e0cb"): 2
-}])
+currency_required = 300
 node_type = 1
 stat_name = "Arial Slash"
 prereqs = Array[String](["Attack 1:3"])
