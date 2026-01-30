@@ -24,8 +24,6 @@ class_name  CraftingStationCraft extends State
 const COOKING_SFX = preload("uid://bnslqqjqnb8y2")
 const SMELTING_SFX = preload("uid://ds0to3h3m8yir")
 
-const FAILURE = preload("uid://cv5p7ufgqluno")
-const SUCCESS = preload("uid://dj3e1mi4ks8sr")
 
 func enter() -> void:
 	super()
@@ -93,10 +91,10 @@ func process_physics(_delta: float) -> State:
 					parent.show_can_craft_next_sword_scene = true
 			
 			parent.failure_message.hide()
-			parent.sfx_player.play_sfx(SUCCESS)
+			parent.play_success_sfx()
 		else:
 			parent.failure_message.show()
-			parent.sfx_player.play_sfx(FAILURE)
+			parent.play_failure_sfx()
 			
 		parent.populate_recipes_list(parent.selected_tier)
 		parent.update_inventories()

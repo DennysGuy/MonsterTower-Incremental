@@ -184,6 +184,7 @@ theme_override_font_sizes/normal_font_size = 10
 text = "The core of a corrupted mushie purified through a chemical process when dropped. Used in crafting exoctic dishes!"
 
 [node name="SellAllButton" type="Button" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5

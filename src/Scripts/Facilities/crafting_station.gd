@@ -37,11 +37,17 @@ var is_crafting : bool = false
 var selected_tier : int = 1
 @onready var inventory_full_warning: Label = $InventoryFullWarning
 
+@onready var sfx_player_2: SFXPlayer = $SfxPlayer2
+
 const CRAFTING_MENU = preload("uid://ce4sagacwwdc8")
 const SMELTING_MENU = preload("uid://b4ptfqnoq6qly")
 
+const FAILURE = preload("uid://cv5p7ufgqluno")
+const SUCCESS = preload("uid://dj3e1mi4ks8sr")
+
 @onready var bank_notice: Label = $BankNotice
-@onready var sfx_player: SFXPlayer = $SFXPlayer
+@onready var sfx_player: SFXPlayer = $SfxPlayer
+
 
 var show_can_craft_next_sword_scene : bool = false
 
@@ -117,7 +123,13 @@ func populate_recipes_list(tier : int) -> void:
 		recipe_menu_item.title.text = recipe_resource.recipe_name
 		recipe_menu_item.can_make.text = "Can Make: %s" % [InventoryManager.calculate_quantity(recipe)]
 		recipes_container.add_child(recipe_menu_item)
-		
+
+func play_success_sfx() -> void:
+	sfx_player_2.play_sfx(SUCCESS)
+
+func play_failure_sfx() -> void:
+	sfx_player_2.play_sfx(FAILURE)
+	
 func populate_details_panel(recipe : CraftingRecipe) -> void:
 	stored_recipe = recipe
 	recipe_name.text = recipe.recipe_name

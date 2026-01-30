@@ -225,7 +225,6 @@ func unlock_refinery_station() -> void:
 
 func new_sword_unlock_notice() -> void:
 	camera.player = null
-	GameManager.player_can_move = false
 	player.send_to_idle_state()
 	hud.animation_player.play("FadeInOut")
 	await get_tree().create_timer(0.5).timeout
