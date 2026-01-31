@@ -1232,9 +1232,10 @@ swing_sfx = ExtResource("16_c7aqh")
 animation_name = "SwordSwing3"
 animation_duration = 0.6
 
-[node name="AirAttack" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state")]
+[node name="AirAttack" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "climb_state")]
 script = ExtResource("13_cq2ky")
 idle_state = NodePath("../Idle")
+climb_state = NodePath("../Climb")
 animation_name = "SwordSwing1"
 
 [node name="DashAttack" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state")]

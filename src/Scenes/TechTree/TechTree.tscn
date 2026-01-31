@@ -51,10 +51,10 @@ script = ExtResource("1_1fw0b")
 [node name="SfxPlayer" parent="." instance=ExtResource("2_d4ivd")]
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -3836.0
-offset_top = -2429.0
-offset_right = 5576.0
-offset_bottom = 3757.0
+offset_left = -3828.0
+offset_top = -2421.0
+offset_right = 5584.0
+offset_bottom = 3765.0
 mouse_filter = 2
 color = Color(0.028638711, 0.1994082, 0.3708802, 1)
 
@@ -132,48 +132,50 @@ points = PackedVector2Array(-11, -9, -68, -81)
 width = 3.0
 
 [node name="PassTime1Node" parent="Nodes" instance=ExtResource("5_2ltmf")]
-position = Vector2(714, 503)
+position = Vector2(608, 452)
 tech_node_stats = ExtResource("12_ice2v")
 
 [node name="Line2D" type="Line2D" parent="Nodes/PassTime1Node"]
 position = Vector2(-1, 0)
-points = PackedVector2Array(-1, -13, -1, -40)
+points = PackedVector2Array(-1, -13, 27, -81)
 width = 3.0
 
 [node name="MonsterCap1Node" parent="Nodes" instance=ExtResource("5_2ltmf")]
-position = Vector2(775, 450)
+position = Vector2(657, 452)
 tech_node_stats = ExtResource("13_fdiaf")
 
 [node name="Line2D" type="Line2D" parent="Nodes/MonsterCap1Node"]
-points = PackedVector2Array(-15, 0, -50, 0)
+position = Vector2(14, -14)
+points = PackedVector2Array(-16, 1, -30, -67)
 width = 3.0
 
 [node name="Defense1Node" parent="Nodes" instance=ExtResource("5_2ltmf")]
-position = Vector2(762, 494)
+position = Vector2(714, 508)
 tech_node_stats = ExtResource("14_x01pg")
 
 [node name="Line2D" type="Line2D" parent="Nodes/Defense1Node"]
-points = PackedVector2Array(-11, -9, -41, -35)
+position = Vector2(9, -5)
+points = PackedVector2Array(-11, -9, -11, -39)
 width = 3.0
 
 [node name="DeeperPockets1" parent="Nodes" instance=ExtResource("5_2ltmf")]
-position = Vector2(498, 440)
+position = Vector2(442, 452)
 tech_node_stats = ExtResource("15_v76mx")
 
 [node name="Line2D" type="Line2D" parent="Nodes/DeeperPockets1"]
-points = PackedVector2Array(7, -9, 130, -74)
+points = PackedVector2Array(7, -9, 186, -85)
 width = 3.0
 
 [node name="ItemBag1" parent="Nodes" instance=ExtResource("5_2ltmf")]
-position = Vector2(569, 439)
+position = Vector2(513, 451)
 tech_node_stats = ExtResource("16_yexi2")
 
 [node name="Line2D" type="Line2D" parent="Nodes/ItemBag1"]
-points = PackedVector2Array(59, -73, 8, -8)
+points = PackedVector2Array(116, -83, 8, -8)
 width = 3.0
 
 [node name="Banking1" parent="Nodes" instance=ExtResource("5_2ltmf")]
-position = Vector2(534, 485)
+position = Vector2(478, 497)
 tech_node_stats = ExtResource("17_c7r65")
 node_type = 1
 
@@ -186,7 +188,7 @@ points = PackedVector2Array(7, -9, 27, -35)
 width = 3.0
 
 [node name="Banking2" parent="Nodes" instance=ExtResource("5_2ltmf")]
-position = Vector2(534, 534)
+position = Vector2(478, 546)
 tech_node_stats = ExtResource("18_aovij")
 
 [node name="Line2D" type="Line2D" parent="Nodes/Banking2"]
@@ -194,19 +196,19 @@ points = PackedVector2Array(-2, -13, -2, -36)
 width = 3.0
 
 [node name="DeeperPockets2" parent="Nodes" instance=ExtResource("5_2ltmf")]
-position = Vector2(461, 480)
+position = Vector2(410, 489)
 tech_node_stats = ExtResource("19_7xsv7")
 
 [node name="Line2D" type="Line2D" parent="Nodes/DeeperPockets2"]
-points = PackedVector2Array(6, -10, 25, -32)
+points = PackedVector2Array(6, -10, 21, -29)
 width = 3.0
 
 [node name="ItemBag2" parent="Nodes" instance=ExtResource("5_2ltmf")]
-position = Vector2(607, 482)
+position = Vector2(541, 498)
 tech_node_stats = ExtResource("20_dkc8a")
 
 [node name="Line2D" type="Line2D" parent="Nodes/ItemBag2"]
-points = PackedVector2Array(-11, -9, -31, -34)
+points = PackedVector2Array(-8, -11, -23, -36)
 width = 3.0
 
 [node name="JumpHeight1" parent="Nodes" instance=ExtResource("5_2ltmf")]
@@ -319,12 +321,12 @@ points = PackedVector2Array(-16, -1, -45, -1)
 width = 3.0
 
 [node name="MaxHP2" parent="Nodes" instance=ExtResource("5_2ltmf")]
-position = Vector2(799, 524)
+position = Vector2(759, 450)
 tech_node_stats = ExtResource("36_o1bwy")
 
 [node name="Line2D" type="Line2D" parent="Nodes/MaxHP2"]
-position = Vector2(-805, -533)
-points = PackedVector2Array(793, 524, 776, 510)
+position = Vector2(-807, -524)
+points = PackedVector2Array(791, 524, 774, 524)
 width = 3.0
 
 [node name="DashAttackNode" parent="Nodes" instance=ExtResource("5_2ltmf")]
@@ -338,11 +340,12 @@ points = PackedVector2Array(-2, 13, -2, 32)
 width = 3.0
 
 [node name="Defense2" parent="Nodes" instance=ExtResource("5_2ltmf")]
-position = Vector2(836, 554)
+position = Vector2(757, 508)
 tech_node_stats = ExtResource("37_pqlb5")
 
 [node name="Line2D" type="Line2D" parent="Nodes/Defense2"]
-points = PackedVector2Array(-12, -8, -29, -22)
+position = Vector2(-3, 8)
+points = PackedVector2Array(-13, -8, -28, -8)
 width = 3.0
 
 [node name="InvincibilityDuration1" parent="Nodes" instance=ExtResource("5_2ltmf")]
@@ -486,6 +489,9 @@ text = "Close"
 
 [node name="Marker2D" type="Marker2D" parent="CanvasLayer"]
 position = Vector2(326, 79)
+
+[node name="Marker2D2" type="Marker2D" parent="CanvasLayer"]
+position = Vector2(46, 79)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(666, 389)

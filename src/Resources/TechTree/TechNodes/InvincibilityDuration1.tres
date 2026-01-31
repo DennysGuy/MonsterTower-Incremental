@@ -7,10 +7,10 @@
 script = ExtResource("1_njkey")
 node_name = "Invincibility Duration 1"
 icon = ExtResource("1_jd223")
-description = "Increases Invincibility duration after sustaining damage. (1 sec per levell)"
+description = "Increases Invincibility duration after sustaining damage. (0.5 sec per levell)"
 max_level = 2
 currency_required = 300
 stat_name = "Invincibility Duration"
-upgrade_interval = 1.0
+upgrade_interval = 0.5
 prereqs = Array[String](["Movement 1:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

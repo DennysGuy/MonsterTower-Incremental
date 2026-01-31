@@ -16,6 +16,8 @@ class_name Map extends Node2D
 @export var next_room_path : String
 @export var sfx_player : AudioStreamPlayer
 
+@export var monster_spawn_node : Node
+
 enum MAP_TYPE {HUB, FLOOR, CHECKPOINT_FLOOR}
 
 @export var map_type : MAP_TYPE = MAP_TYPE.HUB
@@ -29,8 +31,8 @@ var player : Player
 @export var ambience_sfx : AudioStream
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	GameManager.player_can_move = true
 	GameManager.previous_map_path = path
+	GameManager.previous_map_data = tower_entrance_data
 	SignalBus.move_to_next_room.connect(move_to_next_room)
 	SignalBus.return_to_starshire.connect(go_to_starshire)
 	hud.map_name_label.text = map_name
@@ -56,13 +58,17 @@ func _ready() -> void:
 			camera.player = player
 		
 		if map_type == MAP_TYPE.CHECKPOINT_FLOOR:
+			GameManager.player_can_move = true
 			if tower_entrance_data.kill_quota_hit:
 				SignalBus.unlock_next_room.emit()
 				SignalBus.update_kill_quota_text.emit("Next Floor Unlocked!", tower_entrance_data.kill_quota_hit,false)
 			else:
 				SignalBus.update_kill_quota.connect(update_hunt_quota)
 				SignalBus.update_kill_quota_text.emit("Floor Hunt Quota %s/%s" % [current_kill_count,kill_quota], false, false)
-
+			
+			if monster_spawn_node:
+				SignalBus.update_monsters_left.emit("Monsters Left: %s" % [monster_spawn_node.get_children().size()],false)
+			
 			PlayerStats.check_points_unlocked[map_name] = true
 		
 		if map_type ==	MAP_TYPE.FLOOR or map_type == MAP_TYPE.CHECKPOINT_FLOOR:
@@ -135,17 +141,19 @@ func spawn_ore_rocks() -> void:
 				ore_rock_marker.spawn_ore_rock()
 
 func update_hunt_quota() -> void:
+	await get_tree().process_frame
 	if map_type == MAP_TYPE.CHECKPOINT_FLOOR:
 		current_kill_count += 1
+		print("THIS IS CURRENT KILL COUNT %s" % current_kill_count)
 		if current_kill_count >= kill_quota:
 			tower_entrance_data.kill_quota_hit = true
 			SignalBus.unlock_next_room.emit()
 			SignalBus.update_kill_quota_text.emit("Next Floor Unlocked!", tower_entrance_data.kill_quota_hit, false)
+			SignalBus.update_monsters_left.emit("Monsters Left: %s" % [monster_spawn_node.get_children().size()],false)
 		else:
-			print("ENEMY SIZE: %s" % get_tree().get_nodes_in_group("Enemy").size() )
-			print(get_tree().get_nodes_in_group("Enemy"))
-			if get_tree().get_nodes_in_group("Enemy").is_empty():
-				SignalBus.update_kill_quota_text.emit("", tower_entrance_data.kill_quota_hit, true)	
+			if monster_spawn_node.get_children().is_empty():
+				SignalBus.update_kill_quota_text.emit("Floor Hunt Quota %s/%s" %[current_kill_count,kill_quota], tower_entrance_data.kill_quota_hit,false)	
+				SignalBus.update_monsters_left.emit("",true)
 			else:
 				SignalBus.update_kill_quota_text.emit("Floor Hunt Quota %s/%s" %[current_kill_count,kill_quota], tower_entrance_data.kill_quota_hit,false)	
-	
+				SignalBus.update_monsters_left.emit("Monsters Left: %s" % [monster_spawn_node.get_children().size()],false)

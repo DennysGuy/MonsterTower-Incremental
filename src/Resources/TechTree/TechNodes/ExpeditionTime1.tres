@@ -12,5 +12,5 @@ max_level = 3
 currency_required = 100
 stat_name = "Expedition Time"
 upgrade_interval = 3.0
-prereqs = Array[String](["Max HP 1:1"])
+prereqs = Array[String](["Hunter License:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

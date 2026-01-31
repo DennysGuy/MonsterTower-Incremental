@@ -15,6 +15,7 @@ class_name TechTree extends Node2D
 const CLOSE_UPGRADE_PC = preload("uid://ckgce5whd3hq7")
 const OPEN_UPGRADE_PC = preload("uid://coaqdaythm28l")
 const TIER_UP = preload("uid://dhfdudbiidv7a")
+@onready var marker_2d_2: Marker2D = $CanvasLayer/Marker2D2
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -28,15 +29,14 @@ func _ready() -> void:
 	TechTreeManager.add_tool_tip.connect(add_tool_tip)
 	sfx_player.play_sfx(OPEN_UPGRADE_PC)
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
 	#if Input.is_action_just_pressed("add_currency"):
 		#TechTreeManager.currency += 500
 		#update_currency_label()
 		#TechTreeManager.check_if_can_purchase_node.emit()
-
+	pass
+		
 func update_currency_label() -> void:
 	currency.text = "Currency: %s" % [TechTreeManager.currency]
 
@@ -54,22 +54,22 @@ func _enter_tree() -> void:
 	GameManager.player_can_move = false
 
 func _exit_tree() -> void:
-	GameManager.player_can_move = true
+	if PlayerStats.show_cooking_station_unlock_animation or PlayerStats.show_refinery_station_unlock_animation:
+		GameManager.player_can_move = false
+	else:
+		GameManager.player_can_move = true
 
 func _on_close_button_down() -> void:
-	if PlayerStats.show_cooking_station_unlock_animation:
-		TechTreeManager.unlock_cooking_station.emit()
-		PlayerStats.show_cooking_station_unlock_animation = false
-	
-	if PlayerStats.show_refinery_station_unlock_animation:
-		TechTreeManager.unlock_refinery.emit()
-		PlayerStats.show_refinery_station_unlock_animation = false
-	
-	sfx_player.play_sfx(CLOSE_UPGRADE_PC)
+	if PlayerStats.show_cooking_station_unlock_animation or PlayerStats.show_refinery_station_unlock_animation:
+		TechTreeManager.unlock_station.emit()
 
+	sfx_player.play_sfx(CLOSE_UPGRADE_PC)
 	await get_tree().create_timer(0.3).timeout
 	queue_free()
 
-func add_tool_tip(tool_tip : ToolTip) -> void:
-	tool_tip.position = marker_2d.position
+func add_tool_tip(tool_tip : ToolTip, on_right_half : bool) -> void:
+	if on_right_half:
+		tool_tip.position = marker_2d_2.position
+	else:
+		tool_tip.position = marker_2d.position
 	canvas_layer.add_child(tool_tip)

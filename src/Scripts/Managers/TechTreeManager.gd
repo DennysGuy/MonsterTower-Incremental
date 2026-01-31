@@ -23,16 +23,15 @@ signal update_tool_tip_info(total_bonus : float)
 signal update_player_stats
 
 @warning_ignore("unused_signal")
-signal unlock_cooking_station
+signal unlock_station
 
-@warning_ignore("unused_signal")
-signal unlock_refinery
+
 
 @warning_ignore("unused_signal")
 signal check_if_can_purchase_node
 
 @warning_ignore("unused_signal")
-signal add_tool_tip(tool_tip : ToolTip)
+signal add_tool_tip(tool_tip : ToolTip, on_right_half : bool)
 
 var currency : int = 0
 var current_prestige : int = 0

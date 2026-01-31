@@ -3,7 +3,8 @@ class_name MonsterSpawnArea extends Area2D
 
 @export var min_spawn : int
 @export var max_spawn : int
-@export var spawn_root : Node2D
+@export var drop_scene : Map
+@export var spawn_root : Node
 
 @export var monster_list : Dictionary[PackedScene, int]
 @export var area_collision_shape : CollisionShape2D
@@ -48,14 +49,14 @@ func _spawn():
 		if scene == null:
 			continue
 
-		var monster := scene.instantiate()
+		var monster : Enemy = scene.instantiate()
 
 		var shape := area_collision_shape.shape as RectangleShape2D
 		var extents = shape.extents
 
 		var spawn_x := randf_range(-extents.x, extents.x)
 		var world_pos := global_position + Vector2(spawn_x, 0)
-		
+		monster.drop_scene = drop_scene
 		monster.global_position = world_pos
 		spawn_root.add_child(monster)
 		

@@ -10,10 +10,10 @@ class_name EnemyDead extends State
 
 func enter() -> void:
 	super()
-	SignalBus.update_kill_quota.emit()
 	if parent.hit_box:
 		parent.hit_box.get_child(0).disabled = true
 	drop_items()
+	
 	HitStopManager.freeze(0.15)
 	parent.damageable = false
 	parent.is_dead = true
@@ -54,7 +54,7 @@ func drop_items() -> void:
 			cooking_item_interactable.item = cooking_item
 			cooking_item_interactable.icon.texture = cooking_item.drop_icon
 			cooking_item_interactable.global_position = Vector2(parent.global_position.x + 20,parent.global_position.y)
-			parent.get_parent().add_child(cooking_item_interactable)
+			parent.drop_scene.add_child(cooking_item_interactable)
 	
 	if parent.enemy_stats.crafting_item_drop and PlayerStats.get_bag("Bag").max_slots >= 2:
 		var crafting_item : EnemyDrop = parent.enemy_stats.crafting_item_drop
@@ -69,6 +69,6 @@ func drop_items() -> void:
 			crafting_item_interactable.item = crafting_item
 			crafting_item_interactable.icon.texture = crafting_item.drop_icon
 			crafting_item_interactable.global_position = Vector2(parent.global_position.x - 20, parent.global_position.y)
-			parent.get_parent().add_child(crafting_item_interactable)
+			parent.drop_scene.add_child(crafting_item_interactable)
 	
-	parent.get_parent().add_child(item_interactable)
+	parent.drop_scene.add_child(item_interactable)

@@ -43,7 +43,10 @@ func apply_damage(incoming_damage : int, is_crit : bool):
 	damage_label.global_position.y = global_position.y-40
 	damage_label.global_position.x = global_position.x
 	damage_label.label.text = damage
-	get_parent().add_child(damage_label)
+	if self is Enemy:
+		self.drop_scene.add_child(damage_label)
+	else:
+		get_parent().add_child(damage_label)
 
 func send_to_hit_state() -> void:
 	if hit_state:
@@ -57,7 +60,7 @@ func blink_effect() -> void:
 	if not is_inside_tree():
 		return 
 		
-	var invincibility_duration : float = 1.5
+	var invincibility_duration : float = 0.5
 	var blink_current_time : float = 0.0
 	var blink_wait_time : float = 0.1
 	

@@ -17,7 +17,7 @@ const KNOCKBACK_FORCE : int = 300
 	"Dash Speed" : 350.0,
 	"Dash Cooldown" : 2.0,
 	"Dash Duration" : 0.3,
-	"Invincibility Duration": 3.0,
+	"Invincibility Duration": 2.5,
 	"Jump Height" : 270.0,
 	"Crit Chance" : 0.0,
 	"Defense" : 0.0,

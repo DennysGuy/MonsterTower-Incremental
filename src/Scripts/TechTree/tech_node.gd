@@ -216,7 +216,16 @@ func create_tool_tip() -> void:
 	
 	tool_tip.description.text = tech_node_stats.description
 	tool_tip.cost.text = "Cost: %s" % [tech_node_stats.currency_required]
-	TechTreeManager.add_tool_tip.emit(tool_tip)
+	TechTreeManager.add_tool_tip.emit(tool_tip, is_on_right_half(self))
+
+
+func is_on_right_half(node: Node2D) -> bool:
+	var screen_x := node.get_global_transform_with_canvas().origin.x
+
+	var half_x := get_viewport().get_visible_rect().size.x * 0.5
+
+	return screen_x > half_x
+
 
 func has_resource_quantity() -> bool:
 	if tech_node_stats.materials_required.size() <= 0:

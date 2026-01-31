@@ -112,13 +112,13 @@ _data = {
 
 [node name="ToolTip" type="Control" node_paths=PackedStringArray("node_title", "current_benefits", "description", "cost", "panel") groups=["ToolTips"]]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -355.0
-offset_bottom = -132.0
+anchor_right = 0.46100003
+anchor_bottom = 0.669
+offset_right = -10.040009
+offset_bottom = -12.840012
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_prrnn")
 node_title = NodePath("ToolTip/NodeTitle")
 current_benefits = NodePath("ToolTip/CurrentBenefits")

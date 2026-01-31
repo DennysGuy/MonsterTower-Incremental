@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://bla5rhusv2jn5"]
+[gd_scene load_steps=39 format=4 uid="uid://bla5rhusv2jn5"]
 
 [ext_resource type="Script" uid="uid://bgfo5a5l7ay1t" path="res://src/Scripts/Maps/Tower/Biome1/floor_1_2.gd" id="1_1pghk"]
 [ext_resource type="TileSet" uid="uid://cuil6pmpg4xf1" path="res://src/Scenes/Tower/TowerFloors/Biome1/Biome1-Floor.tres" id="2_27fnx"]
@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://c11hg5ijdrjjs" path="res://src/Scenes/Tower/TowerFloors/ExitElevator1.tscn" id="20_rsjkl"]
 [ext_resource type="PackedScene" uid="uid://cyiot28va881c" path="res://src/Scenes/Actors/Enemies/CorruptedMushie/CorruptedMushie_Level2.tscn" id="22_ykf1y"]
 [ext_resource type="PackedScene" uid="uid://d150vkltffpjo" path="res://src/Scenes/Tower/TowerFloors/CheckPointCampfire.tscn" id="26_qbeca"]
+[ext_resource type="PackedScene" uid="uid://cpb0pkf7ygatb" path="res://src/Scenes/Tower/TowerFloors/MonsterSpawnNode.tscn" id="27_ynp3n"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6ds7u"]
 texture = ExtResource("2_aukmg")
@@ -553,7 +554,7 @@ size = Vector2(172, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n7xsw"]
 size = Vector2(391, 20)
 
-[node name="Floor1-2" type="Node2D" node_paths=PackedStringArray("camera", "hud", "ore_rock_markers", "campfire_list", "ambience_player")]
+[node name="Floor1-2" type="Node2D" node_paths=PackedStringArray("camera", "hud", "ore_rock_markers", "campfire_list", "monster_spawn_node", "ambience_player")]
 script = ExtResource("1_1pghk")
 map_name = "Floor 1-2"
 map_id = 2
@@ -566,6 +567,7 @@ ore_rock_markers = NodePath("OreRockMarkers")
 campfire_list = NodePath("CampfireCheckpoints")
 path = "uid://bla5rhusv2jn5"
 next_room_path = "uid://b3m3f58qy47jb"
+monster_spawn_node = NodePath("MonsterSpawnNode")
 map_type = 2
 kill_quota = 30
 ambience_player = NodePath("AmbiencePlayer")
@@ -803,11 +805,12 @@ position = Vector2(0, -48)
 [node name="Bottom" type="Marker2D" parent="LadderArea4"]
 position = Vector2(1, 57)
 
-[node name="MonsterSpawnArea" parent="." node_paths=PackedStringArray("spawn_root", "area_collision_shape") instance=ExtResource("13_jxry2")]
+[node name="MonsterSpawnArea" parent="." node_paths=PackedStringArray("drop_scene", "spawn_root", "area_collision_shape") instance=ExtResource("13_jxry2")]
 position = Vector2(437, 1457)
 min_spawn = 4
 max_spawn = 5
-spawn_root = NodePath("..")
+drop_scene = NodePath("..")
+spawn_root = NodePath("../MonsterSpawnNode")
 monster_list = Dictionary[PackedScene, int]({
 null: 0,
 ExtResource("14_gi03k"): 50
@@ -817,11 +820,12 @@ area_collision_shape = NodePath("CollisionShape2D")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MonsterSpawnArea"]
 shape = SubResource("RectangleShape2D_qrx52")
 
-[node name="MonsterSpawnArea2" parent="." node_paths=PackedStringArray("spawn_root", "area_collision_shape") instance=ExtResource("13_jxry2")]
+[node name="MonsterSpawnArea2" parent="." node_paths=PackedStringArray("drop_scene", "spawn_root", "area_collision_shape") instance=ExtResource("13_jxry2")]
 position = Vector2(320, 1088)
 min_spawn = 4
 max_spawn = 5
-spawn_root = NodePath("..")
+drop_scene = NodePath("..")
+spawn_root = NodePath("../MonsterSpawnNode")
 monster_list = Dictionary[PackedScene, int]({
 null: 0,
 ExtResource("22_ykf1y"): 60,
@@ -834,11 +838,12 @@ area_collision_shape = NodePath("CollisionShape2D")
 position = Vector2(1.5, 0)
 shape = SubResource("RectangleShape2D_n7xsw")
 
-[node name="MonsterSpawnArea3" parent="." node_paths=PackedStringArray("spawn_root", "area_collision_shape") instance=ExtResource("13_jxry2")]
+[node name="MonsterSpawnArea3" parent="." node_paths=PackedStringArray("drop_scene", "spawn_root", "area_collision_shape") instance=ExtResource("13_jxry2")]
 position = Vector2(320, 655)
 min_spawn = 5
 max_spawn = 7
-spawn_root = NodePath("..")
+drop_scene = NodePath("..")
+spawn_root = NodePath("../MonsterSpawnNode")
 monster_list = Dictionary[PackedScene, int]({
 ExtResource("19_n7xsw"): 50,
 ExtResource("22_ykf1y"): 50
@@ -849,11 +854,12 @@ area_collision_shape = NodePath("CollisionShape2D")
 position = Vector2(1.5, 0)
 shape = SubResource("RectangleShape2D_n7xsw")
 
-[node name="MonsterSpawnArea4" parent="." node_paths=PackedStringArray("spawn_root", "area_collision_shape") instance=ExtResource("13_jxry2")]
+[node name="MonsterSpawnArea4" parent="." node_paths=PackedStringArray("drop_scene", "spawn_root", "area_collision_shape") instance=ExtResource("13_jxry2")]
 position = Vector2(320, 255)
 min_spawn = 6
 max_spawn = 8
-spawn_root = NodePath("..")
+drop_scene = NodePath("..")
+spawn_root = NodePath("../MonsterSpawnNode")
 monster_list = Dictionary[PackedScene, int]({
 ExtResource("19_n7xsw"): 80,
 ExtResource("22_ykf1y"): 20
@@ -879,6 +885,8 @@ index = 1
 [node name="PlayerSpawnPoint2" parent="." instance=ExtResource("10_ucoej")]
 position = Vector2(194, 144)
 index = 2
+
+[node name="MonsterSpawnNode" parent="." instance=ExtResource("27_ynp3n")]
 
 [node name="CampfireCheckpoints" type="Node" parent="."]
 

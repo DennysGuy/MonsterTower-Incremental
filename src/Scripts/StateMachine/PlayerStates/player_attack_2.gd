@@ -28,6 +28,7 @@ func process_frame(_delta: float) -> State:
 func process_physics(_delta: float) -> State:
 	if !GameManager.player_can_move:
 		return idle_state
+		
 	if parent.is_on_floor() and parent.timer.time_left <= 0:
 		if Input.is_action_pressed("swing_sword"):
 			return attack3_state

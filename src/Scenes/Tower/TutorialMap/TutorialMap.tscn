@@ -542,14 +542,14 @@ To Drop Through Floors
 "
 
 [node name="Label4" type="Label" parent="."]
-offset_left = 1217.0
+offset_left = 1192.0
 offset_top = 467.0
-offset_right = 1377.0
-offset_bottom = 482.0
+offset_right = 1511.0
+offset_bottom = 483.0
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("9_7kbtj")
 theme_override_font_sizes/font_size = 16
-text = "Hold 'F' To Attack Enemies"
+text = "Hold 'F' or 'Left Mouse Button' To Attack Enemies"
 
 [node name="Label5" type="Label" parent="."]
 offset_left = 1291.0
@@ -586,9 +586,10 @@ text = "(By accepting your pass, you agree
 that Tower Guide Inc. is not responsible for any injuries, 
 death, or loss of livelyhood in any stances. Thank you for your business!"
 
-[node name="CorruptedMushie" parent="." instance=ExtResource("10_ytsg0")]
+[node name="CorruptedMushie" parent="." node_paths=PackedStringArray("drop_scene") instance=ExtResource("10_ytsg0")]
 position = Vector2(1337, 448)
 enemy_stats = SubResource("Resource_jwogi")
+drop_scene = NodePath("..")
 
 [node name="TowerGuideSprite" parent="." instance=ExtResource("15_ytsg0")]
 position = Vector2(2011, 414)

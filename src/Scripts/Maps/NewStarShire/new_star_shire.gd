@@ -33,8 +33,8 @@ func _ready() -> void:
 	super()
 	SignalBus.spawn_tech_tree.connect(add_tech_tree_to_scene)
 	SignalBus.issue_can_craft_sword_scene.connect(new_sword_unlock_notice)
-	TechTreeManager.unlock_cooking_station.connect(unlock_cooking_station)
-	TechTreeManager.unlock_refinery.connect(unlock_refinery_station)
+	TechTreeManager.unlock_station.connect(unlock_station)
+
 	CookingManager.can_craft_bar.emit()
 	hud.animation_player.play("CloseIn")
 
@@ -53,7 +53,7 @@ func _process(delta: float) -> void:
 			spawn_tower_entrance_map() #need to check how many checkpoints unlocked
 		else:
 			go_to_test_floor()
-		
+			
 	if Input.is_action_just_pressed("interact") and player_in_market_range and GameManager.player_can_move:
 		GameManager.player_can_move = false
 		player.velocity = Vector2.ZERO
@@ -179,7 +179,6 @@ func _on_crafting_station_area_body_exited(body: Node2D) -> void:
 
 func unlock_cooking_station() -> void:
 	camera.player = null
-	GameManager.player_can_move = false
 	player.send_to_idle_state()
 	hud.animation_player.play("FadeInOut")
 	await get_tree().create_timer(0.5).timeout
@@ -198,11 +197,10 @@ func unlock_cooking_station() -> void:
 	await get_tree().create_timer(0.5).timeout
 	camera.position = player.position
 	camera.player = player
-	GameManager.player_can_move = true
+
 	
 func unlock_refinery_station() -> void:
 	camera.player = null
-	GameManager.player_can_move = false
 	player.send_to_idle_state()
 	hud.animation_player.play("FadeInOut")
 	await get_tree().create_timer(0.5).timeout
@@ -223,9 +221,21 @@ func unlock_refinery_station() -> void:
 	await get_tree().create_timer(0.5).timeout
 	camera.position = player.position
 	camera.player = player
+
+
+func unlock_station() -> void:
+	GameManager.player_can_move = false
+	if PlayerStats.show_cooking_station_unlock_animation:
+		await unlock_cooking_station()
+	
+	if PlayerStats.show_refinery_station_unlock_animation:
+		await unlock_refinery_station()
+		
 	GameManager.player_can_move = true
 
+
 func new_sword_unlock_notice() -> void:
+	GameManager.player_can_move = false
 	camera.player = null
 	player.send_to_idle_state()
 	hud.animation_player.play("FadeInOut")

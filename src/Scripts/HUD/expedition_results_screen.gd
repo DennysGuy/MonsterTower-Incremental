@@ -6,6 +6,7 @@ class_name ExpeditionResultsScreen extends Control
 @onready var bank_notice: Label = $ResultsPanel/InventoryPanel/BankNotice
 @onready var ore_bag_label: Label = $ResultsPanel/InventoryPanel/OreBagLabel
 @onready var ore_inventory_container: GridContainer = $ResultsPanel/InventoryPanel/OreInventoryContainer
+@onready var floor_reached: Label = $ResultsPanel/GoalPanel/FloorReached
 
 @onready var to_town: Button = $ResultsPanel/ToTown
 @onready var new_run: Button = $ResultsPanel/NewRun
@@ -27,7 +28,8 @@ var tips : Array[String] = [
 	"Life is like a box chocolates. It's tasty.",
 	"Feeling the grind? Yeah, so are we.",
 	"Jumping up ladders is the fastest way, but look out for enemies above!",
-	"Consecutive expedition runs are a great way to make money fast!"
+	"Consecutive expedition runs are a great way to make money fast!",
+	"Sometimes taking on harm to progress is necessary.."
 ]
 
 # Called when the node enters the scene tree for the first time.
@@ -35,7 +37,7 @@ func _ready() -> void:
 	init_containers()
 	animation_player.play("CloseOut")
 	tips_and_tricks.text = tips.pick_random()
-	
+	floor_reached.text = "%s %s" %[GameManager.previous_map_data.biome, GameManager.previous_map_data.floor_name]
 	MusicPlayer.play_song(TEMP_RESULTS_SCREEN_THEME)
 	await get_tree().create_timer(2.5).timeout
 	if PlayerStats.facilities_unlocked["Bank"]:

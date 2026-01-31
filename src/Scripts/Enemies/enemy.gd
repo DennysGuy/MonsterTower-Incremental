@@ -5,6 +5,7 @@ class_name Enemy extends Entity
 @export var name_tag : NameTag
 @export var health_bar : EnemyHealthBar
 @export var player : Player
+@export var drop_scene : Map
 
 @export_group("Detectors")
 @export var wall_detector : RayCast2D
@@ -20,6 +21,10 @@ func _ready() -> void:
 	if health_bar:
 		health_bar.max_value = health
 		health_bar.value = health
+
+func _exit_tree() -> void:
+	if is_dead:
+		SignalBus.update_kill_quota.emit()
 		
 func _process(delta: float) -> void:
 	super(delta)
@@ -31,7 +36,7 @@ func update_health_bar() -> void:
 	health_bar.value = health
 
 func start_fadeout() -> void:
-	await get_tree().create_timer(1.0).timeout
+	await get_tree().create_timer(0.5).timeout
 	blink_effect()
 
 func player_is_dead():

@@ -24,6 +24,8 @@ const CLOSE_IN = preload("uid://dc3va7knibxnb")
 const CLOSE_OUT = preload("uid://caj0oih8j2sty")
 const COUNTDOWN_BEEP = preload("uid://c6caiqmkt2lt0")
 
+@onready var monsters_left: RichTextLabel = $PlayerHUD/MonstersLeft
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	SignalBus.update_player_health.connect(update_player_health)
@@ -31,8 +33,12 @@ func _ready() -> void:
 	SignalBus.issue_big_notification.connect(issue_big_notification)
 	SignalBus.hide_big_notification.connect(hide_big_notification_label)
 	SignalBus.play_close_out_animation.connect(play_close_out_animation)
+	
 	SignalBus.update_kill_quota_text.connect(update_kill_quota_text)
+	SignalBus.update_monsters_left.connect(remaining_monsters)
 	SignalBus.play_countdown_beep.connect(play_countdown_beep)
+	
+	
 	
 	SignalBus.show_can_cook_dish_label.connect(show_can_cook_dish)
 	SignalBus.show_can_smelt_bar_label.connect(show_can_smelt_bar)
@@ -67,13 +73,15 @@ func spawn_respawn_box() -> void:
 	player_hud.add_child(respawn_box)
 
 func update_kill_quota_text(message : String, quota_met : bool, out_of_enemies : bool) -> void:
-	if quota_met:
-		hunt_quota.text = "[color=green]"+message+"[/color]"
-	else:
-		if out_of_enemies:
-			hunt_quota.text = "[color=yellow]Insufficient floor spawn[/color]"
+	if is_inside_tree():
+		await get_tree().process_frame
+		if quota_met:
+			hunt_quota.text = "[color=green]"+message+"[/color]"
 		else:
-			hunt_quota.text = message
+			if out_of_enemies:
+				hunt_quota.text = "[color=yellow]Insufficient floor spawn[/color]"
+			else:
+				hunt_quota.text = message
 
 func show_bag() -> void:
 	bag_showing = !bag_showing
@@ -124,3 +132,9 @@ func hide_can_smelt_bar() -> void:
 
 func hide_can_craft_sword() -> void:
 	can_craft_sword.hide()
+
+func remaining_monsters(text : String, out_of_enmies : bool) -> void:
+	if !out_of_enmies:
+		monsters_left.text = text
+	else:
+		monsters_left.text = "[color=yellow]Out of Monsters!\nIncrease Cap![/color]"
