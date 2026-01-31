@@ -30,6 +30,7 @@ var is_climbing : bool = false
 var prev_input : int
 var prev_move_speed : float
 var mining_area_position : Vector2
+var hit_box_position : Vector2
 
 @export var idle_state : State
 
@@ -38,6 +39,8 @@ func _ready() -> void:
 	SignalBus.update_sword_texture.connect(set_sword_texture)
 	health = PlayerStats.player_stats["Max Health"]
 	mining_area_position = mining_area.position
+	hit_box_position = hit_box.position
+	dash_attack_hit_box.position = hit_box_position
 	
 func _process(delta: float) -> void:
 	super(delta)
@@ -60,9 +63,12 @@ func flip_textures(flip : bool) -> void:
 	
 	if flip:
 		mining_area.position = Vector2(-mining_area_position.x, mining_area_position.y)
+		hit_box.position = Vector2(-hit_box_position.x, hit_box_position.y)
+		dash_attack_hit_box.position = Vector2(-hit_box_position.x, hit_box_position.y)
 	else:
 		mining_area.position = mining_area_position
-	
+		hit_box.position = hit_box_position
+		dash_attack_hit_box.position = hit_box_position
 	
 func start_invincibility() -> void:
 	damageable = false
@@ -125,7 +131,7 @@ func blink_effect() -> void:
 	if not is_inside_tree():
 		return 
 		
-	var invincibility_duration : float = 1.5
+	var invincibility_duration : float = PlayerStats.player_stats["Invincibility Duration"]
 	var blink_current_time : float = 0.0
 	var blink_wait_time : float = 0.1
 	

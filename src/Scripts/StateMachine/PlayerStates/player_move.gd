@@ -7,6 +7,8 @@ class_name PlayerMove extends State
 
 @export var move_sfx : AudioStream
 
+@export var attack_1_state : State
+
 func enter() -> void:
 	super()
 	parent.can_knock_back = true
@@ -20,8 +22,11 @@ func process_input(_event: InputEvent) -> State:
 	if Input.is_action_pressed("add_currency") and parent.is_on_floor() and GameManager.player_can_move:
 		return jump_state
 	
-	if Input.is_action_just_pressed("swing_sword") and PlayerStats.facilities_unlocked["Dash Attack"] and GameManager.player_can_move and parent.can_dash_attack:
-		return dash_attack_state
+	if Input.is_action_just_pressed("swing_sword") and GameManager.player_can_move:
+		if PlayerStats.facilities_unlocked["Dash Attack"]  and parent.can_dash_attack:
+			return dash_attack_state
+		else:
+			return attack_1_state
 	
 	return null
 

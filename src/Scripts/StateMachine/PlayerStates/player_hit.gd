@@ -38,8 +38,6 @@ func process_physics(_delta: float) -> State:
 	if parent.can_knock_back:
 		parent.velocity.x = knock_back_direction * PlayerStats.KNOCKBACK_FORCE
 		
-
-		
 		if parent.timer.time_left <= 0:
 			if Input.is_action_pressed("swing_sword"):
 				return attack_1_state

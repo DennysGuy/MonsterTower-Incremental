@@ -66,13 +66,15 @@ func spawn_respawn_box() -> void:
 	var respawn_box : RespawnBox = preload("uid://dv20tfcnkjyux").instantiate()
 	player_hud.add_child(respawn_box)
 
-func update_kill_quota_text(message : String, quota_met : bool) -> void:
+func update_kill_quota_text(message : String, quota_met : bool, out_of_enemies : bool) -> void:
 	if quota_met:
 		hunt_quota.text = "[color=green]"+message+"[/color]"
 	else:
-		hunt_quota.text = message
+		if out_of_enemies:
+			hunt_quota.text = "[color=yellow]Insufficient floor spawn[/color]"
+		else:
+			hunt_quota.text = message
 
-	
 func show_bag() -> void:
 	bag_showing = !bag_showing
 	if bag_showing:

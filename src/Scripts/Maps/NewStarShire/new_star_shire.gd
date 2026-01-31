@@ -47,7 +47,6 @@ func _ready() -> void:
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	print(PlayerStats.player_stats["Current Health"])
 	if Input.is_action_just_pressed("interact") and player_in_tower_range and GameManager.player_can_move and PlayerStats.facilities_unlocked["Hunter License"]:
 		GameManager.player_can_move = false
 		if PlayerStats.check_points_unlocked["Floor 1-2"]:
@@ -114,7 +113,6 @@ func go_to_test_floor() -> void:
 func spawn_tower_entrance_map() -> void:
 	var tower_entrance_map : TowerEntranceMap = preload("uid://bgurt44iah13x").instantiate()
 	control.add_child(tower_entrance_map)
-
 
 func spawn_grand_market() -> void:
 	var market : GrandMarketMenu = preload("uid://cfuw5h0apwpq").instantiate()

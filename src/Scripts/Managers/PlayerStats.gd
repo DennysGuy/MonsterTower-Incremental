@@ -63,6 +63,17 @@ const KNOCKBACK_FORCE : int = 300
 	"Floor 1-3" : false
 }
 
+@onready var floor_quotas : Dictionary[String, Dictionary] = {
+	"Floor 1-1" : {
+		"Current Count": 0,
+		"Quota": 30
+	},
+	"Floor 1-2" : {
+		"Current Count": 0,
+		"Quota": 30
+	}
+}
+
 const MAX_SWORD_COUNT := 3
 
 var show_cooking_station_unlock_animation : bool = false

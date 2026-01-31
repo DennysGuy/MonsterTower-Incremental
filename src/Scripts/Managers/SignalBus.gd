@@ -40,7 +40,7 @@ signal issue_can_craft_sword_scene
 signal play_close_out_animation
 
 @warning_ignore("unused_signal")
-signal update_kill_quota_text(message : String, hit_quota : bool)
+signal update_kill_quota_text(message : String, hit_quota : bool, out_of_enemies : bool)
 @warning_ignore("unused_signal")
 signal update_kill_quota
 @warning_ignore("unused_signal")

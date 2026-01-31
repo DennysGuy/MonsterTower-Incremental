@@ -183,25 +183,6 @@ theme_override_fonts/normal_font = ExtResource("6_wwjc2")
 theme_override_font_sizes/normal_font_size = 10
 text = "The core of a corrupted mushie purified through a chemical process when dropped. Used in crafting exoctic dishes!"
 
-[node name="SellAllButton" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = 74.0
-offset_top = -84.0
-offset_right = 159.0
-offset_bottom = -64.0
-grow_horizontal = 2
-grow_vertical = 0
-mouse_default_cursor_shape = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("5_oesmi")
-theme_override_font_sizes/font_size = 10
-text = "Sell Inventories"
-
 [node name="Close" type="Button" parent="."]
 layout_mode = 1
 offset_left = 145.0
@@ -271,6 +252,7 @@ offset_top = 199.0
 offset_right = 146.0
 offset_bottom = 303.0
 grow_horizontal = 2
+mouse_filter = 2
 columns = 4
 
 [node name="BankNotice" type="Label" parent="."]
@@ -337,6 +319,25 @@ theme_override_fonts/font = ExtResource("6_wwjc2")
 theme_override_font_sizes/font_size = 12
 text = "Novelty Item"
 
+[node name="SellAllButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 74.0
+offset_top = -84.0
+offset_right = 159.0
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_oesmi")
+theme_override_font_sizes/font_size = 10
+text = "Sell Inventories"
+
 [node name="CookingRect" type="ColorRect" parent="."]
 layout_mode = 0
 offset_left = 257.0
@@ -354,5 +355,5 @@ offset_bottom = 325.0
 color = Color(0.2483125, 0.57688683, 0.7351986, 1)
 
 [connection signal="button_up" from="DetailsPanel/SellButton" to="." method="_on_sell_button_button_up"]
-[connection signal="button_up" from="SellAllButton" to="." method="_on_sell_all_button_button_up"]
 [connection signal="button_up" from="Close" to="." method="_on_close_button_up"]
+[connection signal="button_up" from="SellAllButton" to="." method="_on_sell_all_button_button_up"]

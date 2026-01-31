@@ -58,10 +58,10 @@ func _ready() -> void:
 		if map_type == MAP_TYPE.CHECKPOINT_FLOOR:
 			if tower_entrance_data.kill_quota_hit:
 				SignalBus.unlock_next_room.emit()
-				SignalBus.update_kill_quota_text.emit("Next Floor Unlocked!", tower_entrance_data.kill_quota_hit)
+				SignalBus.update_kill_quota_text.emit("Next Floor Unlocked!", tower_entrance_data.kill_quota_hit,false)
 			else:
 				SignalBus.update_kill_quota.connect(update_hunt_quota)
-				SignalBus.update_kill_quota_text.emit("Floor Hunt Quota %s/%s" % [current_kill_count,kill_quota], false)
+				SignalBus.update_kill_quota_text.emit("Floor Hunt Quota %s/%s" % [current_kill_count,kill_quota], false, false)
 
 			PlayerStats.check_points_unlocked[map_name] = true
 		
@@ -140,7 +140,12 @@ func update_hunt_quota() -> void:
 		if current_kill_count >= kill_quota:
 			tower_entrance_data.kill_quota_hit = true
 			SignalBus.unlock_next_room.emit()
-			SignalBus.update_kill_quota_text.emit("Next Floor Unlocked!", tower_entrance_data.kill_quota_hit)
+			SignalBus.update_kill_quota_text.emit("Next Floor Unlocked!", tower_entrance_data.kill_quota_hit, false)
 		else:
-			SignalBus.update_kill_quota_text.emit("Floor Hunt Quota %s/%s" %[current_kill_count,kill_quota], tower_entrance_data.kill_quota_hit)	
+			print("ENEMY SIZE: %s" % get_tree().get_nodes_in_group("Enemy").size() )
+			print(get_tree().get_nodes_in_group("Enemy"))
+			if get_tree().get_nodes_in_group("Enemy").is_empty():
+				SignalBus.update_kill_quota_text.emit("", tower_entrance_data.kill_quota_hit, true)	
+			else:
+				SignalBus.update_kill_quota_text.emit("Floor Hunt Quota %s/%s" %[current_kill_count,kill_quota], tower_entrance_data.kill_quota_hit,false)	
 	
