@@ -8,6 +8,7 @@ class_name PlayerFall extends State
 @export var air_attack : State
 func enter() -> void:
 	super()
+	parent.can_knock_back = true
 	parent.set_sword_texture(animation_name)
 	
 func exit() -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://b7n3fwd3y85wp"]
+[gd_scene load_steps=45 format=3 uid="uid://b7n3fwd3y85wp"]
 
 [ext_resource type="Script" uid="uid://nb5nyiymrgyp" path="res://src/Scripts/TechTree/tech_tree.gd" id="1_1fw0b"]
 [ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="2_d4ivd"]
@@ -43,6 +43,7 @@
 [ext_resource type="Resource" uid="uid://bonlosm00p4kf" path="res://src/Resources/TechTree/TechNodes/DashAttack.tres" id="37_34cer"]
 [ext_resource type="Resource" uid="uid://c5l21ge3ylc0e" path="res://src/Resources/TechTree/TechNodes/Defense2.tres" id="37_pqlb5"]
 [ext_resource type="Resource" uid="uid://ioelpq1d2fhp" path="res://src/Resources/TechTree/TechNodes/DashDuration1.tres" id="39_iyves"]
+[ext_resource type="Resource" uid="uid://cmi3owisj2vs7" path="res://src/Resources/TechTree/TechNodes/InvincibilityDuration1.tres" id="39_l65vq"]
 
 [node name="TechTree" type="Node2D"]
 script = ExtResource("1_1fw0b")
@@ -225,15 +226,15 @@ points = PackedVector2Array(-2, 13, -2, 56)
 width = 3.0
 
 [node name="MovementSpeed1" parent="Nodes" instance=ExtResource("5_2ltmf")]
-position = Vector2(484, 254)
+position = Vector2(505, 254)
 tech_node_stats = ExtResource("21_dvfnf")
 
 [node name="Line2D" type="Line2D" parent="Nodes/MovementSpeed1"]
-points = PackedVector2Array(11, 0, 60, 0)
+points = PackedVector2Array(11, 0, 38, 0)
 width = 3.0
 
 [node name="MovementSpeed2" parent="Nodes" instance=ExtResource("5_2ltmf")]
-position = Vector2(485, 186)
+position = Vector2(506, 186)
 tech_node_stats = ExtResource("22_vbmlq")
 
 [node name="Line2D" type="Line2D" parent="Nodes/MovementSpeed2"]
@@ -344,6 +345,15 @@ tech_node_stats = ExtResource("37_pqlb5")
 points = PackedVector2Array(-12, -8, -29, -22)
 width = 3.0
 
+[node name="InvincibilityDuration1" parent="Nodes" instance=ExtResource("5_2ltmf")]
+position = Vector2(431, 254)
+tech_node_stats = ExtResource("39_l65vq")
+
+[node name="Line2D" type="Line2D" parent="Nodes/InvincibilityDuration1"]
+position = Vector2(10.868652, 3.784851)
+points = PackedVector2Array(1.1313477, -3.784851, 47.131348, -3.784851)
+width = 3.0
+
 [node name="DashAttackDuration1Node" parent="Nodes" instance=ExtResource("5_2ltmf")]
 position = Vector2(823, 208)
 tech_node_stats = ExtResource("39_iyves")
@@ -407,6 +417,20 @@ theme_override_fonts/font = ExtResource("13_uk0x3")
 theme_override_font_sizes/font_size = 16
 text = "0/10"
 horizontal_alignment = 1
+
+[node name="HuntingTime" type="Label" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -166.0
+offset_top = 50.0
+offset_right = -45.0
+offset_bottom = 67.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("13_uk0x3")
+theme_override_font_sizes/font_size = 16
+text = "Hunt Time: 25"
 
 [node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
 anchors_preset = 5

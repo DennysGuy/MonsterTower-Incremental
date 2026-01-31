@@ -1133,6 +1133,7 @@ _data = {
 size = Vector2(23, 55)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_45oew"]
+size = Vector2(36.375, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dwhqw"]
 size = Vector2(33, 46)
@@ -1241,11 +1242,12 @@ idle_state = NodePath("../Idle")
 duration = 0.5
 animation_name = "SwordSwing3"
 
-[node name="Hit" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state")]
+[node name="Hit" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "attack_1_state")]
 script = ExtResource("11_susmm")
 wait_time = 0.15
 invincibility_time = 3.0
 idle_state = NodePath("../Idle")
+attack_1_state = NodePath("../Attack1")
 hit_sfx = ExtResource("18_8xpqf")
 animation_name = "Jump"
 
@@ -1306,11 +1308,11 @@ position = Vector2(-1.5, -27.5)
 shape = SubResource("RectangleShape2D_susmm")
 
 [node name="HitBox" parent="." instance=ExtResource("16_cw62c")]
-position = Vector2(34, -20)
+position = Vector2(21, -20)
 scale = Vector2(2, 2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(2, 0)
+position = Vector2(-0.625, 0)
 shape = SubResource("RectangleShape2D_45oew")
 
 [node name="DashAttackHitBox" parent="." instance=ExtResource("16_cw62c")]
@@ -1318,7 +1320,7 @@ position = Vector2(34, -20)
 scale = Vector2(2, 2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DashAttackHitBox"]
-position = Vector2(2, 0)
+position = Vector2(-7.3125, 0)
 shape = SubResource("RectangleShape2D_45oew")
 disabled = true
 

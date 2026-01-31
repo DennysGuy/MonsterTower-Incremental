@@ -16,6 +16,9 @@ var map_name : String = ""
 @onready var sfx_player: SFXPlayer = $SfxPlayer
 @onready var bag_2: OreBag = $PlayerHUD/Bag2
 
+@onready var can_cook_dish: RichTextLabel = $PlayerHUD/CanCookDish
+@onready var can_smelt_bar: RichTextLabel = $PlayerHUD/CanSmeltBar
+@onready var can_craft_sword: RichTextLabel = $PlayerHUD/CanCraftSword
 
 const CLOSE_IN = preload("uid://dc3va7knibxnb")
 const CLOSE_OUT = preload("uid://caj0oih8j2sty")
@@ -31,12 +34,20 @@ func _ready() -> void:
 	SignalBus.update_kill_quota_text.connect(update_kill_quota_text)
 	SignalBus.play_countdown_beep.connect(play_countdown_beep)
 	
-	player_health_bar.max_value = PlayerStats.player_stats["Max Health"]
-	player_health_bar.value = PlayerStats.player_stats["Current Health"]
+	SignalBus.show_can_cook_dish_label.connect(show_can_cook_dish)
+	SignalBus.show_can_smelt_bar_label.connect(show_can_smelt_bar)
+	SignalBus.show_can_craft_sword.connect(show_can_craft_sword)
+	
+	SignalBus.hide_can_cook_dish_label.connect(hide_can_cook_dish)
+	SignalBus.hide_can_smelt_bar_label.connect(hide_can_smelt_bar)
+	SignalBus.hide_can_craft_sword.connect(hide_can_craft_sword)
+	
+	#player_health_bar.max_value = PlayerStats.player_stats["Max Health"]
+	#player_health_bar.value = PlayerStats.player_stats["Current Health"]
 	
 	player_mp_bar.max_value = PlayerStats.player_stats["Current MP"]
 	player_mp_bar.value = player_mp_bar.max_value
-	update_player_health(int(PlayerStats.player_stats["Current Health"]))
+	#update_player_health(int(PlayerStats.player_stats["Current Health"]))
 	
 	if PlayerStats.facilities_unlocked["Refinery Station"]:
 		bag_2.show()
@@ -48,6 +59,7 @@ func _process(delta: float) -> void:
 
 func update_player_health(value : int) -> void:
 	player_health_bar.value = value
+	player_health_bar.max_value = PlayerStats.player_stats["Max Health"]
 	hp_label.text = "%s/%s" % [int(player_health_bar.value), int(player_health_bar.max_value)]
 
 func spawn_respawn_box() -> void:
@@ -92,3 +104,21 @@ func play_close_in_sfx() -> void:
 
 func play_countdown_beep() -> void:
 	sfx_player.play_sfx(COUNTDOWN_BEEP)
+
+func show_can_cook_dish() -> void:
+	can_cook_dish.show()
+
+func show_can_smelt_bar() -> void:
+	can_smelt_bar.show()
+
+func show_can_craft_sword() -> void:
+	can_craft_sword.show()
+
+func hide_can_cook_dish() -> void:
+	can_cook_dish.hide()
+
+func hide_can_smelt_bar() -> void:
+	can_smelt_bar.hide()
+
+func hide_can_craft_sword() -> void:
+	can_craft_sword.hide()

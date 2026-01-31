@@ -6,6 +6,7 @@ class_name TechTree extends Node2D
 @onready var progress_bar: ProgressBar = $CanvasLayer/ProgressBar
 @onready var camera_2d: Camera2D = $Camera2D
 @onready var marker_2d: Marker2D = $CanvasLayer/Marker2D
+@onready var hunting_time: Label = $CanvasLayer/HuntingTime
 
 @onready var canvas_layer: CanvasLayer = $CanvasLayer
 
@@ -13,7 +14,7 @@ class_name TechTree extends Node2D
 
 const CLOSE_UPGRADE_PC = preload("uid://ckgce5whd3hq7")
 const OPEN_UPGRADE_PC = preload("uid://coaqdaythm28l")
-
+const TIER_UP = preload("uid://dhfdudbiidv7a")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -26,6 +27,7 @@ func _ready() -> void:
 	TechTreeManager.update_prestige_tier_progress_label.connect(update_prestige_progress)
 	TechTreeManager.add_tool_tip.connect(add_tool_tip)
 	sfx_player.play_sfx(OPEN_UPGRADE_PC)
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -40,11 +42,13 @@ func update_currency_label() -> void:
 
 func update_prestige_label() -> void:
 	presitge_tier.text = "License Tier: %s" % [TechTreeManager.current_prestige]
+	sfx_player.play_sfx(TIER_UP)
 
 func update_prestige_progress() -> void:
 	prestige_progress.text = "%s/%s" % [TechTreeManager.current_upgrade_count, TechTreeManager.upgrade_count_to_prestige]
 	progress_bar.max_value = TechTreeManager.upgrade_count_to_prestige
 	progress_bar.value = TechTreeManager.current_upgrade_count
+	hunting_time.text = "Hunt Time: %s sec." % [int(PlayerStats.player_stats["Expedition Time"])] 
 	
 func _enter_tree() -> void:
 	GameManager.player_can_move = false

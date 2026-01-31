@@ -12,6 +12,7 @@ class_name PlayerIdle extends State
 
 func enter() -> void:
 	parent.set_sword_texture(animation_name)
+	parent.can_knock_back = true
 	super()
 
 func exit() -> void:

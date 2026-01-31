@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://ba10y7m4ljulk" path="res://src/Scripts/Main/disclaimer.gd" id="1_17ifk"]
 [ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="1_msxod"]
 
-[sub_resource type="Animation" id="Animation_17ifk"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_c3iyh"]
+resource_name = "Fadein"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -12,10 +12,10 @@ tracks/0/path = NodePath("TransitionRect:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_r5ucx"]
@@ -33,8 +33,8 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_c3iyh"]
-resource_name = "Fadein"
+[sub_resource type="Animation" id="Animation_17ifk"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -42,10 +42,10 @@ tracks/0/path = NodePath("TransitionRect:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qcbsl"]
@@ -91,7 +91,7 @@ theme_override_fonts/font = ExtResource("1_msxod")
 theme_override_font_sizes/font_size = 20
 text = "Hello, and thank you for playing!
 
-What you’re about to experience is an early proof-of-concept build. Many elements are temporary, incomplete, or missing, and gameplay is intentionally limited—just enough to communicate the core loop.
+What you’re about to experience is an early proof-of-concept build. Many elements are temporary, incomplete, or missing, and gameplay is intentionally limited—just enough to communicate the core loop. There also might be some noticable bugs - which will be ironed on in the future.
 
 ** Music is borrowed from RPG Maker 2000 and RPG Maker MZ **
 

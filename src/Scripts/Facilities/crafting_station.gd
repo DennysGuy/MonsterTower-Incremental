@@ -96,6 +96,8 @@ func _on_exit_button_up() -> void:
 		if show_can_craft_next_sword_scene:
 			SignalBus.issue_can_craft_sword_scene.emit()
 			show_can_craft_next_sword_scene = false
+	CookingManager.can_craft_bar.emit()
+	CookingManager.can_craft_dish.emit()
 	get_parent().queue_free()
 
 func _on_start_crafting_button_up() -> void:

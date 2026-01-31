@@ -3,7 +3,7 @@ class_name PlayerHitState extends State
 @export var wait_time : float
 @export var invincibility_time : float
 @export var idle_state : State
-
+@export var attack_1_state : State
 @export var hit_sfx : AudioStream
 
 var knock_back_direction : int
@@ -35,12 +35,19 @@ func process_frame(_delta: float) -> State:
 	return null
 
 func process_physics(_delta: float) -> State:
+	if parent.can_knock_back:
+		parent.velocity.x = knock_back_direction * PlayerStats.KNOCKBACK_FORCE
+		
+
+		
+		if parent.timer.time_left <= 0:
+			if Input.is_action_pressed("swing_sword"):
+				return attack_1_state
+			return idle_state
 	
-	parent.velocity.x = knock_back_direction * PlayerStats.KNOCKBACK_FORCE
+		parent.move_and_slide()
+	else:
+		return idle_state	
 	
-	if parent.timer.time_left <= 0:
-		return idle_state
-	
-	parent.move_and_slide()
 	return null
 		

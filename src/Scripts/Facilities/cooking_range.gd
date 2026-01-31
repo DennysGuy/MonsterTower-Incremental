@@ -28,5 +28,7 @@ func check_if_can_cook() -> void:
 	if PlayerStats.facilities_unlocked["Cooking Station"]:
 		if CookingManager.can_cook_recipe():
 			notification_icon.set_notice_icon()
+			SignalBus.show_can_cook_dish_label.emit()
 		else:
 			notification_icon.hide()
+			SignalBus.hide_can_cook_dish_label.emit()

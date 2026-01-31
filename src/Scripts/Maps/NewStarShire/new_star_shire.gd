@@ -39,8 +39,11 @@ func _ready() -> void:
 	hud.animation_player.play("CloseIn")
 
 	if PlayerStats.player_stats["Equipped Sword"] < PlayerStats.MAX_SWORD_COUNT-1 and PlayerStats.can_craft_next_sword():
+		SignalBus.show_can_craft_sword.emit()
 		await get_tree().create_timer(1.0).timeout
 		new_sword_unlock_notice()
+	else:
+		SignalBus.hide_can_craft_sword.emit()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -102,6 +105,7 @@ func go_to_test_floor() -> void:
 	GameManager.spawn_location = 0
 	hud.animation_player.play("CloseOut")
 	GameManager.player_can_move = true
+	GameManager.resupply_character = true
 	if PlayerStats.facilities_unlocked["Bank"]:
 		InventoryManager.move_inventory_to_bank()
 	await get_tree().create_timer(1.0).timeout

@@ -12,6 +12,11 @@ class_name ToolTip extends Control
 @onready var quantity_list: GridContainer = $ToolTip/OwnedList/QuantityList
 @onready var owned_list: Panel = $ToolTip/OwnedList
 
+var can_buy : String = "#008260"
+var unlocked : String = "#68754B"
+var locked : String = "#666A68"
+@export var panel: ColorRect
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	TechTreeManager.update_tool_tip_info.connect(update_info)

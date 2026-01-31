@@ -8,6 +8,7 @@ class_name PlayerJump extends State
 
 func enter() -> void:
 	super()
+	parent.can_knock_back = true
 	parent.sfx_player.play_sfx(jump_sfx)
 	parent.set_sword_texture(animation_name)
 	parent.velocity.y -= PlayerStats.player_stats["Jump Height"]

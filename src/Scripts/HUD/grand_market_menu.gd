@@ -94,18 +94,25 @@ func clear_details() -> void:
 
 func _on_close_button_up() -> void:
 	GameManager.player_can_move = true
+	CookingManager.can_craft_bar.emit()
+	CookingManager.can_craft_dish.emit()
 	queue_free()
 
 func init_market() -> void:
 	clear_details()
 	currency.text = "Currency: %s" % [TechTreeManager.currency]
 	InventoryManager.update_grid_container(inventory_container, "Inventory")
-	InventoryManager.update_grid_container(ore_inventory_container, "Ore Inventory")
+	if PlayerStats.facilities_unlocked["Refinery Station"]:
+		ore_bag_label.show()
+		InventoryManager.update_grid_container(ore_inventory_container, "Ore Inventory")
+		
 	if PlayerStats.facilities_unlocked["Bank"]:
 		sell_all_button.show()
 		InventoryManager.update_grid_container(bank_container, "Bank")
 	else:
 		bank_notice.show()
+		
+		
 	
 func sell_all_items(container : GridContainer, inventory_name : String) -> void:
 	var inventory : Array = InventoryManager.inventories[inventory_name]

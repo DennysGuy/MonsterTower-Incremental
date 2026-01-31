@@ -51,3 +51,17 @@ signal update_entrance_map(index : int)
 signal update_resource_needed_panel
 @warning_ignore("unused_signal")
 signal play_countdown_beep
+
+@warning_ignore("unused_signal")
+signal show_can_cook_dish_label
+@warning_ignore("unused_signal")
+signal show_can_smelt_bar_label
+@warning_ignore("unused_signal")
+signal show_can_craft_sword
+
+@warning_ignore("unused_signal")
+signal hide_can_cook_dish_label
+@warning_ignore("unused_signal")
+signal hide_can_smelt_bar_label
+@warning_ignore("unused_signal")
+signal hide_can_craft_sword

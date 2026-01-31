@@ -25,6 +25,7 @@ func _process(delta: float) -> void:
 func _on_go_to_floor_button_up() -> void:
 	SignalBus.play_close_out_animation.emit()
 	GameManager.player_can_move = true
+	GameManager.resupply_character = true
 	hide()
 	if PlayerStats.facilities_unlocked["Bank"]:
 		InventoryManager.move_inventory_to_bank()

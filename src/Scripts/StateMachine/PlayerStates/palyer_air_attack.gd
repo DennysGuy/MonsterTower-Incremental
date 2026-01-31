@@ -5,6 +5,8 @@ class_name PlayerAirAttack extends State
 
 func enter() -> void:
 	super()
+	parent.can_knock_back = true
+	parent.damageable = false
 	parent.dash_attack_collision_shape.disabled = false
 	parent.set_sword_texture(animation_name)
 	parent.timer.wait_time = animation_duration
@@ -13,6 +15,7 @@ func enter() -> void:
 	parent.sfx_player.play_sfx(swing,3.0)
 
 func exit() -> void:
+	parent.damageable = true
 	parent.clear_effect_texture()
 	parent.dash_attack_collision_shape.disabled = true
 	stop_player()

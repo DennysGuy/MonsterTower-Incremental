@@ -45,10 +45,7 @@ func _ready() -> void:
 				checkpoint_campfire.animation_player.play("On")
 
 		if map_type == MAP_TYPE.HUB and map_name == "Starspire - Hub":
-			if PlayerStats.facilities_unlocked["Cooking Station"]:
-				GameManager.spawn_location = 1
-			else:
-				GameManager.spawn_location = 0
+			GameManager.spawn_location = 0
 		
 		if hud:
 			hud.show()
@@ -71,13 +68,10 @@ func _ready() -> void:
 		if map_type ==	MAP_TYPE.FLOOR or map_type == MAP_TYPE.CHECKPOINT_FLOOR:
 				hud.start_expedition_timer()
 	
-
-		
 	if ambience_player and ambience_sfx:
 		ambience_player.stream = ambience_sfx
 		ambience_player.play()
 	
-
 	if map_theme_song:
 		if !MusicPlayer.transitioning_floors:
 			MusicPlayer.play_song(map_theme_song)
@@ -98,10 +92,11 @@ func spawn_player() -> void:
 	if GameManager.resupply_character:
 		PlayerStats.player_stats["Current Health"] = PlayerStats.player_stats["Max Health"]
 		PlayerStats.player_stats["Current MP"] = PlayerStats.player_stats["Max MP"]
+		player.health = PlayerStats.player_stats["Max Health"]
 		GameManager.resupply_character = false
 		
 	player.health = PlayerStats.player_stats["Current Health"]
-	hud.update_player_health(int(PlayerStats.player_stats["Current Health"]))
+	hud.update_player_health(int(player.health))
 	#SignalBus.update_player_health.emit(player.health)
 	add_child(player)
 	

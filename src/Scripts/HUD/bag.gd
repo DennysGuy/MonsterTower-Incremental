@@ -3,6 +3,8 @@ class_name InventoryBag extends Control
 @onready var texture_rect: TextureRect = $TextureRect
 @onready var grid_container: GridContainer = $TextureRect/GridContainer
 @onready var bag_full: Label = $BagFull
+@onready var sfx_player: SFXPlayer = $SfxPlayer
+const BAG_FULL = preload("uid://bakwpx4g6fqth")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -40,6 +42,7 @@ func update_grid_container() -> void:
 func check_if_bag_full() -> void:
 	if InventoryManager.check_if_inventory_full("Inventory", "Bag", "Max Bag Stack"):
 		show_bag_full()
+		sfx_player.play_sfx(BAG_FULL)
 	else:
 		hide_bag_full()
 

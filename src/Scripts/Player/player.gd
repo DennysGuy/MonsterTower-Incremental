@@ -18,6 +18,10 @@ class_name Player extends Entity
 @onready var dash_attack_collision_shape : CollisionShape2D = $DashAttackHitBox/CollisionShape2D
 @onready var dash_attack_hit_box: HitBox = $DashAttackHitBox
 
+@onready var can_dash_attack : bool = true
+@onready var can_knock_back : bool = true
+@onready var can_spawn_gravestone : bool = true
+
 var stored_ladder : LadderArea
 var stored_enemy : Enemy
 var stored_ore_rock : OreRock
@@ -26,7 +30,7 @@ var is_climbing : bool = false
 var prev_input : int
 var prev_move_speed : float
 var mining_area_position : Vector2
-var can_dash_attack : bool = true
+
 @export var idle_state : State
 
 func _ready() -> void:

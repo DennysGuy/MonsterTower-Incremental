@@ -5,6 +5,7 @@ class_name PlayerDashAttackState extends State
 @export var dash_sfx : AudioStream
 func enter() -> void:
 	super()
+	parent.can_knock_back = false
 	parent.set_sword_texture(animation_name)
 	parent.timer.wait_time = PlayerStats.player_stats["Dash Duration"]
 	parent.timer.start()

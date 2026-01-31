@@ -433,6 +433,42 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
+[node name="CanCookDish" type="RichTextLabel" parent="PlayerHUD"]
+visible = false
+layout_mode = 0
+offset_left = 168.0
+offset_top = 3.0
+offset_right = 295.0
+offset_bottom = 20.0
+theme_override_constants/outline_size = 6
+theme_override_fonts/normal_font = ExtResource("9_jyqen")
+bbcode_enabled = true
+text = "[color=green]Dish can be cooked![/color]"
+
+[node name="CanSmeltBar" type="RichTextLabel" parent="PlayerHUD"]
+visible = false
+layout_mode = 0
+offset_left = 168.0
+offset_top = 24.0
+offset_right = 319.0
+offset_bottom = 41.0
+theme_override_constants/outline_size = 6
+theme_override_fonts/normal_font = ExtResource("9_jyqen")
+bbcode_enabled = true
+text = "[color=red]Bar can be smelted![/color]"
+
+[node name="CanCraftSword" type="RichTextLabel" parent="PlayerHUD"]
+visible = false
+layout_mode = 0
+offset_left = 168.0
+offset_top = 44.0
+offset_right = 319.0
+offset_bottom = 61.0
+theme_override_constants/outline_size = 6
+theme_override_fonts/normal_font = ExtResource("9_jyqen")
+bbcode_enabled = true
+text = "[color=yellow]Sword can be crafted![/color]"
+
 [node name="SfxPlayer" parent="." instance=ExtResource("8_65fhw")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

@@ -110,7 +110,7 @@ _data = {
 &"SpawnOut": SubResource("Animation_e6w3v")
 }
 
-[node name="ToolTip" type="Control" node_paths=PackedStringArray("node_title", "current_benefits", "description", "cost") groups=["ToolTips"]]
+[node name="ToolTip" type="Control" node_paths=PackedStringArray("node_title", "current_benefits", "description", "cost", "panel") groups=["ToolTips"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -124,6 +124,7 @@ node_title = NodePath("ToolTip/NodeTitle")
 current_benefits = NodePath("ToolTip/CurrentBenefits")
 description = NodePath("ToolTip/Description")
 cost = NodePath("ToolTip/Cost")
+panel = NodePath("ToolTip/Panel2")
 
 [node name="ToolTip" type="Panel" parent="."]
 modulate = Color(1, 1, 1, 0)
@@ -148,7 +149,7 @@ offset_left = 5.0
 offset_top = 4.0
 offset_right = 218.0
 offset_bottom = 220.0
-color = Color(1.1070073e-06, 0.5094469, 0.3749851, 1)
+color = Color(0.4010749, 0.41678932, 0.40926677, 1)
 
 [node name="NodeTitle" type="Label" parent="ToolTip"]
 layout_mode = 1

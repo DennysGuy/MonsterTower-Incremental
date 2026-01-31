@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=4 uid="uid://oonjrpabmces"]
+[gd_scene load_steps=49 format=4 uid="uid://oonjrpabmces"]
 
 [ext_resource type="Script" uid="uid://dpqc54c34418w" path="res://src/Scripts/Maps/NewStarShire/new_star_shire.gd" id="1_gq00g"]
 [ext_resource type="Texture2D" uid="uid://c21ee30haolx4" path="res://Assets/EnvironmentalAssets/TowerDistance.png" id="2_bl45m"]
@@ -31,7 +31,8 @@
 [ext_resource type="Texture2D" uid="uid://b83r1hobjk7vm" path="res://Assets/DirectionSignMessage.png" id="29_hk4f7"]
 [ext_resource type="PackedScene" uid="uid://c6tv3t1cpeq8f" path="res://src/Scenes/PlayerSpawnPoint.tscn" id="30_cxssj"]
 [ext_resource type="PackedScene" uid="uid://dgtobkubdjq27" path="res://src/Scenes/Actors/Enemies/ItemInteractable.tscn" id="31_nj75w"]
-[ext_resource type="Resource" uid="uid://cnd7ngdtcfmgc" path="res://src/Resources/Actors/Enemies/Biome1/CorruptedMushie/PurifiedMushieCore.tres" id="32_d6jc3"]
+[ext_resource type="Resource" uid="uid://buu8pdcooh3hc" path="res://src/Resources/CraftingResources/BronzeBar.tres" id="32_d6jc3"]
+[ext_resource type="Resource" uid="uid://boeryxspsw8uq" path="res://src/Resources/Dishes/CookedGagootz.tres" id="33_d6jc3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_te0bi"]
 texture = ExtResource("3_5xris")
@@ -1224,20 +1225,28 @@ position = Vector2(277, 656)
 index = 1
 
 [node name="ItemInteractable" parent="." instance=ExtResource("31_nj75w")]
-position = Vector2(221, 641)
+position = Vector2(257, 622)
 item = ExtResource("32_d6jc3")
 
 [node name="ItemInteractable2" parent="." instance=ExtResource("31_nj75w")]
-position = Vector2(221, 641)
+position = Vector2(257, 622)
 item = ExtResource("32_d6jc3")
 
 [node name="ItemInteractable3" parent="." instance=ExtResource("31_nj75w")]
-position = Vector2(221, 641)
+position = Vector2(257, 622)
 item = ExtResource("32_d6jc3")
 
 [node name="ItemInteractable4" parent="." instance=ExtResource("31_nj75w")]
-position = Vector2(221, 641)
+position = Vector2(257, 622)
 item = ExtResource("32_d6jc3")
+
+[node name="ItemInteractable5" parent="." instance=ExtResource("31_nj75w")]
+position = Vector2(257, 622)
+item = ExtResource("33_d6jc3")
+
+[node name="ItemInteractable6" parent="." instance=ExtResource("31_nj75w")]
+position = Vector2(257, 622)
+item = ExtResource("33_d6jc3")
 
 [connection signal="body_entered" from="TowerArea" to="." method="_on_tower_area_body_entered"]
 [connection signal="body_exited" from="TowerArea" to="." method="_on_tower_area_body_exited"]

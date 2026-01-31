@@ -567,7 +567,7 @@ campfire_list = NodePath("CampfireCheckpoints")
 path = "uid://bla5rhusv2jn5"
 next_room_path = "uid://b3m3f58qy47jb"
 map_type = 2
-kill_quota = 25
+kill_quota = 30
 ambience_player = NodePath("AmbiencePlayer")
 ambience_sfx = ExtResource("2_vcays")
 
@@ -809,8 +809,8 @@ min_spawn = 4
 max_spawn = 5
 spawn_root = NodePath("..")
 monster_list = Dictionary[PackedScene, int]({
-ExtResource("14_gi03k"): 50,
-null: 0
+null: 0,
+ExtResource("14_gi03k"): 50
 })
 area_collision_shape = NodePath("CollisionShape2D")
 
@@ -823,9 +823,9 @@ min_spawn = 4
 max_spawn = 5
 spawn_root = NodePath("..")
 monster_list = Dictionary[PackedScene, int]({
+null: 0,
 ExtResource("22_ykf1y"): 60,
 ExtResource("19_n7xsw"): 10,
-null: 0,
 ExtResource("14_gi03k"): 30
 })
 area_collision_shape = NodePath("CollisionShape2D")

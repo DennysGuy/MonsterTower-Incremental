@@ -91,7 +91,8 @@ enum TECH_NODE_TYPE {ABILITY, FACILITY}
 	"Refinery Accuracy 1": 0,
 	"Refinery Accuracy 2": 0,
 	"Ore Drop Chance 1": 0.0,
-	"Ore Drop Chance 2": 0.0
+	"Ore Drop Chance 2": 0.0,
+	"Invincibility Duration 1":0.0
 }
 
 # Called when the node enters the scene tree for the first time.
