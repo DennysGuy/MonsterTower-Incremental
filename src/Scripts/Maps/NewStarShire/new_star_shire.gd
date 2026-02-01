@@ -197,7 +197,7 @@ func unlock_cooking_station() -> void:
 	await get_tree().create_timer(0.5).timeout
 	camera.position = player.position
 	camera.player = player
-
+	PlayerStats.show_cooking_station_unlock_animation = false
 	
 func unlock_refinery_station() -> void:
 	camera.player = null
@@ -221,6 +221,7 @@ func unlock_refinery_station() -> void:
 	await get_tree().create_timer(0.5).timeout
 	camera.position = player.position
 	camera.player = player
+	PlayerStats.show_refinery_station_unlock_animation = false
 
 
 func unlock_station() -> void:
