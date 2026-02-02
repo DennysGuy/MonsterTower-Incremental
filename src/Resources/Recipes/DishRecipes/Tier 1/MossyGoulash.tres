@@ -16,7 +16,7 @@ crafting_time = 225.0
 success_rate = 0.85
 output_item = ExtResource("2_l04ss")
 recipe_list = Array[Dictionary]([{
-ExtResource("2_mrkob"): 2
+ExtResource("2_mrkob"): 1
 }, {
 ExtResource("4_l04ss"): 2
 }])

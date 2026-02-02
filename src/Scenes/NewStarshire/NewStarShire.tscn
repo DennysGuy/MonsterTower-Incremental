@@ -1,8 +1,8 @@
-[gd_scene load_steps=46 format=4 uid="uid://oonjrpabmces"]
+[gd_scene load_steps=48 format=4 uid="uid://oonjrpabmces"]
 
 [ext_resource type="Script" uid="uid://dpqc54c34418w" path="res://src/Scripts/Maps/NewStarShire/new_star_shire.gd" id="1_gq00g"]
 [ext_resource type="Texture2D" uid="uid://c21ee30haolx4" path="res://Assets/EnvironmentalAssets/TowerDistance.png" id="2_bl45m"]
-[ext_resource type="AudioStream" uid="uid://i8eixbukojm" path="res://Audio/Music/TempStarshireTheme2.mp3" id="2_cxssj"]
+[ext_resource type="AudioStream" uid="uid://btf2sjmbc010s" path="res://Audio/Music/TestStarspireTheme.wav" id="2_cxssj"]
 [ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="2_te0bi"]
 [ext_resource type="Texture2D" uid="uid://h2v184xkm5tc" path="res://Assets/EnvironmentalAssets/StarshireTempAssets.png" id="3_5xris"]
 [ext_resource type="TileSet" uid="uid://b74l1awtkdty5" path="res://src/Scenes/NewStarshire/TempWallTiles.tres" id="3_oik5f"]
@@ -25,11 +25,13 @@
 [ext_resource type="PackedScene" uid="uid://debxddfwr0kuy" path="res://src/Scenes/NewStarshire/SmeltingStation.tscn" id="20_05bdh"]
 [ext_resource type="PackedScene" uid="uid://icxc8mi1q1w4" path="res://src/Scenes/NewStarshire/Facilities/SwordCraftingStation.tscn" id="21_bl45m"]
 [ext_resource type="PackedScene" uid="uid://mwttdrt2cg71" path="res://src/Scenes/Players/ambience_player.tscn" id="23_5xris"]
+[ext_resource type="Texture2D" uid="uid://c46te1sv6peeo" path="res://Assets/Facilities/Dojo.png" id="25_nj75w"]
 [ext_resource type="Texture2D" uid="uid://14re4sr2xv7s" path="res://Assets/WelcomSign.png" id="26_ejo2t"]
 [ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="27_e7ku4"]
 [ext_resource type="Texture2D" uid="uid://cuwc34c0ympwf" path="res://Assets/DirectionSign.png" id="28_m7r5i"]
 [ext_resource type="Texture2D" uid="uid://b83r1hobjk7vm" path="res://Assets/DirectionSignMessage.png" id="29_hk4f7"]
 [ext_resource type="PackedScene" uid="uid://c6tv3t1cpeq8f" path="res://src/Scenes/PlayerSpawnPoint.tscn" id="30_cxssj"]
+[ext_resource type="AudioStream" uid="uid://br24s8y5lttep" path="res://Audio/SFX/Ambience/Starspire/StarspireAmbience.wav" id="30_fdeu8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_te0bi"]
 texture = ExtResource("3_5xris")
@@ -871,10 +873,6 @@ smoothing_distance = 6
 position = Vector2(115, 640)
 script = ExtResource("4_gq00g")
 
-[node name="PracticeDummy" parent="." node_paths=PackedStringArray("drop_scene") instance=ExtResource("6_kqfvc")]
-position = Vector2(148, 656)
-drop_scene = NodePath("..")
-
 [node name="TowerArea" type="Area2D" parent="."]
 position = Vector2(769.00006, 560)
 scale = Vector2(20, 10)
@@ -1027,6 +1025,10 @@ text = "Craft
 Sword"
 metadata/_edit_use_anchors_ = true
 
+[node name="Dojo" type="Sprite2D" parent="."]
+position = Vector2(150, 595)
+texture = ExtResource("25_nj75w")
+
 [node name="CookingStationArea" type="Area2D" parent="."]
 position = Vector2(505, 636)
 
@@ -1093,6 +1095,10 @@ offset_bottom = 96.0
 [node name="Tag" parent="SmithingStation/NameTag" index="1"]
 text = "Sword Crafting Station"
 
+[node name="PracticeDummy" parent="." node_paths=PackedStringArray("drop_scene") instance=ExtResource("6_kqfvc")]
+position = Vector2(46, 656)
+drop_scene = NodePath("..")
+
 [node name="CraftingStationArea" type="Area2D" parent="."]
 position = Vector2(127, 500.5)
 
@@ -1139,6 +1145,9 @@ offset_bottom = 16.0
 text = "Upgrades PC"
 
 [node name="AmbiencePlayer" parent="." instance=ExtResource("23_5xris")]
+stream = ExtResource("30_fdeu8")
+volume_db = 8.0
+autoplay = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(-10, 710)
@@ -1182,16 +1191,12 @@ Entrance"
 metadata/_edit_use_anchors_ = true
 
 [node name="NameTag5" parent="." instance=ExtResource("19_bl45m")]
-offset_left = 217.0
-offset_top = 394.0
-offset_right = 305.0
-offset_bottom = 407.0
+offset_left = 346.0
+offset_top = 383.0
+offset_right = 434.0
+offset_bottom = 396.0
 
 [node name="Tag" parent="NameTag5" index="1"]
-offset_left = 136.0
-offset_top = -9.0
-offset_right = 224.0
-offset_bottom = 3.0
 text = "Trade Market"
 
 [node name="DirectionSign2" type="Sprite2D" parent="."]
@@ -1239,9 +1244,9 @@ index = 1
 [connection signal="body_entered" from="CraftingStationArea" to="." method="_on_crafting_station_area_body_entered"]
 [connection signal="body_exited" from="CraftingStationArea" to="." method="_on_crafting_station_area_body_exited"]
 
-[editable path="PracticeDummy"]
 [editable path="TempCookingRange/NameTag2"]
 [editable path="TempSmeltingStation/NameTag3"]
 [editable path="SmithingStation/NameTag"]
+[editable path="PracticeDummy"]
 [editable path="TechTreeComputer/NameTag4"]
 [editable path="NameTag5"]

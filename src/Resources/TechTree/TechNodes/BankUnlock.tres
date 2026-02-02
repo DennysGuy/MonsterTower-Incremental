@@ -7,7 +7,8 @@
 script = ExtResource("1_byv8u")
 node_name = "Banking"
 icon = ExtResource("1_y8g6j")
-description = "Grants you [color=green]4 off shore inventory slots[/color].[color=red] Items auto after a Tower Expedition if account has open slots.[/color]"
+description = "Grants you [color=green]4 off shore inventory slots[/color].
+[color=red]Unveils Cooking Station Node![/color]"
 currency_required = 200
 node_type = 1
 stat_name = "Bank"

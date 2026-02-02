@@ -406,20 +406,33 @@ theme_override_font_sizes/font_size = 16
 text = "Prestige: 0"
 horizontal_alignment = 1
 
-[node name="PrestigeProgress" type="Label" parent="CanvasLayer"]
+[node name="PrestigeProgress2" type="Label" parent="CanvasLayer"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -31.5
-offset_top = 52.0
-offset_right = 31.5
-offset_bottom = 69.0
+offset_left = 133.0
+offset_top = 12.0
+offset_right = 196.0
+offset_bottom = 29.0
 grow_horizontal = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("13_uk0x3")
 theme_override_font_sizes/font_size = 16
 text = "0/10"
-horizontal_alignment = 1
+
+[node name="PrestigeProgress" type="Label" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 73.0
+offset_top = 12.0
+offset_right = 125.0
+offset_bottom = 29.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("13_uk0x3")
+theme_override_font_sizes/font_size = 16
+text = "Next In:"
 
 [node name="HuntingTime" type="Label" parent="CanvasLayer"]
 anchors_preset = 5
