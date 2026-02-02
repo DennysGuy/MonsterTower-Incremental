@@ -11,6 +11,9 @@ This is for testing purposes
 const KNOCKBACK_FORCE : int = 300
 
 @onready var player_stats : Dictionary[String,float] = {
+	"Level" : 1,
+	"Needed XP": 100,
+	"Current XP" : 0,
 	"Attack Damage" : 10.0,
 	"Movement Speed" : 100.0,
 	"Climbing Speed" : 65.0,

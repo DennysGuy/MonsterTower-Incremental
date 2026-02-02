@@ -20,6 +20,10 @@ var map_name : String = ""
 @onready var can_smelt_bar: RichTextLabel = $PlayerHUD/CanSmeltBar
 @onready var can_craft_sword: RichTextLabel = $PlayerHUD/CanCraftSword
 
+@onready var xp_amount_label: Label = $PlayerHUD/XPAmountLabel
+@onready var xp_bar: TextureProgressBar = $PlayerHUD/XPBar
+@onready var level_label: Label = $PlayerHUD/LevelLabel
+
 const CLOSE_IN = preload("uid://dc3va7knibxnb")
 const CLOSE_OUT = preload("uid://caj0oih8j2sty")
 const COUNTDOWN_BEEP = preload("uid://c6caiqmkt2lt0")
@@ -51,8 +55,11 @@ func _ready() -> void:
 	#player_health_bar.max_value = PlayerStats.player_stats["Max Health"]
 	#player_health_bar.value = PlayerStats.player_stats["Current Health"]
 	
+	LevelingManager.update_xp_bar.connect(update_xp_bar)
+	
 	player_mp_bar.max_value = PlayerStats.player_stats["Current MP"]
 	player_mp_bar.value = player_mp_bar.max_value
+	update_xp_bar()
 	#update_player_health(int(PlayerStats.player_stats["Current Health"]))
 	
 	if PlayerStats.facilities_unlocked["Refinery Station"]:
@@ -67,6 +74,13 @@ func update_player_health(value : int) -> void:
 	player_health_bar.value = value
 	player_health_bar.max_value = PlayerStats.player_stats["Max Health"]
 	hp_label.text = "%s/%s" % [int(player_health_bar.value), int(player_health_bar.max_value)]
+
+
+func update_xp_bar() -> void:
+	level_label.text = "Level %s" % [int(PlayerStats.player_stats["Level"])]
+	xp_amount_label.text = "%s / %s XP" % [int(PlayerStats.player_stats["Current XP"]), int(PlayerStats.player_stats["Needed XP"])]
+	xp_bar.max_value = PlayerStats.player_stats["Needed XP"]
+	xp_bar.value = PlayerStats.player_stats["Current XP"]
 
 func spawn_respawn_box() -> void:
 	var respawn_box : RespawnBox = preload("uid://dv20tfcnkjyux").instantiate()

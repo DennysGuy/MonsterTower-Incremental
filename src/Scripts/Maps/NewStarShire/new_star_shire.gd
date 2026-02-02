@@ -11,6 +11,7 @@ var player_in_market_range : bool = false
 var player_in_cooking_range : bool = false
 var player_in_smelting_range : bool = false
 var player_in_crafting_range : bool = false
+var player_in_dojo_range : bool = false
 
 @onready var access_smelting_station: Label = $AccessSmeltingStation
 @onready var access_sword_crafting_station: Label = $AccessSwordCraftingStation
@@ -23,6 +24,7 @@ var player_in_crafting_range : bool = false
 
 @onready var temp_cooking_range: CookingRangeGraphic = $TempCookingRange
 @onready var temp_smelting_station: SmeltingStationGraphic = $TempSmeltingStation
+@onready var dojo_access_notification: Label = $Dojo/DojoAccessNotification
 
 const CRAFT_SWORD = preload("uid://4c6l1w0kpar3")
 const UNLOCK_SHOP = preload("uid://cveiqvxm5r0yw")
@@ -251,3 +253,21 @@ func new_sword_unlock_notice() -> void:
 	camera.position = player.position
 	camera.player = player
 	GameManager.player_can_move = true
+
+
+func _on_dojo_area_body_entered(body: Node2D) -> void:
+	if body is Player:
+		
+		if PlayerStats.player_stats["Level"] >= 10:
+			dojo_access_notification.text = "Press E to access the Dojo!f"
+		else:
+			dojo_access_notification.text = "Reach Level 10 to access the Dojo!"
+		
+		player_in_dojo_range = true
+		dojo_access_notification.show()
+
+
+func _on_dojo_area_body_exited(body: Node2D) -> void:
+	if body is Player:
+		player_in_dojo_range = false
+		dojo_access_notification.hide()

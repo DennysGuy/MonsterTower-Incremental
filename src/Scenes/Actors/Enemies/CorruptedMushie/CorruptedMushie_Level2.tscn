@@ -301,6 +301,7 @@ collision_layer = 128
 collision_mask = 2
 script = ExtResource("1_61466")
 enemy_stats = ExtResource("2_61466")
+xp = 12
 name_tag = NodePath("NameTag")
 health_bar = NodePath("EnemyHealthBar")
 wall_detector = NodePath("WallDetector")

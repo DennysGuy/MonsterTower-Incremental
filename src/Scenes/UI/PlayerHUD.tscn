@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dysg5kffvxbql"]
+[gd_scene load_steps=23 format=3 uid="uid://dysg5kffvxbql"]
 
 [ext_resource type="Texture2D" uid="uid://b2wm5vfsi7r26" path="res://Assets/HUD/PlayerHPBar_Bar.png" id="1_eowti"]
 [ext_resource type="Script" uid="uid://dsdtoyyjdprcp" path="res://src/Scripts/HUD/player_hud.gd" id="1_m8qo1"]
@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="8_65fhw"]
 [ext_resource type="PackedScene" uid="uid://3rfn3t2sy58b" path="res://src/Scenes/UI/OreBag.tscn" id="9_bsjhc"]
 [ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="9_jyqen"]
+[ext_resource type="Texture2D" uid="uid://bob2oo3d75ybb" path="res://Assets/HUD/xpbar_base.png" id="11_6ndbt"]
+[ext_resource type="Texture2D" uid="uid://dluwh7ev7vu3e" path="res://Assets/HUD/xpbar_fill.png" id="12_8d4p7"]
 
 [sub_resource type="Animation" id="Animation_g1bs5"]
 resource_name = "CloseIn"
@@ -392,6 +394,60 @@ theme_override_fonts/normal_font = ExtResource("9_jyqen")
 bbcode_enabled = true
 text = "
 "
+
+[node name="XPAmountLabel" type="Label" parent="PlayerHUD"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -338.0
+offset_top = -34.0
+offset_right = -141.0
+offset_bottom = -18.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("9_jyqen")
+theme_override_font_sizes/font_size = 16
+text = "10/10 XP"
+horizontal_alignment = 2
+
+[node name="LevelLabel" type="Label" parent="PlayerHUD"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -496.0
+offset_top = -34.0
+offset_right = -408.0
+offset_bottom = -18.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("9_jyqen")
+theme_override_font_sizes/font_size = 16
+text = "Level 1"
+
+[node name="XPBar" type="TextureProgressBar" parent="PlayerHUD"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -186.0
+offset_top = -19.0
+offset_right = 186.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 0
+step = 0.1
+texture_under = ExtResource("11_6ndbt")
+texture_progress = ExtResource("12_8d4p7")
 
 [node name="TopBlackBar" type="ColorRect" parent="PlayerHUD"]
 layout_mode = 1

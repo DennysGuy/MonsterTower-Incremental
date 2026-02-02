@@ -2,6 +2,7 @@ class_name Enemy extends Entity
 
 @export var enemy_stats : EnemyStats
 @export var can_knock_back : bool = true
+@export var xp : int
 @export var name_tag : NameTag
 @export var health_bar : EnemyHealthBar
 @export var player : Player
@@ -52,3 +53,14 @@ func apply_direction(new_dir: int) -> void:
 	
 	prev_dir = new_dir
 	sprite.flip_h = new_dir < 0
+
+func give_xp() -> void:
+	PlayerStats.player_stats["Current XP"] += xp
+	var xp_label : DamageLabel = preload("uid://dkchs27qqogyy").instantiate()
+	xp_label.set_crit_bg()
+	xp_label.label.text = "%sXP" % xp
+	xp_label.global_position.y = global_position.y-40
+	xp_label.global_position.x = global_position.x+30
+	drop_scene.add_child(xp_label)
+	
+	LevelingManager.check_for_level_up()
