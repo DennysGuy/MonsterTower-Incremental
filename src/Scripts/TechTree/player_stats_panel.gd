@@ -1,7 +1,9 @@
 class_name PlayerStatsPanel extends Panel
 
 @onready var stats: RichTextLabel = $Stats
-
+@onready var label: Label = $Label
+@onready var button: Button = $Button
+var showing : bool = true
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	TechTreeManager.update_player_stats.connect(update_player_stats)
@@ -39,3 +41,16 @@ func update_player_stats() -> void:
 		PlayerStats.player_stats["Monster Cap Bonus"]
 		]
 	
+
+
+func _on_button_button_up() -> void:
+	showing = !showing
+	if !showing:
+		stats.hide()
+		label.hide()
+		button.text = "Show"
+	else:
+		stats.show()
+		label.show()
+		button.text = "Hide"
+		

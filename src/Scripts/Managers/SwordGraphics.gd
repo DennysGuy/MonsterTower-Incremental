@@ -18,6 +18,15 @@ var sword_textures : Dictionary = {
 		"SwordSwing1": preload("uid://j7jrnmqku872"),
 		"SwordSwing2": preload("uid://j7jrnmqku872"),
 		"SwordSwing3": preload("uid://j7jrnmqku872")
+	},
+	"Bronze Fang Blade" : {
+		"Idle": preload("uid://1gmop8x66tjk"),
+		"Run": preload("uid://catadyl8hdysa"),
+		"Jump": preload("uid://come635s2bqh"),
+		"Fall": preload("uid://come635s2bqh"),
+		"SwordSwing1": preload("uid://doai8hrrsivio"),
+		"SwordSwing2": preload("uid://doai8hrrsivio"),
+		"SwordSwing3": preload("uid://doai8hrrsivio")
 	}
 }
 

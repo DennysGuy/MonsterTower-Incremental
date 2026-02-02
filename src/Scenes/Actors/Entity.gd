@@ -43,7 +43,10 @@ func apply_damage(incoming_damage : int, is_crit : bool):
 	damage_label.global_position.y = global_position.y-40
 	damage_label.global_position.x = global_position.x
 	damage_label.label.text = damage
-	get_parent().add_child(damage_label)
+	if self is Enemy:
+		self.drop_scene.add_child(damage_label)
+	else:
+		get_parent().add_child(damage_label)
 
 func send_to_hit_state() -> void:
 	if hit_state:
@@ -55,23 +58,39 @@ func kill_me() -> void:
 
 func blink_effect() -> void:
 	if not is_inside_tree():
-		return
+		return 
 		
-	var invincibility_duration : float = 1.5
+	var invincibility_duration : float = 0.5
 	var blink_current_time : float = 0.0
 	var blink_wait_time : float = 0.1
 	
-	while blink_current_time < invincibility_duration and is_inside_tree():
+	while blink_current_time < invincibility_duration:
+		if not is_inside_tree():
+			return  # Exit cleanly if removed from tree
+			
 		set_textures_visibility(false)
-		blink_timer.start()
+		
+		# Store the timer and check if we're still valid after await
+		var blink_timer = get_tree().create_timer(blink_wait_time)
 		await blink_timer.timeout
+		
+		if not is_inside_tree():
+			return
+			
 		blink_current_time += blink_wait_time
 		set_textures_visibility(true)
-		blink_timer.start()
+		
+		blink_timer = get_tree().create_timer(blink_wait_time)
 		await blink_timer.timeout
+		
+		if not is_inside_tree():
+			return
+			
 		blink_current_time += blink_wait_time
 	
-	queue_free()
+	# Final safety check before setting damageable
+	if is_inside_tree():
+		queue_free()
 
 func set_textures_visibility(value : bool) -> void:
 	sprite.visible = value

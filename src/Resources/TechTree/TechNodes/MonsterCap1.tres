@@ -7,10 +7,10 @@
 script = ExtResource("2_iyx3t")
 node_name = "Monster Cap 1"
 icon = ExtResource("1_kqbrx")
-description = "Increases Monster Spawn Area cap by 1 per level"
+description = "Increase your chance for spoils and hunter quota! Increases Monster Spawn Area cap by 1 per level"
 max_level = 3
 currency_required = 135
 stat_name = "Monster Cap Bonus"
 upgrade_interval = 1.0
-prereqs = Array[String](["Max HP 1:1"])
+prereqs = Array[String](["Hunter License:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

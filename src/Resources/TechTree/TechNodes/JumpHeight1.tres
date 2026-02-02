@@ -7,10 +7,11 @@
 script = ExtResource("1_2wuvx")
 node_name = "Jump Height 1"
 icon = ExtResource("1_8ke4o")
-description = "Increases Jump Height by 5% for each level."
-max_level = 5
+description = "Reach higher areas! Increases Jump Height by 10% for each level.
+"
+max_level = 2
 currency_required = 60
 stat_name = "Jump Height"
-upgrade_interval = 0.05
-prereqs = Array[String](["Movement 1:1"])
+upgrade_interval = 0.1
+prereqs = Array[String](["Hunter License:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

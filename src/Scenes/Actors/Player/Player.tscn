@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://wuy3aelq8aeg"]
+[gd_scene load_steps=55 format=3 uid="uid://wuy3aelq8aeg"]
 
 [ext_resource type="Script" uid="uid://dm4atx2m8yfn1" path="res://src/Scripts/Player/player.gd" id="1_gw3a7"]
 [ext_resource type="Script" uid="uid://drr0deykmfrvq" path="res://src/Scripts/StateMachine/state_machine.gd" id="2_n7gp4"]
@@ -24,16 +24,133 @@
 [ext_resource type="Script" uid="uid://bfgl8g5bf5ud4" path="res://src/Scripts/StateMachine/PlayerStates/player_die.gd" id="12_omh5u"]
 [ext_resource type="AudioStream" uid="uid://7m8clykuejiw" path="res://Audio/SFX/Player/SwordSwing1.wav" id="12_vhxh4"]
 [ext_resource type="Script" uid="uid://5srteptn8day" path="res://src/Scripts/StateMachine/PlayerStates/player_swing_pick_axe.gd" id="13_1twwa"]
+[ext_resource type="Script" uid="uid://cir7yr72ctae8" path="res://src/Scripts/StateMachine/PlayerStates/palyer_air_attack.gd" id="13_cq2ky"]
 [ext_resource type="AudioStream" uid="uid://d4hkg0vupj3mj" path="res://Audio/SFX/Player/SwordSwing2.wav" id="14_c7aqh"]
 [ext_resource type="AudioStream" uid="uid://bcc4lh1bponas" path="res://Audio/SFX/Player/SwordSwing3.wav" id="16_c7aqh"]
 [ext_resource type="PackedScene" uid="uid://xsmgmpbxjc3b" path="res://src/Scenes/Actors/Utilities/HitBox.tscn" id="16_cw62c"]
 [ext_resource type="PackedScene" uid="uid://bg1ya0qiin47q" path="res://src/Scenes/Actors/Utilities/HurtBox.tscn" id="17_45oew"]
+[ext_resource type="Script" uid="uid://4eouowdm16tv" path="res://src/Scripts/StateMachine/PlayerStates/player_dash_attack.gd" id="17_cfcx3"]
 [ext_resource type="AudioStream" uid="uid://cm3vsmb4a64u4" path="res://Audio/SFX/Player/Hit1.wav" id="18_8xpqf"]
 [ext_resource type="Texture2D" uid="uid://sgtkxjunvmnq" path="res://Assets/PlayerGraphics/TempPlayer/PickaxeSwing.png" id="20_5so87"]
 [ext_resource type="AudioStream" uid="uid://1f5gpbnq1x73" path="res://Audio/SFX/Player/PlayerDeathFanfare.wav" id="20_geieu"]
 [ext_resource type="Texture2D" uid="uid://clgyjtsgxrepg" path="res://Assets/PlayerGraphics/TempPlayer/Pickaxes/PickaxeSwing_Effect.png" id="21_1twwa"]
 [ext_resource type="AudioStream" uid="uid://djgxyv4i65ob4" path="res://Audio/SFX/Player/Pickaxe_Swing_Strike.wav" id="22_0qbij"]
 [ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="25_1twwa"]
+
+[sub_resource type="Animation" id="Animation_cq2ky"]
+resource_name = "AirAttack"
+length = 0.7
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [15]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("12_er68u")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Sword:hframes")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [15]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Sword:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Effect:hframes")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [15]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Effect:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Effect:texture")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("8_j38pk")]
+}
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../..")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.101),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"issue_sword_attack"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_45oew"]
 resource_name = "Climb"
@@ -75,6 +192,118 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [ExtResource("11_k1vse")]
+}
+
+[sub_resource type="Animation" id="Animation_cfcx3"]
+resource_name = "DashAttack"
+length = 0.7
+step = 0.0001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [15]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("12_er68u")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [10, 11, 12, 13, 14]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Sword:hframes")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [15]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Sword:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [10, 11, 12, 13, 14]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Effect:texture")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("8_j38pk")]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Effect:hframes")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [15]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Effect:frame")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [10, 11, 12, 13, 14]
+}
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../..")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
 }
 
 [sub_resource type="Animation" id="Animation_4xbk8"]
@@ -886,7 +1115,9 @@ tracks/8/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pawjx"]
 _data = {
+&"AirAttack": SubResource("Animation_cq2ky"),
 &"Climb": SubResource("Animation_45oew"),
+&"DashAttack": SubResource("Animation_cfcx3"),
 &"Fall": SubResource("Animation_4xbk8"),
 &"Idle": SubResource("Animation_cgv26"),
 &"Jump": SubResource("Animation_pawjx"),
@@ -902,6 +1133,7 @@ _data = {
 size = Vector2(23, 55)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_45oew"]
+size = Vector2(36.375, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dwhqw"]
 size = Vector2(33, 46)
@@ -911,11 +1143,12 @@ size = Vector2(20, 46)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5so87"]
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("state_machine", "animation_player", "health_component", "sprite", "hurt_box", "hit_box", "hit_state", "dead_state", "sfx_player") groups=["Player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("idle_state", "state_machine", "animation_player", "health_component", "sprite", "hurt_box", "hit_box", "hit_state", "dead_state", "sfx_player") groups=["Player"]]
 z_index = 4000
 collision_layer = 17
 collision_mask = 17
 script = ExtResource("1_gw3a7")
+idle_state = NodePath("StateMachine/Idle")
 state_machine = NodePath("StateMachine")
 animation_player = NodePath("AnimationPlayer")
 health_component = NodePath("HealthComponent")
@@ -941,20 +1174,22 @@ climb_state = NodePath("../Climb")
 jump_sfx = ExtResource("6_yawj3")
 animation_name = "Idle"
 
-[node name="Move" type="Node" parent="StateMachine" node_paths=PackedStringArray("jump_state", "fall_state", "idle_state")]
+[node name="Move" type="Node" parent="StateMachine" node_paths=PackedStringArray("jump_state", "fall_state", "idle_state", "dash_attack_state", "attack_1_state")]
 script = ExtResource("4_pp7ew")
 jump_state = NodePath("../Jump")
 fall_state = NodePath("../Fall")
 idle_state = NodePath("../Idle")
+dash_attack_state = NodePath("../DashAttack")
 move_sfx = ExtResource("5_a5kf2")
+attack_1_state = NodePath("../Attack1")
 animation_name = "Run"
 
-[node name="Jump" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "fall_state", "attack_1_state")]
+[node name="Jump" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "fall_state", "air_attack")]
 script = ExtResource("5_jq5qv")
 idle_state = NodePath("../Idle")
 fall_state = NodePath("../Fall")
 jump_sfx = ExtResource("6_yawj3")
-attack_1_state = NodePath("../Attack1")
+air_attack = NodePath("../AirAttack")
 animation_name = "Jump"
 
 [node name="Climb" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "jump_state")]
@@ -964,13 +1199,13 @@ jump_state = NodePath("../Jump")
 climb_sfx = ExtResource("9_8bj2u")
 animation_name = "Climb"
 
-[node name="Fall" type="Node" parent="StateMachine" node_paths=PackedStringArray("jump_state", "move_state", "idle_state", "climb_state", "attack_1_state")]
+[node name="Fall" type="Node" parent="StateMachine" node_paths=PackedStringArray("jump_state", "move_state", "idle_state", "climb_state", "air_attack")]
 script = ExtResource("6_k5pak")
 jump_state = NodePath("../Jump")
 move_state = NodePath("../Move")
 idle_state = NodePath("../Idle")
 climb_state = NodePath("../Climb")
-attack_1_state = NodePath("../Attack1")
+air_attack = NodePath("../AirAttack")
 animation_name = "Fall"
 
 [node name="Attack1" type="Node" parent="StateMachine" node_paths=PackedStringArray("attack2_state", "idle_state")]
@@ -997,11 +1232,24 @@ swing_sfx = ExtResource("16_c7aqh")
 animation_name = "SwordSwing3"
 animation_duration = 0.6
 
-[node name="Hit" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state")]
+[node name="AirAttack" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "climb_state")]
+script = ExtResource("13_cq2ky")
+idle_state = NodePath("../Idle")
+climb_state = NodePath("../Climb")
+animation_name = "SwordSwing1"
+
+[node name="DashAttack" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state")]
+script = ExtResource("17_cfcx3")
+idle_state = NodePath("../Idle")
+duration = 0.5
+animation_name = "SwordSwing3"
+
+[node name="Hit" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "attack_1_state")]
 script = ExtResource("11_susmm")
 wait_time = 0.15
 invincibility_time = 3.0
 idle_state = NodePath("../Idle")
+attack_1_state = NodePath("../Attack1")
 hit_sfx = ExtResource("18_8xpqf")
 animation_name = "Jump"
 
@@ -1024,6 +1272,8 @@ one_shot = true
 [node name="InvincibilityTimer" type="Timer" parent="."]
 process_callback = 0
 one_shot = true
+
+[node name="AbilityCoolDownTimer" type="Timer" parent="."]
 
 [node name="HealthComponent" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("10_dwhqw")]
 parent = NodePath("..")
@@ -1060,12 +1310,21 @@ position = Vector2(-1.5, -27.5)
 shape = SubResource("RectangleShape2D_susmm")
 
 [node name="HitBox" parent="." instance=ExtResource("16_cw62c")]
-position = Vector2(34, -20)
+position = Vector2(21, -20)
 scale = Vector2(2, 2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(2, 0)
+position = Vector2(-0.625, 0)
 shape = SubResource("RectangleShape2D_45oew")
+
+[node name="DashAttackHitBox" parent="." instance=ExtResource("16_cw62c")]
+position = Vector2(20, -20)
+scale = Vector2(2, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DashAttackHitBox"]
+position = Vector2(-0.3125, 0)
+shape = SubResource("RectangleShape2D_45oew")
+disabled = true
 
 [node name="HurtBox" parent="." instance=ExtResource("17_45oew")]
 position = Vector2(2, -3)
@@ -1095,5 +1354,7 @@ position = Vector2(-1, -15)
 
 [node name="SfxPlayer" parent="." instance=ExtResource("25_1twwa")]
 
+[connection signal="timeout" from="AbilityCoolDownTimer" to="." method="_on_ability_cool_down_timer_timeout"]
+[connection signal="body_entered" from="DashAttackHitBox" to="." method="_on_dash_attack_hit_box_body_entered"]
 [connection signal="area_entered" from="LadderDetector" to="." method="_on_ladder_detector_area_entered"]
 [connection signal="area_exited" from="LadderDetector" to="." method="_on_ladder_detector_area_exited"]

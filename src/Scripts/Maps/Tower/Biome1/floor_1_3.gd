@@ -2,14 +2,19 @@ class_name Biome1Floor3 extends Map
 
 var in_check_point_area : bool = false
 @onready var checkpoint_log: Label = $CheckpointLog
-@onready var checkpoint_campfire: AnimatedSprite2D = $CheckpointCampfire
+#@onready var checkpoint_campfire: AnimatedSprite2D = $CheckpointCampfire
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super()
 	hud.animation_player.play("CloseIn")
-	checkpoint_campfire.play("default")
+	#checkpoint_campfire.play("default")
+
+	await get_tree().process_frame
 	
+	if monster_spawn_node:
+		SignalBus.update_monsters_left.emit("Monsters Left: %s" % [monster_spawn_node.get_children().size()],false)
+	SignalBus.update_player_health.emit(player.health)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

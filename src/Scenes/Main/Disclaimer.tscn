@@ -1,0 +1,135 @@
+[gd_scene load_steps=7 format=3 uid="uid://dp68gajadt5d1"]
+
+[ext_resource type="Script" uid="uid://ba10y7m4ljulk" path="res://src/Scripts/Main/disclaimer.gd" id="1_17ifk"]
+[ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="1_msxod"]
+
+[sub_resource type="Animation" id="Animation_c3iyh"]
+resource_name = "Fadein"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TransitionRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_r5ucx"]
+resource_name = "Fadeout"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TransitionRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_17ifk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TransitionRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qcbsl"]
+_data = {
+&"Fadein": SubResource("Animation_c3iyh"),
+&"Fadeout": SubResource("Animation_r5ucx"),
+&"RESET": SubResource("Animation_17ifk")
+}
+
+[node name="Disclaimer" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_17ifk")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.5568336, 0.498264, 0.7046181, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -299.0
+offset_top = -136.5
+offset_right = 299.0
+offset_bottom = 136.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("1_msxod")
+theme_override_font_sizes/font_size = 20
+text = "Hello, and thank you for playing!
+
+What you’re about to experience is an early proof-of-concept build. Many elements are temporary, incomplete, or missing, and gameplay is intentionally limited—just enough to communicate the core loop. There also might be some noticable bugs - which will be ironed on in the future.
+
+** Music is borrowed from RPG Maker 2000 and RPG Maker MZ **
+
+The purpose of this build is to validate the fundamental gameplay experience. Visuals, music, and sound effects are placeholder assets meant to convey the intended vibe rather than represent final quality, and all are subject to change as development continues.
+
+Your time and feedback at this stage are greatly appreciated."
+autowrap_mode = 3
+
+[node name="TransitionRect" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_qcbsl")
+}
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -76.0
+offset_top = -43.0
+offset_right = -20.0
+offset_bottom = -12.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+text = "OKAY!"
+
+[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]

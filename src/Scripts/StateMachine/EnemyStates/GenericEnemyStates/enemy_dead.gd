@@ -10,10 +10,10 @@ class_name EnemyDead extends State
 
 func enter() -> void:
 	super()
-	SignalBus.update_kill_quota.emit()
 	if parent.hit_box:
 		parent.hit_box.get_child(0).disabled = true
 	drop_items()
+	
 	HitStopManager.freeze(0.15)
 	parent.damageable = false
 	parent.is_dead = true
@@ -46,7 +46,7 @@ func drop_items() -> void:
 	item_interactable.icon.texture = item.drop_icon
 	item_interactable.global_position = parent.global_position
 	
-	if PlayerStats.facilities_unlocked["Cooking Station"] and PlayerStats.get_bag().max_slots >= 2:
+	if PlayerStats.facilities_unlocked["Cooking Station"] and PlayerStats.get_bag("Bag").max_slots >= 2:
 		var cooking_item : EnemyDrop = parent.enemy_stats.cooking_item_drop
 		var cooking_item_interactable : ItemInteractable = preload("uid://dgtobkubdjq27").instantiate()
 		var random_check : int = randi_range(0, 100)
@@ -54,16 +54,21 @@ func drop_items() -> void:
 			cooking_item_interactable.item = cooking_item
 			cooking_item_interactable.icon.texture = cooking_item.drop_icon
 			cooking_item_interactable.global_position = Vector2(parent.global_position.x + 20,parent.global_position.y)
-			parent.get_parent().add_child(cooking_item_interactable)
+			parent.drop_scene.add_child(cooking_item_interactable)
 	
-	if parent.enemy_stats.crafting_item_drop and PlayerStats.get_bag().max_slots >= 2:
+	if parent.enemy_stats.crafting_item_drop and PlayerStats.get_bag("Bag").max_slots >= 2:
 		var crafting_item : EnemyDrop = parent.enemy_stats.crafting_item_drop
 		var crafting_item_interactable : ItemInteractable = preload("uid://dgtobkubdjq27").instantiate()
 		var random_check_2 : int = randi_range(0,100)
-		if random_check_2 <= int(crafting_item.drop_chance * 100):
+		var drop_chance : float = crafting_item.drop_chance
+		
+		if PlayerStats.check_item_in_next_sword_recipe(parent.enemy_stats.crafting_item_drop):
+			drop_chance += 0.15
+			
+		if random_check_2 <= int(drop_chance * 100):
 			crafting_item_interactable.item = crafting_item
 			crafting_item_interactable.icon.texture = crafting_item.drop_icon
 			crafting_item_interactable.global_position = Vector2(parent.global_position.x - 20, parent.global_position.y)
-			parent.get_parent().add_child(crafting_item_interactable)
+			parent.drop_scene.add_child(crafting_item_interactable)
 	
-	parent.get_parent().add_child(item_interactable)
+	parent.drop_scene.add_child(item_interactable)

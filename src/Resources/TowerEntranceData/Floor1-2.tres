@@ -1,12 +1,14 @@
-[gd_resource type="Resource" script_class="TowerEntranceData" load_steps=3 format=3 uid="uid://dbb7k6hptjvyy"]
+[gd_resource type="Resource" script_class="TowerEntranceData" load_steps=5 format=3 uid="uid://dbb7k6hptjvyy"]
 
 [ext_resource type="Texture2D" uid="uid://diw7ha4wmfsya" path="res://Assets/FloorPreviews/Floor1-2Preview.png" id="1_v7vcx"]
 [ext_resource type="Script" uid="uid://cyho4aep1qxmu" path="res://src/Scripts/Maps/tower_entrance_data.gd" id="1_xibwm"]
+[ext_resource type="Texture2D" uid="uid://825wmmsifn27" path="res://Assets/FloorPreviews/Floor1-3-point-2Preview.png" id="2_lrr5a"]
+[ext_resource type="Texture2D" uid="uid://dhxx777cjk1w5" path="res://Assets/FloorPreviews/Floor1-2-point-2Preview.png" id="3_egul1"]
 
 [resource]
 script = ExtResource("1_xibwm")
 floor_name = "Floor 1-2"
 biome = "Mossy Dungeon"
 scene_path = "uid://bla5rhusv2jn5"
-preview_picture = ExtResource("1_v7vcx")
+preview_pictures = Array[Texture2D]([ExtResource("1_v7vcx"), ExtResource("2_lrr5a"), ExtResource("3_egul1")])
 metadata/_custom_type_script = "uid://cyho4aep1qxmu"

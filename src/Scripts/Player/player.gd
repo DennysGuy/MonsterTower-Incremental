@@ -10,9 +10,17 @@ class_name Player extends Entity
 @onready var coin_purse: Marker2D = $CoinPurse
 
 @onready var mining_area: Area2D = $MiningArea
+@onready var ability_cool_down_timer: Timer = $AbilityCoolDownTimer
 
+@onready var hurtbox_collision_shape_2d : CollisionShape2D = $HurtBox/CollisionShape2D
 
-@onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
+@onready var collision_shape_2d : CollisionShape2D = $CollisionShape2D
+@onready var dash_attack_collision_shape : CollisionShape2D = $DashAttackHitBox/CollisionShape2D
+@onready var dash_attack_hit_box: HitBox = $DashAttackHitBox
+
+@onready var can_dash_attack : bool = true
+@onready var can_knock_back : bool = true
+@onready var can_spawn_gravestone : bool = true
 
 var stored_ladder : LadderArea
 var stored_enemy : Enemy
@@ -22,12 +30,17 @@ var is_climbing : bool = false
 var prev_input : int
 var prev_move_speed : float
 var mining_area_position : Vector2
+var hit_box_position : Vector2
+
+@export var idle_state : State
 
 func _ready() -> void:
 	super()
 	SignalBus.update_sword_texture.connect(set_sword_texture)
 	health = PlayerStats.player_stats["Max Health"]
 	mining_area_position = mining_area.position
+	hit_box_position = hit_box.position
+	dash_attack_hit_box.position = hit_box_position
 	
 func _process(delta: float) -> void:
 	super(delta)
@@ -50,31 +63,16 @@ func flip_textures(flip : bool) -> void:
 	
 	if flip:
 		mining_area.position = Vector2(-mining_area_position.x, mining_area_position.y)
+		hit_box.position = Vector2(-hit_box_position.x, hit_box_position.y)
+		dash_attack_hit_box.position = Vector2(-hit_box_position.x, hit_box_position.y)
 	else:
 		mining_area.position = mining_area_position
-	
+		hit_box.position = hit_box_position
+		dash_attack_hit_box.position = hit_box_position
 	
 func start_invincibility() -> void:
 	damageable = false
 	blink_effect()
-
-func blink_effect() -> void:
-	if not is_inside_tree():
-		return 
-		
-	var invincibility_duration : float = 3.0
-	var blink_current_time : float = 0.0
-	var blink_wait_time : float = 0.1
-	
-	while blink_current_time < invincibility_duration and is_inside_tree():
-		set_textures_visibility(false)
-		await get_tree().create_timer(0.1).timeout
-		blink_current_time += blink_wait_time
-		set_textures_visibility(true)
-		await get_tree().create_timer(0.1).timeout
-		blink_current_time += blink_wait_time
-	
-	damageable = true
 
 func set_textures_visibility(value : bool) -> void:
 	sprite.visible = value
@@ -84,8 +82,8 @@ func clear_sprites() -> void:
 	for cur_sprite in sprites.get_children():
 		cur_sprite.texture = null
 
-func issue_sword_attack() -> void:
-	var enemies_in_range = hit_box.get_overlapping_areas()
+func issue_attack(selected_hit_box : HitBox) -> void:
+	var enemies_in_range = selected_hit_box.get_overlapping_areas()
 	var overlapping_hits : int = int(PlayerStats.player_stats["Overlapping Hits"])
 	var base_damage : int = int(PlayerStats.player_stats["Attack Damage"] + PlayerStats.get_sword(PlayerStats.player_stats["Equipped Sword"]).attack_bonus)
 	var min_damage : int = int(base_damage * PlayerStats.player_stats["Accuracy"])
@@ -98,6 +96,9 @@ func issue_sword_attack() -> void:
 
 	GameManager.attack_enemies(enemies_in_range, overlapping_hits, self, incoming_damage, is_crit)
 
+func issue_sword_attack() -> void:
+	issue_attack(hit_box)
+
 func check_for_crit() -> bool:
 	var crit_roll : int = randi_range(0,100)
 	if crit_roll < int(100 * (PlayerStats.player_stats["Crit Chance"] + PlayerStats.get_sword(PlayerStats.player_stats["Equipped Sword"]).crit_bonus)):
@@ -105,12 +106,9 @@ func check_for_crit() -> bool:
 	
 	return false
 
-
 func _on_ladder_detector_area_entered(area: Area2D) -> void:
 	in_ladder_area = true
 	stored_ladder = area
-	if in_ladder_area:
-		print("were in ladder area and the stored ladder is %s " % [stored_ladder])
 
 
 func _on_ladder_detector_area_exited(area: Area2D) -> void:
@@ -129,7 +127,53 @@ func attack_ore_rock() -> void:
 func clear_effect_texture() -> void:
 	effect.texture = null
 
+func blink_effect() -> void:
+	if not is_inside_tree():
+		return 
+		
+	var invincibility_duration : float = PlayerStats.player_stats["Invincibility Duration"]
+	var blink_current_time : float = 0.0
+	var blink_wait_time : float = 0.1
+	
+	while blink_current_time < invincibility_duration:
+		if not is_inside_tree():
+			return  # Exit cleanly if removed from tree
+			
+		set_textures_visibility(false)
+		
+		# Store the timer and check if we're still valid after await
+		var blink_timer = get_tree().create_timer(blink_wait_time)
+		await blink_timer.timeout
+		
+		if not is_inside_tree():
+			return
+			
+		blink_current_time += blink_wait_time
+		set_textures_visibility(true)
+		
+		blink_timer = get_tree().create_timer(blink_wait_time)
+		await blink_timer.timeout
+		
+		if not is_inside_tree():
+			return
+			
+		blink_current_time += blink_wait_time
+	
+	# Final safety check before setting damageable
+	if is_inside_tree():
+		damageable = true
+
+func send_to_idle_state() -> void:
+	state_machine.change_state(idle_state)
+
 func pass_through_floor() -> void:
 	set_collision_mask_value(5, false)
 	await get_tree().create_timer(0.15).timeout
 	set_collision_mask_value(5, true)
+
+func _on_dash_attack_hit_box_body_entered(body: Node2D) -> void:
+	pass
+
+
+func _on_ability_cool_down_timer_timeout() -> void:
+	can_dash_attack = true

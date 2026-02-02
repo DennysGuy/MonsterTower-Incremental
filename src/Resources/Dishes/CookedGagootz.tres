@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_xv78r")
-item_name = "CookedGagootz"
-sell_value = 120
+item_name = "Fried Gagootz"
+sell_value = 150
 shop_icon = ExtResource("2_d7a32")
 metadata/_custom_type_script = "uid://cu8drgivmhfn"

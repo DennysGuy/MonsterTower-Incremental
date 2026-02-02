@@ -1,8 +1,8 @@
-[gd_scene load_steps=40 format=3 uid="uid://b7n3fwd3y85wp"]
+[gd_scene load_steps=45 format=3 uid="uid://b7n3fwd3y85wp"]
 
 [ext_resource type="Script" uid="uid://nb5nyiymrgyp" path="res://src/Scripts/TechTree/tech_tree.gd" id="1_1fw0b"]
 [ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="2_d4ivd"]
-[ext_resource type="Resource" uid="uid://bpf2kexi3o22s" path="res://src/Resources/TechTree/TechNodes/TowerPass.tres" id="3_lqswy"]
+[ext_resource type="Resource" uid="uid://bpf2kexi3o22s" path="res://src/Resources/TechTree/TechNodes/HunterLicense.tres" id="3_lqswy"]
 [ext_resource type="Resource" uid="uid://1gmjr0davgp4" path="res://src/Resources/TechTree/TechNodes/Attack1.tres" id="4_a6tc3"]
 [ext_resource type="PackedScene" uid="uid://bhimqkbcn26r2" path="res://src/Scenes/TechTree/TechNode.tscn" id="5_2ltmf"]
 [ext_resource type="Resource" uid="uid://bqgnafgyrs4m4" path="res://src/Resources/TechTree/TechNodes/Attack2.tres" id="5_wj3rp"]
@@ -39,6 +39,11 @@
 [ext_resource type="Resource" uid="uid://licswcd54xsn" path="res://src/Resources/TechTree/TechNodes/RefineryAccuracy1.tres" id="30_yfj5d"]
 [ext_resource type="Resource" uid="uid://ctf4we33chvvs" path="res://src/Resources/TechTree/TechNodes/OreRockDrop1.tres" id="32_pc0xa"]
 [ext_resource type="Resource" uid="uid://burkenucbrobr" path="res://src/Resources/TechTree/TechNodes/ArialAttack.tres" id="35_mdsgt"]
+[ext_resource type="Resource" uid="uid://c33bcx7wsq4vk" path="res://src/Resources/TechTree/TechNodes/MaxHP2.tres" id="36_o1bwy"]
+[ext_resource type="Resource" uid="uid://bonlosm00p4kf" path="res://src/Resources/TechTree/TechNodes/DashAttack.tres" id="37_34cer"]
+[ext_resource type="Resource" uid="uid://c5l21ge3ylc0e" path="res://src/Resources/TechTree/TechNodes/Defense2.tres" id="37_pqlb5"]
+[ext_resource type="Resource" uid="uid://ioelpq1d2fhp" path="res://src/Resources/TechTree/TechNodes/DashDuration1.tres" id="39_iyves"]
+[ext_resource type="Resource" uid="uid://cmi3owisj2vs7" path="res://src/Resources/TechTree/TechNodes/InvincibilityDuration1.tres" id="39_l65vq"]
 
 [node name="TechTree" type="Node2D"]
 script = ExtResource("1_1fw0b")
@@ -46,12 +51,12 @@ script = ExtResource("1_1fw0b")
 [node name="SfxPlayer" parent="." instance=ExtResource("2_d4ivd")]
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -3836.0
-offset_top = -2429.0
-offset_right = 5576.0
-offset_bottom = 3757.0
+offset_left = -3828.0
+offset_top = -2421.0
+offset_right = 5584.0
+offset_bottom = 3765.0
 mouse_filter = 2
-color = Color(0.103743516, 0.10374353, 0.103743516, 1)
+color = Color(0.028638711, 0.1994082, 0.3708802, 1)
 
 [node name="Nodes" type="Node" parent="."]
 
@@ -69,11 +74,11 @@ points = PackedVector2Array(-11, 8, -70, 97)
 width = 3.0
 
 [node name="Attack2Node" parent="Nodes" instance=ExtResource("5_2ltmf")]
-position = Vector2(779, 252)
+position = Vector2(867, 253)
 tech_node_stats = ExtResource("5_wj3rp")
 
 [node name="Line2D" type="Line2D" parent="Nodes/Attack2Node"]
-points = PackedVector2Array(-16, 0, -52, 0)
+points = PackedVector2Array(-16, 0, -83, 0)
 width = 3.0
 
 [node name="CritChance1Node" parent="Nodes" instance=ExtResource("5_2ltmf")]
@@ -102,7 +107,7 @@ points = PackedVector2Array(-3, 14, -3, 32)
 width = 3.0
 
 [node name="CritChance2Node" parent="Nodes" instance=ExtResource("5_2ltmf")]
-position = Vector2(779, 208)
+position = Vector2(867, 209)
 tech_node_stats = ExtResource("8_7l0yi")
 
 [node name="Line2D" type="Line2D" parent="Nodes/CritChance2Node"]
@@ -110,11 +115,11 @@ points = PackedVector2Array(-2, 14, -2, 30)
 width = 3.0
 
 [node name="CritDamage2Node" parent="Nodes" instance=ExtResource("5_2ltmf")]
-position = Vector2(779, 294)
+position = Vector2(867, 167)
 tech_node_stats = ExtResource("9_dkx06")
 
 [node name="Line2D" type="Line2D" parent="Nodes/CritDamage2Node"]
-position = Vector2(1, 0)
+position = Vector2(1, 42)
 points = PackedVector2Array(-3, -14, -3, -28)
 width = 3.0
 
@@ -127,48 +132,50 @@ points = PackedVector2Array(-11, -9, -68, -81)
 width = 3.0
 
 [node name="PassTime1Node" parent="Nodes" instance=ExtResource("5_2ltmf")]
-position = Vector2(714, 503)
+position = Vector2(608, 452)
 tech_node_stats = ExtResource("12_ice2v")
 
 [node name="Line2D" type="Line2D" parent="Nodes/PassTime1Node"]
 position = Vector2(-1, 0)
-points = PackedVector2Array(-1, -13, -1, -40)
+points = PackedVector2Array(-1, -13, 27, -81)
 width = 3.0
 
 [node name="MonsterCap1Node" parent="Nodes" instance=ExtResource("5_2ltmf")]
-position = Vector2(775, 450)
+position = Vector2(657, 452)
 tech_node_stats = ExtResource("13_fdiaf")
 
 [node name="Line2D" type="Line2D" parent="Nodes/MonsterCap1Node"]
-points = PackedVector2Array(-15, 0, -50, 0)
+position = Vector2(14, -14)
+points = PackedVector2Array(-16, 1, -30, -67)
 width = 3.0
 
 [node name="Defense1Node" parent="Nodes" instance=ExtResource("5_2ltmf")]
-position = Vector2(762, 494)
+position = Vector2(714, 508)
 tech_node_stats = ExtResource("14_x01pg")
 
 [node name="Line2D" type="Line2D" parent="Nodes/Defense1Node"]
-points = PackedVector2Array(-11, -9, -41, -35)
+position = Vector2(9, -5)
+points = PackedVector2Array(-11, -9, -11, -39)
 width = 3.0
 
 [node name="DeeperPockets1" parent="Nodes" instance=ExtResource("5_2ltmf")]
-position = Vector2(498, 440)
+position = Vector2(442, 452)
 tech_node_stats = ExtResource("15_v76mx")
 
 [node name="Line2D" type="Line2D" parent="Nodes/DeeperPockets1"]
-points = PackedVector2Array(7, -9, 130, -74)
+points = PackedVector2Array(7, -9, 186, -85)
 width = 3.0
 
 [node name="ItemBag1" parent="Nodes" instance=ExtResource("5_2ltmf")]
-position = Vector2(569, 439)
+position = Vector2(513, 451)
 tech_node_stats = ExtResource("16_yexi2")
 
 [node name="Line2D" type="Line2D" parent="Nodes/ItemBag1"]
-points = PackedVector2Array(59, -73, 8, -8)
+points = PackedVector2Array(116, -83, 8, -8)
 width = 3.0
 
 [node name="Banking1" parent="Nodes" instance=ExtResource("5_2ltmf")]
-position = Vector2(534, 485)
+position = Vector2(478, 497)
 tech_node_stats = ExtResource("17_c7r65")
 node_type = 1
 
@@ -181,7 +188,7 @@ points = PackedVector2Array(7, -9, 27, -35)
 width = 3.0
 
 [node name="Banking2" parent="Nodes" instance=ExtResource("5_2ltmf")]
-position = Vector2(534, 534)
+position = Vector2(478, 546)
 tech_node_stats = ExtResource("18_aovij")
 
 [node name="Line2D" type="Line2D" parent="Nodes/Banking2"]
@@ -189,26 +196,26 @@ points = PackedVector2Array(-2, -13, -2, -36)
 width = 3.0
 
 [node name="DeeperPockets2" parent="Nodes" instance=ExtResource("5_2ltmf")]
-position = Vector2(461, 480)
+position = Vector2(410, 489)
 tech_node_stats = ExtResource("19_7xsv7")
 
 [node name="Line2D" type="Line2D" parent="Nodes/DeeperPockets2"]
-points = PackedVector2Array(6, -10, 25, -32)
+points = PackedVector2Array(6, -10, 21, -29)
 width = 3.0
 
 [node name="ItemBag2" parent="Nodes" instance=ExtResource("5_2ltmf")]
-position = Vector2(607, 482)
+position = Vector2(541, 498)
 tech_node_stats = ExtResource("20_dkc8a")
 
 [node name="Line2D" type="Line2D" parent="Nodes/ItemBag2"]
-points = PackedVector2Array(-11, -9, -31, -34)
+points = PackedVector2Array(-8, -11, -23, -36)
 width = 3.0
 
-[node name="MovementSpeed1" parent="Nodes" instance=ExtResource("5_2ltmf")]
+[node name="JumpHeight1" parent="Nodes" instance=ExtResource("5_2ltmf")]
 position = Vector2(559, 254)
-tech_node_stats = ExtResource("21_dvfnf")
+tech_node_stats = ExtResource("22_7le32")
 
-[node name="Line2D" type="Line2D" parent="Nodes/MovementSpeed1"]
+[node name="Line2D" type="Line2D" parent="Nodes/JumpHeight1"]
 points = PackedVector2Array(7, 9, 70, 97)
 width = 3.0
 
@@ -220,20 +227,21 @@ tech_node_stats = ExtResource("22_yjrj2")
 points = PackedVector2Array(-2, 13, -2, 56)
 width = 3.0
 
-[node name="JumpHeight1" parent="Nodes" instance=ExtResource("5_2ltmf")]
-position = Vector2(484, 254)
-tech_node_stats = ExtResource("22_7le32")
+[node name="MovementSpeed1" parent="Nodes" instance=ExtResource("5_2ltmf")]
+position = Vector2(505, 254)
+tech_node_stats = ExtResource("21_dvfnf")
 
-[node name="Line2D" type="Line2D" parent="Nodes/JumpHeight1"]
-points = PackedVector2Array(11, 0, 60, 0)
+[node name="Line2D" type="Line2D" parent="Nodes/MovementSpeed1"]
+points = PackedVector2Array(11, 0, 38, 0)
 width = 3.0
 
 [node name="MovementSpeed2" parent="Nodes" instance=ExtResource("5_2ltmf")]
-position = Vector2(487, 186)
+position = Vector2(506, 186)
 tech_node_stats = ExtResource("22_vbmlq")
 
 [node name="Line2D" type="Line2D" parent="Nodes/MovementSpeed2"]
-points = PackedVector2Array(7, 9, 60, 60)
+position = Vector2(-1, 0)
+points = PackedVector2Array(-2, 14, -2, 54)
 width = 3.0
 
 [node name="CookingStationNode" parent="Nodes" instance=ExtResource("5_2ltmf")]
@@ -305,14 +313,65 @@ points = PackedVector2Array(-16, 1, -52, 1)
 width = 3.0
 
 [node name="ArialSlashNode" parent="Nodes" instance=ExtResource("5_2ltmf")]
-position = Vector2(836, 253)
+position = Vector2(772, 253)
 tech_node_stats = ExtResource("35_mdsgt")
 
 [node name="Line2D" type="Line2D" parent="Nodes/ArialSlashNode"]
 points = PackedVector2Array(-16, -1, -45, -1)
 width = 3.0
 
+[node name="MaxHP2" parent="Nodes" instance=ExtResource("5_2ltmf")]
+position = Vector2(759, 450)
+tech_node_stats = ExtResource("36_o1bwy")
+
+[node name="Line2D" type="Line2D" parent="Nodes/MaxHP2"]
+position = Vector2(-807, -524)
+points = PackedVector2Array(791, 524, 774, 524)
+width = 3.0
+
+[node name="DashAttackNode" parent="Nodes" instance=ExtResource("5_2ltmf")]
+position = Vector2(773, 207)
+tech_node_stats = ExtResource("37_34cer")
+node_type = 1
+
+[node name="Line2D" type="Line2D" parent="Nodes/DashAttackNode"]
+position = Vector2(-1, 0)
+points = PackedVector2Array(-2, 13, -2, 32)
+width = 3.0
+
+[node name="Defense2" parent="Nodes" instance=ExtResource("5_2ltmf")]
+position = Vector2(757, 508)
+tech_node_stats = ExtResource("37_pqlb5")
+
+[node name="Line2D" type="Line2D" parent="Nodes/Defense2"]
+position = Vector2(-3, 8)
+points = PackedVector2Array(-13, -8, -28, -8)
+width = 3.0
+
+[node name="InvincibilityDuration1" parent="Nodes" instance=ExtResource("5_2ltmf")]
+position = Vector2(431, 254)
+tech_node_stats = ExtResource("39_l65vq")
+
+[node name="Line2D" type="Line2D" parent="Nodes/InvincibilityDuration1"]
+position = Vector2(10.868652, 3.784851)
+points = PackedVector2Array(1.1313477, -3.784851, 47.131348, -3.784851)
+width = 3.0
+
+[node name="DashAttackDuration1Node" parent="Nodes" instance=ExtResource("5_2ltmf")]
+position = Vector2(823, 208)
+tech_node_stats = ExtResource("39_iyves")
+
+[node name="Line2D" type="Line2D" parent="Nodes/DashAttackDuration1Node"]
+points = PackedVector2Array(-16, 0, -38, 0)
+width = 3.0
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PlayerStats" parent="CanvasLayer" instance=ExtResource("10_7l0yi")]
+offset_left = 167.0
+offset_top = -62.0
+offset_right = 315.0
+offset_bottom = 133.5
 
 [node name="Currency" type="Label" parent="CanvasLayer"]
 anchors_preset = 3
@@ -320,10 +379,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -293.0
-offset_top = -22.0
-offset_right = -10.0
-offset_bottom = -6.0
+offset_left = -634.0
+offset_top = -357.0
+offset_right = -494.0
+offset_bottom = -341.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -331,36 +390,63 @@ theme_override_constants/outline_size = 5
 theme_override_constants/shadow_outline_size = 0
 theme_override_fonts/font = ExtResource("13_uk0x3")
 text = "Currency : 0"
-horizontal_alignment = 2
 
 [node name="PresitgeTier" type="Label" parent="CanvasLayer"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -166.0
-offset_top = 1.0
-offset_right = -28.0
-offset_bottom = 17.0
+offset_left = -69.0
+offset_top = 9.0
+offset_right = 69.0
+offset_bottom = 25.0
 grow_horizontal = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("13_uk0x3")
 theme_override_font_sizes/font_size = 16
 text = "Prestige: 0"
+horizontal_alignment = 1
 
-[node name="PrestigeProgress" type="Label" parent="CanvasLayer"]
+[node name="PrestigeProgress2" type="Label" parent="CanvasLayer"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 96.0
-offset_top = 4.0
-offset_right = 159.0
-offset_bottom = 21.0
+offset_left = 133.0
+offset_top = 12.0
+offset_right = 196.0
+offset_bottom = 29.0
 grow_horizontal = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("13_uk0x3")
 theme_override_font_sizes/font_size = 16
 text = "0/10"
-horizontal_alignment = 1
+
+[node name="PrestigeProgress" type="Label" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 73.0
+offset_top = 12.0
+offset_right = 125.0
+offset_bottom = 29.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("13_uk0x3")
+theme_override_font_sizes/font_size = 16
+text = "Next In:"
+
+[node name="HuntingTime" type="Label" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -166.0
+offset_top = 50.0
+offset_right = -45.0
+offset_bottom = 67.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("13_uk0x3")
+theme_override_font_sizes/font_size = 16
+text = "Hunt Time: 25"
 
 [node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
 anchors_preset = 5
@@ -415,16 +501,13 @@ theme_override_font_sizes/font_size = 16
 text = "Close"
 
 [node name="Marker2D" type="Marker2D" parent="CanvasLayer"]
-position = Vector2(321, 79)
+position = Vector2(326, 79)
 
-[node name="PlayerStats" parent="CanvasLayer" instance=ExtResource("10_7l0yi")]
-offset_left = -317.0
-offset_top = -177.0
-offset_right = -169.0
-offset_bottom = 116.0
+[node name="Marker2D2" type="Marker2D" parent="CanvasLayer"]
+position = Vector2(46, 79)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(734, 317)
+position = Vector2(666, 389)
 script = ExtResource("9_wj3rp")
 
 [connection signal="button_down" from="CanvasLayer/Close" to="." method="_on_close_button_down"]

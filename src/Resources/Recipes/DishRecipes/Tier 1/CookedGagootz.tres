@@ -7,9 +7,9 @@
 
 [resource]
 script = ExtResource("1_v7ppa")
-recipe_name = "Cooked Gagootz"
+recipe_name = "Fried Gagootz"
 menu_icon = ExtResource("1_e7re5")
-description = "A savory dish made from purified mushie cores."
+description = "A savory dish made from purified mushie cores and puree."
 recipe_tier = 1
 crafting_time = 100.0
 recipe_type = 1

@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://pk5hdfflc6iy"]
+[gd_scene load_steps=14 format=3 uid="uid://pk5hdfflc6iy"]
 
 [ext_resource type="Script" uid="uid://dvf67sbviff5y" path="res://src/Scripts/Facilities/crafting_station.gd" id="1_e3qwp"]
 [ext_resource type="Texture2D" uid="uid://ce4sagacwwdc8" path="res://Assets/Facilities/CraftingMenu.png" id="2_1wrh0"]
+[ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="2_pofai"]
 [ext_resource type="FontFile" uid="uid://qgj228ltdttv" path="res://Assets/Fonts/alagard.ttf" id="3_udv0u"]
 [ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="4_dxjxu"]
 [ext_resource type="PackedScene" uid="uid://d0s6j8mvikv8c" path="res://src/Scenes/UI/ItemSlot.tscn" id="4_mboji"]
@@ -25,6 +26,10 @@ station_name = "Crafting Station"
 state_machine = NodePath("StateMachine")
 idle_state = NodePath("StateMachine/Idle")
 crafting_state = NodePath("StateMachine/Craft")
+
+[node name="SfxPlayer" parent="." instance=ExtResource("2_pofai")]
+
+[node name="SfxPlayer2" parent="." instance=ExtResource("2_pofai")]
 
 [node name="MenuGraphic" type="TextureRect" parent="."]
 layout_mode = 1
@@ -465,9 +470,10 @@ initial_state = NodePath("Idle")
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("11_8pjqq")
 
-[node name="Craft" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state")]
+[node name="Craft" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "sfx_player")]
 script = ExtResource("12_8jenx")
 idle_state = NodePath("../Idle")
+sfx_player = NodePath("../../SfxPlayer")
 
 [connection signal="button_up" from="I" to="." method="_on_i_button_up"]
 [connection signal="button_up" from="II" to="." method="_on_ii_button_up"]

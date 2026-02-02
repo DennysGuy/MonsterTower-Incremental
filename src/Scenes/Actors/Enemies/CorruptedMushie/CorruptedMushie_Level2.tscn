@@ -1,12 +1,13 @@
-[gd_scene load_steps=38 format=3 uid="uid://cyiot28va881c"]
+[gd_scene load_steps=39 format=3 uid="uid://cyiot28va881c"]
 
 [ext_resource type="Script" uid="uid://cukvls0ec73td" path="res://src/Scripts/Enemies/CorruptedMushie/corrupted_mushie.gd" id="1_61466"]
-[ext_resource type="Resource" uid="uid://bq0juubwkp8im" path="res://src/Resources/Actors/Enemies/Biome1/CorruptedMushie/CorruptedMushie.tres" id="2_61466"]
-[ext_resource type="Texture2D" uid="uid://bgyp10e7cisjy" path="res://Assets/Enemies/CorruptedMushie/CorruptedMushie_chase.png" id="3_aex54"]
-[ext_resource type="Texture2D" uid="uid://cj34l60xfqhrv" path="res://Assets/Enemies/CorruptedMushie/CorruptedMushie_die.png" id="4_dlfrg"]
-[ext_resource type="Texture2D" uid="uid://dycev0cnx8xjh" path="res://Assets/Enemies/CorruptedMushie/CorruptedMushie_hit.png" id="5_j4mso"]
+[ext_resource type="Resource" uid="uid://dwtw24hgj7tub" path="res://src/Resources/Actors/Enemies/Biome1/CorruptedMushie/CorruptedMushie_LvL2.tres" id="2_61466"]
+[ext_resource type="Texture2D" uid="uid://ba77mn7in2c1r" path="res://Assets/Enemies/CorruptedMushie/CorruptedMushie_LVL2_chase.png" id="3_61466"]
+[ext_resource type="Texture2D" uid="uid://ctjynt2rwtxkw" path="res://Assets/Enemies/CorruptedMushie/CorruptedMushie_LVL2_die.png" id="4_61466"]
+[ext_resource type="Texture2D" uid="uid://dwh2r3m68xj10" path="res://Assets/Enemies/CorruptedMushie/CorruptedMushie_LVL2_hit.png" id="5_61466"]
+[ext_resource type="Texture2D" uid="uid://ce462vnnn7u0w" path="res://Assets/Enemies/CorruptedMushie/CorruptedMushie_LVL2_idle.png" id="6_d1fh7"]
 [ext_resource type="Texture2D" uid="uid://bwsaud365nxdo" path="res://Assets/Enemies/CorruptedMushie/CorruptedMushie_Idle.png" id="6_obfx4"]
-[ext_resource type="Texture2D" uid="uid://bkkw4stqor8oa" path="res://Assets/Enemies/CorruptedMushie/CorruptedMushie_move.png" id="7_kjg4h"]
+[ext_resource type="Texture2D" uid="uid://c7d3l4ggb21f8" path="res://Assets/Enemies/CorruptedMushie/CorruptedMushie_LVL2_move.png" id="7_d1fh7"]
 [ext_resource type="PackedScene" uid="uid://vo5sm7p34vo6" path="res://src/Scenes/Actors/Utilities/NameTag.tscn" id="8_tmol1"]
 [ext_resource type="PackedScene" uid="uid://b8lilr7mgc8l1" path="res://src/Scenes/Actors/Enemies/EnemyHealthBar.tscn" id="9_q6dtb"]
 [ext_resource type="Script" uid="uid://drr0deykmfrvq" path="res://src/Scripts/StateMachine/state_machine.gd" id="10_8ggvx"]
@@ -67,7 +68,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_aex54")]
+"values": [ExtResource("3_61466")]
 }
 
 [sub_resource type="Animation" id="Animation_o87ao"]
@@ -108,7 +109,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("4_dlfrg")]
+"values": [ExtResource("4_61466")]
 }
 
 [sub_resource type="Animation" id="Animation_p06fi"]
@@ -149,7 +150,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("5_j4mso")]
+"values": [ExtResource("5_61466")]
 }
 
 [sub_resource type="Animation" id="Animation_uospo"]
@@ -191,7 +192,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("6_obfx4")]
+"values": [ExtResource("6_d1fh7")]
 }
 
 [sub_resource type="Animation" id="Animation_adl3q"]
@@ -233,7 +234,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("7_kjg4h")]
+"values": [ExtResource("7_d1fh7")]
 }
 
 [sub_resource type="Animation" id="Animation_gol3t"]

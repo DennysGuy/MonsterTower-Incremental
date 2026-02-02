@@ -8,9 +8,13 @@ func _ready() -> void:
 	super()
 	hud.animation_player.play("CloseIn")
 	SignalBus.spawn_enemies.emit()
+
 	if ore_rock_markers:
 		spawn_ore_rocks()
-
+	await get_tree().process_frame
+	SignalBus.update_monsters_left.emit("Monsters Left: %s" % [monster_spawn_node.get_children().size()],false)
+	SignalBus.update_player_health.emit(player.health)
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("interact") and player_in_exit_area and player.damageable:

@@ -3,6 +3,8 @@ class_name InventoryBag extends Control
 @onready var texture_rect: TextureRect = $TextureRect
 @onready var grid_container: GridContainer = $TextureRect/GridContainer
 @onready var bag_full: Label = $BagFull
+@onready var sfx_player: SFXPlayer = $SfxPlayer
+const BAG_FULL = preload("uid://bakwpx4g6fqth")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -18,10 +20,10 @@ func init_bag() -> void:
 	update_grid_container()
 
 func update_grid_container() -> void:
-	texture_rect.texture = PlayerStats.get_bag().texture
+	texture_rect.texture = PlayerStats.get_bag("Bag").texture
 	clear_grid_container()
 	
-	for num in range(InventoryManager.get_max_bag_slots()):
+	for num in range(InventoryManager.get_max_bag_slots("Bag")):
 		var slot : ItemSlot = preload("uid://d0s6j8mvikv8c").instantiate()
 		var potential_item
 		if num < InventoryManager.inventories["Inventory"].size():
@@ -31,14 +33,16 @@ func update_grid_container() -> void:
 			slot.item = potential_item["item"]
 			slot.item_icon.texture = potential_item["item"].shop_icon
 			slot.show_quantity_label(potential_item["quantity"])
+			slot.set_indicator(potential_item["item"])
 			grid_container.add_child(slot)
 		else:
 			grid_container.add_child(slot)
 	check_if_bag_full()
 
 func check_if_bag_full() -> void:
-	if InventoryManager.check_if_inventory_full():
+	if InventoryManager.check_if_inventory_full("Inventory", "Bag", "Max Bag Stack"):
 		show_bag_full()
+		sfx_player.play_sfx(BAG_FULL)
 	else:
 		hide_bag_full()
 

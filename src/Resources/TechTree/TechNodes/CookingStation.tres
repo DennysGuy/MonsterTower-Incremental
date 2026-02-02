@@ -7,9 +7,10 @@
 script = ExtResource("1_bm6gd")
 node_name = "Cooking Station"
 icon = ExtResource("1_farkg")
-description = "Unlocks Cooking Station - You can cook fancy dishes and Sell em on the market!"
+description = "[color=red]Cook fancy dishes, make profit, or spend on upgrades![/color]
+[color=green]Unveils Refinery Node![/color]"
 currency_required = 300
 node_type = 1
 stat_name = "Cooking Station"
-prereqs = Array[String](["Tower License:1"])
+prereqs = Array[String](["Banking:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

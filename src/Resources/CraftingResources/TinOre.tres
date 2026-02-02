@@ -6,9 +6,9 @@
 [resource]
 script = ExtResource("1_wm840")
 drop_icon = ExtResource("1_yqdff")
-item_type = 2
+item_type = 3
 drop_chance = 0.7
 item_name = "Tin Ore"
-sell_value = 30
+sell_value = 60
 shop_icon = ExtResource("1_yqdff")
 metadata/_custom_type_script = "uid://cubudt76pshmm"

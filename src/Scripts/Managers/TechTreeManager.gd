@@ -23,16 +23,15 @@ signal update_tool_tip_info(total_bonus : float)
 signal update_player_stats
 
 @warning_ignore("unused_signal")
-signal unlock_cooking_station
+signal unlock_station
 
-@warning_ignore("unused_signal")
-signal unlock_refinery
+
 
 @warning_ignore("unused_signal")
 signal check_if_can_purchase_node
 
 @warning_ignore("unused_signal")
-signal add_tool_tip(tool_tip : ToolTip)
+signal add_tool_tip(tool_tip : ToolTip, on_right_half : bool)
 
 var currency : int = 0
 var current_prestige : int = 0
@@ -44,7 +43,7 @@ var upgrade_count_to_prestige : int = 0
 enum TECH_NODE_TYPE {ABILITY, FACILITY}
 
 @onready var tech_nodes : Dictionary = {
-	"Tower License" : 0,
+	"Hunter License" : 0,
 	"Attack 1" : 0,
 	"Attack 2" : 0,
 	"Arial Slash":0,
@@ -63,6 +62,7 @@ enum TECH_NODE_TYPE {ABILITY, FACILITY}
 	"Max HP 1":0,
 	"Max HP 2": 0,
 	"Defense 1": 0,
+	"Defense 2":0,
 	"Expedition Time 1": 0,
 	"Expedition Time 2": 0,
 	"Monster Cap 1": 0,
@@ -71,6 +71,8 @@ enum TECH_NODE_TYPE {ABILITY, FACILITY}
 	"Item Bag 2":0,
 	"Deeper Pockets 1":0,
 	"Deeper Pockets 2":0,
+	"Dash Attack":0,
+	"Dash Attack Duration 1":0,
 	"Banking":0,
 	"Banking 2":0,
 	"Cooking Station":0,
@@ -88,7 +90,8 @@ enum TECH_NODE_TYPE {ABILITY, FACILITY}
 	"Refinery Accuracy 1": 0,
 	"Refinery Accuracy 2": 0,
 	"Ore Drop Chance 1": 0.0,
-	"Ore Drop Chance 2": 0.0
+	"Ore Drop Chance 2": 0.0,
+	"Invincibility Duration 1":0.0
 }
 
 # Called when the node enters the scene tree for the first time.
@@ -117,8 +120,8 @@ func increment_upgrade_count() -> void:
 	
 	if current_upgrade_count >= upgrade_count_to_prestige:
 		current_prestige += 1
-		PlayerStats.player_stats["Expedition Time"] += 20
-		upgrade_count_to_prestige += 25
+		PlayerStats.player_stats["Expedition Time"] += 25
+		upgrade_count_to_prestige += 15
 		current_upgrade_count = 0
 		update_prestige_tier_label.emit()
 		update_prestige_tier_progress_label.emit()

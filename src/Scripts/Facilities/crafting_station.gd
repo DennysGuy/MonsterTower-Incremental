@@ -37,10 +37,17 @@ var is_crafting : bool = false
 var selected_tier : int = 1
 @onready var inventory_full_warning: Label = $InventoryFullWarning
 
+@onready var sfx_player_2: SFXPlayer = $SfxPlayer2
+
 const CRAFTING_MENU = preload("uid://ce4sagacwwdc8")
 const SMELTING_MENU = preload("uid://b4ptfqnoq6qly")
 
+const FAILURE = preload("uid://cv5p7ufgqluno")
+const SUCCESS = preload("uid://dj3e1mi4ks8sr")
+
 @onready var bank_notice: Label = $BankNotice
+@onready var sfx_player: SFXPlayer = $SfxPlayer
+
 
 var show_can_craft_next_sword_scene : bool = false
 
@@ -89,6 +96,8 @@ func _on_exit_button_up() -> void:
 		if show_can_craft_next_sword_scene:
 			SignalBus.issue_can_craft_sword_scene.emit()
 			show_can_craft_next_sword_scene = false
+	CookingManager.can_craft_bar.emit()
+	CookingManager.can_craft_dish.emit()
 	get_parent().queue_free()
 
 func _on_start_crafting_button_up() -> void:
@@ -116,7 +125,13 @@ func populate_recipes_list(tier : int) -> void:
 		recipe_menu_item.title.text = recipe_resource.recipe_name
 		recipe_menu_item.can_make.text = "Can Make: %s" % [InventoryManager.calculate_quantity(recipe)]
 		recipes_container.add_child(recipe_menu_item)
-		
+
+func play_success_sfx() -> void:
+	sfx_player_2.play_sfx(SUCCESS)
+
+func play_failure_sfx() -> void:
+	sfx_player_2.play_sfx(FAILURE)
+	
 func populate_details_panel(recipe : CraftingRecipe) -> void:
 	stored_recipe = recipe
 	recipe_name.text = recipe.recipe_name
@@ -130,7 +145,13 @@ func populate_details_panel(recipe : CraftingRecipe) -> void:
 	match station_type:
 		STATION_TYPE.COOKING: success_rate.text += " (+"+str(int(PlayerStats.player_stats["Cooking Accuracy Bonus"] * 100)) +"%"
 		STATION_TYPE.SMELTING: success_rate.text += " (+"+str(int(PlayerStats.player_stats["Smelting Accuracy Bonus"] * 100)) +"%"
-	var can_add_to_inventory : bool = InventoryManager.check_if_can_add_to_inventory(recipe.output_item)
+	
+	var can_add_to_inventory : bool
+	
+	if STATION_TYPE.COOKING:
+		can_add_to_inventory = InventoryManager.check_if_can_add_to_inventory(recipe.output_item, "Inventory", "Bag","Max Bag Stack")
+	else:
+		can_add_to_inventory = InventoryManager.check_if_can_add_to_inventory(recipe.output_item, "Ore Inventory", "Ore Bag","Max Ore Bag Stack")
 	
 	if !can_add_to_inventory:
 		inventory_full_warning.show()
@@ -171,8 +192,11 @@ func update_inventories() -> void:
 		InventoryManager.update_grid_container(bank_container,"Bank",false)
 	else:
 		bank_notice.show()
-		
-	InventoryManager.update_grid_container(inventory_container,"Inventory",false )
+	
+	if station_type == STATION_TYPE.COOKING:
+		InventoryManager.update_grid_container(inventory_container,"Inventory",false )
+	elif station_type == STATION_TYPE.SMELTING:
+		InventoryManager.update_grid_container(inventory_container,"Ore Inventory",false )
 
 func clear_menu_item_container() -> void:
 	InventoryManager.clear_grid_container(recipes_container)

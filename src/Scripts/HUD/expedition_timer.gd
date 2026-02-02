@@ -1,9 +1,11 @@
 extends Control
 
 @onready var timer_label: RichTextLabel = $TimerLabel
+@onready var sfx_player: SFXPlayer = preload("uid://d080wmb3mv021").instantiate()
 
 var seconds : float = 0.0
 var milliseconds : float = 0.0
+const COUNTDOWN_BEEP = preload("uid://c6caiqmkt2lt0")
 
 func _ready() -> void:
 	pass
@@ -16,6 +18,10 @@ func _physics_process(delta: float) -> void:
 		milliseconds -= delta
 		if milliseconds <= 0.0:
 			seconds -= 1
+			
+			if seconds <= 10:
+				SignalBus.play_countdown_beep.emit()
+			
 			milliseconds = 0.99
 			if seconds <= 0:
 				GameManager.expedition_timer_started = false

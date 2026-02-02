@@ -7,9 +7,9 @@
 script = ExtResource("1_jxi4e")
 node_name = "Crit Chance 1"
 icon = ExtResource("1_2mk68")
-description = "Increase Critical Chance hit by 2% for each level."
+description = "Chance to hit high! Increase Critical Chance hit by 2% for each level."
 max_level = 3
-currency_required = 75
+currency_required = 40
 stat_name = "Crit Chance"
 upgrade_interval = 0.05
 prereqs = Array[String](["Attack 1:1"])

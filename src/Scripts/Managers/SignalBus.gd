@@ -40,8 +40,30 @@ signal issue_can_craft_sword_scene
 signal play_close_out_animation
 
 @warning_ignore("unused_signal")
-signal update_kill_quota_text(message : String, hit_quota : bool)
+signal update_kill_quota_text(message : String, hit_quota : bool, out_of_enemies : bool)
+@warning_ignore("unused_signal")
+signal update_monsters_left(text : String, out_of_enemies : bool)
 @warning_ignore("unused_signal")
 signal update_kill_quota
 @warning_ignore("unused_signal")
 signal unlock_next_room
+@warning_ignore("unused_signal")
+signal update_entrance_map(index : int)
+@warning_ignore("unused_signal")
+signal update_resource_needed_panel
+@warning_ignore("unused_signal")
+signal play_countdown_beep
+
+@warning_ignore("unused_signal")
+signal show_can_cook_dish_label
+@warning_ignore("unused_signal")
+signal show_can_smelt_bar_label
+@warning_ignore("unused_signal")
+signal show_can_craft_sword
+
+@warning_ignore("unused_signal")
+signal hide_can_cook_dish_label
+@warning_ignore("unused_signal")
+signal hide_can_smelt_bar_label
+@warning_ignore("unused_signal")
+signal hide_can_craft_sword

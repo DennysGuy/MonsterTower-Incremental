@@ -14,19 +14,27 @@ const KNOCKBACK_FORCE : int = 300
 	"Attack Damage" : 10.0,
 	"Movement Speed" : 100.0,
 	"Climbing Speed" : 65.0,
+	"Dash Speed" : 350.0,
+	"Dash Cooldown" : 2.0,
+	"Dash Duration" : 0.3,
+	"Invincibility Duration": 2.5,
 	"Jump Height" : 270.0,
 	"Crit Chance" : 0.0,
 	"Defense" : 0.0,
 	"Crit Damage" : 1.5,
 	"Accuracy" : 0.6,
-	"Max Health" : 50,
+	"Max Health" : 35,
 	"Max MP": 50,
+	"Current Health":35,
+	"Current MP": 50,
 	"Equipped Sword": 0,
 	"Equipped Pickaxe": 0,
 	"Overlapping Hits" : 1.0,
 	"Bag": 1,
+	"Ore Bag":2,
 	"Max Bank Slots": 4,
 	"Max Bag Stack": 4,
+	"Max Ore Bag Stack": 4,
 	"Max Bank Stack":6,
 	"Cooking Speed": 0.15,
 	"Smelting Speed": 0.15,
@@ -40,14 +48,14 @@ const KNOCKBACK_FORCE : int = 300
 }
 
 @onready var facilities_unlocked : Dictionary[String, bool] = {
-	"Tower Pass" : false,
+	"Hunter License" : false,
 	"Cooking Station" : false,
 	"Crafting Station" : false,
 	"Refinery Station" : false,
 	"Bank": false,
-	"Arial Slash" : false
+	"Arial Slash" : false,
+	"Dash Attack": false
 }
-
 
 @onready var check_points_unlocked : Dictionary[String, bool] = {
 	"Floor 1-1" : false,
@@ -55,7 +63,18 @@ const KNOCKBACK_FORCE : int = 300
 	"Floor 1-3" : false
 }
 
-const MAX_SWORD_COUNT := 4
+@onready var floor_quotas : Dictionary[String, Dictionary] = {
+	"Floor 1-1" : {
+		"Current Count": 0,
+		"Quota": 30
+	},
+	"Floor 1-2" : {
+		"Current Count": 0,
+		"Quota": 30
+	}
+}
+
+const MAX_SWORD_COUNT := 3
 
 var show_cooking_station_unlock_animation : bool = false
 var show_refinery_station_unlock_animation : bool = false
@@ -70,27 +89,44 @@ func get_sword(sword_index : int = 0) -> Sword:
 		1:
 			return preload("uid://gj2gdethgc68")#"Shroom Fibre Blade"
 		2:
-			return preload("uid://hnq8o34pxm0h") #Bronze Sword
-		3:
-			return preload("uid://do5v83xsd4n70") #Steel Sword
+			return preload("uid://hnq8o34pxm0h") #Bronze Fang Blade
 		_:
 			return preload("uid://di3xaosm85tjx")#"Wooden Sword"
-			
-func can_craft_next_sword() -> bool:
-	var next_sword : Sword = get_sword(int(player_stats["Equipped Sword"])+1)
-	var craft_amount : int = InventoryManager.calculate_quantity(next_sword.recipe)
+
+func get_next_sword() -> Sword:
+	if player_stats["Equipped Sword"] < MAX_SWORD_COUNT-1:
+		var next_sword : int = int(player_stats["Equipped Sword"])+1
+		return get_sword(next_sword)
+	return null
 	
+func check_item_in_next_sword_recipe(item : Item) -> bool:
+	if get_next_sword():
+		var next_sword_recipe : CraftingRecipe = get_next_sword().recipe
+		if next_sword_recipe:
+			return InventoryManager.item_in_recipe(item,next_sword_recipe)
+		else:
+			return false
+	return false
+
+func can_craft_next_sword() -> bool:
+	if int(player_stats["Equipped Sword"])+1 == MAX_SWORD_COUNT:
+		return false
+	var next_sword : Sword = get_sword(int(player_stats["Equipped Sword"])+1)
+	
+	var craft_amount : int = InventoryManager.calculate_quantity(next_sword.recipe)
 	return craft_amount >= 1
 
 func get_pickaxe_name() -> String:
 	match player_stats["Equipped Pickaxe"]:
 		0:
 			return "Stone Pickaxe"
+		1:
+			return "Bronze Pickaxe"
 		_:
 			return "Stone Pickaxe"
 
-func get_bag() -> ItemBag:
-	match int(player_stats["Bag"]):
+func get_bag(bag : String) -> ItemBag:
+	match int(player_stats[bag]):
 		1: return preload("uid://cuwof21s5e74c")
 		2: return preload("uid://mbne7hjkpnqi")
 		3: return preload("uid://byikht2gbhthk")

@@ -23,5 +23,7 @@ func check_if_can_smelt() -> void:
 	if PlayerStats.facilities_unlocked["Refinery Station"]:
 		if CookingManager.can_refine_bar():
 			notification_icon.set_notice_icon()
+			SignalBus.show_can_smelt_bar_label.emit()
 		else:
 			notification_icon.hide()
+			SignalBus.hide_can_smelt_bar_label.emit()

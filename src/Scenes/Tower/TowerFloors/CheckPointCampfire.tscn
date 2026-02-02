@@ -1,104 +1,157 @@
-[gd_scene load_steps=15 format=3 uid="uid://d150vkltffpjo"]
+[gd_scene load_steps=9 format=3 uid="uid://d150vkltffpjo"]
 
 [ext_resource type="Texture2D" uid="uid://ddcxqkovhni5t" path="res://Assets/campfire_animated.png" id="1_17y3m"]
+[ext_resource type="Texture2D" uid="uid://dmmej8vyxugmf" path="res://Assets/campfire_base.png" id="2_uaah4"]
+[ext_resource type="Script" uid="uid://1f7na7fnhdri" path="res://src/Scripts/Maps/Tower/check_point_campfire.gd" id="2_ytu7s"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_i32dk"]
-atlas = ExtResource("1_17y3m")
-region = Rect2(0, 0, 39, 85)
+[sub_resource type="Animation" id="Animation_o8htc"]
+resource_name = "Off"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Campfire:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_uaah4")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Campfire:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Campfire:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_llpdw"]
-atlas = ExtResource("1_17y3m")
-region = Rect2(39, 0, 39, 85)
+[sub_resource type="Animation" id="Animation_hcocw"]
+resource_name = "On"
+length = 0.65
+loop_mode = 1
+step = 0.06
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Campfire:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06, 0.12, 0.17999999, 0.24, 0.29999998, 0.35999998, 0.42, 0.48, 0.53999996, 0.59999996),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Campfire:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.06),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_17y3m")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Campfire:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.06),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [12]
+}
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_aj31q"]
-atlas = ExtResource("1_17y3m")
-region = Rect2(78, 0, 39, 85)
+[sub_resource type="Animation" id="Animation_rmj6q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Campfire:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_uaah4")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Campfire:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Campfire:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mdljo"]
-atlas = ExtResource("1_17y3m")
-region = Rect2(117, 0, 39, 85)
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qlw6x"]
+_data = {
+&"Off": SubResource("Animation_o8htc"),
+&"On": SubResource("Animation_hcocw"),
+&"RESET": SubResource("Animation_rmj6q")
+}
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_la3sh"]
-atlas = ExtResource("1_17y3m")
-region = Rect2(156, 0, 39, 85)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uaah4"]
+size = Vector2(653, 20)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kuvlu"]
-atlas = ExtResource("1_17y3m")
-region = Rect2(195, 0, 39, 85)
+[node name="CheckpointCampfire" type="Node2D" node_paths=PackedStringArray("campfire")]
+script = ExtResource("2_ytu7s")
+campfire = NodePath("Campfire")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wh0ji"]
-atlas = ExtResource("1_17y3m")
-region = Rect2(234, 0, 39, 85)
+[node name="Campfire" type="Sprite2D" parent="."]
+position = Vector2(0, -40)
+texture = ExtResource("2_uaah4")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_d230i"]
-atlas = ExtResource("1_17y3m")
-region = Rect2(273, 0, 39, 85)
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_qlw6x")
+}
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4oowf"]
-atlas = ExtResource("1_17y3m")
-region = Rect2(312, 0, 39, 85)
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-10, 0)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2g1vp"]
-atlas = ExtResource("1_17y3m")
-region = Rect2(351, 0, 39, 85)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(316.5, 0)
+shape = SubResource("RectangleShape2D_uaah4")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_b4b1b"]
-atlas = ExtResource("1_17y3m")
-region = Rect2(390, 0, 39, 85)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_o851o"]
-atlas = ExtResource("1_17y3m")
-region = Rect2(429, 0, 39, 85)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_oyf6t"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_i32dk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_llpdw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_aj31q")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mdljo")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_la3sh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kuvlu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wh0ji")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_d230i")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4oowf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2g1vp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_b4b1b")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_o851o")
-}],
-"loop": true,
-"name": &"flame",
-"speed": 15.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"off",
-"speed": 5.0
-}]
-
-[node name="CheckpointCampfire" type="AnimatedSprite2D"]
-sprite_frames = SubResource("SpriteFrames_oyf6t")
-animation = &"off"
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -6,10 +6,13 @@ class_name TechNode extends Node2D
 
 @onready var tool_tip_marker: Marker2D = $ToolTipMarker
 
-@onready var level_label: Label = $LevelLabel
+
+
+@onready var level_label: RichTextLabel = $LevelLabel
 
 @export var node_type : TechTreeManager.TECH_NODE_TYPE
 @onready var sfx_player: SFXPlayer = $SfxPlayer
+@onready var facilities_notify: Sprite2D = $FacilitiesNotify
 
 var mouse_entered : bool = false
 var can_click : bool = false
@@ -21,6 +24,11 @@ const NODE_BASE_UNLOCKED_V_2 = preload("uid://bdbeuw5un1m3o")
 const HOVER_OVER_NODE = preload("uid://3aj3yvhod6qa")
 const NODE_CLICK = preload("uid://cd8y8mjk51lb4")
 
+const FACILITY_NODE_BASE_DISABLED_V_2 = preload("uid://c8qnk0k4bmquq")
+const FACILITY_NODE_BASE_ENABLED_V_2 = preload("uid://k40nmsc0dbc8")
+const FACILITY_NODE_UNLOCKED_V_2 = preload("uid://cvqtlryenuafk")
+
+
 var total_bonus : float = 0.0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -30,12 +38,28 @@ func _ready() -> void:
 	if tech_node_stats.unlocked:
 		show()
 		if can_click:
-			bg.texture = NODE_BASE_ENABLED_V_2
+			match node_type:
+				TechTreeManager.TECH_NODE_TYPE.ABILITY:
+					bg.texture = NODE_BASE_ENABLED_V_2
+				TechTreeManager.TECH_NODE_TYPE.FACILITY:
+					bg.texture = FACILITY_NODE_BASE_ENABLED_V_2
 		else:
 			if tech_node_stats.current_level >= tech_node_stats.max_level:
-				bg.texture = NODE_BASE_UNLOCKED_V_2
+				match node_type:
+					TechTreeManager.TECH_NODE_TYPE.ABILITY:
+						bg.texture = NODE_BASE_UNLOCKED_V_2
+					TechTreeManager.TECH_NODE_TYPE.FACILITY:
+						bg.texture = FACILITY_NODE_UNLOCKED_V_2
+						
+				if node_type == TechTreeManager.TECH_NODE_TYPE.FACILITY:
+					facilities_notify.show()
 			else:
-				bg.texture = NODE_BASE_DISABLED_V_2
+				match node_type:
+					TechTreeManager.TECH_NODE_TYPE.ABILITY:
+						bg.texture = NODE_BASE_DISABLED_V_2
+					TechTreeManager.TECH_NODE_TYPE.FACILITY:
+						bg.texture = FACILITY_NODE_BASE_DISABLED_V_2
+				facilities_notify.hide()
 	else:
 		hide()
 		
@@ -100,14 +124,36 @@ func check_if_can_purchase() -> void:
 	if tech_node_stats.current_level >= tech_node_stats.max_level:
 		can_click = false
 		if tech_node_stats.current_level >= tech_node_stats.max_level:
-			bg.texture = NODE_BASE_UNLOCKED_V_2
-	elif TechTreeManager.currency >= tech_node_stats.currency_required and has_resource_quantity():
+			match node_type:
+				TechTreeManager.TECH_NODE_TYPE.ABILITY:
+					bg.texture = NODE_BASE_UNLOCKED_V_2
+				TechTreeManager.TECH_NODE_TYPE.FACILITY:
+					bg.texture = FACILITY_NODE_UNLOCKED_V_2
+			facilities_notify.hide()
+	elif can_purchase():
 		can_click = true
-		bg.texture = NODE_BASE_ENABLED_V_2
+		match node_type:
+			TechTreeManager.TECH_NODE_TYPE.ABILITY:
+				bg.texture = NODE_BASE_ENABLED_V_2
+			TechTreeManager.TECH_NODE_TYPE.FACILITY:
+				bg.texture = FACILITY_NODE_BASE_ENABLED_V_2
+				
+		if node_type == TechTreeManager.TECH_NODE_TYPE.FACILITY:
+			facilities_notify.show()
 	else:
 		can_click = false
-		bg.texture = NODE_BASE_DISABLED_V_2
+		match node_type:
+			TechTreeManager.TECH_NODE_TYPE.ABILITY:
+				bg.texture = NODE_BASE_DISABLED_V_2
+			TechTreeManager.TECH_NODE_TYPE.FACILITY:
+				bg.texture = FACILITY_NODE_BASE_DISABLED_V_2
+		facilities_notify.hide()
+	
+	set_level_label()
 		
+
+func can_purchase() -> bool:
+	return TechTreeManager.currency >= tech_node_stats.currency_required and has_resource_quantity()
 
 func check_prereqs() -> void:
 	if !tech_node_stats.unlocked:
@@ -129,8 +175,13 @@ func unlock_node() -> void:
 	animation_player.play("clicked")
 
 func set_level_label() -> void:
-	
-	level_label.text = "%s/%s" % [tech_node_stats.current_level,tech_node_stats.max_level]
+	if tech_node_stats.current_level >= tech_node_stats.max_level:
+		level_label.text = "[color=yellow]Max[/color]"
+		return
+	if can_purchase():
+		level_label.text = "[color=green]%s/%s[/color]" % [tech_node_stats.current_level,tech_node_stats.max_level]
+	else:
+		level_label.text = "[color=gray]%s/%s[/color]" % [tech_node_stats.current_level,tech_node_stats.max_level]
 
 func remove_tool_tip() -> void:
 	for tool_tip in get_tree().get_nodes_in_group("ToolTips"):
@@ -141,20 +192,40 @@ func create_tool_tip() -> void:
 	tool_tip.node_title.text = "%s (%s/%s)" % [tech_node_stats.node_name,tech_node_stats.current_level,tech_node_stats.max_level]
 	tool_tip.tech_node_stats = tech_node_stats
 	
-	if tech_node_stats.upgrade_interval > 0 and tech_node_stats.upgrade_interval < 1.0:
-		if tech_node_stats.current_level < tech_node_stats.max_level:
-			tool_tip.current_benefits.text = str(total_bonus*100)+"% -> "+str(total_bonus*100+tech_node_stats.upgrade_interval*100)+"%"
+	if node_type == TechTreeManager.TECH_NODE_TYPE.FACILITY:
+		tool_tip.current_benefits.text = "Facility"
+	else:
+		if tech_node_stats.upgrade_interval > 0 and tech_node_stats.upgrade_interval < 1.0:	
+			if tech_node_stats.current_level < tech_node_stats.max_level:
+				tool_tip.current_benefits.text = str(total_bonus*100)+"% -> "+str(total_bonus*100+tech_node_stats.upgrade_interval*100)+"%"
+			else:
+				tool_tip.current_benefits.text = "+"+str(total_bonus*100)+"%"
+		elif tech_node_stats.upgrade_interval >= 1.0:
+			if tech_node_stats.current_level < tech_node_stats.max_level:
+				tool_tip.current_benefits.text = "%s -> %s" % [int(total_bonus), int(total_bonus+tech_node_stats.upgrade_interval)]
+			else:
+				tool_tip.current_benefits.text = "+%s" %[int(total_bonus)]
+	
+	if tech_node_stats.current_level >= tech_node_stats.max_level:
+		tool_tip.panel.color = Color(tool_tip.unlocked)
+	else:
+		if can_purchase():
+			tool_tip.panel.color = Color(tool_tip.can_buy)
 		else:
-			tool_tip.current_benefits.text = "+"+str(total_bonus*100)+"%"
-	elif tech_node_stats.upgrade_interval >= 1.0:
-		if tech_node_stats.current_level < tech_node_stats.max_level:
-			tool_tip.current_benefits.text = "%s -> %s" % [int(total_bonus), int(total_bonus+tech_node_stats.upgrade_interval)]
-		else:
-			tool_tip.current_benefits.text = "+%s" %[int(total_bonus)]
+			tool_tip.panel.color = Color(tool_tip.locked)
 	
 	tool_tip.description.text = tech_node_stats.description
 	tool_tip.cost.text = "Cost: %s" % [tech_node_stats.currency_required]
-	TechTreeManager.add_tool_tip.emit(tool_tip)
+	TechTreeManager.add_tool_tip.emit(tool_tip, is_on_right_half(self))
+
+
+func is_on_right_half(node: Node2D) -> bool:
+	var screen_x := node.get_global_transform_with_canvas().origin.x
+
+	var half_x := get_viewport().get_visible_rect().size.x * 0.5
+
+	return screen_x > half_x
+
 
 func has_resource_quantity() -> bool:
 	if tech_node_stats.materials_required.size() <= 0:
@@ -162,7 +233,9 @@ func has_resource_quantity() -> bool:
 	
 	for resource in tech_node_stats.materials_required:
 		for item in resource.keys():
-			if InventoryManager.get_quantity(item) >= resource[item]:
+			var quantity : int = 0
+			quantity = InventoryManager.get_quantity(item)
+			if quantity >= resource[item]:
 				return true
 	
 	return false

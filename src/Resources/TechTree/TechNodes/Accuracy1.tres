@@ -7,7 +7,7 @@
 script = ExtResource("2_o372j")
 node_name = "Accuracy 1"
 icon = ExtResource("1_gwhb2")
-description = "Decreases Damage Range by 1 per level"
+description = "Damage more constently! Decreases Damage Range by 1 per level"
 max_level = 3
 currency_required = 80
 stat_name = "Accuracy"

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://vbv5nct7kydl"]
+
+[ext_resource type="Script" uid="uid://cu8drgivmhfn" path="res://src/Scripts/item.gd" id="1_aifed"]
+[ext_resource type="Texture2D" uid="uid://bbc7cupbuh156" path="res://Assets/Facilities/CookingStation/MushyFlan.png" id="2_bk4sw"]
+
+[resource]
+script = ExtResource("1_aifed")
+item_name = "Mushie Flan"
+sell_value = 200
+shop_icon = ExtResource("2_bk4sw")
+description = "What some consider a delicacy made from various corrupted mushies."
+metadata/_custom_type_script = "uid://cu8drgivmhfn"

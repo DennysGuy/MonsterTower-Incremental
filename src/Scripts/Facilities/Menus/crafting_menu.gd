@@ -80,6 +80,8 @@ func update_sword() -> void: #run this function when we upgrade the sword.
 		else:
 			button.disabled = true
 			sword_graphic.texture = sword.mold_graphic
+		
+		SignalBus.update_resource_needed_panel.emit()
 
 func _on_close_button_up() -> void:
 	GameManager.player_can_move = true

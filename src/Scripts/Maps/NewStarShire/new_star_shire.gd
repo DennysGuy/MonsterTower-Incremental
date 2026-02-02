@@ -33,41 +33,49 @@ func _ready() -> void:
 	super()
 	SignalBus.spawn_tech_tree.connect(add_tech_tree_to_scene)
 	SignalBus.issue_can_craft_sword_scene.connect(new_sword_unlock_notice)
-	TechTreeManager.unlock_cooking_station.connect(unlock_cooking_station)
-	TechTreeManager.unlock_refinery.connect(unlock_refinery_station)
-	
+	TechTreeManager.unlock_station.connect(unlock_station)
+
+	CookingManager.can_craft_bar.emit()
 	hud.animation_player.play("CloseIn")
 
-	if PlayerStats.can_craft_next_sword():
+	if PlayerStats.player_stats["Equipped Sword"] < PlayerStats.MAX_SWORD_COUNT-1 and PlayerStats.can_craft_next_sword():
+		SignalBus.show_can_craft_sword.emit()
 		await get_tree().create_timer(1.0).timeout
 		new_sword_unlock_notice()
+	else:
+		SignalBus.hide_can_craft_sword.emit()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("interact") and player_in_tower_range and GameManager.player_can_move and PlayerStats.facilities_unlocked["Tower Pass"]:
+	if Input.is_action_just_pressed("interact") and player_in_tower_range and GameManager.player_can_move and PlayerStats.facilities_unlocked["Hunter License"]:
 		GameManager.player_can_move = false
 		if PlayerStats.check_points_unlocked["Floor 1-2"]:
 			spawn_tower_entrance_map() #need to check how many checkpoints unlocked
 		else:
 			go_to_test_floor()
-		
+			
 	if Input.is_action_just_pressed("interact") and player_in_market_range and GameManager.player_can_move:
 		GameManager.player_can_move = false
+		player.velocity = Vector2.ZERO
 		spawn_grand_market()
 		
 	if Input.is_action_just_pressed("interact") and player_in_cooking_range and GameManager.player_can_move and PlayerStats.facilities_unlocked["Cooking Station"]:
 		GameManager.player_can_move = false
+		player.velocity = Vector2.ZERO
 		spawn_cooking_menu()
 	
 	if Input.is_action_just_pressed("interact") and player_in_smelting_range and GameManager.player_can_move and PlayerStats.facilities_unlocked["Refinery Station"]:
 		GameManager.player_can_move = false
+		player.velocity = Vector2.ZERO
 		spawn_smelting_menu()
 	
 	if Input.is_action_just_pressed("interact") and player_in_crafting_range and GameManager.player_can_move:
 		GameManager.player_can_move = false
+		player.velocity = Vector2.ZERO
 		spawn_crafting_menu()
 
 func add_tech_tree_to_scene() -> void:
+	player.velocity = Vector2.ZERO
 	var tech_tree : TechTree = preload("uid://b7n3fwd3y85wp").instantiate()
 	sub_viewport.add_child(tech_tree)
 
@@ -77,7 +85,7 @@ func set_guide_log(show_log : bool) -> void:
 	else:
 		guide_log.hide()
 	
-	if PlayerStats.facilities_unlocked["Tower Pass"]:
+	if PlayerStats.facilities_unlocked["Hunter License"]:
 		guide_log.text = "Press E to enter the tower!"
 	else:
 		guide_log.text = "You need a Tower pass before you can Enter..."
@@ -93,15 +101,18 @@ func _on_tower_area_body_exited(body: Node2D) -> void:
 		set_guide_log(false)
 
 func go_to_test_floor() -> void:
+	GameManager.spawn_location = 0
 	hud.animation_player.play("CloseOut")
 	GameManager.player_can_move = true
+	GameManager.resupply_character = true
+	if PlayerStats.facilities_unlocked["Bank"]:
+		InventoryManager.move_inventory_to_bank()
 	await get_tree().create_timer(1.0).timeout
 	get_tree().change_scene_to_file("res://src/Scenes/Tower/TowerFloors/Biome1/Floor1-1.tscn")
 
 func spawn_tower_entrance_map() -> void:
 	var tower_entrance_map : TowerEntranceMap = preload("uid://bgurt44iah13x").instantiate()
 	control.add_child(tower_entrance_map)
-
 
 func spawn_grand_market() -> void:
 	var market : GrandMarketMenu = preload("uid://cfuw5h0apwpq").instantiate()
@@ -168,7 +179,7 @@ func _on_crafting_station_area_body_exited(body: Node2D) -> void:
 
 func unlock_cooking_station() -> void:
 	camera.player = null
-	GameManager.player_can_move = false
+	player.send_to_idle_state()
 	hud.animation_player.play("FadeInOut")
 	await get_tree().create_timer(0.5).timeout
 	sfx_player.play_sfx(UNLOCK_SHOP)
@@ -186,11 +197,11 @@ func unlock_cooking_station() -> void:
 	await get_tree().create_timer(0.5).timeout
 	camera.position = player.position
 	camera.player = player
-	GameManager.player_can_move = true
+	PlayerStats.show_cooking_station_unlock_animation = false
 	
 func unlock_refinery_station() -> void:
 	camera.player = null
-	GameManager.player_can_move = false
+	player.send_to_idle_state()
 	hud.animation_player.play("FadeInOut")
 	await get_tree().create_timer(0.5).timeout
 	sfx_player.play_sfx(UNLOCK_SHOP)
@@ -210,11 +221,24 @@ func unlock_refinery_station() -> void:
 	await get_tree().create_timer(0.5).timeout
 	camera.position = player.position
 	camera.player = player
+	PlayerStats.show_refinery_station_unlock_animation = false
+
+
+func unlock_station() -> void:
+	GameManager.player_can_move = false
+	if PlayerStats.show_cooking_station_unlock_animation:
+		await unlock_cooking_station()
+	
+	if PlayerStats.show_refinery_station_unlock_animation:
+		await unlock_refinery_station()
+		
 	GameManager.player_can_move = true
 
+
 func new_sword_unlock_notice() -> void:
-	camera.player = null
 	GameManager.player_can_move = false
+	camera.player = null
+	player.send_to_idle_state()
 	hud.animation_player.play("FadeInOut")
 	await get_tree().create_timer(0.5).timeout
 	smithing_station.notify_can_craft()

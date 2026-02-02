@@ -7,6 +7,7 @@
 script = ExtResource("1_2cbcc")
 drop_icon = ExtResource("1_sfm84")
 item_name = "Corrupted Mushie Spore"
-sell_value = 20
+sell_value = 30
 shop_icon = ExtResource("1_sfm84")
+description = "Spores extracted from the corrupted mushie. There's some value, I suppose."
 metadata/_custom_type_script = "uid://cubudt76pshmm"

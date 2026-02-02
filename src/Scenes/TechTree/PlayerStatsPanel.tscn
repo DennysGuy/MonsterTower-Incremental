@@ -13,7 +13,7 @@ anchor_bottom = 0.5
 offset_left = -74.0
 offset_top = -136.5
 offset_right = 74.0
-offset_bottom = 136.5
+offset_bottom = 59.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_2r51a")
@@ -26,9 +26,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -89.0
-offset_top = -118.5
+offset_top = -71.25
 offset_right = 94.0
-offset_bottom = 117.5
+offset_bottom = 115.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 5
@@ -49,3 +49,16 @@ offset_bottom = 19.0
 theme_override_fonts/font = ExtResource("3_xorcj")
 theme_override_font_sizes/font_size = 16
 text = "Player Stats"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -37.0
+offset_bottom = 26.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 13
+text = "Hide"
+
+[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]

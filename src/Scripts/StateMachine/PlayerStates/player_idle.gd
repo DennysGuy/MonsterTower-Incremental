@@ -12,20 +12,13 @@ class_name PlayerIdle extends State
 
 func enter() -> void:
 	parent.set_sword_texture(animation_name)
+	parent.can_knock_back = true
 	super()
 
 func exit() -> void:
 	pass
 
 func process_input(_event: InputEvent) -> State:
-	# Non-movement, event-based actions only
-	if !GameManager.player_can_move:
-		return null
-
-	if _event.is_action_pressed("swing_sword") and GameManager.player_can_move:
-		if parent.stored_ore_rock and PlayerStats.facilities_unlocked["Refinery Station"]:
-			return swing_pick_axe_state
-		return attack_1_state
 
 	if Input.is_action_pressed("pan_cam_down") and Input.is_action_just_pressed("add_currency"):
 		parent.pass_through_floor()
@@ -43,6 +36,11 @@ func process_physics(_delta: float) -> State:
 		parent.move_and_slide()
 		return null
 
+	if Input.is_action_just_pressed("swing_sword"):
+		if parent.stored_ore_rock and PlayerStats.facilities_unlocked["Refinery Station"]:
+			return swing_pick_axe_state
+		return attack_1_state
+
 	# Falling always wins
 	if !parent.is_on_floor():
 		return fall_state
@@ -53,7 +51,7 @@ func process_physics(_delta: float) -> State:
 		Input.is_action_pressed("pan_cam_right")
 	)
 
-	if moving:
+	if moving and GameManager.player_can_move:
 		return move_state
 
 	# Ladder logic (continuous)

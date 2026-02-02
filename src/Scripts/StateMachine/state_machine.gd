@@ -13,8 +13,12 @@ func init(parent) -> void:
 	change_state(initial_state)
 
 func change_state(new_state: State) -> void:
+
 	if current_state:
 		current_state.exit()
+	
+	if get_parent() is Player and not GameManager.player_can_move:
+		return
 	
 	previous_state = current_state
 	current_state = new_state
