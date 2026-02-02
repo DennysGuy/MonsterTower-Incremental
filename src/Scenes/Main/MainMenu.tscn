@@ -93,26 +93,27 @@ theme_override_fonts/font = ExtResource("3_rsyx7")
 theme_override_font_sizes/font_size = 50
 text = "Starspire Hunters"
 
-[node name="Label2" type="Label" parent="."]
+[node name="NewGame" type="Button" parent="."]
 layout_mode = 1
-anchors_preset = 7
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -250.0
-offset_top = -67.0
-offset_right = 286.0
-offset_bottom = -10.0
+anchor_bottom = 0.5
+offset_left = -59.0
+offset_top = 70.0
+offset_right = 59.0
+offset_bottom = 110.0
 grow_horizontal = 2
-grow_vertical = 0
-theme_override_constants/outline_size = 11
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+theme_override_constants/outline_size = 7
 theme_override_fonts/font = ExtResource("2_58xxk")
-theme_override_font_sizes/font_size = 26
-text = "Disclaimer: There is Currently No Save Feature.
-Quitting the game will result in lost progress!"
+theme_override_font_sizes/font_size = 24
+text = "NEw Game"
 
-[node name="Button" type="Button" parent="."]
+[node name="Continue" type="Button" parent="."]
+modulate = Color(3.85046e-07, 0.97184914, 0.35903677, 1)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -120,16 +121,16 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -31.0
-offset_top = 9.0
+offset_top = 22.0
 offset_right = 31.0
-offset_bottom = 49.0
+offset_bottom = 62.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_default_cursor_shape = 2
 theme_override_constants/outline_size = 7
 theme_override_fonts/font = ExtResource("2_58xxk")
-theme_override_font_sizes/font_size = 32
-text = "Play"
+theme_override_font_sizes/font_size = 30
+text = "COntinue"
 
 [node name="TransitionRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -149,4 +150,5 @@ libraries = {
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_fcgj2")
 
-[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
+[connection signal="button_up" from="NewGame" to="." method="_on_button_button_up"]
+[connection signal="button_up" from="Continue" to="." method="_on_continue_button_up"]
