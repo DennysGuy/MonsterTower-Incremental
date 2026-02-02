@@ -29,6 +29,7 @@ ExpeditionTimer="*res://src/Scripts/HUD/expedition_timer.gd"
 NotificationManager="*res://src/Scripts/Managers/NotificationManager.gd"
 MusicPlayer="*res://src/Scenes/Players/MusicPlayer.tscn"
 LevelingManager="*res://src/Scripts/Managers/LevelingManager.gd"
+SaveManager="*res://src/Scripts/Managers/SaveManager.gd"
 
 [display]
 

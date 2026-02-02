@@ -225,7 +225,6 @@ func unlock_refinery_station() -> void:
 	camera.player = player
 	PlayerStats.show_refinery_station_unlock_animation = false
 
-
 func unlock_station() -> void:
 	GameManager.player_can_move = false
 	if PlayerStats.show_cooking_station_unlock_animation:

@@ -17,4 +17,5 @@ func go_to_next_scene() -> void:
 	
 
 func _on_button_button_up() -> void:
+	SaveManager.load_game()
 	go_to_next_scene()
