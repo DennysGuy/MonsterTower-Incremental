@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ClassAbility" load_steps=3 format=3 uid="uid://b0lsgfuw8bp58"]
+
+[ext_resource type="Resource" uid="uid://bmd0pcmjmoel0" path="res://src/Resources/AbilityStates/AirAttacks/BasicAirAttackBehavior.tres" id="1_4rfuh"]
+[ext_resource type="Script" uid="uid://bwqf7q51702b" path="res://src/Scripts/cability.gd" id="1_r4urb"]
+
+[resource]
+script = ExtResource("1_r4urb")
+ability_name = "Dash Attack"
+ability_type = 2
+ability_description = "The entry level dash attack - before any class is selected."
+ability_behavior = ExtResource("1_4rfuh")
+number_of_enemies_hit = 1.0
+max_hit_count = 1.0
+dash_speed_modifier = 1.0
+metadata/_custom_type_script = "uid://bwqf7q51702b"

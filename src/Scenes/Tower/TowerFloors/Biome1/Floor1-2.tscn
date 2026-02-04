@@ -892,10 +892,12 @@ index = 2
 
 [node name="CheckpointCampfire1" parent="CampfireCheckpoints" instance=ExtResource("26_qbeca")]
 position = Vector2(132, 993)
+reference_name = "Floor 1-2 Campfire 1"
 entrance_data = ExtResource("2_801hy")
 
 [node name="CheckpointCampfire2" parent="CampfireCheckpoints" instance=ExtResource("26_qbeca")]
 position = Vector2(139, 144)
+reference_name = "Floor 1-2 Campfire 2"
 entrance_data = ExtResource("2_801hy")
 
 [node name="OreRockMarker" parent="." node_paths=PackedStringArray("spawn_parent") instance=ExtResource("8_ujmhj")]

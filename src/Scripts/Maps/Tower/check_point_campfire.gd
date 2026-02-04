@@ -1,17 +1,20 @@
 class_name CampFireCheckPoint extends Node2D
 
+@export var reference_name : String
 @export var entrance_data : TowerEntranceData
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 @export var unlocked : bool = false
+var just_unlocked : bool = false
 
 @export var campfire: Sprite2D
-var just_unlocked : bool = false
-func _ready() -> void:
+
+func _ready() -> void:	
 	if unlocked:
 		animation_player.play("On")
 	else:
 		animation_player.play("Off")
+		
 func _process(delta: float) -> void:
 	pass
 
@@ -22,5 +25,13 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		entrance_data.camp_fires_reached += 1
 		animation_player.play("On")
 		HitStopManager.freeze()
+		save_floor_data()
 		just_unlocked = true
+		
+
+func save_floor_data() -> void:
+	var saved_data = SaveManager.current_save_game.tower_entrance_data
+	saved_data[entrance_data.floor_name]["Number of Spawn Locations"] = entrance_data.number_of_spawn_locations
+	saved_data[entrance_data.floor_name]["Campfires Reached"] = entrance_data.camp_fires_reached
+	SaveManager.save_game()
 		

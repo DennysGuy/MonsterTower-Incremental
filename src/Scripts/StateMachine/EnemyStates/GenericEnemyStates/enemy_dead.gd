@@ -13,7 +13,7 @@ func enter() -> void:
 	if parent.hit_box:
 		parent.hit_box.get_child(0).disabled = true
 	drop_items()
-	
+	parent.give_xp()
 	HitStopManager.freeze(0.15)
 	parent.damageable = false
 	parent.is_dead = true

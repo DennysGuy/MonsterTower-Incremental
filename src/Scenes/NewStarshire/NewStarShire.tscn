@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=4 uid="uid://oonjrpabmces"]
+[gd_scene load_steps=49 format=4 uid="uid://oonjrpabmces"]
 
 [ext_resource type="Script" uid="uid://dpqc54c34418w" path="res://src/Scripts/Maps/NewStarShire/new_star_shire.gd" id="1_gq00g"]
 [ext_resource type="Texture2D" uid="uid://c21ee30haolx4" path="res://Assets/EnvironmentalAssets/TowerDistance.png" id="2_bl45m"]
@@ -763,6 +763,9 @@ size = Vector2(168, 145)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_05bdh"]
 size = Vector2(22, 205)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nj75w"]
+size = Vector2(131, 76)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q74qd"]
 size = Vector2(117, 57)
 
@@ -1029,6 +1032,36 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(150, 595)
 texture = ExtResource("25_nj75w")
 
+[node name="DojoArea" type="Area2D" parent="Dojo"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Dojo/DojoArea"]
+position = Vector2(27.5, 23)
+shape = SubResource("RectangleShape2D_nj75w")
+
+[node name="NameTag" parent="Dojo" instance=ExtResource("19_bl45m")]
+offset_left = -50.0
+offset_top = 62.0
+offset_right = 38.0
+offset_bottom = 75.0
+
+[node name="Tag" parent="Dojo/NameTag" index="1"]
+offset_left = 2.0
+offset_top = -1.0
+offset_right = 90.0
+offset_bottom = 11.0
+text = "Class Advance Center"
+
+[node name="DojoAccessNotification" type="Label" parent="Dojo"]
+visible = false
+offset_left = -74.0
+offset_top = -44.0
+offset_right = 78.0
+offset_bottom = -28.0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("27_e7ku4")
+theme_override_font_sizes/font_size = 16
+text = "Reach level 10 to access"
+
 [node name="CookingStationArea" type="Area2D" parent="."]
 position = Vector2(505, 636)
 
@@ -1098,6 +1131,9 @@ text = "Sword Crafting Station"
 [node name="PracticeDummy" parent="." node_paths=PackedStringArray("drop_scene") instance=ExtResource("6_kqfvc")]
 position = Vector2(46, 656)
 drop_scene = NodePath("..")
+
+[node name="CollisionShape2D" parent="PracticeDummy/DirectionsArea" index="0"]
+position = Vector2(-0.5, 4)
 
 [node name="CraftingStationArea" type="Area2D" parent="."]
 position = Vector2(127, 500.5)
@@ -1237,6 +1273,8 @@ index = 1
 [connection signal="body_exited" from="TowerArea" to="." method="_on_tower_area_body_exited"]
 [connection signal="body_entered" from="GrandMarketArea" to="." method="_on_grand_market_area_body_entered"]
 [connection signal="body_exited" from="GrandMarketArea" to="." method="_on_grand_market_area_body_exited"]
+[connection signal="body_entered" from="Dojo/DojoArea" to="." method="_on_dojo_area_body_entered"]
+[connection signal="body_exited" from="Dojo/DojoArea" to="." method="_on_dojo_area_body_exited"]
 [connection signal="body_entered" from="CookingStationArea" to="." method="_on_cooking_station_area_body_entered"]
 [connection signal="body_exited" from="CookingStationArea" to="." method="_on_cooking_station_area_body_exited"]
 [connection signal="body_entered" from="SmeltingStationArea" to="." method="_on_smelting_station_area_body_entered"]
@@ -1245,6 +1283,7 @@ index = 1
 [connection signal="body_exited" from="CraftingStationArea" to="." method="_on_crafting_station_area_body_exited"]
 
 [editable path="TempCookingRange/NameTag2"]
+[editable path="Dojo/NameTag"]
 [editable path="TempSmeltingStation/NameTag3"]
 [editable path="SmithingStation/NameTag"]
 [editable path="PracticeDummy"]

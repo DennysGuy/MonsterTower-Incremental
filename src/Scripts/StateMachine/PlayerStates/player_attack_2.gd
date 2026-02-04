@@ -6,10 +6,14 @@ class_name PlayerAttack2State extends State
 @export var swing_sfx : AudioStream
 
 func enter() -> void:
-	super()
+
 	parent.can_knock_back = true
 	#parent.hit_box.position.x = 34 * GameManager.set_player_box_direction(parent.player_sprite.flip_h)
-	parent.set_sword_texture(animation_name)
+	var class_ability  : Ability = PlayerStats.equipped_abilities["Attack 2"]
+	animation_name = class_ability.ability_name
+	parent.animation_player.play(animation_name)
+	
+	parent.set_sword_texture("SwordSwing2")
 	parent.timer.wait_time = animation_duration
 	parent.timer.start()
 	

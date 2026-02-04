@@ -11,6 +11,7 @@ class_name TechTree extends Node2D
 @onready var canvas_layer: CanvasLayer = $CanvasLayer
 
 @onready var sfx_player: SFXPlayer = $SfxPlayer
+@onready var prestige_progress_2: Label = $CanvasLayer/PrestigeProgress2
 
 const CLOSE_UPGRADE_PC = preload("uid://ckgce5whd3hq7")
 const OPEN_UPGRADE_PC = preload("uid://coaqdaythm28l")
@@ -31,10 +32,10 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	#if Input.is_action_just_pressed("add_currency"):
-		#TechTreeManager.currency += 500
-		#update_currency_label()
-		#TechTreeManager.check_if_can_purchase_node.emit()
+	if Input.is_action_just_pressed("add_currency"):
+		TechTreeManager.currency += 500
+		update_currency_label()
+		TechTreeManager.check_if_can_purchase_node.emit()
 	pass
 		
 func update_currency_label() -> void:
@@ -45,7 +46,7 @@ func update_prestige_label() -> void:
 	sfx_player.play_sfx(TIER_UP)
 
 func update_prestige_progress() -> void:
-	prestige_progress.text = "%s/%s" % [TechTreeManager.current_upgrade_count, TechTreeManager.upgrade_count_to_prestige]
+	prestige_progress_2.text = "%s/%s" % [TechTreeManager.current_upgrade_count, TechTreeManager.upgrade_count_to_prestige]
 	progress_bar.max_value = TechTreeManager.upgrade_count_to_prestige
 	progress_bar.value = TechTreeManager.current_upgrade_count
 	hunting_time.text = "Hunt Time: %s sec." % [int(PlayerStats.player_stats["Expedition Time"])] 

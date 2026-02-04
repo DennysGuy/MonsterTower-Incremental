@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="TechNodeStats" load_steps=4 format=3 uid="uid://c33bcx7wsq4vk"]
 
 [ext_resource type="Texture2D" uid="uid://ckr8fl4h1c4vw" path="res://Assets/NodeGraphics/NodeGraphicsV2/HP2_V2.png" id="1_6qdj4"]
-[ext_resource type="Resource" uid="uid://buu8pdcooh3hc" path="res://src/Resources/CraftingResources/BronzeBar.tres" id="2_ad88h"]
+[ext_resource type="Resource" uid="uid://boeryxspsw8uq" path="res://src/Resources/Dishes/CookedGagootz.tres" id="2_6qdj4"]
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="3_qjs01"]
 
 [resource]
@@ -12,7 +12,7 @@ description = "Each level adds +30 Max HP for a total of 150 added HP when maxed
 max_level = 5
 currency_required = 200
 materials_required = Array[Dictionary]([{
-ExtResource("2_ad88h"): 1
+ExtResource("2_6qdj4"): 1
 }])
 stat_name = "Max Health"
 upgrade_interval = 30.0

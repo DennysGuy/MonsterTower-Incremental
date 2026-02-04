@@ -12,8 +12,8 @@
 [resource]
 script = ExtResource("1_vdyun")
 sword_name = "Bronze Fang Blade"
-attack_bonus = 15.0
-defense_bonus = 2.0
+attack_bonus = 18.0
+defense_bonus = 0.25
 attack_speed = 1.2
 crit_bonus = 0.1
 crit_damage_bonus = 0.1

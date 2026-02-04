@@ -120,6 +120,8 @@ func clear_bag() -> void:
 	var bag : Array = inventories["Inventory"]
 	for item in bag :
 		bag.erase(item)
+		
+	SaveManager.save_inventories()
 
 #this will only run when we know we can remove them.
 func remove_resources_from_inventory(recipe_list : Array[Dictionary]) -> void:
@@ -194,7 +196,7 @@ func check_if_can_add_to_inventory(selected_item : Item, inventory_name : String
 func update_inventories() -> void:
 	update_inventory_bag.emit()
 	update_bank_inventory.emit()
-
+	SaveManager.save_inventories()
 
 func update_grid_container(grid_container : GridContainer, inventory : String, is_shop : bool = true) -> void:
 	clear_grid_container(grid_container)
@@ -235,7 +237,6 @@ func update_grid_container(grid_container : GridContainer, inventory : String, i
 func clear_grid_container(grid_container : GridContainer) -> void:
 	for child in grid_container.get_children():
 		child.queue_free()
-
 
 func calculate_quantity(recipe: CraftingRecipe) -> int:
 	var viable_amount := INF

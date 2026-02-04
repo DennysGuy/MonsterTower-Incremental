@@ -38,7 +38,7 @@ func process_physics(_delta: float) -> State:
 		
 	if parent.is_on_floor():
 		parent.set_collision_mask_value(5, true)
-		if Input.is_action_pressed("jump"):
+		if Input.is_action_pressed("add_currency"):
 			return jump_state
 		else:
 			if movement != 0:

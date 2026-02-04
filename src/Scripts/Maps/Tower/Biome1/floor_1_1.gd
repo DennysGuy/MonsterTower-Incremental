@@ -18,7 +18,8 @@ func _ready() -> void:
 	
 	SignalBus.update_monsters_left.emit("Monsters Left: %s" % [monster_spawn_node.get_children().size()],false)
 	SignalBus.update_player_health.emit(player.health)
-
+	SaveManager.save_player_stats()
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("interact") and player_in_range and player.damageable:

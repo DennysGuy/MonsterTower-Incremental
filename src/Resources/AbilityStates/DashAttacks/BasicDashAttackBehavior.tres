@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="BasicDashAttack" load_steps=3 format=3 uid="uid://2jjptcjeyb01"]
+
+[ext_resource type="Script" uid="uid://bkqeujgh8bfbg" path="res://src/Scripts/StateMachine/AbilitiyStates/DashAttacks/basic_dash_attack.gd" id="1_6isnk"]
+[ext_resource type="AudioStream" uid="uid://girddg3nhreu" path="res://Audio/SFX/Player/DashAttack.wav" id="2_y5l46"]
+
+[resource]
+script = ExtResource("1_6isnk")
+animation_name = "SwordSwing3"
+animation_duration = 0.5
+sfx = ExtResource("2_y5l46")
+metadata/_custom_type_script = "uid://bkqeujgh8bfbg"

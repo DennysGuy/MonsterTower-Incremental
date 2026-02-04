@@ -26,12 +26,14 @@ signal update_player_stats
 signal unlock_station
 
 
-
 @warning_ignore("unused_signal")
 signal check_if_can_purchase_node
 
 @warning_ignore("unused_signal")
 signal add_tool_tip(tool_tip : ToolTip, on_right_half : bool)
+
+@warning_ignore("unused_signal")
+signal save_node_data
 
 var currency : int = 0
 var current_prestige : int = 0
@@ -92,6 +94,14 @@ enum TECH_NODE_TYPE {ABILITY, FACILITY}
 	"Ore Drop Chance 1": 0.0,
 	"Ore Drop Chance 2": 0.0,
 	"Invincibility Duration 1":0.0
+}
+
+@onready var warrior_tech_nodes : Dictionary = {
+	
+}
+
+@onready var mage_tech_nodes : Dictionary = {
+	
 }
 
 # Called when the node enters the scene tree for the first time.

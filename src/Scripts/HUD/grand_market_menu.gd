@@ -77,7 +77,8 @@ func _on_sell_button_button_up() -> void:
 				InventoryManager.update_grid_container(inventory_container, selected_inventory)
 			"Ore Inventory":
 				InventoryManager.update_grid_container(ore_inventory_container, selected_inventory)
-				
+		
+		SaveManager.save_tech_tree_data()		
 		currency.text = "Currency: %s" % [TechTreeManager.currency]
 		if !InventoryManager.search_item("Inventory", selected_item) and !InventoryManager.search_item("Bank", selected_item) and !InventoryManager.search_item("Ore Inventory", selected_item):
 			clear_details()
@@ -125,4 +126,5 @@ func sell_all_items(container : GridContainer, inventory_name : String) -> void:
 				InventoryManager.update_grid_container(container, inventory_name)
 				currency.text = "Currency: %s" % [TechTreeManager.currency]
 				sfx_player.play_sfx(SELL_ITEM)
+				SaveManager.save_tech_tree_data()
 				await get_tree().create_timer(0.1).timeout
