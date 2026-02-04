@@ -51,14 +51,17 @@ const KNOCKBACK_FORCE : int = 300
 	"Smelting Accuracy Bonus":0.0
 }
 
-@onready var equipped_abilities : Dictionary = {
-	"Attack 1" : "SwordSwing1",
-	"Attack 2" : "SwordSwing2",
-	"Attack 3" : "SwordSwing3",
-	"Dash Attack" : null,
-	"Air Attack" : null,
+var equipped_abilities : Dictionary = {
+	"Attack 1" : load("uid://c5hss1iq5ontu"), #sword swing 1
+	"Attack 2" : load("uid://rbc7yawqcf3h"), #sword swing 2
+	"Attack 3" : load("uid://7qd8qvg4bf73"), #sword swing 3
+	"Dash Attack" : load("uid://bukiike6rf6pl"), #basic dash attack
+	"Air Attack" : load("uid://b0lsgfuw8bp58"), #basic air attack
 	"Special Attack" : null
 }
+
+func equip_ability(ability : Ability, position : String) -> void:
+	equipped_abilities[position] = ability
 
 @onready var facilities_unlocked : Dictionary = {
 	"Hunter License" : false,
@@ -76,13 +79,13 @@ const KNOCKBACK_FORCE : int = 300
 	"Floor 1-3" : false
 }
 
-@onready var player_classes : Dictionary = {
+var player_classes : Dictionary = {
 	"Junior Hunter" : {
-		"Sword Attack 1 Name": "SwordSwing1",
-		"Sword Attack 2 Name": "SwordSwing2",
-		"Sword Attack 3 Name": "SwordSwing3",
-		"Air Attack": 	preload("uid://bmd0pcmjmoel0"),
-		"Dash Attack": preload("uid://2jjptcjeyb01"),
+		"Sword Attack 1 Name": load("uid://c5hss1iq5ontu"),
+		"Sword Attack 2 Name": load("uid://rbc7yawqcf3h"),
+		"Sword Attack 3 Name": load("uid://7qd8qvg4bf73"),
+		"Air Attack": 	load("uid://bukiike6rf6pl"),
+		"Dash Attack": load("uid://b0lsgfuw8bp58"),
 		"Special Attack": null
 	}
 }
@@ -120,6 +123,7 @@ func check_item_in_next_sword_recipe(item : Item) -> bool:
 		else:
 			return false
 	return false
+
 
 func can_craft_next_sword() -> bool:
 	if int(player_stats["Equipped Sword"])+1 == MAX_SWORD_COUNT:

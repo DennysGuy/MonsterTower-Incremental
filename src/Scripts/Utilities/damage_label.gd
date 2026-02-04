@@ -6,9 +6,11 @@ class_name DamageLabel extends Control
 const CRIT_DAMAGE_LABEL_BG = preload("uid://dg8xqkw54wldh")
 const DAMAGE_LABEL_BG = preload("uid://cyyawskdhc3u5")
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	var swing = preload("uid://c5hss1iq5ontu")
+	print(swing)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

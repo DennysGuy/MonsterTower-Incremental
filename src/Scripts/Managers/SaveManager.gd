@@ -30,11 +30,11 @@ func load_game() -> void:
 func save_file_exists() -> bool:
 	return ResourceLoader.exists(SAVE_PATH)
 
-
 func init_save_file() -> void:
 	PlayerStats.player_stats = current_save_game.player_stats
 	PlayerStats.facilities_unlocked = current_save_game.facilities_unlocked
 	PlayerStats.check_points_unlocked = current_save_game.check_points_unlocked
+	PlayerStats.equipped_abilities = current_save_game.equipped_abilities
 	
 	InventoryManager.inventories = current_save_game.inventories
 	TechTreeManager.currency = current_save_game.currency
@@ -47,6 +47,10 @@ func save_tech_tree_data() -> void:
 	current_save_game.current_prestige = TechTreeManager.current_prestige
 	current_save_game.upgrade_count_to_prestige = TechTreeManager.upgrade_count_to_prestige 
 	current_save_game.current_upgrade_count = TechTreeManager.current_upgrade_count
+	save_game()
+
+func save_equipped_abilities() -> void:
+	current_save_game.equipped_abilities = PlayerStats.equipped_abilities
 	save_game()
 
 func save_player_stats() -> void:

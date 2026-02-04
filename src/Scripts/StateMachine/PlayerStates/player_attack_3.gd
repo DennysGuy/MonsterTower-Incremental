@@ -7,8 +7,10 @@ class_name PlayerAttack3State extends State
 
 func enter() -> void:
 	parent.can_knock_back = true
-	animation_name = PlayerStats.player_classes[PlayerStats.player_stats["Class"]]["Sword Attack 3 Name"]
+	var class_ability : Ability  = PlayerStats.equipped_abilities["Attack 3"]
+	animation_name = class_ability.ability_name
 	parent.animation_player.play(animation_name)
+
 	parent.set_sword_texture("SwordSwing3")
 	parent.timer.wait_time = animation_duration
 	parent.timer.start()

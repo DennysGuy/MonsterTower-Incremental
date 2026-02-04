@@ -10,8 +10,8 @@ func enter() -> void:
 	super()
 	parent.can_knock_back = true
 	parent.damageable = false
-	var selected_class : Dictionary = PlayerStats.player_classes[PlayerStats.player_stats["Class"]]
-	equipped_air_attack = selected_class["Air Attack"]
+	var selected_ability : Ability = PlayerStats.equipped_abilities["Air Attack"]
+	equipped_air_attack = selected_ability.ability_behavior
 	equipped_air_attack.on_enter(parent)
 
 func exit() -> void:

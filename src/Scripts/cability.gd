@@ -1,4 +1,6 @@
-class_name ClassAbility extends Resource
+class_name Ability
+extends Resource
+
 
 @export_group("Meta Data")
 @export var ability_name : String #Maybe this can be the "Animation Name" as well?
@@ -9,10 +11,6 @@ enum ABILITY_TYPE {STANDARD_ATTACK, AIR_ATTACK, DASH_ATTACK, SPECIAL_ATTACK}
 @export_group("Behavior Resource")
 @export var ability_behavior : AbilityBehavior
 
-'''
-- These Stats are upgraded by unlocking tech nodes in the 
-Class progression tree
-'''
 @export_group("Stat Modifier")
 @export var hp_cost : float
 @export var mp_cost : float
@@ -28,4 +26,5 @@ Class progression tree
 @export var crit_damage_modifier : float
 @export var crit_chance_modifier : float
 @export var dash_cooldown_modifier : float
+@export var dash_speed_modifier : float
 @export var hit_box_size_modifier : Vector2

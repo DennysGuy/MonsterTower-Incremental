@@ -151,6 +151,15 @@ TODO: We will add saves for classes as well
 	"Invincibility Duration 1": {"Level":0, "Unlocked": false}
 }
 
+@export var equipped_abilities : Dictionary = {
+	"Attack 1" : load("uid://c5hss1iq5ontu"), #sword swing 1
+	"Attack 2" : load("uid://rbc7yawqcf3h"), #sword swing 2
+	"Attack 3" : load("uid://7qd8qvg4bf73"), #sword swing 3
+	"Dash Attack" : load("uid://b0lsgfuw8bp58"), #basic dash attack
+	"Air Attack" : load("uid://bukiike6rf6pl"), #basic air attack
+	"Special Attack" : null
+}
+
 #though should be setup at "continue game too"
 @export var inventories : Dictionary = {
 	"Inventory" : [], # all other items go here

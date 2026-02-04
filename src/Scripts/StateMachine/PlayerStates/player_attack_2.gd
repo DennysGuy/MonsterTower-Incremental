@@ -9,7 +9,8 @@ func enter() -> void:
 
 	parent.can_knock_back = true
 	#parent.hit_box.position.x = 34 * GameManager.set_player_box_direction(parent.player_sprite.flip_h)
-	animation_name = PlayerStats.player_classes[PlayerStats.player_stats["Class"]]["Sword Attack 2 Name"]
+	var class_ability  : Ability = PlayerStats.equipped_abilities["Attack 2"]
+	animation_name = class_ability.ability_name
 	parent.animation_player.play(animation_name)
 	
 	parent.set_sword_texture("SwordSwing2")
