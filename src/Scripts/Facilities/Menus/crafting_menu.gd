@@ -41,7 +41,7 @@ func upgrade_sword() -> void:
 	if next_sword_index < PlayerStats.MAX_SWORD_COUNT:
 		PlayerStats.player_stats["Equipped Sword"] += 1
 		update_sword()
-		
+		SaveManager.save_inventories()
 		update_inventory_containers()
 		SignalBus.update_sword_texture.emit("Idle")
 		
@@ -54,7 +54,7 @@ func update_inventory_containers() -> void:
 
 func update_sword() -> void: #run this function when we upgrade the sword.
 	var next_sword_index = PlayerStats.player_stats["Equipped Sword"]+1
-	
+	SaveManager.save_player_stats()
 	if next_sword_index < PlayerStats.MAX_SWORD_COUNT:
 		var sword_index = int(next_sword_index)
 		sword = PlayerStats.get_sword(sword_index)
@@ -80,7 +80,8 @@ func update_sword() -> void: #run this function when we upgrade the sword.
 		else:
 			button.disabled = true
 			sword_graphic.texture = sword.mold_graphic
-		
+			
+
 		SignalBus.update_resource_needed_panel.emit()
 
 func _on_close_button_up() -> void:

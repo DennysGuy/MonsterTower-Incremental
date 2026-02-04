@@ -6,6 +6,13 @@ TODO: We will add saves for classes as well
 
 '''
 
+
+@export var currency : int = 0
+@export var current_prestige : int = 0
+@export var current_upgrade_count : int = 0
+@export var upgrade_count_to_prestige : int = 0
+
+
 #default values - a new save file will populate with this
 #loaded when we hit "continue
 @export var player_stats : Dictionary = {
@@ -80,11 +87,19 @@ TODO: We will add saves for classes as well
 	"Dash Attack": false
 }
 
+
+@export var check_points_unlocked : Dictionary = {
+	"Floor 1-1" : false,
+	"Floor 1-2" : false,
+	"Floor 1-3" : false
+}
+
+
 #this is all we really care about actually since nodes don't increase in price or intervals don't change
 #we will have to iterate through every tech node when we launch the tech tree and update each node's state.
 #we will have to also iterate through the dictionary in TechTreeManager and apply the levels there too
 @export var tech_nodes : Dictionary = {
-	"Hunter License" : {"Level":0, "Unlocked": false},
+	"Hunter License" : {"Level":0, "Unlocked": true},
 	"Attack 1" : {"Level":0, "Unlocked": false},
 	"Attack 2" : {"Level":0, "Unlocked": false},
 	"Arial Slash": {"Level":0, "Unlocked": false},
@@ -113,7 +128,7 @@ TODO: We will add saves for classes as well
 	"Deeper Pockets 1":{"Level":0, "Unlocked": false},
 	"Deeper Pockets 2":{"Level":0, "Unlocked": false},
 	"Dash Attack":{"Level":0, "Unlocked": false},
-	"Dash Attack Duration 1":0,
+	"Dash Attack Duration 1":{"Level":0, "Unlocked": false},
 	"Banking": {"Level":0, "Unlocked": false},
 	"Banking 2": {"Level":0, "Unlocked": false},
 	"Cooking Station": {"Level":0, "Unlocked": false},

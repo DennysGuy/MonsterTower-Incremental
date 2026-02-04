@@ -27,6 +27,7 @@ camera = NodePath("PlayerCamera")
 hud = NodePath("HUD")
 path = "uid://b3m3f58qy47jb"
 next_room_path = "uid://oonjrpabmces"
+map_type = 2
 ambience_player = NodePath("AmbiencePlayer")
 ambience_sfx = ExtResource("2_mdljo")
 

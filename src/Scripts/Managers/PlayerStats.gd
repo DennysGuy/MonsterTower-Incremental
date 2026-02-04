@@ -10,7 +10,7 @@ This is for testing purposes
 
 const KNOCKBACK_FORCE : int = 300
 
-@onready var player_stats : Dictionary[String,float] = {
+@onready var player_stats : Dictionary = {
 	"Level" : 1,
 	"Needed XP": 100,
 	"Current XP" : 0,
@@ -50,7 +50,7 @@ const KNOCKBACK_FORCE : int = 300
 	"Smelting Accuracy Bonus":0.0
 }
 
-@onready var facilities_unlocked : Dictionary[String, bool] = {
+@onready var facilities_unlocked : Dictionary = {
 	"Hunter License" : false,
 	"Cooking Station" : false,
 	"Crafting Station" : false,
@@ -60,7 +60,7 @@ const KNOCKBACK_FORCE : int = 300
 	"Dash Attack": false
 }
 
-@onready var check_points_unlocked : Dictionary[String, bool] = {
+@onready var check_points_unlocked : Dictionary = {
 	"Floor 1-1" : false,
 	"Floor 1-2" : false,
 	"Floor 1-3" : false

@@ -16,8 +16,6 @@ func _ready() -> void:
 	animation_player.play("FadeIn")
 	
 	
-
-
 func go_to_next_scene() -> void:
 	animation_player.play("FadeOut")
 	await get_tree().create_timer(1.0).timeout
@@ -25,12 +23,13 @@ func go_to_next_scene() -> void:
 	
 
 func go_to_starspire() -> void:
+	SaveManager.load_game()
 	animation_player.play("FadeOut")
 	await get_tree().create_timer(1.0).timeout
 	get_tree().change_scene_to_file("uid://oonjrpabmces") #go to tutorial map
 	
 func _on_button_button_up() -> void:
-	SaveManager.load_game()
+	SaveManager.create_new_save()
 	go_to_next_scene()
 
 func _on_continue_button_up() -> void:

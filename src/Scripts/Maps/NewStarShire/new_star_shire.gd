@@ -47,6 +47,10 @@ func _ready() -> void:
 	else:
 		SignalBus.hide_can_craft_sword.emit()
 	
+	await get_tree().process_frame
+	SignalBus.update_player_health.emit(player.health)
+	SaveManager.save_player_stats()
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("interact") and player_in_tower_range and GameManager.player_can_move and PlayerStats.facilities_unlocked["Hunter License"]:

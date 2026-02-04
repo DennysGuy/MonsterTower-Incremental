@@ -32,8 +32,13 @@ const FACILITY_NODE_UNLOCKED_V_2 = preload("uid://cvqtlryenuafk")
 var total_bonus : float = 0.0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	var saved_data = SaveManager.current_save_game.tech_nodes.get(tech_node_stats.node_name)
+	tech_node_stats.current_level = saved_data["Level"]
+	tech_node_stats.unlocked = saved_data["Unlocked"]
+	
 	TechTreeManager.check_node_prereqs.connect(check_prereqs)
 	TechTreeManager.check_if_can_purchase_node.connect(check_if_can_purchase)
+	TechTreeManager.save_node_data.connect(save_node_data)
 	set_level_label()
 	if tech_node_stats.unlocked:
 		show()
@@ -112,10 +117,23 @@ func _on_click_area_input_event(viewport: Node, event: InputEvent, shape_idx: in
 		check_if_can_purchase()
 		TechTreeManager.check_node_prereqs.emit()
 		TechTreeManager.check_if_can_purchase_node.emit()
+		
+		SaveManager.save_tech_tree_data()
+		SaveManager.save_player_stats()
+		SaveManager.save_inventories()
+		save_node_data()
+		TechTreeManager.save_node_data.emit()
+
+func save_node_data() -> void:
+	var node_save = SaveManager.current_save_game.tech_nodes.get(tech_node_stats.node_name)
+	node_save["Level"] = tech_node_stats.current_level
+	node_save["Unlocked"] = tech_node_stats.unlocked
+	SaveManager.save_game()
 
 func deduct_currency() -> void:
 	TechTreeManager.currency -= tech_node_stats.currency_required
 	TechTreeManager.update_currency_label.emit()
+	
 
 func deduct_resources() -> void:
 	InventoryManager.remove_resources_from_inventory(tech_node_stats.materials_required)

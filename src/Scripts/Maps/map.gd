@@ -36,13 +36,18 @@ func _ready() -> void:
 	SignalBus.move_to_next_room.connect(move_to_next_room)
 	SignalBus.return_to_starshire.connect(go_to_starshire)
 	hud.map_name_label.text = map_name
+	
+	load_floor_data()
+	
 	if player_spawn:
 		if map_type == MAP_TYPE.CHECKPOINT_FLOOR and tower_entrance_data.number_of_spawn_locations <= 0:
 			tower_entrance_data.number_of_spawn_locations += 1
+			save_floor_data()
 		
 		if campfire_list:
 			for i in range(0,tower_entrance_data.camp_fires_reached):
-				var checkpoint_campfire : CampFireCheckPoint = campfire_list.get_child(i)
+				var camp_fire = campfire_list.get_child(i)
+				var checkpoint_campfire : CampFireCheckPoint = camp_fire
 				checkpoint_campfire.unlocked = true
 				checkpoint_campfire.animation_player.play("On")
 
@@ -70,6 +75,8 @@ func _ready() -> void:
 				SignalBus.update_monsters_left.emit("Monsters Left: %s" % [monster_spawn_node.get_children().size()],false)
 			
 			PlayerStats.check_points_unlocked[map_name] = true
+			save_floor_data()
+			SaveManager.save_player_stats()
 		
 		if map_type ==	MAP_TYPE.FLOOR or map_type == MAP_TYPE.CHECKPOINT_FLOOR:
 				hud.start_expedition_timer()
@@ -147,6 +154,7 @@ func update_hunt_quota() -> void:
 		print("THIS IS CURRENT KILL COUNT %s" % current_kill_count)
 		if current_kill_count >= kill_quota:
 			tower_entrance_data.kill_quota_hit = true
+			save_floor_data()
 			SignalBus.unlock_next_room.emit()
 			SignalBus.update_kill_quota_text.emit("Next Floor Unlocked!", tower_entrance_data.kill_quota_hit, false)
 			SignalBus.update_monsters_left.emit("Monsters Left: %s" % [monster_spawn_node.get_children().size()],false)
@@ -157,3 +165,21 @@ func update_hunt_quota() -> void:
 			else:
 				SignalBus.update_kill_quota_text.emit("Floor Hunt Quota %s/%s" %[current_kill_count,kill_quota], tower_entrance_data.kill_quota_hit,false)	
 				SignalBus.update_monsters_left.emit("Monsters Left: %s" % [monster_spawn_node.get_children().size()],false)
+
+func save_floor_data() -> void:
+	var saved_data = SaveManager.current_save_game
+	saved_data.tower_entrance_data[tower_entrance_data.floor_name]["Number of Spawn Locations"] = tower_entrance_data.number_of_spawn_locations
+	saved_data.tower_entrance_data[tower_entrance_data.floor_name]["Campfires Reached"] = tower_entrance_data.camp_fires_reached
+	saved_data.tower_entrance_data[tower_entrance_data.floor_name]["Kill Quota Hit"] = tower_entrance_data.kill_quota_hit
+	saved_data.check_points_unlocked[tower_entrance_data.floor_name] = PlayerStats.check_points_unlocked[map_name] 
+	SaveManager.save_game()
+	SaveManager.save_player_stats()
+	
+func load_floor_data() -> void:
+	if tower_entrance_data:
+		var saved_data = SaveManager.current_save_game.tower_entrance_data
+		var tower_data = saved_data.get(tower_entrance_data.floor_name)
+
+		tower_entrance_data.camp_fires_reached = tower_data["Campfires Reached"]
+		tower_entrance_data.number_of_spawn_locations = tower_data["Number of Spawn Locations"]
+		tower_entrance_data.kill_quota_hit = tower_data["Kill Quota Hit"]

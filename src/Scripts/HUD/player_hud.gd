@@ -75,7 +75,6 @@ func update_player_health(value : int) -> void:
 	player_health_bar.max_value = PlayerStats.player_stats["Max Health"]
 	hp_label.text = "%s/%s" % [int(player_health_bar.value), int(player_health_bar.max_value)]
 
-
 func update_xp_bar() -> void:
 	level_label.text = "Level %s" % [int(PlayerStats.player_stats["Level"])]
 	xp_amount_label.text = "%s / %s XP" % [int(PlayerStats.player_stats["Current XP"]), int(PlayerStats.player_stats["Needed XP"])]
