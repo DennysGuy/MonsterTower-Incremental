@@ -96,6 +96,14 @@ enum TECH_NODE_TYPE {ABILITY, FACILITY}
 	"Invincibility Duration 1":0.0
 }
 
+@onready var warrior_tech_nodes : Dictionary = {
+	
+}
+
+@onready var mage_tech_nodes : Dictionary = {
+	
+}
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.

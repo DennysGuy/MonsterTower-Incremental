@@ -51,6 +51,15 @@ const KNOCKBACK_FORCE : int = 300
 	"Smelting Accuracy Bonus":0.0
 }
 
+@onready var equipped_abilities : Dictionary = {
+	"Attack 1" : "SwordSwing1",
+	"Attack 2" : "SwordSwing2",
+	"Attack 3" : "SwordSwing3",
+	"Dash Attack" : null,
+	"Air Attack" : null,
+	"Special Attack" : null
+}
+
 @onready var facilities_unlocked : Dictionary = {
 	"Hunter License" : false,
 	"Cooking Station" : false,
@@ -69,6 +78,9 @@ const KNOCKBACK_FORCE : int = 300
 
 @onready var player_classes : Dictionary = {
 	"Junior Hunter" : {
+		"Sword Attack 1 Name": "SwordSwing1",
+		"Sword Attack 2 Name": "SwordSwing2",
+		"Sword Attack 3 Name": "SwordSwing3",
 		"Air Attack": 	preload("uid://bmd0pcmjmoel0"),
 		"Dash Attack": preload("uid://2jjptcjeyb01"),
 		"Special Attack": null
