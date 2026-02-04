@@ -14,6 +14,7 @@ const KNOCKBACK_FORCE : int = 300
 	"Level" : 1,
 	"Needed XP": 100,
 	"Current XP" : 0,
+	"Class": "Junior Hunter",
 	"Attack Damage" : 10.0,
 	"Movement Speed" : 100.0,
 	"Climbing Speed" : 65.0,
@@ -64,6 +65,14 @@ const KNOCKBACK_FORCE : int = 300
 	"Floor 1-1" : false,
 	"Floor 1-2" : false,
 	"Floor 1-3" : false
+}
+
+@onready var player_classes : Dictionary = {
+	"Junior Hunter" : {
+		"Air Attack": 	preload("uid://bmd0pcmjmoel0"),
+		"Dash Attack": preload("uid://2jjptcjeyb01"),
+		"Special Attack": null
+	}
 }
 
 const MAX_SWORD_COUNT := 3

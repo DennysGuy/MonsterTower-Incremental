@@ -47,3 +47,7 @@ func set_to_pick_up() -> void:
 	else:
 		can_pick_up = InventoryManager.add_item("Inventory", item)
 		
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body is Player:
+		set_to_pick_up()

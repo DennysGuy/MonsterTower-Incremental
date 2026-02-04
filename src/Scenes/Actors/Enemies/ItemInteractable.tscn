@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dgtobkubdjq27"]
+[gd_scene load_steps=9 format=3 uid="uid://dgtobkubdjq27"]
 
 [ext_resource type="Script" uid="uid://br4paa5kpajai" path="res://src/Scenes/Tower/item_interactable.gd" id="1_7i62p"]
 [ext_resource type="Texture2D" uid="uid://bk4miqdmvi7gh" path="res://Assets/Enemies/CorruptedMushie/CorruptedMushieSpore.png" id="1_va8fw"]
@@ -105,12 +105,9 @@ tracks/3/path = NodePath("..")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"set_to_pick_up"
-}]
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rejhq"]
@@ -119,6 +116,8 @@ _data = {
 &"RESET": SubResource("Animation_rejhq"),
 &"Spawn": SubResource("Animation_7i62p")
 }
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rejhq"]
 
 [node name="ItemInteractable" type="Node2D" node_paths=PackedStringArray("icon")]
 z_index = 4096
@@ -137,3 +136,11 @@ libraries = {
 modulate = Color(1, 1, 1, 0)
 position = Vector2(0, -12)
 texture = ExtResource("1_va8fw")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, -10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_rejhq")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

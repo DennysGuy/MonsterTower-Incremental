@@ -33,6 +33,10 @@ var mining_area_position : Vector2
 var hit_box_position : Vector2
 
 @export var idle_state : State
+@export var jump_state : State
+@export var fall_state : State
+@export var climb_state : State
+@export var swing_pick_axe : State
 
 func _ready() -> void:
 	super()

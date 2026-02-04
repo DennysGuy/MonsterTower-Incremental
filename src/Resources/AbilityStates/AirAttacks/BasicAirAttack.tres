@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="BasicAirAttack" load_steps=3 format=3 uid="uid://bmd0pcmjmoel0"]
+
+[ext_resource type="Script" uid="uid://bxq322vtgac0s" path="res://src/Scripts/StateMachine/AbilitiyStates/AirAttacks/basic_air_attack.gd" id="1_f5q8p"]
+[ext_resource type="AudioStream" uid="uid://7m8clykuejiw" path="res://Audio/SFX/Player/SwordSwing1.wav" id="2_l8v78"]
+
+[resource]
+script = ExtResource("1_f5q8p")
+animation_name = "AirAttack"
+sfx = ExtResource("2_l8v78")
+metadata/_custom_type_script = "uid://bxq322vtgac0s"

@@ -8,7 +8,8 @@ var sword_textures : Dictionary = {
 		"Fall": preload("uid://dvjce5ajf3r0"),
 		"SwordSwing1":preload("uid://bdefqkaq2k4dr"),
 		"SwordSwing2":preload("uid://bdefqkaq2k4dr"),
-		"SwordSwing3":preload("uid://bdefqkaq2k4dr")
+		"SwordSwing3":preload("uid://bdefqkaq2k4dr"),
+		"AirAttack":preload("uid://bdefqkaq2k4dr")
 	},
 	"Shroom Fibre Blade" : {
 		"Idle": preload("uid://cqrcj00btxto0"),
@@ -17,7 +18,8 @@ var sword_textures : Dictionary = {
 		"Fall": preload("uid://bhbydpkw1wwkn"),
 		"SwordSwing1": preload("uid://j7jrnmqku872"),
 		"SwordSwing2": preload("uid://j7jrnmqku872"),
-		"SwordSwing3": preload("uid://j7jrnmqku872")
+		"SwordSwing3": preload("uid://j7jrnmqku872"),
+		"AirAttack": preload("uid://j7jrnmqku872")
 	},
 	"Bronze Fang Blade" : {
 		"Idle": preload("uid://1gmop8x66tjk"),
@@ -26,7 +28,8 @@ var sword_textures : Dictionary = {
 		"Fall": preload("uid://come635s2bqh"),
 		"SwordSwing1": preload("uid://doai8hrrsivio"),
 		"SwordSwing2": preload("uid://doai8hrrsivio"),
-		"SwordSwing3": preload("uid://doai8hrrsivio")
+		"SwordSwing3": preload("uid://doai8hrrsivio"),
+		"AirAttack": preload("uid://doai8hrrsivio")
 	}
 }
 

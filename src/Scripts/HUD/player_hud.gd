@@ -42,8 +42,6 @@ func _ready() -> void:
 	SignalBus.update_monsters_left.connect(remaining_monsters)
 	SignalBus.play_countdown_beep.connect(play_countdown_beep)
 	
-	
-	
 	SignalBus.show_can_cook_dish_label.connect(show_can_cook_dish)
 	SignalBus.show_can_smelt_bar_label.connect(show_can_smelt_bar)
 	SignalBus.show_can_craft_sword.connect(show_can_craft_sword)

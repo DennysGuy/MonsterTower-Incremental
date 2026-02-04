@@ -34,4 +34,5 @@ func _on_button_button_up() -> void:
 
 func _on_continue_button_up() -> void:
 	SaveManager.load_game()
+	SaveManager.save_player_stats()
 	go_to_starspire()

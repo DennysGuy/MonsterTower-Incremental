@@ -19,6 +19,7 @@ TODO: We will add saves for classes as well
 	"Level" : 1,
 	"Needed XP": 100,
 	"Current XP" : 0,
+	"Class": "Junior Hunter",
 	"Attack Damage" : 10.0,
 	"Movement Speed" : 100.0,
 	"Climbing Speed" : 65.0,
