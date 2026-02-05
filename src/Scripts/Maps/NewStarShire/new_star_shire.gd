@@ -80,6 +80,11 @@ func _process(delta: float) -> void:
 		player.velocity = Vector2.ZERO
 		spawn_crafting_menu()
 
+	if Input.is_action_just_pressed("interact") and player_in_dojo_range and PlayerStats.check_level_for_dojo():
+		GameManager.player_can_move = false
+		player.velocity = Vector2.ZERO
+		spawn_dojo_menu()
+
 func add_tech_tree_to_scene() -> void:
 	player.velocity = Vector2.ZERO
 	var tech_tree : TechTree = preload("uid://b7n3fwd3y85wp").instantiate()
@@ -135,6 +140,11 @@ func spawn_smelting_menu() -> void:
 func spawn_crafting_menu() -> void:
 	var sword_crafting_station : CraftingStationMenu = preload("uid://cc1xppx3tkq4f").instantiate()
 	control.add_child(sword_crafting_station)
+	
+func spawn_dojo_menu() -> void:
+	var class_selection_menu : ClassSelectionMenu = preload("uid://b404uvbhnmjxd").instantiate()
+	control.add_child(class_selection_menu)
+	
 func _on_grand_market_area_body_entered(body: Node2D) -> void:
 	if body is Player:
 		player_in_market_range = true
@@ -262,9 +272,9 @@ func _on_dojo_area_body_entered(body: Node2D) -> void:
 	if body is Player:
 		
 		if PlayerStats.player_stats["Level"] >= 10:
-			dojo_access_notification.text = "Press E to access the Dojo!f"
+			dojo_access_notification.text = "Press E to access the Dojo!"
 		else:
-			dojo_access_notification.text = "Reach Level 10 to access the Dojo!"
+			dojo_access_notification.text = ""
 		
 		player_in_dojo_range = true
 		dojo_access_notification.show()

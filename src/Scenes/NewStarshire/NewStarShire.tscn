@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=4 uid="uid://oonjrpabmces"]
+[gd_scene load_steps=50 format=4 uid="uid://oonjrpabmces"]
 
 [ext_resource type="Script" uid="uid://dpqc54c34418w" path="res://src/Scripts/Maps/NewStarShire/new_star_shire.gd" id="1_gq00g"]
 [ext_resource type="Texture2D" uid="uid://c21ee30haolx4" path="res://Assets/EnvironmentalAssets/TowerDistance.png" id="2_bl45m"]
@@ -26,6 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://icxc8mi1q1w4" path="res://src/Scenes/NewStarshire/Facilities/SwordCraftingStation.tscn" id="21_bl45m"]
 [ext_resource type="PackedScene" uid="uid://mwttdrt2cg71" path="res://src/Scenes/Players/ambience_player.tscn" id="23_5xris"]
 [ext_resource type="Texture2D" uid="uid://c46te1sv6peeo" path="res://Assets/Facilities/Dojo.png" id="25_nj75w"]
+[ext_resource type="PackedScene" uid="uid://bke0eai7lf61j" path="res://src/Scenes/NewStarshire/NeededUnlocks.tscn" id="26_d6jc3"]
 [ext_resource type="Texture2D" uid="uid://14re4sr2xv7s" path="res://Assets/WelcomSign.png" id="26_ejo2t"]
 [ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="27_e7ku4"]
 [ext_resource type="Texture2D" uid="uid://cuwc34c0ympwf" path="res://Assets/DirectionSign.png" id="28_m7r5i"]
@@ -1032,6 +1033,21 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(150, 595)
 texture = ExtResource("25_nj75w")
 
+[node name="NeededUnlocks" parent="Dojo" instance=ExtResource("26_d6jc3")]
+offset_top = -55.0
+offset_bottom = 25.0
+
+[node name="DojoAccessNotification" type="Label" parent="Dojo"]
+visible = false
+offset_left = -74.0
+offset_top = -44.0
+offset_right = 78.0
+offset_bottom = -28.0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("27_e7ku4")
+theme_override_font_sizes/font_size = 16
+text = "Reach level 10 to access"
+
 [node name="DojoArea" type="Area2D" parent="Dojo"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Dojo/DojoArea"]
@@ -1050,17 +1066,6 @@ offset_top = -1.0
 offset_right = 90.0
 offset_bottom = 11.0
 text = "Class Advance Center"
-
-[node name="DojoAccessNotification" type="Label" parent="Dojo"]
-visible = false
-offset_left = -74.0
-offset_top = -44.0
-offset_right = 78.0
-offset_bottom = -28.0
-theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("27_e7ku4")
-theme_override_font_sizes/font_size = 16
-text = "Reach level 10 to access"
 
 [node name="CookingStationArea" type="Area2D" parent="."]
 position = Vector2(505, 636)

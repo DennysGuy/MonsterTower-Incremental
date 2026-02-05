@@ -1187,8 +1187,11 @@ jump_state = NodePath("../Jump")
 fall_state = NodePath("../Fall")
 idle_state = NodePath("../Idle")
 dash_attack_state = NodePath("../DashAttack")
-move_sfx = ExtResource("5_a5kf2")
 attack_1_state = NodePath("../Attack1")
+move_sfx = ExtResource("5_a5kf2")
+accel = 1900.0
+decel = 1000.0
+turn_resistance = 1000.0
 animation_name = "Run"
 
 [node name="Jump" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "fall_state", "air_attack")]
@@ -1220,6 +1223,8 @@ script = ExtResource("7_j38pk")
 attack2_state = NodePath("../Attack2")
 idle_state = NodePath("../Idle")
 swing_sfx = ExtResource("12_vhxh4")
+attack_friction = 200.0
+max_attack_drift = 300.0
 animation_name = "SwordSwing1"
 animation_duration = 0.6
 

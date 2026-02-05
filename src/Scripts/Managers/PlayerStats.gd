@@ -15,7 +15,7 @@ const KNOCKBACK_FORCE : int = 300
 	"Needed XP": 100,
 	"Current XP" : 0,
 	"Class": "Junior Hunter",
-	"Attack Damage" : 10.0,
+	"Attack Damage" : 13.0,
 	"Movement Speed" : 100.0,
 	"Climbing Speed" : 65.0,
 	"Dash Speed" : 350.0,
@@ -27,9 +27,9 @@ const KNOCKBACK_FORCE : int = 300
 	"Defense" : 0.0,
 	"Crit Damage" : 1.5,
 	"Accuracy" : 0.6,
-	"Max Health" : 35,
+	"Max Health" : 60,
 	"Max MP": 50,
-	"Current Health":35,
+	"Current Health":60,
 	"Current MP": 50,
 	"Equipped Sword": 0,
 	"Equipped Pickaxe": 0,
@@ -55,7 +55,7 @@ var equipped_abilities : Dictionary = {
 	"Attack 1" : load("uid://c5hss1iq5ontu"), #sword swing 1
 	"Attack 2" : load("uid://rbc7yawqcf3h"), #sword swing 2
 	"Attack 3" : load("uid://7qd8qvg4bf73"), #sword swing 3
-	"Dash Attack" : load("uid://bukiike6rf6pl"), #basic dash attack
+	"Dash Attack" : preload("uid://b0lsgfuw8bp58"), #basic dash attack
 	"Air Attack" : load("uid://b0lsgfuw8bp58"), #basic air attack
 	"Special Attack" : null
 }
@@ -85,7 +85,7 @@ var player_classes : Dictionary = {
 		"Sword Attack 2 Name": load("uid://rbc7yawqcf3h"),
 		"Sword Attack 3 Name": load("uid://7qd8qvg4bf73"),
 		"Air Attack": 	load("uid://bukiike6rf6pl"),
-		"Dash Attack": load("uid://b0lsgfuw8bp58"),
+		"Dash Attack": preload("uid://b0lsgfuw8bp58"),
 		"Special Attack": null
 	}
 }
@@ -176,3 +176,9 @@ func upgrade_player_stat(stat_name : String, interval : float, node_type : TechT
 		
 	InventoryManager.update_inventory_bag.emit()
 	TechTreeManager.update_player_stats.emit()
+
+func check_needed_for_dojo() -> bool:
+	return PlayerStats.player_stats["Level"] >= 5 and PlayerStats.facilities_unlocked["Dash Attack"] and PlayerStats.facilities_unlocked["Arial Slash"]
+
+func check_level_for_dojo() -> bool:
+	return PlayerStats.player_stats["Level"] >= 5
