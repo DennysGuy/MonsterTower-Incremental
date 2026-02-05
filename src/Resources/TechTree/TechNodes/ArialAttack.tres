@@ -11,5 +11,5 @@ description = "Swing your sword in the air and hit the enemies above you."
 currency_required = 200
 node_type = 1
 stat_name = "Arial Slash"
-prereqs = Array[String](["Attack 1:3"])
+prereqs = Array[String](["Attack 1:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"
