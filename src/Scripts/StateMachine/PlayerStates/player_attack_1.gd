@@ -2,12 +2,15 @@ class_name PlayerAttack1State extends State
 
 @export var attack2_state : State
 @export var idle_state : State
+@export var jump_state : State
 
 @export var swing_sfx : AudioStream
 
 # --- Attack movement tuning ---
 @export var attack_friction : float = 2600.0
 @export var max_attack_drift : float = 220.0
+
+var can_attack_cancel : bool = false
 
 var attack_velocity : float = 0.0
 
@@ -40,10 +43,12 @@ func enter() -> void:
 	parent.sfx_player.play_sfx(swing, 3.0)
 
 func exit() -> void:
+	parent.can_attack_cancel = false
 	parent.clear_effect_texture()
 
 func process_input(_event: InputEvent) -> State:
 	# No movement input during attack
+
 	return null
 
 func process_physics(_delta: float) -> State:
@@ -59,6 +64,13 @@ func process_physics(_delta: float) -> State:
 	)
 
 	parent.move_and_slide()
+
+	if Input.is_action_pressed("pan_cam_left") and parent.can_attack_cancel or Input.is_action_pressed("pan_cam_right") and parent.can_attack_cancel:
+		return idle_state
+	
+	if Input.is_action_pressed("add_currency") and parent.can_attack_cancel:
+		return jump_state
+	
 
 	# --- CHAIN OR EXIT ---
 	if parent.timer.time_left <= 0 and parent.is_on_floor():

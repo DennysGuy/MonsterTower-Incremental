@@ -2,6 +2,7 @@ class_name PlayerAttack2State extends State
 
 @export var attack3_state : State
 @export var idle_state : State
+@export var jump_state : State
 
 @export var swing_sfx : AudioStream
 
@@ -21,6 +22,7 @@ func enter() -> void:
 	parent.sfx_player.play_sfx(swing,3.0)
 	
 func exit() -> void:
+	parent.can_attack_cancel = false
 	parent.clear_effect_texture()
 
 func process_input(_event: InputEvent) -> State:
@@ -32,7 +34,13 @@ func process_frame(_delta: float) -> State:
 func process_physics(_delta: float) -> State:
 	if !GameManager.player_can_move:
 		return idle_state
-		
+
+	if Input.is_action_pressed("pan_cam_left") and parent.can_attack_cancel or Input.is_action_pressed("pan_cam_right") and parent.can_attack_cancel:
+		return idle_state
+	
+	if Input.is_action_pressed("add_currency") and parent.can_attack_cancel:
+		return jump_state
+
 	if parent.is_on_floor() and parent.timer.time_left <= 0:
 		if Input.is_action_pressed("swing_sword"):
 			return attack3_state

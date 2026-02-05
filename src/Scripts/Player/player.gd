@@ -32,6 +32,8 @@ var prev_move_speed : float
 var mining_area_position : Vector2
 var hit_box_position : Vector2
 
+var can_attack_cancel: bool = false
+
 @export var idle_state : State
 @export var jump_state : State
 @export var fall_state : State
@@ -50,6 +52,7 @@ func _process(delta: float) -> void:
 	super(delta)
 
 func _physics_process(delta: float) -> void:
+	print(can_attack_cancel)
 	super(delta)
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -130,6 +133,9 @@ func attack_ore_rock() -> void:
 
 func clear_effect_texture() -> void:
 	effect.texture = null
+
+func set_cancel_state_true() -> void:
+	can_attack_cancel = true
 
 func blink_effect() -> void:
 	if not is_inside_tree():

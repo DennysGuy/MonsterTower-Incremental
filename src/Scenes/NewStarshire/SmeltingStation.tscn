@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://debxddfwr0kuy"]
+[gd_scene load_steps=7 format=3 uid="uid://debxddfwr0kuy"]
 
 [ext_resource type="Texture2D" uid="uid://chhm5f5xmlr0j" path="res://Assets/Facilities/SmeltingStationContructionMode.png" id="1_elr15"]
 [ext_resource type="Script" uid="uid://b6efmxwkcji1r" path="res://src/Scripts/Facilities/smelting_station.gd" id="2_wbtfr"]
 [ext_resource type="PackedScene" uid="uid://04tp6n5gdcb7" path="res://src/Scenes/UI/NotificationIcon.tscn" id="3_3w5lq"]
+[ext_resource type="Script" uid="uid://dix0hiiumsb7a" path="res://src/Scripts/HUD/needed_unlocks.gd" id="4_vlcsu"]
+[ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="5_cn6af"]
+[ext_resource type="PackedScene" uid="uid://dcgpcwx38gddm" path="res://src/Scenes/NewStarshire/DojoUnlockItem.tscn" id="6_6li4n"]
 
 [node name="TempSmeltingStation" type="Sprite2D"]
 texture = ExtResource("1_elr15")
@@ -14,3 +17,43 @@ offset_left = -119.0
 offset_top = -106.0
 offset_right = -79.0
 offset_bottom = -66.0
+
+[node name="NeededUnlocks" type="Panel" parent="."]
+offset_left = -52.0
+offset_top = -25.0
+offset_right = 64.0
+offset_bottom = 11.0
+script = ExtResource("4_vlcsu")
+
+[node name="Needed" type="Label" parent="NeededUnlocks"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("5_cn6af")
+theme_override_font_sizes/font_size = 14
+text = "Node Unlock"
+
+[node name="GridContainer" type="GridContainer" parent="NeededUnlocks"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -53.5
+offset_top = -18.5
+offset_right = 53.5
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="UnlockItem" parent="NeededUnlocks/GridContainer" instance=ExtResource("6_6li4n")]
+layout_mode = 2
+name_of_needed = "Refinery Station"
+unlock_type = 1
