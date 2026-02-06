@@ -178,7 +178,7 @@ func upgrade_player_stat(stat_name : String, interval : float, node_type : TechT
 	TechTreeManager.update_player_stats.emit()
 
 func check_needed_for_dojo() -> bool:
-	return PlayerStats.player_stats["Level"] >= 5 and PlayerStats.facilities_unlocked["Dash Attack"] and PlayerStats.facilities_unlocked["Arial Slash"]
+	return PlayerStats.player_stats["Level"] >= 8 and PlayerStats.facilities_unlocked["Dash Attack"] and PlayerStats.facilities_unlocked["Arial Slash"]
 
 func check_level_for_dojo() -> bool:
-	return PlayerStats.player_stats["Level"] >= 5
+	return PlayerStats.player_stats["Level"] >= 8

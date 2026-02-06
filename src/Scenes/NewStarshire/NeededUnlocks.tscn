@@ -41,7 +41,7 @@ grow_vertical = 2
 
 [node name="UnlockItem" parent="GridContainer" instance=ExtResource("3_ch86k")]
 layout_mode = 2
-name_of_needed = "Level 5"
+name_of_needed = "Level 8"
 
 [node name="UnlockItem2" parent="GridContainer" instance=ExtResource("3_ch86k")]
 layout_mode = 2
