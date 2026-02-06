@@ -54,7 +54,6 @@ func store_entrance_data(entrance_data : TowerEntranceData) -> void:
 	
 	hunt_selection.disabled = false
 
-
 func _on_close_button_up() -> void:
 	GameManager.player_can_move = true
 	queue_free()

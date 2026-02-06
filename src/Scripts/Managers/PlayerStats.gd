@@ -51,6 +51,8 @@ const KNOCKBACK_FORCE : int = 300
 	"Smelting Accuracy Bonus":0.0
 }
 
+const HUNT_TIME : int = 30
+
 var equipped_abilities : Dictionary = {
 	"Attack 1" : load("uid://c5hss1iq5ontu"), #sword swing 1
 	"Attack 2" : load("uid://rbc7yawqcf3h"), #sword swing 2

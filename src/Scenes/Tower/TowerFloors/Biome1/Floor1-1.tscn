@@ -1307,10 +1307,10 @@ shape = SubResource("RectangleShape2D_0rtsh")
 [node name="ExitElevator" parent="." instance=ExtResource("15_obgwm")]
 position = Vector2(201, 81)
 
-[node name="HUD" parent="." instance=ExtResource("4_aah8w")]
-
 [node name="PlayerSpawnPoint" parent="." instance=ExtResource("23_jmmg4")]
 position = Vector2(222, 961)
+
+[node name="HUD" parent="." instance=ExtResource("4_aah8w")]
 
 [connection signal="body_entered" from="TowerExitArea" to="." method="_on_tower_exit_area_body_entered"]
 [connection signal="body_exited" from="TowerExitArea" to="." method="_on_tower_exit_area_body_exited"]

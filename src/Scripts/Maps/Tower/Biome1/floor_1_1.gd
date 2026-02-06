@@ -15,10 +15,19 @@ func _ready() -> void:
 		spawn_ore_rocks()
 	
 	await get_tree().process_frame
-	
+
 	SignalBus.update_monsters_left.emit("Monsters Left: %s" % [monster_spawn_node.get_children().size()],false)
 	SignalBus.update_player_health.emit(player.health)
 	SaveManager.save_player_stats()
+
+	if GameManager.hunt_challenge_selected:
+		player.damageable = false
+		await get_tree().create_timer(0.25).timeout
+		hud.animation_player.play("StartHuntChallenge")
+		await get_tree().create_timer(12.0).timeout
+		player.damageable = true
+		GameManager.player_can_move = true
+
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

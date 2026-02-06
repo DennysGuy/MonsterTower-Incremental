@@ -13,6 +13,10 @@ func _ready() -> void:
 		spawn_ore_rocks()
 		
 	await get_tree().process_frame
+	
+	if GameManager.hunt_challenge_selected:
+		hud.animation_player.play("StartHuntChallnge")
+	
 	SignalBus.update_monsters_left.emit("Monsters Left: %s" % [monster_spawn_node.get_children().size()],false)
 	SignalBus.update_player_health.emit(player.health)
 	SaveManager.save_player_stats()

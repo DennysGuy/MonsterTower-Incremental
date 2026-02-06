@@ -106,6 +106,16 @@ func start_expedition_timer() -> void:
 	if !GameManager.expedition_timer_started:
 		ExpeditionTimer.start_timer()
 
+func set_hunt_timer() -> void:
+	expedition_timer.show()
+	ExpeditionTimer.set_time_for_hunt()
+
+func start_hunt_timer() -> void:
+	ExpeditionTimer.start_hunt_timer()
+
+func load_expedition_timer_with_hunt_time() -> void:
+		expedition_timer.show()
+
 func issue_big_notification(message : String) -> void:
 	big_notification_label.text = message
 	big_notification_label.show()
@@ -149,3 +159,6 @@ func remaining_monsters(text : String, out_of_enmies : bool) -> void:
 		monsters_left.text = text
 	else:
 		monsters_left.text = "[color=yellow]Out of Monsters!\nIncrease Cap![/color]"
+
+func start_timer() -> void:
+	pass

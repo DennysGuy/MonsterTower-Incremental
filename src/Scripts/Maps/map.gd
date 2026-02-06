@@ -62,8 +62,7 @@ func _ready() -> void:
 		if camera:
 			camera.player = player
 		
-		if map_type == MAP_TYPE.CHECKPOINT_FLOOR:
-			GameManager.player_can_move = true
+		if map_type == MAP_TYPE.CHECKPOINT_FLOOR:	
 			if tower_entrance_data.kill_quota_hit:
 				SignalBus.unlock_next_room.emit()
 				SignalBus.update_kill_quota_text.emit("Next Floor Unlocked!", tower_entrance_data.kill_quota_hit,false)
@@ -79,7 +78,11 @@ func _ready() -> void:
 			SaveManager.save_player_stats()
 		
 		if map_type ==	MAP_TYPE.FLOOR or map_type == MAP_TYPE.CHECKPOINT_FLOOR:
-				hud.start_expedition_timer()
+				if !GameManager.hunt_challenge_selected:
+					GameManager.player_can_move = true
+					hud.start_expedition_timer()
+				else:
+					GameManager.player_can_move = false
 	
 	if ambience_player and ambience_sfx:
 		ambience_player.stream = ambience_sfx
