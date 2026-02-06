@@ -44,7 +44,7 @@ const KNOCKBACK_FORCE : int = 300
 	"Smelting Speed": 0.15,
 	"Mining Damage": 5,
 	"Monster Cap Bonus": 0,
-	"Expedition Time": 0.0,
+	"Expedition Time": 90.0,
 	"Cooking Drop Chance Bonus":0.0,
 	"Cooking Accuracy Bonus":0.0,
 	"Ore Drop Chance Bonus":0.0,
@@ -123,7 +123,6 @@ func check_item_in_next_sword_recipe(item : Item) -> bool:
 		else:
 			return false
 	return false
-
 
 func can_craft_next_sword() -> bool:
 	if int(player_stats["Equipped Sword"])+1 == MAX_SWORD_COUNT:

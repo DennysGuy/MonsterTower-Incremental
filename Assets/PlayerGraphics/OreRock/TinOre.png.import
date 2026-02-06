@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://p7dplvl2oqx1"
-path="res://.godot/imported/TinOre.png-3fb233a186f265f648ea234e7dc9b83d.ctex"
+path="res://.godot/imported/TinOre.png-5daff718bc8298703efc7325510c2e3a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/OreRock/TinOre.png"
-dest_files=["res://.godot/imported/TinOre.png-3fb233a186f265f648ea234e7dc9b83d.ctex"]
+source_file="res://Assets/PlayerGraphics/OreRock/TinOre.png"
+dest_files=["res://.godot/imported/TinOre.png-5daff718bc8298703efc7325510c2e3a.ctex"]
 
 [params]
 

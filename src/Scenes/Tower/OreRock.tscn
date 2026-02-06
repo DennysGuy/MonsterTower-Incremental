@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://colj4ff1w8ij1"]
 
 [ext_resource type="Script" uid="uid://ckfoxaqioqxer" path="res://src/Scripts/Tower/ore_rock.gd" id="1_lwbn5"]
-[ext_resource type="Texture2D" uid="uid://dr0jk0o8ff1si" path="res://Assets/OreRock/CopperOre.png" id="2_74bo4"]
+[ext_resource type="Texture2D" uid="uid://dr0jk0o8ff1si" path="res://Assets/PlayerGraphics/OreRock/CopperOre.png" id="2_74bo4"]
 [ext_resource type="Script" uid="uid://drr0deykmfrvq" path="res://src/Scripts/StateMachine/state_machine.gd" id="4_vqt7g"]
 [ext_resource type="Script" uid="uid://b6g71ajrgl8rq" path="res://src/Scripts/StateMachine/OreRock/ore_rock_phase_1.gd" id="5_4l2l4"]
 [ext_resource type="Script" uid="uid://dggtjviwt8xfw" path="res://src/Scripts/StateMachine/OreRock/ore_rock_phase_2.gd" id="5_bk2wi"]

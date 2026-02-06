@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://d150vkltffpjo"]
+[gd_scene load_steps=11 format=3 uid="uid://d150vkltffpjo"]
 
 [ext_resource type="Texture2D" uid="uid://ddcxqkovhni5t" path="res://Assets/campfire_animated.png" id="1_17y3m"]
 [ext_resource type="Texture2D" uid="uid://dmmej8vyxugmf" path="res://Assets/campfire_base.png" id="2_uaah4"]
 [ext_resource type="Script" uid="uid://1f7na7fnhdri" path="res://src/Scripts/Maps/Tower/check_point_campfire.gd" id="2_ytu7s"]
+[ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="4_o8htc"]
 
 [sub_resource type="Animation" id="Animation_o8htc"]
 resource_name = "Off"
@@ -134,6 +135,9 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uaah4"]
 size = Vector2(653, 20)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o8htc"]
+size = Vector2(93, 39)
+
 [node name="CheckpointCampfire" type="Node2D" node_paths=PackedStringArray("campfire")]
 script = ExtResource("2_ytu7s")
 campfire = NodePath("Campfire")
@@ -154,4 +158,23 @@ position = Vector2(-10, 0)
 position = Vector2(316.5, 0)
 shape = SubResource("RectangleShape2D_uaah4")
 
+[node name="ExitNotification" type="Label" parent="."]
+visible = false
+offset_left = -45.0
+offset_top = -82.0
+offset_right = 101.0
+offset_bottom = -59.0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("4_o8htc")
+text = "Press 'E' to exit Tower"
+
+[node name="ExitArea" type="Area2D" parent="."]
+position = Vector2(-1, -11)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitArea"]
+position = Vector2(28.5, -7.5)
+shape = SubResource("RectangleShape2D_o8htc")
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="ExitArea" to="." method="_on_exit_area_body_entered"]
+[connection signal="body_exited" from="ExitArea" to="." method="_on_exit_area_body_exited"]

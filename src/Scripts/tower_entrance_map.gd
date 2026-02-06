@@ -11,6 +11,9 @@ var stored_entrance_data : TowerEntranceData
 
 @onready var time_limit: Label = $TimeLimit
 @onready var area_button_selector: GridContainer = $FloorDescriptionPanel/AreaButtonSelector
+@onready var hunt_challenge_notification: Label = $FloorDescriptionPanel/HuntChallengeNotification
+
+@onready var hunt_selection: Button = $FloorDescriptionPanel/HuntSelection
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -48,6 +51,8 @@ func store_entrance_data(entrance_data : TowerEntranceData) -> void:
 		check_point_button.text = "Point %s" % [point+1]
 		check_point_button.index = point
 		area_button_selector.add_child(check_point_button)
+	
+	hunt_selection.disabled = false
 
 
 func _on_close_button_up() -> void:
@@ -57,3 +62,7 @@ func _on_close_button_up() -> void:
 func update_entrance_map(index : int) -> void:
 	biome_preview.texture = stored_entrance_data.preview_pictures[index]
 	GameManager.spawn_location = index
+
+func _on_hunt_selection_button_up() -> void:
+	hunt_challenge_notification.show()
+	GameManager.hunt_challenge_selected = true

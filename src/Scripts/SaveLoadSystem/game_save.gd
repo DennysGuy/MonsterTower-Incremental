@@ -49,7 +49,7 @@ TODO: We will add saves for classes as well
 	"Smelting Speed": 0.15,
 	"Mining Damage": 5,
 	"Monster Cap Bonus": 0,
-	"Expedition Time": 0.0,
+	"Expedition Time": 90.0,
 	"Cooking Drop Chance Bonus":0.0,
 	"Cooking Accuracy Bonus":0.0,
 	"Ore Drop Chance Bonus":0.0,

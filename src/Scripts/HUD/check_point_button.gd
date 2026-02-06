@@ -14,3 +14,4 @@ func _process(delta: float) -> void:
 
 func _on_button_up() -> void:
 	SignalBus.update_entrance_map.emit(index)
+	GameManager.hunt_challenge_selected = false

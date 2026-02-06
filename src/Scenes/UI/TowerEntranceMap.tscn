@@ -123,20 +123,6 @@ grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 1
 
-[node name="FloorEnemyList" type="GridContainer" parent="FloorDescriptionPanel"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -69.5
-offset_top = -42.0
-offset_right = 72.5
-offset_bottom = -4.0
-grow_horizontal = 2
-grow_vertical = 0
-
 [node name="GoToFloor" type="Button" parent="FloorDescriptionPanel"]
 layout_mode = 0
 offset_left = 8.0
@@ -156,6 +142,31 @@ offset_left = 18.0
 offset_top = 41.0
 offset_right = 77.0
 offset_bottom = 120.0
+
+[node name="HuntSelection" type="Button" parent="FloorDescriptionPanel"]
+layout_mode = 0
+offset_left = 114.0
+offset_top = 137.0
+offset_right = 200.0
+offset_bottom = 159.0
+mouse_default_cursor_shape = 2
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("10_grwys")
+theme_override_font_sizes/font_size = 13
+disabled = true
+text = "Hunt Challenge"
+
+[node name="HuntChallengeNotification" type="Label" parent="FloorDescriptionPanel"]
+visible = false
+layout_mode = 0
+offset_left = -105.0
+offset_top = 174.0
+offset_right = 240.0
+offset_bottom = 197.0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("10_grwys")
+theme_override_font_sizes/font_size = 16
+text = "Beat the Hunt Challenge to ascend to the next floor!"
 
 [node name="Floor1-1Entrance" parent="." instance=ExtResource("6_4erf6")]
 layout_mode = 1
@@ -238,4 +249,5 @@ theme_override_font_sizes/font_size = 14
 text = "Expedition Time Limit: 1130 seconds"
 
 [connection signal="button_up" from="FloorDescriptionPanel/GoToFloor" to="." method="_on_go_to_floor_button_up"]
+[connection signal="button_up" from="FloorDescriptionPanel/HuntSelection" to="." method="_on_hunt_selection_button_up"]
 [connection signal="button_up" from="Close" to="." method="_on_close_button_up"]
