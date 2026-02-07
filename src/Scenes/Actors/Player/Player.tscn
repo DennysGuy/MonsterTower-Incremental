@@ -1234,7 +1234,7 @@ idle_state = NodePath("../Idle")
 jump_state = NodePath("../Jump")
 swing_sfx = ExtResource("12_vhxh4")
 attack_friction = 200.0
-max_attack_drift = 300.0
+max_attack_drift = 250.0
 animation_name = "SwordSwing1"
 animation_duration = 0.6
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=4 uid="uid://bpob51vk7v2cj"]
+[gd_scene load_steps=45 format=4 uid="uid://bpob51vk7v2cj"]
 
 [ext_resource type="Script" uid="uid://bm3rscv8708vb" path="res://src/Scripts/Maps/Tower/Biome1/floor_1_1.gd" id="1_u3nwm"]
 [ext_resource type="AudioStream" uid="uid://fgrpqq5p7fjq" path="res://Audio/SFX/Biomes/MossyDungeon/Ambience/03 DSGNDron, Dungeon, Ambience, Drone, Dark, Loop.wav" id="2_ck022"]
@@ -13,6 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://bnfe0t36iu1dy" path="res://Audio/Music/TemporaryHuntMusic.mp3" id="4_yalon"]
 [ext_resource type="PackedScene" uid="uid://cr6q5dxlkks" path="res://src/Scenes/Tower/LadderArea.tscn" id="5_c1fqw"]
 [ext_resource type="PackedScene" uid="uid://dj0ett15s3u5m" path="res://src/Scenes/Tower/TowerFloors/OreRockMarker.tscn" id="5_kpd6k"]
+[ext_resource type="AudioStream" uid="uid://n4ky26neitxn" path="res://Audio/Music/TempVictoryTheme1.mp3" id="5_pkrjl"]
 [ext_resource type="TileSet" uid="uid://cbwyncwtk5kxk" path="res://src/Scenes/Tower/TowerFloors/Biome1/Biome1-Boundaries.tres" id="5_tuy5g"]
 [ext_resource type="Resource" uid="uid://dxfrcyw0rux0q" path="res://src/Resources/TinOreRock.tres" id="6_hvi06"]
 [ext_resource type="PackedScene" uid="uid://bethw5tnlxnnt" path="res://src/Scenes/Actors/Enemies/CorruptedMushie/CorruptedMushie.tscn" id="6_ko10l"]
@@ -28,7 +29,9 @@
 [ext_resource type="PackedScene" uid="uid://cpb0pkf7ygatb" path="res://src/Scenes/Tower/TowerFloors/MonsterSpawnNode.tscn" id="23_6qxhp"]
 [ext_resource type="PackedScene" uid="uid://c6tv3t1cpeq8f" path="res://src/Scenes/PlayerSpawnPoint.tscn" id="23_jmmg4"]
 [ext_resource type="Resource" uid="uid://dbb7k6hptjvyy" path="res://src/Resources/TowerEntranceData/Floor1-2.tres" id="26_cvbrj"]
+[ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="26_r86ak"]
 [ext_resource type="PackedScene" uid="uid://d150vkltffpjo" path="res://src/Scenes/Tower/TowerFloors/CheckPointCampfire.tscn" id="27_8wimh"]
+[ext_resource type="Texture2D" uid="uid://xd36daaflxhj" path="res://Assets/Tower/ExitAreaIcon.png" id="30_yeiuc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c1fqw"]
 texture = ExtResource("2_hk0iw")
@@ -1056,13 +1059,14 @@ size = Vector2(166, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0rtsh"]
 size = Vector2(297, 20)
 
-[node name="Floor1-1" type="Node2D" node_paths=PackedStringArray("camera", "hud", "ore_rock_markers", "campfire_list", "monster_spawn_node", "ambience_player")]
+[node name="Floor1-1" type="Node2D" node_paths=PackedStringArray("camera", "hud", "ore_rock_markers", "campfire_list", "sfx_player", "monster_spawn_node", "ambience_player")]
 script = ExtResource("1_u3nwm")
 map_name = "Floor 1-1"
 map_id = 1
 tower_entrance_data = ExtResource("2_n5ad4")
 map_theme_song = ExtResource("3_n5ad4")
 hunt_theme_song = ExtResource("4_yalon")
+hunt_victory_theme = ExtResource("5_pkrjl")
 camera = NodePath("PlayerCamera")
 hud = NodePath("HUD")
 ore_rock_spawn_rate = 0.65
@@ -1070,6 +1074,7 @@ ore_rock_markers = NodePath("OreRockMarkers")
 campfire_list = NodePath("CheckpointCampfires")
 path = "uid://bpob51vk7v2cj"
 next_room_path = "res://src/Scenes/Tower/TowerFloors/Biome1/Floor1-2.tscn"
+sfx_player = NodePath("SfxPlayer")
 monster_spawn_node = NodePath("MonsterSpawnNode")
 map_type = 2
 kill_quota = 10
@@ -1322,6 +1327,8 @@ shape = SubResource("RectangleShape2D_0rtsh")
 
 [node name="MonsterSpawnNode" parent="." instance=ExtResource("23_6qxhp")]
 
+[node name="SfxPlayer" parent="." instance=ExtResource("26_r86ak")]
+
 [node name="ExitElevator" parent="." instance=ExtResource("15_obgwm")]
 position = Vector2(201, 81)
 next_room_data = ExtResource("26_cvbrj")
@@ -1335,6 +1342,10 @@ index = 1
 
 [node name="HUD" parent="." instance=ExtResource("4_aah8w")]
 visible = false
+
+[node name="ExitAreaIcon" type="Sprite2D" parent="."]
+position = Vector2(144, 873)
+texture = ExtResource("30_yeiuc")
 
 [connection signal="body_entered" from="TowerExitArea" to="." method="_on_tower_exit_area_body_entered"]
 [connection signal="body_exited" from="TowerExitArea" to="." method="_on_tower_exit_area_body_exited"]

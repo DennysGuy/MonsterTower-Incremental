@@ -22,7 +22,7 @@ func _ready() -> void:
 	if monster_spawn_node:
 		if GameManager.hunt_challenge_selected:
 			hud.animation_player.play("StartHuntChallnge")
-			SignalBus.update_monsters_left.emit("Monsters left: %s" % [monster_spawn_node.get_children()],false,false)
+
 		else:
 			SignalBus.update_monsters_left.emit("Campfires Discovered: %s/%s" % [tower_entrance_data.camp_fires_reached, tower_entrance_data.total_camp_fires],false)
 	
@@ -30,6 +30,7 @@ func _ready() -> void:
 	SaveManager.save_player_stats()
 
 	if GameManager.hunt_challenge_selected:
+		SignalBus.update_monsters_left.emit("Monsters left: %s" % [monster_spawn_node.get_children().size()],false,false)
 		player.damageable = false
 		await get_tree().create_timer(0.25).timeout
 		hud.animation_player.play("StartHuntChallenge")

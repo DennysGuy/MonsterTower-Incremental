@@ -4,8 +4,11 @@ class_name PlayerAttack3State extends State
 @export var idle_state : State
 @export var jump_state : State
 @export var swing_sfx : AudioStream
-
+@export var attack_friction : float = 2600.0
+@export var max_attack_drift : float = 220.0
+var attack_velocity : float = 0.0
 func enter() -> void:
+	parent.velocity.x = 270 * GameManager.set_player_box_direction(parent.sprite.flip_h)
 	parent.can_knock_back = true
 	var class_ability : Ability  = PlayerStats.equipped_abilities["Attack 3"]
 	animation_name = class_ability.ability_name
@@ -29,6 +32,15 @@ func process_frame(_delta: float) -> State:
 	return null
 
 func process_physics(_delta: float) -> State:
+	
+	parent.velocity.x = move_toward(
+		parent.velocity.x,
+		0.0,
+		attack_friction * _delta
+	)
+
+	parent.move_and_slide()
+	
 	if !GameManager.player_can_move:
 		return idle_state
 

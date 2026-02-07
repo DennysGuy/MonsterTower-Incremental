@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=4 uid="uid://bla5rhusv2jn5"]
+[gd_scene load_steps=44 format=4 uid="uid://bla5rhusv2jn5"]
 
 [ext_resource type="Script" uid="uid://bgfo5a5l7ay1t" path="res://src/Scripts/Maps/Tower/Biome1/floor_1_2.gd" id="1_1pghk"]
 [ext_resource type="TileSet" uid="uid://cuil6pmpg4xf1" path="res://src/Scenes/Tower/TowerFloors/Biome1/Biome1-Floor.tres" id="2_27fnx"]
@@ -11,6 +11,7 @@
 [ext_resource type="TileSet" uid="uid://dr3ft3wh6mi6e" path="res://src/Scenes/Tower/TowerFloors/Biome1/Biome1BGSetPieces1.tres" id="3_ukbus"]
 [ext_resource type="AudioStream" uid="uid://bnfe0t36iu1dy" path="res://Audio/Music/TemporaryHuntMusic.mp3" id="4_nhahy"]
 [ext_resource type="TileSet" uid="uid://flobhfna8te" path="res://src/Scenes/Tower/TowerFloors/Biome1/Biome1-Platforms.tres" id="5_f2nj7"]
+[ext_resource type="AudioStream" uid="uid://n4ky26neitxn" path="res://Audio/Music/TempVictoryTheme1.mp3" id="5_kbbvk"]
 [ext_resource type="PackedScene" uid="uid://crvhogk2bnq1s" path="res://src/Scenes/NewStarshire/TowerGuideSprite.tscn" id="6_nb31h"]
 [ext_resource type="PackedScene" uid="uid://cexhahnue1wh6" path="res://src/Scenes/Tower/TowerFloors/FloorGuideLog.tscn" id="7_acl6u"]
 [ext_resource type="PackedScene" uid="uid://dysg5kffvxbql" path="res://src/Scenes/UI/PlayerHUD.tscn" id="8_kwf2g"]
@@ -30,6 +31,8 @@
 [ext_resource type="Resource" uid="uid://vibb3cg4b01g" path="res://src/Resources/TowerEntranceData/Floor1-3.tres" id="25_o2dcr"]
 [ext_resource type="PackedScene" uid="uid://d150vkltffpjo" path="res://src/Scenes/Tower/TowerFloors/CheckPointCampfire.tscn" id="26_qbeca"]
 [ext_resource type="PackedScene" uid="uid://cpb0pkf7ygatb" path="res://src/Scenes/Tower/TowerFloors/MonsterSpawnNode.tscn" id="27_ynp3n"]
+[ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="31_41cgd"]
+[ext_resource type="Texture2D" uid="uid://xd36daaflxhj" path="res://Assets/Tower/ExitAreaIcon.png" id="31_706tx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6ds7u"]
 texture = ExtResource("2_aukmg")
@@ -556,13 +559,14 @@ size = Vector2(172, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n7xsw"]
 size = Vector2(391, 20)
 
-[node name="Floor1-2" type="Node2D" node_paths=PackedStringArray("camera", "hud", "ore_rock_markers", "campfire_list", "monster_spawn_node", "ambience_player")]
+[node name="Floor1-2" type="Node2D" node_paths=PackedStringArray("camera", "hud", "ore_rock_markers", "campfire_list", "sfx_player", "monster_spawn_node", "ambience_player")]
 script = ExtResource("1_1pghk")
 map_name = "Floor 1-2"
 map_id = 2
 tower_entrance_data = ExtResource("2_801hy")
 map_theme_song = ExtResource("3_801hy")
 hunt_theme_song = ExtResource("4_nhahy")
+hunt_victory_theme = ExtResource("5_kbbvk")
 camera = NodePath("PlayerCamera")
 hud = NodePath("HUD")
 ore_rock_spawn_rate = 0.6
@@ -570,6 +574,7 @@ ore_rock_markers = NodePath("OreRockMarkers")
 campfire_list = NodePath("CampfireCheckpoints")
 path = "uid://bla5rhusv2jn5"
 next_room_path = "uid://b3m3f58qy47jb"
+sfx_player = NodePath("SfxPlayer")
 monster_spawn_node = NodePath("MonsterSpawnNode")
 map_type = 2
 kill_quota = 30
@@ -912,12 +917,18 @@ position = Vector2(139, 144)
 reference_name = "Floor 1-2 Campfire 2"
 entrance_data = ExtResource("2_801hy")
 
+[node name="SfxPlayer" parent="." instance=ExtResource("31_41cgd")]
+
 [node name="OreRockMarker" parent="." node_paths=PackedStringArray("spawn_parent") instance=ExtResource("8_ujmhj")]
 position = Vector2(472, 432)
 ore_rock_resource = ExtResource("11_qrx52")
 ore_rock = ExtResource("10_n7xsw")
 chance_to_spawn = 0.7
 spawn_parent = NodePath("..")
+
+[node name="ExitAreaIcon" type="Sprite2D" parent="."]
+position = Vector2(149, 1369)
+texture = ExtResource("31_706tx")
 
 [connection signal="body_entered" from="TowerExitArea" to="." method="_on_tower_exit_area_body_entered"]
 [connection signal="body_exited" from="TowerExitArea" to="." method="_on_tower_exit_area_body_exited"]

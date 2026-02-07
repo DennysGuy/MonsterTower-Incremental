@@ -28,6 +28,8 @@ const ITEM_SLOT_NOVELTY = preload("uid://x2hshpeeawjm")
 
 @onready var ore_bag_label: Label = $OreBagLabel
 
+var selling_all : bool = false
+
 var selected_item : Item
 var selected_inventory : String
 # Called when the node enters the scene tree for the first time.
@@ -61,10 +63,15 @@ func populate_details_panel(item : Item, slot_location : String) -> void:
 		
 		description.text = item.description
 
-func _on_sell_all_button_button_up() -> void:
-	sell_all_items(inventory_container, "Inventory")
-	sell_all_items(bank_container, "Bank")
-	sell_all_items(ore_inventory_container, "Ore Inventory")
+func _on_sell_all_button_button_up() -> void:	
+	if selling_all:
+		return
+	else:
+		selling_all = true
+	await sell_all_items(inventory_container, "Inventory")
+	await sell_all_items(bank_container, "Bank")
+	await sell_all_items(ore_inventory_container, "Ore Inventory")
+	selling_all = false
 
 func _on_sell_button_button_up() -> void:
 	if InventoryManager.remove_item(selected_inventory, selected_item):

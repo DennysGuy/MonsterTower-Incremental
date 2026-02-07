@@ -5,6 +5,7 @@ class_name Map extends Node2D
 @export var tower_entrance_data : TowerEntranceData
 @export var map_theme_song : AudioStream
 @export var hunt_theme_song : AudioStream
+@export var hunt_victory_theme : AudioStream
 @export var spawn_point : Marker2D
 @export var player_spawn : bool = true
 @export var camera : PlayerCamera
@@ -30,6 +31,9 @@ var player : Player
 
 @export var ambience_player : AudioStreamPlayer
 @export var ambience_sfx : AudioStream
+
+const TIER_UP = preload("uid://dhfdudbiidv7a")
+
 
 var kill_quota_hit : bool = false
 # Called when the node enters the scene tree for the first time.
@@ -68,6 +72,7 @@ func _ready() -> void:
 			camera.player = player
 		
 		if map_type == MAP_TYPE.CHECKPOINT_FLOOR:	
+			hud.expedition_timer.show_stop_watch()
 			if !GameManager.hunt_challenge_selected:
 				if tower_entrance_data.hunt_challenge_completed:
 					SignalBus.unlock_next_room.emit()
@@ -185,6 +190,8 @@ func update_hunt_quota() -> void:
 	await get_tree().process_frame
 	if map_type == MAP_TYPE.CHECKPOINT_FLOOR:
 		if monster_spawn_node.get_children().is_empty():
+			sfx_player.play_sfx(TIER_UP)
+			MusicPlayer.play_song(hunt_victory_theme)
 			GameManager.expedition_timer_started = false
 			tower_entrance_data.hunt_challenge_completed = true
 			save_floor_data()

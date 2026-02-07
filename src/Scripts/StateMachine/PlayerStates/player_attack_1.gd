@@ -9,10 +9,11 @@ class_name PlayerAttack1State extends State
 # --- Attack movement tuning ---
 @export var attack_friction : float = 2600.0
 @export var max_attack_drift : float = 220.0
+var attack_velocity : float = 0.0
 
 var can_attack_cancel : bool = false
 
-var attack_velocity : float = 0.0
+
 
 func enter() -> void:
 	parent.can_knock_back = true
@@ -26,16 +27,20 @@ func enter() -> void:
 	parent.timer.start()
 
 	# --- CAPTURE MOMENTUM ---
-	attack_velocity = parent.velocity.x
+	if int(parent.velocity.x) != 0:
+		attack_velocity = parent.velocity.x
+		attack_velocity = clamp(
+			attack_velocity,
+			-max_attack_drift,
+			max_attack_drift
+		)
+
+		parent.velocity.x = attack_velocity
+	else:
+		parent.velocity.x = 80 * GameManager.set_player_box_direction(parent.sprite.flip_h)
 
 	# Clamp so sprint/dash doesn't slide forever
-	attack_velocity = clamp(
-		attack_velocity,
-		-max_attack_drift,
-		max_attack_drift
-	)
 
-	parent.velocity.x = attack_velocity
 
 	var swing : AudioStream = PlayerStats.get_sword(
 		int(PlayerStats.player_stats["Equipped Sword"])
@@ -47,8 +52,7 @@ func exit() -> void:
 	parent.clear_effect_texture()
 
 func process_input(_event: InputEvent) -> State:
-	# No movement input during attack
-
+	# No movement input during attackad
 	return null
 
 func process_physics(_delta: float) -> State:
