@@ -83,16 +83,24 @@ func spawn_respawn_box() -> void:
 	var respawn_box : RespawnBox = preload("uid://dv20tfcnkjyux").instantiate()
 	player_hud.add_child(respawn_box)
 
-func update_kill_quota_text(message : String, quota_met : bool, out_of_enemies : bool) -> void:
+func update_kill_quota_text(message : String, quota_met : bool, challenge_unlocked : bool) -> void:
 	if is_inside_tree():
 		await get_tree().process_frame
-		if quota_met:
-			hunt_quota.text = "[color=green]"+message+"[/color]"
-		else:
-			if out_of_enemies:
-				hunt_quota.text = "[color=yellow]Insufficient floor spawn[/color]"
+		if GameManager.hunt_challenge_selected:
+			if quota_met:
+				hunt_quota.text = "[color=green]Hunt Completed! Head to the Exit Elevator![/color]"
 			else:
 				hunt_quota.text = message
+		else:
+			if !quota_met:
+				if challenge_unlocked:
+					hunt_quota.text = "Beat the Hunt Challenge to unlock the next floor!"
+				else:
+					hunt_quota.text = "Discover all campfires to unlock Challenge Hunt!"
+			else:
+			
+				hunt_quota.text = "[color=green]Next Floor Unlocked![/color]"
+
 
 func show_bag() -> void:
 	bag_showing = !bag_showing

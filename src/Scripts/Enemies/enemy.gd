@@ -25,8 +25,9 @@ func _ready() -> void:
 
 func _exit_tree() -> void:
 	if is_dead:
-		SignalBus.update_kill_quota.emit()
-		
+		if GameManager.hunt_challenge_selected:
+			SignalBus.update_kill_quota.emit()
+
 func _process(delta: float) -> void:
 	super(delta)
 	if player == null:
@@ -62,5 +63,5 @@ func give_xp() -> void:
 	xp_label.global_position.y = global_position.y-40
 	xp_label.global_position.x = global_position.x+30
 	drop_scene.add_child(xp_label)
-	
+		
 	LevelingManager.check_for_level_up()

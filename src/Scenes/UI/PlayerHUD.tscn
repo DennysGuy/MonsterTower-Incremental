@@ -274,7 +274,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 1.87, 5.176761, 6.801973, 8.469709, 10.150088),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": ["Hunt Challenge!", "Beat the Hunt Quota to
+"values": ["Hunt Challenge!", "Defeat all Monsters to
 Unlock the next floor!", "3", "2", "1", "GO!"]
 }
 tracks/3/type = "method"
@@ -470,25 +470,27 @@ layout_mode = 1
 
 [node name="HuntQuota" type="RichTextLabel" parent="PlayerHUD"]
 layout_mode = 0
-offset_left = 462.0
-offset_top = 34.0
-offset_right = 631.0
-offset_bottom = 52.0
+offset_left = 273.0
+offset_top = 50.0
+offset_right = 629.0
+offset_bottom = 68.0
 theme_override_constants/outline_size = 6
 theme_override_fonts/normal_font = ExtResource("9_jyqen")
 bbcode_enabled = true
+horizontal_alignment = 2
 
 [node name="MonstersLeft" type="RichTextLabel" parent="PlayerHUD"]
 layout_mode = 0
-offset_left = 462.0
-offset_top = 53.0
-offset_right = 631.0
-offset_bottom = 89.0
+offset_left = 460.0
+offset_top = 69.0
+offset_right = 629.0
+offset_bottom = 105.0
 theme_override_constants/outline_size = 6
 theme_override_fonts/normal_font = ExtResource("9_jyqen")
 bbcode_enabled = true
 text = "
 "
+horizontal_alignment = 2
 
 [node name="XPAmountLabel" type="Label" parent="PlayerHUD"]
 layout_mode = 1
@@ -545,7 +547,6 @@ texture_under = ExtResource("11_6ndbt")
 texture_progress = ExtResource("12_8d4p7")
 
 [node name="TopBlackBar" type="ColorRect" parent="PlayerHUD"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -557,7 +558,6 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="BotBlackBar" type="ColorRect" parent="PlayerHUD"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -638,7 +638,7 @@ text = "[color=yellow]Sword can be crafted![/color]"
 layout_mode = 0
 offset_left = -459.0
 offset_top = 157.0
-offset_right = -42.00302
+offset_right = -42.00305
 offset_bottom = 240.0
 theme_override_colors/font_color = Color(7.70092e-07, 0.7830455, 0.38619787, 1)
 theme_override_constants/outline_size = 10

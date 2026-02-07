@@ -9,17 +9,28 @@ func _ready() -> void:
 	hud.animation_player.play("CloseIn")
 	SignalBus.spawn_enemies.emit()
 	
-	if ore_rock_markers:
+	if ore_rock_markers and !GameManager.hunt_challenge_selected:
 		spawn_ore_rocks()
 		
 	await get_tree().process_frame
 	
-	if GameManager.hunt_challenge_selected:
-		hud.animation_player.play("StartHuntChallnge")
+	if monster_spawn_node:
+		if GameManager.hunt_challenge_selected:
+			hud.animation_player.play("StartHuntChallnge")
+			SignalBus.update_monsters_left.emit("Monsters left: %s" % [monster_spawn_node.get_children()],false,false)
+		else:
+			SignalBus.update_monsters_left.emit("Campfires Discovered: %s/%s" % [tower_entrance_data.camp_fires_reached, tower_entrance_data.total_camp_fires],false)
 	
-	SignalBus.update_monsters_left.emit("Monsters Left: %s" % [monster_spawn_node.get_children().size()],false)
 	SignalBus.update_player_health.emit(player.health)
 	SaveManager.save_player_stats()
+	
+	if GameManager.hunt_challenge_selected:
+		player.damageable = false
+		await get_tree().create_timer(0.25).timeout
+		hud.animation_player.play("StartHuntChallenge")
+		await get_tree().create_timer(12.0).timeout
+		player.damageable = true
+		GameManager.player_can_move = true
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

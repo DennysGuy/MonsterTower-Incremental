@@ -49,7 +49,7 @@ func update_prestige_progress() -> void:
 	prestige_progress_2.text = "%s/%s" % [TechTreeManager.current_upgrade_count, TechTreeManager.upgrade_count_to_prestige]
 	progress_bar.max_value = TechTreeManager.upgrade_count_to_prestige
 	progress_bar.value = TechTreeManager.current_upgrade_count
-	hunting_time.text = "Hunt Time: %s sec." % [int(PlayerStats.player_stats["Expedition Time"])] 
+	hunting_time.text = "Hunt Challenge Time: %s sec." % [int(PlayerStats.player_stats["Expedition Time"])] 
 	
 func _enter_tree() -> void:
 	GameManager.player_can_move = false

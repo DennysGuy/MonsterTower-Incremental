@@ -50,6 +50,7 @@ TODO: We will add saves for classes as well
 	"Mining Damage": 5,
 	"Monster Cap Bonus": 0,
 	"Expedition Time": 90.0,
+	"Hunt Time": 20.0,
 	"Cooking Drop Chance Bonus":0.0,
 	"Cooking Accuracy Bonus":0.0,
 	"Ore Drop Chance Bonus":0.0,
@@ -63,17 +64,20 @@ TODO: We will add saves for classes as well
 	"Floor 1-1" : {
 		"Number of Spawn Locations" : 0,
 		"Campfires Reached": 0,
-		"Kill Quota Hit": false
+		"Hunt Challenge Unlocked": false,
+		"Hunt Challenge Completed": false
 	},
 	"Floor 1-2" : {
 		"Number of Spawn Locations" : 0,
 		"Campfires Reached": 0,
-		"Kill Quota Hit": false
+		"Hunt Challenge Unlocked": false,
+		"Hunt Challenge Completed": false
 	},
 	"Floor 1-3" : {
 		"Number of Spawn Locations" : 0,
 		"Campfires Reached": 0,
-		"Kill Quota Hit": false
+		"Hunt Challenge Unlocked": false,
+		"Hunt Challenge Completed": false
 	},
 	
 }

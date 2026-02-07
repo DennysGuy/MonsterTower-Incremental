@@ -29,14 +29,18 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		entrance_data.camp_fires_reached += 1
 		animation_player.play("On")
 		HitStopManager.freeze()
+		SignalBus.update_monsters_left.emit("Campfires Discovered %s/%s" % [entrance_data.camp_fires_reached, entrance_data.total_camp_fires], false)
+		if entrance_data.camp_fires_reached >= entrance_data.total_camp_fires:
+			entrance_data.hunt_challenge_unlocked = true
+			SignalBus.update_kill_quota_text.emit("", entrance_data.hunt_challenge_completed, entrance_data.hunt_challenge_unlocked)
 		save_floor_data()
 		just_unlocked = true
 		
-
 func save_floor_data() -> void:
 	var saved_data = SaveManager.current_save_game.tower_entrance_data
 	saved_data[entrance_data.floor_name]["Number of Spawn Locations"] = entrance_data.number_of_spawn_locations
 	saved_data[entrance_data.floor_name]["Campfires Reached"] = entrance_data.camp_fires_reached
+	saved_data[entrance_data.floor_name]["Hunt Challenge Unlocked"] = entrance_data.hunt_challenge_unlocked
 	SaveManager.save_game()
 		
 

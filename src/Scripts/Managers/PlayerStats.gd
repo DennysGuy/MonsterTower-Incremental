@@ -45,13 +45,12 @@ const KNOCKBACK_FORCE : int = 300
 	"Mining Damage": 5,
 	"Monster Cap Bonus": 0,
 	"Expedition Time": 90.0,
+	"Hunt Time": 20.0,
 	"Cooking Drop Chance Bonus":0.0,
 	"Cooking Accuracy Bonus":0.0,
 	"Ore Drop Chance Bonus":0.0,
 	"Smelting Accuracy Bonus":0.0
 }
-
-const HUNT_TIME : int = 30
 
 var equipped_abilities : Dictionary = {
 	"Attack 1" : load("uid://c5hss1iq5ontu"), #sword swing 1

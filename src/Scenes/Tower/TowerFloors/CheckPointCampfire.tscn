@@ -133,7 +133,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uaah4"]
-size = Vector2(653, 20)
+size = Vector2(1098, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o8htc"]
 size = Vector2(93, 39)
@@ -152,10 +152,9 @@ libraries = {
 }
 
 [node name="Area2D" type="Area2D" parent="."]
-position = Vector2(-10, 0)
+position = Vector2(1, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(316.5, 0)
 shape = SubResource("RectangleShape2D_uaah4")
 
 [node name="ExitNotification" type="Label" parent="."]

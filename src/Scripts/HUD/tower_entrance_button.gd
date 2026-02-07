@@ -27,4 +27,5 @@ func load_floor_data() -> void:
 		var tower_data = saved_data.get(tower_entrance_data.floor_name)
 		tower_entrance_data.camp_fires_reached = tower_data["Campfires Reached"]
 		tower_entrance_data.number_of_spawn_locations = tower_data["Number of Spawn Locations"]
-		tower_entrance_data.kill_quota_hit = tower_data["Kill Quota Hit"]
+		tower_entrance_data.hunt_challenge_unlocked = tower_data["Hunt Challenge Unlocked"]
+		tower_entrance_data.hunt_challenge_completed = tower_data["Hunt Challenge Completed"]

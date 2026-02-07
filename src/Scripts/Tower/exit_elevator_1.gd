@@ -1,6 +1,7 @@
 class_name ExitElevator extends Node2D
 
 @export var next_room : PackedScene
+@export var next_room_data : TowerEntranceData
 var player_in_range : bool = false
 var kill_quota_met : bool = false
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -14,9 +15,13 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("interact") and player_in_range and kill_quota_met:
-		MusicPlayer.transitioning_floors = true
-		GameManager.spawn_location = 0
-		SignalBus.move_to_next_room.emit()
+		if GameManager.hunt_challenge_selected:
+			unlock_next_floor()
+			SignalBus.return_to_starshire.emit()
+		else:
+			MusicPlayer.transitioning_floors = true
+			GameManager.spawn_location = 0
+			SignalBus.move_to_next_room.emit()
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
@@ -41,3 +46,13 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 		player_in_range =false
 		move_to_next_room_label.hide()
 		animation_player.play("DoorsClose")
+
+func unlock_next_floor() -> void:
+	PlayerStats.check_points_unlocked[next_room_data.floor_name] = true
+	save_next_floor_data()
+
+func save_next_floor_data() -> void:
+	var saved_data = SaveManager.current_save_game
+	saved_data.tower_entrance_data[next_room_data.floor_name]["Number of Spawn Locations"] = next_room_data.number_of_spawn_locations
+	saved_data.check_points_unlocked[next_room_data.floor_name] = PlayerStats.check_points_unlocked[next_room_data.floor_name] 
+	SaveManager.save_game()

@@ -2,7 +2,9 @@ class_name MonsterSpawnArea extends Area2D
 
 
 @export var min_spawn : int
+@export var min_hunt_challenge_spawn : int
 @export var max_spawn : int
+@export var max_hunt_challenge_spawn : int
 @export var drop_scene : Map
 @export var spawn_root : Node
 
@@ -11,15 +13,12 @@ class_name MonsterSpawnArea extends Area2D
 
 var spawn_count : int
 
-
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	SignalBus.spawn_enemies.connect(_spawn)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-
 
 func choose_enemy() -> PackedScene:
 	var total_weight : int = 0
@@ -39,11 +38,13 @@ func choose_enemy() -> PackedScene:
 
 	return null
 
-
 func _spawn():
-	var capacity_bonus : int = int(PlayerStats.player_stats["Monster Cap Bonus"])
-	spawn_count = randi_range(min_spawn + capacity_bonus, max_spawn + capacity_bonus)
-
+	if !GameManager.hunt_challenge_selected:
+		var capacity_bonus : int = int(PlayerStats.player_stats["Monster Cap Bonus"])
+		spawn_count = randi_range(min_spawn + capacity_bonus, max_spawn + capacity_bonus)
+	else:
+		spawn_count = randi_range(min_hunt_challenge_spawn, max_hunt_challenge_spawn)
+	
 	for i in range(spawn_count):
 		var scene := choose_enemy()
 		if scene == null:
@@ -56,9 +57,7 @@ func _spawn():
 
 		var spawn_x := randf_range(-extents.x, extents.x)
 		var world_pos := global_position + Vector2(spawn_x, 0)
+		
 		monster.drop_scene = drop_scene
 		monster.global_position = world_pos
 		spawn_root.add_child(monster)
-		
-
-		print("Spawned:", monster, "In tree:", monster.is_inside_tree())

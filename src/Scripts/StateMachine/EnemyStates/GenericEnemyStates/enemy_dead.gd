@@ -40,6 +40,9 @@ func process_physics(_delta: float) -> State:
 	return null
 
 func drop_items() -> void:
+	if GameManager.hunt_challenge_selected:
+		return
+		
 	var item : EnemyDrop = parent.enemy_stats.novelty_item_drop
 	var item_interactable : ItemInteractable = preload("uid://dgtobkubdjq27").instantiate()
 	item_interactable.item = item

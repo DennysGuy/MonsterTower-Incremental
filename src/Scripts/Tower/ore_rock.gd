@@ -10,6 +10,7 @@ class_name OreRock extends Node2D
 
 var player : Player
 var health : int
+@onready var arrow_at_ore: Sprite2D = $ArrowAtOre
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -17,6 +18,9 @@ func _ready() -> void:
 	ore_rock_graphic.texture = ore_rock_stats.graphic
 	health = ore_rock_stats.max_health
 	enemy_health_bar.max_value = health
+	
+	if PlayerStats.facilities_unlocked["Refinery Station"]:
+		arrow_at_ore.show()
 	
 	state_machine.init(self)
 

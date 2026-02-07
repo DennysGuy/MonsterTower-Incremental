@@ -34,7 +34,7 @@ func start_timer() -> void:
 
 
 func set_time_for_hunt() -> void:
-	seconds = PlayerStats.HUNT_TIME
+	seconds = PlayerStats.player_stats["Hunt Time"]
 	milliseconds = 0.99
 
 func start_hunt_timer() -> void:

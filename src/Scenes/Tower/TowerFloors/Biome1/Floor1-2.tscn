@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=4 uid="uid://bla5rhusv2jn5"]
+[gd_scene load_steps=41 format=4 uid="uid://bla5rhusv2jn5"]
 
 [ext_resource type="Script" uid="uid://bgfo5a5l7ay1t" path="res://src/Scripts/Maps/Tower/Biome1/floor_1_2.gd" id="1_1pghk"]
 [ext_resource type="TileSet" uid="uid://cuil6pmpg4xf1" path="res://src/Scenes/Tower/TowerFloors/Biome1/Biome1-Floor.tres" id="2_27fnx"]
@@ -9,6 +9,7 @@
 [ext_resource type="TileSet" uid="uid://cbwyncwtk5kxk" path="res://src/Scenes/Tower/TowerFloors/Biome1/Biome1-Boundaries.tres" id="3_6ds7u"]
 [ext_resource type="AudioStream" uid="uid://baf1q03xsfmb2" path="res://Audio/Music/TempTowerTheme2.mp3" id="3_801hy"]
 [ext_resource type="TileSet" uid="uid://dr3ft3wh6mi6e" path="res://src/Scenes/Tower/TowerFloors/Biome1/Biome1BGSetPieces1.tres" id="3_ukbus"]
+[ext_resource type="AudioStream" uid="uid://bnfe0t36iu1dy" path="res://Audio/Music/TemporaryHuntMusic.mp3" id="4_nhahy"]
 [ext_resource type="TileSet" uid="uid://flobhfna8te" path="res://src/Scenes/Tower/TowerFloors/Biome1/Biome1-Platforms.tres" id="5_f2nj7"]
 [ext_resource type="PackedScene" uid="uid://crvhogk2bnq1s" path="res://src/Scenes/NewStarshire/TowerGuideSprite.tscn" id="6_nb31h"]
 [ext_resource type="PackedScene" uid="uid://cexhahnue1wh6" path="res://src/Scenes/Tower/TowerFloors/FloorGuideLog.tscn" id="7_acl6u"]
@@ -26,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://b0enmfcqe1mex" path="res://src/Scenes/Actors/Enemies/Batclopse/Batclopse.tscn" id="19_n7xsw"]
 [ext_resource type="PackedScene" uid="uid://c11hg5ijdrjjs" path="res://src/Scenes/Tower/TowerFloors/ExitElevator1.tscn" id="20_rsjkl"]
 [ext_resource type="PackedScene" uid="uid://cyiot28va881c" path="res://src/Scenes/Actors/Enemies/CorruptedMushie/CorruptedMushie_Level2.tscn" id="22_ykf1y"]
+[ext_resource type="Resource" uid="uid://vibb3cg4b01g" path="res://src/Resources/TowerEntranceData/Floor1-3.tres" id="25_o2dcr"]
 [ext_resource type="PackedScene" uid="uid://d150vkltffpjo" path="res://src/Scenes/Tower/TowerFloors/CheckPointCampfire.tscn" id="26_qbeca"]
 [ext_resource type="PackedScene" uid="uid://cpb0pkf7ygatb" path="res://src/Scenes/Tower/TowerFloors/MonsterSpawnNode.tscn" id="27_ynp3n"]
 
@@ -560,6 +562,7 @@ map_name = "Floor 1-2"
 map_id = 2
 tower_entrance_data = ExtResource("2_801hy")
 map_theme_song = ExtResource("3_801hy")
+hunt_theme_song = ExtResource("4_nhahy")
 camera = NodePath("PlayerCamera")
 hud = NodePath("HUD")
 ore_rock_spawn_rate = 0.6
@@ -808,7 +811,9 @@ position = Vector2(1, 57)
 [node name="MonsterSpawnArea" parent="." node_paths=PackedStringArray("drop_scene", "spawn_root", "area_collision_shape") instance=ExtResource("13_jxry2")]
 position = Vector2(437, 1457)
 min_spawn = 4
+min_hunt_challenge_spawn = 4
 max_spawn = 5
+max_hunt_challenge_spawn = 5
 drop_scene = NodePath("..")
 spawn_root = NodePath("../MonsterSpawnNode")
 monster_list = Dictionary[PackedScene, int]({
@@ -823,7 +828,9 @@ shape = SubResource("RectangleShape2D_qrx52")
 [node name="MonsterSpawnArea2" parent="." node_paths=PackedStringArray("drop_scene", "spawn_root", "area_collision_shape") instance=ExtResource("13_jxry2")]
 position = Vector2(320, 1088)
 min_spawn = 4
+min_hunt_challenge_spawn = 6
 max_spawn = 5
+max_hunt_challenge_spawn = 7
 drop_scene = NodePath("..")
 spawn_root = NodePath("../MonsterSpawnNode")
 monster_list = Dictionary[PackedScene, int]({
@@ -841,7 +848,9 @@ shape = SubResource("RectangleShape2D_n7xsw")
 [node name="MonsterSpawnArea3" parent="." node_paths=PackedStringArray("drop_scene", "spawn_root", "area_collision_shape") instance=ExtResource("13_jxry2")]
 position = Vector2(320, 655)
 min_spawn = 5
+min_hunt_challenge_spawn = 6
 max_spawn = 7
+max_hunt_challenge_spawn = 8
 drop_scene = NodePath("..")
 spawn_root = NodePath("../MonsterSpawnNode")
 monster_list = Dictionary[PackedScene, int]({
@@ -857,7 +866,9 @@ shape = SubResource("RectangleShape2D_n7xsw")
 [node name="MonsterSpawnArea4" parent="." node_paths=PackedStringArray("drop_scene", "spawn_root", "area_collision_shape") instance=ExtResource("13_jxry2")]
 position = Vector2(320, 255)
 min_spawn = 6
+min_hunt_challenge_spawn = 6
 max_spawn = 8
+max_hunt_challenge_spawn = 7
 drop_scene = NodePath("..")
 spawn_root = NodePath("../MonsterSpawnNode")
 monster_list = Dictionary[PackedScene, int]({
@@ -872,6 +883,7 @@ shape = SubResource("RectangleShape2D_n7xsw")
 
 [node name="ExitElevator" parent="." instance=ExtResource("20_rsjkl")]
 position = Vector2(322, 64)
+next_room_data = ExtResource("25_o2dcr")
 
 [node name="HUD" parent="." instance=ExtResource("8_kwf2g")]
 

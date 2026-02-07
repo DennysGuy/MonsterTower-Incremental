@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bgurt44iah13x"]
+[gd_scene load_steps=12 format=3 uid="uid://bgurt44iah13x"]
 
 [ext_resource type="Texture2D" uid="uid://dswsscclwdwya" path="res://Assets/TowerMap/TowerMap.png" id="1_bsb7l"]
 [ext_resource type="Script" uid="uid://b6emfts3ijh7c" path="res://src/Scripts/tower_entrance_map.gd" id="1_p02a1"]
@@ -6,6 +6,7 @@
 [ext_resource type="FontFile" uid="uid://qgj228ltdttv" path="res://Assets/Fonts/alagard.ttf" id="3_m7ed0"]
 [ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="4_fqkg3"]
 [ext_resource type="PackedScene" uid="uid://babxiw53a0sh0" path="res://src/Scenes/UI/DungeonEntranceButton.tscn" id="6_4erf6"]
+[ext_resource type="Texture2D" uid="uid://bggsgp4t53q5y" path="res://Assets/HUD/NoticeIcon.png" id="6_ol3te"]
 [ext_resource type="Resource" uid="uid://cnvnsw0143wep" path="res://src/Resources/TowerEntranceData/Floor1-1.tres" id="7_4erf6"]
 [ext_resource type="Resource" uid="uid://vibb3cg4b01g" path="res://src/Resources/TowerEntranceData/Floor1-3.tres" id="8_jtccv"]
 [ext_resource type="Resource" uid="uid://dbb7k6hptjvyy" path="res://src/Resources/TowerEntranceData/Floor1-2.tres" id="8_oavpw"]
@@ -78,14 +79,15 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -30.0
-offset_top = 6.0
-offset_right = 31.0
-offset_bottom = 20.0
+offset_left = -28.0
+offset_top = 21.0
+offset_right = 103.5
+offset_bottom = 35.0
 grow_horizontal = 2
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("3_m7ed0")
 theme_override_font_sizes/font_size = 14
+horizontal_alignment = 2
 
 [node name="BiomeTitle" type="Label" parent="FloorDescriptionPanel"]
 layout_mode = 1
@@ -93,20 +95,21 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -14.5
-offset_top = 24.0
-offset_right = 78.5
-offset_bottom = 36.0
+offset_top = 7.0
+offset_right = 98.5
+offset_bottom = 19.0
 grow_horizontal = 2
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("3_m7ed0")
 theme_override_font_sizes/font_size = 12
+horizontal_alignment = 2
 
 [node name="ColorRect" type="ColorRect" parent="FloorDescriptionPanel"]
 layout_mode = 0
 offset_left = 76.0
-offset_top = 39.0
+offset_top = 46.0
 offset_right = 222.0
-offset_bottom = 120.0
+offset_bottom = 127.0
 
 [node name="BiomePreview" type="TextureRect" parent="FloorDescriptionPanel"]
 layout_mode = 1
@@ -116,25 +119,12 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -34.5
-offset_top = -38.5
+offset_top = -31.5
 offset_right = 100.5
-offset_bottom = 33.5
+offset_bottom = 40.5
 grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 1
-
-[node name="GoToFloor" type="Button" parent="FloorDescriptionPanel"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 5.0
-offset_right = 42.0
-offset_bottom = 33.0
-mouse_default_cursor_shape = 2
-theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("4_fqkg3")
-theme_override_font_sizes/font_size = 14
-disabled = true
-text = "Go!"
 
 [node name="AreaButtonSelector" type="GridContainer" parent="FloorDescriptionPanel"]
 layout_mode = 0
@@ -143,30 +133,62 @@ offset_top = 41.0
 offset_right = 77.0
 offset_bottom = 120.0
 
-[node name="HuntSelection" type="Button" parent="FloorDescriptionPanel"]
+[node name="HuntNotification" type="Control" parent="FloorDescriptionPanel"]
+visible = false
+anchors_preset = 0
+offset_left = 92.0
+offset_top = 135.0
+offset_right = 213.0
+offset_bottom = 154.0
+mouse_filter = 2
+
+[node name="HuntNotification" type="TextureRect" parent="FloorDescriptionPanel/HuntNotification"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -20.0
+offset_top = -5.0
+offset_right = 0.60650635
+offset_bottom = 15.606506
+grow_horizontal = 0
+rotation = 0.21067768
+texture = ExtResource("6_ol3te")
+expand_mode = 1
+
+[node name="HuntNotification2" type="TextureRect" parent="FloorDescriptionPanel/HuntNotification"]
 layout_mode = 0
-offset_left = 114.0
-offset_top = 137.0
-offset_right = 200.0
-offset_bottom = 159.0
+offset_left = -4.0000005
+offset_right = 16.606506
+offset_bottom = 20.606506
+rotation = -0.21967472
+texture = ExtResource("6_ol3te")
+expand_mode = 1
+
+[node name="HuntSelection" type="Button" parent="FloorDescriptionPanel"]
+visible = false
+layout_mode = 0
+offset_left = 108.0
+offset_top = 134.0
+offset_right = 194.0
+offset_bottom = 156.0
 mouse_default_cursor_shape = 2
 theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("10_grwys")
 theme_override_font_sizes/font_size = 13
-disabled = true
 text = "Hunt Challenge"
 
-[node name="HuntChallengeNotification" type="Label" parent="FloorDescriptionPanel"]
-visible = false
+[node name="Label" type="Label" parent="FloorDescriptionPanel"]
 layout_mode = 0
-offset_left = -105.0
-offset_top = 174.0
-offset_right = 240.0
-offset_bottom = 197.0
+offset_left = 4.0
+offset_top = 167.0
+offset_right = 168.0
+offset_bottom = 214.0
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("10_grwys")
 theme_override_font_sizes/font_size = 16
-text = "Beat the Hunt Challenge to ascend to the next floor!"
+text = "Hunt Challenge 
+Time Limit: 40 sec"
 
 [node name="Floor1-1Entrance" parent="." instance=ExtResource("6_4erf6")]
 layout_mode = 1
@@ -206,9 +228,9 @@ text = "Close"
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 0
-offset_left = 77.0
+offset_left = 76.0
 offset_top = 46.0
-offset_right = 156.0
+offset_right = 155.0
 offset_bottom = 61.0
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("3_m7ed0")
@@ -216,10 +238,10 @@ text = "The Tower"
 
 [node name="Title2" type="Label" parent="."]
 layout_mode = 0
-offset_left = 117.0
-offset_top = 155.0
-offset_right = 263.0
-offset_bottom = 169.0
+offset_left = 243.0
+offset_top = 49.0
+offset_right = 389.0
+offset_bottom = 63.0
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("3_m7ed0")
 theme_override_font_sizes/font_size = 12
@@ -237,6 +259,18 @@ theme_override_font_sizes/font_size = 16
 text = "~Items in inventory will be moved to bank if possible~"
 horizontal_alignment = 1
 
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 368.0
+offset_top = 94.0
+offset_right = 453.0
+offset_bottom = 121.0
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("10_grwys")
+theme_override_font_sizes/font_size = 12
+text = "Expedition 
+Points"
+
 [node name="TimeLimit" type="Label" parent="."]
 layout_mode = 0
 offset_left = 78.0
@@ -248,6 +282,44 @@ theme_override_fonts/font = ExtResource("4_fqkg3")
 theme_override_font_sizes/font_size = 14
 text = "Expedition Time Limit: 1130 seconds"
 
-[connection signal="button_up" from="FloorDescriptionPanel/GoToFloor" to="." method="_on_go_to_floor_button_up"]
+[node name="ModeDescription" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 75.0
+offset_top = 109.0
+offset_right = 277.0
+offset_bottom = 298.0
+
+[node name="ModeDescriptionLabel" type="RichTextLabel" parent="ModeDescription"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.5
+offset_top = -91.5
+offset_right = 98.0
+offset_bottom = 91.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = ExtResource("10_grwys")
+bbcode_enabled = true
+
+[node name="GoToFloor" type="Button" parent="ModeDescription"]
+layout_mode = 0
+offset_left = 162.0
+offset_top = 3.0
+offset_right = 196.0
+offset_bottom = 31.0
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0, 0.6636377, 0.59903854, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("4_fqkg3")
+theme_override_font_sizes/font_size = 14
+disabled = true
+text = "Go!"
+
 [connection signal="button_up" from="FloorDescriptionPanel/HuntSelection" to="." method="_on_hunt_selection_button_up"]
 [connection signal="button_up" from="Close" to="." method="_on_close_button_up"]
+[connection signal="button_up" from="ModeDescription/GoToFloor" to="." method="_on_go_to_floor_button_up"]
