@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="TowerEntranceData" load_steps=3 format=3 uid="uid://cnvnsw0143wep"]
+[gd_resource type="Resource" script_class="TowerEntranceData" format=3 uid="uid://cnvnsw0143wep"]
 
 [ext_resource type="Texture2D" uid="uid://co3aral1fvi81" path="res://Assets/FloorPreviews/Floor1-1Preview.png" id="1_ikieu"]
 [ext_resource type="Script" uid="uid://cyho4aep1qxmu" path="res://src/Scripts/Maps/tower_entrance_data.gd" id="1_qsrdq"]

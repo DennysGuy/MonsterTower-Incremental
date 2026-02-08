@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="TechNodeStats" load_steps=3 format=3 uid="uid://bonlosm00p4kf"]
+[gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://bonlosm00p4kf"]
 
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_anjie"]
 [ext_resource type="Texture2D" uid="uid://w823m3oe7i82" path="res://Assets/NodeGraphics/NodeGraphicsV2/DashAttack_V2.png" id="1_jo0k4"]

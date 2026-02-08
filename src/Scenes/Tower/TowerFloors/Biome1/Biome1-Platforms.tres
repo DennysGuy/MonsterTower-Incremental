@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://flobhfna8te"]
+[gd_resource type="TileSet" format=3 uid="uid://flobhfna8te"]
 
 [ext_resource type="Texture2D" uid="uid://bbmpr551mjb20" path="res://Assets/Tower/Biom1/Biome1SpriteSheet.png" id="1_h0ldv"]
 
