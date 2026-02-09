@@ -49,7 +49,6 @@ func _ready() -> void:
 	dash_attack_hit_box.position = hit_box_position
 	
 func _process(delta: float) -> void:
-	print(velocity.x)
 	super(delta)
 
 func _physics_process(delta: float) -> void:

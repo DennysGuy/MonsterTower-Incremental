@@ -13,8 +13,9 @@ func save_game() -> void:
 func create_new_save() -> void:
 	var new_save : GameSave = GameSave.new()
 	ResourceSaver.save(new_save,SAVE_PATH)
+	await get_tree().process_frame
 	current_save_game = get_existing_save_file()
-
+	init_save_file()
 
 func load_game() -> void:
 	if save_file_exists():
@@ -41,6 +42,7 @@ func init_save_file() -> void:
 	TechTreeManager.current_prestige = current_save_game.current_prestige
 	TechTreeManager.current_upgrade_count = current_save_game.current_upgrade_count
 	TechTreeManager.upgrade_count_to_prestige = current_save_game.upgrade_count_to_prestige
+	load_equipped_abilities()
 	
 func save_tech_tree_data() -> void:
 	if current_save_game:
@@ -51,7 +53,10 @@ func save_tech_tree_data() -> void:
 		save_game()
 
 func save_equipped_abilities() -> void:
-	current_save_game.equipped_abilities = PlayerStats.equipped_abilities
+
+	for ability in PlayerStats.get_equipped_abilities().keys():
+		current_save_game.equipped_abilities[ability] = PlayerStats.get_equipped_ability(ability).resource_path
+	
 	save_game()
 
 func save_player_stats() -> void:
@@ -67,3 +72,12 @@ func save_inventories() -> void:
 
 func get_existing_save_file() -> GameSave:
 	return ResourceLoader.load(SAVE_PATH, "", ResourceLoader.CACHE_MODE_IGNORE)
+
+func load_equipped_abilities() -> void:
+	for key in current_save_game.equipped_abilities.keys():
+		var uid = current_save_game.equipped_abilities[key]
+		if uid != null:
+			if uid is String:
+				PlayerStats.get_equipped_abilities()[key] = load(uid)
+			else:
+				PlayerStats.get_equipped_abilities()[key] = load(uid.resource_path)

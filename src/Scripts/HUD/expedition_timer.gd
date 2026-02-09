@@ -1,6 +1,5 @@
 extends Control
 
-@onready var timer_label: RichTextLabel = $TimerLabel
 @onready var sfx_player: SFXPlayer = preload("uid://d080wmb3mv021").instantiate()
 
 var seconds : float = 0.0

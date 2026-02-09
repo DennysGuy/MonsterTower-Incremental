@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://babypuakc7i7y"]
+[gd_scene format=3 uid="uid://babypuakc7i7y"]
 
 [ext_resource type="Script" uid="uid://c1wrjow75bhab" path="res://src/Scripts/Main/main_menu.gd" id="1_lb6hv"]
 [ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="2_58xxk"]
@@ -59,7 +59,7 @@ _data = {
 &"RESET": SubResource("Animation_gwjs1")
 }
 
-[node name="MainMenu" type="Control"]
+[node name="MainMenu" type="Control" unique_id=1509647516]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -69,7 +69,7 @@ grow_vertical = 2
 script = ExtResource("1_lb6hv")
 next_scene_path = "uid://c3y6ce3xriuwl"
 
-[node name="ColorRect" type="TextureRect" parent="."]
+[node name="ColorRect" type="TextureRect" parent="." unique_id=1039899871]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -78,7 +78,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_gwjs1")
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=1445026577]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -93,7 +93,7 @@ theme_override_fonts/font = ExtResource("3_rsyx7")
 theme_override_font_sizes/font_size = 38
 text = "Starspire Hunters"
 
-[node name="NewGame" type="Button" parent="."]
+[node name="NewGame" type="Button" parent="." unique_id=2136236947]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -112,7 +112,7 @@ theme_override_fonts/font = ExtResource("2_58xxk")
 theme_override_font_sizes/font_size = 24
 text = "NEw Game"
 
-[node name="Continue" type="Button" parent="."]
+[node name="Continue" type="Button" parent="." unique_id=1382076943]
 modulate = Color(3.85046e-07, 0.97184914, 0.35903677, 1)
 layout_mode = 1
 anchors_preset = 8
@@ -132,8 +132,7 @@ theme_override_fonts/font = ExtResource("2_58xxk")
 theme_override_font_sizes/font_size = 30
 text = "COntinue"
 
-[node name="TransitionRect" type="ColorRect" parent="."]
-visible = false
+[node name="TransitionRect" type="ColorRect" parent="." unique_id=1379323239]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -143,15 +142,7 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_gwjs1")
-}
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_fcgj2")
-
-[node name="PatchUpdatePanel" type="Panel" parent="."]
+[node name="PatchUpdatePanel" type="Panel" parent="." unique_id=607089193]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -162,7 +153,7 @@ offset_right = 305.0
 offset_bottom = 173.0
 grow_vertical = 2
 
-[node name="Description" type="RichTextLabel" parent="PatchUpdatePanel"]
+[node name="Description" type="RichTextLabel" parent="PatchUpdatePanel" unique_id=273507147]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -191,6 +182,12 @@ text = "v 0.0.5 prototype Changes
 - player health increased to 60 from 35
 
 - fixed tech tree bug inhibiting some nodes from unlocking if player leaves at a certain spot"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1450711081]
+libraries/ = SubResource("AnimationLibrary_gwjs1")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1807827256]
+stream = ExtResource("4_fcgj2")
 
 [connection signal="button_up" from="NewGame" to="." method="_on_button_button_up"]
 [connection signal="button_up" from="Continue" to="." method="_on_continue_button_up"]

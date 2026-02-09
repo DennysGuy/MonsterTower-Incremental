@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dcgpcwx38gddm"]
+[gd_scene format=3 uid="uid://dcgpcwx38gddm"]
 
 [ext_resource type="Script" uid="uid://h7d4qgpkl52v" path="res://src/Scripts/HUD/dojo_unlock_item.gd" id="1_pgwbi"]
 [ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="2_6qals"]

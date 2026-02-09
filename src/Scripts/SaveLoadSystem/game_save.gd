@@ -49,7 +49,7 @@ TODO: We will add saves for classes as well
 	"Smelting Speed": 0.15,
 	"Mining Damage": 5,
 	"Monster Cap Bonus": 0,
-	"Expedition Time": 90.0,
+	"Expedition Time": 70.0,
 	"Hunt Time": 20.0,
 	"Cooking Drop Chance Bonus":0.0,
 	"Cooking Accuracy Bonus":0.0,
@@ -156,11 +156,11 @@ TODO: We will add saves for classes as well
 }
 
 @export var equipped_abilities : Dictionary = {
-	"Attack 1" : load("uid://c5hss1iq5ontu"), #sword swing 1
-	"Attack 2" : load("uid://rbc7yawqcf3h"), #sword swing 2
-	"Attack 3" : load("uid://7qd8qvg4bf73"), #sword swing 3
-	"Dash Attack" : load("uid://b0lsgfuw8bp58"), #basic dash attack
-	"Air Attack" : load("uid://bukiike6rf6pl"), #basic air attack
+	"Attack 1" : "uid://c5hss1iq5ontu", #sword swing 1
+	"Attack 2" : "uid://rbc7yawqcf3h", #sword swing 2
+	"Attack 3" : "uid://7qd8qvg4bf73", #sword swing 3
+	"Dash Attack" : "uid://b0lsgfuw8bp58", #basic dash attack
+	"Air Attack" : "uid://bukiike6rf6pl", #basic air attack
 	"Special Attack" : null
 }
 

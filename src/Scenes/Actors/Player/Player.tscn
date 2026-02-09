@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://wuy3aelq8aeg"]
+[gd_scene format=3 uid="uid://wuy3aelq8aeg"]
 
 [ext_resource type="Script" uid="uid://dm4atx2m8yfn1" path="res://src/Scripts/Player/player.gd" id="1_gw3a7"]
 [ext_resource type="Script" uid="uid://drr0deykmfrvq" path="res://src/Scripts/StateMachine/state_machine.gd" id="2_n7gp4"]
@@ -1155,7 +1155,7 @@ size = Vector2(20, 46)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5so87"]
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("idle_state", "jump_state", "fall_state", "climb_state", "swing_pick_axe", "state_machine", "animation_player", "health_component", "sprite", "hurt_box", "hit_box", "hit_state", "dead_state", "sfx_player") groups=["Player"]]
+[node name="Player" type="CharacterBody2D" unique_id=1875939299 node_paths=PackedStringArray("idle_state", "jump_state", "fall_state", "climb_state", "swing_pick_axe", "state_machine", "animation_player", "health_component", "sprite", "hurt_box", "hit_box", "hit_state", "dead_state", "sfx_player") groups=["Player"]]
 z_index = 4000
 collision_layer = 17
 collision_mask = 17
@@ -1175,11 +1175,11 @@ hit_state = NodePath("StateMachine/Hit")
 dead_state = NodePath("StateMachine/Die")
 sfx_player = NodePath("SfxPlayer")
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+[node name="StateMachine" type="Node" parent="." unique_id=407810042 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_n7gp4")
 initial_state = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("move_state", "jump_state", "fall_state", "attack_1_state", "swing_pick_axe_state", "climb_state")]
+[node name="Idle" type="Node" parent="StateMachine" unique_id=246257889 node_paths=PackedStringArray("move_state", "jump_state", "fall_state", "attack_1_state", "swing_pick_axe_state", "climb_state")]
 script = ExtResource("3_g162h")
 move_state = NodePath("../Move")
 jump_state = NodePath("../Jump")
@@ -1190,7 +1190,7 @@ climb_state = NodePath("../Climb")
 jump_sfx = ExtResource("6_yawj3")
 animation_name = "Idle"
 
-[node name="Move" type="Node" parent="StateMachine" node_paths=PackedStringArray("jump_state", "fall_state", "idle_state", "dash_attack_state", "attack_1_state")]
+[node name="Move" type="Node" parent="StateMachine" unique_id=64534103 node_paths=PackedStringArray("jump_state", "fall_state", "idle_state", "dash_attack_state", "attack_1_state")]
 script = ExtResource("4_pp7ew")
 jump_state = NodePath("../Jump")
 fall_state = NodePath("../Fall")
@@ -1203,7 +1203,7 @@ decel = 1500.0
 turn_resistance = 1600.0
 animation_name = "Run"
 
-[node name="Jump" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "fall_state", "air_attack")]
+[node name="Jump" type="Node" parent="StateMachine" unique_id=593572243 node_paths=PackedStringArray("idle_state", "fall_state", "air_attack")]
 script = ExtResource("5_jq5qv")
 idle_state = NodePath("../Idle")
 fall_state = NodePath("../Fall")
@@ -1211,14 +1211,14 @@ jump_sfx = ExtResource("6_yawj3")
 air_attack = NodePath("../AirAttack")
 animation_name = "Jump"
 
-[node name="Climb" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "jump_state")]
+[node name="Climb" type="Node" parent="StateMachine" unique_id=98111772 node_paths=PackedStringArray("idle_state", "jump_state")]
 script = ExtResource("6_hrnox")
 idle_state = NodePath("../Idle")
 jump_state = NodePath("../Jump")
 climb_sfx = ExtResource("9_8bj2u")
 animation_name = "Climb"
 
-[node name="Fall" type="Node" parent="StateMachine" node_paths=PackedStringArray("jump_state", "move_state", "idle_state", "climb_state", "air_attack")]
+[node name="Fall" type="Node" parent="StateMachine" unique_id=1066671632 node_paths=PackedStringArray("jump_state", "move_state", "idle_state", "climb_state", "air_attack")]
 script = ExtResource("6_k5pak")
 jump_state = NodePath("../Jump")
 move_state = NodePath("../Move")
@@ -1227,7 +1227,7 @@ climb_state = NodePath("../Climb")
 air_attack = NodePath("../AirAttack")
 animation_name = "Fall"
 
-[node name="Attack1" type="Node" parent="StateMachine" node_paths=PackedStringArray("attack2_state", "idle_state", "jump_state")]
+[node name="Attack1" type="Node" parent="StateMachine" unique_id=89279797 node_paths=PackedStringArray("attack2_state", "idle_state", "jump_state")]
 script = ExtResource("7_j38pk")
 attack2_state = NodePath("../Attack2")
 idle_state = NodePath("../Idle")
@@ -1238,7 +1238,7 @@ max_attack_drift = 250.0
 animation_name = "SwordSwing1"
 animation_duration = 0.6
 
-[node name="Attack2" type="Node" parent="StateMachine" node_paths=PackedStringArray("attack3_state", "idle_state", "jump_state")]
+[node name="Attack2" type="Node" parent="StateMachine" unique_id=843297980 node_paths=PackedStringArray("attack3_state", "idle_state", "jump_state")]
 script = ExtResource("8_k1vse")
 attack3_state = NodePath("../Attack3")
 idle_state = NodePath("../Idle")
@@ -1247,7 +1247,7 @@ swing_sfx = ExtResource("14_c7aqh")
 animation_name = "SwordSwing2"
 animation_duration = 0.6
 
-[node name="Attack3" type="Node" parent="StateMachine" node_paths=PackedStringArray("attack1_state", "idle_state", "jump_state")]
+[node name="Attack3" type="Node" parent="StateMachine" unique_id=1463353767 node_paths=PackedStringArray("attack1_state", "idle_state", "jump_state")]
 script = ExtResource("9_er68u")
 attack1_state = NodePath("../Attack1")
 idle_state = NodePath("../Idle")
@@ -1256,18 +1256,18 @@ swing_sfx = ExtResource("16_c7aqh")
 animation_name = "SwordSwing3"
 animation_duration = 0.6
 
-[node name="AirAttack" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "climb_state")]
+[node name="AirAttack" type="Node" parent="StateMachine" unique_id=1513495787 node_paths=PackedStringArray("idle_state", "climb_state")]
 script = ExtResource("13_cq2ky")
 idle_state = NodePath("../Idle")
 climb_state = NodePath("../Climb")
 animation_name = "AirAttack"
 
-[node name="DashAttack" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state")]
+[node name="DashAttack" type="Node" parent="StateMachine" unique_id=288563207 node_paths=PackedStringArray("idle_state")]
 script = ExtResource("17_cfcx3")
 idle_state = NodePath("../Idle")
 animation_name = "SwordSwing3"
 
-[node name="Hit" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "attack_1_state")]
+[node name="Hit" type="Node" parent="StateMachine" unique_id=73250372 node_paths=PackedStringArray("idle_state", "attack_1_state")]
 script = ExtResource("11_susmm")
 wait_time = 0.15
 invincibility_time = 3.0
@@ -1276,106 +1276,104 @@ attack_1_state = NodePath("../Attack1")
 hit_sfx = ExtResource("18_8xpqf")
 animation_name = "Jump"
 
-[node name="Die" type="Node" parent="StateMachine"]
+[node name="Die" type="Node" parent="StateMachine" unique_id=181294594]
 script = ExtResource("12_omh5u")
 hit = ExtResource("18_8xpqf")
 death_fanfare = ExtResource("20_geieu")
 
-[node name="SwingPickAxe" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state")]
+[node name="SwingPickAxe" type="Node" parent="StateMachine" unique_id=1009786343 node_paths=PackedStringArray("idle_state")]
 script = ExtResource("13_1twwa")
 idle_state = NodePath("../Idle")
 pick_axe_swing = ExtResource("22_0qbij")
 animation_name = "PickaxeSwing"
 animation_duration = 0.5
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=1604863362]
 process_callback = 0
 one_shot = true
 
-[node name="InvincibilityTimer" type="Timer" parent="."]
+[node name="InvincibilityTimer" type="Timer" parent="." unique_id=657708217]
 process_callback = 0
 one_shot = true
 
-[node name="AbilityCoolDownTimer" type="Timer" parent="."]
+[node name="AbilityCoolDownTimer" type="Timer" parent="." unique_id=1051272283]
 
-[node name="HealthComponent" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("10_dwhqw")]
+[node name="HealthComponent" parent="." unique_id=674312385 node_paths=PackedStringArray("parent") instance=ExtResource("10_dwhqw")]
 parent = NodePath("..")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=105678139]
 visible = false
 offset_left = -18.0
 offset_top = -72.0
 offset_right = 18.0
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=501509945]
 root_node = NodePath("../Sprites/PlayerSprite")
-libraries = {
-&"": SubResource("AnimationLibrary_pawjx")
-}
+libraries/ = SubResource("AnimationLibrary_pawjx")
 
-[node name="Sprites" type="Node2D" parent="."]
+[node name="Sprites" type="Node2D" parent="." unique_id=650817977]
 
-[node name="PlayerSprite" type="Sprite2D" parent="Sprites"]
+[node name="PlayerSprite" type="Sprite2D" parent="Sprites" unique_id=1041617266]
 position = Vector2(0, -37)
 texture = ExtResource("7_4qtrc")
 
-[node name="Sword" type="Sprite2D" parent="Sprites"]
+[node name="Sword" type="Sprite2D" parent="Sprites" unique_id=1728017757]
 position = Vector2(0, -37)
 hframes = 15
 
-[node name="Effect" type="Sprite2D" parent="Sprites"]
+[node name="Effect" type="Sprite2D" parent="Sprites" unique_id=217080024]
 position = Vector2(0, -37)
 texture = ExtResource("8_j38pk")
 hframes = 15
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=948629924]
 position = Vector2(-1.5, -27.5)
 shape = SubResource("RectangleShape2D_susmm")
 
-[node name="HitBox" parent="." instance=ExtResource("16_cw62c")]
+[node name="HitBox" parent="." unique_id=1465797301 instance=ExtResource("16_cw62c")]
 position = Vector2(21, -20)
 scale = Vector2(2, 2)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=858784280]
 position = Vector2(-0.625, 0)
 shape = SubResource("RectangleShape2D_45oew")
 
-[node name="DashAttackHitBox" parent="." instance=ExtResource("16_cw62c")]
+[node name="DashAttackHitBox" parent="." unique_id=1299507598 instance=ExtResource("16_cw62c")]
 position = Vector2(20, -20)
 scale = Vector2(2, 2)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DashAttackHitBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DashAttackHitBox" unique_id=847666039]
 position = Vector2(-0.3125, 0)
 shape = SubResource("RectangleShape2D_45oew")
 disabled = true
 
-[node name="HurtBox" parent="." instance=ExtResource("17_45oew")]
+[node name="HurtBox" parent="." unique_id=1374428890 instance=ExtResource("17_45oew")]
 position = Vector2(2, -3)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=1553451842]
 position = Vector2(-2.5, -20)
 shape = SubResource("RectangleShape2D_dwhqw")
 
-[node name="LadderDetector" type="Area2D" parent="."]
+[node name="LadderDetector" type="Area2D" parent="." unique_id=1267305806]
 collision_layer = 8
 collision_mask = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LadderDetector"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LadderDetector" unique_id=196590373]
 position = Vector2(0, -13)
 shape = SubResource("RectangleShape2D_hrnox")
 
-[node name="MiningArea" type="Area2D" parent="."]
+[node name="MiningArea" type="Area2D" parent="." unique_id=353797968]
 position = Vector2(19, -10)
 collision_layer = 256
 collision_mask = 256
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MiningArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MiningArea" unique_id=339458740]
 shape = SubResource("RectangleShape2D_5so87")
 
-[node name="CoinPurse" type="Marker2D" parent="."]
+[node name="CoinPurse" type="Marker2D" parent="." unique_id=900619047]
 position = Vector2(-1, -15)
 
-[node name="SfxPlayer" parent="." instance=ExtResource("25_1twwa")]
+[node name="SfxPlayer" parent="." unique_id=926725307 instance=ExtResource("25_1twwa")]
 
 [connection signal="timeout" from="AbilityCoolDownTimer" to="." method="_on_ability_cool_down_timer_timeout"]
 [connection signal="body_entered" from="DashAttackHitBox" to="." method="_on_dash_attack_hit_box_body_entered"]

@@ -1,5 +1,5 @@
 extends Node
-
+class_name PlayerStatsSingleton
 '''
 For now, we will hold the player stats in a global script
 This should eventually be moved into something that is save-able like a custom resource.
@@ -53,13 +53,19 @@ const KNOCKBACK_FORCE : int = 300
 }
 
 var equipped_abilities : Dictionary = {
-	"Attack 1" : load("uid://c5hss1iq5ontu"), #sword swing 1
-	"Attack 2" : load("uid://rbc7yawqcf3h"), #sword swing 2
-	"Attack 3" : load("uid://7qd8qvg4bf73"), #sword swing 3
-	"Dash Attack" : preload("uid://b0lsgfuw8bp58"), #basic dash attack
-	"Air Attack" : load("uid://b0lsgfuw8bp58"), #basic air attack
+	"Attack 1" : null, #sword swing 1
+	"Attack 2" : null, #sword swing 2
+	"Attack 3" : null, #sword swing 3
+	"Dash Attack" : null, #basic dash attack
+	"Air Attack" : null, #basic air attack
 	"Special Attack" : null
 }
+
+func get_equipped_ability(slot : String) -> Ability:
+	return equipped_abilities[slot]
+
+func get_equipped_abilities() -> Dictionary:
+	return equipped_abilities
 
 func equip_ability(ability : Ability, position : String) -> void:
 	equipped_abilities[position] = ability
@@ -82,10 +88,10 @@ func equip_ability(ability : Ability, position : String) -> void:
 
 var player_classes : Dictionary = {
 	"Junior Hunter" : {
-		"Sword Attack 1 Name": load("uid://c5hss1iq5ontu"),
-		"Sword Attack 2 Name": load("uid://rbc7yawqcf3h"),
-		"Sword Attack 3 Name": load("uid://7qd8qvg4bf73"),
-		"Air Attack": 	load("uid://bukiike6rf6pl"),
+		"Sword Attack 1 Name": preload("uid://c5hss1iq5ontu"),
+		"Sword Attack 2 Name": preload("uid://rbc7yawqcf3h"),
+		"Sword Attack 3 Name": preload("uid://7qd8qvg4bf73"),
+		"Air Attack": 	preload("uid://bukiike6rf6pl"),
 		"Dash Attack": preload("uid://b0lsgfuw8bp58"),
 		"Special Attack": null
 	}

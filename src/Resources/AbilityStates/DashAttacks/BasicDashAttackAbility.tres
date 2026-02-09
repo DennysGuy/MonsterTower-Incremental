@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://b0lsgfuw8bp58"]
+[gd_resource type="Resource" script_class="Ability" format=3 uid="uid://b0lsgfuw8bp58"]
 
 [ext_resource type="Resource" uid="uid://2jjptcjeyb01" path="res://src/Resources/AbilityStates/DashAttacks/BasicDashAttackBehavior.tres" id="1_4rfuh"]
 [ext_resource type="Script" uid="uid://bwqf7q51702b" path="res://src/Scripts/cability.gd" id="1_r4urb"]

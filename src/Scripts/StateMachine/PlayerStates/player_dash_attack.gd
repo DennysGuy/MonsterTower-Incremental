@@ -12,7 +12,7 @@ func enter() -> void:
 	parent.timer.wait_time = PlayerStats.player_stats["Dash Duration"]
 	parent.timer.start()
 	#unique
-	var selected_ability : Ability = PlayerStats.equipped_abilities["Dash Attack"]
+	var selected_ability : Ability = PlayerStats.get_equipped_ability("Dash Attack")
 	equipped_dash_attack = selected_ability.ability_behavior
 	equipped_dash_attack.on_enter(parent)
 	#-----------------------------

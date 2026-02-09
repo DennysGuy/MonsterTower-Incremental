@@ -18,7 +18,7 @@ var can_attack_cancel : bool = false
 func enter() -> void:
 	parent.can_knock_back = true
 
-	var class_ability : Ability = PlayerStats.equipped_abilities["Attack 1"]
+	var class_ability : Ability = PlayerStats.get_equipped_ability("Attack 1")
 	animation_name = class_ability.ability_name
 	parent.animation_player.play(animation_name)
 
