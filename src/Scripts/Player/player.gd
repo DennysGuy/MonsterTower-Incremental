@@ -40,6 +40,8 @@ var can_attack_cancel: bool = false
 @export var fall_state : State
 @export var climb_state : State
 @export var swing_pick_axe : State
+@export var air_attack : State
+@export var dash_attack : State
 
 func _ready() -> void:
 	super()

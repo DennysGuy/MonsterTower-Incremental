@@ -12,6 +12,7 @@ var player : Player
 const PICKUP_ITEM = preload("uid://cjrrqc2534diu")
 
 var can_pick_up : bool = false
+var player_in_range : bool = false
 var base_y : float
 var t : float = 0.0
 # Called when the node enters the scene tree for the first time.
@@ -39,6 +40,9 @@ func _process(delta: float) -> void:
 		position.y = base_y + sin(t) * hover_height
 
 func set_to_pick_up() -> void:
+	can_pick_up = true
+
+func pick_up_item() -> void:
 	if item is EnemyDrop:
 		if item.item_type == item.ITEM_TYPE.ORE:
 			can_pick_up = InventoryManager.add_item("Ore Inventory", item)
@@ -46,8 +50,7 @@ func set_to_pick_up() -> void:
 			can_pick_up = InventoryManager.add_item("Inventory", item)
 	else:
 		can_pick_up = InventoryManager.add_item("Inventory", item)
-		
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body is Player:
-		set_to_pick_up()
+	if body is Player and can_pick_up:
+		pick_up_item()

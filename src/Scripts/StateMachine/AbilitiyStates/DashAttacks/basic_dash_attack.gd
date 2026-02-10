@@ -11,6 +11,6 @@ func apply_physics() -> State:
 	return null
 
 func on_exiting_dash() -> void:
-	parent.invincibility_timer.wait_time = 1.0
+	parent.invincibility_timer.wait_time = 0.5
 	parent.invincibility_timer.start()
 	parent.dash_attack_collision_shape.disabled = true

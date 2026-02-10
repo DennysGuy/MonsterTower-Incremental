@@ -26,6 +26,7 @@ func _process(delta: float) -> void:
 
 func unlock_station() -> void:
 	texture = COOKING_RANGE
+	needed_unlocks.hide()
 	
 func check_if_can_cook() -> void:
 	if PlayerStats.facilities_unlocked["Cooking Station"]:

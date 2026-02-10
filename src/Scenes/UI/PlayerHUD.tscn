@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dysg5kffvxbql"]
+[gd_scene format=3 uid="uid://dysg5kffvxbql"]
 
 [ext_resource type="Texture2D" uid="uid://b2wm5vfsi7r26" path="res://Assets/HUD/PlayerHPBar_Bar.png" id="1_eowti"]
 [ext_resource type="Script" uid="uid://dsdtoyyjdprcp" path="res://src/Scripts/HUD/player_hud.gd" id="1_m8qo1"]
@@ -381,13 +381,13 @@ _data = {
 &"ShowBag": SubResource("Animation_g3oel")
 }
 
-[node name="HUD" type="CanvasLayer" node_paths=PackedStringArray("animation_player", "map_name_label", "expedition_timer")]
+[node name="HUD" type="CanvasLayer" unique_id=129498783 node_paths=PackedStringArray("animation_player", "map_name_label", "expedition_timer")]
 script = ExtResource("1_m8qo1")
 animation_player = NodePath("AnimationPlayer")
 map_name_label = NodePath("PlayerHUD/MapeName")
 expedition_timer = NodePath("PlayerHUD/ExpeditionTimer")
 
-[node name="PlayerHUD" type="Control" parent="."]
+[node name="PlayerHUD" type="Control" parent="." unique_id=104251794]
 z_index = 4096
 layout_mode = 3
 anchors_preset = 15
@@ -396,12 +396,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="PlayerHUD"]
+[node name="Panel" type="Panel" parent="PlayerHUD" unique_id=1938939217]
 layout_mode = 0
 offset_right = 155.0
 offset_bottom = 43.0
 
-[node name="PlayerHealthBar" type="TextureProgressBar" parent="PlayerHUD"]
+[node name="PlayerHealthBar" type="TextureProgressBar" parent="PlayerHUD" unique_id=1742179397]
 layout_mode = 0
 offset_left = 1.0
 offset_top = 1.0
@@ -411,7 +411,7 @@ value = 80.0
 texture_under = ExtResource("1_eowti")
 texture_progress = ExtResource("2_m8qo1")
 
-[node name="PlayerMPBar" type="TextureProgressBar" parent="PlayerHUD"]
+[node name="PlayerMPBar" type="TextureProgressBar" parent="PlayerHUD" unique_id=628640297]
 layout_mode = 0
 offset_left = 1.0
 offset_top = 1.0
@@ -421,7 +421,7 @@ step = 0.1
 value = 60.0
 texture_progress = ExtResource("3_nt012")
 
-[node name="HPLabel" type="Label" parent="PlayerHUD"]
+[node name="HPLabel" type="Label" parent="PlayerHUD" unique_id=683475156]
 layout_mode = 0
 offset_left = 66.0
 offset_top = 2.0
@@ -434,14 +434,14 @@ theme_override_font_sizes/font_size = 10
 text = "100/100"
 horizontal_alignment = 2
 
-[node name="Bag" parent="PlayerHUD" instance=ExtResource("6_g1bs5")]
+[node name="Bag" parent="PlayerHUD" unique_id=1015428559 instance=ExtResource("6_g1bs5")]
 layout_mode = 1
 offset_left = -491.0
 offset_top = -123.5
 offset_right = -300.00024
 offset_bottom = 51.5
 
-[node name="Bag2" parent="PlayerHUD" instance=ExtResource("9_bsjhc")]
+[node name="Bag2" parent="PlayerHUD" unique_id=1112681286 instance=ExtResource("9_bsjhc")]
 visible = false
 layout_mode = 1
 offset_left = 245.0
@@ -449,7 +449,7 @@ offset_top = -125.5
 offset_right = 435.99902
 offset_bottom = 49.5
 
-[node name="MapeName" type="Label" parent="PlayerHUD"]
+[node name="MapeName" type="Label" parent="PlayerHUD" unique_id=727908015]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -465,10 +465,10 @@ theme_override_font_sizes/font_size = 14
 text = "Floor 1 -1"
 horizontal_alignment = 2
 
-[node name="ExpeditionTimer" parent="PlayerHUD" instance=ExtResource("7_g3oel")]
+[node name="ExpeditionTimer" parent="PlayerHUD" unique_id=1374901185 instance=ExtResource("7_g3oel")]
 layout_mode = 1
 
-[node name="HuntQuota" type="RichTextLabel" parent="PlayerHUD"]
+[node name="HuntQuota" type="RichTextLabel" parent="PlayerHUD" unique_id=325974037]
 layout_mode = 0
 offset_left = 273.0
 offset_top = 50.0
@@ -479,7 +479,7 @@ theme_override_fonts/normal_font = ExtResource("9_jyqen")
 bbcode_enabled = true
 horizontal_alignment = 2
 
-[node name="MonstersLeft" type="RichTextLabel" parent="PlayerHUD"]
+[node name="MonstersLeft" type="RichTextLabel" parent="PlayerHUD" unique_id=130429852]
 layout_mode = 0
 offset_left = 460.0
 offset_top = 69.0
@@ -492,7 +492,7 @@ text = "
 "
 horizontal_alignment = 2
 
-[node name="XPAmountLabel" type="Label" parent="PlayerHUD"]
+[node name="XPAmountLabel" type="Label" parent="PlayerHUD" unique_id=2114485998]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -511,7 +511,7 @@ theme_override_font_sizes/font_size = 16
 text = "10/10 XP"
 horizontal_alignment = 2
 
-[node name="LevelLabel" type="Label" parent="PlayerHUD"]
+[node name="LevelLabel" type="Label" parent="PlayerHUD" unique_id=2004479704]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -529,7 +529,7 @@ theme_override_fonts/font = ExtResource("9_jyqen")
 theme_override_font_sizes/font_size = 16
 text = "Level 1"
 
-[node name="XPBar" type="TextureProgressBar" parent="PlayerHUD"]
+[node name="XPBar" type="TextureProgressBar" parent="PlayerHUD" unique_id=1748730190]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -546,7 +546,7 @@ step = 0.1
 texture_under = ExtResource("11_6ndbt")
 texture_progress = ExtResource("12_8d4p7")
 
-[node name="TopBlackBar" type="ColorRect" parent="PlayerHUD"]
+[node name="TopBlackBar" type="ColorRect" parent="PlayerHUD" unique_id=877174551]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -557,7 +557,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="BotBlackBar" type="ColorRect" parent="PlayerHUD"]
+[node name="BotBlackBar" type="ColorRect" parent="PlayerHUD" unique_id=1251153564]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -568,7 +568,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="BigNotificationLabel" type="Label" parent="PlayerHUD"]
+[node name="BigNotificationLabel" type="Label" parent="PlayerHUD" unique_id=759498820]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -587,7 +587,7 @@ theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("5_nt012")
 horizontal_alignment = 1
 
-[node name="Flash" type="ColorRect" parent="PlayerHUD"]
+[node name="Flash" type="ColorRect" parent="PlayerHUD" unique_id=1206488663]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -598,7 +598,7 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
-[node name="CanCookDish" type="RichTextLabel" parent="PlayerHUD"]
+[node name="CanCookDish" type="RichTextLabel" parent="PlayerHUD" unique_id=1220558369]
 visible = false
 layout_mode = 0
 offset_left = 168.0
@@ -610,7 +610,7 @@ theme_override_fonts/normal_font = ExtResource("9_jyqen")
 bbcode_enabled = true
 text = "[color=green]Dish can be cooked![/color]"
 
-[node name="CanSmeltBar" type="RichTextLabel" parent="PlayerHUD"]
+[node name="CanSmeltBar" type="RichTextLabel" parent="PlayerHUD" unique_id=1140705034]
 visible = false
 layout_mode = 0
 offset_left = 168.0
@@ -622,7 +622,7 @@ theme_override_fonts/normal_font = ExtResource("9_jyqen")
 bbcode_enabled = true
 text = "[color=red]Bar can be smelted![/color]"
 
-[node name="CanCraftSword" type="RichTextLabel" parent="PlayerHUD"]
+[node name="CanCraftSword" type="RichTextLabel" parent="PlayerHUD" unique_id=1805317882]
 visible = false
 layout_mode = 0
 offset_left = 168.0
@@ -634,7 +634,7 @@ theme_override_fonts/normal_font = ExtResource("9_jyqen")
 bbcode_enabled = true
 text = "[color=yellow]Sword can be crafted![/color]"
 
-[node name="StartHuntLabel" type="Label" parent="PlayerHUD"]
+[node name="StartHuntLabel" type="Label" parent="PlayerHUD" unique_id=915542649]
 layout_mode = 0
 offset_left = -459.0
 offset_top = 157.0
@@ -647,16 +647,12 @@ theme_override_font_sizes/font_size = 40
 text = "Hunt Challenge!"
 horizontal_alignment = 1
 
-[node name="SfxPlayer" parent="." instance=ExtResource("8_65fhw")]
+[node name="SfxPlayer" parent="." unique_id=2102076142 instance=ExtResource("8_65fhw")]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_g3oel")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1863759790]
+libraries/ = SubResource("AnimationLibrary_g3oel")
 
-[node name="BagAnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_jyqen")
-}
+[node name="BagAnimationPlayer" type="AnimationPlayer" parent="." unique_id=1372864879]
+libraries/ = SubResource("AnimationLibrary_jyqen")
 
 [editable path="PlayerHUD/Bag"]

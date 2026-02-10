@@ -21,6 +21,7 @@ func _ready() -> void:
 
 func unlock_station() -> void:
 	texture = SMELTING_STATION
+	needed_unlocks.hide()
 
 func check_if_can_smelt() -> void:
 	if PlayerStats.facilities_unlocked["Refinery Station"]:

@@ -7,6 +7,7 @@ class_name PlayerClimb extends State
 
 func enter() -> void:
 	super()
+	parent.can_double_jump = true
 	parent.can_knock_back = false
 	parent.velocity = Vector2.ZERO
 	if parent.stored_ladder:

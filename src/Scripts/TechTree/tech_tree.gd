@@ -61,9 +61,9 @@ func _exit_tree() -> void:
 		GameManager.player_can_move = true
 
 func _on_close_button_down() -> void:
+	TechTreeManager.check_needed_item_panel_for_purchase.emit()
 	if PlayerStats.show_cooking_station_unlock_animation or PlayerStats.show_refinery_station_unlock_animation:
 		TechTreeManager.unlock_station.emit()
-
 	sfx_player.play_sfx(CLOSE_UPGRADE_PC)
 	await get_tree().create_timer(0.3).timeout
 	queue_free()

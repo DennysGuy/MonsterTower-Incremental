@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://debxddfwr0kuy"]
+[gd_scene format=3 uid="uid://debxddfwr0kuy"]
 
 [ext_resource type="Texture2D" uid="uid://chhm5f5xmlr0j" path="res://Assets/Facilities/SmeltingStationContructionMode.png" id="1_elr15"]
 [ext_resource type="Script" uid="uid://b6efmxwkcji1r" path="res://src/Scripts/Facilities/smelting_station.gd" id="2_wbtfr"]
@@ -7,25 +7,25 @@
 [ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="5_cn6af"]
 [ext_resource type="PackedScene" uid="uid://dcgpcwx38gddm" path="res://src/Scenes/NewStarshire/DojoUnlockItem.tscn" id="6_6li4n"]
 
-[node name="TempSmeltingStation" type="Sprite2D"]
+[node name="TempSmeltingStation" type="Sprite2D" unique_id=1538243327]
 texture = ExtResource("1_elr15")
 script = ExtResource("2_wbtfr")
 
-[node name="NotificationIcon" parent="." instance=ExtResource("3_3w5lq")]
+[node name="NotificationIcon" parent="." unique_id=812539096 instance=ExtResource("3_3w5lq")]
 visible = false
 offset_left = -119.0
 offset_top = -106.0
 offset_right = -79.0
 offset_bottom = -66.0
 
-[node name="NeededUnlocks" type="Panel" parent="."]
+[node name="NeededUnlocks" type="Panel" parent="." unique_id=1353683]
 offset_left = -52.0
 offset_top = -25.0
 offset_right = 64.0
 offset_bottom = 11.0
 script = ExtResource("4_vlcsu")
 
-[node name="Needed" type="Label" parent="NeededUnlocks"]
+[node name="Needed" type="Label" parent="NeededUnlocks" unique_id=416530483]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -39,7 +39,7 @@ theme_override_fonts/font = ExtResource("5_cn6af")
 theme_override_font_sizes/font_size = 14
 text = "Node Unlock"
 
-[node name="GridContainer" type="GridContainer" parent="NeededUnlocks"]
+[node name="GridContainer" type="GridContainer" parent="NeededUnlocks" unique_id=1474602429]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -53,7 +53,7 @@ offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="UnlockItem" parent="NeededUnlocks/GridContainer" instance=ExtResource("6_6li4n")]
+[node name="UnlockItem" parent="NeededUnlocks/GridContainer" unique_id=1575028856 instance=ExtResource("6_6li4n")]
 layout_mode = 2
 name_of_needed = "Refinery Station"
 unlock_type = 1

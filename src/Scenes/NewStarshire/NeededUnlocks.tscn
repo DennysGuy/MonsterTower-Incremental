@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bke0eai7lf61j"]
 
-[ext_resource type="Script" path="res://src/Scripts/HUD/needed_unlocks.gd" id="1_52yn3"]
+[ext_resource type="Script" uid="uid://dix0hiiumsb7a" path="res://src/Scripts/HUD/needed_unlocks.gd" id="1_52yn3"]
 [ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="2_cxnhk"]
 [ext_resource type="PackedScene" uid="uid://dcgpcwx38gddm" path="res://src/Scenes/NewStarshire/DojoUnlockItem.tscn" id="3_ch86k"]
 

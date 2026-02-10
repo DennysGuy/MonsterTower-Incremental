@@ -35,6 +35,9 @@ signal add_tool_tip(tool_tip : ToolTip, on_right_half : bool)
 @warning_ignore("unused_signal")
 signal save_node_data
 
+@warning_ignore("unused_signal")
+signal check_needed_item_panel_for_purchase
+
 var currency : int = 0
 var current_prestige : int = 0
 
