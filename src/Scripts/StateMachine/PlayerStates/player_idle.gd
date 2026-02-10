@@ -13,6 +13,7 @@ class_name PlayerIdle extends State
 func enter() -> void:
 	parent.set_sword_texture(animation_name)
 	parent.can_knock_back = true
+	parent.can_double_jump = true
 	super()
 
 func exit() -> void:
@@ -23,6 +24,7 @@ func process_input(_event: InputEvent) -> State:
 	if Input.is_action_pressed("pan_cam_down") and Input.is_action_just_pressed("add_currency"):
 		parent.pass_through_floor()
 		parent.sfx_player.play_sfx(jump_sfx)
+		parent.can_double_jump = false
 		return fall_state
 	
 	if _event.is_action_pressed("add_currency"):

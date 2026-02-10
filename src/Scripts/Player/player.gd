@@ -19,6 +19,7 @@ class_name Player extends Entity
 @onready var dash_attack_hit_box: HitBox = $DashAttackHitBox
 
 @onready var can_dash_attack : bool = true
+@onready var can_double_jump : bool = true
 @onready var can_knock_back : bool = true
 @onready var can_spawn_gravestone : bool = true
 
@@ -186,3 +187,7 @@ func _on_dash_attack_hit_box_body_entered(body: Node2D) -> void:
 
 func _on_ability_cool_down_timer_timeout() -> void:
 	can_dash_attack = true
+
+
+func _on_invincibility_timer_timeout() -> void:
+	damageable = true

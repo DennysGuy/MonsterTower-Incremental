@@ -25,7 +25,6 @@ func exit() -> void:
 	parent.ability_cool_down_timer.start()
 	parent.clear_effect_texture()
 	parent.velocity = Vector2.ZERO
-	parent.damageable = true
 	parent.can_dash_attack = false
 	
 func process_input(_event: InputEvent) -> State:

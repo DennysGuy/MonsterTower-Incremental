@@ -28,6 +28,7 @@ TODO: We will add saves for classes as well
 	"Dash Duration" : 0.3,
 	"Invincibility Duration": 2.5,
 	"Jump Height" : 270.0,
+	"Double Jump Height": 400.0,
 	"Crit Chance" : 0.0,
 	"Defense" : 0.0,
 	"Crit Damage" : 1.5,
@@ -89,7 +90,8 @@ TODO: We will add saves for classes as well
 	"Refinery Station" : false,
 	"Bank": false,
 	"Arial Slash" : false,
-	"Dash Attack": false
+	"Dash Attack": false,
+	"Double Jump": false
 }
 
 
@@ -152,7 +154,8 @@ TODO: We will add saves for classes as well
 	"Refinery Accuracy 2": {"Level":0, "Unlocked": false},
 	"Ore Drop Chance 1": {"Level":0, "Unlocked": false},
 	"Ore Drop Chance 2": {"Level":0, "Unlocked": false},
-	"Invincibility Duration 1": {"Level":0, "Unlocked": false}
+	"Invincibility Duration 1": {"Level":0, "Unlocked": false},
+	"Double Jump": {"Level":0, "Unlocked": false}
 }
 
 @export var equipped_abilities : Dictionary = {
@@ -161,6 +164,7 @@ TODO: We will add saves for classes as well
 	"Attack 3" : "uid://7qd8qvg4bf73", #sword swing 3
 	"Dash Attack" : "uid://b0lsgfuw8bp58", #basic dash attack
 	"Air Attack" : "uid://bukiike6rf6pl", #basic air attack
+	"Double Jump" : "uid://rgwunwula5mv", #basic double jump
 	"Special Attack" : null
 }
 

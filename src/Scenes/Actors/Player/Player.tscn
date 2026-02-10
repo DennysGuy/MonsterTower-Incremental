@@ -36,6 +36,7 @@
 [ext_resource type="Texture2D" uid="uid://clgyjtsgxrepg" path="res://Assets/PlayerGraphics/TempPlayer/Pickaxes/PickaxeSwing_Effect.png" id="21_1twwa"]
 [ext_resource type="AudioStream" uid="uid://djgxyv4i65ob4" path="res://Audio/SFX/Player/Pickaxe_Swing_Strike.wav" id="22_0qbij"]
 [ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="25_1twwa"]
+[ext_resource type="Script" uid="uid://dcikimxctmmfd" path="res://src/Scripts/StateMachine/PlayerStates/player_double_jump.gd" id="25_1uq2g"]
 
 [sub_resource type="Animation" id="Animation_cq2ky"]
 resource_name = "AirAttack"
@@ -1203,12 +1204,13 @@ decel = 1500.0
 turn_resistance = 1600.0
 animation_name = "Run"
 
-[node name="Jump" type="Node" parent="StateMachine" unique_id=593572243 node_paths=PackedStringArray("idle_state", "fall_state", "air_attack")]
+[node name="Jump" type="Node" parent="StateMachine" unique_id=593572243 node_paths=PackedStringArray("idle_state", "fall_state", "air_attack", "double_jump")]
 script = ExtResource("5_jq5qv")
 idle_state = NodePath("../Idle")
 fall_state = NodePath("../Fall")
 jump_sfx = ExtResource("6_yawj3")
 air_attack = NodePath("../AirAttack")
+double_jump = NodePath("../DoubleJump")
 animation_name = "Jump"
 
 [node name="Climb" type="Node" parent="StateMachine" unique_id=98111772 node_paths=PackedStringArray("idle_state", "jump_state")]
@@ -1218,12 +1220,13 @@ jump_state = NodePath("../Jump")
 climb_sfx = ExtResource("9_8bj2u")
 animation_name = "Climb"
 
-[node name="Fall" type="Node" parent="StateMachine" unique_id=1066671632 node_paths=PackedStringArray("jump_state", "move_state", "idle_state", "climb_state", "air_attack")]
+[node name="Fall" type="Node" parent="StateMachine" unique_id=1066671632 node_paths=PackedStringArray("jump_state", "move_state", "idle_state", "climb_state", "double_jump", "air_attack")]
 script = ExtResource("6_k5pak")
 jump_state = NodePath("../Jump")
 move_state = NodePath("../Move")
 idle_state = NodePath("../Idle")
 climb_state = NodePath("../Climb")
+double_jump = NodePath("../DoubleJump")
 air_attack = NodePath("../AirAttack")
 animation_name = "Fall"
 
@@ -1287,6 +1290,14 @@ idle_state = NodePath("../Idle")
 pick_axe_swing = ExtResource("22_0qbij")
 animation_name = "PickaxeSwing"
 animation_duration = 0.5
+
+[node name="DoubleJump" type="Node" parent="StateMachine" unique_id=455124229 node_paths=PackedStringArray("idle_state", "fall_state", "air_attack")]
+script = ExtResource("25_1uq2g")
+idle_state = NodePath("../Idle")
+fall_state = NodePath("../Fall")
+jump_sfx = ExtResource("6_yawj3")
+air_attack = NodePath("../AirAttack")
+animation_name = "Jump"
 
 [node name="Timer" type="Timer" parent="." unique_id=1604863362]
 process_callback = 0
@@ -1375,6 +1386,7 @@ position = Vector2(-1, -15)
 
 [node name="SfxPlayer" parent="." unique_id=926725307 instance=ExtResource("25_1twwa")]
 
+[connection signal="timeout" from="InvincibilityTimer" to="." method="_on_invincibility_timer_timeout"]
 [connection signal="timeout" from="AbilityCoolDownTimer" to="." method="_on_ability_cool_down_timer_timeout"]
 [connection signal="body_entered" from="DashAttackHitBox" to="." method="_on_dash_attack_hit_box_body_entered"]
 [connection signal="area_entered" from="LadderDetector" to="." method="_on_ladder_detector_area_entered"]

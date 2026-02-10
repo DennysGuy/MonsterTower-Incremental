@@ -4,6 +4,7 @@ class_name ExitElevator extends Node2D
 @export var next_room_data : TowerEntranceData
 var player_in_range : bool = false
 var kill_quota_met : bool = false
+var doors_open : bool = false
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var move_to_next_room_label: Label = $MoveToNextRoomLabel
 
@@ -30,6 +31,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		
 		if kill_quota_met:
 			move_to_next_room_label.text = "Press 'E' to advance to next floor!"
+			doors_open = true
 			animation_player.play("DoorsOpen")
 		else:
 			move_to_next_room_label.text = "Meet the Floor's Kill Quota to advance."
@@ -45,7 +47,9 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body is Player:
 		player_in_range =false
 		move_to_next_room_label.hide()
-		animation_player.play("DoorsClose")
+		if doors_open:
+			animation_player.play("DoorsClose")
+			doors_open = false
 
 func unlock_next_floor() -> void:
 	PlayerStats.check_points_unlocked[next_room_data.floor_name] = true

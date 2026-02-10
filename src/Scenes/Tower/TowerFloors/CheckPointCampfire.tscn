@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://d150vkltffpjo"]
+[gd_scene format=3 uid="uid://d150vkltffpjo"]
 
 [ext_resource type="Texture2D" uid="uid://ddcxqkovhni5t" path="res://Assets/campfire_animated.png" id="1_17y3m"]
 [ext_resource type="Texture2D" uid="uid://dmmej8vyxugmf" path="res://Assets/campfire_base.png" id="2_uaah4"]
@@ -137,32 +137,30 @@ _data = {
 size = Vector2(1098, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o8htc"]
-size = Vector2(93, 39)
+size = Vector2(148, 39)
 
-[node name="CheckpointCampfire" type="Node2D" node_paths=PackedStringArray("campfire")]
+[node name="CheckpointCampfire" type="Node2D" unique_id=963641167 node_paths=PackedStringArray("campfire")]
 script = ExtResource("2_ytu7s")
 campfire = NodePath("Campfire")
 
-[node name="Campfire" type="Sprite2D" parent="."]
+[node name="Campfire" type="Sprite2D" parent="." unique_id=589371943]
 position = Vector2(0, -40)
 texture = ExtResource("2_uaah4")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_qlw6x")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1238040415]
+libraries/ = SubResource("AnimationLibrary_qlw6x")
 
-[node name="ExitAreaIcon" type="Sprite2D" parent="."]
+[node name="ExitAreaIcon" type="Sprite2D" parent="." unique_id=668544856]
 position = Vector2(-2, -58)
 texture = ExtResource("5_rmj6q")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=1722389878]
 position = Vector2(1, 0)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=417871750]
 shape = SubResource("RectangleShape2D_uaah4")
 
-[node name="ExitNotification" type="Label" parent="."]
+[node name="ExitNotification" type="Label" parent="." unique_id=1193961620]
 visible = false
 offset_left = -45.0
 offset_top = -82.0
@@ -172,11 +170,11 @@ theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("4_o8htc")
 text = "Press 'E' to exit Tower"
 
-[node name="ExitArea" type="Area2D" parent="."]
+[node name="ExitArea" type="Area2D" parent="." unique_id=212332129]
 position = Vector2(-1, -11)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitArea"]
-position = Vector2(28.5, -7.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitArea" unique_id=1491983743]
+position = Vector2(1, -7.5)
 shape = SubResource("RectangleShape2D_o8htc")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

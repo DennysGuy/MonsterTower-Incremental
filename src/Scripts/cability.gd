@@ -4,7 +4,7 @@ extends Resource
 
 @export_group("Meta Data")
 @export var ability_name : String #Maybe this can be the "Animation Name" as well?
-enum ABILITY_TYPE {STANDARD_ATTACK, AIR_ATTACK, DASH_ATTACK, SPECIAL_ATTACK}
+enum ABILITY_TYPE {STANDARD_ATTACK, AIR_ATTACK, DASH_ATTACK, DOUBLE_JUMP, SPECIAL_ATTACK}
 @export var ability_type : ABILITY_TYPE = ABILITY_TYPE.STANDARD_ATTACK
 @export_multiline var ability_description : String
 

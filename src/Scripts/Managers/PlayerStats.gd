@@ -23,6 +23,7 @@ const KNOCKBACK_FORCE : int = 300
 	"Dash Duration" : 0.3,
 	"Invincibility Duration": 2.5,
 	"Jump Height" : 270.0,
+	"Double Jump Height": 540.0,
 	"Crit Chance" : 0.0,
 	"Defense" : 0.0,
 	"Crit Damage" : 1.5,
@@ -58,7 +59,9 @@ var equipped_abilities : Dictionary = {
 	"Attack 3" : null, #sword swing 3
 	"Dash Attack" : null, #basic dash attack
 	"Air Attack" : null, #basic air attack
-	"Special Attack" : null
+	"Double Jump" : null, #basic double jump
+	"Special Attack" : null,
+
 }
 
 func get_equipped_ability(slot : String) -> Ability:
@@ -77,7 +80,8 @@ func equip_ability(ability : Ability, position : String) -> void:
 	"Refinery Station" : false,
 	"Bank": false,
 	"Arial Slash" : false,
-	"Dash Attack": false
+	"Dash Attack": false,
+	"Double Jump" : false
 }
 
 @onready var check_points_unlocked : Dictionary = {
@@ -184,7 +188,7 @@ func upgrade_player_stat(stat_name : String, interval : float, node_type : TechT
 	TechTreeManager.update_player_stats.emit()
 
 func check_needed_for_dojo() -> bool:
-	return PlayerStats.player_stats["Level"] >= 8 and PlayerStats.facilities_unlocked["Dash Attack"] and PlayerStats.facilities_unlocked["Arial Slash"]
+	return PlayerStats.player_stats["Level"] >= 8 and PlayerStats.facilities_unlocked["Dash Attack"] and PlayerStats.facilities_unlocked["Arial Slash"] and PlayerStats.facilities_unlocked["Double Jump"]
 
 func check_level_for_dojo() -> bool:
 	return PlayerStats.player_stats["Level"] >= 8

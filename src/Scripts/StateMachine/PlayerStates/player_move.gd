@@ -15,6 +15,7 @@ class_name PlayerMove extends State
 
 func enter() -> void:
 	super()
+	parent.can_double_jump = true
 	parent.can_knock_back = true
 	parent.set_sword_texture(animation_name)
 	parent.sfx_player.play_sfx(move_sfx)

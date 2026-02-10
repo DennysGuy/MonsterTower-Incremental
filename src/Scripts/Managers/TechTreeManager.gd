@@ -93,7 +93,8 @@ enum TECH_NODE_TYPE {ABILITY, FACILITY}
 	"Refinery Accuracy 2": 0,
 	"Ore Drop Chance 1": 0.0,
 	"Ore Drop Chance 2": 0.0,
-	"Invincibility Duration 1":0.0
+	"Invincibility Duration 1":0.0,
+	"Double Jump" : 0.0
 }
 
 @onready var warrior_tech_nodes : Dictionary = {

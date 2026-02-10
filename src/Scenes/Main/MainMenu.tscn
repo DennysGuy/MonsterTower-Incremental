@@ -188,6 +188,7 @@ libraries/ = SubResource("AnimationLibrary_gwjs1")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1807827256]
 stream = ExtResource("4_fcgj2")
+bus = &"Music"
 
 [connection signal="button_up" from="NewGame" to="." method="_on_button_button_up"]
 [connection signal="button_up" from="Continue" to="." method="_on_continue_button_up"]
