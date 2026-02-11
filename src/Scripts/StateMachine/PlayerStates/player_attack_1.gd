@@ -36,8 +36,6 @@ func enter() -> void:
 		)
 
 		parent.velocity.x = attack_velocity
-	else:
-		parent.velocity.x = 80 * GameManager.set_player_box_direction(parent.sprite.flip_h)
 
 	# Clamp so sprint/dash doesn't slide forever
 

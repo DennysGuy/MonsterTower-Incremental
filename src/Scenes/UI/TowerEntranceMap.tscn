@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bgurt44iah13x"]
+[gd_scene format=3 uid="uid://bgurt44iah13x"]
 
 [ext_resource type="Texture2D" uid="uid://dswsscclwdwya" path="res://Assets/TowerMap/TowerMap.png" id="1_bsb7l"]
 [ext_resource type="Script" uid="uid://b6emfts3ijh7c" path="res://src/Scripts/tower_entrance_map.gd" id="1_p02a1"]
@@ -12,7 +12,7 @@
 [ext_resource type="Resource" uid="uid://dbb7k6hptjvyy" path="res://src/Resources/TowerEntranceData/Floor1-2.tres" id="8_oavpw"]
 [ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="10_grwys"]
 
-[node name="TowerEntranceMap" type="Control"]
+[node name="TowerEntranceMap" type="Control" unique_id=1693392128]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -21,7 +21,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_p02a1")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="Panel" parent="." unique_id=2075770978]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -29,7 +29,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=285373828]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -45,7 +45,7 @@ grow_vertical = 2
 texture = ExtResource("1_bsb7l")
 expand_mode = 1
 
-[node name="FloorDescriptionPanel" type="Control" parent="."]
+[node name="FloorDescriptionPanel" type="Control" parent="." unique_id=541254059]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -59,7 +59,7 @@ offset_bottom = 70.0
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="PanelBG" type="TextureRect" parent="FloorDescriptionPanel"]
+[node name="PanelBG" type="TextureRect" parent="FloorDescriptionPanel" unique_id=782988647]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -74,7 +74,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_i80t5")
 
-[node name="FloorTitle" type="Label" parent="FloorDescriptionPanel"]
+[node name="FloorTitle" type="Label" parent="FloorDescriptionPanel" unique_id=681103279]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -89,7 +89,7 @@ theme_override_fonts/font = ExtResource("3_m7ed0")
 theme_override_font_sizes/font_size = 14
 horizontal_alignment = 2
 
-[node name="BiomeTitle" type="Label" parent="FloorDescriptionPanel"]
+[node name="BiomeTitle" type="Label" parent="FloorDescriptionPanel" unique_id=529956496]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -104,14 +104,14 @@ theme_override_fonts/font = ExtResource("3_m7ed0")
 theme_override_font_sizes/font_size = 12
 horizontal_alignment = 2
 
-[node name="ColorRect" type="ColorRect" parent="FloorDescriptionPanel"]
+[node name="ColorRect" type="ColorRect" parent="FloorDescriptionPanel" unique_id=1274054533]
 layout_mode = 0
 offset_left = 76.0
 offset_top = 46.0
 offset_right = 222.0
 offset_bottom = 127.0
 
-[node name="BiomePreview" type="TextureRect" parent="FloorDescriptionPanel"]
+[node name="BiomePreview" type="TextureRect" parent="FloorDescriptionPanel" unique_id=1955106564]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -126,14 +126,14 @@ grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 1
 
-[node name="AreaButtonSelector" type="GridContainer" parent="FloorDescriptionPanel"]
+[node name="AreaButtonSelector" type="GridContainer" parent="FloorDescriptionPanel" unique_id=1815785669]
 layout_mode = 0
 offset_left = 18.0
 offset_top = 41.0
 offset_right = 77.0
 offset_bottom = 120.0
 
-[node name="HuntNotification" type="Control" parent="FloorDescriptionPanel"]
+[node name="HuntNotification" type="Control" parent="FloorDescriptionPanel" unique_id=541141210]
 visible = false
 anchors_preset = 0
 offset_left = 92.0
@@ -142,7 +142,7 @@ offset_right = 213.0
 offset_bottom = 154.0
 mouse_filter = 2
 
-[node name="HuntNotification" type="TextureRect" parent="FloorDescriptionPanel/HuntNotification"]
+[node name="HuntNotification" type="TextureRect" parent="FloorDescriptionPanel/HuntNotification" unique_id=922190577]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -156,7 +156,7 @@ rotation = 0.21067768
 texture = ExtResource("6_ol3te")
 expand_mode = 1
 
-[node name="HuntNotification2" type="TextureRect" parent="FloorDescriptionPanel/HuntNotification"]
+[node name="HuntNotification2" type="TextureRect" parent="FloorDescriptionPanel/HuntNotification" unique_id=2005703738]
 layout_mode = 0
 offset_left = -4.0000005
 offset_right = 16.606506
@@ -165,7 +165,7 @@ rotation = -0.21967472
 texture = ExtResource("6_ol3te")
 expand_mode = 1
 
-[node name="HuntSelection" type="Button" parent="FloorDescriptionPanel"]
+[node name="HuntSelection" type="Button" parent="FloorDescriptionPanel" unique_id=1192990822]
 visible = false
 layout_mode = 0
 offset_left = 108.0
@@ -178,7 +178,7 @@ theme_override_fonts/font = ExtResource("10_grwys")
 theme_override_font_sizes/font_size = 13
 text = "Hunt Challenge"
 
-[node name="Label" type="Label" parent="FloorDescriptionPanel"]
+[node name="HuntTimeLabel" type="Label" parent="FloorDescriptionPanel" unique_id=199934377]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 167.0
@@ -190,7 +190,7 @@ theme_override_font_sizes/font_size = 16
 text = "Hunt Challenge 
 Time Limit: 40 sec"
 
-[node name="Floor1-1Entrance" parent="." instance=ExtResource("6_4erf6")]
+[node name="Floor1-1Entrance" parent="." unique_id=431963234 instance=ExtResource("6_4erf6")]
 layout_mode = 1
 offset_left = 11.0
 offset_top = 66.0
@@ -198,7 +198,7 @@ offset_right = 26.0
 offset_bottom = 79.0
 tower_entrance_data = ExtResource("7_4erf6")
 
-[node name="Floor1-2Entrance" parent="." instance=ExtResource("6_4erf6")]
+[node name="Floor1-2Entrance" parent="." unique_id=278788499 instance=ExtResource("6_4erf6")]
 layout_mode = 1
 offset_left = -1.0
 offset_top = 55.0
@@ -206,7 +206,7 @@ offset_right = 14.0
 offset_bottom = 68.0
 tower_entrance_data = ExtResource("8_oavpw")
 
-[node name="Floor1-3Entrance" parent="." instance=ExtResource("6_4erf6")]
+[node name="Floor1-3Entrance" parent="." unique_id=1783519300 instance=ExtResource("6_4erf6")]
 layout_mode = 1
 offset_left = -23.0
 offset_top = 47.0
@@ -214,7 +214,7 @@ offset_right = -8.0
 offset_bottom = 60.0
 tower_entrance_data = ExtResource("8_jtccv")
 
-[node name="Close" type="Button" parent="."]
+[node name="Close" type="Button" parent="." unique_id=1654347764]
 layout_mode = 0
 offset_left = 516.0
 offset_top = 48.0
@@ -226,7 +226,7 @@ theme_override_fonts/font = ExtResource("4_fqkg3")
 theme_override_font_sizes/font_size = 14
 text = "Close"
 
-[node name="Title" type="Label" parent="."]
+[node name="Title" type="Label" parent="." unique_id=1295388764]
 layout_mode = 0
 offset_left = 76.0
 offset_top = 46.0
@@ -236,7 +236,7 @@ theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("3_m7ed0")
 text = "The Tower"
 
-[node name="Title2" type="Label" parent="."]
+[node name="Title2" type="Label" parent="." unique_id=2096882825]
 layout_mode = 0
 offset_left = 243.0
 offset_top = 49.0
@@ -247,7 +247,7 @@ theme_override_fonts/font = ExtResource("3_m7ed0")
 theme_override_font_sizes/font_size = 12
 text = "Select an Entrance Point..."
 
-[node name="Title3" type="Label" parent="."]
+[node name="Title3" type="Label" parent="." unique_id=491032269]
 layout_mode = 0
 offset_left = 155.0
 offset_top = 301.0
@@ -259,7 +259,7 @@ theme_override_font_sizes/font_size = 16
 text = "~Items in inventory will be moved to bank if possible~"
 horizontal_alignment = 1
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=207978473]
 layout_mode = 0
 offset_left = 368.0
 offset_top = 94.0
@@ -271,7 +271,7 @@ theme_override_font_sizes/font_size = 12
 text = "Expedition 
 Points"
 
-[node name="TimeLimit" type="Label" parent="."]
+[node name="TimeLimit" type="Label" parent="." unique_id=1942341857]
 layout_mode = 0
 offset_left = 78.0
 offset_top = 67.0
@@ -282,14 +282,14 @@ theme_override_fonts/font = ExtResource("4_fqkg3")
 theme_override_font_sizes/font_size = 14
 text = "Expedition Time Limit: 1130 seconds"
 
-[node name="ModeDescription" type="Control" parent="."]
+[node name="ModeDescription" type="Control" parent="." unique_id=927368343]
 anchors_preset = 0
 offset_left = 75.0
 offset_top = 109.0
 offset_right = 277.0
 offset_bottom = 298.0
 
-[node name="ModeDescriptionLabel" type="RichTextLabel" parent="ModeDescription"]
+[node name="ModeDescriptionLabel" type="RichTextLabel" parent="ModeDescription" unique_id=1443017508]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -306,7 +306,7 @@ theme_override_constants/outline_size = 5
 theme_override_fonts/normal_font = ExtResource("10_grwys")
 bbcode_enabled = true
 
-[node name="GoToFloor" type="Button" parent="ModeDescription"]
+[node name="GoToFloor" type="Button" parent="ModeDescription" unique_id=798680168]
 layout_mode = 0
 offset_left = 162.0
 offset_top = 3.0

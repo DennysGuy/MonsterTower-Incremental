@@ -20,6 +20,7 @@ func _process(delta: float) -> void:
 
 func _on_button_up() -> void:
 	SignalBus.store_entrance_data.emit(tower_entrance_data)
+	SignalBus.hide_hunt_time_label.emit()
 
 func load_floor_data() -> void:
 	if tower_entrance_data:

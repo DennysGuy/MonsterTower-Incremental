@@ -12,6 +12,7 @@ var stored_entrance_data : TowerEntranceData
 @onready var time_limit: Label = $TimeLimit
 @onready var area_button_selector: GridContainer = $FloorDescriptionPanel/AreaButtonSelector
 
+@onready var hunt_time_label: Label = $FloorDescriptionPanel/HuntTimeLabel
 
 @onready var hunt_selection: Button = $FloorDescriptionPanel/HuntSelection
 @onready var mode_description_label: RichTextLabel = $ModeDescription/ModeDescriptionLabel
@@ -23,8 +24,10 @@ func _ready() -> void:
 	SignalBus.store_entrance_data.connect(store_entrance_data)
 	SignalBus.update_entrance_map.connect(update_entrance_map)
 	SignalBus.update_mode_description_to_expedition.connect(set_mode_description_as_expedition)
+	SignalBus.hide_hunt_time_label.connect(hide_hunt_time_label)
 	time_limit.text = "Expedition Time Limit:\n%s Seconds" % [int(PlayerStats.player_stats["Expedition Time"])]
-
+	hunt_time_label.hide()
+	hunt_time_label.text = "Hunt Challenge Time Limit: %s seconds" % [int(PlayerStats.player_stats["Hunt Time"])]
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
@@ -79,6 +82,13 @@ func _on_hunt_selection_button_up() -> void:
 	set_mode_description_as_hunt_challenge()
 	GameManager.spawn_location = 0
 	GameManager.hunt_challenge_selected = true
+	show_hunt_time_label()
+	
+func show_hunt_time_label() -> void:
+	hunt_time_label.show()
+
+func hide_hunt_time_label() -> void:
+	hunt_time_label.hide()
 
 func set_mode_description_as_expedition() -> void:
 	mode_description_label.text = "	   ~Expedition~

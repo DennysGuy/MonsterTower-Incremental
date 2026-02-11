@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://babxiw53a0sh0"]
+[gd_scene format=3 uid="uid://babxiw53a0sh0"]
 
 [ext_resource type="Texture2D" uid="uid://gh8km47lxx8g" path="res://Assets/TowerMap/FloorButton.png" id="1_j8eha"]
 [ext_resource type="Script" uid="uid://dobg0d3ijpkqx" path="res://src/Scripts/HUD/tower_entrance_button.gd" id="2_n8y1q"]
@@ -65,7 +65,7 @@ _data = {
 &"RESET": SubResource("Animation_hysf0")
 }
 
-[node name="TowerEntranceButton" type="TextureButton"]
+[node name="TowerEntranceButton" type="TextureButton" unique_id=1120352319]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -81,15 +81,13 @@ mouse_default_cursor_shape = 2
 texture_normal = ExtResource("1_j8eha")
 script = ExtResource("2_n8y1q")
 
-[node name="Lockon" type="Sprite2D" parent="."]
+[node name="Lockon" type="Sprite2D" parent="." unique_id=1283387083]
 position = Vector2(7.5000076, 6.999996)
 scale = Vector2(0.80000025, 0.84615314)
 texture = ExtResource("3_kmufp")
 hframes = 2
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_rdig5")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=980565295]
+libraries/ = SubResource("AnimationLibrary_rdig5")
 
 [connection signal="button_up" from="." to="." method="_on_button_up"]
