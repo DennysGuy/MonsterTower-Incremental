@@ -12,6 +12,8 @@ func enter() -> void:
 	parent.can_knock_back = true
 	parent.sfx_player.play_sfx(jump_sfx)
 	parent.set_sword_texture(animation_name)
+
+	parent.velocity.y = 0
 	parent.velocity.y -= PlayerStats.player_stats["Jump Height"]
 
 func exit() -> void:
@@ -19,6 +21,7 @@ func exit() -> void:
 
 func process_input(_event: InputEvent) -> State:
 	if Input.is_action_just_pressed("add_currency") and PlayerStats.facilities_unlocked["Double Jump"] and parent.can_double_jump:
+		parent.jump_buffer_timer = parent.jump_buffer_wait_time
 		return double_jump
 	return null
 

@@ -8,6 +8,8 @@ class_name PlayerFall extends State
 @export var air_attack : State
 func enter() -> void:
 	super()
+	if not parent.was_on_ledge and not parent.is_on_floor():
+		parent.coyote_timer = parent.coyote_wait_time
 	parent.can_knock_back = true
 	parent.set_sword_texture(animation_name)
 	
@@ -15,10 +17,15 @@ func exit() -> void:
 	pass
 
 func process_input(_event: InputEvent) -> State:
-	if Input.is_action_just_pressed("add_currency") and PlayerStats.facilities_unlocked["Double Jump"] and parent.can_double_jump:
-		print("BILBO OOCH")
-		return double_jump
+	if Input.is_action_just_pressed("add_currency"):
+		if PlayerStats.facilities_unlocked["Double Jump"] and parent.can_double_jump:
+			return double_jump
+		else:
+			parent.jump_buffer_timer = parent.jump_buffer_wait_time
 	
+	if Input.is_action_just_pressed("add_currency") and parent.coyote_timer > 0:
+		return jump_state
+
 	return null
 
 func process_frame(_delta: float) -> State:
@@ -42,12 +49,12 @@ func process_physics(_delta: float) -> State:
 	
 	if parent.is_on_floor():
 		parent.set_collision_mask_value(5, true)
-		if Input.is_action_pressed("add_currency"):
+		if parent.jump_buffer_timer > 0:
+			parent.jump_buffer_timer = 0
 			return jump_state
+		if movement != 0:
+			return move_state
 		else:
-			if movement != 0:
-				return move_state
-			else:
-				return idle_state
+			return idle_state
 	
 	return null

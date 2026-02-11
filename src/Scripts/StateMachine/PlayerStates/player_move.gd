@@ -15,6 +15,7 @@ class_name PlayerMove extends State
 
 func enter() -> void:
 	super()
+	parent.was_on_ledge = true
 	parent.can_double_jump = true
 	parent.can_knock_back = true
 	parent.set_sword_texture(animation_name)
@@ -24,20 +25,26 @@ func exit() -> void:
 	parent.sfx_player.stop()
 
 func process_input(_event: InputEvent) -> State:
-	if Input.is_action_pressed("add_currency") and parent.is_on_floor():
-		return jump_state
+	if Input.is_action_just_pressed("add_currency") and parent.is_on_floor():
+		parent.jump_buffer_timer = parent.jump_buffer_wait_time
 	return null
 
 func process_physics(_delta: float) -> State:
-
+	
+	if !GameManager.player_can_move:
+		return idle_state
+	
+	if parent.jump_buffer_timer > 0 and parent.is_on_floor():
+		parent.jump_buffer_timer = 0
+		return jump_state
+	
 	if Input.is_action_just_pressed("swing_sword"):
 		if PlayerStats.facilities_unlocked["Dash Attack"] and parent.can_dash_attack:
 			return dash_attack_state
 		else:
 			return attack_1_state
 
-	if !GameManager.player_can_move:
-		return idle_state
+
 
 	var input := Input.get_axis("pan_cam_left", "pan_cam_right")
 	var max_speed = PlayerStats.player_stats["Movement Speed"]
@@ -82,6 +89,7 @@ func process_physics(_delta: float) -> State:
 
 	# --- State transitions ---
 	if !parent.is_on_floor():
+		parent.was_on_ledge = false
 		return fall_state
 
 	if abs(parent.velocity.x) < 5.0:

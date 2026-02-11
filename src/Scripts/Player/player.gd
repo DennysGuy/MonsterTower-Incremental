@@ -33,7 +33,15 @@ var prev_move_speed : float
 var mining_area_position : Vector2
 var hit_box_position : Vector2
 
+var jump_buffer_timer : float = 0.0
+var jump_buffer_wait_time : float =0.17
+
+var coyote_timer : float = 0.0
+var coyote_wait_time : float = 0.17 
+
 var can_attack_cancel: bool = false
+
+var was_on_ledge : bool = true
 
 @export var idle_state : State
 @export var jump_state : State
@@ -56,6 +64,11 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	super(delta)
+	if jump_buffer_timer > 0:
+		jump_buffer_timer -= delta
+		
+	if coyote_timer > 0:
+		coyote_timer -= delta
 
 func _unhandled_input(event: InputEvent) -> void:
 	super(event)

@@ -22,6 +22,9 @@ func exit() -> void:
 	parent.set_collision_mask_value(5, true)
 
 func process_input(_event: InputEvent) -> State:
+	if Input.is_action_just_pressed("add_currency"):
+		parent.jump_buffer_timer = parent.jump_buffer_wait_time
+		
 	return null
 
 func process_frame(_delta: float) -> State:
@@ -42,7 +45,7 @@ func process_physics(_delta: float) -> State:
 			parent.sfx_player.play_sfx(climb_sfx)
 		parent.animation_player.play()
 	
-	if Input.is_action_just_pressed("add_currency"):
+	if parent.jump_buffer_timer > 0:
 		return jump_state
 	
 	
