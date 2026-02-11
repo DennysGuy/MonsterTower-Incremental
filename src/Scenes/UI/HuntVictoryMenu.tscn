@@ -1,15 +1,15 @@
-[gd_scene format=3 uid="uid://dc22m3kbxdi50"]
+[gd_scene format=3 uid="uid://c0iswrbu8opac"]
 
-[ext_resource type="Script" uid="uid://b3dtngntwfdw8" path="res://src/Scripts/HUD/expedition_results_screen.gd" id="1_qg4s7"]
-[ext_resource type="Shader" uid="uid://bg20bvdcwspb" path="res://src/Scenes/UI/ExpeditionResultsScreen.gdshader" id="2_cbct7"]
-[ext_resource type="Texture2D" uid="uid://dejy6ivtgw1rl" path="res://Assets/HUD/TempResultsScreenBG.png" id="3_qyln5"]
-[ext_resource type="Texture2D" uid="uid://mmjc1ci2ofjv" path="res://Assets/HUD/TempResultsScreen_Panel.png" id="4_qyln5"]
-[ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="5_xwhdp"]
-[ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="7_ee4bn"]
-[ext_resource type="FontFile" uid="uid://qgj228ltdttv" path="res://Assets/Fonts/alagard.ttf" id="7_xwhdp"]
+[ext_resource type="Script" uid="uid://b0m83mwws0w4f" path="res://src/Scripts/HUD/hunt_victory_menu.gd" id="1_puutj"]
+[ext_resource type="Shader" uid="uid://bg20bvdcwspb" path="res://src/Scenes/UI/ExpeditionResultsScreen.gdshader" id="2_r81t8"]
+[ext_resource type="Texture2D" uid="uid://dejy6ivtgw1rl" path="res://Assets/HUD/TempResultsScreenBG.png" id="3_2dtia"]
+[ext_resource type="Texture2D" uid="uid://mmjc1ci2ofjv" path="res://Assets/HUD/TempResultsScreen_Panel.png" id="4_2r4gk"]
+[ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="5_3x4hy"]
+[ext_resource type="FontFile" uid="uid://qgj228ltdttv" path="res://Assets/Fonts/alagard.ttf" id="6_py6ow"]
+[ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="7_v0yu8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_47265"]
-shader = ExtResource("2_cbct7")
+shader = ExtResource("2_r81t8")
 shader_parameter/direction = Vector2(1, 1)
 shader_parameter/speed_scale = 0.04
 
@@ -222,7 +222,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_qg4s7")
+script = ExtResource("1_puutj")
 
 [node name="BG" type="TextureRect" parent="." unique_id=938971772]
 texture_repeat = 2
@@ -233,7 +233,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_qyln5")
+texture = ExtResource("3_2dtia")
 stretch_mode = 2
 
 [node name="ResultsPanel" type="TextureRect" parent="." unique_id=1103109597]
@@ -245,7 +245,7 @@ offset_top = 360.0
 offset_bottom = 360.0006
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_qyln5")
+texture = ExtResource("4_2r4gk")
 
 [node name="TitlePanel" type="Panel" parent="ResultsPanel" unique_id=1608003080]
 layout_mode = 1
@@ -276,7 +276,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 7
-theme_override_fonts/font = ExtResource("5_xwhdp")
+theme_override_fonts/font = ExtResource("5_3x4hy")
 theme_override_font_sizes/font_size = 18
 text = "Results"
 
@@ -295,9 +295,9 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 7
-theme_override_fonts/font = ExtResource("5_xwhdp")
+theme_override_fonts/font = ExtResource("5_3x4hy")
 theme_override_font_sizes/font_size = 15
-text = "Last Floor"
+text = "Victory!"
 
 [node name="GoalPanel" type="Panel" parent="ResultsPanel" unique_id=1080228483]
 layout_mode = 1
@@ -328,9 +328,9 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("5_xwhdp")
-theme_override_font_sizes/font_size = 20
-text = "Floor Reached: Temp Biome - Floor 1"
+theme_override_fonts/font = ExtResource("5_3x4hy")
+theme_override_font_sizes/font_size = 16
+text = "Hunt Challenge - Floor 1-1"
 
 [node name="InventoryPanel" type="Panel" parent="ResultsPanel" unique_id=2013247508]
 layout_mode = 1
@@ -346,152 +346,7 @@ offset_bottom = 96.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="InventoryLabel" type="Label" parent="ResultsPanel/InventoryPanel" unique_id=1192868822]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -144.0
-offset_top = -53.5
-offset_right = -80.0
-offset_bottom = -37.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("5_xwhdp")
-theme_override_font_sizes/font_size = 16
-text = "Inventory"
-
-[node name="OreBagLabel" type="Label" parent="ResultsPanel/InventoryPanel" unique_id=2018942112]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 9.5
-offset_top = -53.5
-offset_right = 73.5
-offset_bottom = -37.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("5_xwhdp")
-theme_override_font_sizes/font_size = 16
-text = "Ore Bag"
-
-[node name="InventoryContainer" type="GridContainer" parent="ResultsPanel/InventoryPanel" unique_id=2136584720]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -145.0
-offset_top = 20.0
-offset_right = -7.5
-offset_bottom = 55.0
-grow_horizontal = 2
-columns = 8
-
-[node name="OreInventoryContainer" type="GridContainer" parent="ResultsPanel/InventoryPanel" unique_id=1084190204]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = 10.5
-offset_top = 20.0
-offset_right = 148.0
-offset_bottom = 55.0
-grow_horizontal = 2
-columns = 8
-
-[node name="BankLabel" type="Label" parent="ResultsPanel/InventoryPanel" unique_id=554801765]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -143.5
-offset_top = 0.5
-offset_right = -112.5
-offset_bottom = 16.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("5_xwhdp")
-theme_override_font_sizes/font_size = 16
-text = "Bank"
-
-[node name="BankNotice" type="Label" parent="ResultsPanel/InventoryPanel" unique_id=1842469050]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -65.5
-offset_top = 25.99997
-offset_right = 65.5
-offset_bottom = 40.99997
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("5_xwhdp")
-theme_override_font_sizes/font_size = 16
-text = "Bank Account Locked!"
-
-[node name="BankContainer" type="GridContainer" parent="ResultsPanel/InventoryPanel" unique_id=1015440615]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -144.0
-offset_top = 74.0
-offset_right = 143.0
-offset_bottom = 106.0
-grow_horizontal = 2
-columns = 8
-
-[node name="TipsAndTricks" type="Label" parent="ResultsPanel/InventoryPanel" unique_id=586831154]
-layout_mode = 0
-offset_left = -38.0
-offset_top = 128.0
-offset_right = 355.0
-offset_bottom = 151.0
-theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("5_xwhdp")
-text = "Can't reach a ledge? Upgrade your jump!"
-horizontal_alignment = 1
-
 [node name="ToTown" type="Button" parent="ResultsPanel" unique_id=337593742]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 30.0
-offset_top = -108.0
-offset_right = 87.0
-offset_bottom = -88.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_default_cursor_shape = 2
-theme_override_constants/outline_size = 6
-theme_override_fonts/font = ExtResource("7_xwhdp")
-theme_override_font_sizes/font_size = 12
-disabled = true
-text = "To Town"
-
-[node name="NewRun" type="Button" parent="ResultsPanel" unique_id=558607950]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -500,24 +355,23 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = 90.0
 offset_top = -108.0
-offset_right = 149.0
+offset_right = 147.0
 offset_bottom = -88.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_default_cursor_shape = 2
 theme_override_constants/outline_size = 6
-theme_override_fonts/font = ExtResource("7_xwhdp")
+theme_override_fonts/font = ExtResource("6_py6ow")
 theme_override_font_sizes/font_size = 12
-disabled = true
-text = "Go Again!"
+text = "To Town"
 
 [node name="TopRect" type="ColorRect" parent="." unique_id=785934542]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -180.0
-offset_bottom = -180.0
+offset_top = -360.0
+offset_bottom = -360.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
@@ -527,8 +381,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 180.0
-offset_bottom = 180.00037
+offset_top = 360.0
+offset_bottom = 360.00037
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
@@ -536,7 +390,6 @@ color = Color(0, 0, 0, 1)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=997374502]
 libraries/ = SubResource("AnimationLibrary_ra32m")
 
-[node name="SfxPlayer" parent="." unique_id=576417651 instance=ExtResource("7_ee4bn")]
+[node name="SfxPlayer" parent="." unique_id=576417651 instance=ExtResource("7_v0yu8")]
 
 [connection signal="button_up" from="ResultsPanel/ToTown" to="." method="_on_to_town_button_up"]
-[connection signal="button_up" from="ResultsPanel/NewRun" to="." method="_on_new_run_button_up"]

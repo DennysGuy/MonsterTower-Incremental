@@ -43,6 +43,8 @@ func _ready() -> void:
 	GameManager.previous_map_data = tower_entrance_data
 	SignalBus.move_to_next_room.connect(move_to_next_room)
 	SignalBus.return_to_starshire.connect(go_to_starshire)
+	SignalBus.go_to_victory_hunt_menu.connect(go_to_victory_menu)
+	SignalBus.go_to_failure_hunt_menu.connect(go_to_failure_menu)
 	SignalBus.update_kill_quota.connect(update_hunt_quota)
 	hud.map_name_label.text = map_name
 	
@@ -151,6 +153,38 @@ func go_to_starshire() -> void:
 
 	if tree != null:
 		tree.change_scene_to_file("res://src/Scenes/UI/ExpeditionResultsScreen.tscn")
+
+func go_to_victory_menu() -> void:
+	MusicPlayer.stop_player(true)
+	player.damageable = false
+	GameManager.hunt_challenge_selected = false
+	GameManager.expedition_timer_started = false
+	
+	var tree := get_tree()
+	if tree == null:
+		return
+	
+	hud.animation_player.play("CloseOut")
+	await tree.create_timer(1.0).timeout
+
+	if tree != null:
+		tree.change_scene_to_file("uid://c0iswrbu8opac")	
+
+func go_to_failure_menu() -> void:
+	MusicPlayer.stop_player(true)
+	player.damageable = false
+	GameManager.hunt_challenge_selected = false
+	GameManager.expedition_timer_started = false
+	
+	var tree := get_tree()
+	if tree == null:
+		return
+	
+	hud.animation_player.play("CloseOut")
+	await tree.create_timer(1.0).timeout
+
+	if tree != null:
+		tree.change_scene_to_file("uid://du5klyuwi6so2")	
 
 func move_to_next_room() -> void:
 	if not next_room_path:

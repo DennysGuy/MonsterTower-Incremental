@@ -22,7 +22,6 @@ func _ready() -> void:
 	if monster_spawn_node:
 		if GameManager.hunt_challenge_selected:
 			hud.animation_player.play("StartHuntChallnge")
-
 		else:
 			SignalBus.update_monsters_left.emit("Campfires Discovered: %s/%s" % [tower_entrance_data.camp_fires_reached, tower_entrance_data.total_camp_fires],false)
 	
@@ -33,7 +32,7 @@ func _ready() -> void:
 		var monster_count : int = monster_spawn_node.get_children().size()
 		SignalBus.update_monsters_left.emit("Monsters left: %s" % [monster_count],false)
 		player.damageable = false
-		await get_tree().create_timer(0.25).timeout
+		await get_tree().create_timer(0.5).timeout
 		hud.set_hunt_timer()
 		hud.expedition_timer.update_timer_label()
 		hud.animation_player.play("StartHuntChallenge")

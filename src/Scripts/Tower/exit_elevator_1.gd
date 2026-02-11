@@ -18,7 +18,7 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("interact") and player_in_range and kill_quota_met:
 		if GameManager.hunt_challenge_selected:
 			unlock_next_floor()
-			SignalBus.return_to_starshire.emit()
+			SignalBus.go_to_victory_hunt_menu.emit()
 		else:
 			MusicPlayer.transitioning_floors = true
 			GameManager.spawn_location = 0

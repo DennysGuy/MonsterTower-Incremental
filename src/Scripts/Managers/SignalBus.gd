@@ -71,3 +71,7 @@ signal hide_can_craft_sword
 signal update_mode_description_to_expedition
 @warning_ignore("unused_signal")
 signal set_mode_to_expedition
+@warning_ignore("unused_signal")
+signal go_to_victory_hunt_menu
+@warning_ignore("unused_signal")
+signal go_to_failure_hunt_menu
