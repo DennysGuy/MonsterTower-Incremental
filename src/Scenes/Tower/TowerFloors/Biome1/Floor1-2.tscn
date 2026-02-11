@@ -823,7 +823,8 @@ drop_scene = NodePath("..")
 spawn_root = NodePath("../MonsterSpawnNode")
 monster_list = Dictionary[PackedScene, int]({
 null: 0,
-ExtResource("14_gi03k"): 50
+ExtResource("14_gi03k"): 20,
+ExtResource("22_ykf1y"): 80
 })
 area_collision_shape = NodePath("CollisionShape2D")
 

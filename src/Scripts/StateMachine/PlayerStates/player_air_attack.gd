@@ -20,6 +20,8 @@ func exit() -> void:
 	stop_player()
 	
 func process_input(_event: InputEvent) -> State:
+	if Input.is_action_just_pressed("add_currency"):
+		parent.jump_buffer_timer = parent.jump_buffer_wait_time
 	return null
 
 func process_frame(_delta: float) -> State:

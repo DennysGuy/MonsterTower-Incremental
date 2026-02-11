@@ -11,6 +11,10 @@ func on_enter(player : Player) -> void:
 	parent.sfx_player.play_sfx(swing,3.0)
 
 func apply_physics() -> State:
+		if parent.jump_buffer_timer > 0 and parent.is_on_floor():
+			parent.jump_buffer_timer = 0
+			return parent.jump_state
+		
 		if parent.prev_move_speed != 0:
 			parent.velocity.x = parent.prev_move_speed
 		if parent.velocity.y > 0:
