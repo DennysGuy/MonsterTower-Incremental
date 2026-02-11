@@ -41,8 +41,8 @@ func _ready() -> void:
 	hud.animation_player.play("CloseIn")
 	
 	if PlayerStats.player_stats["Equipped Sword"] < PlayerStats.MAX_SWORD_COUNT-1 and PlayerStats.can_craft_next_sword():
-		SignalBus.show_can_craft_sword.emit()
-		await get_tree().create_timer(1.0).timeout
+		#SignalBus.show_can_craft_sword.emit()
+		#await get_tree().create_timer(1.0).timeout
 		new_sword_unlock_notice()
 	else:
 		SignalBus.hide_can_craft_sword.emit()

@@ -38,11 +38,9 @@ func process_physics(_delta: float) -> State:
 		if next != null:
 			return next
 	
-
 	parent.move_and_slide()
 	return null
-		
-
+	
 func stop_player() -> void:
 	parent.prev_move_speed = 0
 	parent.velocity = Vector2.ZERO
