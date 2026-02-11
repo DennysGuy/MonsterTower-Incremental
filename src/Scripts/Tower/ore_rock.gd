@@ -75,18 +75,24 @@ func drop_ore_rock() -> void:
 
 
 func _on_ore_rock_area_area_entered(area: Area2D) -> void:
+
 	if area.get_parent() is Player:
 		if PlayerStats.facilities_unlocked["Refinery Station"]:
+			
 			directions.text = "Press/Hold 'F' to Mine!"
+			await get_tree().physics_frame
 			area.get_parent().stored_ore_rock = self
+			print("AYY WE IN THIS!")
 		else:
 			directions.text = "Unlock the Refinery to Mine!"
 	
 	directions.show()
-
-
+	
 func _on_ore_rock_area_area_exited(area: Area2D) -> void:
+
 	if area.get_parent() is Player: 
 		if PlayerStats.facilities_unlocked["Refinery Station"]:
 			area.get_parent().stored_ore_rock = null
+			print("NOO WE AINT IN IT!")
+			await get_tree().physics_frame
 		directions.hide()
