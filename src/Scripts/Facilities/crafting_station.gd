@@ -155,9 +155,9 @@ func populate_details_panel(recipe : CraftingRecipe) -> void:
 	
 	var can_add_to_inventory : bool
 	
-	if STATION_TYPE.COOKING:
+	if station_type == STATION_TYPE.COOKING:
 		can_add_to_inventory = InventoryManager.check_if_can_add_to_inventory(recipe.output_item, "Inventory", "Bag","Max Bag Stack")
-	else:
+	if station_type == STATION_TYPE.SMELTING:
 		can_add_to_inventory = InventoryManager.check_if_can_add_to_inventory(recipe.output_item, "Ore Inventory", "Ore Bag","Max Ore Bag Stack")
 	
 	if !can_add_to_inventory:

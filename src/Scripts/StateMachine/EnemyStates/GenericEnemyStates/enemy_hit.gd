@@ -31,7 +31,7 @@ func process_physics(_delta: float) -> State:
 	var direction_vector = (parent.global_position - parent.player.global_position).normalized()
 	var direction = GameManager.set_direction(direction_vector.x)
 	if parent.can_knock_back:
-		parent.velocity.x = direction * parent.enemy_stats.movement_speed + 25
+		parent.velocity.x = direction * parent.enemy_stats.movement_speed + 20
 		parent.move_and_slide()
 	
 	if parent.timer.is_stopped():

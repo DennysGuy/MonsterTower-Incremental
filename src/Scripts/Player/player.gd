@@ -39,6 +39,9 @@ var jump_buffer_wait_time : float =0.17
 var coyote_timer : float = 0.0
 var coyote_wait_time : float = 0.17 
 
+var attack_buffer_timer : float = 0.0
+var attack_buffer_wait_time : float = 0.3
+
 var can_attack_cancel: bool = false
 
 var was_on_ledge : bool = true
@@ -48,6 +51,7 @@ var was_on_ledge : bool = true
 @export var fall_state : State
 @export var climb_state : State
 @export var swing_pick_axe : State
+@export var attack_1 : State
 @export var air_attack : State
 @export var dash_attack : State
 
@@ -69,6 +73,10 @@ func _physics_process(delta: float) -> void:
 		
 	if coyote_timer > 0:
 		coyote_timer -= delta
+	
+	if attack_buffer_timer > 0:
+		attack_buffer_timer -= delta
+		
 
 func _unhandled_input(event: InputEvent) -> void:
 	super(event)

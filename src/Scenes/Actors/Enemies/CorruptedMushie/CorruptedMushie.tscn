@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://bethw5tnlxnnt"]
+[gd_scene format=3 uid="uid://bethw5tnlxnnt"]
 
 [ext_resource type="Texture2D" uid="uid://bwsaud365nxdo" path="res://Assets/Enemies/CorruptedMushie/CorruptedMushie_Idle.png" id="1_gol3t"]
 [ext_resource type="Script" uid="uid://cukvls0ec73td" path="res://src/Scripts/Enemies/CorruptedMushie/corrupted_mushie.gd" id="1_uospo"]
@@ -295,7 +295,7 @@ size = Vector2(23, 30)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v37cp"]
 size = Vector2(19, 26)
 
-[node name="CorruptedMushie" type="CharacterBody2D" node_paths=PackedStringArray("name_tag", "health_bar", "wall_detector", "ground_detector", "state_machine", "animation_player", "health_component", "sprite", "blink_timer", "hurt_box", "hit_box", "hit_state", "dead_state", "sfx_player") groups=["Enemy"]]
+[node name="CorruptedMushie" type="CharacterBody2D" unique_id=85927412 node_paths=PackedStringArray("name_tag", "health_bar", "wall_detector", "ground_detector", "state_machine", "animation_player", "health_component", "sprite", "blink_timer", "hurt_box", "hit_box", "hit_state", "dead_state", "sfx_player") groups=["Enemy"]]
 collision_layer = 128
 collision_mask = 2
 script = ExtResource("1_uospo")
@@ -316,46 +316,44 @@ hit_state = NodePath("StateMachine/Hit")
 dead_state = NodePath("StateMachine/Dead")
 sfx_player = NodePath("SfxPlayer")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2145311901]
 root_node = NodePath("../Sprite2D")
-libraries = {
-&"": SubResource("AnimationLibrary_adl3q")
-}
+libraries/ = SubResource("AnimationLibrary_adl3q")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2103855697]
 position = Vector2(0, -28)
 texture = ExtResource("1_gol3t")
 hframes = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=400191748]
 position = Vector2(0, -21)
 shape = SubResource("CapsuleShape2D_s7mdw")
 
-[node name="NameTag" parent="." instance=ExtResource("7_pne6f")]
+[node name="NameTag" parent="." unique_id=21780759 instance=ExtResource("7_pne6f")]
 
-[node name="EnemyHealthBar" parent="." instance=ExtResource("9_bosos")]
+[node name="EnemyHealthBar" parent="." unique_id=1067891350 instance=ExtResource("9_bosos")]
 visible = false
 offset_left = -32.0
 offset_top = -62.0
 offset_right = 33.0
 offset_bottom = -52.0
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+[node name="StateMachine" type="Node" parent="." unique_id=1432439984 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("7_22lu5")
 initial_state = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("patrol_state")]
+[node name="Idle" type="Node" parent="StateMachine" unique_id=1074949887 node_paths=PackedStringArray("patrol_state")]
 script = ExtResource("10_ikmty")
 patrol_state = NodePath("../Patrol")
 animation_name = "Idle"
 
-[node name="Patrol" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "chase_state")]
+[node name="Patrol" type="Node" parent="StateMachine" unique_id=1682715568 node_paths=PackedStringArray("idle_state", "chase_state")]
 script = ExtResource("12_g4oob")
 idle_state = NodePath("../Idle")
 chase_state = NodePath("../Chase")
 animation_name = "Patrol"
 
-[node name="Hit" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "chase_state")]
+[node name="Hit" type="Node" parent="StateMachine" unique_id=1992342087 node_paths=PackedStringArray("idle_state", "chase_state")]
 script = ExtResource("13_lht4k")
 idle_state = NodePath("../Idle")
 chase_state = NodePath("../Chase")
@@ -365,7 +363,7 @@ generic_impact_2 = ExtResource("15_gslgg")
 generic_impact_3 = ExtResource("16_x4o6m")
 animation_name = "Hit"
 
-[node name="Dead" type="Node" parent="StateMachine"]
+[node name="Dead" type="Node" parent="StateMachine" unique_id=799979083]
 script = ExtResource("14_6w12m")
 wait_time = 0.8
 death_sound_1 = ExtResource("18_mfrq1")
@@ -373,46 +371,46 @@ death_sound_2 = ExtResource("19_hy0pi")
 death_sound_3 = ExtResource("20_xk72l")
 animation_name = "Die"
 
-[node name="Chase" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state")]
+[node name="Chase" type="Node" parent="StateMachine" unique_id=564274569 node_paths=PackedStringArray("idle_state")]
 script = ExtResource("15_lp3wy")
 idle_state = NodePath("../Idle")
 chase_time = 3.0
 animation_name = "Chase"
 
-[node name="HealthComponent" parent="." node_paths=PackedStringArray("parent", "health_bar") instance=ExtResource("10_srl2n")]
+[node name="HealthComponent" parent="." unique_id=2083111642 node_paths=PackedStringArray("parent", "health_bar") instance=ExtResource("10_srl2n")]
 parent = NodePath("..")
 health_bar = NodePath("../EnemyHealthBar")
 
-[node name="SfxPlayer" parent="." instance=ExtResource("20_gslgg")]
+[node name="SfxPlayer" parent="." unique_id=1365625139 instance=ExtResource("20_gslgg")]
 
-[node name="HurtBox" parent="." instance=ExtResource("11_22lu5")]
+[node name="HurtBox" parent="." unique_id=191034531 instance=ExtResource("11_22lu5")]
 position = Vector2(0, -20)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=2073124502]
 position = Vector2(0.5, 5)
 shape = SubResource("RectangleShape2D_s7mdw")
 
-[node name="HitBox" parent="." instance=ExtResource("12_s7mdw")]
+[node name="HitBox" parent="." unique_id=351431721 instance=ExtResource("12_s7mdw")]
 position = Vector2(0, -20)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=233820395]
 position = Vector2(0.5, 7)
 shape = SubResource("RectangleShape2D_v37cp")
 
-[node name="GroundDetector" parent="." instance=ExtResource("13_v37cp")]
+[node name="GroundDetector" parent="." unique_id=664844787 instance=ExtResource("13_v37cp")]
 position = Vector2(17, -14)
 
-[node name="WallDetector" parent="." instance=ExtResource("14_8hx58")]
+[node name="WallDetector" parent="." unique_id=75801488 instance=ExtResource("14_8hx58")]
 position = Vector2(14, -13)
 hit_from_inside = true
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=2115053208]
 process_callback = 0
 one_shot = true
 
-[node name="ItemHolder" type="Node" parent="."]
+[node name="ItemHolder" type="Node" parent="." unique_id=1399942548]
 
-[node name="BlinkTimer" type="Timer" parent="."]
+[node name="BlinkTimer" type="Timer" parent="." unique_id=22904999]
 process_callback = 0
 wait_time = 0.1
 one_shot = true

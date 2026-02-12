@@ -16,7 +16,7 @@ class_name Map extends Node2D
 
 @export var path : String
 @export var next_room_path : String
-@export var sfx_player : AudioStreamPlayer
+@export var sfx_player : SFXPlayer
 
 @export var monster_spawn_node : Node
 
@@ -46,6 +46,7 @@ func _ready() -> void:
 	SignalBus.go_to_victory_hunt_menu.connect(go_to_victory_menu)
 	SignalBus.go_to_failure_hunt_menu.connect(go_to_failure_menu)
 	SignalBus.update_kill_quota.connect(update_hunt_quota)
+	LevelingManager.play_level_up_sfx.connect(play_level_up_sfx)
 	hud.map_name_label.text = map_name
 	
 	load_floor_data()
@@ -255,3 +256,9 @@ func load_floor_data() -> void:
 		tower_entrance_data.number_of_spawn_locations = tower_data["Number of Spawn Locations"]
 		tower_entrance_data.hunt_challenge_unlocked = tower_data["Hunt Challenge Unlocked"]
 		tower_entrance_data.hunt_challenge_completed = tower_data["Hunt Challenge Completed"]
+
+
+
+func play_level_up_sfx() -> void:
+	if sfx_player:
+		sfx_player.play_sfx(TIER_UP)

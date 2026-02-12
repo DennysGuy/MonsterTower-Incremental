@@ -1156,7 +1156,7 @@ size = Vector2(20, 46)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5so87"]
 
-[node name="Player" type="CharacterBody2D" unique_id=1875939299 node_paths=PackedStringArray("idle_state", "jump_state", "fall_state", "climb_state", "swing_pick_axe", "air_attack", "dash_attack", "state_machine", "animation_player", "health_component", "sprite", "hurt_box", "hit_box", "hit_state", "dead_state", "sfx_player") groups=["Player"]]
+[node name="Player" type="CharacterBody2D" unique_id=1875939299 node_paths=PackedStringArray("idle_state", "jump_state", "fall_state", "climb_state", "swing_pick_axe", "attack_1", "air_attack", "dash_attack", "state_machine", "animation_player", "health_component", "sprite", "hurt_box", "hit_box", "hit_state", "dead_state", "sfx_player") groups=["Player"]]
 z_index = 4000
 collision_layer = 17
 collision_mask = 17
@@ -1166,6 +1166,7 @@ jump_state = NodePath("StateMachine/Jump")
 fall_state = NodePath("StateMachine/Fall")
 climb_state = NodePath("StateMachine/Climb")
 swing_pick_axe = NodePath("StateMachine/SwingPickAxe")
+attack_1 = NodePath("StateMachine/Attack1")
 air_attack = NodePath("StateMachine/AirAttack")
 dash_attack = NodePath("StateMachine/DashAttack")
 state_machine = NodePath("StateMachine")
@@ -1241,7 +1242,7 @@ swing_sfx = ExtResource("12_vhxh4")
 attack_friction = 400.0
 max_attack_drift = 200.0
 animation_name = "SwordSwing1"
-animation_duration = 0.6
+animation_duration = 0.45
 
 [node name="Attack2" type="Node" parent="StateMachine" unique_id=843297980 node_paths=PackedStringArray("attack3_state", "idle_state", "jump_state")]
 script = ExtResource("8_k1vse")
@@ -1250,7 +1251,7 @@ idle_state = NodePath("../Idle")
 jump_state = NodePath("../Jump")
 swing_sfx = ExtResource("14_c7aqh")
 animation_name = "SwordSwing2"
-animation_duration = 0.6
+animation_duration = 0.45
 
 [node name="Attack3" type="Node" parent="StateMachine" unique_id=1463353767 node_paths=PackedStringArray("attack1_state", "idle_state", "jump_state")]
 script = ExtResource("9_er68u")
@@ -1261,7 +1262,7 @@ swing_sfx = ExtResource("16_c7aqh")
 attack_friction = 2400.0
 max_attack_drift = 250.0
 animation_name = "SwordSwing3"
-animation_duration = 0.6
+animation_duration = 0.45
 
 [node name="AirAttack" type="Node" parent="StateMachine" unique_id=1513495787 node_paths=PackedStringArray("idle_state", "climb_state")]
 script = ExtResource("13_cq2ky")

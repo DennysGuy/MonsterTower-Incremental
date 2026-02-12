@@ -28,6 +28,8 @@ func exit() -> void:
 	parent.can_dash_attack = false
 	
 func process_input(_event: InputEvent) -> State:
+	equipped_dash_attack.apply_input()
+	
 	return null
 
 func process_frame(_delta: float) -> State:
