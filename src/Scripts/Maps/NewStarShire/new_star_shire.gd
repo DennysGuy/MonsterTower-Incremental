@@ -36,14 +36,16 @@ func _ready() -> void:
 	SignalBus.spawn_tech_tree.connect(add_tech_tree_to_scene)
 	SignalBus.issue_can_craft_sword_scene.connect(new_sword_unlock_notice)
 	TechTreeManager.unlock_station.connect(unlock_station)
-
+	TechTreeManager.update_currency_label.emit()
 	CookingManager.can_craft_bar.emit()
 	hud.animation_player.play("CloseIn")
 	
+	hud.currency_label.show()
+	
 	if PlayerStats.player_stats["Equipped Sword"] < PlayerStats.MAX_SWORD_COUNT-1 and PlayerStats.can_craft_next_sword():
-		#SignalBus.show_can_craft_sword.emit()
+		SignalBus.show_can_craft_sword.emit()
 		#await get_tree().create_timer(1.0).timeout
-		new_sword_unlock_notice()
+		#new_sword_unlock_notice()
 	else:
 		SignalBus.hide_can_craft_sword.emit()
 	

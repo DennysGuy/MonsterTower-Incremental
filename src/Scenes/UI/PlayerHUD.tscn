@@ -239,7 +239,7 @@ tracks/6/keys = {
 
 [sub_resource type="Animation" id="Animation_6ndbt"]
 resource_name = "StartHuntChallenge"
-length = 12.0
+length = 8.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -247,10 +247,10 @@ tracks/0/path = NodePath("PlayerHUD/StartHuntLabel:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.18, 1.5, 1.7333333, 2.0333333, 2.2533333, 4.4333334, 4.6466665, 4.961482, 5.176761, 5.4, 6.403314, 6.5985813, 6.801973, 7.025212, 8.028526, 8.223793, 8.469709, 8.692948, 9.696262, 9.904172, 10.150088, 10.373327, 11.376641, 11.641466),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.18, 1.5, 1.7333333, 2.0333333, 2.2533333, 4.4333334, 4.6466665, 4.961482, 5.176761, 5.4, 6.403314, 6.6666665, 6.912583, 7.135822, 8, 8.264826),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(-417, 157), Vector2(113.09985, 157), Vector2(172, 157), Vector2(728, 157), Vector2(-333, 157), Vector2(132, 157), Vector2(132, 157), Vector2(704, 157), Vector2(-431, 157), Vector2(-431, 157), Vector2(128, 157), Vector2(128, 157), Vector2(573, 157), Vector2(-431, 157), Vector2(128, 157), Vector2(128, 157), Vector2(573, 157), Vector2(-431, 157), Vector2(128, 157), Vector2(128, 157), Vector2(573, 157), Vector2(-431, 157), Vector2(128, 157), Vector2(128, 157), Vector2(573, 157)]
+"values": [Vector2(-417, 157), Vector2(113.09985, 157), Vector2(172, 157), Vector2(728, 157), Vector2(-333, 157), Vector2(132, 157), Vector2(132, 157), Vector2(704, 157), Vector2(-431, 157), Vector2(-431, 157), Vector2(128, 157), Vector2(128, 157), Vector2(573, 157), Vector2(-431, 157), Vector2(128, 157), Vector2(128, 157), Vector2(573, 157)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -259,10 +259,10 @@ tracks/1/path = NodePath("PlayerHUD/StartHuntLabel:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.7333333, 2.0333333, 4.633333, 5.2205153, 6.6, 6.845727, 8.233334, 8.513464, 9.9137125, 10.193843, 11.651007),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 1.7333333, 2.0333333, 4.633333, 5.2205153, 6.676207, 6.9563375, 8.274366),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [true, false, true, false, true, false, true, false, true, false, true, false]
+"values": [true, false, true, false, true, false, true, false]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -271,11 +271,11 @@ tracks/2/path = NodePath("PlayerHUD/StartHuntLabel:text")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 1.87, 5.176761, 6.801973, 8.469709, 10.150088),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 1.87, 5.176761, 6.912583),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": ["Hunt Challenge!", "Defeat all Monsters to
-Unlock the next floor!", "3", "2", "1", "GO!"]
+Unlock the next floor!", "Ready?", "GO!"]
 }
 tracks/3/type = "method"
 tracks/3/imported = false
@@ -284,7 +284,7 @@ tracks/3/path = NodePath(".")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 10.3),
+"times": PackedFloat32Array(0, 7.1),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [],
@@ -633,6 +633,26 @@ theme_override_constants/outline_size = 6
 theme_override_fonts/normal_font = ExtResource("9_jyqen")
 bbcode_enabled = true
 text = "[color=yellow]Sword can be crafted![/color]"
+
+[node name="CurrencyLabel" type="RichTextLabel" parent="PlayerHUD" unique_id=1726793478]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -337.0
+offset_top = -52.0
+offset_right = -141.0
+offset_bottom = -35.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/outline_size = 6
+theme_override_fonts/normal_font = ExtResource("9_jyqen")
+bbcode_enabled = true
+text = "[color=aqua]currency: 1000000[/color]"
+horizontal_alignment = 2
 
 [node name="StartHuntLabel" type="Label" parent="PlayerHUD" unique_id=915542649]
 layout_mode = 0

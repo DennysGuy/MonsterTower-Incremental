@@ -23,6 +23,7 @@ var map_name : String = ""
 @onready var xp_amount_label: Label = $PlayerHUD/XPAmountLabel
 @onready var xp_bar: TextureProgressBar = $PlayerHUD/XPBar
 @onready var level_label: Label = $PlayerHUD/LevelLabel
+@onready var currency_label: RichTextLabel = $PlayerHUD/CurrencyLabel
 
 const CLOSE_IN = preload("uid://dc3va7knibxnb")
 const CLOSE_OUT = preload("uid://caj0oih8j2sty")
@@ -50,6 +51,7 @@ func _ready() -> void:
 	SignalBus.hide_can_smelt_bar_label.connect(hide_can_smelt_bar)
 	SignalBus.hide_can_craft_sword.connect(hide_can_craft_sword)
 	
+	TechTreeManager.update_currency_label.connect(update_currency_label)
 	#player_health_bar.max_value = PlayerStats.player_stats["Max Health"]
 	#player_health_bar.value = PlayerStats.player_stats["Current Health"]
 	
@@ -101,6 +103,8 @@ func update_kill_quota_text(message : String, quota_met : bool, challenge_unlock
 			
 				hunt_quota.text = "[color=green]Next Floor Unlocked![/color]"
 
+func update_currency_label() -> void:
+	currency_label.text = "[color=aqua]Currency: %s[/color]" % TechTreeManager.currency
 
 func show_bag() -> void:
 	bag_showing = !bag_showing

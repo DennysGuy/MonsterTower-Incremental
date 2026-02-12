@@ -32,7 +32,7 @@ func _enter_initial_state() -> void:
 # -------------------------------------------------
 func change_state(new_state: State) -> void:
 	assert(new_state != null, "StateMachine: change_state called with null")
-	assert(initialized, "StateMachine: change_state called before initialization")
+	#assert(initialized, "StateMachine: change_state called before initialization")
 
 	if current_state:
 		current_state.exit()
