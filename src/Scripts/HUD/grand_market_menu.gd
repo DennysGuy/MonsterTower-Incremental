@@ -41,6 +41,10 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
+func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("close_menu"):
+		close_out()
+
 func populate_details_panel(item : Item, slot_location : String) -> void:
 	if item:
 		selected_inventory = slot_location
@@ -102,10 +106,13 @@ func clear_details() -> void:
 	indicator.texture = null
 
 func _on_close_button_up() -> void:
+	close_out()
+
+func close_out() -> void:
 	GameManager.player_can_move = true
 	CookingManager.can_craft_bar.emit()
 	CookingManager.can_craft_dish.emit()
-	queue_free()
+	queue_free()	
 
 func init_market() -> void:
 	clear_details()

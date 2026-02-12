@@ -36,7 +36,9 @@ func _process(delta: float) -> void:
 		TechTreeManager.currency += 500
 		update_currency_label()
 		TechTreeManager.check_if_can_purchase_node.emit()
-	pass
+	
+	if Input.is_action_just_pressed("close_menu"):
+		close_out()
 		
 func update_currency_label() -> void:
 	currency.text = "Currency: %s" % [TechTreeManager.currency]
@@ -61,6 +63,9 @@ func _exit_tree() -> void:
 		GameManager.player_can_move = true
 
 func _on_close_button_down() -> void:
+	close_out()
+
+func close_out() -> void:
 	TechTreeManager.check_needed_item_panel_for_purchase.emit()
 	if PlayerStats.show_cooking_station_unlock_animation or PlayerStats.show_refinery_station_unlock_animation:
 		TechTreeManager.unlock_station.emit()

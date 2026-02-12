@@ -497,6 +497,21 @@ theme_override_font_sizes/font_size = 16
 text = "Move Around 
 Tech Tree"
 
+[node name="Label2" type="Label" parent="CanvasLayer" unique_id=1462005167]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 178.0
+offset_top = -20.0
+offset_right = 247.0
+offset_bottom = -4.0
+grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("13_uk0x3")
+theme_override_font_sizes/font_size = 16
+text = "ESC -  Exit"
+
 [node name="Close" type="Button" parent="CanvasLayer" unique_id=719938294]
 anchors_preset = 1
 anchor_left = 1.0

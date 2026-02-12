@@ -59,14 +59,30 @@ theme_override_fonts/font = ExtResource("2_oo3yc")
 text = "The Grand Market"
 horizontal_alignment = 2
 
+[node name="ExitNotice" type="Label" parent="." unique_id=2095807507]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -119.0
+offset_top = 333.0
+offset_right = 22.0
+offset_bottom = 348.0
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_oo3yc")
+text = "Press 'ESC' to Exit"
+horizontal_alignment = 2
+
 [node name="Currency" type="Label" parent="." unique_id=2049901058]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -115.0
+offset_left = -172.0
 offset_top = 41.0
-offset_right = 26.0
+offset_right = -31.0
 offset_bottom = 53.0
 grow_horizontal = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -185,10 +201,10 @@ text = "The core of a corrupted mushie purified through a chemical process when 
 
 [node name="Close" type="Button" parent="." unique_id=567962344]
 layout_mode = 1
-offset_left = 145.0
-offset_top = 28.0
-offset_right = 190.0
-offset_bottom = 51.0
+offset_left = 149.0
+offset_top = 328.0
+offset_right = 194.0
+offset_bottom = 351.0
 mouse_default_cursor_shape = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5_oesmi")

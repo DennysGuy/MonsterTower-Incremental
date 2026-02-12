@@ -71,6 +71,10 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	state_machine.process_frame(delta)
 
+func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("close_menu"):
+		close_out()
+
 func _physics_process(delta: float) -> void:
 	state_machine.process_physics(delta)
 
@@ -91,6 +95,9 @@ func _on_iv_button_up() -> void:
 	pass # Replace with function body.
 
 func _on_exit_button_up() -> void:
+	close_out()
+
+func close_out() -> void:
 	GameManager.player_can_move = true
 	if station_type == STATION_TYPE.SMELTING:
 		if show_can_craft_next_sword_scene:
