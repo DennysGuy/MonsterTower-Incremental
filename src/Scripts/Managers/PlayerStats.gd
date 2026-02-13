@@ -135,6 +135,9 @@ func check_item_in_next_sword_recipe(item : Item) -> bool:
 			return false
 	return false
 
+func get_current_sword() -> Sword:
+	return get_sword(PlayerStats.player_stats["Equipped Sword"])
+
 func can_craft_next_sword() -> bool:
 	if int(player_stats["Equipped Sword"])+1 == MAX_SWORD_COUNT:
 		return false
