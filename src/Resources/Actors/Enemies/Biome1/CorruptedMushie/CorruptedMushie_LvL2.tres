@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="EnemyStats" format=3 uid="uid://dwtw24hgj7tub"]
 
 [ext_resource type="Resource" uid="uid://cnd7ngdtcfmgc" path="res://src/Resources/Actors/Enemies/Biome1/CorruptedMushie/PurifiedMushieCore.tres" id="1_2wbji"]
+[ext_resource type="Resource" uid="uid://jn2dh2fyq5ep" path="res://src/Resources/Actors/Enemies/Biome1/CorruptedMushie/FiberousMushieStalk.tres" id="2_doqwy"]
 [ext_resource type="Resource" uid="uid://buc582qhh7ekv" path="res://src/Resources/Actors/Enemies/Biome1/CorruptedMushie/MushroomSeeds.tres" id="2_yemqc"]
 [ext_resource type="Script" uid="uid://cbjktr12qagl" path="res://src/Scripts/Enemies/enemy_stats.gd" id="4_6sa1w"]
 
@@ -11,10 +12,11 @@ enemy_level = 2
 touch_damage = true
 can_move = true
 enemy_type = 1
-max_health = 120
-attack = 22
+max_health = 135
+attack = 16
 movement_speed = 53.0
 chase_speed = 65.0
 novelty_item_drop = ExtResource("2_yemqc")
 cooking_item_drop = ExtResource("1_2wbji")
+crafting_item_drop = ExtResource("2_doqwy")
 metadata/_custom_type_script = "uid://cbjktr12qagl"

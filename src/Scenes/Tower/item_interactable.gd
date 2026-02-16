@@ -16,6 +16,7 @@ var player_in_range : bool = false
 var base_y : float
 var t : float = 0.0
 # Called when the node enters the scene tree for the first time.
+
 func _ready() -> void:
 	base_y = position.y
 	
@@ -31,9 +32,6 @@ func _process(delta: float) -> void:
 		var tween : Tween = get_tree().create_tween()
 		tween.tween_property(self, "modulate:a", 0.0, 0.5)
 		if abs(global_position) == abs(player.coin_purse.global_position):
-			if !sfx_player.playing:
-				sfx_player.play_sfx(PICKUP_ITEM)
-			await get_tree().create_timer(2.0).timeout
 			queue_free()
 	else:
 		t += delta * hover_speed
@@ -50,6 +48,12 @@ func pick_up_item() -> void:
 			can_pick_up = InventoryManager.add_item("Inventory", item)
 	else:
 		can_pick_up = InventoryManager.add_item("Inventory", item)
+		
+	if can_pick_up:
+		SignalBus.play_sfx.emit(PICKUP_ITEM)
+		SignalBus.populate_item_notification_panel.emit(item)
+		if PlayerStats.can_craft_next_sword():
+			SignalBus.show_can_craft_sword.emit()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Player:

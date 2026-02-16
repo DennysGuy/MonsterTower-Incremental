@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://b1s1ecflwq2pn"]
+
+[ext_resource type="Script" uid="uid://cibmequrcfanu" path="res://src/Scripts/HUD/pick_up_notification_item.gd" id="1_gemre"]
+[ext_resource type="Texture2D" uid="uid://bkj0kj26ahgl8" path="res://Assets/Enemies/CorruptedMushie/PurifiedMushieCore.png" id="1_xe3ve"]
+[ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="2_gemre"]
+
+[node name="PickNotifierItem" type="Panel" unique_id=1164274786 node_paths=PackedStringArray("icon", "label")]
+custom_minimum_size = Vector2(150, 20)
+script = ExtResource("1_gemre")
+icon = NodePath("Icon")
+label = NodePath("Label")
+
+[node name="Icon" type="TextureRect" parent="." unique_id=1729502817]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 19.0
+offset_bottom = 18.0
+texture = ExtResource("1_xe3ve")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="." unique_id=920058383]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 5.0
+offset_right = 165.0
+offset_bottom = 17.0
+theme_override_fonts/font = ExtResource("2_gemre")
+theme_override_font_sizes/font_size = 12
+text = "Picked up 1 Mushie Core"
+
+[node name="Timer" type="Timer" parent="." unique_id=2091960895]
+process_callback = 0
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

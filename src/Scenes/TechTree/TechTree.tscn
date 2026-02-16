@@ -15,8 +15,6 @@
 [ext_resource type="Script" uid="uid://co4ox6rujyeod" path="res://src/Scripts/TechTree/tech_tree_camera.gd" id="9_wj3rp"]
 [ext_resource type="PackedScene" uid="uid://bevb4v64mvbbg" path="res://src/Scenes/TechTree/PlayerStatsPanel.tscn" id="10_7l0yi"]
 [ext_resource type="Resource" uid="uid://u1y3eoe8hx2c" path="res://src/Resources/TechTree/TechNodes/MaxHP1.tres" id="11_4a6it"]
-[ext_resource type="Resource" uid="uid://y0ttwm5ljxyk" path="res://src/Resources/TechTree/TechNodes/ExpeditionTime1.tres" id="12_ice2v"]
-[ext_resource type="Resource" uid="uid://beqchd24ugnyh" path="res://src/Resources/TechTree/TechNodes/MonsterCap1.tres" id="13_fdiaf"]
 [ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="13_uk0x3"]
 [ext_resource type="Resource" uid="uid://dhp1t1qeeqmau" path="res://src/Resources/TechTree/TechNodes/Defense1.tres" id="14_x01pg"]
 [ext_resource type="Resource" uid="uid://ct7a5kggupi55" path="res://src/Resources/TechTree/TechNodes/DeeperPockets1.tres" id="15_v76mx"]
@@ -52,10 +50,10 @@ script = ExtResource("1_1fw0b")
 [node name="SfxPlayer" parent="." unique_id=268741460 instance=ExtResource("2_d4ivd")]
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=48163631]
-offset_left = -3828.0
-offset_top = -2421.0
-offset_right = 5584.0
-offset_bottom = 3765.0
+offset_left = -3824.0
+offset_top = -2374.0
+offset_right = 5588.0
+offset_bottom = 3812.0
 mouse_filter = 2
 color = Color(0.028638711, 0.1994082, 0.3708802, 1)
 
@@ -130,24 +128,6 @@ tech_node_stats = ExtResource("11_4a6it")
 
 [node name="Line2D" type="Line2D" parent="Nodes/HP1Node" unique_id=293012557]
 points = PackedVector2Array(-11, -9, -68, -81)
-width = 3.0
-
-[node name="PassTime1Node" parent="Nodes" unique_id=429847333 instance=ExtResource("5_2ltmf")]
-position = Vector2(608, 452)
-tech_node_stats = ExtResource("12_ice2v")
-
-[node name="Line2D" type="Line2D" parent="Nodes/PassTime1Node" unique_id=1160198491]
-position = Vector2(-1, 0)
-points = PackedVector2Array(-1, -13, 27, -81)
-width = 3.0
-
-[node name="MonsterCap1Node" parent="Nodes" unique_id=1373284103 instance=ExtResource("5_2ltmf")]
-position = Vector2(657, 452)
-tech_node_stats = ExtResource("13_fdiaf")
-
-[node name="Line2D" type="Line2D" parent="Nodes/MonsterCap1Node" unique_id=550532089]
-position = Vector2(14, -14)
-points = PackedVector2Array(-16, 1, -30, -67)
 width = 3.0
 
 [node name="Defense1Node" parent="Nodes" unique_id=394331916 instance=ExtResource("5_2ltmf")]
@@ -389,16 +369,17 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -634.0
-offset_top = -357.0
-offset_right = -494.0
-offset_bottom = -341.0
+offset_left = -633.0
+offset_top = -356.0
+offset_right = -373.0
+offset_bottom = -330.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_constants/shadow_outline_size = 0
 theme_override_fonts/font = ExtResource("13_uk0x3")
+theme_override_font_sizes/font_size = 25
 text = "Currency : 0"
 
 [node name="PresitgeTier" type="Label" parent="CanvasLayer" unique_id=17473203]
@@ -534,5 +515,66 @@ position = Vector2(46, 79)
 [node name="Camera2D" type="Camera2D" parent="." unique_id=770360838]
 position = Vector2(666, 389)
 script = ExtResource("9_wj3rp")
+
+[node name="Label" type="Label" parent="." unique_id=1948156559]
+offset_left = 430.0
+offset_top = 394.0
+offset_right = 516.0
+offset_bottom = 410.0
+theme_override_colors/font_color = Color(0.5884941, 0.39983425, 0.23455968, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("13_uk0x3")
+text = "Bank/Storage"
+
+[node name="Label3" type="Label" parent="." unique_id=781556317]
+offset_left = 745.0
+offset_top = 319.0
+offset_right = 798.0
+offset_bottom = 335.0
+theme_override_colors/font_color = Color(0.5407523, 0.56067026, 0.5308888, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("13_uk0x3")
+text = "Smelting"
+
+[node name="Label4" type="Label" parent="." unique_id=482559626]
+offset_left = 634.0
+offset_top = 233.0
+offset_right = 687.0
+offset_bottom = 249.0
+theme_override_colors/font_color = Color(0.9999998, 0.16552553, 0.19321495, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("13_uk0x3")
+text = "Offense
+Abilities"
+
+[node name="Label5" type="Label" parent="." unique_id=34756546]
+offset_left = 694.0
+offset_top = 399.0
+offset_right = 777.0
+offset_bottom = 415.0
+theme_override_colors/font_color = Color(0.35784426, 0.5991782, 0.62722754, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("13_uk0x3")
+text = "Survivability"
+
+[node name="Label2" type="Label" parent="." unique_id=2094842599]
+offset_left = 399.0
+offset_top = 290.0
+offset_right = 447.0
+offset_bottom = 306.0
+theme_override_colors/font_color = Color(1.8289685e-06, 0.70014423, 0.3628731, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("13_uk0x3")
+text = "Cooking"
+
+[node name="Label6" type="Label" parent="." unique_id=1369866070]
+offset_left = 489.0
+offset_top = 273.0
+offset_right = 553.0
+offset_bottom = 289.0
+theme_override_colors/font_color = Color(0.60606414, 0.49009812, 0.96544355, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("13_uk0x3")
+text = "Traversal"
 
 [connection signal="button_down" from="CanvasLayer/Close" to="." method="_on_close_button_down"]

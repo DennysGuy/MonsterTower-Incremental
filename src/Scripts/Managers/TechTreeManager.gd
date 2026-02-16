@@ -138,7 +138,7 @@ func increment_upgrade_count() -> void:
 	
 	if current_upgrade_count >= upgrade_count_to_prestige:
 		current_prestige += 1
-		PlayerStats.player_stats["Hunt Time"] += 10
+		PlayerStats.player_stats["Hunt Time"] += 15
 		PlayerStats.player_stats["Expedition Time"] += 20
 		upgrade_count_to_prestige += 15
 		current_upgrade_count = 0

@@ -13,6 +13,7 @@ class_name Player extends Entity
 @onready var ability_cool_down_timer: Timer = $AbilityCoolDownTimer
 
 @onready var hurtbox_collision_shape_2d : CollisionShape2D = $HurtBox/CollisionShape2D
+@onready var outfit: Sprite2D = $Sprites/Outfit
 
 @onready var collision_shape_2d : CollisionShape2D = $CollisionShape2D
 @onready var dash_attack_collision_shape : CollisionShape2D = $DashAttackHitBox/CollisionShape2D
@@ -83,6 +84,9 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func set_sword_texture(animation_name : String) -> void:
 	sword.texture = SwordGraphics.get_sword_graphic(animation_name)
+
+func set_outfit_texture(animation_name : String) -> void:
+	outfit.texture = OutfitGraphics.get_outfit_graphic(animation_name)
 
 func set_pickaxe_texture() -> void:
 	sword.texture = SwordGraphics.get_pickaxe_graphic()

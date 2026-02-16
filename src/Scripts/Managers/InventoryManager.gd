@@ -116,6 +116,17 @@ func remove_item(inventory_name : String, item : Item, quantity : int = 1) -> bo
 
 	return false
 
+func remove_novelty_item(inventory_name : String, item : Item) -> bool:
+	if not inventories.has(inventory_name):
+		return false
+	
+	if item is EnemyDrop:
+		if item.is_novelty():
+			remove_item(inventory_name, item)
+			return true
+	
+	return false
+
 func clear_bag() -> void:
 	var bag : Array = inventories["Inventory"]
 	for item in bag :

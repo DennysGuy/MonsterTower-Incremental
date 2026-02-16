@@ -7,7 +7,7 @@
 script = ExtResource("1_anjie")
 node_name = "Dash Attack"
 icon = ExtResource("1_jo0k4")
-description = "Attack while moving to soar through your enemies with a powerful dash attack. "
+description = "Press \"Right Click\" while moving to soar through your enemies with a powerful dash attack. "
 currency_required = 400
 node_type = 1
 stat_name = "Dash Attack"

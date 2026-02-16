@@ -8,13 +8,14 @@ class_name PlayerAttack3State extends State
 @export var max_attack_drift : float = 220.0
 var attack_velocity : float = 0.0
 func enter() -> void:
-	parent.velocity.x = 270 * GameManager.set_player_box_direction(parent.sprite.flip_h)
+	parent.velocity.x = 180 * GameManager.set_player_box_direction(parent.sprite.flip_h)
 	parent.can_knock_back = true
 	var class_ability : Ability  = PlayerStats.get_equipped_ability("Attack 3")
 	animation_name = class_ability.ability_name
 	parent.animation_player.play(animation_name)
 
 	parent.set_sword_texture("SwordSwing3")
+	parent.set_outfit_texture(animation_name)
 	parent.timer.wait_time = PlayerStats.get_current_sword().attack_speed
 	parent.timer.start()
 	

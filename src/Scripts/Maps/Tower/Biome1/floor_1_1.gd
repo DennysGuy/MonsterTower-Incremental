@@ -29,6 +29,7 @@ func _ready() -> void:
 	SaveManager.save_player_stats()
 
 	if GameManager.hunt_challenge_selected:
+		SignalBus.hide_hunt_challenge_button.emit()
 		var monster_count : int = monster_spawn_node.get_children().size()
 		SignalBus.update_monsters_left.emit("Monsters left: %s" % [monster_count],false)
 		player.damageable = false

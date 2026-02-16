@@ -13,6 +13,7 @@ func enter() -> void:
 		GameManager.player_can_move = false
 		parent.damageable = false
 		parent.set_sword_texture(animation_name)
+		parent.set_outfit_texture(animation_name)
 		parent.timer.wait_time = wait_time
 		parent.invincibility_timer.wait_time = PlayerStats.player_stats["Invincibility Duration"]
 		var dir = (parent.stored_enemy.global_position - parent.global_position).normalized()
@@ -37,7 +38,7 @@ func process_frame(_delta: float) -> State:
 func process_physics(_delta: float) -> State:
 	if parent.can_knock_back:
 		parent.velocity.x = knock_back_direction * PlayerStats.KNOCKBACK_FORCE
-		
+		parent.flip_textures(!(parent.velocity.x < 0))
 		if parent.timer.time_left <= 0:
 			if Input.is_action_pressed("swing_sword"):
 				return attack_1_state

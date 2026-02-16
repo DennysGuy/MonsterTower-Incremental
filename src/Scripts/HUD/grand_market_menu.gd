@@ -29,6 +29,7 @@ const ITEM_SLOT_NOVELTY = preload("uid://x2hshpeeawjm")
 @onready var ore_bag_label: Label = $OreBagLabel
 
 var selling_all : bool = false
+var selling_novelties : bool = false
 
 var selected_item : Item
 var selected_inventory : String
@@ -144,3 +145,30 @@ func sell_all_items(container : GridContainer, inventory_name : String) -> void:
 				sfx_player.play_sfx(SELL_ITEM)
 				SaveManager.save_tech_tree_data()
 				await get_tree().create_timer(0.1).timeout
+
+func sell_all_novelty_itmes(container: GridContainer, inventory_name : String) -> void:
+	var inventory : Array = InventoryManager.inventories[inventory_name]
+	
+	for slot in inventory:
+		if !slot["item"] is EnemyDrop:
+			continue
+		if !slot["item"].is_novelty():
+			continue
+		for i in range(slot["quantity"]):
+			InventoryManager.remove_item(inventory_name, slot["item"])
+			TechTreeManager.currency += slot["item"].sell_value
+			TechTreeManager.update_currency_label.emit()
+			InventoryManager.update_grid_container(container, inventory_name)
+			currency.text = "Currency: %s" % [TechTreeManager.currency]
+			sfx_player.play_sfx(SELL_ITEM)
+			SaveManager.save_tech_tree_data()
+			await get_tree().create_timer(0.1).timeout
+
+func _on_sell_novelties_button_button_up() -> void:
+	if selling_novelties:
+		return
+	else:
+		selling_novelties = true
+	await sell_all_novelty_itmes(inventory_container, "Inventory")
+	await sell_all_novelty_itmes(bank_container, "Bank")
+	selling_all = false

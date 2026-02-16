@@ -12,6 +12,7 @@ func enter() -> void:
 		parent.coyote_timer = parent.coyote_wait_time
 	parent.can_knock_back = true
 	parent.set_sword_texture(animation_name)
+	parent.set_outfit_texture(animation_name)
 	
 func exit() -> void:
 	pass

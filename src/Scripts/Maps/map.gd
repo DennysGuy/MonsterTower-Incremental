@@ -46,6 +46,7 @@ func _ready() -> void:
 	SignalBus.go_to_victory_hunt_menu.connect(go_to_victory_menu)
 	SignalBus.go_to_failure_hunt_menu.connect(go_to_failure_menu)
 	SignalBus.update_kill_quota.connect(update_hunt_quota)
+	SignalBus.play_sfx.connect(play_sfx)
 	LevelingManager.play_level_up_sfx.connect(play_level_up_sfx)
 	hud.map_name_label.text = map_name
 	
@@ -82,7 +83,12 @@ func _ready() -> void:
 					SignalBus.update_kill_quota_text.emit("", tower_entrance_data.hunt_challenge_completed, tower_entrance_data.hunt_challenge_unlocked)
 				else:
 					SignalBus.update_kill_quota_text.emit("", false, tower_entrance_data.hunt_challenge_unlocked)
-			
+					if tower_entrance_data.hunt_challenge_unlocked and !tower_entrance_data.hunt_challenge_completed:
+						SignalBus.show_hunt_challenge_button.emit()
+					else:
+						SignalBus.hide_hunt_challenge_button.emit()
+				SignalBus.show_bag_stats.emit()
+					
 			if monster_spawn_node:
 				if GameManager.hunt_challenge_selected:
 					SignalBus.update_monsters_left.emit("Monsters Left: %s" % [monster_spawn_node.get_children().size()],false)
@@ -258,6 +264,9 @@ func load_floor_data() -> void:
 		tower_entrance_data.hunt_challenge_completed = tower_data["Hunt Challenge Completed"]
 
 
+func play_sfx(audio_stream : AudioStream) -> void:
+	if sfx_player:
+		sfx_player.play_sfx(audio_stream)
 
 func play_level_up_sfx() -> void:
 	if sfx_player:

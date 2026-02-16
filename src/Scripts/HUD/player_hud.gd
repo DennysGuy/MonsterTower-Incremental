@@ -30,6 +30,13 @@ const CLOSE_OUT = preload("uid://caj0oih8j2sty")
 const COUNTDOWN_BEEP = preload("uid://c6caiqmkt2lt0")
 
 @onready var monsters_left: RichTextLabel = $PlayerHUD/MonstersLeft
+@onready var start_hunt_challenge_button: Button = $PlayerHUD/StartHuntChallengeButton
+
+@onready var max_slot_stack: Label = $PlayerHUD/MaxSlotStack
+@onready var bagslots: Label = $PlayerHUD/Bagslots
+
+@onready var pick_up_notifier: VBoxContainer = $PlayerHUD/PickUpNotifier
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -51,6 +58,11 @@ func _ready() -> void:
 	SignalBus.hide_can_smelt_bar_label.connect(hide_can_smelt_bar)
 	SignalBus.hide_can_craft_sword.connect(hide_can_craft_sword)
 	
+	SignalBus.show_hunt_challenge_button.connect(show_hunt_challenge_button)
+	SignalBus.show_bag_stats.connect(display_bag_stats)
+	
+	SignalBus.populate_item_notification_panel.connect(populate_pick_notification_panel)
+	
 	TechTreeManager.update_currency_label.connect(update_currency_label)
 	#player_health_bar.max_value = PlayerStats.player_stats["Max Health"]
 	#player_health_bar.value = PlayerStats.player_stats["Current Health"]
@@ -59,6 +71,7 @@ func _ready() -> void:
 	
 	player_mp_bar.max_value = PlayerStats.player_stats["Current MP"]
 	player_mp_bar.value = player_mp_bar.max_value
+	
 	update_xp_bar()
 	#update_player_health(int(PlayerStats.player_stats["Current Health"]))
 	
@@ -174,3 +187,31 @@ func remaining_monsters(text : String, out_of_enmies : bool) -> void:
 
 func start_timer() -> void:
 	pass
+
+func display_bag_stats() -> void:
+	bagslots.show()
+	max_slot_stack.show()
+	bagslots.text = "Bag Slots: %s" % PlayerStats.get_bag("Bag").max_slots
+	max_slot_stack.text = "Max Slot Stacks: %s" % int(PlayerStats.player_stats["Max Bag Stack"])
+
+func show_hunt_challenge_button() -> void:
+	start_hunt_challenge_button.show()
+
+func hide_hunt_challenge_button() -> void:
+	start_hunt_challenge_button.hide()
+
+func _on_start_hunt_challenge_button_button_up() -> void:
+	GameManager.hunt_challenge_selected = true
+	GameManager.resupply_character = true
+	GameManager.spawn_location = 0
+	get_tree().change_scene_to_file(GameManager.previous_map_data.scene_path)
+
+func populate_pick_notification_panel(item_data : Item) -> void:
+	var notification_item : PickupNotificationItem = preload("uid://b1s1ecflwq2pn").instantiate()
+	if item_data is EnemyDrop:
+		notification_item.icon.texture = item_data.drop_icon
+	else:
+		notification_item.icon.texture = item_data.shop_icon
+	
+	notification_item.label.text = "Picked up 1 %s" % item_data.item_name
+	pick_up_notifier.add_child(notification_item)

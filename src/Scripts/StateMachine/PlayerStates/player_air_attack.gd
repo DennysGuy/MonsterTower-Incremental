@@ -10,6 +10,7 @@ func enter() -> void:
 	super()
 	parent.can_knock_back = true
 	parent.damageable = false
+	parent.set_outfit_texture(animation_name)
 	var selected_ability : Ability = PlayerStats.get_equipped_ability("Air Attack")
 	equipped_air_attack = selected_ability.ability_behavior
 	equipped_air_attack.on_enter(parent)

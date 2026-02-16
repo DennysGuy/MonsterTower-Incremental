@@ -11,7 +11,7 @@ class_name PlayerAttack2State extends State
 var attack_velocity : float = 0.0
 
 func enter() -> void:
-	parent.velocity.x = 150 * GameManager.set_player_box_direction(parent.sprite.flip_h)
+	parent.velocity.x = 120 * GameManager.set_player_box_direction(parent.sprite.flip_h)
 	parent.can_knock_back = true
 	#parent.hit_box.position.x = 34 * GameManager.set_player_box_direction(parent.player_sprite.flip_h)
 	var class_ability  : Ability = PlayerStats.get_equipped_ability("Attack 2")
@@ -19,6 +19,7 @@ func enter() -> void:
 	parent.animation_player.play(animation_name)
 	
 	parent.set_sword_texture("SwordSwing2")
+	parent.set_outfit_texture(animation_name)
 	parent.timer.wait_time = PlayerStats.get_current_sword().attack_speed
 	parent.timer.start()
 	

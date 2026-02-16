@@ -13,7 +13,6 @@ var parent
 
 func enter() -> void:
 	if parent is Entity and parent.animation_player:
-		
 		parent.animation_player.play(animation_name)
 
 func exit() -> void:

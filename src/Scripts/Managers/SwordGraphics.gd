@@ -2,39 +2,42 @@ extends Node
 
 var sword_textures : Dictionary = {
 	"Wooden Sword": {
-		"Idle": preload("uid://cqamv5bk70srn"),
-		"Run": preload("uid://bav0xmrc5cgcy"),
-		"Jump": preload("uid://dvjce5ajf3r0"),
-		"Fall": preload("uid://dvjce5ajf3r0"),
-		"SwordSwing1":preload("uid://bdefqkaq2k4dr"),
-		"SwordSwing2":preload("uid://bdefqkaq2k4dr"),
-		"SwordSwing3":preload("uid://bdefqkaq2k4dr"),
-		"AirAttack":preload("uid://bdefqkaq2k4dr")
+		"Idle": preload("uid://n5geiar8phy6"),
+		"Run": preload("uid://dwvt17upbk5hi"),
+		"Jump": preload("uid://bqdfkvfxebubj"),
+		"Fall": preload("uid://bqdfkvfxebubj"),
+		"SwordSwing1":preload("uid://bbhb6o4x6k1t8"),
+		"SwordSwing2":preload("uid://bbhb6o4x6k1t8"),
+		"SwordSwing3":preload("uid://bbhb6o4x6k1t8"),
+		"AirAttack":preload("uid://bbhb6o4x6k1t8"),
+		"Climb":preload("uid://bxp4omipurasx")
 	},
 	"Shroom Fibre Blade" : {
-		"Idle": preload("uid://cqrcj00btxto0"),
-		"Run": preload("uid://dyoe7q5f07ia2"),
-		"Jump": preload("uid://bhbydpkw1wwkn"),
-		"Fall": preload("uid://bhbydpkw1wwkn"),
-		"SwordSwing1": preload("uid://j7jrnmqku872"),
-		"SwordSwing2": preload("uid://j7jrnmqku872"),
-		"SwordSwing3": preload("uid://j7jrnmqku872"),
-		"AirAttack": preload("uid://j7jrnmqku872")
+		"Idle": preload("uid://decldm83dahcq"),
+		"Run": preload("uid://cfclykhkthvqp"),
+		"Jump": preload("uid://bff30bwg0yuos"),
+		"Fall": preload("uid://bff30bwg0yuos"),
+		"SwordSwing1": preload("uid://c3eh7fshh2m0t"),
+		"SwordSwing2": preload("uid://c3eh7fshh2m0t"),
+		"SwordSwing3": preload("uid://c3eh7fshh2m0t"),
+		"AirAttack": preload("uid://c3eh7fshh2m0t"),
+		"Climb": preload("uid://bj3fqpa35cwsk")
 	},
 	"Bronze Fang Blade" : {
-		"Idle": preload("uid://1gmop8x66tjk"),
-		"Run": preload("uid://catadyl8hdysa"),
-		"Jump": preload("uid://come635s2bqh"),
-		"Fall": preload("uid://come635s2bqh"),
-		"SwordSwing1": preload("uid://doai8hrrsivio"),
-		"SwordSwing2": preload("uid://doai8hrrsivio"),
-		"SwordSwing3": preload("uid://doai8hrrsivio"),
-		"AirAttack": preload("uid://doai8hrrsivio")
+		"Idle": preload("uid://cnkd1sn66y2ev"),
+		"Run": preload("uid://fp4qnilm8mem"),
+		"Jump": preload("uid://cpnk8xcj1y2hf"),
+		"Fall": preload("uid://cpnk8xcj1y2hf"),
+		"SwordSwing1": preload("uid://cl1aw31iwncip"),
+		"SwordSwing2": preload("uid://cl1aw31iwncip"),
+		"SwordSwing3": preload("uid://cl1aw31iwncip"),
+		"AirAttack": preload("uid://cl1aw31iwncip"),
+		"Climb": preload("uid://djnmym5xlblfi")
 	}
 }
 
 var pickaxe_textures : Dictionary = {
-	"Stone Pickaxe": preload("uid://c1dxfmrpwv7a4")
+	"Stone Pickaxe": preload("uid://bu42xf7b1ykwj")
 }
 
 func get_sword_graphic(texture_name : String) -> Texture2D:

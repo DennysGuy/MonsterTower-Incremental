@@ -77,3 +77,17 @@ signal go_to_victory_hunt_menu
 signal go_to_failure_hunt_menu
 @warning_ignore("unused_signal")
 signal hide_hunt_time_label
+
+@warning_ignore("unused_signal")
+signal show_hunt_challenge_button 
+@warning_ignore("unused_signal")
+signal hide_hunt_challenge_button
+@warning_ignore("unused_signal")
+signal show_bag_stats
+
+@warning_ignore("unused_signal")
+signal populate_item_notification_panel(item_data : Item)
+
+
+@warning_ignore("unused_signal")
+signal play_sfx(audio_stream : AudioStream)

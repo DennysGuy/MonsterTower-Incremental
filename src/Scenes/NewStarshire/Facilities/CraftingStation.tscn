@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://pk5hdfflc6iy"]
+[gd_scene format=3 uid="uid://pk5hdfflc6iy"]
 
 [ext_resource type="Script" uid="uid://dvf67sbviff5y" path="res://src/Scripts/Facilities/crafting_station.gd" id="1_e3qwp"]
 [ext_resource type="Texture2D" uid="uid://ce4sagacwwdc8" path="res://Assets/Facilities/CraftingMenu.png" id="2_1wrh0"]
@@ -14,7 +14,7 @@
 [ext_resource type="Script" uid="uid://dx08tn1e61j2d" path="res://src/Scripts/StateMachine/Facilities/crafting_station_idle.gd" id="11_8pjqq"]
 [ext_resource type="Script" uid="uid://d2ecwwj8fggfp" path="res://src/Scripts/StateMachine/Facilities/crafting_station_craft.gd" id="12_8jenx"]
 
-[node name="CraftingStation" type="Control" node_paths=PackedStringArray("state_machine", "idle_state", "crafting_state")]
+[node name="CraftingStation" type="Control" unique_id=1237576331 node_paths=PackedStringArray("state_machine", "idle_state", "crafting_state")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -27,11 +27,11 @@ state_machine = NodePath("StateMachine")
 idle_state = NodePath("StateMachine/Idle")
 crafting_state = NodePath("StateMachine/Craft")
 
-[node name="SfxPlayer" parent="." instance=ExtResource("2_pofai")]
+[node name="SfxPlayer" parent="." unique_id=608261710 instance=ExtResource("2_pofai")]
 
-[node name="SfxPlayer2" parent="." instance=ExtResource("2_pofai")]
+[node name="SfxPlayer2" parent="." unique_id=1132271709 instance=ExtResource("2_pofai")]
 
-[node name="MenuGraphic" type="TextureRect" parent="."]
+[node name="MenuGraphic" type="TextureRect" parent="." unique_id=999730920]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -40,7 +40,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_1wrh0")
 
-[node name="Title" type="Label" parent="."]
+[node name="Title" type="Label" parent="." unique_id=2062983483]
 layout_mode = 0
 offset_left = 19.0
 offset_top = 11.0
@@ -53,7 +53,7 @@ theme_override_font_sizes/font_size = 20
 text = "Crafting Station"
 horizontal_alignment = 1
 
-[node name="AvailableRecipes" type="Label" parent="."]
+[node name="AvailableRecipes" type="Label" parent="." unique_id=752012540]
 layout_mode = 0
 offset_left = 211.0
 offset_top = 45.0
@@ -65,7 +65,19 @@ theme_override_fonts/font = ExtResource("4_dxjxu")
 theme_override_font_sizes/font_size = 20
 text = "Recipes"
 
-[node name="FailureMessage" type="Label" parent="."]
+[node name="AvailableRecipes2" type="Label" parent="." unique_id=759984274]
+layout_mode = 0
+offset_left = 232.0
+offset_top = 114.0
+offset_right = 373.0
+offset_bottom = 129.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("4_dxjxu")
+theme_override_font_sizes/font_size = 12
+text = "Click on a item to craft!"
+
+[node name="FailureMessage" type="Label" parent="." unique_id=253318913]
 visible = false
 layout_mode = 0
 offset_left = 296.0
@@ -79,7 +91,7 @@ theme_override_fonts/font = ExtResource("4_dxjxu")
 theme_override_font_sizes/font_size = 20
 text = "Failure!"
 
-[node name="InventoryFullWarning" type="Label" parent="."]
+[node name="InventoryFullWarning" type="Label" parent="." unique_id=169533806]
 visible = false
 modulate = Color(0.3909999, 0.58371353, 0.6448994, 1)
 layout_mode = 0
@@ -93,7 +105,7 @@ theme_override_fonts/font = ExtResource("4_dxjxu")
 theme_override_font_sizes/font_size = 20
 text = "Inventory Full! (Make Space!)"
 
-[node name="Inventory" type="Label" parent="."]
+[node name="Inventory" type="Label" parent="." unique_id=506996495]
 layout_mode = 0
 offset_left = 26.0
 offset_top = 39.0
@@ -105,7 +117,7 @@ theme_override_fonts/font = ExtResource("3_udv0u")
 theme_override_font_sizes/font_size = 13
 text = "Inventory"
 
-[node name="Bank" type="Label" parent="."]
+[node name="Bank" type="Label" parent="." unique_id=2055894265]
 layout_mode = 0
 offset_left = 26.0
 offset_top = 189.0
@@ -117,7 +129,7 @@ theme_override_fonts/font = ExtResource("3_udv0u")
 theme_override_font_sizes/font_size = 13
 text = "Bank"
 
-[node name="RecipeName" type="Label" parent="."]
+[node name="RecipeName" type="Label" parent="." unique_id=1643530570]
 layout_mode = 0
 offset_left = 416.0
 offset_top = 40.0
@@ -130,7 +142,7 @@ theme_override_font_sizes/font_size = 15
 text = "Cooked Gagootz"
 horizontal_alignment = 1
 
-[node name="Level" type="Label" parent="."]
+[node name="Level" type="Label" parent="." unique_id=26192310]
 layout_mode = 0
 offset_left = 500.0
 offset_top = 62.0
@@ -142,7 +154,7 @@ theme_override_fonts/font = ExtResource("4_dxjxu")
 theme_override_font_sizes/font_size = 8
 text = "Tier 1"
 
-[node name="SellValue" type="Label" parent="."]
+[node name="SellValue" type="Label" parent="." unique_id=525887412]
 layout_mode = 0
 offset_left = 501.0
 offset_top = 74.0
@@ -154,7 +166,7 @@ theme_override_fonts/font = ExtResource("4_dxjxu")
 theme_override_font_sizes/font_size = 8
 text = "Sell Value: 13450"
 
-[node name="CanMake" type="Label" parent="."]
+[node name="CanMake" type="Label" parent="." unique_id=172918177]
 layout_mode = 0
 offset_left = 501.0
 offset_top = 85.0
@@ -166,7 +178,7 @@ theme_override_fonts/font = ExtResource("4_dxjxu")
 theme_override_font_sizes/font_size = 8
 text = "Can Make: 34567"
 
-[node name="SuccessRate" type="Label" parent="."]
+[node name="SuccessRate" type="Label" parent="." unique_id=933453357]
 layout_mode = 0
 offset_left = 501.0
 offset_top = 96.0
@@ -178,7 +190,7 @@ theme_override_fonts/font = ExtResource("4_dxjxu")
 theme_override_font_sizes/font_size = 10
 text = "Success Rate: 100%"
 
-[node name="InventoryContainer" type="GridContainer" parent="."]
+[node name="InventoryContainer" type="GridContainer" parent="." unique_id=1211208707]
 layout_mode = 0
 offset_left = 26.0
 offset_top = 54.0
@@ -186,43 +198,43 @@ offset_right = 166.0
 offset_bottom = 158.0
 columns = 4
 
-[node name="Slot" parent="InventoryContainer" instance=ExtResource("4_mboji")]
+[node name="Slot" parent="InventoryContainer" unique_id=179381177 instance=ExtResource("4_mboji")]
 layout_mode = 2
 
-[node name="Slot2" parent="InventoryContainer" instance=ExtResource("4_mboji")]
+[node name="Slot2" parent="InventoryContainer" unique_id=1269001528 instance=ExtResource("4_mboji")]
 layout_mode = 2
 
-[node name="Slot3" parent="InventoryContainer" instance=ExtResource("4_mboji")]
+[node name="Slot3" parent="InventoryContainer" unique_id=913117751 instance=ExtResource("4_mboji")]
 layout_mode = 2
 
-[node name="Slot4" parent="InventoryContainer" instance=ExtResource("4_mboji")]
+[node name="Slot4" parent="InventoryContainer" unique_id=138343610 instance=ExtResource("4_mboji")]
 layout_mode = 2
 
-[node name="Slot5" parent="InventoryContainer" instance=ExtResource("4_mboji")]
+[node name="Slot5" parent="InventoryContainer" unique_id=1584576339 instance=ExtResource("4_mboji")]
 layout_mode = 2
 
-[node name="Slot6" parent="InventoryContainer" instance=ExtResource("4_mboji")]
+[node name="Slot6" parent="InventoryContainer" unique_id=1217270659 instance=ExtResource("4_mboji")]
 layout_mode = 2
 
-[node name="Slot7" parent="InventoryContainer" instance=ExtResource("4_mboji")]
+[node name="Slot7" parent="InventoryContainer" unique_id=1673903958 instance=ExtResource("4_mboji")]
 layout_mode = 2
 
-[node name="Slot8" parent="InventoryContainer" instance=ExtResource("4_mboji")]
+[node name="Slot8" parent="InventoryContainer" unique_id=1395374040 instance=ExtResource("4_mboji")]
 layout_mode = 2
 
-[node name="Slot9" parent="InventoryContainer" instance=ExtResource("4_mboji")]
+[node name="Slot9" parent="InventoryContainer" unique_id=872569937 instance=ExtResource("4_mboji")]
 layout_mode = 2
 
-[node name="Slot10" parent="InventoryContainer" instance=ExtResource("4_mboji")]
+[node name="Slot10" parent="InventoryContainer" unique_id=806122217 instance=ExtResource("4_mboji")]
 layout_mode = 2
 
-[node name="Slot11" parent="InventoryContainer" instance=ExtResource("4_mboji")]
+[node name="Slot11" parent="InventoryContainer" unique_id=1472891107 instance=ExtResource("4_mboji")]
 layout_mode = 2
 
-[node name="Slot12" parent="InventoryContainer" instance=ExtResource("4_mboji")]
+[node name="Slot12" parent="InventoryContainer" unique_id=2029847178 instance=ExtResource("4_mboji")]
 layout_mode = 2
 
-[node name="BankContainer" type="GridContainer" parent="."]
+[node name="BankContainer" type="GridContainer" parent="." unique_id=204486362]
 layout_mode = 0
 offset_left = 27.0
 offset_top = 204.0
@@ -230,7 +242,7 @@ offset_right = 167.0
 offset_bottom = 308.0
 columns = 4
 
-[node name="BankNotice" type="Label" parent="."]
+[node name="BankNotice" type="Label" parent="." unique_id=879722681]
 visible = false
 layout_mode = 0
 offset_left = 32.0
@@ -243,7 +255,7 @@ theme_override_fonts/font = ExtResource("3_udv0u")
 theme_override_font_sizes/font_size = 13
 text = "Bank Account Locked!"
 
-[node name="RecipePanel" type="Panel" parent="."]
+[node name="RecipePanel" type="Panel" parent="." unique_id=2096853867]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -251,35 +263,35 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -107.0
-offset_top = -66.0
+offset_top = -48.0
 offset_right = 65.0
-offset_bottom = 111.0
+offset_bottom = 129.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="RecipesContainer" type="GridContainer" parent="RecipePanel"]
+[node name="RecipesContainer" type="GridContainer" parent="RecipePanel" unique_id=1115301026]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 5.0
 offset_right = 169.0
 offset_bottom = 178.0
 
-[node name="MenuItemPanel" parent="RecipePanel/RecipesContainer" instance=ExtResource("7_k66hp")]
+[node name="MenuItemPanel" parent="RecipePanel/RecipesContainer" unique_id=989989191 instance=ExtResource("7_k66hp")]
 layout_mode = 2
 
-[node name="MenuItemPanel2" parent="RecipePanel/RecipesContainer" instance=ExtResource("7_k66hp")]
+[node name="MenuItemPanel2" parent="RecipePanel/RecipesContainer" unique_id=1783123041 instance=ExtResource("7_k66hp")]
 layout_mode = 2
 
-[node name="MenuItemPanel3" parent="RecipePanel/RecipesContainer" instance=ExtResource("7_k66hp")]
+[node name="MenuItemPanel3" parent="RecipePanel/RecipesContainer" unique_id=840677238 instance=ExtResource("7_k66hp")]
 layout_mode = 2
 
-[node name="MenuItemPanel4" parent="RecipePanel/RecipesContainer" instance=ExtResource("7_k66hp")]
+[node name="MenuItemPanel4" parent="RecipePanel/RecipesContainer" unique_id=964845122 instance=ExtResource("7_k66hp")]
 layout_mode = 2
 
-[node name="MenuItemPanel5" parent="RecipePanel/RecipesContainer" instance=ExtResource("7_k66hp")]
+[node name="MenuItemPanel5" parent="RecipePanel/RecipesContainer" unique_id=1754539476 instance=ExtResource("7_k66hp")]
 layout_mode = 2
 
-[node name="CraftingIconPanel" type="Panel" parent="."]
+[node name="CraftingIconPanel" type="Panel" parent="." unique_id=1946147922]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -293,7 +305,7 @@ offset_bottom = -48.0
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="RecipeIcon" type="TextureRect" parent="CraftingIconPanel"]
+[node name="RecipeIcon" type="TextureRect" parent="CraftingIconPanel" unique_id=306034759]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -306,7 +318,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("5_bne8p")
 
-[node name="CraftingProgressBar" type="TextureProgressBar" parent="CraftingIconPanel"]
+[node name="CraftingProgressBar" type="TextureProgressBar" parent="CraftingIconPanel" unique_id=303300020]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -317,7 +329,7 @@ step = 0.1
 fill_mode = 4
 texture_progress = ExtResource("7_ryl52")
 
-[node name="DetailsPanel" type="Panel" parent="."]
+[node name="DetailsPanel" type="Panel" parent="." unique_id=1464477410]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -331,7 +343,7 @@ offset_bottom = 125.0
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="Description" type="RichTextLabel" parent="DetailsPanel"]
+[node name="Description" type="RichTextLabel" parent="DetailsPanel" unique_id=1227001695]
 layout_mode = 0
 offset_left = 10.0
 offset_top = 5.0
@@ -342,23 +354,23 @@ theme_override_fonts/normal_font = ExtResource("4_dxjxu")
 theme_override_font_sizes/normal_font_size = 12
 text = "Haya it's a gagootz one great diesh!"
 
-[node name="IngredientsContainer" type="GridContainer" parent="DetailsPanel"]
+[node name="IngredientsContainer" type="GridContainer" parent="DetailsPanel" unique_id=1564424474]
 layout_mode = 0
 offset_left = 7.0
-offset_top = 60.0
+offset_top = 62.0
 offset_right = 171.0
 offset_bottom = 166.0
 
-[node name="IngredientItem" parent="DetailsPanel/IngredientsContainer" instance=ExtResource("7_0cin3")]
+[node name="IngredientItem" parent="DetailsPanel/IngredientsContainer" unique_id=1173118937 instance=ExtResource("7_0cin3")]
 layout_mode = 2
 
-[node name="IngredientItem2" parent="DetailsPanel/IngredientsContainer" instance=ExtResource("7_0cin3")]
+[node name="IngredientItem2" parent="DetailsPanel/IngredientsContainer" unique_id=1190249480 instance=ExtResource("7_0cin3")]
 layout_mode = 2
 
-[node name="IngredientItem3" parent="DetailsPanel/IngredientsContainer" instance=ExtResource("7_0cin3")]
+[node name="IngredientItem3" parent="DetailsPanel/IngredientsContainer" unique_id=1835576052 instance=ExtResource("7_0cin3")]
 layout_mode = 2
 
-[node name="I" type="Button" parent="."]
+[node name="I" type="Button" parent="." unique_id=896458648]
 layout_mode = 0
 offset_left = 213.0
 offset_top = 76.0
@@ -369,7 +381,7 @@ theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("4_dxjxu")
 text = "I"
 
-[node name="II" type="Button" parent="."]
+[node name="II" type="Button" parent="." unique_id=804114102]
 layout_mode = 0
 offset_left = 248.0
 offset_top = 76.0
@@ -380,7 +392,7 @@ theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("4_dxjxu")
 text = "II"
 
-[node name="III" type="Button" parent="."]
+[node name="III" type="Button" parent="." unique_id=304922940]
 layout_mode = 0
 offset_left = 282.0
 offset_top = 76.0
@@ -391,7 +403,7 @@ theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("4_dxjxu")
 text = "III"
 
-[node name="IV" type="Button" parent="."]
+[node name="IV" type="Button" parent="." unique_id=882116077]
 layout_mode = 0
 offset_left = 317.0
 offset_top = 76.0
@@ -402,7 +414,7 @@ theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("4_dxjxu")
 text = "IV"
 
-[node name="V" type="Button" parent="."]
+[node name="V" type="Button" parent="." unique_id=1916104256]
 layout_mode = 0
 offset_left = 352.0
 offset_top = 76.0
@@ -413,7 +425,7 @@ theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("4_dxjxu")
 text = "V"
 
-[node name="StartCrafting" type="Button" parent="."]
+[node name="StartCrafting" type="Button" parent="." unique_id=229649990]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -430,7 +442,7 @@ theme_override_font_sizes/font_size = 12
 disabled = true
 text = "Start!"
 
-[node name="StopCrafting" type="Button" parent="."]
+[node name="StopCrafting" type="Button" parent="." unique_id=1992946747]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -447,7 +459,7 @@ theme_override_font_sizes/font_size = 12
 disabled = true
 text = "Stop."
 
-[node name="Exit" type="Button" parent="."]
+[node name="Exit" type="Button" parent="." unique_id=2019582826]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -463,14 +475,27 @@ theme_override_fonts/font = ExtResource("3_udv0u")
 text = "Exit
 "
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+[node name="RecipeName2" type="Label" parent="." unique_id=215117787]
+layout_mode = 0
+offset_left = 547.0
+offset_top = 187.0
+offset_right = 586.0
+offset_bottom = 202.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("4_dxjxu")
+theme_override_font_sizes/font_size = 12
+text = "Recipe"
+horizontal_alignment = 1
+
+[node name="StateMachine" type="Node" parent="." unique_id=802888416 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("10_ksp7y")
 initial_state = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="StateMachine"]
+[node name="Idle" type="Node" parent="StateMachine" unique_id=1311692143]
 script = ExtResource("11_8pjqq")
 
-[node name="Craft" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "sfx_player")]
+[node name="Craft" type="Node" parent="StateMachine" unique_id=575984070 node_paths=PackedStringArray("idle_state", "sfx_player")]
 script = ExtResource("12_8jenx")
 idle_state = NodePath("../Idle")
 sfx_player = NodePath("../../SfxPlayer")

@@ -9,6 +9,7 @@ func enter() -> void:
 	parent.can_knock_back = false
 	parent.damageable = false
 	parent.set_sword_texture(animation_name)
+	parent.set_outfit_texture(animation_name)
 	parent.timer.wait_time = PlayerStats.player_stats["Dash Duration"]
 	parent.timer.start()
 	#unique

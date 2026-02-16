@@ -12,6 +12,7 @@
 [ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="9_jyqen"]
 [ext_resource type="Texture2D" uid="uid://bob2oo3d75ybb" path="res://Assets/HUD/xpbar_base.png" id="11_6ndbt"]
 [ext_resource type="Texture2D" uid="uid://dluwh7ev7vu3e" path="res://Assets/HUD/xpbar_fill.png" id="12_8d4p7"]
+[ext_resource type="Texture2D" uid="uid://bggsgp4t53q5y" path="res://Assets/HUD/NoticeIcon.png" id="12_fw5mt"]
 
 [sub_resource type="Animation" id="Animation_g1bs5"]
 resource_name = "CloseIn"
@@ -467,6 +468,7 @@ horizontal_alignment = 2
 
 [node name="ExpeditionTimer" parent="PlayerHUD" unique_id=1374901185 instance=ExtResource("7_g3oel")]
 layout_mode = 1
+offset_right = 81.0
 
 [node name="HuntQuota" type="RichTextLabel" parent="PlayerHUD" unique_id=325974037]
 layout_mode = 0
@@ -499,10 +501,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -338.0
-offset_top = -34.0
-offset_right = -141.0
-offset_bottom = -18.0
+offset_left = -202.0
+offset_top = -24.0
+offset_right = -5.0
+offset_bottom = -8.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_constants/outline_size = 5
@@ -518,10 +520,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -496.0
-offset_top = -34.0
-offset_right = -408.0
-offset_bottom = -18.0
+offset_left = -633.0
+offset_top = -24.0
+offset_right = -545.0
+offset_bottom = -8.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_constants/outline_size = 5
@@ -536,37 +538,14 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -186.0
-offset_top = -19.0
-offset_right = 186.0
-offset_bottom = -3.0
+offset_left = -320.0
+offset_top = -9.0
+offset_right = 320.0
 grow_horizontal = 2
 grow_vertical = 0
 step = 0.1
 texture_under = ExtResource("11_6ndbt")
 texture_progress = ExtResource("12_8d4p7")
-
-[node name="TopBlackBar" type="ColorRect" parent="PlayerHUD" unique_id=877174551]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -185.0
-offset_bottom = -185.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
-
-[node name="BotBlackBar" type="ColorRect" parent="PlayerHUD" unique_id=1251153564]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 175.0
-offset_bottom = 175.00018
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
 
 [node name="BigNotificationLabel" type="Label" parent="PlayerHUD" unique_id=759498820]
 visible = false
@@ -642,10 +621,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -337.0
-offset_top = -52.0
-offset_right = -141.0
-offset_bottom = -35.0
+offset_left = -581.0
+offset_top = -24.0
+offset_right = -464.0
+offset_bottom = -7.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_constants/outline_size = 6
@@ -667,6 +646,96 @@ theme_override_font_sizes/font_size = 40
 text = "Hunt Challenge!"
 horizontal_alignment = 1
 
+[node name="PickUpNotifier" type="VBoxContainer" parent="PlayerHUD" unique_id=484786063]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -203.0
+offset_top = -202.0
+offset_right = -17.0
+offset_bottom = -31.0
+grow_horizontal = 0
+grow_vertical = 0
+alignment = 2
+
+[node name="StartHuntChallengeButton" type="Button" parent="PlayerHUD" unique_id=183096058]
+visible = false
+layout_mode = 0
+offset_left = 456.0
+offset_top = 9.0
+offset_right = 536.0
+offset_bottom = 41.0
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.9411765, 0.15686275, 0, 1)
+theme_override_fonts/font = ExtResource("9_jyqen")
+theme_override_font_sizes/font_size = 12
+text = "Start 
+Hunt Challenge"
+
+[node name="NoticeIcon" type="TextureRect" parent="PlayerHUD/StartHuntChallengeButton" unique_id=1372142193]
+layout_mode = 0
+offset_left = 79.0
+offset_top = -2.0
+offset_right = 111.0
+offset_bottom = 30.0
+texture = ExtResource("12_fw5mt")
+stretch_mode = 2
+
+[node name="MaxSlotStack" type="Label" parent="PlayerHUD" unique_id=1064097603]
+visible = false
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = -57.0
+offset_right = 138.0
+offset_bottom = -41.0
+grow_vertical = 0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("9_jyqen")
+text = "Slot Stacks: 4"
+
+[node name="Bagslots" type="Label" parent="PlayerHUD" unique_id=1941069362]
+visible = false
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = -43.0
+offset_right = 133.0
+offset_bottom = -27.0
+grow_vertical = 0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("9_jyqen")
+text = "Bag Slots: 4"
+
+[node name="TopBlackBar" type="ColorRect" parent="PlayerHUD" unique_id=877174551]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -185.0
+offset_bottom = -185.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="BotBlackBar" type="ColorRect" parent="PlayerHUD" unique_id=1251153564]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 175.0
+offset_bottom = 175.00018
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
 [node name="SfxPlayer" parent="." unique_id=2102076142 instance=ExtResource("8_65fhw")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1863759790]
@@ -674,5 +743,7 @@ libraries/ = SubResource("AnimationLibrary_g3oel")
 
 [node name="BagAnimationPlayer" type="AnimationPlayer" parent="." unique_id=1372864879]
 libraries/ = SubResource("AnimationLibrary_jyqen")
+
+[connection signal="button_up" from="PlayerHUD/StartHuntChallengeButton" to="." method="_on_start_hunt_challenge_button_button_up"]
 
 [editable path="PlayerHUD/Bag"]

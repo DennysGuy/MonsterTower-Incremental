@@ -19,6 +19,7 @@ func enter() -> void:
 	parent.can_double_jump = true
 	parent.can_knock_back = true
 	parent.set_sword_texture(animation_name)
+	parent.set_outfit_texture(animation_name)
 	parent.sfx_player.play_sfx(move_sfx)
 
 func exit() -> void:
@@ -38,13 +39,11 @@ func process_physics(_delta: float) -> State:
 		parent.jump_buffer_timer = 0
 		return jump_state
 	
+	if Input.is_action_just_pressed("dash_attack") and  PlayerStats.facilities_unlocked["Dash Attack"] and parent.can_dash_attack:
+		return dash_attack_state
+
 	if Input.is_action_just_pressed("swing_sword"):
-		if PlayerStats.facilities_unlocked["Dash Attack"] and parent.can_dash_attack:
-			return dash_attack_state
-		else:
-			return attack_1_state
-
-
+		return attack_1_state
 
 	var input := Input.get_axis("pan_cam_left", "pan_cam_right")
 	var max_speed = PlayerStats.player_stats["Movement Speed"]

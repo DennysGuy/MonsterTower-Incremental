@@ -22,8 +22,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -5.0
-offset_right = -5.0
+offset_left = 1.0
+offset_right = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -48,14 +48,15 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 34.0
-offset_top = 37.0
-offset_right = 175.0
-offset_bottom = 52.0
+offset_left = -74.5
+offset_top = 7.0
+offset_right = 77.5
+offset_bottom = 25.0
 grow_horizontal = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_oo3yc")
+theme_override_font_sizes/font_size = 18
 text = "The Grand Market"
 horizontal_alignment = 2
 
@@ -64,15 +65,16 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -119.0
-offset_top = 333.0
-offset_right = 22.0
-offset_bottom = 348.0
+offset_left = 52.0
+offset_top = 37.0
+offset_right = 121.0
+offset_bottom = 49.0
 grow_horizontal = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_oo3yc")
-text = "Press 'ESC' to Exit"
+theme_override_font_sizes/font_size = 12
+text = "'ESC' to Exit"
 horizontal_alignment = 2
 
 [node name="Currency" type="Label" parent="." unique_id=2049901058]
@@ -93,10 +95,10 @@ text = "Currency: 1000000000000"
 
 [node name="Special" type="Label" parent="." unique_id=728038650]
 layout_mode = 1
-offset_left = 166.0
-offset_top = 72.0
-offset_right = 288.0
-offset_bottom = 84.0
+offset_left = 165.0
+offset_top = 55.0
+offset_right = 287.0
+offset_bottom = 67.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("2_oo3yc")
@@ -201,10 +203,10 @@ text = "The core of a corrupted mushie purified through a chemical process when 
 
 [node name="Close" type="Button" parent="." unique_id=567962344]
 layout_mode = 1
-offset_left = 149.0
-offset_top = 328.0
-offset_right = 194.0
-offset_bottom = 351.0
+offset_left = 447.0
+offset_top = 26.0
+offset_right = 492.0
+offset_bottom = 49.0
 mouse_default_cursor_shape = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5_oesmi")
@@ -296,18 +298,18 @@ to Access Slots!"
 
 [node name="CraftingRect" type="ColorRect" parent="." unique_id=1025211095]
 layout_mode = 0
-offset_left = 149.0
-offset_top = 314.0
-offset_right = 159.0
-offset_bottom = 324.0
+offset_left = 168.0
+offset_top = 76.0
+offset_right = 178.0
+offset_bottom = 85.0
 color = Color(0.8647932, 0.33930212, 0.28156033, 1)
 
 [node name="Label" type="Label" parent="." unique_id=1673807550]
 layout_mode = 0
-offset_left = 163.0
-offset_top = 313.0
-offset_right = 218.0
-offset_bottom = 324.0
+offset_left = 182.0
+offset_top = 74.0
+offset_right = 249.0
+offset_bottom = 86.0
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("6_wwjc2")
 theme_override_font_sizes/font_size = 12
@@ -315,10 +317,10 @@ text = "Crafting Item"
 
 [node name="Label2" type="Label" parent="." unique_id=1852877464]
 layout_mode = 0
-offset_left = 272.0
-offset_top = 313.0
-offset_right = 339.0
-offset_bottom = 325.0
+offset_left = 183.0
+offset_top = 90.0
+offset_right = 250.0
+offset_bottom = 102.0
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("6_wwjc2")
 theme_override_font_sizes/font_size = 12
@@ -326,10 +328,10 @@ text = "Cooking Item"
 
 [node name="Label3" type="Label" parent="." unique_id=1228929711]
 layout_mode = 0
-offset_left = 381.0
-offset_top = 313.0
-offset_right = 448.0
-offset_bottom = 325.0
+offset_left = 185.0
+offset_top = 104.0
+offset_right = 252.0
+offset_bottom = 116.0
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("6_wwjc2")
 theme_override_font_sizes/font_size = 12
@@ -354,22 +356,42 @@ theme_override_fonts/font = ExtResource("5_oesmi")
 theme_override_font_sizes/font_size = 10
 text = "Sell Inventories"
 
+[node name="SellNoveltiesButton" type="Button" parent="." unique_id=1752495583]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = -84.0
+offset_right = 71.0
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_oesmi")
+theme_override_font_sizes/font_size = 10
+text = "Sell Novelties"
+
 [node name="CookingRect" type="ColorRect" parent="." unique_id=211570017]
 layout_mode = 0
-offset_left = 257.0
-offset_top = 314.0
-offset_right = 267.0
-offset_bottom = 324.0
+offset_left = 168.0
+offset_top = 92.0
+offset_right = 178.0
+offset_bottom = 101.0
 color = Color(0.22396949, 0.62108177, 0.44141597, 1)
 
 [node name="NoveltyRect" type="ColorRect" parent="." unique_id=910340371]
 layout_mode = 0
-offset_left = 363.0
-offset_top = 314.0
-offset_right = 374.0
-offset_bottom = 325.0
+offset_left = 168.0
+offset_top = 106.0
+offset_right = 178.0
+offset_bottom = 116.0
 color = Color(0.2483125, 0.57688683, 0.7351986, 1)
 
 [connection signal="button_up" from="DetailsPanel/SellButton" to="." method="_on_sell_button_button_up"]
 [connection signal="button_up" from="Close" to="." method="_on_close_button_up"]
 [connection signal="button_up" from="SellAllButton" to="." method="_on_sell_all_button_button_up"]
+[connection signal="button_up" from="SellNoveltiesButton" to="." method="_on_sell_novelties_button_button_up"]

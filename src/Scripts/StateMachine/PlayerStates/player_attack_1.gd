@@ -23,6 +23,7 @@ func enter() -> void:
 	parent.animation_player.play(animation_name)
 
 	parent.set_sword_texture("SwordSwing1")
+	parent.set_outfit_texture(animation_name)
 	parent.timer.wait_time = PlayerStats.get_current_sword().attack_speed
 	parent.timer.start()
 

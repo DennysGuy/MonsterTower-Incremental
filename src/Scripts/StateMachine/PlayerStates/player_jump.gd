@@ -12,6 +12,7 @@ func enter() -> void:
 	parent.can_knock_back = true
 	parent.sfx_player.play_sfx(jump_sfx)
 	parent.set_sword_texture(animation_name)
+	parent.set_outfit_texture(animation_name)
 
 	parent.velocity.y = 0
 	parent.velocity.y -= PlayerStats.player_stats["Jump Height"]
