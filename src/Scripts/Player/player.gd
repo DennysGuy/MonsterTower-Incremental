@@ -59,6 +59,7 @@ var was_on_ledge : bool = true
 func _ready() -> void:
 	super()
 	SignalBus.update_sword_texture.connect(set_sword_texture)
+	SignalBus.update_player_uniform.connect(set_outfit_texture)
 	health = PlayerStats.player_stats["Max Health"]
 	mining_area_position = mining_area.position
 	hit_box_position = hit_box.position

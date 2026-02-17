@@ -1,10 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://b404uvbhnmjxd"]
+[gd_scene format=3 uid="uid://b404uvbhnmjxd"]
 
 [ext_resource type="Texture2D" uid="uid://drdtliaopu2eg" path="res://Assets/Facilities/TempClassSelectionMenu.png" id="1_3vuop"]
 [ext_resource type="Script" uid="uid://dj6dh8phukty" path="res://src/Scripts/Facilities/Menus/class_selection_menu.gd" id="1_r0emu"]
 [ext_resource type="FontFile" uid="uid://qgj228ltdttv" path="res://Assets/Fonts/alagard.ttf" id="2_hrvbj"]
 
-[node name="ClassSelectionMenu" type="Control"]
+[node name="ClassSelectionMenu" type="Control" unique_id=27371608]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,7 +13,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_r0emu")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="Panel" parent="." unique_id=1607880911]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -21,7 +21,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=289705081]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -30,7 +30,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_3vuop")
 
-[node name="Warrior" type="Label" parent="TextureRect"]
+[node name="Warrior" type="Label" parent="TextureRect" unique_id=1037101577]
 layout_mode = 0
 offset_left = 231.0
 offset_top = 31.0
@@ -41,7 +41,7 @@ theme_override_fonts/font = ExtResource("2_hrvbj")
 theme_override_font_sizes/font_size = 48
 text = "WARRIOR"
 
-[node name="Mage" type="Label" parent="TextureRect"]
+[node name="Mage" type="Label" parent="TextureRect" unique_id=1242867718]
 layout_mode = 0
 offset_left = 263.0
 offset_top = 277.0
@@ -52,7 +52,7 @@ theme_override_fonts/font = ExtResource("2_hrvbj")
 theme_override_font_sizes/font_size = 48
 text = "Mage"
 
-[node name="Notice" type="Label" parent="TextureRect"]
+[node name="Notice" type="Label" parent="TextureRect" unique_id=1763383214]
 layout_mode = 0
 offset_left = 263.0
 offset_top = 222.0
@@ -63,7 +63,7 @@ theme_override_fonts/font = ExtResource("2_hrvbj")
 theme_override_font_sizes/font_size = 30
 text = "[Not Available]"
 
-[node name="Warrior2" type="Label" parent="TextureRect"]
+[node name="Warrior2" type="Label" parent="TextureRect" unique_id=598504142]
 layout_mode = 0
 offset_left = 234.0
 offset_top = 76.0
@@ -76,7 +76,7 @@ text = "- Melee Tank
 - High Crowd Control
 "
 
-[node name="MageDetails" type="Label" parent="TextureRect"]
+[node name="MageDetails" type="Label" parent="TextureRect" unique_id=410127543]
 layout_mode = 0
 offset_left = 388.0
 offset_top = 275.0
@@ -88,7 +88,7 @@ theme_override_font_sizes/font_size = 16
 text = "- Ranged DPS
 - High AOE"
 
-[node name="WarriorSelect" type="Button" parent="TextureRect"]
+[node name="WarriorSelect" type="Button" parent="TextureRect" unique_id=1805949375]
 layout_mode = 0
 offset_left = 98.0
 offset_top = 188.0
@@ -99,7 +99,7 @@ theme_override_fonts/font = ExtResource("2_hrvbj")
 theme_override_font_sizes/font_size = 32
 text = "Select"
 
-[node name="WarriorSelect2" type="Button" parent="TextureRect"]
+[node name="Exit" type="Button" parent="TextureRect" unique_id=607167638]
 layout_mode = 0
 offset_left = 116.0
 offset_top = 300.0
@@ -110,4 +110,5 @@ theme_override_fonts/font = ExtResource("2_hrvbj")
 theme_override_font_sizes/font_size = 24
 text = "Exit"
 
-[connection signal="button_up" from="TextureRect/WarriorSelect2" to="." method="_on_warrior_select_2_button_up"]
+[connection signal="button_up" from="TextureRect/WarriorSelect" to="." method="_on_warrior_select_button_up"]
+[connection signal="button_up" from="TextureRect/Exit" to="." method="_on_warrior_select_2_button_up"]

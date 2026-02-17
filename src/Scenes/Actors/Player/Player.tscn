@@ -9,7 +9,6 @@
 [ext_resource type="Script" uid="uid://b3ys3chdjw1qq" path="res://src/Scripts/StateMachine/PlayerStates/player_climb.gd" id="6_hrnox"]
 [ext_resource type="Script" uid="uid://q7dh86d3scqk" path="res://src/Scripts/StateMachine/PlayerStates/player_fall.gd" id="6_k5pak"]
 [ext_resource type="AudioStream" uid="uid://fjjtu5mli4xo" path="res://Audio/SFX/Player/Jump_NoVerb.wav" id="6_yawj3"]
-[ext_resource type="Texture2D" uid="uid://gy4gbpsh25np" path="res://Assets/PlayerGraphics/TempPlayer/Idle.png" id="7_4qtrc"]
 [ext_resource type="Script" uid="uid://cff2efoj6wrst" path="res://src/Scripts/StateMachine/PlayerStates/player_attack_1.gd" id="7_j38pk"]
 [ext_resource type="Texture2D" uid="uid://bsecr00dhq83o" path="res://Assets/PlayerGraphics/TempPlayer/SwordSwingEffect.png" id="8_j38pk"]
 [ext_resource type="Script" uid="uid://cdntaeegiu5oe" path="res://src/Scripts/StateMachine/PlayerStates/player_attack_2.gd" id="8_k1vse"]
@@ -786,10 +785,10 @@ tracks/0/path = NodePath(".:hframes")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
 "update": 1,
-"values": [1]
+"values": []
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -798,10 +797,10 @@ tracks/1/path = NodePath(".:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
 "update": 1,
-"values": [ExtResource("7_4qtrc")]
+"values": []
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -810,10 +809,10 @@ tracks/2/path = NodePath(".:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
 "update": 1,
-"values": [0]
+"values": []
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -1623,7 +1622,6 @@ libraries/ = SubResource("AnimationLibrary_pawjx")
 [node name="PlayerSprite" type="Sprite2D" parent="Sprites" unique_id=1041617266]
 position = Vector2(0, -32)
 scale = Vector2(1, 0.98604256)
-texture = ExtResource("7_4qtrc")
 
 [node name="Outfit" type="Sprite2D" parent="Sprites" unique_id=411712928]
 position = Vector2(0, -32)

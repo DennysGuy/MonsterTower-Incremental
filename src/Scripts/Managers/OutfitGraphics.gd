@@ -13,6 +13,18 @@ var outfit_graphics : Dictionary = {
 		"AirAttack":preload("uid://cshuuw4evmiqi"),
 		"Climb": preload("uid://cqmq21ket8vvt"),
 		"PickaxeSwing": preload("uid://cnf7idq4cexlj")
+	},
+	"Tyro" : {
+		"Idle": preload("uid://bsy5tgiwm7wxj"),
+		"Run": preload("uid://d3k856go8d7y1"),
+		"Jump": preload("uid://djvf2ohe2te8o"),
+		"Fall": preload("uid://djvf2ohe2te8o"),
+		"SwordSwing1": preload("uid://yr04pwemffgp"),
+		"SwordSwing2":preload("uid://yr04pwemffgp"),
+		"SwordSwing3":preload("uid://yr04pwemffgp"),
+		"AirAttack":preload("uid://yr04pwemffgp"),
+		"Climb": preload("uid://dk2em20jehn6b"),
+		"PickaxeSwing": preload("uid://bik1x4xoyau24")
 	}
 }
 

@@ -25,8 +25,8 @@ signal move_to_next_room
 signal return_to_starshire
 @warning_ignore("unused_signal")
 signal store_entrance_data(data : TowerEntranceData)
-
-
+@warning_ignore("unused_signal")
+signal update_player_uniform(animation_name : String)
 @warning_ignore("unused_signal")
 signal issue_big_notification(notification : String)
 @warning_ignore("unused_signal")

@@ -67,7 +67,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_lb6hv")
-next_scene_path = "uid://c3y6ce3xriuwl"
+next_scene_path = "uid://c3nk4aov63usx"
 
 [node name="ColorRect" type="TextureRect" parent="." unique_id=1039899871]
 layout_mode = 1
