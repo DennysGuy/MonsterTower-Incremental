@@ -45,7 +45,7 @@ func process_physics(_delta: float) -> State:
 	if Input.is_action_pressed("pan_cam_up") and parent.in_ladder_area and parent.global_position.y <= parent.stored_ladder.ladder_bottom_position and parent.global_position.y > parent.stored_ladder.ladder_top_position:
 		return climb_state
 	
-	if Input.is_action_just_pressed("swing_sword") and PlayerStats.facilities_unlocked["Arial Slash"]:
+	if Input.is_action_just_pressed("swing_sword") and PlayerStats.facilities_unlocked["Arial Slash"] and AbilityTimers.ability_state["Air Attack"]["Can Do"]:
 		return air_attack
 	
 	if parent.is_on_floor():

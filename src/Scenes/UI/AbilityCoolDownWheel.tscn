@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://cnnswhinxp2l4"]
+
+[ext_resource type="Texture2D" uid="uid://c6ec2e3vsjusf" path="res://Assets/HUD/AbilityCoolDownProgressSquare.png" id="1_bu7ek"]
+[ext_resource type="Script" uid="uid://iaapj6re7hu" path="res://src/Scripts/HUD/ability_cool_down_wheel.gd" id="2_5n2rg"]
+[ext_resource type="Texture2D" uid="uid://cbcw7ua8sro78" path="res://Assets/HUD/HUD_LockedAbilityIcon.png" id="2_lp3lp"]
+
+[node name="AbilityCoolDownWheel" type="Control" unique_id=844176484]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -6.75
+offset_top = -6.0
+offset_right = 6.75
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_5n2rg")
+
+[node name="Icon" type="TextureRect" parent="." unique_id=604179186]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -7.0
+offset_top = -6.0
+offset_right = 5.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_lp3lp")
+
+[node name="SparkEmitPoint" type="Marker2D" parent="." unique_id=957463292]
+position = Vector2(5.75, 6)
+
+[node name="ProgressWheel" type="TextureProgressBar" parent="." unique_id=2056605649]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -7.0
+offset_top = -6.0
+offset_right = 5.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+step = 0.0
+fill_mode = 5
+texture_progress = ExtResource("1_bu7ek")

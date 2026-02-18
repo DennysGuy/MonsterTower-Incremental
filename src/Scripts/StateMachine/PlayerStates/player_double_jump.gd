@@ -12,7 +12,7 @@ func enter() -> void:
 	super()
 	parent.can_double_jump = false
 	parent.can_knock_back = true
-
+	AbilityTimers.activate_ability_cooldown("Double Jump")
 	parent.set_sword_texture(animation_name)
 	parent.set_outfit_texture(animation_name)
 	var selected_ability : Ability = PlayerStats.get_equipped_ability("Double Jump")

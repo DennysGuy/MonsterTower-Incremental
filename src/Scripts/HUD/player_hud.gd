@@ -5,6 +5,7 @@ class_name PlayerHUD extends CanvasLayer
 @onready var player_hud: Control = $PlayerHUD
 @export var animation_player: AnimationPlayer
 @onready var hp_label: Label = $PlayerHUD/HPLabel
+@onready var mp_label: Label = $PlayerHUD/MPLabel
 @export var map_name_label: Label
 @onready var bag_animation_player: AnimationPlayer = $BagAnimationPlayer
 var bag_showing : bool = false
@@ -24,6 +25,7 @@ var map_name : String = ""
 @onready var xp_bar: TextureProgressBar = $PlayerHUD/XPBar
 @onready var level_label: Label = $PlayerHUD/LevelLabel
 @onready var currency_label: RichTextLabel = $PlayerHUD/CurrencyLabel
+
 
 const CLOSE_IN = preload("uid://dc3va7knibxnb")
 const CLOSE_OUT = preload("uid://caj0oih8j2sty")

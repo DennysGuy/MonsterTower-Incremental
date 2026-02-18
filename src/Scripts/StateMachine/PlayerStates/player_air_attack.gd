@@ -14,10 +14,12 @@ func enter() -> void:
 	var selected_ability : Ability = PlayerStats.get_equipped_ability("Air Attack")
 	equipped_air_attack = selected_ability.ability_behavior
 	equipped_air_attack.on_enter(parent)
-
+	AbilityTimers.activate_ability_cooldown("Air Attack")
+	
 func exit() -> void:
 	parent.damageable = true
 	parent.clear_effect_texture()
+	
 	stop_player()
 	
 func process_input(_event: InputEvent) -> State:

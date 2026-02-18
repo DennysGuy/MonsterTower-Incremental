@@ -38,6 +38,9 @@ signal save_node_data
 @warning_ignore("unused_signal")
 signal check_needed_item_panel_for_purchase
 
+@warning_ignore("unused_signal")
+signal set_ability_hud_icon
+
 var currency : int = 0
 var current_prestige : int = 0
 

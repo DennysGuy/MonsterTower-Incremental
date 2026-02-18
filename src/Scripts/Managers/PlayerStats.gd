@@ -97,6 +97,7 @@ var player_classes : Dictionary = {
 		"Sword Attack 3 Name": preload("uid://7qd8qvg4bf73"),
 		"Air Attack": 	preload("uid://bukiike6rf6pl"),
 		"Dash Attack": preload("uid://b0lsgfuw8bp58"),
+		"Double Jump": preload("uid://rgwunwula5mv"),
 		"Special Attack": null
 	}
 }

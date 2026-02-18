@@ -15,7 +15,6 @@ func _on_warrior_select_2_button_up() -> void:
 	GameManager.player_can_move = true
 	queue_free()
 
-
 func _on_warrior_select_button_up() -> void:
 	GameManager.player_can_move = true
 	PlayerStats.player_stats["Class"] = "Tyro"
