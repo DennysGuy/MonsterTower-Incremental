@@ -122,10 +122,15 @@ func _ready() -> void:
 	else:
 		if hunt_theme_song:
 			MusicPlayer.play_song(hunt_theme_song)
-			
+
+func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("close_menu") and GameManager.can_pause_game:
+		var pause_menu : PauseMenu = preload("uid://dlaq2oh2iuyjk").instantiate()
+		hud.add_child(pause_menu)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
 	
 func spawn_player() -> void:
 	var new_player : Player = preload("uid://wuy3aelq8aeg").instantiate()

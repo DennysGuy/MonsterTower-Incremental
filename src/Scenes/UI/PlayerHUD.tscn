@@ -384,12 +384,14 @@ _data = {
 }
 
 [node name="HUD" type="CanvasLayer" unique_id=129498783 node_paths=PackedStringArray("animation_player", "map_name_label", "expedition_timer")]
+process_mode = 3
 script = ExtResource("1_m8qo1")
 animation_player = NodePath("AnimationPlayer")
 map_name_label = NodePath("PlayerHUD/MapeName")
 expedition_timer = NodePath("PlayerHUD/ExpeditionTimer")
 
 [node name="PlayerHUD" type="Control" parent="." unique_id=104251794]
+process_mode = 3
 z_index = 4096
 layout_mode = 3
 anchors_preset = 15
@@ -741,6 +743,7 @@ offset_top = -185.0
 offset_bottom = -185.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="BotBlackBar" type="ColorRect" parent="PlayerHUD" unique_id=1251153564]
@@ -752,6 +755,7 @@ offset_top = 175.0
 offset_bottom = 175.00018
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="SfxPlayer" parent="." unique_id=2102076142 instance=ExtResource("8_65fhw")]

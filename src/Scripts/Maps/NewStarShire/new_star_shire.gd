@@ -123,27 +123,27 @@ func go_to_test_floor() -> void:
 
 func spawn_tower_entrance_map() -> void:
 	var tower_entrance_map : TowerEntranceMap = preload("uid://bgurt44iah13x").instantiate()
-	control.add_child(tower_entrance_map)
+	hud.add_child(tower_entrance_map)
 
 func spawn_grand_market() -> void:
 	var market : GrandMarketMenu = preload("uid://cfuw5h0apwpq").instantiate()
-	control.add_child(market)
+	hud.add_child(market)
 
 func spawn_cooking_menu() -> void:
 	var cooking_range : CookingMenu = preload("uid://cotvjq5dygv7p").instantiate()
-	control.add_child(cooking_range)
+	hud.add_child(cooking_range)
 
 func spawn_smelting_menu() -> void:
 	var smelting_station : SmeltingMenu = preload("uid://dtf6m65mtihb8").instantiate()
-	control.add_child(smelting_station)
+	hud.add_child(smelting_station)
 
 func spawn_crafting_menu() -> void:
 	var sword_crafting_station : CraftingStationMenu = preload("uid://cc1xppx3tkq4f").instantiate()
-	control.add_child(sword_crafting_station)
+	hud.add_child(sword_crafting_station)
 	
 func spawn_dojo_menu() -> void:
 	var class_selection_menu : ClassSelectionMenu = preload("uid://b404uvbhnmjxd").instantiate()
-	control.add_child(class_selection_menu)
+	hud.add_child(class_selection_menu)
 	
 func _on_grand_market_area_body_entered(body: Node2D) -> void:
 	if body is Player:

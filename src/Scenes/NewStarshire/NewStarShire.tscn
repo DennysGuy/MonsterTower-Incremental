@@ -889,9 +889,6 @@ shape = SubResource("RectangleShape2D_pdf0i")
 [node name="TowerGuideSprite" parent="." unique_id=1901348219 instance=ExtResource("9_636af")]
 position = Vector2(976.00006, 624)
 
-[node name="HUD" parent="." unique_id=1906468594 instance=ExtResource("10_4wn0b")]
-visible = false
-
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1662037132]
 
 [node name="Control" type="Control" parent="CanvasLayer" unique_id=278930507]
@@ -1266,6 +1263,9 @@ theme_override_font_sizes/font_size = 16
 text = "Sell 
 Items"
 metadata/_edit_use_anchors_ = true
+
+[node name="HUD" parent="." unique_id=1906468594 instance=ExtResource("10_4wn0b")]
+visible = false
 
 [node name="PlayerSpawnPoint" parent="." unique_id=2052586156 instance=ExtResource("30_cxssj")]
 position = Vector2(58, 384)
