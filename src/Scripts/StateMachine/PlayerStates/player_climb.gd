@@ -7,6 +7,7 @@ class_name PlayerClimb extends State
 
 func enter() -> void:
 	super()
+	parent.apply_gravity = false
 	parent.can_double_jump = true
 	parent.can_knock_back = false
 	parent.velocity = Vector2.ZERO
@@ -18,7 +19,7 @@ func enter() -> void:
 	parent.set_collision_mask_value(5, false)
 	
 func exit() -> void:
-	
+	parent.apply_gravity = true
 	parent.sfx_player.stop()
 	parent.is_climbing = false
 	parent.set_collision_mask_value(5, true)

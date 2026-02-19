@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Ability" format=3 uid="uid://ctavgtgbvyp1w"]
+
+[ext_resource type="Script" uid="uid://bwqf7q51702b" path="res://src/Scripts/cability.gd" id="1_5cicd"]
+[ext_resource type="Resource" uid="uid://d1rdw2uwjodur" path="res://src/Resources/AbilityStates/DoubleJumps/SwordSoarBehavior.tres" id="1_yip4t"]
+
+[resource]
+script = ExtResource("1_5cicd")
+ability_name = "Sword Soar"
+ability_type = 3
+cooldown_time = 3.0
+ability_description = "Soar in the air hitting the enemies above and pushing them towards the side."
+ability_behavior = ExtResource("1_yip4t")
+mp_cost = 10.0
+number_of_enemies_hit = 5.0
+max_hit_count = 1.0
+metadata/_custom_type_script = "uid://bwqf7q51702b"

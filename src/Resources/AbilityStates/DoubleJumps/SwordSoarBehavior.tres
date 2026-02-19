@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="SwordSoarBehavior" format=3 uid="uid://d1rdw2uwjodur"]
+
+[ext_resource type="Script" uid="uid://b3pviiifujhgj" path="res://src/Scripts/StateMachine/AbilitiyStates/DoubleJumpAttacks/sword_soar_behavior.gd" id="1_3ok0g"]
+
+[resource]
+script = ExtResource("1_3ok0g")
+animation_name = "SwordSoar"
+metadata/_custom_type_script = "uid://b3pviiifujhgj"

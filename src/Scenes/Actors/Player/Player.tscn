@@ -44,8 +44,8 @@
 [ext_resource type="Texture2D" uid="uid://bvj4nyj0lqt7s" path="res://Assets/PlayerGraphics/VFX/BasicSwordSwingEffect.png" id="37_j7gfj"]
 [ext_resource type="Texture2D" uid="uid://datstfpikb41r" path="res://Assets/PlayerGraphics/NewPlayer/PlayerSwordSoar.png" id="37_ude4q"]
 [ext_resource type="Texture2D" uid="uid://cn6ofy35wwrbd" path="res://Assets/PlayerGraphics/NewPlayer/PlayerSwordSlam.png" id="38_fw0a5"]
-[ext_resource type="Texture2D" uid="uid://4vkwnouwrrvw" path="res://Assets/PlayerGraphics/Outfits/TyrosFit/TyroFit_DoubleCleave.png" id="40_ixl28"]
 [ext_resource type="Texture2D" uid="uid://cw87r1yvb8san" path="res://Assets/PlayerGraphics/Weapons/ShroomSword/ShroomSword_DoubleCleave.png" id="41_ixl28"]
+[ext_resource type="Texture2D" uid="uid://djvf2ohe2te8o" path="res://Assets/PlayerGraphics/Outfits/TyrosFit/TyroFit_Jump.png" id="42_b0557"]
 
 [sub_resource type="Animation" id="Animation_cq2ky"]
 resource_name = "AirAttack"
@@ -563,7 +563,7 @@ tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
+"update": 1,
 "values": [1]
 }
 tracks/4/type = "value"
@@ -575,7 +575,7 @@ tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
+"update": 1,
 "values": [2]
 }
 tracks/5/type = "value"
@@ -1939,14 +1939,14 @@ libraries/ = SubResource("AnimationLibrary_pawjx")
 [node name="PlayerSprite" type="Sprite2D" parent="Sprites" unique_id=1041617266]
 position = Vector2(0, -32)
 scale = Vector2(1, 0.98604256)
-texture = ExtResource("32_ixl28")
-hframes = 15
-frame = 6
+texture = ExtResource("32_skwl0")
+hframes = 2
+frame = 1
 
 [node name="Outfit" type="Sprite2D" parent="Sprites" unique_id=411712928]
 position = Vector2(0, -32)
 scale = Vector2(1, 0.98604256)
-texture = ExtResource("40_ixl28")
+texture = ExtResource("42_b0557")
 
 [node name="Sword" type="Sprite2D" parent="Sprites" unique_id=1728017757]
 position = Vector2(0, -32)

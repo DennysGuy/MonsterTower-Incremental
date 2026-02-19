@@ -9,18 +9,19 @@ class_name PlayerDoubleJump extends State
 var double_jump_state : DoubleJumpBehavior
 
 func enter() -> void:
-	super()
 	parent.can_double_jump = false
 	parent.can_knock_back = true
 	AbilityTimers.activate_ability_cooldown("Double Jump")
-	parent.set_sword_texture(animation_name)
-	parent.set_outfit_texture(animation_name)
+
 	var selected_ability : Ability = PlayerStats.get_equipped_ability("Double Jump")
 	double_jump_state = selected_ability.ability_behavior
+	parent.set_sword_texture(double_jump_state.animation_name)
+	parent.set_outfit_texture(double_jump_state.animation_name)
+	parent.animation_player.play(double_jump_state.animation_name)
 	double_jump_state.on_enter(parent)
 	
 func exit() -> void:
-	pass
+	double_jump_state.on_exit()
 
 func process_input(_event: InputEvent) -> State:
 	return null

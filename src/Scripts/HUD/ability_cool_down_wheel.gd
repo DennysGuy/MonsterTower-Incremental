@@ -57,6 +57,6 @@ func set_icon() -> void:
 				icon.texture = preload("uid://cbcw7ua8sro78")
 		"Special Attack":
 			if PlayerStats.equipped_abilities["Special Attack"]:
-				icon.texture = preload("uid://dx6yh1h66vork")
+				icon.texture = preload("uid://dnqar1vwb0eae")
 			else:
 				icon.texture = preload("uid://cbcw7ua8sro78")

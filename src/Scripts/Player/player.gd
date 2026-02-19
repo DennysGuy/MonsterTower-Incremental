@@ -47,6 +47,8 @@ var can_attack_cancel: bool = false
 
 var was_on_ledge : bool = true
 
+var apply_gravity : bool = true
+
 @export var idle_state : State
 @export var jump_state : State
 @export var fall_state : State
