@@ -3,6 +3,7 @@ class_name AbilityHub extends Control
 @onready var license_tier_level: Label = $LicenseTierLevel
 
 var license_tier_text : Dictionary = {
+	0: "0",
 	1: "I",
 	2: "II",
 	3: "III",

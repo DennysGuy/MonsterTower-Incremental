@@ -10,7 +10,10 @@ var sword_textures : Dictionary = {
 		"SwordSwing2":preload("uid://bbhb6o4x6k1t8"),
 		"SwordSwing3":preload("uid://bbhb6o4x6k1t8"),
 		"AirAttack":preload("uid://bbhb6o4x6k1t8"),
-		"Climb":preload("uid://bxp4omipurasx")
+		"Climb":preload("uid://bxp4omipurasx"),
+		"SwordSoar": preload("uid://bju208fm34q1i"),
+		"SwordSlam": preload("uid://b7dgsrumi85gy"),
+		"DoubleCleave": preload("uid://ubudq3lg48pa")
 	},
 	"Shroom Fibre Blade" : {
 		"Idle": preload("uid://decldm83dahcq"),
@@ -21,7 +24,10 @@ var sword_textures : Dictionary = {
 		"SwordSwing2": preload("uid://c3eh7fshh2m0t"),
 		"SwordSwing3": preload("uid://c3eh7fshh2m0t"),
 		"AirAttack": preload("uid://c3eh7fshh2m0t"),
-		"Climb": preload("uid://bj3fqpa35cwsk")
+		"Climb": preload("uid://bj3fqpa35cwsk"),
+		"SwordSoar": preload("uid://b2xek5bmcb4a"),
+		"SwordSlam": preload("uid://bb8i6gvwgqsjy"),
+		"DoubleCleave": preload("uid://cw87r1yvb8san")
 	},
 	"Bronze Fang Blade" : {
 		"Idle": preload("uid://cnkd1sn66y2ev"),
@@ -32,7 +38,10 @@ var sword_textures : Dictionary = {
 		"SwordSwing2": preload("uid://cl1aw31iwncip"),
 		"SwordSwing3": preload("uid://cl1aw31iwncip"),
 		"AirAttack": preload("uid://cl1aw31iwncip"),
-		"Climb": preload("uid://djnmym5xlblfi")
+		"Climb": preload("uid://djnmym5xlblfi"),
+		"SwordSoar": preload("uid://emq5do1fc44c"),
+		"SwordSlam":preload("uid://5h15bet6jee3"),
+		"DoubleCleave": preload("uid://bad3j5pey3k36")
 	}
 }
 

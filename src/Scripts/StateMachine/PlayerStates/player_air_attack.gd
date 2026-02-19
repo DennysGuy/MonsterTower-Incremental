@@ -32,7 +32,7 @@ func process_frame(_delta: float) -> State:
 
 func process_physics(_delta: float) -> State:
 	if not parent.is_on_floor():
-		var next : State = equipped_air_attack.apply_physics()
+		var next : State = equipped_air_attack.apply_physics(_delta)
 		if next != null:
 			return next
 

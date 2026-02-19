@@ -19,6 +19,7 @@ class_name Map extends Node2D
 @export var sfx_player : SFXPlayer
 
 @export var monster_spawn_node : Node
+@export var pause_canvas_layer : CanvasLayer
 
 enum MAP_TYPE {HUB, FLOOR, CHECKPOINT_FLOOR}
 
@@ -126,7 +127,7 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("close_menu") and GameManager.can_pause_game:
 		var pause_menu : PauseMenu = preload("uid://dlaq2oh2iuyjk").instantiate()
-		hud.add_child(pause_menu)
+		pause_canvas_layer.add_child(pause_menu)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass

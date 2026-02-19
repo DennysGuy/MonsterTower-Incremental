@@ -30,7 +30,7 @@ func process_frame(_delta: float) -> State:
 
 func process_physics(_delta: float) -> State:
 	#unique -----------------------------
-	var next := double_jump_state.apply_physics()
+	var next := double_jump_state.apply_physics(_delta)
 	if next != null:
 		return next
 	#-------------------------------------

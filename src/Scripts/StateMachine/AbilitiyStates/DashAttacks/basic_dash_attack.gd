@@ -8,9 +8,8 @@ func on_enter(player : Player) -> void:
 func apply_input() -> void:
 	if Input.is_action_just_pressed("swing_sword"):
 		parent.attack_buffer_timer = parent.attack_buffer_wait_time
-		print("BLEEP")
 
-func apply_physics() -> State:
+func apply_physics(_delta : float) -> State:
 	parent.issue_attack(parent.dash_attack_hit_box)
 	parent.velocity.x = PlayerStats.player_stats["Dash Speed"] * GameManager.set_player_box_direction(parent.sprite.flip_h)
 	

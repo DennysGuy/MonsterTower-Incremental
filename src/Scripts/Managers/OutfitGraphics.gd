@@ -12,7 +12,8 @@ var outfit_graphics : Dictionary = {
 		"SwordSwing3":preload("uid://cshuuw4evmiqi"),
 		"AirAttack":preload("uid://cshuuw4evmiqi"),
 		"Climb": preload("uid://cqmq21ket8vvt"),
-		"PickaxeSwing": preload("uid://cnf7idq4cexlj")
+		"PickaxeSwing": preload("uid://cnf7idq4cexlj"),
+		"DoubleCleave": preload("uid://4vkwnouwrrvw")
 	},
 	"Tyro" : {
 		"Idle": preload("uid://bsy5tgiwm7wxj"),
@@ -24,7 +25,8 @@ var outfit_graphics : Dictionary = {
 		"SwordSwing3":preload("uid://yr04pwemffgp"),
 		"AirAttack":preload("uid://yr04pwemffgp"),
 		"Climb": preload("uid://dk2em20jehn6b"),
-		"PickaxeSwing": preload("uid://bik1x4xoyau24")
+		"PickaxeSwing": preload("uid://bik1x4xoyau24"),
+		"DoubleCleave": preload("uid://4vkwnouwrrvw")
 	}
 }
 

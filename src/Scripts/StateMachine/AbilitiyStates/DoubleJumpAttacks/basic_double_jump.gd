@@ -7,7 +7,7 @@ func on_enter(player : Player) -> void:
 	parent.velocity.y -= PlayerStats.player_stats["Double Jump Height"]
 	parent.sfx_player.play_sfx(sfx)
 	
-func apply_physics() -> State:
+func apply_physics(_delta : float) -> State:
 	if parent.velocity.y > 0:
 		return parent.fall_state
 	

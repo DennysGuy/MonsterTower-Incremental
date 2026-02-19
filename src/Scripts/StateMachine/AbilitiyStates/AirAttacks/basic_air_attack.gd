@@ -10,7 +10,7 @@ func on_enter(player : Player) -> void:
 	var swing : AudioStream = sfx
 	parent.sfx_player.play_sfx(swing,3.0)
 
-func apply_physics() -> State:
+func apply_physics(_delta : float) -> State:
 		if parent.jump_buffer_timer > 0 and parent.is_on_floor():
 			parent.jump_buffer_timer = 0
 			return parent.jump_state

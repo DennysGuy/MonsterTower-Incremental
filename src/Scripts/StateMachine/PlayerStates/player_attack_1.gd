@@ -13,8 +13,6 @@ var attack_velocity : float = 0.0
 
 var can_attack_cancel : bool = false
 
-
-
 func enter() -> void:
 	parent.can_knock_back = true
 

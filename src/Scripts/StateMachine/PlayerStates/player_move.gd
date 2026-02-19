@@ -5,6 +5,7 @@ class_name PlayerMove extends State
 @export var idle_state : State
 @export var dash_attack_state : State
 @export var attack_1_state : State
+@export var special_attack : State
 
 @export var move_sfx : AudioStream
 
@@ -41,6 +42,9 @@ func process_physics(_delta: float) -> State:
 	
 	if Input.is_action_just_pressed("dash_attack") and  PlayerStats.facilities_unlocked["Dash Attack"] and AbilityTimers.ability_state["Dash Attack"]["Can Do"]:
 		return dash_attack_state
+
+	if Input.is_action_just_pressed("special_attack"):
+		return special_attack
 
 	if Input.is_action_just_pressed("swing_sword"):
 		return attack_1_state

@@ -6,9 +6,12 @@ class_name PlayerIdle extends State
 @export var attack_1_state : State
 @export var swing_pick_axe_state : State
 @export var climb_state : State
+@export var special_attack : State
 
 @export_group("Audio")
 @export var jump_sfx : AudioStream
+
+
 
 func enter() -> void:
 	parent.was_on_ledge = true
@@ -47,7 +50,10 @@ func process_physics(_delta: float) -> State:
 		if parent.stored_ore_rock and PlayerStats.facilities_unlocked["Refinery Station"]:
 			return swing_pick_axe_state
 		return attack_1_state
-
+	
+	if Input.is_action_just_pressed("special_attack"):
+		return special_attack
+	
 	if !parent.is_on_floor():
 		parent.was_on_ledge = false
 		return fall_state

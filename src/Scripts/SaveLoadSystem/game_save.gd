@@ -162,10 +162,10 @@ TODO: We will add saves for classes as well
 	"Attack 1" : "uid://c5hss1iq5ontu", #sword swing 1
 	"Attack 2" : "uid://rbc7yawqcf3h", #sword swing 2
 	"Attack 3" : "uid://7qd8qvg4bf73", #sword swing 3
-	"Dash Attack" : "uid://b0lsgfuw8bp58", #basic dash attack
+	"Dash Attack" : "uid://b0lsgfuw8bp58", #basic dash attack 
 	"Air Attack" : "uid://bukiike6rf6pl", #basic air attack
 	"Double Jump" : "uid://rgwunwula5mv", #basic double jump
-	"Special Attack" : null
+	"Special Attack" : "uid://cs0umnvsvjhnh" #double cleave - here for testing purposes
 }
 
 #though should be setup at "continue game too"
