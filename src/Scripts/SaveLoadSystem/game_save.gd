@@ -163,7 +163,7 @@ TODO: We will add saves for classes as well
 	"Attack 2" : "uid://rbc7yawqcf3h", #sword swing 2
 	"Attack 3" : "uid://7qd8qvg4bf73", #sword swing 3
 	"Dash Attack" : "uid://b0lsgfuw8bp58", #basic dash attack 
-	"Air Attack" : "uid://bukiike6rf6pl", #basic air attack
+	"Air Attack" : "uid://dcxiodvnbqgef", #sword slam - for testing purposes
 	"Double Jump" : "uid://ctavgtgbvyp1w", #sword soar - for testing purposes
 	"Special Attack" : "uid://cs0umnvsvjhnh" #double cleave - here for testing purposes
 }

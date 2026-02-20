@@ -7,12 +7,13 @@ class_name PlayerAirAttack extends State
 var equipped_air_attack : AirAttackBehavior
 
 func enter() -> void:
-	super()
 	parent.can_knock_back = true
 	parent.damageable = false
-	parent.set_outfit_texture(animation_name)
 	var selected_ability : Ability = PlayerStats.get_equipped_ability("Air Attack")
 	equipped_air_attack = selected_ability.ability_behavior
+	parent.set_outfit_texture(equipped_air_attack.animation_name)
+	parent.set_sword_texture(equipped_air_attack.animation_name)
+	parent.animation_player.play(equipped_air_attack.animation_name)
 	equipped_air_attack.on_enter(parent)
 	AbilityTimers.activate_ability_cooldown("Air Attack")
 	

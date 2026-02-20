@@ -21,6 +21,7 @@ func enter() -> void:
 	double_jump_state.on_enter(parent)
 	
 func exit() -> void:
+	parent.clear_effect_texture()
 	double_jump_state.on_exit()
 
 func process_input(_event: InputEvent) -> State:

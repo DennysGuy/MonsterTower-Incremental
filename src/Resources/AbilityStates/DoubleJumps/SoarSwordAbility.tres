@@ -7,7 +7,7 @@
 script = ExtResource("1_5cicd")
 ability_name = "Sword Soar"
 ability_type = 3
-cooldown_time = 3.0
+cooldown_time = 1.0
 ability_description = "Soar in the air hitting the enemies above and pushing them towards the side."
 ability_behavior = ExtResource("1_yip4t")
 mp_cost = 10.0

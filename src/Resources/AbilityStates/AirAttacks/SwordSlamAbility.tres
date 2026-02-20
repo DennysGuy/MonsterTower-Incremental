@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Ability" format=3 uid="uid://dcxiodvnbqgef"]
+
+[ext_resource type="Resource" uid="uid://dfbokw0pstvca" path="res://src/Resources/AbilityStates/AirAttacks/SwordSlamBehavior.tres" id="1_1jqj3"]
+[ext_resource type="Script" uid="uid://bwqf7q51702b" path="res://src/Scripts/cability.gd" id="1_m8fqx"]
+
+[resource]
+script = ExtResource("1_m8fqx")
+ability_name = "Sword Slam"
+cooldown_time = 1.5
+ability_description = "From mid air, slam your sword into the ground sending powerful shock waves slowing the enemies around you."
+ability_behavior = ExtResource("1_1jqj3")
+mp_cost = 15.0
+metadata/_custom_type_script = "uid://bwqf7q51702b"

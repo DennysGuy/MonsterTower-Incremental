@@ -1,7 +1,7 @@
 extends Node
 
 @warning_ignore("unused_signal")
-signal shake_camera 
+signal shake_camera(length : float)
 @warning_ignore("unused_signal")
 signal spawn_tech_tree
 @warning_ignore("unused_signal")

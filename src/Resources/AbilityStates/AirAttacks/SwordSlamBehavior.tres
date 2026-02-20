@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="SwordSlamBehavior" format=3 uid="uid://dfbokw0pstvca"]
+
+[ext_resource type="Script" uid="uid://ckpuny5v58316" path="res://src/Scripts/StateMachine/AbilitiyStates/AirAttacks/sword_slam_behavior.gd" id="1_7xjx8"]
+
+[resource]
+script = ExtResource("1_7xjx8")
+animation_name = "SwordSlam"
+metadata/_custom_type_script = "uid://ckpuny5v58316"
