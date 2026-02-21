@@ -1135,10 +1135,10 @@ offset_bottom = 96.0
 text = "Sword Crafting Station"
 
 [node name="PracticeDummy" parent="." unique_id=1422997360 node_paths=PackedStringArray("drop_scene") instance=ExtResource("6_kqfvc")]
-position = Vector2(46, 656)
+position = Vector2(553, 384)
 drop_scene = NodePath("..")
 
-[node name="CollisionShape2D" parent="PracticeDummy/DirectionsArea" index="0"]
+[node name="CollisionShape2D" parent="PracticeDummy/DirectionsArea" parent_id_path=PackedInt32Array(1422997360, 1629845783) index="0" unique_id=1471702578]
 position = Vector2(-0.5, 4)
 
 [node name="CraftingStationArea" type="Area2D" parent="." unique_id=1122809104]

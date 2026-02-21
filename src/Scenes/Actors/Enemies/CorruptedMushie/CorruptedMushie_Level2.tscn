@@ -28,6 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://xsmgmpbxjc3b" path="res://src/Scenes/Actors/Utilities/HitBox.tscn" id="25_cj88k"]
 [ext_resource type="PackedScene" uid="uid://crrtithryo2j6" path="res://src/Scenes/Actors/Utilities/GroundDetector.tscn" id="26_35242"]
 [ext_resource type="PackedScene" uid="uid://bsd5w23h513t2" path="res://src/Scenes/Actors/Utilities/WallDetector.tscn" id="27_dheif"]
+[ext_resource type="PackedScene" uid="uid://dg5nyfcc7ja8v" path="res://src/Scenes/Actors/Enemies/StatusEffectIconBar.tscn" id="29_aex54"]
 
 [sub_resource type="Animation" id="Animation_6al3p"]
 resource_name = "Chase"
@@ -296,7 +297,7 @@ size = Vector2(23, 30)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v37cp"]
 size = Vector2(18, 24)
 
-[node name="CorruptedMushie" type="CharacterBody2D" unique_id=1085916055 node_paths=PackedStringArray("name_tag", "health_bar", "slow_timer", "wall_detector", "ground_detector", "state_machine", "animation_player", "health_component", "sprite", "blink_timer", "hurt_box", "hit_box", "hit_state", "dead_state", "sfx_player") groups=["Enemy"]]
+[node name="CorruptedMushie" type="CharacterBody2D" unique_id=1085916055 node_paths=PackedStringArray("name_tag", "health_bar", "status_effect_icon_bar", "slow_timer", "silenced_timer", "wall_detector", "ground_detector", "state_machine", "animation_player", "health_component", "sprite", "blink_timer", "hurt_box", "hit_box", "hit_state", "dead_state", "sfx_player") groups=["Enemy"]]
 collision_layer = 128
 collision_mask = 2
 script = ExtResource("1_61466")
@@ -304,7 +305,9 @@ enemy_stats = ExtResource("2_61466")
 xp = 12
 name_tag = NodePath("NameTag")
 health_bar = NodePath("EnemyHealthBar")
+status_effect_icon_bar = NodePath("StatusEffectIconBar")
 slow_timer = NodePath("SlowTimer")
+silenced_timer = NodePath("SilencedTimer")
 wall_detector = NodePath("WallDetector")
 ground_detector = NodePath("GroundDetector")
 state_machine = NodePath("StateMachine")
@@ -421,6 +424,18 @@ one_shot = true
 process_callback = 0
 one_shot = true
 
+[node name="SilencedTimer" type="Timer" parent="." unique_id=703218512]
+process_callback = 0
+one_shot = true
+
+[node name="StatusEffectIconBar" parent="." unique_id=167981235 instance=ExtResource("29_aex54")]
+offset_left = -41.0
+offset_top = -76.0
+offset_right = 44.0
+offset_bottom = -64.0
+alignment = 1
+
 [connection signal="update_health_bar" from="HealthComponent" to="." method="_on_health_component_update_health_bar"]
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
 [connection signal="timeout" from="SlowTimer" to="." method="_on_slow_timer_timeout"]
+[connection signal="timeout" from="SilencedTimer" to="." method="_on_silenced_timer_timeout"]

@@ -24,6 +24,9 @@ class_name Player extends Entity
 @onready var can_knock_back : bool = true
 @onready var can_spawn_gravestone : bool = true
 
+@onready var sword_soar_hit_box: HitBox = $SwordSoarHitBox
+
+
 var stored_ladder : LadderArea
 var stored_enemy : Enemy
 var stored_ore_rock : OreRock
@@ -48,6 +51,8 @@ var can_attack_cancel: bool = false
 var was_on_ledge : bool = true
 
 var apply_gravity : bool = true
+
+var is_silence_attack : bool = false
 
 @export var idle_state : State
 @export var jump_state : State
@@ -119,22 +124,30 @@ func clear_sprites() -> void:
 	for cur_sprite in sprites.get_children():
 		cur_sprite.texture = null
 
-func issue_attack(selected_hit_box : HitBox) -> void:
+func issue_attack(selected_hit_box : HitBox, multiplier : float = 1.0, ability : Ability = null) -> void:
 	var enemies_in_range = selected_hit_box.get_overlapping_areas()
 	var overlapping_hits : int = int(PlayerStats.player_stats["Overlapping Hits"])
+	if ability:
+		overlapping_hits = int(ability.number_of_enemies_hit)
 	var base_damage : int = int(PlayerStats.player_stats["Attack Damage"] + PlayerStats.get_sword(PlayerStats.player_stats["Equipped Sword"]).attack_bonus)
 	var min_damage : int = int(base_damage * PlayerStats.player_stats["Accuracy"])
 	var max_damage : int = int(base_damage)
 	var is_crit = check_for_crit()
-	var incoming_damage : int = randi_range(min_damage,max_damage)
+	var incoming_damage : int = int(randi_range(min_damage,max_damage) * multiplier)
 	
 	if is_crit:
 		incoming_damage = int((PlayerStats.player_stats["Crit Damage"] + PlayerStats.get_sword(PlayerStats.player_stats["Equipped Sword"]).crit_bonus) * incoming_damage)
+	
 
+	
 	GameManager.attack_enemies(enemies_in_range, overlapping_hits, self, incoming_damage, is_crit)
 
 func issue_sword_attack() -> void:
 	issue_attack(hit_box)
+
+func issue_super_attack() -> void:
+	var multiplier : float = PlayerStats.get_equipped_ability("Special Attack").attack_damage_modifier
+	issue_attack(hit_box, multiplier)
 
 func check_for_crit() -> bool:
 	var crit_roll : int = randi_range(0,100)
@@ -146,7 +159,6 @@ func check_for_crit() -> bool:
 func _on_ladder_detector_area_entered(area: Area2D) -> void:
 	in_ladder_area = true
 	stored_ladder = area
-
 
 func _on_ladder_detector_area_exited(area: Area2D) -> void:
 	in_ladder_area = false
@@ -211,13 +223,40 @@ func pass_through_floor() -> void:
 	await get_tree().create_timer(0.15).timeout
 	set_collision_mask_value(5, true)
 
-func _on_dash_attack_hit_box_body_entered(body: Node2D) -> void:
-	pass
+func enable_sword_soar_hitbox() -> void:
+	sword_soar_hit_box.get_child(0).disabled = false
+	sword_soar_hit_box.set_deferred("monitoring", true)
+	sword_soar_hit_box.set_deferred("monitorable", true)
+
+func disable_sword_soar_hitbox() -> void:
+	sword_soar_hit_box.get_child(0).disabled = true
+	sword_soar_hit_box.set_deferred("monitoring", false)
+	sword_soar_hit_box.set_deferred("monitorable", false)
 
 
 func _on_ability_cool_down_timer_timeout() -> void:
 	can_dash_attack = true
 
-
 func _on_invincibility_timer_timeout() -> void:
 	damageable = true
+
+func can_issue_ability(ability_name : String) -> bool:
+	return  AbilityTimers.ability_state[ability_name]["Can Do"] and AbilityTimers.ability_state[ability_name]["Can Do"] and PlayerStats.player_stats["Current MP"] >= PlayerStats.equipped_abilities[ability_name].mp_cost
+
+func _on_sword_soar_hit_box_area_entered(area: Area2D) -> void:
+	var parent = area.get_parent()
+	
+	if parent is Enemy:
+		var damage = randf_range(PlayerStats.player_stats["Attack Damage"]*0.8, PlayerStats.player_stats["Attack Damage"]) * PlayerStats.equipped_abilities["Double Jump"].attack_damage_modifier
+		parent.apply_slow_and_damage(damage,PlayerStats.get_equipped_ability("Double Jump").move_speed_modifier, PlayerStats.get_equipped_ability("Double Jump").slow_wait_time)
+
+
+func _on_dash_attack_hit_box_area_entered(area: Area2D) -> void:
+	var parent = area.get_parent()
+	if parent is Enemy:
+		if is_silence_attack:
+			var equipped_dash_attack : Ability = PlayerStats.get_equipped_ability("Dash Attack")
+			var damage = randi_range(PlayerStats.player_stats["Attack Damage"] * 0.8, PlayerStats.player_stats["Attack Damage"]) * equipped_dash_attack.attack_damage_modifier
+			parent.apply_silenced_and_damage(damage, equipped_dash_attack.slow_wait_time)
+		else:
+			issue_attack(dash_attack_hit_box)

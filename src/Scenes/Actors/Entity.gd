@@ -48,6 +48,26 @@ func apply_damage(incoming_damage : int, is_crit : bool):
 	else:
 		get_parent().add_child(damage_label)
 
+func enable_hit_box() -> void:
+	alter_box_status(hit_box, true, false)
+
+func disable_hit_box() -> void:
+	alter_box_status(hit_box, false, true)
+
+func enable_hurt_box() -> void:
+	alter_box_status(hurt_box, true, false)
+
+func disable_hurt_box() -> void:
+		alter_box_status(hurt_box, false, true)
+
+func alter_box_status(box : Area2D, monitor_state : bool, collision_state : bool) -> void:
+		box.set_deferred("monitoring", monitor_state)
+		box.set_deferred("monitorable", monitor_state)
+
+		var shape2 = box.get_child(0)
+		if shape2 is CollisionShape2D:
+			shape2.set_deferred("disabled", collision_state)
+
 func send_to_hit_state() -> void:
 	if hit_state:
 		state_machine.change_state(hit_state)

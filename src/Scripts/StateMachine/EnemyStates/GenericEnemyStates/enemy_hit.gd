@@ -12,14 +12,15 @@ class_name EnemyHit extends State
 
 func enter() -> void:
 	super()
-	parent.hurt_box.get_child(0).disabled = true
+	parent.disable_hurt_box()
 	parent.timer.wait_time = wait_time
 	parent.timer.start()
 	parent.sfx_player.play_sfx(impacts.pick_random())
 
 func exit() -> void:
-	parent.hurt_box.get_child(0).disabled = false
-
+	parent.enable_hurt_box()
+	pass
+	
 func process_input(_event: InputEvent) -> State:
 	return null
 

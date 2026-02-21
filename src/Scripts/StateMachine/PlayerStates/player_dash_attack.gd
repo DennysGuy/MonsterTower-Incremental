@@ -15,6 +15,8 @@ func enter() -> void:
 	AbilityTimers.activate_ability_cooldown("Dash Attack")
 	#unique
 	var selected_ability : Ability = PlayerStats.get_equipped_ability("Dash Attack")
+	PlayerStats.player_stats["Current MP"] -= selected_ability.mp_cost
+	SignalBus.update_player_mp.emit()
 	equipped_dash_attack = selected_ability.ability_behavior
 	equipped_dash_attack.on_enter(parent)
 

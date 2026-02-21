@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Ability" format=3 uid="uid://c3llqiy2fb5n5"]
+
+[ext_resource type="Script" uid="uid://bwqf7q51702b" path="res://src/Scripts/cability.gd" id="1_ne2ti"]
+[ext_resource type="Resource" uid="uid://tfxuaboodk7" path="res://src/Resources/AbilityStates/DashAttacks/SwordDanceBehavior.tres" id="1_xdpyx"]
+
+[resource]
+script = ExtResource("1_ne2ti")
+ability_name = "Sword Dance"
+ability_type = 2
+cooldown_time = 2.0
+ability_description = "Silence the Monsters you dash through - rendering them powerless for a brief period of time.
+
+Damage enemy for 60% of Attack Power Level"
+ability_behavior = ExtResource("1_xdpyx")
+mp_cost = 10.0
+slow_wait_time = 1.5
+attack_damage_modifier = 0.6
+metadata/_custom_type_script = "uid://bwqf7q51702b"

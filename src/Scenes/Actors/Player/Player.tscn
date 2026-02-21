@@ -499,7 +499,7 @@ tracks/8/path = NodePath("../Effect:frame")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0, 0.04, 0.08, 0.12, 0.16, 0.23, 0.24040185, 0.31, 0.35, 0.39000002, 0.43, 0.48, 0.52, 0.55999994, 0.6, 0.65836406),
+"times": PackedFloat32Array(0, 0.04, 0.08, 0.12, 0.16, 0.23, 0.24040185, 0.28, 0.32, 0.36, 0.4, 0.56, 0.6, 0.64, 0.68000007, 0.7383641),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 10]
@@ -515,6 +515,23 @@ tracks/9/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [ExtResource("34_b0557")]
+}
+tracks/10/type = "method"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../..")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0.24, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"issue_super_attack"
+}, {
+"args": [],
+"method": &"issue_super_attack"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_4xbk8"]
@@ -1826,6 +1843,9 @@ size = Vector2(20, 40)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_45oew"]
 size = Vector2(35, 20)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y747d"]
+size = Vector2(32, 38)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dwhqw"]
 size = Vector2(20, 40)
 
@@ -2016,8 +2036,9 @@ libraries/ = SubResource("AnimationLibrary_pawjx")
 [node name="PlayerSprite" type="Sprite2D" parent="Sprites" unique_id=1041617266]
 position = Vector2(0, -32)
 scale = Vector2(1, 0.98604256)
-texture = ExtResource("38_fw0a5")
-hframes = 3
+texture = ExtResource("32_ixl28")
+hframes = 15
+frame = 6
 
 [node name="Outfit" type="Sprite2D" parent="Sprites" unique_id=411712928]
 position = Vector2(0, -32)
@@ -2046,6 +2067,16 @@ scale = Vector2(2, 2)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=858784280]
 position = Vector2(-2.5, 0)
 shape = SubResource("RectangleShape2D_45oew")
+
+[node name="SwordSoarHitBox" parent="." unique_id=774236698 instance=ExtResource("16_cw62c")]
+position = Vector2(-12, -52)
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SwordSoarHitBox" unique_id=230526499]
+position = Vector2(10, 5)
+shape = SubResource("RectangleShape2D_y747d")
+disabled = true
 
 [node name="DashAttackHitBox" parent="." unique_id=1299507598 instance=ExtResource("16_cw62c")]
 position = Vector2(23, -20)
@@ -2089,6 +2120,7 @@ position = Vector2(-1, -15)
 
 [connection signal="timeout" from="InvincibilityTimer" to="." method="_on_invincibility_timer_timeout"]
 [connection signal="timeout" from="AbilityCoolDownTimer" to="." method="_on_ability_cool_down_timer_timeout"]
-[connection signal="body_entered" from="DashAttackHitBox" to="." method="_on_dash_attack_hit_box_body_entered"]
+[connection signal="area_entered" from="SwordSoarHitBox" to="." method="_on_sword_soar_hit_box_area_entered"]
+[connection signal="area_entered" from="DashAttackHitBox" to="." method="_on_dash_attack_hit_box_area_entered"]
 [connection signal="area_entered" from="LadderDetector" to="." method="_on_ladder_detector_area_entered"]
 [connection signal="area_exited" from="LadderDetector" to="." method="_on_ladder_detector_area_exited"]

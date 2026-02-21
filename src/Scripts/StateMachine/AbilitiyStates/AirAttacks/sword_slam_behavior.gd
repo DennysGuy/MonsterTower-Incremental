@@ -4,7 +4,9 @@ class_name SwordSlamBehavior extends AirAttackBehavior
 @export var slam_sfx : AudioStream
 
 func on_enter(player : Player) -> void:
+	
 	parent = player
+	parent.damageable = false
 	parent.velocity = Vector2.ZERO
 	parent.play_sfx(soar_sfx,-8)
 
@@ -28,5 +30,5 @@ func on_landing() -> State:
 	parent.play_sfx(slam_sfx,-8)
 	SignalBus.shake_camera.emit(2)
 	HitStopManager.freeze(0.1,0.3)
-
+	parent.damageable = true
 	return parent.idle_state

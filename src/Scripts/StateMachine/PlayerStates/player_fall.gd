@@ -19,7 +19,7 @@ func exit() -> void:
 
 func process_input(_event: InputEvent) -> State:
 	if Input.is_action_just_pressed("add_currency"):
-		if PlayerStats.facilities_unlocked["Double Jump"] and AbilityTimers.ability_state["Double Jump"]["Can Do"]:
+		if PlayerStats.facilities_unlocked["Double Jump"] and parent.can_issue_ability("Double Jump"):
 			return double_jump
 		else:
 			parent.jump_buffer_timer = parent.jump_buffer_wait_time
@@ -45,7 +45,7 @@ func process_physics(_delta: float) -> State:
 	if Input.is_action_pressed("pan_cam_up") and parent.in_ladder_area and parent.global_position.y <= parent.stored_ladder.ladder_bottom_position and parent.global_position.y > parent.stored_ladder.ladder_top_position:
 		return climb_state
 	
-	if Input.is_action_just_pressed("swing_sword") and PlayerStats.facilities_unlocked["Arial Slash"] and AbilityTimers.ability_state["Air Attack"]["Can Do"] and PlayerStats.player_stats["Current MP"] >= PlayerStats.equipped_abilities["Air Attack"].mp_cost:
+	if Input.is_action_just_pressed("swing_sword") and PlayerStats.facilities_unlocked["Arial Slash"] and parent.can_issue_ability("Air Attack"):
 		return air_attack
 	
 	if parent.is_on_floor():

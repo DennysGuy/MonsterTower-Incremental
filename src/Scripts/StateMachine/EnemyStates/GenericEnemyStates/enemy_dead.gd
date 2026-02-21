@@ -14,21 +14,10 @@ func enter() -> void:
 	parent.is_dead = true
 	
 	if parent.hit_box:
-		parent.hit_box.set_deferred("monitoring", false)
-		parent.hit_box.set_deferred("monitorable", false)
-
-		var shape = parent.hit_box.get_child(0)
-		if shape is CollisionShape2D:
-			shape.set_deferred("disabled", true)
+		parent.disable_hit_box()
 
 	if parent.hurt_box:
-		parent.hurt_box.set_deferred("monitoring", false)
-		parent.hurt_box.set_deferred("monitorable", false)
-
-		var shape2 = parent.hurt_box.get_child(0)
-		if shape2 is CollisionShape2D:
-			shape2.set_deferred("disabled", true)
-		parent.hurt_box.get_child(0).disabled = true
+		parent.disable_hurt_box()
 		
 	drop_items()
 	parent.give_xp()

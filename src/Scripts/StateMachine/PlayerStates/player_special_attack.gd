@@ -6,16 +6,18 @@ var selected_special_attack : SpecialAttackBehavior
 
 func enter() -> void:
 	AbilityTimers.activate_ability_cooldown("Special Attack")
-	selected_special_attack = PlayerStats.get_equipped_abilities()["Special Attack"].ability_behavior
+	selected_special_attack = PlayerStats.get_equipped_ability("Special Attack").ability_behavior
 	parent.set_sword_texture(selected_special_attack.animation_name)
 	parent.set_outfit_texture(selected_special_attack.animation_name)
 	parent.animation_player.play(selected_special_attack.animation_name)
+	PlayerStats.player_stats["Current MP"] -= PlayerStats.get_equipped_ability("Special Attack").mp_cost
+	SignalBus.update_player_mp.emit()
 	selected_special_attack.on_enter(parent)
 	parent.timer.wait_time = selected_special_attack.animation_duration
 	parent.timer.start()
 	
 func exit() -> void:
-	pass
+	selected_special_attack.on_exit()
 
 func process_input(_event: InputEvent) -> State:
 	return null

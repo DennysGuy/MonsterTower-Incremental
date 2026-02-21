@@ -8,11 +8,15 @@ func on_enter(player : Player) -> void:
 	parent.velocity = Vector2.ZERO
 	parent.sfx_player.play_sfx(sfx)
 	parent.play_sfx(sword_soar_sfx)
+	parent.damageable = false
 	var tween : Tween = parent.create_tween()
+	parent.enable_sword_soar_hitbox()
 	await tween.tween_property(parent, "global_position", Vector2(parent.global_position.x,parent.global_position.y-150), 0.35).finished
+	parent.disable_sword_soar_hitbox()
 	parent.state_machine.change_state(parent.idle_state)
 
 func on_exit() -> void:
+	parent.damageable = true
 	parent.apply_gravity = true
 
 func apply_physics(_delta : float) -> State:

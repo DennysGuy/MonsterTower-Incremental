@@ -33,3 +33,7 @@ func _on_hit_box_area_entered(area: Area2D) -> void:
 func _on_slow_timer_timeout() -> void:
 	animation_player.speed_scale = 1.0
 	revert_slow_factor()
+
+
+func _on_silenced_timer_timeout() -> void:
+	revert_silence()

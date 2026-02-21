@@ -5,8 +5,13 @@ class_name WarriorDoubleCleaveBehavior extends SpecialAttackBehavior
 @export var max_attack_drift : float = 220.0
 var attack_velocity : float = 0.0
 
+@export var double_cleave_sfx : AudioStream
+
 func on_enter(player : Player) -> void:
 	parent = player
+	parent.play_sfx(double_cleave_sfx,-2)
+	parent.damageable = false
+
 # --- CAPTURE MOMENTUM ---
 	if int(parent.velocity.x) != 0:
 		attack_velocity = parent.velocity.x
@@ -17,7 +22,10 @@ func on_enter(player : Player) -> void:
 		)
 
 		parent.velocity.x = attack_velocity
-	
+
+func on_exit() -> void:
+	parent.damageable = true
+
 func apply_physics(_delta : float) -> State:
 	parent.velocity.x = move_toward(
 		parent.velocity.x,

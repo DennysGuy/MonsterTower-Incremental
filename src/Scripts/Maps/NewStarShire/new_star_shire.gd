@@ -51,6 +51,8 @@ func _ready() -> void:
 	
 	await get_tree().process_frame
 	SignalBus.update_player_health.emit(player.health)
+	PlayerStats.player_stats["Current MP"] = PlayerStats.player_stats["Max MP"]
+	SignalBus.update_player_mp.emit()
 	SaveManager.save_player_stats()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.

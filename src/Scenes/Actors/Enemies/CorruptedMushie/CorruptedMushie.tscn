@@ -296,7 +296,7 @@ size = Vector2(23, 30)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v37cp"]
 size = Vector2(19, 26)
 
-[node name="CorruptedMushie" type="CharacterBody2D" unique_id=85927412 node_paths=PackedStringArray("name_tag", "health_bar", "slow_timer", "wall_detector", "ground_detector", "state_machine", "animation_player", "health_component", "sprite", "blink_timer", "hurt_box", "hit_box", "hit_state", "dead_state", "sfx_player") groups=["Enemy"]]
+[node name="CorruptedMushie" type="CharacterBody2D" unique_id=85927412 node_paths=PackedStringArray("name_tag", "health_bar", "status_effect_icon_bar", "slow_timer", "silenced_timer", "wall_detector", "ground_detector", "state_machine", "animation_player", "health_component", "sprite", "blink_timer", "hurt_box", "hit_box", "hit_state", "dead_state", "sfx_player") groups=["Enemy"]]
 collision_layer = 128
 collision_mask = 2
 script = ExtResource("1_uospo")
@@ -304,7 +304,9 @@ enemy_stats = ExtResource("2_l3wr6")
 xp = 7
 name_tag = NodePath("NameTag")
 health_bar = NodePath("EnemyHealthBar")
+status_effect_icon_bar = NodePath("StatusEffectIconBar")
 slow_timer = NodePath("SlowTimer")
+silenced_timer = NodePath("SilencedTimer")
 wall_detector = NodePath("WallDetector")
 ground_detector = NodePath("GroundDetector")
 state_machine = NodePath("StateMachine")
@@ -335,7 +337,6 @@ shape = SubResource("CapsuleShape2D_s7mdw")
 [node name="NameTag" parent="." unique_id=21780759 instance=ExtResource("7_pne6f")]
 
 [node name="EnemyHealthBar" parent="." unique_id=1067891350 instance=ExtResource("9_bosos")]
-visible = false
 offset_left = -32.0
 offset_top = -62.0
 offset_right = 33.0
@@ -423,11 +424,17 @@ one_shot = true
 process_callback = 0
 one_shot = true
 
+[node name="SilencedTimer" type="Timer" parent="." unique_id=988912987]
+process_callback = 0
+one_shot = true
+
 [node name="StatusEffectIconBar" parent="." unique_id=167981235 instance=ExtResource("28_hy0pi")]
 custom_minimum_size = Vector2(80, 16)
-offset_bottom = 22.0
+offset_top = -80.0
+offset_bottom = -64.0
 alignment = 1
 
 [connection signal="update_health_bar" from="HealthComponent" to="." method="_on_health_component_update_health_bar"]
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
 [connection signal="timeout" from="SlowTimer" to="." method="_on_slow_timer_timeout"]
+[connection signal="timeout" from="SilencedTimer" to="." method="_on_silenced_timer_timeout"]
