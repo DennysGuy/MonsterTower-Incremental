@@ -1,7 +1,10 @@
 [gd_resource type="Resource" script_class="SwordDance" format=3 uid="uid://tfxuaboodk7"]
 
 [ext_resource type="Script" uid="uid://f7s27cgeqe8h" path="res://src/Scripts/StateMachine/AbilitiyStates/DashAttacks/warrior_sword_dance.gd" id="1_reo66"]
+[ext_resource type="AudioStream" uid="uid://girddg3nhreu" path="res://Audio/SFX/Player/DashAttack.wav" id="2_2eeoe"]
 
 [resource]
 script = ExtResource("1_reo66")
+animation_name = "Dash Attack"
+sfx = ExtResource("2_2eeoe")
 metadata/_custom_type_script = "uid://f7s27cgeqe8h"

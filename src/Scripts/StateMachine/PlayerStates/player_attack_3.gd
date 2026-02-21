@@ -16,6 +16,7 @@ func enter() -> void:
 
 	parent.set_sword_texture("SwordSwing3")
 	parent.set_outfit_texture(animation_name)
+	parent.effect.texture = OutfitGraphics.get_outfit_graphic("BasicAttackEffect")
 	parent.timer.wait_time = PlayerStats.get_current_sword().attack_speed
 	parent.timer.start()
 	

@@ -127,8 +127,12 @@ func clear_sprites() -> void:
 func issue_attack(selected_hit_box : HitBox, multiplier : float = 1.0, ability : Ability = null) -> void:
 	var enemies_in_range = selected_hit_box.get_overlapping_areas()
 	var overlapping_hits : int = int(PlayerStats.player_stats["Overlapping Hits"])
+	var number_of_hits : int = 1
+	var rep_delay : float = 0.1
 	if ability:
 		overlapping_hits = int(ability.number_of_enemies_hit)
+		number_of_hits = int(ability.max_hit_count)
+		rep_delay = ability.attack_rep_delay
 	var base_damage : int = int(PlayerStats.player_stats["Attack Damage"] + PlayerStats.get_sword(PlayerStats.player_stats["Equipped Sword"]).attack_bonus)
 	var min_damage : int = int(base_damage * PlayerStats.player_stats["Accuracy"])
 	var max_damage : int = int(base_damage)
@@ -138,16 +142,16 @@ func issue_attack(selected_hit_box : HitBox, multiplier : float = 1.0, ability :
 	if is_crit:
 		incoming_damage = int((PlayerStats.player_stats["Crit Damage"] + PlayerStats.get_sword(PlayerStats.player_stats["Equipped Sword"]).crit_bonus) * incoming_damage)
 	
-
-	
-	GameManager.attack_enemies(enemies_in_range, overlapping_hits, self, incoming_damage, is_crit)
-
+	if PlayerStats.player_stats["Class"] == "Tyro":
+		GameManager.attack_enemies(enemies_in_range, overlapping_hits, number_of_hits, self, incoming_damage, is_crit, true, rep_delay)
+	else:
+		GameManager.attack_enemies(enemies_in_range, overlapping_hits, number_of_hits, self, incoming_damage, is_crit, false, rep_delay)
 func issue_sword_attack() -> void:
 	issue_attack(hit_box)
 
 func issue_super_attack() -> void:
 	var multiplier : float = PlayerStats.get_equipped_ability("Special Attack").attack_damage_modifier
-	issue_attack(hit_box, multiplier)
+	issue_attack(hit_box, multiplier,PlayerStats.get_equipped_ability("Special Attack"))
 
 func check_for_crit() -> bool:
 	var crit_roll : int = randi_range(0,100)

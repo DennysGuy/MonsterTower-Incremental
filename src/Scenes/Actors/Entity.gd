@@ -5,6 +5,7 @@ class_name Entity extends CharacterBody2D
 @export var health_component : HealthComponent
 @export var sprite : Sprite2D
 @export var blink_timer : Timer
+@export var stun_timer : Timer
 
 @export_group("Detectors")
 @export var hurt_box : HurtBox
@@ -13,12 +14,14 @@ class_name Entity extends CharacterBody2D
 @export_group("States")
 @export var hit_state : State
 @export var dead_state : State
+@export var stun_state : State
 
 @export_group("Audio")
 @export var sfx_player : SFXPlayer
 
 var damageable : bool = true
 var is_dead : bool = false
+var is_stunned : bool = false
 var prev_dir : int = 1
 
 var health : float
@@ -71,6 +74,10 @@ func alter_box_status(box : Area2D, monitor_state : bool, collision_state : bool
 func send_to_hit_state() -> void:
 	if hit_state:
 		state_machine.change_state(hit_state)
+
+func send_to_stun_state() -> void:
+	if stun_state:
+		state_machine.change_state(stun_state)
 
 func kill_me() -> void:
 	if dead_state:

@@ -16,6 +16,7 @@ max_health = 135
 attack = 16
 movement_speed = 53.0
 chase_speed = 65.0
+break_threshold = 3
 novelty_item_drop = ExtResource("2_yemqc")
 cooking_item_drop = ExtResource("1_2wbji")
 crafting_item_drop = ExtResource("2_doqwy")

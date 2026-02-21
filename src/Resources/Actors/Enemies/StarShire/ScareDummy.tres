@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="EnemyStats" load_steps=2 format=3 uid="uid://qbtq6o18o4hc"]
+[gd_resource type="Resource" script_class="EnemyStats" format=3 uid="uid://qbtq6o18o4hc"]
 
 [ext_resource type="Script" uid="uid://cbjktr12qagl" path="res://src/Scripts/Enemies/enemy_stats.gd" id="1_jl4tp"]
 
@@ -7,4 +7,5 @@ script = ExtResource("1_jl4tp")
 enemy_name = "Scare Dummy"
 enemy_type = 2
 max_health = 5000
+break_threshold = 3
 metadata/_custom_type_script = "uid://cbjktr12qagl"

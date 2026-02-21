@@ -8,5 +8,5 @@ script = ExtResource("1_xbqva")
 attack_friction = 300.0
 double_cleave_sfx = ExtResource("1_7olsw")
 animation_name = "DoubleCleave"
-animation_duration = 1.0
+animation_duration = 0.72
 metadata/_custom_type_script = "uid://cyix0fgt510my"

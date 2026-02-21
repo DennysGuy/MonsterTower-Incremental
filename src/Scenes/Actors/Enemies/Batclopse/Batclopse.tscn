@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://b4xbaangfo4jo" path="res://src/Scripts/StateMachine/EnemyStates/GenericEnemyStates/enemy_chase.gd" id="8_xrh8g"]
 [ext_resource type="Script" uid="uid://bl81lc5if28vq" path="res://src/Scripts/StateMachine/EnemyStates/GenericEnemyStates/enemy_hit.gd" id="9_63me8"]
 [ext_resource type="Script" uid="uid://733mi1gdyrrk" path="res://src/Scripts/StateMachine/EnemyStates/GenericEnemyStates/enemy_dead.gd" id="10_4bk87"]
+[ext_resource type="Texture2D" uid="uid://em15nlmexp1y" path="res://Assets/Enemies/CyclopsBat/CyclopseBat_stun.png" id="10_ouys5"]
 [ext_resource type="PackedScene" uid="uid://bsd5w23h513t2" path="res://src/Scenes/Actors/Utilities/WallDetector.tscn" id="13_63me8"]
 [ext_resource type="PackedScene" uid="uid://crrtithryo2j6" path="res://src/Scenes/Actors/Utilities/GroundDetector.tscn" id="14_4bk87"]
 [ext_resource type="PackedScene" uid="uid://bg1ya0qiin47q" path="res://src/Scenes/Actors/Utilities/HurtBox.tscn" id="15_qf5ei"]
@@ -26,7 +27,9 @@
 [ext_resource type="AudioStream" uid="uid://cc4bln4u3i6b8" path="res://Audio/SFX/Biomes/MossyDungeon/GenericDeath2.wav" id="20_0802a"]
 [ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="21_b42m5"]
 [ext_resource type="AudioStream" uid="uid://da4j7oibbpe1j" path="res://Audio/SFX/Biomes/MossyDungeon/GenericDeath3.wav" id="21_ihpwa"]
+[ext_resource type="Script" uid="uid://dwvy67t8hx3" path="res://src/Scripts/Enemies/enemy_stun.gd" id="23_ki50n"]
 [ext_resource type="PackedScene" uid="uid://dg5nyfcc7ja8v" path="res://src/Scenes/Actors/Enemies/StatusEffectIconBar.tscn" id="27_0802a"]
+[ext_resource type="PackedScene" uid="uid://ducu4iluu5nv4" path="res://src/Scenes/UI/StatusEffectVBox.tscn" id="28_ihpwa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f4ywy"]
 size = Vector2(31, 52)
@@ -236,13 +239,56 @@ tracks/2/keys = {
 "values": [0]
 }
 
+[sub_resource type="Animation" id="Animation_ihpwa"]
+resource_name = "Stun"
+length = 0.4
+loop_mode = 1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("10_ouys5")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0virf"]
 _data = {
 &"Chase": SubResource("Animation_xrh8g"),
 &"Dead": SubResource("Animation_4bk87"),
 &"Hurt": SubResource("Animation_63me8"),
 &"Idle": SubResource("Animation_ugsex"),
-&"RESET": SubResource("Animation_0virf")
+&"RESET": SubResource("Animation_0virf"),
+&"Stun": SubResource("Animation_ihpwa")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q1a4v"]
@@ -251,7 +297,7 @@ size = Vector2(35, 53)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jjppc"]
 size = Vector2(21, 35)
 
-[node name="Batclopse" type="CharacterBody2D" unique_id=87067631 node_paths=PackedStringArray("name_tag", "health_bar", "status_effect_icon_bar", "slow_timer", "silenced_timer", "wall_detector", "ground_detector", "state_machine", "animation_player", "health_component", "sprite", "blink_timer", "hurt_box", "hit_box", "hit_state", "dead_state", "sfx_player") groups=["Enemy"]]
+[node name="Batclopse" type="CharacterBody2D" unique_id=87067631 node_paths=PackedStringArray("name_tag", "health_bar", "status_effect_icon_bar", "vertical_status_icon_bar", "slow_timer", "silenced_timer", "wall_detector", "ground_detector", "state_machine", "animation_player", "health_component", "sprite", "blink_timer", "stun_timer", "hurt_box", "hit_box", "hit_state", "dead_state", "stun_state", "sfx_player") groups=["Enemy"]]
 collision_layer = 128
 collision_mask = 2
 script = ExtResource("1_184l8")
@@ -260,6 +306,7 @@ xp = 18
 name_tag = NodePath("NameTag")
 health_bar = NodePath("EnemyHealthBar")
 status_effect_icon_bar = NodePath("StatusEffectIconBar")
+vertical_status_icon_bar = NodePath("VBoxContainer")
 slow_timer = NodePath("SlowTimer")
 silenced_timer = NodePath("SilencedTimer")
 wall_detector = NodePath("WallDetector")
@@ -269,10 +316,12 @@ animation_player = NodePath("AnimationPlayer")
 health_component = NodePath("HealthComponent")
 sprite = NodePath("Sprite")
 blink_timer = NodePath("BlinkTimer")
+stun_timer = NodePath("StunTimer")
 hurt_box = NodePath("HurtBox")
 hit_box = NodePath("HitBox")
 hit_state = NodePath("StateMachine/Hurt")
 dead_state = NodePath("StateMachine/Dead")
+stun_state = NodePath("StateMachine/Stun")
 sfx_player = NodePath("SfxPlayer")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=958977099]
@@ -347,6 +396,11 @@ death_sound_2 = ExtResource("20_0802a")
 death_sound_3 = ExtResource("21_ihpwa")
 animation_name = "Dead"
 
+[node name="Stun" type="Node" parent="StateMachine" unique_id=122158039 node_paths=PackedStringArray("idle")]
+script = ExtResource("23_ki50n")
+idle = NodePath("../Idle")
+animation_name = "Stun"
+
 [node name="WallDetector" parent="." unique_id=761357575 instance=ExtResource("13_63me8")]
 position = Vector2(13, -20)
 
@@ -382,12 +436,20 @@ one_shot = true
 process_callback = 0
 one_shot = true
 
+[node name="StunTimer" type="Timer" parent="." unique_id=2069360524]
+
 [node name="StatusEffectIconBar" parent="." unique_id=167981235 instance=ExtResource("27_0802a")]
 offset_left = -42.0
 offset_top = -86.0
 offset_right = 43.0
 offset_bottom = -74.0
 alignment = 1
+
+[node name="VBoxContainer" parent="." unique_id=657675300 instance=ExtResource("28_ihpwa")]
+offset_left = 33.0
+offset_top = -71.0
+offset_right = 49.0
+offset_bottom = -3.0
 
 [connection signal="update_health_bar" from="HealthComponent" to="." method="_on_health_component_update_health_bar"]
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]

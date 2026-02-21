@@ -26,8 +26,8 @@ func set_player_box_direction(flip_h : bool):
 	else:
 		return 1
 
-func attack_enemies(enemies_in_hitbox : Array, number_of_hits : int, player : Player, incoming_damage : int, is_crit : bool = false) -> void:
-	var targets = calculate_targets(enemies_in_hitbox, player, number_of_hits)
+func attack_enemies(enemies_in_hitbox : Array, enemies_hit : int = 1, number_of_hits : int = 1, player : Player = null, incoming_damage : int = 0, is_crit : bool = false, is_warrior : bool = false, rep_delay : float = 0.1) -> void:
+	var targets = calculate_targets(enemies_in_hitbox, player, enemies_hit)
 	for enemy in targets:
 		if is_instance_valid(enemy):
 			# we may need to alter this line of code or the function.. I do not like how this function is dependent on the enemy.
@@ -38,19 +38,23 @@ func attack_enemies(enemies_in_hitbox : Array, number_of_hits : int, player : Pl
 			
 			while i < attack_reps:
 				#enemy.sfx_player.play()
-				attack_enemy(player, enemy, incoming_damage, is_crit)
+				attack_enemy(player, enemy, incoming_damage, is_crit, 0.02, is_warrior)
+
 				i += 1
-				await player.get_tree().create_timer(0.1).timeout
+				await player.get_tree().create_timer(rep_delay).timeout
 			
 			if is_instance_valid(enemy) and enemy.health <= 0:
 				enemies_in_hitbox.erase(enemy)
 				#enemy.dead = true
 			#await player.get_tree().create_timer(0.1).timeout
 
-func attack_enemy(player : Player, enemy : Enemy, incoming_damage : int, is_crit : bool, hit_freeze : float = 0.02) -> void:
+func attack_enemy(player : Player, enemy : Enemy, incoming_damage : int, is_crit : bool, hit_freeze : float = 0.02, is_warrior : bool = false) -> void:
 	SignalBus.shake_camera.emit(0.5)
 	HitStopManager.freeze(hit_freeze, 0.1, 0.0, 0.03)
 	enemy.apply_damage(incoming_damage, is_crit)
+	if is_warrior:
+		enemy.increment_break_count()
+		#might need to break here so we don't collide with the function below
 
 func calculate_targets(enemies_in_hitbox : Array, player : Player, number_of_hits : int) -> Array[Entity]:
 	var targets: Array[Entity] = []

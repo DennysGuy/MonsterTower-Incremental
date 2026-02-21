@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cj34l60xfqhrv" path="res://Assets/Enemies/CorruptedMushie/CorruptedMushie_die.png" id="6_srl2n"]
 [ext_resource type="Script" uid="uid://drr0deykmfrvq" path="res://src/Scripts/StateMachine/state_machine.gd" id="7_22lu5"]
 [ext_resource type="PackedScene" uid="uid://vo5sm7p34vo6" path="res://src/Scenes/Actors/Utilities/NameTag.tscn" id="7_pne6f"]
+[ext_resource type="Texture2D" uid="uid://c7tk2ex008crn" path="res://Assets/Enemies/CorruptedMushie/CorruptedMushie_Stun.png" id="8_xoxmr"]
 [ext_resource type="PackedScene" uid="uid://b8lilr7mgc8l1" path="res://src/Scenes/Actors/Enemies/EnemyHealthBar.tscn" id="9_bosos"]
 [ext_resource type="Script" uid="uid://bwlb4547lknf" path="res://src/Scripts/StateMachine/EnemyStates/GenericEnemyStates/enemy_idle.gd" id="10_ikmty"]
 [ext_resource type="PackedScene" uid="uid://b73ndgmav7ja2" path="res://src/Scenes/Actors/Utilities/HealthComponent.tscn" id="10_srl2n"]
@@ -27,7 +28,9 @@
 [ext_resource type="AudioStream" uid="uid://cc4bln4u3i6b8" path="res://Audio/SFX/Biomes/MossyDungeon/GenericDeath2.wav" id="19_hy0pi"]
 [ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="20_gslgg"]
 [ext_resource type="AudioStream" uid="uid://da4j7oibbpe1j" path="res://Audio/SFX/Biomes/MossyDungeon/GenericDeath3.wav" id="20_xk72l"]
+[ext_resource type="Script" uid="uid://dwvy67t8hx3" path="res://src/Scripts/Enemies/enemy_stun.gd" id="23_rxq5f"]
 [ext_resource type="PackedScene" uid="uid://dg5nyfcc7ja8v" path="res://src/Scenes/Actors/Enemies/StatusEffectIconBar.tscn" id="28_hy0pi"]
+[ext_resource type="PackedScene" uid="uid://ducu4iluu5nv4" path="res://src/Scenes/UI/StatusEffectVBox.tscn" id="29_xoxmr"]
 
 [sub_resource type="Animation" id="Animation_6al3p"]
 resource_name = "Chase"
@@ -276,6 +279,48 @@ tracks/2/keys = {
 "values": [ExtResource("1_gol3t")]
 }
 
+[sub_resource type="Animation" id="Animation_rxq5f"]
+resource_name = "Stun"
+length = 0.4
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("8_xoxmr")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_adl3q"]
 _data = {
 &"Chase": SubResource("Animation_6al3p"),
@@ -283,7 +328,8 @@ _data = {
 &"Hit": SubResource("Animation_p06fi"),
 &"Idle": SubResource("Animation_uospo"),
 &"Patrol": SubResource("Animation_adl3q"),
-&"RESET": SubResource("Animation_gol3t")
+&"RESET": SubResource("Animation_gol3t"),
+&"Stun": SubResource("Animation_rxq5f")
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s7mdw"]
@@ -296,7 +342,7 @@ size = Vector2(23, 30)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v37cp"]
 size = Vector2(19, 26)
 
-[node name="CorruptedMushie" type="CharacterBody2D" unique_id=85927412 node_paths=PackedStringArray("name_tag", "health_bar", "status_effect_icon_bar", "slow_timer", "silenced_timer", "wall_detector", "ground_detector", "state_machine", "animation_player", "health_component", "sprite", "blink_timer", "hurt_box", "hit_box", "hit_state", "dead_state", "sfx_player") groups=["Enemy"]]
+[node name="CorruptedMushie" type="CharacterBody2D" unique_id=85927412 node_paths=PackedStringArray("name_tag", "health_bar", "status_effect_icon_bar", "vertical_status_icon_bar", "slow_timer", "silenced_timer", "wall_detector", "ground_detector", "state_machine", "animation_player", "health_component", "sprite", "blink_timer", "stun_timer", "hurt_box", "hit_box", "hit_state", "dead_state", "stun_state", "sfx_player") groups=["Enemy"]]
 collision_layer = 128
 collision_mask = 2
 script = ExtResource("1_uospo")
@@ -305,6 +351,7 @@ xp = 7
 name_tag = NodePath("NameTag")
 health_bar = NodePath("EnemyHealthBar")
 status_effect_icon_bar = NodePath("StatusEffectIconBar")
+vertical_status_icon_bar = NodePath("StatusEffectVBox")
 slow_timer = NodePath("SlowTimer")
 silenced_timer = NodePath("SilencedTimer")
 wall_detector = NodePath("WallDetector")
@@ -314,10 +361,12 @@ animation_player = NodePath("AnimationPlayer")
 health_component = NodePath("HealthComponent")
 sprite = NodePath("Sprite2D")
 blink_timer = NodePath("BlinkTimer")
+stun_timer = NodePath("StunTimer")
 hurt_box = NodePath("HurtBox")
 hit_box = NodePath("HitBox")
 hit_state = NodePath("StateMachine/Hit")
 dead_state = NodePath("StateMachine/Dead")
+stun_state = NodePath("StateMachine/Stun")
 sfx_player = NodePath("SfxPlayer")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2145311901]
@@ -381,6 +430,11 @@ idle_state = NodePath("../Idle")
 chase_time = 3.0
 animation_name = "Chase"
 
+[node name="Stun" type="Node" parent="StateMachine" unique_id=1971693936 node_paths=PackedStringArray("idle")]
+script = ExtResource("23_rxq5f")
+idle = NodePath("../Idle")
+animation_name = "Stun"
+
 [node name="HealthComponent" parent="." unique_id=2083111642 node_paths=PackedStringArray("parent", "health_bar") instance=ExtResource("10_srl2n")]
 parent = NodePath("..")
 health_bar = NodePath("../EnemyHealthBar")
@@ -428,11 +482,21 @@ one_shot = true
 process_callback = 0
 one_shot = true
 
+[node name="StunTimer" type="Timer" parent="." unique_id=1450871418]
+process_callback = 0
+one_shot = true
+
 [node name="StatusEffectIconBar" parent="." unique_id=167981235 instance=ExtResource("28_hy0pi")]
 custom_minimum_size = Vector2(80, 16)
 offset_top = -80.0
 offset_bottom = -64.0
 alignment = 1
+
+[node name="StatusEffectVBox" parent="." unique_id=657675300 instance=ExtResource("29_xoxmr")]
+offset_left = 39.0
+offset_top = -66.0
+offset_right = 55.0
+offset_bottom = 0.0
 
 [connection signal="update_health_bar" from="HealthComponent" to="." method="_on_health_component_update_health_bar"]
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]

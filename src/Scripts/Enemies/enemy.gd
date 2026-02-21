@@ -9,6 +9,7 @@ class_name Enemy extends Entity
 @export var drop_scene : Map
 
 @export var status_effect_icon_bar : StatusEffectIconBar
+@export var vertical_status_icon_bar : StatusEffectVBox
 
 @export_group("Timers")
 @export var slow_timer : Timer
@@ -19,6 +20,7 @@ class_name Enemy extends Entity
 @export var ground_detector : RayCast2D
 
 var slow_factor : float = 1.0
+var current_break_count : int = 0
 
 func _ready() -> void:
 	super()
@@ -73,6 +75,9 @@ func apply_slow_and_damage(damage : int, issued_slow_factor : float, slow_wait_t
 		slow_factor = issued_slow_factor
 		slow_timer.wait_time = slow_wait_time
 		slow_timer.start()
+	# we'll need to check if we're already stunned so that the player can't stun enemies 
+	# also is this too cheap? Maybe this can be balanced.
+	increment_break_count()
 
 func apply_silenced_and_damage(damage : int, silenced_wait_time : float) -> void:
 	apply_damage(damage, false)
@@ -83,6 +88,8 @@ func apply_silenced_and_damage(damage : int, silenced_wait_time : float) -> void
 		disable_hit_box()
 		silenced_timer.wait_time = silenced_wait_time
 		silenced_timer.start()
+
+	increment_break_count()
 		
 func revert_slow_factor() -> void:
 	if status_effect_icon_bar:
@@ -93,6 +100,20 @@ func revert_silence() -> void:
 	if status_effect_icon_bar:
 		status_effect_icon_bar.remove_silenced_icon_from_bar()
 	enable_hit_box()
+
+func increment_break_count() -> void:
+	if is_stunned:
+		return
+	
+	if current_break_count < enemy_stats.break_threshold:
+		current_break_count += 1
+		vertical_status_icon_bar.add_break_status_icon(current_break_count,enemy_stats.break_threshold)
+	else:
+		vertical_status_icon_bar.remove_break_count_icon()
+		current_break_count = 0
+		is_stunned = true
+		send_to_stun_state()
+		#send to stun state?
 
 func give_xp() -> void:
 	PlayerStats.player_stats["Current XP"] += xp

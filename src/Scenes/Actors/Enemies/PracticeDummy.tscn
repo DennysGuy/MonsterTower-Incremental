@@ -18,6 +18,7 @@
 [ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="12_bf4mq"]
 [ext_resource type="PackedScene" uid="uid://cefpeuevsobfw" path="res://src/Scenes/UI/DirectionsArea.tscn" id="12_q38mr"]
 [ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="14_jqbk6"]
+[ext_resource type="PackedScene" uid="uid://ducu4iluu5nv4" path="res://src/Scenes/UI/StatusEffectVBox.tscn" id="19_m80ls"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r01py"]
 size = Vector2(32, 79)
@@ -211,7 +212,7 @@ size = Vector2(31, 55)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q38mr"]
 size = Vector2(137, 56)
 
-[node name="PracticeDummy" type="CharacterBody2D" unique_id=1892833127 node_paths=PackedStringArray("name_tag", "health_bar", "slow_timer", "state_machine", "animation_player", "health_component", "hurt_box", "hit_state", "dead_state", "sfx_player")]
+[node name="PracticeDummy" type="CharacterBody2D" unique_id=1892833127 node_paths=PackedStringArray("name_tag", "health_bar", "vertical_status_icon_bar", "slow_timer", "state_machine", "animation_player", "health_component", "hurt_box", "hit_state", "dead_state", "sfx_player")]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_r01py")
@@ -219,6 +220,7 @@ enemy_stats = ExtResource("2_yowb4")
 can_knock_back = false
 name_tag = NodePath("NameTag")
 health_bar = NodePath("EnemyHealthBar")
+vertical_status_icon_bar = NodePath("HBoxContainer")
 slow_timer = NodePath("Timer")
 state_machine = NodePath("StateMachine")
 animation_player = NodePath("AnimationPlayer")
@@ -309,6 +311,12 @@ text = "Press 'F' to Swing Your Sword!"
 horizontal_alignment = 1
 
 [node name="SfxPlayer" parent="." unique_id=1148591284 instance=ExtResource("14_jqbk6")]
+
+[node name="HBoxContainer" parent="." unique_id=657675300 instance=ExtResource("19_m80ls")]
+offset_left = 36.0
+offset_top = -88.0
+offset_right = 52.0
+offset_bottom = -12.0
 
 [connection signal="update_health_bar" from="HealthComponent" to="." method="_on_health_component_update_health_bar"]
 [connection signal="body_entered" from="DirectionsArea" to="." method="_on_directions_area_body_entered"]

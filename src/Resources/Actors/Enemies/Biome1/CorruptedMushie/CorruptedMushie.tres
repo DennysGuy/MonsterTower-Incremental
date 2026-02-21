@@ -15,6 +15,7 @@ max_health = 60
 attack = 18
 movement_speed = 50.0
 chase_speed = 60.0
+break_threshold = 3
 novelty_item_drop = ExtResource("3_lxwxs")
 crafting_item_drop = ExtResource("2_ndj3h")
 metadata/_custom_type_script = "uid://cbjktr12qagl"
