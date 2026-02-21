@@ -12,6 +12,7 @@ ability_description = "Hit an enemy with two powerful attacks. A 2.0 Multiplier 
 ability_behavior = ExtResource("1_5evol")
 hp_cost = 10.0
 mp_cost = 15.0
+base_attack = 30.0
 number_of_enemies_hit = 1.0
 max_hit_count = 2.0
 attack_rep_delay = 0.2

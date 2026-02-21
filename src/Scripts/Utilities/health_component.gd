@@ -29,6 +29,7 @@ func apply_damage(incoming_damage : int, is_crit : bool) -> String:
 		
 	if parent.health <= 0:
 		parent.health = 0
+	
 		parent.kill_me()
 	else:
 		parent.send_to_hit_state()

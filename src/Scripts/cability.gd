@@ -15,6 +15,7 @@ enum ABILITY_TYPE {STANDARD_ATTACK, AIR_ATTACK, DASH_ATTACK, DOUBLE_JUMP, SPECIA
 @export_group("Stat Modifier")
 @export var hp_cost : float
 @export var mp_cost : float
+@export var base_attack : float
 @export var number_of_enemies_hit : float #determines how many enemies can be hit in one attack
 @export var max_hit_count : float #determines how many hits land per attack
 @export var attack_rep_delay : float

@@ -66,6 +66,9 @@ func apply_direction(new_dir: int) -> void:
 	sprite.flip_h = new_dir < 0
 
 func apply_slow_and_damage(damage : int, issued_slow_factor : float, slow_wait_time : float) -> void:
+	if PlayerStats.player_stats["Class"] == "Tyro":
+		increment_break_count()
+
 	apply_damage(damage, false)
 	animation_player.speed_scale = 0.6
 	if status_effect_icon_bar:
@@ -77,9 +80,11 @@ func apply_slow_and_damage(damage : int, issued_slow_factor : float, slow_wait_t
 		slow_timer.start()
 	# we'll need to check if we're already stunned so that the player can't stun enemies 
 	# also is this too cheap? Maybe this can be balanced.
-	increment_break_count()
 
 func apply_silenced_and_damage(damage : int, silenced_wait_time : float) -> void:
+	if PlayerStats.player_stats["Class"] == "Tyro":
+		increment_break_count()
+		
 	apply_damage(damage, false)
 	if status_effect_icon_bar:
 		status_effect_icon_bar.add_silenced_icon_to_bar()
@@ -89,8 +94,6 @@ func apply_silenced_and_damage(damage : int, silenced_wait_time : float) -> void
 		silenced_timer.wait_time = silenced_wait_time
 		silenced_timer.start()
 
-	increment_break_count()
-		
 func revert_slow_factor() -> void:
 	if status_effect_icon_bar:
 		status_effect_icon_bar.remove_slow_icon_from_bar()
@@ -105,14 +108,13 @@ func increment_break_count() -> void:
 	if is_stunned:
 		return
 	
-	if current_break_count < enemy_stats.break_threshold:
-		current_break_count += 1
-		vertical_status_icon_bar.add_break_status_icon(current_break_count,enemy_stats.break_threshold)
-	else:
+	if current_break_count >= enemy_stats.break_threshold:
 		vertical_status_icon_bar.remove_break_count_icon()
 		current_break_count = 0
 		is_stunned = true
-		send_to_stun_state()
+	else:
+		current_break_count += 1
+		vertical_status_icon_bar.add_break_status_icon(current_break_count,enemy_stats.break_threshold)
 		#send to stun state?
 
 func give_xp() -> void:

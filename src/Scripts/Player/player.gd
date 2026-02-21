@@ -129,15 +129,22 @@ func issue_attack(selected_hit_box : HitBox, multiplier : float = 1.0, ability :
 	var overlapping_hits : int = int(PlayerStats.player_stats["Overlapping Hits"])
 	var number_of_hits : int = 1
 	var rep_delay : float = 0.1
-	if ability:
-		overlapping_hits = int(ability.number_of_enemies_hit)
-		number_of_hits = int(ability.max_hit_count)
-		rep_delay = ability.attack_rep_delay
+	var incoming_damage : int = 0
+
 	var base_damage : int = int(PlayerStats.player_stats["Attack Damage"] + PlayerStats.get_sword(PlayerStats.player_stats["Equipped Sword"]).attack_bonus)
 	var min_damage : int = int(base_damage * PlayerStats.player_stats["Accuracy"])
 	var max_damage : int = int(base_damage)
 	var is_crit = check_for_crit()
-	var incoming_damage : int = int(randi_range(min_damage,max_damage) * multiplier)
+	if is_crit:
+		print("IM CRTTING!")
+	if ability:
+		overlapping_hits = int(ability.number_of_enemies_hit)
+		number_of_hits = int(ability.max_hit_count)
+		rep_delay = ability.attack_rep_delay
+		min_damage = PlayerStats.player_stats["Attack Damage"] + ability.base_attack * PlayerStats.player_stats["Accuracy"]
+		max_damage = PlayerStats.player_stats["Attack Damage"] + ability.base_attack
+		
+	incoming_damage  = int(randi_range(min_damage,max_damage) * multiplier)
 	
 	if is_crit:
 		incoming_damage = int((PlayerStats.player_stats["Crit Damage"] + PlayerStats.get_sword(PlayerStats.player_stats["Equipped Sword"]).crit_bonus) * incoming_damage)
@@ -146,6 +153,7 @@ func issue_attack(selected_hit_box : HitBox, multiplier : float = 1.0, ability :
 		GameManager.attack_enemies(enemies_in_range, overlapping_hits, number_of_hits, self, incoming_damage, is_crit, true, rep_delay)
 	else:
 		GameManager.attack_enemies(enemies_in_range, overlapping_hits, number_of_hits, self, incoming_damage, is_crit, false, rep_delay)
+
 func issue_sword_attack() -> void:
 	issue_attack(hit_box)
 

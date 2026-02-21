@@ -64,6 +64,9 @@ func disable_hurt_box() -> void:
 		alter_box_status(hurt_box, false, true)
 
 func alter_box_status(box : Area2D, monitor_state : bool, collision_state : bool) -> void:
+		if !box:
+			return
+			
 		box.set_deferred("monitoring", monitor_state)
 		box.set_deferred("monitorable", monitor_state)
 
@@ -72,7 +75,9 @@ func alter_box_status(box : Area2D, monitor_state : bool, collision_state : bool
 			shape2.set_deferred("disabled", collision_state)
 
 func send_to_hit_state() -> void:
-	if hit_state:
+	if is_stunned and stun_state:
+		send_to_stun_state()
+	elif hit_state:
 		state_machine.change_state(hit_state)
 
 func send_to_stun_state() -> void:
@@ -81,6 +86,11 @@ func send_to_stun_state() -> void:
 
 func kill_me() -> void:
 	if dead_state:
+		is_dead = true
+		if hit_box:
+				disable_hit_box()
+		if hurt_box:
+				disable_hurt_box()
 		state_machine.change_state(dead_state)
 
 func blink_effect() -> void:

@@ -437,6 +437,8 @@ process_callback = 0
 one_shot = true
 
 [node name="StunTimer" type="Timer" parent="." unique_id=2069360524]
+process_callback = 0
+one_shot = true
 
 [node name="StatusEffectIconBar" parent="." unique_id=167981235 instance=ExtResource("27_0802a")]
 offset_left = -42.0

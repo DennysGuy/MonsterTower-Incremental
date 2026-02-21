@@ -212,7 +212,7 @@ size = Vector2(31, 55)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q38mr"]
 size = Vector2(137, 56)
 
-[node name="PracticeDummy" type="CharacterBody2D" unique_id=1892833127 node_paths=PackedStringArray("name_tag", "health_bar", "vertical_status_icon_bar", "slow_timer", "state_machine", "animation_player", "health_component", "hurt_box", "hit_state", "dead_state", "sfx_player")]
+[node name="PracticeDummy" type="CharacterBody2D" unique_id=1892833127 node_paths=PackedStringArray("name_tag", "health_bar", "vertical_status_icon_bar", "slow_timer", "state_machine", "animation_player", "health_component", "sprite", "hurt_box", "hit_state", "dead_state", "sfx_player")]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_r01py")
@@ -225,6 +225,7 @@ slow_timer = NodePath("Timer")
 state_machine = NodePath("StateMachine")
 animation_player = NodePath("AnimationPlayer")
 health_component = NodePath("HealthComponent")
+sprite = NodePath("Sprite2D")
 hurt_box = NodePath("HurtBox")
 hit_state = NodePath("StateMachine/Hit")
 dead_state = NodePath("StateMachine/Dead")
@@ -268,6 +269,8 @@ death_sound_1 = ExtResource("11_5ts4l")
 death_sound_2 = ExtResource("11_5ts4l")
 death_sound_3 = ExtResource("11_5ts4l")
 animation_name = "Dead"
+animation_duration = null
+move_speed = null
 
 [node name="HurtBox" parent="." unique_id=1325433561 instance=ExtResource("5_k2yhj")]
 

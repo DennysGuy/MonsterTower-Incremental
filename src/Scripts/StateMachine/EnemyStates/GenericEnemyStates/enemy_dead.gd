@@ -13,11 +13,8 @@ func enter() -> void:
 	parent.damageable = false
 	parent.is_dead = true
 	
-	if parent.hit_box:
-		parent.disable_hit_box()
-
-	if parent.hurt_box:
-		parent.disable_hurt_box()
+	#parent.disable_hit_box()
+	#parent.disable_hurt_box()
 		
 	drop_items()
 	parent.give_xp()
@@ -50,10 +47,11 @@ func drop_items() -> void:
 		return
 		
 	var item : EnemyDrop = parent.enemy_stats.novelty_item_drop
-	var item_interactable : ItemInteractable = preload("uid://dgtobkubdjq27").instantiate()
-	item_interactable.item = item
-	item_interactable.icon.texture = item.drop_icon
-	item_interactable.global_position = parent.global_position
+	if item:
+		var item_interactable : ItemInteractable = preload("uid://dgtobkubdjq27").instantiate()
+		item_interactable.item = item
+		item_interactable.icon.texture = item.drop_icon
+		item_interactable.global_position = parent.global_position
 	
 	if PlayerStats.facilities_unlocked["Cooking Station"] and PlayerStats.get_bag("Bag").max_slots >= 2:
 		var cooking_item : EnemyDrop = parent.enemy_stats.cooking_item_drop

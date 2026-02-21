@@ -51,9 +51,10 @@ func attack_enemies(enemies_in_hitbox : Array, enemies_hit : int = 1, number_of_
 func attack_enemy(player : Player, enemy : Enemy, incoming_damage : int, is_crit : bool, hit_freeze : float = 0.02, is_warrior : bool = false) -> void:
 	SignalBus.shake_camera.emit(0.5)
 	HitStopManager.freeze(hit_freeze, 0.1, 0.0, 0.03)
-	enemy.apply_damage(incoming_damage, is_crit)
 	if is_warrior:
 		enemy.increment_break_count()
+	enemy.apply_damage(incoming_damage, is_crit)
+
 		#might need to break here so we don't collide with the function below
 
 func calculate_targets(enemies_in_hitbox : Array, player : Player, number_of_hits : int) -> Array[Entity]:
