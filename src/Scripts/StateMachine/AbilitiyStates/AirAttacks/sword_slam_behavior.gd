@@ -1,9 +1,12 @@
 class_name SwordSlamBehavior extends AirAttackBehavior
 
+@export var soar_sfx : AudioStream
+@export var slam_sfx : AudioStream
 
 func on_enter(player : Player) -> void:
 	parent = player
 	parent.velocity = Vector2.ZERO
+	parent.play_sfx(soar_sfx,-8)
 
 func apply_physics(_delta : float) -> State:
 	parent.velocity.y += 150
@@ -22,6 +25,7 @@ func on_landing() -> State:
 	parent.get_parent().add_child(left_shock_wave)
 	parent.get_parent().add_child(right_shock_wave)
 	
+	parent.play_sfx(slam_sfx,-8)
 	SignalBus.shake_camera.emit(2)
 	HitStopManager.freeze(0.1,0.3)
 

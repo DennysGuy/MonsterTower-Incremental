@@ -29,3 +29,7 @@ func _on_hit_box_area_entered(area: Area2D) -> void:
 	damage -= int(damage * PlayerStats.player_stats["Defense"] * PlayerStats.get_sword(PlayerStats.player_stats["Equipped Sword"]).defense_bonus)
 	area_parent.apply_damage(damage,false)
 	
+
+func _on_slow_timer_timeout() -> void:
+	animation_player.speed_scale = 1.0
+	revert_slow_factor()

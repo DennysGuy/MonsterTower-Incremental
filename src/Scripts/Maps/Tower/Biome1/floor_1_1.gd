@@ -26,6 +26,7 @@ func _ready() -> void:
 			SignalBus.update_monsters_left.emit("Campfires Discovered: %s/%s" % [tower_entrance_data.camp_fires_reached, tower_entrance_data.total_camp_fires],false)
 	
 	SignalBus.update_player_health.emit(player.health)
+	SignalBus.update_player_mp.emit()
 	SaveManager.save_player_stats()
 
 	if GameManager.hunt_challenge_selected:

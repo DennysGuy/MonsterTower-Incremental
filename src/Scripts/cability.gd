@@ -20,6 +20,8 @@ enum ABILITY_TYPE {STANDARD_ATTACK, AIR_ATTACK, DASH_ATTACK, DOUBLE_JUMP, SPECIA
 @export var healh_recovery_amount : float
 @export var mp_recover_amount : float
 @export var defense_modifier : float
+@export var projectile_distance : float
+@export var slow_wait_time : float
 @export var jump_height_modifier : float
 @export var climb_speed_modifier : float
 @export var attack_damage_modifier : float

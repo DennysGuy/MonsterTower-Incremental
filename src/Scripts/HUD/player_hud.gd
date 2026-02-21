@@ -56,6 +56,8 @@ func _ready() -> void:
 	SignalBus.show_can_smelt_bar_label.connect(show_can_smelt_bar)
 	SignalBus.show_can_craft_sword.connect(show_can_craft_sword)
 	
+	SignalBus.update_player_mp.connect(update_player_mp)
+	
 	SignalBus.hide_can_cook_dish_label.connect(hide_can_cook_dish)
 	SignalBus.hide_can_smelt_bar_label.connect(hide_can_smelt_bar)
 	SignalBus.hide_can_craft_sword.connect(hide_can_craft_sword)
@@ -74,6 +76,7 @@ func _ready() -> void:
 	player_mp_bar.max_value = PlayerStats.player_stats["Current MP"]
 	player_mp_bar.value = player_mp_bar.max_value
 	
+	
 	update_xp_bar()
 	#update_player_health(int(PlayerStats.player_stats["Current Health"]))
 	
@@ -89,6 +92,13 @@ func update_player_health(value : int) -> void:
 	player_health_bar.value = value
 	player_health_bar.max_value = PlayerStats.player_stats["Max Health"]
 	hp_label.text = "%s/%s" % [int(player_health_bar.value), int(player_health_bar.max_value)]
+
+func update_player_mp() -> void:
+	var current_mp : int = PlayerStats.player_stats["Current MP"]
+	var max_mp : int = PlayerStats.player_stats["Max MP"]
+	player_mp_bar.value = current_mp
+	player_mp_bar.max_value = max_mp
+	mp_label.text = "%s/%s" % [current_mp,max_mp]
 
 func update_xp_bar() -> void:
 	level_label.text = "Level %s" % [int(PlayerStats.player_stats["Level"])]

@@ -296,7 +296,7 @@ size = Vector2(23, 30)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v37cp"]
 size = Vector2(18, 24)
 
-[node name="CorruptedMushie" type="CharacterBody2D" unique_id=1085916055 node_paths=PackedStringArray("name_tag", "health_bar", "wall_detector", "ground_detector", "state_machine", "animation_player", "health_component", "sprite", "blink_timer", "hurt_box", "hit_box", "hit_state", "dead_state", "sfx_player") groups=["Enemy"]]
+[node name="CorruptedMushie" type="CharacterBody2D" unique_id=1085916055 node_paths=PackedStringArray("name_tag", "health_bar", "slow_timer", "wall_detector", "ground_detector", "state_machine", "animation_player", "health_component", "sprite", "blink_timer", "hurt_box", "hit_box", "hit_state", "dead_state", "sfx_player") groups=["Enemy"]]
 collision_layer = 128
 collision_mask = 2
 script = ExtResource("1_61466")
@@ -304,6 +304,7 @@ enemy_stats = ExtResource("2_61466")
 xp = 12
 name_tag = NodePath("NameTag")
 health_bar = NodePath("EnemyHealthBar")
+slow_timer = NodePath("SlowTimer")
 wall_detector = NodePath("WallDetector")
 ground_detector = NodePath("GroundDetector")
 state_machine = NodePath("StateMachine")
@@ -416,5 +417,10 @@ process_callback = 0
 wait_time = 0.1
 one_shot = true
 
+[node name="SlowTimer" type="Timer" parent="." unique_id=503729084]
+process_callback = 0
+one_shot = true
+
 [connection signal="update_health_bar" from="HealthComponent" to="." method="_on_health_component_update_health_bar"]
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
+[connection signal="timeout" from="SlowTimer" to="." method="_on_slow_timer_timeout"]

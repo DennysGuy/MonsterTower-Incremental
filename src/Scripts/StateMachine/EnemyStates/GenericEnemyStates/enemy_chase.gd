@@ -31,7 +31,7 @@ func process_physics(_delta: float) -> State:
 	if !parent.ground_detector.is_colliding() or parent.wall_detector.is_colliding():
 		return idle_state
 
-	parent.velocity.x = direction * parent.enemy_stats.chase_speed
+	parent.velocity.x = direction * parent.enemy_stats.chase_speed * parent.slow_factor
 
 	parent.move_and_slide()
 

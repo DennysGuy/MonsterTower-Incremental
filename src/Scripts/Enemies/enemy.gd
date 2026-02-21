@@ -7,10 +7,13 @@ class_name Enemy extends Entity
 @export var health_bar : EnemyHealthBar
 @export var player : Player
 @export var drop_scene : Map
+@export var slow_timer : Timer
 
 @export_group("Detectors")
 @export var wall_detector : RayCast2D
 @export var ground_detector : RayCast2D
+
+var slow_factor : float = 1.0
 
 func _ready() -> void:
 	super()
@@ -54,6 +57,16 @@ func apply_direction(new_dir: int) -> void:
 	
 	prev_dir = new_dir
 	sprite.flip_h = new_dir < 0
+
+func apply_slow_and_damage(damage : int, issued_slow_factor : float, slow_wait_time : float) -> void:
+	apply_damage(damage, false)
+	animation_player.speed_scale = 0.6
+	slow_factor = issued_slow_factor
+	slow_timer.wait_time = slow_wait_time
+	slow_timer.start()
+
+func revert_slow_factor() -> void:
+	slow_factor = 1.0
 
 func give_xp() -> void:
 	PlayerStats.player_stats["Current XP"] += xp

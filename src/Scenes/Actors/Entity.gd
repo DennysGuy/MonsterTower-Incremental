@@ -15,7 +15,7 @@ class_name Entity extends CharacterBody2D
 @export var dead_state : State
 
 @export_group("Audio")
-@export var sfx_player : AudioStreamPlayer
+@export var sfx_player : SFXPlayer
 
 var damageable : bool = true
 var is_dead : bool = false
@@ -94,3 +94,12 @@ func blink_effect() -> void:
 
 func set_textures_visibility(value : bool) -> void:
 	sprite.visible = value
+
+func play_sfx(sound: AudioStream, volume: float = 0.0):
+	var player := AudioStreamPlayer.new()
+	player.stream = sound
+	player.volume_db = volume
+	player.bus = &"SFX"
+	add_child(player)
+	player.play()
+	player.finished.connect(player.queue_free)

@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://23q23kg6cy45"]
+
+[ext_resource type="Texture2D" uid="uid://b5vu1c0qxs2n7" path="res://Assets/HUD/StatusEffectIcons/SlowStatusIcon.png" id="1_ynivj"]
+[ext_resource type="Script" uid="uid://jhmo6p1848c7" path="res://src/Scripts/HUD/status_effect_icon.gd" id="2_1chmk"]
+
+[node name="StatusEffectIcon" type="TextureRect" unique_id=1617466240]
+custom_minimum_size = Vector2(16, 16)
+texture = ExtResource("1_ynivj")
+expand_mode = 1
+script = ExtResource("2_1chmk")

@@ -14,6 +14,8 @@ func enter() -> void:
 	AbilityTimers.activate_ability_cooldown("Double Jump")
 
 	var selected_ability : Ability = PlayerStats.get_equipped_ability("Double Jump")
+	PlayerStats.player_stats["Current MP"] -= selected_ability.mp_cost
+	SignalBus.update_player_mp.emit()
 	double_jump_state = selected_ability.ability_behavior
 	parent.set_sword_texture(double_jump_state.animation_name)
 	parent.set_outfit_texture(double_jump_state.animation_name)

@@ -27,6 +27,7 @@
 [ext_resource type="AudioStream" uid="uid://cc4bln4u3i6b8" path="res://Audio/SFX/Biomes/MossyDungeon/GenericDeath2.wav" id="19_hy0pi"]
 [ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="20_gslgg"]
 [ext_resource type="AudioStream" uid="uid://da4j7oibbpe1j" path="res://Audio/SFX/Biomes/MossyDungeon/GenericDeath3.wav" id="20_xk72l"]
+[ext_resource type="PackedScene" uid="uid://dg5nyfcc7ja8v" path="res://src/Scenes/Actors/Enemies/StatusEffectIconBar.tscn" id="28_hy0pi"]
 
 [sub_resource type="Animation" id="Animation_6al3p"]
 resource_name = "Chase"
@@ -295,7 +296,7 @@ size = Vector2(23, 30)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v37cp"]
 size = Vector2(19, 26)
 
-[node name="CorruptedMushie" type="CharacterBody2D" unique_id=85927412 node_paths=PackedStringArray("name_tag", "health_bar", "wall_detector", "ground_detector", "state_machine", "animation_player", "health_component", "sprite", "blink_timer", "hurt_box", "hit_box", "hit_state", "dead_state", "sfx_player") groups=["Enemy"]]
+[node name="CorruptedMushie" type="CharacterBody2D" unique_id=85927412 node_paths=PackedStringArray("name_tag", "health_bar", "slow_timer", "wall_detector", "ground_detector", "state_machine", "animation_player", "health_component", "sprite", "blink_timer", "hurt_box", "hit_box", "hit_state", "dead_state", "sfx_player") groups=["Enemy"]]
 collision_layer = 128
 collision_mask = 2
 script = ExtResource("1_uospo")
@@ -303,6 +304,7 @@ enemy_stats = ExtResource("2_l3wr6")
 xp = 7
 name_tag = NodePath("NameTag")
 health_bar = NodePath("EnemyHealthBar")
+slow_timer = NodePath("SlowTimer")
 wall_detector = NodePath("WallDetector")
 ground_detector = NodePath("GroundDetector")
 state_machine = NodePath("StateMachine")
@@ -326,6 +328,7 @@ texture = ExtResource("1_gol3t")
 hframes = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=400191748]
+visible = false
 position = Vector2(0, -21)
 shape = SubResource("CapsuleShape2D_s7mdw")
 
@@ -391,6 +394,7 @@ position = Vector2(0.5, 5)
 shape = SubResource("RectangleShape2D_s7mdw")
 
 [node name="HitBox" parent="." unique_id=351431721 instance=ExtResource("12_s7mdw")]
+visible = false
 position = Vector2(0, -20)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=233820395]
@@ -415,5 +419,15 @@ process_callback = 0
 wait_time = 0.1
 one_shot = true
 
+[node name="SlowTimer" type="Timer" parent="." unique_id=1194275962]
+process_callback = 0
+one_shot = true
+
+[node name="StatusEffectIconBar" parent="." unique_id=167981235 instance=ExtResource("28_hy0pi")]
+custom_minimum_size = Vector2(80, 16)
+offset_bottom = 22.0
+alignment = 1
+
 [connection signal="update_health_bar" from="HealthComponent" to="." method="_on_health_component_update_health_bar"]
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
+[connection signal="timeout" from="SlowTimer" to="." method="_on_slow_timer_timeout"]
