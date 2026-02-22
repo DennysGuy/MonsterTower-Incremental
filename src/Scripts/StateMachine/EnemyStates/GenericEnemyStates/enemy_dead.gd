@@ -47,8 +47,9 @@ func drop_items() -> void:
 		return
 		
 	var item : EnemyDrop = parent.enemy_stats.novelty_item_drop
+	var item_interactable : ItemInteractable = null
 	if item:
-		var item_interactable : ItemInteractable = preload("uid://dgtobkubdjq27").instantiate()
+		item_interactable = preload("uid://dgtobkubdjq27").instantiate()
 		item_interactable.item = item
 		item_interactable.icon.texture = item.drop_icon
 		item_interactable.global_position = parent.global_position

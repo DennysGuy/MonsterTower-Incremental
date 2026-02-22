@@ -1,8 +1,11 @@
 [gd_scene format=3 uid="uid://b404uvbhnmjxd"]
 
-[ext_resource type="Texture2D" uid="uid://drdtliaopu2eg" path="res://Assets/Facilities/TempClassSelectionMenu.png" id="1_3vuop"]
 [ext_resource type="Script" uid="uid://dj6dh8phukty" path="res://src/Scripts/Facilities/Menus/class_selection_menu.gd" id="1_r0emu"]
 [ext_resource type="FontFile" uid="uid://qgj228ltdttv" path="res://Assets/Fonts/alagard.ttf" id="2_hrvbj"]
+[ext_resource type="Texture2D" uid="uid://cst6tdxsuqwk6" path="res://Assets/Facilities/ClassSelectionMenu/WarriorBG.png" id="2_r0emu"]
+[ext_resource type="Texture2D" uid="uid://c6gxfmsduqvrs" path="res://Assets/Facilities/ClassSelectionMenu/SelectionBox.png" id="3_dn4so"]
+[ext_resource type="Texture2D" uid="uid://bvtolsa16grqw" path="res://Assets/Facilities/ClassSelectionMenu/MageBG.png" id="4_i7c6j"]
+[ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="5_ne1ap"]
 
 [node name="ClassSelectionMenu" type="Control" unique_id=27371608]
 layout_mode = 3
@@ -21,94 +24,161 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=289705081]
+[node name="MagePanel" type="TextureRect" parent="Panel" unique_id=1336293197]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_3vuop")
+texture = ExtResource("4_i7c6j")
 
-[node name="Warrior" type="Label" parent="TextureRect" unique_id=1037101577]
+[node name="Focus" type="RichTextLabel" parent="Panel/MagePanel" unique_id=1317816887]
 layout_mode = 0
-offset_left = 231.0
-offset_top = 31.0
-offset_right = 426.0
-offset_bottom = 79.0
-theme_override_constants/outline_size = 8
-theme_override_fonts/font = ExtResource("2_hrvbj")
-theme_override_font_sizes/font_size = 48
-text = "WARRIOR"
+offset_left = 47.0
+offset_top = 128.0
+offset_right = 389.0
+offset_bottom = 231.0
+theme_override_constants/outline_size = 4
+theme_override_fonts/normal_font = ExtResource("5_ne1ap")
+bbcode_enabled = true
+text = "The Mage channels arcane power to unleash devastating [color=red]damage[/color] on their foes. 
 
-[node name="Mage" type="Label" parent="TextureRect" unique_id=1242867718]
-layout_mode = 0
-offset_left = 263.0
-offset_top = 277.0
-offset_right = 377.0
-offset_bottom = 325.0
-theme_override_constants/outline_size = 8
-theme_override_fonts/font = ExtResource("2_hrvbj")
-theme_override_font_sizes/font_size = 48
+Lacking armor and sustain, they rely on precise positioning and swift, efficient [color=green]movement[/color] to safely traverse the [color=purple]Tower’s[/color] floors."
+
+[node name="Title" type="Label" parent="Panel/MagePanel" unique_id=1438801743]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 56.0
+offset_top = -50.0
+offset_right = 130.0
+offset_bottom = -27.0
+grow_vertical = 0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("5_ne1ap")
+theme_override_font_sizes/font_size = 32
 text = "Mage"
 
-[node name="Notice" type="Label" parent="TextureRect" unique_id=1763383214]
-layout_mode = 0
-offset_left = 263.0
-offset_top = 222.0
-offset_right = 464.0
-offset_bottom = 251.0
-theme_override_constants/outline_size = 8
-theme_override_fonts/font = ExtResource("2_hrvbj")
-theme_override_font_sizes/font_size = 30
-text = "[Not Available]"
-
-[node name="Warrior2" type="Label" parent="TextureRect" unique_id=598504142]
-layout_mode = 0
-offset_left = 234.0
-offset_top = 76.0
-offset_right = 419.0
-offset_bottom = 124.0
+[node name="Title2" type="RichTextLabel" parent="Panel/MagePanel" unique_id=1911631159]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 56.0
+offset_top = -116.0
+offset_right = 327.0
+offset_bottom = -72.0
+grow_vertical = 0
 theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("2_hrvbj")
-theme_override_font_sizes/font_size = 14
-text = "- Melee Tank
-- High Crowd Control
-"
+theme_override_fonts/normal_font = ExtResource("5_ne1ap")
+theme_override_font_sizes/normal_font_size = 36
+bbcode_enabled = true
+text = "[color=yellow]COMING SOON![/color]"
 
-[node name="MageDetails" type="Label" parent="TextureRect" unique_id=410127543]
+[node name="WarriorPanel" type="TextureRect" parent="Panel" unique_id=389080872]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_r0emu")
+
+[node name="Focus" type="RichTextLabel" parent="Panel/WarriorPanel" unique_id=336545929]
 layout_mode = 0
-offset_left = 388.0
-offset_top = 275.0
-offset_right = 505.0
-offset_bottom = 326.0
+offset_left = 47.0
+offset_top = 128.0
+offset_right = 389.0
+offset_bottom = 237.0
+theme_override_constants/outline_size = 4
+theme_override_fonts/normal_font = ExtResource("2_hrvbj")
+bbcode_enabled = true
+text = "The Warrior specializes in absorbing [color=red]damage[/color]
+head-on and controlling enemies. 
+
+Each successful attack builds [color=yellow]'Break stacks'[/color]
+once the threshold is reached, the target is stunned for a short duration."
+
+[node name="Title" type="Label" parent="Panel/WarriorPanel" unique_id=658375155]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 56.0
+offset_top = -50.0
+offset_right = 130.0
+offset_bottom = -27.0
+grow_vertical = 0
 theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("2_hrvbj")
-theme_override_font_sizes/font_size = 16
-text = "- Ranged DPS
-- High AOE"
-
-[node name="WarriorSelect" type="Button" parent="TextureRect" unique_id=1805949375]
-layout_mode = 0
-offset_left = 98.0
-offset_top = 188.0
-offset_right = 194.0
-offset_bottom = 226.0
-mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("2_hrvbj")
 theme_override_font_sizes/font_size = 32
-text = "Select"
+text = "WARRIOR"
 
-[node name="Exit" type="Button" parent="TextureRect" unique_id=607167638]
+[node name="SelectionPanel" type="TextureRect" parent="Panel" unique_id=119738840]
 layout_mode = 0
-offset_left = 116.0
-offset_top = 300.0
-offset_right = 172.0
-offset_bottom = 331.0
+offset_right = 640.0
+offset_bottom = 360.0
+texture = ExtResource("3_dn4so")
+
+[node name="WarriorSelectButton" type="Button" parent="Panel/SelectionPanel" unique_id=71017981]
+layout_mode = 0
+offset_left = 79.0
+offset_top = 55.0
+offset_right = 147.0
+offset_bottom = 78.0
 mouse_default_cursor_shape = 2
+theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_hrvbj")
+text = "Warrior"
+
+[node name="MageSelectButton" type="Button" parent="Panel/SelectionPanel" unique_id=301722790]
+layout_mode = 0
+offset_left = 79.0
+offset_top = 84.0
+offset_right = 147.0
+offset_bottom = 108.0
+mouse_default_cursor_shape = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("5_ne1ap")
+text = "Mage"
+
+[node name="Label" type="Label" parent="Panel" unique_id=2070895696]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 21.0
+offset_right = 185.0
+offset_bottom = 40.0
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("2_hrvbj")
+theme_override_font_sizes/font_size = 20
+text = "Class Selection"
+
+[node name="SelectButton" type="Button" parent="Panel" unique_id=1835830370]
+layout_mode = 0
+offset_left = 201.0
+offset_top = 48.0
+offset_right = 271.0
+offset_bottom = 80.0
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("5_ne1ap")
+theme_override_font_sizes/font_size = 24
+text = "Select!"
+
+[node name="ExitButton" type="Button" parent="Panel" unique_id=1126404157]
+layout_mode = 0
+offset_left = 201.0
+offset_top = 85.0
+offset_right = 271.0
+offset_bottom = 117.0
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("5_ne1ap")
 theme_override_font_sizes/font_size = 24
 text = "Exit"
 
-[connection signal="button_up" from="TextureRect/WarriorSelect" to="." method="_on_warrior_select_button_up"]
-[connection signal="button_up" from="TextureRect/Exit" to="." method="_on_warrior_select_2_button_up"]
+[connection signal="button_up" from="Panel/SelectionPanel/WarriorSelectButton" to="." method="_on_warrior_select_button_button_up"]
+[connection signal="button_up" from="Panel/SelectionPanel/MageSelectButton" to="." method="_on_mage_select_button_button_up"]
+[connection signal="button_up" from="Panel/SelectButton" to="." method="_on_select_button_button_up"]
+[connection signal="button_up" from="Panel/ExitButton" to="." method="_on_exit_button_button_up"]

@@ -269,8 +269,6 @@ death_sound_1 = ExtResource("11_5ts4l")
 death_sound_2 = ExtResource("11_5ts4l")
 death_sound_3 = ExtResource("11_5ts4l")
 animation_name = "Dead"
-animation_duration = null
-move_speed = null
 
 [node name="HurtBox" parent="." unique_id=1325433561 instance=ExtResource("5_k2yhj")]
 
