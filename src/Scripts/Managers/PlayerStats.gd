@@ -93,13 +93,22 @@ func equip_ability(ability : Ability, position : String) -> void:
 
 var player_classes : Dictionary = {
 	"Junior Hunter" : {
-		"Sword Attack 1 Name": preload("uid://c5hss1iq5ontu"),
-		"Sword Attack 2 Name": preload("uid://rbc7yawqcf3h"),
-		"Sword Attack 3 Name": preload("uid://7qd8qvg4bf73"),
+		"Attack 1": preload("uid://c5hss1iq5ontu"),
+		"Attack 2": preload("uid://rbc7yawqcf3h"),
+		"Attack 3": preload("uid://7qd8qvg4bf73"),
 		"Air Attack": 	preload("uid://bukiike6rf6pl"),
 		"Dash Attack": preload("uid://b0lsgfuw8bp58"),
 		"Double Jump": preload("uid://rgwunwula5mv"),
 		"Special Attack": null
+	},
+	"Tyro" : {
+		"Attack 1": preload("uid://c5hss1iq5ontu"),
+		"Attack 2": preload("uid://rbc7yawqcf3h"),
+		"Attack 3": preload("uid://7qd8qvg4bf73"),
+		"Air Attack": 	preload("uid://dcxiodvnbqgef"),
+		"Dash Attack": preload("uid://c3llqiy2fb5n5"),
+		"Double Jump": preload("uid://ctavgtgbvyp1w"),
+		"Special Attack": preload("uid://cs0umnvsvjhnh")
 	}
 }
 
@@ -193,7 +202,7 @@ func upgrade_player_stat(stat_name : String, interval : float, node_type : TechT
 	TechTreeManager.update_player_stats.emit()
 
 func check_needed_for_dojo() -> bool:
-	return PlayerStats.player_stats["Level"] >= 8 and PlayerStats.facilities_unlocked["Dash Attack"] and PlayerStats.facilities_unlocked["Arial Slash"] and PlayerStats.facilities_unlocked["Double Jump"]
+	return PlayerStats.player_stats["Level"] >= 5 and PlayerStats.facilities_unlocked["Dash Attack"] and PlayerStats.facilities_unlocked["Arial Slash"] and PlayerStats.facilities_unlocked["Double Jump"]
 
 func check_level_for_dojo() -> bool:
-	return PlayerStats.player_stats["Level"] >= 8
+	return PlayerStats.player_stats["Level"] >= 5

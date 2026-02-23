@@ -57,8 +57,8 @@ func _ready() -> void:
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	super(delta)
 	if Input.is_action_just_pressed("interact") and player_in_tower_range and GameManager.player_can_move and PlayerStats.facilities_unlocked["Hunter License"]:
-		GameManager.player_can_move = false
 		spawn_tower_entrance_map() #need to check how many checkpoints unlocked
 
 			
@@ -251,7 +251,6 @@ func unlock_station() -> void:
 		
 	GameManager.player_can_move = true
 
-
 func new_sword_unlock_notice() -> void:
 	GameManager.player_can_move = false
 	camera.player = null
@@ -269,18 +268,19 @@ func new_sword_unlock_notice() -> void:
 	camera.player = player
 	GameManager.player_can_move = true
 
-
 func _on_dojo_area_body_entered(body: Node2D) -> void:
 	if body is Player:
 		
-		if PlayerStats.player_stats["Level"] >= 10:
-			dojo_access_notification.text = "Press E to access the Dojo!"
+		if PlayerStats.check_needed_for_dojo():
+			if PlayerStats.player_stats["Class"] == "Adventurer":
+				dojo_access_notification.text = "Press E to Select Your Class!"
+			else:
+				dojo_access_notification.text = "Press E to Access Dojo!"
 		else:
 			dojo_access_notification.text = ""
 		
 		player_in_dojo_range = true
 		dojo_access_notification.show()
-
 
 func _on_dojo_area_body_exited(body: Node2D) -> void:
 	if body is Player:

@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://dcs7xx24655nt"]
+
+[ext_resource type="Texture2D" uid="uid://bdw85iv04k8t0" path="res://Assets/Facilities/ClassSelectionMenu/SwordDance.png" id="1_wlw85"]
+[ext_resource type="Script" uid="uid://7vp8h3ok37v4" path="res://src/Scripts/Facilities/starting_ability_icon.gd" id="2_rl4oi"]
+[ext_resource type="FontFile" uid="uid://qgj228ltdttv" path="res://Assets/Fonts/alagard.ttf" id="3_tixrv"]
+[ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="4_mgabv"]
+
+[node name="StartingAbilityIcon" type="TextureRect" unique_id=1859415452]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+texture = ExtResource("1_wlw85")
+stretch_mode = 2
+script = ExtResource("2_rl4oi")
+
+[node name="StartingAbilityDescriptionPanel" type="ColorRect" parent="." unique_id=836985536]
+visible = false
+z_index = 4096
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 25.0
+offset_top = -101.0
+offset_right = 317.5
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AbilityName" type="Label" parent="StartingAbilityDescriptionPanel" unique_id=487886705]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -45.0
+offset_top = 1.0
+offset_right = 45.0
+offset_bottom = 13.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_tixrv")
+theme_override_font_sizes/font_size = 12
+text = "Sword Soar"
+horizontal_alignment = 1
+
+[node name="Description" type="RichTextLabel" parent="StartingAbilityDescriptionPanel" unique_id=1780395973]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -135.25
+offset_top = -39.5
+offset_right = 134.75
+offset_bottom = 54.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("4_mgabv")
+theme_override_font_sizes/normal_font_size = 12
+text = "This is the description of the ability hmm. Maybe this is working well. or maybe not!"
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

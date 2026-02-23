@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://dqx7ld4tcru6g"]
+
+[ext_resource type="Script" uid="uid://bkbnwgrhie7yb" path="res://src/Scripts/TechTree/warrior_tech_tree.gd" id="1_34e8x"]
+[ext_resource type="Script" uid="uid://co4ox6rujyeod" path="res://src/Scripts/TechTree/tech_tree_camera.gd" id="2_3odnu"]
+
+[node name="WarriorTechTree" type="Node2D" unique_id=984980909]
+script = ExtResource("1_34e8x")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=493310583]
+offset_top = -789.0
+offset_right = 639.0
+offset_bottom = 359.0
+color = Color(0.22376168, 0.14588532, 0.14601174, 1)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=739098669]
+position = Vector2(320, 179)
+limit_left = 0
+limit_top = -700
+limit_right = 640
+limit_bottom = 360
+script = ExtResource("2_3odnu")

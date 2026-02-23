@@ -36,6 +36,7 @@ var selected_inventory : String
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	InventoryManager.populate_market_menu.connect(populate_details_panel)
+	GameManager.can_pause_game = false
 	init_market()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -111,6 +112,7 @@ func _on_close_button_up() -> void:
 
 func close_out() -> void:
 	GameManager.player_can_move = true
+	GameManager.can_pause_game = true
 	CookingManager.can_craft_bar.emit()
 	CookingManager.can_craft_dish.emit()
 	queue_free()	

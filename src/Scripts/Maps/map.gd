@@ -39,7 +39,7 @@ const TIER_UP = preload("uid://dhfdudbiidv7a")
 var kill_quota_hit : bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	
+	GameManager.can_pause_game = true
 	GameManager.previous_map_path = path
 	GameManager.previous_map_data = tower_entrance_data
 	SignalBus.move_to_next_room.connect(move_to_next_room)
@@ -125,12 +125,16 @@ func _ready() -> void:
 			MusicPlayer.play_song(hunt_theme_song)
 
 func _input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("close_menu") and GameManager.can_pause_game:
-		var pause_menu : PauseMenu = preload("uid://dlaq2oh2iuyjk").instantiate()
-		pause_canvas_layer.add_child(pause_menu)
+	pass
+
+		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	
+	if Input.is_action_just_pressed("pause_game") and GameManager.can_pause_game:
+		var pause_menu : PauseMenu = preload("uid://dlaq2oh2iuyjk").instantiate()
+		pause_canvas_layer.add_child(pause_menu)
+
 
 	
 func spawn_player() -> void:

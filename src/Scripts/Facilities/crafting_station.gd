@@ -54,6 +54,7 @@ var show_can_craft_next_sword_scene : bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	title.text = station_name
+	GameManager.can_pause_game = false
 	update_inventories()
 	clear_menu_item_container()
 	clear_details_panel()
@@ -99,6 +100,7 @@ func _on_exit_button_up() -> void:
 
 func close_out() -> void:
 	GameManager.player_can_move = true
+	GameManager.can_pause_game = true
 	if station_type == STATION_TYPE.SMELTING:
 		if show_can_craft_next_sword_scene:
 			SignalBus.issue_can_craft_sword_scene.emit()

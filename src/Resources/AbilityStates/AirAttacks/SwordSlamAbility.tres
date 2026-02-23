@@ -7,7 +7,11 @@
 script = ExtResource("1_m8fqx")
 ability_name = "Sword Slam"
 cooldown_time = 1.5
-ability_description = "From mid air, slam your sword into the ground sending powerful shock waves slowing the enemies around you."
+ability_description = "Replaces Current Air Attack Ability!
+
+From mid air, slam your sword into the ground sending powerful shock waves slowing the enemies around you.
+
+Shock waves also deal 50% of current basic attack!"
 ability_behavior = ExtResource("1_1jqj3")
 mp_cost = 7.0
 projectile_distance = 100.0

@@ -8,12 +8,14 @@ script = ExtResource("1_5cicd")
 ability_name = "Sword Soar"
 ability_type = 3
 cooldown_time = 1.0
-ability_description = "Soar in the air hitting the enemies above and pushing them towards the side."
+ability_description = "Replaces Current Double Jump Ability!
+
+Soar in the air hitting the enemies above and pushing them towards the side."
 ability_behavior = ExtResource("1_yip4t")
 mp_cost = 7.0
 number_of_enemies_hit = 5.0
 max_hit_count = 1.0
 slow_wait_time = 1.5
-attack_damage_modifier = 0.3
+attack_damage_modifier = 0.5
 move_speed_modifier = 0.4
 metadata/_custom_type_script = "uid://bwqf7q51702b"

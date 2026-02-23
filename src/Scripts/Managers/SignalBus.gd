@@ -89,7 +89,9 @@ signal show_bag_stats
 
 @warning_ignore("unused_signal")
 signal populate_item_notification_panel(item_data : Item)
-
-
+@warning_ignore("unused_signal")
+signal show_class_notice
+@warning_ignore("unused_signal")
+signal set_icons
 @warning_ignore("unused_signal")
 signal play_sfx(audio_stream : AudioStream)

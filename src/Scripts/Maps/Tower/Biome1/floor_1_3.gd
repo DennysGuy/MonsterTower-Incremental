@@ -23,15 +23,14 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	super(delta)
 	if Input.is_action_just_pressed("interact") and in_check_point_area:
 		go_to_starshire()
-
 
 func _on_checkpoint_area_body_entered(body: Node2D) -> void:
 	if body is Player:
 		in_check_point_area = true
 		checkpoint_log.show()
-
 
 func _on_checkpoint_area_body_exited(body: Node2D) -> void:
 	if body is Player:

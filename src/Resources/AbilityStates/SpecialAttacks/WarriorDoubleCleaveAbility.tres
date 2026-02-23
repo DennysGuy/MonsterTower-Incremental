@@ -8,10 +8,12 @@ script = ExtResource("1_pb823")
 ability_name = "Double Cleave"
 ability_type = 4
 cooldown_time = 3.0
-ability_description = "Hit an enemy with two powerful attacks. A 2.0 Multiplier Bonus is applied."
+ability_description = "Special Attack Ability!
+
+Hit an enemy with a power two attack combo. A 3x damage multiplier Bonus is applied!"
 ability_behavior = ExtResource("1_5evol")
 hp_cost = 10.0
-mp_cost = 15.0
+mp_cost = 12.0
 base_attack = 30.0
 number_of_enemies_hit = 1.0
 max_hit_count = 2.0

@@ -573,6 +573,7 @@ tower_entrance_data = ExtResource("2_801hy")
 map_theme_song = ExtResource("3_801hy")
 hunt_theme_song = ExtResource("4_nhahy")
 hunt_victory_theme = ExtResource("5_kbbvk")
+player_spawn = null
 camera = NodePath("PlayerCamera")
 hud = NodePath("HUD")
 ore_rock_spawn_rate = 0.6
@@ -585,6 +586,7 @@ monster_spawn_node = NodePath("MonsterSpawnNode")
 pause_canvas_layer = NodePath("HUD")
 map_type = 2
 kill_quota = 30
+current_kill_count = null
 ambience_player = NodePath("AmbiencePlayer")
 ambience_sfx = ExtResource("2_vcays")
 

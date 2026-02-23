@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://dtf6m65mtihb8"]
+[gd_scene format=3 uid="uid://dtf6m65mtihb8"]
 
 [ext_resource type="Script" uid="uid://d1ht03ceg8heb" path="res://src/Scripts/Facilities/smelting_menu.gd" id="1_2h3n5"]
 [ext_resource type="PackedScene" uid="uid://pk5hdfflc6iy" path="res://src/Scenes/NewStarshire/Facilities/CraftingStation.tscn" id="1_wmf4j"]
 
-[node name="SmeltingMenu" type="Control"]
+[node name="SmeltingMenu" type="Control" unique_id=1873596495]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,7 +12,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_2h3n5")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="Panel" parent="." unique_id=446901339]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,7 +20,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CraftingStation" parent="." instance=ExtResource("1_wmf4j")]
+[node name="CraftingStation" parent="." unique_id=46532872 instance=ExtResource("1_wmf4j")]
 layout_mode = 1
 station_name = "Smelting Station"
 station_type = 1

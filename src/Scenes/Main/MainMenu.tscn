@@ -132,16 +132,6 @@ theme_override_fonts/font = ExtResource("2_58xxk")
 theme_override_font_sizes/font_size = 30
 text = "COntinue"
 
-[node name="TransitionRect" type="ColorRect" parent="." unique_id=1379323239]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 1)
-
 [node name="PatchUpdatePanel" type="Panel" parent="." unique_id=607089193]
 layout_mode = 1
 anchors_preset = 4
@@ -166,22 +156,16 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/normal_font = ExtResource("2_58xxk")
 theme_override_font_sizes/normal_font_size = 14
-text = "v 0.0.5 prototype Changes
 
-- New phases; expedition and hunt phase; expedition is slower gathering/crafting phase - hunt phase is  floor ascension challenge: clear all enemies instead of hunt quota
-
-- Player phyiscs changes: friction added to movement and attacks
-
-- attack canceling added
-
-- start with 6 max bag slot stacks instead of 4; 8 stacks for bank.
-
-- enemy damage debuffed and hitbox size reduction
-
-- player starting attack increased to 13
-- player health increased to 60 from 35
-
-- fixed tech tree bug inhibiting some nodes from unlocking if player leaves at a certain spot"
+[node name="TransitionRect" type="ColorRect" parent="." unique_id=1379323239]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1450711081]
 libraries/ = SubResource("AnimationLibrary_gwjs1")

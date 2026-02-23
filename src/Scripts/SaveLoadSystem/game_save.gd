@@ -35,9 +35,9 @@ TODO: We will add saves for classes as well
 	"Crit Damage" : 1.5,
 	"Accuracy" : 0.6,
 	"Max Health" : 60,
-	"Max MP": 150,
+	"Max MP": 200,
 	"Current Health":60,
-	"Current MP": 150,
+	"Current MP": 200,
 	"Equipped Sword": 0,
 	"Equipped Pickaxe": 0,
 	"Overlapping Hits" : 1.0,
@@ -163,10 +163,10 @@ TODO: We will add saves for classes as well
 	"Attack 1" : "uid://c5hss1iq5ontu", #sword swing 1
 	"Attack 2" : "uid://rbc7yawqcf3h", #sword swing 2
 	"Attack 3" : "uid://7qd8qvg4bf73", #sword swing 3
-	"Dash Attack" : "uid://c3llqiy2fb5n5", #sword dance - for testing purposes
-	"Air Attack" : "uid://dcxiodvnbqgef", #sword slam - for testing purposes
-	"Double Jump" : "uid://ctavgtgbvyp1w", #sword soar - for testing purposes
-	"Special Attack" : "uid://cs0umnvsvjhnh" #double cleave - here for testing purposes
+	"Dash Attack" : "uid://b0lsgfuw8bp58" , #sword dance - for testing purposes
+	"Air Attack" : "uid://bukiike6rf6pl", #sword slam - for testing purposes
+	"Double Jump" : "uid://rgwunwula5mv", #sword soar - for testing purposes
+	"Special Attack" : null #double cleave - here for testing purposes
 }
 
 #though should be setup at "continue game too"

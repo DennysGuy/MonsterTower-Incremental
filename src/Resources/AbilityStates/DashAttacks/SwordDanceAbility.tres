@@ -8,7 +8,9 @@ script = ExtResource("1_ne2ti")
 ability_name = "Sword Dance"
 ability_type = 2
 cooldown_time = 2.0
-ability_description = "Silence the Monsters you dash through - rendering them powerless for a brief period of time.
+ability_description = "Replaces current Dash Ability!
+
+Silence the Monsters you dash through - rendering them powerless for a brief period of time.
 
 Damage enemy for 60% of Attack Power Level"
 ability_behavior = ExtResource("1_xdpyx")

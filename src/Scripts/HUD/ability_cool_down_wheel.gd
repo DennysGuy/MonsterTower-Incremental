@@ -11,6 +11,7 @@ var timer_started : bool = false
 func _ready() -> void:
 	AbilityTimers.start_ability_cooldown_timer.connect(start_progress_wheel)
 	TechTreeManager.set_ability_hud_icon.connect(set_icon)
+	SignalBus.set_icons.connect(set_icon)
 	set_icon()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

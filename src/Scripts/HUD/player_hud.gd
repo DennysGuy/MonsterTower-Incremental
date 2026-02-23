@@ -38,6 +38,7 @@ const COUNTDOWN_BEEP = preload("uid://c6caiqmkt2lt0")
 @onready var bagslots: Label = $PlayerHUD/Bagslots
 
 @onready var pick_up_notifier: VBoxContainer = $PlayerHUD/PickUpNotifier
+@onready var class_notice: RichTextLabel = $PlayerHUD/ClassNotice
 
 
 # Called when the node enters the scene tree for the first time.
@@ -55,6 +56,7 @@ func _ready() -> void:
 	SignalBus.show_can_cook_dish_label.connect(show_can_cook_dish)
 	SignalBus.show_can_smelt_bar_label.connect(show_can_smelt_bar)
 	SignalBus.show_can_craft_sword.connect(show_can_craft_sword)
+	SignalBus.show_class_notice.connect(show_class_notice)
 	
 	SignalBus.update_player_mp.connect(update_player_mp)
 	
@@ -76,9 +78,9 @@ func _ready() -> void:
 	player_mp_bar.max_value = PlayerStats.player_stats["Current MP"]
 	player_mp_bar.value = player_mp_bar.max_value
 	
-	
 	update_xp_bar()
 	#update_player_health(int(PlayerStats.player_stats["Current Health"]))
+	show_class_notice()
 	
 	if PlayerStats.facilities_unlocked["Refinery Station"]:
 		bag_2.show()
@@ -181,6 +183,12 @@ func show_can_smelt_bar() -> void:
 
 func show_can_craft_sword() -> void:
 	can_craft_sword.show()
+
+func show_class_notice() -> void:
+	var current_class : String = PlayerStats.player_stats["Class"] 
+	if current_class == "Junior Hunter" and PlayerStats.check_needed_for_dojo():
+		class_notice.show()
+
 
 func hide_can_cook_dish() -> void:
 	can_cook_dish.hide()

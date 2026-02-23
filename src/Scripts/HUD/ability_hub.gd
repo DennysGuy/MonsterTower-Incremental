@@ -27,3 +27,6 @@ func _process(delta: float) -> void:
 
 func update_license_tier_level() -> void:
 	license_tier_level.text = license_tier_text[TechTreeManager.current_prestige]
+
+
+	

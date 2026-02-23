@@ -40,10 +40,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -51.5
-offset_top = 8.0
-offset_right = 51.5
-offset_bottom = 31.0
+offset_left = 77.0
+offset_top = 10.0
+offset_right = 201.0
+offset_bottom = 34.0
 grow_horizontal = 2
 theme_override_constants/outline_size = 7
 theme_override_fonts/font = ExtResource("2_lf62l")
@@ -156,7 +156,7 @@ anchor_bottom = 1.0
 offset_left = 6.0
 offset_top = -275.0
 offset_right = 156.0
-offset_bottom = -36.0
+offset_bottom = -3.0
 grow_vertical = 0
 
 [node name="Label" type="Label" parent="Panel/BG/ControlsPanel" unique_id=2067605822]
@@ -192,6 +192,52 @@ Controller - 'Square'/'X'
 
 Drop Through Platform:
 Down + Jump
+"
+
+[node name="ControlsPanel2" type="Panel" parent="Panel/BG" unique_id=663172527]
+z_index = 4096
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 161.0
+offset_top = -275.0
+offset_right = 327.0
+offset_bottom = -3.0
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="Panel/BG/ControlsPanel2" unique_id=1475070413]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 3.0
+offset_right = 59.0
+offset_bottom = 19.0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_lf62l")
+text = "Attack Input"
+
+[node name="Label2" type="Label" parent="Panel/BG/ControlsPanel2" unique_id=1610369120]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 21.0
+offset_right = 166.0
+offset_bottom = 208.0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_lf62l")
+theme_override_font_sizes/font_size = 12
+text = "Dash Attack:
+Keyboard - 'Move' + 'Right Click'
+Controller - 'Move' + 'B'/'Circle'
+
+Air Attack:
+- Attack input in mid air
+
+Double Jump:
+- Jump input in mid air
+
+Special Attack:
+- Keyboard - \"Shift\"
+- Controller - 'Y'/'Triangle'
 "
 
 [connection signal="button_up" from="Panel/BG/Button" to="." method="_on_button_button_up"]
