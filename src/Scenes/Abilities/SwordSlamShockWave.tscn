@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://d2l513up1bout"]
+
+[ext_resource type="Script" uid="uid://b1x122ddm11b4" path="res://src/Scripts/Abilities/sword_slam_shock_wave.gd" id="1_20cvw"]
+[ext_resource type="Texture2D" uid="uid://bfalwuvopehkb" path="res://Assets/PlayerGraphics/VFX/PlayerSwordSlamShockWave.png" id="2_oxhl7"]
+[ext_resource type="PackedScene" uid="uid://xsmgmpbxjc3b" path="res://src/Scenes/Actors/Utilities/HitBox.tscn" id="3_oxhl7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ndvrt"]
+atlas = ExtResource("2_oxhl7")
+region = Rect2(0, 0, 98, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_un5mg"]
+atlas = ExtResource("2_oxhl7")
+region = Rect2(98, 0, 98, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7svhm"]
+atlas = ExtResource("2_oxhl7")
+region = Rect2(196, 0, 98, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rjlcg"]
+atlas = ExtResource("2_oxhl7")
+region = Rect2(294, 0, 98, 65)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2gcai"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ndvrt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_un5mg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7svhm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rjlcg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_20cvw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ndvrt"]
+size = Vector2(31, 32)
+
+[node name="SwordSlamShockWave" type="Node2D" unique_id=900042572]
+top_level = true
+script = ExtResource("1_20cvw")
+move_speed = 5.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1793975056]
+position = Vector2(-13, -33)
+sprite_frames = SubResource("SpriteFrames_2gcai")
+frame_progress = 0.2990354
+
+[node name="Timer" type="Timer" parent="." unique_id=742988585]
+process_callback = 0
+wait_time = 0.1
+one_shot = true
+autostart = true
+ignore_time_scale = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1827781980]
+position = Vector2(-1, -10)
+shape = SubResource("RectangleShape2D_20cvw")
+
+[node name="HitBox" parent="." unique_id=211127194 instance=ExtResource("3_oxhl7")]
+position = Vector2(-1, -10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=455814606]
+position = Vector2(10.5, -6)
+shape = SubResource("RectangleShape2D_ndvrt")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]

@@ -8,9 +8,19 @@ class_name Enemy extends Entity
 @export var player : Player
 @export var drop_scene : Map
 
+@export var status_effect_icon_bar : StatusEffectIconBar
+@export var vertical_status_icon_bar : StatusEffectVBox
+
+@export_group("Timers")
+@export var slow_timer : Timer
+@export var silenced_timer : Timer
+
 @export_group("Detectors")
 @export var wall_detector : RayCast2D
 @export var ground_detector : RayCast2D
+
+var slow_factor : float = 1.0
+var current_break_count : int = 0
 
 func _ready() -> void:
 	super()
@@ -25,8 +35,9 @@ func _ready() -> void:
 
 func _exit_tree() -> void:
 	if is_dead:
-		SignalBus.update_kill_quota.emit()
-		
+		if GameManager.hunt_challenge_selected:
+			SignalBus.update_kill_quota.emit()
+
 func _process(delta: float) -> void:
 	super(delta)
 	if player == null:
@@ -54,6 +65,58 @@ func apply_direction(new_dir: int) -> void:
 	prev_dir = new_dir
 	sprite.flip_h = new_dir < 0
 
+func apply_slow_and_damage(damage : int, issued_slow_factor : float, slow_wait_time : float) -> void:
+	if PlayerStats.player_stats["Class"] == "Tyro":
+		increment_break_count()
+
+	apply_damage(damage, false)
+	animation_player.speed_scale = 0.6
+	if status_effect_icon_bar:
+		status_effect_icon_bar.add_slow_icon_to_bar()
+		
+	if slow_timer:
+		slow_factor = issued_slow_factor
+		slow_timer.wait_time = slow_wait_time
+		slow_timer.start()
+	# we'll need to check if we're already stunned so that the player can't stun enemies 
+	# also is this too cheap? Maybe this can be balanced.
+
+func apply_silenced_and_damage(damage : int, silenced_wait_time : float) -> void:
+	if PlayerStats.player_stats["Class"] == "Tyro":
+		increment_break_count()
+		
+	apply_damage(damage, false)
+	if status_effect_icon_bar:
+		status_effect_icon_bar.add_silenced_icon_to_bar()
+	
+	if silenced_timer:
+		disable_hit_box()
+		silenced_timer.wait_time = silenced_wait_time
+		silenced_timer.start()
+
+func revert_slow_factor() -> void:
+	if status_effect_icon_bar:
+		status_effect_icon_bar.remove_slow_icon_from_bar()
+	slow_factor = 1.0
+
+func revert_silence() -> void:
+	if status_effect_icon_bar:
+		status_effect_icon_bar.remove_silenced_icon_from_bar()
+	enable_hit_box()
+
+func increment_break_count() -> void:
+	if is_stunned:
+		return
+	
+	if current_break_count >= enemy_stats.break_threshold:
+		vertical_status_icon_bar.remove_break_count_icon()
+		current_break_count = 0
+		is_stunned = true
+	else:
+		current_break_count += 1
+		vertical_status_icon_bar.add_break_status_icon(current_break_count,enemy_stats.break_threshold)
+		#send to stun state?
+
 func give_xp() -> void:
 	PlayerStats.player_stats["Current XP"] += xp
 	var xp_label : DamageLabel = preload("uid://dkchs27qqogyy").instantiate()
@@ -62,5 +125,5 @@ func give_xp() -> void:
 	xp_label.global_position.y = global_position.y-40
 	xp_label.global_position.x = global_position.x+30
 	drop_scene.add_child(xp_label)
-	
+		
 	LevelingManager.check_for_level_up()

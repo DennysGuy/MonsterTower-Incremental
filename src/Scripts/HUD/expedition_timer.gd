@@ -1,6 +1,5 @@
 extends Control
 
-@onready var timer_label: RichTextLabel = $TimerLabel
 @onready var sfx_player: SFXPlayer = preload("uid://d080wmb3mv021").instantiate()
 
 var seconds : float = 0.0
@@ -25,10 +24,20 @@ func _physics_process(delta: float) -> void:
 			milliseconds = 0.99
 			if seconds <= 0:
 				GameManager.expedition_timer_started = false
-				SignalBus.return_to_starshire.emit()
+				if GameManager.hunt_challenge_selected:
+					SignalBus.go_to_failure_hunt_menu.emit()
+				else:
+					SignalBus.return_to_starshire.emit()
 		
 func start_timer() -> void:
 	seconds = PlayerStats.player_stats["Expedition Time"]
 	milliseconds = 0.99
 	GameManager.expedition_timer_started = true
-	
+
+
+func set_time_for_hunt() -> void:
+	seconds = PlayerStats.player_stats["Hunt Time"]
+	milliseconds = 0.99
+
+func start_hunt_timer() -> void:
+	GameManager.expedition_timer_started = true

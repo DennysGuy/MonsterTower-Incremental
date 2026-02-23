@@ -7,20 +7,27 @@ class_name PlayerClimb extends State
 
 func enter() -> void:
 	super()
+	parent.apply_gravity = false
+	parent.can_double_jump = true
 	parent.can_knock_back = false
 	parent.velocity = Vector2.ZERO
+	parent.set_sword_texture(animation_name)
+	parent.set_outfit_texture(animation_name)
 	if parent.stored_ladder:
 		parent.global_position.x = parent.stored_ladder.global_position.x
 	parent.is_climbing = true
 	parent.set_collision_mask_value(5, false)
 	
 func exit() -> void:
-	
+	parent.apply_gravity = true
 	parent.sfx_player.stop()
 	parent.is_climbing = false
 	parent.set_collision_mask_value(5, true)
 
 func process_input(_event: InputEvent) -> State:
+	if Input.is_action_just_pressed("add_currency"):
+		parent.jump_buffer_timer = parent.jump_buffer_wait_time
+		
 	return null
 
 func process_frame(_delta: float) -> State:
@@ -41,7 +48,7 @@ func process_physics(_delta: float) -> State:
 			parent.sfx_player.play_sfx(climb_sfx)
 		parent.animation_player.play()
 	
-	if Input.is_action_just_pressed("add_currency"):
+	if parent.jump_buffer_timer > 0:
 		return jump_state
 	
 	

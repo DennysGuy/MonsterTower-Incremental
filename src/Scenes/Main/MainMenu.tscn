@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://babypuakc7i7y"]
+[gd_scene format=3 uid="uid://babypuakc7i7y"]
 
 [ext_resource type="Script" uid="uid://c1wrjow75bhab" path="res://src/Scripts/Main/main_menu.gd" id="1_lb6hv"]
 [ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="2_58xxk"]
@@ -59,7 +59,7 @@ _data = {
 &"RESET": SubResource("Animation_gwjs1")
 }
 
-[node name="MainMenu" type="Control"]
+[node name="MainMenu" type="Control" unique_id=1509647516]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -67,9 +67,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_lb6hv")
-next_scene_path = "uid://c3y6ce3xriuwl"
+next_scene_path = "uid://c3nk4aov63usx"
 
-[node name="ColorRect" type="TextureRect" parent="."]
+[node name="ColorRect" type="TextureRect" parent="." unique_id=1039899871]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -78,31 +78,31 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_gwjs1")
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=1445026577]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -208.5
-offset_top = 45.0
-offset_right = 208.5
-offset_bottom = 96.0
+offset_left = -6.0
+offset_top = 31.0
+offset_right = 343.0
+offset_bottom = 74.0
 grow_horizontal = 2
 theme_override_constants/outline_size = 11
 theme_override_fonts/font = ExtResource("3_rsyx7")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 38
 text = "Starspire Hunters"
 
-[node name="NewGame" type="Button" parent="."]
+[node name="NewGame" type="Button" parent="." unique_id=2136236947]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -59.0
+offset_left = 67.0
 offset_top = 70.0
-offset_right = 59.0
+offset_right = 185.0
 offset_bottom = 110.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -112,7 +112,7 @@ theme_override_fonts/font = ExtResource("2_58xxk")
 theme_override_font_sizes/font_size = 24
 text = "NEw Game"
 
-[node name="Continue" type="Button" parent="."]
+[node name="Continue" type="Button" parent="." unique_id=1382076943]
 modulate = Color(3.85046e-07, 0.97184914, 0.35903677, 1)
 layout_mode = 1
 anchors_preset = 8
@@ -120,9 +120,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -31.0
+offset_left = 68.5
 offset_top = 22.0
-offset_right = 31.0
+offset_right = 183.5
 offset_bottom = 62.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -132,7 +132,32 @@ theme_override_fonts/font = ExtResource("2_58xxk")
 theme_override_font_sizes/font_size = 30
 text = "COntinue"
 
-[node name="TransitionRect" type="ColorRect" parent="."]
+[node name="PatchUpdatePanel" type="Panel" parent="." unique_id=607089193]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 15.0
+offset_top = -170.0
+offset_right = 305.0
+offset_bottom = 173.0
+grow_vertical = 2
+
+[node name="Description" type="RichTextLabel" parent="PatchUpdatePanel" unique_id=273507147]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 4.0
+offset_right = 9.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("2_58xxk")
+theme_override_font_sizes/normal_font_size = 14
+
+[node name="TransitionRect" type="ColorRect" parent="." unique_id=1379323239]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -142,13 +167,12 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_gwjs1")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1450711081]
+libraries/ = SubResource("AnimationLibrary_gwjs1")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1807827256]
 stream = ExtResource("4_fcgj2")
+bus = &"Music"
 
 [connection signal="button_up" from="NewGame" to="." method="_on_button_button_up"]
 [connection signal="button_up" from="Continue" to="." method="_on_continue_button_up"]

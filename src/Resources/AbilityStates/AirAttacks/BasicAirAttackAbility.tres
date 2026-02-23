@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ClassAbility" load_steps=3 format=3 uid="uid://bukiike6rf6pl"]
+[gd_resource type="Resource" script_class="Ability" format=3 uid="uid://bukiike6rf6pl"]
 
 [ext_resource type="Resource" uid="uid://bmd0pcmjmoel0" path="res://src/Resources/AbilityStates/AirAttacks/BasicAirAttackBehavior.tres" id="1_o04ol"]
 [ext_resource type="Script" uid="uid://bwqf7q51702b" path="res://src/Scripts/cability.gd" id="1_x67r8"]
@@ -7,6 +7,7 @@
 script = ExtResource("1_x67r8")
 ability_name = "Air Attack"
 ability_type = 1
+cooldown_time = 0.7
 ability_description = "The intro air attack - before a class is selected."
 ability_behavior = ExtResource("1_o04ol")
 number_of_enemies_hit = 1.0

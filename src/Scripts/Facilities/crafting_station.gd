@@ -54,6 +54,7 @@ var show_can_craft_next_sword_scene : bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	title.text = station_name
+	GameManager.can_pause_game = false
 	update_inventories()
 	clear_menu_item_container()
 	clear_details_panel()
@@ -70,6 +71,10 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	state_machine.process_frame(delta)
+
+func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("close_menu"):
+		close_out()
 
 func _physics_process(delta: float) -> void:
 	state_machine.process_physics(delta)
@@ -91,7 +96,11 @@ func _on_iv_button_up() -> void:
 	pass # Replace with function body.
 
 func _on_exit_button_up() -> void:
+	close_out()
+
+func close_out() -> void:
 	GameManager.player_can_move = true
+	GameManager.can_pause_game = true
 	if station_type == STATION_TYPE.SMELTING:
 		if show_can_craft_next_sword_scene:
 			SignalBus.issue_can_craft_sword_scene.emit()
@@ -148,9 +157,9 @@ func populate_details_panel(recipe : CraftingRecipe) -> void:
 	
 	var can_add_to_inventory : bool
 	
-	if STATION_TYPE.COOKING:
+	if station_type == STATION_TYPE.COOKING:
 		can_add_to_inventory = InventoryManager.check_if_can_add_to_inventory(recipe.output_item, "Inventory", "Bag","Max Bag Stack")
-	else:
+	if station_type == STATION_TYPE.SMELTING:
 		can_add_to_inventory = InventoryManager.check_if_can_add_to_inventory(recipe.output_item, "Ore Inventory", "Ore Bag","Max Ore Bag Stack")
 	
 	if !can_add_to_inventory:

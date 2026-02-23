@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c11hg5ijdrjjs"]
+[gd_scene format=3 uid="uid://c11hg5ijdrjjs"]
 
 [ext_resource type="Texture2D" uid="uid://sm0sjtn0eenp" path="res://Assets/Tower/FloorElevator/FloorElevator_Base.png" id="1_cctbe"]
 [ext_resource type="Script" uid="uid://3hxdumxyuob1" path="res://src/Scripts/Tower/exit_elevator_1.gd" id="1_lw48p"]
@@ -99,32 +99,30 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lw48p"]
 size = Vector2(185, 88)
 
-[node name="ExitElevator" type="Node2D"]
+[node name="ExitElevator" type="Node2D" unique_id=974802616]
 script = ExtResource("1_lw48p")
 
-[node name="Base" type="Sprite2D" parent="."]
+[node name="Base" type="Sprite2D" parent="." unique_id=468844581]
 texture = ExtResource("1_cctbe")
 
-[node name="LeftDoor" type="Sprite2D" parent="."]
+[node name="LeftDoor" type="Sprite2D" parent="." unique_id=1435844455]
 texture = ExtResource("2_lw48p")
 
-[node name="RightDoor" type="Sprite2D" parent="."]
+[node name="RightDoor" type="Sprite2D" parent="." unique_id=1801634913]
 texture = ExtResource("3_4on78")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1101011558]
 root_node = NodePath("../LeftDoor")
-libraries = {
-&"": SubResource("AnimationLibrary_8fvq5")
-}
+libraries/ = SubResource("AnimationLibrary_8fvq5")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=180316385]
 position = Vector2(0, 71)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=849457482]
 position = Vector2(4.5, -54)
 shape = SubResource("RectangleShape2D_lw48p")
 
-[node name="MoveToNextRoomLabel" type="Label" parent="."]
+[node name="MoveToNextRoomLabel" type="Label" parent="." unique_id=315675814]
 visible = false
 offset_left = -78.0
 offset_top = -53.0

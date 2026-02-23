@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="TechNodeStats" load_steps=4 format=3 uid="uid://c5l21ge3ylc0e"]
+[gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://c5l21ge3ylc0e"]
 
 [ext_resource type="Texture2D" uid="uid://qlpnwox7g4gb" path="res://Assets/NodeGraphics/NodeGraphicsV2/Defense2_V2.png" id="1_3xufc"]
 [ext_resource type="Resource" uid="uid://buu8pdcooh3hc" path="res://src/Resources/CraftingResources/BronzeBar.tres" id="1_wj17q"]
@@ -16,5 +16,5 @@ ExtResource("1_wj17q"): 2
 }])
 stat_name = "Defense"
 upgrade_interval = 0.15
-prereqs = Array[String](["Defense 1:3"])
+prereqs = Array[String](["Defense 1:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

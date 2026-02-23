@@ -5,28 +5,36 @@ class_name PlayerJump extends State
 
 @export var jump_sfx : AudioStream
 @export var air_attack : State
+@export var double_jump : State
 
 func enter() -> void:
 	super()
 	parent.can_knock_back = true
 	parent.sfx_player.play_sfx(jump_sfx)
 	parent.set_sword_texture(animation_name)
+	parent.set_outfit_texture(animation_name)
+
+	parent.velocity.y = 0
 	parent.velocity.y -= PlayerStats.player_stats["Jump Height"]
 
 func exit() -> void:
 	pass
 
 func process_input(_event: InputEvent) -> State:
+	if Input.is_action_just_pressed("add_currency") and PlayerStats.facilities_unlocked["Double Jump"] and parent.can_issue_ability("Double Jump"):
+		parent.jump_buffer_timer = parent.jump_buffer_wait_time
+		return double_jump
 	return null
 
 func process_frame(_delta: float) -> State:
+
 	return null
 
 func process_physics(_delta: float) -> State:
 	if parent.velocity.y > 0:
 		return fall_state
 	
-	if Input.is_action_just_pressed("swing_sword") and PlayerStats.facilities_unlocked["Arial Slash"]:
+	if Input.is_action_just_pressed("swing_sword") and PlayerStats.facilities_unlocked["Arial Slash"] and parent.can_issue_ability("Air Attack"):
 		return air_attack
 	
 	var movement = Input.get_axis("pan_cam_left","pan_cam_right") * PlayerStats.player_stats["Movement Speed"]

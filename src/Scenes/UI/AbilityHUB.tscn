@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://pwttwkstxm3g"]
+
+[ext_resource type="Script" uid="uid://ck7lbxjw0rhmo" path="res://src/Scripts/HUD/ability_hub.gd" id="1_hmuts"]
+[ext_resource type="Texture2D" uid="uid://e24sivb2f5yk" path="res://Assets/HUD/AbilitiesHUD.png" id="1_yplyh"]
+[ext_resource type="PackedScene" uid="uid://cnnswhinxp2l4" path="res://src/Scenes/UI/AbilityCoolDownWheel.tscn" id="3_6u15c"]
+[ext_resource type="FontFile" uid="uid://qgj228ltdttv" path="res://Assets/Fonts/alagard.ttf" id="4_82w8g"]
+
+[node name="AbilityHub" type="Control" unique_id=1622225446]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -67.5
+offset_top = -40.0
+offset_right = 65.5
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("1_hmuts")
+
+[node name="Hub" type="TextureRect" parent="." unique_id=1946614680]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -66.0
+offset_top = -20.0
+offset_right = 66.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_yplyh")
+stretch_mode = 2
+
+[node name="AbilityCoolDownWheel" parent="." unique_id=1023824424 instance=ExtResource("3_6u15c")]
+layout_mode = 1
+offset_left = -57.75
+offset_top = -15.0
+offset_right = -44.25
+offset_bottom = -3.0
+ability_name = "Dash Attack"
+
+[node name="AbilityCoolDownWheel2" parent="." unique_id=661819295 instance=ExtResource("3_6u15c")]
+layout_mode = 1
+offset_left = -37.0
+offset_top = -15.0
+offset_right = -23.5
+offset_bottom = -3.0
+ability_name = "Air Attack"
+
+[node name="AbilityCoolDownWheel3" parent="." unique_id=1910498784 instance=ExtResource("3_6u15c")]
+layout_mode = 1
+offset_left = 25.0
+offset_top = -15.0
+offset_right = 38.5
+offset_bottom = -3.0
+ability_name = "Double Jump"
+
+[node name="AbilityCoolDownWheel4" parent="." unique_id=812086142 instance=ExtResource("3_6u15c")]
+layout_mode = 1
+offset_left = 46.0
+offset_top = -15.0
+offset_right = 59.5
+offset_bottom = -3.0
+ability_name = "Special Attack"
+
+[node name="LicenseTierLevel" type="Label" parent="." unique_id=399173630]
+layout_mode = 0
+offset_left = 54.5
+offset_top = 8.0
+offset_right = 78.5
+offset_bottom = 23.0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("4_82w8g")
+theme_override_font_sizes/font_size = 15
+text = "I"
+horizontal_alignment = 1

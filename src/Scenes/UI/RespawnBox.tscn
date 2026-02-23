@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dv20tfcnkjyux"]
+[gd_scene format=3 uid="uid://dv20tfcnkjyux"]
 
 [ext_resource type="Texture2D" uid="uid://cdo1jy6lli1bp" path="res://Assets/HUD/RespawnBox.png" id="1_0drp3"]
 [ext_resource type="Script" uid="uid://tjnofobg2u4b" path="res://src/Scripts/HUD/respawn_box.gd" id="1_jgn4x"]
@@ -41,7 +41,7 @@ _data = {
 &"SpawnIn": SubResource("Animation_jgn4x")
 }
 
-[node name="RespawnBox" type="Control"]
+[node name="RespawnBox" type="Control" unique_id=610479791]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -50,13 +50,11 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_jgn4x")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1824295130]
 root_node = NodePath("../RespawnBG")
-libraries = {
-&"": SubResource("AnimationLibrary_qyocg")
-}
+libraries/ = SubResource("AnimationLibrary_qyocg")
 
-[node name="RespawnBG" type="TextureRect" parent="."]
+[node name="RespawnBG" type="TextureRect" parent="." unique_id=1694171060]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -68,7 +66,7 @@ offset_bottom = -99.0
 grow_horizontal = 2
 texture = ExtResource("1_0drp3")
 
-[node name="Label" type="Label" parent="RespawnBG"]
+[node name="Label" type="Label" parent="RespawnBG" unique_id=279045178]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -85,16 +83,16 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_jgn4x")
 text = "You have died! "
 
-[node name="Button" type="Button" parent="RespawnBG"]
+[node name="Button" type="Button" parent="RespawnBG" unique_id=448277064]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -45.5
+offset_left = -74.0
 offset_top = 1.0
-offset_right = 45.5
+offset_right = 17.0
 offset_bottom = 22.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -102,4 +100,23 @@ theme_override_fonts/font = ExtResource("2_jgn4x")
 theme_override_font_sizes/font_size = 9
 text = "Return to Starshire"
 
+[node name="Button2" type="Button" parent="RespawnBG" unique_id=729863844]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 21.0
+offset_top = 1.0
+offset_right = 70.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_jgn4x")
+theme_override_font_sizes/font_size = 9
+text = "Try Again"
+
 [connection signal="button_up" from="RespawnBG/Button" to="." method="_on_button_button_up"]
+[connection signal="button_up" from="RespawnBG/Button2" to="." method="_on_button_2_button_up"]

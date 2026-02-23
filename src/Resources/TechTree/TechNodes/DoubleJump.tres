@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://cq5drdy7t8gas"]
+
+[ext_resource type="Texture2D" uid="uid://bdxecrkf3cm18" path="res://Assets/NodeGraphics/NodeGraphicsV2/DoubleJump_Icon_V2.png" id="1_ixpf1"]
+[ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_x4lvf"]
+
+[resource]
+script = ExtResource("1_x4lvf")
+node_name = "Double Jump"
+icon = ExtResource("1_ixpf1")
+description = "Enables you to jump while mid air (How this makes sense - who knows - but traversal is fun!)"
+currency_required = 600
+node_type = 1
+stat_name = "Double Jump"
+prereqs = Array[String](["Jump Height 1:1"])
+metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

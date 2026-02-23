@@ -3,6 +3,7 @@ class_name OreRockDepleted extends State
 @onready var ore_rock_area : CollisionShape2D = $"../../OreRockArea/CollisionShape2D"
 
 func enter() -> void:
+	parent.arrow_at_ore.hide()
 	parent.enemy_health_bar.hide()
 	ore_rock_area.disabled = true
 	parent.player.stored_ore_rock = null

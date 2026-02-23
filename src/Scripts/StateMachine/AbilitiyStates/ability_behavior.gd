@@ -8,6 +8,9 @@ var parent : Player
 
 func on_enter(player : Player) -> void:
 	pass
+
+func on_exit() -> void:
+	pass
 	
-func apply_physics() -> State:
+func apply_physics(_delta : float) -> State:
 	return null

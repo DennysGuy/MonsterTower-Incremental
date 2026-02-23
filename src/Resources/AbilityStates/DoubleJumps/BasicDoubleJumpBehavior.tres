@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="BasicDoubleJump" format=3 uid="uid://c2o0abk6esxah"]
+
+[ext_resource type="Script" uid="uid://bf5bomhfb0flh" path="res://src/Scripts/StateMachine/AbilitiyStates/DoubleJumpAttacks/basic_double_jump.gd" id="1_bcbtp"]
+[ext_resource type="AudioStream" uid="uid://fjjtu5mli4xo" path="res://Audio/SFX/Player/Jump_NoVerb.wav" id="2_4mtf1"]
+
+[resource]
+script = ExtResource("1_bcbtp")
+animation_name = "Jump"
+sfx = ExtResource("2_4mtf1")
+metadata/_custom_type_script = "uid://bf5bomhfb0flh"

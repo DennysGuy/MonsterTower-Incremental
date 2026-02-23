@@ -36,7 +36,9 @@ func _process(delta: float) -> void:
 		TechTreeManager.currency += 500
 		update_currency_label()
 		TechTreeManager.check_if_can_purchase_node.emit()
-	pass
+	
+	if Input.is_action_just_pressed("close_menu"):
+		close_out()
 		
 func update_currency_label() -> void:
 	currency.text = "Currency: %s" % [TechTreeManager.currency]
@@ -49,7 +51,7 @@ func update_prestige_progress() -> void:
 	prestige_progress_2.text = "%s/%s" % [TechTreeManager.current_upgrade_count, TechTreeManager.upgrade_count_to_prestige]
 	progress_bar.max_value = TechTreeManager.upgrade_count_to_prestige
 	progress_bar.value = TechTreeManager.current_upgrade_count
-	hunting_time.text = "Hunt Time: %s sec." % [int(PlayerStats.player_stats["Expedition Time"])] 
+	hunting_time.text = "Expedition Time: %s sec.\nHunt Challenge Time: %s sec." % [int(PlayerStats.player_stats["Expedition Time"]), int(PlayerStats.player_stats["Hunt Time"])] 
 	
 func _enter_tree() -> void:
 	GameManager.player_can_move = false
@@ -61,9 +63,14 @@ func _exit_tree() -> void:
 		GameManager.player_can_move = true
 
 func _on_close_button_down() -> void:
+	close_out()
+
+func close_out() -> void:
+	TechTreeManager.check_needed_item_panel_for_purchase.emit()
+	TechTreeManager.set_ability_hud_icon.emit()
+	SignalBus.show_class_notice.emit()
 	if PlayerStats.show_cooking_station_unlock_animation or PlayerStats.show_refinery_station_unlock_animation:
 		TechTreeManager.unlock_station.emit()
-
 	sfx_player.play_sfx(CLOSE_UPGRADE_PC)
 	await get_tree().create_timer(0.3).timeout
 	queue_free()

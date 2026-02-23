@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dcp8logbcrblu"]
+
+[ext_resource type="Texture2D" uid="uid://b5vu1c0qxs2n7" path="res://Assets/HUD/StatusEffectIcons/SlowStatusIcon.png" id="1_nntgn"]
+[ext_resource type="Script" uid="uid://dx0tcqiexh4c6" path="res://src/Scripts/HUD/StatusEffectIcons/slow_status_icon.gd" id="2_lhb3j"]
+
+[node name="SlowStatusIcon" type="TextureRect" unique_id=859007672]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -624.0
+offset_bottom = -344.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_nntgn")
+stretch_mode = 2
+script = ExtResource("2_lhb3j")

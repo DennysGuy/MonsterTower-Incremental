@@ -10,13 +10,16 @@ class_name EnemyDead extends State
 
 func enter() -> void:
 	super()
-	if parent.hit_box:
-		parent.hit_box.get_child(0).disabled = true
+	parent.damageable = false
+	parent.is_dead = true
+	
+	#parent.disable_hit_box()
+	#parent.disable_hurt_box()
+		
 	drop_items()
 	parent.give_xp()
 	HitStopManager.freeze(0.15)
-	parent.damageable = false
-	parent.is_dead = true
+
 	parent.health_bar.hide()
 	parent.timer.wait_time = wait_time
 	parent.sfx_player.play_sfx(death_sounds.pick_random())
@@ -40,17 +43,22 @@ func process_physics(_delta: float) -> State:
 	return null
 
 func drop_items() -> void:
+	if GameManager.hunt_challenge_selected:
+		return
+		
 	var item : EnemyDrop = parent.enemy_stats.novelty_item_drop
-	var item_interactable : ItemInteractable = preload("uid://dgtobkubdjq27").instantiate()
-	item_interactable.item = item
-	item_interactable.icon.texture = item.drop_icon
-	item_interactable.global_position = parent.global_position
+	var item_interactable : ItemInteractable = null
+	if item:
+		item_interactable = preload("uid://dgtobkubdjq27").instantiate()
+		item_interactable.item = item
+		item_interactable.icon.texture = item.drop_icon
+		item_interactable.global_position = parent.global_position
 	
 	if PlayerStats.facilities_unlocked["Cooking Station"] and PlayerStats.get_bag("Bag").max_slots >= 2:
 		var cooking_item : EnemyDrop = parent.enemy_stats.cooking_item_drop
 		var cooking_item_interactable : ItemInteractable = preload("uid://dgtobkubdjq27").instantiate()
 		var random_check : int = randi_range(0, 100)
-		if random_check <= int((cooking_item.drop_chance + PlayerStats.player_stats["Cooking Drop Chance Bonus"]) * 100):
+		if cooking_item and random_check <= int((cooking_item.drop_chance + PlayerStats.player_stats["Cooking Drop Chance Bonus"]) * 100):
 			cooking_item_interactable.item = cooking_item
 			cooking_item_interactable.icon.texture = cooking_item.drop_icon
 			cooking_item_interactable.global_position = Vector2(parent.global_position.x + 20,parent.global_position.y)

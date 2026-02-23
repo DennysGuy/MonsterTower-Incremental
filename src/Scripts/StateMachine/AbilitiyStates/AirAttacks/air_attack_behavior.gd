@@ -4,7 +4,7 @@ class_name AirAttackBehavior extends AbilityBehavior
 func on_enter(player : Player) -> void:
 	pass
 	
-func apply_physics() -> State:
+func apply_physics(_delta : float) -> State:
 	return null
 
 func on_landing() -> State:

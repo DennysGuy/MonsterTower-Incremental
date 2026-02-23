@@ -33,7 +33,7 @@ func process_physics(_delta: float) -> State:
 		dir *= -1
 		parent.apply_direction(dir)
 
-	parent.velocity.x = dir * parent.enemy_stats.movement_speed
+	parent.velocity.x = dir * parent.enemy_stats.movement_speed * parent.slow_factor
 
 	parent.set_floor_snap_length(30)
 	parent.apply_floor_snap()

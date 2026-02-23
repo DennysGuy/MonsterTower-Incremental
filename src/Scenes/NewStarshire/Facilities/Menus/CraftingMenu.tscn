@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cc1xppx3tkq4f"]
+[gd_scene format=3 uid="uid://cc1xppx3tkq4f"]
 
 [ext_resource type="Script" uid="uid://cbuffb253p3na" path="res://src/Scripts/Facilities/Menus/crafting_menu.gd" id="1_1fqc8"]
 [ext_resource type="Texture2D" uid="uid://cfo2whg1w2q42" path="res://Assets/Facilities/CraftingStationMenu.png" id="2_lfawm"]
@@ -59,7 +59,7 @@ _data = {
 &"RESET": SubResource("Animation_08er8")
 }
 
-[node name="CraftingMenu" type="Control"]
+[node name="CraftingMenu" type="Control" unique_id=517779629]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -68,9 +68,9 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_1fqc8")
 
-[node name="SfxPlayer" parent="." instance=ExtResource("2_octel")]
+[node name="SfxPlayer" parent="." unique_id=510219631 instance=ExtResource("2_octel")]
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="Panel" parent="." unique_id=1458398501]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -78,7 +78,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Background" type="TextureRect" parent="."]
+[node name="Background" type="TextureRect" parent="." unique_id=1078700021]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -87,7 +87,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_lfawm")
 
-[node name="SwordName" type="Label" parent="."]
+[node name="SwordName" type="Label" parent="." unique_id=1527731069]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -102,7 +102,7 @@ theme_override_fonts/font = ExtResource("3_1tol8")
 text = "Sword Name"
 horizontal_alignment = 1
 
-[node name="Bag" type="Label" parent="."]
+[node name="Bag" type="Label" parent="." unique_id=1096702730]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -117,7 +117,7 @@ theme_override_fonts/font = ExtResource("3_1tol8")
 text = "BAG"
 horizontal_alignment = 1
 
-[node name="Inventory" type="Label" parent="."]
+[node name="Inventory" type="Label" parent="." unique_id=1619377982]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -132,7 +132,7 @@ theme_override_fonts/font = ExtResource("3_1tol8")
 theme_override_font_sizes/font_size = 12
 text = "Inventory"
 
-[node name="Bank" type="Label" parent="."]
+[node name="Bank" type="Label" parent="." unique_id=107098035]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -147,7 +147,7 @@ theme_override_fonts/font = ExtResource("3_1tol8")
 theme_override_font_sizes/font_size = 12
 text = "Bank"
 
-[node name="BankNotice" type="Label" parent="."]
+[node name="BankNotice" type="Label" parent="." unique_id=1164100428]
 visible = false
 layout_mode = 1
 anchors_preset = 5
@@ -163,7 +163,7 @@ theme_override_fonts/font = ExtResource("3_1tol8")
 theme_override_font_sizes/font_size = 12
 text = "Bank Account Locked..."
 
-[node name="Panel2" type="Panel" parent="."]
+[node name="Panel2" type="Panel" parent="." unique_id=1466711699]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -177,7 +177,7 @@ offset_bottom = 106.0
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="Details" type="Label" parent="."]
+[node name="Details" type="Label" parent="." unique_id=782268928]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -192,7 +192,7 @@ theme_override_fonts/font = ExtResource("3_1tol8")
 text = "Details"
 horizontal_alignment = 1
 
-[node name="Recipe" type="Label" parent="."]
+[node name="Recipe" type="Label" parent="." unique_id=562852534]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -208,7 +208,7 @@ theme_override_font_sizes/font_size = 14
 text = "Recipe"
 horizontal_alignment = 1
 
-[node name="SwordDescription" type="RichTextLabel" parent="."]
+[node name="SwordDescription" type="RichTextLabel" parent="." unique_id=1976626916]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -226,7 +226,7 @@ theme_override_fonts/normal_font = ExtResource("4_1tol8")
 theme_override_font_sizes/normal_font_size = 10
 text = "A sword made out slime jellies! Really dull. Really mull."
 
-[node name="SwordStats" type="RichTextLabel" parent="."]
+[node name="SwordStats" type="RichTextLabel" parent="." unique_id=1325837385]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -247,7 +247,7 @@ text = "+50 Attack
 +1% Crit Chance
 +10% Crit Damage"
 
-[node name="IngredientsList" type="GridContainer" parent="."]
+[node name="IngredientsList" type="GridContainer" parent="." unique_id=96722626]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -262,16 +262,16 @@ grow_horizontal = 0
 grow_vertical = 2
 theme_override_constants/v_separation = 1
 
-[node name="IngredientItem" parent="IngredientsList" instance=ExtResource("5_re6m4")]
+[node name="IngredientItem" parent="IngredientsList" unique_id=419774735 instance=ExtResource("5_re6m4")]
 layout_mode = 2
 
-[node name="IngredientItem2" parent="IngredientsList" instance=ExtResource("5_re6m4")]
+[node name="IngredientItem2" parent="IngredientsList" unique_id=112919579 instance=ExtResource("5_re6m4")]
 layout_mode = 2
 
-[node name="IngredientItem3" parent="IngredientsList" instance=ExtResource("5_re6m4")]
+[node name="IngredientItem3" parent="IngredientsList" unique_id=2145521062 instance=ExtResource("5_re6m4")]
 layout_mode = 2
 
-[node name="SwordGraphic" type="TextureRect" parent="."]
+[node name="SwordGraphic" type="TextureRect" parent="." unique_id=1382611568]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -286,7 +286,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("6_octel")
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="Button" parent="." unique_id=1905573858]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -304,7 +304,7 @@ theme_override_fonts/font = ExtResource("4_1tol8")
 theme_override_font_sizes/font_size = 14
 text = "Craft!"
 
-[node name="InventoryContainer" type="GridContainer" parent="."]
+[node name="InventoryContainer" type="GridContainer" parent="." unique_id=1061583504]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -316,43 +316,43 @@ offset_bottom = -13.0
 grow_vertical = 2
 columns = 4
 
-[node name="Slot" parent="InventoryContainer" instance=ExtResource("8_octel")]
+[node name="Slot" parent="InventoryContainer" unique_id=625281494 instance=ExtResource("8_octel")]
 layout_mode = 2
 
-[node name="Slot2" parent="InventoryContainer" instance=ExtResource("8_octel")]
+[node name="Slot2" parent="InventoryContainer" unique_id=494160612 instance=ExtResource("8_octel")]
 layout_mode = 2
 
-[node name="Slot3" parent="InventoryContainer" instance=ExtResource("8_octel")]
+[node name="Slot3" parent="InventoryContainer" unique_id=867797939 instance=ExtResource("8_octel")]
 layout_mode = 2
 
-[node name="Slot4" parent="InventoryContainer" instance=ExtResource("8_octel")]
+[node name="Slot4" parent="InventoryContainer" unique_id=2034137915 instance=ExtResource("8_octel")]
 layout_mode = 2
 
-[node name="Slot5" parent="InventoryContainer" instance=ExtResource("8_octel")]
+[node name="Slot5" parent="InventoryContainer" unique_id=347644668 instance=ExtResource("8_octel")]
 layout_mode = 2
 
-[node name="Slot6" parent="InventoryContainer" instance=ExtResource("8_octel")]
+[node name="Slot6" parent="InventoryContainer" unique_id=1205733163 instance=ExtResource("8_octel")]
 layout_mode = 2
 
-[node name="Slot7" parent="InventoryContainer" instance=ExtResource("8_octel")]
+[node name="Slot7" parent="InventoryContainer" unique_id=1723780674 instance=ExtResource("8_octel")]
 layout_mode = 2
 
-[node name="Slot8" parent="InventoryContainer" instance=ExtResource("8_octel")]
+[node name="Slot8" parent="InventoryContainer" unique_id=278189995 instance=ExtResource("8_octel")]
 layout_mode = 2
 
-[node name="Slot9" parent="InventoryContainer" instance=ExtResource("8_octel")]
+[node name="Slot9" parent="InventoryContainer" unique_id=438309233 instance=ExtResource("8_octel")]
 layout_mode = 2
 
-[node name="Slot10" parent="InventoryContainer" instance=ExtResource("8_octel")]
+[node name="Slot10" parent="InventoryContainer" unique_id=559496197 instance=ExtResource("8_octel")]
 layout_mode = 2
 
-[node name="Slot11" parent="InventoryContainer" instance=ExtResource("8_octel")]
+[node name="Slot11" parent="InventoryContainer" unique_id=2055577972 instance=ExtResource("8_octel")]
 layout_mode = 2
 
-[node name="Slot12" parent="InventoryContainer" instance=ExtResource("8_octel")]
+[node name="Slot12" parent="InventoryContainer" unique_id=549105592 instance=ExtResource("8_octel")]
 layout_mode = 2
 
-[node name="BankContainer" type="GridContainer" parent="."]
+[node name="BankContainer" type="GridContainer" parent="." unique_id=319526813]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -364,7 +364,7 @@ offset_bottom = 133.0
 grow_vertical = 2
 columns = 4
 
-[node name="Flash" type="ColorRect" parent="."]
+[node name="Flash" type="ColorRect" parent="." unique_id=1179529704]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -374,12 +374,10 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_08er8")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=805724738]
+libraries/ = SubResource("AnimationLibrary_08er8")
 
-[node name="Close" type="Button" parent="."]
+[node name="Close" type="Button" parent="." unique_id=694580689]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0

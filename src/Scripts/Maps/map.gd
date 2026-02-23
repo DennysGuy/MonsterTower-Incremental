@@ -4,6 +4,8 @@ class_name Map extends Node2D
 @export var map_id : int
 @export var tower_entrance_data : TowerEntranceData
 @export var map_theme_song : AudioStream
+@export var hunt_theme_song : AudioStream
+@export var hunt_victory_theme : AudioStream
 @export var spawn_point : Marker2D
 @export var player_spawn : bool = true
 @export var camera : PlayerCamera
@@ -14,9 +16,10 @@ class_name Map extends Node2D
 
 @export var path : String
 @export var next_room_path : String
-@export var sfx_player : AudioStreamPlayer
+@export var sfx_player : SFXPlayer
 
 @export var monster_spawn_node : Node
+@export var pause_canvas_layer : CanvasLayer
 
 enum MAP_TYPE {HUB, FLOOR, CHECKPOINT_FLOOR}
 
@@ -29,12 +32,23 @@ var player : Player
 
 @export var ambience_player : AudioStreamPlayer
 @export var ambience_sfx : AudioStream
+
+const TIER_UP = preload("uid://dhfdudbiidv7a")
+
+
+var kill_quota_hit : bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	GameManager.can_pause_game = true
 	GameManager.previous_map_path = path
 	GameManager.previous_map_data = tower_entrance_data
 	SignalBus.move_to_next_room.connect(move_to_next_room)
 	SignalBus.return_to_starshire.connect(go_to_starshire)
+	SignalBus.go_to_victory_hunt_menu.connect(go_to_victory_menu)
+	SignalBus.go_to_failure_hunt_menu.connect(go_to_failure_menu)
+	SignalBus.update_kill_quota.connect(update_hunt_quota)
+	SignalBus.play_sfx.connect(play_sfx)
+	LevelingManager.play_level_up_sfx.connect(play_level_up_sfx)
 	hud.map_name_label.text = map_name
 	
 	load_floor_data()
@@ -62,38 +76,66 @@ func _ready() -> void:
 		if camera:
 			camera.player = player
 		
-		if map_type == MAP_TYPE.CHECKPOINT_FLOOR:
-			GameManager.player_can_move = true
-			if tower_entrance_data.kill_quota_hit:
-				SignalBus.unlock_next_room.emit()
-				SignalBus.update_kill_quota_text.emit("Next Floor Unlocked!", tower_entrance_data.kill_quota_hit,false)
-			else:
-				SignalBus.update_kill_quota.connect(update_hunt_quota)
-				SignalBus.update_kill_quota_text.emit("Floor Hunt Quota %s/%s" % [current_kill_count,kill_quota], false, false)
-			
+		if map_type == MAP_TYPE.CHECKPOINT_FLOOR:	
+			hud.expedition_timer.show_stop_watch()
+			if !GameManager.hunt_challenge_selected:
+				if tower_entrance_data.hunt_challenge_completed:
+					SignalBus.unlock_next_room.emit()
+					SignalBus.update_kill_quota_text.emit("", tower_entrance_data.hunt_challenge_completed, tower_entrance_data.hunt_challenge_unlocked)
+				else:
+					SignalBus.update_kill_quota_text.emit("", false, tower_entrance_data.hunt_challenge_unlocked)
+					if tower_entrance_data.hunt_challenge_unlocked and !tower_entrance_data.hunt_challenge_completed:
+						SignalBus.show_hunt_challenge_button.emit()
+					else:
+						SignalBus.hide_hunt_challenge_button.emit()
+				SignalBus.show_bag_stats.emit()
+					
 			if monster_spawn_node:
-				SignalBus.update_monsters_left.emit("Monsters Left: %s" % [monster_spawn_node.get_children().size()],false)
+				if GameManager.hunt_challenge_selected:
+					SignalBus.update_monsters_left.emit("Monsters Left: %s" % [monster_spawn_node.get_children().size()],false)
+				else:
+					SignalBus.update_monsters_left.emit("Campfires Discovered: %s/%s" % [tower_entrance_data.camp_fires_reached, tower_entrance_data.total_camp_fires],false)
 			
 			PlayerStats.check_points_unlocked[map_name] = true
 			save_floor_data()
 			SaveManager.save_player_stats()
 		
 		if map_type ==	MAP_TYPE.FLOOR or map_type == MAP_TYPE.CHECKPOINT_FLOOR:
-				hud.start_expedition_timer()
-	
+				if !GameManager.hunt_challenge_selected:
+					GameManager.player_can_move = true
+					hud.start_expedition_timer()
+				else:
+					GameManager.player_can_move = false
+					
+	if map_type == MAP_TYPE.HUB:
+		GameManager.hunt_challenge_selected = false
+		
 	if ambience_player and ambience_sfx:
 		ambience_player.stream = ambience_sfx
 		ambience_player.play()
 	
-	if map_theme_song:
-		if !MusicPlayer.transitioning_floors:
-			MusicPlayer.play_song(map_theme_song)
-		else:
-			MusicPlayer.transitioning_floors = false
-			
+	if !GameManager.hunt_challenge_selected:
+		if map_theme_song:
+			if !MusicPlayer.transitioning_floors:
+				MusicPlayer.play_song(map_theme_song)
+			else:
+				MusicPlayer.transitioning_floors = false
+	else:
+		if hunt_theme_song:
+			MusicPlayer.play_song(hunt_theme_song)
+
+func _input(event: InputEvent) -> void:
+	pass
+
+		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	
+	if Input.is_action_just_pressed("pause_game") and GameManager.can_pause_game:
+		var pause_menu : PauseMenu = preload("uid://dlaq2oh2iuyjk").instantiate()
+		pause_canvas_layer.add_child(pause_menu)
+
+
 	
 func spawn_player() -> void:
 	var new_player : Player = preload("uid://wuy3aelq8aeg").instantiate()
@@ -110,25 +152,70 @@ func spawn_player() -> void:
 		
 	player.health = PlayerStats.player_stats["Current Health"]
 	hud.update_player_health(int(player.health))
-	#SignalBus.update_player_health.emit(player.health)
+
 	add_child(player)
 	
 func go_to_starshire() -> void:
-	
 	MusicPlayer.stop_player(true)
 	player.damageable = false
+	GameManager.hunt_challenge_selected = false
 	GameManager.expedition_timer_started = false
+	
+	var tree := get_tree()
+	if tree == null:
+		return
+	
 	hud.animation_player.play("CloseOut")
-	await get_tree().create_timer(1.0).timeout
-	get_tree().change_scene_to_file("res://src/Scenes/UI/ExpeditionResultsScreen.tscn")
+	await tree.create_timer(1.0).timeout
 
+	if tree != null:
+		tree.change_scene_to_file("res://src/Scenes/UI/ExpeditionResultsScreen.tscn")
+
+func go_to_victory_menu() -> void:
+	MusicPlayer.stop_player(true)
+	player.damageable = false
+	GameManager.hunt_challenge_selected = false
+	GameManager.expedition_timer_started = false
+	
+	var tree := get_tree()
+	if tree == null:
+		return
+	
+	hud.animation_player.play("CloseOut")
+	await tree.create_timer(1.0).timeout
+
+	if tree != null:
+		tree.change_scene_to_file("uid://c0iswrbu8opac")	
+
+func go_to_failure_menu() -> void:
+	MusicPlayer.stop_player(true)
+	player.damageable = false
+	GameManager.hunt_challenge_selected = false
+	GameManager.expedition_timer_started = false
+	
+	var tree := get_tree()
+	if tree == null:
+		return
+	
+	hud.animation_player.play("CloseOut")
+	await tree.create_timer(1.0).timeout
+
+	if tree != null:
+		tree.change_scene_to_file("uid://du5klyuwi6so2")	
 
 func move_to_next_room() -> void:
-	if next_room_path:
-		hud.animation_player.play("CloseOut")
-		await get_tree().create_timer(1.0).timeout
-		get_tree().change_scene_to_file(next_room_path)
+	if not next_room_path:
+		return
 
+	var tree := get_tree()
+	if tree == null:
+		return
+
+	hud.animation_player.play("CloseOut")
+	await tree.create_timer(1.0).timeout
+
+	if tree != null:
+		tree.change_scene_to_file(next_room_path)
 
 func roll_ore_spawn_chance() -> int:
 	var rand_check : int = randi_range(0,100)
@@ -148,29 +235,30 @@ func spawn_ore_rocks() -> void:
 				ore_rock_marker.spawn_ore_rock()
 
 func update_hunt_quota() -> void:
+	if !GameManager.hunt_challenge_selected:
+		return
+	
 	await get_tree().process_frame
 	if map_type == MAP_TYPE.CHECKPOINT_FLOOR:
-		current_kill_count += 1
-		print("THIS IS CURRENT KILL COUNT %s" % current_kill_count)
-		if current_kill_count >= kill_quota:
-			tower_entrance_data.kill_quota_hit = true
+		if monster_spawn_node.get_children().is_empty():
+			sfx_player.play_sfx(TIER_UP)
+			MusicPlayer.play_song(hunt_victory_theme)
+			GameManager.expedition_timer_started = false
+			tower_entrance_data.hunt_challenge_completed = true
 			save_floor_data()
 			SignalBus.unlock_next_room.emit()
-			SignalBus.update_kill_quota_text.emit("Next Floor Unlocked!", tower_entrance_data.kill_quota_hit, false)
+			SignalBus.update_kill_quota_text.emit("Hunt Challenge Completed! Head to the Exit Elevator!", true, false)
 			SignalBus.update_monsters_left.emit("Monsters Left: %s" % [monster_spawn_node.get_children().size()],false)
 		else:
-			if monster_spawn_node.get_children().is_empty():
-				SignalBus.update_kill_quota_text.emit("Floor Hunt Quota %s/%s" %[current_kill_count,kill_quota], tower_entrance_data.kill_quota_hit,false)	
-				SignalBus.update_monsters_left.emit("",true)
-			else:
-				SignalBus.update_kill_quota_text.emit("Floor Hunt Quota %s/%s" %[current_kill_count,kill_quota], tower_entrance_data.kill_quota_hit,false)	
-				SignalBus.update_monsters_left.emit("Monsters Left: %s" % [monster_spawn_node.get_children().size()],false)
+			SignalBus.update_kill_quota_text.emit("Defeat all Monsters to win!", false, false)	
+			SignalBus.update_monsters_left.emit("Monsters Left: %s" % [monster_spawn_node.get_children().size()],false)
 
 func save_floor_data() -> void:
 	var saved_data = SaveManager.current_save_game
 	saved_data.tower_entrance_data[tower_entrance_data.floor_name]["Number of Spawn Locations"] = tower_entrance_data.number_of_spawn_locations
 	saved_data.tower_entrance_data[tower_entrance_data.floor_name]["Campfires Reached"] = tower_entrance_data.camp_fires_reached
-	saved_data.tower_entrance_data[tower_entrance_data.floor_name]["Kill Quota Hit"] = tower_entrance_data.kill_quota_hit
+	saved_data.tower_entrance_data[tower_entrance_data.floor_name]["Hunt Challenge Unlocked"] = tower_entrance_data.hunt_challenge_unlocked
+	saved_data.tower_entrance_data[tower_entrance_data.floor_name]["Hunt Challenge Completed"] = tower_entrance_data.hunt_challenge_completed
 	saved_data.check_points_unlocked[tower_entrance_data.floor_name] = PlayerStats.check_points_unlocked[map_name] 
 	SaveManager.save_game()
 	SaveManager.save_player_stats()
@@ -182,4 +270,14 @@ func load_floor_data() -> void:
 
 		tower_entrance_data.camp_fires_reached = tower_data["Campfires Reached"]
 		tower_entrance_data.number_of_spawn_locations = tower_data["Number of Spawn Locations"]
-		tower_entrance_data.kill_quota_hit = tower_data["Kill Quota Hit"]
+		tower_entrance_data.hunt_challenge_unlocked = tower_data["Hunt Challenge Unlocked"]
+		tower_entrance_data.hunt_challenge_completed = tower_data["Hunt Challenge Completed"]
+
+
+func play_sfx(audio_stream : AudioStream) -> void:
+	if sfx_player:
+		sfx_player.play_sfx(audio_stream)
+
+func play_level_up_sfx() -> void:
+	if sfx_player:
+		sfx_player.play_sfx(TIER_UP)

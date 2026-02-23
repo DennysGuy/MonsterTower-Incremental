@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://cotvjq5dygv7p"]
+[gd_scene format=3 uid="uid://cotvjq5dygv7p"]
 
 [ext_resource type="Script" uid="uid://on0k2r5bt3h1" path="res://src/Scripts/Facilities/Menus/cooking_menu.gd" id="1_obxg0"]
 [ext_resource type="PackedScene" uid="uid://pk5hdfflc6iy" path="res://src/Scenes/NewStarshire/Facilities/CraftingStation.tscn" id="2_o2r2d"]
+[ext_resource type="FontFile" uid="uid://qgj228ltdttv" path="res://Assets/Fonts/alagard.ttf" id="3_m8ttn"]
 
-[node name="CookingMenu" type="Control"]
+[node name="CookingMenu" type="Control" unique_id=1915046197]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,7 +13,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_obxg0")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="Panel" parent="." unique_id=221458970]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,8 +21,21 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CraftingStation" parent="." instance=ExtResource("2_o2r2d")]
+[node name="CraftingStation" parent="." unique_id=2132665941 instance=ExtResource("2_o2r2d")]
 layout_mode = 1
 station_name = "Cooking Range"
+
+[node name="Title2" type="Label" parent="CraftingStation" unique_id=1641643925]
+layout_mode = 0
+offset_left = 419.0
+offset_top = 11.0
+offset_right = 559.0
+offset_bottom = 26.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("3_m8ttn")
+theme_override_font_sizes/font_size = 16
+text = "Press 'ESC' To Exit"
+horizontal_alignment = 1
 
 [editable path="CraftingStation"]

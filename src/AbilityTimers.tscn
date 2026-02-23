@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://p5j35xa48ggo"]
+
+[ext_resource type="Script" uid="uid://bm8wrg20hxock" path="res://src/Scripts/ability_timers.gd" id="1_3edip"]
+
+[node name="Node" type="Node" unique_id=1983204790]
+script = ExtResource("1_3edip")
+
+[node name="DashAttackTimer" type="Timer" parent="." unique_id=1611355669]
+process_callback = 0
+one_shot = true
+
+[node name="AirAttackTimer" type="Timer" parent="." unique_id=1739665223]
+process_callback = 0
+one_shot = true
+
+[node name="DoubleJumpTimer" type="Timer" parent="." unique_id=968390885]
+process_callback = 0
+one_shot = true
+
+[node name="SpecialAttackTimer" type="Timer" parent="." unique_id=1719774532]
+process_callback = 0
+one_shot = true
+
+[connection signal="timeout" from="DashAttackTimer" to="." method="_on_dash_attack_timer_timeout"]
+[connection signal="timeout" from="AirAttackTimer" to="." method="_on_air_attack_timer_timeout"]
+[connection signal="timeout" from="DoubleJumpTimer" to="." method="_on_double_jump_timer_timeout"]
+[connection signal="timeout" from="SpecialAttackTimer" to="." method="_on_special_attack_timer_timeout"]

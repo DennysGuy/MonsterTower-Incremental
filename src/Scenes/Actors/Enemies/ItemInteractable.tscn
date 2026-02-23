@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dgtobkubdjq27"]
+[gd_scene format=3 uid="uid://dgtobkubdjq27"]
 
 [ext_resource type="Script" uid="uid://br4paa5kpajai" path="res://src/Scenes/Tower/item_interactable.gd" id="1_7i62p"]
 [ext_resource type="Texture2D" uid="uid://bk4miqdmvi7gh" path="res://Assets/Enemies/CorruptedMushie/CorruptedMushieSpore.png" id="1_va8fw"]
@@ -118,29 +118,29 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rejhq"]
+size = Vector2(24, 23)
 
-[node name="ItemInteractable" type="Node2D" node_paths=PackedStringArray("icon")]
+[node name="ItemInteractable" type="Node2D" unique_id=1545592163 node_paths=PackedStringArray("icon")]
 z_index = 4096
 script = ExtResource("1_7i62p")
 icon = NodePath("Icon")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1194280253]
 root_node = NodePath("../Icon")
-libraries = {
-&"": SubResource("AnimationLibrary_rejhq")
-}
+libraries/ = SubResource("AnimationLibrary_rejhq")
 
-[node name="SfxPlayer" parent="." instance=ExtResource("2_rejhq")]
+[node name="SfxPlayer" parent="." unique_id=746257354 instance=ExtResource("2_rejhq")]
 
-[node name="Icon" type="Sprite2D" parent="."]
+[node name="Icon" type="Sprite2D" parent="." unique_id=1371780447]
 modulate = Color(1, 1, 1, 0)
 position = Vector2(0, -12)
 texture = ExtResource("1_va8fw")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=739680266]
 position = Vector2(0, -10)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1119024577]
+position = Vector2(0, -1.5)
 shape = SubResource("RectangleShape2D_rejhq")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

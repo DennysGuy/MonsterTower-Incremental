@@ -5,6 +5,7 @@ class_name PlayerHUD extends CanvasLayer
 @onready var player_hud: Control = $PlayerHUD
 @export var animation_player: AnimationPlayer
 @onready var hp_label: Label = $PlayerHUD/HPLabel
+@onready var mp_label: Label = $PlayerHUD/MPLabel
 @export var map_name_label: Label
 @onready var bag_animation_player: AnimationPlayer = $BagAnimationPlayer
 var bag_showing : bool = false
@@ -23,12 +24,22 @@ var map_name : String = ""
 @onready var xp_amount_label: Label = $PlayerHUD/XPAmountLabel
 @onready var xp_bar: TextureProgressBar = $PlayerHUD/XPBar
 @onready var level_label: Label = $PlayerHUD/LevelLabel
+@onready var currency_label: RichTextLabel = $PlayerHUD/CurrencyLabel
+
 
 const CLOSE_IN = preload("uid://dc3va7knibxnb")
 const CLOSE_OUT = preload("uid://caj0oih8j2sty")
 const COUNTDOWN_BEEP = preload("uid://c6caiqmkt2lt0")
 
 @onready var monsters_left: RichTextLabel = $PlayerHUD/MonstersLeft
+@onready var start_hunt_challenge_button: Button = $PlayerHUD/StartHuntChallengeButton
+
+@onready var max_slot_stack: Label = $PlayerHUD/MaxSlotStack
+@onready var bagslots: Label = $PlayerHUD/Bagslots
+
+@onready var pick_up_notifier: VBoxContainer = $PlayerHUD/PickUpNotifier
+@onready var class_notice: RichTextLabel = $PlayerHUD/ClassNotice
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -45,11 +56,20 @@ func _ready() -> void:
 	SignalBus.show_can_cook_dish_label.connect(show_can_cook_dish)
 	SignalBus.show_can_smelt_bar_label.connect(show_can_smelt_bar)
 	SignalBus.show_can_craft_sword.connect(show_can_craft_sword)
+	SignalBus.show_class_notice.connect(show_class_notice)
+	
+	SignalBus.update_player_mp.connect(update_player_mp)
 	
 	SignalBus.hide_can_cook_dish_label.connect(hide_can_cook_dish)
 	SignalBus.hide_can_smelt_bar_label.connect(hide_can_smelt_bar)
 	SignalBus.hide_can_craft_sword.connect(hide_can_craft_sword)
 	
+	SignalBus.show_hunt_challenge_button.connect(show_hunt_challenge_button)
+	SignalBus.show_bag_stats.connect(display_bag_stats)
+	
+	SignalBus.populate_item_notification_panel.connect(populate_pick_notification_panel)
+	
+	TechTreeManager.update_currency_label.connect(update_currency_label)
 	#player_health_bar.max_value = PlayerStats.player_stats["Max Health"]
 	#player_health_bar.value = PlayerStats.player_stats["Current Health"]
 	
@@ -57,8 +77,10 @@ func _ready() -> void:
 	
 	player_mp_bar.max_value = PlayerStats.player_stats["Current MP"]
 	player_mp_bar.value = player_mp_bar.max_value
+	
 	update_xp_bar()
 	#update_player_health(int(PlayerStats.player_stats["Current Health"]))
+	show_class_notice()
 	
 	if PlayerStats.facilities_unlocked["Refinery Station"]:
 		bag_2.show()
@@ -73,6 +95,13 @@ func update_player_health(value : int) -> void:
 	player_health_bar.max_value = PlayerStats.player_stats["Max Health"]
 	hp_label.text = "%s/%s" % [int(player_health_bar.value), int(player_health_bar.max_value)]
 
+func update_player_mp() -> void:
+	var current_mp : int = PlayerStats.player_stats["Current MP"]
+	var max_mp : int = PlayerStats.player_stats["Max MP"]
+	player_mp_bar.value = current_mp
+	player_mp_bar.max_value = max_mp
+	mp_label.text = "%s/%s" % [current_mp,max_mp]
+
 func update_xp_bar() -> void:
 	level_label.text = "Level %s" % [int(PlayerStats.player_stats["Level"])]
 	xp_amount_label.text = "%s / %s XP" % [int(PlayerStats.player_stats["Current XP"]), int(PlayerStats.player_stats["Needed XP"])]
@@ -83,16 +112,26 @@ func spawn_respawn_box() -> void:
 	var respawn_box : RespawnBox = preload("uid://dv20tfcnkjyux").instantiate()
 	player_hud.add_child(respawn_box)
 
-func update_kill_quota_text(message : String, quota_met : bool, out_of_enemies : bool) -> void:
+func update_kill_quota_text(message : String, quota_met : bool, challenge_unlocked : bool) -> void:
 	if is_inside_tree():
 		await get_tree().process_frame
-		if quota_met:
-			hunt_quota.text = "[color=green]"+message+"[/color]"
-		else:
-			if out_of_enemies:
-				hunt_quota.text = "[color=yellow]Insufficient floor spawn[/color]"
+		if GameManager.hunt_challenge_selected:
+			if quota_met:
+				hunt_quota.text = "[color=green]Hunt Completed! Head to the Exit Elevator![/color]"
 			else:
 				hunt_quota.text = message
+		else:
+			if !quota_met:
+				if challenge_unlocked:
+					hunt_quota.text = "Beat the Hunt Challenge to unlock the next floor!"
+				else:
+					hunt_quota.text = "Discover all campfires to unlock Challenge Hunt!"
+			else:
+			
+				hunt_quota.text = "[color=green]Next Floor Unlocked![/color]"
+
+func update_currency_label() -> void:
+	currency_label.text = "[color=aqua]Currency: %s[/color]" % TechTreeManager.currency
 
 func show_bag() -> void:
 	bag_showing = !bag_showing
@@ -105,6 +144,16 @@ func start_expedition_timer() -> void:
 	expedition_timer.show()
 	if !GameManager.expedition_timer_started:
 		ExpeditionTimer.start_timer()
+
+func set_hunt_timer() -> void:
+	expedition_timer.show()
+	ExpeditionTimer.set_time_for_hunt()
+
+func start_hunt_timer() -> void:
+	ExpeditionTimer.start_hunt_timer()
+
+func load_expedition_timer_with_hunt_time() -> void:
+		expedition_timer.show()
 
 func issue_big_notification(message : String) -> void:
 	big_notification_label.text = message
@@ -135,6 +184,12 @@ func show_can_smelt_bar() -> void:
 func show_can_craft_sword() -> void:
 	can_craft_sword.show()
 
+func show_class_notice() -> void:
+	var current_class : String = PlayerStats.player_stats["Class"] 
+	if current_class == "Junior Hunter" and PlayerStats.check_needed_for_dojo():
+		class_notice.show()
+
+
 func hide_can_cook_dish() -> void:
 	can_cook_dish.hide()
 
@@ -149,3 +204,34 @@ func remaining_monsters(text : String, out_of_enmies : bool) -> void:
 		monsters_left.text = text
 	else:
 		monsters_left.text = "[color=yellow]Out of Monsters!\nIncrease Cap![/color]"
+
+func start_timer() -> void:
+	pass
+
+func display_bag_stats() -> void:
+	bagslots.show()
+	max_slot_stack.show()
+	bagslots.text = "Bag Slots: %s" % PlayerStats.get_bag("Bag").max_slots
+	max_slot_stack.text = "Max Slot Stacks: %s" % int(PlayerStats.player_stats["Max Bag Stack"])
+
+func show_hunt_challenge_button() -> void:
+	start_hunt_challenge_button.show()
+
+func hide_hunt_challenge_button() -> void:
+	start_hunt_challenge_button.hide()
+
+func _on_start_hunt_challenge_button_button_up() -> void:
+	GameManager.hunt_challenge_selected = true
+	GameManager.resupply_character = true
+	GameManager.spawn_location = 0
+	get_tree().change_scene_to_file(GameManager.previous_map_data.scene_path)
+
+func populate_pick_notification_panel(item_data : Item) -> void:
+	var notification_item : PickupNotificationItem = preload("uid://b1s1ecflwq2pn").instantiate()
+	if item_data is EnemyDrop:
+		notification_item.icon.texture = item_data.drop_icon
+	else:
+		notification_item.icon.texture = item_data.shop_icon
+	
+	notification_item.label.text = "Picked up 1 %s" % item_data.item_name
+	pick_up_notifier.add_child(notification_item)

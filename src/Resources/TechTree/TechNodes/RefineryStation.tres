@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="TechNodeStats" load_steps=3 format=3 uid="uid://peiyat841rxh"]
+[gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://peiyat841rxh"]
 
 [ext_resource type="Texture2D" uid="uid://dcb77acv4gp1n" path="res://Assets/NodeGraphics/NodeGraphicsV2/Refinery_V2.png" id="1_70cap"]
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_bi6dd"]
@@ -11,5 +11,5 @@ description = "Refinery Station allows you to smelt ore retrieved from rocks int
 currency_required = 500
 node_type = 1
 stat_name = "Refinery Station"
-prereqs = Array[String](["Cooking Station:1"])
+prereqs = Array[String](["Banking:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

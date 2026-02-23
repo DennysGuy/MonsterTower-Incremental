@@ -35,6 +35,12 @@ signal add_tool_tip(tool_tip : ToolTip, on_right_half : bool)
 @warning_ignore("unused_signal")
 signal save_node_data
 
+@warning_ignore("unused_signal")
+signal check_needed_item_panel_for_purchase
+
+@warning_ignore("unused_signal")
+signal set_ability_hud_icon
+
 var currency : int = 0
 var current_prestige : int = 0
 
@@ -93,7 +99,8 @@ enum TECH_NODE_TYPE {ABILITY, FACILITY}
 	"Refinery Accuracy 2": 0,
 	"Ore Drop Chance 1": 0.0,
 	"Ore Drop Chance 2": 0.0,
-	"Invincibility Duration 1":0.0
+	"Invincibility Duration 1":0.0,
+	"Double Jump" : 0.0
 }
 
 @onready var warrior_tech_nodes : Dictionary = {
@@ -113,24 +120,29 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func check_prereq(node_state : String) -> bool:
-	var data = node_state.split(":")
-	var key = data[0]
-	var value : int = data[1].to_int()
-	var dict_value = tech_nodes.get(key)
-	
-	if dict_value >= value:
-		return true
+func check_prereq(node_state: String) -> bool:
+	var data := node_state.split(":")
+	if data.size() != 2:
+		push_warning("Invalid prereq format: %s" % node_state)
+		return false
 
-	return false
-	
+	var key := data[0]
+	var required := data[1].to_int()
+
+	if not tech_nodes.has(key):
+		return false
+
+	var current := int(tech_nodes[key])
+	return current >= required
+
 func increment_upgrade_count() -> void:
 	current_upgrade_count += 1
 	update_prestige_tier_progress_label.emit()
 	
 	if current_upgrade_count >= upgrade_count_to_prestige:
 		current_prestige += 1
-		PlayerStats.player_stats["Expedition Time"] += 25
+		PlayerStats.player_stats["Hunt Time"] += 15
+		PlayerStats.player_stats["Expedition Time"] += 20
 		upgrade_count_to_prestige += 15
 		current_upgrade_count = 0
 		update_prestige_tier_label.emit()

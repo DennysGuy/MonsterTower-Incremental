@@ -15,6 +15,7 @@ enum ENEMY_TYPE {AGGRO, PASSIVEAGGRO, PASSIVE}
 @export var defense : float
 @export var movement_speed : float
 @export var chase_speed : float
+@export var break_threshold : int
 
 @export_group("Audio Files")
 @export var hit_sfx : AudioStream

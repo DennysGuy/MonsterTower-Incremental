@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://30gaeu6sni53"]
+
+[ext_resource type="Texture2D" uid="uid://25o8y4vo6uon" path="res://Assets/HUD/StatusEffectIcons/BreakStatusIcon.png" id="1_kfpdq"]
+[ext_resource type="Script" uid="uid://dp4krmb77t2e4" path="res://src/Scenes/UI/StatusEffectIcons/break_count_icon.gd" id="1_tgc4w"]
+[ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="2_tgc4w"]
+
+[node name="BreakCountIcon" type="Control" unique_id=2093744346 node_paths=PackedStringArray("count_label")]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.5
+offset_top = -9.0
+offset_right = 8.5
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tgc4w")
+count_label = NodePath("Count")
+
+[node name="BG" type="TextureRect" parent="." unique_id=113095987]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_kfpdq")
+stretch_mode = 2
+
+[node name="Count" type="Label" parent="." unique_id=677521180]
+layout_mode = 0
+offset_left = -5.0
+offset_top = 3.0
+offset_right = 23.0
+offset_bottom = 14.0
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("2_tgc4w")
+theme_override_font_sizes/font_size = 10
+text = "3/3"
+horizontal_alignment = 1

@@ -1,11 +1,13 @@
 extends Node
 
 @warning_ignore("unused_signal")
-signal shake_camera 
+signal shake_camera(length : float)
 @warning_ignore("unused_signal")
 signal spawn_tech_tree
 @warning_ignore("unused_signal")
 signal update_player_health(value : int)
+@warning_ignore("unused_signal")
+signal update_player_mp
 @warning_ignore("unused_signal")
 signal spawn_respawn_box
 @warning_ignore("unused_signal")
@@ -25,8 +27,8 @@ signal move_to_next_room
 signal return_to_starshire
 @warning_ignore("unused_signal")
 signal store_entrance_data(data : TowerEntranceData)
-
-
+@warning_ignore("unused_signal")
+signal update_player_uniform(animation_name : String)
 @warning_ignore("unused_signal")
 signal issue_big_notification(notification : String)
 @warning_ignore("unused_signal")
@@ -40,7 +42,7 @@ signal issue_can_craft_sword_scene
 signal play_close_out_animation
 
 @warning_ignore("unused_signal")
-signal update_kill_quota_text(message : String, hit_quota : bool, out_of_enemies : bool)
+signal update_kill_quota_text(message : String, hit_quota : bool, challenge_unlocked : bool)
 @warning_ignore("unused_signal")
 signal update_monsters_left(text : String, out_of_enemies : bool)
 @warning_ignore("unused_signal")
@@ -67,3 +69,29 @@ signal hide_can_cook_dish_label
 signal hide_can_smelt_bar_label
 @warning_ignore("unused_signal")
 signal hide_can_craft_sword
+@warning_ignore("unused_signal")
+signal update_mode_description_to_expedition
+@warning_ignore("unused_signal")
+signal set_mode_to_expedition
+@warning_ignore("unused_signal")
+signal go_to_victory_hunt_menu
+@warning_ignore("unused_signal")
+signal go_to_failure_hunt_menu
+@warning_ignore("unused_signal")
+signal hide_hunt_time_label
+
+@warning_ignore("unused_signal")
+signal show_hunt_challenge_button 
+@warning_ignore("unused_signal")
+signal hide_hunt_challenge_button
+@warning_ignore("unused_signal")
+signal show_bag_stats
+
+@warning_ignore("unused_signal")
+signal populate_item_notification_panel(item_data : Item)
+@warning_ignore("unused_signal")
+signal show_class_notice
+@warning_ignore("unused_signal")
+signal set_icons
+@warning_ignore("unused_signal")
+signal play_sfx(audio_stream : AudioStream)

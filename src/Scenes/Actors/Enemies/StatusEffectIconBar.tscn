@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dg5nyfcc7ja8v"]
+
+[ext_resource type="Script" uid="uid://ce0udq1q2lgsd" path="res://src/Scripts/HUD/StatusEffectIcons/status_effect_icon_bar.gd" id="1_m5hlr"]
+
+[node name="StatusEffectIconBar" type="HBoxContainer" unique_id=167981235]
+custom_minimum_size = Vector2(80, 8)
+offset_left = -40.0
+offset_top = 16.0
+offset_right = 45.0
+offset_bottom = 24.0
+script = ExtResource("1_m5hlr")

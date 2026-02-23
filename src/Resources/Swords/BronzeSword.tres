@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Sword" load_steps=9 format=3 uid="uid://hnq8o34pxm0h"]
+[gd_resource type="Resource" script_class="Sword" format=3 uid="uid://hnq8o34pxm0h"]
 
 [ext_resource type="Texture2D" uid="uid://dqdnfqgin24gv" path="res://Assets/CraftingMiniGame/Swords/BronzeSword/BronzeSwordWhole.png" id="1_3rso2"]
 [ext_resource type="AudioStream" uid="uid://girddg3nhreu" path="res://Audio/SFX/Player/DashAttack.wav" id="1_f4kgb"]
@@ -14,7 +14,7 @@ script = ExtResource("1_vdyun")
 sword_name = "Bronze Fang Blade"
 attack_bonus = 18.0
 defense_bonus = 0.25
-attack_speed = 1.2
+attack_speed = 0.4
 crit_bonus = 0.1
 crit_damage_bonus = 0.1
 recipe = ExtResource("3_tmuie")

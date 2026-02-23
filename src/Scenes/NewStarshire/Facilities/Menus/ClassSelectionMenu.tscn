@@ -1,0 +1,247 @@
+[gd_scene format=3 uid="uid://b404uvbhnmjxd"]
+
+[ext_resource type="Script" uid="uid://dj6dh8phukty" path="res://src/Scripts/Facilities/Menus/class_selection_menu.gd" id="1_r0emu"]
+[ext_resource type="FontFile" uid="uid://qgj228ltdttv" path="res://Assets/Fonts/alagard.ttf" id="2_hrvbj"]
+[ext_resource type="Texture2D" uid="uid://cst6tdxsuqwk6" path="res://Assets/Facilities/ClassSelectionMenu/WarriorBG.png" id="2_r0emu"]
+[ext_resource type="Texture2D" uid="uid://c6gxfmsduqvrs" path="res://Assets/Facilities/ClassSelectionMenu/SelectionBox.png" id="3_dn4so"]
+[ext_resource type="Texture2D" uid="uid://bvtolsa16grqw" path="res://Assets/Facilities/ClassSelectionMenu/MageBG.png" id="4_i7c6j"]
+[ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="5_ne1ap"]
+[ext_resource type="PackedScene" uid="uid://dcs7xx24655nt" path="res://src/Scenes/NewStarshire/Facilities/Menus/StartingAbilityIcon.tscn" id="6_j7mac"]
+[ext_resource type="Texture2D" uid="uid://bhcu2glvv0s40" path="res://Assets/Facilities/ClassSelectionMenu/SwordSlam.png" id="7_dasj6"]
+[ext_resource type="Resource" uid="uid://c3llqiy2fb5n5" path="res://src/Resources/AbilityStates/DashAttacks/SwordDanceAbility.tres" id="7_j7mac"]
+[ext_resource type="Texture2D" uid="uid://bdw85iv04k8t0" path="res://Assets/Facilities/ClassSelectionMenu/SwordDance.png" id="8_dasj6"]
+[ext_resource type="Texture2D" uid="uid://vskgh0xmv1o8" path="res://Assets/Facilities/ClassSelectionMenu/SwordSoar.png" id="8_gyooc"]
+[ext_resource type="Texture2D" uid="uid://caijx1edrnow5" path="res://Assets/Facilities/ClassSelectionMenu/DoubleCleave.png" id="9_rdo0p"]
+[ext_resource type="Resource" uid="uid://dcxiodvnbqgef" path="res://src/Resources/AbilityStates/AirAttacks/SwordSlamAbility.tres" id="10_gyooc"]
+[ext_resource type="Resource" uid="uid://cs0umnvsvjhnh" path="res://src/Resources/AbilityStates/SpecialAttacks/WarriorDoubleCleaveAbility.tres" id="13_reguu"]
+
+[node name="ClassSelectionMenu" type="Control" unique_id=27371608]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_r0emu")
+
+[node name="Panel" type="Panel" parent="." unique_id=1607880911]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MagePanel" type="TextureRect" parent="Panel" unique_id=1336293197]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_i7c6j")
+
+[node name="Focus" type="RichTextLabel" parent="Panel/MagePanel" unique_id=1317816887]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 128.0
+offset_right = 389.0
+offset_bottom = 231.0
+theme_override_constants/outline_size = 4
+theme_override_fonts/normal_font = ExtResource("5_ne1ap")
+bbcode_enabled = true
+text = "The Mage channels arcane power to unleash devastating [color=red]damage[/color] on their foes. 
+
+Lacking armor and sustain, they rely on precise positioning and swift, efficient [color=green]movement[/color] to safely traverse the [color=purple]Tower’s[/color] floors."
+
+[node name="Title" type="Label" parent="Panel/MagePanel" unique_id=1438801743]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 56.0
+offset_top = -50.0
+offset_right = 130.0
+offset_bottom = -27.0
+grow_vertical = 0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("5_ne1ap")
+theme_override_font_sizes/font_size = 32
+text = "Mage"
+
+[node name="Title2" type="RichTextLabel" parent="Panel/MagePanel" unique_id=1911631159]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 56.0
+offset_top = -116.0
+offset_right = 327.0
+offset_bottom = -72.0
+grow_vertical = 0
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = ExtResource("5_ne1ap")
+theme_override_font_sizes/normal_font_size = 36
+bbcode_enabled = true
+text = "[color=yellow]COMING SOON![/color]"
+
+[node name="WarriorPanel" type="TextureRect" parent="Panel" unique_id=389080872]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_r0emu")
+
+[node name="Focus" type="RichTextLabel" parent="Panel/WarriorPanel" unique_id=336545929]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 128.0
+offset_right = 389.0
+offset_bottom = 237.0
+theme_override_constants/outline_size = 4
+theme_override_fonts/normal_font = ExtResource("2_hrvbj")
+bbcode_enabled = true
+text = "The Warrior specializes in absorbing [color=red]damage[/color]
+head-on and controlling enemies. 
+
+Each successful attack builds [color=yellow]'Break stacks'[/color]
+once the threshold is reached, the target is stunned for a short duration."
+
+[node name="Title" type="Label" parent="Panel/WarriorPanel" unique_id=658375155]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 56.0
+offset_top = -49.0
+offset_right = 186.0
+offset_bottom = -19.0
+grow_vertical = 0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_hrvbj")
+theme_override_font_sizes/font_size = 32
+text = "WARRIOR"
+
+[node name="Title2" type="Label" parent="Panel/WarriorPanel" unique_id=817286822]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 124.0
+offset_top = -117.0
+offset_right = 249.0
+offset_bottom = -98.0
+grow_vertical = 0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_hrvbj")
+theme_override_font_sizes/font_size = 16
+text = "Starting Abilities"
+
+[node name="SwordDance" parent="Panel/WarriorPanel" unique_id=1859415452 instance=ExtResource("6_j7mac")]
+layout_mode = 1
+offset_left = -266.0
+offset_top = 88.0
+offset_right = -234.0
+offset_bottom = 120.0
+ability = ExtResource("7_j7mac")
+icon = ExtResource("8_dasj6")
+
+[node name="SwordSlam" parent="Panel/WarriorPanel" unique_id=1395723857 instance=ExtResource("6_j7mac")]
+layout_mode = 1
+offset_left = -211.0
+offset_top = 88.0
+offset_right = -179.0
+offset_bottom = 120.0
+texture = ExtResource("7_dasj6")
+ability = ExtResource("10_gyooc")
+icon = ExtResource("7_dasj6")
+
+[node name="SwordSoar" parent="Panel/WarriorPanel" unique_id=866534312 instance=ExtResource("6_j7mac")]
+layout_mode = 1
+offset_left = -152.0
+offset_top = 88.0
+offset_right = -120.0
+offset_bottom = 120.0
+texture = ExtResource("8_gyooc")
+ability = ExtResource("7_j7mac")
+icon = ExtResource("8_gyooc")
+
+[node name="DoubleCleave" parent="Panel/WarriorPanel" unique_id=390116839 instance=ExtResource("6_j7mac")]
+layout_mode = 1
+offset_left = -93.0
+offset_top = 88.0
+offset_right = -61.0
+offset_bottom = 120.0
+texture = ExtResource("9_rdo0p")
+ability = ExtResource("13_reguu")
+icon = ExtResource("9_rdo0p")
+
+[node name="SelectionPanel" type="TextureRect" parent="Panel" unique_id=119738840]
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 360.0
+mouse_filter = 2
+texture = ExtResource("3_dn4so")
+
+[node name="WarriorSelectButton" type="Button" parent="Panel" unique_id=71017981]
+layout_mode = 0
+offset_left = 79.0
+offset_top = 55.0
+offset_right = 147.0
+offset_bottom = 78.0
+mouse_default_cursor_shape = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_hrvbj")
+text = "Warrior"
+
+[node name="MageSelectButton" type="Button" parent="Panel" unique_id=301722790]
+layout_mode = 0
+offset_left = 79.0
+offset_top = 84.0
+offset_right = 147.0
+offset_bottom = 108.0
+mouse_default_cursor_shape = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("5_ne1ap")
+text = "Mage"
+
+[node name="Label" type="Label" parent="Panel" unique_id=2070895696]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 21.0
+offset_right = 185.0
+offset_bottom = 40.0
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("2_hrvbj")
+theme_override_font_sizes/font_size = 20
+text = "Class Selection"
+
+[node name="SelectButton" type="Button" parent="Panel" unique_id=1835830370]
+layout_mode = 0
+offset_left = 201.0
+offset_top = 48.0
+offset_right = 271.0
+offset_bottom = 80.0
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("5_ne1ap")
+theme_override_font_sizes/font_size = 24
+text = "Select!"
+
+[node name="ExitButton" type="Button" parent="Panel" unique_id=1126404157]
+layout_mode = 0
+offset_left = 201.0
+offset_top = 85.0
+offset_right = 271.0
+offset_bottom = 117.0
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("5_ne1ap")
+theme_override_font_sizes/font_size = 24
+text = "Exit"
+
+[connection signal="button_up" from="Panel/WarriorSelectButton" to="." method="_on_warrior_select_button_button_up"]
+[connection signal="button_up" from="Panel/MageSelectButton" to="." method="_on_mage_select_button_button_up"]
+[connection signal="button_up" from="Panel/SelectButton" to="." method="_on_select_button_button_up"]
+[connection signal="button_up" from="Panel/ExitButton" to="." method="_on_exit_button_button_up"]

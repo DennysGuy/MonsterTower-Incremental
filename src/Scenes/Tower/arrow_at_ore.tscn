@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://drvmmtbvnc785"]
+
+[ext_resource type="Texture2D" uid="uid://b51qj4eapm2c5" path="res://Assets/Tower/ArrowAtOre.png" id="1_mxwuk"]
+[ext_resource type="Script" uid="uid://dgs0lvqewqtwe" path="res://src/Scripts/Tower/arrow_at_ore.gd" id="2_5x2hp"]
+
+[node name="ArrowAtOre" type="Sprite2D"]
+visible = false
+texture = ExtResource("1_mxwuk")
+script = ExtResource("2_5x2hp")

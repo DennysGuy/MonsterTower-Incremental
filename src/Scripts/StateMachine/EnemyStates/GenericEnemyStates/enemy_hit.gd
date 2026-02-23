@@ -12,14 +12,17 @@ class_name EnemyHit extends State
 
 func enter() -> void:
 	super()
-	parent.hurt_box.get_child(0).disabled = true
+	parent.disable_hurt_box()
+	parent.disable_hit_box()
 	parent.timer.wait_time = wait_time
 	parent.timer.start()
 	parent.sfx_player.play_sfx(impacts.pick_random())
 
 func exit() -> void:
-	parent.hurt_box.get_child(0).disabled = false
-
+	parent.enable_hurt_box()
+	parent.enable_hit_box()
+	pass
+	
 func process_input(_event: InputEvent) -> State:
 	return null
 
@@ -31,7 +34,7 @@ func process_physics(_delta: float) -> State:
 	var direction_vector = (parent.global_position - parent.player.global_position).normalized()
 	var direction = GameManager.set_direction(direction_vector.x)
 	if parent.can_knock_back:
-		parent.velocity.x = direction * parent.enemy_stats.movement_speed + 25
+		parent.velocity.x = direction * parent.enemy_stats.movement_speed + 20
 		parent.move_and_slide()
 	
 	if parent.timer.is_stopped():

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="EnemyStats" load_steps=5 format=3 uid="uid://dsl20riisg4mk"]
+[gd_resource type="Resource" script_class="EnemyStats" format=3 uid="uid://dsl20riisg4mk"]
 
 [ext_resource type="Resource" uid="uid://bxukrnl1bg7oo" path="res://src/Resources/Actors/Enemies/Biome1/Batclopse/BatclopseWing.tres" id="1_bagc7"]
 [ext_resource type="Script" uid="uid://cbjktr12qagl" path="res://src/Scripts/Enemies/enemy_stats.gd" id="1_m1ike"]
@@ -13,10 +13,11 @@ touch_damage = true
 can_attack = true
 can_move = true
 enemy_type = 1
-max_health = 140
-attack = 36
+max_health = 150
+attack = 21
 movement_speed = 65.0
 chase_speed = 80.0
+break_threshold = 3
 novelty_item_drop = ExtResource("3_q2e0m")
 cooking_item_drop = ExtResource("1_bagc7")
 crafting_item_drop = ExtResource("2_vel66")

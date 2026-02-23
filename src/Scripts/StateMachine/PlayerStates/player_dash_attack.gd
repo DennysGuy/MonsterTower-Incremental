@@ -9,33 +9,40 @@ func enter() -> void:
 	parent.can_knock_back = false
 	parent.damageable = false
 	parent.set_sword_texture(animation_name)
+	parent.set_outfit_texture(animation_name)
 	parent.timer.wait_time = PlayerStats.player_stats["Dash Duration"]
 	parent.timer.start()
+	AbilityTimers.activate_ability_cooldown("Dash Attack")
 	#unique
-	var selected_ability : Ability = PlayerStats.equipped_abilities["Dash Attack"]
+	var selected_ability : Ability = PlayerStats.get_equipped_ability("Dash Attack")
+	PlayerStats.player_stats["Current MP"] -= selected_ability.mp_cost
+	SignalBus.update_player_mp.emit()
 	equipped_dash_attack = selected_ability.ability_behavior
 	equipped_dash_attack.on_enter(parent)
+
 	#-----------------------------
 
 func exit() -> void:
 	#unique
 	equipped_dash_attack.on_exiting_dash()
 	#-------
-	parent.ability_cool_down_timer.wait_time = PlayerStats.player_stats["Dash Cooldown"]
-	parent.ability_cool_down_timer.start()
+	#parent.ability_cool_down_timer.wait_time = PlayerStats.player_stats["Dash Cooldown"]
+	#parent.ability_cool_down_timer.start()
 	parent.clear_effect_texture()
 	parent.velocity = Vector2.ZERO
-	parent.damageable = true
-	parent.can_dash_attack = false
+	
+	#parent.can_dash_attack = false
 	
 func process_input(_event: InputEvent) -> State:
+	equipped_dash_attack.apply_input()
+	
 	return null
 
 func process_frame(_delta: float) -> State:
 	return null
 
 func process_physics(_delta: float) -> State:
-	equipped_dash_attack.apply_physics()
+	equipped_dash_attack.apply_physics(_delta)
 	if parent.timer.time_left <= 0:
 		return idle_state
 	

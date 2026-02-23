@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dc22m3kbxdi50"]
+[gd_scene format=3 uid="uid://dc22m3kbxdi50"]
 
 [ext_resource type="Script" uid="uid://b3dtngntwfdw8" path="res://src/Scripts/HUD/expedition_results_screen.gd" id="1_qg4s7"]
 [ext_resource type="Shader" uid="uid://bg20bvdcwspb" path="res://src/Scenes/UI/ExpeditionResultsScreen.gdshader" id="2_cbct7"]
@@ -215,7 +215,7 @@ _data = {
 &"RESET": SubResource("Animation_ee4bn")
 }
 
-[node name="ExpeditionResultsScreen" type="Control"]
+[node name="ExpeditionResultsScreen" type="Control" unique_id=772685637]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -224,7 +224,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_qg4s7")
 
-[node name="BG" type="TextureRect" parent="."]
+[node name="BG" type="TextureRect" parent="." unique_id=938971772]
 texture_repeat = 2
 material = SubResource("ShaderMaterial_47265")
 layout_mode = 1
@@ -236,18 +236,18 @@ grow_vertical = 2
 texture = ExtResource("3_qyln5")
 stretch_mode = 2
 
-[node name="ResultsPanel" type="TextureRect" parent="."]
+[node name="ResultsPanel" type="TextureRect" parent="." unique_id=1103109597]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 360.0
-offset_bottom = 360.0
+offset_bottom = 360.0006
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_qyln5")
 
-[node name="TitlePanel" type="Panel" parent="ResultsPanel"]
+[node name="TitlePanel" type="Panel" parent="ResultsPanel" unique_id=1608003080]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -261,7 +261,7 @@ offset_bottom = -83.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ResultsLabel" type="Label" parent="ResultsPanel/TitlePanel"]
+[node name="ResultsLabel" type="Label" parent="ResultsPanel/TitlePanel" unique_id=1640770576]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -280,7 +280,7 @@ theme_override_fonts/font = ExtResource("5_xwhdp")
 theme_override_font_sizes/font_size = 18
 text = "Results"
 
-[node name="ResultsLabel2" type="Label" parent="ResultsPanel/TitlePanel"]
+[node name="ResultsLabel2" type="Label" parent="ResultsPanel/TitlePanel" unique_id=1810156141]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -299,7 +299,7 @@ theme_override_fonts/font = ExtResource("5_xwhdp")
 theme_override_font_sizes/font_size = 15
 text = "Last Floor"
 
-[node name="GoalPanel" type="Panel" parent="ResultsPanel"]
+[node name="GoalPanel" type="Panel" parent="ResultsPanel" unique_id=1080228483]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -313,7 +313,7 @@ offset_bottom = -23.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="FloorReached" type="Label" parent="ResultsPanel/GoalPanel"]
+[node name="FloorReached" type="Label" parent="ResultsPanel/GoalPanel" unique_id=177287890]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -332,7 +332,7 @@ theme_override_fonts/font = ExtResource("5_xwhdp")
 theme_override_font_sizes/font_size = 20
 text = "Floor Reached: Temp Biome - Floor 1"
 
-[node name="InventoryPanel" type="Panel" parent="ResultsPanel"]
+[node name="InventoryPanel" type="Panel" parent="ResultsPanel" unique_id=2013247508]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -346,7 +346,7 @@ offset_bottom = 96.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="InventoryLabel" type="Label" parent="ResultsPanel/InventoryPanel"]
+[node name="InventoryLabel" type="Label" parent="ResultsPanel/InventoryPanel" unique_id=1192868822]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -365,7 +365,7 @@ theme_override_fonts/font = ExtResource("5_xwhdp")
 theme_override_font_sizes/font_size = 16
 text = "Inventory"
 
-[node name="OreBagLabel" type="Label" parent="ResultsPanel/InventoryPanel"]
+[node name="OreBagLabel" type="Label" parent="ResultsPanel/InventoryPanel" unique_id=2018942112]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -385,7 +385,7 @@ theme_override_fonts/font = ExtResource("5_xwhdp")
 theme_override_font_sizes/font_size = 16
 text = "Ore Bag"
 
-[node name="InventoryContainer" type="GridContainer" parent="ResultsPanel/InventoryPanel"]
+[node name="InventoryContainer" type="GridContainer" parent="ResultsPanel/InventoryPanel" unique_id=2136584720]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -397,7 +397,7 @@ offset_bottom = 55.0
 grow_horizontal = 2
 columns = 8
 
-[node name="OreInventoryContainer" type="GridContainer" parent="ResultsPanel/InventoryPanel"]
+[node name="OreInventoryContainer" type="GridContainer" parent="ResultsPanel/InventoryPanel" unique_id=1084190204]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -409,7 +409,7 @@ offset_bottom = 55.0
 grow_horizontal = 2
 columns = 8
 
-[node name="BankLabel" type="Label" parent="ResultsPanel/InventoryPanel"]
+[node name="BankLabel" type="Label" parent="ResultsPanel/InventoryPanel" unique_id=554801765]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -428,7 +428,7 @@ theme_override_fonts/font = ExtResource("5_xwhdp")
 theme_override_font_sizes/font_size = 16
 text = "Bank"
 
-[node name="BankNotice" type="Label" parent="ResultsPanel/InventoryPanel"]
+[node name="BankNotice" type="Label" parent="ResultsPanel/InventoryPanel" unique_id=1842469050]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -448,7 +448,7 @@ theme_override_fonts/font = ExtResource("5_xwhdp")
 theme_override_font_sizes/font_size = 16
 text = "Bank Account Locked!"
 
-[node name="BankContainer" type="GridContainer" parent="ResultsPanel/InventoryPanel"]
+[node name="BankContainer" type="GridContainer" parent="ResultsPanel/InventoryPanel" unique_id=1015440615]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -460,7 +460,7 @@ offset_bottom = 106.0
 grow_horizontal = 2
 columns = 8
 
-[node name="TipsAndTricks" type="Label" parent="ResultsPanel/InventoryPanel"]
+[node name="TipsAndTricks" type="Label" parent="ResultsPanel/InventoryPanel" unique_id=586831154]
 layout_mode = 0
 offset_left = -38.0
 offset_top = 128.0
@@ -471,7 +471,7 @@ theme_override_fonts/font = ExtResource("5_xwhdp")
 text = "Can't reach a ledge? Upgrade your jump!"
 horizontal_alignment = 1
 
-[node name="ToTown" type="Button" parent="ResultsPanel"]
+[node name="ToTown" type="Button" parent="ResultsPanel" unique_id=337593742]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -491,7 +491,7 @@ theme_override_font_sizes/font_size = 12
 disabled = true
 text = "To Town"
 
-[node name="NewRun" type="Button" parent="ResultsPanel"]
+[node name="NewRun" type="Button" parent="ResultsPanel" unique_id=558607950]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -511,34 +511,32 @@ theme_override_font_sizes/font_size = 12
 disabled = true
 text = "Go Again!"
 
-[node name="TopRect" type="ColorRect" parent="."]
+[node name="TopRect" type="ColorRect" parent="." unique_id=785934542]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -360.0
-offset_bottom = -360.0
+offset_top = -180.0
+offset_bottom = -180.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="BotRect" type="ColorRect" parent="."]
+[node name="BotRect" type="ColorRect" parent="." unique_id=111970274]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 360.0
-offset_bottom = 360.0006
+offset_top = 180.0
+offset_bottom = 180.00037
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_ra32m")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=997374502]
+libraries/ = SubResource("AnimationLibrary_ra32m")
 
-[node name="SfxPlayer" parent="." instance=ExtResource("7_ee4bn")]
+[node name="SfxPlayer" parent="." unique_id=576417651 instance=ExtResource("7_ee4bn")]
 
 [connection signal="button_up" from="ResultsPanel/ToTown" to="." method="_on_to_town_button_up"]
 [connection signal="button_up" from="ResultsPanel/NewRun" to="." method="_on_new_run_button_up"]

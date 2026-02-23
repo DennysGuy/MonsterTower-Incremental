@@ -1,6 +1,7 @@
 class_name ExpeditionTimerLocal extends Control
 
 @onready var timer_label: RichTextLabel = $TimerLabel
+@onready var stop_watch_texture: TextureRect = $StopWatchTexture
 
 func _ready() -> void:
 	pass
@@ -18,3 +19,6 @@ func update_timer_label() -> void:
 		#we'll add play a sfx here and probably any tweens to add effects "pulse" or whatever
 	else:
 		timer_label.text = "[font_size=30]%s[/font_size]" % [int(ExpeditionTimer.seconds)]
+
+func show_stop_watch() -> void:
+	stop_watch_texture.show()

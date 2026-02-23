@@ -28,16 +28,24 @@ const ITEM_SLOT_NOVELTY = preload("uid://x2hshpeeawjm")
 
 @onready var ore_bag_label: Label = $OreBagLabel
 
+var selling_all : bool = false
+var selling_novelties : bool = false
+
 var selected_item : Item
 var selected_inventory : String
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	InventoryManager.populate_market_menu.connect(populate_details_panel)
+	GameManager.can_pause_game = false
 	init_market()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("close_menu"):
+		close_out()
 
 func populate_details_panel(item : Item, slot_location : String) -> void:
 	if item:
@@ -61,10 +69,15 @@ func populate_details_panel(item : Item, slot_location : String) -> void:
 		
 		description.text = item.description
 
-func _on_sell_all_button_button_up() -> void:
-	sell_all_items(inventory_container, "Inventory")
-	sell_all_items(bank_container, "Bank")
-	sell_all_items(ore_inventory_container, "Ore Inventory")
+func _on_sell_all_button_button_up() -> void:	
+	if selling_all:
+		return
+	else:
+		selling_all = true
+	await sell_all_items(inventory_container, "Inventory")
+	await sell_all_items(bank_container, "Bank")
+	await sell_all_items(ore_inventory_container, "Ore Inventory")
+	selling_all = false
 
 func _on_sell_button_button_up() -> void:
 	if InventoryManager.remove_item(selected_inventory, selected_item):
@@ -80,6 +93,7 @@ func _on_sell_button_button_up() -> void:
 		
 		SaveManager.save_tech_tree_data()		
 		currency.text = "Currency: %s" % [TechTreeManager.currency]
+		TechTreeManager.update_currency_label.emit()
 		if !InventoryManager.search_item("Inventory", selected_item) and !InventoryManager.search_item("Bank", selected_item) and !InventoryManager.search_item("Ore Inventory", selected_item):
 			clear_details()
 	else:
@@ -94,10 +108,14 @@ func clear_details() -> void:
 	indicator.texture = null
 
 func _on_close_button_up() -> void:
+	close_out()
+
+func close_out() -> void:
 	GameManager.player_can_move = true
+	GameManager.can_pause_game = true
 	CookingManager.can_craft_bar.emit()
 	CookingManager.can_craft_dish.emit()
-	queue_free()
+	queue_free()	
 
 func init_market() -> void:
 	clear_details()
@@ -123,8 +141,36 @@ func sell_all_items(container : GridContainer, inventory_name : String) -> void:
 			for i in range(slot["quantity"]):
 				InventoryManager.remove_item(inventory_name, slot["item"])
 				TechTreeManager.currency += slot["item"].sell_value
+				TechTreeManager.update_currency_label.emit()
 				InventoryManager.update_grid_container(container, inventory_name)
 				currency.text = "Currency: %s" % [TechTreeManager.currency]
 				sfx_player.play_sfx(SELL_ITEM)
 				SaveManager.save_tech_tree_data()
 				await get_tree().create_timer(0.1).timeout
+
+func sell_all_novelty_itmes(container: GridContainer, inventory_name : String) -> void:
+	var inventory : Array = InventoryManager.inventories[inventory_name]
+	
+	for slot in inventory:
+		if !slot["item"] is EnemyDrop:
+			continue
+		if !slot["item"].is_novelty():
+			continue
+		for i in range(slot["quantity"]):
+			InventoryManager.remove_item(inventory_name, slot["item"])
+			TechTreeManager.currency += slot["item"].sell_value
+			TechTreeManager.update_currency_label.emit()
+			InventoryManager.update_grid_container(container, inventory_name)
+			currency.text = "Currency: %s" % [TechTreeManager.currency]
+			sfx_player.play_sfx(SELL_ITEM)
+			SaveManager.save_tech_tree_data()
+			await get_tree().create_timer(0.1).timeout
+
+func _on_sell_novelties_button_button_up() -> void:
+	if selling_novelties:
+		return
+	else:
+		selling_novelties = true
+	await sell_all_novelty_itmes(inventory_container, "Inventory")
+	await sell_all_novelty_itmes(bank_container, "Bank")
+	selling_all = false

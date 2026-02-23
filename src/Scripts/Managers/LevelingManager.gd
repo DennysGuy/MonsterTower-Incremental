@@ -2,6 +2,8 @@ extends Node
 
 @warning_ignore("unused_signal")
 signal update_xp_bar
+@warning_ignore("unused_signal")
+signal play_level_up_sfx
 
 const XP_GROWTH_RATE : float = 1.08
 const BASE_XP : int = 100
@@ -14,6 +16,8 @@ func check_for_level_up() -> void:
 		PlayerStats.player_stats["Level"] += 1
 		#Update Needed XP
 		PlayerStats.player_stats["Needed XP"] = xp_formula()
+		#play level up sfx
+		play_level_up_sfx.emit()
 	
 	update_xp_bar.emit()
 

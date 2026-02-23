@@ -20,6 +20,7 @@ func _process(delta: float) -> void:
 
 func _on_button_up() -> void:
 	SignalBus.store_entrance_data.emit(tower_entrance_data)
+	SignalBus.hide_hunt_time_label.emit()
 
 func load_floor_data() -> void:
 	if tower_entrance_data:
@@ -27,4 +28,5 @@ func load_floor_data() -> void:
 		var tower_data = saved_data.get(tower_entrance_data.floor_name)
 		tower_entrance_data.camp_fires_reached = tower_data["Campfires Reached"]
 		tower_entrance_data.number_of_spawn_locations = tower_data["Number of Spawn Locations"]
-		tower_entrance_data.kill_quota_hit = tower_data["Kill Quota Hit"]
+		tower_entrance_data.hunt_challenge_unlocked = tower_data["Hunt Challenge Unlocked"]
+		tower_entrance_data.hunt_challenge_completed = tower_data["Hunt Challenge Completed"]

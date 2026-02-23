@@ -1,5 +1,5 @@
 extends Node
-
+class_name PlayerStatsSingleton
 '''
 For now, we will hold the player stats in a global script
 This should eventually be moved into something that is save-able like a custom resource.
@@ -15,21 +15,23 @@ const KNOCKBACK_FORCE : int = 300
 	"Needed XP": 100,
 	"Current XP" : 0,
 	"Class": "Junior Hunter",
-	"Attack Damage" : 10.0,
+	"Attack Damage" : 13.0,
 	"Movement Speed" : 100.0,
 	"Climbing Speed" : 65.0,
+	"Stun Length": 1.0,
 	"Dash Speed" : 350.0,
 	"Dash Cooldown" : 2.0,
 	"Dash Duration" : 0.3,
 	"Invincibility Duration": 2.5,
 	"Jump Height" : 270.0,
+	"Double Jump Height": 540.0,
 	"Crit Chance" : 0.0,
 	"Defense" : 0.0,
 	"Crit Damage" : 1.5,
 	"Accuracy" : 0.6,
-	"Max Health" : 35,
+	"Max Health" : 60,
 	"Max MP": 50,
-	"Current Health":35,
+	"Current Health":60,
 	"Current MP": 50,
 	"Equipped Sword": 0,
 	"Equipped Pickaxe": 0,
@@ -37,14 +39,15 @@ const KNOCKBACK_FORCE : int = 300
 	"Bag": 1,
 	"Ore Bag":2,
 	"Max Bank Slots": 4,
-	"Max Bag Stack": 4,
+	"Max Bag Stack": 6,
 	"Max Ore Bag Stack": 4,
-	"Max Bank Stack":6,
+	"Max Bank Stack":8,
 	"Cooking Speed": 0.15,
 	"Smelting Speed": 0.15,
 	"Mining Damage": 5,
 	"Monster Cap Bonus": 0,
-	"Expedition Time": 0.0,
+	"Expedition Time": 90.0,
+	"Hunt Time": 30.0,
 	"Cooking Drop Chance Bonus":0.0,
 	"Cooking Accuracy Bonus":0.0,
 	"Ore Drop Chance Bonus":0.0,
@@ -52,13 +55,21 @@ const KNOCKBACK_FORCE : int = 300
 }
 
 var equipped_abilities : Dictionary = {
-	"Attack 1" : load("uid://c5hss1iq5ontu"), #sword swing 1
-	"Attack 2" : load("uid://rbc7yawqcf3h"), #sword swing 2
-	"Attack 3" : load("uid://7qd8qvg4bf73"), #sword swing 3
-	"Dash Attack" : load("uid://bukiike6rf6pl"), #basic dash attack
-	"Air Attack" : load("uid://b0lsgfuw8bp58"), #basic air attack
-	"Special Attack" : null
+	"Attack 1" : null, #sword swing 1
+	"Attack 2" : null, #sword swing 2
+	"Attack 3" : null, #sword swing 3
+	"Dash Attack" : null, #basic dash attack
+	"Air Attack" : null, #basic air attack
+	"Double Jump" : null, #basic double jump
+	"Special Attack" : null,
+
 }
+
+func get_equipped_ability(slot : String) -> Ability:
+	return equipped_abilities[slot]
+
+func get_equipped_abilities() -> Dictionary:
+	return equipped_abilities
 
 func equip_ability(ability : Ability, position : String) -> void:
 	equipped_abilities[position] = ability
@@ -70,7 +81,8 @@ func equip_ability(ability : Ability, position : String) -> void:
 	"Refinery Station" : false,
 	"Bank": false,
 	"Arial Slash" : false,
-	"Dash Attack": false
+	"Dash Attack": false,
+	"Double Jump" : false
 }
 
 @onready var check_points_unlocked : Dictionary = {
@@ -81,12 +93,22 @@ func equip_ability(ability : Ability, position : String) -> void:
 
 var player_classes : Dictionary = {
 	"Junior Hunter" : {
-		"Sword Attack 1 Name": load("uid://c5hss1iq5ontu"),
-		"Sword Attack 2 Name": load("uid://rbc7yawqcf3h"),
-		"Sword Attack 3 Name": load("uid://7qd8qvg4bf73"),
-		"Air Attack": 	load("uid://bukiike6rf6pl"),
-		"Dash Attack": load("uid://b0lsgfuw8bp58"),
+		"Attack 1": preload("uid://c5hss1iq5ontu"),
+		"Attack 2": preload("uid://rbc7yawqcf3h"),
+		"Attack 3": preload("uid://7qd8qvg4bf73"),
+		"Air Attack": 	preload("uid://bukiike6rf6pl"),
+		"Dash Attack": preload("uid://b0lsgfuw8bp58"),
+		"Double Jump": preload("uid://rgwunwula5mv"),
 		"Special Attack": null
+	},
+	"Tyro" : {
+		"Attack 1": preload("uid://c5hss1iq5ontu"),
+		"Attack 2": preload("uid://rbc7yawqcf3h"),
+		"Attack 3": preload("uid://7qd8qvg4bf73"),
+		"Air Attack": 	preload("uid://dcxiodvnbqgef"),
+		"Dash Attack": preload("uid://c3llqiy2fb5n5"),
+		"Double Jump": preload("uid://ctavgtgbvyp1w"),
+		"Special Attack": preload("uid://cs0umnvsvjhnh")
 	}
 }
 
@@ -124,6 +146,8 @@ func check_item_in_next_sword_recipe(item : Item) -> bool:
 			return false
 	return false
 
+func get_current_sword() -> Sword:
+	return get_sword(PlayerStats.player_stats["Equipped Sword"])
 
 func can_craft_next_sword() -> bool:
 	if int(player_stats["Equipped Sword"])+1 == MAX_SWORD_COUNT:
@@ -176,3 +200,9 @@ func upgrade_player_stat(stat_name : String, interval : float, node_type : TechT
 		
 	InventoryManager.update_inventory_bag.emit()
 	TechTreeManager.update_player_stats.emit()
+
+func check_needed_for_dojo() -> bool:
+	return PlayerStats.player_stats["Level"] >= 5 and PlayerStats.facilities_unlocked["Dash Attack"] and PlayerStats.facilities_unlocked["Arial Slash"] and PlayerStats.facilities_unlocked["Double Jump"]
+
+func check_level_for_dojo() -> bool:
+	return PlayerStats.player_stats["Level"] >= 5

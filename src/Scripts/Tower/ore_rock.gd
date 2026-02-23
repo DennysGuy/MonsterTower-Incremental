@@ -10,6 +10,7 @@ class_name OreRock extends Node2D
 
 var player : Player
 var health : int
+@onready var arrow_at_ore: Sprite2D = $ArrowAtOre
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -17,6 +18,9 @@ func _ready() -> void:
 	ore_rock_graphic.texture = ore_rock_stats.graphic
 	health = ore_rock_stats.max_health
 	enemy_health_bar.max_value = health
+	
+	if PlayerStats.facilities_unlocked["Refinery Station"]:
+		arrow_at_ore.show()
 	
 	state_machine.init(self)
 
@@ -71,18 +75,24 @@ func drop_ore_rock() -> void:
 
 
 func _on_ore_rock_area_area_entered(area: Area2D) -> void:
+
 	if area.get_parent() is Player:
 		if PlayerStats.facilities_unlocked["Refinery Station"]:
+			
 			directions.text = "Press/Hold 'F' to Mine!"
+			await get_tree().physics_frame
 			area.get_parent().stored_ore_rock = self
+			print("AYY WE IN THIS!")
 		else:
 			directions.text = "Unlock the Refinery to Mine!"
 	
 	directions.show()
-
-
+	
 func _on_ore_rock_area_area_exited(area: Area2D) -> void:
+
 	if area.get_parent() is Player: 
 		if PlayerStats.facilities_unlocked["Refinery Station"]:
 			area.get_parent().stored_ore_rock = null
+			print("NOO WE AINT IN IT!")
+			await get_tree().physics_frame
 		directions.hide()

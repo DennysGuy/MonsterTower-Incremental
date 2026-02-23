@@ -23,13 +23,14 @@ var sword : Sword
 func _ready() -> void:
 	update_inventory_containers()
 	update_sword()
+	GameManager.can_pause_game = false
 	#we need to go into player stats, grab equipped sword index and find the recipe and the actual sword resource
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
-
+	if Input.is_action_just_pressed("close_menu"):
+		exit_menu()
+		
 func _on_button_button_up() -> void:
 	sfx_player.play_sfx(CRAFT_SWORD)
 	await get_tree().create_timer(1.5).timeout
@@ -85,6 +86,10 @@ func update_sword() -> void: #run this function when we upgrade the sword.
 		SignalBus.update_resource_needed_panel.emit()
 
 func _on_close_button_up() -> void:
+	exit_menu()
+
+func exit_menu() -> void:
 	GameManager.player_can_move = true
+	GameManager.can_pause_game = true
 	SignalBus.check_can_sword_craft.emit()
 	queue_free()

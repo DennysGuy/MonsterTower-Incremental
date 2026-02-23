@@ -28,15 +28,18 @@ const FACILITY_NODE_BASE_DISABLED_V_2 = preload("uid://c8qnk0k4bmquq")
 const FACILITY_NODE_BASE_ENABLED_V_2 = preload("uid://k40nmsc0dbc8")
 const FACILITY_NODE_UNLOCKED_V_2 = preload("uid://cvqtlryenuafk")
 
-
 var total_bonus : float = 0.0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var saved_data = SaveManager.current_save_game.tech_nodes.get(tech_node_stats.node_name)
-	tech_node_stats.current_level = saved_data["Level"]
-	tech_node_stats.unlocked = saved_data["Unlocked"]
+	if SaveManager.current_save_game:
+		var saved_data = SaveManager.current_save_game.tech_nodes.get(tech_node_stats.node_name)
+		tech_node_stats.current_level = saved_data["Level"]
+		tech_node_stats.unlocked = saved_data["Unlocked"]
+		TechTreeManager.tech_nodes[tech_node_stats.node_name] = saved_data["Level"]
 	
-	TechTreeManager.check_node_prereqs.connect(check_prereqs)
+	if not TechTreeManager.check_node_prereqs.is_connected(check_prereqs):
+		TechTreeManager.check_node_prereqs.connect(check_prereqs)
+
 	TechTreeManager.check_if_can_purchase_node.connect(check_if_can_purchase)
 	TechTreeManager.save_node_data.connect(save_node_data)
 	set_level_label()
@@ -78,17 +81,14 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-
 func _on_click_area_mouse_entered() -> void:
 	mouse_entered = true
 	sfx_player.play_sfx(HOVER_OVER_NODE)
 	create_tool_tip()
 
-
 func _on_click_area_mouse_exited() -> void:
 	mouse_entered = false
 	remove_tool_tip()
-
 
 func _on_click_area_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if can_click and TechTreeManager.currency < tech_node_stats.currency_required and has_resource_quantity():
@@ -125,10 +125,11 @@ func _on_click_area_input_event(viewport: Node, event: InputEvent, shape_idx: in
 		TechTreeManager.save_node_data.emit()
 
 func save_node_data() -> void:
-	var node_save = SaveManager.current_save_game.tech_nodes.get(tech_node_stats.node_name)
-	node_save["Level"] = tech_node_stats.current_level
-	node_save["Unlocked"] = tech_node_stats.unlocked
-	SaveManager.save_game()
+	if SaveManager.current_save_game:
+		var node_save = SaveManager.current_save_game.tech_nodes.get(tech_node_stats.node_name)
+		node_save["Level"] = tech_node_stats.current_level
+		node_save["Unlocked"] = tech_node_stats.unlocked
+		SaveManager.save_game()
 
 func deduct_currency() -> void:
 	TechTreeManager.currency -= tech_node_stats.currency_required
@@ -169,22 +170,20 @@ func check_if_can_purchase() -> void:
 	
 	set_level_label()
 		
-
 func can_purchase() -> bool:
 	return TechTreeManager.currency >= tech_node_stats.currency_required and has_resource_quantity()
 
 func check_prereqs() -> void:
-	if !tech_node_stats.unlocked:
-		if tech_node_stats.prereqs.is_empty():
-			unlock_node()
+	if tech_node_stats.unlocked:
+		return
+
+	for req in tech_node_stats.prereqs:
+		if not TechTreeManager.check_prereq(req):
 			return
-			
-		var req_check : bool
-		for req in tech_node_stats.prereqs:
-			req_check = TechTreeManager.check_prereq(req)
-		
-		if req_check:
-			unlock_node()
+
+	unlock_node()
+	save_node_data()
+
 
 func unlock_node() -> void:
 	tech_node_stats.unlocked = true
@@ -236,7 +235,6 @@ func create_tool_tip() -> void:
 	tool_tip.cost.text = "Cost: %s" % [tech_node_stats.currency_required]
 	TechTreeManager.add_tool_tip.emit(tool_tip, is_on_right_half(self))
 
-
 func is_on_right_half(node: Node2D) -> bool:
 	var screen_x := node.get_global_transform_with_canvas().origin.x
 
@@ -244,16 +242,13 @@ func is_on_right_half(node: Node2D) -> bool:
 
 	return screen_x > half_x
 
-
 func has_resource_quantity() -> bool:
-	if tech_node_stats.materials_required.size() <= 0:
+	if tech_node_stats.materials_required.is_empty():
 		return true
-	
+
 	for resource in tech_node_stats.materials_required:
 		for item in resource.keys():
-			var quantity : int = 0
-			quantity = InventoryManager.get_quantity(item)
-			if quantity >= resource[item]:
-				return true
-	
-	return false
+			if InventoryManager.get_quantity(item) < resource[item]:
+				return false
+
+	return true

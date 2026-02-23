@@ -5,6 +5,7 @@ const SMELTING_STATION_CONTRUCTION_MODE = preload("uid://chhm5f5xmlr0j")
 const SMELTING_STATION = preload("uid://btbqj1pb1hac")
 
 @onready var notification_icon: NotificationIcon = $NotificationIcon
+@onready var needed_unlocks: NeededUnlocksPanel = $NeededUnlocks
 
 
 # Called when the node enters the scene tree for the first time.
@@ -13,11 +14,14 @@ func _ready() -> void:
 	CookingManager.can_craft_bar.connect(check_if_can_smelt)
 	if PlayerStats.facilities_unlocked["Refinery Station"]:
 		texture = SMELTING_STATION
+		needed_unlocks.hide()
 	else:
 		texture = SMELTING_STATION_CONTRUCTION_MODE
+		needed_unlocks.show()
 
 func unlock_station() -> void:
 	texture = SMELTING_STATION
+	needed_unlocks.hide()
 
 func check_if_can_smelt() -> void:
 	if PlayerStats.facilities_unlocked["Refinery Station"]:

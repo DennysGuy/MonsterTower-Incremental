@@ -11,17 +11,40 @@ func _ready() -> void:
 	hud.animation_player.play("CloseIn")
 	SignalBus.spawn_enemies.emit()
 	
-	if ore_rock_markers:
+	if ore_rock_markers and !GameManager.hunt_challenge_selected:
 		spawn_ore_rocks()
 	
 	await get_tree().process_frame
 	
-	SignalBus.update_monsters_left.emit("Monsters Left: %s" % [monster_spawn_node.get_children().size()],false)
-	SignalBus.update_player_health.emit(player.health)
-	SaveManager.save_player_stats()
+	if GameManager.hunt_challenge_selected:
+		SignalBus.update_kill_quota_text.emit("Defeat all Monsters to win!", false, false)	
 	
+	if monster_spawn_node:
+		if GameManager.hunt_challenge_selected:
+			hud.animation_player.play("StartHuntChallnge")
+		else:
+			SignalBus.update_monsters_left.emit("Campfires Discovered: %s/%s" % [tower_entrance_data.camp_fires_reached, tower_entrance_data.total_camp_fires],false)
+	
+	SignalBus.update_player_health.emit(player.health)
+	SignalBus.update_player_mp.emit()
+	SaveManager.save_player_stats()
+
+	if GameManager.hunt_challenge_selected:
+		SignalBus.hide_hunt_challenge_button.emit()
+		var monster_count : int = monster_spawn_node.get_children().size()
+		SignalBus.update_monsters_left.emit("Monsters left: %s" % [monster_count],false)
+		player.damageable = false
+		await get_tree().create_timer(0.5).timeout
+		hud.set_hunt_timer()
+		hud.expedition_timer.update_timer_label()
+		hud.animation_player.play("StartHuntChallenge")
+		await get_tree().create_timer(7.0).timeout
+		player.damageable = true
+		GameManager.player_can_move = true
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	super(delta)
 	if Input.is_action_just_pressed("interact") and player_in_range and player.damageable:
 		go_to_starshire()
 

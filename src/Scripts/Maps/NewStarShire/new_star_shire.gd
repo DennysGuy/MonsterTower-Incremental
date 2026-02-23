@@ -36,29 +36,31 @@ func _ready() -> void:
 	SignalBus.spawn_tech_tree.connect(add_tech_tree_to_scene)
 	SignalBus.issue_can_craft_sword_scene.connect(new_sword_unlock_notice)
 	TechTreeManager.unlock_station.connect(unlock_station)
-
+	TechTreeManager.update_currency_label.emit()
 	CookingManager.can_craft_bar.emit()
 	hud.animation_player.play("CloseIn")
-
+	
+	hud.currency_label.show()
+	
 	if PlayerStats.player_stats["Equipped Sword"] < PlayerStats.MAX_SWORD_COUNT-1 and PlayerStats.can_craft_next_sword():
 		SignalBus.show_can_craft_sword.emit()
-		await get_tree().create_timer(1.0).timeout
-		new_sword_unlock_notice()
+		#await get_tree().create_timer(1.0).timeout
+		#new_sword_unlock_notice()
 	else:
 		SignalBus.hide_can_craft_sword.emit()
 	
 	await get_tree().process_frame
 	SignalBus.update_player_health.emit(player.health)
+	PlayerStats.player_stats["Current MP"] = PlayerStats.player_stats["Max MP"]
+	SignalBus.update_player_mp.emit()
 	SaveManager.save_player_stats()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	super(delta)
 	if Input.is_action_just_pressed("interact") and player_in_tower_range and GameManager.player_can_move and PlayerStats.facilities_unlocked["Hunter License"]:
-		GameManager.player_can_move = false
-		if PlayerStats.check_points_unlocked["Floor 1-2"]:
-			spawn_tower_entrance_map() #need to check how many checkpoints unlocked
-		else:
-			go_to_test_floor()
+		spawn_tower_entrance_map() #need to check how many checkpoints unlocked
+
 			
 	if Input.is_action_just_pressed("interact") and player_in_market_range and GameManager.player_can_move:
 		GameManager.player_can_move = false
@@ -79,6 +81,11 @@ func _process(delta: float) -> void:
 		GameManager.player_can_move = false
 		player.velocity = Vector2.ZERO
 		spawn_crafting_menu()
+
+	if Input.is_action_just_pressed("interact") and player_in_dojo_range and PlayerStats.check_level_for_dojo():
+		GameManager.player_can_move = false
+		player.velocity = Vector2.ZERO
+		spawn_dojo_menu()
 
 func add_tech_tree_to_scene() -> void:
 	player.velocity = Vector2.ZERO
@@ -135,6 +142,11 @@ func spawn_smelting_menu() -> void:
 func spawn_crafting_menu() -> void:
 	var sword_crafting_station : CraftingStationMenu = preload("uid://cc1xppx3tkq4f").instantiate()
 	control.add_child(sword_crafting_station)
+	
+func spawn_dojo_menu() -> void:
+	var class_selection_menu : ClassSelectionMenu = preload("uid://b404uvbhnmjxd").instantiate()
+	control.add_child(class_selection_menu)
+	
 func _on_grand_market_area_body_entered(body: Node2D) -> void:
 	if body is Player:
 		player_in_market_range = true
@@ -239,7 +251,6 @@ func unlock_station() -> void:
 		
 	GameManager.player_can_move = true
 
-
 func new_sword_unlock_notice() -> void:
 	GameManager.player_can_move = false
 	camera.player = null
@@ -257,18 +268,19 @@ func new_sword_unlock_notice() -> void:
 	camera.player = player
 	GameManager.player_can_move = true
 
-
 func _on_dojo_area_body_entered(body: Node2D) -> void:
 	if body is Player:
 		
-		if PlayerStats.player_stats["Level"] >= 10:
-			dojo_access_notification.text = "Press E to access the Dojo!f"
+		if PlayerStats.check_needed_for_dojo():
+			if PlayerStats.player_stats["Class"] == "Adventurer":
+				dojo_access_notification.text = "Press E to Select Your Class!"
+			else:
+				dojo_access_notification.text = "Press E to Access Dojo!"
 		else:
-			dojo_access_notification.text = "Reach Level 10 to access the Dojo!"
+			dojo_access_notification.text = ""
 		
 		player_in_dojo_range = true
 		dojo_access_notification.show()
-
 
 func _on_dojo_area_body_exited(body: Node2D) -> void:
 	if body is Player:

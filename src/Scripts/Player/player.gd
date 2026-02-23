@@ -13,14 +13,19 @@ class_name Player extends Entity
 @onready var ability_cool_down_timer: Timer = $AbilityCoolDownTimer
 
 @onready var hurtbox_collision_shape_2d : CollisionShape2D = $HurtBox/CollisionShape2D
+@onready var outfit: Sprite2D = $Sprites/Outfit
 
 @onready var collision_shape_2d : CollisionShape2D = $CollisionShape2D
 @onready var dash_attack_collision_shape : CollisionShape2D = $DashAttackHitBox/CollisionShape2D
 @onready var dash_attack_hit_box: HitBox = $DashAttackHitBox
 
 @onready var can_dash_attack : bool = true
+@onready var can_double_jump : bool = true
 @onready var can_knock_back : bool = true
 @onready var can_spawn_gravestone : bool = true
+
+@onready var sword_soar_hit_box: HitBox = $SwordSoarHitBox
+
 
 var stored_ladder : LadderArea
 var stored_enemy : Enemy
@@ -32,15 +37,36 @@ var prev_move_speed : float
 var mining_area_position : Vector2
 var hit_box_position : Vector2
 
+var jump_buffer_timer : float = 0.0
+var jump_buffer_wait_time : float =0.17
+
+var coyote_timer : float = 0.0
+var coyote_wait_time : float = 0.17 
+
+var attack_buffer_timer : float = 0.0
+var attack_buffer_wait_time : float = 0.3
+
+var can_attack_cancel: bool = false
+
+var was_on_ledge : bool = true
+
+var apply_gravity : bool = true
+
+var is_silence_attack : bool = false
+
 @export var idle_state : State
 @export var jump_state : State
 @export var fall_state : State
 @export var climb_state : State
 @export var swing_pick_axe : State
+@export var attack_1 : State
+@export var air_attack : State
+@export var dash_attack : State
 
 func _ready() -> void:
 	super()
 	SignalBus.update_sword_texture.connect(set_sword_texture)
+	SignalBus.update_player_uniform.connect(set_outfit_texture)
 	health = PlayerStats.player_stats["Max Health"]
 	mining_area_position = mining_area.position
 	hit_box_position = hit_box.position
@@ -51,12 +77,24 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	super(delta)
+	if jump_buffer_timer > 0:
+		jump_buffer_timer -= delta
+		
+	if coyote_timer > 0:
+		coyote_timer -= delta
+	
+	if attack_buffer_timer > 0:
+		attack_buffer_timer -= delta
+		
 
 func _unhandled_input(event: InputEvent) -> void:
 	super(event)
 
 func set_sword_texture(animation_name : String) -> void:
 	sword.texture = SwordGraphics.get_sword_graphic(animation_name)
+
+func set_outfit_texture(animation_name : String) -> void:
+	outfit.texture = OutfitGraphics.get_outfit_graphic(animation_name)
 
 func set_pickaxe_texture() -> void:
 	sword.texture = SwordGraphics.get_pickaxe_graphic()
@@ -86,22 +124,42 @@ func clear_sprites() -> void:
 	for cur_sprite in sprites.get_children():
 		cur_sprite.texture = null
 
-func issue_attack(selected_hit_box : HitBox) -> void:
+func issue_attack(selected_hit_box : HitBox, multiplier : float = 1.0, ability : Ability = null) -> void:
 	var enemies_in_range = selected_hit_box.get_overlapping_areas()
 	var overlapping_hits : int = int(PlayerStats.player_stats["Overlapping Hits"])
+	var number_of_hits : int = 1
+	var rep_delay : float = 0.1
+	var incoming_damage : int = 0
+
 	var base_damage : int = int(PlayerStats.player_stats["Attack Damage"] + PlayerStats.get_sword(PlayerStats.player_stats["Equipped Sword"]).attack_bonus)
 	var min_damage : int = int(base_damage * PlayerStats.player_stats["Accuracy"])
 	var max_damage : int = int(base_damage)
 	var is_crit = check_for_crit()
-	var incoming_damage : int = randi_range(min_damage,max_damage)
+	if is_crit:
+		print("IM CRTTING!")
+	if ability:
+		overlapping_hits = int(ability.number_of_enemies_hit)
+		number_of_hits = int(ability.max_hit_count)
+		rep_delay = ability.attack_rep_delay
+		min_damage = PlayerStats.player_stats["Attack Damage"] + ability.base_attack * PlayerStats.player_stats["Accuracy"]
+		max_damage = PlayerStats.player_stats["Attack Damage"] + ability.base_attack
+		
+	incoming_damage  = int(randi_range(min_damage,max_damage) * multiplier)
 	
 	if is_crit:
 		incoming_damage = int((PlayerStats.player_stats["Crit Damage"] + PlayerStats.get_sword(PlayerStats.player_stats["Equipped Sword"]).crit_bonus) * incoming_damage)
-
-	GameManager.attack_enemies(enemies_in_range, overlapping_hits, self, incoming_damage, is_crit)
+	
+	if PlayerStats.player_stats["Class"] == "Tyro":
+		GameManager.attack_enemies(enemies_in_range, overlapping_hits, number_of_hits, self, incoming_damage, is_crit, true, rep_delay)
+	else:
+		GameManager.attack_enemies(enemies_in_range, overlapping_hits, number_of_hits, self, incoming_damage, is_crit, false, rep_delay)
 
 func issue_sword_attack() -> void:
 	issue_attack(hit_box)
+
+func issue_super_attack() -> void:
+	var multiplier : float = PlayerStats.get_equipped_ability("Special Attack").attack_damage_modifier
+	issue_attack(hit_box, multiplier,PlayerStats.get_equipped_ability("Special Attack"))
 
 func check_for_crit() -> bool:
 	var crit_roll : int = randi_range(0,100)
@@ -113,7 +171,6 @@ func check_for_crit() -> bool:
 func _on_ladder_detector_area_entered(area: Area2D) -> void:
 	in_ladder_area = true
 	stored_ladder = area
-
 
 func _on_ladder_detector_area_exited(area: Area2D) -> void:
 	in_ladder_area = false
@@ -130,6 +187,9 @@ func attack_ore_rock() -> void:
 
 func clear_effect_texture() -> void:
 	effect.texture = null
+
+func set_cancel_state_true() -> void:
+	can_attack_cancel = true
 
 func blink_effect() -> void:
 	if not is_inside_tree():
@@ -175,9 +235,40 @@ func pass_through_floor() -> void:
 	await get_tree().create_timer(0.15).timeout
 	set_collision_mask_value(5, true)
 
-func _on_dash_attack_hit_box_body_entered(body: Node2D) -> void:
-	pass
+func enable_sword_soar_hitbox() -> void:
+	sword_soar_hit_box.get_child(0).disabled = false
+	sword_soar_hit_box.set_deferred("monitoring", true)
+	sword_soar_hit_box.set_deferred("monitorable", true)
+
+func disable_sword_soar_hitbox() -> void:
+	sword_soar_hit_box.get_child(0).disabled = true
+	sword_soar_hit_box.set_deferred("monitoring", false)
+	sword_soar_hit_box.set_deferred("monitorable", false)
 
 
 func _on_ability_cool_down_timer_timeout() -> void:
 	can_dash_attack = true
+
+func _on_invincibility_timer_timeout() -> void:
+	damageable = true
+
+func can_issue_ability(ability_name : String) -> bool:
+	return  AbilityTimers.ability_state[ability_name]["Can Do"] and AbilityTimers.ability_state[ability_name]["Can Do"] and PlayerStats.player_stats["Current MP"] >= PlayerStats.equipped_abilities[ability_name].mp_cost
+
+func _on_sword_soar_hit_box_area_entered(area: Area2D) -> void:
+	var parent = area.get_parent()
+	
+	if parent is Enemy:
+		var damage = randf_range(PlayerStats.player_stats["Attack Damage"]*0.8, PlayerStats.player_stats["Attack Damage"]) * PlayerStats.equipped_abilities["Double Jump"].attack_damage_modifier
+		parent.apply_slow_and_damage(damage,PlayerStats.get_equipped_ability("Double Jump").move_speed_modifier, PlayerStats.get_equipped_ability("Double Jump").slow_wait_time)
+
+
+func _on_dash_attack_hit_box_area_entered(area: Area2D) -> void:
+	var parent = area.get_parent()
+	if parent is Enemy:
+		if is_silence_attack:
+			var equipped_dash_attack : Ability = PlayerStats.get_equipped_ability("Dash Attack")
+			var damage = randi_range(PlayerStats.player_stats["Attack Damage"] * 0.8, PlayerStats.player_stats["Attack Damage"]) * equipped_dash_attack.attack_damage_modifier
+			parent.apply_silenced_and_damage(damage, equipped_dash_attack.slow_wait_time)
+		else:
+			issue_attack(dash_attack_hit_box)

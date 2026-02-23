@@ -2,23 +2,29 @@ class_name PlayerAttack3State extends State
 
 @export var attack1_state : State
 @export var idle_state : State
-
+@export var jump_state : State
 @export var swing_sfx : AudioStream
-
+@export var attack_friction : float = 2600.0
+@export var max_attack_drift : float = 220.0
+var attack_velocity : float = 0.0
 func enter() -> void:
+	parent.velocity.x = 180 * GameManager.set_player_box_direction(parent.sprite.flip_h)
 	parent.can_knock_back = true
-	var class_ability : Ability  = PlayerStats.equipped_abilities["Attack 3"]
+	var class_ability : Ability  = PlayerStats.get_equipped_ability("Attack 3")
 	animation_name = class_ability.ability_name
 	parent.animation_player.play(animation_name)
 
 	parent.set_sword_texture("SwordSwing3")
-	parent.timer.wait_time = animation_duration
+	parent.set_outfit_texture(animation_name)
+	parent.effect.texture = OutfitGraphics.get_outfit_graphic("BasicAttackEffect")
+	parent.timer.wait_time = PlayerStats.get_current_sword().attack_speed
 	parent.timer.start()
 	
 	var swing : AudioStream = PlayerStats.get_sword(int(PlayerStats.player_stats["Equipped Sword"])).swing_3
 	parent.sfx_player.play_sfx(swing,3.0)
 	
 func exit() -> void:
+	parent.can_attack_cancel = false
 	parent.clear_effect_texture()
 
 func process_input(_event: InputEvent) -> State:
@@ -28,9 +34,24 @@ func process_frame(_delta: float) -> State:
 	return null
 
 func process_physics(_delta: float) -> State:
+	
+	parent.velocity.x = move_toward(
+		parent.velocity.x,
+		0.0,
+		attack_friction * _delta
+	)
+
+	parent.move_and_slide()
+	
 	if !GameManager.player_can_move:
 		return idle_state
-		
+
+	if Input.is_action_pressed("pan_cam_left") and parent.can_attack_cancel or Input.is_action_pressed("pan_cam_right") and parent.can_attack_cancel:
+		return idle_state
+	
+	if Input.is_action_pressed("add_currency") and parent.can_attack_cancel:
+		return jump_state
+
 	if parent.is_on_floor() and parent.timer.time_left <= 0:
 		if Input.is_action_pressed("swing_sword"):
 			return attack1_state
