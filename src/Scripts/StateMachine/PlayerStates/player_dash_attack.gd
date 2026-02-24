@@ -47,7 +47,6 @@ func process_frame(_delta: float) -> State:
 
 func process_physics(_delta: float) -> State:
 	equipped_dash_attack.apply_physics(_delta)
-	
 
 	if parent.timer.time_left <= 0:
 		if parent.attack_buffer_timer > 0:
