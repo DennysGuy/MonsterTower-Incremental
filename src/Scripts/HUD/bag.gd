@@ -29,6 +29,7 @@ func init_bag() -> void:
 	item_icon.texture = null
 	gold_count.text = str(TechTreeManager.currency)
 	update_grid_container("Novelty Items")
+	clear_description_items()
 
 func update_grid_container(inventory : String) -> void:
 	#texture_rect.texture = PlayerStats.get_bag("Bag").texture
@@ -90,6 +91,9 @@ func _on_gem_stone_tab_button_up() -> void:
 
 
 func update_item_description(item : Item) -> void:
+	if not item:
+		return 
+		
 	item_title.text = item.item_name
 	description.text = item.description
 	item_icon.texture = item.shop_icon
@@ -99,6 +103,19 @@ func _on_use_tab_button_up() -> void:
 	update_grid_container("Use")
 
 
+func clear_description_items() -> void:
+	item_icon.texture = null
+	description.text = ""
+	item_title.text = ""
+	selected_item = null
+	
 func _on_discard_button_up() -> void:
-	InventoryManager.remove_item(selected_item.get_inventory_name(), selected_item)
-	update_grid_container(selected_item.get_inventory_name())
+	if not selected_item:
+		return
+		
+	var item_removed : bool = InventoryManager.remove_item(selected_item.get_inventory_name(), selected_item)
+	var item_exists : bool =InventoryManager.search_item(selected_item.get_inventory_name(), selected_item)
+	if !item_exists:
+		clear_description_items()
+	if selected_item:
+		update_grid_container(selected_item.get_inventory_name())

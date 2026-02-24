@@ -1968,9 +1968,11 @@ idle_state = NodePath("../Idle")
 climb_state = NodePath("../Climb")
 animation_name = "AirAttack"
 
-[node name="DashAttack" type="Node" parent="StateMachine" unique_id=288563207 node_paths=PackedStringArray("idle_state")]
+[node name="DashAttack" type="Node" parent="StateMachine" unique_id=288563207 node_paths=PackedStringArray("idle_state", "attack_1", "jump")]
 script = ExtResource("17_cfcx3")
 idle_state = NodePath("../Idle")
+attack_1 = NodePath("../Attack1")
+jump = NodePath("../Jump")
 animation_name = "SwordSwing3"
 
 [node name="Hit" type="Node" parent="StateMachine" unique_id=73250372 node_paths=PackedStringArray("idle_state", "attack_1_state")]

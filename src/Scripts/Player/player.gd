@@ -44,7 +44,7 @@ var coyote_timer : float = 0.0
 var coyote_wait_time : float = 0.17 
 
 var attack_buffer_timer : float = 0.0
-var attack_buffer_wait_time : float = 0.3
+var attack_buffer_wait_time : float = 1.0
 
 var can_attack_cancel: bool = false
 
@@ -83,10 +83,10 @@ func _physics_process(delta: float) -> void:
 		
 	if coyote_timer > 0:
 		coyote_timer -= delta
-	
+
 	if attack_buffer_timer > 0:
 		attack_buffer_timer -= delta
-		
+	
 
 func _unhandled_input(event: InputEvent) -> void:
 	super(event)
@@ -126,6 +126,9 @@ func clear_sprites() -> void:
 		cur_sprite.texture = null
 func stop_player() -> void:
 	velocity = Vector2.ZERO
+
+func set_attack_buffer_timer() -> void:
+	attack_buffer_timer = attack_buffer_wait_time
 
 func issue_attack(selected_hit_box : HitBox, multiplier : float = 1.0, ability : Ability = null) -> void:
 	var enemies_in_range = selected_hit_box.get_overlapping_areas()
@@ -269,6 +272,7 @@ func _on_sword_soar_hit_box_area_entered(area: Area2D) -> void:
 func _on_dash_attack_hit_box_area_entered(area: Area2D) -> void:
 	var parent = area.get_parent()
 	if parent is Enemy:
+		print(parent)
 		if is_silence_attack:
 			var equipped_dash_attack : Ability = PlayerStats.get_equipped_ability("Dash Attack")
 			var damage = randi_range(PlayerStats.player_stats["Attack Damage"] * 0.8, PlayerStats.player_stats["Attack Damage"]) * equipped_dash_attack.attack_damage_modifier

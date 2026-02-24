@@ -63,6 +63,17 @@ func enable_hurt_box() -> void:
 func disable_hurt_box() -> void:
 		alter_box_status(hurt_box, false, true)
 
+func disable_box_on_frame(box : Area2D) -> void:
+		if !box:
+			return
+			
+		box.monitoring = false
+		box.monitorable = false
+
+		var shape2 = box.get_child(0)
+		if shape2 is CollisionShape2D:
+			shape2.disabled = true
+
 func alter_box_status(box : Area2D, monitor_state : bool, collision_state : bool) -> void:
 		if !box:
 			return
