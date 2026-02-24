@@ -78,33 +78,33 @@ func init_containers() -> void:
 		bank_notice.show()
 
 func move_inventory_to_bank() -> void:
-	var inventory_snapshot = InventoryManager.inventories["Inventory"].duplicate(true)
-
-	for slot in inventory_snapshot:
-		var qty = slot["quantity"]
-		var item = slot["item"]
-
-		for i in range(qty):
-			if InventoryManager.add_item("Bank", item):
-				InventoryManager.remove_item("Inventory", item)
-				InventoryManager.update_grid_container(inventory_container, "Inventory")
-				InventoryManager.update_grid_container(bank_container, "Bank")
-				sfx_player.play_sfx(TRANSFER_TO_BANK, 0, true)
-				await get_tree().create_timer(0.1).timeout
-
-	var ore_inventory_snapshot = InventoryManager.inventories["Ore Inventory"].duplicate(true)
-
-	for slot in ore_inventory_snapshot:
-		var qty = slot["quantity"]
-		var item = slot["item"]
-
-		for i in range(qty):
-			if InventoryManager.add_item("Bank", item):
-				InventoryManager.remove_item("Ore Inventory", item)
-				InventoryManager.update_grid_container(ore_inventory_container, "Ore Inventory")
-				InventoryManager.update_grid_container(bank_container, "Bank")
-				sfx_player.play_sfx(TRANSFER_TO_BANK, 0, true)
-				await get_tree().create_timer(0.1).timeout
+	#var inventory_snapshot = InventoryManager.inventories["Inventory"].duplicate(true)
+#
+	#for slot in inventory_snapshot:
+		#var qty = slot["quantity"]
+		#var item = slot["item"]
+#
+		#for i in range(qty):
+			#if InventoryManager.add_item("Bank", item):
+				#InventoryManager.remove_item("Inventory", item)
+				#InventoryManager.update_grid_container(inventory_container, "Inventory")
+				#InventoryManager.update_grid_container(bank_container, "Bank")
+				#sfx_player.play_sfx(TRANSFER_TO_BANK, 0, true)
+				#await get_tree().create_timer(0.1).timeout
+#
+	#var ore_inventory_snapshot = InventoryManager.inventories["Ore Inventory"].duplicate(true)
+#
+	#for slot in ore_inventory_snapshot:
+		#var qty = slot["quantity"]
+		#var item = slot["item"]
+#
+		#for i in range(qty):
+			#if InventoryManager.add_item("Bank", item):
+				#InventoryManager.remove_item("Ore Inventory", item)
+				#InventoryManager.update_grid_container(ore_inventory_container, "Ore Inventory")
+				#InventoryManager.update_grid_container(bank_container, "Bank")
+				#sfx_player.play_sfx(TRANSFER_TO_BANK, 0, true)
+				#await get_tree().create_timer(0.1).timeout
 
 	to_town.disabled = false
 	new_run.disabled = false

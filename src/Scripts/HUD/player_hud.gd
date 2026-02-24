@@ -15,7 +15,6 @@ var map_name : String = ""
 @export var expedition_timer: ExpeditionTimerLocal
 @onready var big_notification_label: Label = $PlayerHUD/BigNotificationLabel
 @onready var sfx_player: SFXPlayer = $SfxPlayer
-@onready var bag_2: OreBag = $PlayerHUD/Bag2
 
 @onready var can_cook_dish: RichTextLabel = $PlayerHUD/CanCookDish
 @onready var can_smelt_bar: RichTextLabel = $PlayerHUD/CanSmeltBar
@@ -40,6 +39,7 @@ const COUNTDOWN_BEEP = preload("uid://c6caiqmkt2lt0")
 @onready var pick_up_notifier: VBoxContainer = $PlayerHUD/PickUpNotifier
 @onready var class_notice: RichTextLabel = $PlayerHUD/ClassNotice
 
+@onready var open_bag_notice: Control = $PlayerHUD/OpenBagNotice
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -75,6 +75,9 @@ func _ready() -> void:
 	
 	LevelingManager.update_xp_bar.connect(update_xp_bar)
 	
+	InventoryManager.show_open_bag_notice.connect(show_open_bag_notice)
+	InventoryManager.hide_open_bag_notice.connect(hide_open_bag_notice)
+	
 	player_mp_bar.max_value = PlayerStats.player_stats["Current MP"]
 	player_mp_bar.value = player_mp_bar.max_value
 	
@@ -82,9 +85,6 @@ func _ready() -> void:
 	#update_player_health(int(PlayerStats.player_stats["Current Health"]))
 	show_class_notice()
 	
-	if PlayerStats.facilities_unlocked["Refinery Station"]:
-		bag_2.show()
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("open_bag"):
@@ -112,6 +112,12 @@ func spawn_respawn_box() -> void:
 	var respawn_box : RespawnBox = preload("uid://dv20tfcnkjyux").instantiate()
 	player_hud.add_child(respawn_box)
 
+func show_open_bag_notice() -> void:
+	open_bag_notice.show()
+
+func hide_open_bag_notice() -> void:
+	open_bag_notice.hide()
+
 func update_kill_quota_text(message : String, quota_met : bool, challenge_unlocked : bool) -> void:
 	if is_inside_tree():
 		await get_tree().process_frame
@@ -136,8 +142,12 @@ func update_currency_label() -> void:
 func show_bag() -> void:
 	bag_showing = !bag_showing
 	if bag_showing:
+		InventoryManager.hide_open_bag_notice.emit()
+		SignalBus.stop_player.emit()
+		GameManager.player_can_move = false
 		bag_animation_player.play("ShowBag")
 	else:
+		GameManager.player_can_move = true
 		bag_animation_player.play("HideBag")
 
 func start_expedition_timer() -> void:

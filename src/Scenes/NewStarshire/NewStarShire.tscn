@@ -894,6 +894,7 @@ position = Vector2(976.00006, 624)
 visible = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1662037132]
+visible = false
 
 [node name="Control" type="Control" parent="CanvasLayer" unique_id=278930507]
 layout_mode = 3
@@ -918,7 +919,7 @@ sdf_scale = 0
 size = Vector2i(640, 360)
 size_2d_override = Vector2i(640, 360)
 size_2d_override_stretch = true
-render_target_update_mode = 4
+render_target_update_mode = 0
 
 [node name="GrandMarketArea" type="Area2D" parent="." unique_id=1746715903]
 position = Vector2(373.5, 334)

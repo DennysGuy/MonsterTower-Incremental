@@ -9,11 +9,11 @@
 [ext_resource type="PackedScene" uid="uid://bih3bekt2ixjn" path="res://src/Scenes/UI/Bag.tscn" id="6_g1bs5"]
 [ext_resource type="PackedScene" uid="uid://dngkcgpb2st7c" path="res://src/Scenes/UI/ExpeditionTimer.tscn" id="7_g3oel"]
 [ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="8_65fhw"]
-[ext_resource type="PackedScene" uid="uid://3rfn3t2sy58b" path="res://src/Scenes/UI/OreBag.tscn" id="9_bsjhc"]
 [ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="9_jyqen"]
 [ext_resource type="Texture2D" uid="uid://bob2oo3d75ybb" path="res://Assets/HUD/xpbar_base.png" id="11_6ndbt"]
 [ext_resource type="Texture2D" uid="uid://dluwh7ev7vu3e" path="res://Assets/HUD/xpbar_fill.png" id="12_8d4p7"]
 [ext_resource type="Texture2D" uid="uid://bggsgp4t53q5y" path="res://Assets/HUD/NoticeIcon.png" id="12_fw5mt"]
+[ext_resource type="Texture2D" uid="uid://dix63priuogkk" path="res://Assets/NodeGraphics/NodeGraphicsV2/Bag1_V2.png" id="13_fw5mt"]
 
 [sub_resource type="Animation" id="Animation_g1bs5"]
 resource_name = "CloseIn"
@@ -307,31 +307,20 @@ _data = {
 &"StartHuntChallenge": SubResource("Animation_6ndbt")
 }
 
-[sub_resource type="Animation" id="Animation_jyqen"]
+[sub_resource type="Animation" id="Animation_wldwa"]
 resource_name = "HideBag"
+length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("PlayerHUD/Bag:position")
-tracks/0/interp = 2
+tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
+"times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 56.5), Vector2(-171, 56.5)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("PlayerHUD/Bag2:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.30017844),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(449, 54.5), Vector2(585, 54.5)]
+"values": [Vector2(185, 71), Vector2(185, -200)]
 }
 
 [sub_resource type="Animation" id="Animation_65fhw"]
@@ -339,48 +328,37 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerHUD/Bag2:position")
+tracks/0/path = NodePath("PlayerHUD/Bag:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(565, 54.5)]
+"values": [Vector2(185, -200)]
 }
 
-[sub_resource type="Animation" id="Animation_g3oel"]
+[sub_resource type="Animation" id="Animation_fw5mt"]
 resource_name = "ShowBag"
+length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("PlayerHUD/Bag:position")
-tracks/0/interp = 2
+tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.16666667),
+"times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-171, 56.5), Vector2(0, 56.5)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("PlayerHUD/Bag2:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.16669051),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(565, 54.5), Vector2(450, 54.5)]
+"values": [Vector2(185, -200), Vector2(185, 71)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jyqen"]
 _data = {
-&"HideBag": SubResource("Animation_jyqen"),
+&"HideBag": SubResource("Animation_wldwa"),
 &"RESET": SubResource("Animation_65fhw"),
-&"ShowBag": SubResource("Animation_g3oel")
+&"ShowBag": SubResource("Animation_fw5mt")
 }
 
 [node name="HUD" type="CanvasLayer" unique_id=129498783 node_paths=PackedStringArray("animation_player", "map_name_label", "expedition_timer")]
@@ -456,20 +434,10 @@ theme_override_font_sizes/font_size = 15
 text = "100/100"
 horizontal_alignment = 2
 
-[node name="Bag" parent="PlayerHUD" unique_id=1015428559 instance=ExtResource("6_g1bs5")]
+[node name="Bag" parent="PlayerHUD" unique_id=668700631 instance=ExtResource("6_g1bs5")]
 layout_mode = 1
-offset_left = -491.0
-offset_top = -123.5
-offset_right = -300.00024
-offset_bottom = 51.5
-
-[node name="Bag2" parent="PlayerHUD" unique_id=1112681286 instance=ExtResource("9_bsjhc")]
-visible = false
-layout_mode = 1
-offset_left = 245.0
-offset_top = -125.5
-offset_right = 435.99902
-offset_bottom = 49.5
+offset_top = -380.0
+offset_bottom = -194.5001
 
 [node name="MapeName" type="Label" parent="PlayerHUD" unique_id=727908015]
 layout_mode = 1
@@ -692,6 +660,7 @@ offset_right = -447.0
 offset_bottom = -185.0
 grow_horizontal = 0
 grow_vertical = 0
+mouse_filter = 2
 
 [node name="StartHuntChallengeButton" type="Button" parent="PlayerHUD" unique_id=183096058]
 visible = false
@@ -717,7 +686,6 @@ texture = ExtResource("12_fw5mt")
 stretch_mode = 2
 
 [node name="MaxSlotStack" type="Label" parent="PlayerHUD" unique_id=1064097603]
-visible = false
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -770,6 +738,43 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
+[node name="OpenBagNotice" type="Control" parent="PlayerHUD" unique_id=1767139368]
+visible = false
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = -101.0
+offset_right = 133.0
+offset_bottom = -61.0
+grow_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="PlayerHUD/OpenBagNotice" unique_id=1820762157]
+layout_mode = 0
+offset_left = -4.0
+offset_right = 36.0
+offset_bottom = 40.0
+texture = ExtResource("13_fw5mt")
+
+[node name="Label" type="Label" parent="PlayerHUD/OpenBagNotice" unique_id=1967052326]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -87.0
+offset_top = -17.0
+offset_right = -12.0
+offset_bottom = 18.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("9_jyqen")
+text = "Press 'B' To
+Open Bag!"
+
 [node name="SfxPlayer" parent="." unique_id=2102076142 instance=ExtResource("8_65fhw")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1863759790]
@@ -779,5 +784,3 @@ libraries/ = SubResource("AnimationLibrary_g3oel")
 libraries/ = SubResource("AnimationLibrary_jyqen")
 
 [connection signal="button_up" from="PlayerHUD/StartHuntChallengeButton" to="." method="_on_start_hunt_challenge_button_button_up"]
-
-[editable path="PlayerHUD/Bag"]

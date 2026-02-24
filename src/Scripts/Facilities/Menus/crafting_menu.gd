@@ -92,4 +92,5 @@ func exit_menu() -> void:
 	GameManager.player_can_move = true
 	GameManager.can_pause_game = true
 	SignalBus.check_can_sword_craft.emit()
+	SignalBus.hide_tech_tree_canvas_layer.emit()
 	queue_free()

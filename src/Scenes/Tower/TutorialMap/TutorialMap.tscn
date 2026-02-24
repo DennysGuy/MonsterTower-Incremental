@@ -634,6 +634,7 @@ position = Vector2(0, -123)
 shape = SubResource("RectangleShape2D_cqx2w")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2131735722]
+visible = false
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer" unique_id=1788998210]
 offset_right = 40.0
@@ -644,7 +645,7 @@ transparent_bg = true
 handle_input_locally = false
 physics_object_picking = true
 size = Vector2i(640, 360)
-render_target_update_mode = 4
+render_target_update_mode = 0
 
 [node name="TechTreeComputer" parent="." unique_id=1189367346 instance=ExtResource("16_cqx2w")]
 position = Vector2(1651, 448)

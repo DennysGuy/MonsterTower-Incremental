@@ -107,6 +107,7 @@ func close_out() -> void:
 			show_can_craft_next_sword_scene = false
 	CookingManager.can_craft_bar.emit()
 	CookingManager.can_craft_dish.emit()
+	SignalBus.hide_tech_tree_canvas_layer.emit()
 	get_parent().queue_free()
 
 func _on_start_crafting_button_up() -> void:
@@ -158,9 +159,9 @@ func populate_details_panel(recipe : CraftingRecipe) -> void:
 	var can_add_to_inventory : bool
 	
 	if station_type == STATION_TYPE.COOKING:
-		can_add_to_inventory = InventoryManager.check_if_can_add_to_inventory(recipe.output_item, "Inventory", "Bag","Max Bag Stack")
+		can_add_to_inventory = InventoryManager.check_if_can_add_to_inventory(recipe.output_item, "Cooking Items", "Bag","Max Bag Stack")
 	if station_type == STATION_TYPE.SMELTING:
-		can_add_to_inventory = InventoryManager.check_if_can_add_to_inventory(recipe.output_item, "Ore Inventory", "Ore Bag","Max Ore Bag Stack")
+		can_add_to_inventory = InventoryManager.check_if_can_add_to_inventory(recipe.output_item, "Ore", " Bag","Max Bag Stack")
 	
 	if !can_add_to_inventory:
 		inventory_full_warning.show()

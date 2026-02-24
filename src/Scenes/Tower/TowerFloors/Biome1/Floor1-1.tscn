@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://dj0ett15s3u5m" path="res://src/Scenes/Tower/TowerFloors/OreRockMarker.tscn" id="5_kpd6k"]
 [ext_resource type="AudioStream" uid="uid://n4ky26neitxn" path="res://Audio/Music/TempVictoryTheme1.mp3" id="5_pkrjl"]
 [ext_resource type="TileSet" uid="uid://cbwyncwtk5kxk" path="res://src/Scenes/Tower/TowerFloors/Biome1/Biome1-Boundaries.tres" id="5_tuy5g"]
-[ext_resource type="Resource" uid="uid://dxfrcyw0rux0q" path="res://src/Resources/TinOreRock.tres" id="6_hvi06"]
+[ext_resource type="Resource" uid="uid://dxfrcyw0rux0q" path="res://src/Resources/OreRock/TinOreRock.tres" id="6_hvi06"]
 [ext_resource type="PackedScene" uid="uid://bethw5tnlxnnt" path="res://src/Scenes/Actors/Enemies/CorruptedMushie/CorruptedMushie.tscn" id="6_ko10l"]
 [ext_resource type="TileSet" uid="uid://flobhfna8te" path="res://src/Scenes/Tower/TowerFloors/Biome1/Biome1-Platforms.tres" id="6_om3xh"]
 [ext_resource type="PackedScene" uid="uid://crvhogk2bnq1s" path="res://src/Scenes/NewStarshire/TowerGuideSprite.tscn" id="7_0rtsh"]

@@ -5,6 +5,7 @@ class_name NewStarShireMap extends Map
 @onready var control: Control = $CanvasLayer/Control
 @onready var enter_market_label: Label = $EnterMarketLabel
 @onready var access_crafting_station: Label = $AccessCraftingStation
+@onready var canvas_layer: CanvasLayer = $CanvasLayer
 
 var player_in_tower_range : bool = false
 var player_in_market_range : bool = false
@@ -35,7 +36,9 @@ func _ready() -> void:
 	super()
 	SignalBus.spawn_tech_tree.connect(add_tech_tree_to_scene)
 	SignalBus.issue_can_craft_sword_scene.connect(new_sword_unlock_notice)
+	SignalBus.hide_tech_tree_canvas_layer.connect(hide_tech_tree_canvas_layer)
 	TechTreeManager.unlock_station.connect(unlock_station)
+
 	TechTreeManager.update_currency_label.emit()
 	CookingManager.can_craft_bar.emit()
 	hud.animation_player.play("CloseIn")
@@ -88,9 +91,13 @@ func _process(delta: float) -> void:
 		spawn_dojo_menu()
 
 func add_tech_tree_to_scene() -> void:
+	canvas_layer.show()
 	player.velocity = Vector2.ZERO
 	var tech_tree : TechTree = preload("uid://b7n3fwd3y85wp").instantiate()
 	sub_viewport.add_child(tech_tree)
+
+func hide_tech_tree_canvas_layer() -> void:
+	canvas_layer.hide()
 
 func set_guide_log(show_log : bool) -> void:
 	if show_log:
@@ -124,26 +131,32 @@ func go_to_test_floor() -> void:
 	get_tree().change_scene_to_file("res://src/Scenes/Tower/TowerFloors/Biome1/Floor1-1.tscn")
 
 func spawn_tower_entrance_map() -> void:
+	canvas_layer.show()
 	var tower_entrance_map : TowerEntranceMap = preload("uid://bgurt44iah13x").instantiate()
 	control.add_child(tower_entrance_map)
 
 func spawn_grand_market() -> void:
+	canvas_layer.show()
 	var market : GrandMarketMenu = preload("uid://cfuw5h0apwpq").instantiate()
 	control.add_child(market)
 
 func spawn_cooking_menu() -> void:
+	canvas_layer.show()
 	var cooking_range : CookingMenu = preload("uid://cotvjq5dygv7p").instantiate()
 	control.add_child(cooking_range)
 
 func spawn_smelting_menu() -> void:
+	canvas_layer.show()
 	var smelting_station : SmeltingMenu = preload("uid://dtf6m65mtihb8").instantiate()
 	control.add_child(smelting_station)
 
 func spawn_crafting_menu() -> void:
+	canvas_layer.show()
 	var sword_crafting_station : CraftingStationMenu = preload("uid://cc1xppx3tkq4f").instantiate()
 	control.add_child(sword_crafting_station)
 	
 func spawn_dojo_menu() -> void:
+	canvas_layer.show()
 	var class_selection_menu : ClassSelectionMenu = preload("uid://b404uvbhnmjxd").instantiate()
 	control.add_child(class_selection_menu)
 	
@@ -191,9 +204,9 @@ func _on_crafting_station_area_body_entered(body: Node2D) -> void:
 		access_sword_crafting_station.show()
 
 func _on_crafting_station_area_body_exited(body: Node2D) -> void:
-		if body is Player:
-			player_in_crafting_range = false
-			access_sword_crafting_station.hide()
+	if body is Player:
+		player_in_crafting_range = false
+		access_sword_crafting_station.hide()
 
 func unlock_cooking_station() -> void:
 	camera.player = null

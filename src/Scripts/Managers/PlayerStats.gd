@@ -198,7 +198,7 @@ func upgrade_player_stat(stat_name : String, interval : float, node_type : TechT
 	else:
 		player_stats[stat_name] += interval
 		
-	InventoryManager.update_inventory_bag.emit()
+	InventoryManager.update_inventory_bag.emit("Novelty Items")
 	TechTreeManager.update_player_stats.emit()
 
 func check_needed_for_dojo() -> bool:

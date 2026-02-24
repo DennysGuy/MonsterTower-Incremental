@@ -21,7 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://c8ov03gkkda4k" path="res://src/Scenes/PlayerCamera.tscn" id="9_w4dci"]
 [ext_resource type="PackedScene" uid="uid://colj4ff1w8ij1" path="res://src/Scenes/Tower/OreRock.tscn" id="10_n7xsw"]
 [ext_resource type="PackedScene" uid="uid://c6tv3t1cpeq8f" path="res://src/Scenes/PlayerSpawnPoint.tscn" id="10_ucoej"]
-[ext_resource type="Resource" uid="uid://dxfrcyw0rux0q" path="res://src/Resources/TinOreRock.tres" id="11_qrx52"]
+[ext_resource type="Resource" uid="uid://dxfrcyw0rux0q" path="res://src/Resources/OreRock/TinOreRock.tres" id="11_qrx52"]
 [ext_resource type="PackedScene" uid="uid://cr6q5dxlkks" path="res://src/Scenes/Tower/LadderArea.tscn" id="12_61350"]
 [ext_resource type="PackedScene" uid="uid://crf0fypg7rf6a" path="res://src/Scenes/MonsterSpawnArea.tscn" id="13_jxry2"]
 [ext_resource type="PackedScene" uid="uid://bethw5tnlxnnt" path="res://src/Scenes/Actors/Enemies/CorruptedMushie/CorruptedMushie.tscn" id="14_gi03k"]

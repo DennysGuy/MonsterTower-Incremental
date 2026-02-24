@@ -95,3 +95,7 @@ signal show_class_notice
 signal set_icons
 @warning_ignore("unused_signal")
 signal play_sfx(audio_stream : AudioStream)
+@warning_ignore("unused_signal")
+signal hide_tech_tree_canvas_layer
+@warning_ignore("unused_signal")
+signal stop_player

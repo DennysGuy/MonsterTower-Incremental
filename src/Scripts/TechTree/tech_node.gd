@@ -248,7 +248,18 @@ func has_resource_quantity() -> bool:
 
 	for resource in tech_node_stats.materials_required:
 		for item in resource.keys():
-			if InventoryManager.get_quantity(item) < resource[item]:
-				return false
-
+			match item.item_type:
+				item.ITEM_TYPE.CRAFTING:
+					if InventoryManager.get_quantity(item, "Crafting Items") < resource[item]:
+						return false
+				item.ITEM_TYPE.COOKING:
+					if InventoryManager.get_quantity(item, "Cooking Items") < resource[item]:
+						return false
+				item.ITEM_TYPE.ORE:
+					if InventoryManager.get_quantity(item, "Ore") < resource[item]:
+						return false
+				item.ITEM_TYPE.USE:
+					if InventoryManager.get_quantity(item, "Use") < resource[item]:
+						return false
+		
 	return true

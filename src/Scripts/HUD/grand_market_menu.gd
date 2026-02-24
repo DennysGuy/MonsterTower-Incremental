@@ -115,6 +115,7 @@ func close_out() -> void:
 	GameManager.can_pause_game = true
 	CookingManager.can_craft_bar.emit()
 	CookingManager.can_craft_dish.emit()
+	SignalBus.hide_tech_tree_canvas_layer.emit()
 	queue_free()	
 
 func init_market() -> void:

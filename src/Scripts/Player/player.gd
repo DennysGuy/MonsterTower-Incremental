@@ -67,6 +67,7 @@ func _ready() -> void:
 	super()
 	SignalBus.update_sword_texture.connect(set_sword_texture)
 	SignalBus.update_player_uniform.connect(set_outfit_texture)
+	SignalBus.stop_player.connect(stop_player)
 	health = PlayerStats.player_stats["Max Health"]
 	mining_area_position = mining_area.position
 	hit_box_position = hit_box.position
@@ -123,6 +124,8 @@ func clear_sprites() -> void:
 	animation_player.stop()
 	for cur_sprite in sprites.get_children():
 		cur_sprite.texture = null
+func stop_player() -> void:
+	velocity = Vector2.ZERO
 
 func issue_attack(selected_hit_box : HitBox, multiplier : float = 1.0, ability : Ability = null) -> void:
 	var enemies_in_range = selected_hit_box.get_overlapping_areas()

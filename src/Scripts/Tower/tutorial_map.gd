@@ -4,13 +4,14 @@ class_name TutorialMap extends Map
 var can_enter_tower : bool = false
 
 @onready var sub_viewport: SubViewport = $CanvasLayer/SubViewportContainer/SubViewport
+@onready var canvas_layer: CanvasLayer = $CanvasLayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super()
 	hud.animation_player.play("CloseIn")
 	SignalBus.spawn_tech_tree.connect(add_tech_tree_to_scene)
-
+	SignalBus.hide_tech_tree_canvas_layer.connect(hide_tech_tree_canvas_layer)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -46,5 +47,9 @@ func go_to_first_floor() -> void:
 	get_tree().change_scene_to_file("res://src/Scenes/Tower/TowerFloors/Biome1/Floor1-1.tscn")
 
 func add_tech_tree_to_scene() -> void:
+	canvas_layer.show()
 	var tech_tree : TechTree = preload("uid://b7n3fwd3y85wp").instantiate()
 	sub_viewport.add_child(tech_tree)
+
+func hide_tech_tree_canvas_layer() -> void:
+	canvas_layer.hide()

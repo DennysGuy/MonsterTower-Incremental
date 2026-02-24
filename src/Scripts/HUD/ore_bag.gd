@@ -24,8 +24,8 @@ func update_grid_container() -> void:
 	for num in range(InventoryManager.get_max_bag_slots("Ore Bag")):
 		var slot : ItemSlot = preload("uid://d0s6j8mvikv8c").instantiate()
 		var potential_item
-		if num < InventoryManager.inventories["Ore Inventory"].size():
-			potential_item = InventoryManager.inventories["Ore Inventory"][num]
+		if num < InventoryManager.inventories["Ore"].size():
+			potential_item = InventoryManager.inventories["Ore"][num]
 			
 		if potential_item:
 			slot.item = potential_item["item"]
@@ -38,7 +38,7 @@ func update_grid_container() -> void:
 	check_if_bag_full()
 
 func check_if_bag_full() -> void:
-	if InventoryManager.check_if_inventory_full("Ore Inventory", "Ore Bag", "Max Ore Bag Stack"):
+	if InventoryManager.check_if_inventory_full("Ore", "Bag", "Max Ore Bag Stack"):
 		show_bag_full()
 	else:
 		hide_bag_full()
