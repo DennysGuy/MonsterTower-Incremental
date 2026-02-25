@@ -1937,8 +1937,6 @@ attack2_state = NodePath("../Attack2")
 idle_state = NodePath("../Idle")
 jump_state = NodePath("../Jump")
 swing_sfx = ExtResource("12_vhxh4")
-attack_friction = 400.0
-max_attack_drift = 200.0
 animation_name = "SwordSwing1"
 animation_duration = 0.45
 

@@ -14,10 +14,6 @@ func apply_physics(_delta : float) -> State:
 	#parent.issue_attack(parent.dash_attack_hit_box)
 	parent.velocity.x = PlayerStats.player_stats["Dash Speed"] * GameManager.set_player_box_direction(parent.sprite.flip_h)
 	
-	if parent.attack_buffer_timer > 0:
-		parent.attack_buffer_timer = 0
-		return parent.attack_1
-	
 	return null
 
 func on_exiting_dash() -> void:

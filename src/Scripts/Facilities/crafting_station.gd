@@ -32,6 +32,9 @@ enum STATION_TYPE {COOKING, SMELTING}
 @export var state_machine : StateMachine
 @export var idle_state : State
 @export var crafting_state : State
+@onready var selected_tab_label: Label = $SelectedTabLabel
+
+var selected_tab : String
 
 var is_crafting : bool = false
 var selected_tier : int = 1
@@ -48,6 +51,9 @@ const SUCCESS = preload("uid://dj3e1mi4ks8sr")
 @onready var bank_notice: Label = $BankNotice
 @onready var sfx_player: SFXPlayer = $SfxPlayer
 
+@onready var resource_tab_label: Label = $ResourceTab/ResourceTabLabel
+@onready var item_added_label: TextureRect = $ItemAddedLabel
+@onready var item_removed_label: TextureRect = $ItemRemovedLabel
 
 var show_can_craft_next_sword_scene : bool = false
 
@@ -204,10 +210,35 @@ func update_inventories() -> void:
 		bank_notice.show()
 	
 	if station_type == STATION_TYPE.COOKING:
-		InventoryManager.update_grid_container(inventory_container,"Inventory",false )
+		resource_tab_label.text = "Cooking"
+		InventoryManager.update_grid_container(inventory_container,"Cooking Items",false )
 	elif station_type == STATION_TYPE.SMELTING:
-		InventoryManager.update_grid_container(inventory_container,"Ore Inventory",false )
+		resource_tab_label.text = "Ore"
+		InventoryManager.update_grid_container(inventory_container,"Ore",false )
+
+	selected_tab = "Resource"
 
 func clear_menu_item_container() -> void:
 	InventoryManager.clear_grid_container(recipes_container)
 	InventoryManager.clear_grid_container(ingredients_container)
+
+func switch_to_use_tab() -> void:
+	selected_tab = "Use"
+	selected_tab_label.text = "Tab - Use"
+	InventoryManager.update_grid_container(inventory_container, "Use")
+
+func _on_resource_tab_button_up() -> void:
+	if station_type == STATION_TYPE.COOKING:
+		selected_tab_label.text = "Tab - Cooking"
+		InventoryManager.update_grid_container(inventory_container, "Cooking Items")
+	elif station_type == STATION_TYPE.SMELTING:
+		selected_tab_label.text = "Tab - Ore"
+		InventoryManager.update_grid_container(inventory_container, "Ore")
+	item_removed_label.hide()
+	selected_tab = "Resource"
+
+func _on_use_tab_button_up() -> void:
+	selected_tab_label.text = "Tab - Use"
+	InventoryManager.update_grid_container(inventory_container, "Use")
+	item_added_label.hide()
+	selected_tab = "Use"

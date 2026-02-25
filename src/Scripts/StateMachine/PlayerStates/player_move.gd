@@ -24,6 +24,7 @@ func enter() -> void:
 	parent.sfx_player.play_sfx(move_sfx)
 
 func exit() -> void:
+	parent.stop_player()
 	parent.sfx_player.stop()
 
 func process_input(_event: InputEvent) -> State:
@@ -47,6 +48,8 @@ func process_physics(_delta: float) -> State:
 		return special_attack
 
 	if Input.is_action_just_pressed("swing_sword"):
+		parent.attack_friction = 400
+		parent.max_attack_drift = 200
 		return attack_1_state
 
 	var input := Input.get_axis("pan_cam_left", "pan_cam_right")

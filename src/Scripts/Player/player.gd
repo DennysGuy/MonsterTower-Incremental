@@ -26,6 +26,8 @@ class_name Player extends Entity
 
 @onready var sword_soar_hit_box: HitBox = $SwordSoarHitBox
 
+@export var attack_friction : float = 2600.0
+@export var max_attack_drift : float = 220.0
 
 var stored_ladder : LadderArea
 var stored_enemy : Enemy

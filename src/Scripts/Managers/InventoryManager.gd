@@ -159,16 +159,17 @@ func clear_bag() -> void:
 		
 	SaveManager.save_inventories()
 
-##TODO: Rewrite to remove from all inventories
 func remove_resources_from_inventory(recipe_list : Array[Dictionary]) -> void:
 	for item in recipe_list:
 		for resource in item.keys():
 			var remaining : int = item[resource]
 			
 			while remaining > 0:
-				if remove_item("Inventory", resource):
+				if remove_item("Cooking Items", resource):
 					remaining -= 1
-				elif remove_item("Ore Inventory", resource):
+				elif remove_item("Crafting Items", resource):
+					remaining -= 1
+				elif remove_item("Ore", resource):
 					remaining -= 1
 				elif remove_item("Bank", resource):
 					remaining -= 1
@@ -261,9 +262,6 @@ func update_grid_container(grid_container : GridContainer, inventory : String, i
 		
 		if inventory == "Bank":
 			slot.set_locale_as_bank()
-		elif inventory == "Ore Inventory":
-			slot.set_locale_as_ore_bag()
-		
 		
 		var potential_item
 		if num < InventoryManager.inventories[inventory].size():

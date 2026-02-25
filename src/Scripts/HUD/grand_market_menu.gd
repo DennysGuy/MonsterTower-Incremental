@@ -26,7 +26,7 @@ const ITEM_SLOT_CRAFTING = preload("uid://dbe6piv0wn7lq")
 const ITEM_SLOT_NA = preload("uid://blepqdi1qq7bf")
 const ITEM_SLOT_NOVELTY = preload("uid://x2hshpeeawjm")
 
-@onready var ore_bag_label: Label = $OreBagLabel
+@onready var inventory_label: Label = $InventoryLabel
 
 var selling_all : bool = false
 var selling_novelties : bool = false
@@ -55,46 +55,32 @@ func populate_details_panel(item : Item, slot_location : String) -> void:
 		item_title.text = selected_item.item_name
 		description.text = item.description
 		value.text = "Value: %s" % [item.sell_value]
-		if item is EnemyDrop:
-			match item.item_type:
-				item.ITEM_TYPE.COOKING:
-					indicator.texture = ITEM_SLOT_COOKING
-				item.ITEM_TYPE.NOVELTY:
-					indicator.texture = ITEM_SLOT_NOVELTY
-				item.ITEM_TYPE.CRAFTING:
-					indicator.texture = ITEM_SLOT_CRAFTING
-		else:
-			indicator.texture = ITEM_SLOT_NA
-		
-		
-		description.text = item.description
 
-func _on_sell_all_button_button_up() -> void:	
-	if selling_all:
-		return
-	else:
-		selling_all = true
-	await sell_all_items(inventory_container, "Inventory")
-	await sell_all_items(bank_container, "Bank")
-	await sell_all_items(ore_inventory_container, "Ore Inventory")
-	selling_all = false
+		match item.item_type:
+			item.ITEM_TYPE.COOKING:
+				indicator.texture = ITEM_SLOT_COOKING
+			item.ITEM_TYPE.NOVELTY:
+				indicator.texture = ITEM_SLOT_NOVELTY
+			item.ITEM_TYPE.CRAFTING:
+				indicator.texture = ITEM_SLOT_CRAFTING
+			_:
+				indicator.texture = ITEM_SLOT_NA
+
+		description.text = item.description
 
 func _on_sell_button_button_up() -> void:
 	if InventoryManager.remove_item(selected_inventory, selected_item):
 		sfx_player.play_sfx(SELL_ITEM)
 		TechTreeManager.currency += selected_item.sell_value
-		match selected_inventory:
-			"Bank":
-				InventoryManager.update_grid_container(bank_container, selected_inventory)
-			"Inventory":
-				InventoryManager.update_grid_container(inventory_container, selected_inventory)
-			"Ore Inventory":
-				InventoryManager.update_grid_container(ore_inventory_container, selected_inventory)
-		
+		if selected_inventory == "Bank":
+			InventoryManager.update_grid_container(bank_container, "Bank")
+		else:
+			InventoryManager.update_grid_container(inventory_container, selected_inventory)
+				
 		SaveManager.save_tech_tree_data()		
 		currency.text = "Currency: %s" % [TechTreeManager.currency]
 		TechTreeManager.update_currency_label.emit()
-		if !InventoryManager.search_item("Inventory", selected_item) and !InventoryManager.search_item("Bank", selected_item) and !InventoryManager.search_item("Ore Inventory", selected_item):
+		if !InventoryManager.search_item(selected_inventory, selected_item) and !InventoryManager.search_item("Bank", selected_item):
 			clear_details()
 	else:
 		clear_details()
@@ -120,20 +106,17 @@ func close_out() -> void:
 
 func init_market() -> void:
 	clear_details()
+	selected_inventory = "Novelty Items"
+	inventory_label.text = selected_inventory
 	currency.text = "Currency: %s" % [TechTreeManager.currency]
-	InventoryManager.update_grid_container(inventory_container, "Inventory")
-	if PlayerStats.facilities_unlocked["Refinery Station"]:
-		ore_bag_label.show()
-		InventoryManager.update_grid_container(ore_inventory_container, "Ore Inventory")
-		
+	InventoryManager.update_grid_container(inventory_container, selected_inventory)
+
+
 	if PlayerStats.facilities_unlocked["Bank"]:
-		sell_all_button.show()
 		InventoryManager.update_grid_container(bank_container, "Bank")
 	else:
 		bank_notice.show()
-		
-		
-	
+
 func sell_all_items(container : GridContainer, inventory_name : String) -> void:
 	var inventory : Array = InventoryManager.inventories[inventory_name]
 	
@@ -149,29 +132,42 @@ func sell_all_items(container : GridContainer, inventory_name : String) -> void:
 				SaveManager.save_tech_tree_data()
 				await get_tree().create_timer(0.1).timeout
 
-func sell_all_novelty_itmes(container: GridContainer, inventory_name : String) -> void:
-	var inventory : Array = InventoryManager.inventories[inventory_name]
-	
-	for slot in inventory:
-		if !slot["item"] is EnemyDrop:
-			continue
-		if !slot["item"].is_novelty():
-			continue
-		for i in range(slot["quantity"]):
-			InventoryManager.remove_item(inventory_name, slot["item"])
-			TechTreeManager.currency += slot["item"].sell_value
-			TechTreeManager.update_currency_label.emit()
-			InventoryManager.update_grid_container(container, inventory_name)
-			currency.text = "Currency: %s" % [TechTreeManager.currency]
-			sfx_player.play_sfx(SELL_ITEM)
-			SaveManager.save_tech_tree_data()
-			await get_tree().create_timer(0.1).timeout
+
+func _on_sell_novelties_button_2_button_up() -> void:
+	sell_all_items(bank_container, "Bank")
 
 func _on_sell_novelties_button_button_up() -> void:
-	if selling_novelties:
-		return
-	else:
-		selling_novelties = true
-	await sell_all_novelty_itmes(inventory_container, "Inventory")
-	await sell_all_novelty_itmes(bank_container, "Bank")
-	selling_all = false
+	sell_all_items(inventory_container, selected_inventory)
+
+func _on_novelties_tab_button_up() -> void:
+	selected_inventory = "Novelty Items"
+	inventory_label.text = selected_inventory
+	InventoryManager.update_grid_container(inventory_container, selected_inventory)
+
+func _on_crafting_tab_button_up() -> void:
+	selected_inventory = "Crafting Items"
+	inventory_label.text = selected_inventory
+	InventoryManager.update_grid_container(inventory_container, selected_inventory)
+
+func _on_cooking_tab_button_up() -> void:
+	selected_inventory = "Cooking Items"
+	inventory_label.text = selected_inventory
+	InventoryManager.update_grid_container(inventory_container, selected_inventory)
+
+
+func _on_ore_tab_button_up() -> void:
+	selected_inventory = "Ore"
+	inventory_label.text = selected_inventory
+	InventoryManager.update_grid_container(inventory_container, selected_inventory)
+
+
+func _on_gem_stones_tab_button_up() -> void:
+	selected_inventory = "Gem Stones"
+	inventory_label.text = selected_inventory
+	InventoryManager.update_grid_container(inventory_container, selected_inventory)
+
+
+func _on_use_tab_button_up() -> void:
+	selected_inventory = "Use"
+	inventory_label.text = selected_inventory
+	InventoryManager.update_grid_container(inventory_container, selected_inventory)

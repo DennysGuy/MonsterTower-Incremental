@@ -436,7 +436,9 @@ horizontal_alignment = 2
 
 [node name="Bag" parent="PlayerHUD" unique_id=668700631 instance=ExtResource("6_g1bs5")]
 layout_mode = 1
+offset_left = -135.0
 offset_top = -380.0
+offset_right = 164.0
 offset_bottom = -194.5001
 
 [node name="MapeName" type="Label" parent="PlayerHUD" unique_id=727908015]
@@ -686,6 +688,7 @@ texture = ExtResource("12_fw5mt")
 stretch_mode = 2
 
 [node name="MaxSlotStack" type="Label" parent="PlayerHUD" unique_id=1064097603]
+visible = false
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0

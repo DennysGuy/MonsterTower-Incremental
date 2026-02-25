@@ -30,8 +30,7 @@ func exit() -> void:
 	#parent.ability_cool_down_timer.wait_time = PlayerStats.player_stats["Dash Cooldown"]
 	#parent.ability_cool_down_timer.start()
 	parent.clear_effect_texture()
-	parent.velocity = Vector2.ZERO
-	
+
 	#parent.can_dash_attack = false
 	
 func process_input(_event: InputEvent) -> State:
@@ -51,10 +50,12 @@ func process_physics(_delta: float) -> State:
 	if parent.timer.time_left <= 0:
 		if parent.attack_buffer_timer > 0:
 			parent.attack_buffer_timer = 0
+			parent.attack_friction = 1000
 			return attack_1
 		elif parent.jump_buffer_timer > 0:
 			parent.jump_buffer_timer = 0
 			return jump
+		parent.velocity = Vector2.ZERO
 		return idle_state
 	
 	parent.move_and_slide()

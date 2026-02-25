@@ -12,6 +12,7 @@ func _ready() -> void:
 	hud.animation_player.play("CloseIn")
 	SignalBus.spawn_tech_tree.connect(add_tech_tree_to_scene)
 	SignalBus.hide_tech_tree_canvas_layer.connect(hide_tech_tree_canvas_layer)
+	GameManager.player_can_move = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

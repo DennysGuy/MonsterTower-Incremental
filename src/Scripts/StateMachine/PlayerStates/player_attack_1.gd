@@ -7,8 +7,7 @@ class_name PlayerAttack1State extends State
 @export var swing_sfx : AudioStream
 
 # --- Attack movement tuning ---
-@export var attack_friction : float = 2600.0
-@export var max_attack_drift : float = 220.0
+
 var attack_velocity : float = 0.0
 
 var can_attack_cancel : bool = false
@@ -32,8 +31,8 @@ func enter() -> void:
 		attack_velocity = parent.velocity.x
 		attack_velocity = clamp(
 			attack_velocity,
-			-max_attack_drift,
-			max_attack_drift
+			-parent.max_attack_drift,
+			parent.max_attack_drift
 		)
 
 		parent.velocity.x = attack_velocity
@@ -63,7 +62,7 @@ func process_physics(_delta: float) -> State:
 	parent.velocity.x = move_toward(
 		parent.velocity.x,
 		0.0,
-		attack_friction * _delta
+		parent.attack_friction * _delta
 	)
 
 	parent.move_and_slide()
