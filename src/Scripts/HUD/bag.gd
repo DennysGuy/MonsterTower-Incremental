@@ -12,7 +12,17 @@ const BAG_FULL = preload("uid://bakwpx4g6fqth")
 @onready var description: Label = $TextureRect/Description
 @onready var inventory_name: Label = $TextureRect/InventoryName
 
+@onready var novelty_tab: TextureButton = $TextureRect/HBoxContainer/NoveltyTab
+@onready var crafting_tab: TextureButton = $TextureRect/HBoxContainer/CraftingTab
+@onready var cooking_tab: TextureButton = $TextureRect/HBoxContainer/CookingTab
+@onready var ore: TextureButton = $TextureRect/HBoxContainer/Ore
+@onready var gem_stone_tab: TextureButton = $TextureRect/HBoxContainer/GemStoneTab
+@onready var use_tab: TextureButton = $TextureRect/HBoxContainer/UseTab
+
+
+
 var selected_item : Item
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -26,6 +36,7 @@ func _process(delta: float) -> void:
 
 
 func init_bag() -> void:
+	init_tabs()
 	item_icon.texture = null
 	gold_count.text = str(TechTreeManager.currency)
 	update_grid_container("Novelty Items")
@@ -69,6 +80,26 @@ func show_bag_full() -> void:
 func hide_bag_full() -> void:
 	bag_full.hide()
 
+func init_tabs() -> void:
+	
+	if PlayerStats.facilities_unlocked["Crafting Tab"]:
+		crafting_tab.show()
+	else:
+		crafting_tab.hide()
+	
+	if PlayerStats.facilities_unlocked["Cooking Station"]:
+		cooking_tab.show()
+		use_tab.show()
+	else:
+		cooking_tab.hide()
+		use_tab.hide()
+		
+	if PlayerStats.facilities_unlocked["Refinery Station"]:
+		ore.show()
+		use_tab.show()
+	else:
+		ore.hide()
+		use_tab.hide()
 
 func _on_novelty_tab_button_up() -> void:
 	update_grid_container("Novelty Items")

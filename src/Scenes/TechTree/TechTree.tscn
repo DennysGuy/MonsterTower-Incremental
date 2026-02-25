@@ -150,6 +150,7 @@ width = 3.0
 [node name="ItemBag1" parent="Nodes" unique_id=1374435227 instance=ExtResource("5_2ltmf")]
 position = Vector2(513, 451)
 tech_node_stats = ExtResource("16_yexi2")
+node_type = 1
 
 [node name="Line2D" type="Line2D" parent="Nodes/ItemBag1" unique_id=2143241456]
 points = PackedVector2Array(116, -83, 8, -8)

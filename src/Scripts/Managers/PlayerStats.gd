@@ -79,6 +79,7 @@ func equip_ability(ability : Ability, position : String) -> void:
 	"Cooking Station" : false,
 	"Crafting Station" : false,
 	"Refinery Station" : false,
+	"Crafting Tab": false,
 	"Bank": false,
 	"Arial Slash" : false,
 	"Dash Attack": false,

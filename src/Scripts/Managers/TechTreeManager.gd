@@ -75,7 +75,7 @@ enum TECH_NODE_TYPE {ABILITY, FACILITY}
 	"Expedition Time 2": 0,
 	"Monster Cap 1": 0,
 	"Monster Cap 2": 0,
-	"Item Bag 1":0,
+	"Crafting Tab":0,
 	"Item Bag 2":0,
 	"Deeper Pockets 1":0,
 	"Deeper Pockets 2":0,

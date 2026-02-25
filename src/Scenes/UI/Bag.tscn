@@ -110,9 +110,9 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -105.0
+offset_left = -142.0
 offset_top = 3.0
-offset_right = 105.0
+offset_right = 147.0
 offset_bottom = 24.0
 grow_horizontal = 2
 theme_override_constants/separation = 0
@@ -143,6 +143,7 @@ theme_override_font_sizes/font_size = 8
 text = "Novelty"
 
 [node name="CraftingTab" type="TextureButton" parent="TextureRect/HBoxContainer" unique_id=2018854568]
+visible = false
 layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("5_812es")
@@ -168,6 +169,7 @@ theme_override_font_sizes/font_size = 8
 text = "Crafting"
 
 [node name="CookingTab" type="TextureButton" parent="TextureRect/HBoxContainer" unique_id=1470094021]
+visible = false
 layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("5_812es")
@@ -193,6 +195,7 @@ theme_override_font_sizes/font_size = 8
 text = "Cooking"
 
 [node name="Ore" type="TextureButton" parent="TextureRect/HBoxContainer" unique_id=1342266733]
+visible = false
 layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("5_812es")
@@ -218,6 +221,7 @@ theme_override_font_sizes/font_size = 10
 text = "Ore"
 
 [node name="GemStoneTab" type="TextureButton" parent="TextureRect/HBoxContainer" unique_id=92484346]
+visible = false
 layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("5_812es")
@@ -243,6 +247,7 @@ theme_override_font_sizes/font_size = 10
 text = "Gem"
 
 [node name="UseTab" type="TextureButton" parent="TextureRect/HBoxContainer" unique_id=1269177708]
+visible = false
 layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("5_812es")

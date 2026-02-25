@@ -1,16 +1,18 @@
-[gd_resource type="Resource" script_class="TechNodeStats" load_steps=3 format=3 uid="uid://ivbqmo1636sm"]
+[gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://ivbqmo1636sm"]
 
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_5ehxb"]
 [ext_resource type="Texture2D" uid="uid://dix63priuogkk" path="res://Assets/NodeGraphics/NodeGraphicsV2/Bag1_V2.png" id="1_fhxuj"]
 
 [resource]
 script = ExtResource("1_5ehxb")
-node_name = "Item Bag 1"
+node_name = "Crafting Tab"
 icon = ExtResource("1_fhxuj")
-description = "Increase Item Bag slots to 2. 
+description = "Unlocks Crafting Tab in Bag!
+
 [color=red]Crafting items can now drop from enemies![/color]"
 currency_required = 100
-stat_name = "Bag"
+node_type = 1
+stat_name = "Crafting Tab"
 upgrade_interval = 1.0
 prereqs = Array[String](["Hunter License:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"
