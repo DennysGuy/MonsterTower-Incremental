@@ -14,6 +14,14 @@ class_name ExpeditionResultsScreen extends Control
 @onready var bank_container: GridContainer = $ResultsPanel/BankContainer
 @onready var tips_and_tricks: Label = $ResultsPanel/TipsAndTricks
 
+@onready var novelty_tab: TextureButton = $ResultsPanel/HBoxContainer/NoveltyTab
+@onready var crafting_tab: TextureButton = $ResultsPanel/HBoxContainer/CraftingTab
+@onready var cooking_tab: TextureButton = $ResultsPanel/HBoxContainer/CookingTab
+@onready var ore_tab: TextureButton = $ResultsPanel/HBoxContainer/OreTab
+@onready var gem_stone_tab: TextureButton = $ResultsPanel/HBoxContainer/GemStoneTab
+@onready var use_tab: TextureButton = $ResultsPanel/HBoxContainer/UseTab
+
+@onready var tabs : Array[TextureButton] = [novelty_tab,crafting_tab,cooking_tab,ore_tab,gem_stone_tab,use_tab]
 
 const TRANSFER_TO_BANK = preload("uid://ddk7o6mnyi7ji")
 const CLOSE_IN = preload("uid://dc3va7knibxnb")
@@ -36,6 +44,7 @@ var tips : Array[String] = [
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	init_containers()
+	init_tabs()
 	animation_player.play("CloseOut")
 	tips_and_tricks.text = tips.pick_random()
 	floor_reached.text = "%s %s" %[GameManager.previous_map_data.biome, GameManager.previous_map_data.floor_name]
@@ -64,6 +73,14 @@ func _on_to_town_button_up() -> void:
 func _on_new_run_button_up() -> void:
 	animation_player.play("CloseIn_Tower")
 
+func disable_tabs() -> void:
+	for tab in tabs:
+		tab.disabled = true
+
+func enable_tabs() -> void:
+	for tab in tabs:
+		tab.disabled = false
+
 func init_containers() -> void:
 	InventoryManager.update_grid_container(inventory_container, "Novelty Items")
 	
@@ -74,14 +91,40 @@ func init_containers() -> void:
 		to_town.disabled = false
 		bank_notice.show()
 
+func init_tabs() -> void:
+	if PlayerStats.facilities_unlocked["Crafting Tab"]:
+		novelty_tab.show()
+		crafting_tab.show()
+	else:
+		novelty_tab.hide()
+		crafting_tab.hide()
+	
+	if PlayerStats.facilities_unlocked["Cooking Station"]:
+		cooking_tab.show()
+		use_tab.show()
+	else:
+		cooking_tab.hide()
+		use_tab.hide()
+		
+	if PlayerStats.facilities_unlocked["Refinery Station"]:
+		ore_tab.show()
+		use_tab.show()
+	else:
+		ore_tab.hide()
+		use_tab.hide()
+
 func move_inventory_to_bank() -> void:
 	var inventory_names : Array[String] = ["Novelty Items", "Crafting Items", "Cooking Items", "Ore", "Gem Stones", "Use"]
+	disable_tabs()
 	
 	for name in inventory_names:
 		await transfer_tab_to_bank(name)
+		await get_tree().create_timer(0.3).timeout
 	
+	enable_tabs()
 	to_town.disabled = false
 	new_run.disabled = false
+
 
 func transfer_tab_to_bank(tab_name : String) -> void:
 	transfering_tab_label.text = "Tranfering %s to Bank..." % tab_name
@@ -105,3 +148,26 @@ func play_close_out_sfx() -> void:
 func play_close_in_sfx() -> void:
 	MusicPlayer.stop_player(true)
 	sfx_player.play_sfx(CLOSE_IN)
+
+
+func _on_novelty_tab_button_up() -> void:
+	InventoryManager.update_grid_container(inventory_container, "Novelty Items")
+
+
+func _on_crafting_tab_button_up() -> void:
+	InventoryManager.update_grid_container(inventory_container, "Crafting Items")
+
+
+func _on_cooking_tab_button_up() -> void:
+	InventoryManager.update_grid_container(inventory_container, "Cooking Items")
+
+func _on_ore_tab_button_up() -> void:
+	InventoryManager.update_grid_container(inventory_container, "Ore")
+
+
+func _on_gem_stone_tab_button_up() -> void:
+	InventoryManager.update_grid_container(inventory_container, "Gem Stones")
+
+
+func _on_use_tab_button_up() -> void:
+	InventoryManager.update_grid_container(inventory_container, "Use")

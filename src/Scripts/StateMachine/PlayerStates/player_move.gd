@@ -24,7 +24,6 @@ func enter() -> void:
 	parent.sfx_player.play_sfx(move_sfx)
 
 func exit() -> void:
-	parent.stop_player()
 	parent.sfx_player.stop()
 
 func process_input(_event: InputEvent) -> State:
@@ -99,6 +98,7 @@ func process_physics(_delta: float) -> State:
 		return fall_state
 
 	if abs(parent.velocity.x) < 5.0:
+		parent.stop_player()
 		return idle_state
 
 	return null

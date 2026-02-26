@@ -14,6 +14,9 @@ func check_for_level_up() -> void:
 		PlayerStats.player_stats["Current XP"] = (PlayerStats.player_stats["Current XP"]-PlayerStats.player_stats["Needed XP"])
 		#increase player level
 		PlayerStats.player_stats["Level"] += 1
+		#reward 1 AP point 
+		PlayerStats.player_stats["Ability Points"] += 1
+		SignalBus.show_class_notice.emit()
 		#Update Needed XP
 		PlayerStats.player_stats["Needed XP"] = xp_formula()
 		#play level up sfx

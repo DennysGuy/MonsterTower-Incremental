@@ -26,7 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://icxc8mi1q1w4" path="res://src/Scenes/NewStarshire/Facilities/SwordCraftingStation.tscn" id="21_bl45m"]
 [ext_resource type="PackedScene" uid="uid://mwttdrt2cg71" path="res://src/Scenes/Players/ambience_player.tscn" id="23_5xris"]
 [ext_resource type="Texture2D" uid="uid://c46te1sv6peeo" path="res://Assets/Facilities/Dojo.png" id="25_nj75w"]
-[ext_resource type="PackedScene" uid="uid://bke0eai7lf61j" path="res://src/Scenes/NewStarshire/NeededUnlocks.tscn" id="26_d6jc3"]
+[ext_resource type="Texture2D" uid="uid://3n5w5v2q7e23" path="res://Assets/HUD/NewNoticeIcon.png" id="26_d6jc3"]
 [ext_resource type="Texture2D" uid="uid://14re4sr2xv7s" path="res://Assets/WelcomSign.png" id="26_ejo2t"]
 [ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="27_e7ku4"]
 [ext_resource type="Texture2D" uid="uid://cuwc34c0ympwf" path="res://Assets/DirectionSign.png" id="28_m7r5i"]
@@ -765,7 +765,7 @@ size = Vector2(168, 145)
 size = Vector2(22, 205)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nj75w"]
-size = Vector2(131, 76)
+size = Vector2(186, 76)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q74qd"]
 size = Vector2(117, 57)
@@ -1035,10 +1035,6 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(150, 595)
 texture = ExtResource("25_nj75w")
 
-[node name="NeededUnlocks" parent="Dojo" unique_id=1699330333 instance=ExtResource("26_d6jc3")]
-offset_top = -55.0
-offset_bottom = 25.0
-
 [node name="DojoAccessNotification" type="Label" parent="Dojo" unique_id=36395431]
 visible = false
 offset_left = -74.0
@@ -1053,7 +1049,7 @@ text = "Reach level 10 to access"
 [node name="DojoArea" type="Area2D" parent="Dojo" unique_id=1544644604]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Dojo/DojoArea" unique_id=495218201]
-position = Vector2(27.5, 23)
+position = Vector2(0, 23)
 shape = SubResource("RectangleShape2D_nj75w")
 
 [node name="NameTag" parent="Dojo" unique_id=169198128 instance=ExtResource("19_bl45m")]
@@ -1068,6 +1064,14 @@ offset_top = -1.0
 offset_right = 90.0
 offset_bottom = 11.0
 text = "Class Advance Center"
+
+[node name="APNotice" type="TextureRect" parent="Dojo" unique_id=2037915561]
+visible = false
+offset_left = -42.0
+offset_top = -48.0
+offset_right = 36.0
+offset_bottom = 20.0
+texture = ExtResource("26_d6jc3")
 
 [node name="CookingStationArea" type="Area2D" parent="." unique_id=1043683284]
 position = Vector2(505, 636)

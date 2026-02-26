@@ -349,6 +349,7 @@ grow_horizontal = 2
 theme_override_constants/separation = 0
 
 [node name="NoveltiesTab" type="TextureButton" parent="HBoxContainer" unique_id=1472460900]
+visible = false
 layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("8_pkou2")
@@ -367,6 +368,7 @@ theme_override_font_sizes/font_size = 6
 text = "Novelties"
 
 [node name="CraftingTab" type="TextureButton" parent="HBoxContainer" unique_id=472588845]
+visible = false
 layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("8_pkou2")
@@ -385,6 +387,7 @@ theme_override_font_sizes/font_size = 6
 text = "Crafting"
 
 [node name="CookingTab" type="TextureButton" parent="HBoxContainer" unique_id=1091205508]
+visible = false
 layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("8_pkou2")
@@ -403,6 +406,7 @@ theme_override_font_sizes/font_size = 6
 text = "Cooking"
 
 [node name="OreTab" type="TextureButton" parent="HBoxContainer" unique_id=392124376]
+visible = false
 layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("8_pkou2")
@@ -421,6 +425,7 @@ theme_override_font_sizes/font_size = 8
 text = "Ore"
 
 [node name="GemStonesTab" type="TextureButton" parent="HBoxContainer" unique_id=252733577]
+visible = false
 layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("8_pkou2")
@@ -441,6 +446,7 @@ text = "Gem
 Stones"
 
 [node name="UseTab" type="TextureButton" parent="HBoxContainer" unique_id=168834907]
+visible = false
 layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("8_pkou2")

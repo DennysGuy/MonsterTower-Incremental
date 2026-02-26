@@ -99,3 +99,6 @@ signal play_sfx(audio_stream : AudioStream)
 signal hide_tech_tree_canvas_layer
 @warning_ignore("unused_signal")
 signal stop_player
+
+@warning_ignore("unused_signal")
+signal spawn_class_selection_menu

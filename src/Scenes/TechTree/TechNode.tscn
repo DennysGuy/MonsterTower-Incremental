@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bhimqkbcn26r2"]
+[gd_scene format=3 uid="uid://bhimqkbcn26r2"]
 
 [ext_resource type="Script" uid="uid://bf6dj2em3y5l0" path="res://src/Scripts/TechTree/tech_node.gd" id="1_2bhwb"]
 [ext_resource type="Texture2D" uid="uid://bq14rlsnw3mdh" path="res://Assets/NodeGraphics/NodeBaseEnabled_V2.png" id="2_l673o"]
@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://d0y4mpjou53tw" path="res://Assets/HUD/FacilitiesNotify.png" id="8_ojxq6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l673o"]
-size = Vector2(28, 28)
+size = Vector2(32, 30)
 
 [sub_resource type="Animation" id="Animation_l673o"]
 length = 0.001
@@ -97,35 +97,30 @@ _data = {
 &"clicked": SubResource("Animation_qmqu0")
 }
 
-[node name="TechNode" type="Node2D"]
+[node name="TechNode" type="Node2D" unique_id=310214223]
 script = ExtResource("1_2bhwb")
 
-[node name="BG" type="Sprite2D" parent="."]
-position = Vector2(-2, 0)
+[node name="BG" type="Sprite2D" parent="." unique_id=1116998811]
 texture = ExtResource("2_l673o")
 
-[node name="NodeFillV2" type="Sprite2D" parent="."]
+[node name="NodeFillV2" type="Sprite2D" parent="." unique_id=2014477750]
 position = Vector2(-2, 0)
 texture = ExtResource("3_cw315")
 
-[node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(-2, 0)
+[node name="Icon" type="Sprite2D" parent="." unique_id=1627255305]
 texture = ExtResource("3_0lniu")
 
-[node name="SfxPlayer" parent="." instance=ExtResource("5_nhb52")]
+[node name="SfxPlayer" parent="." unique_id=874693124 instance=ExtResource("5_nhb52")]
 
-[node name="ClickArea" parent="." instance=ExtResource("3_qmqu0")]
+[node name="ClickArea" parent="." unique_id=406455460 instance=ExtResource("3_qmqu0")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickArea"]
-position = Vector2(-2, 0)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickArea" unique_id=1196420149]
 shape = SubResource("RectangleShape2D_l673o")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_0lniu")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1790142653]
+libraries/ = SubResource("AnimationLibrary_0lniu")
 
-[node name="LevelLabel" type="RichTextLabel" parent="."]
+[node name="LevelLabel" type="RichTextLabel" parent="." unique_id=1701520186]
 z_index = 4096
 offset_left = -34.0
 offset_top = -31.0
@@ -137,7 +132,7 @@ bbcode_enabled = true
 text = "10/10"
 horizontal_alignment = 1
 
-[node name="FacilitiesNotify" type="Sprite2D" parent="."]
+[node name="FacilitiesNotify" type="Sprite2D" parent="." unique_id=959086529]
 visible = false
 position = Vector2(17.999998, 7.1054274e-15)
 scale = Vector2(0.60714287, 0.60714287)

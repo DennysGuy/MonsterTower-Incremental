@@ -7,6 +7,9 @@
 [ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="5_xwhdp"]
 [ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="7_ee4bn"]
 [ext_resource type="FontFile" uid="uid://qgj228ltdttv" path="res://Assets/Fonts/alagard.ttf" id="7_xwhdp"]
+[ext_resource type="Texture2D" uid="uid://fql6hkix8ti4" path="res://Assets/HUD/Bags/BagButton.png" id="8_ee4bn"]
+[ext_resource type="Texture2D" uid="uid://d1cbctq2fhe3k" path="res://Assets/HUD/Bags/BagButtonPressed.png" id="9_ra32m"]
+[ext_resource type="Texture2D" uid="uid://b05lg3tfu6n0b" path="res://Assets/HUD/Bags/BagButtonHover.png" id="10_34nn5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_47265"]
 shader = ExtResource("2_cbct7")
@@ -435,14 +438,15 @@ columns = 8
 
 [node name="TipsAndTricks" type="Label" parent="ResultsPanel" unique_id=586831154]
 layout_mode = 0
-offset_left = 219.0
-offset_top = 303.4997
-offset_right = 612.0
-offset_bottom = 326.4997
+offset_left = 29.0
+offset_top = 166.0
+offset_right = 216.0
+offset_bottom = 295.0
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("5_xwhdp")
 text = "Can't reach a ledge? Upgrade your jump!"
 horizontal_alignment = 1
+autowrap_mode = 3
 
 [node name="ToTown" type="Button" parent="ResultsPanel" unique_id=337593742]
 layout_mode = 1
@@ -484,6 +488,172 @@ theme_override_font_sizes/font_size = 12
 disabled = true
 text = "Go Again!"
 
+[node name="HBoxContainer" type="HBoxContainer" parent="ResultsPanel" unique_id=1137394488]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -84.0
+offset_top = -110.0
+offset_right = 121.0
+offset_bottom = -89.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = -1
+
+[node name="NoveltyTab" type="TextureButton" parent="ResultsPanel/HBoxContainer" unique_id=1041581857]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("8_ee4bn")
+texture_pressed = ExtResource("9_ra32m")
+texture_hover = ExtResource("10_34nn5")
+
+[node name="Label" type="Label" parent="ResultsPanel/HBoxContainer/NoveltyTab" unique_id=1138786018]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -11.0
+offset_top = -5.0
+offset_right = 13.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("5_xwhdp")
+theme_override_font_sizes/font_size = 7
+text = "Novelty"
+
+[node name="CraftingTab" type="TextureButton" parent="ResultsPanel/HBoxContainer" unique_id=62142403]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("8_ee4bn")
+texture_pressed = ExtResource("9_ra32m")
+texture_hover = ExtResource("10_34nn5")
+
+[node name="Label" type="Label" parent="ResultsPanel/HBoxContainer/CraftingTab" unique_id=591774238]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -13.0
+offset_top = -5.0
+offset_right = 11.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("5_xwhdp")
+theme_override_font_sizes/font_size = 7
+text = "Crafting"
+
+[node name="CookingTab" type="TextureButton" parent="ResultsPanel/HBoxContainer" unique_id=2044193608]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("8_ee4bn")
+texture_pressed = ExtResource("9_ra32m")
+texture_hover = ExtResource("10_34nn5")
+
+[node name="Label" type="Label" parent="ResultsPanel/HBoxContainer/CookingTab" unique_id=1648408375]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -11.0
+offset_top = -5.0
+offset_right = 13.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("5_xwhdp")
+theme_override_font_sizes/font_size = 7
+text = "Cooking"
+
+[node name="OreTab" type="TextureButton" parent="ResultsPanel/HBoxContainer" unique_id=1381135393]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("8_ee4bn")
+texture_pressed = ExtResource("9_ra32m")
+texture_hover = ExtResource("10_34nn5")
+
+[node name="Label" type="Label" parent="ResultsPanel/HBoxContainer/OreTab" unique_id=1379825789]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.5
+offset_top = -5.0
+offset_right = 4.5
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("5_xwhdp")
+theme_override_font_sizes/font_size = 8
+text = "Ore"
+
+[node name="GemStoneTab" type="TextureButton" parent="ResultsPanel/HBoxContainer" unique_id=742855887]
+visible = false
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("8_ee4bn")
+texture_pressed = ExtResource("9_ra32m")
+texture_hover = ExtResource("10_34nn5")
+
+[node name="Label" type="Label" parent="ResultsPanel/HBoxContainer/GemStoneTab" unique_id=2064547309]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.0
+offset_top = -3.0
+offset_right = 11.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("5_xwhdp")
+theme_override_font_sizes/font_size = 5
+text = "Gem Stones"
+
+[node name="UseTab" type="TextureButton" parent="ResultsPanel/HBoxContainer" unique_id=1052490956]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("8_ee4bn")
+texture_pressed = ExtResource("9_ra32m")
+texture_hover = ExtResource("10_34nn5")
+
+[node name="Label" type="Label" parent="ResultsPanel/HBoxContainer/UseTab" unique_id=648701713]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -7.0
+offset_top = -5.5
+offset_right = 7.0
+offset_bottom = 5.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("5_xwhdp")
+theme_override_font_sizes/font_size = 10
+text = "Use"
+
 [node name="TopRect" type="ColorRect" parent="." unique_id=785934542]
 layout_mode = 1
 anchors_preset = 15
@@ -513,3 +683,9 @@ libraries/ = SubResource("AnimationLibrary_ra32m")
 
 [connection signal="button_up" from="ResultsPanel/ToTown" to="." method="_on_to_town_button_up"]
 [connection signal="button_up" from="ResultsPanel/NewRun" to="." method="_on_new_run_button_up"]
+[connection signal="button_up" from="ResultsPanel/HBoxContainer/NoveltyTab" to="." method="_on_novelty_tab_button_up"]
+[connection signal="button_up" from="ResultsPanel/HBoxContainer/CraftingTab" to="." method="_on_crafting_tab_button_up"]
+[connection signal="button_up" from="ResultsPanel/HBoxContainer/CookingTab" to="." method="_on_cooking_tab_button_up"]
+[connection signal="button_up" from="ResultsPanel/HBoxContainer/OreTab" to="." method="_on_ore_tab_button_up"]
+[connection signal="button_up" from="ResultsPanel/HBoxContainer/GemStoneTab" to="." method="_on_gem_stone_tab_button_up"]
+[connection signal="button_up" from="ResultsPanel/HBoxContainer/UseTab" to="." method="_on_use_tab_button_up"]

@@ -26,6 +26,7 @@ var player_in_dojo_range : bool = false
 @onready var temp_cooking_range: CookingRangeGraphic = $TempCookingRange
 @onready var temp_smelting_station: SmeltingStationGraphic = $TempSmeltingStation
 @onready var dojo_access_notification: Label = $Dojo/DojoAccessNotification
+@onready var ap_notice: TextureRect = $Dojo/APNotice
 
 const CRAFT_SWORD = preload("uid://4c6l1w0kpar3")
 const UNLOCK_SHOP = preload("uid://cveiqvxm5r0yw")
@@ -37,6 +38,7 @@ func _ready() -> void:
 	SignalBus.spawn_tech_tree.connect(add_tech_tree_to_scene)
 	SignalBus.issue_can_craft_sword_scene.connect(new_sword_unlock_notice)
 	SignalBus.hide_tech_tree_canvas_layer.connect(hide_tech_tree_canvas_layer)
+	SignalBus.spawn_class_selection_menu.connect(spawn_dojo_menu)
 	TechTreeManager.unlock_station.connect(unlock_station)
 
 	TechTreeManager.update_currency_label.emit()
@@ -52,6 +54,10 @@ func _ready() -> void:
 	else:
 		SignalBus.hide_can_craft_sword.emit()
 	
+	if PlayerStats.player_stats["Ability Points"] >= 1:
+		SignalBus.show_class_notice.emit()
+		ap_notice.show()
+	
 	await get_tree().process_frame
 	SignalBus.update_player_health.emit(player.health)
 	PlayerStats.player_stats["Current MP"] = PlayerStats.player_stats["Max MP"]
@@ -62,9 +68,10 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	super(delta)
 	if Input.is_action_just_pressed("interact") and player_in_tower_range and GameManager.player_can_move and PlayerStats.facilities_unlocked["Hunter License"]:
-		spawn_tower_entrance_map() #need to check how many checkpoints unlocked
+		GameManager.player_can_move = false
+		player.velocity = Vector2.ZERO
+		spawn_tower_entrance_map()
 
-			
 	if Input.is_action_just_pressed("interact") and player_in_market_range and GameManager.player_can_move:
 		GameManager.player_can_move = false
 		player.velocity = Vector2.ZERO
@@ -85,10 +92,11 @@ func _process(delta: float) -> void:
 		player.velocity = Vector2.ZERO
 		spawn_crafting_menu()
 
-	if Input.is_action_just_pressed("interact") and player_in_dojo_range and PlayerStats.check_level_for_dojo():
+	if Input.is_action_just_pressed("interact") and player_in_dojo_range:
 		GameManager.player_can_move = false
 		player.velocity = Vector2.ZERO
-		spawn_dojo_menu()
+		spawn_beginner_tree()
+		#spawn_dojo_menu()
 
 func add_tech_tree_to_scene() -> void:
 	canvas_layer.show()
@@ -154,7 +162,12 @@ func spawn_crafting_menu() -> void:
 	canvas_layer.show()
 	var sword_crafting_station : CraftingStationMenu = preload("uid://cc1xppx3tkq4f").instantiate()
 	control.add_child(sword_crafting_station)
-	
+
+func spawn_beginner_tree() -> void:
+	canvas_layer.show()
+	var beginner_ability_tree : BeginnerTechTree = preload("uid://y6ru08whvroa").instantiate()
+	sub_viewport.add_child(beginner_ability_tree)
+
 func spawn_dojo_menu() -> void:
 	canvas_layer.show()
 	var class_selection_menu : ClassSelectionMenu = preload("uid://b404uvbhnmjxd").instantiate()

@@ -41,6 +41,9 @@ const COUNTDOWN_BEEP = preload("uid://c6caiqmkt2lt0")
 
 @onready var open_bag_notice: Control = $PlayerHUD/OpenBagNotice
 
+@onready var bag: InventoryBag = $PlayerHUD/Bag
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	SignalBus.update_player_health.connect(update_player_health)
@@ -65,7 +68,6 @@ func _ready() -> void:
 	SignalBus.hide_can_craft_sword.connect(hide_can_craft_sword)
 	
 	SignalBus.show_hunt_challenge_button.connect(show_hunt_challenge_button)
-	SignalBus.show_bag_stats.connect(display_bag_stats)
 	
 	SignalBus.populate_item_notification_panel.connect(populate_pick_notification_panel)
 	
@@ -145,9 +147,13 @@ func show_bag() -> void:
 		InventoryManager.hide_open_bag_notice.emit()
 		SignalBus.stop_player.emit()
 		GameManager.player_can_move = false
+		bag.enable_tabs()
+		bag.update_bag()
+
 		bag_animation_player.play("ShowBag")
 	else:
 		GameManager.player_can_move = true
+		bag.disable_tabs()
 		bag_animation_player.play("HideBag")
 
 func start_expedition_timer() -> void:
@@ -196,8 +202,15 @@ func show_can_craft_sword() -> void:
 
 func show_class_notice() -> void:
 	var current_class : String = PlayerStats.player_stats["Class"] 
-	if current_class == "Junior Hunter" and PlayerStats.check_needed_for_dojo():
+	if current_class == "Junior Hunter" and PlayerStats.player_stats["Level"] >= 5:
+		class_notice.text = "Advance your class at the Class Advancement Center!"
 		class_notice.show()
+	elif PlayerStats.player_stats["Ability Points"] >= 1:
+		class_notice.text = "AP available to spend at the Class Advancement Center!"
+		class_notice.show()
+	else:
+		class_notice.hide()
+	
 
 
 func hide_can_cook_dish() -> void:
@@ -218,11 +231,6 @@ func remaining_monsters(text : String, out_of_enmies : bool) -> void:
 func start_timer() -> void:
 	pass
 
-func display_bag_stats() -> void:
-	bagslots.show()
-	max_slot_stack.show()
-	bagslots.text = "Bag Slots: %s" % PlayerStats.get_bag("Bag").max_slots
-	max_slot_stack.text = "Max Slot Stacks: %s" % int(PlayerStats.player_stats["Max Bag Stack"])
 
 func show_hunt_challenge_button() -> void:
 	start_hunt_challenge_button.show()

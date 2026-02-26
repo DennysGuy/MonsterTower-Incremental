@@ -124,7 +124,7 @@ texture_normal = ExtResource("5_812es")
 texture_pressed = ExtResource("6_b6v18")
 texture_hover = ExtResource("7_le8wj")
 
-[node name="Label" type="Label" parent="TextureRect/HBoxContainer/NoveltyTab" unique_id=67951163]
+[node name="NoveltyTabLabel" type="Label" parent="TextureRect/HBoxContainer/NoveltyTab" unique_id=67951163]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -150,7 +150,7 @@ texture_normal = ExtResource("5_812es")
 texture_pressed = ExtResource("5_s3gps")
 texture_hover = ExtResource("6_rvsgi")
 
-[node name="Label" type="Label" parent="TextureRect/HBoxContainer/CraftingTab" unique_id=479068163]
+[node name="CraftTabLabel" type="Label" parent="TextureRect/HBoxContainer/CraftingTab" unique_id=479068163]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -176,7 +176,7 @@ texture_normal = ExtResource("5_812es")
 texture_pressed = ExtResource("5_s3gps")
 texture_hover = ExtResource("6_rvsgi")
 
-[node name="Label" type="Label" parent="TextureRect/HBoxContainer/CookingTab" unique_id=803508441]
+[node name="CookingTabLabel" type="Label" parent="TextureRect/HBoxContainer/CookingTab" unique_id=803508441]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -202,7 +202,7 @@ texture_normal = ExtResource("5_812es")
 texture_pressed = ExtResource("5_s3gps")
 texture_hover = ExtResource("6_rvsgi")
 
-[node name="Label" type="Label" parent="TextureRect/HBoxContainer/Ore" unique_id=1476414682]
+[node name="OreTabLabel" type="Label" parent="TextureRect/HBoxContainer/Ore" unique_id=1476414682]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -228,7 +228,7 @@ texture_normal = ExtResource("5_812es")
 texture_pressed = ExtResource("5_s3gps")
 texture_hover = ExtResource("6_rvsgi")
 
-[node name="Label" type="Label" parent="TextureRect/HBoxContainer/GemStoneTab" unique_id=1404561356]
+[node name="GemStoneTabLabel" type="Label" parent="TextureRect/HBoxContainer/GemStoneTab" unique_id=1404561356]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -254,7 +254,7 @@ texture_normal = ExtResource("5_812es")
 texture_pressed = ExtResource("5_s3gps")
 texture_hover = ExtResource("6_rvsgi")
 
-[node name="Label" type="Label" parent="TextureRect/HBoxContainer/UseTab" unique_id=1404888911]
+[node name="UseTabLabel" type="Label" parent="TextureRect/HBoxContainer/UseTab" unique_id=1404888911]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -405,23 +405,23 @@ theme_override_fonts/font = ExtResource("7_cy2jp")
 theme_override_font_sizes/font_size = 8
 text = "Discard"
 
-[node name="BagFull" type="Label" parent="." unique_id=237285267]
+[node name="TabFull" type="Label" parent="." unique_id=237285267]
 visible = false
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -162.5
-offset_top = -21.5
-offset_right = -36.5
-offset_bottom = -8.5
+offset_left = -348.5
+offset_top = 5.5
+offset_right = -304.5
+offset_bottom = 18.5
 grow_horizontal = 0
 theme_override_colors/font_color = Color(0.9999997, 0.06978741, 0.36228102, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("4_4vhog")
 theme_override_font_sizes/font_size = 11
-text = "Bag Full! Head To Town!"
+text = "Tab Full!"
 
 [connection signal="button_up" from="TextureRect/HBoxContainer/NoveltyTab" to="." method="_on_novelty_tab_button_up"]
 [connection signal="button_up" from="TextureRect/HBoxContainer/CraftingTab" to="." method="_on_crafting_tab_button_up"]

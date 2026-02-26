@@ -88,10 +88,11 @@ func search_item(inventory_name : String, item : Item) -> bool:
 	
 	if selected_inventory.is_empty():
 		return false
-	
+
 	for slot in selected_inventory:
 		if slot["item"] == item:
 			return true
+
 	return false
 
 func add_item(inventory_name : String, item : Item, quantity : int = 1) -> bool:

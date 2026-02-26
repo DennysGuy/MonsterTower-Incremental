@@ -28,11 +28,21 @@ const ITEM_SLOT_NOVELTY = preload("uid://x2hshpeeawjm")
 
 @onready var inventory_label: Label = $InventoryLabel
 
+@onready var novelties_tab: TextureButton = $HBoxContainer/NoveltiesTab
+@onready var crafting_tab: TextureButton = $HBoxContainer/CraftingTab
+@onready var cooking_tab: TextureButton = $HBoxContainer/CookingTab
+@onready var ore_tab: TextureButton = $HBoxContainer/OreTab
+@onready var gem_stones_tab: TextureButton = $HBoxContainer/GemStonesTab
+@onready var use_tab: TextureButton = $HBoxContainer/UseTab
+
 var selling_all : bool = false
 var selling_novelties : bool = false
 
 var selected_item : Item
 var selected_inventory : String
+
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	InventoryManager.populate_market_menu.connect(populate_details_panel)
@@ -106,6 +116,7 @@ func close_out() -> void:
 
 func init_market() -> void:
 	clear_details()
+	init_tabs()
 	selected_inventory = "Novelty Items"
 	inventory_label.text = selected_inventory
 	currency.text = "Currency: %s" % [TechTreeManager.currency]
@@ -116,6 +127,19 @@ func init_market() -> void:
 		InventoryManager.update_grid_container(bank_container, "Bank")
 	else:
 		bank_notice.show()
+
+func init_tabs() -> void:
+	if PlayerStats.facilities_unlocked["Crafting Tab"]:
+		novelties_tab.show()
+		crafting_tab.show()
+	
+	if PlayerStats.facilities_unlocked["Cooking Station"]:
+		cooking_tab.show()
+		use_tab.show()
+	
+	if PlayerStats.facilities_unlocked["Refinery Station"]:
+		ore_tab.show()
+		use_tab.show()
 
 func sell_all_items(container : GridContainer, inventory_name : String) -> void:
 	var inventory : Array = InventoryManager.inventories[inventory_name]

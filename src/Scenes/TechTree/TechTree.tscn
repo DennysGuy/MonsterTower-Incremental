@@ -22,6 +22,7 @@
 [ext_resource type="Resource" uid="uid://cmbxvekbk2uxx" path="res://src/Resources/TechTree/TechNodes/BankUnlock.tres" id="17_c7r65"]
 [ext_resource type="Resource" uid="uid://cqjeh0yqqse5c" path="res://src/Resources/TechTree/TechNodes/Bank2.tres" id="18_aovij"]
 [ext_resource type="Resource" uid="uid://ydq2itcsk458" path="res://src/Resources/TechTree/TechNodes/DeeperPockets2.tres" id="19_7xsv7"]
+[ext_resource type="Resource" uid="uid://c1ojmw7gy7o6" path="res://src/Resources/TechTree/TechNodes/BagExpand1.tres" id="19_l65vq"]
 [ext_resource type="Resource" uid="uid://cygetk8cm8cn5" path="res://src/Resources/TechTree/TechNodes/Bag2.tres" id="20_dkc8a"]
 [ext_resource type="Resource" uid="uid://ds0j00mlqnf55" path="res://src/Resources/TechTree/TechNodes/Movement1.tres" id="21_dvfnf"]
 [ext_resource type="Resource" uid="uid://b4xw1euerb1ka" path="res://src/Resources/TechTree/TechNodes/JumpHeight1.tres" id="22_7le32"]
@@ -185,8 +186,16 @@ tech_node_stats = ExtResource("19_7xsv7")
 points = PackedVector2Array(6, -10, 21, -29)
 width = 3.0
 
+[node name="ItemBag3" parent="Nodes" unique_id=1515138600 instance=ExtResource("5_2ltmf")]
+position = Vector2(542, 497)
+tech_node_stats = ExtResource("19_l65vq")
+
+[node name="Line2D" type="Line2D" parent="Nodes/ItemBag3" unique_id=1458215044]
+points = PackedVector2Array(-8, -11, -23, -36)
+width = 3.0
+
 [node name="ItemBag2" parent="Nodes" unique_id=1056960665 instance=ExtResource("5_2ltmf")]
-position = Vector2(541, 498)
+position = Vector2(569, 544)
 tech_node_stats = ExtResource("20_dkc8a")
 
 [node name="Line2D" type="Line2D" parent="Nodes/ItemBag2" unique_id=957527722]

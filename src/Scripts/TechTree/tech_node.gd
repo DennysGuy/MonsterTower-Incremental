@@ -51,12 +51,16 @@ func _ready() -> void:
 					bg.texture = NODE_BASE_ENABLED_V_2
 				TechTreeManager.TECH_NODE_TYPE.FACILITY:
 					bg.texture = FACILITY_NODE_BASE_ENABLED_V_2
+				TechTreeManager.TECH_NODE_TYPE.CLASS_ABILITY:
+					bg.texture = FACILITY_NODE_BASE_ENABLED_V_2
 		else:
 			if tech_node_stats.current_level >= tech_node_stats.max_level:
 				match node_type:
 					TechTreeManager.TECH_NODE_TYPE.ABILITY:
 						bg.texture = NODE_BASE_UNLOCKED_V_2
 					TechTreeManager.TECH_NODE_TYPE.FACILITY:
+						bg.texture = FACILITY_NODE_UNLOCKED_V_2
+					TechTreeManager.TECH_NODE_TYPE.CLASS_ABILITY:
 						bg.texture = FACILITY_NODE_UNLOCKED_V_2
 						
 				if node_type == TechTreeManager.TECH_NODE_TYPE.FACILITY:
@@ -66,6 +70,8 @@ func _ready() -> void:
 					TechTreeManager.TECH_NODE_TYPE.ABILITY:
 						bg.texture = NODE_BASE_DISABLED_V_2
 					TechTreeManager.TECH_NODE_TYPE.FACILITY:
+						bg.texture = FACILITY_NODE_BASE_DISABLED_V_2
+					TechTreeManager.TECH_NODE_TYPE.CLASS_ABILITY:
 						bg.texture = FACILITY_NODE_BASE_DISABLED_V_2
 				facilities_notify.hide()
 	else:
@@ -91,9 +97,14 @@ func _on_click_area_mouse_exited() -> void:
 	remove_tool_tip()
 
 func _on_click_area_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if can_click and TechTreeManager.currency < tech_node_stats.currency_required and has_resource_quantity():
-		print("Not enough currency!")
-		return
+	
+	if node_type != TechTreeManager.TECH_NODE_TYPE.CLASS_ABILITY:
+		if can_click and TechTreeManager.currency < tech_node_stats.currency_required and has_resource_quantity():
+			print("Not enough currency!")
+			return
+	else:
+		if can_click and PlayerStats.player_stats["Ability Points"] < tech_node_stats.ap_required and has_resource_quantity():
+			return
 	
 	if can_click and mouse_entered and event.is_action_pressed("left_click"):
 		sfx_player.play_sfx(NODE_CLICK)
@@ -102,7 +113,11 @@ func _on_click_area_input_event(viewport: Node, event: InputEvent, shape_idx: in
 		
 		TechTreeManager.increment_upgrade_count()
 		PlayerStats.upgrade_player_stat(tech_node_stats.stat_name,tech_node_stats.upgrade_interval, node_type)
-		deduct_currency()
+		if node_type != TechTreeManager.TECH_NODE_TYPE.CLASS_ABILITY:
+			deduct_currency()
+		else:
+			deduct_ap()
+			
 		deduct_resources()
 		
 		if tech_node_stats.upgrade_interval > 0:
@@ -117,6 +132,9 @@ func _on_click_area_input_event(viewport: Node, event: InputEvent, shape_idx: in
 		check_if_can_purchase()
 		TechTreeManager.check_node_prereqs.emit()
 		TechTreeManager.check_if_can_purchase_node.emit()
+		
+		if node_type == TechTreeManager.TECH_NODE_TYPE.CLASS_ABILITY and PlayerStats.player_stats["Class"] == "Junior Hunter":
+			TechTreeManager.check_if_can_show_class_select_node.emit()
 		
 		SaveManager.save_tech_tree_data()
 		SaveManager.save_player_stats()
@@ -135,6 +153,10 @@ func deduct_currency() -> void:
 	TechTreeManager.currency -= tech_node_stats.currency_required
 	TechTreeManager.update_currency_label.emit()
 	
+func deduct_ap() -> void:
+	PlayerStats.player_stats["Ability Points"] -= tech_node_stats.ap_required
+	TechTreeManager.update_available_ap_label.emit()
+	#update an ap label here
 
 func deduct_resources() -> void:
 	InventoryManager.remove_resources_from_inventory(tech_node_stats.materials_required)
@@ -171,7 +193,10 @@ func check_if_can_purchase() -> void:
 	set_level_label()
 		
 func can_purchase() -> bool:
-	return TechTreeManager.currency >= tech_node_stats.currency_required and has_resource_quantity()
+	if tech_node_stats.node_type != TechTreeManager.TECH_NODE_TYPE.CLASS_ABILITY:
+		return TechTreeManager.currency >= tech_node_stats.currency_required and has_resource_quantity()
+	else:
+		return PlayerStats.player_stats["Ability Points"] >= tech_node_stats.ap_required and has_resource_quantity()
 
 func check_prereqs() -> void:
 	if tech_node_stats.unlocked:
@@ -183,7 +208,6 @@ func check_prereqs() -> void:
 
 	unlock_node()
 	save_node_data()
-
 
 func unlock_node() -> void:
 	tech_node_stats.unlocked = true
@@ -211,6 +235,8 @@ func create_tool_tip() -> void:
 	
 	if node_type == TechTreeManager.TECH_NODE_TYPE.FACILITY:
 		tool_tip.current_benefits.text = "Facility"
+	elif node_type == TechTreeManager.TECH_NODE_TYPE.CLASS_ABILITY:
+		tool_tip.current_benefits.text = "Ability"
 	else:
 		if tech_node_stats.upgrade_interval > 0 and tech_node_stats.upgrade_interval < 1.0:	
 			if tech_node_stats.current_level < tech_node_stats.max_level:
@@ -232,9 +258,13 @@ func create_tool_tip() -> void:
 			tool_tip.panel.color = Color(tool_tip.locked)
 	
 	tool_tip.description.text = tech_node_stats.description
-	tool_tip.cost.text = "Cost: %s" % [tech_node_stats.currency_required]
+	if node_type != TechTreeManager.TECH_NODE_TYPE.CLASS_ABILITY:
+		tool_tip.cost.text = "Cost: %s" % [tech_node_stats.currency_required]
+	else:
+		tool_tip.cost.text = "AP %s" % [tech_node_stats.ap_required]
+		
 	TechTreeManager.add_tool_tip.emit(tool_tip, is_on_right_half(self))
-
+	
 func is_on_right_half(node: Node2D) -> bool:
 	var screen_x := node.get_global_transform_with_canvas().origin.x
 

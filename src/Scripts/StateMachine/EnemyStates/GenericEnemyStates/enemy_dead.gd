@@ -13,8 +13,8 @@ func enter() -> void:
 	parent.damageable = false
 	parent.is_dead = true
 	
-	parent.disable_box_on_frame(parent.hurt_box)
-	parent.disable_box_on_frame(parent.hit_box)
+	parent.hurt_box.queue_free()
+	parent.hit_box.queue_free()
 		
 	drop_items()
 	parent.give_xp()

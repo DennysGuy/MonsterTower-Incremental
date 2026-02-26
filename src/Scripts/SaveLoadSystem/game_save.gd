@@ -19,6 +19,7 @@ TODO: We will add saves for classes as well
 	"Level" : 1,
 	"Needed XP": 100,
 	"Current XP" : 0,
+	"Ability Points": 0,
 	"Class": "Junior Hunter",
 	"Attack Damage" : 13.0,
 	"Movement Speed" : 100.0,
@@ -44,8 +45,8 @@ TODO: We will add saves for classes as well
 	"Bag": 1,
 	"Ore Bag":2,
 	"Max Bank Slots": 4,
-	"Max Bag Stack": 6,
-	"Max Ore Bag Stack": 6,
+	"Max Bag Stack": 4,
+	"Max Ore Bag Stack": 4,
 	"Max Bank Stack":8,
 	"Cooking Speed": 0.15,
 	"Smelting Speed": 0.15,
@@ -111,7 +112,7 @@ TODO: We will add saves for classes as well
 	"Hunter License" : {"Level":0, "Unlocked": true},
 	"Attack 1" : {"Level":0, "Unlocked": false},
 	"Attack 2" : {"Level":0, "Unlocked": false},
-	"Arial Slash": {"Level":0, "Unlocked": false},
+	"Arial Slash": {"Level":0, "Unlocked": true},
 	"Accuracy 1": {"Level":0, "Unlocked": false},
 	"Accuracy 2": {"Level":0, "Unlocked": false},
 	"Crit Chance 1" : {"Level":0, "Unlocked": false},
@@ -133,10 +134,11 @@ TODO: We will add saves for classes as well
 	"Monster Cap 1": {"Level":0, "Unlocked": false},
 	"Monster Cap 2": {"Level":0, "Unlocked": false},
 	"Crafting Tab":{"Level":0, "Unlocked": false},
+	"Item Bag 1":{"Level":0, "Unlocked": false},
 	"Item Bag 2":{"Level":0, "Unlocked": false},
 	"Deeper Pockets 1":{"Level":0, "Unlocked": false},
 	"Deeper Pockets 2":{"Level":0, "Unlocked": false},
-	"Dash Attack":{"Level":0, "Unlocked": false},
+	"Dash Attack":{"Level":0, "Unlocked": true},
 	"Dash Attack Duration 1":{"Level":0, "Unlocked": false},
 	"Banking": {"Level":0, "Unlocked": false},
 	"Banking 2": {"Level":0, "Unlocked": false},
@@ -157,7 +159,7 @@ TODO: We will add saves for classes as well
 	"Ore Drop Chance 1": {"Level":0, "Unlocked": false},
 	"Ore Drop Chance 2": {"Level":0, "Unlocked": false},
 	"Invincibility Duration 1": {"Level":0, "Unlocked": false},
-	"Double Jump": {"Level":0, "Unlocked": false}
+	"Double Jump": {"Level":0, "Unlocked": true}
 }
 
 @export var equipped_abilities : Dictionary = {
