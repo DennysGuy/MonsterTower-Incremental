@@ -40,6 +40,7 @@ func _ready() -> void:
 	SignalBus.hide_tech_tree_canvas_layer.connect(hide_tech_tree_canvas_layer)
 	SignalBus.spawn_class_selection_menu.connect(spawn_dojo_menu)
 	TechTreeManager.unlock_station.connect(unlock_station)
+	SignalBus.show_ap_notice.connect(show_ap_notice)
 
 	TechTreeManager.update_currency_label.emit()
 	CookingManager.can_craft_bar.emit()
@@ -54,9 +55,7 @@ func _ready() -> void:
 	else:
 		SignalBus.hide_can_craft_sword.emit()
 	
-	if PlayerStats.player_stats["Ability Points"] >= 1:
-		SignalBus.show_class_notice.emit()
-		ap_notice.show()
+	show_ap_notice()
 	
 	await get_tree().process_frame
 	SignalBus.update_player_health.emit(player.health)
@@ -122,6 +121,14 @@ func _on_tower_area_body_entered(body: Node2D) -> void:
 	if body is Player:
 		player_in_tower_range = true
 		set_guide_log(true)
+
+func show_ap_notice() -> void:
+	if PlayerStats.player_stats["Ability Points"] >= 1 and PlayerStats.player_stats["Class"] == "Junior Hunter":
+		SignalBus.show_class_notice.emit()
+		ap_notice.show()
+	else:
+		SignalBus.show_class_notice.emit()
+		ap_notice.hide()
 
 func _on_tower_area_body_exited(body: Node2D) -> void:
 	if body is Player:

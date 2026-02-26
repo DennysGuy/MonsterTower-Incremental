@@ -102,3 +102,5 @@ signal stop_player
 
 @warning_ignore("unused_signal")
 signal spawn_class_selection_menu
+@warning_ignore("unused_signal")
+signal show_ap_notice

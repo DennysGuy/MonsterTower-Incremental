@@ -37,13 +37,9 @@
 [ext_resource type="Resource" uid="uid://c6cb7c8bqn7ow" path="res://src/Resources/TechTree/TechNodes/RefinerySpeed1.tres" id="30_il84h"]
 [ext_resource type="Resource" uid="uid://licswcd54xsn" path="res://src/Resources/TechTree/TechNodes/RefineryAccuracy1.tres" id="30_yfj5d"]
 [ext_resource type="Resource" uid="uid://ctf4we33chvvs" path="res://src/Resources/TechTree/TechNodes/OreRockDrop1.tres" id="32_pc0xa"]
-[ext_resource type="Resource" uid="uid://burkenucbrobr" path="res://src/Resources/TechTree/TechNodes/ArialAttack.tres" id="35_mdsgt"]
 [ext_resource type="Resource" uid="uid://c33bcx7wsq4vk" path="res://src/Resources/TechTree/TechNodes/MaxHP2.tres" id="36_o1bwy"]
-[ext_resource type="Resource" uid="uid://bonlosm00p4kf" path="res://src/Resources/TechTree/TechNodes/DashAttack.tres" id="37_34cer"]
 [ext_resource type="Resource" uid="uid://c5l21ge3ylc0e" path="res://src/Resources/TechTree/TechNodes/Defense2.tres" id="37_pqlb5"]
-[ext_resource type="Resource" uid="uid://ioelpq1d2fhp" path="res://src/Resources/TechTree/TechNodes/DashDuration1.tres" id="39_iyves"]
 [ext_resource type="Resource" uid="uid://cmi3owisj2vs7" path="res://src/Resources/TechTree/TechNodes/InvincibilityDuration1.tres" id="39_l65vq"]
-[ext_resource type="Resource" uid="uid://cq5drdy7t8gas" path="res://src/Resources/TechTree/TechNodes/DoubleJump.tres" id="39_na6l4"]
 
 [node name="TechTree" type="Node2D" unique_id=713882159]
 script = ExtResource("1_1fw0b")
@@ -51,10 +47,10 @@ script = ExtResource("1_1fw0b")
 [node name="SfxPlayer" parent="." unique_id=268741460 instance=ExtResource("2_d4ivd")]
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=48163631]
-offset_left = -3824.0
-offset_top = -2374.0
-offset_right = 5588.0
-offset_bottom = 3812.0
+offset_left = -3923.0
+offset_top = -1942.0
+offset_right = 5489.0
+offset_bottom = 4244.0
 mouse_filter = 2
 color = Color(0.028638711, 0.1994082, 0.3708802, 1)
 
@@ -74,7 +70,7 @@ points = PackedVector2Array(-11, 8, -70, 97)
 width = 3.0
 
 [node name="Attack2Node" parent="Nodes" unique_id=309465463 instance=ExtResource("5_2ltmf")]
-position = Vector2(867, 253)
+position = Vector2(812, 253)
 tech_node_stats = ExtResource("5_wj3rp")
 
 [node name="Line2D" type="Line2D" parent="Nodes/Attack2Node" unique_id=811949577]
@@ -107,7 +103,7 @@ points = PackedVector2Array(-3, 14, -3, 32)
 width = 3.0
 
 [node name="CritChance2Node" parent="Nodes" unique_id=612495287 instance=ExtResource("5_2ltmf")]
-position = Vector2(867, 209)
+position = Vector2(812, 209)
 tech_node_stats = ExtResource("8_7l0yi")
 
 [node name="Line2D" type="Line2D" parent="Nodes/CritChance2Node" unique_id=1729855323]
@@ -115,7 +111,7 @@ points = PackedVector2Array(-2, 14, -2, 30)
 width = 3.0
 
 [node name="CritDamage2Node" parent="Nodes" unique_id=694827979 instance=ExtResource("5_2ltmf")]
-position = Vector2(867, 167)
+position = Vector2(812, 167)
 tech_node_stats = ExtResource("9_dkx06")
 
 [node name="Line2D" type="Line2D" parent="Nodes/CritDamage2Node" unique_id=2015774257]
@@ -299,16 +295,8 @@ position = Vector2(901, 326)
 tech_node_stats = ExtResource("32_pc0xa")
 
 [node name="Line2D" type="Line2D" parent="Nodes/OreRockDrop1" unique_id=134897056]
-position = Vector2(0, -2)
+position = Vector2(2, -2)
 points = PackedVector2Array(-16, 1, -52, 1)
-width = 3.0
-
-[node name="ArialSlashNode" parent="Nodes" unique_id=1047718193 instance=ExtResource("5_2ltmf")]
-position = Vector2(772, 253)
-tech_node_stats = ExtResource("35_mdsgt")
-
-[node name="Line2D" type="Line2D" parent="Nodes/ArialSlashNode" unique_id=1795390907]
-points = PackedVector2Array(-16, -1, -45, -1)
 width = 3.0
 
 [node name="MaxHP2" parent="Nodes" unique_id=845970053 instance=ExtResource("5_2ltmf")]
@@ -320,16 +308,6 @@ position = Vector2(-807, -524)
 points = PackedVector2Array(791, 524, 774, 524)
 width = 3.0
 
-[node name="DashAttackNode" parent="Nodes" unique_id=1162397095 instance=ExtResource("5_2ltmf")]
-position = Vector2(773, 207)
-tech_node_stats = ExtResource("37_34cer")
-node_type = 1
-
-[node name="Line2D" type="Line2D" parent="Nodes/DashAttackNode" unique_id=1509763052]
-position = Vector2(-1, 0)
-points = PackedVector2Array(-2, 13, -2, 32)
-width = 3.0
-
 [node name="Defense2" parent="Nodes" unique_id=609765824 instance=ExtResource("5_2ltmf")]
 position = Vector2(757, 508)
 tech_node_stats = ExtResource("37_pqlb5")
@@ -339,15 +317,6 @@ position = Vector2(-3, 8)
 points = PackedVector2Array(-13, -8, -28, -8)
 width = 3.0
 
-[node name="DoubleJumpNode" parent="Nodes" unique_id=640972586 instance=ExtResource("5_2ltmf")]
-position = Vector2(559, 325)
-tech_node_stats = ExtResource("39_na6l4")
-node_type = 1
-
-[node name="Line2D" type="Line2D" parent="Nodes/DoubleJumpNode" unique_id=961029812]
-points = PackedVector2Array(-2, -13, -2, -58)
-width = 4.0
-
 [node name="InvincibilityDuration1" parent="Nodes" unique_id=3421994 instance=ExtResource("5_2ltmf")]
 position = Vector2(431, 254)
 tech_node_stats = ExtResource("39_l65vq")
@@ -355,14 +324,6 @@ tech_node_stats = ExtResource("39_l65vq")
 [node name="Line2D" type="Line2D" parent="Nodes/InvincibilityDuration1" unique_id=2072077442]
 position = Vector2(10.868652, 3.784851)
 points = PackedVector2Array(1.1313477, -3.784851, 47.131348, -3.784851)
-width = 3.0
-
-[node name="DashAttackDuration1Node" parent="Nodes" unique_id=1614997540 instance=ExtResource("5_2ltmf")]
-position = Vector2(823, 208)
-tech_node_stats = ExtResource("39_iyves")
-
-[node name="Line2D" type="Line2D" parent="Nodes/DashAttackDuration1Node" unique_id=878544071]
-points = PackedVector2Array(-16, 0, -38, 0)
 width = 3.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=818833295]

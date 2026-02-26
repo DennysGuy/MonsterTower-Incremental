@@ -28,6 +28,7 @@ func check_to_unveil_class_selection_node() -> void:
 
 func close_out() -> void:
 	SignalBus.hide_tech_tree_canvas_layer.emit()
+	SignalBus.show_class_notice.emit()
 	GameManager.player_can_move = true
 	queue_free()
 
@@ -37,3 +38,7 @@ func update_ap_available() -> void:
 func add_tool_tip(tool_tip : ToolTip, on_right_hand : bool) -> void:
 	tool_tip.position = marker_2d.position
 	canvas_layer.add_child(tool_tip)
+
+
+func _on_exit_button_button_up() -> void:
+	close_out()
