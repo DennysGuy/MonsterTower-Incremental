@@ -133,6 +133,7 @@ func _process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("pause_game") and GameManager.can_pause_game:
 		var pause_menu : PauseMenu = preload("uid://dlaq2oh2iuyjk").instantiate()
+		pause_canvas_layer.show()
 		pause_canvas_layer.add_child(pause_menu)
 
 

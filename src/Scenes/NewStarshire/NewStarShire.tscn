@@ -891,7 +891,6 @@ shape = SubResource("RectangleShape2D_pdf0i")
 position = Vector2(976.00006, 624)
 
 [node name="HUD" parent="." unique_id=1906468594 instance=ExtResource("10_4wn0b")]
-visible = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1662037132]
 visible = false

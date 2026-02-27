@@ -104,3 +104,7 @@ signal stop_player
 signal spawn_class_selection_menu
 @warning_ignore("unused_signal")
 signal show_ap_notice
+@warning_ignore("unused_signal")
+signal spawn_tower_map
+@warning_ignore("unused_signal")
+signal enable_tower_map_button

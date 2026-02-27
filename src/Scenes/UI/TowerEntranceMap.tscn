@@ -282,6 +282,18 @@ theme_override_fonts/font = ExtResource("4_fqkg3")
 theme_override_font_sizes/font_size = 14
 text = "Expedition Time Limit: 1130 seconds"
 
+[node name="SelectedPoint" type="Label" parent="." unique_id=1652789249]
+layout_mode = 0
+offset_left = 81.0
+offset_top = 279.0
+offset_right = 361.0
+offset_bottom = 295.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("10_grwys")
+theme_override_font_sizes/font_size = 14
+text = "Selected Point:"
+
 [node name="ModeDescription" type="Control" parent="." unique_id=927368343]
 anchors_preset = 0
 offset_left = 75.0

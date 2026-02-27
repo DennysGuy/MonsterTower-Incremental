@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dix63priuogkk" path="res://Assets/NodeGraphics/NodeGraphicsV2/Bag1_V2.png" id="1_85ix1"]
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="2_fd5oi"]
+[ext_resource type="Resource" uid="uid://boeryxspsw8uq" path="res://src/Resources/Dishes/CookedGagootz.tres" id="2_y4ce7"]
 
 [resource]
 script = ExtResource("2_fd5oi")
@@ -11,7 +12,9 @@ description = "Expand Bag Slots by 1
 
 [color=red]Crafting items can now drop from enemies![/color]"
 currency_required = 300
-materials_required = Array[Dictionary]([{}])
+materials_required = Array[Dictionary]([{
+ExtResource("2_y4ce7"): 2
+}])
 stat_name = "Bag"
 upgrade_interval = 1.0
 prereqs = Array[String](["Crafting Tab:1"])

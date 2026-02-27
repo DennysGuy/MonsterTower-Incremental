@@ -6,18 +6,27 @@ class_name AbilityCooldownWheel extends Control
 
 var timer_started : bool = false
 @onready var spark_emit_point: Marker2D = $SparkEmitPoint
+@onready var ability_title: Label = $AbilityDescriptionPanel/AbilityTitle
+@onready var description: RichTextLabel = $AbilityDescriptionPanel/Description
+@onready var ability_description_panel: Panel = $AbilityDescriptionPanel
+
+var ability_loaded : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	AbilityTimers.start_ability_cooldown_timer.connect(start_progress_wheel)
 	TechTreeManager.set_ability_hud_icon.connect(set_icon)
 	SignalBus.set_icons.connect(set_icon)
+	ability_title.text = ability_name
+	#description.text = PlayerStats.get_equipped_ability(ability_name).ability_description
 	set_icon()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
-
+	if PlayerStats.get_equipped_ability(ability_name) and !ability_loaded:
+		description.text = PlayerStats.get_equipped_ability(ability_name).ability_description
+		ability_loaded = true
+		
 func _physics_process(delta: float) -> void:
 	if timer_started:
 		progress_wheel.value = AbilityTimers.ability_state[ability_name]["Timer"].time_left
@@ -61,3 +70,30 @@ func set_icon() -> void:
 				icon.texture = preload("uid://dnqar1vwb0eae")
 			else:
 				icon.texture = preload("uid://cbcw7ua8sro78")
+
+func ability_unlocked() -> bool:
+	if ability_name == "Special Attack":
+		return PlayerStats.get_equipped_ability("Special Attack") != null
+	
+	match ability_name:
+		"Air Attack": 
+			return PlayerStats.facilities_unlocked["Arial Slash"]
+		"Dash Attack":
+			return PlayerStats.facilities_unlocked[ability_name]
+		"Double Jump":
+			return PlayerStats.facilities_unlocked[ability_name]
+
+	return false
+
+func _on_mouse_area_mouse_entered() -> void:
+	if ability_unlocked():
+		ability_description_panel.show()
+
+func _on_texture_button_mouse_entered() -> void:
+	if ability_unlocked():
+		ability_description_panel.show()
+
+
+func _on_texture_button_mouse_exited() -> void:
+	if ability_unlocked():
+		ability_description_panel.hide()

@@ -32,6 +32,7 @@
 [ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="26_r86ak"]
 [ext_resource type="PackedScene" uid="uid://d150vkltffpjo" path="res://src/Scenes/Tower/TowerFloors/CheckPointCampfire.tscn" id="27_8wimh"]
 [ext_resource type="Texture2D" uid="uid://xd36daaflxhj" path="res://Assets/Tower/ExitAreaIcon.png" id="30_yeiuc"]
+[ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="33_savf5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c1fqw"]
 texture = ExtResource("2_hk0iw")
@@ -1367,6 +1368,29 @@ visible = false
 [node name="ExitAreaIcon" type="Sprite2D" parent="." unique_id=679118911]
 position = Vector2(144, 873)
 texture = ExtResource("30_yeiuc")
+
+[node name="Label" type="Label" parent="." unique_id=2113586623]
+offset_left = 290.0
+offset_top = 620.0
+offset_right = 362.0
+offset_bottom = 659.0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("33_savf5")
+theme_override_font_sizes/font_size = 10
+text = "Down + Jump
+(Drop Through 
+platforms)"
+
+[node name="Label2" type="Label" parent="." unique_id=393000501]
+offset_left = 43.0
+offset_top = 657.0
+offset_right = 138.0
+offset_bottom = 696.0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("33_savf5")
+theme_override_font_sizes/font_size = 10
+text = "Jumping Up Ladders
+Will Speed up traversal"
 
 [connection signal="body_entered" from="TowerExitArea" to="." method="_on_tower_exit_area_body_entered"]
 [connection signal="body_exited" from="TowerExitArea" to="." method="_on_tower_exit_area_body_exited"]

@@ -43,6 +43,8 @@ const COUNTDOWN_BEEP = preload("uid://c6caiqmkt2lt0")
 
 @onready var bag: InventoryBag = $PlayerHUD/Bag
 
+@onready var ap_available_label: RichTextLabel = $PlayerHUD/ApAvailableLabel
+@onready var open_tower_map_button: Button = $PlayerHUD/OpenTowerMapButton
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -66,17 +68,16 @@ func _ready() -> void:
 	SignalBus.hide_can_cook_dish_label.connect(hide_can_cook_dish)
 	SignalBus.hide_can_smelt_bar_label.connect(hide_can_smelt_bar)
 	SignalBus.hide_can_craft_sword.connect(hide_can_craft_sword)
-	
+	SignalBus.enable_tower_map_button.connect(enable_tower_map_button)
 	SignalBus.show_hunt_challenge_button.connect(show_hunt_challenge_button)
 	
 	SignalBus.populate_item_notification_panel.connect(populate_pick_notification_panel)
-	
 	TechTreeManager.update_currency_label.connect(update_currency_label)
 	#player_health_bar.max_value = PlayerStats.player_stats["Max Health"]
 	#player_health_bar.value = PlayerStats.player_stats["Current Health"]
 	
 	LevelingManager.update_xp_bar.connect(update_xp_bar)
-	
+	TechTreeManager.update_available_ap_label.connect(update_ap_label)
 	InventoryManager.show_open_bag_notice.connect(show_open_bag_notice)
 	InventoryManager.hide_open_bag_notice.connect(hide_open_bag_notice)
 	
@@ -84,12 +85,14 @@ func _ready() -> void:
 	player_mp_bar.value = player_mp_bar.max_value
 	
 	update_xp_bar()
+	update_ap_label()
 	#update_player_health(int(PlayerStats.player_stats["Current Health"]))
 	show_class_notice()
+
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("open_bag"):
+	if Input.is_action_just_pressed("open_bag") and GameManager.can_open_bag:
 		show_bag()
 
 func update_player_health(value : int) -> void:
@@ -103,6 +106,9 @@ func update_player_mp() -> void:
 	player_mp_bar.value = current_mp
 	player_mp_bar.max_value = max_mp
 	mp_label.text = "%s/%s" % [current_mp,max_mp]
+
+func update_ap_label() -> void:
+	ap_available_label.text = "[color=purple]Avail. AP: %s[/color]" % PlayerStats.player_stats["Ability Points"] 
 
 func update_xp_bar() -> void:
 	level_label.text = "Level %s" % [int(PlayerStats.player_stats["Level"])]
@@ -119,6 +125,9 @@ func show_open_bag_notice() -> void:
 
 func hide_open_bag_notice() -> void:
 	open_bag_notice.hide()
+
+func enable_tower_map_button() -> void:
+	open_tower_map_button.disabled = false
 
 func update_kill_quota_text(message : String, quota_met : bool, challenge_unlocked : bool) -> void:
 	if is_inside_tree():
@@ -166,6 +175,7 @@ func set_hunt_timer() -> void:
 	ExpeditionTimer.set_time_for_hunt()
 
 func start_hunt_timer() -> void:
+	GameManager.enemies_can_move = true
 	ExpeditionTimer.start_hunt_timer()
 
 func load_expedition_timer_with_hunt_time() -> void:
@@ -202,11 +212,11 @@ func show_can_craft_sword() -> void:
 
 func show_class_notice() -> void:
 	var current_class : String = PlayerStats.player_stats["Class"] 
-	if current_class == "Junior Hunter" and PlayerStats.player_stats["Level"] >= 5:
-		class_notice.text = "Advance your class at the Class Advancement Center!"
+	if current_class == "Junior Hunter" and PlayerStats.player_stats["Level"] >= 8:
+		class_notice.text = "[color=purple]Advance your class at the Class Advance Center![/color]"
 		class_notice.show()
 	elif PlayerStats.player_stats["Ability Points"] >= 1:
-		class_notice.text = "AP available to spend at the Class Advancement Center!"
+		class_notice.text = "[color=purple]Spend AP at the Class AdvanceCenter![/color]"
 		class_notice.show()
 	else:
 		class_notice.hide()
@@ -253,3 +263,10 @@ func populate_pick_notification_panel(item_data : Item) -> void:
 	
 	notification_item.label.text = "Picked up 1 %s" % item_data.item_name
 	pick_up_notifier.add_child(notification_item)
+
+
+func _on_open_tower_map_button_button_up() -> void:
+	if !GameManager.can_open_tower_map:
+		return
+	
+	SignalBus.spawn_tower_map.emit()

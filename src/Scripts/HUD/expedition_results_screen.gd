@@ -22,13 +22,15 @@ class_name ExpeditionResultsScreen extends Control
 @onready var use_tab: TextureButton = $ResultsPanel/HBoxContainer/UseTab
 
 @onready var tabs : Array[TextureButton] = [novelty_tab,crafting_tab,cooking_tab,ore_tab,gem_stone_tab,use_tab]
+@onready var to_town_bar: ProgressBar = $ResultsPanel/ToTownBar
+@onready var to_tower_bar: ProgressBar = $ResultsPanel/ToTowerBar
 
 const TRANSFER_TO_BANK = preload("uid://ddk7o6mnyi7ji")
 const CLOSE_IN = preload("uid://dc3va7knibxnb")
 const CLOSE_OUT = preload("uid://caj0oih8j2sty")
 
 const TEMP_RESULTS_SCREEN_THEME = preload("uid://cpyx2c4kjhkag")
-
+var can_go_back : bool = true
 var tips : Array[String] = [
 	"Can't reach a ledge? Upgrade your jump!",
 	"Selling cooked items is the best way to make money!",
@@ -38,7 +40,10 @@ var tips : Array[String] = [
 	"Feeling the grind? Yeah, so are we.",
 	"Jumping up ladders is the fastest way, but look out for enemies above!",
 	"Consecutive expedition runs are a great way to make money fast!",
-	"Sometimes taking on harm to progress is necessary.."
+	"Sometimes taking on harm to progress is necessary..",
+	"Taking too much damage? Upgrade your health!",
+	"Jumping up ladders can be a faster mode of traversal",
+	"Trip too long to the bottom of a floor? Drop through platforms!"
 ]
 
 # Called when the node enters the scene tree for the first time.
@@ -55,7 +60,19 @@ func _ready() -> void:
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if Input.is_action_pressed("dash_attack") and !Input.is_action_just_pressed("pan_cam_right") and can_go_back:
+		to_town_bar.value += delta * 100
+		if to_town_bar.value >= to_tower_bar.max_value:
+			go_to_starshire()
+	else:
+		to_town_bar.value = 0
+	
+	if Input.is_action_pressed("interact") and !Input.is_action_just_pressed("pan_cam_left") and can_go_back:
+		to_tower_bar.value += delta * 100
+		if to_tower_bar.value >= to_tower_bar.max_value:
+			go_to_tower()
+	else:
+		to_tower_bar.value = 0
 
 func go_to_starshire() -> void:
 	GameManager.spawn_location = 0
@@ -114,6 +131,7 @@ func init_tabs() -> void:
 		use_tab.hide()
 
 func move_inventory_to_bank() -> void:
+	can_go_back = false
 	var inventory_names : Array[String] = ["Novelty Items", "Crafting Items", "Cooking Items", "Ore", "Gem Stones", "Use"]
 	disable_tabs()
 	
@@ -124,7 +142,7 @@ func move_inventory_to_bank() -> void:
 	enable_tabs()
 	to_town.disabled = false
 	new_run.disabled = false
-
+	can_go_back = true
 
 func transfer_tab_to_bank(tab_name : String) -> void:
 	transfering_tab_label.text = "Tranfering %s to Bank..." % tab_name

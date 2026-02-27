@@ -361,10 +361,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -81.0
-offset_top = -125.000305
-offset_right = 211.0
-offset_bottom = -109.000305
+offset_left = -38.0
+offset_top = -119.5
+offset_right = 215.0
+offset_bottom = -103.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -372,6 +372,7 @@ theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("5_xwhdp")
 theme_override_font_sizes/font_size = 16
 text = "Transfering Novelty Items..."
+horizontal_alignment = 1
 
 [node name="InventoryContainer" type="GridContainer" parent="ResultsPanel" unique_id=2136584720]
 layout_mode = 1
@@ -448,6 +449,19 @@ text = "Can't reach a ledge? Upgrade your jump!"
 horizontal_alignment = 1
 autowrap_mode = 3
 
+[node name="TipsAndTricks2" type="Label" parent="ResultsPanel" unique_id=894760392]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 628.0
+offset_bottom = 40.0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("5_xwhdp")
+theme_override_font_sizes/font_size = 24
+text = "Head Back to Town or Indulge in more Spoils from the Tower?"
+horizontal_alignment = 1
+autowrap_mode = 3
+
 [node name="ToTown" type="Button" parent="ResultsPanel" unique_id=337593742]
 layout_mode = 1
 anchors_preset = 8
@@ -456,9 +470,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -300.0
-offset_top = -57.000305
+offset_top = -138.5
 offset_right = -243.0
-offset_bottom = -37.000305
+offset_bottom = -118.5
 grow_horizontal = 2
 grow_vertical = 2
 mouse_default_cursor_shape = 2
@@ -475,10 +489,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -238.0
-offset_top = -57.000305
-offset_right = -179.0
-offset_bottom = -37.000305
+offset_left = -158.0
+offset_top = -138.5
+offset_right = -99.0
+offset_bottom = -118.5
 grow_horizontal = 2
 grow_vertical = 2
 mouse_default_cursor_shape = 2
@@ -653,6 +667,44 @@ theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("5_xwhdp")
 theme_override_font_sizes/font_size = 10
 text = "Use"
+
+[node name="ToTownBar" type="ProgressBar" parent="ResultsPanel" unique_id=1212166312]
+layout_mode = 0
+offset_left = 81.0
+offset_top = 52.0
+offset_right = 137.0
+offset_bottom = 71.0
+show_percentage = false
+
+[node name="ToTownInstructions" type="Label" parent="ResultsPanel" unique_id=995193442]
+layout_mode = 0
+offset_left = 86.0
+offset_top = 54.0
+offset_right = 145.0
+offset_bottom = 70.0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("5_xwhdp")
+theme_override_font_sizes/font_size = 16
+text = "Hold 'Q'"
+
+[node name="ToTowerBar" type="ProgressBar" parent="ResultsPanel" unique_id=1545743662]
+layout_mode = 0
+offset_left = 229.0
+offset_top = 53.0
+offset_right = 282.0
+offset_bottom = 72.0
+show_percentage = false
+
+[node name="ToTowerInstructions" type="Label" parent="ResultsPanel" unique_id=1192635721]
+layout_mode = 0
+offset_left = 232.0
+offset_top = 54.0
+offset_right = 297.0
+offset_bottom = 70.0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("5_xwhdp")
+theme_override_font_sizes/font_size = 16
+text = "Hold 'E'"
 
 [node name="TopRect" type="ColorRect" parent="." unique_id=785934542]
 layout_mode = 1

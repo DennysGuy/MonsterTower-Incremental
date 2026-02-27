@@ -107,6 +107,8 @@ func _on_exit_button_up() -> void:
 func close_out() -> void:
 	GameManager.player_can_move = true
 	GameManager.can_pause_game = true
+	GameManager.can_open_bag = true
+	GameManager.can_open_tower_map = true
 	if station_type == STATION_TYPE.SMELTING:
 		if show_can_craft_next_sword_scene:
 			SignalBus.issue_can_craft_sword_scene.emit()
@@ -164,11 +166,8 @@ func populate_details_panel(recipe : CraftingRecipe) -> void:
 	
 	var can_add_to_inventory : bool
 	
-	if station_type == STATION_TYPE.COOKING:
-		can_add_to_inventory = InventoryManager.check_if_can_add_to_inventory(recipe.output_item, "Cooking Items", "Bag","Max Bag Stack")
-	if station_type == STATION_TYPE.SMELTING:
-		can_add_to_inventory = InventoryManager.check_if_can_add_to_inventory(recipe.output_item, "Ore", " Bag","Max Bag Stack")
-	
+	can_add_to_inventory = InventoryManager.check_if_can_add_to_inventory(recipe.output_item, "Use", "Bag","Max Bag Stack")
+
 	if !can_add_to_inventory:
 		inventory_full_warning.show()
 	else:

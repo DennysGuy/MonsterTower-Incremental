@@ -56,6 +56,7 @@ var apply_gravity : bool = true
 
 var is_silence_attack : bool = false
 
+
 @export var idle_state : State
 @export var jump_state : State
 @export var fall_state : State

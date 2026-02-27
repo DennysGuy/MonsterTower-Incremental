@@ -10,7 +10,9 @@ var resupply_character : bool = false
 var previous_map_data : TowerEntranceData
 var hunt_challenge_selected : bool = false
 var can_pause_game : bool = true
-
+var enemies_can_move : bool = true
+var can_open_bag : bool = true
+var can_open_tower_map : bool = true
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	player_can_move = true
