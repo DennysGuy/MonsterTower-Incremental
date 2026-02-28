@@ -12,5 +12,5 @@ description = "Grants you [color=green]4 off shore inventory slots[/color].
 currency_required = 200
 node_type = 1
 stat_name = "Bank"
-prereqs = Array[String](["Crafting Tab:1", "Deeper Pockets 1:1"])
+prereqs = Array[String](["Item Bag 1:1", "Deeper Pockets 1:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

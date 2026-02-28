@@ -40,6 +40,7 @@ func _ready() -> void:
 	SignalBus.hide_tech_tree_canvas_layer.connect(hide_tech_tree_canvas_layer)
 	SignalBus.spawn_class_selection_menu.connect(spawn_dojo_menu)
 	SignalBus.spawn_tower_map.connect(spawn_tower_entrance_map)
+	SignalBus.play_warrior_unlock_animation.connect(warrior_class_unlocked_notice)
 	TechTreeManager.unlock_station.connect(unlock_station)
 	SignalBus.show_ap_notice.connect(show_ap_notice)
 
@@ -318,6 +319,19 @@ func new_sword_unlock_notice() -> void:
 	camera.player = player
 	GameManager.player_can_move = true
 
+func warrior_class_unlocked_notice() -> void:
+	GameManager.player_can_move = false
+	player.send_to_idle_state()
+	sfx_player.play_sfx(UNLOCK_SHOP)
+	hud.animation_player.play("Flash")
+	await get_tree().create_timer(0.5).timeout
+	SignalBus.issue_big_notification.emit("You now possess the Abilities of a Warrior!")
+	await get_tree().create_timer(2.0).timeout
+	SignalBus.issue_big_notification.emit("Use your new power to control the battlefield and slay monsters faster!")
+	await get_tree().create_timer(2.0).timeout
+	SignalBus.hide_big_notification.emit()
+	GameManager.player_can_move = true
+		
 func _on_dojo_area_body_entered(body: Node2D) -> void:
 	if body is Player:
 		dojo_access_notification.text = "Press E to Access Dojo!"		

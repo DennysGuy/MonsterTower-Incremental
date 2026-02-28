@@ -43,11 +43,11 @@ func set_to_pick_up() -> void:
 func pick_up_item() -> void:
 	match item.item_type:
 		item.ITEM_TYPE.NOVELTY:
-			can_pick_up = InventoryManager.add_item("Novelty Items", item)
+			can_pick_up = InventoryManager.add_item("Inventory", item)
 		item.ITEM_TYPE.CRAFTING:
-			can_pick_up = InventoryManager.add_item("Crafting Items", item)
+			can_pick_up = InventoryManager.add_item("Inventory", item)
 		item.ITEM_TYPE.COOKING:
-			can_pick_up = InventoryManager.add_item("Cooking Items", item)
+			can_pick_up = InventoryManager.add_item("Inventory", item)
 		item.ITEM_TYPE.ORE:
 			can_pick_up = InventoryManager.add_item("Ore", item)
 		item.ITEM_TYPE.GEMSTONE:

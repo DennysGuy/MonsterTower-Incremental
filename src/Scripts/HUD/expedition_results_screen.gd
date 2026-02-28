@@ -14,14 +14,14 @@ class_name ExpeditionResultsScreen extends Control
 @onready var bank_container: GridContainer = $ResultsPanel/BankContainer
 @onready var tips_and_tricks: Label = $ResultsPanel/TipsAndTricks
 
-@onready var novelty_tab: TextureButton = $ResultsPanel/HBoxContainer/NoveltyTab
-@onready var crafting_tab: TextureButton = $ResultsPanel/HBoxContainer/CraftingTab
-@onready var cooking_tab: TextureButton = $ResultsPanel/HBoxContainer/CookingTab
+
+@onready var inventory_tab: TextureButton = $ResultsPanel/HBoxContainer/InventoryTab
 @onready var ore_tab: TextureButton = $ResultsPanel/HBoxContainer/OreTab
 @onready var gem_stone_tab: TextureButton = $ResultsPanel/HBoxContainer/GemStoneTab
 @onready var use_tab: TextureButton = $ResultsPanel/HBoxContainer/UseTab
 
-@onready var tabs : Array[TextureButton] = [novelty_tab,crafting_tab,cooking_tab,ore_tab,gem_stone_tab,use_tab]
+
+@onready var tabs : Array[TextureButton] = [ore_tab,gem_stone_tab,use_tab]
 @onready var to_town_bar: ProgressBar = $ResultsPanel/ToTownBar
 @onready var to_tower_bar: ProgressBar = $ResultsPanel/ToTowerBar
 
@@ -54,14 +54,18 @@ func _ready() -> void:
 	tips_and_tricks.text = tips.pick_random()
 	floor_reached.text = "%s %s" %[GameManager.previous_map_data.biome, GameManager.previous_map_data.floor_name]
 	MusicPlayer.play_song(TEMP_RESULTS_SCREEN_THEME)
-	await get_tree().create_timer(2.5).timeout
+
 	if PlayerStats.facilities_unlocked["Bank"]:
+		can_go_back = false
+		await get_tree().create_timer(2.5).timeout
 		move_inventory_to_bank()
+	else:
+		can_go_back = true
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Input.is_action_pressed("dash_attack") and !Input.is_action_just_pressed("pan_cam_right") and can_go_back:
-		to_town_bar.value += delta * 100
+		to_town_bar.value += delta * 200
 		if to_town_bar.value >= to_tower_bar.max_value:
 			go_to_starshire()
 	else:
@@ -99,7 +103,7 @@ func enable_tabs() -> void:
 		tab.disabled = false
 
 func init_containers() -> void:
-	InventoryManager.update_grid_container(inventory_container, "Novelty Items")
+	InventoryManager.update_grid_container(inventory_container, "Inventory")
 	
 	if PlayerStats.facilities_unlocked["Bank"]:
 		InventoryManager.update_grid_container(bank_container, "Bank")
@@ -109,18 +113,10 @@ func init_containers() -> void:
 		bank_notice.show()
 
 func init_tabs() -> void:
-	if PlayerStats.facilities_unlocked["Crafting Tab"]:
-		novelty_tab.show()
-		crafting_tab.show()
-	else:
-		novelty_tab.hide()
-		crafting_tab.hide()
-	
+
 	if PlayerStats.facilities_unlocked["Cooking Station"]:
-		cooking_tab.show()
 		use_tab.show()
 	else:
-		cooking_tab.hide()
 		use_tab.hide()
 		
 	if PlayerStats.facilities_unlocked["Refinery Station"]:
@@ -131,13 +127,12 @@ func init_tabs() -> void:
 		use_tab.hide()
 
 func move_inventory_to_bank() -> void:
-	can_go_back = false
-	var inventory_names : Array[String] = ["Novelty Items", "Crafting Items", "Cooking Items", "Ore", "Gem Stones", "Use"]
+	var inventory_names : Array[String] = ["Inventory", "Ore", "Gem Stones", "Use"]
 	disable_tabs()
 	
 	for name in inventory_names:
 		await transfer_tab_to_bank(name)
-		await get_tree().create_timer(0.3).timeout
+		await get_tree().create_timer(0.5).timeout
 	
 	enable_tabs()
 	to_town.disabled = false
@@ -145,6 +140,7 @@ func move_inventory_to_bank() -> void:
 	can_go_back = true
 
 func transfer_tab_to_bank(tab_name : String) -> void:
+	transfering_tab_label.show()
 	transfering_tab_label.text = "Tranfering %s to Bank..." % tab_name
 	InventoryManager.update_grid_container(inventory_container, tab_name)
 	var inventory_snapshot = InventoryManager.inventories[tab_name].duplicate(true)
@@ -169,23 +165,13 @@ func play_close_in_sfx() -> void:
 
 
 func _on_novelty_tab_button_up() -> void:
-	InventoryManager.update_grid_container(inventory_container, "Novelty Items")
-
-
-func _on_crafting_tab_button_up() -> void:
-	InventoryManager.update_grid_container(inventory_container, "Crafting Items")
-
-
-func _on_cooking_tab_button_up() -> void:
-	InventoryManager.update_grid_container(inventory_container, "Cooking Items")
+	InventoryManager.update_grid_container(inventory_container, "Inventory")
 
 func _on_ore_tab_button_up() -> void:
 	InventoryManager.update_grid_container(inventory_container, "Ore")
 
-
 func _on_gem_stone_tab_button_up() -> void:
 	InventoryManager.update_grid_container(inventory_container, "Gem Stones")
-
 
 func _on_use_tab_button_up() -> void:
 	InventoryManager.update_grid_container(inventory_container, "Use")

@@ -41,8 +41,6 @@ var selling_novelties : bool = false
 var selected_item : Item
 var selected_inventory : String
 
-
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	InventoryManager.populate_market_menu.connect(populate_details_panel)
@@ -119,7 +117,7 @@ func close_out() -> void:
 func init_market() -> void:
 	clear_details()
 	init_tabs()
-	selected_inventory = "Novelty Items"
+	selected_inventory = "Inventory"
 	inventory_label.text = selected_inventory
 	currency.text = "Currency: %s" % [TechTreeManager.currency]
 	InventoryManager.update_grid_container(inventory_container, selected_inventory)
@@ -131,12 +129,7 @@ func init_market() -> void:
 		bank_notice.show()
 
 func init_tabs() -> void:
-	if PlayerStats.facilities_unlocked["Crafting Tab"]:
-		novelties_tab.show()
-		crafting_tab.show()
-	
 	if PlayerStats.facilities_unlocked["Cooking Station"]:
-		cooking_tab.show()
 		use_tab.show()
 	
 	if PlayerStats.facilities_unlocked["Refinery Station"]:
@@ -158,7 +151,6 @@ func sell_all_items(container : GridContainer, inventory_name : String) -> void:
 				SaveManager.save_tech_tree_data()
 				await get_tree().create_timer(0.1).timeout
 
-
 func _on_sell_novelties_button_2_button_up() -> void:
 	sell_all_items(bank_container, "Bank")
 
@@ -166,32 +158,19 @@ func _on_sell_novelties_button_button_up() -> void:
 	sell_all_items(inventory_container, selected_inventory)
 
 func _on_novelties_tab_button_up() -> void:
-	selected_inventory = "Novelty Items"
+	selected_inventory = "Inventory"
 	inventory_label.text = selected_inventory
 	InventoryManager.update_grid_container(inventory_container, selected_inventory)
-
-func _on_crafting_tab_button_up() -> void:
-	selected_inventory = "Crafting Items"
-	inventory_label.text = selected_inventory
-	InventoryManager.update_grid_container(inventory_container, selected_inventory)
-
-func _on_cooking_tab_button_up() -> void:
-	selected_inventory = "Cooking Items"
-	inventory_label.text = selected_inventory
-	InventoryManager.update_grid_container(inventory_container, selected_inventory)
-
 
 func _on_ore_tab_button_up() -> void:
 	selected_inventory = "Ore"
 	inventory_label.text = selected_inventory
 	InventoryManager.update_grid_container(inventory_container, selected_inventory)
 
-
 func _on_gem_stones_tab_button_up() -> void:
 	selected_inventory = "Gem Stones"
 	inventory_label.text = selected_inventory
 	InventoryManager.update_grid_container(inventory_container, selected_inventory)
-
 
 func _on_use_tab_button_up() -> void:
 	selected_inventory = "Use"

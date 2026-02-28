@@ -175,6 +175,9 @@ func get_bag(bag : String) -> ItemBag:
 		3: return preload("uid://byikht2gbhthk")
 		_: return preload("uid://cuwof21s5e74c")
 
+func get_current_bag() -> ItemBag:
+	return get_bag("Bag")
+
 func upgrade_player_stat(stat_name : String, interval : float, node_type : TechTreeManager.TECH_NODE_TYPE) -> void:
 	
 	if node_type == TechTreeManager.TECH_NODE_TYPE.FACILITY or node_type == TechTreeManager.TECH_NODE_TYPE.CLASS_ABILITY:
@@ -200,7 +203,7 @@ func upgrade_player_stat(stat_name : String, interval : float, node_type : TechT
 	else:
 		player_stats[stat_name] += interval
 		
-	InventoryManager.update_inventory_bag.emit("Novelty Items")
+	InventoryManager.update_inventory_bag.emit("Inventory")
 	TechTreeManager.update_player_stats.emit()
 
 func check_needed_for_dojo() -> bool:

@@ -355,6 +355,7 @@ theme_override_font_sizes/font_size = 16
 text = "Inventory"
 
 [node name="TransferingTabLabel" type="Label" parent="ResultsPanel" unique_id=1092338927]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -509,88 +510,38 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -84.0
+offset_left = -66.0
 offset_top = -110.0
-offset_right = 121.0
+offset_right = 81.0
 offset_bottom = -89.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = -1
 
-[node name="NoveltyTab" type="TextureButton" parent="ResultsPanel/HBoxContainer" unique_id=1041581857]
+[node name="InventoryTab" type="TextureButton" parent="ResultsPanel/HBoxContainer" unique_id=1041581857]
 layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("8_ee4bn")
 texture_pressed = ExtResource("9_ra32m")
 texture_hover = ExtResource("10_34nn5")
 
-[node name="Label" type="Label" parent="ResultsPanel/HBoxContainer/NoveltyTab" unique_id=1138786018]
+[node name="Label" type="Label" parent="ResultsPanel/HBoxContainer/InventoryTab" unique_id=1138786018]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -11.0
+offset_left = -14.0
 offset_top = -5.0
-offset_right = 13.0
+offset_right = 14.0
 offset_bottom = 3.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("5_xwhdp")
 theme_override_font_sizes/font_size = 7
-text = "Novelty"
-
-[node name="CraftingTab" type="TextureButton" parent="ResultsPanel/HBoxContainer" unique_id=62142403]
-layout_mode = 2
-mouse_default_cursor_shape = 2
-texture_normal = ExtResource("8_ee4bn")
-texture_pressed = ExtResource("9_ra32m")
-texture_hover = ExtResource("10_34nn5")
-
-[node name="Label" type="Label" parent="ResultsPanel/HBoxContainer/CraftingTab" unique_id=591774238]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -13.0
-offset_top = -5.0
-offset_right = 11.0
-offset_bottom = 3.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("5_xwhdp")
-theme_override_font_sizes/font_size = 7
-text = "Crafting"
-
-[node name="CookingTab" type="TextureButton" parent="ResultsPanel/HBoxContainer" unique_id=2044193608]
-layout_mode = 2
-mouse_default_cursor_shape = 2
-texture_normal = ExtResource("8_ee4bn")
-texture_pressed = ExtResource("9_ra32m")
-texture_hover = ExtResource("10_34nn5")
-
-[node name="Label" type="Label" parent="ResultsPanel/HBoxContainer/CookingTab" unique_id=1648408375]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -11.0
-offset_top = -5.0
-offset_right = 13.0
-offset_bottom = 3.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("5_xwhdp")
-theme_override_font_sizes/font_size = 7
-text = "Cooking"
+text = "Inventory"
 
 [node name="OreTab" type="TextureButton" parent="ResultsPanel/HBoxContainer" unique_id=1381135393]
 layout_mode = 2
@@ -735,9 +686,7 @@ libraries/ = SubResource("AnimationLibrary_ra32m")
 
 [connection signal="button_up" from="ResultsPanel/ToTown" to="." method="_on_to_town_button_up"]
 [connection signal="button_up" from="ResultsPanel/NewRun" to="." method="_on_new_run_button_up"]
-[connection signal="button_up" from="ResultsPanel/HBoxContainer/NoveltyTab" to="." method="_on_novelty_tab_button_up"]
-[connection signal="button_up" from="ResultsPanel/HBoxContainer/CraftingTab" to="." method="_on_crafting_tab_button_up"]
-[connection signal="button_up" from="ResultsPanel/HBoxContainer/CookingTab" to="." method="_on_cooking_tab_button_up"]
+[connection signal="button_up" from="ResultsPanel/HBoxContainer/InventoryTab" to="." method="_on_novelty_tab_button_up"]
 [connection signal="button_up" from="ResultsPanel/HBoxContainer/OreTab" to="." method="_on_ore_tab_button_up"]
 [connection signal="button_up" from="ResultsPanel/HBoxContainer/GemStoneTab" to="." method="_on_gem_stone_tab_button_up"]
 [connection signal="button_up" from="ResultsPanel/HBoxContainer/UseTab" to="." method="_on_use_tab_button_up"]

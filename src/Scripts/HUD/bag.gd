@@ -13,14 +13,14 @@ const BAG_FULL = preload("uid://bakwpx4g6fqth")
 @onready var description: Label = $TextureRect/Description
 @onready var inventory_name: Label = $TextureRect/InventoryName
 
-@onready var novelty_tab: TextureButton = $TextureRect/HBoxContainer/NoveltyTab
-@onready var crafting_tab: TextureButton = $TextureRect/HBoxContainer/CraftingTab
-@onready var cooking_tab: TextureButton = $TextureRect/HBoxContainer/CookingTab
 @onready var ore: TextureButton = $TextureRect/HBoxContainer/Ore
 @onready var gem_stone_tab: TextureButton = $TextureRect/HBoxContainer/GemStoneTab
 @onready var use_tab: TextureButton = $TextureRect/HBoxContainer/UseTab
 
 
+@onready var filters: HBoxContainer = $TextureRect/Filters
+
+@onready var inventory_tab: TextureButton = $TextureRect/HBoxContainer/InventoryTab
 
 var selected_item : Item
 
@@ -31,7 +31,7 @@ var selected_item : Item
 @onready var gem_stone_tab_label: Label = $TextureRect/HBoxContainer/GemStoneTab/GemStoneTabLabel
 @onready var use_tab_label: Label = $TextureRect/HBoxContainer/UseTab/UseTabLabel
 
-@onready var tabs : Array[TextureButton] = [novelty_tab, crafting_tab, cooking_tab, ore, gem_stone_tab, use_tab]
+@onready var tabs : Array[TextureButton] = [inventory_tab, ore, gem_stone_tab, use_tab]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -48,7 +48,7 @@ func init_bag() -> void:
 	update_bag()
 	item_icon.texture = null
 	gold_count.text = str(TechTreeManager.currency)
-	update_grid_container("Novelty Items")
+	update_grid_container("Inventory")
 	clear_description_items()
 
 func update_grid_container(inventory : String) -> void:
@@ -71,6 +71,12 @@ func update_grid_container(inventory : String) -> void:
 		else:
 			grid_container.add_child(slot)
 	check_if_bag_full(inventory)
+	
+	if inventory == "Inventory":
+		filters.show()
+	else:
+		filters.hide()
+	
 
 func check_if_bag_full(inventory_name : String) -> void:
 	if InventoryManager.check_if_inventory_full(inventory_name, "Bag", "Max Bag Stack"):
@@ -98,32 +104,18 @@ func enable_tabs() -> void:
 		tab.disabled = false
 
 func init_tabs() -> void:
-	if PlayerStats.facilities_unlocked["Crafting Tab"]:
-		novelty_tab.show()
-		update_tab_label(novelty_tab_label,"Novelty", "Novelty Items")
-		crafting_tab.show()
-		update_tab_label(craft_tab_label,"Crafting", "Crafting Items")
-	else:
-		novelty_tab.hide()
-		crafting_tab.hide()
 	
 	if PlayerStats.facilities_unlocked["Cooking Station"]:
-		cooking_tab.show()
-		update_tab_label(cooking_tab_label,"Cooking", "Cooking Items")
 		use_tab.show()
 		update_tab_label(use_tab_label,"Use", "Use")
-	else:
-		cooking_tab.hide()
-		use_tab.hide()
-		
+	
 	if PlayerStats.facilities_unlocked["Refinery Station"]:
 		ore.show()
 		update_tab_label(ore_tab_label,"Ore", "Ore")
 		use_tab.show()
 		update_tab_label(use_tab_label,"Use", "Use")
-	else:
-		ore.hide()
-		use_tab.hide()
+
+	
 
 func update_tab_label(tab_label : Label, tab_name : String, selected_inventory_name : String) -> void:
 	var inventory_current_size : int = InventoryManager.inventories[selected_inventory_name].size()
@@ -135,15 +127,7 @@ func update_bag() -> void:
 	init_tabs()
 
 func _on_novelty_tab_button_up() -> void:
-	update_grid_container("Novelty Items")
-
-
-func _on_cooking_tab_button_up() -> void:
-	update_grid_container("Cooking Items")
-
-
-func _on_crafting_tab_button_up() -> void:
-	update_grid_container("Crafting Items")
+	update_grid_container("Inventory")
 
 
 func _on_ore_button_up() -> void:
@@ -183,3 +167,15 @@ func _on_discard_button_up() -> void:
 		clear_description_items()
 	if selected_item:
 		update_grid_container(selected_item.get_inventory_name())
+
+
+func _on_crafting_items_button_up() -> void:
+	InventoryManager.sort_inventory(grid_container, Item.ITEM_TYPE.CRAFTING)
+
+
+func _on_cooking_items_button_up() -> void:
+	InventoryManager.sort_inventory(grid_container, Item.ITEM_TYPE.COOKING)
+
+
+func _on_novelty_items_button_up() -> void:
+	InventoryManager.sort_inventory(grid_container, Item.ITEM_TYPE.NOVELTY)

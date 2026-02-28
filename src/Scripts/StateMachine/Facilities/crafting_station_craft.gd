@@ -72,7 +72,7 @@ func process_physics(_delta: float) -> State:
 				success_rate += PlayerStats.player_stats["Smelting Accuracy Bonus"]
 		
 		InventoryManager.remove_resources_from_inventory(parent.stored_recipe.recipe_list)	
-		
+		parent.update_bank_container()
 		if num_check <= int(success_rate * 100):
 			var item_added : bool
 			
@@ -102,7 +102,7 @@ func process_physics(_delta: float) -> State:
 		var can_add_to_inventory : bool
 		
 		if parent.station_type == parent.STATION_TYPE.COOKING:
-			can_add_to_inventory = InventoryManager.check_if_can_add_to_inventory(parent.stored_recipe.output_item, "Cooking Items", "Bag", "Max Bag Stack")
+			can_add_to_inventory = InventoryManager.check_if_can_add_to_inventory(parent.stored_recipe.output_item, "Inventory", "Bag", "Max Bag Stack")
 		elif parent.station_type == parent.STATION_TYPE.SMELTING:
 			can_add_to_inventory = InventoryManager.check_if_can_add_to_inventory(parent.stored_recipe.output_item, "Ore", "Bag", "Max Bag Stack")
 		

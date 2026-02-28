@@ -174,9 +174,7 @@ TODO: We will add saves for classes as well
 
 #though should be setup at "continue game too"
 @export var inventories : Dictionary = {
-	"Novelty Items" : [], # all other items go here
-	"Cooking Items":[],
-	"Crafting Items":[],
+	"Inventory" : [], # all other items go here
 	"Ore" : [], #send crafting items here
 	"Gem Stones" : [],
 	"Use": [],

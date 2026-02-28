@@ -23,9 +23,7 @@ signal hide_open_bag_notice
 signal populate_inventory_description(item : Item)
 
 @export var inventories : Dictionary = {
-	"Novelty Items" : [], # all other items go here
-	"Cooking Items":[],
-	"Crafting Items":[],
+	"Inventory" : [], # all other items go here
 	"Ore" : [], 
 	"Gem Stones" : [],
 	"Use": [],
@@ -45,15 +43,7 @@ signal populate_inventory_description(item : Item)
 
 func get_inventory_meta() -> Dictionary:
 	return {
-		"Novelty Items": {
-			"Max Slots": get_max_bag_slots("Bag"),
-			"Max Stack": get_max_bag_stack("Max Bag Stack"),
-		},
-		"Cooking Items": {
-			"Max Slots": get_max_bag_slots("Bag"),
-			"Max Stack": get_max_bag_stack("Max Bag Stack"),
-		},
-		"Crafting Items": {
+		"Inventory": {
 			"Max Slots": get_max_bag_slots("Bag"),
 			"Max Stack": get_max_bag_stack("Max Bag Stack"),
 		},
@@ -154,7 +144,7 @@ func remove_novelty_item(inventory_name : String, item : Item) -> bool:
 	
 ##TODO: Rewrite to erase every inventory
 func clear_bag() -> void:
-	var bag : Array = inventories["Novelty Items"]
+	var bag : Array = inventories["Inventory"]
 	for item in bag :
 		bag.erase(item)
 		
@@ -166,9 +156,7 @@ func remove_resources_from_inventory(recipe_list : Array[Dictionary]) -> void:
 			var remaining : int = item[resource]
 			
 			while remaining > 0:
-				if remove_item("Cooking Items", resource):
-					remaining -= 1
-				elif remove_item("Crafting Items", resource):
+				if remove_item("Inventory", resource):
 					remaining -= 1
 				elif remove_item("Ore", resource):
 					remaining -= 1
@@ -236,16 +224,12 @@ func update_inventories(inventory_name : String) -> void:
 	update_bank_inventory.emit()
 	SaveManager.save_inventories()
 
-func update_grid_container(grid_container : GridContainer, inventory : String, is_shop : bool = true) -> void:
+func update_grid_container(grid_container : GridContainer, inventory : String, is_shop : bool = true, inventory_array : Array = []) -> void:
 	clear_grid_container(grid_container)
 	
 	var max_slots : int
 	match inventory:
-		"Novelty Items":
-			max_slots = get_max_bag_slots("Bag")
-		"Cooking Items":
-			max_slots = get_max_bag_slots("Bag")
-		"Crafting Items":
+		"Inventory":
 			max_slots = get_max_bag_slots("Bag")
 		"Ore":
 			max_slots = get_max_bag_slots("Bag")
@@ -265,6 +249,7 @@ func update_grid_container(grid_container : GridContainer, inventory : String, i
 			slot.set_locale_as_bank()
 		
 		var potential_item
+		
 		if num < InventoryManager.inventories[inventory].size():
 			potential_item = InventoryManager.inventories[inventory][num]
 			
@@ -276,6 +261,30 @@ func update_grid_container(grid_container : GridContainer, inventory : String, i
 			grid_container.add_child(slot)
 		else:
 			grid_container.add_child(slot)
+
+func sort_inventory(grid_container : GridContainer, type : Item.ITEM_TYPE, is_shop : bool = false) -> void:
+	var inventory_snap_shot : Array = inventories["Inventory"].duplicate()
+	var new_inventory : Array = []
+	
+	for item in inventory_snap_shot:
+		if item["item"].item_type == type:
+			new_inventory.append(item)
+
+	update_grid_container_filtered(grid_container, new_inventory, is_shop)
+	
+func update_grid_container_filtered(grid_container : GridContainer, content : Array, is_shop : bool) -> void:
+	clear_grid_container(grid_container)
+	for item in content:
+		var slot : ItemSlot = preload("uid://d0s6j8mvikv8c").instantiate()
+		
+		if is_shop:
+			slot.set_as_shop_slot()
+
+		slot.item = item["item"]
+		slot.item_icon.texture = item["item"].shop_icon
+		slot.show_quantity_label(item["quantity"])
+		slot.set_indicator(item["item"])
+		grid_container.add_child(slot)
 
 func clear_grid_container(grid_container : GridContainer) -> void:
 	for child in grid_container.get_children():
@@ -290,9 +299,9 @@ func calculate_quantity(recipe: CraftingRecipe) -> int:
 			var inventory_amt
 			match mat.item_type:
 				mat.ITEM_TYPE.CRAFTING:
-					inventory_amt = get_quantity(mat, "Crafting Items")
+					inventory_amt = get_quantity(mat, "Inventory")
 				mat.ITEM_TYPE.COOKING:
-					inventory_amt = get_quantity(mat, "Cooking Items")
+					inventory_amt = get_quantity(mat, "Inventory")
 				mat.ITEM_TYPE.ORE:
 					inventory_amt = get_quantity(mat, "Ore")
 				mat.ITEM_TYPE.USE:

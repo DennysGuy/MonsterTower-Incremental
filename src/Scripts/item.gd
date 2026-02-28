@@ -30,11 +30,11 @@ func is_use() -> bool:
 func get_inventory_name() -> String:
 	match item_type:
 		ITEM_TYPE.NOVELTY:
-			return "Novelty Items"
+			return "Inventory"
 		ITEM_TYPE.COOKING:
-			return "Cooking Items"
+			return "Inventory"
 		ITEM_TYPE.CRAFTING:
-			return "Crafting Items"
+			return "Inventory"
 		ITEM_TYPE.ORE:
 			return "Ore"
 		ITEM_TYPE.GEMSTONE:
@@ -42,4 +42,4 @@ func get_inventory_name() -> String:
 		ITEM_TYPE.USE:
 			return "Use"
 		_:
-			return "Novelty Items"
+			return "Inventory"

@@ -34,7 +34,7 @@ const COUNTDOWN_BEEP = preload("uid://c6caiqmkt2lt0")
 @onready var start_hunt_challenge_button: Button = $PlayerHUD/StartHuntChallengeButton
 
 @onready var max_slot_stack: Label = $PlayerHUD/MaxSlotStack
-@onready var bagslots: Label = $PlayerHUD/Bagslots
+
 
 @onready var pick_up_notifier: VBoxContainer = $PlayerHUD/PickUpNotifier
 @onready var class_notice: RichTextLabel = $PlayerHUD/ClassNotice

@@ -41,7 +41,6 @@ func start_progress_wheel(selected_ability : String) -> void:
 	progress_wheel.max_value = AbilityTimers.ability_state[selected_ability]["Timer"].wait_time
 	progress_wheel.value = progress_wheel.max_value
 	timer_started = true
-	
 
 func emit_ready_spark() -> void:
 	var ready_spark := preload("uid://caecanj86lyrx").instantiate()
@@ -92,7 +91,6 @@ func _on_mouse_area_mouse_entered() -> void:
 func _on_texture_button_mouse_entered() -> void:
 	if ability_unlocked():
 		ability_description_panel.show()
-
 
 func _on_texture_button_mouse_exited() -> void:
 	if ability_unlocked():

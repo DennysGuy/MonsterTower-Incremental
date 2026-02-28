@@ -44,10 +44,12 @@ func _on_select_button_button_up() -> void:
 	SignalBus.update_player_uniform.emit("Idle")
 	GameManager.player_can_move = true
 	SignalBus.set_icons.emit()
+	SignalBus.play_warrior_unlock_animation.emit()
 	#Go to class tech tree
 	queue_free()
 
 func _on_exit_button_button_up() -> void:
+	
 	close_out()
 
 func close_out() -> void:

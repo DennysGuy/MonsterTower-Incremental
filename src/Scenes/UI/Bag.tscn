@@ -117,14 +117,14 @@ offset_bottom = 24.0
 grow_horizontal = 2
 theme_override_constants/separation = 0
 
-[node name="NoveltyTab" type="TextureButton" parent="TextureRect/HBoxContainer" unique_id=1148902090]
+[node name="InventoryTab" type="TextureButton" parent="TextureRect/HBoxContainer" unique_id=1148902090]
 layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("5_812es")
 texture_pressed = ExtResource("6_b6v18")
 texture_hover = ExtResource("7_le8wj")
 
-[node name="NoveltyTabLabel" type="Label" parent="TextureRect/HBoxContainer/NoveltyTab" unique_id=67951163]
+[node name="NoveltyTabLabel" type="Label" parent="TextureRect/HBoxContainer/InventoryTab" unique_id=67951163]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -140,59 +140,7 @@ grow_vertical = 2
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("7_cy2jp")
 theme_override_font_sizes/font_size = 8
-text = "Novelty"
-
-[node name="CraftingTab" type="TextureButton" parent="TextureRect/HBoxContainer" unique_id=2018854568]
-visible = false
-layout_mode = 2
-mouse_default_cursor_shape = 2
-texture_normal = ExtResource("5_812es")
-texture_pressed = ExtResource("5_s3gps")
-texture_hover = ExtResource("6_rvsgi")
-
-[node name="CraftTabLabel" type="Label" parent="TextureRect/HBoxContainer/CraftingTab" unique_id=479068163]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -17.0
-offset_top = -5.0
-offset_right = 17.75
-offset_bottom = 5.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("7_cy2jp")
-theme_override_font_sizes/font_size = 8
-text = "Crafting"
-
-[node name="CookingTab" type="TextureButton" parent="TextureRect/HBoxContainer" unique_id=1470094021]
-visible = false
-layout_mode = 2
-mouse_default_cursor_shape = 2
-texture_normal = ExtResource("5_812es")
-texture_pressed = ExtResource("5_s3gps")
-texture_hover = ExtResource("6_rvsgi")
-
-[node name="CookingTabLabel" type="Label" parent="TextureRect/HBoxContainer/CookingTab" unique_id=803508441]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -16.5
-offset_top = -5.0
-offset_right = 17.75
-offset_bottom = 5.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("7_cy2jp")
-theme_override_font_sizes/font_size = 8
-text = "Cooking"
+text = "Inventory"
 
 [node name="Ore" type="TextureButton" parent="TextureRect/HBoxContainer" unique_id=1342266733]
 visible = false
@@ -272,6 +220,93 @@ theme_override_fonts/font = ExtResource("7_cy2jp")
 theme_override_font_sizes/font_size = 10
 text = "Use"
 
+[node name="Filters" type="HBoxContainer" parent="TextureRect" unique_id=765079204]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -142.0
+offset_top = 177.0
+offset_right = -4.0
+offset_bottom = 198.0
+grow_horizontal = 2
+theme_override_constants/separation = 0
+
+[node name="NoveltyItems" type="TextureButton" parent="TextureRect/Filters" unique_id=1087850770]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("5_812es")
+texture_pressed = ExtResource("6_b6v18")
+texture_hover = ExtResource("7_le8wj")
+
+[node name="NoveltyFilterLabel" type="Label" parent="TextureRect/Filters/NoveltyItems" unique_id=1030155724]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.5
+offset_top = -5.0
+offset_right = 16.75
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("7_cy2jp")
+theme_override_font_sizes/font_size = 8
+text = "Novelty"
+
+[node name="CraftingItems" type="TextureButton" parent="TextureRect/Filters" unique_id=1882635405]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("5_812es")
+texture_pressed = ExtResource("5_s3gps")
+texture_hover = ExtResource("6_rvsgi")
+
+[node name="CratingFilterLabel" type="Label" parent="TextureRect/Filters/CraftingItems" unique_id=66450311]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.0
+offset_top = -5.5
+offset_right = 13.75
+offset_bottom = 5.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("7_cy2jp")
+theme_override_font_sizes/font_size = 10
+text = "Crafting"
+
+[node name="CookingItems" type="TextureButton" parent="TextureRect/Filters" unique_id=606253622]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("5_812es")
+texture_pressed = ExtResource("5_s3gps")
+texture_hover = ExtResource("6_rvsgi")
+
+[node name="CratingFilterLabel" type="Label" parent="TextureRect/Filters/CookingItems" unique_id=700059701]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.0
+offset_top = -5.5
+offset_right = 13.75
+offset_bottom = 5.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("7_cy2jp")
+theme_override_font_sizes/font_size = 10
+text = "Cooking"
+
 [node name="ItemTitle" type="Label" parent="TextureRect" unique_id=717180194]
 layout_mode = 1
 anchors_preset = 1
@@ -301,7 +336,7 @@ grow_horizontal = 0
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("7_cy2jp")
 theme_override_font_sizes/font_size = 16
-text = " Novelty Items"
+text = "Inventory Bag"
 
 [node name="Description" type="Label" parent="TextureRect" unique_id=478784575]
 layout_mode = 1
@@ -340,16 +375,34 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -128.25
-offset_top = 68.25
-offset_right = -14.25
-offset_bottom = 76.25
+offset_left = 21.0
+offset_top = 69.0
+offset_right = 135.0
+offset_bottom = 77.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("7_cy2jp")
 theme_override_font_sizes/font_size = 8
 text = "Items permanently lost on discard."
+
+[node name="Notice2" type="Label" parent="TextureRect" unique_id=1578885244]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -138.0
+offset_top = 57.0
+offset_right = -24.0
+offset_bottom = 65.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("7_cy2jp")
+theme_override_font_sizes/font_size = 10
+text = "Filters"
 
 [node name="GoldCount" type="Label" parent="TextureRect" unique_id=1673130369]
 layout_mode = 1
@@ -359,9 +412,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -125.25
-offset_top = 79.75
+offset_top = 89.0
 offset_right = -9.25
-offset_bottom = 90.75
+offset_bottom = 101.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 3
@@ -423,10 +476,11 @@ theme_override_fonts/font = ExtResource("4_4vhog")
 theme_override_font_sizes/font_size = 11
 text = "Tab Full!"
 
-[connection signal="button_up" from="TextureRect/HBoxContainer/NoveltyTab" to="." method="_on_novelty_tab_button_up"]
-[connection signal="button_up" from="TextureRect/HBoxContainer/CraftingTab" to="." method="_on_crafting_tab_button_up"]
-[connection signal="button_up" from="TextureRect/HBoxContainer/CookingTab" to="." method="_on_cooking_tab_button_up"]
+[connection signal="button_up" from="TextureRect/HBoxContainer/InventoryTab" to="." method="_on_novelty_tab_button_up"]
 [connection signal="button_up" from="TextureRect/HBoxContainer/Ore" to="." method="_on_ore_button_up"]
 [connection signal="button_up" from="TextureRect/HBoxContainer/GemStoneTab" to="." method="_on_gem_stone_tab_button_up"]
 [connection signal="button_up" from="TextureRect/HBoxContainer/UseTab" to="." method="_on_use_tab_button_up"]
+[connection signal="button_up" from="TextureRect/Filters/NoveltyItems" to="." method="_on_novelty_items_button_up"]
+[connection signal="button_up" from="TextureRect/Filters/CraftingItems" to="." method="_on_crafting_items_button_up"]
+[connection signal="button_up" from="TextureRect/Filters/CookingItems" to="." method="_on_cooking_items_button_up"]
 [connection signal="button_up" from="Discard" to="." method="_on_discard_button_up"]

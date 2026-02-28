@@ -108,3 +108,5 @@ signal show_ap_notice
 signal spawn_tower_map
 @warning_ignore("unused_signal")
 signal enable_tower_map_button
+@warning_ignore("unused_signal")
+signal play_warrior_unlock_animation

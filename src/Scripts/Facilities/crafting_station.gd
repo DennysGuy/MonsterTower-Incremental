@@ -202,6 +202,9 @@ func clear_details_panel() -> void:
 	success_rate.text = ""
 	InventoryManager.clear_grid_container(ingredients_container)
 
+func update_bank_container() -> void:
+	InventoryManager.update_grid_container(bank_container, "Bank")
+
 func update_inventories() -> void:
 	if PlayerStats.facilities_unlocked["Bank"]:
 		InventoryManager.update_grid_container(bank_container,"Bank",false)
@@ -209,8 +212,8 @@ func update_inventories() -> void:
 		bank_notice.show()
 	
 	if station_type == STATION_TYPE.COOKING:
-		resource_tab_label.text = "Cooking"
-		InventoryManager.update_grid_container(inventory_container,"Cooking Items",false )
+		resource_tab_label.text = "Inventory"
+		InventoryManager.update_grid_container(inventory_container,"Inventory",false )
 	elif station_type == STATION_TYPE.SMELTING:
 		resource_tab_label.text = "Ore"
 		InventoryManager.update_grid_container(inventory_container,"Ore",false )
@@ -229,7 +232,7 @@ func switch_to_use_tab() -> void:
 func _on_resource_tab_button_up() -> void:
 	if station_type == STATION_TYPE.COOKING:
 		selected_tab_label.text = "Tab - Cooking"
-		InventoryManager.update_grid_container(inventory_container, "Cooking Items")
+		InventoryManager.update_grid_container(inventory_container, "Inventory")
 	elif station_type == STATION_TYPE.SMELTING:
 		selected_tab_label.text = "Tab - Ore"
 		InventoryManager.update_grid_container(inventory_container, "Ore")

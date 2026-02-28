@@ -517,14 +517,14 @@ texture_hover = ExtResource("16_kbews")
 
 [node name="ResourceTabLabel" type="Label" parent="ResourceTab" unique_id=315142619]
 layout_mode = 0
-offset_left = 4.0
-offset_top = 7.0
-offset_right = 25.0
-offset_bottom = 15.0
+offset_left = 3.0
+offset_top = 6.0
+offset_right = 27.0
+offset_bottom = 14.0
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("17_jdhgx")
-theme_override_font_sizes/font_size = 7
-text = "Cooking"
+theme_override_font_sizes/font_size = 6
+text = "Inventory"
 
 [node name="UseTab" type="TextureButton" parent="." unique_id=1285483364]
 layout_mode = 0

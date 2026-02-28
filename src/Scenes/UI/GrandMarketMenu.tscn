@@ -341,69 +341,30 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -102.5
+offset_left = -100.0
 offset_top = 87.0
-offset_right = 71.5
+offset_right = 74.0
 offset_bottom = 108.0
 grow_horizontal = 2
 theme_override_constants/separation = 0
 
-[node name="NoveltiesTab" type="TextureButton" parent="HBoxContainer" unique_id=1472460900]
-visible = false
+[node name="InventoryTab" type="TextureButton" parent="HBoxContainer" unique_id=1472460900]
 layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("8_pkou2")
 texture_pressed = ExtResource("9_igyd3")
 texture_hover = ExtResource("10_2iekq")
 
-[node name="Label" type="Label" parent="HBoxContainer/NoveltiesTab" unique_id=296578205]
+[node name="Label" type="Label" parent="HBoxContainer/InventoryTab" unique_id=296578205]
 layout_mode = 0
-offset_left = 4.0
-offset_top = 6.0
-offset_right = 26.0
-offset_bottom = 13.0
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("6_wwjc2")
-theme_override_font_sizes/font_size = 6
-text = "Novelties"
-
-[node name="CraftingTab" type="TextureButton" parent="HBoxContainer" unique_id=472588845]
-visible = false
-layout_mode = 2
-mouse_default_cursor_shape = 2
-texture_normal = ExtResource("8_pkou2")
-texture_pressed = ExtResource("9_igyd3")
-texture_hover = ExtResource("10_2iekq")
-
-[node name="Label" type="Label" parent="HBoxContainer/CraftingTab" unique_id=1940823523]
-layout_mode = 0
-offset_left = 5.0
+offset_left = 3.0
 offset_top = 6.0
 offset_right = 27.0
 offset_bottom = 13.0
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("6_wwjc2")
 theme_override_font_sizes/font_size = 6
-text = "Crafting"
-
-[node name="CookingTab" type="TextureButton" parent="HBoxContainer" unique_id=1091205508]
-visible = false
-layout_mode = 2
-mouse_default_cursor_shape = 2
-texture_normal = ExtResource("8_pkou2")
-texture_pressed = ExtResource("9_igyd3")
-texture_hover = ExtResource("10_2iekq")
-
-[node name="Label" type="Label" parent="HBoxContainer/CookingTab" unique_id=15158384]
-layout_mode = 0
-offset_left = 5.0
-offset_top = 6.0
-offset_right = 27.0
-offset_bottom = 13.0
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("6_wwjc2")
-theme_override_font_sizes/font_size = 6
-text = "Cooking"
+text = "Inventory"
 
 [node name="OreTab" type="TextureButton" parent="HBoxContainer" unique_id=392124376]
 visible = false
@@ -468,9 +429,7 @@ text = "Use"
 [connection signal="button_up" from="Close" to="." method="_on_close_button_up"]
 [connection signal="button_up" from="SellNoveltiesButton" to="." method="_on_sell_novelties_button_button_up"]
 [connection signal="button_up" from="SellNoveltiesButton2" to="." method="_on_sell_novelties_button_2_button_up"]
-[connection signal="button_up" from="HBoxContainer/NoveltiesTab" to="." method="_on_novelties_tab_button_up"]
-[connection signal="button_up" from="HBoxContainer/CraftingTab" to="." method="_on_crafting_tab_button_up"]
-[connection signal="button_up" from="HBoxContainer/CookingTab" to="." method="_on_cooking_tab_button_up"]
+[connection signal="button_up" from="HBoxContainer/InventoryTab" to="." method="_on_novelties_tab_button_up"]
 [connection signal="button_up" from="HBoxContainer/OreTab" to="." method="_on_ore_tab_button_up"]
 [connection signal="button_up" from="HBoxContainer/GemStonesTab" to="." method="_on_gem_stones_tab_button_up"]
 [connection signal="button_up" from="HBoxContainer/UseTab" to="." method="_on_use_tab_button_up"]
