@@ -18,6 +18,7 @@ var stored_entrance_data : TowerEntranceData
 @onready var mode_description_label: RichTextLabel = $ModeDescription/ModeDescriptionLabel
 
 @onready var hunt_notification: Control = $FloorDescriptionPanel/HuntNotification
+@onready var selected_point: Label = $SelectedPoint
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -35,8 +36,9 @@ func _process(delta: float) -> void:
 func _on_go_to_floor_button_up() -> void:
 	SignalBus.play_close_out_animation.emit()
 	GameManager.player_can_move = true
+	GameManager.can_open_bag = true
+	GameManager.can_open_tower_map = true
 	GameManager.resupply_character = true
-	hide()
 	if PlayerStats.facilities_unlocked["Bank"]:
 		InventoryManager.move_inventory_to_bank()
 	await get_tree().create_timer(1.0).timeout
@@ -50,7 +52,7 @@ func store_entrance_data(entrance_data : TowerEntranceData) -> void:
 	biome_preview.texture = entrance_data.preview_pictures[0]
 	floor_title.text = "%s" % [entrance_data.floor_name]
 	biome_title.text ="Biome: %s" % [entrance_data.biome]
-	
+	selected_point.text = "Selected Point: %s - %s - Point: %s" % [entrance_data.biome, entrance_data.floor_name, GameManager.spawn_location+1]
 	for child in area_button_selector.get_children():
 		child.queue_free()
 	
@@ -72,16 +74,21 @@ func store_entrance_data(entrance_data : TowerEntranceData) -> void:
 
 func _on_close_button_up() -> void:
 	GameManager.player_can_move = true
+	GameManager.can_open_bag = true
+	GameManager.can_open_tower_map = true
+	SignalBus.hide_tech_tree_canvas_layer.emit()
 	queue_free()
-
+	
 func update_entrance_map(index : int) -> void:
 	biome_preview.texture = stored_entrance_data.preview_pictures[index]
 	GameManager.spawn_location = index
+	selected_point.text = "Selected Point: %s - %s - Point: %s" % [stored_entrance_data.biome, stored_entrance_data.floor_name, GameManager.spawn_location+1]
 
 func _on_hunt_selection_button_up() -> void:
 	set_mode_description_as_hunt_challenge()
 	GameManager.spawn_location = 0
 	GameManager.hunt_challenge_selected = true
+	selected_point.text = "Selected Point: %s - %s - Hunt Point" % [stored_entrance_data.biome, stored_entrance_data.floor_name]
 	show_hunt_time_label()
 	
 func show_hunt_time_label() -> void:

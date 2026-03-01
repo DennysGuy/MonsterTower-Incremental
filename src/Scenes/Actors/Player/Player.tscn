@@ -1937,8 +1937,6 @@ attack2_state = NodePath("../Attack2")
 idle_state = NodePath("../Idle")
 jump_state = NodePath("../Jump")
 swing_sfx = ExtResource("12_vhxh4")
-attack_friction = 400.0
-max_attack_drift = 200.0
 animation_name = "SwordSwing1"
 animation_duration = 0.45
 
@@ -1968,9 +1966,11 @@ idle_state = NodePath("../Idle")
 climb_state = NodePath("../Climb")
 animation_name = "AirAttack"
 
-[node name="DashAttack" type="Node" parent="StateMachine" unique_id=288563207 node_paths=PackedStringArray("idle_state")]
+[node name="DashAttack" type="Node" parent="StateMachine" unique_id=288563207 node_paths=PackedStringArray("idle_state", "attack_1", "jump")]
 script = ExtResource("17_cfcx3")
 idle_state = NodePath("../Idle")
+attack_1 = NodePath("../Attack1")
+jump = NodePath("../Jump")
 animation_name = "SwordSwing3"
 
 [node name="Hit" type="Node" parent="StateMachine" unique_id=73250372 node_paths=PackedStringArray("idle_state", "attack_1_state")]
@@ -2034,9 +2034,8 @@ libraries/ = SubResource("AnimationLibrary_pawjx")
 [node name="PlayerSprite" type="Sprite2D" parent="Sprites" unique_id=1041617266]
 position = Vector2(0, -32)
 scale = Vector2(1, 0.98604256)
-texture = ExtResource("32_ixl28")
-hframes = 15
-frame = 1
+texture = ExtResource("36_ysgjh")
+hframes = 17
 
 [node name="Outfit" type="Sprite2D" parent="Sprites" unique_id=411712928]
 position = Vector2(0, -32)

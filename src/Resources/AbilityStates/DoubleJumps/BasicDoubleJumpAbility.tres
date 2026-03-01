@@ -8,6 +8,6 @@ script = ExtResource("1_td2d8")
 ability_name = "Basic Double Jump Ability"
 ability_type = 3
 cooldown_time = 0.5
-ability_description = "Basic Double Jump"
+ability_description = "Press Jump in mid air to Jump again! How this makes sense? I do not know, but it is fun."
 ability_behavior = ExtResource("1_joq7q")
 metadata/_custom_type_script = "uid://bwqf7q51702b"

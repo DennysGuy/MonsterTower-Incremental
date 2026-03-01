@@ -25,7 +25,6 @@ signal update_player_stats
 @warning_ignore("unused_signal")
 signal unlock_station
 
-
 @warning_ignore("unused_signal")
 signal check_if_can_purchase_node
 
@@ -41,6 +40,12 @@ signal check_needed_item_panel_for_purchase
 @warning_ignore("unused_signal")
 signal set_ability_hud_icon
 
+@warning_ignore("unused_signal")
+signal check_if_can_show_class_select_node
+
+@warning_ignore("unused_signal")
+signal update_available_ap_label
+
 var currency : int = 0
 var current_prestige : int = 0
 
@@ -48,7 +53,7 @@ var current_upgrade_count : int = 0
 var upgrade_count_to_prestige : int = 0
 
 
-enum TECH_NODE_TYPE {ABILITY, FACILITY}
+enum TECH_NODE_TYPE {ABILITY, FACILITY, CLASS_ABILITY}
 
 @onready var tech_nodes : Dictionary = {
 	"Hunter License" : 0,
@@ -75,6 +80,7 @@ enum TECH_NODE_TYPE {ABILITY, FACILITY}
 	"Expedition Time 2": 0,
 	"Monster Cap 1": 0,
 	"Monster Cap 2": 0,
+	"Crafting Tab":0,
 	"Item Bag 1":0,
 	"Item Bag 2":0,
 	"Deeper Pockets 1":0,
@@ -141,7 +147,7 @@ func increment_upgrade_count() -> void:
 	
 	if current_upgrade_count >= upgrade_count_to_prestige:
 		current_prestige += 1
-		PlayerStats.player_stats["Hunt Time"] += 15
+		PlayerStats.player_stats["Hunt Time"] += 12
 		PlayerStats.player_stats["Expedition Time"] += 20
 		upgrade_count_to_prestige += 15
 		current_upgrade_count = 0

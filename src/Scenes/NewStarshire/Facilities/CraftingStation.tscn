@@ -13,6 +13,11 @@
 [ext_resource type="Script" uid="uid://drr0deykmfrvq" path="res://src/Scripts/StateMachine/state_machine.gd" id="10_ksp7y"]
 [ext_resource type="Script" uid="uid://dx08tn1e61j2d" path="res://src/Scripts/StateMachine/Facilities/crafting_station_idle.gd" id="11_8pjqq"]
 [ext_resource type="Script" uid="uid://d2ecwwj8fggfp" path="res://src/Scripts/StateMachine/Facilities/crafting_station_craft.gd" id="12_8jenx"]
+[ext_resource type="Texture2D" uid="uid://3y4drbijxgtr" path="res://Assets/HUD/Facilities/MarketTab.png" id="14_7k5kd"]
+[ext_resource type="Texture2D" uid="uid://bj8rof8t0vdf" path="res://Assets/HUD/Facilities/MarketTab_Pressed.png" id="15_tnpgv"]
+[ext_resource type="Texture2D" uid="uid://cc4s46tcussph" path="res://Assets/HUD/Facilities/MarketTab_Hover.png" id="16_kbews"]
+[ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="17_jdhgx"]
+[ext_resource type="Texture2D" uid="uid://bggsgp4t53q5y" path="res://Assets/HUD/NoticeIcon.png" id="18_tnpgv"]
 
 [node name="CraftingStation" type="Control" unique_id=1237576331 node_paths=PackedStringArray("state_machine", "idle_state", "crafting_state")]
 layout_mode = 3
@@ -42,9 +47,9 @@ texture = ExtResource("2_1wrh0")
 
 [node name="Title" type="Label" parent="." unique_id=2062983483]
 layout_mode = 0
-offset_left = 19.0
+offset_left = 222.0
 offset_top = 11.0
-offset_right = 181.0
+offset_right = 384.0
 offset_bottom = 34.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 7
@@ -105,18 +110,6 @@ theme_override_fonts/font = ExtResource("4_dxjxu")
 theme_override_font_sizes/font_size = 20
 text = "Inventory Full! (Make Space!)"
 
-[node name="Inventory" type="Label" parent="." unique_id=506996495]
-layout_mode = 0
-offset_left = 26.0
-offset_top = 39.0
-offset_right = 85.0
-offset_bottom = 52.0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("3_udv0u")
-theme_override_font_sizes/font_size = 13
-text = "Inventory"
-
 [node name="Bank" type="Label" parent="." unique_id=2055894265]
 layout_mode = 0
 offset_left = 26.0
@@ -128,6 +121,18 @@ theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("3_udv0u")
 theme_override_font_sizes/font_size = 13
 text = "Bank"
+
+[node name="SelectedTabLabel" type="Label" parent="." unique_id=2043091393]
+layout_mode = 0
+offset_left = 96.0
+offset_top = 40.0
+offset_right = 177.0
+offset_bottom = 53.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_udv0u")
+theme_override_font_sizes/font_size = 10
+text = "Tab - Cooking"
 
 [node name="RecipeName" type="Label" parent="." unique_id=1643530570]
 layout_mode = 0
@@ -477,9 +482,9 @@ text = "Exit
 
 [node name="RecipeName2" type="Label" parent="." unique_id=215117787]
 layout_mode = 0
-offset_left = 547.0
+offset_left = 538.0
 offset_top = 187.0
-offset_right = 586.0
+offset_right = 577.0
 offset_bottom = 202.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 7
@@ -500,6 +505,68 @@ script = ExtResource("12_8jenx")
 idle_state = NodePath("../Idle")
 sfx_player = NodePath("../../SfxPlayer")
 
+[node name="ResourceTab" type="TextureButton" parent="." unique_id=310465738]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 32.0
+offset_right = 53.0
+offset_bottom = 53.0
+texture_normal = ExtResource("14_7k5kd")
+texture_pressed = ExtResource("15_tnpgv")
+texture_hover = ExtResource("16_kbews")
+
+[node name="ResourceTabLabel" type="Label" parent="ResourceTab" unique_id=315142619]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 6.0
+offset_right = 27.0
+offset_bottom = 14.0
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("17_jdhgx")
+theme_override_font_sizes/font_size = 6
+text = "Inventory"
+
+[node name="UseTab" type="TextureButton" parent="." unique_id=1285483364]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 32.0
+offset_right = 85.0
+offset_bottom = 53.0
+texture_normal = ExtResource("14_7k5kd")
+texture_pressed = ExtResource("15_tnpgv")
+texture_hover = ExtResource("16_kbews")
+
+[node name="Label" type="Label" parent="UseTab" unique_id=618124655]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 5.0
+offset_right = 21.0
+offset_bottom = 15.0
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("17_jdhgx")
+theme_override_font_sizes/font_size = 9
+text = "Use"
+
+[node name="ItemAddedLabel" type="TextureRect" parent="." unique_id=1319516998]
+visible = false
+layout_mode = 0
+offset_left = 64.0
+offset_top = 18.0
+offset_right = 77.0
+offset_bottom = 31.0
+texture = ExtResource("18_tnpgv")
+expand_mode = 1
+
+[node name="ItemRemovedLabel" type="TextureRect" parent="." unique_id=971374481]
+visible = false
+layout_mode = 0
+offset_left = 32.0
+offset_top = 18.0
+offset_right = 45.0
+offset_bottom = 31.0
+texture = ExtResource("18_tnpgv")
+expand_mode = 1
+
 [connection signal="button_up" from="I" to="." method="_on_i_button_up"]
 [connection signal="button_up" from="II" to="." method="_on_ii_button_up"]
 [connection signal="button_up" from="III" to="." method="_on_iii_button_up"]
@@ -507,3 +574,5 @@ sfx_player = NodePath("../../SfxPlayer")
 [connection signal="button_up" from="StartCrafting" to="." method="_on_start_crafting_button_up"]
 [connection signal="button_up" from="StopCrafting" to="." method="_on_stop_crafting_button_up"]
 [connection signal="button_up" from="Exit" to="." method="_on_exit_button_up"]
+[connection signal="button_up" from="ResourceTab" to="." method="_on_resource_tab_button_up"]
+[connection signal="button_up" from="UseTab" to="." method="_on_use_tab_button_up"]

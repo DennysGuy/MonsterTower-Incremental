@@ -47,6 +47,8 @@ func process_physics(_delta: float) -> State:
 		return special_attack
 
 	if Input.is_action_just_pressed("swing_sword"):
+		parent.attack_friction = 400
+		parent.max_attack_drift = 200
 		return attack_1_state
 
 	var input := Input.get_axis("pan_cam_left", "pan_cam_right")
@@ -96,6 +98,7 @@ func process_physics(_delta: float) -> State:
 		return fall_state
 
 	if abs(parent.velocity.x) < 5.0:
+		parent.stop_player()
 		return idle_state
 
 	return null

@@ -41,13 +41,19 @@ func set_to_pick_up() -> void:
 	can_pick_up = true
 
 func pick_up_item() -> void:
-	if item is EnemyDrop:
-		if item.item_type == item.ITEM_TYPE.ORE:
-			can_pick_up = InventoryManager.add_item("Ore Inventory", item)
-		else:
+	match item.item_type:
+		item.ITEM_TYPE.NOVELTY:
 			can_pick_up = InventoryManager.add_item("Inventory", item)
-	else:
-		can_pick_up = InventoryManager.add_item("Inventory", item)
+		item.ITEM_TYPE.CRAFTING:
+			can_pick_up = InventoryManager.add_item("Inventory", item)
+		item.ITEM_TYPE.COOKING:
+			can_pick_up = InventoryManager.add_item("Inventory", item)
+		item.ITEM_TYPE.ORE:
+			can_pick_up = InventoryManager.add_item("Ore", item)
+		item.ITEM_TYPE.GEMSTONE:
+			can_pick_up = InventoryManager.add_item("Gem Stones", item)
+		item.ITEM_TYPE.USE:
+			can_pick_up = InventoryManager.add_item("Use", item)
 		
 	if can_pick_up:
 		SignalBus.play_sfx.emit(PICKUP_ITEM)

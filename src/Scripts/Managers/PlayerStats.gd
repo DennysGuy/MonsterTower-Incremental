@@ -14,6 +14,7 @@ const KNOCKBACK_FORCE : int = 300
 	"Level" : 1,
 	"Needed XP": 100,
 	"Current XP" : 0,
+	"Ability Points": 0,
 	"Class": "Junior Hunter",
 	"Attack Damage" : 13.0,
 	"Movement Speed" : 100.0,
@@ -79,6 +80,7 @@ func equip_ability(ability : Ability, position : String) -> void:
 	"Cooking Station" : false,
 	"Crafting Station" : false,
 	"Refinery Station" : false,
+	"Crafting Tab": false,
 	"Bank": false,
 	"Arial Slash" : false,
 	"Dash Attack": false,
@@ -173,9 +175,12 @@ func get_bag(bag : String) -> ItemBag:
 		3: return preload("uid://byikht2gbhthk")
 		_: return preload("uid://cuwof21s5e74c")
 
+func get_current_bag() -> ItemBag:
+	return get_bag("Bag")
+
 func upgrade_player_stat(stat_name : String, interval : float, node_type : TechTreeManager.TECH_NODE_TYPE) -> void:
 	
-	if node_type == TechTreeManager.TECH_NODE_TYPE.FACILITY:
+	if node_type == TechTreeManager.TECH_NODE_TYPE.FACILITY or node_type == TechTreeManager.TECH_NODE_TYPE.CLASS_ABILITY:
 		facilities_unlocked[stat_name] = true
 		print("stat name: %s is unclocked : %s" % [stat_name, facilities_unlocked[stat_name]])
 		
@@ -198,7 +203,7 @@ func upgrade_player_stat(stat_name : String, interval : float, node_type : TechT
 	else:
 		player_stats[stat_name] += interval
 		
-	InventoryManager.update_inventory_bag.emit()
+	InventoryManager.update_inventory_bag.emit("Inventory")
 	TechTreeManager.update_player_stats.emit()
 
 func check_needed_for_dojo() -> bool:

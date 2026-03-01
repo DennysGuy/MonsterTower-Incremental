@@ -21,7 +21,7 @@ func exit() -> void:
 	pass
 
 func process_input(_event: InputEvent) -> State:
-	if Input.is_action_just_pressed("add_currency") and PlayerStats.facilities_unlocked["Double Jump"] and parent.can_issue_ability("Double Jump"):
+	if Input.is_action_just_pressed("add_currency") and PlayerStats.facilities_unlocked["Double Jump"] and parent.can_issue_ability("Double Jump") and parent.can_double_jump:
 		parent.jump_buffer_timer = parent.jump_buffer_wait_time
 		return double_jump
 	return null
@@ -37,7 +37,7 @@ func process_physics(_delta: float) -> State:
 	if Input.is_action_just_pressed("swing_sword") and PlayerStats.facilities_unlocked["Arial Slash"] and parent.can_issue_ability("Air Attack"):
 		return air_attack
 	
-	var movement = Input.get_axis("pan_cam_left","pan_cam_right") * PlayerStats.player_stats["Movement Speed"]
+	var movement =  (Input.get_axis("pan_cam_left","pan_cam_right") * PlayerStats.player_stats["Movement Speed"] * 1.3)
 	
 	if movement != 0:
 		parent.flip_textures(movement < 0)

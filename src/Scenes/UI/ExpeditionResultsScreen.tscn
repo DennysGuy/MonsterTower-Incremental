@@ -3,10 +3,13 @@
 [ext_resource type="Script" uid="uid://b3dtngntwfdw8" path="res://src/Scripts/HUD/expedition_results_screen.gd" id="1_qg4s7"]
 [ext_resource type="Shader" uid="uid://bg20bvdcwspb" path="res://src/Scenes/UI/ExpeditionResultsScreen.gdshader" id="2_cbct7"]
 [ext_resource type="Texture2D" uid="uid://dejy6ivtgw1rl" path="res://Assets/HUD/TempResultsScreenBG.png" id="3_qyln5"]
-[ext_resource type="Texture2D" uid="uid://mmjc1ci2ofjv" path="res://Assets/HUD/TempResultsScreen_Panel.png" id="4_qyln5"]
+[ext_resource type="Texture2D" uid="uid://dnryc4fw5hgmw" path="res://Assets/HUD/ResultsScreen_Panel.png" id="4_xwhdp"]
 [ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="5_xwhdp"]
 [ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="7_ee4bn"]
 [ext_resource type="FontFile" uid="uid://qgj228ltdttv" path="res://Assets/Fonts/alagard.ttf" id="7_xwhdp"]
+[ext_resource type="Texture2D" uid="uid://fql6hkix8ti4" path="res://Assets/HUD/Bags/BagButton.png" id="8_ee4bn"]
+[ext_resource type="Texture2D" uid="uid://d1cbctq2fhe3k" path="res://Assets/HUD/Bags/BagButtonPressed.png" id="9_ra32m"]
+[ext_resource type="Texture2D" uid="uid://b05lg3tfu6n0b" path="res://Assets/HUD/Bags/BagButtonHover.png" id="10_34nn5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_47265"]
 shader = ExtResource("2_cbct7")
@@ -242,10 +245,10 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 360.0
-offset_bottom = 360.0006
+offset_bottom = 383.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_qyln5")
+texture = ExtResource("4_xwhdp")
 
 [node name="TitlePanel" type="Panel" parent="ResultsPanel" unique_id=1608003080]
 layout_mode = 1
@@ -254,10 +257,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -151.0
-offset_top = -106.0
-offset_right = -81.0
-offset_bottom = -83.0
+offset_left = 221.0
+offset_top = -136.0003
+offset_right = 291.0
+offset_bottom = -113.000305
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -268,9 +271,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -27.5
+offset_left = -28.5
 offset_top = -10.0
-offset_right = 25.5
+offset_right = 24.5
 offset_bottom = 9.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -280,17 +283,31 @@ theme_override_fonts/font = ExtResource("5_xwhdp")
 theme_override_font_sizes/font_size = 18
 text = "Results"
 
-[node name="ResultsLabel2" type="Label" parent="ResultsPanel/TitlePanel" unique_id=1810156141]
+[node name="GoalPanel" type="Panel" parent="ResultsPanel" unique_id=1080228483]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -32.0
-offset_top = 16.5
-offset_right = 29.0
-offset_bottom = 32.5
+offset_left = -302.0
+offset_top = -88.000305
+offset_right = -96.0
+offset_bottom = -62.000275
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ResultsLabel2" type="Label" parent="ResultsPanel/GoalPanel" unique_id=1810156141]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -93.0
+offset_top = -9.000015
+offset_right = 95.0
+offset_bottom = 6.9999847
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -299,20 +316,6 @@ theme_override_fonts/font = ExtResource("5_xwhdp")
 theme_override_font_sizes/font_size = 15
 text = "Last Floor"
 
-[node name="GoalPanel" type="Panel" parent="ResultsPanel" unique_id=1080228483]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -151.0
-offset_top = -62.00003
-offset_right = 147.0
-offset_bottom = -23.0
-grow_horizontal = 2
-grow_vertical = 2
-
 [node name="FloorReached" type="Label" parent="ResultsPanel/GoalPanel" unique_id=177287890]
 layout_mode = 1
 anchors_preset = 8
@@ -320,43 +323,29 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -140.5
-offset_top = -8.5
-offset_right = 145.5
-offset_bottom = 11.5
+offset_left = -94.0
+offset_top = -35.000015
+offset_right = -29.0
+offset_bottom = -15.000015
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("5_xwhdp")
-theme_override_font_sizes/font_size = 20
-text = "Floor Reached: Temp Biome - Floor 1"
+theme_override_font_sizes/font_size = 16
+text = "Last Floor"
 
-[node name="InventoryPanel" type="Panel" parent="ResultsPanel" unique_id=2013247508]
+[node name="InventoryLabel" type="Label" parent="ResultsPanel" unique_id=1192868822]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -151.0
-offset_top = -14.0
-offset_right = 148.0
-offset_bottom = 96.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="InventoryLabel" type="Label" parent="ResultsPanel/InventoryPanel" unique_id=1192868822]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -144.0
-offset_top = -53.5
-offset_right = -80.0
-offset_bottom = -37.5
+offset_left = -61.0
+offset_top = -93.000305
+offset_right = 3.0
+offset_bottom = -77.000305
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -365,7 +354,7 @@ theme_override_fonts/font = ExtResource("5_xwhdp")
 theme_override_font_sizes/font_size = 16
 text = "Inventory"
 
-[node name="OreBagLabel" type="Label" parent="ResultsPanel/InventoryPanel" unique_id=2018942112]
+[node name="TransferingTabLabel" type="Label" parent="ResultsPanel" unique_id=1092338927]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -373,53 +362,42 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 9.5
-offset_top = -53.5
-offset_right = 73.5
-offset_bottom = -37.5
+offset_left = -38.0
+offset_top = -119.5
+offset_right = 215.0
+offset_bottom = -103.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("5_xwhdp")
 theme_override_font_sizes/font_size = 16
-text = "Ore Bag"
+text = "Transfering Novelty Items..."
+horizontal_alignment = 1
 
-[node name="InventoryContainer" type="GridContainer" parent="ResultsPanel/InventoryPanel" unique_id=2136584720]
+[node name="InventoryContainer" type="GridContainer" parent="ResultsPanel" unique_id=2136584720]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -145.0
-offset_top = 20.0
-offset_right = -7.5
-offset_bottom = 55.0
+offset_left = -58.0
+offset_top = 123.499695
+offset_right = 72.0
+offset_bottom = 261.4997
 grow_horizontal = 2
 columns = 8
 
-[node name="OreInventoryContainer" type="GridContainer" parent="ResultsPanel/InventoryPanel" unique_id=1084190204]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = 10.5
-offset_top = 20.0
-offset_right = 148.0
-offset_bottom = 55.0
-grow_horizontal = 2
-columns = 8
-
-[node name="BankLabel" type="Label" parent="ResultsPanel/InventoryPanel" unique_id=554801765]
+[node name="BankLabel" type="Label" parent="ResultsPanel" unique_id=554801765]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -143.5
-offset_top = 0.5
-offset_right = -112.5
-offset_bottom = 16.5
+offset_left = 112.0
+offset_top = -94.000305
+offset_right = 143.0
+offset_bottom = -78.000305
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -428,7 +406,7 @@ theme_override_fonts/font = ExtResource("5_xwhdp")
 theme_override_font_sizes/font_size = 16
 text = "Bank"
 
-[node name="BankNotice" type="Label" parent="ResultsPanel/InventoryPanel" unique_id=1842469050]
+[node name="BankNotice" type="Label" parent="ResultsPanel" unique_id=1842469050]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -436,40 +414,54 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -65.5
-offset_top = 25.99997
-offset_right = 65.5
-offset_bottom = 40.99997
+offset_left = 115.0
+offset_top = -19.000305
+offset_right = 245.0
+offset_bottom = -3.0003052
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("5_xwhdp")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 15
 text = "Bank Account Locked!"
 
-[node name="BankContainer" type="GridContainer" parent="ResultsPanel/InventoryPanel" unique_id=1015440615]
+[node name="BankContainer" type="GridContainer" parent="ResultsPanel" unique_id=1015440615]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -144.0
-offset_top = 74.0
-offset_right = 143.0
-offset_bottom = 106.0
+offset_left = 115.0
+offset_top = 123.499695
+offset_right = 245.0
+offset_bottom = 262.4997
 grow_horizontal = 2
 columns = 8
 
-[node name="TipsAndTricks" type="Label" parent="ResultsPanel/InventoryPanel" unique_id=586831154]
+[node name="TipsAndTricks" type="Label" parent="ResultsPanel" unique_id=586831154]
 layout_mode = 0
-offset_left = -38.0
-offset_top = 128.0
-offset_right = 355.0
-offset_bottom = 151.0
+offset_left = 29.0
+offset_top = 166.0
+offset_right = 216.0
+offset_bottom = 295.0
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("5_xwhdp")
 text = "Can't reach a ledge? Upgrade your jump!"
 horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="TipsAndTricks2" type="Label" parent="ResultsPanel" unique_id=894760392]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 628.0
+offset_bottom = 40.0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("5_xwhdp")
+theme_override_font_sizes/font_size = 24
+text = "Head Back to Town or Indulge in more Spoils from the Tower?"
+horizontal_alignment = 1
+autowrap_mode = 3
 
 [node name="ToTown" type="Button" parent="ResultsPanel" unique_id=337593742]
 layout_mode = 1
@@ -478,10 +470,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 30.0
-offset_top = -108.0
-offset_right = 87.0
-offset_bottom = -88.0
+offset_left = -300.0
+offset_top = -138.5
+offset_right = -243.0
+offset_bottom = -118.5
 grow_horizontal = 2
 grow_vertical = 2
 mouse_default_cursor_shape = 2
@@ -498,10 +490,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 90.0
-offset_top = -108.0
-offset_right = 149.0
-offset_bottom = -88.0
+offset_left = -158.0
+offset_top = -138.5
+offset_right = -99.0
+offset_bottom = -118.5
 grow_horizontal = 2
 grow_vertical = 2
 mouse_default_cursor_shape = 2
@@ -511,13 +503,167 @@ theme_override_font_sizes/font_size = 12
 disabled = true
 text = "Go Again!"
 
+[node name="HBoxContainer" type="HBoxContainer" parent="ResultsPanel" unique_id=1137394488]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -66.0
+offset_top = -110.0
+offset_right = 81.0
+offset_bottom = -89.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = -1
+
+[node name="InventoryTab" type="TextureButton" parent="ResultsPanel/HBoxContainer" unique_id=1041581857]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("8_ee4bn")
+texture_pressed = ExtResource("9_ra32m")
+texture_hover = ExtResource("10_34nn5")
+
+[node name="Label" type="Label" parent="ResultsPanel/HBoxContainer/InventoryTab" unique_id=1138786018]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.0
+offset_top = -5.0
+offset_right = 14.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("5_xwhdp")
+theme_override_font_sizes/font_size = 7
+text = "Inventory"
+
+[node name="OreTab" type="TextureButton" parent="ResultsPanel/HBoxContainer" unique_id=1381135393]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("8_ee4bn")
+texture_pressed = ExtResource("9_ra32m")
+texture_hover = ExtResource("10_34nn5")
+
+[node name="Label" type="Label" parent="ResultsPanel/HBoxContainer/OreTab" unique_id=1379825789]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.5
+offset_top = -5.0
+offset_right = 4.5
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("5_xwhdp")
+theme_override_font_sizes/font_size = 8
+text = "Ore"
+
+[node name="GemStoneTab" type="TextureButton" parent="ResultsPanel/HBoxContainer" unique_id=742855887]
+visible = false
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("8_ee4bn")
+texture_pressed = ExtResource("9_ra32m")
+texture_hover = ExtResource("10_34nn5")
+
+[node name="Label" type="Label" parent="ResultsPanel/HBoxContainer/GemStoneTab" unique_id=2064547309]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.0
+offset_top = -3.0
+offset_right = 11.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("5_xwhdp")
+theme_override_font_sizes/font_size = 5
+text = "Gem Stones"
+
+[node name="UseTab" type="TextureButton" parent="ResultsPanel/HBoxContainer" unique_id=1052490956]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("8_ee4bn")
+texture_pressed = ExtResource("9_ra32m")
+texture_hover = ExtResource("10_34nn5")
+
+[node name="Label" type="Label" parent="ResultsPanel/HBoxContainer/UseTab" unique_id=648701713]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -7.0
+offset_top = -5.5
+offset_right = 7.0
+offset_bottom = 5.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("5_xwhdp")
+theme_override_font_sizes/font_size = 10
+text = "Use"
+
+[node name="ToTownBar" type="ProgressBar" parent="ResultsPanel" unique_id=1212166312]
+layout_mode = 0
+offset_left = 81.0
+offset_top = 52.0
+offset_right = 137.0
+offset_bottom = 71.0
+show_percentage = false
+
+[node name="ToTownInstructions" type="Label" parent="ResultsPanel" unique_id=995193442]
+layout_mode = 0
+offset_left = 86.0
+offset_top = 54.0
+offset_right = 145.0
+offset_bottom = 70.0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("5_xwhdp")
+theme_override_font_sizes/font_size = 16
+text = "Hold 'Q'"
+
+[node name="ToTowerBar" type="ProgressBar" parent="ResultsPanel" unique_id=1545743662]
+layout_mode = 0
+offset_left = 229.0
+offset_top = 53.0
+offset_right = 282.0
+offset_bottom = 72.0
+show_percentage = false
+
+[node name="ToTowerInstructions" type="Label" parent="ResultsPanel" unique_id=1192635721]
+layout_mode = 0
+offset_left = 232.0
+offset_top = 54.0
+offset_right = 297.0
+offset_bottom = 70.0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("5_xwhdp")
+theme_override_font_sizes/font_size = 16
+text = "Hold 'E'"
+
 [node name="TopRect" type="ColorRect" parent="." unique_id=785934542]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -180.0
-offset_bottom = -180.0
+offset_top = -360.0
+offset_bottom = -360.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
@@ -527,8 +673,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 180.0
-offset_bottom = 180.00037
+offset_top = 360.0
+offset_bottom = 360.00037
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
@@ -540,3 +686,7 @@ libraries/ = SubResource("AnimationLibrary_ra32m")
 
 [connection signal="button_up" from="ResultsPanel/ToTown" to="." method="_on_to_town_button_up"]
 [connection signal="button_up" from="ResultsPanel/NewRun" to="." method="_on_new_run_button_up"]
+[connection signal="button_up" from="ResultsPanel/HBoxContainer/InventoryTab" to="." method="_on_novelty_tab_button_up"]
+[connection signal="button_up" from="ResultsPanel/HBoxContainer/OreTab" to="." method="_on_ore_tab_button_up"]
+[connection signal="button_up" from="ResultsPanel/HBoxContainer/GemStoneTab" to="." method="_on_gem_stone_tab_button_up"]
+[connection signal="button_up" from="ResultsPanel/HBoxContainer/UseTab" to="." method="_on_use_tab_button_up"]

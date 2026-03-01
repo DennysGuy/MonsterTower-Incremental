@@ -15,7 +15,6 @@ var map_name : String = ""
 @export var expedition_timer: ExpeditionTimerLocal
 @onready var big_notification_label: Label = $PlayerHUD/BigNotificationLabel
 @onready var sfx_player: SFXPlayer = $SfxPlayer
-@onready var bag_2: OreBag = $PlayerHUD/Bag2
 
 @onready var can_cook_dish: RichTextLabel = $PlayerHUD/CanCookDish
 @onready var can_smelt_bar: RichTextLabel = $PlayerHUD/CanSmeltBar
@@ -35,11 +34,17 @@ const COUNTDOWN_BEEP = preload("uid://c6caiqmkt2lt0")
 @onready var start_hunt_challenge_button: Button = $PlayerHUD/StartHuntChallengeButton
 
 @onready var max_slot_stack: Label = $PlayerHUD/MaxSlotStack
-@onready var bagslots: Label = $PlayerHUD/Bagslots
+
 
 @onready var pick_up_notifier: VBoxContainer = $PlayerHUD/PickUpNotifier
 @onready var class_notice: RichTextLabel = $PlayerHUD/ClassNotice
 
+@onready var open_bag_notice: Control = $PlayerHUD/OpenBagNotice
+
+@onready var bag: InventoryBag = $PlayerHUD/Bag
+
+@onready var ap_available_label: RichTextLabel = $PlayerHUD/ApAvailableLabel
+@onready var open_tower_map_button: Button = $PlayerHUD/OpenTowerMapButton
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -63,31 +68,31 @@ func _ready() -> void:
 	SignalBus.hide_can_cook_dish_label.connect(hide_can_cook_dish)
 	SignalBus.hide_can_smelt_bar_label.connect(hide_can_smelt_bar)
 	SignalBus.hide_can_craft_sword.connect(hide_can_craft_sword)
-	
+	SignalBus.enable_tower_map_button.connect(enable_tower_map_button)
 	SignalBus.show_hunt_challenge_button.connect(show_hunt_challenge_button)
-	SignalBus.show_bag_stats.connect(display_bag_stats)
 	
 	SignalBus.populate_item_notification_panel.connect(populate_pick_notification_panel)
-	
 	TechTreeManager.update_currency_label.connect(update_currency_label)
 	#player_health_bar.max_value = PlayerStats.player_stats["Max Health"]
 	#player_health_bar.value = PlayerStats.player_stats["Current Health"]
 	
 	LevelingManager.update_xp_bar.connect(update_xp_bar)
+	TechTreeManager.update_available_ap_label.connect(update_ap_label)
+	InventoryManager.show_open_bag_notice.connect(show_open_bag_notice)
+	InventoryManager.hide_open_bag_notice.connect(hide_open_bag_notice)
 	
 	player_mp_bar.max_value = PlayerStats.player_stats["Current MP"]
 	player_mp_bar.value = player_mp_bar.max_value
 	
 	update_xp_bar()
+	update_ap_label()
 	#update_player_health(int(PlayerStats.player_stats["Current Health"]))
 	show_class_notice()
-	
-	if PlayerStats.facilities_unlocked["Refinery Station"]:
-		bag_2.show()
 
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("open_bag"):
+	if Input.is_action_just_pressed("open_bag") and GameManager.can_open_bag:
 		show_bag()
 
 func update_player_health(value : int) -> void:
@@ -102,6 +107,9 @@ func update_player_mp() -> void:
 	player_mp_bar.max_value = max_mp
 	mp_label.text = "%s/%s" % [current_mp,max_mp]
 
+func update_ap_label() -> void:
+	ap_available_label.text = "[color=purple]Avail. AP: %s[/color]" % PlayerStats.player_stats["Ability Points"] 
+
 func update_xp_bar() -> void:
 	level_label.text = "Level %s" % [int(PlayerStats.player_stats["Level"])]
 	xp_amount_label.text = "%s / %s XP" % [int(PlayerStats.player_stats["Current XP"]), int(PlayerStats.player_stats["Needed XP"])]
@@ -111,6 +119,15 @@ func update_xp_bar() -> void:
 func spawn_respawn_box() -> void:
 	var respawn_box : RespawnBox = preload("uid://dv20tfcnkjyux").instantiate()
 	player_hud.add_child(respawn_box)
+
+func show_open_bag_notice() -> void:
+	open_bag_notice.show()
+
+func hide_open_bag_notice() -> void:
+	open_bag_notice.hide()
+
+func enable_tower_map_button() -> void:
+	open_tower_map_button.disabled = false
 
 func update_kill_quota_text(message : String, quota_met : bool, challenge_unlocked : bool) -> void:
 	if is_inside_tree():
@@ -136,8 +153,16 @@ func update_currency_label() -> void:
 func show_bag() -> void:
 	bag_showing = !bag_showing
 	if bag_showing:
+		InventoryManager.hide_open_bag_notice.emit()
+		SignalBus.stop_player.emit()
+		GameManager.player_can_move = false
+		bag.enable_tabs()
+		bag.update_bag()
+
 		bag_animation_player.play("ShowBag")
 	else:
+		GameManager.player_can_move = true
+		bag.disable_tabs()
 		bag_animation_player.play("HideBag")
 
 func start_expedition_timer() -> void:
@@ -150,6 +175,7 @@ func set_hunt_timer() -> void:
 	ExpeditionTimer.set_time_for_hunt()
 
 func start_hunt_timer() -> void:
+	GameManager.enemies_can_move = true
 	ExpeditionTimer.start_hunt_timer()
 
 func load_expedition_timer_with_hunt_time() -> void:
@@ -186,8 +212,15 @@ func show_can_craft_sword() -> void:
 
 func show_class_notice() -> void:
 	var current_class : String = PlayerStats.player_stats["Class"] 
-	if current_class == "Junior Hunter" and PlayerStats.check_needed_for_dojo():
+	if current_class == "Junior Hunter" and PlayerStats.player_stats["Level"] >= 8:
+		class_notice.text = "[color=purple]Advance your class at the Class Advance Center![/color]"
 		class_notice.show()
+	elif PlayerStats.player_stats["Ability Points"] >= 1:
+		class_notice.text = "[color=purple]Spend AP at the Class AdvanceCenter![/color]"
+		class_notice.show()
+	else:
+		class_notice.hide()
+	
 
 
 func hide_can_cook_dish() -> void:
@@ -208,11 +241,6 @@ func remaining_monsters(text : String, out_of_enmies : bool) -> void:
 func start_timer() -> void:
 	pass
 
-func display_bag_stats() -> void:
-	bagslots.show()
-	max_slot_stack.show()
-	bagslots.text = "Bag Slots: %s" % PlayerStats.get_bag("Bag").max_slots
-	max_slot_stack.text = "Max Slot Stacks: %s" % int(PlayerStats.player_stats["Max Bag Stack"])
 
 func show_hunt_challenge_button() -> void:
 	start_hunt_challenge_button.show()
@@ -235,3 +263,10 @@ func populate_pick_notification_panel(item_data : Item) -> void:
 	
 	notification_item.label.text = "Picked up 1 %s" % item_data.item_name
 	pick_up_notifier.add_child(notification_item)
+
+
+func _on_open_tower_map_button_button_up() -> void:
+	if !GameManager.can_open_tower_map:
+		return
+	
+	SignalBus.spawn_tower_map.emit()

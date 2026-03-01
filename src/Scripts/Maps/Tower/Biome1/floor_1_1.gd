@@ -38,7 +38,7 @@ func _ready() -> void:
 		hud.set_hunt_timer()
 		hud.expedition_timer.update_timer_label()
 		hud.animation_player.play("StartHuntChallenge")
-		await get_tree().create_timer(7.0).timeout
+		await get_tree().create_timer(4.0).timeout
 		player.damageable = true
 		GameManager.player_can_move = true
 

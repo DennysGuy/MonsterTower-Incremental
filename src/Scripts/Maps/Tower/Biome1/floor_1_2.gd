@@ -26,6 +26,7 @@ func _ready() -> void:
 	SaveManager.save_player_stats()
 	
 	if GameManager.hunt_challenge_selected:
+		GameManager.enemies_can_move = false
 		SignalBus.hide_hunt_challenge_button.emit()
 		var monster_count : int = monster_spawn_node.get_children().size()
 		SignalBus.update_monsters_left.emit("Monsters left: %s" % [monster_count],false)
@@ -34,7 +35,7 @@ func _ready() -> void:
 		hud.set_hunt_timer()
 		hud.expedition_timer.update_timer_label()
 		hud.animation_player.play("StartHuntChallenge")
-		await get_tree().create_timer(7.0).timeout
+		await get_tree().create_timer(4.0).timeout
 		player.damageable = true
 		GameManager.player_can_move = true
 	

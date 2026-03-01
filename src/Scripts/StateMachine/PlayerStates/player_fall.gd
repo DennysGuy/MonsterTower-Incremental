@@ -19,7 +19,7 @@ func exit() -> void:
 
 func process_input(_event: InputEvent) -> State:
 	if Input.is_action_just_pressed("add_currency"):
-		if PlayerStats.facilities_unlocked["Double Jump"] and parent.can_issue_ability("Double Jump"):
+		if PlayerStats.facilities_unlocked["Double Jump"] and parent.can_issue_ability("Double Jump") and parent.can_double_jump:
 			return double_jump
 		else:
 			parent.jump_buffer_timer = parent.jump_buffer_wait_time

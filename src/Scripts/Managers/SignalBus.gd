@@ -95,3 +95,18 @@ signal show_class_notice
 signal set_icons
 @warning_ignore("unused_signal")
 signal play_sfx(audio_stream : AudioStream)
+@warning_ignore("unused_signal")
+signal hide_tech_tree_canvas_layer
+@warning_ignore("unused_signal")
+signal stop_player
+
+@warning_ignore("unused_signal")
+signal spawn_class_selection_menu
+@warning_ignore("unused_signal")
+signal show_ap_notice
+@warning_ignore("unused_signal")
+signal spawn_tower_map
+@warning_ignore("unused_signal")
+signal enable_tower_map_button
+@warning_ignore("unused_signal")
+signal play_warrior_unlock_animation

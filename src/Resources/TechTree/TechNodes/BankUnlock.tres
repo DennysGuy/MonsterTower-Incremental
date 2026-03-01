@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="TechNodeStats" load_steps=3 format=3 uid="uid://cmbxvekbk2uxx"]
+[gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://cmbxvekbk2uxx"]
 
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_byv8u"]
 [ext_resource type="Texture2D" uid="uid://d1nf80ju1h17" path="res://Assets/NodeGraphics/NodeGraphicsV2/Bank1_V2.png" id="1_y8g6j"]

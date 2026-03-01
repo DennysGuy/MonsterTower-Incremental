@@ -26,6 +26,8 @@ class_name Player extends Entity
 
 @onready var sword_soar_hit_box: HitBox = $SwordSoarHitBox
 
+@export var attack_friction : float = 2600.0
+@export var max_attack_drift : float = 220.0
 
 var stored_ladder : LadderArea
 var stored_enemy : Enemy
@@ -44,7 +46,7 @@ var coyote_timer : float = 0.0
 var coyote_wait_time : float = 0.17 
 
 var attack_buffer_timer : float = 0.0
-var attack_buffer_wait_time : float = 0.3
+var attack_buffer_wait_time : float = 1.0
 
 var can_attack_cancel: bool = false
 
@@ -53,6 +55,7 @@ var was_on_ledge : bool = true
 var apply_gravity : bool = true
 
 var is_silence_attack : bool = false
+
 
 @export var idle_state : State
 @export var jump_state : State
@@ -67,6 +70,7 @@ func _ready() -> void:
 	super()
 	SignalBus.update_sword_texture.connect(set_sword_texture)
 	SignalBus.update_player_uniform.connect(set_outfit_texture)
+	SignalBus.stop_player.connect(stop_player)
 	health = PlayerStats.player_stats["Max Health"]
 	mining_area_position = mining_area.position
 	hit_box_position = hit_box.position
@@ -82,10 +86,10 @@ func _physics_process(delta: float) -> void:
 		
 	if coyote_timer > 0:
 		coyote_timer -= delta
-	
+
 	if attack_buffer_timer > 0:
 		attack_buffer_timer -= delta
-		
+	
 
 func _unhandled_input(event: InputEvent) -> void:
 	super(event)
@@ -123,6 +127,11 @@ func clear_sprites() -> void:
 	animation_player.stop()
 	for cur_sprite in sprites.get_children():
 		cur_sprite.texture = null
+func stop_player() -> void:
+	velocity = Vector2.ZERO
+
+func set_attack_buffer_timer() -> void:
+	attack_buffer_timer = attack_buffer_wait_time
 
 func issue_attack(selected_hit_box : HitBox, multiplier : float = 1.0, ability : Ability = null) -> void:
 	var enemies_in_range = selected_hit_box.get_overlapping_areas()
@@ -266,6 +275,7 @@ func _on_sword_soar_hit_box_area_entered(area: Area2D) -> void:
 func _on_dash_attack_hit_box_area_entered(area: Area2D) -> void:
 	var parent = area.get_parent()
 	if parent is Enemy:
+		print(parent)
 		if is_silence_attack:
 			var equipped_dash_attack : Ability = PlayerStats.get_equipped_ability("Dash Attack")
 			var damage = randi_range(PlayerStats.player_stats["Attack Damage"] * 0.8, PlayerStats.player_stats["Attack Damage"]) * equipped_dash_attack.attack_damage_modifier

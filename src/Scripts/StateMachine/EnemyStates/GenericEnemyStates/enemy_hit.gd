@@ -21,7 +21,6 @@ func enter() -> void:
 func exit() -> void:
 	parent.enable_hurt_box()
 	parent.enable_hit_box()
-	pass
 	
 func process_input(_event: InputEvent) -> State:
 	return null

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://d0s6j8mvikv8c"]
+[gd_scene format=3 uid="uid://d0s6j8mvikv8c"]
 
 [ext_resource type="Texture2D" uid="uid://cu6upr5f3ht4k" path="res://Assets/HUD/ItemSlot.png" id="1_xtjb4"]
 [ext_resource type="Script" uid="uid://0ppf5xv3cq5c" path="res://src/Scripts/HUD/item_slot.gd" id="2_2koek"]
@@ -8,7 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://dbe6piv0wn7lq" path="res://Assets/HUD/ItemSlot_crafting.png" id="5_i5ajy"]
 [ext_resource type="Texture2D" uid="uid://blepqdi1qq7bf" path="res://Assets/HUD/ItemSlot_na.png" id="6_g2mhj"]
 
-[node name="Slot" type="TextureRect" node_paths=PackedStringArray("item_icon", "quantity_label", "indicator_cooking", "indicator_novelty", "indicator_crafting", "indicator_na")]
+[node name="Slot" type="TextureRect" unique_id=782442892 node_paths=PackedStringArray("item_icon", "quantity_label", "indicator_cooking", "indicator_novelty", "indicator_crafting", "indicator_na")]
+mouse_filter = 0
+mouse_default_cursor_shape = 2
 texture = ExtResource("1_xtjb4")
 script = ExtResource("2_2koek")
 item_icon = NodePath("ItemIcon")
@@ -18,7 +20,7 @@ indicator_novelty = NodePath("IndicatorNovelty")
 indicator_crafting = NodePath("IndicatorCrafting")
 indicator_na = NodePath("IndicatorNA")
 
-[node name="IndicatorCooking" type="TextureRect" parent="."]
+[node name="IndicatorCooking" type="TextureRect" parent="." unique_id=700765514]
 visible = false
 layout_mode = 0
 offset_right = 32.0
@@ -26,7 +28,7 @@ offset_bottom = 32.0
 texture = ExtResource("3_naodc")
 stretch_mode = 2
 
-[node name="IndicatorNovelty" type="TextureRect" parent="."]
+[node name="IndicatorNovelty" type="TextureRect" parent="." unique_id=2083403355]
 visible = false
 layout_mode = 0
 offset_right = 32.0
@@ -34,7 +36,7 @@ offset_bottom = 32.0
 texture = ExtResource("4_2koek")
 stretch_mode = 2
 
-[node name="IndicatorCrafting" type="TextureRect" parent="."]
+[node name="IndicatorCrafting" type="TextureRect" parent="." unique_id=1157431083]
 visible = false
 layout_mode = 0
 offset_right = 32.0
@@ -42,7 +44,7 @@ offset_bottom = 32.0
 texture = ExtResource("5_i5ajy")
 stretch_mode = 2
 
-[node name="IndicatorNA" type="TextureRect" parent="."]
+[node name="IndicatorNA" type="TextureRect" parent="." unique_id=1309282920]
 visible = false
 layout_mode = 0
 offset_right = 32.0
@@ -50,14 +52,14 @@ offset_bottom = 32.0
 texture = ExtResource("6_g2mhj")
 stretch_mode = 2
 
-[node name="ItemIcon" type="TextureRect" parent="."]
+[node name="ItemIcon" type="TextureRect" parent="." unique_id=37605428]
 layout_mode = 0
 offset_left = 2.0
 offset_top = 2.5
 offset_right = 29.0
 offset_bottom = 29.5
 
-[node name="QuantityLabel" type="Label" parent="."]
+[node name="QuantityLabel" type="Label" parent="." unique_id=275770280]
 visible = false
 layout_mode = 0
 offset_left = 18.0

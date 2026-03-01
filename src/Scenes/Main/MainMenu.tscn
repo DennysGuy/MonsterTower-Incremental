@@ -148,14 +148,29 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 7.0
+offset_left = 4.0
 offset_top = 4.0
-offset_right = 9.0
-offset_bottom = 4.0
+offset_right = -5.0
+offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/normal_font = ExtResource("2_58xxk")
 theme_override_font_sizes/normal_font_size = 14
+text = "Prototype Update Notes
+
+- core abilities (dash, djump, air attack) unlocked in class advancement center
+- added tower map button to HUD in HUB
+- bag expanded to have tabs for each category (they unveil while you unlock facilities)
+
+- Challenge Hunt Intro Shortened to 4 seconds
+- Player now receives '1' ability point when leveling up (can be spent on abilities unlock)
+- Class advance Center now opens to new \"Ability Tecch Tree\" where players can unlock core abilities before choosing a class
+
+- class unlock moved to level 8
+- Tech Nodes price adjustment influenced by inventory update
+- Sword Upgrades recipe quantities increased
+- Crafting Item Tab Tech Node Created.
+- ** HOVER OVER ABILITY ICON ON PLAYER HUD TO READ HOW TO USE ABILITY"
 
 [node name="TransitionRect" type="ColorRect" parent="." unique_id=1379323239]
 layout_mode = 1

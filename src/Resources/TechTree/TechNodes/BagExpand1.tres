@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://c1ojmw7gy7o6"]
+
+[ext_resource type="Texture2D" uid="uid://dix63priuogkk" path="res://Assets/NodeGraphics/NodeGraphicsV2/Bag1_V2.png" id="1_85ix1"]
+[ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="2_fd5oi"]
+
+[resource]
+script = ExtResource("2_fd5oi")
+node_name = "Item Bag 1"
+icon = ExtResource("1_85ix1")
+description = "Expand Bag Slots by 1
+
+[color=red]Crafting items can now drop from enemies![/color]"
+currency_required = 150
+stat_name = "Bag"
+upgrade_interval = 1.0
+prereqs = Array[String](["Hunter License:1"])
+metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

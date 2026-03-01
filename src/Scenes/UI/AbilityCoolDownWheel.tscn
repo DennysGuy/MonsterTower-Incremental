@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://c6ec2e3vsjusf" path="res://Assets/HUD/AbilityCoolDownProgressSquare.png" id="1_bu7ek"]
 [ext_resource type="Script" uid="uid://iaapj6re7hu" path="res://src/Scripts/HUD/ability_cool_down_wheel.gd" id="2_5n2rg"]
 [ext_resource type="Texture2D" uid="uid://cbcw7ua8sro78" path="res://Assets/HUD/HUD_LockedAbilityIcon.png" id="2_lp3lp"]
+[ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="4_4lse4"]
 
 [node name="AbilityCoolDownWheel" type="Control" unique_id=844176484]
 layout_mode = 3
@@ -53,3 +54,49 @@ grow_vertical = 2
 step = 0.0
 fill_mode = 5
 texture_progress = ExtResource("1_bu7ek")
+
+[node name="AbilityDescriptionPanel" type="Panel" parent="." unique_id=571804962]
+visible = false
+layout_mode = 0
+offset_left = -58.25
+offset_top = -149.0
+offset_right = 67.75
+offset_bottom = -9.0
+
+[node name="AbilityTitle" type="Label" parent="AbilityDescriptionPanel" unique_id=1647570366]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -41.0
+offset_right = 41.0
+offset_bottom = 16.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("4_4lse4")
+text = "Ability Name"
+
+[node name="Description" type="RichTextLabel" parent="AbilityDescriptionPanel" unique_id=1437306245]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -55.0
+offset_top = -48.0
+offset_right = 56.0
+offset_bottom = 63.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("4_4lse4")
+theme_override_font_sizes/normal_font_size = 13
+text = "This is the ability Description Okeyday"
+
+[node name="TextureButton" type="TextureButton" parent="." unique_id=278726368]
+layout_mode = 0
+offset_left = -0.25
+offset_right = 11.75
+offset_bottom = 12.0
+
+[connection signal="mouse_entered" from="TextureButton" to="." method="_on_texture_button_mouse_entered"]
+[connection signal="mouse_exited" from="TextureButton" to="." method="_on_texture_button_mouse_exited"]

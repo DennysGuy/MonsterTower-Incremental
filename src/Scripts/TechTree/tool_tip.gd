@@ -67,13 +67,15 @@ func check_resource_quantity() -> void:
 			for resource in resource_dict.keys():
 				quantity_list_item.icon.texture = resource.shop_icon
 				var quantity : int = 0
-				if resource is EnemyDrop:
-					if resource.item_type == resource.ITEM_TYPE.ORE:
-						quantity  = InventoryManager.get_quantity(resource)
-					else:
-						quantity  = InventoryManager.get_quantity(resource)
-				else:
-					quantity  = InventoryManager.get_quantity(resource)	
+				match resource.item_type:
+					resource.ITEM_TYPE.COOKING:
+						quantity = InventoryManager.get_quantity(resource, "Cooking Items")
+					resource.ITEM_TYPE.CRAFTING:
+						quantity = InventoryManager.get_quantity(resource, "Crafting Items")
+					resource.ITEM_TYPE.ORE:
+						quantity = InventoryManager.get_quantity(resource, "Ore")
+					resource.ITEM_TYPE.USE:
+						quantity = InventoryManager.get_quantity(resource, "Use")
 				quantity_list_item.quantity_label.text = "x%s" % [quantity]
 				
 			quantity_list.add_child(quantity_list_item)

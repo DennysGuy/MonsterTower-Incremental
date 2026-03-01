@@ -5,6 +5,7 @@ class_name NewStarShireMap extends Map
 @onready var control: Control = $CanvasLayer/Control
 @onready var enter_market_label: Label = $EnterMarketLabel
 @onready var access_crafting_station: Label = $AccessCraftingStation
+@onready var canvas_layer: CanvasLayer = $CanvasLayer
 
 var player_in_tower_range : bool = false
 var player_in_market_range : bool = false
@@ -25,6 +26,7 @@ var player_in_dojo_range : bool = false
 @onready var temp_cooking_range: CookingRangeGraphic = $TempCookingRange
 @onready var temp_smelting_station: SmeltingStationGraphic = $TempSmeltingStation
 @onready var dojo_access_notification: Label = $Dojo/DojoAccessNotification
+@onready var ap_notice: TextureRect = $Dojo/APNotice
 
 const CRAFT_SWORD = preload("uid://4c6l1w0kpar3")
 const UNLOCK_SHOP = preload("uid://cveiqvxm5r0yw")
@@ -35,7 +37,14 @@ func _ready() -> void:
 	super()
 	SignalBus.spawn_tech_tree.connect(add_tech_tree_to_scene)
 	SignalBus.issue_can_craft_sword_scene.connect(new_sword_unlock_notice)
+	SignalBus.hide_tech_tree_canvas_layer.connect(hide_tech_tree_canvas_layer)
+	SignalBus.spawn_class_selection_menu.connect(spawn_dojo_menu)
+	SignalBus.spawn_tower_map.connect(spawn_tower_entrance_map)
+	SignalBus.play_warrior_unlock_animation.connect(warrior_class_unlocked_notice)
 	TechTreeManager.unlock_station.connect(unlock_station)
+	SignalBus.show_ap_notice.connect(show_ap_notice)
+
+
 	TechTreeManager.update_currency_label.emit()
 	CookingManager.can_craft_bar.emit()
 	hud.animation_player.play("CloseIn")
@@ -49,6 +58,8 @@ func _ready() -> void:
 	else:
 		SignalBus.hide_can_craft_sword.emit()
 	
+	show_ap_notice()
+	hud.open_tower_map_button.show()
 	await get_tree().process_frame
 	SignalBus.update_player_health.emit(player.health)
 	PlayerStats.player_stats["Current MP"] = PlayerStats.player_stats["Max MP"]
@@ -59,9 +70,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	super(delta)
 	if Input.is_action_just_pressed("interact") and player_in_tower_range and GameManager.player_can_move and PlayerStats.facilities_unlocked["Hunter License"]:
-		spawn_tower_entrance_map() #need to check how many checkpoints unlocked
 
-			
+		spawn_tower_entrance_map()
+
 	if Input.is_action_just_pressed("interact") and player_in_market_range and GameManager.player_can_move:
 		GameManager.player_can_move = false
 		player.velocity = Vector2.ZERO
@@ -82,15 +93,20 @@ func _process(delta: float) -> void:
 		player.velocity = Vector2.ZERO
 		spawn_crafting_menu()
 
-	if Input.is_action_just_pressed("interact") and player_in_dojo_range and PlayerStats.check_level_for_dojo():
+	if Input.is_action_just_pressed("interact") and player_in_dojo_range:
 		GameManager.player_can_move = false
 		player.velocity = Vector2.ZERO
-		spawn_dojo_menu()
+		spawn_beginner_tree()
+		#spawn_dojo_menu()
 
 func add_tech_tree_to_scene() -> void:
+	canvas_layer.show()
 	player.velocity = Vector2.ZERO
 	var tech_tree : TechTree = preload("uid://b7n3fwd3y85wp").instantiate()
 	sub_viewport.add_child(tech_tree)
+
+func hide_tech_tree_canvas_layer() -> void:
+	canvas_layer.hide()
 
 func set_guide_log(show_log : bool) -> void:
 	if show_log:
@@ -108,6 +124,14 @@ func _on_tower_area_body_entered(body: Node2D) -> void:
 		player_in_tower_range = true
 		set_guide_log(true)
 
+func show_ap_notice() -> void:
+	if PlayerStats.player_stats["Ability Points"] >= 1 and PlayerStats.player_stats["Class"] == "Junior Hunter":
+		SignalBus.show_class_notice.emit()
+		ap_notice.show()
+	else:
+		SignalBus.show_class_notice.emit()
+		ap_notice.hide()
+
 func _on_tower_area_body_exited(body: Node2D) -> void:
 	if body is Player:
 		player_in_tower_range = false
@@ -124,26 +148,53 @@ func go_to_test_floor() -> void:
 	get_tree().change_scene_to_file("res://src/Scenes/Tower/TowerFloors/Biome1/Floor1-1.tscn")
 
 func spawn_tower_entrance_map() -> void:
+	GameManager.can_open_tower_map = false
+	GameManager.can_open_bag = false
+	GameManager.player_can_move = false
+	player.velocity = Vector2.ZERO
+	canvas_layer.show()
 	var tower_entrance_map : TowerEntranceMap = preload("uid://bgurt44iah13x").instantiate()
 	control.add_child(tower_entrance_map)
 
 func spawn_grand_market() -> void:
+	GameManager.can_open_tower_map = false
+	GameManager.can_open_bag = false
+	canvas_layer.show()
 	var market : GrandMarketMenu = preload("uid://cfuw5h0apwpq").instantiate()
 	control.add_child(market)
 
 func spawn_cooking_menu() -> void:
+	GameManager.can_open_tower_map = false
+	GameManager.can_open_bag = false
+	canvas_layer.show()
 	var cooking_range : CookingMenu = preload("uid://cotvjq5dygv7p").instantiate()
 	control.add_child(cooking_range)
 
 func spawn_smelting_menu() -> void:
+	GameManager.can_open_tower_map = false
+	GameManager.can_open_bag = false
+	canvas_layer.show()
 	var smelting_station : SmeltingMenu = preload("uid://dtf6m65mtihb8").instantiate()
 	control.add_child(smelting_station)
 
 func spawn_crafting_menu() -> void:
+	GameManager.can_open_tower_map = false
+	GameManager.can_open_bag = false
+	canvas_layer.show()
 	var sword_crafting_station : CraftingStationMenu = preload("uid://cc1xppx3tkq4f").instantiate()
 	control.add_child(sword_crafting_station)
-	
+
+func spawn_beginner_tree() -> void:
+	GameManager.can_open_tower_map = false
+	GameManager.can_open_bag = false
+	canvas_layer.show()
+	var beginner_ability_tree : BeginnerTechTree = preload("uid://y6ru08whvroa").instantiate()
+	sub_viewport.add_child(beginner_ability_tree)
+
 func spawn_dojo_menu() -> void:
+	GameManager.can_open_tower_map = false
+	GameManager.can_open_bag = false
+	canvas_layer.show()
 	var class_selection_menu : ClassSelectionMenu = preload("uid://b404uvbhnmjxd").instantiate()
 	control.add_child(class_selection_menu)
 	
@@ -191,9 +242,9 @@ func _on_crafting_station_area_body_entered(body: Node2D) -> void:
 		access_sword_crafting_station.show()
 
 func _on_crafting_station_area_body_exited(body: Node2D) -> void:
-		if body is Player:
-			player_in_crafting_range = false
-			access_sword_crafting_station.hide()
+	if body is Player:
+		player_in_crafting_range = false
+		access_sword_crafting_station.hide()
 
 func unlock_cooking_station() -> void:
 	camera.player = null
@@ -268,17 +319,22 @@ func new_sword_unlock_notice() -> void:
 	camera.player = player
 	GameManager.player_can_move = true
 
+func warrior_class_unlocked_notice() -> void:
+	GameManager.player_can_move = false
+	player.send_to_idle_state()
+	sfx_player.play_sfx(UNLOCK_SHOP)
+	hud.animation_player.play("Flash")
+	await get_tree().create_timer(0.5).timeout
+	SignalBus.issue_big_notification.emit("You now possess the Abilities of a Warrior!")
+	await get_tree().create_timer(2.0).timeout
+	SignalBus.issue_big_notification.emit("Use your new power to control the battlefield and slay monsters faster!")
+	await get_tree().create_timer(2.0).timeout
+	SignalBus.hide_big_notification.emit()
+	GameManager.player_can_move = true
+		
 func _on_dojo_area_body_entered(body: Node2D) -> void:
 	if body is Player:
-		
-		if PlayerStats.check_needed_for_dojo():
-			if PlayerStats.player_stats["Class"] == "Adventurer":
-				dojo_access_notification.text = "Press E to Select Your Class!"
-			else:
-				dojo_access_notification.text = "Press E to Access Dojo!"
-		else:
-			dojo_access_notification.text = ""
-		
+		dojo_access_notification.text = "Press E to Access Dojo!"		
 		player_in_dojo_range = true
 		dojo_access_notification.show()
 

@@ -102,7 +102,8 @@ func revert_slow_factor() -> void:
 func revert_silence() -> void:
 	if status_effect_icon_bar:
 		status_effect_icon_bar.remove_silenced_icon_from_bar()
-	enable_hit_box()
+	if !is_dead:
+		enable_hit_box()
 
 func increment_break_count() -> void:
 	if is_stunned:

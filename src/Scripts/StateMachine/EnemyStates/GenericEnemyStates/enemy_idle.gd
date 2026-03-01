@@ -4,10 +4,10 @@ class_name EnemyIdle extends State
 
 func enter() -> void:
 	super()
-	if parent.enemy_stats.can_move:
-		parent.velocity = Vector2.ZERO
-		parent.timer.wait_time = randi_range(1,4)
-		parent.timer.start()
+
+	parent.velocity = Vector2.ZERO
+	parent.timer.wait_time = randi_range(1,4)
+	parent.timer.start()
 
 func exit() -> void:
 	pass
@@ -19,7 +19,7 @@ func process_frame(_delta: float) -> State:
 	return null
 
 func process_physics(_delta : float) -> State:
-	if parent.enemy_stats.can_move and parent.timer.time_left <= 0:
+	if GameManager.enemies_can_move and parent.timer.time_left <= 0:
 		return patrol_state
 	
 	return null

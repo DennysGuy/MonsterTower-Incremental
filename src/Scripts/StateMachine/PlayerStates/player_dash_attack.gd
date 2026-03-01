@@ -1,7 +1,8 @@
 class_name PlayerDashAttackState extends State
 
 @export var idle_state : State
-
+@export var attack_1 : State
+@export var jump : State
 var equipped_dash_attack : DashAttackBehavior
 
 func enter() -> void:
@@ -29,12 +30,14 @@ func exit() -> void:
 	#parent.ability_cool_down_timer.wait_time = PlayerStats.player_stats["Dash Cooldown"]
 	#parent.ability_cool_down_timer.start()
 	parent.clear_effect_texture()
-	parent.velocity = Vector2.ZERO
-	
+
 	#parent.can_dash_attack = false
 	
 func process_input(_event: InputEvent) -> State:
-	equipped_dash_attack.apply_input()
+	if Input.is_action_pressed("swing_sword"):
+		parent.set_attack_buffer_timer()
+	elif Input.is_action_just_pressed("add_currency"):
+		parent.jump_buffer_timer = parent.jump_buffer_wait_time
 	
 	return null
 
@@ -43,7 +46,16 @@ func process_frame(_delta: float) -> State:
 
 func process_physics(_delta: float) -> State:
 	equipped_dash_attack.apply_physics(_delta)
+
 	if parent.timer.time_left <= 0:
+		if parent.attack_buffer_timer > 0:
+			parent.attack_buffer_timer = 0
+			parent.attack_friction = 1000
+			return attack_1
+		elif parent.jump_buffer_timer > 0:
+			parent.jump_buffer_timer = 0
+			return jump
+		parent.velocity = Vector2.ZERO
 		return idle_state
 	
 	parent.move_and_slide()

@@ -72,24 +72,25 @@ func process_physics(_delta: float) -> State:
 				success_rate += PlayerStats.player_stats["Smelting Accuracy Bonus"]
 		
 		InventoryManager.remove_resources_from_inventory(parent.stored_recipe.recipe_list)	
-		
+		parent.update_bank_container()
 		if num_check <= int(success_rate * 100):
-
-			
 			var item_added : bool
 			
 			if parent.station_type == parent.STATION_TYPE.COOKING:
-				item_added = InventoryManager.add_item("Inventory",parent.stored_recipe.output_item)
+				item_added = InventoryManager.add_item("Use",parent.stored_recipe.output_item)
 			elif parent.station_type == parent.STATION_TYPE.SMELTING:
-				item_added =  InventoryManager.add_item("Ore Inventory",parent.stored_recipe.output_item)
+				item_added =  InventoryManager.add_item("Use",parent.stored_recipe.output_item)
 			
 			if !item_added:
 				InventoryManager.add_item("Bank", parent.stored_recipe.output_item)
+			else:
+				parent.item_added_label.show()
 			
 			if parent.station_type == parent.STATION_TYPE.SMELTING:
 				if PlayerStats.can_craft_next_sword():
 					parent.show_can_craft_next_sword_scene = true
-			
+			if parent.selected_tab != "Resource":
+				parent.item_removed_label.show()
 			parent.failure_message.hide()
 			parent.play_success_sfx()
 		else:
@@ -97,13 +98,13 @@ func process_physics(_delta: float) -> State:
 			parent.play_failure_sfx()
 			
 		parent.populate_recipes_list(parent.selected_tier)
-		parent.update_inventories()
+		parent.switch_to_use_tab()
 		var can_add_to_inventory : bool
 		
 		if parent.station_type == parent.STATION_TYPE.COOKING:
 			can_add_to_inventory = InventoryManager.check_if_can_add_to_inventory(parent.stored_recipe.output_item, "Inventory", "Bag", "Max Bag Stack")
 		elif parent.station_type == parent.STATION_TYPE.SMELTING:
-			can_add_to_inventory = InventoryManager.check_if_can_add_to_inventory(parent.stored_recipe.output_item, "Ore Inventory", "Ore Bag", "Max Ore Bag Stack")
+			can_add_to_inventory = InventoryManager.check_if_can_add_to_inventory(parent.stored_recipe.output_item, "Ore", "Bag", "Max Bag Stack")
 		
 		if can_add_to_inventory:
 			var quantity : int = InventoryManager.calculate_quantity(parent.stored_recipe)

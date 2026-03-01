@@ -73,6 +73,7 @@ func close_out() -> void:
 		TechTreeManager.unlock_station.emit()
 	sfx_player.play_sfx(CLOSE_UPGRADE_PC)
 	await get_tree().create_timer(0.3).timeout
+	SignalBus.hide_tech_tree_canvas_layer.emit()
 	queue_free()
 
 func add_tool_tip(tool_tip : ToolTip, on_right_half : bool) -> void:
