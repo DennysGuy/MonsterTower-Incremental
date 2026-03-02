@@ -72,6 +72,7 @@ func populate_description_panel(store_recipe : CraftingRecipe) -> void:
 	var quantity : int = InventoryManager.calculate_quantity(store_recipe)
 	can_make.text = "Can Make: %s" % quantity
 	recipe_description.text = store_recipe.description
+	clear_ingredients_list()
 	for ingredient in store_recipe.recipe_list:
 		var ingredient_menu_item : IngredientItem = preload("uid://dil4081ni1hb3").instantiate()
 		for key in ingredient.keys():
@@ -87,3 +88,7 @@ func populate_description_panel(store_recipe : CraftingRecipe) -> void:
 		craft_5_button.show()
 	
 	panel_animation_player.play("Phase In")
+
+func clear_ingredients_list() -> void:
+	for child in ingredients_h_box.get_children():
+		child.queue_free()
