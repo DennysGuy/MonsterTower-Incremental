@@ -386,6 +386,7 @@ shape = SubResource("CapsuleShape2D_s7mdw")
 [node name="NameTag" parent="." unique_id=21780759 instance=ExtResource("7_pne6f")]
 
 [node name="EnemyHealthBar" parent="." unique_id=1067891350 instance=ExtResource("9_bosos")]
+visible = false
 offset_left = -32.0
 offset_top = -62.0
 offset_right = 33.0

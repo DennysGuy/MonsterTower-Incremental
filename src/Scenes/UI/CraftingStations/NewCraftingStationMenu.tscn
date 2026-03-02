@@ -1,0 +1,441 @@
+[gd_scene format=3 uid="uid://dq1s8bd6w6dnv"]
+
+[ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="1_hddue"]
+[ext_resource type="Script" uid="uid://dudysb4qism8f" path="res://src/Scripts/Facilities/new_crafting_station_menu.gd" id="1_o63b6"]
+[ext_resource type="Texture2D" uid="uid://dnng403ijo5uh" path="res://Assets/Facilities/CraftingStationMenuPointerBottom.png" id="2_hddue"]
+[ext_resource type="Texture2D" uid="uid://8vf1vr7a40yj" path="res://Assets/HUD/CraftingStationItemSelectPanel.png" id="5_bq5u8"]
+[ext_resource type="Texture2D" uid="uid://c4aj160n4blbs" path="res://Assets/Facilities/CookingStation/CookedGagootz.png" id="7_tnppo"]
+
+[sub_resource type="Animation" id="Animation_o63b6"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_jctys"]
+resource_name = "Spawn In"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HBoxContainer:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-73, -46), Vector2(-73, -54)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HBoxContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_bq5u8"]
+resource_name = "Spawn Out"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HBoxContainer:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-73, -54), Vector2(-73, -46)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HBoxContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bq5u8"]
+_data = {
+&"RESET": SubResource("Animation_o63b6"),
+&"Spawn In": SubResource("Animation_jctys"),
+&"Spawn Out": SubResource("Animation_bq5u8")
+}
+
+[sub_resource type="Animation" id="Animation_tnppo"]
+resource_name = "Phase In"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../CraftingStationItemSelectPanel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.033333335, 0.16666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(50, -104), Vector2(50, -114)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../CraftingStationItemSelectPanel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.033668973),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../CraftingStationItemSelectPanel:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1673829),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_mjb7w"]
+resource_name = "Phase Out"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../CraftingStationItemSelectPanel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.19966435),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(50, -114), Vector2(50, -104)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../CraftingStationItemSelectPanel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.16633102, 0.19999999),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../CraftingStationItemSelectPanel:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.16633102),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_xs7ei"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../CraftingStationItemSelectPanel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-247, -114)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../CraftingStationItemSelectPanel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../CraftingStationItemSelectPanel:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mjb7w"]
+_data = {
+&"Phase In": SubResource("Animation_tnppo"),
+&"Phase Out": SubResource("Animation_mjb7w"),
+&"RESET": SubResource("Animation_xs7ei")
+}
+
+[node name="CraftingStationMenu" type="Control" unique_id=1254570894 node_paths=PackedStringArray("station_name")]
+z_index = 4096
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_o63b6")
+station_name = NodePath("HBoxContainer/PanelContainer2/StationName")
+
+[node name="HBoxContainer" type="VBoxContainer" parent="." unique_id=2042997368]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.5
+offset_top = -70.0
+offset_right = 21.5
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 1
+
+[node name="PanelContainer2" type="PanelContainer" parent="HBoxContainer" unique_id=1754822938]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="StationName" type="Label" parent="HBoxContainer/PanelContainer2" unique_id=1925541758]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("1_hddue")
+theme_override_font_sizes/font_size = 12
+text = "Crafting Station"
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer" unique_id=1864272674]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/PanelContainer" unique_id=174036489]
+layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="GridContainer" type="GridContainer" parent="HBoxContainer/PanelContainer/MarginContainer" unique_id=1124105096]
+layout_mode = 2
+columns = 4
+
+[node name="NothingToCraftLabel" type="Label" parent="HBoxContainer/PanelContainer/MarginContainer" unique_id=234223177]
+visible = false
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("1_hddue")
+text = "Nothing to craft."
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer" unique_id=1537954419]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("2_hddue")
+stretch_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1467662505]
+libraries/ = SubResource("AnimationLibrary_bq5u8")
+
+[node name="PanelAnimationPlayer" type="AnimationPlayer" parent="." unique_id=1382186011]
+root_node = NodePath("../AnimationPlayer")
+libraries/ = SubResource("AnimationLibrary_mjb7w")
+
+[node name="CraftingStationItemSelectPanel" type="TextureRect" parent="." unique_id=2147036738]
+visible = false
+modulate = Color(1, 1, 1, 0)
+z_index = 4096
+layout_mode = 0
+offset_left = -247.0
+offset_top = -114.0
+offset_right = -98.0
+offset_bottom = 72.0
+mouse_filter = 0
+texture = ExtResource("5_bq5u8")
+
+[node name="RecipeIcon" type="TextureRect" parent="CraftingStationItemSelectPanel" unique_id=1902451966]
+layout_mode = 0
+offset_left = 101.0
+offset_top = 9.0
+offset_right = 133.0
+offset_bottom = 41.0
+texture = ExtResource("7_tnppo")
+stretch_mode = 2
+
+[node name="RecipeName" type="Label" parent="CraftingStationItemSelectPanel" unique_id=1529755578]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -62.5
+offset_top = -78.0
+offset_right = 17.5
+offset_bottom = -67.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("1_hddue")
+theme_override_font_sizes/font_size = 10
+text = "Cooked Gagootz"
+horizontal_alignment = 1
+
+[node name="Value" type="Label" parent="CraftingStationItemSelectPanel" unique_id=332071916]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -54.5
+offset_top = -66.0
+offset_right = 9.5
+offset_bottom = -56.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("1_hddue")
+theme_override_font_sizes/font_size = 9
+text = "Market Value: 150"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="CanMake" type="Label" parent="CraftingStationItemSelectPanel" unique_id=2088956322]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -51.5
+offset_top = -56.0
+offset_right = 9.5
+offset_bottom = -48.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("1_hddue")
+theme_override_font_sizes/font_size = 8
+text = "Can Cook: 2"
+horizontal_alignment = 2
+
+[node name="IngredientsHBox" type="VBoxContainer" parent="CraftingStationItemSelectPanel" unique_id=1904806172]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -70.5
+offset_top = -11.5
+offset_right = 79.5
+offset_bottom = 64.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = -8
+alignment = 2
+
+[node name="RecipeDescription" type="RichTextLabel" parent="CraftingStationItemSelectPanel" unique_id=172188051]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.5
+offset_top = -41.0
+offset_right = 62.5
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/normal_font = ExtResource("1_hddue")
+theme_override_font_sizes/normal_font_size = 8
+text = "hey this is cooked gagootz okay one of the best stuff out there!"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CraftingStationItemSelectPanel" unique_id=744538584]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -68.5
+offset_top = -26.0
+offset_right = 68.5
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="Craft1Button" type="Button" parent="CraftingStationItemSelectPanel/HBoxContainer2" unique_id=1789845080]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("1_hddue")
+theme_override_font_sizes/font_size = 10
+text = "Craft 1"
+
+[node name="Craft5Button" type="Button" parent="CraftingStationItemSelectPanel/HBoxContainer2" unique_id=603814051]
+visible = false
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("1_hddue")
+theme_override_font_sizes/font_size = 10
+text = "Craft 5"
+
+[node name="CraftAllButton" type="Button" parent="CraftingStationItemSelectPanel/HBoxContainer2" unique_id=1769471836]
+visible = false
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("1_hddue")
+theme_override_font_sizes/font_size = 10
+text = "Craft All"

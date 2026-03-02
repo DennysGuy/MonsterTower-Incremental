@@ -1,43 +1,47 @@
-[gd_scene load_steps=4 format=3 uid="uid://dil4081ni1hb3"]
+[gd_scene format=3 uid="uid://dil4081ni1hb3"]
 
 [ext_resource type="Script" uid="uid://cxuv7ed35m30d" path="res://src/Scripts/Facilities/ingredients_menu_item.gd" id="1_0anh0"]
 [ext_resource type="Texture2D" uid="uid://bk4miqdmvi7gh" path="res://Assets/Enemies/CorruptedMushie/CorruptedMushieSpore.png" id="1_qqb67"]
 [ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="3_0anh0"]
 
-[node name="IngredientItem" type="Control" node_paths=PackedStringArray("ingredient_icon", "quantity")]
-custom_minimum_size = Vector2(160, 32)
+[node name="IngredientItem" type="Control" unique_id=900235041 node_paths=PackedStringArray("ingredient_icon", "quantity")]
+custom_minimum_size = Vector2(150, 25)
 layout_mode = 3
 anchors_preset = 0
+offset_right = 150.0
+offset_bottom = 25.0
 script = ExtResource("1_0anh0")
 ingredient_icon = NodePath("IngredientIcon")
 quantity = NodePath("Label")
 
-[node name="IngredientIcon" type="TextureRect" parent="."]
+[node name="IngredientIcon" type="TextureRect" parent="." unique_id=688198672]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_top = -15.0
-offset_right = 30.0
-offset_bottom = 15.0
+offset_left = 2.0
+offset_top = -8.5
+offset_right = 17.0
+offset_bottom = 6.5
 grow_vertical = 2
 texture = ExtResource("1_qqb67")
+expand_mode = 1
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=25361275]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -130.0
-offset_top = -5.0
-offset_right = 5.0
-offset_bottom = 11.0
+offset_left = -122.0
+offset_top = -5.5
+offset_right = -15.0
+offset_bottom = 5.5
 grow_horizontal = 0
 grow_vertical = 2
-theme_override_constants/outline_size = 6
+theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("3_0anh0")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 10
 text = "Corrupted Spore x4"
 horizontal_alignment = 2

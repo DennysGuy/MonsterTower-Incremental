@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://w1c2yn7s6sjx"]
+
+[ext_resource type="Texture2D" uid="uid://bry4670ns2btd" path="res://Assets/Facilities/TempCookingRange.png" id="1_ojthx"]
+[ext_resource type="Script" uid="uid://fxn0d30mxe8q" path="res://src/Scripts/Facilities/new_crafting_station.gd" id="1_r2l52"]
+[ext_resource type="PackedScene" uid="uid://vo5sm7p34vo6" path="res://src/Scenes/Actors/Utilities/NameTag.tscn" id="3_jw3wv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r2l52"]
+size = Vector2(72, 48)
+
+[node name="NewCraftingStation" type="Node2D" unique_id=179535965 node_paths=PackedStringArray("station_graphic")]
+script = ExtResource("1_r2l52")
+station_graphic = NodePath("StationGraphic")
+
+[node name="StationGraphic" type="TextureRect" parent="." unique_id=1375915710]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -103.0
+offset_top = -160.0
+offset_right = 121.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("1_ojthx")
+stretch_mode = 2
+
+[node name="MenuLocation" type="Marker2D" parent="." unique_id=2018673744]
+position = Vector2(23, -72)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1099763276]
+position = Vector2(0, -10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=236231587]
+position = Vector2(-8, -14)
+shape = SubResource("RectangleShape2D_r2l52")
+
+[node name="NameTag" parent="." unique_id=1236001114 instance=ExtResource("3_jw3wv")]
+offset_left = -48.0
+offset_right = 40.0
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

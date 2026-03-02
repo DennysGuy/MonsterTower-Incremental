@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://ct3y40uip6cqs"]
+
+[ext_resource type="Script" uid="uid://bb00gy3w5sg0k" path="res://src/Scripts/Facilities/crafting_station_menu_item.gd" id="1_iio8p"]
+[ext_resource type="Texture2D" uid="uid://cu6upr5f3ht4k" path="res://Assets/HUD/ItemSlot.png" id="1_yko82"]
+[ext_resource type="Texture2D" uid="uid://c4aj160n4blbs" path="res://Assets/Facilities/CookingStation/CookedGagootz.png" id="2_iio8p"]
+[ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="3_ejmki"]
+
+[node name="CraftingStationMenuItem" type="TextureRect" unique_id=479643259 node_paths=PackedStringArray("item_icon")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 2
+texture = ExtResource("1_yko82")
+script = ExtResource("1_iio8p")
+item_icon = NodePath("ItemIcon")
+
+[node name="ItemIcon" type="TextureRect" parent="." unique_id=1060720498]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_iio8p")
+stretch_mode = 2
+
+[node name="CountLabel" type="Label" parent="." unique_id=420685443]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -13.0
+offset_top = -11.0
+offset_right = 7.0
+offset_bottom = 5.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_ejmki")
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

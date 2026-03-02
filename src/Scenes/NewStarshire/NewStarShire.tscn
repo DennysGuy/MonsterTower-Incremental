@@ -21,8 +21,6 @@
 [ext_resource type="Texture2D" uid="uid://5cetad7bhon0" path="res://Assets/Facilities/StorageArea.png" id="14_jp6xg"]
 [ext_resource type="PackedScene" uid="uid://cr6q5dxlkks" path="res://src/Scenes/Tower/LadderArea.tscn" id="17_jp6xg"]
 [ext_resource type="PackedScene" uid="uid://vo5sm7p34vo6" path="res://src/Scenes/Actors/Utilities/NameTag.tscn" id="19_bl45m"]
-[ext_resource type="PackedScene" uid="uid://dno74kdw4imhn" path="res://src/Scenes/NewStarshire/CookingRange.tscn" id="19_vdg01"]
-[ext_resource type="PackedScene" uid="uid://debxddfwr0kuy" path="res://src/Scenes/NewStarshire/SmeltingStation.tscn" id="20_05bdh"]
 [ext_resource type="PackedScene" uid="uid://icxc8mi1q1w4" path="res://src/Scenes/NewStarshire/Facilities/SwordCraftingStation.tscn" id="21_bl45m"]
 [ext_resource type="PackedScene" uid="uid://mwttdrt2cg71" path="res://src/Scenes/Players/ambience_player.tscn" id="23_5xris"]
 [ext_resource type="Texture2D" uid="uid://c46te1sv6peeo" path="res://Assets/Facilities/Dojo.png" id="25_nj75w"]
@@ -33,6 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://b83r1hobjk7vm" path="res://Assets/DirectionSignMessage.png" id="29_hk4f7"]
 [ext_resource type="PackedScene" uid="uid://c6tv3t1cpeq8f" path="res://src/Scenes/PlayerSpawnPoint.tscn" id="30_cxssj"]
 [ext_resource type="AudioStream" uid="uid://br24s8y5lttep" path="res://Audio/SFX/Ambience/Starspire/StarspireAmbience.wav" id="30_fdeu8"]
+[ext_resource type="PackedScene" uid="uid://w1c2yn7s6sjx" path="res://src/Scenes/UI/CraftingStations/NewCraftingStation.tscn" id="33_d6jc3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_te0bi"]
 texture = ExtResource("3_5xris")
@@ -767,12 +766,6 @@ size = Vector2(22, 205)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nj75w"]
 size = Vector2(186, 76)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_q74qd"]
-size = Vector2(117, 57)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vdg01"]
-size = Vector2(106, 69)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5xris"]
 size = Vector2(102, 64)
 
@@ -955,18 +948,6 @@ position = Vector2(0, -60)
 [node name="Bot" type="Marker2D" parent="LadderArea" unique_id=1075106674]
 position = Vector2(1, 185)
 
-[node name="TempCookingRange" parent="." unique_id=961331880 instance=ExtResource("19_vdg01")]
-position = Vector2(499, 611)
-
-[node name="NameTag2" parent="TempCookingRange" unique_id=352276221 instance=ExtResource("19_bl45m")]
-offset_left = -35.0
-offset_top = 46.0
-offset_right = 53.0
-offset_bottom = 59.0
-
-[node name="Tag" parent="TempCookingRange/NameTag2" index="1"]
-text = "Cooking Range"
-
 [node name="CookingRangePosition" type="Node2D" parent="." unique_id=1732992166]
 position = Vector2(499, 592)
 
@@ -1072,13 +1053,6 @@ offset_right = 36.0
 offset_bottom = 20.0
 texture = ExtResource("26_d6jc3")
 
-[node name="CookingStationArea" type="Area2D" parent="." unique_id=1043683284]
-position = Vector2(505, 636)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CookingStationArea" unique_id=351973183]
-position = Vector2(-7.5, -9.5)
-shape = SubResource("RectangleShape2D_q74qd")
-
 [node name="AccessCraftingStation" type="Label" parent="." unique_id=455459731]
 visible = false
 offset_left = 412.0
@@ -1090,25 +1064,6 @@ theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("10_636af")
 theme_override_font_sizes/font_size = 13
 text = "Press 'E' to Access Cooking Station"
-
-[node name="TempSmeltingStation" parent="." unique_id=585257926 instance=ExtResource("20_05bdh")]
-position = Vector2(514, 465)
-
-[node name="NameTag3" parent="TempSmeltingStation" unique_id=389526009 instance=ExtResource("19_bl45m")]
-offset_left = -38.0
-offset_top = 84.0
-offset_right = 50.0
-offset_bottom = 97.0
-
-[node name="Tag" parent="TempSmeltingStation/NameTag3" index="1"]
-text = "Refinery"
-
-[node name="SmeltingStationArea" type="Area2D" parent="." unique_id=1929027882]
-position = Vector2(513, 510)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SmeltingStationArea" unique_id=1320623151]
-position = Vector2(2, 0.5)
-shape = SubResource("RectangleShape2D_vdg01")
 
 [node name="RefineryPosition" type="Node2D" parent="." unique_id=1121494031]
 position = Vector2(516, 438)
@@ -1279,24 +1234,23 @@ position = Vector2(58, 384)
 position = Vector2(277, 656)
 index = 1
 
+[node name="NewCraftingStation" parent="." unique_id=179535965 instance=ExtResource("33_d6jc3")]
+position = Vector2(505, 656)
+station_type = 1
+
+[node name="NewCraftingStation2" parent="." unique_id=763505504 instance=ExtResource("33_d6jc3")]
+position = Vector2(508, 544)
+
 [connection signal="body_entered" from="TowerArea" to="." method="_on_tower_area_body_entered"]
 [connection signal="body_exited" from="TowerArea" to="." method="_on_tower_area_body_exited"]
 [connection signal="body_entered" from="GrandMarketArea" to="." method="_on_grand_market_area_body_entered"]
 [connection signal="body_exited" from="GrandMarketArea" to="." method="_on_grand_market_area_body_exited"]
 [connection signal="body_entered" from="Dojo/DojoArea" to="." method="_on_dojo_area_body_entered"]
 [connection signal="body_exited" from="Dojo/DojoArea" to="." method="_on_dojo_area_body_exited"]
-[connection signal="body_entered" from="CookingStationArea" to="." method="_on_cooking_station_area_body_entered"]
-[connection signal="body_exited" from="CookingStationArea" to="." method="_on_cooking_station_area_body_exited"]
-[connection signal="body_entered" from="SmeltingStationArea" to="." method="_on_smelting_station_area_body_entered"]
-[connection signal="body_exited" from="SmeltingStationArea" to="." method="_on_smelting_station_area_body_exited"]
 [connection signal="body_entered" from="CraftingStationArea" to="." method="_on_crafting_station_area_body_entered"]
 [connection signal="body_exited" from="CraftingStationArea" to="." method="_on_crafting_station_area_body_exited"]
 
-[editable path="TempCookingRange"]
-[editable path="TempCookingRange/NameTag2"]
 [editable path="Dojo/NameTag"]
-[editable path="TempSmeltingStation"]
-[editable path="TempSmeltingStation/NameTag3"]
 [editable path="SmithingStation/NameTag"]
 [editable path="PracticeDummy"]
 [editable path="TechTreeComputer/NameTag4"]

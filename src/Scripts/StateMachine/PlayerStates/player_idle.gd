@@ -46,7 +46,7 @@ func process_physics(_delta: float) -> State:
 		parent.jump_buffer_timer = 0
 		return jump_state
 
-	if Input.is_action_just_pressed("swing_sword"):
+	if Input.is_action_just_pressed("swing_sword") and GameManager.player_can_attack:
 		if parent.stored_ore_rock and PlayerStats.facilities_unlocked["Refinery Station"]:
 			return swing_pick_axe_state
 		return attack_1_state
