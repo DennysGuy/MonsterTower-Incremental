@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://w3hqvcw0cv2q"]
+
+[ext_resource type="Texture2D" uid="uid://bk4miqdmvi7gh" path="res://Assets/Enemies/CorruptedMushie/CorruptedMushieSpore.png" id="1_5s7jh"]
+[ext_resource type="Script" uid="uid://dagpy6n1r31ra" path="res://src/Scripts/Facilities/crafting_item_spawn.gd" id="1_d66iw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5s7jh"]
+
+[node name="CraftingItemSpawn" type="Node2D" unique_id=344227002 node_paths=PackedStringArray("icon")]
+z_index = 4096
+script = ExtResource("1_d66iw")
+icon = NodePath("Icon")
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=2145008863]
+texture = ExtResource("1_5s7jh")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=127524236]
+collision_layer = 512
+collision_mask = 512
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=656457297]
+shape = SubResource("RectangleShape2D_5s7jh")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

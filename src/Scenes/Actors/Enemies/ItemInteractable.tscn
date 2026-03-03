@@ -121,7 +121,7 @@ _data = {
 size = Vector2(24, 23)
 
 [node name="ItemInteractable" type="Node2D" unique_id=1545592163 node_paths=PackedStringArray("icon")]
-z_index = 4096
+z_index = 4090
 script = ExtResource("1_7i62p")
 icon = NodePath("Icon")
 

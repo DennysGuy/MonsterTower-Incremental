@@ -3,11 +3,36 @@
 [ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="1_hddue"]
 [ext_resource type="Script" uid="uid://dudysb4qism8f" path="res://src/Scripts/Facilities/new_crafting_station_menu.gd" id="1_o63b6"]
 [ext_resource type="Texture2D" uid="uid://dnng403ijo5uh" path="res://Assets/Facilities/CraftingStationMenuPointerBottom.png" id="2_hddue"]
+[ext_resource type="PackedScene" uid="uid://d0s6j8mvikv8c" path="res://src/Scenes/UI/ItemSlot.tscn" id="3_bq5u8"]
 [ext_resource type="Texture2D" uid="uid://8vf1vr7a40yj" path="res://Assets/HUD/CraftingStationItemSelectPanel.png" id="5_bq5u8"]
 [ext_resource type="Texture2D" uid="uid://c4aj160n4blbs" path="res://Assets/Facilities/CookingStation/CookedGagootz.png" id="7_tnppo"]
 
 [sub_resource type="Animation" id="Animation_o63b6"]
 length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PanelContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-55, -31)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PanelContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_jctys"]
 resource_name = "Spawn In"
@@ -15,23 +40,23 @@ length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("HBoxContainer:position")
-tracks/0/interp = 2
+tracks/0/path = NodePath("PanelContainer:position")
+tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
+"times": PackedFloat32Array(0, 0.16666667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-73, -46), Vector2(-73, -54)]
+"values": [Vector2(-55, -24), Vector2(-55, -31)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("HBoxContainer:modulate")
+tracks/1/path = NodePath("PanelContainer:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2),
+"times": PackedFloat32Array(0, 0.16653349),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -43,19 +68,19 @@ length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("HBoxContainer:position")
-tracks/0/interp = 2
+tracks/0/path = NodePath("PanelContainer:position")
+tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
+"times": PackedFloat32Array(0.00013318658, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-73, -54), Vector2(-73, -46)]
+"values": [Vector2(-55, -31), Vector2(-55, -24)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("HBoxContainer:modulate")
+tracks/1/path = NodePath("PanelContainer:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -99,7 +124,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0.033333335, 0.16666667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(20, -104), Vector2(20, -114)]
+"values": [Vector2(70, -80), Vector2(70, -80)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -139,7 +164,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.19966435),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(20, -114), Vector2(20, -104)]
+"values": [Vector2(70, -80), Vector2(70, -80)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -214,6 +239,7 @@ _data = {
 
 [node name="CraftingStationMenu" type="Control" unique_id=1254570894 node_paths=PackedStringArray("station_name")]
 z_index = 4096
+z_as_relative = false
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -223,28 +249,42 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_o63b6")
-station_name = NodePath("HBoxContainer/PanelContainer2/StationName")
+station_name = NodePath("PanelContainer/MarginContainer/HBoxContainer/PanelContainer2/StationName")
 
-[node name="HBoxContainer" type="VBoxContainer" parent="." unique_id=2042997368]
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=674580801]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -88.5
-offset_top = -70.0
-offset_right = 21.5
-offset_bottom = -8.0
+offset_left = -55.0
+offset_top = -31.0
+offset_right = 59.0
+offset_bottom = 35.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=931107409]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="HBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=2042997368]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_constants/separation = 1
 
-[node name="PanelContainer2" type="PanelContainer" parent="HBoxContainer" unique_id=1754822938]
+[node name="PanelContainer2" type="PanelContainer" parent="PanelContainer/MarginContainer/HBoxContainer" unique_id=1754822938]
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="StationName" type="Label" parent="HBoxContainer/PanelContainer2" unique_id=1925541758]
+[node name="StationName" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/PanelContainer2" unique_id=1925541758]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
@@ -253,30 +293,39 @@ theme_override_fonts/font = ExtResource("1_hddue")
 theme_override_font_sizes/font_size = 12
 text = "Crafting Station"
 
-[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer" unique_id=1864272674]
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/MarginContainer/HBoxContainer" unique_id=1864272674]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/PanelContainer" unique_id=174036489]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HBoxContainer/PanelContainer" unique_id=174036489]
 layout_mode = 2
 theme_override_constants/margin_left = 3
 theme_override_constants/margin_top = 3
 theme_override_constants/margin_right = 3
 theme_override_constants/margin_bottom = 3
 
-[node name="GridContainer" type="GridContainer" parent="HBoxContainer/PanelContainer/MarginContainer" unique_id=1124105096]
+[node name="GridContainer" type="GridContainer" parent="PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer" unique_id=1124105096]
 layout_mode = 2
 columns = 4
 
-[node name="NothingToCraftLabel" type="Label" parent="HBoxContainer/PanelContainer/MarginContainer" unique_id=234223177]
+[node name="Slot" parent="PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/GridContainer" unique_id=782442892 instance=ExtResource("3_bq5u8")]
+layout_mode = 2
+
+[node name="Slot2" parent="PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/GridContainer" unique_id=32211145 instance=ExtResource("3_bq5u8")]
+layout_mode = 2
+
+[node name="Slot3" parent="PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/GridContainer" unique_id=1225468668 instance=ExtResource("3_bq5u8")]
+layout_mode = 2
+
+[node name="NothingToCraftLabel" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer" unique_id=234223177]
 visible = false
 layout_mode = 2
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("1_hddue")
 text = "Nothing to craft."
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer" unique_id=1537954419]
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/HBoxContainer" unique_id=1537954419]
 layout_mode = 2
 size_flags_horizontal = 4
 texture = ExtResource("2_hddue")
@@ -439,3 +488,7 @@ mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("1_hddue")
 theme_override_font_sizes/font_size = 10
 text = "Craft All"
+
+[connection signal="button_up" from="CraftingStationItemSelectPanel/HBoxContainer2/Craft1Button" to="." method="_on_craft_1_button_button_up"]
+[connection signal="button_up" from="CraftingStationItemSelectPanel/HBoxContainer2/Craft5Button" to="." method="_on_craft_5_button_button_up"]
+[connection signal="button_up" from="CraftingStationItemSelectPanel/HBoxContainer2/CraftAllButton" to="." method="_on_craft_all_button_button_up"]

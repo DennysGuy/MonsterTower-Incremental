@@ -4,13 +4,154 @@
 [ext_resource type="Script" uid="uid://fxn0d30mxe8q" path="res://src/Scripts/Facilities/new_crafting_station.gd" id="1_r2l52"]
 [ext_resource type="PackedScene" uid="uid://vo5sm7p34vo6" path="res://src/Scenes/Actors/Utilities/NameTag.tscn" id="3_jw3wv"]
 [ext_resource type="PackedScene" uid="uid://drvmmtbvnc785" path="res://src/Scenes/Tower/arrow_at_ore.tscn" id="4_2ityt"]
+[ext_resource type="Texture2D" uid="uid://dnng403ijo5uh" path="res://Assets/Facilities/CraftingStationMenuPointerBottom.png" id="6_4ythn"]
+[ext_resource type="PackedScene" uid="uid://ct3y40uip6cqs" path="res://src/Scenes/UI/CraftingStations/CraftingStationMenuItem.tscn" id="6_tjvvi"]
+[ext_resource type="Texture2D" uid="uid://drpoafbbvm3dt" path="res://Assets/HUD/CancelCraftingButton.png" id="7_tjvvi"]
+[ext_resource type="Texture2D" uid="uid://b3bpcl71g0usa" path="res://Assets/HUD/Bags/CancelCraftingButton_Pressed.png" id="8_xr8ll"]
+[ext_resource type="Texture2D" uid="uid://c3cvwpqnkshgw" path="res://Assets/HUD/Bags/CancelCraftingButton_Hover.png" id="9_3flbw"]
+[ext_resource type="Script" uid="uid://drr0deykmfrvq" path="res://src/Scripts/StateMachine/state_machine.gd" id="10_3flbw"]
+[ext_resource type="Texture2D" uid="uid://cg62i4osdp07u" path="res://Assets/HUD/FillBarNewCraftingStationpng.png" id="10_4ewp7"]
+[ext_resource type="Script" uid="uid://dx08tn1e61j2d" path="res://src/Scripts/StateMachine/Facilities/crafting_station_idle.gd" id="11_v8jh6"]
+[ext_resource type="Script" uid="uid://b3y7v4qfemoxt" path="res://src/Scripts/StateMachine/NewCraftingStationStats/transfer_resources.gd" id="12_0evvf"]
+[ext_resource type="Script" uid="uid://cqlkot53j3bue" path="res://src/Scripts/StateMachine/NewCraftingStationStats/crafting_station_crafting.gd" id="13_y86rf"]
+[ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="15_wv87p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r2l52"]
 size = Vector2(72, 48)
 
-[node name="NewCraftingStation" type="Node2D" unique_id=179535965 node_paths=PackedStringArray("station_graphic")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y86rf"]
+size = Vector2(8, 8)
+
+[sub_resource type="Animation" id="Animation_y86rf"]
+resource_name = "Phase In"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CraftingProcessIcon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.033333335, 0.16672416),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-30, -112), Vector2(-30, -117)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CraftingProcessIcon:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.03481386),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CraftingProcessIcon:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.16666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_wv87p"]
+resource_name = "Phase Out"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CraftingProcessIcon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(5.748868e-05, 0.13333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-30, -117), Vector2(-30, -112)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CraftingProcessIcon:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.13333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CraftingProcessIcon:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.13333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4ewp7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CraftingProcessIcon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-30, -117)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CraftingProcessIcon:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CraftingProcessIcon:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4ewp7"]
+_data = {
+&"Phase In": SubResource("Animation_y86rf"),
+&"Phase Out": SubResource("Animation_wv87p"),
+&"RESET": SubResource("Animation_4ewp7")
+}
+
+[node name="NewCraftingStation" type="Node2D" unique_id=179535965 node_paths=PackedStringArray("station_graphic", "state_machine")]
 script = ExtResource("1_r2l52")
 station_graphic = NodePath("StationGraphic")
+state_machine = NodePath("StateMachine")
 
 [node name="StationGraphic" type="TextureRect" parent="." unique_id=1375915710]
 anchors_preset = 8
@@ -28,7 +169,7 @@ texture = ExtResource("1_ojthx")
 stretch_mode = 2
 
 [node name="MenuLocation" type="Marker2D" parent="." unique_id=2018673744]
-position = Vector2(23, -72)
+position = Vector2(-3, -103)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1099763276]
 position = Vector2(-57, -10)
@@ -43,7 +184,97 @@ offset_right = 40.0
 
 [node name="ArrowAtOre" parent="." unique_id=347205072 instance=ExtResource("4_2ityt")]
 visible = true
-position = Vector2(-69, -75)
+position = Vector2(-65, -75)
+
+[node name="CraftingProcessIcon" type="Panel" parent="." unique_id=1650907014]
+visible = false
+modulate = Color(1, 1, 1, 0)
+z_index = 4096
+offset_left = -30.0
+offset_top = -117.0
+offset_right = 10.0
+offset_bottom = -77.0
+
+[node name="CraftingStationMenuPointerBottom" type="TextureRect" parent="CraftingProcessIcon" unique_id=1800065271]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -10.5
+offset_right = 10.5
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("6_4ythn")
+stretch_mode = 2
+
+[node name="CraftingStationMenuItem" parent="CraftingProcessIcon" unique_id=479643259 instance=ExtResource("6_tjvvi")]
+layout_mode = 1
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+mouse_filter = 2
+stretch_mode = 2
+
+[node name="CraftingProgressbar" type="TextureProgressBar" parent="CraftingProcessIcon" unique_id=1103151012]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 36.0
+offset_bottom = 36.0
+mouse_filter = 2
+mouse_default_cursor_shape = 2
+step = 0.01
+fill_mode = 3
+texture_progress = ExtResource("10_4ewp7")
+
+[node name="CancelCraftingButton" type="TextureButton" parent="CraftingProcessIcon" unique_id=1326728002]
+layout_mode = 0
+offset_left = -6.0
+offset_top = -6.0
+offset_right = 14.0
+offset_bottom = 14.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("7_tjvvi")
+texture_pressed = ExtResource("8_xr8ll")
+texture_hover = ExtResource("9_3flbw")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="StateMachine" type="Node" parent="." unique_id=2040241082 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("10_3flbw")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine" unique_id=1399787346]
+script = ExtResource("11_v8jh6")
+
+[node name="TransferResources" type="Node" parent="StateMachine" unique_id=1088560881 node_paths=PackedStringArray("crafting_state")]
+script = ExtResource("12_0evvf")
+crafting_state = NodePath("../Crafting")
+
+[node name="Crafting" type="Node" parent="StateMachine" unique_id=377576467 node_paths=PackedStringArray("idle_state")]
+script = ExtResource("13_y86rf")
+idle_state = NodePath("../Idle")
+
+[node name="SfxPlayer" parent="." unique_id=1917211034 instance=ExtResource("15_wv87p")]
+
+[node name="EndingArea" type="Area2D" parent="." unique_id=678318504]
+position = Vector2(-6, -26)
+collision_layer = 512
+collision_mask = 512
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EndingArea" unique_id=1382596464]
+shape = SubResource("RectangleShape2D_y86rf")
+
+[node name="CraftingTrackerPlayer" type="AnimationPlayer" parent="." unique_id=1760792282]
+libraries/ = SubResource("AnimationLibrary_4ewp7")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="button_up" from="CraftingProcessIcon/CancelCraftingButton" to="." method="_on_cancel_crafting_button_button_up"]
+
+[editable path="CraftingProcessIcon/CraftingStationMenuItem"]

@@ -1852,6 +1852,9 @@ size = Vector2(20, 46)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5so87"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0hs1n"]
+size = Vector2(8, 8)
+
 [node name="Player" type="CharacterBody2D" unique_id=1875939299 node_paths=PackedStringArray("idle_state", "jump_state", "fall_state", "climb_state", "swing_pick_axe", "attack_1", "air_attack", "dash_attack", "state_machine", "animation_player", "health_component", "sprite", "hurt_box", "hit_box", "hit_state", "dead_state", "sfx_player") groups=["Player"]]
 z_index = 4000
 collision_layer = 17
@@ -2112,6 +2115,14 @@ shape = SubResource("RectangleShape2D_5so87")
 
 [node name="CoinPurse" type="Marker2D" parent="." unique_id=900619047]
 position = Vector2(-1, -15)
+
+[node name="EndingArea" type="Area2D" parent="." unique_id=1253263909]
+position = Vector2(-1, -15)
+collision_layer = 512
+collision_mask = 512
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EndingArea" unique_id=1987552802]
+shape = SubResource("RectangleShape2D_0hs1n")
 
 [node name="SfxPlayer" parent="." unique_id=926725307 instance=ExtResource("25_1twwa")]
 

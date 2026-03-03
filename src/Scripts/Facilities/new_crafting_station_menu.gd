@@ -2,8 +2,8 @@ class_name NewCraftingStationMenu extends Control
 
 @export var station_name: Label
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var grid_container: GridContainer = $HBoxContainer/PanelContainer/MarginContainer/GridContainer
-@onready var nothing_to_craft_label: Label = $HBoxContainer/PanelContainer/MarginContainer/NothingToCraftLabel
+@onready var grid_container: GridContainer = $PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/GridContainer
+@onready var nothing_to_craft_label: Label = $PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/NothingToCraftLabel
 
 @onready var panel_animation_player: AnimationPlayer = $PanelAnimationPlayer
 @onready var ingredients_h_box: VBoxContainer = $CraftingStationItemSelectPanel/IngredientsHBox
@@ -19,6 +19,9 @@ class_name NewCraftingStationMenu extends Control
 
 enum STATION_TYPE {SMELTING, COOKING}
 @export var station_type : STATION_TYPE
+
+@export var station : NewCraftingStation
+var stored_recipe : CraftingRecipe
 # Called when the node enters the scene tree for the first time.
 
 #TODO: IM PROBABLY GOING TO HAVE TO CHECK IF WE'RE COOKING?
@@ -66,6 +69,7 @@ func populate_craftable_items_list(recipe_list : Dictionary) -> void:
 		nothing_to_craft_label.show()
 
 func populate_description_panel(store_recipe : CraftingRecipe) -> void:
+	stored_recipe = store_recipe
 	recipe_icon.texture = store_recipe.menu_icon
 	recipe_name.text = store_recipe.recipe_name
 	value.text = "Market Value: %s" % store_recipe.output_item.sell_value
@@ -92,3 +96,16 @@ func populate_description_panel(store_recipe : CraftingRecipe) -> void:
 func clear_ingredients_list() -> void:
 	for child in ingredients_h_box.get_children():
 		child.queue_free()
+
+func _on_craft_1_button_button_up() -> void:
+	station.start_crafting(stored_recipe, 1)
+	play_spawn_out()
+
+func _on_craft_5_button_button_up() -> void:
+	station.start_crafting(stored_recipe, 5)
+	play_spawn_out()
+
+func _on_craft_all_button_button_up() -> void:
+	var calculated_quantity : int = InventoryManager.calculate_quantity(stored_recipe)
+	station.start_crafting(stored_recipe, calculated_quantity)
+	play_spawn_out()

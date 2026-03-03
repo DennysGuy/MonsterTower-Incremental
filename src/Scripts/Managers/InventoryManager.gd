@@ -165,6 +165,25 @@ func remove_resources_from_inventory(recipe_list : Array[Dictionary]) -> void:
 				else:
 					break
 
+func add_resources_to_inventory(recipe_list : Array[Dictionary]) -> void:
+	for item in recipe_list:
+		for resource in item.keys():
+			var remaining : int = item[resource]
+			
+			while remaining > 0:
+				var added := false
+				
+				if add_item(resource.get_inventory_name(), resource):
+					added = true
+				elif add_item("Bank", resource):
+					added = true
+				
+				if added:
+					remaining -= 1
+				else:
+					print("Inventory and Bank full for: ", resource)
+					break
+					
 func get_max_bank_slots() -> int:
 	return int(PlayerStats.player_stats["Max Bank Slots"])
 
