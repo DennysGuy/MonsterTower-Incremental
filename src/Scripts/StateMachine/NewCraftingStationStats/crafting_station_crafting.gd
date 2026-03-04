@@ -37,21 +37,38 @@ func process_physics(_delta: float) -> State:
 				parent.crafting_progressbar.value += PlayerStats.player_stats["Smelting Speed"]
 			
 	if parent.crafting_progressbar.value >= parent.crafting_progressbar.max_value:
-		#var num_check = randi_range(0,100)
-		#var success_rate : float = parent.stored_recipe.success_rate
-		#match parent.station_type:
-			#parent.STATION_TYPE.COOKING:
-				#success_rate += PlayerStats.player_stats["Cooking Accuracy Bonus"]
-			#parent.STATION_TYPE.SMELTING:
-				#success_rate += PlayerStats.player_stats["Smelting Accuracy Bonus"]
-		
-		var item_interactable : ItemInteractable = preload("uid://dgtobkubdjq27").instantiate()
-		item_interactable.item = parent.stored_recipe.output_item
-		item_interactable.icon.texture = parent.stored_recipe.output_item.shop_icon
-		item_interactable.global_position = parent.global_position
-		parent.play_success_sfx()
-		parent.get_parent().add_child(item_interactable)
-		
+		var num_check = randi_range(0,100)
+		var success_rate : float = parent.stored_recipe.success_rate
+		match parent.station_type:
+			parent.STATION_TYPE.COOKING:
+				success_rate += PlayerStats.player_stats["Cooking Accuracy Bonus"]
+			parent.STATION_TYPE.SMELTING:
+				success_rate += PlayerStats.player_stats["Smelting Accuracy Bonus"]
+				
+		if num_check <= int(success_rate*100):
+			var test_crit_success_chance : float = 0.1
+			var new_num_check : int = randi_range(0,100)
+			if new_num_check <= int(test_crit_success_chance * 100):
+				var test_bonus_amount := 2
+				parent.play_crit_success_sfx()
+				var positions : Array[Vector2] = [Vector2(20,0), Vector2(-20,0)]
+				for num in range(test_bonus_amount):
+					parent.spawn_item(parent.stored_recipe.output_item, positions[num])
+					#await get_tree().create_timer(0.3).timeout
+			else:
+				parent.play_success_sfx()
+				parent.spawn_item(parent.stored_recipe.output_item)
+		else:
+			var item : Item
+			match parent.station_type:
+				parent.STATION_TYPE.COOKING:
+					item = preload("uid://dhaeygij4vyxi")
+				parent.STATION_TYPE.SMELTING:
+					item = preload("uid://broygdxgkjkxp")
+
+			parent.play_failure_sfx()
+			parent.spawn_item(item)
+			
 		parent.crafting_quantity -= 1
 		
 		if parent.crafting_quantity <= 0:

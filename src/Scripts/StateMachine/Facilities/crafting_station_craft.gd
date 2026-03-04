@@ -76,10 +76,8 @@ func process_physics(_delta: float) -> State:
 		if num_check <= int(success_rate * 100):
 			var item_added : bool
 			
-			if parent.station_type == parent.STATION_TYPE.COOKING:
-				item_added = InventoryManager.add_item("Use",parent.stored_recipe.output_item)
-			elif parent.station_type == parent.STATION_TYPE.SMELTING:
-				item_added =  InventoryManager.add_item("Use",parent.stored_recipe.output_item)
+
+			item_added = InventoryManager.add_item("Use",parent.stored_recipe.output_item)
 			
 			if !item_added:
 				InventoryManager.add_item("Bank", parent.stored_recipe.output_item)

@@ -28,6 +28,9 @@ var player_in_dojo_range : bool = false
 @onready var dojo_access_notification: Label = $Dojo/DojoAccessNotification
 @onready var ap_notice: TextureRect = $Dojo/APNotice
 
+@onready var cooking_station: NewCraftingStation = $CookingStation
+@onready var refinery: NewCraftingStation = $Refinery
+
 const CRAFT_SWORD = preload("uid://4c6l1w0kpar3")
 const UNLOCK_SHOP = preload("uid://cveiqvxm5r0yw")
 
@@ -256,7 +259,7 @@ func unlock_cooking_station() -> void:
 	await get_tree().create_timer(1.0).timeout
 	hud.animation_player.play("Flash")
 	await get_tree().create_timer(0.5).timeout
-	temp_cooking_range.unlock_station()
+	cooking_station.unlock_cooking_station()
 	SignalBus.issue_big_notification.emit("Cook exotic dishes and sell for big cash!")
 	await get_tree().create_timer(2.0).timeout
 	SignalBus.issue_big_notification.emit("Cooking Resources Drop From Monsters!")
@@ -278,7 +281,7 @@ func unlock_refinery_station() -> void:
 	await get_tree().create_timer(1.0).timeout
 	hud.animation_player.play("Flash")
 	await get_tree().create_timer(0.5).timeout
-	temp_smelting_station.unlock_station()
+	refinery.unlock_refinery()
 	SignalBus.issue_big_notification.emit("Refine Raw Resources into Craftable Material!")
 	await get_tree().create_timer(2.0).timeout
 	SignalBus.issue_big_notification.emit("You have unlocked the stone pickaxe.")

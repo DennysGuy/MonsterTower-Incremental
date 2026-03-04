@@ -262,7 +262,7 @@ anchor_bottom = 0.5
 offset_left = -55.0
 offset_top = -31.0
 offset_right = 59.0
-offset_bottom = 35.0
+offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -293,32 +293,37 @@ theme_override_fonts/font = ExtResource("1_hddue")
 theme_override_font_sizes/font_size = 12
 text = "Crafting Station"
 
-[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/MarginContainer/HBoxContainer" unique_id=1864272674]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HBoxContainer" unique_id=459266009]
+layout_mode = 2
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_bottom = 12
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/MarginContainer/HBoxContainer/MarginContainer" unique_id=1864272674]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HBoxContainer/PanelContainer" unique_id=174036489]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HBoxContainer/MarginContainer/PanelContainer" unique_id=174036489]
 layout_mode = 2
 theme_override_constants/margin_left = 3
 theme_override_constants/margin_top = 3
 theme_override_constants/margin_right = 3
 theme_override_constants/margin_bottom = 3
 
-[node name="GridContainer" type="GridContainer" parent="PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer" unique_id=1124105096]
+[node name="GridContainer" type="GridContainer" parent="PanelContainer/MarginContainer/HBoxContainer/MarginContainer/PanelContainer/MarginContainer" unique_id=1124105096]
 layout_mode = 2
 columns = 4
 
-[node name="Slot" parent="PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/GridContainer" unique_id=782442892 instance=ExtResource("3_bq5u8")]
+[node name="Slot" parent="PanelContainer/MarginContainer/HBoxContainer/MarginContainer/PanelContainer/MarginContainer/GridContainer" unique_id=782442892 instance=ExtResource("3_bq5u8")]
 layout_mode = 2
 
-[node name="Slot2" parent="PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/GridContainer" unique_id=32211145 instance=ExtResource("3_bq5u8")]
+[node name="Slot2" parent="PanelContainer/MarginContainer/HBoxContainer/MarginContainer/PanelContainer/MarginContainer/GridContainer" unique_id=32211145 instance=ExtResource("3_bq5u8")]
 layout_mode = 2
 
-[node name="Slot3" parent="PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/GridContainer" unique_id=1225468668 instance=ExtResource("3_bq5u8")]
+[node name="Slot3" parent="PanelContainer/MarginContainer/HBoxContainer/MarginContainer/PanelContainer/MarginContainer/GridContainer" unique_id=1225468668 instance=ExtResource("3_bq5u8")]
 layout_mode = 2
 
-[node name="NothingToCraftLabel" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer" unique_id=234223177]
+[node name="NothingToCraftLabel" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/MarginContainer/PanelContainer/MarginContainer" unique_id=234223177]
 visible = false
 layout_mode = 2
 theme_override_constants/outline_size = 5
@@ -488,6 +493,84 @@ mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("1_hddue")
 theme_override_font_sizes/font_size = 10
 text = "Craft All"
+
+[node name="StarTierHBox" type="HBoxContainer" parent="CraftingStationItemSelectPanel" unique_id=749761400]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -64.5
+offset_top = 7.0
+offset_right = 14.5
+offset_bottom = 15.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="RatePanel" type="Panel" parent="CraftingStationItemSelectPanel" unique_id=136508197]
+layout_mode = 0
+offset_left = -101.0
+offset_right = -1.0
+offset_bottom = 61.0
+
+[node name="Title" type="Label" parent="CraftingStationItemSelectPanel/RatePanel" unique_id=561414567]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -13.5
+offset_top = 2.0
+offset_right = 13.5
+offset_bottom = 14.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("1_hddue")
+theme_override_font_sizes/font_size = 12
+text = "Rates"
+
+[node name="SuccessRate" type="Label" parent="CraftingStationItemSelectPanel/RatePanel" unique_id=1665015418]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -42.0
+offset_top = 15.0
+offset_right = 29.0
+offset_bottom = 27.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("1_hddue")
+theme_override_font_sizes/font_size = 12
+text = "Success: 90%"
+
+[node name="CritSuccessRate" type="Label" parent="CraftingStationItemSelectPanel/RatePanel" unique_id=278270102]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -43.0
+offset_top = 29.0
+offset_right = 39.0
+offset_bottom = 41.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("1_hddue")
+theme_override_font_sizes/font_size = 12
+text = "Crit Success: 10%"
+
+[node name="FailureRate" type="Label" parent="CraftingStationItemSelectPanel/RatePanel" unique_id=323099345]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -43.0
+offset_top = 42.0
+offset_right = 39.0
+offset_bottom = 54.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("1_hddue")
+theme_override_font_sizes/font_size = 12
+text = "Failure: 10%"
 
 [connection signal="button_up" from="CraftingStationItemSelectPanel/HBoxContainer2/Craft1Button" to="." method="_on_craft_1_button_button_up"]
 [connection signal="button_up" from="CraftingStationItemSelectPanel/HBoxContainer2/Craft5Button" to="." method="_on_craft_5_button_button_up"]

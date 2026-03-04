@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://b3y7v4qfemoxt" path="res://src/Scripts/StateMachine/NewCraftingStationStats/transfer_resources.gd" id="12_0evvf"]
 [ext_resource type="Script" uid="uid://cqlkot53j3bue" path="res://src/Scripts/StateMachine/NewCraftingStationStats/crafting_station_crafting.gd" id="13_y86rf"]
 [ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="15_wv87p"]
+[ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="16_esdk2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r2l52"]
 size = Vector2(72, 48)
@@ -183,7 +184,6 @@ offset_left = -48.0
 offset_right = 40.0
 
 [node name="ArrowAtOre" parent="." unique_id=347205072 instance=ExtResource("4_2ityt")]
-visible = true
 position = Vector2(-65, -75)
 
 [node name="CraftingProcessIcon" type="Panel" parent="." unique_id=1650907014]
@@ -272,6 +272,18 @@ shape = SubResource("RectangleShape2D_y86rf")
 
 [node name="CraftingTrackerPlayer" type="AnimationPlayer" parent="." unique_id=1760792282]
 libraries/ = SubResource("AnimationLibrary_4ewp7")
+
+[node name="CantOpenNotice" type="Label" parent="." unique_id=1904347087]
+visible = false
+offset_left = -136.0
+offset_top = -94.0
+offset_right = 136.0
+offset_bottom = -79.0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("16_esdk2")
+theme_override_font_sizes/font_size = 14
+text = "unlock x node to access"
+horizontal_alignment = 1
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

@@ -31,6 +31,12 @@ const SMELTING_STATION = preload("uid://btbqj1pb1hac")
 
 const FAILURE = preload("uid://cv5p7ufgqluno")
 const SUCCESS = preload("uid://dj3e1mi4ks8sr")
+const CRIT_SUCCESS_FAN_FARE = preload("uid://dg17w86m3muje")
+
+@onready var arrow_at_ore: Sprite2D = $ArrowAtOre
+
+
+@onready var cant_open_notice: Label = $CantOpenNotice
 
 @export var state_machine : StateMachine
 
@@ -44,10 +50,21 @@ func _ready() -> void:
 		STATION_TYPE.SMELTING:
 			name_tag.tag.text = "Refinery"
 			station_graphic.texture = SMELTING_STATION
+			if PlayerStats.facilities_unlocked["Refinery Station"]:
+				station_graphic.texture = SMELTING_STATION
+				arrow_at_ore.show()
+			else:
+				station_graphic.texture = SMELTING_STATION_CONTRUCTION_MODE
+			
 		STATION_TYPE.COOKING:
 			name_tag.tag.text = "Cooking Range"
 			station_graphic.texture = TEMP_COOKING_RANGE
-	
+			if PlayerStats.facilities_unlocked["Cooking Station"]:
+				station_graphic.texture = TEMP_COOKING_RANGE
+				arrow_at_ore.show()
+			else:
+				station_graphic.texture = TEMP_COOKING_RANGE_CONTSTRUCTION
+				
 	state_machine.init(self)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -65,13 +82,26 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		player_in_range = true
 		player = body
 		GameManager.player_can_attack = false
+		var can_open_station : bool
+		match station_type:
+			STATION_TYPE.COOKING:
+				can_open_station = PlayerStats.facilities_unlocked["Cooking Station"]
+			STATION_TYPE.SMELTING:
+				can_open_station = PlayerStats.facilities_unlocked["Refinery Station"]
 
-		if not crafting_started:
+		if not crafting_started and can_open_station:
 			match station_type:
 				STATION_TYPE.SMELTING:
 					spawn_refinery_menu()
 				STATION_TYPE.COOKING:
 					spawn_cooking_station_menu()
+		else:
+			match station_type:
+				STATION_TYPE.SMELTING:
+					cant_open_notice.text = "Unlock Refinery Node to access"
+				STATION_TYPE.COOKING:
+					cant_open_notice.text = "Unlock Cooking Range Node to access"
+			cant_open_notice.show()
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body is Player:
@@ -79,7 +109,8 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 		player_in_range = false
 		if stored_crafting_menu:
 			stored_crafting_menu.play_spawn_out()
-
+		else:
+			cant_open_notice.hide()
 func spawn_cooking_station_menu() -> void:
 	var cooking_menu : NewCraftingStationMenu = preload("uid://dq1s8bd6w6dnv").instantiate()
 	cooking_menu.set_as_cooking_range()
@@ -95,6 +126,14 @@ func spawn_refinery_menu() -> void:
 	refinery_menu.station = self
 	stored_crafting_menu = refinery_menu
 	add_child(refinery_menu)
+
+func unlock_cooking_station() -> void:
+	station_graphic.texture = TEMP_COOKING_RANGE
+	arrow_at_ore.show()
+
+func unlock_refinery() -> void:
+	station_graphic.texture = SMELTING_STATION
+	arrow_at_ore.show()
 
 func start_crafting(recipe : CraftingRecipe, quantity : int) -> void:
 
@@ -164,6 +203,9 @@ func play_success_sfx() -> void:
 func play_failure_sfx() -> void:
 	play_sfx(FAILURE)
 
+func play_crit_success_sfx() -> void:
+	play_sfx(CRIT_SUCCESS_FAN_FARE)
+
 func _on_cancel_crafting_button_button_up() -> void:
 	crafting_progressbar.value = 0
 	hide_crafting_tracker()
@@ -173,3 +215,10 @@ func _on_cancel_crafting_button_button_up() -> void:
 	for num in range(crafting_quantity):
 		InventoryManager.add_resources_to_inventory(stored_recipe.recipe_list)
 	stored_recipe = null
+
+func spawn_item(item : Item, offset : Vector2 = Vector2.ZERO) -> void:
+	var item_interactable : ItemInteractable = preload("uid://dgtobkubdjq27").instantiate()
+	item_interactable.item = item
+	item_interactable.icon.texture = item.shop_icon
+	item_interactable.global_position = global_position + offset
+	get_parent().add_child(item_interactable)

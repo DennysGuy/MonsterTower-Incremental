@@ -13,5 +13,7 @@ enum RECIPE_TYPE {
 @export var crafting_time : float
 @export var recipe_type : RECIPE_TYPE = RECIPE_TYPE.CRAFTING_MATERIAL
 @export var success_rate : float
+@export var critical_success_rate : float
+@export var failure_rate : float
 @export var output_item : Item
 @export var recipe_list : Array[Dictionary] #stored item and quantity

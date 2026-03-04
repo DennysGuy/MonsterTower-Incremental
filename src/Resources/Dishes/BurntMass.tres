@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://dhaeygij4vyxi"]
+
+[ext_resource type="Script" uid="uid://cu8drgivmhfn" path="res://src/Scripts/item.gd" id="1_3xo4j"]
+[ext_resource type="Texture2D" uid="uid://dxsj2c8bvh8nw" path="res://Assets/Facilities/CookingStation/BurntMass.png" id="2_6ikfb"]
+
+[resource]
+script = ExtResource("1_3xo4j")
+item_name = "Burnt Mass"
+item_type = 5
+sell_value = 20
+shop_icon = ExtResource("2_6ikfb")
+description = "The result of a failed cooking attempt."
+metadata/_custom_type_script = "uid://cu8drgivmhfn"

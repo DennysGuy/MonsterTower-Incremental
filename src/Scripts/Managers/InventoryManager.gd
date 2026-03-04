@@ -156,9 +156,7 @@ func remove_resources_from_inventory(recipe_list : Array[Dictionary]) -> void:
 			var remaining : int = item[resource]
 			
 			while remaining > 0:
-				if remove_item("Inventory", resource):
-					remaining -= 1
-				elif remove_item("Ore", resource):
+				if remove_item(resource.get_inventory_name(), resource):
 					remaining -= 1
 				elif remove_item("Bank", resource):
 					remaining -= 1

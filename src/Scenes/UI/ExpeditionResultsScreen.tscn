@@ -385,7 +385,7 @@ offset_top = 123.499695
 offset_right = 72.0
 offset_bottom = 261.4997
 grow_horizontal = 2
-columns = 8
+columns = 4
 
 [node name="BankLabel" type="Label" parent="ResultsPanel" unique_id=554801765]
 layout_mode = 1
@@ -436,7 +436,7 @@ offset_top = 123.499695
 offset_right = 245.0
 offset_bottom = 262.4997
 grow_horizontal = 2
-columns = 8
+columns = 4
 
 [node name="TipsAndTricks" type="Label" parent="ResultsPanel" unique_id=586831154]
 layout_mode = 0

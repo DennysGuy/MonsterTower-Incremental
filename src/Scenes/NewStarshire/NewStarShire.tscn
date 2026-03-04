@@ -863,6 +863,8 @@ limit_left = 0
 limit_top = 23
 limit_right = 1025
 limit_bottom = 705
+limit_smoothed = true
+position_smoothing_enabled = true
 drag_horizontal_offset = 0.04
 smoothing_enabled = true
 smoothing_distance = 6
@@ -1234,11 +1236,11 @@ position = Vector2(58, 384)
 position = Vector2(277, 656)
 index = 1
 
-[node name="NewCraftingStation" parent="." unique_id=179535965 instance=ExtResource("33_d6jc3")]
+[node name="CookingStation" parent="." unique_id=179535965 instance=ExtResource("33_d6jc3")]
 position = Vector2(505, 656)
 station_type = 1
 
-[node name="NewCraftingStation2" parent="." unique_id=763505504 instance=ExtResource("33_d6jc3")]
+[node name="Refinery" parent="." unique_id=763505504 instance=ExtResource("33_d6jc3")]
 position = Vector2(508, 544)
 
 [connection signal="body_entered" from="TowerArea" to="." method="_on_tower_area_body_entered"]

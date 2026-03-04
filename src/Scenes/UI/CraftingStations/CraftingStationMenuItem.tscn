@@ -58,4 +58,12 @@ text = "10"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="StarTierHBox" type="HBoxContainer" parent="." unique_id=1913778139]
+layout_mode = 0
+offset_left = -18.0
+offset_top = 37.0
+offset_right = 53.0
+offset_bottom = 45.0
+alignment = 1
+
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
