@@ -29,6 +29,8 @@ var map_name : String = ""
 const CLOSE_IN = preload("uid://dc3va7knibxnb")
 const CLOSE_OUT = preload("uid://caj0oih8j2sty")
 const COUNTDOWN_BEEP = preload("uid://c6caiqmkt2lt0")
+const BAG_CLOSED = preload("uid://bf3c8p3fgc0mh")
+const BAG_OPEN = preload("uid://dlh2yqqt6l81t")
 
 @onready var monsters_left: RichTextLabel = $PlayerHUD/MonstersLeft
 @onready var start_hunt_challenge_button: Button = $PlayerHUD/StartHuntChallengeButton
@@ -158,10 +160,11 @@ func show_bag() -> void:
 		GameManager.player_can_move = false
 		bag.enable_tabs()
 		bag.update_bag()
-
+		play_sfx(BAG_OPEN)
 		bag_animation_player.play("ShowBag")
 	else:
 		GameManager.player_can_move = true
+		play_sfx(BAG_CLOSED)
 		bag.disable_tabs()
 		bag_animation_player.play("HideBag")
 
@@ -270,3 +273,12 @@ func _on_open_tower_map_button_button_up() -> void:
 		return
 	
 	SignalBus.spawn_tower_map.emit()
+
+func play_sfx(sound: AudioStream, volume: float = 0.0):
+	var player := AudioStreamPlayer.new()
+	player.stream = sound
+	player.volume_db = volume
+	player.bus = &"SFX"
+	add_child(player)
+	player.play()
+	player.finished.connect(player.queue_free)

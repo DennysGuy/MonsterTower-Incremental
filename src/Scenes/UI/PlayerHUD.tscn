@@ -319,7 +319,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(185, 71), Vector2(185, -200)]
+"values": [Vector2(185, 71), Vector2(185, -250)]
 }
 
 [sub_resource type="Animation" id="Animation_65fhw"]
@@ -334,7 +334,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(185, -200)]
+"values": [Vector2(185, -250)]
 }
 
 [sub_resource type="Animation" id="Animation_fw5mt"]
@@ -350,7 +350,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(185, -200), Vector2(185, 71)]
+"values": [Vector2(185, -250), Vector2(185, 71)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jyqen"]
@@ -434,13 +434,6 @@ theme_override_fonts/font = ExtResource("9_jyqen")
 theme_override_font_sizes/font_size = 15
 text = "100/100"
 horizontal_alignment = 2
-
-[node name="Bag" parent="PlayerHUD" unique_id=668700631 instance=ExtResource("6_g1bs5")]
-layout_mode = 1
-offset_left = -135.0
-offset_top = -380.0
-offset_right = 164.0
-offset_bottom = -194.50012
 
 [node name="MapeName" type="Label" parent="PlayerHUD" unique_id=727908015]
 layout_mode = 1
@@ -772,6 +765,14 @@ theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("9_jyqen")
 text = "Press 'B' To
 Open Bag!"
+
+[node name="Bag" parent="PlayerHUD" unique_id=668700631 instance=ExtResource("6_g1bs5")]
+z_index = 4096
+layout_mode = 1
+offset_left = -135.0
+offset_top = -430.0
+offset_right = 205.0
+offset_bottom = -203.0
 
 [node name="SfxPlayer" parent="." unique_id=2102076142 instance=ExtResource("8_65fhw")]
 

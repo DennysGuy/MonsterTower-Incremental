@@ -7,6 +7,7 @@ enum ITEM_TYPE {NOVELTY, COOKING, CRAFTING, ORE, GEMSTONE, USE}
 @export var item_type : ITEM_TYPE
 @export var sell_value : int
 @export var shop_icon : Texture2D
+@export var item_tier : int = 1
 @export_multiline var description : String
 
 func is_novelty() -> bool:

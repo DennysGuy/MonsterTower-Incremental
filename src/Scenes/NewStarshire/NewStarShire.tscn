@@ -858,7 +858,7 @@ tile_map_data = PackedByteArray("AAACAAsAAQAAAAEAAAADAAsAAQABAAEAAAACAAwAAQAAAAE
 tile_set = SubResource("TileSet_5xris")
 
 [node name="PlayerCamera" parent="." unique_id=1964090303 instance=ExtResource("3_wtuhv")]
-position = Vector2(-20, 371)
+position = Vector2(-18, 372)
 limit_left = 0
 limit_top = 23
 limit_right = 1025

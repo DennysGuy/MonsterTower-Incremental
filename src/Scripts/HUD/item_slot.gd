@@ -15,6 +15,14 @@ enum SLOT_LOCALE {INVENTORY, BANK}
 @export var indicator_crafting: TextureRect
 @export var indicator_na: TextureRect
 
+const ITEM_CLICK_1 = preload("uid://0e5ni3t5cmhh")
+const ITEM_CLICK_2 = preload("uid://dj4vrx0fpqy16")
+const ITEM_CLICK_3 = preload("uid://cmwobqjdrj10t")
+const ITEM_CLICK_4 = preload("uid://b68oki1240pw2")
+const ITEM_CLICK_5 = preload("uid://c5y2qkkyypkf8")
+
+@onready var clicks : Array[AudioStream] = [ITEM_CLICK_1,ITEM_CLICK_2,ITEM_CLICK_3,ITEM_CLICK_4,ITEM_CLICK_5]
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -52,6 +60,7 @@ func _on_gui_input(event: InputEvent) -> void:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			if slot_type == SLOT_TYPE.BAG:
 				InventoryManager.populate_inventory_description.emit(item)
+				play_sfx(clicks.pick_random())
 				return
 			var slot_location : String
 			match slot_locale:
@@ -61,3 +70,12 @@ func _on_gui_input(event: InputEvent) -> void:
 					slot_location = "Bank"
 					
 			InventoryManager.populate_market_menu.emit(item,slot_location)
+
+func play_sfx(sound: AudioStream, volume: float = 0.0):
+	var player := AudioStreamPlayer.new()
+	player.stream = sound
+	player.volume_db = volume
+	player.bus = &"SFX"
+	add_child(player)
+	player.play()
+	player.finished.connect(player.queue_free)
