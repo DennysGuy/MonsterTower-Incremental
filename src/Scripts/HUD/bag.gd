@@ -2,7 +2,7 @@ class_name InventoryBag extends Control
 
 @onready var texture_rect: TextureRect = $TextureRect
 @onready var grid_container: GridContainer = $TextureRect/GridContainer
-@onready var tab_full: Label = $TabFull
+@onready var tab_full: Label = $TextureRect/TabFull
 
 @onready var sfx_player: SFXPlayer = $SfxPlayer
 const BAG_FULL = preload("uid://bakwpx4g6fqth")
@@ -35,12 +35,16 @@ var selected_item : Item
 
 @onready var tabs : Array[TextureButton] = [inventory_tab, ore, gem_stone_tab, use_tab]
 @onready var tier_box: HBoxContainer = $TextureRect/TierBox
+@onready var bank_container: GridContainer = $Bank/BankContainer
+@onready var bank: TextureRect = $Bank
+@onready var show_bank: TextureButton = $TextureRect/HBoxContainer/ShowBank
 
 const DROPS_BAG_BG = preload("uid://bot5flcdwi2w3")
 const GEMSTONE_BAG_BG = preload("uid://bpmgpuqy6o3dd")
 
 const ORE_BAG_BG = preload("uid://dpbp1fre1iaqg")
 const USE_BAG_BG = preload("uid://bt6uswk447ud5")
+const CLICK_ON = preload("uid://drj3xu66x5vg")
 
 const DROP_BAG_OPEN = preload("uid://b3s20yo5x604q")
 const GEM_BAG_OPEN = preload("uid://c6mxc46l80hvc")
@@ -49,10 +53,11 @@ const USE_BAG_OPEN = preload("uid://caumwm7nf3s0t")
 const BUTTON_HOVER = preload("uid://dj4lg3rglma0j")
 const DROP = preload("uid://bli85jj3lnefb")
 const DROP_ITEM = preload("uid://b1l5d27bgd6wb")
-
 @onready var discard: TextureButton = $TextureRect/Discard
 
 @onready var bag_bg: TextureRect = $TextureRect/BagBG
+
+var bank_showing : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -155,7 +160,10 @@ func init_tabs() -> void:
 		use_tab.show()
 		update_tab_label(use_tab_label,"Use", "Use")
 
-	
+	if PlayerStats.facilities_unlocked["Bank"]:
+		show_bank.show()
+	else:
+		show_bank.hide()
 
 func update_tab_label(tab_label : Label, tab_name : String, selected_inventory_name : String) -> void:
 	var inventory_current_size : int = InventoryManager.inventories[selected_inventory_name].size()
@@ -165,6 +173,7 @@ func update_tab_label(tab_label : Label, tab_name : String, selected_inventory_n
 func update_bag() -> void:
 	gold_count.text = str(TechTreeManager.currency)
 	init_tabs()
+	update_bank_container()
 
 func _on_novelty_tab_button_up() -> void:
 	bag_bg.texture = DROPS_BAG_BG
@@ -250,6 +259,24 @@ func play_sfx(sound: AudioStream, volume: float = 0.0):
 	player.finished.connect(player.queue_free)
 
 
+func update_bank_container() -> void:
+	InventoryManager.clear_grid_container(bank_container)
+	
+	for num in range(PlayerStats.player_stats["Max Bank Slots"]):
+		var slot : ItemSlot = preload("uid://d0s6j8mvikv8c").instantiate()
+		var potential_item
+		if num < InventoryManager.inventories["Bank"].size():
+			potential_item = InventoryManager.inventories["Bank"][num]
+			
+		if potential_item:
+			slot.item = potential_item["item"]
+			slot.item_icon.texture = potential_item["item"].shop_icon
+			slot.show_quantity_label(potential_item["quantity"])
+			slot.set_indicator(potential_item["item"])
+			bank_container.add_child(slot)
+		else:
+			bank_container.add_child(slot)
+
 func _on_inventory_tab_mouse_entered() -> void:
 	play_sfx(BUTTON_HOVER,-4.0)
 
@@ -264,3 +291,12 @@ func _on_gem_stone_tab_mouse_entered() -> void:
 
 func _on_use_tab_mouse_entered() -> void:
 	play_sfx(BUTTON_HOVER,-4.0)
+
+
+func _on_show_bank_button_up() -> void:
+	bank_showing = !bank_showing
+	play_sfx(CLICK_ON)
+	if bank_showing:
+		bank.show()
+	else:
+		bank.hide()
