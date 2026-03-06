@@ -7,11 +7,21 @@
 [ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="5_oesmi"]
 [ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="6_cr4yk"]
 [ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="6_wwjc2"]
-[ext_resource type="Texture2D" uid="uid://3y4drbijxgtr" path="res://Assets/HUD/Facilities/MarketTab.png" id="8_pkou2"]
-[ext_resource type="Texture2D" uid="uid://bj8rof8t0vdf" path="res://Assets/HUD/Facilities/MarketTab_Pressed.png" id="9_igyd3"]
-[ext_resource type="Texture2D" uid="uid://cc4s46tcussph" path="res://Assets/HUD/Facilities/MarketTab_Hover.png" id="10_2iekq"]
+[ext_resource type="Texture2D" uid="uid://b30bdn5uad13v" path="res://Assets/HUD/Facilities/GrandMarketMenu_DropsBG.png" id="7_6u5e3"]
+[ext_resource type="Texture2D" uid="uid://dkd4op7b7q1vp" path="res://Assets/HUD/Bags/Market_Drops_Button.png" id="8_uqeh6"]
+[ext_resource type="Texture2D" uid="uid://dbq8ligbspbbd" path="res://Assets/HUD/Bags/Market_Drops_Button_Pressed.png" id="9_6aebp"]
+[ext_resource type="Texture2D" uid="uid://c0bf31w6yr3lk" path="res://Assets/HUD/Bags/Market_Drops_Button_Hover.png" id="10_4j6oi"]
+[ext_resource type="Texture2D" uid="uid://vlyepx1d3siq" path="res://Assets/HUD/Bags/Market_Ore_Button.png" id="11_f6wvv"]
+[ext_resource type="Texture2D" uid="uid://dxpv7rr7xigwu" path="res://Assets/HUD/Bags/Market_Ore_Button_Pressed.png" id="12_70xkk"]
+[ext_resource type="Texture2D" uid="uid://bh4ibkfm1a8lv" path="res://Assets/HUD/Bags/Market_Ore_Button_Hover.png" id="13_3hxl8"]
+[ext_resource type="Texture2D" uid="uid://baqkrdd18p8ox" path="res://Assets/HUD/Bags/Market_Gem_Button.png" id="14_in26l"]
+[ext_resource type="Texture2D" uid="uid://nof6fd2hbboi" path="res://Assets/HUD/Bags/Market_Gem_Button_Pressed.png" id="15_6u5e3"]
+[ext_resource type="Texture2D" uid="uid://yyyj7gu242ii" path="res://Assets/HUD/Bags/Market_Gem_Button_Hover.png" id="16_s3vug"]
+[ext_resource type="Texture2D" uid="uid://dcf34mnogdpat" path="res://Assets/HUD/Bags/Market_Use_Button.png" id="17_in26l"]
+[ext_resource type="Texture2D" uid="uid://b1k5jwyknpl4e" path="res://Assets/HUD/Bags/Market_Use_Button_Pressed.png" id="18_6u5e3"]
+[ext_resource type="Texture2D" uid="uid://cdnmf68j5a2ak" path="res://Assets/HUD/Bags/Market_Use_Button_Hover.png" id="19_s3vug"]
 
-[node name="GrandMarketMenu" type="Control" unique_id=1234613022]
+[node name="GrandMarketMenu" type="Control" unique_id=1234613022 node_paths=PackedStringArray("tab_buttons")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,6 +29,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_72318")
+tab_buttons = []
 
 [node name="Panel" type="Panel" parent="." unique_id=945022329]
 layout_mode = 1
@@ -216,6 +227,15 @@ theme_override_fonts/font = ExtResource("5_oesmi")
 theme_override_font_sizes/font_size = 12
 text = "Exit"
 
+[node name="InventoryBG" type="TextureRect" parent="." unique_id=249039891]
+layout_mode = 0
+offset_left = -3.0
+offset_top = 3.0
+offset_right = 637.0
+offset_bottom = 363.0
+mouse_filter = 2
+texture = ExtResource("7_6u5e3")
+
 [node name="InventoryLabel" type="Label" parent="." unique_id=1376269875]
 layout_mode = 0
 offset_left = 220.0
@@ -225,7 +245,7 @@ offset_bottom = 81.0
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("6_wwjc2")
 theme_override_font_sizes/font_size = 13
-text = "Inventory"
+text = "Drops"
 
 [node name="InventoryLabel2" type="Label" parent="." unique_id=362013724]
 layout_mode = 0
@@ -298,7 +318,7 @@ to Access Slots!"
 
 [node name="SfxPlayer" parent="." unique_id=2090409393 instance=ExtResource("6_cr4yk")]
 
-[node name="SellNoveltiesButton" type="Button" parent="." unique_id=1752495583]
+[node name="SellTabButton" type="Button" parent="." unique_id=1752495583]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -317,7 +337,7 @@ theme_override_fonts/font = ExtResource("5_oesmi")
 theme_override_font_sizes/font_size = 10
 text = "Sell Tab"
 
-[node name="SellNoveltiesButton2" type="Button" parent="." unique_id=1537533758]
+[node name="SellBankButton" type="Button" parent="." unique_id=1537533758]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -351,9 +371,9 @@ theme_override_constants/separation = 0
 [node name="InventoryTab" type="TextureButton" parent="HBoxContainer" unique_id=1472460900]
 layout_mode = 2
 mouse_default_cursor_shape = 2
-texture_normal = ExtResource("8_pkou2")
-texture_pressed = ExtResource("9_igyd3")
-texture_hover = ExtResource("10_2iekq")
+texture_normal = ExtResource("8_uqeh6")
+texture_pressed = ExtResource("9_6aebp")
+texture_hover = ExtResource("10_4j6oi")
 
 [node name="Label" type="Label" parent="HBoxContainer/InventoryTab" unique_id=296578205]
 layout_mode = 0
@@ -363,16 +383,17 @@ offset_right = 27.0
 offset_bottom = 13.0
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("6_wwjc2")
-theme_override_font_sizes/font_size = 6
-text = "Inventory"
+theme_override_font_sizes/font_size = 7
+text = "Drops"
+horizontal_alignment = 1
 
 [node name="OreTab" type="TextureButton" parent="HBoxContainer" unique_id=392124376]
 visible = false
 layout_mode = 2
 mouse_default_cursor_shape = 2
-texture_normal = ExtResource("8_pkou2")
-texture_pressed = ExtResource("9_igyd3")
-texture_hover = ExtResource("10_2iekq")
+texture_normal = ExtResource("11_f6wvv")
+texture_pressed = ExtResource("12_70xkk")
+texture_hover = ExtResource("13_3hxl8")
 
 [node name="Label" type="Label" parent="HBoxContainer/OreTab" unique_id=1734482125]
 layout_mode = 0
@@ -389,9 +410,9 @@ text = "Ore"
 visible = false
 layout_mode = 2
 mouse_default_cursor_shape = 2
-texture_normal = ExtResource("8_pkou2")
-texture_pressed = ExtResource("9_igyd3")
-texture_hover = ExtResource("10_2iekq")
+texture_normal = ExtResource("14_in26l")
+texture_pressed = ExtResource("15_6u5e3")
+texture_hover = ExtResource("16_s3vug")
 
 [node name="Label" type="Label" parent="HBoxContainer/GemStonesTab" unique_id=2019106025]
 layout_mode = 0
@@ -410,9 +431,9 @@ Stones"
 visible = false
 layout_mode = 2
 mouse_default_cursor_shape = 2
-texture_normal = ExtResource("8_pkou2")
-texture_pressed = ExtResource("9_igyd3")
-texture_hover = ExtResource("10_2iekq")
+texture_normal = ExtResource("17_in26l")
+texture_pressed = ExtResource("18_6u5e3")
+texture_hover = ExtResource("19_s3vug")
 
 [node name="Label" type="Label" parent="HBoxContainer/UseTab" unique_id=1541491451]
 layout_mode = 0
@@ -427,8 +448,8 @@ text = "Use"
 
 [connection signal="button_up" from="DetailsPanel/SellButton" to="." method="_on_sell_button_button_up"]
 [connection signal="button_up" from="Close" to="." method="_on_close_button_up"]
-[connection signal="button_up" from="SellNoveltiesButton" to="." method="_on_sell_novelties_button_button_up"]
-[connection signal="button_up" from="SellNoveltiesButton2" to="." method="_on_sell_novelties_button_2_button_up"]
+[connection signal="button_up" from="SellTabButton" to="." method="_on_sell_novelties_button_button_up"]
+[connection signal="button_up" from="SellBankButton" to="." method="_on_sell_novelties_button_2_button_up"]
 [connection signal="button_up" from="HBoxContainer/InventoryTab" to="." method="_on_novelties_tab_button_up"]
 [connection signal="button_up" from="HBoxContainer/OreTab" to="." method="_on_ore_tab_button_up"]
 [connection signal="button_up" from="HBoxContainer/GemStonesTab" to="." method="_on_gem_stones_tab_button_up"]

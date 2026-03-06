@@ -243,6 +243,7 @@ theme_override_font_sizes/font_size = 10
 text = "Use"
 
 [node name="ShowBank" type="TextureButton" parent="TextureRect/HBoxContainer" unique_id=1490028371]
+visible = false
 layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("5_812es")
@@ -509,6 +510,7 @@ text = "Filters"
 vertical_alignment = 1
 
 [node name="TabFull" type="Label" parent="TextureRect" unique_id=237285267]
+visible = false
 layout_mode = 1
 offset_left = 257.5
 offset_top = 9.0

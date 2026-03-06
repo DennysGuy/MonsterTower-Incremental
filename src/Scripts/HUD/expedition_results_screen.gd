@@ -19,7 +19,12 @@ class_name ExpeditionResultsScreen extends Control
 @onready var ore_tab: TextureButton = $ResultsPanel/HBoxContainer/OreTab
 @onready var gem_stone_tab: TextureButton = $ResultsPanel/HBoxContainer/GemStoneTab
 @onready var use_tab: TextureButton = $ResultsPanel/HBoxContainer/UseTab
+@onready var bag_bg: TextureRect = $ResultsPanel/BagBG
 
+const RESULTS_SCREEN_PANEL_DROPS_BG = preload("uid://05g6imv7vw7y")
+const RESULTS_SCREEN_PANEL_GEMS_BG = preload("uid://bhj8d20w063nm")
+const RESULTS_SCREEN_PANEL_ORE_BG = preload("uid://decyln27lr5ee")
+const RESULTS_SCREEN_PANEL_USE_BG = preload("uid://b88puwp4yertl")
 
 @onready var tabs : Array[TextureButton] = [ore_tab,gem_stone_tab,use_tab]
 @onready var to_town_bar: ProgressBar = $ResultsPanel/ToTownBar
@@ -141,7 +146,24 @@ func move_inventory_to_bank() -> void:
 
 func transfer_tab_to_bank(tab_name : String) -> void:
 	transfering_tab_label.show()
-	transfering_tab_label.text = "Tranfering %s to Bank..." % tab_name
+	if tab_name == "Inventory":
+		transfering_tab_label.text = "Tranfering Drops to Bank..."
+	else:
+		transfering_tab_label.text = "Tranfering %s to Bank..." % tab_name
+	match tab_name:
+		"Inventory":
+			inventory_label.text = "Drops"
+			bag_bg.texture = RESULTS_SCREEN_PANEL_DROPS_BG
+		"Ore":
+			inventory_label.text = "Ore"
+			bag_bg.texture = RESULTS_SCREEN_PANEL_ORE_BG
+		"Gem Stones":
+			inventory_label.text = "Gem Stones"
+			bag_bg.texture = RESULTS_SCREEN_PANEL_GEMS_BG
+		"Use":
+			inventory_label.text = "Use"
+			bag_bg.texture = RESULTS_SCREEN_PANEL_USE_BG
+	
 	InventoryManager.update_grid_container(inventory_container, tab_name)
 	var inventory_snapshot = InventoryManager.inventories[tab_name].duplicate(true)
 	for slot in inventory_snapshot:
@@ -165,13 +187,21 @@ func play_close_in_sfx() -> void:
 
 
 func _on_novelty_tab_button_up() -> void:
+	bag_bg.texture = RESULTS_SCREEN_PANEL_DROPS_BG
+	inventory_label.text = "Drops"
 	InventoryManager.update_grid_container(inventory_container, "Inventory")
 
 func _on_ore_tab_button_up() -> void:
+	bag_bg.texture = RESULTS_SCREEN_PANEL_ORE_BG
+	inventory_label.text = "Ore"
 	InventoryManager.update_grid_container(inventory_container, "Ore")
 
 func _on_gem_stone_tab_button_up() -> void:
+	bag_bg.texture = RESULTS_SCREEN_PANEL_GEMS_BG
+	inventory_label.text = "Gem Stones"
 	InventoryManager.update_grid_container(inventory_container, "Gem Stones")
 
 func _on_use_tab_button_up() -> void:
+	bag_bg.texture = RESULTS_SCREEN_PANEL_USE_BG
+	inventory_label.text = "Use"
 	InventoryManager.update_grid_container(inventory_container, "Use")

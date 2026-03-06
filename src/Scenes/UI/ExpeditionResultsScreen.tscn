@@ -4,12 +4,22 @@
 [ext_resource type="Shader" uid="uid://bg20bvdcwspb" path="res://src/Scenes/UI/ExpeditionResultsScreen.gdshader" id="2_cbct7"]
 [ext_resource type="Texture2D" uid="uid://dejy6ivtgw1rl" path="res://Assets/HUD/TempResultsScreenBG.png" id="3_qyln5"]
 [ext_resource type="Texture2D" uid="uid://dnryc4fw5hgmw" path="res://Assets/HUD/ResultsScreen_Panel.png" id="4_xwhdp"]
+[ext_resource type="Texture2D" uid="uid://05g6imv7vw7y" path="res://Assets/HUD/ResultsScreen_Panel_DropsBG.png" id="5_fhkmb"]
 [ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="5_xwhdp"]
 [ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="7_ee4bn"]
+[ext_resource type="Texture2D" uid="uid://dkd4op7b7q1vp" path="res://Assets/HUD/Bags/Market_Drops_Button.png" id="7_mhdqp"]
 [ext_resource type="FontFile" uid="uid://qgj228ltdttv" path="res://Assets/Fonts/alagard.ttf" id="7_xwhdp"]
-[ext_resource type="Texture2D" uid="uid://fql6hkix8ti4" path="res://Assets/HUD/Bags/BagButton.png" id="8_ee4bn"]
-[ext_resource type="Texture2D" uid="uid://d1cbctq2fhe3k" path="res://Assets/HUD/Bags/BagButtonPressed.png" id="9_ra32m"]
-[ext_resource type="Texture2D" uid="uid://b05lg3tfu6n0b" path="res://Assets/HUD/Bags/BagButtonHover.png" id="10_34nn5"]
+[ext_resource type="Texture2D" uid="uid://dbq8ligbspbbd" path="res://Assets/HUD/Bags/Market_Drops_Button_Pressed.png" id="8_e01xl"]
+[ext_resource type="Texture2D" uid="uid://c0bf31w6yr3lk" path="res://Assets/HUD/Bags/Market_Drops_Button_Hover.png" id="9_d3ada"]
+[ext_resource type="Texture2D" uid="uid://vlyepx1d3siq" path="res://Assets/HUD/Bags/Market_Ore_Button.png" id="10_p46cn"]
+[ext_resource type="Texture2D" uid="uid://dxpv7rr7xigwu" path="res://Assets/HUD/Bags/Market_Ore_Button_Pressed.png" id="11_fhkmb"]
+[ext_resource type="Texture2D" uid="uid://bh4ibkfm1a8lv" path="res://Assets/HUD/Bags/Market_Ore_Button_Hover.png" id="12_in2sr"]
+[ext_resource type="Texture2D" uid="uid://baqkrdd18p8ox" path="res://Assets/HUD/Bags/Market_Gem_Button.png" id="13_oeg2r"]
+[ext_resource type="Texture2D" uid="uid://nof6fd2hbboi" path="res://Assets/HUD/Bags/Market_Gem_Button_Pressed.png" id="14_6ea7d"]
+[ext_resource type="Texture2D" uid="uid://yyyj7gu242ii" path="res://Assets/HUD/Bags/Market_Gem_Button_Hover.png" id="15_5wyv7"]
+[ext_resource type="Texture2D" uid="uid://dcf34mnogdpat" path="res://Assets/HUD/Bags/Market_Use_Button.png" id="16_ccap8"]
+[ext_resource type="Texture2D" uid="uid://b1k5jwyknpl4e" path="res://Assets/HUD/Bags/Market_Use_Button_Pressed.png" id="17_gbd86"]
+[ext_resource type="Texture2D" uid="uid://cdnmf68j5a2ak" path="res://Assets/HUD/Bags/Market_Use_Button_Hover.png" id="18_58vms"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_47265"]
 shader = ExtResource("2_cbct7")
@@ -250,6 +260,12 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_xwhdp")
 
+[node name="BagBG" type="TextureRect" parent="ResultsPanel" unique_id=708960655]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("5_fhkmb")
+
 [node name="TitlePanel" type="Panel" parent="ResultsPanel" unique_id=1608003080]
 layout_mode = 1
 anchors_preset = 8
@@ -352,7 +368,7 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("5_xwhdp")
 theme_override_font_sizes/font_size = 16
-text = "Inventory"
+text = "Drops"
 
 [node name="TransferingTabLabel" type="Label" parent="ResultsPanel" unique_id=1092338927]
 visible = false
@@ -521,9 +537,9 @@ theme_override_constants/separation = -1
 [node name="InventoryTab" type="TextureButton" parent="ResultsPanel/HBoxContainer" unique_id=1041581857]
 layout_mode = 2
 mouse_default_cursor_shape = 2
-texture_normal = ExtResource("8_ee4bn")
-texture_pressed = ExtResource("9_ra32m")
-texture_hover = ExtResource("10_34nn5")
+texture_normal = ExtResource("7_mhdqp")
+texture_pressed = ExtResource("8_e01xl")
+texture_hover = ExtResource("9_d3ada")
 
 [node name="Label" type="Label" parent="ResultsPanel/HBoxContainer/InventoryTab" unique_id=1138786018]
 layout_mode = 1
@@ -540,15 +556,16 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("5_xwhdp")
-theme_override_font_sizes/font_size = 7
-text = "Inventory"
+theme_override_font_sizes/font_size = 8
+text = "Drops"
+horizontal_alignment = 1
 
 [node name="OreTab" type="TextureButton" parent="ResultsPanel/HBoxContainer" unique_id=1381135393]
 layout_mode = 2
 mouse_default_cursor_shape = 2
-texture_normal = ExtResource("8_ee4bn")
-texture_pressed = ExtResource("9_ra32m")
-texture_hover = ExtResource("10_34nn5")
+texture_normal = ExtResource("10_p46cn")
+texture_pressed = ExtResource("11_fhkmb")
+texture_hover = ExtResource("12_in2sr")
 
 [node name="Label" type="Label" parent="ResultsPanel/HBoxContainer/OreTab" unique_id=1379825789]
 layout_mode = 1
@@ -572,9 +589,9 @@ text = "Ore"
 visible = false
 layout_mode = 2
 mouse_default_cursor_shape = 2
-texture_normal = ExtResource("8_ee4bn")
-texture_pressed = ExtResource("9_ra32m")
-texture_hover = ExtResource("10_34nn5")
+texture_normal = ExtResource("13_oeg2r")
+texture_pressed = ExtResource("14_6ea7d")
+texture_hover = ExtResource("15_5wyv7")
 
 [node name="Label" type="Label" parent="ResultsPanel/HBoxContainer/GemStoneTab" unique_id=2064547309]
 layout_mode = 1
@@ -597,9 +614,9 @@ text = "Gem Stones"
 [node name="UseTab" type="TextureButton" parent="ResultsPanel/HBoxContainer" unique_id=1052490956]
 layout_mode = 2
 mouse_default_cursor_shape = 2
-texture_normal = ExtResource("8_ee4bn")
-texture_pressed = ExtResource("9_ra32m")
-texture_hover = ExtResource("10_34nn5")
+texture_normal = ExtResource("16_ccap8")
+texture_pressed = ExtResource("17_gbd86")
+texture_hover = ExtResource("18_58vms")
 
 [node name="Label" type="Label" parent="ResultsPanel/HBoxContainer/UseTab" unique_id=648701713]
 layout_mode = 1
