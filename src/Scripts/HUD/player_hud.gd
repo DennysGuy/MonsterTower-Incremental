@@ -87,9 +87,9 @@ func _ready() -> void:
 	player_mp_bar.value = player_mp_bar.max_value
 	
 	update_xp_bar()
-	update_ap_label()
+	#update_ap_label()
 	#update_player_health(int(PlayerStats.player_stats["Current Health"]))
-	show_class_notice()
+	#show_class_notice()
 
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -224,8 +224,6 @@ func show_class_notice() -> void:
 	else:
 		class_notice.hide()
 	
-
-
 func hide_can_cook_dish() -> void:
 	can_cook_dish.hide()
 

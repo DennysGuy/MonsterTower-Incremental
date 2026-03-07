@@ -45,11 +45,11 @@ func _ready() -> void:
 	SignalBus.spawn_tower_map.connect(spawn_tower_entrance_map)
 	SignalBus.play_warrior_unlock_animation.connect(warrior_class_unlocked_notice)
 	TechTreeManager.unlock_station.connect(unlock_station)
-	SignalBus.show_ap_notice.connect(show_ap_notice)
+	#SignalBus.show_ap_notice.connect(show_ap_notice)
 
 
 	TechTreeManager.update_currency_label.emit()
-	CookingManager.can_craft_bar.emit()
+	#CookingManager.can_craft_bar.emit()
 	hud.animation_player.play("CloseIn")
 	
 	hud.currency_label.show()
@@ -61,7 +61,7 @@ func _ready() -> void:
 	else:
 		SignalBus.hide_can_craft_sword.emit()
 	
-	show_ap_notice()
+	#show_ap_notice()
 	hud.open_tower_map_button.show()
 	await get_tree().process_frame
 	SignalBus.update_player_health.emit(player.health)
