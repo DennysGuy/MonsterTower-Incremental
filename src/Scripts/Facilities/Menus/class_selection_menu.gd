@@ -42,9 +42,14 @@ func _on_select_button_button_up() -> void:
 	PlayerStats.equipped_abilities = PlayerStats.player_classes[selected_class]
 	SaveManager.save_equipped_abilities()
 	SignalBus.update_player_uniform.emit("Idle")
-	GameManager.player_can_move = true
+
 	SignalBus.set_icons.emit()
 	SignalBus.play_warrior_unlock_animation.emit()
+	
+	GameManager.can_pause_game = true
+	GameManager.player_can_move = true
+	GameManager.can_open_bag = true
+	GameManager.can_open_tower_map = true
 	#Go to class tech tree
 	queue_free()
 

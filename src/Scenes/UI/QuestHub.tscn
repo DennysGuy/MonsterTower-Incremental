@@ -1,0 +1,140 @@
+[gd_scene format=3 uid="uid://djwayx7h06hx3"]
+
+[ext_resource type="FontFile" uid="uid://qgj228ltdttv" path="res://Assets/Fonts/alagard.ttf" id="1_38rat"]
+[ext_resource type="PackedScene" uid="uid://bu2rhw7xf1a66" path="res://src/Scenes/UI/QuestTrackerItem.tscn" id="2_ag3ob"]
+[ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="3_poutn"]
+
+[node name="QuestHub" type="Control" unique_id=1129499445]
+layout_mode = 3
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -132.0
+offset_top = -78.0
+offset_bottom = 151.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="QuestHubVBox" type="VBoxContainer" parent="." unique_id=616025058]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -63.0
+offset_top = -116.0
+offset_right = 63.0
+offset_bottom = 116.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 2
+
+[node name="QuestTrackerHub" type="PanelContainer" parent="QuestHubVBox" unique_id=231799737]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="QuestHubVBox/QuestTrackerHub" unique_id=1420018646]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="MainQuestTitleMargin" type="MarginContainer" parent="QuestHubVBox/QuestTrackerHub/VBoxContainer" unique_id=164082339]
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 2
+
+[node name="MainQuestTitle" type="RichTextLabel" parent="QuestHubVBox/QuestTrackerHub/VBoxContainer/MainQuestTitleMargin" unique_id=743626178]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/outline_size = 6
+theme_override_fonts/normal_font = ExtResource("1_38rat")
+bbcode_enabled = true
+text = "[color=yellow]Main Quests[/color]"
+
+[node name="MainQuestListMargin" type="MarginContainer" parent="QuestHubVBox/QuestTrackerHub/VBoxContainer" unique_id=203040370]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 2
+
+[node name="MainLineQuestVBox" type="VBoxContainer" parent="QuestHubVBox/QuestTrackerHub/VBoxContainer/MainQuestListMargin" unique_id=82294066]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="QuestTrackerItem" parent="QuestHubVBox/QuestTrackerHub/VBoxContainer/MainQuestListMargin/MainLineQuestVBox" unique_id=1495447857 instance=ExtResource("2_ag3ob")]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="JobsTracker" type="PanelContainer" parent="QuestHubVBox" unique_id=1859196257]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="QuestHubVBox/JobsTracker" unique_id=1365694579]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="JobTrackerTitleMargin" type="MarginContainer" parent="QuestHubVBox/JobsTracker/VBoxContainer" unique_id=1792347313]
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 0
+
+[node name="JobTrackerTitle" type="RichTextLabel" parent="QuestHubVBox/JobsTracker/VBoxContainer/JobTrackerTitleMargin" unique_id=72914477]
+layout_mode = 2
+theme_override_constants/outline_size = 6
+theme_override_fonts/normal_font = ExtResource("3_poutn")
+bbcode_enabled = true
+text = "[color=aqua]Job Tracker[/color]"
+
+[node name="JobsListMargin" type="MarginContainer" parent="QuestHubVBox/JobsTracker/VBoxContainer" unique_id=1445564799]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 2
+
+[node name="JobTrackerVBox" type="VBoxContainer" parent="QuestHubVBox/JobsTracker/VBoxContainer/JobsListMargin" unique_id=1842247726]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="QuestHubVBox/JobsTracker/VBoxContainer/JobsListMargin/JobTrackerVBox" unique_id=1429863127]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_poutn")
+text = "[Coming Soon]"
+
+[node name="Label" type="Label" parent="." unique_id=474885329]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -110.0
+offset_top = -116.5
+offset_right = -62.0
+offset_bottom = -81.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_poutn")
+theme_override_font_sizes/font_size = 16
+text = "Quests 
+[Tab]"

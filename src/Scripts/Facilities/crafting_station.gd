@@ -244,3 +244,13 @@ func _on_use_tab_button_up() -> void:
 	InventoryManager.update_grid_container(inventory_container, "Use")
 	item_added_label.hide()
 	selected_tab = "Use"
+
+
+func play_sfx(sound: AudioStream, volume: float = 0.0):
+	var player := AudioStreamPlayer.new()
+	player.stream = sound
+	player.volume_db = volume
+	player.bus = &"SFX"
+	add_child(player)
+	player.play()
+	player.finished.connect(player.queue_free)

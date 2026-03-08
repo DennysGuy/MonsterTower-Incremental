@@ -41,6 +41,17 @@ var selling_novelties : bool = false
 var selected_item : Item
 var selected_inventory : String
 
+@onready var sell_tab_button: Button = $SellTabButton
+@onready var sell_bank_button: Button = $SellBankButton
+
+@onready var inventory_bg: TextureRect = $InventoryBG
+const GRAND_MARKET_MENU_DROPS_BG = preload("uid://b30bdn5uad13v")
+const GRAND_MARKET_MENU_GEMS_BG = preload("uid://c17wtr3d835hl")
+const GRAND_MARKET_MENU_ORE_BG = preload("uid://mc5wr12ca83a")
+const GRAND_MARKET_MENU_USE_BG = preload("uid://chxbefqvlxayh")
+
+@export var tab_buttons : Array[TextureButton] = [novelties_tab, ore_tab, gem_stones_tab, use_tab]
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	InventoryManager.populate_market_menu.connect(populate_details_panel)
@@ -138,7 +149,7 @@ func init_tabs() -> void:
 
 func sell_all_items(container : GridContainer, inventory_name : String) -> void:
 	var inventory : Array = InventoryManager.inventories[inventory_name]
-	
+	disable_tabs_and_buttons()
 	while !inventory.is_empty():
 		for slot in inventory:
 			for i in range(slot["quantity"]):
@@ -150,6 +161,8 @@ func sell_all_items(container : GridContainer, inventory_name : String) -> void:
 				sfx_player.play_sfx(SELL_ITEM)
 				SaveManager.save_tech_tree_data()
 				await get_tree().create_timer(0.1).timeout
+	
+	enable_tabs_and_buttons()
 
 func _on_sell_novelties_button_2_button_up() -> void:
 	sell_all_items(bank_container, "Bank")
@@ -157,22 +170,39 @@ func _on_sell_novelties_button_2_button_up() -> void:
 func _on_sell_novelties_button_button_up() -> void:
 	sell_all_items(inventory_container, selected_inventory)
 
+func enable_tabs_and_buttons() -> void:
+	for tab in tab_buttons:
+		tab.disabled = false
+	sell_tab_button.disabled = false
+	sell_bank_button.disabled = false
+
+func disable_tabs_and_buttons() -> void:
+	for tab in tab_buttons:
+		tab.disabled = true
+	sell_tab_button.disabled = true
+	sell_bank_button.disabled = true
+	
+
 func _on_novelties_tab_button_up() -> void:
 	selected_inventory = "Inventory"
-	inventory_label.text = selected_inventory
+	inventory_label.text = "Drops"
+	inventory_bg.texture = GRAND_MARKET_MENU_DROPS_BG
 	InventoryManager.update_grid_container(inventory_container, selected_inventory)
 
 func _on_ore_tab_button_up() -> void:
 	selected_inventory = "Ore"
 	inventory_label.text = selected_inventory
+	inventory_bg.texture = GRAND_MARKET_MENU_ORE_BG
 	InventoryManager.update_grid_container(inventory_container, selected_inventory)
 
 func _on_gem_stones_tab_button_up() -> void:
 	selected_inventory = "Gem Stones"
+	inventory_bg.texture = GRAND_MARKET_MENU_GEMS_BG
 	inventory_label.text = selected_inventory
 	InventoryManager.update_grid_container(inventory_container, selected_inventory)
 
 func _on_use_tab_button_up() -> void:
 	selected_inventory = "Use"
+	inventory_bg.texture = GRAND_MARKET_MENU_USE_BG
 	inventory_label.text = selected_inventory
 	InventoryManager.update_grid_container(inventory_container, selected_inventory)

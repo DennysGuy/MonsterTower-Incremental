@@ -13,6 +13,10 @@ var can_pause_game : bool = true
 var enemies_can_move : bool = true
 var can_open_bag : bool = true
 var can_open_tower_map : bool = true
+var player_can_attack : bool = true
+
+enum NOTIFICATION_TYPE {CRAFTING, COOKING, SMELTING, AP, QUEST}
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	player_can_move = true
@@ -91,3 +95,7 @@ func set_direction(dir : float):
 		return -1
 	else:
 		return 1
+
+
+func can_unlock_class() -> bool:
+	return PlayerStats.player_stats["Level"] >= 8 and PlayerStats.facilities_unlocked["Arial Slash"] and PlayerStats.facilities_unlocked["Dash Attack"] and PlayerStats.facilities_unlocked["Double Jump"] and PlayerStats.player_stats["Class"] == "Junior Hunter"

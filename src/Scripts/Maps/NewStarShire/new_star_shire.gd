@@ -28,6 +28,9 @@ var player_in_dojo_range : bool = false
 @onready var dojo_access_notification: Label = $Dojo/DojoAccessNotification
 @onready var ap_notice: TextureRect = $Dojo/APNotice
 
+@onready var cooking_station: NewCraftingStation = $CookingStation
+@onready var refinery: NewCraftingStation = $Refinery
+
 const CRAFT_SWORD = preload("uid://4c6l1w0kpar3")
 const UNLOCK_SHOP = preload("uid://cveiqvxm5r0yw")
 
@@ -42,11 +45,12 @@ func _ready() -> void:
 	SignalBus.spawn_tower_map.connect(spawn_tower_entrance_map)
 	SignalBus.play_warrior_unlock_animation.connect(warrior_class_unlocked_notice)
 	TechTreeManager.unlock_station.connect(unlock_station)
-	SignalBus.show_ap_notice.connect(show_ap_notice)
+	#SignalBus.show_ap_notice.connect(show_ap_notice)
 
 
 	TechTreeManager.update_currency_label.emit()
-	CookingManager.can_craft_bar.emit()
+	InventoryManager.show_bank_button.emit()
+	#CookingManager.can_craft_bar.emit()
 	hud.animation_player.play("CloseIn")
 	
 	hud.currency_label.show()
@@ -58,7 +62,7 @@ func _ready() -> void:
 	else:
 		SignalBus.hide_can_craft_sword.emit()
 	
-	show_ap_notice()
+	#show_ap_notice()
 	hud.open_tower_map_button.show()
 	await get_tree().process_frame
 	SignalBus.update_player_health.emit(player.health)
@@ -256,7 +260,7 @@ func unlock_cooking_station() -> void:
 	await get_tree().create_timer(1.0).timeout
 	hud.animation_player.play("Flash")
 	await get_tree().create_timer(0.5).timeout
-	temp_cooking_range.unlock_station()
+	cooking_station.unlock_cooking_station()
 	SignalBus.issue_big_notification.emit("Cook exotic dishes and sell for big cash!")
 	await get_tree().create_timer(2.0).timeout
 	SignalBus.issue_big_notification.emit("Cooking Resources Drop From Monsters!")
@@ -278,7 +282,7 @@ func unlock_refinery_station() -> void:
 	await get_tree().create_timer(1.0).timeout
 	hud.animation_player.play("Flash")
 	await get_tree().create_timer(0.5).timeout
-	temp_smelting_station.unlock_station()
+	refinery.unlock_refinery()
 	SignalBus.issue_big_notification.emit("Refine Raw Resources into Craftable Material!")
 	await get_tree().create_timer(2.0).timeout
 	SignalBus.issue_big_notification.emit("You have unlocked the stone pickaxe.")

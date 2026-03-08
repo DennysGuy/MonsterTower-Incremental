@@ -13,7 +13,9 @@
 [ext_resource type="Texture2D" uid="uid://bob2oo3d75ybb" path="res://Assets/HUD/xpbar_base.png" id="11_6ndbt"]
 [ext_resource type="Texture2D" uid="uid://dluwh7ev7vu3e" path="res://Assets/HUD/xpbar_fill.png" id="12_8d4p7"]
 [ext_resource type="Texture2D" uid="uid://bggsgp4t53q5y" path="res://Assets/HUD/NoticeIcon.png" id="12_fw5mt"]
+[ext_resource type="PackedScene" uid="uid://13aket7geo5a" path="res://src/Scenes/UI/NotificationHub.tscn" id="12_wldwa"]
 [ext_resource type="Texture2D" uid="uid://dix63priuogkk" path="res://Assets/NodeGraphics/NodeGraphicsV2/Bag1_V2.png" id="13_fw5mt"]
+[ext_resource type="PackedScene" uid="uid://djwayx7h06hx3" path="res://src/Scenes/UI/QuestHub.tscn" id="14_xxan5"]
 
 [sub_resource type="Animation" id="Animation_g1bs5"]
 resource_name = "CloseIn"
@@ -306,6 +308,77 @@ _data = {
 &"StartHuntChallenge": SubResource("Animation_6ndbt")
 }
 
+[sub_resource type="Animation" id="Animation_fnmb5"]
+resource_name = "HideQuestHub"
+length = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../PlayerHUD/QuestHub:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(508, 102), Vector2(637, 102)]
+}
+
+[sub_resource type="Animation" id="Animation_xxan5"]
+resource_name = "QuestHubQuickView"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../PlayerHUD/QuestHub:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 3.8333333, 3.9999998),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(637, 102), Vector2(508, 102), Vector2(508, 102), Vector2(637, 102)]
+}
+
+[sub_resource type="Animation" id="Animation_3voo3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../PlayerHUD/QuestHub:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(638, 102)]
+}
+
+[sub_resource type="Animation" id="Animation_7qkr7"]
+resource_name = "ShowQuestHub"
+length = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../PlayerHUD/QuestHub:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(637, 102), Vector2(508, 102)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3voo3"]
+_data = {
+&"HideQuestHub": SubResource("Animation_fnmb5"),
+&"QuestHubQuickView": SubResource("Animation_xxan5"),
+&"RESET": SubResource("Animation_3voo3"),
+&"ShowQuestHub": SubResource("Animation_7qkr7")
+}
+
 [sub_resource type="Animation" id="Animation_wldwa"]
 resource_name = "HideBag"
 length = 0.2
@@ -319,7 +392,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(185, 71), Vector2(185, -200)]
+"values": [Vector2(60, 71), Vector2(60, -250)]
 }
 
 [sub_resource type="Animation" id="Animation_65fhw"]
@@ -334,7 +407,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(185, -200)]
+"values": [Vector2(185, -250)]
 }
 
 [sub_resource type="Animation" id="Animation_fw5mt"]
@@ -350,7 +423,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(185, -200), Vector2(185, 71)]
+"values": [Vector2(60, -250), Vector2(60, 71)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jyqen"]
@@ -376,9 +449,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="AbilityHub" parent="PlayerHUD" unique_id=1622225446 instance=ExtResource("2_fw5mt")]
 layout_mode = 1
+mouse_filter = 2
 
 [node name="PlayerHealthBar" type="TextureProgressBar" parent="PlayerHUD" unique_id=1742179397]
 layout_mode = 1
@@ -432,13 +507,6 @@ theme_override_fonts/font = ExtResource("9_jyqen")
 theme_override_font_sizes/font_size = 15
 text = "100/100"
 horizontal_alignment = 2
-
-[node name="Bag" parent="PlayerHUD" unique_id=668700631 instance=ExtResource("6_g1bs5")]
-layout_mode = 1
-offset_left = -135.0
-offset_top = -380.0
-offset_right = 164.0
-offset_bottom = -194.50012
 
 [node name="MapeName" type="Label" parent="PlayerHUD" unique_id=727908015]
 layout_mode = 1
@@ -567,64 +635,6 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
-[node name="CanCookDish" type="RichTextLabel" parent="PlayerHUD" unique_id=1220558369]
-visible = false
-layout_mode = 0
-offset_left = 11.0
-offset_top = 3.0
-offset_right = 138.0
-offset_bottom = 20.0
-theme_override_constants/outline_size = 6
-theme_override_fonts/normal_font = ExtResource("9_jyqen")
-bbcode_enabled = true
-text = "[color=green]Dish can be cooked![/color]"
-
-[node name="CanSmeltBar" type="RichTextLabel" parent="PlayerHUD" unique_id=1140705034]
-visible = false
-layout_mode = 0
-offset_left = 11.0
-offset_top = 24.0
-offset_right = 162.0
-offset_bottom = 41.0
-theme_override_constants/outline_size = 6
-theme_override_fonts/normal_font = ExtResource("9_jyqen")
-bbcode_enabled = true
-text = "[color=red]Bar can be smelted![/color]"
-
-[node name="CanCraftSword" type="RichTextLabel" parent="PlayerHUD" unique_id=1805317882]
-visible = false
-layout_mode = 0
-offset_left = 130.0
-offset_top = 3.0
-offset_right = 281.0
-offset_bottom = 20.0
-theme_override_constants/outline_size = 6
-theme_override_fonts/normal_font = ExtResource("9_jyqen")
-bbcode_enabled = true
-text = "[color=yellow]Sword can be crafted![/color]"
-
-[node name="ClassNotice" type="RichTextLabel" parent="PlayerHUD" unique_id=1008529998]
-layout_mode = 0
-offset_left = 130.0
-offset_top = 21.0
-offset_right = 289.0
-offset_bottom = 71.0
-theme_override_constants/outline_size = 6
-theme_override_fonts/normal_font = ExtResource("9_jyqen")
-bbcode_enabled = true
-text = "[color=purple]AP to spend at the Dojo![/color]"
-
-[node name="ApAvailableLabel" type="RichTextLabel" parent="PlayerHUD" unique_id=1866477527]
-layout_mode = 0
-offset_left = 364.0
-offset_top = 7.0
-offset_right = 513.0
-offset_bottom = 26.0
-theme_override_constants/outline_size = 6
-theme_override_fonts/normal_font = ExtResource("9_jyqen")
-bbcode_enabled = true
-text = "Ap Available: 1"
-
 [node name="CurrencyLabel" type="RichTextLabel" parent="PlayerHUD" unique_id=1726793478]
 visible = false
 layout_mode = 1
@@ -666,9 +676,9 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -633.0
-offset_top = -356.0
+offset_top = -317.0
 offset_right = -447.0
-offset_bottom = -185.0
+offset_bottom = -146.0
 grow_horizontal = 0
 grow_vertical = 0
 mouse_filter = 2
@@ -709,29 +719,19 @@ theme_override_fonts/font = ExtResource("9_jyqen")
 theme_override_font_sizes/font_size = 12
 text = "Open Tower Map"
 
-[node name="TopBlackBar" type="ColorRect" parent="PlayerHUD" unique_id=877174551]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -185.0
-offset_bottom = -185.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 1)
-
-[node name="BotBlackBar" type="ColorRect" parent="PlayerHUD" unique_id=1251153564]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 175.0
-offset_bottom = 175.00018
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 1)
+[node name="NotificationHub" parent="PlayerHUD" unique_id=1685968631 instance=ExtResource("12_wldwa")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 156.0
+offset_bottom = 40.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="OpenBagNotice" type="Control" parent="PlayerHUD" unique_id=1767139368]
 visible = false
@@ -770,10 +770,64 @@ theme_override_fonts/font = ExtResource("9_jyqen")
 text = "Press 'B' To
 Open Bag!"
 
+[node name="QuestHub" parent="PlayerHUD" unique_id=1129499445 instance=ExtResource("14_xxan5")]
+layout_mode = 1
+offset_left = -2.0
+offset_right = 130.00012
+
+[node name="Bag" parent="PlayerHUD" unique_id=668700631 instance=ExtResource("6_g1bs5")]
+z_index = 4096
+layout_mode = 1
+offset_left = -135.0
+offset_top = -430.0
+offset_right = 361.0
+offset_bottom = -203.0
+
+[node name="AdvanceClassNotice" type="RichTextLabel" parent="PlayerHUD" unique_id=848029312]
+visible = false
+layout_mode = 0
+offset_left = 157.0
+offset_top = 5.0
+offset_right = 289.0
+offset_bottom = 40.0
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = ExtResource("9_jyqen")
+bbcode_enabled = true
+text = "[color=purple]Select your Class
+at AP Center! [/color]"
+
+[node name="TopBlackBar" type="ColorRect" parent="PlayerHUD" unique_id=877174551]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -185.0
+offset_bottom = -185.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="BotBlackBar" type="ColorRect" parent="PlayerHUD" unique_id=1251153564]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 175.0
+offset_bottom = 175.00018
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
 [node name="SfxPlayer" parent="." unique_id=2102076142 instance=ExtResource("8_65fhw")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1863759790]
 libraries/ = SubResource("AnimationLibrary_g3oel")
+
+[node name="QuestTrackerPlayer" type="AnimationPlayer" parent="." unique_id=1494020433]
+root_node = NodePath("../BagAnimationPlayer")
+libraries/ = SubResource("AnimationLibrary_3voo3")
 
 [node name="BagAnimationPlayer" type="AnimationPlayer" parent="." unique_id=1372864879]
 libraries/ = SubResource("AnimationLibrary_jyqen")

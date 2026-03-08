@@ -29,6 +29,8 @@ var map_name : String = ""
 const CLOSE_IN = preload("uid://dc3va7knibxnb")
 const CLOSE_OUT = preload("uid://caj0oih8j2sty")
 const COUNTDOWN_BEEP = preload("uid://c6caiqmkt2lt0")
+const BAG_CLOSED = preload("uid://bf3c8p3fgc0mh")
+const BAG_OPEN = preload("uid://dlh2yqqt6l81t")
 
 @onready var monsters_left: RichTextLabel = $PlayerHUD/MonstersLeft
 @onready var start_hunt_challenge_button: Button = $PlayerHUD/StartHuntChallengeButton
@@ -45,6 +47,10 @@ const COUNTDOWN_BEEP = preload("uid://c6caiqmkt2lt0")
 
 @onready var ap_available_label: RichTextLabel = $PlayerHUD/ApAvailableLabel
 @onready var open_tower_map_button: Button = $PlayerHUD/OpenTowerMapButton
+@onready var quest_tracker_player: AnimationPlayer = $QuestTrackerPlayer
+
+var quests_showing : bool = false
+@onready var advance_class_notice: RichTextLabel = $PlayerHUD/AdvanceClassNotice
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -58,16 +64,8 @@ func _ready() -> void:
 	SignalBus.update_monsters_left.connect(remaining_monsters)
 	SignalBus.play_countdown_beep.connect(play_countdown_beep)
 	
-	SignalBus.show_can_cook_dish_label.connect(show_can_cook_dish)
-	SignalBus.show_can_smelt_bar_label.connect(show_can_smelt_bar)
-	SignalBus.show_can_craft_sword.connect(show_can_craft_sword)
-	SignalBus.show_class_notice.connect(show_class_notice)
-	
 	SignalBus.update_player_mp.connect(update_player_mp)
 	
-	SignalBus.hide_can_cook_dish_label.connect(hide_can_cook_dish)
-	SignalBus.hide_can_smelt_bar_label.connect(hide_can_smelt_bar)
-	SignalBus.hide_can_craft_sword.connect(hide_can_craft_sword)
 	SignalBus.enable_tower_map_button.connect(enable_tower_map_button)
 	SignalBus.show_hunt_challenge_button.connect(show_hunt_challenge_button)
 	
@@ -77,7 +75,7 @@ func _ready() -> void:
 	#player_health_bar.value = PlayerStats.player_stats["Current Health"]
 	
 	LevelingManager.update_xp_bar.connect(update_xp_bar)
-	TechTreeManager.update_available_ap_label.connect(update_ap_label)
+	SignalBus.show_class_notice.connect(show_class_notice)
 	InventoryManager.show_open_bag_notice.connect(show_open_bag_notice)
 	InventoryManager.hide_open_bag_notice.connect(hide_open_bag_notice)
 	
@@ -85,15 +83,26 @@ func _ready() -> void:
 	player_mp_bar.value = player_mp_bar.max_value
 	
 	update_xp_bar()
-	update_ap_label()
+	#update_ap_label()
 	#update_player_health(int(PlayerStats.player_stats["Current Health"]))
-	show_class_notice()
-
+	#show_class_notice()
+	if GameManager.can_unlock_class():
+		show_class_notice()
 	
+	quest_tracker_player.play("QuestHubQuickView")
+
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("open_bag") and GameManager.can_open_bag:
 		show_bag()
+	
+	if Input.is_action_just_pressed("show_quests"):
+		quests_showing = !quests_showing
+		if quests_showing:
+			show_quests()
+		else:
+			hide_quests()
 
 func update_player_health(value : int) -> void:
 	player_health_bar.value = value
@@ -107,8 +116,7 @@ func update_player_mp() -> void:
 	player_mp_bar.max_value = max_mp
 	mp_label.text = "%s/%s" % [current_mp,max_mp]
 
-func update_ap_label() -> void:
-	ap_available_label.text = "[color=purple]Avail. AP: %s[/color]" % PlayerStats.player_stats["Ability Points"] 
+
 
 func update_xp_bar() -> void:
 	level_label.text = "Level %s" % [int(PlayerStats.player_stats["Level"])]
@@ -125,6 +133,15 @@ func show_open_bag_notice() -> void:
 
 func hide_open_bag_notice() -> void:
 	open_bag_notice.hide()
+
+func show_quests() -> void:
+	quest_tracker_player.play("ShowQuestHub")
+
+func hide_quests() -> void:
+	quest_tracker_player.play("HideQuestHub")
+
+func quick_quests_preview() -> void:
+	quest_tracker_player.play("QuestHubQuickView")
 
 func enable_tower_map_button() -> void:
 	open_tower_map_button.disabled = false
@@ -158,10 +175,11 @@ func show_bag() -> void:
 		GameManager.player_can_move = false
 		bag.enable_tabs()
 		bag.update_bag()
-
+		play_sfx(BAG_OPEN)
 		bag_animation_player.play("ShowBag")
 	else:
 		GameManager.player_can_move = true
+		play_sfx(BAG_CLOSED)
 		bag.disable_tabs()
 		bag_animation_player.play("HideBag")
 
@@ -201,37 +219,9 @@ func play_close_in_sfx() -> void:
 func play_countdown_beep() -> void:
 	sfx_player.play_sfx(COUNTDOWN_BEEP)
 
-func show_can_cook_dish() -> void:
-	can_cook_dish.show()
-
-func show_can_smelt_bar() -> void:
-	can_smelt_bar.show()
-
-func show_can_craft_sword() -> void:
-	can_craft_sword.show()
-
 func show_class_notice() -> void:
-	var current_class : String = PlayerStats.player_stats["Class"] 
-	if current_class == "Junior Hunter" and PlayerStats.player_stats["Level"] >= 8:
-		class_notice.text = "[color=purple]Advance your class at the Class Advance Center![/color]"
-		class_notice.show()
-	elif PlayerStats.player_stats["Ability Points"] >= 1:
-		class_notice.text = "[color=purple]Spend AP at the Class AdvanceCenter![/color]"
-		class_notice.show()
-	else:
-		class_notice.hide()
+	advance_class_notice.show()
 	
-
-
-func hide_can_cook_dish() -> void:
-	can_cook_dish.hide()
-
-func hide_can_smelt_bar() -> void:
-	can_smelt_bar.hide()
-
-func hide_can_craft_sword() -> void:
-	can_craft_sword.hide()
-
 func remaining_monsters(text : String, out_of_enmies : bool) -> void:
 	if !out_of_enmies:
 		monsters_left.text = text
@@ -270,3 +260,12 @@ func _on_open_tower_map_button_button_up() -> void:
 		return
 	
 	SignalBus.spawn_tower_map.emit()
+
+func play_sfx(sound: AudioStream, volume: float = 0.0):
+	var player := AudioStreamPlayer.new()
+	player.stream = sound
+	player.volume_db = volume
+	player.bus = &"SFX"
+	add_child(player)
+	player.play()
+	player.finished.connect(player.queue_free)

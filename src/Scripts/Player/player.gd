@@ -19,6 +19,8 @@ class_name Player extends Entity
 @onready var dash_attack_collision_shape : CollisionShape2D = $DashAttackHitBox/CollisionShape2D
 @onready var dash_attack_hit_box: HitBox = $DashAttackHitBox
 
+@onready var ending_area: Area2D = $EndingArea
+
 @onready var can_dash_attack : bool = true
 @onready var can_double_jump : bool = true
 @onready var can_knock_back : bool = true
