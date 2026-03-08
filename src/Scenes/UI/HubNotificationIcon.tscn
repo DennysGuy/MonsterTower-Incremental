@@ -78,5 +78,8 @@ theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("4_ecct1")
 text = "Dish ready to cook!"
 
+[node name="SparksLocation" type="Marker2D" parent="." unique_id=1903575393]
+position = Vector2(12, 12)
+
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

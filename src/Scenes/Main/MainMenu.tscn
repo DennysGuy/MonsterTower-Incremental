@@ -150,7 +150,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 4.0
 offset_top = 4.0
-offset_right = -5.0
+offset_right = -1.0
 offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -158,19 +158,24 @@ theme_override_fonts/normal_font = ExtResource("2_58xxk")
 theme_override_font_sizes/normal_font_size = 14
 text = "Prototype Update Notes
 
-- core abilities (dash, djump, air attack) unlocked in class advancement center
-- added tower map button to HUD in HUB
-- bag expanded to have tabs for each category (they unveil while you unlock facilities)
+- Polished Inventory: Bags are now color coded
+- Added Bag SFX
+- Can see bank from Inventory (discarding bank slot doesn't not work)
 
-- Challenge Hunt Intro Shortened to 4 seconds
-- Player now receives '1' ability point when leveling up (can be spent on abilities unlock)
-- Class advance Center now opens to new \"Ability Tecch Tree\" where players can unlock core abilities before choosing a class
+- Reworked Crafting Systems
+	- No Exclusive menus
+	- Menu is now a pop up
 
-- class unlock moved to level 8
-- Tech Nodes price adjustment influenced by inventory update
-- Sword Upgrades recipe quantities increased
-- Crafting Item Tab Tech Node Created.
-- ** HOVER OVER ABILITY ICON ON PLAYER HUD TO READ HOW TO USE ABILITY"
+- Reworked Hub access  notifications to icons
+	- Added Crafting Notification Icon
+	- Added Cooking Notification Icon
+	- Added Smelting Notification Icon
+	- Added AP gained Notification Icon
+	- Added Quest Completed Icon (not implemented)
+
+- Began Implementing Quest Helper
+	- UI elements implemented but no functionality
+	- Press 'Tab' to toggle Quest Hub"
 
 [node name="TransitionRect" type="ColorRect" parent="." unique_id=1379323239]
 layout_mode = 1

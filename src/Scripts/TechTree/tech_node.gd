@@ -155,6 +155,7 @@ func deduct_currency() -> void:
 	
 func deduct_ap() -> void:
 	PlayerStats.player_stats["Ability Points"] -= tech_node_stats.ap_required
+	SignalBus.check_for_notification.emit(GameManager.NOTIFICATION_TYPE.AP)
 	TechTreeManager.update_available_ap_label.emit()
 	#update an ap label here
 

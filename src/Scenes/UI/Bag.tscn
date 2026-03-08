@@ -399,6 +399,17 @@ theme_override_fonts/font = ExtResource("7_cy2jp")
 theme_override_font_sizes/font_size = 16
 text = "Inventory Bag"
 
+[node name="InventoryName2" type="Label" parent="TextureRect" unique_id=1532140568]
+layout_mode = 0
+offset_left = 4.5
+offset_top = 219.0
+offset_right = 109.5
+offset_bottom = 235.0
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("7_cy2jp")
+theme_override_font_sizes/font_size = 16
+text = "Press B to Close"
+
 [node name="ItemTitle" type="Label" parent="TextureRect" unique_id=717180194]
 layout_mode = 1
 anchors_preset = 1
@@ -530,9 +541,9 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -97.0
+offset_left = -107.0
 offset_top = -47.0
-offset_right = -62.0
+offset_right = -72.0
 offset_bottom = -26.0
 grow_horizontal = 0
 grow_vertical = 0
@@ -549,15 +560,52 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -12.0
-offset_top = -4.0
+offset_top = -5.0
 offset_right = 12.0
-offset_bottom = 4.0
+offset_bottom = 3.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("7_cy2jp")
 theme_override_font_sizes/font_size = 8
 text = "Discard"
+
+[node name="ToBank" type="TextureButton" parent="TextureRect" unique_id=1022483941]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -73.5
+offset_top = -47.0
+offset_right = -38.5
+offset_bottom = -26.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("4_cuvis")
+texture_pressed = ExtResource("5_s3gps")
+texture_hover = ExtResource("6_rvsgi")
+
+[node name="Label" type="Label" parent="TextureRect/ToBank" unique_id=1971983308]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -13.0
+offset_top = -5.0
+offset_right = 13.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("7_cy2jp")
+theme_override_font_sizes/font_size = 8
+text = "To Bank"
 
 [node name="GoldCount" type="Label" parent="TextureRect" unique_id=1673130369]
 layout_mode = 1
@@ -684,3 +732,4 @@ text = "Bank"
 [connection signal="button_up" from="TextureRect/Filters/CookingItems" to="." method="_on_cooking_items_button_up"]
 [connection signal="button_up" from="TextureRect/Filters/FilterOff" to="." method="_on_filter_off_button_up"]
 [connection signal="button_up" from="TextureRect/Discard" to="." method="_on_discard_button_up"]
+[connection signal="button_up" from="TextureRect/ToBank" to="." method="_on_to_bank_button_up"]

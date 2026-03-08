@@ -49,6 +49,7 @@ func _ready() -> void:
 
 
 	TechTreeManager.update_currency_label.emit()
+	InventoryManager.show_bank_button.emit()
 	#CookingManager.can_craft_bar.emit()
 	hud.animation_player.play("CloseIn")
 	

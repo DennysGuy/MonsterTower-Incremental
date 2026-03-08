@@ -21,7 +21,8 @@ signal show_open_bag_notice
 signal hide_open_bag_notice
 @warning_ignore("unused_signal")
 signal populate_inventory_description(item : Item)
-
+@warning_ignore("unused_signal")
+signal show_bank_button
 @export var inventories : Dictionary = {
 	"Inventory" : [], # all other items go here
 	"Ore" : [], 
@@ -97,6 +98,7 @@ func add_item(inventory_name : String, item : Item, quantity : int = 1) -> bool:
 	for slot in range(selected_inventory.size()):
 		if selected_inventory[slot]["item"] == item and (selected_inventory[slot]["quantity"]+quantity) <= max_stack:
 			selected_inventory[slot]["quantity"] += quantity
+			check_for_notification(item)
 			update_inventories(item.get_inventory_name())
 			InventoryManager.show_open_bag_notice.emit()
 			return true
@@ -107,6 +109,7 @@ func add_item(inventory_name : String, item : Item, quantity : int = 1) -> bool:
 			"item": item,
 			"quantity": quantity
 		})
+		check_for_notification(item)
 		update_inventories(item.get_inventory_name())
 		InventoryManager.show_open_bag_notice.emit()
 		return true
@@ -125,7 +128,7 @@ func remove_item(inventory_name : String, item : Item, quantity : int = 1) -> bo
 
 			if slot["quantity"] <= 0:
 				selected_inventory.erase(slot)
-
+			check_for_notification(item)
 			update_inventories(item.get_inventory_name())
 			return true
 
@@ -193,6 +196,14 @@ func get_max_bank_stack() -> int:
 
 func get_max_bag_stack(bag_stack : String) -> int:
 	return int(PlayerStats.player_stats[bag_stack])
+
+func check_for_notification(item : Item) -> void:
+	if item.is_crafting() or item.is_use():
+		SignalBus.check_for_notification.emit(GameManager.NOTIFICATION_TYPE.CRAFTING)
+	elif item.is_cooking():
+		SignalBus.check_for_notification.emit(GameManager.NOTIFICATION_TYPE.COOKING)
+	elif item.is_ore():
+		SignalBus.check_for_notification.emit(GameManager.NOTIFICATION_TYPE.SMELTING)
 
 func check_if_inventory_full(inventory_name : String, bag : String, bag_stack : String) -> bool:
 	var total_inventory_size = get_max_bag_slots(bag) * get_max_bag_stack(bag_stack)

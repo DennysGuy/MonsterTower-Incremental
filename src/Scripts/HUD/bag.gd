@@ -32,12 +32,13 @@ var selected_item : Item
 @onready var ore_tab_label: Label = $TextureRect/HBoxContainer/Ore/OreTabLabel
 @onready var gem_stone_tab_label: Label = $TextureRect/HBoxContainer/GemStoneTab/GemStoneTabLabel
 @onready var use_tab_label: Label = $TextureRect/HBoxContainer/UseTab/UseTabLabel
+@onready var show_bank: TextureButton = $TextureRect/HBoxContainer/ShowBank
 
-@onready var tabs : Array[TextureButton] = [inventory_tab, ore, gem_stone_tab, use_tab]
+@onready var tabs : Array[TextureButton] = [inventory_tab, ore, gem_stone_tab, use_tab, show_bank]
 @onready var tier_box: HBoxContainer = $TextureRect/TierBox
 @onready var bank_container: GridContainer = $Bank/BankContainer
 @onready var bank: TextureRect = $Bank
-@onready var show_bank: TextureButton = $TextureRect/HBoxContainer/ShowBank
+
 
 const DROPS_BAG_BG = preload("uid://bot5flcdwi2w3")
 const GEMSTONE_BAG_BG = preload("uid://bpmgpuqy6o3dd")
@@ -56,13 +57,16 @@ const DROP_ITEM = preload("uid://b1l5d27bgd6wb")
 @onready var discard: TextureButton = $TextureRect/Discard
 
 @onready var bag_bg: TextureRect = $TextureRect/BagBG
+const DENIED = preload("uid://672acnsycbfo")
 
 var bank_showing : bool = false
+@onready var to_bank: TextureButton = $TextureRect/ToBank
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	InventoryManager.update_inventory_bag.connect(update_grid_container)
 	InventoryManager.populate_inventory_description.connect(update_item_description)
+	InventoryManager.show_bank_button.connect(show_to_bank_button)
 	init_bag()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -172,6 +176,8 @@ func update_tab_label(tab_label : Label, tab_name : String, selected_inventory_n
 
 func update_bag() -> void:
 	gold_count.text = str(TechTreeManager.currency)
+	if InventoryManager.check_if_bank_full():
+		to_bank.disabled = true
 	init_tabs()
 	update_bank_container()
 
@@ -213,6 +219,9 @@ func clear_description_items() -> void:
 	selected_item = null
 	
 func _on_discard_button_up() -> void:
+	discard_from_inventory()
+
+func discard_from_inventory() -> void:
 	if not selected_item:
 		return
 	play_sfx(DROP_ITEM)
@@ -300,3 +309,16 @@ func _on_show_bank_button_up() -> void:
 		bank.show()
 	else:
 		bank.hide()
+
+
+func show_to_bank_button() -> void:
+	to_bank.show()
+
+func _on_to_bank_button_up() -> void:
+	if InventoryManager.add_item("Bank", selected_item):
+		InventoryManager.remove_item(selected_item.get_inventory_name(), selected_item)
+	else:
+		play_sfx(DENIED,2)
+	if InventoryManager.check_if_bank_full():
+		to_bank.disabled = true
+	update_bank_container()

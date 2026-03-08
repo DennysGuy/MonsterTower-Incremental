@@ -17,8 +17,13 @@ func check_for_level_up() -> void:
 		#increase player level
 		PlayerStats.player_stats["Level"] += 1
 		#reward 1 AP point 
+		
+		if GameManager.can_unlock_class():
+			SignalBus.show_class_notice.emit()
+		
 		PlayerStats.player_stats["Ability Points"] += 1
-		SignalBus.show_class_notice.emit()
+		
+		SignalBus.check_for_notification.emit(GameManager.NOTIFICATION_TYPE.AP)
 		TechTreeManager.update_available_ap_label.emit()
 		#Update Needed XP
 		PlayerStats.player_stats["Needed XP"] = xp_formula()
@@ -26,7 +31,6 @@ func check_for_level_up() -> void:
 		play_level_up_sfx.emit()
 	
 	update_xp_bar.emit()
-
 
 func xp_formula() -> int:
 	return int(BASE_XP * (pow(XP_GROWTH_RATE,PlayerStats.player_stats["Level"])))

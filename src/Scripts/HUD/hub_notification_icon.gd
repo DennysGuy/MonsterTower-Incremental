@@ -20,9 +20,16 @@ const QUEST_NOTIFICATION_ICON_ENABLED = preload("uid://bv8vbtaujqkwx")
 const SMELTING_NOTIFICATION_ICON_DISABLED = preload("uid://b73o5qk627hy3")
 const SMELTING_NOTIFICATION_ICON_ENABLED = preload("uid://bgq13f8igikbn")
 @onready var notice: Label = $PanelContainer/MarginContainer/Notice
+@onready var sparks_location: Marker2D = $SparksLocation
+
+const COOKING_NOTIFICATION = preload("uid://cm0j8tdbmvlhb")
+const CRAFTING_NOTIFICATION = preload("uid://wyjbs57smen4")
+const QUEST_FINISHED_NOTIFICATION = preload("uid://cajff8jn8ngda")
+const SMELTING_NOTIFICATION = preload("uid://qxr3eldptgko")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	SignalBus.check_for_notification.connect(check_for_notification)
 	set_icon()
 
 
@@ -30,41 +37,59 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-
 func set_icon() -> void:
 	match icon_type:
 		ICON_TYPE.CRAFTING:
 			if PlayerStats.can_craft_next_sword():
-				icon.texture = GEAR_NOTIFICATION_ICON_ENABLED
-				notice.text = "Gear ready to craft!"
-				is_enabled = true
-				start_pulse()
+				if !is_enabled:
+					icon.texture = GEAR_NOTIFICATION_ICON_ENABLED
+					notice.text = "Gear ready to craft!"
+					is_enabled = true
+					play_sfx(CRAFTING_NOTIFICATION)
+					start_pulse()
 			else:
+				stop_pulse()
 				icon.texture = GEAR_NOTIFICATION_ICON_DISABLED
+				is_enabled = false
+					
 		ICON_TYPE.COOKING:
 			if populate_craftable_items_list(CookingManager.cooking_recipes):
-				icon.texture = COOKING_NOTIFICATION_ICON_ENABLED
-				notice.text = "Dish ready to cook!"
-				is_enabled = true
-				start_pulse()
+				if !is_enabled:
+					play_sfx(COOKING_NOTIFICATION)
+					icon.texture = COOKING_NOTIFICATION_ICON_ENABLED
+					notice.text = "Dish ready to cook!"
+					is_enabled = true
+					start_pulse()
 			else:
+				stop_pulse()
 				icon.texture = COOKING_NOTIFICATION_ICON_DISABLED
+				is_enabled = false
+					
 		ICON_TYPE.SMELTING:
 			if populate_craftable_items_list(CookingManager.smelting_recipes):
-				notice.text= "Bar ready to smelt!"
-				icon.texture = SMELTING_NOTIFICATION_ICON_ENABLED
-				is_enabled = true
-				start_pulse()
+				if !is_enabled:
+					play_sfx(SMELTING_NOTIFICATION)
+					notice.text= "Bar ready to smelt!"
+					icon.texture = SMELTING_NOTIFICATION_ICON_ENABLED
+					is_enabled = true
+					start_pulse()
 			else:
+				stop_pulse()
 				icon.texture = SMELTING_NOTIFICATION_ICON_DISABLED
+				is_enabled = false
+				
 		ICON_TYPE.AP:
 			if PlayerStats.player_stats["Ability Points"] >= 1:
+				if !is_enabled:
+					start_pulse()
+					is_enabled = true
 				notice.text = "AP ready to spend!\nAp Available: %s" % PlayerStats.player_stats["Ability Points"]
 				icon.texture = AP_NOTIFICATION_ICON_ENABLED
-				is_enabled = true
-				start_pulse()
 			else:
+				stop_pulse()
 				icon.texture = AP_NOTIFICATION_ICON_DISABLED
+				is_enabled = false
+
 		ICON_TYPE.QUEST:
 			icon.texture = QUEST_NOTIFICATION_ICON_DISABLED
 
@@ -78,7 +103,19 @@ func populate_craftable_items_list(recipe_list : Dictionary) -> bool:
 	return false
 
 
+func check_for_notification(notification_type : GameManager.NOTIFICATION_TYPE) -> void:
+	if icon_type != notification_type:
+		return
+	
+	set_icon()
+
+'''
+The goal is to set the icon to enabled - but only do it once. 
+if it is already enabled, we won't set the icon enabled. 
+'''
+
 func start_pulse() -> void:
+	spawn_sparks()
 	aura.show()
 	if pulse_tween:
 		pulse_tween.kill()
@@ -113,6 +150,10 @@ func stop_pulse() -> void:
 	aura.scale = Vector2.ONE
 	aura.modulate.a = 0.0
 
+func spawn_sparks() -> void:
+	var sparks = preload("uid://caecanj86lyrx").instantiate()
+	sparks.position = sparks_location.position
+	add_child(sparks)
 
 func _on_mouse_entered() -> void:
 	if is_enabled:
@@ -122,3 +163,12 @@ func _on_mouse_entered() -> void:
 func _on_mouse_exited() -> void:
 	if is_enabled:
 		panel_container.hide()
+
+func play_sfx(sound: AudioStream, volume: float = 0.0):
+	var player := AudioStreamPlayer.new()
+	player.stream = sound
+	player.volume_db = volume
+	player.bus = &"SFX"
+	add_child(player)
+	player.play()
+	player.finished.connect(player.queue_free)
