@@ -46,10 +46,10 @@ script = ExtResource("1_1fw0b")
 [node name="SfxPlayer" parent="." unique_id=268741460 instance=ExtResource("2_d4ivd")]
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=48163631]
-offset_left = -3923.0
-offset_top = -1942.0
-offset_right = 5489.0
-offset_bottom = 4244.0
+offset_left = -3948.0
+offset_top = -1944.0
+offset_right = 5464.0
+offset_bottom = 4242.0
 mouse_filter = 2
 color = Color(0.028638711, 0.1994082, 0.3708802, 1)
 
@@ -475,7 +475,7 @@ position = Vector2(326, 79)
 position = Vector2(46, 79)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=770360838]
-position = Vector2(666, 389)
+position = Vector2(636, 365)
 script = ExtResource("9_wj3rp")
 
 [node name="Label" type="Label" parent="." unique_id=1948156559]

@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://cf578kajmmh6n"]
+
+[ext_resource type="Texture2D" uid="uid://iw8l3hpbhgvp" path="res://Assets/NodeGraphics/WarriorTechTree/TyroSigil.png" id="1_cfo2c"]
+[ext_resource type="Script" uid="uid://dlfpwjhncefaj" path="res://src/Scripts/TechTree/class_sigil.gd" id="2_8tgc7"]
+[ext_resource type="FontFile" uid="uid://qgj228ltdttv" path="res://Assets/Fonts/alagard.ttf" id="3_rbaa1"]
+[ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="4_e5hxh"]
+
+[node name="ClassSigil" type="Control" unique_id=680736021 node_paths=PackedStringArray("icon", "title", "description")]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 3
+anchors_preset = 0
+offset_left = 25.0
+offset_top = 14.0
+offset_right = 231.0
+offset_bottom = 193.0
+script = ExtResource("2_8tgc7")
+icon = NodePath("Icon")
+title = NodePath("ClassDescriptionBox/Title")
+description = NodePath("ClassDescriptionBox/Description")
+
+[node name="Icon" type="TextureRect" parent="." unique_id=1594242796]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -104.0
+offset_top = -32.0
+offset_right = -40.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_cfo2c")
+stretch_mode = 2
+
+[node name="ClassDescriptionBox" type="Panel" parent="." unique_id=1345912212]
+visible = false
+z_index = 4009
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -62.5
+offset_right = 133.0
+offset_bottom = 33.277496
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="ClassDescriptionBox" unique_id=1052348871]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -18.0
+offset_top = 2.0
+offset_right = 16.0
+offset_bottom = 17.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_rbaa1")
+text = "Tyro"
+
+[node name="Description" type="RichTextLabel" parent="ClassDescriptionBox" unique_id=1804955945]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -74.0
+offset_top = -23.888748
+offset_right = 74.0
+offset_bottom = 44.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = ExtResource("4_e5hxh")
+text = "The first milestone in a long journey in becoming the Hero of Velmoria."
+
+[connection signal="mouse_entered" from="Icon" to="." method="_on_icon_mouse_entered"]
+[connection signal="mouse_exited" from="Icon" to="." method="_on_icon_mouse_exited"]

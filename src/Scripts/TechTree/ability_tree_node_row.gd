@@ -1,5 +1,6 @@
-class_name WarriorTechTree extends Node2D
+class_name AbilityTreeNodeRow extends Panel
 
+@onready var focus_marker: Marker2D = $FocusArea
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
