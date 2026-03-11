@@ -67,13 +67,20 @@ var equipped_abilities : Dictionary = {
 }
 
 func get_equipped_ability(slot : String) -> Ability:
-	return equipped_abilities[slot]
+	var selected_slot = equipped_abilities[slot]
+	
+	if selected_slot is String:
+		selected_slot = load(selected_slot)
+	
+	return selected_slot
 
 func get_equipped_abilities() -> Dictionary:
 	return equipped_abilities
 
-func equip_ability(ability : Ability, position : String) -> void:
-	equipped_abilities[position] = ability
+func equip_ability(player_class : String, ability_type : String) -> void:
+	var ability : Ability = player_classes[player_class][ability_type]
+	equipped_abilities[ability_type] = ability
+	SaveManager.save_equipped_abilities()
 
 @onready var facilities_unlocked : Dictionary = {
 	"Hunter License" : false,

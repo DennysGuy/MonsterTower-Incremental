@@ -10,7 +10,11 @@ func _ready() -> void:
 	animated_sprite_2d.flip_h = flip_dir
 	animated_sprite_2d.play("default")
 	var tween : Tween = get_tree().create_tween()
-	await tween.tween_property(self, "global_position:x", global_position.x + (PlayerStats.equipped_abilities["Air Attack"].projectile_distance * move_dir), 0.3)
+	var selected_abiltiy = PlayerStats.equipped_abilities["Air Attack"]
+	if selected_abiltiy is String:
+		selected_abiltiy = load(selected_abiltiy)
+	
+	await tween.tween_property(self, "global_position:x", global_position.x + (selected_abiltiy.projectile_distance * move_dir), 0.3)
 func _physics_process(delta: float) -> void:
 	#position.x += move_speed * move_dir
 	pass

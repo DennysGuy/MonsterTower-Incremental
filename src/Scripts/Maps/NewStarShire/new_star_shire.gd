@@ -100,7 +100,12 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("interact") and player_in_dojo_range:
 		GameManager.player_can_move = false
 		player.velocity = Vector2.ZERO
-		spawn_beginner_tree()
+		
+		match PlayerStats.player_stats["Class"]:
+			"Junior Hunter":
+				spawn_beginner_tree()
+			"Tyro":
+				spawn_warrior_tech_tree()
 		#spawn_dojo_menu()
 
 func add_tech_tree_to_scene() -> void:
@@ -194,6 +199,15 @@ func spawn_beginner_tree() -> void:
 	canvas_layer.show()
 	var beginner_ability_tree : BeginnerTechTree = preload("uid://y6ru08whvroa").instantiate()
 	sub_viewport.add_child(beginner_ability_tree)
+
+
+func spawn_warrior_tech_tree() -> void:
+	GameManager.can_open_tower_map = false
+	GameManager.can_open_bag = false
+	GameManager.can_pause_game = false
+	canvas_layer.show()
+	var warrior_tech_tree : WarriorTechTree = preload("uid://dqx7ld4tcru6g").instantiate()
+	sub_viewport.add_child(warrior_tech_tree)
 
 func spawn_dojo_menu() -> void:
 	GameManager.can_open_tower_map = false

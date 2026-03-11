@@ -3,29 +3,47 @@
 [ext_resource type="Script" uid="uid://bnbvifmcn8nfi" path="res://src/Scripts/TechTree/WarriorTechTree/warrior_tech_tree.gd" id="1_34e8x"]
 [ext_resource type="PackedScene" uid="uid://kw3vh2fr3jwo" path="res://src/Scenes/TechTree/AbilityTreeNodeRow.tscn" id="3_2hki2"]
 [ext_resource type="PackedScene" uid="uid://cf578kajmmh6n" path="res://src/Scenes/TechTree/ClassSigil.tscn" id="3_c83kc"]
+[ext_resource type="PackedScene" uid="uid://c0227whw41r3" path="res://src/Scenes/TechTree/AbilityRowLock.tscn" id="3_etxjc"]
 [ext_resource type="Texture2D" uid="uid://iw8l3hpbhgvp" path="res://Assets/NodeGraphics/WarriorTechTree/TyroSigil.png" id="4_jjetc"]
+[ext_resource type="Script" uid="uid://bb8wauko5mxlw" path="res://src/Scripts/TechTree/ability_row_lock.gd" id="4_rxhav"]
+[ext_resource type="PackedScene" uid="uid://23brgcq8m6qb" path="res://src/Scenes/TechTree/AbilityNode.tscn" id="5_opivy"]
+[ext_resource type="Texture2D" uid="uid://bvoyokredjn1b" path="res://Assets/NodeGraphics/AbilitiesTechTree/RowArrow.png" id="5_rxhav"]
+[ext_resource type="Resource" uid="uid://drsvlgm3u7ana" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/AbilityUnlocks/SwordSlam.tres" id="6_b60wm"]
+[ext_resource type="Resource" uid="uid://b73fjjjgyd2qw" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/AbilityUnlocks/SwordDance.tres" id="7_qh4wv"]
+[ext_resource type="Resource" uid="uid://bvpak7qhbh7g6" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/AbilityUnlocks/SwordSoar.tres" id="8_kdih3"]
+[ext_resource type="Resource" uid="uid://51yxkv0krgeq" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/AbilityUnlocks/DoubleStab.tres" id="9_32lyw"]
+[ext_resource type="Texture2D" uid="uid://cskoljhga6af1" path="res://Assets/NodeGraphics/AbilitiesTechTree/RowArrow_Unlocked.png" id="11_qh4wv"]
+[ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="14_kdih3"]
 
 [node name="WarriorTechTree" type="Control" unique_id=479128437]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -74.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_34e8x")
 
 [node name="BG" type="ColorRect" parent="." unique_id=524950457]
-layout_mode = 0
-offset_left = -1484.0
-offset_top = -949.0
-offset_right = 2408.0
-offset_bottom = 1444.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1946.0
+offset_top = -1214.0
+offset_right = 1946.0
+offset_bottom = 1179.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.27849358, 0.1689198, 0.08431979, 1)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=303290330]
-position = Vector2(321, 181)
+position = Vector2(321, 279)
 limit_left = 0
-limit_top = -420
+limit_top = -700
 limit_right = 640
 limit_bottom = 420
 limit_smoothed = true
@@ -39,24 +57,200 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -267.0
-offset_top = -251.0
+offset_top = -771.0
 offset_right = 245.0
-offset_bottom = 81.0
+offset_bottom = 125.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 50
+theme_override_constants/separation = 70
 
-[node name="AbilityTreeNodeRow4" parent="NodeRowVBox" unique_id=1530456165 instance=ExtResource("3_2hki2")]
+[node name="AbilityTreeNodeRow7" parent="NodeRowVBox" unique_id=1530456165 instance=ExtResource("3_2hki2")]
 layout_mode = 2
 
-[node name="AbilityTreeNodeRow3" parent="NodeRowVBox" unique_id=2016199656 instance=ExtResource("3_2hki2")]
+[node name="AbilityRowLock" parent="NodeRowVBox/AbilityTreeNodeRow7" unique_id=1901615546 instance=ExtResource("3_etxjc")]
+layout_mode = 1
+script = ExtResource("4_rxhav")
+required_level = 30
+
+[node name="AbilityTreeNodeRow6" parent="NodeRowVBox" unique_id=621870482 instance=ExtResource("3_2hki2")]
 layout_mode = 2
+
+[node name="AbilityRowLock" parent="NodeRowVBox/AbilityTreeNodeRow6" unique_id=1843313398 instance=ExtResource("3_etxjc")]
+layout_mode = 1
+script = ExtResource("4_rxhav")
+required_level = 25
+
+[node name="AbilityTreeNodeRow5" parent="NodeRowVBox" unique_id=220935919 instance=ExtResource("3_2hki2")]
+layout_mode = 2
+
+[node name="AbilityRowLock" parent="NodeRowVBox/AbilityTreeNodeRow5" unique_id=1938118086 instance=ExtResource("3_etxjc")]
+layout_mode = 1
+script = ExtResource("4_rxhav")
+required_level = 20
+
+[node name="AbilityTreeNodeRow" parent="NodeRowVBox" unique_id=663990169 instance=ExtResource("3_2hki2")]
+layout_mode = 2
+
+[node name="AbilityRowLock" parent="NodeRowVBox/AbilityTreeNodeRow" unique_id=2091636618 instance=ExtResource("3_etxjc")]
+layout_mode = 1
+script = ExtResource("4_rxhav")
+required_level = 17
 
 [node name="AbilityTreeNodeRow2" parent="NodeRowVBox" unique_id=1252216584 instance=ExtResource("3_2hki2")]
 layout_mode = 2
 
-[node name="AbilityTreeNodeRow" parent="NodeRowVBox" unique_id=663990169 instance=ExtResource("3_2hki2")]
+[node name="AbilityRowLock2" parent="NodeRowVBox/AbilityTreeNodeRow2" unique_id=1830107822 instance=ExtResource("3_etxjc")]
+layout_mode = 1
+script = ExtResource("4_rxhav")
+required_level = 15
+
+[node name="AbilityTreeNodeRow3" parent="NodeRowVBox" unique_id=2016199656 instance=ExtResource("3_2hki2")]
 layout_mode = 2
+
+[node name="AbilityRowLock3" parent="NodeRowVBox/AbilityTreeNodeRow3" unique_id=151869316 instance=ExtResource("3_etxjc")]
+layout_mode = 1
+script = ExtResource("4_rxhav")
+required_level = 12
+
+[node name="AbilityTreeNodeRow4" parent="NodeRowVBox" unique_id=1443144926 instance=ExtResource("3_2hki2")]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NodeRowVBox/AbilityTreeNodeRow4" unique_id=98652167]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -134.5
+offset_top = -32.0
+offset_right = 134.5
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="AbilityNode" parent="NodeRowVBox/AbilityTreeNodeRow4/HBoxContainer" unique_id=70786195 instance=ExtResource("5_opivy")]
+layout_mode = 2
+ability_node_stats = ExtResource("6_b60wm")
+
+[node name="AbilityNode2" parent="NodeRowVBox/AbilityTreeNodeRow4/HBoxContainer" unique_id=1485790771 instance=ExtResource("5_opivy")]
+layout_mode = 2
+ability_node_stats = ExtResource("7_qh4wv")
+
+[node name="AbilityNode3" parent="NodeRowVBox/AbilityTreeNodeRow4/HBoxContainer" unique_id=1546851689 instance=ExtResource("5_opivy")]
+layout_mode = 2
+ability_node_stats = ExtResource("8_kdih3")
+
+[node name="AbilityNode4" parent="NodeRowVBox/AbilityTreeNodeRow4/HBoxContainer" unique_id=160915298 instance=ExtResource("5_opivy")]
+layout_mode = 2
+ability_node_stats = ExtResource("9_32lyw")
+
+[node name="Arrow7" type="TextureRect" parent="." unique_id=95178753]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -51.0
+offset_top = -11.0
+offset_right = 13.0
+offset_bottom = 53.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_rxhav")
+
+[node name="Arrow" type="TextureRect" parent="." unique_id=409520305]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -51.0
+offset_top = 124.0
+offset_right = 13.0
+offset_bottom = 188.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_qh4wv")
+
+[node name="Arrow2" type="TextureRect" parent="." unique_id=445514245]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -51.0
+offset_top = -150.0
+offset_right = 13.0
+offset_bottom = -86.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_rxhav")
+
+[node name="Arrow3" type="TextureRect" parent="." unique_id=826106516]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -51.0
+offset_top = -287.0
+offset_right = 13.0
+offset_bottom = -223.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_rxhav")
+
+[node name="Arrow4" type="TextureRect" parent="." unique_id=1704883350]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -51.0
+offset_top = -425.0
+offset_right = 13.0
+offset_bottom = -361.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_rxhav")
+
+[node name="Arrow5" type="TextureRect" parent="." unique_id=1201623167]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -51.0
+offset_top = -563.0
+offset_right = 13.0
+offset_bottom = -499.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_rxhav")
+
+[node name="Arrow6" type="TextureRect" parent="." unique_id=1404237409]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -51.0
+offset_top = -700.0
+offset_right = 13.0
+offset_bottom = -636.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_rxhav")
 
 [node name="ClassSigil" parent="." unique_id=1891287289 instance=ExtResource("3_c83kc")]
 layout_mode = 1
@@ -73,4 +267,43 @@ grow_horizontal = 2
 grow_vertical = 0
 icon_texture = ExtResource("4_jjetc")
 title_name = "Tyro"
-class_description = "The first milestone in a long journey in becoming the Hero of Velmoria."
+class_description = "The first milestone in a long journey of becoming the Hero of Velmoria."
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1388289258]
+
+[node name="APLabel" type="Label" parent="CanvasLayer" unique_id=1901802319]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = -19.0
+offset_right = 178.0
+offset_bottom = -3.0
+grow_vertical = 0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("14_kdih3")
+text = "AP Available : 11"
+
+[node name="EscToExitNotice" type="Label" parent="CanvasLayer" unique_id=585629]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 51.0
+offset_top = -352.0
+offset_right = 129.0
+offset_bottom = -336.0
+grow_vertical = 0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("14_kdih3")
+text = "'ESC' to Exit"
+
+[node name="Button" type="Button" parent="CanvasLayer" unique_id=2103728416]
+offset_left = 5.0
+offset_top = 3.0
+offset_right = 42.0
+offset_bottom = 27.0
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("14_kdih3")
+text = "Exit"
+
+[connection signal="button_up" from="CanvasLayer/Button" to="." method="_on_button_button_up"]

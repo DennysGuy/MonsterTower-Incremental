@@ -13,6 +13,7 @@ offset_left = 25.0
 offset_top = 14.0
 offset_right = 231.0
 offset_bottom = 193.0
+mouse_default_cursor_shape = 2
 script = ExtResource("2_8tgc7")
 icon = NodePath("Icon")
 title = NodePath("ClassDescriptionBox/Title")
