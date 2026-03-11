@@ -11,6 +11,7 @@ const ABILITY_NODE_PURCHASED = preload("uid://c42bc8lfwvlgy")
 @onready var texture_button: TextureButton = $TextureButton
 
 func _ready() -> void:
+	TechTreeManager.check_if_can_purchase_node.connect(check_can_purchase_node)
 	node_icon.texture = ability_node_stats.icon
 	check_can_purchase_node()
 		
@@ -55,7 +56,14 @@ func _on_texture_button_button_up() -> void:
 			SaveManager.save_equipped_abilities()
 			ability_node_stats.unlocked = true
 			
-	check_can_purchase_node()
+	deduct_ap()
+	#check_can_purchase_node()
+	TechTreeManager.check_if_can_purchase_node.emit()
+
+func deduct_ap() -> void:
+	PlayerStats.player_stats["Ability Points"] -= ability_node_stats.ap_cost
+	LevelingManager.update_available_ap_label.emit()
+	SaveManager.save_player_stats()
 	
 func has_resource_quantity() -> bool:
 	if ability_node_stats.materials_required.is_empty():

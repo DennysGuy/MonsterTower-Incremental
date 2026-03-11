@@ -5,8 +5,12 @@ class_name WarriorTechTree extends Control
 
 var selected_row_index = 6
 
+@onready var ap_label: Label = $CanvasLayer/APLabel
+
 # Called when the node enters the scense tree for the first time.
 func _ready() -> void:
+	LevelingManager.update_available_ap_label.connect(update_ap_label)
+	update_ap_label()
 	camera_2d.global_position = node_row_v_box.get_child(selected_row_index).focus_marker.global_position
 
 
@@ -20,9 +24,7 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("pan_cam_down") and selected_row_index < node_row_v_box.get_children().size()-1:
 		selected_row_index += 1
 
-
 	camera_2d.global_position = node_row_v_box.get_child(selected_row_index).focus_marker.global_position
-
 
 func _on_button_button_up() -> void:
 	close_out()
@@ -34,3 +36,6 @@ func close_out() -> void:
 	GameManager.can_open_tower_map = true
 	SignalBus.hide_tech_tree_canvas_layer.emit()
 	queue_free()
+
+func update_ap_label() -> void:
+	ap_label.text = "AP Available: %s " % PlayerStats.player_stats["Ability Points"]

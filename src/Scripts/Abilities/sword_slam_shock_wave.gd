@@ -33,6 +33,9 @@ func _on_hit_box_area_entered(area: Area2D) -> void:
 	var parent := area.get_parent()
 	
 	if parent is Enemy:
-		var damage = randf_range(PlayerStats.player_stats["Attack Damage"]*0.8, PlayerStats.player_stats["Attack Damage"]) * PlayerStats.equipped_abilities["Air Attack"].attack_damage_modifier
-		parent.apply_slow_and_damage(damage, PlayerStats.equipped_abilities["Air Attack"].move_speed_modifier, PlayerStats.equipped_abilities["Air Attack"].slow_wait_time)
+		var attack = PlayerStats.equipped_abilities["Air Attack"]
+		if attack is String:
+			attack = load(attack)
+		var damage = randf_range(PlayerStats.player_stats["Attack Damage"]*0.8, PlayerStats.player_stats["Attack Damage"]) * attack.attack_damage_modifier
+		parent.apply_slow_and_damage(damage, PlayerStats.equipped_abilities["Air Attack"].move_speed_modifier, attack.slow_wait_time)
 		#parent.apply_damage(damage,false)

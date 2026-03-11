@@ -69,8 +69,8 @@ var equipped_abilities : Dictionary = {
 func get_equipped_ability(slot : String) -> Ability:
 	var selected_slot = equipped_abilities[slot]
 	
-	if selected_slot is String:
-		selected_slot = load(selected_slot)
+	#if selected_slot is String:
+		#selected_slot = load(selected_slot)
 	
 	return selected_slot
 
