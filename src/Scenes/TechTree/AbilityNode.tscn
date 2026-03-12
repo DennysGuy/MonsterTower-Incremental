@@ -50,4 +50,9 @@ offset_right = 64.0
 offset_bottom = 64.0
 mouse_default_cursor_shape = 2
 
+[node name="PanelMarker" type="Marker2D" parent="." unique_id=602492856]
+position = Vector2(70, -74)
+
 [connection signal="button_up" from="TextureButton" to="." method="_on_texture_button_button_up"]
+[connection signal="mouse_entered" from="TextureButton" to="." method="_on_texture_button_mouse_entered"]
+[connection signal="mouse_exited" from="TextureButton" to="." method="_on_texture_button_mouse_exited"]

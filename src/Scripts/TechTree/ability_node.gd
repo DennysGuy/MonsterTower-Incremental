@@ -9,6 +9,8 @@ const ABILITY_NODE_PURCHASED = preload("uid://c42bc8lfwvlgy")
 
 @export var ability_node_stats : ClassAbilityNodeStats
 @onready var texture_button: TextureButton = $TextureButton
+@onready var panel_marker: Marker2D = $PanelMarker
+var stored_description_panel : AbilityDescriptionPanel
 
 func _ready() -> void:
 	TechTreeManager.check_if_can_purchase_node.connect(check_can_purchase_node)
@@ -92,3 +94,31 @@ func has_resource_quantity() -> bool:
 						return false
 		
 	return true
+
+
+func _on_texture_button_mouse_entered() -> void:
+	create_description_panel()
+
+
+func _on_texture_button_mouse_exited() -> void:
+	if stored_description_panel:
+		stored_description_panel.queue_free()
+
+
+func create_description_panel() -> void:
+	var description_panel : AbilityDescriptionPanel = preload("uid://b3mhlshnkg8ds").instantiate()
+	
+	description_panel.title.text = ability_node_stats.node_name
+	description_panel.ap_cost.text = "AP Cost: %s" % ability_node_stats.ap_cost
+	match ability_node_stats.node_type:
+		ability_node_stats.NODE_TYPE.ABILITY_UNLOCK:
+			description_panel.type.text = "Ability"
+		ability_node_stats.NODE_TYPE.ABILITY_STAT_BOOST:
+			description_panel.type.text = "Ability Upgrade"
+		ability_node_stats.NODE_TYPE.CHARACTER_STAT_BOOST:
+			description_panel.type.text = "Stat Boost"
+	
+	description_panel.description.text = ability_node_stats.description
+	description_panel.position = panel_marker.position
+	stored_description_panel = description_panel
+	add_child(description_panel)

@@ -1,0 +1,13 @@
+class_name AbilityDescriptionPanel extends Panel
+@export var title: Label 
+@export var type: Label
+@export var ap_cost: Label
+@export var description: RichTextLabel
+
+
+func _ready() -> void:
+	pass
+
+
+func _process(delta: float) -> void:
+	pass
