@@ -15,6 +15,7 @@ func _ready() -> void:
 		selected_abiltiy = load(selected_abiltiy)
 	
 	await tween.tween_property(self, "global_position:x", global_position.x + (selected_abiltiy.projectile_distance * move_dir), 0.3)
+
 func _physics_process(delta: float) -> void:
 	#position.x += move_speed * move_dir
 	pass

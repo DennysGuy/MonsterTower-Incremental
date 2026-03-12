@@ -54,8 +54,14 @@ func _on_texture_button_button_up() -> void:
 		ability_node_stats.NODE_TYPE.ABILITY_UNLOCK:
 			PlayerStats.equipped_abilities[ability_node_stats.ability_category] = ability_node_stats.ability_resource
 			SaveManager.save_equipped_abilities()
-			ability_node_stats.unlocked = true
+		ability_node_stats.NODE_TYPE.ABILITY_STAT_BOOST:
+			ability_node_stats.upgrade_ability_stats()
+		ability_node_stats.NODE_TYPE.CHARACTER_STAT_BOOST:
+			ability_node_stats.upgrade_character_stats()
+		ability_node_stats.NODE_TYPE.CLASS_ADVANCE:
+			pass
 			
+	ability_node_stats.unlocked = true		
 	deduct_ap()
 	#check_can_purchase_node()
 	TechTreeManager.check_if_can_purchase_node.emit()

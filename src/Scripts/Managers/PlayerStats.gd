@@ -20,6 +20,7 @@ const KNOCKBACK_FORCE : int = 300
 	"Movement Speed" : 100.0,
 	"Climbing Speed" : 65.0,
 	"Stun Length": 1.0,
+	"Stun Stacks": 1.0,
 	"Dash Speed" : 350.0,
 	"Dash Cooldown" : 2.0,
 	"Dash Duration" : 0.3,

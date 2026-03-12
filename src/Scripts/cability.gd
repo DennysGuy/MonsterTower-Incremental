@@ -1,9 +1,9 @@
 class_name Ability
 extends Resource
 
-
 @export_group("Meta Data")
 @export var ability_name : String #Maybe this can be the "Animation Name" as well?
+@export var class_relation : String
 enum ABILITY_TYPE {STANDARD_ATTACK, AIR_ATTACK, DASH_ATTACK, DOUBLE_JUMP, SPECIAL_ATTACK}
 @export var ability_type : ABILITY_TYPE = ABILITY_TYPE.STANDARD_ATTACK
 @export var cooldown_time : float
@@ -34,3 +34,38 @@ enum ABILITY_TYPE {STANDARD_ATTACK, AIR_ATTACK, DASH_ATTACK, DOUBLE_JUMP, SPECIA
 @export var dash_cooldown_modifier : float
 @export var dash_speed_modifier : float
 @export var hit_box_size_modifier : Vector2
+
+func get_ability_type_name() -> String:
+	match ability_type:
+		ABILITY_TYPE.AIR_ATTACK:
+			return "Air Attack"
+		ABILITY_TYPE.DASH_ATTACK:
+			return "Dash Attack"
+		ABILITY_TYPE.DOUBLE_JUMP:
+			return "Double Jump"
+		ABILITY_TYPE.SPECIAL_ATTACK:
+			return "Special Attack"
+		_:
+			return ""
+
+func load_stats() -> void:
+	var saved_ability : Dictionary = SaveManager.current_save_game.abilities[class_relation][get_ability_type_name()]
+	hp_cost = saved_ability["HP Cost"]
+	mp_cost = saved_ability["MP Cost"]
+	base_attack = saved_ability["Base Attack"]
+	number_of_enemies_hit = saved_ability["Number of Enemies Hit"]
+	max_hit_count = saved_ability["Max Hit Count"]
+	healh_recovery_amount = saved_ability["Health Recovery"]
+	mp_recover_amount = saved_ability["MP Recovery"]
+	defense_modifier = saved_ability["Defense Modifier"]
+	projectile_distance = saved_ability["Projectile Distance"]
+	slow_wait_time = saved_ability["Slow Wait Time"]
+	stun_wait_time = saved_ability["Stun Wait Time"]
+	jump_height_modifier = saved_ability["Jump Height Modifier"]
+	climb_speed_modifier = saved_ability["Climb Speed Modifier"]
+	attack_damage_modifier = saved_ability["Attack Damage Modifier"]
+	move_speed_modifier = saved_ability["Move Speed Modifier"]
+	crit_damage_modifier = saved_ability["Crit Damage Modifier"]
+	crit_chance_modifier = saved_ability["Crit Chance Modifier"]
+	dash_cooldown_modifier = saved_ability["Dash Cooldown"]
+	dash_speed_modifier = saved_ability["Dash Speed Modifier"]

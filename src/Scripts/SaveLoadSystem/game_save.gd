@@ -25,6 +25,7 @@ TODO: We will add saves for classes as well
 	"Movement Speed" : 100.0,
 	"Climbing Speed" : 65.0,
 	"Stun Length": 1.0,
+	"Stun Stacks": 1.0,
 	"Dash Speed" : 350.0,
 	"Dash Cooldown" : 2.0,
 	"Dash Duration" : 0.3,
@@ -171,6 +172,100 @@ TODO: We will add saves for classes as well
 	"Double Jump" : "uid://rgwunwula5mv", #sword soar - for testing purposes
 	"Special Attack" : null #double cleave - here for testing purposes
 }
+
+@export var abilities : Dictionary = {
+	"Tyro" : {
+		"Dash Attack" : {
+			"Cooldown Time" : 2.0,
+			"HP Cost" : 0.0,
+			"MP Cost" : 10.0,
+			"Base Attack": 0.0,
+			"Number of Enemies Hits" : 0.0,
+			"Max Hit Count": 0.0,
+			"Health Recovery" : 0.0,
+			"MP Recovery" : 0.0,
+			"Defense Modifier" : 0.0,
+			"Projectile Distance" : 0.0,
+			"Slow Wait Time" : 1.5,
+			"Stun Wait Time" : 0.0,
+			"Jump Height Modifier" : 0.0,
+			"Climb Speed Modifier" : 0.0,
+			"Attack Damage Modifier" : 0.6,
+			"Move Speed Modifier" : 0.0,
+			"Crit Damage Modifier" : 0.0,
+			"Crit Chance Modifier" : 0.0,
+			"Dash Cooldown" : 0.0,
+			"Dash Speed Modifier" : 0.0
+		},
+		"Air Attack": {
+			"Cooldown Time" : 1.5,
+			"HP Cost" : 0.0,
+			"MP Cost" : 7.0,
+			"Base Attack": 0.0,
+			"Number of Enemies Hits" : 0.0,
+			"Max Hit Count": 0.0,
+			"Health Recovery" : 0.0,
+			"MP Recovery" : 0.0,
+			"Defense Modifier" : 0.0,
+			"Projectile Distance" : 100.0,
+			"Slow Wait Time" : 1.5,
+			"Stun Wait Time" : 0.0,
+			"Jump Height Modifier" : 0.0,
+			"Climb Speed Modifier" : 0.0,
+			"Attack Damage Modifier" : 0.3,
+			"Move Speed Modifier" : 0.4,
+			"Crit Damage Modifier" : 0.0,
+			"Crit Chance Modifier" : 0.0,
+			"Dash Cooldown" : 0.0,
+			"Dash Speed Modifier" : 0.0
+		},
+		"Double Jump": {
+			"Cooldown Time" : 1.0,
+			"HP Cost" : 0.0,
+			"MP Cost" : 7.0,
+			"Base Attack": 0.0,
+			"Number of Enemies Hits" : 5.0,
+			"Max Hit Count": 1.0,
+			"Health Recovery" : 0.0,
+			"MP Recovery" : 0.0,
+			"Defense Modifier" : 0.0,
+			"Projectile Distance" : 100.0,
+			"Slow Wait Time" : 1.5,
+			"Stun Wait Time" : 0.0,
+			"Jump Height Modifier" : 0.0,
+			"Climb Speed Modifier" : 0.0,
+			"Attack Damage Modifier" : 0.5,
+			"Move Speed Modifier" : 0.4,
+			"Crit Damage Modifier" : 0.0,
+			"Crit Chance Modifier" : 0.0,
+			"Dash Cooldown" : 0.0,
+			"Dash Speed Modifier" : 0.0
+		},
+		"Special Attack": {
+			"Cooldown Time" : 3.0,
+			"HP Cost" : 0.0,
+			"MP Cost" : 7.0,
+			"Base Attack": 0.0,
+			"Number of Enemies Hits" : 5.0,
+			"Max Hit Count": 1.0,
+			"Health Recovery" : 0.0,
+			"MP Recovery" : 0.0,
+			"Defense Modifier" : 0.0,
+			"Projectile Distance" : 100.0,
+			"Slow Wait Time" : 1.5,
+			"Stun Wait Time" : 0.0,
+			"Jump Height Modifier" : 0.0,
+			"Climb Speed Modifier" : 0.0,
+			"Attack Damage Modifier" : 0.5,
+			"Move Speed Modifier" : 0.4,
+			"Crit Damage Modifier" : 0.0,
+			"Crit Chance Modifier" : 0.0,
+			"Dash Cooldown" : 0.0,
+			"Dash Speed Modifier" : 0.0
+		}
+	}
+}
+
 
 #though should be setup at "continue game too"
 @export var inventories : Dictionary = {
