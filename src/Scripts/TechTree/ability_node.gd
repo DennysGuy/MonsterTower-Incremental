@@ -12,30 +12,41 @@ const ABILITY_NODE_PURCHASED = preload("uid://c42bc8lfwvlgy")
 @onready var panel_marker: Marker2D = $PanelMarker
 var stored_description_panel : AbilityDescriptionPanel
 
+var can_buy : String = "#008260"
+var unlocked : String = "#68754B"
+var locked : String = "#666A68"
+
+var bg_color : String 
+
 func _ready() -> void:
+	load_purchased_status()
 	TechTreeManager.check_if_can_purchase_node.connect(check_can_purchase_node)
 	node_icon.texture = ability_node_stats.icon
 	check_can_purchase_node()
 		
-
 func _process(delta: float) -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
 	pass
 
-func check_can_purchase_node() -> void:
+func check_can_purchase_node() -> bool:
 	if ability_node_stats.unlocked:
 		node_base.texture = ABILITY_NODE_PURCHASED
 		texture_button.disabled = true
+		bg_color = unlocked
+		return false
 	else:
 		if PlayerStats.player_stats["Ability Points"] >= ability_node_stats.ap_cost and has_resource_quantity():
 			node_base.texture = ABILITY_NODE_ENABLED
 			texture_button.disabled = false
+			bg_color = can_buy
+			return true
 		else:
 			node_base.texture = ABILITY_NODE_DISABLED
 			texture_button.disabled = true
-
+			bg_color = locked
+			return false
 
 func _on_texture_button_button_up() -> void:
 	'''
@@ -63,8 +74,9 @@ func _on_texture_button_button_up() -> void:
 		ability_node_stats.NODE_TYPE.CLASS_ADVANCE:
 			pass
 			
-	ability_node_stats.unlocked = true		
+	
 	deduct_ap()
+	unlock_node()
 	#check_can_purchase_node()
 	TechTreeManager.check_if_can_purchase_node.emit()
 
@@ -92,7 +104,6 @@ func has_resource_quantity() -> bool:
 				item.ITEM_TYPE.USE:
 					if InventoryManager.get_quantity(item, "Use") < resource[item]:
 						return false
-		
 	return true
 
 
@@ -109,16 +120,48 @@ func create_description_panel() -> void:
 	var description_panel : AbilityDescriptionPanel = preload("uid://b3mhlshnkg8ds").instantiate()
 	
 	description_panel.title.text = ability_node_stats.node_name
-	description_panel.ap_cost.text = "AP Cost: %s" % ability_node_stats.ap_cost
+	if ability_node_stats.unlocked:
+		description_panel.ap_cost.text = "Unlocked!"
+	else:
+		description_panel.ap_cost.text = "AP Cost: %s" % ability_node_stats.ap_cost
+	
+	description_panel.bg.color = bg_color
 	match ability_node_stats.node_type:
 		ability_node_stats.NODE_TYPE.ABILITY_UNLOCK:
 			description_panel.type.text = "Ability"
+			description_panel.stat_list.text = ""
 		ability_node_stats.NODE_TYPE.ABILITY_STAT_BOOST:
 			description_panel.type.text = "Ability Upgrade"
+			description_panel.stat_list.text = ""
+			display_stats_changes(description_panel, ability_node_stats.get_ability_modifiers())
 		ability_node_stats.NODE_TYPE.CHARACTER_STAT_BOOST:
 			description_panel.type.text = "Stat Boost"
+			description_panel.stat_list.text = ""
+			display_stats_changes(description_panel, ability_node_stats.get_character_stat_modifiers())
 	
 	description_panel.description.text = ability_node_stats.description
 	description_panel.position = panel_marker.position
 	stored_description_panel = description_panel
 	add_child(description_panel)
+
+
+func display_stats_changes(description_panel : AbilityDescriptionPanel, stat_list : Dictionary) -> void:
+	for stat in stat_list.keys():
+		if stat_list[stat] != 0.0:
+			if stat_list[stat] < 1.0:
+				description_panel.stat_list.text += "+%"+str(int(stat_list[stat] * 100)) + " " + stat + "\n"
+			elif stat_list[stat] >= 1.0:
+				description_panel.stat_list.text += "+%s %s\n" % [int(stat_list[stat]), stat]
+			elif stat_list[stat] > -1.0 and stat_list[stat] < 0.0:
+					description_panel.stat_list.text += "+%"+str(int(stat_list[stat] * 100)) + " " + stat + "\n"
+			else:
+				description_panel.stat_list.text += "-%s %s\n" % [int(stat_list[stat]), stat]
+
+func unlock_node() -> void:
+	ability_node_stats.unlocked = true		
+	SaveManager.current_save_game.ability_nodes[ability_node_stats.class_relation][ability_node_stats.get_ability_type_name()][ability_node_stats.node_name] = true
+	SaveManager.save_game()
+
+
+func load_purchased_status() -> void:
+	ability_node_stats.unlocked = SaveManager.current_save_game.ability_nodes[ability_node_stats.class_relation][ability_node_stats.get_ability_type_name()][ability_node_stats.node_name]

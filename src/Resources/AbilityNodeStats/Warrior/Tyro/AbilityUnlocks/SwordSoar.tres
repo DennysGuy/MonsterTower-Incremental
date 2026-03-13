@@ -9,6 +9,9 @@ script = ExtResource("2_vf356")
 icon = ExtResource("1_e65ei")
 node_name = "Sword Soar"
 class_relation = "Tyro"
+description = "Replaces 'Double Jump'
+
+Soar through the air, piercing and knocking back enemies from above - clearing a path to safety."
 ap_cost = 1
 ability_category = "Double Jump"
 ability_resource = ExtResource("1_vf356")

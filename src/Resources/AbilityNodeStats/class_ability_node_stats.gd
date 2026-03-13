@@ -42,6 +42,7 @@ enum NODE_TYPE {ABILITY_UNLOCK, ABILITY_STAT_BOOST, CHARACTER_STAT_BOOST, CLASS_
 
 
 @export_group("Character Stats Modifiers")
+@export var attack_damage : float
 @export var movement_speed_change : float
 @export var climb_speed_change : float
 @export var stun_length_change : float
@@ -87,6 +88,7 @@ func get_ability_modifiers() -> Dictionary:
 
 func get_character_stat_modifiers() -> Dictionary:
 	return {
+		"Attack Damage": attack_damage,
 		"Movement Speed": movement_speed_change,
 		"Climb Speed": climb_speed_change,
 		"Stun Length": stun_length_change,
@@ -133,6 +135,7 @@ func upgrade_ability_stats() -> void:
 	SaveManager.save_equipped_abilities()
 
 func upgrade_character_stats() -> void:
+	PlayerStats.player_stats["Attack Damage"] += attack_damage
 	PlayerStats.player_stats["Movement Speed"] += movement_speed_change
 	PlayerStats.player_stats["Climbing Speed"] += climb_speed_change
 	PlayerStats.player_stats["Stun Length"] += stun_length_change
@@ -151,3 +154,16 @@ func upgrade_character_stats() -> void:
 	PlayerStats.player_stats["Max MP"] += max_mp_change
 	
 	SaveManager.save_player_stats()
+
+func get_ability_type_name() -> String:
+	match node_type:
+		NODE_TYPE.ABILITY_UNLOCK:
+			return "Ability Unlock"
+		NODE_TYPE.ABILITY_STAT_BOOST:
+			return "Ability Stat Boost"
+		NODE_TYPE.CHARACTER_STAT_BOOST:
+			return "Character Stat Boost"
+		NODE_TYPE.CLASS_ADVANCE:
+			return "Class Advancement"
+		_:
+			return ""

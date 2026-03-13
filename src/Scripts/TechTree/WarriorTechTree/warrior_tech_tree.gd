@@ -11,18 +11,23 @@ var selected_row_index = 6
 func _ready() -> void:
 	LevelingManager.update_available_ap_label.connect(update_ap_label)
 	update_ap_label()
+	node_row_v_box.get_child(selected_row_index).show_arrows()
 	camera_2d.global_position = node_row_v_box.get_child(selected_row_index).focus_marker.global_position
-
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 
 	if Input.is_action_just_pressed("pan_cam_up") and selected_row_index > 0:
+		node_row_v_box.get_child(selected_row_index).hide_arrows()
 		selected_row_index -= 1
+		node_row_v_box.get_child(selected_row_index).show_arrows()
 	
 	
 	if Input.is_action_just_pressed("pan_cam_down") and selected_row_index < node_row_v_box.get_children().size()-1:
+		node_row_v_box.get_child(selected_row_index).hide_arrows()
 		selected_row_index += 1
+		node_row_v_box.get_child(selected_row_index).show_arrows()
 
 	camera_2d.global_position = node_row_v_box.get_child(selected_row_index).focus_marker.global_position
 

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://kw3vh2fr3jwo"]
 
 [ext_resource type="Script" uid="uid://brob21bduse0a" path="res://src/Scripts/TechTree/ability_tree_node_row.gd" id="1_6dni3"]
+[ext_resource type="Texture2D" uid="uid://lxx2jn3wfb5k" path="res://Assets/HUD/AbilityRowSelectedArrow.png" id="2_hper7"]
 
 [node name="AbilityTreeNodeRow" type="Panel" unique_id=1530456165]
 custom_minimum_size = Vector2(0, 68)
@@ -19,3 +20,33 @@ script = ExtResource("1_6dni3")
 
 [node name="FocusArea" type="Marker2D" parent="." unique_id=361079640]
 position = Vector2(196, 35)
+
+[node name="SelectArrows" type="Control" parent="." unique_id=487490155]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="SelectArrow" type="TextureRect" parent="SelectArrows" unique_id=338625412]
+layout_mode = 0
+offset_left = -64.0
+offset_top = 2.0
+offset_bottom = 66.0
+pivot_offset = Vector2(32, 32)
+texture = ExtResource("2_hper7")
+stretch_mode = 2
+
+[node name="SelectArrow2" type="TextureRect" parent="SelectArrows" unique_id=307145417]
+layout_mode = 0
+offset_left = 512.0
+offset_top = 2.0
+offset_right = 576.0
+offset_bottom = 66.0
+pivot_offset = Vector2(32, 32)
+texture = ExtResource("2_hper7")
+stretch_mode = 2
+flip_h = true

@@ -9,6 +9,9 @@ script = ExtResource("1_sjnb4")
 icon = ExtResource("1_owye7")
 node_name = "Sword Dance"
 class_relation = "Tyro"
+description = "Replaces 'Dash Attack'.
+
+Cut through enemies in your path, rendering them silenced for for 1.5 seconds."
 ap_cost = 1
 ability_category = "Dash Attack"
 ability_resource = ExtResource("1_hlofw")

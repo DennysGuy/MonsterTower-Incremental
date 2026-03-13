@@ -9,6 +9,9 @@ script = ExtResource("1_w1exy")
 icon = ExtResource("1_ecxoo")
 node_name = "Sword Slam"
 class_relation = "Tyro"
+description = "Replaces 'Air Attack'. 
+
+From mid air, slam the ground hard sending out power shockwaves knocking back and slowing the enemies surrounding you!"
 ap_cost = 1
 ability_category = "Air Attack"
 ability_resource = ExtResource("1_u0pwm")

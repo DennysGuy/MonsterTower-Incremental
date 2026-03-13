@@ -275,3 +275,25 @@ TODO: We will add saves for classes as well
 	"Use": [],
 	"Bank": []
 }
+
+@export var ability_nodes : Dictionary = {
+	"Tyro": {
+		"Ability Unlock" : {
+			"Double Cleave": false,
+			"Sword Dance": false,
+			"Sword Slam": false,
+			"Sword Soar": false,
+		},
+		"Ability Stat Boost" : {
+			
+		},
+		"Character Stat Boost" : {
+			"Armored Core 1": false,
+			"Field Tactician 1" : false,
+			"Warrior's Flame 1" : false,
+		},
+		"Class Advancement" : {
+			
+		}
+	}
+}

@@ -7,8 +7,11 @@
 [resource]
 script = ExtResource("1_lnp0x")
 icon = ExtResource("1_ietr8")
-node_name = "Double Stab"
+node_name = "Double Cleave"
 class_relation = "Tyro"
+description = "Your first Class Unique Ability!
+
+Issue out 2 powerful cleave strikes dealing 3x base attack damage."
 ap_cost = 1
 ability_category = "Special Attack"
 ability_resource = ExtResource("1_ly3ql")
