@@ -18,5 +18,5 @@ base_attack = 30.0
 number_of_enemies_hit = 1.0
 max_hit_count = 2.0
 attack_rep_delay = 0.2
-attack_damage_modifier = 3.0
+attack_damage_modifier = 2.0
 metadata/_custom_type_script = "uid://bwqf7q51702b"

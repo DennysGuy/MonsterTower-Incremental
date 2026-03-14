@@ -160,7 +160,10 @@ func unlock_node() -> void:
 	SaveManager.save_game()
 
 func load_purchased_status() -> void:
-	ability_node_stats.unlocked = SaveManager.current_save_game.ability_nodes[ability_node_stats.class_relation][ability_node_stats.get_ability_type_name()][ability_node_stats.node_name]
+	var class_relation : String = ability_node_stats.class_relation
+	var ability_type_name : String = ability_node_stats.get_ability_type_name()
+	var node_name : String = ability_node_stats.node_name
+	ability_node_stats.unlocked = SaveManager.current_save_game.ability_nodes[class_relation][ability_type_name][node_name]
 
 func play_sfx(sound: AudioStream, volume: float = 0.0):
 	var player := AudioStreamPlayer.new()

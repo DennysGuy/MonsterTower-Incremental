@@ -7,15 +7,32 @@
 [ext_resource type="Texture2D" uid="uid://iw8l3hpbhgvp" path="res://Assets/NodeGraphics/WarriorTechTree/TyroSigil.png" id="4_jjetc"]
 [ext_resource type="PackedScene" uid="uid://23brgcq8m6qb" path="res://src/Scenes/TechTree/AbilityNode.tscn" id="5_opivy"]
 [ext_resource type="Texture2D" uid="uid://bvoyokredjn1b" path="res://Assets/NodeGraphics/AbilitiesTechTree/RowArrow.png" id="5_rxhav"]
+[ext_resource type="Resource" uid="uid://b8dc8b0kh0dsr" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/AbilityUnlocks/SwordSlam3.tres" id="5_uqhrn"]
+[ext_resource type="Resource" uid="uid://3nsiiv1dq8so" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/AbilityUnlocks/SwordDance3.tres" id="6_11cds"]
 [ext_resource type="Resource" uid="uid://drsvlgm3u7ana" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/AbilityUnlocks/SwordSlam.tres" id="6_b60wm"]
 [ext_resource type="Resource" uid="uid://b3q7teodj24vf" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/CharacterBoosts/ArmoredCore1.tres" id="6_je8w0"]
 [ext_resource type="Resource" uid="uid://bwy0u7543td2u" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/CharacterBoosts/FieldTactician1.tres" id="7_0s8pu"]
+[ext_resource type="Resource" uid="uid://dj7sbubpfaf7s" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/AbilityUnlocks/SwordSoar3.tres" id="7_m8ovl"]
 [ext_resource type="Resource" uid="uid://b73fjjjgyd2qw" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/AbilityUnlocks/SwordDance.tres" id="7_qh4wv"]
 [ext_resource type="Resource" uid="uid://5yci1c1l1tb2" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/CharacterBoosts/WarriorsFlame1.tres" id="8_40auc"]
 [ext_resource type="Resource" uid="uid://bvpak7qhbh7g6" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/AbilityUnlocks/SwordSoar.tres" id="8_kdih3"]
+[ext_resource type="Resource" uid="uid://bpf3372xjox2p" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/AbilityUnlocks/DoubleStab3.tres" id="8_qfn20"]
 [ext_resource type="Resource" uid="uid://51yxkv0krgeq" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/AbilityUnlocks/DoubleStab.tres" id="9_32lyw"]
+[ext_resource type="Resource" uid="uid://cua1klsq166rh" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/CharacterBoosts/ArmoredCore3.tres" id="9_d0hxv"]
+[ext_resource type="Resource" uid="uid://jrqme57ywn0" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/CharacterBoosts/FieldTactician3.tres" id="10_6qj7e"]
+[ext_resource type="Resource" uid="uid://c6hyr4hcluw8" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/CharacterBoosts/WarriorsFlame3.tres" id="11_q8x1s"]
 [ext_resource type="Texture2D" uid="uid://cskoljhga6af1" path="res://Assets/NodeGraphics/AbilitiesTechTree/RowArrow_Unlocked.png" id="11_qh4wv"]
+[ext_resource type="Resource" uid="uid://c71wdmkmxxxct" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/AbilityUnlocks/SwordSlam1.tres" id="12_0s8pu"]
+[ext_resource type="Resource" uid="uid://cn1lome24uvh4" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/CharacterBoosts/ArmoredCore2.tres" id="12_b7dhb"]
+[ext_resource type="Resource" uid="uid://3tqaybptumqr" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/AbilityUnlocks/SwordSoar2.tres" id="12_vd3qe"]
+[ext_resource type="Resource" uid="uid://cpg586qwrplgy" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/AbilityUnlocks/SwordDance1.tres" id="13_40auc"]
+[ext_resource type="Resource" uid="uid://m4gyp4tgpqem" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/AbilityUnlocks/SwordDance2.tres" id="13_q5f6i"]
+[ext_resource type="Resource" uid="uid://btw1tgdlb2dcg" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/CharacterBoosts/FieldTactician2.tres" id="13_vd3qe"]
+[ext_resource type="Resource" uid="uid://dhavx7c8nci4q" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/AbilityUnlocks/SwordSoar1.tres" id="14_40auc"]
+[ext_resource type="Resource" uid="uid://cuqahybl6p7vb" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/AbilityUnlocks/DoubleStab2.tres" id="14_b0iwl"]
 [ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="14_kdih3"]
+[ext_resource type="Resource" uid="uid://bo1eg8i0hu0xx" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/CharacterBoosts/WarriorsFlame2.tres" id="14_q5f6i"]
+[ext_resource type="Resource" uid="uid://b1tqtyjdmcrui" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/AbilityUnlocks/DoubleStab1.tres" id="15_qhxup"]
 
 [sub_resource type="Animation" id="Animation_je8w0"]
 length = 0.001
@@ -123,6 +140,38 @@ unlock_level = 25
 ability_row_lock = NodePath("AbilityRowLock")
 arrow_guide = NodePath("../../Arrow6")
 
+[node name="HBoxContainer4" type="HBoxContainer" parent="NodeRowVBox/Level25" unique_id=493071670]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -173.0
+offset_top = -32.0
+offset_right = 173.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="AbilityNode" parent="NodeRowVBox/Level25/HBoxContainer4" unique_id=70786195 instance=ExtResource("5_opivy")]
+layout_mode = 2
+ability_node_stats = ExtResource("5_uqhrn")
+
+[node name="AbilityNode2" parent="NodeRowVBox/Level25/HBoxContainer4" unique_id=1035094732 instance=ExtResource("5_opivy")]
+layout_mode = 2
+ability_node_stats = ExtResource("6_11cds")
+
+[node name="AbilityNode3" parent="NodeRowVBox/Level25/HBoxContainer4" unique_id=1669699351 instance=ExtResource("5_opivy")]
+layout_mode = 2
+ability_node_stats = ExtResource("7_m8ovl")
+
+[node name="AbilityNode4" parent="NodeRowVBox/Level25/HBoxContainer4" unique_id=2013632731 instance=ExtResource("5_opivy")]
+layout_mode = 2
+ability_node_stats = ExtResource("8_qfn20")
+
 [node name="AbilityRowLock" parent="NodeRowVBox/Level25" unique_id=1528140724 instance=ExtResource("3_etxjc")]
 layout_mode = 1
 required_level = 25
@@ -133,6 +182,34 @@ class_relation = "Tyro"
 unlock_level = 22
 ability_row_lock = NodePath("AbilityRowLock2")
 arrow_guide = NodePath("../../Arrow5")
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="NodeRowVBox/Level22" unique_id=265952705]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -173.0
+offset_top = -32.0
+offset_right = 173.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="AbilityNode" parent="NodeRowVBox/Level22/HBoxContainer4" unique_id=1675552832 instance=ExtResource("5_opivy")]
+layout_mode = 2
+ability_node_stats = ExtResource("9_d0hxv")
+
+[node name="AbilityNode2" parent="NodeRowVBox/Level22/HBoxContainer4" unique_id=1069900201 instance=ExtResource("5_opivy")]
+layout_mode = 2
+ability_node_stats = ExtResource("10_6qj7e")
+
+[node name="AbilityNode3" parent="NodeRowVBox/Level22/HBoxContainer4" unique_id=292778362 instance=ExtResource("5_opivy")]
+layout_mode = 2
+ability_node_stats = ExtResource("11_q8x1s")
 
 [node name="AbilityRowLock2" parent="NodeRowVBox/Level22" unique_id=1830107822 instance=ExtResource("3_etxjc")]
 layout_mode = 1
@@ -145,6 +222,38 @@ unlock_level = 20
 ability_row_lock = NodePath("AbilityRowLock")
 arrow_guide = NodePath("../../Arrow4")
 
+[node name="HBoxContainer3" type="HBoxContainer" parent="NodeRowVBox/Level20" unique_id=206284778]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -173.0
+offset_top = -32.0
+offset_right = 173.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="AbilityNode" parent="NodeRowVBox/Level20/HBoxContainer3" unique_id=1793748095 instance=ExtResource("5_opivy")]
+layout_mode = 2
+ability_node_stats = ExtResource("12_vd3qe")
+
+[node name="AbilityNode2" parent="NodeRowVBox/Level20/HBoxContainer3" unique_id=1136629502 instance=ExtResource("5_opivy")]
+layout_mode = 2
+ability_node_stats = ExtResource("13_q5f6i")
+
+[node name="AbilityNode3" parent="NodeRowVBox/Level20/HBoxContainer3" unique_id=199846618 instance=ExtResource("5_opivy")]
+layout_mode = 2
+ability_node_stats = ExtResource("12_vd3qe")
+
+[node name="AbilityNode4" parent="NodeRowVBox/Level20/HBoxContainer3" unique_id=1151931458 instance=ExtResource("5_opivy")]
+layout_mode = 2
+ability_node_stats = ExtResource("14_b0iwl")
+
 [node name="AbilityRowLock" parent="NodeRowVBox/Level20" unique_id=2091636618 instance=ExtResource("3_etxjc")]
 layout_mode = 1
 required_level = 20
@@ -156,6 +265,34 @@ unlock_level = 17
 ability_row_lock = NodePath("AbilityRowLock")
 arrow_guide = NodePath("../../Arrow3")
 
+[node name="HBoxContainer3" type="HBoxContainer" parent="NodeRowVBox/Level17" unique_id=1341876077]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -173.0
+offset_top = -32.0
+offset_right = 173.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="AbilityNode" parent="NodeRowVBox/Level17/HBoxContainer3" unique_id=96460864 instance=ExtResource("5_opivy")]
+layout_mode = 2
+ability_node_stats = ExtResource("12_b7dhb")
+
+[node name="AbilityNode2" parent="NodeRowVBox/Level17/HBoxContainer3" unique_id=1372283099 instance=ExtResource("5_opivy")]
+layout_mode = 2
+ability_node_stats = ExtResource("13_vd3qe")
+
+[node name="AbilityNode3" parent="NodeRowVBox/Level17/HBoxContainer3" unique_id=341330120 instance=ExtResource("5_opivy")]
+layout_mode = 2
+ability_node_stats = ExtResource("14_q5f6i")
+
 [node name="AbilityRowLock" parent="NodeRowVBox/Level17" unique_id=1938118086 instance=ExtResource("3_etxjc")]
 layout_mode = 1
 required_level = 17
@@ -166,6 +303,38 @@ class_relation = "Tyro"
 unlock_level = 15
 ability_row_lock = NodePath("AbilityRowLock")
 arrow_guide = NodePath("../../Arrow2")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="NodeRowVBox/Level15" unique_id=358650890]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -173.0
+offset_top = -32.0
+offset_right = 173.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="AbilityNode" parent="NodeRowVBox/Level15/HBoxContainer2" unique_id=2049337602 instance=ExtResource("5_opivy")]
+layout_mode = 2
+ability_node_stats = ExtResource("12_0s8pu")
+
+[node name="AbilityNode2" parent="NodeRowVBox/Level15/HBoxContainer2" unique_id=890496036 instance=ExtResource("5_opivy")]
+layout_mode = 2
+ability_node_stats = ExtResource("13_40auc")
+
+[node name="AbilityNode3" parent="NodeRowVBox/Level15/HBoxContainer2" unique_id=922700611 instance=ExtResource("5_opivy")]
+layout_mode = 2
+ability_node_stats = ExtResource("14_40auc")
+
+[node name="AbilityNode4" parent="NodeRowVBox/Level15/HBoxContainer2" unique_id=397991504 instance=ExtResource("5_opivy")]
+layout_mode = 2
+ability_node_stats = ExtResource("15_qhxup")
 
 [node name="AbilityRowLock" parent="NodeRowVBox/Level15" unique_id=1843313398 instance=ExtResource("3_etxjc")]
 layout_mode = 1
@@ -194,7 +363,7 @@ grow_vertical = 2
 theme_override_constants/separation = 30
 alignment = 1
 
-[node name="AbilityNode" parent="NodeRowVBox/Level12/HBoxContainer2" unique_id=70786195 instance=ExtResource("5_opivy")]
+[node name="AbilityNode" parent="NodeRowVBox/Level12/HBoxContainer2" unique_id=579997173 instance=ExtResource("5_opivy")]
 layout_mode = 2
 ability_node_stats = ExtResource("6_je8w0")
 

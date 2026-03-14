@@ -285,12 +285,29 @@ TODO: We will add saves for classes as well
 			"Sword Soar": false,
 		},
 		"Ability Stat Boost" : {
-			
+			"Double Cleave +1": false,
+			"Sword Dance +1": false,
+			"Sword Slam +1": false,
+			"Sword Soar +1": false,
+			"Double Cleave +2": false,
+			"Sword Dance +2": false,
+			"Sword Slam +2": false,
+			"Sword Soar +2": false,
+			"Double Cleave +3": false,
+			"Sword Dance +3": false,
+			"Sword Slam +3": false,
+			"Sword Soar +3": false,
 		},
 		"Character Stat Boost" : {
 			"Armored Core 1": false,
 			"Field Tactician 1" : false,
 			"Warrior's Flame 1" : false,
+			"Armored Core 2": false,
+			"Field Tactician 2" : false,
+			"Warrior's Flame 2" : false,
+			"Armored Core 3": false,
+			"Field Tactician 3" : false,
+			"Warrior's Flame 3" : false,
 		},
 		"Class Advancement" : {
 			
