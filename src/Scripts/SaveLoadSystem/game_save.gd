@@ -297,3 +297,18 @@ TODO: We will add saves for classes as well
 		}
 	}
 }
+
+@export var class_ability_rows : Dictionary = {
+	"Tyro" : {
+		10 : true,
+		12 : false,
+		15 : false,
+		17 : false,
+		20 : false,
+		22 : false,
+		25 : false,
+		27 : false,
+		30 : false
+	}
+		
+}

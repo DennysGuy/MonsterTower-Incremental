@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://cf578kajmmh6n" path="res://src/Scenes/TechTree/ClassSigil.tscn" id="3_c83kc"]
 [ext_resource type="PackedScene" uid="uid://c0227whw41r3" path="res://src/Scenes/TechTree/AbilityRowLock.tscn" id="3_etxjc"]
 [ext_resource type="Texture2D" uid="uid://iw8l3hpbhgvp" path="res://Assets/NodeGraphics/WarriorTechTree/TyroSigil.png" id="4_jjetc"]
-[ext_resource type="Script" uid="uid://bb8wauko5mxlw" path="res://src/Scripts/TechTree/ability_row_lock.gd" id="4_rxhav"]
 [ext_resource type="PackedScene" uid="uid://23brgcq8m6qb" path="res://src/Scenes/TechTree/AbilityNode.tscn" id="5_opivy"]
 [ext_resource type="Texture2D" uid="uid://bvoyokredjn1b" path="res://Assets/NodeGraphics/AbilitiesTechTree/RowArrow.png" id="5_rxhav"]
 [ext_resource type="Resource" uid="uid://drsvlgm3u7ana" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/AbilityUnlocks/SwordSlam.tres" id="6_b60wm"]
@@ -17,6 +16,44 @@
 [ext_resource type="Resource" uid="uid://51yxkv0krgeq" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/AbilityUnlocks/DoubleStab.tres" id="9_32lyw"]
 [ext_resource type="Texture2D" uid="uid://cskoljhga6af1" path="res://Assets/NodeGraphics/AbilitiesTechTree/RowArrow_Unlocked.png" id="11_qh4wv"]
 [ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="14_kdih3"]
+
+[sub_resource type="Animation" id="Animation_je8w0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0s8pu"]
+resource_name = "ScreenFlash"
+length = 0.5
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_40auc"]
+_data = {
+&"RESET": SubResource("Animation_je8w0"),
+&"ScreenFlash": SubResource("Animation_0s8pu")
+}
 
 [node name="WarriorTechTree" type="Control" unique_id=479128437]
 layout_mode = 3
@@ -36,7 +73,7 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -1946.0
-offset_top = -1214.0
+offset_top = -2763.0
 offset_right = 1946.0
 offset_bottom = 1179.0
 grow_horizontal = 2
@@ -46,7 +83,7 @@ color = Color(0.27849358, 0.1689198, 0.08431979, 1)
 [node name="Camera2D" type="Camera2D" parent="." unique_id=303290330]
 position = Vector2(321, 279)
 limit_left = 0
-limit_top = -700
+limit_top = -820
 limit_right = 640
 limit_bottom = 420
 limit_smoothed = true
@@ -60,57 +97,88 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -253.0
-offset_top = -771.0
+offset_top = -907.0
 offset_right = 259.0
-offset_bottom = 125.0
+offset_bottom = 127.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 70
 
-[node name="AbilityTreeNodeRow7" parent="NodeRowVBox" unique_id=1530456165 instance=ExtResource("3_2hki2")]
+[node name="Level30" parent="NodeRowVBox" unique_id=1443144926 node_paths=PackedStringArray("ability_row_lock", "arrow_guide") instance=ExtResource("3_2hki2")]
 layout_mode = 2
+class_relation = "Tyro"
+unlock_level = 30
+is_unlocked = true
+ability_row_lock = NodePath("AbilityRowLock")
+arrow_guide = NodePath("../../Arrow8")
 
-[node name="AbilityRowLock" parent="NodeRowVBox/AbilityTreeNodeRow7" unique_id=1901615546 instance=ExtResource("3_etxjc")]
+[node name="AbilityRowLock" parent="NodeRowVBox/Level30" unique_id=1901615546 instance=ExtResource("3_etxjc")]
 layout_mode = 1
-script = ExtResource("4_rxhav")
 required_level = 30
 
-[node name="AbilityTreeNodeRow6" parent="NodeRowVBox" unique_id=621870482 instance=ExtResource("3_2hki2")]
+[node name="Level25" parent="NodeRowVBox" unique_id=2016199656 node_paths=PackedStringArray("ability_row_lock", "arrow_guide") instance=ExtResource("3_2hki2")]
 layout_mode = 2
+class_relation = "Tyro"
+unlock_level = 25
+ability_row_lock = NodePath("AbilityRowLock")
+arrow_guide = NodePath("../../Arrow6")
 
-[node name="AbilityRowLock" parent="NodeRowVBox/AbilityTreeNodeRow6" unique_id=1843313398 instance=ExtResource("3_etxjc")]
+[node name="AbilityRowLock" parent="NodeRowVBox/Level25" unique_id=1528140724 instance=ExtResource("3_etxjc")]
 layout_mode = 1
-script = ExtResource("4_rxhav")
 required_level = 25
 
-[node name="AbilityTreeNodeRow5" parent="NodeRowVBox" unique_id=220935919 instance=ExtResource("3_2hki2")]
+[node name="Level22" parent="NodeRowVBox" unique_id=1252216584 node_paths=PackedStringArray("ability_row_lock", "arrow_guide") instance=ExtResource("3_2hki2")]
 layout_mode = 2
+class_relation = "Tyro"
+unlock_level = 22
+ability_row_lock = NodePath("AbilityRowLock2")
+arrow_guide = NodePath("../../Arrow5")
 
-[node name="AbilityRowLock" parent="NodeRowVBox/AbilityTreeNodeRow5" unique_id=1938118086 instance=ExtResource("3_etxjc")]
+[node name="AbilityRowLock2" parent="NodeRowVBox/Level22" unique_id=1830107822 instance=ExtResource("3_etxjc")]
 layout_mode = 1
-script = ExtResource("4_rxhav")
+required_level = 22
+
+[node name="Level20" parent="NodeRowVBox" unique_id=663990169 node_paths=PackedStringArray("ability_row_lock", "arrow_guide") instance=ExtResource("3_2hki2")]
+layout_mode = 2
+class_relation = "Tyro"
+unlock_level = 20
+ability_row_lock = NodePath("AbilityRowLock")
+arrow_guide = NodePath("../../Arrow4")
+
+[node name="AbilityRowLock" parent="NodeRowVBox/Level20" unique_id=2091636618 instance=ExtResource("3_etxjc")]
+layout_mode = 1
 required_level = 20
 
-[node name="AbilityTreeNodeRow" parent="NodeRowVBox" unique_id=663990169 instance=ExtResource("3_2hki2")]
+[node name="Level17" parent="NodeRowVBox" unique_id=220935919 node_paths=PackedStringArray("ability_row_lock", "arrow_guide") instance=ExtResource("3_2hki2")]
 layout_mode = 2
+class_relation = "Tyro"
+unlock_level = 17
+ability_row_lock = NodePath("AbilityRowLock")
+arrow_guide = NodePath("../../Arrow3")
 
-[node name="AbilityRowLock" parent="NodeRowVBox/AbilityTreeNodeRow" unique_id=2091636618 instance=ExtResource("3_etxjc")]
+[node name="AbilityRowLock" parent="NodeRowVBox/Level17" unique_id=1938118086 instance=ExtResource("3_etxjc")]
 layout_mode = 1
-script = ExtResource("4_rxhav")
 required_level = 17
 
-[node name="AbilityTreeNodeRow2" parent="NodeRowVBox" unique_id=1252216584 instance=ExtResource("3_2hki2")]
+[node name="Level15" parent="NodeRowVBox" unique_id=621870482 node_paths=PackedStringArray("ability_row_lock", "arrow_guide") instance=ExtResource("3_2hki2")]
 layout_mode = 2
+class_relation = "Tyro"
+unlock_level = 15
+ability_row_lock = NodePath("AbilityRowLock")
+arrow_guide = NodePath("../../Arrow2")
 
-[node name="AbilityRowLock2" parent="NodeRowVBox/AbilityTreeNodeRow2" unique_id=1830107822 instance=ExtResource("3_etxjc")]
+[node name="AbilityRowLock" parent="NodeRowVBox/Level15" unique_id=1843313398 instance=ExtResource("3_etxjc")]
 layout_mode = 1
-script = ExtResource("4_rxhav")
 required_level = 15
 
-[node name="AbilityTreeNodeRow3" parent="NodeRowVBox" unique_id=2016199656 instance=ExtResource("3_2hki2")]
+[node name="Level12" parent="NodeRowVBox" unique_id=377132986 node_paths=PackedStringArray("ability_row_lock", "arrow_guide") instance=ExtResource("3_2hki2")]
 layout_mode = 2
+class_relation = "Tyro"
+unlock_level = 12
+ability_row_lock = NodePath("AbilityRowLock3")
+arrow_guide = NodePath("../../Arrow7")
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="NodeRowVBox/AbilityTreeNodeRow3" unique_id=30877626]
+[node name="HBoxContainer2" type="HBoxContainer" parent="NodeRowVBox/Level12" unique_id=30877626]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -126,73 +194,64 @@ grow_vertical = 2
 theme_override_constants/separation = 30
 alignment = 1
 
-[node name="AbilityNode" parent="NodeRowVBox/AbilityTreeNodeRow3/HBoxContainer2" unique_id=70786195 instance=ExtResource("5_opivy")]
+[node name="AbilityNode" parent="NodeRowVBox/Level12/HBoxContainer2" unique_id=70786195 instance=ExtResource("5_opivy")]
 layout_mode = 2
 ability_node_stats = ExtResource("6_je8w0")
 
-[node name="AbilityNode2" parent="NodeRowVBox/AbilityTreeNodeRow3/HBoxContainer2" unique_id=649838769 instance=ExtResource("5_opivy")]
+[node name="AbilityNode2" parent="NodeRowVBox/Level12/HBoxContainer2" unique_id=649838769 instance=ExtResource("5_opivy")]
 layout_mode = 2
 ability_node_stats = ExtResource("7_0s8pu")
 
-[node name="AbilityNode3" parent="NodeRowVBox/AbilityTreeNodeRow3/HBoxContainer2" unique_id=1333644963 instance=ExtResource("5_opivy")]
+[node name="AbilityNode3" parent="NodeRowVBox/Level12/HBoxContainer2" unique_id=1333644963 instance=ExtResource("5_opivy")]
 layout_mode = 2
 ability_node_stats = ExtResource("8_40auc")
 
-[node name="AbilityRowLock3" parent="NodeRowVBox/AbilityTreeNodeRow3" unique_id=151869316 instance=ExtResource("3_etxjc")]
-visible = false
+[node name="AbilityRowLock3" parent="NodeRowVBox/Level12" unique_id=151869316 instance=ExtResource("3_etxjc")]
 layout_mode = 1
-script = ExtResource("4_rxhav")
 required_level = 12
 
-[node name="AbilityTreeNodeRow4" parent="NodeRowVBox" unique_id=1443144926 instance=ExtResource("3_2hki2")]
+[node name="Level10" parent="NodeRowVBox" unique_id=1530456165 node_paths=PackedStringArray("ability_row_lock", "arrow_guide") instance=ExtResource("3_2hki2")]
 layout_mode = 2
+class_relation = "Tyro"
+unlock_level = 10
+ability_row_lock = NodePath("AbilityRowLock")
+arrow_guide = NodePath("../../Arrow")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="NodeRowVBox/AbilityTreeNodeRow4" unique_id=98652167]
+[node name="HBoxContainer" type="HBoxContainer" parent="NodeRowVBox/Level10" unique_id=98652167]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -134.5
+offset_left = -173.0
 offset_top = -32.0
-offset_right = 134.5
+offset_right = 173.0
 offset_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 30
 alignment = 1
 
-[node name="AbilityNode" parent="NodeRowVBox/AbilityTreeNodeRow4/HBoxContainer" unique_id=1271845232 instance=ExtResource("5_opivy")]
+[node name="AbilityNode" parent="NodeRowVBox/Level10/HBoxContainer" unique_id=1271845232 instance=ExtResource("5_opivy")]
 layout_mode = 2
 ability_node_stats = ExtResource("6_b60wm")
 
-[node name="AbilityNode2" parent="NodeRowVBox/AbilityTreeNodeRow4/HBoxContainer" unique_id=1485790771 instance=ExtResource("5_opivy")]
+[node name="AbilityNode2" parent="NodeRowVBox/Level10/HBoxContainer" unique_id=1485790771 instance=ExtResource("5_opivy")]
 layout_mode = 2
 ability_node_stats = ExtResource("7_qh4wv")
 
-[node name="AbilityNode3" parent="NodeRowVBox/AbilityTreeNodeRow4/HBoxContainer" unique_id=1546851689 instance=ExtResource("5_opivy")]
+[node name="AbilityNode3" parent="NodeRowVBox/Level10/HBoxContainer" unique_id=1546851689 instance=ExtResource("5_opivy")]
 layout_mode = 2
 ability_node_stats = ExtResource("8_kdih3")
 
-[node name="AbilityNode4" parent="NodeRowVBox/AbilityTreeNodeRow4/HBoxContainer" unique_id=160915298 instance=ExtResource("5_opivy")]
+[node name="AbilityNode4" parent="NodeRowVBox/Level10/HBoxContainer" unique_id=160915298 instance=ExtResource("5_opivy")]
 layout_mode = 2
 ability_node_stats = ExtResource("9_32lyw")
 
-[node name="Arrow7" type="TextureRect" parent="." unique_id=95178753]
+[node name="AbilityRowLock" parent="NodeRowVBox/Level10" unique_id=490237729 instance=ExtResource("3_etxjc")]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -37.0
-offset_top = -11.0
-offset_right = 27.0
-offset_bottom = 53.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("5_rxhav")
+required_level = 10
 
 [node name="Arrow" type="TextureRect" parent="." unique_id=409520305]
 layout_mode = 1
@@ -208,6 +267,21 @@ offset_bottom = 188.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("11_qh4wv")
+
+[node name="Arrow7" type="TextureRect" parent="." unique_id=95178753]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.0
+offset_top = -11.0
+offset_right = 27.0
+offset_bottom = 53.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_rxhav")
 
 [node name="Arrow2" type="TextureRect" parent="." unique_id=445514245]
 layout_mode = 1
@@ -284,6 +358,21 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("5_rxhav")
 
+[node name="Arrow8" type="TextureRect" parent="." unique_id=174730165]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.0
+offset_top = -840.0
+offset_right = 27.0
+offset_bottom = -776.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_rxhav")
+
 [node name="ClassSigil" parent="." unique_id=1891287289 instance=ExtResource("3_c83kc")]
 layout_mode = 1
 anchors_preset = 7
@@ -300,6 +389,10 @@ grow_vertical = 0
 icon_texture = ExtResource("4_jjetc")
 title_name = "Tyro"
 class_description = "The first milestone in a long journey of becoming the Hero of Velmoria."
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=54478804]
+root_node = NodePath("../CanvasLayer/ColorRect")
+libraries/ = SubResource("AnimationLibrary_40auc")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1388289258]
 
@@ -337,5 +430,14 @@ offset_bottom = 27.0
 mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("14_kdih3")
 text = "Exit"
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1545005963]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [connection signal="button_up" from="CanvasLayer/Button" to="." method="_on_button_button_up"]

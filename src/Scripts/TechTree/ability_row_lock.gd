@@ -2,6 +2,7 @@ class_name AbilityRowLock extends Panel
 
 @export var required_level : int = 0
 @onready var required_level_label: Label = $RequiredLevelLabel
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

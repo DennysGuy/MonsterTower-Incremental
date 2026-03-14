@@ -17,6 +17,7 @@ var unlocked : String = "#68754B"
 var locked : String = "#666A68"
 
 var bg_color : String 
+const UNLOCK_ABILITY_NODE = preload("uid://qk35b21hbmi0")
 
 func _ready() -> void:
 	load_purchased_status()
@@ -74,7 +75,6 @@ func _on_texture_button_button_up() -> void:
 		ability_node_stats.NODE_TYPE.CLASS_ADVANCE:
 			pass
 			
-	
 	deduct_ap()
 	unlock_node()
 	#check_can_purchase_node()
@@ -106,15 +106,12 @@ func has_resource_quantity() -> bool:
 						return false
 	return true
 
-
 func _on_texture_button_mouse_entered() -> void:
 	create_description_panel()
-
 
 func _on_texture_button_mouse_exited() -> void:
 	if stored_description_panel:
 		stored_description_panel.queue_free()
-
 
 func create_description_panel() -> void:
 	var description_panel : AbilityDescriptionPanel = preload("uid://b3mhlshnkg8ds").instantiate()
@@ -144,7 +141,6 @@ func create_description_panel() -> void:
 	stored_description_panel = description_panel
 	add_child(description_panel)
 
-
 func display_stats_changes(description_panel : AbilityDescriptionPanel, stat_list : Dictionary) -> void:
 	for stat in stat_list.keys():
 		if stat_list[stat] != 0.0:
@@ -158,10 +154,19 @@ func display_stats_changes(description_panel : AbilityDescriptionPanel, stat_lis
 				description_panel.stat_list.text += "-%s %s\n" % [int(stat_list[stat]), stat]
 
 func unlock_node() -> void:
+	play_sfx(UNLOCK_ABILITY_NODE,3)
 	ability_node_stats.unlocked = true		
 	SaveManager.current_save_game.ability_nodes[ability_node_stats.class_relation][ability_node_stats.get_ability_type_name()][ability_node_stats.node_name] = true
 	SaveManager.save_game()
 
-
 func load_purchased_status() -> void:
 	ability_node_stats.unlocked = SaveManager.current_save_game.ability_nodes[ability_node_stats.class_relation][ability_node_stats.get_ability_type_name()][ability_node_stats.node_name]
+
+func play_sfx(sound: AudioStream, volume: float = 0.0):
+	var player := AudioStreamPlayer.new()
+	player.stream = sound
+	player.volume_db = volume
+	player.bus = &"SFX"
+	add_child(player)
+	player.play()
+	player.finished.connect(player.queue_free)
