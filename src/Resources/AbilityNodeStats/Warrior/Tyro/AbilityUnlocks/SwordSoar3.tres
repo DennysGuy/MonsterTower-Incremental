@@ -1,6 +1,5 @@
 [gd_resource type="Resource" script_class="ClassAbilityNodeStats" format=3 uid="uid://dj7sbubpfaf7s"]
 
-[ext_resource type="Resource" uid="uid://ctavgtgbvyp1w" path="res://src/Resources/AbilityStates/DoubleJumps/SoarSwordAbility.tres" id="1_pe8qm"]
 [ext_resource type="Texture2D" uid="uid://crmi4laeil18t" path="res://Assets/NodeGraphics/WarriorTechTree/Sigils/SwordSoar_Upgrade_3.png" id="2_pe8qm"]
 [ext_resource type="Script" uid="uid://b1fyuk5q3e08o" path="res://src/Resources/AbilityNodeStats/class_ability_node_stats.gd" id="3_otph1"]
 
@@ -15,5 +14,7 @@ Soar through the air, piercing and knocking back enemies from above - clearing a
 ap_cost = 1
 node_type = 1
 ability_category = "Double Jump"
-ability_resource = ExtResource("1_pe8qm")
+mp_cost = 2.0
+jump_height_modifier = 25.0
+attack_damage_modifier = 0.15
 metadata/_custom_type_script = "uid://b1fyuk5q3e08o"

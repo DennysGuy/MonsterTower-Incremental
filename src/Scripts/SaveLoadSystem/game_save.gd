@@ -180,7 +180,7 @@ TODO: We will add saves for classes as well
 			"HP Cost" : 0.0,
 			"MP Cost" : 10.0,
 			"Base Attack": 0.0,
-			"Number of Enemies Hits" : 0.0,
+			"Number of Enemies Hit" : 0.0,
 			"Max Hit Count": 0.0,
 			"Health Recovery" : 0.0,
 			"MP Recovery" : 0.0,
@@ -202,7 +202,7 @@ TODO: We will add saves for classes as well
 			"HP Cost" : 0.0,
 			"MP Cost" : 7.0,
 			"Base Attack": 0.0,
-			"Number of Enemies Hits" : 0.0,
+			"Number of Enemies Hit" : 0.0,
 			"Max Hit Count": 0.0,
 			"Health Recovery" : 0.0,
 			"MP Recovery" : 0.0,
@@ -224,7 +224,7 @@ TODO: We will add saves for classes as well
 			"HP Cost" : 0.0,
 			"MP Cost" : 7.0,
 			"Base Attack": 0.0,
-			"Number of Enemies Hits" : 5.0,
+			"Number of Enemies Hit" : 5.0,
 			"Max Hit Count": 1.0,
 			"Health Recovery" : 0.0,
 			"MP Recovery" : 0.0,
@@ -246,7 +246,7 @@ TODO: We will add saves for classes as well
 			"HP Cost" : 0.0,
 			"MP Cost" : 7.0,
 			"Base Attack": 0.0,
-			"Number of Enemies Hits" : 5.0,
+			"Number of Enemies Hit" : 5.0,
 			"Max Hit Count": 1.0,
 			"Health Recovery" : 0.0,
 			"MP Recovery" : 0.0,
@@ -265,7 +265,6 @@ TODO: We will add saves for classes as well
 		}
 	}
 }
-
 
 #though should be setup at "continue game too"
 @export var inventories : Dictionary = {

@@ -143,7 +143,7 @@ func create_description_panel() -> void:
 
 func display_stats_changes(description_panel : AbilityDescriptionPanel, stat_list : Dictionary) -> void:
 	for stat in stat_list.keys():
-		if stat_list[stat] != 0.0:
+		if not stat_list[stat] is Vector2 and stat_list[stat] != 0.0:
 			if stat_list[stat] < 1.0:
 				description_panel.stat_list.text += "+%"+str(int(stat_list[stat] * 100)) + " " + stat + "\n"
 			elif stat_list[stat] >= 1.0:

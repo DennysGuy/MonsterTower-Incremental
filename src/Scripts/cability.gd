@@ -49,7 +49,16 @@ func get_ability_type_name() -> String:
 			return ""
 
 func load_stats() -> void:
-	var saved_ability : Dictionary = SaveManager.current_save_game.abilities[class_relation][get_ability_type_name()]
+	#print(SaveManager.current_save_game.abilities)
+	#print(typeof(SaveManager.current_save_game.abilities))
+	#print(class_relation)
+	print(SaveManager.current_save_game.abilities[class_relation])
+	print(typeof(SaveManager.current_save_game.abilities[class_relation]))
+	print(SaveManager.current_save_game.abilities[class_relation][get_ability_type_name()])
+	
+	var ability = SaveManager.current_save_game.abilities[class_relation][get_ability_type_name()]
+	var saved_ability : Dictionary = ability
+	cooldown_time = saved_ability["Cooldown Time"]
 	hp_cost = saved_ability["HP Cost"]
 	mp_cost = saved_ability["MP Cost"]
 	base_attack = saved_ability["Base Attack"]

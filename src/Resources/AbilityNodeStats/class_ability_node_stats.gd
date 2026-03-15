@@ -18,6 +18,7 @@ enum NODE_TYPE {ABILITY_UNLOCK, ABILITY_STAT_BOOST, CHARACTER_STAT_BOOST, CLASS_
 @export var ability_resource : Ability
 
 @export_group("Ability Modifiers")
+@export var cooldown_time : float
 @export var hp_cost : float
 @export var mp_cost : float
 @export var base_attack : float
@@ -110,8 +111,9 @@ func get_character_stat_modifiers() -> Dictionary:
 func upgrade_ability_stats() -> void:
 	var ability_stats : Dictionary = SaveManager.current_save_game.abilities[class_relation][ability_category]
 	
-	ability_stats["Cooldown Time"] += hp_cost #will probably be a negative number
-	ability_stats["HP Cost"] += mp_cost
+	ability_stats["Cooldown Time"] += cooldown_time
+	ability_stats["HP Cost"] += hp_cost
+	ability_stats["MP Cost"] += mp_cost
 	ability_stats["Base Attack"] += base_attack
 	ability_stats["Number of Enemies Hit"] += number_of_enemies_hit
 	ability_stats["Max Hit Count"] += max_hit_count
@@ -131,8 +133,10 @@ func upgrade_ability_stats() -> void:
 	ability_stats["Dash Speed Modifier"] += dash_speed_modifier
 	
 	var equipped_abilities : Dictionary = PlayerStats.get_equipped_abilities()
+	print(equipped_abilities[ability_category])
 	equipped_abilities[ability_category].load_stats()
 	SaveManager.save_equipped_abilities()
+	SaveManager.save_game()
 
 func upgrade_character_stats() -> void:
 	PlayerStats.player_stats["Attack Damage"] += attack_damage

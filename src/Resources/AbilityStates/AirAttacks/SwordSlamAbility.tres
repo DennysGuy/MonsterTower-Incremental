@@ -6,6 +6,8 @@
 [resource]
 script = ExtResource("1_m8fqx")
 ability_name = "Sword Slam"
+class_relation = "Tyro"
+ability_type = 1
 cooldown_time = 1.5
 ability_description = "Replaces Current Air Attack Ability!
 

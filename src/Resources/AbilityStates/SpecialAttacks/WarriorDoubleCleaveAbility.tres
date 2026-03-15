@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("1_pb823")
 ability_name = "Double Cleave"
+class_relation = "Tyro"
 ability_type = 4
 cooldown_time = 3.0
 ability_description = "Special Attack Ability!
@@ -15,7 +16,7 @@ ability_behavior = ExtResource("1_5evol")
 hp_cost = 10.0
 mp_cost = 12.0
 base_attack = 30.0
-number_of_enemies_hit = 1.0
+number_of_enemies_hit = 2.0
 max_hit_count = 2.0
 attack_rep_delay = 0.2
 attack_damage_modifier = 2.0
