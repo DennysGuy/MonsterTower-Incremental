@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://brob21bduse0a" path="res://src/Scripts/TechTree/ability_tree_node_row.gd" id="1_6dni3"]
 [ext_resource type="Texture2D" uid="uid://lxx2jn3wfb5k" path="res://Assets/HUD/AbilityRowSelectedArrow.png" id="2_hper7"]
+[ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="3_wutsh"]
 
 [node name="AbilityTreeNodeRow" type="Panel" unique_id=1530456165]
 custom_minimum_size = Vector2(0, 68)
@@ -50,3 +51,14 @@ pivot_offset = Vector2(32, 32)
 texture = ExtResource("2_hper7")
 stretch_mode = 2
 flip_h = true
+
+[node name="SigilsLeftLabel" type="Label" parent="." unique_id=82403511]
+visible = false
+layout_mode = 0
+offset_left = 4.0
+offset_top = 2.0
+offset_right = 87.0
+offset_bottom = 18.0
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_wutsh")
+text = "Select: 2"

@@ -3,6 +3,8 @@ class_name AbilityNode extends Control
 const ABILITY_NODE_DISABLED = preload("uid://46gvbpulh5q6")
 const ABILITY_NODE_ENABLED = preload("uid://cl08f7bqcyut1")
 const ABILITY_NODE_PURCHASED = preload("uid://c42bc8lfwvlgy")
+
+@export var ability_tree_row : AbilityTreeNodeRow
 @onready var node_icon: TextureRect = $NodeIcon
 
 @onready var node_base: TextureRect = $NodeBase
@@ -68,10 +70,14 @@ func _on_texture_button_button_up() -> void:
 		ability_node_stats.NODE_TYPE.ABILITY_UNLOCK:
 			PlayerStats.equipped_abilities[ability_node_stats.ability_category] = ability_node_stats.ability_resource
 			SaveManager.save_equipped_abilities()
+			
 		ability_node_stats.NODE_TYPE.ABILITY_STAT_BOOST:
 			ability_node_stats.upgrade_ability_stats()
+			
 		ability_node_stats.NODE_TYPE.CHARACTER_STAT_BOOST:
 			ability_node_stats.upgrade_character_stats()
+			ability_tree_row.update_sigils_left()
+			
 		ability_node_stats.NODE_TYPE.CLASS_ADVANCE:
 			pass
 			

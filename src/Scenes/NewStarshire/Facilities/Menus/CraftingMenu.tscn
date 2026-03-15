@@ -5,9 +5,17 @@
 [ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="2_octel"]
 [ext_resource type="FontFile" uid="uid://qgj228ltdttv" path="res://Assets/Fonts/alagard.ttf" id="3_1tol8"]
 [ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="4_1tol8"]
+[ext_resource type="Texture2D" uid="uid://dqrwhfhixd1io" path="res://Assets/Facilities/GearCraftingStation/GearStationDropsBagBG.png" id="5_7ge6x"]
+[ext_resource type="Texture2D" uid="uid://dkd4op7b7q1vp" path="res://Assets/HUD/Bags/Market_Drops_Button.png" id="5_08er8"]
 [ext_resource type="PackedScene" uid="uid://dil4081ni1hb3" path="res://src/Scenes/NewStarshire/Facilities/IngredientsMenuItem.tscn" id="5_re6m4"]
 [ext_resource type="Texture2D" uid="uid://coogimgiiqd7x" path="res://Assets/CraftingMiniGame/Swords/BronzeSword/BronzeSwordMoldWhole.png" id="6_octel"]
+[ext_resource type="Texture2D" uid="uid://dbq8ligbspbbd" path="res://Assets/HUD/Bags/Market_Drops_Button_Pressed.png" id="7_7ge6x"]
+[ext_resource type="Texture2D" uid="uid://c0bf31w6yr3lk" path="res://Assets/HUD/Bags/Market_Drops_Button_Hover.png" id="8_g43m1"]
+[ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="8_glxp5"]
 [ext_resource type="PackedScene" uid="uid://d0s6j8mvikv8c" path="res://src/Scenes/UI/ItemSlot.tscn" id="8_octel"]
+[ext_resource type="Texture2D" uid="uid://dcf34mnogdpat" path="res://Assets/HUD/Bags/Market_Use_Button.png" id="9_ik3j5"]
+[ext_resource type="Texture2D" uid="uid://b1k5jwyknpl4e" path="res://Assets/HUD/Bags/Market_Use_Button_Pressed.png" id="10_ihucl"]
+[ext_resource type="Texture2D" uid="uid://cdnmf68j5a2ak" path="res://Assets/HUD/Bags/Market_Use_Button_Hover.png" id="11_7ge6x"]
 
 [sub_resource type="Animation" id="Animation_octel"]
 resource_name = "CraftingFlash"
@@ -117,7 +125,15 @@ theme_override_fonts/font = ExtResource("3_1tol8")
 text = "BAG"
 horizontal_alignment = 1
 
-[node name="Inventory" type="Label" parent="." unique_id=1619377982]
+[node name="BagBG" type="TextureRect" parent="." unique_id=1466262370]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 43.0
+offset_right = 179.0
+offset_bottom = 176.0
+texture = ExtResource("5_7ge6x")
+
+[node name="InventoryLabel" type="Label" parent="." unique_id=1619377982]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -125,12 +141,70 @@ anchor_right = 0.5
 offset_left = -276.0
 offset_top = 43.0
 offset_right = -222.0
-offset_bottom = 55.0
+offset_bottom = 53.0
 grow_horizontal = 2
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("3_1tol8")
-theme_override_font_sizes/font_size = 12
-text = "Inventory"
+theme_override_font_sizes/font_size = 10
+text = "Drops"
+
+[node name="DropsBagButton" type="TextureButton" parent="." unique_id=1049398797]
+layout_mode = 0
+offset_left = 116.0
+offset_top = 34.0
+offset_right = 145.0
+offset_bottom = 55.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("5_08er8")
+texture_pressed = ExtResource("7_7ge6x")
+texture_hover = ExtResource("8_g43m1")
+
+[node name="Label" type="Label" parent="DropsBagButton" unique_id=1653404290]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -9.5
+offset_top = -5.0
+offset_right = 9.5
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("8_glxp5")
+theme_override_font_sizes/font_size = 8
+text = "Drops"
+
+[node name="UseBagButton" type="TextureButton" parent="." unique_id=748398286]
+layout_mode = 0
+offset_left = 148.0
+offset_top = 34.0
+offset_right = 177.0
+offset_bottom = 55.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("9_ik3j5")
+texture_pressed = ExtResource("10_ihucl")
+texture_hover = ExtResource("11_7ge6x")
+
+[node name="Label" type="Label" parent="UseBagButton" unique_id=252146317]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.5
+offset_top = -5.0
+offset_right = 5.5
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("8_glxp5")
+theme_override_font_sizes/font_size = 8
+text = "Use"
 
 [node name="Bank" type="Label" parent="." unique_id=107098035]
 layout_mode = 1
@@ -365,6 +439,7 @@ grow_vertical = 2
 columns = 4
 
 [node name="Flash" type="ColorRect" parent="." unique_id=1179529704]
+visible = false
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -392,5 +467,7 @@ theme_override_fonts/font = ExtResource("3_1tol8")
 theme_override_font_sizes/font_size = 13
 text = "Exit"
 
+[connection signal="button_up" from="DropsBagButton" to="." method="_on_drops_bag_button_button_up"]
+[connection signal="button_up" from="UseBagButton" to="." method="_on_use_bag_button_button_up"]
 [connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
 [connection signal="button_up" from="Close" to="." method="_on_close_button_up"]

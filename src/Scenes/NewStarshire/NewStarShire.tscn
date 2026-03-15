@@ -988,11 +988,11 @@ text = "STARSPIRE
 GRAND MARKET"
 
 [node name="DirectionSign3" type="Sprite2D" parent="." unique_id=458206885]
-position = Vector2(262, 500)
+position = Vector2(272, 500)
 texture = ExtResource("28_m7r5i")
 
 [node name="DirectionSignMessage" type="Sprite2D" parent="DirectionSign3" unique_id=1119747890]
-position = Vector2(-2, -58)
+position = Vector2(-6, -58)
 texture = ExtResource("29_hk4f7")
 flip_h = true
 
@@ -1086,7 +1086,7 @@ text = "Press 'E' to Access SmeltingStation"
 horizontal_alignment = 1
 
 [node name="SmithingStation" parent="." unique_id=1664193682 instance=ExtResource("21_bl45m")]
-position = Vector2(104, 447.5)
+position = Vector2(162, 447.5)
 
 [node name="NameTag" parent="SmithingStation" unique_id=1368015789 instance=ExtResource("19_bl45m")]
 offset_left = -22.0
@@ -1105,7 +1105,7 @@ drop_scene = NodePath("..")
 position = Vector2(-0.5, 4)
 
 [node name="CraftingStationArea" type="Area2D" parent="." unique_id=1122809104]
-position = Vector2(127, 500.5)
+position = Vector2(184, 500.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CraftingStationArea" unique_id=1510897452]
 position = Vector2(2, -5)

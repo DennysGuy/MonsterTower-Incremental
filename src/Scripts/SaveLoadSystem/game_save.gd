@@ -316,15 +316,15 @@ TODO: We will add saves for classes as well
 
 @export var class_ability_rows : Dictionary = {
 	"Tyro" : {
-		10 : true,
-		12 : false,
-		15 : false,
-		17 : false,
-		20 : false,
-		22 : false,
-		25 : false,
-		27 : false,
-		30 : false
+		10 : {"Unlocked" : false,"Sigils Left": 0},
+		12 : {"Unlocked" : false,"Sigils Left": 2},
+		15 : {"Unlocked" : false,"Sigils Left": 0},
+		17 : {"Unlocked" : false,"Sigils Left": 2},
+		20 : {"Unlocked" : false,"Sigils Left": 0},
+		22 : {"Unlocked" : false,"Sigils Left": 2},
+		25 : {"Unlocked" : false,"Sigils Left": 0},
+		27 : {"Unlocked" : false,"Sigils Left": 2},
+		30 : {"Unlocked" : false,"Sigils Left": 0}
 	}
 		
 }

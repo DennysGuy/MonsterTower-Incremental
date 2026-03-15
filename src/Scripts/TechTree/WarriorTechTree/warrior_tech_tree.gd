@@ -63,10 +63,10 @@ func unlock_ability_node_row(index : int) -> void:
 	await get_tree().create_timer(2.0).timeout
 	animation_player.play("ScreenFlash")
 	await get_tree().create_timer(0.25).timeout
-	ability_row.ability_row_lock.queue_free()
+	ability_row.ability_row_lock.hide()
 	ability_row.enable_guide_arrow()
 	ability_row.is_unlocked = true
-	SaveManager.current_save_game.class_ability_rows["Tyro"][ability_row.unlock_level] = true
+	SaveManager.current_save_game.class_ability_rows["Tyro"][ability_row.unlock_level]["Unlocked"] = true
 	SaveManager.save_game()
 	
 	await get_tree().create_timer(1.0).timeout
@@ -75,17 +75,19 @@ func unlock_ability_node_row(index : int) -> void:
 
 func check_for_unlocked_rows() -> void:
 	for row in node_row_v_box.get_children():
-		if row.is_unlocked:
-			
-			row.ability_row_lock.queue_free()
+		if row.is_unlocked and !row.is_stat_boost_row:
+			row.ability_row_lock.hide()
 			row.enable_guide_arrow()
 
 func check_for_newly_unlocked_rows() -> void:
 	for index in range(node_row_v_box.get_children().size()-1,-1,-1):
-		if node_row_v_box.get_child(index).is_unlocked:
+		var ability_row : AbilityTreeNodeRow = node_row_v_box.get_child(index)
+		if ability_row.is_unlocked:
 			selected_row_index = index
 		
-		elif PlayerStats.player_stats["Level"] >= node_row_v_box.get_child(index).unlock_level and !node_row_v_box.get_child(index).is_unlocked:
+		elif PlayerStats.player_stats["Level"] >= ability_row.unlock_level \
+		and !ability_row.is_unlocked \
+		and !ability_row.is_stat_boost_row:
 			await unlock_ability_node_row(index)
 
 
