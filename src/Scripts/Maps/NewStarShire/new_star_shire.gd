@@ -13,6 +13,7 @@ var player_in_cooking_range : bool = false
 var player_in_smelting_range : bool = false
 var player_in_crafting_range : bool = false
 var player_in_dojo_range : bool = false
+var player_in_upgrade_station_range : bool = false
 
 @onready var access_smelting_station: Label = $AccessSmeltingStation
 @onready var access_sword_crafting_station: Label = $AccessSwordCraftingStation
@@ -30,6 +31,10 @@ var player_in_dojo_range : bool = false
 
 @onready var cooking_station: NewCraftingStation = $CookingStation
 @onready var refinery: NewCraftingStation = $Refinery
+
+@onready var enter_upgrade_station_notice: Label = $GemStoneStation/EnterUpgradeStationNotice
+@onready var gem_stone_station: Sprite2D = $GemStoneStation
+
 
 const CRAFT_SWORD = preload("uid://4c6l1w0kpar3")
 const UNLOCK_SHOP = preload("uid://cveiqvxm5r0yw")
@@ -100,13 +105,18 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("interact") and player_in_dojo_range:
 		GameManager.player_can_move = false
 		player.velocity = Vector2.ZERO
-		
+	
 		match PlayerStats.player_stats["Class"]:
 			"Junior Hunter":
 				spawn_beginner_tree()
 			"Tyro":
 				spawn_warrior_tech_tree()
 		#spawn_dojo_menu()
+		
+	if Input.is_action_just_pressed("interact") and player_in_upgrade_station_range:
+		GameManager.player_can_move = false
+		player.velocity = Vector2.ZERO
+		spawn_upgrade_menu()
 
 func add_tech_tree_to_scene() -> void:
 	canvas_layer.show()
@@ -192,6 +202,13 @@ func spawn_crafting_menu() -> void:
 	canvas_layer.show()
 	var sword_crafting_station : CraftingStationMenu = preload("uid://cc1xppx3tkq4f").instantiate()
 	control.add_child(sword_crafting_station)
+
+func spawn_upgrade_menu() -> void:
+	GameManager.can_open_tower_map = false
+	GameManager.can_open_bag = false
+	canvas_layer.show()
+	var gem_stone_station : GemStoneStation = preload("uid://v4skqw8t11ip").instantiate()
+	control.add_child(gem_stone_station)
 
 func spawn_beginner_tree() -> void:
 	GameManager.can_open_tower_map = false
@@ -360,3 +377,13 @@ func _on_dojo_area_body_exited(body: Node2D) -> void:
 	if body is Player:
 		player_in_dojo_range = false
 		dojo_access_notification.hide()
+
+func _on_gem_stone_station_area_body_entered(body: Node2D) -> void:
+	if body is Player:
+		player_in_upgrade_station_range = true
+		enter_upgrade_station_notice.show()
+
+func _on_gem_stone_station_area_body_exited(body: Node2D) -> void:
+	if body is Player:
+		player_in_upgrade_station_range = false
+		enter_upgrade_station_notice.hide()

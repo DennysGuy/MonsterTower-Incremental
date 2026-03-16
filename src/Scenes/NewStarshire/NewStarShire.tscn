@@ -31,6 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://b83r1hobjk7vm" path="res://Assets/DirectionSignMessage.png" id="29_hk4f7"]
 [ext_resource type="PackedScene" uid="uid://c6tv3t1cpeq8f" path="res://src/Scenes/PlayerSpawnPoint.tscn" id="30_cxssj"]
 [ext_resource type="AudioStream" uid="uid://br24s8y5lttep" path="res://Audio/SFX/Ambience/Starspire/StarspireAmbience.wav" id="30_fdeu8"]
+[ext_resource type="Texture2D" uid="uid://dbg5n708oli7y" path="res://Assets/Facilities/SwordUpgradeStation.png" id="33_0u15j"]
 [ext_resource type="PackedScene" uid="uid://w1c2yn7s6sjx" path="res://src/Scenes/UI/CraftingStations/NewCraftingStation.tscn" id="33_d6jc3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_te0bi"]
@@ -766,6 +767,9 @@ size = Vector2(22, 205)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nj75w"]
 size = Vector2(186, 76)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d6jc3"]
+size = Vector2(89, 46)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5xris"]
 size = Vector2(102, 64)
 
@@ -1097,6 +1101,36 @@ offset_bottom = 96.0
 [node name="Tag" parent="SmithingStation/NameTag" index="1"]
 text = "Sword Crafting Station"
 
+[node name="GemStoneStation" type="Sprite2D" parent="." unique_id=1264484593]
+position = Vector2(50, 476)
+texture = ExtResource("33_0u15j")
+
+[node name="NameTag" parent="GemStoneStation" unique_id=1165675282 instance=ExtResource("19_bl45m")]
+offset_left = -34.0
+offset_top = 51.0
+offset_right = 54.0
+offset_bottom = 64.0
+
+[node name="Tag" parent="GemStoneStation/NameTag" index="1"]
+text = "Weapon Upgrade Station"
+
+[node name="GemStoneStationArea" type="Area2D" parent="GemStoneStation" unique_id=79681493]
+position = Vector2(0, 41)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GemStoneStation/GemStoneStationArea" unique_id=2074565407]
+position = Vector2(11.5, -12)
+shape = SubResource("RectangleShape2D_d6jc3")
+
+[node name="EnterUpgradeStationNotice" type="Label" parent="GemStoneStation" unique_id=1265158574]
+offset_left = -46.0
+offset_top = -48.0
+offset_right = 75.0
+offset_bottom = -13.0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("27_e7ku4")
+text = "Press 'E' to Access
+Upgrade Station"
+
 [node name="PracticeDummy" parent="." unique_id=1422997360 node_paths=PackedStringArray("drop_scene") instance=ExtResource("6_kqfvc")]
 position = Vector2(553, 384)
 drop_scene = NodePath("..")
@@ -1279,11 +1313,14 @@ position = Vector2(508, 544)
 [connection signal="body_exited" from="GrandMarketArea" to="." method="_on_grand_market_area_body_exited"]
 [connection signal="body_entered" from="Dojo/DojoArea" to="." method="_on_dojo_area_body_entered"]
 [connection signal="body_exited" from="Dojo/DojoArea" to="." method="_on_dojo_area_body_exited"]
+[connection signal="body_entered" from="GemStoneStation/GemStoneStationArea" to="." method="_on_gem_stone_station_area_body_entered"]
+[connection signal="body_exited" from="GemStoneStation/GemStoneStationArea" to="." method="_on_gem_stone_station_area_body_exited"]
 [connection signal="body_entered" from="CraftingStationArea" to="." method="_on_crafting_station_area_body_entered"]
 [connection signal="body_exited" from="CraftingStationArea" to="." method="_on_crafting_station_area_body_exited"]
 
 [editable path="Dojo/NameTag"]
 [editable path="SmithingStation/NameTag"]
+[editable path="GemStoneStation/NameTag"]
 [editable path="PracticeDummy"]
 [editable path="TechTreeComputer/NameTag4"]
 [editable path="NameTag5"]

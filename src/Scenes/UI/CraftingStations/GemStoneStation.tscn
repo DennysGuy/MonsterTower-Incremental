@@ -1,0 +1,382 @@
+[gd_scene format=3 uid="uid://v4skqw8t11ip"]
+
+[ext_resource type="Texture2D" uid="uid://lsnrevdp8lx6" path="res://Assets/Facilities/GearCraftingStation/GemStoneStationMenu.png" id="1_67evh"]
+[ext_resource type="Script" uid="uid://ds21bi6qtwc00" path="res://src/Scripts/Facilities/Menus/gem_stone_station.gd" id="1_b11qr"]
+[ext_resource type="Texture2D" uid="uid://d0dp50h7qg6xe" path="res://Assets/Facilities/GearCraftingStation/SwordSocketsBG.png" id="2_pchp5"]
+[ext_resource type="Texture2D" uid="uid://dqdnfqgin24gv" path="res://Assets/CraftingMiniGame/Swords/BronzeSword/BronzeSwordWhole.png" id="3_pchp5"]
+[ext_resource type="PackedScene" uid="uid://d0s6j8mvikv8c" path="res://src/Scenes/UI/ItemSlot.tscn" id="4_ad6b6"]
+[ext_resource type="Texture2D" uid="uid://ch8m30uib0bcb" path="res://Assets/Facilities/GearCraftingStation/GearSocket.png" id="4_agtlk"]
+[ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="5_u8s2g"]
+[ext_resource type="FontFile" uid="uid://qgj228ltdttv" path="res://Assets/Fonts/alagard.ttf" id="7_mcbss"]
+
+[node name="GemStoneStation" type="Control" unique_id=166452129]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_b11qr")
+
+[node name="Panel" type="Panel" parent="." unique_id=1321605001]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -42.0
+offset_top = -2.0
+offset_right = 43.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MenuBG" type="TextureRect" parent="." unique_id=124688985]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_67evh")
+
+[node name="SocketSword" type="TextureRect" parent="." unique_id=1176727748]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_right = 7.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_pchp5")
+stretch_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SocketSword" unique_id=196081580]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 79.0
+offset_top = -75.0
+offset_right = 133.0
+offset_bottom = 166.0
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="SocketSword/VBoxContainer" unique_id=969728451]
+layout_mode = 2
+texture = ExtResource("4_agtlk")
+stretch_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="SocketSword/VBoxContainer" unique_id=486513539]
+layout_mode = 2
+texture = ExtResource("4_agtlk")
+stretch_mode = 2
+
+[node name="TextureRect3" type="TextureRect" parent="SocketSword/VBoxContainer" unique_id=490793021]
+layout_mode = 2
+texture = ExtResource("4_agtlk")
+stretch_mode = 2
+
+[node name="TextureRect4" type="TextureRect" parent="SocketSword/VBoxContainer" unique_id=1462208862]
+layout_mode = 2
+texture = ExtResource("4_agtlk")
+stretch_mode = 2
+
+[node name="EquippedSwordGraphic" type="TextureRect" parent="." unique_id=1281418754]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 180.0
+offset_top = 80.0
+offset_right = -352.0
+offset_bottom = -90.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_pchp5")
+stretch_mode = 2
+
+[node name="GemDescription" type="Panel" parent="." unique_id=578922609]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -184.0
+offset_top = 40.0
+offset_right = -41.0
+offset_bottom = 167.0
+grow_horizontal = 0
+
+[node name="GemTitle" type="Label" parent="GemDescription" unique_id=594684396]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -65.5
+offset_right = 65.5
+offset_bottom = 16.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("5_u8s2g")
+text = "Gem of Focus I"
+horizontal_alignment = 1
+
+[node name="IconPanel" type="Panel" parent="GemDescription" unique_id=743777555]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 18.0
+offset_right = 92.0
+offset_bottom = 58.0
+
+[node name="TextureRect" type="TextureRect" parent="GemDescription/IconPanel" unique_id=1874169026]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = -3.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GemDescription" type="RichTextLabel" parent="GemDescription" unique_id=1941043730]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -66.5
+offset_top = -66.0
+offset_right = 65.5
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = ExtResource("5_u8s2g")
+theme_override_font_sizes/normal_font_size = 12
+text = "+5% Attack Damage
++2% Crit Chance
+"
+
+[node name="Button" type="Button" parent="GemDescription" unique_id=660995532]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -19.0
+offset_top = -22.0
+offset_right = 19.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("5_u8s2g")
+theme_override_font_sizes/font_size = 12
+text = "Mount"
+
+[node name="GemStoneContainer" type="GridContainer" parent="." unique_id=2080709544]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -178.0
+offset_top = -173.0
+offset_right = -47.0
+offset_bottom = -42.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/h_separation = 1
+theme_override_constants/v_separation = 1
+columns = 4
+
+[node name="Slot" parent="GemStoneContainer" unique_id=782442892 instance=ExtResource("4_ad6b6")]
+layout_mode = 2
+
+[node name="Slot2" parent="GemStoneContainer" unique_id=70203288 instance=ExtResource("4_ad6b6")]
+layout_mode = 2
+
+[node name="Slot3" parent="GemStoneContainer" unique_id=884687751 instance=ExtResource("4_ad6b6")]
+layout_mode = 2
+
+[node name="Slot4" parent="GemStoneContainer" unique_id=343315101 instance=ExtResource("4_ad6b6")]
+layout_mode = 2
+
+[node name="Slot5" parent="GemStoneContainer" unique_id=362446090 instance=ExtResource("4_ad6b6")]
+layout_mode = 2
+
+[node name="Slot6" parent="GemStoneContainer" unique_id=1787743691 instance=ExtResource("4_ad6b6")]
+layout_mode = 2
+
+[node name="Slot7" parent="GemStoneContainer" unique_id=85675695 instance=ExtResource("4_ad6b6")]
+layout_mode = 2
+
+[node name="Slot8" parent="GemStoneContainer" unique_id=1141441108 instance=ExtResource("4_ad6b6")]
+layout_mode = 2
+
+[node name="Slot9" parent="GemStoneContainer" unique_id=1973579058 instance=ExtResource("4_ad6b6")]
+layout_mode = 2
+
+[node name="Slot10" parent="GemStoneContainer" unique_id=1052551320 instance=ExtResource("4_ad6b6")]
+layout_mode = 2
+
+[node name="Slot11" parent="GemStoneContainer" unique_id=1024600107 instance=ExtResource("4_ad6b6")]
+layout_mode = 2
+
+[node name="Slot12" parent="GemStoneContainer" unique_id=1218335962 instance=ExtResource("4_ad6b6")]
+layout_mode = 2
+
+[node name="Slot13" parent="GemStoneContainer" unique_id=2107204391 instance=ExtResource("4_ad6b6")]
+layout_mode = 2
+
+[node name="Slot14" parent="GemStoneContainer" unique_id=1261380333 instance=ExtResource("4_ad6b6")]
+layout_mode = 2
+
+[node name="Slot15" parent="GemStoneContainer" unique_id=1772322889 instance=ExtResource("4_ad6b6")]
+layout_mode = 2
+
+[node name="Slot16" parent="GemStoneContainer" unique_id=1851342659 instance=ExtResource("4_ad6b6")]
+layout_mode = 2
+
+[node name="BagTitle" type="Label" parent="." unique_id=1568569964]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -183.0
+offset_top = -12.0
+offset_right = -89.0
+offset_bottom = 4.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("5_u8s2g")
+text = "Gem Stone Bag"
+
+[node name="SwordName" type="Label" parent="." unique_id=1865869356]
+layout_mode = 0
+offset_left = 172.0
+offset_top = 44.0
+offset_right = 291.0
+offset_bottom = 59.0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("7_mcbss")
+text = "Frail Sword"
+horizontal_alignment = 1
+
+[node name="SwordName2" type="Label" parent="." unique_id=2031826043]
+layout_mode = 0
+offset_left = 305.0
+offset_top = 79.0
+offset_right = 341.0
+offset_bottom = 93.0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("7_mcbss")
+theme_override_font_sizes/font_size = 14
+text = "Stats"
+horizontal_alignment = 1
+
+[node name="GemTitle2" type="Label" parent="." unique_id=1567221055]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -134.0
+offset_top = 9.0
+offset_right = -58.0
+offset_bottom = 25.0
+grow_horizontal = 0
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("5_u8s2g")
+text = "'Esc' to Exit"
+horizontal_alignment = 1
+
+[node name="DescriptionPanel" type="Panel" parent="." unique_id=310723735]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -18.0
+offset_top = -86.0
+offset_right = 88.0
+offset_bottom = 81.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="DescriptionPanel" unique_id=2053078090]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 5.0
+offset_right = -3.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("5_u8s2g")
+theme_override_font_sizes/normal_font_size = 12
+
+[node name="ResetButton" type="Button" parent="." unique_id=1808499052]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -151.0
+offset_top = -63.0
+offset_right = -100.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("7_mcbss")
+text = "Reset"
+
+[node name="Label" type="Label" parent="." unique_id=973245367]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -94.0
+offset_top = -56.0
+offset_right = 75.0
+offset_bottom = -44.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("7_mcbss")
+theme_override_font_sizes/font_size = 12
+text = "(Socketed Gems Lost on Reset)"
+
+[node name="CloseButton" type="Button" parent="." unique_id=298517570]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -51.0
+offset_top = 5.0
+offset_right = -10.0
+offset_bottom = 29.0
+grow_horizontal = 0
+mouse_default_cursor_shape = 2
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("5_u8s2g")
+text = "Close"
+
+[connection signal="button_up" from="CloseButton" to="." method="_on_close_button_button_up"]
