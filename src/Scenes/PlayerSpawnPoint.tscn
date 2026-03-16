@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://c6tv3t1cpeq8f"]
+[gd_scene format=3 uid="uid://c6tv3t1cpeq8f"]
 
 [ext_resource type="Script" uid="uid://cljj5pehjl37s" path="res://src/Scenes/player_spawn_point.gd" id="1_6o5ht"]
 

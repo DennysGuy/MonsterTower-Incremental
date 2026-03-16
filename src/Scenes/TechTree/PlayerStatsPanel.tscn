@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bevb4v64mvbbg"]
+[gd_scene format=3 uid="uid://bevb4v64mvbbg"]
 
 [ext_resource type="Script" uid="uid://dachywqjbmw7n" path="res://src/Scripts/TechTree/player_stats_panel.gd" id="1_2r51a"]
 [ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="2_fsgpi"]

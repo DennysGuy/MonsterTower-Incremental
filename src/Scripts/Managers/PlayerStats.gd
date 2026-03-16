@@ -67,6 +67,19 @@ var equipped_abilities : Dictionary = {
 
 }
 
+var equipped_gem_sockets : Dictionary = {
+	1: null,
+	2: null,
+	3: null,
+	4: null
+}
+
+func get_equipped_gem_sockets() -> Dictionary:
+	return equipped_gem_sockets
+	
+func get_gem_socket(position : int) -> GemStone:
+	return equipped_gem_sockets[position]
+
 func get_equipped_ability(slot : String) -> Ability:
 	var selected_slot = equipped_abilities[slot]
 	
@@ -182,6 +195,8 @@ func get_bag(bag : String) -> ItemBag:
 		2: return preload("uid://mbne7hjkpnqi")
 		3: return preload("uid://byikht2gbhthk")
 		_: return preload("uid://cuwof21s5e74c")
+
+
 
 func get_current_bag() -> ItemBag:
 	return get_bag("Bag")
