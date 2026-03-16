@@ -25,7 +25,12 @@ func _process(delta: float) -> void:
 
 func activate_ability_cooldown(ability_name : String) -> void:
 	ability_state[ability_name]["Can Do"] = false
-	ability_state[ability_name]["Timer"].wait_time = PlayerStats.equipped_abilities[ability_name].cooldown_time
+	var equipped_ability = PlayerStats.equipped_abilities[ability_name]
+	
+	if equipped_ability is String:
+		equipped_ability = load(equipped_ability)
+	
+	ability_state[ability_name]["Timer"].wait_time = equipped_ability.cooldown_time
 	start_ability_cooldown_timer.emit(ability_name)
 	ability_state[ability_name]["Timer"].start()
 

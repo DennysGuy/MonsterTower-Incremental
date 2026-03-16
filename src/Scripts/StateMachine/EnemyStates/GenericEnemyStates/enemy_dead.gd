@@ -20,7 +20,7 @@ func enter() -> void:
 		
 	drop_items()
 	parent.give_xp()
-	HitStopManager.freeze(0.1)
+	#HitStopManager.freeze(0.1)
 
 	parent.health_bar.hide()
 	parent.timer.wait_time = wait_time

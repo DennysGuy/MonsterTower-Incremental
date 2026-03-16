@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://gqi5stq8kadl"]
+[gd_scene format=3 uid="uid://gqi5stq8kadl"]
 
 [ext_resource type="Script" uid="uid://b15y36y5gufr7" path="res://src/Scripts/TechTree/tool_tip.gd" id="1_prrnn"]
 [ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="2_dnaej"]
@@ -110,7 +110,7 @@ _data = {
 &"SpawnOut": SubResource("Animation_e6w3v")
 }
 
-[node name="ToolTip" type="Control" node_paths=PackedStringArray("node_title", "current_benefits", "description", "cost", "panel") groups=["ToolTips"]]
+[node name="ToolTip" type="Control" unique_id=1739348256 node_paths=PackedStringArray("node_title", "current_benefits", "description", "cost", "panel") groups=["ToolTips"]]
 layout_mode = 3
 anchor_right = 0.46100003
 anchor_bottom = 0.669
@@ -126,7 +126,7 @@ description = NodePath("ToolTip/Description")
 cost = NodePath("ToolTip/Cost")
 panel = NodePath("ToolTip/Panel2")
 
-[node name="ToolTip" type="Panel" parent="."]
+[node name="ToolTip" type="Panel" parent="." unique_id=1711494521]
 modulate = Color(1, 1, 1, 0)
 z_index = 4096
 layout_mode = 1
@@ -143,7 +143,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_l673o")
 
-[node name="Panel2" type="ColorRect" parent="ToolTip"]
+[node name="Panel2" type="ColorRect" parent="ToolTip" unique_id=1506418801]
 layout_mode = 0
 offset_left = 5.0
 offset_top = 4.0
@@ -151,7 +151,7 @@ offset_right = 218.0
 offset_bottom = 220.0
 color = Color(0.4010749, 0.41678932, 0.40926677, 1)
 
-[node name="NodeTitle" type="Label" parent="ToolTip"]
+[node name="NodeTitle" type="Label" parent="ToolTip" unique_id=1744348295]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -167,7 +167,7 @@ theme_override_font_sizes/font_size = 16
 text = "Attack 1 (5/5) "
 horizontal_alignment = 1
 
-[node name="CurrentBenefits" type="Label" parent="ToolTip"]
+[node name="CurrentBenefits" type="Label" parent="ToolTip" unique_id=1462844134]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -182,14 +182,14 @@ theme_override_fonts/font = ExtResource("2_dnaej")
 theme_override_font_sizes/font_size = 14
 horizontal_alignment = 1
 
-[node name="Panel" type="Panel" parent="ToolTip"]
+[node name="Panel" type="Panel" parent="ToolTip" unique_id=694072166]
 layout_mode = 0
 offset_left = 9.0
 offset_top = 48.0
 offset_right = 214.0
 offset_bottom = 133.0
 
-[node name="Description" type="RichTextLabel" parent="ToolTip"]
+[node name="Description" type="RichTextLabel" parent="ToolTip" unique_id=1311378978]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -210,7 +210,7 @@ text = "This is the description for the node.
 
 This should be located in the tech node stats resource which should then "
 
-[node name="Cost" type="Label" parent="ToolTip"]
+[node name="Cost" type="Label" parent="ToolTip" unique_id=762130049]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -229,7 +229,7 @@ theme_override_font_sizes/font_size = 16
 text = "Gold: 25"
 horizontal_alignment = 1
 
-[node name="ResourcesList" type="GridContainer" parent="ToolTip"]
+[node name="ResourcesList" type="GridContainer" parent="ToolTip" unique_id=720526651]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -244,7 +244,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/v_separation = 0
 
-[node name="OwnedList" type="Panel" parent="ToolTip"]
+[node name="OwnedList" type="Panel" parent="ToolTip" unique_id=397857770]
 visible = false
 layout_mode = 1
 anchors_preset = 6
@@ -258,7 +258,7 @@ offset_bottom = 67.0
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="QuantityList" type="GridContainer" parent="ToolTip/OwnedList"]
+[node name="QuantityList" type="GridContainer" parent="ToolTip/OwnedList" unique_id=605539142]
 custom_minimum_size = Vector2(57, 90)
 layout_mode = 1
 anchors_preset = 8
@@ -273,7 +273,7 @@ offset_bottom = 52.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="ToolTip/OwnedList"]
+[node name="Label" type="Label" parent="ToolTip/OwnedList" unique_id=1181937341]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -287,7 +287,5 @@ theme_override_fonts/font = ExtResource("2_dnaej")
 theme_override_font_sizes/font_size = 16
 text = "Owned"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_e6w3v")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=386798294]
+libraries/ = SubResource("AnimationLibrary_e6w3v")

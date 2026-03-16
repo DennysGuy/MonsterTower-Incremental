@@ -10,7 +10,13 @@ func _ready() -> void:
 	animated_sprite_2d.flip_h = flip_dir
 	animated_sprite_2d.play("default")
 	var tween : Tween = get_tree().create_tween()
-	await tween.tween_property(self, "global_position:x", global_position.x + (PlayerStats.equipped_abilities["Air Attack"].projectile_distance * move_dir), 0.3)
+	var selected_abiltiy = PlayerStats.equipped_abilities["Air Attack"]
+	if selected_abiltiy is String:
+		selected_abiltiy = load(selected_abiltiy)
+	
+	await tween.tween_property(self, "global_position:x", global_position.x + (selected_abiltiy.projectile_distance * move_dir), 0.3).finished
+	queue_free()
+
 func _physics_process(delta: float) -> void:
 	#position.x += move_speed * move_dir
 	pass
@@ -29,6 +35,9 @@ func _on_hit_box_area_entered(area: Area2D) -> void:
 	var parent := area.get_parent()
 	
 	if parent is Enemy:
-		var damage = randf_range(PlayerStats.player_stats["Attack Damage"]*0.8, PlayerStats.player_stats["Attack Damage"]) * PlayerStats.equipped_abilities["Air Attack"].attack_damage_modifier
-		parent.apply_slow_and_damage(damage, PlayerStats.equipped_abilities["Air Attack"].move_speed_modifier, PlayerStats.equipped_abilities["Air Attack"].slow_wait_time)
+		var attack = PlayerStats.equipped_abilities["Air Attack"]
+		if attack is String:
+			attack = load(attack)
+		var damage = randf_range(PlayerStats.player_stats["Attack Damage"]*0.8, PlayerStats.player_stats["Attack Damage"]) * attack.attack_damage_modifier
+		parent.apply_slow_and_damage(damage, PlayerStats.equipped_abilities["Air Attack"].move_speed_modifier, attack.slow_wait_time)
 		#parent.apply_damage(damage,false)

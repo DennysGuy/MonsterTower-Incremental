@@ -11,7 +11,8 @@ func on_enter(player : Player) -> void:
 	parent.damageable = false
 	var tween : Tween = parent.create_tween()
 	parent.enable_sword_soar_hitbox()
-	await tween.tween_property(parent, "global_position", Vector2(parent.global_position.x,parent.global_position.y-150), 0.35).finished
+	var jump_height : float = PlayerStats.get_equipped_ability("Double Jump").jump_height_modifier
+	await tween.tween_property(parent, "global_position", Vector2(parent.global_position.x,parent.global_position.y-jump_height), 0.35).finished
 	parent.disable_sword_soar_hitbox()
 	parent.state_machine.change_state(parent.idle_state)
 

@@ -25,6 +25,7 @@ TODO: We will add saves for classes as well
 	"Movement Speed" : 100.0,
 	"Climbing Speed" : 65.0,
 	"Stun Length": 1.0,
+	"Stun Stacks": 1.0,
 	"Dash Speed" : 350.0,
 	"Dash Cooldown" : 2.0,
 	"Dash Duration" : 0.3,
@@ -172,6 +173,99 @@ TODO: We will add saves for classes as well
 	"Special Attack" : null #double cleave - here for testing purposes
 }
 
+@export var abilities : Dictionary = {
+	"Tyro" : {
+		"Dash Attack" : {
+			"Cooldown Time" : 2.0,
+			"HP Cost" : 0.0,
+			"MP Cost" : 10.0,
+			"Base Attack": 0.0,
+			"Number of Enemies Hit" : 0.0,
+			"Max Hit Count": 0.0,
+			"Health Recovery" : 0.0,
+			"MP Recovery" : 0.0,
+			"Defense Modifier" : 0.0,
+			"Projectile Distance" : 0.0,
+			"Slow Wait Time" : 1.5,
+			"Stun Wait Time" : 0.0,
+			"Jump Height Modifier" : 0.0,
+			"Climb Speed Modifier" : 0.0,
+			"Attack Damage Modifier" : 0.6,
+			"Move Speed Modifier" : 0.0,
+			"Crit Damage Modifier" : 0.0,
+			"Crit Chance Modifier" : 0.0,
+			"Dash Cooldown" : 0.0,
+			"Dash Speed Modifier" : 0.0
+		},
+		"Air Attack": {
+			"Cooldown Time" : 1.5,
+			"HP Cost" : 0.0,
+			"MP Cost" : 7.0,
+			"Base Attack": 0.0,
+			"Number of Enemies Hit" : 0.0,
+			"Max Hit Count": 0.0,
+			"Health Recovery" : 0.0,
+			"MP Recovery" : 0.0,
+			"Defense Modifier" : 0.0,
+			"Projectile Distance" : 100.0,
+			"Slow Wait Time" : 1.5,
+			"Stun Wait Time" : 0.0,
+			"Jump Height Modifier" : 0.0,
+			"Climb Speed Modifier" : 0.0,
+			"Attack Damage Modifier" : 0.3,
+			"Move Speed Modifier" : 0.4,
+			"Crit Damage Modifier" : 0.0,
+			"Crit Chance Modifier" : 0.0,
+			"Dash Cooldown" : 0.0,
+			"Dash Speed Modifier" : 0.0
+		},
+		"Double Jump": {
+			"Cooldown Time" : 1.0,
+			"HP Cost" : 0.0,
+			"MP Cost" : 7.0,
+			"Base Attack": 0.0,
+			"Number of Enemies Hit" : 5.0,
+			"Max Hit Count": 1.0,
+			"Health Recovery" : 0.0,
+			"MP Recovery" : 0.0,
+			"Defense Modifier" : 0.0,
+			"Projectile Distance" : 100.0,
+			"Slow Wait Time" : 1.5,
+			"Stun Wait Time" : 0.0,
+			"Jump Height Modifier" : 0.0,
+			"Climb Speed Modifier" : 0.0,
+			"Attack Damage Modifier" : 0.5,
+			"Move Speed Modifier" : 0.4,
+			"Crit Damage Modifier" : 0.0,
+			"Crit Chance Modifier" : 0.0,
+			"Dash Cooldown" : 0.0,
+			"Dash Speed Modifier" : 0.0
+		},
+		"Special Attack": {
+			"Cooldown Time" : 3.0,
+			"HP Cost" : 0.0,
+			"MP Cost" : 7.0,
+			"Base Attack": 0.0,
+			"Number of Enemies Hit" : 5.0,
+			"Max Hit Count": 1.0,
+			"Health Recovery" : 0.0,
+			"MP Recovery" : 0.0,
+			"Defense Modifier" : 0.0,
+			"Projectile Distance" : 100.0,
+			"Slow Wait Time" : 1.5,
+			"Stun Wait Time" : 0.0,
+			"Jump Height Modifier" : 0.0,
+			"Climb Speed Modifier" : 0.0,
+			"Attack Damage Modifier" : 0.5,
+			"Move Speed Modifier" : 0.4,
+			"Crit Damage Modifier" : 0.0,
+			"Crit Chance Modifier" : 0.0,
+			"Dash Cooldown" : 0.0,
+			"Dash Speed Modifier" : 0.0
+		}
+	}
+}
+
 #though should be setup at "continue game too"
 @export var inventories : Dictionary = {
 	"Inventory" : [], # all other items go here
@@ -179,4 +273,58 @@ TODO: We will add saves for classes as well
 	"Gem Stones" : [],
 	"Use": [],
 	"Bank": []
+}
+
+@export var ability_nodes : Dictionary = {
+	"Tyro": {
+		"Ability Unlock" : {
+			"Double Cleave": false,
+			"Sword Dance": false,
+			"Sword Slam": false,
+			"Sword Soar": false,
+		},
+		"Ability Stat Boost" : {
+			"Double Cleave +1": false,
+			"Sword Dance +1": false,
+			"Sword Slam +1": false,
+			"Sword Soar +1": false,
+			"Double Cleave +2": false,
+			"Sword Dance +2": false,
+			"Sword Slam +2": false,
+			"Sword Soar +2": false,
+			"Double Cleave +3": false,
+			"Sword Dance +3": false,
+			"Sword Slam +3": false,
+			"Sword Soar +3": false,
+		},
+		"Character Stat Boost" : {
+			"Armored Core 1": false,
+			"Field Tactician 1" : false,
+			"Warrior's Flame 1" : false,
+			"Armored Core 2": false,
+			"Field Tactician 2" : false,
+			"Warrior's Flame 2" : false,
+			"Armored Core 3": false,
+			"Field Tactician 3" : false,
+			"Warrior's Flame 3" : false,
+		},
+		"Class Advancement" : {
+			
+		}
+	}
+}
+
+@export var class_ability_rows : Dictionary = {
+	"Tyro" : {
+		10 : {"Unlocked" : false,"Sigils Left": 0},
+		12 : {"Unlocked" : false,"Sigils Left": 2},
+		15 : {"Unlocked" : false,"Sigils Left": 0},
+		17 : {"Unlocked" : false,"Sigils Left": 2},
+		20 : {"Unlocked" : false,"Sigils Left": 0},
+		22 : {"Unlocked" : false,"Sigils Left": 2},
+		25 : {"Unlocked" : false,"Sigils Left": 0},
+		27 : {"Unlocked" : false,"Sigils Left": 2},
+		30 : {"Unlocked" : false,"Sigils Left": 0}
+	}
+		
 }

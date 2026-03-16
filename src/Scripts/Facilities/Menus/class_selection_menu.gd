@@ -39,8 +39,8 @@ func _on_mage_select_button_button_up() -> void:
 	
 func _on_select_button_button_up() -> void:
 	PlayerStats.player_stats["Class"] = selected_class
-	PlayerStats.equipped_abilities = PlayerStats.player_classes[selected_class]
-	SaveManager.save_equipped_abilities()
+	#PlayerStats.equipped_abilities = PlayerStats.player_classes[selected_class]
+	#SaveManager.save_equipped_abilities()
 	SignalBus.update_player_uniform.emit("Idle")
 
 	SignalBus.set_icons.emit()
@@ -51,6 +51,8 @@ func _on_select_button_button_up() -> void:
 	GameManager.can_open_bag = true
 	GameManager.can_open_tower_map = true
 	#Go to class tech tree
+	if selected_class == "Warrior":
+		SignalBus.spawn_warrior_tech_tree.emit()
 	queue_free()
 
 func _on_exit_button_button_up() -> void:

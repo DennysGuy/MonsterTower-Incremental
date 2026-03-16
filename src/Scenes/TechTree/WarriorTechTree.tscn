@@ -1,21 +1,698 @@
 [gd_scene format=3 uid="uid://dqx7ld4tcru6g"]
 
-[ext_resource type="Script" uid="uid://bkbnwgrhie7yb" path="res://src/Scripts/TechTree/warrior_tech_tree.gd" id="1_34e8x"]
-[ext_resource type="Script" uid="uid://co4ox6rujyeod" path="res://src/Scripts/TechTree/tech_tree_camera.gd" id="2_3odnu"]
+[ext_resource type="Script" uid="uid://bnbvifmcn8nfi" path="res://src/Scripts/TechTree/WarriorTechTree/warrior_tech_tree.gd" id="1_34e8x"]
+[ext_resource type="PackedScene" uid="uid://kw3vh2fr3jwo" path="res://src/Scenes/TechTree/AbilityTreeNodeRow.tscn" id="3_2hki2"]
+[ext_resource type="PackedScene" uid="uid://cf578kajmmh6n" path="res://src/Scenes/TechTree/ClassSigil.tscn" id="3_c83kc"]
+[ext_resource type="PackedScene" uid="uid://c0227whw41r3" path="res://src/Scenes/TechTree/AbilityRowLock.tscn" id="3_etxjc"]
+[ext_resource type="Texture2D" uid="uid://iw8l3hpbhgvp" path="res://Assets/NodeGraphics/WarriorTechTree/TyroSigil.png" id="4_jjetc"]
+[ext_resource type="PackedScene" uid="uid://23brgcq8m6qb" path="res://src/Scenes/TechTree/AbilityNode.tscn" id="5_opivy"]
+[ext_resource type="Texture2D" uid="uid://bvoyokredjn1b" path="res://Assets/NodeGraphics/AbilitiesTechTree/RowArrow.png" id="5_rxhav"]
+[ext_resource type="Resource" uid="uid://b8dc8b0kh0dsr" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/AbilityUnlocks/SwordSlam3.tres" id="5_uqhrn"]
+[ext_resource type="Resource" uid="uid://3nsiiv1dq8so" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/AbilityUnlocks/SwordDance3.tres" id="6_11cds"]
+[ext_resource type="Resource" uid="uid://drsvlgm3u7ana" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/AbilityUnlocks/SwordSlam.tres" id="6_b60wm"]
+[ext_resource type="Resource" uid="uid://b3q7teodj24vf" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/CharacterBoosts/ArmoredCore1.tres" id="6_je8w0"]
+[ext_resource type="Resource" uid="uid://bwy0u7543td2u" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/CharacterBoosts/FieldTactician1.tres" id="7_0s8pu"]
+[ext_resource type="Resource" uid="uid://dj7sbubpfaf7s" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/AbilityUnlocks/SwordSoar3.tres" id="7_m8ovl"]
+[ext_resource type="Resource" uid="uid://b73fjjjgyd2qw" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/AbilityUnlocks/SwordDance.tres" id="7_qh4wv"]
+[ext_resource type="Resource" uid="uid://5yci1c1l1tb2" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/CharacterBoosts/WarriorsFlame1.tres" id="8_40auc"]
+[ext_resource type="Resource" uid="uid://bvpak7qhbh7g6" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/AbilityUnlocks/SwordSoar.tres" id="8_kdih3"]
+[ext_resource type="Resource" uid="uid://bpf3372xjox2p" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/AbilityUnlocks/DoubleStab3.tres" id="8_qfn20"]
+[ext_resource type="Resource" uid="uid://51yxkv0krgeq" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/AbilityUnlocks/DoubleStab.tres" id="9_32lyw"]
+[ext_resource type="Resource" uid="uid://cua1klsq166rh" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/CharacterBoosts/ArmoredCore3.tres" id="9_d0hxv"]
+[ext_resource type="Resource" uid="uid://jrqme57ywn0" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/CharacterBoosts/FieldTactician3.tres" id="10_6qj7e"]
+[ext_resource type="Resource" uid="uid://c6hyr4hcluw8" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/CharacterBoosts/WarriorsFlame3.tres" id="11_q8x1s"]
+[ext_resource type="Texture2D" uid="uid://cskoljhga6af1" path="res://Assets/NodeGraphics/AbilitiesTechTree/RowArrow_Unlocked.png" id="11_qh4wv"]
+[ext_resource type="Resource" uid="uid://c71wdmkmxxxct" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/AbilityUnlocks/SwordSlam1.tres" id="12_0s8pu"]
+[ext_resource type="Resource" uid="uid://cn1lome24uvh4" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/CharacterBoosts/ArmoredCore2.tres" id="12_b7dhb"]
+[ext_resource type="Resource" uid="uid://3tqaybptumqr" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/AbilityUnlocks/SwordSoar2.tres" id="12_vd3qe"]
+[ext_resource type="Resource" uid="uid://cpg586qwrplgy" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/AbilityUnlocks/SwordDance1.tres" id="13_40auc"]
+[ext_resource type="Resource" uid="uid://m4gyp4tgpqem" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/AbilityUnlocks/SwordDance2.tres" id="13_q5f6i"]
+[ext_resource type="Resource" uid="uid://btw1tgdlb2dcg" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/CharacterBoosts/FieldTactician2.tres" id="13_vd3qe"]
+[ext_resource type="Resource" uid="uid://dhavx7c8nci4q" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/AbilityUnlocks/SwordSoar1.tres" id="14_40auc"]
+[ext_resource type="Resource" uid="uid://cuqahybl6p7vb" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/AbilityUnlocks/DoubleStab2.tres" id="14_b0iwl"]
+[ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="14_kdih3"]
+[ext_resource type="Resource" uid="uid://bo1eg8i0hu0xx" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/CharacterBoosts/WarriorsFlame2.tres" id="14_q5f6i"]
+[ext_resource type="Resource" uid="uid://b1tqtyjdmcrui" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/AbilityUnlocks/DoubleStab1.tres" id="15_qhxup"]
 
-[node name="WarriorTechTree" type="Node2D" unique_id=984980909]
+[sub_resource type="Animation" id="Animation_je8w0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0s8pu"]
+resource_name = "ScreenFlash"
+length = 0.5
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_40auc"]
+_data = {
+&"RESET": SubResource("Animation_je8w0"),
+&"ScreenFlash": SubResource("Animation_0s8pu")
+}
+
+[node name="WarriorTechTree" type="Control" unique_id=479128437]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -74.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_34e8x")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=493310583]
-offset_top = -789.0
-offset_right = 639.0
-offset_bottom = 359.0
-color = Color(0.22376168, 0.14588532, 0.14601174, 1)
+[node name="BG" type="ColorRect" parent="." unique_id=524950457]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1946.0
+offset_top = -2763.0
+offset_right = 1946.0
+offset_bottom = 1179.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.27849358, 0.1689198, 0.08431979, 1)
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=739098669]
-position = Vector2(320, 179)
+[node name="Camera2D" type="Camera2D" parent="." unique_id=303290330]
+position = Vector2(321, 279)
 limit_left = 0
-limit_top = -700
+limit_top = -1020
 limit_right = 640
-limit_bottom = 360
-script = ExtResource("2_3odnu")
+limit_bottom = 420
+limit_smoothed = true
+position_smoothing_enabled = true
+
+[node name="NodeRowVBox" type="VBoxContainer" parent="." unique_id=1904756876]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -253.0
+offset_top = -1047.0
+offset_right = 259.0
+offset_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 70
+
+[node name="Level30" parent="NodeRowVBox" unique_id=1443144926 node_paths=PackedStringArray("ability_row_lock", "arrow_guide") instance=ExtResource("3_2hki2")]
+layout_mode = 2
+class_relation = "Tyro"
+unlock_level = 30
+is_unlocked = true
+ability_row_lock = NodePath("AbilityRowLock")
+arrow_guide = NodePath("../../Arrow9")
+
+[node name="AbilityRowLock" parent="NodeRowVBox/Level30" unique_id=1901615546 instance=ExtResource("3_etxjc")]
+layout_mode = 1
+required_level = 30
+
+[node name="Level27" parent="NodeRowVBox" unique_id=1530456165 node_paths=PackedStringArray("ability_row_lock", "arrow_guide") instance=ExtResource("3_2hki2")]
+layout_mode = 2
+class_relation = "Tyro"
+unlock_level = 27
+is_stat_boost_row = true
+ability_row_lock = NodePath("AbilityRowLock")
+arrow_guide = NodePath("../../Arrow8")
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="NodeRowVBox/Level27" unique_id=112641686]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -173.0
+offset_top = -32.0
+offset_right = 173.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="AbilityNode" parent="NodeRowVBox/Level27/HBoxContainer4" unique_id=70786195 node_paths=PackedStringArray("ability_tree_row") instance=ExtResource("5_opivy")]
+layout_mode = 2
+ability_tree_row = NodePath("../..")
+ability_node_stats = ExtResource("9_d0hxv")
+
+[node name="AbilityNode2" parent="NodeRowVBox/Level27/HBoxContainer4" unique_id=145043518 node_paths=PackedStringArray("ability_tree_row") instance=ExtResource("5_opivy")]
+layout_mode = 2
+ability_tree_row = NodePath("../..")
+ability_node_stats = ExtResource("13_vd3qe")
+
+[node name="AbilityNode3" parent="NodeRowVBox/Level27/HBoxContainer4" unique_id=1960116400 node_paths=PackedStringArray("ability_tree_row") instance=ExtResource("5_opivy")]
+layout_mode = 2
+ability_tree_row = NodePath("../..")
+ability_node_stats = ExtResource("11_q8x1s")
+
+[node name="AbilityRowLock" parent="NodeRowVBox/Level27" unique_id=1894309772 instance=ExtResource("3_etxjc")]
+layout_mode = 1
+required_level = 25
+
+[node name="Level25" parent="NodeRowVBox" unique_id=2016199656 node_paths=PackedStringArray("ability_row_lock", "arrow_guide") instance=ExtResource("3_2hki2")]
+layout_mode = 2
+class_relation = "Tyro"
+unlock_level = 25
+ability_row_lock = NodePath("AbilityRowLock")
+arrow_guide = NodePath("../../Arrow6")
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="NodeRowVBox/Level25" unique_id=493071670]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -173.0
+offset_top = -32.0
+offset_right = 173.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="AbilityNode" parent="NodeRowVBox/Level25/HBoxContainer4" unique_id=533447647 node_paths=PackedStringArray("ability_tree_row") instance=ExtResource("5_opivy")]
+layout_mode = 2
+ability_tree_row = NodePath("../..")
+ability_node_stats = ExtResource("5_uqhrn")
+
+[node name="AbilityNode2" parent="NodeRowVBox/Level25/HBoxContainer4" unique_id=1035094732 node_paths=PackedStringArray("ability_tree_row") instance=ExtResource("5_opivy")]
+layout_mode = 2
+ability_tree_row = NodePath("../..")
+ability_node_stats = ExtResource("6_11cds")
+
+[node name="AbilityNode3" parent="NodeRowVBox/Level25/HBoxContainer4" unique_id=1669699351 node_paths=PackedStringArray("ability_tree_row") instance=ExtResource("5_opivy")]
+layout_mode = 2
+ability_tree_row = NodePath("../..")
+ability_node_stats = ExtResource("7_m8ovl")
+
+[node name="AbilityNode4" parent="NodeRowVBox/Level25/HBoxContainer4" unique_id=2013632731 node_paths=PackedStringArray("ability_tree_row") instance=ExtResource("5_opivy")]
+layout_mode = 2
+ability_tree_row = NodePath("../..")
+ability_node_stats = ExtResource("8_qfn20")
+
+[node name="AbilityRowLock" parent="NodeRowVBox/Level25" unique_id=1528140724 instance=ExtResource("3_etxjc")]
+layout_mode = 1
+required_level = 25
+
+[node name="Level22" parent="NodeRowVBox" unique_id=1252216584 node_paths=PackedStringArray("ability_row_lock", "arrow_guide") instance=ExtResource("3_2hki2")]
+layout_mode = 2
+class_relation = "Tyro"
+unlock_level = 22
+is_stat_boost_row = true
+ability_row_lock = NodePath("AbilityRowLock2")
+arrow_guide = NodePath("../../Arrow5")
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="NodeRowVBox/Level22" unique_id=265952705]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -173.0
+offset_top = -32.0
+offset_right = 173.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="AbilityNode" parent="NodeRowVBox/Level22/HBoxContainer4" unique_id=1675552832 node_paths=PackedStringArray("ability_tree_row") instance=ExtResource("5_opivy")]
+layout_mode = 2
+ability_tree_row = NodePath("../..")
+ability_node_stats = ExtResource("9_d0hxv")
+
+[node name="AbilityNode2" parent="NodeRowVBox/Level22/HBoxContainer4" unique_id=1069900201 node_paths=PackedStringArray("ability_tree_row") instance=ExtResource("5_opivy")]
+layout_mode = 2
+ability_tree_row = NodePath("../..")
+ability_node_stats = ExtResource("10_6qj7e")
+
+[node name="AbilityNode3" parent="NodeRowVBox/Level22/HBoxContainer4" unique_id=292778362 node_paths=PackedStringArray("ability_tree_row") instance=ExtResource("5_opivy")]
+layout_mode = 2
+ability_tree_row = NodePath("../..")
+ability_node_stats = ExtResource("11_q8x1s")
+
+[node name="AbilityRowLock2" parent="NodeRowVBox/Level22" unique_id=1830107822 instance=ExtResource("3_etxjc")]
+layout_mode = 1
+required_level = 22
+
+[node name="Level20" parent="NodeRowVBox" unique_id=663990169 node_paths=PackedStringArray("ability_row_lock", "arrow_guide") instance=ExtResource("3_2hki2")]
+layout_mode = 2
+class_relation = "Tyro"
+unlock_level = 20
+ability_row_lock = NodePath("AbilityRowLock")
+arrow_guide = NodePath("../../Arrow4")
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="NodeRowVBox/Level20" unique_id=206284778]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -173.0
+offset_top = -32.0
+offset_right = 173.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="AbilityNode" parent="NodeRowVBox/Level20/HBoxContainer3" unique_id=1793748095 node_paths=PackedStringArray("ability_tree_row") instance=ExtResource("5_opivy")]
+layout_mode = 2
+ability_tree_row = NodePath("../..")
+ability_node_stats = ExtResource("12_vd3qe")
+
+[node name="AbilityNode2" parent="NodeRowVBox/Level20/HBoxContainer3" unique_id=1136629502 node_paths=PackedStringArray("ability_tree_row") instance=ExtResource("5_opivy")]
+layout_mode = 2
+ability_tree_row = NodePath("../..")
+ability_node_stats = ExtResource("13_q5f6i")
+
+[node name="AbilityNode3" parent="NodeRowVBox/Level20/HBoxContainer3" unique_id=199846618 node_paths=PackedStringArray("ability_tree_row") instance=ExtResource("5_opivy")]
+layout_mode = 2
+ability_tree_row = NodePath("../..")
+ability_node_stats = ExtResource("12_vd3qe")
+
+[node name="AbilityNode4" parent="NodeRowVBox/Level20/HBoxContainer3" unique_id=1151931458 node_paths=PackedStringArray("ability_tree_row") instance=ExtResource("5_opivy")]
+layout_mode = 2
+ability_tree_row = NodePath("../..")
+ability_node_stats = ExtResource("14_b0iwl")
+
+[node name="AbilityRowLock" parent="NodeRowVBox/Level20" unique_id=2091636618 instance=ExtResource("3_etxjc")]
+layout_mode = 1
+required_level = 20
+
+[node name="Level17" parent="NodeRowVBox" unique_id=220935919 node_paths=PackedStringArray("ability_row_lock", "arrow_guide") instance=ExtResource("3_2hki2")]
+layout_mode = 2
+class_relation = "Tyro"
+unlock_level = 17
+is_stat_boost_row = true
+ability_row_lock = NodePath("AbilityRowLock")
+arrow_guide = NodePath("../../Arrow3")
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="NodeRowVBox/Level17" unique_id=1341876077]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -173.0
+offset_top = -32.0
+offset_right = 173.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="AbilityNode" parent="NodeRowVBox/Level17/HBoxContainer3" unique_id=96460864 node_paths=PackedStringArray("ability_tree_row") instance=ExtResource("5_opivy")]
+layout_mode = 2
+ability_tree_row = NodePath("../..")
+ability_node_stats = ExtResource("12_b7dhb")
+
+[node name="AbilityNode2" parent="NodeRowVBox/Level17/HBoxContainer3" unique_id=1372283099 node_paths=PackedStringArray("ability_tree_row") instance=ExtResource("5_opivy")]
+layout_mode = 2
+ability_tree_row = NodePath("../..")
+ability_node_stats = ExtResource("13_vd3qe")
+
+[node name="AbilityNode3" parent="NodeRowVBox/Level17/HBoxContainer3" unique_id=341330120 node_paths=PackedStringArray("ability_tree_row") instance=ExtResource("5_opivy")]
+layout_mode = 2
+ability_tree_row = NodePath("../..")
+ability_node_stats = ExtResource("14_q5f6i")
+
+[node name="AbilityRowLock" parent="NodeRowVBox/Level17" unique_id=1938118086 instance=ExtResource("3_etxjc")]
+layout_mode = 1
+required_level = 17
+
+[node name="Level15" parent="NodeRowVBox" unique_id=621870482 node_paths=PackedStringArray("ability_row_lock", "arrow_guide") instance=ExtResource("3_2hki2")]
+layout_mode = 2
+class_relation = "Tyro"
+unlock_level = 15
+ability_row_lock = NodePath("AbilityRowLock")
+arrow_guide = NodePath("../../Arrow2")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="NodeRowVBox/Level15" unique_id=358650890]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -173.0
+offset_top = -32.0
+offset_right = 173.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="AbilityNode" parent="NodeRowVBox/Level15/HBoxContainer2" unique_id=2049337602 node_paths=PackedStringArray("ability_tree_row") instance=ExtResource("5_opivy")]
+layout_mode = 2
+ability_tree_row = NodePath("../..")
+ability_node_stats = ExtResource("12_0s8pu")
+
+[node name="AbilityNode2" parent="NodeRowVBox/Level15/HBoxContainer2" unique_id=890496036 node_paths=PackedStringArray("ability_tree_row") instance=ExtResource("5_opivy")]
+layout_mode = 2
+ability_tree_row = NodePath("../..")
+ability_node_stats = ExtResource("13_40auc")
+
+[node name="AbilityNode3" parent="NodeRowVBox/Level15/HBoxContainer2" unique_id=922700611 node_paths=PackedStringArray("ability_tree_row") instance=ExtResource("5_opivy")]
+layout_mode = 2
+ability_tree_row = NodePath("../..")
+ability_node_stats = ExtResource("14_40auc")
+
+[node name="AbilityNode4" parent="NodeRowVBox/Level15/HBoxContainer2" unique_id=397991504 node_paths=PackedStringArray("ability_tree_row") instance=ExtResource("5_opivy")]
+layout_mode = 2
+ability_tree_row = NodePath("../..")
+ability_node_stats = ExtResource("15_qhxup")
+
+[node name="AbilityRowLock" parent="NodeRowVBox/Level15" unique_id=1843313398 instance=ExtResource("3_etxjc")]
+layout_mode = 1
+required_level = 15
+
+[node name="Level12" parent="NodeRowVBox" unique_id=377132986 node_paths=PackedStringArray("ability_row_lock", "arrow_guide") instance=ExtResource("3_2hki2")]
+layout_mode = 2
+class_relation = "Tyro"
+unlock_level = 12
+is_stat_boost_row = true
+ability_row_lock = NodePath("AbilityRowLock3")
+arrow_guide = NodePath("../../Arrow7")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="NodeRowVBox/Level12" unique_id=30877626]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -173.0
+offset_top = -32.0
+offset_right = 173.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="AbilityNode" parent="NodeRowVBox/Level12/HBoxContainer2" unique_id=579997173 node_paths=PackedStringArray("ability_tree_row") instance=ExtResource("5_opivy")]
+layout_mode = 2
+ability_tree_row = NodePath("../..")
+ability_node_stats = ExtResource("6_je8w0")
+
+[node name="AbilityNode2" parent="NodeRowVBox/Level12/HBoxContainer2" unique_id=649838769 node_paths=PackedStringArray("ability_tree_row") instance=ExtResource("5_opivy")]
+layout_mode = 2
+ability_tree_row = NodePath("../..")
+ability_node_stats = ExtResource("7_0s8pu")
+
+[node name="AbilityNode3" parent="NodeRowVBox/Level12/HBoxContainer2" unique_id=1333644963 node_paths=PackedStringArray("ability_tree_row") instance=ExtResource("5_opivy")]
+layout_mode = 2
+ability_tree_row = NodePath("../..")
+ability_node_stats = ExtResource("8_40auc")
+
+[node name="AbilityRowLock3" parent="NodeRowVBox/Level12" unique_id=151869316 instance=ExtResource("3_etxjc")]
+layout_mode = 1
+required_level = 12
+
+[node name="Level10" parent="NodeRowVBox" unique_id=151279881 node_paths=PackedStringArray("ability_row_lock", "arrow_guide") instance=ExtResource("3_2hki2")]
+layout_mode = 2
+class_relation = "Tyro"
+unlock_level = 10
+ability_row_lock = NodePath("AbilityRowLock")
+arrow_guide = NodePath("../../Arrow")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NodeRowVBox/Level10" unique_id=98652167]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -173.0
+offset_top = -32.0
+offset_right = 173.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="AbilityNode" parent="NodeRowVBox/Level10/HBoxContainer" unique_id=1271845232 node_paths=PackedStringArray("ability_tree_row") instance=ExtResource("5_opivy")]
+layout_mode = 2
+ability_tree_row = NodePath("../..")
+ability_node_stats = ExtResource("6_b60wm")
+
+[node name="AbilityNode2" parent="NodeRowVBox/Level10/HBoxContainer" unique_id=1485790771 node_paths=PackedStringArray("ability_tree_row") instance=ExtResource("5_opivy")]
+layout_mode = 2
+ability_tree_row = NodePath("../..")
+ability_node_stats = ExtResource("7_qh4wv")
+
+[node name="AbilityNode3" parent="NodeRowVBox/Level10/HBoxContainer" unique_id=1546851689 node_paths=PackedStringArray("ability_tree_row") instance=ExtResource("5_opivy")]
+layout_mode = 2
+ability_tree_row = NodePath("../..")
+ability_node_stats = ExtResource("8_kdih3")
+
+[node name="AbilityNode4" parent="NodeRowVBox/Level10/HBoxContainer" unique_id=160915298 node_paths=PackedStringArray("ability_tree_row") instance=ExtResource("5_opivy")]
+layout_mode = 2
+ability_tree_row = NodePath("../..")
+ability_node_stats = ExtResource("9_32lyw")
+
+[node name="AbilityRowLock" parent="NodeRowVBox/Level10" unique_id=490237729 instance=ExtResource("3_etxjc")]
+layout_mode = 1
+required_level = 10
+
+[node name="Arrow" type="TextureRect" parent="." unique_id=409520305]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.0
+offset_top = 124.0
+offset_right = 27.0
+offset_bottom = 188.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_qh4wv")
+
+[node name="Arrow7" type="TextureRect" parent="." unique_id=95178753]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.0
+offset_top = -11.0
+offset_right = 27.0
+offset_bottom = 53.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_rxhav")
+
+[node name="Arrow2" type="TextureRect" parent="." unique_id=445514245]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.0
+offset_top = -150.0
+offset_right = 27.0
+offset_bottom = -86.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_rxhav")
+
+[node name="Arrow3" type="TextureRect" parent="." unique_id=826106516]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.0
+offset_top = -287.0
+offset_right = 27.0
+offset_bottom = -223.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_rxhav")
+
+[node name="Arrow4" type="TextureRect" parent="." unique_id=1704883350]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.0
+offset_top = -425.0
+offset_right = 27.0
+offset_bottom = -361.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_rxhav")
+
+[node name="Arrow5" type="TextureRect" parent="." unique_id=1201623167]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.0
+offset_top = -563.0
+offset_right = 27.0
+offset_bottom = -499.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_rxhav")
+
+[node name="Arrow6" type="TextureRect" parent="." unique_id=1404237409]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.0
+offset_top = -700.0
+offset_right = 27.0
+offset_bottom = -636.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_rxhav")
+
+[node name="Arrow8" type="TextureRect" parent="." unique_id=174730165]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.0
+offset_top = -840.0
+offset_right = 27.0
+offset_bottom = -776.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_rxhav")
+
+[node name="Arrow9" type="TextureRect" parent="." unique_id=266898456]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.0
+offset_top = -978.0
+offset_right = 27.0
+offset_bottom = -914.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_rxhav")
+
+[node name="ClassSigil" parent="." unique_id=1891287289 instance=ExtResource("3_c83kc")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -43.0
+offset_top = -34.0
+offset_right = 180.0
+offset_bottom = 51.0
+grow_horizontal = 2
+grow_vertical = 0
+icon_texture = ExtResource("4_jjetc")
+title_name = "Tyro"
+class_description = "The first milestone in a long journey of becoming the Hero of Velmoria."
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=54478804]
+root_node = NodePath("../CanvasLayer/ColorRect")
+libraries/ = SubResource("AnimationLibrary_40auc")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1388289258]
+
+[node name="APLabel" type="Label" parent="CanvasLayer" unique_id=1901802319]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = -19.0
+offset_right = 178.0
+offset_bottom = -3.0
+grow_vertical = 0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("14_kdih3")
+text = "AP Available : 11"
+
+[node name="EscToExitNotice" type="Label" parent="CanvasLayer" unique_id=585629]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 51.0
+offset_top = -352.0
+offset_right = 129.0
+offset_bottom = -336.0
+grow_vertical = 0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("14_kdih3")
+text = "'ESC' to Exit"
+
+[node name="Button" type="Button" parent="CanvasLayer" unique_id=2103728416]
+offset_left = 5.0
+offset_top = 3.0
+offset_right = 42.0
+offset_bottom = 27.0
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("14_kdih3")
+text = "Exit"
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1545005963]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[connection signal="button_up" from="CanvasLayer/Button" to="." method="_on_button_button_up"]

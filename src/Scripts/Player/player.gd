@@ -264,7 +264,10 @@ func _on_invincibility_timer_timeout() -> void:
 	damageable = true
 
 func can_issue_ability(ability_name : String) -> bool:
-	return  AbilityTimers.ability_state[ability_name]["Can Do"] and AbilityTimers.ability_state[ability_name]["Can Do"] and PlayerStats.player_stats["Current MP"] >= PlayerStats.equipped_abilities[ability_name].mp_cost
+	var selected_ability = PlayerStats.equipped_abilities[ability_name]
+	if selected_ability is String:
+		selected_ability = load(selected_ability)
+	return  AbilityTimers.ability_state[ability_name]["Can Do"] and AbilityTimers.ability_state[ability_name]["Can Do"] and PlayerStats.player_stats["Current MP"] >= selected_ability.mp_cost
 
 func _on_sword_soar_hit_box_area_entered(area: Area2D) -> void:
 	var parent = area.get_parent()

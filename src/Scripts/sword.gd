@@ -21,8 +21,8 @@ class_name Sword extends Resource
 func get_stats_dict() -> Dictionary:
 	return {
 		"Attack Bonus": attack_bonus,
-		"Defense Bonus": defense_bonus,
 		"Attack Speed": attack_speed,
+		"Defense Bonus": defense_bonus,
 		"Crit Chance Bonus": crit_bonus,
 		"Crit Damage Bonus": crit_damage_bonus
 	}

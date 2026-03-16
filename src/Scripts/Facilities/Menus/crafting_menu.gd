@@ -12,12 +12,19 @@ class_name CraftingStationMenu extends Control
 @onready var bank_container: GridContainer = $BankContainer
 @onready var bank_notice: Label = $BankNotice
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var bag_bg: TextureRect = $BagBG
+@onready var inventory_label: Label = $InventoryLabel
 
 @onready var sfx_player: SFXPlayer = $SfxPlayer
 const CRAFT_SWORD = preload("uid://4c6l1w0kpar3")
 
 var sword : Sword
 @onready var button: Button = $Button
+
+const GEAR_STATION_DROPS_BAG_BG = preload("uid://dqrwhfhixd1io")
+const GEAR_STATION_USE_BAG_BG = preload("uid://b5o4unayrrfi")
+
+var selected_bag : String = "Drops"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -47,7 +54,8 @@ func upgrade_sword() -> void:
 		SignalBus.update_sword_texture.emit("Idle")
 		
 func update_inventory_containers() -> void:
-	InventoryManager.update_grid_container(inventory_container, "Inventory",false)
+	#InventoryManager.update_grid_container(inventory_container, "Inventory",false)
+	show_inventory(selected_bag)
 	if PlayerStats.facilities_unlocked["Bank"]:
 		InventoryManager.update_grid_container(bank_container, "Bank",false)
 	else:
@@ -82,7 +90,6 @@ func update_sword() -> void: #run this function when we upgrade the sword.
 			button.disabled = true
 			sword_graphic.texture = sword.mold_graphic
 			
-
 		SignalBus.update_resource_needed_panel.emit()
 
 func _on_close_button_up() -> void:
@@ -97,3 +104,22 @@ func exit_menu() -> void:
 	SignalBus.check_can_sword_craft.emit()
 	SignalBus.hide_tech_tree_canvas_layer.emit()
 	queue_free()
+
+func _on_drops_bag_button_button_up() -> void:
+	show_inventory("Drops")
+
+func _on_use_bag_button_button_up() -> void:
+	show_inventory("Use")
+
+func show_inventory(bag_name : String) -> void:
+	match bag_name:
+		"Drops":
+			bag_bg.texture = GEAR_STATION_DROPS_BAG_BG
+			InventoryManager.update_grid_container(inventory_container, "Inventory", false)
+			selected_bag = "Drops"
+		"Use":
+			bag_bg.texture = GEAR_STATION_USE_BAG_BG
+			InventoryManager.update_grid_container(inventory_container, "Use", false)
+			selected_bag = "Use"
+
+	inventory_label.text = bag_name

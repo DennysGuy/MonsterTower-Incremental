@@ -112,3 +112,5 @@ signal enable_tower_map_button
 signal play_warrior_unlock_animation
 @warning_ignore("unused_signal")
 signal check_for_notification(notification_type : GameManager.NOTIFICATION_TYPE)
+@warning_ignore("unused_signal")
+signal spawn_warrior_tech_tree

@@ -25,8 +25,15 @@ func _on_hit_box_area_entered(area: Area2D) -> void:
 		return
 			
 	area_parent.stored_enemy = self
+	var sword = PlayerStats.get_sword(PlayerStats.player_stats["Equipped Sword"])
+	var defense = PlayerStats.player_stats["Defense"]
+
 	var damage : int = randi_range(int(enemy_stats.attack * 0.8), enemy_stats.attack)
-	damage -= int(damage * PlayerStats.player_stats["Defense"] * PlayerStats.get_sword(PlayerStats.player_stats["Equipped Sword"]).defense_bonus)
+
+	var reduction = defense * sword.defense_bonus
+	damage -= int(damage * reduction)
+
+	damage = max(damage, 1)
 	area_parent.apply_damage(damage,false)
 	
 func _on_slow_timer_timeout() -> void:

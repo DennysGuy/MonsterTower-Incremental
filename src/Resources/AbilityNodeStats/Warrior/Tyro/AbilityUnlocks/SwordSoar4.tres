@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="ClassAbilityNodeStats" format=3 uid="uid://dbfaj04n2soo5"]
+
+[ext_resource type="Texture2D" uid="uid://ckc71g0kfl714" path="res://Assets/NodeGraphics/WarriorTechTree/Sigils/SwordSoar_Upgrade_4.png" id="2_5uu23"]
+[ext_resource type="Script" uid="uid://b1fyuk5q3e08o" path="res://src/Resources/AbilityNodeStats/class_ability_node_stats.gd" id="3_7tcd4"]
+
+[resource]
+script = ExtResource("3_7tcd4")
+icon = ExtResource("2_5uu23")
+node_name = "Sword Soar +4"
+class_relation = "Tyro"
+description = "Replaces 'Double Jump'
+
+Soar through the air, piercing and knocking back enemies from above - clearing a path to safety."
+ap_cost = 1
+node_type = 1
+ability_category = "Double Jump"
+cooldown_time = 0.5
+mp_cost = 2.0
+jump_height_modifier = 50.0
+attack_damage_modifier = 0.2
+jump_height_change = 50.0
+metadata/_custom_type_script = "uid://b1fyuk5q3e08o"

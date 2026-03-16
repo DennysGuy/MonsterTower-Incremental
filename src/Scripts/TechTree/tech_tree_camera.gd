@@ -1,4 +1,4 @@
-extends Camera2D
+class_name TechTreeCamera extends Camera2D
 
 const MOVE_SPEED : int = 3
 

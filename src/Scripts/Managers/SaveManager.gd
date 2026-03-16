@@ -53,9 +53,11 @@ func save_tech_tree_data() -> void:
 		save_game()
 
 func save_equipped_abilities() -> void:
-
+	print(current_save_game)
 	for ability in PlayerStats.get_equipped_abilities().keys():
-		current_save_game.equipped_abilities[ability] = PlayerStats.get_equipped_ability(ability).resource_path
+		var save_game_ability = current_save_game.equipped_abilities[ability]
+		if save_game_ability:
+			save_game_ability = PlayerStats.get_equipped_ability(ability).resource_path
 	
 	save_game()
 

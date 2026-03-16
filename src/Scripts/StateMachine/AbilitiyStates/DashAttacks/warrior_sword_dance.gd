@@ -5,6 +5,7 @@ func on_enter(player : Player) -> void:
 	parent.dash_attack_collision_shape.disabled = false
 	parent.is_silence_attack = true
 	parent.sfx_player.play_sfx(sfx,3.0)
+	
 
 func apply_input() -> void:
 	if Input.is_action_just_pressed("swing_sword"):
@@ -12,7 +13,7 @@ func apply_input() -> void:
 
 func apply_physics(_delta : float) -> State:
 	#parent.issue_attack(parent.dash_attack_hit_box)
-	parent.velocity.x = PlayerStats.player_stats["Dash Speed"] * GameManager.set_player_box_direction(parent.sprite.flip_h)
+	parent.velocity.x = PlayerStats.get_equipped_ability("Dash Attack").dash_speed_modifier * GameManager.set_player_box_direction(parent.sprite.flip_h)
 	
 	return null
 
