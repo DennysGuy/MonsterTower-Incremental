@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://d0dp50h7qg6xe" path="res://Assets/Facilities/GearCraftingStation/SwordSocketsBG.png" id="2_pchp5"]
 [ext_resource type="Texture2D" uid="uid://dqdnfqgin24gv" path="res://Assets/CraftingMiniGame/Swords/BronzeSword/BronzeSwordWhole.png" id="3_pchp5"]
 [ext_resource type="PackedScene" uid="uid://d0s6j8mvikv8c" path="res://src/Scenes/UI/ItemSlot.tscn" id="4_ad6b6"]
-[ext_resource type="Texture2D" uid="uid://ch8m30uib0bcb" path="res://Assets/Facilities/GearCraftingStation/GearSocket.png" id="4_agtlk"]
+[ext_resource type="PackedScene" uid="uid://bkyhhrkmtnn61" path="res://src/Scenes/UI/CraftingStations/Socket.tscn" id="4_agtlk"]
 [ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="5_u8s2g"]
 [ext_resource type="FontFile" uid="uid://qgj228ltdttv" path="res://Assets/Fonts/alagard.ttf" id="7_mcbss"]
 
@@ -52,7 +52,7 @@ mouse_filter = 2
 texture = ExtResource("2_pchp5")
 stretch_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="SocketSword" unique_id=196081580]
+[node name="SocketVBoxContainer" type="VBoxContainer" parent="SocketSword" unique_id=196081580]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -63,25 +63,8 @@ offset_right = 133.0
 offset_bottom = 166.0
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="SocketSword/VBoxContainer" unique_id=969728451]
+[node name="Socket" parent="SocketSword/SocketVBoxContainer" unique_id=567607127 instance=ExtResource("4_agtlk")]
 layout_mode = 2
-texture = ExtResource("4_agtlk")
-stretch_mode = 2
-
-[node name="TextureRect2" type="TextureRect" parent="SocketSword/VBoxContainer" unique_id=486513539]
-layout_mode = 2
-texture = ExtResource("4_agtlk")
-stretch_mode = 2
-
-[node name="TextureRect3" type="TextureRect" parent="SocketSword/VBoxContainer" unique_id=490793021]
-layout_mode = 2
-texture = ExtResource("4_agtlk")
-stretch_mode = 2
-
-[node name="TextureRect4" type="TextureRect" parent="SocketSword/VBoxContainer" unique_id=1462208862]
-layout_mode = 2
-texture = ExtResource("4_agtlk")
-stretch_mode = 2
 
 [node name="EquippedSwordGraphic" type="TextureRect" parent="." unique_id=1281418754]
 layout_mode = 1
@@ -129,7 +112,7 @@ offset_top = 18.0
 offset_right = 92.0
 offset_bottom = 58.0
 
-[node name="TextureRect" type="TextureRect" parent="GemDescription/IconPanel" unique_id=1874169026]
+[node name="GemIcon" type="TextureRect" parent="GemDescription/IconPanel" unique_id=1874169026]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -161,7 +144,7 @@ text = "+5% Attack Damage
 +2% Crit Chance
 "
 
-[node name="Button" type="Button" parent="GemDescription" unique_id=660995532]
+[node name="MountButton" type="Button" parent="GemDescription" unique_id=660995532]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -379,4 +362,6 @@ theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("5_u8s2g")
 text = "Close"
 
+[connection signal="button_up" from="GemDescription/MountButton" to="." method="_on_mount_button_button_up"]
+[connection signal="button_up" from="ResetButton" to="." method="_on_reset_button_button_up"]
 [connection signal="button_up" from="CloseButton" to="." method="_on_close_button_button_up"]

@@ -68,12 +68,20 @@ var equipped_abilities : Dictionary = {
 }
 
 var equipped_gem_sockets : Dictionary = {
+	0: null,
 	1: null,
 	2: null,
-	3: null,
-	4: null
+	3: null
 }
 
+func equip_gem_to_socket(gem_stone : GemStone) -> bool:
+	for socket_index in range(get_current_sword().gem_stone_socket_count):
+		if equipped_gem_sockets[socket_index] == null:
+			equipped_gem_sockets[socket_index] = gem_stone
+			SaveManager.save_equipped_gems_stones()
+			return true
+	return false
+	
 func get_equipped_gem_sockets() -> Dictionary:
 	return equipped_gem_sockets
 	
@@ -195,8 +203,6 @@ func get_bag(bag : String) -> ItemBag:
 		2: return preload("uid://mbne7hjkpnqi")
 		3: return preload("uid://byikht2gbhthk")
 		_: return preload("uid://cuwof21s5e74c")
-
-
 
 func get_current_bag() -> ItemBag:
 	return get_bag("Bag")

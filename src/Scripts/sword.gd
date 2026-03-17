@@ -6,6 +6,7 @@ class_name Sword extends Resource
 @export var attack_speed : float
 @export var crit_bonus : float
 @export var crit_damage_bonus : float
+@export var gem_stone_socket_count : int = 0
 @export var recipe : CraftingRecipe
 
 @export_group("Graphics")
