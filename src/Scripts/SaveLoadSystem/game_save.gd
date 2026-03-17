@@ -314,6 +314,13 @@ TODO: We will add saves for classes as well
 	}
 }
 
+@export var equipped_gem_sockets : Dictionary = {
+	1: null,
+	2: null,
+	3: null,
+	4: null
+}
+
 @export var class_ability_rows : Dictionary = {
 	"Tyro" : {
 		10 : {"Unlocked" : false,"Sigils Left": 0},

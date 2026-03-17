@@ -19,6 +19,9 @@ class_name Player extends Entity
 @onready var dash_attack_collision_shape : CollisionShape2D = $DashAttackHitBox/CollisionShape2D
 @onready var dash_attack_hit_box: HitBox = $DashAttackHitBox
 
+@onready var gem_chest_hit_area: GemStoneHitArea = $GemChestHitArea
+
+
 @onready var ending_area: Area2D = $EndingArea
 
 @onready var can_dash_attack : bool = true
@@ -39,6 +42,7 @@ var is_climbing : bool = false
 var prev_input : int
 var prev_move_speed : float
 var mining_area_position : Vector2
+var gem_chest_hit_area_position : Vector2
 var hit_box_position : Vector2
 
 var jump_buffer_timer : float = 0.0
@@ -75,8 +79,10 @@ func _ready() -> void:
 	SignalBus.stop_player.connect(stop_player)
 	health = PlayerStats.player_stats["Max Health"]
 	mining_area_position = mining_area.position
+	gem_chest_hit_area_position = gem_chest_hit_area.position
 	hit_box_position = hit_box.position
 	dash_attack_hit_box.position = hit_box_position
+	disable_gem_chest_hit_area()
 	
 func _process(delta: float) -> void:
 	super(delta)
@@ -113,10 +119,12 @@ func flip_textures(flip : bool) -> void:
 		mining_area.position = Vector2(-mining_area_position.x, mining_area_position.y)
 		hit_box.position = Vector2(-hit_box_position.x, hit_box_position.y)
 		dash_attack_hit_box.position = Vector2(-hit_box_position.x, hit_box_position.y)
+		gem_chest_hit_area.position = Vector2(-gem_chest_hit_area_position.x, gem_chest_hit_area_position.y)
 	else:
 		mining_area.position = mining_area_position
 		hit_box.position = hit_box_position
 		dash_attack_hit_box.position = hit_box_position
+		gem_chest_hit_area.position = gem_chest_hit_area_position
 	
 func start_invincibility() -> void:
 	damageable = false
@@ -129,6 +137,7 @@ func clear_sprites() -> void:
 	animation_player.stop()
 	for cur_sprite in sprites.get_children():
 		cur_sprite.texture = null
+		
 func stop_player() -> void:
 	velocity = Vector2.ZERO
 
@@ -176,7 +185,6 @@ func check_for_crit() -> bool:
 	var crit_roll : int = randi_range(0,100)
 	if crit_roll < int(100 * (PlayerStats.player_stats["Crit Chance"] + PlayerStats.get_sword(PlayerStats.player_stats["Equipped Sword"]).crit_bonus)):
 		return true
-	
 	return false
 
 func _on_ladder_detector_area_entered(area: Area2D) -> void:
@@ -201,6 +209,16 @@ func clear_effect_texture() -> void:
 
 func set_cancel_state_true() -> void:
 	can_attack_cancel = true
+
+func enable_gem_chest_hit_area() -> void:
+	gem_chest_hit_area.monitorable = true
+	gem_chest_hit_area.monitoring = true
+	gem_chest_hit_area.get_child(0).disabled = false
+
+func disable_gem_chest_hit_area() -> void:
+	gem_chest_hit_area.monitorable = false
+	gem_chest_hit_area.monitoring = false
+	gem_chest_hit_area.get_child(0).disabled = true
 
 func blink_effect() -> void:
 	if not is_inside_tree():

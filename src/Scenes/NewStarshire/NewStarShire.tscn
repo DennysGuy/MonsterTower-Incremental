@@ -33,6 +33,8 @@
 [ext_resource type="AudioStream" uid="uid://br24s8y5lttep" path="res://Audio/SFX/Ambience/Starspire/StarspireAmbience.wav" id="30_fdeu8"]
 [ext_resource type="Texture2D" uid="uid://dbg5n708oli7y" path="res://Assets/Facilities/SwordUpgradeStation.png" id="33_0u15j"]
 [ext_resource type="PackedScene" uid="uid://w1c2yn7s6sjx" path="res://src/Scenes/UI/CraftingStations/NewCraftingStation.tscn" id="33_d6jc3"]
+[ext_resource type="PackedScene" uid="uid://dfl8fkojivefu" path="res://src/Scenes/GemStoneChests/GemStoneChest.tscn" id="34_y20fx"]
+[ext_resource type="Resource" uid="uid://d3ak1ilk1id2y" path="res://src/Resources/GemChests/Tier1GemChest.tres" id="35_hw86b"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_te0bi"]
 texture = ExtResource("3_5xris")
@@ -1306,6 +1308,10 @@ station_type = 1
 
 [node name="Refinery" parent="." unique_id=763505504 instance=ExtResource("33_d6jc3")]
 position = Vector2(508, 544)
+
+[node name="GemStoneChest" parent="." unique_id=1511035040 instance=ExtResource("34_y20fx")]
+position = Vector2(352, 656)
+chest_stats = ExtResource("35_hw86b")
 
 [connection signal="body_entered" from="TowerArea" to="." method="_on_tower_area_body_entered"]
 [connection signal="body_exited" from="TowerArea" to="." method="_on_tower_area_body_exited"]

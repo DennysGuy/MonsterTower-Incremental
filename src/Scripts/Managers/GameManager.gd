@@ -73,6 +73,10 @@ func calculate_targets(enemies_in_hitbox : Array, player : Player, number_of_hit
 	
 	for area in enemies_in_hitbox:
 		var enemy = area.get_parent()
+		
+		if not enemy is Enemy:
+			continue
+		
 		if not area is HurtBox:
 			continue
 		if enemy == null or enemy == player or not enemy.damageable:

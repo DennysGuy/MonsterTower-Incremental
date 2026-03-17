@@ -33,6 +33,8 @@
 [ext_resource type="PackedScene" uid="uid://d150vkltffpjo" path="res://src/Scenes/Tower/TowerFloors/CheckPointCampfire.tscn" id="27_8wimh"]
 [ext_resource type="Texture2D" uid="uid://xd36daaflxhj" path="res://Assets/Tower/ExitAreaIcon.png" id="30_yeiuc"]
 [ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="33_savf5"]
+[ext_resource type="PackedScene" uid="uid://dfl8fkojivefu" path="res://src/Scenes/GemStoneChests/GemStoneChest.tscn" id="34_pm5vn"]
+[ext_resource type="Resource" uid="uid://d3ak1ilk1id2y" path="res://src/Resources/GemChests/Tier1GemChest.tres" id="35_rayuj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c1fqw"]
 texture = ExtResource("2_hk0iw")
@@ -1394,6 +1396,22 @@ theme_override_fonts/font = ExtResource("33_savf5")
 theme_override_font_sizes/font_size = 10
 text = "Jumping Up Ladders
 Will Speed up traversal"
+
+[node name="GemStoneChest" parent="." unique_id=1511035040 instance=ExtResource("34_pm5vn")]
+position = Vector2(292, 815)
+chest_stats = ExtResource("35_rayuj")
+
+[node name="GemStoneChest2" parent="." unique_id=1125330120 instance=ExtResource("34_pm5vn")]
+position = Vector2(354, 496)
+chest_stats = ExtResource("35_rayuj")
+
+[node name="GemStoneChest3" parent="." unique_id=402722971 instance=ExtResource("34_pm5vn")]
+position = Vector2(236, 384)
+chest_stats = ExtResource("35_rayuj")
+
+[node name="GemStoneChest4" parent="." unique_id=359667451 instance=ExtResource("34_pm5vn")]
+position = Vector2(175, 800)
+chest_stats = ExtResource("35_rayuj")
 
 [connection signal="body_entered" from="TowerExitArea" to="." method="_on_tower_exit_area_body_entered"]
 [connection signal="body_exited" from="TowerExitArea" to="." method="_on_tower_exit_area_body_exited"]

@@ -2,7 +2,8 @@ class_name GemStone extends Item
 
 
 @export var socket_graphic : Texture2D
-
+@export var tier : int = 1
+@export var drop_rate : float
 @export var flat_attack_bonus : float
 @export var attack_percentage_bonus : float
 @export var flat_defense_bonus : float
@@ -43,3 +44,6 @@ func get_stat_bonus_list() -> Dictionary:
 		"Stun Stacks Bonus": stun_stacks_bonus,
 		"XP Bonus" : xp_bonus
 	}
+
+func get_stat_bonus(bonus_name : String) -> float:
+	return get_stat_bonus_list()[bonus_name]

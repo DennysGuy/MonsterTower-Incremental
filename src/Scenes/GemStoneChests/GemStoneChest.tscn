@@ -1,0 +1,165 @@
+[gd_scene format=3 uid="uid://dfl8fkojivefu"]
+
+[ext_resource type="Script" uid="uid://mikl4da8fwwg" path="res://src/Scripts/GemStoneChests/gem_stone_chest.gd" id="1_7ou2e"]
+[ext_resource type="Texture2D" uid="uid://c5x6wtd2sujmk" path="res://Assets/EnvironmentalAssets/GemChests/Tier1GemChestClosed.png" id="2_bxf0x"]
+[ext_resource type="PackedScene" uid="uid://bg1ya0qiin47q" path="res://src/Scenes/Actors/Utilities/HurtBox.tscn" id="3_bxf0x"]
+[ext_resource type="PackedScene" uid="uid://vo5sm7p34vo6" path="res://src/Scenes/Actors/Utilities/NameTag.tscn" id="4_qjqw1"]
+[ext_resource type="Script" uid="uid://drr0deykmfrvq" path="res://src/Scripts/StateMachine/state_machine.gd" id="5_y8qvr"]
+[ext_resource type="Script" uid="uid://dt41bdb6mu4x1" path="res://src/Scripts/StateMachine/GemStoneChest/chest_closed.gd" id="6_g5swd"]
+[ext_resource type="Script" uid="uid://cay3c8yjrt55b" path="res://src/Scripts/StateMachine/GemStoneChest/chest_opened.gd" id="7_gnfic"]
+[ext_resource type="PackedScene" uid="uid://b8lilr7mgc8l1" path="res://src/Scenes/Actors/Enemies/EnemyHealthBar.tscn" id="8_bafkg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qjqw1"]
+size = Vector2(38, 20)
+
+[sub_resource type="Animation" id="Animation_g5swd"]
+resource_name = "Hit"
+length = 0.23333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.09, 0.16, 0.23333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.9, 0.9), Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15955923, 0.23333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -20), Vector2(0, -22), Vector2(0, -20)]
+}
+
+[sub_resource type="Animation" id="Animation_bafkg"]
+resource_name = "Open"
+length = 0.334
+step = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.20059812, 0.26590914, 0.31722495),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -20), Vector2(0, -16), Vector2(0, -24), Vector2(0, -20)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.26590914, 0.31722495),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 0.8), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.318),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"set_graphic_opened"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_gnfic"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -20)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gnfic"]
+_data = {
+&"Hit": SubResource("Animation_g5swd"),
+&"Open": SubResource("Animation_bafkg"),
+&"RESET": SubResource("Animation_gnfic")
+}
+
+[node name="GemStoneChest" type="Node2D" unique_id=1511035040]
+script = ExtResource("1_7ou2e")
+
+[node name="Graphic" type="Sprite2D" parent="." unique_id=2011845541]
+position = Vector2(0, -20)
+texture = ExtResource("2_bxf0x")
+
+[node name="HurtBox" parent="." unique_id=227603737 instance=ExtResource("3_bxf0x")]
+position = Vector2(0, -10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=31724699]
+shape = SubResource("RectangleShape2D_qjqw1")
+
+[node name="NameTag" parent="." unique_id=1234896695 instance=ExtResource("4_qjqw1")]
+offset_left = -43.0
+offset_right = 45.0
+
+[node name="Tag" parent="NameTag" index="1"]
+text = "Gem Chest I"
+
+[node name="Statemachine" type="Node" parent="." unique_id=1536916790 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("5_y8qvr")
+initial_state = NodePath("Closed")
+
+[node name="Closed" type="Node" parent="Statemachine" unique_id=333092400 node_paths=PackedStringArray("opened_state")]
+script = ExtResource("6_g5swd")
+opened_state = NodePath("../Opened")
+
+[node name="Opened" type="Node" parent="Statemachine" unique_id=1608217996]
+script = ExtResource("7_gnfic")
+animation_name = "Open"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1640083311]
+root_node = NodePath("../Graphic")
+libraries/ = SubResource("AnimationLibrary_gnfic")
+
+[node name="EnemyHealthBar" parent="." unique_id=296104044 instance=ExtResource("8_bafkg")]
+visible = false
+offset_left = -34.0
+offset_top = -49.0
+offset_right = 31.0
+offset_bottom = -39.0
+
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
+
+[editable path="NameTag"]
