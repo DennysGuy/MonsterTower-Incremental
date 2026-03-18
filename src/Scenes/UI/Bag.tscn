@@ -191,7 +191,6 @@ theme_override_font_sizes/font_size = 10
 text = "Ore"
 
 [node name="GemStoneTab" type="TextureButton" parent="TextureRect/HBoxContainer" unique_id=92484346]
-visible = false
 layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("13_xq547")

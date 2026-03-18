@@ -63,10 +63,12 @@ func save_equipped_abilities() -> void:
 
 func save_equipped_gems_stones() -> void:
 	for gem_stone in PlayerStats.get_equipped_gem_sockets().keys():
-		var saved_gem_socket = current_save_game.equipped_gem_sockets[gem_stone]
-		if saved_gem_socket:
-			saved_gem_socket = PlayerStats.get_equipped_ability(gem_stone).resource_path
-
+		var gem_socket = PlayerStats.get_gem_socket(gem_stone)
+		if gem_socket:
+			current_save_game.equipped_gem_sockets[gem_stone] = gem_socket.resource_path
+		else:
+			current_save_game.equipped_gem_sockets[gem_stone] = null
+		
 	save_game()
 
 func save_player_stats() -> void:

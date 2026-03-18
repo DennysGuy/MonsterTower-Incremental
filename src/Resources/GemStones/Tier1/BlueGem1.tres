@@ -8,9 +8,9 @@
 script = ExtResource("1_bg6y8")
 socket_graphic = ExtResource("3_sd3ik")
 drop_rate = 10.0
-attack_speed_bonus = 0.02
-movement_speed_bonus = 0.05
-jump_height_bonus = 0.02
+defense_bonus = 0.04
+max_hp_bonus = 50.0
+max_mp_bonus = 50.0
 item_name = "Gem of Fortitude I"
 item_type = 4
 sell_value = 80

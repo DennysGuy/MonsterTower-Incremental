@@ -65,7 +65,8 @@ func _on_gui_input(event: InputEvent) -> void:
 			var slot_location : String
 			match slot_locale:
 				SLOT_LOCALE.INVENTORY:
-					slot_location = item.get_inventory_name()
+					if item:
+						slot_location = item.get_inventory_name()
 				SLOT_LOCALE.BANK:
 					slot_location = "Bank"
 					

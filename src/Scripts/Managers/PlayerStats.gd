@@ -74,6 +74,42 @@ var equipped_gem_sockets : Dictionary = {
 	3: null
 }
 
+func reset_gem_sockets() -> void:
+	print(equipped_gem_sockets)
+	for socket in equipped_gem_sockets.keys():
+		equipped_gem_sockets[socket] = null
+	
+	SaveManager.save_equipped_gems_stones()
+
+func get_total_gem_bonus(stat_bonus_name : String) -> float:
+	var total : float = 0.0
+	
+	for index in range(get_current_sword().gem_stone_socket_count):
+		var socket = get_gem_socket(index)
+		if socket:
+			var stat_bonus : float = socket.get_stat_bonus(stat_bonus_name)
+			total += stat_bonus
+	
+	return total
+
+func get_total_gem_attack_bonus() -> float:
+	var total : float = 0.0
+	for index in range(get_current_sword().gem_stone_socket_count):
+		var socket = get_gem_socket(index)
+		if socket:
+			total += socket.total_attack_bonus()
+	
+	return total
+
+func get_total_gem_defense_bonus() -> float:
+	var total : float = 0.0
+	for index in range(get_current_sword().gem_stone_socket_count):
+		var socket = get_gem_socket(index)
+		if socket:
+			total += socket.total_defense_bonus()
+	
+	return total
+
 func equip_gem_to_socket(gem_stone : GemStone) -> bool:
 	for socket_index in range(get_current_sword().gem_stone_socket_count):
 		if equipped_gem_sockets[socket_index] == null:

@@ -20,7 +20,6 @@ class_name GemStone extends Item
 @export var jump_height_bonus : float
 @export var climb_speed_bonus : float
 @export var cool_down_bonus : float
-@export var xp_bonus : float
 
 #Perhaps we'll add elemental effects in the future
 
@@ -32,7 +31,7 @@ func get_stat_bonus_list() -> Dictionary:
 		"Defense % Bonus" : defense_bonus,
 		"Crit Chance Bonus" : crit_chance_bonus,
 		"Crit Damage Bonus" : crit_damage_bonus,
-		"Attack Speed Bonus" : attack_speed_bonus,
+		"Attack Speed" : attack_speed_bonus,
 		"Movement Speed Bonus" : movement_speed_bonus,
 		"Jump Height Bonus" : jump_height_bonus,
 		"Climb Speed Bonus" : climb_speed_bonus,
@@ -42,8 +41,15 @@ func get_stat_bonus_list() -> Dictionary:
 		"Max MP Bonus" : max_mp_bonus,
 		"Accuracy Bonus" : accuracy_bonus,
 		"Stun Stacks Bonus": stun_stacks_bonus,
-		"XP Bonus" : xp_bonus
 	}
 
 func get_stat_bonus(bonus_name : String) -> float:
 	return get_stat_bonus_list()[bonus_name]
+
+func total_attack_bonus() -> float:
+	var attack_perc_bonus = PlayerStats.player_stats["Attack Damage"] * get_stat_bonus("Attack % Bonus")
+	return attack_perc_bonus + get_stat_bonus("Attack Bonus")
+
+func total_defense_bonus() -> float:
+	var defense_perc_bonus = PlayerStats.player_stats["Defense"] * get_stat_bonus("Defense % Bonus")
+	return defense_perc_bonus + get_stat_bonus("Defense Bonus")
