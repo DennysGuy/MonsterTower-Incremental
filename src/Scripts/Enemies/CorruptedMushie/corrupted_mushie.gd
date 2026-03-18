@@ -25,8 +25,8 @@ func _on_hit_box_area_entered(area: Area2D) -> void:
 		return
 			
 	area_parent.stored_enemy = self
-	var sword = PlayerStats.get_sword(PlayerStats.player_stats["Equipped Sword"])
-	var defense = PlayerStats.player_stats["Defense"]
+	var sword = PlayerStats.get_current_sword()
+	var defense = PlayerStats.player_stats["Defense"] + PlayerStats.get_current_sword().defense_bonus + PlayerStats.get_total_gem_defense_bonus()
 
 	var damage : int = randi_range(int(enemy_stats.attack * 0.8), enemy_stats.attack)
 

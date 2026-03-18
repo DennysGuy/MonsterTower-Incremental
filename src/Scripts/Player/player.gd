@@ -150,10 +150,10 @@ func issue_attack(selected_hit_box : HitBox, multiplier : float = 1.0, ability :
 	var number_of_hits : int = 1
 	var rep_delay : float = 0.1
 	var incoming_damage : int = 0
-
-	var base_damage : int = int(PlayerStats.player_stats["Attack Damage"] + PlayerStats.get_sword(PlayerStats.player_stats["Equipped Sword"]).attack_bonus)
-	var min_damage : int = int(base_damage * PlayerStats.player_stats["Accuracy"])
-	var max_damage : int = int(base_damage)
+	var total_base_attack_damage = int(PlayerStats.player_stats["Attack Damage"] + PlayerStats.get_current_sword().attack_bonus + PlayerStats.get_total_gem_attack_bonus())
+	
+	var min_damage : int = int(total_base_attack_damage * PlayerStats.player_stats["Accuracy"] + PlayerStats.get_total_gem_bonus("Accuracy Bonus"))
+	var max_damage : int = int(total_base_attack_damage)
 	var is_crit = check_for_crit()
 	if is_crit:
 		print("IM CRTTING!")
@@ -161,13 +161,13 @@ func issue_attack(selected_hit_box : HitBox, multiplier : float = 1.0, ability :
 		overlapping_hits = int(ability.number_of_enemies_hit)
 		number_of_hits = int(ability.max_hit_count)
 		rep_delay = ability.attack_rep_delay
-		min_damage = PlayerStats.player_stats["Attack Damage"] + ability.base_attack * PlayerStats.player_stats["Accuracy"]
-		max_damage = PlayerStats.player_stats["Attack Damage"] + ability.base_attack
+		min_damage = total_base_attack_damage * (PlayerStats.player_stats["Accuracy"] + PlayerStats.get_total_gem_bonus("Accuracy Bonus"))
+		max_damage = total_base_attack_damage  + ability.base_attack
 		
 	incoming_damage  = int(randi_range(min_damage,max_damage) * multiplier)
 	
 	if is_crit:
-		incoming_damage = int((PlayerStats.player_stats["Crit Damage"] + PlayerStats.get_sword(PlayerStats.player_stats["Equipped Sword"]).crit_bonus) * incoming_damage)
+		incoming_damage = int((PlayerStats.player_stats["Crit Damage"] + PlayerStats.get_current_sword().crit_bonus + PlayerStats.get_total_gem_bonus("Crit Damage Bonus")) * incoming_damage)
 	
 	if PlayerStats.player_stats["Class"] == "Tyro":
 		GameManager.attack_enemies(enemies_in_range, overlapping_hits, number_of_hits, self, incoming_damage, is_crit, true, rep_delay)
@@ -183,7 +183,7 @@ func issue_super_attack() -> void:
 
 func check_for_crit() -> bool:
 	var crit_roll : int = randi_range(0,100)
-	if crit_roll < int(100 * (PlayerStats.player_stats["Crit Chance"] + PlayerStats.get_sword(PlayerStats.player_stats["Equipped Sword"]).crit_bonus)):
+	if crit_roll < int(100 * (PlayerStats.player_stats["Crit Chance"] + PlayerStats.get_current_sword().crit_bonus + PlayerStats.get_total_gem_bonus("Crit Chance Bonus"))):
 		return true
 	return false
 

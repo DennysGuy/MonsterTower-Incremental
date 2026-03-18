@@ -71,7 +71,7 @@ func _ready() -> void:
 	hud.open_tower_map_button.show()
 	await get_tree().process_frame
 	SignalBus.update_player_health.emit(player.health)
-	PlayerStats.player_stats["Current MP"] = PlayerStats.player_stats["Max MP"]
+	PlayerStats.player_stats["Current MP"] = PlayerStats.player_stats["Max MP"] + PlayerStats.get_current_sword().max_mp_bonus + PlayerStats.get_total_gem_bonus("Max MP Bonus")
 	SignalBus.update_player_mp.emit()
 	SaveManager.save_player_stats()
 	
