@@ -75,9 +75,10 @@ func unlock_ability_node_row(index : int) -> void:
 
 func check_for_unlocked_rows() -> void:
 	for row in node_row_v_box.get_children():
-		if row.is_unlocked and !row.is_stat_boost_row:
+		if row.is_unlocked:
 			row.ability_row_lock.hide()
 			row.enable_guide_arrow()
+		
 
 func check_for_newly_unlocked_rows() -> void:
 	for index in range(node_row_v_box.get_children().size()-1,-1,-1):
@@ -86,8 +87,7 @@ func check_for_newly_unlocked_rows() -> void:
 			selected_row_index = index
 		
 		elif PlayerStats.player_stats["Level"] >= ability_row.unlock_level \
-		and !ability_row.is_unlocked \
-		and !ability_row.is_stat_boost_row:
+		and !ability_row.is_unlocked:
 			await unlock_ability_node_row(index)
 
 

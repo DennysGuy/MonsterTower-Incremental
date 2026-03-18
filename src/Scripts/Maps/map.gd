@@ -148,16 +148,15 @@ func spawn_player() -> void:
 	var total_mp : int = PlayerStats.player_stats["Current MP"]
 	
 	if GameManager.resupply_character:
-		total_health = PlayerStats.player_stats["Max Health"] + PlayerStats.get_current_sword().max_hp_bonus + PlayerStats.get_total_gem_bonus("Max HP Bonus")
-		total_mp = PlayerStats.player_stats["Max MP"]  + PlayerStats.get_current_sword().max_mp_bonus + PlayerStats.get_total_gem_bonus("Max HP Bonus")
+		total_health = PlayerStats.player_stats["Max Health"] + PlayerStats.get_current_sword().get_total_hp_bonus()
+		total_mp = PlayerStats.player_stats["Max MP"]  + PlayerStats.get_current_sword().get_total_defense_bonus()
 		PlayerStats.player_stats["Current Health"] = total_health
-		PlayerStats.player_stats["Max Health"] = total_health
 		PlayerStats.player_stats["Current MP"] = total_mp
 		player.health = total_health
 		GameManager.resupply_character = false
 		
 	player.health = total_health
-	hud.update_player_health(int(player.health))
+	hud.update_player_health(int(total_health))
 
 	add_child(player)
 	

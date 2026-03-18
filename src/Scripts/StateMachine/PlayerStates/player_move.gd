@@ -52,7 +52,7 @@ func process_physics(_delta: float) -> State:
 		return attack_1_state
 
 	var input := Input.get_axis("pan_cam_left", "pan_cam_right")
-	var max_speed = PlayerStats.player_stats["Movement Speed"]
+	var max_speed = PlayerStats.player_stats["Movement Speed"] + PlayerStats.get_current_sword().movement_speed_bonus + PlayerStats.get_total_gem_bonus("Movement Speed Bonus")
 	var target_speed = input * max_speed
 
 	# Remember last facing direction

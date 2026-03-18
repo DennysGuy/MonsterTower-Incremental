@@ -106,7 +106,7 @@ func _process(delta: float) -> void:
 
 func update_player_health(value : int) -> void:
 	player_health_bar.value = value
-	player_health_bar.max_value = PlayerStats.player_stats["Max Health"]
+	player_health_bar.max_value = PlayerStats.player_stats["Max Health"] + PlayerStats.get_current_sword().get_total_hp_bonus()
 	hp_label.text = "%s/%s" % [int(player_health_bar.value), int(player_health_bar.max_value)]
 
 func update_player_mp() -> void:

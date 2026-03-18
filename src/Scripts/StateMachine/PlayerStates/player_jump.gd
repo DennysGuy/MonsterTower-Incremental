@@ -15,7 +15,7 @@ func enter() -> void:
 	parent.set_outfit_texture(animation_name)
 
 	parent.velocity.y = 0
-	parent.velocity.y -= PlayerStats.player_stats["Jump Height"]
+	parent.velocity.y -= (PlayerStats.player_stats["Jump Height"] + PlayerStats.get_total_gem_bonus("Jump Height Bonus") + PlayerStats.get_current_sword().jump_height_bonus)
 
 func exit() -> void:
 	pass
