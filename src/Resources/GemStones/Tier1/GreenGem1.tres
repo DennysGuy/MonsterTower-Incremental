@@ -8,7 +8,7 @@
 script = ExtResource("1_uk7qg")
 socket_graphic = ExtResource("3_4i7bq")
 drop_rate = 15.0
-attack_speed_bonus = 0.02
+attack_speed_bonus = -0.02
 movement_speed_bonus = 0.05
 jump_height_bonus = 0.02
 item_name = "Gem of the Cunning I"

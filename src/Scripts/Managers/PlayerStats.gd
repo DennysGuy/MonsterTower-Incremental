@@ -53,7 +53,9 @@ const KNOCKBACK_FORCE : int = 300
 	"Cooking Drop Chance Bonus":0.0,
 	"Cooking Accuracy Bonus":0.0,
 	"Ore Drop Chance Bonus":0.0,
-	"Smelting Accuracy Bonus":0.0
+	"Smelting Accuracy Bonus":0.0,
+	"Tier 1 Chest Spawn Rate": 0.1,
+	"Tier 1 Gem Drop Rate Bonus":0.0 
 }
 
 var equipped_abilities : Dictionary = {
@@ -64,7 +66,6 @@ var equipped_abilities : Dictionary = {
 	"Air Attack" : null, #basic air attack
 	"Double Jump" : null, #basic double jump
 	"Special Attack" : null,
-
 }
 
 var equipped_gem_sockets : Dictionary = {
@@ -149,7 +150,8 @@ func equip_ability(player_class : String, ability_type : String) -> void:
 	"Bank": false,
 	"Arial Slash" : false,
 	"Dash Attack": false,
-	"Double Jump" : false
+	"Double Jump" : false,
+	"Gem Stone Station": false
 }
 
 @onready var check_points_unlocked : Dictionary = {

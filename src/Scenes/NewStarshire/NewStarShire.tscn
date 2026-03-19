@@ -1113,8 +1113,11 @@ offset_top = 51.0
 offset_right = 54.0
 offset_bottom = 64.0
 
+[node name="Bg" parent="GemStoneStation/NameTag" index="0"]
+offset_right = 95.0
+
 [node name="Tag" parent="GemStoneStation/NameTag" index="1"]
-text = "Weapon Upgrade Station"
+text = "Gem Stone Upgrade Station"
 
 [node name="GemStoneStationArea" type="Area2D" parent="GemStoneStation" unique_id=79681493]
 position = Vector2(0, 41)

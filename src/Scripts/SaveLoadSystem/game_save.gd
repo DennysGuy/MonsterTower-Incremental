@@ -195,7 +195,7 @@ TODO: We will add saves for classes as well
 			"Crit Damage Modifier" : 0.0,
 			"Crit Chance Modifier" : 0.0,
 			"Dash Cooldown" : 0.0,
-			"Dash Speed Modifier" : 0.0
+			"Dash Speed Modifier" : 350.0
 		},
 		"Air Attack": {
 			"Cooldown Time" : 1.5,
@@ -232,7 +232,7 @@ TODO: We will add saves for classes as well
 			"Projectile Distance" : 100.0,
 			"Slow Wait Time" : 1.5,
 			"Stun Wait Time" : 0.0,
-			"Jump Height Modifier" : 0.0,
+			"Jump Height Modifier" : 100.0,
 			"Climb Speed Modifier" : 0.0,
 			"Attack Damage Modifier" : 0.5,
 			"Move Speed Modifier" : 0.4,
