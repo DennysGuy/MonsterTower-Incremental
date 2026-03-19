@@ -24,7 +24,9 @@
 [ext_resource type="Resource" uid="uid://dxfrcyw0rux0q" path="res://src/Resources/OreRock/TinOreRock.tres" id="11_qrx52"]
 [ext_resource type="PackedScene" uid="uid://cr6q5dxlkks" path="res://src/Scenes/Tower/LadderArea.tscn" id="12_61350"]
 [ext_resource type="PackedScene" uid="uid://crf0fypg7rf6a" path="res://src/Scenes/MonsterSpawnArea.tscn" id="13_jxry2"]
+[ext_resource type="PackedScene" uid="uid://cps01vtaqexec" path="res://src/Scenes/Tower/TowerFloors/GemStoneMarker.tscn" id="14_50mol"]
 [ext_resource type="PackedScene" uid="uid://bethw5tnlxnnt" path="res://src/Scenes/Actors/Enemies/CorruptedMushie/CorruptedMushie.tscn" id="14_gi03k"]
+[ext_resource type="Resource" uid="uid://d3ak1ilk1id2y" path="res://src/Resources/GemChests/Tier1GemChest.tres" id="15_nrrah"]
 [ext_resource type="PackedScene" uid="uid://b0enmfcqe1mex" path="res://src/Scenes/Actors/Enemies/Batclopse/Batclopse.tscn" id="19_n7xsw"]
 [ext_resource type="PackedScene" uid="uid://c11hg5ijdrjjs" path="res://src/Scenes/Tower/TowerFloors/ExitElevator1.tscn" id="20_rsjkl"]
 [ext_resource type="PackedScene" uid="uid://cyiot28va881c" path="res://src/Scenes/Actors/Enemies/CorruptedMushie/CorruptedMushie_Level2.tscn" id="22_ykf1y"]
@@ -562,7 +564,7 @@ size = Vector2(172, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n7xsw"]
 size = Vector2(391, 20)
 
-[node name="Floor1-2" type="Node2D" unique_id=1445504565 node_paths=PackedStringArray("camera", "hud", "ore_rock_markers", "campfire_list", "sfx_player", "monster_spawn_node", "pause_canvas_layer", "ambience_player")]
+[node name="Floor1-2" type="Node2D" unique_id=1445504565 node_paths=PackedStringArray("camera", "hud", "ore_rock_markers", "gem_stone_chest_markers", "campfire_list", "sfx_player", "monster_spawn_node", "pause_canvas_layer", "ambience_player")]
 script = ExtResource("1_1pghk")
 map_name = "Floor 1-2"
 map_id = 2
@@ -574,6 +576,7 @@ camera = NodePath("PlayerCamera")
 hud = NodePath("HUD")
 ore_rock_spawn_rate = 0.6
 ore_rock_markers = NodePath("OreRockMarkers")
+gem_stone_chest_markers = NodePath("GemStoneChestMarkers")
 campfire_list = NodePath("CampfireCheckpoints")
 path = "uid://bla5rhusv2jn5"
 next_room_path = "uid://b3m3f58qy47jb"
@@ -629,6 +632,43 @@ tile_set = ExtResource("3_ukbus")
 
 [node name="TowerGuideSprite" parent="." unique_id=1465712689 instance=ExtResource("6_nb31h")]
 position = Vector2(149, 1423)
+
+[node name="GemStoneChestMarkers" type="Node" parent="." unique_id=843895436]
+
+[node name="GemStoneMarker" parent="GemStoneChestMarkers" unique_id=1266765501 node_paths=PackedStringArray("spawn_parent") instance=ExtResource("14_50mol")]
+position = Vector2(255, 1313)
+gem_chest_stats = ExtResource("15_nrrah")
+spawn_parent = NodePath("..")
+
+[node name="GemStoneMarker2" parent="GemStoneChestMarkers" unique_id=430877209 node_paths=PackedStringArray("spawn_parent") instance=ExtResource("14_50mol")]
+position = Vector2(452, 1312)
+gem_chest_stats = ExtResource("15_nrrah")
+spawn_parent = NodePath("..")
+
+[node name="GemStoneMarker3" parent="GemStoneChestMarkers" unique_id=21767339 node_paths=PackedStringArray("spawn_parent") instance=ExtResource("14_50mol")]
+position = Vector2(155, 1280)
+gem_chest_stats = ExtResource("15_nrrah")
+spawn_parent = NodePath("..")
+
+[node name="GemStoneMarker4" parent="GemStoneChestMarkers" unique_id=802969749 node_paths=PackedStringArray("spawn_parent") instance=ExtResource("14_50mol")]
+position = Vector2(417, 1216)
+gem_chest_stats = ExtResource("15_nrrah")
+spawn_parent = NodePath("..")
+
+[node name="GemStoneMarker5" parent="GemStoneChestMarkers" unique_id=1244583204 node_paths=PackedStringArray("spawn_parent") instance=ExtResource("14_50mol")]
+position = Vector2(234, 944)
+gem_chest_stats = ExtResource("15_nrrah")
+spawn_parent = NodePath("..")
+
+[node name="GemStoneMarker6" parent="GemStoneChestMarkers" unique_id=1574535412 node_paths=PackedStringArray("spawn_parent") instance=ExtResource("14_50mol")]
+position = Vector2(361, 624)
+gem_chest_stats = ExtResource("15_nrrah")
+spawn_parent = NodePath("..")
+
+[node name="GemStoneMarker7" parent="GemStoneChestMarkers" unique_id=1042210854 node_paths=PackedStringArray("spawn_parent") instance=ExtResource("14_50mol")]
+position = Vector2(215, 368)
+gem_chest_stats = ExtResource("15_nrrah")
+spawn_parent = NodePath("..")
 
 [node name="OreRockMarkers" type="Node" parent="." unique_id=285257157]
 

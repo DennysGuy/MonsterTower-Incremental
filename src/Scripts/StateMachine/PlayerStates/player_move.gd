@@ -39,7 +39,7 @@ func process_physics(_delta: float) -> State:
 	if parent.jump_buffer_timer > 0 and parent.is_on_floor():
 		parent.jump_buffer_timer = 0
 		return jump_state
-	
+
 	if Input.is_action_just_pressed("dash_attack") and PlayerStats.facilities_unlocked["Dash Attack"] and parent.can_issue_ability("Dash Attack"):
 		return dash_attack_state
 

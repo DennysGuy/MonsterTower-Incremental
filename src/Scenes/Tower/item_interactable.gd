@@ -27,6 +27,9 @@ func _process(delta: float) -> void:
 	if player == null:
 		player = get_tree().get_first_node_in_group("Player")
 	
+	#if player_in_range and Input.is_action_just_pressed("pan_cam_up"):
+		#pick_up_item()
+	
 	if can_pick_up:
 		global_position = global_position.move_toward(player.coin_purse.global_position,3.0)
 		var tween : Tween = get_tree().create_tween()
@@ -63,4 +66,10 @@ func pick_up_item() -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Player:
-		pick_up_item()
+		#pick_up_item()
+		player_in_range = true
+
+
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	if body is Player:
+		player_in_range = false

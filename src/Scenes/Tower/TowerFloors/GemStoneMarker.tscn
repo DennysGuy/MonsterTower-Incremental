@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cps01vtaqexec"]
+
+[ext_resource type="Script" uid="uid://cx62csbwn68qy" path="res://src/Scripts/Tower/gem_stone_marker.gd" id="1_oydnt"]
+[ext_resource type="PackedScene" uid="uid://dfl8fkojivefu" path="res://src/Scenes/GemStoneChests/GemStoneChest.tscn" id="2_x0c8h"]
+
+[node name="GemStoneMarker" type="Marker2D" unique_id=1266765501]
+script = ExtResource("1_oydnt")
+gem_chest = ExtResource("2_x0c8h")

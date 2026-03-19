@@ -25,6 +25,7 @@
 [ext_resource type="Resource" uid="uid://c71wdmkmxxxct" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/AbilityUnlocks/SwordSlam1.tres" id="12_0s8pu"]
 [ext_resource type="Resource" uid="uid://cn1lome24uvh4" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/CharacterBoosts/ArmoredCore2.tres" id="12_b7dhb"]
 [ext_resource type="Resource" uid="uid://3tqaybptumqr" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/AbilityUnlocks/SwordSoar2.tres" id="12_vd3qe"]
+[ext_resource type="Resource" uid="uid://b1awyerdbjjqa" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/AbilityUnlocks/SwordSlam2.tres" id="13_11cds"]
 [ext_resource type="Resource" uid="uid://cpg586qwrplgy" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/AbilityUnlocks/SwordDance1.tres" id="13_40auc"]
 [ext_resource type="Resource" uid="uid://m4gyp4tgpqem" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/AbilityUnlocks/SwordDance2.tres" id="13_q5f6i"]
 [ext_resource type="Resource" uid="uid://btw1tgdlb2dcg" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/CharacterBoosts/FieldTactician2.tres" id="13_vd3qe"]
@@ -292,7 +293,7 @@ alignment = 1
 [node name="AbilityNode" parent="NodeRowVBox/Level20/HBoxContainer3" unique_id=1793748095 node_paths=PackedStringArray("ability_tree_row") instance=ExtResource("5_opivy")]
 layout_mode = 2
 ability_tree_row = NodePath("../..")
-ability_node_stats = ExtResource("12_vd3qe")
+ability_node_stats = ExtResource("13_11cds")
 
 [node name="AbilityNode2" parent="NodeRowVBox/Level20/HBoxContainer3" unique_id=1136629502 node_paths=PackedStringArray("ability_tree_row") instance=ExtResource("5_opivy")]
 layout_mode = 2

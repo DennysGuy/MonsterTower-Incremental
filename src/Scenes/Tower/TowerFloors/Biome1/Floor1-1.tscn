@@ -23,6 +23,7 @@
 [ext_resource type="Resource" uid="uid://svq41nllat54" path="res://src/Resources/OreRock/CopperOreRock.tres" id="8_yx3jr"]
 [ext_resource type="PackedScene" uid="uid://crf0fypg7rf6a" path="res://src/Scenes/MonsterSpawnArea.tscn" id="9_gib5v"]
 [ext_resource type="PackedScene" uid="uid://cepv6hcj1jotc" path="res://src/Scenes/Tower/TowerFloors/TowerExitArea.tscn" id="11_kpd6k"]
+[ext_resource type="PackedScene" uid="uid://cps01vtaqexec" path="res://src/Scenes/Tower/TowerFloors/GemStoneMarker.tscn" id="14_83waj"]
 [ext_resource type="PackedScene" uid="uid://c11hg5ijdrjjs" path="res://src/Scenes/Tower/TowerFloors/ExitElevator1.tscn" id="15_obgwm"]
 [ext_resource type="PackedScene" uid="uid://cexhahnue1wh6" path="res://src/Scenes/Tower/TowerFloors/FloorGuideLog.tscn" id="15_om3xh"]
 [ext_resource type="PackedScene" uid="uid://cyiot28va881c" path="res://src/Scenes/Actors/Enemies/CorruptedMushie/CorruptedMushie_Level2.tscn" id="22_o5ei8"]
@@ -33,7 +34,6 @@
 [ext_resource type="PackedScene" uid="uid://d150vkltffpjo" path="res://src/Scenes/Tower/TowerFloors/CheckPointCampfire.tscn" id="27_8wimh"]
 [ext_resource type="Texture2D" uid="uid://xd36daaflxhj" path="res://Assets/Tower/ExitAreaIcon.png" id="30_yeiuc"]
 [ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="33_savf5"]
-[ext_resource type="PackedScene" uid="uid://dfl8fkojivefu" path="res://src/Scenes/GemStoneChests/GemStoneChest.tscn" id="34_pm5vn"]
 [ext_resource type="Resource" uid="uid://d3ak1ilk1id2y" path="res://src/Resources/GemChests/Tier1GemChest.tres" id="35_rayuj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c1fqw"]
@@ -1065,7 +1065,7 @@ size = Vector2(166, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0rtsh"]
 size = Vector2(297, 20)
 
-[node name="Floor1-1" type="Node2D" unique_id=1821431660 node_paths=PackedStringArray("camera", "hud", "ore_rock_markers", "campfire_list", "sfx_player", "monster_spawn_node", "pause_canvas_layer", "ambience_player")]
+[node name="Floor1-1" type="Node2D" unique_id=1821431660 node_paths=PackedStringArray("camera", "hud", "ore_rock_markers", "gem_stone_chest_markers", "campfire_list", "sfx_player", "monster_spawn_node", "pause_canvas_layer", "ambience_player")]
 script = ExtResource("1_u3nwm")
 map_name = "Floor 1-1"
 map_id = 1
@@ -1077,6 +1077,7 @@ camera = NodePath("PlayerCamera")
 hud = NodePath("HUD")
 ore_rock_spawn_rate = 0.65
 ore_rock_markers = NodePath("OreRockMarkers")
+gem_stone_chest_markers = NodePath("GemStoneChestMarkers")
 campfire_list = NodePath("CheckpointCampfires")
 path = "uid://bpob51vk7v2cj"
 next_room_path = "res://src/Scenes/Tower/TowerFloors/Biome1/Floor1-2.tscn"
@@ -1139,6 +1140,23 @@ limit_smoothed = true
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 
+[node name="GemStoneChestMarkers" type="Node" parent="." unique_id=834052704]
+
+[node name="GemStoneMarker" parent="GemStoneChestMarkers" unique_id=1266765501 node_paths=PackedStringArray("spawn_parent") instance=ExtResource("14_83waj")]
+position = Vector2(416, 689)
+gem_chest_stats = ExtResource("35_rayuj")
+spawn_parent = NodePath("..")
+
+[node name="GemStoneMarker2" parent="GemStoneChestMarkers" unique_id=174149121 node_paths=PackedStringArray("spawn_parent") instance=ExtResource("14_83waj")]
+position = Vector2(177, 801)
+gem_chest_stats = ExtResource("35_rayuj")
+spawn_parent = NodePath("..")
+
+[node name="GemStoneMarker3" parent="GemStoneChestMarkers" unique_id=1160914240 node_paths=PackedStringArray("spawn_parent") instance=ExtResource("14_83waj")]
+position = Vector2(209, 385)
+gem_chest_stats = ExtResource("35_rayuj")
+spawn_parent = NodePath("..")
+
 [node name="OreRockMarkers" type="Node" parent="." unique_id=507202516]
 
 [node name="OreRockMarker" parent="OreRockMarkers" unique_id=2121633638 node_paths=PackedStringArray("spawn_parent") instance=ExtResource("5_kpd6k")]
@@ -1155,14 +1173,8 @@ ore_rock = ExtResource("7_yx3jr")
 chance_to_spawn = 0.5
 spawn_parent = NodePath("../..")
 
-[node name="OreRockMarker2" parent="OreRockMarkers" unique_id=231381547 node_paths=PackedStringArray("spawn_parent") instance=ExtResource("5_kpd6k")]
-position = Vector2(417, 689)
-ore_rock_resource = ExtResource("8_yx3jr")
-ore_rock = ExtResource("7_yx3jr")
-spawn_parent = NodePath("../..")
-
 [node name="OreRockMarker3" parent="OreRockMarkers" unique_id=1794542043 node_paths=PackedStringArray("spawn_parent") instance=ExtResource("5_kpd6k")]
-position = Vector2(175, 384)
+position = Vector2(132, 384)
 ore_rock_resource = ExtResource("6_hvi06")
 ore_rock = ExtResource("7_yx3jr")
 spawn_parent = NodePath("../..")
@@ -1396,22 +1408,6 @@ theme_override_fonts/font = ExtResource("33_savf5")
 theme_override_font_sizes/font_size = 10
 text = "Jumping Up Ladders
 Will Speed up traversal"
-
-[node name="GemStoneChest" parent="." unique_id=1511035040 instance=ExtResource("34_pm5vn")]
-position = Vector2(292, 815)
-chest_stats = ExtResource("35_rayuj")
-
-[node name="GemStoneChest2" parent="." unique_id=1125330120 instance=ExtResource("34_pm5vn")]
-position = Vector2(354, 496)
-chest_stats = ExtResource("35_rayuj")
-
-[node name="GemStoneChest3" parent="." unique_id=402722971 instance=ExtResource("34_pm5vn")]
-position = Vector2(236, 384)
-chest_stats = ExtResource("35_rayuj")
-
-[node name="GemStoneChest4" parent="." unique_id=359667451 instance=ExtResource("34_pm5vn")]
-position = Vector2(175, 800)
-chest_stats = ExtResource("35_rayuj")
 
 [connection signal="body_entered" from="TowerExitArea" to="." method="_on_tower_exit_area_body_entered"]
 [connection signal="body_exited" from="TowerExitArea" to="." method="_on_tower_exit_area_body_exited"]

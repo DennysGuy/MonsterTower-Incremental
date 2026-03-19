@@ -21,6 +21,7 @@ class_name Player extends Entity
 
 @onready var gem_chest_hit_area: GemStoneHitArea = $GemChestHitArea
 
+@onready var item_pick_up_area: Area2D = $ItemPickUpArea
 
 @onready var ending_area: Area2D = $EndingArea
 
@@ -85,6 +86,9 @@ func _ready() -> void:
 	disable_gem_chest_hit_area()
 	
 func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("pan_cam_up") and !GameManager.auto_pick_up_enabled:
+		pick_up_items()
+		await get_tree().create_timer(1.0).timeout
 	super(delta)
 
 func _physics_process(delta: float) -> void:
@@ -98,7 +102,6 @@ func _physics_process(delta: float) -> void:
 	if attack_buffer_timer > 0:
 		attack_buffer_timer -= delta
 	
-
 func _unhandled_input(event: InputEvent) -> void:
 	super(event)
 
@@ -307,3 +310,14 @@ func _on_dash_attack_hit_box_area_entered(area: Area2D) -> void:
 			parent.apply_silenced_and_damage(damage, equipped_dash_attack.slow_wait_time)
 		else:
 			issue_attack(dash_attack_hit_box)
+
+
+func pick_up_items() -> void:
+	var areas : Array[Area2D]= item_pick_up_area.get_overlapping_areas()
+	if areas.get(0):
+		var area_parent = areas.get(0).get_parent()
+		if area_parent is ItemInteractable:
+			if !area_parent.can_pick_up:
+				area_parent.pick_up_item()
+
+			

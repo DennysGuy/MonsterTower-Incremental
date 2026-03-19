@@ -64,7 +64,6 @@ func damage_chest(damage : int) -> void:
 	damage_label.global_position = Vector2(global_position.x, global_position.y - 20)
 	get_parent().add_child(damage_label)
 
-
 func spawn_gem() -> void:
 	
 	var randi_num : int = randi_range(0, 100)

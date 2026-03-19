@@ -143,6 +143,9 @@ func init_tabs() -> void:
 	if PlayerStats.facilities_unlocked["Cooking Station"]:
 		use_tab.show()
 	
+	if PlayerStats.facilities_unlocked["Gem Stone Station"]:
+		gem_stones_tab.show()
+	
 	if PlayerStats.facilities_unlocked["Refinery Station"]:
 		ore_tab.show()
 		use_tab.show()

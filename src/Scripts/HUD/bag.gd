@@ -164,6 +164,10 @@ func init_tabs() -> void:
 		use_tab.show()
 		update_tab_label(use_tab_label,"Use", "Use")
 
+	if PlayerStats.facilities_unlocked["Gem Stone Station"]:
+		gem_stone_tab.show()
+		update_tab_label(gem_stone_tab_label, "Gems", "Gem Stones")
+
 	if PlayerStats.facilities_unlocked["Bank"]:
 		show_bank.show()
 	else:

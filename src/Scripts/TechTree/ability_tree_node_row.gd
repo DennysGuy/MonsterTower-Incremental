@@ -49,10 +49,11 @@ func load_state() -> void:
 	if is_stat_boost_row:
 		sigils_left_label.show()
 		sigils_left_label.text = "Select: %s" % unlocked_state["Sigils Left"]
-		if is_unlocked and unlocked_state["Sigils Left"] <= 0:
-			ability_row_lock.set_as_stat_boost_block()
-			return
-		ability_row_lock.hide()
+		#ability_row_lock.hide()
+
+func sigils_remain() -> bool:
+	var unlocked_state  = SaveManager.current_save_game.class_ability_rows[class_relation][unlock_level]
+	return unlocked_state["Sigils Left"] > 0
 
 func update_sigils_left() -> void:
 	if !is_stat_boost_row:

@@ -14,6 +14,7 @@ var enemies_can_move : bool = true
 var can_open_bag : bool = true
 var can_open_tower_map : bool = true
 var player_can_attack : bool = true
+var auto_pick_up_enabled : bool = false
 
 enum NOTIFICATION_TYPE {CRAFTING, COOKING, SMELTING, AP, QUEST}
 

@@ -12,6 +12,7 @@ class_name Map extends Node2D
 @export var hud : PlayerHUD
 @export var ore_rock_spawn_rate : float
 @export var ore_rock_markers : Node
+@export var gem_stone_chest_markers : Node
 @export var campfire_list : Node
 
 @export var path : String
@@ -226,6 +227,10 @@ func roll_ore_spawn_chance() -> int:
 	var rand_check : int = randi_range(0,100)
 	return rand_check <= int(100 * ore_rock_spawn_rate)
 
+func roll_gem_chest_spawn_chance() -> int:
+	var rand_check : int = randi_range(0,100)
+	return rand_check <= int(100 * PlayerStats.player_stats["Tier 1 Chest Spawn Rate"])
+
 func choose_spawn_spoint() -> PlayerSpawnPoint:
 	var spawn_points : Array = get_tree().get_nodes_in_group("SpawnPoints")
 	for spawn_local in spawn_points:
@@ -238,6 +243,11 @@ func spawn_ore_rocks() -> void:
 	for ore_rock_marker in ore_rock_markers.get_children():
 			if roll_ore_spawn_chance():
 				ore_rock_marker.spawn_ore_rock()
+
+func spawn_gem_chests() -> void:
+	for gem_chest in gem_stone_chest_markers.get_children():
+		if roll_gem_chest_spawn_chance():
+			gem_chest.spawn_gem_chest()
 
 func update_hunt_quota() -> void:
 	if !GameManager.hunt_challenge_selected:

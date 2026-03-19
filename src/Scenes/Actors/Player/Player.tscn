@@ -1910,6 +1910,9 @@ size = Vector2(52, 39)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0hs1n"]
 size = Vector2(8, 8)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0kjqt"]
+size = Vector2(40, 20)
+
 [node name="Player" type="CharacterBody2D" unique_id=1875939299 node_paths=PackedStringArray("idle_state", "jump_state", "fall_state", "climb_state", "swing_pick_axe", "attack_1", "air_attack", "dash_attack", "state_machine", "animation_player", "health_component", "sprite", "hurt_box", "hit_box", "hit_state", "dead_state", "sfx_player") groups=["Player"]]
 z_index = 4000
 collision_layer = 17
@@ -2194,6 +2197,15 @@ collision_mask = 512
 shape = SubResource("RectangleShape2D_0hs1n")
 
 [node name="SfxPlayer" parent="." unique_id=926725307 instance=ExtResource("25_1twwa")]
+
+[node name="ItemPickUpArea" type="Area2D" parent="." unique_id=1587504703]
+position = Vector2(0, -10)
+collision_layer = 2048
+collision_mask = 2048
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemPickUpArea" unique_id=1369609700]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_0kjqt")
 
 [connection signal="timeout" from="InvincibilityTimer" to="." method="_on_invincibility_timer_timeout"]
 [connection signal="timeout" from="AbilityCoolDownTimer" to="." method="_on_ability_cool_down_timer_timeout"]
