@@ -72,7 +72,6 @@ func unlock_ability_node_row(index : int) -> void:
 	await get_tree().create_timer(1.0).timeout
 	can_move_camera = true
 
-
 func check_for_unlocked_rows() -> void:
 	for row in node_row_v_box.get_children():
 		if row.is_unlocked and !row.is_stat_boost_row:

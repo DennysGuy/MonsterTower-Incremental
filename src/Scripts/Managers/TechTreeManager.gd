@@ -106,7 +106,9 @@ enum TECH_NODE_TYPE {ABILITY, FACILITY, CLASS_ABILITY}
 	"Ore Drop Chance 1": 0.0,
 	"Ore Drop Chance 2": 0.0,
 	"Invincibility Duration 1":0.0,
-	"Double Jump" : 0.0
+	"Double Jump" : 0.0,
+	"Tier 1 Gem Chest Rate Up": 0.0,
+	"Tier 1 Gem Drop Rate Up": 0.0
 }
 
 @onready var warrior_tech_nodes : Dictionary = {

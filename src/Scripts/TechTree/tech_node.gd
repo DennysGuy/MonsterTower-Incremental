@@ -32,7 +32,8 @@ var total_bonus : float = 0.0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if SaveManager.current_save_game:
-		var saved_data = SaveManager.current_save_game.tech_nodes.get(tech_node_stats.node_name)
+		var tech_node_name : String = tech_node_stats.node_name
+		var saved_data = SaveManager.current_save_game.tech_nodes.get(tech_node_name)
 		tech_node_stats.current_level = saved_data["Level"]
 		tech_node_stats.unlocked = saved_data["Unlocked"]
 		TechTreeManager.tech_nodes[tech_node_stats.node_name] = saved_data["Level"]

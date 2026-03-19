@@ -58,7 +58,9 @@ TODO: We will add saves for classes as well
 	"Cooking Drop Chance Bonus":0.0,
 	"Cooking Accuracy Bonus":0.0,
 	"Ore Drop Chance Bonus":0.0,
-	"Smelting Accuracy Bonus":0.0
+	"Smelting Accuracy Bonus":0.0,
+	"Tier 1 Chest Spawn Rate": 0.1,
+	"Tier 1 Gem Drop Rate":0.3
 }
 
 #this will be loaded when we enter the tower entrance map or a map in and of itself
@@ -95,7 +97,8 @@ TODO: We will add saves for classes as well
 	"Bank": false,
 	"Arial Slash" : false,
 	"Dash Attack": false,
-	"Double Jump": false
+	"Double Jump": false,
+	"Gem Stone Station": false
 }
 
 
@@ -160,7 +163,10 @@ TODO: We will add saves for classes as well
 	"Ore Drop Chance 1": {"Level":0, "Unlocked": false},
 	"Ore Drop Chance 2": {"Level":0, "Unlocked": false},
 	"Invincibility Duration 1": {"Level":0, "Unlocked": false},
-	"Double Jump": {"Level":0, "Unlocked": true}
+	"Double Jump": {"Level":0, "Unlocked": true},
+	"Gem Stone Station": {"Level":0, "Unlocked":false},
+	"Tier 1 Gem Chest Rate Up":{"Level":0, "Unlocked": false},
+	"Tier 1 Gem Drop Rate Up":{"Level":0, "Unlocked": false}
 }
 
 @export var equipped_abilities : Dictionary = {

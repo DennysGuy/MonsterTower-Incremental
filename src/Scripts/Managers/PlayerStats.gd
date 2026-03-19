@@ -54,8 +54,8 @@ const KNOCKBACK_FORCE : int = 300
 	"Cooking Accuracy Bonus":0.0,
 	"Ore Drop Chance Bonus":0.0,
 	"Smelting Accuracy Bonus":0.0,
-	"Tier 1 Chest Spawn Rate": 0.1,
-	"Tier 1 Gem Drop Rate Bonus":0.0 
+	"Tier 1 Chest Spawn Rate": 0.05,
+	"Tier 1 Gem Drop Rate":0.3 
 }
 
 var equipped_abilities : Dictionary = {

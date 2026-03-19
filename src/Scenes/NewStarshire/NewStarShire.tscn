@@ -1127,6 +1127,7 @@ position = Vector2(11.5, -12)
 shape = SubResource("RectangleShape2D_d6jc3")
 
 [node name="EnterUpgradeStationNotice" type="Label" parent="GemStoneStation" unique_id=1265158574]
+visible = false
 offset_left = -46.0
 offset_top = -48.0
 offset_right = 75.0

@@ -66,7 +66,13 @@ func damage_chest(damage : int) -> void:
 
 
 func spawn_gem() -> void:
-	var total_weight : int = no_drop_rate
+	
+	var randi_num : int = randi_range(0, 100)
+	var drop_rate : int = int(PlayerStats.player_stats["Tier 1 Gem Drop Rate"] * 100)
+	if randi_num > drop_rate:
+		return
+	
+	var total_weight : int = 0
 	
 	for gem in chest_stats.loot_table:
 		total_weight += gem.drop_rate

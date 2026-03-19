@@ -17,6 +17,7 @@ defense_bonus = 12.0
 attack_speed = 0.4
 crit_bonus = 0.1
 crit_damage_bonus = 0.1
+gem_stone_socket_count = 4
 recipe = ExtResource("3_tmuie")
 graphic = ExtResource("1_3rso2")
 mold_graphic = ExtResource("2_tmuie")
