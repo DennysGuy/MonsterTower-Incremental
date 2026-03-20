@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="EnemyStats" format=3 uid="uid://e6ejdj1jwoj0"]
+
+[ext_resource type="Script" uid="uid://cbjktr12qagl" path="res://src/Scripts/Enemies/enemy_stats.gd" id="1_jnlgl"]
+
+[resource]
+script = ExtResource("1_jnlgl")
+enemy_name = "Willow Shrub"
+enemy_level = 1
+touch_damage = true
+can_move = true
+enemy_type = 1
+max_health = 50
+attack = 15
+movement_speed = 30.0
+break_threshold = 3
+metadata/_custom_type_script = "uid://cbjktr12qagl"

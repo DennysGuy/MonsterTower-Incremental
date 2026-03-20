@@ -26,11 +26,11 @@
 [ext_resource type="PackedScene" uid="uid://cps01vtaqexec" path="res://src/Scenes/Tower/TowerFloors/GemStoneMarker.tscn" id="14_83waj"]
 [ext_resource type="PackedScene" uid="uid://c11hg5ijdrjjs" path="res://src/Scenes/Tower/TowerFloors/ExitElevator1.tscn" id="15_obgwm"]
 [ext_resource type="PackedScene" uid="uid://cexhahnue1wh6" path="res://src/Scenes/Tower/TowerFloors/FloorGuideLog.tscn" id="15_om3xh"]
-[ext_resource type="PackedScene" uid="uid://cyiot28va881c" path="res://src/Scenes/Actors/Enemies/CorruptedMushie/CorruptedMushie_Level2.tscn" id="22_o5ei8"]
 [ext_resource type="PackedScene" uid="uid://cpb0pkf7ygatb" path="res://src/Scenes/Tower/TowerFloors/MonsterSpawnNode.tscn" id="23_6qxhp"]
 [ext_resource type="PackedScene" uid="uid://c6tv3t1cpeq8f" path="res://src/Scenes/PlayerSpawnPoint.tscn" id="23_jmmg4"]
 [ext_resource type="Resource" uid="uid://dbb7k6hptjvyy" path="res://src/Resources/TowerEntranceData/Floor1-2.tres" id="26_cvbrj"]
 [ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="26_r86ak"]
+[ext_resource type="PackedScene" uid="uid://d1c4li7h3joya" path="res://src/Scenes/Actors/Enemies/WillowShrub/WillowShrub.tscn" id="26_rayuj"]
 [ext_resource type="PackedScene" uid="uid://d150vkltffpjo" path="res://src/Scenes/Tower/TowerFloors/CheckPointCampfire.tscn" id="27_8wimh"]
 [ext_resource type="Texture2D" uid="uid://xd36daaflxhj" path="res://Assets/Tower/ExitAreaIcon.png" id="30_yeiuc"]
 [ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="33_savf5"]
@@ -1321,7 +1321,7 @@ max_hunt_challenge_spawn = 3
 drop_scene = NodePath("..")
 spawn_root = NodePath("../MonsterSpawnNode")
 monster_list = Dictionary[PackedScene, int]({
-ExtResource("6_ko10l"): 100
+ExtResource("26_rayuj"): 100
 })
 area_collision_shape = NodePath("CollisionShape2D")
 
@@ -1338,7 +1338,7 @@ max_hunt_challenge_spawn = 6
 drop_scene = NodePath("..")
 spawn_root = NodePath("../MonsterSpawnNode")
 monster_list = Dictionary[PackedScene, int]({
-ExtResource("6_ko10l"): 100
+ExtResource("26_rayuj"): 100
 })
 area_collision_shape = NodePath("CollisionShape2D")
 
@@ -1355,8 +1355,8 @@ max_hunt_challenge_spawn = 6
 drop_scene = NodePath("..")
 spawn_root = NodePath("../MonsterSpawnNode")
 monster_list = Dictionary[PackedScene, int]({
-ExtResource("6_ko10l"): 70,
-ExtResource("22_o5ei8"): 30
+ExtResource("26_rayuj"): 70,
+ExtResource("6_ko10l"): 30
 })
 area_collision_shape = NodePath("CollisionShape2D")
 

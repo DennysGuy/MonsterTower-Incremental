@@ -185,6 +185,7 @@ const MAX_SWORD_COUNT := 3
 
 var show_cooking_station_unlock_animation : bool = false
 var show_refinery_station_unlock_animation : bool = false
+var show_gem_station_unlock_animation : bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -255,6 +256,8 @@ func upgrade_player_stat(stat_name : String, interval : float, node_type : TechT
 			show_cooking_station_unlock_animation = true
 		elif stat_name == "Refinery Station":
 			show_refinery_station_unlock_animation = true
+		elif stat_name == "Gem Stone Station":
+			show_gem_station_unlock_animation = true
 		#we'll need a way to figure out how to iniate a cutscene showing unlock sequence
 		return
 	
