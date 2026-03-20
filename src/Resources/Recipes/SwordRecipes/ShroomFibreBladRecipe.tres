@@ -2,6 +2,7 @@
 
 [ext_resource type="Resource" uid="uid://jn2dh2fyq5ep" path="res://src/Resources/Actors/Enemies/Biome1/CorruptedMushie/FiberousMushieStalk.tres" id="1_d5mfv"]
 [ext_resource type="Script" uid="uid://cljygiasf4103" path="res://src/Scripts/Facilities/crafting_recipe.gd" id="1_qb5l5"]
+[ext_resource type="Resource" uid="uid://7rdwam0uhnl2" path="res://src/Resources/Actors/Enemies/Biome1/WillowShrub/ShrubMask.tres" id="2_fiiat"]
 
 [resource]
 script = ExtResource("1_qb5l5")
@@ -11,5 +12,7 @@ recipe_tier = 1
 recipe_type = 2
 recipe_list = Array[Dictionary]([{
 ExtResource("1_d5mfv"): 6
+}, {
+ExtResource("2_fiiat"): 6
 }])
 metadata/_custom_type_script = "uid://cljygiasf4103"

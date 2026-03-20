@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="EnemyDrop" format=3 uid="uid://7rdwam0uhnl2"]
+
+[ext_resource type="Script" uid="uid://cubudt76pshmm" path="res://src/Scripts/Enemies/enemy_drop.gd" id="1_78gsj"]
+[ext_resource type="Texture2D" uid="uid://biwk6aswh8m0q" path="res://Assets/Enemies/WillowShrub/ShrubMask.png" id="1_foqfa"]
+
+[resource]
+script = ExtResource("1_78gsj")
+drop_icon = ExtResource("1_foqfa")
+drop_chance = 0.3
+item_name = "Shrub Mask"
+item_type = 2
+sell_value = 35
+shop_icon = ExtResource("1_foqfa")
+description = "The material of this mask might be great to repurpose for tools.."
+metadata/_custom_type_script = "uid://cubudt76pshmm"

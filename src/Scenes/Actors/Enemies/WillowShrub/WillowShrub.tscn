@@ -375,9 +375,8 @@ libraries/ = SubResource("AnimationLibrary_adl3q")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2103855697]
 position = Vector2(0, -19)
-texture = ExtResource("7_k7oqd")
+texture = ExtResource("3_k7oqd")
 hframes = 8
-frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=400191748]
 visible = false

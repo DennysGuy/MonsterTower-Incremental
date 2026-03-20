@@ -8,15 +8,15 @@
 [resource]
 script = ExtResource("4_6sa1w")
 enemy_name = "Corrupted Mushie"
-enemy_level = 2
+enemy_level = 3
 touch_damage = true
 can_move = true
 enemy_type = 1
-max_health = 135
-attack = 16
+max_health = 140
+attack = 18
 movement_speed = 53.0
 chase_speed = 65.0
-break_threshold = 3
+break_threshold = 4
 novelty_item_drop = ExtResource("2_yemqc")
 cooking_item_drop = ExtResource("1_2wbji")
 crafting_item_drop = ExtResource("2_doqwy")

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EnemyDrop" format=3 uid="uid://can4nlbn57x84"]
+
+[ext_resource type="Script" uid="uid://cubudt76pshmm" path="res://src/Scripts/Enemies/enemy_drop.gd" id="1_8a3yf"]
+[ext_resource type="Texture2D" uid="uid://chxfsagg0imew" path="res://Assets/Enemies/WillowShrub/ShrubCore.png" id="1_wwvvo"]
+
+[resource]
+script = ExtResource("1_8a3yf")
+drop_icon = ExtResource("1_wwvvo")
+drop_chance = 0.9
+item_name = "Shrub Core"
+sell_value = 30
+shop_icon = ExtResource("1_wwvvo")
+description = "The Core of a Willow Shrub. One of the most common items retrieved from the tower, so not worth much."
+metadata/_custom_type_script = "uid://cubudt76pshmm"

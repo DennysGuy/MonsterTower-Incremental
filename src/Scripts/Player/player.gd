@@ -314,10 +314,12 @@ func _on_dash_attack_hit_box_area_entered(area: Area2D) -> void:
 
 func pick_up_items() -> void:
 	var areas : Array[Area2D]= item_pick_up_area.get_overlapping_areas()
-	if areas.get(0):
-		var area_parent = areas.get(0).get_parent()
+	for area in areas:
+		var area_parent = area.get_parent()
 		if area_parent is ItemInteractable:
-			if !area_parent.can_pick_up:
+			if area_parent and !area_parent.can_pick_up:
 				area_parent.pick_up_item()
-
+				if area_parent.can_pick_up:
+					return			
+	
 			

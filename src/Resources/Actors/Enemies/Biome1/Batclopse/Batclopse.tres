@@ -8,16 +8,16 @@
 [resource]
 script = ExtResource("1_m1ike")
 enemy_name = "Batclopse"
-enemy_level = 3
+enemy_level = 4
 touch_damage = true
 can_attack = true
 can_move = true
 enemy_type = 1
-max_health = 150
-attack = 21
+max_health = 200
+attack = 23
 movement_speed = 65.0
 chase_speed = 80.0
-break_threshold = 3
+break_threshold = 4
 novelty_item_drop = ExtResource("3_q2e0m")
 cooking_item_drop = ExtResource("1_bagc7")
 crafting_item_drop = ExtResource("2_vel66")
