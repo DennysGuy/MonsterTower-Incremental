@@ -1,6 +1,8 @@
 class_name TowerEntranceData extends Resource
 
 @export var floor_name : String
+enum FLOOR_TYPE {EXPEDITION, CHALLENGE, BOSS_DOOR, BOSS_ROOM}
+@export var floor_type : FLOOR_TYPE
 @export var biome : String
 @export var number_of_spawn_locations : int = 0 #this starts at index 0 and goes up. 
 @export var camp_fires_reached : int  = 0

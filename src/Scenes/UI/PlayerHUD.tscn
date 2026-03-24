@@ -530,27 +530,30 @@ offset_right = 81.0
 
 [node name="HuntQuota" type="RichTextLabel" parent="PlayerHUD" unique_id=325974037]
 layout_mode = 0
-offset_left = 273.0
+offset_left = 481.0
 offset_top = 50.0
-offset_right = 629.0
-offset_bottom = 68.0
+offset_right = 605.0
+offset_bottom = 65.0
 theme_override_constants/outline_size = 6
 theme_override_fonts/normal_font = ExtResource("9_jyqen")
+theme_override_font_sizes/normal_font_size = 14
 bbcode_enabled = true
-horizontal_alignment = 2
+text = "Expedition Floor"
+horizontal_alignment = 1
 
 [node name="MonstersLeft" type="RichTextLabel" parent="PlayerHUD" unique_id=130429852]
 layout_mode = 0
 offset_left = 460.0
-offset_top = 69.0
+offset_top = 78.0
 offset_right = 629.0
-offset_bottom = 105.0
+offset_bottom = 94.0
 theme_override_constants/outline_size = 6
 theme_override_fonts/normal_font = ExtResource("9_jyqen")
+theme_override_font_sizes/normal_font_size = 12
 bbcode_enabled = true
 text = "
 "
-horizontal_alignment = 2
+horizontal_alignment = 1
 
 [node name="XPAmountLabel" type="Label" parent="PlayerHUD" unique_id=2114485998]
 layout_mode = 1
@@ -625,6 +628,7 @@ theme_override_fonts/font = ExtResource("5_nt012")
 horizontal_alignment = 1
 
 [node name="Flash" type="ColorRect" parent="PlayerHUD" unique_id=1206488663]
+visible = false
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -801,8 +805,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -185.0
-offset_bottom = -185.0
+offset_top = -362.0
+offset_bottom = -362.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -813,8 +817,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 175.0
-offset_bottom = 175.00018
+offset_top = 362.0
+offset_bottom = 362.00018
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
