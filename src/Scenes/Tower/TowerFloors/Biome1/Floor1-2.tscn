@@ -872,6 +872,8 @@ position = Vector2(1, 57)
 
 [node name="MonsterSpawnArea" parent="." unique_id=1888246897 node_paths=PackedStringArray("drop_scene", "spawn_root", "area_collision_shape") instance=ExtResource("13_jxry2")]
 position = Vector2(437, 1457)
+max_monsters = 4
+respawn_wait_time = 6.0
 min_spawn = 4
 min_hunt_challenge_spawn = 4
 max_spawn = 5
@@ -889,6 +891,8 @@ shape = SubResource("RectangleShape2D_qrx52")
 
 [node name="MonsterSpawnArea2" parent="." unique_id=1253433513 node_paths=PackedStringArray("drop_scene", "spawn_root", "area_collision_shape") instance=ExtResource("13_jxry2")]
 position = Vector2(320, 1088)
+max_monsters = 5
+respawn_wait_time = 10.0
 min_spawn = 4
 min_hunt_challenge_spawn = 6
 max_spawn = 5
@@ -909,7 +913,9 @@ shape = SubResource("RectangleShape2D_n7xsw")
 
 [node name="MonsterSpawnArea3" parent="." unique_id=1255151433 node_paths=PackedStringArray("drop_scene", "spawn_root", "area_collision_shape") instance=ExtResource("13_jxry2")]
 position = Vector2(320, 655)
-min_spawn = 4
+max_monsters = 5
+respawn_wait_time = 10.0
+min_spawn = 3
 min_hunt_challenge_spawn = 6
 max_spawn = 5
 max_hunt_challenge_spawn = 8
@@ -927,7 +933,9 @@ shape = SubResource("RectangleShape2D_n7xsw")
 
 [node name="MonsterSpawnArea4" parent="." unique_id=1100352714 node_paths=PackedStringArray("drop_scene", "spawn_root", "area_collision_shape") instance=ExtResource("13_jxry2")]
 position = Vector2(320, 255)
-min_spawn = 6
+max_monsters = 6
+respawn_wait_time = 10.0
+min_spawn = 5
 min_hunt_challenge_spawn = 6
 max_spawn = 8
 max_hunt_challenge_spawn = 7

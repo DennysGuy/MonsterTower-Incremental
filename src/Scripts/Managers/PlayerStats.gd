@@ -276,6 +276,12 @@ func upgrade_player_stat(stat_name : String, interval : float, node_type : TechT
 	InventoryManager.update_inventory_bag.emit("Inventory")
 	TechTreeManager.update_player_stats.emit()
 
+func load_abilities() -> void:
+	var ability_names : Array[String] = ["Air Attack", "Dash Attack", "Double Jump", "Special Attack"]
+
+	for ability_name in ability_names:
+		get_equipped_ability(ability_name).load_stats()
+
 func check_needed_for_dojo() -> bool:
 	return PlayerStats.player_stats["Level"] >= 5 and PlayerStats.facilities_unlocked["Dash Attack"] and PlayerStats.facilities_unlocked["Arial Slash"] and PlayerStats.facilities_unlocked["Double Jump"]
 

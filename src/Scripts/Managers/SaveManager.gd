@@ -43,6 +43,7 @@ func init_save_file() -> void:
 	TechTreeManager.current_upgrade_count = current_save_game.current_upgrade_count
 	TechTreeManager.upgrade_count_to_prestige = current_save_game.upgrade_count_to_prestige
 	load_equipped_abilities()
+	PlayerStats.load_abilities()
 	load_gem_sockets()
 	
 func save_tech_tree_data() -> void:
@@ -91,8 +92,10 @@ func load_equipped_abilities() -> void:
 		if uid != null:
 			if uid is String:
 				PlayerStats.get_equipped_abilities()[key] = load(uid)
+				#PlayerStats.get_equipped_abilities()[key].load_stats()
 			else:
 				PlayerStats.get_equipped_abilities()[key] = load(uid.resource_path)
+				#PlayerStats.get_equipped_abilities()[key].load_stats()
 
 func load_gem_sockets() -> void:
 	for gem_socket in current_save_game.equipped_gem_sockets.keys():

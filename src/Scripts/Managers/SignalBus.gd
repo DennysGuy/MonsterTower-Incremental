@@ -116,3 +116,5 @@ signal check_for_notification(notification_type : GameManager.NOTIFICATION_TYPE)
 signal spawn_warrior_tech_tree
 @warning_ignore("unused_signal")
 signal update_gem_station_sockets
+@warning_ignore("unused_signal")
+signal update_banner_info(tower_entrance_data : TowerEntranceData)

@@ -79,24 +79,24 @@ func _ready() -> void:
 		
 		if map_type == MAP_TYPE.CHECKPOINT_FLOOR:	
 			hud.expedition_timer.show_stop_watch()
-			if !GameManager.hunt_challenge_selected:
-				if tower_entrance_data.hunt_challenge_completed:
-					SignalBus.unlock_next_room.emit()
-					SignalBus.update_kill_quota_text.emit("", tower_entrance_data.hunt_challenge_completed, tower_entrance_data.hunt_challenge_unlocked)
-				else:
-					SignalBus.update_kill_quota_text.emit("", false, tower_entrance_data.hunt_challenge_unlocked)
-					if tower_entrance_data.hunt_challenge_unlocked and !tower_entrance_data.hunt_challenge_completed:
-						SignalBus.show_hunt_challenge_button.emit()
-					else:
-						SignalBus.hide_hunt_challenge_button.emit()
-				SignalBus.show_bag_stats.emit()
-					
-			if monster_spawn_node:
-				if GameManager.hunt_challenge_selected:
-					SignalBus.update_monsters_left.emit("Monsters Left: %s" % [monster_spawn_node.get_children().size()],false)
-				else:
-					SignalBus.update_monsters_left.emit("Campfires Discovered: %s/%s" % [tower_entrance_data.camp_fires_reached, tower_entrance_data.total_camp_fires],false)
-			
+			#if !GameManager.hunt_challenge_selected:
+				#if tower_entrance_data.hunt_challenge_completed:
+					#SignalBus.unlock_next_room.emit()
+					#SignalBus.update_kill_quota_text.emit("", tower_entrance_data.hunt_challenge_completed, tower_entrance_data.hunt_challenge_unlocked)
+				#else:
+					#SignalBus.update_kill_quota_text.emit("", false, tower_entrance_data.hunt_challenge_unlocked)
+					#if tower_entrance_data.hunt_challenge_unlocked and !tower_entrance_data.hunt_challenge_completed:
+						#SignalBus.show_hunt_challenge_button.emit()
+					#else:
+						#SignalBus.hide_hunt_challenge_button.emit()
+				#SignalBus.show_bag_stats.emit()
+					#
+			#if monster_spawn_node:
+				#if GameManager.hunt_challenge_selected:
+					#SignalBus.update_monsters_left.emit("Monsters Left: %s" % [monster_spawn_node.get_children().size()],false)
+				#else:
+					#SignalBus.update_monsters_left.emit("Campfires Discovered: %s/%s" % [tower_entrance_data.camp_fires_reached, tower_entrance_data.total_camp_fires],false)
+			SignalBus.update_banner_info.emit(tower_entrance_data)
 			PlayerStats.check_points_unlocked[map_name] = true
 			save_floor_data()
 			SaveManager.save_player_stats()
@@ -137,8 +137,6 @@ func _process(delta: float) -> void:
 		pause_canvas_layer.show()
 		pause_canvas_layer.add_child(pause_menu)
 
-
-	
 func spawn_player() -> void:
 	var new_player : Player = preload("uid://wuy3aelq8aeg").instantiate()
 	player = new_player

@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://13aket7geo5a" path="res://src/Scenes/UI/NotificationHub.tscn" id="12_wldwa"]
 [ext_resource type="Texture2D" uid="uid://dix63priuogkk" path="res://Assets/NodeGraphics/NodeGraphicsV2/Bag1_V2.png" id="13_fw5mt"]
 [ext_resource type="PackedScene" uid="uid://djwayx7h06hx3" path="res://src/Scenes/UI/QuestHub.tscn" id="14_xxan5"]
+[ext_resource type="PackedScene" uid="uid://db7vqj43a3h6c" path="res://src/Scenes/UI/RoomInfoBanner.tscn" id="16_fnmb5"]
 
 [sub_resource type="Animation" id="Animation_g1bs5"]
 resource_name = "CloseIn"
@@ -529,6 +530,7 @@ layout_mode = 1
 offset_right = 81.0
 
 [node name="HuntQuota" type="RichTextLabel" parent="PlayerHUD" unique_id=325974037]
+visible = false
 layout_mode = 0
 offset_left = 481.0
 offset_top = 50.0
@@ -542,6 +544,7 @@ text = "Expedition Floor"
 horizontal_alignment = 1
 
 [node name="MonstersLeft" type="RichTextLabel" parent="PlayerHUD" unique_id=130429852]
+visible = false
 layout_mode = 0
 offset_left = 460.0
 offset_top = 78.0
@@ -691,9 +694,9 @@ mouse_filter = 2
 visible = false
 layout_mode = 0
 offset_left = 456.0
-offset_top = 9.0
+offset_top = 4.0
 offset_right = 536.0
-offset_bottom = 41.0
+offset_bottom = 36.0
 mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0.9411765, 0.15686275, 0, 1)
 theme_override_fonts/font = ExtResource("9_jyqen")
@@ -779,6 +782,13 @@ layout_mode = 1
 offset_left = -2.0
 offset_right = 130.00012
 
+[node name="RoomInfoBanner" parent="PlayerHUD" unique_id=1196855950 instance=ExtResource("16_fnmb5")]
+layout_mode = 1
+offset_left = 131.0
+offset_top = -145.0
+offset_right = 321.0
+offset_bottom = -85.0
+
 [node name="Bag" parent="PlayerHUD" unique_id=668700631 instance=ExtResource("6_g1bs5")]
 z_index = 4096
 layout_mode = 1
@@ -805,8 +815,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -362.0
-offset_bottom = -362.0
+offset_top = -185.0
+offset_bottom = -185.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -817,8 +827,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 362.0
-offset_bottom = 362.00018
+offset_top = 175.0
+offset_bottom = 175.00018
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
