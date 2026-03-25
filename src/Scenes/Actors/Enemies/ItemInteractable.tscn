@@ -137,6 +137,7 @@ position = Vector2(0, -12)
 texture = ExtResource("1_va8fw")
 
 [node name="DestroyTimer" type="Timer" parent="." unique_id=75642666]
+process_callback = 0
 wait_time = 30.0
 one_shot = true
 autostart = true

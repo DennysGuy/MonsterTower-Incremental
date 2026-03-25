@@ -79,17 +79,17 @@ func _ready() -> void:
 		
 		if map_type == MAP_TYPE.CHECKPOINT_FLOOR:	
 			hud.expedition_timer.show_stop_watch()
-			#if !GameManager.hunt_challenge_selected:
-				#if tower_entrance_data.hunt_challenge_completed:
-					#SignalBus.unlock_next_room.emit()
+			if !GameManager.hunt_challenge_selected:
+				if tower_entrance_data.hunt_challenge_completed:
+					SignalBus.unlock_next_room.emit()
 					#SignalBus.update_kill_quota_text.emit("", tower_entrance_data.hunt_challenge_completed, tower_entrance_data.hunt_challenge_unlocked)
 				#else:
-					#SignalBus.update_kill_quota_text.emit("", false, tower_entrance_data.hunt_challenge_unlocked)
+					##SignalBus.update_kill_quota_text.emit("", false, tower_entrance_data.hunt_challenge_unlocked)
 					#if tower_entrance_data.hunt_challenge_unlocked and !tower_entrance_data.hunt_challenge_completed:
 						#SignalBus.show_hunt_challenge_button.emit()
 					#else:
 						#SignalBus.hide_hunt_challenge_button.emit()
-				#SignalBus.show_bag_stats.emit()
+				SignalBus.show_bag_stats.emit()
 					#
 			#if monster_spawn_node:
 				#if GameManager.hunt_challenge_selected:

@@ -2,6 +2,7 @@ class_name ExitElevator extends Node2D
 
 @export var next_room : PackedScene
 @export var next_room_data : TowerEntranceData
+@export var current_room_data : TowerEntranceData
 var player_in_range : bool = false
 var kill_quota_met : bool = false
 var doors_open : bool = false
@@ -15,28 +16,27 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("interact") and player_in_range and kill_quota_met:
+	if Input.is_action_just_pressed("interact") and player_in_range:
 		if GameManager.hunt_challenge_selected:
 			unlock_next_floor()
 			SignalBus.go_to_victory_hunt_menu.emit()
 		else:
-			MusicPlayer.transitioning_floors = true
-			GameManager.spawn_location = 0
-			SignalBus.move_to_next_room.emit()
-
+			if kill_quota_met or current_room_data.floor_type == current_room_data.FLOOR_TYPE.EXPEDITION:
+				MusicPlayer.transitioning_floors = true
+				GameManager.spawn_location = 0
+				SignalBus.move_to_next_room.emit()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Player:
 		player_in_range = true
 		
-		if kill_quota_met:
+		if kill_quota_met or current_room_data.floor_type == current_room_data.FLOOR_TYPE.EXPEDITION:
 			move_to_next_room_label.text = "Press 'E' to advance to next floor!"
 			doors_open = true
 			animation_player.play("DoorsOpen")
 		else:
-			move_to_next_room_label.text = "Meet the Floor's Kill Quota to advance."
+			move_to_next_room_label.text = "Beat the Challenge to Unlock Next Floor."
 
-		
 		move_to_next_room_label.show()
 		
 
