@@ -207,7 +207,7 @@ func go_to_failure_menu() -> void:
 	if tree != null:
 		tree.change_scene_to_file("uid://du5klyuwi6so2")	
 
-func move_to_next_room() -> void:
+func move_to_next_room(room_path : String) -> void:
 	if not next_room_path:
 		return
 
@@ -219,7 +219,7 @@ func move_to_next_room() -> void:
 	await tree.create_timer(1.0).timeout
 
 	if tree != null:
-		tree.change_scene_to_file(next_room_path)
+		tree.change_scene_to_file(room_path)
 
 func roll_ore_spawn_chance() -> int:
 	var rand_check : int = randi_range(0,100)

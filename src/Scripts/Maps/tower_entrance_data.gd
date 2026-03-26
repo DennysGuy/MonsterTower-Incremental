@@ -12,3 +12,15 @@ enum FLOOR_TYPE {EXPEDITION, CHALLENGE, BOSS_DOOR, BOSS_ROOM}
 @export var hunt_challenge_completed : bool = false
 @export var scene_path : String
 @export var preview_pictures : Array[Texture2D]
+
+func is_expedition_floor() -> bool:
+	return floor_type == FLOOR_TYPE.EXPEDITION
+
+func is_challenge_floor() -> bool:
+	return floor_type == FLOOR_TYPE.CHALLENGE
+
+func is_boss_door() -> bool:
+	return floor_type == FLOOR_TYPE.BOSS_DOOR
+
+func is_boss_floor() -> bool:
+	return floor_type == FLOOR_TYPE.BOSS_ROOM 

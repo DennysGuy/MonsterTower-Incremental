@@ -12,11 +12,9 @@
 [ext_resource type="AudioStream" uid="uid://bnfe0t36iu1dy" path="res://Audio/Music/TemporaryHuntMusic.mp3" id="4_nhahy"]
 [ext_resource type="TileSet" uid="uid://flobhfna8te" path="res://src/Scenes/Tower/TowerFloors/Biome1/Biome1-Platforms.tres" id="5_f2nj7"]
 [ext_resource type="AudioStream" uid="uid://n4ky26neitxn" path="res://Audio/Music/TempVictoryTheme1.mp3" id="5_kbbvk"]
-[ext_resource type="PackedScene" uid="uid://crvhogk2bnq1s" path="res://src/Scenes/NewStarshire/TowerGuideSprite.tscn" id="6_nb31h"]
 [ext_resource type="PackedScene" uid="uid://cexhahnue1wh6" path="res://src/Scenes/Tower/TowerFloors/FloorGuideLog.tscn" id="7_acl6u"]
 [ext_resource type="PackedScene" uid="uid://dysg5kffvxbql" path="res://src/Scenes/UI/PlayerHUD.tscn" id="8_kwf2g"]
 [ext_resource type="PackedScene" uid="uid://dj0ett15s3u5m" path="res://src/Scenes/Tower/TowerFloors/OreRockMarker.tscn" id="8_ujmhj"]
-[ext_resource type="PackedScene" uid="uid://cepv6hcj1jotc" path="res://src/Scenes/Tower/TowerFloors/TowerExitArea.tscn" id="8_w4dci"]
 [ext_resource type="Resource" uid="uid://svq41nllat54" path="res://src/Resources/OreRock/CopperOreRock.tres" id="9_qrx52"]
 [ext_resource type="PackedScene" uid="uid://c8ov03gkkda4k" path="res://src/Scenes/PlayerCamera.tscn" id="9_w4dci"]
 [ext_resource type="PackedScene" uid="uid://colj4ff1w8ij1" path="res://src/Scenes/Tower/OreRock.tscn" id="10_n7xsw"]
@@ -33,8 +31,10 @@
 [ext_resource type="Resource" uid="uid://vibb3cg4b01g" path="res://src/Resources/TowerEntranceData/Floor1-3.tres" id="25_o2dcr"]
 [ext_resource type="PackedScene" uid="uid://d150vkltffpjo" path="res://src/Scenes/Tower/TowerFloors/CheckPointCampfire.tscn" id="26_qbeca"]
 [ext_resource type="PackedScene" uid="uid://cpb0pkf7ygatb" path="res://src/Scenes/Tower/TowerFloors/MonsterSpawnNode.tscn" id="27_ynp3n"]
+[ext_resource type="Resource" uid="uid://bf1rfaj3ly67c" path="res://src/Resources/Recipes/ElevatorRepairRecipes/Floor1-2RepairRecipe.tres" id="28_50mol"]
 [ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="31_41cgd"]
-[ext_resource type="Texture2D" uid="uid://xd36daaflxhj" path="res://Assets/Tower/ExitAreaIcon.png" id="31_706tx"]
+[ext_resource type="PackedScene" uid="uid://dd63dgr038myr" path="res://src/Scenes/Tower/TowerFloors/PrevElevator1.tscn" id="33_kbbvk"]
+[ext_resource type="Resource" uid="uid://cnvnsw0143wep" path="res://src/Resources/TowerEntranceData/Floor1-1.tres" id="34_cfe63"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6ds7u"]
 texture = ExtResource("2_aukmg")
@@ -537,9 +537,6 @@ texture = ExtResource("2_aukmg")
 [sub_resource type="TileSet" id="TileSet_ux62a"]
 sources/0 = SubResource("TileSetAtlasSource_6ds7u")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kwf2g"]
-size = Vector2(117, 59)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rsjkl"]
 size = Vector2(22, 334)
 
@@ -629,9 +626,6 @@ tile_set = ExtResource("5_f2nj7")
 [node name="Ladders" type="TileMapLayer" parent="Node2D" unique_id=1882672754]
 tile_map_data = PackedByteArray("AAATAEUAAAAXABEAAAATAEYAAAAXABEAAAATAEcAAAAXABIAAAATAEgAAAAXABMAAAAUAEUAAAAYABEAAAAUAEYAAAAYABEAAAAUAEcAAAAYABIAAAAUAEgAAAAYABMAAAATAEkAAAAXABEAAAATAEoAAAAXABIAAAATAEsAAAAXABMAAAAUAEkAAAAYABEAAAAUAEoAAAAYABIAAAAUAEsAAAAYABMAAAATAEwAAAAXABEAAAATAE0AAAAXABIAAAATAE4AAAAXABMAAAAUAEwAAAAYABEAAAAUAE0AAAAYABIAAAAUAE4AAAAYABMAAAATAE8AAAAXABEAAAATAFAAAAAXABIAAAATAFEAAAAXABMAAAAUAE8AAAAYABEAAAAUAFAAAAAYABIAAAAUAFEAAAAYABMAAAATAFIAAAAXABEAAAATAFMAAAAXABIAAAATAFQAAAAXABMAAAAUAFIAAAAYABEAAAAUAFMAAAAYABIAAAAUAFQAAAAYABMAAAATAFUAAAAXABEAAAATAFYAAAAXABIAAAATAFcAAAAXABMAAAAUAFUAAAAYABEAAAAUAFYAAAAYABIAAAAUAFcAAAAYABMAAAATAFgAAAAXABQAAAAUAFgAAAAYABQAAAATAEQAAAAXABAAAAAUAEQAAAAYABAAAAAfADIAAAAXABAAAAAgADIAAAAYABAAAAAfADMAAAAXABEAAAAfADQAAAAXABIAAAAfADUAAAAXABMAAAAgADMAAAAYABEAAAAgADQAAAAYABIAAAAgADUAAAAYABMAAAAfADYAAAAXABQAAAAgADYAAAAYABQAAAAKACkAAAAXABAAAAALACkAAAAYABAAAAAKACoAAAAXABEAAAAKACsAAAAXABIAAAAKACwAAAAXABMAAAALACoAAAAYABEAAAALACsAAAAYABIAAAALACwAAAAYABMAAAAKAC0AAAAXABIAAAAKAC4AAAAXABMAAAALAC0AAAAYABIAAAALAC4AAAAYABMAAAAKAC8AAAAXABQAAAALAC8AAAAYABQAAAATAAkAAAAXABAAAAAUAAkAAAAYABAAAAATAAoAAAAXABEAAAATAAsAAAAXABIAAAAUAAoAAAAYABEAAAAUAAsAAAAYABIAAAATAAwAAAAXABMAAAAUAAwAAAAYABMAAAATAA0AAAAXABQAAAAUAA0AAAAYABQAAAAaABsAAAAXABAAAAAbABsAAAAYABAAAAAaABwAAAAXABEAAAAaAB0AAAAXABIAAAAbABwAAAAYABEAAAAbAB0AAAAYABIAAAAaAB4AAAAXABMAAAAaAB8AAAAXABIAAAAbAB4AAAAYABMAAAAbAB8AAAAYABIAAAAaACAAAAAXABEAAAAaACEAAAAXABIAAAAaACIAAAAXABMAAAAbACAAAAAYABEAAAAbACEAAAAYABIAAAAbACIAAAAYABMAAAAaACMAAAAXABEAAAAaACQAAAAXABIAAAAaACUAAAAXABMAAAAbACMAAAAYABEAAAAbACQAAAAYABIAAAAbACUAAAAYABMAAAAaACYAAAAXABQAAAAbACYAAAAYABQAAAAKAD4AAAAXABAAAAALAD4AAAAYABAAAAAKAD8AAAAXABEAAAAKAEAAAAAXABIAAAALAD8AAAAYABEAAAALAEAAAAAYABIAAAAKAEEAAAAXABMAAAALAEEAAAAYABMAAAAeAFUAAAAXABAAAAAfAFUAAAAYABAAAAAeAFYAAAAXABEAAAAeAFcAAAAXABIAAAAeAFgAAAAXABMAAAAfAFYAAAAYABEAAAAfAFcAAAAYABIAAAAfAFgAAAAYABMAAAA=")
 tile_set = ExtResource("3_ukbus")
-
-[node name="TowerGuideSprite" parent="." unique_id=1465712689 instance=ExtResource("6_nb31h")]
-position = Vector2(149, 1423)
 
 [node name="GemStoneChestMarkers" type="Node" parent="." unique_id=843895436]
 
@@ -743,13 +737,6 @@ offset_left = 84.0
 offset_top = 1377.0
 offset_right = 237.0
 offset_bottom = 1392.0
-
-[node name="TowerExitArea" parent="." unique_id=438098519 instance=ExtResource("8_w4dci")]
-position = Vector2(148, 1431)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TowerExitArea" unique_id=1057525766]
-position = Vector2(25.5, -4.5)
-shape = SubResource("RectangleShape2D_kwf2g")
 
 [node name="LadderArea" parent="." unique_id=215680108 node_paths=PackedStringArray("ladder_top", "ladder_bottom") instance=ExtResource("12_61350")]
 position = Vector2(319, 1253)
@@ -873,7 +860,7 @@ position = Vector2(1, 57)
 [node name="MonsterSpawnArea" parent="." unique_id=1888246897 node_paths=PackedStringArray("drop_scene", "spawn_root", "area_collision_shape") instance=ExtResource("13_jxry2")]
 position = Vector2(437, 1457)
 max_monsters = 4
-respawn_wait_time = 6.0
+respawn_wait_time = 15.0
 min_spawn = 4
 min_hunt_challenge_spawn = 4
 max_spawn = 5
@@ -892,7 +879,7 @@ shape = SubResource("RectangleShape2D_qrx52")
 [node name="MonsterSpawnArea2" parent="." unique_id=1253433513 node_paths=PackedStringArray("drop_scene", "spawn_root", "area_collision_shape") instance=ExtResource("13_jxry2")]
 position = Vector2(320, 1088)
 max_monsters = 5
-respawn_wait_time = 10.0
+respawn_wait_time = 15.0
 min_spawn = 4
 min_hunt_challenge_spawn = 6
 max_spawn = 5
@@ -914,7 +901,7 @@ shape = SubResource("RectangleShape2D_n7xsw")
 [node name="MonsterSpawnArea3" parent="." unique_id=1255151433 node_paths=PackedStringArray("drop_scene", "spawn_root", "area_collision_shape") instance=ExtResource("13_jxry2")]
 position = Vector2(320, 655)
 max_monsters = 5
-respawn_wait_time = 10.0
+respawn_wait_time = 15.0
 min_spawn = 3
 min_hunt_challenge_spawn = 6
 max_spawn = 5
@@ -934,7 +921,7 @@ shape = SubResource("RectangleShape2D_n7xsw")
 [node name="MonsterSpawnArea4" parent="." unique_id=1100352714 node_paths=PackedStringArray("drop_scene", "spawn_root", "area_collision_shape") instance=ExtResource("13_jxry2")]
 position = Vector2(320, 255)
 max_monsters = 6
-respawn_wait_time = 10.0
+respawn_wait_time = 15.0
 min_spawn = 5
 min_hunt_challenge_spawn = 6
 max_spawn = 8
@@ -954,6 +941,8 @@ shape = SubResource("RectangleShape2D_n7xsw")
 [node name="ExitElevator" parent="." unique_id=1585227535 instance=ExtResource("20_rsjkl")]
 position = Vector2(322, 64)
 next_room_data = ExtResource("25_o2dcr")
+current_room_data = ExtResource("2_801hy")
+needed_list = ExtResource("28_50mol")
 
 [node name="HUD" parent="." unique_id=1248146646 instance=ExtResource("8_kwf2g")]
 visible = false
@@ -992,9 +981,7 @@ ore_rock = ExtResource("10_n7xsw")
 chance_to_spawn = 0.7
 spawn_parent = NodePath("..")
 
-[node name="ExitAreaIcon" type="Sprite2D" parent="." unique_id=1547012616]
-position = Vector2(149, 1369)
-texture = ExtResource("31_706tx")
-
-[connection signal="body_entered" from="TowerExitArea" to="." method="_on_tower_exit_area_body_entered"]
-[connection signal="body_exited" from="TowerExitArea" to="." method="_on_tower_exit_area_body_exited"]
+[node name="PrevElevator" parent="." unique_id=974802616 instance=ExtResource("33_kbbvk")]
+position = Vector2(163, 1377)
+prev_floor_data = ExtResource("34_cfe63")
+last_spawn_point = 1

@@ -21,7 +21,7 @@ signal spawn_enemies
 @warning_ignore("unused_signal")
 signal spawn_resources
 @warning_ignore("unused_signal")
-signal move_to_next_room
+signal move_to_next_room(room_path : String)
 
 @warning_ignore("unused_signal")
 signal return_to_starshire

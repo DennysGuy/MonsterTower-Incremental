@@ -1,12 +1,10 @@
-[gd_scene format=3 uid="uid://c11hg5ijdrjjs"]
+[gd_scene format=3 uid="uid://dd63dgr038myr"]
 
-[ext_resource type="Texture2D" uid="uid://sm0sjtn0eenp" path="res://Assets/Tower/FloorElevator/FloorElevator_Base.png" id="1_cctbe"]
-[ext_resource type="Script" uid="uid://3hxdumxyuob1" path="res://src/Scripts/Tower/exit_elevator_1.gd" id="1_lw48p"]
-[ext_resource type="Texture2D" uid="uid://uvbw72m7upwd" path="res://Assets/Tower/FloorElevator/FloorElevator_LeftDoor.png" id="2_lw48p"]
-[ext_resource type="Texture2D" uid="uid://bx0n6ew6yeyjs" path="res://Assets/Tower/FloorElevator/FloorElevator_RightDoor.png" id="3_4on78"]
-[ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="5_4on78"]
-[ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="6_micwh"]
-[ext_resource type="Texture2D" uid="uid://c46iu8v75jaon" path="res://Assets/NodeGraphics/AbilitiesTechTree/RowLock.png" id="7_d23mi"]
+[ext_resource type="Script" uid="uid://dnehl2qmel6lh" path="res://src/Scripts/Maps/Tower/prev_elevator_1.gd" id="1_nmxvj"]
+[ext_resource type="Texture2D" uid="uid://dpjgdpjh2dsfj" path="res://Assets/Tower/FloorElevator/PrevFloorElevator_Base.png" id="2_nmxvj"]
+[ext_resource type="Texture2D" uid="uid://uvbw72m7upwd" path="res://Assets/Tower/FloorElevator/FloorElevator_LeftDoor.png" id="3_otmhf"]
+[ext_resource type="Texture2D" uid="uid://bx0n6ew6yeyjs" path="res://Assets/Tower/FloorElevator/FloorElevator_RightDoor.png" id="4_4rxmm"]
+[ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="5_pkawp"]
 
 [sub_resource type="Animation" id="Animation_d23mi"]
 resource_name = "DoorsClose"
@@ -99,19 +97,19 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lw48p"]
-size = Vector2(185, 88)
+size = Vector2(91, 53)
 
-[node name="ExitElevator" type="Node2D" unique_id=974802616]
-script = ExtResource("1_lw48p")
+[node name="PrevElevator" type="Node2D" unique_id=974802616]
+script = ExtResource("1_nmxvj")
 
 [node name="Base" type="Sprite2D" parent="." unique_id=468844581]
-texture = ExtResource("1_cctbe")
+texture = ExtResource("2_nmxvj")
 
 [node name="LeftDoor" type="Sprite2D" parent="." unique_id=1435844455]
-texture = ExtResource("2_lw48p")
+texture = ExtResource("3_otmhf")
 
 [node name="RightDoor" type="Sprite2D" parent="." unique_id=1801634913]
-texture = ExtResource("3_4on78")
+texture = ExtResource("4_4rxmm")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1101011558]
 root_node = NodePath("../LeftDoor")
@@ -121,66 +119,20 @@ libraries/ = SubResource("AnimationLibrary_8fvq5")
 position = Vector2(0, 71)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=849457482]
-position = Vector2(4.5, -54)
+position = Vector2(-0.5, -17.5)
 shape = SubResource("RectangleShape2D_lw48p")
 
 [node name="MoveToNextRoomLabel" type="Label" parent="." unique_id=315675814]
-z_index = 4093
-offset_left = -78.0
-offset_right = 80.0
-offset_bottom = 23.0
-theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("5_4on78")
-theme_override_font_sizes/font_size = 12
-
-[node name="NeededPanel" type="Panel" parent="." unique_id=1441516242]
-offset_left = 47.0
-offset_top = -24.0
-offset_right = 137.0
-offset_bottom = 78.0
-
-[node name="NeededTitle" type="Label" parent="NeededPanel" unique_id=567231123]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -41.0
-offset_top = 2.0
-offset_right = 43.0
-offset_bottom = 14.0
-grow_horizontal = 2
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("6_micwh")
-theme_override_font_sizes/font_size = 12
-text = "Repair Resources"
-
-[node name="LockTexture" type="TextureRect" parent="NeededPanel" unique_id=1573999048]
-layout_mode = 0
-offset_left = 33.0
-offset_top = 14.0
-offset_right = 54.0
-offset_bottom = 35.0
-texture = ExtResource("7_d23mi")
-expand_mode = 1
-
-[node name="NeededItemsContainer" type="GridContainer" parent="NeededPanel" unique_id=1930052030]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -31.0
-offset_top = -9.0
-offset_right = 31.0
-offset_bottom = 45.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="RowLock" type="Sprite2D" parent="." unique_id=1685116405]
 visible = false
-position = Vector2(0, 26)
-texture = ExtResource("7_d23mi")
+z_index = 4093
+offset_left = -94.0
+offset_top = -49.0
+offset_right = 111.0
+offset_bottom = -34.0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("5_pkawp")
+theme_override_font_sizes/font_size = 12
+text = "Press 'E' to Move to Previous Floor"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

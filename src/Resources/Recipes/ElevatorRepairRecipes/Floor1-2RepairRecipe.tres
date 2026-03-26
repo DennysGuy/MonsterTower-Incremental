@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CraftingRecipe" format=3 uid="uid://bf1rfaj3ly67c"]
+
+[ext_resource type="Resource" uid="uid://buu8pdcooh3hc" path="res://src/Resources/CraftingResources/BronzeBar.tres" id="1_6eaap"]
+[ext_resource type="Script" uid="uid://cljygiasf4103" path="res://src/Scripts/Facilities/crafting_recipe.gd" id="1_vwqkl"]
+
+[resource]
+script = ExtResource("1_vwqkl")
+recipe_list = Array[Dictionary]([{
+ExtResource("1_6eaap"): 8
+}])
+metadata/_custom_type_script = "uid://cljygiasf4103"

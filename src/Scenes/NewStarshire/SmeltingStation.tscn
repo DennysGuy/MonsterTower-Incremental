@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://chhm5f5xmlr0j" path="res://Assets/Facilities/SmeltingStationContructionMode.png" id="1_elr15"]
 [ext_resource type="Script" uid="uid://b6efmxwkcji1r" path="res://src/Scripts/Facilities/smelting_station.gd" id="2_wbtfr"]
 [ext_resource type="PackedScene" uid="uid://04tp6n5gdcb7" path="res://src/Scenes/UI/NotificationIcon.tscn" id="3_3w5lq"]
-[ext_resource type="Script" uid="uid://dix0hiiumsb7a" path="res://src/Scripts/HUD/needed_unlocks.gd" id="4_vlcsu"]
+[ext_resource type="Script" path="res://src/Scripts/HUD/needed_unlocks.gd" id="4_vlcsu"]
 [ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="5_cn6af"]
 [ext_resource type="PackedScene" uid="uid://dcgpcwx38gddm" path="res://src/Scenes/NewStarshire/DojoUnlockItem.tscn" id="6_6li4n"]
 

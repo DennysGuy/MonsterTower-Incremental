@@ -33,7 +33,10 @@
 [ext_resource type="PackedScene" uid="uid://d1c4li7h3joya" path="res://src/Scenes/Actors/Enemies/WillowShrub/WillowShrub.tscn" id="26_rayuj"]
 [ext_resource type="PackedScene" uid="uid://d150vkltffpjo" path="res://src/Scenes/Tower/TowerFloors/CheckPointCampfire.tscn" id="27_8wimh"]
 [ext_resource type="Texture2D" uid="uid://xd36daaflxhj" path="res://Assets/Tower/ExitAreaIcon.png" id="30_yeiuc"]
+[ext_resource type="Script" uid="uid://cu8drgivmhfn" path="res://src/Scripts/item.gd" id="32_hb7cx"]
+[ext_resource type="Resource" uid="uid://7rdwam0uhnl2" path="res://src/Resources/Actors/Enemies/Biome1/WillowShrub/ShrubMask.tres" id="33_88f25"]
 [ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="33_savf5"]
+[ext_resource type="Resource" uid="uid://can4nlbn57x84" path="res://src/Resources/Actors/Enemies/Biome1/WillowShrub/ShrubCore.tres" id="34_oud3p"]
 [ext_resource type="Resource" uid="uid://d3ak1ilk1id2y" path="res://src/Resources/GemChests/Tier1GemChest.tres" id="35_rayuj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c1fqw"]
@@ -1315,7 +1318,7 @@ shape = SubResource("RectangleShape2D_p3qel")
 [node name="MonsterSpawnArea" parent="." unique_id=569859374 node_paths=PackedStringArray("drop_scene", "spawn_root", "area_collision_shape") instance=ExtResource("9_gib5v")]
 position = Vector2(447, 960)
 max_monsters = 2
-respawn_wait_time = 12.0
+respawn_wait_time = 15.0
 min_spawn = 1
 min_hunt_challenge_spawn = 2
 max_spawn = 2
@@ -1333,7 +1336,7 @@ shape = SubResource("RectangleShape2D_gib5v")
 
 [node name="MonsterSpawnArea2" parent="." unique_id=1503156114 node_paths=PackedStringArray("drop_scene", "spawn_root", "area_collision_shape") instance=ExtResource("9_gib5v")]
 position = Vector2(308, 606)
-respawn_wait_time = 12.0
+respawn_wait_time = 15.0
 min_spawn = 2
 min_hunt_challenge_spawn = 5
 max_spawn = 3
@@ -1352,7 +1355,7 @@ shape = SubResource("RectangleShape2D_0rtsh")
 [node name="MonsterSpawnArea3" parent="." unique_id=235738663 node_paths=PackedStringArray("drop_scene", "spawn_root", "area_collision_shape") instance=ExtResource("9_gib5v")]
 position = Vector2(308, 253)
 max_monsters = 5
-respawn_wait_time = 12.0
+respawn_wait_time = 15.0
 min_spawn = 4
 min_hunt_challenge_spawn = 5
 max_spawn = 5
@@ -1376,6 +1379,11 @@ shape = SubResource("RectangleShape2D_0rtsh")
 [node name="ExitElevator" parent="." unique_id=941965924 instance=ExtResource("15_obgwm")]
 position = Vector2(201, 81)
 next_room_data = ExtResource("26_cvbrj")
+current_room_data = ExtResource("2_n5ad4")
+needed_list = Dictionary[ExtResource("32_hb7cx"), int]({
+ExtResource("33_88f25"): 6,
+ExtResource("34_oud3p"): 6
+})
 
 [node name="PlayerSpawnPoint" parent="." unique_id=706156515 instance=ExtResource("23_jmmg4")]
 position = Vector2(222, 961)

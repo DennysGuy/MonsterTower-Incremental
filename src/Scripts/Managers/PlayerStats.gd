@@ -277,6 +277,10 @@ func upgrade_player_stat(stat_name : String, interval : float, node_type : TechT
 	TechTreeManager.update_player_stats.emit()
 
 func load_abilities() -> void:
+	
+	if SaveManager.current_save_game and SaveManager.current_save_game.player_stats["Class"] == "Junior Hunter":
+		return
+		
 	var ability_names : Array[String] = ["Air Attack", "Dash Attack", "Double Jump", "Special Attack"]
 
 	for ability_name in ability_names:

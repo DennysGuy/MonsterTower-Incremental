@@ -449,7 +449,7 @@ offset_bottom = -52.0
 
 [node name="StateMachine" type="Node" parent="." unique_id=1432439984 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("11_86k34")
-initial_state = NodePath("Idle")
+initial_state = NodePath("SpawnIn")
 
 [node name="Idle" type="Node" parent="StateMachine" unique_id=1074949887 node_paths=PackedStringArray("patrol_state")]
 script = ExtResource("12_v1lku")

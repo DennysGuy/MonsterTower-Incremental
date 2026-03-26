@@ -13,6 +13,8 @@
 [ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="8_i32dk"]
 [ext_resource type="PackedScene" uid="uid://dysg5kffvxbql" path="res://src/Scenes/UI/PlayerHUD.tscn" id="9_llpdw"]
 [ext_resource type="PackedScene" uid="uid://c6tv3t1cpeq8f" path="res://src/Scenes/PlayerSpawnPoint.tscn" id="13_kuvlu"]
+[ext_resource type="PackedScene" uid="uid://dd63dgr038myr" path="res://src/Scenes/Tower/TowerFloors/PrevElevator1.tscn" id="14_wh0ji"]
+[ext_resource type="Resource" uid="uid://dbb7k6hptjvyy" path="res://src/Resources/TowerEntranceData/Floor1-2.tres" id="15_d230i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ndmld"]
 size = Vector2(212, 62)
@@ -96,7 +98,12 @@ Thanks for playing!"
 visible = false
 
 [node name="PlayerSpawnPoint" parent="." unique_id=335168432 instance=ExtResource("13_kuvlu")]
-position = Vector2(192, 766)
+position = Vector2(283, 766)
+
+[node name="PrevElevator" parent="." unique_id=974802616 instance=ExtResource("14_wh0ji")]
+position = Vector2(162, 689)
+prev_floor_data = ExtResource("15_d230i")
+last_spawn_point = 2
 
 [connection signal="body_entered" from="CheckpointArea" to="." method="_on_checkpoint_area_body_entered"]
 [connection signal="body_exited" from="CheckpointArea" to="." method="_on_checkpoint_area_body_exited"]
