@@ -25,7 +25,7 @@ func _ready() -> void:
 	SignalBus.unlock_next_room.connect(unlock_next_room)
 	
 	if needed_list and current_room_data.is_expedition_floor():
-		if !needed_quota_met:
+		if !current_room_data.hunt_challenge_completed:
 			base.texture = BROKEN_FLOOR_ELEVATOR_BASE
 			populate_items_needed_list()
 		else:
@@ -33,7 +33,7 @@ func _ready() -> void:
 	else:
 		base.texture = FLOOR_ELEVATOR_BASE
 	
-	if !needed_quota_met and current_room_data.is_challenge_floor():
+	if !current_room_data.hunt_challenge_completed and current_room_data.is_challenge_floor():
 		row_lock.show()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -43,7 +43,7 @@ func _process(delta: float) -> void:
 			unlock_next_floor()
 			SignalBus.go_to_victory_hunt_menu.emit()
 		else:
-			if needed_quota_met or current_room_data.is_expedition_floor() and !needed_list:
+			if current_room_data.hunt_challenge_completed or (current_room_data.is_expedition_floor() and !needed_list):
 				MusicPlayer.transitioning_floors = true
 				GameManager.spawn_location = 0
 				SignalBus.move_to_next_room.emit(next_room_data.scene_path)
@@ -57,7 +57,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		if needed_list:
 			deliver_quantity = InventoryManager.calculate_quantity(needed_list)
 		
-		if needed_quota_met or current_room_data.is_expedition_floor() and !needed_list:
+		if current_room_data.hunt_challenge_completed or current_room_data.is_expedition_floor() and !needed_list:
 			move_to_next_room_label.text = "Press 'E' to advance to next floor!"
 			doors_open = true
 			animation_player.play("DoorsOpen")
@@ -70,16 +70,21 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		move_to_next_room_label.show()
 		
 func unlock_next_room() -> void:
-	needed_quota_met = true
 	if current_room_data.is_expedition_floor():
+		if InventoryManager.calculate_quantity(needed_list) < 1:
+			return
+			
 		if needed_list:
 			InventoryManager.remove_resources_from_inventory(needed_list.recipe_list)
 		needed_panel.hide()
 		base.texture = FLOOR_ELEVATOR_BASE
 		GameManager.spawn_location = 0
+		current_room_data.hunt_challenge_completed = true
+		SaveManager.save_floor_data(current_room_data, current_room_data.floor_name)
 		await get_tree().create_timer(1.0).timeout
 		SignalBus.move_to_next_room.emit(next_room_data.scene_path)
 		
+	#needed_quota_met = true
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body is Player:

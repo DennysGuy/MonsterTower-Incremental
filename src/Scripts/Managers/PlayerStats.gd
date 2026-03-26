@@ -284,7 +284,9 @@ func load_abilities() -> void:
 	var ability_names : Array[String] = ["Air Attack", "Dash Attack", "Double Jump", "Special Attack"]
 
 	for ability_name in ability_names:
-		get_equipped_ability(ability_name).load_stats()
+		var equipped_ability : Ability = get_equipped_ability(ability_name)
+		if equipped_ability:
+			equipped_ability.load_stats()
 
 func check_needed_for_dojo() -> bool:
 	return PlayerStats.player_stats["Level"] >= 5 and PlayerStats.facilities_unlocked["Dash Attack"] and PlayerStats.facilities_unlocked["Arial Slash"] and PlayerStats.facilities_unlocked["Double Jump"]

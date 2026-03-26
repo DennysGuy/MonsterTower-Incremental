@@ -6,6 +6,6 @@
 [resource]
 script = ExtResource("1_vwqkl")
 recipe_list = Array[Dictionary]([{
-ExtResource("1_6eaap"): 8
+ExtResource("1_6eaap"): 4
 }])
 metadata/_custom_type_script = "uid://cljygiasf4103"

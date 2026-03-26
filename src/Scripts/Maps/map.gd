@@ -57,7 +57,7 @@ func _ready() -> void:
 	if player_spawn:
 		if map_type == MAP_TYPE.CHECKPOINT_FLOOR and tower_entrance_data.number_of_spawn_locations <= 0:
 			tower_entrance_data.number_of_spawn_locations += 1
-			save_floor_data()
+			SaveManager.save_floor_data(tower_entrance_data, map_name)
 		
 		if campfire_list:
 			for i in range(0,tower_entrance_data.camp_fires_reached):
@@ -98,7 +98,7 @@ func _ready() -> void:
 					#SignalBus.update_monsters_left.emit("Campfires Discovered: %s/%s" % [tower_entrance_data.camp_fires_reached, tower_entrance_data.total_camp_fires],false)
 			SignalBus.update_banner_info.emit(tower_entrance_data)
 			PlayerStats.check_points_unlocked[map_name] = true
-			save_floor_data()
+			SaveManager.save_floor_data(tower_entrance_data, map_name)
 			SaveManager.save_player_stats()
 		
 		if map_type ==	MAP_TYPE.FLOOR or map_type == MAP_TYPE.CHECKPOINT_FLOOR:
@@ -258,7 +258,7 @@ func update_hunt_quota() -> void:
 			MusicPlayer.play_song(hunt_victory_theme)
 			GameManager.expedition_timer_started = false
 			tower_entrance_data.hunt_challenge_completed = true
-			save_floor_data()
+			SaveManager.save_floor_data(tower_entrance_data, map_name)
 			SignalBus.unlock_next_room.emit()
 			SignalBus.update_kill_quota_text.emit("Hunt Challenge Completed! Head to the Exit Elevator!", true, false)
 			SignalBus.update_monsters_left.emit("Monsters Left: %s" % [monster_spawn_node.get_children().size()],false)
@@ -266,15 +266,7 @@ func update_hunt_quota() -> void:
 			SignalBus.update_kill_quota_text.emit("Defeat all Monsters to win!", false, false)	
 			SignalBus.update_monsters_left.emit("Monsters Left: %s" % [monster_spawn_node.get_children().size()],false)
 
-func save_floor_data() -> void:
-	var saved_data = SaveManager.current_save_game
-	saved_data.tower_entrance_data[tower_entrance_data.floor_name]["Number of Spawn Locations"] = tower_entrance_data.number_of_spawn_locations
-	saved_data.tower_entrance_data[tower_entrance_data.floor_name]["Campfires Reached"] = tower_entrance_data.camp_fires_reached
-	saved_data.tower_entrance_data[tower_entrance_data.floor_name]["Hunt Challenge Unlocked"] = tower_entrance_data.hunt_challenge_unlocked
-	saved_data.tower_entrance_data[tower_entrance_data.floor_name]["Hunt Challenge Completed"] = tower_entrance_data.hunt_challenge_completed
-	saved_data.check_points_unlocked[tower_entrance_data.floor_name] = PlayerStats.check_points_unlocked[map_name] 
-	SaveManager.save_game()
-	SaveManager.save_player_stats()
+
 	
 func load_floor_data() -> void:
 	if tower_entrance_data:

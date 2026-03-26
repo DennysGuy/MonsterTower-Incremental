@@ -45,7 +45,18 @@ func init_save_file() -> void:
 	load_equipped_abilities()
 	PlayerStats.load_abilities()
 	load_gem_sockets()
-	
+
+
+func save_floor_data(tower_entrance_data : TowerEntranceData, map_name : String) -> void:
+	var saved_data = SaveManager.current_save_game
+	saved_data.tower_entrance_data[tower_entrance_data.floor_name]["Number of Spawn Locations"] = tower_entrance_data.number_of_spawn_locations
+	saved_data.tower_entrance_data[tower_entrance_data.floor_name]["Campfires Reached"] = tower_entrance_data.camp_fires_reached
+	saved_data.tower_entrance_data[tower_entrance_data.floor_name]["Hunt Challenge Unlocked"] = tower_entrance_data.hunt_challenge_unlocked
+	saved_data.tower_entrance_data[tower_entrance_data.floor_name]["Hunt Challenge Completed"] = tower_entrance_data.hunt_challenge_completed
+	saved_data.check_points_unlocked[tower_entrance_data.floor_name] = PlayerStats.check_points_unlocked[map_name] 
+	SaveManager.save_game()
+	SaveManager.save_player_stats()
+
 func save_tech_tree_data() -> void:
 	if current_save_game:
 		current_save_game.currency = TechTreeManager.currency

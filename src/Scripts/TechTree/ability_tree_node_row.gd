@@ -38,7 +38,6 @@ func set_as_stat_boost_row() -> void:
 	var unlocked_state  = SaveManager.current_save_game.class_ability_rows[class_relation][unlock_level]
 	sigils_left_label.text = "Select: %s" % unlocked_state["Sigils Left"]
 	
-	
 func play_lock_break_animation() -> void:
 	play_sfx(ABILITY_ROW_UNLOCKED)
 	ability_row_lock.animation_player.play("LockBreak")

@@ -11,8 +11,8 @@ description = "A reliable blade crafted from the remains of Corrupted Mushies."
 recipe_tier = 1
 recipe_type = 2
 recipe_list = Array[Dictionary]([{
-ExtResource("1_d5mfv"): 6
+ExtResource("1_d5mfv"): 2
 }, {
-ExtResource("2_fiiat"): 6
+ExtResource("2_fiiat"): 4
 }])
 metadata/_custom_type_script = "uid://cljygiasf4103"
