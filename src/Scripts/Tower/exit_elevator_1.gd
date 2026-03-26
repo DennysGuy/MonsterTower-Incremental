@@ -76,11 +76,13 @@ func unlock_next_room() -> void:
 			
 		if needed_list:
 			InventoryManager.remove_resources_from_inventory(needed_list.recipe_list)
+			
 		needed_panel.hide()
 		base.texture = FLOOR_ELEVATOR_BASE
 		GameManager.spawn_location = 0
 		current_room_data.hunt_challenge_completed = true
 		SaveManager.save_floor_data(current_room_data, current_room_data.floor_name)
+		animation_player.play("DoorsOpen")
 		await get_tree().create_timer(1.0).timeout
 		SignalBus.move_to_next_room.emit(next_room_data.scene_path)
 		

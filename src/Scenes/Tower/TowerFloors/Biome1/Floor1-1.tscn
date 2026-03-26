@@ -1065,10 +1065,11 @@ size = Vector2(166, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0rtsh"]
 size = Vector2(297, 20)
 
-[node name="Floor1-1" type="Node2D" unique_id=1821431660 node_paths=PackedStringArray("camera", "hud", "ore_rock_markers", "gem_stone_chest_markers", "campfire_list", "sfx_player", "monster_spawn_node", "pause_canvas_layer", "ambience_player")]
+[node name="Floor1-1" type="Node2D" unique_id=1821431660 node_paths=PackedStringArray("exit_elevator", "camera", "hud", "ore_rock_markers", "gem_stone_chest_markers", "campfire_list", "sfx_player", "monster_spawn_node", "pause_canvas_layer", "ambience_player")]
 script = ExtResource("1_u3nwm")
 map_name = "Floor 1-1"
 map_id = 1
+exit_elevator = NodePath("ExitElevator")
 tower_entrance_data = ExtResource("2_n5ad4")
 map_theme_song = ExtResource("3_n5ad4")
 hunt_theme_song = ExtResource("4_yalon")

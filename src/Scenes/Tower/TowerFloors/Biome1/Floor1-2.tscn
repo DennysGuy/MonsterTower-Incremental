@@ -561,10 +561,12 @@ size = Vector2(172, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n7xsw"]
 size = Vector2(391, 20)
 
-[node name="Floor1-2" type="Node2D" unique_id=1445504565 node_paths=PackedStringArray("camera", "hud", "ore_rock_markers", "gem_stone_chest_markers", "campfire_list", "sfx_player", "monster_spawn_node", "pause_canvas_layer", "ambience_player")]
+[node name="Floor1-2" type="Node2D" unique_id=1445504565 node_paths=PackedStringArray("exit_elevator_marker", "exit_elevator", "camera", "hud", "ore_rock_markers", "gem_stone_chest_markers", "campfire_list", "sfx_player", "monster_spawn_node", "pause_canvas_layer", "ambience_player")]
 script = ExtResource("1_1pghk")
 map_name = "Floor 1-2"
 map_id = 2
+exit_elevator_marker = NodePath("ExitElevatorMarker")
+exit_elevator = NodePath("ExitElevator")
 tower_entrance_data = ExtResource("2_801hy")
 map_theme_song = ExtResource("3_801hy")
 hunt_theme_song = ExtResource("4_nhahy")
@@ -985,3 +987,6 @@ spawn_parent = NodePath("..")
 position = Vector2(163, 1377)
 prev_floor_data = ExtResource("34_cfe63")
 last_spawn_point = 1
+
+[node name="ExitElevatorMarker" type="Marker2D" parent="." unique_id=663105606]
+position = Vector2(321, 101)

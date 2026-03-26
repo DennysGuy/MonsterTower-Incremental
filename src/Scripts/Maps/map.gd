@@ -2,6 +2,8 @@ class_name Map extends Node2D
 
 @export var map_name : String
 @export var map_id : int
+@export var exit_elevator_marker : Marker2D
+@export var exit_elevator : ExitElevator
 @export var tower_entrance_data : TowerEntranceData
 @export var map_theme_song : AudioStream
 @export var hunt_theme_song : AudioStream
@@ -37,6 +39,7 @@ var player : Player
 const TIER_UP = preload("uid://dhfdudbiidv7a")
 
 
+
 var kill_quota_hit : bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -58,6 +61,8 @@ func _ready() -> void:
 		if map_type == MAP_TYPE.CHECKPOINT_FLOOR and tower_entrance_data.number_of_spawn_locations <= 0:
 			tower_entrance_data.number_of_spawn_locations += 1
 			SaveManager.save_floor_data(tower_entrance_data, map_name)
+		
+
 		
 		if campfire_list:
 			for i in range(0,tower_entrance_data.camp_fires_reached):
@@ -96,6 +101,10 @@ func _ready() -> void:
 					#SignalBus.update_monsters_left.emit("Monsters Left: %s" % [monster_spawn_node.get_children().size()],false)
 				#else:
 					#SignalBus.update_monsters_left.emit("Campfires Discovered: %s/%s" % [tower_entrance_data.camp_fires_reached, tower_entrance_data.total_camp_fires],false)
+			
+			if tower_entrance_data.is_expedition_floor() and exit_elevator and exit_elevator.needed_list and !tower_entrance_data.hunt_challenge_completed:
+				issue_repair_elevator_notice()
+				
 			SignalBus.update_banner_info.emit(tower_entrance_data)
 			PlayerStats.check_points_unlocked[map_name] = true
 			SaveManager.save_floor_data(tower_entrance_data, map_name)
@@ -278,7 +287,6 @@ func load_floor_data() -> void:
 		tower_entrance_data.hunt_challenge_unlocked = tower_data["Hunt Challenge Unlocked"]
 		tower_entrance_data.hunt_challenge_completed = tower_data["Hunt Challenge Completed"]
 
-
 func play_sfx(audio_stream : AudioStream) -> void:
 	if sfx_player:
 		sfx_player.play_sfx(audio_stream)
@@ -286,3 +294,29 @@ func play_sfx(audio_stream : AudioStream) -> void:
 func play_level_up_sfx() -> void:
 	if sfx_player:
 		sfx_player.play_sfx(TIER_UP)
+
+
+func issue_repair_elevator_notice() -> void:
+	camera.player = null
+	GameManager.player_can_move = false
+	GameManager.can_pause_game = false
+	GameManager.can_open_bag = false
+	GameManager.enemies_can_move = false
+
+	player.send_to_idle_state()
+	hud.animation_player.play("FadeInOut")
+	await get_tree().create_timer(0.5).timeout
+	camera.position = exit_elevator_marker.position
+	await get_tree().create_timer(1.0).timeout
+	SignalBus.issue_big_notification.emit("Deliver required resource to repair the elevator!")
+	await get_tree().create_timer(3.0).timeout
+	SignalBus.hide_big_notification.emit()
+	hud.animation_player.play("FadeInOut")
+	await get_tree().create_timer(0.5).timeout
+	camera.position = player.position
+	camera.player = player
+	
+	GameManager.player_can_move = true
+	GameManager.can_pause_game = true
+	GameManager.can_open_bag = true
+	GameManager.enemies_can_move = true
