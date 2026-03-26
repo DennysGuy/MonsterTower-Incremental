@@ -21,6 +21,7 @@ grow_vertical = 2
 script = ExtResource("1_s8ft5")
 
 [node name="RoomInfoBanner" type="TextureRect" parent="." unique_id=206412475]
+modulate = Color(1, 1, 1, 0.8627451)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -71,6 +72,5 @@ theme_override_constants/outline_size = 4
 theme_override_fonts/normal_font = ExtResource("3_1k4tl")
 theme_override_font_sizes/normal_font_size = 12
 bbcode_enabled = true
-text = "Beat floor Challenge, 
-Unlock next floor!"
+text = "Repair the elevator!"
 horizontal_alignment = 1

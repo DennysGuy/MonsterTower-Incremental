@@ -62,8 +62,6 @@ func _ready() -> void:
 			tower_entrance_data.number_of_spawn_locations += 1
 			SaveManager.save_floor_data(tower_entrance_data, map_name)
 		
-
-		
 		if campfire_list:
 			for i in range(0,tower_entrance_data.camp_fires_reached):
 				var camp_fire = campfire_list.get_child(i)
@@ -102,7 +100,7 @@ func _ready() -> void:
 				#else:
 					#SignalBus.update_monsters_left.emit("Campfires Discovered: %s/%s" % [tower_entrance_data.camp_fires_reached, tower_entrance_data.total_camp_fires],false)
 			
-			if tower_entrance_data.is_expedition_floor() and exit_elevator and exit_elevator.needed_list and !tower_entrance_data.hunt_challenge_completed:
+			if tower_entrance_data.is_expedition_floor() and tower_entrance_data.unlock_recipe and !tower_entrance_data.hunt_challenge_completed:
 				issue_repair_elevator_notice()
 				
 			SignalBus.update_banner_info.emit(tower_entrance_data)
@@ -276,7 +274,6 @@ func update_hunt_quota() -> void:
 			SignalBus.update_monsters_left.emit("Monsters Left: %s" % [monster_spawn_node.get_children().size()],false)
 
 
-	
 func load_floor_data() -> void:
 	if tower_entrance_data:
 		var saved_data = SaveManager.current_save_game.tower_entrance_data

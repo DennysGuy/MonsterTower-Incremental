@@ -15,7 +15,6 @@ const FLOOR_ELEVATOR_BASE = preload("uid://sm0sjtn0eenp")
 @onready var row_lock: Sprite2D = $RowLock
 
 
-@export var needed_list : CraftingRecipe
 @onready var needed_items_container: GridContainer = $NeededPanel/NeededItemsContainer
 
 @onready var base: Sprite2D = $Base
@@ -24,7 +23,7 @@ const FLOOR_ELEVATOR_BASE = preload("uid://sm0sjtn0eenp")
 func _ready() -> void:
 	SignalBus.unlock_next_room.connect(unlock_next_room)
 	
-	if needed_list and current_room_data.is_expedition_floor():
+	if current_room_data.unlock_recipe and current_room_data.is_expedition_floor():
 		if !current_room_data.hunt_challenge_completed:
 			base.texture = BROKEN_FLOOR_ELEVATOR_BASE
 			populate_items_needed_list()
@@ -43,7 +42,7 @@ func _process(delta: float) -> void:
 			unlock_next_floor()
 			SignalBus.go_to_victory_hunt_menu.emit()
 		else:
-			if current_room_data.hunt_challenge_completed or (current_room_data.is_expedition_floor() and !needed_list):
+			if current_room_data.hunt_challenge_completed or (current_room_data.is_expedition_floor() and !current_room_data.unlock_recipe):
 				MusicPlayer.transitioning_floors = true
 				GameManager.spawn_location = 0
 				SignalBus.move_to_next_room.emit(next_room_data.scene_path)
@@ -54,10 +53,10 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Player:
 		player_in_range = true
 		var deliver_quantity : int = 0
-		if needed_list:
-			deliver_quantity = InventoryManager.calculate_quantity(needed_list)
+		if current_room_data.unlock_recipe:
+			deliver_quantity = InventoryManager.calculate_quantity(current_room_data.unlock_recipe)
 		
-		if current_room_data.hunt_challenge_completed or current_room_data.is_expedition_floor() and !needed_list:
+		if current_room_data.hunt_challenge_completed or current_room_data.is_expedition_floor() and !current_room_data.unlock_recipe:
 			move_to_next_room_label.text = "Press 'E' to advance to next floor!"
 			doors_open = true
 			animation_player.play("DoorsOpen")
@@ -71,11 +70,11 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		
 func unlock_next_room() -> void:
 	if current_room_data.is_expedition_floor():
-		if InventoryManager.calculate_quantity(needed_list) < 1:
+		if InventoryManager.calculate_quantity(current_room_data.unlock_recipe) < 1:
 			return
 			
-		if needed_list:
-			InventoryManager.remove_resources_from_inventory(needed_list.recipe_list)
+		if current_room_data.unlock_recipe:
+			InventoryManager.remove_resources_from_inventory(current_room_data.unlock_recipe.recipe_list)
 			
 		needed_panel.hide()
 		base.texture = FLOOR_ELEVATOR_BASE
@@ -109,7 +108,7 @@ func save_next_floor_data() -> void:
 func populate_items_needed_list() -> void:
 	needed_panel.show()
 	InventoryManager.clear_grid_container(needed_items_container)
-	for item_dict in needed_list.recipe_list:
+	for item_dict in current_room_data.unlock_recipe.recipe_list:
 		for item in item_dict.keys():
 			var quantity_list_item : QuantityListItem = preload("uid://cq8n5gyropdxm").instantiate()
 			quantity_list_item.icon.texture = item.shop_icon

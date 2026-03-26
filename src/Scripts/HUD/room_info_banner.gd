@@ -24,7 +24,10 @@ func update_banner_info(tower_entrance_data : TowerEntranceData) -> void:
 		tower_entrance_data.FLOOR_TYPE.EXPEDITION:
 			room_type_label.text = "Expedition Map"
 			room_info_banner.texture = EXPEDITION_ROOM_BANNER
-			tracker_label.text = "~ Train, Hunt, Prepare! ~"
+			if tower_entrance_data.is_expedition_floor() and tower_entrance_data.unlock_recipe and !tower_entrance_data.hunt_challenge_completed:
+				tracker_label.text = "Repair the Elevator!"
+			else:
+				tracker_label.text = "~ Train, Hunt, Prepare! ~"
 		tower_entrance_data.FLOOR_TYPE.CHALLENGE:
 			room_type_label.text = "Challenge Map"
 			room_info_banner.texture = HUNT_CHALLENGE_ROOM_BANNER
