@@ -258,6 +258,7 @@ func blink_effect() -> void:
 	# Final safety check before setting damageable
 	if is_inside_tree():
 		damageable = true
+		enable_hurt_box()
 
 func send_to_idle_state() -> void:
 	state_machine.change_state(idle_state)
@@ -282,6 +283,7 @@ func _on_ability_cool_down_timer_timeout() -> void:
 
 func _on_invincibility_timer_timeout() -> void:
 	damageable = true
+	enable_hurt_box()
 
 func can_issue_ability(ability_name : String) -> bool:
 	var selected_ability = PlayerStats.equipped_abilities[ability_name]

@@ -12,6 +12,7 @@ func enter() -> void:
 	if parent.stored_enemy:
 		GameManager.player_can_move = false
 		parent.damageable = false
+		parent.disable_hurt_box()
 		parent.set_sword_texture(animation_name)
 		parent.set_outfit_texture(animation_name)
 		parent.timer.wait_time = wait_time
