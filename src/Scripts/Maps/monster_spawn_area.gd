@@ -78,7 +78,7 @@ func _spawn():
 
 func respawn_monsters() -> void:
 	var cur_monsters : int = monster_spawn_list.get_children().size()
-	var monster_diff : int = randi_range(cur_monsters, max_monsters)
+	var monster_diff : int = randi_range(1, max_monsters-cur_monsters)
 	for i in range(monster_diff):
 		var scene := choose_enemy()
 		if scene == null:

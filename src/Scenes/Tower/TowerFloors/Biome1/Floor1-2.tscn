@@ -726,7 +726,7 @@ spawn_parent = NodePath("../..")
 [node name="PlayerCamera" parent="." unique_id=590698952 instance=ExtResource("9_w4dci")]
 position = Vector2(321, 1324)
 limit_left = 0
-limit_top = 0
+limit_top = -42
 limit_right = 640
 limit_bottom = 1500
 limit_smoothed = true
@@ -869,8 +869,7 @@ max_hunt_challenge_spawn = 5
 drop_scene = NodePath("..")
 spawn_root = NodePath("../MonsterSpawnNode")
 monster_list = Dictionary[PackedScene, int]({
-null: 0,
-ExtResource("22_ykf1y"): 100
+ExtResource("14_gi03k"): 100
 })
 area_collision_shape = NodePath("CollisionShape2D")
 
@@ -888,10 +887,8 @@ max_hunt_challenge_spawn = 7
 drop_scene = NodePath("..")
 spawn_root = NodePath("../MonsterSpawnNode")
 monster_list = Dictionary[PackedScene, int]({
-null: 0,
-ExtResource("22_ykf1y"): 60,
-ExtResource("19_n7xsw"): 10,
-ExtResource("14_gi03k"): 30
+ExtResource("22_ykf1y"): 30,
+ExtResource("14_gi03k"): 70
 })
 area_collision_shape = NodePath("CollisionShape2D")
 
@@ -910,8 +907,8 @@ max_hunt_challenge_spawn = 8
 drop_scene = NodePath("..")
 spawn_root = NodePath("../MonsterSpawnNode")
 monster_list = Dictionary[PackedScene, int]({
-ExtResource("19_n7xsw"): 50,
-ExtResource("22_ykf1y"): 50
+ExtResource("19_n7xsw"): 30,
+ExtResource("22_ykf1y"): 70
 })
 area_collision_shape = NodePath("CollisionShape2D")
 

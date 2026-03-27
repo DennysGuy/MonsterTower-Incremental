@@ -6,7 +6,6 @@
 [resource]
 script = ExtResource("1_1hkmb")
 floor_name = "Floor 1-3"
-floor_type = 1
 biome = "Mossy Dungeon"
 scene_path = "uid://b3m3f58qy47jb"
 preview_pictures = Array[Texture2D]([ExtResource("1_nxry3")])
