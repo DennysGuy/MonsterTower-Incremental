@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="GemStone" format=3 uid="uid://iqyn0e6ddyi6"]
+
+[ext_resource type="Script" uid="uid://bx7re57seek5i" path="res://src/Scripts/Facilities/gem_stone.gd" id="1_m2gpr"]
+[ext_resource type="Texture2D" uid="uid://8ujvy8y2cww7" path="res://Assets/Gems/YellowGem.png" id="2_m2gpr"]
+[ext_resource type="Texture2D" uid="uid://csb7ate77i870" path="res://Assets/Facilities/GearCraftingStation/GearSocket_YellowGem.png" id="3_d0fex"]
+
+[resource]
+script = ExtResource("1_m2gpr")
+socket_graphic = ExtResource("3_d0fex")
+drop_rate = 20.0
+status_duration_bonus = 0.5
+cool_down_bonus = 0.25
+item_name = "Gem of the Tactile I"
+item_type = 4
+sell_value = 60
+shop_icon = ExtResource("2_m2gpr")
+description = "Embodying the ones  of the Tower who are Tacticle.
+
+Provides a small boost to Utility Stats."
+metadata/_custom_type_script = "uid://bx7re57seek5i"

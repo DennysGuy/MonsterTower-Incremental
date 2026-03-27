@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="GemChestStats" format=3 uid="uid://d3ak1ilk1id2y"]
+
+[ext_resource type="Script" uid="uid://bx7re57seek5i" path="res://src/Scripts/Facilities/gem_stone.gd" id="1_drqjs"]
+[ext_resource type="Texture2D" uid="uid://c5x6wtd2sujmk" path="res://Assets/EnvironmentalAssets/GemChests/Tier1GemChestClosed.png" id="1_o2fxv"]
+[ext_resource type="Script" uid="uid://be2p6ld85g5m3" path="res://src/Scripts/GemStoneChests/gem_chest.gd" id="2_o2fxv"]
+[ext_resource type="Texture2D" uid="uid://etee3llr0x8w" path="res://Assets/EnvironmentalAssets/GemChests/Tier1GemChestOpen.png" id="2_ov8yc"]
+[ext_resource type="Resource" uid="uid://dekyghmdfupjm" path="res://src/Resources/GemStones/Tier1/BlueGem1.tres" id="4_6kt4f"]
+[ext_resource type="Resource" uid="uid://dqrychs61vg7a" path="res://src/Resources/GemStones/Tier1/GreenGem1.tres" id="5_8f1u8"]
+[ext_resource type="Resource" uid="uid://dbnhv2sbprspa" path="res://src/Resources/GemStones/Tier1/RedGem1.tres" id="6_nyn3y"]
+[ext_resource type="Resource" uid="uid://iqyn0e6ddyi6" path="res://src/Resources/GemStones/Tier1/YellowGem1.tres" id="7_3fspd"]
+
+[resource]
+script = ExtResource("2_o2fxv")
+gem_chest_name = "Gem Chest I"
+max_health = 300
+graphic_closed = ExtResource("1_o2fxv")
+graphic_opened = ExtResource("2_ov8yc")
+loot_table = Array[ExtResource("1_drqjs")]([ExtResource("4_6kt4f"), ExtResource("5_8f1u8"), ExtResource("6_nyn3y"), ExtResource("7_3fspd")])
+metadata/_custom_type_script = "uid://be2p6ld85g5m3"

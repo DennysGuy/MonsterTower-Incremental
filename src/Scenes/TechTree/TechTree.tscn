@@ -37,7 +37,10 @@
 [ext_resource type="Resource" uid="uid://licswcd54xsn" path="res://src/Resources/TechTree/TechNodes/RefineryAccuracy1.tres" id="30_yfj5d"]
 [ext_resource type="Resource" uid="uid://ctf4we33chvvs" path="res://src/Resources/TechTree/TechNodes/OreRockDrop1.tres" id="32_pc0xa"]
 [ext_resource type="Resource" uid="uid://c33bcx7wsq4vk" path="res://src/Resources/TechTree/TechNodes/MaxHP2.tres" id="36_o1bwy"]
+[ext_resource type="Resource" uid="uid://c7i7yba2dc0by" path="res://src/Resources/TechTree/TechNodes/GemStoneStation.tres" id="36_pqlb5"]
+[ext_resource type="Resource" uid="uid://b6b483q551evk" path="res://src/Resources/TechTree/TechNodes/Tier1GemChestsRateIncrease.tres" id="37_34cer"]
 [ext_resource type="Resource" uid="uid://c5l21ge3ylc0e" path="res://src/Resources/TechTree/TechNodes/Defense2.tres" id="37_pqlb5"]
+[ext_resource type="Resource" uid="uid://c03qaydx74usi" path="res://src/Resources/TechTree/TechNodes/Tier1GemDropRateIncrease.tres" id="38_iyves"]
 [ext_resource type="Resource" uid="uid://cmi3owisj2vs7" path="res://src/Resources/TechTree/TechNodes/InvincibilityDuration1.tres" id="39_l65vq"]
 
 [node name="TechTree" type="Node2D" unique_id=713882159]
@@ -73,7 +76,7 @@ position = Vector2(812, 253)
 tech_node_stats = ExtResource("5_wj3rp")
 
 [node name="Line2D" type="Line2D" parent="Nodes/Attack2Node" unique_id=811949577]
-points = PackedVector2Array(-16, 0, -83, 0)
+points = PackedVector2Array(-14, 0, -83, 0)
 width = 3.0
 
 [node name="CritChance1Node" parent="Nodes" unique_id=513100437 instance=ExtResource("5_2ltmf")]
@@ -106,6 +109,7 @@ position = Vector2(812, 209)
 tech_node_stats = ExtResource("8_7l0yi")
 
 [node name="Line2D" type="Line2D" parent="Nodes/CritChance2Node" unique_id=1729855323]
+position = Vector2(2, 0)
 points = PackedVector2Array(-2, 14, -2, 30)
 width = 3.0
 
@@ -315,6 +319,33 @@ tech_node_stats = ExtResource("39_l65vq")
 [node name="Line2D" type="Line2D" parent="Nodes/InvincibilityDuration1" unique_id=2072077442]
 position = Vector2(10.868652, 3.784851)
 points = PackedVector2Array(1.1313477, -3.784851, 47.131348, -3.784851)
+width = 3.0
+
+[node name="GemStoneStation" parent="Nodes" unique_id=310214223 instance=ExtResource("5_2ltmf")]
+position = Vector2(900, 254)
+tech_node_stats = ExtResource("36_pqlb5")
+node_type = 1
+
+[node name="Line2D" type="Line2D" parent="Nodes/GemStoneStation" unique_id=326582149]
+points = PackedVector2Array(-14, 0, -74, 0)
+width = 3.0
+
+[node name="Tier1ChestChanceIncrease" parent="Nodes" unique_id=1923792062 instance=ExtResource("5_2ltmf")]
+position = Vector2(900, 210)
+tech_node_stats = ExtResource("37_34cer")
+
+[node name="Line2D" type="Line2D" parent="Nodes/Tier1ChestChanceIncrease" unique_id=1619418229]
+position = Vector2(0, 1)
+points = PackedVector2Array(0, 13, 0, 29)
+width = 3.0
+
+[node name="Tier1GemDropChanceIncrease" parent="Nodes" unique_id=1885633913 instance=ExtResource("5_2ltmf")]
+position = Vector2(900, 166)
+tech_node_stats = ExtResource("38_iyves")
+
+[node name="Line2D" type="Line2D" parent="Nodes/Tier1GemDropChanceIncrease" unique_id=336900603]
+position = Vector2(0, 1)
+points = PackedVector2Array(0, 13, 0, 29)
 width = 3.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=818833295]

@@ -58,7 +58,9 @@ TODO: We will add saves for classes as well
 	"Cooking Drop Chance Bonus":0.0,
 	"Cooking Accuracy Bonus":0.0,
 	"Ore Drop Chance Bonus":0.0,
-	"Smelting Accuracy Bonus":0.0
+	"Smelting Accuracy Bonus":0.0,
+	"Tier 1 Chest Spawn Rate": 0.1,
+	"Tier 1 Gem Drop Rate":0.3
 }
 
 #this will be loaded when we enter the tower entrance map or a map in and of itself
@@ -95,7 +97,8 @@ TODO: We will add saves for classes as well
 	"Bank": false,
 	"Arial Slash" : false,
 	"Dash Attack": false,
-	"Double Jump": false
+	"Double Jump": false,
+	"Gem Stone Station": false
 }
 
 
@@ -160,7 +163,10 @@ TODO: We will add saves for classes as well
 	"Ore Drop Chance 1": {"Level":0, "Unlocked": false},
 	"Ore Drop Chance 2": {"Level":0, "Unlocked": false},
 	"Invincibility Duration 1": {"Level":0, "Unlocked": false},
-	"Double Jump": {"Level":0, "Unlocked": true}
+	"Double Jump": {"Level":0, "Unlocked": true},
+	"Gem Stone Station": {"Level":0, "Unlocked":false},
+	"Tier 1 Gem Chest Rate Up":{"Level":0, "Unlocked": false},
+	"Tier 1 Gem Drop Rate Up":{"Level":0, "Unlocked": false}
 }
 
 @export var equipped_abilities : Dictionary = {
@@ -174,6 +180,96 @@ TODO: We will add saves for classes as well
 }
 
 @export var abilities : Dictionary = {
+	"Junior Hunter" : {
+		"Dash Attack" : {
+			"Cooldown Time" : 1.5,
+			"HP Cost" : 0.0,
+			"MP Cost" : 0.0,
+			"Base Attack": 0.0,
+			"Number of Enemies Hit" : 1.0,
+			"Max Hit Count": 1.0,
+			"Health Recovery" : 0.0,
+			"MP Recovery" : 0.0,
+			"Defense Modifier" : 0.0,
+			"Projectile Distance" : 0.0,
+			"Slow Wait Time" : 1.5,
+			"Stun Wait Time" : 0.0,
+			"Jump Height Modifier" : 0.0,
+			"Climb Speed Modifier" : 0.0,
+			"Attack Damage Modifier" : 0.6,
+			"Move Speed Modifier" : 0.0,
+			"Crit Damage Modifier" : 0.0,
+			"Crit Chance Modifier" : 0.0,
+			"Dash Cooldown" : 0.0,
+			"Dash Speed Modifier" : 1.0
+		},
+		"Air Attack": {
+			"Cooldown Time" : 0.7,
+			"HP Cost" : 0.0,
+			"MP Cost" : 7.0,
+			"Base Attack": 0.0,
+			"Number of Enemies Hit" : 1.0,
+			"Max Hit Count": 1.0,
+			"Health Recovery" : 0.0,
+			"MP Recovery" : 0.0,
+			"Defense Modifier" : 0.0,
+			"Projectile Distance" : 0.0,
+			"Slow Wait Time" : 0.0,
+			"Stun Wait Time" : 0.0,
+			"Jump Height Modifier" : 0.0,
+			"Climb Speed Modifier" : 0.0,
+			"Attack Damage Modifier" : 0.0,
+			"Move Speed Modifier" : 0.0,
+			"Crit Damage Modifier" : 0.0,
+			"Crit Chance Modifier" : 0.0,
+			"Dash Cooldown" : 0.0,
+			"Dash Speed Modifier" : 0.0
+		},
+		"Double Jump": {
+			"Cooldown Time" : 0.5,
+			"HP Cost" : 0.0,
+			"MP Cost" : 0.0,
+			"Base Attack": 0.0,
+			"Number of Enemies Hit" : 0.0,
+			"Max Hit Count": 0.0,
+			"Health Recovery" : 0.0,
+			"MP Recovery" : 0.0,
+			"Defense Modifier" : 0.0,
+			"Projectile Distance" : 0.0,
+			"Slow Wait Time" : 0.0,
+			"Stun Wait Time" : 0.0,
+			"Jump Height Modifier" : 0.0,
+			"Climb Speed Modifier" : 0.0,
+			"Attack Damage Modifier" : 0.0,
+			"Move Speed Modifier" : 0.0,
+			"Crit Damage Modifier" : 0.0,
+			"Crit Chance Modifier" : 0.0,
+			"Dash Cooldown" : 0.0,
+			"Dash Speed Modifier" : 0.0
+		},
+		"Special Attack": {
+			"Cooldown Time" : 3.0,
+			"HP Cost" : 0.0,
+			"MP Cost" : 7.0,
+			"Base Attack": 0.0,
+			"Number of Enemies Hit" : 5.0,
+			"Max Hit Count": 1.0,
+			"Health Recovery" : 0.0,
+			"MP Recovery" : 0.0,
+			"Defense Modifier" : 0.0,
+			"Projectile Distance" : 100.0,
+			"Slow Wait Time" : 1.5,
+			"Stun Wait Time" : 0.0,
+			"Jump Height Modifier" : 0.0,
+			"Climb Speed Modifier" : 0.0,
+			"Attack Damage Modifier" : 0.5,
+			"Move Speed Modifier" : 0.4,
+			"Crit Damage Modifier" : 0.0,
+			"Crit Chance Modifier" : 0.0,
+			"Dash Cooldown" : 0.0,
+			"Dash Speed Modifier" : 0.0
+		}
+	},
 	"Tyro" : {
 		"Dash Attack" : {
 			"Cooldown Time" : 2.0,
@@ -195,7 +291,7 @@ TODO: We will add saves for classes as well
 			"Crit Damage Modifier" : 0.0,
 			"Crit Chance Modifier" : 0.0,
 			"Dash Cooldown" : 0.0,
-			"Dash Speed Modifier" : 0.0
+			"Dash Speed Modifier" : 350.0
 		},
 		"Air Attack": {
 			"Cooldown Time" : 1.5,
@@ -232,7 +328,7 @@ TODO: We will add saves for classes as well
 			"Projectile Distance" : 100.0,
 			"Slow Wait Time" : 1.5,
 			"Stun Wait Time" : 0.0,
-			"Jump Height Modifier" : 0.0,
+			"Jump Height Modifier" : 100.0,
 			"Climb Speed Modifier" : 0.0,
 			"Attack Damage Modifier" : 0.5,
 			"Move Speed Modifier" : 0.4,
@@ -312,6 +408,13 @@ TODO: We will add saves for classes as well
 			
 		}
 	}
+}
+
+@export var equipped_gem_sockets : Dictionary = {
+	0: null,
+	1: null,
+	2: null,
+	3: null
 }
 
 @export var class_ability_rows : Dictionary = {

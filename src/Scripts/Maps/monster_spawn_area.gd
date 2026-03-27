@@ -1,5 +1,7 @@
 class_name MonsterSpawnArea extends Area2D
 
+@export var max_monsters : int = 3
+@export var respawn_wait_time : float = 1.0
 
 @export var min_spawn : int
 @export var min_hunt_challenge_spawn : int
@@ -11,11 +13,20 @@ class_name MonsterSpawnArea extends Area2D
 @export var monster_list : Dictionary[PackedScene, int]
 @export var area_collision_shape : CollisionShape2D
 
+@onready var respawn_timer: Timer = $RespawnTimer
+@onready var monster_spawn_list: Node = $MonsterSpawnList
+
+
+
 var spawn_count : int
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	SignalBus.spawn_enemies.connect(_spawn)
+	if !GameManager.hunt_challenge_selected:
+		respawn_timer.wait_time = respawn_wait_time
+		respawn_timer.start()
+		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
@@ -41,7 +52,7 @@ func choose_enemy() -> PackedScene:
 func _spawn():
 	if !GameManager.hunt_challenge_selected:
 		var capacity_bonus : int = int(PlayerStats.player_stats["Monster Cap Bonus"])
-		spawn_count = randi_range(min_spawn + capacity_bonus, max_spawn + capacity_bonus)
+		spawn_count = randi_range(min_spawn + capacity_bonus, max_monsters + capacity_bonus)
 	else:
 		spawn_count = randi_range(min_hunt_challenge_spawn, max_hunt_challenge_spawn)
 	
@@ -60,4 +71,31 @@ func _spawn():
 		
 		monster.drop_scene = drop_scene
 		monster.global_position = world_pos
-		spawn_root.add_child(monster)
+		if GameManager.hunt_challenge_selected:
+			spawn_root.add_child(monster)
+		else:
+			monster_spawn_list.add_child(monster)
+
+func respawn_monsters() -> void:
+	var cur_monsters : int = monster_spawn_list.get_children().size()
+	var monster_diff : int = randi_range(1, max_monsters-cur_monsters)
+	for i in range(monster_diff):
+		var scene := choose_enemy()
+		if scene == null:
+			continue
+
+		var monster : Enemy = scene.instantiate()
+
+		var shape := area_collision_shape.shape as RectangleShape2D
+		var extents = shape.extents
+
+		var spawn_x := randf_range(-extents.x, extents.x)
+		var world_pos := global_position + Vector2(spawn_x, 0)
+			
+		monster.drop_scene = drop_scene
+		monster.global_position = world_pos
+		monster_spawn_list.add_child(monster)
+
+func _on_respawn_timer_timeout() -> void:
+	if monster_spawn_list.get_children().size() < max_monsters:
+		respawn_monsters()

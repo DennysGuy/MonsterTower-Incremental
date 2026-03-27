@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://c03qaydx74usi"]
+
+[ext_resource type="Texture2D" uid="uid://ctt4cn2bxpvu" path="res://Assets/NodeGraphics/NodeGraphicsV2/IncreaseTier1GemDropChance_V2.png" id="1_gcanf"]
+[ext_resource type="Resource" uid="uid://buu8pdcooh3hc" path="res://src/Resources/CraftingResources/BronzeBar.tres" id="2_r5kpb"]
+[ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="3_6d20k"]
+
+[resource]
+script = ExtResource("3_6d20k")
+node_name = "Tier 1 Gem Drop Rate Up"
+icon = ExtResource("1_gcanf")
+description = "Increases Chance for Gems to Drop from a Tier 1 Gem Chest by 5% per level."
+max_level = 3
+currency_required = 1500
+materials_required = Array[Dictionary]([{
+ExtResource("2_r5kpb"): 5
+}])
+stat_name = "Tier 1 Gem Drop Rate"
+upgrade_interval = 0.05
+prereqs = Array[String](["Tier 1 Gem Chest Rate Up:1"])
+metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

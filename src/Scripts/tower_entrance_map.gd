@@ -62,12 +62,12 @@ func store_entrance_data(entrance_data : TowerEntranceData) -> void:
 		check_point_button.index = point
 		area_button_selector.add_child(check_point_button)
 	
-	if entrance_data.hunt_challenge_unlocked:
+	if entrance_data.is_challenge_floor() and entrance_data.hunt_challenge_unlocked:
 		hunt_selection.show()
 	else:
 		hunt_selection.hide()
 	
-	if !entrance_data.hunt_challenge_completed and entrance_data.hunt_challenge_unlocked:
+	if entrance_data.is_challenge_floor() and !entrance_data.hunt_challenge_completed and entrance_data.hunt_challenge_unlocked:
 		hunt_notification.show()
 	else:
 		hunt_notification.hide()

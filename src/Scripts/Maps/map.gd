@@ -2,6 +2,8 @@ class_name Map extends Node2D
 
 @export var map_name : String
 @export var map_id : int
+@export var exit_elevator_marker : Marker2D
+@export var exit_elevator : ExitElevator
 @export var tower_entrance_data : TowerEntranceData
 @export var map_theme_song : AudioStream
 @export var hunt_theme_song : AudioStream
@@ -12,6 +14,7 @@ class_name Map extends Node2D
 @export var hud : PlayerHUD
 @export var ore_rock_spawn_rate : float
 @export var ore_rock_markers : Node
+@export var gem_stone_chest_markers : Node
 @export var campfire_list : Node
 
 @export var path : String
@@ -36,6 +39,7 @@ var player : Player
 const TIER_UP = preload("uid://dhfdudbiidv7a")
 
 
+
 var kill_quota_hit : bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -56,7 +60,7 @@ func _ready() -> void:
 	if player_spawn:
 		if map_type == MAP_TYPE.CHECKPOINT_FLOOR and tower_entrance_data.number_of_spawn_locations <= 0:
 			tower_entrance_data.number_of_spawn_locations += 1
-			save_floor_data()
+			SaveManager.save_floor_data(tower_entrance_data, map_name)
 		
 		if campfire_list:
 			for i in range(0,tower_entrance_data.camp_fires_reached):
@@ -81,23 +85,27 @@ func _ready() -> void:
 			if !GameManager.hunt_challenge_selected:
 				if tower_entrance_data.hunt_challenge_completed:
 					SignalBus.unlock_next_room.emit()
-					SignalBus.update_kill_quota_text.emit("", tower_entrance_data.hunt_challenge_completed, tower_entrance_data.hunt_challenge_unlocked)
-				else:
-					SignalBus.update_kill_quota_text.emit("", false, tower_entrance_data.hunt_challenge_unlocked)
-					if tower_entrance_data.hunt_challenge_unlocked and !tower_entrance_data.hunt_challenge_completed:
-						SignalBus.show_hunt_challenge_button.emit()
-					else:
-						SignalBus.hide_hunt_challenge_button.emit()
+					#SignalBus.update_kill_quota_text.emit("", tower_entrance_data.hunt_challenge_completed, tower_entrance_data.hunt_challenge_unlocked)
+				#else:
+					##SignalBus.update_kill_quota_text.emit("", false, tower_entrance_data.hunt_challenge_unlocked)
+					#if tower_entrance_data.hunt_challenge_unlocked and !tower_entrance_data.hunt_challenge_completed:
+						#SignalBus.show_hunt_challenge_button.emit()
+					#else:
+						#SignalBus.hide_hunt_challenge_button.emit()
 				SignalBus.show_bag_stats.emit()
-					
-			if monster_spawn_node:
-				if GameManager.hunt_challenge_selected:
-					SignalBus.update_monsters_left.emit("Monsters Left: %s" % [monster_spawn_node.get_children().size()],false)
-				else:
-					SignalBus.update_monsters_left.emit("Campfires Discovered: %s/%s" % [tower_entrance_data.camp_fires_reached, tower_entrance_data.total_camp_fires],false)
+					#
+			#if monster_spawn_node:
+				#if GameManager.hunt_challenge_selected:
+					#SignalBus.update_monsters_left.emit("Monsters Left: %s" % [monster_spawn_node.get_children().size()],false)
+				#else:
+					#SignalBus.update_monsters_left.emit("Campfires Discovered: %s/%s" % [tower_entrance_data.camp_fires_reached, tower_entrance_data.total_camp_fires],false)
 			
+			if tower_entrance_data.is_expedition_floor() and tower_entrance_data.unlock_recipe and !tower_entrance_data.hunt_challenge_completed:
+				issue_repair_elevator_notice()
+				
+			SignalBus.update_banner_info.emit(tower_entrance_data)
 			PlayerStats.check_points_unlocked[map_name] = true
-			save_floor_data()
+			SaveManager.save_floor_data(tower_entrance_data, map_name)
 			SaveManager.save_player_stats()
 		
 		if map_type ==	MAP_TYPE.FLOOR or map_type == MAP_TYPE.CHECKPOINT_FLOOR:
@@ -136,23 +144,25 @@ func _process(delta: float) -> void:
 		pause_canvas_layer.show()
 		pause_canvas_layer.add_child(pause_menu)
 
-
-	
 func spawn_player() -> void:
 	var new_player : Player = preload("uid://wuy3aelq8aeg").instantiate()
 	player = new_player
 	var selected_spawn_point : PlayerSpawnPoint = choose_spawn_spoint()
 	player.position = selected_spawn_point.position
 	player.damageable = true
+	var total_health : int = PlayerStats.player_stats["Current Health"]
+	var total_mp : int = PlayerStats.player_stats["Current MP"]
 	
 	if GameManager.resupply_character:
-		PlayerStats.player_stats["Current Health"] = PlayerStats.player_stats["Max Health"]
-		PlayerStats.player_stats["Current MP"] = PlayerStats.player_stats["Max MP"]
-		player.health = PlayerStats.player_stats["Max Health"]
+		total_health = PlayerStats.player_stats["Max Health"] + PlayerStats.get_current_sword().get_total_hp_bonus()
+		total_mp = PlayerStats.player_stats["Max MP"]  + PlayerStats.get_current_sword().get_total_defense_bonus()
+		PlayerStats.player_stats["Current Health"] = total_health
+		PlayerStats.player_stats["Current MP"] = total_mp
+		player.health = total_health
 		GameManager.resupply_character = false
 		
-	player.health = PlayerStats.player_stats["Current Health"]
-	hud.update_player_health(int(player.health))
+	player.health = total_health
+	hud.update_player_health(int(total_health))
 
 	add_child(player)
 	
@@ -204,7 +214,7 @@ func go_to_failure_menu() -> void:
 	if tree != null:
 		tree.change_scene_to_file("uid://du5klyuwi6so2")	
 
-func move_to_next_room() -> void:
+func move_to_next_room(room_path : String) -> void:
 	if not next_room_path:
 		return
 
@@ -216,11 +226,15 @@ func move_to_next_room() -> void:
 	await tree.create_timer(1.0).timeout
 
 	if tree != null:
-		tree.change_scene_to_file(next_room_path)
+		tree.change_scene_to_file(room_path)
 
 func roll_ore_spawn_chance() -> int:
 	var rand_check : int = randi_range(0,100)
 	return rand_check <= int(100 * ore_rock_spawn_rate)
+
+func roll_gem_chest_spawn_chance() -> int:
+	var rand_check : int = randi_range(0,100)
+	return rand_check <= int(100 * PlayerStats.player_stats["Tier 1 Chest Spawn Rate"])
 
 func choose_spawn_spoint() -> PlayerSpawnPoint:
 	var spawn_points : Array = get_tree().get_nodes_in_group("SpawnPoints")
@@ -235,6 +249,11 @@ func spawn_ore_rocks() -> void:
 			if roll_ore_spawn_chance():
 				ore_rock_marker.spawn_ore_rock()
 
+func spawn_gem_chests() -> void:
+	for gem_chest in gem_stone_chest_markers.get_children():
+		if roll_gem_chest_spawn_chance():
+			gem_chest.spawn_gem_chest()
+
 func update_hunt_quota() -> void:
 	if !GameManager.hunt_challenge_selected:
 		return
@@ -246,7 +265,7 @@ func update_hunt_quota() -> void:
 			MusicPlayer.play_song(hunt_victory_theme)
 			GameManager.expedition_timer_started = false
 			tower_entrance_data.hunt_challenge_completed = true
-			save_floor_data()
+			SaveManager.save_floor_data(tower_entrance_data, map_name)
 			SignalBus.unlock_next_room.emit()
 			SignalBus.update_kill_quota_text.emit("Hunt Challenge Completed! Head to the Exit Elevator!", true, false)
 			SignalBus.update_monsters_left.emit("Monsters Left: %s" % [monster_spawn_node.get_children().size()],false)
@@ -254,16 +273,7 @@ func update_hunt_quota() -> void:
 			SignalBus.update_kill_quota_text.emit("Defeat all Monsters to win!", false, false)	
 			SignalBus.update_monsters_left.emit("Monsters Left: %s" % [monster_spawn_node.get_children().size()],false)
 
-func save_floor_data() -> void:
-	var saved_data = SaveManager.current_save_game
-	saved_data.tower_entrance_data[tower_entrance_data.floor_name]["Number of Spawn Locations"] = tower_entrance_data.number_of_spawn_locations
-	saved_data.tower_entrance_data[tower_entrance_data.floor_name]["Campfires Reached"] = tower_entrance_data.camp_fires_reached
-	saved_data.tower_entrance_data[tower_entrance_data.floor_name]["Hunt Challenge Unlocked"] = tower_entrance_data.hunt_challenge_unlocked
-	saved_data.tower_entrance_data[tower_entrance_data.floor_name]["Hunt Challenge Completed"] = tower_entrance_data.hunt_challenge_completed
-	saved_data.check_points_unlocked[tower_entrance_data.floor_name] = PlayerStats.check_points_unlocked[map_name] 
-	SaveManager.save_game()
-	SaveManager.save_player_stats()
-	
+
 func load_floor_data() -> void:
 	if tower_entrance_data:
 		var saved_data = SaveManager.current_save_game.tower_entrance_data
@@ -274,7 +284,6 @@ func load_floor_data() -> void:
 		tower_entrance_data.hunt_challenge_unlocked = tower_data["Hunt Challenge Unlocked"]
 		tower_entrance_data.hunt_challenge_completed = tower_data["Hunt Challenge Completed"]
 
-
 func play_sfx(audio_stream : AudioStream) -> void:
 	if sfx_player:
 		sfx_player.play_sfx(audio_stream)
@@ -282,3 +291,29 @@ func play_sfx(audio_stream : AudioStream) -> void:
 func play_level_up_sfx() -> void:
 	if sfx_player:
 		sfx_player.play_sfx(TIER_UP)
+
+
+func issue_repair_elevator_notice() -> void:
+	camera.player = null
+	GameManager.player_can_move = false
+	GameManager.can_pause_game = false
+	GameManager.can_open_bag = false
+	GameManager.enemies_can_move = false
+
+	player.send_to_idle_state()
+	hud.animation_player.play("FadeInOut")
+	await get_tree().create_timer(0.5).timeout
+	camera.position = exit_elevator_marker.position
+	await get_tree().create_timer(1.0).timeout
+	SignalBus.issue_big_notification.emit("Deliver required resource to repair the elevator!")
+	await get_tree().create_timer(3.0).timeout
+	SignalBus.hide_big_notification.emit()
+	hud.animation_player.play("FadeInOut")
+	await get_tree().create_timer(0.5).timeout
+	camera.position = player.position
+	camera.player = player
+	
+	GameManager.player_can_move = true
+	GameManager.can_pause_game = true
+	GameManager.can_open_bag = true
+	GameManager.enemies_can_move = true

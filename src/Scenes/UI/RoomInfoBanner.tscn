@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://db7vqj43a3h6c"]
+
+[ext_resource type="Texture2D" uid="uid://c55ibjs8jijw7" path="res://Assets/HUD/RoomTypeBanners/ExpeditionRoomBanner.png" id="1_pquj5"]
+[ext_resource type="Script" uid="uid://y8heywjg5lae" path="res://src/Scripts/HUD/room_info_banner.gd" id="1_s8ft5"]
+[ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="3_1k4tl"]
+
+[node name="RoomInfoBanner" type="Control" unique_id=1196855950]
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -95.0
+offset_top = -30.0
+offset_right = 95.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_s8ft5")
+
+[node name="RoomInfoBanner" type="TextureRect" parent="." unique_id=206412475]
+modulate = Color(1, 1, 1, 0.8627451)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -93.0
+offset_top = -27.0
+offset_right = 93.0
+offset_bottom = 27.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_pquj5")
+stretch_mode = 2
+
+[node name="RoomTypeLabel" type="Label" parent="." unique_id=1919636438]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -71.0
+offset_top = -21.0
+offset_right = 71.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_1k4tl")
+text = "Expedition Map"
+horizontal_alignment = 1
+
+[node name="TrackerLabel" type="RichTextLabel" parent="." unique_id=590963504]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -76.0
+offset_top = -1.0
+offset_right = 77.0
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 4
+theme_override_fonts/normal_font = ExtResource("3_1k4tl")
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "Repair the elevator!"
+horizontal_alignment = 1

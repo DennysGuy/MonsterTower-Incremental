@@ -7,11 +7,11 @@
 [resource]
 script = ExtResource("4_iche6")
 enemy_name = "Corrupted Mushie"
-enemy_level = 1
+enemy_level = 2
 touch_damage = true
 can_move = true
 enemy_type = 1
-max_health = 60
+max_health = 70
 attack = 18
 movement_speed = 50.0
 chase_speed = 60.0

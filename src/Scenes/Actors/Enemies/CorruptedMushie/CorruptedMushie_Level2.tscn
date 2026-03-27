@@ -28,6 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://bg1ya0qiin47q" path="res://src/Scenes/Actors/Utilities/HurtBox.tscn" id="24_hjd7a"]
 [ext_resource type="Script" uid="uid://dwvy67t8hx3" path="res://src/Scripts/Enemies/enemy_stun.gd" id="24_obfx4"]
 [ext_resource type="PackedScene" uid="uid://xsmgmpbxjc3b" path="res://src/Scenes/Actors/Utilities/HitBox.tscn" id="25_cj88k"]
+[ext_resource type="Script" uid="uid://cx8e05eefws02" path="res://src/Scripts/StateMachine/EnemyStates/GenericEnemyStates/enemy_spawn_in.gd" id="25_kjg4h"]
 [ext_resource type="PackedScene" uid="uid://crrtithryo2j6" path="res://src/Scenes/Actors/Utilities/GroundDetector.tscn" id="26_35242"]
 [ext_resource type="PackedScene" uid="uid://bsd5w23h513t2" path="res://src/Scenes/Actors/Utilities/WallDetector.tscn" id="27_dheif"]
 [ext_resource type="PackedScene" uid="uid://dg5nyfcc7ja8v" path="res://src/Scenes/Actors/Enemies/StatusEffectIconBar.tscn" id="29_aex54"]
@@ -279,6 +280,58 @@ tracks/2/keys = {
 "update": 1,
 "values": [ExtResource("6_obfx4")]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_kjg4h"]
+resource_name = "SpawnIn"
+step = 0.09
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_d1fh7")]
+}
 
 [sub_resource type="Animation" id="Animation_obfx4"]
 resource_name = "Stun"
@@ -330,6 +383,7 @@ _data = {
 &"Idle": SubResource("Animation_uospo"),
 &"Patrol": SubResource("Animation_adl3q"),
 &"RESET": SubResource("Animation_gol3t"),
+&"SpawnIn": SubResource("Animation_kjg4h"),
 &"Stun": SubResource("Animation_obfx4")
 }
 
@@ -375,6 +429,7 @@ root_node = NodePath("../Sprite2D")
 libraries/ = SubResource("AnimationLibrary_adl3q")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1864954798]
+modulate = Color(1, 1, 1, 0)
 position = Vector2(0, -28)
 texture = ExtResource("6_obfx4")
 hframes = 8
@@ -394,7 +449,7 @@ offset_bottom = -52.0
 
 [node name="StateMachine" type="Node" parent="." unique_id=554180836 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("10_8ggvx")
-initial_state = NodePath("Idle")
+initial_state = NodePath("SpawnIn")
 
 [node name="Idle" type="Node" parent="StateMachine" unique_id=2109902990 node_paths=PackedStringArray("patrol_state")]
 script = ExtResource("11_3wrxv")
@@ -435,6 +490,12 @@ animation_name = "Chase"
 script = ExtResource("24_obfx4")
 idle = NodePath("../Idle")
 animation_name = "Stun"
+
+[node name="SpawnIn" type="Node" parent="StateMachine" unique_id=189951908 node_paths=PackedStringArray("idle_state")]
+script = ExtResource("25_kjg4h")
+idle_state = NodePath("../Idle")
+animation_name = "SpawnIn"
+animation_duration = 1.0
 
 [node name="HealthComponent" parent="." unique_id=1202325417 node_paths=PackedStringArray("parent", "health_bar") instance=ExtResource("22_jrr57")]
 parent = NodePath("..")

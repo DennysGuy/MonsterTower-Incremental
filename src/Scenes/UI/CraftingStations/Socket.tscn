@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bkyhhrkmtnn61"]
+
+[ext_resource type="Script" uid="uid://dmyc4yru42rbb" path="res://src/Scripts/Facilities/socket.gd" id="1_72ng7"]
+[ext_resource type="Texture2D" uid="uid://ch8m30uib0bcb" path="res://Assets/Facilities/GearCraftingStation/GearSocket.png" id="1_vda8r"]
+
+[node name="Socket" type="Control" unique_id=567607127]
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_72ng7")
+
+[node name="BG" type="TextureRect" parent="." unique_id=121426648]
+layout_mode = 0
+offset_right = 54.0
+offset_bottom = 54.0
+texture = ExtResource("1_vda8r")
+stretch_mode = 2
+
+[node name="Icon" type="TextureRect" parent="." unique_id=200650986]
+layout_mode = 0
+offset_right = 54.0
+offset_bottom = 54.0
+stretch_mode = 2

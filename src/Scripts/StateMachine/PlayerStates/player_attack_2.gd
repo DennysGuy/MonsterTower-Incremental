@@ -21,7 +21,7 @@ func enter() -> void:
 	parent.set_sword_texture("SwordSwing2")
 	parent.effect.texture = OutfitGraphics.get_outfit_graphic("BasicAttackEffect")
 	parent.set_outfit_texture(animation_name)
-	parent.timer.wait_time = PlayerStats.get_current_sword().attack_speed
+	parent.timer.wait_time = PlayerStats.get_current_sword().get_total_attack_speed_bonus()
 	parent.timer.start()
 	
 	var swing : AudioStream = PlayerStats.get_sword(int(PlayerStats.player_stats["Equipped Sword"])).swing_2

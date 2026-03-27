@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="GemStone" format=3 uid="uid://dbnhv2sbprspa"]
+
+[ext_resource type="Script" uid="uid://bx7re57seek5i" path="res://src/Scripts/Facilities/gem_stone.gd" id="1_vix55"]
+[ext_resource type="Texture2D" uid="uid://6vwjuci46r2b" path="res://Assets/Gems/RedGem.png" id="2_8f84l"]
+[ext_resource type="Texture2D" uid="uid://cb7qav4l5tsb1" path="res://Assets/Facilities/GearCraftingStation/GearSocket_RedGem.png" id="3_whw8m"]
+
+[resource]
+script = ExtResource("1_vix55")
+socket_graphic = ExtResource("3_whw8m")
+drop_rate = 10.0
+attack_percentage_bonus = 0.05
+crit_chance_bonus = 0.03
+crit_damage_bonus = 0.03
+item_name = "Gem of Courage I"
+item_type = 4
+sell_value = 100
+shop_icon = ExtResource("2_8f84l")
+description = "Embodying the Tower's nature of Courage. 
+Provides a small boost to one's combat effectiveness."
+metadata/_custom_type_script = "uid://bx7re57seek5i"

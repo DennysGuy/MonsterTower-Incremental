@@ -15,7 +15,7 @@ class_name PlayerCamera extends Camera2D
 
 var rng = RandomNumberGenerator.new()
 var shake_strength = random_strength
-var room_bounds: Rect2 = Rect2(Vector2.ZERO, Vector2(3500, 3500))
+var room_bounds: Rect2 = Rect2(Vector2.ZERO, Vector2(3500, 5000))
 
 var weight : float
 var camera_zoom : bool = false

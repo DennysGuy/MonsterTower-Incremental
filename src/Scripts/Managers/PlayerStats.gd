@@ -53,7 +53,9 @@ const KNOCKBACK_FORCE : int = 300
 	"Cooking Drop Chance Bonus":0.0,
 	"Cooking Accuracy Bonus":0.0,
 	"Ore Drop Chance Bonus":0.0,
-	"Smelting Accuracy Bonus":0.0
+	"Smelting Accuracy Bonus":0.0,
+	"Tier 1 Chest Spawn Rate": 0.05,
+	"Tier 1 Gem Drop Rate":0.3 
 }
 
 var equipped_abilities : Dictionary = {
@@ -64,8 +66,64 @@ var equipped_abilities : Dictionary = {
 	"Air Attack" : null, #basic air attack
 	"Double Jump" : null, #basic double jump
 	"Special Attack" : null,
-
 }
+
+var equipped_gem_sockets : Dictionary = {
+	0: null,
+	1: null,
+	2: null,
+	3: null
+}
+
+func reset_gem_sockets() -> void:
+	print(equipped_gem_sockets)
+	for socket in equipped_gem_sockets.keys():
+		equipped_gem_sockets[socket] = null
+	
+	SaveManager.save_equipped_gems_stones()
+
+func get_total_gem_bonus(stat_bonus_name : String) -> float:
+	var total : float = 0.0
+	
+	for index in range(get_current_sword().gem_stone_socket_count):
+		var socket = get_gem_socket(index)
+		if socket:
+			var stat_bonus : float = socket.get_stat_bonus(stat_bonus_name)
+			total += stat_bonus
+	
+	return total
+
+func get_total_gem_attack_bonus() -> float:
+	var total : float = 0.0
+	for index in range(get_current_sword().gem_stone_socket_count):
+		var socket = get_gem_socket(index)
+		if socket:
+			total += socket.total_attack_bonus()
+	
+	return total
+
+func get_total_gem_defense_bonus() -> float:
+	var total : float = 0.0
+	for index in range(get_current_sword().gem_stone_socket_count):
+		var socket = get_gem_socket(index)
+		if socket:
+			total += socket.total_defense_bonus()
+	
+	return total
+
+func equip_gem_to_socket(gem_stone : GemStone) -> bool:
+	for socket_index in range(get_current_sword().gem_stone_socket_count):
+		if equipped_gem_sockets[socket_index] == null:
+			equipped_gem_sockets[socket_index] = gem_stone
+			SaveManager.save_equipped_gems_stones()
+			return true
+	return false
+	
+func get_equipped_gem_sockets() -> Dictionary:
+	return equipped_gem_sockets
+	
+func get_gem_socket(position : int) -> GemStone:
+	return equipped_gem_sockets[position]
 
 func get_equipped_ability(slot : String) -> Ability:
 	var selected_slot = equipped_abilities[slot]
@@ -92,7 +150,8 @@ func equip_ability(player_class : String, ability_type : String) -> void:
 	"Bank": false,
 	"Arial Slash" : false,
 	"Dash Attack": false,
-	"Double Jump" : false
+	"Double Jump" : false,
+	"Gem Stone Station": false
 }
 
 @onready var check_points_unlocked : Dictionary = {
@@ -126,6 +185,7 @@ const MAX_SWORD_COUNT := 3
 
 var show_cooking_station_unlock_animation : bool = false
 var show_refinery_station_unlock_animation : bool = false
+var show_gem_station_unlock_animation : bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -196,6 +256,8 @@ func upgrade_player_stat(stat_name : String, interval : float, node_type : TechT
 			show_cooking_station_unlock_animation = true
 		elif stat_name == "Refinery Station":
 			show_refinery_station_unlock_animation = true
+		elif stat_name == "Gem Stone Station":
+			show_gem_station_unlock_animation = true
 		#we'll need a way to figure out how to iniate a cutscene showing unlock sequence
 		return
 	
@@ -213,6 +275,18 @@ func upgrade_player_stat(stat_name : String, interval : float, node_type : TechT
 		
 	InventoryManager.update_inventory_bag.emit("Inventory")
 	TechTreeManager.update_player_stats.emit()
+
+func load_abilities() -> void:
+	
+	if SaveManager.current_save_game and SaveManager.current_save_game.player_stats["Class"] == "Junior Hunter":
+		return
+		
+	var ability_names : Array[String] = ["Air Attack", "Dash Attack", "Double Jump", "Special Attack"]
+
+	for ability_name in ability_names:
+		var equipped_ability : Ability = get_equipped_ability(ability_name)
+		if equipped_ability:
+			equipped_ability.load_stats()
 
 func check_needed_for_dojo() -> bool:
 	return PlayerStats.player_stats["Level"] >= 5 and PlayerStats.facilities_unlocked["Dash Attack"] and PlayerStats.facilities_unlocked["Arial Slash"] and PlayerStats.facilities_unlocked["Double Jump"]

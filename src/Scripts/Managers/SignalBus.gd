@@ -21,7 +21,7 @@ signal spawn_enemies
 @warning_ignore("unused_signal")
 signal spawn_resources
 @warning_ignore("unused_signal")
-signal move_to_next_room
+signal move_to_next_room(room_path : String)
 
 @warning_ignore("unused_signal")
 signal return_to_starshire
@@ -114,3 +114,7 @@ signal play_warrior_unlock_animation
 signal check_for_notification(notification_type : GameManager.NOTIFICATION_TYPE)
 @warning_ignore("unused_signal")
 signal spawn_warrior_tech_tree
+@warning_ignore("unused_signal")
+signal update_gem_station_sockets
+@warning_ignore("unused_signal")
+signal update_banner_info(tower_entrance_data : TowerEntranceData)

@@ -71,7 +71,7 @@ func _ready() -> void:
 	hud.open_tower_map_button.show()
 	await get_tree().process_frame
 	SignalBus.update_player_health.emit(player.health)
-	PlayerStats.player_stats["Current MP"] = PlayerStats.player_stats["Max MP"]
+	PlayerStats.player_stats["Current MP"] = PlayerStats.player_stats["Max MP"] + PlayerStats.get_current_sword().max_mp_bonus + PlayerStats.get_total_gem_bonus("Max MP Bonus")
 	SignalBus.update_player_mp.emit()
 	SaveManager.save_player_stats()
 	
@@ -113,7 +113,7 @@ func _process(delta: float) -> void:
 				spawn_warrior_tech_tree()
 		#spawn_dojo_menu()
 		
-	if Input.is_action_just_pressed("interact") and player_in_upgrade_station_range:
+	if Input.is_action_just_pressed("interact") and player_in_upgrade_station_range and PlayerStats.facilities_unlocked["Gem Stone Station"]:
 		GameManager.player_can_move = false
 		player.velocity = Vector2.ZERO
 		spawn_upgrade_menu()
@@ -334,7 +334,10 @@ func unlock_station() -> void:
 	
 	if PlayerStats.show_refinery_station_unlock_animation:
 		await unlock_refinery_station()
-		
+	
+	if PlayerStats.show_gem_station_unlock_animation:
+		await gem_station_unlock_notice()
+	
 	GameManager.player_can_move = true
 
 func new_sword_unlock_notice() -> void:
@@ -366,7 +369,27 @@ func warrior_class_unlocked_notice() -> void:
 	await get_tree().create_timer(2.0).timeout
 	SignalBus.hide_big_notification.emit()
 	GameManager.player_can_move = true
-		
+
+
+func gem_station_unlock_notice() -> void:
+	camera.player = null
+	player.send_to_idle_state()
+	hud.animation_player.play("FadeInOut")
+	await get_tree().create_timer(0.5).timeout
+	smithing_station.notify_can_craft()
+	camera.position = sword_crafting_station_position.position
+	SignalBus.issue_big_notification.emit("Your weapon can now be enhanced with Gem Stones.")
+	await get_tree().create_timer(2.0).timeout
+	SignalBus.issue_big_notification.emit("Access the Gem Stone station to mount gems onto your weapon!")
+	await get_tree().create_timer(3.5).timeout
+	SignalBus.hide_big_notification.emit()
+	hud.animation_player.play("FadeInOut")
+	await get_tree().create_timer(0.5).timeout
+	camera.position = player.position
+	camera.player = player
+	PlayerStats.show_gem_station_unlock_animation = false
+
+
 func _on_dojo_area_body_entered(body: Node2D) -> void:
 	if body is Player:
 		dojo_access_notification.text = "Press E to Access Dojo!"		
@@ -381,6 +404,10 @@ func _on_dojo_area_body_exited(body: Node2D) -> void:
 func _on_gem_stone_station_area_body_entered(body: Node2D) -> void:
 	if body is Player:
 		player_in_upgrade_station_range = true
+		if PlayerStats.facilities_unlocked["Gem Stone Station"]:
+			enter_upgrade_station_notice.text = "Press 'E' to Access\nGem Stone Station"
+		else:
+			enter_upgrade_station_notice.text = "Unlock Gem Stone\nStation Node to access!"
 		enter_upgrade_station_notice.show()
 
 func _on_gem_stone_station_area_body_exited(body: Node2D) -> void:

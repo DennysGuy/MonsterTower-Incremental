@@ -28,6 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="21_b42m5"]
 [ext_resource type="AudioStream" uid="uid://da4j7oibbpe1j" path="res://Audio/SFX/Biomes/MossyDungeon/GenericDeath3.wav" id="21_ihpwa"]
 [ext_resource type="Script" uid="uid://dwvy67t8hx3" path="res://src/Scripts/Enemies/enemy_stun.gd" id="23_ki50n"]
+[ext_resource type="Script" uid="uid://cx8e05eefws02" path="res://src/Scripts/StateMachine/EnemyStates/GenericEnemyStates/enemy_spawn_in.gd" id="24_d044k"]
 [ext_resource type="PackedScene" uid="uid://dg5nyfcc7ja8v" path="res://src/Scenes/Actors/Enemies/StatusEffectIconBar.tscn" id="27_0802a"]
 [ext_resource type="PackedScene" uid="uid://ducu4iluu5nv4" path="res://src/Scenes/UI/StatusEffectVBox.tscn" id="28_ihpwa"]
 
@@ -238,6 +239,58 @@ tracks/2/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_d044k"]
+resource_name = "SpawnIn"
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_gfyeb")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_ihpwa"]
 resource_name = "Stun"
@@ -288,6 +341,7 @@ _data = {
 &"Hurt": SubResource("Animation_63me8"),
 &"Idle": SubResource("Animation_ugsex"),
 &"RESET": SubResource("Animation_0virf"),
+&"SpawnIn": SubResource("Animation_d044k"),
 &"Stun": SubResource("Animation_ihpwa")
 }
 
@@ -325,6 +379,7 @@ stun_state = NodePath("StateMachine/Stun")
 sfx_player = NodePath("SfxPlayer")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=958977099]
+modulate = Color(1, 1, 1, 0)
 position = Vector2(0, -34)
 texture = ExtResource("2_gfyeb")
 hframes = 6
@@ -360,7 +415,7 @@ one_shot = true
 
 [node name="StateMachine" type="Node" parent="." unique_id=537761424 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("6_t1lb8")
-initial_state = NodePath("Idle")
+initial_state = NodePath("SpawnIn")
 
 [node name="Idle" type="Node" parent="StateMachine" unique_id=2110658143 node_paths=PackedStringArray("patrol_state")]
 script = ExtResource("6_ugsex")
@@ -401,6 +456,11 @@ animation_name = "Dead"
 script = ExtResource("23_ki50n")
 idle = NodePath("../Idle")
 animation_name = "Stun"
+
+[node name="SpawnIn" type="Node" parent="StateMachine" unique_id=1651020003 node_paths=PackedStringArray("idle_state")]
+script = ExtResource("24_d044k")
+idle_state = NodePath("../Idle")
+animation_name = "SpawnIn"
 
 [node name="WallDetector" parent="." unique_id=761357575 instance=ExtResource("13_63me8")]
 position = Vector2(13, -20)

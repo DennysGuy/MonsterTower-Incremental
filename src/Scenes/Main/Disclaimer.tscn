@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dp68gajadt5d1"]
+[gd_scene format=3 uid="uid://dp68gajadt5d1"]
 
 [ext_resource type="Script" uid="uid://ba10y7m4ljulk" path="res://src/Scripts/Main/disclaimer.gd" id="1_17ifk"]
 [ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="1_msxod"]

@@ -34,8 +34,8 @@ NotificationManager="*res://src/Scripts/Managers/NotificationManager.gd"
 MusicPlayer="*res://src/Scenes/Players/MusicPlayer.tscn"
 LevelingManager="*res://src/Scripts/Managers/LevelingManager.gd"
 SaveManager="*res://src/Scripts/Managers/SaveManager.gd"
-OutfitGraphics="*uid://damr4a01nhru5"
 AbilityTimers="*uid://p5j35xa48ggo"
+OutfitGraphics="*uid://damr4a01nhru5"
 
 [display]
 

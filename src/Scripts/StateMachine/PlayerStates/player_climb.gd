@@ -35,7 +35,7 @@ func process_frame(_delta: float) -> State:
 
 func process_physics(_delta: float) -> State:
 	var input : float  =  Input.get_axis("pan_cam_up","pan_cam_down")
-	parent.velocity.y = input * PlayerStats.player_stats["Climbing Speed"]
+	parent.velocity.y = input * (PlayerStats.player_stats["Climbing Speed"] + PlayerStats.get_total_gem_bonus("Climb Speed Bonus"))
 	
 	if !parent.stored_ladder:
 		return idle_state

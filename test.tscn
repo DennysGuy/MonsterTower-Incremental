@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://6fqivtsi6x2q"]
+[gd_scene format=3 uid="uid://6fqivtsi6x2q"]
 
 [ext_resource type="PackedScene" uid="uid://b7n3fwd3y85wp" path="res://src/Scenes/TechTree/TechTree.tscn" id="1_37kl0"]
 

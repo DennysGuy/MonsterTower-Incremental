@@ -1,11 +1,12 @@
 [gd_resource type="Resource" script_class="Ability" format=3 uid="uid://b0lsgfuw8bp58"]
 
 [ext_resource type="Resource" uid="uid://2jjptcjeyb01" path="res://src/Resources/AbilityStates/DashAttacks/BasicDashAttackBehavior.tres" id="1_4rfuh"]
-[ext_resource type="Script" uid="uid://bwqf7q51702b" path="res://src/Scripts/cability.gd" id="1_r4urb"]
+[ext_resource type="Script" path="res://src/Scripts/cability.gd" id="1_r4urb"]
 
 [resource]
 script = ExtResource("1_r4urb")
 ability_name = "Dash Attack"
+class_relation = "Junior Hunter"
 ability_type = 2
 cooldown_time = 1.5
 ability_description = "Press 'Right Click' or 'Q' while moving to thrust yourself forward - dashing and stabbing the enemies in front of you."
@@ -13,4 +14,3 @@ ability_behavior = ExtResource("1_4rfuh")
 number_of_enemies_hit = 1.0
 max_hit_count = 1.0
 dash_speed_modifier = 1.0
-metadata/_custom_type_script = "uid://bwqf7q51702b"

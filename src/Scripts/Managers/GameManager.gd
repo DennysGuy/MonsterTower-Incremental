@@ -14,6 +14,7 @@ var enemies_can_move : bool = true
 var can_open_bag : bool = true
 var can_open_tower_map : bool = true
 var player_can_attack : bool = true
+var auto_pick_up_enabled : bool = false
 
 enum NOTIFICATION_TYPE {CRAFTING, COOKING, SMELTING, AP, QUEST}
 
@@ -73,6 +74,10 @@ func calculate_targets(enemies_in_hitbox : Array, player : Player, number_of_hit
 	
 	for area in enemies_in_hitbox:
 		var enemy = area.get_parent()
+		
+		if not enemy is Enemy:
+			continue
+		
 		if not area is HurtBox:
 			continue
 		if enemy == null or enemy == player or not enemy.damageable:

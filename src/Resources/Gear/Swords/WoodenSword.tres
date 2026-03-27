@@ -11,6 +11,7 @@ script = ExtResource("1_g5sve")
 sword_name = "Wooden Sword"
 defense_bonus = 1.0
 attack_speed = 0.58
+gem_stone_socket_count = 4
 swing_1 = ExtResource("2_esloh")
 swing_2 = ExtResource("3_ujw5s")
 swing_3 = ExtResource("4_64xsp")

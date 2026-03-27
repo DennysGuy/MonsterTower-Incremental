@@ -11,7 +11,10 @@ func _ready() -> void:
 	
 	if ore_rock_markers and !GameManager.hunt_challenge_selected:
 		spawn_ore_rocks()
-		
+	
+	if gem_stone_chest_markers and !GameManager.hunt_challenge_selected and PlayerStats.facilities_unlocked["Gem Stone Station"]:
+		spawn_gem_chests()
+	
 	await get_tree().process_frame
 	
 	if monster_spawn_node:

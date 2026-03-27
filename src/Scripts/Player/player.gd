@@ -19,6 +19,10 @@ class_name Player extends Entity
 @onready var dash_attack_collision_shape : CollisionShape2D = $DashAttackHitBox/CollisionShape2D
 @onready var dash_attack_hit_box: HitBox = $DashAttackHitBox
 
+@onready var gem_chest_hit_area: GemStoneHitArea = $GemChestHitArea
+
+@onready var item_pick_up_area: Area2D = $ItemPickUpArea
+
 @onready var ending_area: Area2D = $EndingArea
 
 @onready var can_dash_attack : bool = true
@@ -39,6 +43,7 @@ var is_climbing : bool = false
 var prev_input : int
 var prev_move_speed : float
 var mining_area_position : Vector2
+var gem_chest_hit_area_position : Vector2
 var hit_box_position : Vector2
 
 var jump_buffer_timer : float = 0.0
@@ -75,10 +80,15 @@ func _ready() -> void:
 	SignalBus.stop_player.connect(stop_player)
 	health = PlayerStats.player_stats["Max Health"]
 	mining_area_position = mining_area.position
+	gem_chest_hit_area_position = gem_chest_hit_area.position
 	hit_box_position = hit_box.position
 	dash_attack_hit_box.position = hit_box_position
+	disable_gem_chest_hit_area()
 	
 func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("pan_cam_up") and !GameManager.auto_pick_up_enabled:
+		pick_up_items()
+		await get_tree().create_timer(1.0).timeout
 	super(delta)
 
 func _physics_process(delta: float) -> void:
@@ -92,7 +102,6 @@ func _physics_process(delta: float) -> void:
 	if attack_buffer_timer > 0:
 		attack_buffer_timer -= delta
 	
-
 func _unhandled_input(event: InputEvent) -> void:
 	super(event)
 
@@ -113,10 +122,12 @@ func flip_textures(flip : bool) -> void:
 		mining_area.position = Vector2(-mining_area_position.x, mining_area_position.y)
 		hit_box.position = Vector2(-hit_box_position.x, hit_box_position.y)
 		dash_attack_hit_box.position = Vector2(-hit_box_position.x, hit_box_position.y)
+		gem_chest_hit_area.position = Vector2(-gem_chest_hit_area_position.x, gem_chest_hit_area_position.y)
 	else:
 		mining_area.position = mining_area_position
 		hit_box.position = hit_box_position
 		dash_attack_hit_box.position = hit_box_position
+		gem_chest_hit_area.position = gem_chest_hit_area_position
 	
 func start_invincibility() -> void:
 	damageable = false
@@ -129,6 +140,7 @@ func clear_sprites() -> void:
 	animation_player.stop()
 	for cur_sprite in sprites.get_children():
 		cur_sprite.texture = null
+		
 func stop_player() -> void:
 	velocity = Vector2.ZERO
 
@@ -141,10 +153,10 @@ func issue_attack(selected_hit_box : HitBox, multiplier : float = 1.0, ability :
 	var number_of_hits : int = 1
 	var rep_delay : float = 0.1
 	var incoming_damage : int = 0
-
-	var base_damage : int = int(PlayerStats.player_stats["Attack Damage"] + PlayerStats.get_sword(PlayerStats.player_stats["Equipped Sword"]).attack_bonus)
-	var min_damage : int = int(base_damage * PlayerStats.player_stats["Accuracy"])
-	var max_damage : int = int(base_damage)
+	var total_base_attack_damage = int(PlayerStats.player_stats["Attack Damage"] + PlayerStats.get_current_sword().attack_bonus + PlayerStats.get_total_gem_attack_bonus())
+	
+	var min_damage : int = int(total_base_attack_damage * PlayerStats.player_stats["Accuracy"] + PlayerStats.get_total_gem_bonus("Accuracy Bonus"))
+	var max_damage : int = int(total_base_attack_damage)
 	var is_crit = check_for_crit()
 	if is_crit:
 		print("IM CRTTING!")
@@ -152,13 +164,13 @@ func issue_attack(selected_hit_box : HitBox, multiplier : float = 1.0, ability :
 		overlapping_hits = int(ability.number_of_enemies_hit)
 		number_of_hits = int(ability.max_hit_count)
 		rep_delay = ability.attack_rep_delay
-		min_damage = PlayerStats.player_stats["Attack Damage"] + ability.base_attack * PlayerStats.player_stats["Accuracy"]
-		max_damage = PlayerStats.player_stats["Attack Damage"] + ability.base_attack
+		min_damage = total_base_attack_damage * (PlayerStats.player_stats["Accuracy"] + PlayerStats.get_total_gem_bonus("Accuracy Bonus"))
+		max_damage = total_base_attack_damage  + ability.base_attack
 		
 	incoming_damage  = int(randi_range(min_damage,max_damage) * multiplier)
 	
 	if is_crit:
-		incoming_damage = int((PlayerStats.player_stats["Crit Damage"] + PlayerStats.get_sword(PlayerStats.player_stats["Equipped Sword"]).crit_bonus) * incoming_damage)
+		incoming_damage = int((PlayerStats.player_stats["Crit Damage"] + PlayerStats.get_current_sword().crit_bonus + PlayerStats.get_total_gem_bonus("Crit Damage Bonus")) * incoming_damage)
 	
 	if PlayerStats.player_stats["Class"] == "Tyro":
 		GameManager.attack_enemies(enemies_in_range, overlapping_hits, number_of_hits, self, incoming_damage, is_crit, true, rep_delay)
@@ -174,9 +186,8 @@ func issue_super_attack() -> void:
 
 func check_for_crit() -> bool:
 	var crit_roll : int = randi_range(0,100)
-	if crit_roll < int(100 * (PlayerStats.player_stats["Crit Chance"] + PlayerStats.get_sword(PlayerStats.player_stats["Equipped Sword"]).crit_bonus)):
+	if crit_roll < int(100 * (PlayerStats.player_stats["Crit Chance"] + PlayerStats.get_current_sword().crit_bonus + PlayerStats.get_total_gem_bonus("Crit Chance Bonus"))):
 		return true
-	
 	return false
 
 func _on_ladder_detector_area_entered(area: Area2D) -> void:
@@ -201,6 +212,16 @@ func clear_effect_texture() -> void:
 
 func set_cancel_state_true() -> void:
 	can_attack_cancel = true
+
+func enable_gem_chest_hit_area() -> void:
+	gem_chest_hit_area.monitorable = true
+	gem_chest_hit_area.monitoring = true
+	gem_chest_hit_area.get_child(0).disabled = false
+
+func disable_gem_chest_hit_area() -> void:
+	gem_chest_hit_area.monitorable = false
+	gem_chest_hit_area.monitoring = false
+	gem_chest_hit_area.get_child(0).disabled = true
 
 func blink_effect() -> void:
 	if not is_inside_tree():
@@ -237,6 +258,7 @@ func blink_effect() -> void:
 	# Final safety check before setting damageable
 	if is_inside_tree():
 		damageable = true
+		enable_hurt_box()
 
 func send_to_idle_state() -> void:
 	state_machine.change_state(idle_state)
@@ -256,12 +278,12 @@ func disable_sword_soar_hitbox() -> void:
 	sword_soar_hit_box.set_deferred("monitoring", false)
 	sword_soar_hit_box.set_deferred("monitorable", false)
 
-
 func _on_ability_cool_down_timer_timeout() -> void:
 	can_dash_attack = true
 
 func _on_invincibility_timer_timeout() -> void:
 	damageable = true
+	enable_hurt_box()
 
 func can_issue_ability(ability_name : String) -> bool:
 	var selected_ability = PlayerStats.equipped_abilities[ability_name]
@@ -272,18 +294,34 @@ func can_issue_ability(ability_name : String) -> bool:
 func _on_sword_soar_hit_box_area_entered(area: Area2D) -> void:
 	var parent = area.get_parent()
 	
+	var total_attack_damage : int = PlayerStats.player_stats["Attack Damage"] + PlayerStats.get_current_sword().get_total_attack_bonus()
+	var total_accuracy : float = PlayerStats.player_stats["Accuracy"] + PlayerStats.get_current_sword().accuracy_bonus + PlayerStats.get_total_gem_bonus("Accuracy Bonus")
 	if parent is Enemy:
-		var damage = randf_range(PlayerStats.player_stats["Attack Damage"]*0.8, PlayerStats.player_stats["Attack Damage"]) * PlayerStats.equipped_abilities["Double Jump"].attack_damage_modifier
+		var damage = randf_range(total_attack_damage*total_accuracy, PlayerStats.player_stats["Attack Damage"]) * PlayerStats.equipped_abilities["Double Jump"].attack_damage_modifier
 		parent.apply_slow_and_damage(damage,PlayerStats.get_equipped_ability("Double Jump").move_speed_modifier, PlayerStats.get_equipped_ability("Double Jump").slow_wait_time)
-
 
 func _on_dash_attack_hit_box_area_entered(area: Area2D) -> void:
 	var parent = area.get_parent()
+	var total_attack_damage : int = PlayerStats.player_stats["Attack Damage"] + PlayerStats.get_current_sword().get_total_attack_bonus()
+	var total_accuracy : float = PlayerStats.player_stats["Accuracy"] + PlayerStats.get_current_sword().accuracy_bonus + PlayerStats.get_total_gem_bonus("Accuracy Bonus")
 	if parent is Enemy:
 		print(parent)
 		if is_silence_attack:
 			var equipped_dash_attack : Ability = PlayerStats.get_equipped_ability("Dash Attack")
-			var damage = randi_range(PlayerStats.player_stats["Attack Damage"] * 0.8, PlayerStats.player_stats["Attack Damage"]) * equipped_dash_attack.attack_damage_modifier
+			var damage : int = randi_range(total_attack_damage * total_accuracy, total_attack_damage) * equipped_dash_attack.attack_damage_modifier
 			parent.apply_silenced_and_damage(damage, equipped_dash_attack.slow_wait_time)
 		else:
 			issue_attack(dash_attack_hit_box)
+
+
+func pick_up_items() -> void:
+	var areas : Array[Area2D]= item_pick_up_area.get_overlapping_areas()
+	for area in areas:
+		var area_parent = area.get_parent()
+		if area_parent is ItemInteractable:
+			if area_parent and !area_parent.can_pick_up:
+				area_parent.pick_up_item()
+				if area_parent.can_pick_up:
+					return			
+	
+			

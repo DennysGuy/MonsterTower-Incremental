@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://13aket7geo5a" path="res://src/Scenes/UI/NotificationHub.tscn" id="12_wldwa"]
 [ext_resource type="Texture2D" uid="uid://dix63priuogkk" path="res://Assets/NodeGraphics/NodeGraphicsV2/Bag1_V2.png" id="13_fw5mt"]
 [ext_resource type="PackedScene" uid="uid://djwayx7h06hx3" path="res://src/Scenes/UI/QuestHub.tscn" id="14_xxan5"]
+[ext_resource type="PackedScene" uid="uid://db7vqj43a3h6c" path="res://src/Scenes/UI/RoomInfoBanner.tscn" id="16_fnmb5"]
 
 [sub_resource type="Animation" id="Animation_g1bs5"]
 resource_name = "CloseIn"
@@ -529,28 +530,33 @@ layout_mode = 1
 offset_right = 81.0
 
 [node name="HuntQuota" type="RichTextLabel" parent="PlayerHUD" unique_id=325974037]
+visible = false
 layout_mode = 0
-offset_left = 273.0
+offset_left = 481.0
 offset_top = 50.0
-offset_right = 629.0
-offset_bottom = 68.0
+offset_right = 605.0
+offset_bottom = 65.0
 theme_override_constants/outline_size = 6
 theme_override_fonts/normal_font = ExtResource("9_jyqen")
+theme_override_font_sizes/normal_font_size = 14
 bbcode_enabled = true
-horizontal_alignment = 2
+text = "Expedition Floor"
+horizontal_alignment = 1
 
 [node name="MonstersLeft" type="RichTextLabel" parent="PlayerHUD" unique_id=130429852]
+visible = false
 layout_mode = 0
 offset_left = 460.0
-offset_top = 69.0
+offset_top = 78.0
 offset_right = 629.0
-offset_bottom = 105.0
+offset_bottom = 94.0
 theme_override_constants/outline_size = 6
 theme_override_fonts/normal_font = ExtResource("9_jyqen")
+theme_override_font_sizes/normal_font_size = 12
 bbcode_enabled = true
 text = "
 "
-horizontal_alignment = 2
+horizontal_alignment = 1
 
 [node name="XPAmountLabel" type="Label" parent="PlayerHUD" unique_id=2114485998]
 layout_mode = 1
@@ -604,25 +610,6 @@ grow_vertical = 0
 step = 0.1
 texture_under = ExtResource("11_6ndbt")
 texture_progress = ExtResource("12_8d4p7")
-
-[node name="BigNotificationLabel" type="Label" parent="PlayerHUD" unique_id=759498820]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -184.0
-offset_top = -98.0
-offset_right = 185.0
-offset_bottom = -75.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(1, 1, 0, 1)
-theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("5_nt012")
-horizontal_alignment = 1
 
 [node name="Flash" type="ColorRect" parent="PlayerHUD" unique_id=1206488663]
 modulate = Color(1, 1, 1, 0)
@@ -687,9 +674,9 @@ mouse_filter = 2
 visible = false
 layout_mode = 0
 offset_left = 456.0
-offset_top = 9.0
+offset_top = 4.0
 offset_right = 536.0
-offset_bottom = 41.0
+offset_bottom = 36.0
 mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0.9411765, 0.15686275, 0, 1)
 theme_override_fonts/font = ExtResource("9_jyqen")
@@ -775,6 +762,13 @@ layout_mode = 1
 offset_left = -2.0
 offset_right = 130.00012
 
+[node name="RoomInfoBanner" parent="PlayerHUD" unique_id=1196855950 instance=ExtResource("16_fnmb5")]
+layout_mode = 1
+offset_left = 131.0
+offset_top = -145.0
+offset_right = 321.0
+offset_bottom = -85.0
+
 [node name="Bag" parent="PlayerHUD" unique_id=668700631 instance=ExtResource("6_g1bs5")]
 z_index = 4096
 layout_mode = 1
@@ -795,6 +789,25 @@ theme_override_fonts/normal_font = ExtResource("9_jyqen")
 bbcode_enabled = true
 text = "[color=purple]Select your Class
 at AP Center! [/color]"
+
+[node name="BigNotificationLabel" type="Label" parent="PlayerHUD" unique_id=759498820]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -184.0
+offset_top = -98.0
+offset_right = 185.0
+offset_bottom = -75.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("5_nt012")
+horizontal_alignment = 1
 
 [node name="TopBlackBar" type="ColorRect" parent="PlayerHUD" unique_id=877174551]
 layout_mode = 1

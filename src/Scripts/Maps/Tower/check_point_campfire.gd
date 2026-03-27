@@ -12,14 +12,17 @@ var just_unlocked : bool = false
 
 var player_in_range : bool = false
 
-func _ready() -> void:	
+func _ready() -> void:
+	if GameManager.hunt_challenge_selected:
+		queue_free()
+	
 	if unlocked:
 		animation_player.play("On")
 	else:
 		animation_player.play("Off")
 		
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("interact") and player_in_range:
+	if Input.is_action_just_pressed("interact") and player_in_range and !GameManager.hunt_challenge_selected:
 		SignalBus.return_to_starshire.emit()
 
 #will need to have the player come across checkpoints in order
