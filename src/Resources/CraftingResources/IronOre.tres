@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="EnemyDrop" format=3 uid="uid://65r3jdod3xkl"]
+
+[ext_resource type="Script" uid="uid://cubudt76pshmm" path="res://src/Scripts/Enemies/enemy_drop.gd" id="1_b6pgv"]
+[ext_resource type="Texture2D" uid="uid://oaoqn7v63rnc" path="res://Assets/EnvironmentalAssets/IronOreDrop.png" id="1_mpwsv"]
+
+[resource]
+script = ExtResource("1_b6pgv")
+drop_icon = ExtResource("1_mpwsv")
+drop_chance = 0.3
+item_name = "Iron Ore"
+item_type = 3
+sell_value = 70
+shop_icon = ExtResource("1_mpwsv")
+description = "Drops from Iron Ore Rock in the Tower. Used in refined bar recipes."
+metadata/_custom_type_script = "uid://cubudt76pshmm"

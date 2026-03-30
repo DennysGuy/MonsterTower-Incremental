@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://y4kiqe4pi2v5"]
+
+[ext_resource type="Script" uid="uid://cu8drgivmhfn" path="res://src/Scripts/item.gd" id="1_315vg"]
+[ext_resource type="Texture2D" uid="uid://jrdgmv4n6a6o" path="res://Assets/Facilities/SmeltingStation/IronBar.png" id="2_ftiro"]
+
+[resource]
+script = ExtResource("1_315vg")
+item_name = "Iron Bar"
+item_type = 5
+sell_value = 130
+shop_icon = ExtResource("2_ftiro")
+description = "Used in early-mid tier recipes. Sturdier than Bronze, weaker than Steel."
+metadata/_custom_type_script = "uid://cu8drgivmhfn"

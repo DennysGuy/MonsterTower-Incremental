@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="EnemyStats" format=3 uid="uid://dwook5wtmbf8g"]
+
+[ext_resource type="Script" uid="uid://cbjktr12qagl" path="res://src/Scripts/Enemies/enemy_stats.gd" id="1_p75h8"]
+
+[resource]
+script = ExtResource("1_p75h8")
+enemy_name = "Moss Golem"
+enemy_level = 20
+touch_damage = true
+can_move = true
+enemy_type = 1
+max_health = 5000
+attack = 200
+defense = 10.0
+movement_speed = 30.0
+chase_speed = 45.0
+break_threshold = 30
+metadata/_custom_type_script = "uid://cbjktr12qagl"

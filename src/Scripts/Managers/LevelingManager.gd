@@ -7,7 +7,7 @@ signal play_level_up_sfx
 @warning_ignore("unused_signal")
 signal update_available_ap_label
 
-const XP_GROWTH_RATE : float = 1.08
+const XP_GROWTH_RATE : float = 1.2
 const BASE_XP : int = 100
 
 func check_for_level_up() -> void:

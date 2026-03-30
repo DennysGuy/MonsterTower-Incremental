@@ -8,8 +8,8 @@
 script = ExtResource("1_gpc2m")
 node_name = "Attack 2"
 icon = ExtResource("1_8vyph")
-description = "Each level upgrades weapon attack by 15% for a total of 50% added attack damage when maxed out."
-max_level = 5
+description = "Increases Attack Damage by %20 for each level"
+max_level = 3
 currency_required = 200
 materials_required = Array[Dictionary]([{
 ExtResource("3_nkphf"): 1

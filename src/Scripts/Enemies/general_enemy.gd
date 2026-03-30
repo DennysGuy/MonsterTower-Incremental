@@ -1,4 +1,4 @@
-class_name CorruptedMushie extends Enemy
+class_name GenericEnemy extends Enemy
 
 @warning_ignore("unused_signal")
 signal on_death
@@ -26,7 +26,6 @@ func _on_hit_box_area_entered(area: Area2D) -> void:
 			
 	area_parent.stored_enemy = self
 	var sword = PlayerStats.get_current_sword()
-
 
 	var damage : int = randi_range(int(enemy_stats.attack * 0.8), enemy_stats.attack)
 	var defense : float = clamp(

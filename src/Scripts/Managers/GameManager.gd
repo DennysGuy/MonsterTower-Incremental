@@ -42,18 +42,24 @@ func attack_enemies(enemies_in_hitbox : Array, enemies_hit : int = 1, number_of_
 			#if it is a hitscan ability, we will determine the animation needed here.
 			var attack_reps = number_of_hits
 			var i = 0
-			
+			var defense : float = clamp(
+				enemy.enemy_stats.defense / 100.0,
+				0.0,
+				0.9
+				)
+
+			var damage = int(incoming_damage * (1.0 - defense))
+
+			damage = max(damage, 1)
 			while i < attack_reps:
 				#enemy.sfx_player.play()
-				attack_enemy(player, enemy, incoming_damage, is_crit, 0.02, is_warrior)
+				attack_enemy(player, enemy, damage, is_crit, 0.02, is_warrior)
 
 				i += 1
 				await player.get_tree().create_timer(rep_delay).timeout
 			
 			if is_instance_valid(enemy) and enemy.health <= 0:
 				enemies_in_hitbox.erase(enemy)
-				#enemy.dead = true
-			#await player.get_tree().create_timer(0.1).timeout
 
 func attack_enemy(player : Player, enemy : Enemy, incoming_damage : int, is_crit : bool, hit_freeze : float = 0.02, is_warrior : bool = false) -> void:
 	SignalBus.shake_camera.emit(0.5)

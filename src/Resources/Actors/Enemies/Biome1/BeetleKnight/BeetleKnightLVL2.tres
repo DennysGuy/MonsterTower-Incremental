@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="EnemyStats" format=3 uid="uid://6q2nq8bgf2bm"]
+
+[ext_resource type="Script" uid="uid://cbjktr12qagl" path="res://src/Scripts/Enemies/enemy_stats.gd" id="1_kw8av"]
+
+[resource]
+script = ExtResource("1_kw8av")
+enemy_name = "Beetle Knight"
+enemy_level = 7
+touch_damage = true
+enemy_type = 1
+max_health = 700
+attack = 45
+defense = 3.0
+movement_speed = 70.0
+chase_speed = 75.0
+break_threshold = 9
+metadata/_custom_type_script = "uid://cbjktr12qagl"

@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://vo5sm7p34vo6"]
+[gd_scene format=3 uid="uid://vo5sm7p34vo6"]
 
 [ext_resource type="Script" uid="uid://ctb1cjfp5a2cq" path="res://src/Scripts/HUD/name_tag.gd" id="1_sssty"]
+[ext_resource type="Texture2D" uid="uid://d2pxutob3xbxq" path="res://Assets/HUD/GenericNameTagGraphic.png" id="2_2uujy"]
+[ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="3_w02sg"]
 
-[node name="NameTag" type="Control"]
+[node name="NameTag" type="Control" unique_id=1232323974]
 layout_mode = 3
 anchors_preset = 0
 offset_left = -42.0
@@ -11,17 +13,22 @@ offset_right = 46.0
 offset_bottom = 15.0
 script = ExtResource("1_sssty")
 
-[node name="Bg" type="Panel" parent="."]
+[node name="Bg" type="TextureRect" parent="." unique_id=1015277224]
 layout_mode = 0
-offset_left = -1.0
-offset_right = 87.0
-offset_bottom = 11.0
+offset_left = -17.0
+offset_top = -8.0
+offset_right = 103.0
+offset_bottom = 15.0
+texture = ExtResource("2_2uujy")
 
-[node name="Tag" type="Label" parent="."]
+[node name="Tag" type="Label" parent="." unique_id=725373759]
 layout_mode = 0
 offset_left = -1.0
-offset_right = 87.0
-offset_bottom = 12.0
-theme_override_font_sizes/font_size = 7
+offset_top = 1.0
+offset_right = 89.0
+offset_bottom = 9.0
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("3_w02sg")
+theme_override_font_sizes/font_size = 9
 text = "Lv. 0 Scare Dummy"
 horizontal_alignment = 1

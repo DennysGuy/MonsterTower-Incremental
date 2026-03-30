@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://cui7mw0mkjt8h"]
+
+[ext_resource type="Script" uid="uid://b6dar20ctfx82" path="res://src/Scripts/HUD/banner_tracker.gd" id="1_ffs02"]
+[ext_resource type="Texture2D" uid="uid://ly0aciytxc8y" path="res://Assets/Facilities/SmeltingStation/BronzeBar.png" id="1_mljqb"]
+[ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="2_ffs02"]
+
+[node name="BannerTracker" type="Control" unique_id=944233534 node_paths=PackedStringArray("icon", "tracker_label")]
+custom_minimum_size = Vector2(141, 15)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -90.5
+offset_top = -11.0
+offset_right = 90.5
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ffs02")
+icon = NodePath("Panel/Icon")
+tracker_label = NodePath("Panel/TrackerLabel")
+
+[node name="Panel" type="Panel" parent="." unique_id=877992301]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -70.5
+offset_top = -7.25
+offset_right = 70.5
+offset_bottom = 7.25
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Icon" type="TextureRect" parent="Panel" unique_id=1519269021]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -18.0
+offset_top = -8.576923
+offset_right = -1.0
+offset_bottom = 6.5769234
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("1_mljqb")
+expand_mode = 1
+
+[node name="TrackerLabel" type="Label" parent="Panel" unique_id=1988360860]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -62.0
+offset_top = -6.0
+offset_right = 48.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_ffs02")
+theme_override_font_sizes/font_size = 12
+text = "4/4 Bronze bars"
+horizontal_alignment = 2

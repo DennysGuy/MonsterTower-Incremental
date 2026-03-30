@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="CraftingRecipe" format=3 uid="uid://lt0tb247yewa"]
+
+[ext_resource type="Script" uid="uid://cljygiasf4103" path="res://src/Scripts/Facilities/crafting_recipe.gd" id="1_cmo1r"]
+[ext_resource type="Texture2D" uid="uid://jrdgmv4n6a6o" path="res://Assets/Facilities/SmeltingStation/IronBar.png" id="1_utwwx"]
+[ext_resource type="Resource" uid="uid://y4kiqe4pi2v5" path="res://src/Resources/CraftingResources/IronBar.tres" id="2_elpgy"]
+[ext_resource type="Resource" uid="uid://65r3jdod3xkl" path="res://src/Resources/CraftingResources/IronOre.tres" id="3_ftq1i"]
+
+[resource]
+script = ExtResource("1_cmo1r")
+recipe_name = "Iron Bar"
+menu_icon = ExtResource("1_utwwx")
+recipe_tier = 1
+crafting_time = 50.0
+success_rate = 0.85
+critical_success_rate = 0.05
+failure_rate = 0.1
+output_item = ExtResource("2_elpgy")
+recipe_list = Array[Dictionary]([{
+ExtResource("3_ftq1i"): 4
+}])
+metadata/_custom_type_script = "uid://cljygiasf4103"
