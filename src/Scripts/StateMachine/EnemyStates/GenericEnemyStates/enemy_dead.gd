@@ -51,10 +51,13 @@ func drop_items() -> void:
 	var item : EnemyDrop = parent.enemy_stats.novelty_item_drop
 	var item_interactable : ItemInteractable = null
 	if item:
-		item_interactable = preload("uid://dgtobkubdjq27").instantiate()
-		item_interactable.item = item
-		item_interactable.icon.texture = item.drop_icon
-		item_interactable.global_position = parent.global_position
+		var random_check : int = randi_range(0,100)
+		var drop_chance : float = item.drop_chance
+		if random_check <= int(item.drop_chance * 100):
+			item_interactable = preload("uid://dgtobkubdjq27").instantiate()
+			item_interactable.item = item
+			item_interactable.icon.texture = item.drop_icon
+			item_interactable.global_position = parent.global_position
 	
 	if PlayerStats.facilities_unlocked["Cooking Station"]:
 		var cooking_item : EnemyDrop = parent.enemy_stats.cooking_item_drop

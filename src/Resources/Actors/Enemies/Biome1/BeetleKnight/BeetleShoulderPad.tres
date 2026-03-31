@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EnemyDrop" format=3 uid="uid://cekcxnint1huh"]
+
+[ext_resource type="Script" uid="uid://cubudt76pshmm" path="res://src/Scripts/Enemies/enemy_drop.gd" id="1_gk7xa"]
+[ext_resource type="Texture2D" uid="uid://7kafiupk80fp" path="res://Assets/Enemies/BeatleKnight/BeetleShoulderPad.png" id="1_k5nnd"]
+
+[resource]
+script = ExtResource("1_gk7xa")
+drop_icon = ExtResource("1_k5nnd")
+drop_chance = 0.8
+item_name = "Shoulder Pad"
+sell_value = 100
+shop_icon = ExtResource("1_k5nnd")
+description = "Scraped from the shoulder of a Beetle Knight."
+metadata/_custom_type_script = "uid://cubudt76pshmm"

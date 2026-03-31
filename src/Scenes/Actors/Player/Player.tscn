@@ -46,8 +46,8 @@
 [ext_resource type="Texture2D" uid="uid://cn6ofy35wwrbd" path="res://Assets/PlayerGraphics/NewPlayer/PlayerSwordSlam.png" id="38_fw0a5"]
 [ext_resource type="Texture2D" uid="uid://pndi4y2dq7hk" path="res://Assets/PlayerGraphics/VFX/SwordSlamEffect.png" id="41_uayox"]
 [ext_resource type="Texture2D" uid="uid://cx67kof5agx23" path="res://Assets/PlayerGraphics/VFX/SwordSoarEffect.png" id="43_0hs1n"]
-[ext_resource type="Texture2D" uid="uid://byycfcy4i7vap" path="res://Assets/PlayerGraphics/Outfits/TyrosFit/TyroFit_SwordSoar.png" id="43_y747d"]
-[ext_resource type="Texture2D" uid="uid://b2xek5bmcb4a" path="res://Assets/PlayerGraphics/Weapons/ShroomSword/ShroomSword_SwordSoar.png" id="44_uayox"]
+[ext_resource type="Texture2D" uid="uid://bsy5tgiwm7wxj" path="res://Assets/PlayerGraphics/Outfits/TyrosFit/TyroFit_Idle.png" id="44_0hs1n"]
+[ext_resource type="Texture2D" uid="uid://decldm83dahcq" path="res://Assets/PlayerGraphics/Weapons/ShroomSword/ShroomSword_Idle.png" id="45_mgyqt"]
 [ext_resource type="Script" uid="uid://cvq0qwds1scf6" path="res://src/Scripts/Player/gem_chest_hit_area.gd" id="48_0hs1n"]
 
 [sub_resource type="Animation" id="Animation_cq2ky"]
@@ -1213,7 +1213,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [1]
+"values": [3]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -1339,7 +1339,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [1]
+"values": [3]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -2095,18 +2095,16 @@ libraries/ = SubResource("AnimationLibrary_pawjx")
 [node name="PlayerSprite" type="Sprite2D" parent="Sprites" unique_id=1041617266]
 position = Vector2(0, -32)
 scale = Vector2(1, 0.98604256)
-texture = ExtResource("36_ysgjh")
-hframes = 17
-frame = 12
+texture = ExtResource("31_qf8dm")
 
 [node name="Outfit" type="Sprite2D" parent="Sprites" unique_id=411712928]
 position = Vector2(0, -32)
 scale = Vector2(1, 0.98604256)
-texture = ExtResource("43_y747d")
+texture = ExtResource("44_0hs1n")
 
 [node name="Sword" type="Sprite2D" parent="Sprites" unique_id=1728017757]
-position = Vector2(0, -32)
-texture = ExtResource("44_uayox")
+position = Vector2(-3, -33)
+texture = ExtResource("45_mgyqt")
 hframes = 15
 
 [node name="Effect" type="Sprite2D" parent="Sprites" unique_id=217080024]
@@ -2120,6 +2118,7 @@ position = Vector2(-2, -20)
 shape = SubResource("RectangleShape2D_susmm")
 
 [node name="HitBox" parent="." unique_id=1465797301 instance=ExtResource("16_cw62c")]
+visible = false
 position = Vector2(27, -20)
 scale = Vector2(2, 2)
 
@@ -2128,6 +2127,7 @@ position = Vector2(-2.5, 0)
 shape = SubResource("RectangleShape2D_45oew")
 
 [node name="SwordSoarHitBox" parent="." unique_id=774236698 instance=ExtResource("16_cw62c")]
+visible = false
 position = Vector2(-12, -52)
 monitoring = false
 monitorable = false
@@ -2138,6 +2138,7 @@ shape = SubResource("RectangleShape2D_y747d")
 disabled = true
 
 [node name="DashAttackHitBox" parent="." unique_id=1299507598 instance=ExtResource("16_cw62c")]
+visible = false
 position = Vector2(23, -20)
 scale = Vector2(2, 2)
 
@@ -2176,6 +2177,7 @@ shape = SubResource("RectangleShape2D_5so87")
 position = Vector2(-1, -15)
 
 [node name="GemChestHitArea" type="Area2D" parent="." unique_id=1770032373]
+visible = false
 position = Vector2(11, -11)
 collision_layer = 4
 collision_mask = 4
@@ -2189,6 +2191,7 @@ shape = SubResource("RectangleShape2D_mgyqt")
 disabled = true
 
 [node name="EndingArea" type="Area2D" parent="." unique_id=1253263909]
+visible = false
 position = Vector2(-1, -15)
 collision_layer = 512
 collision_mask = 512
@@ -2199,6 +2202,7 @@ shape = SubResource("RectangleShape2D_0hs1n")
 [node name="SfxPlayer" parent="." unique_id=926725307 instance=ExtResource("25_1twwa")]
 
 [node name="ItemPickUpArea" type="Area2D" parent="." unique_id=1587504703]
+visible = false
 position = Vector2(0, -10)
 collision_layer = 2048
 collision_mask = 2048

@@ -181,7 +181,7 @@ var player_classes : Dictionary = {
 	}
 }
 
-const MAX_SWORD_COUNT := 3
+const MAX_SWORD_COUNT := 4
 
 var show_cooking_station_unlock_animation : bool = false
 var show_refinery_station_unlock_animation : bool = false
@@ -198,6 +198,8 @@ func get_sword(sword_index : int = 0) -> Sword:
 			return preload("uid://gj2gdethgc68")#"Shroom Fibre Blade"
 		2:
 			return preload("uid://hnq8o34pxm0h") #Bronze Fang Blade
+		3:
+			return preload("uid://bdsjrsiakv2sh") #Bronze Fang Blade
 		_:
 			return preload("uid://di3xaosm85tjx")#"Wooden Sword"
 

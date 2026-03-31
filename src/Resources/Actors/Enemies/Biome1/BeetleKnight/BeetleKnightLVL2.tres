@@ -1,6 +1,8 @@
 [gd_resource type="Resource" script_class="EnemyStats" format=3 uid="uid://6q2nq8bgf2bm"]
 
+[ext_resource type="Resource" uid="uid://dupi3hkqbevyx" path="res://src/Resources/Actors/Enemies/Biome1/BeetleKnight/BeetleShell.tres" id="1_j5iuy"]
 [ext_resource type="Script" uid="uid://cbjktr12qagl" path="res://src/Scripts/Enemies/enemy_stats.gd" id="1_kw8av"]
+[ext_resource type="Resource" uid="uid://cekcxnint1huh" path="res://src/Resources/Actors/Enemies/Biome1/BeetleKnight/BeetleShoulderPad.tres" id="2_n1jal"]
 
 [resource]
 script = ExtResource("1_kw8av")
@@ -14,4 +16,6 @@ defense = 3.0
 movement_speed = 70.0
 chase_speed = 75.0
 break_threshold = 9
+novelty_item_drop = ExtResource("2_n1jal")
+cooking_item_drop = ExtResource("1_j5iuy")
 metadata/_custom_type_script = "uid://cbjktr12qagl"

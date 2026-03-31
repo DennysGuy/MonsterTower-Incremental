@@ -40,7 +40,7 @@ func attack_enemies(enemies_in_hitbox : Array, enemies_hit : int = 1, number_of_
 			# we may need to alter this line of code or the function.. I do not like how this function is dependent on the enemy.
 			enemy.player = player
 			#if it is a hitscan ability, we will determine the animation needed here.
-			var attack_reps = number_of_hits
+			var attack_reps = number_of_hits + PlayerStats.get_total_gem_bonus("Hit Reps") + PlayerStats.get_current_sword().hit_bonus
 			var i = 0
 			var defense : float = clamp(
 				enemy.enemy_stats.defense / 100.0,
@@ -53,7 +53,7 @@ func attack_enemies(enemies_in_hitbox : Array, enemies_hit : int = 1, number_of_
 			damage = max(damage, 1)
 			while i < attack_reps:
 				#enemy.sfx_player.play()
-				attack_enemy(player, enemy, damage, is_crit, 0.02, is_warrior)
+				attack_enemy(player, enemy, damage, is_crit, 0, is_warrior)
 
 				i += 1
 				await player.get_tree().create_timer(rep_delay).timeout

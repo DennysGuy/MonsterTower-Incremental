@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="EnemyDrop" format=3 uid="uid://dkjdh3ty2qqfp"]
+
+[ext_resource type="Script" uid="uid://cubudt76pshmm" path="res://src/Scripts/Enemies/enemy_drop.gd" id="1_6qd10"]
+[ext_resource type="Texture2D" uid="uid://c84ip4pvndae2" path="res://Assets/Enemies/BeatleKnight/BeetleEye.png" id="1_tt3av"]
+
+[resource]
+script = ExtResource("1_6qd10")
+drop_icon = ExtResource("1_tt3av")
+drop_chance = 0.26
+item_name = "Beetle Eye"
+item_type = 1
+sell_value = 130
+shop_icon = ExtResource("1_tt3av")
+description = "Plucked from a Beetle Knight. Might be good in a stew or something."
+metadata/_custom_type_script = "uid://cubudt76pshmm"

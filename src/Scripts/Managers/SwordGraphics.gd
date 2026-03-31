@@ -42,6 +42,20 @@ var sword_textures : Dictionary = {
 		"SwordSoar": preload("uid://emq5do1fc44c"),
 		"SwordSlam":preload("uid://5h15bet6jee3"),
 		"DoubleCleave": preload("uid://bad3j5pey3k36")
+	},
+	"Iron Broad Sword" : {
+		"Idle": preload("uid://dtvd0ax0xli76"),
+		"Run": preload("uid://daposa1k2ace3"),
+		"Jump": preload("uid://ddj71pwg2dyh0"),
+		"Fall": preload("uid://ddj71pwg2dyh0"),
+		"SwordSwing1": preload("uid://bxray1pjmdjeu"),
+		"SwordSwing2": preload("uid://bxray1pjmdjeu"),
+		"SwordSwing3": preload("uid://bxray1pjmdjeu"),
+		"AirAttack": preload("uid://j4del2xexl02"),
+		"Climb": preload("uid://bcknti7tfmpnc"),
+		"SwordSoar": preload("uid://j4del2xexl02"),
+		"SwordSlam": preload("uid://c46m5505v4ljd"),
+		"DoubleCleave": preload("uid://5ji20u66hw31")
 	}
 }
 

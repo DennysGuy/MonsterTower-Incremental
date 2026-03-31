@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="EnemyDrop" format=3 uid="uid://bwfenpkm4dc0g"]
+
+[ext_resource type="Script" uid="uid://cubudt76pshmm" path="res://src/Scripts/Enemies/enemy_drop.gd" id="1_ne8t2"]
+[ext_resource type="Texture2D" uid="uid://c3uipm8l15wfi" path="res://Assets/Enemies/BeatleKnight/BeetleClaw.png" id="1_sf8sl"]
+
+[resource]
+script = ExtResource("1_ne8t2")
+drop_icon = ExtResource("1_sf8sl")
+drop_chance = 0.05
+item_name = "Beetle Claw"
+item_type = 2
+sell_value = 150
+shop_icon = ExtResource("1_sf8sl")
+description = "The Weapon of a Beetle Knight. Sharp and dangerous, maybe it can be useful for a weapon of some sort."
+metadata/_custom_type_script = "uid://cubudt76pshmm"
