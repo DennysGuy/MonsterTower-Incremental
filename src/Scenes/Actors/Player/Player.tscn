@@ -38,6 +38,7 @@
 [ext_resource type="Texture2D" uid="uid://bgt8eq7c5pihv" path="res://Assets/PlayerGraphics/NewPlayer/PlayerJump.png" id="32_skwl0"]
 [ext_resource type="Texture2D" uid="uid://dmxac208pqj78" path="res://Assets/PlayerGraphics/VFX/DoubleCleaveEffect.png" id="34_b0557"]
 [ext_resource type="Texture2D" uid="uid://cuotuhxe254px" path="res://Assets/PlayerGraphics/NewPlayer/PlayerPickaxeSwing.png" id="34_skwl0"]
+[ext_resource type="Texture2D" uid="uid://clynvkfw53riy" path="res://Assets/PlayerGraphics/NewPlayer/PlayerFall.png" id="35_mgyqt"]
 [ext_resource type="Texture2D" uid="uid://eo2agfsuxlht" path="res://Assets/PlayerGraphics/NewPlayer/PlayerRun.png" id="35_qf8dm"]
 [ext_resource type="Texture2D" uid="uid://txambqa3tjgj" path="res://Assets/PlayerGraphics/Pickaxes/Pickaxe_Swing_Effect.png" id="35_skwl0"]
 [ext_resource type="Texture2D" uid="uid://c5hsta61b1rxd" path="res://Assets/PlayerGraphics/NewPlayer/PlayerBasicAttack.png" id="36_ysgjh"]
@@ -46,8 +47,8 @@
 [ext_resource type="Texture2D" uid="uid://cn6ofy35wwrbd" path="res://Assets/PlayerGraphics/NewPlayer/PlayerSwordSlam.png" id="38_fw0a5"]
 [ext_resource type="Texture2D" uid="uid://pndi4y2dq7hk" path="res://Assets/PlayerGraphics/VFX/SwordSlamEffect.png" id="41_uayox"]
 [ext_resource type="Texture2D" uid="uid://cx67kof5agx23" path="res://Assets/PlayerGraphics/VFX/SwordSoarEffect.png" id="43_0hs1n"]
-[ext_resource type="Texture2D" uid="uid://bsy5tgiwm7wxj" path="res://Assets/PlayerGraphics/Outfits/TyrosFit/TyroFit_Idle.png" id="44_0hs1n"]
-[ext_resource type="Texture2D" uid="uid://decldm83dahcq" path="res://Assets/PlayerGraphics/Weapons/ShroomSword/ShroomSword_Idle.png" id="45_mgyqt"]
+[ext_resource type="Texture2D" uid="uid://c6outchyu637" path="res://Assets/PlayerGraphics/Outfits/TyrosFit/TyroFIt_SwordSlam.png" id="45_mgyqt"]
+[ext_resource type="Texture2D" uid="uid://5h15bet6jee3" path="res://Assets/PlayerGraphics/Weapons/BatclopseSword/BatclopseSword_SwordSlam.png" id="46_0kjqt"]
 [ext_resource type="Script" uid="uid://cvq0qwds1scf6" path="res://src/Scripts/Player/gem_chest_hit_area.gd" id="48_0hs1n"]
 
 [sub_resource type="Animation" id="Animation_cq2ky"]
@@ -546,7 +547,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1]
+"values": [0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -558,7 +559,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("32_skwl0")]
+"values": [ExtResource("35_mgyqt")]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -570,7 +571,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [2]
+"values": [1]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -582,7 +583,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1]
+"values": [0]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -594,7 +595,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [2]
+"values": [1]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -606,7 +607,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [2]
+"values": [1]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -618,7 +619,7 @@ tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1]
+"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_cgv26"]
@@ -734,7 +735,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [2]
+"values": [1]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -758,7 +759,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [2]
+"values": [1]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -767,10 +768,10 @@ tracks/5/path = NodePath("../Outfit:hframes")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.0009999999),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [2]
+"values": [1, 1]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -779,10 +780,10 @@ tracks/6/path = NodePath("../Outfit:frame")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.0009999999),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [0]
+"values": [0, 0]
 }
 
 [sub_resource type="Animation" id="Animation_a5kf2"]
@@ -1189,7 +1190,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1]
+"values": [3]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -1279,7 +1280,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1]
+"values": [3]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -1303,7 +1304,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1]
+"values": [3]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -2095,16 +2096,17 @@ libraries/ = SubResource("AnimationLibrary_pawjx")
 [node name="PlayerSprite" type="Sprite2D" parent="Sprites" unique_id=1041617266]
 position = Vector2(0, -32)
 scale = Vector2(1, 0.98604256)
-texture = ExtResource("31_qf8dm")
+texture = ExtResource("38_fw0a5")
+hframes = 3
 
 [node name="Outfit" type="Sprite2D" parent="Sprites" unique_id=411712928]
 position = Vector2(0, -32)
 scale = Vector2(1, 0.98604256)
-texture = ExtResource("44_0hs1n")
+texture = ExtResource("45_mgyqt")
 
 [node name="Sword" type="Sprite2D" parent="Sprites" unique_id=1728017757]
-position = Vector2(-3, -33)
-texture = ExtResource("45_mgyqt")
+position = Vector2(0, -33)
+texture = ExtResource("46_0kjqt")
 hframes = 15
 
 [node name="Effect" type="Sprite2D" parent="Sprites" unique_id=217080024]

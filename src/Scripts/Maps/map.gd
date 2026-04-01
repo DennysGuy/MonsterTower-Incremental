@@ -215,8 +215,6 @@ func go_to_failure_menu() -> void:
 		tree.change_scene_to_file("uid://du5klyuwi6so2")	
 
 func move_to_next_room(room_path : String) -> void:
-	if not next_room_path:
-		return
 
 	var tree := get_tree()
 	if tree == null:

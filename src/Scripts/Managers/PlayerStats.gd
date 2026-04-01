@@ -157,7 +157,8 @@ func equip_ability(player_class : String, ability_type : String) -> void:
 @onready var check_points_unlocked : Dictionary = {
 	"Floor 1-1" : false,
 	"Floor 1-2" : false,
-	"Floor 1-3" : false
+	"Floor 1-3" : false,
+	"Floor 1-4" : false
 }
 
 var player_classes : Dictionary = {

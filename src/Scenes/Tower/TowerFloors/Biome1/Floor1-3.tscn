@@ -31,6 +31,8 @@
 [ext_resource type="Resource" uid="uid://dxfrcyw0rux0q" path="res://src/Resources/OreRock/TinOreRock.tres" id="23_rdri6"]
 [ext_resource type="Resource" uid="uid://d3ak1ilk1id2y" path="res://src/Resources/GemChests/Tier1GemChest.tres" id="25_cyjc2"]
 [ext_resource type="PackedScene" uid="uid://cps01vtaqexec" path="res://src/Scenes/Tower/TowerFloors/GemStoneMarker.tscn" id="26_r1crl"]
+[ext_resource type="PackedScene" uid="uid://bcb7mqtk7hdgw" path="res://src/Scenes/Tower/TowerFloors/Biome1/Floor1-4.tscn" id="31_ch8wb"]
+[ext_resource type="Resource" uid="uid://bv3no8c6bw4tm" path="res://src/Resources/TowerEntranceData/Floor1-4.tres" id="32_24ioy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b4b1b"]
 size = Vector2(21, 349)
@@ -66,7 +68,10 @@ size = Vector2(21, 159)
 size = Vector2(21, 50)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rdri6"]
-size = Vector2(395, 32)
+size = Vector2(291.5, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5s1m6"]
+size = Vector2(328, 32)
 
 [node name="Floor1-3" type="Node2D" unique_id=1707445138 node_paths=PackedStringArray("camera", "hud", "ore_rock_markers", "gem_stone_chest_markers", "campfire_list", "sfx_player", "pause_canvas_layer", "ambience_player")]
 script = ExtResource("1_863wi")
@@ -545,6 +550,7 @@ ExtResource("17_o851o"): 100
 area_collision_shape = NodePath("CollisionShape2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MonsterSpawnArea" unique_id=544146477]
+position = Vector2(3.5, 0)
 shape = SubResource("RectangleShape2D_rdri6")
 
 [node name="MonsterSpawnArea4" parent="." unique_id=1349355903 node_paths=PackedStringArray("drop_scene", "spawn_root", "area_collision_shape") instance=ExtResource("18_o851o")]
@@ -563,6 +569,7 @@ ExtResource("18_wnqh0"): 100
 area_collision_shape = NodePath("CollisionShape2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MonsterSpawnArea4" unique_id=852182963]
+position = Vector2(-1.75, 0)
 shape = SubResource("RectangleShape2D_rdri6")
 
 [node name="MonsterSpawnArea5" parent="." unique_id=1646614993 node_paths=PackedStringArray("drop_scene", "spawn_root", "area_collision_shape") instance=ExtResource("18_o851o")]
@@ -602,7 +609,7 @@ ExtResource("19_r1viy"): 30
 area_collision_shape = NodePath("CollisionShape2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MonsterSpawnArea2" unique_id=1680750554]
-position = Vector2(17.75, 0)
+position = Vector2(-23.375, 0)
 shape = SubResource("RectangleShape2D_rdri6")
 
 [node name="MonsterSpawnArea3" parent="." unique_id=1411425651 node_paths=PackedStringArray("drop_scene", "spawn_root", "area_collision_shape") instance=ExtResource("18_o851o")]
@@ -621,8 +628,8 @@ ExtResource("19_r1viy"): 100
 area_collision_shape = NodePath("CollisionShape2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MonsterSpawnArea3" unique_id=1907909875]
-position = Vector2(22.5, 0)
-shape = SubResource("RectangleShape2D_rdri6")
+position = Vector2(27, 0)
+shape = SubResource("RectangleShape2D_5s1m6")
 
 [node name="MonsterSpawnNode" type="Node" parent="." unique_id=728793847]
 
@@ -777,6 +784,8 @@ spawn_parent = NodePath("../..")
 
 [node name="ExitElevator" parent="." unique_id=1919973186 instance=ExtResource("19_o851o")]
 position = Vector2(410, 160)
+next_room = ExtResource("31_ch8wb")
+next_room_data = ExtResource("32_24ioy")
 current_room_data = ExtResource("2_kuvlu")
 
 [node name="SfxPlayer" parent="." unique_id=126850837 instance=ExtResource("21_bxd5n")]
