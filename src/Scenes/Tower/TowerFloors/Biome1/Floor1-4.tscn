@@ -158,11 +158,6 @@ visible = false
 [node name="PlayerSpawnPoint" parent="." unique_id=335168432 instance=ExtResource("12_aaosj")]
 position = Vector2(229, 2609)
 
-[node name="PrevElevator" parent="." unique_id=974802616 instance=ExtResource("13_aj4kp")]
-position = Vector2(162, 2530)
-prev_floor_data = ExtResource("2_xkl8j")
-last_spawn_point = 2
-
 [node name="MonsterSpawnNode" type="Node" parent="." unique_id=728793847]
 
 [node name="OreRockMarkers" type="Node" parent="." unique_id=509141251]
@@ -170,6 +165,11 @@ last_spawn_point = 2
 [node name="CampfireCheckpoints" type="Node" parent="." unique_id=1049043173]
 
 [node name="GemStoneMarkers" type="Node" parent="." unique_id=1738726049]
+
+[node name="PrevElevator" parent="." unique_id=974802616 instance=ExtResource("13_aj4kp")]
+position = Vector2(162, 2530)
+prev_floor_data = ExtResource("2_xkl8j")
+last_spawn_point = 3
 
 [node name="ExitElevator" parent="." unique_id=1919973186 instance=ExtResource("30_fpe1o")]
 position = Vector2(473, 320)
