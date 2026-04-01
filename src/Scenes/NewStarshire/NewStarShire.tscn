@@ -1048,7 +1048,7 @@ offset_top = 62.0
 offset_right = 38.0
 offset_bottom = 75.0
 
-[node name="Tag" parent="Dojo/NameTag" index="1"]
+[node name="Tag" parent="Dojo/NameTag" index="1" unique_id=725373759]
 offset_left = 2.0
 offset_top = -1.0
 offset_right = 90.0
@@ -1100,7 +1100,7 @@ offset_top = 83.0
 offset_right = 66.0
 offset_bottom = 96.0
 
-[node name="Tag" parent="SmithingStation/NameTag" index="1"]
+[node name="Tag" parent="SmithingStation/NameTag" index="1" unique_id=725373759]
 text = "Sword Crafting Station"
 
 [node name="GemStoneStation" type="Sprite2D" parent="." unique_id=1264484593]
@@ -1113,10 +1113,10 @@ offset_top = 51.0
 offset_right = 54.0
 offset_bottom = 64.0
 
-[node name="Bg" parent="GemStoneStation/NameTag" index="0"]
+[node name="Bg" parent="GemStoneStation/NameTag" index="0" unique_id=1015277224]
 offset_right = 95.0
 
-[node name="Tag" parent="GemStoneStation/NameTag" index="1"]
+[node name="Tag" parent="GemStoneStation/NameTag" index="1" unique_id=725373759]
 text = "Gem Stone Upgrade Station"
 
 [node name="GemStoneStationArea" type="Area2D" parent="GemStoneStation" unique_id=79681493]
@@ -1186,7 +1186,7 @@ offset_top = 3.0
 offset_right = 40.0
 offset_bottom = 16.0
 
-[node name="Tag" parent="TechTreeComputer/NameTag4" index="1"]
+[node name="Tag" parent="TechTreeComputer/NameTag4" index="1" unique_id=725373759]
 text = "Upgrades PC"
 
 [node name="AmbiencePlayer" parent="." unique_id=1081747127 instance=ExtResource("23_5xris")]
@@ -1268,7 +1268,7 @@ offset_top = 383.0
 offset_right = 434.0
 offset_bottom = 396.0
 
-[node name="Tag" parent="NameTag5" index="1"]
+[node name="Tag" parent="NameTag5" index="1" unique_id=725373759]
 text = "Trade Market"
 
 [node name="DirectionSign4" type="Sprite2D" parent="." unique_id=1956902206]

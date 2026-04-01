@@ -5,7 +5,6 @@
 [ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="3_1k4tl"]
 
 [node name="RoomInfoBanner" type="Control" unique_id=1196855950]
-visible = false
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5

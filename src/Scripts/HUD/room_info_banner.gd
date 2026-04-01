@@ -13,6 +13,7 @@ const HUNT_CHALLENGE_ROOM_BANNER = preload("uid://bvtlgbrmd3tqy")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	SignalBus.update_monsters_left.connect(update_kills_left)
 	SignalBus.update_banner_info.connect(update_banner_info)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -48,6 +49,9 @@ func update_banner_info(tower_entrance_data : TowerEntranceData) -> void:
 		tower_entrance_data.FLOOR_TYPE.BOSS_DOOR:
 			room_type_label.text = "Boss Map"
 			room_info_banner.texture = BOSS_ROOM_BANNER
+
+func update_kills_left(text : String) -> void:
+	tracker_label.text = text
 
 func update_tracker_container(tower_entrance_data : TowerEntranceData) -> void:
 	InventoryManager.clear_grid_container(tracker_container)

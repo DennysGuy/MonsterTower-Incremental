@@ -12,6 +12,8 @@ var doors_open : bool = false
 
 const BROKEN_FLOOR_ELEVATOR_BASE = preload("uid://bq5k4w7uwsgyy")
 const FLOOR_ELEVATOR_BASE = preload("uid://sm0sjtn0eenp")
+const ABILITY_ROW_UNLOCKED = preload("uid://joo0a5xuf1pm")
+
 @onready var row_lock: Sprite2D = $RowLock
 
 
@@ -114,3 +116,23 @@ func populate_items_needed_list() -> void:
 			quantity_list_item.icon.texture = item.shop_icon
 			quantity_list_item.quantity_label.text = "x%s" % [item_dict[item]]
 			needed_items_container.add_child(quantity_list_item)
+
+func unlock_elevator() -> void:
+	animation_player.play("UnlockElevator")
+	SignalBus.flash_screen.emit()
+	await get_tree().create_timer(0.5).timeout
+	row_lock.hide()
+	
+func play_unlock_sfx() -> void:
+	play_sfx(ABILITY_ROW_UNLOCKED)
+
+
+
+func play_sfx(sound: AudioStream, volume: float = 0.0):
+	var player := AudioStreamPlayer.new()
+	player.stream = sound
+	player.volume_db = volume
+	player.bus = &"SFX"
+	add_child(player)
+	player.play()
+	player.finished.connect(player.queue_free)

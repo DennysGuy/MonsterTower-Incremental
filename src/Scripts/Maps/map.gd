@@ -86,23 +86,26 @@ func _ready() -> void:
 				if tower_entrance_data.hunt_challenge_completed:
 					SignalBus.unlock_next_room.emit()
 					#SignalBus.update_kill_quota_text.emit("", tower_entrance_data.hunt_challenge_completed, tower_entrance_data.hunt_challenge_unlocked)
-				#else:
+				else:
 					##SignalBus.update_kill_quota_text.emit("", false, tower_entrance_data.hunt_challenge_unlocked)
-					#if tower_entrance_data.hunt_challenge_unlocked and !tower_entrance_data.hunt_challenge_completed:
-						#SignalBus.show_hunt_challenge_button.emit()
-					#else:
-						#SignalBus.hide_hunt_challenge_button.emit()
+					if tower_entrance_data.is_challenge_floor() and tower_entrance_data.hunt_challenge_unlocked and !tower_entrance_data.hunt_challenge_completed:
+						SignalBus.show_hunt_challenge_button.emit()
+					else:
+						SignalBus.hide_hunt_challenge_button.emit()
+				
+				if tower_entrance_data.is_expedition_floor() and tower_entrance_data.unlock_recipe and !tower_entrance_data.hunt_challenge_completed:
+					issue_repair_elevator_notice()
+			
+				elif tower_entrance_data.is_challenge_floor():
+					issue_challenge_objective_notice()
+				
 				SignalBus.show_bag_stats.emit()
 					#
-			#if monster_spawn_node:
-				#if GameManager.hunt_challenge_selected:
-					#SignalBus.update_monsters_left.emit("Monsters Left: %s" % [monster_spawn_node.get_children().size()],false)
+			if monster_spawn_node and GameManager.hunt_challenge_selected:
+				SignalBus.update_monsters_left.emit("Monsters Left: %s" % [monster_spawn_node.get_children().size()],false)
 				#else:
 					#SignalBus.update_monsters_left.emit("Campfires Discovered: %s/%s" % [tower_entrance_data.camp_fires_reached, tower_entrance_data.total_camp_fires],false)
 			
-			if tower_entrance_data.is_expedition_floor() and tower_entrance_data.unlock_recipe and !tower_entrance_data.hunt_challenge_completed:
-				issue_repair_elevator_notice()
-				
 			SignalBus.update_banner_info.emit(tower_entrance_data)
 			PlayerStats.check_points_unlocked[map_name] = true
 			SaveManager.save_floor_data(tower_entrance_data, map_name)
@@ -260,10 +263,12 @@ func update_hunt_quota() -> void:
 	if map_type == MAP_TYPE.CHECKPOINT_FLOOR:
 		if monster_spawn_node.get_children().is_empty():
 			sfx_player.play_sfx(TIER_UP)
-			MusicPlayer.play_song(hunt_victory_theme)
+			MusicPlayer.stop_player()
+			#MusicPlayer.play_song(hunt_victory_theme)
 			GameManager.expedition_timer_started = false
 			tower_entrance_data.hunt_challenge_completed = true
 			SaveManager.save_floor_data(tower_entrance_data, map_name)
+			play_unlock_elevator_sequence()
 			SignalBus.unlock_next_room.emit()
 			SignalBus.update_kill_quota_text.emit("Hunt Challenge Completed! Head to the Exit Elevator!", true, false)
 			SignalBus.update_monsters_left.emit("Monsters Left: %s" % [monster_spawn_node.get_children().size()],false)
@@ -308,6 +313,53 @@ func issue_repair_elevator_notice() -> void:
 	SignalBus.hide_big_notification.emit()
 	hud.animation_player.play("FadeInOut")
 	await get_tree().create_timer(0.5).timeout
+	camera.position = player.position
+	camera.player = player
+	
+	GameManager.player_can_move = true
+	GameManager.can_pause_game = true
+	GameManager.can_open_bag = true
+	GameManager.enemies_can_move = true
+
+func issue_challenge_objective_notice() -> void:
+	camera.player = null
+	GameManager.player_can_move = false
+	GameManager.can_pause_game = false
+	GameManager.can_open_bag = false
+	GameManager.enemies_can_move = false
+
+	player.send_to_idle_state()
+	hud.animation_player.play("FadeInOut")
+	await get_tree().create_timer(0.5).timeout
+	camera.position = exit_elevator_marker.position
+	await get_tree().create_timer(1.0).timeout
+	SignalBus.issue_big_notification.emit("Beat the Floor Challenge to unlock the exit elevator!")
+	await get_tree().create_timer(3.0).timeout
+	SignalBus.hide_big_notification.emit()
+	hud.animation_player.play("FadeInOut")
+	await get_tree().create_timer(0.5).timeout
+	camera.position = player.position
+	camera.player = player
+	
+	GameManager.player_can_move = true
+	GameManager.can_pause_game = true
+	GameManager.can_open_bag = true
+	GameManager.enemies_can_move = true
+
+func play_unlock_elevator_sequence() -> void:
+	GameManager.can_pause_game = false
+	GameManager.can_open_bag = false
+	GameManager.enemies_can_move = false
+	camera.player = null
+
+	player.send_to_idle_state()
+	GameManager.player_can_move = false
+	await get_tree().create_timer(1.0).timeout
+	camera.position = exit_elevator_marker.position
+	exit_elevator.unlock_elevator()
+	
+	await get_tree().create_timer(3.0).timeout
+	sfx_player.play_sfx(hunt_victory_theme)
 	camera.position = player.position
 	camera.player = player
 	
