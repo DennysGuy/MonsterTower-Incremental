@@ -354,12 +354,13 @@ func play_unlock_elevator_sequence() -> void:
 
 	player.send_to_idle_state()
 	GameManager.player_can_move = false
-	await get_tree().create_timer(1.0).timeout
 	camera.position = exit_elevator_marker.position
+	await get_tree().create_timer(1.0).timeout
 	exit_elevator.unlock_elevator()
-	
-	await get_tree().create_timer(3.0).timeout
+	await get_tree().create_timer(5.0).timeout
 	sfx_player.play_sfx(hunt_victory_theme)
+	SignalBus.issue_big_notification.emit("Challenge Overcome!\nHead to the Elevator!")
+	await get_tree().create_timer(2.0).timeout
 	camera.position = player.position
 	camera.player = player
 	

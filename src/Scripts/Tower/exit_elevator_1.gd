@@ -98,8 +98,9 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 			doors_open = false
 
 func unlock_next_floor() -> void:
-	PlayerStats.check_points_unlocked[next_room_data.floor_name] = true
-	save_next_floor_data()
+	if next_room_data:
+		PlayerStats.check_points_unlocked[next_room_data.floor_name] = true
+		save_next_floor_data()
 
 func save_next_floor_data() -> void:
 	var saved_data = SaveManager.current_save_game
@@ -119,14 +120,13 @@ func populate_items_needed_list() -> void:
 
 func unlock_elevator() -> void:
 	animation_player.play("UnlockElevator")
+	await get_tree().create_timer(2).timeout
 	SignalBus.flash_screen.emit()
 	await get_tree().create_timer(0.5).timeout
 	row_lock.hide()
 	
 func play_unlock_sfx() -> void:
 	play_sfx(ABILITY_ROW_UNLOCKED)
-
-
 
 func play_sfx(sound: AudioStream, volume: float = 0.0):
 	var player := AudioStreamPlayer.new()
