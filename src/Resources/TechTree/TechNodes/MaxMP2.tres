@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://c4jfyjh5yjva4"]
+
+[ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_g4jlh"]
+[ext_resource type="Resource" uid="uid://ctjyflf6qr4g" path="res://src/Resources/Dishes/MossyGoulash.tres" id="1_xy8xx"]
+
+[resource]
+script = ExtResource("1_g4jlh")
+node_name = "Max MP 2"
+description = "Raises Max MP by 40 for each level."
+max_level = 3
+currency_required = 500
+materials_required = Array[Dictionary]([{
+ExtResource("1_xy8xx"): 2
+}])
+stat_name = "Max MP"
+upgrade_interval = 40.0
+prereqs = Array[String](["Max MP 1:1"])
+metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"
