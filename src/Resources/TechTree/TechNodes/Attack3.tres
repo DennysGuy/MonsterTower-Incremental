@@ -16,5 +16,5 @@ ExtResource("2_614cc"): 2
 }])
 stat_name = "Attack Damage"
 upgrade_interval = 0.3
-prereqs = Array[String](["Attack 2:3"])
+prereqs = Array[String](["Gem Stone Station:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"
