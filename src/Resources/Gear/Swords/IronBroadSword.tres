@@ -12,7 +12,7 @@
 [resource]
 script = ExtResource("1_stflx")
 sword_name = "Iron Broad Sword"
-attack_bonus = 40.0
+attack_bonus = 80.0
 defense_bonus = 15.0
 attack_speed = 0.75
 crit_bonus = 0.15

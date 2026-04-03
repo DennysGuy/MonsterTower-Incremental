@@ -11,6 +11,9 @@ class_name MonsterSpawnArea extends Area2D
 @export var spawn_root : Node
 
 @export var monster_list : Dictionary[PackedScene, int]
+
+@export var challenge_monster_list : Dictionary[PackedScene, int]
+
 @export var area_collision_shape : CollisionShape2D
 
 @onready var respawn_timer: Timer = $RespawnTimer
@@ -32,18 +35,23 @@ func _process(delta: float) -> void:
 	pass
 
 func choose_enemy() -> PackedScene:
+	var selected_monster_list = monster_list
+	
+	if GameManager.hunt_challenge_selected:
+		selected_monster_list = challenge_monster_list
+	
 	var total_weight : int = 0
 	
-	for enemy in monster_list.keys():
-		total_weight += monster_list[enemy]
+	for enemy in selected_monster_list.keys():
+		total_weight += selected_monster_list[enemy]
 	
 	if total_weight <= 0:
 		return
 	
 	var roll : float = randf() * total_weight
 	
-	for enemy in monster_list.keys():
-		roll -= monster_list[enemy]
+	for enemy in selected_monster_list.keys():
+		roll -= selected_monster_list[enemy]
 		if roll <= 0:
 			return enemy
 

@@ -12,7 +12,7 @@ description = "Increase Crit Chance by 5% per level."
 max_level = 3
 currency_required = 600
 materials_required = Array[Dictionary]([{
-ExtResource("2_6tren"): 2
+ExtResource("2_6tren"): 1
 }])
 stat_name = "Crit Chance"
 upgrade_interval = 0.05

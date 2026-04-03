@@ -12,7 +12,7 @@ description = "Increases Attack Damage by %30 for each level"
 max_level = 3
 currency_required = 800
 materials_required = Array[Dictionary]([{
-ExtResource("2_614cc"): 2
+ExtResource("2_614cc"): 1
 }])
 stat_name = "Attack Damage"
 upgrade_interval = 0.3

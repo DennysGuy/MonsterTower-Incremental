@@ -11,7 +11,7 @@
 [ext_resource type="Resource" uid="uid://ll3jw1v5omml" path="res://src/Resources/TechTree/TechNodes/CritChance2.tres" id="8_7l0yi"]
 [ext_resource type="Texture2D" uid="uid://dt4v1cc43wq4u" path="res://Assets/NodeGraphics/WASD-Controls-Icon.png" id="9_6pqgd"]
 [ext_resource type="Resource" uid="uid://c6lrtgrld7bx1" path="res://src/Resources/TechTree/TechNodes/CritDamage2.tres" id="9_dkx06"]
-[ext_resource type="Script" path="res://src/Scripts/TechTree/tech_tree_camera.gd" id="9_wj3rp"]
+[ext_resource type="Script" uid="uid://co4ox6rujyeod" path="res://src/Scripts/TechTree/tech_tree_camera.gd" id="9_wj3rp"]
 [ext_resource type="PackedScene" uid="uid://bevb4v64mvbbg" path="res://src/Scenes/TechTree/PlayerStatsPanel.tscn" id="10_7l0yi"]
 [ext_resource type="Resource" uid="uid://u1y3eoe8hx2c" path="res://src/Resources/TechTree/TechNodes/MaxHP1.tres" id="11_4a6it"]
 [ext_resource type="Resource" uid="uid://x04h2nhi8gdh" path="res://src/Resources/TechTree/TechNodes/CritChance3.tres" id="11_qkyl2"]
@@ -232,11 +232,11 @@ position = Vector2(2, 0)
 points = PackedVector2Array(-2, -13, -2, -35)
 width = 3.0
 
-[node name="Banking4" parent="Nodes" unique_id=576849371 instance=ExtResource("5_2ltmf")]
+[node name="DeeperPockets3" parent="Nodes" unique_id=576849371 instance=ExtResource("5_2ltmf")]
 position = Vector2(409, 546)
 tech_node_stats = ExtResource("20_na6l4")
 
-[node name="Line2D" type="Line2D" parent="Nodes/Banking4" unique_id=2006393734]
+[node name="Line2D" type="Line2D" parent="Nodes/DeeperPockets3" unique_id=2006393734]
 position = Vector2(2, 0)
 points = PackedVector2Array(-2, -13, -2, -35)
 width = 3.0

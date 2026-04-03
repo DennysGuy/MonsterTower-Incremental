@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://0pp8v4uqsyae" path="res://Assets/NodeGraphics/NodeGraphicsV2/Bank2_V2.png" id="1_yo31n"]
 [ext_resource type="Resource" uid="uid://boeryxspsw8uq" path="res://src/Resources/Dishes/CookedGagootz.tres" id="2_q5aq0"]
+[ext_resource type="Resource" uid="uid://ctjyflf6qr4g" path="res://src/Resources/Dishes/MossyGoulash.tres" id="3_q5aq0"]
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="3_uc6y0"]
 
 [resource]
@@ -12,7 +13,9 @@ description = "Bank Slots increased to 8"
 currency_required = 1200
 materials_required = Array[Dictionary]([{
 ExtResource("2_q5aq0"): 3
-}, {}])
+}, {
+ExtResource("3_q5aq0"): 3
+}])
 stat_name = "Max Bank Slots"
 upgrade_interval = 2.0
 prereqs = Array[String](["Banking: 1"])

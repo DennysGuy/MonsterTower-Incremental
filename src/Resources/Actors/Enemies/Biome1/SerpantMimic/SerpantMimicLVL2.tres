@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="EnemyStats" format=3 uid="uid://du4so306s4lte"]
+
+[ext_resource type="Script" uid="uid://cbjktr12qagl" path="res://src/Scripts/Enemies/enemy_stats.gd" id="1_sttul"]
+
+[resource]
+script = ExtResource("1_sttul")
+enemy_name = "Serpant Mimic"
+enemy_level = 9
+touch_damage = true
+enemy_type = 1
+max_health = 1100
+attack = 64
+defense = 8.0
+movement_speed = 40.0
+chase_speed = 50.0
+break_threshold = 11
+metadata/_custom_type_script = "uid://cbjktr12qagl"
