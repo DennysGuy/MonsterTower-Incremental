@@ -25,6 +25,8 @@
 [ext_resource type="PackedScene" uid="uid://ddv4xmjlbn6hr" path="res://src/Scenes/Actors/Enemies/MossyDungeon/BeetleKnight/BeetleKnightLVL2.tscn" id="19_l0dm6"]
 [ext_resource type="PackedScene" uid="uid://d150vkltffpjo" path="res://src/Scenes/Tower/TowerFloors/CheckPointCampfire.tscn" id="23_6jqj8"]
 [ext_resource type="PackedScene" uid="uid://bciirg3wxvm7t" path="res://src/Scenes/Actors/Enemies/MossyDungeon/SerpantMimic/SerpantMimic.tscn" id="24_3ad0h"]
+[ext_resource type="PackedScene" uid="uid://c02draaw5wfp1" path="res://src/Scenes/Tower/TowerFloors/Biome1/Floor1-5.tscn" id="24_4qnya"]
+[ext_resource type="Resource" uid="uid://k8lq2m8l311f" path="res://src/Resources/TowerEntranceData/Floor1-5.tres" id="25_h5nvt"]
 [ext_resource type="PackedScene" uid="uid://dr8tmfh2d3slu" path="res://src/Scenes/Actors/Enemies/MossyDungeon/SerpantMimic/SerpantMimicLVL2.tscn" id="25_kc4q5"]
 [ext_resource type="PackedScene" uid="uid://cxll6w3ngphra" path="res://src/Scenes/Actors/Enemies/MossyDungeon/MossGolem/MossGolem.tscn" id="26_0n60h"]
 [ext_resource type="PackedScene" uid="uid://c11hg5ijdrjjs" path="res://src/Scenes/Tower/TowerFloors/ExitElevator1.tscn" id="30_fpe1o"]
@@ -265,6 +267,8 @@ last_spawn_point = 3
 
 [node name="ExitElevator" parent="." unique_id=1919973186 instance=ExtResource("30_fpe1o")]
 position = Vector2(473, 320)
+next_room = ExtResource("24_4qnya")
+next_room_data = ExtResource("25_h5nvt")
 current_room_data = ExtResource("2_2x8us")
 
 [node name="SfxPlayer" parent="." unique_id=126850837 instance=ExtResource("31_2dwqw")]

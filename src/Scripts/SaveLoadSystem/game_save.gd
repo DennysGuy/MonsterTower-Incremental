@@ -90,6 +90,12 @@ TODO: We will add saves for classes as well
 		"Campfires Reached": 0,
 		"Hunt Challenge Unlocked": false,
 		"Hunt Challenge Completed": false
+	},
+	"Floor 1-5" : {
+		"Number of Spawn Locations" : 0,
+		"Campfires Reached": 0,
+		"Hunt Challenge Unlocked": false,
+		"Hunt Challenge Completed": false
 	}
 	
 }
@@ -113,6 +119,7 @@ TODO: We will add saves for classes as well
 	"Floor 1-2" : false,
 	"Floor 1-3" : false,
 	"Floor 1-4" : false,
+	"Floor 1-5" : false,
 }
 
 

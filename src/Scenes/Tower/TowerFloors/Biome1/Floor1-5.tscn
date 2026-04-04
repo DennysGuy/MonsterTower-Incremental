@@ -1,11 +1,9 @@
 [gd_scene format=4 uid="uid://c02draaw5wfp1"]
 
-[ext_resource type="Script" uid="uid://btuhj7rd3l06g" path="res://src/Scripts/Maps/Tower/Biome1/floor_1_4.gd" id="1_3dios"]
+[ext_resource type="Script" uid="uid://b20w1e8n7ilji" path="res://src/Scripts/Maps/Tower/Biome1/floor_1_3.gd" id="1_cd2eo"]
 [ext_resource type="Resource" uid="uid://bv3no8c6bw4tm" path="res://src/Resources/TowerEntranceData/Floor1-4.tres" id="2_0edbk"]
+[ext_resource type="Resource" uid="uid://k8lq2m8l311f" path="res://src/Resources/TowerEntranceData/Floor1-5.tres" id="2_6kwyc"]
 [ext_resource type="AudioStream" uid="uid://baf1q03xsfmb2" path="res://Audio/Music/TempTowerTheme2.mp3" id="3_l3xnm"]
-[ext_resource type="AudioStream" uid="uid://bnfe0t36iu1dy" path="res://Audio/Music/TemporaryHuntMusic.mp3" id="4_m15wi"]
-[ext_resource type="AudioStream" uid="uid://n4ky26neitxn" path="res://Audio/Music/TempVictoryTheme1.mp3" id="5_hhha3"]
-[ext_resource type="AudioStream" uid="uid://fgrpqq5p7fjq" path="res://Audio/SFX/Biomes/MossyDungeon/Ambience/03 DSGNDron, Dungeon, Ambience, Drone, Dark, Loop.wav" id="6_8dsgd"]
 [ext_resource type="PackedScene" uid="uid://mwttdrt2cg71" path="res://src/Scenes/Players/ambience_player.tscn" id="7_8rajy"]
 [ext_resource type="TileSet" uid="uid://dr3ft3wh6mi6e" path="res://src/Scenes/Tower/TowerFloors/Biome1/Biome1BGSetPieces1.tres" id="8_ugoa8"]
 [ext_resource type="TileSet" uid="uid://cuil6pmpg4xf1" path="res://src/Scenes/Tower/TowerFloors/Biome1/Biome1-Floor.tres" id="9_awluh"]
@@ -14,43 +12,39 @@
 [ext_resource type="PackedScene" uid="uid://c8ov03gkkda4k" path="res://src/Scenes/PlayerCamera.tscn" id="12_0o4k2"]
 [ext_resource type="PackedScene" uid="uid://dysg5kffvxbql" path="res://src/Scenes/UI/PlayerHUD.tscn" id="13_th02q"]
 [ext_resource type="PackedScene" uid="uid://c6tv3t1cpeq8f" path="res://src/Scenes/PlayerSpawnPoint.tscn" id="14_2bbx0"]
+[ext_resource type="PackedScene" uid="uid://ciharsnygfnep" path="res://src/Scenes/Actors/Enemies/GoblinThief/GoblinThief.tscn" id="19_ekrv2"]
 [ext_resource type="PackedScene" uid="uid://dd63dgr038myr" path="res://src/Scenes/Tower/TowerFloors/PrevElevator1.tscn" id="21_jq2ab"]
 [ext_resource type="Resource" uid="uid://vibb3cg4b01g" path="res://src/Resources/TowerEntranceData/Floor1-3.tres" id="22_rbvhp"]
 [ext_resource type="PackedScene" uid="uid://c11hg5ijdrjjs" path="res://src/Scenes/Tower/TowerFloors/ExitElevator1.tscn" id="23_o7mta"]
 [ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="24_7a1vb"]
 [ext_resource type="PackedScene" uid="uid://cr6q5dxlkks" path="res://src/Scenes/Tower/LadderArea.tscn" id="25_ftijd"]
 [ext_resource type="PackedScene" uid="uid://crf0fypg7rf6a" path="res://src/Scenes/MonsterSpawnArea.tscn" id="26_c3xam"]
-[ext_resource type="PackedScene" uid="uid://cspkeb38ottcx" path="res://src/Scenes/Actors/Enemies/MossyDungeon/BeetleKnight/BeetleKnight.tscn" id="27_5pidk"]
-[ext_resource type="PackedScene" uid="uid://ddv4xmjlbn6hr" path="res://src/Scenes/Actors/Enemies/MossyDungeon/BeetleKnight/BeetleKnightLVL2.tscn" id="28_mstw4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rao3c"]
-size = Vector2(20, 95)
+size = Vector2(20, 208)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ob7c"]
+size = Vector2(208, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4qnya"]
-size = Vector2(193, 20)
+size = Vector2(368, 20)
 
-[node name="Floor1-4" type="Node2D" unique_id=1707445138 node_paths=PackedStringArray("exit_elevator_marker", "exit_elevator", "camera", "hud", "ore_rock_markers", "gem_stone_chest_markers", "campfire_list", "sfx_player", "monster_spawn_node", "ambience_player")]
-script = ExtResource("1_3dios")
-map_name = "Floor 1-4"
-map_id = 4
-exit_elevator_marker = NodePath("ExitElevatorMarker")
+[node name="Floor1-5" type="Node2D" unique_id=1707445138 node_paths=PackedStringArray("exit_elevator", "camera", "hud", "ore_rock_markers", "gem_stone_chest_markers", "campfire_list", "sfx_player", "ambience_player")]
+script = ExtResource("1_cd2eo")
+map_name = "Floor 1-5"
+map_id = 5
 exit_elevator = NodePath("ExitElevator")
-tower_entrance_data = ExtResource("2_0edbk")
+tower_entrance_data = ExtResource("2_6kwyc")
 map_theme_song = ExtResource("3_l3xnm")
-hunt_theme_song = ExtResource("4_m15wi")
-hunt_victory_theme = ExtResource("5_hhha3")
 camera = NodePath("PlayerCamera")
 hud = NodePath("HUD")
-ore_rock_spawn_rate = 0.4
 ore_rock_markers = NodePath("OreRockMarkers")
 gem_stone_chest_markers = NodePath("GemStoneMarkers")
 campfire_list = NodePath("CampfireCheckpoints")
-path = "uid://bcb7mqtk7hdgw"
+path = "F:/GodotProjects/MonsterTower-Incremental/src/Scenes/Tower/TowerFloors/Biome1/Floor1-5.tscn"
 sfx_player = NodePath("SfxPlayer")
-monster_spawn_node = NodePath("MonsterSpawnNode")
 map_type = 2
 ambience_player = NodePath("AmbiencePlayer")
-ambience_sfx = ExtResource("6_8dsgd")
 
 [node name="AmbiencePlayer" parent="." unique_id=1229306272 instance=ExtResource("7_8rajy")]
 
@@ -83,15 +77,17 @@ tile_set = ExtResource("8_ugoa8")
 [node name="BGSetPieces2" type="TileMapLayer" parent="TileMaps" unique_id=1719313245]
 modulate = Color(0.69965345, 0.69965345, 0.69965345, 1)
 position = Vector2(0, 1841)
+tile_map_data = PackedByteArray("AAANAC4AAAANAAwAAAANAC8AAAANAA0AAAAOAC4AAAAOAAwAAAAOAC8AAAAOAA0AAAAPAC4AAAAPAAwAAAAPAC8AAAAPAA0AAAAQAC4AAAAQAAwAAAAQAC8AAAAQAA0AAAAJACsAAAANAAwAAAAJACwAAAANAA0AAAAKACsAAAAOAAwAAAAKACwAAAAOAA0AAAALACsAAAAPAAwAAAALACwAAAAPAA0AAAAMACsAAAAQAAwAAAAMACwAAAAQAA0AAAA=")
 tile_set = ExtResource("8_ugoa8")
 
 [node name="Platforms" type="TileMapLayer" parent="TileMaps" unique_id=2053164015]
 position = Vector2(2, 1841)
-tile_map_data = PackedByteArray("AAAHADAAAAAPABQAAAAIADAAAAAQABQAAAAJADAAAAARABQAAAAKADAAAAASABQAAAALADAAAAATABQAAAAMADAAAAAUABQAAAANADAAAAAVABQAAAAOADAAAAAWABQAAAAPADAAAAAPABQAAAAQADAAAAAQABQAAAARADAAAAARABQAAAASADAAAAASABQAAAATADAAAAATABQAAAAUADAAAAAUABQAAAAVADAAAAAVABQAAAAWADAAAAAWABQAAAAXADAAAAAPABQAAAAYADAAAAAQABQAAAAZADAAAAARABQAAAAaADAAAAASABQAAAAbADAAAAATABQAAAAcADAAAAAUABQAAAAdADAAAAAVABQAAAAeADAAAAAWABQAAAAfADAAAAAPABQAAAAgADAAAAAQABQAAAAIADEAAAAQABUAAAAJADEAAAARABUAAAAKADEAAAASABUAAAALADEAAAATABUAAAAMADEAAAAUABUAAAANADEAAAAVABUAAAAOADEAAAAQABUAAAAPADEAAAARABUAAAAQADEAAAASABUAAAARADEAAAATABUAAAASADEAAAAUABUAAAATADEAAAAVABUAAAAUADEAAAAQABUAAAAVADEAAAARABUAAAAWADEAAAASABUAAAAXADEAAAATABUAAAAYADEAAAAUABUAAAAZADEAAAAVABUAAAAaADEAAAAQABUAAAAbADEAAAARABUAAAAcADEAAAASABUAAAAdADEAAAATABUAAAAeADEAAAAUABUAAAAfADEAAAAVABUAAAAHADEAAAARABUAAAAgADEAAAAQABUAAAAHABsAAAANAAsAAAAIABsAAAAOAAsAAAAJABsAAAAPAAsAAAAKABsAAAAQAAsAAAALABsAAAANAAsAAAAMABsAAAAOAAsAAAANABsAAAAPAAsAAAAOABsAAAAQAAsAAAAPABsAAAANAAsAAAAQABsAAAAOAAsAAAARABsAAAAPAAsAAAASABsAAAAQAAsAAAATABsAAAANAAsAAAAUABsAAAAOAAsAAAAVABsAAAAPAAsAAAAWABsAAAAQAAsAAAAXABsAAAANAAsAAAAYABsAAAAOAAsAAAAZABsAAAAPAAsAAAAaABsAAAAQAAsAAAAbABsAAAANAAsAAAAcABsAAAAOAAsAAAAdABsAAAAPAAsAAAAeABsAAAAQAAsAAAAfABsAAAANAAsAAAAgABsAAAAOAAsAAAAHAOr/AAANAAsAAAAIAOr/AAAOAAsAAAAJAOr/AAAPAAsAAAAKAOr/AAAQAAsAAAALAOr/AAANAAsAAAAMAOr/AAAOAAsAAAANAOr/AAAPAAsAAAAOAOr/AAAQAAsAAAAPAOr/AAANAAsAAAAQAOr/AAAOAAsAAAARAOr/AAAPAAsAAAASAOr/AAAQAAsAAAATAOr/AAANAAsAAAAUAOr/AAAOAAsAAAAVAOr/AAAPAAsAAAAWAOr/AAAQAAsAAAAXAOr/AAANAAsAAAAYAOr/AAAOAAsAAAAZAOr/AAAPAAsAAAAaAOr/AAAQAAsAAAAbAOr/AAANAAsAAAAcAOr/AAAOAAsAAAAdAOr/AAAPAAsAAAAeAOr/AAAQAAsAAAAfAOr/AAANAAsAAAAgAOr/AAAOAAsAAAAHANH/AAANAAsAAAAIANH/AAAOAAsAAAAJANH/AAAPAAsAAAAKANH/AAAQAAsAAAALANH/AAANAAsAAAAMANH/AAAOAAsAAAANANH/AAAPAAsAAAAOANH/AAAQAAsAAAAPANH/AAANAAsAAAAQANH/AAAOAAsAAAARANH/AAAPAAsAAAASANH/AAAQAAsAAAATANH/AAANAAsAAAAUANH/AAAOAAsAAAAVANH/AAAPAAsAAAAWANH/AAAQAAsAAAAXANH/AAANAAsAAAAYANH/AAAOAAsAAAAZANH/AAAPAAsAAAAaANH/AAAQAAsAAAAbANH/AAANAAsAAAAcANH/AAAOAAsAAAAdANH/AAAPAAsAAAAeANH/AAAQAAsAAAAfANH/AAANAAsAAAAgANH/AAAOAAsAAAAKAMr/AAAPABQAAAAKAMv/AAAQABUAAAALAMr/AAAQABQAAAALAMv/AAAQABUAAAAMAMr/AAARABQAAAAMAMv/AAARABUAAAANAMr/AAASABQAAAANAMv/AAASABUAAAAOAMr/AAATABQAAAAOAMv/AAATABUAAAAPAMr/AAAUABQAAAAPAMv/AAAUABUAAAAQAMr/AAAVABQAAAAQAMv/AAAVABUAAAARAMr/AAAWABQAAAARAMv/AAAUABUAAAAHAAIAAAANAAsAAAAIAAIAAAAOAAsAAAAJAAIAAAAPAAsAAAAKAAIAAAAQAAsAAAALAAIAAAANAAsAAAAMAAIAAAAOAAsAAAANAAIAAAAPAAsAAAAOAAIAAAAQAAsAAAAPAAIAAAANAAsAAAAQAAIAAAAOAAsAAAARAAIAAAAPAAsAAAASAAIAAAAQAAsAAAATAAIAAAANAAsAAAAUAAIAAAAOAAsAAAAVAAIAAAAPAAsAAAAWAAIAAAAQAAsAAAAXAAIAAAANAAsAAAAYAAIAAAAOAAsAAAAZAAIAAAAPAAsAAAAaAAIAAAAQAAsAAAAbAAIAAAANAAsAAAAcAAIAAAAOAAsAAAAdAAIAAAAPAAsAAAAeAAIAAAAQAAsAAAAfAAIAAAANAAsAAAAgAAIAAAAOAAsAAAA=")
+tile_map_data = PackedByteArray("AAAHADAAAAAPABQAAAAIADAAAAAQABQAAAAJADAAAAARABQAAAAKADAAAAASABQAAAALADAAAAATABQAAAAMADAAAAAUABQAAAANADAAAAAVABQAAAAOADAAAAAWABQAAAAPADAAAAAPABQAAAAQADAAAAAQABQAAAARADAAAAARABQAAAASADAAAAASABQAAAATADAAAAATABQAAAAUADAAAAAUABQAAAAVADAAAAAVABQAAAAWADAAAAAWABQAAAAXADAAAAAPABQAAAAYADAAAAAQABQAAAAZADAAAAARABQAAAAaADAAAAASABQAAAAbADAAAAATABQAAAAcADAAAAAUABQAAAAdADAAAAAVABQAAAAeADAAAAAWABQAAAAfADAAAAAPABQAAAAgADAAAAAQABQAAAAIADEAAAAQABUAAAAJADEAAAARABUAAAAKADEAAAASABUAAAALADEAAAATABUAAAAMADEAAAAUABUAAAANADEAAAAVABUAAAAOADEAAAAQABUAAAAPADEAAAARABUAAAAQADEAAAASABUAAAARADEAAAATABUAAAASADEAAAAUABUAAAATADEAAAAVABUAAAAUADEAAAAQABUAAAAVADEAAAARABUAAAAWADEAAAASABUAAAAXADEAAAATABUAAAAYADEAAAAUABUAAAAZADEAAAAVABUAAAAaADEAAAAQABUAAAAbADEAAAARABUAAAAcADEAAAASABUAAAAdADEAAAATABUAAAAeADEAAAAUABUAAAAfADEAAAAVABUAAAAHADEAAAARABUAAAAgADEAAAAQABUAAAAHABsAAAANAAsAAAAIABsAAAAOAAsAAAAJABsAAAAPAAsAAAAKABsAAAAQAAsAAAALABsAAAANAAsAAAAMABsAAAAOAAsAAAANABsAAAAPAAsAAAAOABsAAAAQAAsAAAAPABsAAAANAAsAAAAQABsAAAAOAAsAAAARABsAAAAPAAsAAAASABsAAAAQAAsAAAATABsAAAANAAsAAAAUABsAAAAOAAsAAAAVABsAAAAPAAsAAAAWABsAAAAQAAsAAAAXABsAAAANAAsAAAAYABsAAAAOAAsAAAAZABsAAAAPAAsAAAAaABsAAAAQAAsAAAAbABsAAAANAAsAAAAcABsAAAAOAAsAAAAdABsAAAAPAAsAAAAeABsAAAAQAAsAAAAfABsAAAANAAsAAAAgABsAAAAOAAsAAAAHAOr/AAANAAsAAAAIAOr/AAAOAAsAAAAJAOr/AAAPAAsAAAAKAOr/AAAQAAsAAAALAOr/AAANAAsAAAAMAOr/AAAOAAsAAAANAOr/AAAPAAsAAAAOAOr/AAAQAAsAAAAPAOr/AAANAAsAAAAQAOr/AAAOAAsAAAARAOr/AAAPAAsAAAASAOr/AAAQAAsAAAATAOr/AAANAAsAAAAUAOr/AAAOAAsAAAAVAOr/AAAPAAsAAAAWAOr/AAAQAAsAAAAXAOr/AAANAAsAAAAYAOr/AAAOAAsAAAAZAOr/AAAPAAsAAAAaAOr/AAAQAAsAAAAbAOr/AAANAAsAAAAcAOr/AAAOAAsAAAAdAOr/AAAPAAsAAAAeAOr/AAAQAAsAAAAfAOr/AAANAAsAAAAgAOr/AAAOAAsAAAAHANH/AAANAAsAAAAIANH/AAAOAAsAAAAJANH/AAAPAAsAAAAKANH/AAAQAAsAAAALANH/AAANAAsAAAAMANH/AAAOAAsAAAANANH/AAAPAAsAAAAOANH/AAAQAAsAAAAPANH/AAANAAsAAAAQANH/AAAOAAsAAAARANH/AAAPAAsAAAASANH/AAAQAAsAAAATANH/AAANAAsAAAAUANH/AAAOAAsAAAAVANH/AAAPAAsAAAAWANH/AAAQAAsAAAAXANH/AAANAAsAAAAYANH/AAAOAAsAAAAZANH/AAAPAAsAAAAaANH/AAAQAAsAAAAbANH/AAANAAsAAAAcANH/AAAOAAsAAAAdANH/AAAPAAsAAAAeANH/AAAQAAsAAAAfANH/AAANAAsAAAAgANH/AAAOAAsAAAAKAMr/AAAPABQAAAAKAMv/AAAQABUAAAALAMr/AAAQABQAAAALAMv/AAAQABUAAAAMAMr/AAARABQAAAAMAMv/AAARABUAAAANAMr/AAASABQAAAANAMv/AAASABUAAAAOAMr/AAATABQAAAAOAMv/AAATABUAAAAPAMr/AAAUABQAAAAPAMv/AAAUABUAAAAQAMr/AAAVABQAAAAQAMv/AAAVABUAAAARAMr/AAAWABQAAAARAMv/AAAUABUAAAAHAAIAAAANAAsAAAAIAAIAAAAOAAsAAAAJAAIAAAAPAAsAAAAKAAIAAAAQAAsAAAALAAIAAAANAAsAAAAMAAIAAAAOAAsAAAANAAIAAAAPAAsAAAAOAAIAAAAQAAsAAAAPAAIAAAANAAsAAAAQAAIAAAAOAAsAAAARAAIAAAAPAAsAAAASAAIAAAAQAAsAAAATAAIAAAANAAsAAAAUAAIAAAAOAAsAAAAVAAIAAAAPAAsAAAAWAAIAAAAQAAsAAAAXAAIAAAANAAsAAAAYAAIAAAAOAAsAAAAZAAIAAAAPAAsAAAAaAAIAAAAQAAsAAAAbAAIAAAANAAsAAAAcAAIAAAAOAAsAAAAdAAIAAAAPAAsAAAAeAAIAAAAQAAsAAAAfAAIAAAANAAsAAAAgAAIAAAAOAAsAAAANAC0AAAANAAsAAAAOAC0AAAAOAAsAAAAPAC0AAAAPAAsAAAAQAC0AAAAQAAsAAAAJACoAAAANAAsAAAAKACoAAAAOAAsAAAALACoAAAAPAAsAAAAMACoAAAAQAAsAAAA=")
 tile_set = ExtResource("10_7y5jk")
 
 [node name="Ladders" type="TileMapLayer" parent="TileMaps" unique_id=1189875290]
 position = Vector2(0, 1841)
+tile_map_data = PackedByteArray("AAAOABsAAAAXABAAAAAPABsAAAAYABAAAAAOABwAAAAXABEAAAAOAB0AAAAXABIAAAAOAB4AAAAXABMAAAAPABwAAAAYABEAAAAPAB0AAAAYABIAAAAPAB4AAAAYABMAAAAOAB8AAAAXABEAAAAOACAAAAAXABIAAAAOACEAAAAXABMAAAAPAB8AAAAYABEAAAAPACAAAAAYABIAAAAPACEAAAAYABMAAAAOACIAAAAXABEAAAAOACMAAAAXABIAAAAOACQAAAAXABMAAAAPACIAAAAYABEAAAAPACMAAAAYABIAAAAPACQAAAAYABMAAAAOACUAAAAXABEAAAAOACYAAAAXABIAAAAPACUAAAAYABEAAAAPACYAAAAYABIAAAAOACcAAAAXABQAAAAPACcAAAAYABQAAAA=")
 tile_set = ExtResource("8_ugoa8")
 
 [node name="Boundaries" type="TileMapLayer" parent="TileMaps" unique_id=436896637]
@@ -114,7 +110,7 @@ room_height = 2000
 visible = false
 
 [node name="PlayerSpawnPoint" parent="." unique_id=335168432 instance=ExtResource("14_2bbx0")]
-position = Vector2(229, 2609)
+position = Vector2(411, 2609)
 
 [node name="MonsterSpawnNode" type="Node" parent="." unique_id=728793847]
 
@@ -136,21 +132,21 @@ current_room_data = ExtResource("2_0edbk")
 [node name="SfxPlayer" parent="." unique_id=126850837 instance=ExtResource("24_7a1vb")]
 
 [node name="LadderArea" parent="." unique_id=1886745708 node_paths=PackedStringArray("ladder_top", "ladder_bottom") instance=ExtResource("25_ftijd")]
-position = Vector2(240, 2501)
+position = Vector2(240, 2308)
 collision_layer = 8
 collision_mask = 8
 ladder_top = NodePath("Top")
 ladder_bottom = NodePath("Bottom")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LadderArea" unique_id=1244690682]
-position = Vector2(0, 12.5)
+position = Vector2(0, 69)
 shape = SubResource("RectangleShape2D_rao3c")
 
 [node name="Top" type="Marker2D" parent="LadderArea" unique_id=579466713]
 position = Vector2(0, -36)
 
 [node name="Bottom" type="Marker2D" parent="LadderArea" unique_id=2036995329]
-position = Vector2(0, 76)
+position = Vector2(0, 201)
 
 [node name="MonsterSpawnArea" parent="." unique_id=338647858 node_paths=PackedStringArray("drop_scene", "spawn_root", "area_collision_shape") instance=ExtResource("26_c3xam")]
 position = Vector2(227, 2608)
@@ -162,17 +158,29 @@ max_hunt_challenge_spawn = 4
 drop_scene = NodePath("..")
 spawn_root = NodePath("../MonsterSpawnNode")
 monster_list = Dictionary[PackedScene, int]({
-ExtResource("27_5pidk"): 50,
-ExtResource("28_mstw4"): 50
-})
-challenge_monster_list = Dictionary[PackedScene, int]({
-ExtResource("27_5pidk"): 50,
-ExtResource("28_mstw4"): 50
+ExtResource("19_ekrv2"): 100
 })
 area_collision_shape = NodePath("CollisionShape2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MonsterSpawnArea" unique_id=1624794714]
-position = Vector2(-4.5, 0)
+shape = SubResource("RectangleShape2D_8ob7c")
+
+[node name="MonsterSpawnArea2" parent="." unique_id=89429879 node_paths=PackedStringArray("drop_scene", "spawn_root", "area_collision_shape") instance=ExtResource("26_c3xam")]
+position = Vector2(338, 2271)
+max_monsters = 6
+respawn_wait_time = 12.0
+min_spawn = 4
+min_hunt_challenge_spawn = 3
+max_hunt_challenge_spawn = 4
+drop_scene = NodePath("..")
+spawn_root = NodePath("../MonsterSpawnNode")
+monster_list = Dictionary[PackedScene, int]({
+ExtResource("19_ekrv2"): 100
+})
+area_collision_shape = NodePath("CollisionShape2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MonsterSpawnArea2" unique_id=550299098]
+position = Vector2(-13, 0)
 shape = SubResource("RectangleShape2D_4qnya")
 
 [node name="PlayerSpawnPoint2" parent="." unique_id=141119814 instance=ExtResource("14_2bbx0")]

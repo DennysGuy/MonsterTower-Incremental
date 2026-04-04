@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="EnemyStats" format=3 uid="uid://cq7q6npjlayh1"]
+
+[ext_resource type="Script" uid="uid://cbjktr12qagl" path="res://src/Scripts/Enemies/enemy_stats.gd" id="1_02tsj"]
+[ext_resource type="Resource" uid="uid://bippqfqb312jh" path="res://src/Resources/Actors/Enemies/Biome1/GoblinThief/GoblinMeat.tres" id="1_78oq2"]
+[ext_resource type="Resource" uid="uid://lyuo51uo7crd" path="res://src/Resources/Actors/Enemies/Biome1/GoblinThief/HiddenShiv.tres" id="2_tqppg"]
+[ext_resource type="Resource" uid="uid://bngtdvlfknn62" path="res://src/Resources/Actors/Enemies/Biome1/GoblinThief/SpoilsPack.tres" id="3_dtc7o"]
+
+[resource]
+script = ExtResource("1_02tsj")
+enemy_name = "Goblin Thief"
+enemy_level = 10
+touch_damage = true
+enemy_type = 1
+max_health = 1400
+attack = 80
+defense = 12.0
+movement_speed = 50.0
+chase_speed = 70.0
+break_threshold = 12
+novelty_item_drop = ExtResource("3_dtc7o")
+cooking_item_drop = ExtResource("1_78oq2")
+crafting_item_drop = ExtResource("2_tqppg")
+metadata/_custom_type_script = "uid://cbjktr12qagl"

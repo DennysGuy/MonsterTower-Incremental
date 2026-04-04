@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EnemyDrop" format=3 uid="uid://bngtdvlfknn62"]
+
+[ext_resource type="Script" uid="uid://cubudt76pshmm" path="res://src/Scripts/Enemies/enemy_drop.gd" id="1_h6udw"]
+[ext_resource type="Texture2D" uid="uid://dxpjcd61fmevp" path="res://Assets/Enemies/GoblinGuy/SpoilsBag.png" id="1_p5odj"]
+
+[resource]
+script = ExtResource("1_h6udw")
+drop_icon = ExtResource("1_p5odj")
+drop_chance = 0.7
+item_name = "Spoils Bag"
+sell_value = 120
+shop_icon = ExtResource("1_p5odj")
+description = "A Goblin Thief's Bag. What could be inside?"
+metadata/_custom_type_script = "uid://cubudt76pshmm"
