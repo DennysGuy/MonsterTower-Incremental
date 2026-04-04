@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EnemyDrop" format=3 uid="uid://b5j8n0d41axk1"]
+
+[ext_resource type="Script" uid="uid://cubudt76pshmm" path="res://src/Scripts/Enemies/enemy_drop.gd" id="1_6iyr8"]
+[ext_resource type="Texture2D" uid="uid://c58xtclrwl4pe" path="res://Assets/Enemies/MimicSerpant/MimicSerpant_Loot.png" id="1_plmhv"]
+
+[resource]
+script = ExtResource("1_6iyr8")
+drop_icon = ExtResource("1_plmhv")
+drop_chance = 0.75
+item_name = "Loot Drop"
+sell_value = 100
+shop_icon = ExtResource("1_plmhv")
+description = "Trap Loot removed from the bowls of a Serpant Mimic. "
+metadata/_custom_type_script = "uid://cubudt76pshmm"

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EnemyDrop" format=3 uid="uid://bvpv4cq7bcds3"]
+
+[ext_resource type="Script" uid="uid://cubudt76pshmm" path="res://src/Scripts/Enemies/enemy_drop.gd" id="1_8bgx4"]
+[ext_resource type="Texture2D" uid="uid://d2485bunoije" path="res://Assets/Enemies/MimicSerpant/MimicSerpant_PurifiedChest.png" id="1_m6nmt"]
+
+[resource]
+script = ExtResource("1_8bgx4")
+drop_icon = ExtResource("1_m6nmt")
+drop_chance = 0.06
+item_name = "Purified Chest"
+item_type = 2
+sell_value = 160
+shop_icon = ExtResource("1_m6nmt")
+metadata/_custom_type_script = "uid://cubudt76pshmm"

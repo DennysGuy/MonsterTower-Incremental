@@ -1,6 +1,9 @@
 [gd_resource type="Resource" script_class="EnemyStats" format=3 uid="uid://du4so306s4lte"]
 
+[ext_resource type="Resource" uid="uid://sbvd7ewnpn0s" path="res://src/Resources/Actors/Enemies/Biome1/SerpantMimic/SerpantTongue.tres" id="1_migms"]
 [ext_resource type="Script" uid="uid://cbjktr12qagl" path="res://src/Scripts/Enemies/enemy_stats.gd" id="1_sttul"]
+[ext_resource type="Resource" uid="uid://bvpv4cq7bcds3" path="res://src/Resources/Actors/Enemies/Biome1/SerpantMimic/PurifiedChest.tres" id="2_h8lae"]
+[ext_resource type="Resource" uid="uid://b5j8n0d41axk1" path="res://src/Resources/Actors/Enemies/Biome1/SerpantMimic/SerpantLoot.tres" id="3_sa0ho"]
 
 [resource]
 script = ExtResource("1_sttul")
@@ -14,4 +17,7 @@ defense = 8.0
 movement_speed = 40.0
 chase_speed = 50.0
 break_threshold = 11
+novelty_item_drop = ExtResource("3_sa0ho")
+cooking_item_drop = ExtResource("1_migms")
+crafting_item_drop = ExtResource("2_h8lae")
 metadata/_custom_type_script = "uid://cbjktr12qagl"

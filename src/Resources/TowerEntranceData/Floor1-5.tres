@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="TowerEntranceData" format=3 uid="uid://k8lq2m8l311f"]
+
+[ext_resource type="Texture2D" uid="uid://dmw0muar17a6q" path="res://Assets/FloorPreviews/Floor1-3Preview.png" id="1_k2nx2"]
+[ext_resource type="Texture2D" uid="uid://825wmmsifn27" path="res://Assets/FloorPreviews/Floor1-3-point-2Preview.png" id="2_jcw8o"]
+[ext_resource type="Script" uid="uid://cyho4aep1qxmu" path="res://src/Scripts/Maps/tower_entrance_data.gd" id="3_tuotj"]
+
+[resource]
+script = ExtResource("3_tuotj")
+floor_name = "Floor 1-5"
+biome = "Mossy Dungeon"
+total_camp_fires = 3
+scene_path = "uid://bcb7mqtk7hdgw"
+preview_pictures = Array[Texture2D]([ExtResource("1_k2nx2"), ExtResource("2_jcw8o"), ExtResource("2_jcw8o"), ExtResource("2_jcw8o")])
+metadata/_custom_type_script = "uid://cyho4aep1qxmu"

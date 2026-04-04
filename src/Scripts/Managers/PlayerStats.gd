@@ -200,7 +200,7 @@ func get_sword(sword_index : int = 0) -> Sword:
 		2:
 			return preload("uid://hnq8o34pxm0h") #Bronze Fang Blade
 		3:
-			return preload("uid://bdsjrsiakv2sh") #Bronze Fang Blade
+			return preload("uid://bdsjrsiakv2sh") #Iron Broad Sword
 		_:
 			return preload("uid://di3xaosm85tjx")#"Wooden Sword"
 
@@ -244,6 +244,7 @@ func get_bag(bag : String) -> ItemBag:
 		1: return preload("uid://cuwof21s5e74c")
 		2: return preload("uid://mbne7hjkpnqi")
 		3: return preload("uid://byikht2gbhthk")
+		4: return preload("uid://omnm6ywng6wn")
 		_: return preload("uid://cuwof21s5e74c")
 
 func get_current_bag() -> ItemBag:
