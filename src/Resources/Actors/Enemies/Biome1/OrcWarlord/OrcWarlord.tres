@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="EnemyStats" format=3 uid="uid://cnwbnpkxv6bpd"]
+
+[ext_resource type="Script" uid="uid://cbjktr12qagl" path="res://src/Scripts/Enemies/enemy_stats.gd" id="1_uivp7"]
+
+[resource]
+script = ExtResource("1_uivp7")
+enemy_name = "Orc Warlord"
+enemy_level = 11
+touch_damage = true
+enemy_type = 1
+max_health = 2200
+attack = 115
+defense = 15.0
+movement_speed = 30.0
+chase_speed = 120.0
+break_threshold = 12
+metadata/_custom_type_script = "uid://cbjktr12qagl"
