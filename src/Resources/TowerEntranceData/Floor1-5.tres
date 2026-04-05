@@ -8,7 +8,7 @@
 script = ExtResource("3_tuotj")
 floor_name = "Floor 1-5"
 biome = "Mossy Dungeon"
-total_camp_fires = 3
+total_camp_fires = 2
 scene_path = "uid://c02draaw5wfp1"
-preview_pictures = Array[Texture2D]([ExtResource("1_k2nx2"), ExtResource("2_jcw8o"), ExtResource("2_jcw8o"), ExtResource("2_jcw8o")])
+preview_pictures = Array[Texture2D]([ExtResource("1_k2nx2"), ExtResource("2_jcw8o"), ExtResource("2_jcw8o")])
 metadata/_custom_type_script = "uid://cyho4aep1qxmu"

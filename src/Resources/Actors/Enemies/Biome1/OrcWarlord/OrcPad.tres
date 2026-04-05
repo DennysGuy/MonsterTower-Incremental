@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EnemyDrop" format=3 uid="uid://nf1ifjiq5bk"]
+
+[ext_resource type="Script" uid="uid://cubudt76pshmm" path="res://src/Scripts/Enemies/enemy_drop.gd" id="1_gw3ok"]
+[ext_resource type="Texture2D" uid="uid://b0ffe2xey1uvc" path="res://Assets/Enemies/OrcBeast/OrcShoulderPad.png" id="1_wqp2c"]
+
+[resource]
+script = ExtResource("1_gw3ok")
+drop_icon = ExtResource("1_wqp2c")
+item_name = "Orc S-Pad"
+sell_value = 150
+shop_icon = ExtResource("1_wqp2c")
+description = "Those who slay an orc are deemed legendary. Their armor goes for big money."
+metadata/_custom_type_script = "uid://cubudt76pshmm"

@@ -96,7 +96,7 @@ func _ready() -> void:
 				if tower_entrance_data.is_expedition_floor() and tower_entrance_data.unlock_recipe and !tower_entrance_data.hunt_challenge_completed:
 					issue_repair_elevator_notice()
 			
-				elif tower_entrance_data.is_challenge_floor():
+				elif tower_entrance_data.is_challenge_floor() and not tower_entrance_data.hunt_challenge_completed:
 					issue_challenge_objective_notice()
 				
 				SignalBus.show_bag_stats.emit()

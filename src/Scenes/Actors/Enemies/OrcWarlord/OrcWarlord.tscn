@@ -388,14 +388,14 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s7mdw"]
-radius = 11.0
-height = 42.0
+radius = 18.0
+height = 74.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s7mdw"]
-size = Vector2(23, 35)
+size = Vector2(39, 81)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v37cp"]
-size = Vector2(23, 35)
+size = Vector2(39, 81)
 
 [node name="OrcWarlord" type="CharacterBody2D" unique_id=85927412 node_paths=PackedStringArray("name_tag", "health_bar", "status_effect_icon_bar", "vertical_status_icon_bar", "slow_timer", "silenced_timer", "wall_detector", "ground_detector", "state_machine", "animation_player", "health_component", "sprite", "blink_timer", "stun_timer", "hurt_box", "hit_box", "hit_state", "dead_state", "stun_state", "sfx_player") groups=["Enemy"]]
 collision_layer = 128
@@ -430,14 +430,12 @@ libraries/ = SubResource("AnimationLibrary_adl3q")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2103855697]
 modulate = Color(1, 1, 1, 0)
-position = Vector2(0, -56)
-scale = Vector2(1.2, 1.2)
+position = Vector2(0, -47)
 texture = ExtResource("7_741ni")
 hframes = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=400191748]
-visible = false
-position = Vector2(0, -21)
+position = Vector2(-2, -38)
 shape = SubResource("CapsuleShape2D_s7mdw")
 
 [node name="NameTag" parent="." unique_id=21780759 instance=ExtResource("9_vmlj8")]
@@ -507,14 +505,14 @@ health_bar = NodePath("../EnemyHealthBar")
 position = Vector2(0, -20)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=2073124502]
-position = Vector2(0.5, 2.5)
+position = Vector2(-2.5, -20.5)
 shape = SubResource("RectangleShape2D_s7mdw")
 
 [node name="HitBox" parent="." unique_id=351431721 instance=ExtResource("28_rnpjq")]
 position = Vector2(0, -20)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=233820395]
-position = Vector2(0.5, 2.5)
+position = Vector2(-2.5, -20.5)
 shape = SubResource("RectangleShape2D_v37cp")
 
 [node name="GroundDetector" parent="." unique_id=664844787 instance=ExtResource("29_lsv5d")]

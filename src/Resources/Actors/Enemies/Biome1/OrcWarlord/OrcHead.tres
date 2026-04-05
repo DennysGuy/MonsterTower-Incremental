@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EnemyDrop" format=3 uid="uid://c1ve0dpgibjgv"]
+
+[ext_resource type="Script" uid="uid://cubudt76pshmm" path="res://src/Scripts/Enemies/enemy_drop.gd" id="1_5u1dq"]
+[ext_resource type="Texture2D" uid="uid://ccteld1vsv17d" path="res://Assets/Enemies/OrcBeast/OrcHead.png" id="1_7agm5"]
+
+[resource]
+script = ExtResource("1_5u1dq")
+drop_icon = ExtResource("1_7agm5")
+drop_chance = 0.25
+item_name = "Orc Head"
+item_type = 1
+shop_icon = ExtResource("1_7agm5")
+description = "Raw Orc head.. Used in various exotic cooking recipes."
+metadata/_custom_type_script = "uid://cubudt76pshmm"

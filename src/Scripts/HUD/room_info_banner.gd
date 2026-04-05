@@ -38,7 +38,10 @@ func update_banner_info(tower_entrance_data : TowerEntranceData) -> void:
 			room_type_label.text = "Challenge Map"
 			room_info_banner.texture = HUNT_CHALLENGE_ROOM_BANNER
 			if tower_entrance_data.camp_fires_reached >= tower_entrance_data.total_camp_fires:
-				tracker_label.text = "[color=green]Beat floor Challenge,\nUnlock next floor![/color]"
+				if !tower_entrance_data.hunt_challenge_completed:
+					tracker_label.text = "[color=green]Beat floor Challenge,\nUnlock next floor![/color]"
+				else:
+					tracker_label.text = "Head to the Exit Elevator\nto get to the next floor!"
 			else:
 				tracker_label.text = "Campfires Discovered: %s/%s" % [tower_entrance_data.camp_fires_reached, tower_entrance_data.total_camp_fires]
 		tower_entrance_data.FLOOR_TYPE.BOSS_DOOR:
