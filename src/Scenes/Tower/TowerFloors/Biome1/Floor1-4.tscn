@@ -710,7 +710,7 @@ index = 2
 
 [node name="PlayerSpawnPoint4" parent="." unique_id=1970109047 instance=ExtResource("12_aaosj")]
 position = Vector2(419, 689)
-index = 2
+index = 3
 
 [node name="ExitElevatorMarker" type="Marker2D" parent="." unique_id=1675073189]
 position = Vector2(319, 361)
