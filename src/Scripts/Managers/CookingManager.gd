@@ -11,6 +11,7 @@ const MUSHIE_FLAN = preload("uid://bl128q5qwa5a6")
 #tier 1 smelting recipes
 const BRONZE_BAR_RECIPE = preload("uid://bxa51f001ecsc")
 const IRON_BAR_RECIPE = preload("uid://lt0tb247yewa")
+const STEEL_BAR_RECIPE = preload("uid://bpp8k8y7mogh")
 
 
 
@@ -39,7 +40,7 @@ func can_cook_recipe() -> bool:
 	return false
 
 var smelting_recipes : Dictionary[int, Array] = {
-	1: [BRONZE_BAR_RECIPE, IRON_BAR_RECIPE],
+	1: [BRONZE_BAR_RECIPE,IRON_BAR_RECIPE,STEEL_BAR_RECIPE],
 	2: [],
 	3: [],
 	4: [],

@@ -26,6 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="24_7a1vb"]
 [ext_resource type="PackedScene" uid="uid://cr6q5dxlkks" path="res://src/Scenes/Tower/LadderArea.tscn" id="25_ftijd"]
 [ext_resource type="PackedScene" uid="uid://crf0fypg7rf6a" path="res://src/Scenes/MonsterSpawnArea.tscn" id="26_c3xam"]
+[ext_resource type="PackedScene" uid="uid://dr8tmfh2d3slu" path="res://src/Scenes/Actors/Enemies/MossyDungeon/SerpantMimic/SerpantMimicLVL2.tscn" id="26_hyfg0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rao3c"]
 size = Vector2(20, 208)
@@ -430,7 +431,10 @@ max_hunt_challenge_spawn = 4
 drop_scene = NodePath("..")
 spawn_root = NodePath("../MonsterSpawnNode")
 monster_list = Dictionary[PackedScene, int]({
-ExtResource("19_ekrv2"): 100
+ExtResource("19_ekrv2"): 50
+})
+challenge_monster_list = Dictionary[PackedScene, int]({
+ExtResource("26_hyfg0"): 50
 })
 area_collision_shape = NodePath("CollisionShape2D")
 

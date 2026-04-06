@@ -1941,12 +1941,13 @@ sfx_player = NodePath("SfxPlayer")
 script = ExtResource("2_n7gp4")
 initial_state = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="StateMachine" unique_id=246257889 node_paths=PackedStringArray("move_state", "jump_state", "fall_state", "attack_1_state", "swing_pick_axe_state", "climb_state", "special_attack")]
+[node name="Idle" type="Node" parent="StateMachine" unique_id=246257889 node_paths=PackedStringArray("move_state", "jump_state", "fall_state", "attack_1_state", "dash_attack_state", "swing_pick_axe_state", "climb_state", "special_attack")]
 script = ExtResource("3_g162h")
 move_state = NodePath("../Move")
 jump_state = NodePath("../Jump")
 fall_state = NodePath("../Fall")
 attack_1_state = NodePath("../Attack1")
+dash_attack_state = NodePath("../DashAttack")
 swing_pick_axe_state = NodePath("../SwingPickAxe")
 climb_state = NodePath("../Climb")
 special_attack = NodePath("../SpecialAttack")

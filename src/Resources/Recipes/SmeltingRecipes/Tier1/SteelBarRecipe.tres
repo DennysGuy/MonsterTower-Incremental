@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="CraftingRecipe" format=3 uid="uid://bpp8k8y7mogh"]
+
+[ext_resource type="Texture2D" uid="uid://bg4ge0qg5n8kh" path="res://Assets/Facilities/SmeltingStation/SteelBar.png" id="1_h45og"]
+[ext_resource type="Script" uid="uid://cljygiasf4103" path="res://src/Scripts/Facilities/crafting_recipe.gd" id="1_sbe2u"]
+[ext_resource type="Resource" uid="uid://cs6ojn6tc0alq" path="res://src/Resources/CraftingResources/SteelBar.tres" id="2_071n6"]
+[ext_resource type="Resource" uid="uid://sqmift1leivw" path="res://src/Resources/CraftingResources/Coal.tres" id="4_unp75"]
+[ext_resource type="Resource" uid="uid://65r3jdod3xkl" path="res://src/Resources/CraftingResources/IronOre.tres" id="4_y01lj"]
+
+[resource]
+script = ExtResource("1_sbe2u")
+recipe_name = "Steel Bar"
+menu_icon = ExtResource("1_h45og")
+description = "A an early-mid tier crafting resources - intended to craft solid reliable gear."
+recipe_tier = 1
+crafting_time = 100.0
+success_rate = 0.8
+critical_success_rate = 0.1
+failure_rate = 0.1
+output_item = ExtResource("2_071n6")
+recipe_list = Array[Dictionary]([{
+ExtResource("4_unp75"): 2
+}, {
+ExtResource("4_y01lj"): 2
+}])
+metadata/_custom_type_script = "uid://cljygiasf4103"
