@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://df0w4uyh70ro2"]
+
+[ext_resource type="Script" uid="uid://c06vxqpkhjp5f" path="res://src/Scripts/Tower/final_key_lock.gd" id="1_eok6q"]
+[ext_resource type="Texture2D" uid="uid://d2ffo7hixe8t0" path="res://Assets/Tower/Biom1/BossDoor/FinalKeyLock_Unfilled.png" id="2_8tqoi"]
+
+[node name="FinalKeyLock" type="Node2D" unique_id=937358119]
+script = ExtResource("1_eok6q")
+
+[node name="FinalKeyLock" type="Sprite2D" parent="." unique_id=808595133]
+position = Vector2(0, -29)
+texture = ExtResource("2_8tqoi")

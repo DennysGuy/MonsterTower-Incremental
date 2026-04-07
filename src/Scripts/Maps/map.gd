@@ -114,7 +114,8 @@ func _ready() -> void:
 		if map_type ==	MAP_TYPE.FLOOR or map_type == MAP_TYPE.CHECKPOINT_FLOOR:
 				if !GameManager.hunt_challenge_selected:
 					GameManager.player_can_move = true
-					hud.start_expedition_timer()
+					if !tower_entrance_data.is_boss_door():
+						hud.start_expedition_timer()
 				else:
 					GameManager.player_can_move = false
 					

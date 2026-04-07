@@ -96,7 +96,13 @@ TODO: We will add saves for classes as well
 		"Campfires Reached": 0,
 		"Hunt Challenge Unlocked": false,
 		"Hunt Challenge Completed": false
-	}
+	},
+	"Floor 1-6" : {
+		"Number of Spawn Locations" : 0,
+		"Campfires Reached": 0,
+		"Hunt Challenge Unlocked": false,
+		"Hunt Challenge Completed": false
+	},
 	
 }
 #loadded when we hit "continue game"

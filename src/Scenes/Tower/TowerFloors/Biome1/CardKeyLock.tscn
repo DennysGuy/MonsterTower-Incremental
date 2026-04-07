@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://b6f6env6glluf"]
+
+[ext_resource type="Script" uid="uid://deki4fllh0a7w" path="res://src/Scripts/Tower/card_key_lock.gd" id="1_7280u"]
+[ext_resource type="Texture2D" uid="uid://dovhk1103xlqf" path="res://Assets/Tower/Biom1/BossDoor/CardKeyLock_Unfilled.png" id="2_ye45f"]
+
+[node name="CardKeyLock" type="Node2D" unique_id=456427791]
+script = ExtResource("1_7280u")
+
+[node name="CardKeyLock" type="Sprite2D" parent="." unique_id=472268407]
+position = Vector2(0, -20)
+texture = ExtResource("2_ye45f")

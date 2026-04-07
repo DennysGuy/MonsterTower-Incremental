@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://d1ik00bna4wbf"]
+
+[ext_resource type="Script" uid="uid://djm23jlwxuvke" path="res://src/Scripts/Tower/diamond_key.gd" id="1_4hapu"]
+[ext_resource type="Texture2D" uid="uid://fkodcpdfvhxr" path="res://Assets/Tower/Biom1/BossDoor/DiamondKey.png" id="2_0sspp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4hapu"]
+
+[node name="DiamondKey" type="Node2D" unique_id=1892746706]
+script = ExtResource("1_4hapu")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=997234663]
+texture = ExtResource("2_0sspp")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=510184610]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1774319313]
+shape = SubResource("RectangleShape2D_4hapu")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

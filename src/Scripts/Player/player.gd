@@ -34,6 +34,7 @@ class_name Player extends Entity
 
 @export var attack_friction : float = 2600.0
 @export var max_attack_drift : float = 220.0
+@onready var holder: Marker2D = $Holder
 
 var stored_ladder : LadderArea
 var stored_enemy : Enemy
@@ -45,6 +46,7 @@ var prev_move_speed : float
 var mining_area_position : Vector2
 var gem_chest_hit_area_position : Vector2
 var hit_box_position : Vector2
+var holder_position : Vector2
 
 var jump_buffer_timer : float = 0.0
 var jump_buffer_wait_time : float =0.17
@@ -62,7 +64,6 @@ var was_on_ledge : bool = true
 var apply_gravity : bool = true
 
 var is_silence_attack : bool = false
-
 
 @export var idle_state : State
 @export var jump_state : State
@@ -83,6 +84,7 @@ func _ready() -> void:
 	gem_chest_hit_area_position = gem_chest_hit_area.position
 	hit_box_position = hit_box.position
 	dash_attack_hit_box.position = hit_box_position
+	holder_position = holder.position
 	disable_gem_chest_hit_area()
 	
 func _process(delta: float) -> void:
@@ -123,11 +125,13 @@ func flip_textures(flip : bool) -> void:
 		hit_box.position = Vector2(-hit_box_position.x, hit_box_position.y)
 		dash_attack_hit_box.position = Vector2(-hit_box_position.x, hit_box_position.y)
 		gem_chest_hit_area.position = Vector2(-gem_chest_hit_area_position.x, gem_chest_hit_area_position.y)
+		holder.position = Vector2(-holder_position.x, holder_position.y)
 	else:
 		mining_area.position = mining_area_position
 		hit_box.position = hit_box_position
 		dash_attack_hit_box.position = hit_box_position
 		gem_chest_hit_area.position = gem_chest_hit_area_position
+		holder.position = holder_position
 	
 func start_invincibility() -> void:
 	damageable = false
@@ -322,6 +326,4 @@ func pick_up_items() -> void:
 			if area_parent and !area_parent.can_pick_up:
 				area_parent.pick_up_item()
 				if area_parent.can_pick_up:
-					return			
-	
-			
+					return

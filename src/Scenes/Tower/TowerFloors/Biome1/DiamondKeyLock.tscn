@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://o3402dk5586q"]
+
+[ext_resource type="Script" uid="uid://cpwrjhpisj448" path="res://src/Scripts/Tower/diamond_key_lock.gd" id="1_blhon"]
+[ext_resource type="Texture2D" uid="uid://mnfm4rqv2enk" path="res://Assets/Tower/Biom1/BossDoor/DiamondKeyLock_Unfilled.png" id="1_cc8u0"]
+
+[node name="DiamondKeyLock" type="Node2D" unique_id=1730323232]
+script = ExtResource("1_blhon")
+
+[node name="DiamondKeyLockGraphic" type="Sprite2D" parent="." unique_id=1361226511]
+position = Vector2(0, -20)
+texture = ExtResource("1_cc8u0")

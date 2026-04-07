@@ -13,6 +13,7 @@
 [ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="10_grwys"]
 [ext_resource type="Resource" uid="uid://bv3no8c6bw4tm" path="res://src/Resources/TowerEntranceData/Floor1-4.tres" id="11_rqxke"]
 [ext_resource type="Resource" uid="uid://k8lq2m8l311f" path="res://src/Resources/TowerEntranceData/Floor1-5.tres" id="12_84yqx"]
+[ext_resource type="Resource" uid="uid://b7vfvjsghpix0" path="res://src/Resources/TowerEntranceData/Floor1-6.tres" id="13_v8mxw"]
 
 [node name="TowerEntranceMap" type="Control" unique_id=1693392128]
 layout_mode = 3
@@ -231,6 +232,14 @@ offset_top = 31.0
 offset_right = 24.0
 offset_bottom = 44.0
 tower_entrance_data = ExtResource("12_84yqx")
+
+[node name="Floor1-6Entrance" parent="." unique_id=121165993 instance=ExtResource("6_4erf6")]
+layout_mode = 1
+offset_left = -16.0
+offset_top = 20.0
+offset_right = -1.0
+offset_bottom = 33.0
+tower_entrance_data = ExtResource("13_v8mxw")
 
 [node name="Close" type="Button" parent="." unique_id=1654347764]
 layout_mode = 0
