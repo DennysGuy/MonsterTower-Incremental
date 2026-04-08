@@ -117,7 +117,7 @@ room_height = 2000
 visible = false
 
 [node name="PlayerSpawnPoint" parent="." unique_id=335168432 instance=ExtResource("11_6ovmg")]
-position = Vector2(247, 2609)
+position = Vector2(418, 1184)
 
 [node name="MonsterSpawnNode" type="Node" parent="." unique_id=728793847]
 
@@ -314,25 +314,25 @@ position = Vector2(319, 361)
 [node name="BossDoor" parent="." unique_id=1917660756 instance=ExtResource("16_xtlvs")]
 position = Vector2(304, 977)
 
+[node name="CardKeyLock" parent="." unique_id=456427791 instance=ExtResource("18_7yu7d")]
+position = Vector2(407, 903)
+
 [node name="FinalKeyLock" parent="." unique_id=937358119 instance=ExtResource("19_7yu7d")]
 position = Vector2(306, 916)
 
 [node name="DiamondKeyLock" parent="." unique_id=1730323232 instance=ExtResource("17_32cc3")]
 position = Vector2(207, 903)
 
-[node name="CardKeyLock" parent="." unique_id=456427791 instance=ExtResource("18_7yu7d")]
-position = Vector2(407, 903)
-
 [node name="BossKeyAlter" parent="." unique_id=828477030 node_paths=PackedStringArray("spawn_parent") instance=ExtResource("20_r0f71")]
-position = Vector2(478, 2609)
+position = Vector2(334, 1137)
 spawn_parent = NodePath("..")
 
 [node name="BossKeyAlter2" parent="." unique_id=254648071 node_paths=PackedStringArray("spawn_parent") instance=ExtResource("20_r0f71")]
-position = Vector2(141, 2322)
+position = Vector2(133, 1136)
 key_type = 1
 spawn_parent = NodePath("..")
 
 [node name="BossKeyAlter3" parent="." unique_id=1656125914 node_paths=PackedStringArray("spawn_parent") instance=ExtResource("20_r0f71")]
-position = Vector2(382, 2321)
+position = Vector2(508, 1137)
 key_type = 2
 spawn_parent = NodePath("..")

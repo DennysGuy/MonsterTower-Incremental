@@ -120,3 +120,5 @@ signal update_gem_station_sockets
 signal update_banner_info(tower_entrance_data : TowerEntranceData)
 @warning_ignore("unused_signal")
 signal flash_screen
+@warning_ignore("unused_signal")
+signal unlock_boss_door

@@ -34,3 +34,6 @@ func _on_enable_zone_area_entered(area: Area2D) -> void:
 	if parent is BossDoorKey and !parent.can_pick_up:
 		set_lock_filled()
 		parent.queue_free()
+		SignalBus.shake_camera.emit(3.0)
+		await get_tree().create_timer(3.0).timeout
+		SignalBus.unlock_boss_door.emit()
