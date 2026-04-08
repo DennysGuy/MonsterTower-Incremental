@@ -57,7 +57,7 @@ func attack_enemies(enemies_in_hitbox : Array, enemies_hit : int = 1, number_of_
 				attack_enemy(player, enemy, damage, is_crit, 0, is_warrior)
 
 				i += 1
-				await player.get_tree().create_timer(rep_delay).timeout
+				await player.get_tree().create_timer(0.1).timeout
 			
 			if is_instance_valid(enemy) and enemy.health <= 0:
 				enemies_in_hitbox.erase(enemy)

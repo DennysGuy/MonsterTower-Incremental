@@ -126,6 +126,7 @@ TODO: We will add saves for classes as well
 	"Floor 1-3" : false,
 	"Floor 1-4" : false,
 	"Floor 1-5" : false,
+	"Floor 1-6" : false,
 }
 
 
