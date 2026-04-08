@@ -40,7 +40,7 @@ func process_physics(_delta: float) -> State:
 		parent.jump_buffer_timer = 0
 		return jump_state
 
-	if Input.is_action_just_pressed("dash_attack") and PlayerStats.facilities_unlocked["Dash Attack"] and parent.can_issue_ability("Dash Attack"):
+	if Input.is_action_just_pressed("dash_attack") and PlayerStats.facilities_unlocked["Dash Attack"] and parent.can_issue_ability("Dash Attack") and GameManager.can_issue_abilities:
 		return dash_attack_state
 
 	if Input.is_action_just_pressed("special_attack") and Input.is_action_just_pressed("special_attack") and PlayerStats.get_equipped_ability("Special Attack") and parent.can_issue_ability("Special Attack"):
@@ -53,7 +53,7 @@ func process_physics(_delta: float) -> State:
 
 	var input := Input.get_axis("pan_cam_left", "pan_cam_right")
 	var max_speed = PlayerStats.player_stats["Movement Speed"] + PlayerStats.get_current_sword().movement_speed_bonus + PlayerStats.get_total_gem_bonus("Movement Speed Bonus")
-	var target_speed = input * max_speed
+	var target_speed = input * max_speed * GameManager.event_speed_mod
 
 	# Remember last facing direction
 	if input != 0:

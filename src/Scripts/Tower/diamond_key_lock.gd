@@ -1,23 +1,42 @@
-class_name DiamondKeyLock extends Node2D
+class_name DiamondKeyLock extends BossKeyLock
 
-@onready var diamond_key_lock_graphic: Sprite2D = $DiamondKeyLockGraphic
-
-const DIAMOND_KEY_LOCK_FILLED = preload("uid://b6nnf8bb3uqu")
-const DIAMOND_KEY_LOCK_UNFILLED = preload("uid://mnfm4rqv2enk")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	#We'll have to check if the room has been unlocked to set the graphic
-	set_lock_unfilled()
-
+	super()
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	super(delta)
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	notice.show()
+	if body is Player:
+		player = body
+		if body.held_key and body.held_key.key_type == body.held_key.KEY_TYPE.DIAMOND:
+			correct_key_detected = true
+			notice.text = "Press 'E' to insert key!"
+		else:
+			correct_key_detected = false
+			notice.text = "Requires the Diamond Key"
+
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	if body is Player:
+		player = null
+		correct_key_detected = false
+		notice.hide()
 
 
-func set_lock_filled() -> void:
-	diamond_key_lock_graphic.texture = DIAMOND_KEY_LOCK_FILLED
+func _on_enable_zone_body_entered(body: Node2D) -> void:
+	if body is BossDoorKey and !body.can_pick_up:
+		print("BOOLNANY!")
+		set_lock_filled()
+		body.queue_free()
 
-func set_lock_unfilled() -> void:
-	diamond_key_lock_graphic.texture = DIAMOND_KEY_LOCK_UNFILLED
+
+func _on_enable_zone_area_entered(area: Area2D) -> void:
+	var parent = area.get_parent() 
+	if parent is BossDoorKey and !parent.can_pick_up:
+		set_lock_filled()
+		parent.queue_free()

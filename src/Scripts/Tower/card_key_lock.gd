@@ -1,4 +1,4 @@
-class_name CardKeyLock extends Node2D
+class_name CardKeyLock extends BossKeyLock
 
 @onready var card_key_lock: Sprite2D = $CardKeyLock
 
@@ -8,15 +8,41 @@ const CARD_KEY_LOCK_UNFILLED = preload("uid://dovhk1103xlqf")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	super()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	super(delta)
 
-func set_card_key_lock_filled() -> void:
-	card_key_lock.texture = CARD_KEY_LOCK_FILLED
 
-func set_card_key_lock_unfilled() -> void:
-	card_key_lock.texture = CARD_KEY_LOCK_FILLED
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	notice.show()
+	if body is Player:
+		player = body
+		if body.held_key and body.held_key.key_type == body.held_key.KEY_TYPE.CARD:
+			correct_key_detected = true
+			notice.text = "Press 'E' to insert key!"
+		else:
+			correct_key_detected = false
+			notice.text = "Requires the Card Key"
+
+
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	if body is Player:
+		player = null
+		correct_key_detected = false
+		notice.hide()
+
+
+func _on_enable_zone_body_entered(body: Node2D) -> void:
+	if body is BossDoorKey and !body.can_pick_up:
+		set_lock_filled()
+		body.queue_free()
+
+
+func _on_enable_zone_area_entered(area: Area2D) -> void:
+	var parent = area.get_parent() 
+	if parent is BossDoorKey and !parent.can_pick_up:
+		set_lock_filled()
+		parent.queue_free()

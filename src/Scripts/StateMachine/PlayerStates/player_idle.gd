@@ -37,7 +37,7 @@ func process_physics(_delta: float) -> State:
 		parent.can_double_jump = false
 		return fall_state
 	
-	if Input.is_action_just_pressed("dash_attack") and PlayerStats.facilities_unlocked["Dash Attack"] and parent.can_issue_ability("Dash Attack"):
+	if Input.is_action_just_pressed("dash_attack") and PlayerStats.facilities_unlocked["Dash Attack"] and parent.can_issue_ability("Dash Attack") and GameManager.can_issue_abilities:
 		return dash_attack_state
 		
 	if !GameManager.player_can_move:
@@ -53,7 +53,7 @@ func process_physics(_delta: float) -> State:
 			return swing_pick_axe_state
 		return attack_1_state
 	
-	if Input.is_action_just_pressed("special_attack") and PlayerStats.get_equipped_ability("Special Attack") and parent.can_issue_ability("Special Attack"):
+	if Input.is_action_just_pressed("special_attack") and PlayerStats.get_equipped_ability("Special Attack") and parent.can_issue_ability("Special Attack") and GameManager.can_issue_abilities:
 		return special_attack
 	
 	if !parent.is_on_floor():

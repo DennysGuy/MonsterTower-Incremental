@@ -15,7 +15,8 @@ var can_open_bag : bool = true
 var can_open_tower_map : bool = true
 var player_can_attack : bool = true
 var auto_pick_up_enabled : bool = false
-
+var can_issue_abilities : bool = true
+var event_speed_mod : float = 1.0
 enum NOTIFICATION_TYPE {CRAFTING, COOKING, SMELTING, AP, QUEST}
 
 # Called when the node enters the scene tree for the first time.

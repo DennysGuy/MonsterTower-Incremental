@@ -36,6 +36,8 @@ class_name Player extends Entity
 @export var max_attack_drift : float = 220.0
 @onready var holder: Marker2D = $Holder
 
+var held_key : BossDoorKey
+
 var stored_ladder : LadderArea
 var stored_enemy : Enemy
 var stored_ore_rock : OreRock
