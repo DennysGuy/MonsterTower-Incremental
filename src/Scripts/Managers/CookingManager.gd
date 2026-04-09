@@ -5,15 +5,16 @@ extends Node
 const COOKED_GAGOOTZ = preload("uid://calxpcwsw1ny1")
 const MOSSY_GOULASH = preload("uid://ewuj36wenyg")
 const MUSHIE_FLAN = preload("uid://bl128q5qwa5a6")
-
-
+const HUNTERS_STEW = preload("uid://djnghsi47lfiv")
+const LURKER_CABEZA = preload("uid://cf3i4kcwphgab")
+const PUPIL_CAVIAR = preload("uid://ce00vbs14tnn6")
+const SVIO = preload("uid://dvll2non4abwb")
+const WRAPPED_KABAB = preload("uid://dw722w0co7qrn")
 
 #tier 1 smelting recipes
 const BRONZE_BAR_RECIPE = preload("uid://bxa51f001ecsc")
 const IRON_BAR_RECIPE = preload("uid://lt0tb247yewa")
 const STEEL_BAR_RECIPE = preload("uid://bpp8k8y7mogh")
-
-
 
 @warning_ignore("unused_signal")
 signal populate_description_panel(recipe : CraftingRecipe)
@@ -24,7 +25,7 @@ signal can_craft_dish
 signal can_craft_bar
 
 var cooking_recipes : Dictionary[int,Array] = {
-	1 : [COOKED_GAGOOTZ,MOSSY_GOULASH],
+	1 : [COOKED_GAGOOTZ, MOSSY_GOULASH, HUNTERS_STEW, LURKER_CABEZA, PUPIL_CAVIAR, SVIO, WRAPPED_KABAB],
 	2 : [],
 	3 : [],
 	4 : [],

@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="CraftingRecipe" format=3 uid="uid://cf3i4kcwphgab"]
+
+[ext_resource type="Texture2D" uid="uid://ce3uvbqh8x6al" path="res://Assets/Facilities/CookingStation/LurkerCabeza.png" id="1_pkrlu"]
+[ext_resource type="Resource" uid="uid://carrsm8pqm8fv" path="res://src/Resources/Dishes/LurkerCabeza.tres" id="2_pkrlu"]
+[ext_resource type="Resource" uid="uid://sbvd7ewnpn0s" path="res://src/Resources/Actors/Enemies/Biome1/SerpantMimic/SerpantTongue.tres" id="4_urnnc"]
+[ext_resource type="Script" uid="uid://cljygiasf4103" path="res://src/Scripts/Facilities/crafting_recipe.gd" id="5_n3cpe"]
+
+[resource]
+script = ExtResource("5_n3cpe")
+recipe_name = "Lurker Cabeza"
+menu_icon = ExtResource("1_pkrlu")
+description = "The texture is offputting to some - but a delicacy to many!"
+recipe_tier = 1
+crafting_time = 90.0
+recipe_type = 1
+success_rate = 0.75
+critical_success_rate = 0.1
+failure_rate = 0.25
+output_item = ExtResource("2_pkrlu")
+recipe_list = Array[Dictionary]([{}, {
+ExtResource("4_urnnc"): 2
+}])
+metadata/_custom_type_script = "uid://cljygiasf4103"

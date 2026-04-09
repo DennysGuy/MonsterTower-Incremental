@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://carrsm8pqm8fv"]
+
+[ext_resource type="Script" path="res://src/Scripts/item.gd" id="1_1r28s"]
+[ext_resource type="Texture2D" uid="uid://ce3uvbqh8x6al" path="res://Assets/Facilities/CookingStation/LurkerCabeza.png" id="2_hg4ts"]
+
+[resource]
+script = ExtResource("1_1r28s")
+item_name = "Lurker Cabeza"
+item_type = 5
+sell_value = 350
+shop_icon = ExtResource("2_hg4ts")
+description = "The texture is offputting to some - but a delicacy to many!"
