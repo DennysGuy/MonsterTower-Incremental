@@ -20,6 +20,7 @@ func _process(delta: float) -> void:
 
 func play_door_open_animation() -> void:
 	floor_data.hunt_challenge_completed = true
+	floor_data.number_of_spawn_locations += 1
 	SaveManager.save_floor_data(floor_data, "Floor 1-6")
 	animation_player.play("open")
 	await get_tree().create_timer(3.0).timeout

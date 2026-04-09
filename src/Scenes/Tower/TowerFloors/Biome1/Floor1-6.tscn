@@ -132,9 +132,6 @@ room_height = 2000
 [node name="HUD" parent="." unique_id=429743575 instance=ExtResource("10_jss34")]
 visible = false
 
-[node name="PlayerSpawnPoint" parent="." unique_id=335168432 instance=ExtResource("11_6ovmg")]
-position = Vector2(237, 2609)
-
 [node name="MonsterSpawnNode" type="Node" parent="." unique_id=728793847]
 
 [node name="OreRockMarkers" type="Node" parent="." unique_id=509141251]
@@ -320,9 +317,12 @@ position = Vector2(0, -35)
 [node name="Bottom" type="Marker2D" parent="LadderArea9" unique_id=1449380019]
 position = Vector2(0, 104)
 
-[node name="PlayerSpawnPoint3" parent="." unique_id=180923085 instance=ExtResource("11_6ovmg")]
-position = Vector2(414, 976)
-index = 2
+[node name="PlayerSpawnPoint" parent="." unique_id=335168432 instance=ExtResource("11_6ovmg")]
+position = Vector2(237, 2609)
+
+[node name="PlayerSpawnPoint2" parent="." unique_id=180923085 instance=ExtResource("11_6ovmg")]
+position = Vector2(165, 976)
+index = 1
 
 [node name="ExitElevatorMarker" type="Marker2D" parent="." unique_id=1675073189]
 position = Vector2(319, 361)
