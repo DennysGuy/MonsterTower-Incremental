@@ -6,21 +6,17 @@ enum KEY_TYPE {DIAMOND, CARD, FINAL}
 @export var spawn_parent : Map
 @onready var notice: Label = $Notice
 
+var can_pick_up_key : bool = false
+
 var stored_key : BossDoorKey
 var player : Player
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	match key_type:
-		KEY_TYPE.DIAMOND:
-			spawn_diamond_key()
-		KEY_TYPE.CARD:
-			spawn_card_key()
-		KEY_TYPE.FINAL:
-			spawn_final_key()
+	hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("interact") and player and !player.held_key:
+	if Input.is_action_just_pressed("interact") and player and !player.held_key and can_pick_up_key:
 		stored_key.enable_can_pick_up()
 		stored_key.player = player
 		stored_key = null
@@ -67,4 +63,18 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body is Player:
 		notice.hide()
 		player = null
-		
+
+func unveil_alter() -> void:
+	show()
+	can_pick_up_key= true
+	await get_tree().create_timer(0.5).timeout
+	spawn_key()
+	
+func spawn_key() -> void:
+	match key_type:
+		KEY_TYPE.DIAMOND:
+			spawn_diamond_key()
+		KEY_TYPE.CARD:
+			spawn_card_key()
+		KEY_TYPE.FINAL:
+			spawn_final_key()	

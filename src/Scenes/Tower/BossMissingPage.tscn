@@ -1,0 +1,143 @@
+[gd_scene format=3 uid="uid://bhdmpf736ro3j"]
+
+[ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="1_fwgln"]
+[ext_resource type="Script" uid="uid://c1lvvopcu1nip" path="res://src/Scripts/Tower/boss_missing_page.gd" id="1_q7qny"]
+
+[sub_resource type="Animation" id="Animation_q7qny"]
+resource_name = "FadeIn"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7m6y0"]
+resource_name = "FadeOut"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"go_to_starspire"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_1udua"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1udua"]
+_data = {
+&"FadeIn": SubResource("Animation_q7qny"),
+&"FadeOut": SubResource("Animation_7m6y0"),
+&"RESET": SubResource("Animation_1udua")
+}
+
+[node name="BossMissingPage" type="Control" unique_id=592889992]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_q7qny")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1757712484]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="." unique_id=308790347]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -273.0
+offset_top = -134.0
+offset_right = 294.0
+offset_bottom = 52.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_fwgln")
+theme_override_font_sizes/font_size = 24
+text = "There should be a boss fight here - right about now, but
+looks like the dev hasn't gotten around to programming it.
+
+Sorry :(
+
+Stay tuned for more :D
+Thanks for playing and getting this far :P"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="." unique_id=989170433]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -62.0
+offset_top = -79.0
+offset_right = 62.0
+offset_bottom = -48.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+text = "Go to Starspire"
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=597332443]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1832764515]
+libraries/ = SubResource("AnimationLibrary_1udua")
+
+[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]

@@ -9,7 +9,7 @@ script = ExtResource("3_ohxyu")
 node_name = "Attack 3"
 icon = ExtResource("1_614cc")
 description = "Increases Attack Damage by %30 for each level"
-max_level = 3
+max_level = 5
 currency_required = 800
 materials_required = Array[Dictionary]([{
 ExtResource("2_614cc"): 1

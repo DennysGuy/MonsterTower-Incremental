@@ -5,16 +5,13 @@ class_name CardKeyLock extends BossKeyLock
 const CARD_KEY_LOCK_FILLED = preload("uid://b66xfcxpp48yg")
 const CARD_KEY_LOCK_UNFILLED = preload("uid://dovhk1103xlqf")
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super()
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	super(delta)
-
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	notice.show()
@@ -27,22 +24,15 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			correct_key_detected = false
 			notice.text = "Requires the Card Key"
 
-
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body is Player:
 		player = null
 		correct_key_detected = false
 		notice.hide()
 
-
-func _on_enable_zone_body_entered(body: Node2D) -> void:
-	if body is BossDoorKey and !body.can_pick_up:
-		set_lock_filled()
-		body.queue_free()
-
-
 func _on_enable_zone_area_entered(area: Area2D) -> void:
 	var parent = area.get_parent() 
 	if parent is BossDoorKey and !parent.can_pick_up:
 		set_lock_filled()
+		SignalBus.increment_keys_delivered_tracker.emit()
 		parent.queue_free()

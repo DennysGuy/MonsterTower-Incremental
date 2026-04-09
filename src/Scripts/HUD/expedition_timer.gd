@@ -24,19 +24,25 @@ func _physics_process(delta: float) -> void:
 			milliseconds = 0.99
 			if seconds <= 0:
 				GameManager.expedition_timer_started = false
-				if GameManager.hunt_challenge_selected:
+				if GameManager.hunt_challenge_selected or GameManager.on_boss_door_floor:
 					SignalBus.go_to_failure_hunt_menu.emit()
 				else:
 					SignalBus.return_to_starshire.emit()
-		
+
 func start_timer() -> void:
 	seconds = PlayerStats.player_stats["Expedition Time"]
 	milliseconds = 0.99
 	GameManager.expedition_timer_started = true
 
+func stop_timer() -> void:
+	GameManager.expedition_timer_started = false
 
 func set_time_for_hunt() -> void:
 	seconds = PlayerStats.player_stats["Hunt Time"]
+	milliseconds = 0.99
+
+func set_time_for_door_challenge(time : int) -> void:
+	seconds = time
 	milliseconds = 0.99
 
 func start_hunt_timer() -> void:

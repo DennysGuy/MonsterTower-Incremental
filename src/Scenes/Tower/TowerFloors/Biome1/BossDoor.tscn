@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bkfrkkb4ea2ps" path="res://Assets/Tower/Biom1/BossDoor/BossDoor_Back.png" id="2_cjxbs"]
 [ext_resource type="Texture2D" uid="uid://b5f7upmtycotm" path="res://Assets/Tower/Biom1/BossDoor/BossDoor_LeftDoor.png" id="3_retqv"]
 [ext_resource type="Texture2D" uid="uid://sl27rs6hg5db" path="res://Assets/Tower/Biom1/BossDoor/BossDoor_RightDoor.png" id="4_cgrnm"]
+[ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="5_cgrnm"]
 
 [sub_resource type="Animation" id="Animation_retqv"]
 length = 0.001
@@ -95,6 +96,9 @@ _data = {
 &"open": SubResource("Animation_cgrnm")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_retqv"]
+size = Vector2(91, 62)
+
 [node name="BossDoor" type="Node2D" unique_id=1917660756]
 script = ExtResource("1_svwce")
 
@@ -112,3 +116,23 @@ texture = ExtResource("4_cgrnm")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1157427181]
 libraries/ = SubResource("AnimationLibrary_uyco3")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=668573353]
+position = Vector2(0, -11)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=729486936]
+position = Vector2(2.5, -21)
+shape = SubResource("RectangleShape2D_retqv")
+
+[node name="OpenDoorNotice" type="Label" parent="." unique_id=253724422]
+offset_left = -89.0
+offset_top = 8.0
+offset_right = 92.0
+offset_bottom = 24.0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("5_cgrnm")
+text = "Press 'E' to Enter"
+horizontal_alignment = 1
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

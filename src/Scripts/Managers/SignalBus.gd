@@ -122,3 +122,9 @@ signal update_banner_info(tower_entrance_data : TowerEntranceData)
 signal flash_screen
 @warning_ignore("unused_signal")
 signal unlock_boss_door
+@warning_ignore("unused_signal")
+signal start_boss_door_challenge_scene
+@warning_ignore("unused_signal")
+signal increment_keys_delivered_tracker
+@warning_ignore("unused_signal")
+signal start_enemy_spawn

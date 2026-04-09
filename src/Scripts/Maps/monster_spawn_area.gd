@@ -26,9 +26,8 @@ var spawn_count : int
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	SignalBus.spawn_enemies.connect(_spawn)
-	if !GameManager.hunt_challenge_selected:
-		respawn_timer.wait_time = respawn_wait_time
-		respawn_timer.start()
+	SignalBus.start_enemy_spawn.connect(start_enemy_spawn)
+
 		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -103,6 +102,10 @@ func respawn_monsters() -> void:
 		monster.drop_scene = drop_scene
 		monster.global_position = world_pos
 		monster_spawn_list.add_child(monster)
+
+func start_enemy_spawn() -> void:
+	respawn_timer.wait_time = respawn_wait_time
+	respawn_timer.start()
 
 func _on_respawn_timer_timeout() -> void:
 	if monster_spawn_list.get_children().size() < max_monsters:

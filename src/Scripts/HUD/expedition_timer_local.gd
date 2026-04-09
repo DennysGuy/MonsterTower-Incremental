@@ -20,5 +20,8 @@ func update_timer_label() -> void:
 	else:
 		timer_label.text = "[font_size=30]%s[/font_size]" % [int(ExpeditionTimer.seconds)]
 
+func load_timer_label() -> void:
+	timer_label.text = "[font_size=30]%s[/font_size]" % [int(ExpeditionTimer.seconds)]
+
 func show_stop_watch() -> void:
 	stop_watch_texture.show()

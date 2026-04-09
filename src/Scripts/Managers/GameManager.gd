@@ -17,6 +17,8 @@ var player_can_attack : bool = true
 var auto_pick_up_enabled : bool = false
 var can_issue_abilities : bool = true
 var event_speed_mod : float = 1.0
+var boss_door_challenge_active : bool = false
+var on_boss_door_floor : bool = false
 enum NOTIFICATION_TYPE {CRAFTING, COOKING, SMELTING, AP, QUEST}
 
 # Called when the node enters the scene tree for the first time.

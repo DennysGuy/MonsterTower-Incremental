@@ -81,6 +81,7 @@ func _ready() -> void:
 			camera.player = player
 		
 		if map_type == MAP_TYPE.CHECKPOINT_FLOOR:	
+			
 			hud.expedition_timer.show_stop_watch()
 			if !GameManager.hunt_challenge_selected:
 				if tower_entrance_data.hunt_challenge_completed:
@@ -175,7 +176,7 @@ func go_to_starshire() -> void:
 	player.damageable = false
 	GameManager.hunt_challenge_selected = false
 	GameManager.expedition_timer_started = false
-	
+	GameManager.event_speed_mod = 1.0
 	var tree := get_tree()
 	if tree == null:
 		return

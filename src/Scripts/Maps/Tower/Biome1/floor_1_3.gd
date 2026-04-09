@@ -9,6 +9,7 @@ func _ready() -> void:
 	super()
 	hud.animation_player.play("CloseIn")
 	#checkpoint_campfire.play("default")
+	SignalBus.start_enemy_spawn.emit()
 	SignalBus.spawn_enemies.emit()
 	
 	if ore_rock_markers and !GameManager.hunt_challenge_selected:

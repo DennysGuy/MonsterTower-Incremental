@@ -28,15 +28,10 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 		notice.hide()
 
 
-func _on_enable_zone_body_entered(body: Node2D) -> void:
-	if body is BossDoorKey and !body.can_pick_up:
-		print("BOOLNANY!")
-		set_lock_filled()
-		body.queue_free()
-
 
 func _on_enable_zone_area_entered(area: Area2D) -> void:
 	var parent = area.get_parent() 
 	if parent is BossDoorKey and !parent.can_pick_up:
 		set_lock_filled()
+		SignalBus.increment_keys_delivered_tracker.emit()
 		parent.queue_free()

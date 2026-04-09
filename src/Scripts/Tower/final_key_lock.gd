@@ -33,6 +33,9 @@ func _on_enable_zone_area_entered(area: Area2D) -> void:
 	var parent = area.get_parent() 
 	if parent is BossDoorKey and !parent.can_pick_up:
 		set_lock_filled()
+		ExpeditionTimer.stop_timer()
+		GameManager.boss_door_challenge_active = false
+		MusicPlayer.stop_player()
 		parent.queue_free()
 		SignalBus.shake_camera.emit(3.0)
 		await get_tree().create_timer(3.0).timeout

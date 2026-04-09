@@ -5,6 +5,8 @@ func _ready() -> void:
 	super()
 	hud.animation_player.play("CloseIn")
 	#checkpoint_campfire.play("default")
+	
+
 	SignalBus.spawn_enemies.emit()
 	
 	if ore_rock_markers and !GameManager.hunt_challenge_selected:
@@ -38,6 +40,8 @@ func _ready() -> void:
 		await get_tree().create_timer(4.0).timeout
 		player.damageable = true
 		GameManager.player_can_move = true
+	else:
+		SignalBus.start_enemy_spawn.emit()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

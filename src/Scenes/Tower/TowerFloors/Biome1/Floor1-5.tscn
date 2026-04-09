@@ -54,7 +54,7 @@ size = Vector2(208, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4qnya"]
 size = Vector2(368, 20)
 
-[node name="Floor1-6" type="Node2D" unique_id=1707445138 node_paths=PackedStringArray("exit_elevator", "camera", "hud", "ore_rock_markers", "gem_stone_chest_markers", "campfire_list", "sfx_player", "ambience_player")]
+[node name="Floor1-5" type="Node2D" unique_id=1707445138 node_paths=PackedStringArray("exit_elevator", "camera", "hud", "ore_rock_markers", "gem_stone_chest_markers", "campfire_list", "sfx_player", "ambience_player")]
 script = ExtResource("1_cd2eo")
 map_name = "Floor 1-5"
 map_id = 5
