@@ -177,6 +177,7 @@ func go_to_starshire() -> void:
 	GameManager.hunt_challenge_selected = false
 	GameManager.expedition_timer_started = false
 	GameManager.event_speed_mod = 1.0
+	player.held_key = null
 	var tree := get_tree()
 	if tree == null:
 		return

@@ -54,22 +54,24 @@ func attack_enemies(enemies_in_hitbox : Array, enemies_hit : int = 1, number_of_
 			var damage = int(incoming_damage * (1.0 - defense))
 
 			damage = max(damage, 1)
+			var label_position : int = 40
 			while i < attack_reps:
 				#enemy.sfx_player.play()
-				attack_enemy(player, enemy, damage, is_crit, 0, is_warrior)
+				attack_enemy(player, enemy, damage, is_crit, 0, is_warrior, label_position)
 
 				i += 1
-				await player.get_tree().create_timer(0.1).timeout
+				label_position += 15
+				await player.get_tree().create_timer(0.12).timeout
 			
 			if is_instance_valid(enemy) and enemy.health <= 0:
 				enemies_in_hitbox.erase(enemy)
 
-func attack_enemy(player : Player, enemy : Enemy, incoming_damage : int, is_crit : bool, hit_freeze : float = 0.02, is_warrior : bool = false) -> void:
+func attack_enemy(player : Player, enemy : Enemy, incoming_damage : int, is_crit : bool, hit_freeze : float = 0.02, is_warrior : bool = false, label_position : int = 40) -> void:
 	SignalBus.shake_camera.emit(0.5)
 	HitStopManager.freeze(hit_freeze, 0.1, 0.0, 0.03)
 	if is_warrior:
 		enemy.increment_break_count()
-	enemy.apply_damage(incoming_damage, is_crit)
+	enemy.apply_damage(incoming_damage, is_crit, label_position)
 
 		#might need to break here so we don't collide with the function below
 

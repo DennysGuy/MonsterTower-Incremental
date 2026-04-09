@@ -15,7 +15,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	position.y -= 0.2
 	var tween : Tween = get_tree().create_tween()	
-	tween.tween_property(self, "modulate:a",0.0,0.3)
+	tween.tween_property(self, "modulate:a",0.0,1.0)
 
 func set_crit_bg() -> void:
 	texture_rect.texture = CRIT_DAMAGE_LABEL_BG

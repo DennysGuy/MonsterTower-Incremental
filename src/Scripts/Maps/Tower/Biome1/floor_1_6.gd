@@ -98,10 +98,11 @@ func start_challenge() -> void:
 	await get_tree().create_timer(1.0).timeout
 	ExpeditionTimer.set_time_for_door_challenge(120)
 	hud.expedition_timer.load_timer_label()
+	MusicPlayer.play_song(TEST_DUNGEON_CHALLENGE_THEME)
 	SignalBus.issue_big_notification.emit("Ready?!")
 	await get_tree().create_timer(2.0).timeout
 	SignalBus.issue_big_notification.emit("Go!")
-	MusicPlayer.play_song(TEST_DUNGEON_CHALLENGE_THEME)
+	
 	GameManager.player_can_move = true
 	ExpeditionTimer.start_hunt_timer()
 	await get_tree().create_timer(2.0).timeout

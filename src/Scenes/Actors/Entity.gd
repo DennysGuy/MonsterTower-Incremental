@@ -38,12 +38,12 @@ func _physics_process(delta: float) -> void:
 func _process(delta: float) -> void:
 	state_machine.process_frame(delta)
 
-func apply_damage(incoming_damage : int, is_crit : bool):
+func apply_damage(incoming_damage : int, is_crit : bool, label_position : int = 40):
 	var damage = health_component.apply_damage(incoming_damage, is_crit)
 	var damage_label : DamageLabel = preload("uid://dkchs27qqogyy").instantiate()
 	if is_crit:
 		damage_label.set_crit_bg()
-	damage_label.global_position.y = global_position.y-40
+	damage_label.global_position.y = global_position.y-label_position
 	damage_label.global_position.x = global_position.x
 	damage_label.label.text = damage
 	if self is Enemy:
