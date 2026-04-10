@@ -33,8 +33,10 @@ const KNOCKBACK_FORCE : int = 300
 	"Accuracy" : 0.6,
 	"Max Health" : 60,
 	"Max MP": 50,
+	"HP Recover": 50,
 	"Current Health":60,
 	"Current MP": 50,
+	"MP Recoveer" : 75,
 	"Equipped Sword": 0,
 	"Equipped Pickaxe": 0,
 	"Overlapping Hits" : 1.0,
@@ -151,7 +153,9 @@ func equip_ability(player_class : String, ability_type : String) -> void:
 	"Arial Slash" : false,
 	"Dash Attack": false,
 	"Double Jump" : false,
-	"Gem Stone Station": false
+	"Gem Stone Station": false,
+	"HP Chalice" : false,
+	"MP Chalice" : false
 }
 
 @onready var check_points_unlocked : Dictionary = {

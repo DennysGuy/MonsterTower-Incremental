@@ -491,10 +491,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -73.5
-offset_top = -22.0
-offset_right = 9.5
-offset_bottom = -6.0
+offset_left = -170.0
+offset_top = -35.0
+offset_right = -87.0
+offset_bottom = -19.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -510,9 +510,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -42.5
-offset_top = -16.0
-offset_right = 42.5
+offset_left = 84.0
+offset_top = -35.0
+offset_right = 169.0
+offset_bottom = -19.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -769,10 +770,8 @@ Open Bag!"
 
 [node name="QuestHub" parent="PlayerHUD" unique_id=1129499445 instance=ExtResource("14_xxan5")]
 layout_mode = 1
-offset_left = -1282.0
-offset_top = -438.0
-offset_right = -1150.0
-offset_bottom = -209.0
+offset_left = -2.0
+offset_right = 130.0
 
 [node name="RoomInfoBanner" parent="PlayerHUD" unique_id=1196855950 instance=ExtResource("16_fnmb5")]
 layout_mode = 1
@@ -784,10 +783,10 @@ offset_bottom = -85.0
 [node name="Bag" parent="PlayerHUD" unique_id=668700631 instance=ExtResource("6_g1bs5")]
 z_index = 4096
 layout_mode = 1
-offset_left = -775.0
-offset_top = -790.0
-offset_right = -279.0
-offset_bottom = -563.0
+offset_left = -135.0
+offset_top = -430.0
+offset_right = 361.0
+offset_bottom = -203.00003
 
 [node name="AdvanceClassNotice" type="RichTextLabel" parent="PlayerHUD" unique_id=848029312]
 visible = false
@@ -822,7 +821,6 @@ theme_override_fonts/font = ExtResource("5_nt012")
 horizontal_alignment = 1
 
 [node name="TopBlackBar" type="ColorRect" parent="PlayerHUD" unique_id=877174551]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -835,13 +833,12 @@ mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="BotBlackBar" type="ColorRect" parent="PlayerHUD" unique_id=1251153564]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 175.0
-offset_bottom = 175.00024
+offset_bottom = 175.00012
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2

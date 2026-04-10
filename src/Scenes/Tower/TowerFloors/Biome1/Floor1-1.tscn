@@ -1075,7 +1075,7 @@ map_theme_song = ExtResource("3_n5ad4")
 hunt_theme_song = ExtResource("4_yalon")
 hunt_victory_theme = ExtResource("5_pkrjl")
 camera = NodePath("PlayerCamera")
-hud = NodePath("CanvasLayer/SubViewportContainer/SubViewportContainer/HUD")
+hud = NodePath("HUD")
 ore_rock_spawn_rate = 0.65
 ore_rock_markers = NodePath("OreRockMarkers")
 gem_stone_chest_markers = NodePath("GemStoneChestMarkers")
@@ -1084,7 +1084,7 @@ path = "uid://bpob51vk7v2cj"
 next_room_path = "res://src/Scenes/Tower/TowerFloors/Biome1/Floor1-2.tscn"
 sfx_player = NodePath("SfxPlayer")
 monster_spawn_node = NodePath("MonsterSpawnNode")
-pause_canvas_layer = NodePath("CanvasLayer/SubViewportContainer/SubViewportContainer/HUD")
+pause_canvas_layer = NodePath("HUD")
 map_type = 2
 kill_quota = 10
 ambience_player = NodePath("AmbiencePlayer")
@@ -1413,19 +1413,7 @@ theme_override_font_sizes/font_size = 10
 text = "Jumping Up Ladders
 Will Speed up traversal"
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=639251466]
-
-[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer" unique_id=346134541]
-offset_right = 1920.0
-offset_bottom = 1080.0
-
-[node name="SubViewportContainer" type="SubViewport" parent="CanvasLayer/SubViewportContainer" unique_id=994777617]
-transparent_bg = true
-handle_input_locally = false
-size = Vector2i(640, 360)
-render_target_update_mode = 4
-
-[node name="HUD" parent="CanvasLayer/SubViewportContainer/SubViewportContainer" unique_id=278431122 instance=ExtResource("4_aah8w")]
+[node name="HUD" parent="." unique_id=278431122 instance=ExtResource("4_aah8w")]
 
 [connection signal="body_entered" from="TowerExitArea" to="." method="_on_tower_exit_area_body_entered"]
 [connection signal="body_exited" from="TowerExitArea" to="." method="_on_tower_exit_area_body_exited"]
