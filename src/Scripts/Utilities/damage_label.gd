@@ -14,9 +14,11 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	position.y -= 0.2
 	var tween : Tween = get_tree().create_tween()	
 	tween.tween_property(self, "modulate:a",0.0,1.0)
+
+func _physics_process(delta: float) -> void:
+	position.y -= 0.5
 
 func set_crit_bg() -> void:
 	texture_rect.texture = CRIT_DAMAGE_LABEL_BG

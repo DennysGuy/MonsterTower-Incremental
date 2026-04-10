@@ -44,7 +44,7 @@ func _on_select_button_button_up() -> void:
 	SignalBus.update_player_uniform.emit("Idle")
 
 	SignalBus.set_icons.emit()
-	SignalBus.play_warrior_unlock_animation.emit()
+	#SignalBus.play_warrior_unlock_animation.emit()
 	
 	GameManager.can_pause_game = true
 	GameManager.player_can_move = true

@@ -50,6 +50,7 @@ func _ready() -> void:
 	SignalBus.spawn_tower_map.connect(spawn_tower_entrance_map)
 	SignalBus.play_warrior_unlock_animation.connect(warrior_class_unlocked_notice)
 	TechTreeManager.unlock_station.connect(unlock_station)
+	SignalBus.spawn_warrior_tech_tree.connect(spawn_warrior_tech_tree)
 	#SignalBus.show_ap_notice.connect(show_ap_notice)
 
 
