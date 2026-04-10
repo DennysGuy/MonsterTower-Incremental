@@ -13,6 +13,7 @@ var in_check_point_area : bool = false
 @onready var diamond_key_position: Marker2D = $DiamondKeyPosition
 @onready var card_key_position: Marker2D = $CardKeyPosition
 @onready var final_key_position: Marker2D = $FinalKeyPosition
+@onready var activation_switch_position: Marker2D = $ActivationSwitchPosition
 
 @onready var card_key_alter: BossKeyAlter = $CardKeyAlter
 @onready var diamond_key_alter: BossKeyAlter = $DiamondKeyAlter
@@ -24,18 +25,30 @@ const TEST_DUNGEON_CHALLENGE_THEME = preload("uid://bmdcmdm835j2s")
 var keys_delivered : int = 0
 @onready var enter_door_notice: Label = $EnterDoorNotice
 
+@onready var activation_switch: ChallengeActivationSwitch = $ActivationSwitch
+const CRAFTING_NOTIFICATION = preload("uid://wyjbs57smen4")
+const DENIED = preload("uid://672acnsycbfo")
+
+var lever_order : Array[String] = ["Yellow", "Green", "Red", "Blue"]
+var current_set_order : Array[String] = []
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super()
 	hud.animation_player.play("CloseIn")
 	#checkpoint_campfire.play("default")
-	
+	tower_entrance_data.activation_switch_unlocked = SaveManager.current_save_game.tower_entrance_data["Floor 1-6"]["Activation Switch Unlocked"]
 	MusicPlayer.stop_player()
 	SignalBus.update_player_health.emit(player.health)
 	SignalBus.update_player_mp.emit()
 	SignalBus.unlock_boss_door.connect(unlock_door)
 	SignalBus.start_boss_door_challenge_scene.connect(start_challenge)
 	SignalBus.increment_keys_delivered_tracker.connect(increment_key_tracker)
+	SignalBus.send_lever_color_name.connect(populate_current_order_list)
+	
+	if tower_entrance_data.activation_switch_unlocked:
+		SignalBus.set_puzzle_levers_on.emit()
+		if !tower_entrance_data.hunt_challenge_completed:
+			activation_switch.show()
 	
 	if tower_entrance_data.hunt_challenge_completed:
 		destroy_door_locks()
@@ -108,6 +121,23 @@ func start_challenge() -> void:
 	await get_tree().create_timer(2.0).timeout
 	SignalBus.hide_big_notification.emit()
 
+func populate_current_order_list(color_name : String) -> void:
+	current_set_order.append(color_name)
+	
+	if current_set_order.size() == lever_order.size():
+		check_current_set_order()
+
+
+func check_current_set_order() -> void:
+	
+	await get_tree().create_timer(1.0).timeout
+	
+	if current_set_order == lever_order:
+		show_activation_lever()
+	else:
+		current_set_order.clear()
+		sfx_player.play_sfx(DENIED)
+		SignalBus.reset_levers.emit()
 
 func increment_key_tracker() -> void:
 	keys_delivered += 1
@@ -125,6 +155,22 @@ func show_final_key_location() -> void:
 	await get_tree().create_timer(2.0).timeout
 	final_key_alter.unveil_alter()
 	await get_tree().create_timer(1.0).timeout
+	camera.player = player
+	GameManager.player_can_move = true
+
+func show_activation_lever() -> void:
+	SaveManager.current_save_game.tower_entrance_data["Floor 1-6"]["Activation Switch Unlocked"] = true
+	SaveManager.save_game()
+	
+	GameManager.player_can_move = false
+	player.send_to_idle_state()
+	player.velocity = Vector2.ZERO
+	camera.player = null
+	camera.position = activation_switch_position.position
+	await get_tree().create_timer(2.0).timeout
+	sfx_player.play_sfx(CRAFTING_NOTIFICATION)
+	activation_switch.show()
+	await get_tree().create_timer(2.0).timeout
 	camera.player = player
 	GameManager.player_can_move = true
 

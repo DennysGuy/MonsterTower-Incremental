@@ -26,6 +26,11 @@
 [ext_resource type="PackedScene" uid="uid://ddv4xmjlbn6hr" path="res://src/Scenes/Actors/Enemies/MossyDungeon/BeetleKnight/BeetleKnightLVL2.tscn" id="24_cfkx2"]
 [ext_resource type="PackedScene" uid="uid://ciharsnygfnep" path="res://src/Scenes/Actors/Enemies/GoblinThief/GoblinThief.tscn" id="25_1t36r"]
 [ext_resource type="PackedScene" uid="uid://b3wvucocxncuy" path="res://src/Scenes/Actors/Enemies/OrcWarlord/OrcWarlord.tscn" id="26_1t36r"]
+[ext_resource type="Texture2D" uid="uid://l8afj5v08g5g" path="res://Assets/Tower/Biom1/BossDoor/YellowPoster.png" id="27_yhu3b"]
+[ext_resource type="Texture2D" uid="uid://v6b7byc7b1i1" path="res://Assets/Tower/Biom1/BossDoor/GreenPoster.png" id="28_dwfat"]
+[ext_resource type="Texture2D" uid="uid://c1b6na56clubn" path="res://Assets/Tower/Biom1/BossDoor/RedPoster.png" id="29_hcsp7"]
+[ext_resource type="Texture2D" uid="uid://bfyqtdjv7dm5o" path="res://Assets/Tower/Biom1/BossDoor/BluePoster.png" id="30_56i74"]
+[ext_resource type="PackedScene" uid="uid://4ww00bxiixwu" path="res://src/Scenes/Tower/TowerFloors/Biome1/PuzzleLever.tscn" id="31_dwfat"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rao3c"]
 size = Vector2(20, 208)
@@ -355,6 +360,7 @@ key_type = 1
 spawn_parent = NodePath("..")
 
 [node name="ActivationSwitch" parent="." unique_id=2007323592 instance=ExtResource("21_wd43y")]
+visible = false
 position = Vector2(457, 2608)
 
 [node name="DiamondKeyPosition" type="Marker2D" parent="." unique_id=333638669]
@@ -366,8 +372,31 @@ position = Vector2(307, 1602)
 [node name="FinalKeyPosition" type="Marker2D" parent="." unique_id=196479944]
 position = Vector2(307, 2294)
 
+[node name="ActivationSwitchPosition" type="Marker2D" parent="." unique_id=533500570]
+position = Vector2(307, 2534)
+
 [node name="TopPosition" type="Marker2D" parent="." unique_id=1129777935]
 position = Vector2(307, 927)
+
+[node name="YellowPoster" type="Sprite2D" parent="." unique_id=520828953]
+modulate = Color(0.5649617, 0.5649617, 0.5649615, 1)
+position = Vector2(243, 1959)
+texture = ExtResource("27_yhu3b")
+
+[node name="GreenPoster" type="Sprite2D" parent="." unique_id=1074314267]
+modulate = Color(0.5649617, 0.5649617, 0.5649615, 1)
+position = Vector2(317, 1763)
+texture = ExtResource("28_dwfat")
+
+[node name="RedPoster" type="Sprite2D" parent="." unique_id=819039720]
+modulate = Color(0.5649617, 0.5649617, 0.5649615, 1)
+position = Vector2(231, 1539)
+texture = ExtResource("29_hcsp7")
+
+[node name="BluePoster" type="Sprite2D" parent="." unique_id=1155859213]
+modulate = Color(0.5649617, 0.5649617, 0.5649615, 1)
+position = Vector2(327, 1326)
+texture = ExtResource("30_56i74")
 
 [node name="MonsterSpawnArea" parent="." unique_id=338647858 node_paths=PackedStringArray("drop_scene", "area_collision_shape") instance=ExtResource("22_wlrsw")]
 position = Vector2(307, 2175)
@@ -507,3 +536,18 @@ area_collision_shape = NodePath("CollisionShape2D")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MonsterSpawnArea8" unique_id=1878179832]
 position = Vector2(-2, 0)
 shape = SubResource("RectangleShape2D_dviee")
+
+[node name="PuzzleLever" parent="." unique_id=447405731 instance=ExtResource("31_dwfat")]
+position = Vector2(389, 1042)
+
+[node name="PuzzleLever2" parent="." unique_id=316859074 instance=ExtResource("31_dwfat")]
+position = Vector2(227, 1042)
+switch_color = 2
+
+[node name="PuzzleLever3" parent="." unique_id=190894188 instance=ExtResource("31_dwfat")]
+position = Vector2(465, 1090)
+switch_color = 3
+
+[node name="PuzzleLever4" parent="." unique_id=366938466 instance=ExtResource("31_dwfat")]
+position = Vector2(165, 1090)
+switch_color = 1

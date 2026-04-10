@@ -101,7 +101,8 @@ TODO: We will add saves for classes as well
 		"Number of Spawn Locations" : 0,
 		"Campfires Reached": 0,
 		"Hunt Challenge Unlocked": false,
-		"Hunt Challenge Completed": false
+		"Hunt Challenge Completed": false,
+		"Activation Switch Unlocked": false,
 	},
 	
 }

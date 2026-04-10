@@ -128,3 +128,12 @@ signal start_boss_door_challenge_scene
 signal increment_keys_delivered_tracker
 @warning_ignore("unused_signal")
 signal start_enemy_spawn
+
+@warning_ignore("unused_signal")
+signal send_lever_color_name(color_name : String)
+@warning_ignore("unused_signal")
+signal reset_levers
+@warning_ignore("unused_signal")
+signal set_puzzle_levers_on
+@warning_ignore("unused_signal")
+signal show_challenge_activation_switch

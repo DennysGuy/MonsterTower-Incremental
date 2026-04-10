@@ -16,7 +16,7 @@ func enter() -> void:
 	parent.disable_hit_box()
 	parent.timer.wait_time = wait_time
 	parent.timer.start()
-	parent.sfx_player.play_sfx(impacts.pick_random())
+	#parent.sfx_player.play_sfx(impacts.pick_random())
 
 func exit() -> void:
 	parent.enable_hurt_box()

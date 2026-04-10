@@ -47,8 +47,14 @@ func update_banner_info(tower_entrance_data : TowerEntranceData) -> void:
 		tower_entrance_data.FLOOR_TYPE.BOSS_DOOR:
 			room_type_label.text = "Boss Door Map"
 			room_info_banner.texture = BOSS_DOOR_ROOM_BANNER
-			#Will probably change this to keys once I get there
-			tracker_label.text = "Campfires Discovered: %s/%s" % [tower_entrance_data.camp_fires_reached, tower_entrance_data.total_camp_fires]
+			if !tower_entrance_data.activation_switch_unlocked:
+				tracker_label.text = "Find the door activation switch!"
+			elif tower_entrance_data.activation_switch_unlocked and !tower_entrance_data.hunt_challenge_completed:
+				tracker_label.text = "Beat the Challenge and Unlock the Boss Door."
+			elif tower_entrance_data.activation_switch_unlocked and !tower_entrance_data.hunt_challenge_completed:
+				tracker_label.text = "Enter the Door to the Boss lair."
+				
+			
 		tower_entrance_data.FLOOR_TYPE.BOSS_DOOR:
 			room_type_label.text = "Boss Map"
 			room_info_banner.texture = BOSS_ROOM_BANNER

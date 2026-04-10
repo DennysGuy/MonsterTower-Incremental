@@ -125,6 +125,7 @@ position = Vector2(2.5, -21)
 shape = SubResource("RectangleShape2D_retqv")
 
 [node name="OpenDoorNotice" type="Label" parent="." unique_id=253724422]
+visible = false
 offset_left = -89.0
 offset_top = 8.0
 offset_right = 92.0

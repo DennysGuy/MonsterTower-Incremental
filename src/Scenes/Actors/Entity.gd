@@ -24,6 +24,12 @@ var is_dead : bool = false
 var is_stunned : bool = false
 var prev_dir : int = 1
 
+const GENERIC_IMPACT_1 = preload("uid://ffdv7g8jgp4y")
+const GENERIC_IMPACT_2 = preload("uid://d1bxfv1bv8md8")
+const GENERIC_IMPACT_3 = preload("uid://c3puk7hyuliti")
+
+@onready var impacts : Array[AudioStream] = [GENERIC_IMPACT_1, GENERIC_IMPACT_2, GENERIC_IMPACT_3]
+
 var health : float
 
 func _ready() -> void:
@@ -39,6 +45,7 @@ func _process(delta: float) -> void:
 	state_machine.process_frame(delta)
 
 func apply_damage(incoming_damage : int, is_crit : bool, label_position : int = 40):
+	play_sfx(impacts.pick_random())
 	var damage = health_component.apply_damage(incoming_damage, is_crit)
 	var damage_label : DamageLabel = preload("uid://dkchs27qqogyy").instantiate()
 	if is_crit:
@@ -47,6 +54,7 @@ func apply_damage(incoming_damage : int, is_crit : bool, label_position : int = 
 	damage_label.global_position.x = global_position.x
 	damage_label.label.text = damage
 	if self is Enemy:
+	
 		self.drop_scene.add_child(damage_label)
 	else:
 		get_parent().add_child(damage_label)

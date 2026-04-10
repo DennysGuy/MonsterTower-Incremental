@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://4ww00bxiixwu"]
+
+[ext_resource type="Script" uid="uid://r2b5htppf1r3" path="res://src/Scripts/Tower/puzzle_lever.gd" id="1_xebha"]
+[ext_resource type="Texture2D" uid="uid://c7ps2rrrm7rja" path="res://Assets/Tower/Biom1/BossDoor/YellowLever_Off.png" id="1_ycgfr"]
+[ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="3_w7goj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xebha"]
+size = Vector2(56, 35)
+
+[node name="PuzzleLever" type="Node2D" unique_id=447405731]
+script = ExtResource("1_xebha")
+
+[node name="Graphic" type="Sprite2D" parent="." unique_id=78766474]
+position = Vector2(0, -26)
+texture = ExtResource("1_ycgfr")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=629698268]
+position = Vector2(0, -10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=254455783]
+position = Vector2(-4, -7.5)
+shape = SubResource("RectangleShape2D_xebha")
+
+[node name="Label" type="Label" parent="." unique_id=474956574]
+visible = false
+offset_left = -66.0
+offset_top = 3.0
+offset_right = 67.0
+offset_bottom = 19.0
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_w7goj")
+text = "Press 'E' to Activate"
+horizontal_alignment = 1
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
