@@ -32,6 +32,7 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 func _on_enable_zone_area_entered(area: Area2D) -> void:
 	var parent = area.get_parent() 
 	if parent is BossDoorKey and !parent.can_pick_up:
+		play_sfx(MOUNT_ABILITY)
 		set_lock_filled()
 		SignalBus.increment_keys_delivered_tracker.emit()
 		parent.queue_free()

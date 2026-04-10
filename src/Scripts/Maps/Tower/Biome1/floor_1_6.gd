@@ -25,10 +25,13 @@ const TEST_DUNGEON_CHALLENGE_THEME = preload("uid://bmdcmdm835j2s")
 var keys_delivered : int = 0
 @onready var enter_door_notice: Label = $EnterDoorNotice
 
+
 @onready var activation_switch: ChallengeActivationSwitch = $ActivationSwitch
 const CRAFTING_NOTIFICATION = preload("uid://wyjbs57smen4")
 const DENIED = preload("uid://672acnsycbfo")
-
+const RETRO_MAGIC_11 = preload("uid://cu0pel7wloamp")
+const RETRO_SWOOOSH_16 = preload("uid://dtrupd03y6qf7")
+const TEMP_VICTORY_THEME_1 = preload("uid://n4ky26neitxn")
 var lever_order : Array[String] = ["Yellow", "Green", "Red", "Blue"]
 var current_set_order : Array[String] = []
 # Called when the node enters the scene tree for the first time.
@@ -71,13 +74,17 @@ func _on_checkpoint_area_body_exited(body: Node2D) -> void:
 
 
 func unlock_door() -> void:
+	play_sfx(TEMP_VICTORY_THEME_1)
 	player.send_to_idle_state()
 	GameManager.player_can_move = false
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(3.0).timeout
+	play_sfx(RETRO_SWOOOSH_16)
 	diamond_key_lock.queue_free()
 	await get_tree().create_timer(0.5).timeout
+	play_sfx(RETRO_SWOOOSH_16)
 	card_key_lock.queue_free()
 	await get_tree().create_timer(0.5).timeout
+	play_sfx(RETRO_SWOOOSH_16)
 	final_key_lock.queue_free()
 	await get_tree().create_timer(2.0).timeout
 	boss_door.play_door_open_animation()
@@ -95,14 +102,17 @@ func start_challenge() -> void:
 	camera.player = null
 	camera.position = diamond_key_position.position
 	await get_tree().create_timer(1.0).timeout
+	play_sfx(RETRO_MAGIC_11)
 	diamond_key_alter.unveil_alter()
 	await get_tree().create_timer(1.0).timeout
 	camera.position = card_key_position.position
 	await get_tree().create_timer(1.0).timeout
+	play_sfx(RETRO_MAGIC_11)
 	card_key_alter.unveil_alter()
 	await get_tree().create_timer(1.0).timeout
 	camera.position = top_position.position
 	await get_tree().create_timer(1.0).timeout
+	MusicPlayer.play_song(TEST_DUNGEON_CHALLENGE_THEME)
 	SignalBus.issue_big_notification.emit("Unlock the Door!")
 	SignalBus.spawn_enemies.emit()
 	SignalBus.start_enemy_spawn.emit()
@@ -111,7 +121,6 @@ func start_challenge() -> void:
 	await get_tree().create_timer(1.0).timeout
 	ExpeditionTimer.set_time_for_door_challenge(120)
 	hud.expedition_timer.load_timer_label()
-	MusicPlayer.play_song(TEST_DUNGEON_CHALLENGE_THEME)
 	SignalBus.issue_big_notification.emit("Ready?!")
 	await get_tree().create_timer(2.0).timeout
 	SignalBus.issue_big_notification.emit("Go!")
@@ -133,6 +142,7 @@ func check_current_set_order() -> void:
 	await get_tree().create_timer(1.0).timeout
 	
 	if current_set_order == lever_order:
+		play_sfx(CRAFTING_NOTIFICATION)
 		show_activation_lever()
 	else:
 		current_set_order.clear()
@@ -153,12 +163,14 @@ func show_final_key_location() -> void:
 	await get_tree().create_timer(2.0).timeout
 	camera.position = final_key_position.position
 	await get_tree().create_timer(2.0).timeout
+	play_sfx(RETRO_MAGIC_11)
 	final_key_alter.unveil_alter()
 	await get_tree().create_timer(1.0).timeout
 	camera.player = player
 	GameManager.player_can_move = true
 
 func show_activation_lever() -> void:
+	
 	SaveManager.current_save_game.tower_entrance_data["Floor 1-6"]["Activation Switch Unlocked"] = true
 	SaveManager.save_game()
 	
@@ -168,7 +180,7 @@ func show_activation_lever() -> void:
 	camera.player = null
 	camera.position = activation_switch_position.position
 	await get_tree().create_timer(2.0).timeout
-	sfx_player.play_sfx(CRAFTING_NOTIFICATION)
+	play_sfx(RETRO_MAGIC_11)
 	activation_switch.show()
 	await get_tree().create_timer(2.0).timeout
 	camera.player = player

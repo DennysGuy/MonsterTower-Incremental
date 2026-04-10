@@ -11,6 +11,9 @@ var key_inserted : bool = false
 @export var notice: Label
 @export var stored_key : BossDoorKey
 
+const MOUNT_ABILITY = preload("uid://bi0i27cx48wbe")
+const RETRO_WEIRD_07 = preload("uid://d1yeatmrclw4w")
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	set_lock_unfilled()
@@ -29,3 +32,13 @@ func set_lock_filled() -> void:
 
 func set_lock_unfilled() -> void:
 	graphic.texture = unfilled_graphic
+
+
+func play_sfx(sound: AudioStream, volume: float = 0.0):
+	var player := AudioStreamPlayer.new()
+	player.stream = sound
+	player.volume_db = volume
+	player.bus = &"SFX"
+	add_child(player)
+	player.play()
+	player.finished.connect(player.queue_free)

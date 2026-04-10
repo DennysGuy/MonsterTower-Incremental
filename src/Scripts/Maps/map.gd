@@ -177,6 +177,7 @@ func go_to_starshire() -> void:
 	GameManager.hunt_challenge_selected = false
 	GameManager.expedition_timer_started = false
 	GameManager.boss_door_challenge_active = false
+	GameManager.can_issue_abilities = true
 	GameManager.event_speed_mod = 1.0
 	player.held_key = null
 	var tree := get_tree()
@@ -187,7 +188,10 @@ func go_to_starshire() -> void:
 	await tree.create_timer(1.0).timeout
 
 	if tree != null:
-		tree.change_scene_to_file("res://src/Scenes/UI/ExpeditionResultsScreen.tscn")
+		if player.is_dead:
+			tree.change_scene_to_file("res://src/Scenes/NewStarshire/NewStarShire.tscn")
+		else:
+			tree.change_scene_to_file("res://src/Scenes/UI/ExpeditionResultsScreen.tscn")
 
 func go_to_victory_menu() -> void:
 	MusicPlayer.stop_player(true)

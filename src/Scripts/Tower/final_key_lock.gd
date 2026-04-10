@@ -32,6 +32,10 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 func _on_enable_zone_area_entered(area: Area2D) -> void:
 	var parent = area.get_parent() 
 	if parent is BossDoorKey and !parent.can_pick_up:
+		play_sfx(MOUNT_ABILITY)
+		await get_tree().process_frame
+		play_sfx(RETRO_WEIRD_07,-4)
+		
 		set_lock_filled()
 		ExpeditionTimer.stop_timer()
 		GameManager.boss_door_challenge_active = false
