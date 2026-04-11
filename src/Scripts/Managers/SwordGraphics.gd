@@ -56,6 +56,20 @@ var sword_textures : Dictionary = {
 		"SwordSoar": preload("uid://j4del2xexl02"),
 		"SwordSlam": preload("uid://c46m5505v4ljd"),
 		"DoubleCleave": preload("uid://5ji20u66hw31")
+	},
+	"Lurker's Rapier" : {
+		"Idle": preload("uid://cm80d7fsbve4o"),
+		"Run": preload("uid://qikfrvmu45kq"),
+		"Jump": preload("uid://csvpukvvdbs1w"),
+		"Fall": preload("uid://7v3t7g3cptkq"),
+		"SwordSwing1": preload("uid://dvs31aa3xa1ve"),
+		"SwordSwing2": preload("uid://dvs31aa3xa1ve"),
+		"SwordSwing3": preload("uid://dvs31aa3xa1ve"),
+		"AirAttack":preload("uid://eowi25qc4fsw"),
+		"Climb": preload("uid://o2ww0tdqcypg"),
+		"SwordSoar": preload("uid://eowi25qc4fsw"),
+		"SwordSlam": preload("uid://h3wsuchgnm5a"),
+		"DoubleCleave": preload("uid://xken7iat8syv")
 	}
 }
 
