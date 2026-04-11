@@ -74,10 +74,12 @@ enum TECH_NODE_TYPE {ABILITY, FACILITY, CLASS_ABILITY}
 	"Crit Damage 4": 0,
 	"Movement 1" : 0,
 	"Movement 2" : 0,
+	"Movement 3" : 0,
 	"Climb Speed 1" : 0,
 	"Climb Speed 2": 0,
 	"Jump Height 1":0,
 	"Jump Height 2":0,
+	"Jump Height 3":0,
 	"Max HP 1":0,
 	"Max HP 2": 0,
 	"Max MP 1":0,
@@ -121,8 +123,9 @@ enum TECH_NODE_TYPE {ABILITY, FACILITY, CLASS_ABILITY}
 	"Tier 1 Gem Chest Rate Up": 0.0,
 	"Tier 1 Gem Drop Rate Up": 0.0,
 	"Vial of the Esoteric":0.0,
-	"Chalice of Welfare":0.0
-	
+	"Chalice of Welfare":0.0,
+	"Chalice Spawn Rate 1":0.0,
+	"Vial Spawn Rate 1": 0.0
 }
 
 @onready var warrior_tech_nodes : Dictionary = {

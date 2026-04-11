@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://colj4ff1w8ij1" path="res://src/Scenes/Tower/OreRock.tscn" id="16_klrm8"]
 [ext_resource type="PackedScene" uid="uid://cspkeb38ottcx" path="res://src/Scenes/Actors/Enemies/MossyDungeon/BeetleKnight/BeetleKnight.tscn" id="18_upuah"]
 [ext_resource type="PackedScene" uid="uid://ddv4xmjlbn6hr" path="res://src/Scenes/Actors/Enemies/MossyDungeon/BeetleKnight/BeetleKnightLVL2.tscn" id="19_l0dm6"]
+[ext_resource type="PackedScene" uid="uid://cm6ttxlrvgkvd" path="res://src/Scenes/Tower/TowerFloors/ChalicePositionMarker.tscn" id="21_h5nvt"]
 [ext_resource type="PackedScene" uid="uid://d150vkltffpjo" path="res://src/Scenes/Tower/TowerFloors/CheckPointCampfire.tscn" id="23_6jqj8"]
 [ext_resource type="PackedScene" uid="uid://bciirg3wxvm7t" path="res://src/Scenes/Actors/Enemies/MossyDungeon/SerpantMimic/SerpantMimic.tscn" id="24_3ad0h"]
 [ext_resource type="PackedScene" uid="uid://c02draaw5wfp1" path="res://src/Scenes/Tower/TowerFloors/Biome1/Floor1-5.tscn" id="24_4qnya"]
@@ -82,7 +83,7 @@ size = Vector2(193, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xkl8j"]
 size = Vector2(347, 20)
 
-[node name="Floor1-4" type="Node2D" unique_id=1707445138 node_paths=PackedStringArray("exit_elevator_marker", "exit_elevator", "camera", "hud", "ore_rock_markers", "gem_stone_chest_markers", "campfire_list", "sfx_player", "monster_spawn_node", "ambience_player")]
+[node name="Floor1-4" type="Node2D" unique_id=1707445138 node_paths=PackedStringArray("exit_elevator_marker", "exit_elevator", "camera", "hud", "ore_rock_markers", "gem_stone_chest_markers", "campfire_list", "hp_replenish_points", "mp_replenish_points", "sfx_player", "monster_spawn_node", "ambience_player")]
 script = ExtResource("1_qpvn6")
 map_name = "Floor 1-4"
 map_id = 4
@@ -98,6 +99,8 @@ ore_rock_spawn_rate = 0.4
 ore_rock_markers = NodePath("OreRockMarkers")
 gem_stone_chest_markers = NodePath("GemStoneMarkers")
 campfire_list = NodePath("CampfireCheckpoints")
+hp_replenish_points = NodePath("HPChalices")
+mp_replenish_points = NodePath("MPVials")
 path = "uid://bcb7mqtk7hdgw"
 sfx_player = NodePath("SfxPlayer")
 monster_spawn_node = NodePath("MonsterSpawnNode")
@@ -197,7 +200,7 @@ chance_to_spawn = 0.4
 spawn_parent = NodePath("../..")
 
 [node name="OreRockMarker4" parent="OreRockMarkers" unique_id=2014919737 node_paths=PackedStringArray("spawn_parent") instance=ExtResource("15_at0vg")]
-position = Vector2(326, 1887)
+position = Vector2(280, 1887)
 ore_rock_resource = ExtResource("16_0c8cp")
 ore_rock = ExtResource("16_klrm8")
 chance_to_spawn = 0.4
@@ -250,15 +253,32 @@ position = Vector2(354, 2497)
 gem_chest_stats = ExtResource("31_xkl8j")
 spawn_parent = NodePath("../..")
 
-[node name="GemStoneMarker3" parent="GemStoneMarkers" unique_id=1834223329 node_paths=PackedStringArray("spawn_parent") instance=ExtResource("30_t1y87")]
-position = Vector2(480, 1104)
-gem_chest_stats = ExtResource("31_xkl8j")
-spawn_parent = NodePath("../..")
-
 [node name="GemStoneMarker4" parent="GemStoneMarkers" unique_id=565548396 node_paths=PackedStringArray("spawn_parent") instance=ExtResource("30_t1y87")]
 position = Vector2(160, 1104)
 gem_chest_stats = ExtResource("31_xkl8j")
 spawn_parent = NodePath("../..")
+
+[node name="HPChalices" type="Node" parent="." unique_id=797623741]
+
+[node name="ReplenishAlterPositionMarker" parent="HPChalices" unique_id=1970294222 instance=ExtResource("21_h5nvt")]
+position = Vector2(338, 1889)
+
+[node name="ReplenishAlterPositionMarker2" parent="HPChalices" unique_id=291930293 instance=ExtResource("21_h5nvt")]
+position = Vector2(448, 2546)
+
+[node name="ReplenishAlterPositionMarker3" parent="HPChalices" unique_id=1546365814 instance=ExtResource("21_h5nvt")]
+position = Vector2(482, 1105)
+
+[node name="MPVials" type="Node" parent="." unique_id=1475851936]
+
+[node name="ReplenishAlterPositionMarker3" parent="MPVials" unique_id=2048301159 instance=ExtResource("21_h5nvt")]
+position = Vector2(240, 2337)
+
+[node name="ReplenishAlterPositionMarker4" parent="MPVials" unique_id=627470661 instance=ExtResource("21_h5nvt")]
+position = Vector2(223, 1569)
+
+[node name="ReplenishAlterPositionMarker5" parent="MPVials" unique_id=430661546 instance=ExtResource("21_h5nvt")]
+position = Vector2(131, 913)
 
 [node name="PrevElevator" parent="." unique_id=974802616 instance=ExtResource("13_aj4kp")]
 position = Vector2(162, 2530)
@@ -302,7 +322,7 @@ position = Vector2(0, -3.5)
 shape = SubResource("RectangleShape2D_o10go")
 
 [node name="Top" type="Marker2D" parent="LadderArea2" unique_id=1631455060]
-position = Vector2(0, -36)
+position = Vector2(0, -34)
 
 [node name="Bottom" type="Marker2D" parent="LadderArea2" unique_id=231712811]
 position = Vector2(0, 56)

@@ -1,9 +1,8 @@
 [gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://blg1x38jfumy1"]
 
 [ext_resource type="Texture2D" uid="uid://h3r8en1sl0ox" path="res://Assets/NodeGraphics/NodeGraphicsV2/DeepPockets2_V2.png" id="1_h6xmf"]
-[ext_resource type="Resource" uid="uid://boeryxspsw8uq" path="res://src/Resources/Dishes/CookedGagootz.tres" id="2_wv2up"]
+[ext_resource type="Resource" uid="uid://dmmblpt46r1fs" path="res://src/Resources/Dishes/PupilCaviar.tres" id="2_h6xmf"]
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="3_13t4n"]
-[ext_resource type="Resource" uid="uid://ctjyflf6qr4g" path="res://src/Resources/Dishes/MossyGoulash.tres" id="3_wv2up"]
 
 [resource]
 script = ExtResource("3_13t4n")
@@ -12,9 +11,7 @@ icon = ExtResource("1_h6xmf")
 description = "Increases Max Inventory Slot Stack by +2"
 currency_required = 600
 materials_required = Array[Dictionary]([{
-ExtResource("2_wv2up"): 2
-}, {
-ExtResource("3_wv2up"): 2
+ExtResource("2_h6xmf"): 2
 }])
 stat_name = "Max Bag Stack"
 upgrade_interval = 2.0

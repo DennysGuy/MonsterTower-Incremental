@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Item" format=3 uid="uid://b4owo1wr47wc"]
 
-[ext_resource type="Script" path="res://src/Scripts/item.gd" id="1_fwrum"]
+[ext_resource type="Script" uid="uid://cu8drgivmhfn" path="res://src/Scripts/item.gd" id="1_fwrum"]
 [ext_resource type="Texture2D" uid="uid://dayaabnolr88p" path="res://Assets/Facilities/CookingStation/WrappedKabab.png" id="2_0bhtw"]
 
 [resource]

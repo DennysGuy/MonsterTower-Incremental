@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://evdy54fep77a"]
+
+[ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_56rjo"]
+[ext_resource type="Resource" uid="uid://carrsm8pqm8fv" path="res://src/Resources/Dishes/LurkerCabeza.tres" id="1_cg2dv"]
+[ext_resource type="Resource" uid="uid://d1pg7dveofnwm" path="res://src/Resources/Dishes/Svio.tres" id="2_5ad7r"]
+
+[resource]
+script = ExtResource("1_56rjo")
+node_name = "Chalice Spawn Rate 1"
+description = "Increases chance for Healing Chalice to spawn 10% for each level."
+max_level = 3
+currency_required = 2500
+materials_required = Array[Dictionary]([{
+ExtResource("1_cg2dv"): 2
+}, {
+ExtResource("2_5ad7r"): 2
+}])
+stat_name = "Chalice Spawn Rate"
+upgrade_interval = 0.1
+prereqs = Array[String](["Chalice of Welfare:1"])
+metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

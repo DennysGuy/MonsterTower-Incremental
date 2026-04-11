@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dcb77acv4gp1n" path="res://Assets/NodeGraphics/NodeGraphicsV2/Refinery_V2.png" id="1_70cap"]
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_bi6dd"]
+[ext_resource type="Resource" uid="uid://boeryxspsw8uq" path="res://src/Resources/Dishes/CookedGagootz.tres" id="2_qpohm"]
 
 [resource]
 script = ExtResource("1_bi6dd")
@@ -9,6 +10,9 @@ node_name = "Refinery Station"
 icon = ExtResource("1_70cap")
 description = "Refinery Station allows you to smelt ore retrieved from rocks inthe tower into craftable materials."
 currency_required = 500
+materials_required = Array[Dictionary]([{
+ExtResource("2_qpohm"): 2
+}])
 node_type = 1
 stat_name = "Refinery Station"
 prereqs = Array[String](["Banking:1"])

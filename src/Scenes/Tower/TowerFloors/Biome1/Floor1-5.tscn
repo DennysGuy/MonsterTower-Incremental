@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://colj4ff1w8ij1" path="res://src/Scenes/Tower/OreRock.tscn" id="16_jijf8"]
 [ext_resource type="Resource" uid="uid://d3ak1ilk1id2y" path="res://src/Resources/GemChests/Tier1GemChest.tres" id="18_lgosx"]
 [ext_resource type="PackedScene" uid="uid://ciharsnygfnep" path="res://src/Scenes/Actors/Enemies/GoblinThief/GoblinThief.tscn" id="19_ekrv2"]
+[ext_resource type="PackedScene" uid="uid://cm6ttxlrvgkvd" path="res://src/Scenes/Tower/TowerFloors/ChalicePositionMarker.tscn" id="19_ogel5"]
 [ext_resource type="PackedScene" uid="uid://b3wvucocxncuy" path="res://src/Scenes/Actors/Enemies/OrcWarlord/OrcWarlord.tscn" id="19_oyee4"]
 [ext_resource type="PackedScene" uid="uid://d150vkltffpjo" path="res://src/Scenes/Tower/TowerFloors/CheckPointCampfire.tscn" id="20_oyee4"]
 [ext_resource type="PackedScene" uid="uid://dd63dgr038myr" path="res://src/Scenes/Tower/TowerFloors/PrevElevator1.tscn" id="21_jq2ab"]
@@ -185,7 +186,7 @@ chance_to_spawn = 0.4
 spawn_parent = NodePath("../..")
 
 [node name="OreRockMarker6" parent="OreRockMarkers" unique_id=146095805 node_paths=PackedStringArray("spawn_parent") instance=ExtResource("14_l7but")]
-position = Vector2(329, 1391)
+position = Vector2(291, 1391)
 ore_rock_resource = ExtResource("15_22mja")
 ore_rock = ExtResource("16_jijf8")
 chance_to_spawn = 0.4
@@ -241,6 +242,28 @@ spawn_parent = NodePath("../..")
 position = Vector2(338, 1088)
 gem_chest_stats = ExtResource("18_lgosx")
 spawn_parent = NodePath("../..")
+
+[node name="HPChalices" type="Node" parent="." unique_id=1494295608]
+
+[node name="ReplenishAlterPositionMarker" parent="HPChalices" unique_id=1970294222 instance=ExtResource("19_ogel5")]
+position = Vector2(433, 1473)
+
+[node name="ReplenishAlterPositionMarker2" parent="HPChalices" unique_id=1673682133 instance=ExtResource("19_ogel5")]
+position = Vector2(194, 1937)
+
+[node name="ReplenishAlterPositionMarker3" parent="HPChalices" unique_id=96870538 instance=ExtResource("19_ogel5")]
+position = Vector2(491, 1249)
+
+[node name="MPVials" type="Node" parent="." unique_id=574930197]
+
+[node name="ReplenishAlterPositionMarker4" parent="MPVials" unique_id=689089154 instance=ExtResource("19_ogel5")]
+position = Vector2(346, 1393)
+
+[node name="ReplenishAlterPositionMarker2" parent="MPVials" unique_id=4047288 instance=ExtResource("19_ogel5")]
+position = Vector2(402, 1793)
+
+[node name="ReplenishAlterPositionMarker3" parent="MPVials" unique_id=970187845 instance=ExtResource("19_ogel5")]
+position = Vector2(194, 2033)
 
 [node name="PrevElevator" parent="." unique_id=974802616 instance=ExtResource("21_jq2ab")]
 position = Vector2(479, 2530)

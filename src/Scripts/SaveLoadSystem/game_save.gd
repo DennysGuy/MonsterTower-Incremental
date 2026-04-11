@@ -63,8 +63,8 @@ TODO: We will add saves for classes as well
 	"Smelting Accuracy Bonus":0.0,
 	"Tier 1 Chest Spawn Rate": 0.1,
 	"Tier 1 Gem Drop Rate":0.3,
-	"Chalice Spawn Rate":0.2,
-	"Vial Spawn Rate": 0.2
+	"Chalice Spawn Rate":0.12,
+	"Vial Spawn Rate": 0.12
 }
 
 #this will be loaded when we enter the tower entrance map or a map in and of itself
@@ -158,6 +158,7 @@ TODO: We will add saves for classes as well
 	"Crit Damage 4": {"Level":0, "Unlocked":false},
 	"Movement 1" : {"Level":0, "Unlocked": false},
 	"Movement 2" : {"Level":0, "Unlocked": false},
+	"Movement 3" : {"Level":0, "Unlocked": false},
 	"Climb Speed 1" : {"Level":0, "Unlocked": false},
 	"Climb Speed 2": {"Level":0, "Unlocked": false},
 	"Jump Height 1": {"Level":0, "Unlocked": false},
@@ -168,6 +169,7 @@ TODO: We will add saves for classes as well
 	"Max MP 2": {"Level":0, "Unlocked": false},
 	"Defense 1": {"Level":0, "Unlocked": false},
 	"Defense 2":{"Level":0, "Unlocked": false},
+	"Defense 3":{"Level":0, "Unlocked": false},
 	"Expedition Time 1": {"Level":0, "Unlocked": false},
 	"Expedition Time 2": {"Level":0, "Unlocked": false},
 	"Monster Cap 1": {"Level":0, "Unlocked": false},
@@ -206,8 +208,9 @@ TODO: We will add saves for classes as well
 	"Tier 1 Gem Chest Rate Up":{"Level":0, "Unlocked": false},
 	"Tier 1 Gem Drop Rate Up":{"Level":0, "Unlocked": false},
 	"Chalice of Welfare":{"Level":0, "Unlocked": false},
-	"Vial of the Esoteric":{"Level":0,"Unlocked": false}
-	
+	"Vial of the Esoteric":{"Level":0,"Unlocked": false},
+	"Chalice Spawn Rate 1": {"Level":0,"Unlocked": false},
+	"Vial Spawn Rate 1": {"Level":0,"Unlocked": false},
 }
 
 @export var equipped_abilities : Dictionary = {

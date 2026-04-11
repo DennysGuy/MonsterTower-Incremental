@@ -34,6 +34,7 @@
 [ext_resource type="Resource" uid="uid://blg1x38jfumy1" path="res://src/Resources/TechTree/TechNodes/DeeperPockets3.tres" id="20_na6l4"]
 [ext_resource type="Resource" uid="uid://ds0j00mlqnf55" path="res://src/Resources/TechTree/TechNodes/Movement1.tres" id="21_dvfnf"]
 [ext_resource type="Resource" uid="uid://xskacmmk7mn4" path="res://src/Resources/TechTree/TechNodes/Bag3.tres" id="21_hx4vl"]
+[ext_resource type="Resource" uid="uid://dnjct1360g838" path="res://src/Resources/TechTree/TechNodes/VialSpawnRate1.tres" id="21_opmd6"]
 [ext_resource type="Resource" uid="uid://b4xw1euerb1ka" path="res://src/Resources/TechTree/TechNodes/JumpHeight1.tres" id="22_7le32"]
 [ext_resource type="Resource" uid="uid://hqgkc8c13u2a" path="res://src/Resources/TechTree/TechNodes/Movement2.tres" id="22_vbmlq"]
 [ext_resource type="Resource" uid="uid://bvqw5l1mpu3ku" path="res://src/Resources/TechTree/TechNodes/ClimbingSpeed1.tres" id="22_yjrj2"]
@@ -46,6 +47,8 @@
 [ext_resource type="Resource" uid="uid://c6cb7c8bqn7ow" path="res://src/Resources/TechTree/TechNodes/RefinerySpeed1.tres" id="30_il84h"]
 [ext_resource type="Resource" uid="uid://licswcd54xsn" path="res://src/Resources/TechTree/TechNodes/RefineryAccuracy1.tres" id="30_yfj5d"]
 [ext_resource type="Resource" uid="uid://ctf4we33chvvs" path="res://src/Resources/TechTree/TechNodes/OreRockDrop1.tres" id="32_pc0xa"]
+[ext_resource type="Resource" uid="uid://b4n8wh8pnsfi8" path="res://src/Resources/TechTree/TechNodes/JumpHeight2.tres" id="33_v367j"]
+[ext_resource type="Resource" uid="uid://ohr0gxoujtw2" path="res://src/Resources/TechTree/TechNodes/Movement3.tres" id="36_755lv"]
 [ext_resource type="Resource" uid="uid://c33bcx7wsq4vk" path="res://src/Resources/TechTree/TechNodes/MaxHP2.tres" id="36_o1bwy"]
 [ext_resource type="Resource" uid="uid://c7i7yba2dc0by" path="res://src/Resources/TechTree/TechNodes/GemStoneStation.tres" id="36_pqlb5"]
 [ext_resource type="Resource" uid="uid://b6b483q551evk" path="res://src/Resources/TechTree/TechNodes/Tier1GemChestsRateIncrease.tres" id="37_34cer"]
@@ -53,6 +56,8 @@
 [ext_resource type="Resource" uid="uid://c03qaydx74usi" path="res://src/Resources/TechTree/TechNodes/Tier1GemDropRateIncrease.tres" id="38_iyves"]
 [ext_resource type="Resource" uid="uid://cmi3owisj2vs7" path="res://src/Resources/TechTree/TechNodes/InvincibilityDuration1.tres" id="39_l65vq"]
 [ext_resource type="Resource" uid="uid://bp52qf07dd217" path="res://src/Resources/TechTree/TechNodes/HPChalice.tres" id="41_31qh5"]
+[ext_resource type="Resource" uid="uid://evdy54fep77a" path="res://src/Resources/TechTree/TechNodes/ChaliceSpawnRate1.tres" id="45_ejbxq"]
+[ext_resource type="Resource" uid="uid://btox3bpn7jbiy" path="res://src/Resources/TechTree/TechNodes/Defense3.tres" id="47_opmd6"]
 
 [node name="TechTree" type="Node2D" unique_id=713882159]
 script = ExtResource("1_1fw0b")
@@ -225,6 +230,16 @@ position = Vector2(-3, 8)
 points = PackedVector2Array(-11, -8, -27, -8)
 width = 3.0
 
+[node name="VialSpawnRate1Node" parent="Nodes" unique_id=1590159738 instance=ExtResource("5_2ltmf")]
+position = Vector2(846, 566)
+tech_node_stats = ExtResource("21_opmd6")
+node_type = 1
+
+[node name="Line2D" type="Line2D" parent="Nodes/VialSpawnRate1Node" unique_id=199605003]
+position = Vector2(-3, 8)
+points = PackedVector2Array(-11, -8, -27, -8)
+width = 3.0
+
 [node name="DeeperPockets1" parent="Nodes" unique_id=1613908811 instance=ExtResource("5_2ltmf")]
 position = Vector2(442, 452)
 tech_node_stats = ExtResource("15_v76mx")
@@ -316,11 +331,21 @@ points = PackedVector2Array(7, 9, 70, 97)
 width = 3.0
 
 [node name="ClimbingSpeed1" parent="Nodes" unique_id=1104995936 instance=ExtResource("5_2ltmf")]
-position = Vector2(560, 185)
+position = Vector2(560, 209)
 tech_node_stats = ExtResource("22_yjrj2")
 
 [node name="Line2D" type="Line2D" parent="Nodes/ClimbingSpeed1" unique_id=1099818887]
-points = PackedVector2Array(-2, 13, -2, 56)
+position = Vector2(1, -20)
+points = PackedVector2Array(-2, 34, -2, 51)
+width = 3.0
+
+[node name="JumpHeight2" parent="Nodes" unique_id=526568048 instance=ExtResource("5_2ltmf")]
+position = Vector2(561, 163)
+tech_node_stats = ExtResource("33_v367j")
+
+[node name="Line2D" type="Line2D" parent="Nodes/JumpHeight2" unique_id=589142953]
+position = Vector2(1, -20)
+points = PackedVector2Array(-2, 34, -2, 52)
 width = 3.0
 
 [node name="MovementSpeed1" parent="Nodes" unique_id=566610783 instance=ExtResource("5_2ltmf")]
@@ -328,16 +353,25 @@ position = Vector2(505, 254)
 tech_node_stats = ExtResource("21_dvfnf")
 
 [node name="Line2D" type="Line2D" parent="Nodes/MovementSpeed1" unique_id=660489985]
-points = PackedVector2Array(11, 0, 38, 0)
+points = PackedVector2Array(15, 0, 40, 0)
 width = 3.0
 
 [node name="MovementSpeed2" parent="Nodes" unique_id=1401457637 instance=ExtResource("5_2ltmf")]
-position = Vector2(506, 186)
+position = Vector2(506, 209)
 tech_node_stats = ExtResource("22_vbmlq")
 
 [node name="Line2D" type="Line2D" parent="Nodes/MovementSpeed2" unique_id=1365668813]
-position = Vector2(-1, 0)
-points = PackedVector2Array(-2, 14, -2, 54)
+position = Vector2(1, 0)
+points = PackedVector2Array(-2, 14, -2, 31)
+width = 3.0
+
+[node name="MovementSpeed3" parent="Nodes" unique_id=212799353 instance=ExtResource("5_2ltmf")]
+position = Vector2(507, 164)
+tech_node_stats = ExtResource("36_755lv")
+
+[node name="Line2D" type="Line2D" parent="Nodes/MovementSpeed3" unique_id=1923480228]
+position = Vector2(1, 0)
+points = PackedVector2Array(-2, 14, -2, 31)
 width = 3.0
 
 [node name="CookingStationNode" parent="Nodes" unique_id=1659813102 instance=ExtResource("5_2ltmf")]
@@ -427,12 +461,11 @@ position = Vector2(-807, -524)
 points = PackedVector2Array(793, 524, 776, 524)
 width = 3.0
 
-[node name="HPChaliceNode2" parent="Nodes" unique_id=1595379756 instance=ExtResource("5_2ltmf")]
-position = Vector2(804, 450)
-tech_node_stats = ExtResource("41_31qh5")
-node_type = 1
+[node name="ChaliceSpawnRate1Node" parent="Nodes" unique_id=1595379756 instance=ExtResource("5_2ltmf")]
+position = Vector2(849, 450)
+tech_node_stats = ExtResource("45_ejbxq")
 
-[node name="Line2D" type="Line2D" parent="Nodes/HPChaliceNode2" unique_id=1210166169]
+[node name="Line2D" type="Line2D" parent="Nodes/ChaliceSpawnRate1Node" unique_id=1210166169]
 position = Vector2(-807, -524)
 points = PackedVector2Array(793, 524, 776, 524)
 width = 3.0
@@ -448,7 +481,7 @@ width = 3.0
 
 [node name="Defense3" parent="Nodes" unique_id=447214832 instance=ExtResource("5_2ltmf")]
 position = Vector2(800, 508)
-tech_node_stats = ExtResource("37_pqlb5")
+tech_node_stats = ExtResource("47_opmd6")
 
 [node name="Line2D" type="Line2D" parent="Nodes/Defense3" unique_id=1859688668]
 position = Vector2(-3, 8)
@@ -456,12 +489,12 @@ points = PackedVector2Array(-11, -8, -26, -8)
 width = 3.0
 
 [node name="InvincibilityDuration1" parent="Nodes" unique_id=3421994 instance=ExtResource("5_2ltmf")]
-position = Vector2(431, 254)
+position = Vector2(455, 254)
 tech_node_stats = ExtResource("39_l65vq")
 
 [node name="Line2D" type="Line2D" parent="Nodes/InvincibilityDuration1" unique_id=2072077442]
-position = Vector2(10.868652, 3.784851)
-points = PackedVector2Array(1.1313477, -3.784851, 47.131348, -3.784851)
+position = Vector2(-11, 4)
+points = PackedVector2Array(25.131348, -3.784851, 47.131348, -3.784851)
 width = 3.0
 
 [node name="GemStoneStation" parent="Nodes" unique_id=781243374 instance=ExtResource("5_2ltmf")]

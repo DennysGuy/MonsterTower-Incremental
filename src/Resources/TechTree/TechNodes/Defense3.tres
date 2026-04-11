@@ -16,5 +16,5 @@ ExtResource("2_oo6mk"): 2
 }])
 stat_name = "Defense"
 upgrade_interval = 5.0
-prereqs = Array[String](["Defense 1:1"])
+prereqs = Array[String](["Defense 2:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

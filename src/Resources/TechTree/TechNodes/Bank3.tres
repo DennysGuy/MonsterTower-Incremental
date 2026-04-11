@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://c2do0e0poa4or"]
 
 [ext_resource type="Texture2D" uid="uid://0pp8v4uqsyae" path="res://Assets/NodeGraphics/NodeGraphicsV2/Bank2_V2.png" id="1_yo31n"]
-[ext_resource type="Resource" uid="uid://boeryxspsw8uq" path="res://src/Resources/Dishes/CookedGagootz.tres" id="2_q5aq0"]
-[ext_resource type="Resource" uid="uid://ctjyflf6qr4g" path="res://src/Resources/Dishes/MossyGoulash.tres" id="3_q5aq0"]
+[ext_resource type="Resource" uid="uid://b4owo1wr47wc" path="res://src/Resources/Dishes/WrappedKabab.tres" id="2_q5aq0"]
+[ext_resource type="Resource" uid="uid://d1pg7dveofnwm" path="res://src/Resources/Dishes/Svio.tres" id="3_q5aq0"]
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="3_uc6y0"]
 
 [resource]
@@ -12,9 +12,9 @@ icon = ExtResource("1_yo31n")
 description = "Bank Slots increased to 8"
 currency_required = 1200
 materials_required = Array[Dictionary]([{
-ExtResource("2_q5aq0"): 3
+ExtResource("2_q5aq0"): 2
 }, {
-ExtResource("3_q5aq0"): 3
+ExtResource("3_q5aq0"): 2
 }])
 stat_name = "Max Bank Slots"
 upgrade_interval = 2.0
