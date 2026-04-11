@@ -62,7 +62,9 @@ TODO: We will add saves for classes as well
 	"Ore Drop Chance Bonus":0.0,
 	"Smelting Accuracy Bonus":0.0,
 	"Tier 1 Chest Spawn Rate": 0.1,
-	"Tier 1 Gem Drop Rate":0.3
+	"Tier 1 Gem Drop Rate":0.3,
+	"Chalice Spawn Rate":0.2,
+	"Vial Spawn Rate": 0.2
 }
 
 #this will be loaded when we enter the tower entrance map or a map in and of itself
@@ -119,9 +121,10 @@ TODO: We will add saves for classes as well
 	"Arial Slash" : false,
 	"Dash Attack": false,
 	"Double Jump": false,
-	"Gem Stone Station": false
+	"Gem Stone Station": false,
+	"HP Chalice" : false,
+	"MP Vial" : false
 }
-
 
 @export var check_points_unlocked : Dictionary = {
 	"Floor 1-1" : false,
@@ -141,15 +144,18 @@ TODO: We will add saves for classes as well
 	"Attack 1" : {"Level":0, "Unlocked": false},
 	"Attack 2" : {"Level":0, "Unlocked": false},
 	"Attack 3" : {"Level":0, "Unlocked": false},
+	"Attack 4" : {"Level":0, "Unlocked": false},
 	"Arial Slash": {"Level":0, "Unlocked": true},
 	"Accuracy 1": {"Level":0, "Unlocked": false},
 	"Accuracy 2": {"Level":0, "Unlocked": false},
 	"Crit Chance 1" : {"Level":0, "Unlocked": false},
 	"Crit Chance 2": {"Level":0, "Unlocked": false},
 	"Crit Chance 3": {"Level":0, "Unlocked":false},
+	"Crit Chance 4": {"Level":0, "Unlocked":false},
 	"Crit Damage 1" : {"Level":0, "Unlocked": false},
 	"Crit Damage 2": {"Level":0, "Unlocked": false},
 	"Crit Damage 3": {"Level":0, "Unlocked": false},
+	"Crit Damage 4": {"Level":0, "Unlocked":false},
 	"Movement 1" : {"Level":0, "Unlocked": false},
 	"Movement 2" : {"Level":0, "Unlocked": false},
 	"Climb Speed 1" : {"Level":0, "Unlocked": false},
@@ -198,7 +204,10 @@ TODO: We will add saves for classes as well
 	"Double Jump": {"Level":0, "Unlocked": true},
 	"Gem Stone Station": {"Level":0, "Unlocked":false},
 	"Tier 1 Gem Chest Rate Up":{"Level":0, "Unlocked": false},
-	"Tier 1 Gem Drop Rate Up":{"Level":0, "Unlocked": false}
+	"Tier 1 Gem Drop Rate Up":{"Level":0, "Unlocked": false},
+	"Chalice of Welfare":{"Level":0, "Unlocked": false},
+	"Vial of the Esoteric":{"Level":0,"Unlocked": false}
+	
 }
 
 @export var equipped_abilities : Dictionary = {

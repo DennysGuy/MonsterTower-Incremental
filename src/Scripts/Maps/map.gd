@@ -16,6 +16,8 @@ class_name Map extends Node2D
 @export var ore_rock_markers : Node
 @export var gem_stone_chest_markers : Node
 @export var campfire_list : Node
+@export var hp_replenish_points : Node
+@export var mp_replenish_points : Node
 
 @export var path : String
 @export var next_room_path : String
@@ -101,7 +103,7 @@ func _ready() -> void:
 					issue_challenge_objective_notice()
 				
 				SignalBus.show_bag_stats.emit()
-					#
+				
 			if monster_spawn_node and GameManager.hunt_challenge_selected:
 				SignalBus.update_monsters_left.emit("Monsters Left: %s" % [monster_spawn_node.get_children().size()],false)
 				#else:
@@ -245,6 +247,14 @@ func roll_gem_chest_spawn_chance() -> int:
 	var rand_check : int = randi_range(0,100)
 	return rand_check <= int(100 * PlayerStats.player_stats["Tier 1 Chest Spawn Rate"])
 
+func roll_challice_spawn_chance() -> int :
+	var rand_check : int = randi_range(0,100)
+	return rand_check <= int(100 * PlayerStats.player_stats["Chalice Spawn Rate"])
+
+func roll_vial_spawn_chance() -> int:
+	var rand_check : int = randi_range(0,100)
+	return rand_check <= int(100 * PlayerStats.player_stats["Vial Spawn Rate"])
+
 func choose_spawn_spoint() -> PlayerSpawnPoint:
 	var spawn_points : Array = get_tree().get_nodes_in_group("SpawnPoints")
 	for spawn_local in spawn_points:
@@ -262,6 +272,16 @@ func spawn_gem_chests() -> void:
 	for gem_chest in gem_stone_chest_markers.get_children():
 		if roll_gem_chest_spawn_chance():
 			gem_chest.spawn_gem_chest()
+
+func spawn_hp_chalices() -> void:
+	for pos in hp_replenish_points.get_children():
+		if roll_challice_spawn_chance():
+			pos.spawn_hp_chalice()
+
+func spawn_mp_vials() -> void:
+	for pos in mp_replenish_points.get_children():
+		if roll_challice_spawn_chance():
+			pos.spawn_mp_vial()
 
 func update_hunt_quota() -> void:
 	if !GameManager.hunt_challenge_selected:

@@ -57,7 +57,9 @@ const KNOCKBACK_FORCE : int = 300
 	"Ore Drop Chance Bonus":0.0,
 	"Smelting Accuracy Bonus":0.0,
 	"Tier 1 Chest Spawn Rate": 0.05,
-	"Tier 1 Gem Drop Rate":0.3 
+	"Tier 1 Gem Drop Rate":0.3,
+	"Chalice Spawn Rate":0.20,
+	"Vial Spawn Rate": 0.20
 }
 
 var equipped_abilities : Dictionary = {
@@ -155,7 +157,7 @@ func equip_ability(player_class : String, ability_type : String) -> void:
 	"Double Jump" : false,
 	"Gem Stone Station": false,
 	"HP Chalice" : false,
-	"MP Chalice" : false
+	"MP Vial" : false
 }
 
 @onready var check_points_unlocked : Dictionary = {

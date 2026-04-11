@@ -11,18 +11,21 @@
 [ext_resource type="Resource" uid="uid://ll3jw1v5omml" path="res://src/Resources/TechTree/TechNodes/CritChance2.tres" id="8_7l0yi"]
 [ext_resource type="Texture2D" uid="uid://dt4v1cc43wq4u" path="res://Assets/NodeGraphics/WASD-Controls-Icon.png" id="9_6pqgd"]
 [ext_resource type="Resource" uid="uid://c6lrtgrld7bx1" path="res://src/Resources/TechTree/TechNodes/CritDamage2.tres" id="9_dkx06"]
-[ext_resource type="Script" path="res://src/Scripts/TechTree/tech_tree_camera.gd" id="9_wj3rp"]
+[ext_resource type="Script" uid="uid://co4ox6rujyeod" path="res://src/Scripts/TechTree/tech_tree_camera.gd" id="9_wj3rp"]
 [ext_resource type="PackedScene" uid="uid://bevb4v64mvbbg" path="res://src/Scenes/TechTree/PlayerStatsPanel.tscn" id="10_7l0yi"]
 [ext_resource type="Resource" uid="uid://u1y3eoe8hx2c" path="res://src/Resources/TechTree/TechNodes/MaxHP1.tres" id="11_4a6it"]
 [ext_resource type="Resource" uid="uid://x04h2nhi8gdh" path="res://src/Resources/TechTree/TechNodes/CritChance3.tres" id="11_qkyl2"]
 [ext_resource type="Resource" uid="uid://fr5bgjnd33a7" path="res://src/Resources/TechTree/TechNodes/CritDamage3.tres" id="12_31qh5"]
 [ext_resource type="Resource" uid="uid://drs3wurlptmym" path="res://src/Resources/TechTree/TechNodes/Attack3.tres" id="12_llgyg"]
+[ext_resource type="Resource" uid="uid://5le7ds72absa" path="res://src/Resources/TechTree/TechNodes/CritChance4.tres" id="13_g88x2"]
 [ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="13_uk0x3"]
 [ext_resource type="Resource" uid="uid://bfmdlo0jy1xsd" path="res://src/Resources/TechTree/TechNodes/MaxMP1.tres" id="14_iyves"]
 [ext_resource type="Resource" uid="uid://dhp1t1qeeqmau" path="res://src/Resources/TechTree/TechNodes/Defense1.tres" id="14_x01pg"]
+[ext_resource type="Resource" uid="uid://b218wsbjh7pyo" path="res://src/Resources/TechTree/TechNodes/Attack4.tres" id="15_746xm"]
 [ext_resource type="Resource" uid="uid://c4jfyjh5yjva4" path="res://src/Resources/TechTree/TechNodes/MaxMP2.tres" id="15_l65vq"]
 [ext_resource type="Resource" uid="uid://ct7a5kggupi55" path="res://src/Resources/TechTree/TechNodes/DeeperPockets1.tres" id="15_v76mx"]
 [ext_resource type="Resource" uid="uid://cmbxvekbk2uxx" path="res://src/Resources/TechTree/TechNodes/BankUnlock.tres" id="17_c7r65"]
+[ext_resource type="Resource" uid="uid://ddb4njdi5p43s" path="res://src/Resources/TechTree/TechNodes/MPVial.tres" id="18_1p45o"]
 [ext_resource type="Resource" uid="uid://cqjeh0yqqse5c" path="res://src/Resources/TechTree/TechNodes/Bank2.tres" id="18_aovij"]
 [ext_resource type="Resource" uid="uid://ydq2itcsk458" path="res://src/Resources/TechTree/TechNodes/DeeperPockets2.tres" id="19_7xsv7"]
 [ext_resource type="Resource" uid="uid://c1ojmw7gy7o6" path="res://src/Resources/TechTree/TechNodes/BagExpand1.tres" id="19_l65vq"]
@@ -49,6 +52,7 @@
 [ext_resource type="Resource" uid="uid://c5l21ge3ylc0e" path="res://src/Resources/TechTree/TechNodes/Defense2.tres" id="37_pqlb5"]
 [ext_resource type="Resource" uid="uid://c03qaydx74usi" path="res://src/Resources/TechTree/TechNodes/Tier1GemDropRateIncrease.tres" id="38_iyves"]
 [ext_resource type="Resource" uid="uid://cmi3owisj2vs7" path="res://src/Resources/TechTree/TechNodes/InvincibilityDuration1.tres" id="39_l65vq"]
+[ext_resource type="Resource" uid="uid://bp52qf07dd217" path="res://src/Resources/TechTree/TechNodes/HPChalice.tres" id="41_31qh5"]
 
 [node name="TechTree" type="Node2D" unique_id=713882159]
 script = ExtResource("1_1fw0b")
@@ -140,11 +144,38 @@ position = Vector2(3, 42)
 points = PackedVector2Array(-3, -14, -3, -28)
 width = 3.0
 
+[node name="CritChance4Node" parent="Nodes" unique_id=1735524686 instance=ExtResource("5_2ltmf")]
+position = Vector2(904, 209)
+tech_node_stats = ExtResource("13_g88x2")
+
+[node name="Line2D" type="Line2D" parent="Nodes/CritChance4Node" unique_id=713273257]
+position = Vector2(2, 0)
+points = PackedVector2Array(-2, 14, -2, 32)
+width = 3.0
+
+[node name="CritDamage4Node" parent="Nodes" unique_id=542679406 instance=ExtResource("5_2ltmf")]
+position = Vector2(904, 167)
+tech_node_stats = ExtResource("13_g88x2")
+
+[node name="Line2D" type="Line2D" parent="Nodes/CritDamage4Node" unique_id=764876662]
+position = Vector2(3, 42)
+points = PackedVector2Array(-3, -14, -3, -28)
+width = 3.0
+
 [node name="AttackDamage3Node" parent="Nodes" unique_id=992804832 instance=ExtResource("5_2ltmf")]
 position = Vector2(857, 255)
 tech_node_stats = ExtResource("12_llgyg")
 
 [node name="Line2D" type="Line2D" parent="Nodes/AttackDamage3Node" unique_id=90757354]
+position = Vector2(-42, 13)
+points = PackedVector2Array(9, -14, 28, -14)
+width = 3.0
+
+[node name="AttackDamage4" parent="Nodes" unique_id=773279305 instance=ExtResource("5_2ltmf")]
+position = Vector2(904, 255)
+tech_node_stats = ExtResource("15_746xm")
+
+[node name="Line2D" type="Line2D" parent="Nodes/AttackDamage4" unique_id=724109971]
 position = Vector2(-42, 13)
 points = PackedVector2Array(9, -14, 28, -14)
 width = 3.0
@@ -180,6 +211,16 @@ position = Vector2(758, 566)
 tech_node_stats = ExtResource("15_l65vq")
 
 [node name="Line2D" type="Line2D" parent="Nodes/MaxMP2Node" unique_id=550562576]
+position = Vector2(-3, 8)
+points = PackedVector2Array(-11, -8, -27, -8)
+width = 3.0
+
+[node name="MPVialNode" parent="Nodes" unique_id=779504938 instance=ExtResource("5_2ltmf")]
+position = Vector2(802, 566)
+tech_node_stats = ExtResource("18_1p45o")
+node_type = 1
+
+[node name="Line2D" type="Line2D" parent="Nodes/MPVialNode" unique_id=895507889]
 position = Vector2(-3, 8)
 points = PackedVector2Array(-11, -8, -27, -8)
 width = 3.0
@@ -376,11 +417,40 @@ position = Vector2(-807, -524)
 points = PackedVector2Array(793, 524, 776, 524)
 width = 3.0
 
+[node name="HPChaliceNode" parent="Nodes" unique_id=75929909 instance=ExtResource("5_2ltmf")]
+position = Vector2(804, 450)
+tech_node_stats = ExtResource("41_31qh5")
+node_type = 1
+
+[node name="Line2D" type="Line2D" parent="Nodes/HPChaliceNode" unique_id=292590127]
+position = Vector2(-807, -524)
+points = PackedVector2Array(793, 524, 776, 524)
+width = 3.0
+
+[node name="HPChaliceNode2" parent="Nodes" unique_id=1595379756 instance=ExtResource("5_2ltmf")]
+position = Vector2(804, 450)
+tech_node_stats = ExtResource("41_31qh5")
+node_type = 1
+
+[node name="Line2D" type="Line2D" parent="Nodes/HPChaliceNode2" unique_id=1210166169]
+position = Vector2(-807, -524)
+points = PackedVector2Array(793, 524, 776, 524)
+width = 3.0
+
 [node name="Defense2" parent="Nodes" unique_id=609765824 instance=ExtResource("5_2ltmf")]
 position = Vector2(757, 508)
 tech_node_stats = ExtResource("37_pqlb5")
 
 [node name="Line2D" type="Line2D" parent="Nodes/Defense2" unique_id=127059110]
+position = Vector2(-3, 8)
+points = PackedVector2Array(-11, -8, -26, -8)
+width = 3.0
+
+[node name="Defense3" parent="Nodes" unique_id=447214832 instance=ExtResource("5_2ltmf")]
+position = Vector2(800, 508)
+tech_node_stats = ExtResource("37_pqlb5")
+
+[node name="Line2D" type="Line2D" parent="Nodes/Defense3" unique_id=1859688668]
 position = Vector2(-3, 8)
 points = PackedVector2Array(-11, -8, -26, -8)
 width = 3.0

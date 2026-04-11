@@ -60,15 +60,18 @@ enum TECH_NODE_TYPE {ABILITY, FACILITY, CLASS_ABILITY}
 	"Attack 1" : 0,
 	"Attack 2" : 0,
 	"Attack 3" : 0,
+	"Attack 4" : 0,
 	"Arial Slash":0,
 	"Accuracy 1": 0,
 	"Accuracy 2": 0,
 	"Crit Chance 1" : 0,
 	"Crit Chance 2": 0,
 	"Crit Chance 3": 0,
+	"Crit Chance 4": 0,
 	"Crit Damage 1" : 0,
 	"Crit Damage 2": 0,
 	"Crit Damage 3": 0,
+	"Crit Damage 4": 0,
 	"Movement 1" : 0,
 	"Movement 2" : 0,
 	"Climb Speed 1" : 0,
@@ -116,7 +119,10 @@ enum TECH_NODE_TYPE {ABILITY, FACILITY, CLASS_ABILITY}
 	"Invincibility Duration 1":0.0,
 	"Double Jump" : 0.0,
 	"Tier 1 Gem Chest Rate Up": 0.0,
-	"Tier 1 Gem Drop Rate Up": 0.0
+	"Tier 1 Gem Drop Rate Up": 0.0,
+	"Vial of the Esoteric":0.0,
+	"Chalice of Welfare":0.0
+	
 }
 
 @onready var warrior_tech_nodes : Dictionary = {

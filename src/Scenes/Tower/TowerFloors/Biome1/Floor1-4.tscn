@@ -29,7 +29,6 @@
 [ext_resource type="Resource" uid="uid://k8lq2m8l311f" path="res://src/Resources/TowerEntranceData/Floor1-5.tres" id="25_h5nvt"]
 [ext_resource type="PackedScene" uid="uid://dr8tmfh2d3slu" path="res://src/Scenes/Actors/Enemies/MossyDungeon/SerpantMimic/SerpantMimicLVL2.tscn" id="25_kc4q5"]
 [ext_resource type="PackedScene" uid="uid://cxll6w3ngphra" path="res://src/Scenes/Actors/Enemies/MossyDungeon/MossGolem/MossGolem.tscn" id="26_0n60h"]
-[ext_resource type="PackedScene" uid="uid://ge3kakv58e1b" path="res://src/Scenes/Tower/ReplenishingAlter.tscn" id="27_h5nvt"]
 [ext_resource type="PackedScene" uid="uid://c11hg5ijdrjjs" path="res://src/Scenes/Tower/TowerFloors/ExitElevator1.tscn" id="30_fpe1o"]
 [ext_resource type="PackedScene" uid="uid://cps01vtaqexec" path="res://src/Scenes/Tower/TowerFloors/GemStoneMarker.tscn" id="30_t1y87"]
 [ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="31_2dwqw"]
@@ -184,7 +183,7 @@ chance_to_spawn = 0.4
 spawn_parent = NodePath("../..")
 
 [node name="OreRockMarker2" parent="OreRockMarkers" unique_id=108761510 node_paths=PackedStringArray("spawn_parent") instance=ExtResource("15_at0vg")]
-position = Vector2(300, 2112)
+position = Vector2(274, 2112)
 ore_rock_resource = ExtResource("16_0c8cp")
 ore_rock = ExtResource("16_klrm8")
 chance_to_spawn = 0.4
@@ -273,13 +272,6 @@ next_room_data = ExtResource("25_h5nvt")
 current_room_data = ExtResource("2_2x8us")
 
 [node name="SfxPlayer" parent="." unique_id=126850837 instance=ExtResource("31_2dwqw")]
-
-[node name="ReplenishingAlter" parent="." unique_id=2063450910 instance=ExtResource("27_h5nvt")]
-position = Vector2(314, 2002)
-
-[node name="ReplenishingAlter2" parent="." unique_id=2080669136 instance=ExtResource("27_h5nvt")]
-position = Vector2(278, 1889)
-type = 1
 
 [node name="LadderArea" parent="." unique_id=1886745708 node_paths=PackedStringArray("ladder_top", "ladder_bottom") instance=ExtResource("15_6fsd8")]
 position = Vector2(240, 2501)

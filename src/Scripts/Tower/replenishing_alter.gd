@@ -69,6 +69,12 @@ func replenish_resource() -> void:
 	notice.hide()
 
 
+func spawn_as_hp_chalice() -> void:
+	type = TYPE.HP
+
+func spawn_as_mp_vial() -> void:
+	type = TYPE.MP
+
 func play_sfx(sound: AudioStream, volume: float = 0.0):
 	var player := AudioStreamPlayer.new()
 	player.stream = sound

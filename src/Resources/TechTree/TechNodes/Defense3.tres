@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://btox3bpn7jbiy"]
+
+[ext_resource type="Texture2D" uid="uid://qlpnwox7g4gb" path="res://Assets/NodeGraphics/NodeGraphicsV2/Defense2_V2.png" id="1_oo6mk"]
+[ext_resource type="Resource" uid="uid://y4kiqe4pi2v5" path="res://src/Resources/CraftingResources/IronBar.tres" id="2_oo6mk"]
+[ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="3_6sc3t"]
+
+[resource]
+script = ExtResource("3_6sc3t")
+node_name = "Defense 3"
+icon = ExtResource("1_oo6mk")
+description = "Increases defense by +5 for each level"
+max_level = 3
+currency_required = 1200
+materials_required = Array[Dictionary]([{
+ExtResource("2_oo6mk"): 2
+}])
+stat_name = "Defense"
+upgrade_interval = 5.0
+prereqs = Array[String](["Defense 1:1"])
+metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

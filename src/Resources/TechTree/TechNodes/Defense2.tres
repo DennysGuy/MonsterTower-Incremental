@@ -9,8 +9,8 @@ script = ExtResource("2_3xufc")
 node_name = "Defense 2"
 icon = ExtResource("1_3xufc")
 description = "Increases defense by +5 for each level"
-max_level = 2
-currency_required = 180
+max_level = 3
+currency_required = 500
 materials_required = Array[Dictionary]([{
 ExtResource("1_wj17q"): 2
 }])
