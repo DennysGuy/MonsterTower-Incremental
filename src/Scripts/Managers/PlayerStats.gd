@@ -33,10 +33,10 @@ const KNOCKBACK_FORCE : int = 300
 	"Accuracy" : 0.6,
 	"Max Health" : 60,
 	"Max MP": 50,
-	"HP Recover": 50,
 	"Current Health":60,
 	"Current MP": 50,
-	"MP Recoveer" : 75,
+	"HP Recovery": 0.3,
+	"MP Recovery" : 0.4,
 	"Equipped Sword": 0,
 	"Equipped Pickaxe": 0,
 	"Overlapping Hits" : 1.0,
@@ -303,3 +303,25 @@ func check_needed_for_dojo() -> bool:
 
 func check_level_for_dojo() -> bool:
 	return PlayerStats.player_stats["Level"] >= 5
+
+func get_total_max_health() -> int:
+	return player_stats["Max Health"] + get_current_sword().get_total_hp_bonus()
+
+func get_total_max_mp() -> int:
+	return player_stats["Max MP"]  + get_current_sword().get_total_mp_bonus()
+
+func recover_hp(amount : int) -> void:
+	player_stats["Current Health"] += amount
+	if player_stats["Current Health"] > get_total_max_health():
+		player_stats["Current Health"] = get_total_max_health()
+	
+	SignalBus.update_player_health.emit(player_stats["Current Health"])
+		
+
+func recover_mp(amount : int) -> void:
+	player_stats["Current MP"] += amount
+	if player_stats["Current MP"] > get_total_max_mp():
+		player_stats["Current MP"] = get_total_max_mp()
+	
+	SignalBus.update_player_mp.emit()
+	
