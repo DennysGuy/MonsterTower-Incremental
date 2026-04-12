@@ -169,6 +169,7 @@ func spawn_player() -> void:
 		GameManager.resupply_character = false
 		
 	player.health = total_health
+	print("THIS IS PLAYER HEALTH" + str(player.health))
 	hud.update_player_health(int(total_health))
 
 	add_child(player)
