@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://xqghhbiwak01"]
+
+[ext_resource type="Texture2D" uid="uid://6bul074ratoj" path="res://Assets/NodeGraphics/NodeGraphicsV2/CritDamage2_V2.png" id="1_a6m8i"]
+[ext_resource type="Resource" uid="uid://cs6ojn6tc0alq" path="res://src/Resources/CraftingResources/SteelBar.tres" id="2_a6m8i"]
+[ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="3_d6qrm"]
+
+[resource]
+script = ExtResource("3_d6qrm")
+node_name = "Crit Damage 4"
+icon = ExtResource("1_a6m8i")
+description = "Increase Crit Damage by 5% per level."
+max_level = 3
+currency_required = 2500
+materials_required = Array[Dictionary]([{
+ExtResource("2_a6m8i"): 3
+}])
+stat_name = "Crit Damage"
+upgrade_interval = 0.05
+prereqs = Array[String](["Crit Damage 3:1"])
+metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

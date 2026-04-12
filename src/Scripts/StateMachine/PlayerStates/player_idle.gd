@@ -4,14 +4,13 @@ class_name PlayerIdle extends State
 @export var jump_state : State
 @export var fall_state : State
 @export var attack_1_state : State
+@export var dash_attack_state : State
 @export var swing_pick_axe_state : State
 @export var climb_state : State
 @export var special_attack : State
 
 @export_group("Audio")
 @export var jump_sfx : AudioStream
-
-
 
 func enter() -> void:
 	parent.was_on_ledge = true
@@ -37,6 +36,9 @@ func process_physics(_delta: float) -> State:
 		parent.sfx_player.play_sfx(jump_sfx)
 		parent.can_double_jump = false
 		return fall_state
+	
+	if Input.is_action_just_pressed("dash_attack") and PlayerStats.facilities_unlocked["Dash Attack"] and parent.can_issue_ability("Dash Attack") and GameManager.can_issue_abilities:
+		return dash_attack_state
 		
 	if !GameManager.player_can_move:
 		parent.move_and_slide()
@@ -51,7 +53,7 @@ func process_physics(_delta: float) -> State:
 			return swing_pick_axe_state
 		return attack_1_state
 	
-	if Input.is_action_just_pressed("special_attack") and PlayerStats.get_equipped_ability("Special Attack") and parent.can_issue_ability("Special Attack"):
+	if Input.is_action_just_pressed("special_attack") and PlayerStats.get_equipped_ability("Special Attack") and parent.can_issue_ability("Special Attack") and GameManager.can_issue_abilities:
 		return special_attack
 	
 	if !parent.is_on_floor():

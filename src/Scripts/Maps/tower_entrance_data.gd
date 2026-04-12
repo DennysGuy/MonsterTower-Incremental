@@ -14,6 +14,9 @@ enum FLOOR_TYPE {EXPEDITION, CHALLENGE, BOSS_DOOR, BOSS_ROOM}
 @export var scene_path : String
 @export var preview_pictures : Array[Texture2D]
 
+@export var kill_count_needed : int = 0
+@export var current_count : int = 0
+@export var activation_switch_unlocked : bool = false
 func is_expedition_floor() -> bool:
 	return floor_type == FLOOR_TYPE.EXPEDITION
 

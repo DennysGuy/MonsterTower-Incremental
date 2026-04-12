@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="EnemyDrop" format=3 uid="uid://d04rjjbqyhkkc"]
+
+[ext_resource type="Texture2D" uid="uid://bc4w0gagwa8vo" path="res://Assets/Enemies/OrcBeast/OrcChainmail.png" id="1_hss3b"]
+[ext_resource type="Script" uid="uid://cubudt76pshmm" path="res://src/Scripts/Enemies/enemy_drop.gd" id="2_0wwsw"]
+
+[resource]
+script = ExtResource("2_0wwsw")
+drop_icon = ExtResource("1_hss3b")
+drop_chance = 0.06
+item_name = "Chain Mail"
+item_type = 2
+sell_value = 200
+shop_icon = ExtResource("1_hss3b")
+description = "Chain Mail from an Orc Warlord. Extract the metal for crafting recipes!"
+metadata/_custom_type_script = "uid://cubudt76pshmm"

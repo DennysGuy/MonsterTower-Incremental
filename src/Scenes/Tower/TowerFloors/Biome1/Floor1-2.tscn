@@ -23,11 +23,12 @@
 [ext_resource type="PackedScene" uid="uid://cr6q5dxlkks" path="res://src/Scenes/Tower/LadderArea.tscn" id="12_61350"]
 [ext_resource type="PackedScene" uid="uid://crf0fypg7rf6a" path="res://src/Scenes/MonsterSpawnArea.tscn" id="13_jxry2"]
 [ext_resource type="PackedScene" uid="uid://cps01vtaqexec" path="res://src/Scenes/Tower/TowerFloors/GemStoneMarker.tscn" id="14_50mol"]
-[ext_resource type="PackedScene" uid="uid://bethw5tnlxnnt" path="res://src/Scenes/Actors/Enemies/CorruptedMushie/CorruptedMushie.tscn" id="14_gi03k"]
+[ext_resource type="PackedScene" uid="uid://bethw5tnlxnnt" path="res://src/Scenes/Actors/Enemies/MossyDungeon/CorruptedMushie/CorruptedMushie.tscn" id="14_gi03k"]
 [ext_resource type="Resource" uid="uid://d3ak1ilk1id2y" path="res://src/Resources/GemChests/Tier1GemChest.tres" id="15_nrrah"]
-[ext_resource type="PackedScene" uid="uid://b0enmfcqe1mex" path="res://src/Scenes/Actors/Enemies/Batclopse/Batclopse.tscn" id="19_n7xsw"]
+[ext_resource type="PackedScene" uid="uid://cm6ttxlrvgkvd" path="res://src/Scenes/Tower/TowerFloors/ChalicePositionMarker.tscn" id="19_50mol"]
+[ext_resource type="PackedScene" uid="uid://b0enmfcqe1mex" path="res://src/Scenes/Actors/Enemies/MossyDungeon/Batclopse/Batclopse.tscn" id="19_n7xsw"]
 [ext_resource type="PackedScene" uid="uid://c11hg5ijdrjjs" path="res://src/Scenes/Tower/TowerFloors/ExitElevator1.tscn" id="20_rsjkl"]
-[ext_resource type="PackedScene" uid="uid://cyiot28va881c" path="res://src/Scenes/Actors/Enemies/CorruptedMushie/CorruptedMushie_Level2.tscn" id="22_ykf1y"]
+[ext_resource type="PackedScene" uid="uid://cyiot28va881c" path="res://src/Scenes/Actors/Enemies/MossyDungeon/CorruptedMushie/CorruptedMushie_Level2.tscn" id="22_ykf1y"]
 [ext_resource type="Resource" uid="uid://vibb3cg4b01g" path="res://src/Resources/TowerEntranceData/Floor1-3.tres" id="25_o2dcr"]
 [ext_resource type="PackedScene" uid="uid://d150vkltffpjo" path="res://src/Scenes/Tower/TowerFloors/CheckPointCampfire.tscn" id="26_qbeca"]
 [ext_resource type="PackedScene" uid="uid://cpb0pkf7ygatb" path="res://src/Scenes/Tower/TowerFloors/MonsterSpawnNode.tscn" id="27_ynp3n"]
@@ -560,7 +561,7 @@ size = Vector2(172, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n7xsw"]
 size = Vector2(391, 20)
 
-[node name="Floor1-2" type="Node2D" unique_id=1445504565 node_paths=PackedStringArray("exit_elevator_marker", "exit_elevator", "camera", "hud", "ore_rock_markers", "gem_stone_chest_markers", "campfire_list", "sfx_player", "monster_spawn_node", "pause_canvas_layer", "ambience_player")]
+[node name="Floor1-2" type="Node2D" unique_id=1445504565 node_paths=PackedStringArray("exit_elevator_marker", "exit_elevator", "camera", "hud", "ore_rock_markers", "gem_stone_chest_markers", "campfire_list", "hp_replenish_points", "mp_replenish_points", "sfx_player", "monster_spawn_node", "pause_canvas_layer", "ambience_player")]
 script = ExtResource("1_1pghk")
 map_name = "Floor 1-2"
 map_id = 2
@@ -576,6 +577,8 @@ ore_rock_spawn_rate = 0.6
 ore_rock_markers = NodePath("OreRockMarkers")
 gem_stone_chest_markers = NodePath("GemStoneChestMarkers")
 campfire_list = NodePath("CampfireCheckpoints")
+hp_replenish_points = NodePath("HPChaclices")
+mp_replenish_points = NodePath("MPVials")
 path = "uid://bla5rhusv2jn5"
 next_room_path = "uid://b3m3f58qy47jb"
 sfx_player = NodePath("SfxPlayer")
@@ -722,6 +725,22 @@ ore_rock_resource = ExtResource("9_qrx52")
 ore_rock = ExtResource("10_n7xsw")
 chance_to_spawn = 0.4
 spawn_parent = NodePath("../..")
+
+[node name="HPChaclices" type="Node" parent="." unique_id=1625620462]
+
+[node name="ReplenishAlterPositionMarker2" parent="HPChaclices" unique_id=909268063 instance=ExtResource("19_50mol")]
+position = Vector2(175, 912)
+
+[node name="ReplenishAlterPositionMarker3" parent="HPChaclices" unique_id=1970294222 instance=ExtResource("19_50mol")]
+position = Vector2(393, 432)
+
+[node name="MPVials" type="Node" parent="." unique_id=2003504684]
+
+[node name="ReplenishAlterPositionMarker2" parent="MPVials" unique_id=1320862618 instance=ExtResource("19_50mol")]
+position = Vector2(336, 560)
+
+[node name="ReplenishAlterPositionMarker" parent="MPVials" unique_id=827066879 instance=ExtResource("19_50mol")]
+position = Vector2(465, 913)
 
 [node name="PlayerCamera" parent="." unique_id=590698952 instance=ExtResource("9_w4dci")]
 position = Vector2(321, 1324)

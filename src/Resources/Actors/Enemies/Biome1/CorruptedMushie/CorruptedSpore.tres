@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="EnemyDrop" load_steps=3 format=3 uid="uid://rjdpo8po5vi0"]
+[gd_resource type="Resource" script_class="EnemyDrop" format=3 uid="uid://rjdpo8po5vi0"]
 
 [ext_resource type="Script" uid="uid://cubudt76pshmm" path="res://src/Scripts/Enemies/enemy_drop.gd" id="1_2cbcc"]
 [ext_resource type="Texture2D" uid="uid://bk4miqdmvi7gh" path="res://Assets/Enemies/CorruptedMushie/CorruptedMushieSpore.png" id="1_sfm84"]
@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("1_2cbcc")
 drop_icon = ExtResource("1_sfm84")
+drop_chance = 0.9
 item_name = "Corrupted Mushie Spore"
 sell_value = 30
 shop_icon = ExtResource("1_sfm84")

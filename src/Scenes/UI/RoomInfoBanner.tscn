@@ -74,3 +74,10 @@ theme_override_font_sizes/normal_font_size = 12
 bbcode_enabled = true
 text = "Repair the elevator!"
 horizontal_alignment = 1
+
+[node name="TrackerContainer" type="GridContainer" parent="." unique_id=1011915513]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 41.0
+offset_right = 166.0
+offset_bottom = 84.0

@@ -5,6 +5,7 @@ class_name Sword extends Resource
 @export var defense_bonus : float
 @export var attack_speed : float
 @export var crit_bonus : float
+@export var hit_bonus : float
 @export var crit_damage_bonus : float
 @export var movement_speed_bonus : float
 @export var status_duration_bonus : float

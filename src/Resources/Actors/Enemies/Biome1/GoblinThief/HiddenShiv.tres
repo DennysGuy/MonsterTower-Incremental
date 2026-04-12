@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="EnemyDrop" format=3 uid="uid://lyuo51uo7crd"]
+
+[ext_resource type="Script" uid="uid://cubudt76pshmm" path="res://src/Scripts/Enemies/enemy_drop.gd" id="1_1c6sc"]
+[ext_resource type="Texture2D" uid="uid://c3sjv0kmwocok" path="res://Assets/Enemies/GoblinGuy/HiddenShiv.png" id="1_lruoo"]
+
+[resource]
+script = ExtResource("1_1c6sc")
+drop_icon = ExtResource("1_lruoo")
+drop_chance = 0.06
+item_name = "Hidden Shiv"
+item_type = 2
+sell_value = 170
+shop_icon = ExtResource("1_lruoo")
+description = "A Goblin's Thiefs only weapon. Intended to lighten the load or something."
+metadata/_custom_type_script = "uid://cubudt76pshmm"

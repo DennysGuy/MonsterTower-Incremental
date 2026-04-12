@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://b6f6env6glluf"]
+
+[ext_resource type="Script" uid="uid://deki4fllh0a7w" path="res://src/Scripts/Tower/card_key_lock.gd" id="1_7280u"]
+[ext_resource type="Texture2D" uid="uid://b66xfcxpp48yg" path="res://Assets/Tower/Biom1/BossDoor/CardKeyLock_Filled.png" id="2_avdgu"]
+[ext_resource type="Texture2D" uid="uid://dovhk1103xlqf" path="res://Assets/Tower/Biom1/BossDoor/CardKeyLock_Unfilled.png" id="2_ye45f"]
+[ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="3_swxwx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ye45f"]
+size = Vector2(40, 105)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_avdgu"]
+size = Vector2(11, 10)
+
+[node name="CardKeyLock" type="Node2D" unique_id=456427791 node_paths=PackedStringArray("graphic", "move_to_marker", "notice")]
+script = ExtResource("1_7280u")
+graphic = NodePath("CardKeyLock")
+filled_graphic = ExtResource("2_avdgu")
+unfilled_graphic = ExtResource("2_ye45f")
+move_to_marker = NodePath("Marker2D")
+notice = NodePath("Notice")
+
+[node name="CardKeyLock" type="Sprite2D" parent="." unique_id=472268407]
+position = Vector2(0, -20)
+texture = ExtResource("2_ye45f")
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=1432245179]
+position = Vector2(0, -24)
+
+[node name="Notice" type="Label" parent="." unique_id=1777609500]
+visible = false
+offset_left = -90.0
+offset_top = 2.0
+offset_right = 90.0
+offset_bottom = 18.0
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_swxwx")
+text = "Press 'E' to Insert Key"
+horizontal_alignment = 1
+
+[node name="Area2D" type="Area2D" parent="." unique_id=185049008]
+position = Vector2(0, -30)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=424557532]
+position = Vector2(0, 42.5)
+shape = SubResource("RectangleShape2D_ye45f")
+
+[node name="EnableZone" type="Area2D" parent="." unique_id=603526586]
+position = Vector2(0, -20)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnableZone" unique_id=1032842522]
+shape = SubResource("RectangleShape2D_avdgu")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="area_entered" from="EnableZone" to="." method="_on_enable_zone_area_entered"]

@@ -19,6 +19,10 @@ run/main_scene="uid://dp68gajadt5d1"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="uid://dtqkiefbptadf"
+
 [autoload]
 
 PlayerStats="*res://src/Scripts/Managers/PlayerStats.gd"
@@ -152,3 +156,4 @@ show_quests={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+2d/snap/snap_2d_transforms_to_pixel=true

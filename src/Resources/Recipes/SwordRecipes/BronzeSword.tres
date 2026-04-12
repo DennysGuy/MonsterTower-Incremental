@@ -11,8 +11,8 @@ description = "A metalic sword made from refined bronze and tin ore. Great for g
 recipe_tier = 1
 recipe_type = 2
 recipe_list = Array[Dictionary]([{
-ExtResource("1_2kto0"): 6
+ExtResource("1_2kto0"): 2
 }, {
-ExtResource("2_quxu8"): 6
+ExtResource("2_quxu8"): 4
 }])
 metadata/_custom_type_script = "uid://cljygiasf4103"

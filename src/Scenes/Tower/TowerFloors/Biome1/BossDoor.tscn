@@ -1,0 +1,139 @@
+[gd_scene format=3 uid="uid://c6ojaalya87sr"]
+
+[ext_resource type="Script" uid="uid://bg6amgd1oespu" path="res://src/Scripts/Tower/boss_door_1.gd" id="1_svwce"]
+[ext_resource type="Texture2D" uid="uid://bkfrkkb4ea2ps" path="res://Assets/Tower/Biom1/BossDoor/BossDoor_Back.png" id="2_cjxbs"]
+[ext_resource type="Texture2D" uid="uid://b5f7upmtycotm" path="res://Assets/Tower/Biom1/BossDoor/BossDoor_LeftDoor.png" id="3_retqv"]
+[ext_resource type="Texture2D" uid="uid://sl27rs6hg5db" path="res://Assets/Tower/Biom1/BossDoor/BossDoor_RightDoor.png" id="4_cgrnm"]
+[ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="5_cgrnm"]
+
+[sub_resource type="Animation" id="Animation_retqv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BossDoorLeftDoor:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -65)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BossDoorRightDoor:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -65)]
+}
+
+[sub_resource type="Animation" id="Animation_uyco3"]
+resource_name = "close"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BossDoorLeftDoor:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-34, -65), Vector2(0, -65)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BossDoorRightDoor:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(39, -65), Vector2(0, -65)]
+}
+
+[sub_resource type="Animation" id="Animation_cgrnm"]
+resource_name = "open"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BossDoorLeftDoor:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -65), Vector2(-34, -65)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BossDoorRightDoor:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -65), Vector2(39, -65)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uyco3"]
+_data = {
+&"RESET": SubResource("Animation_retqv"),
+&"close": SubResource("Animation_uyco3"),
+&"open": SubResource("Animation_cgrnm")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_retqv"]
+size = Vector2(91, 62)
+
+[node name="BossDoor" type="Node2D" unique_id=1917660756]
+script = ExtResource("1_svwce")
+
+[node name="BossDoorBack" type="Sprite2D" parent="." unique_id=1921814041]
+position = Vector2(0, -65)
+texture = ExtResource("2_cjxbs")
+
+[node name="BossDoorLeftDoor" type="Sprite2D" parent="." unique_id=39096855]
+position = Vector2(0, -65)
+texture = ExtResource("3_retqv")
+
+[node name="BossDoorRightDoor" type="Sprite2D" parent="." unique_id=444327638]
+position = Vector2(0, -65)
+texture = ExtResource("4_cgrnm")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1157427181]
+libraries/ = SubResource("AnimationLibrary_uyco3")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=668573353]
+position = Vector2(0, -11)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=729486936]
+position = Vector2(2.5, -21)
+shape = SubResource("RectangleShape2D_retqv")
+
+[node name="OpenDoorNotice" type="Label" parent="." unique_id=253724422]
+visible = false
+offset_left = -89.0
+offset_top = 8.0
+offset_right = 92.0
+offset_bottom = 24.0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("5_cgrnm")
+text = "Press 'E' to Enter"
+horizontal_alignment = 1
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

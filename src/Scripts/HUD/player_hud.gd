@@ -68,6 +68,7 @@ func _ready() -> void:
 	
 	SignalBus.enable_tower_map_button.connect(enable_tower_map_button)
 	SignalBus.show_hunt_challenge_button.connect(show_hunt_challenge_button)
+	SignalBus.flash_screen.connect(flash_screen)
 	
 	SignalBus.populate_item_notification_panel.connect(populate_pick_notification_panel)
 	TechTreeManager.update_currency_label.connect(update_currency_label)
@@ -115,7 +116,6 @@ func update_player_mp() -> void:
 	player_mp_bar.value = current_mp
 	player_mp_bar.max_value = max_mp
 	mp_label.text = "%s/%s" % [current_mp,max_mp]
-
 
 
 func update_xp_bar() -> void:
@@ -254,6 +254,8 @@ func populate_pick_notification_panel(item_data : Item) -> void:
 	notification_item.label.text = "Picked up 1 %s" % item_data.item_name
 	pick_up_notifier.add_child(notification_item)
 
+func flash_screen() -> void:
+	animation_player.play("Flash")
 
 func _on_open_tower_map_button_button_up() -> void:
 	if !GameManager.can_open_tower_map:

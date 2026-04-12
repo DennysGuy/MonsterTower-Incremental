@@ -44,7 +44,7 @@ signal play_close_out_animation
 @warning_ignore("unused_signal")
 signal update_kill_quota_text(message : String, hit_quota : bool, challenge_unlocked : bool)
 @warning_ignore("unused_signal")
-signal update_monsters_left(text : String, out_of_enemies : bool)
+signal update_monsters_left(text : String)
 @warning_ignore("unused_signal")
 signal update_kill_quota
 @warning_ignore("unused_signal")
@@ -118,3 +118,22 @@ signal spawn_warrior_tech_tree
 signal update_gem_station_sockets
 @warning_ignore("unused_signal")
 signal update_banner_info(tower_entrance_data : TowerEntranceData)
+@warning_ignore("unused_signal")
+signal flash_screen
+@warning_ignore("unused_signal")
+signal unlock_boss_door
+@warning_ignore("unused_signal")
+signal start_boss_door_challenge_scene
+@warning_ignore("unused_signal")
+signal increment_keys_delivered_tracker
+@warning_ignore("unused_signal")
+signal start_enemy_spawn
+
+@warning_ignore("unused_signal")
+signal send_lever_color_name(color_name : String)
+@warning_ignore("unused_signal")
+signal reset_levers
+@warning_ignore("unused_signal")
+signal set_puzzle_levers_on
+@warning_ignore("unused_signal")
+signal show_challenge_activation_switch

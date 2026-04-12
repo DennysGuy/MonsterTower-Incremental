@@ -11,6 +11,9 @@ class_name MonsterSpawnArea extends Area2D
 @export var spawn_root : Node
 
 @export var monster_list : Dictionary[PackedScene, int]
+
+@export var challenge_monster_list : Dictionary[PackedScene, int]
+
 @export var area_collision_shape : CollisionShape2D
 
 @onready var respawn_timer: Timer = $RespawnTimer
@@ -23,27 +26,31 @@ var spawn_count : int
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	SignalBus.spawn_enemies.connect(_spawn)
-	if !GameManager.hunt_challenge_selected:
-		respawn_timer.wait_time = respawn_wait_time
-		respawn_timer.start()
+	SignalBus.start_enemy_spawn.connect(start_enemy_spawn)
+
 		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
 func choose_enemy() -> PackedScene:
+	var selected_monster_list = monster_list
+	
+	if GameManager.hunt_challenge_selected:
+		selected_monster_list = challenge_monster_list
+	
 	var total_weight : int = 0
 	
-	for enemy in monster_list.keys():
-		total_weight += monster_list[enemy]
+	for enemy in selected_monster_list.keys():
+		total_weight += selected_monster_list[enemy]
 	
 	if total_weight <= 0:
 		return
 	
 	var roll : float = randf() * total_weight
 	
-	for enemy in monster_list.keys():
-		roll -= monster_list[enemy]
+	for enemy in selected_monster_list.keys():
+		roll -= selected_monster_list[enemy]
 		if roll <= 0:
 			return enemy
 
@@ -95,6 +102,10 @@ func respawn_monsters() -> void:
 		monster.drop_scene = drop_scene
 		monster.global_position = world_pos
 		monster_spawn_list.add_child(monster)
+
+func start_enemy_spawn() -> void:
+	respawn_timer.wait_time = respawn_wait_time
+	respawn_timer.start()
 
 func _on_respawn_timer_timeout() -> void:
 	if monster_spawn_list.get_children().size() < max_monsters:

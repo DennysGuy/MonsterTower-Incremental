@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="EnemyDrop" format=3 uid="uid://sqmift1leivw"]
+
+[ext_resource type="Script" uid="uid://cubudt76pshmm" path="res://src/Scripts/Enemies/enemy_drop.gd" id="1_bdwqn"]
+[ext_resource type="Texture2D" uid="uid://cr5flx0chhnwh" path="res://Assets/EnvironmentalAssets/CoalOre.png" id="2_mls27"]
+
+[resource]
+script = ExtResource("1_bdwqn")
+drop_icon = ExtResource("2_mls27")
+drop_chance = 0.3
+item_name = "Coal"
+item_type = 3
+sell_value = 100
+shop_icon = ExtResource("2_mls27")
+item_tier = 2
+description = "A staple in many refinery recipes."
+metadata/_custom_type_script = "uid://cubudt76pshmm"

@@ -31,6 +31,7 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 		if doors_open:
 			animation_player.play("DoorsClose")
 			move_to_next_room_label.hide()
+			doors_open = false
 
 func go_to_prev_floor() -> void:
 	MusicPlayer.transitioning_floors = true

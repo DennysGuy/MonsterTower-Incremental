@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EnemyDrop" format=3 uid="uid://icdg42cdhvkx"]
+
+[ext_resource type="Script" uid="uid://cubudt76pshmm" path="res://src/Scripts/Enemies/enemy_drop.gd" id="1_0mqst"]
+[ext_resource type="Texture2D" uid="uid://cft0xn2hkqeah" path="res://Assets/Enemies/BeatleKnight/BeetleHelm.png" id="1_3pxrb"]
+
+[resource]
+script = ExtResource("1_0mqst")
+drop_icon = ExtResource("1_3pxrb")
+drop_chance = 0.5
+item_name = "Beetle Helm"
+sell_value = 90
+shop_icon = ExtResource("1_3pxrb")
+description = "The hard hat of a Beetle Knight. Sturdy. General. Good."
+metadata/_custom_type_script = "uid://cubudt76pshmm"

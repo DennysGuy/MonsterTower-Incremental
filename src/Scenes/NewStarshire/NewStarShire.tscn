@@ -778,7 +778,7 @@ size = Vector2(102, 64)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jhqac"]
 size = Vector2(20, 375)
 
-[node name="NewStarShire" type="Node2D" unique_id=1923605450 node_paths=PackedStringArray("spawn_point", "camera", "hud", "sfx_player", "pause_canvas_layer")]
+[node name="NewStarShire" type="Node2D" unique_id=1923605450 node_paths=PackedStringArray("spawn_point", "camera", "hud", "sfx_player")]
 script = ExtResource("1_gq00g")
 map_name = "Starspire - Hub"
 map_theme_song = ExtResource("2_cxssj")
@@ -786,7 +786,6 @@ spawn_point = NodePath("SpawnPoint")
 camera = NodePath("PlayerCamera")
 hud = NodePath("HUD")
 sfx_player = NodePath("SfxPlayer")
-pause_canvas_layer = NodePath("CanvasLayer")
 
 [node name="SfxPlayer" parent="." unique_id=1032259464 instance=ExtResource("2_te0bi")]
 
@@ -894,34 +893,6 @@ position = Vector2(976.00006, 624)
 
 [node name="HUD" parent="." unique_id=1906468594 instance=ExtResource("10_4wn0b")]
 visible = false
-
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1662037132]
-visible = false
-
-[node name="Control" type="Control" parent="CanvasLayer" unique_id=278930507]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 633.0
-offset_bottom = 365.0
-
-[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer/Control" unique_id=1887391876]
-layout_mode = 0
-offset_right = 640.0
-offset_bottom = 360.0
-mouse_filter = 0
-stretch = true
-mouse_target = true
-
-[node name="SubViewport" type="SubViewport" parent="CanvasLayer/Control/SubViewportContainer" unique_id=1464624643]
-transparent_bg = true
-handle_input_locally = false
-canvas_item_default_texture_filter = 0
-physics_object_picking = true
-sdf_scale = 0
-size = Vector2i(640, 360)
-size_2d_override = Vector2i(640, 360)
-size_2d_override_stretch = true
-render_target_update_mode = 0
 
 [node name="GrandMarketArea" type="Area2D" parent="." unique_id=1746715903]
 position = Vector2(373.5, 334)
@@ -1048,7 +1019,7 @@ offset_top = 62.0
 offset_right = 38.0
 offset_bottom = 75.0
 
-[node name="Tag" parent="Dojo/NameTag" index="1"]
+[node name="Tag" parent="Dojo/NameTag" index="1" unique_id=725373759]
 offset_left = 2.0
 offset_top = -1.0
 offset_right = 90.0
@@ -1100,7 +1071,7 @@ offset_top = 83.0
 offset_right = 66.0
 offset_bottom = 96.0
 
-[node name="Tag" parent="SmithingStation/NameTag" index="1"]
+[node name="Tag" parent="SmithingStation/NameTag" index="1" unique_id=725373759]
 text = "Sword Crafting Station"
 
 [node name="GemStoneStation" type="Sprite2D" parent="." unique_id=1264484593]
@@ -1113,10 +1084,10 @@ offset_top = 51.0
 offset_right = 54.0
 offset_bottom = 64.0
 
-[node name="Bg" parent="GemStoneStation/NameTag" index="0"]
+[node name="Bg" parent="GemStoneStation/NameTag" index="0" unique_id=1015277224]
 offset_right = 95.0
 
-[node name="Tag" parent="GemStoneStation/NameTag" index="1"]
+[node name="Tag" parent="GemStoneStation/NameTag" index="1" unique_id=725373759]
 text = "Gem Stone Upgrade Station"
 
 [node name="GemStoneStationArea" type="Area2D" parent="GemStoneStation" unique_id=79681493]
@@ -1186,7 +1157,7 @@ offset_top = 3.0
 offset_right = 40.0
 offset_bottom = 16.0
 
-[node name="Tag" parent="TechTreeComputer/NameTag4" index="1"]
+[node name="Tag" parent="TechTreeComputer/NameTag4" index="1" unique_id=725373759]
 text = "Upgrades PC"
 
 [node name="AmbiencePlayer" parent="." unique_id=1081747127 instance=ExtResource("23_5xris")]
@@ -1268,7 +1239,7 @@ offset_top = 383.0
 offset_right = 434.0
 offset_bottom = 396.0
 
-[node name="Tag" parent="NameTag5" index="1"]
+[node name="Tag" parent="NameTag5" index="1" unique_id=725373759]
 text = "Trade Market"
 
 [node name="DirectionSign4" type="Sprite2D" parent="." unique_id=1956902206]
@@ -1316,6 +1287,29 @@ position = Vector2(508, 544)
 [node name="GemStoneChest" parent="." unique_id=1511035040 instance=ExtResource("34_y20fx")]
 position = Vector2(352, 656)
 chest_stats = ExtResource("35_hw86b")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=842259970]
+visible = false
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=1618865500]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer/Control" unique_id=628454147]
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 360.0
+
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer/Control/SubViewportContainer" unique_id=2102288724]
+transparent_bg = true
+handle_input_locally = false
+physics_object_picking = true
+size = Vector2i(640, 360)
+render_target_update_mode = 0
 
 [connection signal="body_entered" from="TowerArea" to="." method="_on_tower_area_body_entered"]
 [connection signal="body_exited" from="TowerArea" to="." method="_on_tower_area_body_exited"]

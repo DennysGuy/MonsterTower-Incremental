@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="EnemyDrop" format=3 uid="uid://sbvd7ewnpn0s"]
+
+[ext_resource type="Script" uid="uid://cubudt76pshmm" path="res://src/Scripts/Enemies/enemy_drop.gd" id="1_ovdgp"]
+[ext_resource type="Texture2D" uid="uid://bevgrub0htmb6" path="res://Assets/Enemies/MimicSerpant/MimicSerpant_Tongue.png" id="1_qwend"]
+
+[resource]
+script = ExtResource("1_ovdgp")
+drop_icon = ExtResource("1_qwend")
+drop_chance = 0.2
+item_name = "Serpant Tongue"
+item_type = 1
+sell_value = 135
+shop_icon = ExtResource("1_qwend")
+description = "Plucked off the carcass of a Serpant Mimic. Those who are touched by it are stunned for a period of time allowing for the mimic to devour its prey."
+metadata/_custom_type_script = "uid://cubudt76pshmm"

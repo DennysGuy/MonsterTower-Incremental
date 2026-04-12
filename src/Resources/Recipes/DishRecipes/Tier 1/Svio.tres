@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="CraftingRecipe" format=3 uid="uid://dvll2non4abwb"]
+
+[ext_resource type="Texture2D" uid="uid://qi6cqdd1uhvd" path="res://Assets/Facilities/CookingStation/Svio.png" id="1_qsnlq"]
+[ext_resource type="Resource" uid="uid://d1pg7dveofnwm" path="res://src/Resources/Dishes/Svio.tres" id="2_kvvpw"]
+[ext_resource type="Resource" uid="uid://c1ve0dpgibjgv" path="res://src/Resources/Actors/Enemies/Biome1/OrcWarlord/OrcHead.tres" id="3_0iei1"]
+[ext_resource type="Script" uid="uid://cljygiasf4103" path="res://src/Scripts/Facilities/crafting_recipe.gd" id="5_h0erp"]
+
+[resource]
+script = ExtResource("5_h0erp")
+recipe_name = "Orc Svio"
+menu_icon = ExtResource("1_qsnlq")
+description = "Grotesque to look at - but the flavor is of the gods!"
+recipe_tier = 1
+crafting_time = 30.0
+recipe_type = 1
+success_rate = 0.75
+critical_success_rate = 0.1
+failure_rate = 0.2
+output_item = ExtResource("2_kvvpw")
+recipe_list = Array[Dictionary]([{
+ExtResource("3_0iei1"): 2
+}])
+metadata/_custom_type_script = "uid://cljygiasf4103"

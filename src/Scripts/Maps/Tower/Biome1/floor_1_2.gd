@@ -15,6 +15,12 @@ func _ready() -> void:
 	if gem_stone_chest_markers and !GameManager.hunt_challenge_selected and PlayerStats.facilities_unlocked["Gem Stone Station"]:
 		spawn_gem_chests()
 	
+	if hp_replenish_points and PlayerStats.facilities_unlocked["HP Chalice"] and !GameManager.hunt_challenge_selected:
+		spawn_hp_chalices()
+	
+	if mp_replenish_points and PlayerStats.facilities_unlocked["MP Vial"] and !GameManager.hunt_challenge_selected:
+		spawn_mp_vials()
+	
 	await get_tree().process_frame
 	
 	if monster_spawn_node:
@@ -32,15 +38,17 @@ func _ready() -> void:
 		GameManager.enemies_can_move = false
 		SignalBus.hide_hunt_challenge_button.emit()
 		var monster_count : int = monster_spawn_node.get_children().size()
-		SignalBus.update_monsters_left.emit("Monsters left: %s" % [monster_count],false)
+		SignalBus.update_monsters_left.emit("Monsters left: %s" % [monster_count])
 		player.damageable = false
-		await get_tree().create_timer(0.5).timeout
+		await get_tree().create_timer(0.5).tidmeout
 		hud.set_hunt_timer()
 		hud.expedition_timer.update_timer_label()
 		hud.animation_player.play("StartHuntChallenge")
 		await get_tree().create_timer(4.0).timeout
 		player.damageable = true
 		GameManager.player_can_move = true
+	else:
+		SignalBus.start_enemy_spawn.emit()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

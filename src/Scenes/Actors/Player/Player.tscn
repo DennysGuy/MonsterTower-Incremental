@@ -38,6 +38,7 @@
 [ext_resource type="Texture2D" uid="uid://bgt8eq7c5pihv" path="res://Assets/PlayerGraphics/NewPlayer/PlayerJump.png" id="32_skwl0"]
 [ext_resource type="Texture2D" uid="uid://dmxac208pqj78" path="res://Assets/PlayerGraphics/VFX/DoubleCleaveEffect.png" id="34_b0557"]
 [ext_resource type="Texture2D" uid="uid://cuotuhxe254px" path="res://Assets/PlayerGraphics/NewPlayer/PlayerPickaxeSwing.png" id="34_skwl0"]
+[ext_resource type="Texture2D" uid="uid://clynvkfw53riy" path="res://Assets/PlayerGraphics/NewPlayer/PlayerFall.png" id="35_mgyqt"]
 [ext_resource type="Texture2D" uid="uid://eo2agfsuxlht" path="res://Assets/PlayerGraphics/NewPlayer/PlayerRun.png" id="35_qf8dm"]
 [ext_resource type="Texture2D" uid="uid://txambqa3tjgj" path="res://Assets/PlayerGraphics/Pickaxes/Pickaxe_Swing_Effect.png" id="35_skwl0"]
 [ext_resource type="Texture2D" uid="uid://c5hsta61b1rxd" path="res://Assets/PlayerGraphics/NewPlayer/PlayerBasicAttack.png" id="36_ysgjh"]
@@ -46,8 +47,8 @@
 [ext_resource type="Texture2D" uid="uid://cn6ofy35wwrbd" path="res://Assets/PlayerGraphics/NewPlayer/PlayerSwordSlam.png" id="38_fw0a5"]
 [ext_resource type="Texture2D" uid="uid://pndi4y2dq7hk" path="res://Assets/PlayerGraphics/VFX/SwordSlamEffect.png" id="41_uayox"]
 [ext_resource type="Texture2D" uid="uid://cx67kof5agx23" path="res://Assets/PlayerGraphics/VFX/SwordSoarEffect.png" id="43_0hs1n"]
-[ext_resource type="Texture2D" uid="uid://byycfcy4i7vap" path="res://Assets/PlayerGraphics/Outfits/TyrosFit/TyroFit_SwordSoar.png" id="43_y747d"]
-[ext_resource type="Texture2D" uid="uid://b2xek5bmcb4a" path="res://Assets/PlayerGraphics/Weapons/ShroomSword/ShroomSword_SwordSoar.png" id="44_uayox"]
+[ext_resource type="Texture2D" uid="uid://da01x6ypb46we" path="res://Assets/PlayerGraphics/Outfits/AdventurersFit/AdventurerFit_Fall.png" id="45_mgyqt"]
+[ext_resource type="Texture2D" uid="uid://5h15bet6jee3" path="res://Assets/PlayerGraphics/Weapons/BatclopseSword/BatclopseSword_SwordSlam.png" id="46_0kjqt"]
 [ext_resource type="Script" uid="uid://cvq0qwds1scf6" path="res://src/Scripts/Player/gem_chest_hit_area.gd" id="48_0hs1n"]
 
 [sub_resource type="Animation" id="Animation_cq2ky"]
@@ -546,7 +547,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1]
+"values": [0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -558,7 +559,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("32_skwl0")]
+"values": [ExtResource("35_mgyqt")]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -570,7 +571,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [2]
+"values": [1]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -582,7 +583,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1]
+"values": [0]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -594,7 +595,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [2]
+"values": [1]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -606,7 +607,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [2]
+"values": [1]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -618,7 +619,7 @@ tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1]
+"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_cgv26"]
@@ -734,7 +735,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [2]
+"values": [1]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -758,7 +759,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [2]
+"values": [1]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -767,10 +768,10 @@ tracks/5/path = NodePath("../Outfit:hframes")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.0009999999),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [2]
+"values": [1, 1]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -779,10 +780,10 @@ tracks/6/path = NodePath("../Outfit:frame")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.0009999999),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [0]
+"values": [0, 0]
 }
 
 [sub_resource type="Animation" id="Animation_a5kf2"]
@@ -1189,7 +1190,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1]
+"values": [3]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -1213,7 +1214,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [1]
+"values": [3]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -1279,7 +1280,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1]
+"values": [3]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -1303,7 +1304,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1]
+"values": [3]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -1339,7 +1340,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [1]
+"values": [3]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -1940,12 +1941,13 @@ sfx_player = NodePath("SfxPlayer")
 script = ExtResource("2_n7gp4")
 initial_state = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="StateMachine" unique_id=246257889 node_paths=PackedStringArray("move_state", "jump_state", "fall_state", "attack_1_state", "swing_pick_axe_state", "climb_state", "special_attack")]
+[node name="Idle" type="Node" parent="StateMachine" unique_id=246257889 node_paths=PackedStringArray("move_state", "jump_state", "fall_state", "attack_1_state", "dash_attack_state", "swing_pick_axe_state", "climb_state", "special_attack")]
 script = ExtResource("3_g162h")
 move_state = NodePath("../Move")
 jump_state = NodePath("../Jump")
 fall_state = NodePath("../Fall")
 attack_1_state = NodePath("../Attack1")
+dash_attack_state = NodePath("../DashAttack")
 swing_pick_axe_state = NodePath("../SwingPickAxe")
 climb_state = NodePath("../Climb")
 special_attack = NodePath("../SpecialAttack")
@@ -2095,18 +2097,16 @@ libraries/ = SubResource("AnimationLibrary_pawjx")
 [node name="PlayerSprite" type="Sprite2D" parent="Sprites" unique_id=1041617266]
 position = Vector2(0, -32)
 scale = Vector2(1, 0.98604256)
-texture = ExtResource("36_ysgjh")
-hframes = 17
-frame = 12
+texture = ExtResource("32_skwl0")
 
 [node name="Outfit" type="Sprite2D" parent="Sprites" unique_id=411712928]
 position = Vector2(0, -32)
 scale = Vector2(1, 0.98604256)
-texture = ExtResource("43_y747d")
+texture = ExtResource("45_mgyqt")
 
 [node name="Sword" type="Sprite2D" parent="Sprites" unique_id=1728017757]
-position = Vector2(0, -32)
-texture = ExtResource("44_uayox")
+position = Vector2(0, -33)
+texture = ExtResource("46_0kjqt")
 hframes = 15
 
 [node name="Effect" type="Sprite2D" parent="Sprites" unique_id=217080024]
@@ -2120,6 +2120,7 @@ position = Vector2(-2, -20)
 shape = SubResource("RectangleShape2D_susmm")
 
 [node name="HitBox" parent="." unique_id=1465797301 instance=ExtResource("16_cw62c")]
+visible = false
 position = Vector2(27, -20)
 scale = Vector2(2, 2)
 
@@ -2128,6 +2129,7 @@ position = Vector2(-2.5, 0)
 shape = SubResource("RectangleShape2D_45oew")
 
 [node name="SwordSoarHitBox" parent="." unique_id=774236698 instance=ExtResource("16_cw62c")]
+visible = false
 position = Vector2(-12, -52)
 monitoring = false
 monitorable = false
@@ -2138,6 +2140,7 @@ shape = SubResource("RectangleShape2D_y747d")
 disabled = true
 
 [node name="DashAttackHitBox" parent="." unique_id=1299507598 instance=ExtResource("16_cw62c")]
+visible = false
 position = Vector2(23, -20)
 scale = Vector2(2, 2)
 
@@ -2175,7 +2178,11 @@ shape = SubResource("RectangleShape2D_5so87")
 [node name="CoinPurse" type="Marker2D" parent="." unique_id=900619047]
 position = Vector2(-1, -15)
 
+[node name="Holder" type="Marker2D" parent="." unique_id=1134448368]
+position = Vector2(-25, -23)
+
 [node name="GemChestHitArea" type="Area2D" parent="." unique_id=1770032373]
+visible = false
 position = Vector2(11, -11)
 collision_layer = 4
 collision_mask = 4
@@ -2189,6 +2196,7 @@ shape = SubResource("RectangleShape2D_mgyqt")
 disabled = true
 
 [node name="EndingArea" type="Area2D" parent="." unique_id=1253263909]
+visible = false
 position = Vector2(-1, -15)
 collision_layer = 512
 collision_mask = 512
@@ -2199,6 +2207,7 @@ shape = SubResource("RectangleShape2D_0hs1n")
 [node name="SfxPlayer" parent="." unique_id=926725307 instance=ExtResource("25_1twwa")]
 
 [node name="ItemPickUpArea" type="Area2D" parent="." unique_id=1587504703]
+visible = false
 position = Vector2(0, -10)
 collision_layer = 2048
 collision_mask = 2048

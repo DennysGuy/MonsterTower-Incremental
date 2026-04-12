@@ -16,7 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://n4ky26neitxn" path="res://Audio/Music/TempVictoryTheme1.mp3" id="5_pkrjl"]
 [ext_resource type="TileSet" uid="uid://cbwyncwtk5kxk" path="res://src/Scenes/Tower/TowerFloors/Biome1/Biome1-Boundaries.tres" id="5_tuy5g"]
 [ext_resource type="Resource" uid="uid://dxfrcyw0rux0q" path="res://src/Resources/OreRock/TinOreRock.tres" id="6_hvi06"]
-[ext_resource type="PackedScene" uid="uid://bethw5tnlxnnt" path="res://src/Scenes/Actors/Enemies/CorruptedMushie/CorruptedMushie.tscn" id="6_ko10l"]
+[ext_resource type="PackedScene" uid="uid://bethw5tnlxnnt" path="res://src/Scenes/Actors/Enemies/MossyDungeon/CorruptedMushie/CorruptedMushie.tscn" id="6_ko10l"]
 [ext_resource type="TileSet" uid="uid://flobhfna8te" path="res://src/Scenes/Tower/TowerFloors/Biome1/Biome1-Platforms.tres" id="6_om3xh"]
 [ext_resource type="PackedScene" uid="uid://crvhogk2bnq1s" path="res://src/Scenes/NewStarshire/TowerGuideSprite.tscn" id="7_0rtsh"]
 [ext_resource type="PackedScene" uid="uid://colj4ff1w8ij1" path="res://src/Scenes/Tower/OreRock.tscn" id="7_yx3jr"]
@@ -26,11 +26,12 @@
 [ext_resource type="PackedScene" uid="uid://cps01vtaqexec" path="res://src/Scenes/Tower/TowerFloors/GemStoneMarker.tscn" id="14_83waj"]
 [ext_resource type="PackedScene" uid="uid://c11hg5ijdrjjs" path="res://src/Scenes/Tower/TowerFloors/ExitElevator1.tscn" id="15_obgwm"]
 [ext_resource type="PackedScene" uid="uid://cexhahnue1wh6" path="res://src/Scenes/Tower/TowerFloors/FloorGuideLog.tscn" id="15_om3xh"]
+[ext_resource type="PackedScene" uid="uid://cm6ttxlrvgkvd" path="res://src/Scenes/Tower/TowerFloors/ChalicePositionMarker.tscn" id="21_rayuj"]
 [ext_resource type="PackedScene" uid="uid://cpb0pkf7ygatb" path="res://src/Scenes/Tower/TowerFloors/MonsterSpawnNode.tscn" id="23_6qxhp"]
 [ext_resource type="PackedScene" uid="uid://c6tv3t1cpeq8f" path="res://src/Scenes/PlayerSpawnPoint.tscn" id="23_jmmg4"]
 [ext_resource type="Resource" uid="uid://dbb7k6hptjvyy" path="res://src/Resources/TowerEntranceData/Floor1-2.tres" id="26_cvbrj"]
 [ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="26_r86ak"]
-[ext_resource type="PackedScene" uid="uid://d1c4li7h3joya" path="res://src/Scenes/Actors/Enemies/WillowShrub/WillowShrub.tscn" id="26_rayuj"]
+[ext_resource type="PackedScene" uid="uid://d1c4li7h3joya" path="res://src/Scenes/Actors/Enemies/MossyDungeon/WillowShrub/WillowShrub.tscn" id="26_rayuj"]
 [ext_resource type="PackedScene" uid="uid://d150vkltffpjo" path="res://src/Scenes/Tower/TowerFloors/CheckPointCampfire.tscn" id="27_8wimh"]
 [ext_resource type="Texture2D" uid="uid://xd36daaflxhj" path="res://Assets/Tower/ExitAreaIcon.png" id="30_yeiuc"]
 [ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="33_savf5"]
@@ -1065,7 +1066,7 @@ size = Vector2(166, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0rtsh"]
 size = Vector2(297, 20)
 
-[node name="Floor1-1" type="Node2D" unique_id=1821431660 node_paths=PackedStringArray("exit_elevator", "camera", "hud", "ore_rock_markers", "gem_stone_chest_markers", "campfire_list", "sfx_player", "monster_spawn_node", "pause_canvas_layer", "ambience_player")]
+[node name="Floor1-1" type="Node2D" unique_id=1821431660 node_paths=PackedStringArray("exit_elevator", "camera", "hud", "ore_rock_markers", "gem_stone_chest_markers", "campfire_list", "hp_replenish_points", "mp_replenish_points", "sfx_player", "monster_spawn_node", "pause_canvas_layer", "ambience_player")]
 script = ExtResource("1_u3nwm")
 map_name = "Floor 1-1"
 map_id = 1
@@ -1080,6 +1081,8 @@ ore_rock_spawn_rate = 0.65
 ore_rock_markers = NodePath("OreRockMarkers")
 gem_stone_chest_markers = NodePath("GemStoneChestMarkers")
 campfire_list = NodePath("CheckpointCampfires")
+hp_replenish_points = NodePath("HPReplenishPoints")
+mp_replenish_points = NodePath("MPReplenishPoints")
 path = "uid://bpob51vk7v2cj"
 next_room_path = "res://src/Scenes/Tower/TowerFloors/Biome1/Floor1-2.tscn"
 sfx_player = NodePath("SfxPlayer")
@@ -1198,6 +1201,13 @@ spawn_parent = NodePath("../..")
 position = Vector2(506, 159)
 reference_name = "Floor 1-1 Campfire 1"
 entrance_data = ExtResource("2_n5ad4")
+
+[node name="HPReplenishPoints" type="Node" parent="." unique_id=946691670]
+
+[node name="ChalicePositionMarker" parent="HPReplenishPoints" unique_id=1970294222 instance=ExtResource("21_rayuj")]
+position = Vector2(274, 160)
+
+[node name="MPReplenishPoints" type="Node" parent="." unique_id=201339719]
 
 [node name="LadderArea" parent="." unique_id=945258592 node_paths=PackedStringArray("ladder_top", "ladder_bottom") instance=ExtResource("5_c1fqw")]
 position = Vector2(479, 899)
@@ -1386,9 +1396,6 @@ position = Vector2(222, 961)
 position = Vector2(464, 160)
 index = 1
 
-[node name="HUD" parent="." unique_id=278431122 instance=ExtResource("4_aah8w")]
-visible = false
-
 [node name="ExitAreaIcon" type="Sprite2D" parent="." unique_id=679118911]
 position = Vector2(144, 873)
 texture = ExtResource("30_yeiuc")
@@ -1415,6 +1422,9 @@ theme_override_fonts/font = ExtResource("33_savf5")
 theme_override_font_sizes/font_size = 10
 text = "Jumping Up Ladders
 Will Speed up traversal"
+
+[node name="HUD" parent="." unique_id=278431122 instance=ExtResource("4_aah8w")]
+visible = false
 
 [connection signal="body_entered" from="TowerExitArea" to="." method="_on_tower_exit_area_body_entered"]
 [connection signal="body_exited" from="TowerExitArea" to="." method="_on_tower_exit_area_body_exited"]

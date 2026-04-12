@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="EnemyStats" format=3 uid="uid://cnwbnpkxv6bpd"]
+
+[ext_resource type="Resource" uid="uid://d04rjjbqyhkkc" path="res://src/Resources/Actors/Enemies/Biome1/OrcWarlord/OrcChainMail.tres" id="1_57r06"]
+[ext_resource type="Resource" uid="uid://c1ve0dpgibjgv" path="res://src/Resources/Actors/Enemies/Biome1/OrcWarlord/OrcHead.tres" id="1_lcbs5"]
+[ext_resource type="Script" uid="uid://cbjktr12qagl" path="res://src/Scripts/Enemies/enemy_stats.gd" id="1_uivp7"]
+[ext_resource type="Resource" uid="uid://nf1ifjiq5bk" path="res://src/Resources/Actors/Enemies/Biome1/OrcWarlord/OrcPad.tres" id="3_1s8jc"]
+
+[resource]
+script = ExtResource("1_uivp7")
+enemy_name = "Orc Warlord"
+enemy_level = 11
+touch_damage = true
+enemy_type = 1
+max_health = 2200
+attack = 115
+defense = 15.0
+movement_speed = 30.0
+chase_speed = 100.0
+break_threshold = 12
+novelty_item_drop = ExtResource("3_1s8jc")
+cooking_item_drop = ExtResource("1_lcbs5")
+crafting_item_drop = ExtResource("1_57r06")
+metadata/_custom_type_script = "uid://cbjktr12qagl"

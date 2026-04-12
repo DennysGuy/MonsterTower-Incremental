@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="CraftingRecipe" format=3 uid="uid://n6a0ub38hxaj"]
+
+[ext_resource type="Resource" uid="uid://cs6ojn6tc0alq" path="res://src/Resources/CraftingResources/SteelBar.tres" id="1_mpqa4"]
+[ext_resource type="Script" uid="uid://cljygiasf4103" path="res://src/Scripts/Facilities/crafting_recipe.gd" id="1_vjtcs"]
+[ext_resource type="Resource" uid="uid://bvpv4cq7bcds3" path="res://src/Resources/Actors/Enemies/Biome1/SerpantMimic/PurifiedChest.tres" id="2_cwajh"]
+[ext_resource type="Resource" uid="uid://lyuo51uo7crd" path="res://src/Resources/Actors/Enemies/Biome1/GoblinThief/HiddenShiv.tres" id="3_dpw8o"]
+
+[resource]
+script = ExtResource("1_vjtcs")
+recipe_name = "Lurker's Rapier"
+recipe_tier = 1
+recipe_type = 2
+recipe_list = Array[Dictionary]([{
+ExtResource("1_mpqa4"): 2
+}, {
+ExtResource("2_cwajh"): 2
+}, {
+ExtResource("3_dpw8o"): 2
+}])
+metadata/_custom_type_script = "uid://cljygiasf4103"

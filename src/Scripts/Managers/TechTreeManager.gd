@@ -59,21 +59,31 @@ enum TECH_NODE_TYPE {ABILITY, FACILITY, CLASS_ABILITY}
 	"Hunter License" : 0,
 	"Attack 1" : 0,
 	"Attack 2" : 0,
+	"Attack 3" : 0,
+	"Attack 4" : 0,
 	"Arial Slash":0,
 	"Accuracy 1": 0,
 	"Accuracy 2": 0,
 	"Crit Chance 1" : 0,
 	"Crit Chance 2": 0,
+	"Crit Chance 3": 0,
+	"Crit Chance 4": 0,
 	"Crit Damage 1" : 0,
 	"Crit Damage 2": 0,
+	"Crit Damage 3": 0,
+	"Crit Damage 4": 0,
 	"Movement 1" : 0,
 	"Movement 2" : 0,
+	"Movement 3" : 0,
 	"Climb Speed 1" : 0,
 	"Climb Speed 2": 0,
 	"Jump Height 1":0,
 	"Jump Height 2":0,
+	"Jump Height 3":0,
 	"Max HP 1":0,
 	"Max HP 2": 0,
+	"Max MP 1":0,
+	"Max MP 2":0,
 	"Defense 1": 0,
 	"Defense 2":0,
 	"Expedition Time 1": 0,
@@ -83,12 +93,15 @@ enum TECH_NODE_TYPE {ABILITY, FACILITY, CLASS_ABILITY}
 	"Crafting Tab":0,
 	"Item Bag 1":0,
 	"Item Bag 2":0,
+	"Item Bag 3":0,
 	"Deeper Pockets 1":0,
 	"Deeper Pockets 2":0,
+	"Deeper Pockets 3":0,
 	"Dash Attack":0,
 	"Dash Attack Duration 1":0,
 	"Banking":0,
 	"Banking 2":0,
+	"Banking 3":0,
 	"Cooking Station":0,
 	"Cooking Drops 1": 0,
 	"Cooking Drops 2": 0,
@@ -108,7 +121,11 @@ enum TECH_NODE_TYPE {ABILITY, FACILITY, CLASS_ABILITY}
 	"Invincibility Duration 1":0.0,
 	"Double Jump" : 0.0,
 	"Tier 1 Gem Chest Rate Up": 0.0,
-	"Tier 1 Gem Drop Rate Up": 0.0
+	"Tier 1 Gem Drop Rate Up": 0.0,
+	"Vial of the Esoteric":0.0,
+	"Chalice of Welfare":0.0,
+	"Chalice Spawn Rate 1":0.0,
+	"Vial Spawn Rate 1": 0.0
 }
 
 @onready var warrior_tech_nodes : Dictionary = {
@@ -150,7 +167,7 @@ func increment_upgrade_count() -> void:
 	if current_upgrade_count >= upgrade_count_to_prestige:
 		current_prestige += 1
 		PlayerStats.player_stats["Hunt Time"] += 12
-		PlayerStats.player_stats["Expedition Time"] += 20
+		PlayerStats.player_stats["Expedition Time"] += 30
 		upgrade_count_to_prestige += 15
 		current_upgrade_count = 0
 		update_prestige_tier_label.emit()

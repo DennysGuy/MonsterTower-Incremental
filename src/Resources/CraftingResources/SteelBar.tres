@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://cs6ojn6tc0alq"]
+
+[ext_resource type="Script" uid="uid://cu8drgivmhfn" path="res://src/Scripts/item.gd" id="1_5i8vy"]
+[ext_resource type="Texture2D" uid="uid://bg4ge0qg5n8kh" path="res://Assets/Facilities/SmeltingStation/SteelBar.png" id="2_p1t5o"]
+
+[resource]
+script = ExtResource("1_5i8vy")
+item_name = "Steel Bar"
+item_type = 5
+sell_value = 180
+shop_icon = ExtResource("2_p1t5o")
+description = "A great, mid-tier resource for solid reliable gear."
+metadata/_custom_type_script = "uid://cu8drgivmhfn"

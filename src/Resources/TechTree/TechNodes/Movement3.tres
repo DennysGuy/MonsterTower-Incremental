@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://ohr0gxoujtw2"]
+
+[ext_resource type="Texture2D" uid="uid://bgix74pncu430" path="res://Assets/NodeGraphics/NodeGraphicsV2/Movement2_V2.png" id="1_atcea"]
+[ext_resource type="Resource" uid="uid://b4owo1wr47wc" path="res://src/Resources/Dishes/WrappedKabab.tres" id="2_atcea"]
+[ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="3_x6iwr"]
+
+[resource]
+script = ExtResource("3_x6iwr")
+node_name = "Movement 3"
+icon = ExtResource("1_atcea")
+description = "For each level, increases movement speed by 5%"
+max_level = 3
+currency_required = 1500
+materials_required = Array[Dictionary]([{
+ExtResource("2_atcea"): 2
+}])
+stat_name = "Movement Speed"
+upgrade_interval = 0.05
+prereqs = Array[String](["Movement 1:2"])
+metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

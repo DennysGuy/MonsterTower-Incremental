@@ -40,6 +40,8 @@ TODO: We will add saves for classes as well
 	"Max MP": 200,
 	"Current Health":60,
 	"Current MP": 200,
+	"HP Recovery": 0.3,
+	"MP Recovery" : 0.4,
 	"Equipped Sword": 0,
 	"Equipped Pickaxe": 0,
 	"Overlapping Hits" : 1.0,
@@ -53,14 +55,16 @@ TODO: We will add saves for classes as well
 	"Smelting Speed": 0.15,
 	"Mining Damage": 5,
 	"Monster Cap Bonus": 0,
-	"Expedition Time": 90.0,
+	"Expedition Time": 30.0,
 	"Hunt Time": 30.0,
 	"Cooking Drop Chance Bonus":0.0,
 	"Cooking Accuracy Bonus":0.0,
 	"Ore Drop Chance Bonus":0.0,
 	"Smelting Accuracy Bonus":0.0,
 	"Tier 1 Chest Spawn Rate": 0.1,
-	"Tier 1 Gem Drop Rate":0.3
+	"Tier 1 Gem Drop Rate":0.3,
+	"Chalice Spawn Rate":0.12,
+	"Vial Spawn Rate": 0.12
 }
 
 #this will be loaded when we enter the tower entrance map or a map in and of itself
@@ -85,6 +89,25 @@ TODO: We will add saves for classes as well
 		"Hunt Challenge Unlocked": false,
 		"Hunt Challenge Completed": false
 	},
+	"Floor 1-4" : {
+		"Number of Spawn Locations" : 0,
+		"Campfires Reached": 0,
+		"Hunt Challenge Unlocked": false,
+		"Hunt Challenge Completed": false
+	},
+	"Floor 1-5" : {
+		"Number of Spawn Locations" : 0,
+		"Campfires Reached": 0,
+		"Hunt Challenge Unlocked": false,
+		"Hunt Challenge Completed": false
+	},
+	"Floor 1-6" : {
+		"Number of Spawn Locations" : 0,
+		"Campfires Reached": 0,
+		"Hunt Challenge Unlocked": false,
+		"Hunt Challenge Completed": false,
+		"Activation Switch Unlocked": false,
+	},
 	
 }
 #loadded when we hit "continue game"
@@ -98,14 +121,18 @@ TODO: We will add saves for classes as well
 	"Arial Slash" : false,
 	"Dash Attack": false,
 	"Double Jump": false,
-	"Gem Stone Station": false
+	"Gem Stone Station": false,
+	"HP Chalice" : false,
+	"MP Vial" : false
 }
-
 
 @export var check_points_unlocked : Dictionary = {
 	"Floor 1-1" : false,
 	"Floor 1-2" : false,
-	"Floor 1-3" : false
+	"Floor 1-3" : false,
+	"Floor 1-4" : false,
+	"Floor 1-5" : false,
+	"Floor 1-6" : false,
 }
 
 
@@ -116,23 +143,33 @@ TODO: We will add saves for classes as well
 	"Hunter License" : {"Level":0, "Unlocked": true},
 	"Attack 1" : {"Level":0, "Unlocked": false},
 	"Attack 2" : {"Level":0, "Unlocked": false},
+	"Attack 3" : {"Level":0, "Unlocked": false},
+	"Attack 4" : {"Level":0, "Unlocked": false},
 	"Arial Slash": {"Level":0, "Unlocked": true},
 	"Accuracy 1": {"Level":0, "Unlocked": false},
 	"Accuracy 2": {"Level":0, "Unlocked": false},
 	"Crit Chance 1" : {"Level":0, "Unlocked": false},
 	"Crit Chance 2": {"Level":0, "Unlocked": false},
+	"Crit Chance 3": {"Level":0, "Unlocked":false},
+	"Crit Chance 4": {"Level":0, "Unlocked":false},
 	"Crit Damage 1" : {"Level":0, "Unlocked": false},
 	"Crit Damage 2": {"Level":0, "Unlocked": false},
+	"Crit Damage 3": {"Level":0, "Unlocked": false},
+	"Crit Damage 4": {"Level":0, "Unlocked":false},
 	"Movement 1" : {"Level":0, "Unlocked": false},
 	"Movement 2" : {"Level":0, "Unlocked": false},
+	"Movement 3" : {"Level":0, "Unlocked": false},
 	"Climb Speed 1" : {"Level":0, "Unlocked": false},
 	"Climb Speed 2": {"Level":0, "Unlocked": false},
 	"Jump Height 1": {"Level":0, "Unlocked": false},
 	"Jump Height 2":{"Level":0, "Unlocked": false},
 	"Max HP 1": {"Level":0, "Unlocked": false},
 	"Max HP 2": {"Level":0, "Unlocked": false},
+	"Max MP 1": {"Level":0, "Unlocked": false},
+	"Max MP 2": {"Level":0, "Unlocked": false},
 	"Defense 1": {"Level":0, "Unlocked": false},
 	"Defense 2":{"Level":0, "Unlocked": false},
+	"Defense 3":{"Level":0, "Unlocked": false},
 	"Expedition Time 1": {"Level":0, "Unlocked": false},
 	"Expedition Time 2": {"Level":0, "Unlocked": false},
 	"Monster Cap 1": {"Level":0, "Unlocked": false},
@@ -140,12 +177,15 @@ TODO: We will add saves for classes as well
 	"Crafting Tab":{"Level":0, "Unlocked": false},
 	"Item Bag 1":{"Level":0, "Unlocked": false},
 	"Item Bag 2":{"Level":0, "Unlocked": false},
+	"Item Bag 3":{"Level":0, "Unlocked": false},
 	"Deeper Pockets 1":{"Level":0, "Unlocked": false},
 	"Deeper Pockets 2":{"Level":0, "Unlocked": false},
+	"Deeper Pockets 3":{"Level":0, "Unlocked": false},
 	"Dash Attack":{"Level":0, "Unlocked": true},
 	"Dash Attack Duration 1":{"Level":0, "Unlocked": false},
 	"Banking": {"Level":0, "Unlocked": false},
 	"Banking 2": {"Level":0, "Unlocked": false},
+	"Banking 3": {"Level":0, "Unlocked": false},
 	"Cooking Station": {"Level":0, "Unlocked": false},
 	"Cooking Drops 1": {"Level":0, "Unlocked": false},
 	"Cooking Drops 2": {"Level":0, "Unlocked": false},
@@ -166,7 +206,11 @@ TODO: We will add saves for classes as well
 	"Double Jump": {"Level":0, "Unlocked": true},
 	"Gem Stone Station": {"Level":0, "Unlocked":false},
 	"Tier 1 Gem Chest Rate Up":{"Level":0, "Unlocked": false},
-	"Tier 1 Gem Drop Rate Up":{"Level":0, "Unlocked": false}
+	"Tier 1 Gem Drop Rate Up":{"Level":0, "Unlocked": false},
+	"Chalice of Welfare":{"Level":0, "Unlocked": false},
+	"Vial of the Esoteric":{"Level":0,"Unlocked": false},
+	"Chalice Spawn Rate 1": {"Level":0,"Unlocked": false},
+	"Vial Spawn Rate 1": {"Level":0,"Unlocked": false},
 }
 
 @export var equipped_abilities : Dictionary = {
@@ -249,11 +293,11 @@ TODO: We will add saves for classes as well
 		},
 		"Special Attack": {
 			"Cooldown Time" : 3.0,
-			"HP Cost" : 0.0,
-			"MP Cost" : 7.0,
+			"HP Cost" :10.0,
+			"MP Cost" : 12.0,
 			"Base Attack": 0.0,
-			"Number of Enemies Hit" : 5.0,
-			"Max Hit Count": 1.0,
+			"Number of Enemies Hit" : 1.0,
+			"Max Hit Count": 2.0,
 			"Health Recovery" : 0.0,
 			"MP Recovery" : 0.0,
 			"Defense Modifier" : 0.0,
@@ -262,8 +306,8 @@ TODO: We will add saves for classes as well
 			"Stun Wait Time" : 0.0,
 			"Jump Height Modifier" : 0.0,
 			"Climb Speed Modifier" : 0.0,
-			"Attack Damage Modifier" : 0.5,
-			"Move Speed Modifier" : 0.4,
+			"Attack Damage Modifier" : 2.0,
+			"Move Speed Modifier" : 0.0,
 			"Crit Damage Modifier" : 0.0,
 			"Crit Chance Modifier" : 0.0,
 			"Dash Cooldown" : 0.0,
@@ -339,11 +383,11 @@ TODO: We will add saves for classes as well
 		},
 		"Special Attack": {
 			"Cooldown Time" : 3.0,
-			"HP Cost" : 0.0,
-			"MP Cost" : 7.0,
+			"HP Cost" :10.0,
+			"MP Cost" : 12.0,
 			"Base Attack": 0.0,
-			"Number of Enemies Hit" : 5.0,
-			"Max Hit Count": 1.0,
+			"Number of Enemies Hit" : 1.0,
+			"Max Hit Count": 2.0,
 			"Health Recovery" : 0.0,
 			"MP Recovery" : 0.0,
 			"Defense Modifier" : 0.0,
@@ -352,8 +396,8 @@ TODO: We will add saves for classes as well
 			"Stun Wait Time" : 0.0,
 			"Jump Height Modifier" : 0.0,
 			"Climb Speed Modifier" : 0.0,
-			"Attack Damage Modifier" : 0.5,
-			"Move Speed Modifier" : 0.4,
+			"Attack Damage Modifier" : 2.0,
+			"Move Speed Modifier" : 0.0,
 			"Crit Damage Modifier" : 0.0,
 			"Crit Chance Modifier" : 0.0,
 			"Dash Cooldown" : 0.0,

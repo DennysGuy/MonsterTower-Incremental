@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="EnemyStats" format=3 uid="uid://bq77ocfjc35gc"]
+
+[ext_resource type="Script" uid="uid://cbjktr12qagl" path="res://src/Scripts/Enemies/enemy_stats.gd" id="1_ckyny"]
+[ext_resource type="Resource" uid="uid://dkjdh3ty2qqfp" path="res://src/Resources/Actors/Enemies/Biome1/BeetleKnight/BeetleEye.tres" id="1_f2bla"]
+[ext_resource type="Resource" uid="uid://bwfenpkm4dc0g" path="res://src/Resources/Actors/Enemies/Biome1/BeetleKnight/BeetleClaw.tres" id="2_b00nh"]
+[ext_resource type="Resource" uid="uid://icdg42cdhvkx" path="res://src/Resources/Actors/Enemies/Biome1/BeetleKnight/BeetleHelm.tres" id="3_ntljy"]
+
+[resource]
+script = ExtResource("1_ckyny")
+enemy_name = "Beetle Knight"
+enemy_level = 6
+touch_damage = true
+enemy_type = 1
+max_health = 500
+attack = 40
+defense = 2.0
+movement_speed = 70.0
+chase_speed = 75.0
+break_threshold = 8
+novelty_item_drop = ExtResource("3_ntljy")
+cooking_item_drop = ExtResource("1_f2bla")
+crafting_item_drop = ExtResource("2_b00nh")
+metadata/_custom_type_script = "uid://cbjktr12qagl"

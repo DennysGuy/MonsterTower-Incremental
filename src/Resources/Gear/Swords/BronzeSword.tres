@@ -12,9 +12,9 @@
 [resource]
 script = ExtResource("1_vdyun")
 sword_name = "Bronze Fang Blade"
-attack_bonus = 18.0
-defense_bonus = 12.0
-attack_speed = 0.4
+attack_bonus = 28.0
+defense_bonus = 10.0
+attack_speed = 0.5
 crit_bonus = 0.1
 crit_damage_bonus = 0.1
 gem_stone_socket_count = 4

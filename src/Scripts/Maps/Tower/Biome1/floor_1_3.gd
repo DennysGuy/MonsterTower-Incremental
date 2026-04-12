@@ -9,7 +9,21 @@ func _ready() -> void:
 	super()
 	hud.animation_player.play("CloseIn")
 	#checkpoint_campfire.play("default")
-
+	SignalBus.start_enemy_spawn.emit()
+	SignalBus.spawn_enemies.emit()
+	
+	if ore_rock_markers and !GameManager.hunt_challenge_selected:
+		spawn_ore_rocks()
+	
+	if gem_stone_chest_markers and !GameManager.hunt_challenge_selected and PlayerStats.facilities_unlocked["Gem Stone Station"]:
+		spawn_gem_chests()
+	
+	if hp_replenish_points and PlayerStats.facilities_unlocked["HP Chalice"] and !GameManager.hunt_challenge_selected:
+		spawn_hp_chalices()
+	
+	if mp_replenish_points and PlayerStats.facilities_unlocked["MP Vial"] and !GameManager.hunt_challenge_selected:
+		spawn_mp_vials()
+		
 	await get_tree().process_frame
 	
 	if monster_spawn_node:

@@ -4,6 +4,7 @@ class_name RoomInfoBanner extends Control
 
 @onready var room_type_label: Label = $RoomTypeLabel
 @onready var tracker_label: RichTextLabel = $TrackerLabel
+@onready var tracker_container: GridContainer = $TrackerContainer
 
 const BOSS_DOOR_ROOM_BANNER = preload("uid://biqx0uuxyi844")
 const BOSS_ROOM_BANNER = preload("uid://dthuj11kv2hm8")
@@ -12,6 +13,7 @@ const HUNT_CHALLENGE_ROOM_BANNER = preload("uid://bvtlgbrmd3tqy")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	SignalBus.update_monsters_left.connect(update_kills_left)
 	SignalBus.update_banner_info.connect(update_banner_info)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -25,21 +27,47 @@ func update_banner_info(tower_entrance_data : TowerEntranceData) -> void:
 			room_type_label.text = "Expedition Map"
 			room_info_banner.texture = EXPEDITION_ROOM_BANNER
 			if tower_entrance_data.is_expedition_floor() and tower_entrance_data.unlock_recipe and !tower_entrance_data.hunt_challenge_completed:
-				tracker_label.text = "Repair the Elevator!"
+				update_tracker_container(tower_entrance_data)
+				if InventoryManager.calculate_quantity(tower_entrance_data.unlock_recipe) >= 1:
+					tracker_label.text = "[color=green]Repair the Elevator![/color]"
+				else:
+					tracker_label.text = "Repair the Elevator!"
 			else:
 				tracker_label.text = "~ Train, Hunt, Prepare! ~"
 		tower_entrance_data.FLOOR_TYPE.CHALLENGE:
 			room_type_label.text = "Challenge Map"
 			room_info_banner.texture = HUNT_CHALLENGE_ROOM_BANNER
 			if tower_entrance_data.camp_fires_reached >= tower_entrance_data.total_camp_fires:
-				tracker_label.text = "[color=green]Beat floor Challenge,\nUnlock next floor![/color]"
+				if !tower_entrance_data.hunt_challenge_completed:
+					tracker_label.text = "[color=green]Beat floor Challenge,\nUnlock next floor![/color]"
+				else:
+					tracker_label.text = "Head to the Exit Elevator\nto get to the next floor!"
 			else:
 				tracker_label.text = "Campfires Discovered: %s/%s" % [tower_entrance_data.camp_fires_reached, tower_entrance_data.total_camp_fires]
 		tower_entrance_data.FLOOR_TYPE.BOSS_DOOR:
 			room_type_label.text = "Boss Door Map"
 			room_info_banner.texture = BOSS_DOOR_ROOM_BANNER
-			#Will probably change this to keys once I get there
-			tracker_label.text = "Campfires Discovered: %s/%s" % [tower_entrance_data.camp_fires_reached, tower_entrance_data.total_camp_fires]
+			if !tower_entrance_data.activation_switch_unlocked:
+				tracker_label.text = "Find the door activation switch!"
+			elif tower_entrance_data.activation_switch_unlocked and !tower_entrance_data.hunt_challenge_completed:
+				tracker_label.text = "Beat the Challenge and Unlock the Boss Door."
+			elif tower_entrance_data.activation_switch_unlocked and !tower_entrance_data.hunt_challenge_completed:
+				tracker_label.text = "Enter the Door to the Boss lair."
+				
+			
 		tower_entrance_data.FLOOR_TYPE.BOSS_DOOR:
 			room_type_label.text = "Boss Map"
 			room_info_banner.texture = BOSS_ROOM_BANNER
+
+func update_kills_left(text : String) -> void:
+	tracker_label.text = text
+
+func update_tracker_container(tower_entrance_data : TowerEntranceData) -> void:
+	InventoryManager.clear_grid_container(tracker_container)
+	for item_dict in tower_entrance_data.unlock_recipe.recipe_list:
+		for item in item_dict.keys():
+			var quantity : int = InventoryManager.get_quantity(item, item.get_inventory_name())
+			var banner_tracker_item : BannerTracker = preload("uid://cui7mw0mkjt8h").instantiate()
+			banner_tracker_item.icon.texture = item.shop_icon
+			banner_tracker_item.tracker_label.text = "%s/%s %s" % [quantity, item_dict[item], item.item_name]
+			tracker_container.add_child(banner_tracker_item)

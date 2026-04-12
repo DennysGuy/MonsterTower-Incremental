@@ -1,0 +1,566 @@
+[gd_scene format=3 uid="uid://cyiot28va881c"]
+
+[ext_resource type="Script" uid="uid://cukvls0ec73td" path="res://src/Scripts/Enemies/general_enemy.gd" id="1_61466"]
+[ext_resource type="Resource" uid="uid://dwtw24hgj7tub" path="res://src/Resources/Actors/Enemies/Biome1/CorruptedMushie/CorruptedMushie_LvL2.tres" id="2_61466"]
+[ext_resource type="Texture2D" uid="uid://ba77mn7in2c1r" path="res://Assets/Enemies/CorruptedMushie/CorruptedMushie_LVL2_chase.png" id="3_61466"]
+[ext_resource type="Texture2D" uid="uid://ctjynt2rwtxkw" path="res://Assets/Enemies/CorruptedMushie/CorruptedMushie_LVL2_die.png" id="4_61466"]
+[ext_resource type="Texture2D" uid="uid://dwh2r3m68xj10" path="res://Assets/Enemies/CorruptedMushie/CorruptedMushie_LVL2_hit.png" id="5_61466"]
+[ext_resource type="Texture2D" uid="uid://ce462vnnn7u0w" path="res://Assets/Enemies/CorruptedMushie/CorruptedMushie_LVL2_idle.png" id="6_d1fh7"]
+[ext_resource type="Texture2D" uid="uid://bwsaud365nxdo" path="res://Assets/Enemies/CorruptedMushie/CorruptedMushie_Idle.png" id="6_obfx4"]
+[ext_resource type="Texture2D" uid="uid://c7d3l4ggb21f8" path="res://Assets/Enemies/CorruptedMushie/CorruptedMushie_LVL2_move.png" id="7_d1fh7"]
+[ext_resource type="PackedScene" uid="uid://vo5sm7p34vo6" path="res://src/Scenes/Actors/Utilities/NameTag.tscn" id="8_tmol1"]
+[ext_resource type="Texture2D" uid="uid://bb4khjrwxs0h2" path="res://Assets/Enemies/CorruptedMushie/CorruptedMushie_lvl2_Stun.png" id="9_j4mso"]
+[ext_resource type="PackedScene" uid="uid://b8lilr7mgc8l1" path="res://src/Scenes/Actors/Enemies/EnemyHealthBar.tscn" id="9_q6dtb"]
+[ext_resource type="Script" uid="uid://drr0deykmfrvq" path="res://src/Scripts/StateMachine/state_machine.gd" id="10_8ggvx"]
+[ext_resource type="Script" uid="uid://bwlb4547lknf" path="res://src/Scripts/StateMachine/EnemyStates/GenericEnemyStates/enemy_idle.gd" id="11_3wrxv"]
+[ext_resource type="Script" uid="uid://c6fw5ii2hdria" path="res://src/Scripts/StateMachine/EnemyStates/GenericEnemyStates/enemy_patrol.gd" id="12_4wuwh"]
+[ext_resource type="Script" uid="uid://bl81lc5if28vq" path="res://src/Scripts/StateMachine/EnemyStates/GenericEnemyStates/enemy_hit.gd" id="13_mcbq8"]
+[ext_resource type="AudioStream" uid="uid://ffdv7g8jgp4y" path="res://Audio/SFX/Biomes/MossyDungeon/GenericImpact1.wav" id="14_lvl2o"]
+[ext_resource type="AudioStream" uid="uid://d1bxfv1bv8md8" path="res://Audio/SFX/Biomes/MossyDungeon/GenericImpact2.wav" id="15_r2xd1"]
+[ext_resource type="AudioStream" uid="uid://c3puk7hyuliti" path="res://Audio/SFX/Biomes/MossyDungeon/GenericImpact3.wav" id="16_0f8t5"]
+[ext_resource type="Script" uid="uid://733mi1gdyrrk" path="res://src/Scripts/StateMachine/EnemyStates/GenericEnemyStates/enemy_dead.gd" id="17_3fp5y"]
+[ext_resource type="AudioStream" uid="uid://bgkrmxvnh87w" path="res://Audio/SFX/Biomes/MossyDungeon/GenericDeath1.wav" id="18_tkjdt"]
+[ext_resource type="AudioStream" uid="uid://cc4bln4u3i6b8" path="res://Audio/SFX/Biomes/MossyDungeon/GenericDeath2.wav" id="19_4pstx"]
+[ext_resource type="AudioStream" uid="uid://da4j7oibbpe1j" path="res://Audio/SFX/Biomes/MossyDungeon/GenericDeath3.wav" id="20_f8e23"]
+[ext_resource type="Script" uid="uid://b4xbaangfo4jo" path="res://src/Scripts/StateMachine/EnemyStates/GenericEnemyStates/enemy_chase.gd" id="21_vsbpx"]
+[ext_resource type="PackedScene" uid="uid://b73ndgmav7ja2" path="res://src/Scenes/Actors/Utilities/HealthComponent.tscn" id="22_jrr57"]
+[ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="23_nev77"]
+[ext_resource type="PackedScene" uid="uid://bg1ya0qiin47q" path="res://src/Scenes/Actors/Utilities/HurtBox.tscn" id="24_hjd7a"]
+[ext_resource type="Script" uid="uid://dwvy67t8hx3" path="res://src/Scripts/Enemies/enemy_stun.gd" id="24_obfx4"]
+[ext_resource type="PackedScene" uid="uid://xsmgmpbxjc3b" path="res://src/Scenes/Actors/Utilities/HitBox.tscn" id="25_cj88k"]
+[ext_resource type="Script" uid="uid://cx8e05eefws02" path="res://src/Scripts/StateMachine/EnemyStates/GenericEnemyStates/enemy_spawn_in.gd" id="25_kjg4h"]
+[ext_resource type="PackedScene" uid="uid://crrtithryo2j6" path="res://src/Scenes/Actors/Utilities/GroundDetector.tscn" id="26_35242"]
+[ext_resource type="PackedScene" uid="uid://bsd5w23h513t2" path="res://src/Scenes/Actors/Utilities/WallDetector.tscn" id="27_dheif"]
+[ext_resource type="PackedScene" uid="uid://dg5nyfcc7ja8v" path="res://src/Scenes/Actors/Enemies/StatusEffectIconBar.tscn" id="29_aex54"]
+[ext_resource type="PackedScene" uid="uid://ducu4iluu5nv4" path="res://src/Scenes/UI/StatusEffectVBox.tscn" id="30_dlfrg"]
+
+[sub_resource type="Animation" id="Animation_6al3p"]
+resource_name = "Chase"
+length = 0.45
+loop_mode = 1
+step = 0.09
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.09, 0.18, 0.27, 0.36),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_61466")]
+}
+
+[sub_resource type="Animation" id="Animation_o87ao"]
+resource_name = "Die"
+length = 0.8
+step = 0.08
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [9]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.07692308, 0.15384616, 0.23076923, 0.30769232, 0.3846154, 0.46153846, 0.53846157, 0.61538464),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_61466")]
+}
+
+[sub_resource type="Animation" id="Animation_p06fi"]
+resource_name = "Hit"
+length = 0.05
+step = 0.09
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_61466")]
+}
+
+[sub_resource type="Animation" id="Animation_uospo"]
+resource_name = "Idle"
+length = 0.65
+loop_mode = 1
+step = 0.09
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.09090909, 0.18181819, 0.27272728, 0.35, 0.45454547, 0.54545456),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 5, 6, 4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_d1fh7")]
+}
+
+[sub_resource type="Animation" id="Animation_adl3q"]
+resource_name = "Patrol"
+length = 0.45
+loop_mode = 1
+step = 0.09
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.09, 0.18, 0.27, 0.36),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("7_d1fh7")]
+}
+
+[sub_resource type="Animation" id="Animation_gol3t"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_obfx4")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_kjg4h"]
+resource_name = "SpawnIn"
+step = 0.09
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_d1fh7")]
+}
+
+[sub_resource type="Animation" id="Animation_obfx4"]
+resource_name = "Stun"
+length = 0.4
+loop_mode = 1
+step = 0.09
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("9_j4mso")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_adl3q"]
+_data = {
+&"Chase": SubResource("Animation_6al3p"),
+&"Die": SubResource("Animation_o87ao"),
+&"Hit": SubResource("Animation_p06fi"),
+&"Idle": SubResource("Animation_uospo"),
+&"Patrol": SubResource("Animation_adl3q"),
+&"RESET": SubResource("Animation_gol3t"),
+&"SpawnIn": SubResource("Animation_kjg4h"),
+&"Stun": SubResource("Animation_obfx4")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s7mdw"]
+radius = 11.0
+height = 42.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s7mdw"]
+size = Vector2(23, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v37cp"]
+size = Vector2(18, 24)
+
+[node name="CorruptedMushie" type="CharacterBody2D" unique_id=1085916055 node_paths=PackedStringArray("name_tag", "health_bar", "status_effect_icon_bar", "vertical_status_icon_bar", "slow_timer", "silenced_timer", "wall_detector", "ground_detector", "state_machine", "animation_player", "health_component", "sprite", "blink_timer", "stun_timer", "hurt_box", "hit_box", "hit_state", "dead_state", "stun_state", "sfx_player") groups=["Enemy"]]
+collision_layer = 128
+collision_mask = 2
+script = ExtResource("1_61466")
+enemy_stats = ExtResource("2_61466")
+xp = 12
+name_tag = NodePath("NameTag")
+health_bar = NodePath("EnemyHealthBar")
+status_effect_icon_bar = NodePath("StatusEffectIconBar")
+vertical_status_icon_bar = NodePath("VBoxContainer")
+slow_timer = NodePath("SlowTimer")
+silenced_timer = NodePath("SilencedTimer")
+wall_detector = NodePath("WallDetector")
+ground_detector = NodePath("GroundDetector")
+state_machine = NodePath("StateMachine")
+animation_player = NodePath("AnimationPlayer")
+health_component = NodePath("HealthComponent")
+sprite = NodePath("Sprite2D")
+blink_timer = NodePath("BlinkTimer")
+stun_timer = NodePath("StunTimer")
+hurt_box = NodePath("HurtBox")
+hit_box = NodePath("HitBox")
+hit_state = NodePath("StateMachine/Hit")
+dead_state = NodePath("StateMachine/Dead")
+stun_state = NodePath("StateMachine/Stun")
+sfx_player = NodePath("SfxPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1111056569]
+root_node = NodePath("../Sprite2D")
+libraries/ = SubResource("AnimationLibrary_adl3q")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1864954798]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(0, -28)
+texture = ExtResource("6_obfx4")
+hframes = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1663483806]
+position = Vector2(0, -21)
+shape = SubResource("CapsuleShape2D_s7mdw")
+
+[node name="NameTag" parent="." unique_id=657503191 instance=ExtResource("8_tmol1")]
+
+[node name="EnemyHealthBar" parent="." unique_id=909999878 instance=ExtResource("9_q6dtb")]
+visible = false
+offset_left = -32.0
+offset_top = -62.0
+offset_right = 33.0
+offset_bottom = -52.0
+
+[node name="StateMachine" type="Node" parent="." unique_id=554180836 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("10_8ggvx")
+initial_state = NodePath("SpawnIn")
+
+[node name="Idle" type="Node" parent="StateMachine" unique_id=2109902990 node_paths=PackedStringArray("patrol_state")]
+script = ExtResource("11_3wrxv")
+patrol_state = NodePath("../Patrol")
+animation_name = "Idle"
+
+[node name="Patrol" type="Node" parent="StateMachine" unique_id=15588929 node_paths=PackedStringArray("idle_state", "chase_state")]
+script = ExtResource("12_4wuwh")
+idle_state = NodePath("../Idle")
+chase_state = NodePath("../Chase")
+animation_name = "Patrol"
+
+[node name="Hit" type="Node" parent="StateMachine" unique_id=1899200018 node_paths=PackedStringArray("idle_state", "chase_state")]
+script = ExtResource("13_mcbq8")
+idle_state = NodePath("../Idle")
+chase_state = NodePath("../Chase")
+wait_time = 0.35
+generic_impact_1 = ExtResource("14_lvl2o")
+generic_impact_2 = ExtResource("15_r2xd1")
+generic_impact_3 = ExtResource("16_0f8t5")
+animation_name = "Hit"
+
+[node name="Dead" type="Node" parent="StateMachine" unique_id=609511755]
+script = ExtResource("17_3fp5y")
+wait_time = 0.8
+death_sound_1 = ExtResource("18_tkjdt")
+death_sound_2 = ExtResource("19_4pstx")
+death_sound_3 = ExtResource("20_f8e23")
+animation_name = "Die"
+
+[node name="Chase" type="Node" parent="StateMachine" unique_id=1436878486 node_paths=PackedStringArray("idle_state")]
+script = ExtResource("21_vsbpx")
+idle_state = NodePath("../Idle")
+chase_time = 3.0
+animation_name = "Chase"
+
+[node name="Stun" type="Node" parent="StateMachine" unique_id=1883937669 node_paths=PackedStringArray("idle")]
+script = ExtResource("24_obfx4")
+idle = NodePath("../Idle")
+animation_name = "Stun"
+
+[node name="SpawnIn" type="Node" parent="StateMachine" unique_id=189951908 node_paths=PackedStringArray("idle_state")]
+script = ExtResource("25_kjg4h")
+idle_state = NodePath("../Idle")
+animation_name = "SpawnIn"
+animation_duration = 1.0
+
+[node name="HealthComponent" parent="." unique_id=1202325417 node_paths=PackedStringArray("parent", "health_bar") instance=ExtResource("22_jrr57")]
+parent = NodePath("..")
+health_bar = NodePath("../EnemyHealthBar")
+
+[node name="SfxPlayer" parent="." unique_id=2072082404 instance=ExtResource("23_nev77")]
+
+[node name="HurtBox" parent="." unique_id=1413075023 instance=ExtResource("24_hjd7a")]
+position = Vector2(0, -20)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=875135690]
+position = Vector2(0.5, 5)
+shape = SubResource("RectangleShape2D_s7mdw")
+
+[node name="HitBox" parent="." unique_id=811478632 instance=ExtResource("25_cj88k")]
+position = Vector2(0, -20)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=476425907]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_v37cp")
+
+[node name="GroundDetector" parent="." unique_id=343637528 instance=ExtResource("26_35242")]
+position = Vector2(17, -14)
+
+[node name="WallDetector" parent="." unique_id=282361709 instance=ExtResource("27_dheif")]
+position = Vector2(14, -13)
+hit_from_inside = true
+
+[node name="Timer" type="Timer" parent="." unique_id=1793514215]
+process_callback = 0
+one_shot = true
+
+[node name="ItemHolder" type="Node" parent="." unique_id=1844967573]
+
+[node name="BlinkTimer" type="Timer" parent="." unique_id=1369523349]
+process_callback = 0
+wait_time = 0.1
+one_shot = true
+
+[node name="SlowTimer" type="Timer" parent="." unique_id=503729084]
+process_callback = 0
+one_shot = true
+
+[node name="SilencedTimer" type="Timer" parent="." unique_id=703218512]
+process_callback = 0
+one_shot = true
+
+[node name="StunTimer" type="Timer" parent="." unique_id=1740669180]
+process_callback = 0
+one_shot = true
+
+[node name="StatusEffectIconBar" parent="." unique_id=167981235 instance=ExtResource("29_aex54")]
+offset_left = -41.0
+offset_top = -76.0
+offset_right = 44.0
+offset_bottom = -64.0
+alignment = 1
+
+[node name="VBoxContainer" parent="." unique_id=657675300 instance=ExtResource("30_dlfrg")]
+offset_left = 35.0
+offset_top = -62.0
+offset_right = 51.0
+offset_bottom = -2.0
+
+[connection signal="update_health_bar" from="HealthComponent" to="." method="_on_health_component_update_health_bar"]
+[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
+[connection signal="timeout" from="SlowTimer" to="." method="_on_slow_timer_timeout"]
+[connection signal="timeout" from="SilencedTimer" to="." method="_on_silenced_timer_timeout"]

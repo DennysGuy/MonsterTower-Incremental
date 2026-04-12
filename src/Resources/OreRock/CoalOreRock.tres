@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="OreRockStats" format=3 uid="uid://vgpa4fp7c3sc"]
+
+[ext_resource type="Texture2D" uid="uid://b54ndge5cnojl" path="res://Assets/PlayerGraphics/OreRock/CoalRock.png" id="1_bx1pl"]
+[ext_resource type="Script" uid="uid://dkco4nipcf7kc" path="res://src/Scripts/Tower/ore_rock_stats.gd" id="1_m8fff"]
+[ext_resource type="Resource" uid="uid://sqmift1leivw" path="res://src/Resources/CraftingResources/Coal.tres" id="2_v1rqd"]
+
+[resource]
+script = ExtResource("1_m8fff")
+ore_rock_name = "Coal Rock"
+max_health = 200
+graphic = ExtResource("1_bx1pl")
+ore_drop_chance = 0.25
+output_item = ExtResource("2_v1rqd")
+metadata/_custom_type_script = "uid://dkco4nipcf7kc"

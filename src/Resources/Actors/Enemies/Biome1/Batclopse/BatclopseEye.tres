@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="EnemyDrop" load_steps=3 format=3 uid="uid://sio2h1j85i5y"]
+[gd_resource type="Resource" script_class="EnemyDrop" format=3 uid="uid://sio2h1j85i5y"]
 
 [ext_resource type="Script" uid="uid://cubudt76pshmm" path="res://src/Scripts/Enemies/enemy_drop.gd" id="1_xit55"]
 [ext_resource type="Texture2D" uid="uid://qr3il66sog3f" path="res://Assets/Enemies/CyclopsBat/BatclopseDrops_Eye.png" id="1_xseus"]
@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_xit55")
 drop_icon = ExtResource("1_xseus")
-drop_chance = 100.0
+drop_chance = 0.6
 item_name = "Batclopse Eye"
 sell_value = 80
 shop_icon = ExtResource("1_xseus")

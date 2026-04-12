@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://ddb4njdi5p43s"]
+
+[ext_resource type="Resource" uid="uid://d0wo8tvdfk8j1" path="res://src/Resources/Dishes/HuntersStew.tres" id="1_1symy"]
+[ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_3o3dk"]
+
+[resource]
+script = ExtResource("1_3o3dk")
+node_name = "Vial of the Esoteric"
+description = "Consumable Vials will  spawn in the tower recovering the player's MP by 20%"
+currency_required = 2500
+materials_required = Array[Dictionary]([{
+ExtResource("1_1symy"): 2
+}])
+node_type = 1
+stat_name = "MP Vial"
+prereqs = Array[String](["Max MP 2:1"])
+metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://xmcxhd2cd6vc"]
+
+[ext_resource type="Script" uid="uid://ohquj12u1cox" path="res://src/Scripts/Tower/boss_key_alter.gd" id="1_0rdkp"]
+[ext_resource type="Texture2D" uid="uid://dcd3v2vhkanam" path="res://Assets/Tower/Biom1/BossDoor/KeyHolder.png" id="2_glm8k"]
+[ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="3_hsvvi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_glm8k"]
+size = Vector2(139, 24)
+
+[node name="BossKeyAlter" type="Node2D" unique_id=828477030 node_paths=PackedStringArray("key_marker")]
+script = ExtResource("1_0rdkp")
+key_marker = NodePath("KeyMarker")
+
+[node name="Graphic" type="Sprite2D" parent="." unique_id=1104090801]
+position = Vector2(0, -19)
+texture = ExtResource("2_glm8k")
+
+[node name="KeyMarker" type="Marker2D" parent="." unique_id=1815189958]
+position = Vector2(2, -58)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1635744214]
+position = Vector2(2, -10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=658844269]
+position = Vector2(-1.5, -2)
+shape = SubResource("RectangleShape2D_glm8k")
+
+[node name="Notice" type="Label" parent="." unique_id=542858328]
+visible = false
+offset_left = -82.0
+offset_top = -97.0
+offset_right = 90.0
+offset_bottom = -81.0
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_hsvvi")
+text = "Press 'E' to grab"
+horizontal_alignment = 1
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

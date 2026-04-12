@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="EnemyDrop" format=3 uid="uid://bippqfqb312jh"]
+
+[ext_resource type="Texture2D" uid="uid://8jfe46q1x32u" path="res://Assets/Enemies/GoblinGuy/GoblinMeat.png" id="1_qeb24"]
+[ext_resource type="Script" uid="uid://cubudt76pshmm" path="res://src/Scripts/Enemies/enemy_drop.gd" id="1_v2ll6"]
+
+[resource]
+script = ExtResource("1_v2ll6")
+drop_icon = ExtResource("1_qeb24")
+drop_chance = 0.3
+item_name = "Goblin Flesh"
+item_type = 1
+sell_value = 145
+shop_icon = ExtResource("1_qeb24")
+description = "Remains of a Goblin. Could be tasty?"
+metadata/_custom_type_script = "uid://cubudt76pshmm"

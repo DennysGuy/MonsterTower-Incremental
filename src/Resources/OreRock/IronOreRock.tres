@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="OreRockStats" format=3 uid="uid://bnw174axn6kqa"]
+
+[ext_resource type="Script" uid="uid://dkco4nipcf7kc" path="res://src/Scripts/Tower/ore_rock_stats.gd" id="1_et08c"]
+[ext_resource type="Texture2D" uid="uid://daj4438n7hmgw" path="res://Assets/PlayerGraphics/OreRock/IronOreRock.png" id="1_shbis"]
+[ext_resource type="Resource" uid="uid://65r3jdod3xkl" path="res://src/Resources/CraftingResources/IronOre.tres" id="2_5w3vt"]
+
+[resource]
+script = ExtResource("1_et08c")
+ore_rock_name = "Iron Ore"
+max_health = 100
+graphic = ExtResource("1_shbis")
+ore_drop_chance = 0.4
+output_item = ExtResource("2_5w3vt")
+metadata/_custom_type_script = "uid://dkco4nipcf7kc"

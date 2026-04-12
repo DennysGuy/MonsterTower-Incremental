@@ -35,6 +35,8 @@ const KNOCKBACK_FORCE : int = 300
 	"Max MP": 50,
 	"Current Health":60,
 	"Current MP": 50,
+	"HP Recovery": 0.3,
+	"MP Recovery" : 0.4,
 	"Equipped Sword": 0,
 	"Equipped Pickaxe": 0,
 	"Overlapping Hits" : 1.0,
@@ -55,7 +57,9 @@ const KNOCKBACK_FORCE : int = 300
 	"Ore Drop Chance Bonus":0.0,
 	"Smelting Accuracy Bonus":0.0,
 	"Tier 1 Chest Spawn Rate": 0.05,
-	"Tier 1 Gem Drop Rate":0.3 
+	"Tier 1 Gem Drop Rate":0.3,
+	"Chalice Spawn Rate":0.20,
+	"Vial Spawn Rate": 0.20
 }
 
 var equipped_abilities : Dictionary = {
@@ -151,13 +155,18 @@ func equip_ability(player_class : String, ability_type : String) -> void:
 	"Arial Slash" : false,
 	"Dash Attack": false,
 	"Double Jump" : false,
-	"Gem Stone Station": false
+	"Gem Stone Station": false,
+	"HP Chalice" : false,
+	"MP Vial" : false
 }
 
 @onready var check_points_unlocked : Dictionary = {
 	"Floor 1-1" : false,
 	"Floor 1-2" : false,
-	"Floor 1-3" : false
+	"Floor 1-3" : false,
+	"Floor 1-4" : false,
+	"Floor 1-5" : false,
+	"Floor 1-6" : false,
 }
 
 var player_classes : Dictionary = {
@@ -181,7 +190,7 @@ var player_classes : Dictionary = {
 	}
 }
 
-const MAX_SWORD_COUNT := 3
+const MAX_SWORD_COUNT := 5
 
 var show_cooking_station_unlock_animation : bool = false
 var show_refinery_station_unlock_animation : bool = false
@@ -198,6 +207,10 @@ func get_sword(sword_index : int = 0) -> Sword:
 			return preload("uid://gj2gdethgc68")#"Shroom Fibre Blade"
 		2:
 			return preload("uid://hnq8o34pxm0h") #Bronze Fang Blade
+		3:
+			return preload("uid://bdsjrsiakv2sh") #Iron Broad Sword
+		4:
+			return preload("uid://dol2r302p2e52") #Lurker's Rapier
 		_:
 			return preload("uid://di3xaosm85tjx")#"Wooden Sword"
 
@@ -241,6 +254,7 @@ func get_bag(bag : String) -> ItemBag:
 		1: return preload("uid://cuwof21s5e74c")
 		2: return preload("uid://mbne7hjkpnqi")
 		3: return preload("uid://byikht2gbhthk")
+		4: return preload("uid://omnm6ywng6wn")
 		_: return preload("uid://cuwof21s5e74c")
 
 func get_current_bag() -> ItemBag:
@@ -293,3 +307,25 @@ func check_needed_for_dojo() -> bool:
 
 func check_level_for_dojo() -> bool:
 	return PlayerStats.player_stats["Level"] >= 5
+
+func get_total_max_health() -> int:
+	return player_stats["Max Health"] + get_current_sword().get_total_hp_bonus()
+
+func get_total_max_mp() -> int:
+	return player_stats["Max MP"]  + get_current_sword().get_total_mp_bonus()
+
+func recover_hp(amount : int) -> void:
+	player_stats["Current Health"] += amount
+	if player_stats["Current Health"] > get_total_max_health():
+		player_stats["Current Health"] = get_total_max_health()
+	
+	SignalBus.update_player_health.emit(player_stats["Current Health"])
+		
+
+func recover_mp(amount : int) -> void:
+	player_stats["Current MP"] += amount
+	if player_stats["Current MP"] > get_total_max_mp():
+		player_stats["Current MP"] = get_total_max_mp()
+	
+	SignalBus.update_player_mp.emit()
+	

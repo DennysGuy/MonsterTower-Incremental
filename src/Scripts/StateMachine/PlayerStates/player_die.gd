@@ -5,6 +5,7 @@ class_name PlayerDieState extends State
 
 func enter() -> void:
 	if parent.can_spawn_gravestone:
+		
 		parent.disable_hurt_box()
 		parent.disable_hit_box()
 		parent.sfx_player.play_sfx(hit)

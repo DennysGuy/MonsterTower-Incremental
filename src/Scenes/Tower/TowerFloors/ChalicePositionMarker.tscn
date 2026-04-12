@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cm6ttxlrvgkvd"]
+
+[ext_resource type="Script" uid="uid://cm8kobasycij6" path="res://src/Scripts/Tower/chalice_position_marker.gd" id="1_j4owe"]
+
+[node name="ReplenishAlterPositionMarker" type="Marker2D" unique_id=1970294222]
+script = ExtResource("1_j4owe")

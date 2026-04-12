@@ -15,7 +15,10 @@ var can_open_bag : bool = true
 var can_open_tower_map : bool = true
 var player_can_attack : bool = true
 var auto_pick_up_enabled : bool = false
-
+var can_issue_abilities : bool = true
+var event_speed_mod : float = 1.0
+var boss_door_challenge_active : bool = false
+var on_boss_door_floor : bool = false
 enum NOTIFICATION_TYPE {CRAFTING, COOKING, SMELTING, AP, QUEST}
 
 # Called when the node enters the scene tree for the first time.
@@ -40,27 +43,35 @@ func attack_enemies(enemies_in_hitbox : Array, enemies_hit : int = 1, number_of_
 			# we may need to alter this line of code or the function.. I do not like how this function is dependent on the enemy.
 			enemy.player = player
 			#if it is a hitscan ability, we will determine the animation needed here.
-			var attack_reps = number_of_hits
+			var attack_reps = number_of_hits + PlayerStats.get_total_gem_bonus("Hit Reps") + PlayerStats.get_current_sword().hit_bonus
 			var i = 0
-			
+			var defense : float = clamp(
+				enemy.enemy_stats.defense / 100.0,
+				0.0,
+				0.9
+				)
+
+			var damage = int(incoming_damage * (1.0 - defense))
+
+			damage = max(damage, 1)
+			var label_position : int = 40
 			while i < attack_reps:
 				#enemy.sfx_player.play()
-				attack_enemy(player, enemy, incoming_damage, is_crit, 0.02, is_warrior)
+				attack_enemy(player, enemy, damage, is_crit, 0, is_warrior, label_position)
 
 				i += 1
-				await player.get_tree().create_timer(rep_delay).timeout
+				label_position += 15
+				await player.get_tree().create_timer(0.12).timeout
 			
 			if is_instance_valid(enemy) and enemy.health <= 0:
 				enemies_in_hitbox.erase(enemy)
-				#enemy.dead = true
-			#await player.get_tree().create_timer(0.1).timeout
 
-func attack_enemy(player : Player, enemy : Enemy, incoming_damage : int, is_crit : bool, hit_freeze : float = 0.02, is_warrior : bool = false) -> void:
+func attack_enemy(player : Player, enemy : Enemy, incoming_damage : int, is_crit : bool, hit_freeze : float = 0.02, is_warrior : bool = false, label_position : int = 40) -> void:
 	SignalBus.shake_camera.emit(0.5)
 	HitStopManager.freeze(hit_freeze, 0.1, 0.0, 0.03)
 	if is_warrior:
 		enemy.increment_break_count()
-	enemy.apply_damage(incoming_damage, is_crit)
+	enemy.apply_damage(incoming_damage, is_crit, label_position)
 
 		#might need to break here so we don't collide with the function below
 

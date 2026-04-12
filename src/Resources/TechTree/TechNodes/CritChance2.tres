@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="TechNodeStats" load_steps=4 format=3 uid="uid://ll3jw1v5omml"]
+[gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://ll3jw1v5omml"]
 
 [ext_resource type="Texture2D" uid="uid://dlpqa2p4mvlcq" path="res://Assets/NodeGraphics/NodeGraphicsV2/CritChance2_V2.png" id="1_3pylg"]
 [ext_resource type="Resource" uid="uid://buu8pdcooh3hc" path="res://src/Resources/CraftingResources/BronzeBar.tres" id="2_28dln"]
@@ -12,7 +12,7 @@ description = "Increase Crit Chance by 5% per level."
 max_level = 3
 currency_required = 150
 materials_required = Array[Dictionary]([{
-ExtResource("2_28dln"): 1
+ExtResource("2_28dln"): 2
 }])
 stat_name = "Crit Chance"
 upgrade_interval = 0.05

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="EnemyDrop" load_steps=3 format=3 uid="uid://bxukrnl1bg7oo"]
+[gd_resource type="Resource" script_class="EnemyDrop" format=3 uid="uid://bxukrnl1bg7oo"]
 
 [ext_resource type="Texture2D" uid="uid://d3kst1autclh7" path="res://Assets/Enemies/CyclopsBat/BatclopseDrops_Wing.png" id="1_3q7js"]
 [ext_resource type="Script" uid="uid://cubudt76pshmm" path="res://src/Scripts/Enemies/enemy_drop.gd" id="1_kef1c"]
@@ -6,9 +6,9 @@
 [resource]
 script = ExtResource("1_kef1c")
 drop_icon = ExtResource("1_3q7js")
-item_type = 1
-drop_chance = 0.28
+drop_chance = 0.2
 item_name = "Batclopse Wing"
+item_type = 1
 sell_value = 120
 shop_icon = ExtResource("1_3q7js")
 metadata/_custom_type_script = "uid://cubudt76pshmm"
