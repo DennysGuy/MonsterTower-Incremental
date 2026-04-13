@@ -19,6 +19,10 @@ var stored_entrance_data : TowerEntranceData
 
 @onready var hunt_notification: Control = $FloorDescriptionPanel/HuntNotification
 @onready var selected_point: Label = $SelectedPoint
+@onready var drops_preview_panel: Control = $ModeDescription/DropsPreviewPanel
+
+@onready var enemies_preview_grid_container: GridContainer = $ModeDescription/DropsPreviewPanel/PanelContainer/EnemiesPreviewGridContainer
+@onready var ore_preview_grid_container: GridContainer = $ModeDescription/DropsPreviewPanel/PanelContainer2/OrePreviewGridContainer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -29,6 +33,7 @@ func _ready() -> void:
 	time_limit.text = "Expedition Time Limit:\n%s Seconds" % [int(PlayerStats.player_stats["Expedition Time"])]
 	hunt_time_label.hide()
 	hunt_time_label.text = "Hunt Challenge Time Limit: %s seconds" % [int(PlayerStats.player_stats["Hunt Time"])]
+	drops_preview_panel.hide()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
@@ -71,6 +76,9 @@ func store_entrance_data(entrance_data : TowerEntranceData) -> void:
 		hunt_notification.show()
 	else:
 		hunt_notification.hide()
+	
+	populate_preview_container(enemies_preview_grid_container, stored_entrance_data.enemy_preview_graphics)
+	populate_preview_container(ore_preview_grid_container, stored_entrance_data.ore_rock_preview_graphics)
 
 func _on_close_button_up() -> void:
 	GameManager.player_can_move = true
@@ -83,7 +91,7 @@ func update_entrance_map(index : int) -> void:
 	biome_preview.texture = stored_entrance_data.preview_pictures[index]
 	GameManager.spawn_location = index
 	selected_point.text = "Selected Point: %s - %s - Point: %s" % [stored_entrance_data.biome, stored_entrance_data.floor_name, GameManager.spawn_location+1]
-
+	
 func _on_hunt_selection_button_up() -> void:
 	set_mode_description_as_hunt_challenge()
 	GameManager.spawn_location = 0
@@ -98,15 +106,22 @@ func hide_hunt_time_label() -> void:
 	hunt_time_label.hide()
 
 func set_mode_description_as_expedition() -> void:
-	mode_description_label.text = "	   ~Expedition~
-
-Take your time and gather resources to upgrade your tech tree to prepare for the hunt!"
+	mode_description_label.text = "	   ~Expedition~"
+	drops_preview_panel.show()
 
 func set_mode_description_as_hunt_challenge() -> void:
+	drops_preview_panel.hide()
 	mode_description_label.text = "	 ~Hunt Challenge~
-
+	
 Test your skills. 
 
 Race against the clock to meet the [color=green]hunt quota[/color] to unlock the [color=green]next floor[/color]. 
 
 No Drops, no Resources - just [color=red]pure combat[/color]!"
+
+func populate_preview_container(preview_container : GridContainer, GraphicsArray : Array[Texture2D] ) -> void:
+	InventoryManager.clear_grid_container(preview_container)
+	for graphic in GraphicsArray:
+		var texture : PreviewIconGraphic = preload("uid://c53idabyvvlhs").instantiate()
+		texture.texture = graphic
+		preview_container.add_child(texture)

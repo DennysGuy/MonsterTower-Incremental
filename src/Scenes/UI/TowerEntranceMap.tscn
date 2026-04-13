@@ -359,6 +359,71 @@ theme_override_font_sizes/font_size = 14
 disabled = true
 text = "Go!"
 
+[node name="DropsPreviewPanel" type="Control" parent="ModeDescription" unique_id=1945262083]
+anchors_preset = 0
+offset_left = 16.0
+offset_top = 67.0
+offset_right = 169.0
+offset_bottom = 145.0
+
+[node name="EnemiesPreviewLabel" type="Label" parent="ModeDescription/DropsPreviewPanel" unique_id=1831799994]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -76.5
+offset_top = 9.0
+offset_right = -31.5
+offset_bottom = 24.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("10_grwys")
+theme_override_font_sizes/font_size = 14
+text = "Enemies"
+
+[node name="PanelContainer" type="PanelContainer" parent="ModeDescription/DropsPreviewPanel" unique_id=1343102284]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -12.0
+offset_right = 24.0
+offset_bottom = 12.0
+grow_vertical = 2
+
+[node name="EnemiesPreviewGridContainer" type="GridContainer" parent="ModeDescription/DropsPreviewPanel/PanelContainer" unique_id=1851618030]
+layout_mode = 2
+columns = 6
+
+[node name="OreRockPreviewLabel" type="Label" parent="ModeDescription/DropsPreviewPanel" unique_id=1735853095]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -76.5
+offset_top = 54.0
+offset_right = -57.5
+offset_bottom = 69.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("10_grwys")
+theme_override_font_sizes/font_size = 14
+text = "Ore"
+
+[node name="PanelContainer2" type="PanelContainer" parent="ModeDescription/DropsPreviewPanel" unique_id=902507896]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = 29.0
+offset_right = 24.0
+offset_bottom = 53.0
+grow_vertical = 2
+
+[node name="OrePreviewGridContainer" type="GridContainer" parent="ModeDescription/DropsPreviewPanel/PanelContainer2" unique_id=1489259614]
+layout_mode = 2
+columns = 6
+
 [connection signal="button_up" from="FloorDescriptionPanel/HuntSelection" to="." method="_on_hunt_selection_button_up"]
 [connection signal="button_up" from="Close" to="." method="_on_close_button_up"]
 [connection signal="button_up" from="ModeDescription/GoToFloor" to="." method="_on_go_to_floor_button_up"]
