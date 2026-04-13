@@ -3,11 +3,14 @@ class_name AbilityNode extends Control
 const ABILITY_NODE_DISABLED = preload("uid://46gvbpulh5q6")
 const ABILITY_NODE_ENABLED = preload("uid://cl08f7bqcyut1")
 const ABILITY_NODE_PURCHASED = preload("uid://c42bc8lfwvlgy")
+@onready var lock_panel: Panel = $LockPanel
 
+@onready var lock_texture: TextureRect = $LockPanel/LockTexture
 @export var ability_tree_row : AbilityTreeNodeRow
 @onready var node_icon: TextureRect = $NodeIcon
 
 @onready var node_base: TextureRect = $NodeBase
+@onready var level_tracker: Label = $LevelTracker
 
 @export var ability_node_stats : ClassAbilityNodeStats
 @onready var texture_button: TextureButton = $TextureButton
@@ -169,7 +172,12 @@ func load_purchased_status() -> void:
 	var class_relation : String = ability_node_stats.class_relation
 	var ability_type_name : String = ability_node_stats.get_ability_type_name()
 	var node_name : String = ability_node_stats.node_name
-	ability_node_stats.unlocked = SaveManager.current_save_game.ability_nodes[class_relation][ability_type_name][node_name]
+	ability_node_stats.unlocked = SaveManager.current_save_game.ability_nodes[class_relation][ability_type_name][node_name]["Unlocked"]
+	ability_node_stats.current_upgrade_level = SaveManager.current_save_game.ability_nodes[class_relation][ability_type_name][node_name]["Level"]
+	if ability_node_stats.unlocked:
+		lock_panel.hide()
+		level_tracker.show()
+		level_tracker.text = "[%s/%s]" % [ability_node_stats.current_upgrade_level,ability_node_stats.max_upgrade_level]
 
 func play_sfx(sound: AudioStream, volume: float = 0.0):
 	var player := AudioStreamPlayer.new()

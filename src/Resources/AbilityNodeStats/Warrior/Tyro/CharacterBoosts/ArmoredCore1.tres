@@ -7,6 +7,7 @@
 script = ExtResource("1_fienh")
 icon = ExtResource("1_jim8h")
 node_name = "Armored Core 1"
+needed_level = 5
 class_relation = "Tyro"
 description = "Beef up your defense capabilities and acquire the ability to comfortably face off against the Monsters of the Tower head on."
 ap_cost = 1

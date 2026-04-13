@@ -7,6 +7,8 @@
 script = ExtResource("3_vurwt")
 icon = ExtResource("1_idw5g")
 node_name = "Double Cleave +1"
+needed_level = 10
+max_upgrade_level = 5
 class_relation = "Tyro"
 description = "Your first Class Unique Ability!
 

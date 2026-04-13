@@ -7,6 +7,8 @@
 script = ExtResource("3_bkim8")
 icon = ExtResource("1_g0uiv")
 node_name = "Sword Dance +1"
+needed_level = 10
+max_upgrade_level = 5
 class_relation = "Tyro"
 description = "Replaces 'Dash Attack'.
 

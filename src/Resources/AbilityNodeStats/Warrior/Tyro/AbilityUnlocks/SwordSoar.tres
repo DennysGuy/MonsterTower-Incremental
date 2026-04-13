@@ -8,6 +8,7 @@
 script = ExtResource("2_vf356")
 icon = ExtResource("1_e65ei")
 node_name = "Sword Soar"
+needed_level = 16
 class_relation = "Tyro"
 description = "Replaces 'Double Jump'
 

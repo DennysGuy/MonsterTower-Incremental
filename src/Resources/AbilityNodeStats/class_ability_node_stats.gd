@@ -4,6 +4,9 @@ class_name ClassAbilityNodeStats extends Resource
 
 @export var icon : Texture2D
 @export var node_name : String
+@export var needed_level : int 
+@export var current_upgrade_level : int
+@export var max_upgrade_level : int
 @export var class_relation : String #name of the class
 @export_multiline var description : String
 @export var unlocked : bool = false
