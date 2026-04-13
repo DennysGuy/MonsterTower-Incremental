@@ -4,7 +4,7 @@
 [ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="2_58xxk"]
 [ext_resource type="Texture2D" uid="uid://qynempy8hrlr" path="res://Assets/TempMainMenuBG.png" id="2_gwjs1"]
 [ext_resource type="FontFile" uid="uid://dmw84wb4eeuql" path="res://Assets/Fonts/Playfull Rocket.ttf" id="3_rsyx7"]
-[ext_resource type="AudioStream" uid="uid://dtcm2deon2lrs" path="res://Audio/Music/TempMainMenuTheme.mp3" id="4_fcgj2"]
+[ext_resource type="AudioStream" uid="uid://cxtv5qej7olko" path="res://Audio/Music/MainThemeDraft1.wav" id="5_rsyx7"]
 
 [sub_resource type="Animation" id="Animation_58xxk"]
 resource_name = "FadeIn"
@@ -83,10 +83,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -6.0
-offset_top = 31.0
-offset_right = 343.0
-offset_bottom = 74.0
+offset_left = -174.5
+offset_top = 25.0
+offset_right = 174.5
+offset_bottom = 68.0
 grow_horizontal = 2
 theme_override_constants/outline_size = 11
 theme_override_fonts/font = ExtResource("3_rsyx7")
@@ -100,10 +100,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 67.0
-offset_top = 70.0
-offset_right = 185.0
-offset_bottom = 110.0
+offset_left = -59.0
+offset_top = 59.0
+offset_right = 59.0
+offset_bottom = 99.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_default_cursor_shape = 2
@@ -120,10 +120,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 68.5
-offset_top = 22.0
-offset_right = 183.5
-offset_bottom = 62.0
+offset_left = -57.5
+offset_top = 14.0
+offset_right = 57.5
+offset_bottom = 54.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_default_cursor_shape = 2
@@ -131,51 +131,6 @@ theme_override_constants/outline_size = 7
 theme_override_fonts/font = ExtResource("2_58xxk")
 theme_override_font_sizes/font_size = 30
 text = "COntinue"
-
-[node name="PatchUpdatePanel" type="Panel" parent="." unique_id=607089193]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 15.0
-offset_top = -170.0
-offset_right = 305.0
-offset_bottom = 173.0
-grow_vertical = 2
-
-[node name="Description" type="RichTextLabel" parent="PatchUpdatePanel" unique_id=273507147]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 4.0
-offset_top = 4.0
-offset_right = -1.0
-offset_bottom = -5.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/normal_font = ExtResource("2_58xxk")
-theme_override_font_sizes/normal_font_size = 14
-text = "Prototype Update Notes
-
-- Polished Inventory: Bags are now color coded
-- Added Bag SFX
-- Can see bank from Inventory (discarding bank slot doesn't not work)
-
-- Reworked Crafting Systems
-	- No Exclusive menus
-	- Menu is now a pop up
-
-- Reworked Hub access  notifications to icons
-	- Added Crafting Notification Icon
-	- Added Cooking Notification Icon
-	- Added Smelting Notification Icon
-	- Added AP gained Notification Icon
-	- Added Quest Completed Icon (not implemented)
-
-- Began Implementing Quest Helper
-	- UI elements implemented but no functionality
-	- Press 'Tab' to toggle Quest Hub"
 
 [node name="TransitionRect" type="ColorRect" parent="." unique_id=1379323239]
 layout_mode = 1
@@ -191,7 +146,8 @@ color = Color(0, 0, 0, 1)
 libraries/ = SubResource("AnimationLibrary_gwjs1")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1807827256]
-stream = ExtResource("4_fcgj2")
+stream = ExtResource("5_rsyx7")
+volume_db = 5.0
 bus = &"Music"
 
 [connection signal="button_up" from="NewGame" to="." method="_on_button_button_up"]
