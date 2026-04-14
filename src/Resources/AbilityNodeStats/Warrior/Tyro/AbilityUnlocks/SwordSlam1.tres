@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("3_fdjuq")
 icon = ExtResource("2_ph0ti")
-node_name = "Sword Slam +1"
+node_name = "Sword Slam"
 needed_level = 10
 max_upgrade_level = 5
 class_relation = "Tyro"

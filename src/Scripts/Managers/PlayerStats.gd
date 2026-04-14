@@ -190,6 +190,24 @@ var player_classes : Dictionary = {
 	}
 }
 
+
+var class_ability_node_stats : Dictionary = {
+	"Tyro" : {
+		"Abilities": {
+			0 : preload("uid://c71wdmkmxxxct"),
+			1 : preload("uid://dhavx7c8nci4q"),
+			2 : preload("uid://cpg586qwrplgy"),
+			3 : preload("uid://b1tqtyjdmcrui")
+		},
+		"Stat Upgrades": {
+			0 : preload("uid://b3q7teodj24vf"),
+			1 : preload("uid://bwy0u7543td2u"),
+			2 : preload("uid://5yci1c1l1tb2")
+		}
+
+	}
+}
+
 const MAX_SWORD_COUNT := 5
 
 var show_cooking_station_unlock_animation : bool = false

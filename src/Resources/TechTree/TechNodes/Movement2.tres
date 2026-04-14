@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="TechNodeStats" load_steps=4 format=3 uid="uid://hqgkc8c13u2a"]
+[gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://hqgkc8c13u2a"]
 
 [ext_resource type="Texture2D" uid="uid://bgix74pncu430" path="res://Assets/NodeGraphics/NodeGraphicsV2/Movement2_V2.png" id="1_thmeo"]
 [ext_resource type="Resource" uid="uid://boeryxspsw8uq" path="res://src/Resources/Dishes/CookedGagootz.tres" id="2_oo0nn"]
@@ -10,7 +10,7 @@ node_name = "Movement 2"
 icon = ExtResource("1_thmeo")
 description = "For each level, increases movement speed by 5%"
 max_level = 3
-currency_required = 200
+currency_required = 300
 materials_required = Array[Dictionary]([{
 ExtResource("2_oo0nn"): 1
 }])

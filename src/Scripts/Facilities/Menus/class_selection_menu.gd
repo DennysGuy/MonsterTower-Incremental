@@ -51,8 +51,7 @@ func _on_select_button_button_up() -> void:
 	GameManager.can_open_bag = true
 	GameManager.can_open_tower_map = true
 	#Go to class tech tree
-	if selected_class == "Warrior":
-		SignalBus.spawn_warrior_tech_tree.emit()
+	SignalBus.spawn_warrior_tech_tree.emit()
 	queue_free()
 
 func _on_exit_button_button_up() -> void:

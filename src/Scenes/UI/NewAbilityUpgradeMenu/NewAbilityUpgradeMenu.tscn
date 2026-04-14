@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://d0r1bngbqs2ch"]
 
-[ext_resource type="PackedScene" uid="uid://23brgcq8m6qb" path="res://src/Scenes/TechTree/AbilityNode.tscn" id="1_ahp4c"]
 [ext_resource type="Script" uid="uid://b0k7nn3634ew4" path="res://src/Scripts/HUD/new_ability_upgrade_menu.gd" id="1_noj7l"]
 [ext_resource type="FontFile" uid="uid://qgj228ltdttv" path="res://Assets/Fonts/alagard.ttf" id="2_mu6d8"]
+[ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="3_noj7l"]
 
 [node name="AbilityUpgradeMenu" type="Control" unique_id=693918123]
 layout_mode = 3
@@ -25,8 +25,9 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="Panel" type="Panel" parent="MarginContainer" unique_id=2011818552]
+[node name="Panel" type="ColorRect" parent="MarginContainer" unique_id=115453966]
 layout_mode = 2
+color = Color(7.2196127e-07, 0.21438283, 0.30136865, 1)
 
 [node name="Title" type="Label" parent="." unique_id=1665319380]
 layout_mode = 1
@@ -41,6 +42,21 @@ grow_horizontal = 2
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("2_mu6d8")
 text = "Class Ability Upgrades"
+
+[node name="AP" type="Label" parent="." unique_id=1486382054]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -289.0
+offset_top = 31.0
+offset_right = -127.0
+offset_bottom = 46.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.82599366, 0.0016641689, 0.9612146, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("2_mu6d8")
+text = "AP: 1"
 
 [node name="ClassName" type="Label" parent="." unique_id=304738033]
 layout_mode = 1
@@ -102,19 +118,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 50
 
-[node name="AbilityNode" parent="AbilityNodesHBoxContainer" unique_id=70786195 instance=ExtResource("1_ahp4c")]
-layout_mode = 2
-
-[node name="AbilityNode2" parent="AbilityNodesHBoxContainer" unique_id=551114975 instance=ExtResource("1_ahp4c")]
-layout_mode = 2
-
-[node name="AbilityNode3" parent="AbilityNodesHBoxContainer" unique_id=985336436 instance=ExtResource("1_ahp4c")]
-layout_mode = 2
-
-[node name="AbilityNode4" parent="AbilityNodesHBoxContainer" unique_id=909196967 instance=ExtResource("1_ahp4c")]
-layout_mode = 2
-
-[node name="AbilityNodesHBoxContainer2" type="HBoxContainer" parent="." unique_id=262204393]
+[node name="StatUpgradesNodesHBoxContainer" type="HBoxContainer" parent="." unique_id=262204393]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -129,11 +133,18 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 50
 
-[node name="AbilityNode" parent="AbilityNodesHBoxContainer2" unique_id=1522665751 instance=ExtResource("1_ahp4c")]
-layout_mode = 2
+[node name="CloseButton" type="Button" parent="." unique_id=630897597]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -81.0
+offset_top = 29.0
+offset_right = -31.0
+offset_bottom = 53.0
+grow_horizontal = 0
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("3_noj7l")
+text = "Close"
 
-[node name="AbilityNode2" parent="AbilityNodesHBoxContainer2" unique_id=1060023195 instance=ExtResource("1_ahp4c")]
-layout_mode = 2
-
-[node name="AbilityNode3" parent="AbilityNodesHBoxContainer2" unique_id=493454035 instance=ExtResource("1_ahp4c")]
-layout_mode = 2
+[connection signal="button_up" from="CloseButton" to="." method="_on_close_button_button_up"]

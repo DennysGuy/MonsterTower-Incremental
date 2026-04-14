@@ -137,3 +137,6 @@ signal reset_levers
 signal set_puzzle_levers_on
 @warning_ignore("unused_signal")
 signal show_challenge_activation_switch
+
+@warning_ignore("unused_signal")
+signal update_ap_label

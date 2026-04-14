@@ -1,12 +1,13 @@
 [gd_resource type="Resource" script_class="ClassAbilityNodeStats" format=3 uid="uid://cpg586qwrplgy"]
 
 [ext_resource type="Texture2D" uid="uid://b12mwkdvbwhvd" path="res://Assets/NodeGraphics/WarriorTechTree/Sigils/DashDance_Upgrade_1.png" id="1_g0uiv"]
+[ext_resource type="Resource" uid="uid://c3llqiy2fb5n5" path="res://src/Resources/AbilityStates/DashAttacks/SwordDanceAbility.tres" id="1_w4rfm"]
 [ext_resource type="Script" uid="uid://b1fyuk5q3e08o" path="res://src/Resources/AbilityNodeStats/class_ability_node_stats.gd" id="3_bkim8"]
 
 [resource]
 script = ExtResource("3_bkim8")
 icon = ExtResource("1_g0uiv")
-node_name = "Sword Dance +1"
+node_name = "Sword Dance"
 needed_level = 10
 max_upgrade_level = 5
 class_relation = "Tyro"
@@ -16,6 +17,7 @@ Cut through enemies in your path, rendering them silenced for for 1.5 seconds."
 ap_cost = 1
 node_type = 1
 ability_category = "Dash Attack"
+ability_resource = ExtResource("1_w4rfm")
 cooldown_time = -0.5
 mp_cost = 2.0
 slow_wait_time = 0.5

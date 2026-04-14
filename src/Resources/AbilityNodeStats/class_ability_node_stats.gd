@@ -138,6 +138,7 @@ func upgrade_ability_stats() -> void:
 	var equipped_abilities : Dictionary = PlayerStats.get_equipped_abilities()
 	print(equipped_abilities[ability_category])
 	equipped_abilities[ability_category].load_stats()
+
 	SaveManager.save_equipped_abilities()
 	SaveManager.save_game()
 

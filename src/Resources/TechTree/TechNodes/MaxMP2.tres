@@ -8,7 +8,7 @@ script = ExtResource("1_g4jlh")
 node_name = "Max MP 2"
 description = "Raises Max MP by 40 for each level."
 max_level = 3
-currency_required = 500
+currency_required = 1200
 materials_required = Array[Dictionary]([{
 ExtResource("1_xy8xx"): 2
 }])

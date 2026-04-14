@@ -1965,7 +1965,7 @@ special_attack = NodePath("../SpecialAttack")
 move_sfx = ExtResource("5_a5kf2")
 accel = 2500.0
 decel = 1500.0
-turn_resistance = 1600.0
+turn_resistance = 2300.0
 animation_name = "Run"
 
 [node name="Jump" type="Node" parent="StateMachine" unique_id=593572243 node_paths=PackedStringArray("idle_state", "fall_state", "air_attack", "double_jump")]

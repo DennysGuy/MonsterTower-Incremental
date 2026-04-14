@@ -35,6 +35,7 @@ var player_in_upgrade_station_range : bool = false
 @onready var enter_upgrade_station_notice: Label = $GemStoneStation/EnterUpgradeStationNotice
 @onready var gem_stone_station: Sprite2D = $GemStoneStation
 
+const CLASS_UP_FANFARE = preload("uid://cw28u06grrwni")
 
 const CRAFT_SWORD = preload("uid://4c6l1w0kpar3")
 const UNLOCK_SHOP = preload("uid://cveiqvxm5r0yw")
@@ -50,7 +51,7 @@ func _ready() -> void:
 	SignalBus.spawn_tower_map.connect(spawn_tower_entrance_map)
 	SignalBus.play_warrior_unlock_animation.connect(warrior_class_unlocked_notice)
 	TechTreeManager.unlock_station.connect(unlock_station)
-	SignalBus.spawn_warrior_tech_tree.connect(spawn_warrior_tech_tree)
+	SignalBus.spawn_warrior_tech_tree.connect(warrior_class_unlocked_notice)
 	#SignalBus.show_ap_notice.connect(show_ap_notice)
 
 
@@ -224,8 +225,9 @@ func spawn_warrior_tech_tree() -> void:
 	GameManager.can_open_bag = false
 	GameManager.can_pause_game = false
 	canvas_layer.show()
-	var warrior_tech_tree : WarriorTechTree = preload("uid://dqx7ld4tcru6g").instantiate()
+	var warrior_tech_tree : NewAbilityUpgradeMenu = preload("uid://d0r1bngbqs2ch").instantiate()
 	sub_viewport.add_child(warrior_tech_tree)
+
 
 func spawn_dojo_menu() -> void:
 	GameManager.can_open_tower_map = false
@@ -363,11 +365,10 @@ func warrior_class_unlocked_notice() -> void:
 	player.send_to_idle_state()
 	sfx_player.play_sfx(UNLOCK_SHOP)
 	hud.animation_player.play("Flash")
-	await get_tree().create_timer(0.5).timeout
-	SignalBus.issue_big_notification.emit("You now possess the Abilities of a Warrior!")
-	await get_tree().create_timer(2.0).timeout
-	SignalBus.issue_big_notification.emit("Use your new power to control the battlefield and slay monsters faster!")
-	await get_tree().create_timer(2.0).timeout
+	play_sfx(CLASS_UP_FANFARE)
+	SignalBus.flash_screen.emit()
+	await get_tree().create_timer(1.5).timeout
+	spawn_warrior_tech_tree()
 	SignalBus.hide_big_notification.emit()
 	GameManager.player_can_move = true
 

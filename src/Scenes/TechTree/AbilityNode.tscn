@@ -75,6 +75,7 @@ text = "[10/10]"
 horizontal_alignment = 1
 
 [node name="LockPanel" type="Panel" parent="." unique_id=676620535]
+visible = false
 layout_mode = 0
 offset_right = 66.0
 offset_bottom = 66.0

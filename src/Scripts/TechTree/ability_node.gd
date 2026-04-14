@@ -37,22 +37,21 @@ func _physics_process(delta: float) -> void:
 	pass
 
 func check_can_purchase_node() -> bool:
-	if ability_node_stats.unlocked:
+	if ability_node_stats.current_upgrade_level >= ability_node_stats.max_upgrade_level:
 		node_base.texture = ABILITY_NODE_PURCHASED
-		texture_button.disabled = true
-		bg_color = unlocked
+		bg_color = locked
 		return false
+	if PlayerStats.player_stats["Ability Points"] >= ability_node_stats.ap_cost and has_resource_quantity():
+		node_base.texture = ABILITY_NODE_ENABLED
+		texture_button.disabled = false
+		bg_color = unlocked
+		return true
 	else:
-		if PlayerStats.player_stats["Ability Points"] >= ability_node_stats.ap_cost and has_resource_quantity():
-			node_base.texture = ABILITY_NODE_ENABLED
-			texture_button.disabled = false
-			bg_color = can_buy
-			return true
-		else:
-			node_base.texture = ABILITY_NODE_DISABLED
-			texture_button.disabled = true
-			bg_color = locked
-			return false
+		node_base.texture = ABILITY_NODE_DISABLED
+		texture_button.disabled = true
+		bg_color = locked
+		
+	return false
 
 func _on_texture_button_button_up() -> void:
 	'''
@@ -69,31 +68,43 @@ func _on_texture_button_button_up() -> void:
 	CLASS_ADVANCE:
 		- effectively does nothing but will unlock the next set of rows
 	'''
+	
+	increment_ability_level()
+	
 	match ability_node_stats.node_type:
-		ability_node_stats.NODE_TYPE.ABILITY_UNLOCK:
-			PlayerStats.equipped_abilities[ability_node_stats.ability_category] = ability_node_stats.ability_resource
-			SaveManager.save_equipped_abilities()
-			
+
 		ability_node_stats.NODE_TYPE.ABILITY_STAT_BOOST:
 			ability_node_stats.upgrade_ability_stats()
 			
 		ability_node_stats.NODE_TYPE.CHARACTER_STAT_BOOST:
 			ability_node_stats.upgrade_character_stats()
-			ability_tree_row.update_sigils_left()
 			
 		ability_node_stats.NODE_TYPE.CLASS_ADVANCE:
 			pass
 			
 	deduct_ap()
 	unlock_node()
+	
 	#check_can_purchase_node()
 	TechTreeManager.check_if_can_purchase_node.emit()
 
 func deduct_ap() -> void:
 	PlayerStats.player_stats["Ability Points"] -= ability_node_stats.ap_cost
-	LevelingManager.update_available_ap_label.emit()
+	SignalBus.update_ap_label.emit()
 	SaveManager.save_player_stats()
+
+func increment_ability_level() -> void:
+	var node_type : String = ability_node_stats.get_ability_type_name()
+	SaveManager.current_save_game.ability_nodes[ability_node_stats.class_relation][node_type][ability_node_stats.node_name]["Level"] += 1
+	ability_node_stats.current_upgrade_level = SaveManager.current_save_game.ability_nodes[ability_node_stats.class_relation][node_type][ability_node_stats.node_name]["Level"]
+	if ability_node_stats.NODE_TYPE.ABILITY_STAT_BOOST and ability_node_stats.current_upgrade_level == 1:
+		PlayerStats.equipped_abilities[ability_node_stats.ability_category] = ability_node_stats.ability_resource
+		SaveManager.save_equipped_abilities()
 	
+	level_tracker.text = "[%s/%s]" % [ability_node_stats.current_upgrade_level, ability_node_stats.max_upgrade_level]
+	
+	SaveManager.save_game()
+
 func has_resource_quantity() -> bool:
 	if ability_node_stats.materials_required.is_empty():
 		return true
@@ -164,19 +175,24 @@ func display_stats_changes(description_panel : AbilityDescriptionPanel, stat_lis
 
 func unlock_node() -> void:
 	play_sfx(UNLOCK_ABILITY_NODE,3)
-	ability_node_stats.unlocked = true		
-	SaveManager.current_save_game.ability_nodes[ability_node_stats.class_relation][ability_node_stats.get_ability_type_name()][ability_node_stats.node_name] = true
+	ability_node_stats.unlocked = true
+	var node_type : String = ability_node_stats.get_ability_type_name()
+	SaveManager.current_save_game.ability_nodes[ability_node_stats.class_relation][node_type][ability_node_stats.node_name]["Unlocked"] = true
 	SaveManager.save_game()
 
 func load_purchased_status() -> void:
 	var class_relation : String = ability_node_stats.class_relation
 	var ability_type_name : String = ability_node_stats.get_ability_type_name()
 	var node_name : String = ability_node_stats.node_name
+	
+
 	ability_node_stats.unlocked = SaveManager.current_save_game.ability_nodes[class_relation][ability_type_name][node_name]["Unlocked"]
 	ability_node_stats.current_upgrade_level = SaveManager.current_save_game.ability_nodes[class_relation][ability_type_name][node_name]["Level"]
-	if ability_node_stats.unlocked:
-		lock_panel.hide()
-		level_tracker.show()
+	
+	level_tracker.show()
+	if ability_node_stats.current_upgrade_level >= ability_node_stats.max_upgrade_level:
+		level_tracker.text = "Max Level"
+	else:
 		level_tracker.text = "[%s/%s]" % [ability_node_stats.current_upgrade_level,ability_node_stats.max_upgrade_level]
 
 func play_sfx(sound: AudioStream, volume: float = 0.0):
@@ -187,3 +203,11 @@ func play_sfx(sound: AudioStream, volume: float = 0.0):
 	add_child(player)
 	player.play()
 	player.finished.connect(player.queue_free)
+
+func get_node_type_name() -> String:
+	if ability_node_stats.NODE_TYPE.ABILITY_STAT_BOOST:
+		return "Ability Stat Boost"
+	elif ability_node_stats.NODE_TYPE.CHARACTER_STAT_BOOST:
+		return "Character Stat Boost"
+	
+	return ""

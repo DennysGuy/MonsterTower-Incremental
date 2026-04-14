@@ -417,21 +417,16 @@ TODO: We will add saves for classes as well
 
 @export var ability_nodes : Dictionary = {
 	"Tyro": {
-		"Ability Unlock" : {
+		"Ability Stat Boost" : {
 			"Double Cleave": {"Unlocked":false, "Level": 0},
 			"Sword Dance": {"Unlocked":false, "Level": 0},
 			"Sword Slam": {"Unlocked":false, "Level": 0},
 			"Sword Soar": {"Unlocked":false, "Level": 0},
 		},
-		"Ability Stat Boost" : {
-			"Double Cleave": {"Unlocked":false, "Level": 1},
-			"Sword Dance": {"Unlocked":false, "Level": 1},
-			"Sword Slam": {"Unlocked":false, "Level": 1},
-		},
 		"Character Stat Boost" : {
-			"Armored Core 1": {"Unlocked":false, "Level": 0},
-			"Field Tactician 1" : {"Unlocked":false, "Level": 0},
-			"Warrior's Flame 1" : {"Unlocked":false, "Level": 0},
+			"Armored Core": {"Unlocked":false, "Level": 0},
+			"Field Tactician" : {"Unlocked":false, "Level": 0},
+			"Warrior's Flame" : {"Unlocked":false, "Level": 0},
 		},
 		"Class Advancement" : {
 			
