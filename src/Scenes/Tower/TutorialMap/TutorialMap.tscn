@@ -552,15 +552,25 @@ theme_override_font_sizes/font_size = 16
 text = "Hold 'F' or 'Left Mouse Button' To Attack Enemies"
 
 [node name="Label5" type="Label" parent="." unique_id=135871607]
-offset_left = 1291.0
+offset_left = 1186.0
 offset_top = 359.0
-offset_right = 1438.0
+offset_right = 1333.0
 offset_bottom = 394.0
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("9_7kbtj")
 theme_override_font_sizes/font_size = 16
 text = "Press 'B' To Open Your
  Inventory Bag"
+
+[node name="Label9" type="Label" parent="." unique_id=570088948]
+offset_left = 1363.0
+offset_top = 359.0
+offset_right = 1510.0
+offset_bottom = 394.0
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("9_7kbtj")
+theme_override_font_sizes/font_size = 16
+text = "Press 'W' to pick up drops"
 
 [node name="Label6" type="Label" parent="." unique_id=1639485364]
 offset_left = 1450.0

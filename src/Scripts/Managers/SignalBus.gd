@@ -140,3 +140,6 @@ signal show_challenge_activation_switch
 
 @warning_ignore("unused_signal")
 signal update_ap_label
+
+@warning_ignore("unused_signal")
+signal show_gem_station_arrow

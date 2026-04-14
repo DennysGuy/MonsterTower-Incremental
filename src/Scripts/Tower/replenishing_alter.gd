@@ -6,6 +6,7 @@ enum TYPE {HP, MP}
 @export var emptied_texture : Texture2D
 
 @onready var graphic: Sprite2D = $Graphic
+@onready var name_tag: NameTag = $NameTag
 
 const HP_CHALLICE_CONSUME = preload("uid://cv74hhpoa0b3q")
 const MP_VIAL_CONSUME = preload("uid://g5kb8aipi1r8")
@@ -35,9 +36,11 @@ func initialize_textures() -> void:
 		TYPE.HP:
 			full_texture = REPLENISHING_CHALICE_HP_FULL
 			emptied_texture = REPLENISHING_CHALICE_HP_EMPTY
+			name_tag.tag.text = "Healing Chalice"
 		TYPE.MP:
 			full_texture = MP_VIAL_FULL
 			emptied_texture = MP_VIAL_EMPTY
+			name_tag.tag.text = "MP Vial"
 		
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Player:

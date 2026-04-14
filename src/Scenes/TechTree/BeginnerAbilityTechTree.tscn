@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://y6ru08whvroa"]
 
-[ext_resource type="Script" uid="uid://cgnvowy6po0ng" path="res://src/Scripts/TechTree/beginner_ability_tech_tree.gd" id="1_jigag"]
+[ext_resource type="Script" path="res://src/Scripts/TechTree/beginner_ability_tech_tree.gd" id="1_jigag"]
 [ext_resource type="PackedScene" uid="uid://bhimqkbcn26r2" path="res://src/Scenes/TechTree/TechNode.tscn" id="2_7au7t"]
 [ext_resource type="Resource" uid="uid://bonlosm00p4kf" path="res://src/Resources/TechTree/TechNodes/DashAttack.tres" id="3_acel5"]
 [ext_resource type="Resource" uid="uid://cq5drdy7t8gas" path="res://src/Resources/TechTree/TechNodes/DoubleJump.tres" id="3_gvncw"]
@@ -25,17 +25,16 @@ tech_node_stats = ExtResource("3_urnm2")
 node_type = 2
 
 [node name="DashAttackNode" parent="." unique_id=53768398 instance=ExtResource("2_7au7t")]
-position = Vector2(330, 252)
+position = Vector2(501, 252)
 tech_node_stats = ExtResource("3_acel5")
 node_type = 2
 
 [node name="DoubleJumpAttack" parent="." unique_id=1184687078 instance=ExtResource("2_7au7t")]
-position = Vector2(501, 252)
+position = Vector2(330, 252)
 tech_node_stats = ExtResource("3_gvncw")
 node_type = 2
 
 [node name="ClassSelectionNode" parent="." unique_id=1934592524 instance=ExtResource("6_yrrks")]
-visible = false
 position = Vector2(329, 84)
 
 [node name="Line2D" type="Line2D" parent="." unique_id=625943590]
@@ -49,12 +48,12 @@ points = PackedVector2Array(143, 137, 143, 202)
 width = 6.0
 
 [node name="Line2D3" type="Line2D" parent="." unique_id=336424129]
-position = Vector2(187, 36)
+position = Vector2(358, 36)
 points = PackedVector2Array(143, 137, 143, 202)
 width = 6.0
 
 [node name="Line2D4" type="Line2D" parent="." unique_id=1157426340]
-position = Vector2(358, 35)
+position = Vector2(187, 35)
 points = PackedVector2Array(143, 138, 143, 203)
 width = 6.0
 

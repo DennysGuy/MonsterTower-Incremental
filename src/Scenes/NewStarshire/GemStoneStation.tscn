@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://d3jv83cbjw6lw"]
+
+[ext_resource type="Texture2D" uid="uid://dbg5n708oli7y" path="res://Assets/Facilities/SwordUpgradeStation.png" id="1_ta4hl"]
+[ext_resource type="PackedScene" uid="uid://vo5sm7p34vo6" path="res://src/Scenes/Actors/Utilities/NameTag.tscn" id="2_4xtd2"]
+[ext_resource type="Script" uid="uid://cxfypkn5vwmim" path="res://src/Scripts/GemStoneChests/gem_stone_station.gd" id="2_jljns"]
+[ext_resource type="PackedScene" uid="uid://drvmmtbvnc785" path="res://src/Scenes/Tower/arrow_at_ore.tscn" id="4_4xtd2"]
+
+[node name="GemStoneStation" type="Sprite2D" unique_id=314729123]
+texture = ExtResource("1_ta4hl")
+script = ExtResource("2_jljns")
+
+[node name="NameTag" parent="." unique_id=1232323974 instance=ExtResource("2_4xtd2")]
+offset_left = -34.0
+offset_top = 51.0
+offset_right = 54.0
+offset_bottom = 64.0
+
+[node name="Bg" parent="NameTag" index="0" unique_id=1015277224]
+offset_right = 95.0
+
+[node name="Tag" parent="NameTag" index="1" unique_id=725373759]
+text = "Gem Stone Upgrade Station"
+
+[node name="ArrowAtOre" parent="." unique_id=2067527573 instance=ExtResource("4_4xtd2")]
+position = Vector2(0, -13)
+
+[editable path="NameTag"]

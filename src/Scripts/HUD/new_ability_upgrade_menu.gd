@@ -3,10 +3,12 @@ class_name NewAbilityUpgradeMenu extends Control
 @onready var ability_nodes_h_box_container: HBoxContainer = $AbilityNodesHBoxContainer
 @onready var stat_upgrades_nodes_h_box_container: HBoxContainer = $StatUpgradesNodesHBoxContainer
 @onready var ap: Label = $AP
+@onready var classname: Label = $ClassName
 
 
 func _ready() -> void:
 	SignalBus.update_ap_label.connect(update_ap_label)
+	classname.text = "~%s~" % PlayerStats.player_stats["Class"]
 	update_ap_label()
 	populate_node_container(ability_nodes_h_box_container,"Abilities")
 	populate_node_container(stat_upgrades_nodes_h_box_container, "Stat Upgrades")

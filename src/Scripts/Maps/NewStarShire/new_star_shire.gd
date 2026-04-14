@@ -32,7 +32,8 @@ var player_in_upgrade_station_range : bool = false
 @onready var cooking_station: NewCraftingStation = $CookingStation
 @onready var refinery: NewCraftingStation = $Refinery
 
-@onready var enter_upgrade_station_notice: Label = $GemStoneStation/EnterUpgradeStationNotice
+@onready var enter_upgrade_station_notice: Label = $EnterUpgradeStationNotice
+
 @onready var gem_stone_station: Sprite2D = $GemStoneStation
 
 const CLASS_UP_FANFARE = preload("uid://cw28u06grrwni")
@@ -278,11 +279,12 @@ func _on_crafting_station_area_body_entered(body: Node2D) -> void:
 	if body is Player:
 		player_in_crafting_range = true
 		access_sword_crafting_station.show()
-
+	
 func _on_crafting_station_area_body_exited(body: Node2D) -> void:
 	if body is Player:
 		player_in_crafting_range = false
 		access_sword_crafting_station.hide()
+
 
 func unlock_cooking_station() -> void:
 	camera.player = null
@@ -380,6 +382,8 @@ func gem_station_unlock_notice() -> void:
 	await get_tree().create_timer(0.5).timeout
 	smithing_station.notify_can_craft()
 	camera.position = sword_crafting_station_position.position
+	
+	SignalBus.show_gem_station_arrow.emit()
 	SignalBus.issue_big_notification.emit("Your weapon can now be enhanced with Gem Stones.")
 	await get_tree().create_timer(2.0).timeout
 	SignalBus.issue_big_notification.emit("Access the Gem Stone station to mount gems onto your weapon!")
