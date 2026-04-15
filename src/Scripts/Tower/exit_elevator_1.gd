@@ -40,16 +40,17 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("interact") and player_in_range:
-		if GameManager.hunt_challenge_selected:
+		if GameManager.hunt_challenge_selected and current_room_data.hunt_challenge_completed:
 			unlock_next_floor()
 			SignalBus.go_to_victory_hunt_menu.emit()
+			return
+
+		if current_room_data.hunt_challenge_completed or (current_room_data.is_expedition_floor() and !current_room_data.unlock_recipe):
+			MusicPlayer.transitioning_floors = true
+			GameManager.spawn_location = 0
+			SignalBus.move_to_next_room.emit(next_room_data.scene_path)
 		else:
-			if current_room_data.hunt_challenge_completed or (current_room_data.is_expedition_floor() and !current_room_data.unlock_recipe):
-				MusicPlayer.transitioning_floors = true
-				GameManager.spawn_location = 0
-				SignalBus.move_to_next_room.emit(next_room_data.scene_path)
-			else:
-				unlock_next_room()
+			unlock_next_room()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Player:

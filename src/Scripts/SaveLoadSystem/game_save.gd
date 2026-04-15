@@ -19,6 +19,7 @@ TODO: We will add saves for classes as well
 	"Level" : 1,
 	"Needed XP": 100,
 	"Current XP" : 0,
+	"Highest Floor": 0,
 	"Ability Points": 0,
 	"Class": "Junior Hunter",
 	"Attack Damage" : 13.0,
@@ -61,7 +62,7 @@ TODO: We will add saves for classes as well
 	"Cooking Accuracy Bonus":0.0,
 	"Ore Drop Chance Bonus":0.0,
 	"Smelting Accuracy Bonus":0.0,
-	"Tier 1 Chest Spawn Rate": 0.1,
+	"Tier 1 Chest Spawn Rate": 0.25,
 	"Tier 1 Gem Drop Rate":0.3,
 	"Chalice Spawn Rate":0.12,
 	"Vial Spawn Rate": 0.12
@@ -245,7 +246,8 @@ TODO: We will add saves for classes as well
 			"Crit Damage Modifier" : 0.0,
 			"Crit Chance Modifier" : 0.0,
 			"Dash Cooldown" : 0.0,
-			"Dash Speed Modifier" : 1.0
+			"Dash Speed Modifier" : 1.0,
+			"Knock Back Modifier" : 0.0
 		},
 		"Air Attack": {
 			"Cooldown Time" : 0.7,
@@ -267,7 +269,8 @@ TODO: We will add saves for classes as well
 			"Crit Damage Modifier" : 0.0,
 			"Crit Chance Modifier" : 0.0,
 			"Dash Cooldown" : 0.0,
-			"Dash Speed Modifier" : 0.0
+			"Dash Speed Modifier" : 0.0,
+			"Knock Back Modifier" : 0.0
 		},
 		"Double Jump": {
 			"Cooldown Time" : 0.5,
@@ -289,7 +292,8 @@ TODO: We will add saves for classes as well
 			"Crit Damage Modifier" : 0.0,
 			"Crit Chance Modifier" : 0.0,
 			"Dash Cooldown" : 0.0,
-			"Dash Speed Modifier" : 0.0
+			"Dash Speed Modifier" : 0.0,
+			"Knock Back Modifier" : 0.0
 		},
 		"Special Attack": {
 			"Cooldown Time" : 3.0,
@@ -311,7 +315,8 @@ TODO: We will add saves for classes as well
 			"Crit Damage Modifier" : 0.0,
 			"Crit Chance Modifier" : 0.0,
 			"Dash Cooldown" : 0.0,
-			"Dash Speed Modifier" : 0.0
+			"Dash Speed Modifier" : 0.0,
+			"Knock Back Modifier" : 0.0
 		}
 	},
 	"Tyro" : {
@@ -335,7 +340,8 @@ TODO: We will add saves for classes as well
 			"Crit Damage Modifier" : 0.0,
 			"Crit Chance Modifier" : 0.0,
 			"Dash Cooldown" : 0.0,
-			"Dash Speed Modifier" : 350.0
+			"Dash Speed Modifier" : 350.0,
+			"Knock Back Modifier" : 0.0
 		},
 		"Air Attack": {
 			"Cooldown Time" : 1.5,
@@ -357,7 +363,8 @@ TODO: We will add saves for classes as well
 			"Crit Damage Modifier" : 0.0,
 			"Crit Chance Modifier" : 0.0,
 			"Dash Cooldown" : 0.0,
-			"Dash Speed Modifier" : 0.0
+			"Dash Speed Modifier" : 0.0,
+			"Knock Back Modifier" : 0.0
 		},
 		"Double Jump": {
 			"Cooldown Time" : 1.0,
@@ -379,7 +386,8 @@ TODO: We will add saves for classes as well
 			"Crit Damage Modifier" : 0.0,
 			"Crit Chance Modifier" : 0.0,
 			"Dash Cooldown" : 0.0,
-			"Dash Speed Modifier" : 0.0
+			"Dash Speed Modifier" : 0.0,
+			"Knock Back Modifier" : 0.0
 		},
 		"Special Attack": {
 			"Cooldown Time" : 3.0,
@@ -401,7 +409,8 @@ TODO: We will add saves for classes as well
 			"Crit Damage Modifier" : 0.0,
 			"Crit Chance Modifier" : 0.0,
 			"Dash Cooldown" : 0.0,
-			"Dash Speed Modifier" : 0.0
+			"Dash Speed Modifier" : 0.0,
+			"Knock Back Modifier" : 0.0
 		}
 	}
 }

@@ -34,6 +34,7 @@ func _ready() -> void:
 	hunt_time_label.hide()
 	hunt_time_label.text = "Hunt Challenge Time Limit: %s seconds" % [int(PlayerStats.player_stats["Hunt Time"])]
 	drops_preview_panel.hide()
+	load_most_recent_floor()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
@@ -125,3 +126,9 @@ func populate_preview_container(preview_container : GridContainer, GraphicsArray
 		var texture : PreviewIconGraphic = preload("uid://c53idabyvvlhs").instantiate()
 		texture.texture = graphic
 		preview_container.add_child(texture)
+
+func load_most_recent_floor() -> void:
+	for floor_button in get_tree().get_nodes_in_group("FloorEntranceButton"):
+		if floor_button.tower_entrance_data.floor_number == PlayerStats.player_stats["Highest Floor"]:
+			store_entrance_data(floor_button.tower_entrance_data)
+			return

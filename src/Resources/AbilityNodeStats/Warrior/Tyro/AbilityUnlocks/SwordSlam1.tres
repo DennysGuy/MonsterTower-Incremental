@@ -11,18 +11,15 @@ node_name = "Sword Slam"
 needed_level = 10
 max_upgrade_level = 5
 class_relation = "Tyro"
-description = "First Sword Slam upgrade.
-
-Increase Shock Wave Distance
-Increase Slow Time
-Increase Damage
+description = "Replaces 'Air Attack'
+Sends the player to the ground issuing shock waves that slow and knock enemies back.
 "
 ap_cost = 1
 node_type = 1
 ability_category = "Air Attack"
 ability_resource = ExtResource("1_ph0ti")
 mp_cost = 2.0
-projectile_distance = 150.0
+projectile_distance = 50.0
 slow_wait_time = 0.15
 attack_damage_modifier = 0.2
 metadata/_custom_type_script = "uid://b1fyuk5q3e08o"

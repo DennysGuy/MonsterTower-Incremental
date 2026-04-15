@@ -2,7 +2,7 @@ class_name ItemInteractable extends Node2D
 
 @export var item : Item
 @export var icon : Sprite2D
-
+@export var perishable = true
 var player : Player
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
@@ -76,4 +76,5 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 
 
 func _on_destroy_timer_timeout() -> void:
-	queue_free()
+	if perishable:
+		queue_free()

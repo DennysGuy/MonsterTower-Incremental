@@ -1434,6 +1434,17 @@ theme_override_font_sizes/font_size = 10
 text = "Jumping Up Ladders
 Will Speed up traversal"
 
+[node name="Label4" type="Label" parent="." unique_id=1797522822]
+offset_left = 229.0
+offset_top = 864.0
+offset_right = 300.0
+offset_bottom = 889.0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("33_savf5")
+theme_override_font_sizes/font_size = 10
+text = "Press 'W' (UP)
+ to pick up Items!"
+
 [node name="HUD" parent="." unique_id=278431122 instance=ExtResource("4_aah8w")]
 visible = false
 

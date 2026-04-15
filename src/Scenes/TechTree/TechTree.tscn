@@ -17,6 +17,7 @@
 [ext_resource type="Resource" uid="uid://x04h2nhi8gdh" path="res://src/Resources/TechTree/TechNodes/CritChance3.tres" id="11_qkyl2"]
 [ext_resource type="Resource" uid="uid://fr5bgjnd33a7" path="res://src/Resources/TechTree/TechNodes/CritDamage3.tres" id="12_31qh5"]
 [ext_resource type="Resource" uid="uid://drs3wurlptmym" path="res://src/Resources/TechTree/TechNodes/Attack3.tres" id="12_llgyg"]
+[ext_resource type="Resource" uid="uid://xqghhbiwak01" path="res://src/Resources/TechTree/TechNodes/CritDamage4.tres" id="13_56jq8"]
 [ext_resource type="Resource" uid="uid://5le7ds72absa" path="res://src/Resources/TechTree/TechNodes/CritChance4.tres" id="13_g88x2"]
 [ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="13_uk0x3"]
 [ext_resource type="Resource" uid="uid://bfmdlo0jy1xsd" path="res://src/Resources/TechTree/TechNodes/MaxMP1.tres" id="14_iyves"]
@@ -65,10 +66,10 @@ script = ExtResource("1_1fw0b")
 [node name="SfxPlayer" parent="." unique_id=268741460 instance=ExtResource("2_d4ivd")]
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=48163631]
-offset_left = -4384.0
-offset_top = -1996.0
-offset_right = 5028.0
-offset_bottom = 4190.0
+offset_left = -4300.0
+offset_top = -2063.0
+offset_right = 5112.0
+offset_bottom = 4123.0
 mouse_filter = 2
 color = Color(0.028638711, 0.1994082, 0.3708802, 1)
 
@@ -160,7 +161,7 @@ width = 3.0
 
 [node name="CritDamage4Node" parent="Nodes" unique_id=542679406 instance=ExtResource("5_2ltmf")]
 position = Vector2(904, 167)
-tech_node_stats = ExtResource("13_g88x2")
+tech_node_stats = ExtResource("13_56jq8")
 
 [node name="Line2D" type="Line2D" parent="Nodes/CritDamage4Node" unique_id=764876662]
 position = Vector2(3, 42)

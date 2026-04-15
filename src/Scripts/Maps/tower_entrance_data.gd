@@ -1,6 +1,7 @@
 class_name TowerEntranceData extends Resource
 
 @export var floor_name : String
+@export var floor_number : int
 enum FLOOR_TYPE {EXPEDITION, CHALLENGE, BOSS_DOOR, BOSS_ROOM}
 @export var unlock_recipe : CraftingRecipe
 @export var floor_type : FLOOR_TYPE

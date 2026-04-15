@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_b6pgv")
 drop_icon = ExtResource("1_mpwsv")
-drop_chance = 0.3
+drop_chance = 0.45
 item_name = "Iron Ore"
 item_type = 3
 sell_value = 70

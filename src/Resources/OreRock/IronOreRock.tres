@@ -9,6 +9,6 @@ script = ExtResource("1_et08c")
 ore_rock_name = "Iron Ore"
 max_health = 100
 graphic = ExtResource("1_shbis")
-ore_drop_chance = 0.4
+ore_drop_chance = 0.45
 output_item = ExtResource("2_5w3vt")
 metadata/_custom_type_script = "uid://dkco4nipcf7kc"

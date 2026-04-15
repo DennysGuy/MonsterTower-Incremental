@@ -12,8 +12,7 @@ needed_level = 10
 max_upgrade_level = 5
 class_relation = "Tyro"
 description = "Replaces 'Dash Attack'.
-
-Cut through enemies in your path, rendering them silenced for for 1.5 seconds."
+Dash forward, piercing and slowing enemies in path. "
 ap_cost = 1
 node_type = 1
 ability_category = "Dash Attack"

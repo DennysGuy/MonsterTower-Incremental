@@ -109,12 +109,12 @@ func increment_break_count() -> void:
 	if is_stunned:
 		return
 	
-	if current_break_count >= enemy_stats.break_threshold:
+	if current_break_count >= enemy_stats.break_threshold and !is_stunned:
 		vertical_status_icon_bar.remove_break_count_icon()
 		current_break_count = 0
 		is_stunned = true
 	else:
-		current_break_count += 1
+		current_break_count += PlayerStats.player_stats["Stun Stacks"]
 		vertical_status_icon_bar.add_break_status_icon(current_break_count,enemy_stats.break_threshold)
 		#send to stun state?
 

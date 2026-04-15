@@ -34,6 +34,7 @@ enum ABILITY_TYPE {STANDARD_ATTACK, AIR_ATTACK, DASH_ATTACK, DOUBLE_JUMP, SPECIA
 @export var dash_cooldown_modifier : float
 @export var dash_speed_modifier : float
 @export var hit_box_size_modifier : Vector2
+@export var knock_back_modifier : float
 
 func get_ability_type_name() -> String:
 	match ability_type:
@@ -78,3 +79,4 @@ func load_stats() -> void:
 	crit_chance_modifier = saved_ability["Crit Chance Modifier"]
 	dash_cooldown_modifier = saved_ability["Dash Cooldown"]
 	dash_speed_modifier = saved_ability["Dash Speed Modifier"]
+	#knock_back_modifier = saved_ability["Knock Back Modifier"]

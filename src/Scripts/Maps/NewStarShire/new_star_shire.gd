@@ -6,6 +6,8 @@ class_name NewStarShireMap extends Map
 @onready var enter_market_label: Label = $EnterMarketLabel
 @onready var access_crafting_station: Label = $AccessCraftingStation
 @onready var canvas_layer: CanvasLayer = $CanvasLayer
+@onready var dojo_position: Node2D = $DojoPosition
+
 
 var player_in_tower_range : bool = false
 var player_in_market_range : bool = false
@@ -69,14 +71,17 @@ func _ready() -> void:
 		#new_sword_unlock_notice()
 	else:
 		SignalBus.hide_can_craft_sword.emit()
-	
+	print("BELCHUNY")
 	#show_ap_notice()
 	hud.open_tower_map_button.show()
+
 	await get_tree().process_frame
 	SignalBus.update_player_health.emit(player.health)
 	PlayerStats.player_stats["Current MP"] = PlayerStats.player_stats["Max MP"] + PlayerStats.get_current_sword().max_mp_bonus + PlayerStats.get_total_gem_bonus("Max MP Bonus")
 	SignalBus.update_player_mp.emit()
 	SaveManager.save_player_stats()
+	if PlayerStats.player_stats["Level"] == 2 and PlayerStats.player_stats["Ability Points"] == 1:
+		ability_station_notice()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -365,6 +370,7 @@ func new_sword_unlock_notice() -> void:
 func warrior_class_unlocked_notice() -> void:
 	GameManager.player_can_move = false
 	player.send_to_idle_state()
+	MusicPlayer.stop_player()
 	sfx_player.play_sfx(UNLOCK_SHOP)
 	hud.animation_player.play("Flash")
 	play_sfx(CLASS_UP_FANFARE)
@@ -373,7 +379,8 @@ func warrior_class_unlocked_notice() -> void:
 	spawn_warrior_tech_tree()
 	SignalBus.hide_big_notification.emit()
 	GameManager.player_can_move = true
-
+	await get_tree().create_timer(8.5).timeout
+	MusicPlayer.play_song(map_theme_song)
 
 func gem_station_unlock_notice() -> void:
 	camera.player = null
@@ -395,6 +402,21 @@ func gem_station_unlock_notice() -> void:
 	camera.player = player
 	PlayerStats.show_gem_station_unlock_animation = false
 
+func ability_station_notice() -> void:
+	camera.player = null
+	player.send_to_idle_state()
+	#hud.animation_player.play("FadeInOut")
+	await get_tree().create_timer(0.5).timeout
+	camera.position = dojo_position.position
+	
+	SignalBus.issue_big_notification.emit("Spend AP acquired from leveling up\n At the Class Advancement Center!")
+	await get_tree().create_timer(3.0).timeout
+	SignalBus.hide_big_notification.emit()
+	hud.animation_player.play("FadeInOut")
+	await get_tree().create_timer(0.5).timeout
+	camera.position = player.position
+	camera.player = player
+	PlayerStats.show_gem_station_unlock_animation = false
 
 func _on_dojo_area_body_entered(body: Node2D) -> void:
 	if body is Player:

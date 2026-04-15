@@ -55,6 +55,7 @@ ToolTips="describe currently looked at tech node"
 Player=""
 Enemy=""
 SpawnPoints=""
+FloorEntranceButton=""
 
 [input]
 

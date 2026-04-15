@@ -14,6 +14,7 @@ const KNOCKBACK_FORCE : int = 300
 	"Level" : 1,
 	"Needed XP": 100,
 	"Current XP" : 0,
+	"Highest Floor": 0,
 	"Ability Points": 0,
 	"Class": "Junior Hunter",
 	"Attack Damage" : 13.0,

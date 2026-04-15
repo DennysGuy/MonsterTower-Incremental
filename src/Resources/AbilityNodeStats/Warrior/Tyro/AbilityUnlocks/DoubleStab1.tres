@@ -20,5 +20,5 @@ ability_category = "Special Attack"
 ability_resource = ExtResource("1_4gtow")
 hp_cost = 2.0
 mp_cost = 2.0
-attack_damage_modifier = 0.2
+attack_damage_modifier = 0.5
 metadata/_custom_type_script = "uid://b1fyuk5q3e08o"

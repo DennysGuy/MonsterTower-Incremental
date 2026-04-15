@@ -16,6 +16,6 @@ critical_success_rate = 0.05
 failure_rate = 0.1
 output_item = ExtResource("2_elpgy")
 recipe_list = Array[Dictionary]([{
-ExtResource("3_ftq1i"): 4
+ExtResource("3_ftq1i"): 2
 }])
 metadata/_custom_type_script = "uid://cljygiasf4103"

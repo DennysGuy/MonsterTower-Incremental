@@ -11,6 +11,7 @@ func on_enter(player : Player) -> void:
 	parent = player
 	parent.play_sfx(double_cleave_sfx,-2)
 	parent.damageable = false
+	parent.disable_hurt_box()
 
 # --- CAPTURE MOMENTUM ---
 	if int(parent.velocity.x) != 0:
@@ -24,6 +25,7 @@ func on_enter(player : Player) -> void:
 		parent.velocity.x = attack_velocity
 
 func on_exit() -> void:
+	parent.enable_hurt_box()
 	parent.damageable = true
 
 func apply_physics(_delta : float) -> State:

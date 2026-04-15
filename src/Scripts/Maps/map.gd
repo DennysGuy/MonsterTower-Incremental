@@ -315,6 +315,10 @@ func load_floor_data() -> void:
 		tower_entrance_data.number_of_spawn_locations = tower_data["Number of Spawn Locations"]
 		tower_entrance_data.hunt_challenge_unlocked = tower_data["Hunt Challenge Unlocked"]
 		tower_entrance_data.hunt_challenge_completed = tower_data["Hunt Challenge Completed"]
+		
+		if tower_entrance_data.floor_number > PlayerStats.player_stats["Highest Floor"]:
+			PlayerStats.player_stats["Highest Floor"] = tower_entrance_data.floor_number
+			SaveManager.save_player_stats()
 
 func play_sfx(audio_stream : AudioStream) -> void:
 	if sfx_player:

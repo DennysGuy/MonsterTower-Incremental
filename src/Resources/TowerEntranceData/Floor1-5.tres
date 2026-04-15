@@ -1,20 +1,22 @@
 [gd_resource type="Resource" script_class="TowerEntranceData" format=3 uid="uid://k8lq2m8l311f"]
 
-[ext_resource type="Texture2D" uid="uid://dmw0muar17a6q" path="res://Assets/FloorPreviews/Floor1-3Preview.png" id="1_k2nx2"]
 [ext_resource type="Texture2D" uid="uid://m3x60greqbfs" path="res://Assets/Enemies/GoblinIcon.png" id="1_tuotj"]
 [ext_resource type="Texture2D" uid="uid://dai0ybp7jtl2t" path="res://Assets/Enemies/OrcIcon.png" id="2_cvuqe"]
-[ext_resource type="Texture2D" uid="uid://825wmmsifn27" path="res://Assets/FloorPreviews/Floor1-3-point-2Preview.png" id="2_jcw8o"]
 [ext_resource type="Texture2D" uid="uid://oaoqn7v63rnc" path="res://Assets/EnvironmentalAssets/IronOreDrop.png" id="3_nn3vm"]
 [ext_resource type="Script" uid="uid://cyho4aep1qxmu" path="res://src/Scripts/Maps/tower_entrance_data.gd" id="3_tuotj"]
 [ext_resource type="Texture2D" uid="uid://cr5flx0chhnwh" path="res://Assets/EnvironmentalAssets/CoalOre.png" id="4_pu0du"]
+[ext_resource type="Texture2D" uid="uid://s01wl4gnv5uw" path="res://Assets/FloorPreviews/Floor1-5-CHKP1.png" id="5_pu0du"]
+[ext_resource type="Texture2D" uid="uid://c8ykjvxbm23u5" path="res://Assets/FloorPreviews/Floor1-5-CHKP2.png" id="6_muamv"]
+[ext_resource type="Texture2D" uid="uid://c0q1jflaf0kkr" path="res://Assets/FloorPreviews/Floor1-5-CHKP3.png" id="7_yfxk4"]
 
 [resource]
 script = ExtResource("3_tuotj")
 floor_name = "Floor 1-5"
+floor_number = 5
 biome = "Mossy Dungeon"
 total_camp_fires = 2
 scene_path = "uid://c02draaw5wfp1"
-preview_pictures = Array[Texture2D]([ExtResource("1_k2nx2"), ExtResource("2_jcw8o"), ExtResource("2_jcw8o")])
+preview_pictures = Array[Texture2D]([ExtResource("5_pu0du"), ExtResource("6_muamv"), ExtResource("7_yfxk4")])
 enemy_preview_graphics = Array[Texture2D]([ExtResource("1_tuotj"), ExtResource("2_cvuqe")])
 ore_rock_preview_graphics = Array[Texture2D]([ExtResource("3_nn3vm"), ExtResource("4_pu0du")])
 metadata/_custom_type_script = "uid://cyho4aep1qxmu"

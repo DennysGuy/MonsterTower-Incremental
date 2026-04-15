@@ -34,8 +34,6 @@
 [ext_resource type="AudioStream" uid="uid://br24s8y5lttep" path="res://Audio/SFX/Ambience/Starspire/StarspireAmbience.wav" id="30_fdeu8"]
 [ext_resource type="Texture2D" uid="uid://dbg5n708oli7y" path="res://Assets/Facilities/SwordUpgradeStation.png" id="33_0u15j"]
 [ext_resource type="PackedScene" uid="uid://w1c2yn7s6sjx" path="res://src/Scenes/UI/CraftingStations/NewCraftingStation.tscn" id="33_d6jc3"]
-[ext_resource type="PackedScene" uid="uid://dfl8fkojivefu" path="res://src/Scenes/GemStoneChests/GemStoneChest.tscn" id="34_y20fx"]
-[ext_resource type="Resource" uid="uid://d3ak1ilk1id2y" path="res://src/Resources/GemChests/Tier1GemChest.tres" id="35_hw86b"]
 [ext_resource type="PackedScene" uid="uid://drvmmtbvnc785" path="res://src/Scenes/Tower/arrow_at_ore.tscn" id="36_hw86b"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_te0bi"]
@@ -1006,9 +1004,6 @@ theme_override_fonts/font = ExtResource("10_636af")
 theme_override_font_sizes/font_size = 13
 text = "Press 'E' to Access Cooking Station"
 
-[node name="RefineryPosition" type="Node2D" parent="." unique_id=1121494031]
-position = Vector2(516, 438)
-
 [node name="AccessSmeltingStation" type="Label" parent="." unique_id=1102055337]
 visible = false
 offset_left = 403.0
@@ -1068,6 +1063,9 @@ texture = ExtResource("26_d6jc3")
 visible = true
 position = Vector2(1, -29)
 base_offset = 30.0
+
+[node name="DojoPosition" type="Node2D" parent="." unique_id=1300992314]
+position = Vector2(150, 560)
 
 [node name="SmithingStation" parent="." unique_id=1664193682 instance=ExtResource("21_bl45m")]
 position = Vector2(162, 447.5)
@@ -1288,16 +1286,15 @@ position = Vector2(58, 384)
 position = Vector2(277, 656)
 index = 1
 
+[node name="RefineryPosition" type="Node2D" parent="." unique_id=1121494031]
+position = Vector2(516, 442)
+
 [node name="CookingStation" parent="." unique_id=179535965 instance=ExtResource("33_d6jc3")]
 position = Vector2(505, 656)
 station_type = 1
 
 [node name="Refinery" parent="." unique_id=763505504 instance=ExtResource("33_d6jc3")]
 position = Vector2(508, 544)
-
-[node name="GemStoneChest" parent="." unique_id=1511035040 instance=ExtResource("34_y20fx")]
-position = Vector2(352, 656)
-chest_stats = ExtResource("35_hw86b")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=842259970]
 visible = false
