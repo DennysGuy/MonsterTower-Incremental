@@ -8,6 +8,7 @@ class_name NewStarShireMap extends Map
 @onready var canvas_layer: CanvasLayer = $CanvasLayer
 @onready var dojo_position: Node2D = $DojoPosition
 
+const NOVELTY_ITEMS_SALE = preload("uid://bylwk3imxuh3i")
 
 var player_in_tower_range : bool = false
 var player_in_market_range : bool = false
@@ -42,6 +43,7 @@ const CLASS_UP_FANFARE = preload("uid://cw28u06grrwni")
 
 const CRAFT_SWORD = preload("uid://4c6l1w0kpar3")
 const UNLOCK_SHOP = preload("uid://cveiqvxm5r0yw")
+@onready var grand_market_area: Area2D = $GrandMarketArea
 
 
 # Called when the node enters the scene tree for the first time.
@@ -245,6 +247,7 @@ func spawn_dojo_menu() -> void:
 func _on_grand_market_area_body_entered(body: Node2D) -> void:
 	if body is Player:
 		player_in_market_range = true
+		sell_novelty_items()
 		enter_market_label.show()
 
 func _on_grand_market_area_body_exited(body: Node2D) -> void:
@@ -442,3 +445,45 @@ func _on_gem_stone_station_area_body_exited(body: Node2D) -> void:
 	if body is Player:
 		player_in_upgrade_station_range = false
 		enter_upgrade_station_notice.hide()
+
+
+func sell_all_items(inventory_name : String) -> Array:
+	var inventory : Array = InventoryManager.inventories[inventory_name]
+	var total_sale_numbers : int = 0
+	var currency_acquired : int = 0
+
+	for slot in inventory.duplicate():
+		if slot["item"].is_novelty():
+			var qty = slot["quantity"]
+			var value = slot["item"].sell_value * qty
+			
+			for i in range(qty):
+				InventoryManager.remove_item(inventory_name, slot["item"])
+			
+			TechTreeManager.currency += value
+			currency_acquired += value
+			total_sale_numbers += qty
+
+	TechTreeManager.update_currency_label.emit()
+	return [total_sale_numbers,currency_acquired]
+
+func sell_novelty_items() -> void:
+	var total_sales : int = 0
+	var currency_acquired : int = 0
+	var inventory_sales : Array = sell_all_items("Inventory")
+	var bank_sale : Array = sell_all_items("Bank")
+	
+	total_sales += inventory_sales[0]
+	currency_acquired += inventory_sales[1]
+	total_sales += bank_sale[0]
+	currency_acquired += bank_sale[1]
+	
+	if total_sales > 0:
+		var notification_label : DamageLabel = preload("uid://dkchs27qqogyy").instantiate()
+		notification_label.label.text = "%s Novelty Items Sold!\n +%s Gold!" % [total_sales,currency_acquired]
+		notification_label.position = grand_market_area.position
+		add_child(notification_label)
+		sfx_player.play_sfx(NOVELTY_ITEMS_SALE)
+
+
+	

@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://c0hsdw5hnpef5" path="res://Assets/NPCs/FreeMarketNPCs/GearDealer_WithoutOutline.png" id="12_l6435"]
 [ext_resource type="Texture2D" uid="uid://0l7t1v2v8yge" path="res://Assets/NPCs/FreeMarketNPCs/DripDealer_NoOutline.png" id="13_sxpgj"]
 [ext_resource type="Texture2D" uid="uid://5cetad7bhon0" path="res://Assets/Facilities/StorageArea.png" id="14_jp6xg"]
+[ext_resource type="Script" uid="uid://dawqudr8nwqml" path="res://src/Scripts/Facilities/grand_market_area.gd" id="17_hw86b"]
 [ext_resource type="PackedScene" uid="uid://cr6q5dxlkks" path="res://src/Scenes/Tower/LadderArea.tscn" id="17_jp6xg"]
 [ext_resource type="PackedScene" uid="uid://vo5sm7p34vo6" path="res://src/Scenes/Actors/Utilities/NameTag.tscn" id="19_bl45m"]
 [ext_resource type="PackedScene" uid="uid://icxc8mi1q1w4" path="res://src/Scenes/NewStarshire/Facilities/SwordCraftingStation.tscn" id="21_bl45m"]
@@ -896,6 +897,7 @@ visible = false
 
 [node name="GrandMarketArea" type="Area2D" parent="." unique_id=1746715903]
 position = Vector2(373.5, 334)
+script = ExtResource("17_hw86b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GrandMarketArea" unique_id=495718423]
 position = Vector2(11, -25.5)
