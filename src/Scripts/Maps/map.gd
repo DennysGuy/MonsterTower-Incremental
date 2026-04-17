@@ -45,6 +45,8 @@ const TIER_UP = preload("uid://dhfdudbiidv7a")
 var kill_quota_hit : bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if !MusicPlayer.transitioning_floors:
+		MusicPlayer.stop_player()
 	GameManager.can_pause_game = true
 	GameManager.previous_map_path = path
 	GameManager.previous_map_data = tower_entrance_data
@@ -78,12 +80,12 @@ func _ready() -> void:
 			hud.show()
 		
 		spawn_player()
-	
+		
 		if camera:
 			camera.player = player
 		
 		if map_type == MAP_TYPE.CHECKPOINT_FLOOR:	
-			
+	
 			hud.expedition_timer.show_stop_watch()
 			if !GameManager.hunt_challenge_selected:
 				if tower_entrance_data.hunt_challenge_completed:
@@ -132,7 +134,8 @@ func _ready() -> void:
 	if !GameManager.hunt_challenge_selected:
 		if map_theme_song:
 			if !MusicPlayer.transitioning_floors:
-				MusicPlayer.play_song(map_theme_song)
+				if !MusicPlayer.audio_stream_player.playing:
+					MusicPlayer.play_song(map_theme_song)
 			else:
 				MusicPlayer.transitioning_floors = false
 	else:

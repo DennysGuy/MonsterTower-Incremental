@@ -29,6 +29,7 @@ class_name Player extends Entity
 @onready var can_double_jump : bool = true
 @onready var can_knock_back : bool = true
 @onready var can_spawn_gravestone : bool = true
+@onready var ladder_top_position_detector: Marker2D = $LadderTopPositionDetector
 
 @onready var sword_soar_hit_box: HitBox = $SwordSoarHitBox
 

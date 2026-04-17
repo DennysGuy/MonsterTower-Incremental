@@ -1,5 +1,6 @@
 class_name PrevElevator extends Node2D
 
+@export var current_floor_data : TowerEntranceData
 @export var prev_floor_data : TowerEntranceData
 @export var last_spawn_point : int
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -34,6 +35,9 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 			doors_open = false
 
 func go_to_prev_floor() -> void:
-	MusicPlayer.transitioning_floors = true
+	if current_floor_data.is_boss_door():
+		MusicPlayer.transitioning_floors = false
+	else:
+		MusicPlayer.transitioning_floors = true 
 	GameManager.spawn_location = last_spawn_point
 	SignalBus.move_to_next_room.emit(prev_floor_data.scene_path)

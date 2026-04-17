@@ -2181,6 +2181,9 @@ position = Vector2(-1, -15)
 [node name="Holder" type="Marker2D" parent="." unique_id=1134448368]
 position = Vector2(-25, -23)
 
+[node name="LadderTopPositionDetector" type="Marker2D" parent="." unique_id=1052553713]
+position = Vector2(0, -22)
+
 [node name="GemChestHitArea" type="Area2D" parent="." unique_id=1770032373]
 visible = false
 position = Vector2(11, -11)

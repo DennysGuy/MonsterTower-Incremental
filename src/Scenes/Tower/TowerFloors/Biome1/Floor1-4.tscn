@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://btuhj7rd3l06g" path="res://src/Scripts/Maps/Tower/Biome1/floor_1_4.gd" id="1_qpvn6"]
 [ext_resource type="Resource" uid="uid://bv3no8c6bw4tm" path="res://src/Resources/TowerEntranceData/Floor1-4.tres" id="2_2x8us"]
 [ext_resource type="Resource" uid="uid://vibb3cg4b01g" path="res://src/Resources/TowerEntranceData/Floor1-3.tres" id="2_xkl8j"]
-[ext_resource type="AudioStream" uid="uid://baf1q03xsfmb2" path="res://Audio/Music/TempTowerTheme2.mp3" id="3_4qnya"]
+[ext_resource type="AudioStream" uid="uid://cp2iodtnnun5l" path="res://Audio/Music/MossyDungeonTestTheme1.wav" id="3_h5nvt"]
 [ext_resource type="AudioStream" uid="uid://fgrpqq5p7fjq" path="res://Audio/SFX/Biomes/MossyDungeon/Ambience/03 DSGNDron, Dungeon, Ambience, Drone, Dark, Loop.wav" id="4_h5nvt"]
 [ext_resource type="AudioStream" uid="uid://bnfe0t36iu1dy" path="res://Audio/Music/TemporaryHuntMusic.mp3" id="4_rao3c"]
 [ext_resource type="PackedScene" uid="uid://mwttdrt2cg71" path="res://src/Scenes/Players/ambience_player.tscn" id="5_o3lws"]
@@ -90,7 +90,7 @@ map_id = 4
 exit_elevator_marker = NodePath("ExitElevatorMarker")
 exit_elevator = NodePath("ExitElevator")
 tower_entrance_data = ExtResource("2_2x8us")
-map_theme_song = ExtResource("3_4qnya")
+map_theme_song = ExtResource("3_h5nvt")
 hunt_theme_song = ExtResource("4_rao3c")
 hunt_victory_theme = ExtResource("5_o10go")
 camera = NodePath("PlayerCamera")
@@ -200,7 +200,7 @@ chance_to_spawn = 0.4
 spawn_parent = NodePath("../..")
 
 [node name="OreRockMarker4" parent="OreRockMarkers" unique_id=2014919737 node_paths=PackedStringArray("spawn_parent") instance=ExtResource("15_at0vg")]
-position = Vector2(280, 1887)
+position = Vector2(280, 1889)
 ore_rock_resource = ExtResource("16_0c8cp")
 ore_rock = ExtResource("16_klrm8")
 chance_to_spawn = 0.4
@@ -282,6 +282,7 @@ position = Vector2(131, 913)
 
 [node name="PrevElevator" parent="." unique_id=974802616 instance=ExtResource("13_aj4kp")]
 position = Vector2(162, 2530)
+current_floor_data = ExtResource("2_2x8us")
 prev_floor_data = ExtResource("2_xkl8j")
 last_spawn_point = 3
 
@@ -322,7 +323,7 @@ position = Vector2(0, -3.5)
 shape = SubResource("RectangleShape2D_o10go")
 
 [node name="Top" type="Marker2D" parent="LadderArea2" unique_id=1631455060]
-position = Vector2(0, -34)
+position = Vector2(0, -35)
 
 [node name="Bottom" type="Marker2D" parent="LadderArea2" unique_id=231712811]
 position = Vector2(0, 56)
@@ -339,7 +340,7 @@ position = Vector2(0, -3)
 shape = SubResource("RectangleShape2D_r1d8x")
 
 [node name="Top" type="Marker2D" parent="LadderArea3" unique_id=633486784]
-position = Vector2(0, -74)
+position = Vector2(0, -75)
 
 [node name="Bottom" type="Marker2D" parent="LadderArea3" unique_id=576095673]
 position = Vector2(0, 84)

@@ -33,7 +33,7 @@
 [ext_resource type="PackedScene" uid="uid://4ww00bxiixwu" path="res://src/Scenes/Tower/TowerFloors/Biome1/PuzzleLever.tscn" id="31_dwfat"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rao3c"]
-size = Vector2(20, 208)
+size = Vector2(20, 209)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ekrv2"]
 size = Vector2(20, 63)
@@ -48,7 +48,7 @@ size = Vector2(20, 80)
 size = Vector2(20, 111)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7simu"]
-size = Vector2(20, 111)
+size = Vector2(22, 110)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1t36r"]
 size = Vector2(20, 79)
@@ -147,6 +147,7 @@ visible = false
 
 [node name="PrevElevator" parent="." unique_id=974802616 instance=ExtResource("19_ec0n8")]
 position = Vector2(163, 2530)
+current_floor_data = ExtResource("2_1h2gs")
 prev_floor_data = ExtResource("2_7fgcx")
 last_spawn_point = 2
 
@@ -160,11 +161,11 @@ ladder_top = NodePath("Top")
 ladder_bottom = NodePath("Bottom")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LadderArea" unique_id=1244690682]
-position = Vector2(0, 69)
+position = Vector2(0, 68.5)
 shape = SubResource("RectangleShape2D_rao3c")
 
 [node name="Top" type="Marker2D" parent="LadderArea" unique_id=579466713]
-position = Vector2(0, -35)
+position = Vector2(0, -36)
 
 [node name="Bottom" type="Marker2D" parent="LadderArea" unique_id=2036995329]
 position = Vector2(0, 201)
@@ -198,7 +199,7 @@ position = Vector2(0, 11.5)
 shape = SubResource("RectangleShape2D_l7but")
 
 [node name="Top" type="Marker2D" parent="LadderArea10" unique_id=1578135222]
-position = Vector2(0, -35)
+position = Vector2(0, -36)
 
 [node name="Bottom" type="Marker2D" parent="LadderArea10" unique_id=2037228237]
 position = Vector2(0, 88)
@@ -232,7 +233,7 @@ position = Vector2(0, 5)
 shape = SubResource("RectangleShape2D_oyee4")
 
 [node name="Top" type="Marker2D" parent="LadderArea4" unique_id=1689258428]
-position = Vector2(0, -35)
+position = Vector2(0, -36)
 
 [node name="Bottom" type="Marker2D" parent="LadderArea4" unique_id=1315929972]
 position = Vector2(0, 67)
@@ -313,11 +314,11 @@ ladder_top = NodePath("Top")
 ladder_bottom = NodePath("Bottom")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LadderArea9" unique_id=1564850896]
-position = Vector2(0, 20.5)
+position = Vector2(-1, 21)
 shape = SubResource("RectangleShape2D_7simu")
 
 [node name="Top" type="Marker2D" parent="LadderArea9" unique_id=382221392]
-position = Vector2(0, -35)
+position = Vector2(0, -34)
 
 [node name="Bottom" type="Marker2D" parent="LadderArea9" unique_id=1449380019]
 position = Vector2(0, 104)

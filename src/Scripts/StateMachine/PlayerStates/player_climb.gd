@@ -5,6 +5,8 @@ class_name PlayerClimb extends State
 
 @export var climb_sfx : AudioStream
 
+@export var come_from_below : bool = false
+
 func enter() -> void:
 	super()
 	parent.apply_gravity = false
@@ -15,6 +17,7 @@ func enter() -> void:
 	parent.set_outfit_texture(animation_name)
 	if parent.stored_ladder:
 		parent.global_position.x = parent.stored_ladder.global_position.x
+	
 	parent.is_climbing = true
 	parent.set_collision_mask_value(5, false)
 	
@@ -52,10 +55,11 @@ func process_physics(_delta: float) -> State:
 		return jump_state
 	
 	
-	if parent.global_position.y <= parent.stored_ladder.ladder_top_position and parent.is_climbing:
+	if parent.ladder_top_position_detector.global_position.y <= parent.stored_ladder.ladder_top.global_position.y and Input.is_action_pressed("pan_cam_up") and parent.is_climbing:
+		parent.global_position = parent.stored_ladder.ladder_top.global_position
 		return idle_state
 	
-	if parent.global_position.y >= parent.stored_ladder.ladder_bottom_position and parent.is_climbing:
+	if parent.global_position.y >= parent.stored_ladder.ladder_bottom.global_position.y and parent.is_climbing:
 		return idle_state
 	
 	parent.move_and_slide()

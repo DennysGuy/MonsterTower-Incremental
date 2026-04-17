@@ -2,7 +2,7 @@ class_name ItemSlot extends TextureRect
 
 @export var item : Item
 
-enum SLOT_TYPE {BAG, SHOP}
+enum SLOT_TYPE {BAG, BANK, SHOP}
 enum SLOT_LOCALE {INVENTORY, BANK}
 @export var slot_locale = SLOT_LOCALE.INVENTORY
 @export var slot_type : SLOT_TYPE = SLOT_TYPE.BAG
@@ -33,7 +33,12 @@ func _process(delta: float) -> void:
 	pass
 
 func show_quantity_label(quantity : int) -> void:
-	quantity_label.text = str(quantity)
+	if slot_type == SLOT_TYPE.BAG:
+		quantity_label.text = "%s/%s" % [quantity, int(PlayerStats.player_stats["Max Bag Stack"])]
+	elif slot_type == SLOT_TYPE.BANK:
+		quantity_label.text = "%s/%s" % [quantity, int(PlayerStats.player_stats["Max Bank Stack"])]
+	else:
+		quantity_label.text = str(quantity)
 	quantity_label.show()
 
 func set_as_shop_slot() -> void:
@@ -41,6 +46,9 @@ func set_as_shop_slot() -> void:
 
 func set_locale_as_bank() -> void:
 	slot_locale = SLOT_LOCALE.BANK
+
+func set_as_bank_slot() -> void:
+	slot_type = SLOT_TYPE.BANK
 
 func set_indicator(potential_item : Item) -> void:
 	match potential_item.item_type:

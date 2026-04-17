@@ -46,7 +46,7 @@ const KNOCKBACK_FORCE : int = 300
 	"Max Bank Slots": 4,
 	"Max Bag Stack": 6,
 	"Max Ore Bag Stack": 4,
-	"Max Bank Stack":8,
+	"Max Bank Stack":15,
 	"Cooking Speed": 0.15,
 	"Smelting Speed": 0.15,
 	"Mining Damage": 5,
@@ -274,6 +274,7 @@ func get_bag(bag : String) -> ItemBag:
 		2: return preload("uid://mbne7hjkpnqi")
 		3: return preload("uid://byikht2gbhthk")
 		4: return preload("uid://omnm6ywng6wn")
+		5: return
 		_: return preload("uid://cuwof21s5e74c")
 
 func get_current_bag() -> ItemBag:

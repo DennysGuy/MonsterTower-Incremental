@@ -51,7 +51,7 @@ TODO: We will add saves for classes as well
 	"Max Bank Slots": 4,
 	"Max Bag Stack": 4,
 	"Max Ore Bag Stack": 4,
-	"Max Bank Stack":8,
+	"Max Bank Stack":10,
 	"Cooking Speed": 0.15,
 	"Smelting Speed": 0.15,
 	"Mining Damage": 5,

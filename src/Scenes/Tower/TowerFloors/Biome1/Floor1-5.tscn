@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b20w1e8n7ilji" path="res://src/Scripts/Maps/Tower/Biome1/floor_1_3.gd" id="1_cd2eo"]
 [ext_resource type="Resource" uid="uid://bv3no8c6bw4tm" path="res://src/Resources/TowerEntranceData/Floor1-4.tres" id="2_0edbk"]
 [ext_resource type="Resource" uid="uid://k8lq2m8l311f" path="res://src/Resources/TowerEntranceData/Floor1-5.tres" id="2_6kwyc"]
-[ext_resource type="AudioStream" uid="uid://baf1q03xsfmb2" path="res://Audio/Music/TempTowerTheme2.mp3" id="3_l3xnm"]
+[ext_resource type="AudioStream" uid="uid://cp2iodtnnun5l" path="res://Audio/Music/MossyDungeonTestTheme1.wav" id="3_ogel5"]
 [ext_resource type="PackedScene" uid="uid://mwttdrt2cg71" path="res://src/Scenes/Players/ambience_player.tscn" id="7_8rajy"]
 [ext_resource type="TileSet" uid="uid://dr3ft3wh6mi6e" path="res://src/Scenes/Tower/TowerFloors/Biome1/Biome1BGSetPieces1.tres" id="8_ugoa8"]
 [ext_resource type="TileSet" uid="uid://cuil6pmpg4xf1" path="res://src/Scenes/Tower/TowerFloors/Biome1/Biome1-Floor.tres" id="9_awluh"]
@@ -47,7 +47,7 @@ size = Vector2(20, 80)
 size = Vector2(20, 111)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7simu"]
-size = Vector2(20, 111)
+size = Vector2(20, 112)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8ob7c"]
 size = Vector2(208, 20)
@@ -61,7 +61,7 @@ map_name = "Floor 1-5"
 map_id = 5
 exit_elevator = NodePath("ExitElevator")
 tower_entrance_data = ExtResource("2_6kwyc")
-map_theme_song = ExtResource("3_l3xnm")
+map_theme_song = ExtResource("3_ogel5")
 camera = NodePath("PlayerCamera")
 hud = NodePath("HUD")
 ore_rock_spawn_rate = 0.5
@@ -267,6 +267,7 @@ position = Vector2(194, 2033)
 
 [node name="PrevElevator" parent="." unique_id=974802616 instance=ExtResource("21_jq2ab")]
 position = Vector2(479, 2530)
+current_floor_data = ExtResource("2_6kwyc")
 prev_floor_data = ExtResource("2_0edbk")
 last_spawn_point = 3
 
@@ -324,7 +325,7 @@ position = Vector2(0, 4.5)
 shape = SubResource("RectangleShape2D_l7but")
 
 [node name="Top" type="Marker2D" parent="LadderArea10" unique_id=1578135222]
-position = Vector2(0, -35)
+position = Vector2(0, -36)
 
 [node name="Bottom" type="Marker2D" parent="LadderArea10" unique_id=2037228237]
 position = Vector2(0, 80)
@@ -422,11 +423,11 @@ ladder_top = NodePath("Top")
 ladder_bottom = NodePath("Bottom")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LadderArea8" unique_id=2072697230]
-position = Vector2(0, 20.5)
+position = Vector2(0, 20)
 shape = SubResource("RectangleShape2D_7simu")
 
 [node name="Top" type="Marker2D" parent="LadderArea8" unique_id=513472774]
-position = Vector2(0, -35)
+position = Vector2(0, -36)
 
 [node name="Bottom" type="Marker2D" parent="LadderArea8" unique_id=1291631527]
 position = Vector2(0, 95)
@@ -443,7 +444,7 @@ position = Vector2(0, 20.5)
 shape = SubResource("RectangleShape2D_7simu")
 
 [node name="Top" type="Marker2D" parent="LadderArea9" unique_id=382221392]
-position = Vector2(0, -35)
+position = Vector2(0, -36)
 
 [node name="Bottom" type="Marker2D" parent="LadderArea9" unique_id=1449380019]
 position = Vector2(0, 120)

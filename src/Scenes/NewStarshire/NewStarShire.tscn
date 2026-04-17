@@ -912,11 +912,12 @@ theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("10_636af")
 text = "Press E to enter Market"
 
-[node name="LadderArea" parent="." unique_id=1455959436 node_paths=PackedStringArray("ladder_top", "ladder_bottom") instance=ExtResource("17_jp6xg")]
+[node name="LadderArea" parent="." unique_id=1455959436 node_paths=PackedStringArray("ladder_top", "top_area_position", "ladder_bottom") instance=ExtResource("17_jp6xg")]
 position = Vector2(321, 444)
 collision_layer = 8
 collision_mask = 8
 ladder_top = NodePath("Top")
+top_area_position = NodePath("Top2")
 ladder_bottom = NodePath("Bot")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LadderArea" unique_id=752403027]
@@ -925,6 +926,9 @@ shape = SubResource("RectangleShape2D_05bdh")
 
 [node name="Top" type="Marker2D" parent="LadderArea" unique_id=296101434]
 position = Vector2(0, -60)
+
+[node name="Top2" type="Marker2D" parent="LadderArea" unique_id=1731478230]
+position = Vector2(-175, 38)
 
 [node name="Bot" type="Marker2D" parent="LadderArea" unique_id=1075106674]
 position = Vector2(1, 185)

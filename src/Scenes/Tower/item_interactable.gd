@@ -78,3 +78,7 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 func _on_destroy_timer_timeout() -> void:
 	if perishable:
 		queue_free()
+
+
+func _on_pick_up_timer_timeout() -> void:
+	pick_up_item()

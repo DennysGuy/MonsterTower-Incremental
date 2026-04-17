@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ItemBag" load_steps=3 format=3 uid="uid://byikht2gbhthk"]
+[gd_resource type="Resource" script_class="ItemBag" format=3 uid="uid://byikht2gbhthk"]
 
 [ext_resource type="Script" uid="uid://2pcwgw0gbxsp" path="res://src/Scripts/item_bag.gd" id="1_433f0"]
 [ext_resource type="Texture2D" uid="uid://64i8qmkasxeo" path="res://Assets/HUD/Bags/4SlotBag.png" id="2_i5yff"]
@@ -6,6 +6,6 @@
 [resource]
 script = ExtResource("1_433f0")
 item_bag_name = "Standard Backpack"
-max_slots = 4
+max_slots = 8
 texture = ExtResource("2_i5yff")
 metadata/_custom_type_script = "uid://2pcwgw0gbxsp"
