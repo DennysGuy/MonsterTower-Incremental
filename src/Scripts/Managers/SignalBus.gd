@@ -143,3 +143,7 @@ signal update_ap_label
 
 @warning_ignore("unused_signal")
 signal show_gem_station_arrow
+@warning_ignore("unused_signal")
+signal disable_enemy_hit_box
+@warning_ignore("unused_signal")
+signal enable_enemy_hit_box

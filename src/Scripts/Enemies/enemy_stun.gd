@@ -12,6 +12,7 @@ func enter() -> void:
 
 func exit() -> void:
 	if !parent.is_dead:
+		parent.damageable = true
 		parent.enable_hit_box()
 
 func process_input(_event: InputEvent) -> State:

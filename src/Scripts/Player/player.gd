@@ -136,9 +136,7 @@ func flip_textures(flip : bool) -> void:
 		gem_chest_hit_area.position = gem_chest_hit_area_position
 		holder.position = holder_position
 	
-func start_invincibility() -> void:
-	damageable = false
-	blink_effect()
+
 
 func set_textures_visibility(value : bool) -> void:
 	sprite.visible = value
@@ -230,42 +228,57 @@ func disable_gem_chest_hit_area() -> void:
 	gem_chest_hit_area.monitoring = false
 	gem_chest_hit_area.get_child(0).disabled = true
 
+
+var blink_token: int = 0
+
+
+func start_invincibility() -> void:
+	blink_token += 1
+	
+	invincibility_timer.stop()
+	invincibility_timer.wait_time = PlayerStats.player_stats["Invincibility Duration"]
+	invincibility_timer.start()
+	blink_effect()
+
 func blink_effect() -> void:
-	if not is_inside_tree():
-		return 
-		
-	var invincibility_duration : float = PlayerStats.player_stats["Invincibility Duration"]
-	var blink_current_time : float = 0.0
-	var blink_wait_time : float = 0.1
+	if !is_inside_tree():
+		return
+	
+	blink_token += 1
+	var my_token := blink_token
+	
+	var invincibility_duration: float = PlayerStats.player_stats["Invincibility Duration"]
+	var blink_current_time: float = 0.0
+	var blink_wait_time: float = 0.1
 	
 	while blink_current_time < invincibility_duration:
-		if not is_inside_tree():
-			return  # Exit cleanly if removed from tree
-			
+		if !is_inside_tree() or my_token != blink_token:
+			return
+		
 		set_textures_visibility(false)
+		await get_tree().create_timer(blink_wait_time).timeout
 		
-		# Store the timer and check if we're still valid after await
-		var blink_timer = get_tree().create_timer(blink_wait_time)
-		await blink_timer.timeout
-		
-		if not is_inside_tree():
+		if !is_inside_tree() or my_token != blink_token:
 			return
-			
+		
 		blink_current_time += blink_wait_time
+		
+		if blink_current_time >= invincibility_duration:
+			break
+		
 		set_textures_visibility(true)
+		await get_tree().create_timer(blink_wait_time).timeout
 		
-		blink_timer = get_tree().create_timer(blink_wait_time)
-		await blink_timer.timeout
-		
-		if not is_inside_tree():
+		if !is_inside_tree() or my_token != blink_token:
 			return
-			
+		
 		blink_current_time += blink_wait_time
 	
-	# Final safety check before setting damageable
-	if is_inside_tree():
-		damageable = true
-		enable_hurt_box()
+	if !is_inside_tree() or my_token != blink_token:
+		return
+	
+	set_textures_visibility(true)
+		#SignalBus.enable_enemy_hit_box.emit()
 
 func send_to_idle_state() -> void:
 	state_machine.change_state(idle_state)
@@ -289,6 +302,10 @@ func _on_ability_cool_down_timer_timeout() -> void:
 	can_dash_attack = true
 
 func _on_invincibility_timer_timeout() -> void:
+	if !is_inside_tree():
+		return
+	
+	set_textures_visibility(true)
 	damageable = true
 	enable_hurt_box()
 

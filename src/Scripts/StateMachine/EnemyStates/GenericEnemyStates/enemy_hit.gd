@@ -19,6 +19,7 @@ func enter() -> void:
 	#parent.sfx_player.play_sfx(impacts.pick_random())
 
 func exit() -> void:
+	parent.damageable = true
 	parent.enable_hurt_box()
 	parent.enable_hit_box()
 	

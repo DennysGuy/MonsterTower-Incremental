@@ -45,12 +45,19 @@ func _process(delta: float) -> void:
 			SignalBus.go_to_victory_hunt_menu.emit()
 			return
 
-		if current_room_data.hunt_challenge_completed or (current_room_data.is_expedition_floor() and !current_room_data.unlock_recipe):
+		if PlayerStats.check_points_unlocked[next_room_data.floor_name] == true:
 			MusicPlayer.transitioning_floors = true
 			GameManager.spawn_location = 0
 			SignalBus.move_to_next_room.emit(next_room_data.scene_path)
-		else:
-			unlock_next_room()
+			return
+
+		if current_room_data.is_expedition_floor() and current_room_data.unlock_recipe == null:
+			MusicPlayer.transitioning_floors = true
+			GameManager.spawn_location = 0
+			SignalBus.move_to_next_room.emit(next_room_data.scene_path)
+			return
+
+		unlock_next_room()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Player:
@@ -76,7 +83,7 @@ func unlock_next_room() -> void:
 		if InventoryManager.calculate_quantity(current_room_data.unlock_recipe) < 1:
 			return
 			
-		if current_room_data.unlock_recipe:
+		if current_room_data.unlock_recipe and !current_room_data.hunt_challenge_completed:
 			InventoryManager.remove_resources_from_inventory(current_room_data.unlock_recipe.recipe_list)
 			
 		needed_panel.hide()

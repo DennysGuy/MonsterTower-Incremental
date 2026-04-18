@@ -24,6 +24,8 @@ var current_break_count : int = 0
 
 func _ready() -> void:
 	super()
+	SignalBus.disable_enemy_hit_box.connect(disable_hit_box)
+	SignalBus.enable_enemy_hit_box.connect(enable_hit_box)
 	health = enemy_stats.max_health
 	
 	if name_tag:

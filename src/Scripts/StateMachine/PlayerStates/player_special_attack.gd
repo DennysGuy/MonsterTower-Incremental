@@ -17,6 +17,8 @@ func enter() -> void:
 	parent.timer.start()
 	
 func exit() -> void:
+	#parent.disable_hit_box()
+	parent.clear_effect_texture()
 	selected_special_attack.on_exit()
 
 func process_input(_event: InputEvent) -> State:
