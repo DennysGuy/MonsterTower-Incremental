@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="TechNodeStats" load_steps=4 format=3 uid="uid://cqjeh0yqqse5c"]
+[gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://cqjeh0yqqse5c"]
 
 [ext_resource type="Texture2D" uid="uid://0pp8v4uqsyae" path="res://Assets/NodeGraphics/NodeGraphicsV2/Bank2_V2.png" id="1_div6n"]
 [ext_resource type="Resource" uid="uid://boeryxspsw8uq" path="res://src/Resources/Dishes/CookedGagootz.tres" id="2_dv4qv"]
@@ -8,12 +8,12 @@
 script = ExtResource("2_jrlte")
 node_name = "Banking 2"
 icon = ExtResource("1_div6n")
-description = "Bank Slots increased to 6"
-currency_required = 300
+description = "Bank Slots increased to 8"
+currency_required = 700
 materials_required = Array[Dictionary]([{
 ExtResource("2_dv4qv"): 3
 }])
 stat_name = "Max Bank Slots"
-upgrade_interval = 2.0
+upgrade_interval = 4.0
 prereqs = Array[String](["Banking: 1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

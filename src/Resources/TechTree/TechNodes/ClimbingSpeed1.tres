@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="TechNodeStats" load_steps=3 format=3 uid="uid://bvqw5l1mpu3ku"]
+[gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://bvqw5l1mpu3ku"]
 
 [ext_resource type="Texture2D" uid="uid://dfieeoflc78ej" path="res://Assets/NodeGraphics/NodeGraphicsV2/Climb1_V2.png" id="1_1x1ot"]
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_6m482"]
@@ -9,7 +9,7 @@ node_name = "Climb Speed 1"
 icon = ExtResource("1_1x1ot")
 description = "Speed up vertical coverage! Increases Climb Speed by 2% per level"
 max_level = 3
-currency_required = 90
+currency_required = 100
 stat_name = "Climbing Speed"
 upgrade_interval = 0.02
 prereqs = Array[String](["Jump Height 1:1"])

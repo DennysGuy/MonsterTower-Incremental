@@ -10,7 +10,7 @@ node_name = "Attack 2"
 icon = ExtResource("1_8vyph")
 description = "Increases Attack Damage by %25 for each level"
 max_level = 5
-currency_required = 200
+currency_required = 300
 materials_required = Array[Dictionary]([{
 ExtResource("3_nkphf"): 1
 }])

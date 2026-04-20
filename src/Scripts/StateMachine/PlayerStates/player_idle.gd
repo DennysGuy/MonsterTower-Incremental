@@ -77,7 +77,7 @@ func process_physics(_delta: float) -> State:
 	if Input.is_action_pressed("pan_cam_down") \
 	and parent.in_ladder_area \
 	and parent.global_position.y <= parent.stored_ladder.ladder_top_position:
-		parent.global_position.y = parent.stored_ladder.ladder_top_position + 5
+		parent.global_position.y = parent.stored_ladder.ladder_top_position + 20
 		return climb_state
 
 	parent.move_and_slide()

@@ -32,8 +32,9 @@ func _ready() -> void:
 	SignalBus.hide_hunt_time_label.connect(hide_hunt_time_label)
 	time_limit.text = "Expedition Time Limit:\n%s Seconds" % [int(PlayerStats.player_stats["Expedition Time"])]
 	hunt_time_label.hide()
-	hunt_time_label.text = "Hunt Challenge Time Limit: %s seconds" % [int(PlayerStats.player_stats["Hunt Time"])]
+	
 	drops_preview_panel.hide()
+	load_most_recent_floor()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
@@ -58,6 +59,7 @@ func store_entrance_data(entrance_data : TowerEntranceData) -> void:
 	floor_title.text = "%s" % [entrance_data.floor_name]
 	biome_title.text ="Biome: %s" % [entrance_data.biome]
 	selected_point.text = "Selected Point: %s - %s - Point: %s" % [entrance_data.biome, entrance_data.floor_name, GameManager.spawn_location+1]
+	hunt_time_label.text = "Hunt Challenge Time Limit: %s seconds" % [stored_entrance_data.hunt_challenge_time]
 	for child in area_button_selector.get_children():
 		child.queue_free()
 	
@@ -125,3 +127,9 @@ func populate_preview_container(preview_container : GridContainer, GraphicsArray
 		var texture : PreviewIconGraphic = preload("uid://c53idabyvvlhs").instantiate()
 		texture.texture = graphic
 		preview_container.add_child(texture)
+
+func load_most_recent_floor() -> void:
+	for floor_button in get_tree().get_nodes_in_group("FloorEntranceButton"):
+		if floor_button.tower_entrance_data.floor_number == PlayerStats.player_stats["Highest Floor"]:
+			store_entrance_data(floor_button.tower_entrance_data)
+			return

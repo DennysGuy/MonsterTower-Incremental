@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cqgo1ndavekv1" path="res://Assets/Tower/ReplenishingChaliceHP_Full.png" id="1_0gevn"]
 [ext_resource type="Script" uid="uid://csder0srp6i3h" path="res://src/Scripts/Tower/replenishing_alter.gd" id="1_skmvj"]
 [ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="3_43b6n"]
+[ext_resource type="PackedScene" uid="uid://vo5sm7p34vo6" path="res://src/Scenes/Actors/Utilities/NameTag.tscn" id="4_ckwvj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_skmvj"]
 size = Vector2(82, 31)
@@ -31,6 +32,10 @@ theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("3_43b6n")
 text = "Press 'E' to Consume"
 horizontal_alignment = 1
+
+[node name="NameTag" parent="." unique_id=1232323974 instance=ExtResource("4_ckwvj")]
+offset_left = -43.0
+offset_right = 45.0
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

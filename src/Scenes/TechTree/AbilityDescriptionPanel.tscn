@@ -5,8 +5,8 @@
 
 [node name="AbilityDescriptionPanel" type="Panel" unique_id=1133817655 node_paths=PackedStringArray("title", "type", "ap_cost", "description", "stat_list", "bg")]
 z_index = 4096
-offset_right = 210.0
-offset_bottom = 244.0
+offset_right = 156.0
+offset_bottom = 254.0
 pivot_offset = Vector2(1, 124)
 script = ExtResource("1_kpkl4")
 title = NodePath("Title")
@@ -24,7 +24,7 @@ anchor_bottom = 1.0
 offset_left = 3.0
 offset_top = 3.0
 offset_right = -4.0
-offset_bottom = -4.0
+offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(1.3957917e-06, 0.3966589, 0.48900282, 1)
@@ -66,9 +66,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -48.5
-offset_top = 34.0
+offset_top = 36.0
 offset_right = 49.5
-offset_bottom = 46.0
+offset_bottom = 48.0
 grow_horizontal = 2
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("1_35p0d")
@@ -78,10 +78,9 @@ horizontal_alignment = 1
 
 [node name="StatList" type="Label" parent="." unique_id=842727021]
 layout_mode = 0
-offset_left = 34.0
-offset_top = 44.0
-offset_right = 184.0
-offset_bottom = 91.0
+offset_top = 53.0
+offset_right = 150.0
+offset_bottom = 100.0
 theme_override_constants/paragraph_spacing = -5
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("1_35p0d")
@@ -96,24 +95,18 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -99.0
-offset_top = -20.0
-offset_right = 98.0
-offset_bottom = 113.0
+offset_left = -75.0
+offset_top = 4.0
+offset_right = 72.0
+offset_bottom = 117.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Description" type="RichTextLabel" parent="Panel" unique_id=834651880]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -94.5
-offset_top = -60.5
-offset_right = 94.5
-offset_bottom = 60.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/line_separation = -3

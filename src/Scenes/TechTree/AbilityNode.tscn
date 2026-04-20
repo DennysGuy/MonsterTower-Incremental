@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://cfdi2t8fqp8kw" path="res://src/Scripts/TechTree/ability_node.gd" id="1_85ojo"]
 [ext_resource type="Texture2D" uid="uid://46gvbpulh5q6" path="res://Assets/NodeGraphics/AbilitiesTechTree/AbilityNodeDisabled.png" id="1_aqre4"]
 [ext_resource type="Texture2D" uid="uid://c3b16214dy3ww" path="res://Assets/NodeGraphics/WarriorTechTree/SwordSoarAbilityNodeIcon.png" id="2_85ojo"]
+[ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="4_pojib"]
+[ext_resource type="Texture2D" uid="uid://c46iu8v75jaon" path="res://Assets/NodeGraphics/AbilitiesTechTree/RowLock.png" id="5_bjkn8"]
 
 [node name="AbilityNode" type="Control" unique_id=70786195]
 custom_minimum_size = Vector2(64, 64)
@@ -51,7 +53,40 @@ offset_bottom = 64.0
 mouse_default_cursor_shape = 2
 
 [node name="PanelMarker" type="Marker2D" parent="." unique_id=602492856]
-position = Vector2(70, -74)
+position = Vector2(-161, -124)
+
+[node name="LevelTracker" type="Label" parent="." unique_id=1245762365]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -38.0
+offset_top = 4.0
+offset_right = 39.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("4_pojib")
+text = "[10/10]"
+horizontal_alignment = 1
+
+[node name="LockPanel" type="Panel" parent="." unique_id=676620535]
+visible = false
+layout_mode = 0
+offset_right = 66.0
+offset_bottom = 66.0
+
+[node name="LockTexture" type="TextureRect" parent="LockPanel" unique_id=1333597240]
+layout_mode = 0
+offset_top = -1.0
+offset_right = 64.0
+offset_bottom = 63.0
+texture = ExtResource("5_bjkn8")
+stretch_mode = 2
 
 [connection signal="button_up" from="TextureButton" to="." method="_on_texture_button_button_up"]
 [connection signal="mouse_entered" from="TextureButton" to="." method="_on_texture_button_mouse_entered"]

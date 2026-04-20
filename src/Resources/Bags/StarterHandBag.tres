@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ItemBag" load_steps=3 format=3 uid="uid://cuwof21s5e74c"]
+[gd_resource type="Resource" script_class="ItemBag" format=3 uid="uid://cuwof21s5e74c"]
 
 [ext_resource type="Script" uid="uid://2pcwgw0gbxsp" path="res://src/Scripts/item_bag.gd" id="1_qh0ry"]
 [ext_resource type="Texture2D" uid="uid://b8s52papxh8ma" path="res://Assets/HUD/Bags/1SlotBag.png" id="2_wwkd5"]
@@ -6,6 +6,6 @@
 [resource]
 script = ExtResource("1_qh0ry")
 item_bag_name = "Starter Handbag"
-max_slots = 1
+max_slots = 2
 texture = ExtResource("2_wwkd5")
 metadata/_custom_type_script = "uid://2pcwgw0gbxsp"

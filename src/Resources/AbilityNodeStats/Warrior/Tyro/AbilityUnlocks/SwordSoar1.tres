@@ -7,17 +7,18 @@
 [resource]
 script = ExtResource("3_ydudv")
 icon = ExtResource("2_fu4sj")
-node_name = "Sword Soar +1"
+node_name = "Sword Soar"
+needed_level = 10
+max_upgrade_level = 5
 class_relation = "Tyro"
 description = "Replaces 'Double Jump'
-
-Soar through the air, piercing and knocking back enemies from above - clearing a path to safety."
+Causes the player to soar up striking and slowing enemies in their path."
 ap_cost = 1
 node_type = 1
 ability_category = "Double Jump"
 ability_resource = ExtResource("1_fu4sj")
 mp_cost = 2.0
 slow_wait_time = 0.2
-jump_height_modifier = 50.0
+jump_height_modifier = 25.0
 attack_damage_modifier = 0.2
 metadata/_custom_type_script = "uid://b1fyuk5q3e08o"

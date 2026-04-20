@@ -1,11 +1,13 @@
 [gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://b4n8wh8pnsfi8"]
 
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_0tikt"]
+[ext_resource type="Texture2D" uid="uid://5omiqbhs1wtm" path="res://Assets/NodeGraphics/NodeGraphicsV2/Jump2_V2.png" id="1_7s3ls"]
 [ext_resource type="Resource" uid="uid://dmmblpt46r1fs" path="res://src/Resources/Dishes/PupilCaviar.tres" id="1_ek8tc"]
 
 [resource]
 script = ExtResource("1_0tikt")
 node_name = "Jump Height 2"
+icon = ExtResource("1_7s3ls")
 description = "Increases Jump Height by 10% for each level"
 max_level = 2
 currency_required = 1200

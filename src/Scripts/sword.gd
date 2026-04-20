@@ -16,6 +16,7 @@ class_name Sword extends Resource
 @export var cool_down_bonus : float
 @export var max_hp_bonus : float
 @export var max_mp_bonus : float
+@export var knock_back_bonus : float
 
 @export var gem_stone_socket_count : int = 0
 @export var recipe : CraftingRecipe
@@ -45,7 +46,8 @@ func get_stats_dict() -> Dictionary:
 		"Stun Stacks Bonus" : stun_stacks_bonus,
 		"Cool Down Bonus": cool_down_bonus,
 		"Max HP Bonus" : max_hp_bonus,
-		"Max MP Bonus" : max_mp_bonus
+		"Max MP Bonus" : max_mp_bonus,
+		#"Knock Back Bonus" : knock_back_bonus
 	}
 
 func get_stats_description() -> String:

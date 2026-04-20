@@ -625,6 +625,25 @@ theme_override_fonts/font = ExtResource("7_cy2jp")
 theme_override_font_sizes/font_size = 12
 text = "5000"
 
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=795059347]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -158.5
+offset_top = -13.5
+offset_right = -0.5
+offset_bottom = 1.5
+grow_horizontal = 0
+
+[node name="InventoryName3" type="Label" parent="PanelContainer" unique_id=1863663635]
+layout_mode = 2
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("7_cy2jp")
+theme_override_font_sizes/font_size = 14
+text = "Click on an item to select it."
+horizontal_alignment = 2
+
 [node name="Bank" type="TextureRect" parent="." unique_id=1811680492]
 visible = false
 layout_mode = 1

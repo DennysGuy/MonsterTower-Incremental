@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://c0hsdw5hnpef5" path="res://Assets/NPCs/FreeMarketNPCs/GearDealer_WithoutOutline.png" id="12_l6435"]
 [ext_resource type="Texture2D" uid="uid://0l7t1v2v8yge" path="res://Assets/NPCs/FreeMarketNPCs/DripDealer_NoOutline.png" id="13_sxpgj"]
 [ext_resource type="Texture2D" uid="uid://5cetad7bhon0" path="res://Assets/Facilities/StorageArea.png" id="14_jp6xg"]
+[ext_resource type="Script" uid="uid://dawqudr8nwqml" path="res://src/Scripts/Facilities/grand_market_area.gd" id="17_hw86b"]
 [ext_resource type="PackedScene" uid="uid://cr6q5dxlkks" path="res://src/Scenes/Tower/LadderArea.tscn" id="17_jp6xg"]
 [ext_resource type="PackedScene" uid="uid://vo5sm7p34vo6" path="res://src/Scenes/Actors/Utilities/NameTag.tscn" id="19_bl45m"]
 [ext_resource type="PackedScene" uid="uid://icxc8mi1q1w4" path="res://src/Scenes/NewStarshire/Facilities/SwordCraftingStation.tscn" id="21_bl45m"]
@@ -28,13 +29,13 @@
 [ext_resource type="Texture2D" uid="uid://14re4sr2xv7s" path="res://Assets/WelcomSign.png" id="26_ejo2t"]
 [ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="27_e7ku4"]
 [ext_resource type="Texture2D" uid="uid://cuwc34c0ympwf" path="res://Assets/DirectionSign.png" id="28_m7r5i"]
+[ext_resource type="Script" uid="uid://cxfypkn5vwmim" path="res://src/Scripts/GemStoneChests/gem_stone_station.gd" id="29_4qs0c"]
 [ext_resource type="Texture2D" uid="uid://b83r1hobjk7vm" path="res://Assets/DirectionSignMessage.png" id="29_hk4f7"]
 [ext_resource type="PackedScene" uid="uid://c6tv3t1cpeq8f" path="res://src/Scenes/PlayerSpawnPoint.tscn" id="30_cxssj"]
 [ext_resource type="AudioStream" uid="uid://br24s8y5lttep" path="res://Audio/SFX/Ambience/Starspire/StarspireAmbience.wav" id="30_fdeu8"]
 [ext_resource type="Texture2D" uid="uid://dbg5n708oli7y" path="res://Assets/Facilities/SwordUpgradeStation.png" id="33_0u15j"]
 [ext_resource type="PackedScene" uid="uid://w1c2yn7s6sjx" path="res://src/Scenes/UI/CraftingStations/NewCraftingStation.tscn" id="33_d6jc3"]
-[ext_resource type="PackedScene" uid="uid://dfl8fkojivefu" path="res://src/Scenes/GemStoneChests/GemStoneChest.tscn" id="34_y20fx"]
-[ext_resource type="Resource" uid="uid://d3ak1ilk1id2y" path="res://src/Resources/GemChests/Tier1GemChest.tres" id="35_hw86b"]
+[ext_resource type="PackedScene" uid="uid://drvmmtbvnc785" path="res://src/Scenes/Tower/arrow_at_ore.tscn" id="36_hw86b"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_te0bi"]
 texture = ExtResource("3_5xris")
@@ -896,6 +897,7 @@ visible = false
 
 [node name="GrandMarketArea" type="Area2D" parent="." unique_id=1746715903]
 position = Vector2(373.5, 334)
+script = ExtResource("17_hw86b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GrandMarketArea" unique_id=495718423]
 position = Vector2(11, -25.5)
@@ -912,11 +914,12 @@ theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("10_636af")
 text = "Press E to enter Market"
 
-[node name="LadderArea" parent="." unique_id=1455959436 node_paths=PackedStringArray("ladder_top", "ladder_bottom") instance=ExtResource("17_jp6xg")]
+[node name="LadderArea" parent="." unique_id=1455959436 node_paths=PackedStringArray("ladder_top", "top_area_position", "ladder_bottom") instance=ExtResource("17_jp6xg")]
 position = Vector2(321, 444)
 collision_layer = 8
 collision_mask = 8
 ladder_top = NodePath("Top")
+top_area_position = NodePath("Top2")
 ladder_bottom = NodePath("Bot")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LadderArea" unique_id=752403027]
@@ -925,6 +928,9 @@ shape = SubResource("RectangleShape2D_05bdh")
 
 [node name="Top" type="Marker2D" parent="LadderArea" unique_id=296101434]
 position = Vector2(0, -60)
+
+[node name="Top2" type="Marker2D" parent="LadderArea" unique_id=1731478230]
+position = Vector2(-175, 38)
 
 [node name="Bot" type="Marker2D" parent="LadderArea" unique_id=1075106674]
 position = Vector2(1, 185)
@@ -992,6 +998,31 @@ text = "Craft
 Sword"
 metadata/_edit_use_anchors_ = true
 
+[node name="AccessCraftingStation" type="Label" parent="." unique_id=455459731]
+visible = false
+offset_left = 412.0
+offset_top = 571.0
+offset_right = 638.0
+offset_bottom = 587.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("10_636af")
+theme_override_font_sizes/font_size = 13
+text = "Press 'E' to Access Cooking Station"
+
+[node name="AccessSmeltingStation" type="Label" parent="." unique_id=1102055337]
+visible = false
+offset_left = 403.0
+offset_top = 471.0
+offset_right = 629.0
+offset_bottom = 487.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("10_636af")
+theme_override_font_sizes/font_size = 13
+text = "Press 'E' to Access SmeltingStation"
+horizontal_alignment = 1
+
 [node name="Dojo" type="Sprite2D" parent="." unique_id=1624820246]
 position = Vector2(150, 595)
 texture = ExtResource("25_nj75w")
@@ -999,9 +1030,9 @@ texture = ExtResource("25_nj75w")
 [node name="DojoAccessNotification" type="Label" parent="Dojo" unique_id=36395431]
 visible = false
 offset_left = -74.0
-offset_top = -44.0
+offset_top = -15.0
 offset_right = 78.0
-offset_bottom = -28.0
+offset_bottom = 1.0
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("27_e7ku4")
 theme_override_font_sizes/font_size = 16
@@ -1034,33 +1065,13 @@ offset_right = 36.0
 offset_bottom = 20.0
 texture = ExtResource("26_d6jc3")
 
-[node name="AccessCraftingStation" type="Label" parent="." unique_id=455459731]
-visible = false
-offset_left = 412.0
-offset_top = 571.0
-offset_right = 638.0
-offset_bottom = 587.0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 6
-theme_override_fonts/font = ExtResource("10_636af")
-theme_override_font_sizes/font_size = 13
-text = "Press 'E' to Access Cooking Station"
+[node name="ArrowAtOre" parent="Dojo" unique_id=1275117717 instance=ExtResource("36_hw86b")]
+visible = true
+position = Vector2(1, -29)
+base_offset = 30.0
 
-[node name="RefineryPosition" type="Node2D" parent="." unique_id=1121494031]
-position = Vector2(516, 438)
-
-[node name="AccessSmeltingStation" type="Label" parent="." unique_id=1102055337]
-visible = false
-offset_left = 403.0
-offset_top = 471.0
-offset_right = 629.0
-offset_bottom = 487.0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 6
-theme_override_fonts/font = ExtResource("10_636af")
-theme_override_font_sizes/font_size = 13
-text = "Press 'E' to Access SmeltingStation"
-horizontal_alignment = 1
+[node name="DojoPosition" type="Node2D" parent="." unique_id=1300992314]
+position = Vector2(150, 560)
 
 [node name="SmithingStation" parent="." unique_id=1664193682 instance=ExtResource("21_bl45m")]
 position = Vector2(162, 447.5)
@@ -1074,11 +1085,12 @@ offset_bottom = 96.0
 [node name="Tag" parent="SmithingStation/NameTag" index="1" unique_id=725373759]
 text = "Sword Crafting Station"
 
-[node name="GemStoneStation" type="Sprite2D" parent="." unique_id=1264484593]
+[node name="GemStoneStation" type="Sprite2D" parent="." unique_id=314729123]
 position = Vector2(50, 476)
 texture = ExtResource("33_0u15j")
+script = ExtResource("29_4qs0c")
 
-[node name="NameTag" parent="GemStoneStation" unique_id=1165675282 instance=ExtResource("19_bl45m")]
+[node name="NameTag" parent="GemStoneStation" unique_id=1232323974 instance=ExtResource("19_bl45m")]
 offset_left = -34.0
 offset_top = 51.0
 offset_right = 54.0
@@ -1090,23 +1102,26 @@ offset_right = 95.0
 [node name="Tag" parent="GemStoneStation/NameTag" index="1" unique_id=725373759]
 text = "Gem Stone Upgrade Station"
 
-[node name="GemStoneStationArea" type="Area2D" parent="GemStoneStation" unique_id=79681493]
-position = Vector2(0, 41)
+[node name="ArrowAtOre" parent="GemStoneStation" unique_id=2067527573 instance=ExtResource("36_hw86b")]
+position = Vector2(0, -13)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GemStoneStation/GemStoneStationArea" unique_id=2074565407]
-position = Vector2(11.5, -12)
-shape = SubResource("RectangleShape2D_d6jc3")
-
-[node name="EnterUpgradeStationNotice" type="Label" parent="GemStoneStation" unique_id=1265158574]
+[node name="EnterUpgradeStationNotice" type="Label" parent="." unique_id=885845539]
 visible = false
-offset_left = -46.0
-offset_top = -48.0
-offset_right = 75.0
-offset_bottom = -13.0
+offset_left = 4.0
+offset_top = 428.0
+offset_right = 125.0
+offset_bottom = 463.0
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("27_e7ku4")
 text = "Press 'E' to Access
 Upgrade Station"
+
+[node name="GemStoneStationArea" type="Area2D" parent="." unique_id=1774385008]
+position = Vector2(50, 517)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GemStoneStationArea" unique_id=1809110870]
+position = Vector2(11.5, -12)
+shape = SubResource("RectangleShape2D_d6jc3")
 
 [node name="PracticeDummy" parent="." unique_id=1422997360 node_paths=PackedStringArray("drop_scene") instance=ExtResource("6_kqfvc")]
 position = Vector2(553, 384)
@@ -1277,16 +1292,15 @@ position = Vector2(58, 384)
 position = Vector2(277, 656)
 index = 1
 
+[node name="RefineryPosition" type="Node2D" parent="." unique_id=1121494031]
+position = Vector2(516, 442)
+
 [node name="CookingStation" parent="." unique_id=179535965 instance=ExtResource("33_d6jc3")]
 position = Vector2(505, 656)
 station_type = 1
 
 [node name="Refinery" parent="." unique_id=763505504 instance=ExtResource("33_d6jc3")]
 position = Vector2(508, 544)
-
-[node name="GemStoneChest" parent="." unique_id=1511035040 instance=ExtResource("34_y20fx")]
-position = Vector2(352, 656)
-chest_stats = ExtResource("35_hw86b")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=842259970]
 visible = false
@@ -1317,8 +1331,8 @@ render_target_update_mode = 0
 [connection signal="body_exited" from="GrandMarketArea" to="." method="_on_grand_market_area_body_exited"]
 [connection signal="body_entered" from="Dojo/DojoArea" to="." method="_on_dojo_area_body_entered"]
 [connection signal="body_exited" from="Dojo/DojoArea" to="." method="_on_dojo_area_body_exited"]
-[connection signal="body_entered" from="GemStoneStation/GemStoneStationArea" to="." method="_on_gem_stone_station_area_body_entered"]
-[connection signal="body_exited" from="GemStoneStation/GemStoneStationArea" to="." method="_on_gem_stone_station_area_body_exited"]
+[connection signal="body_entered" from="GemStoneStationArea" to="." method="_on_gem_stone_station_area_body_entered"]
+[connection signal="body_exited" from="GemStoneStationArea" to="." method="_on_gem_stone_station_area_body_exited"]
 [connection signal="body_entered" from="CraftingStationArea" to="." method="_on_crafting_station_area_body_entered"]
 [connection signal="body_exited" from="CraftingStationArea" to="." method="_on_crafting_station_area_body_exited"]
 

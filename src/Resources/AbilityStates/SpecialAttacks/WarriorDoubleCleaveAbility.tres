@@ -10,8 +10,7 @@ class_relation = "Tyro"
 ability_type = 4
 cooldown_time = 3.0
 ability_description = "Special Attack Ability!
-
-Hit an enemy with a power two attack combo. A 3x damage multiplier Bonus is applied!"
+Press 'Shift' to strike an enemy twice with a multiplier applied."
 ability_behavior = ExtResource("1_5evol")
 hp_cost = 10.0
 mp_cost = 12.0

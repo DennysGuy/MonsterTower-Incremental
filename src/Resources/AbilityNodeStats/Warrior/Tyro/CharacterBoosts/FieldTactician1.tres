@@ -6,7 +6,9 @@
 [resource]
 script = ExtResource("1_topv4")
 icon = ExtResource("1_e2jht")
-node_name = "Field Tactician 1"
+node_name = "Field Tactician"
+needed_level = 5
+max_upgrade_level = 5
 class_relation = "Tyro"
 description = "Increase your ability to incapacitate your enemies and effortlessly gain control over the field!"
 ap_cost = 1

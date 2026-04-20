@@ -6,6 +6,9 @@ class_name NewStarShireMap extends Map
 @onready var enter_market_label: Label = $EnterMarketLabel
 @onready var access_crafting_station: Label = $AccessCraftingStation
 @onready var canvas_layer: CanvasLayer = $CanvasLayer
+@onready var dojo_position: Node2D = $DojoPosition
+
+const NOVELTY_ITEMS_SALE = preload("uid://bylwk3imxuh3i")
 
 var player_in_tower_range : bool = false
 var player_in_market_range : bool = false
@@ -32,12 +35,15 @@ var player_in_upgrade_station_range : bool = false
 @onready var cooking_station: NewCraftingStation = $CookingStation
 @onready var refinery: NewCraftingStation = $Refinery
 
-@onready var enter_upgrade_station_notice: Label = $GemStoneStation/EnterUpgradeStationNotice
+@onready var enter_upgrade_station_notice: Label = $EnterUpgradeStationNotice
+
 @onready var gem_stone_station: Sprite2D = $GemStoneStation
 
+const CLASS_UP_FANFARE = preload("uid://cw28u06grrwni")
 
 const CRAFT_SWORD = preload("uid://4c6l1w0kpar3")
 const UNLOCK_SHOP = preload("uid://cveiqvxm5r0yw")
+@onready var grand_market_area: Area2D = $GrandMarketArea
 
 
 # Called when the node enters the scene tree for the first time.
@@ -50,7 +56,7 @@ func _ready() -> void:
 	SignalBus.spawn_tower_map.connect(spawn_tower_entrance_map)
 	SignalBus.play_warrior_unlock_animation.connect(warrior_class_unlocked_notice)
 	TechTreeManager.unlock_station.connect(unlock_station)
-	SignalBus.spawn_warrior_tech_tree.connect(spawn_warrior_tech_tree)
+	SignalBus.spawn_warrior_tech_tree.connect(warrior_class_unlocked_notice)
 	#SignalBus.show_ap_notice.connect(show_ap_notice)
 
 
@@ -67,14 +73,17 @@ func _ready() -> void:
 		#new_sword_unlock_notice()
 	else:
 		SignalBus.hide_can_craft_sword.emit()
-	
+	print("BELCHUNY")
 	#show_ap_notice()
 	hud.open_tower_map_button.show()
+
 	await get_tree().process_frame
 	SignalBus.update_player_health.emit(player.health)
 	PlayerStats.player_stats["Current MP"] = PlayerStats.player_stats["Max MP"] + PlayerStats.get_current_sword().max_mp_bonus + PlayerStats.get_total_gem_bonus("Max MP Bonus")
 	SignalBus.update_player_mp.emit()
 	SaveManager.save_player_stats()
+	if PlayerStats.player_stats["Level"] == 2 and PlayerStats.player_stats["Ability Points"] == 1:
+		ability_station_notice()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -224,8 +233,9 @@ func spawn_warrior_tech_tree() -> void:
 	GameManager.can_open_bag = false
 	GameManager.can_pause_game = false
 	canvas_layer.show()
-	var warrior_tech_tree : WarriorTechTree = preload("uid://dqx7ld4tcru6g").instantiate()
+	var warrior_tech_tree : NewAbilityUpgradeMenu = preload("uid://d0r1bngbqs2ch").instantiate()
 	sub_viewport.add_child(warrior_tech_tree)
+
 
 func spawn_dojo_menu() -> void:
 	GameManager.can_open_tower_map = false
@@ -237,6 +247,7 @@ func spawn_dojo_menu() -> void:
 func _on_grand_market_area_body_entered(body: Node2D) -> void:
 	if body is Player:
 		player_in_market_range = true
+		sell_novelty_items()
 		enter_market_label.show()
 
 func _on_grand_market_area_body_exited(body: Node2D) -> void:
@@ -276,11 +287,12 @@ func _on_crafting_station_area_body_entered(body: Node2D) -> void:
 	if body is Player:
 		player_in_crafting_range = true
 		access_sword_crafting_station.show()
-
+	
 func _on_crafting_station_area_body_exited(body: Node2D) -> void:
 	if body is Player:
 		player_in_crafting_range = false
 		access_sword_crafting_station.hide()
+
 
 func unlock_cooking_station() -> void:
 	camera.player = null
@@ -361,16 +373,17 @@ func new_sword_unlock_notice() -> void:
 func warrior_class_unlocked_notice() -> void:
 	GameManager.player_can_move = false
 	player.send_to_idle_state()
+	MusicPlayer.stop_player()
 	sfx_player.play_sfx(UNLOCK_SHOP)
 	hud.animation_player.play("Flash")
-	await get_tree().create_timer(0.5).timeout
-	SignalBus.issue_big_notification.emit("You now possess the Abilities of a Warrior!")
-	await get_tree().create_timer(2.0).timeout
-	SignalBus.issue_big_notification.emit("Use your new power to control the battlefield and slay monsters faster!")
-	await get_tree().create_timer(2.0).timeout
+	play_sfx(CLASS_UP_FANFARE)
+	SignalBus.flash_screen.emit()
+	await get_tree().create_timer(1.5).timeout
+	spawn_warrior_tech_tree()
 	SignalBus.hide_big_notification.emit()
 	GameManager.player_can_move = true
-
+	await get_tree().create_timer(8.5).timeout
+	MusicPlayer.play_song(map_theme_song)
 
 func gem_station_unlock_notice() -> void:
 	camera.player = null
@@ -379,6 +392,8 @@ func gem_station_unlock_notice() -> void:
 	await get_tree().create_timer(0.5).timeout
 	smithing_station.notify_can_craft()
 	camera.position = sword_crafting_station_position.position
+	
+	SignalBus.show_gem_station_arrow.emit()
 	SignalBus.issue_big_notification.emit("Your weapon can now be enhanced with Gem Stones.")
 	await get_tree().create_timer(2.0).timeout
 	SignalBus.issue_big_notification.emit("Access the Gem Stone station to mount gems onto your weapon!")
@@ -390,6 +405,21 @@ func gem_station_unlock_notice() -> void:
 	camera.player = player
 	PlayerStats.show_gem_station_unlock_animation = false
 
+func ability_station_notice() -> void:
+	camera.player = null
+	player.send_to_idle_state()
+	#hud.animation_player.play("FadeInOut")
+	await get_tree().create_timer(0.5).timeout
+	camera.position = dojo_position.position
+	
+	SignalBus.issue_big_notification.emit("Spend AP acquired from leveling up\n At the Class Advancement Center!")
+	await get_tree().create_timer(3.0).timeout
+	SignalBus.hide_big_notification.emit()
+	hud.animation_player.play("FadeInOut")
+	await get_tree().create_timer(0.5).timeout
+	camera.position = player.position
+	camera.player = player
+	PlayerStats.show_gem_station_unlock_animation = false
 
 func _on_dojo_area_body_entered(body: Node2D) -> void:
 	if body is Player:
@@ -415,3 +445,45 @@ func _on_gem_stone_station_area_body_exited(body: Node2D) -> void:
 	if body is Player:
 		player_in_upgrade_station_range = false
 		enter_upgrade_station_notice.hide()
+
+
+func sell_all_items(inventory_name : String) -> Array:
+	var inventory : Array = InventoryManager.inventories[inventory_name]
+	var total_sale_numbers : int = 0
+	var currency_acquired : int = 0
+
+	for slot in inventory.duplicate():
+		if slot["item"].is_novelty():
+			var qty = slot["quantity"]
+			var value = slot["item"].sell_value * qty
+			
+			for i in range(qty):
+				InventoryManager.remove_item(inventory_name, slot["item"])
+			
+			TechTreeManager.currency += value
+			currency_acquired += value
+			total_sale_numbers += qty
+
+	TechTreeManager.update_currency_label.emit()
+	return [total_sale_numbers,currency_acquired]
+
+func sell_novelty_items() -> void:
+	var total_sales : int = 0
+	var currency_acquired : int = 0
+	var inventory_sales : Array = sell_all_items("Inventory")
+	var bank_sale : Array = sell_all_items("Bank")
+	
+	total_sales += inventory_sales[0]
+	currency_acquired += inventory_sales[1]
+	total_sales += bank_sale[0]
+	currency_acquired += bank_sale[1]
+	
+	if total_sales > 0:
+		var notification_label : DamageLabel = preload("uid://dkchs27qqogyy").instantiate()
+		notification_label.label.text = "%s Novelty Items Sold!\n +%s Gold!" % [total_sales,currency_acquired]
+		notification_label.position = grand_market_area.position
+		add_child(notification_label)
+		sfx_player.play_sfx(NOVELTY_ITEMS_SALE)
+
+
+	

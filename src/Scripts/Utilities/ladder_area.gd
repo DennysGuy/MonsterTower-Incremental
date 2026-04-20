@@ -1,6 +1,7 @@
 class_name LadderArea extends Area2D
 
 @export var ladder_top : Marker2D
+@export var top_area_position : Marker2D
 @export var ladder_bottom : Marker2D
 
 var ladder_top_position : float

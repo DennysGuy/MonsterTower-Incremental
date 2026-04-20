@@ -36,7 +36,8 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		if entrance_data.camp_fires_reached >= entrance_data.total_camp_fires:
 			entrance_data.hunt_challenge_unlocked = true
 			SignalBus.update_kill_quota_text.emit("", entrance_data.hunt_challenge_completed, entrance_data.hunt_challenge_unlocked)
-			SignalBus.show_hunt_challenge_button.emit()
+			if entrance_data.is_challenge_floor():
+				SignalBus.show_hunt_challenge_button.emit()
 		save_floor_data()
 		just_unlocked = true
 		

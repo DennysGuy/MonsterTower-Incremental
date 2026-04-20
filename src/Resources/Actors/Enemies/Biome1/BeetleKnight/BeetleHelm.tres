@@ -6,9 +6,9 @@
 [resource]
 script = ExtResource("1_0mqst")
 drop_icon = ExtResource("1_3pxrb")
-drop_chance = 0.5
+drop_chance = 0.68
 item_name = "Beetle Helm"
-sell_value = 90
+sell_value = 100
 shop_icon = ExtResource("1_3pxrb")
 description = "The hard hat of a Beetle Knight. Sturdy. General. Good."
 metadata/_custom_type_script = "uid://cubudt76pshmm"

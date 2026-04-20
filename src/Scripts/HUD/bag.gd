@@ -277,15 +277,18 @@ func update_bank_container() -> void:
 	
 	for num in range(PlayerStats.player_stats["Max Bank Slots"]):
 		var slot : ItemSlot = preload("uid://d0s6j8mvikv8c").instantiate()
+		slot.set_as_bank_slot()
 		var potential_item
 		if num < InventoryManager.inventories["Bank"].size():
 			potential_item = InventoryManager.inventories["Bank"][num]
 			
 		if potential_item:
 			slot.item = potential_item["item"]
+			
 			slot.item_icon.texture = potential_item["item"].shop_icon
 			slot.show_quantity_label(potential_item["quantity"])
 			slot.set_indicator(potential_item["item"])
+			
 			bank_container.add_child(slot)
 		else:
 			bank_container.add_child(slot)

@@ -18,7 +18,7 @@ critical_success_rate = 0.1
 failure_rate = 0.1
 output_item = ExtResource("2_071n6")
 recipe_list = Array[Dictionary]([{
-ExtResource("4_unp75"): 2
+ExtResource("4_unp75"): 1
 }, {
 ExtResource("4_y01lj"): 2
 }])

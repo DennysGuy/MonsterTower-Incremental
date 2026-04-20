@@ -14,6 +14,7 @@ const KNOCKBACK_FORCE : int = 300
 	"Level" : 1,
 	"Needed XP": 100,
 	"Current XP" : 0,
+	"Highest Floor": 0,
 	"Ability Points": 0,
 	"Class": "Junior Hunter",
 	"Attack Damage" : 13.0,
@@ -45,7 +46,7 @@ const KNOCKBACK_FORCE : int = 300
 	"Max Bank Slots": 4,
 	"Max Bag Stack": 6,
 	"Max Ore Bag Stack": 4,
-	"Max Bank Stack":8,
+	"Max Bank Stack":15,
 	"Cooking Speed": 0.15,
 	"Smelting Speed": 0.15,
 	"Mining Damage": 5,
@@ -190,6 +191,24 @@ var player_classes : Dictionary = {
 	}
 }
 
+
+var class_ability_node_stats : Dictionary = {
+	"Tyro" : {
+		"Abilities": {
+			0 : preload("uid://c71wdmkmxxxct"),
+			1 : preload("uid://dhavx7c8nci4q"),
+			2 : preload("uid://cpg586qwrplgy"),
+			3 : preload("uid://b1tqtyjdmcrui")
+		},
+		"Stat Upgrades": {
+			0 : preload("uid://b3q7teodj24vf"),
+			1 : preload("uid://bwy0u7543td2u"),
+			2 : preload("uid://5yci1c1l1tb2")
+		}
+
+	}
+}
+
 const MAX_SWORD_COUNT := 5
 
 var show_cooking_station_unlock_animation : bool = false
@@ -255,6 +274,7 @@ func get_bag(bag : String) -> ItemBag:
 		2: return preload("uid://mbne7hjkpnqi")
 		3: return preload("uid://byikht2gbhthk")
 		4: return preload("uid://omnm6ywng6wn")
+		5: return
 		_: return preload("uid://cuwof21s5e74c")
 
 func get_current_bag() -> ItemBag:
@@ -321,7 +341,6 @@ func recover_hp(amount : int) -> void:
 	
 	SignalBus.update_player_health.emit(player_stats["Current Health"])
 		
-
 func recover_mp(amount : int) -> void:
 	player_stats["Current MP"] += amount
 	if player_stats["Current MP"] > get_total_max_mp():

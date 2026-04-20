@@ -1965,7 +1965,7 @@ special_attack = NodePath("../SpecialAttack")
 move_sfx = ExtResource("5_a5kf2")
 accel = 2500.0
 decel = 1500.0
-turn_resistance = 1600.0
+turn_resistance = 2300.0
 animation_name = "Run"
 
 [node name="Jump" type="Node" parent="StateMachine" unique_id=593572243 node_paths=PackedStringArray("idle_state", "fall_state", "air_attack", "double_jump")]
@@ -2036,6 +2036,18 @@ attack_1 = NodePath("../Attack1")
 jump = NodePath("../Jump")
 animation_name = "SwordSwing3"
 
+[node name="SpecialAttack" type="Node" parent="StateMachine" unique_id=965226335 node_paths=PackedStringArray("idle")]
+script = ExtResource("26_ok538")
+idle = NodePath("../Idle")
+
+[node name="DoubleJump" type="Node" parent="StateMachine" unique_id=455124229 node_paths=PackedStringArray("idle_state", "fall_state", "air_attack")]
+script = ExtResource("25_1uq2g")
+idle_state = NodePath("../Idle")
+fall_state = NodePath("../Fall")
+jump_sfx = ExtResource("6_yawj3")
+air_attack = NodePath("../AirAttack")
+animation_name = "Jump"
+
 [node name="Hit" type="Node" parent="StateMachine" unique_id=73250372 node_paths=PackedStringArray("idle_state", "attack_1_state")]
 script = ExtResource("11_susmm")
 wait_time = 0.15
@@ -2056,18 +2068,6 @@ idle_state = NodePath("../Idle")
 pick_axe_swing = ExtResource("22_0qbij")
 animation_name = "PickaxeSwing"
 animation_duration = 0.5
-
-[node name="DoubleJump" type="Node" parent="StateMachine" unique_id=455124229 node_paths=PackedStringArray("idle_state", "fall_state", "air_attack")]
-script = ExtResource("25_1uq2g")
-idle_state = NodePath("../Idle")
-fall_state = NodePath("../Fall")
-jump_sfx = ExtResource("6_yawj3")
-air_attack = NodePath("../AirAttack")
-animation_name = "Jump"
-
-[node name="SpecialAttack" type="Node" parent="StateMachine" unique_id=965226335 node_paths=PackedStringArray("idle")]
-script = ExtResource("26_ok538")
-idle = NodePath("../Idle")
 
 [node name="Timer" type="Timer" parent="." unique_id=1604863362]
 process_callback = 0
@@ -2150,7 +2150,6 @@ shape = SubResource("RectangleShape2D_45oew")
 disabled = true
 
 [node name="HurtBox" parent="." unique_id=1374428890 instance=ExtResource("17_45oew")]
-visible = false
 position = Vector2(3, -3)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=1553451842]
@@ -2180,6 +2179,9 @@ position = Vector2(-1, -15)
 
 [node name="Holder" type="Marker2D" parent="." unique_id=1134448368]
 position = Vector2(-25, -23)
+
+[node name="LadderTopPositionDetector" type="Marker2D" parent="." unique_id=1052553713]
+position = Vector2(0, -22)
 
 [node name="GemChestHitArea" type="Area2D" parent="." unique_id=1770032373]
 visible = false

@@ -6,7 +6,9 @@
 [resource]
 script = ExtResource("1_wioba")
 icon = ExtResource("1_malpl")
-node_name = "Warrior's Flame 1"
+node_name = "Warrior's Flame"
+needed_level = 5
+max_upgrade_level = 5
 class_relation = "Tyro"
 description = "Hit harder, nothing wrong with brute forcing things, but - remember - with great power comes great responsibilty.. and cheese.. lots of cheese."
 ap_cost = 1

@@ -8,6 +8,7 @@
 script = ExtResource("1_w1exy")
 icon = ExtResource("1_ecxoo")
 node_name = "Sword Slam"
+needed_level = 12
 class_relation = "Tyro"
 description = "Replaces 'Air Attack'. 
 

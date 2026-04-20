@@ -7,7 +7,7 @@
 [ext_resource type="TileSet" uid="uid://dr3ft3wh6mi6e" path="res://src/Scenes/Tower/TowerFloors/Biome1/Biome1BGSetPieces1.tres" id="3_4lbed"]
 [ext_resource type="PackedScene" uid="uid://mwttdrt2cg71" path="res://src/Scenes/Players/ambience_player.tscn" id="3_68h8k"]
 [ext_resource type="PackedScene" uid="uid://c8ov03gkkda4k" path="res://src/Scenes/PlayerCamera.tscn" id="3_aah8w"]
-[ext_resource type="AudioStream" uid="uid://baf1q03xsfmb2" path="res://Audio/Music/TempTowerTheme2.mp3" id="3_n5ad4"]
+[ext_resource type="AudioStream" uid="uid://cp2iodtnnun5l" path="res://Audio/Music/MossyDungeonTestTheme1.wav" id="3_rayuj"]
 [ext_resource type="PackedScene" uid="uid://dysg5kffvxbql" path="res://src/Scenes/UI/PlayerHUD.tscn" id="4_aah8w"]
 [ext_resource type="TileSet" uid="uid://cuil6pmpg4xf1" path="res://src/Scenes/Tower/TowerFloors/Biome1/Biome1-Floor.tres" id="4_om3xh"]
 [ext_resource type="AudioStream" uid="uid://bnfe0t36iu1dy" path="res://Audio/Music/TemporaryHuntMusic.mp3" id="4_yalon"]
@@ -1040,10 +1040,10 @@ texture = ExtResource("2_hk0iw")
 sources/0 = SubResource("TileSetAtlasSource_ko10l")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kpd6k"]
-size = Vector2(22, 110)
+size = Vector2(22, 112)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yx3jr"]
-size = Vector2(22, 142)
+size = Vector2(22, 143)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hvi06"]
 size = Vector2(22, 108)
@@ -1072,7 +1072,7 @@ map_name = "Floor 1-1"
 map_id = 1
 exit_elevator = NodePath("ExitElevator")
 tower_entrance_data = ExtResource("2_n5ad4")
-map_theme_song = ExtResource("3_n5ad4")
+map_theme_song = ExtResource("3_rayuj")
 hunt_theme_song = ExtResource("4_yalon")
 hunt_victory_theme = ExtResource("5_pkrjl")
 camera = NodePath("PlayerCamera")
@@ -1217,11 +1217,11 @@ ladder_top = NodePath("Top")
 ladder_bottom = NodePath("Bottom")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LadderArea" unique_id=2027965126]
-position = Vector2(1, 6)
+position = Vector2(1, 5)
 shape = SubResource("RectangleShape2D_kpd6k")
 
 [node name="Top" type="Marker2D" parent="LadderArea" unique_id=1000877042]
-position = Vector2(1, -50)
+position = Vector2(1, -51)
 
 [node name="Bottom" type="Marker2D" parent="LadderArea" unique_id=65021035]
 position = Vector2(1, 62)
@@ -1234,11 +1234,11 @@ ladder_top = NodePath("Top")
 ladder_bottom = NodePath("Bottom")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LadderArea2" unique_id=919407148]
-position = Vector2(1, 21)
+position = Vector2(1, 20.5)
 shape = SubResource("RectangleShape2D_yx3jr")
 
 [node name="Top" type="Marker2D" parent="LadderArea2" unique_id=91346899]
-position = Vector2(1, -50)
+position = Vector2(1, -51)
 
 [node name="Bottom" type="Marker2D" parent="LadderArea2" unique_id=254734186]
 position = Vector2(1, 114)
@@ -1251,11 +1251,11 @@ ladder_top = NodePath("Top")
 ladder_bottom = NodePath("Bottom")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LadderArea5" unique_id=906500933]
-position = Vector2(1, 4)
+position = Vector2(1, 2)
 shape = SubResource("RectangleShape2D_hvi06")
 
 [node name="Top" type="Marker2D" parent="LadderArea5" unique_id=2017209363]
-position = Vector2(1, -50)
+position = Vector2(1, -52)
 
 [node name="Bottom" type="Marker2D" parent="LadderArea5" unique_id=1544964474]
 position = Vector2(0, 68)
@@ -1411,6 +1411,17 @@ theme_override_font_sizes/font_size = 10
 text = "Down + Jump
 (Drop Through 
 platforms)"
+
+[node name="Label3" type="Label" parent="." unique_id=466434586]
+offset_left = 131.0
+offset_top = 514.0
+offset_right = 212.0
+offset_bottom = 539.0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("33_savf5")
+theme_override_font_sizes/font_size = 10
+text = "There must be a 
+way to Jump higher.."
 
 [node name="Label2" type="Label" parent="." unique_id=393000501]
 offset_left = 43.0

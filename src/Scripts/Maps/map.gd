@@ -2,6 +2,7 @@ class_name Map extends Node2D
 
 @export var map_name : String
 @export var map_id : int
+@export var challenge_time_limit : int = 90
 @export var exit_elevator_marker : Marker2D
 @export var exit_elevator : ExitElevator
 @export var tower_entrance_data : TowerEntranceData
@@ -45,6 +46,8 @@ const TIER_UP = preload("uid://dhfdudbiidv7a")
 var kill_quota_hit : bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if !MusicPlayer.transitioning_floors:
+		MusicPlayer.stop_player()
 	GameManager.can_pause_game = true
 	GameManager.previous_map_path = path
 	GameManager.previous_map_data = tower_entrance_data
@@ -78,12 +81,12 @@ func _ready() -> void:
 			hud.show()
 		
 		spawn_player()
-	
+		
 		if camera:
 			camera.player = player
 		
 		if map_type == MAP_TYPE.CHECKPOINT_FLOOR:	
-			
+	
 			hud.expedition_timer.show_stop_watch()
 			if !GameManager.hunt_challenge_selected:
 				if tower_entrance_data.hunt_challenge_completed:
@@ -132,7 +135,8 @@ func _ready() -> void:
 	if !GameManager.hunt_challenge_selected:
 		if map_theme_song:
 			if !MusicPlayer.transitioning_floors:
-				MusicPlayer.play_song(map_theme_song)
+				if !MusicPlayer.audio_stream_player.playing:
+					MusicPlayer.play_song(map_theme_song)
 			else:
 				MusicPlayer.transitioning_floors = false
 	else:
@@ -315,6 +319,10 @@ func load_floor_data() -> void:
 		tower_entrance_data.number_of_spawn_locations = tower_data["Number of Spawn Locations"]
 		tower_entrance_data.hunt_challenge_unlocked = tower_data["Hunt Challenge Unlocked"]
 		tower_entrance_data.hunt_challenge_completed = tower_data["Hunt Challenge Completed"]
+		
+		if tower_entrance_data.floor_number > PlayerStats.player_stats["Highest Floor"]:
+			PlayerStats.player_stats["Highest Floor"] = tower_entrance_data.floor_number
+			SaveManager.save_player_stats()
 
 func play_sfx(audio_stream : AudioStream) -> void:
 	if sfx_player:

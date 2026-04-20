@@ -18,12 +18,12 @@ func _on_hit_box_area_entered(area: Area2D) -> void:
 	if not area_parent is Player:
 		return
 	
+	if !area_parent.damageable or area_parent.is_dead:
+		return
+	
 	if not area is HurtBox:
 		return
 	
-	if !area_parent.damageable or area_parent.is_dead:
-		return
-			
 	area_parent.stored_enemy = self
 	var sword = PlayerStats.get_current_sword()
 

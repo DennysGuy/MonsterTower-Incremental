@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dkelvvdv2xxtb" path="res://src/Scripts/Facilities/sword_crafting_station.gd" id="2_2ydtk"]
 [ext_resource type="PackedScene" uid="uid://04tp6n5gdcb7" path="res://src/Scenes/UI/NotificationIcon.tscn" id="3_m258s"]
 [ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="4_hjxn3"]
+[ext_resource type="PackedScene" uid="uid://drvmmtbvnc785" path="res://src/Scenes/Tower/arrow_at_ore.tscn" id="5_pqfaj"]
 
 [node name="SmithingStation" type="Sprite2D" unique_id=386431493]
 texture = ExtResource("1_ec7ku")
@@ -11,9 +12,9 @@ script = ExtResource("2_2ydtk")
 
 [node name="ResourcesNeededPanel" type="Panel" parent="." unique_id=557002115]
 offset_left = -14.0
-offset_top = -50.0
+offset_top = -67.0
 offset_right = 63.0
-offset_bottom = 29.0
+offset_bottom = 12.0
 
 [node name="ResourceList" type="GridContainer" parent="ResourcesNeededPanel" unique_id=1458780360]
 layout_mode = 1
@@ -48,3 +49,8 @@ offset_left = -93.0
 offset_top = -107.5
 offset_right = -53.0
 offset_bottom = -67.5
+
+[node name="ArrowAtOre" parent="." unique_id=2067527573 instance=ExtResource("5_pqfaj")]
+visible = true
+position = Vector2(25, 38)
+base_offset = 0.0

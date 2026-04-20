@@ -2,22 +2,25 @@
 
 [ext_resource type="Script" uid="uid://cyho4aep1qxmu" path="res://src/Scripts/Maps/tower_entrance_data.gd" id="1_1hkmb"]
 [ext_resource type="Texture2D" uid="uid://ccr111d7lh2cy" path="res://Assets/Enemies/BatclopseIcon.png" id="1_i27bp"]
-[ext_resource type="Texture2D" uid="uid://dmw0muar17a6q" path="res://Assets/FloorPreviews/Floor1-3Preview.png" id="1_nxry3"]
-[ext_resource type="Texture2D" uid="uid://825wmmsifn27" path="res://Assets/FloorPreviews/Floor1-3-point-2Preview.png" id="2_4wjfr"]
 [ext_resource type="Texture2D" uid="uid://fxchlb1rbpw7" path="res://Assets/Enemies/BatclopseLVL2Icon.png" id="2_vn6ol"]
 [ext_resource type="Texture2D" uid="uid://dxk40dnppe36a" path="res://Assets/Enemies/MossGolemIcon.png" id="3_713pk"]
 [ext_resource type="Texture2D" uid="uid://bwlqhfw83akup" path="res://Assets/Enemies/BeetleKnightIcon.png" id="4_cc60e"]
 [ext_resource type="Texture2D" uid="uid://csia73ycbfkej" path="res://Assets/Enemies/BeetleKnightLvl2Icon.png" id="5_o836o"]
 [ext_resource type="Texture2D" uid="uid://d4bvg61uta8ix" path="res://Assets/EnvironmentalAssets/TinOre.png" id="6_vgqe8"]
 [ext_resource type="Texture2D" uid="uid://bd18ogh1y0q1k" path="res://Assets/EnvironmentalAssets/CopperOre.png" id="7_v5hef"]
+[ext_resource type="Texture2D" uid="uid://bootw5tvv1s3e" path="res://Assets/FloorPreviews/Floor1-3-CHKP1.png" id="8_713pk"]
+[ext_resource type="Texture2D" uid="uid://cjwxat6k1bf3i" path="res://Assets/FloorPreviews/Floor1-3-CHKP2.png" id="9_cc60e"]
+[ext_resource type="Texture2D" uid="uid://di3qnndpo3lvo" path="res://Assets/FloorPreviews/Floor1-3-CHKP3.png" id="10_o836o"]
+[ext_resource type="Texture2D" uid="uid://45bqwvnta16s" path="res://Assets/FloorPreviews/Floor1-3-CHKP4.png" id="11_vgqe8"]
 
 [resource]
 script = ExtResource("1_1hkmb")
 floor_name = "Floor 1-3"
+floor_number = 3
 biome = "Mossy Dungeon"
 total_camp_fires = 3
 scene_path = "uid://b3m3f58qy47jb"
-preview_pictures = Array[Texture2D]([ExtResource("1_nxry3"), ExtResource("2_4wjfr"), ExtResource("2_4wjfr"), ExtResource("2_4wjfr")])
+preview_pictures = Array[Texture2D]([ExtResource("8_713pk"), ExtResource("9_cc60e"), ExtResource("10_o836o"), ExtResource("11_vgqe8")])
 enemy_preview_graphics = Array[Texture2D]([ExtResource("1_i27bp"), ExtResource("2_vn6ol"), ExtResource("3_713pk"), ExtResource("4_cc60e"), ExtResource("5_o836o")])
 ore_rock_preview_graphics = Array[Texture2D]([ExtResource("6_vgqe8"), ExtResource("7_v5hef")])
 metadata/_custom_type_script = "uid://cyho4aep1qxmu"

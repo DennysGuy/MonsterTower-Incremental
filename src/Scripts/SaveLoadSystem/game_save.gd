@@ -19,11 +19,12 @@ TODO: We will add saves for classes as well
 	"Level" : 1,
 	"Needed XP": 100,
 	"Current XP" : 0,
+	"Highest Floor": 0,
 	"Ability Points": 0,
 	"Class": "Junior Hunter",
 	"Attack Damage" : 13.0,
-	"Movement Speed" : 100.0,
-	"Climbing Speed" : 65.0,
+	"Movement Speed" : 110.0,
+	"Climbing Speed" : 70.0,
 	"Stun Length": 1.0,
 	"Stun Stacks": 1.0,
 	"Dash Speed" : 350.0,
@@ -36,7 +37,7 @@ TODO: We will add saves for classes as well
 	"Defense" : 0.0,
 	"Crit Damage" : 1.5,
 	"Accuracy" : 0.6,
-	"Max Health" : 60,
+	"Max Health" : 80,
 	"Max MP": 200,
 	"Current Health":60,
 	"Current MP": 200,
@@ -50,7 +51,7 @@ TODO: We will add saves for classes as well
 	"Max Bank Slots": 4,
 	"Max Bag Stack": 4,
 	"Max Ore Bag Stack": 4,
-	"Max Bank Stack":8,
+	"Max Bank Stack":10,
 	"Cooking Speed": 0.15,
 	"Smelting Speed": 0.15,
 	"Mining Damage": 5,
@@ -61,7 +62,7 @@ TODO: We will add saves for classes as well
 	"Cooking Accuracy Bonus":0.0,
 	"Ore Drop Chance Bonus":0.0,
 	"Smelting Accuracy Bonus":0.0,
-	"Tier 1 Chest Spawn Rate": 0.1,
+	"Tier 1 Chest Spawn Rate": 0.25,
 	"Tier 1 Gem Drop Rate":0.3,
 	"Chalice Spawn Rate":0.12,
 	"Vial Spawn Rate": 0.12
@@ -245,7 +246,8 @@ TODO: We will add saves for classes as well
 			"Crit Damage Modifier" : 0.0,
 			"Crit Chance Modifier" : 0.0,
 			"Dash Cooldown" : 0.0,
-			"Dash Speed Modifier" : 1.0
+			"Dash Speed Modifier" : 1.0,
+			"Knock Back Modifier" : 0.0
 		},
 		"Air Attack": {
 			"Cooldown Time" : 0.7,
@@ -267,7 +269,8 @@ TODO: We will add saves for classes as well
 			"Crit Damage Modifier" : 0.0,
 			"Crit Chance Modifier" : 0.0,
 			"Dash Cooldown" : 0.0,
-			"Dash Speed Modifier" : 0.0
+			"Dash Speed Modifier" : 0.0,
+			"Knock Back Modifier" : 0.0
 		},
 		"Double Jump": {
 			"Cooldown Time" : 0.5,
@@ -289,7 +292,8 @@ TODO: We will add saves for classes as well
 			"Crit Damage Modifier" : 0.0,
 			"Crit Chance Modifier" : 0.0,
 			"Dash Cooldown" : 0.0,
-			"Dash Speed Modifier" : 0.0
+			"Dash Speed Modifier" : 0.0,
+			"Knock Back Modifier" : 0.0
 		},
 		"Special Attack": {
 			"Cooldown Time" : 3.0,
@@ -311,7 +315,8 @@ TODO: We will add saves for classes as well
 			"Crit Damage Modifier" : 0.0,
 			"Crit Chance Modifier" : 0.0,
 			"Dash Cooldown" : 0.0,
-			"Dash Speed Modifier" : 0.0
+			"Dash Speed Modifier" : 0.0,
+			"Knock Back Modifier" : 0.0
 		}
 	},
 	"Tyro" : {
@@ -335,7 +340,8 @@ TODO: We will add saves for classes as well
 			"Crit Damage Modifier" : 0.0,
 			"Crit Chance Modifier" : 0.0,
 			"Dash Cooldown" : 0.0,
-			"Dash Speed Modifier" : 350.0
+			"Dash Speed Modifier" : 350.0,
+			"Knock Back Modifier" : 0.0
 		},
 		"Air Attack": {
 			"Cooldown Time" : 1.5,
@@ -357,7 +363,8 @@ TODO: We will add saves for classes as well
 			"Crit Damage Modifier" : 0.0,
 			"Crit Chance Modifier" : 0.0,
 			"Dash Cooldown" : 0.0,
-			"Dash Speed Modifier" : 0.0
+			"Dash Speed Modifier" : 0.0,
+			"Knock Back Modifier" : 0.0
 		},
 		"Double Jump": {
 			"Cooldown Time" : 1.0,
@@ -379,7 +386,8 @@ TODO: We will add saves for classes as well
 			"Crit Damage Modifier" : 0.0,
 			"Crit Chance Modifier" : 0.0,
 			"Dash Cooldown" : 0.0,
-			"Dash Speed Modifier" : 0.0
+			"Dash Speed Modifier" : 0.0,
+			"Knock Back Modifier" : 0.0
 		},
 		"Special Attack": {
 			"Cooldown Time" : 3.0,
@@ -401,7 +409,8 @@ TODO: We will add saves for classes as well
 			"Crit Damage Modifier" : 0.0,
 			"Crit Chance Modifier" : 0.0,
 			"Dash Cooldown" : 0.0,
-			"Dash Speed Modifier" : 0.0
+			"Dash Speed Modifier" : 0.0,
+			"Knock Back Modifier" : 0.0
 		}
 	}
 }
@@ -417,36 +426,16 @@ TODO: We will add saves for classes as well
 
 @export var ability_nodes : Dictionary = {
 	"Tyro": {
-		"Ability Unlock" : {
-			"Double Cleave": false,
-			"Sword Dance": false,
-			"Sword Slam": false,
-			"Sword Soar": false,
-		},
 		"Ability Stat Boost" : {
-			"Double Cleave +1": false,
-			"Sword Dance +1": false,
-			"Sword Slam +1": false,
-			"Sword Soar +1": false,
-			"Double Cleave +2": false,
-			"Sword Dance +2": false,
-			"Sword Slam +2": false,
-			"Sword Soar +2": false,
-			"Double Cleave +3": false,
-			"Sword Dance +3": false,
-			"Sword Slam +3": false,
-			"Sword Soar +3": false,
+			"Double Cleave": {"Unlocked":false, "Level": 0},
+			"Sword Dance": {"Unlocked":false, "Level": 0},
+			"Sword Slam": {"Unlocked":false, "Level": 0},
+			"Sword Soar": {"Unlocked":false, "Level": 0},
 		},
 		"Character Stat Boost" : {
-			"Armored Core 1": false,
-			"Field Tactician 1" : false,
-			"Warrior's Flame 1" : false,
-			"Armored Core 2": false,
-			"Field Tactician 2" : false,
-			"Warrior's Flame 2" : false,
-			"Armored Core 3": false,
-			"Field Tactician 3" : false,
-			"Warrior's Flame 3" : false,
+			"Armored Core": {"Unlocked":false, "Level": 0},
+			"Field Tactician" : {"Unlocked":false, "Level": 0},
+			"Warrior's Flame" : {"Unlocked":false, "Level": 0},
 		},
 		"Class Advancement" : {
 			

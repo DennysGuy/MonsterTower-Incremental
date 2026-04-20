@@ -190,7 +190,7 @@ func start_expedition_timer() -> void:
 
 func set_hunt_timer() -> void:
 	expedition_timer.show()
-	ExpeditionTimer.set_time_for_hunt()
+	ExpeditionTimer.set_time_for_hunt(90)
 
 func start_hunt_timer() -> void:
 	GameManager.enemies_can_move = true

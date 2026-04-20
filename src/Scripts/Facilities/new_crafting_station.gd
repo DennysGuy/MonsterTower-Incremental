@@ -219,6 +219,7 @@ func _on_cancel_crafting_button_button_up() -> void:
 func spawn_item(item : Item, offset : Vector2 = Vector2.ZERO) -> void:
 	var item_interactable : ItemInteractable = preload("uid://dgtobkubdjq27").instantiate()
 	item_interactable.item = item
+	item_interactable.perishable = false
 	item_interactable.icon.texture = item.shop_icon
 	item_interactable.global_position = global_position + offset
 	get_parent().add_child(item_interactable)

@@ -45,6 +45,12 @@ func _process(delta: float) -> void:
 	state_machine.process_frame(delta)
 
 func apply_damage(incoming_damage : int, is_crit : bool, label_position : int = 40):
+	if !damageable:
+		return
+	
+	if self is Player:
+		damageable = false
+	
 	play_sfx(impacts.pick_random())
 	var damage = health_component.apply_damage(incoming_damage, is_crit)
 	var damage_label : DamageLabel = preload("uid://dkchs27qqogyy").instantiate()
@@ -54,18 +60,20 @@ func apply_damage(incoming_damage : int, is_crit : bool, label_position : int = 
 	damage_label.global_position.x = global_position.x
 	damage_label.label.text = damage
 	if self is Enemy:
-	
 		self.drop_scene.add_child(damage_label)
 	else:
 		get_parent().add_child(damage_label)
 
 func enable_hit_box() -> void:
+
 	alter_box_status(hit_box, true, false)
 
 func disable_hit_box() -> void:
+
 	alter_box_status(hit_box, false, true)
 
 func enable_hurt_box() -> void:
+
 	alter_box_status(hurt_box, true, false)
 
 func disable_hurt_box() -> void:

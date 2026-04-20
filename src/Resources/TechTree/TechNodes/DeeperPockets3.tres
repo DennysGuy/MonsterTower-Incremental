@@ -9,7 +9,7 @@ script = ExtResource("3_13t4n")
 node_name = "Deeper Pockets 3"
 icon = ExtResource("1_h6xmf")
 description = "Increases Max Inventory Slot Stack by +2"
-currency_required = 600
+currency_required = 750
 materials_required = Array[Dictionary]([{
 ExtResource("2_h6xmf"): 2
 }])
