@@ -37,8 +37,8 @@ func start_timer() -> void:
 func stop_timer() -> void:
 	GameManager.expedition_timer_started = false
 
-func set_time_for_hunt() -> void:
-	seconds = PlayerStats.player_stats["Hunt Time"]
+func set_time_for_hunt(time : int) -> void:
+	seconds = time
 	milliseconds = 0.99
 
 func set_time_for_door_challenge(time : int) -> void:

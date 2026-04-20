@@ -6,9 +6,10 @@
 [resource]
 script = ExtResource("1_5u1dq")
 drop_icon = ExtResource("1_7agm5")
-drop_chance = 0.25
+drop_chance = 0.2
 item_name = "Orc Head"
 item_type = 1
+sell_value = 200
 shop_icon = ExtResource("1_7agm5")
 description = "Raw Orc head.. Used in various exotic cooking recipes."
 metadata/_custom_type_script = "uid://cubudt76pshmm"

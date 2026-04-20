@@ -6,10 +6,10 @@
 [resource]
 script = ExtResource("1_v2ll6")
 drop_icon = ExtResource("1_qeb24")
-drop_chance = 0.3
+drop_chance = 0.2
 item_name = "Goblin Flesh"
 item_type = 1
-sell_value = 145
+sell_value = 180
 shop_icon = ExtResource("1_qeb24")
 description = "Remains of a Goblin. Could be tasty?"
 metadata/_custom_type_script = "uid://cubudt76pshmm"

@@ -5,7 +5,7 @@
 [ext_resource type="Resource" uid="uid://vibb3cg4b01g" path="res://src/Resources/TowerEntranceData/Floor1-3.tres" id="2_xkl8j"]
 [ext_resource type="AudioStream" uid="uid://cp2iodtnnun5l" path="res://Audio/Music/MossyDungeonTestTheme1.wav" id="3_h5nvt"]
 [ext_resource type="AudioStream" uid="uid://fgrpqq5p7fjq" path="res://Audio/SFX/Biomes/MossyDungeon/Ambience/03 DSGNDron, Dungeon, Ambience, Drone, Dark, Loop.wav" id="4_h5nvt"]
-[ext_resource type="AudioStream" uid="uid://bnfe0t36iu1dy" path="res://Audio/Music/TemporaryHuntMusic.mp3" id="4_rao3c"]
+[ext_resource type="AudioStream" uid="uid://c11it8q80cf3a" path="res://Audio/Music/ChallengeTheme1.wav" id="4_o3lws"]
 [ext_resource type="PackedScene" uid="uid://mwttdrt2cg71" path="res://src/Scenes/Players/ambience_player.tscn" id="5_o3lws"]
 [ext_resource type="AudioStream" uid="uid://n4ky26neitxn" path="res://Audio/Music/TempVictoryTheme1.mp3" id="5_o10go"]
 [ext_resource type="TileSet" uid="uid://dr3ft3wh6mi6e" path="res://src/Scenes/Tower/TowerFloors/Biome1/Biome1BGSetPieces1.tres" id="6_4qk67"]
@@ -91,7 +91,7 @@ exit_elevator_marker = NodePath("ExitElevatorMarker")
 exit_elevator = NodePath("ExitElevator")
 tower_entrance_data = ExtResource("2_2x8us")
 map_theme_song = ExtResource("3_h5nvt")
-hunt_theme_song = ExtResource("4_rao3c")
+hunt_theme_song = ExtResource("4_o3lws")
 hunt_victory_theme = ExtResource("5_o10go")
 camera = NodePath("PlayerCamera")
 hud = NodePath("HUD")

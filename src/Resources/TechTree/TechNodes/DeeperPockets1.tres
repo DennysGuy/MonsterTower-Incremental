@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="TechNodeStats" load_steps=3 format=3 uid="uid://ct7a5kggupi55"]
+[gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://ct7a5kggupi55"]
 
 [ext_resource type="Texture2D" uid="uid://dvk74j54bijfe" path="res://Assets/NodeGraphics/NodeGraphicsV2/DeepPockets1_V2.png" id="1_ihwnd"]
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_l4c50"]
@@ -11,5 +11,5 @@ description = "Store more items on runs! Increases Max Inventory Slot Stack by +
 currency_required = 80
 stat_name = "Max Bag Stack"
 upgrade_interval = 2.0
-prereqs = Array[String](["Hunter License:1"])
+prereqs = Array[String](["Item Bag 1:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

@@ -47,7 +47,7 @@ func get_stats_dict() -> Dictionary:
 		"Cool Down Bonus": cool_down_bonus,
 		"Max HP Bonus" : max_hp_bonus,
 		"Max MP Bonus" : max_mp_bonus,
-		"Knock Back Bonus" : knock_back_bonus
+		#"Knock Back Bonus" : knock_back_bonus
 	}
 
 func get_stats_description() -> String:

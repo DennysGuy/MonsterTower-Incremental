@@ -341,7 +341,6 @@ func recover_hp(amount : int) -> void:
 	
 	SignalBus.update_player_health.emit(player_stats["Current Health"])
 		
-
 func recover_mp(amount : int) -> void:
 	player_stats["Current MP"] += amount
 	if player_stats["Current MP"] > get_total_max_mp():

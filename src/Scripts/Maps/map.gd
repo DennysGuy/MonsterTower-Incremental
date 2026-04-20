@@ -2,6 +2,7 @@ class_name Map extends Node2D
 
 @export var map_name : String
 @export var map_id : int
+@export var challenge_time_limit : int = 90
 @export var exit_elevator_marker : Marker2D
 @export var exit_elevator : ExitElevator
 @export var tower_entrance_data : TowerEntranceData

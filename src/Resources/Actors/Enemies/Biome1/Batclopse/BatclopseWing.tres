@@ -9,6 +9,6 @@ drop_icon = ExtResource("1_3q7js")
 drop_chance = 0.2
 item_name = "Batclopse Wing"
 item_type = 1
-sell_value = 120
+sell_value = 80
 shop_icon = ExtResource("1_3q7js")
 metadata/_custom_type_script = "uid://cubudt76pshmm"
