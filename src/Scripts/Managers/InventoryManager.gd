@@ -20,9 +20,12 @@ signal show_open_bag_notice
 @warning_ignore("unused_signal")
 signal hide_open_bag_notice
 @warning_ignore("unused_signal")
-signal populate_inventory_description(item : Item)
+signal populate_inventory_description(item : Item, slot_index : int)
 @warning_ignore("unused_signal")
 signal show_bank_button
+@warning_ignore("unused_signal")
+signal reset_stored_slot_index
+
 @export var inventories : Dictionary = {
 	"Inventory" : [], # all other items go here
 	"Ore" : [], 
@@ -132,6 +135,24 @@ func remove_item(inventory_name : String, item : Item, quantity : int = 1) -> bo
 			update_inventories(item.get_inventory_name())
 			return true
 
+	return false
+
+func remove_item_from_slot(slot_index : int, inventory_name : String, quantity : int = 1) -> bool:
+	if not inventories.has(inventory_name) or slot_index == -1:
+		return false
+	
+	var selected_inventory : Array = inventories[inventory_name]
+	var selected_slot : Dictionary = selected_inventory[slot_index]
+	if selected_slot["item"]:
+		selected_slot["quantity"] -= quantity
+		
+		if selected_slot["quantity"] <= 0:
+			selected_inventory.erase(selected_slot)
+			reset_stored_slot_index.emit()
+			check_for_notification(selected_slot["item"])
+			update_inventories(inventory_name)
+			return true
+	
 	return false
 
 func remove_novelty_item(inventory_name : String, item : Item) -> bool:

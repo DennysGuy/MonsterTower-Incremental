@@ -6,7 +6,7 @@ enum SLOT_TYPE {BAG, BANK, SHOP}
 enum SLOT_LOCALE {INVENTORY, BANK}
 @export var slot_locale = SLOT_LOCALE.INVENTORY
 @export var slot_type : SLOT_TYPE = SLOT_TYPE.BAG
-
+@export var slot_index : int
 @export var item_icon: TextureRect
 @export var quantity_label: Label
 
@@ -67,7 +67,7 @@ func _on_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			if slot_type == SLOT_TYPE.BAG:
-				InventoryManager.populate_inventory_description.emit(item)
+				InventoryManager.populate_inventory_description.emit(item,slot_index)
 				play_sfx(clicks.pick_random())
 				return
 			var slot_location : String

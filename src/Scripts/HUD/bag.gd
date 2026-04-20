@@ -39,6 +39,7 @@ var selected_item : Item
 @onready var bank_container: GridContainer = $Bank/BankContainer
 @onready var bank: TextureRect = $Bank
 
+var stored_slot_index : int = -1
 
 const DROPS_BAG_BG = preload("uid://bot5flcdwi2w3")
 const GEMSTONE_BAG_BG = preload("uid://bpmgpuqy6o3dd")
@@ -67,6 +68,7 @@ func _ready() -> void:
 	InventoryManager.update_inventory_bag.connect(update_grid_container)
 	InventoryManager.populate_inventory_description.connect(update_item_description)
 	InventoryManager.show_bank_button.connect(show_to_bank_button)
+	InventoryManager.reset_stored_slot_index.connect(reset_stored_slot_index)
 	init_bag()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -108,6 +110,7 @@ func update_grid_container(inventory : String) -> void:
 			potential_item = InventoryManager.inventories[inventory][num]
 			
 		if potential_item:
+			slot.slot_index = num
 			slot.item = potential_item["item"]
 			slot.item_icon.texture = potential_item["item"].shop_icon
 			slot.show_quantity_label(potential_item["quantity"])
@@ -205,10 +208,11 @@ func _on_use_tab_button_up() -> void:
 	play_sfx(USE_BAG_OPEN)
 	update_grid_container("Use")
 
-func update_item_description(item : Item) -> void:
+func update_item_description(item : Item, slot_index : int) -> void:
 	if not item:
-		return 
+		return
 		
+	stored_slot_index = slot_index
 	item_title.text = item.item_name
 	description.text = item.description
 	item_icon.texture = item.shop_icon
@@ -229,13 +233,16 @@ func discard_from_inventory() -> void:
 	if not selected_item:
 		return
 	play_sfx(DROP_ITEM)
-	var item_removed : bool = InventoryManager.remove_item(selected_item.get_inventory_name(), selected_item)
-	var item_exists : bool =InventoryManager.search_item(selected_item.get_inventory_name(), selected_item)
-	if !item_exists:
+	var item_removed : bool = InventoryManager.remove_item_from_slot(stored_slot_index, selected_item.get_inventory_name())
+	var item_exists : bool = InventoryManager.search_item(selected_item.get_inventory_name(), selected_item)
+	if stored_slot_index == -1:
 		clear_description_items()
 	if selected_item:
 		update_grid_container(selected_item.get_inventory_name())
 	
+
+func reset_stored_slot_index() -> void:
+	stored_slot_index = -1
 
 func populate_tier_box(tier : int) -> void:
 	clear_tier_box()
