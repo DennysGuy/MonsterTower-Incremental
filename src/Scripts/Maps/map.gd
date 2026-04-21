@@ -58,7 +58,7 @@ func _ready() -> void:
 	SignalBus.update_kill_quota.connect(update_hunt_quota)
 	SignalBus.play_sfx.connect(play_sfx)
 	LevelingManager.play_level_up_sfx.connect(play_level_up_sfx)
-	hud.map_name_label.text = map_name
+	#hud.map_name_label.text = map_name
 	
 	load_floor_data()
 	
@@ -174,7 +174,7 @@ func spawn_player() -> void:
 		
 	player.health = total_health
 	print("THIS IS PLAYER HEALTH" + str(player.health))
-	hud.update_player_health(int(total_health))
+	#hud.update_player_health(int(total_health))
 
 	add_child(player)
 	

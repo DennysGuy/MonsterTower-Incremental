@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://dix63priuogkk" path="res://Assets/NodeGraphics/NodeGraphicsV2/Bag1_V2.png" id="13_fw5mt"]
 [ext_resource type="PackedScene" uid="uid://djwayx7h06hx3" path="res://src/Scenes/UI/QuestHub.tscn" id="14_xxan5"]
 [ext_resource type="PackedScene" uid="uid://db7vqj43a3h6c" path="res://src/Scenes/UI/RoomInfoBanner.tscn" id="16_fnmb5"]
+[ext_resource type="Texture2D" uid="uid://df850nr6grhu6" path="res://Assets/HUD/NewHudMockup.png" id="17_3voo3"]
 
 [sub_resource type="Animation" id="Animation_g1bs5"]
 resource_name = "CloseIn"
@@ -31,7 +32,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 175), Vector2(0, 362)]
+"values": [Vector2(0, 175), Vector2(0, 1080)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -43,7 +44,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, -185), Vector2(0, -362)]
+"values": [Vector2(0, -185), Vector2(0, -1080)]
 }
 tracks/2/type = "method"
 tracks/2/imported = false
@@ -72,7 +73,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 362), Vector2(0, 175)]
+"values": [Vector2(0, 1080), Vector2(0, 175)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -84,7 +85,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, -362), Vector2(0, -185)]
+"values": [Vector2(0, -1080), Vector2(0, -185)]
 }
 tracks/2/type = "method"
 tracks/2/imported = false
@@ -350,10 +351,10 @@ tracks/0/path = NodePath("../PlayerHUD/QuestHub:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
 "update": 0,
-"values": [Vector2(638, 102)]
+"values": []
 }
 
 [sub_resource type="Animation" id="Animation_7qkr7"]
@@ -453,10 +454,12 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="AbilityHub" parent="PlayerHUD" unique_id=1622225446 instance=ExtResource("2_fw5mt")]
+visible = false
 layout_mode = 1
 mouse_filter = 2
 
 [node name="PlayerHealthBar" type="TextureProgressBar" parent="PlayerHUD" unique_id=1742179397]
+visible = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -474,11 +477,19 @@ texture_under = ExtResource("2_8d4p7")
 texture_progress = ExtResource("3_fw5mt")
 
 [node name="PlayerMPBar" type="TextureProgressBar" parent="PlayerHUD" unique_id=628640297]
-layout_mode = 0
-offset_left = 336.0
-offset_top = 339.0
-offset_right = 496.0
-offset_bottom = 352.0
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = -21.0
+offset_right = 175.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
 step = 0.1
 value = 60.0
 texture_under = ExtResource("2_8d4p7")
@@ -504,6 +515,7 @@ theme_override_font_sizes/font_size = 15
 text = "100/100"
 
 [node name="MPLabel" type="Label" parent="PlayerHUD" unique_id=258966817]
+visible = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -535,7 +547,7 @@ offset_bottom = 24.0
 grow_horizontal = 0
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("5_nt012")
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 24
 text = "Floor 1 -1"
 horizontal_alignment = 2
 
@@ -544,7 +556,6 @@ layout_mode = 1
 offset_right = 81.0
 
 [node name="HuntQuota" type="RichTextLabel" parent="PlayerHUD" unique_id=325974037]
-visible = false
 layout_mode = 0
 offset_left = 481.0
 offset_top = 50.0
@@ -559,9 +570,9 @@ horizontal_alignment = 1
 
 [node name="MonstersLeft" type="RichTextLabel" parent="PlayerHUD" unique_id=130429852]
 layout_mode = 0
-offset_left = 460.0
+offset_left = 1731.0
 offset_top = 78.0
-offset_right = 629.0
+offset_right = 1900.0
 offset_bottom = 94.0
 theme_override_constants/outline_size = 6
 theme_override_fonts/normal_font = ExtResource("9_jyqen")
@@ -570,6 +581,7 @@ bbcode_enabled = true
 horizontal_alignment = 1
 
 [node name="XPAmountLabel" type="Label" parent="PlayerHUD" unique_id=2114485998]
+visible = false
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -589,6 +601,7 @@ text = "10/10 XP"
 horizontal_alignment = 2
 
 [node name="LevelLabel" type="Label" parent="PlayerHUD" unique_id=2004479704]
+visible = false
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -607,6 +620,7 @@ theme_override_font_sizes/font_size = 16
 text = "Level 1"
 
 [node name="XPBar" type="TextureProgressBar" parent="PlayerHUD" unique_id=1748730190]
+visible = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -770,8 +784,9 @@ Open Bag!"
 
 [node name="QuestHub" parent="PlayerHUD" unique_id=1129499445 instance=ExtResource("14_xxan5")]
 layout_mode = 1
-offset_left = -2.0
-offset_right = 130.0
+offset_left = -339.0
+offset_top = -231.5
+offset_bottom = 231.5
 
 [node name="RoomInfoBanner" parent="PlayerHUD" unique_id=1196855950 instance=ExtResource("16_fnmb5")]
 layout_mode = 1
@@ -783,10 +798,10 @@ offset_bottom = -85.0
 [node name="Bag" parent="PlayerHUD" unique_id=668700631 instance=ExtResource("6_g1bs5")]
 z_index = 4096
 layout_mode = 1
-offset_left = -135.0
-offset_top = -430.0
-offset_right = 361.0
-offset_bottom = -203.00003
+offset_left = -775.0
+offset_top = -790.0
+offset_right = -279.0
+offset_bottom = -563.0
 
 [node name="AdvanceClassNotice" type="RichTextLabel" parent="PlayerHUD" unique_id=848029312]
 visible = false
@@ -820,6 +835,68 @@ theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("5_nt012")
 horizontal_alignment = 1
 
+[node name="TextureRect" type="TextureRect" parent="PlayerHUD" unique_id=620575195]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("17_3voo3")
+
+[node name="HPMockLabel" type="Label" parent="PlayerHUD" unique_id=1287706074]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -127.0
+offset_top = -90.0
+offset_right = 50.0
+offset_bottom = -71.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8901961)
+theme_override_fonts/font = ExtResource("5_nt012")
+text = "HP 450/450"
+
+[node name="MPMockLabel" type="Label" parent="PlayerHUD" unique_id=574868964]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -127.0
+offset_top = -53.0
+offset_right = 50.0
+offset_bottom = -34.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8901961)
+theme_override_fonts/font = ExtResource("5_nt012")
+text = "MP 350/350"
+
+[node name="MPMockLabel2" type="Label" parent="PlayerHUD" unique_id=1239078888]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -48.0
+offset_top = -22.0
+offset_right = 129.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8901961)
+theme_override_fonts/font = ExtResource("5_nt012")
+text = "XP 4500/4600"
+horizontal_alignment = 1
+
 [node name="TopBlackBar" type="ColorRect" parent="PlayerHUD" unique_id=877174551]
 layout_mode = 1
 anchors_preset = 15
@@ -838,7 +915,7 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 175.0
-offset_bottom = 175.00012
+offset_bottom = 175.00098
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2

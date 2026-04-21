@@ -87,10 +87,11 @@ func _ready() -> void:
 	#update_ap_label()
 	#update_player_health(int(PlayerStats.player_stats["Current Health"]))
 	#show_class_notice()
+	animation_player.play("CloseIn")
 	if GameManager.can_unlock_class():
 		show_class_notice()
 	
-	quest_tracker_player.play("QuestHubQuickView")
+	#quest_tracker_player.play("QuestHubQuickView")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -63,9 +63,9 @@ func _ready() -> void:
 	TechTreeManager.update_currency_label.emit()
 	InventoryManager.show_bank_button.emit()
 	#CookingManager.can_craft_bar.emit()
-	hud.animation_player.play("CloseIn")
+	#hud.animation_player.play("CloseIn")
 	
-	hud.currency_label.show()
+	#hud.currency_label.show()
 	
 	if PlayerStats.player_stats["Equipped Sword"] < PlayerStats.MAX_SWORD_COUNT-1 and PlayerStats.can_craft_next_sword():
 		SignalBus.show_can_craft_sword.emit()
@@ -75,7 +75,7 @@ func _ready() -> void:
 		SignalBus.hide_can_craft_sword.emit()
 	print("BELCHUNY")
 	#show_ap_notice()
-	hud.open_tower_map_button.show()
+	#hud.open_tower_map_button.show()
 
 	await get_tree().process_frame
 	SignalBus.update_player_health.emit(player.health)
