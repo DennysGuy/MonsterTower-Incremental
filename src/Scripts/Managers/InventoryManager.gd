@@ -90,6 +90,10 @@ func search_item(inventory_name : String, item : Item) -> bool:
 	return false
 
 func add_item(inventory_name : String, item : Item, quantity : int = 1) -> bool:
+	
+	if not item:
+		return false
+	
 	if not inventories.has(inventory_name):
 		return false
 		
@@ -220,6 +224,9 @@ func get_max_bag_stack(bag_stack : String) -> int:
 	return int(PlayerStats.player_stats[bag_stack])
 
 func check_for_notification(item : Item) -> void:
+	if not item:
+		return
+	
 	if item.is_crafting() or item.is_use():
 		SignalBus.check_for_notification.emit(GameManager.NOTIFICATION_TYPE.CRAFTING)
 	elif item.is_cooking():

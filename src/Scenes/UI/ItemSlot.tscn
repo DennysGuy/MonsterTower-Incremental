@@ -6,9 +6,12 @@
 [ext_resource type="Texture2D" uid="uid://x2hshpeeawjm" path="res://Assets/HUD/ItemSlot_novelty.png" id="4_2koek"]
 [ext_resource type="Texture2D" uid="uid://dbe6piv0wn7lq" path="res://Assets/HUD/ItemSlot_crafting.png" id="5_i5ajy"]
 [ext_resource type="Texture2D" uid="uid://blepqdi1qq7bf" path="res://Assets/HUD/ItemSlot_na.png" id="6_g2mhj"]
-[ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="7_g2mhj"]
+[ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="7_g2mhj"]
 
 [node name="Slot" type="TextureRect" unique_id=782442892 node_paths=PackedStringArray("item_icon", "quantity_label", "indicator_cooking", "indicator_novelty", "indicator_crafting", "indicator_na")]
+custom_minimum_size = Vector2(64, 64)
+offset_right = 64.0
+offset_bottom = 64.0
 mouse_filter = 0
 mouse_default_cursor_shape = 2
 texture = ExtResource("1_xtjb4")
@@ -22,55 +25,68 @@ indicator_na = NodePath("IndicatorNA")
 
 [node name="IndicatorCooking" type="TextureRect" parent="." unique_id=700765514]
 visible = false
-layout_mode = 0
-offset_right = 32.0
-offset_bottom = 32.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("3_naodc")
-stretch_mode = 2
+expand_mode = 1
 
 [node name="IndicatorNovelty" type="TextureRect" parent="." unique_id=2083403355]
 visible = false
-layout_mode = 0
-offset_right = 32.0
-offset_bottom = 32.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("4_2koek")
-stretch_mode = 2
+expand_mode = 1
 
 [node name="IndicatorCrafting" type="TextureRect" parent="." unique_id=1157431083]
 visible = false
-layout_mode = 0
-offset_right = 32.0
-offset_bottom = 32.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("5_i5ajy")
-stretch_mode = 2
+expand_mode = 1
 
 [node name="IndicatorNA" type="TextureRect" parent="." unique_id=1309282920]
 visible = false
-layout_mode = 0
-offset_right = 32.0
-offset_bottom = 32.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("6_g2mhj")
-stretch_mode = 2
+expand_mode = 1
 
 [node name="ItemIcon" type="TextureRect" parent="." unique_id=37605428]
-layout_mode = 0
-offset_left = 2.0
-offset_top = 2.5
-offset_right = 29.0
-offset_bottom = 29.5
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
 
 [node name="QuantityLabel" type="Label" parent="." unique_id=275770280]
-visible = false
 layout_mode = 0
-offset_left = 9.0
-offset_top = 22.0
-offset_right = 36.0
-offset_bottom = 38.0
+offset_left = -9.0
+offset_top = 48.0
+offset_right = 64.0
+offset_bottom = 71.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("7_g2mhj")
-theme_override_font_sizes/font_size = 16
-text = "10"
-horizontal_alignment = 1
+theme_override_font_sizes/font_size = 18
+text = "10/10"
+horizontal_alignment = 2
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
