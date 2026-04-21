@@ -391,10 +391,10 @@ tracks/0/path = NodePath("PlayerHUD/Bag:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
+"times": PackedFloat32Array(0, 0.100026734),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(60, 71), Vector2(60, -250)]
+"values": [Vector2(0, 0), Vector2(0, -1080)]
 }
 
 [sub_resource type="Animation" id="Animation_65fhw"]
@@ -409,10 +409,10 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(185, -250)]
+"values": [Vector2(0, -1080)]
 }
 
-[sub_resource type="Animation" id="Animation_fw5mt"]
+[sub_resource type="Animation" id="Animation_tjlva"]
 resource_name = "ShowBag"
 length = 0.2
 tracks/0/type = "value"
@@ -425,14 +425,14 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(60, -250), Vector2(60, 71)]
+"values": [Vector2(0, -1080), Vector2(0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jyqen"]
 _data = {
 &"HideBag": SubResource("Animation_wldwa"),
 &"RESET": SubResource("Animation_65fhw"),
-&"ShowBag": SubResource("Animation_fw5mt")
+&"ShowBag": SubResource("Animation_tjlva")
 }
 
 [node name="HUD" type="CanvasLayer" unique_id=129498783 node_paths=PackedStringArray("animation_player", "map_name_label", "expedition_timer")]
@@ -452,6 +452,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="PlayerHUD" unique_id=620575195]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("17_3voo3")
 
 [node name="AbilityHub" parent="PlayerHUD" unique_id=1622225446 instance=ExtResource("2_fw5mt")]
 visible = false
@@ -637,6 +647,7 @@ texture_under = ExtResource("11_6ndbt")
 texture_progress = ExtResource("12_8d4p7")
 
 [node name="Flash" type="ColorRect" parent="PlayerHUD" unique_id=1206488663]
+visible = false
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -682,17 +693,10 @@ horizontal_alignment = 1
 
 [node name="PickUpNotifier" type="VBoxContainer" parent="PlayerHUD" unique_id=484786063]
 layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -633.0
-offset_top = -317.0
-offset_right = -447.0
-offset_bottom = -146.0
-grow_horizontal = 0
-grow_vertical = 0
+offset_left = 9.0
+offset_top = 95.0
+offset_right = 195.0
+offset_bottom = 266.0
 mouse_filter = 2
 
 [node name="StartHuntChallengeButton" type="Button" parent="PlayerHUD" unique_id=183096058]
@@ -746,22 +750,25 @@ grow_horizontal = 1
 grow_vertical = 1
 
 [node name="OpenBagNotice" type="Control" parent="PlayerHUD" unique_id=1767139368]
-visible = false
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 5.0
-offset_top = -65.0
-offset_right = 133.0
-offset_bottom = -25.0
+offset_left = 25.0
+offset_top = -185.0
+offset_right = 269.0
+offset_bottom = -94.0
 grow_vertical = 0
 
 [node name="TextureRect" type="TextureRect" parent="PlayerHUD/OpenBagNotice" unique_id=1820762157]
-layout_mode = 0
-offset_left = -4.0
-offset_right = 36.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -38.0
+offset_right = 76.0
+offset_bottom = 38.0
+grow_vertical = 2
 texture = ExtResource("13_fw5mt")
 
 [node name="Label" type="Label" parent="PlayerHUD/OpenBagNotice" unique_id=1967052326]
@@ -771,16 +778,18 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -87.0
-offset_top = -17.0
-offset_right = -12.0
-offset_bottom = 18.0
+offset_left = -192.0
+offset_top = -38.5
+offset_right = 24.0
+offset_bottom = 38.5
 grow_horizontal = 0
 grow_vertical = 2
 theme_override_constants/outline_size = 8
-theme_override_fonts/font = ExtResource("9_jyqen")
+theme_override_fonts/font = ExtResource("5_nt012")
+theme_override_font_sizes/font_size = 30
 text = "Press 'B' To
 Open Bag!"
+horizontal_alignment = 1
 
 [node name="QuestHub" parent="PlayerHUD" unique_id=1129499445 instance=ExtResource("14_xxan5")]
 layout_mode = 1
@@ -790,18 +799,20 @@ offset_bottom = 231.5
 
 [node name="RoomInfoBanner" parent="PlayerHUD" unique_id=1196855950 instance=ExtResource("16_fnmb5")]
 layout_mode = 1
-offset_left = 131.0
-offset_top = -145.0
-offset_right = 321.0
-offset_bottom = -85.0
+anchors_preset = 6
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -378.0
+offset_top = -366.0
+offset_right = -7.0
+offset_bottom = -259.0
+grow_horizontal = 0
 
 [node name="Bag" parent="PlayerHUD" unique_id=668700631 instance=ExtResource("6_g1bs5")]
 z_index = 4096
 layout_mode = 1
-offset_left = -775.0
-offset_top = -790.0
-offset_right = -279.0
-offset_bottom = -563.0
+offset_top = -1080.0
+offset_bottom = -1080.0
 
 [node name="AdvanceClassNotice" type="RichTextLabel" parent="PlayerHUD" unique_id=848029312]
 visible = false
@@ -834,16 +845,6 @@ theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("5_nt012")
 horizontal_alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="PlayerHUD" unique_id=620575195]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-texture = ExtResource("17_3voo3")
 
 [node name="HPMockLabel" type="Label" parent="PlayerHUD" unique_id=1287706074]
 layout_mode = 1

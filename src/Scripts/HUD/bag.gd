@@ -1,43 +1,44 @@
 class_name InventoryBag extends Control
 
-@onready var texture_rect: TextureRect = $TextureRect
-@onready var grid_container: GridContainer = $TextureRect/GridContainer
-@onready var tab_full: Label = $TextureRect/TabFull
+@onready var texture_rect: NinePatchRect = $BagBG
+@onready var grid_container: GridContainer = $BagBG/GridContainer
+@onready var tab_full: Label = $BagBG/TabFull
+@onready var bag_bg_color: TextureRect = $BagBG/BagBGColor
 
 @onready var sfx_player: SFXPlayer = $SfxPlayer
 const BAG_FULL = preload("uid://bakwpx4g6fqth")
-@onready var item_icon: BagItemIcon = $TextureRect/ItemIcon
-@onready var gold_count: Label = $TextureRect/GoldCount
+@onready var item_icon: BagItemIcon = $BagBG/ItemIcon
+@onready var gold_count: Label = $BagBG/GoldCount
 
-@onready var item_title: Label = $TextureRect/ItemTitle
-@onready var description: Label = $TextureRect/Description
-@onready var inventory_name: Label = $TextureRect/PanelContainer/MarginContainer/InventoryName
+@onready var item_title: Label = $BagBG/ItemTitle
+@onready var description: Label = $BagBG/Description
+@onready var inventory_name: Label = $BagBG/PanelContainer/MarginContainer/InventoryName
 
-@onready var ore: TextureButton = $TextureRect/HBoxContainer/Ore
-@onready var gem_stone_tab: TextureButton = $TextureRect/HBoxContainer/GemStoneTab
-@onready var use_tab: TextureButton = $TextureRect/HBoxContainer/UseTab
+@onready var ore: TextureButton = $BagBG/HBoxContainer/Ore
+@onready var gem_stone_tab: TextureButton = $BagBG/HBoxContainer/GemStoneTab
+@onready var use_tab: TextureButton = $BagBG/HBoxContainer/UseTab
 
-@onready var filters: HBoxContainer = $TextureRect/Filters
-@onready var inventory_tab: TextureButton = $TextureRect/HBoxContainer/InventoryTab
-@onready var filters_label: Label = $TextureRect/FiltersLabel
+@onready var filters: HBoxContainer = $BagBG/Filters
+@onready var inventory_tab: TextureButton = $BagBG/HBoxContainer/InventoryTab
+@onready var filters_label: Label = $BagBG/FiltersLabel
 
 var selected_item : Item
-@onready var sell_value: Label = $TextureRect/SellValue
+@onready var sell_value: Label = $BagBG/SellValue
 
-@onready var novelty_tab_label: Label = $TextureRect/HBoxContainer/InventoryTab/NoveltyTabLabel
+@onready var novelty_tab_label: Label = $BagBG/HBoxContainer/InventoryTab/NoveltyTabLabel
 
-@onready var craft_tab_label: Label = $TextureRect/HBoxContainer/CraftingTab/CraftTabLabel
-@onready var cooking_tab_label: Label = $TextureRect/HBoxContainer/CookingTab/CookingTabLabel
+@onready var craft_tab_label: Label = $BagBG/HBoxContainer/CraftingTab/CraftTabLabel
+@onready var cooking_tab_label: Label = $BagBG/HBoxContainer/CookingTab/CookingTabLabel
 
-@onready var ore_tab_label: Label = $TextureRect/HBoxContainer/Ore/OreTabLabel
-@onready var gem_stone_tab_label: Label = $TextureRect/HBoxContainer/GemStoneTab/GemStoneTabLabel
-@onready var use_tab_label: Label = $TextureRect/HBoxContainer/UseTab/UseTabLabel
-@onready var show_bank: TextureButton = $TextureRect/HBoxContainer/ShowBank
+@onready var ore_tab_label: Label = $BagBG/HBoxContainer/Ore/OreTabLabel
+@onready var gem_stone_tab_label: Label = $BagBG/HBoxContainer/GemStoneTab/GemStoneTabLabel
+@onready var use_tab_label: Label = $BagBG/HBoxContainer/UseTab/UseTabLabel
+@onready var show_bank: TextureButton = $BagBG/HBoxContainer/ShowBank
 
 @onready var tabs : Array[TextureButton] = [inventory_tab, ore, gem_stone_tab, use_tab, show_bank]
-@onready var tier_box: HBoxContainer = $TextureRect/TierBox
+@onready var tier_box: HBoxContainer = $BagBG/TierBox
 @onready var bank_container: GridContainer = $Bank/BankContainer
-@onready var bank: TextureRect = $Bank
+@onready var bank: NinePatchRect = $Bank
 
 var stored_slot_index : int = -1
 
@@ -55,13 +56,12 @@ const USE_BAG_OPEN = preload("uid://caumwm7nf3s0t")
 const BUTTON_HOVER = preload("uid://dj4lg3rglma0j")
 const DROP = preload("uid://bli85jj3lnefb")
 const DROP_ITEM = preload("uid://b1l5d27bgd6wb")
-@onready var discard: TextureButton = $TextureRect/Discard
+@onready var discard: TextureButton = $BagBG/Discard
 
-@onready var bag_bg: TextureRect = $TextureRect/BagBG
 const DENIED = preload("uid://672acnsycbfo")
 
 var bank_showing : bool = false
-@onready var to_bank: TextureButton = $TextureRect/ToBank
+@onready var to_bank: TextureButton = $BagBG/ToBank
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -93,13 +93,13 @@ func update_grid_container(inventory : String) -> void:
 		
 	match inventory:
 		"Inventory":
-			bag_bg.texture = DROPS_BAG_BG
+			bag_bg_color.texture = DROPS_BAG_BG
 		"Ore":
-			bag_bg.texture = ORE_BAG_BG
+			bag_bg_color.texture = ORE_BAG_BG
 		"Gem Stones":
-			bag_bg.texture = GEMSTONE_BAG_BG
+			bag_bg_color.texture = GEMSTONE_BAG_BG
 		"Use":
-			bag_bg.texture = USE_BAG_BG
+			bag_bg_color.texture = USE_BAG_BG
 		
 	clear_grid_container()
 	
@@ -189,22 +189,22 @@ func update_bag() -> void:
 	update_bank_container()
 
 func _on_novelty_tab_button_up() -> void:
-	bag_bg.texture = DROPS_BAG_BG
+	bag_bg_color.texture = DROPS_BAG_BG
 	play_sfx(DROP_BAG_OPEN)
 	update_grid_container("Inventory")
 
 func _on_ore_button_up() -> void:
-	bag_bg.texture = ORE_BAG_BG
+	bag_bg_color.texture = ORE_BAG_BG
 	play_sfx(ORE_BAG_OPEN)
 	update_grid_container("Ore")
 
 func _on_gem_stone_tab_button_up() -> void:
-	bag_bg.texture = GEMSTONE_BAG_BG
+	bag_bg_color.texture = GEMSTONE_BAG_BG
 	play_sfx(GEM_BAG_OPEN)
 	update_grid_container("Gem Stones")
 
 func _on_use_tab_button_up() -> void:
-	bag_bg.texture = USE_BAG_BG
+	bag_bg_color.texture = USE_BAG_BG
 	play_sfx(USE_BAG_OPEN)
 	update_grid_container("Use")
 
