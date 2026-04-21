@@ -33,9 +33,9 @@ func _process(delta: float) -> void:
 	pass
 
 func show_quantity_label(quantity : int) -> void:
-	if slot_type == SLOT_TYPE.BAG:
+	if slot_type == SLOT_TYPE.BAG or slot_locale == SLOT_LOCALE.INVENTORY:
 		quantity_label.text = "%s/%s" % [quantity, int(PlayerStats.player_stats["Max Bag Stack"])]
-	elif slot_type == SLOT_TYPE.BANK:
+	elif slot_type == SLOT_TYPE.BANK or slot_locale == SLOT_LOCALE.BANK:
 		quantity_label.text = "%s/%s" % [quantity, int(PlayerStats.player_stats["Max Bank Stack"])]
 	else:
 		quantity_label.text = str(quantity)
@@ -78,7 +78,7 @@ func _on_gui_input(event: InputEvent) -> void:
 				SLOT_LOCALE.BANK:
 					slot_location = "Bank"
 					
-			InventoryManager.populate_market_menu.emit(item,slot_location)
+			InventoryManager.populate_market_menu.emit(item,slot_location,slot_index)
 
 func play_sfx(sound: AudioStream, volume: float = 0.0):
 	var player := AudioStreamPlayer.new()

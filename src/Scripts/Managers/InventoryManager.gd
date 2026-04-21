@@ -14,7 +14,7 @@ signal update_inventory_bag(inventory_name : String)
 @warning_ignore("unused_signal")
 signal update_bank_inventory
 @warning_ignore("unused_signal")
-signal populate_market_menu(item : Item, slot_locale : String)
+signal populate_market_menu(item : Item, slot_locale : String, slot_index : int)
 @warning_ignore("unused_signal")
 signal show_open_bag_notice
 @warning_ignore("unused_signal")
@@ -151,7 +151,8 @@ func remove_item_from_slot(slot_index : int, inventory_name : String, quantity :
 			reset_stored_slot_index.emit()
 			check_for_notification(selected_slot["item"])
 			update_inventories(inventory_name)
-			return true
+		
+		return true
 	
 	return false
 
@@ -304,6 +305,8 @@ func update_grid_container(grid_container : GridContainer, inventory : String, i
 			
 		if potential_item:
 			slot.item = potential_item["item"]
+			slot.slot_index = num
+			print(slot.slot_index)
 			slot.item_icon.texture = potential_item["item"].shop_icon
 			slot.show_quantity_label(potential_item["quantity"])
 			slot.set_indicator(potential_item["item"])
