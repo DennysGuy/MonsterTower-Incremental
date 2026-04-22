@@ -32,8 +32,8 @@ func _ready() -> void:
 			SignalBus.update_monsters_left.emit("Defeat all Monsters to win!",false,false)
 		else:
 			SignalBus.update_monsters_left.emit("Campfires Discovered: %s/%s" % [tower_entrance_data.camp_fires_reached, tower_entrance_data.total_camp_fires],false)
-	SignalBus.update_player_health.emit(player.health)
-	SignalBus.update_player_mp.emit()
+	PlayerHudSignalBus.update_player_health.emit()
+	PlayerHudSignalBus.update_player_mp.emit()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

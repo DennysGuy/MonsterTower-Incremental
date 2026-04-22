@@ -11,43 +11,33 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -78.0
 offset_top = -20.0
-offset_right = 78.0
-offset_bottom = 20.0
+offset_right = 270.0
+offset_bottom = 52.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="." unique_id=832671558]
+[node name="NotificationHub" type="HBoxContainer" parent="." unique_id=796026269]
 layout_mode = 0
-offset_left = 9.0
-offset_top = 5.0
-offset_right = 149.0
-offset_bottom = 33.0
+offset_left = 11.0
+offset_top = 7.0
+offset_right = 347.0
+offset_bottom = 71.0
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=1574459606]
-layout_mode = 2
-theme_override_constants/margin_left = 2
-theme_override_constants/margin_top = 2
-theme_override_constants/margin_right = 2
-theme_override_constants/margin_bottom = 2
-
-[node name="NotificationHub" type="HBoxContainer" parent="PanelContainer/MarginContainer" unique_id=796026269]
+[node name="GearNotificationHub" parent="NotificationHub" unique_id=845282305 instance=ExtResource("1_48gq2")]
 layout_mode = 2
 
-[node name="GearNotificationHub" parent="PanelContainer/MarginContainer/NotificationHub" unique_id=845282305 instance=ExtResource("1_48gq2")]
-layout_mode = 2
-
-[node name="CookingNotificationHub" parent="PanelContainer/MarginContainer/NotificationHub" unique_id=1739247079 instance=ExtResource("1_48gq2")]
+[node name="CookingNotificationHub" parent="NotificationHub" unique_id=1739247079 instance=ExtResource("1_48gq2")]
 layout_mode = 2
 icon_type = 1
 
-[node name="SmeltingNotificationHub" parent="PanelContainer/MarginContainer/NotificationHub" unique_id=1193312735 instance=ExtResource("1_48gq2")]
+[node name="SmeltingNotificationHub" parent="NotificationHub" unique_id=1193312735 instance=ExtResource("1_48gq2")]
 layout_mode = 2
 icon_type = 2
 
-[node name="APNotificationHub" parent="PanelContainer/MarginContainer/NotificationHub" unique_id=1099042749 instance=ExtResource("1_48gq2")]
+[node name="APNotificationHub" parent="NotificationHub" unique_id=1099042749 instance=ExtResource("1_48gq2")]
 layout_mode = 2
 icon_type = 3
 
-[node name="QuestNotificationHub" parent="PanelContainer/MarginContainer/NotificationHub" unique_id=1667912797 instance=ExtResource("1_48gq2")]
+[node name="QuestNotificationHub" parent="NotificationHub" unique_id=1667912797 instance=ExtResource("1_48gq2")]
 layout_mode = 2
 icon_type = 4

@@ -13,7 +13,6 @@
 [ext_resource type="Texture2D" uid="uid://5e6rkk1w2mse" path="res://Assets/HUD/Bags/Bag_2_ButtonPressed.png" id="6_b6v18"]
 [ext_resource type="Texture2D" uid="uid://b05lg3tfu6n0b" path="res://Assets/HUD/Bags/BagButtonHover.png" id="6_rvsgi"]
 [ext_resource type="Texture2D" uid="uid://bn61q72i8n3u2" path="res://Assets/HUD/Bags/DropsBag_Button_Pressed.png" id="7_2bt08"]
-[ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="7_cy2jp"]
 [ext_resource type="Texture2D" uid="uid://2onts6wkowiw" path="res://Assets/HUD/Bags/Bag_2_ButtonHover.png" id="7_le8wj"]
 [ext_resource type="Texture2D" uid="uid://d045w4ff8lkvx" path="res://Assets/HUD/Bags/DropsBag_Button_Hover.png" id="8_4qwln"]
 [ext_resource type="PackedScene" uid="uid://b5yusabdotx6r" path="res://src/Scenes/UI/BagItemIcon.tscn" id="9_s3gps"]
@@ -296,21 +295,22 @@ theme_override_font_sizes/font_size = 6
 text = "Toggle Bank"
 
 [node name="Filters" type="HBoxContainer" parent="BagBG" unique_id=765079204]
-custom_minimum_size = Vector2(128, 0)
+visible = false
+custom_minimum_size = Vector2(128, 40)
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -422.125
+offset_left = -459.125
 offset_top = 543.5
-offset_right = -238.125
-offset_bottom = 568.5
+offset_right = -99.125
+offset_bottom = 583.5
 grow_horizontal = 2
-scale = Vector2(1.5, 1.5)
 theme_override_constants/separation = 0
 alignment = 1
 
 [node name="NoveltyItems" type="TextureButton" parent="BagBG/Filters" unique_id=1087850770]
+custom_minimum_size = Vector2(90, 40)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("5_812es")
@@ -332,11 +332,12 @@ offset_bottom = 5.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("7_cy2jp")
-theme_override_font_sizes/font_size = 8
+theme_override_fonts/font = ExtResource("22_16b0i")
+theme_override_font_sizes/font_size = 18
 text = "Novelty"
 
 [node name="CraftingItems" type="TextureButton" parent="BagBG/Filters" unique_id=1882635405]
+custom_minimum_size = Vector2(90, 40)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("5_812es")
@@ -358,11 +359,12 @@ offset_bottom = 5.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("7_cy2jp")
-theme_override_font_sizes/font_size = 10
+theme_override_fonts/font = ExtResource("22_16b0i")
+theme_override_font_sizes/font_size = 16
 text = "Crafting"
 
 [node name="CookingItems" type="TextureButton" parent="BagBG/Filters" unique_id=606253622]
+custom_minimum_size = Vector2(90, 40)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("5_812es")
@@ -384,11 +386,12 @@ offset_bottom = 5.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("7_cy2jp")
-theme_override_font_sizes/font_size = 10
+theme_override_fonts/font = ExtResource("22_16b0i")
+theme_override_font_sizes/font_size = 16
 text = "Cooking"
 
 [node name="FilterOff" type="TextureButton" parent="BagBG/Filters" unique_id=654247822]
+custom_minimum_size = Vector2(90, 40)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("5_812es")
@@ -410,8 +413,8 @@ offset_bottom = 5.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("7_cy2jp")
-theme_override_font_sizes/font_size = 10
+theme_override_fonts/font = ExtResource("22_16b0i")
+theme_override_font_sizes/font_size = 16
 text = "All"
 
 [node name="PanelContainer" type="PanelContainer" parent="BagBG" unique_id=43261777]
@@ -450,9 +453,9 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -459.75
-offset_top = 76.75
+offset_top = 47.5
 offset_right = -26.5
-offset_bottom = 117.75
+offset_bottom = 88.5
 grow_horizontal = 0
 theme_override_constants/outline_size = 12
 theme_override_fonts/font = ExtResource("4_4vhog")
@@ -465,27 +468,30 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -429.75
-offset_top = 110.75
-offset_right = -257.75
-offset_bottom = 129.75
+offset_left = -331.5
+offset_top = 101.5
+offset_right = -159.5
+offset_bottom = 120.5
 grow_horizontal = 0
 alignment = 1
 
 [node name="SellValue" type="Label" parent="BagBG" unique_id=1642284451]
 layout_mode = 1
-anchors_preset = 1
+anchors_preset = 6
 anchor_left = 1.0
+anchor_top = 0.5
 anchor_right = 1.0
-offset_left = -114.0
-offset_top = 57.0
-offset_right = -44.700012
-offset_bottom = 68.0
+anchor_bottom = 0.5
+offset_left = -354.49994
+offset_top = -182.0
+offset_right = -145.49994
+offset_bottom = -154.0
 grow_horizontal = 0
+grow_vertical = 2
 theme_override_constants/line_spacing = -1
 theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("7_cy2jp")
-theme_override_font_sizes/font_size = 10
+theme_override_fonts/font = ExtResource("4_4vhog")
+theme_override_font_sizes/font_size = 24
 horizontal_alignment = 1
 autowrap_mode = 3
 
@@ -495,14 +501,14 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -450.75
-offset_top = 127.75
+offset_top = 174.5
 offset_right = -22.5
-offset_bottom = 284.5
+offset_bottom = 325.5
 grow_horizontal = 0
 theme_override_constants/line_spacing = -1
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("22_16b0i")
-theme_override_font_sizes/font_size = 26
+theme_override_font_sizes/font_size = 24
 text = "This is a description how do think this is supposed to work?"
 autowrap_mode = 3
 
@@ -514,9 +520,9 @@ anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
 offset_left = -320.5
-offset_top = -39.0
+offset_top = 16.0
 offset_right = -192.5
-offset_bottom = 89.0
+offset_bottom = 144.0
 grow_horizontal = 0
 grow_vertical = 2
 texture = ExtResource("27_16b0i")
@@ -528,9 +534,9 @@ anchors_preset = 6
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -289.5
-offset_top = -13.0
+offset_top = 49.0
 offset_right = -225.5
-offset_bottom = 51.0
+offset_bottom = 113.0
 grow_horizontal = 0
 hover_height = 4.0
 hover_speed = 3.0
@@ -543,9 +549,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = 93.875
-offset_top = 164.0
+offset_top = 196.0
 offset_right = 361.875
-offset_bottom = 231.0
+offset_bottom = 263.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 10
@@ -597,9 +603,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = 222.87494
-offset_top = 93.0
+offset_top = 148.0
 offset_right = 288.875
-offset_bottom = 128.0
+offset_bottom = 183.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_default_cursor_shape = 2
@@ -635,9 +641,9 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -326.5
-offset_top = -224.5
+offset_top = -169.5
 offset_right = -262.5
-offset_bottom = -189.5
+offset_bottom = -134.5
 grow_horizontal = 0
 grow_vertical = 0
 mouse_default_cursor_shape = 2
@@ -680,17 +686,16 @@ grow_vertical = 2
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("4_4vhog")
 theme_override_font_sizes/font_size = 24
-text = "5000"
 
 [node name="PanelContainer2" type="PanelContainer" parent="BagBG" unique_id=795059347]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -393.0
-offset_top = 11.0
-offset_right = -12.0
-offset_bottom = 43.0
+offset_left = -381.5
+offset_top = -35.5
+offset_right = -0.5
+offset_bottom = -3.5
 grow_horizontal = 0
 
 [node name="InventoryName3" type="Label" parent="BagBG/PanelContainer2" unique_id=1863663635]

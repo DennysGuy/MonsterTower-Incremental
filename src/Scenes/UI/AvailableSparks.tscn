@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://b13ovv70tta2x" path="res://src/Scripts/HUD/available_sparks.gd" id="2_y06kd"]
 
 [node name="AvailableSparks" type="CPUParticles2D" unique_id=591626416]
+scale = Vector2(10, 10)
 emitting = false
 amount = 10
 texture = ExtResource("1_oqf37")

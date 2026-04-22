@@ -11,7 +11,7 @@ func enter() -> void:
 	parent.set_outfit_texture(selected_special_attack.animation_name)
 	parent.animation_player.play(selected_special_attack.animation_name)
 	PlayerStats.player_stats["Current MP"] -= PlayerStats.get_equipped_ability("Special Attack").mp_cost
-	SignalBus.update_player_mp.emit()
+	PlayerHudSignalBus.update_player_mp.emit()
 	selected_special_attack.on_enter(parent)
 	parent.timer.wait_time = selected_special_attack.animation_duration
 	parent.timer.start()

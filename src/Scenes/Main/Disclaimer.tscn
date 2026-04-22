@@ -99,7 +99,6 @@ Your time and feedback at this stage are greatly appreciated."
 autowrap_mode = 3
 
 [node name="TransitionRect" type="ColorRect" parent="." unique_id=1063868622]
-visible = false
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15

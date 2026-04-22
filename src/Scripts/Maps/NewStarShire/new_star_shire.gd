@@ -62,10 +62,10 @@ func _ready() -> void:
 
 	TechTreeManager.update_currency_label.emit()
 	InventoryManager.show_bank_button.emit()
-	#CookingManager.can_craft_bar.emit()
+	CookingManager.can_craft_bar.emit()
 	#hud.animation_player.play("CloseIn")
 	
-	#hud.currency_label.show()
+
 	
 	if PlayerStats.player_stats["Equipped Sword"] < PlayerStats.MAX_SWORD_COUNT-1 and PlayerStats.can_craft_next_sword():
 		SignalBus.show_can_craft_sword.emit()
@@ -78,9 +78,9 @@ func _ready() -> void:
 	#hud.open_tower_map_button.show()
 
 	await get_tree().process_frame
-	SignalBus.update_player_health.emit(player.health)
+	PlayerHudSignalBus.update_player_health.emit()
 	PlayerStats.player_stats["Current MP"] = PlayerStats.player_stats["Max MP"] + PlayerStats.get_current_sword().max_mp_bonus + PlayerStats.get_total_gem_bonus("Max MP Bonus")
-	SignalBus.update_player_mp.emit()
+	PlayerHudSignalBus.update_player_mp.emit()
 	SaveManager.save_player_stats()
 	if PlayerStats.player_stats["Level"] == 2 and PlayerStats.player_stats["Ability Points"] == 1:
 		ability_station_notice()

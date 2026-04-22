@@ -87,7 +87,7 @@ func _ready() -> void:
 		
 		if map_type == MAP_TYPE.CHECKPOINT_FLOOR:	
 	
-			hud.expedition_timer.show_stop_watch()
+			#hud.expedition_timer.show_stop_watch()
 			if !GameManager.hunt_challenge_selected:
 				if tower_entrance_data.hunt_challenge_completed:
 					SignalBus.unlock_next_room.emit()
@@ -121,7 +121,8 @@ func _ready() -> void:
 				if !GameManager.hunt_challenge_selected:
 					GameManager.player_can_move = true
 					if !tower_entrance_data.is_boss_door():
-						hud.start_expedition_timer()
+						#hud.start_expedition_timer()
+						pass
 				else:
 					GameManager.player_can_move = false
 					
@@ -171,6 +172,7 @@ func spawn_player() -> void:
 		PlayerStats.player_stats["Current MP"] = total_mp
 		player.health = total_health
 		GameManager.resupply_character = false
+		PlayerHudSignalBus.update_player_health.emit()
 		
 	player.health = total_health
 	print("THIS IS PLAYER HEALTH" + str(player.health))
@@ -191,7 +193,7 @@ func go_to_starshire() -> void:
 	if tree == null:
 		return
 	
-	hud.animation_player.play("CloseOut")
+	PlayerHudSignalBus.play_close_out_animation.emit()
 	await tree.create_timer(1.0).timeout
 
 	if tree != null:

@@ -54,23 +54,23 @@ var quests_showing : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	SignalBus.update_player_health.connect(update_player_health)
-	SignalBus.spawn_respawn_box.connect(spawn_respawn_box)
-	SignalBus.issue_big_notification.connect(issue_big_notification)
-	SignalBus.hide_big_notification.connect(hide_big_notification_label)
-	SignalBus.play_close_out_animation.connect(play_close_out_animation)
+	PlayerHudSignalBus.update_player_health.connect(update_player_health)
+	PlayerHudSignalBus.spawn_respawn_box.connect(spawn_respawn_box)
+	PlayerHudSignalBus.issue_big_notification.connect(issue_big_notification)
+	PlayerHudSignalBus.hide_big_notification.connect(hide_big_notification_label)
+	PlayerHudSignalBus.play_close_out_animation.connect(play_close_out_animation)
 	
-	SignalBus.update_kill_quota_text.connect(update_kill_quota_text)
-	SignalBus.update_monsters_left.connect(remaining_monsters)
-	SignalBus.play_countdown_beep.connect(play_countdown_beep)
+	PlayerHudSignalBus.update_kill_quota_text.connect(update_kill_quota_text)
+	PlayerHudSignalBus.update_monsters_left.connect(remaining_monsters)
+	PlayerHudSignalBus.play_countdown_beep.connect(play_countdown_beep)
 	
-	SignalBus.update_player_mp.connect(update_player_mp)
+	PlayerHudSignalBus.update_player_mp.connect(update_player_mp)
 	
-	SignalBus.enable_tower_map_button.connect(enable_tower_map_button)
-	SignalBus.show_hunt_challenge_button.connect(show_hunt_challenge_button)
-	SignalBus.flash_screen.connect(flash_screen)
+	PlayerHudSignalBus.enable_tower_map_button.connect(enable_tower_map_button)
+	PlayerHudSignalBus.show_hunt_challenge_button.connect(show_hunt_challenge_button)
+	PlayerHudSignalBus.flash_screen.connect(flash_screen)
 	
-	SignalBus.populate_item_notification_panel.connect(populate_pick_notification_panel)
+	PlayerHudSignalBus.populate_item_notification_panel.connect(populate_pick_notification_panel)
 	TechTreeManager.update_currency_label.connect(update_currency_label)
 	#player_health_bar.max_value = PlayerStats.player_stats["Max Health"]
 	#player_health_bar.value = PlayerStats.player_stats["Current Health"]
@@ -80,8 +80,8 @@ func _ready() -> void:
 	InventoryManager.show_open_bag_notice.connect(show_open_bag_notice)
 	InventoryManager.hide_open_bag_notice.connect(hide_open_bag_notice)
 	
-	player_mp_bar.max_value = PlayerStats.player_stats["Current MP"]
-	player_mp_bar.value = player_mp_bar.max_value
+	#player_mp_bar.max_value = PlayerStats.player_stats["Current MP"]
+	#player_mp_bar.value = player_mp_bar.max_value
 	
 	update_xp_bar()
 	#update_ap_label()
@@ -106,9 +106,11 @@ func _process(delta: float) -> void:
 		else:
 			hide_quests()
 
-func update_player_health(value : int) -> void:
-	player_health_bar.value = value
-	player_health_bar.max_value = PlayerStats.player_stats["Max Health"] + PlayerStats.get_current_sword().get_total_hp_bonus()
+func update_player_health() -> void:
+	var current_hp : int = PlayerStats.player_stats["Current Health"]
+	var max_hp : int = PlayerStats.player_stats["Max Health"] + PlayerStats.get_current_sword().get_total_hp_bonus()
+	player_health_bar.value = current_hp
+	player_health_bar.max_value = max_hp
 	hp_label.text = "%s/%s" % [int(player_health_bar.value), int(player_health_bar.max_value)]
 
 func update_player_mp() -> void:

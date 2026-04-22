@@ -20,7 +20,7 @@ success_rate = 0.7
 critical_success_rate = 0.1
 failure_rate = 0.3
 output_item = ExtResource("2_0oeyu")
-recipe_list = Array[Dictionary]([{}, {
+recipe_list = Array[Dictionary]([{
 ExtResource("3_tlu4r"): 2
 }, {
 ExtResource("4_kb2rx"): 2

@@ -3,10 +3,10 @@
 [ext_resource type="Texture2D" uid="uid://banlwmpk25ol3" path="res://Assets/HUD/NotificationBar/APNotificationIconDisabled.png" id="2_1b7ws"]
 [ext_resource type="Texture2D" uid="uid://biejo5klu1ujp" path="res://Assets/HUD/NotificationBar/PulsingGlow.png" id="2_ecct1"]
 [ext_resource type="Script" uid="uid://rli85bbxfftd" path="res://src/Scripts/HUD/hub_notification_icon.gd" id="2_i5ekw"]
-[ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="4_ecct1"]
+[ext_resource type="FontFile" uid="uid://dgu1a66dfe8w" path="res://Assets/Fonts/Maplestory OTF Light.otf" id="4_ecct1"]
 
 [node name="HubNotificationIcon" type="Control" unique_id=2076932896 node_paths=PackedStringArray("aura")]
-custom_minimum_size = Vector2(24, 24)
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -25,23 +25,25 @@ aura = NodePath("Glow")
 
 [node name="Glow" type="TextureRect" parent="." unique_id=2127501772]
 visible = false
+custom_minimum_size = Vector2(48, 48)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -13.0
-offset_top = -12.0
-offset_right = 11.0
-offset_bottom = 12.0
+offset_left = -25.0
+offset_top = -24.0
+offset_right = 23.0
+offset_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(9, 12)
+pivot_offset = Vector2(25, 25)
 texture = ExtResource("2_ecct1")
-stretch_mode = 2
+expand_mode = 1
 
 [node name="Icon" type="TextureRect" parent="." unique_id=2088020045]
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -55,15 +57,16 @@ offset_bottom = 12.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_1b7ws")
-stretch_mode = 2
+expand_mode = 1
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=219902529]
 visible = false
 layout_mode = 0
 offset_left = -8.0
-offset_top = 27.0
-offset_right = 118.0
-offset_bottom = 50.0
+offset_top = -78.0
+offset_right = 302.0
+offset_bottom = -37.0
+mouse_filter = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=1279465230]
 layout_mode = 2
@@ -76,10 +79,11 @@ theme_override_constants/margin_bottom = 2
 layout_mode = 2
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("4_ecct1")
+theme_override_font_sizes/font_size = 32
 text = "Dish ready to cook!"
 
 [node name="SparksLocation" type="Marker2D" parent="." unique_id=1903575393]
-position = Vector2(12, 12)
+position = Vector2(32, 32)
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

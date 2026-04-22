@@ -28,15 +28,15 @@ func _ready() -> void:
 			SignalBus.update_monsters_left.emit("Defeat all Monsters to win!",false,false)
 		else:
 			SignalBus.update_monsters_left.emit("Campfires Discovered: %s/%s" % [tower_entrance_data.camp_fires_reached, tower_entrance_data.total_camp_fires],false)
-	SignalBus.update_player_health.emit(player.health)
-	SignalBus.update_player_mp.emit()
+	PlayerHudSignalBus.update_player_health.emit()
+	PlayerHudSignalBus.update_player_mp.emit()
 
 	if GameManager.hunt_challenge_selected:
 		GameManager.enemies_can_move = false
 		SignalBus.hide_hunt_challenge_button.emit()
 		exit_elevator.row_lock.show()
 		var monster_count : int = monster_spawn_node.get_children().size()
-		SignalBus.update_monsters_left.emit("Monsters left: %s" % [monster_count])
+		PlayerHudSignalBus.update_monsters_left.emit("Monsters left: %s" % [monster_count])
 		player.damageable = false
 		await get_tree().create_timer(0.5).timeout
 		hud.set_hunt_timer()

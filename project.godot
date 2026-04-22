@@ -40,6 +40,7 @@ LevelingManager="*res://src/Scripts/Managers/LevelingManager.gd"
 SaveManager="*res://src/Scripts/Managers/SaveManager.gd"
 AbilityTimers="*uid://p5j35xa48ggo"
 OutfitGraphics="*uid://damr4a01nhru5"
+PlayerHudSignalBus="*uid://d3adq33svpjyh"
 
 [display]
 
