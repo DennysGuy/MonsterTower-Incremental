@@ -436,10 +436,14 @@ _data = {
 &"ShowBag": SubResource("Animation_tjlva")
 }
 
-[node name="HUD" type="CanvasLayer" unique_id=129498783 node_paths=PackedStringArray("animation_player", "map_name_label", "expedition_timer")]
+[node name="HUD" type="CanvasLayer" unique_id=129498783 node_paths=PackedStringArray("player_health_bar", "player_mp_bar", "animation_player", "hp_label", "mp_label", "map_name_label", "expedition_timer")]
 process_mode = 3
 script = ExtResource("1_m8qo1")
+player_health_bar = NodePath("PlayerHUD/PlayerHealthBar")
+player_mp_bar = NodePath("PlayerHUD/PlayerMPBar")
 animation_player = NodePath("AnimationPlayer")
+hp_label = NodePath("PlayerHUD/HPLabel")
+mp_label = NodePath("PlayerHUD/MPLabel")
 map_name_label = NodePath("PlayerHUD/MapeName")
 expedition_timer = NodePath("PlayerHUD/ExpeditionTimer")
 
@@ -452,21 +456,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
-
-[node name="AbilityHub" parent="PlayerHUD" unique_id=1622225446 instance=ExtResource("2_fw5mt")]
-layout_mode = 1
-anchors_preset = 2
-anchor_left = 0.0
-anchor_top = 1.0
-anchor_right = 0.0
-anchor_bottom = 1.0
-offset_left = 19.0
-offset_top = -97.0
-offset_right = 527.0
-offset_bottom = 0.0
-grow_horizontal = 1
-grow_vertical = 0
 mouse_filter = 2
 
 [node name="BarsBG" type="TextureRect" parent="PlayerHUD" unique_id=1530859971]
@@ -576,6 +565,7 @@ text = "Floor 1 -1"
 horizontal_alignment = 2
 
 [node name="ExpeditionTimer" parent="PlayerHUD" unique_id=1374901185 instance=ExtResource("7_g3oel")]
+visible = false
 layout_mode = 1
 
 [node name="HuntQuota" type="RichTextLabel" parent="PlayerHUD" unique_id=325974037]
@@ -826,6 +816,21 @@ layout_mode = 1
 offset_top = -1080.0
 offset_bottom = -1080.0
 
+[node name="AbilityHub" parent="PlayerHUD" unique_id=1622225446 instance=ExtResource("2_fw5mt")]
+layout_mode = 1
+anchors_preset = 2
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 0.0
+anchor_bottom = 1.0
+offset_left = 19.0
+offset_top = -97.0
+offset_right = 527.0
+offset_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 0
+mouse_filter = 2
+
 [node name="AdvanceClassNotice" type="RichTextLabel" parent="PlayerHUD" unique_id=848029312]
 visible = false
 layout_mode = 0
@@ -877,7 +882,7 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 175.0
-offset_bottom = 175.00146
+offset_bottom = 175.00098
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2

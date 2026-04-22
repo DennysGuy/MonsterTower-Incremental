@@ -527,43 +527,30 @@ width = 3.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=818833295]
 
-[node name="PlayerStats" parent="CanvasLayer" unique_id=1159259830 instance=ExtResource("10_7l0yi")]
-offset_left = 167.0
-offset_top = -62.0
-offset_right = 315.0
-offset_bottom = 133.5
-
 [node name="Currency" type="Label" parent="CanvasLayer" unique_id=931736095]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -633.0
-offset_top = -356.0
-offset_right = -373.0
-offset_bottom = -330.0
-grow_horizontal = 0
-grow_vertical = 0
+offset_left = 23.0
+offset_top = 23.0
+offset_right = 283.0
+offset_bottom = 62.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_constants/shadow_outline_size = 0
 theme_override_fonts/font = ExtResource("13_uk0x3")
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 38
 text = "Currency : 0"
 
 [node name="PresitgeTier" type="Label" parent="CanvasLayer" unique_id=17473203]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -69.0
-offset_top = 9.0
-offset_right = 69.0
-offset_bottom = 25.0
+offset_left = -260.0
+offset_top = 21.0
+offset_right = -122.0
+offset_bottom = 53.0
 grow_horizontal = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("13_uk0x3")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 32
 text = "Prestige: 0"
 horizontal_alignment = 1
 
@@ -571,52 +558,52 @@ horizontal_alignment = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 133.0
-offset_top = 12.0
-offset_right = 196.0
-offset_bottom = 29.0
+offset_left = 203.0
+offset_top = 27.0
+offset_right = 266.0
+offset_bottom = 59.0
 grow_horizontal = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("13_uk0x3")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 32
 text = "0/10"
 
 [node name="PrestigeProgress" type="Label" parent="CanvasLayer" unique_id=1396645254]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 73.0
-offset_top = 12.0
-offset_right = 125.0
-offset_bottom = 29.0
+offset_left = 88.0
+offset_top = 26.0
+offset_right = 192.0
+offset_bottom = 58.0
 grow_horizontal = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("13_uk0x3")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 32
 text = "Next In:"
 
 [node name="HuntingTime" type="Label" parent="CanvasLayer" unique_id=1185679865]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -166.0
-offset_top = 50.0
-offset_right = -45.0
-offset_bottom = 67.0
+offset_left = -87.0
+offset_top = 97.0
+offset_right = 87.0
+offset_bottom = 129.0
 grow_horizontal = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("13_uk0x3")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 32
 text = "Hunt Time: 25"
 
 [node name="ProgressBar" type="ProgressBar" parent="CanvasLayer" unique_id=1967286207]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -168.0
-offset_top = 28.0
-offset_right = 162.0
-offset_bottom = 46.0
+offset_left = -263.5
+offset_top = 57.0
+offset_right = 263.5
+offset_bottom = 90.38461
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 10
 
@@ -677,10 +664,23 @@ theme_override_font_sizes/font_size = 16
 text = "Close"
 
 [node name="Marker2D" type="Marker2D" parent="CanvasLayer" unique_id=1974281026]
-position = Vector2(326, 79)
+position = Vector2(994, 377)
 
 [node name="Marker2D2" type="Marker2D" parent="CanvasLayer" unique_id=1069985173]
-position = Vector2(46, 79)
+position = Vector2(321, 381)
+
+[node name="PlayerStats" parent="CanvasLayer" unique_id=866777862 instance=ExtResource("10_7l0yi")]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -351.0
+offset_top = -548.0
+offset_right = -12.0
+offset_bottom = -150.0
+grow_horizontal = 0
+grow_vertical = 0
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=770360838]
 position = Vector2(636, 365)

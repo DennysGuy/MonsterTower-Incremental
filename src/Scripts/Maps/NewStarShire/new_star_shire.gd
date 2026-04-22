@@ -55,10 +55,10 @@ func _ready() -> void:
 	SignalBus.spawn_class_selection_menu.connect(spawn_dojo_menu)
 	SignalBus.spawn_tower_map.connect(spawn_tower_entrance_map)
 	SignalBus.play_warrior_unlock_animation.connect(warrior_class_unlocked_notice)
-	TechTreeManager.unlock_station.connect(unlock_station)
 	SignalBus.spawn_warrior_tech_tree.connect(warrior_class_unlocked_notice)
+	TechTreeManager.unlock_station.connect(unlock_station)
+	
 	#SignalBus.show_ap_notice.connect(show_ap_notice)
-
 
 	TechTreeManager.update_currency_label.emit()
 	InventoryManager.show_bank_button.emit()
@@ -89,7 +89,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	super(delta)
 	if Input.is_action_just_pressed("interact") and player_in_tower_range and GameManager.player_can_move and PlayerStats.facilities_unlocked["Hunter License"]:
-
 		spawn_tower_entrance_map()
 
 	if Input.is_action_just_pressed("interact") and player_in_market_range and GameManager.player_can_move:
@@ -129,10 +128,11 @@ func _process(delta: float) -> void:
 		spawn_upgrade_menu()
 
 func add_tech_tree_to_scene() -> void:
-	canvas_layer.show()
+	GameManager.can_open_tower_map = false
+	GameManager.can_open_bag = false
+	GameManager.player_can_move = false
 	player.velocity = Vector2.ZERO
-	var tech_tree : TechTree = preload("uid://b7n3fwd3y85wp").instantiate()
-	sub_viewport.add_child(tech_tree)
+	PlayerHudSignalBus.spawn_tech_tree.emit()
 
 func hide_tech_tree_canvas_layer() -> void:
 	canvas_layer.hide()
@@ -181,16 +181,15 @@ func spawn_tower_entrance_map() -> void:
 	GameManager.can_open_bag = false
 	GameManager.player_can_move = false
 	player.velocity = Vector2.ZERO
-	canvas_layer.show()
-	var tower_entrance_map : TowerEntranceMap = preload("uid://bgurt44iah13x").instantiate()
-	control.add_child(tower_entrance_map)
+
+	PlayerHudSignalBus.spawn_tower_entrance_map.emit()
 
 func spawn_grand_market() -> void:
 	GameManager.can_open_tower_map = false
 	GameManager.can_open_bag = false
-	canvas_layer.show()
-	var market : GrandMarketMenu = preload("uid://cfuw5h0apwpq").instantiate()
-	control.add_child(market)
+	GameManager.player_can_move = false
+	player.velocity = Vector2.ZERO
+	PlayerHudSignalBus.spawn_market.emit()
 
 func spawn_cooking_menu() -> void:
 	GameManager.can_open_tower_map = false
@@ -209,40 +208,35 @@ func spawn_smelting_menu() -> void:
 func spawn_crafting_menu() -> void:
 	GameManager.can_open_tower_map = false
 	GameManager.can_open_bag = false
-	canvas_layer.show()
-	var sword_crafting_station : CraftingStationMenu = preload("uid://cc1xppx3tkq4f").instantiate()
-	control.add_child(sword_crafting_station)
+	player.velocity = Vector2.ZERO
+	PlayerHudSignalBus.spawn_sword_crafting_station.emit()
 
 func spawn_upgrade_menu() -> void:
 	GameManager.can_open_tower_map = false
 	GameManager.can_open_bag = false
-	canvas_layer.show()
-	var gem_stone_station : GemStoneStation = preload("uid://v4skqw8t11ip").instantiate()
-	control.add_child(gem_stone_station)
+	player.velocity = Vector2.ZERO
+	PlayerHudSignalBus.spawn_gem_stone_station.emit()
 
 func spawn_beginner_tree() -> void:
 	GameManager.can_open_tower_map = false
 	GameManager.can_open_bag = false
-	canvas_layer.show()
-	var beginner_ability_tree : BeginnerTechTree = preload("uid://y6ru08whvroa").instantiate()
-	sub_viewport.add_child(beginner_ability_tree)
+	player.velocity = Vector2.ZERO
+	PlayerHudSignalBus.spawn_beginner_tree.emit()
 
 
 func spawn_warrior_tech_tree() -> void:
 	GameManager.can_open_tower_map = false
 	GameManager.can_open_bag = false
 	GameManager.can_pause_game = false
-	canvas_layer.show()
-	var warrior_tech_tree : NewAbilityUpgradeMenu = preload("uid://d0r1bngbqs2ch").instantiate()
-	sub_viewport.add_child(warrior_tech_tree)
+	player.velocity = Vector2.ZERO
+	PlayerHudSignalBus.spawn_warrior_menu.emit()
 
 
 func spawn_dojo_menu() -> void:
 	GameManager.can_open_tower_map = false
 	GameManager.can_open_bag = false
-	canvas_layer.show()
-	var class_selection_menu : ClassSelectionMenu = preload("uid://b404uvbhnmjxd").instantiate()
-	control.add_child(class_selection_menu)
+	player.velocity = Vector2.ZERO
+	PlayerHudSignalBus.spawn_class_selection_menu.emit()
 	
 func _on_grand_market_area_body_entered(body: Node2D) -> void:
 	if body is Player:

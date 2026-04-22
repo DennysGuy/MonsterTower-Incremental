@@ -60,7 +60,7 @@ func pick_up_item() -> void:
 		
 	if can_pick_up:
 		SignalBus.play_sfx.emit(PICKUP_ITEM)
-		SignalBus.populate_item_notification_panel.emit(item)
+		PlayerHudSignalBus.populate_item_notification_panel.emit(item)
 		if PlayerStats.can_craft_next_sword():
 			SignalBus.show_can_craft_sword.emit()
 

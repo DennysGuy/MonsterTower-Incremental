@@ -4,8 +4,9 @@ class_name ExpeditionTimerLocal extends Control
 @onready var stop_watch_texture: TextureRect = $StopWatchTexture
 
 func _ready() -> void:
+	#PlayerHudSignalBus.show_stop_watch.connect(show_stop_watch)
 	pass
-
+	
 func _process(delta: float) -> void:
 	pass
 

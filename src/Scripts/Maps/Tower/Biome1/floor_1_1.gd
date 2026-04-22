@@ -37,7 +37,7 @@ func _ready() -> void:
 	PlayerHudSignalBus.update_player_health.emit()
 	PlayerHudSignalBus.update_player_mp.emit()
 	SaveManager.save_player_stats()
-
+	PlayerHudSignalBus.show_stop_watch.emit()
 	if GameManager.hunt_challenge_selected:
 		SignalBus.hide_hunt_challenge_button.emit()
 		var monster_count : int = monster_spawn_node.get_children().size()

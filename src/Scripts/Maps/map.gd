@@ -86,16 +86,15 @@ func _ready() -> void:
 			camera.player = player
 		
 		if map_type == MAP_TYPE.CHECKPOINT_FLOOR:	
-	
-			#hud.expedition_timer.show_stop_watch()
+			PlayerHudSignalBus.show_stop_watch.emit()
 			if !GameManager.hunt_challenge_selected:
 				if tower_entrance_data.hunt_challenge_completed:
 					SignalBus.unlock_next_room.emit()
-					#SignalBus.update_kill_quota_text.emit("", tower_entrance_data.hunt_challenge_completed, tower_entrance_data.hunt_challenge_unlocked)
+					PlayerHudSignalBus.update_kill_quota_text.emit("", tower_entrance_data.hunt_challenge_completed, tower_entrance_data.hunt_challenge_unlocked)
 				else:
-					##SignalBus.update_kill_quota_text.emit("", false, tower_entrance_data.hunt_challenge_unlocked)
+					PlayerHudSignalBus.update_kill_quota_text.emit("", false, tower_entrance_data.hunt_challenge_unlocked)
 					if tower_entrance_data.is_challenge_floor() and tower_entrance_data.hunt_challenge_unlocked and !tower_entrance_data.hunt_challenge_completed:
-						SignalBus.show_hunt_challenge_button.emit()
+						PlayerHudSignalBus.show_hunt_challenge_button.emit()
 					else:
 						SignalBus.hide_hunt_challenge_button.emit()
 				
@@ -108,7 +107,7 @@ func _ready() -> void:
 				SignalBus.show_bag_stats.emit()
 				
 			if monster_spawn_node and GameManager.hunt_challenge_selected:
-				SignalBus.update_monsters_left.emit("Monsters Left: %s" % [monster_spawn_node.get_children().size()],false)
+				PlayerHudSignalBus.update_monsters_left.emit("Monsters Left: %s" % [monster_spawn_node.get_children().size()],false)
 				#else:
 					#SignalBus.update_monsters_left.emit("Campfires Discovered: %s/%s" % [tower_entrance_data.camp_fires_reached, tower_entrance_data.total_camp_fires],false)
 			
@@ -121,7 +120,7 @@ func _ready() -> void:
 				if !GameManager.hunt_challenge_selected:
 					GameManager.player_can_move = true
 					if !tower_entrance_data.is_boss_door():
-						#hud.start_expedition_timer()
+						PlayerHudSignalBus.start_stop_watch.emit()
 						pass
 				else:
 					GameManager.player_can_move = false

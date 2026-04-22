@@ -1,11 +1,11 @@
 class_name PlayerHUD extends CanvasLayer
 
-@onready var player_health_bar: TextureProgressBar = $PlayerHUD/PlayerHealthBar
-@onready var player_mp_bar: TextureProgressBar = $PlayerHUD/PlayerMPBar
+@export var player_health_bar: TextureProgressBar
+@export var player_mp_bar: TextureProgressBar
 @onready var player_hud: Control = $PlayerHUD
 @export var animation_player: AnimationPlayer
-@onready var hp_label: Label = $PlayerHUD/HPLabel
-@onready var mp_label: Label = $PlayerHUD/MPLabel
+@export var hp_label: Label 
+@export var mp_label: Label
 @export var map_name_label: Label
 @onready var bag_animation_player: AnimationPlayer = $BagAnimationPlayer
 var bag_showing : bool = false
@@ -70,6 +70,8 @@ func _ready() -> void:
 	PlayerHudSignalBus.show_hunt_challenge_button.connect(show_hunt_challenge_button)
 	PlayerHudSignalBus.flash_screen.connect(flash_screen)
 	
+	PlayerHudSignalBus.show_stop_watch.connect(show_stop_watch)
+	PlayerHudSignalBus.start_stop_watch.connect(start_expedition_timer)
 	PlayerHudSignalBus.populate_item_notification_panel.connect(populate_pick_notification_panel)
 	TechTreeManager.update_currency_label.connect(update_currency_label)
 	#player_health_bar.max_value = PlayerStats.player_stats["Max Health"]
@@ -92,7 +94,6 @@ func _ready() -> void:
 		show_class_notice()
 	
 	#quest_tracker_player.play("QuestHubQuickView")
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -148,6 +149,9 @@ func quick_quests_preview() -> void:
 
 func enable_tower_map_button() -> void:
 	open_tower_map_button.disabled = false
+
+func show_stop_watch() -> void:
+	expedition_timer.show()
 
 func update_kill_quota_text(message : String, quota_met : bool, challenge_unlocked : bool) -> void:
 	if is_inside_tree():
