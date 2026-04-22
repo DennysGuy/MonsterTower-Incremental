@@ -70,7 +70,7 @@ func _ready() -> void:
 	PlayerHudSignalBus.show_hunt_challenge_button.connect(show_hunt_challenge_button)
 	PlayerHudSignalBus.flash_screen.connect(flash_screen)
 	
-	PlayerHudSignalBus.show_stop_watch.connect(show_stop_watch)
+	#PlayerHudSignalBus.show_stop_watch.connect(show_stop_watch)
 	PlayerHudSignalBus.start_stop_watch.connect(start_expedition_timer)
 	PlayerHudSignalBus.populate_item_notification_panel.connect(populate_pick_notification_panel)
 	TechTreeManager.update_currency_label.connect(update_currency_label)
@@ -224,7 +224,7 @@ func play_close_in_sfx() -> void:
 	sfx_player.play_sfx(CLOSE_IN)
 
 func play_countdown_beep() -> void:
-	sfx_player.play_sfx(COUNTDOWN_BEEP)
+	play_sfx(COUNTDOWN_BEEP)
 
 func show_class_notice() -> void:
 	advance_class_notice.show()
@@ -237,7 +237,6 @@ func remaining_monsters(text : String, out_of_enmies : bool) -> void:
 
 func start_timer() -> void:
 	pass
-
 
 func show_hunt_challenge_button() -> void:
 	start_hunt_challenge_button.show()

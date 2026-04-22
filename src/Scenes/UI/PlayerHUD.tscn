@@ -565,7 +565,6 @@ text = "Floor 1 -1"
 horizontal_alignment = 2
 
 [node name="ExpeditionTimer" parent="PlayerHUD" unique_id=1374901185 instance=ExtResource("7_g3oel")]
-visible = false
 layout_mode = 1
 
 [node name="HuntQuota" type="RichTextLabel" parent="PlayerHUD" unique_id=325974037]

@@ -52,7 +52,7 @@ func _ready() -> void:
 		GameManager.player_can_move = true
 	else:
 		SignalBus.start_enemy_spawn.emit()
-
+		PlayerHudSignalBus.start_stop_watch.emit()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	super(delta)

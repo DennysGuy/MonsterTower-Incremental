@@ -86,7 +86,7 @@ func _ready() -> void:
 			camera.player = player
 		
 		if map_type == MAP_TYPE.CHECKPOINT_FLOOR:	
-			PlayerHudSignalBus.show_stop_watch.emit()
+			
 			if !GameManager.hunt_challenge_selected:
 				if tower_entrance_data.hunt_challenge_completed:
 					SignalBus.unlock_next_room.emit()
@@ -117,11 +117,11 @@ func _ready() -> void:
 			SaveManager.save_player_stats()
 		
 		if map_type ==	MAP_TYPE.FLOOR or map_type == MAP_TYPE.CHECKPOINT_FLOOR:
+				PlayerHudSignalBus.show_stop_watch.emit()
 				if !GameManager.hunt_challenge_selected:
 					GameManager.player_can_move = true
 					if !tower_entrance_data.is_boss_door():
 						PlayerHudSignalBus.start_stop_watch.emit()
-						pass
 				else:
 					GameManager.player_can_move = false
 					
