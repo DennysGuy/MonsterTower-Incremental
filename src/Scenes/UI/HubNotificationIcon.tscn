@@ -6,7 +6,7 @@
 [ext_resource type="FontFile" uid="uid://dgu1a66dfe8w" path="res://Assets/Fonts/Maplestory OTF Light.otf" id="4_ecct1"]
 
 [node name="HubNotificationIcon" type="Control" unique_id=2076932896 node_paths=PackedStringArray("aura")]
-custom_minimum_size = Vector2(64, 64)
+custom_minimum_size = Vector2(48, 58)
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5

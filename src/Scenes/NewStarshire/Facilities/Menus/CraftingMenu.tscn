@@ -100,13 +100,14 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -77.0
-offset_top = 46.0
-offset_right = 72.0
-offset_bottom = 61.0
+offset_left = -122.0
+offset_top = 151.0
+offset_right = 117.0
+offset_bottom = 191.0
 grow_horizontal = 2
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("3_1tol8")
+theme_override_font_sizes/font_size = 42
 text = "Sword Name"
 horizontal_alignment = 1
 
@@ -115,22 +116,23 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -285.0
-offset_top = 16.0
-offset_right = -136.0
-offset_bottom = 31.0
+offset_left = -455.0
+offset_top = 63.0
+offset_right = -401.0
+offset_bottom = 93.0
 grow_horizontal = 2
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("3_1tol8")
+theme_override_font_sizes/font_size = 32
 text = "BAG"
 horizontal_alignment = 1
 
 [node name="BagBG" type="TextureRect" parent="." unique_id=1466262370]
 layout_mode = 0
-offset_left = 38.0
-offset_top = 43.0
-offset_right = 179.0
-offset_bottom = 176.0
+offset_left = 123.0
+offset_top = 124.0
+offset_right = 548.0
+offset_bottom = 522.0
 texture = ExtResource("5_7ge6x")
 
 [node name="InventoryLabel" type="Label" parent="." unique_id=1619377982]
@@ -138,26 +140,28 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -276.0
-offset_top = 43.0
-offset_right = -222.0
-offset_bottom = 53.0
+offset_left = -830.0
+offset_top = 125.0
+offset_right = -735.0
+offset_bottom = 154.0
 grow_horizontal = 2
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("3_1tol8")
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 30
 text = "Drops"
 
 [node name="DropsBagButton" type="TextureButton" parent="." unique_id=1049398797]
+custom_minimum_size = Vector2(96, 46)
 layout_mode = 0
-offset_left = 116.0
-offset_top = 34.0
-offset_right = 145.0
-offset_bottom = 55.0
+offset_left = 95.0
+offset_top = 51.0
+offset_right = 191.0
+offset_bottom = 97.0
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("5_08er8")
 texture_pressed = ExtResource("7_7ge6x")
 texture_hover = ExtResource("8_g43m1")
+stretch_mode = 0
 
 [node name="Label" type="Label" parent="DropsBagButton" unique_id=1653404290]
 layout_mode = 1
@@ -174,19 +178,21 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("8_glxp5")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 24
 text = "Drops"
 
 [node name="UseBagButton" type="TextureButton" parent="." unique_id=748398286]
+custom_minimum_size = Vector2(96, 46)
 layout_mode = 0
-offset_left = 148.0
-offset_top = 34.0
-offset_right = 177.0
-offset_bottom = 55.0
+offset_left = 197.0
+offset_top = 51.0
+offset_right = 293.0
+offset_bottom = 97.0
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("9_ik3j5")
 texture_pressed = ExtResource("10_ihucl")
 texture_hover = ExtResource("11_7ge6x")
+stretch_mode = 0
 
 [node name="Label" type="Label" parent="UseBagButton" unique_id=252146317]
 layout_mode = 1
@@ -203,7 +209,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("8_glxp5")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 24
 text = "Use"
 
 [node name="Bank" type="Label" parent="." unique_id=107098035]
@@ -211,14 +217,14 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -276.0
-offset_top = 190.0
-offset_right = -248.0
-offset_bottom = 202.0
+offset_left = -829.0
+offset_top = 524.0
+offset_right = -746.0
+offset_bottom = 558.0
 grow_horizontal = 2
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("3_1tol8")
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 36
 text = "Bank"
 
 [node name="BankNotice" type="Label" parent="." unique_id=1164100428]
@@ -227,14 +233,14 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -274.0
-offset_top = 237.0
-offset_right = -147.0
-offset_bottom = 249.0
+offset_left = -801.5
+offset_top = 698.0
+offset_right = -463.5
+offset_bottom = 728.0
 grow_horizontal = 2
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("3_1tol8")
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 32
 text = "Bank Account Locked..."
 
 [node name="Panel2" type="Panel" parent="." unique_id=1466711699]
@@ -244,10 +250,10 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -249.0
-offset_top = -117.0
-offset_right = -77.0
-offset_bottom = 106.0
+offset_left = -730.0
+offset_top = -348.0
+offset_right = -237.0
+offset_bottom = 320.0
 grow_horizontal = 0
 grow_vertical = 2
 
@@ -256,13 +262,14 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 80.0
-offset_top = 67.0
-offset_right = 229.0
-offset_bottom = 82.0
+offset_left = 383.0
+offset_top = 157.0
+offset_right = 532.0
+offset_bottom = 187.0
 grow_horizontal = 2
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("3_1tol8")
+theme_override_font_sizes/font_size = 32
 text = "Details"
 horizontal_alignment = 1
 
@@ -271,14 +278,14 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 80.0
-offset_top = 135.0
-offset_right = 116.0
-offset_bottom = 147.0
+offset_left = 252.0
+offset_top = 473.0
+offset_right = 342.0
+offset_bottom = 502.0
 grow_horizontal = 2
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("3_1tol8")
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 30
 text = "Recipe"
 horizontal_alignment = 1
 
@@ -289,15 +296,15 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -242.0
-offset_top = -95.0
-offset_right = -82.0
-offset_bottom = -55.0
+offset_left = -725.0
+offset_top = -332.0
+offset_right = -233.0
+offset_bottom = -123.0
 grow_horizontal = 0
 grow_vertical = 2
 theme_override_constants/outline_size = 4
 theme_override_fonts/normal_font = ExtResource("4_1tol8")
-theme_override_font_sizes/normal_font_size = 10
+theme_override_font_sizes/normal_font_size = 24
 text = "A sword made out slime jellies! Really dull. Really mull."
 
 [node name="SwordStats" type="RichTextLabel" parent="." unique_id=1325837385]
@@ -307,15 +314,15 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -376.0
-offset_top = 61.0
+offset_left = -707.0
+offset_top = 167.0
 offset_right = -261.0
-offset_bottom = 101.0
+offset_bottom = 298.0
 grow_horizontal = 0
 grow_vertical = 2
 theme_override_constants/outline_size = 4
 theme_override_fonts/normal_font = ExtResource("4_1tol8")
-theme_override_font_sizes/normal_font_size = 8
+theme_override_font_sizes/normal_font_size = 20
 text = "+50 Attack
 +10 Defense
 +1% Crit Chance
@@ -328,13 +335,13 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -247.0
+offset_left = -713.0
 offset_top = -26.0
-offset_right = -79.0
+offset_right = -545.0
 offset_bottom = 94.0
 grow_horizontal = 0
 grow_vertical = 2
-theme_override_constants/v_separation = 1
+theme_override_constants/v_separation = 24
 
 [node name="IngredientItem" parent="IngredientsList" unique_id=419774735 instance=ExtResource("5_re6m4")]
 layout_mode = 2
@@ -352,13 +359,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -57.0
-offset_top = -120.0
-offset_right = 51.0
-offset_bottom = 70.0
+offset_left = -186.0
+offset_top = -343.0
+offset_right = 188.0
+offset_bottom = 310.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("6_octel")
+expand_mode = 1
 
 [node name="Button" type="Button" parent="." unique_id=1905573858]
 layout_mode = 1
@@ -367,15 +375,15 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -189.0
-offset_top = -103.0
-offset_right = -137.0
-offset_bottom = -79.0
+offset_left = -828.0
+offset_top = -206.0
+offset_right = -677.0
+offset_bottom = -145.0
 grow_horizontal = 0
 grow_vertical = 0
 mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("4_1tol8")
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 46
 text = "Craft!"
 
 [node name="InventoryContainer" type="GridContainer" parent="." unique_id=1061583504]
@@ -383,11 +391,13 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 41.0
-offset_top = -122.0
-offset_right = 181.0
-offset_bottom = -13.0
+offset_left = 171.0
+offset_top = -386.0
+offset_right = 475.0
+offset_bottom = -30.0
 grow_vertical = 2
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 10
 columns = 4
 
 [node name="Slot" parent="InventoryContainer" unique_id=625281494 instance=ExtResource("8_octel")]
@@ -431,14 +441,15 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 42.0
-offset_top = 24.0
-offset_right = 182.0
-offset_bottom = 133.0
+offset_left = 180.0
+offset_top = 32.0
+offset_right = 481.0
+offset_bottom = 375.0
 grow_vertical = 2
 columns = 4
 
 [node name="Flash" type="ColorRect" parent="." unique_id=1179529704]
+visible = false
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -456,14 +467,14 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -116.0
+offset_left = -138.0
 offset_top = 38.0
-offset_right = -79.0
-offset_bottom = 59.0
+offset_right = -54.0
+offset_bottom = 83.0
 grow_horizontal = 0
 mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("3_1tol8")
-theme_override_font_sizes/font_size = 13
+theme_override_font_sizes/font_size = 38
 text = "Exit"
 
 [connection signal="button_up" from="DropsBagButton" to="." method="_on_drops_bag_button_button_up"]

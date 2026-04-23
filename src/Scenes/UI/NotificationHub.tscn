@@ -16,28 +16,29 @@ offset_bottom = 52.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="NotificationHub" type="HBoxContainer" parent="." unique_id=796026269]
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1872743691]
 layout_mode = 0
-offset_left = 11.0
-offset_top = 7.0
-offset_right = 347.0
-offset_bottom = 71.0
+offset_right = 256.0
+offset_bottom = 58.0
 
-[node name="GearNotificationHub" parent="NotificationHub" unique_id=845282305 instance=ExtResource("1_48gq2")]
+[node name="NotificationHub" type="HBoxContainer" parent="PanelContainer" unique_id=796026269]
 layout_mode = 2
 
-[node name="CookingNotificationHub" parent="NotificationHub" unique_id=1739247079 instance=ExtResource("1_48gq2")]
+[node name="GearNotificationHub" parent="PanelContainer/NotificationHub" unique_id=845282305 instance=ExtResource("1_48gq2")]
+layout_mode = 2
+
+[node name="CookingNotificationHub" parent="PanelContainer/NotificationHub" unique_id=1739247079 instance=ExtResource("1_48gq2")]
 layout_mode = 2
 icon_type = 1
 
-[node name="SmeltingNotificationHub" parent="NotificationHub" unique_id=1193312735 instance=ExtResource("1_48gq2")]
+[node name="SmeltingNotificationHub" parent="PanelContainer/NotificationHub" unique_id=1193312735 instance=ExtResource("1_48gq2")]
 layout_mode = 2
 icon_type = 2
 
-[node name="APNotificationHub" parent="NotificationHub" unique_id=1099042749 instance=ExtResource("1_48gq2")]
+[node name="APNotificationHub" parent="PanelContainer/NotificationHub" unique_id=1099042749 instance=ExtResource("1_48gq2")]
 layout_mode = 2
 icon_type = 3
 
-[node name="QuestNotificationHub" parent="NotificationHub" unique_id=1667912797 instance=ExtResource("1_48gq2")]
+[node name="QuestNotificationHub" parent="PanelContainer/NotificationHub" unique_id=1667912797 instance=ExtResource("1_48gq2")]
 layout_mode = 2
 icon_type = 4
