@@ -77,8 +77,6 @@ func _ready() -> void:
 		if map_type == MAP_TYPE.HUB and map_name == "Starspire - Hub":
 			GameManager.spawn_location = 0
 		
-		if hud:
-			hud.show()
 		
 		spawn_player()
 		
@@ -89,7 +87,7 @@ func _ready() -> void:
 			
 			if !GameManager.hunt_challenge_selected:
 				if tower_entrance_data.hunt_challenge_completed:
-					SignalBus.unlock_next_room.emit()
+					#SignalBus.unlock_next_room.emit()
 					PlayerHudSignalBus.update_kill_quota_text.emit("", tower_entrance_data.hunt_challenge_completed, tower_entrance_data.hunt_challenge_unlocked)
 				else:
 					PlayerHudSignalBus.update_kill_quota_text.emit("", false, tower_entrance_data.hunt_challenge_unlocked)
@@ -211,7 +209,7 @@ func go_to_victory_menu() -> void:
 	if tree == null:
 		return
 	
-	hud.animation_player.play("CloseOut")
+	PlayerHudSignalBus.play_close_out_animation.emit()
 	await tree.create_timer(1.0).timeout
 
 	if tree != null:
@@ -227,7 +225,8 @@ func go_to_failure_menu() -> void:
 	if tree == null:
 		return
 	
-	hud.animation_player.play("CloseOut")
+	#hud.animation_player.play("CloseOut")
+	PlayerHudSignalBus.play_close_out_animation.emit()
 	await tree.create_timer(1.0).timeout
 
 	if tree != null:
@@ -239,7 +238,8 @@ func move_to_next_room(room_path : String) -> void:
 	if tree == null:
 		return
 
-	hud.animation_player.play("CloseOut")
+	PlayerHudSignalBus.play_close_out_animation.emit()
+	#hud.animation_player.play("CloseOut")
 	await tree.create_timer(1.0).timeout
 
 	if tree != null:
@@ -342,14 +342,14 @@ func issue_repair_elevator_notice() -> void:
 	GameManager.enemies_can_move = false
 
 	player.send_to_idle_state()
-	hud.animation_player.play("FadeInOut")
+	#hud.animation_player.play("FadeInOut")
 	await get_tree().create_timer(0.5).timeout
 	camera.position = exit_elevator_marker.position
 	await get_tree().create_timer(1.0).timeout
 	SignalBus.issue_big_notification.emit("Deliver required resource to repair the elevator!")
 	await get_tree().create_timer(3.0).timeout
 	SignalBus.hide_big_notification.emit()
-	hud.animation_player.play("FadeInOut")
+	#hud.animation_player.play("FadeInOut")
 	await get_tree().create_timer(0.5).timeout
 	camera.position = player.position
 	camera.player = player

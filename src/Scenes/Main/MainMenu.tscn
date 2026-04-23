@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://babypuakc7i7y"]
 
 [ext_resource type="Script" uid="uid://c1wrjow75bhab" path="res://src/Scripts/Main/main_menu.gd" id="1_lb6hv"]
-[ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="2_58xxk"]
 [ext_resource type="Texture2D" uid="uid://qynempy8hrlr" path="res://Assets/TempMainMenuBG.png" id="2_gwjs1"]
 [ext_resource type="FontFile" uid="uid://dmw84wb4eeuql" path="res://Assets/Fonts/Playfull Rocket.ttf" id="3_rsyx7"]
+[ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="4_rsyx7"]
 [ext_resource type="AudioStream" uid="uid://cxtv5qej7olko" path="res://Audio/Music/MainThemeDraft1.wav" id="5_rsyx7"]
 
 [sub_resource type="Animation" id="Animation_58xxk"]
@@ -83,14 +83,14 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -174.5
-offset_top = 25.0
-offset_right = 174.5
-offset_bottom = 68.0
+offset_left = -533.0
+offset_top = 61.0
+offset_right = 533.0
+offset_bottom = 190.0
 grow_horizontal = 2
 theme_override_constants/outline_size = 11
 theme_override_fonts/font = ExtResource("3_rsyx7")
-theme_override_font_sizes/font_size = 38
+theme_override_font_sizes/font_size = 128
 text = "Starspire Hunters"
 
 [node name="NewGame" type="Button" parent="." unique_id=2136236947]
@@ -100,17 +100,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -59.0
-offset_top = 59.0
-offset_right = 59.0
-offset_bottom = 99.0
+offset_left = -137.5
+offset_top = 213.0
+offset_right = 137.5
+offset_bottom = 280.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_default_cursor_shape = 2
 theme_override_constants/outline_size = 7
-theme_override_fonts/font = ExtResource("2_58xxk")
-theme_override_font_sizes/font_size = 24
-text = "NEw Game"
+theme_override_fonts/font = ExtResource("4_rsyx7")
+theme_override_font_sizes/font_size = 52
+text = "New Game"
 
 [node name="Continue" type="Button" parent="." unique_id=1382076943]
 modulate = Color(3.85046e-07, 0.97184914, 0.35903677, 1)
@@ -120,17 +120,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -57.5
-offset_top = 14.0
-offset_right = 57.5
-offset_bottom = 54.0
+offset_left = -118.0
+offset_top = 117.0
+offset_right = 118.0
+offset_bottom = 184.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_default_cursor_shape = 2
 theme_override_constants/outline_size = 7
-theme_override_fonts/font = ExtResource("2_58xxk")
-theme_override_font_sizes/font_size = 30
-text = "COntinue"
+theme_override_fonts/font = ExtResource("4_rsyx7")
+theme_override_font_sizes/font_size = 52
+text = "Continue"
 
 [node name="TransitionRect" type="ColorRect" parent="." unique_id=1379323239]
 layout_mode = 1

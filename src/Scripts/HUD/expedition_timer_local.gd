@@ -5,7 +5,7 @@ class_name ExpeditionTimerLocal extends Control
 
 func _ready() -> void:
 	PlayerHudSignalBus.show_stop_watch.connect(show_stop_watch)
-	
+	PlayerHudSignalBus.load_timer_label.connect(load_timer_label)
 	
 func _process(delta: float) -> void:
 	pass

@@ -22,7 +22,7 @@ func _process(delta: float) -> void:
 	pass
 
 func go_to_tutorial() -> void:
-	get_tree().change_scene_to_file("res://src/Scenes/Tower/TutorialMap/TutorialMap.tscn")
+	get_tree().change_scene_to_file("uid://dydvk8wswlc3l")
 
 func play_animation(index : int) -> void:
 

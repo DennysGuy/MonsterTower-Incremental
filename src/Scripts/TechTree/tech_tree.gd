@@ -70,6 +70,9 @@ func _on_close_button_down() -> void:
 func close_out() -> void:
 	TechTreeManager.check_needed_item_panel_for_purchase.emit()
 	TechTreeManager.set_ability_hud_icon.emit()
+	GameManager.can_open_bag = true
+	GameManager.player_can_move = true
+	GameManager.can_pause_game = true
 	if PlayerStats.show_cooking_station_unlock_animation or PlayerStats.show_refinery_station_unlock_animation or PlayerStats.show_gem_station_unlock_animation:
 		TechTreeManager.unlock_station.emit()
 	sfx_player.play_sfx(CLOSE_UPGRADE_PC)

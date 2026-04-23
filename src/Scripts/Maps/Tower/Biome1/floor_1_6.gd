@@ -37,7 +37,7 @@ var current_set_order : Array[String] = []
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super()
-	hud.animation_player.play("CloseIn")
+	#hud.animation_player.play("CloseIn")
 	#checkpoint_campfire.play("default")
 	tower_entrance_data.activation_switch_unlocked = SaveManager.current_save_game.tower_entrance_data["Floor 1-6"]["Activation Switch Unlocked"]
 	MusicPlayer.stop_player()
@@ -120,7 +120,7 @@ func start_challenge() -> void:
 	camera.player = player
 	await get_tree().create_timer(1.0).timeout
 	ExpeditionTimer.set_time_for_door_challenge(120)
-	hud.expedition_timer.load_timer_label()
+	PlayerHudSignalBus.load_timer_label.emit()
 	SignalBus.issue_big_notification.emit("Ready?!")
 	await get_tree().create_timer(2.0).timeout
 	SignalBus.issue_big_notification.emit("Go!")

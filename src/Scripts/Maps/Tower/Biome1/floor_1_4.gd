@@ -3,7 +3,7 @@ class_name Biome1Floor4 extends Map
 
 func _ready() -> void:
 	super()
-	hud.animation_player.play("CloseIn")
+	#hud.animation_player.play("CloseIn")
 	#checkpoint_campfire.play("default")
 	
 

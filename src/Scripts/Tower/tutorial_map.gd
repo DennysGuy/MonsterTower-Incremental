@@ -9,9 +9,9 @@ var can_enter_tower : bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super()
-	hud.animation_player.play("CloseIn")
+	#hud.animation_player.play("CloseIn")
 	SignalBus.spawn_tech_tree.connect(add_tech_tree_to_scene)
-	SignalBus.hide_tech_tree_canvas_layer.connect(hide_tech_tree_canvas_layer)
+	#SignalBus.hide_tech_tree_canvas_layer.connect(hide_tech_tree_canvas_layer)
 	GameManager.player_can_move = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -42,15 +42,13 @@ func _on_tower_entrance_area_body_exited(body: Node2D) -> void:
 
 func go_to_first_floor() -> void:
 	InventoryManager.clear_bag()
-	hud.animation_player.play("CloseOut")
+	PlayerHudSignalBus.play_close_out_animation.emit()
 	GameManager.player_can_move = true
 	await get_tree().create_timer(1.0).timeout
-	get_tree().change_scene_to_file("res://src/Scenes/Tower/TowerFloors/Biome1/Floor1-1.tscn")
+	get_tree().change_scene_to_file("uid://cd433cwll7hc")
 
 func add_tech_tree_to_scene() -> void:
-	canvas_layer.show()
-	var tech_tree : TechTree = preload("uid://b7n3fwd3y85wp").instantiate()
-	sub_viewport.add_child(tech_tree)
-
-func hide_tech_tree_canvas_layer() -> void:
-	canvas_layer.hide()
+	GameManager.player_can_move = false
+	GameManager.can_open_bag = false
+	player.velocity = Vector2.ZERO
+	PlayerHudSignalBus.spawn_tech_tree.emit()

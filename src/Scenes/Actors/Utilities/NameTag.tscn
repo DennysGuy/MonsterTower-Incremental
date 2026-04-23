@@ -15,10 +15,10 @@ script = ExtResource("1_sssty")
 
 [node name="Bg" type="TextureRect" parent="." unique_id=1015277224]
 layout_mode = 0
-offset_left = -56.0
-offset_top = -17.0
-offset_right = 152.0
-offset_bottom = 27.0
+offset_left = -31.0
+offset_top = -10.0
+offset_right = 121.0
+offset_bottom = 21.0
 texture = ExtResource("2_2uujy")
 expand_mode = 1
 

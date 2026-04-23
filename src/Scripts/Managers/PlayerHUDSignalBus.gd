@@ -78,3 +78,6 @@ signal show_stop_watch
 
 @warning_ignore("unused_signal")
 signal start_stop_watch
+
+@warning_ignore("unused_signal")
+signal load_timer_label
