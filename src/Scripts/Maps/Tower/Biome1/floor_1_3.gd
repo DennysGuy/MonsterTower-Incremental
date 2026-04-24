@@ -26,13 +26,13 @@ func _ready() -> void:
 		
 	await get_tree().process_frame
 	PlayerHudSignalBus.show_stop_watch.emit()
-	if monster_spawn_node:
-		if GameManager.hunt_challenge_selected:
-			hud.animation_player.play("StartHuntChallnge")
-			SignalBus.update_monsters_left.emit("Defeat all Monsters to win!",false,false)
-		else:
-			SignalBus.update_monsters_left.emit("Campfires Discovered: %s/%s" % [tower_entrance_data.camp_fires_reached, tower_entrance_data.total_camp_fires],false)
-			PlayerHudSignalBus.start_stop_watch.emit()
+
+	if GameManager.hunt_challenge_selected:
+		hud.animation_player.play("StartHuntChallnge")
+		SignalBus.update_monsters_left.emit("Defeat all Monsters to win!",false,false)
+	else:
+		SignalBus.update_monsters_left.emit("Campfires Discovered: %s/%s" % [tower_entrance_data.camp_fires_reached, tower_entrance_data.total_camp_fires],false)
+		PlayerHudSignalBus.start_stop_watch.emit()
 	
 	
 	PlayerHudSignalBus.update_player_health.emit()

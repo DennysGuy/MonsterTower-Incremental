@@ -30,7 +30,7 @@ func _ready() -> void:
 	SignalBus.update_entrance_map.connect(update_entrance_map)
 	SignalBus.update_mode_description_to_expedition.connect(set_mode_description_as_expedition)
 	SignalBus.hide_hunt_time_label.connect(hide_hunt_time_label)
-	time_limit.text = "Expedition Time Limit:\n%s Seconds" % [int(PlayerStats.player_stats["Expedition Time"])]
+	time_limit.text = "Expedition Time Limit: %s Seconds" % [int(PlayerStats.player_stats["Expedition Time"])]
 	hunt_time_label.hide()
 	
 	drops_preview_panel.hide()

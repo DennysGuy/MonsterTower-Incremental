@@ -367,14 +367,14 @@ func issue_challenge_objective_notice() -> void:
 	GameManager.enemies_can_move = false
 
 	player.send_to_idle_state()
-	hud.animation_player.play("FadeInOut")
+	#hud.animation_player.play("FadeInOut")
 	await get_tree().create_timer(0.5).timeout
 	camera.position = exit_elevator_marker.position
 	await get_tree().create_timer(1.0).timeout
 	SignalBus.issue_big_notification.emit("Beat the Floor Challenge to unlock the exit elevator!")
 	await get_tree().create_timer(3.0).timeout
 	SignalBus.hide_big_notification.emit()
-	hud.animation_player.play("FadeInOut")
+	#hud.animation_player.play("FadeInOut")
 	await get_tree().create_timer(0.5).timeout
 	camera.position = player.position
 	camera.player = player

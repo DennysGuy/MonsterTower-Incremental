@@ -21,13 +21,15 @@ func _ready() -> void:
 	if mp_replenish_points and PlayerStats.facilities_unlocked["MP Vial"] and !GameManager.hunt_challenge_selected:
 		spawn_mp_vials()
 	await get_tree().process_frame
+	PlayerHudSignalBus.show_stop_watch.emit()
 	
 	if monster_spawn_node:
 		if GameManager.hunt_challenge_selected:
-			hud.animation_player.play("StartHuntChallnge")
+			#hud.animation_player.play("StartHuntChallnge")
 			SignalBus.update_monsters_left.emit("Defeat all Monsters to win!",false,false)
 		else:
 			SignalBus.update_monsters_left.emit("Campfires Discovered: %s/%s" % [tower_entrance_data.camp_fires_reached, tower_entrance_data.total_camp_fires],false)
+	
 	PlayerHudSignalBus.update_player_health.emit()
 	PlayerHudSignalBus.update_player_mp.emit()
 
@@ -47,6 +49,7 @@ func _ready() -> void:
 		GameManager.player_can_move = true
 	else:
 		SignalBus.start_enemy_spawn.emit()
+		PlayerHudSignalBus.start_stop_watch.emit()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

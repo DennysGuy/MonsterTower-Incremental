@@ -82,7 +82,7 @@ size = Vector2(193, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xkl8j"]
 size = Vector2(347, 20)
 
-[node name="Floor1-4" type="Node2D" unique_id=1707445138 node_paths=PackedStringArray("exit_elevator_marker", "exit_elevator", "camera", "hud", "ore_rock_markers", "gem_stone_chest_markers", "campfire_list", "hp_replenish_points", "mp_replenish_points", "sfx_player", "monster_spawn_node", "ambience_player")]
+[node name="Floor1-4" type="Node2D" unique_id=1707445138 node_paths=PackedStringArray("exit_elevator_marker", "exit_elevator", "camera", "ore_rock_markers", "gem_stone_chest_markers", "campfire_list", "hp_replenish_points", "mp_replenish_points", "sfx_player", "monster_spawn_node", "ambience_player")]
 script = ExtResource("1_qpvn6")
 map_name = "Floor 1-4"
 map_id = 4
@@ -93,7 +93,6 @@ map_theme_song = ExtResource("3_h5nvt")
 hunt_theme_song = ExtResource("4_o3lws")
 hunt_victory_theme = ExtResource("5_o10go")
 camera = NodePath("PlayerCamera")
-hud = NodePath("")
 ore_rock_spawn_rate = 0.4
 ore_rock_markers = NodePath("OreRockMarkers")
 gem_stone_chest_markers = NodePath("GemStoneMarkers")

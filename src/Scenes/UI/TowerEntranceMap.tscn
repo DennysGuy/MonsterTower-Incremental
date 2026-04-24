@@ -139,12 +139,11 @@ offset_bottom = 380.0
 theme_override_constants/v_separation = 24
 
 [node name="HuntNotification" type="Control" parent="FloorDescriptionPanel" unique_id=541141210]
-visible = false
 anchors_preset = 0
-offset_left = 92.0
-offset_top = 135.0
-offset_right = 213.0
-offset_bottom = 154.0
+offset_left = 24.0
+offset_top = 421.0
+offset_right = 261.0
+offset_bottom = 475.0
 mouse_filter = 2
 
 [node name="HuntNotification" type="TextureRect" parent="FloorDescriptionPanel/HuntNotification" unique_id=922190577]
@@ -171,24 +170,24 @@ texture = ExtResource("6_ol3te")
 expand_mode = 1
 
 [node name="HuntSelection" type="Button" parent="FloorDescriptionPanel" unique_id=1192990822]
-visible = false
 layout_mode = 0
-offset_left = 108.0
-offset_top = 134.0
-offset_right = 194.0
-offset_bottom = 156.0
+offset_left = 44.0
+offset_top = 414.0
+offset_right = 244.0
+offset_bottom = 454.0
 mouse_default_cursor_shape = 2
 theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("10_grwys")
-theme_override_font_sizes/font_size = 13
+theme_override_font_sizes/font_size = 32
 text = "Hunt Challenge"
 
 [node name="HuntTimeLabel" type="Label" parent="FloorDescriptionPanel" unique_id=199934377]
+visible = false
 layout_mode = 0
-offset_left = 6.0
-offset_top = 430.0
-offset_right = 258.0
-offset_bottom = 505.0
+offset_left = -796.0
+offset_top = 404.0
+offset_right = -301.0
+offset_bottom = 479.0
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("10_grwys")
 theme_override_font_sizes/font_size = 36
@@ -324,7 +323,7 @@ offset_bottom = 504.0
 mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0, 0.6636377, 0.59903854, 1)
 theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("4_fqkg3")
+theme_override_fonts/font = ExtResource("3_m7ed0")
 theme_override_font_sizes/font_size = 64
 disabled = true
 text = "Go!"
