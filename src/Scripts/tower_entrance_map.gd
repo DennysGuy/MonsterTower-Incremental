@@ -40,7 +40,7 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_go_to_floor_button_up() -> void:
-	SignalBus.play_close_out_animation.emit()
+	PlayerHudSignalBus.play_close_out_animation.emit()
 	GameManager.player_can_move = true
 	GameManager.can_open_bag = true
 	GameManager.can_open_tower_map = true
@@ -65,7 +65,7 @@ func store_entrance_data(entrance_data : TowerEntranceData) -> void:
 	
 	for point in range(0,entrance_data.number_of_spawn_locations):
 		var check_point_button : CheckPointButton = preload("uid://bpikj7ilsaiqj").instantiate()
-		check_point_button.text = "Point %s" % [point+1]
+		check_point_button.text = "Checkpoint %s" % [point+1]
 		check_point_button.index = point
 		area_button_selector.add_child(check_point_button)
 	
@@ -108,7 +108,11 @@ func hide_hunt_time_label() -> void:
 	hunt_time_label.hide()
 
 func set_mode_description_as_expedition() -> void:
-	mode_description_label.text = "	   ~Expedition~"
+	mode_description_label.text = "	   ~Expedition~ 
+	
+Hunt, Train, Explore within you Hunter Class time limit!
+	
+	"
 	drops_preview_panel.show()
 
 func set_mode_description_as_hunt_challenge() -> void:

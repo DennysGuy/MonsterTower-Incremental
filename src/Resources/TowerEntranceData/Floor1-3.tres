@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="TowerEntranceData" format=3 uid="uid://vibb3cg4b01g"]
 
 [ext_resource type="Script" uid="uid://cyho4aep1qxmu" path="res://src/Scripts/Maps/tower_entrance_data.gd" id="1_1hkmb"]
+[ext_resource type="Texture2D" uid="uid://bdvrgexttikfl" path="res://Assets/HUD/NewTowerEntranceMap/MossyDungeonEntranceButtons/MossyDungeonCPButton3.png" id="1_cc60e"]
 [ext_resource type="Texture2D" uid="uid://ccr111d7lh2cy" path="res://Assets/Enemies/BatclopseIcon.png" id="1_i27bp"]
 [ext_resource type="Texture2D" uid="uid://fxchlb1rbpw7" path="res://Assets/Enemies/BatclopseLVL2Icon.png" id="2_vn6ol"]
 [ext_resource type="Texture2D" uid="uid://dxk40dnppe36a" path="res://Assets/Enemies/MossGolemIcon.png" id="3_713pk"]
@@ -17,6 +18,7 @@
 script = ExtResource("1_1hkmb")
 floor_name = "Floor 1-3"
 floor_number = 3
+button_texture = ExtResource("1_cc60e")
 biome = "Mossy Dungeon"
 total_camp_fires = 3
 scene_path = "uid://dvl67x0wts4qh"
