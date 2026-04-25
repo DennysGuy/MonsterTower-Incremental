@@ -81,3 +81,9 @@ signal start_stop_watch
 
 @warning_ignore("unused_signal")
 signal load_timer_label
+
+@warning_ignore("unused_signal")
+signal start_hunt_intro
+
+@warning_ignore("unused_signal")
+signal show_big_nofication_label(message : String)

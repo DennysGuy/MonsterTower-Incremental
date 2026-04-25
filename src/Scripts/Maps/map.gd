@@ -49,7 +49,10 @@ func _ready() -> void:
 	if !MusicPlayer.transitioning_floors:
 		MusicPlayer.stop_player()
 	GameManager.can_pause_game = true
-	GameManager.previous_map_path = path
+	if tower_entrance_data:
+		GameManager.previous_map_path = tower_entrance_data.scene_path
+	else:
+		GameManager.previous_map_path = path
 	GameManager.previous_map_data = tower_entrance_data
 	SignalBus.move_to_next_room.connect(move_to_next_room)
 	SignalBus.return_to_starshire.connect(go_to_starshire)
@@ -109,7 +112,7 @@ func _ready() -> void:
 				#else:
 					#SignalBus.update_monsters_left.emit("Campfires Discovered: %s/%s" % [tower_entrance_data.camp_fires_reached, tower_entrance_data.total_camp_fires],false)
 			
-			SignalBus.update_banner_info.emit(tower_entrance_data)
+			
 			PlayerStats.check_points_unlocked[map_name] = true
 			SaveManager.save_floor_data(tower_entrance_data, map_name)
 			SaveManager.save_player_stats()
@@ -346,9 +349,9 @@ func issue_repair_elevator_notice() -> void:
 	await get_tree().create_timer(0.5).timeout
 	camera.position = exit_elevator_marker.position
 	await get_tree().create_timer(1.0).timeout
-	SignalBus.issue_big_notification.emit("Deliver required resource to repair the elevator!")
+	PlayerHudSignalBus.issue_big_notification.emit("Deliver required resource to repair the elevator!")
 	await get_tree().create_timer(3.0).timeout
-	SignalBus.hide_big_notification.emit()
+	PlayerHudSignalBus.hide_big_notification.emit()
 	#hud.animation_player.play("FadeInOut")
 	await get_tree().create_timer(0.5).timeout
 	camera.position = player.position
@@ -371,7 +374,7 @@ func issue_challenge_objective_notice() -> void:
 	await get_tree().create_timer(0.5).timeout
 	camera.position = exit_elevator_marker.position
 	await get_tree().create_timer(1.0).timeout
-	SignalBus.issue_big_notification.emit("Beat the Floor Challenge to unlock the exit elevator!")
+	PlayerHudSignalBus.issue_big_notification.emit("Beat the Floor Challenge to unlock the exit elevator!")
 	await get_tree().create_timer(3.0).timeout
 	SignalBus.hide_big_notification.emit()
 	#hud.animation_player.play("FadeInOut")
@@ -397,7 +400,7 @@ func play_unlock_elevator_sequence() -> void:
 	exit_elevator.unlock_elevator()
 	await get_tree().create_timer(5.0).timeout
 	sfx_player.play_sfx(hunt_victory_theme)
-	SignalBus.issue_big_notification.emit("Challenge Overcome!\nHead to the Elevator!")
+	PlayerHudSignalBus.issue_big_notification.emit("Challenge Overcome!\nHead to the Elevator!")
 	await get_tree().create_timer(2.0).timeout
 	camera.position = player.position
 	camera.player = player

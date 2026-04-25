@@ -61,13 +61,12 @@ size = Vector2(227, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dviee"]
 size = Vector2(304, 20)
 
-[node name="Floor1-6" type="Node2D" unique_id=1707445138 node_paths=PackedStringArray("camera", "hud", "sfx_player", "ambience_player")]
+[node name="Floor1-6" type="Node2D" unique_id=1707445138 node_paths=PackedStringArray("camera", "sfx_player", "ambience_player")]
 script = ExtResource("1_8uvqi")
 map_name = "Floor 1-6"
 map_id = 6
 tower_entrance_data = ExtResource("2_1h2gs")
 camera = NodePath("PlayerCamera")
-hud = NodePath("")
 sfx_player = NodePath("SfxPlayer")
 map_type = 2
 ambience_player = NodePath("AmbiencePlayer")

@@ -70,6 +70,8 @@ func _ready() -> void:
 	PlayerHudSignalBus.show_hunt_challenge_button.connect(show_hunt_challenge_button)
 	PlayerHudSignalBus.flash_screen.connect(flash_screen)
 	
+	PlayerHudSignalBus.start_hunt_intro.connect(start_hunt_intro)
+	
 	#PlayerHudSignalBus.show_stop_watch.connect(show_stop_watch)
 	PlayerHudSignalBus.start_stop_watch.connect(start_expedition_timer)
 	PlayerHudSignalBus.populate_item_notification_panel.connect(populate_pick_notification_panel)
@@ -153,6 +155,9 @@ func enable_tower_map_button() -> void:
 func show_stop_watch() -> void:
 	expedition_timer.show()
 
+func start_hunt_intro() -> void:
+	animation_player.play("StartHuntChallenge")
+
 func update_kill_quota_text(message : String, quota_met : bool, challenge_unlocked : bool) -> void:
 	if is_inside_tree():
 		await get_tree().process_frame
@@ -198,6 +203,7 @@ func start_expedition_timer() -> void:
 func set_hunt_timer() -> void:
 	expedition_timer.show()
 	ExpeditionTimer.set_time_for_hunt(90)
+	expedition_timer.load_timer_label()
 
 func start_hunt_timer() -> void:
 	GameManager.enemies_can_move = true

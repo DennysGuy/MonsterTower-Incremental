@@ -47,6 +47,7 @@ func _ready() -> void:
 	SignalBus.start_boss_door_challenge_scene.connect(start_challenge)
 	SignalBus.increment_keys_delivered_tracker.connect(increment_key_tracker)
 	SignalBus.send_lever_color_name.connect(populate_current_order_list)
+	SignalBus.update_banner_info.emit(tower_entrance_data)
 	
 	if tower_entrance_data.activation_switch_unlocked:
 		SignalBus.set_puzzle_levers_on.emit()
@@ -90,7 +91,7 @@ func unlock_door() -> void:
 	boss_door.play_door_open_animation()
 	SignalBus.shake_camera.emit(5.0)
 	await get_tree().create_timer(3.0).timeout
-	SignalBus.issue_big_notification.emit("The Boss Door Has been Unlocked!")
+	PlayerHudSignalBus.issue_big_notification.emit("The Boss Door Has been Unlocked!")
 	GameManager.player_can_move = true
 
 func start_challenge() -> void:
@@ -113,7 +114,7 @@ func start_challenge() -> void:
 	camera.position = top_position.position
 	await get_tree().create_timer(1.0).timeout
 	MusicPlayer.play_song(TEST_DUNGEON_CHALLENGE_THEME)
-	SignalBus.issue_big_notification.emit("Unlock the Door!")
+	PlayerHudSignalBus.issue_big_notification.emit("Unlock the Door!")
 	SignalBus.spawn_enemies.emit()
 	SignalBus.start_enemy_spawn.emit()
 	await get_tree().create_timer(2.0).timeout
@@ -121,14 +122,14 @@ func start_challenge() -> void:
 	await get_tree().create_timer(1.0).timeout
 	ExpeditionTimer.set_time_for_door_challenge(120)
 	PlayerHudSignalBus.load_timer_label.emit()
-	SignalBus.issue_big_notification.emit("Ready?!")
+	PlayerHudSignalBus.issue_big_notification.emit("Ready?!")
 	await get_tree().create_timer(2.0).timeout
-	SignalBus.issue_big_notification.emit("Go!")
+	PlayerHudSignalBus.issue_big_notification.emit("Go!")
 	
 	GameManager.player_can_move = true
 	ExpeditionTimer.start_hunt_timer()
 	await get_tree().create_timer(2.0).timeout
-	SignalBus.hide_big_notification.emit()
+	PlayerHudSignalBus.hide_big_notification.emit()
 
 func populate_current_order_list(color_name : String) -> void:
 	current_set_order.append(color_name)

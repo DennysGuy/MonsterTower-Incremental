@@ -87,7 +87,7 @@ func populate_description_panel(store_recipe : CraftingRecipe) -> void:
 	recipe_description.text = store_recipe.description
 	clear_ingredients_list()
 	for ingredient in store_recipe.recipe_list:
-		var ingredient_menu_item : IngredientItem = preload("uid://dil4081ni1hb3").instantiate()
+		var ingredient_menu_item : IngredientItem = preload("uid://6t8pqnxisosy").instantiate()
 		for key in ingredient.keys():
 
 			ingredient_menu_item.ingredient_icon.texture = key.shop_icon

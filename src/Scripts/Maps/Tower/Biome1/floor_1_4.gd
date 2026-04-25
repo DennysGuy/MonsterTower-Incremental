@@ -41,16 +41,15 @@ func _ready() -> void:
 		PlayerHudSignalBus.update_monsters_left.emit("Monsters left: %s" % [monster_count])
 		player.damageable = false
 		await get_tree().create_timer(0.5).timeout
-		hud.set_hunt_timer()
-		hud.expedition_timer.update_timer_label()
-		hud.animation_player.play("StartHuntChallenge")
+		PlayerHudSignalBus.start_hunt_intro.emit()
 		await get_tree().create_timer(4.0).timeout
 		player.damageable = true
 		GameManager.player_can_move = true
 	else:
 		SignalBus.start_enemy_spawn.emit()
 		PlayerHudSignalBus.start_stop_watch.emit()
-
+	
+	SignalBus.update_banner_info.emit(tower_entrance_data)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	super(delta)

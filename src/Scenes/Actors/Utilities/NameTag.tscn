@@ -1,34 +1,33 @@
 [gd_scene format=3 uid="uid://vo5sm7p34vo6"]
 
 [ext_resource type="Script" uid="uid://ctb1cjfp5a2cq" path="res://src/Scripts/HUD/name_tag.gd" id="1_sssty"]
-[ext_resource type="Texture2D" uid="uid://d2pxutob3xbxq" path="res://Assets/HUD/GenericNameTagGraphic.png" id="2_2uujy"]
 [ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="3_w02sg"]
 
 [node name="NameTag" type="Control" unique_id=1232323974]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -42.0
-offset_top = 2.0
-offset_right = 46.0
-offset_bottom = 15.0
+offset_left = -67.0
+offset_right = 73.0
+offset_bottom = 16.0
 script = ExtResource("1_sssty")
 
-[node name="Bg" type="TextureRect" parent="." unique_id=1015277224]
-layout_mode = 0
-offset_left = -31.0
-offset_top = -10.0
-offset_right = 121.0
-offset_bottom = 21.0
-texture = ExtResource("2_2uujy")
-expand_mode = 1
+[node name="Bg" type="PanelContainer" parent="." unique_id=305804188]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -8.0
+offset_right = 9.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Tag" type="Label" parent="." unique_id=725373759]
-layout_mode = 0
-offset_left = -12.0
-offset_right = 106.0
-offset_bottom = 16.0
+[node name="Tag" type="Label" parent="Bg" unique_id=725373759]
+layout_mode = 2
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("3_w02sg")
 theme_override_font_sizes/font_size = 16
-text = "Lv. 0 Scare Dummy"
 horizontal_alignment = 1

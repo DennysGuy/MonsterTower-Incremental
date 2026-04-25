@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://do7gmff4xat63"]
+
+[ext_resource type="Script" uid="uid://cgumihicdkeo6" path="res://src/Scripts/TechTree/quantity_list_item.gd" id="1_oqykp"]
+[ext_resource type="Texture2D" uid="uid://c4aj160n4blbs" path="res://Assets/Facilities/CookingStation/CookedGagootz.png" id="2_2ikig"]
+[ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="3_icrv7"]
+
+[node name="QuantityListItemMini" type="Panel" unique_id=1051548958 node_paths=PackedStringArray("icon", "quantity_label")]
+custom_minimum_size = Vector2(70, 20)
+offset_right = 70.0
+offset_bottom = 24.0
+script = ExtResource("1_oqykp")
+icon = NodePath("Icon")
+quantity_label = NodePath("QuantityLabel")
+
+[node name="Icon" type="TextureRect" parent="." unique_id=1582397821]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 3.0
+offset_top = -11.5
+offset_right = 25.0
+offset_bottom = 10.5
+grow_vertical = 2
+texture = ExtResource("2_2ikig")
+expand_mode = 1
+
+[node name="QuantityLabel" type="Label" parent="." unique_id=503395482]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -7.0
+offset_right = -3.8260803
+offset_bottom = 9.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_icrv7")
+theme_override_font_sizes/font_size = 16
+text = "x100"
+horizontal_alignment = 2

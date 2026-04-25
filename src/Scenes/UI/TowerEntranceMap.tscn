@@ -305,7 +305,7 @@ text = "Selected Point:"
 anchors_preset = 0
 offset_left = 75.0
 offset_top = 109.0
-offset_right = 277.0
+offset_right = 1862.0
 offset_bottom = 298.0
 
 [node name="ModeDescriptionLabel" type="RichTextLabel" parent="ModeDescription" unique_id=1443017508]

@@ -36,6 +36,7 @@ offset_right = 16.0
 offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("2_iio8p")
 stretch_mode = 2
 
@@ -61,9 +62,9 @@ vertical_alignment = 1
 [node name="StarTierHBox" type="HBoxContainer" parent="." unique_id=1913778139]
 layout_mode = 0
 offset_left = -18.0
-offset_top = 37.0
+offset_top = 42.0
 offset_right = 53.0
-offset_bottom = 45.0
+offset_bottom = 50.0
 alignment = 1
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]

@@ -121,7 +121,7 @@ func populate_items_needed_list() -> void:
 	InventoryManager.clear_grid_container(needed_items_container)
 	for item_dict in current_room_data.unlock_recipe.recipe_list:
 		for item in item_dict.keys():
-			var quantity_list_item : QuantityListItem = preload("uid://cq8n5gyropdxm").instantiate()
+			var quantity_list_item : QuantityListItem = preload("uid://do7gmff4xat63").instantiate()
 			quantity_list_item.icon.texture = item.shop_icon
 			quantity_list_item.quantity_label.text = "x%s" % [item_dict[item]]
 			needed_items_container.add_child(quantity_list_item)
@@ -129,7 +129,7 @@ func populate_items_needed_list() -> void:
 func unlock_elevator() -> void:
 	animation_player.play("UnlockElevator")
 	await get_tree().create_timer(2).timeout
-	SignalBus.flash_screen.emit()
+	PlayerHudSignalBus.flash_screen.emit()
 	await get_tree().create_timer(0.5).timeout
 	row_lock.hide()
 	

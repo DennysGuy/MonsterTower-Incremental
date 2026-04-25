@@ -257,7 +257,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.18, 1.5, 1.6466665, 1.961482, 2.1767612, 2.4, 3.403314, 3.6666665, 3.9125829, 4.135822, 5, 5.264826),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(-417, 157), Vector2(113.09985, 157), Vector2(172, 157), Vector2(704, 157), Vector2(-431, 157), Vector2(-431, 157), Vector2(128, 157), Vector2(128, 157), Vector2(573, 157), Vector2(-431, 157), Vector2(128, 157), Vector2(128, 157), Vector2(573, 157)]
+"values": [Vector2(-417, 540), Vector2(960, 540), Vector2(960, 540), Vector2(2000, 540), Vector2(-431, 540), Vector2(-431, 540), Vector2(960, 540), Vector2(960, 540), Vector2(2000, 540), Vector2(-431, 540), Vector2(960, 540), Vector2(960, 540), Vector2(2000, 540)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -290,7 +290,7 @@ tracks/3/path = NodePath(".")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 4),
+"times": PackedFloat32Array(0, 3.9333334),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [],
@@ -678,15 +678,22 @@ text = "[color=aqua]currency: 1000000[/color]"
 horizontal_alignment = 2
 
 [node name="StartHuntLabel" type="Label" parent="PlayerHUD" unique_id=915542649]
-layout_mode = 0
-offset_left = -459.0
-offset_top = 157.0
-offset_right = -42.00305
-offset_bottom = 240.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1419.0
+offset_top = -383.0
+offset_right = -1002.0044
+offset_bottom = -300.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_colors/font_color = Color(7.70092e-07, 0.7830455, 0.38619787, 1)
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("9_jyqen")
-theme_override_font_sizes/font_size = 38
+theme_override_font_sizes/font_size = 64
 text = "Hunt Challenge!"
 horizontal_alignment = 1
 
@@ -860,6 +867,7 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("5_nt012")
+theme_override_font_sizes/font_size = 46
 horizontal_alignment = 1
 
 [node name="TopBlackBar" type="ColorRect" parent="PlayerHUD" unique_id=877174551]
@@ -880,7 +888,7 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 175.0
-offset_bottom = 175.00098
+offset_bottom = 175.00122
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
