@@ -33,7 +33,7 @@ var selected_item : Item
 @onready var ore_tab_label: Label = $BagBG/HBoxContainer/Ore/OreTabLabel
 @onready var gem_stone_tab_label: Label = $BagBG/HBoxContainer/GemStoneTab/GemStoneTabLabel
 @onready var use_tab_label: Label = $BagBG/HBoxContainer/UseTab/UseTabLabel
-@onready var show_bank: TextureButton = $BagBG/HBoxContainer/ShowBank
+@onready var show_bank: TextureButton = $BagBG/ShowBank
 
 @onready var tabs : Array[TextureButton] = [inventory_tab, ore, gem_stone_tab, use_tab, show_bank]
 @onready var tier_box: HBoxContainer = $BagBG/TierBox

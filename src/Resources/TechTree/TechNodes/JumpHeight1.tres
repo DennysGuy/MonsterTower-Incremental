@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="TechNodeStats" load_steps=3 format=3 uid="uid://b4xw1euerb1ka"]
+[gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://b4xw1euerb1ka"]
 
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_2wuvx"]
 [ext_resource type="Texture2D" uid="uid://dxh11lqo2vqke" path="res://Assets/NodeGraphics/NodeGraphicsV2/Jump1_V2.png" id="1_8ke4o"]
@@ -10,7 +10,7 @@ icon = ExtResource("1_8ke4o")
 description = "Reach higher areas! Increases Jump Height by 10% for each level.
 "
 max_level = 2
-currency_required = 60
+currency_required = 100
 stat_name = "Jump Height"
 upgrade_interval = 0.1
 prereqs = Array[String](["Hunter License:1"])

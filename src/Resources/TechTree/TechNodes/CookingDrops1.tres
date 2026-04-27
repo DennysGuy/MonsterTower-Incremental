@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="TechNodeStats" load_steps=3 format=3 uid="uid://b1txboikgk5si"]
+[gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://b1txboikgk5si"]
 
 [ext_resource type="Texture2D" uid="uid://bvbrv107pi7jm" path="res://Assets/NodeGraphics/NodeGraphicsV2/CookingDrops1_V2.png" id="1_d686k"]
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="2_7m2ec"]
@@ -9,7 +9,7 @@ node_name = "Cooking Drops 1"
 icon = ExtResource("1_d686k")
 description = "Increases chance to receive cooking drops by 5% per level."
 max_level = 3
-currency_required = 250
+currency_required = 350
 stat_name = "Cooking Drop Chance Bonus"
 upgrade_interval = 0.05
 prereqs = Array[String](["Cooking Station:1"])

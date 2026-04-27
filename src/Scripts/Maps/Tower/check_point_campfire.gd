@@ -37,7 +37,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			entrance_data.hunt_challenge_unlocked = true
 			SignalBus.update_kill_quota_text.emit("", entrance_data.hunt_challenge_completed, entrance_data.hunt_challenge_unlocked)
 			if entrance_data.is_challenge_floor():
-				SignalBus.show_hunt_challenge_button.emit()
+				PlayerHudSignalBus.show_hunt_challenge_button.emit()
 		save_floor_data()
 		just_unlocked = true
 		

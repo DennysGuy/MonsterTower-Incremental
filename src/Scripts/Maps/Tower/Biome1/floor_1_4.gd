@@ -20,6 +20,7 @@ func _ready() -> void:
 	
 	if mp_replenish_points and PlayerStats.facilities_unlocked["MP Vial"] and !GameManager.hunt_challenge_selected:
 		spawn_mp_vials()
+		
 	await get_tree().process_frame
 	PlayerHudSignalBus.show_stop_watch.emit()
 	
@@ -45,10 +46,21 @@ func _ready() -> void:
 		await get_tree().create_timer(4.0).timeout
 		player.damageable = true
 		GameManager.player_can_move = true
-	else:
+	else:	
+		if tower_entrance_data.hunt_challenge_completed:
+			#SignalBus.unlock_next_room.emit()
+			PlayerHudSignalBus.update_kill_quota_text.emit("", tower_entrance_data.hunt_challenge_completed, tower_entrance_data.hunt_challenge_unlocked)
+		else:
+			#PlayerHudSignalBus.update_kill_quota_text.emit("", false, tower_entrance_data.hunt_challenge_unlocked)
+			if tower_entrance_data.is_challenge_floor() and tower_entrance_data.hunt_challenge_unlocked and !tower_entrance_data.hunt_challenge_completed:
+				PlayerHudSignalBus.show_hunt_challenge_button.emit()
+			else:
+				SignalBus.hide_hunt_challenge_button.emit()
+				
 		SignalBus.start_enemy_spawn.emit()
 		PlayerHudSignalBus.start_stop_watch.emit()
-	
+		
+	PlayerHudSignalBus.update_map_name_label.emit(map_name)
 	SignalBus.update_banner_info.emit(tower_entrance_data)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

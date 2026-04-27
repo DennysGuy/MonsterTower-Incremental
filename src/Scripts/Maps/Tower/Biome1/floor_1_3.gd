@@ -34,10 +34,11 @@ func _ready() -> void:
 		SignalBus.update_monsters_left.emit("Campfires Discovered: %s/%s" % [tower_entrance_data.camp_fires_reached, tower_entrance_data.total_camp_fires],false)
 		PlayerHudSignalBus.start_stop_watch.emit()
 	
+	PlayerHudSignalBus.update_map_name_label.emit(map_name)
 	SignalBus.update_banner_info.emit(tower_entrance_data)
 	PlayerHudSignalBus.update_player_health.emit()
 	PlayerHudSignalBus.update_player_mp.emit()
-
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	super(delta)

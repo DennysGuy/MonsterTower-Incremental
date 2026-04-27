@@ -1,8 +1,9 @@
 class_name MainMenu extends Control
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+@onready var audio_stream_player: AudioStreamPlayer = $Music
 @onready var continue_button : Button = $Continue
+@onready var ambience: AudioStreamPlayer = $Ambience
 
 @export var next_scene_path : String
 
@@ -13,6 +14,7 @@ func _ready() -> void:
 		continue_button.hide()
 	
 	audio_stream_player.play()
+	ambience.play()
 	animation_player.play("FadeIn")
 	
 	

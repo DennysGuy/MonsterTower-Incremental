@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dmp07jrdpile2" path="res://src/Scripts/HUD/expedition_timer_local.gd" id="1_w0iq6"]
 [ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="2_5fsv2"]
 [ext_resource type="Texture2D" uid="uid://dv66nggdg2omc" path="res://Assets/HUD/StopWatch.png" id="2_cnmw2"]
+[ext_resource type="AudioStream" uid="uid://c6caiqmkt2lt0" path="res://Audio/SFX/UI/CountdownBeep.wav" id="4_b5ld1"]
 
 [node name="ExpeditionTimer" type="Control" unique_id=261934555]
 layout_mode = 3
@@ -31,6 +32,7 @@ texture = ExtResource("2_cnmw2")
 expand_mode = 1
 
 [node name="SfxPlayer" parent="." unique_id=1606664274 instance=ExtResource("2_5fsv2")]
+stream = ExtResource("4_b5ld1")
 
 [node name="TimerLabel" type="RichTextLabel" parent="." unique_id=399190686]
 layout_mode = 1

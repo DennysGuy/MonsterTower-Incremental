@@ -65,13 +65,14 @@ func _ready() -> void:
 	PlayerHudSignalBus.play_countdown_beep.connect(play_countdown_beep)
 	
 	PlayerHudSignalBus.update_player_mp.connect(update_player_mp)
+	PlayerHudSignalBus.update_map_name_label.connect(update_map_name_level)
 	
 	PlayerHudSignalBus.enable_tower_map_button.connect(enable_tower_map_button)
 	PlayerHudSignalBus.show_hunt_challenge_button.connect(show_hunt_challenge_button)
 	PlayerHudSignalBus.flash_screen.connect(flash_screen)
 	
 	PlayerHudSignalBus.start_hunt_intro.connect(start_hunt_intro)
-	
+	SignalBus.hide_hunt_challenge_button.connect(hide_hunt_challenge_button)
 	#PlayerHudSignalBus.show_stop_watch.connect(show_stop_watch)
 	PlayerHudSignalBus.start_stop_watch.connect(start_expedition_timer)
 	PlayerHudSignalBus.populate_item_notification_panel.connect(populate_pick_notification_panel)
@@ -80,7 +81,7 @@ func _ready() -> void:
 	#player_health_bar.value = PlayerStats.player_stats["Current Health"]
 	
 	LevelingManager.update_xp_bar.connect(update_xp_bar)
-	SignalBus.show_class_notice.connect(show_class_notice)
+	PlayerHudSignalBus.show_class_notice.connect(show_class_notice)
 	InventoryManager.show_open_bag_notice.connect(show_open_bag_notice)
 	InventoryManager.hide_open_bag_notice.connect(hide_open_bag_notice)
 	
@@ -99,6 +100,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	print(PlayerStats.player_stats["Current Health"])
 	if Input.is_action_just_pressed("open_bag") and GameManager.can_open_bag:
 		show_bag()
 	
@@ -114,7 +116,7 @@ func update_player_health() -> void:
 	var max_hp : int = PlayerStats.player_stats["Max Health"] + PlayerStats.get_current_sword().get_total_hp_bonus()
 	player_health_bar.value = current_hp
 	player_health_bar.max_value = max_hp
-	hp_label.text = "%s/%s" % [int(player_health_bar.value), int(player_health_bar.max_value)]
+	hp_label.text = "%s/%s" % [int(current_hp), int(max_hp)]
 
 func update_player_mp() -> void:
 	var current_mp : int = PlayerStats.player_stats["Current MP"]
@@ -255,6 +257,9 @@ func _on_start_hunt_challenge_button_button_up() -> void:
 	GameManager.resupply_character = true
 	GameManager.spawn_location = 0
 	get_tree().change_scene_to_file(GameManager.previous_map_data.scene_path)
+
+func update_map_name_level(name : String) -> void:
+	map_name_label.text = name
 
 func populate_pick_notification_panel(item_data : Item) -> void:
 	var notification_item : PickupNotificationItem = preload("uid://b1s1ecflwq2pn").instantiate()

@@ -10,7 +10,7 @@ node_name = "Max HP 2"
 icon = ExtResource("1_6qdj4")
 description = "Each level adds +30 Max HP for a total of 150 added HP when maxed out."
 max_level = 5
-currency_required = 400
+currency_required = 600
 materials_required = Array[Dictionary]([{
 ExtResource("2_6qdj4"): 1
 }])

@@ -10,7 +10,7 @@ node_name = "Crit Damage 4"
 icon = ExtResource("1_a6m8i")
 description = "Increase Crit Damage by 5% per level."
 max_level = 3
-currency_required = 2500
+currency_required = 3000
 materials_required = Array[Dictionary]([{
 ExtResource("2_a6m8i"): 3
 }])

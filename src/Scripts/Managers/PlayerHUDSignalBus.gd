@@ -87,3 +87,6 @@ signal start_hunt_intro
 
 @warning_ignore("unused_signal")
 signal show_big_nofication_label(message : String)
+
+@warning_ignore("unused_signal")
+signal update_map_name_label(name : String)

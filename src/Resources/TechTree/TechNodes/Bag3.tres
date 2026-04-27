@@ -8,8 +8,9 @@
 script = ExtResource("3_2cdl6")
 node_name = "Item Bag 3"
 icon = ExtResource("1_ij6er")
-description = "Increase Item Bag slots to 12"
-currency_required = 1500
+description = "Increase Item Bag slots to 16
+"
+currency_required = 3000
 materials_required = Array[Dictionary]([{
 ExtResource("2_ij6er"): 2
 }])

@@ -6,6 +6,6 @@
 [resource]
 script = ExtResource("1_akd2f")
 item_bag_name = "Standard Backpack"
-max_slots = 12
+max_slots = 16
 texture = ExtResource("2_n2vsy")
 metadata/_custom_type_script = "uid://2pcwgw0gbxsp"

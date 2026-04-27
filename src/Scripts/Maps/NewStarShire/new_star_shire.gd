@@ -75,6 +75,7 @@ func _ready() -> void:
 	#hud.open_tower_map_button.show()
 
 	await get_tree().process_frame
+	PlayerHudSignalBus.update_map_name_label.emit(map_name)
 	PlayerHudSignalBus.update_player_health.emit()
 	PlayerStats.player_stats["Current MP"] = PlayerStats.player_stats["Max MP"] + PlayerStats.get_current_sword().max_mp_bonus + PlayerStats.get_total_gem_bonus("Max MP Bonus")
 	PlayerHudSignalBus.update_player_mp.emit()
@@ -152,10 +153,10 @@ func _on_tower_area_body_entered(body: Node2D) -> void:
 
 func show_ap_notice() -> void:
 	if PlayerStats.player_stats["Ability Points"] >= 1 and PlayerStats.player_stats["Class"] == "Junior Hunter":
-		SignalBus.show_class_notice.emit()
+		PlayerHudSignalBus.show_class_notice.emit()
 		ap_notice.show()
 	else:
-		SignalBus.show_class_notice.emit()
+		PlayerHudSignalBus.show_class_notice.emit()
 		ap_notice.hide()
 
 func _on_tower_area_body_exited(body: Node2D) -> void:

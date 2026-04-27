@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bhdmpf736ro3j"]
 
-[ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="1_fwgln"]
 [ext_resource type="Script" uid="uid://c1lvvopcu1nip" path="res://src/Scripts/Tower/boss_missing_page.gd" id="1_q7qny"]
+[ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="2_q7qny"]
 
 [sub_resource type="Animation" id="Animation_q7qny"]
 resource_name = "FadeIn"
@@ -100,8 +100,8 @@ offset_right = 294.0
 offset_bottom = 52.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("1_fwgln")
-theme_override_font_sizes/font_size = 24
+theme_override_fonts/font = ExtResource("2_q7qny")
+theme_override_font_sizes/font_size = 45
 text = "There should be a boss fight here - right about now, but
 looks like the dev hasn't gotten around to programming it.
 

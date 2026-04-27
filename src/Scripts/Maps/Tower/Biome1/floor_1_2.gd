@@ -52,6 +52,7 @@ func _ready() -> void:
 		SignalBus.start_enemy_spawn.emit()
 		PlayerHudSignalBus.start_stop_watch.emit()
 	
+	PlayerHudSignalBus.update_map_name_label.emit(map_name)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	super(delta)

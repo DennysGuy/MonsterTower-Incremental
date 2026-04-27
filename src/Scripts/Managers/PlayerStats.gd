@@ -43,7 +43,7 @@ const KNOCKBACK_FORCE : int = 300
 	"Overlapping Hits" : 1.0,
 	"Bag": 1,
 	"Ore Bag":2,
-	"Max Bank Slots": 4,
+	"Max Bank Slots": 8,
 	"Max Bag Stack": 6,
 	"Max Ore Bag Stack": 4,
 	"Max Bank Stack":15,

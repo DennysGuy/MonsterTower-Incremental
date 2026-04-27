@@ -10,7 +10,7 @@ node_name = "Tier 1 Gem Drop Rate Up"
 icon = ExtResource("1_gcanf")
 description = "Increases Chance for Gems to Drop from a Tier 1 Gem Chest by 5% per level."
 max_level = 3
-currency_required = 1500
+currency_required = 2000
 materials_required = Array[Dictionary]([{
 ExtResource("2_r5kpb"): 5
 }])

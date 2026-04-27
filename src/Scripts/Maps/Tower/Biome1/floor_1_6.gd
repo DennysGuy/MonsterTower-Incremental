@@ -56,6 +56,10 @@ func _ready() -> void:
 	
 	if tower_entrance_data.hunt_challenge_completed:
 		destroy_door_locks()
+	
+	await get_tree().process_frame
+	
+	PlayerHudSignalBus.update_map_name_label.emit(map_name)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -121,6 +125,7 @@ func start_challenge() -> void:
 	camera.player = player
 	await get_tree().create_timer(1.0).timeout
 	ExpeditionTimer.set_time_for_door_challenge(120)
+	PlayerHudSignalBus.show_stop_watch.emit()
 	PlayerHudSignalBus.load_timer_label.emit()
 	PlayerHudSignalBus.issue_big_notification.emit("Ready?!")
 	await get_tree().create_timer(2.0).timeout
@@ -130,6 +135,7 @@ func start_challenge() -> void:
 	ExpeditionTimer.start_hunt_timer()
 	await get_tree().create_timer(2.0).timeout
 	PlayerHudSignalBus.hide_big_notification.emit()
+	
 
 func populate_current_order_list(color_name : String) -> void:
 	current_set_order.append(color_name)

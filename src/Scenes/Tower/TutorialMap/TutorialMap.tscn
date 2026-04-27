@@ -400,12 +400,11 @@ size = Vector2(388, 295)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cqx2w"]
 size = Vector2(20, 362)
 
-[node name="TutorialMap" type="Node2D" unique_id=1194992242 node_paths=PackedStringArray("camera", "hud")]
+[node name="TutorialMap" type="Node2D" unique_id=1194992242 node_paths=PackedStringArray("camera")]
 script = ExtResource("1_tymde")
 map_name = "Billy's Bootcamp "
 map_theme_song = ExtResource("2_ys33i")
 camera = NodePath("PlayerCamera")
-hud = NodePath("")
 
 [node name="ColorRect3" type="ColorRect" parent="." unique_id=724942982]
 offset_left = -10.0

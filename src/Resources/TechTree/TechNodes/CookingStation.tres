@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="TechNodeStats" load_steps=3 format=3 uid="uid://bb7206hq4ygo3"]
+[gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://bb7206hq4ygo3"]
 
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_bm6gd"]
 [ext_resource type="Texture2D" uid="uid://bjjrxksrodh7w" path="res://Assets/NodeGraphics/NodeGraphicsV2/CookingStation_V2.png" id="1_farkg"]
@@ -9,7 +9,7 @@ node_name = "Cooking Station"
 icon = ExtResource("1_farkg")
 description = "[color=red]Cook fancy dishes, make profit, or spend on upgrades![/color]
 [color=green]Unveils Refinery Node![/color]"
-currency_required = 300
+currency_required = 1200
 node_type = 1
 stat_name = "Cooking Station"
 prereqs = Array[String](["Banking:1"])

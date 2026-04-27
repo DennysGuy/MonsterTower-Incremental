@@ -63,6 +63,7 @@ func _ready() -> void:
 	LevelingManager.play_level_up_sfx.connect(play_level_up_sfx)
 	#hud.map_name_label.text = map_name
 	
+	
 	load_floor_data()
 	
 	if player_spawn:
@@ -87,17 +88,8 @@ func _ready() -> void:
 			camera.player = player
 		
 		if map_type == MAP_TYPE.CHECKPOINT_FLOOR:	
-			
+			GameManager.can_open_bag = true
 			if !GameManager.hunt_challenge_selected:
-				if tower_entrance_data.hunt_challenge_completed:
-					#SignalBus.unlock_next_room.emit()
-					PlayerHudSignalBus.update_kill_quota_text.emit("", tower_entrance_data.hunt_challenge_completed, tower_entrance_data.hunt_challenge_unlocked)
-				else:
-					PlayerHudSignalBus.update_kill_quota_text.emit("", false, tower_entrance_data.hunt_challenge_unlocked)
-					if tower_entrance_data.is_challenge_floor() and tower_entrance_data.hunt_challenge_unlocked and !tower_entrance_data.hunt_challenge_completed:
-						PlayerHudSignalBus.show_hunt_challenge_button.emit()
-					else:
-						SignalBus.hide_hunt_challenge_button.emit()
 				
 				if tower_entrance_data.is_expedition_floor() and tower_entrance_data.unlock_recipe and !tower_entrance_data.hunt_challenge_completed:
 					issue_repair_elevator_notice()
@@ -172,7 +164,7 @@ func spawn_player() -> void:
 		PlayerStats.player_stats["Current MP"] = total_mp
 		player.health = total_health
 		GameManager.resupply_character = false
-		PlayerHudSignalBus.update_player_health.emit()
+		#PlayerHudSignalBus.update_player_health.emit()
 		
 	player.health = total_health
 	print("THIS IS PLAYER HEALTH" + str(player.health))
@@ -198,7 +190,7 @@ func go_to_starshire() -> void:
 
 	if tree != null:
 		if player.is_dead:
-			tree.change_scene_to_file("res://src/Scenes/NewStarshire/NewStarShire.tscn")
+			tree.change_scene_to_file("uid://cq0un0c22235d")
 		else:
 			tree.change_scene_to_file("res://src/Scenes/UI/ExpeditionResultsScreen.tscn")
 
@@ -327,6 +319,8 @@ func load_floor_data() -> void:
 		if tower_entrance_data.floor_number > PlayerStats.player_stats["Highest Floor"]:
 			PlayerStats.player_stats["Highest Floor"] = tower_entrance_data.floor_number
 			SaveManager.save_player_stats()
+		if exit_elevator:
+			exit_elevator.current_room_data = tower_entrance_data
 
 func play_sfx(audio_stream : AudioStream) -> void:
 	if sfx_player:
@@ -379,6 +373,7 @@ func issue_challenge_objective_notice() -> void:
 	SignalBus.hide_big_notification.emit()
 	#hud.animation_player.play("FadeInOut")
 	await get_tree().create_timer(0.5).timeout
+	PlayerHudSignalBus.hide_big_notification.emit()
 	camera.position = player.position
 	camera.player = player
 	

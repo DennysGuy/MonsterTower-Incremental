@@ -2,6 +2,8 @@ class_name ExpeditionTimerLocal extends Control
 
 @onready var timer_label: RichTextLabel = $TimerLabel
 @onready var stop_watch_texture: TextureRect = $StopWatchTexture
+const COUNTDOWN_BEEP = preload("uid://c6caiqmkt2lt0")
+@onready var sfx_player: SFXPlayer = $SfxPlayer
 
 func _ready() -> void:
 	PlayerHudSignalBus.show_stop_watch.connect(show_stop_watch)
@@ -17,6 +19,7 @@ func _physics_process(delta: float) -> void:
 func update_timer_label() -> void:
 	if ExpeditionTimer.seconds <= 10:
 		timer_label.text = "[color=red][font_size=46]%s[/font_size][/color]" % [int(ExpeditionTimer.seconds)]
+	
 		#we'll add play a sfx here and probably any tweens to add effects "pulse" or whatever
 	else:
 		timer_label.text = "[font_size=46]%s[/font_size]" % [int(ExpeditionTimer.seconds)]

@@ -708,25 +708,29 @@ mouse_filter = 2
 [node name="StartHuntChallengeButton" type="Button" parent="PlayerHUD" unique_id=183096058]
 visible = false
 layout_mode = 0
-offset_left = 456.0
-offset_top = 4.0
-offset_right = 536.0
-offset_bottom = 36.0
+offset_left = 1690.0
+offset_top = 65.0
+offset_right = 1890.0
+offset_bottom = 137.0
 mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0.9411765, 0.15686275, 0, 1)
 theme_override_fonts/font = ExtResource("9_jyqen")
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 32
 text = "Start 
 Hunt Challenge"
 
 [node name="NoticeIcon" type="TextureRect" parent="PlayerHUD/StartHuntChallengeButton" unique_id=1372142193]
-layout_mode = 0
-offset_left = 79.0
-offset_top = -2.0
-offset_right = 111.0
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -67.0
+offset_top = -31.0
+offset_right = -6.0
 offset_bottom = 30.0
+grow_vertical = 2
 texture = ExtResource("12_fw5mt")
-stretch_mode = 2
+expand_mode = 1
 
 [node name="OpenTowerMapButton" type="Button" parent="PlayerHUD" unique_id=1987809708]
 visible = false
@@ -839,10 +843,10 @@ mouse_filter = 2
 [node name="AdvanceClassNotice" type="RichTextLabel" parent="PlayerHUD" unique_id=848029312]
 visible = false
 layout_mode = 0
-offset_left = 753.0
-offset_top = 906.0
-offset_right = 1157.0
-offset_bottom = 940.0
+offset_left = 764.0
+offset_top = 885.0
+offset_right = 1168.0
+offset_bottom = 919.0
 theme_override_constants/outline_size = 5
 theme_override_fonts/normal_font = ExtResource("5_nt012")
 theme_override_font_sizes/normal_font_size = 24
@@ -888,7 +892,7 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 175.0
-offset_bottom = 175.00122
+offset_bottom = 175.00098
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2

@@ -13,6 +13,7 @@ func _ready() -> void:
 	SignalBus.spawn_tech_tree.connect(add_tech_tree_to_scene)
 	#SignalBus.hide_tech_tree_canvas_layer.connect(hide_tech_tree_canvas_layer)
 	GameManager.player_can_move = true
+	PlayerHudSignalBus.update_map_name_label.emit(map_name)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
