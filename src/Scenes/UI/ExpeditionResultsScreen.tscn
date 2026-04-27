@@ -36,10 +36,10 @@ tracks/0/path = NodePath("TopRect:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.6333333, 0.79333335),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.6333333, 0.79333335),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(0, -360), Vector2(0, -180)]
+"values": [Vector2(0, -1080), Vector2(0, -360), Vector2(0, -180)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -48,10 +48,10 @@ tracks/1/path = NodePath("BotRect:position")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.6333333, 0.79333335),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.6333333, 0.79333335),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(0, 360), Vector2(0, 180)]
+"values": [Vector2(0, 1080), Vector2(0, 360), Vector2(0, 180)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -104,10 +104,10 @@ tracks/0/path = NodePath("TopRect:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.6333333, 0.79333335),
+"times": PackedFloat32Array(0.7, 0.8333333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, -360), Vector2(0, -180)]
+"values": [Vector2(0, -1080), Vector2(0, -360)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -116,10 +116,10 @@ tracks/1/path = NodePath("BotRect:position")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.6333333, 0.79333335),
+"times": PackedFloat32Array(0.7, 0.8333333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 360), Vector2(0, 180)]
+"values": [Vector2(0, 1080), Vector2(0, 360)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -164,7 +164,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.19999999),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, -180), Vector2(0, -360)]
+"values": [Vector2(0, -180), Vector2(0, -1080)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -176,7 +176,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.19999999),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 180), Vector2(0, 360)]
+"values": [Vector2(0, 180), Vector2(0, 1080)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -219,6 +219,30 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(0, 360)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BotRect:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 1080)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TopRect:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -1080)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ra32m"]
 _data = {
@@ -247,7 +271,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_qyln5")
-stretch_mode = 2
 
 [node name="ResultsPanel" type="TextureRect" parent="." unique_id=1103109597]
 layout_mode = 1
@@ -261,9 +284,12 @@ grow_vertical = 2
 texture = ExtResource("4_xwhdp")
 
 [node name="BagBG" type="TextureRect" parent="ResultsPanel" unique_id=708960655]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("5_fhkmb")
 
 [node name="TitlePanel" type="Panel" parent="ResultsPanel" unique_id=1608003080]
@@ -273,10 +299,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 221.0
-offset_top = -136.0003
-offset_right = 291.0
-offset_bottom = -113.000305
+offset_left = -887.0
+offset_top = -316.5
+offset_right = -682.0
+offset_bottom = -273.5
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -296,7 +322,7 @@ grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 7
 theme_override_fonts/font = ExtResource("5_xwhdp")
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 40
 text = "Results"
 
 [node name="GoalPanel" type="Panel" parent="ResultsPanel" unique_id=1080228483]
@@ -306,10 +332,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -302.0
-offset_top = -88.000305
-offset_right = -96.0
-offset_bottom = -62.000275
+offset_left = -893.0
+offset_top = -233.5
+offset_right = -501.0
+offset_bottom = -178.5
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -320,16 +346,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -93.0
-offset_top = -9.000015
-offset_right = 95.0
-offset_bottom = 6.9999847
+offset_left = -183.0
+offset_top = -14.5
+offset_right = 179.0
+offset_bottom = 17.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 7
 theme_override_fonts/font = ExtResource("5_xwhdp")
-theme_override_font_sizes/font_size = 15
+theme_override_font_sizes/font_size = 32
 text = "Last Floor"
 
 [node name="FloorReached" type="Label" parent="ResultsPanel/GoalPanel" unique_id=177287890]
@@ -339,16 +365,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -94.0
-offset_top = -35.000015
-offset_right = -29.0
-offset_bottom = -15.000015
+offset_left = -195.0
+offset_top = -60.5
+offset_right = -65.0
+offset_bottom = -28.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("5_xwhdp")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 32
 text = "Last Floor"
 
 [node name="InventoryLabel" type="Label" parent="ResultsPanel" unique_id=1192868822]
@@ -358,36 +384,35 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -61.0
-offset_top = -93.000305
-offset_right = 3.0
-offset_bottom = -77.000305
+offset_left = -177.0
+offset_top = -206.5
+offset_right = -20.0
+offset_bottom = -166.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("5_xwhdp")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 40
 text = "Drops"
 
 [node name="TransferingTabLabel" type="Label" parent="ResultsPanel" unique_id=1092338927]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -38.0
-offset_top = -119.5
-offset_right = 215.0
-offset_bottom = -103.5
+offset_left = -110.0
+offset_top = 243.5
+offset_right = 143.0
+offset_bottom = 259.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("5_xwhdp")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 28
 text = "Transfering Novelty Items..."
 horizontal_alignment = 1
 
@@ -396,10 +421,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -58.0
-offset_top = 123.499695
-offset_right = 72.0
-offset_bottom = 261.4997
+offset_left = -165.0
+offset_top = 400.0
+offset_right = 201.0
+offset_bottom = 746.0
 grow_horizontal = 2
 columns = 4
 
@@ -410,16 +435,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 112.0
-offset_top = -94.000305
-offset_right = 143.0
-offset_bottom = -78.000305
+offset_left = 345.0
+offset_top = -201.5
+offset_right = 423.0
+offset_bottom = -161.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("5_xwhdp")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 40
 text = "Bank"
 
 [node name="BankNotice" type="Label" parent="ResultsPanel" unique_id=1842469050]
@@ -447,34 +472,35 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 115.0
-offset_top = 123.499695
-offset_right = 245.0
-offset_bottom = 262.4997
+offset_left = 370.0
+offset_top = 409.0
+offset_right = 704.0
+offset_bottom = 728.0
 grow_horizontal = 2
 columns = 4
 
 [node name="TipsAndTricks" type="Label" parent="ResultsPanel" unique_id=586831154]
 layout_mode = 0
-offset_left = 29.0
-offset_top = 166.0
-offset_right = 216.0
-offset_bottom = 295.0
+offset_left = 610.0
+offset_top = 903.0
+offset_right = 1737.0
+offset_bottom = 942.0
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("5_xwhdp")
+theme_override_font_sizes/font_size = 38
 text = "Can't reach a ledge? Upgrade your jump!"
 horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="TipsAndTricks2" type="Label" parent="ResultsPanel" unique_id=894760392]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 16.0
-offset_right = 628.0
-offset_bottom = 40.0
+offset_left = 439.0
+offset_top = 82.0
+offset_right = 1467.0
+offset_bottom = 114.0
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("5_xwhdp")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 32
 text = "Head Back to Town or Indulge in more Spoils from the Tower?"
 horizontal_alignment = 1
 autowrap_mode = 3
@@ -486,16 +512,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -300.0
-offset_top = -138.5
-offset_right = -243.0
-offset_bottom = -118.5
+offset_left = -893.0
+offset_top = -378.5
+offset_right = -790.0
+offset_bottom = -343.5
 grow_horizontal = 2
 grow_vertical = 2
 mouse_default_cursor_shape = 2
 theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("7_xwhdp")
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 24
 disabled = true
 text = "To Town"
 
@@ -506,16 +532,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -158.0
-offset_top = -138.5
-offset_right = -99.0
-offset_bottom = -118.5
+offset_left = -598.0
+offset_top = -378.5
+offset_right = -487.0
+offset_bottom = -347.5
 grow_horizontal = 2
 grow_vertical = 2
 mouse_default_cursor_shape = 2
 theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("7_xwhdp")
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 24
 disabled = true
 text = "Go Again!"
 
@@ -526,20 +552,22 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -66.0
-offset_top = -110.0
-offset_right = 81.0
-offset_bottom = -89.0
+offset_left = -196.0
+offset_top = -827.0
+offset_right = 251.0
+offset_bottom = -771.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = -1
 
 [node name="InventoryTab" type="TextureButton" parent="ResultsPanel/HBoxContainer" unique_id=1041581857]
+custom_minimum_size = Vector2(98, 40)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("7_mhdqp")
 texture_pressed = ExtResource("8_e01xl")
 texture_hover = ExtResource("9_d3ada")
+stretch_mode = 0
 
 [node name="Label" type="Label" parent="ResultsPanel/HBoxContainer/InventoryTab" unique_id=1138786018]
 layout_mode = 1
@@ -556,16 +584,19 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("5_xwhdp")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 20
 text = "Drops"
 horizontal_alignment = 1
 
 [node name="OreTab" type="TextureButton" parent="ResultsPanel/HBoxContainer" unique_id=1381135393]
+visible = false
+custom_minimum_size = Vector2(98, 40)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("10_p46cn")
 texture_pressed = ExtResource("11_fhkmb")
 texture_hover = ExtResource("12_in2sr")
+stretch_mode = 0
 
 [node name="Label" type="Label" parent="ResultsPanel/HBoxContainer/OreTab" unique_id=1379825789]
 layout_mode = 1
@@ -582,16 +613,18 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("5_xwhdp")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 20
 text = "Ore"
 
 [node name="GemStoneTab" type="TextureButton" parent="ResultsPanel/HBoxContainer" unique_id=742855887]
 visible = false
+custom_minimum_size = Vector2(98, 40)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("13_oeg2r")
 texture_pressed = ExtResource("14_6ea7d")
 texture_hover = ExtResource("15_5wyv7")
+stretch_mode = 0
 
 [node name="Label" type="Label" parent="ResultsPanel/HBoxContainer/GemStoneTab" unique_id=2064547309]
 layout_mode = 1
@@ -608,15 +641,18 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("5_xwhdp")
-theme_override_font_sizes/font_size = 5
+theme_override_font_sizes/font_size = 16
 text = "Gem Stones"
 
 [node name="UseTab" type="TextureButton" parent="ResultsPanel/HBoxContainer" unique_id=1052490956]
+visible = false
+custom_minimum_size = Vector2(98, 40)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("16_ccap8")
 texture_pressed = ExtResource("17_gbd86")
 texture_hover = ExtResource("18_58vms")
+stretch_mode = 0
 
 [node name="Label" type="Label" parent="ResultsPanel/HBoxContainer/UseTab" unique_id=648701713]
 layout_mode = 1
@@ -633,45 +669,45 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("5_xwhdp")
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 20
 text = "Use"
 
 [node name="ToTownBar" type="ProgressBar" parent="ResultsPanel" unique_id=1212166312]
 layout_mode = 0
-offset_left = 81.0
-offset_top = 52.0
-offset_right = 137.0
-offset_bottom = 71.0
+offset_left = 185.0
+offset_top = 172.0
+offset_right = 308.0
+offset_bottom = 206.0
 show_percentage = false
 
 [node name="ToTownInstructions" type="Label" parent="ResultsPanel" unique_id=995193442]
 layout_mode = 0
-offset_left = 86.0
-offset_top = 54.0
-offset_right = 145.0
-offset_bottom = 70.0
+offset_left = 197.0
+offset_top = 172.0
+offset_right = 291.0
+offset_bottom = 204.0
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("5_xwhdp")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 32
 text = "Hold 'Q'"
 
 [node name="ToTowerBar" type="ProgressBar" parent="ResultsPanel" unique_id=1545743662]
 layout_mode = 0
-offset_left = 229.0
-offset_top = 53.0
-offset_right = 282.0
-offset_bottom = 72.0
+offset_left = 475.0
+offset_top = 171.0
+offset_right = 582.0
+offset_bottom = 204.0
 show_percentage = false
 
 [node name="ToTowerInstructions" type="Label" parent="ResultsPanel" unique_id=1192635721]
 layout_mode = 0
-offset_left = 232.0
-offset_top = 54.0
-offset_right = 297.0
-offset_bottom = 70.0
+offset_left = 484.0
+offset_top = 170.0
+offset_right = 578.0
+offset_bottom = 202.0
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("5_xwhdp")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 32
 text = "Hold 'E'"
 
 [node name="TopRect" type="ColorRect" parent="." unique_id=785934542]
@@ -679,8 +715,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -360.0
-offset_bottom = -360.0
+offset_top = -1080.0
+offset_bottom = -1080.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
@@ -690,8 +726,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 360.0
-offset_bottom = 360.00037
+offset_top = 1080.0
+offset_bottom = 1079.9995
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)

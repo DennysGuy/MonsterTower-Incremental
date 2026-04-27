@@ -1,8 +1,9 @@
 class_name MainMenu extends Control
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+@onready var audio_stream_player: AudioStreamPlayer = $Music
 @onready var continue_button : Button = $Continue
+@onready var ambience: AudioStreamPlayer = $Ambience
 
 @export var next_scene_path : String
 
@@ -13,6 +14,7 @@ func _ready() -> void:
 		continue_button.hide()
 	
 	audio_stream_player.play()
+	ambience.play()
 	animation_player.play("FadeIn")
 	
 	
@@ -26,7 +28,7 @@ func go_to_starspire() -> void:
 	SaveManager.load_game()
 	animation_player.play("FadeOut")
 	await get_tree().create_timer(1.0).timeout
-	get_tree().change_scene_to_file("res://src/Scenes/NewStarshire/NewStarShire.tscn") 
+	get_tree().change_scene_to_file("res://src/Scenes/NewStarshire/NewNewStarshireTest.tscn") 
 	
 func _on_button_button_up() -> void:
 	SaveManager.create_new_save()

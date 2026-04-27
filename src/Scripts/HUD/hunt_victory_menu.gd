@@ -19,7 +19,7 @@ func _process(delta: float) -> void:
 func go_to_starshire() -> void:
 	GameManager.spawn_location = 0
 	GameManager.resupply_character = true
-	get_tree().change_scene_to_file("res://src/Scenes/NewStarshire/NewStarShire.tscn")
+	get_tree().change_scene_to_file("uid://cq0un0c22235d")
 	
 func _on_to_town_button_up() -> void:
 	animation_player.play("CloseIn_Town")

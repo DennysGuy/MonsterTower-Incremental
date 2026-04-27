@@ -4,7 +4,7 @@ class_name GemStoneChest extends Node2D
 @onready var graphic: Sprite2D = $Graphic
 @onready var enemy_health_bar: EnemyHealthBar = $EnemyHealthBar
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var tag: Label = $NameTag/Tag
+@onready var tag: Label = $NameTag/Bg/Tag
 @onready var statemachine: StateMachine = $Statemachine
 
 @export var no_drop_rate : float = 50

@@ -55,17 +55,15 @@ func _ready() -> void:
 	SignalBus.spawn_class_selection_menu.connect(spawn_dojo_menu)
 	SignalBus.spawn_tower_map.connect(spawn_tower_entrance_map)
 	SignalBus.play_warrior_unlock_animation.connect(warrior_class_unlocked_notice)
-	TechTreeManager.unlock_station.connect(unlock_station)
 	SignalBus.spawn_warrior_tech_tree.connect(warrior_class_unlocked_notice)
+	TechTreeManager.unlock_station.connect(unlock_station)
+	
 	#SignalBus.show_ap_notice.connect(show_ap_notice)
-
 
 	TechTreeManager.update_currency_label.emit()
 	InventoryManager.show_bank_button.emit()
-	#CookingManager.can_craft_bar.emit()
-	hud.animation_player.play("CloseIn")
-	
-	hud.currency_label.show()
+	CookingManager.can_craft_bar.emit()
+	#hud.animation_player.play("CloseIn")
 	
 	if PlayerStats.player_stats["Equipped Sword"] < PlayerStats.MAX_SWORD_COUNT-1 and PlayerStats.can_craft_next_sword():
 		SignalBus.show_can_craft_sword.emit()
@@ -73,14 +71,14 @@ func _ready() -> void:
 		#new_sword_unlock_notice()
 	else:
 		SignalBus.hide_can_craft_sword.emit()
-	print("BELCHUNY")
 	#show_ap_notice()
-	hud.open_tower_map_button.show()
+	#hud.open_tower_map_button.show()
 
 	await get_tree().process_frame
-	SignalBus.update_player_health.emit(player.health)
+	PlayerHudSignalBus.update_map_name_label.emit(map_name)
+	PlayerHudSignalBus.update_player_health.emit()
 	PlayerStats.player_stats["Current MP"] = PlayerStats.player_stats["Max MP"] + PlayerStats.get_current_sword().max_mp_bonus + PlayerStats.get_total_gem_bonus("Max MP Bonus")
-	SignalBus.update_player_mp.emit()
+	PlayerHudSignalBus.update_player_mp.emit()
 	SaveManager.save_player_stats()
 	if PlayerStats.player_stats["Level"] == 2 and PlayerStats.player_stats["Ability Points"] == 1:
 		ability_station_notice()
@@ -89,7 +87,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	super(delta)
 	if Input.is_action_just_pressed("interact") and player_in_tower_range and GameManager.player_can_move and PlayerStats.facilities_unlocked["Hunter License"]:
-
 		spawn_tower_entrance_map()
 
 	if Input.is_action_just_pressed("interact") and player_in_market_range and GameManager.player_can_move:
@@ -129,10 +126,11 @@ func _process(delta: float) -> void:
 		spawn_upgrade_menu()
 
 func add_tech_tree_to_scene() -> void:
-	canvas_layer.show()
+	GameManager.can_open_tower_map = false
+	GameManager.can_open_bag = false
+	GameManager.player_can_move = false
 	player.velocity = Vector2.ZERO
-	var tech_tree : TechTree = preload("uid://b7n3fwd3y85wp").instantiate()
-	sub_viewport.add_child(tech_tree)
+	PlayerHudSignalBus.spawn_tech_tree.emit()
 
 func hide_tech_tree_canvas_layer() -> void:
 	canvas_layer.hide()
@@ -155,10 +153,10 @@ func _on_tower_area_body_entered(body: Node2D) -> void:
 
 func show_ap_notice() -> void:
 	if PlayerStats.player_stats["Ability Points"] >= 1 and PlayerStats.player_stats["Class"] == "Junior Hunter":
-		SignalBus.show_class_notice.emit()
+		PlayerHudSignalBus.show_class_notice.emit()
 		ap_notice.show()
 	else:
-		SignalBus.show_class_notice.emit()
+		PlayerHudSignalBus.show_class_notice.emit()
 		ap_notice.hide()
 
 func _on_tower_area_body_exited(body: Node2D) -> void:
@@ -181,16 +179,15 @@ func spawn_tower_entrance_map() -> void:
 	GameManager.can_open_bag = false
 	GameManager.player_can_move = false
 	player.velocity = Vector2.ZERO
-	canvas_layer.show()
-	var tower_entrance_map : TowerEntranceMap = preload("uid://bgurt44iah13x").instantiate()
-	control.add_child(tower_entrance_map)
+
+	PlayerHudSignalBus.spawn_tower_entrance_map.emit()
 
 func spawn_grand_market() -> void:
 	GameManager.can_open_tower_map = false
 	GameManager.can_open_bag = false
-	canvas_layer.show()
-	var market : GrandMarketMenu = preload("uid://cfuw5h0apwpq").instantiate()
-	control.add_child(market)
+	GameManager.player_can_move = false
+	player.velocity = Vector2.ZERO
+	PlayerHudSignalBus.spawn_market.emit()
 
 func spawn_cooking_menu() -> void:
 	GameManager.can_open_tower_map = false
@@ -209,40 +206,33 @@ func spawn_smelting_menu() -> void:
 func spawn_crafting_menu() -> void:
 	GameManager.can_open_tower_map = false
 	GameManager.can_open_bag = false
-	canvas_layer.show()
-	var sword_crafting_station : CraftingStationMenu = preload("uid://cc1xppx3tkq4f").instantiate()
-	control.add_child(sword_crafting_station)
+	player.velocity = Vector2.ZERO
+	PlayerHudSignalBus.spawn_sword_crafting_station.emit()
 
 func spawn_upgrade_menu() -> void:
 	GameManager.can_open_tower_map = false
 	GameManager.can_open_bag = false
-	canvas_layer.show()
-	var gem_stone_station : GemStoneStation = preload("uid://v4skqw8t11ip").instantiate()
-	control.add_child(gem_stone_station)
+	player.velocity = Vector2.ZERO
+	PlayerHudSignalBus.spawn_gem_stone_station.emit()
 
 func spawn_beginner_tree() -> void:
 	GameManager.can_open_tower_map = false
 	GameManager.can_open_bag = false
-	canvas_layer.show()
-	var beginner_ability_tree : BeginnerTechTree = preload("uid://y6ru08whvroa").instantiate()
-	sub_viewport.add_child(beginner_ability_tree)
-
+	player.velocity = Vector2.ZERO
+	PlayerHudSignalBus.spawn_beginner_tree.emit()
 
 func spawn_warrior_tech_tree() -> void:
 	GameManager.can_open_tower_map = false
 	GameManager.can_open_bag = false
 	GameManager.can_pause_game = false
-	canvas_layer.show()
-	var warrior_tech_tree : NewAbilityUpgradeMenu = preload("uid://d0r1bngbqs2ch").instantiate()
-	sub_viewport.add_child(warrior_tech_tree)
-
+	player.velocity = Vector2.ZERO
+	PlayerHudSignalBus.spawn_warrior_menu.emit()
 
 func spawn_dojo_menu() -> void:
 	GameManager.can_open_tower_map = false
 	GameManager.can_open_bag = false
-	canvas_layer.show()
-	var class_selection_menu : ClassSelectionMenu = preload("uid://b404uvbhnmjxd").instantiate()
-	control.add_child(class_selection_menu)
+	player.velocity = Vector2.ZERO
+	PlayerHudSignalBus.spawn_class_selection_menu.emit()
 	
 func _on_grand_market_area_body_entered(body: Node2D) -> void:
 	if body is Player:
@@ -293,23 +283,22 @@ func _on_crafting_station_area_body_exited(body: Node2D) -> void:
 		player_in_crafting_range = false
 		access_sword_crafting_station.hide()
 
-
 func unlock_cooking_station() -> void:
 	camera.player = null
 	player.send_to_idle_state()
-	hud.animation_player.play("FadeInOut")
+	#hud.animation_player.play("FadeInOut")
 	await get_tree().create_timer(0.5).timeout
 	sfx_player.play_sfx(UNLOCK_SHOP)
 	camera.position = cooking_range_position.position
 	await get_tree().create_timer(1.0).timeout
-	hud.animation_player.play("Flash")
+	#hud.animation_player.play("Flash")
 	await get_tree().create_timer(0.5).timeout
 	cooking_station.unlock_cooking_station()
-	SignalBus.issue_big_notification.emit("Cook exotic dishes and sell for big cash!")
+	PlayerHudSignalBus.issue_big_notification.emit("Cook exotic dishes and sell for big cash!")
 	await get_tree().create_timer(2.0).timeout
-	SignalBus.issue_big_notification.emit("Cooking Resources Drop From Monsters!")
+	PlayerHudSignalBus.issue_big_notification.emit("Cooking Resources Drop From Monsters!")
 	await get_tree().create_timer(3.0).timeout
-	SignalBus.hide_big_notification.emit()
+	PlayerHudSignalBus.hide_big_notification.emit()
 	hud.animation_player.play("FadeInOut")
 	await get_tree().create_timer(0.5).timeout
 	camera.position = player.position
@@ -319,7 +308,7 @@ func unlock_cooking_station() -> void:
 func unlock_refinery_station() -> void:
 	camera.player = null
 	player.send_to_idle_state()
-	hud.animation_player.play("FadeInOut")
+	#hud.animation_player.play("FadeInOut")
 	await get_tree().create_timer(0.5).timeout
 	sfx_player.play_sfx(UNLOCK_SHOP)
 	camera.position = refinery_position.position
@@ -327,14 +316,14 @@ func unlock_refinery_station() -> void:
 	hud.animation_player.play("Flash")
 	await get_tree().create_timer(0.5).timeout
 	refinery.unlock_refinery()
-	SignalBus.issue_big_notification.emit("Refine Raw Resources into Craftable Material!")
+	PlayerHudSignalBus.issue_big_notification.emit("Refine Raw Resources into Craftable Material!")
 	await get_tree().create_timer(2.0).timeout
-	SignalBus.issue_big_notification.emit("You have unlocked the stone pickaxe.")
+	PlayerHudSignalBus.issue_big_notification.emit("You have unlocked the stone pickaxe.")
 	await get_tree().create_timer(3.0).timeout
-	SignalBus.issue_big_notification.emit("Tin and Copper ore can now be mined in the Tower!")
+	PlayerHudSignalBus.issue_big_notification.emit("Tin and Copper ore can now be mined in the Tower!")
 	await get_tree().create_timer(3.5).timeout
-	SignalBus.hide_big_notification.emit()
-	hud.animation_player.play("FadeInOut")
+	PlayerHudSignalBus.hide_big_notification.emit()
+	#hud.animation_player.play("FadeInOut")
 	await get_tree().create_timer(0.5).timeout
 	camera.position = player.position
 	camera.player = player
@@ -357,14 +346,14 @@ func new_sword_unlock_notice() -> void:
 	GameManager.player_can_move = false
 	camera.player = null
 	player.send_to_idle_state()
-	hud.animation_player.play("FadeInOut")
+	#hud.animation_player.play("FadeInOut")
 	await get_tree().create_timer(0.5).timeout
 	smithing_station.notify_can_craft()
 	camera.position = sword_crafting_station_position.position
-	SignalBus.issue_big_notification.emit("A New Sword Can Be Unlocked!")
+	PlayerHudSignalBus.issue_big_notification.emit("A New Sword Can Be Unlocked!")
 	await get_tree().create_timer(3.5).timeout
-	SignalBus.hide_big_notification.emit()
-	hud.animation_player.play("FadeInOut")
+	PlayerHudSignalBus.hide_big_notification.emit()
+	#hud.animation_player.play("FadeInOut")
 	await get_tree().create_timer(0.5).timeout
 	camera.position = player.position
 	camera.player = player
@@ -375,12 +364,12 @@ func warrior_class_unlocked_notice() -> void:
 	player.send_to_idle_state()
 	MusicPlayer.stop_player()
 	sfx_player.play_sfx(UNLOCK_SHOP)
-	hud.animation_player.play("Flash")
+	PlayerHudSignalBus.flash_screen.emit()
 	play_sfx(CLASS_UP_FANFARE)
-	SignalBus.flash_screen.emit()
+	PlayerHudSignalBus.flash_screen.emit()
 	await get_tree().create_timer(1.5).timeout
 	spawn_warrior_tech_tree()
-	SignalBus.hide_big_notification.emit()
+	PlayerHudSignalBus.hide_big_notification.emit()
 	GameManager.player_can_move = true
 	await get_tree().create_timer(8.5).timeout
 	MusicPlayer.play_song(map_theme_song)
@@ -394,12 +383,12 @@ func gem_station_unlock_notice() -> void:
 	camera.position = sword_crafting_station_position.position
 	
 	SignalBus.show_gem_station_arrow.emit()
-	SignalBus.issue_big_notification.emit("Your weapon can now be enhanced with Gem Stones.")
+	PlayerHudSignalBus.issue_big_notification.emit("Your weapon can now be enhanced with Gem Stones.")
 	await get_tree().create_timer(2.0).timeout
-	SignalBus.issue_big_notification.emit("Access the Gem Stone station to mount gems onto your weapon!")
+	PlayerHudSignalBus.issue_big_notification.emit("Access the Gem Stone station to mount gems onto your weapon!")
 	await get_tree().create_timer(3.5).timeout
-	SignalBus.hide_big_notification.emit()
-	hud.animation_player.play("FadeInOut")
+	PlayerHudSignalBus.hide_big_notification.emit()
+	#hud.animation_player.play("FadeInOut")
 	await get_tree().create_timer(0.5).timeout
 	camera.position = player.position
 	camera.player = player
@@ -412,10 +401,10 @@ func ability_station_notice() -> void:
 	await get_tree().create_timer(0.5).timeout
 	camera.position = dojo_position.position
 	
-	SignalBus.issue_big_notification.emit("Spend AP acquired from leveling up\n At the Class Advancement Center!")
+	PlayerHudSignalBus.issue_big_notification.emit("Spend AP acquired from leveling up\n At the Class Advancement Center!")
 	await get_tree().create_timer(3.0).timeout
-	SignalBus.hide_big_notification.emit()
-	hud.animation_player.play("FadeInOut")
+	PlayerHudSignalBus.hide_big_notification.emit()
+	#hud.animation_player.play("FadeInOut")
 	await get_tree().create_timer(0.5).timeout
 	camera.position = player.position
 	camera.player = player
@@ -445,7 +434,6 @@ func _on_gem_stone_station_area_body_exited(body: Node2D) -> void:
 	if body is Player:
 		player_in_upgrade_station_range = false
 		enter_upgrade_station_notice.hide()
-
 
 func sell_all_items(inventory_name : String) -> Array:
 	var inventory : Array = InventoryManager.inventories[inventory_name]
@@ -484,6 +472,3 @@ func sell_novelty_items() -> void:
 		notification_label.position = grand_market_area.position
 		add_child(notification_label)
 		sfx_player.play_sfx(NOVELTY_ITEMS_SALE)
-
-
-	

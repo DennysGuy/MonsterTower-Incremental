@@ -7,7 +7,7 @@ var in_check_point_area : bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super()
-	hud.animation_player.play("CloseIn")
+	#hud.animation_player.play("CloseIn")
 	#checkpoint_campfire.play("default")
 	SignalBus.start_enemy_spawn.emit()
 	SignalBus.spawn_enemies.emit()
@@ -25,16 +25,20 @@ func _ready() -> void:
 		spawn_mp_vials()
 		
 	await get_tree().process_frame
-	
-	if monster_spawn_node:
-		if GameManager.hunt_challenge_selected:
-			hud.animation_player.play("StartHuntChallnge")
-			SignalBus.update_monsters_left.emit("Defeat all Monsters to win!",false,false)
-		else:
-			SignalBus.update_monsters_left.emit("Campfires Discovered: %s/%s" % [tower_entrance_data.camp_fires_reached, tower_entrance_data.total_camp_fires],false)
-	SignalBus.update_player_health.emit(player.health)
-	SignalBus.update_player_mp.emit()
+	PlayerHudSignalBus.show_stop_watch.emit()
 
+	if GameManager.hunt_challenge_selected:
+		hud.animation_player.play("StartHuntChallnge")
+		SignalBus.update_monsters_left.emit("Defeat all Monsters to win!",false,false)
+	else:
+		SignalBus.update_monsters_left.emit("Campfires Discovered: %s/%s" % [tower_entrance_data.camp_fires_reached, tower_entrance_data.total_camp_fires],false)
+		PlayerHudSignalBus.start_stop_watch.emit()
+	
+	PlayerHudSignalBus.update_map_name_label.emit(map_name)
+	SignalBus.update_banner_info.emit(tower_entrance_data)
+	PlayerHudSignalBus.update_player_health.emit()
+	PlayerHudSignalBus.update_player_mp.emit()
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	super(delta)

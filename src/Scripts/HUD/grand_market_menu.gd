@@ -40,6 +40,7 @@ var selling_novelties : bool = false
 
 var selected_item : Item
 var selected_inventory : String
+var stored_slot_index : int
 
 @onready var sell_tab_button: Button = $SellTabButton
 @onready var sell_bank_button: Button = $SellBankButton
@@ -55,6 +56,7 @@ const GRAND_MARKET_MENU_USE_BG = preload("uid://chxbefqvlxayh")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	InventoryManager.populate_market_menu.connect(populate_details_panel)
+	InventoryManager.reset_stored_slot_index.connect(reset_stored_slot_index)
 	GameManager.can_pause_game = false
 	init_market()
 
@@ -66,7 +68,7 @@ func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("close_menu"):
 		close_out()
 
-func populate_details_panel(item : Item, slot_location : String) -> void:
+func populate_details_panel(item : Item, slot_location : String, slot_index : int) -> void:
 	if item:
 		selected_inventory = slot_location
 		selected_item = item
@@ -74,7 +76,7 @@ func populate_details_panel(item : Item, slot_location : String) -> void:
 		item_title.text = selected_item.item_name
 		description.text = item.description
 		value.text = "Value: %s" % [item.sell_value]
-
+		stored_slot_index = slot_index
 		match item.item_type:
 			item.ITEM_TYPE.COOKING:
 				indicator.texture = ITEM_SLOT_COOKING
@@ -88,7 +90,7 @@ func populate_details_panel(item : Item, slot_location : String) -> void:
 		description.text = item.description
 
 func _on_sell_button_button_up() -> void:
-	if InventoryManager.remove_item(selected_inventory, selected_item):
+	if InventoryManager.remove_item_from_slot(stored_slot_index, selected_inventory):
 		sfx_player.play_sfx(SELL_ITEM)
 		TechTreeManager.currency += selected_item.sell_value
 		if selected_inventory == "Bank":
@@ -99,7 +101,7 @@ func _on_sell_button_button_up() -> void:
 		SaveManager.save_tech_tree_data()		
 		currency.text = "Currency: %s" % [TechTreeManager.currency]
 		TechTreeManager.update_currency_label.emit()
-		if !InventoryManager.search_item(selected_inventory, selected_item) and !InventoryManager.search_item("Bank", selected_item):
+		if stored_slot_index == -1:
 			clear_details()
 	else:
 		clear_details()
@@ -111,6 +113,9 @@ func clear_details() -> void:
 	description.text = ""
 	value.text = "N/A"
 	indicator.texture = null
+
+func reset_stored_slot_index() -> void:
+	stored_slot_index = -1
 
 func _on_close_button_up() -> void:
 	close_out()

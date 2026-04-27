@@ -14,15 +14,18 @@ signal update_inventory_bag(inventory_name : String)
 @warning_ignore("unused_signal")
 signal update_bank_inventory
 @warning_ignore("unused_signal")
-signal populate_market_menu(item : Item, slot_locale : String)
+signal populate_market_menu(item : Item, slot_locale : String, slot_index : int)
 @warning_ignore("unused_signal")
 signal show_open_bag_notice
 @warning_ignore("unused_signal")
 signal hide_open_bag_notice
 @warning_ignore("unused_signal")
-signal populate_inventory_description(item : Item)
+signal populate_inventory_description(item : Item, slot_index : int)
 @warning_ignore("unused_signal")
 signal show_bank_button
+@warning_ignore("unused_signal")
+signal reset_stored_slot_index
+
 @export var inventories : Dictionary = {
 	"Inventory" : [], # all other items go here
 	"Ore" : [], 
@@ -87,6 +90,10 @@ func search_item(inventory_name : String, item : Item) -> bool:
 	return false
 
 func add_item(inventory_name : String, item : Item, quantity : int = 1) -> bool:
+	
+	if not item:
+		return false
+	
 	if not inventories.has(inventory_name):
 		return false
 		
@@ -132,6 +139,25 @@ func remove_item(inventory_name : String, item : Item, quantity : int = 1) -> bo
 			update_inventories(item.get_inventory_name())
 			return true
 
+	return false
+
+func remove_item_from_slot(slot_index : int, inventory_name : String, quantity : int = 1) -> bool:
+	if not inventories.has(inventory_name) or slot_index == -1:
+		return false
+	
+	var selected_inventory : Array = inventories[inventory_name]
+	var selected_slot : Dictionary = selected_inventory[slot_index]
+	if selected_slot["item"]:
+		selected_slot["quantity"] -= quantity
+		
+		if selected_slot["quantity"] <= 0:
+			selected_inventory.erase(selected_slot)
+			reset_stored_slot_index.emit()
+			check_for_notification(selected_slot["item"])
+			update_inventories(inventory_name)
+		
+		return true
+	
 	return false
 
 func remove_novelty_item(inventory_name : String, item : Item) -> bool:
@@ -198,6 +224,9 @@ func get_max_bag_stack(bag_stack : String) -> int:
 	return int(PlayerStats.player_stats[bag_stack])
 
 func check_for_notification(item : Item) -> void:
+	if not item:
+		return
+	
 	if item.is_crafting() or item.is_use():
 		SignalBus.check_for_notification.emit(GameManager.NOTIFICATION_TYPE.CRAFTING)
 	elif item.is_cooking():
@@ -283,6 +312,8 @@ func update_grid_container(grid_container : GridContainer, inventory : String, i
 			
 		if potential_item:
 			slot.item = potential_item["item"]
+			slot.slot_index = num
+			print(slot.slot_index)
 			slot.item_icon.texture = potential_item["item"].shop_icon
 			slot.show_quantity_label(potential_item["quantity"])
 			slot.set_indicator(potential_item["item"])

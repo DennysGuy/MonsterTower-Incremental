@@ -26,7 +26,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0.6333333, 0.79333335),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, -360), Vector2(0, -180)]
+"values": [Vector2(0, -1080), Vector2(0, -180)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -38,7 +38,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0.6333333, 0.79333335),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 360), Vector2(0, 180)]
+"values": [Vector2(0, 1080), Vector2(0, 180)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -94,7 +94,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0.6333333, 0.79333335),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, -360), Vector2(0, -180)]
+"values": [Vector2(0, -1080), Vector2(0, -180)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -106,7 +106,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0.6333333, 0.79333335),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 360), Vector2(0, 180)]
+"values": [Vector2(0, 1080), Vector2(0, 180)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -151,7 +151,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.19999999),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, -180), Vector2(0, -360)]
+"values": [Vector2(0, -180), Vector2(0, -1080)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -163,7 +163,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.19999999),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 180), Vector2(0, 360)]
+"values": [Vector2(0, 180), Vector2(0, 1080)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -234,7 +234,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_j2mdq")
-stretch_mode = 2
+expand_mode = 1
 
 [node name="ResultsPanel" type="TextureRect" parent="." unique_id=1103109597]
 layout_mode = 1
@@ -254,10 +254,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -151.0
-offset_top = -106.0
-offset_right = -81.0
-offset_bottom = -83.0
+offset_left = -163.0
+offset_top = -208.5
+offset_right = 161.0
+offset_bottom = -61.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -268,16 +268,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -27.5
-offset_top = -10.0
-offset_right = 25.5
-offset_bottom = 9.0
+offset_left = -48.0
+offset_top = -47.75
+offset_right = 46.0
+offset_bottom = -15.75
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 7
 theme_override_fonts/font = ExtResource("5_5awvy")
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 32
 text = "Results"
 
 [node name="ResultsLabel2" type="Label" parent="ResultsPanel/TitlePanel" unique_id=1810156141]
@@ -296,7 +296,7 @@ grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 7
 theme_override_fonts/font = ExtResource("5_5awvy")
-theme_override_font_sizes/font_size = 15
+theme_override_font_sizes/font_size = 32
 text = "Failure :("
 
 [node name="GoalPanel" type="Panel" parent="ResultsPanel" unique_id=1080228483]
@@ -306,10 +306,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -151.0
-offset_top = -62.00003
-offset_right = 147.0
-offset_bottom = -23.0
+offset_left = -273.0
+offset_top = -12.5
+offset_right = 309.0
+offset_bottom = 26.5
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -329,22 +329,8 @@ grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("5_5awvy")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 32
 text = "Floor Reached: Temp Biome - Floor 1"
-
-[node name="InventoryPanel" type="Panel" parent="ResultsPanel" unique_id=2013247508]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -151.0
-offset_top = -21.0
-offset_right = 148.0
-offset_bottom = 84.999695
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="ToTown" type="Button" parent="ResultsPanel" unique_id=337593742]
 layout_mode = 1
@@ -353,16 +339,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 24.0
-offset_top = -108.0
-offset_right = 81.0
-offset_bottom = -88.0
+offset_left = 106.0
+offset_top = -316.5
+offset_right = 240.0
+offset_bottom = -278.5
 grow_horizontal = 2
 grow_vertical = 2
 mouse_default_cursor_shape = 2
 theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("6_8quy7")
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 32
 text = "To Town"
 
 [node name="NewRun" type="Button" parent="ResultsPanel" unique_id=558607950]
@@ -372,16 +358,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 83.0
-offset_top = -108.0
-offset_right = 149.0
-offset_bottom = -88.0
+offset_left = 266.0
+offset_top = -313.5
+offset_right = 428.0
+offset_bottom = -275.5
 grow_horizontal = 2
 grow_vertical = 2
 mouse_default_cursor_shape = 2
 theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("6_8quy7")
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 32
 text = "Try Again!"
 
 [node name="TopRect" type="ColorRect" parent="." unique_id=785934542]
@@ -389,8 +375,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -360.0
-offset_bottom = -360.0
+offset_top = -1080.0
+offset_bottom = -1080.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
@@ -400,8 +386,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 360.0
-offset_bottom = 360.00037
+offset_top = 1080.0
+offset_bottom = 1080.0005
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)

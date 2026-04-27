@@ -1,44 +1,46 @@
 class_name InventoryBag extends Control
 
-@onready var texture_rect: TextureRect = $TextureRect
-@onready var grid_container: GridContainer = $TextureRect/GridContainer
-@onready var tab_full: Label = $TextureRect/TabFull
+@onready var texture_rect: NinePatchRect = $BagBG
+@onready var grid_container: GridContainer = $BagBG/GridContainer
+@onready var tab_full: Label = $BagBG/TabFull
+@onready var bag_bg_color: TextureRect = $BagBG/BagBGColor
 
 @onready var sfx_player: SFXPlayer = $SfxPlayer
 const BAG_FULL = preload("uid://bakwpx4g6fqth")
-@onready var item_icon: BagItemIcon = $TextureRect/ItemIcon
-@onready var gold_count: Label = $TextureRect/GoldCount
+@onready var item_icon: BagItemIcon = $BagBG/ItemIcon
+@onready var gold_count: Label = $BagBG/GoldCount
 
-@onready var item_title: Label = $TextureRect/ItemTitle
-@onready var description: Label = $TextureRect/Description
-@onready var inventory_name: Label = $TextureRect/PanelContainer/MarginContainer/InventoryName
+@onready var item_title: Label = $BagBG/ItemTitle
+@onready var description: Label = $BagBG/Description
+@onready var inventory_name: Label = $BagBG/PanelContainer/MarginContainer/InventoryName
 
-@onready var ore: TextureButton = $TextureRect/HBoxContainer/Ore
-@onready var gem_stone_tab: TextureButton = $TextureRect/HBoxContainer/GemStoneTab
-@onready var use_tab: TextureButton = $TextureRect/HBoxContainer/UseTab
+@onready var ore: TextureButton = $BagBG/HBoxContainer/Ore
+@onready var gem_stone_tab: TextureButton = $BagBG/HBoxContainer/GemStoneTab
+@onready var use_tab: TextureButton = $BagBG/HBoxContainer/UseTab
 
-@onready var filters: HBoxContainer = $TextureRect/Filters
-@onready var inventory_tab: TextureButton = $TextureRect/HBoxContainer/InventoryTab
-@onready var filters_label: Label = $TextureRect/FiltersLabel
+@onready var filters: HBoxContainer = $BagBG/Filters
+@onready var inventory_tab: TextureButton = $BagBG/HBoxContainer/InventoryTab
+@onready var filters_label: Label = $BagBG/FiltersLabel
 
 var selected_item : Item
-@onready var sell_value: Label = $TextureRect/SellValue
+@onready var sell_value: Label = $BagBG/SellValue
 
-@onready var novelty_tab_label: Label = $TextureRect/HBoxContainer/InventoryTab/NoveltyTabLabel
+@onready var novelty_tab_label: Label = $BagBG/HBoxContainer/InventoryTab/NoveltyTabLabel
 
-@onready var craft_tab_label: Label = $TextureRect/HBoxContainer/CraftingTab/CraftTabLabel
-@onready var cooking_tab_label: Label = $TextureRect/HBoxContainer/CookingTab/CookingTabLabel
+@onready var craft_tab_label: Label = $BagBG/HBoxContainer/CraftingTab/CraftTabLabel
+@onready var cooking_tab_label: Label = $BagBG/HBoxContainer/CookingTab/CookingTabLabel
 
-@onready var ore_tab_label: Label = $TextureRect/HBoxContainer/Ore/OreTabLabel
-@onready var gem_stone_tab_label: Label = $TextureRect/HBoxContainer/GemStoneTab/GemStoneTabLabel
-@onready var use_tab_label: Label = $TextureRect/HBoxContainer/UseTab/UseTabLabel
-@onready var show_bank: TextureButton = $TextureRect/HBoxContainer/ShowBank
+@onready var ore_tab_label: Label = $BagBG/HBoxContainer/Ore/OreTabLabel
+@onready var gem_stone_tab_label: Label = $BagBG/HBoxContainer/GemStoneTab/GemStoneTabLabel
+@onready var use_tab_label: Label = $BagBG/HBoxContainer/UseTab/UseTabLabel
+@onready var show_bank: TextureButton = $BagBG/ShowBank
 
 @onready var tabs : Array[TextureButton] = [inventory_tab, ore, gem_stone_tab, use_tab, show_bank]
-@onready var tier_box: HBoxContainer = $TextureRect/TierBox
+@onready var tier_box: HBoxContainer = $BagBG/TierBox
 @onready var bank_container: GridContainer = $Bank/BankContainer
-@onready var bank: TextureRect = $Bank
+@onready var bank: NinePatchRect = $Bank
 
+var stored_slot_index : int = -1
 
 const DROPS_BAG_BG = preload("uid://bot5flcdwi2w3")
 const GEMSTONE_BAG_BG = preload("uid://bpmgpuqy6o3dd")
@@ -54,19 +56,19 @@ const USE_BAG_OPEN = preload("uid://caumwm7nf3s0t")
 const BUTTON_HOVER = preload("uid://dj4lg3rglma0j")
 const DROP = preload("uid://bli85jj3lnefb")
 const DROP_ITEM = preload("uid://b1l5d27bgd6wb")
-@onready var discard: TextureButton = $TextureRect/Discard
+@onready var discard: TextureButton = $BagBG/Discard
 
-@onready var bag_bg: TextureRect = $TextureRect/BagBG
 const DENIED = preload("uid://672acnsycbfo")
 
 var bank_showing : bool = false
-@onready var to_bank: TextureButton = $TextureRect/ToBank
+@onready var to_bank: TextureButton = $BagBG/ToBank
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	InventoryManager.update_inventory_bag.connect(update_grid_container)
 	InventoryManager.populate_inventory_description.connect(update_item_description)
 	InventoryManager.show_bank_button.connect(show_to_bank_button)
+	InventoryManager.reset_stored_slot_index.connect(reset_stored_slot_index)
 	init_bag()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -76,7 +78,7 @@ func _process(delta: float) -> void:
 func init_bag() -> void:
 	update_bag()
 	item_icon.texture = null
-	gold_count.text = str(TechTreeManager.currency)
+	gold_count.text = "Gold: %s" % TechTreeManager.currency
 	update_grid_container("Inventory")
 	clear_description_items()
 
@@ -91,13 +93,13 @@ func update_grid_container(inventory : String) -> void:
 		
 	match inventory:
 		"Inventory":
-			bag_bg.texture = DROPS_BAG_BG
+			bag_bg_color.texture = DROPS_BAG_BG
 		"Ore":
-			bag_bg.texture = ORE_BAG_BG
+			bag_bg_color.texture = ORE_BAG_BG
 		"Gem Stones":
-			bag_bg.texture = GEMSTONE_BAG_BG
+			bag_bg_color.texture = GEMSTONE_BAG_BG
 		"Use":
-			bag_bg.texture = USE_BAG_BG
+			bag_bg_color.texture = USE_BAG_BG
 		
 	clear_grid_container()
 	
@@ -108,6 +110,7 @@ func update_grid_container(inventory : String) -> void:
 			potential_item = InventoryManager.inventories[inventory][num]
 			
 		if potential_item:
+			slot.slot_index = num
 			slot.item = potential_item["item"]
 			slot.item_icon.texture = potential_item["item"].shop_icon
 			slot.show_quantity_label(potential_item["quantity"])
@@ -179,36 +182,37 @@ func update_tab_label(tab_label : Label, tab_name : String, selected_inventory_n
 	tab_label.text = tab_name + " %s/%s" % [inventory_current_size,max_slot]
 
 func update_bag() -> void:
-	gold_count.text = str(TechTreeManager.currency)
+	gold_count.text = "Gold: %s" % TechTreeManager.currency
 	if InventoryManager.check_if_bank_full():
 		to_bank.disabled = true
 	init_tabs()
 	update_bank_container()
 
 func _on_novelty_tab_button_up() -> void:
-	bag_bg.texture = DROPS_BAG_BG
+	bag_bg_color.texture = DROPS_BAG_BG
 	play_sfx(DROP_BAG_OPEN)
 	update_grid_container("Inventory")
 
 func _on_ore_button_up() -> void:
-	bag_bg.texture = ORE_BAG_BG
+	bag_bg_color.texture = ORE_BAG_BG
 	play_sfx(ORE_BAG_OPEN)
 	update_grid_container("Ore")
 
 func _on_gem_stone_tab_button_up() -> void:
-	bag_bg.texture = GEMSTONE_BAG_BG
+	bag_bg_color.texture = GEMSTONE_BAG_BG
 	play_sfx(GEM_BAG_OPEN)
 	update_grid_container("Gem Stones")
 
 func _on_use_tab_button_up() -> void:
-	bag_bg.texture = USE_BAG_BG
+	bag_bg_color.texture = USE_BAG_BG
 	play_sfx(USE_BAG_OPEN)
 	update_grid_container("Use")
 
-func update_item_description(item : Item) -> void:
+func update_item_description(item : Item, slot_index : int) -> void:
 	if not item:
-		return 
+		return
 		
+	stored_slot_index = slot_index
 	item_title.text = item.item_name
 	description.text = item.description
 	item_icon.texture = item.shop_icon
@@ -229,13 +233,16 @@ func discard_from_inventory() -> void:
 	if not selected_item:
 		return
 	play_sfx(DROP_ITEM)
-	var item_removed : bool = InventoryManager.remove_item(selected_item.get_inventory_name(), selected_item)
-	var item_exists : bool =InventoryManager.search_item(selected_item.get_inventory_name(), selected_item)
-	if !item_exists:
+	var item_removed : bool = InventoryManager.remove_item_from_slot(stored_slot_index, selected_item.get_inventory_name())
+	var item_exists : bool = InventoryManager.search_item(selected_item.get_inventory_name(), selected_item)
+	if stored_slot_index == -1:
 		clear_description_items()
 	if selected_item:
 		update_grid_container(selected_item.get_inventory_name())
 	
+
+func reset_stored_slot_index() -> void:
+	stored_slot_index = -1
 
 func populate_tier_box(tier : int) -> void:
 	clear_tier_box()

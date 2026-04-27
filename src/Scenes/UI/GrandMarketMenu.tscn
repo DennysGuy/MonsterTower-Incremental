@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="6_cr4yk"]
 [ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="6_wwjc2"]
 [ext_resource type="Texture2D" uid="uid://b30bdn5uad13v" path="res://Assets/HUD/Facilities/GrandMarketMenu_DropsBG.png" id="7_6u5e3"]
+[ext_resource type="FontFile" uid="uid://dgu1a66dfe8w" path="res://Assets/Fonts/Maplestory OTF Light.otf" id="7_s3vug"]
 [ext_resource type="Texture2D" uid="uid://dkd4op7b7q1vp" path="res://Assets/HUD/Bags/Market_Drops_Button.png" id="8_uqeh6"]
 [ext_resource type="Texture2D" uid="uid://dbq8ligbspbbd" path="res://Assets/HUD/Bags/Market_Drops_Button_Pressed.png" id="9_6aebp"]
 [ext_resource type="Texture2D" uid="uid://c0bf31w6yr3lk" path="res://Assets/HUD/Bags/Market_Drops_Button_Hover.png" id="10_4j6oi"]
@@ -43,91 +44,34 @@ grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=44738385]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -175.0
-offset_top = -130.0
-offset_right = 175.0
-offset_bottom = 130.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_gosvc")
-stretch_mode = 2
+expand_mode = 1
 
-[node name="Title" type="Label" parent="." unique_id=624241415]
+[node name="InventoryBG" type="TextureRect" parent="." unique_id=249039891]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -74.5
-offset_top = 7.0
-offset_right = 77.5
-offset_bottom = 25.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("2_oo3yc")
-theme_override_font_sizes/font_size = 18
-text = "The Grand Market"
-horizontal_alignment = 2
-
-[node name="ExitNotice" type="Label" parent="." unique_id=2095807507]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = 153.0
-offset_top = 37.0
-offset_right = 222.0
-offset_bottom = 49.0
-grow_horizontal = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("2_oo3yc")
-theme_override_font_sizes/font_size = 12
-text = "'ESC' to Exit"
-horizontal_alignment = 2
-
-[node name="Currency" type="Label" parent="." unique_id=2049901058]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -269.0
-offset_top = 42.0
-offset_right = -128.0
-offset_bottom = 54.0
-grow_horizontal = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("2_oo3yc")
-theme_override_font_sizes/font_size = 12
-text = "Currency: 1000000000000"
-
-[node name="Special" type="Label" parent="." unique_id=728038650]
-layout_mode = 1
-offset_left = 65.0
-offset_top = 82.0
-offset_right = 187.0
-offset_bottom = 94.0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 2
-theme_override_fonts/font = ExtResource("2_oo3yc")
-theme_override_font_sizes/font_size = 10
-text = "Click on Item slot to sell"
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("7_6u5e3")
+expand_mode = 1
 
 [node name="DetailsPanel" type="Control" parent="." unique_id=2035819410]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 64.0
-offset_top = -33.0
-offset_right = 184.0
-offset_bottom = 105.0
+offset_left = 178.0
+offset_top = -111.0
+offset_right = 590.0
+offset_bottom = 330.0
 grow_vertical = 2
 
 [node name="Panel" type="Panel" parent="DetailsPanel" unique_id=417787661]
@@ -135,54 +79,59 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -25.0
-offset_top = -4.0
-offset_right = 23.433334
-offset_bottom = 37.0
+offset_left = -39.0
+offset_top = 4.0
+offset_right = 41.32846
+offset_bottom = 72.0
 grow_horizontal = 2
 
 [node name="Indicator" type="TextureRect" parent="DetailsPanel" unique_id=1252480181]
 layout_mode = 0
-offset_left = 32.0
-offset_top = -6.0
-offset_right = 86.0
-offset_bottom = 39.0
+offset_left = 167.0
+offset_top = 4.0
+offset_right = 247.0
+offset_bottom = 71.0
+expand_mode = 1
 
 [node name="ItemIcon" type="TextureRect" parent="DetailsPanel" unique_id=1210158759]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -18.999992
-offset_top = -1.0
-offset_right = 18.000008
-offset_bottom = 34.0
+offset_left = -28.0
+offset_top = 9.0
+offset_right = 31.199997
+offset_bottom = 65.0
 grow_horizontal = 2
 texture = ExtResource("4_x7u5n")
 
 [node name="ItemTitle" type="Label" parent="DetailsPanel" unique_id=912050387]
 layout_mode = 1
-offset_left = -2.0
-offset_top = 39.0
-offset_right = 118.0
-offset_bottom = 51.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -60.0
+offset_top = 77.0
+offset_right = 60.0
+offset_bottom = 89.0
+grow_horizontal = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
-theme_override_fonts/font = ExtResource("2_oo3yc")
-theme_override_font_sizes/font_size = 12
+theme_override_fonts/font = ExtResource("5_oesmi")
+theme_override_font_sizes/font_size = 24
 text = "Purified Mushie Core"
 horizontal_alignment = 1
 
 [node name="Value" type="Label" parent="DetailsPanel" unique_id=285464771]
 layout_mode = 1
-offset_left = 1.0
-offset_top = 112.0
-offset_right = 121.0
-offset_bottom = 122.0
+offset_left = 112.0
+offset_top = 346.0
+offset_right = 249.0
+offset_bottom = 383.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
-theme_override_fonts/font = ExtResource("2_oo3yc")
-theme_override_font_sizes/font_size = 10
+theme_override_fonts/font = ExtResource("5_oesmi")
+theme_override_font_sizes/font_size = 32
 text = "Value: 35"
 
 [node name="SellButton" type="Button" parent="DetailsPanel" unique_id=541231822]
@@ -192,70 +141,123 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -60.5
-offset_top = -15.0
-offset_right = -21.5
+offset_left = -74.0
+offset_top = -37.0
+offset_right = 11.0
 offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_default_cursor_shape = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5_oesmi")
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 32
 text = "Sell 1"
 
 [node name="Description" type="RichTextLabel" parent="DetailsPanel" unique_id=701032641]
 layout_mode = 0
-offset_left = -2.0
-offset_top = 52.0
-offset_right = 122.0
-offset_bottom = 105.0
+offset_left = 3.0
+offset_top = 143.0
+offset_right = 421.0
+offset_bottom = 332.0
 theme_override_constants/outline_size = 5
-theme_override_fonts/normal_font = ExtResource("6_wwjc2")
-theme_override_font_sizes/normal_font_size = 10
+theme_override_fonts/normal_font = ExtResource("7_s3vug")
+theme_override_font_sizes/normal_font_size = 22
 text = "The core of a corrupted mushie purified through a chemical process when dropped. Used in crafting exoctic dishes!"
+
+[node name="Title" type="Label" parent="." unique_id=624241415]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -193.0
+offset_top = 96.0
+offset_right = 196.0
+offset_bottom = 140.0
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_oo3yc")
+theme_override_font_sizes/font_size = 46
+text = "The Grand Market"
+horizontal_alignment = 2
+
+[node name="ExitNotice" type="Label" parent="." unique_id=2095807507]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 518.0
+offset_top = 188.0
+offset_right = 702.0
+offset_bottom = 218.0
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_oo3yc")
+theme_override_font_sizes/font_size = 32
+text = "'ESC' to Exit"
+horizontal_alignment = 2
+
+[node name="Currency" type="Label" parent="." unique_id=2049901058]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -291.0
+offset_top = 882.0
+offset_right = 23.0
+offset_bottom = 909.0
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_oo3yc")
+theme_override_font_sizes/font_size = 28
+text = "Currency: 1000000000000"
+
+[node name="Special" type="Label" parent="." unique_id=728038650]
+layout_mode = 1
+offset_left = 186.0
+offset_top = 213.0
+offset_right = 308.0
+offset_bottom = 225.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("2_oo3yc")
+theme_override_font_sizes/font_size = 24
+text = "Click on Item slot to sell"
 
 [node name="Close" type="Button" parent="." unique_id=567962344]
 layout_mode = 1
-offset_left = 548.0
-offset_top = 26.0
-offset_right = 593.0
-offset_bottom = 49.0
+offset_left = 1679.0
+offset_top = 181.0
+offset_right = 1748.0
+offset_bottom = 226.0
 mouse_default_cursor_shape = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5_oesmi")
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 32
 text = "Exit"
-
-[node name="InventoryBG" type="TextureRect" parent="." unique_id=249039891]
-layout_mode = 0
-offset_left = -3.0
-offset_top = 3.0
-offset_right = 637.0
-offset_bottom = 363.0
-mouse_filter = 2
-texture = ExtResource("7_6u5e3")
 
 [node name="InventoryLabel" type="Label" parent="." unique_id=1376269875]
 layout_mode = 0
-offset_left = 220.0
-offset_top = 67.0
-offset_right = 272.0
-offset_bottom = 81.0
+offset_left = 685.0
+offset_top = 270.0
+offset_right = 788.0
+offset_bottom = 294.0
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("6_wwjc2")
-theme_override_font_sizes/font_size = 13
+theme_override_font_sizes/font_size = 24
 text = "Drops"
 
 [node name="InventoryLabel2" type="Label" parent="." unique_id=362013724]
 layout_mode = 0
-offset_left = 407.0
-offset_top = 68.0
-offset_right = 459.0
-offset_bottom = 82.0
+offset_left = 1245.0
+offset_top = 270.0
+offset_right = 1307.0
+offset_bottom = 302.0
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("6_wwjc2")
-theme_override_font_sizes/font_size = 13
+theme_override_font_sizes/font_size = 32
 text = "Bank"
 
 [node name="OreBagLabel" type="Label" parent="." unique_id=918684038]
@@ -275,10 +277,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -91.0
-offset_top = 111.0
-offset_right = 58.0
-offset_bottom = 252.0
+offset_left = -270.0
+offset_top = 318.0
+offset_right = 190.0
+offset_bottom = 832.0
 grow_horizontal = 2
 columns = 4
 
@@ -287,10 +289,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 97.0
-offset_top = 93.0
-offset_right = 242.0
-offset_bottom = 239.0
+offset_left = 285.0
+offset_top = 300.0
+offset_right = 763.0
+offset_bottom = 832.0
 grow_horizontal = 2
 mouse_filter = 2
 columns = 4
@@ -325,16 +327,16 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -11.0
-offset_top = -104.0
-offset_right = 62.0
-offset_bottom = -84.0
+offset_left = 90.0
+offset_top = -209.0
+offset_right = 211.0
+offset_bottom = -162.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_default_cursor_shape = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5_oesmi")
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 20
 text = "Sell Tab"
 
 [node name="SellBankButton" type="Button" parent="." unique_id=1537533758]
@@ -344,16 +346,16 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 151.0
-offset_top = -104.0
-offset_right = 248.0
-offset_bottom = -84.0
+offset_left = 624.0
+offset_top = -208.0
+offset_right = 774.0
+offset_bottom = -163.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_default_cursor_shape = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5_oesmi")
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 16
 text = "Sell All Bank Items"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=103040187]
@@ -361,89 +363,115 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -100.0
-offset_top = 87.0
-offset_right = 74.0
-offset_bottom = 108.0
+offset_left = -302.0
+offset_top = 198.0
+offset_right = 79.0
+offset_bottom = 244.0
 grow_horizontal = 2
 theme_override_constants/separation = 0
 
 [node name="InventoryTab" type="TextureButton" parent="HBoxContainer" unique_id=1472460900]
+custom_minimum_size = Vector2(93, 46)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("8_uqeh6")
 texture_pressed = ExtResource("9_6aebp")
 texture_hover = ExtResource("10_4j6oi")
+stretch_mode = 0
 
 [node name="Label" type="Label" parent="HBoxContainer/InventoryTab" unique_id=296578205]
-layout_mode = 0
-offset_left = 3.0
-offset_top = 6.0
-offset_right = 27.0
-offset_bottom = 13.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.0
+offset_top = -10.0
+offset_right = 23.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("6_wwjc2")
-theme_override_font_sizes/font_size = 7
+theme_override_font_sizes/font_size = 20
 text = "Drops"
 horizontal_alignment = 1
 
 [node name="OreTab" type="TextureButton" parent="HBoxContainer" unique_id=392124376]
-visible = false
+custom_minimum_size = Vector2(96, 46)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("11_f6wvv")
 texture_pressed = ExtResource("12_70xkk")
 texture_hover = ExtResource("13_3hxl8")
+stretch_mode = 0
 
 [node name="Label" type="Label" parent="HBoxContainer/OreTab" unique_id=1734482125]
-layout_mode = 0
-offset_left = 9.0
-offset_top = 6.0
-offset_right = 20.0
-offset_bottom = 14.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -11.5
+offset_right = 15.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("6_wwjc2")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 24
 text = "Ore"
 
 [node name="GemStonesTab" type="TextureButton" parent="HBoxContainer" unique_id=252733577]
-visible = false
+custom_minimum_size = Vector2(96, 46)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("14_in26l")
 texture_pressed = ExtResource("15_6u5e3")
 texture_hover = ExtResource("16_s3vug")
+stretch_mode = 0
 
 [node name="Label" type="Label" parent="HBoxContainer/GemStonesTab" unique_id=2019106025]
 layout_mode = 0
-offset_left = 8.0
-offset_top = 4.0
-offset_right = 24.0
-offset_bottom = 16.0
-theme_override_constants/line_spacing = -2
+offset_left = 20.0
+offset_top = 5.0
+offset_right = 59.0
+offset_bottom = 36.0
+theme_override_constants/line_spacing = -1
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("6_wwjc2")
-theme_override_font_sizes/font_size = 6
+theme_override_font_sizes/font_size = 15
 text = "Gem 
 Stones"
 
 [node name="UseTab" type="TextureButton" parent="HBoxContainer" unique_id=168834907]
-visible = false
+custom_minimum_size = Vector2(96, 46)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("17_in26l")
 texture_pressed = ExtResource("18_6u5e3")
 texture_hover = ExtResource("19_s3vug")
+stretch_mode = 0
 
 [node name="Label" type="Label" parent="HBoxContainer/UseTab" unique_id=1541491451]
-layout_mode = 0
-offset_left = 10.0
-offset_top = 5.0
-offset_right = 22.0
-offset_bottom = 15.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.5
+offset_top = -12.0
+offset_right = 16.5
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("6_wwjc2")
-theme_override_font_sizes/font_size = 9
+theme_override_font_sizes/font_size = 24
 text = "Use"
 
 [connection signal="button_up" from="DetailsPanel/SellButton" to="." method="_on_sell_button_button_up"]

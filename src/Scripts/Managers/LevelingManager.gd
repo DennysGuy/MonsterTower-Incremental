@@ -19,7 +19,7 @@ func check_for_level_up() -> void:
 		#reward 1 AP point 
 		
 		if GameManager.can_unlock_class():
-			SignalBus.show_class_notice.emit()
+			PlayerHudSignalBus.show_class_notice.emit()
 		
 		PlayerStats.player_stats["Ability Points"] += 1
 		

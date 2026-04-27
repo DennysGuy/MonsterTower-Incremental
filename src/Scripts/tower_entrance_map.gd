@@ -30,7 +30,7 @@ func _ready() -> void:
 	SignalBus.update_entrance_map.connect(update_entrance_map)
 	SignalBus.update_mode_description_to_expedition.connect(set_mode_description_as_expedition)
 	SignalBus.hide_hunt_time_label.connect(hide_hunt_time_label)
-	time_limit.text = "Expedition Time Limit:\n%s Seconds" % [int(PlayerStats.player_stats["Expedition Time"])]
+	time_limit.text = "Expedition Time Limit: %s Seconds" % [int(PlayerStats.player_stats["Expedition Time"])]
 	hunt_time_label.hide()
 	
 	drops_preview_panel.hide()
@@ -40,7 +40,7 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_go_to_floor_button_up() -> void:
-	SignalBus.play_close_out_animation.emit()
+	PlayerHudSignalBus.play_close_out_animation.emit()
 	GameManager.player_can_move = true
 	GameManager.can_open_bag = true
 	GameManager.can_open_tower_map = true
@@ -65,7 +65,7 @@ func store_entrance_data(entrance_data : TowerEntranceData) -> void:
 	
 	for point in range(0,entrance_data.number_of_spawn_locations):
 		var check_point_button : CheckPointButton = preload("uid://bpikj7ilsaiqj").instantiate()
-		check_point_button.text = "Point %s" % [point+1]
+		check_point_button.text = "Checkpoint %s" % [point+1]
 		check_point_button.index = point
 		area_button_selector.add_child(check_point_button)
 	
@@ -108,17 +108,19 @@ func hide_hunt_time_label() -> void:
 	hunt_time_label.hide()
 
 func set_mode_description_as_expedition() -> void:
-	mode_description_label.text = "	   ~Expedition~"
+	mode_description_label.text = "	   ~Expedition~ 
+	
+Hunt, Train, Explore within you Hunter Class time limit!
+	
+	"
 	drops_preview_panel.show()
 
 func set_mode_description_as_hunt_challenge() -> void:
 	drops_preview_panel.hide()
 	mode_description_label.text = "	 ~Hunt Challenge~
-	
+
 Test your skills. 
-
 Race against the clock to meet the [color=green]hunt quota[/color] to unlock the [color=green]next floor[/color]. 
-
 No Drops, no Resources - just [color=red]pure combat[/color]!"
 
 func populate_preview_container(preview_container : GridContainer, GraphicsArray : Array[Texture2D] ) -> void:

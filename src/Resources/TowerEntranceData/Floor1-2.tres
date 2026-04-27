@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="TowerEntranceData" format=3 uid="uid://dbb7k6hptjvyy"]
 
+[ext_resource type="Texture2D" uid="uid://cp2dcat31ou05" path="res://Assets/HUD/NewTowerEntranceMap/MossyDungeonEntranceButtons/MossyDungeonCPButton2.png" id="1_ffx0f"]
 [ext_resource type="Texture2D" uid="uid://doykjgx3b67qt" path="res://Assets/Enemies/CorruptedMushieIcon.png" id="1_l170i"]
 [ext_resource type="Script" uid="uid://cyho4aep1qxmu" path="res://src/Scripts/Maps/tower_entrance_data.gd" id="1_xibwm"]
 [ext_resource type="Texture2D" uid="uid://cudxjr3yw3imr" path="res://Assets/Enemies/CorruptedMushieLVL2Icon.png" id="2_ffx0f"]
@@ -15,10 +16,11 @@
 script = ExtResource("1_xibwm")
 floor_name = "Floor 1-2"
 floor_number = 2
+button_texture = ExtResource("1_ffx0f")
 unlock_recipe = ExtResource("5_rpdvt")
 biome = "Mossy Dungeon"
 total_camp_fires = 2
-scene_path = "uid://bla5rhusv2jn5"
+scene_path = "uid://dfnds4a5fbgay"
 preview_pictures = Array[Texture2D]([ExtResource("6_n8f0s"), ExtResource("7_l170i"), ExtResource("8_ffx0f")])
 enemy_preview_graphics = Array[Texture2D]([ExtResource("1_l170i"), ExtResource("2_ffx0f"), ExtResource("3_f80xo")])
 ore_rock_preview_graphics = Array[Texture2D]([ExtResource("5_g48qj"), ExtResource("6_jmjj7")])

@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="TowerEntranceData" format=3 uid="uid://b7vfvjsghpix0"]
 
 [ext_resource type="Texture2D" uid="uid://d3e0qckkvky7l" path="res://Assets/FloorPreviews/Floor1-6-CHKP1.png" id="1_71ukq"]
+[ext_resource type="Texture2D" uid="uid://cox85bw8q6t5h" path="res://Assets/HUD/NewTowerEntranceMap/MossyDungeonEntranceButtons/MossyDungeonCPButton6.png" id="1_jnopg"]
 [ext_resource type="Script" uid="uid://cyho4aep1qxmu" path="res://src/Scripts/Maps/tower_entrance_data.gd" id="1_p60i3"]
 [ext_resource type="Texture2D" uid="uid://8hgjea50a4r" path="res://Assets/FloorPreviews/Floor1-6-CHKP2.png" id="2_jnopg"]
 
@@ -8,8 +9,9 @@
 script = ExtResource("1_p60i3")
 floor_name = "Floor 1-6"
 floor_number = 6
+button_texture = ExtResource("1_jnopg")
 floor_type = 2
 biome = "Mossy Dungeon"
-scene_path = "uid://dqyidhubk38mi"
+scene_path = "uid://b8datkutfxbs1"
 preview_pictures = Array[Texture2D]([ExtResource("1_71ukq"), ExtResource("2_jnopg")])
 metadata/_custom_type_script = "uid://cyho4aep1qxmu"

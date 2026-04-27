@@ -49,7 +49,10 @@ func _ready() -> void:
 	if !MusicPlayer.transitioning_floors:
 		MusicPlayer.stop_player()
 	GameManager.can_pause_game = true
-	GameManager.previous_map_path = path
+	if tower_entrance_data:
+		GameManager.previous_map_path = tower_entrance_data.scene_path
+	else:
+		GameManager.previous_map_path = path
 	GameManager.previous_map_data = tower_entrance_data
 	SignalBus.move_to_next_room.connect(move_to_next_room)
 	SignalBus.return_to_starshire.connect(go_to_starshire)
@@ -58,7 +61,8 @@ func _ready() -> void:
 	SignalBus.update_kill_quota.connect(update_hunt_quota)
 	SignalBus.play_sfx.connect(play_sfx)
 	LevelingManager.play_level_up_sfx.connect(play_level_up_sfx)
-	hud.map_name_label.text = map_name
+	#hud.map_name_label.text = map_name
+	
 	
 	load_floor_data()
 	
@@ -77,8 +81,6 @@ func _ready() -> void:
 		if map_type == MAP_TYPE.HUB and map_name == "Starspire - Hub":
 			GameManager.spawn_location = 0
 		
-		if hud:
-			hud.show()
 		
 		spawn_player()
 		
@@ -86,18 +88,8 @@ func _ready() -> void:
 			camera.player = player
 		
 		if map_type == MAP_TYPE.CHECKPOINT_FLOOR:	
-	
-			hud.expedition_timer.show_stop_watch()
+			GameManager.can_open_bag = true
 			if !GameManager.hunt_challenge_selected:
-				if tower_entrance_data.hunt_challenge_completed:
-					SignalBus.unlock_next_room.emit()
-					#SignalBus.update_kill_quota_text.emit("", tower_entrance_data.hunt_challenge_completed, tower_entrance_data.hunt_challenge_unlocked)
-				else:
-					##SignalBus.update_kill_quota_text.emit("", false, tower_entrance_data.hunt_challenge_unlocked)
-					if tower_entrance_data.is_challenge_floor() and tower_entrance_data.hunt_challenge_unlocked and !tower_entrance_data.hunt_challenge_completed:
-						SignalBus.show_hunt_challenge_button.emit()
-					else:
-						SignalBus.hide_hunt_challenge_button.emit()
 				
 				if tower_entrance_data.is_expedition_floor() and tower_entrance_data.unlock_recipe and !tower_entrance_data.hunt_challenge_completed:
 					issue_repair_elevator_notice()
@@ -108,20 +100,21 @@ func _ready() -> void:
 				SignalBus.show_bag_stats.emit()
 				
 			if monster_spawn_node and GameManager.hunt_challenge_selected:
-				SignalBus.update_monsters_left.emit("Monsters Left: %s" % [monster_spawn_node.get_children().size()],false)
+				PlayerHudSignalBus.update_monsters_left.emit("Monsters Left: %s" % [monster_spawn_node.get_children().size()],false)
 				#else:
 					#SignalBus.update_monsters_left.emit("Campfires Discovered: %s/%s" % [tower_entrance_data.camp_fires_reached, tower_entrance_data.total_camp_fires],false)
 			
-			SignalBus.update_banner_info.emit(tower_entrance_data)
+			
 			PlayerStats.check_points_unlocked[map_name] = true
 			SaveManager.save_floor_data(tower_entrance_data, map_name)
 			SaveManager.save_player_stats()
 		
 		if map_type ==	MAP_TYPE.FLOOR or map_type == MAP_TYPE.CHECKPOINT_FLOOR:
+				PlayerHudSignalBus.show_stop_watch.emit()
 				if !GameManager.hunt_challenge_selected:
 					GameManager.player_can_move = true
 					if !tower_entrance_data.is_boss_door():
-						hud.start_expedition_timer()
+						PlayerHudSignalBus.start_stop_watch.emit()
 				else:
 					GameManager.player_can_move = false
 					
@@ -171,10 +164,11 @@ func spawn_player() -> void:
 		PlayerStats.player_stats["Current MP"] = total_mp
 		player.health = total_health
 		GameManager.resupply_character = false
+		#PlayerHudSignalBus.update_player_health.emit()
 		
 	player.health = total_health
 	print("THIS IS PLAYER HEALTH" + str(player.health))
-	hud.update_player_health(int(total_health))
+	#hud.update_player_health(int(total_health))
 
 	add_child(player)
 	
@@ -191,12 +185,12 @@ func go_to_starshire() -> void:
 	if tree == null:
 		return
 	
-	hud.animation_player.play("CloseOut")
+	PlayerHudSignalBus.play_close_out_animation.emit()
 	await tree.create_timer(1.0).timeout
 
 	if tree != null:
 		if player.is_dead:
-			tree.change_scene_to_file("res://src/Scenes/NewStarshire/NewStarShire.tscn")
+			tree.change_scene_to_file("uid://cq0un0c22235d")
 		else:
 			tree.change_scene_to_file("res://src/Scenes/UI/ExpeditionResultsScreen.tscn")
 
@@ -210,7 +204,7 @@ func go_to_victory_menu() -> void:
 	if tree == null:
 		return
 	
-	hud.animation_player.play("CloseOut")
+	PlayerHudSignalBus.play_close_out_animation.emit()
 	await tree.create_timer(1.0).timeout
 
 	if tree != null:
@@ -226,7 +220,8 @@ func go_to_failure_menu() -> void:
 	if tree == null:
 		return
 	
-	hud.animation_player.play("CloseOut")
+	#hud.animation_player.play("CloseOut")
+	PlayerHudSignalBus.play_close_out_animation.emit()
 	await tree.create_timer(1.0).timeout
 
 	if tree != null:
@@ -238,7 +233,8 @@ func move_to_next_room(room_path : String) -> void:
 	if tree == null:
 		return
 
-	hud.animation_player.play("CloseOut")
+	PlayerHudSignalBus.play_close_out_animation.emit()
+	#hud.animation_player.play("CloseOut")
 	await tree.create_timer(1.0).timeout
 
 	if tree != null:
@@ -323,6 +319,8 @@ func load_floor_data() -> void:
 		if tower_entrance_data.floor_number > PlayerStats.player_stats["Highest Floor"]:
 			PlayerStats.player_stats["Highest Floor"] = tower_entrance_data.floor_number
 			SaveManager.save_player_stats()
+		if exit_elevator:
+			exit_elevator.current_room_data = tower_entrance_data
 
 func play_sfx(audio_stream : AudioStream) -> void:
 	if sfx_player:
@@ -341,14 +339,14 @@ func issue_repair_elevator_notice() -> void:
 	GameManager.enemies_can_move = false
 
 	player.send_to_idle_state()
-	hud.animation_player.play("FadeInOut")
+	#hud.animation_player.play("FadeInOut")
 	await get_tree().create_timer(0.5).timeout
 	camera.position = exit_elevator_marker.position
 	await get_tree().create_timer(1.0).timeout
-	SignalBus.issue_big_notification.emit("Deliver required resource to repair the elevator!")
+	PlayerHudSignalBus.issue_big_notification.emit("Deliver required resource to repair the elevator!")
 	await get_tree().create_timer(3.0).timeout
-	SignalBus.hide_big_notification.emit()
-	hud.animation_player.play("FadeInOut")
+	PlayerHudSignalBus.hide_big_notification.emit()
+	#hud.animation_player.play("FadeInOut")
 	await get_tree().create_timer(0.5).timeout
 	camera.position = player.position
 	camera.player = player
@@ -366,15 +364,16 @@ func issue_challenge_objective_notice() -> void:
 	GameManager.enemies_can_move = false
 
 	player.send_to_idle_state()
-	hud.animation_player.play("FadeInOut")
+	#hud.animation_player.play("FadeInOut")
 	await get_tree().create_timer(0.5).timeout
 	camera.position = exit_elevator_marker.position
 	await get_tree().create_timer(1.0).timeout
-	SignalBus.issue_big_notification.emit("Beat the Floor Challenge to unlock the exit elevator!")
+	PlayerHudSignalBus.issue_big_notification.emit("Beat the Floor Challenge to unlock the exit elevator!")
 	await get_tree().create_timer(3.0).timeout
 	SignalBus.hide_big_notification.emit()
-	hud.animation_player.play("FadeInOut")
+	#hud.animation_player.play("FadeInOut")
 	await get_tree().create_timer(0.5).timeout
+	PlayerHudSignalBus.hide_big_notification.emit()
 	camera.position = player.position
 	camera.player = player
 	
@@ -396,7 +395,7 @@ func play_unlock_elevator_sequence() -> void:
 	exit_elevator.unlock_elevator()
 	await get_tree().create_timer(5.0).timeout
 	sfx_player.play_sfx(hunt_victory_theme)
-	SignalBus.issue_big_notification.emit("Challenge Overcome!\nHead to the Elevator!")
+	PlayerHudSignalBus.issue_big_notification.emit("Challenge Overcome!\nHead to the Elevator!")
 	await get_tree().create_timer(2.0).timeout
 	camera.position = player.position
 	camera.player = player

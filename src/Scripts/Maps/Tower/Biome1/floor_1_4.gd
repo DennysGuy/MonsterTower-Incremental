@@ -3,7 +3,7 @@ class_name Biome1Floor4 extends Map
 
 func _ready() -> void:
 	super()
-	hud.animation_player.play("CloseIn")
+	#hud.animation_player.play("CloseIn")
 	#checkpoint_campfire.play("default")
 	
 
@@ -20,34 +20,48 @@ func _ready() -> void:
 	
 	if mp_replenish_points and PlayerStats.facilities_unlocked["MP Vial"] and !GameManager.hunt_challenge_selected:
 		spawn_mp_vials()
+		
 	await get_tree().process_frame
+	PlayerHudSignalBus.show_stop_watch.emit()
 	
 	if monster_spawn_node:
 		if GameManager.hunt_challenge_selected:
-			hud.animation_player.play("StartHuntChallnge")
+			#hud.animation_player.play("StartHuntChallnge")
 			SignalBus.update_monsters_left.emit("Defeat all Monsters to win!",false,false)
 		else:
 			SignalBus.update_monsters_left.emit("Campfires Discovered: %s/%s" % [tower_entrance_data.camp_fires_reached, tower_entrance_data.total_camp_fires],false)
-	SignalBus.update_player_health.emit(player.health)
-	SignalBus.update_player_mp.emit()
+	
+	PlayerHudSignalBus.update_player_health.emit()
+	PlayerHudSignalBus.update_player_mp.emit()
 
 	if GameManager.hunt_challenge_selected:
 		GameManager.enemies_can_move = false
 		SignalBus.hide_hunt_challenge_button.emit()
 		exit_elevator.row_lock.show()
 		var monster_count : int = monster_spawn_node.get_children().size()
-		SignalBus.update_monsters_left.emit("Monsters left: %s" % [monster_count])
+		PlayerHudSignalBus.update_monsters_left.emit("Monsters left: %s" % [monster_count])
 		player.damageable = false
 		await get_tree().create_timer(0.5).timeout
-		hud.set_hunt_timer()
-		hud.expedition_timer.update_timer_label()
-		hud.animation_player.play("StartHuntChallenge")
+		PlayerHudSignalBus.start_hunt_intro.emit()
 		await get_tree().create_timer(4.0).timeout
 		player.damageable = true
 		GameManager.player_can_move = true
-	else:
+	else:	
+		if tower_entrance_data.hunt_challenge_completed:
+			#SignalBus.unlock_next_room.emit()
+			PlayerHudSignalBus.update_kill_quota_text.emit("", tower_entrance_data.hunt_challenge_completed, tower_entrance_data.hunt_challenge_unlocked)
+		else:
+			#PlayerHudSignalBus.update_kill_quota_text.emit("", false, tower_entrance_data.hunt_challenge_unlocked)
+			if tower_entrance_data.is_challenge_floor() and tower_entrance_data.hunt_challenge_unlocked and !tower_entrance_data.hunt_challenge_completed:
+				PlayerHudSignalBus.show_hunt_challenge_button.emit()
+			else:
+				SignalBus.hide_hunt_challenge_button.emit()
+				
 		SignalBus.start_enemy_spawn.emit()
-
+		PlayerHudSignalBus.start_stop_watch.emit()
+		
+	PlayerHudSignalBus.update_map_name_label.emit(map_name)
+	SignalBus.update_banner_info.emit(tower_entrance_data)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	super(delta)

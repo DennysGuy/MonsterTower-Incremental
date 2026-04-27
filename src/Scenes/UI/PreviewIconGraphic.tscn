@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dmxrw12yobne1" path="res://src/Scripts/HUD/preview_icon_graphic.gd" id="1_vxmpl"]
 
 [node name="PreviewIconGraphic" type="TextureRect" unique_id=1421855242]
+custom_minimum_size = Vector2(42, 42)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5

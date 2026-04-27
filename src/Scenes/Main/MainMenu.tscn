@@ -1,14 +1,15 @@
 [gd_scene format=3 uid="uid://babypuakc7i7y"]
 
 [ext_resource type="Script" uid="uid://c1wrjow75bhab" path="res://src/Scripts/Main/main_menu.gd" id="1_lb6hv"]
-[ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="2_58xxk"]
-[ext_resource type="Texture2D" uid="uid://qynempy8hrlr" path="res://Assets/TempMainMenuBG.png" id="2_gwjs1"]
-[ext_resource type="FontFile" uid="uid://dmw84wb4eeuql" path="res://Assets/Fonts/Playfull Rocket.ttf" id="3_rsyx7"]
-[ext_resource type="AudioStream" uid="uid://cxtv5qej7olko" path="res://Audio/Music/MainThemeDraft1.wav" id="5_rsyx7"]
+[ext_resource type="PackedScene" uid="uid://djr7ysw0olctc" path="res://src/Scenes/MainMenuBG.tscn" id="2_rsyx7"]
+[ext_resource type="Texture2D" uid="uid://b4xg7wcimcord" path="res://Assets/QuickMainMenuBGMockUp.png" id="3_06df4"]
+[ext_resource type="FontFile" uid="uid://cynitq2e6hghv" path="res://Assets/Fonts/Snake in the Boot.ttf" id="4_gj8tx"]
+[ext_resource type="FontFile" uid="uid://dr468m31loqrx" path="res://Assets/Fonts/Super Cartoon.ttf" id="5_gj8tx"]
+[ext_resource type="AudioStream" uid="uid://b4qmxdv5pxdpb" path="res://Audio/Music/NewMainMenuThemeDraft1.wav" id="6_06df4"]
+[ext_resource type="AudioStream" uid="uid://deidmmols8obd" path="res://Audio/SFX/MainMenuOceanAmbiencc.wav" id="7_gj8tx"]
 
 [sub_resource type="Animation" id="Animation_58xxk"]
 resource_name = "FadeIn"
-length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -16,7 +17,7 @@ tracks/0/path = NodePath("TransitionRect:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -69,29 +70,64 @@ grow_vertical = 2
 script = ExtResource("1_lb6hv")
 next_scene_path = "uid://c3nk4aov63usx"
 
-[node name="ColorRect" type="TextureRect" parent="." unique_id=1039899871]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=329923233]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_gwjs1")
+color = Color(0.40520903, 0.0012058679, 0.5956752, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1650630831]
+layout_mode = 0
+offset_right = 1960.0
+offset_bottom = 1120.0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="MarginContainer" unique_id=491409659]
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="MarginContainer/SubViewportContainer" unique_id=1037717473]
+handle_input_locally = false
+size = Vector2i(1880, 1030)
+size_2d_override = Vector2i(1920, 1080)
+size_2d_override_stretch = true
+render_target_update_mode = 4
+
+[node name="MainMenuBg" parent="MarginContainer/SubViewportContainer/SubViewport" unique_id=1206026906 instance=ExtResource("2_rsyx7")]
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=138066938]
+layout_mode = 0
+offset_left = 18.0
+offset_top = -29.0
+offset_right = 1938.0
+offset_bottom = 1051.0
+texture = ExtResource("3_06df4")
 
 [node name="Label" type="Label" parent="." unique_id=1445026577]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -174.5
-offset_top = 25.0
-offset_right = 174.5
-offset_bottom = 68.0
+offset_left = -730.0
+offset_top = 87.0
+offset_right = 746.0
+offset_bottom = 271.0
 grow_horizontal = 2
-theme_override_constants/outline_size = 11
-theme_override_fonts/font = ExtResource("3_rsyx7")
-theme_override_font_sizes/font_size = 38
-text = "Starspire Hunters"
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 50
+theme_override_constants/paragraph_spacing = 0
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("4_gj8tx")
+theme_override_font_sizes/font_size = 74
+text = "STARSPIRE 
+HUNTERS"
+horizontal_alignment = 1
 
 [node name="NewGame" type="Button" parent="." unique_id=2136236947]
 layout_mode = 1
@@ -100,17 +136,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -59.0
-offset_top = 59.0
-offset_right = 59.0
-offset_bottom = 99.0
+offset_left = -137.5
+offset_top = 361.0
+offset_right = 137.5
+offset_bottom = 428.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_default_cursor_shape = 2
-theme_override_constants/outline_size = 7
-theme_override_fonts/font = ExtResource("2_58xxk")
-theme_override_font_sizes/font_size = 24
-text = "NEw Game"
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("5_gj8tx")
+theme_override_font_sizes/font_size = 52
+text = "New Game"
 
 [node name="Continue" type="Button" parent="." unique_id=1382076943]
 modulate = Color(3.85046e-07, 0.97184914, 0.35903677, 1)
@@ -120,17 +156,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -57.5
-offset_top = 14.0
-offset_right = 57.5
-offset_bottom = 54.0
+offset_left = -118.0
+offset_top = 265.0
+offset_right = 118.0
+offset_bottom = 332.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_default_cursor_shape = 2
-theme_override_constants/outline_size = 7
-theme_override_fonts/font = ExtResource("2_58xxk")
-theme_override_font_sizes/font_size = 30
-text = "COntinue"
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("5_gj8tx")
+theme_override_font_sizes/font_size = 52
+text = "Continue"
 
 [node name="TransitionRect" type="ColorRect" parent="." unique_id=1379323239]
 layout_mode = 1
@@ -145,10 +181,14 @@ color = Color(0, 0, 0, 1)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1450711081]
 libraries/ = SubResource("AnimationLibrary_gwjs1")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1807827256]
-stream = ExtResource("5_rsyx7")
-volume_db = 5.0
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=1807827256]
+stream = ExtResource("6_06df4")
+volume_db = 10.0
 bus = &"Music"
+
+[node name="Ambience" type="AudioStreamPlayer" parent="." unique_id=469264660]
+stream = ExtResource("7_gj8tx")
+bus = &"Ambience"
 
 [connection signal="button_up" from="NewGame" to="." method="_on_button_button_up"]
 [connection signal="button_up" from="Continue" to="." method="_on_continue_button_up"]

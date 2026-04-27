@@ -1,16 +1,17 @@
 class_name TowerEntranceButton extends TextureButton
 
 @export var tower_entrance_data : TowerEntranceData
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
+
+const FLOOR_LOCKED_ICON = preload("uid://b7b4stfjjl7i3")
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	load_floor_data()
-	animation_player.play("LockOnBlink")
 	if PlayerStats.check_points_unlocked[tower_entrance_data.floor_name]:
-		show()
+		texture_normal = tower_entrance_data.button_texture
 	else:
-		hide()
+		texture_normal = FLOOR_LOCKED_ICON
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -19,6 +20,9 @@ func _process(delta: float) -> void:
 
 
 func _on_button_up() -> void:
+	if !PlayerStats.check_points_unlocked[tower_entrance_data.floor_name]:
+		return
+	
 	SignalBus.store_entrance_data.emit(tower_entrance_data)
 	SignalBus.hide_hunt_time_label.emit()
 

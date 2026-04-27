@@ -13,7 +13,6 @@
 [ext_resource type="TileSet" uid="uid://flobhfna8te" path="res://src/Scenes/Tower/TowerFloors/Biome1/Biome1-Platforms.tres" id="5_f2nj7"]
 [ext_resource type="AudioStream" uid="uid://n4ky26neitxn" path="res://Audio/Music/TempVictoryTheme1.mp3" id="5_kbbvk"]
 [ext_resource type="PackedScene" uid="uid://cexhahnue1wh6" path="res://src/Scenes/Tower/TowerFloors/FloorGuideLog.tscn" id="7_acl6u"]
-[ext_resource type="PackedScene" uid="uid://dysg5kffvxbql" path="res://src/Scenes/UI/PlayerHUD.tscn" id="8_kwf2g"]
 [ext_resource type="PackedScene" uid="uid://dj0ett15s3u5m" path="res://src/Scenes/Tower/TowerFloors/OreRockMarker.tscn" id="8_ujmhj"]
 [ext_resource type="Resource" uid="uid://svq41nllat54" path="res://src/Resources/OreRock/CopperOreRock.tres" id="9_qrx52"]
 [ext_resource type="PackedScene" uid="uid://c8ov03gkkda4k" path="res://src/Scenes/PlayerCamera.tscn" id="9_w4dci"]
@@ -561,18 +560,16 @@ size = Vector2(172, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n7xsw"]
 size = Vector2(391, 20)
 
-[node name="Floor1-2" type="Node2D" unique_id=1445504565 node_paths=PackedStringArray("exit_elevator_marker", "exit_elevator", "camera", "hud", "ore_rock_markers", "gem_stone_chest_markers", "campfire_list", "hp_replenish_points", "mp_replenish_points", "sfx_player", "monster_spawn_node", "pause_canvas_layer", "ambience_player")]
+[node name="Floor1-2" type="Node2D" unique_id=1445504565 node_paths=PackedStringArray("exit_elevator_marker", "camera", "ore_rock_markers", "gem_stone_chest_markers", "campfire_list", "hp_replenish_points", "mp_replenish_points", "sfx_player", "monster_spawn_node", "ambience_player")]
 script = ExtResource("1_1pghk")
 map_name = "Floor 1-2"
 map_id = 2
 exit_elevator_marker = NodePath("ExitElevatorMarker")
-exit_elevator = NodePath("ExitElevator")
 tower_entrance_data = ExtResource("2_801hy")
 map_theme_song = ExtResource("3_50mol")
 hunt_theme_song = ExtResource("4_nhahy")
 hunt_victory_theme = ExtResource("5_kbbvk")
 camera = NodePath("PlayerCamera")
-hud = NodePath("HUD")
 ore_rock_spawn_rate = 0.6
 ore_rock_markers = NodePath("OreRockMarkers")
 gem_stone_chest_markers = NodePath("GemStoneChestMarkers")
@@ -583,7 +580,6 @@ path = "uid://bla5rhusv2jn5"
 next_room_path = "uid://b3m3f58qy47jb"
 sfx_player = NodePath("SfxPlayer")
 monster_spawn_node = NodePath("MonsterSpawnNode")
-pause_canvas_layer = NodePath("HUD")
 map_type = 2
 kill_quota = 30
 ambience_player = NodePath("AmbiencePlayer")
@@ -592,10 +588,10 @@ ambience_sfx = ExtResource("2_vcays")
 [node name="AmbiencePlayer" parent="." unique_id=1470485004 instance=ExtResource("3_4lb0i")]
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1907873017]
-offset_left = -35.0
+offset_left = -255.0
 offset_top = -43.0
-offset_right = 700.0
-offset_bottom = 1552.0
+offset_right = 834.0
+offset_bottom = 1795.0
 color = Color(0.047058824, 0.09803922, 0.15686275, 1)
 
 [node name="Node2D" type="Node2D" parent="." unique_id=1214368582]
@@ -744,10 +740,10 @@ position = Vector2(465, 913)
 
 [node name="PlayerCamera" parent="." unique_id=590698952 instance=ExtResource("9_w4dci")]
 position = Vector2(321, 1324)
-limit_left = 0
+limit_left = 300
 limit_top = -42
 limit_right = 640
-limit_bottom = 1500
+limit_bottom = 1730
 limit_smoothed = true
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
@@ -955,14 +951,6 @@ area_collision_shape = NodePath("CollisionShape2D")
 position = Vector2(1.5, 0)
 shape = SubResource("RectangleShape2D_n7xsw")
 
-[node name="ExitElevator" parent="." unique_id=1585227535 instance=ExtResource("20_rsjkl")]
-position = Vector2(322, 64)
-next_room_data = ExtResource("25_o2dcr")
-current_room_data = ExtResource("2_801hy")
-
-[node name="HUD" parent="." unique_id=1248146646 instance=ExtResource("8_kwf2g")]
-visible = false
-
 [node name="PlayerSpawnPoint" parent="." unique_id=1595246322 instance=ExtResource("10_ucoej")]
 position = Vector2(265, 1456)
 
@@ -1005,3 +993,8 @@ last_spawn_point = 1
 
 [node name="ExitElevatorMarker" type="Marker2D" parent="." unique_id=663105606]
 position = Vector2(321, 101)
+
+[node name="ExitElevator" parent="." unique_id=2032546711 instance=ExtResource("20_rsjkl")]
+position = Vector2(319, 62)
+next_room_data = ExtResource("25_o2dcr")
+current_room_data = ExtResource("2_801hy")

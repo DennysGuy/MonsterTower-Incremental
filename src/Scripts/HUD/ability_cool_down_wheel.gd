@@ -12,6 +12,11 @@ var timer_started : bool = false
 
 var ability_loaded : bool = false
 
+@onready var lmb: TextureRect = $LMB
+@onready var rmb: TextureRect = $RMB
+@onready var shift: TextureRect = $SHIFT
+@onready var space: TextureRect = $SPACE
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	AbilityTimers.start_ability_cooldown_timer.connect(start_progress_wheel)
@@ -54,21 +59,25 @@ func set_icon() -> void:
 				icon.texture = preload("uid://q06lybw2gchf")
 			else:
 				icon.texture = preload("uid://cbcw7ua8sro78")
+			lmb.show()
 		"Double Jump":
 			if PlayerStats.facilities_unlocked["Double Jump"]:
 				icon.texture = preload("uid://dduqgitj2ii5a")
 			else:
 				icon.texture = preload("uid://cbcw7ua8sro78")
+			space.show()
 		"Dash Attack":
 			if PlayerStats.facilities_unlocked["Dash Attack"]:
 				icon.texture = preload("uid://dx6yh1h66vork")
 			else:
 				icon.texture = preload("uid://cbcw7ua8sro78")
+			rmb.show()
 		"Special Attack":
 			if PlayerStats.equipped_abilities["Special Attack"]:
 				icon.texture = preload("uid://dnqar1vwb0eae")
 			else:
 				icon.texture = preload("uid://cbcw7ua8sro78")
+			shift.show()
 
 func ability_unlocked() -> bool:
 	if ability_name == "Special Attack":

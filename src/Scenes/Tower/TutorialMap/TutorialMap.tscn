@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://d0bjvovwo3hm4" path="res://Assets/EnvironmentalAssets/PalmTree.png" id="3_o6iow"]
 [ext_resource type="Texture2D" uid="uid://y80fw7n3ai66" path="res://Assets/Facilities/TempTower.png" id="4_sdyju"]
 [ext_resource type="PackedScene" uid="uid://c8ov03gkkda4k" path="res://src/Scenes/PlayerCamera.tscn" id="5_csukg"]
-[ext_resource type="PackedScene" uid="uid://dysg5kffvxbql" path="res://src/Scenes/UI/PlayerHUD.tscn" id="6_o6iow"]
 [ext_resource type="PackedScene" uid="uid://cr6q5dxlkks" path="res://src/Scenes/Tower/LadderArea.tscn" id="7_csukg"]
 [ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="9_7kbtj"]
 [ext_resource type="PackedScene" uid="uid://bethw5tnlxnnt" path="res://src/Scenes/Actors/Enemies/MossyDungeon/CorruptedMushie/CorruptedMushie.tscn" id="10_ytsg0"]
@@ -401,12 +400,11 @@ size = Vector2(388, 295)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cqx2w"]
 size = Vector2(20, 362)
 
-[node name="TutorialMap" type="Node2D" unique_id=1194992242 node_paths=PackedStringArray("camera", "hud")]
+[node name="TutorialMap" type="Node2D" unique_id=1194992242 node_paths=PackedStringArray("camera")]
 script = ExtResource("1_tymde")
 map_name = "Billy's Bootcamp "
 map_theme_song = ExtResource("2_ys33i")
 camera = NodePath("PlayerCamera")
-hud = NodePath("HUD")
 
 [node name="ColorRect3" type="ColorRect" parent="." unique_id=724942982]
 offset_left = -10.0
@@ -468,15 +466,14 @@ tile_map_data = PackedByteArray("AABHABUAAAAJAAEAAABIABUAAAAKAAEAAABJABUAAAALAAE
 tile_set = SubResource("TileSet_an7um")
 
 [node name="PlayerCamera" parent="." unique_id=1579217330 instance=ExtResource("5_csukg")]
-position = Vector2(320, 333)
+position = Vector2(328, 337)
 limit_left = 0
-limit_top = 150
-limit_right = 2270
-limit_bottom = 510
+limit_top = 0
+limit_right = 2590
+limit_bottom = 750
 limit_smoothed = true
 position_smoothing_enabled = true
-
-[node name="HUD" parent="." unique_id=333182335 instance=ExtResource("6_o6iow")]
+position_smoothing_speed = 10.0
 
 [node name="LadderArea" parent="." unique_id=1538895851 node_paths=PackedStringArray("ladder_top", "ladder_bottom") instance=ExtResource("7_csukg")]
 position = Vector2(542, 391)
@@ -642,20 +639,6 @@ position = Vector2(2284, 455)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=238986306]
 position = Vector2(0, -123)
 shape = SubResource("RectangleShape2D_cqx2w")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2131735722]
-visible = false
-
-[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer" unique_id=1788998210]
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="SubViewport" type="SubViewport" parent="CanvasLayer/SubViewportContainer" unique_id=1020909844]
-transparent_bg = true
-handle_input_locally = false
-physics_object_picking = true
-size = Vector2i(640, 360)
-render_target_update_mode = 0
 
 [node name="TechTreeComputer" parent="." unique_id=1189367346 instance=ExtResource("16_cqx2w")]
 position = Vector2(1651, 448)

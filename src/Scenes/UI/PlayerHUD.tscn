@@ -1,17 +1,19 @@
 [gd_scene format=3 uid="uid://dysg5kffvxbql"]
 
 [ext_resource type="Script" uid="uid://dsdtoyyjdprcp" path="res://src/Scripts/HUD/player_hud.gd" id="1_m8qo1"]
-[ext_resource type="Texture2D" uid="uid://ckhgewvgdimpq" path="res://Assets/HUD/StatusBar_Bar.png" id="2_8d4p7"]
 [ext_resource type="PackedScene" uid="uid://pwttwkstxm3g" path="res://src/Scenes/UI/AbilityHUB.tscn" id="2_fw5mt"]
-[ext_resource type="Texture2D" uid="uid://bj6j1h1ekeits" path="res://Assets/HUD/StatusBar_HPFill.png" id="3_fw5mt"]
-[ext_resource type="Texture2D" uid="uid://begcqwfrig678" path="res://Assets/HUD/StatusBar_MPFill.png" id="4_8d4p7"]
+[ext_resource type="Texture2D" uid="uid://c8e2lnilg3yhr" path="res://Assets/HUD/NewPlayerHUD/NewHUD_BarsBG.png" id="3_3voo3"]
+[ext_resource type="Texture2D" uid="uid://c0ptjkbkwrahy" path="res://Assets/HUD/NewPlayerHUD/NewHPBar_Base.png" id="4_7qkr7"]
 [ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="5_nt012"]
+[ext_resource type="Texture2D" uid="uid://l7etrujqm1hx" path="res://Assets/HUD/NewPlayerHUD/NewHPBar_Fill.png" id="5_tjlva"]
+[ext_resource type="Texture2D" uid="uid://7afa116kemeu" path="res://Assets/HUD/NewPlayerHUD/NewMPBar_Base.png" id="6_7qkr7"]
 [ext_resource type="PackedScene" uid="uid://bih3bekt2ixjn" path="res://src/Scenes/UI/Bag.tscn" id="6_g1bs5"]
 [ext_resource type="PackedScene" uid="uid://dngkcgpb2st7c" path="res://src/Scenes/UI/ExpeditionTimer.tscn" id="7_g3oel"]
+[ext_resource type="Texture2D" uid="uid://d2lk756o7qqgx" path="res://Assets/HUD/NewPlayerHUD/NewMPBar_Fill.png" id="7_tjlva"]
 [ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="8_65fhw"]
 [ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="9_jyqen"]
-[ext_resource type="Texture2D" uid="uid://bob2oo3d75ybb" path="res://Assets/HUD/xpbar_base.png" id="11_6ndbt"]
-[ext_resource type="Texture2D" uid="uid://dluwh7ev7vu3e" path="res://Assets/HUD/xpbar_fill.png" id="12_8d4p7"]
+[ext_resource type="Texture2D" uid="uid://70adp83wjd4h" path="res://Assets/HUD/NewPlayerHUD/NewXPBar_Base.png" id="11_7qkr7"]
+[ext_resource type="Texture2D" uid="uid://q8w4d5mwenld" path="res://Assets/HUD/NewPlayerHUD/NewXPBar_Fill.png" id="12_7qkr7"]
 [ext_resource type="Texture2D" uid="uid://bggsgp4t53q5y" path="res://Assets/HUD/NoticeIcon.png" id="12_fw5mt"]
 [ext_resource type="PackedScene" uid="uid://13aket7geo5a" path="res://src/Scenes/UI/NotificationHub.tscn" id="12_wldwa"]
 [ext_resource type="Texture2D" uid="uid://dix63priuogkk" path="res://Assets/NodeGraphics/NodeGraphicsV2/Bag1_V2.png" id="13_fw5mt"]
@@ -31,7 +33,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 175), Vector2(0, 362)]
+"values": [Vector2(0, 175), Vector2(0, 1080)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -43,7 +45,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, -185), Vector2(0, -362)]
+"values": [Vector2(0, -185), Vector2(0, -1080)]
 }
 tracks/2/type = "method"
 tracks/2/imported = false
@@ -72,7 +74,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 362), Vector2(0, 175)]
+"values": [Vector2(0, 1080), Vector2(0, 175)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -84,7 +86,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, -362), Vector2(0, -185)]
+"values": [Vector2(0, -1080), Vector2(0, -185)]
 }
 tracks/2/type = "method"
 tracks/2/imported = false
@@ -255,7 +257,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.18, 1.5, 1.6466665, 1.961482, 2.1767612, 2.4, 3.403314, 3.6666665, 3.9125829, 4.135822, 5, 5.264826),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(-417, 157), Vector2(113.09985, 157), Vector2(172, 157), Vector2(704, 157), Vector2(-431, 157), Vector2(-431, 157), Vector2(128, 157), Vector2(128, 157), Vector2(573, 157), Vector2(-431, 157), Vector2(128, 157), Vector2(128, 157), Vector2(573, 157)]
+"values": [Vector2(-417, 540), Vector2(960, 540), Vector2(960, 540), Vector2(2000, 540), Vector2(-431, 540), Vector2(-431, 540), Vector2(960, 540), Vector2(960, 540), Vector2(2000, 540), Vector2(-431, 540), Vector2(960, 540), Vector2(960, 540), Vector2(2000, 540)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -288,7 +290,7 @@ tracks/3/path = NodePath(".")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 4),
+"times": PackedFloat32Array(0, 3.9333334),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [],
@@ -350,10 +352,10 @@ tracks/0/path = NodePath("../PlayerHUD/QuestHub:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
 "update": 0,
-"values": [Vector2(638, 102)]
+"values": []
 }
 
 [sub_resource type="Animation" id="Animation_7qkr7"]
@@ -390,10 +392,10 @@ tracks/0/path = NodePath("PlayerHUD/Bag:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
+"times": PackedFloat32Array(0, 0.100026734),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(60, 71), Vector2(60, -250)]
+"values": [Vector2(0, 0), Vector2(0, -1080)]
 }
 
 [sub_resource type="Animation" id="Animation_65fhw"]
@@ -408,10 +410,10 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(185, -250)]
+"values": [Vector2(0, -1080)]
 }
 
-[sub_resource type="Animation" id="Animation_fw5mt"]
+[sub_resource type="Animation" id="Animation_tjlva"]
 resource_name = "ShowBag"
 length = 0.2
 tracks/0/type = "value"
@@ -424,20 +426,24 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(60, -250), Vector2(60, 71)]
+"values": [Vector2(0, -1080), Vector2(0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jyqen"]
 _data = {
 &"HideBag": SubResource("Animation_wldwa"),
 &"RESET": SubResource("Animation_65fhw"),
-&"ShowBag": SubResource("Animation_fw5mt")
+&"ShowBag": SubResource("Animation_tjlva")
 }
 
-[node name="HUD" type="CanvasLayer" unique_id=129498783 node_paths=PackedStringArray("animation_player", "map_name_label", "expedition_timer")]
+[node name="HUD" type="CanvasLayer" unique_id=129498783 node_paths=PackedStringArray("player_health_bar", "player_mp_bar", "animation_player", "hp_label", "mp_label", "map_name_label", "expedition_timer")]
 process_mode = 3
 script = ExtResource("1_m8qo1")
+player_health_bar = NodePath("PlayerHUD/PlayerHealthBar")
+player_mp_bar = NodePath("PlayerHUD/PlayerMPBar")
 animation_player = NodePath("AnimationPlayer")
+hp_label = NodePath("PlayerHUD/HPLabel")
+mp_label = NodePath("PlayerHUD/MPLabel")
 map_name_label = NodePath("PlayerHUD/MapeName")
 expedition_timer = NodePath("PlayerHUD/ExpeditionTimer")
 
@@ -452,9 +458,20 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="AbilityHub" parent="PlayerHUD" unique_id=1622225446 instance=ExtResource("2_fw5mt")]
+[node name="BarsBG" type="TextureRect" parent="PlayerHUD" unique_id=1530859971]
 layout_mode = 1
-mouse_filter = 2
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -280.0
+offset_top = -119.0
+offset_right = 280.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("3_3voo3")
 
 [node name="PlayerHealthBar" type="TextureProgressBar" parent="PlayerHUD" unique_id=1742179397]
 layout_mode = 1
@@ -463,26 +480,33 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -176.0
-offset_top = -21.0
-offset_right = -16.0
-offset_bottom = -9.0
+offset_left = -196.0
+offset_top = -92.0
+offset_right = 191.0
+offset_bottom = -62.0
 grow_horizontal = 2
 grow_vertical = 0
 value = 80.0
-texture_under = ExtResource("2_8d4p7")
-texture_progress = ExtResource("3_fw5mt")
+texture_under = ExtResource("4_7qkr7")
+texture_progress = ExtResource("5_tjlva")
 
 [node name="PlayerMPBar" type="TextureProgressBar" parent="PlayerHUD" unique_id=628640297]
-layout_mode = 0
-offset_left = 336.0
-offset_top = 339.0
-offset_right = 496.0
-offset_bottom = 352.0
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -196.0
+offset_top = -58.0
+offset_right = 191.0
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 0
 step = 0.1
 value = 60.0
-texture_under = ExtResource("2_8d4p7")
-texture_progress = ExtResource("4_8d4p7")
+texture_under = ExtResource("6_7qkr7")
+texture_progress = ExtResource("7_tjlva")
 
 [node name="HPLabel" type="Label" parent="PlayerHUD" unique_id=683475156]
 layout_mode = 1
@@ -491,17 +515,18 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -170.0
-offset_top = -35.0
-offset_right = -87.0
-offset_bottom = -19.0
+offset_left = -177.5
+offset_top = -88.0
+offset_right = 18.0
+offset_bottom = -67.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("9_jyqen")
-theme_override_font_sizes/font_size = 15
-text = "100/100"
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("5_nt012")
+theme_override_font_sizes/font_size = 18
+text = "HP 100/100"
 
 [node name="MPLabel" type="Label" parent="PlayerHUD" unique_id=258966817]
 layout_mode = 1
@@ -510,18 +535,18 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 84.0
-offset_top = -35.0
-offset_right = 169.0
-offset_bottom = -19.0
+offset_left = -180.5
+offset_top = -54.0
+offset_right = 14.0
+offset_bottom = -33.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("9_jyqen")
-theme_override_font_sizes/font_size = 15
-text = "100/100"
-horizontal_alignment = 2
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("5_nt012")
+theme_override_font_sizes/font_size = 18
+text = "MP 100/100"
 
 [node name="MapeName" type="Label" parent="PlayerHUD" unique_id=727908015]
 layout_mode = 1
@@ -535,76 +560,36 @@ offset_bottom = 24.0
 grow_horizontal = 0
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("5_nt012")
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 24
 text = "Floor 1 -1"
 horizontal_alignment = 2
 
 [node name="ExpeditionTimer" parent="PlayerHUD" unique_id=1374901185 instance=ExtResource("7_g3oel")]
 layout_mode = 1
-offset_right = 81.0
 
 [node name="HuntQuota" type="RichTextLabel" parent="PlayerHUD" unique_id=325974037]
-visible = false
 layout_mode = 0
-offset_left = 481.0
-offset_top = 50.0
-offset_right = 605.0
-offset_bottom = 65.0
+offset_left = 1589.0
+offset_top = 245.0
+offset_right = 1870.0
+offset_bottom = 291.0
 theme_override_constants/outline_size = 6
-theme_override_fonts/normal_font = ExtResource("9_jyqen")
-theme_override_font_sizes/normal_font_size = 14
+theme_override_fonts/normal_font = ExtResource("5_nt012")
+theme_override_font_sizes/normal_font_size = 22
 bbcode_enabled = true
-text = "Expedition Floor"
 horizontal_alignment = 1
 
 [node name="MonstersLeft" type="RichTextLabel" parent="PlayerHUD" unique_id=130429852]
 layout_mode = 0
-offset_left = 460.0
+offset_left = 1731.0
 offset_top = 78.0
-offset_right = 629.0
+offset_right = 1900.0
 offset_bottom = 94.0
 theme_override_constants/outline_size = 6
 theme_override_fonts/normal_font = ExtResource("9_jyqen")
 theme_override_font_sizes/normal_font_size = 12
 bbcode_enabled = true
 horizontal_alignment = 1
-
-[node name="XPAmountLabel" type="Label" parent="PlayerHUD" unique_id=2114485998]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -202.0
-offset_top = -24.0
-offset_right = -5.0
-offset_bottom = -8.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("9_jyqen")
-theme_override_font_sizes/font_size = 16
-text = "10/10 XP"
-horizontal_alignment = 2
-
-[node name="LevelLabel" type="Label" parent="PlayerHUD" unique_id=2004479704]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -633.0
-offset_top = -24.0
-offset_right = -545.0
-offset_bottom = -8.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("9_jyqen")
-theme_override_font_sizes/font_size = 16
-text = "Level 1"
 
 [node name="XPBar" type="TextureProgressBar" parent="PlayerHUD" unique_id=1748730190]
 layout_mode = 1
@@ -613,14 +598,53 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -320.0
-offset_top = -9.0
-offset_right = 320.0
+offset_left = -264.0
+offset_top = -24.0
+offset_right = 266.0
 grow_horizontal = 2
 grow_vertical = 0
 step = 0.1
-texture_under = ExtResource("11_6ndbt")
-texture_progress = ExtResource("12_8d4p7")
+value = 80.0
+texture_under = ExtResource("11_7qkr7")
+texture_progress = ExtResource("12_7qkr7")
+
+[node name="XPAmountLabel" type="Label" parent="PlayerHUD" unique_id=2114485998]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1168.0
+offset_top = -21.0
+offset_right = -936.0
+offset_bottom = -5.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("5_nt012")
+theme_override_font_sizes/font_size = 14
+text = "XP 1000/1000"
+
+[node name="LevelLabel" type="Label" parent="PlayerHUD" unique_id=2004479704]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -839.0
+offset_top = -21.0
+offset_right = -751.0
+offset_bottom = -2.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("5_nt012")
+theme_override_font_sizes/font_size = 14
+text = "Level 1"
+horizontal_alignment = 2
 
 [node name="Flash" type="ColorRect" parent="PlayerHUD" unique_id=1206488663]
 modulate = Color(1, 1, 1, 0)
@@ -654,55 +678,59 @@ text = "[color=aqua]currency: 1000000[/color]"
 horizontal_alignment = 2
 
 [node name="StartHuntLabel" type="Label" parent="PlayerHUD" unique_id=915542649]
-layout_mode = 0
-offset_left = -459.0
-offset_top = 157.0
-offset_right = -42.00305
-offset_bottom = 240.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1419.0
+offset_top = -383.0
+offset_right = -1002.0044
+offset_bottom = -300.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_colors/font_color = Color(7.70092e-07, 0.7830455, 0.38619787, 1)
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("9_jyqen")
-theme_override_font_sizes/font_size = 38
+theme_override_font_sizes/font_size = 64
 text = "Hunt Challenge!"
 horizontal_alignment = 1
 
 [node name="PickUpNotifier" type="VBoxContainer" parent="PlayerHUD" unique_id=484786063]
 layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -633.0
-offset_top = -317.0
-offset_right = -447.0
-offset_bottom = -146.0
-grow_horizontal = 0
-grow_vertical = 0
+offset_left = 26.0
+offset_top = 22.0
+offset_right = 323.0
+offset_bottom = 334.0
 mouse_filter = 2
 
 [node name="StartHuntChallengeButton" type="Button" parent="PlayerHUD" unique_id=183096058]
 visible = false
 layout_mode = 0
-offset_left = 456.0
-offset_top = 4.0
-offset_right = 536.0
-offset_bottom = 36.0
+offset_left = 1690.0
+offset_top = 65.0
+offset_right = 1890.0
+offset_bottom = 137.0
 mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0.9411765, 0.15686275, 0, 1)
 theme_override_fonts/font = ExtResource("9_jyqen")
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 32
 text = "Start 
 Hunt Challenge"
 
 [node name="NoticeIcon" type="TextureRect" parent="PlayerHUD/StartHuntChallengeButton" unique_id=1372142193]
-layout_mode = 0
-offset_left = 79.0
-offset_top = -2.0
-offset_right = 111.0
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -67.0
+offset_top = -31.0
+offset_right = -6.0
 offset_bottom = 30.0
+grow_vertical = 2
 texture = ExtResource("12_fw5mt")
-stretch_mode = 2
+expand_mode = 1
 
 [node name="OpenTowerMapButton" type="Button" parent="PlayerHUD" unique_id=1987809708]
 visible = false
@@ -724,30 +752,33 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 156.0
-offset_bottom = 40.0
+offset_left = 838.0
+offset_top = 919.0
+offset_right = 1095.0
+offset_bottom = 976.0
 grow_horizontal = 1
 grow_vertical = 1
 
 [node name="OpenBagNotice" type="Control" parent="PlayerHUD" unique_id=1767139368]
-visible = false
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 5.0
-offset_top = -65.0
-offset_right = 133.0
-offset_bottom = -25.0
+offset_left = 25.0
+offset_top = -185.0
+offset_right = 269.0
+offset_bottom = -94.0
 grow_vertical = 0
 
 [node name="TextureRect" type="TextureRect" parent="PlayerHUD/OpenBagNotice" unique_id=1820762157]
-layout_mode = 0
-offset_left = -4.0
-offset_right = 36.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -38.0
+offset_right = 76.0
+offset_bottom = 38.0
+grow_vertical = 2
 texture = ExtResource("13_fw5mt")
 
 [node name="Label" type="Label" parent="PlayerHUD/OpenBagNotice" unique_id=1967052326]
@@ -757,49 +788,71 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -87.0
-offset_top = -17.0
-offset_right = -12.0
-offset_bottom = 18.0
+offset_left = -192.0
+offset_top = -38.5
+offset_right = 24.0
+offset_bottom = 38.5
 grow_horizontal = 0
 grow_vertical = 2
 theme_override_constants/outline_size = 8
-theme_override_fonts/font = ExtResource("9_jyqen")
+theme_override_fonts/font = ExtResource("5_nt012")
+theme_override_font_sizes/font_size = 30
 text = "Press 'B' To
 Open Bag!"
+horizontal_alignment = 1
 
 [node name="QuestHub" parent="PlayerHUD" unique_id=1129499445 instance=ExtResource("14_xxan5")]
 layout_mode = 1
-offset_left = -2.0
-offset_right = 130.0
+offset_left = -339.0
+offset_top = -231.5
+offset_bottom = 231.5
 
 [node name="RoomInfoBanner" parent="PlayerHUD" unique_id=1196855950 instance=ExtResource("16_fnmb5")]
+visible = false
 layout_mode = 1
-offset_left = 131.0
-offset_top = -145.0
-offset_right = 321.0
-offset_bottom = -85.0
+anchors_preset = 6
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -378.0
+offset_top = -366.0
+offset_right = -7.0
+offset_bottom = -259.0
+grow_horizontal = 0
 
 [node name="Bag" parent="PlayerHUD" unique_id=668700631 instance=ExtResource("6_g1bs5")]
 z_index = 4096
 layout_mode = 1
-offset_left = -135.0
-offset_top = -430.0
-offset_right = 361.0
-offset_bottom = -203.00003
+offset_top = -1080.0
+offset_bottom = -1080.0
+
+[node name="AbilityHub" parent="PlayerHUD" unique_id=1622225446 instance=ExtResource("2_fw5mt")]
+layout_mode = 1
+anchors_preset = 2
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 0.0
+anchor_bottom = 1.0
+offset_left = 19.0
+offset_top = -97.0
+offset_right = 527.0
+offset_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 0
+mouse_filter = 2
 
 [node name="AdvanceClassNotice" type="RichTextLabel" parent="PlayerHUD" unique_id=848029312]
 visible = false
 layout_mode = 0
-offset_left = 157.0
-offset_top = 5.0
-offset_right = 289.0
-offset_bottom = 40.0
+offset_left = 764.0
+offset_top = 885.0
+offset_right = 1168.0
+offset_bottom = 919.0
 theme_override_constants/outline_size = 5
-theme_override_fonts/normal_font = ExtResource("9_jyqen")
+theme_override_fonts/normal_font = ExtResource("5_nt012")
+theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
-text = "[color=purple]Select your Class
-at AP Center! [/color]"
+text = "[color=purple]Select your Class at AP Center! [/color]"
+horizontal_alignment = 1
 
 [node name="BigNotificationLabel" type="Label" parent="PlayerHUD" unique_id=759498820]
 visible = false
@@ -818,6 +871,7 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("5_nt012")
+theme_override_font_sizes/font_size = 46
 horizontal_alignment = 1
 
 [node name="TopBlackBar" type="ColorRect" parent="PlayerHUD" unique_id=877174551]
@@ -838,7 +892,7 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 175.0
-offset_bottom = 175.00012
+offset_bottom = 175.00098
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2

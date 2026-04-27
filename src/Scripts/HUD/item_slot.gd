@@ -6,7 +6,7 @@ enum SLOT_TYPE {BAG, BANK, SHOP}
 enum SLOT_LOCALE {INVENTORY, BANK}
 @export var slot_locale = SLOT_LOCALE.INVENTORY
 @export var slot_type : SLOT_TYPE = SLOT_TYPE.BAG
-
+@export var slot_index : int
 @export var item_icon: TextureRect
 @export var quantity_label: Label
 
@@ -33,9 +33,9 @@ func _process(delta: float) -> void:
 	pass
 
 func show_quantity_label(quantity : int) -> void:
-	if slot_type == SLOT_TYPE.BAG:
+	if slot_type == SLOT_TYPE.BAG or slot_locale == SLOT_LOCALE.INVENTORY:
 		quantity_label.text = "%s/%s" % [quantity, int(PlayerStats.player_stats["Max Bag Stack"])]
-	elif slot_type == SLOT_TYPE.BANK:
+	elif slot_type == SLOT_TYPE.BANK or slot_locale == SLOT_LOCALE.BANK:
 		quantity_label.text = "%s/%s" % [quantity, int(PlayerStats.player_stats["Max Bank Stack"])]
 	else:
 		quantity_label.text = str(quantity)
@@ -67,7 +67,7 @@ func _on_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			if slot_type == SLOT_TYPE.BAG:
-				InventoryManager.populate_inventory_description.emit(item)
+				InventoryManager.populate_inventory_description.emit(item,slot_index)
 				play_sfx(clicks.pick_random())
 				return
 			var slot_location : String
@@ -78,7 +78,7 @@ func _on_gui_input(event: InputEvent) -> void:
 				SLOT_LOCALE.BANK:
 					slot_location = "Bank"
 					
-			InventoryManager.populate_market_menu.emit(item,slot_location)
+			InventoryManager.populate_market_menu.emit(item,slot_location,slot_index)
 
 func play_sfx(sound: AudioStream, volume: float = 0.0):
 	var player := AudioStreamPlayer.new()

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://y6ru08whvroa"]
 
-[ext_resource type="Script" path="res://src/Scripts/TechTree/beginner_ability_tech_tree.gd" id="1_jigag"]
+[ext_resource type="Script" uid="uid://cgnvowy6po0ng" path="res://src/Scripts/TechTree/beginner_ability_tech_tree.gd" id="1_jigag"]
 [ext_resource type="PackedScene" uid="uid://bhimqkbcn26r2" path="res://src/Scenes/TechTree/TechNode.tscn" id="2_7au7t"]
 [ext_resource type="Resource" uid="uid://bonlosm00p4kf" path="res://src/Resources/TechTree/TechNodes/DashAttack.tres" id="3_acel5"]
 [ext_resource type="Resource" uid="uid://cq5drdy7t8gas" path="res://src/Resources/TechTree/TechNodes/DoubleJump.tres" id="3_gvncw"]
@@ -12,10 +12,10 @@
 script = ExtResource("1_jigag")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=389501912]
-offset_left = -62.0
-offset_top = -33.0
-offset_right = 694.0
-offset_bottom = 418.0
+offset_left = -742.0
+offset_top = -407.0
+offset_right = 1360.0
+offset_bottom = 778.0
 mouse_filter = 2
 color = Color(0.11858138, 0.11858138, 0.11858138, 1)
 
@@ -35,6 +35,7 @@ tech_node_stats = ExtResource("3_gvncw")
 node_type = 2
 
 [node name="ClassSelectionNode" parent="." unique_id=1934592524 instance=ExtResource("6_yrrks")]
+visible = false
 position = Vector2(329, 84)
 
 [node name="Line2D" type="Line2D" parent="." unique_id=625943590]
@@ -44,17 +45,17 @@ width = 5.0
 
 [node name="Line2D2" type="Line2D" parent="." unique_id=1033140257]
 position = Vector2(2, 36)
-points = PackedVector2Array(143, 137, 143, 202)
+points = PackedVector2Array(143, 137, 143, 184)
 width = 6.0
 
 [node name="Line2D3" type="Line2D" parent="." unique_id=336424129]
 position = Vector2(358, 36)
-points = PackedVector2Array(143, 137, 143, 202)
+points = PackedVector2Array(143, 137, 143, 184)
 width = 6.0
 
 [node name="Line2D4" type="Line2D" parent="." unique_id=1157426340]
 position = Vector2(187, 35)
-points = PackedVector2Array(143, 138, 143, 203)
+points = PackedVector2Array(143, 138, 143, 184)
 width = 6.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1006028746]
@@ -75,33 +76,34 @@ text = "AP Available: 1"
 horizontal_alignment = 2
 
 [node name="Marker2D" type="Marker2D" parent="CanvasLayer" unique_id=2080506174]
-position = Vector2(5, 5)
+position = Vector2(683, 182)
 
 [node name="ExitButton" type="Button" parent="CanvasLayer" unique_id=1982611885]
-offset_left = 21.0
-offset_top = 43.0
-offset_right = 71.0
-offset_bottom = 67.0
+offset_left = 276.0
+offset_top = 136.0
+offset_right = 391.0
+offset_bottom = 196.0
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("7_kcoxo")
+theme_override_font_sizes/font_size = 52
 text = "Close"
 
 [node name="Label2" type="Label" parent="CanvasLayer" unique_id=1269328633]
-offset_left = 22.0
-offset_top = 13.0
-offset_right = 155.0
-offset_bottom = 37.0
+offset_left = 816.0
+offset_top = 207.0
+offset_right = 1080.0
+offset_bottom = 255.0
 theme_override_fonts/font = ExtResource("7_kcoxo")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 48
 text = "Core Abilities"
 
 [node name="Label" type="Label" parent="CanvasLayer" unique_id=1508531494]
-offset_left = 76.0
-offset_top = 47.0
-offset_right = 159.0
-offset_bottom = 63.0
+offset_left = 228.0
+offset_top = 195.0
+offset_right = 499.0
+offset_bottom = 247.0
 theme_override_fonts/font = ExtResource("7_kcoxo")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 52
 text = "'Esc' to Close"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1156812690]

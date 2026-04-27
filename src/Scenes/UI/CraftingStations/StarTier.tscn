@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://b7emqypqr6gj0" path="res://Assets/Facilities/TierStar.png" id="1_myh07"]
 
 [node name="StartTier" type="TextureRect" unique_id=2131993530]
+custom_minimum_size = Vector2(8, 8)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -15,4 +16,4 @@ offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_myh07")
-stretch_mode = 2
+expand_mode = 1

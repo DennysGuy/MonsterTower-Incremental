@@ -19,7 +19,7 @@ func _physics_process(delta: float) -> void:
 			seconds -= 1
 			
 			if seconds <= 10:
-				SignalBus.play_countdown_beep.emit()
+				PlayerHudSignalBus.play_countdown_beep.emit()
 			
 			milliseconds = 0.99
 			if seconds <= 0:

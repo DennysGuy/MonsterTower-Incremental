@@ -1,4 +1,4 @@
-class_name PickupNotificationItem extends Panel
+class_name PickupNotificationItem extends PanelContainer
 
 @export var icon: TextureRect
 @export var label: Label

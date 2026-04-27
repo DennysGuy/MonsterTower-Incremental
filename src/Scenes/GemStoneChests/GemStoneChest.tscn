@@ -134,9 +134,6 @@ shape = SubResource("RectangleShape2D_qjqw1")
 offset_left = -43.0
 offset_right = 45.0
 
-[node name="Tag" parent="NameTag" index="1"]
-text = "Gem Chest I"
-
 [node name="Statemachine" type="Node" parent="." unique_id=1536916790 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("5_y8qvr")
 initial_state = NodePath("Closed")

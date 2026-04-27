@@ -10,10 +10,34 @@
 [ext_resource type="Texture2D" uid="uid://d0y4mpjou53tw" path="res://Assets/HUD/FacilitiesNotify.png" id="8_ojxq6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l673o"]
-size = Vector2(32, 30)
+size = Vector2(59, 58)
 
 [sub_resource type="Animation" id="Animation_l673o"]
 length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-2, -5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BG:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1, -4)]
+}
 
 [sub_resource type="Animation" id="Animation_qmqu0"]
 resource_name = "clicked"
@@ -25,10 +49,10 @@ tracks/0/path = NodePath("Icon:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667, 0.20061617),
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(-2, 0), Vector2(3, 0), Vector2(-2, 0), Vector2(3, 0), Vector2(-2, 0), Vector2(3, 0)]
+"values": [Vector2(-1, -5), Vector2(-2, -5), Vector2(3, -5), Vector2(-2, -5), Vector2(-3, -5), Vector2(-2, -5), Vector2(-3, -5)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -40,7 +64,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1, 1)]
+"values": [Vector2(2, 2), Vector2(2.1, 2.1), Vector2(2, 2)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -61,10 +85,10 @@ tracks/3/path = NodePath("BG:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.033450063, 0.066621475, 0.099954806, 0.13328815, 0.16662148, 0.20057097),
+"times": PackedFloat32Array(0, 0.033450063, 0.066621475, 0.099954806, 0.13328815, 0.16662148, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(-2, 0), Vector2(3, 0), Vector2(-2, 0), Vector2(3, 0), Vector2(-2, 0), Vector2(3, 0)]
+"values": [Vector2(-1, -4), Vector2(-2, -4), Vector2(3, -4), Vector2(-2, 0), Vector2(3, -4), Vector2(-2, -4), Vector2(-1, -4)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -88,7 +112,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0, 0.099855386, 0.19985539),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1, 1)]
+"values": [Vector2(2, 2), Vector2(2.1, 2.1), Vector2(2, 2)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0lniu"]
@@ -101,13 +125,18 @@ _data = {
 script = ExtResource("1_2bhwb")
 
 [node name="BG" type="Sprite2D" parent="." unique_id=1116998811]
+position = Vector2(-1, -4)
+scale = Vector2(2, 2)
 texture = ExtResource("2_l673o")
 
 [node name="NodeFillV2" type="Sprite2D" parent="." unique_id=2014477750]
-position = Vector2(-2, 0)
+position = Vector2(-2, -4)
+scale = Vector2(2, 2)
 texture = ExtResource("3_cw315")
 
 [node name="Icon" type="Sprite2D" parent="." unique_id=1627255305]
+position = Vector2(-2, -5)
+scale = Vector2(2, 2)
 texture = ExtResource("3_0lniu")
 
 [node name="SfxPlayer" parent="." unique_id=874693124 instance=ExtResource("5_nhb52")]
@@ -115,6 +144,7 @@ texture = ExtResource("3_0lniu")
 [node name="ClickArea" parent="." unique_id=406455460 instance=ExtResource("3_qmqu0")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ClickArea" unique_id=1196420149]
+position = Vector2(-1.5, -4)
 shape = SubResource("RectangleShape2D_l673o")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1790142653]
@@ -123,9 +153,9 @@ libraries/ = SubResource("AnimationLibrary_0lniu")
 [node name="LevelLabel" type="RichTextLabel" parent="." unique_id=1701520186]
 z_index = 4096
 offset_left = -34.0
-offset_top = -31.0
+offset_top = -49.0
 offset_right = 31.0
-offset_bottom = -15.0
+offset_bottom = -33.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("6_cw315")
 bbcode_enabled = true
@@ -134,8 +164,8 @@ horizontal_alignment = 1
 
 [node name="FacilitiesNotify" type="Sprite2D" parent="." unique_id=959086529]
 visible = false
-position = Vector2(17.999998, 7.1054274e-15)
-scale = Vector2(0.60714287, 0.60714287)
+position = Vector2(39.000004, -3.9999995)
+scale = Vector2(1.3035716, 1.3035716)
 texture = ExtResource("8_ojxq6")
 
 [connection signal="input_event" from="ClickArea" to="." method="_on_click_area_input_event"]

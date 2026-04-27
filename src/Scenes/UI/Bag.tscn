@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://5e7lty5pg25b" path="res://src/Scripts/HUD/bag.gd" id="1_48twr"]
 [ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="2_4vhog"]
-[ext_resource type="Texture2D" uid="uid://bbhme3up5hugd" path="res://Assets/HUD/Bags/NewBag.png" id="3_1i4nw"]
+[ext_resource type="Texture2D" uid="uid://cgpwqqo5p241y" path="res://Assets/HUD/Bags/Bag9SliceBG.png" id="3_1u23v"]
 [ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="4_4vhog"]
 [ext_resource type="Texture2D" uid="uid://fql6hkix8ti4" path="res://Assets/HUD/Bags/BagButton.png" id="4_cuvis"]
 [ext_resource type="Texture2D" uid="uid://bot5flcdwi2w3" path="res://Assets/HUD/Bags/DropsBagBG.png" id="4_le8wj"]
@@ -13,7 +13,6 @@
 [ext_resource type="Texture2D" uid="uid://5e6rkk1w2mse" path="res://Assets/HUD/Bags/Bag_2_ButtonPressed.png" id="6_b6v18"]
 [ext_resource type="Texture2D" uid="uid://b05lg3tfu6n0b" path="res://Assets/HUD/Bags/BagButtonHover.png" id="6_rvsgi"]
 [ext_resource type="Texture2D" uid="uid://bn61q72i8n3u2" path="res://Assets/HUD/Bags/DropsBag_Button_Pressed.png" id="7_2bt08"]
-[ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="7_cy2jp"]
 [ext_resource type="Texture2D" uid="uid://2onts6wkowiw" path="res://Assets/HUD/Bags/Bag_2_ButtonHover.png" id="7_le8wj"]
 [ext_resource type="Texture2D" uid="uid://d045w4ff8lkvx" path="res://Assets/HUD/Bags/DropsBag_Button_Hover.png" id="8_4qwln"]
 [ext_resource type="PackedScene" uid="uid://b5yusabdotx6r" path="res://src/Scenes/UI/BagItemIcon.tscn" id="9_s3gps"]
@@ -25,269 +24,314 @@
 [ext_resource type="Texture2D" uid="uid://bl23rai5wfiu7" path="res://Assets/HUD/Bags/GemBag_Button_Hover.png" id="15_1u23v"]
 [ext_resource type="Texture2D" uid="uid://clrwsm2p7yodf" path="res://Assets/HUD/Bags/UseBag_Button.png" id="16_2eryp"]
 [ext_resource type="Texture2D" uid="uid://b78kv3lisgc5k" path="res://Assets/HUD/Bags/UseBag_Button_Hover.png" id="17_1u23v"]
-[ext_resource type="Texture2D" uid="uid://daqvtd1j20dli" path="res://Assets/HUD/Bags/BankInventoryBG.png" id="26_1u23v"]
+[ext_resource type="FontFile" uid="uid://dgu1a66dfe8w" path="res://Assets/Fonts/Maplestory OTF Light.otf" id="22_16b0i"]
+[ext_resource type="Texture2D" uid="uid://bkgajowh8nxc4" path="res://Assets/HUD/NewItemPreviewBG.png" id="27_16b0i"]
 
 [node name="Bag" type="Control" unique_id=668700631]
 layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -343.0
-offset_top = -99.5
-offset_right = 149.5
-offset_bottom = 99.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_48twr")
 
 [node name="SfxPlayer" parent="." unique_id=1882692087 instance=ExtResource("2_4vhog")]
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=2010641799]
+[node name="BagBG" type="NinePatchRect" parent="." unique_id=1714510015]
 layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
+anchors_preset = 8
+anchor_left = 0.5
 anchor_top = 0.5
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -312.0
-offset_top = -110.0
-offset_bottom = 110.0
-grow_horizontal = 0
+offset_left = -430.25
+offset_top = -318.5
+offset_right = 520.5
+offset_bottom = 318.5
+grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_1i4nw")
-stretch_mode = 2
+texture = ExtResource("3_1u23v")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
 
-[node name="BagBG" type="TextureRect" parent="TextureRect" unique_id=1419875251]
+[node name="BagBGColor" type="TextureRect" parent="BagBG" unique_id=1419875251]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 9.0
+offset_right = -207.5
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("4_le8wj")
 
-[node name="GridContainer" type="GridContainer" parent="TextureRect" unique_id=1000287608]
+[node name="GridContainer" type="GridContainer" parent="BagBG" unique_id=1000287608]
 layout_mode = 0
-offset_left = 7.75
-offset_top = 27.25
-offset_right = 147.75
-offset_bottom = 167.25
+offset_left = 54.25
+offset_top = 89.75
+offset_right = 322.25
+offset_bottom = 488.5
 theme_override_constants/h_separation = 4
 theme_override_constants/v_separation = 4
 columns = 4
 
-[node name="Slot" parent="TextureRect/GridContainer" unique_id=1429955304 instance=ExtResource("4_s3gps")]
+[node name="Slot" parent="BagBG/GridContainer" unique_id=782442892 instance=ExtResource("4_s3gps")]
 layout_mode = 2
 
-[node name="Slot2" parent="TextureRect/GridContainer" unique_id=1326896681 instance=ExtResource("4_s3gps")]
+[node name="Slot2" parent="BagBG/GridContainer" unique_id=450778169 instance=ExtResource("4_s3gps")]
 layout_mode = 2
 
-[node name="Slot3" parent="TextureRect/GridContainer" unique_id=1953555652 instance=ExtResource("4_s3gps")]
+[node name="Slot3" parent="BagBG/GridContainer" unique_id=817839641 instance=ExtResource("4_s3gps")]
 layout_mode = 2
 
-[node name="Slot4" parent="TextureRect/GridContainer" unique_id=2103177244 instance=ExtResource("4_s3gps")]
+[node name="Slot4" parent="BagBG/GridContainer" unique_id=1572285411 instance=ExtResource("4_s3gps")]
 layout_mode = 2
 
-[node name="Slot5" parent="TextureRect/GridContainer" unique_id=580002481 instance=ExtResource("4_s3gps")]
+[node name="Slot5" parent="BagBG/GridContainer" unique_id=503062919 instance=ExtResource("4_s3gps")]
 layout_mode = 2
 
-[node name="Slot6" parent="TextureRect/GridContainer" unique_id=952062929 instance=ExtResource("4_s3gps")]
+[node name="Slot6" parent="BagBG/GridContainer" unique_id=710448561 instance=ExtResource("4_s3gps")]
 layout_mode = 2
 
-[node name="Slot7" parent="TextureRect/GridContainer" unique_id=1947717381 instance=ExtResource("4_s3gps")]
+[node name="Slot7" parent="BagBG/GridContainer" unique_id=589896743 instance=ExtResource("4_s3gps")]
 layout_mode = 2
 
-[node name="Slot8" parent="TextureRect/GridContainer" unique_id=1216625652 instance=ExtResource("4_s3gps")]
+[node name="Slot8" parent="BagBG/GridContainer" unique_id=1356671834 instance=ExtResource("4_s3gps")]
 layout_mode = 2
 
-[node name="Slot9" parent="TextureRect/GridContainer" unique_id=1470321819 instance=ExtResource("4_s3gps")]
+[node name="Slot9" parent="BagBG/GridContainer" unique_id=880787671 instance=ExtResource("4_s3gps")]
 layout_mode = 2
 
-[node name="Slot10" parent="TextureRect/GridContainer" unique_id=1734207277 instance=ExtResource("4_s3gps")]
+[node name="Slot10" parent="BagBG/GridContainer" unique_id=946008149 instance=ExtResource("4_s3gps")]
 layout_mode = 2
 
-[node name="Slot11" parent="TextureRect/GridContainer" unique_id=1386268895 instance=ExtResource("4_s3gps")]
+[node name="Slot11" parent="BagBG/GridContainer" unique_id=832331515 instance=ExtResource("4_s3gps")]
 layout_mode = 2
 
-[node name="Slot12" parent="TextureRect/GridContainer" unique_id=2139372294 instance=ExtResource("4_s3gps")]
+[node name="Slot12" parent="BagBG/GridContainer" unique_id=573301336 instance=ExtResource("4_s3gps")]
 layout_mode = 2
 
-[node name="Slot13" parent="TextureRect/GridContainer" unique_id=729831780 instance=ExtResource("4_s3gps")]
+[node name="Slot13" parent="BagBG/GridContainer" unique_id=936756869 instance=ExtResource("4_s3gps")]
 layout_mode = 2
 
-[node name="Slot14" parent="TextureRect/GridContainer" unique_id=1137454382 instance=ExtResource("4_s3gps")]
+[node name="Slot14" parent="BagBG/GridContainer" unique_id=1680707138 instance=ExtResource("4_s3gps")]
 layout_mode = 2
 
-[node name="Slot15" parent="TextureRect/GridContainer" unique_id=277415353 instance=ExtResource("4_s3gps")]
+[node name="Slot15" parent="BagBG/GridContainer" unique_id=1731892830 instance=ExtResource("4_s3gps")]
 layout_mode = 2
 
-[node name="Slot16" parent="TextureRect/GridContainer" unique_id=1890032955 instance=ExtResource("4_s3gps")]
+[node name="Slot16" parent="BagBG/GridContainer" unique_id=880339862 instance=ExtResource("4_s3gps")]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="TextureRect" unique_id=1983440959]
+[node name="Slot17" parent="BagBG/GridContainer" unique_id=1166204596 instance=ExtResource("4_s3gps")]
+layout_mode = 2
+
+[node name="Slot18" parent="BagBG/GridContainer" unique_id=719088258 instance=ExtResource("4_s3gps")]
+layout_mode = 2
+
+[node name="Slot19" parent="BagBG/GridContainer" unique_id=2119321573 instance=ExtResource("4_s3gps")]
+layout_mode = 2
+
+[node name="Slot20" parent="BagBG/GridContainer" unique_id=21190279 instance=ExtResource("4_s3gps")]
+layout_mode = 2
+
+[node name="Slot21" parent="BagBG/GridContainer" unique_id=1540023449 instance=ExtResource("4_s3gps")]
+layout_mode = 2
+
+[node name="Slot22" parent="BagBG/GridContainer" unique_id=1002002267 instance=ExtResource("4_s3gps")]
+layout_mode = 2
+
+[node name="Slot23" parent="BagBG/GridContainer" unique_id=1173736755 instance=ExtResource("4_s3gps")]
+layout_mode = 2
+
+[node name="Slot24" parent="BagBG/GridContainer" unique_id=168374984 instance=ExtResource("4_s3gps")]
+layout_mode = 2
+
+[node name="ShowBank" type="TextureButton" parent="BagBG" unique_id=1490028371]
+visible = false
+custom_minimum_size = Vector2(60, 30)
+layout_mode = 0
+offset_left = 267.25
+offset_top = 37.5
+offset_right = 364.25
+offset_bottom = 67.5
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("5_812es")
+texture_pressed = ExtResource("6_b6v18")
+texture_hover = ExtResource("7_le8wj")
+stretch_mode = 0
+
+[node name="ShowBankLabel" type="Label" parent="BagBG/ShowBank" unique_id=1985131050]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -17.0
+offset_top = -4.1666718
+offset_right = 19.0
+offset_bottom = 3.8333282
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("22_16b0i")
+theme_override_font_sizes/font_size = 12
+text = "Toggle Bank"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BagBG" unique_id=1983440959]
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -152.0
-offset_top = 3.0
-offset_right = 137.0
-offset_bottom = 24.0
+offset_left = -460.125
+offset_top = 29.5
+offset_right = -220.125
+offset_bottom = 67.5
 grow_horizontal = 2
 theme_override_constants/separation = 0
 
-[node name="InventoryTab" type="TextureButton" parent="TextureRect/HBoxContainer" unique_id=1148902090]
+[node name="InventoryTab" type="TextureButton" parent="BagBG/HBoxContainer" unique_id=1148902090]
+custom_minimum_size = Vector2(60, 30)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("6_7g86a")
 texture_pressed = ExtResource("7_2bt08")
 texture_hover = ExtResource("8_4qwln")
+stretch_mode = 0
 
-[node name="NoveltyTabLabel" type="Label" parent="TextureRect/HBoxContainer/InventoryTab" unique_id=67951163]
+[node name="NoveltyTabLabel" type="Label" parent="BagBG/HBoxContainer/InventoryTab" unique_id=67951163]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -16.625
-offset_top = -5.0
-offset_right = 16.625
-offset_bottom = 5.0
+offset_left = -18.166687
+offset_top = -5.8333282
+offset_right = 19.166656
+offset_bottom = 5.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("7_cy2jp")
-theme_override_font_sizes/font_size = 8
+theme_override_fonts/font = ExtResource("22_16b0i")
+theme_override_font_sizes/font_size = 12
 text = "Drops"
 
-[node name="Ore" type="TextureButton" parent="TextureRect/HBoxContainer" unique_id=1342266733]
+[node name="Ore" type="TextureButton" parent="BagBG/HBoxContainer" unique_id=1342266733]
 visible = false
+custom_minimum_size = Vector2(60, 30)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("10_2bt08")
 texture_pressed = ExtResource("11_0ailr")
 texture_hover = ExtResource("12_uauum")
+stretch_mode = 0
 
-[node name="OreTabLabel" type="Label" parent="TextureRect/HBoxContainer/Ore" unique_id=1476414682]
+[node name="OreTabLabel" type="Label" parent="BagBG/HBoxContainer/Ore" unique_id=1476414682]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -14.0
-offset_top = -5.5
-offset_right = 13.75
-offset_bottom = 5.5
+offset_left = -16.666687
+offset_top = -6.0
+offset_right = 18.5
+offset_bottom = 6.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("7_cy2jp")
-theme_override_font_sizes/font_size = 10
+theme_override_fonts/font = ExtResource("22_16b0i")
+theme_override_font_sizes/font_size = 12
 text = "Ore"
 
-[node name="GemStoneTab" type="TextureButton" parent="TextureRect/HBoxContainer" unique_id=92484346]
+[node name="GemStoneTab" type="TextureButton" parent="BagBG/HBoxContainer" unique_id=92484346]
 visible = false
+custom_minimum_size = Vector2(60, 30)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("13_xq547")
 texture_pressed = ExtResource("14_2eryp")
 texture_hover = ExtResource("15_1u23v")
+stretch_mode = 0
 
-[node name="GemStoneTabLabel" type="Label" parent="TextureRect/HBoxContainer/GemStoneTab" unique_id=1404561356]
+[node name="GemStoneTabLabel" type="Label" parent="BagBG/HBoxContainer/GemStoneTab" unique_id=1404561356]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -13.0
-offset_top = -5.5
-offset_right = 14.75
-offset_bottom = 5.5
+offset_left = -17.0
+offset_top = -6.0
+offset_right = 18.5
+offset_bottom = 6.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("7_cy2jp")
-theme_override_font_sizes/font_size = 10
+theme_override_fonts/font = ExtResource("22_16b0i")
+theme_override_font_sizes/font_size = 12
 text = "Gem"
 
-[node name="UseTab" type="TextureButton" parent="TextureRect/HBoxContainer" unique_id=1269177708]
+[node name="UseTab" type="TextureButton" parent="BagBG/HBoxContainer" unique_id=1269177708]
 visible = false
+custom_minimum_size = Vector2(60, 30)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("16_2eryp")
 texture_pressed = ExtResource("14_2eryp")
 texture_hover = ExtResource("17_1u23v")
+stretch_mode = 0
 
-[node name="UseTabLabel" type="Label" parent="TextureRect/HBoxContainer/UseTab" unique_id=1404888911]
+[node name="UseTabLabel" type="Label" parent="BagBG/HBoxContainer/UseTab" unique_id=1404888911]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -14.0
-offset_top = -5.5
-offset_right = 13.75
-offset_bottom = 5.5
+offset_left = -16.666687
+offset_top = -6.0
+offset_right = 17.166687
+offset_bottom = 6.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("7_cy2jp")
-theme_override_font_sizes/font_size = 10
+theme_override_fonts/font = ExtResource("22_16b0i")
+theme_override_font_sizes/font_size = 12
 text = "Use"
 
-[node name="ShowBank" type="TextureButton" parent="TextureRect/HBoxContainer" unique_id=1490028371]
+[node name="Filters" type="HBoxContainer" parent="BagBG" unique_id=765079204]
 visible = false
-layout_mode = 2
-mouse_default_cursor_shape = 2
-texture_normal = ExtResource("5_812es")
-texture_pressed = ExtResource("6_b6v18")
-texture_hover = ExtResource("7_le8wj")
-
-[node name="ShowBankLabel" type="Label" parent="TextureRect/HBoxContainer/ShowBank" unique_id=1985131050]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -15.5
-offset_top = -3.5
-offset_right = 17.5
-offset_bottom = 4.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("7_cy2jp")
-theme_override_font_sizes/font_size = 8
-text = "Toggle Bank"
-
-[node name="Filters" type="HBoxContainer" parent="TextureRect" unique_id=765079204]
+custom_minimum_size = Vector2(128, 40)
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -152.0
-offset_top = 177.0
-offset_right = 32.0
-offset_bottom = 198.0
+offset_left = -459.125
+offset_top = 543.5
+offset_right = -99.125
+offset_bottom = 583.5
 grow_horizontal = 2
 theme_override_constants/separation = 0
+alignment = 1
 
-[node name="NoveltyItems" type="TextureButton" parent="TextureRect/Filters" unique_id=1087850770]
+[node name="NoveltyItems" type="TextureButton" parent="BagBG/Filters" unique_id=1087850770]
+custom_minimum_size = Vector2(90, 40)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("5_812es")
 texture_pressed = ExtResource("6_b6v18")
 texture_hover = ExtResource("7_le8wj")
+stretch_mode = 0
 
-[node name="NoveltyFilterLabel" type="Label" parent="TextureRect/Filters/NoveltyItems" unique_id=1030155724]
+[node name="NoveltyFilterLabel" type="Label" parent="BagBG/Filters/NoveltyItems" unique_id=1030155724]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -301,18 +345,20 @@ offset_bottom = 5.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("7_cy2jp")
-theme_override_font_sizes/font_size = 8
+theme_override_fonts/font = ExtResource("22_16b0i")
+theme_override_font_sizes/font_size = 18
 text = "Novelty"
 
-[node name="CraftingItems" type="TextureButton" parent="TextureRect/Filters" unique_id=1882635405]
+[node name="CraftingItems" type="TextureButton" parent="BagBG/Filters" unique_id=1882635405]
+custom_minimum_size = Vector2(90, 40)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("5_812es")
 texture_pressed = ExtResource("6_b6v18")
 texture_hover = ExtResource("7_le8wj")
+stretch_mode = 0
 
-[node name="CratingFilterLabel" type="Label" parent="TextureRect/Filters/CraftingItems" unique_id=66450311]
+[node name="CratingFilterLabel" type="Label" parent="BagBG/Filters/CraftingItems" unique_id=66450311]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -326,18 +372,20 @@ offset_bottom = 5.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("7_cy2jp")
-theme_override_font_sizes/font_size = 10
+theme_override_fonts/font = ExtResource("22_16b0i")
+theme_override_font_sizes/font_size = 16
 text = "Crafting"
 
-[node name="CookingItems" type="TextureButton" parent="TextureRect/Filters" unique_id=606253622]
+[node name="CookingItems" type="TextureButton" parent="BagBG/Filters" unique_id=606253622]
+custom_minimum_size = Vector2(90, 40)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("5_812es")
 texture_pressed = ExtResource("6_b6v18")
 texture_hover = ExtResource("7_le8wj")
+stretch_mode = 0
 
-[node name="CookingFilterLabel" type="Label" parent="TextureRect/Filters/CookingItems" unique_id=700059701]
+[node name="CookingFilterLabel" type="Label" parent="BagBG/Filters/CookingItems" unique_id=700059701]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -351,18 +399,20 @@ offset_bottom = 5.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("7_cy2jp")
-theme_override_font_sizes/font_size = 10
+theme_override_fonts/font = ExtResource("22_16b0i")
+theme_override_font_sizes/font_size = 16
 text = "Cooking"
 
-[node name="FilterOff" type="TextureButton" parent="TextureRect/Filters" unique_id=654247822]
+[node name="FilterOff" type="TextureButton" parent="BagBG/Filters" unique_id=654247822]
+custom_minimum_size = Vector2(90, 40)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("5_812es")
 texture_pressed = ExtResource("6_b6v18")
 texture_hover = ExtResource("7_le8wj")
+stretch_mode = 0
 
-[node name="OffFilterLabel" type="Label" parent="TextureRect/Filters/FilterOff" unique_id=1037454524]
+[node name="OffFilterLabel" type="Label" parent="BagBG/Filters/FilterOff" unique_id=1037454524]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -376,131 +426,155 @@ offset_bottom = 5.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("7_cy2jp")
-theme_override_font_sizes/font_size = 10
+theme_override_fonts/font = ExtResource("22_16b0i")
+theme_override_font_sizes/font_size = 16
 text = "All"
 
-[node name="PanelContainer" type="PanelContainer" parent="TextureRect" unique_id=43261777]
+[node name="PanelContainer" type="PanelContainer" parent="BagBG" unique_id=43261777]
 layout_mode = 0
 offset_left = 1.0
-offset_top = -17.0
-offset_right = 97.0
-offset_bottom = -1.0
+offset_top = -42.25
+offset_right = 232.0
+offset_bottom = -5.25
 
-[node name="MarginContainer" type="MarginContainer" parent="TextureRect/PanelContainer" unique_id=1966944481]
+[node name="MarginContainer" type="MarginContainer" parent="BagBG/PanelContainer" unique_id=1966944481]
 layout_mode = 2
 theme_override_constants/margin_left = 2
 theme_override_constants/margin_right = 2
 
-[node name="InventoryName" type="Label" parent="TextureRect/PanelContainer/MarginContainer" unique_id=1506160081]
+[node name="InventoryName" type="Label" parent="BagBG/PanelContainer/MarginContainer" unique_id=1506160081]
 layout_mode = 2
 theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("7_cy2jp")
-theme_override_font_sizes/font_size = 16
+theme_override_fonts/font = ExtResource("4_4vhog")
+theme_override_font_sizes/font_size = 32
 text = "Inventory Bag"
 
-[node name="InventoryName2" type="Label" parent="TextureRect" unique_id=1532140568]
+[node name="InventoryName2" type="Label" parent="BagBG" unique_id=1532140568]
 layout_mode = 0
-offset_left = 4.5
-offset_top = 219.0
-offset_right = 109.5
-offset_bottom = 235.0
+offset_left = 736.25
+offset_top = 593.75
+offset_right = 928.25
+offset_bottom = 621.75
 theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("7_cy2jp")
-theme_override_font_sizes/font_size = 16
+theme_override_fonts/font = ExtResource("22_16b0i")
+theme_override_font_sizes/font_size = 24
 text = "Press B to Close"
 
-[node name="ItemTitle" type="Label" parent="TextureRect" unique_id=717180194]
+[node name="ItemTitle" type="Label" parent="BagBG" unique_id=717180194]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -145.0
-offset_top = 30.0
-offset_right = -13.0
-offset_bottom = 42.0
+offset_left = -459.75
+offset_top = 47.5
+offset_right = -26.5
+offset_bottom = 88.5
 grow_horizontal = 0
-theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("7_cy2jp")
-theme_override_font_sizes/font_size = 12
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("4_4vhog")
+theme_override_font_sizes/font_size = 36
 text = "Mushie Core"
 horizontal_alignment = 1
 
-[node name="TierBox" type="HBoxContainer" parent="TextureRect" unique_id=1023103530]
-layout_mode = 0
-offset_left = 166.0
-offset_top = 44.0
-offset_right = 299.0
-offset_bottom = 54.0
-alignment = 1
-
-[node name="SellValue" type="Label" parent="TextureRect" unique_id=1642284451]
+[node name="TierBox" type="HBoxContainer" parent="BagBG" unique_id=1023103530]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -114.0
-offset_top = 57.0
-offset_right = -44.700012
-offset_bottom = 68.0
+offset_left = -331.5
+offset_top = 101.5
+offset_right = -159.5
+offset_bottom = 120.5
 grow_horizontal = 0
+alignment = 1
+
+[node name="SellValue" type="Label" parent="BagBG" unique_id=1642284451]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -354.49994
+offset_top = -182.0
+offset_right = -145.49994
+offset_bottom = -154.0
+grow_horizontal = 0
+grow_vertical = 2
 theme_override_constants/line_spacing = -1
 theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("7_cy2jp")
-theme_override_font_sizes/font_size = 10
+theme_override_fonts/font = ExtResource("4_4vhog")
+theme_override_font_sizes/font_size = 24
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="Description" type="Label" parent="TextureRect" unique_id=478784575]
+[node name="Description" type="Label" parent="BagBG" unique_id=478784575]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -146.0
-offset_top = 71.0
-offset_right = -14.0
-offset_bottom = 111.0
+offset_left = -450.75
+offset_top = 174.5
+offset_right = -22.5
+offset_bottom = 325.5
 grow_horizontal = 0
 theme_override_constants/line_spacing = -1
 theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("7_cy2jp")
-theme_override_font_sizes/font_size = 10
+theme_override_fonts/font = ExtResource("22_16b0i")
+theme_override_font_sizes/font_size = 24
 text = "This is a description how do think this is supposed to work?"
 autowrap_mode = 3
 
-[node name="ItemIcon" parent="TextureRect" unique_id=1695888880 instance=ExtResource("9_s3gps")]
+[node name="PreviewBG" type="TextureRect" parent="BagBG" unique_id=1701727262]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -320.5
+offset_top = 16.0
+offset_right = -192.5
+offset_bottom = 144.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("27_16b0i")
+
+[node name="ItemIcon" parent="BagBG" unique_id=1695888880 instance=ExtResource("9_s3gps")]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -94.0
-offset_top = 17.0
-offset_right = -62.0
-offset_bottom = 49.0
+offset_left = -289.5
+offset_top = 49.0
+offset_right = -225.5
+offset_bottom = 113.0
 grow_horizontal = 0
 hover_height = 4.0
 hover_speed = 3.0
 
-[node name="Notice" type="Label" parent="TextureRect" unique_id=1332604821]
+[node name="Notice" type="Label" parent="BagBG" unique_id=1332604821]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 51.0
-offset_top = 84.0
-offset_right = 115.0
-offset_bottom = 103.0
+offset_left = 93.875
+offset_top = 196.0
+offset_right = 361.875
+offset_bottom = 263.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("7_cy2jp")
-theme_override_font_sizes/font_size = 8
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("4_4vhog")
+theme_override_font_sizes/font_size = 28
 text = "Items permanently 
 LOST on discard."
+horizontal_alignment = 1
 
-[node name="FiltersLabel" type="Label" parent="TextureRect" unique_id=1578885244]
+[node name="FiltersLabel" type="Label" parent="BagBG" unique_id=1578885244]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -508,247 +582,288 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -147.0
-offset_top = 54.5
-offset_right = -121.0
-offset_bottom = 65.5
+offset_left = -448.125
+offset_top = 195.0
+offset_right = -373.125
+offset_bottom = 223.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("7_cy2jp")
-theme_override_font_sizes/font_size = 10
+theme_override_fonts/font = ExtResource("4_4vhog")
+theme_override_font_sizes/font_size = 24
 text = "Filters"
 vertical_alignment = 1
 
-[node name="TabFull" type="Label" parent="TextureRect" unique_id=237285267]
+[node name="TabFull" type="Label" parent="BagBG" unique_id=237285267]
 visible = false
 layout_mode = 1
-offset_left = 257.5
-offset_top = 9.0
-offset_right = 301.5
-offset_bottom = 22.0
+offset_left = 26.25
+offset_top = 8.75
+offset_right = 70.25
+offset_bottom = 21.75
 theme_override_colors/font_color = Color(0.9999997, 0.06978741, 0.36228102, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("4_4vhog")
-theme_override_font_sizes/font_size = 11
+theme_override_font_sizes/font_size = 24
 text = "Tab Full!"
 
-[node name="Discard" type="TextureButton" parent="TextureRect" unique_id=1671994597]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -107.0
-offset_top = -47.0
-offset_right = -72.0
-offset_bottom = -26.0
-grow_horizontal = 0
-grow_vertical = 0
-mouse_default_cursor_shape = 2
-texture_normal = ExtResource("4_cuvis")
-texture_pressed = ExtResource("5_s3gps")
-texture_hover = ExtResource("6_rvsgi")
-
-[node name="Label" type="Label" parent="TextureRect/Discard" unique_id=576186992]
+[node name="Discard" type="TextureButton" parent="BagBG" unique_id=1671994597]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -12.0
-offset_top = -5.0
-offset_right = 12.0
-offset_bottom = 3.0
+offset_left = 222.87494
+offset_top = 148.0
+offset_right = 288.875
+offset_bottom = 183.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("4_cuvis")
+texture_pressed = ExtResource("5_s3gps")
+texture_hover = ExtResource("6_rvsgi")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="BagBG/Discard" unique_id=576186992]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -22.5
+offset_top = -8.5
+offset_right = 22.5
+offset_bottom = 6.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("7_cy2jp")
-theme_override_font_sizes/font_size = 8
+theme_override_fonts/font = ExtResource("4_4vhog")
+theme_override_font_sizes/font_size = 12
 text = "Discard"
 
-[node name="ToBank" type="TextureButton" parent="TextureRect" unique_id=1022483941]
-visible = false
+[node name="ToBank" type="TextureButton" parent="BagBG" unique_id=1022483941]
+custom_minimum_size = Vector2(64, 0)
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -73.5
-offset_top = -47.0
-offset_right = -38.5
-offset_bottom = -26.0
+offset_left = -326.5
+offset_top = -169.5
+offset_right = -262.5
+offset_bottom = -134.5
 grow_horizontal = 0
 grow_vertical = 0
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("4_cuvis")
 texture_pressed = ExtResource("5_s3gps")
 texture_hover = ExtResource("6_rvsgi")
+stretch_mode = 0
 
-[node name="Label" type="Label" parent="TextureRect/ToBank" unique_id=1971983308]
+[node name="Label" type="Label" parent="BagBG/ToBank" unique_id=1971983308]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -13.0
-offset_top = -5.0
-offset_right = 13.0
-offset_bottom = 3.0
+offset_left = -23.5
+offset_top = -8.5
+offset_right = 23.5
+offset_bottom = 6.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("7_cy2jp")
-theme_override_font_sizes/font_size = 8
+theme_override_fonts/font = ExtResource("4_4vhog")
+theme_override_font_sizes/font_size = 12
 text = "To Bank"
 
-[node name="GoldCount" type="Label" parent="TextureRect" unique_id=1673130369]
+[node name="GoldCount" type="Label" parent="BagBG" unique_id=1673130369]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -134.0
-offset_top = 89.0
-offset_right = -18.0
-offset_bottom = 101.0
+offset_left = -446.125
+offset_top = 272.0
+offset_right = -238.125
+offset_bottom = 300.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("7_cy2jp")
-theme_override_font_sizes/font_size = 12
-text = "5000"
+theme_override_fonts/font = ExtResource("4_4vhog")
+theme_override_font_sizes/font_size = 24
 
-[node name="PanelContainer" type="PanelContainer" parent="." unique_id=795059347]
+[node name="PanelContainer2" type="PanelContainer" parent="BagBG" unique_id=795059347]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -158.5
-offset_top = -13.5
+offset_left = -381.5
+offset_top = -35.5
 offset_right = -0.5
-offset_bottom = 1.5
+offset_bottom = -3.5
 grow_horizontal = 0
 
-[node name="InventoryName3" type="Label" parent="PanelContainer" unique_id=1863663635]
+[node name="InventoryName3" type="Label" parent="BagBG/PanelContainer2" unique_id=1863663635]
 layout_mode = 2
 theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("7_cy2jp")
-theme_override_font_sizes/font_size = 14
+theme_override_fonts/font = ExtResource("4_4vhog")
+theme_override_font_sizes/font_size = 28
 text = "Click on an item to select it."
 horizontal_alignment = 2
 
-[node name="Bank" type="TextureRect" parent="." unique_id=1811680492]
+[node name="Bank" type="NinePatchRect" parent="." unique_id=1727735708]
 visible = false
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 19.0
-offset_top = -110.0
-offset_right = 180.0
-offset_bottom = 110.0
+offset_left = 177.0
+offset_top = -316.5
+offset_right = 514.0
+offset_bottom = 316.5
 grow_vertical = 2
-texture = ExtResource("26_1u23v")
+texture = ExtResource("3_1u23v")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
 
 [node name="BankContainer" type="GridContainer" parent="Bank" unique_id=1891199352]
 layout_mode = 0
-offset_left = 8.0
-offset_top = 30.0
-offset_right = 153.0
-offset_bottom = 210.0
+offset_left = 32.0
+offset_top = 62.5
+offset_right = 300.0
+offset_bottom = 602.5
 columns = 4
 
-[node name="Slot" parent="Bank/BankContainer" unique_id=782442892 instance=ExtResource("4_s3gps")]
+[node name="Slot" parent="Bank/BankContainer" unique_id=628752642 instance=ExtResource("4_s3gps")]
 layout_mode = 2
 
-[node name="Slot2" parent="Bank/BankContainer" unique_id=1670748672 instance=ExtResource("4_s3gps")]
+[node name="Slot2" parent="Bank/BankContainer" unique_id=1044404600 instance=ExtResource("4_s3gps")]
 layout_mode = 2
 
-[node name="Slot3" parent="Bank/BankContainer" unique_id=1724414378 instance=ExtResource("4_s3gps")]
+[node name="Slot3" parent="Bank/BankContainer" unique_id=1711994212 instance=ExtResource("4_s3gps")]
 layout_mode = 2
 
-[node name="Slot4" parent="Bank/BankContainer" unique_id=481387955 instance=ExtResource("4_s3gps")]
+[node name="Slot4" parent="Bank/BankContainer" unique_id=1611032125 instance=ExtResource("4_s3gps")]
 layout_mode = 2
 
-[node name="Slot5" parent="Bank/BankContainer" unique_id=1890565243 instance=ExtResource("4_s3gps")]
+[node name="Slot5" parent="Bank/BankContainer" unique_id=1894281100 instance=ExtResource("4_s3gps")]
 layout_mode = 2
 
-[node name="Slot6" parent="Bank/BankContainer" unique_id=2034530646 instance=ExtResource("4_s3gps")]
+[node name="Slot6" parent="Bank/BankContainer" unique_id=9024459 instance=ExtResource("4_s3gps")]
 layout_mode = 2
 
-[node name="Slot7" parent="Bank/BankContainer" unique_id=1776160453 instance=ExtResource("4_s3gps")]
+[node name="Slot7" parent="Bank/BankContainer" unique_id=843651540 instance=ExtResource("4_s3gps")]
 layout_mode = 2
 
-[node name="Slot8" parent="Bank/BankContainer" unique_id=1480464877 instance=ExtResource("4_s3gps")]
+[node name="Slot8" parent="Bank/BankContainer" unique_id=737225763 instance=ExtResource("4_s3gps")]
 layout_mode = 2
 
-[node name="Slot9" parent="Bank/BankContainer" unique_id=409056620 instance=ExtResource("4_s3gps")]
+[node name="Slot9" parent="Bank/BankContainer" unique_id=1839642245 instance=ExtResource("4_s3gps")]
 layout_mode = 2
 
-[node name="Slot10" parent="Bank/BankContainer" unique_id=1292525180 instance=ExtResource("4_s3gps")]
+[node name="Slot10" parent="Bank/BankContainer" unique_id=2077104054 instance=ExtResource("4_s3gps")]
 layout_mode = 2
 
-[node name="Slot11" parent="Bank/BankContainer" unique_id=1576958985 instance=ExtResource("4_s3gps")]
+[node name="Slot11" parent="Bank/BankContainer" unique_id=1587538686 instance=ExtResource("4_s3gps")]
 layout_mode = 2
 
-[node name="Slot12" parent="Bank/BankContainer" unique_id=1103874002 instance=ExtResource("4_s3gps")]
+[node name="Slot12" parent="Bank/BankContainer" unique_id=1303202679 instance=ExtResource("4_s3gps")]
 layout_mode = 2
 
-[node name="Slot13" parent="Bank/BankContainer" unique_id=742687098 instance=ExtResource("4_s3gps")]
+[node name="Slot13" parent="Bank/BankContainer" unique_id=718867061 instance=ExtResource("4_s3gps")]
 layout_mode = 2
 
-[node name="Slot14" parent="Bank/BankContainer" unique_id=709594256 instance=ExtResource("4_s3gps")]
+[node name="Slot14" parent="Bank/BankContainer" unique_id=2102986279 instance=ExtResource("4_s3gps")]
 layout_mode = 2
 
-[node name="Slot15" parent="Bank/BankContainer" unique_id=206371244 instance=ExtResource("4_s3gps")]
+[node name="Slot15" parent="Bank/BankContainer" unique_id=551064283 instance=ExtResource("4_s3gps")]
 layout_mode = 2
 
-[node name="Slot16" parent="Bank/BankContainer" unique_id=638301237 instance=ExtResource("4_s3gps")]
+[node name="Slot16" parent="Bank/BankContainer" unique_id=457639608 instance=ExtResource("4_s3gps")]
 layout_mode = 2
 
-[node name="Slot17" parent="Bank/BankContainer" unique_id=1132535993 instance=ExtResource("4_s3gps")]
+[node name="Slot17" parent="Bank/BankContainer" unique_id=1630965483 instance=ExtResource("4_s3gps")]
 layout_mode = 2
 
-[node name="Slot18" parent="Bank/BankContainer" unique_id=101718400 instance=ExtResource("4_s3gps")]
+[node name="Slot18" parent="Bank/BankContainer" unique_id=720870022 instance=ExtResource("4_s3gps")]
 layout_mode = 2
 
-[node name="Slot19" parent="Bank/BankContainer" unique_id=1966360822 instance=ExtResource("4_s3gps")]
+[node name="Slot19" parent="Bank/BankContainer" unique_id=1996042095 instance=ExtResource("4_s3gps")]
 layout_mode = 2
 
-[node name="Slot20" parent="Bank/BankContainer" unique_id=299038198 instance=ExtResource("4_s3gps")]
+[node name="Slot20" parent="Bank/BankContainer" unique_id=357177727 instance=ExtResource("4_s3gps")]
+layout_mode = 2
+
+[node name="Slot21" parent="Bank/BankContainer" unique_id=484169080 instance=ExtResource("4_s3gps")]
+layout_mode = 2
+
+[node name="Slot22" parent="Bank/BankContainer" unique_id=2024831268 instance=ExtResource("4_s3gps")]
+layout_mode = 2
+
+[node name="Slot23" parent="Bank/BankContainer" unique_id=2026771209 instance=ExtResource("4_s3gps")]
+layout_mode = 2
+
+[node name="Slot24" parent="Bank/BankContainer" unique_id=412152950 instance=ExtResource("4_s3gps")]
+layout_mode = 2
+
+[node name="Slot25" parent="Bank/BankContainer" unique_id=1691599076 instance=ExtResource("4_s3gps")]
+layout_mode = 2
+
+[node name="Slot26" parent="Bank/BankContainer" unique_id=2057917611 instance=ExtResource("4_s3gps")]
+layout_mode = 2
+
+[node name="Slot27" parent="Bank/BankContainer" unique_id=1572536885 instance=ExtResource("4_s3gps")]
+layout_mode = 2
+
+[node name="Slot28" parent="Bank/BankContainer" unique_id=414882803 instance=ExtResource("4_s3gps")]
+layout_mode = 2
+
+[node name="Slot29" parent="Bank/BankContainer" unique_id=1290452056 instance=ExtResource("4_s3gps")]
+layout_mode = 2
+
+[node name="Slot30" parent="Bank/BankContainer" unique_id=1866834617 instance=ExtResource("4_s3gps")]
+layout_mode = 2
+
+[node name="Slot31" parent="Bank/BankContainer" unique_id=1551401756 instance=ExtResource("4_s3gps")]
+layout_mode = 2
+
+[node name="Slot32" parent="Bank/BankContainer" unique_id=1147697545 instance=ExtResource("4_s3gps")]
 layout_mode = 2
 
 [node name="Label" type="Label" parent="Bank" unique_id=450010455]
 layout_mode = 0
-offset_left = 12.0
-offset_top = 5.0
-offset_right = 43.0
-offset_bottom = 21.0
+offset_left = 10.0
+offset_top = 6.0
+offset_right = 103.0
+offset_bottom = 50.0
 theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("7_cy2jp")
-theme_override_font_sizes/font_size = 20
+theme_override_fonts/font = ExtResource("4_4vhog")
+theme_override_font_sizes/font_size = 38
 text = "Bank"
 
-[connection signal="button_up" from="TextureRect/HBoxContainer/InventoryTab" to="." method="_on_novelty_tab_button_up"]
-[connection signal="mouse_entered" from="TextureRect/HBoxContainer/InventoryTab" to="." method="_on_inventory_tab_mouse_entered"]
-[connection signal="button_up" from="TextureRect/HBoxContainer/Ore" to="." method="_on_ore_button_up"]
-[connection signal="mouse_entered" from="TextureRect/HBoxContainer/Ore" to="." method="_on_ore_mouse_entered"]
-[connection signal="button_up" from="TextureRect/HBoxContainer/GemStoneTab" to="." method="_on_gem_stone_tab_button_up"]
-[connection signal="mouse_entered" from="TextureRect/HBoxContainer/GemStoneTab" to="." method="_on_gem_stone_tab_mouse_entered"]
-[connection signal="button_up" from="TextureRect/HBoxContainer/UseTab" to="." method="_on_use_tab_button_up"]
-[connection signal="mouse_entered" from="TextureRect/HBoxContainer/UseTab" to="." method="_on_use_tab_mouse_entered"]
-[connection signal="button_up" from="TextureRect/HBoxContainer/ShowBank" to="." method="_on_show_bank_button_up"]
-[connection signal="mouse_entered" from="TextureRect/HBoxContainer/ShowBank" to="." method="_on_use_tab_mouse_entered"]
-[connection signal="button_up" from="TextureRect/Filters/NoveltyItems" to="." method="_on_novelty_items_button_up"]
-[connection signal="button_up" from="TextureRect/Filters/CraftingItems" to="." method="_on_crafting_items_button_up"]
-[connection signal="button_up" from="TextureRect/Filters/CookingItems" to="." method="_on_cooking_items_button_up"]
-[connection signal="button_up" from="TextureRect/Filters/FilterOff" to="." method="_on_filter_off_button_up"]
-[connection signal="button_up" from="TextureRect/Discard" to="." method="_on_discard_button_up"]
-[connection signal="button_up" from="TextureRect/ToBank" to="." method="_on_to_bank_button_up"]
+[connection signal="button_up" from="BagBG/ShowBank" to="." method="_on_show_bank_button_up"]
+[connection signal="mouse_entered" from="BagBG/ShowBank" to="." method="_on_use_tab_mouse_entered"]
+[connection signal="button_up" from="BagBG/HBoxContainer/InventoryTab" to="." method="_on_novelty_tab_button_up"]
+[connection signal="mouse_entered" from="BagBG/HBoxContainer/InventoryTab" to="." method="_on_inventory_tab_mouse_entered"]
+[connection signal="button_up" from="BagBG/HBoxContainer/Ore" to="." method="_on_ore_button_up"]
+[connection signal="mouse_entered" from="BagBG/HBoxContainer/Ore" to="." method="_on_ore_mouse_entered"]
+[connection signal="button_up" from="BagBG/HBoxContainer/GemStoneTab" to="." method="_on_gem_stone_tab_button_up"]
+[connection signal="mouse_entered" from="BagBG/HBoxContainer/GemStoneTab" to="." method="_on_gem_stone_tab_mouse_entered"]
+[connection signal="button_up" from="BagBG/HBoxContainer/UseTab" to="." method="_on_use_tab_button_up"]
+[connection signal="mouse_entered" from="BagBG/HBoxContainer/UseTab" to="." method="_on_use_tab_mouse_entered"]
+[connection signal="button_up" from="BagBG/Filters/NoveltyItems" to="." method="_on_novelty_items_button_up"]
+[connection signal="button_up" from="BagBG/Filters/CraftingItems" to="." method="_on_crafting_items_button_up"]
+[connection signal="button_up" from="BagBG/Filters/CookingItems" to="." method="_on_cooking_items_button_up"]
+[connection signal="button_up" from="BagBG/Filters/FilterOff" to="." method="_on_filter_off_button_up"]
+[connection signal="button_up" from="BagBG/Discard" to="." method="_on_discard_button_up"]
+[connection signal="button_up" from="BagBG/ToBank" to="." method="_on_to_bank_button_up"]

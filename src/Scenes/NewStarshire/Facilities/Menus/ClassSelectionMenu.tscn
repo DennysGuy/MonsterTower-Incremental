@@ -11,6 +11,7 @@
 [ext_resource type="Resource" uid="uid://c3llqiy2fb5n5" path="res://src/Resources/AbilityStates/DashAttacks/SwordDanceAbility.tres" id="7_j7mac"]
 [ext_resource type="Texture2D" uid="uid://bdw85iv04k8t0" path="res://Assets/Facilities/ClassSelectionMenu/SwordDance.png" id="8_dasj6"]
 [ext_resource type="Texture2D" uid="uid://vskgh0xmv1o8" path="res://Assets/Facilities/ClassSelectionMenu/SwordSoar.png" id="8_gyooc"]
+[ext_resource type="Resource" uid="uid://ctavgtgbvyp1w" path="res://src/Resources/AbilityStates/DoubleJumps/SoarSwordAbility.tres" id="9_j7mac"]
 [ext_resource type="Texture2D" uid="uid://caijx1edrnow5" path="res://Assets/Facilities/ClassSelectionMenu/DoubleCleave.png" id="9_rdo0p"]
 [ext_resource type="Resource" uid="uid://dcxiodvnbqgef" path="res://src/Resources/AbilityStates/AirAttacks/SwordSlamAbility.tres" id="10_gyooc"]
 [ext_resource type="Resource" uid="uid://cs0umnvsvjhnh" path="res://src/Resources/AbilityStates/SpecialAttacks/WarriorDoubleCleaveAbility.tres" id="13_reguu"]
@@ -44,12 +45,13 @@ texture = ExtResource("4_i7c6j")
 
 [node name="Focus" type="RichTextLabel" parent="Panel/MagePanel" unique_id=1317816887]
 layout_mode = 0
-offset_left = 47.0
-offset_top = 128.0
-offset_right = 389.0
-offset_bottom = 231.0
+offset_left = 164.0
+offset_top = 432.0
+offset_right = 1013.0
+offset_bottom = 737.0
 theme_override_constants/outline_size = 4
 theme_override_fonts/normal_font = ExtResource("5_ne1ap")
+theme_override_font_sizes/normal_font_size = 38
 bbcode_enabled = true
 text = "The Mage channels arcane power to unleash devastating [color=red]damage[/color] on their foes. 
 
@@ -60,14 +62,14 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 56.0
-offset_top = -50.0
-offset_right = 130.0
-offset_bottom = -27.0
+offset_left = 167.0
+offset_top = -719.0
+offset_right = 299.0
+offset_bottom = -655.0
 grow_vertical = 0
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("5_ne1ap")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 64
 text = "Mage"
 
 [node name="Title2" type="RichTextLabel" parent="Panel/MagePanel" unique_id=1911631159]
@@ -75,14 +77,14 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 56.0
-offset_top = -116.0
-offset_right = 327.0
-offset_bottom = -72.0
+offset_left = 454.0
+offset_top = -240.0
+offset_right = 999.0
+offset_bottom = -196.0
 grow_vertical = 0
 theme_override_constants/outline_size = 5
 theme_override_fonts/normal_font = ExtResource("5_ne1ap")
-theme_override_font_sizes/normal_font_size = 36
+theme_override_font_sizes/normal_font_size = 64
 bbcode_enabled = true
 text = "[color=yellow]COMING SOON![/color]"
 
@@ -97,12 +99,13 @@ texture = ExtResource("2_r0emu")
 
 [node name="Focus" type="RichTextLabel" parent="Panel/WarriorPanel" unique_id=336545929]
 layout_mode = 0
-offset_left = 47.0
-offset_top = 128.0
-offset_right = 389.0
-offset_bottom = 237.0
+offset_left = 161.0
+offset_top = 438.0
+offset_right = 1023.0
+offset_bottom = 631.0
 theme_override_constants/outline_size = 4
 theme_override_fonts/normal_font = ExtResource("2_hrvbj")
+theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "The Warrior specializes in absorbing [color=red]damage[/color]
 head-on and controlling enemies. 
@@ -115,10 +118,10 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 56.0
-offset_top = -49.0
-offset_right = 186.0
-offset_bottom = -19.0
+offset_left = 160.0
+offset_top = -700.0
+offset_right = 290.0
+offset_bottom = -670.0
 grow_vertical = 0
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_hrvbj")
@@ -130,115 +133,118 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 124.0
-offset_top = -117.0
-offset_right = 249.0
-offset_bottom = -98.0
+offset_left = 188.0
+offset_top = -394.0
+offset_right = 313.0
+offset_bottom = -375.0
 grow_vertical = 0
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_hrvbj")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 38
 text = "Starting Abilities"
 
-[node name="SwordDance" parent="Panel/WarriorPanel" unique_id=1859415452 instance=ExtResource("6_j7mac")]
+[node name="SwordSlam" parent="Panel/WarriorPanel" unique_id=1859415452 instance=ExtResource("6_j7mac")]
 layout_mode = 1
-offset_left = -266.0
-offset_top = 88.0
-offset_right = -234.0
-offset_bottom = 120.0
-ability = ExtResource("7_j7mac")
-icon = ExtResource("8_dasj6")
-
-[node name="SwordSlam" parent="Panel/WarriorPanel" unique_id=1395723857 instance=ExtResource("6_j7mac")]
-layout_mode = 1
-offset_left = -211.0
-offset_top = 88.0
-offset_right = -179.0
-offset_bottom = 120.0
-texture = ExtResource("7_dasj6")
+offset_left = -714.0
+offset_top = 247.0
+offset_right = -586.0
+offset_bottom = 375.0
 ability = ExtResource("10_gyooc")
 icon = ExtResource("7_dasj6")
 
-[node name="SwordSoar" parent="Panel/WarriorPanel" unique_id=866534312 instance=ExtResource("6_j7mac")]
+[node name="SwordDance" parent="Panel/WarriorPanel" unique_id=1277237728 instance=ExtResource("6_j7mac")]
 layout_mode = 1
-offset_left = -152.0
-offset_top = 88.0
-offset_right = -120.0
-offset_bottom = 120.0
-texture = ExtResource("8_gyooc")
+offset_left = -518.0
+offset_top = 247.0
+offset_right = -390.0
+offset_bottom = 375.0
 ability = ExtResource("7_j7mac")
+icon = ExtResource("8_dasj6")
+
+[node name="SwordSoar" parent="Panel/WarriorPanel" unique_id=1130950537 instance=ExtResource("6_j7mac")]
+layout_mode = 1
+offset_left = -323.0
+offset_top = 247.0
+offset_right = -195.0
+offset_bottom = 375.0
+ability = ExtResource("9_j7mac")
 icon = ExtResource("8_gyooc")
 
-[node name="DoubleCleave" parent="Panel/WarriorPanel" unique_id=390116839 instance=ExtResource("6_j7mac")]
+[node name="DoubleCleave" parent="Panel/WarriorPanel" unique_id=2059465461 instance=ExtResource("6_j7mac")]
 layout_mode = 1
-offset_left = -93.0
-offset_top = 88.0
-offset_right = -61.0
-offset_bottom = 120.0
+offset_left = -136.0
+offset_top = 247.0
+offset_right = -8.0
+offset_bottom = 375.0
 texture = ExtResource("9_rdo0p")
 ability = ExtResource("13_reguu")
 icon = ExtResource("9_rdo0p")
 
 [node name="SelectionPanel" type="TextureRect" parent="Panel" unique_id=119738840]
-layout_mode = 0
-offset_right = 640.0
-offset_bottom = 360.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("3_dn4so")
 
 [node name="WarriorSelectButton" type="Button" parent="Panel" unique_id=71017981]
 layout_mode = 0
-offset_left = 79.0
-offset_top = 55.0
-offset_right = 147.0
-offset_bottom = 78.0
+offset_left = 182.0
+offset_top = 183.0
+offset_right = 250.0
+offset_bottom = 206.0
 mouse_default_cursor_shape = 2
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_hrvbj")
+theme_override_font_sizes/font_size = 38
 text = "Warrior"
 
 [node name="MageSelectButton" type="Button" parent="Panel" unique_id=301722790]
 layout_mode = 0
-offset_left = 79.0
-offset_top = 84.0
-offset_right = 147.0
-offset_bottom = 108.0
+offset_left = 237.0
+offset_top = 251.0
+offset_right = 323.0
+offset_bottom = 298.0
 mouse_default_cursor_shape = 2
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("5_ne1ap")
+theme_override_font_sizes/font_size = 38
 text = "Mage"
 
 [node name="Label" type="Label" parent="Panel" unique_id=2070895696]
 layout_mode = 0
-offset_left = 50.0
-offset_top = 21.0
-offset_right = 185.0
-offset_bottom = 40.0
+offset_left = 142.0
+offset_top = 74.0
+offset_right = 412.0
+offset_bottom = 112.0
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("2_hrvbj")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 40
 text = "Class Selection"
 
 [node name="SelectButton" type="Button" parent="Panel" unique_id=1835830370]
 layout_mode = 0
-offset_left = 201.0
-offset_top = 48.0
-offset_right = 271.0
-offset_bottom = 80.0
+offset_left = 367.0
+offset_top = 186.0
+offset_right = 472.0
+offset_bottom = 233.0
 mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("5_ne1ap")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 38
 text = "Select!"
 
 [node name="ExitButton" type="Button" parent="Panel" unique_id=1126404157]
 layout_mode = 0
-offset_left = 201.0
-offset_top = 85.0
-offset_right = 271.0
-offset_bottom = 117.0
+offset_left = 397.0
+offset_top = 254.0
+offset_right = 467.0
+offset_bottom = 301.0
 mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("5_ne1ap")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 38
 text = "Exit"
 
 [connection signal="button_up" from="Panel/WarriorSelectButton" to="." method="_on_warrior_select_button_button_up"]

@@ -117,34 +117,22 @@ length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../CraftingStationItemSelectPanel:position")
+tracks/0/path = NodePath("../CraftingStationItemSelectPanel:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.16666667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-150, -80), Vector2(-150, -80)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../CraftingStationItemSelectPanel:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.033668973),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../CraftingStationItemSelectPanel:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../CraftingStationItemSelectPanel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1673829),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
@@ -161,10 +149,10 @@ tracks/0/path = NodePath("../CraftingStationItemSelectPanel:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.19966435),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
 "update": 0,
-"values": [Vector2(-150, -80), Vector2(-150, -80)]
+"values": []
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -200,10 +188,10 @@ tracks/0/path = NodePath("../CraftingStationItemSelectPanel:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
 "update": 0,
-"values": [Vector2(-247, -114)]
+"values": []
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -261,8 +249,8 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -55.0
 offset_top = -31.0
-offset_right = 59.0
-offset_bottom = 50.0
+offset_right = 155.0
+offset_bottom = 82.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -348,19 +336,19 @@ visible = false
 modulate = Color(1, 1, 1, 0)
 z_index = 4096
 layout_mode = 0
-offset_left = -247.0
-offset_top = -114.0
-offset_right = -98.0
-offset_bottom = 72.0
+offset_left = -339.0
+offset_top = -198.0
+offset_right = -131.0
+offset_bottom = 121.0
 mouse_filter = 0
 texture = ExtResource("5_bq5u8")
 
 [node name="RecipeIcon" type="TextureRect" parent="CraftingStationItemSelectPanel" unique_id=1902451966]
 layout_mode = 0
-offset_left = 101.0
-offset_top = 9.0
-offset_right = 133.0
-offset_bottom = 41.0
+offset_left = 147.0
+offset_top = 18.651001
+offset_right = 179.0
+offset_bottom = 50.651
 texture = ExtResource("7_tnppo")
 stretch_mode = 2
 
@@ -371,15 +359,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -62.5
-offset_top = -78.0
-offset_right = 17.5
-offset_bottom = -67.0
+offset_left = -89.0
+offset_top = -140.5
+offset_right = 11.0
+offset_bottom = -124.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("1_hddue")
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 16
 text = "Cooked Gagootz"
 horizontal_alignment = 1
 
@@ -390,15 +378,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -54.5
-offset_top = -66.0
-offset_right = 9.5
-offset_bottom = -56.0
+offset_left = -91.0
+offset_top = -123.5
+offset_right = 22.0
+offset_bottom = -107.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("1_hddue")
-theme_override_font_sizes/font_size = 9
+theme_override_font_sizes/font_size = 16
 text = "Market Value: 150"
 horizontal_alignment = 2
 vertical_alignment = 1
@@ -410,15 +398,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -51.5
-offset_top = -56.0
-offset_right = 9.5
-offset_bottom = -48.0
+offset_left = -50.0
+offset_top = -53.5
+offset_right = 23.0
+offset_bottom = -37.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("1_hddue")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 16
 text = "Can Cook: 2"
 horizontal_alignment = 2
 
@@ -429,14 +417,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -70.5
-offset_top = -11.5
-offset_right = 79.5
-offset_bottom = 64.5
+offset_left = -81.0
+offset_top = 41.5
+offset_right = 33.0
+offset_bottom = 117.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = -8
-alignment = 2
+theme_override_constants/separation = 2
 
 [node name="RecipeDescription" type="RichTextLabel" parent="CraftingStationItemSelectPanel" unique_id=172188051]
 layout_mode = 1
@@ -445,15 +432,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -64.5
-offset_top = -41.0
-offset_right = 62.5
-offset_bottom = -14.0
+offset_left = -91.0
+offset_top = -9.5
+offset_right = 89.0
+offset_bottom = 51.3255
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 3
 theme_override_fonts/normal_font = ExtResource("1_hddue")
-theme_override_font_sizes/normal_font_size = 8
+theme_override_font_sizes/normal_font_size = 16
 text = "hey this is cooked gagootz okay one of the best stuff out there!"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="CraftingStationItemSelectPanel" unique_id=744538584]
@@ -463,10 +450,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -68.5
-offset_top = -26.0
-offset_right = 68.5
-offset_bottom = -7.0
+offset_left = -70.0
+offset_top = -34.0
+offset_right = 67.0
+offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 0
 alignment = 1
@@ -475,7 +462,7 @@ alignment = 1
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("1_hddue")
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 16
 text = "Craft 1"
 
 [node name="Craft5Button" type="Button" parent="CraftingStationItemSelectPanel/HBoxContainer2" unique_id=603814051]
@@ -483,7 +470,7 @@ visible = false
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("1_hddue")
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 16
 text = "Craft 5"
 
 [node name="CraftAllButton" type="Button" parent="CraftingStationItemSelectPanel/HBoxContainer2" unique_id=1769471836]
@@ -491,26 +478,31 @@ visible = false
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("1_hddue")
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 16
 text = "Craft All"
 
 [node name="StarTierHBox" type="HBoxContainer" parent="CraftingStationItemSelectPanel" unique_id=749761400]
+custom_minimum_size = Vector2(8, 8)
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -64.5
-offset_top = 7.0
-offset_right = 14.5
-offset_bottom = 15.0
+offset_left = -69.0
+offset_top = 62.0
+offset_right = -16.0
+offset_bottom = 70.0
 grow_horizontal = 2
 alignment = 1
 
 [node name="RatePanel" type="Panel" parent="CraftingStationItemSelectPanel" unique_id=136508197]
-layout_mode = 0
-offset_left = -101.0
-offset_right = -1.0
-offset_bottom = 61.0
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_top = 15.0
+offset_right = 140.0
+offset_bottom = 112.651
+grow_horizontal = 0
 
 [node name="Title" type="Label" parent="CraftingStationItemSelectPanel/RatePanel" unique_id=561414567]
 layout_mode = 1
@@ -524,7 +516,7 @@ offset_bottom = 14.0
 grow_horizontal = 2
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("1_hddue")
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 16
 text = "Rates"
 
 [node name="SuccessRate" type="Label" parent="CraftingStationItemSelectPanel/RatePanel" unique_id=1665015418]
@@ -532,14 +524,14 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -42.0
-offset_top = 15.0
-offset_right = 29.0
-offset_bottom = 27.0
+offset_left = -47.0
+offset_top = 23.651001
+offset_right = 34.0
+offset_bottom = 39.651
 grow_horizontal = 2
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("1_hddue")
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 16
 text = "Success: 90%"
 
 [node name="CritSuccessRate" type="Label" parent="CraftingStationItemSelectPanel/RatePanel" unique_id=278270102]
@@ -547,14 +539,14 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -43.0
-offset_top = 29.0
-offset_right = 39.0
-offset_bottom = 41.0
+offset_left = -56.5
+offset_top = 38.651
+offset_right = 52.5
+offset_bottom = 54.651
 grow_horizontal = 2
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("1_hddue")
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 16
 text = "Crit Success: 10%"
 
 [node name="FailureRate" type="Label" parent="CraftingStationItemSelectPanel/RatePanel" unique_id=323099345]
@@ -563,13 +555,13 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -43.0
-offset_top = 42.0
+offset_top = 59.651
 offset_right = 39.0
-offset_bottom = 54.0
+offset_bottom = 75.651
 grow_horizontal = 2
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("1_hddue")
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 16
 text = "Failure: 10%"
 
 [connection signal="button_up" from="CraftingStationItemSelectPanel/HBoxContainer2/Craft1Button" to="." method="_on_craft_1_button_button_up"]

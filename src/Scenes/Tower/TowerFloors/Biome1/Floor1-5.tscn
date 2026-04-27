@@ -11,7 +11,6 @@
 [ext_resource type="TileSet" uid="uid://cbwyncwtk5kxk" path="res://src/Scenes/Tower/TowerFloors/Biome1/Biome1-Boundaries.tres" id="11_gtao6"]
 [ext_resource type="PackedScene" uid="uid://c8ov03gkkda4k" path="res://src/Scenes/PlayerCamera.tscn" id="12_0o4k2"]
 [ext_resource type="PackedScene" uid="uid://cps01vtaqexec" path="res://src/Scenes/Tower/TowerFloors/GemStoneMarker.tscn" id="13_7simu"]
-[ext_resource type="PackedScene" uid="uid://dysg5kffvxbql" path="res://src/Scenes/UI/PlayerHUD.tscn" id="13_th02q"]
 [ext_resource type="PackedScene" uid="uid://c6tv3t1cpeq8f" path="res://src/Scenes/PlayerSpawnPoint.tscn" id="14_2bbx0"]
 [ext_resource type="PackedScene" uid="uid://dj0ett15s3u5m" path="res://src/Scenes/Tower/TowerFloors/OreRockMarker.tscn" id="14_l7but"]
 [ext_resource type="Resource" uid="uid://vgpa4fp7c3sc" path="res://src/Resources/OreRock/CoalOreRock.tres" id="15_22mja"]
@@ -63,7 +62,7 @@ exit_elevator = NodePath("ExitElevator")
 tower_entrance_data = ExtResource("2_6kwyc")
 map_theme_song = ExtResource("3_ogel5")
 camera = NodePath("PlayerCamera")
-hud = NodePath("HUD")
+hud = NodePath("")
 ore_rock_spawn_rate = 0.5
 ore_rock_markers = NodePath("OreRockMarkers")
 gem_stone_chest_markers = NodePath("GemStoneMarkers")
@@ -76,10 +75,10 @@ ambience_player = NodePath("AmbiencePlayer")
 [node name="AmbiencePlayer" parent="." unique_id=1229306272 instance=ExtResource("7_8rajy")]
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=874668814]
-offset_left = -46.0
+offset_left = -244.0
 offset_top = 718.0
-offset_right = 665.0
-offset_bottom = 2671.0
+offset_right = 946.0
+offset_bottom = 2744.0
 color = Color(0.047058824, 0.09803922, 0.15686275, 1)
 
 [node name="TileMaps" type="Node2D" parent="." unique_id=1927393532]
@@ -124,17 +123,14 @@ tile_set = ExtResource("11_gtao6")
 
 [node name="PlayerCamera" parent="." unique_id=829832817 instance=ExtResource("12_0o4k2")]
 position = Vector2(321, 2468)
-limit_left = 0
-limit_top = 200
+limit_left = 300
+limit_top = 800
 limit_right = 640
-limit_bottom = 2670
+limit_bottom = 2890
 limit_smoothed = true
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 room_height = 2000
-
-[node name="HUD" parent="." unique_id=429743575 instance=ExtResource("13_th02q")]
-visible = false
 
 [node name="PlayerSpawnPoint" parent="." unique_id=335168432 instance=ExtResource("14_2bbx0")]
 position = Vector2(411, 2609)

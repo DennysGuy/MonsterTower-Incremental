@@ -41,8 +41,15 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("interact") and player_in_range:
 		if GameManager.hunt_challenge_selected and current_room_data.hunt_challenge_completed:
+			MusicPlayer.transitioning_floors = true
 			unlock_next_floor()
 			SignalBus.go_to_victory_hunt_menu.emit()
+			return
+
+		if current_room_data.is_expedition_floor() and current_room_data.unlock_recipe and !current_room_data.hunt_challenge_completed:
+			MusicPlayer.transitioning_floors = true
+			GameManager.spawn_location = 0
+			unlock_next_room()
 			return
 
 		if PlayerStats.check_points_unlocked[next_room_data.floor_name] == true:
@@ -57,7 +64,7 @@ func _process(delta: float) -> void:
 			SignalBus.move_to_next_room.emit(next_room_data.scene_path)
 			return
 
-		unlock_next_room()
+		
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Player:
@@ -121,7 +128,7 @@ func populate_items_needed_list() -> void:
 	InventoryManager.clear_grid_container(needed_items_container)
 	for item_dict in current_room_data.unlock_recipe.recipe_list:
 		for item in item_dict.keys():
-			var quantity_list_item : QuantityListItem = preload("uid://cq8n5gyropdxm").instantiate()
+			var quantity_list_item : QuantityListItem = preload("uid://do7gmff4xat63").instantiate()
 			quantity_list_item.icon.texture = item.shop_icon
 			quantity_list_item.quantity_label.text = "x%s" % [item_dict[item]]
 			needed_items_container.add_child(quantity_list_item)
@@ -129,7 +136,7 @@ func populate_items_needed_list() -> void:
 func unlock_elevator() -> void:
 	animation_player.play("UnlockElevator")
 	await get_tree().create_timer(2).timeout
-	SignalBus.flash_screen.emit()
+	PlayerHudSignalBus.flash_screen.emit()
 	await get_tree().create_timer(0.5).timeout
 	row_lock.hide()
 	

@@ -10,7 +10,7 @@ node_name = "Movement 2"
 icon = ExtResource("1_thmeo")
 description = "For each level, increases movement speed by 5%"
 max_level = 3
-currency_required = 300
+currency_required = 1000
 materials_required = Array[Dictionary]([{
 ExtResource("2_oo0nn"): 1
 }])

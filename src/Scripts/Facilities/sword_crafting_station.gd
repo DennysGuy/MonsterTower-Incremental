@@ -30,7 +30,7 @@ func populate_resource_needed_list() -> void:
 		InventoryManager.clear_grid_container(resource_list)
 		for item_dict in next_sword_recipe.recipe_list:
 			for item in item_dict.keys():
-				var quantity_list_item : QuantityListItem = preload("uid://cq8n5gyropdxm").instantiate()
+				var quantity_list_item : QuantityListItem = preload("uid://do7gmff4xat63").instantiate()
 				quantity_list_item.icon.texture = item.shop_icon
 				quantity_list_item.quantity_label.text = "x%s" % [item_dict[item]]
 				resource_list.add_child(quantity_list_item)

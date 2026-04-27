@@ -43,7 +43,7 @@ const KNOCKBACK_FORCE : int = 300
 	"Overlapping Hits" : 1.0,
 	"Bag": 1,
 	"Ore Bag":2,
-	"Max Bank Slots": 4,
+	"Max Bank Slots": 8,
 	"Max Bag Stack": 6,
 	"Max Ore Bag Stack": 4,
 	"Max Bank Stack":15,
@@ -339,12 +339,12 @@ func recover_hp(amount : int) -> void:
 	if player_stats["Current Health"] > get_total_max_health():
 		player_stats["Current Health"] = get_total_max_health()
 	
-	SignalBus.update_player_health.emit(player_stats["Current Health"])
+	PlayerHudSignalBus.update_player_health.emit()
 		
 func recover_mp(amount : int) -> void:
 	player_stats["Current MP"] += amount
 	if player_stats["Current MP"] > get_total_max_mp():
 		player_stats["Current MP"] = get_total_max_mp()
 	
-	SignalBus.update_player_mp.emit()
+	PlayerHudSignalBus.update_player_mp.emit()
 	

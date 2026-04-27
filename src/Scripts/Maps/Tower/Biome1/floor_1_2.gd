@@ -6,7 +6,7 @@ var player_in_exit_area : bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super()
-	hud.animation_player.play("CloseIn")
+	#hud.animation_player.play("CloseIn")
 	SignalBus.spawn_enemies.emit()
 	
 	if ore_rock_markers and !GameManager.hunt_challenge_selected:
@@ -25,15 +25,16 @@ func _ready() -> void:
 	
 	if monster_spawn_node:
 		if GameManager.hunt_challenge_selected:
-			hud.animation_player.play("StartHuntChallnge")
+			#hud.animation_player.play("StartHuntChallnge")
 			SignalBus.update_monsters_left.emit("Monsters left: %s" % [monster_spawn_node.get_children()],false,false)
 		else:
 			SignalBus.update_monsters_left.emit("Campfires Discovered: %s/%s" % [tower_entrance_data.camp_fires_reached, tower_entrance_data.total_camp_fires],false)
 	
-	SignalBus.update_player_health.emit(player.health)
-	SignalBus.update_player_mp.emit()
+	SignalBus.update_banner_info.emit(tower_entrance_data)
+	PlayerHudSignalBus.update_player_health.emit()
+	PlayerHudSignalBus.update_player_mp.emit()
 	SaveManager.save_player_stats()
-	
+	PlayerHudSignalBus.show_stop_watch.emit()
 	if GameManager.hunt_challenge_selected:
 		GameManager.enemies_can_move = false
 		SignalBus.hide_hunt_challenge_button.emit()
@@ -41,15 +42,17 @@ func _ready() -> void:
 		SignalBus.update_monsters_left.emit("Monsters left: %s" % [monster_count])
 		player.damageable = false
 		await get_tree().create_timer(0.5).tidmeout
-		hud.set_hunt_timer()
-		hud.expedition_timer.update_timer_label()
-		hud.animation_player.play("StartHuntChallenge")
+		#hud.set_hunt_timer()
+		#hud.expedition_timer.update_timer_label()
+		#hud.animation_player.play("StartHuntChallenge")
 		await get_tree().create_timer(4.0).timeout
 		player.damageable = true
 		GameManager.player_can_move = true
 	else:
 		SignalBus.start_enemy_spawn.emit()
+		PlayerHudSignalBus.start_stop_watch.emit()
 	
+	PlayerHudSignalBus.update_map_name_label.emit(map_name)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	super(delta)

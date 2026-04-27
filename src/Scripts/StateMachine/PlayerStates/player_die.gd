@@ -15,7 +15,8 @@ func enter() -> void:
 		parent.clear_sprites()
 		spawn_ghost()
 		await get_tree().create_timer(3.0).timeout
-		SignalBus.spawn_respawn_box.emit()
+		
+		PlayerHudSignalBus.spawn_respawn_box.emit()
 		
 		parent.can_spawn_gravestone = false
 	

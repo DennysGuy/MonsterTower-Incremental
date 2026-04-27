@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="TowerEntranceData" format=3 uid="uid://bv3no8c6bw4tm"]
 
 [ext_resource type="Texture2D" uid="uid://bwlqhfw83akup" path="res://Assets/Enemies/BeetleKnightIcon.png" id="1_lqfr0"]
+[ext_resource type="Texture2D" uid="uid://clj6x17wl6bus" path="res://Assets/HUD/NewTowerEntranceMap/MossyDungeonEntranceButtons/MossyDungeonCPButton4.png" id="1_trwtq"]
 [ext_resource type="Texture2D" uid="uid://csia73ycbfkej" path="res://Assets/Enemies/BeetleKnightLvl2Icon.png" id="2_t8gbc"]
 [ext_resource type="Texture2D" uid="uid://cmd1xfjwqwc26" path="res://Assets/Enemies/SerpantMimicIcon.png" id="3_aq5xg"]
 [ext_resource type="Script" uid="uid://cyho4aep1qxmu" path="res://src/Scripts/Maps/tower_entrance_data.gd" id="3_lqfr0"]
@@ -17,10 +18,11 @@
 script = ExtResource("3_lqfr0")
 floor_name = "Floor 1-4"
 floor_number = 4
+button_texture = ExtResource("1_trwtq")
 floor_type = 1
 biome = "Mossy Dungeon"
 total_camp_fires = 3
-scene_path = "uid://bcb7mqtk7hdgw"
+scene_path = "uid://ch8d3nd8enxnw"
 preview_pictures = Array[Texture2D]([ExtResource("8_bpt33"), ExtResource("9_trwtq"), ExtResource("10_f88un"), ExtResource("11_rov2w")])
 enemy_preview_graphics = Array[Texture2D]([ExtResource("1_lqfr0"), ExtResource("2_t8gbc"), ExtResource("3_aq5xg"), ExtResource("4_indck")])
 ore_rock_preview_graphics = Array[Texture2D]([ExtResource("5_l4yro"), ExtResource("6_rmp10"), ExtResource("7_rmp10")])

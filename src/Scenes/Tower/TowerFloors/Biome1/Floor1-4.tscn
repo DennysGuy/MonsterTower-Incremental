@@ -13,7 +13,6 @@
 [ext_resource type="TileSet" uid="uid://flobhfna8te" path="res://src/Scenes/Tower/TowerFloors/Biome1/Biome1-Platforms.tres" id="8_vj64s"]
 [ext_resource type="TileSet" uid="uid://cbwyncwtk5kxk" path="res://src/Scenes/Tower/TowerFloors/Biome1/Biome1-Boundaries.tres" id="9_3kk52"]
 [ext_resource type="PackedScene" uid="uid://c8ov03gkkda4k" path="res://src/Scenes/PlayerCamera.tscn" id="10_il7pj"]
-[ext_resource type="PackedScene" uid="uid://dysg5kffvxbql" path="res://src/Scenes/UI/PlayerHUD.tscn" id="11_8k1mi"]
 [ext_resource type="PackedScene" uid="uid://c6tv3t1cpeq8f" path="res://src/Scenes/PlayerSpawnPoint.tscn" id="12_aaosj"]
 [ext_resource type="PackedScene" uid="uid://dd63dgr038myr" path="res://src/Scenes/Tower/TowerFloors/PrevElevator1.tscn" id="13_aj4kp"]
 [ext_resource type="PackedScene" uid="uid://cr6q5dxlkks" path="res://src/Scenes/Tower/LadderArea.tscn" id="15_6fsd8"]
@@ -83,7 +82,7 @@ size = Vector2(193, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xkl8j"]
 size = Vector2(347, 20)
 
-[node name="Floor1-4" type="Node2D" unique_id=1707445138 node_paths=PackedStringArray("exit_elevator_marker", "exit_elevator", "camera", "hud", "ore_rock_markers", "gem_stone_chest_markers", "campfire_list", "hp_replenish_points", "mp_replenish_points", "sfx_player", "monster_spawn_node", "ambience_player")]
+[node name="Floor1-4" type="Node2D" unique_id=1707445138 node_paths=PackedStringArray("exit_elevator_marker", "exit_elevator", "camera", "ore_rock_markers", "gem_stone_chest_markers", "campfire_list", "hp_replenish_points", "mp_replenish_points", "sfx_player", "monster_spawn_node", "ambience_player")]
 script = ExtResource("1_qpvn6")
 map_name = "Floor 1-4"
 map_id = 4
@@ -94,7 +93,6 @@ map_theme_song = ExtResource("3_h5nvt")
 hunt_theme_song = ExtResource("4_o3lws")
 hunt_victory_theme = ExtResource("5_o10go")
 camera = NodePath("PlayerCamera")
-hud = NodePath("HUD")
 ore_rock_spawn_rate = 0.4
 ore_rock_markers = NodePath("OreRockMarkers")
 gem_stone_chest_markers = NodePath("GemStoneMarkers")
@@ -111,10 +109,10 @@ ambience_sfx = ExtResource("4_h5nvt")
 [node name="AmbiencePlayer" parent="." unique_id=1229306272 instance=ExtResource("5_o3lws")]
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=874668814]
-offset_left = -46.0
-offset_top = 155.0
-offset_right = 665.0
-offset_bottom = 2671.0
+offset_left = -388.0
+offset_top = 122.0
+offset_right = 1003.0
+offset_bottom = 2775.0
 color = Color(0.047058824, 0.09803922, 0.15686275, 1)
 
 [node name="TileMaps" type="Node2D" parent="." unique_id=1927393532]
@@ -159,17 +157,14 @@ tile_set = ExtResource("9_3kk52")
 
 [node name="PlayerCamera" parent="." unique_id=829832817 instance=ExtResource("10_il7pj")]
 position = Vector2(321, 2468)
-limit_left = 0
+limit_left = 300
 limit_top = 200
 limit_right = 640
-limit_bottom = 2670
+limit_bottom = 2880
 limit_smoothed = true
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 room_height = 2000
-
-[node name="HUD" parent="." unique_id=429743575 instance=ExtResource("11_8k1mi")]
-visible = false
 
 [node name="PlayerSpawnPoint" parent="." unique_id=335168432 instance=ExtResource("12_aaosj")]
 position = Vector2(229, 2609)

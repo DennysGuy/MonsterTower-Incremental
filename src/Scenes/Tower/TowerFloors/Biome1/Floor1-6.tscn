@@ -10,7 +10,6 @@
 [ext_resource type="TileSet" uid="uid://flobhfna8te" path="res://src/Scenes/Tower/TowerFloors/Biome1/Biome1-Platforms.tres" id="7_56i74"]
 [ext_resource type="TileSet" uid="uid://cbwyncwtk5kxk" path="res://src/Scenes/Tower/TowerFloors/Biome1/Biome1-Boundaries.tres" id="8_d82mw"]
 [ext_resource type="PackedScene" uid="uid://c8ov03gkkda4k" path="res://src/Scenes/PlayerCamera.tscn" id="9_a2am3"]
-[ext_resource type="PackedScene" uid="uid://dysg5kffvxbql" path="res://src/Scenes/UI/PlayerHUD.tscn" id="10_jss34"]
 [ext_resource type="PackedScene" uid="uid://c6tv3t1cpeq8f" path="res://src/Scenes/PlayerSpawnPoint.tscn" id="11_6ovmg"]
 [ext_resource type="PackedScene" uid="uid://c6ojaalya87sr" path="res://src/Scenes/Tower/TowerFloors/Biome1/BossDoor.tscn" id="16_xtlvs"]
 [ext_resource type="PackedScene" uid="uid://o3402dk5586q" path="res://src/Scenes/Tower/TowerFloors/Biome1/DiamondKeyLock.tscn" id="17_32cc3"]
@@ -62,13 +61,12 @@ size = Vector2(227, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dviee"]
 size = Vector2(304, 20)
 
-[node name="Floor1-6" type="Node2D" unique_id=1707445138 node_paths=PackedStringArray("camera", "hud", "sfx_player", "ambience_player")]
+[node name="Floor1-6" type="Node2D" unique_id=1707445138 node_paths=PackedStringArray("camera", "sfx_player", "ambience_player")]
 script = ExtResource("1_8uvqi")
 map_name = "Floor 1-6"
 map_id = 6
 tower_entrance_data = ExtResource("2_1h2gs")
 camera = NodePath("PlayerCamera")
-hud = NodePath("HUD")
 sfx_player = NodePath("SfxPlayer")
 map_type = 2
 ambience_player = NodePath("AmbiencePlayer")
@@ -77,10 +75,10 @@ ambience_sfx = ExtResource("2_ca7f4")
 [node name="AmbiencePlayer" parent="." unique_id=1229306272 instance=ExtResource("4_yhu3b")]
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=874668814]
-offset_left = -46.0
-offset_top = 718.0
-offset_right = 665.0
-offset_bottom = 2671.0
+offset_left = -316.0
+offset_top = 687.0
+offset_right = 913.0
+offset_bottom = 2768.0
 color = Color(0.047058824, 0.09803922, 0.15686275, 1)
 
 [node name="TileMaps" type="Node2D" parent="." unique_id=1927393532]
@@ -125,17 +123,14 @@ tile_set = ExtResource("8_d82mw")
 
 [node name="PlayerCamera" parent="." unique_id=829832817 instance=ExtResource("9_a2am3")]
 position = Vector2(321, 2468)
-limit_left = 0
+limit_left = 300
 limit_top = 800
 limit_right = 640
-limit_bottom = 2670
+limit_bottom = 2900
 limit_smoothed = true
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 room_height = 2000
-
-[node name="HUD" parent="." unique_id=429743575 instance=ExtResource("10_jss34")]
-visible = false
 
 [node name="MonsterSpawnNode" type="Node" parent="." unique_id=728793847]
 

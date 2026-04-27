@@ -13,4 +13,4 @@ func _on_button_button_up() -> void:
 	animation_player.play("FadeOut")
 
 func go_to_starspire() -> void:
-	get_tree().change_scene_to_file("res://src/Scenes/NewStarshire/NewStarShire.tscn")
+	get_tree().change_scene_to_file("uid://cq0un0c22235d")

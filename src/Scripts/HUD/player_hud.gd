@@ -1,11 +1,11 @@
 class_name PlayerHUD extends CanvasLayer
 
-@onready var player_health_bar: TextureProgressBar = $PlayerHUD/PlayerHealthBar
-@onready var player_mp_bar: TextureProgressBar = $PlayerHUD/PlayerMPBar
+@export var player_health_bar: TextureProgressBar
+@export var player_mp_bar: TextureProgressBar
 @onready var player_hud: Control = $PlayerHUD
 @export var animation_player: AnimationPlayer
-@onready var hp_label: Label = $PlayerHUD/HPLabel
-@onready var mp_label: Label = $PlayerHUD/MPLabel
+@export var hp_label: Label 
+@export var mp_label: Label
 @export var map_name_label: Label
 @onready var bag_animation_player: AnimationPlayer = $BagAnimationPlayer
 var bag_showing : bool = false
@@ -54,47 +54,53 @@ var quests_showing : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	SignalBus.update_player_health.connect(update_player_health)
-	SignalBus.spawn_respawn_box.connect(spawn_respawn_box)
-	SignalBus.issue_big_notification.connect(issue_big_notification)
-	SignalBus.hide_big_notification.connect(hide_big_notification_label)
-	SignalBus.play_close_out_animation.connect(play_close_out_animation)
+	PlayerHudSignalBus.update_player_health.connect(update_player_health)
+	PlayerHudSignalBus.spawn_respawn_box.connect(spawn_respawn_box)
+	PlayerHudSignalBus.issue_big_notification.connect(issue_big_notification)
+	PlayerHudSignalBus.hide_big_notification.connect(hide_big_notification_label)
+	PlayerHudSignalBus.play_close_out_animation.connect(play_close_out_animation)
 	
-	SignalBus.update_kill_quota_text.connect(update_kill_quota_text)
-	SignalBus.update_monsters_left.connect(remaining_monsters)
-	SignalBus.play_countdown_beep.connect(play_countdown_beep)
+	PlayerHudSignalBus.update_kill_quota_text.connect(update_kill_quota_text)
+	PlayerHudSignalBus.update_monsters_left.connect(remaining_monsters)
+	PlayerHudSignalBus.play_countdown_beep.connect(play_countdown_beep)
 	
-	SignalBus.update_player_mp.connect(update_player_mp)
+	PlayerHudSignalBus.update_player_mp.connect(update_player_mp)
+	PlayerHudSignalBus.update_map_name_label.connect(update_map_name_level)
 	
-	SignalBus.enable_tower_map_button.connect(enable_tower_map_button)
-	SignalBus.show_hunt_challenge_button.connect(show_hunt_challenge_button)
-	SignalBus.flash_screen.connect(flash_screen)
+	PlayerHudSignalBus.enable_tower_map_button.connect(enable_tower_map_button)
+	PlayerHudSignalBus.show_hunt_challenge_button.connect(show_hunt_challenge_button)
+	PlayerHudSignalBus.flash_screen.connect(flash_screen)
 	
-	SignalBus.populate_item_notification_panel.connect(populate_pick_notification_panel)
+	PlayerHudSignalBus.start_hunt_intro.connect(start_hunt_intro)
+	SignalBus.hide_hunt_challenge_button.connect(hide_hunt_challenge_button)
+	#PlayerHudSignalBus.show_stop_watch.connect(show_stop_watch)
+	PlayerHudSignalBus.start_stop_watch.connect(start_expedition_timer)
+	PlayerHudSignalBus.populate_item_notification_panel.connect(populate_pick_notification_panel)
 	TechTreeManager.update_currency_label.connect(update_currency_label)
 	#player_health_bar.max_value = PlayerStats.player_stats["Max Health"]
 	#player_health_bar.value = PlayerStats.player_stats["Current Health"]
 	
 	LevelingManager.update_xp_bar.connect(update_xp_bar)
-	SignalBus.show_class_notice.connect(show_class_notice)
+	PlayerHudSignalBus.show_class_notice.connect(show_class_notice)
 	InventoryManager.show_open_bag_notice.connect(show_open_bag_notice)
 	InventoryManager.hide_open_bag_notice.connect(hide_open_bag_notice)
 	
-	player_mp_bar.max_value = PlayerStats.player_stats["Current MP"]
-	player_mp_bar.value = player_mp_bar.max_value
+	#player_mp_bar.max_value = PlayerStats.player_stats["Current MP"]
+	#player_mp_bar.value = player_mp_bar.max_value
 	
 	update_xp_bar()
 	#update_ap_label()
 	#update_player_health(int(PlayerStats.player_stats["Current Health"]))
 	#show_class_notice()
+	animation_player.play("CloseIn")
 	if GameManager.can_unlock_class():
 		show_class_notice()
 	
-	quest_tracker_player.play("QuestHubQuickView")
-
+	#quest_tracker_player.play("QuestHubQuickView")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	print(PlayerStats.player_stats["Current Health"])
 	if Input.is_action_just_pressed("open_bag") and GameManager.can_open_bag:
 		show_bag()
 	
@@ -105,10 +111,12 @@ func _process(delta: float) -> void:
 		else:
 			hide_quests()
 
-func update_player_health(value : int) -> void:
-	player_health_bar.value = value
-	player_health_bar.max_value = PlayerStats.player_stats["Max Health"] + PlayerStats.get_current_sword().get_total_hp_bonus()
-	hp_label.text = "%s/%s" % [int(player_health_bar.value), int(player_health_bar.max_value)]
+func update_player_health() -> void:
+	var current_hp : int = PlayerStats.player_stats["Current Health"]
+	var max_hp : int = PlayerStats.player_stats["Max Health"] + PlayerStats.get_current_sword().get_total_hp_bonus()
+	player_health_bar.value = current_hp
+	player_health_bar.max_value = max_hp
+	hp_label.text = "%s/%s" % [int(current_hp), int(max_hp)]
 
 func update_player_mp() -> void:
 	var current_mp : int = PlayerStats.player_stats["Current MP"]
@@ -145,6 +153,12 @@ func quick_quests_preview() -> void:
 
 func enable_tower_map_button() -> void:
 	open_tower_map_button.disabled = false
+
+func show_stop_watch() -> void:
+	expedition_timer.show()
+
+func start_hunt_intro() -> void:
+	animation_player.play("StartHuntChallenge")
 
 func update_kill_quota_text(message : String, quota_met : bool, challenge_unlocked : bool) -> void:
 	if is_inside_tree():
@@ -191,6 +205,7 @@ func start_expedition_timer() -> void:
 func set_hunt_timer() -> void:
 	expedition_timer.show()
 	ExpeditionTimer.set_time_for_hunt(90)
+	expedition_timer.load_timer_label()
 
 func start_hunt_timer() -> void:
 	GameManager.enemies_can_move = true
@@ -217,7 +232,7 @@ func play_close_in_sfx() -> void:
 	sfx_player.play_sfx(CLOSE_IN)
 
 func play_countdown_beep() -> void:
-	sfx_player.play_sfx(COUNTDOWN_BEEP)
+	play_sfx(COUNTDOWN_BEEP)
 
 func show_class_notice() -> void:
 	advance_class_notice.show()
@@ -231,7 +246,6 @@ func remaining_monsters(text : String, out_of_enmies : bool) -> void:
 func start_timer() -> void:
 	pass
 
-
 func show_hunt_challenge_button() -> void:
 	start_hunt_challenge_button.show()
 
@@ -243,6 +257,9 @@ func _on_start_hunt_challenge_button_button_up() -> void:
 	GameManager.resupply_character = true
 	GameManager.spawn_location = 0
 	get_tree().change_scene_to_file(GameManager.previous_map_data.scene_path)
+
+func update_map_name_level(name : String) -> void:
+	map_name_label.text = name
 
 func populate_pick_notification_panel(item_data : Item) -> void:
 	var notification_item : PickupNotificationItem = preload("uid://b1s1ecflwq2pn").instantiate()

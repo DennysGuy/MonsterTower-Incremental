@@ -2,31 +2,37 @@
 
 [ext_resource type="Script" uid="uid://cibmequrcfanu" path="res://src/Scripts/HUD/pick_up_notification_item.gd" id="1_gemre"]
 [ext_resource type="Texture2D" uid="uid://bkj0kj26ahgl8" path="res://Assets/Enemies/CorruptedMushie/PurifiedMushieCore.png" id="1_xe3ve"]
-[ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="2_gemre"]
+[ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="3_gemre"]
 
-[node name="PickNotifierItem" type="Panel" unique_id=1164274786 node_paths=PackedStringArray("icon", "label")]
+[node name="PickNotifierItem" type="PanelContainer" unique_id=557560669 node_paths=PackedStringArray("icon", "label")]
 custom_minimum_size = Vector2(150, 20)
+offset_right = 326.0
+offset_bottom = 56.0
 script = ExtResource("1_gemre")
-icon = NodePath("Icon")
-label = NodePath("Label")
+icon = NodePath("MarginContainer/HBoxContainer/Icon")
+label = NodePath("MarginContainer/HBoxContainer/Label")
 
-[node name="Icon" type="TextureRect" parent="." unique_id=1729502817]
-layout_mode = 0
-offset_left = 2.0
-offset_top = 1.0
-offset_right = 19.0
-offset_bottom = 18.0
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=870547474]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1215375482]
+layout_mode = 2
+theme_override_constants/separation = 13
+
+[node name="Icon" type="TextureRect" parent="MarginContainer/HBoxContainer" unique_id=1729502817]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
 texture = ExtResource("1_xe3ve")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="." unique_id=920058383]
-layout_mode = 0
-offset_left = 24.0
-offset_top = 5.0
-offset_right = 165.0
-offset_bottom = 17.0
-theme_override_fonts/font = ExtResource("2_gemre")
-theme_override_font_sizes/font_size = 12
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer" unique_id=920058383]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_gemre")
+theme_override_font_sizes/font_size = 22
 text = "Picked up 1 Mushie Core"
 
 [node name="Timer" type="Timer" parent="." unique_id=2091960895]

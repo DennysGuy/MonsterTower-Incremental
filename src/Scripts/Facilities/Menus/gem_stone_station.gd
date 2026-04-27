@@ -16,6 +16,7 @@ const GEM_STATION_GEM_BAG_BG = preload("uid://chft1dsfmivtq")
 @onready var sword_details: RichTextLabel = $DescriptionPanel/SwordDetails
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
+var stored_slot_index : int = -1
 var stored_gem : GemStone
 var selected_bag : String
 # Called when the node enters the scene tree for the first time.
@@ -66,18 +67,22 @@ func update_socket_vbox() -> void:
 		socket_v_box_container.add_child(socket)
 
 
-func populate_gem_details(item : Item, location : String) -> void:
+func populate_gem_details(item : Item, location : String, slot_index : int) -> void:
 	if item is GemStone:
 		stored_gem = item
+		stored_slot_index = slot_index
 		gem_title.text = stored_gem.item_name
 		gem_icon.texture = stored_gem.shop_icon
 		gem_description.text = generate_gem_stats()
 
 func _on_mount_button_button_up() -> void:
 	var equipped_gem : bool = PlayerStats.equip_gem_to_socket(stored_gem)
-	if equipped_gem:
-		InventoryManager.remove_item(selected_bag, stored_gem)
+	if equipped_gem and stored_slot_index != -1:
+		InventoryManager.remove_item_from_slot(stored_slot_index, selected_bag)
+		stored_gem = null
+		stored_slot_index = -1
 		update_sword_stats_description()
+		
 	update_gem_bag_container(selected_bag)
 	update_socket_vbox()
 

@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://cq0un0c22235d"]
 
 [ext_resource type="PackedScene" uid="uid://oonjrpabmces" path="res://src/Scenes/NewStarshire/NewStarShire.tscn" id="1_2ubh0"]
+[ext_resource type="Script" uid="uid://crjv5y5qb830c" path="res://src/Scripts/HUD/new_starshire_test_over.gd" id="1_woaxp"]
 [ext_resource type="PackedScene" uid="uid://dysg5kffvxbql" path="res://src/Scenes/UI/PlayerHUD.tscn" id="2_46meg"]
 
-[node name="NewStarShireTest" type="Node" unique_id=1197905404]
+[node name="NewStarShireOver" type="Node" unique_id=1197905404]
+script = ExtResource("1_woaxp")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=429305135]
 texture_filter = 1
@@ -12,16 +14,49 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 0
 stretch = true
-stretch_shrink = 3
+stretch_shrink = 2
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=1422289344]
+transparent_bg = true
 handle_input_locally = false
 snap_2d_transforms_to_pixel = true
 canvas_item_default_texture_filter = 0
-size = Vector2i(640, 360)
+physics_object_picking = true
+size = Vector2i(960, 540)
 render_target_update_mode = 4
 
-[node name="NewStarShire" parent="SubViewportContainer/SubViewport" unique_id=1923605450 instance=ExtResource("1_2ubh0")]
+[node name="NewStarShire" parent="SubViewportContainer/SubViewport" unique_id=1923605450 node_paths=PackedStringArray("hud") instance=ExtResource("1_2ubh0")]
+position = Vector2(0, 5)
+hud = NodePath("../../../HUD")
 
 [node name="HUD" parent="." unique_id=129498783 instance=ExtResource("2_46meg")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=51113824]
+visible = false
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=828414404]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer/Control" unique_id=1559256646]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch_shrink = 2
+
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer/Control/SubViewportContainer" unique_id=981382425]
+transparent_bg = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+physics_object_picking = true
+size = Vector2i(1920, 1080)
+render_target_update_mode = 0

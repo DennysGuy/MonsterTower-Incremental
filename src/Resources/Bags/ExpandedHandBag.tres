@@ -6,6 +6,6 @@
 [resource]
 script = ExtResource("1_fbm8p")
 item_bag_name = "Expanded Hand Bag"
-max_slots = 4
+max_slots = 8
 texture = ExtResource("2_n72eb")
 metadata/_custom_type_script = "uid://2pcwgw0gbxsp"

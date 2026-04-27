@@ -11,7 +11,7 @@ node_name = "Chalice Spawn Rate 1"
 icon = ExtResource("1_5ad7r")
 description = "Increases chance for Healing Chalice to spawn 10% for each level."
 max_level = 3
-currency_required = 2500
+currency_required = 3000
 materials_required = Array[Dictionary]([{
 ExtResource("1_cg2dv"): 2
 }, {
