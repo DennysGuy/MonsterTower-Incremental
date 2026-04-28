@@ -34,11 +34,14 @@ func update_quest_completion() -> void:
 	if !all_tasks_completed():
 		return
 	
-	clear_checklist()
 	play_sfx(QUEST_COMPLETED)
-	var completed_text : TaskListItem = preload("uid://cb5m6ynmba10o").instantiate()
-	completed_text.label.text = "Quest Completed!"
-	checklist.add_child(completed_text)
+	
+	if quest_data.is_main_quest():
+		load_next_quest()
+	else:
+		var completed_text : TaskListItem = preload("uid://cb5m6ynmba10o").instantiate()
+		completed_text.label.text = "Quest Completed!"
+		checklist.add_child(completed_text)
 
 
 func play_sfx(sound: AudioStream, volume: float = 0.0):
@@ -56,3 +59,16 @@ func all_tasks_completed() -> bool:
 			return false
 	
 	return true
+
+func load_next_quest() -> void:
+	if quest_data.next_quest == "END":
+		var completed_text : TaskListItem = preload("uid://cb5m6ynmba10o").instantiate()
+		completed_text.label.text = "Quest Line Completed!"
+		checklist.add_child(completed_text)
+		return
+	
+	quest_data = QuestManager.get_quest("Main", quest_data.chapter_relation, quest_data.next_quest)
+	build_task_list()
+
+	#TODO: MY THOUGHT: FOR MAIN QUESTS AT END OF QUEST LINE WELL HAVE PLAYER EITHER
+		#Go back to the hub for a cutscene or play a cutscene

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dbotowetbyw6u" path="res://src/Scripts/Questing/quest_tracker_item.gd" id="1_oio6f"]
 [ext_resource type="FontFile" uid="uid://dgu1a66dfe8w" path="res://Assets/Fonts/Maplestory OTF Light.otf" id="1_umesl"]
-[ext_resource type="Resource" uid="uid://56sc8x8gyyjy" path="res://src/Resources/Quests/Intro/MainQuests/TestMainQuest.tres" id="2_4i7lb"]
+[ext_resource type="Resource" uid="uid://56sc8x8gyyjy" path="res://src/Resources/Quests/Intro/MainQuests/TestMainQuest1/TestMainQuest.tres" id="2_4i7lb"]
 
 [node name="QuestTrackerItem" type="MarginContainer" unique_id=1495447857]
 anchors_preset = 8

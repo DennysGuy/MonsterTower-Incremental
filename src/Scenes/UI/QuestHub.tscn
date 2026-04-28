@@ -89,6 +89,7 @@ mouse_filter = 2
 layout_mode = 2
 
 [node name="JobsTracker" type="Control" parent="QuestHubVBox" unique_id=845711951]
+visible = false
 custom_minimum_size = Vector2(50, 100)
 layout_mode = 2
 

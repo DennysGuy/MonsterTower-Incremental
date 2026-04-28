@@ -13,11 +13,24 @@ enum STATUS {LOCKED, AVAILABLE, IN_PROGRESS, COMPLETED}
 @export_multiline var description : String
 @export var chapter_relation : String
 @export var quest_line : String
+@export var next_quest : String
 @export var quest_line_index : int
 @export var tasks : Array[Task]
 
+func activate_quest() -> void:
+	status = STATUS.IN_PROGRESS
+
+func unlock_quest() -> void:
+	status = STATUS.AVAILABLE
+
 func complete_quest() -> void:
-	pass
+	status = STATUS.COMPLETED
+
+func is_main_quest() -> bool:
+	return quest_type == QUEST_TYPE.MAIN
+
+func is_job() -> bool:
+	return quest_type == QUEST_TYPE.JOB
 
 func advance_quest_in_series() -> void:
 	'''

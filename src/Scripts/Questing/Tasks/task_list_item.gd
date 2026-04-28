@@ -20,21 +20,23 @@ func _process(delta: float) -> void:
 	pass
 
 func play_completion_animation(task_id : int) -> void:
-	if task_data.task_id != task_id:
+	if !expected_task_id(task_id):
 		return
+		
 	play_sfx(TASK_COMPLETED)
 	animation_player.play("Complete")
 	await animation_player.animation_finished
 	QuestManager.check_for_quest_completion.emit()	
 
 func undo_completion(task_id : int) -> void:
-	if task_data.task_id != task_id:
+	if !expected_task_id(task_id):
 		return
+		
 	animation_player.play("UndoCompletion")
 	#we'll need to issue a signal that rebuilds the quest tasks
 
 func update_task_label(task_id : int) -> void:
-	if task_data.task_id != task_id:
+	if !expected_task_id(task_id):
 		return
 	
 	if task_data is GatheringTask:
@@ -57,3 +59,6 @@ func play_sfx(sound: AudioStream, volume: float = 0.0):
 	add_child(player)
 	player.play()
 	player.finished.connect(player.queue_free)
+
+func expected_task_id(task_id : int) -> bool:
+	return task_data and task_id == task_data.task_id
