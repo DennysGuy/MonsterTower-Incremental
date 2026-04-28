@@ -1,0 +1,58 @@
+class_name QuestTrackerItem extends MarginContainer
+
+@export var quest_data : Quest
+@onready var checklist: VBoxContainer = $VBoxContainer/MarginContainer/Checklist
+
+@onready var quest_title: RichTextLabel = $VBoxContainer/QuestTitle
+const QUEST_COMPLETED = preload("uid://om1y244uqbs")
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	QuestManager.check_for_quest_completion.connect(update_quest_completion)
+	quest_title.text = quest_data.quest_title
+	build_task_list()
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+'''
+Use this function to build out the task list
+TODO: Need to build task object
+'''
+func build_task_list() -> void:
+	clear_checklist()
+	for task in quest_data.tasks:
+		var new_task : TaskListItem = task.build_task_list_item()
+		checklist.add_child(new_task)
+
+func clear_checklist() -> void:
+	for child in checklist.get_children():
+		child.queue_free()
+
+func update_quest_completion() -> void:
+	if !all_tasks_completed():
+		return
+	
+	clear_checklist()
+	play_sfx(QUEST_COMPLETED)
+	var completed_text : TaskListItem = preload("uid://cb5m6ynmba10o").instantiate()
+	completed_text.label.text = "Quest Completed!"
+	checklist.add_child(completed_text)
+
+
+func play_sfx(sound: AudioStream, volume: float = 0.0):
+	var player := AudioStreamPlayer.new()
+	player.stream = sound
+	player.volume_db = volume
+	player.bus = &"SFX"
+	add_child(player)
+	player.play()
+	player.finished.connect(player.queue_free)
+
+func all_tasks_completed() -> bool:
+	for task in quest_data.tasks:
+		if !task.completed:
+			return false
+	
+	return true

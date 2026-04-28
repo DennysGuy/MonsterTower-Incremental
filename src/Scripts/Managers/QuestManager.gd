@@ -1,0 +1,26 @@
+extends Node
+
+@warning_ignore("unused_signal")
+signal check_monster_count(monster_name : String)
+@warning_ignore("unused_signal")
+signal check_item_count(item_name : String)
+@warning_ignore("unused_signal")
+signal check_map_name(map_name : String)
+@warning_ignore("unused_signal")
+signal check_facility_name(facility_name : String)
+@warning_ignore("unused_signal")
+signal check_level
+@warning_ignore("unused_signal")
+signal play_task_completion_animation(task_id : int)
+@warning_ignore("unused_signal")
+signal play_undo_task_completion_animation(task_id : int)
+@warning_ignore("unused_signal")
+signal update_task_list_item(task_id : int)
+@warning_ignore("unused_signal")
+signal increment_task_enemy_kill_count(enemy_name : String)
+@warning_ignore("unused_signal")
+signal increment_task_item_gather_count(item_name : String)
+@warning_ignore("unused_signal")
+signal decrement_task_item_gather_count(item_name : String)
+@warning_ignore("unused_signal")
+signal check_for_quest_completion

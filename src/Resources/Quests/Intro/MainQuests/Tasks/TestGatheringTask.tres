@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="GatheringTask" format=3 uid="uid://0hrsjl4aslpb"]
+
+[ext_resource type="Resource" uid="uid://can4nlbn57x84" path="res://src/Resources/Actors/Enemies/Biome1/WillowShrub/ShrubCore.tres" id="1_t2mcx"]
+[ext_resource type="Script" uid="uid://b1r3golda0dn4" path="res://src/Scripts/Questing/Tasks/gathering_task.gd" id="1_yjajl"]
+
+[resource]
+script = ExtResource("1_yjajl")
+item_to_gather = ExtResource("1_t2mcx")
+number_to_get = 20
+task_id = 1
+metadata/_custom_type_script = "uid://b1r3golda0dn4"

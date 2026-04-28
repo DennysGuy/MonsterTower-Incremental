@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://bu2rhw7xf1a66"]
 
+[ext_resource type="Script" uid="uid://dbotowetbyw6u" path="res://src/Scripts/Questing/quest_tracker_item.gd" id="1_oio6f"]
 [ext_resource type="FontFile" uid="uid://dgu1a66dfe8w" path="res://Assets/Fonts/Maplestory OTF Light.otf" id="1_umesl"]
+[ext_resource type="Resource" uid="uid://56sc8x8gyyjy" path="res://src/Resources/Quests/Intro/MainQuests/TestMainQuest.tres" id="2_4i7lb"]
 
 [node name="QuestTrackerItem" type="MarginContainer" unique_id=1495447857]
 anchors_preset = 8
@@ -8,12 +10,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -55.25
+offset_left = -150.0
 offset_top = -32.25
-offset_right = 55.25
-offset_bottom = 59.75
+offset_right = 150.0
+offset_bottom = 205.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_oio6f")
+quest_data = ExtResource("2_4i7lb")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=311012850]
 layout_mode = 2
@@ -39,59 +43,3 @@ theme_override_constants/margin_left = 29
 
 [node name="Checklist" type="VBoxContainer" parent="VBoxContainer/MarginContainer" unique_id=1252535657]
 layout_mode = 2
-
-[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/Checklist" unique_id=332887907]
-layout_mode = 2
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("1_umesl")
-theme_override_font_sizes/font_size = 20
-text = "- Enter the Tower"
-
-[node name="Label5" type="Label" parent="VBoxContainer/MarginContainer/Checklist" unique_id=88089866]
-layout_mode = 2
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("1_umesl")
-theme_override_font_sizes/font_size = 20
-text = "- Craft  A  New Sword!"
-
-[node name="Label2" type="Label" parent="VBoxContainer/MarginContainer/Checklist" unique_id=1257007238]
-layout_mode = 2
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("1_umesl")
-theme_override_font_sizes/font_size = 20
-text = "- Reach Floor 1-2"
-
-[node name="Label3" type="Label" parent="VBoxContainer/MarginContainer/Checklist" unique_id=1958017485]
-layout_mode = 2
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("1_umesl")
-theme_override_font_sizes/font_size = 20
-text = "- Unlock Cooking Range"
-
-[node name="Label4" type="Label" parent="VBoxContainer/MarginContainer/Checklist" unique_id=1011732722]
-layout_mode = 2
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("1_umesl")
-theme_override_font_sizes/font_size = 20
-text = "- Unlock Refinery"
-
-[node name="Label7" type="Label" parent="VBoxContainer/MarginContainer/Checklist" unique_id=767815849]
-layout_mode = 2
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("1_umesl")
-theme_override_font_sizes/font_size = 20
-text = "- Unlock an Ability"
-
-[node name="Label6" type="Label" parent="VBoxContainer/MarginContainer/Checklist" unique_id=190499218]
-layout_mode = 2
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("1_umesl")
-theme_override_font_sizes/font_size = 20
-text = "- Select your class"
-
-[node name="Label8" type="Label" parent="VBoxContainer/MarginContainer/Checklist" unique_id=1722334689]
-layout_mode = 2
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("1_umesl")
-theme_override_font_sizes/font_size = 20
-text = "- Reach floor 1-3"

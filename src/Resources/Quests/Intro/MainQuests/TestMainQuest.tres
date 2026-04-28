@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Quest" format=3 uid="uid://56sc8x8gyyjy"]
+
+[ext_resource type="Script" uid="uid://be6vh0qellkjq" path="res://src/Scripts/Questing/quest.gd" id="1_px48l"]
+[ext_resource type="Script" uid="uid://deyfft0rbfjgk" path="res://src/Scripts/Questing/Tasks/task.gd" id="2_kl5hj"]
+[ext_resource type="Resource" uid="uid://crg8al0x0yyao" path="res://src/Resources/Quests/Intro/MainQuests/Tasks/TestHuntingTask.tres" id="3_ih7ce"]
+[ext_resource type="Resource" uid="uid://0hrsjl4aslpb" path="res://src/Resources/Quests/Intro/MainQuests/Tasks/TestGatheringTask.tres" id="4_42s07"]
+
+[resource]
+script = ExtResource("1_px48l")
+quest_title = "Shrubby's Hunt"
+status = 1
+description = "A quest to test the waters."
+chapter_relation = "Introduction"
+quest_line = "Novice's Task List"
+tasks = Array[ExtResource("2_kl5hj")]([ExtResource("3_ih7ce"), ExtResource("4_42s07")])
+metadata/_custom_type_script = "uid://be6vh0qellkjq"

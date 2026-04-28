@@ -31,7 +31,7 @@ func process_input(_event: InputEvent) -> State:
 
 func process_physics(_delta: float) -> State:
 	
-	if Input.is_action_pressed("pan_cam_down") and Input.is_action_just_pressed("add_currency"):
+	if Input.is_action_pressed("pan_cam_down"):
 		parent.pass_through_floor()
 		parent.sfx_player.play_sfx(jump_sfx)
 		parent.can_double_jump = false

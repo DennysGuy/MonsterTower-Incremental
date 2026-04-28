@@ -3,6 +3,7 @@ class_name EnemyStats extends Resource
 @export_group("Meta Data")
 @export var enemy_name : String
 @export var enemy_level : int
+@export var preview_icon : Texture2D
 @export var touch_damage : bool = false
 @export var can_attack : bool = false
 @export var can_move : bool = false
