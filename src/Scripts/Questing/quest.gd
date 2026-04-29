@@ -17,14 +17,20 @@ enum STATUS {LOCKED, AVAILABLE, IN_PROGRESS, COMPLETED}
 @export var quest_line_index : int
 @export var tasks : Array[Task]
 
+func _init() -> void:
+	pass
+
 func activate_quest() -> void:
 	status = STATUS.IN_PROGRESS
+	SaveManager.save_quest_status(quest_id, status)
 
 func unlock_quest() -> void:
 	status = STATUS.AVAILABLE
+	SaveManager.save_quest_status(quest_id, status)
 
 func complete_quest() -> void:
 	status = STATUS.COMPLETED
+	SaveManager.save_quest_status(quest_id, status)
 
 func is_main_quest() -> bool:
 	return quest_type == QUEST_TYPE.MAIN
@@ -32,12 +38,5 @@ func is_main_quest() -> bool:
 func is_job() -> bool:
 	return quest_type == QUEST_TYPE.JOB
 
-func advance_quest_in_series() -> void:
-	'''
-	- when quest is completed we check if it is part of an existing questline
-	- if so, we will:
-		- if main line quest: automatically move the current main line quest to the next one (including animations necessary)
-		- if job quest: we will unlock the next quest in series
-		- if we hit the end of the quest series, we'll do something special maybe a cutscene or extra reward
-	'''
-	pass
+func load_quest_status() -> void:
+	status = SaveManager.current_save_game.quests[quest_id]["Status"]

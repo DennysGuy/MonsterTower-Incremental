@@ -12,6 +12,8 @@ func _ready() -> void:
 	QuestManager.play_task_completion_animation.connect(play_completion_animation)
 	QuestManager.play_undo_task_completion_animation.connect(undo_completion)
 	QuestManager.update_task_list_item.connect(update_task_label)
+	if task_data:
+		QuestManager.activate_task(task_data)
 	if task_data and task_data.completed:
 		play_completion_animation(task_data.task_id)
 		

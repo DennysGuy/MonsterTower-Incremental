@@ -9,6 +9,7 @@ func check_level(level : int) -> void:
 	if PlayerStats.player_stats["Level"] == level:
 		completed = true
 		QuestManager.play_task_completion_animation.emit(task_id)
+		SaveManager.save_task_completed_status(task_id, completed)
 		#save task
 
 func build_task_list_item() -> TaskListItem:

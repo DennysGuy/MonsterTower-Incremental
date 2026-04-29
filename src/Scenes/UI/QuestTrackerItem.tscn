@@ -4,13 +4,13 @@
 [ext_resource type="FontFile" uid="uid://dgu1a66dfe8w" path="res://Assets/Fonts/Maplestory OTF Light.otf" id="1_umesl"]
 [ext_resource type="Resource" uid="uid://56sc8x8gyyjy" path="res://src/Resources/Quests/Intro/MainQuests/TestMainQuest1/TestMainQuest.tres" id="2_4i7lb"]
 
-[node name="QuestTrackerItem" type="MarginContainer" unique_id=1495447857]
+[node name="QuestTrackerItem" type="MarginContainer" unique_id=1495447857 node_paths=PackedStringArray("checklist", "quest_title")]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -150.0
+offset_left = -327.0
 offset_top = -32.25
 offset_right = 150.0
 offset_bottom = 205.0
@@ -18,6 +18,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_oio6f")
 quest_data = ExtResource("2_4i7lb")
+checklist = NodePath("VBoxContainer/MarginContainer/Checklist")
+quest_title = NodePath("VBoxContainer/QuestTitle")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=311012850]
 layout_mode = 2
@@ -43,3 +45,4 @@ theme_override_constants/margin_left = 29
 
 [node name="Checklist" type="VBoxContainer" parent="VBoxContainer/MarginContainer" unique_id=1252535657]
 layout_mode = 2
+theme_override_constants/separation = 20

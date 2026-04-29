@@ -90,7 +90,6 @@ func search_item(inventory_name : String, item : Item) -> bool:
 	return false
 
 func add_item(inventory_name : String, item : Item, quantity : int = 1) -> bool:
-	
 	if not item:
 		return false
 	
@@ -105,9 +104,10 @@ func add_item(inventory_name : String, item : Item, quantity : int = 1) -> bool:
 	for slot in range(selected_inventory.size()):
 		if selected_inventory[slot]["item"] == item and (selected_inventory[slot]["quantity"]+quantity) <= max_stack:
 			selected_inventory[slot]["quantity"] += quantity
-			QuestManager.increment_task_item_gather_count.emit(item.item_name)
 			check_for_notification(item)
 			update_inventories(item.get_inventory_name())
+
+			QuestManager.increment_task_item_gather_count.emit(item)
 			InventoryManager.show_open_bag_notice.emit()
 			return true
 			
@@ -119,7 +119,8 @@ func add_item(inventory_name : String, item : Item, quantity : int = 1) -> bool:
 		})
 		check_for_notification(item)
 		update_inventories(item.get_inventory_name())
-		QuestManager.increment_task_item_gather_count.emit(item.item_name)
+
+		QuestManager.increment_task_item_gather_count.emit(item)
 		InventoryManager.show_open_bag_notice.emit()
 		return true
 		
@@ -157,8 +158,8 @@ func remove_item_from_slot(slot_index : int, inventory_name : String, quantity :
 			reset_stored_slot_index.emit()
 			check_for_notification(selected_slot["item"])
 			update_inventories(inventory_name)
-			
-		QuestManager.decrement_task_item_gather_count.emit(selected_slot["item"].item_name)
+
+		QuestManager.decrement_task_item_gather_count.emit(selected_slot["item"])
 		return true
 	
 	return false

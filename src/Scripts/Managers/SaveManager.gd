@@ -42,6 +42,10 @@ func init_save_file() -> void:
 	TechTreeManager.current_prestige = current_save_game.current_prestige
 	TechTreeManager.current_upgrade_count = current_save_game.current_upgrade_count
 	TechTreeManager.upgrade_count_to_prestige = current_save_game.upgrade_count_to_prestige
+	
+	QuestManager.load_all_quest_status()
+	QuestManager.load_active_quests()
+	
 	load_equipped_abilities()
 	PlayerStats.load_abilities()
 	load_gem_sockets()
@@ -93,6 +97,25 @@ func save_inventories() -> void:
 	if current_save_game:
 		current_save_game.inventories = InventoryManager.inventories
 		save_game()
+
+func save_hunt_task_current_count(task_id : int, count : int) -> void:
+	if current_save_game:
+		current_save_game.tasks[task_id]["Current Count"] = count
+		save_game()
+
+func save_task_completed_status(task_id : int, status : bool) -> void:
+	if current_save_game:
+		current_save_game.tasks[task_id]["Completed"] = status
+		save_game()
+
+func save_active_quests() -> void:
+	if current_save_game:
+		current_save_game.active_quests = QuestManager.active_quests
+		save_game()
+
+func save_quest_status(quest_id : int, status : int) -> void:
+	current_save_game.quests[quest_id]["Status"] = status
+	save_game()
 
 func get_existing_save_file() -> GameSave:
 	return ResourceLoader.load(SAVE_PATH, "", ResourceLoader.CACHE_MODE_IGNORE)

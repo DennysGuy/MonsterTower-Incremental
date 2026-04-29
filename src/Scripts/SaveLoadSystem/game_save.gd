@@ -464,3 +464,54 @@ TODO: We will add saves for classes as well
 	}
 		
 }
+
+@export var active_quests : Dictionary = {
+	"Main" : ["Shrubby's Hunt"],
+	"Job" : []
+}
+
+@export var quests : Dictionary = {
+	0: {
+		#Test Main quest 1
+		"Status" : 0,
+	},
+	1: {
+		#Test Main quest 2
+		"Status": 0
+	}
+}
+
+@export var tasks : Dictionary = {
+	0 : {
+		#hunt shrubs
+		"Current Count": 0,
+		"Completed": false
+	},
+	1 : {
+		#gather shurb cores 
+		#don't need to keep track of count since count is determined by inventory
+		"Completed": false
+	},
+	2: {
+		#hit level 2
+		"Completed": false
+	},
+	3: {
+		#Hunt Batclopse
+		"Current Count": 0,
+		"Completed": false
+	},
+	4: {
+		#Hunt Mushies
+		"Current Count": 0,
+		"Completed": false
+	},
+	5: {
+		#mushie core gather
+		"Completed": false
+	},
+	6: {
+		#bat wing gather
+		"Completed": false
+	}
+}

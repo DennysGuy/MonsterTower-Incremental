@@ -100,7 +100,6 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	print(PlayerStats.player_stats["Current Health"])
 	if Input.is_action_just_pressed("open_bag") and GameManager.can_open_bag:
 		show_bag()
 	

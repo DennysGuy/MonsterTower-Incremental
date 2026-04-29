@@ -4,11 +4,13 @@
 [ext_resource type="Resource" uid="uid://d4k5o7mbmw8yw" path="res://src/Resources/Actors/Enemies/Biome1/Batclopse/BatclopseClaw.tres" id="2_o1oup"]
 [ext_resource type="Resource" uid="uid://sio2h1j85i5y" path="res://src/Resources/Actors/Enemies/Biome1/Batclopse/BatclopseEye.tres" id="3_hgnsb"]
 [ext_resource type="Script" uid="uid://cbjktr12qagl" path="res://src/Scripts/Enemies/enemy_stats.gd" id="4_njnt0"]
+[ext_resource type="Texture2D" uid="uid://fxchlb1rbpw7" path="res://Assets/Enemies/BatclopseLVL2Icon.png" id="4_o1oup"]
 
 [resource]
 script = ExtResource("4_njnt0")
 enemy_name = "Batclopse"
 enemy_level = 5
+preview_icon = ExtResource("4_o1oup")
 touch_damage = true
 can_attack = true
 can_move = true

@@ -451,7 +451,8 @@ func sell_all_items(inventory_name : String) -> Array:
 			TechTreeManager.currency += value
 			currency_acquired += value
 			total_sale_numbers += qty
-
+			QuestManager.decrement_task_item_gather_count.emit(slot["item"])
+			
 	TechTreeManager.update_currency_label.emit()
 	return [total_sale_numbers,currency_acquired]
 

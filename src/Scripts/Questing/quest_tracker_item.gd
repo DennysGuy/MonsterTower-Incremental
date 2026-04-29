@@ -1,9 +1,9 @@
 class_name QuestTrackerItem extends MarginContainer
 
 @export var quest_data : Quest
-@onready var checklist: VBoxContainer = $VBoxContainer/MarginContainer/Checklist
+@export var checklist: VBoxContainer
 
-@onready var quest_title: RichTextLabel = $VBoxContainer/QuestTitle
+@export var quest_title: RichTextLabel
 const QUEST_COMPLETED = preload("uid://om1y244uqbs")
 
 # Called when the node enters the scene tree for the first time.
@@ -34,8 +34,9 @@ func update_quest_completion() -> void:
 	if !all_tasks_completed():
 		return
 	
+	quest_data.complete_quest()
 	play_sfx(QUEST_COMPLETED)
-	
+	await get_tree().create_timer(1.5).timeout
 	if quest_data.is_main_quest():
 		load_next_quest()
 	else:
@@ -67,8 +68,11 @@ func load_next_quest() -> void:
 		checklist.add_child(completed_text)
 		return
 	
-	quest_data = QuestManager.get_quest("Main", quest_data.chapter_relation, quest_data.next_quest)
-	build_task_list()
+	quest_data = QuestManager.get_quest(quest_data.next_quest)
+	quest_data.activate_quest()
+	QuestManager.swap_main_active_quest(quest_data)
+	
+	QuestManager.initial_main_quests.emit()
 
 	#TODO: MY THOUGHT: FOR MAIN QUESTS AT END OF QUEST LINE WELL HAVE PLAYER EITHER
 		#Go back to the hub for a cutscene or play a cutscene
