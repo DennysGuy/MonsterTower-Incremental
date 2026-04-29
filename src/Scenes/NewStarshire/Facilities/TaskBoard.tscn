@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://u2wlvgyx0mtu"]
+
+[ext_resource type="Texture2D" uid="uid://biqtj0uldusml" path="res://Assets/Facilities/TaskBoard/TempTaskBoard.png" id="1_52d5s"]
+[ext_resource type="Script" uid="uid://81hs0efcfa1i" path="res://src/Scripts/Facilities/TaskBoard/task_board.gd" id="1_hacwy"]
+[ext_resource type="PackedScene" uid="uid://vo5sm7p34vo6" path="res://src/Scenes/Actors/Utilities/NameTag.tscn" id="3_2qep0"]
+[ext_resource type="PackedScene" uid="uid://drvmmtbvnc785" path="res://src/Scenes/Tower/arrow_at_ore.tscn" id="4_2qep0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hacwy"]
+size = Vector2(56, 47)
+
+[node name="TaskBoard" type="Node2D" unique_id=2038982980]
+script = ExtResource("1_hacwy")
+
+[node name="Graphic" type="Sprite2D" parent="." unique_id=601473679]
+position = Vector2(0, -31)
+texture = ExtResource("1_52d5s")
+
+[node name="NameTag" parent="." unique_id=1232323974 instance=ExtResource("3_2qep0")]
+offset_left = -69.0
+offset_top = 3.0
+offset_right = 71.0
+offset_bottom = 19.0
+
+[node name="Tag" parent="NameTag/Bg" parent_id_path=PackedInt32Array(1232323974, 305804188) index="0" unique_id=725373759]
+text = "Job Requests Board"
+
+[node name="Area2D" type="Area2D" parent="." unique_id=940136532]
+position = Vector2(-74, -24)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=628146421]
+shape = SubResource("RectangleShape2D_hacwy")
+
+[node name="ArrowAtOre" parent="." unique_id=2067527573 instance=ExtResource("4_2qep0")]
+visible = true
+position = Vector2(-76, -62)
+
+[editable path="NameTag"]

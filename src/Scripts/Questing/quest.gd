@@ -6,7 +6,7 @@ class_name Quest extends Resource
 enum QUEST_TYPE {MAIN, JOB}
 @export var quest_type : QUEST_TYPE = QUEST_TYPE.MAIN
 
-enum STATUS {LOCKED, AVAILABLE, IN_PROGRESS, COMPLETED}
+enum STATUS {LOCKED, AVAILABLE, IN_PROGRESS, TURN_IN, COMPLETED}
 @export var status = STATUS.LOCKED
 
 @export var level_needed : int
@@ -26,6 +26,10 @@ func activate_quest() -> void:
 
 func unlock_quest() -> void:
 	status = STATUS.AVAILABLE
+	SaveManager.save_quest_status(quest_id, status)
+
+func ready_for_turn_in() -> void:
+	status = STATUS.TURN_IN
 	SaveManager.save_quest_status(quest_id, status)
 
 func complete_quest() -> void:

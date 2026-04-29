@@ -34,6 +34,7 @@
 [ext_resource type="AudioStream" uid="uid://br24s8y5lttep" path="res://Audio/SFX/Ambience/Starspire/StarspireAmbience.wav" id="30_fdeu8"]
 [ext_resource type="Texture2D" uid="uid://dbg5n708oli7y" path="res://Assets/Facilities/SwordUpgradeStation.png" id="33_0u15j"]
 [ext_resource type="PackedScene" uid="uid://w1c2yn7s6sjx" path="res://src/Scenes/UI/CraftingStations/NewCraftingStation.tscn" id="33_d6jc3"]
+[ext_resource type="PackedScene" uid="uid://u2wlvgyx0mtu" path="res://src/Scenes/NewStarshire/Facilities/TaskBoard.tscn" id="36_4qs0c"]
 [ext_resource type="PackedScene" uid="uid://drvmmtbvnc785" path="res://src/Scenes/Tower/arrow_at_ore.tscn" id="36_hw86b"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_te0bi"]
@@ -1314,6 +1315,9 @@ handle_input_locally = false
 physics_object_picking = true
 size = Vector2i(640, 360)
 render_target_update_mode = 0
+
+[node name="TaskBoard" parent="." unique_id=2038982980 instance=ExtResource("36_4qs0c")]
+position = Vector2(317, 656)
 
 [connection signal="body_entered" from="TowerArea" to="." method="_on_tower_area_body_entered"]
 [connection signal="body_exited" from="TowerArea" to="." method="_on_tower_area_body_exited"]

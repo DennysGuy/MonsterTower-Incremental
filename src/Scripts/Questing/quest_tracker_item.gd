@@ -41,7 +41,8 @@ func update_quest_completion() -> void:
 		load_next_quest()
 	else:
 		var completed_text : TaskListItem = preload("uid://cb5m6ynmba10o").instantiate()
-		completed_text.label.text = "Quest Completed!"
+		completed_text.label.text = "Quest Ready For Turn In!"
+		quest_data.ready_for_turn_in()
 		checklist.add_child(completed_text)
 
 

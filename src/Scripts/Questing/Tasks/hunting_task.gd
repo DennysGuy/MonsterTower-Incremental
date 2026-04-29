@@ -21,6 +21,7 @@ func increment_count(enemy_name : String) -> void:
 
 func build_task_list_item() -> TaskListItem:
 	#we'll load in the necessary data here
+	current_count = SaveManager.current_save_game.tasks[task_id]["Current Count"]
 	var new_task : TaskListItem = preload("uid://cb5m6ynmba10o").instantiate()
 	new_task.label.text = "Hunt %s: %s/%s" % [enemy_to_hunt.enemy_name, current_count, number_to_get]
 	new_task.icon.texture = enemy_to_hunt.preview_icon
