@@ -93,3 +93,6 @@ signal update_map_name_label(name : String)
 
 @warning_ignore("unused_signal")
 signal spawn_job_board_menu
+
+@warning_ignore("unused_signal")
+signal update_job_board_button(quest_data : Quest)

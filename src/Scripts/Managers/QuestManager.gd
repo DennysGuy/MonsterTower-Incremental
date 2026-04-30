@@ -95,6 +95,12 @@ func get_quest(quest_name : String) -> Quest:
 	
 	return found_quest
 
+func add_quest_to_active(quest : Quest) -> void:
+	active_quests["Job"].append(quest.quest_title)
+	SaveManager.save_active_quests()
+	
+	quest.activate_quest()
+
 func search_quest(quest_dict : Dictionary, chapters : Array[String], quest_name : String) -> Quest:
 	for chapter in chapters:
 		for quest in quest_dict[chapter]:

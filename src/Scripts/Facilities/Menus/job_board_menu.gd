@@ -10,6 +10,8 @@ class_name JobBoardMenu extends Control
 @onready var job_description: RichTextLabel = $JobDescription
 @onready var accept_quest_button: Button = $AcceptQuestButton
 
+@export var stored_quest_data : Quest
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	GameManager.player_can_move = false
@@ -27,6 +29,8 @@ func populate_description_panel(quest_data : Quest) -> void:
 	job_description.text = quest_data.description
 	xp_reward.text = "XP Reward: %s" % quest_data.xp_reward
 	currency_reward.text = "Currency Reward: %s" % quest_data.currency_reward
+	stored_quest_data = quest_data
+	set_accept_job_button(quest_data)
 	#will also do item reward
 
 func close_out() -> void:
@@ -39,7 +43,7 @@ func close_out() -> void:
 func initialize_available_jobs() -> void:
 	for job in QuestManager.quests["Job"]["Introduction"]:
 		var selected_job : Quest = QuestManager.get_quest(job)
-		if selected_job.is_available():
+		if !selected_job.is_completed():
 			var job_board_button : JobBoardButton = preload("uid://crntn4mm7ex6s").instantiate()
 			job_board_button.quest_data = selected_job
 			job_board_button.job_board_button.text = selected_job.quest_title
@@ -47,3 +51,35 @@ func initialize_available_jobs() -> void:
 
 func _on_close_menu_button_button_up() -> void:
 	close_out()
+
+
+func _on_accept_quest_button_button_up() -> void:
+	if stored_quest_data.is_available():
+		#add quest to active quest
+		QuestManager.add_quest_to_active(stored_quest_data)
+		#update UI to reflect in progress
+		populate_description_panel(stored_quest_data)
+		#update the button text to read disband
+		set_accept_job_button(stored_quest_data)
+		#send signal to update the UI button hold quest
+		PlayerHudSignalBus.update_job_board_button.emit(stored_quest_data)
+
+
+	elif stored_quest_data.is_in_progress():
+		#disband the quest
+		#update UI to reflect disbanded (back to available state)
+		pass
+	elif stored_quest_data.is_ready_for_turn_in():
+		#turn in quest -> set to completed, remove from available quest list
+		#clear quest data
+		#clear details
+		#unlock next quest in sequence if possible
+		pass
+
+func set_accept_job_button(quest_data : Quest) -> void:
+	if quest_data.is_available():
+		accept_quest_button.text = "Accept"
+	elif quest_data.is_in_progress():
+		accept_quest_button.text = "Disband"
+	elif quest_data.is_ready_for_turn_in():
+		accept_quest_button.text = "Turn In"
