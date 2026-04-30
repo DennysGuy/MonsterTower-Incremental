@@ -1317,7 +1317,7 @@ size = Vector2i(640, 360)
 render_target_update_mode = 0
 
 [node name="TaskBoard" parent="." unique_id=2038982980 instance=ExtResource("36_4qs0c")]
-position = Vector2(317, 656)
+position = Vector2(399, 656)
 
 [connection signal="body_entered" from="TowerArea" to="." method="_on_tower_area_body_entered"]
 [connection signal="body_exited" from="TowerArea" to="." method="_on_tower_area_body_exited"]

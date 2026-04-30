@@ -32,12 +32,12 @@ func save_file_exists() -> bool:
 	return ResourceLoader.exists(SAVE_PATH)
 
 func init_save_file() -> void:
-	PlayerStats.player_stats = current_save_game.player_stats
-	PlayerStats.facilities_unlocked = current_save_game.facilities_unlocked
-	PlayerStats.check_points_unlocked = current_save_game.check_points_unlocked
-	PlayerStats.equipped_abilities = current_save_game.equipped_abilities
+	PlayerStats.player_stats = current_save_game.player_stats.duplicate(true)
+	PlayerStats.facilities_unlocked = current_save_game.facilities_unlocked.duplicate(true)
+	PlayerStats.check_points_unlocked = current_save_game.check_points_unlocked.duplicate(true)
+	PlayerStats.equipped_abilities = current_save_game.equipped_abilities.duplicate(true)
 	
-	InventoryManager.inventories = current_save_game.inventories
+	InventoryManager.inventories = current_save_game.inventories.duplicate(true)
 	TechTreeManager.currency = current_save_game.currency
 	TechTreeManager.current_prestige = current_save_game.current_prestige
 	TechTreeManager.current_upgrade_count = current_save_game.current_upgrade_count

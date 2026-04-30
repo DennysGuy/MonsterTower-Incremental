@@ -26,6 +26,8 @@ signal decrement_task_item_gather_count(item : Item)
 signal check_for_quest_completion
 @warning_ignore("unused_signal")
 signal initial_main_quests
+@warning_ignore("unused_signal")
+signal populate_job_board_description_box(quest : Quest)
 
 @onready var quests : Dictionary = {
 	"Main": {

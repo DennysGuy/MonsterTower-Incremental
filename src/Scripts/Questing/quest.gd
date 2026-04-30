@@ -17,6 +17,10 @@ enum STATUS {LOCKED, AVAILABLE, IN_PROGRESS, TURN_IN, COMPLETED}
 @export var quest_line_index : int
 @export var tasks : Array[Task]
 
+@export var currency_reward : int = 0
+@export var xp_reward : int = 0
+@export var item_reward : Dictionary[Item, int]
+
 func _init() -> void:
 	pass
 
@@ -35,6 +39,21 @@ func ready_for_turn_in() -> void:
 func complete_quest() -> void:
 	status = STATUS.COMPLETED
 	SaveManager.save_quest_status(quest_id, status)
+
+func is_locked() -> bool:
+	return status == STATUS.LOCKED
+
+func is_available() -> bool:
+	return status == STATUS.AVAILABLE
+
+func is_in_progress() -> bool:
+	return status == STATUS.IN_PROGRESS
+
+func is_ready_for_turn_in() -> bool:
+	return status == STATUS.TURN_IN
+
+func is_completed() -> bool:
+	return status == STATUS.COMPLETED
 
 func is_main_quest() -> bool:
 	return quest_type == QUEST_TYPE.MAIN

@@ -232,8 +232,16 @@ func spawn_dojo_menu() -> void:
 	GameManager.can_open_tower_map = false
 	GameManager.can_open_bag = false
 	player.velocity = Vector2.ZERO
-	PlayerHudSignalBus.spawn_class_selection_menu.emit()
 	
+	PlayerHudSignalBus.spawn_class_selection_menu.emit()
+
+func spawn_job_board_menu() -> void:
+	GameManager.can_open_tower_map = false
+	GameManager.can_open_bag = false
+	player.velocity = Vector2.ZERO
+	
+	PlayerHudSignalBus.spawn_job_board_menu.emit()
+
 func _on_grand_market_area_body_entered(body: Node2D) -> void:
 	if body is Player:
 		player_in_market_range = true

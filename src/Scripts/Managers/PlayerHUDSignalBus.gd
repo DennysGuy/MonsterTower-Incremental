@@ -90,3 +90,6 @@ signal show_big_nofication_label(message : String)
 
 @warning_ignore("unused_signal")
 signal update_map_name_label(name : String)
+
+@warning_ignore("unused_signal")
+signal spawn_job_board_menu

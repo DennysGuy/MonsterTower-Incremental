@@ -14,6 +14,7 @@ func _ready() -> void:
 	PlayerHudSignalBus.spawn_warrior_menu.connect(spawn_warrior_tree)
 	PlayerHudSignalBus.spawn_class_selection_menu.connect(spawn_class_selection_menu)
 	PlayerHudSignalBus.spawn_tech_tree.connect(spawn_tech_tree)
+	PlayerHudSignalBus.spawn_job_board_menu.connect(spawn_job_board_menu)
 	SignalBus.hide_tech_tree_canvas_layer.connect(hide_tech_tree_canvas_layer)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -62,3 +63,8 @@ func spawn_class_selection_menu() -> void:
 	canvas_layer.show()
 	var class_selection_menu : ClassSelectionMenu = preload("uid://b404uvbhnmjxd").instantiate()
 	control.add_child(class_selection_menu)
+
+func spawn_job_board_menu() -> void:
+	canvas_layer.show()
+	var job_board_menu : JobBoardMenu = preload("uid://e5wt3r6lpfow").instantiate()
+	control.add_child(job_board_menu)

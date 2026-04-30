@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="Quest" format=3 uid="uid://56sc8x8gyyjy"]
 
+[ext_resource type="Script" uid="uid://cu8drgivmhfn" path="res://src/Scripts/item.gd" id="1_4yc3d"]
 [ext_resource type="Script" uid="uid://be6vh0qellkjq" path="res://src/Scripts/Questing/quest.gd" id="1_huejm"]
 [ext_resource type="Script" uid="uid://deyfft0rbfjgk" path="res://src/Scripts/Questing/Tasks/task.gd" id="2_4yc3d"]
 [ext_resource type="Resource" uid="uid://crg8al0x0yyao" path="res://src/Resources/Quests/Intro/MainQuests/TestMainQuest1/Tasks/TestHuntingTask.tres" id="3_exbrp"]
@@ -9,7 +10,9 @@
 script = ExtResource("1_huejm")
 quest_title = "Shrubby's Hunt"
 status = 1
-description = "A quest to test the waters."
+description = "Shubby is looking to make a nice quilt for his Missus.. he is convinced that the shrub heads produce a fine fibre that he can crochet. 
+
+Shrubby might be deluded, but the world would never know."
 chapter_relation = "Introduction"
 quest_line = "Novice's Starter List"
 next_quest = "The Mossy Womp"

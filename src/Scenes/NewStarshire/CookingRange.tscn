@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://53gha3pmge8a" path="res://Assets/Facilities/TempCookingRangeContstruction.png" id="1_7lewm"]
 [ext_resource type="Script" uid="uid://ckddq3vnn0flw" path="res://src/Scripts/Facilities/cooking_range.gd" id="2_y5a3w"]
 [ext_resource type="PackedScene" uid="uid://04tp6n5gdcb7" path="res://src/Scenes/UI/NotificationIcon.tscn" id="3_y01n2"]
-[ext_resource type="Script" uid="uid://dix0hiiumsb7a" path="res://src/Scripts/HUD/needed_unlocks.gd" id="4_fw0oo"]
+[ext_resource type="Script" path="res://src/Scripts/HUD/needed_unlocks.gd" id="4_fw0oo"]
 [ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="5_c8kye"]
 [ext_resource type="PackedScene" uid="uid://dcgpcwx38gddm" path="res://src/Scenes/NewStarshire/DojoUnlockItem.tscn" id="6_c8kye"]
 

@@ -1,0 +1,191 @@
+[gd_scene format=3 uid="uid://e5wt3r6lpfow"]
+
+[ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="1_56t3x"]
+[ext_resource type="Script" uid="uid://djctb262hvlmt" path="res://src/Scripts/Facilities/Menus/job_board_menu.gd" id="1_wcbm1"]
+[ext_resource type="Texture2D" uid="uid://ctnily4uxe26k" path="res://Assets/Facilities/TaskBoard/TaskBoardMenuBG.png" id="2_x46ov"]
+[ext_resource type="FontFile" uid="uid://dgu1a66dfe8w" path="res://Assets/Fonts/Maplestory OTF Light.otf" id="4_mt8m0"]
+
+[node name="JobBoardMenu" type="Control" unique_id=1027411065]
+z_index = 4096
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wcbm1")
+
+[node name="BG" type="TextureRect" parent="." unique_id=69953563]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_x46ov")
+
+[node name="Title" type="Label" parent="." unique_id=1224405208]
+layout_mode = 0
+offset_left = 125.0
+offset_top = 168.0
+offset_right = 706.0
+offset_bottom = 205.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_56t3x")
+theme_override_font_sizes/font_size = 32
+text = "Click on Job to Access"
+horizontal_alignment = 1
+
+[node name="QuestTitle" type="Label" parent="." unique_id=243240032]
+layout_mode = 0
+offset_left = 765.0
+offset_top = 22.0
+offset_right = 1059.0
+offset_bottom = 81.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_56t3x")
+theme_override_font_sizes/font_size = 52
+text = "Job Board"
+horizontal_alignment = 1
+
+[node name="QuestLineTitle" type="Label" parent="." unique_id=106506111]
+layout_mode = 0
+offset_left = 271.0
+offset_top = 132.0
+offset_right = 565.0
+offset_bottom = 160.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_56t3x")
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+
+[node name="QuestLineTitle2" type="Label" parent="." unique_id=1791650983]
+layout_mode = 0
+offset_left = 271.0
+offset_top = 211.0
+offset_right = 565.0
+offset_bottom = 239.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_56t3x")
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+
+[node name="QuestLineTitle3" type="Label" parent="." unique_id=1422678200]
+layout_mode = 0
+offset_left = 1299.0
+offset_top = 137.0
+offset_right = 1593.0
+offset_bottom = 169.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_56t3x")
+theme_override_font_sizes/font_size = 28
+text = "- Available Jobs -"
+horizontal_alignment = 1
+
+[node name="RewardsLabel" type="Label" parent="." unique_id=1732463729]
+layout_mode = 0
+offset_left = 131.0
+offset_top = 711.0
+offset_right = 234.0
+offset_bottom = 739.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_56t3x")
+theme_override_font_sizes/font_size = 32
+text = "Rewards"
+horizontal_alignment = 1
+
+[node name="XPReward" type="Label" parent="." unique_id=1310506585]
+layout_mode = 0
+offset_left = 492.0
+offset_top = 726.0
+offset_right = 738.0
+offset_bottom = 754.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_56t3x")
+theme_override_font_sizes/font_size = 24
+text = "XP: 300"
+horizontal_alignment = 2
+
+[node name="CurrencyReward" type="Label" parent="." unique_id=549129144]
+layout_mode = 0
+offset_left = 313.0
+offset_top = 758.0
+offset_right = 744.0
+offset_bottom = 786.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_56t3x")
+theme_override_font_sizes/font_size = 24
+text = "Currency Reward: 5000"
+horizontal_alignment = 2
+
+[node name="JobDescription" type="RichTextLabel" parent="." unique_id=660766926]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 143.0
+offset_top = -271.0
+offset_right = 688.0
+offset_bottom = 152.0
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("4_mt8m0")
+theme_override_font_sizes/normal_font_size = 24
+
+[node name="ItemRewardsContainer" type="GridContainer" parent="." unique_id=1085927745]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 136.0
+offset_top = -265.0
+offset_right = 555.0
+offset_bottom = -145.0
+grow_vertical = 0
+columns = 4
+
+[node name="AcceptQuestButton" type="Button" parent="." unique_id=2101603631]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 623.0
+offset_top = -192.0
+offset_right = 742.0
+offset_bottom = -147.0
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("1_56t3x")
+theme_override_font_sizes/font_size = 32
+text = "Accept"
+
+[node name="CloseMenuButton" type="Button" parent="." unique_id=1317557633]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 1748.0
+offset_top = -1027.0
+offset_right = 1839.0
+offset_bottom = -991.0
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("1_56t3x")
+theme_override_font_sizes/font_size = 32
+text = "Close"
+
+[node name="JobsContainer" type="VBoxContainer" parent="." unique_id=1053702301]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 199.0
+offset_top = -274.0
+offset_right = 759.0
+offset_bottom = 346.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="button_up" from="CloseMenuButton" to="." method="_on_close_menu_button_button_up"]
