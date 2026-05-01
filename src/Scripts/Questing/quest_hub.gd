@@ -7,6 +7,7 @@ class_name QuestHub extends Control
 func _ready() -> void:
 	#QuestManager.connect_active_main_quest_signals()
 	QuestManager.initial_main_quests.connect(initialize_main_quests)
+	QuestManager.initialize_job_quests.connect(initialize_job_quests)
 	initialize_main_quests()
 	initialize_job_quests()
 

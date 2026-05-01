@@ -6,16 +6,22 @@ class_name JobBoardMenu extends Control
 @onready var xp_reward: Label = $XPReward
 @onready var currency_reward: Label = $CurrencyReward
 @onready var title: Label = $Title
+@onready var item_rewards_container: GridContainer = $ItemRewardsContainer
 
 @onready var job_description: RichTextLabel = $JobDescription
 @onready var accept_quest_button: Button = $AcceptQuestButton
 
 @export var stored_quest_data : Quest
 
+const JOB_TURN_IN = preload("uid://crytbgxiowkp4")
+const JOB_ACCEPT_JINGLE = preload("uid://dinxl1rs2y55v")
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	GameManager.player_can_move = false
 	QuestManager.populate_job_board_description_box.connect(populate_description_panel)
+	clear_description_panel()
 	initialize_available_jobs()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -33,14 +39,26 @@ func populate_description_panel(quest_data : Quest) -> void:
 	set_accept_job_button(quest_data)
 	#will also do item reward
 
+func clear_description_panel() -> void:
+	stored_quest_data = null
+	title.text = "Click on a Job to select it."
+	quest_line_title.text = ""
+	job_description.text = ""
+	xp_reward.text = ""
+	currency_reward.text = ""
+	InventoryManager.clear_grid_container(item_rewards_container)
+	accept_quest_button.hide()
+
 func close_out() -> void:
 	GameManager.player_can_move = true
 	GameManager.can_open_bag = true
 	GameManager.can_open_tower_map = true
 	SignalBus.hide_tech_tree_canvas_layer.emit()
+	QuestManager.initialize_job_quests.emit()
 	queue_free()
 
 func initialize_available_jobs() -> void:
+	clear_job_box()
 	for job in QuestManager.quests["Job"]["Introduction"]:
 		var selected_job : Quest = QuestManager.get_quest(job)
 		if !selected_job.is_completed():
@@ -52,7 +70,6 @@ func initialize_available_jobs() -> void:
 func _on_close_menu_button_button_up() -> void:
 	close_out()
 
-
 func _on_accept_quest_button_button_up() -> void:
 	if stored_quest_data.is_available():
 		#add quest to active quest
@@ -63,23 +80,49 @@ func _on_accept_quest_button_button_up() -> void:
 		set_accept_job_button(stored_quest_data)
 		#send signal to update the UI button hold quest
 		PlayerHudSignalBus.update_job_board_button.emit(stored_quest_data)
-
+		play_sfx(JOB_ACCEPT_JINGLE)
 
 	elif stored_quest_data.is_in_progress():
 		#disband the quest
 		#update UI to reflect disbanded (back to available state)
-		pass
+		QuestManager.remove_quest_from_active(stored_quest_data, false)
+		set_accept_job_button(stored_quest_data)
+		for task in stored_quest_data.tasks:
+			task.reset_task_state()
+		
+		initialize_available_jobs()
+		
 	elif stored_quest_data.is_ready_for_turn_in():
-		#turn in quest -> set to completed, remove from available quest list
-		#clear quest data
-		#clear details
-		#unlock next quest in sequence if possible
-		pass
+		remove_requested_item_from_inventory()
+		QuestManager.remove_quest_from_active(stored_quest_data, true)
+		clear_description_panel()
+		initialize_available_jobs()
+		QuestManager.initialize_job_quests.emit()
+		play_sfx(JOB_TURN_IN)
 
 func set_accept_job_button(quest_data : Quest) -> void:
+	accept_quest_button.show()
 	if quest_data.is_available():
 		accept_quest_button.text = "Accept"
 	elif quest_data.is_in_progress():
 		accept_quest_button.text = "Disband"
 	elif quest_data.is_ready_for_turn_in():
 		accept_quest_button.text = "Turn In"
+		
+func remove_requested_item_from_inventory() -> void:
+	for task in stored_quest_data.tasks:
+		if task is GatheringTask:
+			task.remove_item_from_inventory()
+		
+func clear_job_box() -> void:
+	for button in jobs_container.get_children():
+		button.queue_free()
+
+func play_sfx(sound: AudioStream, volume: float = 0.0):
+	var player := AudioStreamPlayer.new()
+	player.stream = sound
+	player.volume_db = volume
+	player.bus = &"SFX"
+	add_child(player)
+	player.play()
+	player.finished.connect(player.queue_free)

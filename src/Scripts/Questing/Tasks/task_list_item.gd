@@ -4,6 +4,8 @@ class_name TaskListItem extends Control
 @export var label: RichTextLabel
 @export var icon: TextureRect
 
+var is_turn_in_notice : bool = false
+
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 const TASK_COMPLETED = preload("uid://u4g1ea4v5nkg")
 
@@ -15,26 +17,30 @@ func _ready() -> void:
 	if task_data:
 		QuestManager.activate_task(task_data)
 	if task_data and task_data.completed:
-		play_completion_animation(task_data.task_id)
+		play_completion_animation(task_data.task_id,false)
 		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
-func play_completion_animation(task_id : int) -> void:
+func play_completion_animation(task_id : int, check_for_quest_completion : bool) -> void:
 	if !expected_task_id(task_id):
 		return
 		
-	play_sfx(TASK_COMPLETED)
+	
 	animation_player.play("Complete")
 	await animation_player.animation_finished
-	QuestManager.check_for_quest_completion.emit()	
+	if check_for_quest_completion:
+		play_sfx(TASK_COMPLETED)
+		QuestManager.check_for_quest_completion.emit(task_data.parent_quest)	
 
 func undo_completion(task_id : int) -> void:
 	if !expected_task_id(task_id):
 		return
 		
 	animation_player.play("UndoCompletion")
+	QuestManager.undo_quest_turn_in.emit(task_data.parent_quest)
+	
 	#we'll need to issue a signal that rebuilds the quest tasks
 
 func update_task_label(task_id : int) -> void:

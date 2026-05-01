@@ -11,7 +11,7 @@ signal check_facility_name(facility_name : String)
 @warning_ignore("unused_signal")
 signal check_level
 @warning_ignore("unused_signal")
-signal play_task_completion_animation(task_id : int)
+signal play_task_completion_animation(task_id : int, check_for_quest_completion : bool)
 @warning_ignore("unused_signal")
 signal play_undo_task_completion_animation(task_id : int)
 @warning_ignore("unused_signal")
@@ -23,11 +23,15 @@ signal increment_task_item_gather_count(item : Item)
 @warning_ignore("unused_signal")
 signal decrement_task_item_gather_count(item : Item)
 @warning_ignore("unused_signal")
-signal check_for_quest_completion
+signal check_for_quest_completion(quest_title : String)
 @warning_ignore("unused_signal")
 signal initial_main_quests
 @warning_ignore("unused_signal")
 signal populate_job_board_description_box(quest : Quest)
+@warning_ignore("unused_signal")
+signal initialize_job_quests
+@warning_ignore("unused_signal")
+signal undo_quest_turn_in(quest_title : String)
 
 @onready var quests : Dictionary = {
 	"Main": {
@@ -100,6 +104,23 @@ func add_quest_to_active(quest : Quest) -> void:
 	SaveManager.save_active_quests()
 	
 	quest.activate_quest()
+
+func remove_quest_from_active(quest : Quest, to_complete : bool) -> void:
+	var list : Array = active_quests["Job"]
+	
+	if to_complete:
+		quest.complete_quest()
+	else:
+		quest.set_as_available()
+	
+	if list.size() == 1:
+		list.remove_at(0)
+	else:
+		for i in range(list.size()-1):
+			if list[i] == quest.quest_title:
+				list.remove_at(i)
+		
+	SaveManager.save_active_quests()
 
 func search_quest(quest_dict : Dictionary, chapters : Array[String], quest_name : String) -> Quest:
 	for chapter in chapters:

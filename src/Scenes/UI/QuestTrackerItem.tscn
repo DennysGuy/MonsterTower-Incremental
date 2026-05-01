@@ -18,14 +18,17 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_oio6f")
 quest_data = ExtResource("2_4i7lb")
-checklist = NodePath("VBoxContainer/MarginContainer/Checklist")
-quest_title = NodePath("VBoxContainer/QuestTitle")
+checklist = NodePath("PanelContainer/VBoxContainer/MarginContainer/Checklist")
+quest_title = NodePath("PanelContainer/VBoxContainer/QuestTitle")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=311012850]
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1069636143]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=311012850]
 layout_mode = 2
 theme_override_constants/separation = 1
 
-[node name="QuestTitle" type="RichTextLabel" parent="VBoxContainer" unique_id=1215813679]
+[node name="QuestTitle" type="RichTextLabel" parent="PanelContainer/VBoxContainer" unique_id=1215813679]
 custom_minimum_size = Vector2(300, 40)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -39,10 +42,10 @@ bbcode_enabled = true
 text = "[color=yellow]Newcomer's List[/color]"
 horizontal_alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer" unique_id=907432401]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer" unique_id=907432401]
 layout_mode = 2
 theme_override_constants/margin_left = 29
 
-[node name="Checklist" type="VBoxContainer" parent="VBoxContainer/MarginContainer" unique_id=1252535657]
+[node name="Checklist" type="VBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer" unique_id=1252535657]
 layout_mode = 2
 theme_override_constants/separation = 10

@@ -14,7 +14,7 @@ func increment_count(item : Item) -> void:
 	QuestManager.update_task_list_item.emit(task_id)
 	
 	if current_count >= number_to_get and !completed:
-		QuestManager.play_task_completion_animation.emit(task_id)
+		QuestManager.play_task_completion_animation.emit(task_id,true)
 		completed = true
 		SaveManager.save_task_completed_status(task_id, completed)
 	#save task
@@ -33,6 +33,10 @@ func decrement_count(item : Item) -> void:
 		SaveManager.save_task_completed_status(task_id, completed)
 
 	#save task
+
+func reset_task_state() -> void:
+	SaveManager.current_save_game.tasks[task_id]["Completed"] = false
+	SaveManager.save_game()
 	
 func build_task_list_item() -> TaskListItem:
 	#we'll load in the necessary data here
@@ -42,3 +46,7 @@ func build_task_list_item() -> TaskListItem:
 	new_task.icon.texture = item_to_gather.shop_icon
 	new_task.task_data = self
 	return new_task
+
+func remove_item_from_inventory() -> void:
+	for i in range(number_to_get):
+		InventoryManager.remove_item(item_to_gather.get_inventory_name(), item_to_gather)

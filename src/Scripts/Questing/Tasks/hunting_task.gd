@@ -11,13 +11,19 @@ func increment_count(enemy_name : String) -> void:
 		return
 	current_count += 1
 	if current_count >= number_to_get and !completed:
-		QuestManager.play_task_completion_animation.emit(task_id)
+		QuestManager.play_task_completion_animation.emit(task_id,true)
 		completed = true
 		SaveManager.save_task_completed_status(task_id, completed)
 	
 	SaveManager.save_hunt_task_current_count(task_id, current_count)
 	QuestManager.update_task_list_item.emit(task_id)
 	#save task
+
+func reset_task_state() -> void:
+	current_count = 0
+	SaveManager.current_save_game.tasks[task_id]["Current Count"] = 0
+	SaveManager.current_save_game.tasks[task_id]["Completed"] = false
+	SaveManager.save_game()
 
 func build_task_list_item() -> TaskListItem:
 	#we'll load in the necessary data here

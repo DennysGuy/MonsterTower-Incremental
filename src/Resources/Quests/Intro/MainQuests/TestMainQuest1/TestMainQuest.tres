@@ -9,6 +9,7 @@
 [resource]
 script = ExtResource("1_huejm")
 quest_title = "Shrubby's Hunt"
+quest_type = 1
 status = 1
 description = "Shubby is looking to make a nice quilt for his Missus.. he is convinced that the shrub heads produce a fine fibre that he can crochet. 
 

@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="Quest" format=3 uid="uid://dra6tmjefibdy"]
 
 [ext_resource type="Script" uid="uid://be6vh0qellkjq" path="res://src/Scripts/Questing/quest.gd" id="1_cv7cf"]
+[ext_resource type="Script" uid="uid://cu8drgivmhfn" path="res://src/Scripts/item.gd" id="1_rwqhq"]
 [ext_resource type="Script" uid="uid://deyfft0rbfjgk" path="res://src/Scripts/Questing/Tasks/task.gd" id="2_o2nm0"]
 [ext_resource type="Resource" uid="uid://ckw8ry5he40js" path="res://src/Resources/Quests/Intro/MainQuests/TestMainQuest2/Tasks/CorruptedMushieHunt.tres" id="3_xkt08"]
 [ext_resource type="Resource" uid="uid://cfly3s1bgsqj" path="res://src/Resources/Quests/Intro/MainQuests/TestMainQuest2/Tasks/BatclopseHunt.tres" id="4_5cbkl"]
@@ -11,6 +12,7 @@
 script = ExtResource("1_cv7cf")
 quest_title = "The Mossy Womp"
 quest_id = 1
+quest_type = 1
 status = 1
 chapter_relation = "Introduction"
 quest_line = "Novice's Starter List"

@@ -24,6 +24,10 @@ enum STATUS {LOCKED, AVAILABLE, IN_PROGRESS, TURN_IN, COMPLETED}
 func _init() -> void:
 	pass
 
+func set_as_available() -> void:
+	status = STATUS.AVAILABLE
+	SaveManager.save_quest_status(quest_id, status)
+
 func activate_quest() -> void:
 	status = STATUS.IN_PROGRESS
 	SaveManager.save_quest_status(quest_id, status)
