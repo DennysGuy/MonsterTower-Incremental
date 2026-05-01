@@ -29,7 +29,7 @@ func check_for_level_up() -> void:
 		PlayerStats.player_stats["Needed XP"] = xp_formula()
 		#play level up sfx
 		play_level_up_sfx.emit()
-	
+		SaveManager.save_player_stats()
 	update_xp_bar.emit()
 
 func xp_formula() -> int:

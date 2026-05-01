@@ -128,5 +128,5 @@ func give_xp() -> void:
 	xp_label.global_position.y = global_position.y-20
 	xp_label.global_position.x = global_position.x-36
 	drop_scene.add_child(xp_label)
-		
+	SaveManager.save_player_stats()
 	LevelingManager.check_for_level_up()

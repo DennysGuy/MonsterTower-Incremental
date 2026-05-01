@@ -16,6 +16,8 @@ class_name JobBoardMenu extends Control
 const JOB_TURN_IN = preload("uid://crytbgxiowkp4")
 const JOB_ACCEPT_JINGLE = preload("uid://dinxl1rs2y55v")
 
+@onready var inventory_full_notice: Label = $InventoryFullNotice
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -30,16 +32,19 @@ func _process(delta: float) -> void:
 		close_out()
 
 func populate_description_panel(quest_data : Quest) -> void:
+	inventory_full_notice.hide()
 	title.text = quest_data.quest_title
 	quest_line_title.text = "- %s -" % quest_data.quest_line
 	job_description.text = quest_data.description
 	xp_reward.text = "XP Reward: %s" % quest_data.xp_reward
 	currency_reward.text = "Currency Reward: %s" % quest_data.currency_reward
+	populate_description_panel(quest_data)
 	stored_quest_data = quest_data
 	set_accept_job_button(quest_data)
 	#will also do item reward
 
 func clear_description_panel() -> void:
+	inventory_full_notice.hide()
 	stored_quest_data = null
 	title.text = "Click on a Job to select it."
 	quest_line_title.text = ""
@@ -72,33 +77,11 @@ func _on_close_menu_button_button_up() -> void:
 
 func _on_accept_quest_button_button_up() -> void:
 	if stored_quest_data.is_available():
-		#add quest to active quest
-		QuestManager.add_quest_to_active(stored_quest_data)
-		#update UI to reflect in progress
-		populate_description_panel(stored_quest_data)
-		#update the button text to read disband
-		set_accept_job_button(stored_quest_data)
-		#send signal to update the UI button hold quest
-		PlayerHudSignalBus.update_job_board_button.emit(stored_quest_data)
-		play_sfx(JOB_ACCEPT_JINGLE)
-
+		accept_quest()
 	elif stored_quest_data.is_in_progress():
-		#disband the quest
-		#update UI to reflect disbanded (back to available state)
-		QuestManager.remove_quest_from_active(stored_quest_data, false)
-		set_accept_job_button(stored_quest_data)
-		for task in stored_quest_data.tasks:
-			task.reset_task_state()
-		
-		initialize_available_jobs()
-		
+		abandon_quest()
 	elif stored_quest_data.is_ready_for_turn_in():
-		remove_requested_item_from_inventory()
-		QuestManager.remove_quest_from_active(stored_quest_data, true)
-		clear_description_panel()
-		initialize_available_jobs()
-		QuestManager.initialize_job_quests.emit()
-		play_sfx(JOB_TURN_IN)
+		turn_in_quest()
 
 func set_accept_job_button(quest_data : Quest) -> void:
 	accept_quest_button.show()
@@ -107,16 +90,80 @@ func set_accept_job_button(quest_data : Quest) -> void:
 	elif quest_data.is_in_progress():
 		accept_quest_button.text = "Disband"
 	elif quest_data.is_ready_for_turn_in():
+		if stored_quest_data.item_reward.size() > 0:
+			var can_turn_in : bool = true
+			for deliverable in stored_quest_data.item_reward.keys():
+				for i in range(stored_quest_data[deliverable]):
+					can_turn_in = InventoryManager.check_if_can_add_to_inventory(deliverable, deliverable.get_inventory_name(), "Bag", "Max Bag Stack")
+				if !can_turn_in:
+					break
+			if !can_turn_in:
+				accept_quest_button.disabled = true
+				inventory_full_notice.show()
+			
 		accept_quest_button.text = "Turn In"
-		
+
+func add_item_rewards_to_inventory() -> void:
+	#add item rewards to inventory -- should have already checked if can add
+	for item in stored_quest_data.item_reward.keys():
+		for i in range(stored_quest_data.item_reward[item]):
+			InventoryManager.add_item(item.get_inventory_name(), item)
+
 func remove_requested_item_from_inventory() -> void:
 	for task in stored_quest_data.tasks:
 		if task is GatheringTask:
 			task.remove_item_from_inventory()
+
+func abandon_quest() -> void:
+	#disband the quest
+	#update UI to reflect disbanded (back to available state)
+	QuestManager.remove_quest_from_active(stored_quest_data, false)
+	set_accept_job_button(stored_quest_data)
+	for task in stored_quest_data.tasks:
+		task.reset_task_state()
 		
+		initialize_available_jobs()
+
+func accept_quest() -> void:
+	#add quest to active quest
+	QuestManager.add_quest_to_active(stored_quest_data)
+	#update UI to reflect in progress
+	populate_description_panel(stored_quest_data)
+	#update the button text to read disband
+	set_accept_job_button(stored_quest_data)
+	#send signal to update the UI button hold quest
+	PlayerHudSignalBus.update_job_board_button.emit(stored_quest_data)
+	play_sfx(JOB_ACCEPT_JINGLE)
+
 func clear_job_box() -> void:
 	for button in jobs_container.get_children():
 		button.queue_free()
+
+func turn_in_quest() -> void:
+	PlayerStats.player_stats["Current XP"] += stored_quest_data.xp_reward
+	LevelingManager.check_for_level_up()
+		
+	TechTreeManager.currency += stored_quest_data.currency_reward
+	SaveManager.save_tech_tree_data()
+	add_item_rewards_to_inventory()
+	remove_requested_item_from_inventory()
+	QuestManager.remove_quest_from_active(stored_quest_data, true)
+	clear_description_panel()
+	initialize_available_jobs()
+	QuestManager.initialize_job_quests.emit()
+	SaveManager.save_game()
+	play_sfx(JOB_TURN_IN)
+
+func populate_item_rewards_container(quest : Quest) -> void:
+	
+	InventoryManager.clear_grid_container(item_rewards_container)
+	if quest.item_reward.size() <= 0:
+		return
+	
+	for item in quest.item_reward.keys():
+		var deliverable_list_item : DeliverableItem = preload("uid://c7yuhc01uhis5").instantiate()
+		deliverable_list_item.icon.texture = item.shop_icon
+		deliverable_list_item.label.text = "x%s" % quest.item_reward[item]
 
 func play_sfx(sound: AudioStream, volume: float = 0.0):
 	var player := AudioStreamPlayer.new()

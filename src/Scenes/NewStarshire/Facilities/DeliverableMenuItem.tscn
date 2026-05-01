@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://c7yuhc01uhis5"]
+
+[ext_resource type="Script" uid="uid://b254x16ndeng6" path="res://src/Scripts/Facilities/TaskBoard/deliverable_menu_item.gd" id="1_10rlm"]
+[ext_resource type="Texture2D" uid="uid://bicbqynvflyub" path="res://Assets/Facilities/CookingStation/HuntersStew.png" id="1_wfiid"]
+[ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="2_10rlm"]
+
+[node name="DeliverableItem" type="Control" unique_id=428441621 node_paths=PackedStringArray("icon", "label")]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_10rlm")
+icon = NodePath("HBoxContainer/Icon")
+label = NodePath("HBoxContainer/Label")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=805673389]
+layout_mode = 0
+offset_right = 66.0
+offset_bottom = 40.0
+theme_override_constants/separation = 20
+
+[node name="Icon" type="TextureRect" parent="HBoxContainer" unique_id=1111267491]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("1_wfiid")
+
+[node name="Label" type="Label" parent="HBoxContainer" unique_id=905556266]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_10rlm")
+theme_override_font_sizes/font_size = 24
+text = "x4"
+horizontal_alignment = 2
