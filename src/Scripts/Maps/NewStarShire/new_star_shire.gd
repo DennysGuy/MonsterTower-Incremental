@@ -481,3 +481,8 @@ func sell_novelty_items() -> void:
 		notification_label.position = grand_market_area.position
 		add_child(notification_label)
 		sfx_player.play_sfx(NOVELTY_ITEMS_SALE)
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body is Player:
+		Dialogic.start('uid://buaw4ymemp3ln')
