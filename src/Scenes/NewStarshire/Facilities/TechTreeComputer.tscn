@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dkxkwr4us4aak"]
+[gd_scene format=3 uid="uid://dkxkwr4us4aak"]
 
 [ext_resource type="Script" uid="uid://bxo0rkm5772y5" path="res://src/Scripts/Facilities/TechTreeComputer/tech_tree_computer.gd" id="1_lddpm"]
 [ext_resource type="Texture2D" uid="uid://cxscrp46rseun" path="res://Assets/Facilities/TechTreeComputer.png" id="2_4fhdd"]
@@ -6,7 +6,7 @@
 [ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="4_k387v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lddpm"]
-size = Vector2(94, 46)
+size = Vector2(118, 46)
 
 [sub_resource type="Animation" id="Animation_k387v"]
 length = 0.001
@@ -33,21 +33,21 @@ _data = {
 &"hover": SubResource("Animation_4fhdd")
 }
 
-[node name="TechTreeComputer" type="Node2D"]
+[node name="TechTreeComputer" type="Node2D" unique_id=2062973067]
 script = ExtResource("1_lddpm")
 
-[node name="Graphic" type="Sprite2D" parent="."]
+[node name="Graphic" type="Sprite2D" parent="." unique_id=1396965840]
 position = Vector2(0, -32)
 texture = ExtResource("2_4fhdd")
 
-[node name="FacilityInteractable" parent="." instance=ExtResource("3_4fhdd")]
+[node name="FacilityInteractable" parent="." unique_id=2060397198 instance=ExtResource("3_4fhdd")]
 position = Vector2(0, -27)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FacilityInteractable"]
-position = Vector2(-18, 4)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FacilityInteractable" unique_id=1992886755]
+position = Vector2(-8, 4)
 shape = SubResource("RectangleShape2D_lddpm")
 
-[node name="PressE" type="Label" parent="."]
+[node name="PressE" type="Label" parent="." unique_id=712583370]
 z_index = 4096
 offset_left = -98.0
 offset_top = -83.0
@@ -59,10 +59,8 @@ theme_override_font_sizes/font_size = 16
 text = "Press 'E' To Access Upgrade PC"
 horizontal_alignment = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_k387v")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=381414348]
+libraries/ = SubResource("AnimationLibrary_k387v")
 
 [connection signal="body_entered" from="FacilityInteractable" to="." method="_on_facility_interactable_body_entered"]
 [connection signal="body_exited" from="FacilityInteractable" to="." method="_on_facility_interactable_body_exited"]

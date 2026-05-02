@@ -75,6 +75,7 @@ func _ready() -> void:
 	#hud.open_tower_map_button.show()
 
 	await get_tree().process_frame
+	GameManager.event_speed_mod = 2.5
 	PlayerHudSignalBus.update_map_name_label.emit(map_name)
 	PlayerHudSignalBus.update_player_health.emit()
 	PlayerStats.player_stats["Current MP"] = PlayerStats.player_stats["Max MP"] + PlayerStats.get_current_sword().max_mp_bonus + PlayerStats.get_total_gem_bonus("Max MP Bonus")
@@ -82,6 +83,9 @@ func _ready() -> void:
 	SaveManager.save_player_stats()
 	if PlayerStats.player_stats["Level"] == 2 and PlayerStats.player_stats["Ability Points"] == 1:
 		ability_station_notice()
+
+func _exit_tree() -> void:
+	GameManager.event_speed_mod = 1.0
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

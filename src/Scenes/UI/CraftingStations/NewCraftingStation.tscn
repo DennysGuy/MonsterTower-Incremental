@@ -181,7 +181,9 @@ shape = SubResource("RectangleShape2D_r2l52")
 
 [node name="NameTag" parent="." unique_id=1236001114 instance=ExtResource("3_jw3wv")]
 offset_left = -48.0
+offset_top = 3.0
 offset_right = 40.0
+offset_bottom = 19.0
 mouse_filter = 2
 
 [node name="ArrowAtOre" parent="." unique_id=347205072 instance=ExtResource("4_2ityt")]

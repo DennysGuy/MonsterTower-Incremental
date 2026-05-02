@@ -19,6 +19,7 @@ var can_issue_abilities : bool = true
 var event_speed_mod : float = 1.0
 var boss_door_challenge_active : bool = false
 var on_boss_door_floor : bool = false
+var room_speed_bonus : float = 1.0
 enum NOTIFICATION_TYPE {CRAFTING, COOKING, SMELTING, AP, QUEST}
 
 # Called when the node enters the scene tree for the first time.
