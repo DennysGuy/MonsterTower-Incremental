@@ -1,0 +1,175 @@
+class_name JobBoardMenu extends Control
+
+@onready var jobs_container: VBoxContainer = $JobsContainer
+@onready var quest_title: Label = $QuestTitle
+@onready var quest_line_title: Label = $QuestLineTitle
+@onready var xp_reward: Label = $XPReward
+@onready var currency_reward: Label = $CurrencyReward
+@onready var title: Label = $Title
+@onready var item_rewards_container: GridContainer = $ItemRewardsContainer
+
+@onready var job_description: RichTextLabel = $JobDescription
+@onready var accept_quest_button: Button = $AcceptQuestButton
+
+@export var stored_quest_data : Quest
+
+const JOB_TURN_IN = preload("uid://crytbgxiowkp4")
+const JOB_ACCEPT_JINGLE = preload("uid://dinxl1rs2y55v")
+
+@onready var inventory_full_notice: Label = $InventoryFullNotice
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	GameManager.player_can_move = false
+	QuestManager.populate_job_board_description_box.connect(populate_description_panel)
+	clear_description_panel()
+	initialize_available_jobs()
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("close_menu"):
+		close_out()
+
+func populate_description_panel(quest_data : Quest) -> void:
+	inventory_full_notice.hide()
+	title.text = quest_data.quest_title
+	quest_line_title.text = "- %s -" % quest_data.quest_line
+	job_description.text = quest_data.description
+	xp_reward.text = "XP Reward: %s" % quest_data.xp_reward
+	currency_reward.text = "Currency Reward: %s" % quest_data.currency_reward
+	populate_description_panel(quest_data)
+	stored_quest_data = quest_data
+	set_accept_job_button(quest_data)
+	#will also do item reward
+
+func clear_description_panel() -> void:
+	inventory_full_notice.hide()
+	stored_quest_data = null
+	title.text = "Click on a Job to select it."
+	quest_line_title.text = ""
+	job_description.text = ""
+	xp_reward.text = ""
+	currency_reward.text = ""
+	InventoryManager.clear_grid_container(item_rewards_container)
+	accept_quest_button.hide()
+
+func close_out() -> void:
+	GameManager.player_can_move = true
+	GameManager.can_open_bag = true
+	GameManager.can_open_tower_map = true
+	SignalBus.hide_tech_tree_canvas_layer.emit()
+	QuestManager.initialize_job_quests.emit()
+	queue_free()
+
+func initialize_available_jobs() -> void:
+	clear_job_box()
+	for job in QuestManager.quests["Job"]["Introduction"]:
+		var selected_job : Quest = QuestManager.get_quest(job)
+		if !selected_job.is_completed():
+			var job_board_button : JobBoardButton = preload("uid://crntn4mm7ex6s").instantiate()
+			job_board_button.quest_data = selected_job
+			job_board_button.job_board_button.text = selected_job.quest_title
+			jobs_container.add_child(job_board_button)
+
+func _on_close_menu_button_button_up() -> void:
+	close_out()
+
+func _on_accept_quest_button_button_up() -> void:
+	if stored_quest_data.is_available():
+		accept_quest()
+	elif stored_quest_data.is_in_progress():
+		abandon_quest()
+	elif stored_quest_data.is_ready_for_turn_in():
+		turn_in_quest()
+
+func set_accept_job_button(quest_data : Quest) -> void:
+	accept_quest_button.show()
+	if quest_data.is_available():
+		accept_quest_button.text = "Accept"
+	elif quest_data.is_in_progress():
+		accept_quest_button.text = "Disband"
+	elif quest_data.is_ready_for_turn_in():
+		if stored_quest_data.item_reward.size() > 0:
+			var can_turn_in : bool = true
+			for deliverable in stored_quest_data.item_reward.keys():
+				for i in range(stored_quest_data[deliverable]):
+					can_turn_in = InventoryManager.check_if_can_add_to_inventory(deliverable, deliverable.get_inventory_name(), "Bag", "Max Bag Stack")
+				if !can_turn_in:
+					break
+			if !can_turn_in:
+				accept_quest_button.disabled = true
+				inventory_full_notice.show()
+			
+		accept_quest_button.text = "Turn In"
+
+func add_item_rewards_to_inventory() -> void:
+	#add item rewards to inventory -- should have already checked if can add
+	for item in stored_quest_data.item_reward.keys():
+		for i in range(stored_quest_data.item_reward[item]):
+			InventoryManager.add_item(item.get_inventory_name(), item)
+
+func remove_requested_item_from_inventory() -> void:
+	for task in stored_quest_data.tasks:
+		if task is GatheringTask:
+			task.remove_item_from_inventory()
+
+func abandon_quest() -> void:
+	#disband the quest
+	#update UI to reflect disbanded (back to available state)
+	QuestManager.remove_quest_from_active(stored_quest_data, false)
+	set_accept_job_button(stored_quest_data)
+	for task in stored_quest_data.tasks:
+		task.reset_task_state()
+		
+		initialize_available_jobs()
+
+func accept_quest() -> void:
+	#add quest to active quest
+	QuestManager.add_quest_to_active(stored_quest_data)
+	#update UI to reflect in progress
+	populate_description_panel(stored_quest_data)
+	#update the button text to read disband
+	set_accept_job_button(stored_quest_data)
+	#send signal to update the UI button hold quest
+	PlayerHudSignalBus.update_job_board_button.emit(stored_quest_data)
+	play_sfx(JOB_ACCEPT_JINGLE)
+
+func clear_job_box() -> void:
+	for button in jobs_container.get_children():
+		button.queue_free()
+
+func turn_in_quest() -> void:
+	PlayerStats.player_stats["Current XP"] += stored_quest_data.xp_reward
+	LevelingManager.check_for_level_up()
+		
+	TechTreeManager.currency += stored_quest_data.currency_reward
+	SaveManager.save_tech_tree_data()
+	add_item_rewards_to_inventory()
+	remove_requested_item_from_inventory()
+	QuestManager.remove_quest_from_active(stored_quest_data, true)
+	clear_description_panel()
+	initialize_available_jobs()
+	QuestManager.initialize_job_quests.emit()
+	SaveManager.save_game()
+	play_sfx(JOB_TURN_IN)
+
+func populate_item_rewards_container(quest : Quest) -> void:
+	
+	InventoryManager.clear_grid_container(item_rewards_container)
+	if quest.item_reward.size() <= 0:
+		return
+	
+	for item in quest.item_reward.keys():
+		var deliverable_list_item : DeliverableItem = preload("uid://c7yuhc01uhis5").instantiate()
+		deliverable_list_item.icon.texture = item.shop_icon
+		deliverable_list_item.label.text = "x%s" % quest.item_reward[item]
+
+func play_sfx(sound: AudioStream, volume: float = 0.0):
+	var player := AudioStreamPlayer.new()
+	player.stream = sound
+	player.volume_db = volume
+	player.bus = &"SFX"
+	add_child(player)
+	player.play()
+	player.finished.connect(player.queue_free)

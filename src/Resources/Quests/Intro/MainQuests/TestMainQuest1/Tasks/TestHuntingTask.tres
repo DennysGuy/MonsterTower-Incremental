@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="HuntingTask" format=3 uid="uid://crg8al0x0yyao"]
+
+[ext_resource type="Resource" uid="uid://e6ejdj1jwoj0" path="res://src/Resources/Actors/Enemies/Biome1/WillowShrub/WillowShrub.tres" id="1_72nok"]
+[ext_resource type="Script" uid="uid://cx5q27bqrlaxf" path="res://src/Scripts/Questing/Tasks/hunting_task.gd" id="2_3ah6q"]
+
+[resource]
+script = ExtResource("2_3ah6q")
+enemy_to_hunt = ExtResource("1_72nok")
+number_to_get = 25
+task_type = 1
+metadata/_custom_type_script = "uid://cx5q27bqrlaxf"

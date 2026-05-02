@@ -26,6 +26,8 @@ func go_to_next_scene() -> void:
 
 func go_to_starspire() -> void:
 	SaveManager.load_game()
+	QuestManager.load_all_quest_status()
+	#QuestManager.connect_active_main_quest_signals()
 	animation_player.play("FadeOut")
 	await get_tree().create_timer(1.0).timeout
 	get_tree().change_scene_to_file("res://src/Scenes/NewStarshire/NewNewStarshireTest.tscn") 

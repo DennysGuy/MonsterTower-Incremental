@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="HuntingTask" format=3 uid="uid://ckw8ry5he40js"]
+
+[ext_resource type="Resource" uid="uid://bq0juubwkp8im" path="res://src/Resources/Actors/Enemies/Biome1/CorruptedMushie/CorruptedMushie.tres" id="1_qv4f7"]
+[ext_resource type="Script" uid="uid://cx5q27bqrlaxf" path="res://src/Scripts/Questing/Tasks/hunting_task.gd" id="1_ycgmo"]
+
+[resource]
+script = ExtResource("1_ycgmo")
+enemy_to_hunt = ExtResource("1_qv4f7")
+number_to_get = 35
+task_id = 4
+task_type = 1
+metadata/_custom_type_script = "uid://cx5q27bqrlaxf"

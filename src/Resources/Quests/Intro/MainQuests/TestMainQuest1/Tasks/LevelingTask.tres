@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="LevelingTask" format=3 uid="uid://ihendvisrfmw"]
+
+[ext_resource type="Script" uid="uid://bh3k6m7rjuhin" path="res://src/Scripts/Questing/Tasks/leveling_task.gd" id="1_i6uio"]
+
+[resource]
+script = ExtResource("1_i6uio")
+level_needed = 5
+task_id = 2
+task_type = 2
+metadata/_custom_type_script = "uid://bh3k6m7rjuhin"

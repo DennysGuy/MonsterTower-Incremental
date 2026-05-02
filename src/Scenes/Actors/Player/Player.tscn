@@ -1919,6 +1919,8 @@ z_index = 4000
 collision_layer = 17
 collision_mask = 17
 script = ExtResource("1_gw3a7")
+attack_friction = 2000.0
+max_attack_drift = 100.0
 idle_state = NodePath("StateMachine/Idle")
 jump_state = NodePath("StateMachine/Jump")
 fall_state = NodePath("StateMachine/Fall")
@@ -1963,9 +1965,9 @@ dash_attack_state = NodePath("../DashAttack")
 attack_1_state = NodePath("../Attack1")
 special_attack = NodePath("../SpecialAttack")
 move_sfx = ExtResource("5_a5kf2")
-accel = 2500.0
+accel = 800.0
 decel = 1500.0
-turn_resistance = 2300.0
+turn_resistance = 3500.0
 animation_name = "Run"
 
 [node name="Jump" type="Node" parent="StateMachine" unique_id=593572243 node_paths=PackedStringArray("idle_state", "fall_state", "air_attack", "double_jump")]
