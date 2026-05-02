@@ -15,7 +15,6 @@
 [ext_resource type="Texture2D" uid="uid://b38baquwhaxfl" path="res://Assets/EnvironmentalAssets/StarspireBG1/StarspireBG1_BlueClouds.png" id="5_lrlyb"]
 [ext_resource type="PackedScene" uid="uid://cmog8m28k4ijk" path="res://src/Scenes/Actors/Enemies/PracticeDummy.tscn" id="6_kqfvc"]
 [ext_resource type="Texture2D" uid="uid://cpca4wpiuuqve" path="res://Assets/EnvironmentalAssets/StarspireBG1/StarspireBG1_WhiteClouds.png" id="6_uhrlg"]
-[ext_resource type="Texture2D" uid="uid://4wbesj8bqdpo" path="res://Assets/EnvironmentalAssets/StarspireBG1/StarspireBG1_Islands.png" id="7_lrlyb"]
 [ext_resource type="PackedScene" uid="uid://djr7ysw0olctc" path="res://src/Scenes/MainMenuBG.tscn" id="8_uhrlg"]
 [ext_resource type="PackedScene" uid="uid://crvhogk2bnq1s" path="res://src/Scenes/NewStarshire/TowerGuideSprite.tscn" id="9_636af"]
 [ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="10_636af"]
@@ -811,14 +810,10 @@ offset = Vector2(0, 0.2)
 texture = ExtResource("6_uhrlg")
 offset = Vector2(0, 0.4)
 
-[node name="Islands" type="Sprite2D" parent="Parallax2D" unique_id=18487412]
-texture = ExtResource("7_lrlyb")
-offset = Vector2(0, 0.6)
-
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=626834970]
-offset_left = -42.0
+offset_left = 119.0
 offset_top = 88.0
-offset_right = 1238.0
+offset_right = 1399.0
 offset_bottom = 808.0
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=1380284373]
