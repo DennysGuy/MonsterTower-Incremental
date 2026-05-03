@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="HuntingTask" format=3 uid="uid://hrlo5gdt3vij"]
+
+[ext_resource type="Resource" uid="uid://dsl20riisg4mk" path="res://src/Resources/Actors/Enemies/Biome1/Batclopse/Batclopse.tres" id="1_otyrp"]
+[ext_resource type="Script" uid="uid://cx5q27bqrlaxf" path="res://src/Scripts/Questing/Tasks/hunting_task.gd" id="1_vjfwr"]
+
+[resource]
+script = ExtResource("1_vjfwr")
+enemy_to_hunt = ExtResource("1_otyrp")
+number_to_get = 30
+task_id = 7
+parent_quest = "The Hunting Brave 1"
+task_type = 1
+metadata/_custom_type_script = "uid://cx5q27bqrlaxf"

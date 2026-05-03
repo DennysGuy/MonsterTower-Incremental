@@ -1,0 +1,47 @@
+[gd_resource type="Resource" script_class="Quest" format=3 uid="uid://1iraf0ury1mv"]
+
+[ext_resource type="Script" uid="uid://cu8drgivmhfn" path="res://src/Scripts/item.gd" id="1_to1ue"]
+[ext_resource type="Resource" uid="uid://b4owo1wr47wc" path="res://src/Resources/Dishes/WrappedKabab.tres" id="2_25glh"]
+[ext_resource type="Script" uid="uid://be6vh0qellkjq" path="res://src/Scripts/Questing/quest.gd" id="2_q7fhk"]
+[ext_resource type="Script" uid="uid://deyfft0rbfjgk" path="res://src/Scripts/Questing/Tasks/task.gd" id="3_25glh"]
+[ext_resource type="Resource" uid="uid://c5lshgfftefd2" path="res://src/Resources/Quests/Intro/SideQuests/IntroductionQuests/AvantGardeAlternativeMedicine1/Tasks/Gather20PurifiedMushieCore.tres" id="5_m4eb2"]
+[ext_resource type="Resource" uid="uid://bom53ck8rj43f" path="res://src/Resources/Quests/Intro/SideQuests/IntroductionQuests/AvantGardeAlternativeMedicine1/Tasks/Gather15BeetleShells.tres" id="6_gemyw"]
+[ext_resource type="Resource" uid="uid://bd2wbe6h2son5" path="res://src/Resources/Quests/Intro/SideQuests/IntroductionQuests/AvantGardeAlternativeMedicine1/Tasks/Gather10SerpantTongues.tres" id="7_n4n72"]
+
+[resource]
+script = ExtResource("2_q7fhk")
+quest_title = "Avant Garde Alt. Medicine 1"
+quest_id = 6
+quest_type = 1
+level_needed = 5
+description = "Doctor Tharki
+(Gather 20 Mushie Core, 15 Beetle Shells, 10 Serpant Tongue)
+
+\"Hi, I'm Doctor Tharki. 
+
+I have been a man of conventional medicine my whole life; however, people do not realize that I am also highly interested in alternative pursuits. 
+
+I am here on behalf of the Hunter's Committee to help research new Medicine to help aid the Hunter's on their expedition. Longevity is the game when you're in the tower.
+It is dangerous, especially going in alone. 
+
+The current medicine provided from the hunter's commitee has been deemed inefficient. I will change that. My alternative medicine pursuits are actually what I believe will be of effect here. 
+
+The truth is that the Tower has taken what we understand as conventional science and flipped it upside on its head. Our past methods seem to fail at every turn and we are scrambling for a solution. 
+
+This is where I believe my alternative pursuits. Unconventional ways may be the path forward. We can only see. 
+
+Help me with gathering drops from the tower and together we will change the world of Medicine - and to an extent - science, once and for all.\""
+turn_in_description = "Doctor Tharki
+
+\"I see now. Things are even more confusing than before. My team has taken the findings to the laboratory and we will begin trials to see what we can find.
+
+Wish us luck. Humanity needs this as much as I do.\""
+chapter_relation = "Introduction"
+quest_line = "Cutting Edge Medicine"
+tasks = Array[ExtResource("3_25glh")]([ExtResource("5_m4eb2"), ExtResource("6_gemyw"), ExtResource("7_n4n72")])
+currency_reward = 3000
+xp_reward = 800
+item_reward = Dictionary[ExtResource("1_to1ue"), int]({
+ExtResource("2_25glh"): 3
+})
+metadata/_custom_type_script = "uid://be6vh0qellkjq"

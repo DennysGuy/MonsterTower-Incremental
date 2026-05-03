@@ -35,7 +35,12 @@ func populate_description_panel(quest_data : Quest) -> void:
 	inventory_full_notice.hide()
 	title.text = quest_data.quest_title
 	quest_line_title.text = "- %s -" % quest_data.quest_line
-	job_description.text = quest_data.description
+	
+	if !quest_data.is_ready_for_turn_in():
+		job_description.text = quest_data.description
+	else:
+		job_description.text = quest_data.turn_in_description
+		
 	xp_reward.text = "XP Reward: %s" % quest_data.xp_reward
 	currency_reward.text = "Currency Reward: %s" % quest_data.currency_reward
 	populate_description_panel(quest_data)

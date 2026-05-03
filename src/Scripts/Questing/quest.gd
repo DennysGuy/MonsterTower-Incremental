@@ -11,12 +11,13 @@ enum STATUS {LOCKED, AVAILABLE, IN_PROGRESS, TURN_IN, COMPLETED}
 
 @export var level_needed : int
 @export_multiline var description : String
+@export_multiline var turn_in_description : String
 @export var chapter_relation : String
 @export var quest_line : String
 @export var next_quest : String
 @export var quest_line_index : int
 @export var tasks : Array[Task]
-
+@export var cut_scene_path : String
 @export var currency_reward : int = 0
 @export var xp_reward : int = 0
 @export var item_reward : Dictionary[Item, int]

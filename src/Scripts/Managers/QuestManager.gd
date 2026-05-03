@@ -36,8 +36,6 @@ signal undo_quest_turn_in(quest_title : String)
 @onready var quests : Dictionary = {
 	"Main": {
 		"Introduction" : {
-			"Shrubby's Hunt": preload("uid://56sc8x8gyyjy"),
-			"The Mossy Womp": preload("uid://dra6tmjefibdy")
 		},
 		"Spring" : {
 			
@@ -52,7 +50,12 @@ signal undo_quest_turn_in(quest_title : String)
 	"Job": {
 		"Introduction" : {
 			"Shrubby's Hunt": preload("uid://56sc8x8gyyjy"),
-			"The Mossy Womp": preload("uid://dra6tmjefibdy")
+			"The Mossy Womp": preload("uid://dra6tmjefibdy"),
+			"The Hunting Brave 1": preload("uid://bitrcpfq1fbrr"),
+			"The Apprentice Chef 1": preload("uid://dbwmsoo2ddsgd"),
+			"Supplies For Our Comrades 1": preload("uid://bpe3ga44k8076"),
+			"The True Nature of the Tower 1": preload("uid://dhd0m6uxot38q"),
+			"Avant Garde Alt. Medicine 1":preload("uid://1iraf0ury1mv")
 		},
 		"Spring" : {
 			
@@ -68,9 +71,10 @@ signal undo_quest_turn_in(quest_title : String)
 
 @onready var active_quests : Dictionary = {
 	"Main" : [
-		"Shrubby's Hunt"
 	],
-	"Job" : []
+	"Job" : [
+		
+	]
 }
 
 
