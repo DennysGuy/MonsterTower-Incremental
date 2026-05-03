@@ -19,6 +19,7 @@ TODO: We will add saves for classes as well
 	"Level" : 1,
 	"Needed XP": 100,
 	"Current XP" : 0,
+	"Max Jobs Held": 3,
 	"Highest Floor": 0,
 	"Ability Points": 0,
 	"Class": "Junior Hunter",
@@ -466,7 +467,7 @@ TODO: We will add saves for classes as well
 }
 
 @export var active_quests : Dictionary = {
-	"Main" : ["Shrubby's Hunt"],
+	"Main" : [],
 	"Job" : []
 }
 
@@ -474,10 +475,37 @@ TODO: We will add saves for classes as well
 	0: {
 		#Test Main quest 1
 		"Status" : 0,
+		"Turned In": false
 	},
 	1: {
 		#Test Main quest 2
-		"Status": 0
+		"Status": 0,
+		"Turned In": false
+	},
+	2: {
+		#The Hunting Brave 1
+		"Status": 0,
+		"Turned In": false
+	},
+	3: {
+		#The Apprentice Chef 1
+		"Status": 0,
+		"Turned In": false
+	},
+	4:{
+		#Supplies for Our Comrades 1
+		"Status": 0,
+		"Turned In": false
+	},
+	5:{
+		#The True Nature of the Tower 1
+		"Status": 0,
+		"Turned In": false
+	},
+	6:{
+		#Avant Garde Alt. Medicine 1
+		"Status": 0,
+		"Turned In": false
 	}
 }
 

@@ -10,6 +10,7 @@ enum STATUS {LOCKED, AVAILABLE, IN_PROGRESS, TURN_IN, COMPLETED}
 @export var status = STATUS.LOCKED
 
 @export var level_needed : int
+@export var turned_in : bool
 @export_multiline var description : String
 @export_multiline var turn_in_description : String
 @export var chapter_relation : String
@@ -27,23 +28,25 @@ func _init() -> void:
 
 func set_as_available() -> void:
 	status = STATUS.AVAILABLE
-	SaveManager.save_quest_status(quest_id, status)
+	SaveManager.save_quest_status(quest_id, status, turned_in)
 
 func activate_quest() -> void:
 	status = STATUS.IN_PROGRESS
-	SaveManager.save_quest_status(quest_id, status)
+	SaveManager.save_quest_status(quest_id, status, turned_in)
 
 func unlock_quest() -> void:
 	status = STATUS.AVAILABLE
-	SaveManager.save_quest_status(quest_id, status)
+	SaveManager.save_quest_status(quest_id, status, turned_in)
 
 func ready_for_turn_in() -> void:
 	status = STATUS.TURN_IN
-	SaveManager.save_quest_status(quest_id, status)
+	
+	SaveManager.save_quest_status(quest_id, status, turned_in)
 
 func complete_quest() -> void:
 	status = STATUS.COMPLETED
-	SaveManager.save_quest_status(quest_id, status)
+	turned_in = true
+	SaveManager.save_quest_status(quest_id, status, turned_in)
 
 func is_locked() -> bool:
 	return status == STATUS.LOCKED
@@ -68,3 +71,4 @@ func is_job() -> bool:
 
 func load_quest_status() -> void:
 	status = SaveManager.current_save_game.quests[quest_id]["Status"]
+	turned_in = SaveManager.current_save_game.quests[quest_id]["Turned In"]

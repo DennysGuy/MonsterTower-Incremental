@@ -49,8 +49,6 @@ signal undo_quest_turn_in(quest_title : String)
 	},
 	"Job": {
 		"Introduction" : {
-			"Shrubby's Hunt": preload("uid://56sc8x8gyyjy"),
-			"The Mossy Womp": preload("uid://dra6tmjefibdy"),
 			"The Hunting Brave 1": preload("uid://bitrcpfq1fbrr"),
 			"The Apprentice Chef 1": preload("uid://dbwmsoo2ddsgd"),
 			"Supplies For Our Comrades 1": preload("uid://bpe3ga44k8076"),
@@ -146,7 +144,7 @@ func load_all_quest_status() -> void:
 					loaded_quest.load_quest_status()
 	
 	for chapter in chapters:
-		for quest in job_quests:
+		for quest in job_quests[chapter]:
 			if quest:
 				var loaded_quest : Quest = get_quest(quest)
 				if loaded_quest:

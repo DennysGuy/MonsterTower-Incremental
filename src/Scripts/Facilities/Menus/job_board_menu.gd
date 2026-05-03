@@ -40,10 +40,10 @@ func populate_description_panel(quest_data : Quest) -> void:
 		job_description.text = quest_data.description
 	else:
 		job_description.text = quest_data.turn_in_description
-		
+	
+	populate_item_rewards_container(quest_data)
 	xp_reward.text = "XP Reward: %s" % quest_data.xp_reward
 	currency_reward.text = "Currency Reward: %s" % quest_data.currency_reward
-	populate_description_panel(quest_data)
 	stored_quest_data = quest_data
 	set_accept_job_button(quest_data)
 	#will also do item reward
@@ -71,12 +71,16 @@ func initialize_available_jobs() -> void:
 	clear_job_box()
 	for job in QuestManager.quests["Job"]["Introduction"]:
 		var selected_job : Quest = QuestManager.get_quest(job)
-		if !selected_job.is_completed():
+		if selected_job.is_locked():
+			if PlayerStats.player_stats["Level"] >= selected_job.level_needed:
+				selected_job.set_as_available()
+		
+		if !selected_job.is_locked() and !selected_job.turned_in:
 			var job_board_button : JobBoardButton = preload("uid://crntn4mm7ex6s").instantiate()
 			job_board_button.quest_data = selected_job
 			job_board_button.job_board_button.text = selected_job.quest_title
 			jobs_container.add_child(job_board_button)
-
+		
 func _on_close_menu_button_button_up() -> void:
 	close_out()
 
@@ -145,6 +149,7 @@ func clear_job_box() -> void:
 		button.queue_free()
 
 func turn_in_quest() -> void:
+	#We need to fix this so that it properly levels up character
 	PlayerStats.player_stats["Current XP"] += stored_quest_data.xp_reward
 	LevelingManager.check_for_level_up()
 		
@@ -169,6 +174,7 @@ func populate_item_rewards_container(quest : Quest) -> void:
 		var deliverable_list_item : DeliverableItem = preload("uid://c7yuhc01uhis5").instantiate()
 		deliverable_list_item.icon.texture = item.shop_icon
 		deliverable_list_item.label.text = "x%s" % quest.item_reward[item]
+		item_rewards_container.add_child(deliverable_list_item)
 
 func play_sfx(sound: AudioStream, volume: float = 0.0):
 	var player := AudioStreamPlayer.new()
