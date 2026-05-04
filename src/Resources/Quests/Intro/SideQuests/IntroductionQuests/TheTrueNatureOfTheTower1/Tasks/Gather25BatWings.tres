@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_jeur3")
 item_to_gather = ExtResource("1_3bb1s")
-number_to_get = 25
+number_to_get = 20
 task_id = 15
 parent_quest = "The True Nature of the Tower 1"
 metadata/_custom_type_script = "uid://b1r3golda0dn4"

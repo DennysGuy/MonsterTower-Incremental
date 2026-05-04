@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="MapUnlockTask" format=3 uid="uid://duoudtlde05xk"]
+
+[ext_resource type="Script" uid="uid://jcmtcld3k3ka" path="res://src/Scripts/Questing/Tasks/map_unlock_task.gd" id="1_rpxoy"]
+
+[resource]
+script = ExtResource("1_rpxoy")
+map_name = "Starspire - Hub"
+task_id = 24
+parent_quest = "A Fresh Embarking"
+task_type = 4
+metadata/_custom_type_script = "uid://jcmtcld3k3ka"

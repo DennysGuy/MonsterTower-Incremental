@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="NodeUnlockTask" format=3 uid="uid://cvg0d3e0v1oip"]
+
+[ext_resource type="Script" uid="uid://d4bl5pg2w0pp3" path="res://src/Scripts/Questing/Tasks/node_unlock_task.gd" id="1_qdn2a"]
+
+[resource]
+script = ExtResource("1_qdn2a")
+node_name = "Hunter License"
+task_id = 22
+parent_quest = "A Fresh Embarking"
+task_type = 5
+metadata/_custom_type_script = "uid://d4bl5pg2w0pp3"

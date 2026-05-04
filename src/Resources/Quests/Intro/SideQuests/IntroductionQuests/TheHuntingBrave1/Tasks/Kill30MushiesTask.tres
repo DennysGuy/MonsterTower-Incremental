@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("2_abhup")
 enemy_to_hunt = ExtResource("1_n8eu6")
-number_to_get = 30
+number_to_get = 50
 task_id = 8
 parent_quest = "The Hunting Brave 1"
 task_type = 1

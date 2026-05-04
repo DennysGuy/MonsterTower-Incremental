@@ -467,7 +467,7 @@ TODO: We will add saves for classes as well
 }
 
 @export var active_quests : Dictionary = {
-	"Main" : [],
+	"Main" : ["A Fresh Embarking"],
 	"Job" : []
 }
 
@@ -505,6 +505,16 @@ TODO: We will add saves for classes as well
 	6:{
 		#Avant Garde Alt. Medicine 1
 		"Status": 0,
+		"Turned In": false
+	},
+	7:{
+		#A Fresh Embarking - Main Quest 1
+		"Status": 1,
+		"Turned In": false
+	},
+	8:{
+		#Learning to Plunder - Main Quest 2
+		"Status": 1,
 		"Turned In": false
 	}
 }
@@ -602,6 +612,34 @@ TODO: We will add saves for classes as well
 	},
 	21:{
 		#Gather 10 Serpant Tongues
+		"Completed": false
+	},
+	22: {
+		#Unlock Tower License
+		"Completed": false
+	},
+	23: {
+		#Enter the Tower
+		"Completed": false
+	},
+	24: {
+		#Enter Starspire
+		"Completed": false
+	},
+	25: {
+		#Enter the Grandmarket
+		"Completed": false
+	},
+	26: {
+		#Unlock attack 1 Node
+		"Completed": false
+	},
+	27:{
+		#One more run task
+		"Completed": false
+	},
+	28:{
+		#Reach Level 2 Task
 		"Completed": false
 	}
 }

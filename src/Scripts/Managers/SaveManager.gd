@@ -115,7 +115,7 @@ func save_active_quests() -> void:
 
 func save_quest_status(quest_id : int, status : int, turned_in : bool) -> void:
 	current_save_game.quests[quest_id]["Status"] = status
-	current_save_game.quests[quest_id]["Completed"] = turned_in
+	current_save_game.quests[quest_id]["Turned In"] = turned_in
 	save_game()
 
 func get_existing_save_file() -> GameSave:

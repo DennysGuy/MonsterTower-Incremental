@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EnterFacilityMenuTask" format=3 uid="uid://d201ey8w8e47d"]
+
+[ext_resource type="Script" uid="uid://b3vur82h47bes" path="res://src/Scripts/Questing/Tasks/enter_facility_menu_task.gd" id="1_ormjp"]
+
+[resource]
+script = ExtResource("1_ormjp")
+facility_name = " Grand Market"
+task_id = 25
+parent_quest = "Learning to Plunder"
+task_type = 3
+metadata/_custom_type_script = "uid://b3vur82h47bes"

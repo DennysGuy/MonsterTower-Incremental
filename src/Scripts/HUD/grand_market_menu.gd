@@ -58,6 +58,7 @@ func _ready() -> void:
 	InventoryManager.populate_market_menu.connect(populate_details_panel)
 	InventoryManager.reset_stored_slot_index.connect(reset_stored_slot_index)
 	GameManager.can_pause_game = false
+	QuestManager.check_facility_name.emit("Grand Market")
 	init_market()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

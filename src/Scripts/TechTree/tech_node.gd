@@ -128,6 +128,7 @@ func _on_click_area_input_event(viewport: Node, event: InputEvent, shape_idx: in
 		
 		#print("this is val of dict node before hand: %s" % [TechTreeManager.tech_nodes[tech_node_stats.node_name]])
 		TechTreeManager.tech_nodes[tech_node_stats.node_name] += 1
+		QuestManager.check_node_name.emit(tech_node_stats.node_name)
 		set_level_label()
 		#print("this is val of dict node after: %s" % [TechTreeManager.tech_nodes[tech_node_stats.node_name]] )
 		check_if_can_purchase()

@@ -53,10 +53,12 @@ func update_task_label(task_id : int) -> void:
 		label.text = "Hunt %s: %s/%s" % [task_data.enemy_to_hunt.enemy_name, task_data.current_count, task_data.number_to_get]		
 	elif task_data is LevelingTask:
 		label.text = "Reach Level %s" % task_data.level_needed
-	elif task_data is FacilityUnlockTask or task_data is NodeUnlockTask:
-		label.text = "Unlock %s" % task_data.facility_name
+	elif task_data is NodeUnlockTask:
+		label.text = "Unlock %s in Tech Node Upgrade PC" % task_data.node_name
 	elif task_data is MapUnlockTask:
 		label.text = "Reach %s" % task_data.map_name
+	elif task_data is EnterFacilityMenuTask:
+		label.text = "Enter the %s Menu" % task_data.facility_name
 
 
 func play_sfx(sound: AudioStream, volume: float = 0.0):

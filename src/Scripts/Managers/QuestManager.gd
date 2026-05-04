@@ -32,10 +32,15 @@ signal populate_job_board_description_box(quest : Quest)
 signal initialize_job_quests
 @warning_ignore("unused_signal")
 signal undo_quest_turn_in(quest_title : String)
+@warning_ignore("unused_signal")
+signal check_node_name(selected_node_name : String)
+
 
 @onready var quests : Dictionary = {
 	"Main": {
 		"Introduction" : {
+			"A Fresh Embarking": preload("uid://c1xfvarhbakj7"),
+			"Learning to Plunder": preload("uid://brnfkjbomxvxb")
 		},
 		"Spring" : {
 			
@@ -69,6 +74,7 @@ signal undo_quest_turn_in(quest_title : String)
 
 @onready var active_quests : Dictionary = {
 	"Main" : [
+		"A Fresh Embarking"
 	],
 	"Job" : [
 		
@@ -115,12 +121,7 @@ func remove_quest_from_active(quest : Quest, to_complete : bool) -> void:
 	else:
 		quest.set_as_available()
 	
-	if list.size() == 1:
-		list.remove_at(0)
-	else:
-		for i in range(list.size()-1):
-			if list[i] == quest.quest_title:
-				list.remove_at(i)
+	list.erase(quest.quest_title)
 		
 	SaveManager.save_active_quests()
 
@@ -174,6 +175,19 @@ func activate_task(task : Task) -> void:
 	elif task is LevelingTask:
 		if !check_level.connect(task.check_level):
 			check_level.connect(task.check_level)
+	
+	elif task is NodeUnlockTask:
+		if !check_node_name.connect(task.check_node_name):
+			check_node_name.connect(task.check_node_name)
+	
+	elif task is MapUnlockTask:
+		if !check_map_name.connect(task.check_map_name):
+			check_map_name.connect(task.check_map_name)
+	
+	elif task is EnterFacilityMenuTask:
+		if !check_facility_name.connect(task.facility_name):
+			check_facility_name.connect(task.facility_name)
+
 	
 	task.completed = SaveManager.current_save_game.tasks[task.task_id]["Completed"]
 

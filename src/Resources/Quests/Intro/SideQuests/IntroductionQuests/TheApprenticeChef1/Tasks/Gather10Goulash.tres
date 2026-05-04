@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_jjvdr")
 item_to_gather = ExtResource("1_vm1y2")
-number_to_get = 10
+number_to_get = 5
 task_id = 10
 parent_quest = "The Apprentice Chef 1"
 metadata/_custom_type_script = "uid://b1r3golda0dn4"

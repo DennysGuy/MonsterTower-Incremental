@@ -1,10 +1,9 @@
-class_name NodeUnlockTask extends Task
+class_name EnterFacilityMenuTask extends Task
 
-@export var node_name : String
+@export var facility_name : String
 
-
-func check_node_name(selected_node_name : String) -> void:
-	if selected_node_name != node_name or completed:
+func check_facility_name(selected_facility_name : String) -> void:
+	if selected_facility_name != facility_name or completed:
 		return 
 	
 	completed = true
@@ -16,6 +15,6 @@ func check_node_name(selected_node_name : String) -> void:
 func build_task_list_item() -> TaskListItem:
 	#we'll load in the necessary data here
 	var new_task : TaskListItem = preload("uid://cb5m6ynmba10o").instantiate()
-	new_task.label.text = "Unlock %s in Node Upgrade PC" % node_name
+	new_task.label.text = "Enter %s Menu" % facility_name
 	new_task.task_data = self
 	return new_task

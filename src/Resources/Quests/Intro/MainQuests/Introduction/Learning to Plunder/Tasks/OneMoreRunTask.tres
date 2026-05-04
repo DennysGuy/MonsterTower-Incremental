@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="MapUnlockTask" format=3 uid="uid://b2jr8msmsb5ec"]
+
+[ext_resource type="Script" uid="uid://jcmtcld3k3ka" path="res://src/Scripts/Questing/Tasks/map_unlock_task.gd" id="1_v8qkj"]
+
+[resource]
+script = ExtResource("1_v8qkj")
+map_name = "Floor 1-1"
+task_id = 27
+parent_quest = "Learning to Plunder"
+task_type = 4
+metadata/_custom_type_script = "uid://jcmtcld3k3ka"

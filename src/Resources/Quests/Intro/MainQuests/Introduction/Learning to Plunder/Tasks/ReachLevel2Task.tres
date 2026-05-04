@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="LevelingTask" format=3 uid="uid://cpe4ns0pklxu6"]
+
+[ext_resource type="Script" uid="uid://bh3k6m7rjuhin" path="res://src/Scripts/Questing/Tasks/leveling_task.gd" id="1_gv3gt"]
+
+[resource]
+script = ExtResource("1_gv3gt")
+level_needed = 2
+task_id = 28
+parent_quest = "Learning to Plunder"
+task_type = 2
+metadata/_custom_type_script = "uid://bh3k6m7rjuhin"

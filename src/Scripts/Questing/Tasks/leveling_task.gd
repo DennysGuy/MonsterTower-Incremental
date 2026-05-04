@@ -2,8 +2,6 @@ class_name LevelingTask extends Task
 
 @export var level_needed : int
 
-func _init() -> void:
-	QuestManager.check_level.connect(check_level)
 
 func check_level(level : int) -> void:
 	if PlayerStats.player_stats["Level"] == level:

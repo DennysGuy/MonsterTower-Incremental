@@ -41,7 +41,7 @@ tasks = Array[ExtResource("3_j7deo")]([ExtResource("4_j7deo"), ExtResource("5_yu
 currency_reward = 1200
 xp_reward = 500
 item_reward = Dictionary[ExtResource("1_lhq2l"), int]({
-ExtResource("2_wopt0"): 5,
-ExtResource("3_qgavg"): 5
+ExtResource("2_wopt0"): 10,
+ExtResource("3_qgavg"): 10
 })
 metadata/_custom_type_script = "uid://be6vh0qellkjq"
