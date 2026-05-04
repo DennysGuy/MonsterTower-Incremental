@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_ormjp")
-facility_name = " Grand Market"
+facility_name = "Grand Market"
 task_id = 25
 parent_quest = "Learning to Plunder"
 task_type = 3

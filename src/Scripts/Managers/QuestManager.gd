@@ -175,6 +175,7 @@ func activate_task(task : Task) -> void:
 	elif task is LevelingTask:
 		if !check_level.connect(task.check_level):
 			check_level.connect(task.check_level)
+			print("I AM CONNECTED : %s" % QuestManager.check_level.is_connected(task.check_level))
 	
 	elif task is NodeUnlockTask:
 		if !check_node_name.connect(task.check_node_name):
@@ -185,8 +186,8 @@ func activate_task(task : Task) -> void:
 			check_map_name.connect(task.check_map_name)
 	
 	elif task is EnterFacilityMenuTask:
-		if !check_facility_name.connect(task.facility_name):
-			check_facility_name.connect(task.facility_name)
+		if !check_facility_name.connect(task.check_facility_name):
+			check_facility_name.connect(task.check_facility_name)
 
 	
 	task.completed = SaveManager.current_save_game.tasks[task.task_id]["Completed"]

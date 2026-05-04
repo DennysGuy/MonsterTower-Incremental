@@ -84,8 +84,7 @@ func _ready() -> void:
 		
 		spawn_player()
 		
-		QuestManager.check_map_name.emit(map_name)
-		
+	
 		if camera:
 			camera.player = player
 		

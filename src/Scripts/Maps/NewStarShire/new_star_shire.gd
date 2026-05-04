@@ -81,6 +81,8 @@ func _ready() -> void:
 	PlayerStats.player_stats["Current MP"] = PlayerStats.player_stats["Max MP"] + PlayerStats.get_current_sword().max_mp_bonus + PlayerStats.get_total_gem_bonus("Max MP Bonus")
 	PlayerHudSignalBus.update_player_mp.emit()
 	SaveManager.save_player_stats()
+	QuestManager.check_map_name.emit(map_name)
+	
 	if PlayerStats.player_stats["Level"] == 2 and PlayerStats.player_stats["Ability Points"] == 1:
 		ability_station_notice()
 

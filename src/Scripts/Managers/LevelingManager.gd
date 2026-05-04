@@ -16,6 +16,7 @@ func check_for_level_up() -> void:
 		PlayerStats.player_stats["Current XP"] = (PlayerStats.player_stats["Current XP"]-PlayerStats.player_stats["Needed XP"])
 		#increase player level
 		PlayerStats.player_stats["Level"] += 1
+		
 		#reward 1 AP point 
 		
 		if GameManager.can_unlock_class():
@@ -29,6 +30,7 @@ func check_for_level_up() -> void:
 		PlayerStats.player_stats["Needed XP"] = xp_formula()
 		#play level up sfx
 		play_level_up_sfx.emit()
+		QuestManager.check_level.emit()
 		SaveManager.save_player_stats()
 	update_xp_bar.emit()
 
