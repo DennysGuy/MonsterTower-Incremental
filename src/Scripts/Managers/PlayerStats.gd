@@ -71,7 +71,11 @@ var equipped_abilities : Dictionary = {
 	"Dash Attack" : null, #basic dash attack
 	"Air Attack" : null, #basic air attack
 	"Double Jump" : null, #basic double jump
-	"Special Attack" : null,
+	"Special Attack" : null, #Not Going to Be Used
+	"Combat Ability 1": null,
+	"Combat Ability 2": null,
+	"Combat Ability 3": null,
+	"Combat Ability 4": null
 }
 
 var equipped_gem_sockets : Dictionary = {
@@ -188,7 +192,11 @@ var player_classes : Dictionary = {
 		"Air Attack": 	preload("uid://dcxiodvnbqgef"),
 		"Dash Attack": preload("uid://c3llqiy2fb5n5"),
 		"Double Jump": preload("uid://ctavgtgbvyp1w"),
-		"Special Attack": preload("uid://cs0umnvsvjhnh")
+		"Special Attack": preload("uid://cs0umnvsvjhnh"),
+		"Combat Ability 1" : null,
+		"Combat Ability 2" : null,
+		"Combat Ability 3" : null,
+		"Combat Ability 4" : null
 	}
 }
 

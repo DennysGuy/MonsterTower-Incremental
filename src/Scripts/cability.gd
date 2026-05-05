@@ -4,7 +4,7 @@ extends Resource
 @export_group("Meta Data")
 @export var ability_name : String #Maybe this can be the "Animation Name" as well?
 @export var class_relation : String
-enum ABILITY_TYPE {STANDARD_ATTACK, AIR_ATTACK, DASH_ATTACK, DOUBLE_JUMP, SPECIAL_ATTACK}
+enum ABILITY_TYPE {STANDARD_ATTACK, AIR_ATTACK, DASH_ATTACK, DOUBLE_JUMP, SPECIAL_ATTACK, COMBAT_ABILITY_1, COMBAT_ABILITY_2, COMBAT_ABILITY_3, COMBAT_ABILITY_4}
 @export var ability_type : ABILITY_TYPE = ABILITY_TYPE.STANDARD_ATTACK
 @export var cooldown_time : float
 @export_multiline var ability_description : String
@@ -46,6 +46,14 @@ func get_ability_type_name() -> String:
 			return "Double Jump"
 		ABILITY_TYPE.SPECIAL_ATTACK:
 			return "Special Attack"
+		ABILITY_TYPE.COMBAT_ABILITY_1:
+			return "Combat Ability 1"
+		ABILITY_TYPE.COMBAT_ABILITY_2:
+			return "Combat Ability 2"
+		ABILITY_TYPE.COMBAT_ABILITY_3:
+			return "Combat Ability 3"
+		ABILITY_TYPE.COMBAT_ABILITY_4:
+			return "Combat Ability 4"
 		_:
 			return ""
 

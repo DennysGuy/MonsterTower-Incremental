@@ -97,6 +97,7 @@ func increment_ability_level() -> void:
 	var node_type : String = ability_node_stats.get_ability_type_name()
 	SaveManager.current_save_game.ability_nodes[ability_node_stats.class_relation][node_type][ability_node_stats.node_name]["Level"] += 1
 	ability_node_stats.current_upgrade_level = SaveManager.current_save_game.ability_nodes[ability_node_stats.class_relation][node_type][ability_node_stats.node_name]["Level"]
+	
 	if ability_node_stats.node_type == ability_node_stats.NODE_TYPE.ABILITY_STAT_BOOST and ability_node_stats.current_upgrade_level == 1:
 		PlayerStats.equipped_abilities[ability_node_stats.ability_category] = ability_node_stats.ability_resource
 		SaveManager.save_equipped_abilities()

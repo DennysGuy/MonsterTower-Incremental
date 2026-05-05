@@ -222,7 +222,11 @@ TODO: We will add saves for classes as well
 	"Dash Attack" : "uid://b0lsgfuw8bp58" , #sword dance - for testing purposes
 	"Air Attack" : "uid://bukiike6rf6pl", #sword slam - for testing purposes
 	"Double Jump" : "uid://rgwunwula5mv", #sword soar - for testing purposes
-	"Special Attack" : null #double cleave - here for testing purposes
+	"Special Attack" : null, #double cleave - here for testing purposes,
+	"Combat Ability 1" : null,
+	"Combat Ability 2" : null,
+	"Combat Ability 3" : null,
+	"Combat Ability 4" : null,
 }
 
 @export var abilities : Dictionary = {

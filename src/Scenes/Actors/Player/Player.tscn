@@ -28,7 +28,11 @@
 [ext_resource type="Script" uid="uid://4eouowdm16tv" path="res://src/Scripts/StateMachine/PlayerStates/player_dash_attack.gd" id="17_cfcx3"]
 [ext_resource type="AudioStream" uid="uid://cm3vsmb4a64u4" path="res://Audio/SFX/Player/Hit1.wav" id="18_8xpqf"]
 [ext_resource type="AudioStream" uid="uid://1f5gpbnq1x73" path="res://Audio/SFX/Player/PlayerDeathFanfare.wav" id="20_geieu"]
+[ext_resource type="Script" uid="uid://cn3kj2k5lboc6" path="res://src/Scripts/StateMachine/AbilitiyStates/CombatAbilities/combat_ability_1_state.gd" id="21_0kjqt"]
 [ext_resource type="AudioStream" uid="uid://djgxyv4i65ob4" path="res://Audio/SFX/Player/Pickaxe_Swing_Strike.wav" id="22_0qbij"]
+[ext_resource type="Script" uid="uid://c7d5w3y3nlx6r" path="res://src/Scripts/StateMachine/AbilitiyStates/CombatAbilities/combat_ability_2_state.gd" id="22_s8107"]
+[ext_resource type="Script" uid="uid://bvx0ng43qf0wd" path="res://src/Scripts/StateMachine/AbilitiyStates/CombatAbilities/combat_ability_3_state.gd" id="23_8oflv"]
+[ext_resource type="Script" uid="uid://bvodotwlydfki" path="res://src/Scripts/StateMachine/AbilitiyStates/CombatAbilities/combat_ability_4_state.gd" id="24_f7qr4"]
 [ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="25_1twwa"]
 [ext_resource type="Script" uid="uid://dcikimxctmmfd" path="res://src/Scripts/StateMachine/PlayerStates/player_double_jump.gd" id="25_1uq2g"]
 [ext_resource type="Script" uid="uid://cexbykd6bc5cq" path="res://src/Scripts/StateMachine/PlayerStates/player_special_attack.gd" id="26_ok538"]
@@ -2049,6 +2053,18 @@ fall_state = NodePath("../Fall")
 jump_sfx = ExtResource("6_yawj3")
 air_attack = NodePath("../AirAttack")
 animation_name = "Jump"
+
+[node name="CombatAbility1" type="Node" parent="StateMachine" unique_id=1831190940]
+script = ExtResource("21_0kjqt")
+
+[node name="CombatAbility2" type="Node" parent="StateMachine" unique_id=634053225]
+script = ExtResource("22_s8107")
+
+[node name="CombatAbility3" type="Node" parent="StateMachine" unique_id=811607536]
+script = ExtResource("23_8oflv")
+
+[node name="CombatAbility4" type="Node" parent="StateMachine" unique_id=1987831625]
+script = ExtResource("24_f7qr4")
 
 [node name="Hit" type="Node" parent="StateMachine" unique_id=73250372 node_paths=PackedStringArray("idle_state", "attack_1_state")]
 script = ExtResource("11_susmm")

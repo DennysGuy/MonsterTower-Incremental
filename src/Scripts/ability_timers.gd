@@ -5,6 +5,10 @@ extends Node
 @onready var air_attack_timer: Timer = $AirAttackTimer
 @onready var double_jump_timer: Timer = $DoubleJumpTimer
 @onready var special_attack_timer: Timer = $SpecialAttackTimer
+@onready var combat_ability_timer_1: Timer = $CombatAbilityTimer1
+@onready var combat_ability_timer_2: Timer = $CombatAbilityTimer2
+@onready var combat_ability_timer_3: Timer = $CombatAbilityTimer3
+@onready var combat_ability_timer_4: Timer = $CombatAbilityTimer4
 
 signal start_ability_cooldown_timer(ability_name)
 
@@ -12,7 +16,11 @@ signal start_ability_cooldown_timer(ability_name)
 	"Dash Attack" : {"Can Do": true, "Timer": dash_attack_timer},
 	"Air Attack":  {"Can Do": true, "Timer": air_attack_timer},
 	"Double Jump":  {"Can Do": true, "Timer": double_jump_timer},
-	"Special Attack":  {"Can Do": true, "Timer": special_attack_timer}
+	"Special Attack":  {"Can Do": true, "Timer": special_attack_timer},
+	"Combat Ability 1": {"Can Do": true, "Timer": combat_ability_timer_1},
+	"Combat Ability 2": {"Can Do": true, "Timer": combat_ability_timer_2},
+	"Combat Ability 3": {"Can Do": true, "Timer": combat_ability_timer_3},
+	"Combat Ability 4": {"Can Do": true, "Timer": combat_ability_timer_4},
 }
 
 # Called when the node enters the scene tree for the first time.
@@ -45,3 +53,15 @@ func _on_double_jump_timer_timeout() -> void:
 
 func _on_special_attack_timer_timeout() -> void:
 	ability_state["Special Attack"]["Can Do"] = true
+
+func _on_combat_ability_timer_1_timeout() -> void:
+	ability_state["Combat Ability 1"]["Can Do"] = true
+
+func _on_combat_ability_timer_2_timeout() -> void:
+	ability_state["Combat Ability 2"]["Can Do"] = true
+
+func _on_combat_ability_timer_3_timeout() -> void:
+	ability_state["Combat Ability 3"]["Can Do"] = true
+
+func _on_combat_ability_timer_4_timeout() -> void:
+	ability_state["Combat Ability 4"]["Can Do"] = true
