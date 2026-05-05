@@ -84,10 +84,9 @@ func _ready() -> void:
 	PlayerHudSignalBus.show_class_notice.connect(show_class_notice)
 	InventoryManager.show_open_bag_notice.connect(show_open_bag_notice)
 	InventoryManager.hide_open_bag_notice.connect(hide_open_bag_notice)
-	
+	QuestManager.show_quest_complete_notice.connect(quest_complete_notice)
 	#player_mp_bar.max_value = PlayerStats.player_stats["Current MP"]
 	#player_mp_bar.value = player_mp_bar.max_value
-	
 	update_xp_bar()
 	#update_ap_label()
 	#update_player_health(int(PlayerStats.player_stats["Current Health"]))
@@ -287,3 +286,9 @@ func play_sfx(sound: AudioStream, volume: float = 0.0):
 	add_child(player)
 	player.play()
 	player.finished.connect(player.queue_free)
+
+func quest_complete_notice() -> void:
+	big_notification_label.show()
+	big_notification_label.text = "Quest Complete!"
+	await get_tree().create_timer(3.0).timeout
+	big_notification_label.hide()

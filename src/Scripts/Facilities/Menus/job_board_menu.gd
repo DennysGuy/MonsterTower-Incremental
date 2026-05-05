@@ -172,7 +172,7 @@ func turn_in_quest() -> void:
 	#We need to fix this so that it properly levels up character
 	PlayerStats.player_stats["Current XP"] += stored_quest_data.xp_reward
 	LevelingManager.check_for_level_up()
-		
+	QuestManager.check_general_task_for_completion.emit("Turn In Job Request")
 	TechTreeManager.currency += stored_quest_data.currency_reward
 	SaveManager.save_tech_tree_data()
 	add_item_rewards_to_inventory()

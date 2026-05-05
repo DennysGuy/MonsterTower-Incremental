@@ -32,6 +32,7 @@ func build_task_list() -> void:
 		task.parent_quest = quest_data.quest_title
 		var new_task : TaskListItem = task.build_task_list_item()
 		checklist.add_child(new_task)
+		#await get_tree().create_timer(0.5).timeout
 
 func clear_checklist() -> void:
 	for child in checklist.get_children():
@@ -40,7 +41,8 @@ func clear_checklist() -> void:
 func update_quest_completion(quest_name : String) -> void:
 	if !all_tasks_completed() or quest_name != quest_data.quest_title:
 		return
-	
+		
+	QuestManager.show_quest_complete_notice.emit()
 	play_sfx(QUEST_COMPLETED)
 	await get_tree().create_timer(1.5).timeout
 	if quest_data.is_main_quest():

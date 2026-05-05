@@ -7,7 +7,7 @@ signal play_level_up_sfx
 @warning_ignore("unused_signal")
 signal update_available_ap_label
 
-const XP_GROWTH_RATE : float = 1.15
+const XP_GROWTH_RATE : float = 1.3
 const BASE_XP : int = 100
 
 func check_for_level_up() -> void:
@@ -16,7 +16,7 @@ func check_for_level_up() -> void:
 		PlayerStats.player_stats["Current XP"] = (PlayerStats.player_stats["Current XP"]-PlayerStats.player_stats["Needed XP"])
 		#increase player level
 		PlayerStats.player_stats["Level"] += 1
-		
+		QuestManager.check_level.emit()
 		#reward 1 AP point 
 		
 		if GameManager.can_unlock_class():
@@ -30,7 +30,7 @@ func check_for_level_up() -> void:
 		PlayerStats.player_stats["Needed XP"] = xp_formula()
 		#play level up sfx
 		play_level_up_sfx.emit()
-		QuestManager.check_level.emit()
+		
 		SaveManager.save_player_stats()
 	update_xp_bar.emit()
 

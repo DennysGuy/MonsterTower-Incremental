@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="MapUnlockTask" format=3 uid="uid://cooswxu18hek2"]
+
+[ext_resource type="Script" uid="uid://jcmtcld3k3ka" path="res://src/Scripts/Questing/Tasks/map_unlock_task.gd" id="1_eqdgc"]
+
+[resource]
+script = ExtResource("1_eqdgc")
+map_name = "Floor1-6"
+task_id = 41
+task_type = 4
+metadata/_custom_type_script = "uid://jcmtcld3k3ka"

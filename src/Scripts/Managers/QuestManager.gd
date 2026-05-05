@@ -31,16 +31,24 @@ signal populate_job_board_description_box(quest : Quest)
 @warning_ignore("unused_signal")
 signal initialize_job_quests
 @warning_ignore("unused_signal")
+signal check_general_task_for_completion(task_name : String)
+@warning_ignore("unused_signal")
 signal undo_quest_turn_in(quest_title : String)
 @warning_ignore("unused_signal")
 signal check_node_name(selected_node_name : String)
-
+@warning_ignore("unused_signal")
+signal show_quest_complete_notice
 
 @onready var quests : Dictionary = {
 	"Main": {
 		"Introduction" : {
 			"A Fresh Embarking": preload("uid://c1xfvarhbakj7"),
-			"Learning to Plunder": preload("uid://brnfkjbomxvxb")
+			"Learning to Plunder": preload("uid://brnfkjbomxvxb"),
+			"Getting Stronger": preload("uid://cp644y2y5gtor"),
+			"Tip of the Iceberg": preload("uid://btd64g4acx31t"),
+			"Finding a Profession": preload("uid://b2up70wcso64o"),
+			"The Thick of It": preload("uid://iueqjhobrsol"),
+			"A Mystery's Emergence": preload("uid://dp0x7ac3p4mkr")
 		},
 		"Spring" : {
 			
@@ -165,6 +173,7 @@ func activate_task(task : Task) -> void:
 		if !decrement_task_item_gather_count.connect(task.decrement_count):
 			decrement_task_item_gather_count.connect(task.decrement_count)
 		QuestManager.increment_task_item_gather_count.emit(task.item_to_gather)
+		
 	elif task is HuntingTask:
 		if !increment_task_enemy_kill_count.connect(task.increment_count):
 			increment_task_enemy_kill_count.connect(task.increment_count)
@@ -175,7 +184,8 @@ func activate_task(task : Task) -> void:
 	elif task is LevelingTask:
 		if !check_level.connect(task.check_level):
 			check_level.connect(task.check_level)
-			print("I AM CONNECTED : %s" % QuestManager.check_level.is_connected(task.check_level))
+		
+		task.check_level()
 	
 	elif task is NodeUnlockTask:
 		if !check_node_name.connect(task.check_node_name):
@@ -189,6 +199,9 @@ func activate_task(task : Task) -> void:
 		if !check_facility_name.connect(task.check_facility_name):
 			check_facility_name.connect(task.check_facility_name)
 
+	elif task is GeneralTask:
+		if !check_general_task_for_completion.connect(task.complete_general_task):
+			check_general_task_for_completion.connect(task.complete_general_task)
 	
 	task.completed = SaveManager.current_save_game.tasks[task.task_id]["Completed"]
 

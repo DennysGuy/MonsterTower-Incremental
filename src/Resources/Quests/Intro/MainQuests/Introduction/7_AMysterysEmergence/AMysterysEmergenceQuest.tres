@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Quest" format=3 uid="uid://dp0x7ac3p4mkr"]
+
+[ext_resource type="Script" uid="uid://cu8drgivmhfn" path="res://src/Scripts/item.gd" id="1_2abdq"]
+[ext_resource type="Script" uid="uid://be6vh0qellkjq" path="res://src/Scripts/Questing/quest.gd" id="2_ehw8c"]
+[ext_resource type="Script" uid="uid://deyfft0rbfjgk" path="res://src/Scripts/Questing/Tasks/task.gd" id="3_bhrqj"]
+[ext_resource type="Resource" uid="uid://cooswxu18hek2" path="res://src/Resources/Quests/Intro/MainQuests/Introduction/7_AMysterysEmergence/Tasks/ReachFloor1-6.tres" id="4_cxhd0"]
+[ext_resource type="Resource" uid="uid://bmrciuedihsk8" path="res://src/Resources/Quests/Intro/MainQuests/Introduction/7_AMysterysEmergence/Tasks/FindTheDoorSwitchTask.tres" id="5_p7h6i"]
+[ext_resource type="Resource" uid="uid://2qkd72nnejij" path="res://src/Resources/Quests/Intro/MainQuests/Introduction/7_AMysterysEmergence/Tasks/UnlockTheBossDoor.tres" id="6_gpu4w"]
+
+[resource]
+script = ExtResource("2_ehw8c")
+quest_title = "A Mystery's Emergence"
+quest_id = 14
+status = 1
+next_quest = "END"
+tasks = Array[ExtResource("3_bhrqj")]([ExtResource("4_cxhd0"), ExtResource("5_p7h6i"), ExtResource("6_gpu4w")])
+metadata/_custom_type_script = "uid://be6vh0qellkjq"

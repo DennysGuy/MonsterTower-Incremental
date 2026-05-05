@@ -516,6 +516,41 @@ TODO: We will add saves for classes as well
 		#Learning to Plunder - Main Quest 2
 		"Status": 1,
 		"Turned In": false
+	},
+	9:{
+		#Getting Stronger
+		"Status": 1,
+		"Turned In": false
+	},
+	10:{
+		#Tip of the Iceberg
+		"Status": 1,
+		"Turned In": false
+	},
+	11:{
+		#Finding a Profession
+		"Status": 1,
+		"Turned In": false
+	},
+	12:{
+		#Getting through the Dungeon
+		"Status": 1,
+		"Turned In": false
+	},
+	13:{
+		#The Thick of it
+		"Status": 1,
+		"Turned In": false
+	},
+	14:{
+		#Mystery's Emergence
+		"Status": 1,
+		"Turned In": false
+	},
+	15:{
+		#Awakening the Entity
+		"Status": 1,
+		"Turned In": false
 	}
 }
 
@@ -641,5 +676,65 @@ TODO: We will add saves for classes as well
 	28:{
 		#Reach Level 2 Task
 		"Completed": false
-	}
+	},
+	29:{
+		#Unlock Aerial Slash Node
+		"Completed": false
+	},
+	30:{
+		#Reach Floor 1-2
+		"Completed": false
+	},
+	31:{
+		#Upgrade Sword Once
+		"Completed": false
+	},
+	32:{
+		#Upgrade Hunters License Once
+		"Completed": false
+	},
+	33:{
+		#Unlock Cooking Station
+		"Completed": false
+	},
+	34:{
+		#Unlock Refinery Station
+		"Completed": false
+	},
+	35:{
+		#Reach Floor 1-3
+		"Completed": false
+	},
+	36:{
+		#Turn in a Job Request
+		"Completed": false
+	},
+	37:{
+		#Unlock All Base Abilities
+		"Completed": false
+	},
+	38:{
+		#Reach Level 8
+		"Completed": false
+	},
+	39:{
+		#Select a Class
+		"Completed": false
+	},
+	40:{
+		#Reach Floor 1-5
+		"Completed": false
+	},
+	41:{
+		#Reach Floor 1-6
+		"Completed": false
+	},
+	42:{
+		#Find the Door Activation Switch
+		"Completed": false
+	},
+	43:{
+		#Unlock the Boss Door
+		"Completed": false
+	},
 }

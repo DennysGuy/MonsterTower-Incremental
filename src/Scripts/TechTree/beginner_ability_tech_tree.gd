@@ -23,6 +23,7 @@ func _process(delta: float) -> void:
 
 func check_to_unveil_class_selection_node() -> void:
 	if PlayerStats.facilities_unlocked["Arial Slash"] and PlayerStats.facilities_unlocked["Dash Attack"] and PlayerStats.facilities_unlocked["Double Jump"]:
+		QuestManager.check_general_task_for_completion.emit("Unlock All Base Abilities")
 		class_selection_node.show()
 
 

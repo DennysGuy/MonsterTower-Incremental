@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="NodeUnlockTask" format=3 uid="uid://dc1w8j6bij16s"]
+
+[ext_resource type="Script" uid="uid://d4bl5pg2w0pp3" path="res://src/Scripts/Questing/Tasks/node_unlock_task.gd" id="1_0i4gu"]
+
+[resource]
+script = ExtResource("1_0i4gu")
+node_name = "Cooking Station"
+task_id = 33
+parent_quest = "Tip of the Iceberg"
+task_type = 5
+metadata/_custom_type_script = "uid://d4bl5pg2w0pp3"

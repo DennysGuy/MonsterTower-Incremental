@@ -32,7 +32,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("HBoxContainer/Label:theme_override_colors/default_color")
+tracks/2/path = NodePath("PanelContainer/HBoxContainer/Label:theme_override_colors/default_color")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -71,7 +71,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("HBoxContainer/Label:theme_override_colors/default_color")
+tracks/2/path = NodePath("PanelContainer/HBoxContainer/Label:theme_override_colors/default_color")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -79,6 +79,34 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(0.9091122, 0.85196555, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PanelContainer:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_fs0ym"]
+resource_name = "SlideIn"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PanelContainer:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(253, 0), Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_mjgud"]
@@ -111,7 +139,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("HBoxContainer/Label:theme_override_colors/default_color")
+tracks/2/path = NodePath("PanelContainer/HBoxContainer/Label:theme_override_colors/default_color")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -125,6 +153,7 @@ tracks/2/keys = {
 _data = {
 &"Complete": SubResource("Animation_bg5po"),
 &"RESET": SubResource("Animation_pxntu"),
+&"SlideIn": SubResource("Animation_fs0ym"),
 &"UndoCompletion": SubResource("Animation_mjgud")
 }
 
@@ -132,25 +161,28 @@ _data = {
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 3
 anchors_preset = 0
-offset_right = 290.0
-offset_bottom = 30.0
+offset_right = 327.0
+offset_bottom = 41.0
 script = ExtResource("1_bg5po")
-label = NodePath("HBoxContainer/Label")
-icon = NodePath("HBoxContainer/Icon")
+label = NodePath("PanelContainer/HBoxContainer/Label")
+icon = NodePath("PanelContainer/HBoxContainer/Icon")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1330861788]
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=669899884]
 layout_mode = 0
-offset_left = -73.0
-offset_right = 424.0
-offset_bottom = 24.0
-theme_override_constants/separation = 0
+offset_right = 342.99994
+offset_bottom = 40.0
 
-[node name="Icon" type="TextureRect" parent="HBoxContainer" unique_id=1132492874]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer" unique_id=1330861788]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Icon" type="TextureRect" parent="PanelContainer/HBoxContainer" unique_id=1132492874]
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 expand_mode = 1
 
-[node name="Label" type="RichTextLabel" parent="HBoxContainer" unique_id=1256639664]
+[node name="Label" type="RichTextLabel" parent="PanelContainer/HBoxContainer" unique_id=1256639664]
 custom_minimum_size = Vector2(300, 20)
 layout_mode = 2
 theme_override_colors/default_color = Color(0.9091122, 0.85196555, 1, 1)
@@ -159,16 +191,15 @@ theme_override_constants/outline_size = 0
 theme_override_fonts/normal_font = ExtResource("1_rw0ve")
 theme_override_font_sizes/normal_font_size = 16
 text = "Corrupted Mushie: 5/25"
-horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="Crossout" type="ColorRect" parent="." unique_id=1593529315]
 visible = false
 layout_mode = 0
 offset_left = -19.0
-offset_top = 11.0
+offset_top = 19.0
 offset_right = -6.0
-offset_bottom = 13.0
+offset_bottom = 21.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1633122751]
 libraries/ = SubResource("AnimationLibrary_pxntu")

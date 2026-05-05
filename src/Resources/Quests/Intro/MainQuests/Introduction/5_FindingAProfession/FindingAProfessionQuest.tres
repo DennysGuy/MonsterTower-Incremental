@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Quest" format=3 uid="uid://b2up70wcso64o"]
+
+[ext_resource type="Script" uid="uid://cu8drgivmhfn" path="res://src/Scripts/item.gd" id="1_rxssk"]
+[ext_resource type="Script" uid="uid://be6vh0qellkjq" path="res://src/Scripts/Questing/quest.gd" id="2_kb58v"]
+[ext_resource type="Script" uid="uid://deyfft0rbfjgk" path="res://src/Scripts/Questing/Tasks/task.gd" id="3_31ips"]
+[ext_resource type="Resource" uid="uid://kuivfdxgtp7h" path="res://src/Resources/Quests/Intro/MainQuests/Introduction/5_FindingAProfession/Tasks/UnlockAllBaseAbilities.tres" id="4_6h3xs"]
+[ext_resource type="Resource" uid="uid://biatp4k8a40nx" path="res://src/Resources/Quests/Intro/MainQuests/Introduction/5_FindingAProfession/Tasks/ReachLevel8Task.tres" id="5_bsuby"]
+[ext_resource type="Resource" uid="uid://6n0njqwauref" path="res://src/Resources/Quests/Intro/MainQuests/Introduction/5_FindingAProfession/Tasks/SelectAClassTask.tres" id="6_25vw7"]
+
+[resource]
+script = ExtResource("2_kb58v")
+quest_title = "Finding a Profession"
+quest_id = 11
+status = 1
+next_quest = "The Thick of It"
+tasks = Array[ExtResource("3_31ips")]([ExtResource("4_6h3xs"), ExtResource("5_bsuby"), ExtResource("6_25vw7")])
+metadata/_custom_type_script = "uid://be6vh0qellkjq"

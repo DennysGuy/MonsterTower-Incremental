@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://dix63priuogkk" path="res://Assets/NodeGraphics/NodeGraphicsV2/Bag1_V2.png" id="13_fw5mt"]
 [ext_resource type="PackedScene" uid="uid://djwayx7h06hx3" path="res://src/Scenes/UI/QuestHub.tscn" id="14_xxan5"]
 [ext_resource type="PackedScene" uid="uid://db7vqj43a3h6c" path="res://src/Scenes/UI/RoomInfoBanner.tscn" id="16_fnmb5"]
+[ext_resource type="FontFile" uid="uid://3dovpys2he1l" path="res://Assets/Fonts/Moodcake.ttf" id="19_tjlva"]
 
 [sub_resource type="Animation" id="Animation_g1bs5"]
 resource_name = "CloseIn"
@@ -311,37 +312,8 @@ _data = {
 &"StartHuntChallenge": SubResource("Animation_6ndbt")
 }
 
-[sub_resource type="Animation" id="Animation_fnmb5"]
-resource_name = "HideQuestHub"
-length = 0.15
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../PlayerHUD/QuestHub:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.13333334),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(508, 102), Vector2(637, 102)]
-}
-
-[sub_resource type="Animation" id="Animation_xxan5"]
-resource_name = "QuestHubQuickView"
-length = 4.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../PlayerHUD/QuestHub:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.13333334, 3.8333333, 3.9999998),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(637, 102), Vector2(508, 102), Vector2(508, 102), Vector2(637, 102)]
-}
+[sub_resource type="Animation" id="Animation_h7rl7"]
+resource_name = "QuestCompleteNotice"
 
 [sub_resource type="Animation" id="Animation_3voo3"]
 length = 0.001
@@ -358,28 +330,10 @@ tracks/0/keys = {
 "values": []
 }
 
-[sub_resource type="Animation" id="Animation_7qkr7"]
-resource_name = "ShowQuestHub"
-length = 0.15
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../PlayerHUD/QuestHub:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.13333334),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(637, 102), Vector2(508, 102)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3voo3"]
 _data = {
-&"HideQuestHub": SubResource("Animation_fnmb5"),
-&"QuestHubQuickView": SubResource("Animation_xxan5"),
-&"RESET": SubResource("Animation_3voo3"),
-&"ShowQuestHub": SubResource("Animation_7qkr7")
+&"QuestCompleteNotice": SubResource("Animation_h7rl7"),
+&"RESET": SubResource("Animation_3voo3")
 }
 
 [sub_resource type="Animation" id="Animation_wldwa"]
@@ -803,7 +757,7 @@ horizontal_alignment = 1
 
 [node name="QuestHub" parent="PlayerHUD" unique_id=1129499445 instance=ExtResource("14_xxan5")]
 layout_mode = 1
-offset_left = -339.0
+offset_left = -339.00012
 offset_top = -231.5
 offset_bottom = 231.5
 
@@ -862,16 +816,18 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -184.0
-offset_top = -98.0
-offset_right = 185.0
-offset_bottom = -75.0
+offset_left = -569.0
+offset_top = -114.5
+offset_right = 578.0
+offset_bottom = -58.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(1, 1, 0, 1)
-theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("5_nt012")
-theme_override_font_sizes/font_size = 46
+theme_override_colors/font_color = Color(0.9835877, 0.818833, 0.7133627, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 25
+theme_override_fonts/font = ExtResource("19_tjlva")
+theme_override_font_sizes/font_size = 52
+text = "Quest Complete!"
 horizontal_alignment = 1
 
 [node name="TopBlackBar" type="ColorRect" parent="PlayerHUD" unique_id=877174551]

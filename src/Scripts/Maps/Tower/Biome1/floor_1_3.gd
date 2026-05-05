@@ -25,6 +25,8 @@ func _ready() -> void:
 		spawn_mp_vials()
 		
 	await get_tree().process_frame
+	
+	QuestManager.check_map_name.emit(map_name)
 	PlayerHudSignalBus.show_stop_watch.emit()
 
 	if GameManager.hunt_challenge_selected:

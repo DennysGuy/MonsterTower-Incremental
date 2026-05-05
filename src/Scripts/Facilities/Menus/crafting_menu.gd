@@ -46,6 +46,7 @@ func _on_button_button_up() -> void:
 func upgrade_sword() -> void:
 	InventoryManager.remove_resources_from_inventory(sword.recipe.recipe_list)
 	var next_sword_index = PlayerStats.player_stats["Equipped Sword"]+1
+	QuestManager.check_general_task_for_completion.emit("Upgrade Sword")
 	if next_sword_index < PlayerStats.MAX_SWORD_COUNT:
 		PlayerStats.player_stats["Equipped Sword"] += 1
 		update_sword()

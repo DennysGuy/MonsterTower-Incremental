@@ -16,6 +16,8 @@ func _ready() -> void:
 	QuestManager.update_task_list_item.connect(update_task_label)
 	if task_data:
 		QuestManager.activate_task(task_data)
+		
+	#animation_player.play("SlideIn")	
 	if task_data and task_data.completed:
 		play_completion_animation(task_data.task_id,false)
 		
@@ -52,13 +54,20 @@ func update_task_label(task_id : int) -> void:
 	elif task_data is HuntingTask:
 		label.text = "Hunt %s: %s/%s" % [task_data.enemy_to_hunt.enemy_name, task_data.current_count, task_data.number_to_get]		
 	elif task_data is LevelingTask:
+		icon.hide()
 		label.text = "Reach Level %s" % task_data.level_needed
 	elif task_data is NodeUnlockTask:
-		label.text = "Unlock %s in Tech Node Upgrade PC" % task_data.node_name
+		icon.hide()
+		label.text = "Unlock %s Node" % task_data.node_name
 	elif task_data is MapUnlockTask:
+		icon.hide()
 		label.text = "Reach %s" % task_data.map_name
 	elif task_data is EnterFacilityMenuTask:
+		icon.hide()
 		label.text = "Enter the %s Menu" % task_data.facility_name
+	elif task_data is GeneralTask:
+		icon.hide()
+		label.text = task_data.task_description
 
 
 func play_sfx(sound: AudioStream, volume: float = 0.0):
