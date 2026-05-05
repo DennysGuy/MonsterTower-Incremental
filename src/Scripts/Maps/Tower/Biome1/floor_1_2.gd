@@ -30,6 +30,7 @@ func _ready() -> void:
 		else:
 			SignalBus.update_monsters_left.emit("Campfires Discovered: %s/%s" % [tower_entrance_data.camp_fires_reached, tower_entrance_data.total_camp_fires],false)
 	
+	QuestManager.check_map_name.emit(map_name)
 	SignalBus.update_banner_info.emit(tower_entrance_data)
 	PlayerHudSignalBus.update_player_health.emit()
 	PlayerHudSignalBus.update_player_mp.emit()

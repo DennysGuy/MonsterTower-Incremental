@@ -191,8 +191,10 @@ func remove_resources_from_inventory(recipe_list : Array[Dictionary]) -> void:
 			while remaining > 0:
 				if remove_item(resource.get_inventory_name(), resource):
 					remaining -= 1
+					QuestManager.decrement_task_item_gather_count.emit(resource)
 				elif remove_item("Bank", resource):
 					remaining -= 1
+					QuestManager.decrement_task_item_gather_count.emit(resource)
 				else:
 					break
 

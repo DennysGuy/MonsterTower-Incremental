@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="Quest" format=3 uid="uid://bitrcpfq1fbrr"]
+
+[ext_resource type="Script" uid="uid://cu8drgivmhfn" path="res://src/Scripts/item.gd" id="1_w7am5"]
+[ext_resource type="Script" uid="uid://be6vh0qellkjq" path="res://src/Scripts/Questing/quest.gd" id="2_jk2nq"]
+[ext_resource type="Script" uid="uid://deyfft0rbfjgk" path="res://src/Scripts/Questing/Tasks/task.gd" id="3_xus8d"]
+[ext_resource type="Resource" uid="uid://24qudpkaf4x3" path="res://src/Resources/Quests/Intro/SideQuests/IntroductionQuests/TheHuntingBrave1/Tasks/Kill30MushiesTask.tres" id="4_xus8d"]
+[ext_resource type="Resource" uid="uid://hrlo5gdt3vij" path="res://src/Resources/Quests/Intro/SideQuests/IntroductionQuests/TheHuntingBrave1/Tasks/Kill30Bats.tres" id="5_8gde6"]
+
+[resource]
+script = ExtResource("2_jk2nq")
+quest_title = "The Hunting Brave 1"
+quest_id = 2
+quest_type = 1
+level_needed = 5
+description = "Warmonger Alaisha
+
+(Kill 30 Corrupted Mushies and 30 Batclopses)
+
+\"Listen here, Marine ~ er, Hunter. Reports show that ya'll are gettin' yer arses handed to ya - and the big man is coming down on me with a hammer. Let's try to work together and solve this dilemma together so we can return to hunky dory. 
+
+Kill Some of 'em pesky criters in the Tower for me. We'll start easy. Let's get 30 of 'em green and pink Mushie Guys and those One eye'd Bats. 
+
+I need widespread data, so the more who kills the better.
+
+Good Luck out there ya'll!\""
+turn_in_description = "Warmonger Alaisha
+
+\"I say, ya'll can put up a helluva fight! Our approach to them low level criter folk might have been a tad off.  I'll take some notes on this and head back to the drawing board. 
+
+Your job ain't over yet though, we'll progress a bit further in the tower and see what else we can muster up. 
+Good Luck!\""
+chapter_relation = "Introduction"
+quest_line = "Improving our Plan of Attack"
+tasks = Array[ExtResource("3_xus8d")]([ExtResource("4_xus8d"), ExtResource("5_8gde6")])
+currency_reward = 1000
+xp_reward = 300
+metadata/_custom_type_script = "uid://be6vh0qellkjq"

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Quest" format=3 uid="uid://brnfkjbomxvxb"]
+
+[ext_resource type="Script" uid="uid://cu8drgivmhfn" path="res://src/Scripts/item.gd" id="1_jd4k7"]
+[ext_resource type="Script" uid="uid://be6vh0qellkjq" path="res://src/Scripts/Questing/quest.gd" id="2_gtji7"]
+[ext_resource type="Script" uid="uid://deyfft0rbfjgk" path="res://src/Scripts/Questing/Tasks/task.gd" id="3_0rbgn"]
+[ext_resource type="Resource" uid="uid://d201ey8w8e47d" path="res://src/Resources/Quests/Intro/MainQuests/Introduction/2_Learning to Plunder/Tasks/EnterTheGrandMarketTask.tres" id="4_4qbt0"]
+[ext_resource type="Resource" uid="uid://hfb5s3nqsbks" path="res://src/Resources/Quests/Intro/MainQuests/Introduction/2_Learning to Plunder/Tasks/UnlockAttack1NodeTask.tres" id="5_71jhi"]
+[ext_resource type="Resource" uid="uid://b2jr8msmsb5ec" path="res://src/Resources/Quests/Intro/MainQuests/Introduction/2_Learning to Plunder/Tasks/OneMoreRunTask.tres" id="6_6vnab"]
+[ext_resource type="Resource" uid="uid://cpe4ns0pklxu6" path="res://src/Resources/Quests/Intro/MainQuests/Introduction/2_Learning to Plunder/Tasks/ReachLevel2Task.tres" id="7_2jvsu"]
+
+[resource]
+script = ExtResource("2_gtji7")
+quest_title = "Learning to Plunder"
+quest_id = 8
+status = 1
+chapter_relation = "Introduction"
+next_quest = "Getting Stronger"
+tasks = Array[ExtResource("3_0rbgn")]([ExtResource("4_4qbt0"), ExtResource("5_71jhi"), ExtResource("6_6vnab"), ExtResource("7_2jvsu")])
+metadata/_custom_type_script = "uid://be6vh0qellkjq"

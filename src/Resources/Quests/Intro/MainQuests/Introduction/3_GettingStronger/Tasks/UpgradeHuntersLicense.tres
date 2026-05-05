@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="GeneralTask" format=3 uid="uid://bsgr7xt2att7o"]
+
+[ext_resource type="Script" uid="uid://chhllu0ouv7r6" path="res://src/Scripts/Questing/Tasks/general_task.gd" id="1_5p22s"]
+
+[resource]
+script = ExtResource("1_5p22s")
+task_name = "Upgrade Hunter License"
+task_description = "Upgrade Hunter License Once"
+task_id = 32
+parent_quest = "Getting Stronger"
+metadata/_custom_type_script = "uid://chhllu0ouv7r6"

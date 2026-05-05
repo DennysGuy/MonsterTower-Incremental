@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="GeneralTask" format=3 uid="uid://kuivfdxgtp7h"]
+
+[ext_resource type="Script" uid="uid://chhllu0ouv7r6" path="res://src/Scripts/Questing/Tasks/general_task.gd" id="1_ptjhq"]
+
+[resource]
+script = ExtResource("1_ptjhq")
+task_name = "Unlock All Base Abilities"
+task_description = "Unlock All Base Abilities"
+task_id = 37
+parent_quest = "Finding a Profession"
+metadata/_custom_type_script = "uid://chhllu0ouv7r6"

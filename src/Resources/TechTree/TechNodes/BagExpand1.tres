@@ -8,8 +8,9 @@ script = ExtResource("2_fd5oi")
 node_name = "Item Bag 1"
 icon = ExtResource("1_85ix1")
 description = "Expands Bag slots to 8
-"
-currency_required = 800
+
+[color=green]Shows Cooking and Refinery Station Nodes [/color]"
+currency_required = 600
 stat_name = "Bag"
 upgrade_interval = 1.0
 prereqs = Array[String](["Deeper Pockets 1:1"])

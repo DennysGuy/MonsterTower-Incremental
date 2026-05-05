@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="GeneralTask" format=3 uid="uid://bmrciuedihsk8"]
+
+[ext_resource type="Script" uid="uid://chhllu0ouv7r6" path="res://src/Scripts/Questing/Tasks/general_task.gd" id="1_oftaa"]
+
+[resource]
+script = ExtResource("1_oftaa")
+task_name = "Find the Door Switch"
+task_description = "Find the Door Switch"
+task_id = 42
+metadata/_custom_type_script = "uid://chhllu0ouv7r6"

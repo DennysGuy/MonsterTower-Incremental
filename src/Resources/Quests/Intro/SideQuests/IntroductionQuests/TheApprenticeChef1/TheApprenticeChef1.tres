@@ -1,0 +1,47 @@
+[gd_resource type="Resource" script_class="Quest" format=3 uid="uid://dbwmsoo2ddsgd"]
+
+[ext_resource type="Script" uid="uid://cu8drgivmhfn" path="res://src/Scripts/item.gd" id="1_lhq2l"]
+[ext_resource type="Script" uid="uid://be6vh0qellkjq" path="res://src/Scripts/Questing/quest.gd" id="2_tsf1b"]
+[ext_resource type="Resource" uid="uid://boeryxspsw8uq" path="res://src/Resources/Dishes/CookedGagootz.tres" id="2_wopt0"]
+[ext_resource type="Script" uid="uid://deyfft0rbfjgk" path="res://src/Scripts/Questing/Tasks/task.gd" id="3_j7deo"]
+[ext_resource type="Resource" uid="uid://ctjyflf6qr4g" path="res://src/Resources/Dishes/MossyGoulash.tres" id="3_qgavg"]
+[ext_resource type="Resource" uid="uid://c0si4wymq1ji6" path="res://src/Resources/Quests/Intro/SideQuests/IntroductionQuests/TheApprenticeChef1/Tasks/Gather10Gagootz.tres" id="4_j7deo"]
+[ext_resource type="Resource" uid="uid://dr74wwc4p1ohp" path="res://src/Resources/Quests/Intro/SideQuests/IntroductionQuests/TheApprenticeChef1/Tasks/Gather10Goulash.tres" id="5_yupbl"]
+
+[resource]
+script = ExtResource("2_tsf1b")
+quest_title = "The Apprentice Chef 1"
+quest_id = 3
+quest_type = 1
+level_needed = 5
+description = "Master Chef Cook Nadene
+
+(Gather 10 Fried Gagootz and 10 Mossy Goulash)
+
+\"Wowwyyy.. out of all my years as a Master Chef Cook I've never dreamed of the mystical ingredients supplied
+by that Tower. 
+
+The Average person might only see novelty, but us cooks see a playground for endless possibilities.
+
+The Hunter's Committee hired me to oversee the rationing department, but I'm curious with what the human imagination could conjure with ingredients extracted straight from the Monsters.
+
+I am busy with solving this major rationing problem for the committee, so I am looking for an assistant to help me with this passion project. 
+
+The first person to bring me 10 cooked Gagootz and 10 Mossy Goulash will have proven to me that they are worthy of becoming my apprentice!\""
+turn_in_description = "Master Chef Cook Nadene
+
+\"Well look at you, consider me impressed. Your resourcefulness and cooking skill has officially convinced me that you will be a powerful asset for my dream .
+
+We're not going to just make a fortune, but we are on the cusp of revolutionizing an entire Industry!
+
+Keep some of your turn in, it might help you get a bit further up the Tower.\""
+chapter_relation = "Introduction"
+quest_line = "Inovating the Cooking Industry"
+tasks = Array[ExtResource("3_j7deo")]([ExtResource("4_j7deo"), ExtResource("5_yupbl")])
+currency_reward = 1200
+xp_reward = 500
+item_reward = Dictionary[ExtResource("1_lhq2l"), int]({
+ExtResource("2_wopt0"): 10,
+ExtResource("3_qgavg"): 10
+})
+metadata/_custom_type_script = "uid://be6vh0qellkjq"

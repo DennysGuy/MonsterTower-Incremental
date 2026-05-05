@@ -1,0 +1,46 @@
+[gd_resource type="Resource" script_class="Quest" format=3 uid="uid://bpe3ga44k8076"]
+
+[ext_resource type="Script" uid="uid://cu8drgivmhfn" path="res://src/Scripts/item.gd" id="1_p25gr"]
+[ext_resource type="Resource" uid="uid://y4kiqe4pi2v5" path="res://src/Resources/CraftingResources/IronBar.tres" id="2_7slj2"]
+[ext_resource type="Script" uid="uid://be6vh0qellkjq" path="res://src/Scripts/Questing/quest.gd" id="3_7sppe"]
+[ext_resource type="Script" uid="uid://deyfft0rbfjgk" path="res://src/Scripts/Questing/Tasks/task.gd" id="4_eht0u"]
+[ext_resource type="Resource" uid="uid://ct5tfbfuhnnp0" path="res://src/Resources/Quests/Intro/SideQuests/IntroductionQuests/SuppliesForOurComrades1/Tasks/Gather10BronzeBars.tres" id="5_8ulna"]
+[ext_resource type="Resource" uid="uid://dfnb6mbyog8uu" path="res://src/Resources/Quests/Intro/SideQuests/IntroductionQuests/SuppliesForOurComrades1/Tasks/Gather10BatclopseClaws.tres" id="6_i5ivb"]
+[ext_resource type="Resource" uid="uid://cd7fixjybwy6d" path="res://src/Resources/Quests/Intro/SideQuests/IntroductionQuests/SuppliesForOurComrades1/Tasks/Gather10MushieFiber.tres" id="7_i0au1"]
+[ext_resource type="Resource" uid="uid://tjyqd8jmyqak" path="res://src/Resources/Quests/Intro/SideQuests/IntroductionQuests/SuppliesForOurComrades1/Tasks/Gather10ShrubMasks.tres" id="8_i6xyh"]
+
+[resource]
+script = ExtResource("3_7sppe")
+quest_title = "Supplies For Our Comrades 1"
+quest_id = 4
+quest_type = 1
+level_needed = 5
+description = "Weapons Tech Engineer Crop Duster
+
+(Gather 10 Bronze Bars, 10 Batclopse Claws, 10 Mushie Stalks, 10 Shrub Masks)
+
+\"Hey Duster here, 
+
+The Hunters Committee has contracted me to help maintain the stock pile of hunter weapons. They say we're running low as more and more of our stock pile disappears within the tower along with slain hunters. 
+
+I'm looking for those willing to lend a helping hand and deliver some base resources to get our aresenal going again. 
+
+Oh yeah, this job is a bit of a duezy. Don't worry, the Committee will compensate you well for your efforts.
+
+Thanks in advance.\""
+turn_in_description = "Weapons Tech Engineer Crop Duster
+
+\"This will do. Don't worry about crafting the resources, I'll take care of that. Just keep your nose to the grindstone and get up that tower.
+
+I'll issue your next assignment shortly.
+
+Thanks again.\""
+chapter_relation = "Introduction"
+quest_line = "Gearing up for the Raid"
+tasks = Array[ExtResource("4_eht0u")]([ExtResource("5_8ulna"), ExtResource("6_i5ivb"), ExtResource("7_i0au1"), ExtResource("8_i6xyh")])
+currency_reward = 2500
+xp_reward = 900
+item_reward = Dictionary[ExtResource("1_p25gr"), int]({
+ExtResource("2_7slj2"): 5
+})
+metadata/_custom_type_script = "uid://be6vh0qellkjq"

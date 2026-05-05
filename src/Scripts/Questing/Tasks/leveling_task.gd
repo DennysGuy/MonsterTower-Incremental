@@ -2,11 +2,9 @@ class_name LevelingTask extends Task
 
 @export var level_needed : int
 
-func _init() -> void:
-	QuestManager.check_level.connect(check_level)
 
-func check_level(level : int) -> void:
-	if PlayerStats.player_stats["Level"] == level:
+func check_level() -> void:
+	if PlayerStats.player_stats["Level"] == level_needed:
 		completed = true
 		QuestManager.play_task_completion_animation.emit(task_id,true)
 		SaveManager.save_task_completed_status(task_id, completed)

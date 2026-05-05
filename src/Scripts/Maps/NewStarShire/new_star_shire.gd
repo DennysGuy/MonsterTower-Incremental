@@ -75,13 +75,19 @@ func _ready() -> void:
 	#hud.open_tower_map_button.show()
 
 	await get_tree().process_frame
+	GameManager.event_speed_mod = 2.5
 	PlayerHudSignalBus.update_map_name_label.emit(map_name)
 	PlayerHudSignalBus.update_player_health.emit()
 	PlayerStats.player_stats["Current MP"] = PlayerStats.player_stats["Max MP"] + PlayerStats.get_current_sword().max_mp_bonus + PlayerStats.get_total_gem_bonus("Max MP Bonus")
 	PlayerHudSignalBus.update_player_mp.emit()
 	SaveManager.save_player_stats()
+	QuestManager.check_map_name.emit(map_name)
+	
 	if PlayerStats.player_stats["Level"] == 2 and PlayerStats.player_stats["Ability Points"] == 1:
 		ability_station_notice()
+
+func _exit_tree() -> void:
+	GameManager.event_speed_mod = 1.0
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -481,3 +487,8 @@ func sell_novelty_items() -> void:
 		notification_label.position = grand_market_area.position
 		add_child(notification_label)
 		sfx_player.play_sfx(NOVELTY_ITEMS_SALE)
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body is Player:
+		Dialogic.start('uid://buaw4ymemp3ln')

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="MapUnlockTask" format=3 uid="uid://fu6tj4wsly8v"]
+
+[ext_resource type="Script" uid="uid://jcmtcld3k3ka" path="res://src/Scripts/Questing/Tasks/map_unlock_task.gd" id="1_rqk24"]
+
+[resource]
+script = ExtResource("1_rqk24")
+map_name = "Floor 1-1"
+task_id = 23
+parent_quest = "A Fresh Embarking"
+task_type = 4
+metadata/_custom_type_script = "uid://jcmtcld3k3ka"

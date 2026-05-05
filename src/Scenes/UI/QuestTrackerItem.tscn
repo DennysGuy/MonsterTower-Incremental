@@ -10,10 +10,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -327.0
-offset_top = -32.25
-offset_right = 150.0
-offset_bottom = 205.0
+offset_left = -269.0
+offset_top = -118.625
+offset_right = 281.0
+offset_bottom = 118.625
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_oio6f")
@@ -21,11 +21,16 @@ quest_data = ExtResource("2_4i7lb")
 checklist = NodePath("PanelContainer/VBoxContainer/MarginContainer/Checklist")
 quest_title = NodePath("PanelContainer/VBoxContainer/QuestTitle")
 
-[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1069636143]
+[node name="PanelContainer" type="Control" parent="." unique_id=610836170]
+self_modulate = Color(1, 1, 1, 0.48235294)
+custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=311012850]
-layout_mode = 2
+layout_mode = 0
+offset_left = -177.0
+offset_right = 373.0
+offset_bottom = 237.0
 theme_override_constants/separation = 1
 
 [node name="QuestTitle" type="RichTextLabel" parent="PanelContainer/VBoxContainer" unique_id=1215813679]
@@ -37,10 +42,9 @@ theme_override_constants/shadow_outline_size = 4
 theme_override_constants/outline_size = 0
 theme_override_constants/table_v_separation = 3
 theme_override_fonts/normal_font = ExtResource("1_umesl")
-theme_override_font_sizes/normal_font_size = 22
+theme_override_font_sizes/normal_font_size = 19
 bbcode_enabled = true
 text = "[color=yellow]Newcomer's List[/color]"
-horizontal_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer" unique_id=907432401]
 layout_mode = 2
@@ -48,4 +52,4 @@ theme_override_constants/margin_left = 29
 
 [node name="Checklist" type="VBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer" unique_id=1252535657]
 layout_mode = 2
-theme_override_constants/separation = 10
+theme_override_constants/separation = 25

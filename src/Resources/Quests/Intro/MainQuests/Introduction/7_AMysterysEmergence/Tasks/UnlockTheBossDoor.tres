@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="GeneralTask" format=3 uid="uid://2qkd72nnejij"]
+
+[ext_resource type="Script" uid="uid://chhllu0ouv7r6" path="res://src/Scripts/Questing/Tasks/general_task.gd" id="1_2ivov"]
+
+[resource]
+script = ExtResource("1_2ivov")
+task_name = "Unlock Boss Door"
+task_description = "Unlock the Big Door"
+task_id = 43
+metadata/_custom_type_script = "uid://chhllu0ouv7r6"

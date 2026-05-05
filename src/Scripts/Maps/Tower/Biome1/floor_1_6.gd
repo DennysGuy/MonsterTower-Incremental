@@ -58,7 +58,7 @@ func _ready() -> void:
 		destroy_door_locks()
 	
 	await get_tree().process_frame
-	
+	QuestManager.check_map_name.emit(map_name)
 	PlayerHudSignalBus.update_map_name_label.emit(map_name)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -96,6 +96,8 @@ func unlock_door() -> void:
 	SignalBus.shake_camera.emit(5.0)
 	await get_tree().create_timer(3.0).timeout
 	PlayerHudSignalBus.issue_big_notification.emit("The Boss Door Has been Unlocked!")
+	await get_tree().create_timer(3.0).timeout
+	QuestManager.check_general_task_for_completion.emit("Unlock Boss Door")
 	GameManager.player_can_move = true
 
 func start_challenge() -> void:
@@ -190,6 +192,7 @@ func show_activation_lever() -> void:
 	play_sfx(RETRO_MAGIC_11)
 	activation_switch.show()
 	await get_tree().create_timer(2.0).timeout
+	QuestManager.check_general_task_for_completion.emit("Find the Door Switch")
 	camera.player = player
 	GameManager.player_can_move = true
 

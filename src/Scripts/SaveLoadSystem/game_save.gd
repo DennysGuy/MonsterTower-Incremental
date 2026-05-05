@@ -19,6 +19,7 @@ TODO: We will add saves for classes as well
 	"Level" : 1,
 	"Needed XP": 100,
 	"Current XP" : 0,
+	"Max Jobs Held": 3,
 	"Highest Floor": 0,
 	"Ability Points": 0,
 	"Class": "Junior Hunter",
@@ -466,7 +467,7 @@ TODO: We will add saves for classes as well
 }
 
 @export var active_quests : Dictionary = {
-	"Main" : ["Shrubby's Hunt"],
+	"Main" : ["A Fresh Embarking"],
 	"Job" : []
 }
 
@@ -474,10 +475,82 @@ TODO: We will add saves for classes as well
 	0: {
 		#Test Main quest 1
 		"Status" : 0,
+		"Turned In": false
 	},
 	1: {
 		#Test Main quest 2
-		"Status": 0
+		"Status": 0,
+		"Turned In": false
+	},
+	2: {
+		#The Hunting Brave 1
+		"Status": 0,
+		"Turned In": false
+	},
+	3: {
+		#The Apprentice Chef 1
+		"Status": 0,
+		"Turned In": false
+	},
+	4:{
+		#Supplies for Our Comrades 1
+		"Status": 0,
+		"Turned In": false
+	},
+	5:{
+		#The True Nature of the Tower 1
+		"Status": 0,
+		"Turned In": false
+	},
+	6:{
+		#Avant Garde Alt. Medicine 1
+		"Status": 0,
+		"Turned In": false
+	},
+	7:{
+		#A Fresh Embarking - Main Quest 1
+		"Status": 1,
+		"Turned In": false
+	},
+	8:{
+		#Learning to Plunder - Main Quest 2
+		"Status": 1,
+		"Turned In": false
+	},
+	9:{
+		#Getting Stronger
+		"Status": 1,
+		"Turned In": false
+	},
+	10:{
+		#Tip of the Iceberg
+		"Status": 1,
+		"Turned In": false
+	},
+	11:{
+		#Finding a Profession
+		"Status": 1,
+		"Turned In": false
+	},
+	12:{
+		#Getting through the Dungeon
+		"Status": 1,
+		"Turned In": false
+	},
+	13:{
+		#The Thick of it
+		"Status": 1,
+		"Turned In": false
+	},
+	14:{
+		#Mystery's Emergence
+		"Status": 1,
+		"Turned In": false
+	},
+	15:{
+		#Awakening the Entity
+		"Status": 1,
+		"Turned In": false
 	}
 }
 
@@ -513,5 +586,155 @@ TODO: We will add saves for classes as well
 	6: {
 		#bat wing gather
 		"Completed": false
-	}
+	},
+	7: {
+		#30 Mushies Hunt
+		"Current Count":0,
+		"Completed": false
+	},
+	8:{
+		#30 Batclopse Hunt
+		"Current Count":0,
+		"Completed": false
+	},
+	9:{
+		#Gather 10 Gagootz
+		"Completed": false
+	},
+	10:{
+		#Gather 10 Mossy Goulash
+		"Completed": false
+	},
+	11:{
+		#Gather 10 Bronze Bars
+		"Completed": false
+	},
+	12:{
+		#Gather 10 Batclopse Claws
+		"Completed": false
+	},
+	13:{
+		#Gather 10 Mushie Fibers
+		"Completed": false
+	},
+	14:{
+		#Gather 10 Masks
+		"Completed": false
+	},
+	15:{
+		#Gather 25 Bat Wings
+		"Completed": false
+	},
+	16: {
+		#Gather 15 Bat Claws
+		"Completed": false
+	},
+	17:{
+		#Gather 20 Beetle Eyes
+		"Completed": false
+	},
+	18:{
+		#Gather 10 Beetle Claws
+		"Completed": false
+	},
+	19:{
+		#Gather 15 Beetle Shells
+		"Completed": false
+	},
+	20:{
+		#Gather 20 Purified Mushie Core
+		"Completed": false
+	},
+	21:{
+		#Gather 10 Serpant Tongues
+		"Completed": false
+	},
+	22: {
+		#Unlock Tower License
+		"Completed": false
+	},
+	23: {
+		#Enter the Tower
+		"Completed": false
+	},
+	24: {
+		#Enter Starspire
+		"Completed": false
+	},
+	25: {
+		#Enter the Grandmarket
+		"Completed": false
+	},
+	26: {
+		#Unlock attack 1 Node
+		"Completed": false
+	},
+	27:{
+		#One more run task
+		"Completed": false
+	},
+	28:{
+		#Reach Level 2 Task
+		"Completed": false
+	},
+	29:{
+		#Unlock Aerial Slash Node
+		"Completed": false
+	},
+	30:{
+		#Reach Floor 1-2
+		"Completed": false
+	},
+	31:{
+		#Upgrade Sword Once
+		"Completed": false
+	},
+	32:{
+		#Upgrade Hunters License Once
+		"Completed": false
+	},
+	33:{
+		#Unlock Cooking Station
+		"Completed": false
+	},
+	34:{
+		#Unlock Refinery Station
+		"Completed": false
+	},
+	35:{
+		#Reach Floor 1-3
+		"Completed": false
+	},
+	36:{
+		#Turn in a Job Request
+		"Completed": false
+	},
+	37:{
+		#Unlock All Base Abilities
+		"Completed": false
+	},
+	38:{
+		#Reach Level 8
+		"Completed": false
+	},
+	39:{
+		#Select a Class
+		"Completed": false
+	},
+	40:{
+		#Reach Floor 1-5
+		"Completed": false
+	},
+	41:{
+		#Reach Floor 1-6
+		"Completed": false
+	},
+	42:{
+		#Find the Door Activation Switch
+		"Completed": false
+	},
+	43:{
+		#Unlock the Boss Door
+		"Completed": false
+	},
 }

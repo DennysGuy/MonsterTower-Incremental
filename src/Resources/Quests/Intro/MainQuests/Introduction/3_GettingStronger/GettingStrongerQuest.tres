@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Quest" format=3 uid="uid://cp644y2y5gtor"]
+
+[ext_resource type="Script" uid="uid://cu8drgivmhfn" path="res://src/Scripts/item.gd" id="1_88usb"]
+[ext_resource type="Script" uid="uid://be6vh0qellkjq" path="res://src/Scripts/Questing/quest.gd" id="2_1fj8a"]
+[ext_resource type="Script" uid="uid://deyfft0rbfjgk" path="res://src/Scripts/Questing/Tasks/task.gd" id="3_al6ca"]
+[ext_resource type="Resource" uid="uid://buto2bngjh1j5" path="res://src/Resources/Quests/Intro/MainQuests/Introduction/3_GettingStronger/Tasks/UnlockAerialSlash.tres" id="4_jies4"]
+[ext_resource type="Resource" uid="uid://b3gqpd23wxd5y" path="res://src/Resources/Quests/Intro/MainQuests/Introduction/3_GettingStronger/Tasks/EnterFloor1-2.tres" id="5_f8iwj"]
+[ext_resource type="Resource" uid="uid://c25l0nv4rfpb2" path="res://src/Resources/Quests/Intro/MainQuests/Introduction/3_GettingStronger/Tasks/UpgradeSword.tres" id="6_mqryl"]
+[ext_resource type="Resource" uid="uid://bsgr7xt2att7o" path="res://src/Resources/Quests/Intro/MainQuests/Introduction/3_GettingStronger/Tasks/UpgradeHuntersLicense.tres" id="7_kvq5x"]
+
+[resource]
+script = ExtResource("2_1fj8a")
+quest_title = "Getting Stronger"
+quest_id = 9
+next_quest = "Tip of the Iceberg"
+tasks = Array[ExtResource("3_al6ca")]([ExtResource("4_jies4"), ExtResource("5_f8iwj"), ExtResource("6_mqryl"), ExtResource("7_kvq5x")])
+metadata/_custom_type_script = "uid://be6vh0qellkjq"

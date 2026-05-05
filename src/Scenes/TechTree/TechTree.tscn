@@ -193,7 +193,7 @@ position = Vector2(714, 450)
 tech_node_stats = ExtResource("11_4a6it")
 
 [node name="Line2D" type="Line2D" parent="Nodes/HP1Node" unique_id=293012557]
-points = PackedVector2Array(-11, -9, -68, -81)
+points = PackedVector2Array(-19, -24, -59, -74)
 width = 6.0
 
 [node name="Defense1Node" parent="Nodes" unique_id=394331916 instance=ExtResource("5_2ltmf")]
@@ -699,9 +699,9 @@ script = ExtResource("9_wj3rp")
 
 [node name="Label" type="Label" parent="." unique_id=1948156559]
 offset_left = 430.0
-offset_top = 394.0
+offset_top = 374.0
 offset_right = 516.0
-offset_bottom = 410.0
+offset_bottom = 390.0
 theme_override_colors/font_color = Color(0.5884941, 0.39983425, 0.23455968, 1)
 theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("13_uk0x3")

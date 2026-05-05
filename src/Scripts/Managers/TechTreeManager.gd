@@ -165,6 +165,7 @@ func increment_upgrade_count() -> void:
 	update_prestige_tier_progress_label.emit()
 	
 	if current_upgrade_count >= upgrade_count_to_prestige:
+		QuestManager.check_general_task_for_completion.emit("Upgrade Hunter License")
 		current_prestige += 1
 		PlayerStats.player_stats["Expedition Time"] += 30
 		upgrade_count_to_prestige += 15

@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="Quest" format=3 uid="uid://dhd0m6uxot38q"]
+
+[ext_resource type="Script" uid="uid://cu8drgivmhfn" path="res://src/Scripts/item.gd" id="1_hnvg2"]
+[ext_resource type="Resource" uid="uid://ctjyflf6qr4g" path="res://src/Resources/Dishes/MossyGoulash.tres" id="2_3mdpa"]
+[ext_resource type="Script" uid="uid://be6vh0qellkjq" path="res://src/Scripts/Questing/quest.gd" id="2_qsoro"]
+[ext_resource type="Resource" uid="uid://dmmblpt46r1fs" path="res://src/Resources/Dishes/PupilCaviar.tres" id="3_1phnn"]
+[ext_resource type="Script" uid="uid://deyfft0rbfjgk" path="res://src/Scripts/Questing/Tasks/task.gd" id="3_3mdpa"]
+[ext_resource type="Resource" uid="uid://cgme05e6spg06" path="res://src/Resources/Quests/Intro/SideQuests/IntroductionQuests/TheTrueNatureOfTheTower1/Tasks/Gather25BatWings.tres" id="6_te3xl"]
+[ext_resource type="Resource" uid="uid://bwv8lyqh25ay1" path="res://src/Resources/Quests/Intro/SideQuests/IntroductionQuests/TheTrueNatureOfTheTower1/Tasks/Gather15BatClaws.tres" id="7_k18ed"]
+[ext_resource type="Resource" uid="uid://d3dmtbf67hxdh" path="res://src/Resources/Quests/Intro/SideQuests/IntroductionQuests/TheTrueNatureOfTheTower1/Tasks/Gather20BeetleEyes.tres" id="8_u3h7r"]
+[ext_resource type="Resource" uid="uid://dcg285reh705e" path="res://src/Resources/Quests/Intro/SideQuests/IntroductionQuests/TheTrueNatureOfTheTower1/Tasks/Gather10BeetleClaws.tres" id="9_ud7nj"]
+
+[resource]
+script = ExtResource("2_qsoro")
+quest_title = "The True Nature of the Tower 1"
+quest_id = 5
+quest_type = 1
+level_needed = 5
+description = "Biologist Marquise
+(Gather 25 Batclopse Wings, 15 Batclopse Claws, 20 Beetle Eyes, 10 Beetle Claws)
+
+\" Through all my years of studying the biology of Natural entities, I have not seen anything like this. Logically, it makes sense. The Tower seemingly appeared out of no where with properties unknown to man. But still, my brain has issues accepting what is true.
+
+This Tower, like most, I am extremely fascinated with it. The appearance of the tower is an enigma - but it's true nature, it eludes me. The people seem to look at it without question. Sure, they comment on its bizarre nature, but that is where the questioning stops. 
+
+I am curious with what we are truly dealing with, and I think the answer starts with studying the biology of the monsters within the tower.. It feels like a tragedy to only treat the tower as a commodity - for profit. 
+
+What is truly there..  
+
+Please, help me uncover this mystery.\""
+turn_in_description = "Biologist Marquise
+
+\"I see, thank you for your assistance. My team will bring these component to lab for us to run experiments.. These creatures.. what are they? What is the tower? They are made of nothing Humanity has ever seen before..
+
+Please standby for the next request. We will uncover this mystery one request at a time.\""
+chapter_relation = "Introduction"
+quest_line = "The True Nature of the Tower"
+tasks = Array[ExtResource("3_3mdpa")]([ExtResource("6_te3xl"), ExtResource("7_k18ed"), ExtResource("8_u3h7r"), ExtResource("9_ud7nj")])
+currency_reward = 2000
+xp_reward = 650
+item_reward = Dictionary[ExtResource("1_hnvg2"), int]({
+ExtResource("2_3mdpa"): 10,
+ExtResource("3_1phnn"): 10
+})
+metadata/_custom_type_script = "uid://be6vh0qellkjq"

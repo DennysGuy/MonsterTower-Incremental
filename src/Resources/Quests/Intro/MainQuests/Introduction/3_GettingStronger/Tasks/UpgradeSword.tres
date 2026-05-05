@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="GeneralTask" format=3 uid="uid://c25l0nv4rfpb2"]
+
+[ext_resource type="Script" uid="uid://chhllu0ouv7r6" path="res://src/Scripts/Questing/Tasks/general_task.gd" id="1_urg8s"]
+
+[resource]
+script = ExtResource("1_urg8s")
+task_name = "Upgrade Sword"
+task_description = "Upgrade your sword once"
+task_id = 31
+parent_quest = "Getting Stronger"
+metadata/_custom_type_script = "uid://chhllu0ouv7r6"

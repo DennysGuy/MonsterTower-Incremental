@@ -31,13 +31,24 @@ signal populate_job_board_description_box(quest : Quest)
 @warning_ignore("unused_signal")
 signal initialize_job_quests
 @warning_ignore("unused_signal")
+signal check_general_task_for_completion(task_name : String)
+@warning_ignore("unused_signal")
 signal undo_quest_turn_in(quest_title : String)
+@warning_ignore("unused_signal")
+signal check_node_name(selected_node_name : String)
+@warning_ignore("unused_signal")
+signal show_quest_complete_notice
 
 @onready var quests : Dictionary = {
 	"Main": {
 		"Introduction" : {
-			"Shrubby's Hunt": preload("uid://56sc8x8gyyjy"),
-			"The Mossy Womp": preload("uid://dra6tmjefibdy")
+			"A Fresh Embarking": preload("uid://c1xfvarhbakj7"),
+			"Learning to Plunder": preload("uid://brnfkjbomxvxb"),
+			"Getting Stronger": preload("uid://cp644y2y5gtor"),
+			"Tip of the Iceberg": preload("uid://btd64g4acx31t"),
+			"Finding a Profession": preload("uid://b2up70wcso64o"),
+			"The Thick of It": preload("uid://iueqjhobrsol"),
+			"A Mystery's Emergence": preload("uid://dp0x7ac3p4mkr")
 		},
 		"Spring" : {
 			
@@ -51,8 +62,11 @@ signal undo_quest_turn_in(quest_title : String)
 	},
 	"Job": {
 		"Introduction" : {
-			"Shrubby's Hunt": preload("uid://56sc8x8gyyjy"),
-			"The Mossy Womp": preload("uid://dra6tmjefibdy")
+			"The Hunting Brave 1": preload("uid://bitrcpfq1fbrr"),
+			"The Apprentice Chef 1": preload("uid://dbwmsoo2ddsgd"),
+			"Supplies For Our Comrades 1": preload("uid://bpe3ga44k8076"),
+			"The True Nature of the Tower 1": preload("uid://dhd0m6uxot38q"),
+			"Avant Garde Alt. Medicine 1":preload("uid://1iraf0ury1mv")
 		},
 		"Spring" : {
 			
@@ -68,9 +82,11 @@ signal undo_quest_turn_in(quest_title : String)
 
 @onready var active_quests : Dictionary = {
 	"Main" : [
-		"Shrubby's Hunt"
+		"A Fresh Embarking"
 	],
-	"Job" : []
+	"Job" : [
+		
+	]
 }
 
 
@@ -113,12 +129,7 @@ func remove_quest_from_active(quest : Quest, to_complete : bool) -> void:
 	else:
 		quest.set_as_available()
 	
-	if list.size() == 1:
-		list.remove_at(0)
-	else:
-		for i in range(list.size()-1):
-			if list[i] == quest.quest_title:
-				list.remove_at(i)
+	list.erase(quest.quest_title)
 		
 	SaveManager.save_active_quests()
 
@@ -142,7 +153,7 @@ func load_all_quest_status() -> void:
 					loaded_quest.load_quest_status()
 	
 	for chapter in chapters:
-		for quest in job_quests:
+		for quest in job_quests[chapter]:
 			if quest:
 				var loaded_quest : Quest = get_quest(quest)
 				if loaded_quest:
@@ -162,6 +173,7 @@ func activate_task(task : Task) -> void:
 		if !decrement_task_item_gather_count.connect(task.decrement_count):
 			decrement_task_item_gather_count.connect(task.decrement_count)
 		QuestManager.increment_task_item_gather_count.emit(task.item_to_gather)
+		
 	elif task is HuntingTask:
 		if !increment_task_enemy_kill_count.connect(task.increment_count):
 			increment_task_enemy_kill_count.connect(task.increment_count)
@@ -172,6 +184,24 @@ func activate_task(task : Task) -> void:
 	elif task is LevelingTask:
 		if !check_level.connect(task.check_level):
 			check_level.connect(task.check_level)
+		
+		task.check_level()
+	
+	elif task is NodeUnlockTask:
+		if !check_node_name.connect(task.check_node_name):
+			check_node_name.connect(task.check_node_name)
+	
+	elif task is MapUnlockTask:
+		if !check_map_name.connect(task.check_map_name):
+			check_map_name.connect(task.check_map_name)
+	
+	elif task is EnterFacilityMenuTask:
+		if !check_facility_name.connect(task.check_facility_name):
+			check_facility_name.connect(task.check_facility_name)
+
+	elif task is GeneralTask:
+		if !check_general_task_for_completion.connect(task.complete_general_task):
+			check_general_task_for_completion.connect(task.complete_general_task)
 	
 	task.completed = SaveManager.current_save_game.tasks[task.task_id]["Completed"]
 

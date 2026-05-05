@@ -11,7 +11,7 @@ const QUEST_COMPLETED = preload("uid://om1y244uqbs")
 func _ready() -> void:
 	QuestManager.check_for_quest_completion.connect(update_quest_completion)
 	QuestManager.undo_quest_turn_in.connect(undo_quest_completion)
-	quest_title.text = quest_data.quest_title
+	quest_title.text = "[color=mediumorchid]%s[/color]" % quest_data.quest_title
 	build_task_list()
 	if quest_data.is_job() and quest_data.is_ready_for_turn_in():
 		var completed_text : TaskListItem = preload("uid://cb5m6ynmba10o").instantiate()
@@ -32,6 +32,7 @@ func build_task_list() -> void:
 		task.parent_quest = quest_data.quest_title
 		var new_task : TaskListItem = task.build_task_list_item()
 		checklist.add_child(new_task)
+		#await get_tree().create_timer(0.5).timeout
 
 func clear_checklist() -> void:
 	for child in checklist.get_children():
@@ -40,7 +41,8 @@ func clear_checklist() -> void:
 func update_quest_completion(quest_name : String) -> void:
 	if !all_tasks_completed() or quest_name != quest_data.quest_title:
 		return
-	
+		
+	QuestManager.show_quest_complete_notice.emit()
 	play_sfx(QUEST_COMPLETED)
 	await get_tree().create_timer(1.5).timeout
 	if quest_data.is_main_quest():

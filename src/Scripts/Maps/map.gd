@@ -84,6 +84,7 @@ func _ready() -> void:
 		
 		spawn_player()
 		
+	
 		if camera:
 			camera.player = player
 		

@@ -9,8 +9,8 @@ node_name = "Cooking Station"
 icon = ExtResource("1_farkg")
 description = "[color=red]Cook fancy dishes, make profit, or spend on upgrades![/color]
 [color=green]Unveils Refinery Node![/color]"
-currency_required = 1200
+currency_required = 1000
 node_type = 1
 stat_name = "Cooking Station"
-prereqs = Array[String](["Banking:1"])
+prereqs = Array[String](["Item Bag 1:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

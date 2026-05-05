@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="MapUnlockTask" format=3 uid="uid://b3gqpd23wxd5y"]
+
+[ext_resource type="Script" uid="uid://jcmtcld3k3ka" path="res://src/Scripts/Questing/Tasks/map_unlock_task.gd" id="1_o0an8"]
+
+[resource]
+script = ExtResource("1_o0an8")
+map_name = "Floor 1-2"
+task_id = 30
+parent_quest = "Getting Stronger"
+metadata/_custom_type_script = "uid://jcmtcld3k3ka"

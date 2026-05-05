@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="NodeUnlockTask" format=3 uid="uid://buto2bngjh1j5"]
+
+[ext_resource type="Script" uid="uid://d4bl5pg2w0pp3" path="res://src/Scripts/Questing/Tasks/node_unlock_task.gd" id="1_poehg"]
+
+[resource]
+script = ExtResource("1_poehg")
+node_name = "Arial Slash"
+task_id = 29
+parent_quest = "Getting Stronger"
+task_type = 5
+metadata/_custom_type_script = "uid://d4bl5pg2w0pp3"

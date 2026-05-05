@@ -45,7 +45,7 @@ func _on_select_button_button_up() -> void:
 
 	SignalBus.set_icons.emit()
 	#SignalBus.play_warrior_unlock_animation.emit()
-	
+	QuestManager.check_general_task_for_completion.emit("Select Your Class")
 	GameManager.can_pause_game = true
 	GameManager.player_can_move = true
 	GameManager.can_open_bag = true

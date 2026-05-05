@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="MapUnlockTask" format=3 uid="uid://b62ck44x6hr61"]
+
+[ext_resource type="Script" uid="uid://jcmtcld3k3ka" path="res://src/Scripts/Questing/Tasks/map_unlock_task.gd" id="1_1qn3r"]
+
+[resource]
+script = ExtResource("1_1qn3r")
+map_name = "Floor 1-3"
+task_id = 35
+parent_quest = "Tip of the Iceberg"
+task_type = 4
+metadata/_custom_type_script = "uid://jcmtcld3k3ka"

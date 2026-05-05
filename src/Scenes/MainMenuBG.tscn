@@ -42,7 +42,7 @@ shader_parameter/wave_speed = 3.0
 environment = SubResource("Environment_pv54o")
 
 [node name="CSGBox3D" type="CSGMesh3D" parent="." unique_id=1200920201]
-transform = Transform3D(536.2594, 0, 0, 0, -0.029720828, -9.027753, 0, 0.0006137391, -437.17645, 0, 0.59887475, 0)
+transform = Transform3D(1271.2336, 0, 0, 0, -0.029270977, -17.352448, 0, 0.0006044496, -840.3067, 0, 0.59887475, 0)
 material_overlay = SubResource("ShaderMaterial_g4fjb")
 mesh = SubResource("BoxMesh_p3j80")
 

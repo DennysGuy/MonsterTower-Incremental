@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Quest" format=3 uid="uid://c1xfvarhbakj7"]
+
+[ext_resource type="Script" uid="uid://cu8drgivmhfn" path="res://src/Scripts/item.gd" id="1_t1bet"]
+[ext_resource type="Script" uid="uid://be6vh0qellkjq" path="res://src/Scripts/Questing/quest.gd" id="2_6vyqh"]
+[ext_resource type="Script" uid="uid://deyfft0rbfjgk" path="res://src/Scripts/Questing/Tasks/task.gd" id="3_3a50l"]
+[ext_resource type="Resource" uid="uid://cvg0d3e0v1oip" path="res://src/Resources/Quests/Intro/MainQuests/Introduction/1_AFreshEmbark/Tasks/UnlockHunterLicenseTask.tres" id="4_exp0v"]
+[ext_resource type="Resource" uid="uid://fu6tj4wsly8v" path="res://src/Resources/Quests/Intro/MainQuests/Introduction/1_AFreshEmbark/Tasks/EnterTheTower.tres" id="5_exp0v"]
+[ext_resource type="Resource" uid="uid://duoudtlde05xk" path="res://src/Resources/Quests/Intro/MainQuests/Introduction/1_AFreshEmbark/Tasks/EnterStarspire.tres" id="6_xyytm"]
+
+[resource]
+script = ExtResource("2_6vyqh")
+quest_title = "A Fresh Embarking"
+quest_id = 7
+status = 1
+chapter_relation = "Introduction"
+next_quest = "Learning to Plunder"
+tasks = Array[ExtResource("3_3a50l")]([ExtResource("4_exp0v"), ExtResource("5_exp0v"), ExtResource("6_xyytm")])
+metadata/_custom_type_script = "uid://be6vh0qellkjq"

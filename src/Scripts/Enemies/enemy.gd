@@ -130,3 +130,4 @@ func give_xp() -> void:
 	drop_scene.add_child(xp_label)
 	SaveManager.save_player_stats()
 	LevelingManager.check_for_level_up()
+	
