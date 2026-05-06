@@ -32,7 +32,10 @@ var outfit_graphics : Dictionary = {
 		"DoubleCleave": preload("uid://4vkwnouwrrvw"),
 		"SwordSoar": preload("uid://byycfcy4i7vap"),
 		"SwordSlam": preload("uid://c6outchyu637"),
-		"BasicAttackEffect": preload("uid://cn3s2uyi5i0pn")
+		"BasicAttackEffect": preload("uid://cn3s2uyi5i0pn"),
+		"Cyclone Slash": preload("uid://cwehmdaknb5ko"),
+		"Iron Body": preload("uid://s3c87yot2mlq"),
+		"Circle of Truth": preload("uid://crb6j81csruty")
 	}
 }
 

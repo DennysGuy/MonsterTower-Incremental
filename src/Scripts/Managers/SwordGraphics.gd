@@ -13,7 +13,10 @@ var sword_textures : Dictionary = {
 		"Climb":preload("uid://bxp4omipurasx"),
 		"SwordSoar": preload("uid://bju208fm34q1i"),
 		"SwordSlam": preload("uid://b7dgsrumi85gy"),
-		"DoubleCleave": preload("uid://ubudq3lg48pa")
+		"DoubleCleave": preload("uid://ubudq3lg48pa"),
+		"Cyclone Slash": preload("uid://c5b4p54lu8tqi"),
+		"Iron Body": preload("uid://cigmveocctl7m"),
+		"Circle of Truth" : preload("uid://dtcrlkchqxhe0")
 	},
 	"Shroom Fibre Blade" : {
 		"Idle": preload("uid://decldm83dahcq"),
@@ -27,7 +30,10 @@ var sword_textures : Dictionary = {
 		"Climb": preload("uid://bj3fqpa35cwsk"),
 		"SwordSoar": preload("uid://b2xek5bmcb4a"),
 		"SwordSlam": preload("uid://bb8i6gvwgqsjy"),
-		"DoubleCleave": preload("uid://cw87r1yvb8san")
+		"DoubleCleave": preload("uid://cw87r1yvb8san"),
+		"Cyclone Slash": preload("uid://dc1i7yvi7e0sm"),
+		"Iron Body": preload("uid://donx23cn8llnl"),
+		"Circle of Truth": preload("uid://bg0prb5vparob")
 	},
 	"Bronze Fang Blade" : {
 		"Idle": preload("uid://cnkd1sn66y2ev"),
@@ -41,7 +47,10 @@ var sword_textures : Dictionary = {
 		"Climb": preload("uid://djnmym5xlblfi"),
 		"SwordSoar": preload("uid://emq5do1fc44c"),
 		"SwordSlam":preload("uid://5h15bet6jee3"),
-		"DoubleCleave": preload("uid://bad3j5pey3k36")
+		"DoubleCleave": preload("uid://bad3j5pey3k36"),
+		"Cyclone Slash": preload("uid://cd4w1t36y4pyw"),
+		"Iron Body": preload("uid://ct5gcpqihh32b"),
+		"Circle of Truth": preload("uid://ctcincrx7yf48")
 	},
 	"Iron Broad Sword" : {
 		"Idle": preload("uid://dtvd0ax0xli76"),
@@ -55,7 +64,10 @@ var sword_textures : Dictionary = {
 		"Climb": preload("uid://bcknti7tfmpnc"),
 		"SwordSoar": preload("uid://j4del2xexl02"),
 		"SwordSlam": preload("uid://c46m5505v4ljd"),
-		"DoubleCleave": preload("uid://5ji20u66hw31")
+		"DoubleCleave": preload("uid://5ji20u66hw31"),
+		"Cyclone Slash": preload("uid://crgojonliiddi"),
+		"Iron Body": preload("uid://bjgbkqsoo5lu4"),
+		"Circle of Truth": preload("uid://wo2wr6ttll72")
 	},
 	"Lurker's Rapier" : {
 		"Idle": preload("uid://cm80d7fsbve4o"),
@@ -69,7 +81,10 @@ var sword_textures : Dictionary = {
 		"Climb": preload("uid://o2ww0tdqcypg"),
 		"SwordSoar": preload("uid://eowi25qc4fsw"),
 		"SwordSlam": preload("uid://h3wsuchgnm5a"),
-		"DoubleCleave": preload("uid://xken7iat8syv")
+		"DoubleCleave": preload("uid://xken7iat8syv"),
+		"Cyclone Slash": preload("uid://xnrb5s450pht"),
+		"Iron Body": preload("uid://cwef1ias3oj1y"),
+		"Circle of Truth": preload("uid://2by3rjpuopj1")
 	}
 }
 
