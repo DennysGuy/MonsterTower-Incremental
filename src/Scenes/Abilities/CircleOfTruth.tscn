@@ -29,9 +29,9 @@ script = ExtResource("1_26oi1")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=627419314]
 material = SubResource("ShaderMaterial_n6itv")
-offset_left = -139.0
+offset_left = -120.0
 offset_top = -7.0
-offset_right = 140.0
+offset_right = 119.0
 offset_bottom = 1.2260437
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1608637794]
