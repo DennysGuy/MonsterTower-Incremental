@@ -42,9 +42,6 @@ func process_physics(_delta: float) -> State:
 		parent.can_double_jump = false
 		return fall_state
 	
-	if Input.is_action_just_pressed("dash_attack") and PlayerStats.facilities_unlocked["Dash Attack"] and parent.can_issue_ability("Dash Attack") and GameManager.can_issue_abilities:
-		return dash_attack_state
-		
 	if !GameManager.player_can_move:
 		parent.move_and_slide()
 		return null
@@ -58,8 +55,21 @@ func process_physics(_delta: float) -> State:
 			return swing_pick_axe_state
 		return attack_1_state
 	
-	if Input.is_action_just_pressed("special_attack") and PlayerStats.get_equipped_ability("Special Attack") and parent.can_issue_ability("Special Attack") and GameManager.can_issue_abilities:
-		return special_attack
+	if GameManager.can_issue_abilities:
+		if Input.is_action_just_pressed("special_attack") and PlayerStats.get_equipped_ability("Special Attack") and parent.can_issue_ability("Special Attack"):
+			return special_attack
+		
+		if Input.is_action_just_pressed("combat_ability_1") and PlayerStats.get_equipped_ability("Combat Ability 1") and parent.can_issue_ability("Combat Ability 1"):
+			return combat_ability_1
+
+		if Input.is_action_just_pressed("combat_ability_2") and PlayerStats.get_equipped_ability("Combat Ability 2") and parent.can_issue_ability("Combat Ability 2"):
+			return combat_ability_2
+		
+		if Input.is_action_just_pressed("combat_ability_3") and PlayerStats.get_equipped_ability("Combat Ability 3") and parent.can_issue_ability("Combat Ability 3"):
+			return combat_ability_3
+		
+		if Input.is_action_just_pressed("combat_ability_4") and PlayerStats.get_equipped_ability("Combat Ability 4") and parent.can_issue_ability("Combat Ability 4"):
+			return combat_ability_4
 	
 	if !parent.is_on_floor():
 		parent.was_on_ledge = false
@@ -84,21 +94,6 @@ func process_physics(_delta: float) -> State:
 	and parent.global_position.y <= parent.stored_ladder.ladder_top_position:
 		parent.global_position.y = parent.stored_ladder.ladder_top_position + 20
 		return climb_state
-
-	if Input.is_action_just_pressed("combat_ability_1"):
-		return combat_ability_1
-	
-	if Input.is_action_just_pressed("combat_ability_2"):
-		return combat_ability_2
-	
-	if Input.is_action_just_pressed("combat_ability_3"):
-		return combat_ability_3
-	
-	if Input.is_action_just_pressed("combat_ability_4"):
-		return combat_ability_4
-
-
-
 
 	parent.move_and_slide()
 	return null

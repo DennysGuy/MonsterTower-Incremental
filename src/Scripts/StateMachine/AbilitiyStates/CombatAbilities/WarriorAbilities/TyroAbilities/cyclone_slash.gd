@@ -9,7 +9,7 @@ func on_enter(player : Player) -> void:
 	parent = player
 	parent.damageable = false
 	parent.disable_hurt_box()
-
+	parent.play_sfx(sfx)
 # --- CAPTURE MOMENTUM ---
 	if int(parent.velocity.x) != 0:
 		attack_velocity = parent.velocity.x

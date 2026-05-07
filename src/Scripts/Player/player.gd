@@ -136,8 +136,6 @@ func flip_textures(flip : bool) -> void:
 		gem_chest_hit_area.position = gem_chest_hit_area_position
 		holder.position = holder_position
 	
-
-
 func set_textures_visibility(value : bool) -> void:
 	sprite.visible = value
 
@@ -228,9 +226,7 @@ func disable_gem_chest_hit_area() -> void:
 	gem_chest_hit_area.monitoring = false
 	gem_chest_hit_area.get_child(0).disabled = true
 
-
 var blink_token: int = 0
-
 
 func start_invincibility() -> void:
 	blink_token += 1
@@ -313,7 +309,7 @@ func can_issue_ability(ability_name : String) -> bool:
 	var selected_ability = PlayerStats.equipped_abilities[ability_name]
 	if selected_ability is String:
 		selected_ability = load(selected_ability)
-	return  AbilityTimers.ability_state[ability_name]["Can Do"] and AbilityTimers.ability_state[ability_name]["Can Do"] and PlayerStats.player_stats["Current MP"] >= selected_ability.mp_cost
+	return  AbilityTimers.ability_state[ability_name]["Can Do"] and PlayerStats.player_stats["Current MP"] >= selected_ability.mp_cost
 
 func _on_sword_soar_hit_box_area_entered(area: Area2D) -> void:
 	var parent = area.get_parent()
@@ -337,7 +333,6 @@ func _on_dash_attack_hit_box_area_entered(area: Area2D) -> void:
 		else:
 			issue_attack(dash_attack_hit_box)
 
-
 func pick_up_items() -> void:
 	var areas : Array[Area2D]= item_pick_up_area.get_overlapping_areas()
 	for area in areas:
@@ -349,6 +344,7 @@ func pick_up_items() -> void:
 					return
 
 func spawn_circl_of_truth() -> void:
+	SignalBus.shake_camera.emit(5)
 	var circle_of_truth : CircleOfTruth = preload("uid://h0a1l1dpukn8").instantiate()
 	circle_of_truth.global_position = global_position
 	get_parent().add_child(circle_of_truth)

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://djrlpqvaxxf7k" path="res://src/Scripts/Abilities/circle_of_truth.gd" id="1_26oi1"]
 [ext_resource type="Shader" uid="uid://daejl5mvcf6c2" path="res://new_shader.gdshader" id="1_h5il2"]
+[ext_resource type="AudioStream" uid="uid://fj51c0dasxve" path="res://Audio/SFX/Player/CircleOfTruthHum.wav" id="3_n6itv"]
 
 [sub_resource type="Gradient" id="Gradient_26oi1"]
 offsets = PackedFloat32Array(0, 0.37704918, 0.45355192)
@@ -13,26 +14,27 @@ gradient = SubResource("Gradient_26oi1")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_n6itv"]
 shader = ExtResource("1_h5il2")
 shader_parameter/gradient = SubResource("GradientTexture2D_ag83o")
-shader_parameter/spread = 0.5
+shader_parameter/spread = 3.765
 shader_parameter/cutoff = 0.345
-shader_parameter/size = 0.75
+shader_parameter/size = 1.01
 shader_parameter/speed = 1.0
 shader_parameter/ray1_density = 8.0
-shader_parameter/ray2_density = 30.0
+shader_parameter/ray2_density = 40.0
 shader_parameter/ray2_intensity = 0.3
 shader_parameter/core_intensity = 2.0
 shader_parameter/hdr = false
 shader_parameter/seed = 5.0
 
 [node name="CircleOfTruth" type="Node2D" unique_id=1536305268]
+z_index = 4096
 script = ExtResource("1_26oi1")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=627419314]
 material = SubResource("ShaderMaterial_n6itv")
 offset_left = -120.0
-offset_top = -7.0
+offset_top = -1.0
 offset_right = 119.0
-offset_bottom = 1.2260437
+offset_bottom = 5.0
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1608637794]
 position = Vector2(0, -2)
@@ -55,5 +57,9 @@ hue_variation_max = 0.29
 [node name="Timer" type="Timer" parent="." unique_id=1641177727]
 process_callback = 0
 wait_time = 5.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=973020613]
+stream = ExtResource("3_n6itv")
+bus = &"SFX"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

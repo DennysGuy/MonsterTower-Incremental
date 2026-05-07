@@ -4,6 +4,7 @@ class_name CircleOfTruthBehavior extends CombatAbilityBehavior
 func on_enter(player : Player) -> void:
 	parent = player
 	parent.damageable = false
+	parent.play_sfx(sfx)
 	parent.disable_hurt_box()
 	parent.stop_player()
 

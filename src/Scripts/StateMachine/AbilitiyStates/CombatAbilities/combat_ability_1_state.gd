@@ -11,6 +11,7 @@ var combat_ability_state : CombatAbilityBehavior
 func enter() -> void:
 	parent.can_knock_back = false
 	parent.damageable = false
+	
 	AbilityTimers.activate_ability_cooldown("Combat Ability 1")
 	var selected_ability : Ability = PlayerStats.get_equipped_ability("Combat Ability 1")
 	PlayerStats.player_stats["Current MP"] -= selected_ability.mp_cost
@@ -22,6 +23,7 @@ func enter() -> void:
 	parent.timer.wait_time = combat_ability_state.animation_duration
 	parent.timer.start()
 	combat_ability_state.on_enter(parent)
+	
 	
 	
 func exit() -> void:

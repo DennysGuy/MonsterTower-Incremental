@@ -6,6 +6,7 @@ func on_enter(player : Player) -> void:
 	parent.damageable = false
 	parent.disable_hurt_box()
 	parent.stop_player()
+	parent.play_sfx(sfx)
 
 
 func on_exit() -> void:
