@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Ability" format=3 uid="uid://i8xbrgsmghpf"]
+
+[ext_resource type="Resource" uid="uid://dhi66iebul1jy" path="res://src/Resources/AbilityStates/CombatAbilities/Tyro/CycloneSlash/CircleOfTruthBehavior.tres" id="1_1pdb7"]
+[ext_resource type="Script" uid="uid://bwqf7q51702b" path="res://src/Scripts/cability.gd" id="1_sr2mo"]
+
+[resource]
+script = ExtResource("1_sr2mo")
+ability_name = "Circle of Truth"
+class_relation = "Tyro"
+ability_type = 6
+cooldown_time = 10.0
+ability_description = "Conjure an energy field where enemies are damaged over time and slowed as long as they're inside the field."
+ability_behavior = ExtResource("1_1pdb7")
+mp_cost = 15.0
+base_attack = 30.0
+slow_wait_time = 3.0
+metadata/_custom_type_script = "uid://bwqf7q51702b"

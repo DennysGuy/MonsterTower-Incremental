@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="CircleOfTruthBehavior" format=3 uid="uid://cqrop0pspthpo"]
+
+[ext_resource type="Script" uid="uid://s0d0f11ckmg8" path="res://src/Scripts/StateMachine/AbilitiyStates/CombatAbilities/WarriorAbilities/TyroAbilities/circle_of_truth.gd" id="1_8uwff"]
+
+[resource]
+script = ExtResource("1_8uwff")
+animation_name = "IronBody"
+animation_duration = 0.6
+metadata/_custom_type_script = "uid://s0d0f11ckmg8"

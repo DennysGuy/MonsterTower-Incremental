@@ -223,10 +223,10 @@ TODO: We will add saves for classes as well
 	"Air Attack" : "uid://bukiike6rf6pl", #sword slam - for testing purposes
 	"Double Jump" : "uid://rgwunwula5mv", #sword soar - for testing purposes
 	"Special Attack" : null, #double cleave - here for testing purposes,
-	"Combat Ability 1" : null,
-	"Combat Ability 2" : null,
-	"Combat Ability 3" : null,
-	"Combat Ability 4" : null,
+	"Combat Ability 1" : "uid://dlbpje07usrj1", #cyclone slash - for testing purposes
+	"Combat Ability 2" : "uid://i8xbrgsmghpf", #Circle of Truth - for testing
+	"Combat Ability 3" : "uid://d4jkvfanw4sjj", #Iron Body for Testing
+	"Combat Ability 4" : "uid://cs0umnvsvjhnh", #Double Cleave for Testing
 }
 
 @export var abilities : Dictionary = {

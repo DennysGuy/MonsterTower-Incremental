@@ -347,3 +347,8 @@ func pick_up_items() -> void:
 				area_parent.pick_up_item()
 				if area_parent.can_pick_up:
 					return
+
+func spawn_circl_of_truth() -> void:
+	var circle_of_truth : CircleOfTruth = preload("uid://h0a1l1dpukn8").instantiate()
+	circle_of_truth.global_position = global_position
+	get_parent().add_child(circle_of_truth)

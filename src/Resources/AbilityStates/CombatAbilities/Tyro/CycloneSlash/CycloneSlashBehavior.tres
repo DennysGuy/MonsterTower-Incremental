@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CycloneSlash" format=3 uid="uid://bndomany2o2ix"]
+
+[ext_resource type="Script" uid="uid://bbg5vccq120qa" path="res://src/Scripts/StateMachine/AbilitiyStates/CombatAbilities/WarriorAbilities/TyroAbilities/cyclone_slash.gd" id="1_05jc6"]
+
+[resource]
+script = ExtResource("1_05jc6")
+attack_friction = 200.0
+animation_name = "CycloneSlash"
+animation_duration = 0.6
+metadata/_custom_type_script = "uid://bbg5vccq120qa"

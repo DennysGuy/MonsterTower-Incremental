@@ -9,6 +9,11 @@ class_name PlayerIdle extends State
 @export var climb_state : State
 @export var special_attack : State
 
+@export var combat_ability_1 : State
+@export var combat_ability_2 : State
+@export var combat_ability_3 : State
+@export var combat_ability_4 : State
+
 @export_group("Audio")
 @export var jump_sfx : AudioStream
 
@@ -79,6 +84,21 @@ func process_physics(_delta: float) -> State:
 	and parent.global_position.y <= parent.stored_ladder.ladder_top_position:
 		parent.global_position.y = parent.stored_ladder.ladder_top_position + 20
 		return climb_state
+
+	if Input.is_action_just_pressed("combat_ability_1"):
+		return combat_ability_1
+	
+	if Input.is_action_just_pressed("combat_ability_2"):
+		return combat_ability_2
+	
+	if Input.is_action_just_pressed("combat_ability_3"):
+		return combat_ability_3
+	
+	if Input.is_action_just_pressed("combat_ability_4"):
+		return combat_ability_4
+
+
+
 
 	parent.move_and_slide()
 	return null

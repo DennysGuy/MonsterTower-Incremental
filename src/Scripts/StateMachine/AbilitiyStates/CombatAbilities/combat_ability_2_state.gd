@@ -1,10 +1,12 @@
 class_name CombatAbility2State extends State
 
-@export var idle_state : State
+@export var idle : State
 
 var combat_ability_state : CombatAbilityBehavior
 
 func enter() -> void:
+	parent.can_knock_back = false
+	parent.damageable = false
 	AbilityTimers.activate_ability_cooldown("Combat Ability 2")
 
 	var selected_ability : Ability = PlayerStats.get_equipped_ability("Combat Ability 2")
@@ -14,9 +16,13 @@ func enter() -> void:
 	parent.set_sword_texture(combat_ability_state.animation_name)
 	parent.set_outfit_texture(combat_ability_state.animation_name)
 	parent.animation_player.play(combat_ability_state.animation_name)
+	parent.timer.wait_time = combat_ability_state.animation_duration
+	parent.timer.start()
 	combat_ability_state.on_enter(parent)
 	
 func exit() -> void:
+	parent.can_knock_back = true
+	parent.damageable = true
 	parent.clear_effect_texture()
 	#parent.disable_hit_box()
 	combat_ability_state.on_exit()
@@ -33,5 +39,8 @@ func process_physics(_delta: float) -> State:
 	if next != null:
 		return next
 	#-------------------------------------
-		
+	
+	if parent.timer.time_left <= 0:
+		return idle
+	
 	return null

@@ -78,6 +78,8 @@ func set_icon() -> void:
 			else:
 				icon.texture = preload("uid://cbcw7ua8sro78")
 			shift.show()
+		_:
+			icon.texture = preload("uid://cbcw7ua8sro78")
 
 func ability_unlocked() -> bool:
 	if ability_name == "Special Attack":

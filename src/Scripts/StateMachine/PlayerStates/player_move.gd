@@ -7,12 +7,21 @@ class_name PlayerMove extends State
 @export var attack_1_state : State
 @export var special_attack : State
 
+@export var combat_ability_1 : State
+@export var combat_ability_2 : State
+@export var combat_ability_3 : State
+@export var combat_ability_4 : State
+
 @export var move_sfx : AudioStream
 
 # --- Movement tuning ---
 @export var accel : float = 2000.0
 @export var decel : float = 2400.0
 @export var turn_resistance : float = 3000.0
+
+
+
+
 
 func enter() -> void:
 	super()
@@ -50,6 +59,21 @@ func process_physics(_delta: float) -> State:
 		parent.attack_friction = 400
 		parent.max_attack_drift = 200
 		return attack_1_state
+
+	if Input.is_action_just_pressed("combat_ability_1"):
+		parent.attack_friction = 400
+		parent.max_attack_drift = 200
+		return combat_ability_1
+
+	if Input.is_action_just_pressed("combat_ability_2"):
+		return combat_ability_2
+	
+	if Input.is_action_just_pressed("combat_ability_3"):
+		return combat_ability_3
+	
+	if Input.is_action_just_pressed("combat_ability_4"):
+		return combat_ability_4
+
 
 	var input := Input.get_axis("pan_cam_left", "pan_cam_right")
 	var max_speed = PlayerStats.player_stats["Movement Speed"] + PlayerStats.get_current_sword().movement_speed_bonus + PlayerStats.get_total_gem_bonus("Movement Speed Bonus")

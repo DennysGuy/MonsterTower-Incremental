@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Ability" format=3 uid="uid://dlbpje07usrj1"]
+
+[ext_resource type="Resource" uid="uid://bndomany2o2ix" path="res://src/Resources/AbilityStates/CombatAbilities/Tyro/CycloneSlash/CycloneSlashBehavior.tres" id="1_m2uou"]
+[ext_resource type="Script" uid="uid://bwqf7q51702b" path="res://src/Scripts/cability.gd" id="2_4ifdq"]
+
+[resource]
+script = ExtResource("2_4ifdq")
+ability_name = "Cyclone Slash"
+class_relation = "Tyro"
+ability_type = 5
+cooldown_time = 7.0
+ability_description = "Mimick the nature of a cyclone slashing in 360 degrees pulling enemies towards you. Stun Stacks applied are doubled and Enemies are silenced."
+ability_behavior = ExtResource("1_m2uou")
+mp_cost = 15.0
+base_attack = 50.0
+max_hit_count = 6.0
+slow_wait_time = 1.5
+attack_damage_modifier = 1.2
+metadata/_custom_type_script = "uid://bwqf7q51702b"
