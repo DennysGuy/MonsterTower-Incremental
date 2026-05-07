@@ -30,9 +30,9 @@ script = ExtResource("1_26oi1")
 [node name="ColorRect" type="ColorRect" parent="." unique_id=627419314]
 material = SubResource("ShaderMaterial_n6itv")
 offset_left = -139.0
-offset_top = -6.0
+offset_top = -7.0
 offset_right = 140.0
-offset_bottom = 2.2260437
+offset_bottom = 1.2260437
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1608637794]
 position = Vector2(0, -2)
@@ -48,7 +48,7 @@ linear_accel_min = 22.4
 linear_accel_max = 22.4
 scale_amount_min = 0.0
 scale_amount_max = 3.0
-color = Color(0.83, 0.76083326, 0, 0.5176471)
+color = Color(0.7766591, 0.77128005, 0.40546346, 0.5176471)
 hue_variation_min = -0.35
 hue_variation_max = 0.29
 
