@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://djrlpqvaxxf7k" path="res://src/Scripts/Abilities/circle_of_truth.gd" id="1_26oi1"]
 [ext_resource type="Shader" uid="uid://daejl5mvcf6c2" path="res://new_shader.gdshader" id="1_h5il2"]
 [ext_resource type="AudioStream" uid="uid://fj51c0dasxve" path="res://Audio/SFX/Player/CircleOfTruthHum.wav" id="3_n6itv"]
+[ext_resource type="PackedScene" uid="uid://xsmgmpbxjc3b" path="res://src/Scenes/Actors/Utilities/HitBox.tscn" id="4_n6itv"]
 
 [sub_resource type="Gradient" id="Gradient_26oi1"]
 offsets = PackedFloat32Array(0, 0.37704918, 0.45355192)
@@ -24,6 +25,9 @@ shader_parameter/ray2_intensity = 0.3
 shader_parameter/core_intensity = 2.0
 shader_parameter/hdr = false
 shader_parameter/seed = 5.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ajl2s"]
+size = Vector2(239, 20)
 
 [node name="CircleOfTruth" type="Node2D" unique_id=1536305268]
 z_index = 4096
@@ -62,4 +66,16 @@ wait_time = 5.0
 stream = ExtResource("3_n6itv")
 bus = &"SFX"
 
+[node name="AttackTimer" type="Timer" parent="." unique_id=450870435]
+process_callback = 0
+wait_time = 0.8
+
+[node name="HitBox" parent="." unique_id=1564781984 instance=ExtResource("4_n6itv")]
+position = Vector2(-2, -8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=1623887346]
+position = Vector2(1.5, 0)
+shape = SubResource("RectangleShape2D_ajl2s")
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

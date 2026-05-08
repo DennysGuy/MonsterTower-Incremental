@@ -6,6 +6,8 @@ class_name Entity extends CharacterBody2D
 @export var sprite : Sprite2D
 @export var blink_timer : Timer
 @export var stun_timer : Timer
+@export var knock_back_wait_time : float
+@export var knock_back_direction : int = 1
 
 @export_group("Detectors")
 @export var hurt_box : HurtBox
@@ -19,9 +21,13 @@ class_name Entity extends CharacterBody2D
 @export_group("Audio")
 @export var sfx_player : SFXPlayer
 
+@export_group("State Checks")
+var is_stunned : bool = false
+var is_silenced : bool = false
+
 var damageable : bool = true
 var is_dead : bool = false
-var is_stunned : bool = false
+
 var prev_dir : int = 1
 
 const GENERIC_IMPACT_1 = preload("uid://ffdv7g8jgp4y")

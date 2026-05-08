@@ -37,6 +37,8 @@ class_name Player extends Entity
 @export var max_attack_drift : float = 220.0
 @onready var holder: Marker2D = $Holder
 
+@onready var ability_hit_box: Area2D = $AbilityHitBox
+
 var held_key : BossDoorKey
 
 var stored_ladder : LadderArea
@@ -150,7 +152,7 @@ func stop_player() -> void:
 func set_attack_buffer_timer() -> void:
 	attack_buffer_timer = attack_buffer_wait_time
 
-func issue_attack(selected_hit_box : HitBox, multiplier : float = 1.0, ability : Ability = null) -> void:
+func issue_attack(selected_hit_box : Area2D, multiplier : float = 1.0, ability : Ability = null) -> void:
 	var enemies_in_range = selected_hit_box.get_overlapping_areas()
 	var overlapping_hits : int = int(PlayerStats.player_stats["Overlapping Hits"])
 	var number_of_hits : int = 1
@@ -176,9 +178,9 @@ func issue_attack(selected_hit_box : HitBox, multiplier : float = 1.0, ability :
 		incoming_damage = int((PlayerStats.player_stats["Crit Damage"] + PlayerStats.get_current_sword().crit_bonus + PlayerStats.get_total_gem_bonus("Crit Damage Bonus")) * incoming_damage)
 	
 	if PlayerStats.player_stats["Class"] == "Tyro":
-		GameManager.attack_enemies(enemies_in_range, overlapping_hits, number_of_hits, self, incoming_damage, is_crit, true, rep_delay)
+		GameManager.attack_enemies(enemies_in_range, overlapping_hits, number_of_hits, self, incoming_damage, is_crit, true, rep_delay,ability)
 	else:
-		GameManager.attack_enemies(enemies_in_range, overlapping_hits, number_of_hits, self, incoming_damage, is_crit, false, rep_delay)
+		GameManager.attack_enemies(enemies_in_range, overlapping_hits, number_of_hits, self, incoming_damage, is_crit, false, rep_delay,ability)
 
 func issue_sword_attack() -> void:
 	issue_attack(hit_box)
@@ -348,3 +350,9 @@ func spawn_circl_of_truth() -> void:
 	var circle_of_truth : CircleOfTruth = preload("uid://h0a1l1dpukn8").instantiate()
 	circle_of_truth.global_position = global_position
 	get_parent().add_child(circle_of_truth)
+
+
+func issue_cyclone_slash_attack() -> void:
+	SignalBus.shake_camera.emit(3)
+	var cyclone_slash : Ability = PlayerStats.get_equipped_ability("Combat Ability 1")
+	issue_attack(ability_hit_box, cyclone_slash.attack_damage_modifier, cyclone_slash)

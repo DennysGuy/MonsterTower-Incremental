@@ -385,12 +385,12 @@ texture = ExtResource("2_gfyeb")
 hframes = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=351732613]
+visible = false
 position = Vector2(-2.5, -26)
 shape = SubResource("RectangleShape2D_f4ywy")
 
 [node name="NameTag" parent="." unique_id=1709448218 instance=ExtResource("3_hjwao")]
 offset_left = -44.0
-offset_top = 0.0
 offset_right = 44.0
 offset_bottom = 13.0
 
@@ -471,6 +471,7 @@ position = Vector2(14, -14)
 [node name="SfxPlayer" parent="." unique_id=708602511 instance=ExtResource("21_b42m5")]
 
 [node name="HurtBox" parent="." unique_id=1414497980 instance=ExtResource("15_qf5ei")]
+visible = false
 position = Vector2(-2, -23)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=1044145938]

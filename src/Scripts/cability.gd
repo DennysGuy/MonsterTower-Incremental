@@ -5,8 +5,11 @@ extends Resource
 @export var ability_name : String #Maybe this can be the "Animation Name" as well?
 @export var class_relation : String
 enum ABILITY_TYPE {STANDARD_ATTACK, AIR_ATTACK, DASH_ATTACK, DOUBLE_JUMP, SPECIAL_ATTACK, COMBAT_ABILITY_1, COMBAT_ABILITY_2, COMBAT_ABILITY_3, COMBAT_ABILITY_4}
+enum ATTACK_TYPE {NORMAL, SLOW, SILENCE}
 @export var ability_type : ABILITY_TYPE = ABILITY_TYPE.STANDARD_ATTACK
+@export var attack_type : ATTACK_TYPE = ATTACK_TYPE.NORMAL
 @export var cooldown_time : float
+@export var icon : Texture2D
 @export_multiline var ability_description : String
 
 @export_group("Behavior Resource")

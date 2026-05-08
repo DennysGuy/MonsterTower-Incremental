@@ -10,6 +10,7 @@ func on_enter(player : Player) -> void:
 	parent.damageable = false
 	parent.disable_hurt_box()
 	parent.play_sfx(sfx)
+	#SignalBus.shake_camera.emit(3)
 # --- CAPTURE MOMENTUM ---
 	if int(parent.velocity.x) != 0:
 		attack_velocity = parent.velocity.x
@@ -24,7 +25,6 @@ func on_enter(player : Player) -> void:
 func on_exit() -> void:
 	parent.enable_hurt_box()
 	
-
 func apply_physics(_delta : float) -> State:
 	parent.velocity.x = move_toward(
 		parent.velocity.x,

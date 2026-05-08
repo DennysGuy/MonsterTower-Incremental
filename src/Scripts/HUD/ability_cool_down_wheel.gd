@@ -16,6 +16,14 @@ var ability_loaded : bool = false
 @onready var rmb: TextureRect = $RMB
 @onready var shift: TextureRect = $SHIFT
 @onready var space: TextureRect = $SPACE
+@onready var button_1: TextureRect = $Button1
+@onready var button_2: TextureRect = $Button2
+@onready var button_3: TextureRect = $Button3
+@onready var button_4: TextureRect = $Button4
+
+
+
+var stored_ability : Ability
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -23,6 +31,7 @@ func _ready() -> void:
 	TechTreeManager.set_ability_hud_icon.connect(set_icon)
 	SignalBus.set_icons.connect(set_icon)
 	ability_title.text = ability_name
+	stored_ability = PlayerStats.get_equipped_ability(ability_name)
 	#description.text = PlayerStats.get_equipped_ability(ability_name).ability_description
 	set_icon()
 
@@ -79,7 +88,17 @@ func set_icon() -> void:
 				icon.texture = preload("uid://cbcw7ua8sro78")
 			shift.show()
 		_:
-			icon.texture = preload("uid://cbcw7ua8sro78")
+			if stored_ability:
+				icon.texture = stored_ability.icon
+				match stored_ability.ability_type:
+					stored_ability.ABILITY_TYPE.COMBAT_ABILITY_1:
+						button_1.show()
+					stored_ability.ABILITY_TYPE.COMBAT_ABILITY_2:
+						button_2.show()
+					stored_ability.ABILITY_TYPE.COMBAT_ABILITY_3:
+						button_3.show()
+					stored_ability.ABILITY_TYPE.COMBAT_ABILITY_4:
+						button_4.show()
 
 func ability_unlocked() -> bool:
 	if ability_name == "Special Attack":

@@ -2,6 +2,7 @@
 
 [ext_resource type="Resource" uid="uid://cqrop0pspthpo" path="res://src/Resources/AbilityStates/CombatAbilities/Tyro/CycloneSlash/IronBodyBehavior.tres" id="1_epghi"]
 [ext_resource type="Script" uid="uid://bwqf7q51702b" path="res://src/Scripts/cability.gd" id="1_ilc24"]
+[ext_resource type="Texture2D" uid="uid://cbdaaeunx7tdl" path="res://Assets/HUD/CombatAbilityIcons/IronBodyIcon.png" id="2_oifkt"]
 
 [resource]
 script = ExtResource("1_ilc24")
@@ -9,6 +10,7 @@ ability_name = "Iron Body"
 class_relation = "Tyro"
 ability_type = 7
 cooldown_time = 15.0
+icon = ExtResource("2_oifkt")
 ability_description = "Surround yourself with summoned energy. The summoned energy increases your defense and lowers your knockback distance for a brief period of time."
 ability_behavior = ExtResource("1_epghi")
 mp_cost = 20.0

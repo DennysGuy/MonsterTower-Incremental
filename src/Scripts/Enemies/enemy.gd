@@ -67,11 +67,11 @@ func apply_direction(new_dir: int) -> void:
 	prev_dir = new_dir
 	sprite.flip_h = new_dir < 0
 
-func apply_slow_and_damage(damage : int, issued_slow_factor : float, slow_wait_time : float) -> void:
+func apply_slow_and_damage(damage : int, issued_slow_factor : float, slow_wait_time : float, is_crit : bool = false) -> void:
 	if PlayerStats.player_stats["Class"] == "Tyro":
 		increment_break_count()
 
-	apply_damage(damage, false)
+	apply_damage(damage, is_crit)
 	animation_player.speed_scale = 0.6
 	if status_effect_icon_bar:
 		status_effect_icon_bar.add_slow_icon_to_bar()
@@ -83,19 +83,24 @@ func apply_slow_and_damage(damage : int, issued_slow_factor : float, slow_wait_t
 	# we'll need to check if we're already stunned so that the player can't stun enemies 
 	# also is this too cheap? Maybe this can be balanced.
 
-func apply_silenced_and_damage(damage : int, silenced_wait_time : float) -> void:
+func apply_silenced_and_damage(damage : int, silenced_wait_time : float, is_crit : bool = false) -> void:
 	if PlayerStats.player_stats["Class"] == "Tyro":
 		increment_break_count()
-		
-	apply_damage(damage, false)
+	
+	knock_back_direction = -1
+	
+	apply_damage(damage, is_crit)
 	if status_effect_icon_bar:
 		status_effect_icon_bar.add_silenced_icon_to_bar()
 	
 	if silenced_timer:
+		is_silenced = true
 		disable_hit_box()
+
 		silenced_timer.wait_time = silenced_wait_time
 		silenced_timer.start()
-
+	
+	
 func revert_slow_factor() -> void:
 	if status_effect_icon_bar:
 		status_effect_icon_bar.remove_slow_icon_from_bar()
@@ -105,6 +110,7 @@ func revert_silence() -> void:
 	if status_effect_icon_bar:
 		status_effect_icon_bar.remove_silenced_icon_from_bar()
 	if !is_dead:
+		is_silenced = false
 		enable_hit_box()
 
 func increment_break_count() -> void:
