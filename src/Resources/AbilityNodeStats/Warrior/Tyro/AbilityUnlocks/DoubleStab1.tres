@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ClassAbilityNodeStats" format=3 uid="uid://b1tqtyjdmcrui"]
 
-[ext_resource type="Resource" uid="uid://cs0umnvsvjhnh" path="res://src/Resources/AbilityStates/SpecialAttacks/WarriorDoubleCleaveAbility.tres" id="1_4gtow"]
+[ext_resource type="Resource" uid="uid://cs0umnvsvjhnh" path="res://src/Resources/AbilityStates/CombatAbilities/Tyro/DoubleCleave/DoubleCleaveAbility.tres" id="1_4gtow"]
 [ext_resource type="Texture2D" uid="uid://ow347mqqj7tw" path="res://Assets/NodeGraphics/WarriorTechTree/Sigils/DoubleCleave_Upgrade_1.png" id="1_idw5g"]
 [ext_resource type="Script" uid="uid://b1fyuk5q3e08o" path="res://src/Resources/AbilityNodeStats/class_ability_node_stats.gd" id="3_vurwt"]
 

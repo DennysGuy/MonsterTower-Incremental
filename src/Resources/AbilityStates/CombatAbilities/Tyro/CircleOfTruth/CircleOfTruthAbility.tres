@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Ability" format=3 uid="uid://i8xbrgsmghpf"]
 
-[ext_resource type="Resource" uid="uid://dhi66iebul1jy" path="res://src/Resources/AbilityStates/CombatAbilities/Tyro/CycloneSlash/CircleOfTruthBehavior.tres" id="1_1pdb7"]
+[ext_resource type="Resource" uid="uid://dhi66iebul1jy" path="res://src/Resources/AbilityStates/CombatAbilities/Tyro/CircleOfTruth/CircleOfTruthBehavior.tres" id="1_1pdb7"]
 [ext_resource type="Script" uid="uid://bwqf7q51702b" path="res://src/Scripts/cability.gd" id="1_sr2mo"]
 [ext_resource type="Texture2D" uid="uid://daut1glllti0r" path="res://Assets/HUD/CombatAbilityIcons/CircleofTruthIcon.png" id="2_d2wvs"]
 

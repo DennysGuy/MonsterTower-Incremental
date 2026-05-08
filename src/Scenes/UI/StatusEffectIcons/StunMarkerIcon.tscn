@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dvemxwlytjcog"]
+
+[ext_resource type="Script" uid="uid://bub0hehrx66yb" path="res://src/Scripts/HUD/StatusEffectIcons/stun_marker_icon.gd" id="1_l510y"]
+[ext_resource type="Texture2D" uid="uid://dxjqj1csdef6b" path="res://Assets/WarriorStunMarker.png" id="2_k8sf3"]
+
+[node name="StunMarkerIcon" type="Node2D" unique_id=2141512295]
+script = ExtResource("1_l510y")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1205902328]
+position = Vector2(0, -1)
+texture = ExtResource("2_k8sf3")

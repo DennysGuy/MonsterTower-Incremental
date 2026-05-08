@@ -14,7 +14,7 @@
 [ext_resource type="Resource" uid="uid://ctavgtgbvyp1w" path="res://src/Resources/AbilityStates/DoubleJumps/SoarSwordAbility.tres" id="9_j7mac"]
 [ext_resource type="Texture2D" uid="uid://caijx1edrnow5" path="res://Assets/Facilities/ClassSelectionMenu/DoubleCleave.png" id="9_rdo0p"]
 [ext_resource type="Resource" uid="uid://dcxiodvnbqgef" path="res://src/Resources/AbilityStates/AirAttacks/SwordSlamAbility.tres" id="10_gyooc"]
-[ext_resource type="Resource" uid="uid://cs0umnvsvjhnh" path="res://src/Resources/AbilityStates/SpecialAttacks/WarriorDoubleCleaveAbility.tres" id="13_reguu"]
+[ext_resource type="Resource" uid="uid://cs0umnvsvjhnh" path="res://src/Resources/AbilityStates/CombatAbilities/Tyro/DoubleCleave/DoubleCleaveAbility.tres" id="13_reguu"]
 
 [node name="ClassSelectionMenu" type="Control" unique_id=27371608]
 layout_mode = 3

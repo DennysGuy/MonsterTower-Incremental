@@ -186,8 +186,8 @@ func issue_sword_attack() -> void:
 	issue_attack(hit_box)
 
 func issue_super_attack() -> void:
-	var multiplier : float = PlayerStats.get_equipped_ability("Special Attack").attack_damage_modifier
-	issue_attack(hit_box, multiplier,PlayerStats.get_equipped_ability("Special Attack"))
+	var multiplier : float = PlayerStats.get_equipped_ability("Combat Ability 4").attack_damage_modifier
+	issue_attack(hit_box, multiplier,PlayerStats.get_equipped_ability("Combat Ability 4"))
 
 func check_for_crit() -> bool:
 	var crit_roll : int = randi_range(0,100)
@@ -327,13 +327,16 @@ func _on_dash_attack_hit_box_area_entered(area: Area2D) -> void:
 	var total_attack_damage : int = PlayerStats.player_stats["Attack Damage"] + PlayerStats.get_current_sword().get_total_attack_bonus()
 	var total_accuracy : float = PlayerStats.player_stats["Accuracy"] + PlayerStats.get_current_sword().accuracy_bonus + PlayerStats.get_total_gem_bonus("Accuracy Bonus")
 	if parent is Enemy:
-		print(parent)
-		if is_silence_attack:
-			var equipped_dash_attack : Ability = PlayerStats.get_equipped_ability("Dash Attack")
-			var damage : int = randi_range(total_attack_damage * total_accuracy, total_attack_damage) * equipped_dash_attack.attack_damage_modifier
-			parent.apply_silenced_and_damage(damage, equipped_dash_attack.slow_wait_time)
-		else:
-			issue_attack(dash_attack_hit_box)
+		#print(parent)
+		#if is_silence_attack:
+			#var equipped_dash_attack : Ability = PlayerStats.get_equipped_ability("Dash Attack")
+			#var damage : int = randi_range(total_attack_damage * total_accuracy, total_attack_damage) * equipped_dash_attack.attack_damage_modifier
+			#parent.apply_silenced_and_damage(damage, equipped_dash_attack.slow_wait_time)
+		#else:
+			#issue_attack(dash_attack_hit_box)
+		var stun_ability_icon : StunMarkerIcon = preload("uid://dvemxwlytjcog").instantiate()
+		stun_ability_icon.global_position = parent.global_position
+		parent.add_child(stun_ability_icon)
 
 func pick_up_items() -> void:
 	var areas : Array[Area2D]= item_pick_up_area.get_overlapping_areas()

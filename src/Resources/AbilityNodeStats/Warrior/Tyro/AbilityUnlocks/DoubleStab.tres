@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cfi5q1ebfrn53" path="res://Assets/NodeGraphics/WarriorTechTree/DoubleStabAbilityNodeIcon.png" id="1_ietr8"]
 [ext_resource type="Script" uid="uid://b1fyuk5q3e08o" path="res://src/Resources/AbilityNodeStats/class_ability_node_stats.gd" id="1_lnp0x"]
-[ext_resource type="Resource" uid="uid://cs0umnvsvjhnh" path="res://src/Resources/AbilityStates/SpecialAttacks/WarriorDoubleCleaveAbility.tres" id="1_ly3ql"]
+[ext_resource type="Resource" uid="uid://cs0umnvsvjhnh" path="res://src/Resources/AbilityStates/CombatAbilities/Tyro/DoubleCleave/DoubleCleaveAbility.tres" id="1_ly3ql"]
 
 [resource]
 script = ExtResource("1_lnp0x")

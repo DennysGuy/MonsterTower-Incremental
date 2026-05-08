@@ -49,7 +49,7 @@ var sword_textures : Dictionary = {
 		"SwordSlam":preload("uid://5h15bet6jee3"),
 		"DoubleCleave": preload("uid://bad3j5pey3k36"),
 		"CycloneSlash": preload("uid://cd4w1t36y4pyw"),
-		"Iron Body": preload("uid://ct5gcpqihh32b"),
+		"IronBody": preload("uid://ct5gcpqihh32b"),
 		"CircleOfTruth": preload("uid://ctcincrx7yf48")
 	},
 	"Iron Broad Sword" : {

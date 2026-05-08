@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="DoubleCleave" format=3 uid="uid://byuwwns148kfq"]
+
+[ext_resource type="AudioStream" uid="uid://b478uxwji7rdu" path="res://Audio/SFX/Player/DoubleCleave.wav" id="1_7rec8"]
+[ext_resource type="Script" uid="uid://cnoigcfco1nla" path="res://src/Scripts/StateMachine/AbilitiyStates/CombatAbilities/WarriorAbilities/TyroAbilities/double_cleave.gd" id="1_f4xyy"]
+
+[resource]
+script = ExtResource("1_f4xyy")
+attack_friction = 300.0
+double_cleave_sfx = ExtResource("1_7rec8")
+animation_name = "DoubleCleave"
+animation_duration = 0.72
+metadata/_custom_type_script = "uid://cnoigcfco1nla"
