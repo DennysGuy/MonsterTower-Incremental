@@ -22,6 +22,8 @@ class_name Enemy extends Entity
 var slow_factor : float = 1.0
 var current_break_count : int = 0
 
+
+
 func _ready() -> void:
 	super()
 	SignalBus.disable_enemy_hit_box.connect(disable_hit_box)
@@ -136,4 +138,3 @@ func give_xp() -> void:
 	drop_scene.add_child(xp_label)
 	SaveManager.save_player_stats()
 	LevelingManager.check_for_level_up()
-	

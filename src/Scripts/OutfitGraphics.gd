@@ -19,7 +19,8 @@ var outfit_graphics : Dictionary = {
 		"BasicAttackEffect": preload("uid://bvj4nyj0lqt7s"),
 		"CycloneSlash": preload("uid://cwehmdaknb5ko"),
 		"IronBody": preload("uid://s3c87yot2mlq"),
-		"CircleOfTruth": preload("uid://crb6j81csruty")
+		"CircleOfTruth": preload("uid://crb6j81csruty"),
+		"BasicDash": preload("uid://dp8eilpd2k4li")
 	},
 	"Tyro" : {
 		"Idle": preload("uid://bsy5tgiwm7wxj"),
@@ -38,7 +39,8 @@ var outfit_graphics : Dictionary = {
 		"BasicAttackEffect": preload("uid://cn3s2uyi5i0pn"),
 		"CycloneSlash": preload("uid://cwehmdaknb5ko"),
 		"IronBody": preload("uid://s3c87yot2mlq"),
-		"CircleOfTruth": preload("uid://crb6j81csruty")
+		"CircleOfTruth": preload("uid://crb6j81csruty"),
+		"BasicDash": preload("uid://qg85t3wo7ly")
 	}
 }
 

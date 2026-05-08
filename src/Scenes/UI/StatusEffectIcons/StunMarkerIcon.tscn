@@ -6,6 +6,6 @@
 [node name="StunMarkerIcon" type="Node2D" unique_id=2141512295]
 script = ExtResource("1_l510y")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1205902328]
-position = Vector2(0, -1)
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1205902328 groups=["StunMarkers"]]
+position = Vector2(0, -37)
 texture = ExtResource("2_k8sf3")

@@ -82,6 +82,7 @@ Player=""
 Enemy=""
 SpawnPoints=""
 FloorEntranceButton=""
+StunMarkers=""
 
 [input]
 

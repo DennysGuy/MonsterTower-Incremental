@@ -14,6 +14,9 @@ func enter() -> void:
 	parent.damageable = false
 	parent.is_dead = true
 	
+	if parent.locked_on:
+		parent.remove_stun_marker()
+	
 	if is_instance_valid(parent.hurt_box):
 		parent.hurt_box.queue_free()
 	if is_instance_valid(parent.hit_box):

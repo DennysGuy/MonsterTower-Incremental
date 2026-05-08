@@ -8,6 +8,10 @@ class_name Entity extends CharacterBody2D
 @export var stun_timer : Timer
 @export var knock_back_wait_time : float
 @export var knock_back_direction : int = 1
+@export var event_damage_multiplier : float = 1.0
+@export var stored_stun_marker_icon : StunMarkerIcon
+@export var locked_on : bool = false
+
 
 @export_group("Detectors")
 @export var hurt_box : HurtBox
@@ -34,6 +38,9 @@ const GENERIC_IMPACT_1 = preload("uid://ffdv7g8jgp4y")
 const GENERIC_IMPACT_2 = preload("uid://d1bxfv1bv8md8")
 const GENERIC_IMPACT_3 = preload("uid://c3puk7hyuliti")
 
+const EVENT_HIT = preload("uid://xqm6ui46e8q4")
+const LOCK_ON_ENEMY = preload("uid://dyxqfogqcdlju")
+
 @onready var impacts : Array[AudioStream] = [GENERIC_IMPACT_1, GENERIC_IMPACT_2, GENERIC_IMPACT_3]
 
 var health : float
@@ -58,7 +65,8 @@ func apply_damage(incoming_damage : int, is_crit : bool, label_position : int = 
 		damageable = false
 	
 	play_sfx(impacts.pick_random())
-	var damage = health_component.apply_damage(incoming_damage, is_crit)
+	var damage_event_multiplied : int = int(incoming_damage * event_damage_multiplier)
+	var damage = health_component.apply_damage(damage_event_multiplied, is_crit)
 	var damage_label : DamageLabel = preload("uid://dkchs27qqogyy").instantiate()
 	if is_crit:
 		damage_label.set_crit_bg()
@@ -173,3 +181,18 @@ func play_sfx(sound: AudioStream, volume: float = 0.0):
 	add_child(player)
 	player.play()
 	player.finished.connect(player.queue_free)
+
+func add_stun_marker() -> void:
+	if not locked_on:
+		play_sfx(LOCK_ON_ENEMY,-2)
+		var stun_marker : StunMarkerIcon = 	preload("uid://dvemxwlytjcog").instantiate()
+		event_damage_multiplier = 3.0
+		stored_stun_marker_icon = stun_marker
+		add_child(stun_marker)
+		locked_on = true
+
+func remove_stun_marker() -> void:
+	play_sfx(EVENT_HIT)
+	locked_on = false
+	event_damage_multiplier = 1.0
+	stored_stun_marker_icon.queue_free()

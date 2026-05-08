@@ -314,30 +314,29 @@ func can_issue_ability(ability_name : String) -> bool:
 	return  AbilityTimers.ability_state[ability_name]["Can Do"] and PlayerStats.player_stats["Current MP"] >= selected_ability.mp_cost
 
 func _on_sword_soar_hit_box_area_entered(area: Area2D) -> void:
-	var parent = area.get_parent()
-	
-	var total_attack_damage : int = PlayerStats.player_stats["Attack Damage"] + PlayerStats.get_current_sword().get_total_attack_bonus()
-	var total_accuracy : float = PlayerStats.player_stats["Accuracy"] + PlayerStats.get_current_sword().accuracy_bonus + PlayerStats.get_total_gem_bonus("Accuracy Bonus")
-	if parent is Enemy:
-		var damage = randf_range(total_attack_damage*total_accuracy, PlayerStats.player_stats["Attack Damage"]) * PlayerStats.equipped_abilities["Double Jump"].attack_damage_modifier
-		parent.apply_slow_and_damage(damage,PlayerStats.get_equipped_ability("Double Jump").move_speed_modifier, PlayerStats.get_equipped_ability("Double Jump").slow_wait_time)
+	#var parent = area.get_parent()
+	#
+	#var total_attack_damage : int = PlayerStats.player_stats["Attack Damage"] + PlayerStats.get_current_sword().get_total_attack_bonus()
+	#var total_accuracy : float = PlayerStats.player_stats["Accuracy"] + PlayerStats.get_current_sword().accuracy_bonus + PlayerStats.get_total_gem_bonus("Accuracy Bonus")
+	#if parent is Enemy:
+		#var damage = randf_range(total_attack_damage*total_accuracy, PlayerStats.player_stats["Attack Damage"]) * PlayerStats.equipped_abilities["Double Jump"].attack_damage_modifier
+		#parent.apply_slow_and_damage(damage,PlayerStats.get_equipped_ability("Double Jump").move_speed_modifier, PlayerStats.get_equipped_ability("Double Jump").slow_wait_time)
+	pass
 
 func _on_dash_attack_hit_box_area_entered(area: Area2D) -> void:
 	var parent = area.get_parent()
-	var total_attack_damage : int = PlayerStats.player_stats["Attack Damage"] + PlayerStats.get_current_sword().get_total_attack_bonus()
-	var total_accuracy : float = PlayerStats.player_stats["Accuracy"] + PlayerStats.get_current_sword().accuracy_bonus + PlayerStats.get_total_gem_bonus("Accuracy Bonus")
+	##var total_attack_damage : int = PlayerStats.player_stats["Attack Damage"] + PlayerStats.get_current_sword().get_total_attack_bonus()
+	##var total_accuracy : float = PlayerStats.player_stats["Accuracy"] + PlayerStats.get_current_sword().accuracy_bonus + PlayerStats.get_total_gem_bonus("Accuracy Bonus")
 	if parent is Enemy:
-		#print(parent)
-		#if is_silence_attack:
-			#var equipped_dash_attack : Ability = PlayerStats.get_equipped_ability("Dash Attack")
-			#var damage : int = randi_range(total_attack_damage * total_accuracy, total_attack_damage) * equipped_dash_attack.attack_damage_modifier
-			#parent.apply_silenced_and_damage(damage, equipped_dash_attack.slow_wait_time)
-		#else:
-			#issue_attack(dash_attack_hit_box)
-		var stun_ability_icon : StunMarkerIcon = preload("uid://dvemxwlytjcog").instantiate()
-		stun_ability_icon.global_position = parent.global_position
-		parent.add_child(stun_ability_icon)
-
+		##print(parent)
+		##if is_silence_attack:
+			##var equipped_dash_attack : Ability = PlayerStats.get_equipped_ability("Dash Attack")
+			##var damage : int = randi_range(total_attack_damage * total_accuracy, total_attack_damage) * equipped_dash_attack.attack_damage_modifier
+			##parent.apply_silenced_and_damage(damage, equipped_dash_attack.slow_wait_time)
+		##else:
+			##issue_attack(dash_attack_hit_box)
+		parent.add_stun_marker()
+		
 func pick_up_items() -> void:
 	var areas : Array[Area2D]= item_pick_up_area.get_overlapping_areas()
 	for area in areas:
