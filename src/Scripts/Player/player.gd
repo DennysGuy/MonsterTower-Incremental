@@ -335,7 +335,9 @@ func _on_dash_attack_hit_box_area_entered(area: Area2D) -> void:
 			##parent.apply_silenced_and_damage(damage, equipped_dash_attack.slow_wait_time)
 		##else:
 			##issue_attack(dash_attack_hit_box)
-		parent.add_stun_marker()
+		if PlayerStats.player_stats["Class"] == "Tyro":
+			var multiplier : float = PlayerStats.player_stats["Lock On Multiplier"]
+			parent.add_stun_marker(multiplier)
 		
 func pick_up_items() -> void:
 	var areas : Array[Area2D]= item_pick_up_area.get_overlapping_areas()

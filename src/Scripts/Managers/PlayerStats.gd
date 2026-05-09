@@ -72,7 +72,8 @@ const KNOCKBACK_FORCE : int = 300
 	"Tier 1 Chest Spawn Rate": 0.05,
 	"Tier 1 Gem Drop Rate":0.3,
 	"Chalice Spawn Rate":0.20,
-	"Vial Spawn Rate": 0.20
+	"Vial Spawn Rate": 0.20,
+	"Lock On Multiplier" : 1.25
 }
 
 var equipped_abilities : Dictionary = {

@@ -195,11 +195,11 @@ func play_sfx(sound: AudioStream, volume: float = 0.0):
 	player.play()
 	player.finished.connect(player.queue_free)
 
-func add_stun_marker() -> void:
+func add_stun_marker(multiplier : float) -> void:
 	if not locked_on:
 		play_sfx(LOCK_ON_ENEMY,-2)
 		var stun_marker : StunMarkerIcon = 	preload("uid://dvemxwlytjcog").instantiate()
-		event_damage_multiplier = 3.0
+		event_damage_multiplier = multiplier
 		stored_stun_marker_icon = stun_marker
 		add_child(stun_marker)
 		locked_on = true

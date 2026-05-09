@@ -66,7 +66,8 @@ TODO: We will add saves for classes as well
 	"Tier 1 Chest Spawn Rate": 0.25,
 	"Tier 1 Gem Drop Rate":0.3,
 	"Chalice Spawn Rate":0.12,
-	"Vial Spawn Rate": 0.12
+	"Vial Spawn Rate": 0.12,
+	"Lock On Multiplier" : 1.25
 }
 
 #this will be loaded when we enter the tower entrance map or a map in and of itself
