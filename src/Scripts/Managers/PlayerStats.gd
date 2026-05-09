@@ -8,6 +8,17 @@ This is for testing purposes
 
 '''
 
+#global stat buff modifiers
+var attack_buff_mod : float = 1.0
+var crit_chance_buff_mod : float = 0.0
+var crit_damage_buff_mod : float = 1.0
+var defense_buff_mod : float = 1.0
+var health_buff_mod : float = 0.0
+var knock_back_buff_mod : float = 1.0
+var move_speed_buff_mod : float = 0.0
+var cool_down_speed_buff_mod : float = 0.0
+var dodge_chance_buff_mod : float = 0.0 # not a thing a yet
+
 const KNOCKBACK_FORCE : int = 300
 
 @onready var player_stats : Dictionary = {
@@ -357,3 +368,13 @@ func recover_mp(amount : int) -> void:
 	
 	PlayerHudSignalBus.update_player_mp.emit()
 	
+func reset_global_stat_buffs() -> void:
+	attack_buff_mod = 1.0
+	crit_chance_buff_mod = 0.0
+	crit_damage_buff_mod = 1.0
+	defense_buff_mod = 1.0
+	health_buff_mod = 0.0
+	knock_back_buff_mod = 1.0
+	move_speed_buff_mod = 0.0
+	cool_down_speed_buff_mod = 0.0
+	dodge_chance_buff_mod  = 0.0 # not a thing a yet

@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://bxbd2qixwpvxs"]
+
+[ext_resource type="Script" uid="uid://cb1vjlugxiaga" path="res://src/Scripts/HUD/buff_activated_icon.gd" id="1_18njx"]
+[ext_resource type="Texture2D" uid="uid://cbdaaeunx7tdl" path="res://Assets/HUD/CombatAbilityIcons/IronBodyIcon.png" id="1_ybsrq"]
+
+[node name="BuffActivatedIcon" type="Control" unique_id=996196854 node_paths=PackedStringArray("icon", "progress_bar")]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 80.0
+offset_bottom = 81.0
+script = ExtResource("1_18njx")
+icon = NodePath("TextureRect")
+progress_bar = NodePath("ProgressBar")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2101904437]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_ybsrq")
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=27499499]
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 80.0
+value = 100.0
+fill_mode = 3
+show_percentage = false

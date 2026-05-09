@@ -38,6 +38,7 @@ enum ATTACK_TYPE {NORMAL, SLOW, SILENCE}
 @export var dash_speed_modifier : float
 @export var hit_box_size_modifier : Vector2
 @export var knock_back_modifier : float
+@export var buff_limit_time : float
 
 func get_ability_type_name() -> String:
 	match ability_type:

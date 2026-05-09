@@ -9,6 +9,7 @@ extends Node
 @onready var combat_ability_timer_2: Timer = $CombatAbilityTimer2
 @onready var combat_ability_timer_3: Timer = $CombatAbilityTimer3
 @onready var combat_ability_timer_4: Timer = $CombatAbilityTimer4
+@onready var buff_timer_1: Timer = $BuffTimer1
 
 signal start_ability_cooldown_timer(ability_name)
 
@@ -42,6 +43,13 @@ func activate_ability_cooldown(ability_name : String) -> void:
 	start_ability_cooldown_timer.emit(ability_name)
 	ability_state[ability_name]["Timer"].start()
 
+func start_buff_timer_1(wait_time : float, ability : Ability) -> void:
+	
+	buff_timer_1.wait_time = wait_time
+	PlayerHudSignalBus.add_buff_activated_icon.emit(buff_timer_1, ability)
+	buff_timer_1.start()
+	
+
 func _on_dash_attack_timer_timeout() -> void:
 	ability_state["Dash Attack"]["Can Do"] = true
 
@@ -65,3 +73,9 @@ func _on_combat_ability_timer_3_timeout() -> void:
 
 func _on_combat_ability_timer_4_timeout() -> void:
 	ability_state["Combat Ability 4"]["Can Do"] = true
+
+func _on_buff_timer_1_timeout() -> void:
+	#this is might have to change - there probably won't be more than
+	#1 stat buff abilities available at a given time though
+	#will need to remove the corresponding hud icon
+	PlayerStats.reset_global_stat_buffs()

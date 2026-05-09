@@ -6,7 +6,7 @@ class_name Entity extends CharacterBody2D
 @export var sprite : Sprite2D
 @export var blink_timer : Timer
 @export var stun_timer : Timer
-@export var knock_back_wait_time : float
+@export var knock_back_wait_time : float = 0.35
 @export var knock_back_direction : int = 1
 @export var event_damage_multiplier : float = 1.0
 @export var stored_stun_marker_icon : StunMarkerIcon
@@ -79,23 +79,33 @@ func apply_damage(incoming_damage : int, is_crit : bool, label_position : int = 
 		get_parent().add_child(damage_label)
 
 func enable_hit_box() -> void:
-
+	if !is_inside_tree():
+		return
 	alter_box_status(hit_box, true, false)
 
 func disable_hit_box() -> void:
-
+	if !is_inside_tree():
+		return
 	alter_box_status(hit_box, false, true)
 
 func enable_hurt_box() -> void:
-
+	if !is_inside_tree():
+		return
 	alter_box_status(hurt_box, true, false)
 
 func disable_hurt_box() -> void:
-		alter_box_status(hurt_box, false, true)
+	if !is_inside_tree():
+		return
+		
+	alter_box_status(hurt_box, false, true)
 
 func disable_box_on_frame(box : Area2D) -> void:
-		if !box:
+		if not is_instance_valid(box):
 			return
+		
+		if not box is Area2D:
+			return
+	
 			
 		box.monitoring = false
 		box.monitorable = false
@@ -104,16 +114,19 @@ func disable_box_on_frame(box : Area2D) -> void:
 		if shape2 is CollisionShape2D:
 			shape2.disabled = true
 
-func alter_box_status(box : Area2D, monitor_state : bool, collision_state : bool) -> void:
-		if !box:
-			return
-			
-		box.set_deferred("monitoring", monitor_state)
-		box.set_deferred("monitorable", monitor_state)
+func alter_box_status(box, monitor_state: bool, collision_state: bool) -> void:
+	if not is_instance_valid(box):
+		return
+	
+	if not box is Area2D:
+		return
+	
+	box.set_deferred("monitoring", monitor_state)
+	box.set_deferred("monitorable", monitor_state)
 
-		var shape2 = box.get_child(0)
-		if shape2 is CollisionShape2D:
-			shape2.set_deferred("disabled", collision_state)
+	var shape = box.get_child(0)
+	if is_instance_valid(shape) and shape is CollisionShape2D:
+		shape.set_deferred("disabled", collision_state)
 
 func send_to_hit_state() -> void:
 	if is_stunned and stun_state:

@@ -1,11 +1,11 @@
-[gd_resource type="Resource" script_class="CircleOfTruthBehavior" format=3 uid="uid://cqrop0pspthpo"]
+[gd_resource type="Resource" script_class="IronBody" format=3 uid="uid://dklinim2i7hd0"]
 
-[ext_resource type="Script" uid="uid://s0d0f11ckmg8" path="res://src/Scripts/StateMachine/AbilitiyStates/CombatAbilities/WarriorAbilities/TyroAbilities/circle_of_truth.gd" id="1_8uwff"]
+[ext_resource type="Script" uid="uid://b52dcwtamlkka" path="res://src/Scripts/StateMachine/AbilitiyStates/CombatAbilities/WarriorAbilities/TyroAbilities/iron_body.gd" id="1_preux"]
 [ext_resource type="AudioStream" uid="uid://c3bqn6akorvvm" path="res://Audio/SFX/Player/IronBodyChargeUpSFX.wav" id="2_b5hlv"]
 
 [resource]
-script = ExtResource("1_8uwff")
+script = ExtResource("1_preux")
 animation_name = "IronBody"
 animation_duration = 0.6
 sfx = ExtResource("2_b5hlv")
-metadata/_custom_type_script = "uid://s0d0f11ckmg8"
+metadata/_custom_type_script = "uid://b52dcwtamlkka"

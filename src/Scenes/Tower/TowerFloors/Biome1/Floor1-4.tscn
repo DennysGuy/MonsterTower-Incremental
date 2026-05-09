@@ -638,8 +638,8 @@ ExtResource("19_l0dm6"): 50,
 ExtResource("24_3ad0h"): 50
 })
 challenge_monster_list = Dictionary[PackedScene, int]({
-ExtResource("19_l0dm6"): 50,
-ExtResource("24_3ad0h"): 50
+ExtResource("24_3ad0h"): 50,
+ExtResource("19_l0dm6"): 50
 })
 area_collision_shape = NodePath("CollisionShape2D")
 

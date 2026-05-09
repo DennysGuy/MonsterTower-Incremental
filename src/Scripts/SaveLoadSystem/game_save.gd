@@ -324,7 +324,7 @@ TODO: We will add saves for classes as well
 			"Knock Back Modifier" : 0.0
 		}
 	},
-	"Tyro" : {
+	"Tyro" : {##NEED TO ADD BUFF LIMIT TIME
 		"Dash Attack" : {
 			"Cooldown Time" : 2.0,
 			"HP Cost" : 0.0,

@@ -43,6 +43,7 @@ enum NODE_TYPE {ABILITY_UNLOCK, ABILITY_STAT_BOOST, CHARACTER_STAT_BOOST, CLASS_
 @export var dash_cooldown_modifier : float
 @export var dash_speed_modifier : float
 @export var hit_box_size_modifier : Vector2
+@export var buff_limit_time : float
 
 
 @export_group("Character Stats Modifiers")
@@ -134,6 +135,7 @@ func upgrade_ability_stats() -> void:
 	ability_stats["Crit Chance Modifier"] += crit_chance_modifier
 	ability_stats["Dash Cooldown"] += dash_cooldown_modifier
 	ability_stats["Dash Speed Modifier"] += dash_speed_modifier
+	ability_stats["Buff Limit Time"] += buff_limit_time
 	
 	var equipped_abilities : Dictionary = PlayerStats.get_equipped_abilities()
 	print(equipped_abilities[ability_category])

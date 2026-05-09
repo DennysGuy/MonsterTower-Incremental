@@ -15,14 +15,16 @@ func enter() -> void:
 		parent.disable_hurt_box()
 		parent.set_sword_texture(animation_name)
 		parent.set_outfit_texture(animation_name)
-		parent.timer.wait_time = wait_time
+		var total_knock_back : float = (parent.knock_back_wait_time * PlayerStats.knock_back_buff_mod)
+		print(PlayerStats.knock_back_buff_mod)
+		parent.timer.wait_time = total_knock_back
 
 		var dir = (parent.stored_enemy.global_position - parent.global_position).normalized()
 		knock_back_direction = GameManager.set_direction(dir.x) * -1
 		parent.sfx_player.play_sfx(hit_sfx)
 		parent.timer.start()
 		#SignalBus.disable_enemy_hit_box.emit()
-		SignalBus.shake_camera.emit(2)
+		SignalBus.shake_camera.emit(3)
 		HitStopManager.freeze(0.06, 0.0)
 		parent.start_invincibility()
 

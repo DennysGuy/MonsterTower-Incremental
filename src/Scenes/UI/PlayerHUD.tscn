@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://dix63priuogkk" path="res://Assets/NodeGraphics/NodeGraphicsV2/Bag1_V2.png" id="13_fw5mt"]
 [ext_resource type="PackedScene" uid="uid://djwayx7h06hx3" path="res://src/Scenes/UI/QuestHub.tscn" id="14_xxan5"]
 [ext_resource type="PackedScene" uid="uid://db7vqj43a3h6c" path="res://src/Scenes/UI/RoomInfoBanner.tscn" id="16_fnmb5"]
+[ext_resource type="PackedScene" uid="uid://bpp37520418mj" path="res://src/Scenes/UI/BuffBar.tscn" id="19_h7rl7"]
 [ext_resource type="FontFile" uid="uid://3dovpys2he1l" path="res://Assets/Fonts/Moodcake.ttf" id="19_tjlva"]
 
 [sub_resource type="Animation" id="Animation_g1bs5"]
@@ -660,7 +661,6 @@ offset_bottom = 334.0
 mouse_filter = 2
 
 [node name="StartHuntChallengeButton" type="Button" parent="PlayerHUD" unique_id=183096058]
-visible = false
 layout_mode = 0
 offset_left = 1690.0
 offset_top = 65.0
@@ -823,6 +823,20 @@ ability_name = "Combat Ability 4"
 
 [node name="LicenseTierLevel" parent="PlayerHUD/AbilityHub2" index="1" unique_id=399173630]
 visible = false
+
+[node name="BuffBar" parent="PlayerHUD" unique_id=1408006896 instance=ExtResource("19_h7rl7")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+offset_left = -843.0
+offset_top = 60.0
+offset_right = -324.0
+offset_bottom = 143.0
+grow_horizontal = 0
+grow_vertical = 1
 
 [node name="AdvanceClassNotice" type="RichTextLabel" parent="PlayerHUD" unique_id=848029312]
 visible = false

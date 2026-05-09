@@ -14,7 +14,7 @@ func enter() -> void:
 	super()
 	parent.disable_hurt_box()
 	parent.disable_hit_box()
-	parent.timer.wait_time = wait_time
+	parent.timer.wait_time = parent.knock_back_wait_time
 	parent.timer.start()
 	if parent.locked_on:
 		parent.remove_stun_marker()

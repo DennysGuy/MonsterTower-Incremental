@@ -2503,6 +2503,7 @@ state_machine = NodePath("StateMachine")
 animation_player = NodePath("AnimationPlayer")
 health_component = NodePath("HealthComponent")
 sprite = NodePath("Sprites/PlayerSprite")
+knock_back_wait_time = 0.15
 hurt_box = NodePath("HurtBox")
 hit_box = NodePath("HitBox")
 hit_state = NodePath("StateMachine/Hit")
