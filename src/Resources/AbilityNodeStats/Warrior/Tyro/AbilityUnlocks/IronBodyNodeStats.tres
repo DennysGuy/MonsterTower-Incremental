@@ -12,6 +12,7 @@ max_upgrade_level = 5
 class_relation = "Tyro"
 description = "Surround yourself with summoned energy. The summoned energy increases your defense and lowers your knockback distance for a brief period of time."
 ap_cost = 1
+node_type = 1
 ability_category = "Combat Ability 3"
 ability_resource = ExtResource("1_cfbwc")
 mp_cost = 5.0

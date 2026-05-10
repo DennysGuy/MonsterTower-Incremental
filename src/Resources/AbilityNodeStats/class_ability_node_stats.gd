@@ -64,6 +64,7 @@ enum NODE_TYPE {ABILITY_UNLOCK, ABILITY_STAT_BOOST, CHARACTER_STAT_BOOST, CLASS_
 @export var accuracy_change : float
 @export var max_health_change : float
 @export var max_mp_change : float
+@export var lock_on_multiplier_change : float
 
 
 func get_ability_modifiers() -> Dictionary:
@@ -88,7 +89,8 @@ func get_ability_modifiers() -> Dictionary:
 		"Crit Chance": crit_chance_modifier,
 		"Dash Cooldown": dash_cooldown_modifier,
 		"Dash Speed": dash_speed_modifier,
-		"Hitbox Size": hit_box_size_modifier
+		"Hitbox Size": hit_box_size_modifier,
+		"Buff Time Limit": buff_limit_time
 	}
 
 func get_character_stat_modifiers() -> Dictionary:
@@ -109,7 +111,8 @@ func get_character_stat_modifiers() -> Dictionary:
 		"Crit Damage": crit_damage_change,
 		"Accuracy": accuracy_change,
 		"Max Health": max_health_change,
-		"Max MP": max_mp_change
+		"Max MP": max_mp_change,
+		"Lock On Multiplier": lock_on_multiplier_change
 	}
 
 func upgrade_ability_stats() -> void:
@@ -162,6 +165,7 @@ func upgrade_character_stats() -> void:
 	PlayerStats.player_stats["Accuracy"] += accuracy_change
 	PlayerStats.player_stats["Max Health"] += max_health_change
 	PlayerStats.player_stats["Max MP"] += max_mp_change
+	PlayerStats.player_stats["Lock On Multiplier"] += lock_on_multiplier_change
 	
 	SaveManager.save_player_stats()
 

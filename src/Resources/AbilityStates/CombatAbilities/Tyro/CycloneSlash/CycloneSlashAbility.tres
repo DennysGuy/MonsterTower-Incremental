@@ -12,7 +12,9 @@ ability_type = 5
 attack_type = 2
 cooldown_time = 4.0
 icon = ExtResource("2_p885i")
-ability_description = "Mimick the nature of a cyclone slashing in 360 degrees pulling enemies towards you. Stun Stacks applied are doubled and Enemies are silenced."
+ability_description = "Mimick the nature of a cyclone, slashing in 360 degrees and pulling enemies towards you. 
+
+Enemies are silenced in the process rendering them unable to attack for a period of time."
 ability_behavior = ExtResource("1_m2uou")
 mp_cost = 15.0
 base_attack = 50.0

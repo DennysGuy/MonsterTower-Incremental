@@ -216,9 +216,9 @@ var player_classes : Dictionary = {
 var class_ability_node_stats : Dictionary = {
 	"Tyro" : {
 		"Abilities": {
-			0 : preload("uid://c71wdmkmxxxct"),
-			1 : preload("uid://dhavx7c8nci4q"),
-			2 : preload("uid://cpg586qwrplgy"),
+			0 : preload("uid://dm3c3phl6fkid"),
+			1 : preload("uid://cjc20n6ld53u3"),
+			2 : preload("uid://js4itkff48rn"),
 			3 : preload("uid://b1tqtyjdmcrui")
 		},
 		"Stat Upgrades": {

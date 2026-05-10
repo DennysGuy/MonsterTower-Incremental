@@ -14,6 +14,7 @@ description = "Your first Class Unique Ability!
 
 Issue out 2 powerful cleave strikes dealing 3x base attack damage."
 ap_cost = 1
+node_type = 1
 ability_category = "Special Attack"
 ability_resource = ExtResource("1_ly3ql")
 metadata/_custom_type_script = "uid://b1fyuk5q3e08o"

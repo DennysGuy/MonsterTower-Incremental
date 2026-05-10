@@ -7,14 +7,18 @@
 [ext_resource type="Texture2D" uid="uid://bvtolsa16grqw" path="res://Assets/Facilities/ClassSelectionMenu/MageBG.png" id="4_i7c6j"]
 [ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="5_ne1ap"]
 [ext_resource type="PackedScene" uid="uid://dcs7xx24655nt" path="res://src/Scenes/NewStarshire/Facilities/Menus/StartingAbilityIcon.tscn" id="6_j7mac"]
-[ext_resource type="Texture2D" uid="uid://bhcu2glvv0s40" path="res://Assets/Facilities/ClassSelectionMenu/SwordSlam.png" id="7_dasj6"]
-[ext_resource type="Resource" uid="uid://c3llqiy2fb5n5" path="res://src/Resources/AbilityStates/DashAttacks/SwordDanceAbility.tres" id="7_j7mac"]
-[ext_resource type="Texture2D" uid="uid://bdw85iv04k8t0" path="res://Assets/Facilities/ClassSelectionMenu/SwordDance.png" id="8_dasj6"]
-[ext_resource type="Texture2D" uid="uid://vskgh0xmv1o8" path="res://Assets/Facilities/ClassSelectionMenu/SwordSoar.png" id="8_gyooc"]
-[ext_resource type="Resource" uid="uid://ctavgtgbvyp1w" path="res://src/Resources/AbilityStates/DoubleJumps/SoarSwordAbility.tres" id="9_j7mac"]
+[ext_resource type="Texture2D" uid="uid://dfn47ylk12xi" path="res://Assets/HUD/CombatAbilityIcons/CycloneSlashIcon.png" id="7_1hlvj"]
+[ext_resource type="Resource" uid="uid://dlbpje07usrj1" path="res://src/Resources/AbilityStates/CombatAbilities/Tyro/CycloneSlash/CycloneSlashAbility.tres" id="7_3dmwr"]
+[ext_resource type="Resource" uid="uid://i8xbrgsmghpf" path="res://src/Resources/AbilityStates/CombatAbilities/Tyro/CircleOfTruth/CircleOfTruthAbility.tres" id="9_3dmwr"]
 [ext_resource type="Texture2D" uid="uid://caijx1edrnow5" path="res://Assets/Facilities/ClassSelectionMenu/DoubleCleave.png" id="9_rdo0p"]
-[ext_resource type="Resource" uid="uid://dcxiodvnbqgef" path="res://src/Resources/AbilityStates/AirAttacks/SwordSlamAbility.tres" id="10_gyooc"]
+[ext_resource type="Texture2D" uid="uid://daut1glllti0r" path="res://Assets/HUD/CombatAbilityIcons/CircleofTruthIcon.png" id="10_3dmwr"]
+[ext_resource type="Resource" uid="uid://d4jkvfanw4sjj" path="res://src/Resources/AbilityStates/CombatAbilities/Tyro/IronBody/IronBodyAbility.tres" id="11_3dmwr"]
+[ext_resource type="Texture2D" uid="uid://cbdaaeunx7tdl" path="res://Assets/HUD/CombatAbilityIcons/IronBodyIcon.png" id="12_1hlvj"]
 [ext_resource type="Resource" uid="uid://cs0umnvsvjhnh" path="res://src/Resources/AbilityStates/CombatAbilities/Tyro/DoubleCleave/DoubleCleaveAbility.tres" id="13_reguu"]
+[ext_resource type="Texture2D" uid="uid://bsdqyqaedjmtt" path="res://Assets/HUD/CombatAbilityIcons/DoubleCleaveIcon.png" id="15_1hlvj"]
+[ext_resource type="Resource" uid="uid://ctgyhf5hrfyad" path="res://src/Resources/AbilityStates/CombatAbilities/Tyro/DashLockOn/DashLockOn.tres" id="16_poa1d"]
+[ext_resource type="PackedScene" uid="uid://cyreitke11ia3" path="res://src/Scenes/UI/IconGlow.tscn" id="16_so80d"]
+[ext_resource type="Texture2D" uid="uid://ccbp5ogxmq0dl" path="res://Assets/HUD/CombatAbilityIcons/DashLockOnIcon.png" id="17_so80d"]
 
 [node name="ClassSelectionMenu" type="Control" unique_id=27371608]
 layout_mode = 3
@@ -143,42 +147,62 @@ theme_override_fonts/font = ExtResource("2_hrvbj")
 theme_override_font_sizes/font_size = 38
 text = "Starting Abilities"
 
-[node name="SwordSlam" parent="Panel/WarriorPanel" unique_id=1859415452 instance=ExtResource("6_j7mac")]
+[node name="CycloneSlash" parent="Panel/WarriorPanel" unique_id=1859415452 instance=ExtResource("6_j7mac")]
 layout_mode = 1
-offset_left = -714.0
-offset_top = 247.0
-offset_right = -586.0
-offset_bottom = 375.0
-ability = ExtResource("10_gyooc")
-icon = ExtResource("7_dasj6")
+offset_left = -779.0
+offset_top = 323.0
+offset_right = -651.0
+offset_bottom = 451.0
+texture = ExtResource("7_1hlvj")
+ability = ExtResource("7_3dmwr")
+icon = ExtResource("7_1hlvj")
 
-[node name="SwordDance" parent="Panel/WarriorPanel" unique_id=1277237728 instance=ExtResource("6_j7mac")]
+[node name="CircleOfTruth" parent="Panel/WarriorPanel" unique_id=1277237728 instance=ExtResource("6_j7mac")]
 layout_mode = 1
-offset_left = -518.0
-offset_top = 247.0
-offset_right = -390.0
-offset_bottom = 375.0
-ability = ExtResource("7_j7mac")
-icon = ExtResource("8_dasj6")
+offset_left = -527.0
+offset_top = 325.0
+offset_right = -399.0
+offset_bottom = 453.0
+ability = ExtResource("9_3dmwr")
+icon = ExtResource("10_3dmwr")
 
-[node name="SwordSoar" parent="Panel/WarriorPanel" unique_id=1130950537 instance=ExtResource("6_j7mac")]
+[node name="IronBody" parent="Panel/WarriorPanel" unique_id=1130950537 instance=ExtResource("6_j7mac")]
 layout_mode = 1
-offset_left = -323.0
-offset_top = 247.0
-offset_right = -195.0
-offset_bottom = 375.0
-ability = ExtResource("9_j7mac")
-icon = ExtResource("8_gyooc")
+offset_left = -263.0
+offset_top = 326.0
+offset_right = -135.0
+offset_bottom = 454.0
+ability = ExtResource("11_3dmwr")
+icon = ExtResource("12_1hlvj")
 
 [node name="DoubleCleave" parent="Panel/WarriorPanel" unique_id=2059465461 instance=ExtResource("6_j7mac")]
 layout_mode = 1
-offset_left = -136.0
-offset_top = 247.0
-offset_right = -8.0
-offset_bottom = 375.0
+offset_left = -8.0
+offset_top = 328.0
+offset_right = 120.0
+offset_bottom = 456.0
 texture = ExtResource("9_rdo0p")
 ability = ExtResource("13_reguu")
-icon = ExtResource("9_rdo0p")
+icon = ExtResource("15_1hlvj")
+
+[node name="Glow" parent="Panel/WarriorPanel" unique_id=240318874 instance=ExtResource("16_so80d")]
+visible = true
+layout_mode = 1
+offset_left = -65.0
+offset_top = 84.0
+offset_right = 151.0
+offset_bottom = 300.0
+pivot_offset = Vector2(113, 113)
+
+[node name="LockOnUpgrade" parent="Panel/WarriorPanel" unique_id=291905557 instance=ExtResource("6_j7mac")]
+layout_mode = 1
+offset_left = -12.0
+offset_top = 132.0
+offset_right = 116.0
+offset_bottom = 260.0
+texture = ExtResource("9_rdo0p")
+ability = ExtResource("16_poa1d")
+icon = ExtResource("17_so80d")
 
 [node name="SelectionPanel" type="TextureRect" parent="Panel" unique_id=119738840]
 layout_mode = 1

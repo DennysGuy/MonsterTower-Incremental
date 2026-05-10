@@ -14,4 +14,5 @@ description = "Hit harder, nothing wrong with brute forcing things, but - rememb
 ap_cost = 1
 node_type = 2
 attack_damage = 5.0
+lock_on_multiplier_change = 0.25
 metadata/_custom_type_script = "uid://b1fyuk5q3e08o"

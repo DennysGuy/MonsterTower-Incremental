@@ -224,10 +224,10 @@ TODO: We will add saves for classes as well
 	"Air Attack" : "uid://bukiike6rf6pl", #sword slam - for testing purposes
 	"Double Jump" : "uid://rgwunwula5mv", #sword soar - for testing purposes
 	"Special Attack" : null, #double cleave - here for testing purposes,
-	"Combat Ability 1" : "uid://dlbpje07usrj1", #cyclone slash - for testing purposes
-	"Combat Ability 2" : "uid://i8xbrgsmghpf", #Circle of Truth - for testing
-	"Combat Ability 3" : "uid://d4jkvfanw4sjj", #Iron Body for Testing
-	"Combat Ability 4" : "uid://cs0umnvsvjhnh", #Double Cleave for Testing
+	"Combat Ability 1" : null, #cyclone slash - for testing purposes
+	"Combat Ability 2" : null, #Circle of Truth - for testing
+	"Combat Ability 3" : null, #Iron Body for Testing
+	"Combat Ability 4" : null, #Double Cleave for Testing
 }
 
 @export var abilities : Dictionary = {
@@ -326,7 +326,7 @@ TODO: We will add saves for classes as well
 		}
 	},
 	"Tyro" : {##NEED TO ADD BUFF LIMIT TIME
-		"Dash Attack" : {
+		"Combat Ability 1" : {
 			"Cooldown Time" : 2.0,
 			"HP Cost" : 0.0,
 			"MP Cost" : 10.0,
@@ -347,9 +347,10 @@ TODO: We will add saves for classes as well
 			"Crit Chance Modifier" : 0.0,
 			"Dash Cooldown" : 0.0,
 			"Dash Speed Modifier" : 350.0,
-			"Knock Back Modifier" : 0.0
+			"Knock Back Modifier" : 0.0,
+			"Buff Time Limit": 0.0
 		},
-		"Air Attack": {
+		"Combat Ability 2": {
 			"Cooldown Time" : 1.5,
 			"HP Cost" : 0.0,
 			"MP Cost" : 7.0,
@@ -370,9 +371,10 @@ TODO: We will add saves for classes as well
 			"Crit Chance Modifier" : 0.0,
 			"Dash Cooldown" : 0.0,
 			"Dash Speed Modifier" : 0.0,
-			"Knock Back Modifier" : 0.0
+			"Knock Back Modifier" : 0.0,
+			"Buff Time Limit": 0.0
 		},
-		"Double Jump": {
+		"Combat Ability 3": {
 			"Cooldown Time" : 1.0,
 			"HP Cost" : 0.0,
 			"MP Cost" : 7.0,
@@ -393,9 +395,10 @@ TODO: We will add saves for classes as well
 			"Crit Chance Modifier" : 0.0,
 			"Dash Cooldown" : 0.0,
 			"Dash Speed Modifier" : 0.0,
-			"Knock Back Modifier" : 0.0
+			"Knock Back Modifier" : 0.0,
+			"Buff Time Limit": 0.0
 		},
-		"Special Attack": {
+		"Combat Ability 4": {
 			"Cooldown Time" : 3.0,
 			"HP Cost" :10.0,
 			"MP Cost" : 12.0,
@@ -416,7 +419,8 @@ TODO: We will add saves for classes as well
 			"Crit Chance Modifier" : 0.0,
 			"Dash Cooldown" : 0.0,
 			"Dash Speed Modifier" : 0.0,
-			"Knock Back Modifier" : 0.0
+			"Knock Back Modifier" : 0.0,
+			"Buff Time Limit": 0.0
 		}
 	}
 }
@@ -434,9 +438,9 @@ TODO: We will add saves for classes as well
 	"Tyro": {
 		"Ability Stat Boost" : {
 			"Double Cleave": {"Unlocked":false, "Level": 0},
-			"Sword Dance": {"Unlocked":false, "Level": 0},
-			"Sword Slam": {"Unlocked":false, "Level": 0},
-			"Sword Soar": {"Unlocked":false, "Level": 0},
+			"Cyclone Slash": {"Unlocked":false, "Level": 0},
+			"Circle of Truth": {"Unlocked":false, "Level": 0},
+			"Iron Body": {"Unlocked":false, "Level": 0},
 		},
 		"Character Stat Boost" : {
 			"Armored Core": {"Unlocked":false, "Level": 0},

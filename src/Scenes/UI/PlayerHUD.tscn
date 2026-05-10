@@ -661,6 +661,7 @@ offset_bottom = 334.0
 mouse_filter = 2
 
 [node name="StartHuntChallengeButton" type="Button" parent="PlayerHUD" unique_id=183096058]
+visible = false
 layout_mode = 0
 offset_left = 1690.0
 offset_top = 65.0
