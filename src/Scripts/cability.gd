@@ -91,4 +91,5 @@ func load_stats() -> void:
 	crit_chance_modifier = saved_ability["Crit Chance Modifier"]
 	dash_cooldown_modifier = saved_ability["Dash Cooldown"]
 	dash_speed_modifier = saved_ability["Dash Speed Modifier"]
+	buff_limit_time = saved_ability["Buff Limit Time"]
 	#knock_back_modifier = saved_ability["Knock Back Modifier"]

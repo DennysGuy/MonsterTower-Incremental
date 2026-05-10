@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bx0n6ew6yeyjs" path="res://Assets/Tower/FloorElevator/FloorElevator_RightDoor.png" id="4_4rxmm"]
 [ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="5_pkawp"]
 [ext_resource type="Texture2D" uid="uid://bk4miqdmvi7gh" path="res://Assets/Enemies/CorruptedMushie/CorruptedMushieSpore.png" id="6_dr76s"]
+[ext_resource type="PackedScene" uid="uid://vo5sm7p34vo6" path="res://src/Scenes/Actors/Utilities/NameTag.tscn" id="7_otmhf"]
 
 [sub_resource type="Animation" id="Animation_d23mi"]
 resource_name = "DoorsClose"
@@ -191,5 +192,13 @@ layout_mode = 2
 texture = ExtResource("6_dr76s")
 stretch_mode = 2
 
+[node name="NameTag" parent="." unique_id=1232323974 instance=ExtResource("7_otmhf")]
+offset_left = -68.0
+offset_top = 85.0
+offset_right = 72.0
+offset_bottom = 101.0
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+
+[editable path="NameTag"]

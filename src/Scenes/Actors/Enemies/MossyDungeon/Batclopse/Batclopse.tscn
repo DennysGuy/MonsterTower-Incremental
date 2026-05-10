@@ -390,9 +390,10 @@ position = Vector2(-2.5, -26)
 shape = SubResource("RectangleShape2D_f4ywy")
 
 [node name="NameTag" parent="." unique_id=1709448218 instance=ExtResource("3_hjwao")]
-offset_left = -44.0
-offset_right = 44.0
-offset_bottom = 13.0
+offset_left = -42.0
+offset_top = 5.0
+offset_right = 46.0
+offset_bottom = 18.0
 
 [node name="EnemyHealthBar" parent="." unique_id=1239881938 instance=ExtResource("4_2p384")]
 visible = false

@@ -32,12 +32,12 @@ func save_file_exists() -> bool:
 	return ResourceLoader.exists(SAVE_PATH)
 
 func init_save_file() -> void:
-	PlayerStats.player_stats = current_save_game.player_stats.duplicate(true)
-	PlayerStats.facilities_unlocked = current_save_game.facilities_unlocked.duplicate(true)
-	PlayerStats.check_points_unlocked = current_save_game.check_points_unlocked.duplicate(true)
-	PlayerStats.equipped_abilities = current_save_game.equipped_abilities.duplicate(true)
+	PlayerStats.player_stats = current_save_game.player_stats
+	PlayerStats.facilities_unlocked = current_save_game.facilities_unlocked
+	PlayerStats.check_points_unlocked = current_save_game.check_points_unlocked
+	PlayerStats.equipped_abilities = current_save_game.equipped_abilities
 	
-	InventoryManager.inventories = current_save_game.inventories.duplicate(true)
+	InventoryManager.inventories = current_save_game.inventories
 	TechTreeManager.currency = current_save_game.currency
 	TechTreeManager.current_prestige = current_save_game.current_prestige
 	TechTreeManager.current_upgrade_count = current_save_game.current_upgrade_count
@@ -71,9 +71,10 @@ func save_tech_tree_data() -> void:
 
 func save_equipped_abilities() -> void:
 	for ability in PlayerStats.get_equipped_abilities().keys():
-		var save_game_ability = current_save_game.equipped_abilities[ability]
-		if save_game_ability:
-			save_game_ability = PlayerStats.get_equipped_ability(ability).resource_path
+		var loaded_ability = PlayerStats.get_equipped_ability(ability)
+		if loaded_ability:
+			var save_game_ability = current_save_game.equipped_abilities[ability]
+			save_game_ability = loaded_ability.resource_path
 	
 	save_game()
 

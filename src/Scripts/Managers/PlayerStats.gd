@@ -336,7 +336,7 @@ func load_abilities() -> void:
 	if SaveManager.current_save_game and SaveManager.current_save_game.player_stats["Class"] == "Junior Hunter":
 		return
 		
-	var ability_names : Array[String] = ["Air Attack", "Dash Attack", "Double Jump", "Special Attack"]
+	var ability_names : Array[String] = ["Air Attack", "Dash Attack", "Double Jump", "Special Attack", "Combat Ability 1", "Combat Ability 2", "Combat Ability 3", "Combat Ability 4"]
 
 	for ability_name in ability_names:
 		var equipped_ability : Ability = get_equipped_ability(ability_name)

@@ -7,6 +7,7 @@
 [ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="5_4on78"]
 [ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="6_micwh"]
 [ext_resource type="Texture2D" uid="uid://c46iu8v75jaon" path="res://Assets/NodeGraphics/AbilitiesTechTree/RowLock.png" id="7_d23mi"]
+[ext_resource type="PackedScene" uid="uid://vo5sm7p34vo6" path="res://src/Scenes/Actors/Utilities/NameTag.tscn" id="8_8fvq5"]
 
 [sub_resource type="Animation" id="Animation_d23mi"]
 resource_name = "DoorsClose"
@@ -226,5 +227,11 @@ visible = false
 position = Vector2(0, 26)
 texture = ExtResource("7_d23mi")
 
+[node name="NameTag" parent="." unique_id=1232323974 instance=ExtResource("8_8fvq5")]
+offset_top = 88.0
+offset_bottom = 104.0
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+
+[editable path="NameTag"]

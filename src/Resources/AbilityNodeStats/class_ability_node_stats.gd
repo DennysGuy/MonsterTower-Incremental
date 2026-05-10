@@ -90,7 +90,7 @@ func get_ability_modifiers() -> Dictionary:
 		"Dash Cooldown": dash_cooldown_modifier,
 		"Dash Speed": dash_speed_modifier,
 		"Hitbox Size": hit_box_size_modifier,
-		"Buff Time Limit": buff_limit_time
+		"Buff Limit Time": buff_limit_time
 	}
 
 func get_character_stat_modifiers() -> Dictionary:

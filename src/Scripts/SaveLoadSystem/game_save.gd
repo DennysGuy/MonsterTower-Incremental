@@ -224,7 +224,7 @@ TODO: We will add saves for classes as well
 	"Air Attack" : "uid://bukiike6rf6pl", #sword slam - for testing purposes
 	"Double Jump" : "uid://rgwunwula5mv", #sword soar - for testing purposes
 	"Special Attack" : null, #double cleave - here for testing purposes,
-	"Combat Ability 1" : null, #cyclone slash - for testing purposes
+	"Combat Ability 1" : "uid://dlbpje07usrj1", #cyclone slash - for testing purposes
 	"Combat Ability 2" : null, #Circle of Truth - for testing
 	"Combat Ability 3" : null, #Iron Body for Testing
 	"Combat Ability 4" : null, #Double Cleave for Testing
@@ -327,41 +327,41 @@ TODO: We will add saves for classes as well
 	},
 	"Tyro" : {##NEED TO ADD BUFF LIMIT TIME
 		"Combat Ability 1" : {
-			"Cooldown Time" : 2.0,
+			"Cooldown Time" : 6.0,
 			"HP Cost" : 0.0,
-			"MP Cost" : 10.0,
-			"Base Attack": 0.0,
-			"Number of Enemies Hit" : 0.0,
-			"Max Hit Count": 0.0,
+			"MP Cost" : 15.0,
+			"Base Attack": 50.0,
+			"Number of Enemies Hit" : 10.0,
+			"Max Hit Count": 1.0,
 			"Health Recovery" : 0.0,
 			"MP Recovery" : 0.0,
 			"Defense Modifier" : 0.0,
 			"Projectile Distance" : 0.0,
-			"Slow Wait Time" : 1.5,
-			"Stun Wait Time" : 0.0,
+			"Slow Wait Time" : 2.0,
+			"Stun Wait Time" : 2.0,
 			"Jump Height Modifier" : 0.0,
 			"Climb Speed Modifier" : 0.0,
-			"Attack Damage Modifier" : 0.6,
+			"Attack Damage Modifier" : 1.25,
 			"Move Speed Modifier" : 0.0,
 			"Crit Damage Modifier" : 0.0,
 			"Crit Chance Modifier" : 0.0,
 			"Dash Cooldown" : 0.0,
-			"Dash Speed Modifier" : 350.0,
+			"Dash Speed Modifier" : 0.0,
 			"Knock Back Modifier" : 0.0,
-			"Buff Time Limit": 0.0
+			"Buff Limit Time": 0.0
 		},
 		"Combat Ability 2": {
-			"Cooldown Time" : 1.5,
+			"Cooldown Time" : 8.0,
 			"HP Cost" : 0.0,
-			"MP Cost" : 7.0,
-			"Base Attack": 0.0,
+			"MP Cost" : 15.0,
+			"Base Attack": 15.0,
 			"Number of Enemies Hit" : 0.0,
 			"Max Hit Count": 0.0,
 			"Health Recovery" : 0.0,
 			"MP Recovery" : 0.0,
 			"Defense Modifier" : 0.0,
 			"Projectile Distance" : 100.0,
-			"Slow Wait Time" : 1.5,
+			"Slow Wait Time" : 3.0,
 			"Stun Wait Time" : 0.0,
 			"Jump Height Modifier" : 0.0,
 			"Climb Speed Modifier" : 0.0,
@@ -372,34 +372,34 @@ TODO: We will add saves for classes as well
 			"Dash Cooldown" : 0.0,
 			"Dash Speed Modifier" : 0.0,
 			"Knock Back Modifier" : 0.0,
-			"Buff Time Limit": 0.0
+			"Buff Limit Time": 0.0
 		},
 		"Combat Ability 3": {
-			"Cooldown Time" : 1.0,
+			"Cooldown Time" : 15.0,
 			"HP Cost" : 0.0,
-			"MP Cost" : 7.0,
+			"MP Cost" : 25.0,
 			"Base Attack": 0.0,
 			"Number of Enemies Hit" : 5.0,
 			"Max Hit Count": 1.0,
 			"Health Recovery" : 0.0,
 			"MP Recovery" : 0.0,
-			"Defense Modifier" : 0.0,
-			"Projectile Distance" : 100.0,
-			"Slow Wait Time" : 1.5,
+			"Defense Modifier" : 2.0,
+			"Projectile Distance" : 0.0,
+			"Slow Wait Time" : 0.0,
 			"Stun Wait Time" : 0.0,
-			"Jump Height Modifier" : 100.0,
+			"Jump Height Modifier" : 0.0,
 			"Climb Speed Modifier" : 0.0,
-			"Attack Damage Modifier" : 0.5,
-			"Move Speed Modifier" : 0.4,
+			"Attack Damage Modifier" : 0.0,
+			"Move Speed Modifier" : 0.0,
 			"Crit Damage Modifier" : 0.0,
 			"Crit Chance Modifier" : 0.0,
 			"Dash Cooldown" : 0.0,
 			"Dash Speed Modifier" : 0.0,
 			"Knock Back Modifier" : 0.0,
-			"Buff Time Limit": 0.0
+			"Buff Limit Time": 0.0
 		},
 		"Combat Ability 4": {
-			"Cooldown Time" : 3.0,
+			"Cooldown Time" : 5.0,
 			"HP Cost" :10.0,
 			"MP Cost" : 12.0,
 			"Base Attack": 0.0,
@@ -420,7 +420,7 @@ TODO: We will add saves for classes as well
 			"Dash Cooldown" : 0.0,
 			"Dash Speed Modifier" : 0.0,
 			"Knock Back Modifier" : 0.0,
-			"Buff Time Limit": 0.0
+			"Buff Limit Time": 0.0
 		}
 	}
 }

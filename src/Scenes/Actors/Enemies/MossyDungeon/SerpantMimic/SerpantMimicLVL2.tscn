@@ -434,9 +434,9 @@ shape = SubResource("RectangleShape2D_f4ywy")
 
 [node name="NameTag" parent="." unique_id=1709448218 instance=ExtResource("4_a48dt")]
 offset_left = -44.0
-offset_top = 0.0
+offset_top = 4.0
 offset_right = 44.0
-offset_bottom = 13.0
+offset_bottom = 17.0
 
 [node name="EnemyHealthBar" parent="." unique_id=1239881938 instance=ExtResource("5_3yihe")]
 visible = false
