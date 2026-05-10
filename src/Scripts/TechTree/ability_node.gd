@@ -101,6 +101,7 @@ func increment_ability_level() -> void:
 	
 	if ability_node_stats.node_type == ability_node_stats.NODE_TYPE.ABILITY_STAT_BOOST and ability_node_stats.current_upgrade_level == 1:
 		PlayerStats.equipped_abilities[ability_node_stats.ability_category] = ability_node_stats.ability_resource
+		SignalBus.unlock_cool_down_wheel.emit(ability_node_stats.ability_resource)
 		SaveManager.save_equipped_abilities()
 	
 	level_tracker.text = "[%s/%s]" % [ability_node_stats.current_upgrade_level, ability_node_stats.max_upgrade_level]

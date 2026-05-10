@@ -1,7 +1,8 @@
 [gd_resource type="Resource" script_class="Ability" format=3 uid="uid://rgwunwula5mv"]
 
 [ext_resource type="Resource" uid="uid://c2o0abk6esxah" path="res://src/Resources/AbilityStates/DoubleJumps/BasicDoubleJumpBehavior.tres" id="1_joq7q"]
-[ext_resource type="Script" path="res://src/Scripts/cability.gd" id="1_td2d8"]
+[ext_resource type="Script" uid="uid://bwqf7q51702b" path="res://src/Scripts/cability.gd" id="1_td2d8"]
+[ext_resource type="Texture2D" uid="uid://dduqgitj2ii5a" path="res://Assets/HUD/HUD_DJumpIcon.png" id="2_olbhh"]
 
 [resource]
 script = ExtResource("1_td2d8")
@@ -9,5 +10,6 @@ ability_name = "Basic Double Jump Ability"
 class_relation = "Junior Hunter"
 ability_type = 3
 cooldown_time = 0.5
+icon = ExtResource("2_olbhh")
 ability_description = "Press Jump in mid air to Jump again! How this makes sense? I do not know, but it is fun."
 ability_behavior = ExtResource("1_joq7q")

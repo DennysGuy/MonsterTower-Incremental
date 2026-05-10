@@ -30,6 +30,7 @@ func _ready() -> void:
 	AbilityTimers.start_ability_cooldown_timer.connect(start_progress_wheel)
 	TechTreeManager.set_ability_hud_icon.connect(set_icon)
 	SignalBus.set_icons.connect(set_icon)
+	SignalBus.unlock_cool_down_wheel.connect(unlock)
 	ability_title.text = ability_name
 	stored_ability = PlayerStats.get_equipped_ability(ability_name)
 	#description.text = PlayerStats.get_equipped_ability(ability_name).ability_description
@@ -62,57 +63,27 @@ func emit_ready_spark() -> void:
 	add_child(ready_spark)
 
 func set_icon() -> void:
-	match ability_name:
-		"Air Attack":
-			if PlayerStats.facilities_unlocked["Arial Slash"]:
-				icon.texture = preload("uid://q06lybw2gchf")
-			else:
-				icon.texture = preload("uid://cbcw7ua8sro78")
-			lmb.show()
-		"Double Jump":
-			if PlayerStats.facilities_unlocked["Double Jump"]:
-				icon.texture = preload("uid://dduqgitj2ii5a")
-			else:
-				icon.texture = preload("uid://cbcw7ua8sro78")
-			space.show()
-		"Dash Attack":
-			if PlayerStats.facilities_unlocked["Dash Attack"]:
-				icon.texture = preload("uid://dx6yh1h66vork")
-			else:
-				icon.texture = preload("uid://cbcw7ua8sro78")
-			rmb.show()
-		"Special Attack":
-			if PlayerStats.equipped_abilities["Special Attack"]:
-				icon.texture = preload("uid://dnqar1vwb0eae")
-			else:
-				icon.texture = preload("uid://cbcw7ua8sro78")
-			shift.show()
-		_:
-			if stored_ability:
-				icon.texture = stored_ability.icon
-				match stored_ability.ability_type:
-					stored_ability.ABILITY_TYPE.COMBAT_ABILITY_1:
-						button_1.show()
-					stored_ability.ABILITY_TYPE.COMBAT_ABILITY_2:
-						button_2.show()
-					stored_ability.ABILITY_TYPE.COMBAT_ABILITY_3:
-						button_3.show()
-					stored_ability.ABILITY_TYPE.COMBAT_ABILITY_4:
-						button_4.show()
+	if stored_ability:
+		icon.texture = stored_ability.icon
+		match stored_ability.ability_type:
+			stored_ability.ABILITY_TYPE.COMBAT_ABILITY_1:
+				button_1.show()
+			stored_ability.ABILITY_TYPE.COMBAT_ABILITY_2:
+				button_2.show()
+			stored_ability.ABILITY_TYPE.COMBAT_ABILITY_3:
+				button_3.show()
+			stored_ability.ABILITY_TYPE.COMBAT_ABILITY_4:
+				button_4.show()
+
+func unlock(ability : Ability) -> void:
+	if ability.get_ability_type_name() != ability_name:
+		return
+	
+	stored_ability = ability
+	set_icon()
 
 func ability_unlocked() -> bool:
-	if ability_name == "Special Attack":
-		return PlayerStats.get_equipped_ability("Special Attack") != null
-	
-	match ability_name:
-		"Air Attack": 
-			return PlayerStats.facilities_unlocked["Arial Slash"]
-		"Dash Attack":
-			return PlayerStats.facilities_unlocked[ability_name]
-		"Double Jump":
-			return PlayerStats.facilities_unlocked[ability_name]
-
-	return false
+	return stored_ability != null
 
 func _on_mouse_area_mouse_entered() -> void:
 	if ability_unlocked():

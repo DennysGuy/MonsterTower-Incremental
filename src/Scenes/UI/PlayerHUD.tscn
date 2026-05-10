@@ -19,6 +19,8 @@
 [ext_resource type="Texture2D" uid="uid://dix63priuogkk" path="res://Assets/NodeGraphics/NodeGraphicsV2/Bag1_V2.png" id="13_fw5mt"]
 [ext_resource type="PackedScene" uid="uid://djwayx7h06hx3" path="res://src/Scenes/UI/QuestHub.tscn" id="14_xxan5"]
 [ext_resource type="PackedScene" uid="uid://db7vqj43a3h6c" path="res://src/Scenes/UI/RoomInfoBanner.tscn" id="16_fnmb5"]
+[ext_resource type="Script" uid="uid://ck7lbxjw0rhmo" path="res://src/Scripts/HUD/ability_hub.gd" id="18_wn2hy"]
+[ext_resource type="PackedScene" uid="uid://cnnswhinxp2l4" path="res://src/Scenes/UI/AbilityCoolDownWheel.tscn" id="19_2jn0u"]
 [ext_resource type="PackedScene" uid="uid://bpp37520418mj" path="res://src/Scenes/UI/BuffBar.tscn" id="19_h7rl7"]
 [ext_resource type="FontFile" uid="uid://3dovpys2he1l" path="res://Assets/Fonts/Moodcake.ttf" id="19_tjlva"]
 
@@ -780,20 +782,65 @@ layout_mode = 1
 offset_top = -1080.0
 offset_bottom = -1080.0
 
-[node name="AbilityHub" parent="PlayerHUD" unique_id=1622225446 instance=ExtResource("2_fw5mt")]
+[node name="AbilityHub" type="Control" parent="PlayerHUD" unique_id=1622225446]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -508.0
+offset_left = -527.0
 offset_top = -97.0
-offset_right = 0.0
-offset_bottom = 0.0
+offset_right = -19.0
 grow_horizontal = 0
 grow_vertical = 0
 mouse_filter = 2
+script = ExtResource("18_wn2hy")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PlayerHUD/AbilityHub" unique_id=525809598]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -252.75
+offset_top = -40.0
+offset_right = 252.75
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 50
+alignment = 2
+
+[node name="AbilityCoolDownWheel" parent="PlayerHUD/AbilityHub/HBoxContainer" unique_id=1023824424 instance=ExtResource("19_2jn0u")]
+layout_mode = 2
+ability_name = "Dash Attack"
+
+[node name="AbilityCoolDownWheel2" parent="PlayerHUD/AbilityHub/HBoxContainer" unique_id=661819295 instance=ExtResource("19_2jn0u")]
+layout_mode = 2
+ability_name = "Air Attack"
+
+[node name="AbilityCoolDownWheel3" parent="PlayerHUD/AbilityHub/HBoxContainer" unique_id=1910498784 instance=ExtResource("19_2jn0u")]
+layout_mode = 2
+ability_name = "Double Jump"
+
+[node name="LicenseTierLevel" type="Label" parent="PlayerHUD/AbilityHub" unique_id=399173630]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -161.0
+offset_top = -35.0
+offset_right = -68.0
+offset_bottom = 35.0
+grow_vertical = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("5_nt012")
+theme_override_font_sizes/font_size = 48
+text = "I"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="AbilityHub2" parent="PlayerHUD" unique_id=1828877408 instance=ExtResource("2_fw5mt")]
 layout_mode = 1

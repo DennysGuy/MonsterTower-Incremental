@@ -1,7 +1,8 @@
 [gd_resource type="Resource" script_class="Ability" format=3 uid="uid://bukiike6rf6pl"]
 
 [ext_resource type="Resource" uid="uid://bmd0pcmjmoel0" path="res://src/Resources/AbilityStates/AirAttacks/BasicAirAttackBehavior.tres" id="1_o04ol"]
-[ext_resource type="Script" path="res://src/Scripts/cability.gd" id="1_x67r8"]
+[ext_resource type="Script" uid="uid://bwqf7q51702b" path="res://src/Scripts/cability.gd" id="1_x67r8"]
+[ext_resource type="Texture2D" uid="uid://q06lybw2gchf" path="res://Assets/HUD/HUD_AirIcon.png" id="2_ftb2v"]
 
 [resource]
 script = ExtResource("1_x67r8")
@@ -9,6 +10,7 @@ ability_name = "Air Attack"
 class_relation = "Junior Hunter"
 ability_type = 1
 cooldown_time = 0.7
+icon = ExtResource("2_ftb2v")
 ability_description = "Press Attack in mid air to swing your sword."
 ability_behavior = ExtResource("1_o04ol")
 number_of_enemies_hit = 1.0
