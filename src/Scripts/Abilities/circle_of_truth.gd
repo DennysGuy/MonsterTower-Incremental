@@ -34,5 +34,6 @@ func attack_enemies() -> void:
 		
 		var parent = area.get_parent() 
 		if parent is Enemy:
+			
 			parent.apply_slow_and_damage(ability.base_attack,ability.move_speed_modifier,ability.slow_wait_time)
 		await get_tree().create_timer(0.1).timeout

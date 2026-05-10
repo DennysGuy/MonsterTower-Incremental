@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://bpl8riejly88k" path="res://Assets/HUD/NewPlayerHUD/NewHUD_MouseIcons_Button2.png" id="12_4v1dv"]
 [ext_resource type="Texture2D" uid="uid://4t1ugei2yl7g" path="res://Assets/HUD/NewPlayerHUD/NewHUD_MouseIcons_Button3.png" id="13_lee52"]
 [ext_resource type="Texture2D" uid="uid://b3ot71qa8j1kn" path="res://Assets/HUD/NewPlayerHUD/NewHUD_MouseIcons_Button4.png" id="14_trrff"]
+[ext_resource type="FontFile" uid="uid://db8n06hek3pwn" path="res://Assets/Fonts/Alphakind.ttf" id="15_4v1dv"]
 
 [node name="AbilityCoolDownWheel" type="Control" unique_id=844176484]
 custom_minimum_size = Vector2(80, 80)
@@ -265,6 +266,22 @@ grow_horizontal = 0
 grow_vertical = 0
 texture = ExtResource("14_trrff")
 stretch_mode = 2
+
+[node name="CountDown" type="Label" parent="." unique_id=1576622765]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("15_4v1dv")
+theme_override_font_sizes/font_size = 60
+text = "5"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="mouse_entered" from="TextureButton" to="." method="_on_texture_button_mouse_entered"]
 [connection signal="mouse_exited" from="TextureButton" to="." method="_on_texture_button_mouse_exited"]

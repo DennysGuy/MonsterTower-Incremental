@@ -721,9 +721,9 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 25.0
+offset_left = 175.0
 offset_top = -185.0
-offset_right = 269.0
+offset_right = 419.0
 offset_bottom = -94.0
 grow_vertical = 0
 
@@ -811,7 +811,6 @@ offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 50
-alignment = 2
 
 [node name="AbilityCoolDownWheel" parent="PlayerHUD/AbilityHub/HBoxContainer" unique_id=1023824424 instance=ExtResource("19_2jn0u")]
 layout_mode = 2
@@ -849,9 +848,9 @@ anchor_left = 0.0
 anchor_top = 1.0
 anchor_right = 0.0
 anchor_bottom = 1.0
-offset_left = 5.0
+offset_left = 189.0
 offset_top = -97.0
-offset_right = 513.0
+offset_right = 697.0
 offset_bottom = 0.0
 grow_horizontal = 1
 grow_vertical = 0

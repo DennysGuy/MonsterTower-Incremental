@@ -32,12 +32,12 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	#if Input.is_action_just_pressed("add_currency"):
-		#TechTreeManager.currency += 500
-		#PlayerStats.player_stats["Current XP"] += 200
-		#LevelingManager.check_for_level_up()
-		#update_currency_label()
-		#TechTreeManager.check_if_can_purchase_node.emit()
+	if Input.is_action_just_pressed("add_currency"):
+		TechTreeManager.currency += 500
+		PlayerStats.player_stats["Current XP"] += 200
+		LevelingManager.check_for_level_up()
+		update_currency_label()
+		TechTreeManager.check_if_can_purchase_node.emit()
 	
 	if Input.is_action_just_pressed("close_menu"):
 		close_out()
