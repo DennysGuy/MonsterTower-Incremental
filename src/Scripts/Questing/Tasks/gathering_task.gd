@@ -34,6 +34,12 @@ func decrement_count(item : Item) -> void:
 
 	#save task
 
+func connect_signals() -> void:
+	if !QuestManager.increment_task_item_gather_count.connect(increment_count):
+		QuestManager.increment_task_item_gather_count.connect(increment_count)
+	if !QuestManager.decrement_task_item_gather_count.connect(decrement_count):
+		QuestManager.decrement_task_item_gather_count.connect(decrement_count)
+
 func reset_task_state() -> void:
 	SaveManager.current_save_game.tasks[task_id]["Completed"] = false
 	SaveManager.save_game()

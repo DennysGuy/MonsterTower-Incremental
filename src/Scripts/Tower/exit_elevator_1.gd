@@ -16,6 +16,7 @@ const ABILITY_ROW_UNLOCKED = preload("uid://joo0a5xuf1pm")
 
 @onready var row_lock: Sprite2D = $RowLock
 
+@onready var tag: Label = $NameTag/Bg/Tag
 
 @onready var needed_items_container: GridContainer = $NeededPanel/NeededItemsContainer
 
@@ -33,6 +34,8 @@ func _ready() -> void:
 			base.texture = FLOOR_ELEVATOR_BASE
 	else:
 		base.texture = FLOOR_ELEVATOR_BASE
+	
+	tag.text = next_room_data.floor_name
 	
 	if !current_room_data.hunt_challenge_completed and current_room_data.is_challenge_floor():
 		row_lock.show()

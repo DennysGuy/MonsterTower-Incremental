@@ -7,12 +7,21 @@ class_name PlayerMove extends State
 @export var attack_1_state : State
 @export var special_attack : State
 
+@export var combat_ability_1 : State
+@export var combat_ability_2 : State
+@export var combat_ability_3 : State
+@export var combat_ability_4 : State
+
 @export var move_sfx : AudioStream
 
 # --- Movement tuning ---
 @export var accel : float = 2000.0
 @export var decel : float = 2400.0
 @export var turn_resistance : float = 3000.0
+
+
+
+
 
 func enter() -> void:
 	super()
@@ -39,17 +48,32 @@ func process_physics(_delta: float) -> State:
 	if parent.jump_buffer_timer > 0 and parent.is_on_floor():
 		parent.jump_buffer_timer = 0
 		return jump_state
+	
+	if GameManager.can_issue_abilities:
+		if Input.is_action_just_pressed("dash_attack") and PlayerStats.facilities_unlocked["Dash Attack"] and parent.can_issue_ability("Dash Attack"):
+			return dash_attack_state
 
-	if Input.is_action_just_pressed("dash_attack") and PlayerStats.facilities_unlocked["Dash Attack"] and parent.can_issue_ability("Dash Attack") and GameManager.can_issue_abilities:
-		return dash_attack_state
+		if Input.is_action_just_pressed("special_attack") and PlayerStats.get_equipped_ability("Special Attack") and parent.can_issue_ability("Special Attack"):
+			return special_attack
 
-	if Input.is_action_just_pressed("special_attack") and Input.is_action_just_pressed("special_attack") and PlayerStats.get_equipped_ability("Special Attack") and parent.can_issue_ability("Special Attack"):
-		return special_attack
+		if Input.is_action_just_pressed("swing_sword") and GameManager.player_can_attack:
+			parent.attack_friction = 400
+			parent.max_attack_drift = 200
+			return attack_1_state
 
-	if Input.is_action_just_pressed("swing_sword") and GameManager.player_can_attack:
-		parent.attack_friction = 400
-		parent.max_attack_drift = 200
-		return attack_1_state
+		if Input.is_action_just_pressed("combat_ability_1") and PlayerStats.get_equipped_ability("Combat Ability 1") and parent.can_issue_ability("Combat Ability 1"):
+			parent.attack_friction = 400
+			parent.max_attack_drift = 200
+			return combat_ability_1
+
+		if Input.is_action_just_pressed("combat_ability_2") and PlayerStats.get_equipped_ability("Combat Ability 2") and parent.can_issue_ability("Combat Ability 2"):
+			return combat_ability_2
+		
+		if Input.is_action_just_pressed("combat_ability_3")  and PlayerStats.get_equipped_ability("Combat Ability 3") and parent.can_issue_ability("Combat Ability 3"):
+			return combat_ability_3
+		
+		if Input.is_action_just_pressed("combat_ability_4")  and PlayerStats.get_equipped_ability("Combat Ability 4") and parent.can_issue_ability("Combat Ability 4"):
+			return combat_ability_4
 
 	var input := Input.get_axis("pan_cam_left", "pan_cam_right")
 	var max_speed = PlayerStats.player_stats["Movement Speed"] + PlayerStats.get_current_sword().movement_speed_bonus + PlayerStats.get_total_gem_bonus("Movement Speed Bonus")

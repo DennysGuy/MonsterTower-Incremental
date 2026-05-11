@@ -4,9 +4,12 @@ extends Resource
 @export_group("Meta Data")
 @export var ability_name : String #Maybe this can be the "Animation Name" as well?
 @export var class_relation : String
-enum ABILITY_TYPE {STANDARD_ATTACK, AIR_ATTACK, DASH_ATTACK, DOUBLE_JUMP, SPECIAL_ATTACK}
+enum ABILITY_TYPE {STANDARD_ATTACK, AIR_ATTACK, DASH_ATTACK, DOUBLE_JUMP, SPECIAL_ATTACK, COMBAT_ABILITY_1, COMBAT_ABILITY_2, COMBAT_ABILITY_3, COMBAT_ABILITY_4}
+enum ATTACK_TYPE {NORMAL, SLOW, SILENCE}
 @export var ability_type : ABILITY_TYPE = ABILITY_TYPE.STANDARD_ATTACK
+@export var attack_type : ATTACK_TYPE = ATTACK_TYPE.NORMAL
 @export var cooldown_time : float
+@export var icon : Texture2D
 @export_multiline var ability_description : String
 
 @export_group("Behavior Resource")
@@ -35,6 +38,7 @@ enum ABILITY_TYPE {STANDARD_ATTACK, AIR_ATTACK, DASH_ATTACK, DOUBLE_JUMP, SPECIA
 @export var dash_speed_modifier : float
 @export var hit_box_size_modifier : Vector2
 @export var knock_back_modifier : float
+@export var buff_limit_time : float
 
 func get_ability_type_name() -> String:
 	match ability_type:
@@ -46,6 +50,14 @@ func get_ability_type_name() -> String:
 			return "Double Jump"
 		ABILITY_TYPE.SPECIAL_ATTACK:
 			return "Special Attack"
+		ABILITY_TYPE.COMBAT_ABILITY_1:
+			return "Combat Ability 1"
+		ABILITY_TYPE.COMBAT_ABILITY_2:
+			return "Combat Ability 2"
+		ABILITY_TYPE.COMBAT_ABILITY_3:
+			return "Combat Ability 3"
+		ABILITY_TYPE.COMBAT_ABILITY_4:
+			return "Combat Ability 4"
 		_:
 			return ""
 
@@ -79,4 +91,5 @@ func load_stats() -> void:
 	crit_chance_modifier = saved_ability["Crit Chance Modifier"]
 	dash_cooldown_modifier = saved_ability["Dash Cooldown"]
 	dash_speed_modifier = saved_ability["Dash Speed Modifier"]
+	buff_limit_time = saved_ability["Buff Limit Time"]
 	#knock_back_modifier = saved_ability["Knock Back Modifier"]

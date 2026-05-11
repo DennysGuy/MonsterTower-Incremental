@@ -459,9 +459,9 @@ offset_bottom = -118.0
 
 [node name="NameTag" parent="." unique_id=1505383136 instance=ExtResource("18_x53hj")]
 offset_left = -45.0
-offset_top = 1.0
+offset_top = 5.0
 offset_right = 43.0
-offset_bottom = 14.0
+offset_bottom = 18.0
 is_elite_enemy = true
 
 [node name="BlinkTimer" type="Timer" parent="." unique_id=1798852558]

@@ -58,7 +58,9 @@ func _ready() -> void:
 		destroy_door_locks()
 	
 	await get_tree().process_frame
+	
 	QuestManager.check_map_name.emit(map_name)
+	unlock_quests()
 	PlayerHudSignalBus.update_map_name_label.emit(map_name)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

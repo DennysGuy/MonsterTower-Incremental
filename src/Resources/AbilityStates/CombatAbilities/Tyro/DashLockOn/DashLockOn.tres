@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Ability" format=3 uid="uid://ctgyhf5hrfyad"]
+
+[ext_resource type="Script" uid="uid://bwqf7q51702b" path="res://src/Scripts/cability.gd" id="1_g8g7m"]
+
+[resource]
+script = ExtResource("1_g8g7m")
+ability_name = "Lock On Dash"
+class_relation = "Tyro"
+ability_description = "The Dash Ability now tags an enemy with a lock-on target Icon.
+
+ The next attack will deal damage with a multiplier based on upgrade level."
+metadata/_custom_type_script = "uid://bwqf7q51702b"

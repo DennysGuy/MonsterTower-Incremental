@@ -21,7 +21,32 @@ one_shot = true
 process_callback = 0
 one_shot = true
 
+[node name="CombatAbilityTimer1" type="Timer" parent="." unique_id=840924257]
+process_callback = 0
+one_shot = true
+
+[node name="CombatAbilityTimer2" type="Timer" parent="." unique_id=721284235]
+process_callback = 0
+one_shot = true
+
+[node name="CombatAbilityTimer3" type="Timer" parent="." unique_id=2071312278]
+process_callback = 0
+one_shot = true
+
+[node name="CombatAbilityTimer4" type="Timer" parent="." unique_id=1572046434]
+process_callback = 0
+one_shot = true
+
+[node name="BuffTimer1" type="Timer" parent="." unique_id=2065262641]
+process_callback = 0
+one_shot = true
+
 [connection signal="timeout" from="DashAttackTimer" to="." method="_on_dash_attack_timer_timeout"]
 [connection signal="timeout" from="AirAttackTimer" to="." method="_on_air_attack_timer_timeout"]
 [connection signal="timeout" from="DoubleJumpTimer" to="." method="_on_double_jump_timer_timeout"]
 [connection signal="timeout" from="SpecialAttackTimer" to="." method="_on_special_attack_timer_timeout"]
+[connection signal="timeout" from="CombatAbilityTimer1" to="." method="_on_combat_ability_timer_1_timeout"]
+[connection signal="timeout" from="CombatAbilityTimer2" to="." method="_on_combat_ability_timer_2_timeout"]
+[connection signal="timeout" from="CombatAbilityTimer3" to="." method="_on_combat_ability_timer_3_timeout"]
+[connection signal="timeout" from="CombatAbilityTimer4" to="." method="_on_combat_ability_timer_4_timeout"]
+[connection signal="timeout" from="BuffTimer1" to="." method="_on_buff_timer_1_timeout"]

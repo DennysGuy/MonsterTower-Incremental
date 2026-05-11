@@ -6,7 +6,6 @@
 [ext_resource type="Resource" uid="uid://dc1w8j6bij16s" path="res://src/Resources/Quests/Intro/MainQuests/Introduction/4_Tip of the Iceberg/Tasks/UnlockCookingStationNode.tres" id="4_rrli4"]
 [ext_resource type="Resource" uid="uid://d1lq04768poir" path="res://src/Resources/Quests/Intro/MainQuests/Introduction/4_Tip of the Iceberg/Tasks/UnlockSmeltingStationNode.tres" id="5_6ilnj"]
 [ext_resource type="Resource" uid="uid://b62ck44x6hr61" path="res://src/Resources/Quests/Intro/MainQuests/Introduction/4_Tip of the Iceberg/Tasks/ReachFloor1-3Task.tres" id="6_s3tkk"]
-[ext_resource type="Resource" uid="uid://dexwik3i88q0d" path="res://src/Resources/Quests/Intro/MainQuests/Introduction/4_Tip of the Iceberg/Tasks/TurnInJobRequestTask.tres" id="7_t5m8v"]
 
 [resource]
 script = ExtResource("2_53blf")
@@ -15,5 +14,5 @@ quest_id = 10
 status = 1
 chapter_relation = "Introdcution"
 next_quest = "Finding a Profession"
-tasks = Array[ExtResource("3_xjg0h")]([ExtResource("4_rrli4"), ExtResource("5_6ilnj"), ExtResource("6_s3tkk"), ExtResource("7_t5m8v")])
+tasks = Array[ExtResource("3_xjg0h")]([ExtResource("4_rrli4"), ExtResource("5_6ilnj"), ExtResource("6_s3tkk")])
 metadata/_custom_type_script = "uid://be6vh0qellkjq"

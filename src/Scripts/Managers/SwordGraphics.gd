@@ -13,7 +13,11 @@ var sword_textures : Dictionary = {
 		"Climb":preload("uid://bxp4omipurasx"),
 		"SwordSoar": preload("uid://bju208fm34q1i"),
 		"SwordSlam": preload("uid://b7dgsrumi85gy"),
-		"DoubleCleave": preload("uid://ubudq3lg48pa")
+		"DoubleCleave": preload("uid://ubudq3lg48pa"),
+		"CycloneSlash": preload("uid://c5b4p54lu8tqi"),
+		"IronBody": preload("uid://cigmveocctl7m"),
+		"CircleOfTruth" : preload("uid://dtcrlkchqxhe0"),
+		"BasicDash" : preload("uid://d2bhjtp3erg2i")
 	},
 	"Shroom Fibre Blade" : {
 		"Idle": preload("uid://decldm83dahcq"),
@@ -27,7 +31,11 @@ var sword_textures : Dictionary = {
 		"Climb": preload("uid://bj3fqpa35cwsk"),
 		"SwordSoar": preload("uid://b2xek5bmcb4a"),
 		"SwordSlam": preload("uid://bb8i6gvwgqsjy"),
-		"DoubleCleave": preload("uid://cw87r1yvb8san")
+		"DoubleCleave": preload("uid://cw87r1yvb8san"),
+		"CycloneSlash": preload("uid://dc1i7yvi7e0sm"),
+		"IronBody": preload("uid://donx23cn8llnl"),
+		"CircleOfTruth": preload("uid://bg0prb5vparob"),
+		"BasicDash" : preload("uid://pxg4wsqdrd3d")
 	},
 	"Bronze Fang Blade" : {
 		"Idle": preload("uid://cnkd1sn66y2ev"),
@@ -41,7 +49,11 @@ var sword_textures : Dictionary = {
 		"Climb": preload("uid://djnmym5xlblfi"),
 		"SwordSoar": preload("uid://emq5do1fc44c"),
 		"SwordSlam":preload("uid://5h15bet6jee3"),
-		"DoubleCleave": preload("uid://bad3j5pey3k36")
+		"DoubleCleave": preload("uid://bad3j5pey3k36"),
+		"CycloneSlash": preload("uid://cd4w1t36y4pyw"),
+		"IronBody": preload("uid://ct5gcpqihh32b"),
+		"CircleOfTruth": preload("uid://ctcincrx7yf48"),
+		"BasicDash": preload("uid://d3pwnhrwyilch")
 	},
 	"Iron Broad Sword" : {
 		"Idle": preload("uid://dtvd0ax0xli76"),
@@ -55,7 +67,11 @@ var sword_textures : Dictionary = {
 		"Climb": preload("uid://bcknti7tfmpnc"),
 		"SwordSoar": preload("uid://j4del2xexl02"),
 		"SwordSlam": preload("uid://c46m5505v4ljd"),
-		"DoubleCleave": preload("uid://5ji20u66hw31")
+		"DoubleCleave": preload("uid://5ji20u66hw31"),
+		"CycloneSlash": preload("uid://crgojonliiddi"),
+		"IronBody": preload("uid://bjgbkqsoo5lu4"),
+		"CircleOfTruth": preload("uid://wo2wr6ttll72"),
+		"BasicDash": preload("uid://dbfg8xcnk7opf")
 	},
 	"Lurker's Rapier" : {
 		"Idle": preload("uid://cm80d7fsbve4o"),
@@ -69,7 +85,11 @@ var sword_textures : Dictionary = {
 		"Climb": preload("uid://o2ww0tdqcypg"),
 		"SwordSoar": preload("uid://eowi25qc4fsw"),
 		"SwordSlam": preload("uid://h3wsuchgnm5a"),
-		"DoubleCleave": preload("uid://xken7iat8syv")
+		"DoubleCleave": preload("uid://xken7iat8syv"),
+		"CycloneSlash": preload("uid://xnrb5s450pht"),
+		"IronBody": preload("uid://cwef1ias3oj1y"),
+		"CircleOfTruth": preload("uid://2by3rjpuopj1"),
+		"BasicDash": preload("uid://ddinrpgabivul")
 	}
 }
 

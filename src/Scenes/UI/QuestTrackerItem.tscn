@@ -23,15 +23,15 @@ quest_title = NodePath("PanelContainer/VBoxContainer/QuestTitle")
 
 [node name="PanelContainer" type="Control" parent="." unique_id=610836170]
 self_modulate = Color(1, 1, 1, 0.48235294)
-custom_minimum_size = Vector2(0, 200)
+custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=311012850]
 layout_mode = 0
 offset_left = -177.0
 offset_right = 373.0
-offset_bottom = 237.0
-theme_override_constants/separation = 1
+offset_bottom = 209.625
+theme_override_constants/separation = 2
 
 [node name="QuestTitle" type="RichTextLabel" parent="PanelContainer/VBoxContainer" unique_id=1215813679]
 custom_minimum_size = Vector2(300, 40)
@@ -52,4 +52,4 @@ theme_override_constants/margin_left = 29
 
 [node name="Checklist" type="VBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer" unique_id=1252535657]
 layout_mode = 2
-theme_override_constants/separation = 25
+theme_override_constants/separation = 23

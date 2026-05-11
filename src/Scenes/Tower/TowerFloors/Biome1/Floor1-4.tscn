@@ -102,6 +102,7 @@ mp_replenish_points = NodePath("MPVials")
 path = "uid://bcb7mqtk7hdgw"
 sfx_player = NodePath("SfxPlayer")
 monster_spawn_node = NodePath("MonsterSpawnNode")
+job_unlocks = Array[String](["Supplies For Our Comrades 1"])
 map_type = 2
 ambience_player = NodePath("AmbiencePlayer")
 ambience_sfx = ExtResource("4_h5nvt")
@@ -638,8 +639,8 @@ ExtResource("19_l0dm6"): 50,
 ExtResource("24_3ad0h"): 50
 })
 challenge_monster_list = Dictionary[PackedScene, int]({
-ExtResource("19_l0dm6"): 50,
-ExtResource("24_3ad0h"): 50
+ExtResource("24_3ad0h"): 50,
+ExtResource("19_l0dm6"): 50
 })
 area_collision_shape = NodePath("CollisionShape2D")
 

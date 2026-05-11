@@ -72,3 +72,5 @@ func is_job() -> bool:
 func load_quest_status() -> void:
 	status = SaveManager.current_save_game.quests[quest_id]["Status"]
 	turned_in = SaveManager.current_save_game.quests[quest_id]["Turned In"]
+	if !is_completed():
+		pass

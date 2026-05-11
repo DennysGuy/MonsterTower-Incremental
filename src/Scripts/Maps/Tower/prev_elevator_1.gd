@@ -5,13 +5,14 @@ class_name PrevElevator extends Node2D
 @export var last_spawn_point : int
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var move_to_next_room_label: Label = $MoveToNextRoomLabel
+@onready var tag: Label = $NameTag/Bg/Tag
 
 var player_in_range : bool = false
 var doors_open : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	tag.text = prev_floor_data.floor_name
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

@@ -142,3 +142,6 @@ signal show_gem_station_arrow
 signal disable_enemy_hit_box
 @warning_ignore("unused_signal")
 signal enable_enemy_hit_box
+
+@warning_ignore("unused_signal")
+signal unlock_cool_down_wheel(ability : Ability)

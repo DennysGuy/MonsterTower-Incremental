@@ -56,10 +56,11 @@ func _ready() -> void:
 				PlayerHudSignalBus.show_hunt_challenge_button.emit()
 			else:
 				SignalBus.hide_hunt_challenge_button.emit()
-				
+		
 		SignalBus.start_enemy_spawn.emit()
 		PlayerHudSignalBus.start_stop_watch.emit()
-		
+	
+	unlock_quests()
 	PlayerHudSignalBus.update_map_name_label.emit(map_name)
 	SignalBus.update_banner_info.emit(tower_entrance_data)
 # Called every frame. 'delta' is the elapsed time since the previous frame.

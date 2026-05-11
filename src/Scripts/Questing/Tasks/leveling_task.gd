@@ -4,11 +4,13 @@ class_name LevelingTask extends Task
 
 
 func check_level() -> void:
-	if PlayerStats.player_stats["Level"] == level_needed:
-		completed = true
-		QuestManager.play_task_completion_animation.emit(task_id,true)
-		SaveManager.save_task_completed_status(task_id, completed)
+	if PlayerStats.player_stats["Level"] >= level_needed:
+		complete_task()
 		#save task
+
+func connect_signals() -> void:
+	if !QuestManager.check_level.connect(check_level):
+		QuestManager.check_level.connect(check_level)
 
 func build_task_list_item() -> TaskListItem:
 	var new_task : TaskListItem = preload("uid://cb5m6ynmba10o").instantiate()

@@ -2,10 +2,12 @@ class_name JobBoard extends Node2D
 
 var player_in_range : bool = false
 @onready var notice: Label = $Notice
+@onready var jobs_available_notice: Label = $JobsAvailableNotice
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	if GameManager.new_jobs_available:
+		jobs_available_notice.show()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

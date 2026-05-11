@@ -10,6 +10,11 @@
 [ext_resource type="Texture2D" uid="uid://bo1bwa2utft0" path="res://Assets/HUD/NewPlayerHUD/NewHUD_MouseIcons_RightMouseBTN.png" id="6_nn1jg"]
 [ext_resource type="Texture2D" uid="uid://kf7in2uvo1lo" path="res://Assets/HUD/NewPlayerHUD/NewHUD_Shift_Icon.png" id="7_eecgt"]
 [ext_resource type="Texture2D" uid="uid://d32bicigugkum" path="res://Assets/HUD/NewPlayerHUD/NewHUD_Space_Icon.png" id="8_8lnof"]
+[ext_resource type="Texture2D" uid="uid://hl5p2lj5pxmg" path="res://Assets/HUD/NewPlayerHUD/NewHUD_MouseIcons_Button1.png" id="11_dc2p2"]
+[ext_resource type="Texture2D" uid="uid://bpl8riejly88k" path="res://Assets/HUD/NewPlayerHUD/NewHUD_MouseIcons_Button2.png" id="12_4v1dv"]
+[ext_resource type="Texture2D" uid="uid://4t1ugei2yl7g" path="res://Assets/HUD/NewPlayerHUD/NewHUD_MouseIcons_Button3.png" id="13_lee52"]
+[ext_resource type="Texture2D" uid="uid://b3ot71qa8j1kn" path="res://Assets/HUD/NewPlayerHUD/NewHUD_MouseIcons_Button4.png" id="14_trrff"]
+[ext_resource type="FontFile" uid="uid://db8n06hek3pwn" path="res://Assets/Fonts/Alphakind.ttf" id="15_4v1dv"]
 
 [node name="AbilityCoolDownWheel" type="Control" unique_id=844176484]
 custom_minimum_size = Vector2(80, 80)
@@ -193,6 +198,90 @@ grow_horizontal = 0
 grow_vertical = 0
 texture = ExtResource("8_8lnof")
 stretch_mode = 2
+
+[node name="Button1" type="TextureRect" parent="." unique_id=2034046833]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -18.0
+offset_top = -22.0
+offset_right = 6.0
+offset_bottom = 9.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("11_dc2p2")
+stretch_mode = 2
+
+[node name="Button2" type="TextureRect" parent="." unique_id=881406122]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -18.0
+offset_top = -22.0
+offset_right = 6.0
+offset_bottom = 9.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("12_4v1dv")
+stretch_mode = 2
+
+[node name="Button3" type="TextureRect" parent="." unique_id=1153126168]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -18.0
+offset_top = -22.0
+offset_right = 6.0
+offset_bottom = 9.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("13_lee52")
+stretch_mode = 2
+
+[node name="Button4" type="TextureRect" parent="." unique_id=518578643]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -18.0
+offset_top = -22.0
+offset_right = 6.0
+offset_bottom = 9.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("14_trrff")
+stretch_mode = 2
+
+[node name="CountDown" type="Label" parent="." unique_id=1576622765]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("15_4v1dv")
+theme_override_font_sizes/font_size = 60
+text = "5"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="mouse_entered" from="TextureButton" to="." method="_on_texture_button_mouse_entered"]
 [connection signal="mouse_exited" from="TextureButton" to="." method="_on_texture_button_mouse_exited"]

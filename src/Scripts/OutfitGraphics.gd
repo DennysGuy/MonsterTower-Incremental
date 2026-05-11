@@ -16,7 +16,11 @@ var outfit_graphics : Dictionary = {
 		"DoubleCleave": preload("uid://4vkwnouwrrvw"),
 		"SwordSoar": preload("uid://byycfcy4i7vap"),
 		"SwordSlam": preload("uid://c6outchyu637"),
-		"BasicAttackEffect": preload("uid://bvj4nyj0lqt7s")
+		"BasicAttackEffect": preload("uid://bvj4nyj0lqt7s"),
+		"CycloneSlash": preload("uid://cwehmdaknb5ko"),
+		"IronBody": preload("uid://s3c87yot2mlq"),
+		"CircleOfTruth": preload("uid://crb6j81csruty"),
+		"BasicDash": preload("uid://dp8eilpd2k4li")
 	},
 	"Tyro" : {
 		"Idle": preload("uid://bsy5tgiwm7wxj"),
@@ -32,7 +36,11 @@ var outfit_graphics : Dictionary = {
 		"DoubleCleave": preload("uid://4vkwnouwrrvw"),
 		"SwordSoar": preload("uid://byycfcy4i7vap"),
 		"SwordSlam": preload("uid://c6outchyu637"),
-		"BasicAttackEffect": preload("uid://cn3s2uyi5i0pn")
+		"BasicAttackEffect": preload("uid://cn3s2uyi5i0pn"),
+		"CycloneSlash": preload("uid://cwehmdaknb5ko"),
+		"IronBody": preload("uid://s3c87yot2mlq"),
+		"CircleOfTruth": preload("uid://crb6j81csruty"),
+		"BasicDash": preload("uid://qg85t3wo7ly")
 	}
 }
 

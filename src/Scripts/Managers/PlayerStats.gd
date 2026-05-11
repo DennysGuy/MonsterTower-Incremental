@@ -8,6 +8,17 @@ This is for testing purposes
 
 '''
 
+#global stat buff modifiers
+var attack_buff_mod : float = 1.0
+var crit_chance_buff_mod : float = 0.0
+var crit_damage_buff_mod : float = 1.0
+var defense_buff_mod : float = 1.0
+var health_buff_mod : float = 0.0
+var knock_back_buff_mod : float = 1.0
+var move_speed_buff_mod : float = 0.0
+var cool_down_speed_buff_mod : float = 0.0
+var dodge_chance_buff_mod : float = 0.0 # not a thing a yet
+
 const KNOCKBACK_FORCE : int = 300
 
 @onready var player_stats : Dictionary = {
@@ -61,7 +72,8 @@ const KNOCKBACK_FORCE : int = 300
 	"Tier 1 Chest Spawn Rate": 0.05,
 	"Tier 1 Gem Drop Rate":0.3,
 	"Chalice Spawn Rate":0.20,
-	"Vial Spawn Rate": 0.20
+	"Vial Spawn Rate": 0.20,
+	"Lock On Multiplier" : 1.25
 }
 
 var equipped_abilities : Dictionary = {
@@ -71,7 +83,11 @@ var equipped_abilities : Dictionary = {
 	"Dash Attack" : null, #basic dash attack
 	"Air Attack" : null, #basic air attack
 	"Double Jump" : null, #basic double jump
-	"Special Attack" : null,
+	"Special Attack" : null, #Not Going to Be Used
+	"Combat Ability 1": null,
+	"Combat Ability 2": null,
+	"Combat Ability 3": null,
+	"Combat Ability 4": null
 }
 
 var equipped_gem_sockets : Dictionary = {
@@ -188,7 +204,11 @@ var player_classes : Dictionary = {
 		"Air Attack": 	preload("uid://dcxiodvnbqgef"),
 		"Dash Attack": preload("uid://c3llqiy2fb5n5"),
 		"Double Jump": preload("uid://ctavgtgbvyp1w"),
-		"Special Attack": preload("uid://cs0umnvsvjhnh")
+		"Special Attack": preload("uid://cs0umnvsvjhnh"),
+		"Combat Ability 1" : null,
+		"Combat Ability 2" : null,
+		"Combat Ability 3" : null,
+		"Combat Ability 4" : null
 	}
 }
 
@@ -196,9 +216,9 @@ var player_classes : Dictionary = {
 var class_ability_node_stats : Dictionary = {
 	"Tyro" : {
 		"Abilities": {
-			0 : preload("uid://c71wdmkmxxxct"),
-			1 : preload("uid://dhavx7c8nci4q"),
-			2 : preload("uid://cpg586qwrplgy"),
+			0 : preload("uid://dm3c3phl6fkid"),
+			1 : preload("uid://cjc20n6ld53u3"),
+			2 : preload("uid://js4itkff48rn"),
 			3 : preload("uid://b1tqtyjdmcrui")
 		},
 		"Stat Upgrades": {
@@ -316,7 +336,7 @@ func load_abilities() -> void:
 	if SaveManager.current_save_game and SaveManager.current_save_game.player_stats["Class"] == "Junior Hunter":
 		return
 		
-	var ability_names : Array[String] = ["Air Attack", "Dash Attack", "Double Jump", "Special Attack"]
+	var ability_names : Array[String] = ["Air Attack", "Dash Attack", "Double Jump", "Special Attack", "Combat Ability 1", "Combat Ability 2", "Combat Ability 3", "Combat Ability 4"]
 
 	for ability_name in ability_names:
 		var equipped_ability : Ability = get_equipped_ability(ability_name)
@@ -349,3 +369,13 @@ func recover_mp(amount : int) -> void:
 	
 	PlayerHudSignalBus.update_player_mp.emit()
 	
+func reset_global_stat_buffs() -> void:
+	attack_buff_mod = 1.0
+	crit_chance_buff_mod = 0.0
+	crit_damage_buff_mod = 1.0
+	defense_buff_mod = 1.0
+	health_buff_mod = 0.0
+	knock_back_buff_mod = 1.0
+	move_speed_buff_mod = 0.0
+	cool_down_speed_buff_mod = 0.0
+	dodge_chance_buff_mod  = 0.0 # not a thing a yet

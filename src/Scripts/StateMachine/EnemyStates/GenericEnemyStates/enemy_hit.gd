@@ -14,14 +14,20 @@ func enter() -> void:
 	super()
 	parent.disable_hurt_box()
 	parent.disable_hit_box()
-	parent.timer.wait_time = wait_time
+	parent.timer.wait_time = parent.knock_back_wait_time
 	parent.timer.start()
+	if parent.locked_on:
+		parent.remove_stun_marker()
 	#parent.sfx_player.play_sfx(impacts.pick_random())
 
 func exit() -> void:
+	parent.knock_back_direction = 1
 	parent.damageable = true
+	if !parent.is_silenced:
+		parent.enable_hit_box()
+	
 	parent.enable_hurt_box()
-	parent.enable_hit_box()
+		
 	
 func process_input(_event: InputEvent) -> State:
 	return null
@@ -32,7 +38,7 @@ func process_frame(_delta: float) -> State:
 func process_physics(_delta: float) -> State:
 		#will need to figure out how to dynamically set this so that we can account for an assortment of skills
 	var direction_vector = (parent.global_position - parent.player.global_position).normalized()
-	var direction = GameManager.set_direction(direction_vector.x)
+	var direction = GameManager.set_direction(direction_vector.x) * parent.knock_back_direction
 	if parent.can_knock_back:
 		parent.velocity.x = direction * parent.enemy_stats.movement_speed + 20
 		parent.move_and_slide()

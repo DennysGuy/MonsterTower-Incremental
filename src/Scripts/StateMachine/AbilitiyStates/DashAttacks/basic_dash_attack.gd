@@ -3,7 +3,7 @@ class_name BasicDashAttack extends DashAttackBehavior
 func on_enter(player : Player) -> void:
 	parent = player
 	parent.dash_attack_collision_shape.disabled = false
-	parent.sfx_player.play_sfx(sfx,3.0)
+	parent.play_sfx(sfx,3.0)
 
 func apply_input() -> void:
 	pass

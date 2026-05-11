@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://kkh0a51yvn2h"]
 
 [ext_resource type="Texture2D" uid="uid://banlwmpk25ol3" path="res://Assets/HUD/NotificationBar/APNotificationIconDisabled.png" id="2_1b7ws"]
-[ext_resource type="Texture2D" uid="uid://biejo5klu1ujp" path="res://Assets/HUD/NotificationBar/PulsingGlow.png" id="2_ecct1"]
+[ext_resource type="PackedScene" uid="uid://cyreitke11ia3" path="res://src/Scenes/UI/IconGlow.tscn" id="2_ecct1"]
 [ext_resource type="Script" uid="uid://rli85bbxfftd" path="res://src/Scripts/HUD/hub_notification_icon.gd" id="2_i5ekw"]
 [ext_resource type="FontFile" uid="uid://dgu1a66dfe8w" path="res://Assets/Fonts/Maplestory OTF Light.otf" id="4_ecct1"]
 
@@ -23,24 +23,19 @@ mouse_default_cursor_shape = 2
 script = ExtResource("2_i5ekw")
 aura = NodePath("Glow")
 
-[node name="Glow" type="TextureRect" parent="." unique_id=2127501772]
-visible = false
-custom_minimum_size = Vector2(48, 48)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -25.0
-offset_top = -24.0
-offset_right = 23.0
-offset_bottom = 24.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(25, 25)
-texture = ExtResource("2_ecct1")
-expand_mode = 1
+[node name="Glow" parent="." unique_id=240318874 instance=ExtResource("2_ecct1")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 48.0
+offset_bottom = 48.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="Icon" type="TextureRect" parent="." unique_id=2088020045]
 custom_minimum_size = Vector2(32, 32)

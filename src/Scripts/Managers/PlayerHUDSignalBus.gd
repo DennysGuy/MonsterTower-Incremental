@@ -96,3 +96,6 @@ signal spawn_job_board_menu
 
 @warning_ignore("unused_signal")
 signal update_job_board_button(quest_data : Quest)
+
+@warning_ignore("unused_signal")
+signal add_buff_activated_icon(timer : Timer, ability : Ability)

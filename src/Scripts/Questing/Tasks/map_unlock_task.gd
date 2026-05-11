@@ -6,11 +6,11 @@ func check_map_name(selected_map_name : String) -> void:
 	if selected_map_name != map_name or completed:
 		return 
 	
-	completed = true
-	QuestManager.play_task_completion_animation.emit(task_id,true)
-	SaveManager.save_task_completed_status(task_id, completed)
-	QuestManager.update_task_list_item.emit(task_id)
+	complete_task()
 
+func connect_signals() -> void:
+	if !QuestManager.check_map_name.connect(check_map_name):
+		QuestManager.check_map_name.connect(check_map_name)
 
 func build_task_list_item() -> TaskListItem:
 	#we'll load in the necessary data here

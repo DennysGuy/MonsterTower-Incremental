@@ -20,6 +20,7 @@ var event_speed_mod : float = 1.0
 var boss_door_challenge_active : bool = false
 var on_boss_door_floor : bool = false
 var room_speed_bonus : float = 1.0
+var new_jobs_available : bool = false
 enum NOTIFICATION_TYPE {CRAFTING, COOKING, SMELTING, AP, QUEST}
 
 # Called when the node enters the scene tree for the first time.
@@ -37,7 +38,7 @@ func set_player_box_direction(flip_h : bool):
 	else:
 		return 1
 
-func attack_enemies(enemies_in_hitbox : Array, enemies_hit : int = 1, number_of_hits : int = 1, player : Player = null, incoming_damage : int = 0, is_crit : bool = false, is_warrior : bool = false, rep_delay : float = 0.1) -> void:
+func attack_enemies(enemies_in_hitbox : Array, enemies_hit : int = 1, number_of_hits : int = 1, player : Player = null, incoming_damage : int = 0, is_crit : bool = false, is_warrior : bool = false, rep_delay : float = 0.1, ability : Ability = null) -> void:
 	var targets = calculate_targets(enemies_in_hitbox, player, enemies_hit)
 	for enemy in targets:
 		if is_instance_valid(enemy):
@@ -58,23 +59,32 @@ func attack_enemies(enemies_in_hitbox : Array, enemies_hit : int = 1, number_of_
 			var label_position : int = 40
 			while i < attack_reps:
 				#enemy.sfx_player.play()
-				attack_enemy(player, enemy, damage, is_crit, 0, is_warrior, label_position)
+				attack_enemy(player, enemy, damage, is_crit, 0, is_warrior, label_position, ability)
 
 				i += 1
 				label_position += 15
-				await player.get_tree().create_timer(0.12).timeout
+				await player.get_tree().create_timer(0.1).timeout
 			
 			if is_instance_valid(enemy) and enemy.health <= 0:
 				enemies_in_hitbox.erase(enemy)
 
-func attack_enemy(player : Player, enemy : Enemy, incoming_damage : int, is_crit : bool, hit_freeze : float = 0.02, is_warrior : bool = false, label_position : int = 40) -> void:
+func attack_enemy(player : Player, enemy : Enemy, incoming_damage : int, is_crit : bool, hit_freeze : float = 0.02, is_warrior : bool = false, label_position : int = 40, ability : Ability = null) -> void:
 	SignalBus.shake_camera.emit(0.5)
 	HitStopManager.freeze(hit_freeze, 0.1, 0.0, 0.03)
 	if is_warrior:
 		enemy.increment_break_count()
+		
+	if ability:
+		match ability.attack_type:
+			ability.ATTACK_TYPE.NORMAL:
+				enemy.apply_damage(incoming_damage, is_crit, label_position)
+			ability.ATTACK_TYPE.SLOW:
+				enemy.apply_slow_and_damage(incoming_damage, ability.move_speed_modifier, ability.slow_wait_time, is_crit)
+			ability.ATTACK_TYPE.SILENCE:
+				enemy.apply_silenced_and_damage(incoming_damage, ability.stun_wait_time, is_crit)
+		return
 	enemy.apply_damage(incoming_damage, is_crit, label_position)
-
-		#might need to break here so we don't collide with the function below
+	#might need to break here so we don't collide with the function below
 
 func calculate_targets(enemies_in_hitbox : Array, player : Player, number_of_hits : int) -> Array[Entity]:
 	var targets: Array[Entity] = []

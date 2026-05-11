@@ -91,8 +91,18 @@ func set_icon() -> void:
 				is_enabled = false
 
 		ICON_TYPE.QUEST:
-			icon.texture = QUEST_NOTIFICATION_ICON_DISABLED
-
+			if GameManager.new_jobs_available:
+				if !is_enabled:
+					start_pulse()
+					is_enabled = true
+				notice.text = "New Job Request are Available!"
+				icon.texture = QUEST_NOTIFICATION_ICON_ENABLED
+			else:
+				stop_pulse()
+				icon.texture = QUEST_NOTIFICATION_ICON_DISABLED
+				is_enabled = false
+				notice.text = "Look for Job Requests for bonus rewards!"
+		
 func populate_craftable_items_list(recipe_list : Dictionary) -> bool:
 	for tier in recipe_list.keys():
 		for recipe in recipe_list[tier]:
