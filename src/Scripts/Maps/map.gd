@@ -27,6 +27,8 @@ class_name Map extends Node2D
 @export var monster_spawn_node : Node
 @export var pause_canvas_layer : CanvasLayer
 
+@export var job_unlocks : Array[String]
+
 enum MAP_TYPE {HUB, FLOOR, CHECKPOINT_FLOOR}
 
 @export var map_type : MAP_TYPE = MAP_TYPE.HUB
@@ -405,3 +407,16 @@ func play_unlock_elevator_sequence() -> void:
 	GameManager.can_pause_game = true
 	GameManager.can_open_bag = true
 	GameManager.enemies_can_move = true
+
+func unlock_quests() -> void:
+	var unlocked_a_job : bool = false
+	for quest_name in job_unlocks:
+		var quest : Quest = QuestManager.get_quest(quest_name)
+		if quest.is_locked():
+			quest.set_as_available()
+			unlocked_a_job = true
+	
+	if unlocked_a_job:
+		GameManager.new_jobs_available = true
+		SignalBus.check_for_notification.emit(GameManager.NOTIFICATION_TYPE.QUEST)
+		

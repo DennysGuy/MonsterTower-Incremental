@@ -89,6 +89,7 @@ mp_replenish_points = NodePath("MPVials")
 path = "uid://b3m3f58qy47jb"
 next_room_path = "uid://oonjrpabmces"
 sfx_player = NodePath("SfxPlayer")
+job_unlocks = Array[String](["The Hunting Brave 1", "The Apprentice Chef 1"])
 map_type = 2
 ambience_player = NodePath("AmbiencePlayer")
 ambience_sfx = ExtResource("2_mdljo")

@@ -102,6 +102,7 @@ mp_replenish_points = NodePath("MPVials")
 path = "uid://bcb7mqtk7hdgw"
 sfx_player = NodePath("SfxPlayer")
 monster_spawn_node = NodePath("MonsterSpawnNode")
+job_unlocks = Array[String](["Supplies For Our Comrades 1"])
 map_type = 2
 ambience_player = NodePath("AmbiencePlayer")
 ambience_sfx = ExtResource("4_h5nvt")

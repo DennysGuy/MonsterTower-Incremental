@@ -25,6 +25,7 @@ const JOB_ACCEPT_JINGLE = preload("uid://dinxl1rs2y55v")
 func _ready() -> void:
 	GameManager.player_can_move = false
 	QuestManager.populate_job_board_description_box.connect(populate_description_panel)
+	GameManager.new_jobs_available = false
 	clear_description_panel()
 	initialize_available_jobs()
 
@@ -77,10 +78,6 @@ func initialize_available_jobs() -> void:
 	clear_job_box()
 	for job in QuestManager.quests["Job"]["Introduction"]:
 		var selected_job : Quest = QuestManager.get_quest(job)
-		if selected_job.is_locked():
-			if PlayerStats.player_stats["Level"] >= selected_job.level_needed:
-				selected_job.set_as_available()
-		
 		if !selected_job.is_locked() and !selected_job.turned_in:
 			var job_board_button : JobBoardButton = preload("uid://crntn4mm7ex6s").instantiate()
 			job_board_button.quest_data = selected_job

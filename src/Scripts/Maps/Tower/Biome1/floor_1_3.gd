@@ -27,6 +27,7 @@ func _ready() -> void:
 	await get_tree().process_frame
 	
 	QuestManager.check_map_name.emit(map_name)
+	unlock_quests()
 	PlayerHudSignalBus.show_stop_watch.emit()
 
 	if GameManager.hunt_challenge_selected:

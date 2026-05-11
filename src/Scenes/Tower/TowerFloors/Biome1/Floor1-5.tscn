@@ -54,7 +54,7 @@ size = Vector2(208, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4qnya"]
 size = Vector2(368, 20)
 
-[node name="Floor1-5" type="Node2D" unique_id=1707445138 node_paths=PackedStringArray("exit_elevator", "camera", "hud", "ore_rock_markers", "gem_stone_chest_markers", "campfire_list", "sfx_player", "ambience_player")]
+[node name="Floor1-5" type="Node2D" unique_id=1707445138 node_paths=PackedStringArray("exit_elevator", "camera", "ore_rock_markers", "gem_stone_chest_markers", "campfire_list", "sfx_player", "ambience_player")]
 script = ExtResource("1_cd2eo")
 map_name = "Floor 1-5"
 map_id = 5
@@ -62,13 +62,13 @@ exit_elevator = NodePath("ExitElevator")
 tower_entrance_data = ExtResource("2_6kwyc")
 map_theme_song = ExtResource("3_ogel5")
 camera = NodePath("PlayerCamera")
-hud = NodePath("")
 ore_rock_spawn_rate = 0.5
 ore_rock_markers = NodePath("OreRockMarkers")
 gem_stone_chest_markers = NodePath("GemStoneMarkers")
 campfire_list = NodePath("CampfireCheckpoints")
 path = "F:/GodotProjects/MonsterTower-Incremental/src/Scenes/Tower/TowerFloors/Biome1/Floor1-5.tscn"
 sfx_player = NodePath("SfxPlayer")
+job_unlocks = Array[String](["Avant Garde Alt. Medicine 1"])
 map_type = 2
 ambience_player = NodePath("AmbiencePlayer")
 

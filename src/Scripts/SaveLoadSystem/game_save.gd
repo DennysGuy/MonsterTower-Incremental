@@ -224,7 +224,7 @@ TODO: We will add saves for classes as well
 	"Air Attack" : "uid://bukiike6rf6pl", #sword slam - for testing purposes
 	"Double Jump" : "uid://rgwunwula5mv", #sword soar - for testing purposes
 	"Special Attack" : null, #double cleave - here for testing purposes,
-	"Combat Ability 1" : "uid://dlbpje07usrj1", #cyclone slash - for testing purposes
+	"Combat Ability 1" : null, #cyclone slash - for testing purposes
 	"Combat Ability 2" : null, #Circle of Truth - for testing
 	"Combat Ability 3" : null, #Iron Body for Testing
 	"Combat Ability 4" : null, #Double Cleave for Testing
@@ -253,7 +253,8 @@ TODO: We will add saves for classes as well
 			"Crit Chance Modifier" : 0.0,
 			"Dash Cooldown" : 0.0,
 			"Dash Speed Modifier" : 1.0,
-			"Knock Back Modifier" : 0.0
+			"Knock Back Modifier" : 0.0,
+			"Buff Limit Time": 0.0
 		},
 		"Air Attack": {
 			"Cooldown Time" : 0.7,
@@ -276,7 +277,8 @@ TODO: We will add saves for classes as well
 			"Crit Chance Modifier" : 0.0,
 			"Dash Cooldown" : 0.0,
 			"Dash Speed Modifier" : 0.0,
-			"Knock Back Modifier" : 0.0
+			"Knock Back Modifier" : 0.0,
+			"Buff Limit Time": 0.0
 		},
 		"Double Jump": {
 			"Cooldown Time" : 0.5,
@@ -299,7 +301,8 @@ TODO: We will add saves for classes as well
 			"Crit Chance Modifier" : 0.0,
 			"Dash Cooldown" : 0.0,
 			"Dash Speed Modifier" : 0.0,
-			"Knock Back Modifier" : 0.0
+			"Knock Back Modifier" : 0.0,
+			"Buff Limit Time": 0.0
 		},
 		"Special Attack": {
 			"Cooldown Time" : 3.0,
@@ -322,7 +325,8 @@ TODO: We will add saves for classes as well
 			"Crit Chance Modifier" : 0.0,
 			"Dash Cooldown" : 0.0,
 			"Dash Speed Modifier" : 0.0,
-			"Knock Back Modifier" : 0.0
+			"Knock Back Modifier" : 0.0,
+			"Buff Limit Time": 0.0
 		}
 	},
 	"Tyro" : {##NEED TO ADD BUFF LIMIT TIME

@@ -19,6 +19,10 @@ func increment_count(enemy_name : String) -> void:
 	QuestManager.update_task_list_item.emit(task_id)
 	#save task
 
+func connect_signals() -> void:
+	if !QuestManager.increment_task_enemy_kill_count.connect(increment_count):
+		QuestManager.increment_task_enemy_kill_count.connect(increment_count)
+
 func reset_task_state() -> void:
 	current_count = 0
 	SaveManager.current_save_game.tasks[task_id]["Current Count"] = 0

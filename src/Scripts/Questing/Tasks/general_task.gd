@@ -12,6 +12,9 @@ func complete_general_task(selected_task_name : String) -> void:
 	SaveManager.save_task_completed_status(task_id, completed)
 	QuestManager.update_task_list_item.emit(task_id)
 
+func connect_signals() -> void:
+	if !QuestManager.check_general_task_for_completion.connect(complete_general_task):
+		QuestManager.check_general_task_for_completion.connect(complete_general_task)
 
 func build_task_list_item() -> TaskListItem:
 	#we'll load in the necessary data here

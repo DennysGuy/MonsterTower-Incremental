@@ -3,7 +3,6 @@
 [ext_resource type="FontFile" uid="uid://dgu1a66dfe8w" path="res://Assets/Fonts/Maplestory OTF Light.otf" id="1_38rat"]
 [ext_resource type="Script" uid="uid://fpcoe7wlosse" path="res://src/Scripts/Questing/quest_hub.gd" id="1_ag3ob"]
 [ext_resource type="PackedScene" uid="uid://bu2rhw7xf1a66" path="res://src/Scenes/UI/QuestTrackerItem.tscn" id="2_ag3ob"]
-[ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="3_38rat"]
 
 [node name="QuestHub" type="Control" unique_id=1129499445]
 layout_mode = 3
@@ -129,11 +128,7 @@ custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
-theme_override_constants/separation = 17
+theme_override_constants/separation = 0
 
-[node name="Label" type="Label" parent="QuestHubVBox/JobsTracker/VBoxContainer/JobsListMargin/JobTrackerVBox" unique_id=1429863127]
+[node name="QuestTrackerItem" parent="QuestHubVBox/JobsTracker/VBoxContainer/JobsListMargin/JobTrackerVBox" unique_id=1751588779 instance=ExtResource("2_ag3ob")]
 layout_mode = 2
-theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("3_38rat")
-theme_override_font_sizes/font_size = 24
-text = "[Coming Soon]"

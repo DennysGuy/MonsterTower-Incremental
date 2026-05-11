@@ -151,6 +151,7 @@ func load_all_quest_status() -> void:
 				var loaded_quest : Quest = get_quest(quest)
 				if loaded_quest:
 					loaded_quest.load_quest_status()
+					connect_all_task_signals(loaded_quest)
 	
 	for chapter in chapters:
 		for quest in job_quests[chapter]:
@@ -204,6 +205,14 @@ func activate_task(task : Task) -> void:
 			check_general_task_for_completion.connect(task.complete_general_task)
 	
 	task.completed = SaveManager.current_save_game.tasks[task.task_id]["Completed"]
+
+func connect_all_task_signals(quest : Quest) -> void:
+	if quest.is_completed():
+		return
+		
+	for task in quest.tasks:
+		task.connect_signals()
+		print("Signals Connected!")
 
 #func get_quest(quest_type : String, chapter_relation : String, quest_name : String ) -> Quest:
 	#return quests[quest_type][chapter_relation][quest_name]
