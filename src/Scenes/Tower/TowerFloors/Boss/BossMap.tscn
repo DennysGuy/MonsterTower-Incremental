@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://b0iw5pa4foen0"]
+
+[ext_resource type="PackedScene" uid="uid://debxrsu3y7fpd" path="res://src/Scenes/Tower/TowerFloors/Boss/MossyDungeonBossMap.tscn" id="1_4m1ym"]
+[ext_resource type="PackedScene" uid="uid://dysg5kffvxbql" path="res://src/Scenes/UI/PlayerHUD.tscn" id="2_0sxbb"]
+
+[node name="BossMap" type="Node" unique_id=1669696988]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=2131161841]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+stretch_shrink = 2
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=2000229926]
+handle_input_locally = false
+size = Vector2i(960, 540)
+render_target_update_mode = 4
+
+[node name="MossyDungeonBossMap" parent="SubViewportContainer/SubViewport" unique_id=641977652 instance=ExtResource("1_4m1ym")]
+
+[node name="HUD" parent="." unique_id=129498783 instance=ExtResource("2_0sxbb")]

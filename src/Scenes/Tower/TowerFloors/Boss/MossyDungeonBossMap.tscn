@@ -1,0 +1,34 @@
+[gd_scene format=4 uid="uid://debxrsu3y7fpd"]
+
+[ext_resource type="Texture2D" uid="uid://pbvebwirl0b6" path="res://Assets/Bosses/TESTBOSSSIZE.png" id="1_nq1u6"]
+[ext_resource type="Script" uid="uid://d3tvs56dr4vcl" path="res://src/Scripts/Maps/map.gd" id="1_shdyg"]
+[ext_resource type="PackedScene" uid="uid://c8ov03gkkda4k" path="res://src/Scenes/PlayerCamera.tscn" id="2_q6e15"]
+[ext_resource type="TileSet" uid="uid://dbxew7tohbk1m" path="res://src/Scenes/Tower/TowerFloors/TestFloor/TempPlatforms.tres" id="4_gqgeu"]
+[ext_resource type="PackedScene" uid="uid://c6tv3t1cpeq8f" path="res://src/Scenes/PlayerSpawnPoint.tscn" id="5_gqgeu"]
+[ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="6_lxwpe"]
+
+[node name="MossyDungeonBossMap" type="Node2D" unique_id=641977652 node_paths=PackedStringArray("camera", "sfx_player")]
+script = ExtResource("1_shdyg")
+map_name = "Boss Room"
+camera = NodePath("PlayerCamera")
+sfx_player = NodePath("SfxPlayer")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1447711423]
+position = Vector2(744, 494)
+texture = ExtResource("1_nq1u6")
+
+[node name="PlayerCamera" parent="." unique_id=950996678 instance=ExtResource("2_q6e15")]
+limit_left = 0
+limit_top = 0
+limit_right = 1280
+limit_bottom = 800
+position_smoothing_enabled = true
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1718074086]
+tile_map_data = PackedByteArray("AAAAAAsAAQAAAAAAAAABAAsAAQABAAAAAAACAAsAAQAAAAAAAAADAAsAAQABAAAAAAAEAAsAAQAAAAAAAAAFAAsAAQABAAAAAAAGAAsAAQAAAAAAAAAHAAsAAQABAAAAAAAIAAsAAQAAAAAAAAAJAAsAAQABAAAAAAAKAAsAAQAAAAAAAAALAAsAAQABAAAAAAAMAAsAAQAAAAAAAAANAAsAAQABAAAAAAAOAAsAAQAAAAAAAAAPAAsAAQABAAAAAAAQAAsAAQAAAAAAAAARAAsAAQABAAAAAAASAAsAAQAAAAAAAAATAAsAAQABAAAAAAAUAAsAAQAAAAAAAAAVAAsAAQABAAAAAAAWAAsAAQAAAAAAAAAXAAsAAQABAAAAAAAYAAsAAQAAAAAAAAAZAAsAAQABAAAAAAAAAAwAAQAAAAAAAAABAAwAAQABAAAAAAACAAwAAQAAAAAAAAADAAwAAQABAAAAAAAEAAwAAQAAAAAAAAAFAAwAAQABAAAAAAAGAAwAAQAAAAAAAAAHAAwAAQABAAAAAAAIAAwAAQAAAAAAAAAJAAwAAQABAAAAAAAKAAwAAQAAAAAAAAALAAwAAQABAAAAAAAMAAwAAQAAAAAAAAANAAwAAQABAAAAAAAOAAwAAQAAAAAAAAAPAAwAAQABAAAAAAAQAAwAAQAAAAAAAAARAAwAAQABAAAAAAASAAwAAQAAAAAAAAATAAwAAQABAAAAAAAUAAwAAQAAAAAAAAAVAAwAAQABAAAAAAAWAAwAAQAAAAAAAAAXAAwAAQABAAAAAAAYAAwAAQAAAAAAAAAZAAwAAQABAAAAAAAAAA0AAQAAAAAAAAABAA0AAQABAAAAAAACAA0AAQAAAAAAAAADAA0AAQABAAAAAAAEAA0AAQAAAAAAAAAFAA0AAQABAAAAAAAGAA0AAQAAAAAAAAAHAA0AAQABAAAAAAAIAA0AAQAAAAAAAAAJAA0AAQABAAAAAAAKAA0AAQAAAAAAAAALAA0AAQABAAAAAAAMAA0AAQAAAAAAAAANAA0AAQABAAAAAAAOAA0AAQAAAAAAAAAPAA0AAQABAAAAAAAQAA0AAQAAAAAAAAARAA0AAQABAAAAAAASAA0AAQAAAAAAAAATAA0AAQABAAAAAAAUAA0AAQAAAAAAAAAVAA0AAQABAAAAAAAWAA0AAQAAAAAAAAAXAA0AAQABAAAAAAAYAA0AAQAAAAAAAAAZAA0AAQABAAAAAAA=")
+tile_set = ExtResource("4_gqgeu")
+
+[node name="PlayerSpawnPoint" parent="." unique_id=2025827218 instance=ExtResource("5_gqgeu")]
+position = Vector2(296, 704)
+
+[node name="SfxPlayer" parent="." unique_id=1920734488 instance=ExtResource("6_lxwpe")]
