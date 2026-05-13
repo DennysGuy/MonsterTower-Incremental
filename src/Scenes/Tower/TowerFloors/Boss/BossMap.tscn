@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://b0iw5pa4foen0"]
 
 [ext_resource type="PackedScene" uid="uid://debxrsu3y7fpd" path="res://src/Scenes/Tower/TowerFloors/Boss/MossyDungeonBossMap.tscn" id="1_4m1ym"]
+[ext_resource type="Script" uid="uid://de8aguua0r73f" path="res://src/Scripts/Tower/Bosses/over_mossy_boss_map.gd" id="1_34g7u"]
 [ext_resource type="PackedScene" uid="uid://dysg5kffvxbql" path="res://src/Scenes/UI/PlayerHUD.tscn" id="2_0sxbb"]
 
 [node name="BossMap" type="Node" unique_id=1669696988]
+script = ExtResource("1_34g7u")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=2131161841]
 anchors_preset = 15
@@ -16,6 +18,7 @@ stretch_shrink = 2
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=2000229926]
 handle_input_locally = false
+canvas_item_default_texture_filter = 0
 size = Vector2i(960, 540)
 render_target_update_mode = 4
 

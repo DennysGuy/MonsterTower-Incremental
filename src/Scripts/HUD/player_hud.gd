@@ -10,6 +10,7 @@ class_name PlayerHUD extends CanvasLayer
 @onready var bag_animation_player: AnimationPlayer = $BagAnimationPlayer
 var bag_showing : bool = false
 var map_name : String = ""
+@onready var quest_hub: QuestHub = $PlayerHUD/QuestHub
 
 @onready var hunt_quota: RichTextLabel = $PlayerHUD/HuntQuota
 @export var expedition_timer: ExpeditionTimerLocal
