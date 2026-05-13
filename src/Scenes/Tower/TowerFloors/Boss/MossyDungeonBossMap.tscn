@@ -3,8 +3,9 @@
 [ext_resource type="Script" uid="uid://d3tvs56dr4vcl" path="res://src/Scripts/Maps/map.gd" id="1_shdyg"]
 [ext_resource type="Texture2D" uid="uid://cstsvyo3026na" path="res://Assets/Tower/BossRooms/GreySentinelRoom/GreySentinelRoomBG.png" id="2_2lg00"]
 [ext_resource type="PackedScene" uid="uid://c8ov03gkkda4k" path="res://src/Scenes/PlayerCamera.tscn" id="2_q6e15"]
-[ext_resource type="Texture2D" uid="uid://dlib3jmu7s5it" path="res://Assets/Tower/BossRooms/GreySentinelRoom/MockArea.png" id="3_4r3pi"]
+[ext_resource type="Texture2D" uid="uid://bbotdlimu50ml" path="res://Assets/Tower/BossRooms/GreySentinelRoom/BackgroundStuff2.png" id="3_i1yle"]
 [ext_resource type="TileSet" uid="uid://dbxew7tohbk1m" path="res://src/Scenes/Tower/TowerFloors/TestFloor/TempPlatforms.tres" id="4_gqgeu"]
+[ext_resource type="Texture2D" uid="uid://druj2qwcqlfib" path="res://Assets/Tower/BossRooms/GreySentinelRoom/BackgroundStuff1.png" id="4_jd3c6"]
 [ext_resource type="PackedScene" uid="uid://c6tv3t1cpeq8f" path="res://src/Scenes/PlayerSpawnPoint.tscn" id="5_gqgeu"]
 [ext_resource type="PackedScene" uid="uid://cd6yt6xvah0em" path="res://src/Scenes/Tower/TowerFloors/Boss/Bosses/GreySentinelBoss/GreySentinelBoss.tscn" id="6_2lg00"]
 [ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="6_lxwpe"]
@@ -23,6 +24,22 @@ modulate = Color(0.7121294, 0.7121294, 0.71212935, 1)
 offset_right = 1600.0
 offset_bottom = 800.0
 texture = ExtResource("2_2lg00")
+
+[node name="BackgroundStuff2" type="Parallax2D" parent="." unique_id=1601755750]
+scroll_scale = Vector2(0.2, 1)
+scroll_offset = Vector2(-800, 404)
+repeat_size = Vector2(1600, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="BackgroundStuff2" unique_id=1303807958]
+texture = ExtResource("3_i1yle")
+
+[node name="BackgroundStuff1" type="Parallax2D" parent="." unique_id=1546290480]
+scroll_scale = Vector2(0.3, 1)
+scroll_offset = Vector2(-800, 404)
+repeat_size = Vector2(1600, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="BackgroundStuff1" unique_id=295472646]
+texture = ExtResource("4_jd3c6")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=2086759042]
 position = Vector2(-10, 713)
@@ -46,12 +63,8 @@ limit_bottom = 800
 position_smoothing_enabled = true
 
 [node name="GreySentinelBoss" parent="." unique_id=988686716 instance=ExtResource("6_2lg00")]
-position = Vector2(828, 813)
-
-[node name="TextureRect2" type="TextureRect" parent="." unique_id=1576848536]
-offset_right = 1600.0
-offset_bottom = 800.0
-texture = ExtResource("3_4r3pi")
+visible = false
+position = Vector2(765, 813)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1718074086]
 tile_map_data = PackedByteArray("AAAAABYAAQAAABYAAAAAABcAAQAAABcAAAAAABgAAQAAABgAAAABABYAAQABABYAAAABABcAAQABABcAAAABABgAAQABABgAAAACABYAAQACABYAAAACABcAAQACABcAAAACABgAAQACABgAAAADABYAAQADABYAAAADABcAAQADABcAAAADABgAAQADABgAAAAEABYAAQAEABYAAAAEABcAAQAEABcAAAAEABgAAQAEABgAAAAFABYAAQAAABYAAAAFABcAAQAAABcAAAAFABgAAQAAABgAAAAGABYAAQABABYAAAAGABcAAQABABcAAAAGABgAAQABABgAAAAHABYAAQACABYAAAAHABcAAQACABcAAAAHABgAAQACABgAAAAIABYAAQADABYAAAAIABcAAQADABcAAAAIABgAAQADABgAAAAJABYAAQAEABYAAAAJABcAAQAEABcAAAAJABgAAQAEABgAAAAKABYAAQAAABYAAAAKABcAAQAAABcAAAAKABgAAQAAABgAAAALABYAAQABABYAAAALABcAAQABABcAAAALABgAAQABABgAAAAMABYAAQACABYAAAAMABcAAQACABcAAAAMABgAAQACABgAAAANABYAAQADABYAAAANABcAAQADABcAAAANABgAAQADABgAAAAOABYAAQAEABYAAAAOABcAAQAEABcAAAAOABgAAQAEABgAAAAPABYAAQAAABYAAAAPABcAAQAAABcAAAAPABgAAQAAABgAAAAQABYAAQABABYAAAAQABcAAQABABcAAAAQABgAAQABABgAAAARABYAAQACABYAAAARABcAAQACABcAAAARABgAAQACABgAAAASABYAAQADABYAAAASABcAAQADABcAAAASABgAAQADABgAAAATABYAAQAEABYAAAATABcAAQAEABcAAAATABgAAQAEABgAAAAUABYAAQAAABYAAAAUABcAAQAAABcAAAAUABgAAQAAABgAAAAVABYAAQABABYAAAAVABcAAQABABcAAAAVABgAAQABABgAAAAWABYAAQACABYAAAAWABcAAQACABcAAAAWABgAAQACABgAAAAXABYAAQADABYAAAAXABcAAQADABcAAAAXABgAAQADABgAAAAYABYAAQAEABYAAAAYABcAAQAEABcAAAAYABgAAQAEABgAAAAZABYAAQAAABYAAAAZABcAAQAAABcAAAAZABgAAQAAABgAAAAaABYAAQABABYAAAAaABcAAQABABcAAAAaABgAAQABABgAAAAbABYAAQACABYAAAAbABcAAQACABcAAAAbABgAAQACABgAAAAcABYAAQADABYAAAAcABcAAQADABcAAAAcABgAAQADABgAAAAdABYAAQAEABYAAAAdABcAAQAEABcAAAAdABgAAQAEABgAAAAeABYAAQAAABYAAAAeABcAAQAAABcAAAAeABgAAQAAABgAAAAfABYAAQABABYAAAAfABcAAQABABcAAAAfABgAAQABABgAAAAgABYAAQACABYAAAAgABcAAQACABcAAAAgABgAAQACABgAAAAhABYAAQADABYAAAAhABcAAQADABcAAAAhABgAAQADABgAAAAiABYAAQAEABYAAAAiABcAAQAEABcAAAAiABgAAQAEABgAAAAjABYAAQAAABYAAAAjABcAAQAAABcAAAAjABgAAQAAABgAAAAkABYAAQABABYAAAAkABcAAQABABcAAAAkABgAAQABABgAAAAlABYAAQACABYAAAAlABcAAQACABcAAAAlABgAAQACABgAAAAmABYAAQADABYAAAAmABcAAQADABcAAAAmABgAAQADABgAAAAnABYAAQAEABYAAAAnABcAAQAEABcAAAAnABgAAQAEABgAAAAoABYAAQAAABYAAAAoABcAAQAAABcAAAAoABgAAQAAABgAAAApABYAAQABABYAAAApABcAAQABABcAAAApABgAAQABABgAAAAqABYAAQACABYAAAAqABcAAQACABcAAAAqABgAAQACABgAAAArABYAAQADABYAAAArABcAAQADABcAAAArABgAAQADABgAAAAsABYAAQAEABYAAAAsABcAAQAEABcAAAAsABgAAQAEABgAAAAtABYAAQAAABYAAAAtABcAAQAAABcAAAAtABgAAQAAABgAAAAuABYAAQABABYAAAAuABcAAQABABcAAAAuABgAAQABABgAAAAvABYAAQACABYAAAAvABcAAQACABcAAAAvABgAAQACABgAAAAwABYAAQADABYAAAAwABcAAQADABcAAAAwABgAAQADABgAAAAxABYAAQAEABYAAAAxABcAAQAEABcAAAAxABgAAQAEABgAAAA=")
