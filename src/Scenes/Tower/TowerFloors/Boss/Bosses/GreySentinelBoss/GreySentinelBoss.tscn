@@ -4,14 +4,26 @@
 [ext_resource type="Texture2D" uid="uid://dsm8xga23lj4d" path="res://Assets/Bosses/MossyDungeonBoss/GreySentinel_UpperBody.png" id="2_b54i7"]
 [ext_resource type="Texture2D" uid="uid://coy13mg8ugspg" path="res://Assets/Bosses/MossyDungeonBoss/GreySentinel_Head.png" id="2_fverb"]
 [ext_resource type="Texture2D" uid="uid://cgapkxwrygdxh" path="res://Assets/Bosses/MossyDungeonBoss/GreySentinel_LeftLeg.png" id="2_mtoy8"]
+[ext_resource type="Resource" uid="uid://ctecct8vjkwi" path="res://src/Scenes/Actors/Bosses/GreySentinelBoss.tres" id="2_p141u"]
 [ext_resource type="Texture2D" uid="uid://ct2ojikarh7dy" path="res://Assets/Bosses/MossyDungeonBoss/GreySentinel_LowerBody.png" id="3_0bqyq"]
 [ext_resource type="Texture2D" uid="uid://d1tc27dmn3wn7" path="res://Assets/Bosses/MossyDungeonBoss/GreySentinel_RightLeg.png" id="3_sfwk3"]
+[ext_resource type="Shader" uid="uid://cguloil4ymho" path="res://src/Scripts/Shaders/HitFlash.gdshader" id="4_tketg"]
 [ext_resource type="Texture2D" uid="uid://cq14bu23yjap2" path="res://Assets/Bosses/MossyDungeonBoss/GreySentinel_LeftArm.png" id="4_tluh3"]
 [ext_resource type="Texture2D" uid="uid://c5nlgamss3yhb" path="res://Assets/Bosses/MossyDungeonBoss/GreySentinel_LeftShoulder.png" id="5_nj3j7"]
 [ext_resource type="Texture2D" uid="uid://cmgsu6omri574" path="res://Assets/Bosses/MossyDungeonBoss/GreySentinel_LeftHand.png" id="6_nj3j7"]
 [ext_resource type="Texture2D" uid="uid://vx5r3qjsru1y" path="res://Assets/Bosses/MossyDungeonBoss/GreySentinel_RightArm.png" id="7_mwnqb"]
 [ext_resource type="Texture2D" uid="uid://segkdyypjh5l" path="res://Assets/Bosses/MossyDungeonBoss/GreySentinel_RightShoulder.png" id="8_lcbfe"]
 [ext_resource type="Texture2D" uid="uid://bqdwvekpvm70s" path="res://Assets/Bosses/MossyDungeonBoss/GreySentinel_RightHand.png" id="9_0tvet"]
+[ext_resource type="PackedScene" uid="uid://b73ndgmav7ja2" path="res://src/Scenes/Actors/Utilities/HealthComponent.tscn" id="13_g7hoo"]
+[ext_resource type="PackedScene" uid="uid://bg1ya0qiin47q" path="res://src/Scenes/Actors/Utilities/HurtBox.tscn" id="13_hs7nq"]
+[ext_resource type="Script" uid="uid://drr0deykmfrvq" path="res://src/Scripts/StateMachine/state_machine.gd" id="14_onrfr"]
+[ext_resource type="PackedScene" uid="uid://b8lilr7mgc8l1" path="res://src/Scenes/Actors/Enemies/EnemyHealthBar.tscn" id="15_7tdmq"]
+[ext_resource type="Script" uid="uid://oedxhhvde3pq" path="res://src/Scripts/StateMachine/BossStates/boss_idle.gd" id="18_0b0mr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tketg"]
+shader = ExtResource("4_tketg")
+shader_parameter/active = false
+shader_parameter/flash_strength = 0.450000021375
 
 [sub_resource type="Animation" id="Animation_sfwk3"]
 resource_name = "Idle"
@@ -555,56 +567,139 @@ _data = {
 &"RESET": SubResource("Animation_hs7nq")
 }
 
-[node name="GreySentinelBoss" type="Node2D" unique_id=988686716]
+[sub_resource type="Animation" id="Animation_0b0mr"]
+resource_name = "HitFlash"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/active")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.13333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_7tdmq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/active")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7tdmq"]
+_data = {
+&"HitFlash": SubResource("Animation_0b0mr"),
+&"RESET": SubResource("Animation_7tdmq")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g7hoo"]
+size = Vector2(405, 383)
+
+[node name="GreySentinelBoss" type="CharacterBody2D" unique_id=1387952457 node_paths=PackedStringArray("left_leg", "health_bar", "state_machine", "animation_player", "health_component")]
 script = ExtResource("1_gle20")
+left_leg = NodePath("BodyParts/LeftLeg")
+enemy_stats = ExtResource("2_p141u")
+health_bar = NodePath("EnemyHealthBar")
+state_machine = NodePath("StateMachine")
+animation_player = NodePath("AnimationPlayer")
+health_component = NodePath("HealthComponent")
 
 [node name="BodyParts" type="Node2D" parent="." unique_id=1040410273]
 
 [node name="LeftLeg" type="Sprite2D" parent="BodyParts" unique_id=1008162807]
+material = SubResource("ShaderMaterial_tketg")
 position = Vector2(-12, -290)
 texture = ExtResource("2_mtoy8")
 
 [node name="RightLeg" type="Sprite2D" parent="BodyParts" unique_id=1410079174]
+material = SubResource("ShaderMaterial_tketg")
 position = Vector2(-12, -290)
 texture = ExtResource("3_sfwk3")
 
 [node name="UpperBody" type="Sprite2D" parent="BodyParts" unique_id=332821820]
+material = SubResource("ShaderMaterial_tketg")
 position = Vector2(-12, -290)
 texture = ExtResource("2_b54i7")
 
 [node name="LowerBody" type="Sprite2D" parent="BodyParts" unique_id=261432063]
+material = SubResource("ShaderMaterial_tketg")
 position = Vector2(-12, -290)
 texture = ExtResource("3_0bqyq")
 
 [node name="LeftArm" type="Sprite2D" parent="BodyParts" unique_id=1542263261]
+material = SubResource("ShaderMaterial_tketg")
 position = Vector2(-12, -290)
 texture = ExtResource("4_tluh3")
 
 [node name="LeftShoulder" type="Sprite2D" parent="BodyParts" unique_id=862507397]
+material = SubResource("ShaderMaterial_tketg")
 position = Vector2(-12, -290)
 texture = ExtResource("5_nj3j7")
 
 [node name="LeftHand" type="Sprite2D" parent="BodyParts" unique_id=1970965709]
 z_index = 4090
+material = SubResource("ShaderMaterial_tketg")
 position = Vector2(-12, -290)
 texture = ExtResource("6_nj3j7")
 
 [node name="RightArm" type="Sprite2D" parent="BodyParts" unique_id=1508251094]
+material = SubResource("ShaderMaterial_tketg")
 position = Vector2(-12, -290)
 texture = ExtResource("7_mwnqb")
 
 [node name="RightShoulder" type="Sprite2D" parent="BodyParts" unique_id=128368538]
+material = SubResource("ShaderMaterial_tketg")
 position = Vector2(-12, -290)
 texture = ExtResource("8_lcbfe")
 
 [node name="RightHand" type="Sprite2D" parent="BodyParts" unique_id=771286614]
 z_index = 4090
+material = SubResource("ShaderMaterial_tketg")
 position = Vector2(-12, -290)
 texture = ExtResource("9_0tvet")
 
 [node name="Head" type="Sprite2D" parent="BodyParts" unique_id=1915968970]
+material = SubResource("ShaderMaterial_tketg")
 position = Vector2(-12, -290)
 texture = ExtResource("2_fverb")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1457307417]
 libraries/ = SubResource("AnimationLibrary_hs7nq")
+
+[node name="HitFlashPlayer" type="AnimationPlayer" parent="." unique_id=2068651841]
+root_node = NodePath("../BodyParts/LeftLeg")
+libraries/ = SubResource("AnimationLibrary_7tdmq")
+
+[node name="EnemyHealthBar" parent="." unique_id=493071187 instance=ExtResource("15_7tdmq")]
+offset_top = -486.0
+offset_bottom = -476.0
+
+[node name="HealthComponent" parent="." unique_id=342047902 node_paths=PackedStringArray("parent", "health_bar") instance=ExtResource("13_g7hoo")]
+parent = NodePath("..")
+health_bar = NodePath("../EnemyHealthBar")
+
+[node name="HurtBox" parent="." unique_id=984119613 instance=ExtResource("13_hs7nq")]
+position = Vector2(-4, -231)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=49696411]
+position = Vector2(10.5, -40.5)
+shape = SubResource("RectangleShape2D_g7hoo")
+
+[node name="StateMachine" type="Node" parent="." unique_id=1150641705 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("14_onrfr")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine" unique_id=963565081]
+script = ExtResource("18_0b0mr")
+animation_name = "Idle"

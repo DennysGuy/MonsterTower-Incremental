@@ -9,6 +9,7 @@ class_name PlayerHitState extends State
 var knock_back_direction : int
 func enter() -> void:
 	super()
+	
 	if parent.stored_enemy:
 		GameManager.player_can_move = false
 		#parent.damageable = false
@@ -16,7 +17,6 @@ func enter() -> void:
 		parent.set_sword_texture(animation_name)
 		parent.set_outfit_texture(animation_name)
 		var total_knock_back : float = (parent.knock_back_wait_time * PlayerStats.knock_back_buff_mod)
-		print(PlayerStats.knock_back_buff_mod)
 		parent.timer.wait_time = total_knock_back
 
 		var dir = (parent.stored_enemy.global_position - parent.global_position).normalized()
@@ -40,6 +40,7 @@ func process_frame(_delta: float) -> State:
 	return null
 
 func process_physics(_delta: float) -> State:
+	
 	if parent.can_knock_back:
 		parent.velocity.x = knock_back_direction * PlayerStats.KNOCKBACK_FORCE
 		parent.flip_textures(!(parent.velocity.x < 0))

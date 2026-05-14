@@ -8,6 +8,7 @@ class_name Player extends Entity
 @onready var player_sprite: Sprite2D = $Sprites/PlayerSprite
 @onready var invincibility_timer: Timer = $InvincibilityTimer
 @onready var coin_purse: Marker2D = $CoinPurse
+@onready var knock_back_timer: Timer = $KnockBackTimer
 
 @onready var mining_area: Area2D = $MiningArea
 @onready var ability_cool_down_timer: Timer = $AbilityCoolDownTimer
@@ -29,6 +30,7 @@ class_name Player extends Entity
 @onready var can_double_jump : bool = true
 @onready var can_knock_back : bool = true
 @onready var can_spawn_gravestone : bool = true
+@onready var knocked_back : bool = false
 @onready var ladder_top_position_detector: Marker2D = $LadderTopPositionDetector
 
 @onready var sword_soar_hit_box: HitBox = $SwordSoarHitBox
@@ -109,6 +111,8 @@ func _physics_process(delta: float) -> void:
 	if attack_buffer_timer > 0:
 		attack_buffer_timer -= delta
 	
+	knock_back_player()
+	
 func _unhandled_input(event: InputEvent) -> void:
 	super(event)
 
@@ -149,6 +153,10 @@ func clear_sprites() -> void:
 func stop_player() -> void:
 	velocity = Vector2.ZERO
 
+#override parent function
+func send_to_hit_state() -> void:
+	start_knock_back()
+
 func set_attack_buffer_timer() -> void:
 	attack_buffer_timer = attack_buffer_wait_time
 
@@ -163,8 +171,7 @@ func issue_attack(selected_hit_box : Area2D, multiplier : float = 1.0, ability :
 	var min_damage : int = int(total_base_attack_damage * PlayerStats.player_stats["Accuracy"] + PlayerStats.get_total_gem_bonus("Accuracy Bonus"))
 	var max_damage : int = int(total_base_attack_damage)
 	var is_crit = check_for_crit()
-	if is_crit:
-		print("IM CRTTING!")
+	
 	if ability:
 		overlapping_hits = int(ability.number_of_enemies_hit)
 		number_of_hits = int(ability.max_hit_count)
@@ -355,8 +362,42 @@ func spawn_circl_of_truth() -> void:
 	circle_of_truth.global_position = global_position
 	get_parent().add_child(circle_of_truth)
 
-
 func issue_cyclone_slash_attack() -> void:
 	SignalBus.shake_camera.emit(3)
 	var cyclone_slash : Ability = PlayerStats.get_equipped_ability("Combat Ability 1")
 	issue_attack(ability_hit_box, cyclone_slash.attack_damage_modifier, cyclone_slash)
+
+var hit_sfx : AudioStream = preload("uid://cm3vsmb4a64u4")
+
+func start_knock_back() -> void:
+	if stored_enemy:
+		#GameManager.player_can_move = false
+		knocked_back = true
+		#parent.damageable = false
+		disable_hurt_box()
+		#set_sword_texture(animation_name)
+		#set_outfit_texture(animation_name)
+		var total_knock_back : float = (knock_back_wait_time * PlayerStats.knock_back_buff_mod)
+		knock_back_timer.wait_time = total_knock_back
+
+		var dir = (stored_enemy.global_position - global_position).normalized()
+		knock_back_direction = GameManager.set_direction(dir.x) * -1
+		play_sfx(hit_sfx)
+		knock_back_timer.start()
+		#SignalBus.disable_enemy_hit_box.emit()
+		SignalBus.shake_camera.emit(3)
+		HitStopManager.freeze(0.06, 0.0)
+		start_invincibility()
+
+func knock_back_player() -> void:
+		if knocked_back and can_knock_back:
+			#print("PLAYER CAN ATTACK %s" % GameManager.player_can_attack)
+			velocity.x = knock_back_direction * PlayerStats.KNOCKBACK_FORCE
+			flip_textures(!(velocity.x < 0))
+			if knock_back_timer.time_left <= 0:
+				knocked_back = false
+				can_knock_back = true
+				GameManager.player_can_move = true
+				stop_player()
+			
+			move_and_slide()
