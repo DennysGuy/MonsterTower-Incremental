@@ -1,16 +1,13 @@
-class_name BossIdle extends State
+class_name RightArmSlam extends State
 
-@export var left_arm_slam : State
-@export var right_arm_slam : State
 
-var slams : Array[State]
+@export var idle_state : State
 
 func enter() -> void:
 	super()
-	slams  = [left_arm_slam, right_arm_slam]
-	parent.timer.wait_time = randf_range(5,8)
+	parent.timer.wait_time = 3.0
 	parent.timer.start()
-
+	
 func exit() -> void:
 	pass
 
@@ -23,7 +20,6 @@ func process_frame(_delta: float) -> State:
 func process_physics(_delta: float) -> State:
 	
 	if parent.timer.time_left <= 0:
-		var random_slam = slams.pick_random()
-		return random_slam
+		return idle_state
 	
 	return null
