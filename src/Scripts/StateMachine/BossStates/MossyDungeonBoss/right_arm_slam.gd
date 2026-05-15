@@ -5,7 +5,7 @@ class_name RightArmSlam extends State
 
 func enter() -> void:
 	super()
-	parent.timer.wait_time = 3.0
+	parent.timer.wait_time = 4.0
 	parent.timer.start()
 	
 func exit() -> void:

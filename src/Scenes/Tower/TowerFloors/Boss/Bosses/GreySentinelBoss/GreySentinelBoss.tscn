@@ -21,11 +21,150 @@
 [ext_resource type="Script" uid="uid://oedxhhvde3pq" path="res://src/Scripts/StateMachine/BossStates/boss_idle.gd" id="18_0b0mr"]
 [ext_resource type="Script" uid="uid://bsevtop5lq2qf" path="res://src/Scripts/StateMachine/BossStates/MossyDungeonBoss/left_arm_slam_state.gd" id="20_vitt3"]
 [ext_resource type="Script" uid="uid://ce0xt6sqmx0wl" path="res://src/Scripts/StateMachine/BossStates/MossyDungeonBoss/right_arm_slam.gd" id="21_ate23"]
+[ext_resource type="Script" uid="uid://buyvb8ig0bqs2" path="res://src/Scripts/Tower/Bosses/GreySentinelBoss/left_arm_laser.gd" id="22_2qam7"]
+[ext_resource type="Script" uid="uid://dyx13txe1lpmx" path="res://src/Scripts/StateMachine/BossStates/MossyDungeonBoss/head_lasers_state.gd" id="23_5p500"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tketg"]
 shader = ExtResource("4_tketg")
 shader_parameter/active = false
 shader_parameter/flash_strength = 0.450000021375
+
+[sub_resource type="Animation" id="Animation_5p500"]
+resource_name = "HeadLaserChargeUp"
+length = 5.0
+step = 0.06
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BodyParts/LeftLeg:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-12, -290)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BodyParts/RightLeg:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-12, -290)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BodyParts/UpperBody:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-12, -290)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BodyParts/LowerBody:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-12, -290)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("BodyParts/LeftShoulder:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.4117647),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-12, -290), Vector2(-69, -290)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("BodyParts/LeftArm:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.29411766),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-12, -290), Vector2(-90, -290)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("BodyParts/LeftHand:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.18156417),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-300, -200), Vector2(-416, -200)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("BodyParts/RightShoulder:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.4117647),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-12, -290), Vector2(50, -290)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("BodyParts/RightArm:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.29411766),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-12, -290), Vector2(82, -290)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("BodyParts/RightHand:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.47058824),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(300, -195), Vector2(442, -195)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("BodyParts/Head:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.18156417),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-12, -290), Vector2(-12, -400)]
+}
 
 [sub_resource type="Animation" id="Animation_sfwk3"]
 resource_name = "Idle"
@@ -298,7 +437,7 @@ tracks/21/keys = {
 
 [sub_resource type="Animation" id="Animation_2qam7"]
 resource_name = "LaserBlasts"
-length = 3.0
+length = 5.0
 step = 0.06
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -319,10 +458,10 @@ tracks/1/path = NodePath("BodyParts/RightHand:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.23937859, 4.294118, 4.517458),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(300, -195)]
+"values": [Vector2(300, -195), Vector2(300, -400), Vector2(300, -400), Vector2(300, -195)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -391,7 +530,7 @@ tracks/7/path = NodePath("BodyParts/LeftArm:position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0, 0.13488942, 0.34885195, 2.3529413, 2.5221512),
+"times": PackedFloat32Array(0, 0.13488942, 0.34885195, 2.4705882, 2.6397982),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(-12, -290), Vector2(-12, -290), Vector2(-12, -348), Vector2(-12, -348), Vector2(-12, -290)]
@@ -403,7 +542,7 @@ tracks/8/path = NodePath("BodyParts/LeftHand:position")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0, 0.23529412, 2.235294, 2.4043806),
+"times": PackedFloat32Array(0, 0.23529412, 2.5882354, 2.7573218),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(-300, -200), Vector2(-300, -400), Vector2(-300, -400), Vector2(-300, -200)]
@@ -415,10 +554,10 @@ tracks/9/path = NodePath("BodyParts/RightShoulder:position")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 3.015544),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-12, -290)]
+"values": [Vector2(-12, -290), Vector2(-12, -290)]
 }
 tracks/10/type = "value"
 tracks/10/imported = false
@@ -427,10 +566,10 @@ tracks/10/path = NodePath("BodyParts/RightArm:position")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.13446575, 0.3529412, 4.1764708, 4.470588),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(-12, -290)]
+"values": [Vector2(-12, -290), Vector2(-12, -290), Vector2(-12, -348), Vector2(-12, -348), Vector2(-12, -290)]
 }
 tracks/11/type = "value"
 tracks/11/imported = false
@@ -439,15 +578,50 @@ tracks/11/path = NodePath("BodyParts/LeftHand:rotation")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
-"times": PackedFloat32Array(0, 1, 1.2859954, 1.6470588, 1.7647059, 1.9357613, 2.1176472),
+"times": PackedFloat32Array(0, 1, 1.2859954, 1.6470588, 2.1764705, 2.3475258, 2.529412),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [0.0, 0.0, -0.9584333, -0.9584333, 0.6981317, 0.6981317, 0.0]
+"values": [0.0, 0.0, -1.3089969389957472, -1.3089969389957472, 0.6981317, 0.6981317, 0.0]
+}
+tracks/12/type = "method"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath(".")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(1.6470588, 2.1764705, 3.0588236, 3.5882354),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"fire_left_hand_laser"
+}, {
+"args": [],
+"method": &"destroy_left_hand_laser"
+}, {
+"args": [],
+"method": &"fire_right_hand_laser"
+}, {
+"args": [],
+"method": &"destroy_right_hand_laser"
+}]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("BodyParts/RightHand:rotation")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 2.6287334, 2.841874, 3.0588236, 3.5882354, 3.8235295, 4.117647, 4.280635),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.2217305, 1.2217305, -1.2217304763960306, -1.2217304763960306, 0.0, 0.0]
 }
 
 [sub_resource type="Animation" id="Animation_vitt3"]
 resource_name = "LeftArmSlam"
-length = 3.0
+length = 4.0
 step = 0.06
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -778,10 +952,22 @@ tracks/22/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("BodyParts/RightHand:rotation")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_ate23"]
 resource_name = "RightArmSlam"
-length = 3.0
+length = 4.0
 step = 0.06
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -836,6 +1022,7 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hs7nq"]
 _data = {
+&"HeadLaserChargeUp": SubResource("Animation_5p500"),
 &"Idle": SubResource("Animation_sfwk3"),
 &"LaserBlasts": SubResource("Animation_2qam7"),
 &"LeftArmSlam": SubResource("Animation_vitt3"),
@@ -952,6 +1139,9 @@ material = SubResource("ShaderMaterial_tketg")
 position = Vector2(-12, -290)
 texture = ExtResource("2_fverb")
 
+[node name="HeadPositionMarker" type="Marker2D" parent="BodyParts/Head" unique_id=1714413849]
+position = Vector2(13, -65)
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1457307417]
 libraries/ = SubResource("AnimationLibrary_hs7nq")
 playback_default_blend_time = 0.2
@@ -983,10 +1173,12 @@ shape = SubResource("RectangleShape2D_g7hoo")
 script = ExtResource("14_onrfr")
 initial_state = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="StateMachine" unique_id=963565081 node_paths=PackedStringArray("left_arm_slam", "right_arm_slam")]
+[node name="Idle" type="Node" parent="StateMachine" unique_id=963565081 node_paths=PackedStringArray("left_arm_slam", "right_arm_slam", "left_arm_laser", "head_lasers")]
 script = ExtResource("18_0b0mr")
 left_arm_slam = NodePath("../LeftArmSlam")
 right_arm_slam = NodePath("../RightArmSlam")
+left_arm_laser = NodePath("../ArmLaser")
+head_lasers = NodePath("../HeadLasers")
 animation_name = "Idle"
 
 [node name="LeftArmSlam" type="Node" parent="StateMachine" unique_id=1423657029 node_paths=PackedStringArray("idle_state")]
@@ -999,6 +1191,18 @@ script = ExtResource("21_ate23")
 idle_state = NodePath("../Idle")
 animation_name = "RightArmSlam"
 
-[node name="Laser" type="Node2D" parent="." unique_id=1243384733]
+[node name="ArmLaser" type="Node" parent="StateMachine" unique_id=629108126 node_paths=PackedStringArray("idle_state")]
+script = ExtResource("22_2qam7")
+idle_state = NodePath("../Idle")
+animation_name = "LaserBlasts"
 
-[node name="RayCast2D" type="RayCast2D" parent="Laser" unique_id=1810315641]
+[node name="HeadLasers" type="Node" parent="StateMachine" unique_id=2063079901 node_paths=PackedStringArray("idle_state")]
+script = ExtResource("23_5p500")
+idle_state = NodePath("../Idle")
+animation_name = "HeadLaserChargeUp"
+
+[node name="LeftSideShockWaveArea" type="Marker2D" parent="." unique_id=1960610619]
+position = Vector2(-314, -109)
+
+[node name="RightSideShockWaveArea" type="Marker2D" parent="." unique_id=1975897534]
+position = Vector2(257, -110)

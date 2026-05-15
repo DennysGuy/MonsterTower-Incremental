@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://dg3xo83trcd2m"]
+
+[ext_resource type="Script" uid="uid://cofaq6oj1l1xo" path="res://src/Scripts/Tower/Bosses/GreySentinelBoss/laser_ball.gd" id="1_f6ehr"]
+[ext_resource type="Texture2D" uid="uid://cg5sqq5qsg8py" path="res://Assets/Bosses/MossyDungeonBoss/GreySentinelLaserBall.png" id="2_uihe3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f6ehr"]
+radius = 26.172504
+
+[node name="Laser" type="Node2D" unique_id=1796303613]
+script = ExtResource("1_f6ehr")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=611153425]
+texture = ExtResource("2_uihe3")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=2138395268]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1558497121]
+position = Vector2(-1, 1)
+shape = SubResource("CircleShape2D_f6ehr")
+
+[node name="Timer" type="Timer" parent="." unique_id=278801062]
+process_callback = 0
+wait_time = 4.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

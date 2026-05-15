@@ -2,12 +2,14 @@ class_name BossIdle extends State
 
 @export var left_arm_slam : State
 @export var right_arm_slam : State
+@export var left_arm_laser : State
+@export var head_lasers : State
 
 var slams : Array[State]
 
 func enter() -> void:
 	super()
-	slams  = [left_arm_slam, right_arm_slam]
+	slams  = [left_arm_slam, right_arm_slam, left_arm_laser, head_lasers]
 	parent.timer.wait_time = randf_range(5,8)
 	parent.timer.start()
 

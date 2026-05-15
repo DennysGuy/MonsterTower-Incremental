@@ -1,10 +1,11 @@
-class_name LeftArmSlam extends State
+class_name ArmLaserState extends State
+
 
 @export var idle_state : State
 
 func enter() -> void:
 	super()
-	parent.timer.wait_time = 4.0
+	parent.timer.wait_time = 5.0
 	parent.timer.start()
 	
 func exit() -> void:

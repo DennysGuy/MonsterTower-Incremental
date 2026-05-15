@@ -74,11 +74,12 @@ func apply_slow_and_damage(damage : int, issued_slow_factor : float, slow_wait_t
 		increment_break_count()
 
 	apply_damage(damage, is_crit)
-	animation_player.speed_scale = 0.6
+	
 	if status_effect_icon_bar:
 		status_effect_icon_bar.add_slow_icon_to_bar()
 		
 	if slow_timer:
+		animation_player.speed_scale = 0.6
 		slow_factor = issued_slow_factor
 		slow_timer.wait_time = slow_wait_time
 		slow_timer.start()
