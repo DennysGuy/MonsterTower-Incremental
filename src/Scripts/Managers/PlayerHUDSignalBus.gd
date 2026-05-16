@@ -99,3 +99,9 @@ signal update_job_board_button(quest_data : Quest)
 
 @warning_ignore("unused_signal")
 signal add_buff_activated_icon(timer : Timer, ability : Ability)
+
+@warning_ignore("unused_signal")
+signal update_boss_hp_bar(max_health : int, current_health : int)
+
+@warning_ignore("unused_signal")
+signal show_boss_hp_bar

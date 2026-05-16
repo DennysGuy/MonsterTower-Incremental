@@ -16,6 +16,7 @@
 [ext_resource type="Resource" uid="uid://k8lq2m8l311f" path="res://src/Resources/TowerEntranceData/Floor1-5.tres" id="12_84yqx"]
 [ext_resource type="Resource" uid="uid://b7vfvjsghpix0" path="res://src/Resources/TowerEntranceData/Floor1-6.tres" id="13_v8mxw"]
 [ext_resource type="Texture2D" uid="uid://br7g3kguu7y52" path="res://Assets/HUD/NewTowerEntranceMap/DetailsPane.png" id="16_57mdb"]
+[ext_resource type="Resource" uid="uid://dhh4s0hmvwve3" path="res://src/Resources/TowerEntranceData/Floor1-7.tres" id="16_dg4db"]
 
 [node name="TowerEntranceMap" type="Control" unique_id=1693392128]
 layout_mode = 3
@@ -241,6 +242,14 @@ offset_top = 223.0
 offset_right = 551.0
 offset_bottom = 351.0
 tower_entrance_data = ExtResource("13_v8mxw")
+
+[node name="Floor1-7Entrance" parent="." unique_id=40154765 instance=ExtResource("6_4erf6")]
+layout_mode = 1
+offset_left = 49.0
+offset_top = 20.0
+offset_right = 177.0
+offset_bottom = 148.0
+tower_entrance_data = ExtResource("16_dg4db")
 
 [node name="Close" type="Button" parent="." unique_id=1654347764]
 layout_mode = 0

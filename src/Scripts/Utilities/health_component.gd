@@ -23,6 +23,7 @@ func apply_damage(incoming_damage : int, is_crit : bool) -> String:
 		PlayerStats.player_stats["Current Health"] = parent.health
 		PlayerHudSignalBus.update_player_health.emit()
 		print("THIS IS CURRENT PLAYER HEALTH IN STATS: %s" % PlayerStats.player_stats["Current Health"])
+	
 	if parent is Enemy and parent.health_bar:
 		
 		parent.health_bar.show()	
@@ -31,9 +32,14 @@ func apply_damage(incoming_damage : int, is_crit : bool) -> String:
 	if parent.health <= 0:
 		parent.health = 0
 		
+		if parent is Boss:
+			PlayerHudSignalBus.update_boss_hp_bar.emit(parent.enemy_stats.max_health, parent.health)
+		
 		if !parent.is_dead:
 			parent.kill_me()
 	else:
+		if parent is Boss:
+			PlayerHudSignalBus.update_boss_hp_bar.emit(parent.enemy_stats.max_health, parent.health)
 		parent.send_to_hit_state()
 
 	return damage_text

@@ -22,7 +22,8 @@ func _process(delta: float) -> void:
 
 func update_banner_info(tower_entrance_data : TowerEntranceData) -> void:
 	show()
-	match tower_entrance_data.floor_type:
+	var floor_type = tower_entrance_data.floor_type
+	match floor_type:
 		tower_entrance_data.FLOOR_TYPE.EXPEDITION:
 			room_type_label.text = "Expedition Map"
 			room_info_banner.texture = EXPEDITION_ROOM_BANNER
@@ -54,9 +55,9 @@ func update_banner_info(tower_entrance_data : TowerEntranceData) -> void:
 			elif tower_entrance_data.activation_switch_unlocked and !tower_entrance_data.hunt_challenge_completed:
 				tracker_label.text = "Enter the Door to the Boss lair."
 				
-			
-		tower_entrance_data.FLOOR_TYPE.BOSS_DOOR:
+		tower_entrance_data.FLOOR_TYPE.BOSS_ROOM:
 			room_type_label.text = "Boss Map"
+			tracker_label.text = "Defeat the Sentinel."
 			room_info_banner.texture = BOSS_ROOM_BANNER
 
 func update_kills_left(text : String) -> void:

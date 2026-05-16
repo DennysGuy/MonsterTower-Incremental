@@ -1,4 +1,4 @@
-class_name LaserBall extends Node2D
+class_name LaserBall extends EnemyProjectile
 
 const SPEED : int = 250
 @onready var timer: Timer = $Timer
@@ -16,3 +16,7 @@ func _physics_process(delta: float) -> void:
 
 func _on_timer_timeout() -> void:
 	queue_free()
+
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	damage_player(area)

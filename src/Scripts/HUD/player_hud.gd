@@ -53,6 +53,10 @@ const BAG_OPEN = preload("uid://dlh2yqqt6l81t")
 var quests_showing : bool = false
 @onready var advance_class_notice: RichTextLabel = $PlayerHUD/AdvanceClassNotice
 
+@onready var boss_hp_bar: BossHPBar = $PlayerHUD/BossHPBar
+
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	PlayerHudSignalBus.update_player_health.connect(update_player_health)
@@ -80,6 +84,8 @@ func _ready() -> void:
 	TechTreeManager.update_currency_label.connect(update_currency_label)
 	#player_health_bar.max_value = PlayerStats.player_stats["Max Health"]
 	#player_health_bar.value = PlayerStats.player_stats["Current Health"]
+	
+	PlayerHudSignalBus.show_boss_hp_bar.connect(show_boss_hp_bar)
 	
 	LevelingManager.update_xp_bar.connect(update_xp_bar)
 	PlayerHudSignalBus.show_class_notice.connect(show_class_notice)
@@ -130,6 +136,9 @@ func update_xp_bar() -> void:
 	xp_amount_label.text = "%s / %s XP" % [int(PlayerStats.player_stats["Current XP"]), int(PlayerStats.player_stats["Needed XP"])]
 	xp_bar.max_value = PlayerStats.player_stats["Needed XP"]
 	xp_bar.value = PlayerStats.player_stats["Current XP"]
+
+func show_boss_hp_bar() -> void:
+	boss_hp_bar.show()
 
 func spawn_respawn_box() -> void:
 	var respawn_box : RespawnBox = preload("uid://dv20tfcnkjyux").instantiate()

@@ -55,7 +55,8 @@ func store_entrance_data(entrance_data : TowerEntranceData) -> void:
 	set_mode_description_as_expedition()
 	go_to_floor.disabled = false
 	stored_entrance_data = entrance_data
-	biome_preview.texture = entrance_data.preview_pictures[0]
+	if !entrance_data.preview_pictures.is_empty():
+		biome_preview.texture = entrance_data.preview_pictures[0]
 	floor_title.text = "%s" % [entrance_data.floor_name]
 	biome_title.text ="Biome: %s" % [entrance_data.biome]
 	selected_point.text = "Selected Point: %s - %s - Point: %s" % [entrance_data.biome, entrance_data.floor_name, GameManager.spawn_location+1]

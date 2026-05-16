@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c7jp8tkuuj3vp" path="res://src/Scripts/Maps/Tower/Biome1/boss_floor.gd" id="1_i1yle"]
 [ext_resource type="Texture2D" uid="uid://cstsvyo3026na" path="res://Assets/Tower/BossRooms/GreySentinelRoom/GreySentinelRoomBG.png" id="2_2lg00"]
+[ext_resource type="Resource" uid="uid://dhh4s0hmvwve3" path="res://src/Resources/TowerEntranceData/Floor1-7.tres" id="2_jd3c6"]
 [ext_resource type="PackedScene" uid="uid://c8ov03gkkda4k" path="res://src/Scenes/PlayerCamera.tscn" id="2_q6e15"]
 [ext_resource type="Texture2D" uid="uid://bbotdlimu50ml" path="res://Assets/Tower/BossRooms/GreySentinelRoom/BackgroundStuff2.png" id="3_i1yle"]
 [ext_resource type="TileSet" uid="uid://dbxew7tohbk1m" path="res://src/Scenes/Tower/TowerFloors/TestFloor/TempPlatforms.tres" id="4_gqgeu"]
@@ -16,6 +17,7 @@ size = Vector2(47, 897)
 [node name="MossyDungeonBossMap" type="Node2D" unique_id=641977652 node_paths=PackedStringArray("camera")]
 script = ExtResource("1_i1yle")
 map_name = "Floor 1-7"
+tower_entrance_data = ExtResource("2_jd3c6")
 camera = NodePath("PlayerCamera")
 
 [node name="Background" type="TextureRect" parent="." unique_id=1292128073]

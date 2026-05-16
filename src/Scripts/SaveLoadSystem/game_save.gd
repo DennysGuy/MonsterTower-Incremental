@@ -111,6 +111,12 @@ TODO: We will add saves for classes as well
 		"Hunt Challenge Completed": false,
 		"Activation Switch Unlocked": false,
 	},
+	"Floor 1-7" : {
+		"Number of Spawn Locations" : 0,
+		"Campfires Reached": 0,
+		"Hunt Challenge Unlocked": false,
+		"Hunt Challenge Completed": false,
+	},
 	
 }
 #loadded when we hit "continue game"
@@ -136,8 +142,8 @@ TODO: We will add saves for classes as well
 	"Floor 1-4" : false,
 	"Floor 1-5" : false,
 	"Floor 1-6" : false,
+	"Floor 1-7": false,
 }
-
 
 #this is all we really care about actually since nodes don't increase in price or intervals don't change
 #we will have to iterate through every tech node when we launch the tech tree and update each node's state.

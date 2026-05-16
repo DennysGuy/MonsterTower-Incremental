@@ -8,11 +8,14 @@ radius = 26.172504
 
 [node name="Laser" type="Node2D" unique_id=1796303613]
 script = ExtResource("1_f6ehr")
+attack_damage = 50
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=611153425]
 texture = ExtResource("2_uihe3")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=2138395268]
+collision_layer = 4
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1558497121]
 position = Vector2(-1, 1)
@@ -22,4 +25,5 @@ shape = SubResource("CircleShape2D_f6ehr")
 process_callback = 0
 wait_time = 4.0
 
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -16,7 +16,13 @@ func _process(delta: float) -> void:
 		SignalBus.play_close_out_animation.emit()
 		await get_tree().create_timer(0.5).timeout
 		GameManager.player_can_move = true
-		get_tree().change_scene_to_file("res://src/Scenes/Tower/BossMissingPage.tscn")
+		GameManager.resupply_character = true
+		GameManager.spawn_location = 0
+
+		PlayerStats.check_points_unlocked["Floor 1-7"] = true
+		SaveManager.save_game()
+		
+		get_tree().change_scene_to_file("uid://b0iw5pa4foen0")
 
 func play_door_open_animation() -> void:
 	floor_data.hunt_challenge_completed = true

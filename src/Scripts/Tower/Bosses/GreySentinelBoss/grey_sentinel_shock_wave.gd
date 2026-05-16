@@ -1,4 +1,4 @@
-class_name GreySentinelShockWave extends Node2D
+class_name GreySentinelShockWave extends EnemyProjectile
 
 
 @export var move_speed : float
@@ -26,3 +26,7 @@ func _on_timer_timeout() -> void:
 func flip_direction() -> void:
 	flip_dir = true
 	move_dir = -1
+
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	damage_player(area)
