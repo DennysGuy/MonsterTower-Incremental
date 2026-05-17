@@ -31,6 +31,7 @@ shader_parameter/flash_strength = 0.450000021375
 
 [sub_resource type="Animation" id="Animation_vwc0g"]
 resource_name = "Death"
+length = 3.0
 step = 0.06
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -39,7 +40,7 @@ tracks/0/path = NodePath("BodyParts/LeftLeg:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.48),
+"times": PackedFloat32Array(0, 3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(-12, -290), Vector2(-12, -237)]
@@ -51,7 +52,7 @@ tracks/1/path = NodePath("BodyParts/RightLeg:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.48),
+"times": PackedFloat32Array(0, 3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(-12, -290), Vector2(-12, -237)]
@@ -63,7 +64,7 @@ tracks/2/path = NodePath("BodyParts/UpperBody:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.48),
+"times": PackedFloat32Array(0, 3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(-12, -290), Vector2(-12, -209)]
@@ -75,7 +76,7 @@ tracks/3/path = NodePath("BodyParts/LowerBody:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.48),
+"times": PackedFloat32Array(0, 3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(-12, -290), Vector2(-12, -209)]
@@ -87,7 +88,7 @@ tracks/4/path = NodePath("BodyParts/LeftShoulder:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.48),
+"times": PackedFloat32Array(0, 3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(-12, -290), Vector2(-12, -193)]
@@ -99,7 +100,7 @@ tracks/5/path = NodePath("BodyParts/LeftArm:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.48),
+"times": PackedFloat32Array(0, 3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(-12, -290), Vector2(-12, -207)]
@@ -111,7 +112,7 @@ tracks/6/path = NodePath("BodyParts/LeftHand:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.48),
+"times": PackedFloat32Array(0, 3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(-311, -213), Vector2(-311, -157)]
@@ -123,7 +124,7 @@ tracks/7/path = NodePath("BodyParts/RightShoulder:position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0, 0.48),
+"times": PackedFloat32Array(0, 3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(-12, -290), Vector2(-12, -217)]
@@ -135,7 +136,7 @@ tracks/8/path = NodePath("BodyParts/RightArm:position")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0, 0.48),
+"times": PackedFloat32Array(0, 3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(-12, -290), Vector2(-12, -234)]
@@ -147,7 +148,7 @@ tracks/9/path = NodePath("BodyParts/RightHand:position")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(0, 0.48),
+"times": PackedFloat32Array(0, 3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(326, -196), Vector2(326, -181)]
@@ -159,7 +160,7 @@ tracks/10/path = NodePath("BodyParts/Head:position")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
-"times": PackedFloat32Array(0, 0.48),
+"times": PackedFloat32Array(0, 3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(-12, -290), Vector2(-12, -100)]

@@ -7,10 +7,25 @@ class_name BossIdle extends State
 
 var slams : Array[State]
 
+var min_time : float
+var max_time : float
+
 func enter() -> void:
 	super()
 	slams  = [left_arm_slam, right_arm_slam, left_arm_laser, head_lasers]
-	parent.timer.wait_time = randf_range(5,8)
+	var health_ratio : int = int((parent.health/parent.enemy_stats.max_health) * 100)
+	print(health_ratio)
+	if health_ratio >= 70:
+		min_time = 5
+		max_time = 8
+	elif health_ratio < 70 and health_ratio >= 40:
+		min_time = 3
+		max_time = 5
+	else:
+		min_time = 2
+		max_time = 4
+		
+	parent.timer.wait_time = randf_range(min_time,max_time)
 	parent.timer.start()
 
 func exit() -> void:

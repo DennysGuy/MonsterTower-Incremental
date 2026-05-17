@@ -8,11 +8,30 @@
 [ext_resource type="TileSet" uid="uid://dbxew7tohbk1m" path="res://src/Scenes/Tower/TowerFloors/TestFloor/TempPlatforms.tres" id="4_gqgeu"]
 [ext_resource type="Texture2D" uid="uid://druj2qwcqlfib" path="res://Assets/Tower/BossRooms/GreySentinelRoom/BackgroundStuff1.png" id="4_jd3c6"]
 [ext_resource type="PackedScene" uid="uid://c6tv3t1cpeq8f" path="res://src/Scenes/PlayerSpawnPoint.tscn" id="5_gqgeu"]
-[ext_resource type="PackedScene" uid="uid://cd6yt6xvah0em" path="res://src/Scenes/Tower/TowerFloors/Boss/Bosses/GreySentinelBoss/GreySentinelBoss.tscn" id="6_2lg00"]
 [ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="6_lxwpe"]
+[ext_resource type="PackedScene" uid="uid://2i025jlsirq7" path="res://src/Scenes/Tower/TowerFloors/Boss/ActivationSwitch.tscn" id="10_2vsv6"]
+[ext_resource type="Texture2D" uid="uid://bneqrntakw0kw" path="res://Assets/Tower/BossRooms/GreySentinelRoom/SentinelHoldingPlatform.png" id="10_v57ph"]
+[ext_resource type="PackedScene" uid="uid://kpfqadw8tbly" path="res://src/Scenes/Tower/TowerFloors/Boss/Bosses/GreySentinelBoss/GreySentinelMini.tscn" id="11_ae6gf"]
+[ext_resource type="Shader" uid="uid://fbob4oq1tdwt" path="res://src/Scripts/Shaders/GodRays.gdshader" id="11_v57ph"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lxwpe"]
 size = Vector2(47, 897)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2vsv6"]
+shader = ExtResource("11_v57ph")
+shader_parameter/angle = 0.515
+shader_parameter/position = 0.32
+shader_parameter/spread = 0.462000021945
+shader_parameter/cutoff = 0.2890000612275001
+shader_parameter/falloff = 0.5570000264575
+shader_parameter/edge_fade = 0.1890000089775
+shader_parameter/speed = 1.215
+shader_parameter/ray1_density = 13.18
+shader_parameter/ray2_density = 23.64
+shader_parameter/ray2_intensity = 0.1210000057475
+shader_parameter/color = Vector4(0.69, 1.565, 0.895, 0.8)
+shader_parameter/hdr = false
+shader_parameter/seed = 6.08
 
 [node name="MossyDungeonBossMap" type="Node2D" unique_id=641977652 node_paths=PackedStringArray("camera")]
 script = ExtResource("1_i1yle")
@@ -63,10 +82,6 @@ limit_right = 1600
 limit_bottom = 800
 position_smoothing_enabled = true
 
-[node name="GreySentinelBoss" parent="." unique_id=988686716 node_paths=PackedStringArray("drop_scene") instance=ExtResource("6_2lg00")]
-position = Vector2(765, 813)
-drop_scene = NodePath("..")
-
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1718074086]
 tile_map_data = PackedByteArray("AAAAABYAAQAAABYAAAAAABcAAQAAABcAAAAAABgAAQAAABgAAAABABYAAQABABYAAAABABcAAQABABcAAAABABgAAQABABgAAAACABYAAQACABYAAAACABcAAQACABcAAAACABgAAQACABgAAAADABYAAQADABYAAAADABcAAQADABcAAAADABgAAQADABgAAAAEABYAAQAEABYAAAAEABcAAQAEABcAAAAEABgAAQAEABgAAAAFABYAAQAAABYAAAAFABcAAQAAABcAAAAFABgAAQAAABgAAAAGABYAAQABABYAAAAGABcAAQABABcAAAAGABgAAQABABgAAAAHABYAAQACABYAAAAHABcAAQACABcAAAAHABgAAQACABgAAAAIABYAAQADABYAAAAIABcAAQADABcAAAAIABgAAQADABgAAAAJABYAAQAEABYAAAAJABcAAQAEABcAAAAJABgAAQAEABgAAAAKABYAAQAAABYAAAAKABcAAQAAABcAAAAKABgAAQAAABgAAAALABYAAQABABYAAAALABcAAQABABcAAAALABgAAQABABgAAAAMABYAAQACABYAAAAMABcAAQACABcAAAAMABgAAQACABgAAAANABYAAQADABYAAAANABcAAQADABcAAAANABgAAQADABgAAAAOABYAAQAEABYAAAAOABcAAQAEABcAAAAOABgAAQAEABgAAAAPABYAAQAAABYAAAAPABcAAQAAABcAAAAPABgAAQAAABgAAAAQABYAAQABABYAAAAQABcAAQABABcAAAAQABgAAQABABgAAAARABYAAQACABYAAAARABcAAQACABcAAAARABgAAQACABgAAAASABYAAQADABYAAAASABcAAQADABcAAAASABgAAQADABgAAAATABYAAQAEABYAAAATABcAAQAEABcAAAATABgAAQAEABgAAAAUABYAAQAAABYAAAAUABcAAQAAABcAAAAUABgAAQAAABgAAAAVABYAAQABABYAAAAVABcAAQABABcAAAAVABgAAQABABgAAAAWABYAAQACABYAAAAWABcAAQACABcAAAAWABgAAQACABgAAAAXABYAAQADABYAAAAXABcAAQADABcAAAAXABgAAQADABgAAAAYABYAAQAEABYAAAAYABcAAQAEABcAAAAYABgAAQAEABgAAAAZABYAAQAAABYAAAAZABcAAQAAABcAAAAZABgAAQAAABgAAAAaABYAAQABABYAAAAaABcAAQABABcAAAAaABgAAQABABgAAAAbABYAAQACABYAAAAbABcAAQACABcAAAAbABgAAQACABgAAAAcABYAAQADABYAAAAcABcAAQADABcAAAAcABgAAQADABgAAAAdABYAAQAEABYAAAAdABcAAQAEABcAAAAdABgAAQAEABgAAAAeABYAAQAAABYAAAAeABcAAQAAABcAAAAeABgAAQAAABgAAAAfABYAAQABABYAAAAfABcAAQABABcAAAAfABgAAQABABgAAAAgABYAAQACABYAAAAgABcAAQACABcAAAAgABgAAQACABgAAAAhABYAAQADABYAAAAhABcAAQADABcAAAAhABgAAQADABgAAAAiABYAAQAEABYAAAAiABcAAQAEABcAAAAiABgAAQAEABgAAAAjABYAAQAAABYAAAAjABcAAQAAABcAAAAjABgAAQAAABgAAAAkABYAAQABABYAAAAkABcAAQABABcAAAAkABgAAQABABgAAAAlABYAAQACABYAAAAlABcAAQACABcAAAAlABgAAQACABgAAAAmABYAAQADABYAAAAmABcAAQADABcAAAAmABgAAQADABgAAAAnABYAAQAEABYAAAAnABcAAQAEABcAAAAnABgAAQAEABgAAAAoABYAAQAAABYAAAAoABcAAQAAABcAAAAoABgAAQAAABgAAAApABYAAQABABYAAAApABcAAQABABcAAAApABgAAQABABgAAAAqABYAAQACABYAAAAqABcAAQACABcAAAAqABgAAQACABgAAAArABYAAQADABYAAAArABcAAQADABcAAAArABgAAQADABgAAAAsABYAAQAEABYAAAAsABcAAQAEABcAAAAsABgAAQAEABgAAAAtABYAAQAAABYAAAAtABcAAQAAABcAAAAtABgAAQAAABgAAAAuABYAAQABABYAAAAuABcAAQABABcAAAAuABgAAQABABgAAAAvABYAAQACABYAAAAvABcAAQACABcAAAAvABgAAQACABgAAAAwABYAAQADABYAAAAwABcAAQADABcAAAAwABgAAQADABgAAAAxABYAAQAEABYAAAAxABcAAQAEABcAAAAxABgAAQAEABgAAAA=")
 tile_set = ExtResource("4_gqgeu")
@@ -75,3 +90,20 @@ tile_set = ExtResource("4_gqgeu")
 position = Vector2(296, 704)
 
 [node name="SfxPlayer" parent="." unique_id=1920734488 instance=ExtResource("6_lxwpe")]
+
+[node name="ActivationSwitch" parent="." unique_id=927023199 instance=ExtResource("10_2vsv6")]
+position = Vector2(1010, 704)
+
+[node name="SentinelHoldingPlatform" type="Sprite2D" parent="." unique_id=1885908594]
+position = Vector2(1196, 614)
+texture = ExtResource("10_v57ph")
+
+[node name="GreySentinelMini" parent="." unique_id=318008220 instance=ExtResource("11_ae6gf")]
+position = Vector2(1199, 546)
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1954533783]
+material = SubResource("ShaderMaterial_2vsv6")
+offset_left = 872.0
+offset_top = -15.0
+offset_right = 1483.0
+offset_bottom = 714.0

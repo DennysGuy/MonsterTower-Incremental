@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://2i025jlsirq7"]
+
+[ext_resource type="Texture2D" uid="uid://cnddpvdubbabb" path="res://Assets/Tower/BossRooms/GreySentinelRoom/ActivationSwitch.png" id="1_evq21"]
+[ext_resource type="Script" uid="uid://1t5sar4e2fhc" path="res://src/Scripts/Tower/Bosses/GreySentinelBoss/boss_activation_switch.gd" id="1_xs5no"]
+[ext_resource type="PackedScene" uid="uid://vo5sm7p34vo6" path="res://src/Scenes/Actors/Utilities/NameTag.tscn" id="2_kv6hj"]
+[ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="4_gb1qx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gb1qx"]
+size = Vector2(85, 57)
+
+[node name="ActivationSwitch" type="Node2D" unique_id=927023199]
+script = ExtResource("1_xs5no")
+
+[node name="Graphic" type="Sprite2D" parent="." unique_id=809374212]
+position = Vector2(-11, -64)
+texture = ExtResource("1_evq21")
+hframes = 2
+
+[node name="NameTag" parent="." unique_id=1232323974 instance=ExtResource("2_kv6hj")]
+offset_top = 6.0
+offset_bottom = 22.0
+
+[node name="Tag" parent="NameTag/Bg" parent_id_path=PackedInt32Array(1232323974, 305804188) index="0" unique_id=725373759]
+text = "Activation Switch"
+
+[node name="Notice" type="Label" parent="." unique_id=1726401451]
+visible = false
+offset_left = -61.0
+offset_top = -152.0
+offset_right = 70.0
+offset_bottom = -136.0
+theme_override_fonts/font = ExtResource("4_gb1qx")
+text = "Press 'E' to activate"
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1503866894]
+position = Vector2(-76, -47)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1303965656]
+position = Vector2(14.5, 18.5)
+shape = SubResource("RectangleShape2D_gb1qx")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+
+[editable path="NameTag"]
