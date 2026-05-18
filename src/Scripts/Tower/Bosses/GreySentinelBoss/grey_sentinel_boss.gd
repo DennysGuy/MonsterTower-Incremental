@@ -13,6 +13,11 @@ var right_hand_laser : HandCanonLaser
 @onready var left_side_shock_wave_area: Marker2D = $LeftSideShockWaveArea
 @onready var right_side_shock_wave_area: Marker2D = $RightSideShockWaveArea
 
+@onready var idle: BossIdle = $StateMachine/Idle
+const HEAVY_IMPACT = preload("uid://ddwrfovwbrjtl")
+const LASER_BEAM_BLAST_2 = preload("uid://c8f01ntf54h2g")
+const LASER_BEAM_BLAST_1 = preload("uid://c67sqersavike")
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super()
@@ -23,6 +28,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
+func shake_camera_intro() -> void:
+	play_heavy_impact()
+	SignalBus.shake_camera.emit(20)
 
 func shoot_shock_waves_left() -> void:
 	spawn_left_side_shock_waves()
@@ -70,6 +78,7 @@ func spawn_left_side_shock_waves() -> void:
 	shock_wave_2.global_position = left_side_shock_wave_area.global_position
 	get_parent().add_child(shock_wave_1)
 	get_parent().add_child(shock_wave_2)
+	play_heavy_impact()
 
 func spawn_right_side_shock_waves() -> void:
 	var shock_wave_1 : GreySentinelShockWave = preload("uid://bp566jgbtua5f").instantiate()
@@ -81,3 +90,24 @@ func spawn_right_side_shock_waves() -> void:
 	shock_wave_2.global_position = right_side_shock_wave_area.global_position
 	get_parent().add_child(shock_wave_1)
 	get_parent().add_child(shock_wave_2)
+	play_heavy_impact()
+
+func send_to_idle_state() -> void:
+	enable_hurt_box()
+	damageable = true
+	state_machine.change_state(idle)
+
+func set_animation_speed(speed : float = 1.0) -> void:
+	animation_player.speed_scale = speed
+
+func finish_death_scene() -> void:
+	SignalBus.play_boss_death_scene.emit()
+
+func play_heavy_impact() -> void:
+	play_sfx(HEAVY_IMPACT)
+
+func play_beam_blast_1() -> void:
+	play_sfx(LASER_BEAM_BLAST_1)
+
+func play_beam_blast_2() -> void:
+	play_sfx(LASER_BEAM_BLAST_2)

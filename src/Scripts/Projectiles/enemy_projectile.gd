@@ -38,3 +38,13 @@ func damage_player(area : Area2D) -> void:
 
 	damage = max(damage, 1)
 	area_parent.apply_damage(damage,false)
+
+
+func play_sfx(sound: AudioStream, volume: float = 0.0):
+	var player := AudioStreamPlayer.new()
+	player.stream = sound
+	player.volume_db = volume
+	player.bus = &"SFX"
+	add_child(player)
+	player.play()
+	player.finished.connect(player.queue_free)

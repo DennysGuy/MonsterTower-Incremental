@@ -18,18 +18,21 @@ func enter() -> void:
 	if health_ratio >= 70:
 		min_time = 5
 		max_time = 8
+		parent.set_animation_speed()
 	elif health_ratio < 70 and health_ratio >= 40:
 		min_time = 3
 		max_time = 5
+		parent.set_animation_speed(1.2)
 	else:
 		min_time = 2
 		max_time = 4
+		parent.set_animation_speed(1.5)
 		
 	parent.timer.wait_time = randf_range(min_time,max_time)
 	parent.timer.start()
 
 func exit() -> void:
-	pass
+	parent.set_animation_speed()
 
 func process_input(_event: InputEvent) -> State:
 	return null

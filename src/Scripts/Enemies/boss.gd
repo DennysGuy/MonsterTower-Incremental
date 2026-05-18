@@ -3,6 +3,8 @@ class_name Boss extends Enemy
 @export var left_leg : Sprite2D
 func send_to_hit_state() -> void:
 	issue_hit_flash()
+	if stored_stun_marker_icon:
+		remove_stun_marker()
 
 
 func hit_flash(state : bool) -> void:

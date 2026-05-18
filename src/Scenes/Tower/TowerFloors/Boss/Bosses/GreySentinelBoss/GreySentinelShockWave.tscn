@@ -9,7 +9,8 @@ size = Vector2(143, 47)
 [node name="GreySentinelShockWave" type="Node2D" unique_id=875766044]
 script = ExtResource("1_hf825")
 move_speed = 15.0
-attack_damage = 60
+flip_dir = true
+attack_damage = 150
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2117594761]
 position = Vector2(0, -51)

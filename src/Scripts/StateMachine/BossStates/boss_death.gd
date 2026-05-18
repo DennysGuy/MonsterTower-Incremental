@@ -1,8 +1,10 @@
 class_name BossDeath extends State
 
+const ROBOT_DEATH = preload("uid://xlnchrf2knj0")
 
 func enter() -> void:
 	super()
+	parent.play_sfx(ROBOT_DEATH)
 	ExpeditionTimer.stop_timer()
 
 func exit() -> void:

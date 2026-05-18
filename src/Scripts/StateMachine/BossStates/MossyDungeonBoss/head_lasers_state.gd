@@ -6,10 +6,12 @@ class_name HeadLasersState extends State
 var bullet_spawn_timer : float
 
 const SPAWN_TIME = 50
+const ROBOT_MOVE_3 = preload("uid://cc6lj68x6mp35")
 
 func enter() -> void:
 	super()
-	parent.timer.wait_time = 5.0
+	parent.play_sfx(ROBOT_MOVE_3)
+	parent.timer.wait_time = randi_range(5,10)
 	parent.timer.start()
 	bullet_spawn_timer = SPAWN_TIME
 	

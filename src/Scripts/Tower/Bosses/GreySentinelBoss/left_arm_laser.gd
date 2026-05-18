@@ -3,10 +3,14 @@ class_name ArmLaserState extends State
 
 @export var idle_state : State
 
+const ROBOT_MOVE_1 = preload("uid://deajtkpju2yaw")
+
 func enter() -> void:
 	super()
+	parent.play_sfx(ROBOT_MOVE_1)
 	parent.timer.wait_time = 5.0
 	parent.timer.start()
+	
 	
 func exit() -> void:
 	pass

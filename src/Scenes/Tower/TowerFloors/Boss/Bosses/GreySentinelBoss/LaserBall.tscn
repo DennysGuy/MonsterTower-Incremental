@@ -8,7 +8,7 @@ radius = 26.172504
 
 [node name="Laser" type="Node2D" unique_id=1796303613]
 script = ExtResource("1_f6ehr")
-attack_damage = 50
+attack_damage = 100
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=611153425]
 texture = ExtResource("2_uihe3")
