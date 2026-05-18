@@ -61,9 +61,10 @@ func _ready() -> void:
 		PlayerHudSignalBus.start_stop_watch.emit()
 	
 	unlock_quests()
+	
 	PlayerHudSignalBus.update_map_name_label.emit(map_name)
 	SignalBus.update_banner_info.emit(tower_entrance_data)
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+	
 func _process(delta: float) -> void:
 	super(delta)
 	#if Input.is_action_just_pressed("interact") and in_check_point_area:

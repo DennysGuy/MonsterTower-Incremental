@@ -1,0 +1,128 @@
+[gd_scene format=4 uid="uid://debxrsu3y7fpd"]
+
+[ext_resource type="Script" uid="uid://c7jp8tkuuj3vp" path="res://src/Scripts/Maps/Tower/Biome1/boss_floor.gd" id="1_i1yle"]
+[ext_resource type="Texture2D" uid="uid://cstsvyo3026na" path="res://Assets/Tower/BossRooms/GreySentinelRoom/GreySentinelRoomBG.png" id="2_2lg00"]
+[ext_resource type="Resource" uid="uid://dhh4s0hmvwve3" path="res://src/Resources/TowerEntranceData/Floor1-7.tres" id="2_jd3c6"]
+[ext_resource type="PackedScene" uid="uid://c8ov03gkkda4k" path="res://src/Scenes/PlayerCamera.tscn" id="2_q6e15"]
+[ext_resource type="Texture2D" uid="uid://bbotdlimu50ml" path="res://Assets/Tower/BossRooms/GreySentinelRoom/BackgroundStuff2.png" id="3_i1yle"]
+[ext_resource type="AudioStream" uid="uid://cg66s17ecv102" path="res://Audio/SFX/Ambience/BossRoomAmbience1.wav" id="3_ioq8e"]
+[ext_resource type="TileSet" uid="uid://dbxew7tohbk1m" path="res://src/Scenes/Tower/TowerFloors/TestFloor/TempPlatforms.tres" id="4_gqgeu"]
+[ext_resource type="Texture2D" uid="uid://druj2qwcqlfib" path="res://Assets/Tower/BossRooms/GreySentinelRoom/BackgroundStuff1.png" id="4_jd3c6"]
+[ext_resource type="PackedScene" uid="uid://c6tv3t1cpeq8f" path="res://src/Scenes/PlayerSpawnPoint.tscn" id="5_gqgeu"]
+[ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="6_lxwpe"]
+[ext_resource type="PackedScene" uid="uid://2i025jlsirq7" path="res://src/Scenes/Tower/TowerFloors/Boss/ActivationSwitch.tscn" id="10_2vsv6"]
+[ext_resource type="Texture2D" uid="uid://bneqrntakw0kw" path="res://Assets/Tower/BossRooms/GreySentinelRoom/SentinelHoldingPlatform.png" id="10_v57ph"]
+[ext_resource type="PackedScene" uid="uid://kpfqadw8tbly" path="res://src/Scenes/Tower/TowerFloors/Boss/Bosses/GreySentinelBoss/GreySentinelMini.tscn" id="11_ae6gf"]
+[ext_resource type="Shader" uid="uid://fbob4oq1tdwt" path="res://src/Scripts/Shaders/GodRays.gdshader" id="11_v57ph"]
+[ext_resource type="PackedScene" uid="uid://cji2sopodl4w1" path="res://src/Scenes/Tower/TowerFloors/Boss/BossRewardsChest.tscn" id="14_kqwaa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lxwpe"]
+size = Vector2(47, 897)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2vsv6"]
+shader = ExtResource("11_v57ph")
+shader_parameter/angle = 0.515
+shader_parameter/position = 0.32
+shader_parameter/spread = 0.462000021945
+shader_parameter/cutoff = 0.2890000612275001
+shader_parameter/falloff = 0.5570000264575
+shader_parameter/edge_fade = 0.1890000089775
+shader_parameter/speed = 1.215
+shader_parameter/ray1_density = 13.18
+shader_parameter/ray2_density = 23.64
+shader_parameter/ray2_intensity = 0.1210000057475
+shader_parameter/color = Vector4(0.69, 1.565, 0.895, 0.8)
+shader_parameter/hdr = false
+shader_parameter/seed = 6.08
+
+[node name="MossyDungeonBossMap" type="Node2D" unique_id=641977652 node_paths=PackedStringArray("camera", "sfx_player", "ambience_player")]
+script = ExtResource("1_i1yle")
+map_name = "Floor 1-7"
+tower_entrance_data = ExtResource("2_jd3c6")
+camera = NodePath("PlayerCamera")
+sfx_player = NodePath("SfxPlayer")
+ambience_player = NodePath("AmbiencePlayer")
+ambience_sfx = ExtResource("3_ioq8e")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1292128073]
+modulate = Color(0.7121294, 0.7121294, 0.71212935, 1)
+z_index = -4
+offset_right = 1600.0
+offset_bottom = 800.0
+texture = ExtResource("2_2lg00")
+
+[node name="BackgroundStuff2" type="Parallax2D" parent="." unique_id=1601755750]
+scroll_scale = Vector2(0.2, 1)
+scroll_offset = Vector2(-800, 404)
+repeat_size = Vector2(1600, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="BackgroundStuff2" unique_id=1303807958]
+z_index = -3
+texture = ExtResource("3_i1yle")
+
+[node name="BackgroundStuff1" type="Parallax2D" parent="." unique_id=1546290480]
+scroll_scale = Vector2(0.3, 1)
+scroll_offset = Vector2(-800, 404)
+repeat_size = Vector2(1600, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="BackgroundStuff1" unique_id=295472646]
+z_index = -2
+texture = ExtResource("4_jd3c6")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=2086759042]
+position = Vector2(-10, 713)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1725100856]
+position = Vector2(-13.5, -266.5)
+shape = SubResource("RectangleShape2D_lxwpe")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=1353798168]
+position = Vector2(1636, 713)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=914261018]
+position = Vector2(-13.5, -266.5)
+shape = SubResource("RectangleShape2D_lxwpe")
+
+[node name="PlayerCamera" parent="." unique_id=950996678 instance=ExtResource("2_q6e15")]
+limit_left = 0
+limit_top = 0
+limit_right = 1600
+limit_bottom = 800
+position_smoothing_enabled = true
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1718074086]
+tile_map_data = PackedByteArray("AAAAABYAAQAAABYAAAAAABcAAQAAABcAAAAAABgAAQAAABgAAAABABYAAQABABYAAAABABcAAQABABcAAAABABgAAQABABgAAAACABYAAQACABYAAAACABcAAQACABcAAAACABgAAQACABgAAAADABYAAQADABYAAAADABcAAQADABcAAAADABgAAQADABgAAAAEABYAAQAEABYAAAAEABcAAQAEABcAAAAEABgAAQAEABgAAAAFABYAAQAAABYAAAAFABcAAQAAABcAAAAFABgAAQAAABgAAAAGABYAAQABABYAAAAGABcAAQABABcAAAAGABgAAQABABgAAAAHABYAAQACABYAAAAHABcAAQACABcAAAAHABgAAQACABgAAAAIABYAAQADABYAAAAIABcAAQADABcAAAAIABgAAQADABgAAAAJABYAAQAEABYAAAAJABcAAQAEABcAAAAJABgAAQAEABgAAAAKABYAAQAAABYAAAAKABcAAQAAABcAAAAKABgAAQAAABgAAAALABYAAQABABYAAAALABcAAQABABcAAAALABgAAQABABgAAAAMABYAAQACABYAAAAMABcAAQACABcAAAAMABgAAQACABgAAAANABYAAQADABYAAAANABcAAQADABcAAAANABgAAQADABgAAAAOABYAAQAEABYAAAAOABcAAQAEABcAAAAOABgAAQAEABgAAAAPABYAAQAAABYAAAAPABcAAQAAABcAAAAPABgAAQAAABgAAAAQABYAAQABABYAAAAQABcAAQABABcAAAAQABgAAQABABgAAAARABYAAQACABYAAAARABcAAQACABcAAAARABgAAQACABgAAAASABYAAQADABYAAAASABcAAQADABcAAAASABgAAQADABgAAAATABYAAQAEABYAAAATABcAAQAEABcAAAATABgAAQAEABgAAAAUABYAAQAAABYAAAAUABcAAQAAABcAAAAUABgAAQAAABgAAAAVABYAAQABABYAAAAVABcAAQABABcAAAAVABgAAQABABgAAAAWABYAAQACABYAAAAWABcAAQACABcAAAAWABgAAQACABgAAAAXABYAAQADABYAAAAXABcAAQADABcAAAAXABgAAQADABgAAAAYABYAAQAEABYAAAAYABcAAQAEABcAAAAYABgAAQAEABgAAAAZABYAAQAAABYAAAAZABcAAQAAABcAAAAZABgAAQAAABgAAAAaABYAAQABABYAAAAaABcAAQABABcAAAAaABgAAQABABgAAAAbABYAAQACABYAAAAbABcAAQACABcAAAAbABgAAQACABgAAAAcABYAAQADABYAAAAcABcAAQADABcAAAAcABgAAQADABgAAAAdABYAAQAEABYAAAAdABcAAQAEABcAAAAdABgAAQAEABgAAAAeABYAAQAAABYAAAAeABcAAQAAABcAAAAeABgAAQAAABgAAAAfABYAAQABABYAAAAfABcAAQABABcAAAAfABgAAQABABgAAAAgABYAAQACABYAAAAgABcAAQACABcAAAAgABgAAQACABgAAAAhABYAAQADABYAAAAhABcAAQADABcAAAAhABgAAQADABgAAAAiABYAAQAEABYAAAAiABcAAQAEABcAAAAiABgAAQAEABgAAAAjABYAAQAAABYAAAAjABcAAQAAABcAAAAjABgAAQAAABgAAAAkABYAAQABABYAAAAkABcAAQABABcAAAAkABgAAQABABgAAAAlABYAAQACABYAAAAlABcAAQACABcAAAAlABgAAQACABgAAAAmABYAAQADABYAAAAmABcAAQADABcAAAAmABgAAQADABgAAAAnABYAAQAEABYAAAAnABcAAQAEABcAAAAnABgAAQAEABgAAAAoABYAAQAAABYAAAAoABcAAQAAABcAAAAoABgAAQAAABgAAAApABYAAQABABYAAAApABcAAQABABcAAAApABgAAQABABgAAAAqABYAAQACABYAAAAqABcAAQACABcAAAAqABgAAQACABgAAAArABYAAQADABYAAAArABcAAQADABcAAAArABgAAQADABgAAAAsABYAAQAEABYAAAAsABcAAQAEABcAAAAsABgAAQAEABgAAAAtABYAAQAAABYAAAAtABcAAQAAABcAAAAtABgAAQAAABgAAAAuABYAAQABABYAAAAuABcAAQABABcAAAAuABgAAQABABgAAAAvABYAAQACABYAAAAvABcAAQACABcAAAAvABgAAQACABgAAAAwABYAAQADABYAAAAwABcAAQADABcAAAAwABgAAQADABgAAAAxABYAAQAEABYAAAAxABcAAQAEABcAAAAxABgAAQAEABgAAAA=")
+tile_set = ExtResource("4_gqgeu")
+
+[node name="PlayerSpawnPoint" parent="." unique_id=2025827218 instance=ExtResource("5_gqgeu")]
+position = Vector2(296, 704)
+
+[node name="SfxPlayer" parent="." unique_id=1920734488 instance=ExtResource("6_lxwpe")]
+
+[node name="ActivationSwitch" parent="." unique_id=927023199 instance=ExtResource("10_2vsv6")]
+position = Vector2(1010, 704)
+
+[node name="SentinelHoldingPlatform" type="Sprite2D" parent="." unique_id=1885908594]
+position = Vector2(1196, 614)
+texture = ExtResource("10_v57ph")
+
+[node name="GreySentinelMini" parent="." unique_id=318008220 instance=ExtResource("11_ae6gf")]
+position = Vector2(1199, 546)
+
+[node name="GodRays" type="ColorRect" parent="." unique_id=1954533783]
+material = SubResource("ShaderMaterial_2vsv6")
+offset_left = 872.0
+offset_top = -15.0
+offset_right = 1483.0
+offset_bottom = 714.0
+
+[node name="BossSpawnPoint" type="Marker2D" parent="." unique_id=352391624]
+position = Vector2(923, 704)
+
+[node name="MiniBossDeathPoint" type="Marker2D" parent="." unique_id=1021928607]
+position = Vector2(923, 484)
+
+[node name="BossRewardsChest" parent="." unique_id=383906067 instance=ExtResource("14_kqwaa")]
+
+[node name="AmbiencePlayer" type="AudioStreamPlayer" parent="." unique_id=671186270]
+bus = &"Ambience"

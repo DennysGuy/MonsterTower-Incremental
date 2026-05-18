@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://bdqehuvsrx1sx"]
+
+[ext_resource type="Shader" uid="uid://2bv8yrbhe1mb" path="res://src/Scripts/Shaders/Laser.gdshader" id="1_p2ht8"]
+[ext_resource type="Script" uid="uid://c5scm0p7pnhar" path="res://src/Scripts/Tower/Bosses/GreySentinelBoss/hand_canon_laser.gd" id="2_maj4h"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5p500"]
+shader = ExtResource("1_p2ht8")
+shader_parameter/glow_intensity = 50.0
+shader_parameter/core_width = 0.366000017385
+shader_parameter/core_length = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p2ht8"]
+shader = ExtResource("1_p2ht8")
+shader_parameter/glow_intensity = 50.0
+shader_parameter/core_width = 0.6050000287375
+shader_parameter/core_length = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ate23"]
+size = Vector2(82, 826)
+
+[node name="Laser" type="Node2D" unique_id=779217302]
+material = SubResource("ShaderMaterial_5p500")
+script = ExtResource("2_maj4h")
+attack_damage = 120
+
+[node name="Line2D" type="Line2D" parent="." unique_id=840824354]
+material = SubResource("ShaderMaterial_p2ht8")
+points = PackedVector2Array(-20, 117, -20, 943)
+width = 90.0
+default_color = Color(0.25030932, 0.8059726, 0.75922, 1)
+texture_mode = 2
+begin_cap_mode = 1
+end_cap_mode = 2
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1439447088]
+position = Vector2(-19, 129)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=418777923]
+position = Vector2(-1, 401)
+shape = SubResource("RectangleShape2D_ate23")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

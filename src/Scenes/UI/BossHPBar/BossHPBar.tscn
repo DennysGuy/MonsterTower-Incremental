@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://cmxkvl1omtnl6"]
+
+[ext_resource type="Script" uid="uid://dymqo7cnhg6nm" path="res://src/Scripts/HUD/boss_hp_bar.gd" id="1_16ecn"]
+[ext_resource type="Texture2D" uid="uid://dv47hkd6ub8et" path="res://Assets/HUD/NewPlayerHUD/BossHPBars/GreySentinel_HPBar_Base.png" id="1_m5lnn"]
+[ext_resource type="Texture2D" uid="uid://0s65nik5y3w5" path="res://Assets/HUD/NewPlayerHUD/BossHPBars/GreySentinel_HPBar_Fill.png" id="2_16ecn"]
+[ext_resource type="FontFile" uid="uid://dln8g51uvm22r" path="res://Assets/Fonts/Azonix-1VB0.otf" id="4_ux6g8"]
+
+[node name="BossHPBar" type="Control" unique_id=1981304713]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_16ecn")
+
+[node name="HPBar" type="TextureProgressBar" parent="." unique_id=1174050407]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -640.0
+offset_top = -64.0
+offset_right = 640.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+value = 50.0
+texture_under = ExtResource("1_m5lnn")
+texture_progress = ExtResource("2_16ecn")
+
+[node name="BossNameLabel" type="Label" parent="." unique_id=318816894]
+layout_mode = 0
+offset_left = 254.0
+offset_top = -29.0
+offset_right = 637.0
+offset_bottom = 5.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_ux6g8")
+theme_override_font_sizes/font_size = 32
+text = "Grey Sentinel"
+horizontal_alignment = 2
+
+[node name="BossHPLabel" type="Label" parent="." unique_id=1312249221]
+layout_mode = 0
+offset_left = -638.0
+offset_top = 68.0
+offset_right = -345.11765
+offset_bottom = 94.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_ux6g8")
+theme_override_font_sizes/font_size = 24
+text = "(100000/100000)"

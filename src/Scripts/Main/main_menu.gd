@@ -30,7 +30,9 @@ func go_to_starspire() -> void:
 	#QuestManager.connect_active_main_quest_signals()
 	animation_player.play("FadeOut")
 	await get_tree().create_timer(1.0).timeout
+	GameManager.resupply_character = true
 	get_tree().change_scene_to_file("res://src/Scenes/NewStarshire/NewNewStarshireTest.tscn") 
+	#get_tree().change_scene_to_file("uid://b0iw5pa4foen0")
 	
 func _on_button_button_up() -> void:
 	SaveManager.create_new_save()

@@ -2670,6 +2670,10 @@ animation_duration = 0.5
 process_callback = 0
 one_shot = true
 
+[node name="KnockBackTimer" type="Timer" parent="." unique_id=639766406]
+process_callback = 0
+one_shot = true
+
 [node name="InvincibilityTimer" type="Timer" parent="." unique_id=657708217]
 process_callback = 0
 one_shot = true

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="TowerEntranceData" format=3 uid="uid://dhh4s0hmvwve3"]
+
+[ext_resource type="Texture2D" uid="uid://dj1gttdj0e3r" path="res://Assets/HUD/NewTowerEntranceMap/MossyDungeonEntranceButtons/MossyDungeonBossIcon.png" id="1_2l8q2"]
+[ext_resource type="Script" uid="uid://cyho4aep1qxmu" path="res://src/Scripts/Maps/tower_entrance_data.gd" id="1_woltw"]
+
+[resource]
+script = ExtResource("1_woltw")
+floor_name = "Floor 1-7"
+floor_number = 7
+button_texture = ExtResource("1_2l8q2")
+floor_type = 3
+biome = "Mossy Dungeon"
+scene_path = "uid://b0iw5pa4foen0"
+metadata/_custom_type_script = "uid://cyho4aep1qxmu"

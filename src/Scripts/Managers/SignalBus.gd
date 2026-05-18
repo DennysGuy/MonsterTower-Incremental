@@ -145,3 +145,11 @@ signal enable_enemy_hit_box
 
 @warning_ignore("unused_signal")
 signal unlock_cool_down_wheel(ability : Ability)
+
+@warning_ignore("unused_signal")
+signal start_boss_fight
+@warning_ignore("unused_signal")
+signal play_boss_death_scene
+
+@warning_ignore("unused_signal")
+signal go_to_outro_screen

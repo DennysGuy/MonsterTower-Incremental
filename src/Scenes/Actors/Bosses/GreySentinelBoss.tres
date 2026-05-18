@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EnemyStats" format=3 uid="uid://ctecct8vjkwi"]
+
+[ext_resource type="Script" uid="uid://cbjktr12qagl" path="res://src/Scripts/Enemies/enemy_stats.gd" id="1_bgw7m"]
+[ext_resource type="AudioStream" uid="uid://ffdv7g8jgp4y" path="res://Audio/SFX/Biomes/MossyDungeon/GenericImpact1.wav" id="1_dthfc"]
+
+[resource]
+script = ExtResource("1_bgw7m")
+enemy_name = "Grey Sentinel"
+enemy_level = 30
+max_health = 1000000
+attack = 300
+hit_sfx = ExtResource("1_dthfc")
+metadata/_custom_type_script = "uid://cbjktr12qagl"

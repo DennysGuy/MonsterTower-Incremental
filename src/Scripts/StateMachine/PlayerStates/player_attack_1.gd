@@ -25,17 +25,20 @@ func enter() -> void:
 	
 	parent.timer.wait_time = PlayerStats.get_current_sword().get_total_attack_speed_bonus()
 	parent.timer.start()
+	
+	if parent.knocked_back:
+		parent.stop_player()
+	else:
+		# --- CAPTURE MOMENTUM ---
+		if int(parent.velocity.x) != 0:
+			attack_velocity = parent.velocity.x
+			attack_velocity = clamp(
+				attack_velocity,
+				-parent.max_attack_drift,
+				parent.max_attack_drift
+			)
 
-	# --- CAPTURE MOMENTUM ---
-	if int(parent.velocity.x) != 0:
-		attack_velocity = parent.velocity.x
-		attack_velocity = clamp(
-			attack_velocity,
-			-parent.max_attack_drift,
-			parent.max_attack_drift
-		)
-
-		parent.velocity.x = attack_velocity
+			parent.velocity.x = attack_velocity
 
 	# Clamp so sprint/dash doesn't slide forever
 
@@ -59,6 +62,7 @@ func process_physics(_delta: float) -> State:
 		return idle_state
 
 	# --- APPLY FRICTION ONLY ---
+	
 	parent.velocity.x = move_toward(
 		parent.velocity.x,
 		0.0,

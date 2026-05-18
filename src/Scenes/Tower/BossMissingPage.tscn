@@ -102,13 +102,11 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_q7qny")
 theme_override_font_sizes/font_size = 45
-text = "There should be a boss fight here - right about now, but
-looks like the dev hasn't gotten around to programming it.
+text = "Thanks for playing through the prototype content.
 
-Sorry :(
-
-Stay tuned for more :D
-Thanks for playing and getting this far :P"
+In the future, you can expect the boss to actually
+drop stuff - useful stuff, more biomes, stronger
+class advancements, abilities, monsters, and more!"
 horizontal_alignment = 1
 
 [node name="Button" type="Button" parent="." unique_id=989170433]

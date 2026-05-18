@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://bp566jgbtua5f"]
+
+[ext_resource type="Script" uid="uid://7yqqd8d5uxr2" path="res://src/Scripts/Tower/Bosses/GreySentinelBoss/grey_sentinel_shock_wave.gd" id="1_hf825"]
+[ext_resource type="Texture2D" uid="uid://d3ny2qsvgcx3l" path="res://Assets/Bosses/MossyDungeonBoss/GreySentinelShockWave.png" id="2_hefg7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hefg7"]
+size = Vector2(143, 47)
+
+[node name="GreySentinelShockWave" type="Node2D" unique_id=875766044]
+script = ExtResource("1_hf825")
+move_speed = 15.0
+flip_dir = true
+attack_damage = 150
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2117594761]
+position = Vector2(0, -51)
+texture = ExtResource("2_hefg7")
+
+[node name="Timer" type="Timer" parent="." unique_id=161332802]
+process_callback = 0
+wait_time = 5.0
+one_shot = true
+
+[node name="Area2D" type="Area2D" parent="." unique_id=79739995]
+position = Vector2(35, -16)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=609673513]
+position = Vector2(-29.5, -8.5)
+shape = SubResource("RectangleShape2D_hefg7")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

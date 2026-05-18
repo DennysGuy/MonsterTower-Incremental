@@ -48,7 +48,8 @@ signal show_quest_complete_notice
 			"Tip of the Iceberg": preload("uid://btd64g4acx31t"),
 			"Finding a Profession": preload("uid://b2up70wcso64o"),
 			"The Thick of It": preload("uid://iueqjhobrsol"),
-			"A Mystery's Emergence": preload("uid://dp0x7ac3p4mkr")
+			"A Mystery's Emergence": preload("uid://dp0x7ac3p4mkr"),
+			"Context Evolution": preload("uid://bmshb0lx1qgxa")
 		},
 		"Spring" : {
 			

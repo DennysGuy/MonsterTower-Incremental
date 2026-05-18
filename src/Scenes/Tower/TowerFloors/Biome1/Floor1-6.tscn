@@ -63,7 +63,7 @@ size = Vector2(304, 20)
 
 [node name="Floor1-6" type="Node2D" unique_id=1707445138 node_paths=PackedStringArray("camera", "sfx_player", "ambience_player")]
 script = ExtResource("1_8uvqi")
-map_name = "Floor1-6"
+map_name = "Floor 1-6"
 map_id = 6
 tower_entrance_data = ExtResource("2_1h2gs")
 camera = NodePath("PlayerCamera")

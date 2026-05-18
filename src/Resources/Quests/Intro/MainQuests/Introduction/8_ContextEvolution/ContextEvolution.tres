@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Quest" format=3 uid="uid://bmshb0lx1qgxa"]
+
+[ext_resource type="Script" uid="uid://cu8drgivmhfn" path="res://src/Scripts/item.gd" id="1_rmm8a"]
+[ext_resource type="Script" uid="uid://be6vh0qellkjq" path="res://src/Scripts/Questing/quest.gd" id="2_0qo8v"]
+[ext_resource type="Script" uid="uid://deyfft0rbfjgk" path="res://src/Scripts/Questing/Tasks/task.gd" id="3_th4wl"]
+[ext_resource type="Resource" uid="uid://bxvallagifqen" path="res://src/Resources/Quests/Intro/MainQuests/Introduction/8_ContextEvolution/Tasks/DefeatTheGreySentinel.tres" id="4_0qo8v"]
+
+[resource]
+script = ExtResource("2_0qo8v")
+quest_title = "Context Evolution"
+quest_id = 15
+status = 1
+next_quest = "END"
+tasks = Array[ExtResource("3_th4wl")]([ExtResource("4_0qo8v")])
+metadata/_custom_type_script = "uid://be6vh0qellkjq"
