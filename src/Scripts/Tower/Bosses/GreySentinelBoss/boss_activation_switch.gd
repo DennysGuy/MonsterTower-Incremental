@@ -21,6 +21,7 @@ func _process(delta: float) -> void:
 
 func activate_boss() -> void:
 	graphic.frame = 1
+	SignalBus.shake_camera.emit(15)
 	play_sfx(ACTIVATION_SWITCH_PRESSED)
 	SignalBus.start_boss_fight.emit()
 

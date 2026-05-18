@@ -23,10 +23,14 @@ func enter() -> void:
 		min_time = 3
 		max_time = 5
 		parent.set_animation_speed(1.2)
-	else:
+	elif health_ratio < 40 and health_ratio >= 20:
 		min_time = 2
 		max_time = 4
 		parent.set_animation_speed(1.5)
+	else:
+		min_time = 1
+		max_time = 3
+		parent.set_animation_speed(1.8)
 		
 	parent.timer.wait_time = randf_range(min_time,max_time)
 	parent.timer.start()
