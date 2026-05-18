@@ -12,6 +12,6 @@ script = ExtResource("2_ehw8c")
 quest_title = "A Mystery's Emergence"
 quest_id = 14
 status = 1
-next_quest = "END"
+next_quest = "Context Evolution"
 tasks = Array[ExtResource("3_bhrqj")]([ExtResource("4_cxhd0"), ExtResource("5_p7h6i"), ExtResource("6_gpu4w")])
 metadata/_custom_type_script = "uid://be6vh0qellkjq"

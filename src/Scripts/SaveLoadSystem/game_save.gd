@@ -567,10 +567,11 @@ TODO: We will add saves for classes as well
 		"Turned In": false
 	},
 	15:{
-		#Awakening the Entity
+		#Context Evolution
 		"Status": 1,
 		"Turned In": false
-	}
+	},
+
 }
 
 @export var tasks : Dictionary = {
@@ -756,4 +757,8 @@ TODO: We will add saves for classes as well
 		#Unlock the Boss Door
 		"Completed": false
 	},
+	44:{
+		#Defeat the Grey Sentinel
+		"Completed": false
+	}
 }

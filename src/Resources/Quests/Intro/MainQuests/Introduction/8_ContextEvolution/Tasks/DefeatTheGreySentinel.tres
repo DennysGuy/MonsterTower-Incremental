@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="GeneralTask" format=3 uid="uid://bxvallagifqen"]
+
+[ext_resource type="Script" uid="uid://chhllu0ouv7r6" path="res://src/Scripts/Questing/Tasks/general_task.gd" id="1_nat3y"]
+
+[resource]
+script = ExtResource("1_nat3y")
+task_name = "Defeat the Grey Sentinel"
+task_description = "Defeat the Grey Sentinel"
+task_id = 44
+parent_quest = "ContextEvolution"
+metadata/_custom_type_script = "uid://chhllu0ouv7r6"
