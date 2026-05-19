@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dp5cvr50o4rjl"]
+
+[ext_resource type="Script" uid="uid://dbggiri68s6wo" path="res://src/Scripts/Codex/codex.gd" id="1_18qm1"]
+[ext_resource type="Texture2D" uid="uid://wrpatbvk43n8" path="res://Assets/Codex/CodexJournalBG.png" id="2_7uyon"]
+[ext_resource type="PackedScene" uid="uid://bv4tosurbqavy" path="res://src/Scenes/Codex/Monsterpedia.tscn" id="3_sxbkn"]
+
+[node name="Codex" type="Control" unique_id=1106938393]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_18qm1")
+
+[node name="BG" type="TextureRect" parent="." unique_id=1367829397]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_7uyon")
+
+[node name="Monsterpedia" parent="." unique_id=2014375336 instance=ExtResource("3_sxbkn")]
+layout_mode = 1
