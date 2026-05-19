@@ -43,6 +43,7 @@ OutfitGraphics="*uid://damr4a01nhru5"
 PlayerHudSignalBus="*uid://d3adq33svpjyh"
 QuestManager="*uid://cdvn4cejkl7a6"
 Dialogic="*uid://ds2q0uclmolvu"
+CodexManager="*uid://bwmhpqxq6sj2r"
 
 [dialogic]
 

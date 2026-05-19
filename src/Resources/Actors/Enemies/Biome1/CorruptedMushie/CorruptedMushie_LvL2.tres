@@ -3,6 +3,7 @@
 [ext_resource type="Resource" uid="uid://cnd7ngdtcfmgc" path="res://src/Resources/Actors/Enemies/Biome1/CorruptedMushie/PurifiedMushieCore.tres" id="1_2wbji"]
 [ext_resource type="Resource" uid="uid://jn2dh2fyq5ep" path="res://src/Resources/Actors/Enemies/Biome1/CorruptedMushie/FiberousMushieStalk.tres" id="2_doqwy"]
 [ext_resource type="Resource" uid="uid://buc582qhh7ekv" path="res://src/Resources/Actors/Enemies/Biome1/CorruptedMushie/MushroomSeeds.tres" id="2_yemqc"]
+[ext_resource type="Texture2D" uid="uid://bwnjkvjx2wpfl" path="res://Assets/Enemies/CorruptedMushie/CorruptedMushie_lvl2_Stand.png" id="3_0xhnf"]
 [ext_resource type="Script" uid="uid://cbjktr12qagl" path="res://src/Scripts/Enemies/enemy_stats.gd" id="4_6sa1w"]
 [ext_resource type="Texture2D" uid="uid://cudxjr3yw3imr" path="res://Assets/Enemies/CorruptedMushieLVL2Icon.png" id="4_doqwy"]
 
@@ -13,6 +14,7 @@ enemy_level = 3
 preview_icon = ExtResource("4_doqwy")
 touch_damage = true
 can_move = true
+idle_animation = ExtResource("3_0xhnf")
 enemy_type = 1
 max_health = 140
 attack = 18

@@ -3,13 +3,17 @@
 [ext_resource type="Script" uid="uid://cbjktr12qagl" path="res://src/Scripts/Enemies/enemy_stats.gd" id="1_02tsj"]
 [ext_resource type="Resource" uid="uid://bippqfqb312jh" path="res://src/Resources/Actors/Enemies/Biome1/GoblinThief/GoblinMeat.tres" id="1_78oq2"]
 [ext_resource type="Resource" uid="uid://lyuo51uo7crd" path="res://src/Resources/Actors/Enemies/Biome1/GoblinThief/HiddenShiv.tres" id="2_tqppg"]
+[ext_resource type="Texture2D" uid="uid://dbrvytv1yscpw" path="res://Assets/Enemies/GoblinGuy/GoblinGuy_Stand.png" id="3_8oqu5"]
 [ext_resource type="Resource" uid="uid://bngtdvlfknn62" path="res://src/Resources/Actors/Enemies/Biome1/GoblinThief/SpoilsPack.tres" id="3_dtc7o"]
+[ext_resource type="Texture2D" uid="uid://m3x60greqbfs" path="res://Assets/Enemies/GoblinIcon.png" id="5_y2hcj"]
 
 [resource]
 script = ExtResource("1_02tsj")
 enemy_name = "Goblin Thief"
 enemy_level = 10
+preview_icon = ExtResource("5_y2hcj")
 touch_damage = true
+idle_animation = ExtResource("3_8oqu5")
 enemy_type = 1
 max_health = 1400
 attack = 80

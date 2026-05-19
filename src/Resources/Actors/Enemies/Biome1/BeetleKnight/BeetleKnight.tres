@@ -3,13 +3,17 @@
 [ext_resource type="Script" uid="uid://cbjktr12qagl" path="res://src/Scripts/Enemies/enemy_stats.gd" id="1_ckyny"]
 [ext_resource type="Resource" uid="uid://dkjdh3ty2qqfp" path="res://src/Resources/Actors/Enemies/Biome1/BeetleKnight/BeetleEye.tres" id="1_f2bla"]
 [ext_resource type="Resource" uid="uid://bwfenpkm4dc0g" path="res://src/Resources/Actors/Enemies/Biome1/BeetleKnight/BeetleClaw.tres" id="2_b00nh"]
+[ext_resource type="Texture2D" uid="uid://cksyqvdgwjvmo" path="res://Assets/Enemies/BeatleKnight/BeatleKnight_Stand.png" id="3_b00nh"]
 [ext_resource type="Resource" uid="uid://icdg42cdhvkx" path="res://src/Resources/Actors/Enemies/Biome1/BeetleKnight/BeetleHelm.tres" id="3_ntljy"]
+[ext_resource type="Texture2D" uid="uid://bwlqhfw83akup" path="res://Assets/Enemies/BeetleKnightIcon.png" id="5_ntljy"]
 
 [resource]
 script = ExtResource("1_ckyny")
 enemy_name = "Beetle Knight"
 enemy_level = 6
+preview_icon = ExtResource("5_ntljy")
 touch_damage = true
+idle_animation = ExtResource("3_b00nh")
 enemy_type = 1
 max_health = 500
 attack = 40
