@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://bqtyoe1e77gov"]
+
+[ext_resource type="Script" uid="uid://dbfdwej4a1bch" path="res://src/Scripts/Codex/codex_hub_button.gd" id="1_f2ph2"]
+[ext_resource type="Texture2D" uid="uid://c6gv8laq666r4" path="res://Assets/Codex/PlayerStatsButton.png" id="1_nk56b"]
+[ext_resource type="Texture2D" uid="uid://g2ytxb3fdj58" path="res://Assets/HUD/NewPlayerHUD/NewHUD_Keyboard_ICON_F1png.png" id="3_64448"]
+
+[node name="CodexHubButton" type="Control" unique_id=930258851]
+custom_minimum_size = Vector2(88, 80)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 88.0
+offset_bottom = 80.0
+script = ExtResource("1_f2ph2")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1870396931]
+layout_mode = 0
+offset_left = 12.0
+offset_top = -0.5
+offset_right = 76.0
+offset_bottom = 63.5
+texture = ExtResource("1_nk56b")
+stretch_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=1042987062]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 45.0
+offset_right = 79.0
+offset_bottom = 76.0
+texture = ExtResource("3_64448")
+stretch_mode = 2

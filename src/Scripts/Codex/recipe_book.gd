@@ -7,6 +7,8 @@ class_name RecipeBook extends Control
 @onready var description: RichTextLabel = $DescriptionPanel/Description
 @onready var nodes_container: GridContainer = $DescriptionPanel/NodesContainer
 @onready var recipe_container: GridContainer = $DescriptionPanel/RecipeContainer
+@onready var sell_price: Label = $DescriptionPanel/SellPrice
+@onready var can_make: Label = $DescriptionPanel/CanMake
 
 
 # Called when the node enters the scene tree for the first time.
@@ -39,6 +41,8 @@ func populate_description_panel(recipe : CraftingRecipe) -> void:
 	dish_name.text = recipe.recipe_name
 	graphic.texture = recipe.output_item.shop_icon
 	description.text = recipe.description
+	sell_price.text = "Market Price: %s" % recipe.output_item.sell_value
+	can_make.text = "Can Make: %s" % InventoryManager.calculate_quantity(recipe)
 	populate_nodes_container(recipe)
 	populate_recipe_container(recipe, CodexManager.dish_recipe_unlocks)
 
