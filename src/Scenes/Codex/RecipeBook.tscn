@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://csw5xev8eqthw" path="res://src/Scripts/Codex/recipe_book.gd" id="1_a6nph"]
 [ext_resource type="FontFile" uid="uid://rcmrhwjw3afp" path="res://Assets/Fonts/MysteryQuest-Regular.ttf" id="1_lrnq1"]
 [ext_resource type="Texture2D" uid="uid://c4aj160n4blbs" path="res://Assets/Facilities/CookingStation/CookedGagootz.png" id="3_7swh1"]
+[ext_resource type="PackedScene" uid="uid://dil4081ni1hb3" path="res://src/Scenes/NewStarshire/Facilities/IngredientsMenuItem.tscn" id="3_b76ht"]
 [ext_resource type="FontFile" uid="uid://bmc1mapdr27y8" path="res://Assets/Fonts/CatCafe.ttf" id="4_dn0s5"]
 
 [node name="RecipeBook" type="Control" unique_id=1973571576]
@@ -86,9 +87,9 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -901.5
+offset_left = -919.5
 offset_top = -323.0
-offset_right = -231.5
+offset_right = -215.5
 offset_bottom = 466.0
 grow_horizontal = 0
 grow_vertical = 2
@@ -98,9 +99,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 23.0
+offset_left = -159.0
+offset_top = -71.0
+offset_right = 159.0
+offset_bottom = -4.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 0.49019608, 0.36862746, 1)
 theme_override_fonts/font = ExtResource("1_lrnq1")
@@ -114,9 +116,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -117.0
-offset_top = 212.0
+offset_top = 172.0
 offset_right = 91.835815
-offset_bottom = 256.0
+offset_bottom = 216.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 0.49019608, 0.36862746, 1)
 theme_override_fonts/font = ExtResource("1_lrnq1")
@@ -124,15 +126,87 @@ theme_override_font_sizes/font_size = 32
 text = "Tier 1"
 horizontal_alignment = 1
 
+[node name="SellPrice" type="Label" parent="DescriptionPanel" unique_id=426190039]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -255.0
+offset_top = 220.0
+offset_right = 216.0
+offset_bottom = 264.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0.49019608, 0.36862746, 1)
+theme_override_fonts/font = ExtResource("1_lrnq1")
+theme_override_font_sizes/font_size = 32
+text = "Sell Price: 100"
+horizontal_alignment = 1
+
+[node name="NodesTitle" type="Label" parent="DescriptionPanel" unique_id=1367003210]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -315.0
+offset_top = 385.0
+offset_right = -106.164185
+offset_bottom = 429.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0.49019608, 0.36862746, 1)
+theme_override_fonts/font = ExtResource("1_lrnq1")
+theme_override_font_sizes/font_size = 32
+text = "Nodes"
+horizontal_alignment = 1
+
+[node name="NodesContainer" type="GridContainer" parent="DescriptionPanel" unique_id=1699628330]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 436.0
+offset_right = 250.0
+offset_bottom = 630.0
+
+[node name="RecipeTitle" type="Label" parent="DescriptionPanel" unique_id=1947637529]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 86.0
+offset_top = 386.0
+offset_right = 294.83582
+offset_bottom = 430.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0.49019608, 0.36862746, 1)
+theme_override_fonts/font = ExtResource("1_lrnq1")
+theme_override_font_sizes/font_size = 32
+text = "Recipe"
+horizontal_alignment = 1
+
+[node name="RecipeContainer" type="GridContainer" parent="DescriptionPanel" unique_id=1334906952]
+layout_mode = 0
+offset_left = 373.0
+offset_top = 436.0
+offset_right = 717.0
+offset_bottom = 689.0
+theme_override_constants/v_separation = 20
+
+[node name="IngredientItem" parent="DescriptionPanel/RecipeContainer" unique_id=900235041 instance=ExtResource("3_b76ht")]
+layout_mode = 2
+
+[node name="IngredientItem2" parent="DescriptionPanel/RecipeContainer" unique_id=1362452834 instance=ExtResource("3_b76ht")]
+layout_mode = 2
+
+[node name="IngredientItem3" parent="DescriptionPanel/RecipeContainer" unique_id=1051984205 instance=ExtResource("3_b76ht")]
+layout_mode = 2
+
 [node name="Graphic" type="TextureRect" parent="DescriptionPanel" unique_id=1000948961]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -69.0
-offset_top = 78.0
+offset_top = 22.0
 offset_right = 59.0
-offset_bottom = 206.0
+offset_bottom = 150.0
 grow_horizontal = 2
 texture = ExtResource("3_7swh1")
 
@@ -143,15 +217,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -186.0
-offset_top = -118.5
-offset_right = 203.0
-offset_bottom = 36.0
+offset_left = -322.0
+offset_top = -120.5
+offset_right = 298.0
+offset_bottom = -14.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/default_color = Color(0, 0.49019608, 0.36862746, 1)
 theme_override_fonts/normal_font = ExtResource("4_dn0s5")
-theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/normal_font_size = 22
 text = "This is the Cooked Gagootz my boy! A Description."
 
 [connection signal="button_up" from="DishRecipes" to="." method="_on_dish_recipes_button_up"]

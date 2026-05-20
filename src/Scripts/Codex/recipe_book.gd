@@ -5,6 +5,9 @@ class_name RecipeBook extends Control
 @onready var tier: Label = $DescriptionPanel/Tier
 @onready var graphic: TextureRect = $DescriptionPanel/Graphic
 @onready var description: RichTextLabel = $DescriptionPanel/Description
+@onready var nodes_container: GridContainer = $DescriptionPanel/NodesContainer
+@onready var recipe_container: GridContainer = $DescriptionPanel/RecipeContainer
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -36,12 +39,37 @@ func populate_description_panel(recipe : CraftingRecipe) -> void:
 	dish_name.text = recipe.recipe_name
 	graphic.texture = recipe.output_item.shop_icon
 	description.text = recipe.description
+	populate_nodes_container(recipe)
+	populate_recipe_container(recipe, CodexManager.dish_recipe_unlocks)
 
 func create_dish_recipe_list() -> void:
 	create_recipe_list(CodexManager.dish_recipes, CodexManager.dish_recipe_unlocks)
 
 func create_bar_recipe_list() -> void:
 	create_recipe_list(CodexManager.bar_recipes, CodexManager.bar_recipe_unlocks)
+
+func populate_nodes_container(recipe : CraftingRecipe) -> void:
+	InventoryManager.clear_grid_container(nodes_container)
+	for node_name in recipe.related_nodes:
+		var list_item : NodeTitleListItem = preload("uid://coa3yxyswf6aj").instantiate()
+		if TechTreeManager.get_tech_node_status(node_name):
+			list_item.text = "- %s" % node_name
+		else:
+			list_item.text = "- ???????"
+		nodes_container.add_child(list_item)
+			
+func populate_recipe_container(recipe : CraftingRecipe, unlocks_list : Array) -> void:
+	InventoryManager.clear_grid_container(recipe_container)
+	for ingredient in recipe.recipe_list:
+		var list_item : IngredientItem = preload("uid://dil4081ni1hb3").instantiate()
+		for item in ingredient.keys():
+			if unlocks_list[recipe.index]["Unlocked 2"]:
+				list_item.ingredient_icon.texture = item.shop_icon
+			else:
+				list_item.ingredient_icon.texture =  preload("uid://cbcw7ua8sro78")
+			
+			list_item.quantity.text = "x%s" % ingredient[item]
+			recipe_container.add_child(list_item)
 
 func _on_dish_recipes_button_up() -> void:
 	create_dish_recipe_list()

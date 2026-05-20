@@ -18,3 +18,4 @@ enum RECIPE_TYPE {
 @export var failure_rate : float
 @export var output_item : Item
 @export var recipe_list : Array[Dictionary] #stored item and quantity
+@export var related_nodes : Array[String]

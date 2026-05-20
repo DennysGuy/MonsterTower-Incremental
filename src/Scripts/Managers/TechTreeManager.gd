@@ -172,3 +172,6 @@ func increment_upgrade_count() -> void:
 		current_upgrade_count = 0
 		update_prestige_tier_label.emit()
 		update_prestige_tier_progress_label.emit()
+
+func get_tech_node_status(node_name : String) -> bool:
+	return SaveManager.current_save_game.tech_nodes[node_name]["Unlocked"]
