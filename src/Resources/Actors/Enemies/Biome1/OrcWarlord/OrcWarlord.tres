@@ -11,6 +11,7 @@
 script = ExtResource("1_uivp7")
 enemy_name = "Orc Warlord"
 enemy_level = 11
+index = 11
 preview_icon = ExtResource("4_1s8jc")
 touch_damage = true
 idle_animation = ExtResource("3_v27qw")

@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://bc10kb6pbi3ro"]
+
+[ext_resource type="FontFile" uid="uid://4cs6hxxrdgld" path="res://Assets/Fonts/Melon Pop.ttf" id="1_ewh40"]
+[ext_resource type="Script" uid="uid://dx4sy0xh4ehh5" path="res://src/Scripts/Codex/crafting_recipe_list_item.gd" id="2_n7qeb"]
+
+[node name="CraftingRecipeListItem" type="Label" unique_id=395266989]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -181.0
+offset_top = -23.5
+offset_right = 181.0
+offset_bottom = 23.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0, 0.49019608, 0.36862746, 1)
+theme_override_fonts/font = ExtResource("1_ewh40")
+theme_override_font_sizes/font_size = 42
+text = "- Cooked Gagootz"
+script = ExtResource("2_n7qeb")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

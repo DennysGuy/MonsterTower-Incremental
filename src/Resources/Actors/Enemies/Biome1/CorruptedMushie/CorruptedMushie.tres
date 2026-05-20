@@ -11,6 +11,7 @@
 script = ExtResource("4_iche6")
 enemy_name = "Corrupted Mushie"
 enemy_level = 2
+index = 1
 preview_icon = ExtResource("4_2hjuk")
 touch_damage = true
 can_move = true

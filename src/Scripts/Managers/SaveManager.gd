@@ -141,3 +141,28 @@ func load_gem_sockets() -> void:
 				PlayerStats.get_equipped_gem_sockets()[gem_socket] = load(uid)
 			else:
 				PlayerStats.get_equipped_gem_sockets()[gem_socket] = load(uid.resource_path)
+
+func save_monster_unlocks_status() -> void:
+	current_save_game.monster_unlock_status = CodexManager.monster_unlock_status
+	save_game()
+
+func save_bar_unlocks_status() -> void:
+	current_save_game.bar_recipe_unlocks = CodexManager.bar_recipe_unlocks
+	save_game()
+
+func save_dish_unlocks_status() -> void:
+	current_save_game.dish_recipe_unlocks = CodexManager.dish_recipe_unlocks
+	save_game()
+
+func load_monster_unlocks_status() -> void:
+	if not current_save_game:
+		return
+		
+	CodexManager.monster_unlock_status = current_save_game.monster_unlock_status
+
+func load_recipe_unlocks_status() -> void:
+	if not current_save_game:
+		return
+	
+	CodexManager.bar_recipe_unlocks = current_save_game.bar_recipe_unlocks
+	CodexManager.dish_recipe_unlocks = current_save_game.dish_recipe_unlocks

@@ -26,6 +26,7 @@ var map_name : String = ""
 @onready var level_label: Label = $PlayerHUD/LevelLabel
 @onready var currency_label: RichTextLabel = $PlayerHUD/CurrencyLabel
 
+@onready var codex: Codex = $PlayerHUD/Codex
 
 const CLOSE_IN = preload("uid://dc3va7knibxnb")
 const CLOSE_OUT = preload("uid://caj0oih8j2sty")
@@ -55,7 +56,7 @@ var quests_showing : bool = false
 
 @onready var boss_hp_bar: BossHPBar = $PlayerHUD/BossHPBar
 
-
+var codex_open : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -98,6 +99,7 @@ func _ready() -> void:
 	#update_ap_label()
 	#update_player_health(int(PlayerStats.player_stats["Current Health"]))
 	#show_class_notice()
+	
 	animation_player.play("CloseIn")
 	if GameManager.can_unlock_class():
 		show_class_notice()
@@ -115,6 +117,12 @@ func _process(delta: float) -> void:
 			show_quests()
 		else:
 			hide_quests()
+			
+	if Input.is_action_just_pressed("open_codex"):
+		if !codex_open:
+			open_codex()
+		else:
+			close_codex()
 
 func update_player_health() -> void:
 	var current_hp : int = PlayerStats.player_stats["Current Health"]
@@ -302,3 +310,17 @@ func quest_complete_notice() -> void:
 	big_notification_label.text = "Quest Complete!"
 	await get_tree().create_timer(3.0).timeout
 	big_notification_label.hide()
+
+
+func close_codex() -> void:
+	GameManager.player_can_move = true
+	var tween : Tween = get_tree().create_tween()
+	tween.tween_property(codex, "position", Vector2(-874,540),0.3)
+	codex_open = false
+
+func open_codex() -> void:
+	GameManager.player_can_move = false
+	CodexManager.update_monster_cards.emit()
+	var tween : Tween = get_tree().create_tween()
+	tween.tween_property(codex, "position", Vector2(960,540),0.3)
+	codex_open = true

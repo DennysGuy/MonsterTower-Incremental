@@ -11,6 +11,7 @@
 script = ExtResource("1_02tsj")
 enemy_name = "Goblin Thief"
 enemy_level = 10
+index = 10
 preview_icon = ExtResource("5_y2hcj")
 touch_damage = true
 idle_animation = ExtResource("3_8oqu5")

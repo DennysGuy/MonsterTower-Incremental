@@ -9,6 +9,7 @@
 script = ExtResource("5_h0erp")
 recipe_name = "Orc Svio"
 menu_icon = ExtResource("1_qsnlq")
+index = 6
 description = "Grotesque to look at - but the flavor is of the gods!"
 recipe_tier = 1
 crafting_time = 30.0

@@ -11,6 +11,7 @@
 script = ExtResource("1_sttul")
 enemy_name = "Serpant Mimic"
 enemy_level = 9
+index = 9
 preview_icon = ExtResource("4_h8lae")
 touch_damage = true
 idle_animation = ExtResource("3_vyyh1")

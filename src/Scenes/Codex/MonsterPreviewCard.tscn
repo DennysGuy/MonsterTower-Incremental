@@ -3,6 +3,15 @@
 [ext_resource type="Texture2D" uid="uid://cp2e01do0e7u1" path="res://Assets/Codex/MonsterPreviewCard.png" id="1_dumim"]
 [ext_resource type="Script" uid="uid://rngnavvqp4j" path="res://src/Scripts/Codex/monster_preview_card.gd" id="1_jrdcg"]
 [ext_resource type="FontFile" uid="uid://dgu1a66dfe8w" path="res://Assets/Fonts/Maplestory OTF Light.otf" id="3_347po"]
+[ext_resource type="Shader" uid="uid://hstwk8i7sdns" path="res://src/Scripts/Shaders/LockedShader.gdshader" id="3_bbyrw"]
+[ext_resource type="Texture2D" uid="uid://01qc3nbxsqb3" path="res://Assets/Enemies/CorruptedMushie/CorruptedMushie_Stand.png" id="4_cg5lc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_btvgp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bbyrw"]
+shader = ExtResource("3_bbyrw")
+shader_parameter/gray_strength = 1.0
+shader_parameter/darkness = 0.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jrdcg"]
 bg_color = Color(1.92523e-06, 0.56834406, 0.42195633, 1)
@@ -11,7 +20,7 @@ corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
-[node name="MonsterPreviewCard" type="Control" unique_id=1038354294]
+[node name="MonsterPreviewCard" type="Control" unique_id=1038354294 node_paths=PackedStringArray("locked_monster_graphic", "monster_graphic", "unlock_progress", "progress_count")]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 3
 anchors_preset = 0
@@ -19,6 +28,10 @@ offset_right = 40.0
 offset_bottom = 40.0
 mouse_default_cursor_shape = 2
 script = ExtResource("1_jrdcg")
+locked_monster_graphic = NodePath("LockedMonsterGraphic")
+monster_graphic = NodePath("MonsterGraphic")
+unlock_progress = NodePath("UnlockProgress")
+progress_count = NodePath("ProgressCount")
 
 [node name="CardBG" type="TextureRect" parent="." unique_id=2004445758]
 layout_mode = 0
@@ -27,11 +40,23 @@ offset_bottom = 40.0
 texture = ExtResource("1_dumim")
 
 [node name="MonsterGraphic" type="TextureRect" parent="." unique_id=1683087985]
+material = SubResource("ShaderMaterial_btvgp")
 layout_mode = 0
 offset_left = 16.0
 offset_top = 16.0
 offset_right = 112.0
 offset_bottom = 96.0
+texture = ExtResource("4_cg5lc")
+expand_mode = 1
+
+[node name="LockedMonsterGraphic" type="TextureRect" parent="." unique_id=34678805]
+material = SubResource("ShaderMaterial_bbyrw")
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 112.0
+offset_bottom = 96.0
+texture = ExtResource("4_cg5lc")
 expand_mode = 1
 
 [node name="UnlockProgress" type="ProgressBar" parent="." unique_id=1329375518]

@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://bpp37520418mj" path="res://src/Scenes/UI/BuffBar.tscn" id="19_h7rl7"]
 [ext_resource type="FontFile" uid="uid://3dovpys2he1l" path="res://Assets/Fonts/Moodcake.ttf" id="19_tjlva"]
 [ext_resource type="PackedScene" uid="uid://cmxkvl1omtnl6" path="res://src/Scenes/UI/BossHPBar/BossHPBar.tscn" id="23_2jn0u"]
+[ext_resource type="PackedScene" uid="uid://dp5cvr50o4rjl" path="res://src/Scenes/Codex/Codex.tscn" id="25_x3t6t"]
 
 [sub_resource type="Animation" id="Animation_g1bs5"]
 resource_name = "CloseIn"
@@ -956,6 +957,11 @@ offset_top = 162.0
 offset_right = -68.0
 offset_bottom = 162.0
 grow_vertical = 1
+
+[node name="Codex" parent="PlayerHUD" unique_id=1106938393 instance=ExtResource("25_x3t6t")]
+layout_mode = 1
+offset_left = -1834.0
+offset_right = -1834.0
 
 [node name="SfxPlayer" parent="." unique_id=2102076142 instance=ExtResource("8_65fhw")]
 

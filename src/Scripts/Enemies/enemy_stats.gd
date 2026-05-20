@@ -3,6 +3,7 @@ class_name EnemyStats extends Resource
 @export_group("Meta Data")
 @export var enemy_name : String
 @export var enemy_level : int
+@export var index : int
 @export var preview_icon : Texture2D
 @export var touch_damage : bool = false
 @export var can_attack : bool = false
@@ -10,6 +11,8 @@ class_name EnemyStats extends Resource
 @export var idle_animation : Texture2D
 @export_enum("Aggro", "PassiveAggro", "Passive") var enemy_type : int
 enum ENEMY_TYPE {AGGRO, PASSIVEAGGRO, PASSIVE}
+enum BIOME {MOSSY_DUNGEON}
+@export var biome : BIOME = BIOME.MOSSY_DUNGEON
 
 @export_group("Stats")
 @export var max_health : int
@@ -37,3 +40,10 @@ func is_passive_aggro() -> bool:
 
 func is_aggro() -> bool:
 	return enemy_type == ENEMY_TYPE.AGGRO 
+
+func get_biome_name() -> String:
+	match biome:
+		BIOME.MOSSY_DUNGEON:
+			return "Mossy Dungeon"
+	
+	return ""

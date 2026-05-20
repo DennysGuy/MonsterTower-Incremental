@@ -11,6 +11,7 @@
 script = ExtResource("1_m1ike")
 enemy_name = "Batclopse"
 enemy_level = 4
+index = 3
 preview_icon = ExtResource("4_vel66")
 touch_damage = true
 can_attack = true

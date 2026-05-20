@@ -12,6 +12,7 @@
 script = ExtResource("1_dadxe")
 recipe_name = "Hunter's Stew"
 menu_icon = ExtResource("1_83i2c")
+index = 5
 description = "A stew made of a medley of cooking drops. Might be tedious to make - but it can certainly go for a buck or 2!"
 recipe_tier = 1
 crafting_time = 40.0

@@ -1,5 +1,6 @@
 class_name Codex extends Control
 
+@export var monsterpedia : Monsterpedia
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

@@ -17,6 +17,8 @@ class_name Monsterpedia extends Control
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	CodexManager.populate_monster_description_panel.connect(populate_description)
+	CodexManager.update_monster_cards.connect(create_monster_cards)
+	SaveManager.load_monster_unlocks_status()
 	create_monster_cards()
 
 
@@ -28,7 +30,7 @@ func _process(delta: float) -> void:
 func populate_description(monster_stats : EnemyStats) -> void:
 	clear_drop_graphics()
 	monster_name.text = monster_stats.enemy_name
-	biome.text = "Mossy Dungeon"
+	biome.text = monster_stats.get_biome_name()
 	monster_graphic.texture = monster_stats.idle_animation
 	stats.text = "Level %s\nAttack %s\nDefense %s\nHP %s\n" % [monster_stats.enemy_level, monster_stats.attack, monster_stats.defense, monster_stats.max_health]	
 	if monster_stats.novelty_item_drop:
@@ -42,9 +44,17 @@ func populate_description(monster_stats : EnemyStats) -> void:
 
 func create_monster_cards() -> void:
 	InventoryManager.clear_grid_container(monster_cards_container)
-	for monster in CodexManager.monster_list:
+	
+	for i in range(0,CodexManager.monster_list.size()):
 		var card : MonsterPreviewCard = preload("uid://cvu18wqtqtij7").instantiate()
-		card.monster_stats = monster
+		card.monster_stats = CodexManager.monster_list[i]
+		
+		if not CodexManager.monster_unlock_status[i]["Unlocked"]:
+			card.progress_count.text = "%s/%s" % [CodexManager.monster_unlock_status[i]["Count"], CodexManagerScript.MONSTER_UNLOCK_THRESH_HOLD]
+		else:
+			card.progress_count.text = ""
+			card.unlocked = true
+		
 		monster_cards_container.add_child(card)
 		await get_tree().create_timer(0.05).timeout
 

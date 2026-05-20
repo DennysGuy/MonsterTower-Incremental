@@ -2,6 +2,7 @@ class_name CraftingRecipe extends Resource
 
 @export var recipe_name : String
 @export var menu_icon : Texture2D
+@export var index : int
 @export_multiline var description : String
 enum RECIPE_TYPE {
 	CRAFTING_MATERIAL,

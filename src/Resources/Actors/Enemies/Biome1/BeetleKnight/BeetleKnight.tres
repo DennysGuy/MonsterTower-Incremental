@@ -11,6 +11,7 @@
 script = ExtResource("1_ckyny")
 enemy_name = "Beetle Knight"
 enemy_level = 6
+index = 6
 preview_icon = ExtResource("5_ntljy")
 touch_damage = true
 idle_animation = ExtResource("3_b00nh")

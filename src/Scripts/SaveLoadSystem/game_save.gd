@@ -762,3 +762,34 @@ TODO: We will add saves for classes as well
 		"Completed": false
 	}
 }
+
+@export var monster_unlock_status : Array = [
+	{"Unlocked" : false, "Count": 0},
+	{"Unlocked" : false, "Count": 0},
+	{"Unlocked" : false, "Count": 0},
+	{"Unlocked" : false, "Count": 0},
+	{"Unlocked" : false, "Count": 0},
+	{"Unlocked" : false, "Count": 0},
+	{"Unlocked" : false, "Count": 0},
+	{"Unlocked" : false, "Count": 0},
+	{"Unlocked" : false, "Count": 0},
+	{"Unlocked" : false, "Count": 0},
+	{"Unlocked" : false, "Count": 0},
+	{"Unlocked" : false, "Count": 0},
+]
+
+@export var bar_recipe_unlocks : Array = [
+	{"Unlocked 1": false, "Unlocked 2": false, "Count": 0},
+	{"Unlocked 1": false, "Unlocked 2": false, "Count": 0},
+	{"Unlocked 1": false, "Unlocked 2": false, "Count": 0},
+]
+
+@export var dish_recipe_unlocks : Array = [
+	{"Unlocked 1": false, "Unlocked 2": false, "Count": 0},
+	{"Unlocked 1": false, "Unlocked 2": false, "Count": 0},
+	{"Unlocked 1": false, "Unlocked 2": false, "Count": 0},
+	{"Unlocked 1": false, "Unlocked 2": false, "Count": 0},
+	{"Unlocked 1": false, "Unlocked 2": false, "Count": 0},
+	{"Unlocked 1": false, "Unlocked 2": false, "Count": 0},
+	{"Unlocked 1": false, "Unlocked 2": false, "Count": 0},
+]

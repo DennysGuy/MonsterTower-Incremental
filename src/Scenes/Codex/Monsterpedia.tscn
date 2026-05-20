@@ -3,24 +3,25 @@
 [ext_resource type="Script" uid="uid://dipoq68k0fenj" path="res://src/Scripts/Codex/monsterpedia.gd" id="1_0ed1u"]
 [ext_resource type="FontFile" uid="uid://bpgc56prdwg8s" path="res://Assets/Fonts/Munstar-Regular.ttf" id="1_sopb1"]
 [ext_resource type="FontFile" uid="uid://bmc1mapdr27y8" path="res://Assets/Fonts/CatCafe.ttf" id="3_7mvrq"]
-[ext_resource type="Texture2D" uid="uid://bkj0kj26ahgl8" path="res://Assets/Enemies/CorruptedMushie/PurifiedMushieCore.png" id="4_xbljf"]
 [ext_resource type="FontFile" uid="uid://cvosgdtc6ncoe" path="res://Assets/Fonts/misterlickychops.ttf" id="5_xbljf"]
 
 [node name="Monsterpedia" type="Control" unique_id=2014375336]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0ed1u")
 
 [node name="Title" type="Label" parent="." unique_id=2048149630]
-layout_mode = 0
-offset_left = 276.0
-offset_top = 150.0
-offset_right = 890.0
-offset_bottom = 238.0
+layout_mode = 1
+offset_left = -703.0
+offset_top = -373.0
+offset_right = -89.0
+offset_bottom = -285.0
 theme_override_colors/font_color = Color(0, 0.49010885, 0.3671535, 1)
 theme_override_fonts/font = ExtResource("1_sopb1")
 theme_override_font_sizes/font_size = 64
@@ -29,10 +30,10 @@ horizontal_alignment = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=261215299]
 layout_mode = 0
-offset_left = 262.0
-offset_top = 257.0
-offset_right = 940.0
-offset_bottom = 930.0
+offset_left = -714.0
+offset_top = -239.0
+offset_right = -36.0
+offset_bottom = 434.0
 
 [node name="MonsterCardsContainer" type="GridContainer" parent="ScrollContainer" unique_id=510137719]
 layout_mode = 2
@@ -47,9 +48,9 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -907.0
+offset_left = 74.0
 offset_top = -402.0
-offset_right = -238.0
+offset_right = 743.0
 offset_bottom = 410.0
 grow_horizontal = 0
 grow_vertical = 2
@@ -63,7 +64,6 @@ offset_bottom = 71.0
 theme_override_colors/font_color = Color(0, 0.49019608, 0.36862746, 1)
 theme_override_fonts/font = ExtResource("5_xbljf")
 theme_override_font_sizes/font_size = 58
-text = "Corrupted Mushie"
 horizontal_alignment = 1
 
 [node name="Biome" type="Label" parent="DetailsPanel" unique_id=1830645383]
@@ -75,7 +75,6 @@ offset_bottom = 113.0
 theme_override_colors/font_color = Color(0, 0.49019608, 0.36862746, 1)
 theme_override_fonts/font = ExtResource("5_xbljf")
 theme_override_font_sizes/font_size = 38
-text = "Mossy Dungeon"
 horizontal_alignment = 1
 
 [node name="MonsterGraphic" type="TextureRect" parent="DetailsPanel" unique_id=145884671]
@@ -110,10 +109,6 @@ offset_bottom = 597.0
 theme_override_colors/font_color = Color(0, 0.49019608, 0.36862746, 1)
 theme_override_fonts/font = ExtResource("3_7mvrq")
 theme_override_font_sizes/font_size = 32
-text = "Level 2
-Attack 10
-Defense 0
-HP 100"
 
 [node name="NoveltyDropTitle" type="Label" parent="DetailsPanel" unique_id=775308859]
 layout_mode = 0
@@ -155,7 +150,6 @@ offset_left = 509.0
 offset_top = 412.0
 offset_right = 557.0
 offset_bottom = 460.0
-texture = ExtResource("4_xbljf")
 expand_mode = 1
 
 [node name="CookingDropGraphic" type="TextureRect" parent="DetailsPanel" unique_id=845318012]
@@ -165,7 +159,6 @@ offset_left = 509.0
 offset_top = 525.0
 offset_right = 557.0
 offset_bottom = 573.0
-texture = ExtResource("4_xbljf")
 expand_mode = 1
 
 [node name="CraftingDropGraphic" type="TextureRect" parent="DetailsPanel" unique_id=696621857]
@@ -175,7 +168,6 @@ offset_left = 511.0
 offset_top = 630.0
 offset_right = 559.0
 offset_bottom = 678.0
-texture = ExtResource("4_xbljf")
 expand_mode = 1
 
 [node name="NotesTitle" type="Label" parent="DetailsPanel" unique_id=314498508]
@@ -205,4 +197,3 @@ grow_vertical = 2
 theme_override_colors/default_color = Color(0, 0.49019608, 0.36862746, 1)
 theme_override_fonts/normal_font = ExtResource("3_7mvrq")
 theme_override_font_sizes/normal_font_size = 24
-text = "This is the description. The Corrupted Mushie is really funny if you think about it. In fact, none of this really makes sense when you think of it. It's great! I love this. KAKADAI VC!"

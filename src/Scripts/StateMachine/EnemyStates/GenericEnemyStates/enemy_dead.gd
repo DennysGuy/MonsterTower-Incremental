@@ -10,6 +10,7 @@ class_name EnemyDead extends State
 
 func enter() -> void:
 	super()
+	CodexManager.increment_monster_card_count(parent.enemy_stats.index)
 	QuestManager.increment_task_enemy_kill_count.emit(parent.enemy_stats.enemy_name)
 	parent.damageable = false
 	parent.is_dead = true
