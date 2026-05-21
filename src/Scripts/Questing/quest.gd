@@ -74,3 +74,19 @@ func load_quest_status() -> void:
 	turned_in = SaveManager.current_save_game.quests[quest_id]["Turned In"]
 	if !is_completed():
 		pass
+
+func get_status_title() -> String:
+	var title : String = ""
+	match status:
+		STATUS.LOCKED:
+			title = "LOCKED"
+		STATUS.AVAILABLE:
+			title = "AVAILABLE"
+		STATUS.IN_PROGRESS:
+			title = "IN PROGRESS"
+		STATUS.TURN_IN:
+			title = "TURN IN"
+		STATUS.COMPLETED:
+			title = "COMPLETED"
+	
+	return title

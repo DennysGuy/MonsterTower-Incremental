@@ -4,7 +4,6 @@
 [ext_resource type="FontFile" uid="uid://5e6le8exhd7e" path="res://Assets/Fonts/TijuanaBible-r3qA.ttf" id="2_clvb1"]
 [ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="3_wipak"]
 [ext_resource type="FontFile" uid="uid://stn4dtg0uw57" path="res://Assets/Fonts/FredokaOne-Regular.ttf" id="4_vm3so"]
-[ext_resource type="PackedScene" uid="uid://c7yuhc01uhis5" path="res://src/Scenes/NewStarshire/Facilities/DeliverableMenuItem.tscn" id="5_b1tb2"]
 
 [node name="QuestsLog" type="Control" unique_id=1604012236]
 layout_mode = 3
@@ -44,12 +43,14 @@ alignment = 1
 
 [node name="MainQuestsButton" type="Button" parent="HBoxContainer" unique_id=706379993]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(2.4065375e-07, 0.3427977, 0.26134562, 1)
 theme_override_fonts/font = ExtResource("3_wipak")
 text = "Main Quests"
 
 [node name="JobQuestsButton" type="Button" parent="HBoxContainer" unique_id=620116355]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(2.4065375e-07, 0.3427977, 0.26134562, 1)
 theme_override_fonts/font = ExtResource("3_wipak")
 text = "Job Quests"
@@ -65,30 +66,35 @@ alignment = 1
 
 [node name="MainQuestsButton" type="Button" parent="HBoxContainer2" unique_id=1141868406]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0, 0.5568628, 0.59607846, 1)
 theme_override_fonts/font = ExtResource("3_wipak")
 text = "Introduction"
 
 [node name="FallQuestsButton" type="Button" parent="HBoxContainer2" unique_id=1207656915]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0, 0.5568628, 0.59607846, 1)
 theme_override_fonts/font = ExtResource("3_wipak")
 text = "Fall Quests"
 
 [node name="WinterQuestsButton" type="Button" parent="HBoxContainer2" unique_id=988002632]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0, 0.5568628, 0.59607846, 1)
 theme_override_fonts/font = ExtResource("3_wipak")
 text = "Winter Quests"
 
 [node name="SpringQuestsButton" type="Button" parent="HBoxContainer2" unique_id=887387568]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0, 0.5568628, 0.59607846, 1)
 theme_override_fonts/font = ExtResource("3_wipak")
 text = "Spring Quests"
 
 [node name="SummerQuestsButton" type="Button" parent="HBoxContainer2" unique_id=454256233]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0, 0.5568628, 0.59607846, 1)
 theme_override_fonts/font = ExtResource("3_wipak")
 text = "Summer Quests"
@@ -130,7 +136,6 @@ theme_override_colors/font_color = Color(0.15421313, 0.5317986, 0.41324374, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_vm3so")
 theme_override_font_sizes/font_size = 24
-text = "Avant Gard Alternative Medicine 1"
 horizontal_alignment = 1
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="DescriptionPanel" unique_id=954263046]
@@ -144,14 +149,18 @@ alignment = 1
 
 [node name="IntroLogButton" type="Button" parent="DescriptionPanel/HBoxContainer3" unique_id=1084501370]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0.15294118, 0.53333336, 0.4117647, 1)
 theme_override_fonts/font = ExtResource("3_wipak")
+disabled = true
 text = "Intro Log"
 
 [node name="OutroLogButton" type="Button" parent="DescriptionPanel/HBoxContainer3" unique_id=1292794424]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0.15294118, 0.53333336, 0.4117647, 1)
 theme_override_fonts/font = ExtResource("3_wipak")
+disabled = true
 text = "Outro Log"
 
 [node name="ChapterRelation" type="Label" parent="DescriptionPanel" unique_id=288664670]
@@ -168,7 +177,6 @@ theme_override_colors/font_color = Color(0.15421313, 0.5317986, 0.41324374, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_vm3so")
 theme_override_font_sizes/font_size = 24
-text = "Introduction"
 horizontal_alignment = 1
 
 [node name="QuestLine" type="Label" parent="DescriptionPanel" unique_id=1511271194]
@@ -185,7 +193,6 @@ theme_override_colors/font_color = Color(0.15421313, 0.5317986, 0.41324374, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_vm3so")
 theme_override_font_sizes/font_size = 20
-text = "Quest Line"
 horizontal_alignment = 1
 
 [node name="LogTitle" type="Label" parent="DescriptionPanel" unique_id=927497731]
@@ -217,24 +224,8 @@ grow_vertical = 2
 theme_override_colors/default_color = Color(4.813075e-07, 0.5565102, 0.5963113, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("4_vm3so")
-theme_override_font_sizes/normal_font_size = 16
-text = "Doctor Tharki
-(Gather 20 Mushie Core, 15 Beetle Shells, 10 Serpant Tongue)
-
-\"Hi, I'm Doctor Tharki. 
-
-I have been a man of conventional medicine my whole life; however, people do not realize that I am also highly interested in alternative pursuits. 
-
-I am here on behalf of the Hunter's Committee to help research new Medicine to help aid the Hunter's on their expedition. Longevity is the game when you're in the tower.
-It is dangerous, especially going in alone. 
-
-The current medicine provided from the hunter's commitee has been deemed inefficient. I will change that. My alternative medicine pursuits are actually what I believe will be of effect here. 
-
-The truth is that the Tower has taken what we understand as conventional science and flipped it upside on its head. Our past methods seem to fail at every turn and we are scrambling for a solution. 
-
-This is where I believe my alternative pursuits. Unconventional ways may be the path forward. We can only see. 
-
-Help me with gathering drops from the tower and together we will change the world of Medicine - and to an extent - science, once and for all.\""
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
 
 [node name="RewardsTitle" type="Label" parent="DescriptionPanel" unique_id=2004702019]
 layout_mode = 1
@@ -275,14 +266,14 @@ anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -319.46472
 offset_top = 749.0
-offset_right = -208.29807
+offset_right = -51.46472
 offset_bottom = 779.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0.15421313, 0.5317986, 0.41324374, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_vm3so")
 theme_override_font_sizes/font_size = 24
-text = "XP: 300"
+text = "XP: "
 
 [node name="CurrencyReward" type="Label" parent="DescriptionPanel" unique_id=1296248733]
 layout_mode = 1
@@ -291,14 +282,14 @@ anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -319.46472
 offset_top = 787.0
-offset_right = -108.46472
+offset_right = -41.46472
 offset_bottom = 817.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0.15421313, 0.5317986, 0.41324374, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_vm3so")
 theme_override_font_sizes/font_size = 24
-text = "Currency: 2000"
+text = "Currency: "
 
 [node name="StatusTitle" type="Label" parent="DescriptionPanel" unique_id=392433630]
 layout_mode = 1
@@ -330,7 +321,6 @@ theme_override_colors/font_color = Color(0.15421313, 0.5317986, 0.41324374, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_vm3so")
 theme_override_font_sizes/font_size = 24
-text = "COMPLETED"
 
 [node name="DeliverablesContainer" type="GridContainer" parent="DescriptionPanel" unique_id=1419496966]
 layout_mode = 1
@@ -344,18 +334,6 @@ offset_bottom = -115.0
 grow_vertical = 0
 columns = 2
 
-[node name="DeliverableItem" parent="DescriptionPanel/DeliverablesContainer" unique_id=428441621 instance=ExtResource("5_b1tb2")]
-layout_mode = 2
-
-[node name="DeliverableItem2" parent="DescriptionPanel/DeliverablesContainer" unique_id=1410329955 instance=ExtResource("5_b1tb2")]
-layout_mode = 2
-
-[node name="DeliverableItem3" parent="DescriptionPanel/DeliverablesContainer" unique_id=395773812 instance=ExtResource("5_b1tb2")]
-layout_mode = 2
-
-[node name="DeliverableItem4" parent="DescriptionPanel/DeliverablesContainer" unique_id=1730933031 instance=ExtResource("5_b1tb2")]
-layout_mode = 2
-
 [connection signal="button_up" from="HBoxContainer/MainQuestsButton" to="." method="_on_main_quests_button_button_up"]
 [connection signal="button_up" from="HBoxContainer/JobQuestsButton" to="." method="_on_job_quests_button_button_up"]
 [connection signal="button_up" from="HBoxContainer2/MainQuestsButton" to="." method="_on_main_quests_button_button_up"]
@@ -363,3 +341,5 @@ layout_mode = 2
 [connection signal="button_up" from="HBoxContainer2/WinterQuestsButton" to="." method="_on_winter_quests_button_button_up"]
 [connection signal="button_up" from="HBoxContainer2/SpringQuestsButton" to="." method="_on_spring_quests_button_button_up"]
 [connection signal="button_up" from="HBoxContainer2/SummerQuestsButton" to="." method="_on_summer_quests_button_button_up"]
+[connection signal="button_up" from="DescriptionPanel/HBoxContainer3/IntroLogButton" to="." method="_on_intro_log_button_button_up"]
+[connection signal="button_up" from="DescriptionPanel/HBoxContainer3/OutroLogButton" to="." method="_on_outro_log_button_button_up"]

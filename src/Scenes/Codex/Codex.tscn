@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bqtyoe1e77gov" path="res://src/Scenes/UI/CodexHUBButton.tscn" id="6_8r6qk"]
 [ext_resource type="PackedScene" uid="uid://b20guo3kcyvia" path="res://src/Scenes/Codex/QuestsLog.tscn" id="6_g8j0o"]
 
-[node name="Codex" type="Control" unique_id=1106938393 node_paths=PackedStringArray("monsterpedia", "recipe_book", "player_stats")]
+[node name="Codex" type="Control" unique_id=1106938393 node_paths=PackedStringArray("monsterpedia", "recipe_book", "player_stats", "quests_log")]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -22,6 +22,7 @@ script = ExtResource("1_18qm1")
 monsterpedia = NodePath("Monsterpedia")
 recipe_book = NodePath("RecipeBook")
 player_stats = NodePath("PlayerStats")
+quests_log = NodePath("QuestsLog")
 
 [node name="BG" type="TextureRect" parent="." unique_id=1367829397]
 layout_mode = 0
@@ -57,6 +58,7 @@ visible = false
 layout_mode = 1
 
 [node name="QuestsLog" parent="." unique_id=1604012236 instance=ExtResource("6_g8j0o")]
+visible = false
 layout_mode = 1
 offset_left = -739.0
 offset_top = -411.0

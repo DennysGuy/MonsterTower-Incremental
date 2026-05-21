@@ -138,6 +138,9 @@ func _process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("open_monsterpedia"):
 		CodexManager.open_a_codex_menu.emit(2)
+		
+	if Input.is_action_just_pressed("open_quests_log"):
+		CodexManager.open_a_codex_menu.emit(3)
 	
 
 func update_player_health() -> void:

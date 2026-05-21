@@ -19,6 +19,8 @@ signal send_codex_notification(codex_message : String)
 signal show_codex_notification
 @warning_ignore("unused_signal")
 signal update_stats_page
+@warning_ignore("unused_signal")
+signal populate_quest_panel(quest : Quest)
 
 const WILLOW_SHRUB = preload("uid://e6ejdj1jwoj0")
 const CORRUPTED_MUSHIE = preload("uid://bq0juubwkp8im")
