@@ -4,6 +4,17 @@
 [ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="2_1yg3g"]
 [ext_resource type="FontFile" uid="uid://cvosgdtc6ncoe" path="res://Assets/Fonts/misterlickychops.ttf" id="4_6vu5i"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1yg3g"]
+bg_color = Color(9.62615e-08, 0.26904482, 0.29286292, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
 [node name="PauseMenu" type="Control" unique_id=895251138]
 process_mode = 3
 top_level = true
@@ -124,6 +135,166 @@ theme_override_fonts/font = ExtResource("4_6vu5i")
 theme_override_font_sizes/font_size = 42
 text = "Quit Game
 "
+
+[node name="AudioSettingsMenu" type="Panel" parent="Panel" unique_id=819257054]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -522.1259
+offset_top = -408.0
+offset_right = 522.1259
+offset_bottom = 408.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1yg3g")
+
+[node name="Title" type="Label" parent="Panel/AudioSettingsMenu" unique_id=25449692]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -161.5
+offset_top = 88.0
+offset_right = 161.5
+offset_bottom = 137.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_6vu5i")
+theme_override_font_sizes/font_size = 54
+text = "Audio Settings"
+
+[node name="MasterVolumeTitle" type="Label" parent="Panel/AudioSettingsMenu" unique_id=747113510]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -453.00006
+offset_top = 201.0
+offset_right = -187.00006
+offset_bottom = 239.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_6vu5i")
+theme_override_font_sizes/font_size = 42
+text = "Master Volume"
+
+[node name="MasterVolumeSlider" type="HSlider" parent="Panel/AudioSettingsMenu" unique_id=1707412766]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 73.125916
+offset_top = -145.0
+offset_right = 938.1259
+offset_bottom = -106.01825
+grow_vertical = 2
+rounded = true
+tick_count = 10
+ticks_on_borders = true
+
+[node name="MusicVolumeTitle" type="Label" parent="Panel/AudioSettingsMenu" unique_id=2139783265]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -453.00006
+offset_top = 330.0
+offset_right = -187.00006
+offset_bottom = 368.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_6vu5i")
+theme_override_font_sizes/font_size = 42
+text = "Music Volume"
+
+[node name="MusicVolumeSlider" type="HSlider" parent="Panel/AudioSettingsMenu" unique_id=1547933983]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 73.125916
+offset_top = -23.0
+offset_right = 932.1259
+offset_bottom = 15.9817505
+grow_vertical = 2
+rounded = true
+tick_count = 10
+ticks_on_borders = true
+
+[node name="SFXVolumeTitle" type="Label" parent="Panel/AudioSettingsMenu" unique_id=1349848546]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -453.00006
+offset_top = 458.0
+offset_right = -187.00006
+offset_bottom = 496.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_6vu5i")
+theme_override_font_sizes/font_size = 42
+text = "SFX Volume"
+
+[node name="SFXVolumeSlider" type="HSlider" parent="Panel/AudioSettingsMenu" unique_id=1150631510]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 73.125916
+offset_top = 108.0
+offset_right = 939.1259
+offset_bottom = 146.98175
+grow_vertical = 2
+rounded = true
+tick_count = 10
+ticks_on_borders = true
+
+[node name="AmbienceVolumeTitle" type="Label" parent="Panel/AudioSettingsMenu" unique_id=352786332]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -449.00006
+offset_top = 591.0
+offset_right = -126.00006
+offset_bottom = 629.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_6vu5i")
+theme_override_font_sizes/font_size = 42
+text = "Ambience Volume"
+
+[node name="AmbienceVolumeSlider" type="HSlider" parent="Panel/AudioSettingsMenu" unique_id=543365212]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 73.125916
+offset_top = 242.0
+offset_right = 939.1259
+offset_bottom = 280.98175
+grow_vertical = 2
+rounded = true
+tick_count = 10
+ticks_on_borders = true
+
+[node name="Button" type="Button" parent="Panel/AudioSettingsMenu" unique_id=635970393]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -127.12598
+offset_top = 30.0
+offset_right = -36.125977
+offset_bottom = 83.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("2_1yg3g")
+theme_override_font_sizes/font_size = 32
+text = "Close"
 
 [connection signal="button_up" from="Panel/PanelContainer/VBoxContainer/MarginContainer/AudioSettings" to="." method="_on_audio_settings_button_up"]
 [connection signal="button_up" from="Panel/PanelContainer/VBoxContainer/MarginContainer2/GraphicsSettings" to="." method="_on_graphics_settings_button_up"]
