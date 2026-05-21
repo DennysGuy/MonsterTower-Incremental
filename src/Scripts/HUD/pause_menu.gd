@@ -30,3 +30,23 @@ func set_pause_subtree(root: Node, pause: bool) -> void:
 	
 	for setter in process_setters:
 		root.propagate_call(setter, [!pause])
+
+
+func _on_audio_settings_button_up() -> void:
+	pass # Replace with function body.
+
+
+func _on_graphics_settings_button_up() -> void:
+	pass # Replace with function body.
+
+
+func _on_control_settings_button_up() -> void:
+	pass # Replace with function body.
+
+
+func _on_save_and_menu_button_up() -> void:
+	pass # Replace with function body.
+
+
+func _on_quit_game_button_up() -> void:
+	pass # Replace with function body.
