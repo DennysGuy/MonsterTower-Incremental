@@ -4,8 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://wrpatbvk43n8" path="res://Assets/Codex/CodexJournalBG.png" id="2_7uyon"]
 [ext_resource type="PackedScene" uid="uid://bv4tosurbqavy" path="res://src/Scenes/Codex/Monsterpedia.tscn" id="3_sxbkn"]
 [ext_resource type="PackedScene" uid="uid://ckl64dbrc3yfw" path="res://src/Scenes/Codex/RecipeBook.tscn" id="4_hbyvg"]
+[ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="5_kshbo"]
+[ext_resource type="PackedScene" uid="uid://bycggiadrwxpu" path="res://src/Scenes/Codex/PlayerStats.tscn" id="5_vsmru"]
+[ext_resource type="PackedScene" uid="uid://bqtyoe1e77gov" path="res://src/Scenes/UI/CodexHUBButton.tscn" id="6_8r6qk"]
 
-[node name="Codex" type="Control" unique_id=1106938393]
+[node name="Codex" type="Control" unique_id=1106938393 node_paths=PackedStringArray("monsterpedia", "recipe_book", "player_stats")]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -15,6 +18,9 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_18qm1")
+monsterpedia = NodePath("Monsterpedia")
+recipe_book = NodePath("RecipeBook")
+player_stats = NodePath("PlayerStats")
 
 [node name="BG" type="TextureRect" parent="." unique_id=1367829397]
 layout_mode = 0
@@ -31,6 +37,7 @@ offset_left = 0.5
 offset_right = 0.5
 
 [node name="RecipeBook" parent="." unique_id=1973571576 instance=ExtResource("4_hbyvg")]
+visible = false
 layout_mode = 0
 anchors_preset = 0
 anchor_left = 0.0
@@ -43,3 +50,51 @@ offset_right = 960.0
 offset_bottom = 541.0
 grow_horizontal = 1
 grow_vertical = 1
+
+[node name="PlayerStats" parent="." unique_id=2102595767 instance=ExtResource("5_vsmru")]
+layout_mode = 1
+
+[node name="Button" type="Button" parent="." unique_id=455167233]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 654.0
+offset_top = -483.0
+offset_right = 747.0
+offset_bottom = -430.0
+grow_horizontal = 0
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("5_kshbo")
+theme_override_font_sizes/font_size = 32
+text = "Close"
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=249641160]
+layout_mode = 0
+offset_left = -935.0
+offset_top = -370.0
+offset_right = -842.0
+offset_bottom = -42.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=317931338]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="CodexHubButton" parent="PanelContainer/VBoxContainer" unique_id=930258851 instance=ExtResource("6_8r6qk")]
+layout_mode = 2
+
+[node name="CodexHubButton2" parent="PanelContainer/VBoxContainer" unique_id=412228312 instance=ExtResource("6_8r6qk")]
+layout_mode = 2
+button_type = 1
+
+[node name="CodexHubButton3" parent="PanelContainer/VBoxContainer" unique_id=447242356 instance=ExtResource("6_8r6qk")]
+layout_mode = 2
+button_type = 2
+
+[node name="CodexHubButton4" parent="PanelContainer/VBoxContainer" unique_id=1146424205 instance=ExtResource("6_8r6qk")]
+layout_mode = 2
+button_type = 3
+
+[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]

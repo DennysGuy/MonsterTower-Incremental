@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://cnod3fm7iccmb"]
+
+[ext_resource type="Script" uid="uid://cof5t8sb6canq" path="res://src/Scripts/Codex/codex_notification_panel.gd" id="1_wi0rp"]
+[ext_resource type="FontFile" uid="uid://cvosgdtc6ncoe" path="res://Assets/Fonts/misterlickychops.ttf" id="2_gbiod"]
+[ext_resource type="FontFile" uid="uid://bpgc56prdwg8s" path="res://Assets/Fonts/Munstar-Regular.ttf" id="3_oapvd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_icvss"]
+bg_color = Color(0, 0.6743664, 0.76593935, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0, 0, 0, 0.59000003)
+shadow_size = 3
+shadow_offset = Vector2(2, 2.15)
+
+[node name="CodexNotificationPanel" type="Panel" unique_id=809726153]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -271.0
+offset_top = -124.0
+offset_right = 271.0
+offset_bottom = 124.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_icvss")
+script = ExtResource("1_wi0rp")
+
+[node name="Title" type="Label" parent="." unique_id=1330055213]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -137.0
+offset_top = -124.0
+offset_right = 153.0
+offset_bottom = -85.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.80278856, 0.38840634, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_oapvd")
+theme_override_font_sizes/font_size = 32
+text = "Codex Notification"
+
+[node name="Message" type="RichTextLabel" parent="." unique_id=1543926454]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -228.5
+offset_top = -64.0
+offset_right = 228.5
+offset_bottom = 70.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_gbiod")
+theme_override_font_sizes/normal_font_size = 38
+bbcode_enabled = true
+text = "[color=green]Corrupted Mushie[/color] entered
+into [color=green]Monsterpedia[/color]!"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -1,0 +1,193 @@
+[gd_scene format=3 uid="uid://bycggiadrwxpu"]
+
+[ext_resource type="Script" uid="uid://qpea1s8umlt5" path="res://src/Scripts/Codex/player_stats.gd" id="1_txhdu"]
+[ext_resource type="Texture2D" uid="uid://c7nvij8q3vmxc" path="res://Assets/PlayerGraphics/NewPlayer/PlayerIdle.png" id="2_a0d2m"]
+[ext_resource type="Texture2D" uid="uid://c7inonqhoemlt" path="res://Assets/PlayerGraphics/Outfits/AdventurersFit/AdventurerFit_Idle.png" id="3_7bf7t"]
+[ext_resource type="Texture2D" uid="uid://decldm83dahcq" path="res://Assets/PlayerGraphics/Weapons/ShroomSword/ShroomSword_Idle.png" id="4_lisj6"]
+[ext_resource type="FontFile" uid="uid://cvosgdtc6ncoe" path="res://Assets/Fonts/misterlickychops.ttf" id="5_j781k"]
+[ext_resource type="Texture2D" uid="uid://di4snwf15yta8" path="res://Assets/Facilities/GearCraftingStation/SwordSocketHorizontal.png" id="6_5iv3i"]
+
+[node name="PlayerStats" type="Control" unique_id=2102595767]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -736.0
+offset_top = -416.0
+offset_right = 736.0
+offset_bottom = 416.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_txhdu")
+
+[node name="PlayerBase" type="TextureRect" parent="." unique_id=1812642796]
+layout_mode = 0
+offset_left = -108.0
+offset_top = -70.0
+offset_right = 303.0
+offset_bottom = 341.0
+texture = ExtResource("2_a0d2m")
+expand_mode = 1
+
+[node name="Outfit" type="TextureRect" parent="." unique_id=589269917]
+layout_mode = 0
+offset_left = -108.0
+offset_top = -70.0
+offset_right = 303.0
+offset_bottom = 341.0
+texture = ExtResource("3_7bf7t")
+expand_mode = 1
+
+[node name="Weapon" type="TextureRect" parent="." unique_id=1144232488]
+layout_mode = 0
+offset_left = -108.0
+offset_top = -70.0
+offset_right = 303.0
+offset_bottom = 341.0
+texture = ExtResource("4_lisj6")
+expand_mode = 1
+
+[node name="Name" type="Label" parent="." unique_id=375677045]
+layout_mode = 0
+offset_left = 291.0
+offset_top = 53.0
+offset_right = 624.0
+offset_bottom = 104.0
+theme_override_colors/font_color = Color(0.19909444, 0.624029, 0.62397456, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_j781k")
+theme_override_font_sizes/font_size = 56
+text = "Name: Al Fred"
+
+[node name="HunterLicenseTier" type="Label" parent="." unique_id=1505906548]
+layout_mode = 0
+offset_left = 291.0
+offset_top = 122.0
+offset_right = 627.0
+offset_bottom = 152.0
+theme_override_colors/font_color = Color(0.19909444, 0.624029, 0.62397456, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_j781k")
+theme_override_font_sizes/font_size = 32
+text = "Hunter's License Tier: I"
+
+[node name="Class" type="Label" parent="." unique_id=1300204607]
+layout_mode = 0
+offset_left = 291.0
+offset_top = 174.0
+offset_right = 606.0
+offset_bottom = 204.0
+theme_override_colors/font_color = Color(0.19909444, 0.624029, 0.62397456, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_j781k")
+theme_override_font_sizes/font_size = 32
+text = "Class: Adventurer"
+
+[node name="Level" type="Label" parent="." unique_id=1140473752]
+layout_mode = 0
+offset_left = 291.0
+offset_top = 222.0
+offset_right = 606.0
+offset_bottom = 252.0
+theme_override_colors/font_color = Color(0.19909444, 0.624029, 0.62397456, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_j781k")
+theme_override_font_sizes/font_size = 32
+text = "Level: 5"
+
+[node name="XPNeeded" type="Label" parent="." unique_id=1783180791]
+layout_mode = 0
+offset_left = 292.0
+offset_top = 264.0
+offset_right = 607.0
+offset_bottom = 294.0
+theme_override_colors/font_color = Color(0.19909444, 0.624029, 0.62397456, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_j781k")
+theme_override_font_sizes/font_size = 32
+text = "XP: 24000/35000"
+
+[node name="Stats" type="Label" parent="." unique_id=848176097]
+layout_mode = 0
+offset_left = 839.0
+offset_top = 50.0
+offset_right = 1223.0
+offset_bottom = 500.0
+theme_override_colors/font_color = Color(0.19909444, 0.624029, 0.62397456, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 12
+theme_override_fonts/font = ExtResource("5_j781k")
+theme_override_font_sizes/font_size = 32
+text = "Attack Damage: 50
+Defense: 5.0
+Crit Chance: %10
+Crit Damage: %20
+Health: 100/100
+MP: 200/200
+Pickaxe: Stone Pickaxe
+Pickaxe Damage: 25
+Expedition Time: 90 seconds
+Movement Speed: 320
+Climbing Speed: 150"
+
+[node name="WeaponStats-Name-JumpHeight" type="Label" parent="." unique_id=1844930550]
+layout_mode = 0
+offset_left = 63.0
+offset_top = 322.0
+offset_right = 368.0
+offset_bottom = 597.0
+theme_override_colors/font_color = Color(0.19909444, 0.624029, 0.62397456, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 12
+theme_override_fonts/font = ExtResource("5_j781k")
+theme_override_font_sizes/font_size = 24
+text = "Weapon: Shroom Fibre Blade
+Attack: 140 (+10)
+Defense Bonus: 5
+Attack Speed: FAST
+Crit Bonus: %5
+Crit Damage Bonus: %5
+Movement Speed Bonus: 2
+Jump Height Bonus: 4"
+
+[node name="WeaponStats-Accuracy-KnockBack" type="Label" parent="." unique_id=1018598396]
+layout_mode = 0
+offset_left = 391.0
+offset_top = 322.0
+offset_right = 696.0
+offset_bottom = 597.0
+theme_override_colors/font_color = Color(0.19909444, 0.624029, 0.62397456, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 12
+theme_override_fonts/font = ExtResource("5_j781k")
+theme_override_font_sizes/font_size = 24
+text = "Accuracy Bonus: 0
+Climb Speed Bonus: 0
+Jump Height Bonus: 0
+Stun Stacks Bonus: 0
+Cooldown Bonus: 0
+HP Bonus: 0
+MP Bonus: 0
+Knock Back Bonus : 0"
+
+[node name="SwordSocketBG" type="TextureRect" parent="." unique_id=9747709]
+layout_mode = 0
+offset_left = -18.0
+offset_top = 635.0
+offset_right = 804.0
+offset_bottom = 877.0
+texture = ExtResource("6_5iv3i")
+
+[node name="SocketHBoxContainer" type="HBoxContainer" parent="SwordSocketBG" unique_id=1182150557]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 39.0
+offset_top = 43.0
+offset_right = -125.913025
+offset_bottom = -37.0
+grow_horizontal = 2
+grow_vertical = 2

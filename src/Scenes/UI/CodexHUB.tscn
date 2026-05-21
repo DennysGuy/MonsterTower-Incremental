@@ -17,6 +17,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 175.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -27,9 +28,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -152.0
+offset_left = -206.0
 offset_top = -40.0
-offset_right = 182.0
+offset_right = 206.0
 offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -40,6 +41,12 @@ layout_mode = 2
 
 [node name="CodexHubButton2" parent="Panel/HboxContainer" unique_id=1176910020 instance=ExtResource("2_hbw3r")]
 layout_mode = 2
+button_type = 1
 
 [node name="CodexHubButton3" parent="Panel/HboxContainer" unique_id=976721083 instance=ExtResource("2_hbw3r")]
 layout_mode = 2
+button_type = 2
+
+[node name="CodexHubButton4" parent="Panel/HboxContainer" unique_id=483095514 instance=ExtResource("2_hbw3r")]
+layout_mode = 2
+button_type = 3

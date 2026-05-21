@@ -9,6 +9,7 @@ class_name RecipeBook extends Control
 @onready var recipe_container: GridContainer = $DescriptionPanel/RecipeContainer
 @onready var sell_price: Label = $DescriptionPanel/SellPrice
 @onready var can_make: Label = $DescriptionPanel/CanMake
+@onready var recipe_title: Label = $DescriptionPanel/RecipeTitle
 
 
 # Called when the node enters the scene tree for the first time.
@@ -64,6 +65,10 @@ func populate_nodes_container(recipe : CraftingRecipe) -> void:
 			
 func populate_recipe_container(recipe : CraftingRecipe, unlocks_list : Array) -> void:
 	InventoryManager.clear_grid_container(recipe_container)
+	if not unlocks_list[recipe.index]["Unlocked 2"]:
+		recipe_title.text = "Recipe (Craft %s)" % int(CodexManager.RECIPE_THRESH_HOLD_2-unlocks_list[recipe.index]["Count"])
+	else:
+		recipe_title.text = "Recipe"
 	for ingredient in recipe.recipe_list:
 		var list_item : IngredientItem = preload("uid://dil4081ni1hb3").instantiate()
 		for item in ingredient.keys():

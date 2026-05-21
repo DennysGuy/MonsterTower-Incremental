@@ -7,6 +7,18 @@ signal populate_monster_description_panel(monster_stats : EnemyStats)
 signal update_monster_cards
 @warning_ignore("unused_signal")
 signal populate_recipe_description_panel(crafting_recipe : CraftingRecipe)
+@warning_ignore("unused_signal")
+signal open_a_codex_menu(menu_type : int)
+@warning_ignore("unused_signal")
+signal show_codex
+@warning_ignore("unused_signal")
+signal hide_codex
+@warning_ignore("unused_signal")
+signal send_codex_notification(codex_message : String)
+@warning_ignore("unused_signal")
+signal show_codex_notification
+@warning_ignore("unused_signal")
+signal update_stats_page
 
 const WILLOW_SHRUB = preload("uid://e6ejdj1jwoj0")
 const CORRUPTED_MUSHIE = preload("uid://bq0juubwkp8im")
@@ -120,7 +132,8 @@ func increment_monster_card_count(index : int) -> void:
 		monster_unlock_status[index]["Unlocked"] = true
 		#issue notification on HUD that is unlocked, 
 		#player can check codex and card should be unlocked
-		
+		var message : String = "[color=light_cyan]%s[/color] entered\ninto [color=light_green]Monsterpedia[/color]" % monster_list[index].enemy_name
+		CodexManager.send_codex_notification.emit(message)
 	SaveManager.save_monster_unlocks_status()
 	
 func increment_bar_recipe_list_item_count(index : int) -> void:
@@ -131,10 +144,14 @@ func increment_bar_recipe_list_item_count(index : int) -> void:
 	
 	if not bar_recipe_unlocks[index]["Unlocked 1"] and bar_recipe_unlocks[index]["Count"] >= RECIPE_THRESH_HOLD_1:
 		bar_recipe_unlocks[index]["Unlocked 1"] = true
+		var message : String = "[color=tan]%s[/color] entered into\n[color=salmon]Recipe Book![/color]" % bar_recipes[index].output_item.item_name
+		CodexManager.send_codex_notification.emit(message)
 		SaveManager.save_bar_unlocks_status()
 	
 	if not bar_recipe_unlocks[index]["Unlocked 2"] and bar_recipe_unlocks[index]["Count"] >= RECIPE_THRESH_HOLD_2:
 		bar_recipe_unlocks[index]["Unlocked 2"] = true
+		var message : String = "[color=tan]%s[/color] Recipe Entry\n[color=pale_green]Completed![/color]" % dish_recipes[index].output_item.item_name
+		CodexManager.send_codex_notification.emit(message)
 		SaveManager.save_bar_unlocks_status()
 
 func increment_dish_recipe_list_item_count(index : int) -> void:
@@ -145,8 +162,12 @@ func increment_dish_recipe_list_item_count(index : int) -> void:
 	
 	if not dish_recipe_unlocks[index]["Unlocked 1"] and dish_recipe_unlocks[index]["Count"] >= RECIPE_THRESH_HOLD_1:
 		dish_recipe_unlocks[index]["Unlocked 1"] = true
+		var message : String = "[color=lemon_chiffon]%s[/color] entered into\n[color=salmon]Recipe Book![/color]" % dish_recipes[index].output_item.item_name
+		CodexManager.send_codex_notification.emit(message)
 		SaveManager.save_dish_unlocks_status()
 	
 	if not dish_recipe_unlocks[index]["Unlocked 2"] and dish_recipe_unlocks[index]["Count"] >= RECIPE_THRESH_HOLD_2:
+		var message : String = "[color=lemon_chiffon]%s[/color] Recipe Entry\n[color=pale_green]Completed![/color]" % dish_recipes[index].output_item.item_name
+		CodexManager.send_codex_notification.emit(message)
 		dish_recipe_unlocks[index]["Unlocked 2"] = true
 		SaveManager.save_dish_unlocks_status()

@@ -1,12 +1,50 @@
 class_name Codex extends Control
 
 @export var monsterpedia : Monsterpedia
+@export var recipe_book : RecipeBook
+@export var player_stats : PlayerStatsPage
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	CodexManager.open_a_codex_menu.connect(show_a_menu)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+func show_recipe_book() -> void:
+	CodexManager.show_codex.emit()
+	monsterpedia.hide()
+	player_stats.hide()
+	recipe_book.show()
+	recipe_book.create_dish_recipe_list()
+	
+	
+func show_monsterpedia() -> void:
+	CodexManager.show_codex.emit()
+	recipe_book.hide()
+	player_stats.hide()
+	monsterpedia.show()
+
+func show_stats_page() -> void:
+	CodexManager.show_codex.emit()
+	recipe_book.hide()
+	monsterpedia.hide()
+	player_stats.update_stats_page()
+	player_stats.show()
+	
+func show_a_menu(menu_type : int) -> void:
+	match menu_type:
+		0:
+			show_stats_page()
+		1:
+			show_recipe_book()
+		2:
+			show_monsterpedia()
+		3:
+			pass
+
+
+func _on_button_button_up() -> void:
+	CodexManager.hide_codex.emit()

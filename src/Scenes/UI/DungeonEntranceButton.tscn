@@ -20,3 +20,5 @@ texture_normal = ExtResource("1_n8y1q")
 script = ExtResource("2_n8y1q")
 
 [connection signal="button_up" from="." to="." method="_on_button_up"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
