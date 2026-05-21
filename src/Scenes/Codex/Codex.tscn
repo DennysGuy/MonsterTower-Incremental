@@ -7,6 +7,7 @@
 [ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="5_kshbo"]
 [ext_resource type="PackedScene" uid="uid://bycggiadrwxpu" path="res://src/Scenes/Codex/PlayerStats.tscn" id="5_vsmru"]
 [ext_resource type="PackedScene" uid="uid://bqtyoe1e77gov" path="res://src/Scenes/UI/CodexHUBButton.tscn" id="6_8r6qk"]
+[ext_resource type="PackedScene" uid="uid://b20guo3kcyvia" path="res://src/Scenes/Codex/QuestsLog.tscn" id="6_g8j0o"]
 
 [node name="Codex" type="Control" unique_id=1106938393 node_paths=PackedStringArray("monsterpedia", "recipe_book", "player_stats")]
 layout_mode = 3
@@ -52,7 +53,15 @@ grow_horizontal = 1
 grow_vertical = 1
 
 [node name="PlayerStats" parent="." unique_id=2102595767 instance=ExtResource("5_vsmru")]
+visible = false
 layout_mode = 1
+
+[node name="QuestsLog" parent="." unique_id=1604012236 instance=ExtResource("6_g8j0o")]
+layout_mode = 1
+offset_left = -739.0
+offset_top = -411.0
+offset_right = 733.0
+offset_bottom = 421.0
 
 [node name="Button" type="Button" parent="." unique_id=455167233]
 layout_mode = 1
