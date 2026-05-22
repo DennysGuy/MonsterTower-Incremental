@@ -44,6 +44,7 @@ PlayerHudSignalBus="*uid://d3adq33svpjyh"
 QuestManager="*uid://cdvn4cejkl7a6"
 Dialogic="*uid://ds2q0uclmolvu"
 CodexManager="*uid://bwmhpqxq6sj2r"
+SettingsManager="*uid://1of7lkddo2wr"
 
 [dialogic]
 

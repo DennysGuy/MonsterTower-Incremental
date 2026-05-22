@@ -4,6 +4,7 @@ class_name Disclaimer extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	SettingsManager.load_settings()
 	animation_player.play("Fadein")
 
 

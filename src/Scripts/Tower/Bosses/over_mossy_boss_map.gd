@@ -1,10 +1,9 @@
-class_name OverMossyBossMap extends Node
+class_name OverMossyBossMap extends MapOver
 
-@onready var hud: PlayerHUD = $HUD
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	hud.quest_hub.hide()
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

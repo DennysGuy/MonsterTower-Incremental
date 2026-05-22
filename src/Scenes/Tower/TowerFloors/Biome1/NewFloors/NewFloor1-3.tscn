@@ -1,9 +1,12 @@
 [gd_scene format=3 uid="uid://dvl67x0wts4qh"]
 
+[ext_resource type="Script" uid="uid://bbawd52ob0dia" path="res://src/Scripts/Maps/Tower/map_over.gd" id="1_gtnoj"]
 [ext_resource type="PackedScene" uid="uid://b3m3f58qy47jb" path="res://src/Scenes/Tower/TowerFloors/Biome1/Floor1-3.tscn" id="1_jnnjp"]
 [ext_resource type="PackedScene" uid="uid://dysg5kffvxbql" path="res://src/Scenes/UI/PlayerHUD.tscn" id="2_gtnoj"]
 
-[node name="NewFloor1-3" type="Node" unique_id=1810283287]
+[node name="NewFloor1-3" type="Node" unique_id=1810283287 node_paths=PackedStringArray("hud")]
+script = ExtResource("1_gtnoj")
+hud = NodePath("HUD")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1362811226]
 custom_minimum_size = Vector2(1920, 1080)
