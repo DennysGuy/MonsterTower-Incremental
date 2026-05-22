@@ -7,12 +7,12 @@ class_name PauseMenu extends Control
 var in_menu : bool = false
 
 @export var audio_settings_menu : AudioSettingsMenu
+@export var control_settings_menu : ControlSettingsMenu
 
 func _ready() -> void:
 	get_tree().paused = true
 	in_menu = true
 	
-
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("close_menu"):
 		exit_pause_menu()
@@ -42,7 +42,7 @@ func _on_graphics_settings_button_up() -> void:
 	pass # Replace with function body.
 
 func _on_control_settings_button_up() -> void:
-	pass # Replace with function body.
+	control_settings_menu.show()
 
 func _on_save_and_menu_button_up() -> void:
 	SaveManager.save_game()

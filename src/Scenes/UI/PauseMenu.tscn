@@ -4,22 +4,9 @@
 [ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="2_1yg3g"]
 [ext_resource type="FontFile" uid="uid://cvosgdtc6ncoe" path="res://Assets/Fonts/misterlickychops.ttf" id="4_6vu5i"]
 [ext_resource type="PackedScene" uid="uid://bjqoi7oi3etgr" path="res://src/Scenes/UI/PauseMenu/AudioSettingsMenu.tscn" id="4_gohp8"]
-[ext_resource type="Script" uid="uid://daeasvuervdk" path="res://src/Scripts/HUD/PauseMenu/control_settings_menu.gd" id="5_gohp8"]
-[ext_resource type="FontFile" uid="uid://stn4dtg0uw57" path="res://Assets/Fonts/FredokaOne-Regular.ttf" id="6_li46c"]
+[ext_resource type="PackedScene" uid="uid://yoidheswt82b" path="res://src/Scenes/UI/PauseMenu/ControlSettingsMenu.tscn" id="5_gohp8"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6vu5i"]
-bg_color = Color(0.80044264, 0.5248232, 0.37097183, 1)
-border_width_left = 10
-border_width_top = 10
-border_width_right = 10
-border_width_bottom = 10
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-corner_detail = 10
-
-[node name="PauseMenu" type="Control" unique_id=895251138 node_paths=PackedStringArray("audio_settings_menu")]
+[node name="PauseMenu" type="Control" unique_id=895251138 node_paths=PackedStringArray("audio_settings_menu", "control_settings_menu")]
 process_mode = 3
 top_level = true
 z_index = 4096
@@ -31,6 +18,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fu2di")
 audio_settings_menu = NodePath("Panel/AudioSettingsMenu")
+control_settings_menu = NodePath("Panel/ControlSettingsMenu")
 
 [node name="Panel" type="Panel" parent="." unique_id=1257473233]
 layout_mode = 1
@@ -161,118 +149,13 @@ text = "Exit"
 visible = false
 layout_mode = 1
 
-[node name="ControlSettingsMenu" type="Panel" parent="Panel" unique_id=1339621466]
+[node name="ControlSettingsMenu" parent="Panel" unique_id=2022157965 instance=ExtResource("5_gohp8")]
+visible = false
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -913.0
-offset_top = -508.0
-offset_right = 924.0
-offset_bottom = 502.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_6vu5i")
-script = ExtResource("5_gohp8")
-
-[node name="Title" type="Label" parent="Panel/ControlSettingsMenu" unique_id=1970646558]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -62.0
-offset_top = 55.0
-offset_right = 62.0
-offset_bottom = 78.0
-grow_horizontal = 2
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("6_li46c")
-theme_override_font_sizes/font_size = 64
-text = "Control Settings"
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/ControlSettingsMenu" unique_id=1641049689]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 156.0
-offset_top = -330.0
-offset_right = 660.0
-offset_bottom = 160.0
-grow_vertical = 2
-theme_override_constants/separation = 10
-
-[node name="KBMoveLeft" type="Label" parent="Panel/ControlSettingsMenu/VBoxContainer" unique_id=983270630]
-layout_mode = 2
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("6_li46c")
-theme_override_font_sizes/font_size = 32
-text = "Move Left"
-
-[node name="KBMoveRight" type="Label" parent="Panel/ControlSettingsMenu/VBoxContainer" unique_id=1685166948]
-layout_mode = 2
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("6_li46c")
-theme_override_font_sizes/font_size = 32
-text = "Move Right"
-
-[node name="KBClimbUp" type="Label" parent="Panel/ControlSettingsMenu/VBoxContainer" unique_id=1890659576]
-layout_mode = 2
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("6_li46c")
-theme_override_font_sizes/font_size = 32
-text = "Climb Up"
-
-[node name="KBClimbDown" type="Label" parent="Panel/ControlSettingsMenu/VBoxContainer" unique_id=1335869012]
-layout_mode = 2
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("6_li46c")
-theme_override_font_sizes/font_size = 32
-text = "Climb Down/Drop Thru Platform"
-
-[node name="Jump" type="Label" parent="Panel/ControlSettingsMenu/VBoxContainer" unique_id=211248382]
-layout_mode = 2
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("6_li46c")
-theme_override_font_sizes/font_size = 32
-text = "Jump"
-
-[node name="Jump2" type="Label" parent="Panel/ControlSettingsMenu/VBoxContainer" unique_id=1837192616]
-layout_mode = 2
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("6_li46c")
-theme_override_font_sizes/font_size = 32
-text = "Dash"
-
-[node name="Jump3" type="Label" parent="Panel/ControlSettingsMenu/VBoxContainer" unique_id=617475206]
-layout_mode = 2
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("6_li46c")
-theme_override_font_sizes/font_size = 32
-text = "Basic Attack"
-
-[node name="Jump4" type="Label" parent="Panel/ControlSettingsMenu/VBoxContainer" unique_id=1981833387]
-layout_mode = 2
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("6_li46c")
-theme_override_font_sizes/font_size = 32
-text = "Interact"
-
-[node name="Jump5" type="Label" parent="Panel/ControlSettingsMenu/VBoxContainer" unique_id=8130842]
-layout_mode = 2
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("6_li46c")
-theme_override_font_sizes/font_size = 32
-text = "Open Bag"
-
-[node name="Jump6" type="Label" parent="Panel/ControlSettingsMenu/VBoxContainer" unique_id=925023942]
-layout_mode = 2
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("6_li46c")
-theme_override_font_sizes/font_size = 32
-text = "Pause/Close Menu"
+offset_left = -918.5
+offset_top = -513.5
+offset_right = 918.5
+offset_bottom = 513.5
 
 [connection signal="button_up" from="Panel/PanelContainer/VBoxContainer/MarginContainer/AudioSettings" to="." method="_on_audio_settings_button_up"]
 [connection signal="button_up" from="Panel/PanelContainer/VBoxContainer/MarginContainer2/GraphicsSettings" to="." method="_on_graphics_settings_button_up"]
