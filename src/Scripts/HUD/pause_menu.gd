@@ -35,24 +35,22 @@ func set_pause_subtree(root: Node, pause: bool) -> void:
 	for setter in process_setters:
 		root.propagate_call(setter, [!pause])
 
-
 func _on_audio_settings_button_up() -> void:
 	audio_settings_menu.show()
-
 
 func _on_graphics_settings_button_up() -> void:
 	pass # Replace with function body.
 
-
 func _on_control_settings_button_up() -> void:
 	pass # Replace with function body.
-
 
 func _on_save_and_menu_button_up() -> void:
 	SaveManager.save_game()
 	MusicPlayer.stop_player()
 	get_tree().change_scene_to_file("uid://babypuakc7i7y")
 
-
 func _on_quit_game_button_up() -> void:
 	get_tree().quit()
+
+func _on_exit_button_button_up() -> void:
+	exit_pause_menu()
