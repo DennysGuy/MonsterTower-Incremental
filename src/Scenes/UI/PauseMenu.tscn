@@ -5,8 +5,9 @@
 [ext_resource type="FontFile" uid="uid://cvosgdtc6ncoe" path="res://Assets/Fonts/misterlickychops.ttf" id="4_6vu5i"]
 [ext_resource type="PackedScene" uid="uid://bjqoi7oi3etgr" path="res://src/Scenes/UI/PauseMenu/AudioSettingsMenu.tscn" id="4_gohp8"]
 [ext_resource type="PackedScene" uid="uid://yoidheswt82b" path="res://src/Scenes/UI/PauseMenu/ControlSettingsMenu.tscn" id="5_gohp8"]
+[ext_resource type="PackedScene" uid="uid://ca0cjxl1lfihs" path="res://src/Scenes/UI/PauseMenu/GraphicsSettings.tscn" id="6_li46c"]
 
-[node name="PauseMenu" type="Control" unique_id=895251138 node_paths=PackedStringArray("audio_settings_menu", "control_settings_menu")]
+[node name="PauseMenu" type="Control" unique_id=895251138 node_paths=PackedStringArray("audio_settings_menu", "control_settings_menu", "graphics_settings_menu")]
 process_mode = 3
 top_level = true
 z_index = 4096
@@ -19,6 +20,7 @@ grow_vertical = 2
 script = ExtResource("1_fu2di")
 audio_settings_menu = NodePath("Panel/AudioSettingsMenu")
 control_settings_menu = NodePath("Panel/ControlSettingsMenu")
+graphics_settings_menu = NodePath("Panel/GraphicsSettings")
 
 [node name="Panel" type="Panel" parent="." unique_id=1257473233]
 layout_mode = 1
@@ -156,6 +158,12 @@ offset_left = -918.5
 offset_top = -513.5
 offset_right = 918.5
 offset_bottom = 513.5
+
+[node name="GraphicsSettings" parent="Panel" unique_id=369073674 instance=ExtResource("6_li46c")]
+visible = false
+layout_mode = 1
+offset_top = -314.75
+offset_bottom = 314.75
 
 [connection signal="button_up" from="Panel/PanelContainer/VBoxContainer/MarginContainer/AudioSettings" to="." method="_on_audio_settings_button_up"]
 [connection signal="button_up" from="Panel/PanelContainer/VBoxContainer/MarginContainer2/GraphicsSettings" to="." method="_on_graphics_settings_button_up"]

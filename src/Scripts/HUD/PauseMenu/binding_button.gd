@@ -39,19 +39,26 @@ func _on_toggled(toggled_on: bool) -> void:
 	else:
 		show_current_key()
 
-
-func _unhandled_input(new_event: InputEvent) -> void:
+func _input(new_event: InputEvent) -> void:
 	if not is_listening:
 		return
 	
 	if new_event is InputEventKey and binding_type == BINDING_TYPE.KEYBOARD:
-		get_viewport().set_input_as_handled()
-		SettingsManager.update_key_binding(action,stored_event,new_event)
-		stored_event = new_event
-		show_current_key()
-		
-	if new_event is InputEventJoypadButton and binding_type == BINDING_TYPE.CONTROLLER:
-		get_viewport().set_input_as_handled()
-		SettingsManager.update_key_binding(action,stored_event,new_event)
-		stored_event = new_event
-		show_current_key()
+		accept_binding(new_event)
+	
+	elif new_event is InputEventMouseButton and binding_type == BINDING_TYPE.KEYBOARD and new_event.pressed:
+		accept_binding(new_event)
+	
+	elif new_event is InputEventJoypadButton and binding_type == BINDING_TYPE.CONTROLLER and new_event.pressed:
+		accept_binding(new_event)
+
+func accept_binding(new_event: InputEvent) -> void:
+	get_viewport().set_input_as_handled()
+	SettingsManager.update_key_binding(action, stored_event, new_event)
+	stored_event = new_event
+	is_listening = false
+	show_current_key()
+
+func start_listening() -> void:
+	await get_tree().process_frame
+	is_listening = true

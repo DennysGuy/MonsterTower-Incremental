@@ -8,6 +8,7 @@ var in_menu : bool = false
 
 @export var audio_settings_menu : AudioSettingsMenu
 @export var control_settings_menu : ControlSettingsMenu
+@export var graphics_settings_menu : GraphicsSettingsMenu
 
 func _ready() -> void:
 	get_tree().paused = true
@@ -39,7 +40,7 @@ func _on_audio_settings_button_up() -> void:
 	audio_settings_menu.show()
 
 func _on_graphics_settings_button_up() -> void:
-	pass # Replace with function body.
+	graphics_settings_menu.show()
 
 func _on_control_settings_button_up() -> void:
 	control_settings_menu.show()

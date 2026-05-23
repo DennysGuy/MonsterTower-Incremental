@@ -3,6 +3,86 @@ extends Node
 
 const SETTINGS_PATH : String = "user://settings.cfg"
 
+enum WINDOW_MODE {
+	WINDOWED,
+	FULLSCREEN,
+	BORDERLESS
+}
+
+const VIDEO_SECTION := "Video"
+
+func set_window_mode(mode: WINDOW_MODE) -> void:
+	match mode:
+		WINDOW_MODE.WINDOWED:
+			get_window().content_scale_size = Vector2i(1920, 1080)
+
+			DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false)
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+
+			await get_tree().process_frame
+
+			DisplayServer.window_set_size(Vector2i(1280, 720))
+
+			await get_tree().process_frame
+
+			center_window()
+
+		WINDOW_MODE.FULLSCREEN:
+			get_window().content_scale_size = Vector2i(1920, 1080)
+
+			DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false)
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
+
+		WINDOW_MODE.BORDERLESS:
+			get_window().content_scale_size = Vector2i(1920, 1080)
+
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+
+			await get_tree().process_frame
+
+			DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, true)
+			DisplayServer.window_set_size(DisplayServer.screen_get_size())
+			DisplayServer.window_set_position(DisplayServer.screen_get_position())
+
+func center_window() -> void:
+	var screen_rect := DisplayServer.screen_get_usable_rect()
+	var window_size := DisplayServer.window_get_size()
+
+	DisplayServer.window_set_position(
+		screen_rect.position + ((screen_rect.size - window_size) / 2)
+	)
+
+
+func is_windowed_mode() -> bool:
+	return DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_WINDOWED \
+		and not DisplayServer.window_get_flag(DisplayServer.WINDOW_FLAG_BORDERLESS)
+
+func is_fullscreen_mode() -> bool:
+	return DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN
+
+func is_borderless_mode() -> bool:
+	return DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_WINDOWED \
+		and DisplayServer.window_get_flag(DisplayServer.WINDOW_FLAG_BORDERLESS)
+
+func save_window_mode(mode: WINDOW_MODE) -> void:
+	var config := ConfigFile.new()
+	config.load(SETTINGS_PATH)
+
+	config.set_value(VIDEO_SECTION, "window_mode", mode)
+	config.save(SETTINGS_PATH)
+
+func load_window_mode() -> void:
+	var config := ConfigFile.new()
+	var err := config.load(SETTINGS_PATH)
+
+	if err != OK:
+		set_window_mode(WINDOW_MODE.WINDOWED)
+		save_window_mode(WINDOW_MODE.WINDOWED)
+		return
+
+	var mode: int = config.get_value(VIDEO_SECTION, "window_mode", WINDOW_MODE.WINDOWED)
+	set_window_mode(mode)
+
 func set_default_settings() -> void:
 	var config : ConfigFile = ConfigFile.new()
 	
@@ -30,6 +110,7 @@ func init_new_settings_config_file() -> void:
 
 	save_controls(saved_config_file)
 	load_controls(saved_config_file)
+	#set_window_mode(WINDOW_MODE.BORDERLESS)
 
 func get_settings_config_file() -> ConfigFile:
 	var config_file : ConfigFile = ConfigFile.new()
@@ -70,6 +151,7 @@ func load_settings() -> void:
 	AudioServer.set_bus_volume_db(ambience_bus,saved_config_file.get_value("Audio", "Ambience"))
 	
 	load_controls(saved_config_file)
+	#load_window_mode()
 		
 
 func update_key_binding(action : String, event : InputEvent, new_event : InputEvent) -> void:
@@ -111,22 +193,37 @@ func save_controls(config_file : ConfigFile) -> void:
 				config_file.set_value("Keyboard Bindings", action, event)
 
 			elif event is InputEventJoypadButton:
-				config_file.set_value("Controller Bindings",action, events[1])
+				config_file.set_value("Controller Bindings",action, event)
 	
 	config_file.save(SETTINGS_PATH)
 	
 	
-func load_controls(saved_config_file : ConfigFile) -> void:
-	var config = ConfigFile.new()
-	var err = config.load(SETTINGS_PATH)
-	
-	# If the file doesn't exist yet, just exit
-	if err != OK:
+func load_controls(saved_config_file: ConfigFile) -> void:
+	if not saved_config_file.has_section("Keyboard Bindings"):
 		return
 	
+	var actions_to_clear: Array[String] = []
+	
 	for action in saved_config_file.get_section_keys("Keyboard Bindings"):
-		var event = saved_config_file.get_value("Keyboard Bindings", action)
-		
-		InputMap.action_erase_events(action)
-		InputMap.action_add_event(action, event)
+		actions_to_clear.append(action)
+	
+	if saved_config_file.has_section("Controller Bindings"):
+		for action in saved_config_file.get_section_keys("Controller Bindings"):
+			if not actions_to_clear.has(action):
+				actions_to_clear.append(action)
+	
+	for action in actions_to_clear:
+		if InputMap.has_action(action):
+			InputMap.action_erase_events(action)
+	
+	for action in saved_config_file.get_section_keys("Keyboard Bindings"):
+		var event: InputEvent = saved_config_file.get_value("Keyboard Bindings", action)
+		if InputMap.has_action(action):
+			InputMap.action_add_event(action, event)
+	
+	if saved_config_file.has_section("Controller Bindings"):
+		for action in saved_config_file.get_section_keys("Controller Bindings"):
+			var event: InputEvent = saved_config_file.get_value("Controller Bindings", action)
+			if InputMap.has_action(action):
+				InputMap.action_add_event(action, event)
 	
