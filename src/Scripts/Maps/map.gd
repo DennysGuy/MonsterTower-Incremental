@@ -145,11 +145,7 @@ func _input(event: InputEvent) -> void:
 		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	
-	if Input.is_action_just_pressed("pause_game") and GameManager.can_pause_game:
-		var pause_menu : PauseMenu = preload("uid://dlaq2oh2iuyjk").instantiate()
-		pause_canvas_layer.show()
-		pause_canvas_layer.add_child(pause_menu)
+	pass
 
 func spawn_player() -> void:
 	var new_player : Player = preload("uid://wuy3aelq8aeg").instantiate()

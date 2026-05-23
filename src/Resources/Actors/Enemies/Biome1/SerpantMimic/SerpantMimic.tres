@@ -4,14 +4,19 @@
 [ext_resource type="Script" uid="uid://cbjktr12qagl" path="res://src/Scripts/Enemies/enemy_stats.gd" id="1_cmsn0"]
 [ext_resource type="Resource" uid="uid://bvpv4cq7bcds3" path="res://src/Resources/Actors/Enemies/Biome1/SerpantMimic/PurifiedChest.tres" id="2_xc8py"]
 [ext_resource type="Resource" uid="uid://b5j8n0d41axk1" path="res://src/Resources/Actors/Enemies/Biome1/SerpantMimic/SerpantLoot.tres" id="3_makr1"]
+[ext_resource type="Texture2D" uid="uid://dlb1vvgjo7g7x" path="res://Assets/Enemies/MimicSerpant/MimicSerpant_Stand.png" id="3_sbh86"]
+[ext_resource type="Texture2D" uid="uid://cmd1xfjwqwc26" path="res://Assets/Enemies/SerpantMimicIcon.png" id="5_5oeld"]
 
 [resource]
 script = ExtResource("1_cmsn0")
 enemy_name = "Serpant Mimic"
 enemy_level = 8
+index = 8
+preview_icon = ExtResource("5_5oeld")
 touch_damage = true
+idle_animation = ExtResource("3_sbh86")
 enemy_type = 1
-max_health = 900
+max_health = 1500
 attack = 55
 defense = 5.0
 movement_speed = 40.0

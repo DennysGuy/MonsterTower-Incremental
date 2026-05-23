@@ -1,0 +1,110 @@
+[gd_scene format=3 uid="uid://ca0cjxl1lfihs"]
+
+[ext_resource type="FontFile" uid="uid://bmc1mapdr27y8" path="res://Assets/Fonts/CatCafe.ttf" id="1_eth76"]
+[ext_resource type="Script" uid="uid://baunwerdus50j" path="res://src/Scripts/HUD/PauseMenu/graphics_settings.gd" id="1_qvgqk"]
+[ext_resource type="FontFile" uid="uid://stn4dtg0uw57" path="res://Assets/Fonts/FredokaOne-Regular.ttf" id="3_gkumg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gohp8"]
+bg_color = Color(0, 0.6798174, 0.73233134, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="GraphicsSettingsMenu" type="Panel" unique_id=369073674]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -465.0
+offset_top = -327.0
+offset_right = 465.0
+offset_bottom = 302.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_gohp8")
+script = ExtResource("1_qvgqk")
+
+[node name="Label" type="Label" parent="." unique_id=1642888726]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -67.5
+offset_top = 33.0
+offset_right = 67.5
+offset_bottom = 56.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_eth76")
+theme_override_font_sizes/font_size = 46
+text = "Graphics Settings"
+
+[node name="Label2" type="Label" parent="." unique_id=465472529]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -351.0
+offset_top = 158.0
+offset_right = -60.0
+offset_bottom = 190.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_eth76")
+theme_override_font_sizes/font_size = 28
+text = "Display Window Settings"
+
+[node name="Label3" type="Label" parent="." unique_id=1040849245]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -352.0
+offset_top = 322.0
+offset_right = 78.0
+offset_bottom = 354.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_eth76")
+theme_override_font_sizes/font_size = 28
+text = "Resolution (Needs Windowed Mode)"
+
+[node name="WindowSettingOptionMenu" type="OptionButton" parent="." unique_id=723180518]
+layout_mode = 0
+offset_left = 115.0
+offset_top = 206.0
+offset_right = 580.0
+offset_bottom = 245.0
+theme_override_fonts/font = ExtResource("3_gkumg")
+theme_override_font_sizes/font_size = 28
+toggle_mode = false
+item_count = 3
+popup/item_0/text = "Windowed Mode"
+popup/item_0/id = 0
+popup/item_1/text = "Borderless Full Screen Mode"
+popup/item_1/id = 1
+popup/item_2/text = "Full Screen Mode"
+popup/item_2/id = 2
+
+[node name="Button" type="Button" parent="." unique_id=501512783]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -129.0
+offset_top = 35.0
+offset_right = -36.0
+offset_bottom = 83.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("3_gkumg")
+theme_override_font_sizes/font_size = 32
+text = "Close"
+
+[connection signal="item_selected" from="WindowSettingOptionMenu" to="." method="_on_option_button_item_selected"]
+[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]

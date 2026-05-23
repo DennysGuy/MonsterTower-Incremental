@@ -135,6 +135,7 @@ func add_tech_tree_to_scene() -> void:
 	GameManager.can_open_tower_map = false
 	GameManager.can_open_bag = false
 	GameManager.player_can_move = false
+	GameManager.can_pause_game = false
 	player.velocity = Vector2.ZERO
 	PlayerHudSignalBus.spawn_tech_tree.emit()
 
@@ -184,6 +185,7 @@ func spawn_tower_entrance_map() -> void:
 	GameManager.can_open_tower_map = false
 	GameManager.can_open_bag = false
 	GameManager.player_can_move = false
+	GameManager.can_pause_game = false
 	player.velocity = Vector2.ZERO
 
 	PlayerHudSignalBus.spawn_tower_entrance_map.emit()
@@ -192,12 +194,14 @@ func spawn_grand_market() -> void:
 	GameManager.can_open_tower_map = false
 	GameManager.can_open_bag = false
 	GameManager.player_can_move = false
+	GameManager.can_pause_game = false
 	player.velocity = Vector2.ZERO
 	PlayerHudSignalBus.spawn_market.emit()
 
 func spawn_cooking_menu() -> void:
 	GameManager.can_open_tower_map = false
 	GameManager.can_open_bag = false
+	
 	canvas_layer.show()
 	var cooking_range : CookingMenu = preload("uid://cotvjq5dygv7p").instantiate()
 	control.add_child(cooking_range)
@@ -218,12 +222,14 @@ func spawn_crafting_menu() -> void:
 func spawn_upgrade_menu() -> void:
 	GameManager.can_open_tower_map = false
 	GameManager.can_open_bag = false
+	GameManager.can_pause_game = false
 	player.velocity = Vector2.ZERO
 	PlayerHudSignalBus.spawn_gem_stone_station.emit()
 
 func spawn_beginner_tree() -> void:
 	GameManager.can_open_tower_map = false
 	GameManager.can_open_bag = false
+	GameManager.can_pause_game = false
 	player.velocity = Vector2.ZERO
 	PlayerHudSignalBus.spawn_beginner_tree.emit()
 
@@ -237,6 +243,7 @@ func spawn_warrior_tech_tree() -> void:
 func spawn_dojo_menu() -> void:
 	GameManager.can_open_tower_map = false
 	GameManager.can_open_bag = false
+	GameManager.can_pause_game = false
 	player.velocity = Vector2.ZERO
 	
 	PlayerHudSignalBus.spawn_class_selection_menu.emit()
@@ -244,6 +251,7 @@ func spawn_dojo_menu() -> void:
 func spawn_job_board_menu() -> void:
 	GameManager.can_open_tower_map = false
 	GameManager.can_open_bag = false
+	GameManager.can_pause_game = false
 	player.velocity = Vector2.ZERO
 	
 	PlayerHudSignalBus.spawn_job_board_menu.emit()

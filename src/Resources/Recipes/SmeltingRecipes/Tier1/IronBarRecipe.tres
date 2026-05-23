@@ -9,6 +9,7 @@
 script = ExtResource("1_cmo1r")
 recipe_name = "Iron Bar"
 menu_icon = ExtResource("1_utwwx")
+index = 1
 recipe_tier = 1
 crafting_time = 50.0
 success_rate = 0.85

@@ -26,12 +26,14 @@ var map_name : String = ""
 @onready var level_label: Label = $PlayerHUD/LevelLabel
 @onready var currency_label: RichTextLabel = $PlayerHUD/CurrencyLabel
 
+@onready var codex: Codex = $PlayerHUD/Codex
 
 const CLOSE_IN = preload("uid://dc3va7knibxnb")
 const CLOSE_OUT = preload("uid://caj0oih8j2sty")
 const COUNTDOWN_BEEP = preload("uid://c6caiqmkt2lt0")
 const BAG_CLOSED = preload("uid://bf3c8p3fgc0mh")
 const BAG_OPEN = preload("uid://dlh2yqqt6l81t")
+const QUEST_COMPLETED = preload("uid://om1y244uqbs")
 
 @onready var monsters_left: RichTextLabel = $PlayerHUD/MonstersLeft
 @onready var start_hunt_challenge_button: Button = $PlayerHUD/StartHuntChallengeButton
@@ -45,6 +47,7 @@ const BAG_OPEN = preload("uid://dlh2yqqt6l81t")
 @onready var open_bag_notice: Control = $PlayerHUD/OpenBagNotice
 
 @onready var bag: InventoryBag = $PlayerHUD/Bag
+@onready var codex_notification_panel: CodexNotificationPanel = $PlayerHUD/CodexNotificationPanel
 
 @onready var ap_available_label: RichTextLabel = $PlayerHUD/ApAvailableLabel
 @onready var open_tower_map_button: Button = $PlayerHUD/OpenTowerMapButton
@@ -55,7 +58,7 @@ var quests_showing : bool = false
 
 @onready var boss_hp_bar: BossHPBar = $PlayerHUD/BossHPBar
 
-
+var codex_open : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -87,6 +90,10 @@ func _ready() -> void:
 	
 	PlayerHudSignalBus.show_boss_hp_bar.connect(show_boss_hp_bar)
 	
+	CodexManager.show_codex.connect(toggle_codex_on)
+	CodexManager.hide_codex.connect(toggle_codex_off)
+	CodexManager.show_codex_notification.connect(show_codex_message)
+	
 	LevelingManager.update_xp_bar.connect(update_xp_bar)
 	PlayerHudSignalBus.show_class_notice.connect(show_class_notice)
 	InventoryManager.show_open_bag_notice.connect(show_open_bag_notice)
@@ -98,6 +105,7 @@ func _ready() -> void:
 	#update_ap_label()
 	#update_player_health(int(PlayerStats.player_stats["Current Health"]))
 	#show_class_notice()
+	
 	animation_player.play("CloseIn")
 	if GameManager.can_unlock_class():
 		show_class_notice()
@@ -115,7 +123,25 @@ func _process(delta: float) -> void:
 			show_quests()
 		else:
 			hide_quests()
-
+			
+	if Input.is_action_just_pressed("open_codex"):
+		if !codex_open:
+			open_codex()
+		else:
+			close_codex()
+	
+	if Input.is_action_just_pressed("open_player_stats"):
+		CodexManager.open_a_codex_menu.emit(0)
+	
+	if Input.is_action_just_pressed("open_recipe_book"):
+		CodexManager.open_a_codex_menu.emit(1)
+	
+	if Input.is_action_just_pressed("open_monsterpedia"):
+		CodexManager.open_a_codex_menu.emit(2)
+		
+	if Input.is_action_just_pressed("open_quests_log"):
+		CodexManager.open_a_codex_menu.emit(3)
+	
 func update_player_health() -> void:
 	var current_hp : int = PlayerStats.player_stats["Current Health"]
 	var max_hp : int = PlayerStats.player_stats["Max Health"] + PlayerStats.get_current_sword().get_total_hp_bonus()
@@ -130,12 +156,27 @@ func update_player_mp() -> void:
 	player_mp_bar.max_value = max_mp
 	mp_label.text = "%s/%s" % [current_mp,max_mp]
 
-
 func update_xp_bar() -> void:
 	level_label.text = "Level %s" % [int(PlayerStats.player_stats["Level"])]
 	xp_amount_label.text = "%s / %s XP" % [int(PlayerStats.player_stats["Current XP"]), int(PlayerStats.player_stats["Needed XP"])]
 	xp_bar.max_value = PlayerStats.player_stats["Needed XP"]
 	xp_bar.value = PlayerStats.player_stats["Current XP"]
+
+func toggle_codex_on() -> void:
+	if !codex_open:
+		open_codex()
+		codex_open = true
+
+func toggle_codex_off() -> void:
+	close_codex()
+
+func show_codex_message() -> void:
+	play_sfx(QUEST_COMPLETED)
+	var tween : Tween = get_tree().create_tween()
+	tween.tween_property(codex_notification_panel, "position", Vector2(26,453),0.1)
+	await get_tree().create_timer(4.0).timeout
+	var tween_2 : Tween = get_tree().create_tween()
+	tween_2.tween_property(codex_notification_panel, "position", Vector2(-573,453),0.1)
 
 func show_boss_hp_bar() -> void:
 	boss_hp_bar.show()
@@ -302,3 +343,17 @@ func quest_complete_notice() -> void:
 	big_notification_label.text = "Quest Complete!"
 	await get_tree().create_timer(3.0).timeout
 	big_notification_label.hide()
+
+
+func close_codex() -> void:
+	GameManager.player_can_move = true
+	var tween : Tween = get_tree().create_tween()
+	tween.tween_property(codex, "position", Vector2(-874,540),0.3)
+	codex_open = false
+
+func open_codex() -> void:
+	GameManager.player_can_move = false
+	CodexManager.update_monster_cards.emit()
+	var tween : Tween = get_tree().create_tween()
+	tween.tween_property(codex, "position", Vector2(960,540),0.3)
+	codex_open = true

@@ -34,3 +34,12 @@ func load_floor_data() -> void:
 		tower_entrance_data.number_of_spawn_locations = tower_data["Number of Spawn Locations"]
 		tower_entrance_data.hunt_challenge_unlocked = tower_data["Hunt Challenge Unlocked"]
 		tower_entrance_data.hunt_challenge_completed = tower_data["Hunt Challenge Completed"]
+
+
+func _on_mouse_entered() -> void:
+	var tween : Tween = get_tree().create_tween()
+	tween.tween_property(self, "scale", Vector2(1.1,1.1), 0.1)
+
+func _on_mouse_exited() -> void:
+	var tween : Tween = get_tree().create_tween()
+	tween.tween_property(self, "scale", Vector2(1.0,1.0), 0.1)

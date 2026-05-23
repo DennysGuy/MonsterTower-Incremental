@@ -1,0 +1,664 @@
+[gd_scene format=3 uid="uid://yoidheswt82b"]
+
+[ext_resource type="Script" uid="uid://daeasvuervdk" path="res://src/Scripts/HUD/PauseMenu/control_settings_menu.gd" id="1_a2enh"]
+[ext_resource type="FontFile" uid="uid://stn4dtg0uw57" path="res://Assets/Fonts/FredokaOne-Regular.ttf" id="2_kc336"]
+[ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="3_kc336"]
+[ext_resource type="PackedScene" uid="uid://nlqboqsckwag" path="res://src/Scenes/UI/PauseMenu/BindingButton.tscn" id="3_th2ji"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6vu5i"]
+bg_color = Color(0.80044264, 0.5248232, 0.37097183, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 10
+
+[node name="ControlSettingsMenu" type="Panel" unique_id=2022157965]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -913.0
+offset_top = -508.0
+offset_right = 924.0
+offset_bottom = 519.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6vu5i")
+script = ExtResource("1_a2enh")
+
+[node name="KBMoveLeft2" type="Label" parent="." unique_id=279861787]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 19.0
+offset_right = 556.0
+offset_bottom = 70.0
+theme_override_colors/font_color = Color(0.35088935, 0.52951723, 0.46975684, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_kc336")
+theme_override_font_sizes/font_size = 42
+text = "INPUTS"
+
+[node name="KBMoveLeft3" type="Label" parent="." unique_id=219644044]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -358.5
+offset_top = 19.0
+offset_right = 145.5
+offset_bottom = 70.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.35088935, 0.52951723, 0.46975684, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_kc336")
+theme_override_font_sizes/font_size = 42
+text = "Keyboard Bindings"
+horizontal_alignment = 1
+
+[node name="KBMoveLeft4" type="Label" parent="." unique_id=1438170969]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -583.0
+offset_top = 21.0
+offset_right = -193.0
+offset_bottom = 72.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0.35088935, 0.52951723, 0.46975684, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_kc336")
+theme_override_font_sizes/font_size = 42
+text = "Controller Bindings"
+
+[node name="BG" type="ColorRect" parent="." unique_id=239346317]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 72.0
+offset_right = 1827.0
+offset_bottom = 128.0
+color = Color(1, 0.5215822, 0.6091329, 1)
+
+[node name="BG2" type="ColorRect" parent="." unique_id=1691715350]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 170.0
+offset_right = 1827.0
+offset_bottom = 226.0
+color = Color(1, 0.5215822, 0.6091329, 1)
+
+[node name="BG3" type="ColorRect" parent="." unique_id=419900594]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 268.0
+offset_right = 1827.0
+offset_bottom = 324.0
+color = Color(1, 0.5215822, 0.6091329, 1)
+
+[node name="BG4" type="ColorRect" parent="." unique_id=1436528550]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 365.0
+offset_right = 1827.0
+offset_bottom = 421.0
+color = Color(1, 0.5215822, 0.6091329, 1)
+
+[node name="BG5" type="ColorRect" parent="." unique_id=651026982]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 464.0
+offset_right = 1827.0
+offset_bottom = 520.0
+color = Color(1, 0.5215822, 0.6091329, 1)
+
+[node name="BG6" type="ColorRect" parent="." unique_id=2081833524]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 561.0
+offset_right = 1827.0
+offset_bottom = 617.0
+color = Color(1, 0.5215822, 0.6091329, 1)
+
+[node name="BG7" type="ColorRect" parent="." unique_id=1955178368]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 661.0
+offset_right = 1827.0
+offset_bottom = 717.0
+color = Color(1, 0.5215822, 0.6091329, 1)
+
+[node name="BG8" type="ColorRect" parent="." unique_id=132695792]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 759.0
+offset_right = 1827.0
+offset_bottom = 815.0
+color = Color(1, 0.5215822, 0.6091329, 1)
+
+[node name="BG9" type="ColorRect" parent="." unique_id=1937388593]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 856.0
+offset_right = 1827.0
+offset_bottom = 912.0
+color = Color(1, 0.5215822, 0.6091329, 1)
+
+[node name="BG10" type="ColorRect" parent="." unique_id=1475763566]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 961.0
+offset_right = 1827.0
+offset_bottom = 1017.0
+color = Color(1, 0.5215822, 0.6091329, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1693819071]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 50.0
+offset_top = -427.0
+offset_right = 554.0
+offset_bottom = 486.0
+grow_vertical = 2
+theme_override_constants/separation = 18
+
+[node name="KBMoveLeft" type="Label" parent="VBoxContainer" unique_id=114298587]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_kc336")
+theme_override_font_sizes/font_size = 25
+text = "Move Left"
+
+[node name="KBMoveRight" type="Label" parent="VBoxContainer" unique_id=705004140]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_kc336")
+theme_override_font_sizes/font_size = 25
+text = "Move Right"
+
+[node name="KBClimbUp" type="Label" parent="VBoxContainer" unique_id=1884853693]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_kc336")
+theme_override_font_sizes/font_size = 25
+text = "Climb Up"
+
+[node name="KBClimbDown" type="Label" parent="VBoxContainer" unique_id=536933403]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_kc336")
+theme_override_font_sizes/font_size = 25
+text = "Climb Down/Drop Thru Platform"
+
+[node name="Jump" type="Label" parent="VBoxContainer" unique_id=1256099354]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_kc336")
+theme_override_font_sizes/font_size = 25
+text = "Jump"
+
+[node name="Dash" type="Label" parent="VBoxContainer" unique_id=1218634434]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_kc336")
+theme_override_font_sizes/font_size = 25
+text = "Dash"
+
+[node name="BasicAttack" type="Label" parent="VBoxContainer" unique_id=1932765456]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_kc336")
+theme_override_font_sizes/font_size = 25
+text = "Basic Attack"
+
+[node name="Interact" type="Label" parent="VBoxContainer" unique_id=2088117651]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_kc336")
+theme_override_font_sizes/font_size = 25
+text = "Interact"
+
+[node name="OpenBag" type="Label" parent="VBoxContainer" unique_id=68949450]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_kc336")
+theme_override_font_sizes/font_size = 25
+text = "Open Bag"
+
+[node name="PauseCloseMenu" type="Label" parent="VBoxContainer" unique_id=65900715]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_kc336")
+theme_override_font_sizes/font_size = 25
+text = "Pause/Close Menu"
+
+[node name="CombatAbility1" type="Label" parent="VBoxContainer" unique_id=1286776582]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_kc336")
+theme_override_font_sizes/font_size = 25
+text = "Combat Ability 1"
+
+[node name="CombatAbility2" type="Label" parent="VBoxContainer" unique_id=1518168105]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_kc336")
+theme_override_font_sizes/font_size = 25
+text = "Combat Ability 2"
+
+[node name="CombatAbility3" type="Label" parent="VBoxContainer" unique_id=472303024]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_kc336")
+theme_override_font_sizes/font_size = 25
+text = "Combat Ability 3"
+
+[node name="CombatAbility4" type="Label" parent="VBoxContainer" unique_id=1669631561]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_kc336")
+theme_override_font_sizes/font_size = 25
+text = "Combat Ability 4"
+
+[node name="OpenCodex" type="Label" parent="VBoxContainer" unique_id=1477755578]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_kc336")
+theme_override_font_sizes/font_size = 25
+text = "Open Codex"
+
+[node name="OpenPlayerStatsPage" type="Label" parent="VBoxContainer" unique_id=616382609]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_kc336")
+theme_override_font_sizes/font_size = 25
+text = "Open Player Stats Page"
+
+[node name="OpenRecipeBook" type="Label" parent="VBoxContainer" unique_id=1828704856]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_kc336")
+theme_override_font_sizes/font_size = 25
+text = "Open Recipe Book"
+
+[node name="OpenMonsterpedia" type="Label" parent="VBoxContainer" unique_id=591915780]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_kc336")
+theme_override_font_sizes/font_size = 25
+text = "Open Monsterpedia"
+
+[node name="OpenQuestsLog" type="Label" parent="VBoxContainer" unique_id=353636410]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_kc336")
+theme_override_font_sizes/font_size = 25
+text = "Open Quests Log"
+
+[node name="MoveLeftKeyKeyBinding" parent="." unique_id=1238918919 instance=ExtResource("3_th2ji")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 666.0
+offset_top = 81.0
+offset_right = 963.0
+offset_bottom = 126.0
+grow_horizontal = 1
+grow_vertical = 1
+action = "pan_cam_left"
+
+[node name="MoveRightKeyBinding" parent="." unique_id=1546370507 instance=ExtResource("3_th2ji")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 666.0
+offset_top = 129.0
+offset_right = 963.0
+offset_bottom = 174.0
+grow_horizontal = 1
+grow_vertical = 1
+action = "pan_cam_right"
+
+[node name="ClimbUpKeyBinding" parent="." unique_id=753254932 instance=ExtResource("3_th2ji")]
+layout_mode = 1
+offset_left = -253.0
+offset_top = -336.0
+offset_right = 44.0
+offset_bottom = -291.0
+action = "pan_cam_up"
+
+[node name="ClimbDownKeyBinding" parent="." unique_id=1453219796 instance=ExtResource("3_th2ji")]
+layout_mode = 1
+offset_left = -253.0
+offset_top = -287.0
+offset_right = 44.0
+offset_bottom = -242.0
+action = "pan_cam_down"
+
+[node name="JumpKeyBinding" parent="." unique_id=949000253 instance=ExtResource("3_th2ji")]
+layout_mode = 1
+offset_left = -253.0
+offset_top = -239.0
+offset_right = 44.0
+offset_bottom = -194.0
+action = "add_currency"
+
+[node name="DashKeyBinding" parent="." unique_id=1815820244 instance=ExtResource("3_th2ji")]
+layout_mode = 1
+offset_left = -253.0
+offset_top = -190.0
+offset_right = 44.0
+offset_bottom = -145.0
+action = "dash_attack"
+
+[node name="BasicAttackKeyBinding" parent="." unique_id=1740246401 instance=ExtResource("3_th2ji")]
+layout_mode = 1
+offset_left = -253.0
+offset_top = -141.0
+offset_right = 44.0
+offset_bottom = -96.0
+action = "swing_sword"
+
+[node name="InteractKeyBinding" parent="." unique_id=968391057 instance=ExtResource("3_th2ji")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 666.0
+offset_top = 422.0
+offset_right = 963.0
+offset_bottom = 467.0
+grow_horizontal = 1
+grow_vertical = 1
+action = "interact"
+
+[node name="OpenBagKeyBinding" parent="." unique_id=171320750 instance=ExtResource("3_th2ji")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 666.0
+offset_top = 471.0
+offset_right = 963.0
+offset_bottom = 516.0
+grow_horizontal = 1
+grow_vertical = 1
+action = "open_bag"
+
+[node name="PauseCloseMenuKeyBinding" parent="." unique_id=1224191847 instance=ExtResource("3_th2ji")]
+layout_mode = 1
+offset_left = -253.0
+offset_top = 6.0
+offset_right = 44.0
+offset_bottom = 51.0
+action = "close_menu"
+
+[node name="CombatAbility1KeyBinding" parent="." unique_id=331811161 instance=ExtResource("3_th2ji")]
+layout_mode = 1
+offset_left = -253.0
+offset_top = 55.5
+offset_right = 44.0
+offset_bottom = 100.5
+action = "combat_ability_1"
+
+[node name="CombatAbility2KeyBinding" parent="." unique_id=1483344221 instance=ExtResource("3_th2ji")]
+layout_mode = 1
+offset_left = -253.0
+offset_top = 104.5
+offset_right = 44.0
+offset_bottom = 149.5
+action = "combat_ability_2"
+
+[node name="CombatAbility3KeyBinding" parent="." unique_id=1743044474 instance=ExtResource("3_th2ji")]
+layout_mode = 1
+offset_left = -253.0
+offset_top = 153.5
+offset_right = 44.0
+offset_bottom = 198.5
+action = "combat_ability_3"
+
+[node name="CombatAbility4KeyBinding" parent="." unique_id=1037722685 instance=ExtResource("3_th2ji")]
+layout_mode = 1
+offset_left = -253.0
+offset_top = 202.5
+offset_right = 44.0
+offset_bottom = 247.5
+action = "combat_ability_4"
+
+[node name="OpenCodexKeyBinding" parent="." unique_id=1748803027 instance=ExtResource("3_th2ji")]
+layout_mode = 1
+offset_left = -253.0
+offset_top = 250.5
+offset_right = 44.0
+offset_bottom = 295.5
+action = "open_codex"
+
+[node name="MoveLeftKeyKeyBinding2" parent="." unique_id=1020199447 instance=ExtResource("3_th2ji")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 1313.5
+offset_top = 81.0
+offset_right = 1610.5
+offset_bottom = 126.0
+grow_horizontal = 1
+grow_vertical = 1
+binding_type = 1
+action = "pan_cam_left"
+
+[node name="MoveRightKeyBinding2" parent="." unique_id=1376589638 instance=ExtResource("3_th2ji")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 1313.5
+offset_top = 129.0
+offset_right = 1610.5
+offset_bottom = 174.0
+grow_horizontal = 1
+grow_vertical = 1
+binding_type = 1
+action = "pan_cam_right"
+
+[node name="ClimbUpKeyBinding2" parent="." unique_id=491733469 instance=ExtResource("3_th2ji")]
+layout_mode = 1
+offset_left = 394.5
+offset_top = -336.0
+offset_right = 691.5
+offset_bottom = -291.0
+binding_type = 1
+action = "pan_cam_up"
+
+[node name="ClimbDownKeyBinding2" parent="." unique_id=144023476 instance=ExtResource("3_th2ji")]
+layout_mode = 1
+offset_left = 394.5
+offset_top = -287.0
+offset_right = 691.5
+offset_bottom = -242.0
+binding_type = 1
+action = "pan_cam_down"
+
+[node name="JumpKeyBinding2" parent="." unique_id=536367256 instance=ExtResource("3_th2ji")]
+layout_mode = 1
+offset_left = 394.5
+offset_top = -239.0
+offset_right = 691.5
+offset_bottom = -194.0
+binding_type = 1
+action = "add_currency"
+
+[node name="DashKeyBinding2" parent="." unique_id=1602936229 instance=ExtResource("3_th2ji")]
+layout_mode = 1
+offset_left = 394.5
+offset_top = -190.0
+offset_right = 691.5
+offset_bottom = -145.0
+binding_type = 1
+action = "dash_attack"
+
+[node name="BasicAttackKeyBinding2" parent="." unique_id=1697395527 instance=ExtResource("3_th2ji")]
+layout_mode = 1
+offset_left = 394.5
+offset_top = -141.0
+offset_right = 691.5
+offset_bottom = -96.0
+binding_type = 1
+action = "swing_sword"
+
+[node name="InteractKeyBinding2" parent="." unique_id=1256814044 instance=ExtResource("3_th2ji")]
+layout_mode = 1
+offset_left = 394.5
+offset_top = -92.0
+offset_right = 691.5
+offset_bottom = -47.0
+binding_type = 1
+action = "interact"
+
+[node name="OpenBagKeyBinding2" parent="." unique_id=34200622 instance=ExtResource("3_th2ji")]
+layout_mode = 1
+offset_left = 394.5
+offset_top = -43.0
+offset_right = 691.5
+offset_bottom = 2.0
+binding_type = 1
+action = "open_bag"
+
+[node name="PauseCloseMenuKeyBinding2" parent="." unique_id=1083749704 instance=ExtResource("3_th2ji")]
+layout_mode = 1
+offset_left = 394.5
+offset_top = 6.0
+offset_right = 691.5
+offset_bottom = 51.0
+binding_type = 1
+action = "close_menu"
+
+[node name="CombatAbility1KeyBinding2" parent="." unique_id=1262133478 instance=ExtResource("3_th2ji")]
+layout_mode = 1
+offset_left = 394.5
+offset_top = 55.5
+offset_right = 691.5
+offset_bottom = 100.5
+binding_type = 1
+action = "combat_ability_1"
+
+[node name="CombatAbility2KeyBinding2" parent="." unique_id=1995200659 instance=ExtResource("3_th2ji")]
+layout_mode = 1
+offset_left = 394.5
+offset_top = 104.5
+offset_right = 691.5
+offset_bottom = 149.5
+binding_type = 1
+action = "combat_ability_2"
+
+[node name="CombatAbility3KeyBinding2" parent="." unique_id=1109993260 instance=ExtResource("3_th2ji")]
+layout_mode = 1
+offset_left = 394.5
+offset_top = 153.5
+offset_right = 691.5
+offset_bottom = 198.5
+binding_type = 1
+action = "combat_ability_3"
+
+[node name="CombatAbility4KeyBinding2" parent="." unique_id=1412842527 instance=ExtResource("3_th2ji")]
+layout_mode = 1
+offset_left = 394.5
+offset_top = 202.5
+offset_right = 691.5
+offset_bottom = 247.5
+binding_type = 1
+action = "combat_ability_4"
+
+[node name="OpenCodexKeyBinding2" parent="." unique_id=1223604178 instance=ExtResource("3_th2ji")]
+layout_mode = 1
+offset_left = 394.5
+offset_top = 250.5
+offset_right = 691.5
+offset_bottom = 295.5
+binding_type = 1
+action = "open_codex"
+
+[node name="OpenPlayerStatsKeyBinding" parent="." unique_id=1259237421 instance=ExtResource("3_th2ji")]
+layout_mode = 1
+offset_left = -253.0
+offset_top = 300.5
+offset_right = 44.0
+offset_bottom = 345.5
+action = "open_player_stats"
+
+[node name="OpenRecipeBookKeyBinding" parent="." unique_id=904208906 instance=ExtResource("3_th2ji")]
+layout_mode = 1
+offset_left = -253.0
+offset_top = 348.5
+offset_right = 44.0
+offset_bottom = 393.5
+action = "open_recipe_book"
+
+[node name="OpenMonsterpediaKeyBinding" parent="." unique_id=599753525 instance=ExtResource("3_th2ji")]
+layout_mode = 1
+offset_left = -253.0
+offset_top = 398.5
+offset_right = 44.0
+offset_bottom = 443.5
+action = "open_monsterpedia"
+
+[node name="OpenQuestsLogKeyBinding" parent="." unique_id=1248962502 instance=ExtResource("3_th2ji")]
+layout_mode = 1
+offset_left = -253.0
+offset_top = 449.5
+offset_right = 44.0
+offset_bottom = 494.5
+action = "open_quests_log"
+
+[node name="Title" type="Label" parent="." unique_id=1288869034]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 503.5
+offset_top = 952.0
+offset_right = 909.5
+offset_bottom = 1011.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_kc336")
+theme_override_font_sizes/font_size = 48
+text = "Control Settings"
+
+[node name="Button" type="Button" parent="." unique_id=1243994532]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -109.0
+offset_top = 23.0
+offset_right = -37.0
+offset_bottom = 59.0
+grow_horizontal = 0
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("3_kc336")
+theme_override_font_sizes/font_size = 24
+text = "Close"
+
+[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]

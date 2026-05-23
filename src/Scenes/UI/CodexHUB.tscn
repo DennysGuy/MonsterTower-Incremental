@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://cnrgqu7dhp0bb"]
+
+[ext_resource type="Script" uid="uid://bpvs6y1ec16j5" path="res://src/Scripts/Codex/codex_hub.gd" id="1_db806"]
+[ext_resource type="PackedScene" uid="uid://bqtyoe1e77gov" path="res://src/Scenes/UI/CodexHUBButton.tscn" id="2_hbw3r"]
+
+[node name="CodexHUB" type="Control" unique_id=580689865]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 7.0
+offset_top = 5.0
+offset_right = 377.0
+offset_bottom = 89.0
+script = ExtResource("1_db806")
+
+[node name="Panel" type="Panel" parent="." unique_id=701548058]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 175.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HboxContainer" type="HBoxContainer" parent="Panel" unique_id=982340121]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -206.0
+offset_top = -40.0
+offset_right = 206.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="CodexHubButton" parent="Panel/HboxContainer" unique_id=930258851 instance=ExtResource("2_hbw3r")]
+layout_mode = 2
+
+[node name="CodexHubButton2" parent="Panel/HboxContainer" unique_id=1176910020 instance=ExtResource("2_hbw3r")]
+layout_mode = 2
+button_type = 1
+
+[node name="CodexHubButton3" parent="Panel/HboxContainer" unique_id=976721083 instance=ExtResource("2_hbw3r")]
+layout_mode = 2
+button_type = 2
+
+[node name="CodexHubButton4" parent="Panel/HboxContainer" unique_id=483095514 instance=ExtResource("2_hbw3r")]
+layout_mode = 2
+button_type = 3

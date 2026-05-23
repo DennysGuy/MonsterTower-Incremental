@@ -59,6 +59,9 @@ signal show_quest_complete_notice
 		},
 		"Winter" : {
 			
+		},
+		"Summer" : {
+			
 		}
 	},
 	"Job": {
@@ -76,6 +79,9 @@ signal show_quest_complete_notice
 			
 		},
 		"Winter" : {
+			
+		},
+		"Summer" : {
 			
 		}
 	}

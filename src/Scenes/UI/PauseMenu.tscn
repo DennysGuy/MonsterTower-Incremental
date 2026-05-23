@@ -1,9 +1,13 @@
 [gd_scene format=3 uid="uid://dlaq2oh2iuyjk"]
 
 [ext_resource type="Script" uid="uid://ba6d0ymlxk85e" path="res://src/Scripts/HUD/pause_menu.gd" id="1_fu2di"]
-[ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="2_lf62l"]
+[ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="2_1yg3g"]
+[ext_resource type="FontFile" uid="uid://cvosgdtc6ncoe" path="res://Assets/Fonts/misterlickychops.ttf" id="4_6vu5i"]
+[ext_resource type="PackedScene" uid="uid://bjqoi7oi3etgr" path="res://src/Scenes/UI/PauseMenu/AudioSettingsMenu.tscn" id="4_gohp8"]
+[ext_resource type="PackedScene" uid="uid://yoidheswt82b" path="res://src/Scenes/UI/PauseMenu/ControlSettingsMenu.tscn" id="5_gohp8"]
+[ext_resource type="PackedScene" uid="uid://ca0cjxl1lfihs" path="res://src/Scenes/UI/PauseMenu/GraphicsSettings.tscn" id="6_li46c"]
 
-[node name="PauseMenu" type="Control" unique_id=895251138]
+[node name="PauseMenu" type="Control" unique_id=895251138 node_paths=PackedStringArray("audio_settings_menu", "control_settings_menu", "graphics_settings_menu")]
 process_mode = 3
 top_level = true
 z_index = 4096
@@ -14,6 +18,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fu2di")
+audio_settings_menu = NodePath("Panel/AudioSettingsMenu")
+control_settings_menu = NodePath("Panel/ControlSettingsMenu")
+graphics_settings_menu = NodePath("Panel/GraphicsSettings")
 
 [node name="Panel" type="Panel" parent="." unique_id=1257473233]
 layout_mode = 1
@@ -23,222 +30,144 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="BG" type="ColorRect" parent="Panel" unique_id=1862628207]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 52.0
-offset_top = 35.0
-offset_right = -52.0
-offset_bottom = -33.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.3852319, 0.74205935, 0.75739926, 1)
-
-[node name="Label" type="Label" parent="Panel/BG" unique_id=208823952]
+[node name="Label" type="Label" parent="Panel" unique_id=208823952]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 77.0
-offset_top = 10.0
-offset_right = 201.0
-offset_bottom = 34.0
+offset_left = -280.5
+offset_top = 122.0
+offset_right = 280.5
+offset_bottom = 269.0
 grow_horizontal = 2
-theme_override_constants/outline_size = 7
-theme_override_fonts/font = ExtResource("2_lf62l")
-theme_override_font_sizes/font_size = 24
-text = "PAUSE MENU"
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_1yg3g")
+theme_override_font_sizes/font_size = 64
+text = "Starspire Hunters
+(Pre-Alpha)"
+horizontal_alignment = 1
 
-[node name="AudioControlPanel" type="Panel" parent="Panel/BG" unique_id=1700962568]
+[node name="PanelContainer" type="PanelContainer" parent="Panel" unique_id=1638434723]
 layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -126.0
-offset_top = -131.0
-offset_right = -5.0
-offset_bottom = -4.0
-grow_horizontal = 0
-grow_vertical = 0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -185.0
+offset_top = -148.0
+offset_right = 185.0
+offset_bottom = 148.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Title" type="Label" parent="Panel/BG/AudioControlPanel" unique_id=37756616]
-layout_mode = 0
-offset_left = 15.0
-offset_right = 109.0
-offset_bottom = 16.0
-theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("2_lf62l")
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/PanelContainer" unique_id=1609949604]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/PanelContainer/VBoxContainer" unique_id=236042010]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="AudioSettings" type="Button" parent="Panel/PanelContainer/VBoxContainer/MarginContainer" unique_id=1124955491]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_6vu5i")
+theme_override_font_sizes/font_size = 42
 text = "Audio Settings"
 
-[node name="sfx" type="Label" parent="Panel/BG/AudioControlPanel" unique_id=287889083]
-layout_mode = 0
-offset_left = 6.0
-offset_top = 20.0
-offset_right = 23.0
-offset_bottom = 32.0
-theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("2_lf62l")
-theme_override_font_sizes/font_size = 12
-text = "SFX"
+[node name="MarginContainer2" type="MarginContainer" parent="Panel/PanelContainer/VBoxContainer" unique_id=1784505260]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 
-[node name="Music" type="Label" parent="Panel/BG/AudioControlPanel" unique_id=1486119595]
-layout_mode = 0
-offset_left = 6.0
-offset_top = 54.0
-offset_right = 33.0
-offset_bottom = 66.0
-theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("2_lf62l")
-theme_override_font_sizes/font_size = 12
-text = "Music"
+[node name="GraphicsSettings" type="Button" parent="Panel/PanelContainer/VBoxContainer/MarginContainer2" unique_id=1065229088]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_6vu5i")
+theme_override_font_sizes/font_size = 42
+text = "Graphics Settings
+"
 
-[node name="Music2" type="Label" parent="Panel/BG/AudioControlPanel" unique_id=269612296]
-layout_mode = 0
-offset_left = 6.0
-offset_top = 90.0
-offset_right = 51.0
-offset_bottom = 102.0
-theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("2_lf62l")
-theme_override_font_sizes/font_size = 12
-text = "Ambience"
+[node name="MarginContainer3" type="MarginContainer" parent="Panel/PanelContainer/VBoxContainer" unique_id=1957777331]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 
-[node name="SfxSlider" type="HSlider" parent="Panel/BG/AudioControlPanel" unique_id=1181038923]
-layout_mode = 0
-offset_left = 5.0
-offset_top = 32.0
-offset_right = 112.0
-offset_bottom = 48.0
-max_value = 10.0
-ticks_position = 3
+[node name="ControlSettings" type="Button" parent="Panel/PanelContainer/VBoxContainer/MarginContainer3" unique_id=1689247732]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_6vu5i")
+theme_override_font_sizes/font_size = 42
+text = "Control Settings
+"
 
-[node name="MusicSlider" type="HSlider" parent="Panel/BG/AudioControlPanel" unique_id=191453001]
-layout_mode = 0
-offset_left = 5.0
-offset_top = 70.0
-offset_right = 112.0
-offset_bottom = 86.0
-max_value = 10.0
-ticks_position = 3
+[node name="MarginContainer4" type="MarginContainer" parent="Panel/PanelContainer/VBoxContainer" unique_id=1715280133]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 
-[node name="AmbienceSlider" type="HSlider" parent="Panel/BG/AudioControlPanel" unique_id=1917316256]
-layout_mode = 0
-offset_left = 5.0
-offset_top = 105.0
-offset_right = 112.0
-offset_bottom = 121.0
-max_value = 10.0
-ticks_position = 3
+[node name="SaveAndMenu" type="Button" parent="Panel/PanelContainer/VBoxContainer/MarginContainer4" unique_id=292388206]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_6vu5i")
+theme_override_font_sizes/font_size = 42
+text = "Save and Go To Title
+"
 
-[node name="Button" type="Button" parent="Panel/BG" unique_id=1466793832]
+[node name="MarginContainer5" type="MarginContainer" parent="Panel/PanelContainer/VBoxContainer" unique_id=1069327826]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="QuitGame" type="Button" parent="Panel/PanelContainer/VBoxContainer/MarginContainer5" unique_id=491082849]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_6vu5i")
+theme_override_font_sizes/font_size = 42
+text = "Quit Game
+"
+
+[node name="ExitButton" type="Button" parent="Panel" unique_id=1436623359]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -59.0
-offset_top = 10.0
-offset_right = -9.0
-offset_bottom = 34.0
+offset_left = -204.0
+offset_top = 57.0
+offset_right = -75.0
+offset_bottom = 137.0
 grow_horizontal = 0
-mouse_default_cursor_shape = 2
-theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("2_lf62l")
-text = "Close"
+theme_override_fonts/font = ExtResource("2_1yg3g")
+theme_override_font_sizes/font_size = 64
+text = "Exit"
 
-[node name="ControlsPanel" type="Panel" parent="Panel/BG" unique_id=1933399265]
+[node name="AudioSettingsMenu" parent="Panel" unique_id=465718160 instance=ExtResource("4_gohp8")]
+visible = false
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 6.0
-offset_top = -275.0
-offset_right = 156.0
-offset_bottom = -3.0
-grow_vertical = 0
 
-[node name="Label" type="Label" parent="Panel/BG/ControlsPanel" unique_id=2067605822]
-layout_mode = 0
-offset_left = 5.0
-offset_top = 3.0
-offset_right = 59.0
-offset_bottom = 19.0
-theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("2_lf62l")
-text = "Controls"
-
-[node name="Label2" type="Label" parent="Panel/BG/ControlsPanel" unique_id=782825365]
-layout_mode = 0
-offset_left = 5.0
-offset_top = 21.0
-offset_right = 144.0
-offset_bottom = 243.0
-theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("2_lf62l")
-theme_override_font_sizes/font_size = 12
-text = "Move:
-Keyboard - WASD
-Controller - D-Pad/Left Stick
-
-Jump:
-Keyboard - Space
-Controller - 'x'/'A'
-
-Basic Attack:
-Keyboard - 'F'/'Left Click'
-Controller - 'Square'/'X'
-
-Drop Through Platform:
-Down + Jump
-"
-
-[node name="ControlsPanel2" type="Panel" parent="Panel/BG" unique_id=663172527]
-z_index = 4096
+[node name="ControlSettingsMenu" parent="Panel" unique_id=2022157965 instance=ExtResource("5_gohp8")]
+visible = false
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 161.0
-offset_top = -275.0
-offset_right = 327.0
-offset_bottom = -3.0
-grow_vertical = 0
+offset_left = -918.5
+offset_top = -513.5
+offset_right = 918.5
+offset_bottom = 513.5
 
-[node name="Label" type="Label" parent="Panel/BG/ControlsPanel2" unique_id=1475070413]
-layout_mode = 0
-offset_left = 5.0
-offset_top = 3.0
-offset_right = 59.0
-offset_bottom = 19.0
-theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("2_lf62l")
-text = "Attack Input"
+[node name="GraphicsSettings" parent="Panel" unique_id=369073674 instance=ExtResource("6_li46c")]
+visible = false
+layout_mode = 1
+offset_top = -314.75
+offset_bottom = 314.75
 
-[node name="Label2" type="Label" parent="Panel/BG/ControlsPanel2" unique_id=1610369120]
-layout_mode = 0
-offset_left = 5.0
-offset_top = 21.0
-offset_right = 166.0
-offset_bottom = 208.0
-theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("2_lf62l")
-theme_override_font_sizes/font_size = 12
-text = "Dash Attack:
-Keyboard - 'Move' + 'Right Click'
-Controller - 'Move' + 'B'/'Circle'
-
-Air Attack:
-- Attack input in mid air
-
-Double Jump:
-- Jump input in mid air
-
-Special Attack:
-- Keyboard - \"Shift\"
-- Controller - 'Y'/'Triangle'
-"
-
-[connection signal="button_up" from="Panel/BG/Button" to="." method="_on_button_button_up"]
+[connection signal="button_up" from="Panel/PanelContainer/VBoxContainer/MarginContainer/AudioSettings" to="." method="_on_audio_settings_button_up"]
+[connection signal="button_up" from="Panel/PanelContainer/VBoxContainer/MarginContainer2/GraphicsSettings" to="." method="_on_graphics_settings_button_up"]
+[connection signal="button_up" from="Panel/PanelContainer/VBoxContainer/MarginContainer3/ControlSettings" to="." method="_on_control_settings_button_up"]
+[connection signal="button_up" from="Panel/PanelContainer/VBoxContainer/MarginContainer4/SaveAndMenu" to="." method="_on_save_and_menu_button_up"]
+[connection signal="button_up" from="Panel/PanelContainer/VBoxContainer/MarginContainer5/QuitGame" to="." method="_on_quit_game_button_up"]
+[connection signal="button_up" from="Panel/ExitButton" to="." method="_on_exit_button_button_up"]

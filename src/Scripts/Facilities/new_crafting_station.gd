@@ -222,4 +222,11 @@ func spawn_item(item : Item, offset : Vector2 = Vector2.ZERO) -> void:
 	item_interactable.perishable = false
 	item_interactable.icon.texture = item.shop_icon
 	item_interactable.global_position = global_position + offset
+	
+	match station_type:
+		STATION_TYPE.SMELTING:
+			CodexManager.increment_bar_recipe_list_item_count(stored_recipe.index)
+		STATION_TYPE.COOKING:
+			CodexManager.increment_dish_recipe_list_item_count(stored_recipe.index)
+			
 	get_parent().add_child(item_interactable)

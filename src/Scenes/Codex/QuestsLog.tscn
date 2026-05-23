@@ -1,0 +1,345 @@
+[gd_scene format=3 uid="uid://b20guo3kcyvia"]
+
+[ext_resource type="Script" uid="uid://4nie5midix8k" path="res://src/Scripts/Codex/quests_log.gd" id="1_tr1mq"]
+[ext_resource type="FontFile" uid="uid://5e6le8exhd7e" path="res://Assets/Fonts/TijuanaBible-r3qA.ttf" id="2_clvb1"]
+[ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="3_wipak"]
+[ext_resource type="FontFile" uid="uid://stn4dtg0uw57" path="res://Assets/Fonts/FredokaOne-Regular.ttf" id="4_vm3so"]
+
+[node name="QuestsLog" type="Control" unique_id=1604012236]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -736.0
+offset_top = -416.0
+offset_right = 736.0
+offset_bottom = 416.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tr1mq")
+
+[node name="QuestsLogTitle" type="Label" parent="." unique_id=598914670]
+layout_mode = 0
+offset_left = 223.0
+offset_top = 24.0
+offset_right = 504.0
+offset_bottom = 85.0
+theme_override_colors/font_color = Color(0, 0.45993447, 0.39368695, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_clvb1")
+theme_override_font_sizes/font_size = 58
+text = "Quests Log"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1796368711]
+layout_mode = 0
+offset_left = 101.0
+offset_top = 160.0
+offset_right = 633.0
+offset_bottom = 200.0
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="MainQuestsButton" type="Button" parent="HBoxContainer" unique_id=706379993]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(2.4065375e-07, 0.3427977, 0.26134562, 1)
+theme_override_fonts/font = ExtResource("3_wipak")
+text = "Main Quests"
+
+[node name="JobQuestsButton" type="Button" parent="HBoxContainer" unique_id=620116355]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(2.4065375e-07, 0.3427977, 0.26134562, 1)
+theme_override_fonts/font = ExtResource("3_wipak")
+text = "Job Quests"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="." unique_id=466565997]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 213.0
+offset_right = 700.0
+offset_bottom = 253.0
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="MainQuestsButton" type="Button" parent="HBoxContainer2" unique_id=1141868406]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0, 0.5568628, 0.59607846, 1)
+theme_override_fonts/font = ExtResource("3_wipak")
+text = "Introduction"
+
+[node name="FallQuestsButton" type="Button" parent="HBoxContainer2" unique_id=1207656915]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0, 0.5568628, 0.59607846, 1)
+theme_override_fonts/font = ExtResource("3_wipak")
+text = "Fall Quests"
+
+[node name="WinterQuestsButton" type="Button" parent="HBoxContainer2" unique_id=988002632]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0, 0.5568628, 0.59607846, 1)
+theme_override_fonts/font = ExtResource("3_wipak")
+text = "Winter Quests"
+
+[node name="SpringQuestsButton" type="Button" parent="HBoxContainer2" unique_id=887387568]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0, 0.5568628, 0.59607846, 1)
+theme_override_fonts/font = ExtResource("3_wipak")
+text = "Spring Quests"
+
+[node name="SummerQuestsButton" type="Button" parent="HBoxContainer2" unique_id=454256233]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0, 0.5568628, 0.59607846, 1)
+theme_override_fonts/font = ExtResource("3_wipak")
+text = "Summer Quests"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=302336501]
+layout_mode = 0
+offset_left = 73.0
+offset_top = 280.0
+offset_right = 700.0
+offset_bottom = 811.0
+
+[node name="QuestListContainer" type="GridContainer" parent="ScrollContainer" unique_id=1624877634]
+layout_mode = 2
+
+[node name="DescriptionPanel" type="Control" parent="." unique_id=1633469018]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -692.0
+offset_top = -414.0
+offset_right = -5.0705566
+offset_bottom = 457.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="QuestTitle" type="Label" parent="DescriptionPanel" unique_id=1520907687]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -242.0
+offset_right = 245.0
+offset_bottom = 30.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.15421313, 0.5317986, 0.41324374, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_vm3so")
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="DescriptionPanel" unique_id=954263046]
+layout_mode = 0
+offset_left = 447.0
+offset_top = 116.0
+offset_right = 633.0
+offset_bottom = 156.0
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="IntroLogButton" type="Button" parent="DescriptionPanel/HBoxContainer3" unique_id=1084501370]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.15294118, 0.53333336, 0.4117647, 1)
+theme_override_fonts/font = ExtResource("3_wipak")
+disabled = true
+text = "Intro Log"
+
+[node name="OutroLogButton" type="Button" parent="DescriptionPanel/HBoxContainer3" unique_id=1292794424]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.15294118, 0.53333336, 0.4117647, 1)
+theme_override_fonts/font = ExtResource("3_wipak")
+disabled = true
+text = "Outro Log"
+
+[node name="ChapterRelation" type="Label" parent="DescriptionPanel" unique_id=288664670]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -242.0
+offset_top = 38.0
+offset_right = 245.0
+offset_bottom = 68.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.15421313, 0.5317986, 0.41324374, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_vm3so")
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+
+[node name="QuestLine" type="Label" parent="DescriptionPanel" unique_id=1511271194]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -205.46472
+offset_top = 74.0
+offset_right = 200.36865
+offset_bottom = 99.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.15421313, 0.5317986, 0.41324374, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_vm3so")
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+
+[node name="LogTitle" type="Label" parent="DescriptionPanel" unique_id=927497731]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -316.46472
+offset_top = 114.0
+offset_right = -273.46472
+offset_bottom = 144.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.15421313, 0.5317986, 0.41324374, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_vm3so")
+theme_override_font_sizes/font_size = 24
+text = "Log"
+
+[node name="LogDescription" type="RichTextLabel" parent="DescriptionPanel" unique_id=982078741]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 28.0
+offset_top = -263.5
+offset_right = 632.0
+offset_bottom = 141.5
+grow_vertical = 2
+theme_override_colors/default_color = Color(4.813075e-07, 0.5565102, 0.5963113, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("4_vm3so")
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+
+[node name="RewardsTitle" type="Label" parent="DescriptionPanel" unique_id=2004702019]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -318.46472
+offset_top = 583.0
+offset_right = -221.46472
+offset_bottom = 613.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.15421313, 0.5317986, 0.41324374, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_vm3so")
+theme_override_font_sizes/font_size = 24
+text = "Rewards"
+
+[node name="Deliverables" type="Label" parent="DescriptionPanel" unique_id=219209462]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -319.46472
+offset_top = 619.0
+offset_right = -208.29807
+offset_bottom = 642.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.15421313, 0.5317986, 0.41324374, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_vm3so")
+theme_override_font_sizes/font_size = 18
+text = "Deliverables"
+
+[node name="XPReward" type="Label" parent="DescriptionPanel" unique_id=408908903]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -319.46472
+offset_top = 749.0
+offset_right = -51.46472
+offset_bottom = 779.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.15421313, 0.5317986, 0.41324374, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_vm3so")
+theme_override_font_sizes/font_size = 24
+text = "XP: "
+
+[node name="CurrencyReward" type="Label" parent="DescriptionPanel" unique_id=1296248733]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -319.46472
+offset_top = 787.0
+offset_right = -41.46472
+offset_bottom = 817.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.15421313, 0.5317986, 0.41324374, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_vm3so")
+theme_override_font_sizes/font_size = 24
+text = "Currency: "
+
+[node name="StatusTitle" type="Label" parent="DescriptionPanel" unique_id=392433630]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 85.53528
+offset_top = 584.0
+offset_right = 161.53528
+offset_bottom = 614.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.15421313, 0.5317986, 0.41324374, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_vm3so")
+theme_override_font_sizes/font_size = 24
+text = "Status"
+
+[node name="Status" type="Label" parent="DescriptionPanel" unique_id=894259592]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 83.53528
+offset_top = 623.0
+offset_right = 287.53528
+offset_bottom = 653.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.15421313, 0.5317986, 0.41324374, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_vm3so")
+theme_override_font_sizes/font_size = 24
+
+[node name="DeliverablesContainer" type="GridContainer" parent="DescriptionPanel" unique_id=1419496966]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = -220.0
+offset_right = 268.0
+offset_bottom = -115.0
+grow_vertical = 0
+columns = 2
+
+[connection signal="button_up" from="HBoxContainer/MainQuestsButton" to="." method="_on_main_quests_button_button_up"]
+[connection signal="button_up" from="HBoxContainer/JobQuestsButton" to="." method="_on_job_quests_button_button_up"]
+[connection signal="button_up" from="HBoxContainer2/MainQuestsButton" to="." method="_on_main_quests_button_button_up"]
+[connection signal="button_up" from="HBoxContainer2/FallQuestsButton" to="." method="_on_fall_quests_button_button_up"]
+[connection signal="button_up" from="HBoxContainer2/WinterQuestsButton" to="." method="_on_winter_quests_button_button_up"]
+[connection signal="button_up" from="HBoxContainer2/SpringQuestsButton" to="." method="_on_spring_quests_button_button_up"]
+[connection signal="button_up" from="HBoxContainer2/SummerQuestsButton" to="." method="_on_summer_quests_button_button_up"]
+[connection signal="button_up" from="DescriptionPanel/HBoxContainer3/IntroLogButton" to="." method="_on_intro_log_button_button_up"]
+[connection signal="button_up" from="DescriptionPanel/HBoxContainer3/OutroLogButton" to="." method="_on_outro_log_button_button_up"]

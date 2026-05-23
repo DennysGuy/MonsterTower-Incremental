@@ -18,4 +18,5 @@ output_item = ExtResource("2_mpvv1")
 recipe_list = Array[Dictionary]([{
 ExtResource("2_6roun"): 2
 }])
+related_nodes = Array[String](["Max HP 2", "Item Bag 2", "Deeper Pockets 2"])
 metadata/_custom_type_script = "uid://cljygiasf4103"

@@ -1,13 +1,18 @@
 [gd_resource type="Resource" script_class="EnemyStats" format=3 uid="uid://dwook5wtmbf8g"]
 
+[ext_resource type="Texture2D" uid="uid://ttjhuqdpf8dl" path="res://Assets/Enemies/MossGolem/MossGolem_Stand.png" id="1_4ai6q"]
+[ext_resource type="Texture2D" uid="uid://dxk40dnppe36a" path="res://Assets/Enemies/MossGolemIcon.png" id="1_fjdpe"]
 [ext_resource type="Script" uid="uid://cbjktr12qagl" path="res://src/Scripts/Enemies/enemy_stats.gd" id="1_p75h8"]
 
 [resource]
 script = ExtResource("1_p75h8")
 enemy_name = "Moss Golem"
 enemy_level = 20
+index = 5
+preview_icon = ExtResource("1_fjdpe")
 touch_damage = true
 can_move = true
+idle_animation = ExtResource("1_4ai6q")
 enemy_type = 1
 max_health = 10000
 attack = 200

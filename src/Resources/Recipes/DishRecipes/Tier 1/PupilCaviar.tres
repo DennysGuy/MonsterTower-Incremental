@@ -10,6 +10,7 @@
 script = ExtResource("5_xwyc8")
 recipe_name = "Pupil Caviar"
 menu_icon = ExtResource("1_3u60t")
+index = 2
 description = "A delicacy to the elite; scrapped from the bottom of tower."
 recipe_tier = 1
 crafting_time = 25.0

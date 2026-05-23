@@ -10,6 +10,7 @@
 script = ExtResource("1_dbvl6")
 recipe_name = "Mossy Goulash"
 menu_icon = ExtResource("1_3lulh")
+index = 1
 description = "People who eat this typically look at it for its novelty. Not its taste."
 recipe_tier = 2
 crafting_time = 20.0

@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://50wwth2q8u8b"]
+
+[ext_resource type="FontFile" uid="uid://bmc1mapdr27y8" path="res://Assets/Fonts/CatCafe.ttf" id="1_t3eit"]
+[ext_resource type="Script" uid="uid://cm1v22qywqjvg" path="res://src/Scripts/Codex/quest_list_item.gd" id="2_tgklr"]
+
+[node name="QuestListItem" type="Label" unique_id=140903554]
+offset_left = 83.0
+offset_top = 291.0
+offset_right = 697.0
+offset_bottom = 319.0
+mouse_filter = 0
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.15294118, 0.53333336, 0.4117647, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_t3eit")
+theme_override_font_sizes/font_size = 24
+text = "- Avant Gard Alternative Medicine 1"
+script = ExtResource("2_tgklr")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://coa3yxyswf6aj"]
+
+[ext_resource type="FontFile" uid="uid://bmc1mapdr27y8" path="res://Assets/Fonts/CatCafe.ttf" id="1_5mr8u"]
+[ext_resource type="Script" uid="uid://ymetgqurokfb" path="res://src/Scripts/Codex/node_title_list_item.gd" id="2_j1mr3"]
+
+[node name="NodeTitleListItem" type="Label" unique_id=199380644]
+theme_override_colors/font_color = Color(1.4439225e-06, 0.70206064, 0.7783197, 1)
+theme_override_fonts/font = ExtResource("1_5mr8u")
+theme_override_font_sizes/font_size = 24
+text = "- Health 1"
+script = ExtResource("2_j1mr3")

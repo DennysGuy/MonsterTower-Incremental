@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://nlqboqsckwag"]
+
+[ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="1_q6ehu"]
+[ext_resource type="Script" uid="uid://c04gt7rj5ic7x" path="res://src/Scripts/HUD/PauseMenu/binding_button.gd" id="2_dc5iw"]
+
+[node name="BindingButton" type="Button" unique_id=1238918919]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -148.5
+offset_top = -22.5
+offset_right = 148.5
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("1_q6ehu")
+theme_override_font_sizes/font_size = 32
+toggle_mode = true
+text = "A"
+script = ExtResource("2_dc5iw")
+
+[connection signal="toggled" from="." to="." method="_on_toggled"]
