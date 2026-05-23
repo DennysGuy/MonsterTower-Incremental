@@ -16,5 +16,5 @@ ExtResource("2_a6m8i"): 3
 }])
 stat_name = "Crit Damage"
 upgrade_interval = 0.05
-prereqs = Array[String](["Crit Damage 4:1"])
+prereqs = Array[String](["Crit Chance 4:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

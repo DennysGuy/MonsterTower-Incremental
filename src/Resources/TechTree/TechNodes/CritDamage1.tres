@@ -7,7 +7,7 @@
 script = ExtResource("1_ctxco")
 node_name = "Crit Damage 1"
 icon = ExtResource("1_x2xra")
-description = "Increase Crit Damage by 5% for each level."
+description = "Increase Crit Damage by 5% per level."
 max_level = 3
 currency_required = 250
 stat_name = "Crit Damage"

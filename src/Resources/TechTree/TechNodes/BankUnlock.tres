@@ -7,7 +7,7 @@
 script = ExtResource("1_byv8u")
 node_name = "Banking"
 icon = ExtResource("1_y8g6j")
-description = "Grants you [color=green]4 off shore inventory slots[/color]."
+description = "Grants you [color=green]8 off shore inventory slots[/color]."
 currency_required = 1000
 node_type = 1
 stat_name = "Bank"
