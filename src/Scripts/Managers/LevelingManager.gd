@@ -22,7 +22,8 @@ func check_for_level_up() -> void:
 		if GameManager.can_unlock_class():
 			PlayerHudSignalBus.show_class_notice.emit()
 		
-		PlayerStats.player_stats["Ability Points"] += 1
+		var total_ap : int = 1 + int(PlayerStats.player_stats["Bonus AP"])
+		PlayerStats.player_stats["Ability Points"] += total_ap
 		
 		SignalBus.check_for_notification.emit(GameManager.NOTIFICATION_TYPE.AP)
 		TechTreeManager.update_available_ap_label.emit()

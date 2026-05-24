@@ -64,6 +64,8 @@ enum TECH_NODE_TYPE {ABILITY, FACILITY, CLASS_ABILITY}
 	"Arial Slash":0,
 	"Accuracy 1": 0,
 	"Accuracy 2": 0,
+	"Bonus AP 1": 0,
+	"Bonus XP 1": 0,
 	"Crit Chance 1" : 0,
 	"Crit Chance 2": 0,
 	"Crit Chance 3": 0,

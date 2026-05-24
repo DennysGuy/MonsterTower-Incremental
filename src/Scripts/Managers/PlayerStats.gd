@@ -1,12 +1,5 @@
 extends Node
 class_name PlayerStatsSingleton
-'''
-For now, we will hold the player stats in a global script
-This should eventually be moved into something that is save-able like a custom resource.
-
-This is for testing purposes
-
-'''
 
 #global stat buff modifiers
 var attack_buff_mod : float = 1.0
@@ -25,13 +18,15 @@ const KNOCKBACK_FORCE : int = 100
 	"Level" : 1,
 	"Needed XP": 100,
 	"Current XP" : 0,
+	"Bonus XP Multiplier" : 0,
+	"Bonus AP" : 0,
 	"Highest Floor": 0,
 	"Ability Points": 0,
 	"Max Jobs Held": 3,
 	"Class": "Junior Hunter",
 	"Attack Damage" : 13.0,
-	"Movement Speed" : 100.0,
-	"Climbing Speed" : 65.0,
+	"Movement Speed" : 80.0,
+	"Climbing Speed" : 60.0,
 	"Stun Length": 1.0,
 	"Stun Stacks": 1.0,
 	"Dash Speed" : 350.0,
@@ -73,7 +68,8 @@ const KNOCKBACK_FORCE : int = 100
 	"Tier 1 Gem Drop Rate":0.3,
 	"Chalice Spawn Rate":0.20,
 	"Vial Spawn Rate": 0.20,
-	"Lock On Multiplier" : 1.25
+	"Lock On Multiplier" : 1.25,
+	"Combat Ability Cooldown Bonus": 0.0
 }
 
 var equipped_abilities : Dictionary = {

@@ -1,0 +1,168 @@
+[gd_scene format=3 uid="uid://diodc16waxg0q"]
+
+[ext_resource type="Texture2D" uid="uid://b2wtj2v0da3bv" path="res://Assets/TechTree/NewTechTree/NewTechTree_Frame.png" id="1_l3gx7"]
+[ext_resource type="Script" uid="uid://bjvtg2v0q2gs1" path="res://src/Scripts/TechTree/NewTechTree/new_tech_tree.gd" id="1_lb8dx"]
+[ext_resource type="Texture2D" uid="uid://j2pvpuejdguy" path="res://Assets/TechTree/NewTechTree/NewTechTree_BG.png" id="1_s1rgv"]
+[ext_resource type="Texture2D" uid="uid://dei4i2cy1trbs" path="res://Assets/TechTree/NewTechTree/NewTechTree_Pattern.png" id="3_ktubu"]
+[ext_resource type="Shader" uid="uid://cabi82p76liag" path="res://src/Scripts/Shaders/Glow.gdshader" id="3_vj4ir"]
+[ext_resource type="FontFile" uid="uid://dln8g51uvm22r" path="res://Assets/Fonts/Azonix-1VB0.otf" id="6_lb8dx"]
+[ext_resource type="Texture2D" uid="uid://cq85y731t4o41" path="res://Assets/TechTree/NewTechTree/UpgradeBar_Base.png" id="7_8wv36"]
+[ext_resource type="Texture2D" uid="uid://dorhf5n6jpocv" path="res://Assets/TechTree/NewTechTree/UpgradeBar_Fill.png" id="8_rprre"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ktubu"]
+shader = ExtResource("3_vj4ir")
+shader_parameter/color1 = Color(3.272891e-06, 0.75880235, 0.5705958, 1)
+shader_parameter/color2 = Color(1, 0.79511994, 0.9169939, 1)
+shader_parameter/threshold = 2.385
+shader_parameter/intensity = 0.35
+shader_parameter/opacity = 0.5
+shader_parameter/glow_color = Color(1, 0.45411175, 0.44957954, 1)
+
+[node name="NewTechTree" type="Control" unique_id=1157777568]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lb8dx")
+
+[node name="BG" type="TextureRect" parent="." unique_id=1134305881]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_s1rgv")
+
+[node name="Frame" type="TextureRect" parent="." unique_id=1049324693]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_l3gx7")
+
+[node name="Pattern" type="TextureRect" parent="." unique_id=870220585]
+material = SubResource("ShaderMaterial_ktubu")
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+texture = ExtResource("3_ktubu")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1841133121]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -745.5
+offset_top = 49.0
+offset_right = 779.5
+offset_bottom = 100.0
+grow_horizontal = 2
+theme_override_constants/separation = 20
+
+[node name="CombatPageButton" type="Button" parent="HBoxContainer" unique_id=507044323]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.990949, 0.40124372, 0.45694304, 1)
+theme_override_fonts/font = ExtResource("6_lb8dx")
+theme_override_font_sizes/font_size = 42
+text = "Combat"
+
+[node name="SurvivalPageButton" type="Button" parent="HBoxContainer" unique_id=193700924]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0, 0.8750814, 0.8750814, 1)
+theme_override_fonts/font = ExtResource("6_lb8dx")
+theme_override_font_sizes/font_size = 42
+text = "Survival"
+
+[node name="TraversalPageButton" type="Button" parent="HBoxContainer" unique_id=1490222585]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0, 0.9562344, 0.47072762, 1)
+theme_override_fonts/font = ExtResource("6_lb8dx")
+theme_override_font_sizes/font_size = 42
+text = "Traversal"
+
+[node name="InventoryPageButton" type="Button" parent="HBoxContainer" unique_id=957454195]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.9999996, 0.86253643, 0.4670965, 1)
+theme_override_fonts/font = ExtResource("6_lb8dx")
+theme_override_font_sizes/font_size = 42
+text = "Inventory"
+
+[node name="CookingPageButton" type="Button" parent="HBoxContainer" unique_id=145660522]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.56774014, 0.2835156, 0.15171379, 1)
+theme_override_fonts/font = ExtResource("6_lb8dx")
+theme_override_font_sizes/font_size = 42
+text = "Cooking"
+
+[node name="CraftingPageButton" type="Button" parent="HBoxContainer" unique_id=1497180615]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.8490402, 0.26272827, 0.82052237, 1)
+theme_override_fonts/font = ExtResource("6_lb8dx")
+theme_override_font_sizes/font_size = 42
+text = "Crafting"
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=254252711]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -870.5
+offset_top = 180.0
+offset_right = 880.5
+offset_bottom = 209.0
+grow_horizontal = 2
+value = 50.0
+texture_under = ExtResource("7_8wv36")
+texture_progress = ExtResource("8_rprre")
+
+[node name="UpgradeTrackerButton" type="Button" parent="." unique_id=591923369]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -113.0
+offset_top = 121.0
+offset_right = 109.7843
+offset_bottom = 167.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_lb8dx")
+theme_override_font_sizes/font_size = 36
+disabled = true
+text = "[50/50]"
+
+[node name="ExpeditionTimeTracker" type="Label" parent="." unique_id=211594501]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -308.0
+offset_top = 146.0
+offset_right = -82.0
+offset_bottom = 164.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("6_lb8dx")
+theme_override_font_sizes/font_size = 24
+text = "Expedition Time: 120"
+horizontal_alignment = 2
+
+[connection signal="mouse_entered" from="HBoxContainer/CombatPageButton" to="." method="_on_combat_page_button_mouse_entered"]
+[connection signal="mouse_exited" from="HBoxContainer/CombatPageButton" to="." method="_on_combat_page_button_mouse_exited"]
+[connection signal="mouse_entered" from="HBoxContainer/SurvivalPageButton" to="." method="_on_survival_page_button_mouse_entered"]
+[connection signal="mouse_exited" from="HBoxContainer/SurvivalPageButton" to="." method="_on_survival_page_button_mouse_exited"]
+[connection signal="mouse_entered" from="HBoxContainer/TraversalPageButton" to="." method="_on_traversal_page_button_mouse_entered"]
+[connection signal="mouse_exited" from="HBoxContainer/TraversalPageButton" to="." method="_on_traversal_page_button_mouse_exited"]
+[connection signal="mouse_entered" from="HBoxContainer/InventoryPageButton" to="." method="_on_inventory_page_button_mouse_entered"]
+[connection signal="mouse_exited" from="HBoxContainer/InventoryPageButton" to="." method="_on_inventory_page_button_mouse_exited"]
+[connection signal="mouse_entered" from="HBoxContainer/CookingPageButton" to="." method="_on_cooking_page_button_mouse_entered"]
+[connection signal="mouse_exited" from="HBoxContainer/CookingPageButton" to="." method="_on_cooking_page_button_mouse_exited"]
+[connection signal="mouse_entered" from="HBoxContainer/CraftingPageButton" to="." method="_on_crafting_page_button_mouse_entered"]
+[connection signal="mouse_exited" from="HBoxContainer/CraftingPageButton" to="." method="_on_crafting_page_button_mouse_exited"]
+[connection signal="mouse_entered" from="UpgradeTrackerButton" to="." method="_on_upgrade_tracker_button_mouse_entered"]
+[connection signal="mouse_exited" from="UpgradeTrackerButton" to="." method="_on_upgrade_tracker_button_mouse_exited"]

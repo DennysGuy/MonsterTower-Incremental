@@ -19,6 +19,8 @@ TODO: We will add saves for classes as well
 	"Level" : 1,
 	"Needed XP": 100,
 	"Current XP" : 0,
+	"Bonus XP Multiplier" : 0,
+	"Bonus AP" : 0,
 	"Max Jobs Held": 3,
 	"Highest Floor": 0,
 	"Ability Points": 0,
@@ -67,7 +69,8 @@ TODO: We will add saves for classes as well
 	"Tier 1 Gem Drop Rate":0.3,
 	"Chalice Spawn Rate":0.12,
 	"Vial Spawn Rate": 0.12,
-	"Lock On Multiplier" : 1.25
+	"Lock On Multiplier" : 1.25,
+	"Combat Ability Cooldown Bonus": 0.0
 }
 
 #this will be loaded when we enter the tower entrance map or a map in and of itself
@@ -157,6 +160,8 @@ TODO: We will add saves for classes as well
 	"Arial Slash": {"Level":0, "Unlocked": true},
 	"Accuracy 1": {"Level":0, "Unlocked": false},
 	"Accuracy 2": {"Level":0, "Unlocked": false},
+	"Bonus AP 1":{"Level":0, "Unlocked": false},
+	"Bonus XP 1":{"Level":0, "Unlocked": false},
 	"Crit Chance 1" : {"Level":0, "Unlocked": false},
 	"Crit Chance 2": {"Level":0, "Unlocked": false},
 	"Crit Chance 3": {"Level":0, "Unlocked":false},

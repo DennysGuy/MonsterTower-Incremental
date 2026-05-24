@@ -925,30 +925,6 @@ theme_override_font_sizes/font_size = 52
 text = "Quest Complete!"
 horizontal_alignment = 1
 
-[node name="TopBlackBar" type="ColorRect" parent="PlayerHUD" unique_id=877174551]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -185.0
-offset_bottom = -185.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 1)
-
-[node name="BotBlackBar" type="ColorRect" parent="PlayerHUD" unique_id=1251153564]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 175.0
-offset_bottom = 175.00049
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 1)
-
 [node name="BossHPBar" parent="PlayerHUD" unique_id=1981304713 instance=ExtResource("23_2jn0u")]
 visible = false
 layout_mode = 1
@@ -972,6 +948,30 @@ offset_bottom = 105.0
 layout_mode = 1
 offset_left = -1834.0
 offset_right = -1834.0
+
+[node name="TopBlackBar" type="ColorRect" parent="PlayerHUD" unique_id=877174551]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1080.0
+offset_bottom = -1080.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="BotBlackBar" type="ColorRect" parent="PlayerHUD" unique_id=1251153564]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1080.0
+offset_bottom = 1080.0005
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
 
 [node name="CodexNotificationPanel" parent="PlayerHUD" unique_id=809726153 instance=ExtResource("26_118cf")]
 layout_mode = 0

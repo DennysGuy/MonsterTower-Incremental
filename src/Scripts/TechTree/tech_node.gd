@@ -6,8 +6,6 @@ class_name TechNode extends Node2D
 
 @onready var tool_tip_marker: Marker2D = $ToolTipMarker
 
-
-
 @onready var level_label: RichTextLabel = $LevelLabel
 
 @export var node_type : TechTreeManager.TECH_NODE_TYPE

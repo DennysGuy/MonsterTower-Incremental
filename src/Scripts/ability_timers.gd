@@ -39,7 +39,10 @@ func activate_ability_cooldown(ability_name : String) -> void:
 	if equipped_ability is String:
 		equipped_ability = load(equipped_ability)
 	
-	ability_state[ability_name]["Timer"].wait_time = equipped_ability.cooldown_time
+	var cooldown_bonus : float = PlayerStats.player_stats["Combat Ability Cooldown Bonus"]
+	var total_cooldown : float = equipped_ability.cooldown_time + cooldown_bonus
+	
+	ability_state[ability_name]["Timer"].wait_time = total_cooldown
 	start_ability_cooldown_timer.emit(ability_name)
 	ability_state[ability_name]["Timer"].start()
 
