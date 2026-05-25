@@ -68,7 +68,6 @@ offset_right = -145.0
 offset_bottom = 229.0
 tech_node_stats = ExtResource("4_yloba")
 previous_node = NodePath("../Attack1Node")
-node_type = 1
 
 [node name="CritChance2Node" parent="." unique_id=1331020484 node_paths=PackedStringArray("previous_node") instance=ExtResource("2_48m6i")]
 visible = false
@@ -99,6 +98,7 @@ offset_right = 360.0
 offset_bottom = 229.0
 tech_node_stats = ExtResource("9_6ggqh")
 previous_node = NodePath("../Attack2Node")
+node_type = 1
 
 [node name="Tier1ChestDropRateNode" parent="." unique_id=1305696302 node_paths=PackedStringArray("previous_node") instance=ExtResource("2_48m6i")]
 visible = false

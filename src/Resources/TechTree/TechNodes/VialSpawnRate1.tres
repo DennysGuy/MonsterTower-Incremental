@@ -2,13 +2,15 @@
 
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_hf7kk"]
 [ext_resource type="Resource" uid="uid://dmmblpt46r1fs" path="res://src/Resources/Dishes/PupilCaviar.tres" id="1_lso7o"]
-[ext_resource type="Texture2D" uid="uid://b7sytnjq4k3u8" path="res://Assets/NodeGraphics/NodeGraphicsV2/MPVialUpgrade_V2.png" id="1_np835"]
+[ext_resource type="Texture2D" uid="uid://iyv54od14mxh" path="res://Assets/TechTree/SurvivalNodes/MPVial_ChanceUP_Disabled_Graphic.png" id="1_m3yk5"]
 [ext_resource type="Resource" uid="uid://b4owo1wr47wc" path="res://src/Resources/Dishes/WrappedKabab.tres" id="2_np835"]
+[ext_resource type="Texture2D" uid="uid://bojk4dqja2lrt" path="res://Assets/TechTree/SurvivalNodes/MPVial_ChanceUP_Graphic.png" id="2_w7aw7"]
 
 [resource]
 script = ExtResource("1_hf7kk")
 node_name = "Vial Spawn Rate 1"
-icon = ExtResource("1_np835")
+icon = ExtResource("2_w7aw7")
+disabled_icon = ExtResource("1_m3yk5")
 description = "Increases MP Vial Spawn Rate by 10% for each level."
 max_level = 3
 ap_required = 3000

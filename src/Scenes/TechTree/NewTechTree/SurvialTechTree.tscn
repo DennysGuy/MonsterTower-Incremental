@@ -1,0 +1,118 @@
+[gd_scene format=3 uid="uid://chlt23hkgrbk5"]
+
+[ext_resource type="Script" uid="uid://dowwb7qokaqbi" path="res://src/Scripts/TechTree/NewTechTree/survival_tech_tree.gd" id="1_bo66c"]
+[ext_resource type="PackedScene" uid="uid://c4c6abj1a8ara" path="res://src/Scenes/TechTree/NewTechTree/TechTreeCamera.tscn" id="2_miw4j"]
+[ext_resource type="PackedScene" uid="uid://bhimqkbcn26r2" path="res://src/Scenes/TechTree/TechNode.tscn" id="3_0yhyc"]
+[ext_resource type="Resource" uid="uid://u1y3eoe8hx2c" path="res://src/Resources/TechTree/TechNodes/MaxHP1.tres" id="4_miw4j"]
+[ext_resource type="Resource" uid="uid://dhp1t1qeeqmau" path="res://src/Resources/TechTree/TechNodes/Defense1.tres" id="5_0yhyc"]
+[ext_resource type="Resource" uid="uid://c33bcx7wsq4vk" path="res://src/Resources/TechTree/TechNodes/MaxHP2.tres" id="6_bo66c"]
+[ext_resource type="Resource" uid="uid://c5l21ge3ylc0e" path="res://src/Resources/TechTree/TechNodes/Defense2.tres" id="7_bo66c"]
+[ext_resource type="Resource" uid="uid://bp52qf07dd217" path="res://src/Resources/TechTree/TechNodes/HPChalice.tres" id="8_xyfu8"]
+[ext_resource type="Resource" uid="uid://evdy54fep77a" path="res://src/Resources/TechTree/TechNodes/ChaliceSpawnRate1.tres" id="9_xyfu8"]
+[ext_resource type="Resource" uid="uid://bfmdlo0jy1xsd" path="res://src/Resources/TechTree/TechNodes/MaxMP1.tres" id="10_yak80"]
+[ext_resource type="Resource" uid="uid://c4jfyjh5yjva4" path="res://src/Resources/TechTree/TechNodes/MaxMP2.tres" id="11_godpg"]
+[ext_resource type="Resource" uid="uid://ddb4njdi5p43s" path="res://src/Resources/TechTree/TechNodes/MPVial.tres" id="12_godpg"]
+[ext_resource type="Resource" uid="uid://dnjct1360g838" path="res://src/Resources/TechTree/TechNodes/VialSpawnRate1.tres" id="13_godpg"]
+
+[node name="SurvivalTechTree" type="Control" unique_id=220942998]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_bo66c")
+
+[node name="TechTreeCamera" parent="." unique_id=2137187773 instance=ExtResource("2_miw4j")]
+
+[node name="MaxHP1Node" parent="." unique_id=640777626 instance=ExtResource("3_0yhyc")]
+layout_mode = 1
+offset_left = -684.0
+offset_top = 229.0
+offset_right = -684.0
+offset_bottom = 229.0
+tech_node_stats = ExtResource("4_miw4j")
+
+[node name="DefenseUP1Node" parent="." unique_id=913123538 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_0yhyc")]
+layout_mode = 1
+offset_left = -684.0
+offset_top = 20.0
+offset_right = -684.0
+offset_bottom = 20.0
+tech_node_stats = ExtResource("5_0yhyc")
+previous_node = NodePath("../MaxHP1Node")
+
+[node name="MaxHP2Node" parent="." unique_id=1776225068 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_0yhyc")]
+layout_mode = 1
+offset_left = -145.0
+offset_top = 229.0
+offset_right = -145.0
+offset_bottom = 229.0
+tech_node_stats = ExtResource("6_bo66c")
+previous_node = NodePath("../MaxHP1Node")
+
+[node name="DefenseUp2Node" parent="." unique_id=1331020484 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_0yhyc")]
+layout_mode = 1
+offset_left = -145.0
+offset_top = 16.0
+offset_right = -145.0
+offset_bottom = 16.0
+tech_node_stats = ExtResource("7_bo66c")
+previous_node = NodePath("../MaxHP2Node")
+
+[node name="HPChaliceNode" parent="." unique_id=1302849726 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_0yhyc")]
+layout_mode = 1
+offset_left = 360.0
+offset_top = 229.0
+offset_right = 360.0
+offset_bottom = 229.0
+tech_node_stats = ExtResource("8_xyfu8")
+previous_node = NodePath("../MaxHP2Node")
+node_type = 1
+
+[node name="HPChaliceSpawnRateNode" parent="." unique_id=1305696302 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_0yhyc")]
+layout_mode = 1
+offset_left = 360.0
+offset_top = 16.0
+offset_right = 360.0
+offset_bottom = 16.0
+tech_node_stats = ExtResource("9_xyfu8")
+previous_node = NodePath("../HPChaliceNode")
+
+[node name="MaxMP1Node" parent="." unique_id=1548307285 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_0yhyc")]
+layout_mode = 1
+offset_left = 898.0
+offset_top = 229.0
+offset_right = 898.0
+offset_bottom = 229.0
+tech_node_stats = ExtResource("10_yak80")
+previous_node = NodePath("../HPChaliceNode")
+
+[node name="MaxMP2Node" parent="." unique_id=1480609517 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_0yhyc")]
+layout_mode = 1
+offset_left = 1359.0
+offset_top = 229.0
+offset_right = 1359.0
+offset_bottom = 229.0
+tech_node_stats = ExtResource("11_godpg")
+previous_node = NodePath("../MaxMP1Node")
+
+[node name="MPVialNode" parent="." unique_id=1644990129 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_0yhyc")]
+layout_mode = 1
+offset_left = 1768.0
+offset_top = 226.0
+offset_right = 1768.0
+offset_bottom = 226.0
+tech_node_stats = ExtResource("12_godpg")
+previous_node = NodePath("../MaxMP2Node")
+node_type = 1
+
+[node name="MPVialSpawnRateNode" parent="." unique_id=1282606469 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_0yhyc")]
+layout_mode = 1
+offset_left = 1771.0
+offset_top = 8.0
+offset_right = 1771.0
+offset_bottom = 8.0
+tech_node_stats = ExtResource("13_godpg")
+previous_node = NodePath("../DefenseUp2Node")

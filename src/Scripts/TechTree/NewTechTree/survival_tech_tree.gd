@@ -1,4 +1,4 @@
-class_name CombatTechTree extends TechTreeMap
+class_name SurvivalTechTree extends TechTreeMap
 
 
 # Called when the node enters the scene tree for the first time.

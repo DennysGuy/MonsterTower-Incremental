@@ -211,7 +211,7 @@ func check_prereqs() -> void:
 func unlock_node() -> void:
 	tech_node_stats.unlocked = true
 	check_if_can_purchase()
-	show()
+	show_node()
 	#animation_player.play("clicked")
 
 func set_level_label() -> void:

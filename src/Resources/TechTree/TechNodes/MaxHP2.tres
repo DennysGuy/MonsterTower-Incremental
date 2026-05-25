@@ -1,13 +1,15 @@
 [gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://c33bcx7wsq4vk"]
 
-[ext_resource type="Texture2D" uid="uid://ckr8fl4h1c4vw" path="res://Assets/NodeGraphics/NodeGraphicsV2/HP2_V2.png" id="1_6qdj4"]
+[ext_resource type="Texture2D" uid="uid://cverklmq4oxwm" path="res://Assets/TechTree/SurvivalNodes/HPUp_Disabled_Graphic.png" id="1_ad88h"]
 [ext_resource type="Resource" uid="uid://boeryxspsw8uq" path="res://src/Resources/Dishes/CookedGagootz.tres" id="2_6qdj4"]
+[ext_resource type="Texture2D" uid="uid://b5ui2gldo822r" path="res://Assets/TechTree/SurvivalNodes/HPUp_Graphic.png" id="2_qjs01"]
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="3_qjs01"]
 
 [resource]
 script = ExtResource("3_qjs01")
 node_name = "Max HP 2"
-icon = ExtResource("1_6qdj4")
+icon = ExtResource("2_qjs01")
+disabled_icon = ExtResource("1_ad88h")
 description = "+30 Max Health for each level"
 max_level = 5
 currency_required = 600

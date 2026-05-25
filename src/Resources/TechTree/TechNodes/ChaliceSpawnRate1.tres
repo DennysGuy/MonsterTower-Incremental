@@ -1,14 +1,16 @@
 [gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://evdy54fep77a"]
 
-[ext_resource type="Texture2D" uid="uid://xgp4lny6r046" path="res://Assets/NodeGraphics/NodeGraphicsV2/HPChalliceUpgrade_V2.png" id="1_5ad7r"]
+[ext_resource type="Texture2D" uid="uid://d4ihot3cpiih6" path="res://Assets/TechTree/SurvivalNodes/HPChalice_SpawnUp_Disabled_Graphic.png" id="1_3ixta"]
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_56rjo"]
 [ext_resource type="Resource" uid="uid://carrsm8pqm8fv" path="res://src/Resources/Dishes/LurkerCabeza.tres" id="1_cg2dv"]
 [ext_resource type="Resource" uid="uid://d1pg7dveofnwm" path="res://src/Resources/Dishes/Svio.tres" id="2_5ad7r"]
+[ext_resource type="Texture2D" uid="uid://c8tfo1u1r1xsi" path="res://Assets/TechTree/SurvivalNodes/HPChalice_SpawnUp_Graphic.png" id="2_ergb3"]
 
 [resource]
 script = ExtResource("1_56rjo")
 node_name = "Chalice Spawn Rate 1"
-icon = ExtResource("1_5ad7r")
+icon = ExtResource("2_ergb3")
+disabled_icon = ExtResource("1_3ixta")
 description = "Increases chance for Healing Chalice to spawn 10% for each level."
 max_level = 3
 currency_required = 3000

@@ -13,7 +13,6 @@ class_name NewTechTree extends Control
 @onready var upgrade_tracker_button: Button = $UpgradeTrackerButton
 
 
-
 @onready var sub_viewport: SubViewport = $SubViewportContainer/SubViewport
 
 # Called when the node enters the scene tree for the first time.
@@ -28,51 +27,38 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-
 func _on_combat_page_button_mouse_entered() -> void:
 	expand_button(combat_page_button)
-
 
 func _on_combat_page_button_mouse_exited() -> void:
 	button_to_normal(combat_page_button)
 
-
 func _on_survival_page_button_mouse_entered() -> void:
 	expand_button(survival_page_button)
-
 
 func _on_survival_page_button_mouse_exited() -> void:
 	button_to_normal(survival_page_button)
 
-
 func _on_traversal_page_button_mouse_entered() -> void:
 	expand_button(traversal_page_button)
-
 
 func _on_traversal_page_button_mouse_exited() -> void:
 	button_to_normal(traversal_page_button)
 
-
 func _on_inventory_page_button_mouse_entered() -> void:
 	expand_button(inventory_page_button)
-
 
 func _on_inventory_page_button_mouse_exited() -> void:
 	button_to_normal(inventory_page_button)
 
-
-
 func _on_cooking_page_button_mouse_entered() -> void:
 	expand_button(cooking_page_button)
-
 
 func _on_cooking_page_button_mouse_exited() -> void:
 	button_to_normal(cooking_page_button)
 
-
 func _on_crafting_page_button_mouse_entered() -> void:
 	expand_button(crafting_page_button)
-
 
 func _on_crafting_page_button_mouse_exited() -> void:
 	button_to_normal(crafting_page_button)
@@ -116,11 +102,19 @@ func add_combat_tech_tree() -> void:
 	var combat_tech_tree : CombatTechTree = preload("uid://bpcgnubcykkw2").instantiate()
 	sub_viewport.add_child(combat_tech_tree)
 
-
-func _on_combat_page_button_button_up() -> void:
-	add_combat_tech_tree()
+func add_survival_tech_tree() -> void:
+	if sub_viewport.get_child(0):
+		sub_viewport.get_child(0).queue_free()
+	var combat_tech_tree : CombatTechTree = preload("uid://bpcgnubcykkw2").instantiate()
+	sub_viewport.add_child(combat_tech_tree)
 
 func show_tech_tree_buttons() -> void:
 	for button in tech_tree_buttons_h_box.get_children():
 		button.show()
 		await get_tree().create_timer(0.1).timeout
+
+func _on_combat_page_button_button_up() -> void:
+	add_combat_tech_tree()
+
+func _on_survival_page_button_button_up() -> void:
+	add_survival_tech_tree()
