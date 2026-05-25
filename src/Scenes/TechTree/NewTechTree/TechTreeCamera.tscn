@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://c4c6abj1a8ara"]
+
+[ext_resource type="Script" uid="uid://bmc58j8n1xdt6" path="res://src/Scripts/TechTree/NewTechTree/tech_tree_camera.gd" id="1_nwax2"]
+
+[node name="TechTreeCamera" type="Camera2D" unique_id=2137187773]
+position = Vector2(869, 386)
+script = ExtResource("1_nwax2")

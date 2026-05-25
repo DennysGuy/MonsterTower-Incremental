@@ -85,6 +85,7 @@ Enemy=""
 SpawnPoints=""
 FloorEntranceButton=""
 StunMarkers=""
+TechNodes=""
 
 [input]
 

@@ -1,13 +1,15 @@
 [gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://b6b483q551evk"]
 
-[ext_resource type="Texture2D" uid="uid://dmomyyfs38ssv" path="res://Assets/NodeGraphics/NodeGraphicsV2/IncreaseTier1ChestSpawnChance_V2.png" id="1_bcfwi"]
+[ext_resource type="Texture2D" uid="uid://brsqfndvhxsr5" path="res://Assets/TechTree/CombatNodes/Tier1GemStoneChest_Node_Disabled_Graphic.png" id="1_efp4v"]
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_q6je8"]
 [ext_resource type="Resource" uid="uid://buu8pdcooh3hc" path="res://src/Resources/CraftingResources/BronzeBar.tres" id="2_fy5ec"]
+[ext_resource type="Texture2D" uid="uid://cxovm07q7np0j" path="res://Assets/TechTree/CombatNodes/Tier1GemStoneChest_Node_Graphic.png" id="2_qyv4o"]
 
 [resource]
 script = ExtResource("1_q6je8")
 node_name = "Tier 1 Gem Chest Rate Up"
-icon = ExtResource("1_bcfwi")
+icon = ExtResource("2_qyv4o")
+disabled_icon = ExtResource("1_efp4v")
 description = "Increases rate for Tier 1 Gem Chests to Spawn in Tower by +5% per level"
 max_level = 2
 currency_required = 1500

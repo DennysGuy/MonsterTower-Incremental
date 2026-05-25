@@ -47,7 +47,7 @@ offset_bottom = 40.0
 mouse_filter = 2
 texture = ExtResource("3_ktubu")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1841133121]
+[node name="TechTreeButtonsHBox" type="HBoxContainer" parent="." unique_id=1841133121]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -59,7 +59,8 @@ offset_bottom = 100.0
 grow_horizontal = 2
 theme_override_constants/separation = 20
 
-[node name="CombatPageButton" type="Button" parent="HBoxContainer" unique_id=507044323]
+[node name="CombatPageButton" type="Button" parent="TechTreeButtonsHBox" unique_id=507044323]
+visible = false
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0.990949, 0.40124372, 0.45694304, 1)
@@ -67,7 +68,8 @@ theme_override_fonts/font = ExtResource("6_lb8dx")
 theme_override_font_sizes/font_size = 42
 text = "Combat"
 
-[node name="SurvivalPageButton" type="Button" parent="HBoxContainer" unique_id=193700924]
+[node name="SurvivalPageButton" type="Button" parent="TechTreeButtonsHBox" unique_id=193700924]
+visible = false
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0, 0.8750814, 0.8750814, 1)
@@ -75,7 +77,8 @@ theme_override_fonts/font = ExtResource("6_lb8dx")
 theme_override_font_sizes/font_size = 42
 text = "Survival"
 
-[node name="TraversalPageButton" type="Button" parent="HBoxContainer" unique_id=1490222585]
+[node name="TraversalPageButton" type="Button" parent="TechTreeButtonsHBox" unique_id=1490222585]
+visible = false
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0, 0.9562344, 0.47072762, 1)
@@ -83,7 +86,8 @@ theme_override_fonts/font = ExtResource("6_lb8dx")
 theme_override_font_sizes/font_size = 42
 text = "Traversal"
 
-[node name="InventoryPageButton" type="Button" parent="HBoxContainer" unique_id=957454195]
+[node name="InventoryPageButton" type="Button" parent="TechTreeButtonsHBox" unique_id=957454195]
+visible = false
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0.9999996, 0.86253643, 0.4670965, 1)
@@ -91,7 +95,8 @@ theme_override_fonts/font = ExtResource("6_lb8dx")
 theme_override_font_sizes/font_size = 42
 text = "Inventory"
 
-[node name="CookingPageButton" type="Button" parent="HBoxContainer" unique_id=145660522]
+[node name="CookingPageButton" type="Button" parent="TechTreeButtonsHBox" unique_id=145660522]
+visible = false
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0.56774014, 0.2835156, 0.15171379, 1)
@@ -99,7 +104,8 @@ theme_override_fonts/font = ExtResource("6_lb8dx")
 theme_override_font_sizes/font_size = 42
 text = "Cooking"
 
-[node name="CraftingPageButton" type="Button" parent="HBoxContainer" unique_id=1497180615]
+[node name="CraftingPageButton" type="Button" parent="TechTreeButtonsHBox" unique_id=1497180615]
+visible = false
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0.8490402, 0.26272827, 0.82052237, 1)
@@ -107,7 +113,7 @@ theme_override_fonts/font = ExtResource("6_lb8dx")
 theme_override_font_sizes/font_size = 42
 text = "Crafting"
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=254252711]
+[node name="UpgradeProgressBar" type="TextureProgressBar" parent="." unique_id=254252711]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -152,17 +158,34 @@ theme_override_font_sizes/font_size = 24
 text = "Expedition Time: 120"
 horizontal_alignment = 2
 
-[connection signal="mouse_entered" from="HBoxContainer/CombatPageButton" to="." method="_on_combat_page_button_mouse_entered"]
-[connection signal="mouse_exited" from="HBoxContainer/CombatPageButton" to="." method="_on_combat_page_button_mouse_exited"]
-[connection signal="mouse_entered" from="HBoxContainer/SurvivalPageButton" to="." method="_on_survival_page_button_mouse_entered"]
-[connection signal="mouse_exited" from="HBoxContainer/SurvivalPageButton" to="." method="_on_survival_page_button_mouse_exited"]
-[connection signal="mouse_entered" from="HBoxContainer/TraversalPageButton" to="." method="_on_traversal_page_button_mouse_entered"]
-[connection signal="mouse_exited" from="HBoxContainer/TraversalPageButton" to="." method="_on_traversal_page_button_mouse_exited"]
-[connection signal="mouse_entered" from="HBoxContainer/InventoryPageButton" to="." method="_on_inventory_page_button_mouse_entered"]
-[connection signal="mouse_exited" from="HBoxContainer/InventoryPageButton" to="." method="_on_inventory_page_button_mouse_exited"]
-[connection signal="mouse_entered" from="HBoxContainer/CookingPageButton" to="." method="_on_cooking_page_button_mouse_entered"]
-[connection signal="mouse_exited" from="HBoxContainer/CookingPageButton" to="." method="_on_cooking_page_button_mouse_exited"]
-[connection signal="mouse_entered" from="HBoxContainer/CraftingPageButton" to="." method="_on_crafting_page_button_mouse_entered"]
-[connection signal="mouse_exited" from="HBoxContainer/CraftingPageButton" to="." method="_on_crafting_page_button_mouse_exited"]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=286492722]
+layout_mode = 0
+offset_left = 67.0
+offset_top = 259.0
+offset_right = 1859.0
+offset_bottom = 1024.0
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=335241125]
+transparent_bg = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+physics_object_picking = true
+size = Vector2i(1792, 765)
+render_target_update_mode = 4
+
+[connection signal="button_up" from="TechTreeButtonsHBox/CombatPageButton" to="." method="_on_combat_page_button_button_up"]
+[connection signal="mouse_entered" from="TechTreeButtonsHBox/CombatPageButton" to="." method="_on_combat_page_button_mouse_entered"]
+[connection signal="mouse_exited" from="TechTreeButtonsHBox/CombatPageButton" to="." method="_on_combat_page_button_mouse_exited"]
+[connection signal="mouse_entered" from="TechTreeButtonsHBox/SurvivalPageButton" to="." method="_on_survival_page_button_mouse_entered"]
+[connection signal="mouse_exited" from="TechTreeButtonsHBox/SurvivalPageButton" to="." method="_on_survival_page_button_mouse_exited"]
+[connection signal="mouse_entered" from="TechTreeButtonsHBox/TraversalPageButton" to="." method="_on_traversal_page_button_mouse_entered"]
+[connection signal="mouse_exited" from="TechTreeButtonsHBox/TraversalPageButton" to="." method="_on_traversal_page_button_mouse_exited"]
+[connection signal="mouse_entered" from="TechTreeButtonsHBox/InventoryPageButton" to="." method="_on_inventory_page_button_mouse_entered"]
+[connection signal="mouse_exited" from="TechTreeButtonsHBox/InventoryPageButton" to="." method="_on_inventory_page_button_mouse_exited"]
+[connection signal="mouse_entered" from="TechTreeButtonsHBox/CookingPageButton" to="." method="_on_cooking_page_button_mouse_entered"]
+[connection signal="mouse_exited" from="TechTreeButtonsHBox/CookingPageButton" to="." method="_on_cooking_page_button_mouse_exited"]
+[connection signal="mouse_entered" from="TechTreeButtonsHBox/CraftingPageButton" to="." method="_on_crafting_page_button_mouse_entered"]
+[connection signal="mouse_exited" from="TechTreeButtonsHBox/CraftingPageButton" to="." method="_on_crafting_page_button_mouse_exited"]
 [connection signal="mouse_entered" from="UpgradeTrackerButton" to="." method="_on_upgrade_tracker_button_mouse_entered"]
 [connection signal="mouse_exited" from="UpgradeTrackerButton" to="." method="_on_upgrade_tracker_button_mouse_exited"]

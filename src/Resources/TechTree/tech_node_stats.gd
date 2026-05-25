@@ -2,6 +2,7 @@ class_name TechNodeStats extends Resource
 
 @export var node_name : String
 @export var icon : Texture2D
+@export var disabled_icon : Texture2D
 @export_multiline var description : String
 @export var unlocked : bool = false
 @export var max_level : int = 1
@@ -10,6 +11,7 @@ class_name TechNodeStats extends Resource
 @export var ap_required : int = 0
 @export var materials_required : Array[Dictionary]
 @export var node_type : TechTreeManager.TECH_NODE_TYPE
+@export var stat_relation : TechTreeManager.STAT_RELATION
 
 @export_group("Player Stat Data")
 @export var stat_name : String

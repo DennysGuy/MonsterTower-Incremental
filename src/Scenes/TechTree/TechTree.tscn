@@ -76,12 +76,18 @@ color = Color(0.028638711, 0.1994082, 0.3708802, 1)
 [node name="Nodes" type="Node" parent="." unique_id=1501119685]
 
 [node name="TowerPassNode" parent="Nodes" unique_id=1031566932 instance=ExtResource("5_2ltmf")]
-position = Vector2(640, 359)
+offset_left = 640.0
+offset_top = 359.0
+offset_right = 640.0
+offset_bottom = 359.0
 tech_node_stats = ExtResource("3_lqswy")
 node_type = 1
 
 [node name="Attack1Node" parent="Nodes" unique_id=489713183 instance=ExtResource("5_2ltmf")]
-position = Vector2(736, 186)
+offset_left = 736.0
+offset_top = 186.0
+offset_right = 736.0
+offset_bottom = 186.0
 tech_node_stats = ExtResource("4_a6tc3")
 
 [node name="Line2D" type="Line2D" parent="Nodes/Attack1Node" unique_id=732851976]
@@ -90,7 +96,10 @@ points = PackedVector2Array(-10, -3, -78, 125)
 width = 6.0
 
 [node name="Attack2Node" parent="Nodes" unique_id=309465463 instance=ExtResource("5_2ltmf")]
-position = Vector2(817, 183)
+offset_left = 817.0
+offset_top = 183.0
+offset_right = 817.0
+offset_bottom = 183.0
 tech_node_stats = ExtResource("5_wj3rp")
 
 [node name="Line2D" type="Line2D" parent="Nodes/Attack2Node" unique_id=811949577]
@@ -99,7 +108,10 @@ points = PackedVector2Array(-44, 0, -69, 0)
 width = 6.0
 
 [node name="CritChance1Node" parent="Nodes" unique_id=513100437 instance=ExtResource("5_2ltmf")]
-position = Vector2(738, 113)
+offset_left = 738.0
+offset_top = 113.0
+offset_right = 738.0
+offset_bottom = 113.0
 tech_node_stats = ExtResource("6_wj3rp")
 
 [node name="Line2D" type="Line2D" parent="Nodes/CritChance1Node" unique_id=1590809159]
@@ -108,7 +120,10 @@ points = PackedVector2Array(-2, 13, -2, 30)
 width = 6.0
 
 [node name="CritDamage1Node" parent="Nodes" unique_id=1720554230 instance=ExtResource("5_2ltmf")]
-position = Vector2(738, 43)
+offset_left = 738.0
+offset_top = 43.0
+offset_right = 738.0
+offset_bottom = 43.0
 tech_node_stats = ExtResource("7_6pqgd")
 
 [node name="Line2D" type="Line2D" parent="Nodes/CritDamage1Node" unique_id=523411728]
@@ -117,7 +132,10 @@ points = PackedVector2Array(-2, -14, -2, -28)
 width = 6.0
 
 [node name="CritChance2Node" parent="Nodes" unique_id=612495287 instance=ExtResource("5_2ltmf")]
-position = Vector2(817, 111)
+offset_left = 817.0
+offset_top = 111.0
+offset_right = 817.0
+offset_bottom = 111.0
 tech_node_stats = ExtResource("8_7l0yi")
 
 [node name="Line2D" type="Line2D" parent="Nodes/CritChance2Node" unique_id=1729855323]
@@ -126,7 +144,10 @@ points = PackedVector2Array(-2, 14, -2, 30)
 width = 6.0
 
 [node name="CritDamage2Node" parent="Nodes" unique_id=694827979 instance=ExtResource("5_2ltmf")]
-position = Vector2(817, 41)
+offset_left = 817.0
+offset_top = 41.0
+offset_right = 817.0
+offset_bottom = 41.0
 tech_node_stats = ExtResource("9_dkx06")
 
 [node name="Line2D" type="Line2D" parent="Nodes/CritDamage2Node" unique_id=2015774257]
@@ -135,7 +156,10 @@ points = PackedVector2Array(-3, -14, -3, -28)
 width = 6.0
 
 [node name="CritChance3Node" parent="Nodes" unique_id=310214223 instance=ExtResource("5_2ltmf")]
-position = Vector2(969, 113)
+offset_left = 969.0
+offset_top = 113.0
+offset_right = 969.0
+offset_bottom = 113.0
 tech_node_stats = ExtResource("11_qkyl2")
 
 [node name="Line2D" type="Line2D" parent="Nodes/CritChance3Node" unique_id=254904282]
@@ -144,7 +168,10 @@ points = PackedVector2Array(-2, 16, -2, 32)
 width = 6.0
 
 [node name="CritDamage3Node" parent="Nodes" unique_id=1578737261 instance=ExtResource("5_2ltmf")]
-position = Vector2(969, 44)
+offset_left = 969.0
+offset_top = 44.0
+offset_right = 969.0
+offset_bottom = 44.0
 tech_node_stats = ExtResource("12_31qh5")
 
 [node name="Line2D" type="Line2D" parent="Nodes/CritDamage3Node" unique_id=914018394]
@@ -153,7 +180,10 @@ points = PackedVector2Array(-3, -13, -3, -27)
 width = 6.0
 
 [node name="CritChance4Node" parent="Nodes" unique_id=1735524686 instance=ExtResource("5_2ltmf")]
-position = Vector2(1047, 114)
+offset_left = 1047.0
+offset_top = 114.0
+offset_right = 1047.0
+offset_bottom = 114.0
 tech_node_stats = ExtResource("13_g88x2")
 
 [node name="Line2D" type="Line2D" parent="Nodes/CritChance4Node" unique_id=713273257]
@@ -162,7 +192,10 @@ points = PackedVector2Array(-2, 15, -2, 32)
 width = 6.0
 
 [node name="CritDamage4Node" parent="Nodes" unique_id=542679406 instance=ExtResource("5_2ltmf")]
-position = Vector2(1047, 46)
+offset_left = 1047.0
+offset_top = 46.0
+offset_right = 1047.0
+offset_bottom = 46.0
 tech_node_stats = ExtResource("13_56jq8")
 
 [node name="Line2D" type="Line2D" parent="Nodes/CritDamage4Node" unique_id=764876662]
@@ -171,7 +204,10 @@ points = PackedVector2Array(-3, -14, -3, -26)
 width = 6.0
 
 [node name="AttackDamage3Node" parent="Nodes" unique_id=992804832 instance=ExtResource("5_2ltmf")]
-position = Vector2(970, 185)
+offset_left = 970.0
+offset_top = 185.0
+offset_right = 970.0
+offset_bottom = 185.0
 tech_node_stats = ExtResource("12_llgyg")
 
 [node name="Line2D" type="Line2D" parent="Nodes/AttackDamage3Node" unique_id=90757354]
@@ -180,7 +216,10 @@ points = PackedVector2Array(9, -14, 29, -14)
 width = 6.0
 
 [node name="AttackDamage4" parent="Nodes" unique_id=773279305 instance=ExtResource("5_2ltmf")]
-position = Vector2(1047, 185)
+offset_left = 1047.0
+offset_top = 185.0
+offset_right = 1047.0
+offset_bottom = 185.0
 tech_node_stats = ExtResource("15_746xm")
 
 [node name="Line2D" type="Line2D" parent="Nodes/AttackDamage4" unique_id=724109971]
@@ -189,7 +228,10 @@ points = PackedVector2Array(9, -14, 30, -14)
 width = 6.0
 
 [node name="HP1Node" parent="Nodes" unique_id=39534223 instance=ExtResource("5_2ltmf")]
-position = Vector2(714, 450)
+offset_left = 714.0
+offset_top = 450.0
+offset_right = 714.0
+offset_bottom = 450.0
 tech_node_stats = ExtResource("11_4a6it")
 
 [node name="Line2D" type="Line2D" parent="Nodes/HP1Node" unique_id=293012557]
@@ -197,7 +239,10 @@ points = PackedVector2Array(-19, -24, -59, -74)
 width = 6.0
 
 [node name="Defense1Node" parent="Nodes" unique_id=394331916 instance=ExtResource("5_2ltmf")]
-position = Vector2(714, 535)
+offset_left = 714.0
+offset_top = 535.0
+offset_right = 714.0
+offset_bottom = 535.0
 tech_node_stats = ExtResource("14_x01pg")
 
 [node name="Line2D" type="Line2D" parent="Nodes/Defense1Node" unique_id=1624824761]
@@ -206,7 +251,10 @@ points = PackedVector2Array(-11, -9, -11, -39)
 width = 6.0
 
 [node name="MaxMP1Node" parent="Nodes" unique_id=1138211437 instance=ExtResource("5_2ltmf")]
-position = Vector2(714, 613)
+offset_left = 714.0
+offset_top = 613.0
+offset_right = 714.0
+offset_bottom = 613.0
 tech_node_stats = ExtResource("14_iyves")
 
 [node name="Line2D" type="Line2D" parent="Nodes/MaxMP1Node" unique_id=847810625]
@@ -215,7 +263,10 @@ points = PackedVector2Array(-11, -9, -11, -49)
 width = 6.0
 
 [node name="MaxMP2Node" parent="Nodes" unique_id=121343121 instance=ExtResource("5_2ltmf")]
-position = Vector2(791, 613)
+offset_left = 791.0
+offset_top = 613.0
+offset_right = 791.0
+offset_bottom = 613.0
 tech_node_stats = ExtResource("15_l65vq")
 
 [node name="Line2D" type="Line2D" parent="Nodes/MaxMP2Node" unique_id=550562576]
@@ -224,7 +275,10 @@ points = PackedVector2Array(-6, -8, -27, -8)
 width = 6.0
 
 [node name="MPVialNode" parent="Nodes" unique_id=779504938 instance=ExtResource("5_2ltmf")]
-position = Vector2(875, 613)
+offset_left = 875.0
+offset_top = 613.0
+offset_right = 875.0
+offset_bottom = 613.0
 tech_node_stats = ExtResource("18_1p45o")
 node_type = 1
 
@@ -234,7 +288,10 @@ points = PackedVector2Array(0, -8, -27, -8)
 width = 6.0
 
 [node name="VialSpawnRate1Node" parent="Nodes" unique_id=1590159738 instance=ExtResource("5_2ltmf")]
-position = Vector2(954, 613)
+offset_left = 954.0
+offset_top = 613.0
+offset_right = 954.0
+offset_bottom = 613.0
 tech_node_stats = ExtResource("21_opmd6")
 node_type = 1
 
@@ -244,7 +301,10 @@ points = PackedVector2Array(-4, -8, -27, -8)
 width = 6.0
 
 [node name="DeeperPockets1" parent="Nodes" unique_id=1613908811 instance=ExtResource("5_2ltmf")]
-position = Vector2(485, 441)
+offset_left = 485.0
+offset_top = 441.0
+offset_right = 485.0
+offset_bottom = 441.0
 tech_node_stats = ExtResource("15_v76mx")
 
 [node name="Line2D" type="Line2D" parent="Nodes/DeeperPockets1" unique_id=2062359685]
@@ -253,7 +313,10 @@ points = PackedVector2Array(7, -9, 115, -70)
 width = 6.0
 
 [node name="ItemBag3" parent="Nodes" unique_id=1515138600 instance=ExtResource("5_2ltmf")]
-position = Vector2(568, 444)
+offset_left = 568.0
+offset_top = 444.0
+offset_right = 568.0
+offset_bottom = 444.0
 tech_node_stats = ExtResource("19_l65vq")
 
 [node name="Line2D" type="Line2D" parent="Nodes/ItemBag3" unique_id=2143241456]
@@ -262,7 +325,10 @@ points = PackedVector2Array(49, -73, 17, -23)
 width = 6.0
 
 [node name="Banking1" parent="Nodes" unique_id=111344260 instance=ExtResource("5_2ltmf")]
-position = Vector2(524, 522)
+offset_left = 524.0
+offset_top = 522.0
+offset_right = 524.0
+offset_bottom = 522.0
 tech_node_stats = ExtResource("17_c7r65")
 node_type = 1
 
@@ -277,7 +343,10 @@ points = PackedVector2Array(10, -11, 28, -43)
 width = 6.0
 
 [node name="Banking2" parent="Nodes" unique_id=350181917 instance=ExtResource("5_2ltmf")]
-position = Vector2(523, 609)
+offset_left = 523.0
+offset_top = 609.0
+offset_right = 523.0
+offset_bottom = 609.0
 tech_node_stats = ExtResource("18_aovij")
 
 [node name="Line2D" type="Line2D" parent="Nodes/Banking2" unique_id=767885227]
@@ -286,7 +355,10 @@ points = PackedVector2Array(-2, -13, -2, -44)
 width = 6.0
 
 [node name="Banking3" parent="Nodes" unique_id=1379076233 instance=ExtResource("5_2ltmf")]
-position = Vector2(522, 689)
+offset_left = 522.0
+offset_top = 689.0
+offset_right = 522.0
+offset_bottom = 689.0
 tech_node_stats = ExtResource("20_eog2s")
 
 [node name="Line2D" type="Line2D" parent="Nodes/Banking3" unique_id=1367050742]
@@ -295,7 +367,10 @@ points = PackedVector2Array(-2, -13, -2, -37)
 width = 6.0
 
 [node name="DeeperPockets3" parent="Nodes" unique_id=576849371 instance=ExtResource("5_2ltmf")]
-position = Vector2(409, 586)
+offset_left = 409.0
+offset_top = 586.0
+offset_right = 409.0
+offset_bottom = 586.0
 tech_node_stats = ExtResource("20_na6l4")
 
 [node name="Line2D" type="Line2D" parent="Nodes/DeeperPockets3" unique_id=2006393734]
@@ -304,7 +379,10 @@ points = PackedVector2Array(-2, -13, -2, -43)
 width = 6.0
 
 [node name="Bag3" parent="Nodes" unique_id=1433086497 instance=ExtResource("5_2ltmf")]
-position = Vector2(617, 606)
+offset_left = 617.0
+offset_top = 606.0
+offset_right = 617.0
+offset_bottom = 606.0
 tech_node_stats = ExtResource("21_hx4vl")
 
 [node name="Line2D" type="Line2D" parent="Nodes/Bag3" unique_id=6247375]
@@ -313,7 +391,10 @@ points = PackedVector2Array(-2, -13, -2, -53)
 width = 6.0
 
 [node name="DeeperPockets2" parent="Nodes" unique_id=1035626852 instance=ExtResource("5_2ltmf")]
-position = Vector2(411, 500)
+offset_left = 411.0
+offset_top = 500.0
+offset_right = 411.0
+offset_bottom = 500.0
 tech_node_stats = ExtResource("19_7xsv7")
 
 [node name="Line2D" type="Line2D" parent="Nodes/DeeperPockets2" unique_id=1598666664]
@@ -322,7 +403,10 @@ points = PackedVector2Array(6, -10, 37, -42)
 width = 6.0
 
 [node name="ItemBag2" parent="Nodes" unique_id=1056960665 instance=ExtResource("5_2ltmf")]
-position = Vector2(619, 511)
+offset_left = 619.0
+offset_top = 511.0
+offset_right = 619.0
+offset_bottom = 511.0
 tech_node_stats = ExtResource("20_dkc8a")
 
 [node name="Line2D" type="Line2D" parent="Nodes/ItemBag2" unique_id=957527722]
@@ -330,7 +414,10 @@ points = PackedVector2Array(-14, -26, -34, -53)
 width = 6.0
 
 [node name="JumpHeight1" parent="Nodes" unique_id=648021662 instance=ExtResource("5_2ltmf")]
-position = Vector2(551, 240)
+offset_left = 551.0
+offset_top = 240.0
+offset_right = 551.0
+offset_bottom = 240.0
 tech_node_stats = ExtResource("22_7le32")
 
 [node name="Line2D" type="Line2D" parent="Nodes/JumpHeight1" unique_id=862614428]
@@ -338,7 +425,10 @@ points = PackedVector2Array(12, 17, 70, 97)
 width = 6.0
 
 [node name="ClimbingSpeed1" parent="Nodes" unique_id=1104995936 instance=ExtResource("5_2ltmf")]
-position = Vector2(552, 168)
+offset_left = 552.0
+offset_top = 168.0
+offset_right = 552.0
+offset_bottom = 168.0
 tech_node_stats = ExtResource("22_yjrj2")
 
 [node name="Line2D" type="Line2D" parent="Nodes/ClimbingSpeed1" unique_id=1099818887]
@@ -347,7 +437,10 @@ points = PackedVector2Array(-2, 34, -2, 51)
 width = 6.0
 
 [node name="JumpHeight2" parent="Nodes" unique_id=526568048 instance=ExtResource("5_2ltmf")]
-position = Vector2(553, 94)
+offset_left = 553.0
+offset_top = 94.0
+offset_right = 553.0
+offset_bottom = 94.0
 tech_node_stats = ExtResource("33_v367j")
 
 [node name="Line2D" type="Line2D" parent="Nodes/JumpHeight2" unique_id=589142953]
@@ -356,7 +449,10 @@ points = PackedVector2Array(-2, 34, -2, 52)
 width = 6.0
 
 [node name="MovementSpeed1" parent="Nodes" unique_id=566610783 instance=ExtResource("5_2ltmf")]
-position = Vector2(470, 238)
+offset_left = 470.0
+offset_top = 238.0
+offset_right = 470.0
+offset_bottom = 238.0
 tech_node_stats = ExtResource("21_dvfnf")
 
 [node name="Line2D" type="Line2D" parent="Nodes/MovementSpeed1" unique_id=660489985]
@@ -365,7 +461,10 @@ points = PackedVector2Array(15, 0, 40, 0)
 width = 6.0
 
 [node name="MovementSpeed2" parent="Nodes" unique_id=1401457637 instance=ExtResource("5_2ltmf")]
-position = Vector2(471, 165)
+offset_left = 471.0
+offset_top = 165.0
+offset_right = 471.0
+offset_bottom = 165.0
 tech_node_stats = ExtResource("22_vbmlq")
 
 [node name="Line2D" type="Line2D" parent="Nodes/MovementSpeed2" unique_id=1365668813]
@@ -374,7 +473,10 @@ points = PackedVector2Array(-2, 14, -2, 31)
 width = 6.0
 
 [node name="MovementSpeed3" parent="Nodes" unique_id=212799353 instance=ExtResource("5_2ltmf")]
-position = Vector2(473, 92)
+offset_left = 473.0
+offset_top = 92.0
+offset_right = 473.0
+offset_bottom = 92.0
 tech_node_stats = ExtResource("36_755lv")
 
 [node name="Line2D" type="Line2D" parent="Nodes/MovementSpeed3" unique_id=1923480228]
@@ -383,11 +485,17 @@ points = PackedVector2Array(-2, 14, -2, 31)
 width = 6.0
 
 [node name="CookingStationNode" parent="Nodes" unique_id=1659813102 instance=ExtResource("5_2ltmf")]
-position = Vector2(303, 357)
+offset_left = 303.0
+offset_top = 357.0
+offset_right = 303.0
+offset_bottom = 357.0
 tech_node_stats = ExtResource("25_hvgb8")
 
 [node name="IncreaseCookingDrops1" parent="Nodes" unique_id=518419668 instance=ExtResource("5_2ltmf")]
-position = Vector2(216, 278)
+offset_left = 216.0
+offset_top = 278.0
+offset_right = 216.0
+offset_bottom = 278.0
 tech_node_stats = ExtResource("25_tbj8d")
 
 [node name="Line2D" type="Line2D" parent="Nodes/IncreaseCookingDrops1" unique_id=1394646835]
@@ -395,7 +503,10 @@ points = PackedVector2Array(18, 14, 67, 57)
 width = 6.0
 
 [node name="IncreaseCookingSpeed1" parent="Nodes" unique_id=799782149 instance=ExtResource("5_2ltmf")]
-position = Vector2(207, 356)
+offset_left = 207.0
+offset_top = 356.0
+offset_right = 207.0
+offset_bottom = 356.0
 tech_node_stats = ExtResource("26_774l3")
 
 [node name="Line2D" type="Line2D" parent="Nodes/IncreaseCookingSpeed1" unique_id=1379523262]
@@ -404,7 +515,10 @@ points = PackedVector2Array(12, 0, 52, 0)
 width = 6.0
 
 [node name="IncreaseCookingAccuracy1" parent="Nodes" unique_id=1573177256 instance=ExtResource("5_2ltmf")]
-position = Vector2(218, 438)
+offset_left = 218.0
+offset_top = 438.0
+offset_right = 218.0
+offset_bottom = 438.0
 tech_node_stats = ExtResource("27_rvw2x")
 
 [node name="Line2D" type="Line2D" parent="Nodes/IncreaseCookingAccuracy1" unique_id=709960633]
@@ -413,12 +527,18 @@ points = PackedVector2Array(8, -2, 55, -52)
 width = 6.0
 
 [node name="RefineryStationNode" parent="Nodes" unique_id=365558740 instance=ExtResource("5_2ltmf")]
-position = Vector2(1031, 353)
+offset_left = 1031.0
+offset_top = 353.0
+offset_right = 1031.0
+offset_bottom = 353.0
 tech_node_stats = ExtResource("28_rqb1b")
 node_type = 1
 
 [node name="MiningSpeed1" parent="Nodes" unique_id=1417860412 instance=ExtResource("5_2ltmf")]
-position = Vector2(1110, 283)
+offset_left = 1110.0
+offset_top = 283.0
+offset_right = 1110.0
+offset_bottom = 283.0
 tech_node_stats = ExtResource("29_bksa1")
 
 [node name="Line2D" type="Line2D" parent="Nodes/MiningSpeed1" unique_id=109870414]
@@ -427,7 +547,10 @@ points = PackedVector2Array(-12, 5, -53, 38)
 width = 6.0
 
 [node name="RefinerySpeed1" parent="Nodes" unique_id=136298493 instance=ExtResource("5_2ltmf")]
-position = Vector2(1120, 354)
+offset_left = 1120.0
+offset_top = 354.0
+offset_right = 1120.0
+offset_bottom = 354.0
 tech_node_stats = ExtResource("30_il84h")
 
 [node name="Line2D" type="Line2D" parent="Nodes/RefinerySpeed1" unique_id=872991784]
@@ -436,7 +559,10 @@ points = PackedVector2Array(-14, 1, -47, 1)
 width = 6.0
 
 [node name="RefinerySuccessRate1" parent="Nodes" unique_id=808466279 instance=ExtResource("5_2ltmf")]
-position = Vector2(1109, 427)
+offset_left = 1109.0
+offset_top = 427.0
+offset_right = 1109.0
+offset_bottom = 427.0
 tech_node_stats = ExtResource("30_yfj5d")
 
 [node name="Line2D" type="Line2D" parent="Nodes/RefinerySuccessRate1" unique_id=764063393]
@@ -445,7 +571,10 @@ points = PackedVector2Array(-13, -5, -50, -47)
 width = 6.0
 
 [node name="OreRockDrop1" parent="Nodes" unique_id=1358460744 instance=ExtResource("5_2ltmf")]
-position = Vector2(1202, 285)
+offset_left = 1202.0
+offset_top = 285.0
+offset_right = 1202.0
+offset_bottom = 285.0
 tech_node_stats = ExtResource("32_pc0xa")
 
 [node name="Line2D" type="Line2D" parent="Nodes/OreRockDrop1" unique_id=134897056]
@@ -454,7 +583,10 @@ points = PackedVector2Array(-16, 1, -52, 1)
 width = 6.0
 
 [node name="MaxHP2" parent="Nodes" unique_id=845970053 instance=ExtResource("5_2ltmf")]
-position = Vector2(798, 450)
+offset_left = 798.0
+offset_top = 450.0
+offset_right = 798.0
+offset_bottom = 450.0
 tech_node_stats = ExtResource("36_o1bwy")
 
 [node name="Line2D" type="Line2D" parent="Nodes/MaxHP2" unique_id=1564801328]
@@ -463,7 +595,10 @@ points = PackedVector2Array(798, 524, 770, 524)
 width = 6.0
 
 [node name="HPChaliceNode" parent="Nodes" unique_id=75929909 instance=ExtResource("5_2ltmf")]
-position = Vector2(877, 450)
+offset_left = 877.0
+offset_top = 450.0
+offset_right = 877.0
+offset_bottom = 450.0
 tech_node_stats = ExtResource("41_31qh5")
 node_type = 1
 
@@ -473,7 +608,10 @@ points = PackedVector2Array(793, 524, 770, 524)
 width = 6.0
 
 [node name="ChaliceSpawnRate1Node" parent="Nodes" unique_id=1595379756 instance=ExtResource("5_2ltmf")]
-position = Vector2(956, 450)
+offset_left = 956.0
+offset_top = 450.0
+offset_right = 956.0
+offset_bottom = 450.0
 tech_node_stats = ExtResource("45_ejbxq")
 
 [node name="Line2D" type="Line2D" parent="Nodes/ChaliceSpawnRate1Node" unique_id=1210166169]
@@ -482,7 +620,10 @@ points = PackedVector2Array(793, 524, 770, 524)
 width = 6.0
 
 [node name="Defense2" parent="Nodes" unique_id=609765824 instance=ExtResource("5_2ltmf")]
-position = Vector2(793, 535)
+offset_left = 793.0
+offset_top = 535.0
+offset_right = 793.0
+offset_bottom = 535.0
 tech_node_stats = ExtResource("37_pqlb5")
 
 [node name="Line2D" type="Line2D" parent="Nodes/Defense2" unique_id=127059110]
@@ -491,7 +632,10 @@ points = PackedVector2Array(-9, -8, -32, -8)
 width = 6.0
 
 [node name="Defense3" parent="Nodes" unique_id=447214832 instance=ExtResource("5_2ltmf")]
-position = Vector2(877, 535)
+offset_left = 877.0
+offset_top = 535.0
+offset_right = 877.0
+offset_bottom = 535.0
 tech_node_stats = ExtResource("47_opmd6")
 
 [node name="Line2D" type="Line2D" parent="Nodes/Defense3" unique_id=1859688668]
@@ -500,7 +644,10 @@ points = PackedVector2Array(-6, -8, -34, -8)
 width = 6.0
 
 [node name="InvincibilityDuration1" parent="Nodes" unique_id=3421994 instance=ExtResource("5_2ltmf")]
-position = Vector2(392, 236)
+offset_left = 392.0
+offset_top = 236.0
+offset_right = 392.0
+offset_bottom = 236.0
 tech_node_stats = ExtResource("39_l65vq")
 
 [node name="Line2D" type="Line2D" parent="Nodes/InvincibilityDuration1" unique_id=2072077442]
@@ -509,7 +656,10 @@ points = PackedVector2Array(25.131348, -3.784851, 47.131348, -3.784851)
 width = 6.0
 
 [node name="GemStoneStation" parent="Nodes" unique_id=781243374 instance=ExtResource("5_2ltmf")]
-position = Vector2(894, 184)
+offset_left = 894.0
+offset_top = 184.0
+offset_right = 894.0
+offset_bottom = 184.0
 tech_node_stats = ExtResource("36_pqlb5")
 node_type = 1
 
@@ -519,7 +669,10 @@ points = PackedVector2Array(-12, 0, -34, 0)
 width = 6.0
 
 [node name="Tier1ChestChanceIncrease" parent="Nodes" unique_id=1923792062 instance=ExtResource("5_2ltmf")]
-position = Vector2(894, 112)
+offset_left = 894.0
+offset_top = 112.0
+offset_right = 894.0
+offset_bottom = 112.0
 tech_node_stats = ExtResource("37_34cer")
 
 [node name="Line2D" type="Line2D" parent="Nodes/Tier1ChestChanceIncrease" unique_id=1619418229]
@@ -528,7 +681,10 @@ points = PackedVector2Array(0, 13, 0, 29)
 width = 6.0
 
 [node name="Tier1GemDropChanceIncrease" parent="Nodes" unique_id=1885633913 instance=ExtResource("5_2ltmf")]
-position = Vector2(894, 42)
+offset_left = 894.0
+offset_top = 42.0
+offset_right = 894.0
+offset_bottom = 42.0
 tech_node_stats = ExtResource("38_iyves")
 
 [node name="Line2D" type="Line2D" parent="Nodes/Tier1GemDropChanceIncrease" unique_id=336900603]

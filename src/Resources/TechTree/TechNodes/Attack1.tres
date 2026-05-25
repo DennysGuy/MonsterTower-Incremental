@@ -1,13 +1,15 @@
 [gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://1gmjr0davgp4"]
 
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_cgde1"]
-[ext_resource type="Texture2D" uid="uid://dsesi3w45ebyc" path="res://Assets/NodeGraphics/NodeGraphicsV2/SwordAttack1_V2.png" id="1_lepj1"]
+[ext_resource type="Texture2D" uid="uid://low2h55deo3g" path="res://Assets/TechTree/CombatNodes/Attack_Node_Graphic.png" id="1_lepj1"]
+[ext_resource type="Texture2D" uid="uid://dwyxs8doa0tbv" path="res://Assets/TechTree/CombatNodes/Attack_Node_Disabled_Graphic.png" id="1_ro3qq"]
 
 [resource]
 script = ExtResource("1_cgde1")
 node_name = "Attack 1"
 icon = ExtResource("1_lepj1")
-description = "Hit them monsters harder! Increase weapon attack by 25%"
+disabled_icon = ExtResource("1_ro3qq")
+description = "Hit them monsters harder! Increase weapon attack by 25% per level."
 max_level = 5
 currency_required = 50
 stat_name = "Attack Damage"

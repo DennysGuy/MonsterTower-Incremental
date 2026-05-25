@@ -1,163 +1,67 @@
 [gd_scene format=3 uid="uid://bhimqkbcn26r2"]
 
 [ext_resource type="Script" uid="uid://bf6dj2em3y5l0" path="res://src/Scripts/TechTree/tech_node.gd" id="1_2bhwb"]
-[ext_resource type="Texture2D" uid="uid://bq14rlsnw3mdh" path="res://Assets/NodeGraphics/NodeBaseEnabled_V2.png" id="2_l673o"]
-[ext_resource type="Texture2D" uid="uid://dcb77acv4gp1n" path="res://Assets/NodeGraphics/NodeGraphicsV2/Refinery_V2.png" id="3_0lniu"]
-[ext_resource type="Texture2D" uid="uid://vcw4emm7ndcs" path="res://Assets/NodeGraphics/NodeFill_V2.png" id="3_cw315"]
-[ext_resource type="PackedScene" uid="uid://bqdrbv6co6410" path="res://src/Scenes/TechTree/ClickArea.tscn" id="3_qmqu0"]
+[ext_resource type="Texture2D" uid="uid://dxd8rdm0eq72d" path="res://Assets/TechTree/CombatNodes/CombatNode_Base.png" id="2_cw315"]
+[ext_resource type="Texture2D" uid="uid://low2h55deo3g" path="res://Assets/TechTree/CombatNodes/Attack_Node_Graphic.png" id="3_nhb52"]
+[ext_resource type="FontFile" uid="uid://cv11ytsk7jf21" path="res://Assets/Fonts/Perfect DOS VGA 437.ttf" id="5_cw315"]
 [ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="5_nhb52"]
-[ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="6_cw315"]
 [ext_resource type="Texture2D" uid="uid://d0y4mpjou53tw" path="res://Assets/HUD/FacilitiesNotify.png" id="8_ojxq6"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_l673o"]
-size = Vector2(59, 58)
-
-[sub_resource type="Animation" id="Animation_l673o"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Icon:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-2, -5)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("BG:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-1, -4)]
-}
-
-[sub_resource type="Animation" id="Animation_qmqu0"]
-resource_name = "clicked"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Icon:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(-1, -5), Vector2(-2, -5), Vector2(3, -5), Vector2(-2, -5), Vector2(-3, -5), Vector2(-2, -5), Vector2(-3, -5)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Icon:scale")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(2, 2), Vector2(2.1, 2.1), Vector2(2, 2)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Icon:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [0.0, 0.17453292, 0.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("BG:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.033450063, 0.066621475, 0.099954806, 0.13328815, 0.16662148, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(-1, -4), Vector2(-2, -4), Vector2(3, -4), Vector2(-2, 0), Vector2(3, -4), Vector2(-2, -4), Vector2(-1, -4)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("BG:rotation")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.099855386, 0.19985539),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [0.0, 0.17453292, 0.0]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("BG:scale")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.099855386, 0.19985539),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(2, 2), Vector2(2.1, 2.1), Vector2(2, 2)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_0lniu"]
-_data = {
-&"RESET": SubResource("Animation_l673o"),
-&"clicked": SubResource("Animation_qmqu0")
-}
-
-[node name="TechNode" type="Node2D" unique_id=310214223]
+[node name="TechNode" type="Control" unique_id=640777626 groups=["TechNodes"]]
+z_index = 500
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_2bhwb")
 
-[node name="BG" type="Sprite2D" parent="." unique_id=1116998811]
-position = Vector2(-1, -4)
-scale = Vector2(2, 2)
-texture = ExtResource("2_l673o")
+[node name="LinePositionMarker" type="Marker2D" parent="." unique_id=1310437725]
 
-[node name="NodeFillV2" type="Sprite2D" parent="." unique_id=2014477750]
-position = Vector2(-2, -4)
-scale = Vector2(2, 2)
-texture = ExtResource("3_cw315")
+[node name="BG" type="TextureRect" parent="." unique_id=488014221]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_cw315")
 
-[node name="Icon" type="Sprite2D" parent="." unique_id=1627255305]
-position = Vector2(-2, -5)
-scale = Vector2(2, 2)
-texture = ExtResource("3_0lniu")
+[node name="Icon" type="TextureRect" parent="." unique_id=1888516153]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_nhb52")
 
 [node name="SfxPlayer" parent="." unique_id=874693124 instance=ExtResource("5_nhb52")]
 
-[node name="ClickArea" parent="." unique_id=406455460 instance=ExtResource("3_qmqu0")]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickArea" unique_id=1196420149]
-position = Vector2(-1.5, -4)
-shape = SubResource("RectangleShape2D_l673o")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1790142653]
-libraries/ = SubResource("AnimationLibrary_0lniu")
-
 [node name="LevelLabel" type="RichTextLabel" parent="." unique_id=1701520186]
-z_index = 4096
-offset_left = -34.0
-offset_top = -49.0
-offset_right = 31.0
-offset_bottom = -33.0
+layout_mode = 0
+offset_left = -63.0
+offset_top = -100.0
+offset_right = 64.0
+offset_bottom = -68.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("6_cw315")
+theme_override_fonts/normal_font = ExtResource("5_cw315")
+theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "10/10"
 horizontal_alignment = 1
@@ -168,6 +72,9 @@ position = Vector2(39.000004, -3.9999995)
 scale = Vector2(1.3035716, 1.3035716)
 texture = ExtResource("8_ojxq6")
 
-[connection signal="input_event" from="ClickArea" to="." method="_on_click_area_input_event"]
-[connection signal="mouse_entered" from="ClickArea" to="." method="_on_click_area_mouse_entered"]
-[connection signal="mouse_exited" from="ClickArea" to="." method="_on_click_area_mouse_exited"]
+[node name="ToolTipMarker" type="Marker2D" parent="." unique_id=1051285096]
+position = Vector2(101, -147)
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
