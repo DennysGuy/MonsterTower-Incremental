@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://cf3ufg772gluf"]
+
+[ext_resource type="Script" uid="uid://bf06ckw5wx6u7" path="res://src/Scripts/TechTree/NewTechTree/cooking_tech_tree.gd" id="1_7vto7"]
+[ext_resource type="PackedScene" uid="uid://c4c6abj1a8ara" path="res://src/Scenes/TechTree/NewTechTree/TechTreeCamera.tscn" id="2_n6fqw"]
+[ext_resource type="PackedScene" uid="uid://bhimqkbcn26r2" path="res://src/Scenes/TechTree/TechNode.tscn" id="3_aqpn3"]
+[ext_resource type="Resource" uid="uid://bb7206hq4ygo3" path="res://src/Resources/TechTree/TechNodes/CookingStation.tres" id="4_7vto7"]
+[ext_resource type="Resource" uid="uid://cud4tvd0agqm4" path="res://src/Resources/TechTree/TechNodes/CookingSpeed1.tres" id="5_7vto7"]
+[ext_resource type="Resource" uid="uid://ub5h4g7g447" path="res://src/Resources/TechTree/TechNodes/CookingAccuracy1.tres" id="6_7vto7"]
+[ext_resource type="Resource" uid="uid://b1txboikgk5si" path="res://src/Resources/TechTree/TechNodes/CookingDrops1.tres" id="7_2lla6"]
+
+[node name="CookingStationTechTree" type="Control" unique_id=220942998]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_7vto7")
+
+[node name="TechTreeCamera" parent="." unique_id=2137187773 instance=ExtResource("2_n6fqw")]
+
+[node name="CookingStationUnlock" parent="." unique_id=640777626 instance=ExtResource("3_aqpn3")]
+visible = false
+layout_mode = 1
+offset_left = -684.0
+offset_top = 229.0
+offset_right = -684.0
+offset_bottom = 229.0
+tech_node_stats = ExtResource("4_7vto7")
+node_type = 1
+
+[node name="CookingSpeed1Node" parent="." unique_id=1776225068 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_aqpn3")]
+visible = false
+layout_mode = 1
+offset_left = -145.0
+offset_top = 229.0
+offset_right = -145.0
+offset_bottom = 229.0
+tech_node_stats = ExtResource("5_7vto7")
+previous_node = NodePath("../CookingStationUnlock")
+node_type = 1
+
+[node name="CookingAccuracy1Node" parent="." unique_id=1331020484 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_aqpn3")]
+visible = false
+layout_mode = 1
+offset_left = -145.0
+offset_top = 16.0
+offset_right = -145.0
+offset_bottom = 16.0
+tech_node_stats = ExtResource("6_7vto7")
+previous_node = NodePath("../CookingSpeed1Node")
+
+[node name="CookingDrops1Node" parent="." unique_id=1302849726 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_aqpn3")]
+visible = false
+layout_mode = 1
+offset_left = -146.0
+offset_top = -195.0
+offset_right = -146.0
+offset_bottom = -195.0
+tech_node_stats = ExtResource("7_2lla6")
+previous_node = NodePath("../CookingSpeed1Node")

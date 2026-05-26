@@ -21,9 +21,12 @@ class_name NewTechTree extends Control
 @onready var close_button: Button = $CloseButton
 @onready var currency_label: Label = $CurrencyLabel
 
+var stored_message_panel : TechTreeMessagePanel
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	SignalBus.flash_screen.connect(flash_screen)
+	SignalBus.close_message_panel.connect(remove_message_panel)
 	TechTreeManager.update_currency_label.connect(update_currency_label)
 	expedition_time_tracker.text = "Expedition Time: %s seconds" % PlayerStats.player_stats["Expedition Time"]
 	update_progress()
@@ -159,6 +162,16 @@ func add_refinery_tech_tree() -> void:
 	var inventory_tech_tree: SmeltingTechTree = preload("uid://cgdswp5f76gxo").instantiate()
 	sub_viewport.add_child(inventory_tech_tree)	
 
+func add_cooking_tech_tree() -> void:
+	
+	for child in sub_viewport.get_children():
+		child.queue_free()
+
+	await get_tree().process_frame
+
+	var inventory_tech_tree: CookingTechTree = preload("uid://cf3ufg772gluf").instantiate()
+	sub_viewport.add_child(inventory_tech_tree)	
+
 func show_tech_tree_buttons() -> void:
 	for button in tech_tree_buttons_h_box.get_children():
 		button.show()
@@ -185,6 +198,8 @@ func play_license_upgrade_sequence() -> void:
 	show_tech_tree_buttons()
 	card_view_port_container.hide()
 	add_combat_tech_tree()
+	await get_tree().process_frame
+	insert_message_panel()
 
 func flash_screen() -> void:
 	animation_player.play("FlashScreen")
@@ -241,3 +256,35 @@ func _on_inventory_page_button_button_up() -> void:
 
 func _on_crafting_page_button_button_up() -> void:
 	add_refinery_tech_tree()
+
+func _on_cooking_page_button_button_up() -> void:
+	add_cooking_tech_tree()
+
+
+func insert_message_panel() -> void:
+	var message_panel : TechTreeMessagePanel = preload("uid://bsqvfj57myih2").instantiate()
+
+	add_child(message_panel)
+
+	message_panel.global_position = Vector2(730, 1140)
+
+	stored_message_panel = message_panel
+
+	var tween : Tween = create_tween()
+	tween.tween_property(
+		message_panel,
+		"global_position",
+		Vector2(730, 437),
+		0.15
+	)
+
+	await tween.finished
+
+func remove_message_panel() -> void:
+	if stored_message_panel:
+		var tween : Tween = create_tween()
+		tween.tween_property(stored_message_panel, "global_position", Vector2(730,1140),0.2)
+		await tween.finished
+		stored_message_panel.queue_free()
+	
+	

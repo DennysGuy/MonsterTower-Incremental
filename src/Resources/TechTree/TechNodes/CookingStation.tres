@@ -1,16 +1,20 @@
 [gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://bb7206hq4ygo3"]
 
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_bm6gd"]
-[ext_resource type="Texture2D" uid="uid://bjjrxksrodh7w" path="res://Assets/NodeGraphics/NodeGraphicsV2/CookingStation_V2.png" id="1_farkg"]
+[ext_resource type="Texture2D" uid="uid://cead40idg6uab" path="res://Assets/TechTree/CookingNodes/CookingRange_DisabledGraphic.png" id="1_jk8fh"]
+[ext_resource type="Texture2D" uid="uid://6n88p0cldqmx" path="res://Assets/TechTree/CookingNodes/CookingRange_Graphic.png" id="2_uef7w"]
 
 [resource]
 script = ExtResource("1_bm6gd")
 node_name = "Cooking Station"
-icon = ExtResource("1_farkg")
+icon = ExtResource("2_uef7w")
+disabled_icon = ExtResource("1_jk8fh")
 description = "[color=red]Cook fancy dishes, make profit, or spend on upgrades![/color]
 "
+unlocked = true
 currency_required = 1000
 node_type = 1
+stat_relation = 4
 stat_name = "Cooking Station"
-prereqs = Array[String](["Item Bag 1:1"])
+prereqs = Array[String](["Hunter License:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"
