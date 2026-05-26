@@ -16,6 +16,7 @@ materials_required = Array[Dictionary]([{
 ExtResource("1_b8hcr"): 1
 }])
 node_type = 1
+stat_relation = 1
 stat_name = "HP Chalice"
 prereqs = Array[String](["Max HP 2:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

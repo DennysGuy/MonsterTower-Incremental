@@ -18,6 +18,42 @@ shader_parameter/intensity = 0.35
 shader_parameter/opacity = 0.5
 shader_parameter/glow_color = Color(1, 0.45411175, 0.44957954, 1)
 
+[sub_resource type="Animation" id="Animation_8wv36"]
+resource_name = "FlashScreen"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_rprre"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rprre"]
+_data = {
+&"FlashScreen": SubResource("Animation_8wv36"),
+&"RESET": SubResource("Animation_rprre")
+}
+
 [node name="NewTechTree" type="Control" unique_id=1157777568]
 layout_mode = 3
 anchors_preset = 15
@@ -52,9 +88,9 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -745.5
+offset_left = -878.0
 offset_top = 49.0
-offset_right = 779.5
+offset_right = 647.0
 offset_bottom = 100.0
 grow_horizontal = 2
 theme_override_constants/separation = 20
@@ -114,6 +150,7 @@ theme_override_font_sizes/font_size = 42
 text = "Crafting"
 
 [node name="UpgradeProgressBar" type="TextureProgressBar" parent="." unique_id=254252711]
+visible = false
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -143,7 +180,23 @@ theme_override_font_sizes/font_size = 36
 disabled = true
 text = "[50/50]"
 
+[node name="CloseButton" type="Button" parent="." unique_id=963067259]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 736.0
+offset_top = 44.0
+offset_right = 877.0
+offset_bottom = 90.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_lb8dx")
+theme_override_font_sizes/font_size = 36
+text = "Close"
+
 [node name="ExpeditionTimeTracker" type="Label" parent="." unique_id=211594501]
+visible = false
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -174,19 +227,68 @@ physics_object_picking = true
 size = Vector2i(1792, 765)
 render_target_update_mode = 4
 
+[node name="CardViewPortContainer" type="SubViewportContainer" parent="." unique_id=925912136]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="CardViewSubViewport" type="SubViewport" parent="CardViewPortContainer" unique_id=554870915]
+transparent_bg = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+size = Vector2i(1920, 1080)
+size_2d_override = Vector2i(1920, 1080)
+render_target_update_mode = 0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=752718539]
+root_node = NodePath("../WhiteFlashRect")
+libraries/ = SubResource("AnimationLibrary_rprre")
+
+[node name="WhiteFlashRect" type="ColorRect" parent="." unique_id=1290153819]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="CurrencyLabel" type="Label" parent="." unique_id=1782693979]
+layout_mode = 0
+offset_left = 87.0
+offset_top = 133.0
+offset_right = 525.0
+offset_bottom = 171.0
+theme_override_fonts/font = ExtResource("6_lb8dx")
+theme_override_font_sizes/font_size = 36
+text = "Spirols: 1200"
+
 [connection signal="button_up" from="TechTreeButtonsHBox/CombatPageButton" to="." method="_on_combat_page_button_button_up"]
 [connection signal="mouse_entered" from="TechTreeButtonsHBox/CombatPageButton" to="." method="_on_combat_page_button_mouse_entered"]
 [connection signal="mouse_exited" from="TechTreeButtonsHBox/CombatPageButton" to="." method="_on_combat_page_button_mouse_exited"]
 [connection signal="button_up" from="TechTreeButtonsHBox/SurvivalPageButton" to="." method="_on_survival_page_button_button_up"]
 [connection signal="mouse_entered" from="TechTreeButtonsHBox/SurvivalPageButton" to="." method="_on_survival_page_button_mouse_entered"]
 [connection signal="mouse_exited" from="TechTreeButtonsHBox/SurvivalPageButton" to="." method="_on_survival_page_button_mouse_exited"]
+[connection signal="button_up" from="TechTreeButtonsHBox/TraversalPageButton" to="." method="_on_traversal_page_button_button_up"]
 [connection signal="mouse_entered" from="TechTreeButtonsHBox/TraversalPageButton" to="." method="_on_traversal_page_button_mouse_entered"]
 [connection signal="mouse_exited" from="TechTreeButtonsHBox/TraversalPageButton" to="." method="_on_traversal_page_button_mouse_exited"]
+[connection signal="button_up" from="TechTreeButtonsHBox/InventoryPageButton" to="." method="_on_inventory_page_button_button_up"]
 [connection signal="mouse_entered" from="TechTreeButtonsHBox/InventoryPageButton" to="." method="_on_inventory_page_button_mouse_entered"]
 [connection signal="mouse_exited" from="TechTreeButtonsHBox/InventoryPageButton" to="." method="_on_inventory_page_button_mouse_exited"]
 [connection signal="mouse_entered" from="TechTreeButtonsHBox/CookingPageButton" to="." method="_on_cooking_page_button_mouse_entered"]
 [connection signal="mouse_exited" from="TechTreeButtonsHBox/CookingPageButton" to="." method="_on_cooking_page_button_mouse_exited"]
+[connection signal="button_up" from="TechTreeButtonsHBox/CraftingPageButton" to="." method="_on_crafting_page_button_button_up"]
 [connection signal="mouse_entered" from="TechTreeButtonsHBox/CraftingPageButton" to="." method="_on_crafting_page_button_mouse_entered"]
 [connection signal="mouse_exited" from="TechTreeButtonsHBox/CraftingPageButton" to="." method="_on_crafting_page_button_mouse_exited"]
+[connection signal="button_up" from="UpgradeTrackerButton" to="." method="_on_upgrade_tracker_button_button_up"]
 [connection signal="mouse_entered" from="UpgradeTrackerButton" to="." method="_on_upgrade_tracker_button_mouse_entered"]
 [connection signal="mouse_exited" from="UpgradeTrackerButton" to="." method="_on_upgrade_tracker_button_mouse_exited"]
+[connection signal="button_up" from="CloseButton" to="." method="_on_close_button_button_up"]
+[connection signal="mouse_entered" from="CloseButton" to="." method="_on_close_button_mouse_entered"]
+[connection signal="mouse_exited" from="CloseButton" to="." method="_on_close_button_mouse_exited"]

@@ -46,6 +46,9 @@ signal check_if_can_show_class_select_node
 @warning_ignore("unused_signal")
 signal update_available_ap_label
 
+@warning_ignore("unused_signal")
+signal play_license_upgrade_sequence
+
 var currency : int = 0
 var current_prestige : int = 0
 
@@ -167,13 +170,16 @@ func increment_upgrade_count() -> void:
 	update_prestige_tier_progress_label.emit()
 	
 	if current_upgrade_count >= upgrade_count_to_prestige:
-		QuestManager.check_general_task_for_completion.emit("Upgrade Hunter License")
-		current_prestige += 1
-		PlayerStats.player_stats["Expedition Time"] += 30
-		upgrade_count_to_prestige += 15
-		current_upgrade_count = 0
-		update_prestige_tier_label.emit()
-		update_prestige_tier_progress_label.emit()
+		TechTreeManager.play_license_upgrade_sequence.emit()
+
+func upgrade_hunter_license() -> void:
+	QuestManager.check_general_task_for_completion.emit("Upgrade Hunter License")
+	current_prestige += 1
+	PlayerStats.player_stats["Expedition Time"] += 30
+	upgrade_count_to_prestige += 15
+	current_upgrade_count = 0
+	update_prestige_tier_label.emit()
+	update_prestige_tier_progress_label.emit()
 
 func get_tech_node_status(node_name : String) -> bool:
 	return SaveManager.current_save_game.tech_nodes[node_name]["Unlocked"]

@@ -3,6 +3,7 @@ class_name CombatTechTree extends TechTreeMap
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	super()
 	player_tech_tree_intro()
 
 

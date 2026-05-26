@@ -1,16 +1,19 @@
 [gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://ddxgheqee7kmy"]
 
-[ext_resource type="Texture2D" uid="uid://c28cbtdwieqmv" path="res://Assets/NodeGraphics/NodeGraphicsV2/MiningSpeed1_V2.png" id="1_abuas"]
+[ext_resource type="Texture2D" uid="uid://lqv6duhynala" path="res://Assets/TechTree/SmeltingNodes/MiningSpeed_Disabled_Graphic.png" id="1_wiynt"]
+[ext_resource type="Texture2D" uid="uid://djdk26814s4ut" path="res://Assets/TechTree/SmeltingNodes/MiningSpeed_Graphic.png" id="2_1l6iv"]
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="2_wiynt"]
 
 [resource]
 script = ExtResource("2_wiynt")
 node_name = "Mining Speed 1"
-icon = ExtResource("1_abuas")
+icon = ExtResource("2_1l6iv")
+disabled_icon = ExtResource("1_wiynt")
 description = "Increase Pickaxe Damage to ore rocks 5 for each level
 "
 max_level = 5
 currency_required = 300
+stat_relation = 5
 stat_name = "Mining Damage"
 upgrade_interval = 5.0
 prereqs = Array[String](["Refinery Station:1"])

@@ -16,6 +16,7 @@ materials_required = Array[Dictionary]([{
 ExtResource("1_1symy"): 2
 }])
 node_type = 1
+stat_relation = 1
 stat_name = "MP Vial"
 prereqs = Array[String](["Max MP 2:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

@@ -10,6 +10,7 @@ node_name = "Attack 1"
 icon = ExtResource("1_lepj1")
 disabled_icon = ExtResource("1_ro3qq")
 description = "Hit them monsters harder! Increase weapon attack by 25% per level."
+unlocked = true
 max_level = 5
 currency_required = 50
 stat_name = "Attack Damage"

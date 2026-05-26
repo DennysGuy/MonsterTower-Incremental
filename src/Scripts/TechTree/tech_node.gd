@@ -111,52 +111,6 @@ func _on_click_area_mouse_exited() -> void:
 	in_range = false
 	remove_tool_tip()
 
-func _on_click_area_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if node_type != TechTreeManager.TECH_NODE_TYPE.CLASS_ABILITY:
-		if can_click and TechTreeManager.currency < tech_node_stats.currency_required and has_resource_quantity():
-			print("Not enough currency!")
-			return
-	else:
-		if can_click and PlayerStats.player_stats["Ability Points"] < tech_node_stats.ap_required and has_resource_quantity():
-			return
-	
-	if can_click and mouse_entered and event.is_action_pressed("left_click"):
-		sfx_player.play_sfx(NODE_CLICK)
-		#animation_player.play("clicked")
-		tech_node_stats.current_level += 1
-		
-		TechTreeManager.increment_upgrade_count()
-		PlayerStats.upgrade_player_stat(tech_node_stats.stat_name,tech_node_stats.upgrade_interval, node_type)
-		if node_type != TechTreeManager.TECH_NODE_TYPE.CLASS_ABILITY:
-			deduct_currency()
-		else:
-			deduct_ap()
-			
-		deduct_resources()
-		
-		if tech_node_stats.upgrade_interval > 0:
-			total_bonus += tech_node_stats.upgrade_interval
-			TechTreeManager.update_tool_tip_info.emit(total_bonus)
-			#update label here
-		
-		#print("this is val of dict node before hand: %s" % [TechTreeManager.tech_nodes[tech_node_stats.node_name]])
-		TechTreeManager.tech_nodes[tech_node_stats.node_name] += 1
-		QuestManager.check_node_name.emit(tech_node_stats.node_name)
-		set_level_label()
-		#print("this is val of dict node after: %s" % [TechTreeManager.tech_nodes[tech_node_stats.node_name]] )
-		check_if_can_purchase()
-		TechTreeManager.check_node_prereqs.emit()
-		TechTreeManager.check_if_can_purchase_node.emit()
-		
-		if node_type == TechTreeManager.TECH_NODE_TYPE.CLASS_ABILITY and PlayerStats.player_stats["Class"] == "Junior Hunter":
-			TechTreeManager.check_if_can_show_class_select_node.emit()
-		
-		SaveManager.save_tech_tree_data()
-		SaveManager.save_player_stats()
-		SaveManager.save_inventories()
-		save_node_data()
-		TechTreeManager.save_node_data.emit()
-
 func save_node_data() -> void:
 	if SaveManager.current_save_game:
 		var node_save = SaveManager.current_save_game.tech_nodes.get(tech_node_stats.node_name)
@@ -258,9 +212,9 @@ func create_tool_tip() -> void:
 	tool_tip.description.text = tech_node_stats.description
 	if node_type != TechTreeManager.TECH_NODE_TYPE.CLASS_ABILITY:
 		if TechTreeManager.currency >=  tech_node_stats.currency_required:
-			tool_tip.cost.text = "[color=green]Cost: %s/%s[/color]" % [TechTreeManager.currency, tech_node_stats.currency_required]
+			tool_tip.cost.text = "[color=green]Spirols: %s/%s[/color]" % [TechTreeManager.currency, tech_node_stats.currency_required]
 		else:
-			tool_tip.cost.text = "Cost: %s/%s" % [TechTreeManager.currency, tech_node_stats.currency_required]
+			tool_tip.cost.text = "Spirols: %s/%s" % [TechTreeManager.currency, tech_node_stats.currency_required]
 	else:
 		if PlayerStats.player_stats["Ability Points"] >= tech_node_stats.ap_required:
 			tool_tip.cost.text = "[color=green]AP %s/%s[/color]" % [PlayerStats.player_stats["Ability Points"],tech_node_stats.ap_required]
@@ -296,26 +250,28 @@ func has_resource_quantity() -> bool:
 func set_graphic_as_purchased() -> void:
 	bg.texture = node_base_graphic
 	icon.texture = tech_node_stats.icon
-	modulate.a = 1.0
+	set_icon_modulation(1.0)
 	#We'll probably add some sort of particle emitter here too
 
 func set_graphic_as_enabled() -> void:
 	bg.texture = node_base_graphic
 	icon.texture = tech_node_stats.icon
-	modulate.a = 0.75
+	set_icon_modulation(0.75)
 
 func set_graphic_as_disabled() -> void:
 	bg.texture = node_base_disabled_graphic
 	icon.texture = tech_node_stats.disabled_icon
-	modulate.a = 0.5
+	set_icon_modulation(0.5)
 
 func _on_mouse_entered() -> void:
 	in_range = true
+	expand()
 	sfx_player.play_sfx(HOVER_OVER_NODE)
 	create_tool_tip()
 
 func _on_mouse_exited() -> void:
 	in_range = false
+	button_to_normal()
 	remove_tool_tip()
 
 func _on_gui_input(event: InputEvent) -> void:
@@ -333,7 +289,7 @@ func _on_gui_input(event: InputEvent) -> void:
 			#animation_player.play("clicked")
 			tech_node_stats.current_level += 1
 			
-			TechTreeManager.increment_upgrade_count()
+			
 			PlayerStats.upgrade_player_stat(tech_node_stats.stat_name,tech_node_stats.upgrade_interval, node_type)
 			if node_type != TechTreeManager.TECH_NODE_TYPE.CLASS_ABILITY:
 				deduct_currency()
@@ -364,23 +320,27 @@ func _on_gui_input(event: InputEvent) -> void:
 			SaveManager.save_inventories()
 			save_node_data()
 			TechTreeManager.save_node_data.emit()
+			TechTreeManager.increment_upgrade_count()
 
 func show_node() -> void:
 	if tech_node_stats.unlocked:
-		if previous_node:
-			var line: Line2D = Line2D.new()
-			line.z_index = -1
-			line.width = 10
-			add_child(line)
-			move_child(line, 0)
-
-			var start_pos := line.to_local(previous_node.line_position_marker.global_position)
-			var end_pos := line.to_local(line_position_marker.global_position)
-
-			animate_line(line, start_pos, end_pos)
-			await get_tree().create_timer(0.05).timeout
+		#if previous_node:
+			#draw_node_line()
 
 		pop_in()
+
+func draw_node_line() -> void:
+	var line: Line2D = Line2D.new()
+	line.z_index = -1
+	line.width = 20
+	add_child(line)
+	move_child(line, 0)
+
+	var start_pos := line.to_local(previous_node.line_position_marker.global_position)
+	var end_pos := line.to_local(line_position_marker.global_position)
+
+	animate_line(line, start_pos, end_pos)
+	await get_tree().create_timer(0.05).timeout
 		
 func animate_line(line : Line2D, start_pos : Vector2, end_pos : Vector2, duration : float = 0.25) -> void:
 	line.points = PackedVector2Array([start_pos, start_pos])
@@ -406,3 +366,16 @@ func pop_in(duration : float = 0.15) -> void:
 	#tween.tween_property(self, "modulate:a", 1.0, duration)
 
 	await tween.finished
+
+
+func expand() -> void:
+	var tween : Tween = get_tree().create_tween()
+	tween.tween_property(self, "scale",Vector2(1.05,1.05),0.1)
+
+func button_to_normal() -> void:
+	var tween : Tween = get_tree().create_tween()
+	tween.tween_property(self, "scale",Vector2(1.0,1.0),0.1)
+
+func set_icon_modulation(value : float) -> void:
+	bg.modulate.a = value
+	icon.modulate.a = value

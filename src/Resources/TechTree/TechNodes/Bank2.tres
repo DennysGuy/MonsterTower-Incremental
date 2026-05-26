@@ -1,18 +1,21 @@
 [gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://cqjeh0yqqse5c"]
 
-[ext_resource type="Texture2D" uid="uid://0pp8v4uqsyae" path="res://Assets/NodeGraphics/NodeGraphicsV2/Bank2_V2.png" id="1_div6n"]
+[ext_resource type="Texture2D" uid="uid://b47i64hbhbsau" path="res://Assets/TechTree/InventoryNodes/BankExpansion_Disabled_Graphic.png" id="1_dv4qv"]
 [ext_resource type="Resource" uid="uid://boeryxspsw8uq" path="res://src/Resources/Dishes/CookedGagootz.tres" id="2_dv4qv"]
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="2_jrlte"]
+[ext_resource type="Texture2D" uid="uid://dw7hc4m3rrhgw" path="res://Assets/TechTree/InventoryNodes/BankExpansion_Graphic.png" id="2_myfl4"]
 
 [resource]
 script = ExtResource("2_jrlte")
 node_name = "Banking 2"
-icon = ExtResource("1_div6n")
+icon = ExtResource("2_myfl4")
+disabled_icon = ExtResource("1_dv4qv")
 description = "Bank Slots increased to 12"
 currency_required = 2000
 materials_required = Array[Dictionary]([{
 ExtResource("2_dv4qv"): 3
 }])
+stat_relation = 3
 stat_name = "Max Bank Slots"
 upgrade_interval = 4.0
 prereqs = Array[String](["Banking: 1"])

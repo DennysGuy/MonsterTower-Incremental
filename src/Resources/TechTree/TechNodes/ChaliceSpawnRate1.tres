@@ -19,6 +19,7 @@ ExtResource("1_cg2dv"): 2
 }, {
 ExtResource("2_5ad7r"): 2
 }])
+stat_relation = 1
 stat_name = "Chalice Spawn Rate"
 upgrade_interval = 0.1
 prereqs = Array[String](["Chalice of Welfare:1"])

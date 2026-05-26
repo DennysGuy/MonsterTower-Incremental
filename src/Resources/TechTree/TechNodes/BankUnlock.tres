@@ -1,15 +1,18 @@
 [gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://cmbxvekbk2uxx"]
 
+[ext_resource type="Texture2D" uid="uid://cmt1aukp0tpkt" path="res://Assets/TechTree/InventoryNodes/BankUnlock_Disabled_Graphic.png" id="1_5btic"]
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_byv8u"]
-[ext_resource type="Texture2D" uid="uid://d1nf80ju1h17" path="res://Assets/NodeGraphics/NodeGraphicsV2/Bank1_V2.png" id="1_y8g6j"]
+[ext_resource type="Texture2D" uid="uid://dnxraduwcocug" path="res://Assets/TechTree/InventoryNodes/BankUnlock_Graphic.png" id="2_sex3j"]
 
 [resource]
 script = ExtResource("1_byv8u")
 node_name = "Banking"
-icon = ExtResource("1_y8g6j")
+icon = ExtResource("2_sex3j")
+disabled_icon = ExtResource("1_5btic")
 description = "Grants you [color=green]8 off shore inventory slots[/color]."
 currency_required = 1000
 node_type = 1
+stat_relation = 3
 stat_name = "Bank"
 prereqs = Array[String](["Item Bag 1:1", "Deeper Pockets 1:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

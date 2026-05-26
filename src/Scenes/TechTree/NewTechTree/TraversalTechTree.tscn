@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://ngqtevyit7sv"]
+
+[ext_resource type="Script" uid="uid://dvaxkdev51itl" path="res://src/Scripts/TechTree/NewTechTree/traversal_tech_tree.gd" id="1_v5alw"]
+[ext_resource type="PackedScene" uid="uid://c4c6abj1a8ara" path="res://src/Scenes/TechTree/NewTechTree/TechTreeCamera.tscn" id="2_jjd58"]
+[ext_resource type="PackedScene" uid="uid://bhimqkbcn26r2" path="res://src/Scenes/TechTree/TechNode.tscn" id="3_s7m4j"]
+[ext_resource type="Resource" uid="uid://b4xw1euerb1ka" path="res://src/Resources/TechTree/TechNodes/JumpHeight1.tres" id="4_jjd58"]
+[ext_resource type="Resource" uid="uid://ds0j00mlqnf55" path="res://src/Resources/TechTree/TechNodes/Movement1.tres" id="5_0ccxk"]
+[ext_resource type="Resource" uid="uid://b4n8wh8pnsfi8" path="res://src/Resources/TechTree/TechNodes/JumpHeight2.tres" id="5_v5alw"]
+[ext_resource type="Resource" uid="uid://bvqw5l1mpu3ku" path="res://src/Resources/TechTree/TechNodes/ClimbingSpeed1.tres" id="6_mtjln"]
+[ext_resource type="Resource" uid="uid://hqgkc8c13u2a" path="res://src/Resources/TechTree/TechNodes/Movement2.tres" id="8_0ccxk"]
+[ext_resource type="Resource" uid="uid://cr15fmppvbijx" path="res://src/Resources/TechTree/TechNodes/ClimbingSpeed2.tres" id="9_0ccxk"]
+[ext_resource type="Resource" uid="uid://ohr0gxoujtw2" path="res://src/Resources/TechTree/TechNodes/Movement3.tres" id="10_mtjln"]
+
+[node name="TraversalTechTree" type="Control" unique_id=220942998]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_v5alw")
+
+[node name="TechTreeCamera" parent="." unique_id=2137187773 instance=ExtResource("2_jjd58")]
+
+[node name="JumpHeight1Node" parent="." unique_id=640777626 instance=ExtResource("3_s7m4j")]
+visible = false
+layout_mode = 1
+offset_left = -684.0
+offset_top = 229.0
+offset_right = -684.0
+offset_bottom = 229.0
+tech_node_stats = ExtResource("4_jjd58")
+
+[node name="JumpHeight1Node2" parent="." unique_id=1804535485 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_s7m4j")]
+visible = false
+layout_mode = 1
+offset_left = -684.0
+offset_top = 19.0
+offset_right = -684.0
+offset_bottom = 19.0
+tech_node_stats = ExtResource("5_v5alw")
+previous_node = NodePath("../JumpHeight1Node")
+
+[node name="MovementSpeed1Node" parent="." unique_id=1776225068 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_s7m4j")]
+visible = false
+layout_mode = 1
+offset_left = -145.0
+offset_top = 229.0
+offset_right = -145.0
+offset_bottom = 229.0
+tech_node_stats = ExtResource("5_0ccxk")
+previous_node = NodePath("../JumpHeight1Node")
+
+[node name="ClimbSpeed1Node" parent="." unique_id=1331020484 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_s7m4j")]
+visible = false
+layout_mode = 1
+offset_left = -145.0
+offset_top = 16.0
+offset_right = -145.0
+offset_bottom = 16.0
+tech_node_stats = ExtResource("6_mtjln")
+previous_node = NodePath("../MovementSpeed1Node")
+
+[node name="MovementSpeed2Node" parent="." unique_id=1302849726 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_s7m4j")]
+visible = false
+layout_mode = 1
+offset_left = 360.0
+offset_top = 229.0
+offset_right = 360.0
+offset_bottom = 229.0
+tech_node_stats = ExtResource("8_0ccxk")
+previous_node = NodePath("../MovementSpeed1Node")
+
+[node name="ClimbingSpeed2Node" parent="." unique_id=1305696302 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_s7m4j")]
+visible = false
+layout_mode = 1
+offset_left = 360.0
+offset_top = 16.0
+offset_right = 360.0
+offset_bottom = 16.0
+tech_node_stats = ExtResource("9_0ccxk")
+previous_node = NodePath("../MovementSpeed2Node")
+
+[node name="MovementSpeed3Node" parent="." unique_id=1548307285 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_s7m4j")]
+visible = false
+layout_mode = 1
+offset_left = 846.0
+offset_top = 229.0
+offset_right = 846.0
+offset_bottom = 229.0
+tech_node_stats = ExtResource("10_mtjln")
+previous_node = NodePath("../MovementSpeed2Node")

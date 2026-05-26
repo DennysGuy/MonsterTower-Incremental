@@ -117,12 +117,6 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("open_bag") and GameManager.can_open_bag:
 		show_bag()
 	
-	if Input.is_action_just_pressed("show_quests"):
-		quests_showing = !quests_showing
-		if quests_showing:
-			show_quests()
-		else:
-			hide_quests()
 			
 	if Input.is_action_just_pressed("open_codex"):
 		if !codex_open:

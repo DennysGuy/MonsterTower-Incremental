@@ -13,11 +13,13 @@ const TIER_7_MATERIAL = preload("uid://ce42err2qwsc0")
 const TIER_8_MATERIAL = preload("uid://4bsls6cd7ohk")
 const TIER_9_MATERIAL = preload("uid://be0eet7d4hrwp")
 const TIER_10_MATERIAL = preload("uid://bmrrk88u70b30")
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	change_texutre()
+	change_texture()
+	animation_player.play("UpgradeLicense")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -25,7 +27,7 @@ func _process(delta: float) -> void:
 	pass
 
 
-func change_texutre() -> void:
+func change_texture() -> void:
 	
 	match TechTreeManager.current_prestige:
 		0:
@@ -50,3 +52,9 @@ func change_texutre() -> void:
 			mesh.set_surface_override_material(0, TIER_9_MATERIAL)
 		10:
 			mesh.set_surface_override_material(0, TIER_10_MATERIAL)
+
+func update_card() -> void:
+	SignalBus.flash_screen.emit()
+	await get_tree().create_timer(0.5).timeout
+	TechTreeManager.upgrade_hunter_license()
+	change_texture()

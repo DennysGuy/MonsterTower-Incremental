@@ -1,9 +1,16 @@
 [gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://cr15fmppvbijx"]
 
+[ext_resource type="Texture2D" uid="uid://3mpgeavips1s" path="res://Assets/TechTree/TraversalNodes/ClimbSpeed_Disabled_Graphic.png" id="1_amjfi"]
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_kjhme"]
+[ext_resource type="Texture2D" uid="uid://40u5l632m48x" path="res://Assets/TechTree/TraversalNodes/ClimbSpeed_Graphic.png" id="2_ljeiv"]
 
 [resource]
 script = ExtResource("1_kjhme")
 node_name = "Climb Speed 2"
+icon = ExtResource("2_ljeiv")
+disabled_icon = ExtResource("1_amjfi")
+description = "Speed up vertical coverage! Increases Climb Speed by 5% per level"
 currency_required = 1500
+stat_relation = 2
+prereqs = Array[String](["Movement 2:2"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

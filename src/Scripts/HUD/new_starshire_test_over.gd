@@ -29,7 +29,7 @@ func spawn_pause_menu() -> void:
 	
 func spawn_tech_tree() -> void:
 	canvas_layer.show()
-	var tech_tree : TechTree = preload("uid://b7n3fwd3y85wp").instantiate()
+	var tech_tree : NewTechTree = preload("uid://diodc16waxg0q").instantiate()
 	sub_viewport.add_child(tech_tree)
 
 func spawn_tower_entrance_map() -> void:	

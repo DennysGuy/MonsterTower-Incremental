@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://cgdswp5f76gxo"]
+
+[ext_resource type="Script" uid="uid://cvy7dxghcv6w2" path="res://src/Scripts/TechTree/NewTechTree/smelting_tech_tree.gd" id="1_nxs8t"]
+[ext_resource type="PackedScene" uid="uid://c4c6abj1a8ara" path="res://src/Scenes/TechTree/NewTechTree/TechTreeCamera.tscn" id="2_bcll4"]
+[ext_resource type="PackedScene" uid="uid://bhimqkbcn26r2" path="res://src/Scenes/TechTree/TechNode.tscn" id="3_5r3ba"]
+[ext_resource type="Resource" uid="uid://peiyat841rxh" path="res://src/Resources/TechTree/TechNodes/RefineryStation.tres" id="4_nxs8t"]
+[ext_resource type="Resource" uid="uid://c6cb7c8bqn7ow" path="res://src/Resources/TechTree/TechNodes/RefinerySpeed1.tres" id="5_8pn5x"]
+[ext_resource type="Resource" uid="uid://licswcd54xsn" path="res://src/Resources/TechTree/TechNodes/RefineryAccuracy1.tres" id="6_8pn5x"]
+[ext_resource type="Resource" uid="uid://ddxgheqee7kmy" path="res://src/Resources/TechTree/TechNodes/MiningSpeed1.tres" id="7_n6gwq"]
+[ext_resource type="Resource" uid="uid://ctf4we33chvvs" path="res://src/Resources/TechTree/TechNodes/OreRockDrop1.tres" id="8_n6gwq"]
+
+[node name="InventoryTechTree" type="Control" unique_id=220942998]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_nxs8t")
+
+[node name="TechTreeCamera" parent="." unique_id=2137187773 instance=ExtResource("2_bcll4")]
+
+[node name="SmeltingStationUnlockNode" parent="." unique_id=640777626 instance=ExtResource("3_5r3ba")]
+visible = false
+layout_mode = 1
+offset_left = -684.0
+offset_top = 229.0
+offset_right = -684.0
+offset_bottom = 229.0
+tech_node_stats = ExtResource("4_nxs8t")
+node_type = 1
+
+[node name="SmeltingSpeed1Node" parent="." unique_id=1776225068 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_5r3ba")]
+visible = false
+layout_mode = 1
+offset_left = -145.0
+offset_top = 229.0
+offset_right = -145.0
+offset_bottom = 229.0
+tech_node_stats = ExtResource("5_8pn5x")
+previous_node = NodePath("../SmeltingStationUnlockNode")
+node_type = 1
+
+[node name="SmeltingAccuracy1Node" parent="." unique_id=1331020484 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_5r3ba")]
+visible = false
+layout_mode = 1
+offset_left = -145.0
+offset_top = 16.0
+offset_right = -145.0
+offset_bottom = 16.0
+tech_node_stats = ExtResource("6_8pn5x")
+previous_node = NodePath("../SmeltingSpeed1Node")
+
+[node name="MiningSpeed1Node" parent="." unique_id=1302849726 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_5r3ba")]
+visible = false
+layout_mode = 1
+offset_left = 360.0
+offset_top = 229.0
+offset_right = 360.0
+offset_bottom = 229.0
+tech_node_stats = ExtResource("7_n6gwq")
+previous_node = NodePath("../SmeltingSpeed1Node")
+
+[node name="OreDropChance1Node" parent="." unique_id=1305696302 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_5r3ba")]
+visible = false
+layout_mode = 1
+offset_left = 360.0
+offset_top = 16.0
+offset_right = 360.0
+offset_bottom = 16.0
+tech_node_stats = ExtResource("8_n6gwq")
+previous_node = NodePath("../MiningSpeed1Node")

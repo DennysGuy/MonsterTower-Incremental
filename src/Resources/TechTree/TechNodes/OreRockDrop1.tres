@@ -1,15 +1,18 @@
 [gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://ctf4we33chvvs"]
 
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_0lrnr"]
-[ext_resource type="Texture2D" uid="uid://cctstnqoiksmj" path="res://Assets/NodeGraphics/NodeGraphicsV2/OreDrop1_V2.png" id="1_lunog"]
+[ext_resource type="Texture2D" uid="uid://vhb0xk5w3giy" path="res://Assets/TechTree/SmeltingNodes/OreChanceUp_Disabled_Graphic.png" id="1_e3eib"]
+[ext_resource type="Texture2D" uid="uid://cmq74rqxnx62d" path="res://Assets/TechTree/SmeltingNodes/OreChanceUp_Graphic.png" id="2_u7h0r"]
 
 [resource]
 script = ExtResource("1_0lrnr")
 node_name = "Ore Drop Chance 1"
-icon = ExtResource("1_lunog")
+icon = ExtResource("2_u7h0r")
+disabled_icon = ExtResource("1_e3eib")
 description = "Increases chance to excavate ore from Ore Rock by 5% per level."
 max_level = 3
 currency_required = 400
+stat_relation = 5
 stat_name = "Ore Drop Chance Bonus"
 upgrade_interval = 0.05
 prereqs = Array[String](["Mining Speed 1:1"])

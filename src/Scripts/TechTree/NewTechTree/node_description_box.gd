@@ -31,7 +31,7 @@ func update_info(total_bonus : float) -> void:
 			current_benefits.text = "+%s" %[int(total_bonus)]
 	
 	description.text = tech_node_stats.description
-	cost.text = "Currency: %s/%s" % [TechTreeManager.currency,tech_node_stats.currency_required]
+	cost.text = "Spirols: %s/%s" % [TechTreeManager.currency,tech_node_stats.currency_required]
 	
 	populate_resources_needed_list()
 
