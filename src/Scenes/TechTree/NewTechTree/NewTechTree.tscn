@@ -163,37 +163,35 @@ grow_horizontal = 1
 grow_vertical = 1
 task_id = 26
 
-[node name="CookingStationTutorialBox" parent="." unique_id=879263566 instance=ExtResource("7_uxwd2")]
-visible = false
-layout_mode = 0
-anchors_preset = 0
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 1419.0
-offset_top = 36.0
-offset_right = 1690.0
-offset_bottom = 109.0
-grow_horizontal = 1
-grow_vertical = 1
-task_id = 33
-
 [node name="CraftingStationTutorialBox" parent="." unique_id=1325496419 instance=ExtResource("7_uxwd2")]
-visible = false
 layout_mode = 0
 anchors_preset = 0
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 1179.0
-offset_top = 36.0
-offset_right = 1412.0
-offset_bottom = 109.0
+offset_left = 1418.0
+offset_top = 44.0
+offset_right = 1692.0
+offset_bottom = 105.0
 grow_horizontal = 1
 grow_vertical = 1
 task_id = 34
+
+[node name="CookingStationTutorialBox" parent="." unique_id=879263566 instance=ExtResource("7_uxwd2")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 1183.0
+offset_top = 45.0
+offset_right = 1414.0
+offset_bottom = 105.0
+grow_horizontal = 1
+grow_vertical = 1
+task_id = 33
 
 [node name="UpgradeProgressBar" type="TextureProgressBar" parent="." unique_id=254252711]
 visible = false
@@ -216,9 +214,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -107.0
-offset_top = 170.0
+offset_top = 114.0
 offset_right = 115.7843
-offset_bottom = 216.0
+offset_bottom = 160.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("6_lb8dx")
@@ -232,9 +230,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -16.0
-offset_top = 99.0
+offset_top = 42.0
 offset_right = 32.0
-offset_bottom = 163.0
+offset_bottom = 106.0
 grow_horizontal = 2
 texture = ExtResource("9_4khty")
 

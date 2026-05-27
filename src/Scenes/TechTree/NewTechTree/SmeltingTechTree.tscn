@@ -24,9 +24,9 @@ script = ExtResource("1_nxs8t")
 [node name="SmeltingStationUnlockNode" parent="." unique_id=640777626 instance=ExtResource("3_5r3ba")]
 visible = false
 layout_mode = 1
-offset_left = -684.0
+offset_left = -704.0
 offset_top = 229.0
-offset_right = -684.0
+offset_right = -704.0
 offset_bottom = 229.0
 tech_node_stats = ExtResource("4_nxs8t")
 node_type = 1
@@ -34,9 +34,9 @@ node_type = 1
 [node name="SmeltingSpeed1Node" parent="." unique_id=1776225068 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_5r3ba")]
 visible = false
 layout_mode = 1
-offset_left = -145.0
+offset_left = -192.0
 offset_top = 229.0
-offset_right = -145.0
+offset_right = -192.0
 offset_bottom = 229.0
 tech_node_stats = ExtResource("5_8pn5x")
 previous_node = NodePath("../SmeltingStationUnlockNode")
@@ -45,19 +45,19 @@ node_type = 1
 [node name="SmeltingAccuracy1Node" parent="." unique_id=1331020484 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_5r3ba")]
 visible = false
 layout_mode = 1
-offset_left = -145.0
-offset_top = 16.0
-offset_right = -145.0
-offset_bottom = 16.0
+offset_left = -192.0
+offset_top = 36.0
+offset_right = -192.0
+offset_bottom = 36.0
 tech_node_stats = ExtResource("6_8pn5x")
 previous_node = NodePath("../SmeltingSpeed1Node")
 
 [node name="MiningSpeed1Node" parent="." unique_id=1302849726 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_5r3ba")]
 visible = false
 layout_mode = 1
-offset_left = 360.0
+offset_left = 320.0
 offset_top = 229.0
-offset_right = 360.0
+offset_right = 320.0
 offset_bottom = 229.0
 tech_node_stats = ExtResource("7_n6gwq")
 previous_node = NodePath("../SmeltingSpeed1Node")
@@ -65,9 +65,9 @@ previous_node = NodePath("../SmeltingSpeed1Node")
 [node name="OreDropChance1Node" parent="." unique_id=1305696302 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_5r3ba")]
 visible = false
 layout_mode = 1
-offset_left = 360.0
-offset_top = 16.0
-offset_right = 360.0
-offset_bottom = 16.0
+offset_left = 320.0
+offset_top = 36.0
+offset_right = 320.0
+offset_bottom = 36.0
 tech_node_stats = ExtResource("8_n6gwq")
 previous_node = NodePath("../MiningSpeed1Node")

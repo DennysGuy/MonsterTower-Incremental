@@ -11,7 +11,7 @@ class_name Entity extends CharacterBody2D
 @export var event_damage_multiplier : float = 1.0
 @export var stored_stun_marker_icon : StunMarkerIcon
 @export var locked_on : bool = false
-
+@export var label_position : float = 60
 
 @export_group("Detectors")
 @export var hurt_box : HurtBox
@@ -57,7 +57,7 @@ func _physics_process(delta: float) -> void:
 func _process(delta: float) -> void:
 	state_machine.process_frame(delta)
 
-func apply_damage(incoming_damage : int, is_crit : bool, label_position : int = 40):
+func apply_damage(incoming_damage : int, is_crit : bool, new_label_position : int = 60):
 	if !damageable:
 		return
 	
@@ -70,7 +70,11 @@ func apply_damage(incoming_damage : int, is_crit : bool, label_position : int = 
 	var damage_label : DamageLabel = preload("uid://dkchs27qqogyy").instantiate()
 	if is_crit:
 		damage_label.set_crit_bg()
-	damage_label.global_position.y = global_position.y-label_position
+	
+	if self is Player:
+		damage_label.set_player_bg()
+		
+	damage_label.global_position.y = global_position.y-new_label_position
 	damage_label.global_position.x = global_position.x
 	damage_label.label.text = damage
 	if self is Enemy:

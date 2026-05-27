@@ -4,6 +4,43 @@
 [ext_resource type="Texture2D" uid="uid://cyyawskdhc3u5" path="res://Assets/DamageLabelBG.png" id="1_q1s8l"]
 [ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="3_lwc7n"]
 
+[sub_resource type="Animation" id="Animation_lwc7n"]
+resource_name = "Grow"
+length = 0.26666668
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../TextureRect:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.26666668),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.5, 1.5), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_cjugp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../TextureRect:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cjugp"]
+_data = {
+&"Grow": SubResource("Animation_lwc7n"),
+&"RESET": SubResource("Animation_cjugp")
+}
+
 [node name="DamageLabel" type="Control" unique_id=155304835 node_paths=PackedStringArray("label", "texture_rect")]
 z_index = 4096
 layout_mode = 3
@@ -14,6 +51,10 @@ script = ExtResource("1_6618s")
 label = NodePath("TextureRect/Label")
 texture_rect = NodePath("TextureRect")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2043226511]
+root_node = NodePath("../Timer")
+libraries/ = SubResource("AnimationLibrary_cjugp")
+
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1922984908]
 layout_mode = 1
 anchors_preset = 8
@@ -21,10 +62,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -28.5
-offset_top = -29.0
-offset_right = -0.51818085
-offset_bottom = -2.0
+offset_left = -32.5
+offset_top = -31.0
+offset_right = 2.7363663
+offset_bottom = 3.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(14, 14)
@@ -33,14 +74,13 @@ expand_mode = 1
 
 [node name="Label" type="Label" parent="TextureRect" unique_id=1724361231]
 layout_mode = 0
-offset_left = 4.0
-offset_top = 1.0
-offset_right = 24.0
-offset_bottom = 25.0
+offset_left = 5.0
+offset_right = 29.0
+offset_bottom = 32.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 7
 theme_override_fonts/font = ExtResource("3_lwc7n")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 32
 text = "12"
 horizontal_alignment = 1
 

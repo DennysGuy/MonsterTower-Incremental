@@ -340,8 +340,8 @@ func _on_gui_input(event: InputEvent) -> void:
 
 func show_node() -> void:
 	if tech_node_stats.unlocked:
-		#if previous_node:
-			#draw_node_line()
+		if previous_node:
+			draw_node_line()
 
 		pop_in()
 

@@ -23,9 +23,9 @@ script = ExtResource("1_7vto7")
 [node name="CookingStationUnlock" parent="." unique_id=640777626 instance=ExtResource("3_aqpn3")]
 visible = false
 layout_mode = 1
-offset_left = -684.0
+offset_left = -704.0
 offset_top = 229.0
-offset_right = -684.0
+offset_right = -704.0
 offset_bottom = 229.0
 tech_node_stats = ExtResource("4_7vto7")
 node_type = 1
@@ -33,9 +33,9 @@ node_type = 1
 [node name="CookingSpeed1Node" parent="." unique_id=1776225068 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_aqpn3")]
 visible = false
 layout_mode = 1
-offset_left = -145.0
+offset_left = -192.0
 offset_top = 229.0
-offset_right = -145.0
+offset_right = -192.0
 offset_bottom = 229.0
 tech_node_stats = ExtResource("5_7vto7")
 previous_node = NodePath("../CookingStationUnlock")
@@ -44,19 +44,19 @@ node_type = 1
 [node name="CookingAccuracy1Node" parent="." unique_id=1331020484 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_aqpn3")]
 visible = false
 layout_mode = 1
-offset_left = -145.0
-offset_top = 16.0
-offset_right = -145.0
-offset_bottom = 16.0
+offset_left = -192.0
+offset_top = 36.0
+offset_right = -192.0
+offset_bottom = 36.0
 tech_node_stats = ExtResource("6_7vto7")
 previous_node = NodePath("../CookingSpeed1Node")
 
 [node name="CookingDrops1Node" parent="." unique_id=1302849726 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_aqpn3")]
 visible = false
 layout_mode = 1
-offset_left = -146.0
-offset_top = -195.0
-offset_right = -146.0
-offset_bottom = -195.0
+offset_left = -192.0
+offset_top = -154.0
+offset_right = -192.0
+offset_bottom = -154.0
 tech_node_stats = ExtResource("7_2lla6")
 previous_node = NodePath("../CookingSpeed1Node")

@@ -26,48 +26,48 @@ script = ExtResource("1_v5alw")
 [node name="JumpHeight1Node" parent="." unique_id=640777626 instance=ExtResource("3_s7m4j")]
 visible = false
 layout_mode = 1
-offset_left = -684.0
+offset_left = -704.0
 offset_top = 229.0
-offset_right = -684.0
+offset_right = -704.0
 offset_bottom = 229.0
 tech_node_stats = ExtResource("4_jjd58")
 
 [node name="JumpHeight1Node2" parent="." unique_id=1804535485 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_s7m4j")]
 visible = false
 layout_mode = 1
-offset_left = -684.0
-offset_top = 19.0
-offset_right = -684.0
-offset_bottom = 19.0
+offset_left = -704.0
+offset_top = 36.0
+offset_right = -704.0
+offset_bottom = 36.0
 tech_node_stats = ExtResource("5_v5alw")
 previous_node = NodePath("../JumpHeight1Node")
 
 [node name="MovementSpeed1Node" parent="." unique_id=1776225068 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_s7m4j")]
 visible = false
 layout_mode = 1
-offset_left = -145.0
-offset_top = 229.0
-offset_right = -145.0
-offset_bottom = 229.0
+offset_left = -192.0
+offset_top = 228.0
+offset_right = -192.0
+offset_bottom = 228.0
 tech_node_stats = ExtResource("5_0ccxk")
 previous_node = NodePath("../JumpHeight1Node")
 
 [node name="ClimbSpeed1Node" parent="." unique_id=1331020484 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_s7m4j")]
 visible = false
 layout_mode = 1
-offset_left = -145.0
-offset_top = 16.0
-offset_right = -145.0
-offset_bottom = 16.0
+offset_left = -192.0
+offset_top = 36.0
+offset_right = -192.0
+offset_bottom = 36.0
 tech_node_stats = ExtResource("6_mtjln")
 previous_node = NodePath("../MovementSpeed1Node")
 
 [node name="MovementSpeed2Node" parent="." unique_id=1302849726 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_s7m4j")]
 visible = false
 layout_mode = 1
-offset_left = 360.0
+offset_left = 320.0
 offset_top = 229.0
-offset_right = 360.0
+offset_right = 320.0
 offset_bottom = 229.0
 tech_node_stats = ExtResource("8_0ccxk")
 previous_node = NodePath("../MovementSpeed1Node")
@@ -75,19 +75,19 @@ previous_node = NodePath("../MovementSpeed1Node")
 [node name="ClimbingSpeed2Node" parent="." unique_id=1305696302 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_s7m4j")]
 visible = false
 layout_mode = 1
-offset_left = 360.0
-offset_top = 16.0
-offset_right = 360.0
-offset_bottom = 16.0
+offset_left = 320.0
+offset_top = 36.0
+offset_right = 320.0
+offset_bottom = 36.0
 tech_node_stats = ExtResource("9_0ccxk")
 previous_node = NodePath("../MovementSpeed2Node")
 
 [node name="MovementSpeed3Node" parent="." unique_id=1548307285 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_s7m4j")]
 visible = false
 layout_mode = 1
-offset_left = 846.0
-offset_top = 229.0
-offset_right = 846.0
-offset_bottom = 229.0
+offset_left = 832.0
+offset_top = 228.0
+offset_right = 832.0
+offset_bottom = 228.0
 tech_node_stats = ExtResource("10_mtjln")
 previous_node = NodePath("../MovementSpeed2Node")

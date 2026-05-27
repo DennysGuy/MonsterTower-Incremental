@@ -21,6 +21,7 @@ func check_for_level_up() -> void:
 		
 		if GameManager.can_unlock_class():
 			PlayerHudSignalBus.show_class_notice.emit()
+			CodexManager.send_codex_notification.emit("Select a [color=purple]Class[/color] at\nThe Class Center!")
 		
 		var total_ap : int = 1 + int(PlayerStats.player_stats["Bonus AP"])
 		PlayerStats.player_stats["Ability Points"] += total_ap

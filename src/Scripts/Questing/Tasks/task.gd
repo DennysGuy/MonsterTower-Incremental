@@ -27,3 +27,4 @@ func complete_task() -> void:
 	QuestManager.play_task_completion_animation.emit(task_id,true)
 	SaveManager.save_task_completed_status(task_id, completed)
 	QuestManager.update_task_list_item.emit(task_id)
+	QuestManager.destroy_guide_box.emit(task_id)

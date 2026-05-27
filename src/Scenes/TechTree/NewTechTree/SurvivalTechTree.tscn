@@ -29,49 +29,49 @@ script = ExtResource("1_bo66c")
 [node name="MaxHP1Node" parent="." unique_id=640777626 instance=ExtResource("3_0yhyc")]
 visible = false
 layout_mode = 1
-offset_left = -684.0
-offset_top = 229.0
-offset_right = -684.0
-offset_bottom = 229.0
+offset_left = -704.0
+offset_top = 228.0
+offset_right = -704.0
+offset_bottom = 228.0
 tech_node_stats = ExtResource("4_miw4j")
 
 [node name="DefenseUP1Node" parent="." unique_id=913123538 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_0yhyc")]
 visible = false
 layout_mode = 1
-offset_left = -684.0
-offset_top = 20.0
-offset_right = -684.0
-offset_bottom = 20.0
+offset_left = -704.0
+offset_top = 36.0
+offset_right = -704.0
+offset_bottom = 36.0
 tech_node_stats = ExtResource("5_0yhyc")
 previous_node = NodePath("../MaxHP1Node")
 
 [node name="MaxHP2Node" parent="." unique_id=1776225068 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_0yhyc")]
 visible = false
 layout_mode = 1
-offset_left = -145.0
-offset_top = 229.0
-offset_right = -145.0
-offset_bottom = 229.0
+offset_left = -192.0
+offset_top = 226.0
+offset_right = -192.0
+offset_bottom = 226.0
 tech_node_stats = ExtResource("6_bo66c")
 previous_node = NodePath("../MaxHP1Node")
 
 [node name="DefenseUp2Node" parent="." unique_id=1331020484 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_0yhyc")]
 visible = false
 layout_mode = 1
-offset_left = -145.0
-offset_top = 16.0
-offset_right = -145.0
-offset_bottom = 16.0
+offset_left = -192.0
+offset_top = 36.0
+offset_right = -192.0
+offset_bottom = 36.0
 tech_node_stats = ExtResource("7_bo66c")
 previous_node = NodePath("../MaxHP2Node")
 
 [node name="HPChaliceNode" parent="." unique_id=1302849726 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_0yhyc")]
 visible = false
 layout_mode = 1
-offset_left = 360.0
-offset_top = 229.0
-offset_right = 360.0
-offset_bottom = 229.0
+offset_left = 320.0
+offset_top = 228.0
+offset_right = 320.0
+offset_bottom = 228.0
 tech_node_stats = ExtResource("8_xyfu8")
 previous_node = NodePath("../MaxHP2Node")
 node_type = 1
@@ -79,19 +79,19 @@ node_type = 1
 [node name="HPChaliceSpawnRateNode" parent="." unique_id=1305696302 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_0yhyc")]
 visible = false
 layout_mode = 1
-offset_left = 360.0
-offset_top = 16.0
-offset_right = 360.0
-offset_bottom = 16.0
+offset_left = 320.0
+offset_top = 36.0
+offset_right = 320.0
+offset_bottom = 36.0
 tech_node_stats = ExtResource("9_xyfu8")
 previous_node = NodePath("../HPChaliceNode")
 
 [node name="MaxMP1Node" parent="." unique_id=1548307285 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_0yhyc")]
 visible = false
 layout_mode = 1
-offset_left = 898.0
+offset_left = 832.0
 offset_top = 229.0
-offset_right = 898.0
+offset_right = 832.0
 offset_bottom = 229.0
 tech_node_stats = ExtResource("10_yak80")
 previous_node = NodePath("../HPChaliceNode")
@@ -99,9 +99,9 @@ previous_node = NodePath("../HPChaliceNode")
 [node name="MaxMP2Node" parent="." unique_id=1480609517 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_0yhyc")]
 visible = false
 layout_mode = 1
-offset_left = 1359.0
+offset_left = 1344.0
 offset_top = 229.0
-offset_right = 1359.0
+offset_right = 1344.0
 offset_bottom = 229.0
 tech_node_stats = ExtResource("11_godpg")
 previous_node = NodePath("../MaxMP1Node")
@@ -109,10 +109,10 @@ previous_node = NodePath("../MaxMP1Node")
 [node name="MPVialNode" parent="." unique_id=1644990129 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_0yhyc")]
 visible = false
 layout_mode = 1
-offset_left = 1768.0
-offset_top = 226.0
-offset_right = 1768.0
-offset_bottom = 226.0
+offset_left = 1856.0
+offset_top = 228.0
+offset_right = 1856.0
+offset_bottom = 228.0
 tech_node_stats = ExtResource("12_godpg")
 previous_node = NodePath("../MaxMP2Node")
 node_type = 1
@@ -120,9 +120,9 @@ node_type = 1
 [node name="MPVialSpawnRateNode" parent="." unique_id=1282606469 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_0yhyc")]
 visible = false
 layout_mode = 1
-offset_left = 1771.0
-offset_top = 8.0
-offset_right = 1771.0
-offset_bottom = 8.0
+offset_left = 1856.0
+offset_top = 36.0
+offset_right = 1856.0
+offset_bottom = 36.0
 tech_node_stats = ExtResource("13_godpg")
 previous_node = NodePath("../DefenseUp2Node")
