@@ -8,6 +8,7 @@
 [ext_resource type="Resource" uid="uid://bqgnafgyrs4m4" path="res://src/Resources/TechTree/TechNodes/Attack2.tres" id="4_yloba"]
 [ext_resource type="Resource" uid="uid://ttsaddae3bcr" path="res://src/Resources/TechTree/TechNodes/CritDamage1.tres" id="5_txx7x"]
 [ext_resource type="Resource" uid="uid://c6lrtgrld7bx1" path="res://src/Resources/TechTree/TechNodes/CritDamage2.tres" id="7_pydx8"]
+[ext_resource type="Resource" uid="uid://ll3jw1v5omml" path="res://src/Resources/TechTree/TechNodes/CritChance2.tres" id="8_1b1e2"]
 [ext_resource type="Resource" uid="uid://c7i7yba2dc0by" path="res://src/Resources/TechTree/TechNodes/GemStoneStation.tres" id="9_6ggqh"]
 [ext_resource type="Resource" uid="uid://b6b483q551evk" path="res://src/Resources/TechTree/TechNodes/Tier1GemChestsRateIncrease.tres" id="10_if40r"]
 [ext_resource type="Resource" uid="uid://c03qaydx74usi" path="res://src/Resources/TechTree/TechNodes/Tier1GemDropRateIncrease.tres" id="11_2vyru"]
@@ -76,7 +77,7 @@ offset_left = -145.0
 offset_top = 16.0
 offset_right = -145.0
 offset_bottom = 16.0
-tech_node_stats = ExtResource("4_yloba")
+tech_node_stats = ExtResource("8_1b1e2")
 previous_node = NodePath("../Attack2Node")
 
 [node name="CritDamage2Node" parent="." unique_id=2066284705 node_paths=PackedStringArray("previous_node") instance=ExtResource("2_48m6i")]

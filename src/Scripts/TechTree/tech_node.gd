@@ -18,6 +18,12 @@ class_name TechNode extends Control
 var in_range : bool = false
 var can_click : bool = false
 
+const NEW_HOVER = preload("uid://dcvxloepmgyvs")
+const CLICK_NODE = preload("uid://bawqj0b2h6vsu")
+const DENIED = preload("uid://bjj5jqwgvb3ix")
+
+
+
 const COMBAT_NODE_BASE = preload("uid://dxd8rdm0eq72d")
 const COMBAT_NODE_BASE_DISABLED = preload("uid://dhh0vkjndbkjb")
 
@@ -83,13 +89,16 @@ func _ready() -> void:
 	set_level_label()
 	if tech_node_stats.unlocked:
 		#show()
-		if can_click:
-			set_graphic_as_enabled()
+		if GameManager.license_promotion_time:
+			set_graphic_as_disabled()
 		else:
-			if tech_node_stats.current_level >= tech_node_stats.max_level:
-				set_graphic_as_purchased()
+			if can_click:
+				set_graphic_as_enabled()
 			else:
-				set_graphic_as_disabled()
+				if tech_node_stats.current_level >= tech_node_stats.max_level:
+					set_graphic_as_purchased()
+				else:
+					set_graphic_as_disabled()
 	#else:
 		#hide()
 		
@@ -120,7 +129,7 @@ func save_node_data() -> void:
 
 func deduct_currency() -> void:
 	TechTreeManager.currency -= tech_node_stats.currency_required
-	TechTreeManager.update_currency_label.emit()
+	
 	
 func deduct_ap() -> void:
 	PlayerStats.player_stats["Ability Points"] -= tech_node_stats.ap_required
@@ -208,8 +217,10 @@ func create_tool_tip() -> void:
 			#tool_tip.panel.color = Color(tool_tip.can_buy)
 		#else:
 			#tool_tip.panel.color = Color(tool_tip.locked)
-	
-	tool_tip.description.text = tech_node_stats.description
+	if GameManager.license_promotion_time:
+		tool_tip.description.text = "Promote License to Continue."
+	else:
+		tool_tip.description.text = tech_node_stats.description
 	if node_type != TechTreeManager.TECH_NODE_TYPE.CLASS_ABILITY:
 		if TechTreeManager.currency >=  tech_node_stats.currency_required:
 			tool_tip.cost.text = "[color=green]Spirols: %s/%s[/color]" % [TechTreeManager.currency, tech_node_stats.currency_required]
@@ -266,7 +277,7 @@ func set_graphic_as_disabled() -> void:
 func _on_mouse_entered() -> void:
 	in_range = true
 	expand()
-	sfx_player.play_sfx(HOVER_OVER_NODE)
+	play_sfx(NEW_HOVER)
 	create_tool_tip()
 
 func _on_mouse_exited() -> void:
@@ -275,17 +286,19 @@ func _on_mouse_exited() -> void:
 	remove_tool_tip()
 
 func _on_gui_input(event: InputEvent) -> void:
-	if event.is_action_pressed("left_click") and in_range:
+	if event.is_action_pressed("left_click") and in_range and !GameManager.license_promotion_time:
 		if node_type != TechTreeManager.TECH_NODE_TYPE.CLASS_ABILITY:
 			if can_click and TechTreeManager.currency < tech_node_stats.currency_required and has_resource_quantity():
 				print("Not enough currency!")
+				play_sfx(DENIED)
 				return
 		else:
 			if can_click and PlayerStats.player_stats["Ability Points"] < tech_node_stats.ap_required and has_resource_quantity():
+				play_sfx(DENIED)
 				return
 		
 		if can_click and mouse_entered and event.is_action_pressed("left_click"):
-			sfx_player.play_sfx(NODE_CLICK)
+			play_sfx(CLICK_NODE,3)
 			#animation_player.play("clicked")
 			tech_node_stats.current_level += 1
 			
@@ -321,6 +334,9 @@ func _on_gui_input(event: InputEvent) -> void:
 			save_node_data()
 			TechTreeManager.save_node_data.emit()
 			TechTreeManager.increment_upgrade_count()
+			TechTreeManager.update_currency_label.emit()
+		else:
+			play_sfx(DENIED)
 
 func show_node() -> void:
 	if tech_node_stats.unlocked:
@@ -359,6 +375,7 @@ func animate_line(line : Line2D, start_pos : Vector2, end_pos : Vector2, duratio
 func pop_in(duration : float = 0.15) -> void:
 	visible = true
 	scale = Vector2.ZERO
+	play_sfx(NEW_HOVER)
 	var tween : Tween = create_tween()
 	tween.tween_property(self, "scale", Vector2.ONE, duration)\
 		.set_trans(Tween.TRANS_BACK)\
@@ -379,3 +396,13 @@ func button_to_normal() -> void:
 func set_icon_modulation(value : float) -> void:
 	bg.modulate.a = value
 	icon.modulate.a = value
+
+
+func play_sfx(sound: AudioStream, volume: float = 0.0):
+	var player := AudioStreamPlayer.new()
+	player.stream = sound
+	player.volume_db = volume
+	player.bus = &"SFX"
+	add_child(player)
+	player.play()
+	player.finished.connect(player.queue_free)

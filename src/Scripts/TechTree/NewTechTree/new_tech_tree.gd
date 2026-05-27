@@ -18,16 +18,27 @@ class_name NewTechTree extends Control
 @onready var sub_viewport: SubViewport = $SubViewportContainer/SubViewport
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
+@onready var upgrade_button_notification_icon: TextureRect = $UpgradeButtonNotificationIcon
+
 @onready var close_button: Button = $CloseButton
 @onready var currency_label: Label = $CurrencyLabel
 
 var stored_message_panel : TechTreeMessagePanel
+@onready var music_player: AudioStreamPlayer = $MusicPlayer
+const ENTER_TECH_TREE = preload("uid://7faujn4ldspq")
+const EXIT_TECH_TREE = preload("uid://dfpttuw4h2wa1")
+const BUTTON_APPEAR = preload("uid://bvnkpmsp7xinb")
+const CLICK_BUTTON = preload("uid://d2a7rj3wvxd30")
+const CLICK_NODE = preload("uid://bawqj0b2h6vsu")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	MusicPlayer.pause_music()
+	music_player.play()
+	play_sfx(ENTER_TECH_TREE)
 	SignalBus.flash_screen.connect(flash_screen)
 	SignalBus.close_message_panel.connect(remove_message_panel)
-	TechTreeManager.update_currency_label.connect(update_currency_label)
+	TechTreeManager.update_currency_label.connect(update_progress)
 	expedition_time_tracker.text = "Expedition Time: %s seconds" % PlayerStats.player_stats["Expedition Time"]
 	update_progress()
 	if TechTreeManager.current_prestige > 0:
@@ -101,13 +112,18 @@ func _on_upgrade_tracker_button_mouse_exited() -> void:
 func update_progress() -> void:
 	if TechTreeManager.current_upgrade_count >= TechTreeManager.upgrade_count_to_prestige:
 		if TechTreeManager.current_prestige == 0:
+			GameManager.license_promotion_time = true
 			upgrade_tracker_button.text = "Receive Hunter's License"
+			upgrade_button_notification_icon.show()
 		else:
+			GameManager.license_promotion_time = true
+			upgrade_button_notification_icon.show()
 			upgrade_tracker_button.text = "Promote License"
 		upgrade_tracker_button.disabled = false
 	else:
 		upgrade_tracker_button.text = "%s/%s" % [TechTreeManager.current_upgrade_count, TechTreeManager.upgrade_count_to_prestige]
 		upgrade_tracker_button.disabled = true
+		upgrade_button_notification_icon.hide()
 
 	currency_label.text = "Spirols %s" % [TechTreeManager.currency]
 	upgrade_progress_bar.max_value = TechTreeManager.upgrade_count_to_prestige
@@ -175,19 +191,15 @@ func add_cooking_tech_tree() -> void:
 func show_tech_tree_buttons() -> void:
 	for button in tech_tree_buttons_h_box.get_children():
 		button.show()
+		play_sfx(BUTTON_APPEAR)
 		await get_tree().create_timer(0.1).timeout
 	
-
+	play_sfx(BUTTON_APPEAR)
 	upgrade_progress_bar.show()
 	await get_tree().create_timer(0.15).timeout
+	play_sfx(BUTTON_APPEAR)
 	expedition_time_tracker.show()
 	
-
-func _on_combat_page_button_button_up() -> void:
-	add_combat_tech_tree()
-
-func _on_survival_page_button_button_up() -> void:
-	add_survival_tech_tree()
 
 func play_license_upgrade_sequence() -> void:
 	card_view_port_container.show()
@@ -200,11 +212,16 @@ func play_license_upgrade_sequence() -> void:
 	add_combat_tech_tree()
 	await get_tree().process_frame
 	insert_message_panel()
+	GameManager.license_promotion_time = false
+	music_player.stream_paused = false
 
 func flash_screen() -> void:
 	animation_player.play("FlashScreen")
 
 func _on_upgrade_tracker_button_button_up() -> void:
+	play_sfx(CLICK_NODE)
+	music_player.stream_paused = true
+	
 	if TechTreeManager.current_prestige == 0:
 		unlock_hunter_license()
 	
@@ -217,11 +234,14 @@ func close_out() -> void:
 	GameManager.can_open_bag = true
 	GameManager.player_can_move = true
 	GameManager.can_pause_game = true
-	
+	music_player.stop()
+	play_sfx(EXIT_TECH_TREE)
+	MusicPlayer.unpause_music()
 	if station_unlock_available():
 		TechTreeManager.unlock_station.emit()
 	#sfx_player.play_sfx(CLOSE_UPGRADE_PC)
 	await get_tree().create_timer(0.3).timeout
+	
 	SignalBus.hide_tech_tree_canvas_layer.emit()
 	queue_free()
 
@@ -246,18 +266,30 @@ func unlock_hunter_license() -> void:
 	SaveManager.save_game()
 
 func update_currency_label() -> void:
-	currency_label.text = "Spirols %s" % TechTreeManager.currency
+	update_progress()
+
+func _on_combat_page_button_button_up() -> void:
+	play_sfx(CLICK_BUTTON)
+	add_combat_tech_tree()
+
+func _on_survival_page_button_button_up() -> void:
+	play_sfx(CLICK_BUTTON)
+	add_survival_tech_tree()
 
 func _on_traversal_page_button_button_up() -> void:
+	play_sfx(CLICK_BUTTON)
 	add_traversal_tech_tree()
 
 func _on_inventory_page_button_button_up() -> void:
+	play_sfx(CLICK_BUTTON)
 	add_inventory_tech_tree()
 
 func _on_crafting_page_button_button_up() -> void:
+	play_sfx(CLICK_BUTTON)
 	add_refinery_tech_tree()
 
 func _on_cooking_page_button_button_up() -> void:
+	play_sfx(CLICK_BUTTON)
 	add_cooking_tech_tree()
 
 
@@ -287,4 +319,12 @@ func remove_message_panel() -> void:
 		await tween.finished
 		stored_message_panel.queue_free()
 	
-	
+
+func play_sfx(sound: AudioStream, volume: float = 0.0):
+	var player := AudioStreamPlayer.new()
+	player.stream = sound
+	player.volume_db = volume
+	player.bus = &"SFX"
+	add_child(player)
+	player.play()
+	player.finished.connect(player.queue_free)
