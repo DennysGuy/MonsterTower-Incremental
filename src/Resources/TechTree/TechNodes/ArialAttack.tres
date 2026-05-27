@@ -1,12 +1,14 @@
 [gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://burkenucbrobr"]
 
+[ext_resource type="Texture2D" uid="uid://bqbgupdy3d3b3" path="res://Assets/TechTree/CombatNodes/AirAttack_Node_Disabled_Graphic.png" id="1_3e0cb"]
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_c6r3y"]
-[ext_resource type="Texture2D" uid="uid://bhogxoh774jb8" path="res://Assets/NodeGraphics/NodeGraphicsV2/ArialSlash_V2.png" id="1_hhegx"]
+[ext_resource type="Texture2D" uid="uid://oircgg4kemi" path="res://Assets/TechTree/CombatNodes/AirAttack_Node_Graphic.png" id="2_er7tf"]
 
 [resource]
 script = ExtResource("1_c6r3y")
 node_name = "Arial Slash"
-icon = ExtResource("1_hhegx")
+icon = ExtResource("2_er7tf")
+disabled_icon = ExtResource("1_3e0cb")
 description = "Swing your sword in the air and hit the enemies above you."
 unlocked = true
 currency_required = 200

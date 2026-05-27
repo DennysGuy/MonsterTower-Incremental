@@ -7,6 +7,7 @@
 [ext_resource type="Shader" uid="uid://cabi82p76liag" path="res://src/Scripts/Shaders/Glow.gdshader" id="3_vj4ir"]
 [ext_resource type="FontFile" uid="uid://dln8g51uvm22r" path="res://Assets/Fonts/Azonix-1VB0.otf" id="6_lb8dx"]
 [ext_resource type="Texture2D" uid="uid://cq85y731t4o41" path="res://Assets/TechTree/NewTechTree/UpgradeBar_Base.png" id="7_8wv36"]
+[ext_resource type="PackedScene" uid="uid://bck0tmdb7tip6" path="res://src/Scenes/TechTree/NewTechTree/TutorialBox.tscn" id="7_uxwd2"]
 [ext_resource type="Texture2D" uid="uid://dorhf5n6jpocv" path="res://Assets/TechTree/NewTechTree/UpgradeBar_Fill.png" id="8_rprre"]
 [ext_resource type="Texture2D" uid="uid://dpl2dbrb5w3rc" path="res://Assets/TechTree/NotifcationExclamationTechtree.png" id="9_4khty"]
 [ext_resource type="Texture2D" uid="uid://bnw6hevcv8ir4" path="res://Assets/TechTree/NewTechTree/LeftClickIcon.png" id="9_rprre"]
@@ -99,7 +100,6 @@ grow_horizontal = 2
 theme_override_constants/separation = 30
 
 [node name="CombatPageButton" type="Button" parent="TechTreeButtonsHBox" unique_id=507044323]
-visible = false
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0.990949, 0.40124372, 0.45694304, 1)
@@ -108,7 +108,6 @@ theme_override_font_sizes/font_size = 42
 text = "Combat"
 
 [node name="SurvivalPageButton" type="Button" parent="TechTreeButtonsHBox" unique_id=193700924]
-visible = false
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0, 0.8750814, 0.8750814, 1)
@@ -117,7 +116,6 @@ theme_override_font_sizes/font_size = 42
 text = "Survival"
 
 [node name="TraversalPageButton" type="Button" parent="TechTreeButtonsHBox" unique_id=1490222585]
-visible = false
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0, 0.9562344, 0.47072762, 1)
@@ -126,7 +124,6 @@ theme_override_font_sizes/font_size = 42
 text = "Traversal"
 
 [node name="InventoryPageButton" type="Button" parent="TechTreeButtonsHBox" unique_id=957454195]
-visible = false
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0.9999996, 0.86253643, 0.4670965, 1)
@@ -135,7 +132,6 @@ theme_override_font_sizes/font_size = 42
 text = "Inventory"
 
 [node name="CookingPageButton" type="Button" parent="TechTreeButtonsHBox" unique_id=145660522]
-visible = false
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0.56774014, 0.2835156, 0.15171379, 1)
@@ -144,13 +140,60 @@ theme_override_font_sizes/font_size = 42
 text = "Cooking"
 
 [node name="CraftingPageButton" type="Button" parent="TechTreeButtonsHBox" unique_id=1497180615]
-visible = false
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0.8490402, 0.26272827, 0.82052237, 1)
 theme_override_fonts/font = ExtResource("6_lb8dx")
 theme_override_font_sizes/font_size = 42
 text = "Crafting"
+
+[node name="JumpHeightTutorialBox" parent="." unique_id=123813508 instance=ExtResource("7_uxwd2")]
+visible = false
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 561.0
+offset_top = 36.0
+offset_right = 873.0
+offset_bottom = 109.0
+grow_horizontal = 1
+grow_vertical = 1
+task_id = 26
+
+[node name="CookingStationTutorialBox" parent="." unique_id=879263566 instance=ExtResource("7_uxwd2")]
+visible = false
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 1419.0
+offset_top = 36.0
+offset_right = 1690.0
+offset_bottom = 109.0
+grow_horizontal = 1
+grow_vertical = 1
+task_id = 33
+
+[node name="CraftingStationTutorialBox" parent="." unique_id=1325496419 instance=ExtResource("7_uxwd2")]
+visible = false
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 1179.0
+offset_top = 36.0
+offset_right = 1412.0
+offset_bottom = 109.0
+grow_horizontal = 1
+grow_vertical = 1
+task_id = 34
 
 [node name="UpgradeProgressBar" type="TextureProgressBar" parent="." unique_id=254252711]
 visible = false
@@ -172,10 +215,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -113.0
-offset_top = 121.0
-offset_right = 109.7843
-offset_bottom = 167.0
+offset_left = -107.0
+offset_top = 170.0
+offset_right = 115.7843
+offset_bottom = 216.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("6_lb8dx")
@@ -188,10 +231,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 193.0
-offset_top = 109.0
-offset_right = 241.0
-offset_bottom = 173.0
+offset_left = -16.0
+offset_top = 99.0
+offset_right = 32.0
+offset_bottom = 163.0
 grow_horizontal = 2
 texture = ExtResource("9_4khty")
 
@@ -266,6 +309,7 @@ root_node = NodePath("../WhiteFlashRect")
 libraries/ = SubResource("AnimationLibrary_rprre")
 
 [node name="WhiteFlashRect" type="ColorRect" parent="." unique_id=1290153819]
+visible = false
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15

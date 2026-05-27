@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://be6vh0qellkjq" path="res://src/Scripts/Questing/quest.gd" id="2_gtji7"]
 [ext_resource type="Script" uid="uid://deyfft0rbfjgk" path="res://src/Scripts/Questing/Tasks/task.gd" id="3_0rbgn"]
 [ext_resource type="Resource" uid="uid://d201ey8w8e47d" path="res://src/Resources/Quests/Intro/MainQuests/Introduction/2_Learning to Plunder/Tasks/EnterTheGrandMarketTask.tres" id="4_4qbt0"]
-[ext_resource type="Resource" uid="uid://hfb5s3nqsbks" path="res://src/Resources/Quests/Intro/MainQuests/Introduction/2_Learning to Plunder/Tasks/UnlockAttack1NodeTask.tres" id="5_71jhi"]
+[ext_resource type="Resource" uid="uid://hfb5s3nqsbks" path="res://src/Resources/Quests/Intro/MainQuests/Introduction/2_Learning to Plunder/Tasks/UnlockJumpHeight1Node.tres" id="5_71jhi"]
 [ext_resource type="Resource" uid="uid://b2jr8msmsb5ec" path="res://src/Resources/Quests/Intro/MainQuests/Introduction/2_Learning to Plunder/Tasks/OneMoreRunTask.tres" id="6_6vnab"]
 [ext_resource type="Resource" uid="uid://cpe4ns0pklxu6" path="res://src/Resources/Quests/Intro/MainQuests/Introduction/2_Learning to Plunder/Tasks/ReachLevel2Task.tres" id="7_2jvsu"]
 

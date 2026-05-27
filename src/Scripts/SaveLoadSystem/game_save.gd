@@ -691,7 +691,7 @@ TODO: We will add saves for classes as well
 		"Completed": false
 	},
 	26: {
-		#Unlock attack 1 Node
+		#Unlock Jump Height Node
 		"Completed": false
 	},
 	27:{

@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="NodeUnlockTask" format=3 uid="uid://hfb5s3nqsbks"]
 
-[ext_resource type="Script" uid="uid://d4bl5pg2w0pp3" path="res://src/Scripts/Questing/Tasks/node_unlock_task.gd" id="1_1hxtd"]
+[ext_resource type="Script" uid="uid://d4bl5pg2w0pp3" path="res://src/Scripts/Questing/Tasks/node_unlock_task.gd" id="1_sl7xw"]
 
 [resource]
-script = ExtResource("1_1hxtd")
-node_name = "Attack 1"
+script = ExtResource("1_sl7xw")
+node_name = "Jump Height 1"
 task_id = 26
 parent_quest = "Learning to Plunder"
 task_type = 5
