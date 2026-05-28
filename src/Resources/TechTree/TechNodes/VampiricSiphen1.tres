@@ -5,4 +5,9 @@
 [resource]
 script = ExtResource("1_xbyhm")
 node_name = "Vampiric Siphen 1"
+description = "Increases The Amount of life that is stolen by a 3% per level."
+max_level = 3
+currency_required = 6500
+stat_name = "HP Siphen Amount"
+upgrade_interval = 0.03
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

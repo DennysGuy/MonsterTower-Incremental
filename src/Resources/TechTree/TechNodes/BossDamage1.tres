@@ -1,8 +1,19 @@
 [gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://bqs24c70y86cp"]
 
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_0dsy8"]
+[ext_resource type="Resource" uid="uid://cs6ojn6tc0alq" path="res://src/Resources/CraftingResources/SteelBar.tres" id="1_g7ncs"]
 
 [resource]
 script = ExtResource("1_0dsy8")
 node_name = "Boss Damage 1"
+description = "Increases bonus damage to boss by 10% for each level
+"
+max_level = 5
+currency_required = 10000
+materials_required = Array[Dictionary]([{
+ExtResource("1_g7ncs"): 2
+}])
+stat_name = "Boss Damage Bonus"
+upgrade_interval = 0.1
+prereqs = Array[String](["Attack4:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

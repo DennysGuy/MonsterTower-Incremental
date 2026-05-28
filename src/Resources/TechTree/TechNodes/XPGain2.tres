@@ -5,4 +5,10 @@
 [resource]
 script = ExtResource("1_cp0u6")
 node_name = "XP Gain 2"
+description = "Increases Bonus XP Acquired for each kill."
+max_level = 3
+currency_required = 9500
+stat_name = "Bonus XP"
+upgrade_interval = 2.0
+prereqs = Array[String](["Attack4:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

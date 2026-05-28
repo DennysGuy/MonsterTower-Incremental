@@ -5,4 +5,10 @@
 [resource]
 script = ExtResource("1_6dtt2")
 node_name = "XP Gain 1"
+description = "Increases Bonus XP Acquired for each kill."
+max_level = 5
+currency_required = 5500
+materials_required = Array[Dictionary]([{}])
+stat_name = "Bonus XP"
+upgrade_interval = 2.0
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

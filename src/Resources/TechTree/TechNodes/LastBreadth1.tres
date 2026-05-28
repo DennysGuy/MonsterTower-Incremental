@@ -5,4 +5,9 @@
 [resource]
 script = ExtResource("1_bpats")
 node_name = "Last Breadth 1"
+description = "Increases the Multiplier to damage when player is under a certain threshold."
+ap_required = 4000
+stat_name = "Last Breadth Threshold"
+upgrade_interval = 0.1
+prereqs = Array[String](["Breadth Threshold 1:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

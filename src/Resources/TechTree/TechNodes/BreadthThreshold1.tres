@@ -4,5 +4,11 @@
 
 [resource]
 script = ExtResource("1_pheh2")
-node_name = "Breadth Threshol 1"
+node_name = "Breadth Threshold 1"
+description = "Increases the threshold necessary for Last Breadth activation."
+max_level = 2
+currency_required = 6000
+stat_name = "Last Breadth Multiplier"
+upgrade_interval = 0.1
+prereqs = Array[String](["Gem Stone Station"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

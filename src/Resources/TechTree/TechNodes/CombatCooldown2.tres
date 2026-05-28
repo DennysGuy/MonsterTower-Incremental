@@ -5,4 +5,10 @@
 [resource]
 script = ExtResource("1_uxf76")
 node_name = "Combat Cooldown 2"
+description = "Global Cooldown Reduction for all combat abilities by -0.5 sec for each level."
+max_level = 2
+currency_required = 7000
+stat_name = "Cooldown Reduction"
+upgrade_interval = 0.5
+prereqs = Array[String](["Attack4:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

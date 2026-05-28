@@ -5,4 +5,10 @@
 [resource]
 script = ExtResource("1_nca7m")
 node_name = "Insta Kill Chance 1"
+description = "Increases Chance to Instant Kill an Enemy under a certain threshold by 3% for each level."
+max_level = 3
+currency_required = 7500
+stat_name = "Insta Kill Chance"
+upgrade_interval = 0.03
+prereqs = Array[String](["Attack4:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

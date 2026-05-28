@@ -12,7 +12,7 @@ icon = ExtResource("2_ohxyu")
 disabled_icon = ExtResource("1_e4se6")
 description = "Increases Attack Damage by %30 for each level"
 max_level = 5
-currency_required = 1200
+currency_required = 2500
 materials_required = Array[Dictionary]([{
 ExtResource("2_614cc"): 1
 }])

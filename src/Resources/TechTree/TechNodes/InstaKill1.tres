@@ -5,4 +5,10 @@
 [resource]
 script = ExtResource("1_1wyft")
 node_name = "Insta Kill 1"
+description = "Increases Threshold to Insta-Kill an enemy for each level."
+max_level = 2
+currency_required = 8000
+stat_name = "Insta Kill Threshold"
+upgrade_interval = 0.05
+prereqs = Array[String](["Attack4:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"
