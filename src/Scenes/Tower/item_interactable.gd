@@ -12,12 +12,14 @@ var player : Player
 const PICKUP_ITEM = preload("uid://cjrrqc2534diu")
 
 var can_pick_up : bool = false
+var opt_to_pick_up : bool = false
 var player_in_range : bool = false
 var base_y : float
 var t : float = 0.0
 # Called when the node enters the scene tree for the first time.
-
+var pick_up_distance : int
 func _ready() -> void:
+	pick_up_distance = PlayerStats.player_stats["Pick Up Distance"]
 	base_y = position.y
 	
 	animation_player.play("Spawn")
@@ -29,6 +31,11 @@ func _process(delta: float) -> void:
 	
 	#if player_in_range and Input.is_action_just_pressed("pan_cam_up"):
 		#pick_up_item()
+	
+	
+	if player.global_position.distance_to(global_position) <= pick_up_distance and opt_to_pick_up:
+		pick_up_item()
+		opt_to_pick_up = false
 	
 	if can_pick_up:
 		global_position = global_position.move_toward(player.coin_purse.global_position,3.0)
@@ -81,4 +88,4 @@ func _on_destroy_timer_timeout() -> void:
 
 
 func _on_pick_up_timer_timeout() -> void:
-	pick_up_item()
+	opt_to_pick_up = true

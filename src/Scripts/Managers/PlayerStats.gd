@@ -69,7 +69,14 @@ const KNOCKBACK_FORCE : int = 100
 	"Chalice Spawn Rate":0.20,
 	"Vial Spawn Rate": 0.20,
 	"Lock On Multiplier" : 1.25,
-	"Combat Ability Cooldown Bonus": 0.0
+	"Combat Ability Cooldown Bonus": 0.0,
+	"Mining Bolt Links" : 0.0,
+	"Mining Bolt Chance": 0.0,
+	"Multi Bolts": 1.0,
+	"Mining Bolt Damage": 5.0,
+	"Mining Bolt Crit Chance": 0.0,
+	"Mining Bolt Distance": 250.0,
+	"Pick Up Distance": 20.0
 }
 
 var equipped_abilities : Dictionary = {
@@ -197,9 +204,9 @@ var player_classes : Dictionary = {
 		"Attack 1": preload("uid://c5hss1iq5ontu"),
 		"Attack 2": preload("uid://rbc7yawqcf3h"),
 		"Attack 3": preload("uid://7qd8qvg4bf73"),
-		"Air Attack": 	preload("uid://dcxiodvnbqgef"),
-		"Dash Attack": preload("uid://c3llqiy2fb5n5"),
-		"Double Jump": preload("uid://ctavgtgbvyp1w"),
+		"Air Attack": 	preload("uid://bukiike6rf6pl"),
+		"Dash Attack": preload("uid://b0lsgfuw8bp58"),
+		"Double Jump": preload("uid://rgwunwula5mv"),
 		"Special Attack": preload("uid://cs0umnvsvjhnh"),
 		"Combat Ability 1" : null,
 		"Combat Ability 2" : null,

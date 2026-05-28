@@ -2698,7 +2698,8 @@ libraries/ = SubResource("AnimationLibrary_pawjx")
 [node name="PlayerSprite" type="Sprite2D" parent="Sprites" unique_id=1041617266]
 position = Vector2(0, -32)
 scale = Vector2(1, 0.98604256)
-texture = ExtResource("34_jqbe8")
+texture = ExtResource("34_skwl0")
+hframes = 5
 
 [node name="Outfit" type="Sprite2D" parent="Sprites" unique_id=411712928]
 position = Vector2(0, -32)

@@ -217,7 +217,9 @@ func attack_ore_rock() -> void:
 		SignalBus.shake_camera.emit(0.3)
 		var stats_damage : int = int(PlayerStats.player_stats["Mining Damage"])
 		var random_hit : int = randi_range(int(stats_damage * 0.8), stats_damage)
+		GameManager.remaining_bolt_chain_links = PlayerStats.player_stats["Mining Bolt Links"]
 		stored_ore_rock.damage_ore_rock(random_hit)
+
 
 func clear_effect_texture() -> void:
 	effect.texture = null

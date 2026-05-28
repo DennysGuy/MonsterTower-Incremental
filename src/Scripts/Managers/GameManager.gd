@@ -22,6 +22,7 @@ var on_boss_door_floor : bool = false
 var room_speed_bonus : float = 1.0
 var new_jobs_available : bool = false
 var license_promotion_time : bool = false
+var remaining_bolt_chain_links : int = 0
 enum NOTIFICATION_TYPE {CRAFTING, COOKING, SMELTING, AP, QUEST}
 
 # Called when the node enters the scene tree for the first time.

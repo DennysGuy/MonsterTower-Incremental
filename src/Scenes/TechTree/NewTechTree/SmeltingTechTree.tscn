@@ -8,6 +8,10 @@
 [ext_resource type="Resource" uid="uid://licswcd54xsn" path="res://src/Resources/TechTree/TechNodes/RefineryAccuracy1.tres" id="6_8pn5x"]
 [ext_resource type="Resource" uid="uid://ddxgheqee7kmy" path="res://src/Resources/TechTree/TechNodes/MiningSpeed1.tres" id="7_n6gwq"]
 [ext_resource type="Resource" uid="uid://ctf4we33chvvs" path="res://src/Resources/TechTree/TechNodes/OreRockDrop1.tres" id="8_n6gwq"]
+[ext_resource type="Resource" uid="uid://bvv3ywp852v5r" path="res://src/Resources/TechTree/TechNodes/MiningBoltChance1.tres" id="8_xeyfn"]
+[ext_resource type="Resource" uid="uid://fuiustuvb4gn" path="res://src/Resources/TechTree/TechNodes/MiningBoltDistance1.tres" id="9_n6gwq"]
+[ext_resource type="Resource" uid="uid://m6wlc2wayc45" path="res://src/Resources/TechTree/TechNodes/MiningBoltChain1.tres" id="10_8pn5x"]
+[ext_resource type="Resource" uid="uid://8x4upyxso8h3" path="res://src/Resources/TechTree/TechNodes/MiningBarrage1.tres" id="12_nxs8t"]
 
 [node name="InventoryTechTree" type="Control" unique_id=220942998]
 layout_mode = 3
@@ -71,3 +75,43 @@ offset_right = 320.0
 offset_bottom = 36.0
 tech_node_stats = ExtResource("8_n6gwq")
 previous_node = NodePath("../MiningSpeed1Node")
+
+[node name="MiningBolt1" parent="." unique_id=1809635083 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_5r3ba")]
+visible = false
+layout_mode = 1
+offset_left = 832.0
+offset_top = 229.0
+offset_right = 832.0
+offset_bottom = 229.0
+tech_node_stats = ExtResource("8_xeyfn")
+previous_node = NodePath("../MiningSpeed1Node")
+
+[node name="MiningBoltDistance1" parent="." unique_id=201830242 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_5r3ba")]
+visible = false
+layout_mode = 1
+offset_left = 832.0
+offset_top = 36.0
+offset_right = 832.0
+offset_bottom = 36.0
+tech_node_stats = ExtResource("9_n6gwq")
+previous_node = NodePath("../MiningBolt1")
+
+[node name="MiningBoltChain1" parent="." unique_id=1065742209 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_5r3ba")]
+visible = false
+layout_mode = 1
+offset_left = 832.0
+offset_top = -156.0
+offset_right = 832.0
+offset_bottom = -156.0
+tech_node_stats = ExtResource("10_8pn5x")
+previous_node = NodePath("../MiningBoltDistance1")
+
+[node name="MiningBarrage1" parent="." unique_id=588245151 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_5r3ba")]
+visible = false
+layout_mode = 1
+offset_left = 832.0
+offset_top = -348.0
+offset_right = 832.0
+offset_bottom = -348.0
+tech_node_stats = ExtResource("12_nxs8t")
+previous_node = NodePath("../MiningBoltChain1")

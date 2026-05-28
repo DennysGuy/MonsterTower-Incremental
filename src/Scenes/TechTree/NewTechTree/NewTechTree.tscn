@@ -100,6 +100,7 @@ grow_horizontal = 2
 theme_override_constants/separation = 30
 
 [node name="CombatPageButton" type="Button" parent="TechTreeButtonsHBox" unique_id=507044323]
+visible = false
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0.990949, 0.40124372, 0.45694304, 1)
@@ -108,6 +109,7 @@ theme_override_font_sizes/font_size = 42
 text = "Combat"
 
 [node name="SurvivalPageButton" type="Button" parent="TechTreeButtonsHBox" unique_id=193700924]
+visible = false
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0, 0.8750814, 0.8750814, 1)
@@ -116,6 +118,7 @@ theme_override_font_sizes/font_size = 42
 text = "Survival"
 
 [node name="TraversalPageButton" type="Button" parent="TechTreeButtonsHBox" unique_id=1490222585]
+visible = false
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0, 0.9562344, 0.47072762, 1)
@@ -124,6 +127,7 @@ theme_override_font_sizes/font_size = 42
 text = "Traversal"
 
 [node name="InventoryPageButton" type="Button" parent="TechTreeButtonsHBox" unique_id=957454195]
+visible = false
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0.9999996, 0.86253643, 0.4670965, 1)
@@ -132,6 +136,7 @@ theme_override_font_sizes/font_size = 42
 text = "Inventory"
 
 [node name="CookingPageButton" type="Button" parent="TechTreeButtonsHBox" unique_id=145660522]
+visible = false
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0.56774014, 0.2835156, 0.15171379, 1)
@@ -140,6 +145,7 @@ theme_override_font_sizes/font_size = 42
 text = "Cooking"
 
 [node name="CraftingPageButton" type="Button" parent="TechTreeButtonsHBox" unique_id=1497180615]
+visible = false
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0.8490402, 0.26272827, 0.82052237, 1)
@@ -307,7 +313,6 @@ root_node = NodePath("../WhiteFlashRect")
 libraries/ = SubResource("AnimationLibrary_rprre")
 
 [node name="WhiteFlashRect" type="ColorRect" parent="." unique_id=1290153819]
-visible = false
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15

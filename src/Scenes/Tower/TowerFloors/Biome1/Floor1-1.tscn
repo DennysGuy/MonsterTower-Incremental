@@ -1154,7 +1154,7 @@ gem_chest_stats = ExtResource("35_rayuj")
 spawn_parent = NodePath("..")
 
 [node name="GemStoneMarker3" parent="GemStoneChestMarkers" unique_id=1160914240 node_paths=PackedStringArray("spawn_parent") instance=ExtResource("14_83waj")]
-position = Vector2(209, 385)
+position = Vector2(355, 497)
 gem_chest_stats = ExtResource("35_rayuj")
 spawn_parent = NodePath("..")
 
@@ -1176,6 +1176,24 @@ spawn_parent = NodePath("../..")
 
 [node name="OreRockMarker3" parent="OreRockMarkers" unique_id=1794542043 node_paths=PackedStringArray("spawn_parent") instance=ExtResource("5_kpd6k")]
 position = Vector2(132, 384)
+ore_rock_resource = ExtResource("6_hvi06")
+ore_rock = ExtResource("7_yx3jr")
+spawn_parent = NodePath("../..")
+
+[node name="OreRockMarker7" parent="OreRockMarkers" unique_id=236259761 node_paths=PackedStringArray("spawn_parent") instance=ExtResource("5_kpd6k")]
+position = Vector2(228, 384)
+ore_rock_resource = ExtResource("6_hvi06")
+ore_rock = ExtResource("7_yx3jr")
+spawn_parent = NodePath("../..")
+
+[node name="OreRockMarker8" parent="OreRockMarkers" unique_id=158378533 node_paths=PackedStringArray("spawn_parent") instance=ExtResource("5_kpd6k")]
+position = Vector2(306, 529)
+ore_rock_resource = ExtResource("6_hvi06")
+ore_rock = ExtResource("7_yx3jr")
+spawn_parent = NodePath("../..")
+
+[node name="OreRockMarker9" parent="OreRockMarkers" unique_id=333851950 node_paths=PackedStringArray("spawn_parent") instance=ExtResource("5_kpd6k")]
+position = Vector2(137, 608)
 ore_rock_resource = ExtResource("6_hvi06")
 ore_rock = ExtResource("7_yx3jr")
 spawn_parent = NodePath("../..")

@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://8x4upyxso8h3"]
+
+[ext_resource type="Texture2D" uid="uid://coc7hi7eu2hr1" path="res://Assets/TechTree/SmeltingNodes/MiningBarage_Disabled_Graphic.png" id="1_hl3g5"]
+[ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_klgqc"]
+[ext_resource type="Texture2D" uid="uid://dv4iekixmqo0g" path="res://Assets/TechTree/SmeltingNodes/MiningBarage_Graphic.png" id="2_ww6k4"]
+[ext_resource type="Resource" uid="uid://cs6ojn6tc0alq" path="res://src/Resources/CraftingResources/SteelBar.tres" id="3_ww6k4"]
+
+[resource]
+script = ExtResource("1_klgqc")
+node_name = "Mining Barrage 1"
+icon = ExtResource("2_ww6k4")
+disabled_icon = ExtResource("1_hl3g5")
+description = "Increases the number of mining bolts sent out in a given pick axe swing by +1 per level."
+max_level = 3
+currency_required = 7000
+materials_required = Array[Dictionary]([{
+ExtResource("3_ww6k4"): 3
+}])
+stat_relation = 5
+stat_name = "Multi Bolts"
+upgrade_interval = 1.0
+prereqs = Array[String](["Mining Bolt Chain 1:1"])
+metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

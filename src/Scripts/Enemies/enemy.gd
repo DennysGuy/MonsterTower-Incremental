@@ -140,8 +140,8 @@ func give_xp() -> void:
 	var xp_label : DamageLabel = preload("uid://dkchs27qqogyy").instantiate()
 	xp_label.set_crit_bg()
 	xp_label.label.text = "%sXP" % xp
-	xp_label.global_position.y = global_position.y-20
-	xp_label.global_position.x = global_position.x-36
+	xp_label.global_position.y = global_position.y-50
+	xp_label.global_position.x = global_position.x-56
 	drop_scene.add_child(xp_label)
 	SaveManager.save_player_stats()
 	LevelingManager.check_for_level_up()

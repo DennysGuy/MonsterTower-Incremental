@@ -70,7 +70,14 @@ TODO: We will add saves for classes as well
 	"Chalice Spawn Rate":0.12,
 	"Vial Spawn Rate": 0.12,
 	"Lock On Multiplier" : 1.25,
-	"Combat Ability Cooldown Bonus": 0.0
+	"Combat Ability Cooldown Bonus": 0.0,
+	"Mining Bolt Links" : 0.0,
+	"Mining Bolt Chance": 0.0,
+	"Multi Bolts": 1.0,
+	"Mining Bolt Damage": 5.0,
+	"Mining Bolt Crit Chance": 0.0,
+	"Mining Bolt Distance": 250.0,
+	"Pick Up Distance": 20.0
 }
 
 #this will be loaded when we enter the tower entrance map or a map in and of itself
@@ -216,6 +223,10 @@ TODO: We will add saves for classes as well
 	"Refinery Accuracy 2": {"Level":0, "Unlocked": false},
 	"Ore Drop Chance 1": {"Level":0, "Unlocked": false},
 	"Ore Drop Chance 2": {"Level":0, "Unlocked": false},
+	"Mining Bolt Chance 1": {"Level":0, "Unlocked": false},
+	"Mining Bolt Distance 1": {"Level":0, "Unlocked": false},
+	"Mining Bolt Chain 1": {"Level":0, "Unlocked": false}, 
+	"Mining Barrage 1": {"Level":0, "Unlocked": false},
 	"Invincibility Duration 1": {"Level":0, "Unlocked": false},
 	"Double Jump": {"Level":0, "Unlocked": true},
 	"Gem Stone Station": {"Level":0, "Unlocked":false},
@@ -225,6 +236,8 @@ TODO: We will add saves for classes as well
 	"Vial of the Esoteric":{"Level":0,"Unlocked": false},
 	"Chalice Spawn Rate 1": {"Level":0,"Unlocked": false},
 	"Vial Spawn Rate 1": {"Level":0,"Unlocked": false},
+	"Pick Up Range 1": {"Level":0,"Unlocked": false},
+	"Pick Up Range 2": {"Level":0,"Unlocked": false},
 }
 
 @export var equipped_abilities : Dictionary = {

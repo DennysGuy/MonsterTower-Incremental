@@ -124,7 +124,8 @@ func update_progress() -> void:
 		upgrade_tracker_button.text = "%s/%s" % [TechTreeManager.current_upgrade_count, TechTreeManager.upgrade_count_to_prestige]
 		upgrade_tracker_button.disabled = true
 		upgrade_button_notification_icon.hide()
-
+	
+	expedition_time_tracker.text = "Expedition Time: %s" % PlayerStats.player_stats["Expedition Time"]
 	currency_label.text = "Spirols %s" % [TechTreeManager.currency]
 	upgrade_progress_bar.max_value = TechTreeManager.upgrade_count_to_prestige
 	upgrade_progress_bar.value = TechTreeManager.current_upgrade_count

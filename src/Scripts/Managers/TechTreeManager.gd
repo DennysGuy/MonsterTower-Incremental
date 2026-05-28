@@ -115,6 +115,10 @@ enum TECH_NODE_TYPE {ABILITY, FACILITY, CLASS_ABILITY}
 	"Cooking Accuracy 1": 0,
 	"Cooking Accuracy 2": 0,
 	"Refinery Station":0,
+	"Mining Bolt Chance 1": 0,
+	"Mining Bolt Distance 1": 0,
+	"Mining Bolt Chain 1": 0,
+	"Mining Barrage 1": 0,
 	"Mining Speed 1": 0,
 	"Mining Speed 2": 0,
 	"Refinery Speed 1": 0,
@@ -130,7 +134,9 @@ enum TECH_NODE_TYPE {ABILITY, FACILITY, CLASS_ABILITY}
 	"Vial of the Esoteric":0.0,
 	"Chalice of Welfare":0.0,
 	"Chalice Spawn Rate 1":0.0,
-	"Vial Spawn Rate 1": 0.0
+	"Vial Spawn Rate 1": 0.0,
+	"Pick Up Range 1": 0.0,
+	"Pick Up Range 2": 0.0
 }
 
 @onready var warrior_tech_nodes : Dictionary = {
