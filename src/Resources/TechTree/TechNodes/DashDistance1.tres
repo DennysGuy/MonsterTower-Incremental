@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://ioelpq1d2fhp"]
+
+[ext_resource type="Texture2D" uid="uid://ck70fun5abary" path="res://Assets/NodeGraphics/NodeGraphicsV2/DashAttack_Duration1_V2.png" id="1_lwsfs"]
+[ext_resource type="Resource" uid="uid://buu8pdcooh3hc" path="res://src/Resources/CraftingResources/BronzeBar.tres" id="2_6fohq"]
+[ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="3_sexr6"]
+
+[resource]
+script = ExtResource("3_sexr6")
+node_name = "Dash Distance 1"
+icon = ExtResource("1_lwsfs")
+description = "Increases the length of your dash attack by 5ms per level."
+max_level = 3
+currency_required = 400
+materials_required = Array[Dictionary]([{
+ExtResource("2_6fohq"): 1
+}])
+node_type = 1
+stat_name = "Dash Attack"
+upgrade_interval = 0.05
+prereqs = Array[String](["Dash Attack:1"])
+metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

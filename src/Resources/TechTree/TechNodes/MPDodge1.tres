@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://chuy1qutjtk58"]
+
+[ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_xspon"]
+
+[resource]
+script = ExtResource("1_xspon")
+node_name = "MP Dodge 1"
+metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"
