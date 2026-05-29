@@ -349,7 +349,7 @@ func draw_node_line() -> void:
 	var line: Line2D = Line2D.new()
 	line.z_index = -1
 	line.width = 20
-	add_child(line)
+	get_parent().add_child(line)
 	move_child(line, 0)
 
 	var start_pos := line.to_local(previous_node.line_position_marker.global_position)

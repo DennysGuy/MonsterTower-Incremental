@@ -24,24 +24,25 @@ mouse_filter = 1
 script = ExtResource("1_nxs8t")
 
 [node name="TechTreeCamera" parent="." unique_id=2137187773 instance=ExtResource("2_bcll4")]
+position = Vector2(896, 256)
 
 [node name="SmeltingStationUnlockNode" parent="." unique_id=640777626 instance=ExtResource("3_5r3ba")]
 visible = false
 layout_mode = 1
-offset_left = -704.0
-offset_top = 229.0
-offset_right = -704.0
-offset_bottom = 229.0
+offset_left = -768.0
+offset_top = 165.0
+offset_right = -768.0
+offset_bottom = 165.0
 tech_node_stats = ExtResource("4_nxs8t")
 node_type = 1
 
 [node name="SmeltingSpeed1Node" parent="." unique_id=1776225068 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_5r3ba")]
 visible = false
 layout_mode = 1
-offset_left = -192.0
-offset_top = 229.0
-offset_right = -192.0
-offset_bottom = 229.0
+offset_left = -256.0
+offset_top = 165.0
+offset_right = -256.0
+offset_bottom = 165.0
 tech_node_stats = ExtResource("5_8pn5x")
 previous_node = NodePath("../SmeltingStationUnlockNode")
 node_type = 1
@@ -49,69 +50,69 @@ node_type = 1
 [node name="SmeltingAccuracy1Node" parent="." unique_id=1331020484 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_5r3ba")]
 visible = false
 layout_mode = 1
-offset_left = -192.0
-offset_top = 36.0
-offset_right = -192.0
-offset_bottom = 36.0
+offset_left = -256.0
+offset_top = -92.0
+offset_right = -256.0
+offset_bottom = -92.0
 tech_node_stats = ExtResource("6_8pn5x")
 previous_node = NodePath("../SmeltingSpeed1Node")
 
 [node name="MiningSpeed1Node" parent="." unique_id=1302849726 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_5r3ba")]
 visible = false
 layout_mode = 1
-offset_left = 320.0
-offset_top = 229.0
-offset_right = 320.0
-offset_bottom = 229.0
+offset_left = 256.0
+offset_top = 165.0
+offset_right = 256.0
+offset_bottom = 165.0
 tech_node_stats = ExtResource("7_n6gwq")
 previous_node = NodePath("../SmeltingSpeed1Node")
 
 [node name="OreDropChance1Node" parent="." unique_id=1305696302 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_5r3ba")]
 visible = false
 layout_mode = 1
-offset_left = 320.0
-offset_top = 36.0
-offset_right = 320.0
-offset_bottom = 36.0
+offset_left = 256.0
+offset_top = -92.0
+offset_right = 256.0
+offset_bottom = -92.0
 tech_node_stats = ExtResource("8_n6gwq")
 previous_node = NodePath("../MiningSpeed1Node")
 
 [node name="MiningBolt1" parent="." unique_id=1809635083 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_5r3ba")]
 visible = false
 layout_mode = 1
-offset_left = 832.0
-offset_top = 229.0
-offset_right = 832.0
-offset_bottom = 229.0
+offset_left = 768.0
+offset_top = 165.0
+offset_right = 768.0
+offset_bottom = 165.0
 tech_node_stats = ExtResource("8_xeyfn")
 previous_node = NodePath("../MiningSpeed1Node")
 
 [node name="MiningBoltDistance1" parent="." unique_id=201830242 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_5r3ba")]
 visible = false
 layout_mode = 1
-offset_left = 832.0
-offset_top = 36.0
-offset_right = 832.0
-offset_bottom = 36.0
+offset_left = 768.0
+offset_top = -28.0
+offset_right = 768.0
+offset_bottom = -28.0
 tech_node_stats = ExtResource("9_n6gwq")
 previous_node = NodePath("../MiningBolt1")
 
 [node name="MiningBoltChain1" parent="." unique_id=1065742209 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_5r3ba")]
 visible = false
 layout_mode = 1
-offset_left = 832.0
-offset_top = -156.0
-offset_right = 832.0
-offset_bottom = -156.0
+offset_left = 768.0
+offset_top = -220.0
+offset_right = 768.0
+offset_bottom = -220.0
 tech_node_stats = ExtResource("10_8pn5x")
 previous_node = NodePath("../MiningBoltDistance1")
 
 [node name="MiningBarrage1" parent="." unique_id=588245151 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_5r3ba")]
 visible = false
 layout_mode = 1
-offset_left = 832.0
-offset_top = -348.0
-offset_right = 832.0
-offset_bottom = -348.0
+offset_left = 768.0
+offset_top = -412.0
+offset_right = 768.0
+offset_bottom = -412.0
 tech_node_stats = ExtResource("12_nxs8t")
 previous_node = NodePath("../MiningBoltChain1")

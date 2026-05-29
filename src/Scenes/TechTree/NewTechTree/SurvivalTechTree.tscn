@@ -25,53 +25,54 @@ mouse_filter = 1
 script = ExtResource("1_bo66c")
 
 [node name="TechTreeCamera" parent="." unique_id=2137187773 instance=ExtResource("2_miw4j")]
+position = Vector2(896, 256)
 
 [node name="MaxHP1Node" parent="." unique_id=640777626 instance=ExtResource("3_0yhyc")]
 visible = false
 layout_mode = 1
-offset_left = -704.0
-offset_top = 228.0
-offset_right = -704.0
-offset_bottom = 228.0
+offset_left = -768.0
+offset_top = 160.0
+offset_right = -768.0
+offset_bottom = 160.0
 tech_node_stats = ExtResource("4_miw4j")
 
 [node name="DefenseUP1Node" parent="." unique_id=913123538 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_0yhyc")]
 visible = false
 layout_mode = 1
-offset_left = -704.0
-offset_top = 36.0
-offset_right = -704.0
-offset_bottom = 36.0
+offset_left = -768.0
+offset_top = -92.0
+offset_right = -768.0
+offset_bottom = -92.0
 tech_node_stats = ExtResource("5_0yhyc")
 previous_node = NodePath("../MaxHP1Node")
 
 [node name="MaxHP2Node" parent="." unique_id=1776225068 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_0yhyc")]
 visible = false
 layout_mode = 1
-offset_left = -192.0
-offset_top = 226.0
-offset_right = -192.0
-offset_bottom = 226.0
+offset_left = -256.0
+offset_top = 160.0
+offset_right = -256.0
+offset_bottom = 160.0
 tech_node_stats = ExtResource("6_bo66c")
 previous_node = NodePath("../MaxHP1Node")
 
 [node name="DefenseUp2Node" parent="." unique_id=1331020484 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_0yhyc")]
 visible = false
 layout_mode = 1
-offset_left = -192.0
-offset_top = 36.0
-offset_right = -192.0
-offset_bottom = 36.0
+offset_left = -256.0
+offset_top = -92.0
+offset_right = -256.0
+offset_bottom = -92.0
 tech_node_stats = ExtResource("7_bo66c")
 previous_node = NodePath("../MaxHP2Node")
 
 [node name="HPChaliceNode" parent="." unique_id=1302849726 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_0yhyc")]
 visible = false
 layout_mode = 1
-offset_left = 320.0
-offset_top = 228.0
-offset_right = 320.0
-offset_bottom = 228.0
+offset_left = 256.0
+offset_top = 160.0
+offset_right = 256.0
+offset_bottom = 160.0
 tech_node_stats = ExtResource("8_xyfu8")
 previous_node = NodePath("../MaxHP2Node")
 node_type = 1
@@ -79,40 +80,40 @@ node_type = 1
 [node name="HPChaliceSpawnRateNode" parent="." unique_id=1305696302 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_0yhyc")]
 visible = false
 layout_mode = 1
-offset_left = 320.0
-offset_top = 36.0
-offset_right = 320.0
-offset_bottom = 36.0
+offset_left = 256.0
+offset_top = -92.0
+offset_right = 256.0
+offset_bottom = -92.0
 tech_node_stats = ExtResource("9_xyfu8")
 previous_node = NodePath("../HPChaliceNode")
 
 [node name="MaxMP1Node" parent="." unique_id=1548307285 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_0yhyc")]
 visible = false
 layout_mode = 1
-offset_left = 832.0
-offset_top = 229.0
-offset_right = 832.0
-offset_bottom = 229.0
+offset_left = 768.0
+offset_top = 161.0
+offset_right = 768.0
+offset_bottom = 161.0
 tech_node_stats = ExtResource("10_yak80")
 previous_node = NodePath("../HPChaliceNode")
 
 [node name="MaxMP2Node" parent="." unique_id=1480609517 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_0yhyc")]
 visible = false
 layout_mode = 1
-offset_left = 1344.0
-offset_top = 229.0
-offset_right = 1344.0
-offset_bottom = 229.0
+offset_left = 768.0
+offset_top = -92.0
+offset_right = 768.0
+offset_bottom = -92.0
 tech_node_stats = ExtResource("11_godpg")
 previous_node = NodePath("../MaxMP1Node")
 
 [node name="MPVialNode" parent="." unique_id=1644990129 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_0yhyc")]
 visible = false
 layout_mode = 1
-offset_left = 1856.0
-offset_top = 228.0
-offset_right = 1856.0
-offset_bottom = 228.0
+offset_left = 1280.0
+offset_top = 161.0
+offset_right = 1280.0
+offset_bottom = 161.0
 tech_node_stats = ExtResource("12_godpg")
 previous_node = NodePath("../MaxMP2Node")
 node_type = 1
@@ -120,9 +121,9 @@ node_type = 1
 [node name="MPVialSpawnRateNode" parent="." unique_id=1282606469 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_0yhyc")]
 visible = false
 layout_mode = 1
-offset_left = 1856.0
-offset_top = 36.0
-offset_right = 1856.0
-offset_bottom = 36.0
+offset_left = 1280.0
+offset_top = -96.0
+offset_right = 1280.0
+offset_bottom = -96.0
 tech_node_stats = ExtResource("13_godpg")
 previous_node = NodePath("../DefenseUp2Node")
