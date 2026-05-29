@@ -97,7 +97,7 @@ offset_top = 228.0
 offset_right = 832.0
 offset_bottom = 228.0
 tech_node_stats = ExtResource("9_awpbw")
-previous_node = NodePath("../BankUnlockNode")
+previous_node = NodePath("../PickUpDistance1")
 
 [node name="Bag2Node" parent="." unique_id=1305696302 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_umo85")]
 layout_mode = 1

@@ -6,7 +6,7 @@
 
 [resource]
 script = ExtResource("1_0b31i")
-node_name = "Pickup Range 1"
+node_name = "Pick Up Range 1"
 icon = ExtResource("2_bwtno")
 disabled_icon = ExtResource("1_v8r5x")
 description = "Increase Pick Up Damage by 20 for each level."

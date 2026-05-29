@@ -1,10 +1,14 @@
 [gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://coviifivetye5"]
 
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_1wyft"]
+[ext_resource type="Texture2D" uid="uid://bo6pxsmxrjsuh" path="res://Assets/TechTree/CombatNodes/InstaKill_Node_Disabled_Graphic.png" id="1_nts7i"]
+[ext_resource type="Texture2D" uid="uid://brwotewo1jmux" path="res://Assets/TechTree/CombatNodes/InstaKill_Node_Graphic.png" id="2_x3n7x"]
 
 [resource]
 script = ExtResource("1_1wyft")
 node_name = "Insta Kill 1"
+icon = ExtResource("2_x3n7x")
+disabled_icon = ExtResource("1_nts7i")
 description = "Increases Threshold to Insta-Kill an enemy for each level."
 max_level = 2
 currency_required = 8000

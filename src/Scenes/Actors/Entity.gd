@@ -63,7 +63,10 @@ func apply_damage(incoming_damage : int, is_crit : bool, new_label_position : in
 	
 	if self is Player:
 		damageable = false
-	
+	if self is Boss:
+		var added_damage_bonus : int = int(incoming_damage * PlayerStats.player_stats["Boss Damage Bonus"])
+		incoming_damage += added_damage_bonus
+		
 	play_sfx(impacts.pick_random())
 	var damage_event_multiplied : int = int(incoming_damage * event_damage_multiplier)
 	var damage = health_component.apply_damage(damage_event_multiplied, is_crit)

@@ -18,5 +18,5 @@ ExtResource("2_7hk58"): 1
 stat_relation = 3
 stat_name = "Max Bag Stack"
 upgrade_interval = 2.0
-prereqs = Array[String](["Deeper Pockets 1:1"])
+prereqs = Array[String](["Pick Up Range 1:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

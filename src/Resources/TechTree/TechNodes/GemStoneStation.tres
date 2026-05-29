@@ -17,5 +17,5 @@ ExtResource("2_atssi"): 5
 }])
 node_type = 1
 stat_name = "Gem Stone Station"
-prereqs = Array[String](["Attack 1:5"])
+prereqs = Array[String](["Attack 2:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

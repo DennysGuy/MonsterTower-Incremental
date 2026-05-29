@@ -34,6 +34,7 @@ func check_for_level_up() -> void:
 		play_level_up_sfx.emit()
 		
 		SaveManager.save_player_stats()
+		
 	update_xp_bar.emit()
 
 func xp_formula() -> int:

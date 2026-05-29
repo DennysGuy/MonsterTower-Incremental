@@ -1,12 +1,16 @@
 [gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://dant3bywg07u"]
 
+[ext_resource type="Texture2D" uid="uid://c5qp1ds1qsw6t" path="res://Assets/TechTree/CombatNodes/LastBreadth_Node_Disabled_Graphic.png" id="1_18oqw"]
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_bpats"]
+[ext_resource type="Texture2D" uid="uid://cr7ebf15ofira" path="res://Assets/TechTree/CombatNodes/LastBreadth_Node_Graphic.png" id="2_hdrms"]
 
 [resource]
 script = ExtResource("1_bpats")
 node_name = "Last Breadth 1"
+icon = ExtResource("2_hdrms")
+disabled_icon = ExtResource("1_18oqw")
 description = "Increases the Multiplier to damage when player is under a certain threshold."
-ap_required = 4000
+currency_required = 4000
 stat_name = "Last Breadth Threshold"
 upgrade_interval = 0.1
 prereqs = Array[String](["Breadth Threshold 1:1"])

@@ -1,11 +1,15 @@
 [gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://bqs24c70y86cp"]
 
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_0dsy8"]
+[ext_resource type="Texture2D" uid="uid://sig00hvk0gec" path="res://Assets/TechTree/CombatNodes/BossDamageUp_Node_Disabled_Graphic.png" id="1_78sqh"]
 [ext_resource type="Resource" uid="uid://cs6ojn6tc0alq" path="res://src/Resources/CraftingResources/SteelBar.tres" id="1_g7ncs"]
+[ext_resource type="Texture2D" uid="uid://5wqy255xb77h" path="res://Assets/TechTree/CombatNodes/BossDamageUp_Node_Graphic.png" id="2_q472v"]
 
 [resource]
 script = ExtResource("1_0dsy8")
 node_name = "Boss Damage 1"
+icon = ExtResource("2_q472v")
+disabled_icon = ExtResource("1_78sqh")
 description = "Increases bonus damage to boss by 10% for each level
 "
 max_level = 5

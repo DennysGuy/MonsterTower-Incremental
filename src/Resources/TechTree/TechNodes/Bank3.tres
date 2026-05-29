@@ -21,5 +21,5 @@ ExtResource("3_q5aq0"): 2
 stat_relation = 3
 stat_name = "Max Bank Slots"
 upgrade_interval = 4.0
-prereqs = Array[String](["Banking: 1"])
+prereqs = Array[String](["Banking 2: 1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

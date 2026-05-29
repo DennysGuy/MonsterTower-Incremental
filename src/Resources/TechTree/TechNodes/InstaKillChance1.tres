@@ -1,10 +1,14 @@
 [gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://cvy8gppv7scd"]
 
+[ext_resource type="Texture2D" uid="uid://decaopr0u1v8n" path="res://Assets/TechTree/CombatNodes/InstaKillHitChanceUp_Node_Disabled_Graphic.png" id="1_iarts"]
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_nca7m"]
+[ext_resource type="Texture2D" uid="uid://cj6r4bdvsgjae" path="res://Assets/TechTree/CombatNodes/InstaKillHitChanceUp_Node_Graphic.png" id="2_sqpju"]
 
 [resource]
 script = ExtResource("1_nca7m")
 node_name = "Insta Kill Chance 1"
+icon = ExtResource("2_sqpju")
+disabled_icon = ExtResource("1_iarts")
 description = "Increases Chance to Instant Kill an Enemy under a certain threshold by 3% for each level."
 max_level = 3
 currency_required = 7500

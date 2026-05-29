@@ -133,7 +133,7 @@ func increment_break_count() -> void:
 
 func give_xp() -> void:
 	
-	var bonus_xp : int = int(xp * PlayerStats.player_stats["Bonus XP Multiplier"])
+	var bonus_xp : int = int(xp + PlayerStats.player_stats["Bonus XP"])
 	var total_xp : int = xp + bonus_xp
 	
 	PlayerStats.player_stats["Current XP"] += total_xp

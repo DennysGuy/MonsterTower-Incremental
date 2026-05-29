@@ -22,6 +22,7 @@ var on_boss_door_floor : bool = false
 var room_speed_bonus : float = 1.0
 var new_jobs_available : bool = false
 var license_promotion_time : bool = false
+var in_last_breadth_mode : bool = false
 var remaining_bolt_chain_links : int = 0
 enum NOTIFICATION_TYPE {CRAFTING, COOKING, SMELTING, AP, QUEST}
 
@@ -71,11 +72,14 @@ func attack_enemies(enemies_in_hitbox : Array, enemies_hit : int = 1, number_of_
 				enemies_in_hitbox.erase(enemy)
 
 func attack_enemy(player : Player, enemy : Enemy, incoming_damage : int, is_crit : bool, hit_freeze : float = 0.02, is_warrior : bool = false, label_position : int = 40, ability : Ability = null) -> void:
-	SignalBus.shake_camera.emit(0.5)
+	#SignalBus.shake_camera.emit(0.5)
 	HitStopManager.freeze(hit_freeze, 0.1, 0.0, 0.03)
 	if is_warrior:
 		enemy.increment_break_count()
-		
+	
+	if can_siphen():
+		siphen_hp(incoming_damage)
+	
 	if ability:
 		match ability.attack_type:
 			ability.ATTACK_TYPE.NORMAL:
@@ -87,6 +91,20 @@ func attack_enemy(player : Player, enemy : Enemy, incoming_damage : int, is_crit
 		return
 	enemy.apply_damage(incoming_damage, is_crit, label_position)
 	#might need to break here so we don't collide with the function below
+
+func can_siphen() -> bool:
+	var chance : int = int(PlayerStats.player_stats["HP Siphen Chance"]*100)
+	var rand_num : int = randi_range(0,100)
+	if chance <= rand_num:
+		return true
+	return false
+
+func siphen_hp(amount : int) -> void:
+	var siphened_amount : int = int(amount * PlayerStats.player_stats["HP Siphen Amount"])
+	PlayerStats.player_stats["Current Health"] += siphened_amount
+	if PlayerStats.player_stats["Current Health"] >= PlayerStats.player_stats["Max Health"]:
+		PlayerStats.player_stats["Current Health"] = PlayerStats.player_stats["Max Health"]
+	PlayerHudSignalBus.update_player_health.emit() 
 
 func calculate_targets(enemies_in_hitbox : Array, player : Player, number_of_hits : int) -> Array[Entity]:
 	var targets: Array[Entity] = []

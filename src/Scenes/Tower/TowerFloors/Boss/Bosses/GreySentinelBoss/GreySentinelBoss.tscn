@@ -1415,11 +1415,10 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g7hoo"]
 size = Vector2(405, 464)
 
-[node name="GreySentinelBoss" type="CharacterBody2D" unique_id=1387952457 node_paths=PackedStringArray("left_leg", "health_bar", "state_machine", "animation_player", "health_component", "hurt_box", "dead_state")]
+[node name="GreySentinelBoss" type="CharacterBody2D" unique_id=1387952457 node_paths=PackedStringArray("left_leg", "state_machine", "animation_player", "health_component", "hurt_box", "dead_state")]
 script = ExtResource("1_gle20")
 left_leg = NodePath("BodyParts/LeftLeg")
 enemy_stats = ExtResource("2_p141u")
-health_bar = NodePath("")
 state_machine = NodePath("StateMachine")
 animation_player = NodePath("AnimationPlayer")
 health_component = NodePath("HealthComponent")
@@ -1510,9 +1509,8 @@ libraries/ = SubResource("AnimationLibrary_7tdmq")
 process_callback = 0
 one_shot = true
 
-[node name="HealthComponent" parent="." unique_id=342047902 node_paths=PackedStringArray("parent", "health_bar") instance=ExtResource("13_g7hoo")]
+[node name="HealthComponent" parent="." unique_id=342047902 node_paths=PackedStringArray("parent") instance=ExtResource("13_g7hoo")]
 parent = NodePath("..")
-health_bar = NodePath("")
 
 [node name="HurtBox" parent="." unique_id=984119613 instance=ExtResource("13_hs7nq")]
 position = Vector2(-4, -231)

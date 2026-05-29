@@ -1,10 +1,14 @@
 [gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://dto7io7l82yyq"]
 
+[ext_resource type="Texture2D" uid="uid://ubyhc3clbivr" path="res://Assets/TechTree/CombatNodes/ApUp_Node_Disabled_Graphic.png" id="1_e7ite"]
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_hql8t"]
+[ext_resource type="Texture2D" uid="uid://nkrgnota7h4k" path="res://Assets/TechTree/CombatNodes/ApUp_Node_Graphic.png" id="2_s8l8g"]
 
 [resource]
 script = ExtResource("1_hql8t")
 node_name = "AP Gain 2"
+icon = ExtResource("2_s8l8g")
+disabled_icon = ExtResource("1_e7ite")
 description = "Increases AP Received upon leveling up."
 currency_required = 9000
 stat_name = "Bonus AP"
