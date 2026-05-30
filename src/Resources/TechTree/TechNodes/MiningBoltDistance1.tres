@@ -12,7 +12,7 @@ icon = ExtResource("2_p5j2c")
 disabled_icon = ExtResource("1_kigdq")
 description = "Increases a Mining Bolt's distance by +50 for each level."
 max_level = 3
-currency_required = 6000
+currency_required = 2800
 materials_required = Array[Dictionary]([{
 ExtResource("3_p5j2c"): 2
 }])

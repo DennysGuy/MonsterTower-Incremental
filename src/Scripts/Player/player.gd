@@ -68,8 +68,6 @@ var can_attack_cancel: bool = false
 
 var was_on_ledge : bool = true
 
-var apply_gravity : bool = true
-
 var is_silence_attack : bool = false
 
 @export var idle_state : State

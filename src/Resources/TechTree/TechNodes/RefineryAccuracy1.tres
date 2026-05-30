@@ -15,5 +15,5 @@ currency_required = 300
 stat_relation = 5
 stat_name = "Smelting Accuracy Bonus"
 upgrade_interval = 0.03
-prereqs = Array[String](["Refinery Station:1"])
+prereqs = Array[String](["Critical Smelting 1:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

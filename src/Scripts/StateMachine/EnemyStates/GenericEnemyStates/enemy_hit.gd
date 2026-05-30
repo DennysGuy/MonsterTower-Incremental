@@ -23,6 +23,7 @@ func enter() -> void:
 func exit() -> void:
 	parent.knock_back_direction = 1
 	parent.damageable = true
+	parent.event_multiplier = 1.0
 	if !parent.is_silenced:
 		parent.enable_hit_box()
 	
@@ -40,7 +41,7 @@ func process_physics(_delta: float) -> State:
 	var direction_vector = (parent.global_position - parent.player.global_position).normalized()
 	var direction = GameManager.set_direction(direction_vector.x) * parent.knock_back_direction
 	if parent.can_knock_back:
-		parent.velocity.x = direction * parent.enemy_stats.movement_speed + 20
+		parent.velocity.x = (direction * parent.enemy_stats.movement_speed + 20) * parent.event_multiplier
 		parent.move_and_slide()
 	
 	if parent.timer.is_stopped():

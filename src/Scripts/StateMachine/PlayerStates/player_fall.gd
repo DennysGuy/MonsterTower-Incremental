@@ -6,6 +6,7 @@ class_name PlayerFall extends State
 @export var climb_state : State
 @export var double_jump : State
 @export var air_attack : State
+@export var dash_attack : State
 func enter() -> void:
 	super()
 	if not parent.was_on_ledge and not parent.is_on_floor():
@@ -47,7 +48,10 @@ func process_physics(_delta: float) -> State:
 	
 	if Input.is_action_just_pressed("swing_sword") and PlayerStats.facilities_unlocked["Arial Slash"] and parent.can_issue_ability("Air Attack"):
 		return air_attack
-	
+		
+	if Input.is_action_just_pressed("dash_attack") and PlayerStats.facilities_unlocked["Dash Attack"]:
+		return dash_attack
+		
 	if parent.is_on_floor():
 		parent.set_collision_mask_value(5, true)
 		if parent.jump_buffer_timer > 0:

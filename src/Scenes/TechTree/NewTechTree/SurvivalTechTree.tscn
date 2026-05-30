@@ -13,6 +13,8 @@
 [ext_resource type="Resource" uid="uid://c4jfyjh5yjva4" path="res://src/Resources/TechTree/TechNodes/MaxMP2.tres" id="11_godpg"]
 [ext_resource type="Resource" uid="uid://ddb4njdi5p43s" path="res://src/Resources/TechTree/TechNodes/MPVial.tres" id="12_godpg"]
 [ext_resource type="Resource" uid="uid://dnjct1360g838" path="res://src/Resources/TechTree/TechNodes/VialSpawnRate1.tres" id="13_godpg"]
+[ext_resource type="Resource" uid="uid://cmjrkltv1tvv7" path="res://src/Resources/TechTree/TechNodes/SiphenChance1.tres" id="14_i84oy"]
+[ext_resource type="Resource" uid="uid://8hkjeagafmg2" path="res://src/Resources/TechTree/TechNodes/VampiricSiphen1.tres" id="14_ikx21"]
 
 [node name="SurvivalTechTree" type="Control" unique_id=220942998]
 layout_mode = 3
@@ -127,3 +129,24 @@ offset_right = 1280.0
 offset_bottom = -96.0
 tech_node_stats = ExtResource("13_godpg")
 previous_node = NodePath("../DefenseUp2Node")
+
+[node name="SiphenChance1Node" parent="." unique_id=1271754428 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_0yhyc")]
+visible = false
+layout_mode = 1
+offset_left = 1792.0
+offset_top = 165.0
+offset_right = 1792.0
+offset_bottom = 165.0
+tech_node_stats = ExtResource("14_i84oy")
+previous_node = NodePath("../MPVialNode")
+node_type = 1
+
+[node name="VampiricSiphen1Node" parent="." unique_id=2082026162 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_0yhyc")]
+visible = false
+layout_mode = 1
+offset_left = 1792.0
+offset_top = -92.0
+offset_right = 1792.0
+offset_bottom = -92.0
+tech_node_stats = ExtResource("14_ikx21")
+previous_node = NodePath("../SiphenChance1Node")

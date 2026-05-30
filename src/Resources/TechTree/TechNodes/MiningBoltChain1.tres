@@ -12,7 +12,7 @@ icon = ExtResource("2_431re")
 disabled_icon = ExtResource("1_e84pn")
 description = "Increases mining bolt chain by 1 for each level."
 max_level = 2
-currency_required = 7000
+currency_required = 3400
 materials_required = Array[Dictionary]([{
 ExtResource("3_431re"): 3
 }])

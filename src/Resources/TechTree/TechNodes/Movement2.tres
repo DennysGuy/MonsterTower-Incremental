@@ -19,5 +19,5 @@ ExtResource("2_oo0nn"): 1
 stat_relation = 2
 stat_name = "Movement Speed"
 upgrade_interval = 0.05
-prereqs = Array[String](["Movement 1:2"])
+prereqs = Array[String](["Movement 1:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

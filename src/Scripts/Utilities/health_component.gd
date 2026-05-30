@@ -14,10 +14,13 @@ func apply_mp_replenish(magic_points : float):
 func apply_damage(incoming_damage : int, is_crit : bool) -> String:
 	var damage_text : String
 	parent.health -= incoming_damage
-	if is_crit:
-		damage_text = str(incoming_damage)+"!"
+	if is_crit and incoming_damage != 0:
+		damage_text = str(incoming_damage)+"!!"
 	else:
-		damage_text = str(incoming_damage)
+		if incoming_damage <= 0:
+			damage_text = "Miss"
+		else:
+			damage_text = str(incoming_damage)
 	
 	if parent is Player:
 		PlayerStats.player_stats["Current Health"] = parent.health

@@ -2549,13 +2549,14 @@ decel = 1500.0
 turn_resistance = 3500.0
 animation_name = "Run"
 
-[node name="Jump" type="Node" parent="StateMachine" unique_id=593572243 node_paths=PackedStringArray("idle_state", "fall_state", "air_attack", "double_jump")]
+[node name="Jump" type="Node" parent="StateMachine" unique_id=593572243 node_paths=PackedStringArray("idle_state", "fall_state", "air_attack", "double_jump", "dash_attack")]
 script = ExtResource("5_jq5qv")
 idle_state = NodePath("../Idle")
 fall_state = NodePath("../Fall")
 jump_sfx = ExtResource("6_yawj3")
 air_attack = NodePath("../AirAttack")
 double_jump = NodePath("../DoubleJump")
+dash_attack = NodePath("../DashAttack")
 animation_name = "Jump"
 
 [node name="Climb" type="Node" parent="StateMachine" unique_id=98111772 node_paths=PackedStringArray("idle_state", "jump_state")]
@@ -2565,7 +2566,7 @@ jump_state = NodePath("../Jump")
 climb_sfx = ExtResource("9_8bj2u")
 animation_name = "Climb"
 
-[node name="Fall" type="Node" parent="StateMachine" unique_id=1066671632 node_paths=PackedStringArray("jump_state", "move_state", "idle_state", "climb_state", "double_jump", "air_attack")]
+[node name="Fall" type="Node" parent="StateMachine" unique_id=1066671632 node_paths=PackedStringArray("jump_state", "move_state", "idle_state", "climb_state", "double_jump", "air_attack", "dash_attack")]
 script = ExtResource("6_k5pak")
 jump_state = NodePath("../Jump")
 move_state = NodePath("../Move")
@@ -2573,6 +2574,7 @@ idle_state = NodePath("../Idle")
 climb_state = NodePath("../Climb")
 double_jump = NodePath("../DoubleJump")
 air_attack = NodePath("../AirAttack")
+dash_attack = NodePath("../DashAttack")
 animation_name = "Fall"
 
 [node name="Attack1" type="Node" parent="StateMachine" unique_id=89279797 node_paths=PackedStringArray("attack2_state", "idle_state", "jump_state")]

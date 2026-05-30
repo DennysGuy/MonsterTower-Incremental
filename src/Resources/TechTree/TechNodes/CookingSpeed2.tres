@@ -1,9 +1,19 @@
-[gd_resource type="Resource" script_class="TechNodeStats" load_steps=3 format=3 uid="uid://c2amp16srnwin"]
+[gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://c2amp16srnwin"]
 
-[ext_resource type="Script" uid="uid://cu8drgivmhfn" path="res://src/Scripts/item.gd" id="1_3lmsq"]
+[ext_resource type="Resource" uid="uid://d1pg7dveofnwm" path="res://src/Resources/Dishes/Svio.tres" id="1_3lmsq"]
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="2_onnlh"]
 
 [resource]
 script = ExtResource("2_onnlh")
 node_name = "Cooking Speed 2"
+description = "Increases cooking speed by 10% for each level"
+max_level = 3
+currency_required = 7000
+materials_required = Array[Dictionary]([{
+ExtResource("1_3lmsq"): 2
+}])
+stat_relation = 4
+stat_name = "Cooking Speed"
+upgrade_interval = 0.1
+prereqs = Array[String](["Critical Cooking 2"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

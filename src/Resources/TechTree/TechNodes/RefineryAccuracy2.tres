@@ -1,9 +1,26 @@
-[gd_resource type="Resource" script_class="TechNodeStats" load_steps=3 format=3 uid="uid://4tjkp1pv61k7"]
+[gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://4tjkp1pv61k7"]
 
-[ext_resource type="Script" uid="uid://cu8drgivmhfn" path="res://src/Scripts/item.gd" id="1_n4ao0"]
+[ext_resource type="Texture2D" uid="uid://d36meckgmdr5k" path="res://Assets/TechTree/SmeltingNodes/SmeltingAccuracy_Disabled_Graphic.png" id="1_qth3v"]
+[ext_resource type="Texture2D" uid="uid://0e1sd8uouheb" path="res://Assets/TechTree/SmeltingNodes/SmeltingAccuracy_Graphic.png" id="2_ir678"]
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="2_qth3v"]
+[ext_resource type="Resource" uid="uid://y4kiqe4pi2v5" path="res://src/Resources/CraftingResources/IronBar.tres" id="3_vathq"]
+[ext_resource type="Resource" uid="uid://cs6ojn6tc0alq" path="res://src/Resources/CraftingResources/SteelBar.tres" id="4_kb1r4"]
 
 [resource]
 script = ExtResource("2_qth3v")
-node_name = "Refining Accuarcy 2"
+node_name = "Refinery Accuracy 2"
+icon = ExtResource("2_ir678")
+disabled_icon = ExtResource("1_qth3v")
+description = "Get more bars! Increases Smelting success rate bonus by 5% per level."
+max_level = 3
+currency_required = 4000
+materials_required = Array[Dictionary]([{
+ExtResource("3_vathq"): 2
+}, {
+ExtResource("4_kb1r4"): 2
+}])
+stat_relation = 5
+stat_name = "Smelting Accuracy Bonus"
+upgrade_interval = 0.05
+prereqs = Array[String](["Critical Smelting 2:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

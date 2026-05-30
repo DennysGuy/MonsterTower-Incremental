@@ -89,6 +89,7 @@ func apply_slow_and_damage(damage : int, issued_slow_factor : float, slow_wait_t
 func apply_silenced_and_damage(damage : int, silenced_wait_time : float, is_crit : bool = false) -> void:
 	if PlayerStats.player_stats["Class"] == "Tyro":
 		increment_break_count()
+		event_multiplier = 4.0
 	
 	knock_back_direction = -1
 	

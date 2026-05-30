@@ -12,6 +12,10 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("interact") and player_in_range:
+		GameManager.player_can_move = false
+		GameManager.can_open_tower_map = false
+		GameManager.can_open_bag = false
+		GameManager.can_pause_game = false
 		PlayerHudSignalBus.spawn_job_board_menu.emit()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:

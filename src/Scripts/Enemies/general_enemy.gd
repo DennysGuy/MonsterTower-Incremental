@@ -33,10 +33,7 @@ func _on_hit_box_area_entered(area: Area2D) -> void:
 	0.9
 	)
 	
-	print("This is the defense: %s " % defense)
-	
 	damage = int(damage * (1.0 - defense))
-
 	damage = max(damage, 1)
 	area_parent.apply_damage(damage,false)
 	

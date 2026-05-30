@@ -1,8 +1,22 @@
 [gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://b32ox2g2nto6q"]
 
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_0d3np"]
+[ext_resource type="Resource" uid="uid://y4kiqe4pi2v5" path="res://src/Resources/CraftingResources/IronBar.tres" id="1_dcthd"]
+[ext_resource type="Texture2D" uid="uid://doiw51hb8jy38" path="res://Assets/TechTree/SmeltingNodes/FreeRange_Disabled_Graphic.png" id="1_iju0p"]
+[ext_resource type="Texture2D" uid="uid://coclpgja3vbjn" path="res://Assets/TechTree/SmeltingNodes/FreeRange_Graphic.png" id="2_nxx1i"]
 
 [resource]
 script = ExtResource("1_0d3np")
 node_name = "Free Heat 2"
+icon = ExtResource("2_nxx1i")
+disabled_icon = ExtResource("1_iju0p")
+description = "Increase chance to dodge material consumption when smetling by 5%. "
+currency_required = 5000
+materials_required = Array[Dictionary]([{
+ExtResource("1_dcthd"): 4
+}])
+stat_relation = 5
+stat_name = "Free Heat Chance"
+upgrade_interval = 0.05
+prereqs = Array[String](["Mining Bolt Chance 1:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

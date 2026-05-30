@@ -111,6 +111,7 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 			stored_crafting_menu.play_spawn_out()
 		else:
 			cant_open_notice.hide()
+			
 func spawn_cooking_station_menu() -> void:
 	var cooking_menu : NewCraftingStationMenu = preload("uid://dq1s8bd6w6dnv").instantiate()
 	cooking_menu.set_as_cooking_range()
@@ -168,13 +169,14 @@ func move_resources_from_station() -> void:
 	for ingredient in stored_recipe.recipe_list:
 		for num in range(crafting_quantity):
 			for key in ingredient.keys():
-				var spawn : CraftingItemSpawn = preload("uid://w3hqvcw0cv2q").instantiate()
-				spawn.icon.texture = key.shop_icon
-				spawn.starting_ending_area = ending_area
-				spawn.ending_area = player.ending_area
-				play_sfx(PULL_ITEM_1)
-				get_parent().add_child(spawn)
-				await get_tree().create_timer(0.1).timeout
+				for i in range(ingredient[key]):
+					var spawn : CraftingItemSpawn = preload("uid://w3hqvcw0cv2q").instantiate()
+					spawn.icon.texture = key.shop_icon
+					spawn.starting_ending_area = ending_area
+					spawn.ending_area = player.ending_area
+					play_sfx(PULL_ITEM_1)
+					get_parent().add_child(spawn)
+					await get_tree().create_timer(0.1).timeout
 
 func show_crafting_tracker() -> void:
 	crafting_station_menu_item.item_icon.texture = stored_recipe.output_item.shop_icon
@@ -228,5 +230,41 @@ func spawn_item(item : Item, offset : Vector2 = Vector2.ZERO) -> void:
 			CodexManager.increment_bar_recipe_list_item_count(stored_recipe.index)
 		STATION_TYPE.COOKING:
 			CodexManager.increment_dish_recipe_list_item_count(stored_recipe.index)
-			
+	
+	#check if free range/heat hits
+	spawn_crafting_recipe_items()
+	
 	get_parent().add_child(item_interactable)
+
+func spawn_crafting_recipe_items() -> void:
+	if !check_for_free_craft():
+		return
+	
+	for ingredient in stored_recipe.recipe_list:
+		var offset = -50
+		for num in range(crafting_quantity):
+			for key in ingredient.keys():
+				for i in range(ingredient[key]):
+					var spawn : ItemInteractable = preload("uid://dgtobkubdjq27").instantiate()
+					spawn.icon.texture = key.shop_icon
+					spawn.item = key
+					spawn.global_position = global_position + Vector2(global_position.x + offset, global_position.y)
+					play_sfx(PULL_ITEM_1)
+					get_parent().add_child(spawn)
+					offset += 5
+					await get_tree().create_timer(0.1).timeout
+				
+func check_for_free_craft() -> bool:
+	var rand_num : int = randi_range(0,100)
+	
+	match station_type:
+		STATION_TYPE.COOKING:
+			var chance : int = int(PlayerStats.player_stats["Free Range Chance"]*100)
+			if chance > 0 and rand_num <= chance:
+				return true
+		STATION_TYPE.SMELTING:
+			var chance : int = int(PlayerStats.player_stats["Free Heat Chance"]*100)
+			if chance > 0 and rand_num <= chance:
+				return true
+		
+	return false

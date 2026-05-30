@@ -1,9 +1,26 @@
-[gd_resource type="Resource" script_class="TechNodeStats" load_steps=3 format=3 uid="uid://bwka1lphbne68"]
+[gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://bwka1lphbne68"]
 
-[ext_resource type="Script" uid="uid://cu8drgivmhfn" path="res://src/Scripts/item.gd" id="1_cq6yo"]
+[ext_resource type="Texture2D" uid="uid://bnrw6hvy8qj3" path="res://Assets/TechTree/SmeltingNodes/SmeltingSpeed_Graphic.png" id="1_cq6yo"]
+[ext_resource type="Texture2D" uid="uid://bgi1xrd24ktq1" path="res://Assets/TechTree/SmeltingNodes/SmeltingSpeed_Disabled_Graphic.png" id="1_rsqsp"]
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="2_rsqsp"]
+[ext_resource type="Resource" uid="uid://y4kiqe4pi2v5" path="res://src/Resources/CraftingResources/IronBar.tres" id="3_wlkyh"]
+[ext_resource type="Resource" uid="uid://cs6ojn6tc0alq" path="res://src/Resources/CraftingResources/SteelBar.tres" id="4_3yu03"]
 
 [resource]
 script = ExtResource("2_rsqsp")
-node_name = "Refining Speed 2"
+node_name = "Refinery Speed 2"
+icon = ExtResource("1_cq6yo")
+disabled_icon = ExtResource("1_rsqsp")
+description = "Decrease your wait time and Increase Smelting Speed by 15% per level."
+max_level = 2
+currency_required = 3500
+materials_required = Array[Dictionary]([{
+ExtResource("3_wlkyh"): 2
+}, {
+ExtResource("4_3yu03"): 2
+}])
+stat_relation = 5
+stat_name = "Smelting Speed"
+upgrade_interval = 0.15
+prereqs = Array[String](["Critical Smelting 2:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

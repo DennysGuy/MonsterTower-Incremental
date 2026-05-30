@@ -7,6 +7,7 @@ var equipped_dash_attack : DashAttackBehavior
 
 func enter() -> void:
 	super()
+	parent.apply_gravity = false
 	parent.can_knock_back = false
 	parent.damageable = false
 	parent.set_sword_texture(animation_name)
@@ -30,7 +31,7 @@ func exit() -> void:
 	#parent.ability_cool_down_timer.wait_time = PlayerStats.player_stats["Dash Cooldown"]
 	#parent.ability_cool_down_timer.start()
 	parent.clear_effect_texture()
-
+	parent.apply_gravity = true
 	#parent.can_dash_attack = false
 	
 func process_input(_event: InputEvent) -> State:
@@ -38,6 +39,7 @@ func process_input(_event: InputEvent) -> State:
 		parent.set_attack_buffer_timer()
 	elif Input.is_action_just_pressed("add_currency"):
 		parent.jump_buffer_timer = parent.jump_buffer_wait_time
+	#we can probably add the combat ability buffers here
 	
 	return null
 

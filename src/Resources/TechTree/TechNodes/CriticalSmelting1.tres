@@ -1,8 +1,18 @@
 [gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://c8v6iimoi7wcr"]
 
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_8frvr"]
+[ext_resource type="Texture2D" uid="uid://d0b41scjhhnh8" path="res://Assets/TechTree/SmeltingNodes/SmeltingCriticalSuccessUp_Graphic.png" id="1_542ll"]
+[ext_resource type="Texture2D" uid="uid://bdymcqa0mfll4" path="res://Assets/TechTree/SmeltingNodes/SmeltingCriticalSuccessUp_Disabled_Graphic.png" id="1_c5p0i"]
 
 [resource]
 script = ExtResource("1_8frvr")
 node_name = "Critical Smelting 1"
+icon = ExtResource("1_542ll")
+disabled_icon = ExtResource("1_c5p0i")
+description = "Increases chance to double item output when smelting."
+currency_required = 500
+stat_relation = 5
+stat_name = "Critical Smelting Chance"
+upgrade_interval = 0.05
+prereqs = Array[String](["Refinery Station:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

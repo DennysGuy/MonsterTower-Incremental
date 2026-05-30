@@ -24,6 +24,7 @@ var new_jobs_available : bool = false
 var license_promotion_time : bool = false
 var in_last_breadth_mode : bool = false
 var remaining_bolt_chain_links : int = 0
+var event_multiplier : float = 1.0
 enum NOTIFICATION_TYPE {CRAFTING, COOKING, SMELTING, AP, QUEST}
 
 # Called when the node enters the scene tree for the first time.
@@ -146,3 +147,11 @@ func set_direction(dir : float):
 
 func can_unlock_class() -> bool:
 	return PlayerStats.player_stats["Level"] >= 8 and PlayerStats.facilities_unlocked["Arial Slash"] and PlayerStats.facilities_unlocked["Dash Attack"] and PlayerStats.facilities_unlocked["Double Jump"] and PlayerStats.player_stats["Class"] == "Junior Hunter"
+
+func check_if_dodged() -> bool:
+	var chance : int = int(PlayerStats.player_stats["Dodge Chance"] * 100)
+	var rand_num : int = randi_range(0,100)
+	if chance != 0 and rand_num <= chance:
+		return true
+	
+	return false

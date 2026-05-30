@@ -31,7 +31,7 @@ var is_silenced : bool = false
 
 var damageable : bool = true
 var is_dead : bool = false
-
+var event_multiplier : float = 1.0
 var prev_dir : int = 1
 
 const GENERIC_IMPACT_1 = preload("uid://ffdv7g8jgp4y")
@@ -42,7 +42,7 @@ const EVENT_HIT = preload("uid://xqm6ui46e8q4")
 const LOCK_ON_ENEMY = preload("uid://dyxqfogqcdlju")
 
 @onready var impacts : Array[AudioStream] = [GENERIC_IMPACT_1, GENERIC_IMPACT_2, GENERIC_IMPACT_3]
-
+var apply_gravity : bool = true
 var health : float
 
 func _ready() -> void:
@@ -63,6 +63,9 @@ func apply_damage(incoming_damage : int, is_crit : bool, new_label_position : in
 	
 	if self is Player:
 		damageable = false
+		if GameManager.check_if_dodged():
+			incoming_damage = 0
+		
 	if self is Boss:
 		var added_damage_bonus : int = int(incoming_damage * PlayerStats.player_stats["Boss Damage Bonus"])
 		incoming_damage += added_damage_bonus

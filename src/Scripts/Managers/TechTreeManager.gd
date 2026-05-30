@@ -82,6 +82,7 @@ enum TECH_NODE_TYPE {ABILITY, FACILITY, CLASS_ABILITY}
 	"Movement 3" : 0,
 	"Climb Speed 1" : 0,
 	"Climb Speed 2": 0,
+	"Climb Speed 3": 0,
 	"Jump Height 1":0,
 	"Jump Height 2":0,
 	"Jump Height 3":0,

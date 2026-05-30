@@ -78,7 +78,9 @@ func damage_ore_rock(damage : int) -> void:
 	get_parent().add_child(damage_label)
 	if GameManager.remaining_bolt_chain_links > 0:
 		cast_lightning_bolt()
-		GameManager.remaining_bolt_chain_links -= 1
+		
+		
+		
 	
 func drop_ore_rock() -> void:
 	var random_check : int = randi_range(0,100)
@@ -124,10 +126,14 @@ func cast_lightning_bolt() -> void:
 	if !can_shoot_mining_bolt():
 		return
 	
+	GameManager.remaining_bolt_chain_links -= 1
+	
 	var valid_rocks : Array[OreRock] = []
 	
 	for rock in get_tree().get_nodes_in_group("OreRocks"):
-		if rock != self or (previously_hit_ore_rock and rock == previously_hit_ore_rock) and !rock.depleted and global_position.distance_to(rock.global_position) <= PlayerStats.player_stats["Mining Bolt Distance"]:
+		if rock != self \
+		and !rock.depleted \
+		and global_position.distance_to(rock.global_position) <= PlayerStats.player_stats["Mining Bolt Distance"]:
 			rock.previously_hit_ore_rock = self
 			valid_rocks.append(rock)
 	
@@ -140,12 +146,13 @@ func cast_lightning_bolt() -> void:
 		
 	if !selected_rocks:
 		return
+		
 	
-	for next_ore_rock in selected_rocks:
-		create_lightning_bolt(global_position, next_ore_rock.global_position)
+	for i in range(PlayerStats.player_stats["Multi Bolts"]):
+		create_lightning_bolt(global_position, selected_rocks[i].global_position)
 		play_sfx(lightning_zaps.pick_random())
 		await get_tree().create_timer(0.1).timeout
-		next_ore_rock.damage_ore_rock(10)
+		selected_rocks[i].damage_ore_rock(10)
 
 func create_lightning_bolt(start_pos: Vector2, end_pos: Vector2) -> void:
 	var outer := make_lightning_line(start_pos, end_pos, 12.0, Color(0.2, 0.8, 1.0, 0.45))
