@@ -17,6 +17,6 @@ materials_required = Array[Dictionary]([{
 ExtResource("3_wpgbq"): 1
 }])
 stat_name = "Bonus XP"
-upgrade_interval = 8.0
+upgrade_interval = 25.0
 prereqs = Array[String](["Attack 3:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"
