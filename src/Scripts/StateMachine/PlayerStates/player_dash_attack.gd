@@ -3,6 +3,12 @@ class_name PlayerDashAttackState extends State
 @export var idle_state : State
 @export var attack_1 : State
 @export var jump : State
+
+@export var combat_ability_1 : State
+@export var combat_ability_2 : State
+@export var combat_ability_3 : State
+@export var combat_ability_4 : State
+
 var equipped_dash_attack : DashAttackBehavior
 
 func enter() -> void:
@@ -40,7 +46,21 @@ func process_input(_event: InputEvent) -> State:
 	elif Input.is_action_just_pressed("add_currency"):
 		parent.jump_buffer_timer = parent.jump_buffer_wait_time
 	#we can probably add the combat ability buffers here
-	
+	elif Input.is_action_just_pressed("combat_ability_1") and PlayerStats.get_equipped_ability("Combat Ability 1") and parent.can_issue_ability("Combat Ability 1"):
+		parent.attack_friction = 400
+		parent.max_attack_drift = 200
+		parent.combat_ability_1_timer = parent.combat_ability_1_wait_time
+		
+
+	elif Input.is_action_just_pressed("combat_ability_2") and PlayerStats.get_equipped_ability("Combat Ability 2") and parent.can_issue_ability("Combat Ability 2"):
+		parent.combat_ability_2_timer = parent.combat_ability_2_wait_time
+		
+	elif Input.is_action_just_pressed("combat_ability_3")  and PlayerStats.get_equipped_ability("Combat Ability 3") and parent.can_issue_ability("Combat Ability 3"):
+		parent.combat_ability_3_timer = parent.combat_ability_3_wait_time
+		
+	elif Input.is_action_just_pressed("combat_ability_4")  and PlayerStats.get_equipped_ability("Combat Ability 4") and parent.can_issue_ability("Combat Ability 4"):
+		parent.combat_ability_4_timer = parent.combat_ability_4_wait_time
+		
 	return null
 
 func process_frame(_delta: float) -> State:
@@ -57,6 +77,21 @@ func process_physics(_delta: float) -> State:
 		elif parent.jump_buffer_timer > 0:
 			parent.jump_buffer_timer = 0
 			return jump
+		elif parent.combat_ability_1_timer > 0:
+			parent.combat_ability_1_timer = 0
+			return combat_ability_1
+		elif parent.combat_ability_2_timer > 0:
+			parent.combat_ability_2_timer = 0
+			return combat_ability_2
+			
+		elif parent.combat_ability_3_timer > 0:
+			parent.combat_ability_3_timer = 0
+			return combat_ability_3
+			
+		elif parent.combat_ability_4_timer > 0:
+			parent.combat_ability_4_timer = 0
+			return combat_ability_4
+			
 		parent.velocity = Vector2.ZERO
 		return idle_state
 	

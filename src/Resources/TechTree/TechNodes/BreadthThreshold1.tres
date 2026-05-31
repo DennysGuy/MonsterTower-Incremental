@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://c5qp1ds1qsw6t" path="res://Assets/TechTree/CombatNodes/LastBreadth_Node_Disabled_Graphic.png" id="1_k7ytf"]
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_pheh2"]
 [ext_resource type="Texture2D" uid="uid://cr7ebf15ofira" path="res://Assets/TechTree/CombatNodes/LastBreadth_Node_Graphic.png" id="2_jtbke"]
+[ext_resource type="Resource" uid="uid://y4kiqe4pi2v5" path="res://src/Resources/CraftingResources/IronBar.tres" id="3_ahc80"]
 
 [resource]
 script = ExtResource("1_pheh2")
@@ -12,6 +13,9 @@ disabled_icon = ExtResource("1_k7ytf")
 description = "Increases the threshold necessary for Last Breadth activation."
 max_level = 2
 currency_required = 2000
+materials_required = Array[Dictionary]([{
+ExtResource("3_ahc80"): 1
+}])
 stat_name = "Last Breadth Multiplier"
 upgrade_interval = 0.1
 prereqs = Array[String](["Gem Stone Station:1"])

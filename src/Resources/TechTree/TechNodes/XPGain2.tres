@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_cp0u6"]
 [ext_resource type="Texture2D" uid="uid://jyb2a5ayc1yt" path="res://Assets/TechTree/CombatNodes/XPUp_Node_Disabled_Graphic.png" id="1_m13gn"]
 [ext_resource type="Texture2D" uid="uid://b6e7to3exxpih" path="res://Assets/TechTree/CombatNodes/XPUp_Node_Graphic.png" id="2_6p7l7"]
+[ext_resource type="Resource" uid="uid://d1pg7dveofnwm" path="res://src/Resources/Dishes/Svio.tres" id="3_6p7l7"]
 
 [resource]
 script = ExtResource("1_cp0u6")
@@ -11,8 +12,11 @@ icon = ExtResource("2_6p7l7")
 disabled_icon = ExtResource("1_m13gn")
 description = "Increases Bonus XP Acquired for each kill."
 max_level = 3
-currency_required = 9500
+currency_required = 5500
+materials_required = Array[Dictionary]([{
+ExtResource("3_6p7l7"): 2
+}])
 stat_name = "Bonus XP"
-upgrade_interval = 2.0
-prereqs = Array[String](["Attack4:1"])
+upgrade_interval = 100.0
+prereqs = Array[String](["Attack 4:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

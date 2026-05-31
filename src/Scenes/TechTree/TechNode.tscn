@@ -77,6 +77,8 @@ texture = ExtResource("8_ojxq6")
 [node name="ToolTipMarker" type="Marker2D" parent="." unique_id=1051285096]
 position = Vector2(101, -147)
 
+[connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
+[connection signal="focus_exited" from="." to="." method="_on_focus_exited"]
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

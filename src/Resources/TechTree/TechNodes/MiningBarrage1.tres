@@ -12,9 +12,9 @@ icon = ExtResource("2_ww6k4")
 disabled_icon = ExtResource("1_hl3g5")
 description = "Increases the number of mining bolts sent out in a given pick axe swing by +1 per level."
 max_level = 3
-currency_required = 7000
+currency_required = 2000
 materials_required = Array[Dictionary]([{
-ExtResource("3_ww6k4"): 3
+ExtResource("3_ww6k4"): 4
 }])
 stat_relation = 5
 stat_name = "Multi Bolts"

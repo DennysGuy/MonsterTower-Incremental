@@ -10,13 +10,13 @@ script = ExtResource("3_ce77e")
 node_name = "Attack 4"
 icon = ExtResource("2_ce77e")
 disabled_icon = ExtResource("1_nrmsl")
-description = "Increases Attack Damage by %30 for each level"
+description = "Increases Attack Damage by %45 for each level"
 max_level = 5
-currency_required = 4000
+currency_required = 3000
 materials_required = Array[Dictionary]([{
 ExtResource("2_0cud6"): 1
 }])
 stat_name = "Attack Damage"
-upgrade_interval = 0.3
+upgrade_interval = 0.45
 prereqs = Array[String](["Attack 3:3"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

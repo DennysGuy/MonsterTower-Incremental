@@ -117,7 +117,7 @@ offset_top = 161.0
 offset_right = 1280.0
 offset_bottom = 161.0
 tech_node_stats = ExtResource("12_godpg")
-previous_node = NodePath("../MaxMP2Node")
+previous_node = NodePath("../MaxMP1Node")
 node_type = 1
 
 [node name="MPVialSpawnRateNode" parent="." unique_id=1282606469 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_0yhyc")]

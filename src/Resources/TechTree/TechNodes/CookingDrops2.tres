@@ -7,9 +7,9 @@
 script = ExtResource("2_vtq7n")
 node_name = "Cooking Drops 2"
 description = "Increases chance to receive cooking drops by 10%"
-currency_required = 10000
+currency_required = 3000
 materials_required = Array[Dictionary]([{
-ExtResource("1_7w7xp"): 2
+ExtResource("1_7w7xp"): 1
 }])
 stat_relation = 4
 stat_name = "Cooking Drop Chance Bonus"

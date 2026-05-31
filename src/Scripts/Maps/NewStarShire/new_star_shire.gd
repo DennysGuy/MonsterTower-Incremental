@@ -82,7 +82,7 @@ func _ready() -> void:
 	PlayerHudSignalBus.update_player_mp.emit()
 	SaveManager.save_player_stats()
 	QuestManager.check_map_name.emit(map_name)
-	
+	show_ap_notice()
 	if PlayerStats.player_stats["Level"] == 2 and PlayerStats.player_stats["Ability Points"] == 1:
 		ability_station_notice()
 
@@ -159,8 +159,8 @@ func _on_tower_area_body_entered(body: Node2D) -> void:
 		set_guide_log(true)
 
 func show_ap_notice() -> void:
-	if PlayerStats.player_stats["Ability Points"] >= 1 and PlayerStats.player_stats["Class"] == "Junior Hunter":
-		PlayerHudSignalBus.show_class_notice.emit()
+	if PlayerStats.player_stats["Ability Points"] >= 1:
+		#PlayerHudSignalBus.show_class_notice.emit()
 		ap_notice.show()
 	else:
 		PlayerHudSignalBus.show_class_notice.emit()

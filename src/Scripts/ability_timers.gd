@@ -40,11 +40,14 @@ func activate_ability_cooldown(ability_name : String) -> void:
 		equipped_ability = load(equipped_ability)
 	
 	var cooldown_bonus : float = PlayerStats.player_stats["Combat Ability Cooldown Bonus"]
-	var total_cooldown : float = equipped_ability.cooldown_time + cooldown_bonus
+	var total_cooldown : float = max(0, equipped_ability.cooldown_time - cooldown_bonus)
 	
-	ability_state[ability_name]["Timer"].wait_time = total_cooldown
+	var ability_timer : Timer = ability_state[ability_name]["Timer"]
+	
+	ability_timer.wait_time = total_cooldown
 	start_ability_cooldown_timer.emit(ability_name)
-	ability_state[ability_name]["Timer"].start()
+	
+	ability_timer.start()
 
 func start_buff_timer_1(wait_time : float, ability : Ability) -> void:
 	

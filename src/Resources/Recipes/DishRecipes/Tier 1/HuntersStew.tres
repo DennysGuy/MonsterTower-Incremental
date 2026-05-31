@@ -30,4 +30,5 @@ ExtResource("5_1v1wu"): 2
 }, {
 ExtResource("6_r70v0"): 1
 }])
+related_nodes = Array[String](["Chalice of Welfare", "Vial of the Esoteric", "AP Gain 1", "XP Gain 1"])
 metadata/_custom_type_script = "uid://cljygiasf4103"

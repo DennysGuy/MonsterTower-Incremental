@@ -148,11 +148,14 @@ func cast_lightning_bolt() -> void:
 		return
 		
 	
-	for i in range(PlayerStats.player_stats["Multi Bolts"]):
-		create_lightning_bolt(global_position, selected_rocks[i].global_position)
-		play_sfx(lightning_zaps.pick_random())
-		await get_tree().create_timer(0.1).timeout
-		selected_rocks[i].damage_ore_rock(10)
+	var bolt_count : int = min(PlayerStats.player_stats["Multi Bolts"], selected_rocks.size())
+	for i in bolt_count:
+		if is_instance_valid(selected_rocks[i]):
+			create_lightning_bolt(global_position, selected_rocks[i].global_position)
+			play_sfx(lightning_zaps.pick_random())
+			await get_tree().create_timer(0.1).timeout
+			if is_instance_valid(selected_rocks[i]):
+				selected_rocks[i].damage_ore_rock(10)
 
 func create_lightning_bolt(start_pos: Vector2, end_pos: Vector2) -> void:
 	var outer := make_lightning_line(start_pos, end_pos, 12.0, Color(0.2, 0.8, 1.0, 0.45))

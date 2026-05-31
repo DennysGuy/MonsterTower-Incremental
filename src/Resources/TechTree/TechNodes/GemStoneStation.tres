@@ -13,7 +13,7 @@ disabled_icon = ExtResource("1_kbgvk")
 description = "Unlocks 'Gem Stone Station'. Collect and mount gems to further empower your weapon."
 currency_required = 1000
 materials_required = Array[Dictionary]([{
-ExtResource("2_atssi"): 5
+ExtResource("2_atssi"): 2
 }])
 node_type = 1
 stat_name = "Gem Stone Station"

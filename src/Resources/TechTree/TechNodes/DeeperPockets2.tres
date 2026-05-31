@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://ydq2itcsk458"]
 
 [ext_resource type="Texture2D" uid="uid://dey7u2ddpfnnv" path="res://Assets/TechTree/InventoryNodes/DeeperPockets_Disabled_Graphic.png" id="1_l5y41"]
-[ext_resource type="Resource" uid="uid://boeryxspsw8uq" path="res://src/Resources/Dishes/CookedGagootz.tres" id="2_7hk58"]
 [ext_resource type="Texture2D" uid="uid://cg1xkarkjqggt" path="res://Assets/TechTree/InventoryNodes/DeeperPockets_Graphic.png" id="2_pxvab"]
+[ext_resource type="Resource" uid="uid://ctjyflf6qr4g" path="res://src/Resources/Dishes/MossyGoulash.tres" id="3_l5y41"]
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="3_pxvab"]
 
 [resource]
@@ -13,10 +13,10 @@ disabled_icon = ExtResource("1_l5y41")
 description = "Increases Max Inventory Slot Stack by +2"
 currency_required = 800
 materials_required = Array[Dictionary]([{
-ExtResource("2_7hk58"): 1
+ExtResource("3_l5y41"): 2
 }])
 stat_relation = 3
 stat_name = "Max Bag Stack"
 upgrade_interval = 2.0
-prereqs = Array[String](["Pick Up Range 1:1"])
+prereqs = Array[String](["Banking:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

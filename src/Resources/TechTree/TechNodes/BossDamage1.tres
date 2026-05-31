@@ -13,11 +13,11 @@ disabled_icon = ExtResource("1_78sqh")
 description = "Increases bonus damage to boss by 10% for each level
 "
 max_level = 5
-currency_required = 10000
+currency_required = 6000
 materials_required = Array[Dictionary]([{
 ExtResource("1_g7ncs"): 2
 }])
 stat_name = "Boss Damage Bonus"
 upgrade_interval = 0.1
-prereqs = Array[String](["Attack4:1"])
+prereqs = Array[String](["Attack 4:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

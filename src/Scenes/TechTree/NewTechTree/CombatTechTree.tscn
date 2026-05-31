@@ -194,7 +194,7 @@ offset_top = -348.0
 offset_right = 1281.0
 offset_bottom = -348.0
 tech_node_stats = ExtResource("14_yly43")
-previous_node = NodePath("../CritChance2Node")
+previous_node = NodePath("../CritChance3Node")
 
 [node name="APGain1Node" parent="." unique_id=1688788045 node_paths=PackedStringArray("previous_node") instance=ExtResource("2_48m6i")]
 visible = false

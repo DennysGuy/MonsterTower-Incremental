@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bt5vfmqy0j2qb" path="res://Assets/TechTree/SmeltingNodes/MiningChaince_Disabled_Graphic.png" id="1_e84pn"]
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_qnyi7"]
 [ext_resource type="Texture2D" uid="uid://bkv7vgaslw7aj" path="res://Assets/TechTree/SmeltingNodes/MiningChaince_Graphic.png" id="2_431re"]
-[ext_resource type="Resource" uid="uid://cs6ojn6tc0alq" path="res://src/Resources/CraftingResources/SteelBar.tres" id="3_431re"]
+[ext_resource type="Resource" uid="uid://y4kiqe4pi2v5" path="res://src/Resources/CraftingResources/IronBar.tres" id="3_431re"]
 
 [resource]
 script = ExtResource("1_qnyi7")
@@ -12,9 +12,9 @@ icon = ExtResource("2_431re")
 disabled_icon = ExtResource("1_e84pn")
 description = "Increases mining bolt chain by 1 for each level."
 max_level = 2
-currency_required = 3400
+currency_required = 1800
 materials_required = Array[Dictionary]([{
-ExtResource("3_431re"): 3
+ExtResource("3_431re"): 2
 }])
 stat_relation = 5
 stat_name = "Mining Bolt Links"

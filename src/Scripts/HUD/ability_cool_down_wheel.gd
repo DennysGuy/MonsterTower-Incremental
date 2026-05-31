@@ -57,7 +57,7 @@ func start_progress_wheel(selected_ability : String) -> void:
 		return
 	
 	count_down.show()
-	progress_wheel.max_value = max(0, AbilityTimers.ability_state[selected_ability]["Timer"].wait_time - PlayerStats.player_stats["Cooldown Reduction"])
+	progress_wheel.max_value = AbilityTimers.ability_state[selected_ability]["Timer"].wait_time
 	progress_wheel.value = progress_wheel.max_value
 	timer_started = true
 

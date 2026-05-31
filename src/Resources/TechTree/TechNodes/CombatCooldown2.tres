@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dttwthmk32rb0" path="res://Assets/TechTree/CombatNodes/Cooldown_Node_Disabled_Graphic.png" id="1_4afet"]
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_uxf76"]
 [ext_resource type="Texture2D" uid="uid://b7bxobdjvd7dc" path="res://Assets/TechTree/CombatNodes/Cooldown_Node_Graphic.png" id="2_cfgbn"]
+[ext_resource type="Resource" uid="uid://y4kiqe4pi2v5" path="res://src/Resources/CraftingResources/IronBar.tres" id="3_cfgbn"]
 
 [resource]
 script = ExtResource("1_uxf76")
@@ -11,7 +12,10 @@ icon = ExtResource("2_cfgbn")
 disabled_icon = ExtResource("1_4afet")
 description = "Global Cooldown Reduction for all combat abilities by -0.5 sec for each level."
 max_level = 2
-currency_required = 6000
+currency_required = 3500
+materials_required = Array[Dictionary]([{
+ExtResource("3_cfgbn"): 4
+}])
 stat_name = "Cooldown Reduction"
 upgrade_interval = 0.5
 prereqs = Array[String](["Attack 4:1"])

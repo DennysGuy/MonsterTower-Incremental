@@ -31,8 +31,17 @@ const BUTTON_APPEAR = preload("uid://bvnkpmsp7xinb")
 const CLICK_BUTTON = preload("uid://d2a7rj3wvxd30")
 const CLICK_NODE = preload("uid://bawqj0b2h6vsu")
 
+@onready var combat_page_notification_icon: TextureRect = $TechTreeButtonsHBox/CombatPageButton/CombatPageNotificationIcon
+@onready var survival_notification_icon: TextureRect = $TechTreeButtonsHBox/SurvivalPageButton/SurvivalNotificationIcon
+@onready var traversal_notification_icon: TextureRect = $TechTreeButtonsHBox/TraversalPageButton/TraversalNotificationIcon
+@onready var inventory_notification_icon: TextureRect = $TechTreeButtonsHBox/InventoryPageButton/InventoryNotificationIcon
+@onready var cooking_notification_icon: TextureRect = $TechTreeButtonsHBox/CookingPageButton/CookingNotificationIcon
+@onready var crafting_notification_icon: TextureRect = $TechTreeButtonsHBox/CraftingPageButton/CraftingNotificationIcon
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	TechTreeManager.check_for_tech_node_purchases.connect(check_for_purchases)
+	check_for_purchases()
 	MusicPlayer.pause_music()
 	music_player.play()
 	play_sfx(ENTER_TECH_TREE)
@@ -329,3 +338,64 @@ func play_sfx(sound: AudioStream, volume: float = 0.0):
 	add_child(player)
 	player.play()
 	player.finished.connect(player.queue_free)
+
+func check_for_purchases() -> void:
+	combat_page_notification_icon.hide()
+	survival_notification_icon.hide()
+	traversal_notification_icon.hide()
+	inventory_notification_icon.hide()
+	cooking_notification_icon.hide()
+	crafting_notification_icon.hide()
+	
+	var tech_node_stats_dict := TechTreeManager.tech_node_stats
+	
+	for key in tech_node_stats_dict:
+		var tech_node_stats : TechNodeStats = tech_node_stats_dict[key]
+		if can_purchase(tech_node_stats):
+			match tech_node_stats.stat_relation:
+				TechTreeManager.STAT_RELATION.COMBAT:
+					combat_page_notification_icon.show()
+				TechTreeManager.STAT_RELATION.SURVIVAL:
+					survival_notification_icon.show()
+				TechTreeManager.STAT_RELATION.TRAVERSAL:
+					traversal_notification_icon.show()
+				TechTreeManager.STAT_RELATION.INVENTORY:
+					inventory_notification_icon.show()
+				TechTreeManager.STAT_RELATION.COOKING:
+					cooking_notification_icon.show()
+				TechTreeManager.STAT_RELATION.CRAFTING:
+					crafting_notification_icon.show()
+
+
+func can_purchase(tech_node_stats : TechNodeStats) -> bool:
+	if SaveManager.current_save_game:
+		var tech_node_name : String = tech_node_stats.node_name
+		var saved_data = SaveManager.current_save_game.tech_nodes.get(tech_node_name)
+		tech_node_stats.current_level = saved_data["Level"]
+		tech_node_stats.unlocked = saved_data["Unlocked"]
+		TechTreeManager.tech_nodes[tech_node_stats.node_name] = saved_data["Level"]
+		
+	return TechTreeManager.currency >= tech_node_stats.currency_required and has_resource_quantity(tech_node_stats) and tech_node_stats.current_level < tech_node_stats.max_level and tech_node_stats.unlocked
+
+		
+func has_resource_quantity(tech_node_stats : TechNodeStats) -> bool:
+	if tech_node_stats.materials_required.is_empty():
+		return true
+
+	for resource in tech_node_stats.materials_required:
+		for item in resource.keys():
+			match item.item_type:
+				item.ITEM_TYPE.CRAFTING:
+					if InventoryManager.get_quantity(item, "Crafting Items") < resource[item]:
+						return false
+				item.ITEM_TYPE.COOKING:
+					if InventoryManager.get_quantity(item, "Cooking Items") < resource[item]:
+						return false
+				item.ITEM_TYPE.ORE:
+					if InventoryManager.get_quantity(item, "Ore") < resource[item]:
+						return false
+				item.ITEM_TYPE.USE:
+					if InventoryManager.get_quantity(item, "Use") < resource[item]:
+						return false
+		
+	return true		

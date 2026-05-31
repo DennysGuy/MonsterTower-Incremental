@@ -183,7 +183,7 @@ offset_top = -92.0
 offset_right = 2304.0
 offset_bottom = -92.0
 tech_node_stats = ExtResource("18_l10ly")
-previous_node = NodePath("../CrticalSmelting2Node")
+previous_node = NodePath("../RefinerySpeed2Node")
 
 [node name="MiningSpeed2Node" parent="." unique_id=1072239972 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_5r3ba")]
 visible = false

@@ -21,4 +21,5 @@ output_item = ExtResource("2_kvvpw")
 recipe_list = Array[Dictionary]([{
 ExtResource("3_0iei1"): 2
 }])
+related_nodes = Array[String](["Banking 3", "Chalice Spawn Rate 1", "Cooking Speed 2", "Free Range 2", "Siphen Amount 1", "Vampiric Siphen 1", "XP Gain 2"])
 metadata/_custom_type_script = "uid://cljygiasf4103"

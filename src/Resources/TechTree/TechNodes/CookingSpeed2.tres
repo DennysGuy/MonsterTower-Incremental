@@ -8,7 +8,7 @@ script = ExtResource("2_onnlh")
 node_name = "Cooking Speed 2"
 description = "Increases cooking speed by 10% for each level"
 max_level = 3
-currency_required = 7000
+currency_required = 2000
 materials_required = Array[Dictionary]([{
 ExtResource("1_3lmsq"): 2
 }])

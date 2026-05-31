@@ -11,9 +11,9 @@ node_name = "Vial of the Esoteric"
 icon = ExtResource("2_2j3cl")
 disabled_icon = ExtResource("1_pl8ct")
 description = "Consumable Vials will  spawn in the tower recovering the player's MP by 20%"
-currency_required = 2500
+currency_required = 2000
 materials_required = Array[Dictionary]([{
-ExtResource("1_1symy"): 2
+ExtResource("1_1symy"): 1
 }])
 node_type = 1
 stat_relation = 1

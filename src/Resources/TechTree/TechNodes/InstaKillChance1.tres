@@ -3,16 +3,20 @@
 [ext_resource type="Texture2D" uid="uid://decaopr0u1v8n" path="res://Assets/TechTree/CombatNodes/InstaKillHitChanceUp_Node_Disabled_Graphic.png" id="1_iarts"]
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_nca7m"]
 [ext_resource type="Texture2D" uid="uid://cj6r4bdvsgjae" path="res://Assets/TechTree/CombatNodes/InstaKillHitChanceUp_Node_Graphic.png" id="2_sqpju"]
+[ext_resource type="Resource" uid="uid://cs6ojn6tc0alq" path="res://src/Resources/CraftingResources/SteelBar.tres" id="3_sqpju"]
 
 [resource]
 script = ExtResource("1_nca7m")
 node_name = "Insta Kill Chance 1"
 icon = ExtResource("2_sqpju")
 disabled_icon = ExtResource("1_iarts")
-description = "Increases Chance to Instant Kill an Enemy under a certain threshold by 3% for each level."
+description = "Increases Chance to Instant Kill an Enemy under a certain threshold by 5% for each level."
 max_level = 3
-currency_required = 7500
+currency_required = 4000
+materials_required = Array[Dictionary]([{
+ExtResource("3_sqpju"): 2
+}])
 stat_name = "Insta Kill Chance"
-upgrade_interval = 0.03
+upgrade_interval = 0.05
 prereqs = Array[String](["Attack4:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

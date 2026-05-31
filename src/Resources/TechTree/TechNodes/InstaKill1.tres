@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_1wyft"]
 [ext_resource type="Texture2D" uid="uid://bo6pxsmxrjsuh" path="res://Assets/TechTree/CombatNodes/InstaKill_Node_Disabled_Graphic.png" id="1_nts7i"]
 [ext_resource type="Texture2D" uid="uid://brwotewo1jmux" path="res://Assets/TechTree/CombatNodes/InstaKill_Node_Graphic.png" id="2_x3n7x"]
+[ext_resource type="Resource" uid="uid://y4kiqe4pi2v5" path="res://src/Resources/CraftingResources/IronBar.tres" id="3_2sxsh"]
+[ext_resource type="Resource" uid="uid://cs6ojn6tc0alq" path="res://src/Resources/CraftingResources/SteelBar.tres" id="4_nwice"]
 
 [resource]
 script = ExtResource("1_1wyft")
@@ -11,7 +13,12 @@ icon = ExtResource("2_x3n7x")
 disabled_icon = ExtResource("1_nts7i")
 description = "Increases Threshold to Insta-Kill an enemy for each level."
 max_level = 2
-currency_required = 8000
+currency_required = 4200
+materials_required = Array[Dictionary]([{
+ExtResource("3_2sxsh"): 2
+}, {
+ExtResource("4_nwice"): 2
+}])
 stat_name = "Insta Kill Threshold"
 upgrade_interval = 0.05
 prereqs = Array[String](["Attack4:1"])

@@ -4,9 +4,10 @@
 [ext_resource type="Script" uid="uid://81hs0efcfa1i" path="res://src/Scripts/Facilities/TaskBoard/task_board.gd" id="1_hacwy"]
 [ext_resource type="PackedScene" uid="uid://vo5sm7p34vo6" path="res://src/Scenes/Actors/Utilities/NameTag.tscn" id="3_2qep0"]
 [ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="4_2qep0"]
+[ext_resource type="Texture2D" uid="uid://bggsgp4t53q5y" path="res://Assets/HUD/NoticeIcon.png" id="5_o7hbd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hacwy"]
-size = Vector2(132, 47)
+size = Vector2(132, 49.5)
 
 [node name="TaskBoard" type="Node2D" unique_id=2038982980]
 script = ExtResource("1_hacwy")
@@ -28,15 +29,16 @@ text = "Job Requests Board"
 position = Vector2(0, -24)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=628146421]
-position = Vector2(-2, 0)
+position = Vector2(-2, -1.25)
 shape = SubResource("RectangleShape2D_hacwy")
 
 [node name="JobsAvailableNotice" type="Label" parent="." unique_id=1712174384]
 visible = false
 offset_left = -62.0
-offset_top = -100.0
+offset_top = -94.0
 offset_right = 67.0
-offset_bottom = -84.0
+offset_bottom = -78.0
+theme_override_colors/font_color = Color(0, 0.9517855, 0.45778912, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_2qep0")
 text = "New Jobs Available!"
@@ -44,13 +46,23 @@ text = "New Jobs Available!"
 [node name="Notice" type="Label" parent="." unique_id=1451098917]
 visible = false
 offset_left = -98.0
-offset_top = -84.0
+offset_top = -78.0
 offset_right = 96.0
-offset_bottom = -68.0
+offset_bottom = -62.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_2qep0")
 text = "Press 'E' to access Job Board "
 horizontal_alignment = 1
+
+[node name="NoticeIcon" type="Sprite2D" parent="." unique_id=588540461]
+visible = false
+position = Vector2(-68, -35)
+texture = ExtResource("5_o7hbd")
+
+[node name="NoticeIcon2" type="Sprite2D" parent="." unique_id=1713962491]
+visible = false
+position = Vector2(67, -35)
+texture = ExtResource("5_o7hbd")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

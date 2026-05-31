@@ -10,6 +10,7 @@ node_name = "Free Range 1"
 icon = ExtResource("2_fgemx")
 disabled_icon = ExtResource("1_ead6d")
 description = "Increase chance to dodge material consumption when cooking by 5%."
+max_level = 4
 currency_required = 800
 stat_relation = 4
 stat_name = "Free Range Chance"

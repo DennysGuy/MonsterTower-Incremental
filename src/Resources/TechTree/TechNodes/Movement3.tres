@@ -12,7 +12,7 @@ icon = ExtResource("2_x6iwr")
 disabled_icon = ExtResource("1_ganev")
 description = "For each level, increases movement speed by 5%"
 max_level = 3
-currency_required = 5000
+currency_required = 2000
 materials_required = Array[Dictionary]([{
 ExtResource("2_atcea"): 2
 }])

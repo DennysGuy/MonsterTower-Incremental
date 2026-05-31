@@ -10,6 +10,7 @@ node_name = "Cooking Drops 1"
 icon = ExtResource("2_dq5sm")
 disabled_icon = ExtResource("1_7m2ec")
 description = "Increases chance to receive cooking drops by 5%"
+max_level = 2
 currency_required = 1000
 stat_relation = 4
 stat_name = "Cooking Drop Chance Bonus"

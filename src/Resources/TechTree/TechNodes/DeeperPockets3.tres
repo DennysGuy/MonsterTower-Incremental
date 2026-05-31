@@ -2,8 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://dey7u2ddpfnnv" path="res://Assets/TechTree/InventoryNodes/DeeperPockets_Disabled_Graphic.png" id="1_wv2up"]
 [ext_resource type="Texture2D" uid="uid://cg1xkarkjqggt" path="res://Assets/TechTree/InventoryNodes/DeeperPockets_Graphic.png" id="2_13t4n"]
-[ext_resource type="Resource" uid="uid://dmmblpt46r1fs" path="res://src/Resources/Dishes/PupilCaviar.tres" id="2_h6xmf"]
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="3_13t4n"]
+[ext_resource type="Resource" uid="uid://b4owo1wr47wc" path="res://src/Resources/Dishes/WrappedKabab.tres" id="3_wv2up"]
 
 [resource]
 script = ExtResource("3_13t4n")
@@ -13,7 +13,7 @@ disabled_icon = ExtResource("1_wv2up")
 description = "Increases Max Inventory Slot Stack by +2"
 currency_required = 1500
 materials_required = Array[Dictionary]([{
-ExtResource("2_h6xmf"): 2
+ExtResource("3_wv2up"): 3
 }])
 stat_relation = 3
 stat_name = "Max Bag Stack"

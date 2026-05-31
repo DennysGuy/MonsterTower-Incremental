@@ -133,14 +133,13 @@ func increment_break_count() -> void:
 		#send to stun state?
 
 func give_xp() -> void:
-	
-	var bonus_xp : int = int(xp + PlayerStats.player_stats["Bonus XP"])
-	var total_xp : int = xp + bonus_xp
+	var stat_xp : int = PlayerStats.player_stats["Bonus XP"]
+	var total_xp : int = int(xp+stat_xp)
 	
 	PlayerStats.player_stats["Current XP"] += total_xp
 	var xp_label : DamageLabel = preload("uid://dkchs27qqogyy").instantiate()
 	xp_label.set_crit_bg()
-	xp_label.label.text = "%sXP" % xp
+	xp_label.label.text = "%sXP" % total_xp
 	xp_label.global_position.y = global_position.y-50
 	xp_label.global_position.x = global_position.x-56
 	drop_scene.add_child(xp_label)

@@ -52,6 +52,8 @@ var total_bonus : float = 0.0
 
 var stored_node_description_box : NodeDescriptionBox
 
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	match tech_node_stats.stat_relation:
@@ -335,6 +337,7 @@ func _on_gui_input(event: InputEvent) -> void:
 			TechTreeManager.save_node_data.emit()
 			TechTreeManager.increment_upgrade_count()
 			TechTreeManager.update_currency_label.emit()
+			TechTreeManager.check_for_tech_node_purchases.emit()
 		else:
 			play_sfx(DENIED)
 
@@ -406,3 +409,11 @@ func play_sfx(sound: AudioStream, volume: float = 0.0):
 	add_child(player)
 	player.play()
 	player.finished.connect(player.queue_free)
+
+
+func _on_focus_entered() -> void:
+	print("I'm in focus! %s " % tech_node_stats.node_name)
+
+
+func _on_focus_exited() -> void:
+	print("I'm Out of focus")

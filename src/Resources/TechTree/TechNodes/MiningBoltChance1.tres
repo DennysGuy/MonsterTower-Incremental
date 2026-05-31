@@ -2,7 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://bs3n2pm3ygm8x" path="res://Assets/TechTree/SmeltingNodes/MiningBoltChanceUp_Disabled_Graphic.png" id="1_10wx1"]
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_l4mcl"]
-[ext_resource type="Resource" uid="uid://y4kiqe4pi2v5" path="res://src/Resources/CraftingResources/IronBar.tres" id="2_12dw4"]
 [ext_resource type="Texture2D" uid="uid://bbdkwvc4w8o2s" path="res://Assets/TechTree/SmeltingNodes/MiningBoltChanceUp_Graphic.png" id="2_dlhql"]
 
 [resource]
@@ -10,15 +9,12 @@ script = ExtResource("1_l4mcl")
 node_name = "Mining Bolt Chance 1"
 icon = ExtResource("2_dlhql")
 disabled_icon = ExtResource("1_10wx1")
-description = "Increases chance to cast a lightning bolt striking surrounding Ore Rock by 10% per level
+description = "Increases chance to cast a mining bolt by 15% per level.
 "
-max_level = 3
-currency_required = 2200
-materials_required = Array[Dictionary]([{
-ExtResource("2_12dw4"): 3
-}])
+max_level = 5
+currency_required = 1500
 stat_relation = 5
 stat_name = "Mining Bolt Chance"
-upgrade_interval = 0.1
+upgrade_interval = 0.15
 prereqs = Array[String](["Mining Speed 1:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

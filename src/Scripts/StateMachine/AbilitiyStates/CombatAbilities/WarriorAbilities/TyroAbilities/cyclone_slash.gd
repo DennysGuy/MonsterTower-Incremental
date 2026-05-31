@@ -23,6 +23,7 @@ func on_enter(player : Player) -> void:
 		parent.velocity.x = attack_velocity
 
 func on_exit() -> void:
+	parent.velocity = Vector2.ZERO
 	parent.enable_hurt_box()
 	
 func apply_physics(_delta : float) -> State:
