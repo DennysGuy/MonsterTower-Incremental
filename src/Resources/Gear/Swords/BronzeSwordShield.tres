@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="Sword" format=3 uid="uid://xqsea58c1jqh"]
+
+[ext_resource type="Script" uid="uid://im2igg6pop1u" path="res://src/Scripts/sword.gd" id="1_4yxsx"]
+[ext_resource type="AudioStream" uid="uid://girddg3nhreu" path="res://Audio/SFX/Player/DashAttack.wav" id="1_nxfph"]
+[ext_resource type="Texture2D" uid="uid://cbyhrwc7icbst" path="res://Assets/PlayerGraphics/Weapons/WeaponCraftingMenu/BronzeSwordShield_Disabled_Icon.png" id="1_oi64k"]
+[ext_resource type="Texture2D" uid="uid://cbt0o6to37ap3" path="res://Assets/PlayerGraphics/Weapons/WeaponCraftingMenu/BronzeSwordShield_Icon.png" id="2_ll3mf"]
+[ext_resource type="AudioStream" uid="uid://7m8clykuejiw" path="res://Audio/SFX/Player/SwordSwing1.wav" id="5_3xkbc"]
+[ext_resource type="AudioStream" uid="uid://d4hkg0vupj3mj" path="res://Audio/SFX/Player/SwordSwing2.wav" id="6_r66es"]
+[ext_resource type="AudioStream" uid="uid://bcc4lh1bponas" path="res://Audio/SFX/Player/SwordSwing3.wav" id="7_8gnwt"]
+
+[resource]
+script = ExtResource("1_4yxsx")
+sword_name = "Bronze Sword and Shield"
+attack_bonus = 50.0
+defense_bonus = 10.0
+attack_speed = 0.6
+crit_bonus = 0.1
+crit_damage_bonus = 0.1
+menu_icon_graphic = ExtResource("2_ll3mf")
+menu_icon_disabled_graphic = ExtResource("1_oi64k")
+swing_1 = ExtResource("5_3xkbc")
+swing_2 = ExtResource("6_r66es")
+swing_3 = ExtResource("7_8gnwt")
+dash_attack = ExtResource("1_nxfph")
+metadata/_custom_type_script = "uid://im2igg6pop1u"

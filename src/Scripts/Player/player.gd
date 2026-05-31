@@ -172,7 +172,7 @@ func set_attack_buffer_timer() -> void:
 
 func issue_attack(selected_hit_box : Area2D, multiplier : float = 1.0, ability : Ability = null) -> void:
 	var enemies_in_range = selected_hit_box.get_overlapping_areas()
-	var overlapping_hits : int = int(PlayerStats.player_stats["Overlapping Hits"])
+	var overlapping_hits : int = int(PlayerStats.player_stats["Overlapping Hits"] + PlayerStats.get_current_sword().get_total_multi_enemies_bonus())
 	var number_of_hits : int = 1
 	var rep_delay : float = 0.1
 	var incoming_damage : int = 0
@@ -183,7 +183,7 @@ func issue_attack(selected_hit_box : Area2D, multiplier : float = 1.0, ability :
 	var is_crit = check_for_crit()
 	
 	if ability:
-		overlapping_hits = int(ability.number_of_enemies_hit)
+		overlapping_hits = int(ability.number_of_enemies_hit + PlayerStats.get_current_sword().get_total_multi_enemies_bonus())
 		number_of_hits = int(ability.max_hit_count)
 		rep_delay = ability.attack_rep_delay
 		min_damage = total_base_attack_damage * (PlayerStats.player_stats["Accuracy"] + PlayerStats.get_total_gem_bonus("Accuracy Bonus"))

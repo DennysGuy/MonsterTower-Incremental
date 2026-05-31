@@ -155,3 +155,6 @@ signal play_boss_death_scene
 
 @warning_ignore("unused_signal")
 signal go_to_outro_screen
+
+@warning_ignore("unused_signal")
+signal populate_weapon_description_panel(weapon : Sword)

@@ -117,10 +117,11 @@ func show_inventory(bag_name : String) -> void:
 		"Drops":
 			bag_bg.texture = GEAR_STATION_DROPS_BAG_BG
 			InventoryManager.update_grid_container(inventory_container, "Inventory", false)
-			selected_bag = "Drops"
+
 		"Use":
 			bag_bg.texture = GEAR_STATION_USE_BAG_BG
 			InventoryManager.update_grid_container(inventory_container, "Use", false)
-			selected_bag = "Use"
 
+			
+	selected_bag = bag_name
 	inventory_label.text = bag_name

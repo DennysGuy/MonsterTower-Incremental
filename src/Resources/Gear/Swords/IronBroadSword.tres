@@ -4,6 +4,8 @@
 [ext_resource type="Script" uid="uid://im2igg6pop1u" path="res://src/Scripts/sword.gd" id="1_stflx"]
 [ext_resource type="Texture2D" uid="uid://djbpj20a5f1vh" path="res://Assets/CraftingMiniGame/Swords/BronzeSword/IronBroadSwordWhole.png" id="1_y5e8t"]
 [ext_resource type="Texture2D" uid="uid://diev4c5kalk6u" path="res://Assets/CraftingMiniGame/Swords/BronzeSword/IronBroadSwordMold.png" id="2_gfsxw"]
+[ext_resource type="Texture2D" uid="uid://cd76qbnyfng02" path="res://Assets/PlayerGraphics/Weapons/WeaponCraftingMenu/IronBroadSword_Disabled_Icon.png" id="3_avoph"]
+[ext_resource type="Texture2D" uid="uid://vg2fq23jnr70" path="res://Assets/PlayerGraphics/Weapons/WeaponCraftingMenu/IronBroadSword_Icon.png" id="4_ekw6x"]
 [ext_resource type="AudioStream" uid="uid://7m8clykuejiw" path="res://Audio/SFX/Player/SwordSwing1.wav" id="4_kq1vq"]
 [ext_resource type="Resource" uid="uid://dqerrblef6f7e" path="res://src/Resources/Recipes/SwordRecipes/IronBroadSwordRecipe.tres" id="4_msfqt"]
 [ext_resource type="AudioStream" uid="uid://d4hkg0vupj3mj" path="res://Audio/SFX/Player/SwordSwing2.wav" id="5_rch0d"]
@@ -16,12 +18,15 @@ attack_bonus = 80.0
 defense_bonus = 15.0
 attack_speed = 0.75
 crit_bonus = 0.15
+multi_enemies_bonus = 3.0
 crit_damage_bonus = 0.15
 stun_stacks_bonus = 1.0
 gem_stone_socket_count = 4
 recipe = ExtResource("4_msfqt")
 graphic = ExtResource("1_y5e8t")
 mold_graphic = ExtResource("2_gfsxw")
+menu_icon_graphic = ExtResource("4_ekw6x")
+menu_icon_disabled_graphic = ExtResource("3_avoph")
 swing_1 = ExtResource("4_kq1vq")
 swing_2 = ExtResource("5_rch0d")
 swing_3 = ExtResource("6_msfqt")

@@ -47,7 +47,13 @@ func spawn_grand_market() -> void:
 
 func spawn_sword_crafting_menu() -> void:
 	canvas_layer.show()
-	var sword_crafting_station : CraftingStationMenu = preload("uid://cc1xppx3tkq4f").instantiate()
+	var sword_crafting_station
+	
+	if PlayerStats.player_stats["Class"] == "Junior Hunter":
+		sword_crafting_station = preload("uid://cc1xppx3tkq4f").instantiate()
+	else:
+		sword_crafting_station = preload("uid://ctnmpc84yxlgj").instantiate()
+	
 	control.add_child(sword_crafting_station)
 
 func spawn_gem_stone_menu() -> void:
