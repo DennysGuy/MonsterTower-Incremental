@@ -46,9 +46,11 @@ func _on_button_button_up() -> void:
 func upgrade_sword() -> void:
 	InventoryManager.remove_resources_from_inventory(sword.recipe.recipe_list)
 	var next_sword_index = PlayerStats.player_stats["Equipped Sword"]+1
+	PlayerStats.set_tracked_weapon_index(next_sword_index)
 	QuestManager.check_general_task_for_completion.emit("Upgrade Sword")
-	if next_sword_index < PlayerStats.MAX_SWORD_COUNT:
-		PlayerStats.player_stats["Equipped Sword"] += 1
+	if next_sword_index < PlayerStats.BEGINNGER_SWORD_COUNT:
+		PlayerStats.player_stats["Equipped Sword"] = next_sword_index
+		SaveManager.save_player_stats()
 		update_sword()
 		SaveManager.save_inventories()
 		update_inventory_containers()
@@ -63,11 +65,9 @@ func update_inventory_containers() -> void:
 		bank_notice.show()
 
 func update_sword() -> void: #run this function when we upgrade the sword.
-	var next_sword_index = PlayerStats.player_stats["Equipped Sword"]+1
-	SaveManager.save_player_stats()
-	if next_sword_index < PlayerStats.MAX_SWORD_COUNT:
-		var sword_index = int(next_sword_index)
-		sword = PlayerStats.get_sword(sword_index)
+	var tracked_index : int = PlayerStats.player_stats["Tracked Weapon"]
+	if  tracked_index < PlayerStats.MAX_SWORD_COUNT:
+		sword = PlayerStats.get_sword(tracked_index)
 		sword_name.text = sword.sword_name
 		sword_stats.text = sword.get_stats_description()
 		sword_description.text = sword.recipe.description

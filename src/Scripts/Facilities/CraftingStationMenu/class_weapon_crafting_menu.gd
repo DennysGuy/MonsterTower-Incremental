@@ -31,6 +31,13 @@ var selected_bag : String = "Drops"
 var description_panel_showing : bool = false
 @onready var show_details_button: Button = $ForeGround/ShowDetailsButton
 
+const JOB_ACCEPT_JINGLE = preload("uid://dinxl1rs2y55v")
+
+
+
+enum STATE {IDLE, CAN_CRAFT, CAN_TRACK, CAN_EQUIP}
+var state : STATE = STATE.IDLE
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	SignalBus.populate_weapon_description_panel.connect(select_weapon)
@@ -42,32 +49,34 @@ func _process(delta: float) -> void:
 		exit_menu()
 
 func _on_action_button_button_up() -> void:
-	var can_craft : int = InventoryManager.calculate_quantity(stored_weapon.recipe)
-	if !stored_weapon.unlocked:
-		if can_craft > 0:
+	match state:
+		STATE.CAN_CRAFT:
 			craft_sequence()
-		else:
+		STATE.CAN_TRACK:
 			track_weapon_recipe()
-
-	if stored_weapon.unlocked and PlayerStats.player_stats["Equipped Sword"] != stored_weapon.index:
-		equip_weapon()
+		STATE.CAN_EQUIP:
+			equip_weapon()
 
 func craft_sequence() -> void:
 	SaveManager.save_weapon_unlocked_status(stored_weapon.index, true)
 	SaveManager.save_weapon_unlocked_status(stored_weapon.index, false)
+	#Play crafting animation which then leads to the equipped animation
 	equip_weapon()
 	select_weapon(stored_weapon)
 
 func equip_weapon() -> void:
 	PlayerStats.player_stats["Equipped Sword"] = stored_weapon.index
 	SaveManager.save_player_stats()
+	#Play Sword Equip Animation Here
 	SignalBus.update_sword_texture.emit("Idle")
 
 func track_weapon_recipe() -> void:
-	PlayerStats.player_stats["Tracked Weapon"] = stored_weapon.index
+	PlayerStats.set_tracked_weapon_index(stored_weapon.index) 
 	SaveManager.save_player_stats()
 	SaveManager.save_weapon_unlocked_status(stored_weapon.index, true)
+	SignalBus.update_resource_needed_panel.emit()
 	select_weapon(stored_weapon)
+	play_sfx(JOB_ACCEPT_JINGLE)
 
 func exit_menu() -> void:
 	GameManager.player_can_move = true
@@ -137,35 +146,46 @@ func populate_ingredients_list(weapon : Sword) -> void:
 			
 		ingredients_container.add_child(ingredient_menu_item)
 
-
 func _on_show_details_button_button_up() -> void:
 	if !description_panel_showing:
 		show_description_panel()
 	else:
 		hide_description_panel()
 
-
 func _on_show_details_button_2_button_up() -> void:
 	exit_menu()
 
 func update_action_button() -> void:
 	var can_craft : int = InventoryManager.calculate_quantity(stored_weapon.recipe)
-	
+	state = STATE.IDLE
+
 	if stored_weapon.unlocked:
 		if PlayerStats.get_current_sword() != stored_weapon:
 			action_button.text = "Equip!"
 			action_button.disabled = false
+			state = STATE.CAN_EQUIP
 		else:
-			action_button.text = "Current Equipped"
+			action_button.text = "Currently Equipped"
 			action_button.disabled = true
 	else:
 		if can_craft > 0:
 			action_button.disabled = false
 			action_button.text = "Craft!"
+			state = STATE.CAN_CRAFT
 		else:
 			if stored_weapon.index != PlayerStats.player_stats["Tracked Weapon"]:
 				action_button.text = "Track!"
 				action_button.disabled = false
+				state = STATE.CAN_TRACK
 			else:
 				action_button.text = "Tracking..."
 				action_button.disabled = true
+
+func play_sfx(sound: AudioStream, volume: float = 0.0):
+	var player := AudioStreamPlayer.new()
+	player.stream = sound
+	player.volume_db = volume
+	player.bus = &"SFX"
+	add_child(player)
+	player.play()
+	player.finished.connect(player.queue_free)

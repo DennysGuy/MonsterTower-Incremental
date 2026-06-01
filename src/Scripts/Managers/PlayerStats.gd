@@ -24,7 +24,7 @@ const KNOCKBACK_FORCE : int = 100
 	"Ability Points": 0,
 	"Max Jobs Held": 3,
 	"Class": "Junior Hunter",
-	"Tracked Weapon": 0,
+	"Tracked Weapon": 1,
 	"Attack Damage" : 13.0,
 	"Boss Damage Bonus": 0.0,
 	"HP Siphen Amount": 0.0,
@@ -186,6 +186,10 @@ func equip_ability(player_class : String, ability_type : String) -> void:
 	equipped_abilities[ability_type] = ability
 	SaveManager.save_equipped_abilities()
 
+func set_tracked_weapon_index(new_index : int) -> void:
+	player_stats["Tracked Weapon"] = new_index
+	SaveManager.save_player_stats()
+
 @onready var facilities_unlocked : Dictionary = {
 	"Hunter License" : false,
 	"Cooking Station" : false,
@@ -253,7 +257,7 @@ var class_ability_node_stats : Dictionary = {
 	}
 }
 
-const MAX_SWORD_COUNT := 5
+const BEGINNGER_SWORD_COUNT : int = 3
 
 var show_cooking_station_unlock_animation : bool = false
 var show_refinery_station_unlock_animation : bool = false
@@ -280,7 +284,7 @@ func get_sword(sword_index : int = 0) -> Sword:
 			return preload("uid://di3xaosm85tjx")#"Wooden Sword"
 
 func get_next_sword() -> Sword:
-	if player_stats["Equipped Sword"] < MAX_SWORD_COUNT-1:
+	if player_stats["Equipped Sword"] < BEGINNGER_SWORD_COUNT:
 		var next_sword : int = int(player_stats["Equipped Sword"])+1
 		return get_sword(next_sword)
 	return null
@@ -298,7 +302,7 @@ func get_current_sword() -> Sword:
 	return get_sword(PlayerStats.player_stats["Equipped Sword"])
 
 func can_craft_next_sword() -> bool:
-	if int(player_stats["Equipped Sword"])+1 == MAX_SWORD_COUNT:
+	if int(player_stats["Equipped Sword"])+1 > BEGINNGER_SWORD_COUNT:
 		return false
 	var next_sword : Sword = get_sword(int(player_stats["Equipped Sword"])+1)
 	

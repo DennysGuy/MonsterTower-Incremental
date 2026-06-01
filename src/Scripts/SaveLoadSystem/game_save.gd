@@ -26,7 +26,7 @@ TODO: We will add saves for classes as well
 	"Ability Points": 0,
 	"Class": "Junior Hunter",
 	"Attack Damage" : 13.0,
-	"Tracked Weapon": 0,
+	"Tracked Weapon": 1,
 	"Boss Damage Bonus": 0.0,
 	"HP Siphen Amount": 0.0,
 	"HP Siphen Chance": 0.0,
