@@ -1,6 +1,7 @@
 class_name Sword extends Resource
 
 @export var sword_name : String
+@export var index : int
 @export_multiline var description : String
 @export var attack_bonus : float
 @export var defense_bonus : float
@@ -37,6 +38,7 @@ class_name Sword extends Resource
 
 @export_group("Status")
 @export var unlocked : bool = false
+@export var is_tracked : bool = false
 
 func get_stats_dict() -> Dictionary:
 	return {

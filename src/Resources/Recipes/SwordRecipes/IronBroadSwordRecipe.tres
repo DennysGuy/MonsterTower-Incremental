@@ -8,6 +8,7 @@
 [resource]
 script = ExtResource("1_ybfts")
 recipe_name = "Iron Broad Sword"
+index = 3
 recipe_tier = 1
 recipe_type = 2
 recipe_list = Array[Dictionary]([{

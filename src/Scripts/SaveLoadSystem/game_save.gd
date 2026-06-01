@@ -26,6 +26,7 @@ TODO: We will add saves for classes as well
 	"Ability Points": 0,
 	"Class": "Junior Hunter",
 	"Attack Damage" : 13.0,
+	"Tracked Weapon": 0,
 	"Boss Damage Bonus": 0.0,
 	"HP Siphen Amount": 0.0,
 	"HP Siphen Chance": 0.0,
@@ -835,6 +836,15 @@ TODO: We will add saves for classes as well
 		#Defeat the Grey Sentinel
 		"Completed": false
 	}
+}
+
+@export var weapon_status : Dictionary = {
+	0: {"Unlocked":false, "Is Tracked": false},
+	1: {"Unlocked":false, "Is Tracked": false},
+	2: {"Unlocked":false, "Is Tracked": false},
+	3: {"Unlocked":false, "Is Tracked": false},
+	4: {"Unlocked":false, "Is Tracked": false},
+	5: {"Unlocked":false, "Is Tracked": false},
 }
 
 @export var monster_unlock_status : Array = [

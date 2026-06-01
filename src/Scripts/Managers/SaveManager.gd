@@ -119,8 +119,23 @@ func save_quest_status(quest_id : int, status : int, turned_in : bool) -> void:
 	current_save_game.quests[quest_id]["Turned In"] = turned_in
 	save_game()
 
+
 func get_existing_save_file() -> GameSave:
 	return ResourceLoader.load(SAVE_PATH, "", ResourceLoader.CACHE_MODE_IGNORE)
+
+func save_weapon_unlocked_status(weapon_id : int, status: bool) -> void:
+	current_save_game.weapon_status[weapon_id]["Unlocked"] = status
+	save_game()
+
+func save_weapon_tracked_status(weapon_id : int, status: bool) -> void:
+	current_save_game.weapon_status[weapon_id]["Is Tracked"] = status
+	save_game()
+
+func get_weapon_unlocked_status(weapon_id : int) -> bool:
+	return current_save_game.weapon_status[weapon_id]["Unlocked"]
+
+func get_weapon_tracked_status(weapon_id : int) -> bool:
+	return current_save_game.weapon_status[weapon_id]["Is Tracked"]
 
 func load_equipped_abilities() -> void:
 	for key in current_save_game.equipped_abilities.keys():

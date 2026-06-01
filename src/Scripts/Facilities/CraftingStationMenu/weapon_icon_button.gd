@@ -1,4 +1,4 @@
-extends Control
+class_name WeaponIconButton extends Control
 
 @export var weapon : Sword
 
@@ -10,6 +10,8 @@ var in_range : bool = false
 func _ready() -> void:
 	if weapon:
 		weapon_icon.texture = weapon.menu_icon_graphic
+		weapon.unlocked = SaveManager.get_weapon_unlocked_status(weapon.index)
+		weapon.is_tracked = SaveManager.get_weapon_tracked_status(weapon.index)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -28,5 +30,5 @@ func _on_mouse_exited() -> void:
 
 
 func _on_gui_input(event: InputEvent) -> void:
-	if event.is_action_pressed("left_click") and in_range:
+	if event.is_action_pressed("left_click"):
 		SignalBus.populate_weapon_description_panel.emit(weapon)		

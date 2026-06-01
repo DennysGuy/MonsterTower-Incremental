@@ -7,6 +7,7 @@
 [resource]
 script = ExtResource("1_qb5l5")
 recipe_name = "Shroom Fibre Blade"
+index = 1
 description = "A reliable blade crafted from the remains of Corrupted Mushies."
 recipe_tier = 1
 recipe_type = 2

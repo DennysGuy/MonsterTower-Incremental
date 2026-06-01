@@ -24,6 +24,7 @@ const KNOCKBACK_FORCE : int = 100
 	"Ability Points": 0,
 	"Max Jobs Held": 3,
 	"Class": "Junior Hunter",
+	"Tracked Weapon": 0,
 	"Attack Damage" : 13.0,
 	"Boss Damage Bonus": 0.0,
 	"HP Siphen Amount": 0.0,
@@ -273,6 +274,8 @@ func get_sword(sword_index : int = 0) -> Sword:
 			return preload("uid://bdsjrsiakv2sh") #Iron Broad Sword
 		4:
 			return preload("uid://dol2r302p2e52") #Lurker's Rapier
+		5:
+			return preload("uid://xqsea58c1jqh") #Bronze Sword Shield
 		_:
 			return preload("uid://di3xaosm85tjx")#"Wooden Sword"
 

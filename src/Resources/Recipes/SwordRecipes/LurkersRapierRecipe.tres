@@ -8,6 +8,7 @@
 [resource]
 script = ExtResource("1_vjtcs")
 recipe_name = "Lurker's Rapier"
+index = 4
 recipe_tier = 1
 recipe_type = 2
 recipe_list = Array[Dictionary]([{

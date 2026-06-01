@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CraftingRecipe" format=3 uid="uid://b84op1o2c88qt"]
+
+[ext_resource type="Resource" uid="uid://buu8pdcooh3hc" path="res://src/Resources/CraftingResources/BronzeBar.tres" id="1_37jrp"]
+[ext_resource type="Script" uid="uid://cljygiasf4103" path="res://src/Scripts/Facilities/crafting_recipe.gd" id="1_nm67x"]
+[ext_resource type="Resource" uid="uid://d4k5o7mbmw8yw" path="res://src/Resources/Actors/Enemies/Biome1/Batclopse/BatclopseClaw.tres" id="2_h4s0d"]
+
+[resource]
+script = ExtResource("1_nm67x")
+recipe_name = "Bronze Sword & Shield"
+index = 5
+recipe_list = Array[Dictionary]([{
+ExtResource("1_37jrp"): 4
+}, {
+ExtResource("2_h4s0d"): 2
+}])
+metadata/_custom_type_script = "uid://cljygiasf4103"

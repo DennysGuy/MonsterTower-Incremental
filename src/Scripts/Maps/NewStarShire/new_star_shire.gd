@@ -216,6 +216,8 @@ func spawn_smelting_menu() -> void:
 func spawn_crafting_menu() -> void:
 	GameManager.can_open_tower_map = false
 	GameManager.can_open_bag = false
+	GameManager.can_pause_game = false
+	GameManager.player_can_move = false
 	player.velocity = Vector2.ZERO
 	PlayerHudSignalBus.spawn_sword_crafting_station.emit()
 
