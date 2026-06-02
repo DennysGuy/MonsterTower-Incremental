@@ -40,7 +40,7 @@ func _process(delta: float) -> void:
 func set_icon() -> void:
 	match icon_type:
 		ICON_TYPE.CRAFTING:
-			if PlayerStats.can_craft_next_sword():
+			if PlayerStats.can_craft_weapon():
 				if !is_enabled:
 					icon.texture = GEAR_NOTIFICATION_ICON_ENABLED
 					notice.text = "Gear ready to craft!"

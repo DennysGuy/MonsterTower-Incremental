@@ -309,6 +309,11 @@ func can_craft_next_sword() -> bool:
 	var craft_amount : int = InventoryManager.calculate_quantity(next_sword.recipe)
 	return craft_amount >= 1
 
+func can_craft_weapon() -> bool:
+	var weapon : Sword = get_sword(player_stats["Tracked Weapon"])
+	var craft_amount : int = InventoryManager.calculate_quantity(weapon.recipe)
+	return craft_amount >= 1
+
 func get_pickaxe_name() -> String:
 	match player_stats["Equipped Pickaxe"]:
 		0:

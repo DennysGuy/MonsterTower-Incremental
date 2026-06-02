@@ -60,6 +60,8 @@ func _on_action_button_button_up() -> void:
 func craft_sequence() -> void:
 	SaveManager.save_weapon_unlocked_status(stored_weapon.index, true)
 	SaveManager.save_weapon_tracked_status(stored_weapon.index, false)
+	PlayerStats.player_stats["Tracked Weapon"] = -1
+	SaveManager.save_player_stats()
 	#Play crafting animation which then leads to the equipped animation
 	equip_weapon()
 	spawn_crafting_sequence()
@@ -76,7 +78,7 @@ func equip_weapon() -> void:
 func track_weapon_recipe() -> void:
 	PlayerStats.set_tracked_weapon_index(stored_weapon.index) 
 	SaveManager.save_player_stats()
-	SaveManager.save_weapon_unlocked_status(stored_weapon.index, true)
+	SaveManager.save_weapon_tracked_status(stored_weapon.index, true)
 	SignalBus.update_resource_needed_panel.emit()
 	select_weapon(stored_weapon)
 	play_sfx(JOB_ACCEPT_JINGLE)
@@ -119,10 +121,15 @@ func show_inventory(bag_name : String) -> void:
 func select_weapon(weapon : Sword) -> void:
 	stored_weapon = weapon
 	weapon_name.text = stored_weapon.sword_name
+	if weapon.unlocked:
+		weapon_mold_graphic.texture = weapon.graphic
+	else:
+		weapon_mold_graphic.texture = weapon.mold_graphic
+		
 	description_label.text = stored_weapon.description
 	stat_bonuses_label.text = stored_weapon.get_stats_description()
 	populate_ingredients_list(stored_weapon)
-	update_action_button()
+	update_action_button(weapon)
 	if !description_panel_showing:
 		show_description_panel()
 
@@ -158,7 +165,7 @@ func _on_show_details_button_button_up() -> void:
 func _on_show_details_button_2_button_up() -> void:
 	exit_menu()
 
-func update_action_button() -> void:
+func update_action_button(weapon : Sword) -> void:
 	var can_craft : int = InventoryManager.calculate_quantity(stored_weapon.recipe)
 	state = STATE.IDLE
 

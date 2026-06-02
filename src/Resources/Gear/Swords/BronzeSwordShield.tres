@@ -14,6 +14,7 @@
 [resource]
 script = ExtResource("1_4yxsx")
 sword_name = "Bronze Sword and Shield"
+index = 5
 attack_bonus = 50.0
 defense_bonus = 10.0
 attack_speed = 0.6
