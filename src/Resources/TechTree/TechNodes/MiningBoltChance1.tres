@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://bvv3ywp852v5r"]
+
+[ext_resource type="Texture2D" uid="uid://bs3n2pm3ygm8x" path="res://Assets/TechTree/SmeltingNodes/MiningBoltChanceUp_Disabled_Graphic.png" id="1_10wx1"]
+[ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_l4mcl"]
+[ext_resource type="Texture2D" uid="uid://bbdkwvc4w8o2s" path="res://Assets/TechTree/SmeltingNodes/MiningBoltChanceUp_Graphic.png" id="2_dlhql"]
+
+[resource]
+script = ExtResource("1_l4mcl")
+node_name = "Mining Bolt Chance 1"
+icon = ExtResource("2_dlhql")
+disabled_icon = ExtResource("1_10wx1")
+description = "Increases chance to cast a mining bolt by 15% per level.
+"
+max_level = 5
+currency_required = 1500
+stat_relation = 5
+stat_name = "Mining Bolt Chance"
+upgrade_interval = 0.15
+prereqs = Array[String](["Mining Speed 1:1"])
+metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

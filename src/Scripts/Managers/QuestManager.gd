@@ -38,6 +38,8 @@ signal undo_quest_turn_in(quest_title : String)
 signal check_node_name(selected_node_name : String)
 @warning_ignore("unused_signal")
 signal show_quest_complete_notice
+@warning_ignore("unused_signal")
+signal destroy_guide_box(task_id: int)
 
 @onready var quests : Dictionary = {
 	"Main": {

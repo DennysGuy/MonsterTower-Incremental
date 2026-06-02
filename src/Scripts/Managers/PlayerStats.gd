@@ -1,12 +1,5 @@
 extends Node
 class_name PlayerStatsSingleton
-'''
-For now, we will hold the player stats in a global script
-This should eventually be moved into something that is save-able like a custom resource.
-
-This is for testing purposes
-
-'''
 
 #global stat buff modifiers
 var attack_buff_mod : float = 1.0
@@ -25,13 +18,33 @@ const KNOCKBACK_FORCE : int = 100
 	"Level" : 1,
 	"Needed XP": 100,
 	"Current XP" : 0,
+	"Bonus XP" : 0,
+	"Bonus AP" : 0,
 	"Highest Floor": 0,
 	"Ability Points": 0,
 	"Max Jobs Held": 3,
 	"Class": "Junior Hunter",
+	"Tracked Weapon": 1,
 	"Attack Damage" : 13.0,
-	"Movement Speed" : 100.0,
-	"Climbing Speed" : 65.0,
+	"Boss Damage Bonus": 0.0,
+	"HP Siphen Amount": 0.0,
+	"HP Siphen Chance": 0.0,
+	"Insta Kill Chance": 0.0,
+	"Insta Kill Threshold": 0.0,
+	"Last Breadth Threshold": 0.0,
+	"Last Breadth Multiplier": 0.0,
+	"MP Dodge Chance": 0.0,
+	"Dodge Chance": 0.0,
+	"Critical Cooking Chance": 0.0,
+	"Critical Smelting Chance": 0.0,
+	"Free Range Chance": 0.0,
+	"Free Heat Chance": 0.0,
+	"Range Threads": 1.0,
+	"Furance Threads": 1.0,
+	"Failed Cooking Value Bonus": 0.0,
+	"Failed Smelting Value Bonus": 0.0,
+	"Movement Speed" : 80.0,
+	"Climbing Speed" : 60.0,
 	"Stun Length": 1.0,
 	"Stun Stacks": 1.0,
 	"Dash Speed" : 350.0,
@@ -73,7 +86,17 @@ const KNOCKBACK_FORCE : int = 100
 	"Tier 1 Gem Drop Rate":0.3,
 	"Chalice Spawn Rate":0.20,
 	"Vial Spawn Rate": 0.20,
-	"Lock On Multiplier" : 1.25
+	"Lock On Multiplier" : 1.25,
+	"Combat Ability Cooldown Bonus": 0.0,
+	"Mining Bolt Links" : 0.0,
+	"Mining Bolt Chance": 0.0,
+	"Multi Bolts": 1.0,
+	"Mining Bolt Damage": 5.0,
+	"Mining Bolt Crit Chance": 0.0,
+	"Mining Bolt Distance": 250.0,
+	"Pick Up Distance": 20.0,
+	"Cooldown Reduction":0.0,
+	"Extra Ore Drop Chance": 0.0,
 }
 
 var equipped_abilities : Dictionary = {
@@ -163,6 +186,10 @@ func equip_ability(player_class : String, ability_type : String) -> void:
 	equipped_abilities[ability_type] = ability
 	SaveManager.save_equipped_abilities()
 
+func set_tracked_weapon_index(new_index : int) -> void:
+	player_stats["Tracked Weapon"] = new_index
+	SaveManager.save_player_stats()
+
 @onready var facilities_unlocked : Dictionary = {
 	"Hunter License" : false,
 	"Cooking Station" : false,
@@ -201,9 +228,9 @@ var player_classes : Dictionary = {
 		"Attack 1": preload("uid://c5hss1iq5ontu"),
 		"Attack 2": preload("uid://rbc7yawqcf3h"),
 		"Attack 3": preload("uid://7qd8qvg4bf73"),
-		"Air Attack": 	preload("uid://dcxiodvnbqgef"),
-		"Dash Attack": preload("uid://c3llqiy2fb5n5"),
-		"Double Jump": preload("uid://ctavgtgbvyp1w"),
+		"Air Attack": 	preload("uid://bukiike6rf6pl"),
+		"Dash Attack": preload("uid://b0lsgfuw8bp58"),
+		"Double Jump": preload("uid://rgwunwula5mv"),
 		"Special Attack": preload("uid://cs0umnvsvjhnh"),
 		"Combat Ability 1" : null,
 		"Combat Ability 2" : null,
@@ -230,7 +257,7 @@ var class_ability_node_stats : Dictionary = {
 	}
 }
 
-const MAX_SWORD_COUNT := 5
+const BEGINNGER_SWORD_COUNT : int = 3
 
 var show_cooking_station_unlock_animation : bool = false
 var show_refinery_station_unlock_animation : bool = false
@@ -251,11 +278,13 @@ func get_sword(sword_index : int = 0) -> Sword:
 			return preload("uid://bdsjrsiakv2sh") #Iron Broad Sword
 		4:
 			return preload("uid://dol2r302p2e52") #Lurker's Rapier
+		5:
+			return preload("uid://xqsea58c1jqh") #Bronze Sword Shield
 		_:
 			return preload("uid://di3xaosm85tjx")#"Wooden Sword"
 
 func get_next_sword() -> Sword:
-	if player_stats["Equipped Sword"] < MAX_SWORD_COUNT-1:
+	if player_stats["Equipped Sword"] < BEGINNGER_SWORD_COUNT:
 		var next_sword : int = int(player_stats["Equipped Sword"])+1
 		return get_sword(next_sword)
 	return null
@@ -273,7 +302,7 @@ func get_current_sword() -> Sword:
 	return get_sword(PlayerStats.player_stats["Equipped Sword"])
 
 func can_craft_next_sword() -> bool:
-	if int(player_stats["Equipped Sword"])+1 == MAX_SWORD_COUNT:
+	if int(player_stats["Equipped Sword"])+1 > BEGINNGER_SWORD_COUNT:
 		return false
 	var next_sword : Sword = get_sword(int(player_stats["Equipped Sword"])+1)
 	

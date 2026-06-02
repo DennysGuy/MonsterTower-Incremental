@@ -1,20 +1,23 @@
 [gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://c5l21ge3ylc0e"]
 
-[ext_resource type="Texture2D" uid="uid://qlpnwox7g4gb" path="res://Assets/NodeGraphics/NodeGraphicsV2/Defense2_V2.png" id="1_3xufc"]
+[ext_resource type="Texture2D" uid="uid://cma7knfiokfie" path="res://Assets/TechTree/SurvivalNodes/DefenseUp_Disabled_Graphic.png" id="1_1h2fj"]
 [ext_resource type="Resource" uid="uid://buu8pdcooh3hc" path="res://src/Resources/CraftingResources/BronzeBar.tres" id="1_wj17q"]
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="2_3xufc"]
+[ext_resource type="Texture2D" uid="uid://btn2qagejsgxn" path="res://Assets/TechTree/SurvivalNodes/DefenseUp_Graphic.png" id="2_q5jdn"]
 
 [resource]
 script = ExtResource("2_3xufc")
 node_name = "Defense 2"
-icon = ExtResource("1_3xufc")
+icon = ExtResource("2_q5jdn")
+disabled_icon = ExtResource("1_1h2fj")
 description = "Increases defense by +5 for each level"
 max_level = 3
 currency_required = 500
 materials_required = Array[Dictionary]([{
 ExtResource("1_wj17q"): 2
 }])
+stat_relation = 1
 stat_name = "Defense"
 upgrade_interval = 5.0
-prereqs = Array[String](["Defense 1:1"])
+prereqs = Array[String](["Max HP 2:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

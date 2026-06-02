@@ -1,12 +1,14 @@
 [gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://cmy8gsm0hbovg"]
 
-[ext_resource type="Texture2D" uid="uid://b24fvbw5k6n1i" path="res://Assets/NodeGraphics/NodeGraphicsV2/CritChance1_V2.png" id="1_2mk68"]
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_jxi4e"]
+[ext_resource type="Texture2D" uid="uid://bkcjq1peak63c" path="res://Assets/TechTree/CombatNodes/CritChance_Node_Disabled_Graphic.png" id="1_oy5eo"]
+[ext_resource type="Texture2D" uid="uid://bsf0v5u4jrvue" path="res://Assets/TechTree/CombatNodes/CritChance_Node_Graphic.png" id="2_xwiqa"]
 
 [resource]
 script = ExtResource("1_jxi4e")
 node_name = "Crit Chance 1"
-icon = ExtResource("1_2mk68")
+icon = ExtResource("2_xwiqa")
+disabled_icon = ExtResource("1_oy5eo")
 description = "Chance to hit high! Increase Critical Chance hit by 2% for each level."
 max_level = 3
 currency_required = 150

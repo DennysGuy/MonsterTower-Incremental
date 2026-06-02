@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://c3puqbrn253v0"]
+
+[ext_resource type="Texture2D" uid="uid://ubyhc3clbivr" path="res://Assets/TechTree/CombatNodes/ApUp_Node_Disabled_Graphic.png" id="1_567g1"]
+[ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_t0whn"]
+[ext_resource type="Texture2D" uid="uid://nkrgnota7h4k" path="res://Assets/TechTree/CombatNodes/ApUp_Node_Graphic.png" id="2_g1g1f"]
+[ext_resource type="Resource" uid="uid://d0wo8tvdfk8j1" path="res://src/Resources/Dishes/HuntersStew.tres" id="3_567g1"]
+
+[resource]
+script = ExtResource("1_t0whn")
+node_name = "AP Gain 1"
+icon = ExtResource("2_g1g1f")
+disabled_icon = ExtResource("1_567g1")
+description = "Increases AP Received upon leveling up."
+currency_required = 3000
+materials_required = Array[Dictionary]([{
+ExtResource("3_567g1"): 1
+}])
+stat_name = "Bonus AP"
+upgrade_interval = 1.0
+prereqs = Array[String](["Attack 3:1"])
+metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

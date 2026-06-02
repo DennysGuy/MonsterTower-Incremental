@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://g0ygkxkfllsh"]
+
+[ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_0b31i"]
+[ext_resource type="Texture2D" uid="uid://ca08jajvtu3px" path="res://Assets/TechTree/InventoryNodes/PickUpDistance_Disabled_Graphic.png" id="1_v8r5x"]
+[ext_resource type="Texture2D" uid="uid://dunyas0t8avu0" path="res://Assets/TechTree/InventoryNodes/PickUpDistance_Graphic.png" id="2_bwtno"]
+
+[resource]
+script = ExtResource("1_0b31i")
+node_name = "Pick Up Range 1"
+icon = ExtResource("2_bwtno")
+disabled_icon = ExtResource("1_v8r5x")
+description = "Increase Pick Up Damage by 20 for each level."
+max_level = 3
+currency_required = 500
+stat_relation = 3
+stat_name = "Pick Up Distance"
+upgrade_interval = 20.0
+prereqs = Array[String](["Banking:1"])
+metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

@@ -1,16 +1,19 @@
 [gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://c6cb7c8bqn7ow"]
 
-[ext_resource type="Texture2D" uid="uid://b7210bsmm06js" path="res://Assets/NodeGraphics/NodeGraphicsV2/SmeltingSpeed1_V2.png" id="1_21q8o"]
+[ext_resource type="Texture2D" uid="uid://bgi1xrd24ktq1" path="res://Assets/TechTree/SmeltingNodes/SmeltingSpeed_Disabled_Graphic.png" id="1_qyb1d"]
+[ext_resource type="Texture2D" uid="uid://bnrw6hvy8qj3" path="res://Assets/TechTree/SmeltingNodes/SmeltingSpeed_Graphic.png" id="2_olw4y"]
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="2_qyb1d"]
 
 [resource]
 script = ExtResource("2_qyb1d")
 node_name = "Refinery Speed 1"
-icon = ExtResource("1_21q8o")
+icon = ExtResource("2_olw4y")
+disabled_icon = ExtResource("1_qyb1d")
 description = "Decrease your wait time and Increase Smelting Speed by 12% per level."
 max_level = 3
 currency_required = 300
+stat_relation = 5
 stat_name = "Smelting Speed"
 upgrade_interval = 0.12
-prereqs = Array[String](["Refinery Station:1"])
+prereqs = Array[String](["Critical Smelting 1:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

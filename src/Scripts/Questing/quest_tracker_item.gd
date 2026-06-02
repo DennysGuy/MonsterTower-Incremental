@@ -47,6 +47,7 @@ func update_quest_completion(quest_name : String) -> void:
 	await get_tree().create_timer(1.5).timeout
 	if quest_data.is_main_quest():
 		quest_data.complete_quest()
+		CodexManager.send_codex_notification.emit("Main Quest: [color=yellow]%s[/color] \nHas been completed!" % quest_name) 
 		load_next_quest()
 	else:
 		var completed_text : TaskListItem = preload("uid://cb5m6ynmba10o").instantiate()
@@ -54,6 +55,7 @@ func update_quest_completion(quest_name : String) -> void:
 		completed_text.is_turn_in_notice = true
 		quest_data.ready_for_turn_in()
 		checklist.add_child(completed_text)
+		CodexManager.send_codex_notification.emit("[color=red]%s[/color] is \nready for turn in!" % quest_name) 
 
 
 func undo_quest_completion(quest_name : String) -> void:

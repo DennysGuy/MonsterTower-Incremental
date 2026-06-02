@@ -1,0 +1,619 @@
+[gd_scene format=3 uid="uid://ctnmpc84yxlgj"]
+
+[ext_resource type="Script" uid="uid://bwa06050yeebm" path="res://src/Scripts/Facilities/CraftingStationMenu/class_weapon_crafting_menu.gd" id="1_ht0u6"]
+[ext_resource type="Texture2D" uid="uid://b6jnfhuacvwtv" path="res://Assets/PlayerGraphics/Weapons/WeaponCraftingMenu/ClassWeaponCraftingMenuBackGround.png" id="2_bedrc"]
+[ext_resource type="Texture2D" uid="uid://dqrwhfhixd1io" path="res://Assets/Facilities/GearCraftingStation/GearStationDropsBagBG.png" id="3_abbk0"]
+[ext_resource type="Texture2D" uid="uid://dev0bo6yx63cx" path="res://Assets/PlayerGraphics/Weapons/WeaponCraftingMenu/DescriptionPopInPanel.png" id="3_pw14l"]
+[ext_resource type="FontFile" uid="uid://bmc1mapdr27y8" path="res://Assets/Fonts/CatCafe.ttf" id="4_bc2o7"]
+[ext_resource type="Texture2D" uid="uid://d377004lv5rq6" path="res://Assets/PlayerGraphics/Weapons/WeaponCraftingMenu/ClassWeaponCraftingMenuForeGround.png" id="4_ltxeo"]
+[ext_resource type="PackedScene" uid="uid://d0s6j8mvikv8c" path="res://src/Scenes/UI/ItemSlot.tscn" id="5_84gg1"]
+[ext_resource type="PackedScene" uid="uid://bfsck3pwmik0b" path="res://src/Scenes/NewStarshire/Facilities/Menus/WeaponIconButton.tscn" id="5_eouhx"]
+[ext_resource type="FontFile" uid="uid://db8n06hek3pwn" path="res://Assets/Fonts/Alphakind.ttf" id="6_gxlyv"]
+[ext_resource type="Texture2D" uid="uid://b8hlux28tq5h0" path="res://Assets/HUD/Bags/DropsBag_Button.png" id="6_py844"]
+[ext_resource type="Texture2D" uid="uid://bn61q72i8n3u2" path="res://Assets/HUD/Bags/DropsBag_Button_Pressed.png" id="7_aqe58"]
+[ext_resource type="Texture2D" uid="uid://d045w4ff8lkvx" path="res://Assets/HUD/Bags/DropsBag_Button_Hover.png" id="8_xx801"]
+[ext_resource type="Texture2D" uid="uid://clrwsm2p7yodf" path="res://Assets/HUD/Bags/UseBag_Button.png" id="9_i3wby"]
+[ext_resource type="Texture2D" uid="uid://diev4c5kalk6u" path="res://Assets/CraftingMiniGame/Swords/BronzeSword/IronBroadSwordMold.png" id="10_cub0n"]
+[ext_resource type="Texture2D" uid="uid://bjqb1mvqv6sq5" path="res://Assets/HUD/Bags/UseBag_Button_Pressed.png" id="10_s3gec"]
+[ext_resource type="PackedScene" uid="uid://dil4081ni1hb3" path="res://src/Scenes/NewStarshire/Facilities/IngredientsMenuItem.tscn" id="11_6nhl7"]
+[ext_resource type="Texture2D" uid="uid://b78kv3lisgc5k" path="res://Assets/HUD/Bags/UseBag_Button_Hover.png" id="11_cb4ed"]
+[ext_resource type="FontFile" uid="uid://gaqgf4hfp7h4" path="res://Assets/Fonts/Halo Dek.ttf" id="12_yxd4v"]
+[ext_resource type="Resource" uid="uid://xqsea58c1jqh" path="res://src/Resources/Gear/Swords/BronzeSwordShield.tres" id="16_xx801"]
+[ext_resource type="Resource" uid="uid://bdsjrsiakv2sh" path="res://src/Resources/Gear/Swords/IronBroadSword.tres" id="17_i3wby"]
+[ext_resource type="Resource" uid="uid://dol2r302p2e52" path="res://src/Resources/Gear/Swords/LurkersRapier.tres" id="18_i3wby"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eouhx"]
+bg_color = Color(0, 0, 0, 0.75900006)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="ClassWeaponCraftingMenu" type="Control" unique_id=1105057700]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ht0u6")
+
+[node name="Panel" type="Panel" parent="." unique_id=41290153]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Inventory" type="TextureRect" parent="." unique_id=314046144]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_bedrc")
+
+[node name="BagBG" type="TextureRect" parent="Inventory" unique_id=1766933967]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 135.0
+offset_top = -404.0
+offset_right = 505.0
+offset_bottom = -35.0
+grow_vertical = 2
+texture = ExtResource("3_abbk0")
+
+[node name="InventoryTitle" type="Label" parent="Inventory" unique_id=1794644247]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 143.0
+offset_right = 184.0
+offset_bottom = 166.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_bc2o7")
+theme_override_font_sizes/font_size = 32
+text = "Drops"
+
+[node name="BankTitle" type="Label" parent="Inventory" unique_id=576029024]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 594.0
+offset_right = 229.0
+offset_bottom = 631.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_bc2o7")
+theme_override_font_sizes/font_size = 32
+text = "Bank"
+
+[node name="InventoryContainer" type="GridContainer" parent="Inventory" unique_id=236280439]
+layout_mode = 0
+offset_left = 179.0
+offset_top = 194.0
+offset_right = 447.0
+offset_bottom = 462.0
+columns = 4
+
+[node name="Slot" parent="Inventory/InventoryContainer" unique_id=782442892 instance=ExtResource("5_84gg1")]
+layout_mode = 2
+
+[node name="Slot2" parent="Inventory/InventoryContainer" unique_id=686778934 instance=ExtResource("5_84gg1")]
+layout_mode = 2
+
+[node name="Slot3" parent="Inventory/InventoryContainer" unique_id=599656863 instance=ExtResource("5_84gg1")]
+layout_mode = 2
+
+[node name="Slot4" parent="Inventory/InventoryContainer" unique_id=1368960747 instance=ExtResource("5_84gg1")]
+layout_mode = 2
+
+[node name="Slot5" parent="Inventory/InventoryContainer" unique_id=1712199017 instance=ExtResource("5_84gg1")]
+layout_mode = 2
+
+[node name="Slot6" parent="Inventory/InventoryContainer" unique_id=923907820 instance=ExtResource("5_84gg1")]
+layout_mode = 2
+
+[node name="Slot7" parent="Inventory/InventoryContainer" unique_id=1064512183 instance=ExtResource("5_84gg1")]
+layout_mode = 2
+
+[node name="Slot8" parent="Inventory/InventoryContainer" unique_id=913119258 instance=ExtResource("5_84gg1")]
+layout_mode = 2
+
+[node name="Slot9" parent="Inventory/InventoryContainer" unique_id=2056640449 instance=ExtResource("5_84gg1")]
+layout_mode = 2
+
+[node name="Slot10" parent="Inventory/InventoryContainer" unique_id=1513408351 instance=ExtResource("5_84gg1")]
+layout_mode = 2
+
+[node name="Slot11" parent="Inventory/InventoryContainer" unique_id=510670328 instance=ExtResource("5_84gg1")]
+layout_mode = 2
+
+[node name="Slot12" parent="Inventory/InventoryContainer" unique_id=161203301 instance=ExtResource("5_84gg1")]
+layout_mode = 2
+
+[node name="Slot13" parent="Inventory/InventoryContainer" unique_id=630766930 instance=ExtResource("5_84gg1")]
+layout_mode = 2
+
+[node name="Slot14" parent="Inventory/InventoryContainer" unique_id=536661022 instance=ExtResource("5_84gg1")]
+layout_mode = 2
+
+[node name="Slot15" parent="Inventory/InventoryContainer" unique_id=1742891975 instance=ExtResource("5_84gg1")]
+layout_mode = 2
+
+[node name="Slot16" parent="Inventory/InventoryContainer" unique_id=555902952 instance=ExtResource("5_84gg1")]
+layout_mode = 2
+
+[node name="BankContainer" type="GridContainer" parent="Inventory" unique_id=1609121714]
+layout_mode = 0
+offset_left = 179.0
+offset_top = 639.0
+offset_right = 447.0
+offset_bottom = 907.0
+columns = 4
+
+[node name="Slot" parent="Inventory/BankContainer" unique_id=1442003092 instance=ExtResource("5_84gg1")]
+layout_mode = 2
+
+[node name="Slot2" parent="Inventory/BankContainer" unique_id=1482632615 instance=ExtResource("5_84gg1")]
+layout_mode = 2
+
+[node name="Slot3" parent="Inventory/BankContainer" unique_id=1857761445 instance=ExtResource("5_84gg1")]
+layout_mode = 2
+
+[node name="Slot4" parent="Inventory/BankContainer" unique_id=746205244 instance=ExtResource("5_84gg1")]
+layout_mode = 2
+
+[node name="Slot5" parent="Inventory/BankContainer" unique_id=967252265 instance=ExtResource("5_84gg1")]
+layout_mode = 2
+
+[node name="Slot6" parent="Inventory/BankContainer" unique_id=1875663950 instance=ExtResource("5_84gg1")]
+layout_mode = 2
+
+[node name="Slot7" parent="Inventory/BankContainer" unique_id=760729050 instance=ExtResource("5_84gg1")]
+layout_mode = 2
+
+[node name="Slot8" parent="Inventory/BankContainer" unique_id=1404822143 instance=ExtResource("5_84gg1")]
+layout_mode = 2
+
+[node name="Slot9" parent="Inventory/BankContainer" unique_id=1980096259 instance=ExtResource("5_84gg1")]
+layout_mode = 2
+
+[node name="Slot10" parent="Inventory/BankContainer" unique_id=2106604048 instance=ExtResource("5_84gg1")]
+layout_mode = 2
+
+[node name="Slot11" parent="Inventory/BankContainer" unique_id=887302112 instance=ExtResource("5_84gg1")]
+layout_mode = 2
+
+[node name="Slot12" parent="Inventory/BankContainer" unique_id=9310899 instance=ExtResource("5_84gg1")]
+layout_mode = 2
+
+[node name="Slot13" parent="Inventory/BankContainer" unique_id=2057922799 instance=ExtResource("5_84gg1")]
+layout_mode = 2
+
+[node name="Slot14" parent="Inventory/BankContainer" unique_id=1147801814 instance=ExtResource("5_84gg1")]
+layout_mode = 2
+
+[node name="Slot15" parent="Inventory/BankContainer" unique_id=1450184041 instance=ExtResource("5_84gg1")]
+layout_mode = 2
+
+[node name="Slot16" parent="Inventory/BankContainer" unique_id=1428882453 instance=ExtResource("5_84gg1")]
+layout_mode = 2
+
+[node name="BankAccountLockedNotice" type="Label" parent="Inventory" unique_id=1599855237]
+visible = false
+layout_mode = 0
+offset_left = 154.0
+offset_top = 745.0
+offset_right = 459.0
+offset_bottom = 782.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_bc2o7")
+theme_override_font_sizes/font_size = 32
+text = "Bank Account Locked!"
+
+[node name="DropsBagButton" type="TextureButton" parent="Inventory" unique_id=1161451160]
+layout_mode = 0
+offset_left = 129.0
+offset_top = 84.0
+offset_right = 218.0
+offset_bottom = 125.0
+texture_normal = ExtResource("6_py844")
+texture_pressed = ExtResource("7_aqe58")
+texture_hover = ExtResource("8_xx801")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Inventory/DropsBagButton" unique_id=1449895879]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 9.0
+offset_right = 66.0
+offset_bottom = 28.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_bc2o7")
+text = "Drops"
+
+[node name="UseBagButton" type="TextureButton" parent="Inventory" unique_id=338298040]
+layout_mode = 0
+offset_left = 218.0
+offset_top = 84.0
+offset_right = 307.0
+offset_bottom = 125.0
+texture_normal = ExtResource("9_i3wby")
+texture_pressed = ExtResource("10_s3gec")
+texture_hover = ExtResource("11_cb4ed")
+stretch_mode = 0
+
+[node name="Label2" type="Label" parent="Inventory/UseBagButton" unique_id=539780700]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 10.0
+offset_right = 59.0
+offset_bottom = 29.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_bc2o7")
+text = "Use"
+
+[node name="DescriptionPanel" type="TextureRect" parent="." unique_id=488408810]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -476.0
+offset_right = 127.0
+offset_bottom = 484.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_pw14l")
+stretch_mode = 2
+
+[node name="WeaponName" type="Label" parent="DescriptionPanel" unique_id=1912937702]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -67.5
+offset_top = 23.0
+offset_right = 67.5
+offset_bottom = 46.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_bc2o7")
+theme_override_font_sizes/font_size = 32
+text = "Iron Broad Sword"
+
+[node name="RecipeTitle" type="Label" parent="DescriptionPanel" unique_id=1959991918]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -169.5
+offset_top = 417.0
+offset_right = 78.5
+offset_bottom = 445.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_bc2o7")
+theme_override_font_sizes/font_size = 28
+text = "Recipe"
+
+[node name="DescriptionPanel" type="Panel" parent="DescriptionPanel" unique_id=703176421]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -170.5
+offset_top = -384.0
+offset_right = 172.5
+offset_bottom = -92.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DescriptionLabel" type="RichTextLabel" parent="DescriptionPanel/DescriptionPanel" unique_id=543641177]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 13.0
+offset_top = 15.0
+offset_right = -17.0
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("4_bc2o7")
+theme_override_font_sizes/normal_font_size = 24
+text = "This is the Iron Broad Sword. Forged with the Will of the people."
+
+[node name="IngredientsContainer" type="GridContainer" parent="DescriptionPanel" unique_id=1034657039]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -173.5
+offset_top = -13.0
+offset_right = 141.5
+offset_bottom = 193.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/v_separation = 24
+
+[node name="IngredientItem" parent="DescriptionPanel/IngredientsContainer" unique_id=900235041 instance=ExtResource("11_6nhl7")]
+layout_mode = 2
+
+[node name="IngredientItem2" parent="DescriptionPanel/IngredientsContainer" unique_id=1081335673 instance=ExtResource("11_6nhl7")]
+layout_mode = 2
+
+[node name="IngredientItem3" parent="DescriptionPanel/IngredientsContainer" unique_id=1758477110 instance=ExtResource("11_6nhl7")]
+layout_mode = 2
+
+[node name="StatBonusesTitle" type="Label" parent="DescriptionPanel" unique_id=1308044771]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -169.5
+offset_top = 642.0
+offset_right = 78.5
+offset_bottom = 674.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_bc2o7")
+theme_override_font_sizes/font_size = 28
+text = "Stat Bonuses"
+
+[node name="StatBonusesLabel" type="RichTextLabel" parent="DescriptionPanel" unique_id=377135202]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 698.0
+offset_right = 365.0
+offset_bottom = 933.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/line_separation = 6
+theme_override_fonts/normal_font = ExtResource("4_bc2o7")
+theme_override_font_sizes/normal_font_size = 24
+text = "+50 Attack
++24 Defense
++2% Crit Chance
++10% Crit Damage"
+
+[node name="ForeGround" type="TextureRect" parent="." unique_id=512444208]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_right = 7.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_ltxeo")
+
+[node name="WarriorWeaponContainer" type="GridContainer" parent="ForeGround" unique_id=955347410]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -659.0
+offset_top = -397.0
+offset_right = -175.0
+offset_bottom = 403.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/h_separation = 50
+theme_override_constants/v_separation = 40
+columns = 3
+
+[node name="WeaponIconButton" parent="ForeGround/WarriorWeaponContainer" unique_id=1203035290 instance=ExtResource("5_eouhx")]
+layout_mode = 2
+weapon = ExtResource("16_xx801")
+
+[node name="WeaponIconButton2" parent="ForeGround/WarriorWeaponContainer" unique_id=1804658481 instance=ExtResource("5_eouhx")]
+layout_mode = 2
+weapon = ExtResource("17_i3wby")
+
+[node name="WeaponIconButton3" parent="ForeGround/WarriorWeaponContainer" unique_id=663077831 instance=ExtResource("5_eouhx")]
+layout_mode = 2
+weapon = ExtResource("18_i3wby")
+
+[node name="WeaponIconButton4" parent="ForeGround/WarriorWeaponContainer" unique_id=500383786 instance=ExtResource("5_eouhx")]
+layout_mode = 2
+weapon = ExtResource("16_xx801")
+
+[node name="WeaponIconButton5" parent="ForeGround/WarriorWeaponContainer" unique_id=539432697 instance=ExtResource("5_eouhx")]
+layout_mode = 2
+weapon = ExtResource("17_i3wby")
+
+[node name="WeaponIconButton6" parent="ForeGround/WarriorWeaponContainer" unique_id=1443051333 instance=ExtResource("5_eouhx")]
+layout_mode = 2
+weapon = ExtResource("18_i3wby")
+
+[node name="WeaponIconButton7" parent="ForeGround/WarriorWeaponContainer" unique_id=934085744 instance=ExtResource("5_eouhx")]
+layout_mode = 2
+weapon = ExtResource("16_xx801")
+
+[node name="WeaponIconButton8" parent="ForeGround/WarriorWeaponContainer" unique_id=417664144 instance=ExtResource("5_eouhx")]
+layout_mode = 2
+weapon = ExtResource("17_i3wby")
+
+[node name="WeaponIconButton9" parent="ForeGround/WarriorWeaponContainer" unique_id=1478993099 instance=ExtResource("5_eouhx")]
+layout_mode = 2
+weapon = ExtResource("18_i3wby")
+
+[node name="WeaponIconButton10" parent="ForeGround/WarriorWeaponContainer" unique_id=277292426 instance=ExtResource("5_eouhx")]
+layout_mode = 2
+weapon = ExtResource("16_xx801")
+
+[node name="WeaponIconButton11" parent="ForeGround/WarriorWeaponContainer" unique_id=1517543998 instance=ExtResource("5_eouhx")]
+layout_mode = 2
+weapon = ExtResource("17_i3wby")
+
+[node name="WeaponIconButton12" parent="ForeGround/WarriorWeaponContainer" unique_id=324611320 instance=ExtResource("5_eouhx")]
+layout_mode = 2
+weapon = ExtResource("18_i3wby")
+
+[node name="WeaponIconButton13" parent="ForeGround/WarriorWeaponContainer" unique_id=2130605395 instance=ExtResource("5_eouhx")]
+layout_mode = 2
+weapon = ExtResource("16_xx801")
+
+[node name="WeaponIconButton14" parent="ForeGround/WarriorWeaponContainer" unique_id=1162822386 instance=ExtResource("5_eouhx")]
+layout_mode = 2
+weapon = ExtResource("17_i3wby")
+
+[node name="WeaponIconButton15" parent="ForeGround/WarriorWeaponContainer" unique_id=1380327103 instance=ExtResource("5_eouhx")]
+layout_mode = 2
+weapon = ExtResource("18_i3wby")
+
+[node name="Panel" type="Panel" parent="ForeGround" unique_id=1556720090]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -690.0
+offset_top = -246.0
+offset_right = -147.0
+offset_bottom = 413.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_eouhx")
+
+[node name="NotAvailableNotice" type="Label" parent="ForeGround/Panel" unique_id=1416495857]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_gxlyv")
+theme_override_font_sizes/font_size = 50
+text = "Not Available Yet!"
+
+[node name="WeaponMoldGraphic" type="TextureRect" parent="ForeGround" unique_id=398586841]
+layout_mode = 0
+offset_left = 713.0
+offset_top = 184.0
+offset_right = 1022.0499
+offset_bottom = 766.0
+mouse_filter = 2
+texture = ExtResource("10_cub0n")
+
+[node name="ClickOnNotice" type="Label" parent="ForeGround" unique_id=2083423283]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -648.0
+offset_top = 82.0
+offset_right = -195.0
+offset_bottom = 119.0
+grow_horizontal = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_bc2o7")
+theme_override_font_sizes/font_size = 32
+text = "Click on a weapon to view details"
+
+[node name="MenuTitle" type="Label" parent="ForeGround" unique_id=1750716811]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1229.0
+offset_top = 18.0
+offset_right = -889.0
+offset_bottom = 55.0
+grow_horizontal = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_bc2o7")
+theme_override_font_sizes/font_size = 32
+text = "Weapon Crafting Station"
+
+[node name="ActionTitle" type="Label" parent="ForeGround" unique_id=1156578600]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1099.0
+offset_top = 863.0
+offset_right = -1015.0
+offset_bottom = 900.0
+grow_horizontal = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_bc2o7")
+theme_override_font_sizes/font_size = 32
+text = "Action"
+
+[node name="ActionButton" type="Button" parent="ForeGround" unique_id=182874781]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -210.0
+offset_top = -167.0
+offset_right = 34.0
+offset_bottom = -114.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("12_yxd4v")
+theme_override_font_sizes/font_size = 32
+disabled = true
+text = "Select Weapon"
+
+[node name="ShowDetailsButton" type="Button" parent="ForeGround" unique_id=338839851]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -299.0
+offset_top = -1001.0
+offset_right = -150.0
+offset_bottom = -968.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("12_yxd4v")
+theme_override_font_sizes/font_size = 24
+text = "Show Details"
+
+[node name="CloseButton" type="Button" parent="ForeGround" unique_id=2079941130]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 809.0
+offset_top = -1065.0
+offset_right = 893.0
+offset_bottom = -1023.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("12_yxd4v")
+theme_override_font_sizes/font_size = 32
+text = "Close"
+
+[connection signal="button_up" from="Inventory/DropsBagButton" to="." method="_on_drops_bag_button_button_up"]
+[connection signal="button_up" from="Inventory/UseBagButton" to="." method="_on_use_bag_button_button_up"]
+[connection signal="button_up" from="ForeGround/ActionButton" to="." method="_on_action_button_button_up"]
+[connection signal="button_up" from="ForeGround/ShowDetailsButton" to="." method="_on_show_details_button_button_up"]
+[connection signal="button_up" from="ForeGround/CloseButton" to="." method="_on_show_details_button_2_button_up"]

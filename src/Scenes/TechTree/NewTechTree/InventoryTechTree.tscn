@@ -1,0 +1,139 @@
+[gd_scene format=3 uid="uid://b4uckmtmr7vfn"]
+
+[ext_resource type="Script" uid="uid://b8dm4aiafj68l" path="res://src/Scripts/TechTree/NewTechTree/inventory_tech_tree.gd" id="1_5cioc"]
+[ext_resource type="PackedScene" uid="uid://c4c6abj1a8ara" path="res://src/Scenes/TechTree/NewTechTree/TechTreeCamera.tscn" id="2_awpbw"]
+[ext_resource type="PackedScene" uid="uid://bhimqkbcn26r2" path="res://src/Scenes/TechTree/TechNode.tscn" id="3_umo85"]
+[ext_resource type="Resource" uid="uid://ct7a5kggupi55" path="res://src/Resources/TechTree/TechNodes/DeeperPockets1.tres" id="4_5cioc"]
+[ext_resource type="Resource" uid="uid://c1ojmw7gy7o6" path="res://src/Resources/TechTree/TechNodes/BagExpand1.tres" id="5_5cioc"]
+[ext_resource type="Resource" uid="uid://cmbxvekbk2uxx" path="res://src/Resources/TechTree/TechNodes/BankUnlock.tres" id="6_5cioc"]
+[ext_resource type="Resource" uid="uid://cqjeh0yqqse5c" path="res://src/Resources/TechTree/TechNodes/Bank2.tres" id="7_5cioc"]
+[ext_resource type="Resource" uid="uid://g0ygkxkfllsh" path="res://src/Resources/TechTree/TechNodes/PickUpDistance1.tres" id="8_4sy3s"]
+[ext_resource type="Resource" uid="uid://c2do0e0poa4or" path="res://src/Resources/TechTree/TechNodes/Bank3.tres" id="8_awpbw"]
+[ext_resource type="Resource" uid="uid://bxsrojy06sgui" path="res://src/Resources/TechTree/TechNodes/PickUpDistance2.tres" id="9_4dl31"]
+[ext_resource type="Resource" uid="uid://ydq2itcsk458" path="res://src/Resources/TechTree/TechNodes/DeeperPockets2.tres" id="9_awpbw"]
+[ext_resource type="Resource" uid="uid://cygetk8cm8cn5" path="res://src/Resources/TechTree/TechNodes/Bag2.tres" id="10_awpbw"]
+[ext_resource type="Resource" uid="uid://blg1x38jfumy1" path="res://src/Resources/TechTree/TechNodes/DeeperPockets3.tres" id="11_awpbw"]
+[ext_resource type="Resource" uid="uid://xskacmmk7mn4" path="res://src/Resources/TechTree/TechNodes/Bag3.tres" id="12_umo85"]
+
+[node name="InventoryTechTree" type="Control" unique_id=220942998]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_5cioc")
+
+[node name="TechTreeCamera" parent="." unique_id=2137187773 instance=ExtResource("2_awpbw")]
+position = Vector2(896, 256)
+
+[node name="DeeperPockets1" parent="." unique_id=640777626 instance=ExtResource("3_umo85")]
+visible = false
+layout_mode = 1
+offset_left = -767.0
+offset_top = 165.0
+offset_right = -767.0
+offset_bottom = 165.0
+tech_node_stats = ExtResource("4_5cioc")
+
+[node name="Bag1Node" parent="." unique_id=1804535485 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_umo85")]
+visible = false
+layout_mode = 1
+offset_left = -767.0
+offset_top = -89.0
+offset_right = -767.0
+offset_bottom = -89.0
+tech_node_stats = ExtResource("5_5cioc")
+previous_node = NodePath("../DeeperPockets1")
+
+[node name="BankUnlockNode" parent="." unique_id=1776225068 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_umo85")]
+visible = false
+layout_mode = 1
+offset_left = -255.0
+offset_top = 165.0
+offset_right = -255.0
+offset_bottom = 165.0
+tech_node_stats = ExtResource("6_5cioc")
+previous_node = NodePath("../DeeperPockets1")
+node_type = 1
+
+[node name="BankExpand1Node" parent="." unique_id=1331020484 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_umo85")]
+visible = false
+layout_mode = 1
+offset_left = -255.0
+offset_top = -93.0
+offset_right = -255.0
+offset_bottom = -93.0
+tech_node_stats = ExtResource("7_5cioc")
+previous_node = NodePath("../BankUnlockNode")
+
+[node name="PickUpDistance1" parent="." unique_id=1447761114 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_umo85")]
+visible = false
+layout_mode = 1
+offset_left = 257.0
+offset_top = 165.0
+offset_right = 257.0
+offset_bottom = 165.0
+tech_node_stats = ExtResource("8_4sy3s")
+previous_node = NodePath("../BankUnlockNode")
+
+[node name="PickUpDistance2" parent="." unique_id=1528260191 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_umo85")]
+visible = false
+layout_mode = 1
+offset_left = 257.0
+offset_top = -89.0
+offset_right = 257.0
+offset_bottom = -89.0
+tech_node_stats = ExtResource("9_4dl31")
+previous_node = NodePath("../PickUpDistance1")
+
+[node name="BankExpand2Node" parent="." unique_id=1062232054 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_umo85")]
+visible = false
+layout_mode = 1
+offset_left = -255.0
+offset_top = -352.0
+offset_right = -255.0
+offset_bottom = -352.0
+tech_node_stats = ExtResource("8_awpbw")
+previous_node = NodePath("../BankUnlockNode")
+
+[node name="DeeperPockets2Node" parent="." unique_id=1302849726 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_umo85")]
+visible = false
+layout_mode = 1
+offset_left = 769.0
+offset_top = 164.0
+offset_right = 769.0
+offset_bottom = 164.0
+tech_node_stats = ExtResource("9_awpbw")
+previous_node = NodePath("../PickUpDistance1")
+
+[node name="Bag2Node" parent="." unique_id=1305696302 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_umo85")]
+visible = false
+layout_mode = 1
+offset_left = 769.0
+offset_top = -92.0
+offset_right = 769.0
+offset_bottom = -92.0
+tech_node_stats = ExtResource("10_awpbw")
+previous_node = NodePath("../DeeperPockets2Node")
+
+[node name="DeeperPockets3Node" parent="." unique_id=1548307285 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_umo85")]
+visible = false
+layout_mode = 1
+offset_left = 1281.0
+offset_top = 164.0
+offset_right = 1281.0
+offset_bottom = 164.0
+tech_node_stats = ExtResource("11_awpbw")
+previous_node = NodePath("../DeeperPockets2Node")
+
+[node name="Bag3Node" parent="." unique_id=515623900 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_umo85")]
+visible = false
+layout_mode = 1
+offset_left = 1281.0
+offset_top = -93.0
+offset_right = 1281.0
+offset_bottom = -93.0
+tech_node_stats = ExtResource("12_umo85")
+previous_node = NodePath("../DeeperPockets3Node")

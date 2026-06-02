@@ -21,4 +21,5 @@ output_item = ExtResource("2_pkrlu")
 recipe_list = Array[Dictionary]([{}, {
 ExtResource("4_urnnc"): 2
 }])
+related_nodes = Array[String](["AP Gain 2", "Chalice Spawn Rate 1", "Siphen Chance 1"])
 metadata/_custom_type_script = "uid://cljygiasf4103"

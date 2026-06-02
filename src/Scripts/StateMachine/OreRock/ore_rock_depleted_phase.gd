@@ -8,6 +8,7 @@ func enter() -> void:
 	ore_rock_area.disabled = true
 	parent.player.stored_ore_rock = null
 	parent.ore_rock_graphic.frame = 3
+	parent.depleted = true
 
 func exit() -> void:
 	pass

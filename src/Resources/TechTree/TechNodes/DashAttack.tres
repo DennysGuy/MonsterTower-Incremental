@@ -1,13 +1,15 @@
 [gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://bonlosm00p4kf"]
 
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_anjie"]
-[ext_resource type="Texture2D" uid="uid://w823m3oe7i82" path="res://Assets/NodeGraphics/NodeGraphicsV2/DashAttack_V2.png" id="1_jo0k4"]
+[ext_resource type="Texture2D" uid="uid://d0fdh62fo47t7" path="res://Assets/TechTree/CombatNodes/Dash_Node_Disabled_Graphic.png" id="1_jo0k4"]
+[ext_resource type="Texture2D" uid="uid://dyc3ui0pgk5uf" path="res://Assets/TechTree/CombatNodes/Dash_Node_Graphic.png" id="2_x24pw"]
 
 [resource]
 script = ExtResource("1_anjie")
 node_name = "Dash Attack"
-icon = ExtResource("1_jo0k4")
-description = "Press \"Right Click\" while moving to soar through your enemies with a powerful dash attack. "
+icon = ExtResource("2_x24pw")
+disabled_icon = ExtResource("1_jo0k4")
+description = "Press the dash button to dodge enemies. Effective for getting out of tight jams!"
 unlocked = true
 currency_required = 400
 ap_required = 3

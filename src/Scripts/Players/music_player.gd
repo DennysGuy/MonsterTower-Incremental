@@ -24,3 +24,9 @@ func stop_player(fade_out : bool = false) -> void:
 		tween.tween_property(audio_stream_player, "volume_db", -30.0, 1.0)
 	audio_stream_player.volume_db = 0.0
 	audio_stream_player.stop()
+
+func pause_music() -> void:
+	audio_stream_player.stream_paused = true
+
+func unpause_music() -> void:
+	audio_stream_player.stream_paused = false

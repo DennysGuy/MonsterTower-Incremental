@@ -5,7 +5,8 @@
 
 [node name="NodeTitleListItem" type="Label" unique_id=199380644]
 theme_override_colors/font_color = Color(1.4439225e-06, 0.70206064, 0.7783197, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.657)
 theme_override_fonts/font = ExtResource("1_5mr8u")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 18
 text = "- Health 1"
 script = ExtResource("2_j1mr3")

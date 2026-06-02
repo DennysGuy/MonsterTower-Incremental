@@ -29,7 +29,7 @@ func spawn_pause_menu() -> void:
 	
 func spawn_tech_tree() -> void:
 	canvas_layer.show()
-	var tech_tree : TechTree = preload("uid://b7n3fwd3y85wp").instantiate()
+	var tech_tree : NewTechTree = preload("uid://diodc16waxg0q").instantiate()
 	sub_viewport.add_child(tech_tree)
 
 func spawn_tower_entrance_map() -> void:	
@@ -47,7 +47,13 @@ func spawn_grand_market() -> void:
 
 func spawn_sword_crafting_menu() -> void:
 	canvas_layer.show()
-	var sword_crafting_station : CraftingStationMenu = preload("uid://cc1xppx3tkq4f").instantiate()
+	var sword_crafting_station
+	
+	if PlayerStats.player_stats["Class"] == "Junior Hunter":
+		sword_crafting_station = preload("uid://cc1xppx3tkq4f").instantiate()
+	else:
+		sword_crafting_station = preload("uid://ctnmpc84yxlgj").instantiate()
+	
 	control.add_child(sword_crafting_station)
 
 func spawn_gem_stone_menu() -> void:

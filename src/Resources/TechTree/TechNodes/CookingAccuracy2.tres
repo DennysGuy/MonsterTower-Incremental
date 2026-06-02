@@ -1,9 +1,23 @@
-[gd_resource type="Resource" script_class="TechNodeStats" load_steps=3 format=3 uid="uid://bl5fxhci5olcj"]
+[gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://bl5fxhci5olcj"]
 
-[ext_resource type="Script" uid="uid://cu8drgivmhfn" path="res://src/Scripts/item.gd" id="1_1oei4"]
+[ext_resource type="Resource" uid="uid://b4owo1wr47wc" path="res://src/Resources/Dishes/WrappedKabab.tres" id="1_1oei4"]
+[ext_resource type="Texture2D" uid="uid://ds3jpw7cmfq3w" path="res://Assets/TechTree/CookingNodes/CookingAccuracy_Disabled_Graphic.png" id="1_v82mo"]
+[ext_resource type="Texture2D" uid="uid://dyef057sxvvwl" path="res://Assets/TechTree/CookingNodes/CookingAccuracy_Graphic.png" id="1_w2emr"]
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="2_w2emr"]
 
 [resource]
 script = ExtResource("2_w2emr")
 node_name = "Cooking Accuracy 2"
+icon = ExtResource("1_w2emr")
+disabled_icon = ExtResource("1_v82mo")
+description = "Increases chance to successfully cook a dish by 3% per level."
+max_level = 3
+currency_required = 2500
+materials_required = Array[Dictionary]([{
+ExtResource("1_1oei4"): 2
+}])
+stat_relation = 4
+stat_name = "Cooking Accuracy Bonus"
+upgrade_interval = 0.03
+prereqs = Array[String](["Cooking Speed 2"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

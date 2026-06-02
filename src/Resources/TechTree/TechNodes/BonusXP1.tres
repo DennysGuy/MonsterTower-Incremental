@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://c5surf2owculw"]
+
+[ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_mhehp"]
+
+[resource]
+script = ExtResource("1_mhehp")
+node_name = "Bonus XP 1"
+description = "Increases  XP received by 2% for each level."
+max_level = 5
+stat_name = "Bonus XP Multiplier"
+upgrade_interval = 0.02
+metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

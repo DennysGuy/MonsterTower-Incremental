@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bgurt44iah13x"]
 
 [ext_resource type="Script" uid="uid://b6emfts3ijh7c" path="res://src/Scripts/tower_entrance_map.gd" id="1_p02a1"]
+[ext_resource type="AudioStream" uid="uid://bjkd20keb4qrj" path="res://Audio/SFX/Bosses/TechTreeTheme1.wav" id="2_4n3ua"]
 [ext_resource type="Texture2D" uid="uid://c3epdjllg6c2e" path="res://Assets/HUD/NewTowerEntranceMap/NewTowerEntranceMapBG.png" id="2_v8mxw"]
 [ext_resource type="PackedScene" uid="uid://dctxiqken55oq" path="res://src/Scenes/UI/NewTowerEntranceMap/BiomeSelectionPanel.tscn" id="3_0dk0n"]
 [ext_resource type="FontFile" uid="uid://qgj228ltdttv" path="res://Assets/Fonts/alagard.ttf" id="3_m7ed0"]
@@ -26,6 +27,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_p02a1")
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="." unique_id=2047321027]
+stream = ExtResource("2_4n3ua")
+volume_db = 3.0
+bus = &"Music"
 
 [node name="Background" type="TextureRect" parent="." unique_id=587407533]
 layout_mode = 1

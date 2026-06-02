@@ -46,9 +46,14 @@ func process_physics(_delta: float) -> State:
 				success_rate += PlayerStats.player_stats["Smelting Accuracy Bonus"]
 				
 		if num_check <= int(success_rate*100):
-			var test_crit_success_chance : float = 0.1
+			var crit_success_chance : float = 0
+			match parent.station_type:
+				parent.STATION_TYPE.COOKING:
+					crit_success_chance = PlayerStats.player_stats["Critical Cooking Chance"]
+				parent.STATION_TYPE.SMELTING:
+					crit_success_chance = PlayerStats.player_stats["Critical Smelting Chance"]
 			var new_num_check : int = randi_range(0,100)
-			if new_num_check <= int(test_crit_success_chance * 100):
+			if new_num_check <= int(crit_success_chance * 100):
 				var test_bonus_amount := 2
 				parent.play_crit_success_sfx()
 				var positions : Array[Vector2] = [Vector2(20,0), Vector2(-20,0)]

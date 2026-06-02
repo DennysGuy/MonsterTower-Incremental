@@ -1,15 +1,17 @@
 [gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://c6lrtgrld7bx1"]
 
-[ext_resource type="Texture2D" uid="uid://6bul074ratoj" path="res://Assets/NodeGraphics/NodeGraphicsV2/CritDamage2_V2.png" id="1_sb1ur"]
+[ext_resource type="Texture2D" uid="uid://dqg7lvxxmwpvi" path="res://Assets/TechTree/CombatNodes/CritDamage_Node_Disabled_Graphic.png" id="1_g5jmf"]
 [ext_resource type="Resource" uid="uid://buu8pdcooh3hc" path="res://src/Resources/CraftingResources/BronzeBar.tres" id="2_4ah6g"]
+[ext_resource type="Texture2D" uid="uid://cu5lljgjna4fs" path="res://Assets/TechTree/CombatNodes/CritDamage_Node_Graphic.png" id="2_326nj"]
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="3_326nj"]
 
 [resource]
 script = ExtResource("3_326nj")
 node_name = "Crit Damage 2"
-icon = ExtResource("1_sb1ur")
+icon = ExtResource("2_326nj")
+disabled_icon = ExtResource("1_g5jmf")
 description = "Increase Crit Damage by 5% per level."
-max_level = 5
+max_level = 3
 currency_required = 600
 materials_required = Array[Dictionary]([{
 ExtResource("2_4ah6g"): 3

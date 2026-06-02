@@ -1,11 +1,14 @@
 class_name Sword extends Resource
 
 @export var sword_name : String
+@export var index : int
+@export_multiline var description : String
 @export var attack_bonus : float
 @export var defense_bonus : float
 @export var attack_speed : float
 @export var crit_bonus : float
 @export var hit_bonus : float
+@export var multi_enemies_bonus : float
 @export var crit_damage_bonus : float
 @export var movement_speed_bonus : float
 @export var status_duration_bonus : float
@@ -24,12 +27,18 @@ class_name Sword extends Resource
 @export_group("Graphics")
 @export var graphic : Texture2D
 @export var mold_graphic : Texture2D
+@export var menu_icon_graphic : Texture2D
+@export var menu_icon_disabled_graphic : Texture2D
 
 @export_group("Audio")
 @export var swing_1 : AudioStream
 @export var swing_2 : AudioStream
 @export var swing_3 : AudioStream
 @export var dash_attack : AudioStream
+
+@export_group("Status")
+@export var unlocked : bool = false
+@export var is_tracked : bool = false
 
 func get_stats_dict() -> Dictionary:
 	return {
@@ -47,6 +56,7 @@ func get_stats_dict() -> Dictionary:
 		"Cool Down Bonus": cool_down_bonus,
 		"Max HP Bonus" : max_hp_bonus,
 		"Max MP Bonus" : max_mp_bonus,
+		"Multi Enemies Bonus": multi_enemies_bonus
 		#"Knock Back Bonus" : knock_back_bonus
 	}
 
@@ -129,3 +139,6 @@ func get_total_mp_bonus() -> float:
 
 func get_total_stun_stacks_bonus() -> float:
 	return get_stats_dict()["Stun Stacks Bonus"] + PlayerStats.get_total_gem_bonus("Stun Stacks Bonus")
+
+func get_total_multi_enemies_bonus() -> float:
+	return get_stats_dict()["Multi Enemies Bonus"] + PlayerStats.get_total_gem_bonus("Multi Enemies Bonus")

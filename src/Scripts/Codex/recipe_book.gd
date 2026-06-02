@@ -77,7 +77,8 @@ func populate_recipe_container(recipe : CraftingRecipe, unlocks_list : Array) ->
 			else:
 				list_item.ingredient_icon.texture =  preload("uid://cbcw7ua8sro78")
 			
-			list_item.quantity.text = "x%s" % ingredient[item]
+			var currently_held : int = InventoryManager.get_quantity(item,item.get_inventory_name())
+			list_item.quantity.text = "%s/%s" % [currently_held,ingredient[item]]
 			recipe_container.add_child(list_item)
 
 func _on_dish_recipes_button_up() -> void:

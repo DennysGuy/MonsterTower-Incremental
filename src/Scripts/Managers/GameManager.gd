@@ -21,6 +21,10 @@ var boss_door_challenge_active : bool = false
 var on_boss_door_floor : bool = false
 var room_speed_bonus : float = 1.0
 var new_jobs_available : bool = false
+var license_promotion_time : bool = false
+var in_last_breadth_mode : bool = false
+var remaining_bolt_chain_links : int = 0
+var event_multiplier : float = 1.0
 enum NOTIFICATION_TYPE {CRAFTING, COOKING, SMELTING, AP, QUEST}
 
 # Called when the node enters the scene tree for the first time.
@@ -56,24 +60,27 @@ func attack_enemies(enemies_in_hitbox : Array, enemies_hit : int = 1, number_of_
 			var damage = int(incoming_damage * (1.0 - defense))
 
 			damage = max(damage, 1)
-			var label_position : int = 40
+			var label_position : int = 60
 			while i < attack_reps:
 				#enemy.sfx_player.play()
 				attack_enemy(player, enemy, damage, is_crit, 0, is_warrior, label_position, ability)
 
 				i += 1
-				label_position += 15
+				label_position += 25
 				await player.get_tree().create_timer(0.1).timeout
 			
 			if is_instance_valid(enemy) and enemy.health <= 0:
 				enemies_in_hitbox.erase(enemy)
 
 func attack_enemy(player : Player, enemy : Enemy, incoming_damage : int, is_crit : bool, hit_freeze : float = 0.02, is_warrior : bool = false, label_position : int = 40, ability : Ability = null) -> void:
-	SignalBus.shake_camera.emit(0.5)
+	#SignalBus.shake_camera.emit(0.5)
 	HitStopManager.freeze(hit_freeze, 0.1, 0.0, 0.03)
 	if is_warrior:
 		enemy.increment_break_count()
-		
+	
+	if can_siphen():
+		siphen_hp(incoming_damage)
+	
 	if ability:
 		match ability.attack_type:
 			ability.ATTACK_TYPE.NORMAL:
@@ -85,6 +92,20 @@ func attack_enemy(player : Player, enemy : Enemy, incoming_damage : int, is_crit
 		return
 	enemy.apply_damage(incoming_damage, is_crit, label_position)
 	#might need to break here so we don't collide with the function below
+
+func can_siphen() -> bool:
+	var chance : int = int(PlayerStats.player_stats["HP Siphen Chance"]*100)
+	var rand_num : int = randi_range(0,100)
+	if chance <= rand_num:
+		return true
+	return false
+
+func siphen_hp(amount : int) -> void:
+	var siphened_amount : int = int(amount * PlayerStats.player_stats["HP Siphen Amount"])
+	PlayerStats.player_stats["Current Health"] += siphened_amount
+	if PlayerStats.player_stats["Current Health"] >= PlayerStats.player_stats["Max Health"]:
+		PlayerStats.player_stats["Current Health"] = PlayerStats.player_stats["Max Health"]
+	PlayerHudSignalBus.update_player_health.emit() 
 
 func calculate_targets(enemies_in_hitbox : Array, player : Player, number_of_hits : int) -> Array[Entity]:
 	var targets: Array[Entity] = []
@@ -126,3 +147,11 @@ func set_direction(dir : float):
 
 func can_unlock_class() -> bool:
 	return PlayerStats.player_stats["Level"] >= 8 and PlayerStats.facilities_unlocked["Arial Slash"] and PlayerStats.facilities_unlocked["Dash Attack"] and PlayerStats.facilities_unlocked["Double Jump"] and PlayerStats.player_stats["Class"] == "Junior Hunter"
+
+func check_if_dodged() -> bool:
+	var chance : int = int(PlayerStats.player_stats["Dodge Chance"] * 100)
+	var rand_num : int = randi_range(0,100)
+	if chance != 0 and rand_num <= chance:
+		return true
+	
+	return false

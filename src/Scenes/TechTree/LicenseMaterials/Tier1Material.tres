@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://btf4xja285u5m"]
+
+[ext_resource type="Texture2D" uid="uid://c4fidygo8pdq5" path="res://Assets/Models/HunterLicenseTextures/Tier1.png" id="1_3fqt6"]
+
+[resource]
+albedo_texture = ExtResource("1_3fqt6")
+texture_filter = 0

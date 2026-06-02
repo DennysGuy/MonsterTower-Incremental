@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://bck0tmdb7tip6"]
+
+[ext_resource type="Texture2D" uid="uid://de5kq7ipu50yl" path="res://Assets/TechTree/TutorialBox.png" id="1_picqx"]
+[ext_resource type="Script" uid="uid://b1jd6f05y2q14" path="res://src/Scripts/TechTree/NewTechTree/tutorial_box.gd" id="2_gef47"]
+[ext_resource type="Texture2D" uid="uid://dpl2dbrb5w3rc" path="res://Assets/TechTree/NotifcationExclamationTechtree.png" id="3_mdm6r"]
+
+[node name="TutorialBox" type="NinePatchRect" unique_id=123813508]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -156.0
+offset_top = -36.5
+offset_right = 156.0
+offset_bottom = 36.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_picqx")
+region_rect = Rect2(0, 0, 64, 64)
+script = ExtResource("2_gef47")
+
+[node name="NotifcationExclamationTechtree" type="TextureRect" parent="." unique_id=1956537366]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 3.0
+offset_top = -32.0
+offset_right = 51.0
+offset_bottom = 32.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("3_mdm6r")
+
+[node name="Timer" type="Timer" parent="." unique_id=1316397291]
+process_callback = 0
+wait_time = 0.5
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

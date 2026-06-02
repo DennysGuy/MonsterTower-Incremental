@@ -1,18 +1,20 @@
 [gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://5le7ds72absa"]
 
-[ext_resource type="Texture2D" uid="uid://dlpqa2p4mvlcq" path="res://Assets/NodeGraphics/NodeGraphicsV2/CritChance2_V2.png" id="1_y3o7e"]
+[ext_resource type="Texture2D" uid="uid://bkcjq1peak63c" path="res://Assets/TechTree/CombatNodes/CritChance_Node_Disabled_Graphic.png" id="1_it720"]
+[ext_resource type="Texture2D" uid="uid://bsf0v5u4jrvue" path="res://Assets/TechTree/CombatNodes/CritChance_Node_Graphic.png" id="2_abtbc"]
 [ext_resource type="Resource" uid="uid://cs6ojn6tc0alq" path="res://src/Resources/CraftingResources/SteelBar.tres" id="2_y3o7e"]
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="3_abtbc"]
 
 [resource]
 script = ExtResource("3_abtbc")
 node_name = "Crit Chance 4"
-icon = ExtResource("1_y3o7e")
+icon = ExtResource("2_abtbc")
+disabled_icon = ExtResource("1_it720")
 description = "Increase Crit Chance by 5% per level."
 max_level = 3
-currency_required = 2500
+currency_required = 3500
 materials_required = Array[Dictionary]([{
-ExtResource("2_y3o7e"): 2
+ExtResource("2_y3o7e"): 1
 }])
 stat_name = "Crit Chance"
 upgrade_interval = 0.05

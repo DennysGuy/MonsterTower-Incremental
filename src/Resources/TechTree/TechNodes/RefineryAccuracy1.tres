@@ -1,16 +1,19 @@
 [gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://licswcd54xsn"]
 
-[ext_resource type="Texture2D" uid="uid://b8aelrtx5h31m" path="res://Assets/NodeGraphics/NodeGraphicsV2/SmeltingSuccess1_V2.png" id="1_dgdbt"]
+[ext_resource type="Texture2D" uid="uid://d36meckgmdr5k" path="res://Assets/TechTree/SmeltingNodes/SmeltingAccuracy_Disabled_Graphic.png" id="1_5xexd"]
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="2_5xexd"]
+[ext_resource type="Texture2D" uid="uid://0e1sd8uouheb" path="res://Assets/TechTree/SmeltingNodes/SmeltingAccuracy_Graphic.png" id="2_ck8sh"]
 
 [resource]
 script = ExtResource("2_5xexd")
 node_name = "Refinery Accuracy 1"
-icon = ExtResource("1_dgdbt")
+icon = ExtResource("2_ck8sh")
+disabled_icon = ExtResource("1_5xexd")
 description = "Get more bars! Increases Smelting success rate bonus by 3% per level."
 max_level = 5
 currency_required = 300
+stat_relation = 5
 stat_name = "Smelting Accuracy Bonus"
 upgrade_interval = 0.03
-prereqs = Array[String](["Refinery Station:1"])
+prereqs = Array[String](["Critical Smelting 1:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

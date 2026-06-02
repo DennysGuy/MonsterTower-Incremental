@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://b6a033jtmxfu3"]
+
+[ext_resource type="Texture2D" uid="uid://5n4kld0ejh86" path="res://Assets/TechTree/TraversalNodes/DashDistance_Graphic.png" id="1_rghtu"]
+[ext_resource type="Texture2D" uid="uid://ch4prvcj504u4" path="res://Assets/TechTree/TraversalNodes/DashDistance_Disabled_Graphic.png" id="1_soogs"]
+[ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="3_knj0w"]
+[ext_resource type="Resource" uid="uid://y4kiqe4pi2v5" path="res://src/Resources/CraftingResources/IronBar.tres" id="3_soogs"]
+
+[resource]
+script = ExtResource("3_knj0w")
+node_name = "Dash Distance 2"
+icon = ExtResource("1_rghtu")
+disabled_icon = ExtResource("1_soogs")
+description = "Increases the duration of your dash attack by 3ms"
+max_level = 3
+currency_required = 1500
+materials_required = Array[Dictionary]([{
+ExtResource("3_soogs"): 4
+}])
+stat_relation = 2
+stat_name = "Dash Duration"
+upgrade_interval = 0.2
+prereqs = Array[String](["Movement 2:1"])
+metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

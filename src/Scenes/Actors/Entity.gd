@@ -11,7 +11,7 @@ class_name Entity extends CharacterBody2D
 @export var event_damage_multiplier : float = 1.0
 @export var stored_stun_marker_icon : StunMarkerIcon
 @export var locked_on : bool = false
-
+@export var label_position : float = 60
 
 @export_group("Detectors")
 @export var hurt_box : HurtBox
@@ -31,7 +31,7 @@ var is_silenced : bool = false
 
 var damageable : bool = true
 var is_dead : bool = false
-
+var event_multiplier : float = 1.0
 var prev_dir : int = 1
 
 const GENERIC_IMPACT_1 = preload("uid://ffdv7g8jgp4y")
@@ -42,7 +42,7 @@ const EVENT_HIT = preload("uid://xqm6ui46e8q4")
 const LOCK_ON_ENEMY = preload("uid://dyxqfogqcdlju")
 
 @onready var impacts : Array[AudioStream] = [GENERIC_IMPACT_1, GENERIC_IMPACT_2, GENERIC_IMPACT_3]
-
+var apply_gravity : bool = true
 var health : float
 
 func _ready() -> void:
@@ -57,20 +57,30 @@ func _physics_process(delta: float) -> void:
 func _process(delta: float) -> void:
 	state_machine.process_frame(delta)
 
-func apply_damage(incoming_damage : int, is_crit : bool, label_position : int = 40):
+func apply_damage(incoming_damage : int, is_crit : bool, new_label_position : int = 60):
 	if !damageable:
 		return
 	
 	if self is Player:
 		damageable = false
-	
+		if GameManager.check_if_dodged():
+			incoming_damage = 0
+		
+	if self is Boss:
+		var added_damage_bonus : int = int(incoming_damage * PlayerStats.player_stats["Boss Damage Bonus"])
+		incoming_damage += added_damage_bonus
+		
 	play_sfx(impacts.pick_random())
 	var damage_event_multiplied : int = int(incoming_damage * event_damage_multiplier)
 	var damage = health_component.apply_damage(damage_event_multiplied, is_crit)
 	var damage_label : DamageLabel = preload("uid://dkchs27qqogyy").instantiate()
 	if is_crit:
 		damage_label.set_crit_bg()
-	damage_label.global_position.y = global_position.y-label_position
+	
+	if self is Player:
+		damage_label.set_player_bg()
+		
+	damage_label.global_position.y = global_position.y-new_label_position
 	damage_label.global_position.x = global_position.x
 	damage_label.label.text = damage
 	if self is Enemy:

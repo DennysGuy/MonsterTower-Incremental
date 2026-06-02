@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cpyqrs4puvrp1"]
+
+[ext_resource type="Texture2D" uid="uid://bpc2ul3b54p3s" path="res://Assets/Models/HunterLicenseTextures/Tier5.png" id="1_xkp7c"]
+
+[resource]
+resource_name = "material_0"
+transparency = 2
+alpha_scissor_threshold = 0.05
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("1_xkp7c")
+texture_filter = 0
+texture_repeat = false

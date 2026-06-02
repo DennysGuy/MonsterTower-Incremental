@@ -23,9 +23,12 @@ var stored_entrance_data : TowerEntranceData
 
 @onready var enemies_preview_grid_container: GridContainer = $ModeDescription/DropsPreviewPanel/PanelContainer/EnemiesPreviewGridContainer
 @onready var ore_preview_grid_container: GridContainer = $ModeDescription/DropsPreviewPanel/PanelContainer2/OrePreviewGridContainer
+@onready var music_player: AudioStreamPlayer = $MusicPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	MusicPlayer.pause_music()
+	music_player.play()
 	SignalBus.store_entrance_data.connect(store_entrance_data)
 	SignalBus.update_entrance_map.connect(update_entrance_map)
 	SignalBus.update_mode_description_to_expedition.connect(set_mode_description_as_expedition)
@@ -88,6 +91,8 @@ func _on_close_button_up() -> void:
 	GameManager.can_open_bag = true
 	GameManager.can_open_tower_map = true
 	SignalBus.hide_tech_tree_canvas_layer.emit()
+	music_player.stop()
+	MusicPlayer.unpause_music()
 	queue_free()
 	
 func update_entrance_map(index : int) -> void:

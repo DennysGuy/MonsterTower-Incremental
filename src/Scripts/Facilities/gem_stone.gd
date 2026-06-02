@@ -21,6 +21,7 @@ class_name GemStone extends Item
 @export var climb_speed_bonus : float
 @export var cool_down_bonus : float
 @export var hit_reps :float
+@export var multi_enemies_bonus : float
 #Perhaps we'll add elemental effects in the future
 
 func get_stat_bonus_list() -> Dictionary:
@@ -41,7 +42,8 @@ func get_stat_bonus_list() -> Dictionary:
 		"Max MP Bonus" : max_mp_bonus,
 		"Accuracy Bonus" : accuracy_bonus,
 		"Stun Stacks Bonus": stun_stacks_bonus,
-		"Hit Reps" : hit_reps
+		"Hit Reps" : hit_reps,
+		"Multi Enemies Bonus": multi_enemies_bonus
 	}
 
 func get_stat_bonus(bonus_name : String) -> float:

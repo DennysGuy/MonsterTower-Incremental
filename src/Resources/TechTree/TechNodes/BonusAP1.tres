@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://crr0o1kpusnpn"]
+
+[ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_q7fbg"]
+
+[resource]
+script = ExtResource("1_q7fbg")
+node_name = "Bonus AP 1"
+description = "Increases received AP from leveling up by 1"
+stat_name = "Bonus AP"
+upgrade_interval = 1.0
+metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

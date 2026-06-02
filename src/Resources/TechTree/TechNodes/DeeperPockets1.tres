@@ -1,14 +1,17 @@
 [gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://ct7a5kggupi55"]
 
-[ext_resource type="Texture2D" uid="uid://dvk74j54bijfe" path="res://Assets/NodeGraphics/NodeGraphicsV2/DeepPockets1_V2.png" id="1_ihwnd"]
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_l4c50"]
+[ext_resource type="Texture2D" uid="uid://dey7u2ddpfnnv" path="res://Assets/TechTree/InventoryNodes/DeeperPockets_Disabled_Graphic.png" id="1_t5exk"]
+[ext_resource type="Texture2D" uid="uid://cg1xkarkjqggt" path="res://Assets/TechTree/InventoryNodes/DeeperPockets_Graphic.png" id="2_5ljr5"]
 
 [resource]
 script = ExtResource("1_l4c50")
 node_name = "Deeper Pockets 1"
-icon = ExtResource("1_ihwnd")
+icon = ExtResource("2_5ljr5")
+disabled_icon = ExtResource("1_t5exk")
 description = "Store more items on runs! Increases Max Inventory Slot Stack by +2"
 currency_required = 150
+stat_relation = 3
 stat_name = "Max Bag Stack"
 upgrade_interval = 2.0
 prereqs = Array[String](["Hunter License:1"])

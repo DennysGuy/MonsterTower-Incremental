@@ -83,10 +83,8 @@ func _ready() -> void:
 		if map_type == MAP_TYPE.HUB and map_name == "Starspire - Hub":
 			GameManager.spawn_location = 0
 		
-		
 		spawn_player()
 		
-	
 		if camera:
 			camera.player = player
 		
@@ -150,25 +148,39 @@ func _process(delta: float) -> void:
 func spawn_player() -> void:
 	var new_player : Player = preload("uid://wuy3aelq8aeg").instantiate()
 	player = new_player
+	
 	var selected_spawn_point : PlayerSpawnPoint = choose_spawn_spoint()
 	player.position = selected_spawn_point.position
 	player.damageable = true
-	var total_health : int = PlayerStats.player_stats["Current Health"]
-	var total_mp : int = PlayerStats.player_stats["Current MP"]
+	
+	var current_health : int = PlayerStats.player_stats["Current Health"]
+	var current_mp : int = PlayerStats.player_stats["Current MP"]
 	
 	if GameManager.resupply_character:
-		total_health = PlayerStats.player_stats["Max Health"] + PlayerStats.get_current_sword().get_total_hp_bonus()
-		total_mp = PlayerStats.player_stats["Max MP"]  + PlayerStats.get_current_sword().get_total_defense_bonus()
-		PlayerStats.player_stats["Current Health"] = total_health
-		PlayerStats.player_stats["Current MP"] = total_mp
-		player.health = total_health
-		GameManager.resupply_character = false
-		#PlayerHudSignalBus.update_player_health.emit()
+		current_health = (
+			PlayerStats.player_stats["Max Health"]
+			+ PlayerStats.get_current_sword().get_total_hp_bonus()
+		)
 		
-	player.health = total_health
-	print("THIS IS PLAYER HEALTH" + str(player.health))
-	#hud.update_player_health(int(total_health))
-
+		current_mp = (
+			PlayerStats.player_stats["Max MP"]
+			# Replace if you have a real MP bonus function
+			+ PlayerStats.get_current_sword().get_total_defense_bonus()
+		)
+		
+		PlayerStats.player_stats["Current Health"] = current_health
+		PlayerStats.player_stats["Current MP"] = current_mp
+		
+		GameManager.resupply_character = false
+	
+	player.health = current_health
+	
+	GameManager.in_last_breadth_mode = (
+		current_health <= PlayerStats.player_stats["Last Breadth Threshold"]
+	)
+	
+	print("THIS IS PLAYER HEALTH: " + str(player.health))
+	
 	add_child(player)
 	
 func go_to_starshire() -> void:

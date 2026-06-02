@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://b7dcm5uxu82fc"]
+
+[ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_1gp7s"]
+
+[resource]
+script = ExtResource("1_1gp7s")
+node_name = "Range Threads 1"
+metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

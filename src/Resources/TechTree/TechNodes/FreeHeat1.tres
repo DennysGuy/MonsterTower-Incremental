@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://vg0n3dc6j08g"]
+
+[ext_resource type="Texture2D" uid="uid://doiw51hb8jy38" path="res://Assets/TechTree/SmeltingNodes/FreeRange_Disabled_Graphic.png" id="1_6hl4r"]
+[ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_murnf"]
+[ext_resource type="Texture2D" uid="uid://coclpgja3vbjn" path="res://Assets/TechTree/SmeltingNodes/FreeRange_Graphic.png" id="2_0djba"]
+
+[resource]
+script = ExtResource("1_murnf")
+node_name = "Free Heat 1"
+icon = ExtResource("2_0djba")
+disabled_icon = ExtResource("1_6hl4r")
+description = "Increase chance to dodge material consumption when smetling by 10%. "
+currency_required = 800
+stat_relation = 5
+stat_name = "Free Heat Chance"
+upgrade_interval = 0.1
+prereqs = Array[String](["Refinery Station:1"])
+metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

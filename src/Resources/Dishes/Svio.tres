@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Item" format=3 uid="uid://d1pg7dveofnwm"]
 
-[ext_resource type="Script" path="res://src/Scripts/item.gd" id="1_3ftrp"]
+[ext_resource type="Script" uid="uid://cu8drgivmhfn" path="res://src/Scripts/item.gd" id="1_3ftrp"]
 [ext_resource type="Texture2D" uid="uid://qi6cqdd1uhvd" path="res://Assets/Facilities/CookingStation/Svio.png" id="2_j6wdw"]
 
 [resource]

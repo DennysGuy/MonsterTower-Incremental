@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("2_3sl2i")
 drop_icon = ExtResource("1_q1u38")
-drop_chance = 0.45
+drop_chance = 0.8
 item_name = "Orc S-Pad"
 sell_value = 230
 shop_icon = ExtResource("1_q1u38")

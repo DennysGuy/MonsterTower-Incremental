@@ -8,6 +8,7 @@ var selected_class : String = "Tyro"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	SignalBus.update_to_new_class_outfit.connect(set_new_class_outfit_graphic)
 	GameManager.can_pause_game = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -38,21 +39,35 @@ func _on_mage_select_button_button_up() -> void:
 	select_button.disabled = true
 	
 func _on_select_button_button_up() -> void:
-	PlayerStats.player_stats["Class"] = selected_class
+	
 	#PlayerStats.equipped_abilities = PlayerStats.player_classes[selected_class]
 	#SaveManager.save_equipped_abilities()
-	SignalBus.update_player_uniform.emit("Idle")
+	
 
-	SignalBus.set_icons.emit()
+	
 	#SignalBus.play_warrior_unlock_animation.emit()
-	QuestManager.check_general_task_for_completion.emit("Select Your Class")
-	GameManager.can_pause_game = true
-	GameManager.player_can_move = true
-	GameManager.can_open_bag = true
-	GameManager.can_open_tower_map = true
+	
+	#GameManager.can_pause_game = true
+	#GameManager.player_can_move = true
+	#GameManager.can_open_bag = true
+	#GameManager.can_open_tower_map = true
 	#Go to class tech tree
+	#SignalBus.set_icons.emit()
+	MusicPlayer.pause_music()
+	var class_up_sequence : CraftingAnimation = preload("uid://2bfb4gmhtb7").instantiate()
+	get_parent().add_child(class_up_sequence)
+	hide()
+	class_up_sequence.play_class_upgrade_sequence()
+	await get_tree().create_timer(11.0).timeout
+	QuestManager.check_general_task_for_completion.emit("Select Your Class")
 	SignalBus.spawn_warrior_tech_tree.emit()
+	MusicPlayer.unpause_music()
 	queue_free()
+
+func set_new_class_outfit_graphic() -> void:
+	PlayerStats.player_stats["Class"] = selected_class
+	SignalBus.update_player_uniform.emit("Idle")
+	SaveManager.save_player_stats()
 
 func _on_exit_button_button_up() -> void:
 	

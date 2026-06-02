@@ -1,15 +1,18 @@
 [gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://ds0j00mlqnf55"]
 
-[ext_resource type="Texture2D" uid="uid://dcyuw0bkmf0l5" path="res://Assets/NodeGraphics/NodeGraphicsV2/Movement1_V2.png" id="1_f7tns"]
+[ext_resource type="Texture2D" uid="uid://dpqmx3xdqw1up" path="res://Assets/TechTree/TraversalNodes/MovementSpeed_Disabled_Graphic.png" id="1_bjuv3"]
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_n6cms"]
+[ext_resource type="Texture2D" uid="uid://q87r3t2lftlr" path="res://Assets/TechTree/TraversalNodes/MovementSpeed_Graphic.png" id="2_4xqfm"]
 
 [resource]
 script = ExtResource("1_n6cms")
 node_name = "Movement 1"
-icon = ExtResource("1_f7tns")
+icon = ExtResource("2_4xqfm")
+disabled_icon = ExtResource("1_bjuv3")
 description = "Speed up Horizontal coverage! For each level, increases movement speed by 5%"
 max_level = 3
 currency_required = 300
+stat_relation = 2
 stat_name = "Movement Speed"
 upgrade_interval = 0.05
 prereqs = Array[String](["Jump Height 1:1"])

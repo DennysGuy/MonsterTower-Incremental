@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://dx6ad5nq6p5kc"]
+
+[ext_resource type="Script" uid="uid://nd302rsw425j" path="res://src/Scripts/TechTree/NewTechTree/resource_description_item.gd" id="1_kbv5t"]
+[ext_resource type="Texture2D" uid="uid://bk4miqdmvi7gh" path="res://Assets/Enemies/CorruptedMushie/CorruptedMushieSpore.png" id="1_xycu1"]
+[ext_resource type="FontFile" uid="uid://cv11ytsk7jf21" path="res://Assets/Fonts/Perfect DOS VGA 437.ttf" id="2_kbv5t"]
+
+[node name="ResourceDescriptionItem" type="Control" unique_id=209466181 node_paths=PackedStringArray("icon", "amount_needed")]
+custom_minimum_size = Vector2(80, 24)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -41.0
+offset_top = -12.0
+offset_right = 39.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kbv5t")
+icon = NodePath("Icon")
+amount_needed = NodePath("AmountNeeded")
+
+[node name="Icon" type="TextureRect" parent="." unique_id=1351367648]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -12.0
+offset_right = 24.0
+offset_bottom = 12.0
+grow_vertical = 2
+texture = ExtResource("1_xycu1")
+stretch_mode = 2
+
+[node name="AmountNeeded" type="RichTextLabel" parent="." unique_id=2002188949]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -61.0
+offset_top = -6.0
+offset_bottom = 10.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_kbv5t")
+bbcode_enabled = true
+text = "4/4"
+horizontal_alignment = 2

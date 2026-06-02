@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="CraftingRecipe" format=3 uid="uid://8ol4o8ecjwos"]
+
+[ext_resource type="Resource" uid="uid://d4k5o7mbmw8yw" path="res://src/Resources/Actors/Enemies/Biome1/Batclopse/BatclopseClaw.tres" id="1_iqvh8"]
+[ext_resource type="Resource" uid="uid://jn2dh2fyq5ep" path="res://src/Resources/Actors/Enemies/Biome1/CorruptedMushie/FiberousMushieStalk.tres" id="2_fieen"]
+[ext_resource type="Script" uid="uid://cljygiasf4103" path="res://src/Scripts/Facilities/crafting_recipe.gd" id="3_ur8n7"]
+
+[resource]
+script = ExtResource("3_ur8n7")
+recipe_name = "Bronze Fang Blade"
+index = 2
+description = "A metalic sword made from refined bronze and tin ore. Great for getting started."
+recipe_tier = 1
+recipe_type = 2
+recipe_list = Array[Dictionary]([{
+ExtResource("1_iqvh8"): 4
+}, {
+ExtResource("2_fieen"): 2
+}])
+metadata/_custom_type_script = "uid://cljygiasf4103"

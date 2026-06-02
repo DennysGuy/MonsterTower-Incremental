@@ -64,11 +64,21 @@ var coyote_wait_time : float = 0.17
 var attack_buffer_timer : float = 0.0
 var attack_buffer_wait_time : float = 1.0
 
+var combat_ability_1_timer : float = 0.0
+var combat_ability_1_wait_time : float = 1.0
+
+var combat_ability_2_timer : float = 0.0
+var combat_ability_2_wait_time : float = 1.0
+
+var combat_ability_3_timer : float = 0.0
+var combat_ability_3_wait_time : float = 1.0
+
+var combat_ability_4_timer : float = 0.0
+var combat_ability_4_wait_time : float = 1.0
+
 var can_attack_cancel: bool = false
 
 var was_on_ledge : bool = true
-
-var apply_gravity : bool = true
 
 var is_silence_attack : bool = false
 
@@ -162,7 +172,7 @@ func set_attack_buffer_timer() -> void:
 
 func issue_attack(selected_hit_box : Area2D, multiplier : float = 1.0, ability : Ability = null) -> void:
 	var enemies_in_range = selected_hit_box.get_overlapping_areas()
-	var overlapping_hits : int = int(PlayerStats.player_stats["Overlapping Hits"])
+	var overlapping_hits : int = int(PlayerStats.player_stats["Overlapping Hits"] + PlayerStats.get_current_sword().get_total_multi_enemies_bonus())
 	var number_of_hits : int = 1
 	var rep_delay : float = 0.1
 	var incoming_damage : int = 0
@@ -173,7 +183,7 @@ func issue_attack(selected_hit_box : Area2D, multiplier : float = 1.0, ability :
 	var is_crit = check_for_crit()
 	
 	if ability:
-		overlapping_hits = int(ability.number_of_enemies_hit)
+		overlapping_hits = int(ability.number_of_enemies_hit + PlayerStats.get_current_sword().get_total_multi_enemies_bonus())
 		number_of_hits = int(ability.max_hit_count)
 		rep_delay = ability.attack_rep_delay
 		min_damage = total_base_attack_damage * (PlayerStats.player_stats["Accuracy"] + PlayerStats.get_total_gem_bonus("Accuracy Bonus"))
@@ -217,7 +227,9 @@ func attack_ore_rock() -> void:
 		SignalBus.shake_camera.emit(0.3)
 		var stats_damage : int = int(PlayerStats.player_stats["Mining Damage"])
 		var random_hit : int = randi_range(int(stats_damage * 0.8), stats_damage)
+		GameManager.remaining_bolt_chain_links = PlayerStats.player_stats["Mining Bolt Links"]
 		stored_ore_rock.damage_ore_rock(random_hit)
+
 
 func clear_effect_texture() -> void:
 	effect.texture = null

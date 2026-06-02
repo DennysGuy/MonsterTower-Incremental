@@ -65,12 +65,12 @@ func _ready() -> void:
 	CookingManager.can_craft_bar.emit()
 	#hud.animation_player.play("CloseIn")
 	
-	if PlayerStats.player_stats["Equipped Sword"] < PlayerStats.MAX_SWORD_COUNT-1 and PlayerStats.can_craft_next_sword():
-		SignalBus.show_can_craft_sword.emit()
-		#await get_tree().create_timer(1.0).timeout
-		#new_sword_unlock_notice()
-	else:
-		SignalBus.hide_can_craft_sword.emit()
+	#if PlayerStats.player_stats["Equipped Sword"] < PlayerStats.BEGINNGER_SWORD_COUNT and PlayerStats.can_craft_next_sword():
+		#SignalBus.show_can_craft_sword.emit()
+		##await get_tree().create_timer(1.0).timeout
+		##new_sword_unlock_notice()
+	#else:
+		#SignalBus.hide_can_craft_sword.emit()
 	#show_ap_notice()
 	#hud.open_tower_map_button.show()
 
@@ -82,7 +82,7 @@ func _ready() -> void:
 	PlayerHudSignalBus.update_player_mp.emit()
 	SaveManager.save_player_stats()
 	QuestManager.check_map_name.emit(map_name)
-	
+	show_ap_notice()
 	if PlayerStats.player_stats["Level"] == 2 and PlayerStats.player_stats["Ability Points"] == 1:
 		ability_station_notice()
 
@@ -159,8 +159,8 @@ func _on_tower_area_body_entered(body: Node2D) -> void:
 		set_guide_log(true)
 
 func show_ap_notice() -> void:
-	if PlayerStats.player_stats["Ability Points"] >= 1 and PlayerStats.player_stats["Class"] == "Junior Hunter":
-		PlayerHudSignalBus.show_class_notice.emit()
+	if PlayerStats.player_stats["Ability Points"] >= 1:
+		#PlayerHudSignalBus.show_class_notice.emit()
 		ap_notice.show()
 	else:
 		PlayerHudSignalBus.show_class_notice.emit()
@@ -216,6 +216,8 @@ func spawn_smelting_menu() -> void:
 func spawn_crafting_menu() -> void:
 	GameManager.can_open_tower_map = false
 	GameManager.can_open_bag = false
+	GameManager.can_pause_game = false
+	GameManager.player_can_move = false
 	player.velocity = Vector2.ZERO
 	PlayerHudSignalBus.spawn_sword_crafting_station.emit()
 
@@ -297,7 +299,13 @@ func _on_smelting_station_area_body_exited(body: Node2D) -> void:
 
 func _on_crafting_station_area_body_entered(body: Node2D) -> void:
 	if body is Player:
-		player_in_crafting_range = true
+		if PlayerStats.player_stats["Tracked Weapon"] == 2 and PlayerStats.player_stats["Class"] == "Junior Hunter":
+			player_in_crafting_range = false
+			access_sword_crafting_station.text = "Select your Class to Gain Access"
+		else:
+			player_in_crafting_range = true
+			access_sword_crafting_station.text = "Press 'E' to access Sword Crafting Station"
+			
 		access_sword_crafting_station.show()
 	
 func _on_crafting_station_area_body_exited(body: Node2D) -> void:
@@ -382,19 +390,19 @@ func new_sword_unlock_notice() -> void:
 	GameManager.player_can_move = true
 
 func warrior_class_unlocked_notice() -> void:
-	GameManager.player_can_move = false
+	#GameManager.player_can_move = false
 	player.send_to_idle_state()
-	MusicPlayer.stop_player()
-	sfx_player.play_sfx(UNLOCK_SHOP)
-	PlayerHudSignalBus.flash_screen.emit()
-	play_sfx(CLASS_UP_FANFARE)
-	PlayerHudSignalBus.flash_screen.emit()
-	await get_tree().create_timer(1.5).timeout
 	spawn_warrior_tech_tree()
-	PlayerHudSignalBus.hide_big_notification.emit()
-	GameManager.player_can_move = true
-	await get_tree().create_timer(8.5).timeout
-	MusicPlayer.play_song(map_theme_song)
+	#MusicPlayer.stop_player()
+	#sfx_player.play_sfx(UNLOCK_SHOP)
+	#PlayerHudSignalBus.flash_screen.emit()
+	#play_sfx(CLASS_UP_FANFARE)
+	#PlayerHudSignalBus.flash_screen.emit()
+	#await get_tree().create_timer(1.5).timeout
+	#PlayerHudSignalBus.hide_big_notification.emit()
+	#GameManager.player_can_move = true
+	#await get_tree().create_timer(8.5).timeout
+	#MusicPlayer.play_song(map_theme_song)
 
 func gem_station_unlock_notice() -> void:
 	camera.player = null

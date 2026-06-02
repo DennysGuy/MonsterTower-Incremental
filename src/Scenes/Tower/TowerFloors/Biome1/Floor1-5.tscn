@@ -174,6 +174,13 @@ ore_rock = ExtResource("16_jijf8")
 chance_to_spawn = 0.4
 spawn_parent = NodePath("../..")
 
+[node name="OreRockMarker12" parent="OreRockMarkers" unique_id=645790957 node_paths=PackedStringArray("spawn_parent") instance=ExtResource("14_l7but")]
+position = Vector2(400, 1857)
+ore_rock_resource = ExtResource("15_jijf8")
+ore_rock = ExtResource("16_jijf8")
+chance_to_spawn = 0.4
+spawn_parent = NodePath("../..")
+
 [node name="OreRockMarker5" parent="OreRockMarkers" unique_id=1706440834 node_paths=PackedStringArray("spawn_parent") instance=ExtResource("14_l7but")]
 position = Vector2(303, 1520)
 ore_rock_resource = ExtResource("15_22mja")
@@ -181,8 +188,29 @@ ore_rock = ExtResource("16_jijf8")
 chance_to_spawn = 0.4
 spawn_parent = NodePath("../..")
 
+[node name="OreRockMarker11" parent="OreRockMarkers" unique_id=975029859 node_paths=PackedStringArray("spawn_parent") instance=ExtResource("14_l7but")]
+position = Vector2(366, 1520)
+ore_rock_resource = ExtResource("15_22mja")
+ore_rock = ExtResource("16_jijf8")
+chance_to_spawn = 0.4
+spawn_parent = NodePath("../..")
+
+[node name="OreRockMarker9" parent="OreRockMarkers" unique_id=825960746 node_paths=PackedStringArray("spawn_parent") instance=ExtResource("14_l7but")]
+position = Vector2(273, 1665)
+ore_rock_resource = ExtResource("15_22mja")
+ore_rock = ExtResource("16_jijf8")
+chance_to_spawn = 0.4
+spawn_parent = NodePath("../..")
+
+[node name="OreRockMarker10" parent="OreRockMarkers" unique_id=1596191575 node_paths=PackedStringArray("spawn_parent") instance=ExtResource("14_l7but")]
+position = Vector2(176, 1889)
+ore_rock_resource = ExtResource("15_22mja")
+ore_rock = ExtResource("16_jijf8")
+chance_to_spawn = 0.4
+spawn_parent = NodePath("../..")
+
 [node name="OreRockMarker6" parent="OreRockMarkers" unique_id=146095805 node_paths=PackedStringArray("spawn_parent") instance=ExtResource("14_l7but")]
-position = Vector2(291, 1391)
+position = Vector2(291, 1393)
 ore_rock_resource = ExtResource("15_22mja")
 ore_rock = ExtResource("16_jijf8")
 chance_to_spawn = 0.4
@@ -230,7 +258,7 @@ gem_chest_stats = ExtResource("18_lgosx")
 spawn_parent = NodePath("../..")
 
 [node name="GemStoneMarker5" parent="GemStoneMarkers" unique_id=667273849 node_paths=PackedStringArray("spawn_parent") instance=ExtResource("13_7simu")]
-position = Vector2(435, 1407)
+position = Vector2(435, 1409)
 gem_chest_stats = ExtResource("18_lgosx")
 spawn_parent = NodePath("../..")
 

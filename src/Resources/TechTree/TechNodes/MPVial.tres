@@ -2,18 +2,21 @@
 
 [ext_resource type="Resource" uid="uid://d0wo8tvdfk8j1" path="res://src/Resources/Dishes/HuntersStew.tres" id="1_1symy"]
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_3o3dk"]
-[ext_resource type="Texture2D" uid="uid://lwvc1k5hf4tm" path="res://Assets/NodeGraphics/NodeGraphicsV2/MPVial_V2.png" id="1_rarsx"]
+[ext_resource type="Texture2D" uid="uid://we4gh0twqmrt" path="res://Assets/TechTree/SurvivalNodes/MPVial_Disabled_Graphic.png" id="1_pl8ct"]
+[ext_resource type="Texture2D" uid="uid://cq17yxrtk4duh" path="res://Assets/TechTree/SurvivalNodes/MPVial_Graphic.png" id="2_2j3cl"]
 
 [resource]
 script = ExtResource("1_3o3dk")
 node_name = "Vial of the Esoteric"
-icon = ExtResource("1_rarsx")
+icon = ExtResource("2_2j3cl")
+disabled_icon = ExtResource("1_pl8ct")
 description = "Consumable Vials will  spawn in the tower recovering the player's MP by 20%"
-currency_required = 2500
+currency_required = 2000
 materials_required = Array[Dictionary]([{
-ExtResource("1_1symy"): 2
+ExtResource("1_1symy"): 1
 }])
 node_type = 1
+stat_relation = 1
 stat_name = "MP Vial"
 prereqs = Array[String](["Max MP 2:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

@@ -52,8 +52,7 @@ func process_physics(_delta: float) -> State:
 		parent.animation_player.play()
 	
 	if parent.jump_buffer_timer > 0:
-		return jump_state
-	
+		return idle_state
 	
 	if parent.ladder_top_position_detector.global_position.y <= parent.stored_ladder.ladder_top.global_position.y and Input.is_action_pressed("pan_cam_up") and parent.is_climbing:
 		parent.global_position = parent.stored_ladder.ladder_top.global_position

@@ -1,15 +1,19 @@
 [gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://u1y3eoe8hx2c"]
 
-[ext_resource type="Texture2D" uid="uid://ch3r8qkoanevo" path="res://Assets/NodeGraphics/NodeGraphicsV2/HP1_V2.png" id="1_bu2rx"]
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_j3vys"]
+[ext_resource type="Texture2D" uid="uid://cverklmq4oxwm" path="res://Assets/TechTree/SurvivalNodes/HPUp_Disabled_Graphic.png" id="1_k1igh"]
+[ext_resource type="Texture2D" uid="uid://b5ui2gldo822r" path="res://Assets/TechTree/SurvivalNodes/HPUp_Graphic.png" id="2_2ug8f"]
 
 [resource]
 script = ExtResource("1_j3vys")
 node_name = "Max HP 1"
-icon = ExtResource("1_bu2rx")
+icon = ExtResource("2_2ug8f")
+disabled_icon = ExtResource("1_k1igh")
 description = "Sustaine more damage! Increase Max HP by 35 for each level"
+unlocked = true
 max_level = 5
 currency_required = 80
+stat_relation = 1
 stat_name = "Max Health"
 upgrade_interval = 35.0
 prereqs = Array[String](["Hunter License:1"])

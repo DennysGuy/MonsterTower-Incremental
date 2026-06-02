@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://ctjnncini5jvl"]
+
+[ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_ary4v"]
+[ext_resource type="Texture2D" uid="uid://cq5yd4iixc0nh" path="res://Assets/TechTree/TraversalNodes/DodgeChance_Disabled_Base.png" id="1_n6toq"]
+[ext_resource type="Texture2D" uid="uid://hwhcdpqso670" path="res://Assets/TechTree/TraversalNodes/DodgeChance_Base.png" id="2_q3rte"]
+
+[resource]
+script = ExtResource("1_ary4v")
+node_name = "Dodge Chance 2"
+icon = ExtResource("2_q3rte")
+disabled_icon = ExtResource("1_n6toq")
+description = "Increases chance to dodge an enemy attack by 3% per level."
+max_level = 2
+currency_required = 1800
+stat_relation = 2
+stat_name = "Dodge Chance"
+upgrade_interval = 0.03
+prereqs = Array[String](["Movement 2:1"])
+metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

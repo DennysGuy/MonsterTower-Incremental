@@ -61,7 +61,7 @@ func process_physics(delta: float) -> void:
 	# Gravity handling (unchanged logic, just clarified)
 	var parent := get_parent()
 	if parent is CharacterBody2D:
-		if parent.is_on_floor() or (parent is Player and !parent.apply_gravity):
+		if parent.is_on_floor() or !parent.apply_gravity:
 			parent.velocity.y = 0
 		else:
 			parent.velocity.y += GameManager.gravity * delta

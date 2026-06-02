@@ -1,0 +1,307 @@
+[gd_scene format=3 uid="uid://bpcgnubcykkw2"]
+
+[ext_resource type="Script" uid="uid://dlqu4u66ofgcj" path="res://src/Scripts/TechTree/NewTechTree/combat_tech_tree.gd" id="1_3evml"]
+[ext_resource type="PackedScene" uid="uid://bhimqkbcn26r2" path="res://src/Scenes/TechTree/TechNode.tscn" id="2_48m6i"]
+[ext_resource type="PackedScene" uid="uid://c4c6abj1a8ara" path="res://src/Scenes/TechTree/NewTechTree/TechTreeCamera.tscn" id="2_bblbl"]
+[ext_resource type="Resource" uid="uid://1gmjr0davgp4" path="res://src/Resources/TechTree/TechNodes/Attack1.tres" id="3_tmu88"]
+[ext_resource type="Resource" uid="uid://cmy8gsm0hbovg" path="res://src/Resources/TechTree/TechNodes/CritChance1.tres" id="4_txx7x"]
+[ext_resource type="Resource" uid="uid://bqgnafgyrs4m4" path="res://src/Resources/TechTree/TechNodes/Attack2.tres" id="4_yloba"]
+[ext_resource type="Resource" uid="uid://ttsaddae3bcr" path="res://src/Resources/TechTree/TechNodes/CritDamage1.tres" id="5_txx7x"]
+[ext_resource type="Resource" uid="uid://c6lrtgrld7bx1" path="res://src/Resources/TechTree/TechNodes/CritDamage2.tres" id="7_pydx8"]
+[ext_resource type="Resource" uid="uid://ll3jw1v5omml" path="res://src/Resources/TechTree/TechNodes/CritChance2.tres" id="8_1b1e2"]
+[ext_resource type="Resource" uid="uid://c7i7yba2dc0by" path="res://src/Resources/TechTree/TechNodes/GemStoneStation.tres" id="9_6ggqh"]
+[ext_resource type="Resource" uid="uid://b6b483q551evk" path="res://src/Resources/TechTree/TechNodes/Tier1GemChestsRateIncrease.tres" id="10_if40r"]
+[ext_resource type="Resource" uid="uid://c03qaydx74usi" path="res://src/Resources/TechTree/TechNodes/Tier1GemDropRateIncrease.tres" id="11_2vyru"]
+[ext_resource type="Resource" uid="uid://bm30rm3kedvsp" path="res://src/Resources/TechTree/TechNodes/CombatCooldown1.tres" id="12_fuu40"]
+[ext_resource type="Resource" uid="uid://drs3wurlptmym" path="res://src/Resources/TechTree/TechNodes/Attack3.tres" id="12_j8abv"]
+[ext_resource type="Resource" uid="uid://bslp1vf8jqc7n" path="res://src/Resources/TechTree/TechNodes/CombatCooldown2.tres" id="13_7r8q4"]
+[ext_resource type="Resource" uid="uid://x04h2nhi8gdh" path="res://src/Resources/TechTree/TechNodes/CritChance3.tres" id="13_8fhfb"]
+[ext_resource type="Resource" uid="uid://dant3bywg07u" path="res://src/Resources/TechTree/TechNodes/LastBreadth1.tres" id="13_o18ej"]
+[ext_resource type="Resource" uid="uid://s42rn6aklaui" path="res://src/Resources/TechTree/TechNodes/BreadthThreshold1.tres" id="14_h55wc"]
+[ext_resource type="Resource" uid="uid://fr5bgjnd33a7" path="res://src/Resources/TechTree/TechNodes/CritDamage3.tres" id="14_yly43"]
+[ext_resource type="Resource" uid="uid://b218wsbjh7pyo" path="res://src/Resources/TechTree/TechNodes/Attack4.tres" id="15_075h1"]
+[ext_resource type="Resource" uid="uid://c3puqbrn253v0" path="res://src/Resources/TechTree/TechNodes/APGain1.tres" id="16_7hig2"]
+[ext_resource type="Resource" uid="uid://5le7ds72absa" path="res://src/Resources/TechTree/TechNodes/CritChance4.tres" id="16_8ljra"]
+[ext_resource type="Resource" uid="uid://dca38k23f8qdg" path="res://src/Resources/TechTree/TechNodes/XPGain1.tres" id="17_1ja4c"]
+[ext_resource type="Resource" uid="uid://xqghhbiwak01" path="res://src/Resources/TechTree/TechNodes/CritDamage4.tres" id="17_sasxp"]
+[ext_resource type="Resource" uid="uid://coviifivetye5" path="res://src/Resources/TechTree/TechNodes/InstaKill1.tres" id="23_fkw4e"]
+[ext_resource type="Resource" uid="uid://cvy8gppv7scd" path="res://src/Resources/TechTree/TechNodes/InstaKillChance1.tres" id="24_am8dd"]
+[ext_resource type="Resource" uid="uid://dto7io7l82yyq" path="res://src/Resources/TechTree/TechNodes/APGain2.tres" id="28_vfqyr"]
+[ext_resource type="Resource" uid="uid://da5cfk33w53a7" path="res://src/Resources/TechTree/TechNodes/XPGain2.tres" id="29_q5cat"]
+[ext_resource type="Resource" uid="uid://bqs24c70y86cp" path="res://src/Resources/TechTree/TechNodes/BossDamage1.tres" id="32_pkw47"]
+
+[node name="CombatTechTree" type="Control" unique_id=220942998]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_3evml")
+
+[node name="TechTreeCamera" parent="." unique_id=2137187773 instance=ExtResource("2_bblbl")]
+position = Vector2(896, 256)
+
+[node name="Attack1Node" parent="." unique_id=640777626 instance=ExtResource("2_48m6i")]
+visible = false
+layout_mode = 1
+offset_left = -767.0
+offset_top = 164.0
+offset_right = -767.0
+offset_bottom = 164.0
+tech_node_stats = ExtResource("3_tmu88")
+
+[node name="CritChance1Node" parent="." unique_id=913123538 node_paths=PackedStringArray("previous_node") instance=ExtResource("2_48m6i")]
+visible = false
+layout_mode = 1
+offset_left = -767.0
+offset_top = -96.0
+offset_right = -767.0
+offset_bottom = -96.0
+tech_node_stats = ExtResource("4_txx7x")
+previous_node = NodePath("../Attack1Node")
+
+[node name="CritDamage1Node" parent="." unique_id=924049074 node_paths=PackedStringArray("previous_node") instance=ExtResource("2_48m6i")]
+visible = false
+layout_mode = 1
+offset_left = -767.0
+offset_top = -352.0
+offset_right = -767.0
+offset_bottom = -352.0
+tech_node_stats = ExtResource("5_txx7x")
+previous_node = NodePath("../CritChance1Node")
+
+[node name="Attack2Node" parent="." unique_id=1776225068 node_paths=PackedStringArray("previous_node") instance=ExtResource("2_48m6i")]
+visible = false
+layout_mode = 1
+offset_left = -255.0
+offset_top = 164.0
+offset_right = -255.0
+offset_bottom = 164.0
+tech_node_stats = ExtResource("4_yloba")
+previous_node = NodePath("../Attack1Node")
+
+[node name="CritChance2Node" parent="." unique_id=1331020484 node_paths=PackedStringArray("previous_node") instance=ExtResource("2_48m6i")]
+visible = false
+layout_mode = 1
+offset_left = -255.0
+offset_top = -96.0
+offset_right = -255.0
+offset_bottom = -96.0
+tech_node_stats = ExtResource("8_1b1e2")
+previous_node = NodePath("../Attack2Node")
+
+[node name="CritDamage2Node" parent="." unique_id=2066284705 node_paths=PackedStringArray("previous_node") instance=ExtResource("2_48m6i")]
+visible = false
+layout_mode = 1
+offset_left = -255.0
+offset_top = -352.0
+offset_right = -255.0
+offset_bottom = -352.0
+tech_node_stats = ExtResource("7_pydx8")
+previous_node = NodePath("../CritChance2Node")
+
+[node name="GemStoneStationNode" parent="." unique_id=1302849726 node_paths=PackedStringArray("previous_node") instance=ExtResource("2_48m6i")]
+visible = false
+layout_mode = 1
+offset_left = 257.0
+offset_top = 164.0
+offset_right = 257.0
+offset_bottom = 164.0
+tech_node_stats = ExtResource("9_6ggqh")
+previous_node = NodePath("../Attack2Node")
+node_type = 1
+
+[node name="Tier1ChestDropRateNode" parent="." unique_id=1305696302 node_paths=PackedStringArray("previous_node") instance=ExtResource("2_48m6i")]
+visible = false
+layout_mode = 1
+offset_left = 257.0
+offset_top = -92.0
+offset_right = 257.0
+offset_bottom = -92.0
+tech_node_stats = ExtResource("10_if40r")
+previous_node = NodePath("../GemStoneStationNode")
+
+[node name="CoolDownReduction1Node" parent="." unique_id=986272277 node_paths=PackedStringArray("previous_node") instance=ExtResource("2_48m6i")]
+visible = false
+layout_mode = 1
+offset_left = 769.0
+offset_top = 164.0
+offset_right = 769.0
+offset_bottom = 164.0
+tech_node_stats = ExtResource("12_fuu40")
+previous_node = NodePath("../GemStoneStationNode")
+node_type = 1
+
+[node name="BreadthThreshold1" parent="." unique_id=1813302441 node_paths=PackedStringArray("previous_node") instance=ExtResource("2_48m6i")]
+visible = false
+layout_mode = 1
+offset_left = 768.0
+offset_top = -92.0
+offset_right = 768.0
+offset_bottom = -92.0
+tech_node_stats = ExtResource("14_h55wc")
+previous_node = NodePath("../CoolDownReduction1Node")
+node_type = 1
+
+[node name="LastBreadth1" parent="." unique_id=1933234706 node_paths=PackedStringArray("previous_node") instance=ExtResource("2_48m6i")]
+visible = false
+layout_mode = 1
+offset_left = 769.0
+offset_top = -348.0
+offset_right = 769.0
+offset_bottom = -348.0
+tech_node_stats = ExtResource("13_o18ej")
+previous_node = NodePath("../BreadthThreshold1")
+node_type = 1
+
+[node name="Tier1GemDropRateNode" parent="." unique_id=2103001769 node_paths=PackedStringArray("previous_node") instance=ExtResource("2_48m6i")]
+visible = false
+layout_mode = 1
+offset_left = 257.0
+offset_top = -348.0
+offset_right = 257.0
+offset_bottom = -348.0
+tech_node_stats = ExtResource("11_2vyru")
+previous_node = NodePath("../Tier1ChestDropRateNode")
+
+[node name="Attack3Node" parent="." unique_id=1548307285 node_paths=PackedStringArray("previous_node") instance=ExtResource("2_48m6i")]
+visible = false
+layout_mode = 1
+offset_left = 1281.0
+offset_top = 164.0
+offset_right = 1281.0
+offset_bottom = 164.0
+tech_node_stats = ExtResource("12_j8abv")
+previous_node = NodePath("../CoolDownReduction1Node")
+
+[node name="CritChance3Node" parent="." unique_id=832379411 node_paths=PackedStringArray("previous_node") instance=ExtResource("2_48m6i")]
+visible = false
+layout_mode = 1
+offset_left = 1281.0
+offset_top = -92.0
+offset_right = 1281.0
+offset_bottom = -92.0
+tech_node_stats = ExtResource("13_8fhfb")
+previous_node = NodePath("../Attack3Node")
+
+[node name="CritDamage3Node" parent="." unique_id=32963666 node_paths=PackedStringArray("previous_node") instance=ExtResource("2_48m6i")]
+visible = false
+layout_mode = 1
+offset_left = 1281.0
+offset_top = -348.0
+offset_right = 1281.0
+offset_bottom = -348.0
+tech_node_stats = ExtResource("14_yly43")
+previous_node = NodePath("../CritChance3Node")
+
+[node name="APGain1Node" parent="." unique_id=1688788045 node_paths=PackedStringArray("previous_node") instance=ExtResource("2_48m6i")]
+visible = false
+layout_mode = 1
+offset_left = 1793.0
+offset_top = 164.0
+offset_right = 1793.0
+offset_bottom = 164.0
+tech_node_stats = ExtResource("16_7hig2")
+previous_node = NodePath("../Attack3Node")
+
+[node name="XPGain1Node" parent="." unique_id=2011138375 node_paths=PackedStringArray("previous_node") instance=ExtResource("2_48m6i")]
+visible = false
+layout_mode = 1
+offset_left = 1793.0
+offset_top = -92.0
+offset_right = 1793.0
+offset_bottom = -92.0
+tech_node_stats = ExtResource("17_1ja4c")
+previous_node = NodePath("../APGain1Node")
+
+[node name="Attack4Node" parent="." unique_id=1480609517 node_paths=PackedStringArray("previous_node") instance=ExtResource("2_48m6i")]
+visible = false
+layout_mode = 1
+offset_left = 2305.0
+offset_top = 164.0
+offset_right = 2305.0
+offset_bottom = 164.0
+tech_node_stats = ExtResource("15_075h1")
+previous_node = NodePath("../APGain1Node")
+
+[node name="CritChance4Node" parent="." unique_id=1644990129 node_paths=PackedStringArray("previous_node") instance=ExtResource("2_48m6i")]
+visible = false
+layout_mode = 1
+offset_left = 2305.0
+offset_top = -92.0
+offset_right = 2305.0
+offset_bottom = -92.0
+tech_node_stats = ExtResource("16_8ljra")
+previous_node = NodePath("../Attack4Node")
+
+[node name="CritDamage4Node" parent="." unique_id=1282606469 node_paths=PackedStringArray("previous_node") instance=ExtResource("2_48m6i")]
+visible = false
+layout_mode = 1
+offset_left = 2305.0
+offset_top = -348.0
+offset_right = 2305.0
+offset_bottom = -348.0
+tech_node_stats = ExtResource("17_sasxp")
+previous_node = NodePath("../CritChance4Node")
+
+[node name="CoolDownRedutction2Node" parent="." unique_id=1902773978 node_paths=PackedStringArray("previous_node") instance=ExtResource("2_48m6i")]
+visible = false
+layout_mode = 1
+offset_left = 2818.0
+offset_top = 165.0
+offset_right = 2818.0
+offset_bottom = 165.0
+tech_node_stats = ExtResource("13_7r8q4")
+previous_node = NodePath("../Attack4Node")
+
+[node name="InstaKillChance1Node" parent="." unique_id=1206522786 node_paths=PackedStringArray("previous_node") instance=ExtResource("2_48m6i")]
+visible = false
+layout_mode = 1
+offset_left = 2817.0
+offset_top = -92.0
+offset_right = 2817.0
+offset_bottom = -92.0
+tech_node_stats = ExtResource("24_am8dd")
+previous_node = NodePath("../CoolDownRedutction2Node")
+
+[node name="InstaKill1Node" parent="." unique_id=1175612698 node_paths=PackedStringArray("previous_node") instance=ExtResource("2_48m6i")]
+visible = false
+layout_mode = 1
+offset_left = 2817.0
+offset_top = -348.0
+offset_right = 2817.0
+offset_bottom = -348.0
+tech_node_stats = ExtResource("23_fkw4e")
+previous_node = NodePath("../InstaKillChance1Node")
+
+[node name="APGain2Node" parent="." unique_id=329084207 node_paths=PackedStringArray("previous_node") instance=ExtResource("2_48m6i")]
+visible = false
+layout_mode = 1
+offset_left = 3329.0
+offset_top = 165.0
+offset_right = 3329.0
+offset_bottom = 165.0
+tech_node_stats = ExtResource("28_vfqyr")
+previous_node = NodePath("../CoolDownRedutction2Node")
+
+[node name="XPGain2Node" parent="." unique_id=327788432 node_paths=PackedStringArray("previous_node") instance=ExtResource("2_48m6i")]
+visible = false
+layout_mode = 1
+offset_left = 3327.0
+offset_top = -92.0
+offset_right = 3327.0
+offset_bottom = -92.0
+tech_node_stats = ExtResource("29_q5cat")
+previous_node = NodePath("../APGain2Node")
+
+[node name="BossDamage1" parent="." unique_id=718744698 node_paths=PackedStringArray("previous_node") instance=ExtResource("2_48m6i")]
+visible = false
+layout_mode = 1
+offset_left = 3841.0
+offset_top = 164.0
+offset_right = 3841.0
+offset_bottom = 164.0
+tech_node_stats = ExtResource("32_pkw47")
+previous_node = NodePath("../APGain2Node")

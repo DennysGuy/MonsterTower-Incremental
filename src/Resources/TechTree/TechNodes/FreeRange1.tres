@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://bpdjvl0vrhdpa"]
+
+[ext_resource type="Texture2D" uid="uid://dxhgw81hsq4o5" path="res://Assets/TechTree/CookingNodes/FreeRange_Disabled_Graphic.png" id="1_ead6d"]
+[ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_lywc0"]
+[ext_resource type="Texture2D" uid="uid://wmotvenkihvt" path="res://Assets/TechTree/CookingNodes/FreeRange_Graphic.png" id="2_fgemx"]
+
+[resource]
+script = ExtResource("1_lywc0")
+node_name = "Free Range 1"
+icon = ExtResource("2_fgemx")
+disabled_icon = ExtResource("1_ead6d")
+description = "Increase chance to dodge material consumption when cooking by 5%."
+max_level = 4
+currency_required = 800
+stat_relation = 4
+stat_name = "Free Range Chance"
+upgrade_interval = 0.05
+prereqs = Array[String](["Cooking Station:1"])
+metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

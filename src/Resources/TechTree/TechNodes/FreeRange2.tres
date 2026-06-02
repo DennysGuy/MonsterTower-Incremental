@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://i8atxfm76kuo"]
+
+[ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_8b63k"]
+[ext_resource type="Texture2D" uid="uid://doiw51hb8jy38" path="res://Assets/TechTree/SmeltingNodes/FreeRange_Disabled_Graphic.png" id="1_pbrl1"]
+[ext_resource type="Texture2D" uid="uid://coclpgja3vbjn" path="res://Assets/TechTree/SmeltingNodes/FreeRange_Graphic.png" id="2_13m5k"]
+[ext_resource type="Resource" uid="uid://d1pg7dveofnwm" path="res://src/Resources/Dishes/Svio.tres" id="3_13m5k"]
+
+[resource]
+script = ExtResource("1_8b63k")
+node_name = "Free Range 2"
+icon = ExtResource("2_13m5k")
+disabled_icon = ExtResource("1_pbrl1")
+description = "Increase chance to dodge material consumption when cooking by 5%."
+currency_required = 1800
+materials_required = Array[Dictionary]([{
+ExtResource("3_13m5k"): 1
+}])
+stat_relation = 4
+stat_name = "Free Range Chance"
+upgrade_interval = 0.05
+prereqs = Array[String](["Critical Cooking 2:1"])
+metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"
