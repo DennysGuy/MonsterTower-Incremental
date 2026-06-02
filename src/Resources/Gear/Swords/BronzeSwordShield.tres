@@ -15,6 +15,7 @@
 script = ExtResource("1_4yxsx")
 sword_name = "Bronze Sword and Shield"
 index = 5
+description = "Crafted from durable bronze and razor-sharp Batclopse claws, this reliable sword-and-shield combo is the perfect starting kit for ambitious new heroes! It delivers a solid attack power and steady weapon speed to keep you swinging, plus a handy defense bonus to keep you safe. Step into the tower with confidence—your hunter journey starts here!"
 attack_bonus = 50.0
 defense_bonus = 10.0
 attack_speed = 0.6

@@ -15,6 +15,9 @@
 script = ExtResource("1_ktk7b")
 sword_name = "Lurker's Rapier"
 index = 4
+description = "Forged from tempered steel bars, razor blades plundered from goblins, and the purified chests of Serpent Mimics! This lethal masterpiece is engineered for hasty, single target combat . It combines brutal goblin sharpness with the erratic, snapping reflexes of a mimic to pierce right through your foe's vital spots. Although, with its ability for high powered output, you are left vulnerable to high damage. One might say - a glass canon's dream. 
+
+Great for targeting stronger foes of the tower!"
 attack_bonus = 10.0
 defense_bonus = -10.0
 attack_speed = 0.5

@@ -2,20 +2,18 @@
 
 [ext_resource type="Resource" uid="uid://y4kiqe4pi2v5" path="res://src/Resources/CraftingResources/IronBar.tres" id="1_wrbr1"]
 [ext_resource type="Script" uid="uid://cljygiasf4103" path="res://src/Scripts/Facilities/crafting_recipe.gd" id="1_ybfts"]
-[ext_resource type="Resource" uid="uid://d4k5o7mbmw8yw" path="res://src/Resources/Actors/Enemies/Biome1/Batclopse/BatclopseClaw.tres" id="2_at0va"]
 [ext_resource type="Resource" uid="uid://bwfenpkm4dc0g" path="res://src/Resources/Actors/Enemies/Biome1/BeetleKnight/BeetleClaw.tres" id="3_a5vpq"]
 
 [resource]
 script = ExtResource("1_ybfts")
 recipe_name = "Iron Broad Sword"
 index = 3
+description = "Crafted from iron bars and razor-sharp Beetle Knight claws, this weighty weapon is built for true Hunters. While its slow attack speed requires precise timing, it rewards you with the incredible ability to whack multiple enemies at once! Master its momentum to clear out massive mobs efficiently and conquer the tower's toughest crowds."
 recipe_tier = 1
 recipe_type = 2
 recipe_list = Array[Dictionary]([{
-ExtResource("1_wrbr1"): 2
+ExtResource("1_wrbr1"): 4
 }, {
-ExtResource("2_at0va"): 2
-}, {
-ExtResource("3_a5vpq"): 2
+ExtResource("3_a5vpq"): 4
 }])
 metadata/_custom_type_script = "uid://cljygiasf4103"
