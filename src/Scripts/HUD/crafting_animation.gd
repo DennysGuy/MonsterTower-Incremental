@@ -3,10 +3,14 @@ class_name CraftingAnimation extends Control
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var sword: Sprite2D = $Control/Sword
 @onready var player_outfit: Sprite2D = $Control/PlayerOutfit
+@onready var notice: Label = $Control/Notice
 
+
+@onready var player_smithing_animation: Sprite2D = $Control/PlayerSmithingAnimation
+const PLAYER_CRAFTING_IDLE = preload("uid://w1vqy8w4jgbs")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	notice.text = ""
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -30,10 +34,12 @@ func play_smithing_sequence() -> void:
 	queue_free()
 
 func play_equipped_sequence() -> void:
-	equip_sword()
+	MusicPlayer.pause_music()
+	player_smithing_animation.texture = PLAYER_CRAFTING_IDLE
 	play_swoop_in()
-	animation_player.play("SwoopIn")
+	animation_player.play("SwoopIn_2")
 	await get_tree().create_timer(1.0).timeout
+	equip_sword()
 	animation_player.play("SwordEquipped")
 	await get_tree().create_timer(3.0).timeout
 	play_swoop_in()
@@ -41,6 +47,7 @@ func play_equipped_sequence() -> void:
 	await get_tree().create_timer(0.3).timeout
 	MusicPlayer.unpause_music()
 	await get_tree().create_timer(0.1).timeout
+
 	queue_free()
 
 func play_class_upgrade_sequence() -> void:

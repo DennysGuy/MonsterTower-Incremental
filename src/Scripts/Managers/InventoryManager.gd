@@ -356,6 +356,9 @@ func clear_grid_container(grid_container : GridContainer) -> void:
 		child.queue_free()
 
 func calculate_quantity(recipe: CraftingRecipe) -> int:
+	if !recipe:
+		return 0
+		
 	var viable_amount := INF
 	
 	for craft_material in recipe.recipe_list:

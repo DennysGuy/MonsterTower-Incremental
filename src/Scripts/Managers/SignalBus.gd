@@ -159,4 +159,12 @@ signal go_to_outro_screen
 @warning_ignore("unused_signal")
 signal populate_weapon_description_panel(weapon : Sword)
 
+@warning_ignore("unused_signal")
 signal update_to_new_class_outfit
+
+@warning_ignore("unused_signal")
+signal disable_tracked_icon(index : int)
+@warning_ignore("unused_signal")
+signal show_tracked_icon(index : int)
+@warning_ignore("unused_signal")
+signal update_held_weapon(weapon : Sword)
