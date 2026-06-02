@@ -59,16 +59,19 @@ func _on_action_button_button_up() -> void:
 
 func craft_sequence() -> void:
 	SaveManager.save_weapon_unlocked_status(stored_weapon.index, true)
-	SaveManager.save_weapon_unlocked_status(stored_weapon.index, false)
+	SaveManager.save_weapon_tracked_status(stored_weapon.index, false)
 	#Play crafting animation which then leads to the equipped animation
 	equip_weapon()
+	spawn_crafting_sequence()
 	select_weapon(stored_weapon)
+	
 
 func equip_weapon() -> void:
 	PlayerStats.player_stats["Equipped Sword"] = stored_weapon.index
 	SaveManager.save_player_stats()
 	#Play Sword Equip Animation Here
 	SignalBus.update_sword_texture.emit("Idle")
+	spawn_equipped_sequence()
 
 func track_weapon_recipe() -> void:
 	PlayerStats.set_tracked_weapon_index(stored_weapon.index) 
@@ -189,3 +192,15 @@ func play_sfx(sound: AudioStream, volume: float = 0.0):
 	add_child(player)
 	player.play()
 	player.finished.connect(player.queue_free)
+
+
+func spawn_crafting_sequence() -> void:
+	var crafting_animation : CraftingAnimation = preload("uid://2bfb4gmhtb7").instantiate()
+	add_child(crafting_animation)
+	crafting_animation.play_smithing_sequence()
+	
+
+func spawn_equipped_sequence() -> void:
+	var equip_animation : CraftingAnimation = preload("uid://2bfb4gmhtb7").instantiate()
+	add_child(equip_animation)
+	equip_animation.play_equipped_sequence()

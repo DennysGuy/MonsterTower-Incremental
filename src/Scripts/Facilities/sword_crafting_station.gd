@@ -24,8 +24,11 @@ func notify_can_craft() -> void:
 
 func populate_resource_needed_list() -> void:
 	var tracked_index : int = PlayerStats.player_stats["Tracked Weapon"]
-	if PlayerStats.get_sword(tracked_index):
-		var next_sword_recipe : CraftingRecipe = PlayerStats.get_next_sword().recipe
+	if tracked_index == 2 and PlayerStats.player_stats["Class"] == "Junior Hunter":
+		return
+	
+	if tracked_index > 2 and PlayerStats.get_sword(tracked_index):
+		var next_sword_recipe : CraftingRecipe = PlayerStats.get_sword(PlayerStats.player_stats["Tracked Weapon"]).recipe
 		InventoryManager.clear_grid_container(resource_list)
 		for item_dict in next_sword_recipe.recipe_list:
 			for item in item_dict.keys():
