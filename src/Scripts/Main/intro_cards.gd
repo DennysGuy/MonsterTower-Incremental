@@ -8,12 +8,14 @@ class_name IntroCards extends Control
 var card_count : int = 0
 
 @onready var card_animations : Array[String]= ["text1","text2","text3","text4","text5","text6","text7","text8"]
-const TEMP_INTRO_CARD_THEME = preload("uid://b7713s1mcbkry")
 
 
+const INTRODUCTION_THEME_TEMP = preload("uid://dbrvuid1nhetp")
+
+ 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	MusicPlayer.play_song(TEMP_INTRO_CARD_THEME)
+	MusicPlayer.play_song(INTRODUCTION_THEME_TEMP)
 	await get_tree().create_timer(1.0).timeout
 	play_animation(0)
 

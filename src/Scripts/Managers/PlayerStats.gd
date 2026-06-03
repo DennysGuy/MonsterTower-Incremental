@@ -49,7 +49,7 @@ const KNOCKBACK_FORCE : int = 100
 	"Stun Stacks": 1.0,
 	"Dash Speed" : 350.0,
 	"Dash Cooldown" : 2.0,
-	"Dash Duration" : 0.3,
+	"Dash Duration" : 0.2,
 	"Invincibility Duration": 2.5,
 	"Jump Height" : 270.0,
 	"Double Jump Height": 540.0,

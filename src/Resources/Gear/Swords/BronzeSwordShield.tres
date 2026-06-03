@@ -15,12 +15,15 @@
 script = ExtResource("1_4yxsx")
 sword_name = "Bronze Sword and Shield"
 index = 5
-description = "Crafted from durable bronze and razor-sharp Batclopse claws, this reliable sword-and-shield combo is the perfect starting kit for ambitious new heroes! It delivers a solid attack power and steady weapon speed to keep you swinging, plus a handy defense bonus to keep you safe. Step into the tower with confidence—your hunter journey starts here!"
+description = "This reliable sword-and-shield combo is the perfect starting kit for ambitious new heroes! 
+
+It delivers a solid attack power and steady weapon speed to keep you swinging, plus a handy defense bonus to keep you safe."
 attack_bonus = 50.0
 defense_bonus = 10.0
 attack_speed = 0.6
 crit_bonus = 0.1
 crit_damage_bonus = 0.1
+gem_stone_socket_count = 4
 recipe = ExtResource("6_8gnwt")
 graphic = ExtResource("2_r66es")
 mold_graphic = ExtResource("5_8gnwt")
