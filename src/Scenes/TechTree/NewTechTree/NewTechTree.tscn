@@ -100,6 +100,7 @@ grow_horizontal = 2
 theme_override_constants/separation = 30
 
 [node name="CombatPageButton" type="Button" parent="TechTreeButtonsHBox" unique_id=507044323]
+visible = false
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0.990949, 0.40124372, 0.45694304, 1)
@@ -122,6 +123,7 @@ texture = ExtResource("9_4khty")
 expand_mode = 1
 
 [node name="SurvivalPageButton" type="Button" parent="TechTreeButtonsHBox" unique_id=193700924]
+visible = false
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0, 0.8750814, 0.8750814, 1)
@@ -144,6 +146,7 @@ texture = ExtResource("9_4khty")
 expand_mode = 1
 
 [node name="TraversalPageButton" type="Button" parent="TechTreeButtonsHBox" unique_id=1490222585]
+visible = false
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0, 0.9562344, 0.47072762, 1)
@@ -166,6 +169,7 @@ texture = ExtResource("9_4khty")
 expand_mode = 1
 
 [node name="InventoryPageButton" type="Button" parent="TechTreeButtonsHBox" unique_id=957454195]
+visible = false
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0.9999996, 0.86253643, 0.4670965, 1)
@@ -188,6 +192,7 @@ texture = ExtResource("9_4khty")
 expand_mode = 1
 
 [node name="CookingPageButton" type="Button" parent="TechTreeButtonsHBox" unique_id=145660522]
+visible = false
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0.56774014, 0.2835156, 0.15171379, 1)
@@ -210,6 +215,7 @@ texture = ExtResource("9_4khty")
 expand_mode = 1
 
 [node name="CraftingPageButton" type="Button" parent="TechTreeButtonsHBox" unique_id=1497180615]
+visible = false
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0.8490402, 0.26272827, 0.82052237, 1)
