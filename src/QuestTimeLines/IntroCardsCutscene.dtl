@@ -1,0 +1,25 @@
+[wait time="2.0"]
+Narrator: Millennia ago, a strange colossal structure appeared in a remote area of the realm of Velmoria.
+do CutsceneManager.trigger_next_frame()
+[wait time="2.0" skippable="true"]
+Narrator: As centuries turned to millennia, the structure became one of the greatest mysteries the world had ever known. Its origins remained unknown, and its secrets drew countless souls from across the realm.
+Narrator: Some regarded it with fear, believing it to be the work of gods. Others were consumed by curiosity, drawn by its enigmatic nature - the possibility of secrets to beheld within.
+do CutsceneManager.trigger_next_frame()
+[wait time="2.0" skippable="true"]
+Narrator: In time, the structure was revealed to be a TOWER, a colossal labyrinth whose floors held both deadly monsters and untold riches.
+Narrator: The structure stretched impossibly high into the heavens, its peak disappearing among the stars. In time, it came to be known as the Starspire.
+do CutsceneManager.trigger_next_frame()
+[wait time="2.0" skippable="true"]
+Narrator: Many who ventured into the Tower were never seen again. Yet those who survived returned with riches beyond imagining.
+do CutsceneManager.trigger_next_frame()
+[wait time="2.0" skippable="true"]
+Narrator: As more adventurers sought the Tower's riches, the Starspire Hunters Guild was founded to oversee expeditions and reduce casualties.
+Narrator: Soon after, a town was established on a nearby island. The settlement was named Starspire after the Tower that loomed over it, and it quickly became a hub for adventurers from across the world.
+do CutsceneManager.trigger_next_frame()
+[wait time="2.0" skippable="true"]
+Narrator: As more adventurers climbed the Tower and became seasoned Hunters, none have ever reached beyond the sixth floor, where a massive sealed door bars all passage.
+do CutsceneManager.trigger_next_frame()
+[wait time="2.0" skippable="true"]
+Narrator: Your Hunter’s Exam begins today. Become a Starspire Hunter, conquer the Tower, uncover its secrets, and claim your fortune!
+do CutsceneManager.trigger_next_frame()
+[wait time="2.0"]

@@ -32,14 +32,6 @@ position = Vector2(3, 24)
 
 [node name="HUD" parent="." unique_id=129498783 instance=ExtResource("2_sdqde")]
 
-[node name="TopBlackBar" parent="HUD/PlayerHUD" parent_id_path=PackedInt32Array(129498783, 104251794) index="31" unique_id=877174551]
-offset_top = -185.0
-offset_bottom = -185.0
-
-[node name="BotBlackBar" parent="HUD/PlayerHUD" parent_id_path=PackedInt32Array(129498783, 104251794) index="32" unique_id=1251153564]
-offset_top = 175.0
-offset_bottom = 175.00049
-
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=615410511]
 visible = false
 

@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="DialogicStyle" format=3 uid="uid://bgmuy0nmnhond"]
+
+[ext_resource type="Script" uid="uid://bwg6yncmh2cml" path="res://addons/dialogic/Resources/dialogic_style_layer.gd" id="1_vyntf"]
+[ext_resource type="PackedScene" uid="uid://bquja8jyk8kbr" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Textbox/vn_textbox_layer.tscn" id="2_2ws01"]
+[ext_resource type="Script" uid="uid://dv08k6ljua6fm" path="res://addons/dialogic/Resources/dialogic_style.gd" id="2_iw7v4"]
+
+[sub_resource type="Resource" id="Resource_2ws01"]
+script = ExtResource("1_vyntf")
+overrides = {
+"global_bg_color": "Color(0, 0, 0, 0.18431373)",
+"global_font_size": "24.0"
+}
+
+[sub_resource type="Resource" id="Resource_n12qm"]
+script = ExtResource("1_vyntf")
+scene = ExtResource("2_2ws01")
+overrides = {
+"box_color_custom": "Color(0, 0, 0, 0)",
+"box_color_use_global": "false",
+"box_size": "Vector2(1800, 120)",
+"name_label_custom_color": "Color(1, 1, 1, 0)",
+"name_label_font": "\"res://Assets/Fonts/FredokaOne-Regular.ttf\"",
+"name_label_use_global_color": "false",
+"name_label_use_global_font": "false",
+"normal_font": "\"res://Assets/Fonts/FredokaOne-Regular.ttf\"",
+"text_size": "32.0",
+"text_use_global_size": "false",
+"typing_sounds_sounds_folder": "\"res://src/QuestTimeLines/Bleep1\""
+}
+
+[resource]
+script = ExtResource("2_iw7v4")
+name = "CutsceneStyle"
+layer_list = Array[String](["10"])
+layer_info = {
+"": SubResource("Resource_2ws01"),
+"10": SubResource("Resource_n12qm")
+}
+metadata/_latest_layer = "10"

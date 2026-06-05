@@ -45,23 +45,60 @@ QuestManager="*uid://cdvn4cejkl7a6"
 Dialogic="*uid://ds2q0uclmolvu"
 CodexManager="*uid://bwmhpqxq6sj2r"
 SettingsManager="*uid://1of7lkddo2wr"
+CutsceneManager="*uid://b4qmgkkqv4wqj"
 
 [dialogic]
 
 directories/dch_directory={
+"Narrator": "res://src/QuestTimeLines/TextboxStyles/Narrator.dch",
 "TestCharacter": "res://src/QuestTimeLines/Characters/TestCharacter.dch"
 }
 directories/dtl_directory={
+"IntroCardsCutscene": "res://src/QuestTimeLines/IntroCardsCutscene.dtl",
 "TestTimeline": "res://src/QuestTimeLines/TestTimeline.dtl"
 }
 layout/style_directory={
 "": "res://src/QuestTimeLines/TextboxStyles/BaseStyle.tres",
-"BaseStyle": "res://src/QuestTimeLines/TextboxStyles/BaseStyle.tres"
+"BaseStyle": "res://src/QuestTimeLines/TextboxStyles/BaseStyle.tres",
+"CutsceneStyle": "res://src/QuestTimeLines/TextboxStyles/CutsceneStyle.tres"
 }
 glossary/default_case_sensitive=true
-layout/style_list=["res://src/QuestTimeLines/TextboxStyles/BaseStyle.tres"]
+layout/style_list=["res://src/QuestTimeLines/TextboxStyles/BaseStyle.tres", "res://src/QuestTimeLines/TextboxStyles/CutsceneStyle.tres"]
 layout/default_style="res://src/QuestTimeLines/TextboxStyles/BaseStyle.tres"
 variables={}
+extensions_folder="res://addons/dialogic_additions"
+text/letter_speed=0.03
+text/initial_text_reveal_skippable=true
+text/text_reveal_skip_delay=0.1
+text/advance_delay=0.1
+text/autoadvance_per_character_delay=0.1
+text/autoadvance_ignored_characters_enabled=true
+animations/join_default_length=0.5
+animations/join_default_wait=true
+animations/leave_default_length=0.5
+animations/leave_default_wait=true
+animations/cross_fade_default_length=0.5
+choices/autofocus_first=true
+choices/delay=0.2
+choices/reveal_delay=0
+choices/reveal_by_input=false
+save/autosave_delay=60.0
+save/encryption_on_exports_only=true
+text/autopauses={}
+audio/channel_defaults={
+"": {
+"audio_bus": "",
+"fade_length": 0.0,
+"loop": false,
+"volume": 0.0
+},
+"music": {
+"audio_bus": "",
+"fade_length": 0.0,
+"loop": true,
+"volume": 0.0
+}
+}
 
 [display]
 

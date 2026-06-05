@@ -6,8 +6,19 @@
 &"custom_info": {
 "prefix": "",
 "sound_mood_default": "",
-"sound_moods": {},
-"style": "",
+"sound_moods": {
+"Normal": {
+"mode": 0,
+"name": "Normal",
+"pitch_base": 1.0,
+"pitch_variance": -0.5,
+"skip_characters": 1.0,
+"sound_path": "res://Audio/SFX/bleep001.wav",
+"volume_base": 1.0,
+"volume_variance": 0.1
+}
+},
+"style": "CutsceneStyle",
 "suffix": ""
 },
 &"default_portrait": "",

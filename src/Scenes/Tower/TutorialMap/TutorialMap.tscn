@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://600rhhvqgcep" path="res://src/Scripts/Tower/tutorial_map.gd" id="1_tymde"]
 [ext_resource type="AudioStream" uid="uid://0nrbfbgv25o0" path="res://Audio/Music/IntroStageThemeTest.wav" id="2_7kbtj"]
 [ext_resource type="Texture2D" uid="uid://bodyhalxjbpk6" path="res://Assets/EnvironmentalAssets/TutorialMap.png" id="2_760pt"]
-[ext_resource type="Texture2D" uid="uid://m1hch071kuxp" path="res://Assets/EnvironmentalAssets/Ship.png" id="2_ydw26"]
+[ext_resource type="Texture2D" uid="uid://dyxt1peu58oe3" path="res://Assets/NewShip.png" id="3_7kbtj"]
 [ext_resource type="Texture2D" uid="uid://d0bjvovwo3hm4" path="res://Assets/EnvironmentalAssets/PalmTree.png" id="3_o6iow"]
 [ext_resource type="Texture2D" uid="uid://y80fw7n3ai66" path="res://Assets/Facilities/TempTower.png" id="4_sdyju"]
 [ext_resource type="PackedScene" uid="uid://c8ov03gkkda4k" path="res://src/Scenes/PlayerCamera.tscn" id="5_csukg"]
@@ -16,6 +16,7 @@
 [ext_resource type="Script" uid="uid://cbjktr12qagl" path="res://src/Scripts/Enemies/enemy_stats.gd" id="14_ye63i"]
 [ext_resource type="PackedScene" uid="uid://crvhogk2bnq1s" path="res://src/Scenes/NewStarshire/TowerGuideSprite.tscn" id="15_ytsg0"]
 [ext_resource type="PackedScene" uid="uid://dkxkwr4us4aak" path="res://src/Scenes/NewStarshire/Facilities/TechTreeComputer.tscn" id="16_cqx2w"]
+[ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="18_ye63i"]
 [ext_resource type="PackedScene" uid="uid://c6tv3t1cpeq8f" path="res://src/Scenes/PlayerSpawnPoint.tscn" id="18_ys33i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8adlh"]
@@ -379,6 +380,57 @@ sources/0 = SubResource("TileSetAtlasSource_ixulx")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p0sy1"]
 size = Vector2(22, 111)
 
+[sub_resource type="Animation" id="Animation_7kbtj"]
+resource_name = "Boat_In"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-699, 158), Vector2(-264, 158)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"issue_cross_fade"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_ys33i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-699, 158)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ys33i"]
+_data = {
+&"Boat_In": SubResource("Animation_7kbtj"),
+&"RESET": SubResource("Animation_ys33i")
+}
+
 [sub_resource type="Resource" id="Resource_jwogi"]
 script = ExtResource("14_ye63i")
 enemy_name = "Corrupted Mushie"
@@ -400,11 +452,13 @@ size = Vector2(388, 295)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cqx2w"]
 size = Vector2(20, 362)
 
-[node name="TutorialMap" type="Node2D" unique_id=1194992242 node_paths=PackedStringArray("camera")]
+[node name="TutorialMap" type="Node2D" unique_id=1194992242 node_paths=PackedStringArray("camera", "sfx_player")]
 script = ExtResource("1_tymde")
 map_name = "Billy's Bootcamp "
 map_theme_song = ExtResource("2_7kbtj")
+player_spawn = false
 camera = NodePath("PlayerCamera")
+sfx_player = NodePath("SfxPlayer")
 
 [node name="ColorRect3" type="ColorRect" parent="." unique_id=724942982]
 offset_left = -10.0
@@ -421,14 +475,14 @@ offset_bottom = 512.0
 color = Color(3.465414e-06, 0.5417881, 0.7602544, 1)
 
 [node name="Ship" type="Sprite2D" parent="." unique_id=1064051669]
-position = Vector2(54, 404)
-texture = ExtResource("2_ydw26")
+position = Vector2(-699, 158)
+texture = ExtResource("3_7kbtj")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=18262837]
 offset_left = -11.0
 offset_top = 473.0
 offset_right = 176.0
-offset_bottom = 512.0
+offset_bottom = 524.0
 color = Color(0.23308343, 0.74218106, 0.99999994, 1)
 
 [node name="PalmTree" type="Sprite2D" parent="." unique_id=858419459]
@@ -593,6 +647,10 @@ text = "(By accepting your pass, you agree
 that Tower Guide Inc. is not responsible for any injuries, 
 death, or loss of livelyhood in any stances. Thank you for your business!"
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=717139021]
+root_node = NodePath("../Ship")
+libraries/ = SubResource("AnimationLibrary_ys33i")
+
 [node name="CorruptedMushie" parent="." unique_id=402964543 node_paths=PackedStringArray("drop_scene") instance=ExtResource("10_ytsg0")]
 position = Vector2(1337, 448)
 enemy_stats = SubResource("Resource_jwogi")
@@ -645,6 +703,8 @@ position = Vector2(1651, 448)
 
 [node name="PlayerSpawnPoint" parent="." unique_id=1517225239 instance=ExtResource("18_ys33i")]
 position = Vector2(126, 447)
+
+[node name="SfxPlayer" parent="." unique_id=869566729 instance=ExtResource("18_ye63i")]
 
 [connection signal="body_entered" from="TowerEntranceArea" to="." method="_on_tower_entrance_area_body_entered"]
 [connection signal="body_exited" from="TowerEntranceArea" to="." method="_on_tower_entrance_area_body_exited"]

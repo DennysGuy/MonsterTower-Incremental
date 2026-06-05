@@ -67,6 +67,7 @@ func _ready() -> void:
 	PlayerHudSignalBus.issue_big_notification.connect(issue_big_notification)
 	PlayerHudSignalBus.hide_big_notification.connect(hide_big_notification_label)
 	PlayerHudSignalBus.play_close_out_animation.connect(play_close_out_animation)
+	PlayerHudSignalBus.trigger_cross_fade.connect(trigger_cross_fade)
 	
 	PlayerHudSignalBus.update_kill_quota_text.connect(update_kill_quota_text)
 	PlayerHudSignalBus.update_monsters_left.connect(remaining_monsters)
@@ -163,6 +164,9 @@ func toggle_codex_on() -> void:
 
 func toggle_codex_off() -> void:
 	close_codex()
+
+func trigger_cross_fade() -> void:
+	animation_player.play("CrossFade")
 
 func show_codex_message() -> void:
 	play_sfx(QUEST_COMPLETED)

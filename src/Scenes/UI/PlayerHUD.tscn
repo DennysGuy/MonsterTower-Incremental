@@ -111,6 +111,45 @@ tracks/2/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_118cf"]
+resource_name = "CrossFade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerHUD/BotBlackBar:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 1080)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerHUD/TopBlackBar:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -1080)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerHUD/BlackFlash:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_hl0sk"]
 resource_name = "FadeInOut"
 tracks/0/type = "value"
@@ -251,6 +290,18 @@ tracks/6/keys = {
 "update": 1,
 "values": ["Hunt Challenge!"]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("PlayerHUD/BlackFlash:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_6ndbt"]
 resource_name = "StartHuntChallenge"
@@ -313,6 +364,7 @@ tracks/3/keys = {
 _data = {
 &"CloseIn": SubResource("Animation_g1bs5"),
 &"CloseOut": SubResource("Animation_m8qo1"),
+&"CrossFade": SubResource("Animation_118cf"),
 &"FadeInOut": SubResource("Animation_hl0sk"),
 &"Flash": SubResource("Animation_bsjhc"),
 &"RESET": SubResource("Animation_nt012"),
@@ -949,6 +1001,17 @@ layout_mode = 1
 offset_left = -1834.0
 offset_right = -1834.0
 
+[node name="BlackFlash" type="ColorRect" parent="PlayerHUD" unique_id=2118453460]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
 [node name="TopBlackBar" type="ColorRect" parent="PlayerHUD" unique_id=877174551]
 layout_mode = 1
 anchors_preset = 15
@@ -967,7 +1030,7 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 175.0
-offset_bottom = 175.0
+offset_bottom = 175.00024
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2

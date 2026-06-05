@@ -13,6 +13,9 @@ signal spawn_respawn_box
 signal flash_screen
 
 @warning_ignore("unused_signal")
+signal trigger_cross_fade
+
+@warning_ignore("unused_signal")
 signal populate_pick_notification_panel
 
 @warning_ignore("unused_signal")

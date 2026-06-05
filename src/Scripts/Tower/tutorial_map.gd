@@ -2,9 +2,11 @@ class_name TutorialMap extends Map
 
 @onready var guid_log: Label = $GuidLog
 var can_enter_tower : bool = false
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 @onready var sub_viewport: SubViewport = $CanvasLayer/SubViewportContainer/SubViewport
 @onready var canvas_layer: CanvasLayer = $CanvasLayer
+const BOAT_HORN = preload("uid://bt5y3hqi7vb37")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -14,6 +16,8 @@ func _ready() -> void:
 	#SignalBus.hide_tech_tree_canvas_layer.connect(hide_tech_tree_canvas_layer)
 	GameManager.player_can_move = true
 	PlayerHudSignalBus.update_map_name_label.emit(map_name)
+	animation_player.play("Boat_In")
+	sfx_player.play_sfx(BOAT_HORN)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -53,3 +57,10 @@ func add_tech_tree_to_scene() -> void:
 	GameManager.can_open_bag = false
 	player.velocity = Vector2.ZERO
 	PlayerHudSignalBus.spawn_tech_tree.emit()
+
+
+func issue_cross_fade() -> void:
+	PlayerHudSignalBus.trigger_cross_fade.emit()
+	await get_tree().create_timer(0.5).timeout
+	await spawn_player()
+	camera.player = get_tree().get_first_node_in_group("Player")
