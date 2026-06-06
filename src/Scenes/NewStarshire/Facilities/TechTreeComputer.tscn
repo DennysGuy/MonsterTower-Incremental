@@ -48,6 +48,7 @@ position = Vector2(-8, 4)
 shape = SubResource("RectangleShape2D_lddpm")
 
 [node name="PressE" type="Label" parent="." unique_id=712583370]
+visible = false
 z_index = 4096
 offset_left = -98.0
 offset_top = -83.0

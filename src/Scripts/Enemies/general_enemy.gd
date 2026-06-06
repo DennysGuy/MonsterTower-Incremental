@@ -8,6 +8,7 @@ var can_chase : bool = false
 
 func _ready() -> void:
 	super()
+	print(global_position)
 
 func _on_health_component_update_health_bar() -> void:
 	update_health_bar()

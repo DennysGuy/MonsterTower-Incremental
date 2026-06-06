@@ -7,36 +7,35 @@ var can_enter_tower : bool = false
 @onready var sub_viewport: SubViewport = $CanvasLayer/SubViewportContainer/SubViewport
 @onready var canvas_layer: CanvasLayer = $CanvasLayer
 const BOAT_HORN = preload("uid://bt5y3hqi7vb37")
-
+const ENTER_TOWER_FIRST_TIME_SCENE = preload("uid://gjjq2iyol2am")
+const TUTORIAL_LICENSE_NOT_ACQUIRED = preload("uid://ctit5lunlhp2n")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super()
 	#hud.animation_player.play("CloseIn")
 	SignalBus.spawn_tech_tree.connect(add_tech_tree_to_scene)
+	CutsceneManager.go_to_first_floor.connect(go_to_first_floor)
+	
 	#SignalBus.hide_tech_tree_canvas_layer.connect(hide_tech_tree_canvas_layer)
 	GameManager.player_can_move = true
 	PlayerHudSignalBus.update_map_name_label.emit(map_name)
 	animation_player.play("Boat_In")
 	sfx_player.play_sfx(BOAT_HORN)
+	SignalBus.spawn_enemies.emit()
+	SignalBus.start_enemy_spawn.emit()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("interact") and can_enter_tower and PlayerStats.facilities_unlocked["Hunter License"]:
-		go_to_first_floor()
-
+	if Input.is_action_just_pressed("interact") and can_enter_tower:
+		if PlayerStats.facilities_unlocked["Hunter License"]:
+			Dialogic.start(ENTER_TOWER_FIRST_TIME_SCENE)
+		else:
+			Dialogic.start(TUTORIAL_LICENSE_NOT_ACQUIRED)
+	
 
 func _on_tower_entrance_area_body_entered(body: Node2D) -> void:
 	if body is Player:
 		guid_log.show()
-		if PlayerStats.facilities_unlocked["Hunter License"]:
-			guid_log.text = "Congratulations. You've Completed
-	The Tower Boot Camp. You are officially a Starspire Hunter.
-
-	Press 'E' to Enter The First Floor.
-
-	Good Luck!"
-		else:
-			guid_log.text = "Please acquire your Hunter License from the PC to enter the tower!"
 		can_enter_tower = true
 
 func _on_tower_entrance_area_body_exited(body: Node2D) -> void:

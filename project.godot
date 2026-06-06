@@ -51,11 +51,14 @@ CutsceneManager="*uid://b4qmgkkqv4wqj"
 
 directories/dch_directory={
 "Narrator": "res://src/QuestTimeLines/TextboxStyles/Narrator.dch",
-"TestCharacter": "res://src/QuestTimeLines/Characters/TestCharacter.dch"
+"TestCharacter": "res://src/QuestTimeLines/Characters/TestCharacter.dch",
+"TowerGuide": "res://src/QuestTimeLines/Characters/TowerGuide.dch"
 }
 directories/dtl_directory={
+"EnterTowerFirstTimeScene": "res://src/QuestTimeLines/IntroScenes/EnterTowerFirstTimeScene.dtl",
 "IntroCardsCutscene": "res://src/QuestTimeLines/IntroCardsCutscene.dtl",
-"TestTimeline": "res://src/QuestTimeLines/TestTimeline.dtl"
+"TestTimeline": "res://src/QuestTimeLines/TestTimeline.dtl",
+"TutorialLicenseNotAcquired": "res://src/QuestTimeLines/IntroScenes/TutorialLicenseNotAcquired.dtl"
 }
 layout/style_directory={
 "": "res://src/QuestTimeLines/TextboxStyles/BaseStyle.tres",

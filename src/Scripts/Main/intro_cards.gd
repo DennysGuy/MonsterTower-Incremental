@@ -15,6 +15,8 @@ const _6 = preload("uid://ciqgtvdptk4t1")
 const _7 = preload("uid://5wqt78qs6x77")
 const _1 = preload("uid://17uguyc6phmr")
 
+
+
 @onready var pictures : Array[Texture2D]= [_1,_2,_3,_4,_5,_6,_7]
 var current_frame : int = 0
 
@@ -37,6 +39,8 @@ func go_to_tutorial() -> void:
 	get_tree().change_scene_to_file("uid://dydvk8wswlc3l")
 
 func next_image() -> void:
+	await get_tree().process_frame
+	
 	current_frame += 1
 	if current_frame <= pictures.size()-1:
 		graphic.texture = pictures[current_frame]

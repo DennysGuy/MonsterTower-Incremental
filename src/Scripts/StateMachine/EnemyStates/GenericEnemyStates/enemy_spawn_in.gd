@@ -3,6 +3,7 @@ class_name EnemySpawnIn extends State
 @export var idle_state : State
 
 func enter() -> void:
+	print("IVE SPAWNED!")
 	parent.animation_player.play("SpawnIn")
 	parent.disable_hurt_box()
 	parent.disable_hit_box()

@@ -6,11 +6,8 @@
 [ext_resource type="TileSet" uid="uid://b74l1awtkdty5" path="res://src/Scenes/NewStarshire/TempWallTiles.tres" id="3_oik5f"]
 [ext_resource type="Texture2D" uid="uid://m1hch071kuxp" path="res://Assets/EnvironmentalAssets/Ship.png" id="3_te0bi"]
 [ext_resource type="PackedScene" uid="uid://c8ov03gkkda4k" path="res://src/Scenes/PlayerCamera.tscn" id="3_wtuhv"]
-[ext_resource type="Texture2D" uid="uid://cshw60pd3stbh" path="res://Assets/EnvironmentalAssets/StarspireBG1/StarspireBG1_Sky.png" id="4_bp3qg"]
+[ext_resource type="PackedScene" uid="uid://bf6rganpst3po" path="res://src/Scenes/NewStarshire/StarspireBG.tscn" id="4_0u15j"]
 [ext_resource type="PackedScene" uid="uid://dkxkwr4us4aak" path="res://src/Scenes/NewStarshire/Facilities/TechTreeComputer.tscn" id="4_cldp6"]
-[ext_resource type="Texture2D" uid="uid://b38baquwhaxfl" path="res://Assets/EnvironmentalAssets/StarspireBG1/StarspireBG1_BlueClouds.png" id="5_lrlyb"]
-[ext_resource type="Texture2D" uid="uid://cpca4wpiuuqve" path="res://Assets/EnvironmentalAssets/StarspireBG1/StarspireBG1_WhiteClouds.png" id="6_uhrlg"]
-[ext_resource type="Texture2D" uid="uid://4wbesj8bqdpo" path="res://Assets/EnvironmentalAssets/StarspireBG1/StarspireBG1_Islands.png" id="7_4qs0c"]
 [ext_resource type="PackedScene" uid="uid://djr7ysw0olctc" path="res://src/Scenes/MainMenuBG.tscn" id="8_uhrlg"]
 [ext_resource type="PackedScene" uid="uid://crvhogk2bnq1s" path="res://src/Scenes/NewStarshire/TowerGuideSprite.tscn" id="9_636af"]
 [ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="10_636af"]
@@ -529,48 +526,8 @@ sfx_player = NodePath("SfxPlayer")
 
 [node name="SfxPlayer" parent="." unique_id=1032259464 instance=ExtResource("2_te0bi")]
 
-[node name="Node2D" type="Node2D" parent="." unique_id=70340080]
+[node name="Node2D" parent="." unique_id=713020740 instance=ExtResource("4_0u15j")]
 position = Vector2(682, 151)
-
-[node name="Parallax2D" type="Parallax2D" parent="Node2D" unique_id=1142059569]
-scroll_scale = Vector2(0.5, 1)
-repeat_size = Vector2(1280, 0)
-repeat_times = 3
-
-[node name="Sky" type="Sprite2D" parent="Node2D/Parallax2D" unique_id=1074817011]
-texture = ExtResource("4_bp3qg")
-centered = false
-
-[node name="Parallax2D3" type="Parallax2D" parent="Node2D" unique_id=1008141241]
-scroll_scale = Vector2(0.5, 1)
-scroll_offset = Vector2(0.01, 0.01)
-repeat_size = Vector2(1280, 0)
-repeat_times = 3
-ignore_camera_scroll = true
-
-[node name="BlueClouds" type="Sprite2D" parent="Node2D/Parallax2D3" unique_id=717878670]
-texture = ExtResource("5_lrlyb")
-centered = false
-
-[node name="Parallax2D2" type="Parallax2D" parent="Node2D" unique_id=1361142905]
-scroll_scale = Vector2(0.5, 1)
-scroll_offset = Vector2(0.05, 0.05)
-repeat_size = Vector2(1280, 0)
-repeat_times = 3
-
-[node name="WhiteClouds" type="Sprite2D" parent="Node2D/Parallax2D2" unique_id=1075306360]
-texture = ExtResource("6_uhrlg")
-centered = false
-
-[node name="Parallax2D4" type="Parallax2D" parent="Node2D" unique_id=484846718]
-scroll_scale = Vector2(0.5, 1)
-scroll_offset = Vector2(0.07, 0.07)
-repeat_size = Vector2(1280, 0)
-repeat_times = 3
-
-[node name="Islands" type="Sprite2D" parent="Node2D/Parallax2D4" unique_id=42173462]
-texture = ExtResource("7_4qs0c")
-centered = false
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=626834970]
 offset_left = 34.0
