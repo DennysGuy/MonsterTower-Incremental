@@ -133,7 +133,13 @@ func populate_items_needed_list() -> void:
 		for item in item_dict.keys():
 			var quantity_list_item : QuantityListItem = preload("uid://do7gmff4xat63").instantiate()
 			quantity_list_item.icon.texture = item.shop_icon
-			quantity_list_item.quantity_label.text = "x%s" % [item_dict[item]]
+			var item_source : Item = item
+			var needed_quantity : int = item_dict[item]
+			var current_quantity : int = InventoryManager.get_quantity(item_source, item_source.get_inventory_name())
+			if current_quantity >= needed_quantity:
+				quantity_list_item.quantity_label.text = "[color=green]%s/%s[/color]" % [current_quantity,needed_quantity]
+			else:
+				quantity_list_item.quantity_label.text = "%s/%s" % [current_quantity,needed_quantity]
 			needed_items_container.add_child(quantity_list_item)
 
 func unlock_elevator() -> void:

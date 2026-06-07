@@ -7,12 +7,29 @@ signal trigger_next_image
 signal go_to_first_floor
 @warning_ignore("unused_signal")
 signal stop_player
+@warning_ignore("unused_signal")
+signal disable_close_function
+@warning_ignore("unused_signal")
+signal enable_close_function
+@warning_ignore("unused_signal")
+signal set_camera_to_player_pos
+@warning_ignore("unused_signal")
+signal set_camera_to_dojo_pos
 
 func trigger_next_frame() -> void:
 	trigger_next_image.emit()
 
 func to_first_floor() -> void:
 	go_to_first_floor.emit()
+
+func disable_close_button() -> void:
+	disable_close_function.emit()
+
+func enable_close_button() -> void:
+	enable_close_function.emit()
+
+func set_camera_to_dojo_position() -> void:
+	set_camera_to_dojo_pos.emit()
 
 func disable_player_functionality() -> void:
 	stop_player.emit()
@@ -30,3 +47,6 @@ func enable_player_functionality() -> void:
 	GameManager.can_open_bag = true
 	GameManager.can_open_tower_map = true
 	GameManager.can_pause_game = true
+
+func set_camera_to_player() -> void:
+	set_camera_to_player_pos.emit()

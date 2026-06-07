@@ -12,6 +12,7 @@
 [resource]
 script = ExtResource("5_hxy3b")
 sword_name = "Clopse Fang Blade"
+index = 2
 attack_bonus = 28.0
 defense_bonus = 10.0
 attack_speed = 0.5

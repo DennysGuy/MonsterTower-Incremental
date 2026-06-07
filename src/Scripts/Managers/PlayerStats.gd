@@ -340,7 +340,7 @@ func upgrade_player_stat(stat_name : String, interval : float, node_type : TechT
 	if node_type == TechTreeManager.TECH_NODE_TYPE.FACILITY or node_type == TechTreeManager.TECH_NODE_TYPE.CLASS_ABILITY:
 		facilities_unlocked[stat_name] = true
 		print("stat name: %s is unclocked : %s" % [stat_name, facilities_unlocked[stat_name]])
-		
+		SaveManager.save_game()
 		if stat_name == "Cooking Station":
 			show_cooking_station_unlock_animation = true
 		elif stat_name == "Refinery Station":

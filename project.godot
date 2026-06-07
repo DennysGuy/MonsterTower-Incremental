@@ -50,23 +50,42 @@ CutsceneManager="*uid://b4qmgkkqv4wqj"
 [dialogic]
 
 directories/dch_directory={
+"Chef Nadene": "res://src/QuestTimeLines/Characters/ChefNadene.dch",
+"CropDuster": "res://src/QuestTimeLines/Characters/CropDuster.dch",
+"DocterTharki": "res://src/QuestTimeLines/Characters/DocterTharki.dch",
+"MasterArcaneScribeAlphonse": "res://src/QuestTimeLines/Characters/MasterArcaneScribeAlphonse.dch",
 "Narrator": "res://src/QuestTimeLines/TextboxStyles/Narrator.dch",
+"TerminalComputer": "res://src/QuestTimeLines/Characters/TerminalComputer.dch",
 "TestCharacter": "res://src/QuestTimeLines/Characters/TestCharacter.dch",
-"TowerGuide": "res://src/QuestTimeLines/Characters/TowerGuide.dch"
+"TowerGuide": "res://src/QuestTimeLines/Characters/TowerGuide.dch",
+"WarmongeAlaisha": "res://src/QuestTimeLines/Characters/WarmongeAlaisha.dch"
 }
 directories/dtl_directory={
+"CookingStationUnlockScene": "res://src/QuestTimeLines/IntroScenes/CookingStationUnlockScene.dtl",
 "EnterTowerFirstTimeScene": "res://src/QuestTimeLines/IntroScenes/EnterTowerFirstTimeScene.dtl",
+"GemsStationUnlockScene": "res://src/QuestTimeLines/IntroScenes/GemsStationUnlockScene.dtl",
 "IntroCardsCutscene": "res://src/QuestTimeLines/IntroCardsCutscene.dtl",
+"LevelUpInstruction": "res://src/QuestTimeLines/IntroScenes/LevelUpInstruction.dtl",
+"NewWeaponCraftingNoticeScene": "res://src/QuestTimeLines/IntroScenes/NewWeaponCraftingNoticeScene.dtl",
+"NewWeaponCraftingStationUpdateScene": "res://src/QuestTimeLines/IntroScenes/NewWeaponCraftingStationUpdateScene.dtl",
+"SmeltingStationUnlockScene": "res://src/QuestTimeLines/IntroScenes/SmeltingStationUnlockScene.dtl",
+"TechTreeExplanation": "res://src/QuestTimeLines/IntroScenes/TechTreeExplanation.dtl",
 "TestTimeline": "res://src/QuestTimeLines/TestTimeline.dtl",
-"TutorialLicenseNotAcquired": "res://src/QuestTimeLines/IntroScenes/TutorialLicenseNotAcquired.dtl"
+"TutorialLicenseNotAcquired": "res://src/QuestTimeLines/IntroScenes/TutorialLicenseNotAcquired.dtl",
+"WarriorClassSelectionScene": "res://src/QuestTimeLines/IntroScenes/WarriorClassSelectionScene.dtl"
 }
 layout/style_directory={
 "": "res://src/QuestTimeLines/TextboxStyles/BaseStyle.tres",
 "BaseStyle": "res://src/QuestTimeLines/TextboxStyles/BaseStyle.tres",
-"CutsceneStyle": "res://src/QuestTimeLines/TextboxStyles/CutsceneStyle.tres"
+"ChefNadeneStyle": "res://src/QuestTimeLines/Characters/ChefNadeneStyle.tres",
+"CropDusterStyle": "res://src/QuestTimeLines/TextboxStyles/CropDusterStyle.tres",
+"CutsceneStyle": "res://src/QuestTimeLines/TextboxStyles/CutsceneStyle.tres",
+"DoctorTharkiStyle": "res://src/QuestTimeLines/TextboxStyles/DoctorTharkiStyle.tres",
+"TerminalComputerStyle": "res://src/QuestTimeLines/TextboxStyles/TerminalComputerStyle.tres",
+"WarmongerAlaishaStyle": "res://src/QuestTimeLines/TextboxStyles/WarmongerAlaishaStyle.tres"
 }
 glossary/default_case_sensitive=true
-layout/style_list=["res://src/QuestTimeLines/TextboxStyles/BaseStyle.tres", "res://src/QuestTimeLines/TextboxStyles/CutsceneStyle.tres"]
+layout/style_list=["res://src/QuestTimeLines/TextboxStyles/BaseStyle.tres", "res://src/QuestTimeLines/TextboxStyles/CutsceneStyle.tres", "res://src/QuestTimeLines/TextboxStyles/TerminalComputerStyle.tres", "res://src/QuestTimeLines/Characters/ChefNadeneStyle.tres", "res://src/QuestTimeLines/TextboxStyles/CropDusterStyle.tres", "res://src/QuestTimeLines/TextboxStyles/WarmongerAlaishaStyle.tres", "res://src/QuestTimeLines/TextboxStyles/DoctorTharkiStyle.tres"]
 layout/default_style="res://src/QuestTimeLines/TextboxStyles/BaseStyle.tres"
 variables={}
 extensions_folder="res://addons/dialogic_additions"

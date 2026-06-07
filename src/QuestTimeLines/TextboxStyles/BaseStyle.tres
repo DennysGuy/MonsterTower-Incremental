@@ -39,7 +39,7 @@ scene = ExtResource("6_wcsru")
 overrides = {
 "box_animation_in": "1",
 "box_animation_out": "1",
-"box_size": "Vector2(1200, 200)",
+"box_size": "Vector2(1600, 220)",
 "text_size": "24.0"
 }
 
@@ -74,4 +74,4 @@ layer_info = {
 "16": SubResource("Resource_aq3lv"),
 "17": SubResource("Resource_bwx52")
 }
-metadata/_latest_layer = "12"
+metadata/_latest_layer = "13"

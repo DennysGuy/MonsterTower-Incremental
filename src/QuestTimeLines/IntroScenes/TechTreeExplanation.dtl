@@ -1,0 +1,15 @@
+TerminalComputer: Congratulations on passing the Hunter's Exam. You are now officially a Starspire Hunter.
+TerminalComputer: This terminal is reserved for all registered Hunters and is intended for internal use only.
+TerminalComputer: Unauthoized usage will result in severe legal action which may result in fines or even jail time, so don't even think about lending it out to a friend or family member. It will get ugly.
+TerminalComputer: Now that's out of the way.
+TerminalComputer: This computer will be your main base of operation. Usage includes making you a stronger Hunter and grant access to the local facilities that will assist you on your climb expeditions.
+TerminalComputer: At the top, you will see six colored buttons, each represent a particular skill category.  Click on anyone to bring up each categories tech tree at any given point.
+TerminalComputer: Purchasing nodes will require you to acquire 'Spirols' our unique currency and 'Resources' crafted from drops looted from the tower.
+TerminalComputer: Each node purchase will contribute towards promoting your Hunter License. The count and quota is visually tracked right below the six skill buttons.
+TerminalComputer: Once the quota is reached. You will have the opportunity to promote your License to the next tier. This will grant you access to more resources and expedition time within the tower.
+TerminalComputer: You will not see many nodes visible at first. Don't fret! This is by design, we don't want you to handle more than you can chew. To reveal more nodes you need to purchase nodes. That is the only way.
+TerminalComputer: Using this terminal wisely, who knows. You may be the one to break through the sixth floor.\
+\
+Good luck, Hunter. May your bounty be plentiful.
+[wait time="1.0"]
+do CutsceneManager.enable_close_button()

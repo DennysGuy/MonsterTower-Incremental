@@ -12,6 +12,7 @@
 [resource]
 script = ExtResource("1_8ta2n")
 sword_name = "Shroom Fibre Blade"
+index = 1
 attack_bonus = 5.0
 defense_bonus = 8.0
 attack_speed = 0.52

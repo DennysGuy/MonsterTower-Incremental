@@ -45,10 +45,19 @@ const CRAFT_SWORD = preload("uid://4c6l1w0kpar3")
 const UNLOCK_SHOP = preload("uid://cveiqvxm5r0yw")
 @onready var grand_market_area: Area2D = $GrandMarketArea
 
+const LEVEL_UP_INSTRUCTION = preload("uid://7k2f4h2w0i08")
+const COOKING_STATION_UNLOCK_SCENE = preload("uid://gfqitaq4h4ol")
+const SMELTING_STATION_UNLOCK_SCENE = preload("uid://dknm38b28himr")
+const GEMS_STATION_UNLOCK_SCENE = preload("uid://blac36hlx22lb")
+
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super()
+	CutsceneManager.enable_player_functionality()
+	CutsceneManager.set_camera_to_player_pos.connect(set_camera_to_player_pos)
+	CutsceneManager.set_camera_to_dojo_pos.connect(set_camera_to_dojo_position)
 	SignalBus.spawn_tech_tree.connect(add_tech_tree_to_scene)
 	SignalBus.issue_can_craft_sword_scene.connect(new_sword_unlock_notice)
 	SignalBus.hide_tech_tree_canvas_layer.connect(hide_tech_tree_canvas_layer)
@@ -84,7 +93,8 @@ func _ready() -> void:
 	QuestManager.check_map_name.emit(map_name)
 	show_ap_notice()
 	if PlayerStats.player_stats["Level"] == 2 and PlayerStats.player_stats["Ability Points"] == 1:
-		ability_station_notice()
+		#ability_station_notice()
+		Dialogic.start(LEVEL_UP_INSTRUCTION)
 
 func _exit_tree() -> void:
 	GameManager.event_speed_mod = 1.0
@@ -160,12 +170,8 @@ func _on_tower_area_body_entered(body: Node2D) -> void:
 
 func show_ap_notice() -> void:
 	if PlayerStats.player_stats["Ability Points"] >= 1:
-		#PlayerHudSignalBus.show_class_notice.emit()
 		ap_notice.show()
-	else:
-		PlayerHudSignalBus.show_class_notice.emit()
-		ap_notice.hide()
-
+	
 func _on_tower_area_body_exited(body: Node2D) -> void:
 	if body is Player:
 		player_in_tower_range = false
@@ -299,7 +305,7 @@ func _on_smelting_station_area_body_exited(body: Node2D) -> void:
 
 func _on_crafting_station_area_body_entered(body: Node2D) -> void:
 	if body is Player:
-		if PlayerStats.player_stats["Tracked Weapon"] == 2 and PlayerStats.player_stats["Class"] == "Junior Hunter":
+		if PlayerStats.player_stats["Tracked Weapon"] > 2 and PlayerStats.player_stats["Class"] == "Junior Hunter":
 			player_in_crafting_range = false
 			access_sword_crafting_station.text = "Select your Class to Gain Access"
 		else:
@@ -315,48 +321,32 @@ func _on_crafting_station_area_body_exited(body: Node2D) -> void:
 
 func unlock_cooking_station() -> void:
 	camera.player = null
-	player.send_to_idle_state()
+	CutsceneManager.disable_player_functionality()
 	#hud.animation_player.play("FadeInOut")
 	await get_tree().create_timer(0.5).timeout
 	sfx_player.play_sfx(UNLOCK_SHOP)
 	camera.position = cooking_range_position.position
 	await get_tree().create_timer(1.0).timeout
-	#hud.animation_player.play("Flash")
+	PlayerHudSignalBus.flash_screen.emit()
 	await get_tree().create_timer(0.5).timeout
 	cooking_station.unlock_cooking_station()
-	PlayerHudSignalBus.issue_big_notification.emit("Cook exotic dishes and sell for big cash!")
 	await get_tree().create_timer(2.0).timeout
-	PlayerHudSignalBus.issue_big_notification.emit("Cooking Resources Drop From Monsters!")
-	await get_tree().create_timer(3.0).timeout
-	PlayerHudSignalBus.hide_big_notification.emit()
-	hud.animation_player.play("FadeInOut")
-	await get_tree().create_timer(0.5).timeout
-	camera.position = player.position
-	camera.player = player
+	Dialogic.start(COOKING_STATION_UNLOCK_SCENE)
 	PlayerStats.show_cooking_station_unlock_animation = false
+
 	
 func unlock_refinery_station() -> void:
 	camera.player = null
-	player.send_to_idle_state()
-	#hud.animation_player.play("FadeInOut")
+	camera.position = refinery_position.position
+	CutsceneManager.disable_player_functionality()
 	await get_tree().create_timer(0.5).timeout
 	sfx_player.play_sfx(UNLOCK_SHOP)
-	camera.position = refinery_position.position
 	await get_tree().create_timer(1.0).timeout
 	hud.animation_player.play("Flash")
 	await get_tree().create_timer(0.5).timeout
 	refinery.unlock_refinery()
-	PlayerHudSignalBus.issue_big_notification.emit("Refine Raw Resources into Craftable Material!")
-	await get_tree().create_timer(2.0).timeout
-	PlayerHudSignalBus.issue_big_notification.emit("You have unlocked the stone pickaxe.")
 	await get_tree().create_timer(3.0).timeout
-	PlayerHudSignalBus.issue_big_notification.emit("Tin and Copper ore can now be mined in the Tower!")
-	await get_tree().create_timer(3.5).timeout
-	PlayerHudSignalBus.hide_big_notification.emit()
-	#hud.animation_player.play("FadeInOut")
-	await get_tree().create_timer(0.5).timeout
-	camera.position = player.position
-	camera.player = player
+	Dialogic.start(SMELTING_STATION_UNLOCK_SCENE)
 	PlayerStats.show_refinery_station_unlock_animation = false
 
 func unlock_station() -> void:
@@ -411,18 +401,16 @@ func gem_station_unlock_notice() -> void:
 	await get_tree().create_timer(0.5).timeout
 	smithing_station.notify_can_craft()
 	camera.position = sword_crafting_station_position.position
-	
+	CutsceneManager.disable_player_functionality()
 	SignalBus.show_gem_station_arrow.emit()
-	PlayerHudSignalBus.issue_big_notification.emit("Your weapon can now be enhanced with Gem Stones.")
-	await get_tree().create_timer(2.0).timeout
-	PlayerHudSignalBus.issue_big_notification.emit("Access the Gem Stone station to mount gems onto your weapon!")
-	await get_tree().create_timer(3.5).timeout
-	PlayerHudSignalBus.hide_big_notification.emit()
-	#hud.animation_player.play("FadeInOut")
+	Dialogic.start(GEMS_STATION_UNLOCK_SCENE)
 	await get_tree().create_timer(0.5).timeout
+	PlayerStats.show_gem_station_unlock_animation = false
+
+func set_camera_to_player_pos() -> void:
 	camera.position = player.position
 	camera.player = player
-	PlayerStats.show_gem_station_unlock_animation = false
+	
 
 func ability_station_notice() -> void:
 	camera.player = null
@@ -504,6 +492,9 @@ func sell_novelty_items() -> void:
 		add_child(notification_label)
 		sfx_player.play_sfx(NOVELTY_ITEMS_SALE)
 
+func set_camera_to_dojo_position() -> void:
+	camera.player = null
+	camera.position = dojo_position.position
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Player:

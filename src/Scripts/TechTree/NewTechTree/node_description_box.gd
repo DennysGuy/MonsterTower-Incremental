@@ -2,7 +2,7 @@ class_name NodeDescriptionBox extends Control
 
 @export var node_title : Label
 @export var current_benefits : Label
-@export var description : Label
+@export var description : RichTextLabel
 @export var cost : RichTextLabel
 @export var tech_node_stats : TechNodeStats
 @onready var resources_list: GridContainer = $Panel/ResourcesList

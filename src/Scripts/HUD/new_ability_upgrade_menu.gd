@@ -5,6 +5,8 @@ class_name NewAbilityUpgradeMenu extends Control
 @onready var ap: Label = $AP
 @onready var classname: Label = $ClassName
 
+const NEW_WEAPON_CRAFTING_NOTICE_SCENE = preload("uid://bhd7f77giafvv")
+
 
 func _ready() -> void:
 	SignalBus.update_ap_label.connect(update_ap_label)
@@ -38,8 +40,9 @@ func close_out() -> void:
 	GameManager.can_open_bag = true
 	GameManager.can_open_tower_map = true
 	SignalBus.hide_tech_tree_canvas_layer.emit()
+	if GameManager.first_class_just_unlocked:
+		Dialogic.start(NEW_WEAPON_CRAFTING_NOTICE_SCENE)
 	queue_free()
-
 
 func _on_close_button_button_up() -> void:
 	close_out()

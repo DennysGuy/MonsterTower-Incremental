@@ -126,7 +126,7 @@ offset_bottom = 10.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Description" type="Label" parent="Panel/Panel" unique_id=1398592653]
+[node name="Description" type="RichTextLabel" parent="Panel/Panel" unique_id=1633108262]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -137,9 +137,9 @@ offset_right = -4.0
 offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("1_ttc2g")
+theme_override_fonts/normal_font = ExtResource("1_ttc2g")
+bbcode_enabled = true
 text = "Increases Attack Damage by 20% per level."
-autowrap_mode = 3
 
 [node name="ResourcesList" type="GridContainer" parent="Panel" unique_id=981247164]
 layout_mode = 1

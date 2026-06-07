@@ -780,7 +780,7 @@ position = Vector2(1, -29)
 base_offset = 30.0
 
 [node name="DojoPosition" type="Node2D" parent="." unique_id=1300992314]
-position = Vector2(578, 662)
+position = Vector2(616, 662)
 
 [node name="SmithingStation" parent="." unique_id=1664193682 instance=ExtResource("21_bl45m")]
 position = Vector2(1867, 431)
@@ -1021,7 +1021,7 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(892, 704)
 
 [node name="RefineryPosition" type="Node2D" parent="." unique_id=1121494031]
-position = Vector2(1866, 679)
+position = Vector2(1651, 679)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=842259970]
 visible = false

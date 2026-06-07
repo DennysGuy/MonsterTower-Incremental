@@ -38,9 +38,15 @@ const CLICK_NODE = preload("uid://bawqj0b2h6vsu")
 @onready var cooking_notification_icon: TextureRect = $TechTreeButtonsHBox/CookingPageButton/CookingNotificationIcon
 @onready var crafting_notification_icon: TextureRect = $TechTreeButtonsHBox/CraftingPageButton/CraftingNotificationIcon
 
+const TECH_TREE_EXPLANATION = preload("uid://g6243qefq3ht")
+
+var can_close = true
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	TechTreeManager.check_for_tech_node_purchases.connect(check_for_purchases)
+	CutsceneManager.disable_close_function.connect(disable_close_function)
+	CutsceneManager.enable_close_function.connect(enable_close_function)
 	check_for_purchases()
 	MusicPlayer.pause_music()
 	music_player.play()
@@ -57,7 +63,7 @@ func _ready() -> void:
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("close_menu"):
+	if Input.is_action_just_pressed("close_menu") and can_close:
 		close_out()
 
 func _on_combat_page_button_mouse_entered() -> void:
@@ -110,6 +116,13 @@ func button_to_normal(button : Button) -> void:
 	var tween : Tween = get_tree().create_tween()
 	tween.tween_property(button, "scale",Vector2(1.0,1.0),0.1)
 
+func disable_close_function() -> void:
+	can_close = false
+	close_button.disabled = true
+
+func enable_close_function() -> void:
+	can_close = true
+	close_button.disabled = false
 
 func _on_upgrade_tracker_button_mouse_entered() -> void:
 	expand_button(upgrade_tracker_button)
@@ -274,7 +287,7 @@ func unlock_hunter_license() -> void:
 	SaveManager.save_tech_tree_data()
 	SaveManager.save_player_stats()
 	SaveManager.save_game()
-
+	
 func update_currency_label() -> void:
 	update_progress()
 
@@ -304,6 +317,7 @@ func _on_cooking_page_button_button_up() -> void:
 
 
 func insert_message_panel() -> void:
+	disable_close_function()
 	var message_panel : TechTreeMessagePanel = preload("uid://bsqvfj57myih2").instantiate()
 
 	add_child(message_panel)
@@ -328,6 +342,10 @@ func remove_message_panel() -> void:
 		tween.tween_property(stored_message_panel, "global_position", Vector2(730,1140),0.2)
 		await tween.finished
 		stored_message_panel.queue_free()
+		if TechTreeManager.current_prestige == 1:
+			Dialogic.start(TECH_TREE_EXPLANATION)
+		else:
+			enable_close_function()
 	
 
 func play_sfx(sound: AudioStream, volume: float = 0.0):

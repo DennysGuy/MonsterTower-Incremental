@@ -47,19 +47,20 @@ func upgrade_sword() -> void:
 	InventoryManager.remove_resources_from_inventory(sword.recipe.recipe_list)
 	QuestManager.check_general_task_for_completion.emit("Upgrade Sword")
 	
-	PlayerStats.player_stats["Equipped Sword"]+= 1
+	PlayerStats.player_stats["Equipped Sword"] = sword.index
 	SaveManager.save_player_stats()
 	
 	var next_sword_index : int = PlayerStats.player_stats["Equipped Sword"]+1
 	if next_sword_index < PlayerStats.BEGINNGER_SWORD_COUNT:
 		PlayerStats.set_tracked_weapon_index(next_sword_index)
-		PlayerStats.player_stats["Equipped Sword"] = next_sword_index
-		SaveManager.save_player_stats()
+		sword = PlayerStats.get_sword(next_sword_index)
 		update_sword()
-		SaveManager.save_inventories()
 		update_inventory_containers()
 		SignalBus.update_sword_texture.emit("Idle")
 		
+	SaveManager.save_player_stats()
+	SaveManager.save_inventories()	
+	
 func update_inventory_containers() -> void:
 	#InventoryManager.update_grid_container(inventory_container, "Inventory",false)
 	show_inventory(selected_bag)

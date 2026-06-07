@@ -840,7 +840,7 @@ TODO: We will add saves for classes as well
 
 @export var weapon_status : Dictionary = {
 	0: {"Unlocked":false, "Is Tracked": false},
-	1: {"Unlocked":false, "Is Tracked": false},
+	1: {"Unlocked":false, "Is Tracked": true},
 	2: {"Unlocked":false, "Is Tracked": false},
 	3: {"Unlocked":false, "Is Tracked": false},
 	4: {"Unlocked":false, "Is Tracked": false},

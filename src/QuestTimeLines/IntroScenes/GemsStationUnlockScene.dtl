@@ -1,0 +1,8 @@
+CropDuster: Congrats, Newbie. You seem to be impressing the Guild for them to have given you access to the gem stone upgrade station.
+CropDuster: This station will give you more of an edge in combat with the ability to mount "Gem Stones"
+CropDuster: Gem Stone chests will now appear to you in the tower. Break 'em open and you might have the chance to obtain a gem that can enhance your weapons abilities.
+CropDuster: A quick caveat\: You can only store 4 gems at a time and if you want to update your configuration, you'll have to permanently discard them and start from scratch. However, you'll find more powerful gems as you go along, so that trade off is easily worth it.
+CropDuster: It's just that, some might be tougher to find than others. If you're struggling with finding gems, you can hit up the Computer Terminal and increase your chances.
+[wait time="1.0"]
+do CutsceneManager.enable_player_functionality()
+do CutsceneManager.set_camera_to_player()

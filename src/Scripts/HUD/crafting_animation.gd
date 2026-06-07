@@ -51,6 +51,8 @@ func play_equipped_sequence() -> void:
 	queue_free()
 
 func play_class_upgrade_sequence() -> void:
+	PlayerStats.player_stats["Tracked Weapon"] = -1
+	SaveManager.save_player_stats()
 	set_original_player_outfit()
 	play_swoop_in()
 	animation_player.play("SwoopIn_2")

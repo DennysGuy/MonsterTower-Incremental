@@ -25,6 +25,7 @@ class_name ClassWeaponCraftingMenu extends Control
 
 const GEAR_STATION_DROPS_BAG_BG = preload("uid://dqrwhfhixd1io")
 const GEAR_STATION_USE_BAG_BG = preload("uid://b5o4unayrrfi")
+const NEW_WEAPON_CRAFTING_STATION_UPDATE_SCENE = preload("uid://olt7ljpn0wpg")
 
 var selected_bag : String = "Drops"
 
@@ -40,6 +41,9 @@ var state : STATE = STATE.IDLE
 func _ready() -> void:
 	SignalBus.populate_weapon_description_panel.connect(select_weapon)
 	update_inventory_containers()
+	if GameManager.first_class_just_unlocked:
+		Dialogic.start(NEW_WEAPON_CRAFTING_STATION_UPDATE_SCENE)
+		GameManager.first_class_just_unlocked = false
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -61,7 +65,7 @@ func craft_sequence() -> void:
 	PlayerStats.player_stats["Tracked Weapon"] = -1
 	SaveManager.save_player_stats()
 	
-	stored_weapon.is_tracked = PlayerStats.player_stats["Is Tracked"]
+	stored_weapon.is_tracked = SaveManager.get_weapon_tracked_status(stored_weapon.index)
 	stored_weapon.unlocked = SaveManager.get_weapon_unlocked_status(stored_weapon.index)
 	SignalBus.update_held_weapon.emit(stored_weapon)
 	SignalBus.disable_tracked_icon.emit(stored_weapon.index)
