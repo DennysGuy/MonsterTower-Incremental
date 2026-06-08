@@ -178,6 +178,7 @@ theme_override_fonts/font = ExtResource("5_4on78")
 theme_override_font_sizes/font_size = 12
 
 [node name="NeededPanel" type="Panel" parent="." unique_id=1441516242]
+visible = false
 offset_left = 63.0
 offset_top = -24.0
 offset_right = 182.0

@@ -69,6 +69,13 @@ func _ready() -> void:
 	load_floor_data()
 	
 	if player_spawn:
+		if map_type != MAP_TYPE.HUB:
+			if tower_entrance_data:
+				tower_entrance_data.times_entered = SaveManager.get_floor_entered_count(tower_entrance_data.floor_name)
+				tower_entrance_data.times_entered += 1
+				SaveManager.save_floor_entered_count(tower_entrance_data.floor_name, tower_entrance_data.times_entered)
+				
+		
 		if map_type == MAP_TYPE.CHECKPOINT_FLOOR and tower_entrance_data.number_of_spawn_locations <= 0:
 			tower_entrance_data.number_of_spawn_locations += 1
 			SaveManager.save_floor_data(tower_entrance_data, map_name)

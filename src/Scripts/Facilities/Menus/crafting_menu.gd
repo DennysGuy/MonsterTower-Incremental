@@ -103,11 +103,7 @@ func _on_close_button_up() -> void:
 	exit_menu()
 
 func exit_menu() -> void:
-	GameManager.player_can_move = true
-	GameManager.can_pause_game = true
-	GameManager.can_open_bag = true
-	GameManager.can_open_tower_map = true
-	
+	CutsceneManager.enable_player_functionality()
 	SignalBus.check_can_sword_craft.emit()
 	SignalBus.hide_tech_tree_canvas_layer.emit()
 	queue_free()

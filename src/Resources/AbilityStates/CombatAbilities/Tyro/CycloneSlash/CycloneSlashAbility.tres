@@ -16,7 +16,7 @@ ability_description = "Mimick the nature of a cyclone, slashing in 360 degrees a
 
 Enemies are silenced in the process rendering them unable to attack for a period of time."
 ability_behavior = ExtResource("1_m2uou")
-mp_cost = 15.0
+mp_cost = 20.0
 base_attack = 50.0
 number_of_enemies_hit = 10.0
 max_hit_count = 1.0

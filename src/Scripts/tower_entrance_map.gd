@@ -87,9 +87,7 @@ func store_entrance_data(entrance_data : TowerEntranceData) -> void:
 	populate_preview_container(ore_preview_grid_container, stored_entrance_data.ore_rock_preview_graphics)
 
 func _on_close_button_up() -> void:
-	GameManager.player_can_move = true
-	GameManager.can_open_bag = true
-	GameManager.can_open_tower_map = true
+	CutsceneManager.enable_player_functionality()
 	SignalBus.hide_tech_tree_canvas_layer.emit()
 	music_player.stop()
 	MusicPlayer.unpause_music()

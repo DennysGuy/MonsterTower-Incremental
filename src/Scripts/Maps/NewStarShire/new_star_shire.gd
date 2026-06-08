@@ -106,12 +106,10 @@ func _process(delta: float) -> void:
 		spawn_tower_entrance_map()
 
 	if Input.is_action_just_pressed("interact") and player_in_market_range and GameManager.player_can_move:
-		GameManager.player_can_move = false
 		player.velocity = Vector2.ZERO
 		spawn_grand_market()
 		
 	if Input.is_action_just_pressed("interact") and player_in_cooking_range and GameManager.player_can_move and PlayerStats.facilities_unlocked["Cooking Station"]:
-		GameManager.player_can_move = false
 		player.velocity = Vector2.ZERO
 		spawn_cooking_menu()
 	
@@ -188,19 +186,13 @@ func go_to_test_floor() -> void:
 	get_tree().change_scene_to_file("res://src/Scenes/Tower/TowerFloors/Biome1/Floor1-1.tscn")
 
 func spawn_tower_entrance_map() -> void:
-	GameManager.can_open_tower_map = false
-	GameManager.can_open_bag = false
-	GameManager.player_can_move = false
-	GameManager.can_pause_game = false
+	CutsceneManager.disable_player_functionality()
 	player.velocity = Vector2.ZERO
 
 	PlayerHudSignalBus.spawn_tower_entrance_map.emit()
 
 func spawn_grand_market() -> void:
-	GameManager.can_open_tower_map = false
-	GameManager.can_open_bag = false
-	GameManager.player_can_move = false
-	GameManager.can_pause_game = false
+	CutsceneManager.disable_player_functionality()
 	player.velocity = Vector2.ZERO
 	PlayerHudSignalBus.spawn_market.emit()
 
@@ -220,46 +212,33 @@ func spawn_smelting_menu() -> void:
 	control.add_child(smelting_station)
 
 func spawn_crafting_menu() -> void:
-	GameManager.can_open_tower_map = false
-	GameManager.can_open_bag = false
-	GameManager.can_pause_game = false
-	GameManager.player_can_move = false
+	CutsceneManager.disable_player_functionality()
 	player.velocity = Vector2.ZERO
 	PlayerHudSignalBus.spawn_sword_crafting_station.emit()
 
 func spawn_upgrade_menu() -> void:
-	GameManager.can_open_tower_map = false
-	GameManager.can_open_bag = false
-	GameManager.can_pause_game = false
+	CutsceneManager.disable_player_functionality()
 	player.velocity = Vector2.ZERO
 	PlayerHudSignalBus.spawn_gem_stone_station.emit()
 
 func spawn_beginner_tree() -> void:
-	GameManager.can_open_tower_map = false
-	GameManager.can_open_bag = false
-	GameManager.can_pause_game = false
+	CutsceneManager.disable_player_functionality()
 	player.velocity = Vector2.ZERO
 	PlayerHudSignalBus.spawn_beginner_tree.emit()
 
 func spawn_warrior_tech_tree() -> void:
-	GameManager.can_open_tower_map = false
-	GameManager.can_open_bag = false
-	GameManager.can_pause_game = false
+	CutsceneManager.disable_player_functionality()
 	player.velocity = Vector2.ZERO
 	PlayerHudSignalBus.spawn_warrior_menu.emit()
 
 func spawn_dojo_menu() -> void:
-	GameManager.can_open_tower_map = false
-	GameManager.can_open_bag = false
-	GameManager.can_pause_game = false
+	CutsceneManager.disable_player_functionality()
 	player.velocity = Vector2.ZERO
 	
 	PlayerHudSignalBus.spawn_class_selection_menu.emit()
 
 func spawn_job_board_menu() -> void:
-	GameManager.can_open_tower_map = false
-	GameManager.can_open_bag = false
-	GameManager.can_pause_game = false
+	CutsceneManager.disable_player_functionality()
 	player.velocity = Vector2.ZERO
 	
 	PlayerHudSignalBus.spawn_job_board_menu.emit()
@@ -350,7 +329,7 @@ func unlock_refinery_station() -> void:
 	PlayerStats.show_refinery_station_unlock_animation = false
 
 func unlock_station() -> void:
-	GameManager.player_can_move = false
+	CutsceneManager.disable_play
 	if PlayerStats.show_cooking_station_unlock_animation:
 		await unlock_cooking_station()
 	
@@ -360,10 +339,10 @@ func unlock_station() -> void:
 	if PlayerStats.show_gem_station_unlock_animation:
 		await gem_station_unlock_notice()
 	
-	GameManager.player_can_move = true
+	CutsceneManager.enable_player_functionality()
 
 func new_sword_unlock_notice() -> void:
-	GameManager.player_can_move = false
+	CutsceneManager.disable_player_functionality()
 	camera.player = null
 	player.send_to_idle_state()
 	#hud.animation_player.play("FadeInOut")
@@ -377,7 +356,7 @@ func new_sword_unlock_notice() -> void:
 	await get_tree().create_timer(0.5).timeout
 	camera.position = player.position
 	camera.player = player
-	GameManager.player_can_move = true
+	CutsceneManager.enable_player_functionality()
 
 func warrior_class_unlocked_notice() -> void:
 	#GameManager.player_can_move = false

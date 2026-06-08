@@ -40,9 +40,7 @@ func update_gem_bag_container(inventory : String) -> void:
 	InventoryManager.update_grid_container(gem_stone_container, inventory, true)
 
 func close_out() -> void:
-	GameManager.player_can_move = true
-	GameManager.can_open_bag = true
-	GameManager.can_open_tower_map = true
+	CutsceneManager.enable_player_functionality()
 	SignalBus.hide_tech_tree_canvas_layer.emit()
 	queue_free()
 

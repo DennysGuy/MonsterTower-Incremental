@@ -107,36 +107,42 @@ TODO: We will add saves for classes as well
 	"Floor 1-1" : {
 		"Number of Spawn Locations" : 0,
 		"Campfires Reached": 0,
+		"Times Entered": 0,
 		"Hunt Challenge Unlocked": false,
 		"Hunt Challenge Completed": false
 	},
 	"Floor 1-2" : {
 		"Number of Spawn Locations" : 0,
 		"Campfires Reached": 0,
+		"Times Entered": 0,
 		"Hunt Challenge Unlocked": false,
 		"Hunt Challenge Completed": false
 	},
 	"Floor 1-3" : {
 		"Number of Spawn Locations" : 0,
 		"Campfires Reached": 0,
+		"Times Entered": 0,
 		"Hunt Challenge Unlocked": false,
 		"Hunt Challenge Completed": false
 	},
 	"Floor 1-4" : {
 		"Number of Spawn Locations" : 0,
 		"Campfires Reached": 0,
+		"Times Entered": 0,
 		"Hunt Challenge Unlocked": false,
 		"Hunt Challenge Completed": false
 	},
 	"Floor 1-5" : {
 		"Number of Spawn Locations" : 0,
 		"Campfires Reached": 0,
+		"Times Entered": 0,
 		"Hunt Challenge Unlocked": false,
 		"Hunt Challenge Completed": false
 	},
 	"Floor 1-6" : {
 		"Number of Spawn Locations" : 0,
 		"Campfires Reached": 0,
+		"Times Entered": 0,
 		"Hunt Challenge Unlocked": false,
 		"Hunt Challenge Completed": false,
 		"Activation Switch Unlocked": false,
@@ -144,6 +150,7 @@ TODO: We will add saves for classes as well
 	"Floor 1-7" : {
 		"Number of Spawn Locations" : 0,
 		"Campfires Reached": 0,
+		"Times Entered": 0,
 		"Hunt Challenge Unlocked": false,
 		"Hunt Challenge Completed": false,
 	},
@@ -877,3 +884,12 @@ TODO: We will add saves for classes as well
 	{"Unlocked 1": false, "Unlocked 2": false, "Count": 0},
 	{"Unlocked 1": false, "Unlocked 2": false, "Count": 0},
 ]
+
+@export var progression_states : Dictionary = {
+	"First Class Just Unlocked" : false,
+	"First Quest Just Unlocked": false,
+	"Floor 2 Just Reached": false,
+	"Floor 4 Just Reached": false,
+	"Floor 6 Just Reached": false,
+	"Boss Room Just Reached": false	
+}

@@ -45,11 +45,10 @@ func init_save_file() -> void:
 	
 	QuestManager.load_all_quest_status()
 	QuestManager.load_active_quests()
-	
+	load_progression_states()
 	load_equipped_abilities()
 	PlayerStats.load_abilities()
 	load_gem_sockets()
-
 
 func save_floor_data(tower_entrance_data : TowerEntranceData, map_name : String) -> void:
 	var saved_data = SaveManager.current_save_game
@@ -68,6 +67,11 @@ func save_tech_tree_data() -> void:
 		current_save_game.upgrade_count_to_prestige = TechTreeManager.upgrade_count_to_prestige 
 		current_save_game.current_upgrade_count = TechTreeManager.current_upgrade_count
 		save_game()
+
+func load_progression_states() -> void:
+	GameManager.first_class_just_unlocked = load_progression_state("First Class Just Unlocked")
+	GameManager.first_quest_just_unlocked = load_progression_state("First Quest Just Unlocked")
+
 
 func save_equipped_abilities() -> void:
 	for ability in PlayerStats.get_equipped_abilities().keys():
@@ -119,6 +123,12 @@ func save_quest_status(quest_id : int, status : int, turned_in : bool) -> void:
 	current_save_game.quests[quest_id]["Turned In"] = turned_in
 	save_game()
 
+func get_floor_entered_count(floor_name : String) -> int:
+	return current_save_game.tower_entrance_data[floor_name]["Times Entered"] 
+
+func save_floor_entered_count(floor_name : String, count : int) -> void:
+	current_save_game.tower_entrance_data[floor_name]["Times Entered"] = count
+	save_game()
 
 func get_existing_save_file() -> GameSave:
 	return ResourceLoader.load(SAVE_PATH, "", ResourceLoader.CACHE_MODE_IGNORE)
@@ -181,3 +191,14 @@ func load_recipe_unlocks_status() -> void:
 	
 	CodexManager.bar_recipe_unlocks = current_save_game.bar_recipe_unlocks
 	CodexManager.dish_recipe_unlocks = current_save_game.dish_recipe_unlocks
+
+func save_progression_state(state_name : String, state : bool) -> void:
+	if current_save_game:
+		current_save_game.progression_states[state_name] = state
+		save_game()
+
+func load_progression_state(state_name : String) -> bool:
+	if current_save_game:
+		return current_save_game.progression_states[state_name]
+	
+	return false	

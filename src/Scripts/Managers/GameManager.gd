@@ -25,7 +25,14 @@ var license_promotion_time : bool = false
 var in_last_breadth_mode : bool = false
 var remaining_bolt_chain_links : int = 0
 var event_multiplier : float = 1.0
+
 var first_class_just_unlocked : bool = false
+var first_quest_just_unlocked : bool = false
+var floor_2_just_reached : bool = false
+var floor_4_just_reached : bool = false
+var floor_6_just_reached : bool = false
+var boss_room_just_reached : bool = false
+
 enum NOTIFICATION_TYPE {CRAFTING, COOKING, SMELTING, AP, QUEST}
 
 # Called when the node enters the scene tree for the first time.

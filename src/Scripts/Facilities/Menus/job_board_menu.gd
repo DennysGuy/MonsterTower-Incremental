@@ -63,11 +63,7 @@ func clear_description_panel() -> void:
 	accept_quest_button.hide()
 
 func close_out() -> void:
-	GameManager.player_can_move = true
-	GameManager.can_open_bag = true
-	GameManager.can_open_tower_map = true
-	GameManager.can_pause_game = true
-	
+	CutsceneManager.enable_player_functionality()
 	SignalBus.hide_tech_tree_canvas_layer.emit()
 	QuestManager.initialize_job_quests.emit()
 	queue_free()
