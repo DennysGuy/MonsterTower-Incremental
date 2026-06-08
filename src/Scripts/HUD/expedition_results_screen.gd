@@ -34,7 +34,8 @@ const TRANSFER_TO_BANK = preload("uid://ddk7o6mnyi7ji")
 const CLOSE_IN = preload("uid://dc3va7knibxnb")
 const CLOSE_OUT = preload("uid://caj0oih8j2sty")
 
-const TEMP_RESULTS_SCREEN_THEME = preload("uid://cpyx2c4kjhkag")
+const TRANSITION_SCREEN_THEME = preload("uid://c4ecpklgehudy")
+
 var can_go_back : bool = true
 var tips : Array[String] = [
 	"Can't reach a ledge? Upgrade your jump!",
@@ -58,7 +59,7 @@ func _ready() -> void:
 	animation_player.play("CloseOut")
 	tips_and_tricks.text = tips.pick_random()
 	floor_reached.text = "%s %s" %[GameManager.previous_map_data.biome, GameManager.previous_map_data.floor_name]
-	MusicPlayer.play_song(TEMP_RESULTS_SCREEN_THEME)
+	MusicPlayer.play_song(TRANSITION_SCREEN_THEME)
 
 	if PlayerStats.facilities_unlocked["Bank"]:
 		can_go_back = false
@@ -84,6 +85,7 @@ func _process(delta: float) -> void:
 		to_tower_bar.value = 0
 
 func go_to_starshire() -> void:
+	MusicPlayer.stop_player()
 	GameManager.spawn_location = 0
 	GameManager.resupply_character = true
 	get_tree().change_scene_to_file("uid://cq0un0c22235d")

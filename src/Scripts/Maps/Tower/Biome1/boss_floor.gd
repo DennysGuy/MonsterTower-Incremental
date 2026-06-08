@@ -11,6 +11,7 @@ var boss : Boss
 
 const DELETE_SWITCH_PLATFORM = preload("uid://daadfftvbie32")
 const WHOOSH_OUT = preload("uid://cvn02i878pp3e")
+const BOSS_THEME = preload("uid://biynll3nsb3v7")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -28,7 +29,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-
 func start_boss_fight_timer() -> void:
 	ExpeditionTimer.start_hunt_timer()
 
@@ -37,7 +37,6 @@ func load_boss_fight_timer() -> void:
 	PlayerHudSignalBus.load_timer_label.emit()
 	PlayerHudSignalBus.show_stop_watch.emit()
 	
-
 func delete_switch_and_platform() -> void:
 	play_sfx(DELETE_SWITCH_PLATFORM)
 	activation_switch.queue_free()
@@ -62,6 +61,7 @@ func start_boss_fight() -> void:
 	add_child(boss)
 	await get_tree().create_timer(4.0).timeout
 	PlayerHudSignalBus.issue_big_notification.emit("Ready?")
+	MusicPlayer.play_song(BOSS_THEME)
 	PlayerHudSignalBus.show_boss_hp_bar.emit()
 	load_boss_fight_timer()
 	await get_tree().create_timer(3.0).timeout
@@ -72,6 +72,7 @@ func start_boss_fight() -> void:
 	PlayerHudSignalBus.hide_big_notification.emit()
 	
 func mini_boss_death_scene() -> void:
+	MusicPlayer.stop_player()
 	PlayerHudSignalBus.flash_screen.emit()
 	await get_tree().create_timer(0.5).timeout
 	boss.queue_free()
