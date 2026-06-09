@@ -66,10 +66,14 @@ func pick_up_item() -> void:
 			can_pick_up = InventoryManager.add_item("Use", item)
 		
 	if can_pick_up:
-		SignalBus.play_sfx.emit(PICKUP_ITEM)
+		SignalBus.play_sfx.emit(PICKUP_ITEM,0.0)
 		PlayerHudSignalBus.populate_item_notification_panel.emit(item)
 		if PlayerStats.can_craft_next_sword():
+			HubManager.show_facility_notification.emit("Weapon Upgrade Station")
 			SignalBus.show_can_craft_sword.emit()
+		
+		HubManager.check_for_node_purchase.emit()
+		
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Player:

@@ -66,7 +66,7 @@ func _ready() -> void:
 	SignalBus.play_warrior_unlock_animation.connect(warrior_class_unlocked_notice)
 	SignalBus.spawn_warrior_tech_tree.connect(warrior_class_unlocked_notice)
 	TechTreeManager.unlock_station.connect(unlock_station)
-	
+	HubManager.check_for_node_purchase.connect(check_for_node_purchase)
 	#SignalBus.show_ap_notice.connect(show_ap_notice)
 
 	TechTreeManager.update_currency_label.emit()
@@ -92,6 +92,8 @@ func _ready() -> void:
 	SaveManager.save_player_stats()
 	QuestManager.check_map_name.emit(map_name)
 	show_ap_notice()
+	show_gem_station_notice()
+	check_for_node_purchase()
 	if PlayerStats.player_stats["Level"] == 2 and PlayerStats.player_stats["Ability Points"] == 1:
 		#ability_station_notice()
 		Dialogic.start(LEVEL_UP_INSTRUCTION)
@@ -168,8 +170,14 @@ func _on_tower_area_body_entered(body: Node2D) -> void:
 
 func show_ap_notice() -> void:
 	if PlayerStats.player_stats["Ability Points"] >= 1:
-		ap_notice.show()
-	
+		HubManager.show_facility_notification.emit("Class Advance Center")
+
+func show_gem_station_notice() -> void:
+	if InventoryManager.inventories["Gem Stones"].size() > 0:
+		HubManager.show_facility_notification.emit("Gem Stone Station")
+	else:
+		HubManager.hide_facility_notification.emit("Gem Stone Station")
+
 func _on_tower_area_body_exited(body: Node2D) -> void:
 	if body is Player:
 		player_in_tower_range = false
@@ -247,6 +255,7 @@ func _on_grand_market_area_body_entered(body: Node2D) -> void:
 	if body is Player:
 		player_in_market_range = true
 		sell_novelty_items()
+		check_for_node_purchase()
 		enter_market_label.show()
 
 func _on_grand_market_area_body_exited(body: Node2D) -> void:
@@ -329,14 +338,16 @@ func unlock_refinery_station() -> void:
 	PlayerStats.show_refinery_station_unlock_animation = false
 
 func unlock_station() -> void:
-	CutsceneManager.disable_play
 	if PlayerStats.show_cooking_station_unlock_animation:
+		CutsceneManager.disable_player_functionality()
 		await unlock_cooking_station()
 	
 	if PlayerStats.show_refinery_station_unlock_animation:
+		CutsceneManager.disable_player_functionality()
 		await unlock_refinery_station()
 	
 	if PlayerStats.show_gem_station_unlock_animation:
+		CutsceneManager.disable_player_functionality()
 		await gem_station_unlock_notice()
 	
 	CutsceneManager.enable_player_functionality()
@@ -478,3 +489,48 @@ func set_camera_to_dojo_position() -> void:
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Player:
 		Dialogic.start('uid://buaw4ymemp3ln')
+
+func check_for_node_purchase() -> void:
+	var tech_node_stats_dict := TechTreeManager.tech_node_stats
+	
+	for key in tech_node_stats_dict:
+		var tech_node_stats : TechNodeStats = tech_node_stats_dict[key]
+		if can_purchase(tech_node_stats) and tech_node_stats.stat_relation != TechTreeManager.STAT_RELATION.LICENSE:
+			HubManager.show_facility_notification.emit("Upgrades PC")
+			return
+	HubManager.hide_facility_notification.emit("Upgrades PC")
+	
+
+
+func can_purchase(tech_node_stats : TechNodeStats) -> bool:
+	if SaveManager.current_save_game:
+		var tech_node_name : String = tech_node_stats.node_name
+		var saved_data = SaveManager.current_save_game.tech_nodes.get(tech_node_name)
+		tech_node_stats.current_level = saved_data["Level"]
+		tech_node_stats.unlocked = saved_data["Unlocked"]
+		TechTreeManager.tech_nodes[tech_node_stats.node_name] = saved_data["Level"]
+		
+	return TechTreeManager.currency >= tech_node_stats.currency_required and has_resource_quantity(tech_node_stats) and tech_node_stats.current_level < tech_node_stats.max_level and tech_node_stats.unlocked
+
+
+func has_resource_quantity(tech_node_stats : TechNodeStats) -> bool:
+	if tech_node_stats.materials_required.is_empty():
+		return true
+
+	for resource in tech_node_stats.materials_required:
+		for item in resource.keys():
+			match item.item_type:
+				item.ITEM_TYPE.CRAFTING:
+					if InventoryManager.get_quantity(item, "Crafting Items") < resource[item]:
+						return false
+				item.ITEM_TYPE.COOKING:
+					if InventoryManager.get_quantity(item, "Cooking Items") < resource[item]:
+						return false
+				item.ITEM_TYPE.ORE:
+					if InventoryManager.get_quantity(item, "Ore") < resource[item]:
+						return false
+				item.ITEM_TYPE.USE:
+					if InventoryManager.get_quantity(item, "Use") < resource[item]:
+						return false
+		
+	return true		

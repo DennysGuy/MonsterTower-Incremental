@@ -158,7 +158,7 @@ _data = {
 }
 
 [node name="TaskListItem" type="Control" unique_id=1940233025 node_paths=PackedStringArray("label", "icon")]
-custom_minimum_size = Vector2(0, 20)
+custom_minimum_size = Vector2(0, 10)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 327.0
@@ -169,8 +169,8 @@ icon = NodePath("PanelContainer/HBoxContainer/Icon")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=669899884]
 layout_mode = 0
-offset_right = 342.99994
-offset_bottom = 40.0
+offset_right = 343.0
+offset_bottom = 30.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer" unique_id=1330861788]
 layout_mode = 2
@@ -189,7 +189,7 @@ theme_override_colors/default_color = Color(0.9091122, 0.85196555, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 0
 theme_override_fonts/normal_font = ExtResource("1_rw0ve")
-theme_override_font_sizes/normal_font_size = 16
+theme_override_font_sizes/normal_font_size = 14
 text = "Corrupted Mushie: 5/25"
 vertical_alignment = 1
 

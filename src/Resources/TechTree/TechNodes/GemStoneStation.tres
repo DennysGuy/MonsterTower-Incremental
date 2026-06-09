@@ -16,6 +16,7 @@ materials_required = Array[Dictionary]([{
 ExtResource("2_atssi"): 2
 }])
 node_type = 1
+stat_relation = 1
 stat_name = "Gem Stone Station"
 prereqs = Array[String](["Attack 2:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

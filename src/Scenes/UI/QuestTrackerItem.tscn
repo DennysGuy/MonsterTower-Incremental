@@ -13,9 +13,11 @@ anchor_bottom = 0.5
 offset_left = -269.0
 offset_top = -118.625
 offset_right = 281.0
-offset_bottom = 118.625
+offset_bottom = 136.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_bottom = 40
 script = ExtResource("1_oio6f")
 quest_data = ExtResource("2_4i7lb")
 checklist = NodePath("PanelContainer/VBoxContainer/MarginContainer/Checklist")
@@ -34,7 +36,7 @@ offset_bottom = 209.625
 theme_override_constants/separation = 2
 
 [node name="QuestTitle" type="RichTextLabel" parent="PanelContainer/VBoxContainer" unique_id=1215813679]
-custom_minimum_size = Vector2(300, 40)
+custom_minimum_size = Vector2(300, 25)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.74509805)
@@ -42,7 +44,7 @@ theme_override_constants/shadow_outline_size = 4
 theme_override_constants/outline_size = 0
 theme_override_constants/table_v_separation = 3
 theme_override_fonts/normal_font = ExtResource("1_umesl")
-theme_override_font_sizes/normal_font_size = 19
+theme_override_font_sizes/normal_font_size = 16
 bbcode_enabled = true
 text = "[color=yellow]Newcomer's List[/color]"
 

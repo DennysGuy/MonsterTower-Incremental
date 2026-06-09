@@ -20,9 +20,9 @@
 [ext_resource type="Texture2D" uid="uid://d4h3rqdraverp" path="res://Assets/EnvironmentalAssets/NewStarspireTileset.png" id="17_uhrlg"]
 [ext_resource type="PackedScene" uid="uid://vo5sm7p34vo6" path="res://src/Scenes/Actors/Utilities/NameTag.tscn" id="19_bl45m"]
 [ext_resource type="PackedScene" uid="uid://icxc8mi1q1w4" path="res://src/Scenes/NewStarshire/Facilities/SwordCraftingStation.tscn" id="21_bl45m"]
+[ext_resource type="PackedScene" uid="uid://di6r36s37fj8d" path="res://src/Scenes/NewStarshire/FacilityNotice.tscn" id="23_0u15j"]
 [ext_resource type="PackedScene" uid="uid://mwttdrt2cg71" path="res://src/Scenes/Players/ambience_player.tscn" id="23_5xris"]
 [ext_resource type="Texture2D" uid="uid://c46te1sv6peeo" path="res://Assets/Facilities/Dojo.png" id="25_nj75w"]
-[ext_resource type="Texture2D" uid="uid://3n5w5v2q7e23" path="res://Assets/HUD/NewNoticeIcon.png" id="26_d6jc3"]
 [ext_resource type="Texture2D" uid="uid://14re4sr2xv7s" path="res://Assets/WelcomSign.png" id="26_ejo2t"]
 [ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="27_e7ku4"]
 [ext_resource type="Texture2D" uid="uid://cuwc34c0ympwf" path="res://Assets/DirectionSign.png" id="28_m7r5i"]
@@ -766,14 +766,6 @@ offset_bottom = 75.0
 [node name="Tag" parent="Dojo/NameTag/Bg" parent_id_path=PackedInt32Array(169198128, 305804188) index="0" unique_id=725373759]
 text = "Class Advance Center"
 
-[node name="APNotice" type="TextureRect" parent="Dojo" unique_id=2037915561]
-visible = false
-offset_left = -40.0
-offset_top = -115.0
-offset_right = 38.0
-offset_bottom = -47.0
-texture = ExtResource("26_d6jc3")
-
 [node name="ArrowAtOre" parent="Dojo" unique_id=1275117717 instance=ExtResource("36_hw86b")]
 visible = true
 position = Vector2(1, -29)
@@ -816,6 +808,7 @@ Upgrade Station"
 position = Vector2(0, -13)
 
 [node name="EnterUpgradeStationNotice" type="Label" parent="." unique_id=885845539]
+visible = false
 offset_left = 1591.0
 offset_top = 420.0
 offset_right = 1712.0
@@ -1053,6 +1046,69 @@ position = Vector2(2065, 704)
 
 [node name="TaskBoard2" parent="." unique_id=1076737153 instance=ExtResource("36_4qs0c")]
 position = Vector2(408, 704)
+
+[node name="ClassAdvanceCenterNotice" parent="." unique_id=9896759 instance=ExtResource("23_0u15j")]
+offset_left = 537.0
+offset_top = 508.0
+offset_right = 691.0
+offset_bottom = 653.0
+facility_name = "Class Advance Center"
+
+[node name="JobRequestsBoardNotice" parent="." unique_id=130892128 instance=ExtResource("23_0u15j")]
+offset_left = 333.0
+offset_top = 536.0
+offset_right = 487.0
+offset_bottom = 681.0
+facility_name = "Job Requests Board"
+
+[node name="UpgradesPCNotice" parent="." unique_id=765676355 instance=ExtResource("23_0u15j")]
+offset_left = 172.0
+offset_top = 556.0
+offset_right = 326.0
+offset_bottom = 701.0
+facility_name = "Upgrades PC"
+
+[node name="UpgradesPCNotice3" parent="." unique_id=1340485041 instance=ExtResource("23_0u15j")]
+offset_left = 2213.0
+offset_top = 555.0
+offset_right = 2367.0
+offset_bottom = 700.0
+facility_name = "Upgrades PC"
+
+[node name="UpgradesPCNotice2" parent="." unique_id=582724704 instance=ExtResource("23_0u15j")]
+offset_left = 1984.0
+offset_top = 536.0
+offset_right = 2138.0
+offset_bottom = 681.0
+facility_name = "Job Requests Board"
+
+[node name="WeaponCraftingStationNotice" parent="." unique_id=562227682 instance=ExtResource("23_0u15j")]
+offset_left = 1742.0
+offset_top = 351.0
+offset_right = 1896.0
+offset_bottom = 496.0
+facility_name = "Weapon Crafting Station"
+
+[node name="GemStoneStationNotice" parent="." unique_id=317350291 instance=ExtResource("23_0u15j")]
+offset_left = 1571.0
+offset_top = 331.0
+offset_right = 1725.0
+offset_bottom = 476.0
+facility_name = "Gem Stone Station"
+
+[node name="SmeltingStationNotice" parent="." unique_id=20813922 instance=ExtResource("23_0u15j")]
+offset_left = 1566.0
+offset_top = 511.0
+offset_right = 1720.0
+offset_bottom = 656.0
+facility_name = "Smelting Station"
+
+[node name="CookingStationNotice" parent="." unique_id=2045831039 instance=ExtResource("23_0u15j")]
+offset_left = 1786.0
+offset_top = 511.0
+offset_right = 1940.0
+offset_bottom = 656.0
+facility_name = "Cooking Station"
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1529112079]
 position = Vector2(828, 366)

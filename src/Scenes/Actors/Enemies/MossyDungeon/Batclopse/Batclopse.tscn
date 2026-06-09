@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cpswhrjwnla1t" path="res://Assets/Enemies/CyclopsBat/CyclopseBat_Outline_IdleMove.png" id="2_gfyeb"]
 [ext_resource type="Resource" uid="uid://dsl20riisg4mk" path="res://src/Resources/Actors/Enemies/Biome1/Batclopse/Batclopse.tres" id="2_jjppc"]
 [ext_resource type="PackedScene" uid="uid://vo5sm7p34vo6" path="res://src/Scenes/Actors/Utilities/NameTag.tscn" id="3_hjwao"]
+[ext_resource type="Shader" uid="uid://cguloil4ymho" path="res://src/Scripts/Shaders/HitFlash.gdshader" id="3_jbnw1"]
 [ext_resource type="PackedScene" uid="uid://b8lilr7mgc8l1" path="res://src/Scenes/Actors/Enemies/EnemyHealthBar.tscn" id="4_2p384"]
 [ext_resource type="PackedScene" uid="uid://b73ndgmav7ja2" path="res://src/Scenes/Actors/Utilities/HealthComponent.tscn" id="5_2p384"]
 [ext_resource type="Texture2D" uid="uid://i8n210fc6yi5" path="res://Assets/Enemies/CyclopsBat/CyclopseBat_Outline_Hurt.png" id="6_0virf"]
@@ -31,6 +32,11 @@
 [ext_resource type="Script" uid="uid://cx8e05eefws02" path="res://src/Scripts/StateMachine/EnemyStates/GenericEnemyStates/enemy_spawn_in.gd" id="24_d044k"]
 [ext_resource type="PackedScene" uid="uid://dg5nyfcc7ja8v" path="res://src/Scenes/Actors/Enemies/StatusEffectIconBar.tscn" id="27_0802a"]
 [ext_resource type="PackedScene" uid="uid://ducu4iluu5nv4" path="res://src/Scenes/UI/StatusEffectVBox.tscn" id="28_ihpwa"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p5mrb"]
+shader = ExtResource("3_jbnw1")
+shader_parameter/active = false
+shader_parameter/flash_strength = 0.850000040375
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f4ywy"]
 size = Vector2(31, 52)
@@ -351,7 +357,7 @@ size = Vector2(35, 53)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jjppc"]
 size = Vector2(21, 35)
 
-[node name="Batclopse" type="CharacterBody2D" unique_id=87067631 node_paths=PackedStringArray("name_tag", "health_bar", "status_effect_icon_bar", "vertical_status_icon_bar", "slow_timer", "silenced_timer", "wall_detector", "ground_detector", "state_machine", "animation_player", "health_component", "sprite", "blink_timer", "stun_timer", "hurt_box", "hit_box", "hit_state", "dead_state", "stun_state", "sfx_player") groups=["Enemy"]]
+[node name="Batclopse" type="CharacterBody2D" unique_id=87067631 node_paths=PackedStringArray("name_tag", "health_bar", "graphic", "status_effect_icon_bar", "vertical_status_icon_bar", "slow_timer", "silenced_timer", "wall_detector", "ground_detector", "state_machine", "animation_player", "health_component", "sprite", "blink_timer", "stun_timer", "hurt_box", "hit_box", "hit_state", "dead_state", "stun_state", "sfx_player") groups=["Enemy"]]
 collision_layer = 128
 collision_mask = 2
 script = ExtResource("1_184l8")
@@ -359,6 +365,7 @@ enemy_stats = ExtResource("2_jjppc")
 xp = 18
 name_tag = NodePath("NameTag")
 health_bar = NodePath("EnemyHealthBar")
+graphic = NodePath("Sprite")
 status_effect_icon_bar = NodePath("StatusEffectIconBar")
 vertical_status_icon_bar = NodePath("VBoxContainer")
 slow_timer = NodePath("SlowTimer")
@@ -380,6 +387,7 @@ sfx_player = NodePath("SfxPlayer")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=958977099]
 modulate = Color(1, 1, 1, 0)
+material = SubResource("ShaderMaterial_p5mrb")
 position = Vector2(0, -34)
 texture = ExtResource("2_gfyeb")
 hframes = 6

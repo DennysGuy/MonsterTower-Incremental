@@ -338,6 +338,7 @@ func _on_gui_input(event: InputEvent) -> void:
 			TechTreeManager.increment_upgrade_count()
 			TechTreeManager.update_currency_label.emit()
 			TechTreeManager.check_for_tech_node_purchases.emit()
+			HubManager.check_for_node_purchase.emit()
 		else:
 			play_sfx(DENIED)
 

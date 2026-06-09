@@ -7,6 +7,7 @@ class_name Enemy extends Entity
 @export var health_bar : EnemyHealthBar
 @export var player : Player
 @export var drop_scene : Map
+@export var graphic : Sprite2D
 
 @export var status_effect_icon_bar : StatusEffectIconBar
 @export var vertical_status_icon_bar : StatusEffectVBox
@@ -145,3 +146,18 @@ func give_xp() -> void:
 	drop_scene.add_child(xp_label)
 	SaveManager.save_player_stats()
 	LevelingManager.check_for_level_up()
+
+
+func hit_flash(flash_material : ShaderMaterial, state : bool) -> void:
+	if !is_instance_valid(flash_material):
+		return
+	var shader_material : ShaderMaterial = flash_material.duplicate()
+	shader_material.set_shader_parameter("active", state)
+	graphic.material = shader_material
+
+func issue_hit_flash(flash_material : ShaderMaterial) -> void:
+	if !is_inside_tree():
+		return
+	hit_flash(flash_material, true)
+	await get_tree().create_timer(0.15).timeout
+	hit_flash(flash_material,false)

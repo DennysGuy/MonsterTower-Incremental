@@ -169,10 +169,24 @@ func load_all_quest_status() -> void:
 				if loaded_quest:
 					loaded_quest.load_quest_status()
 
+func check_for_available_job() -> bool:
+	var chapters : Array[String] = ["Introduction", "Spring", "Fall", "Winter"]
+	var job_quests : Dictionary = quests["Job"]
+	
+	for chapter in chapters:
+		for quest in job_quests[chapter]:
+			if quest:
+				var loaded_quest : Quest = get_quest(quest)
+				loaded_quest.load_quest_status()
+				if loaded_quest.is_available():
+					return true
+	
+	return false
+	
 func load_active_quests() -> void:
 	if SaveManager.current_save_game:
 		QuestManager.active_quests = SaveManager.current_save_game.active_quests
-
+		
 func activate_task(task : Task) -> void:
 	if !task:
 		return

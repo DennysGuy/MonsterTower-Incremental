@@ -43,6 +43,7 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_go_to_floor_button_up() -> void:
+	CutsceneManager.enable_player_functionality()
 	PlayerHudSignalBus.play_close_out_animation.emit()
 	GameManager.player_can_move = true
 	GameManager.can_open_bag = true

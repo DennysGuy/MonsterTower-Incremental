@@ -30,9 +30,7 @@ func check_to_unveil_class_selection_node() -> void:
 func close_out() -> void:
 	SignalBus.hide_tech_tree_canvas_layer.emit()
 	TechTreeManager.set_ability_hud_icon.emit()
-	GameManager.player_can_move = true
-	GameManager.can_open_bag = true
-	GameManager.can_open_tower_map = true
+	CutsceneManager.enable_player_functionality()
 	queue_free()
 
 func update_ap_available() -> void:

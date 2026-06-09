@@ -91,7 +91,7 @@ signal show_class_notice
 @warning_ignore("unused_signal")
 signal set_icons
 @warning_ignore("unused_signal")
-signal play_sfx(audio_stream : AudioStream)
+signal play_sfx(audio_stream : AudioStream, volume : float)
 @warning_ignore("unused_signal")
 signal hide_tech_tree_canvas_layer
 @warning_ignore("unused_signal")
@@ -99,6 +99,8 @@ signal stop_player
 
 @warning_ignore("unused_signal")
 signal spawn_class_selection_menu
+@warning_ignore("unused_signal")
+signal play_level_up_visual
 @warning_ignore("unused_signal")
 signal show_ap_notice
 @warning_ignore("unused_signal")

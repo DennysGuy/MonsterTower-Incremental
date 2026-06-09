@@ -20,17 +20,26 @@ mouse_filter = 2
 color = Color(0.11858138, 0.11858138, 0.11858138, 1)
 
 [node name="AirAttackNode" parent="." unique_id=310214223 instance=ExtResource("2_7au7t")]
-position = Vector2(145, 252)
+offset_left = 145.0
+offset_top = 252.0
+offset_right = 145.0
+offset_bottom = 252.0
 tech_node_stats = ExtResource("3_urnm2")
 node_type = 2
 
 [node name="DashAttackNode" parent="." unique_id=53768398 instance=ExtResource("2_7au7t")]
-position = Vector2(501, 252)
+offset_left = 501.0
+offset_top = 252.0
+offset_right = 501.0
+offset_bottom = 252.0
 tech_node_stats = ExtResource("3_acel5")
 node_type = 2
 
 [node name="DoubleJumpAttack" parent="." unique_id=1184687078 instance=ExtResource("2_7au7t")]
-position = Vector2(330, 252)
+offset_left = 330.0
+offset_top = 252.0
+offset_right = 330.0
+offset_bottom = 252.0
 tech_node_stats = ExtResource("3_gvncw")
 node_type = 2
 

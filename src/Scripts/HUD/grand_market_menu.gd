@@ -106,6 +106,8 @@ func _on_sell_button_button_up() -> void:
 			clear_details()
 	else:
 		clear_details()
+		
+	HubManager.check_for_node_purchase.emit()
 	
 func clear_details() -> void:
 	selected_item = null
@@ -169,6 +171,7 @@ func sell_all_items(container : GridContainer, inventory_name : String) -> void:
 				await get_tree().create_timer(0.1).timeout
 	
 	enable_tabs_and_buttons()
+	HubManager.check_for_node_purchase.emit()
 
 func _on_sell_novelties_button_2_button_up() -> void:
 	sell_all_items(bank_container, "Bank")

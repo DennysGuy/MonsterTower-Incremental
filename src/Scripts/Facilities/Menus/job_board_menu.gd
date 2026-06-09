@@ -146,6 +146,8 @@ func abandon_quest() -> void:
 		
 		initialize_available_jobs()
 	update_jobs_accepted_count_label()
+	if QuestManager.active_quests["Jobs"].size() > 0:
+		HubManager.hide_facility_notification.emit("Job Requests Board")
 
 func accept_quest() -> void:
 	#add quest to active quest
@@ -179,7 +181,9 @@ func turn_in_quest() -> void:
 	QuestManager.initialize_job_quests.emit()
 	SaveManager.save_game()
 	play_sfx(JOB_TURN_IN)
-
+	if QuestManager.active_quests["Jobs"].size() > 0:
+		HubManager.hide_facility_notification.emit("Job Requests Board")
+	
 func populate_item_rewards_container(quest : Quest) -> void:
 	
 	InventoryManager.clear_grid_container(item_rewards_container)

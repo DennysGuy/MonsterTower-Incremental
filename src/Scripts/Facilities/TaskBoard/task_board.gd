@@ -12,16 +12,19 @@ func _ready() -> void:
 		notice_icon.show()
 		notice_icon_2.show()
 		jobs_available_notice.show()
+		HubManager.show_facility_notification.emit("Job Requests Board")
 	
+	await get_tree().process_frame
+	
+	if QuestManager.check_for_available_job():
+		HubManager.show_facility_notification.emit("Job Requests Board")
+		
 	show_notice_on_turn_in()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("interact") and player_in_range:
-		GameManager.player_can_move = false
-		GameManager.can_open_tower_map = false
-		GameManager.can_open_bag = false
-		GameManager.can_pause_game = false
+		CutsceneManager.disable_player_functionality()
 		PlayerHudSignalBus.spawn_job_board_menu.emit()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
@@ -39,3 +42,4 @@ func show_notice_on_turn_in() -> void:
 		if QuestManager.get_quest(quest_name).is_ready_for_turn_in():
 			notice_icon.show()
 			notice_icon_2.show()
+			HubManager.show_facility_notification.emit("Job Requests Board")

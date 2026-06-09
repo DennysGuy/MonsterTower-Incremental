@@ -57,6 +57,8 @@ func upgrade_sword() -> void:
 		update_sword()
 		update_inventory_containers()
 		SignalBus.update_sword_texture.emit("Idle")
+	else:
+		PlayerStats.set_tracked_weapon_index(-1)
 		
 	SaveManager.save_player_stats()
 	SaveManager.save_inventories()	

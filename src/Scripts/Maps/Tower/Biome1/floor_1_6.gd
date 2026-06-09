@@ -81,17 +81,17 @@ func _on_checkpoint_area_body_exited(body: Node2D) -> void:
 
 
 func unlock_door() -> void:
-	play_sfx(TEMP_VICTORY_THEME_1)
+	play_sfx(TEMP_VICTORY_THEME_1,0.0)
 	player.send_to_idle_state()
 	GameManager.player_can_move = false
 	await get_tree().create_timer(3.0).timeout
-	play_sfx(RETRO_SWOOOSH_16)
+	play_sfx(RETRO_SWOOOSH_16,0.0)
 	diamond_key_lock.queue_free()
 	await get_tree().create_timer(0.5).timeout
-	play_sfx(RETRO_SWOOOSH_16)
+	play_sfx(RETRO_SWOOOSH_16,0.0)
 	card_key_lock.queue_free()
 	await get_tree().create_timer(0.5).timeout
-	play_sfx(RETRO_SWOOOSH_16)
+	play_sfx(RETRO_SWOOOSH_16,0.0)
 	final_key_lock.queue_free()
 	await get_tree().create_timer(2.0).timeout
 	boss_door.play_door_open_animation()
@@ -111,12 +111,12 @@ func start_challenge() -> void:
 	camera.player = null
 	camera.position = diamond_key_position.position
 	await get_tree().create_timer(1.0).timeout
-	play_sfx(RETRO_MAGIC_11)
+	play_sfx(RETRO_MAGIC_11,0.0)
 	diamond_key_alter.unveil_alter()
 	await get_tree().create_timer(1.0).timeout
 	camera.position = card_key_position.position
 	await get_tree().create_timer(1.0).timeout
-	play_sfx(RETRO_MAGIC_11)
+	play_sfx(RETRO_MAGIC_11,0.0)
 	card_key_alter.unveil_alter()
 	await get_tree().create_timer(1.0).timeout
 	camera.position = top_position.position
@@ -153,7 +153,7 @@ func check_current_set_order() -> void:
 	await get_tree().create_timer(1.0).timeout
 	
 	if current_set_order == lever_order:
-		play_sfx(CRAFTING_NOTIFICATION)
+		play_sfx(CRAFTING_NOTIFICATION,0.0)
 		show_activation_lever()
 	else:
 		current_set_order.clear()
@@ -174,7 +174,7 @@ func show_final_key_location() -> void:
 	await get_tree().create_timer(2.0).timeout
 	camera.position = final_key_position.position
 	await get_tree().create_timer(2.0).timeout
-	play_sfx(RETRO_MAGIC_11)
+	play_sfx(RETRO_MAGIC_11,0.0)
 	final_key_alter.unveil_alter()
 	await get_tree().create_timer(1.0).timeout
 	camera.player = player
@@ -191,7 +191,7 @@ func show_activation_lever() -> void:
 	camera.player = null
 	camera.position = activation_switch_position.position
 	await get_tree().create_timer(2.0).timeout
-	play_sfx(RETRO_MAGIC_11)
+	play_sfx(RETRO_MAGIC_11,0.0)
 	activation_switch.show()
 	await get_tree().create_timer(2.0).timeout
 	QuestManager.check_general_task_for_completion.emit("Find the Door Switch")

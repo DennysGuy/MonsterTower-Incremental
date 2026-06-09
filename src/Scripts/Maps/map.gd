@@ -340,14 +340,9 @@ func load_floor_data() -> void:
 		if exit_elevator:
 			exit_elevator.current_room_data = tower_entrance_data
 
-func play_sfx(audio_stream : AudioStream) -> void:
-	if sfx_player:
-		sfx_player.play_sfx(audio_stream)
-
 func play_level_up_sfx() -> void:
-	if sfx_player:
-		sfx_player.play_sfx(TIER_UP)
-
+	play_sfx(TIER_UP,0.0)
+	SignalBus.play_level_up_visual.emit()
 
 func issue_repair_elevator_notice() -> void:
 	camera.player = null
@@ -435,3 +430,12 @@ func unlock_quests() -> void:
 		GameManager.new_jobs_available = true
 		SignalBus.check_for_notification.emit(GameManager.NOTIFICATION_TYPE.QUEST)
 		
+
+func play_sfx(sound: AudioStream, volume: float):
+	var player := AudioStreamPlayer.new()
+	player.stream = sound
+	player.volume_db = volume
+	player.bus = &"SFX"
+	add_child(player)
+	player.play()
+	player.finished.connect(player.queue_free)

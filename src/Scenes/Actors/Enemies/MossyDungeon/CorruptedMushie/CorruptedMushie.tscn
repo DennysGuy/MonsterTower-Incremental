@@ -386,6 +386,35 @@ _data = {
 &"Stun": SubResource("Animation_rxq5f")
 }
 
+[sub_resource type="Shader" id="Shader_jkdaj"]
+code = "shader_type canvas_item;
+
+uniform bool active = false;
+uniform float flash_strength : hint_range(0.0, 1.0) = 0.45;
+
+void fragment() {
+	vec4 previous_color = texture(TEXTURE, UV);
+
+	vec3 flash_color = mix(
+		previous_color.rgb,
+		vec3(1.0),
+		flash_strength
+	);
+
+	vec3 final_color = previous_color.rgb;
+
+	if (active) {
+		final_color = flash_color;
+	}
+
+	COLOR = vec4(final_color, previous_color.a);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gxvih"]
+shader = SubResource("Shader_jkdaj")
+shader_parameter/active = false
+shader_parameter/flash_strength = 0.850000040375
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s7mdw"]
 radius = 11.0
 height = 42.0
@@ -396,7 +425,7 @@ size = Vector2(23, 30)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v37cp"]
 size = Vector2(19, 26)
 
-[node name="CorruptedMushie" type="CharacterBody2D" unique_id=85927412 node_paths=PackedStringArray("name_tag", "health_bar", "status_effect_icon_bar", "vertical_status_icon_bar", "slow_timer", "silenced_timer", "wall_detector", "ground_detector", "state_machine", "animation_player", "health_component", "sprite", "blink_timer", "stun_timer", "hurt_box", "hit_box", "hit_state", "dead_state", "stun_state", "sfx_player") groups=["Enemy"]]
+[node name="CorruptedMushie" type="CharacterBody2D" unique_id=85927412 node_paths=PackedStringArray("name_tag", "health_bar", "graphic", "status_effect_icon_bar", "vertical_status_icon_bar", "slow_timer", "silenced_timer", "wall_detector", "ground_detector", "state_machine", "animation_player", "health_component", "sprite", "blink_timer", "stun_timer", "hurt_box", "hit_box", "hit_state", "dead_state", "stun_state", "sfx_player") groups=["Enemy"]]
 collision_layer = 128
 collision_mask = 2
 script = ExtResource("1_uospo")
@@ -404,6 +433,7 @@ enemy_stats = ExtResource("2_l3wr6")
 xp = 7
 name_tag = NodePath("NameTag")
 health_bar = NodePath("EnemyHealthBar")
+graphic = NodePath("Sprite2D")
 status_effect_icon_bar = NodePath("StatusEffectIconBar")
 vertical_status_icon_bar = NodePath("StatusEffectVBox")
 slow_timer = NodePath("SlowTimer")
@@ -429,6 +459,7 @@ libraries/ = SubResource("AnimationLibrary_adl3q")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2103855697]
 modulate = Color(1, 1, 1, 0)
+material = SubResource("ShaderMaterial_gxvih")
 position = Vector2(0, -28)
 texture = ExtResource("1_gol3t")
 hframes = 8

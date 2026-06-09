@@ -628,7 +628,7 @@ color = Color(0, 0, 0, 1)
 [node name="PlayerSmithingAnimation" type="Sprite2D" parent="Control" unique_id=519510806]
 position = Vector2(932, 534)
 scale = Vector2(5.8147597, 6.156251)
-texture = ExtResource("3_scspg")
+texture = ExtResource("2_kshos")
 hframes = 2
 
 [node name="PlayerOutfit" type="Sprite2D" parent="Control" unique_id=2006457695]

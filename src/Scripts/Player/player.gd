@@ -96,6 +96,7 @@ func _ready() -> void:
 	SignalBus.update_sword_texture.connect(set_sword_texture)
 	SignalBus.update_player_uniform.connect(set_outfit_texture)
 	SignalBus.stop_player.connect(stop_player)
+	SignalBus.play_level_up_visual.connect(play_levelup_visual)
 	health = PlayerStats.player_stats["Max Health"]
 	mining_area_position = mining_area.position
 	gem_chest_hit_area_position = gem_chest_hit_area.position
@@ -413,3 +414,7 @@ func knock_back_player() -> void:
 				stop_player()
 			
 			move_and_slide()
+
+func play_levelup_visual() -> void:
+	var level_up_visual = preload("uid://bgddefvdr3k41").instantiate()
+	add_child(level_up_visual)

@@ -58,7 +58,7 @@ var current_prestige : int = 0
 var current_upgrade_count : int = 0
 var upgrade_count_to_prestige : int = 0
 
-enum STAT_RELATION {COMBAT, SURVIVAL, TRAVERSAL, INVENTORY, COOKING, CRAFTING}
+enum STAT_RELATION {COMBAT, SURVIVAL, TRAVERSAL, INVENTORY, COOKING, CRAFTING, LICENSE}
 enum TECH_NODE_TYPE {ABILITY, FACILITY, CLASS_ABILITY}
 
 @onready var tech_nodes : Dictionary = {
