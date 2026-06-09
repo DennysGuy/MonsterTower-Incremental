@@ -24,6 +24,7 @@ func enter() -> void:
 	parent.set_outfit_texture(animation_name)
 	parent.can_knock_back = true
 	parent.can_double_jump = true
+	#parent.can_dash_attack = true
 	parent.velocity = Vector2.ZERO
 	super()
 

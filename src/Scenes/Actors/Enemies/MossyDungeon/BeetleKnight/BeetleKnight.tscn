@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://b4vwu1bjmvgu2" path="res://Assets/Enemies/BeatleKnight/BeatleKnight_Idle.png" id="6_ffl6h"]
 [ext_resource type="Texture2D" uid="uid://cxqahb5fkrrvy" path="res://Assets/Enemies/BeatleKnight/BeatleKnight_Stun.png" id="8_pdb4h"]
 [ext_resource type="PackedScene" uid="uid://vo5sm7p34vo6" path="res://src/Scenes/Actors/Utilities/NameTag.tscn" id="9_10m0i"]
+[ext_resource type="Shader" uid="uid://cguloil4ymho" path="res://src/Scripts/Shaders/HitFlash.gdshader" id="9_ffl6h"]
 [ext_resource type="PackedScene" uid="uid://b8lilr7mgc8l1" path="res://src/Scenes/Actors/Enemies/EnemyHealthBar.tscn" id="10_viw5o"]
 [ext_resource type="Script" uid="uid://drr0deykmfrvq" path="res://src/Scripts/StateMachine/state_machine.gd" id="11_5vif7"]
 [ext_resource type="Script" uid="uid://bwlb4547lknf" path="res://src/Scripts/StateMachine/EnemyStates/GenericEnemyStates/enemy_idle.gd" id="12_yrfb2"]
@@ -386,6 +387,11 @@ _data = {
 &"Stun": SubResource("Animation_rxq5f")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_28cdm"]
+shader = ExtResource("9_ffl6h")
+shader_parameter/active = false
+shader_parameter/flash_strength = 0.8
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s7mdw"]
 radius = 11.0
 height = 42.0
@@ -429,6 +435,7 @@ libraries/ = SubResource("AnimationLibrary_adl3q")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2103855697]
 modulate = Color(1, 1, 1, 0)
+material = SubResource("ShaderMaterial_28cdm")
 position = Vector2(0, -41)
 texture = ExtResource("6_2s6ht")
 hframes = 8

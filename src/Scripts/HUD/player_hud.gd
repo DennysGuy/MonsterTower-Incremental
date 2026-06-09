@@ -138,7 +138,7 @@ func _process(delta: float) -> void:
 		CodexManager.open_a_codex_menu.emit(3)
 	
 func update_player_health() -> void:
-	var current_hp : int = PlayerStats.player_stats["Current Health"]
+	var current_hp : int = GameManager.current_player_health
 	var max_hp : int = PlayerStats.player_stats["Max Health"] + PlayerStats.get_current_sword().get_total_hp_bonus()
 	player_health_bar.value = current_hp
 	player_health_bar.max_value = max_hp

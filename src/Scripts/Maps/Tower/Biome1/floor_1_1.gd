@@ -24,7 +24,6 @@ func _ready() -> void:
 		spawn_mp_vials()
 	
 	await get_tree().process_frame
-	
 	if GameManager.hunt_challenge_selected:
 		SignalBus.update_kill_quota_text.emit("Defeat all Monsters to win!", false, false)	
 	

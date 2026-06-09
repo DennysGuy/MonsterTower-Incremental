@@ -31,6 +31,7 @@ func process_input(_event: InputEvent) -> State:
 	if Input.is_action_just_pressed("add_currency"):
 		parent.jump_buffer_timer = parent.jump_buffer_wait_time
 		
+		
 	return null
 
 func process_frame(_delta: float) -> State:
@@ -52,6 +53,7 @@ func process_physics(_delta: float) -> State:
 		parent.animation_player.play()
 	
 	if parent.jump_buffer_timer > 0:
+		parent.grab_ladder_buffer_timer = parent.grab_ladder_buffer_wait_time
 		return idle_state
 	
 	if parent.ladder_top_position_detector.global_position.y <= parent.stored_ladder.ladder_top.global_position.y and Input.is_action_pressed("pan_cam_up") and parent.is_climbing:

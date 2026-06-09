@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dde84l0bwk4p0" path="res://Assets/Enemies/MossGolem/MossGolem_Idle.png" id="2_omhrv"]
 [ext_resource type="Script" uid="uid://drr0deykmfrvq" path="res://src/Scripts/StateMachine/state_machine.gd" id="3_omhrv"]
 [ext_resource type="Texture2D" uid="uid://ctuigf8w7ibqy" path="res://Assets/Enemies/MossGolem/MossGolem_Patrol.png" id="3_vseko"]
+[ext_resource type="Shader" uid="uid://cguloil4ymho" path="res://src/Scripts/Shaders/HitFlash.gdshader" id="3_w56a2"]
 [ext_resource type="Script" uid="uid://bwlb4547lknf" path="res://src/Scripts/StateMachine/EnemyStates/GenericEnemyStates/enemy_idle.gd" id="4_4xph1"]
 [ext_resource type="Texture2D" uid="uid://qpvcl555qh1v" path="res://Assets/Enemies/MossGolem/MossGolem_Hurt.png" id="4_p1vxh"]
 [ext_resource type="Texture2D" uid="uid://0xoce242so5x" path="res://Assets/Enemies/MossGolem/MossGolem_Death.png" id="5_83s5a"]
@@ -31,6 +32,11 @@
 [ext_resource type="AudioStream" uid="uid://da4j7oibbpe1j" path="res://Audio/SFX/Biomes/MossyDungeon/GenericDeath3.wav" id="22_0dfos"]
 [ext_resource type="PackedScene" uid="uid://bsd5w23h513t2" path="res://src/Scenes/Actors/Utilities/WallDetector.tscn" id="23_e8bss"]
 [ext_resource type="PackedScene" uid="uid://crrtithryo2j6" path="res://src/Scenes/Actors/Utilities/GroundDetector.tscn" id="24_qriu3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3b56j"]
+shader = ExtResource("3_w56a2")
+shader_parameter/active = false
+shader_parameter/flash_strength = 0.8
 
 [sub_resource type="Animation" id="Animation_obnqv"]
 resource_name = "Chase"
@@ -427,6 +433,7 @@ sfx_player = NodePath("SfxPlayer")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2102243963]
 modulate = Color(1, 1, 1, 0)
+material = SubResource("ShaderMaterial_3b56j")
 position = Vector2(0, -67)
 texture = ExtResource("2_omhrv")
 hframes = 7

@@ -16,8 +16,6 @@ func enter() -> void:
 	parent.disable_hit_box()
 	parent.timer.wait_time = parent.knock_back_wait_time
 	parent.timer.start()
-	if parent.graphic:
-		parent.issue_hit_flash(parent.graphic.material)
 	if parent.locked_on:
 		parent.remove_stun_marker()
 	

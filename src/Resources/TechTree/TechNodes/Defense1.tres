@@ -14,6 +14,6 @@ max_level = 3
 currency_required = 200
 stat_relation = 1
 stat_name = "Defense"
-upgrade_interval = 5.0
+upgrade_interval = 10.0
 prereqs = Array[String](["Max HP 1:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

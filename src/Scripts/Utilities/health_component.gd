@@ -13,7 +13,14 @@ func apply_mp_replenish(magic_points : float):
 
 func apply_damage(incoming_damage : int, is_crit : bool) -> String:
 	var damage_text : String
-	parent.health -= incoming_damage
+	var tracked_health : int = 0
+	if parent is Player:
+		GameManager.current_player_health -= incoming_damage
+		tracked_health = GameManager.current_player_health
+	else:
+		parent.health -= incoming_damage
+		tracked_health = parent.health
+	
 	if is_crit and incoming_damage != 0:
 		damage_text = str(incoming_damage)+"!!"
 	else:
@@ -23,7 +30,6 @@ func apply_damage(incoming_damage : int, is_crit : bool) -> String:
 			damage_text = str(incoming_damage)
 	
 	if parent is Player:
-		PlayerStats.player_stats["Current Health"] = parent.health
 		PlayerHudSignalBus.update_player_health.emit()
 		if parent.health <= PlayerStats.player_stats["Last Breadth Threshold"]:
 			GameManager.in_last_breadth_mode = true
@@ -41,7 +47,7 @@ func apply_damage(incoming_damage : int, is_crit : bool) -> String:
 			#also will play some sort of visual
 			parent.health = 0
 	
-	if parent.health <= 0:
+	if tracked_health <= 0:
 		parent.health = 0
 		
 		if parent is Boss:

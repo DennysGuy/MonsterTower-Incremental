@@ -58,6 +58,9 @@ var holder_position : Vector2
 var jump_buffer_timer : float = 0.0
 var jump_buffer_wait_time : float =0.17
 
+var grab_ladder_buffer_timer : float = 0.0
+var grab_ladder_buffer_wait_time : float = 0.2
+
 var coyote_timer : float = 0.0
 var coyote_wait_time : float = 0.17 
 
@@ -121,6 +124,9 @@ func _physics_process(delta: float) -> void:
 
 	if attack_buffer_timer > 0:
 		attack_buffer_timer -= delta
+	
+	if grab_ladder_buffer_timer > 0:
+		grab_ladder_buffer_timer -= delta
 	
 	knock_back_player()
 	
@@ -317,7 +323,8 @@ func disable_sword_soar_hitbox() -> void:
 	sword_soar_hit_box.set_deferred("monitorable", false)
 
 func _on_ability_cool_down_timer_timeout() -> void:
-	can_dash_attack = true
+	#can_dash_attack = true
+	pass
 
 func _on_invincibility_timer_timeout() -> void:
 	if !is_inside_tree():

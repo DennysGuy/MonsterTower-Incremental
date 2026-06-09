@@ -15,7 +15,8 @@ func enter() -> void:
 	super()
 	parent.apply_gravity = false
 	parent.can_knock_back = false
-	parent.damageable = false
+	parent.can_dash_attack = false
+	print(parent.can_dash_attack)
 	parent.set_sword_texture(animation_name)
 	parent.set_outfit_texture(animation_name)
 	parent.timer.wait_time = PlayerStats.player_stats["Dash Duration"]
@@ -33,6 +34,7 @@ func enter() -> void:
 func exit() -> void:
 	#unique
 	equipped_dash_attack.on_exiting_dash()
+
 	#-------
 	#parent.ability_cool_down_timer.wait_time = PlayerStats.player_stats["Dash Cooldown"]
 	#parent.ability_cool_down_timer.start()

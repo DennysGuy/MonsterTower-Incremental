@@ -413,7 +413,7 @@ void fragment() {
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gxvih"]
 shader = SubResource("Shader_jkdaj")
 shader_parameter/active = false
-shader_parameter/flash_strength = 0.850000040375
+shader_parameter/flash_strength = 0.800000038
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s7mdw"]
 radius = 11.0
@@ -425,7 +425,7 @@ size = Vector2(23, 30)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v37cp"]
 size = Vector2(19, 26)
 
-[node name="CorruptedMushie" type="CharacterBody2D" unique_id=85927412 node_paths=PackedStringArray("name_tag", "health_bar", "graphic", "status_effect_icon_bar", "vertical_status_icon_bar", "slow_timer", "silenced_timer", "wall_detector", "ground_detector", "state_machine", "animation_player", "health_component", "sprite", "blink_timer", "stun_timer", "hurt_box", "hit_box", "hit_state", "dead_state", "stun_state", "sfx_player") groups=["Enemy"]]
+[node name="CorruptedMushie" type="CharacterBody2D" unique_id=85927412 node_paths=PackedStringArray("name_tag", "health_bar", "status_effect_icon_bar", "vertical_status_icon_bar", "slow_timer", "silenced_timer", "wall_detector", "ground_detector", "state_machine", "animation_player", "health_component", "sprite", "blink_timer", "stun_timer", "hurt_box", "hit_box", "hit_state", "dead_state", "stun_state", "sfx_player") groups=["Enemy"]]
 collision_layer = 128
 collision_mask = 2
 script = ExtResource("1_uospo")
@@ -433,7 +433,6 @@ enemy_stats = ExtResource("2_l3wr6")
 xp = 7
 name_tag = NodePath("NameTag")
 health_bar = NodePath("EnemyHealthBar")
-graphic = NodePath("Sprite2D")
 status_effect_icon_bar = NodePath("StatusEffectIconBar")
 vertical_status_icon_bar = NodePath("StatusEffectVBox")
 slow_timer = NodePath("SlowTimer")

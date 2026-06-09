@@ -126,10 +126,8 @@ func show_inventory(bag_name : String) -> void:
 			bag_bg.texture = GEAR_STATION_USE_BAG_BG
 			InventoryManager.update_grid_container(inventory_container, "Use", false)
 
-			
 	selected_bag = bag_name
 	inventory_label.text = bag_name
-
 
 func spawn_crafting_sequence() -> void:
 	var crafting_animation : CraftingAnimation = preload("uid://2bfb4gmhtb7").instantiate()

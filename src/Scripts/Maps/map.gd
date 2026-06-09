@@ -160,7 +160,8 @@ func spawn_player() -> void:
 	player.position = selected_spawn_point.position
 	player.damageable = true
 	
-	var current_health : int = PlayerStats.player_stats["Current Health"]
+	var current_health : int = GameManager.current_player_health
+	#print("THIS IS THE CURRENT HEALTH: %s" % current_health)
 	var current_mp : int = PlayerStats.player_stats["Current MP"]
 	
 	if GameManager.resupply_character:
@@ -175,18 +176,18 @@ func spawn_player() -> void:
 			+ PlayerStats.get_current_sword().get_total_defense_bonus()
 		)
 		
-		PlayerStats.player_stats["Current Health"] = current_health
+		GameManager.current_player_health = current_health
 		PlayerStats.player_stats["Current MP"] = current_mp
 		
 		GameManager.resupply_character = false
 	
-	player.health = current_health
+	#player.health = current_health
 	
 	GameManager.in_last_breadth_mode = (
 		current_health <= PlayerStats.player_stats["Last Breadth Threshold"]
 	)
 	
-	print("THIS IS PLAYER HEALTH: " + str(player.health))
+	#print("THIS IS PLAYER HEALTH: " + str(player.health))
 	
 	add_child(player)
 	

@@ -17,7 +17,7 @@ offset_bottom = 136.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
-theme_override_constants/margin_bottom = 40
+theme_override_constants/margin_bottom = 20
 script = ExtResource("1_oio6f")
 quest_data = ExtResource("2_4i7lb")
 checklist = NodePath("PanelContainer/VBoxContainer/MarginContainer/Checklist")
@@ -25,7 +25,7 @@ quest_title = NodePath("PanelContainer/VBoxContainer/QuestTitle")
 
 [node name="PanelContainer" type="Control" parent="." unique_id=610836170]
 self_modulate = Color(1, 1, 1, 0.48235294)
-custom_minimum_size = Vector2(0, 150)
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=311012850]

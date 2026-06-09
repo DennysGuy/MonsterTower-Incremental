@@ -14,6 +14,6 @@ max_level = 3
 currency_required = 300
 stat_relation = 2
 stat_name = "Movement Speed"
-upgrade_interval = 0.05
+upgrade_interval = 0.15
 prereqs = Array[String](["Jump Height 1:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

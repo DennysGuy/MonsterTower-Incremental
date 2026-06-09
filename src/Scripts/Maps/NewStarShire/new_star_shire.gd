@@ -84,6 +84,7 @@ func _ready() -> void:
 	#hud.open_tower_map_button.show()
 
 	await get_tree().process_frame
+	
 	GameManager.event_speed_mod = 2.5
 	PlayerHudSignalBus.update_map_name_label.emit(map_name)
 	PlayerHudSignalBus.update_player_health.emit()

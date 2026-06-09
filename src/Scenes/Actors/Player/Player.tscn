@@ -59,6 +59,7 @@
 [ext_resource type="Script" uid="uid://cvq0qwds1scf6" path="res://src/Scripts/Player/gem_chest_hit_area.gd" id="48_0hs1n"]
 [ext_resource type="Texture2D" uid="uid://b6nvmufdu1vs2" path="res://Assets/PlayerGraphics/NewPlayer/PlayerCycloneSpin.png" id="49_f7qr4"]
 [ext_resource type="Texture2D" uid="uid://dlfu2m6gu34jj" path="res://Assets/PlayerGraphics/NewPlayer/PlayerIronBody.png" id="53_imoc0"]
+[ext_resource type="Shader" uid="uid://cguloil4ymho" path="res://src/Scripts/Shaders/HitFlash.gdshader" id="56_1kba4"]
 [ext_resource type="Texture2D" uid="uid://c5b4p54lu8tqi" path="res://Assets/PlayerGraphics/Weapons/Stick/Stick_CycloneSpin.png" id="56_jqbe8"]
 [ext_resource type="Texture2D" uid="uid://dp8eilpd2k4li" path="res://Assets/PlayerGraphics/Outfits/AdventurersFit/AdventurersFit_BasicDash.png" id="56_s0khh"]
 
@@ -2458,6 +2459,11 @@ _data = {
 &"SwordSwing3": SubResource("Animation_susmm")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8o5ax"]
+shader = ExtResource("56_1kba4")
+shader_parameter/active = false
+shader_parameter/flash_strength = 0.750000035625
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_susmm"]
 size = Vector2(20, 40)
 
@@ -2702,6 +2708,7 @@ libraries/ = SubResource("AnimationLibrary_pawjx")
 [node name="Sprites" type="Node2D" parent="." unique_id=650817977]
 
 [node name="PlayerSprite" type="Sprite2D" parent="Sprites" unique_id=1041617266]
+material = SubResource("ShaderMaterial_8o5ax")
 position = Vector2(0, -32)
 scale = Vector2(1, 0.98604256)
 texture = ExtResource("36_ysgjh")

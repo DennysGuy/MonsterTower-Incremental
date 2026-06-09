@@ -28,6 +28,7 @@ func enter() -> void:
 	parent.was_on_ledge = true
 	parent.can_double_jump = true
 	parent.can_knock_back = true
+	#parent.can_dash_attack = true
 	parent.set_sword_texture(animation_name)
 	parent.set_outfit_texture(animation_name)
 	parent.sfx_player.play_sfx(move_sfx)
