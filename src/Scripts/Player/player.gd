@@ -323,8 +323,7 @@ func disable_sword_soar_hitbox() -> void:
 	sword_soar_hit_box.set_deferred("monitorable", false)
 
 func _on_ability_cool_down_timer_timeout() -> void:
-	#can_dash_attack = true
-	pass
+	can_dash_attack = true
 
 func _on_invincibility_timer_timeout() -> void:
 	if !is_inside_tree():

@@ -23,13 +23,14 @@ var current_frame : int = 0
 const INTRODUCTION_THEME_TEMP = preload("uid://dbrvuid1nhetp")
  
 const INTRO_CARDS_CUTSCENE = preload("uid://ia0sog54fgve")
-
+var current_dialogue = null
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	CutsceneManager.trigger_next_image.connect(trigger_next_frame)
 	MusicPlayer.play_song(INTRODUCTION_THEME_TEMP)
 	animation_player.play("FadeIn")
-	Dialogic.start(INTRO_CARDS_CUTSCENE)
+	current_dialogue = Dialogic.start(INTRO_CARDS_CUTSCENE)
+	print(current_dialogue)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -49,3 +50,9 @@ func next_image() -> void:
 
 func trigger_next_frame() -> void:
 	animation_player_2.play("CrossFade")
+
+
+func _on_skip_button_button_up() -> void:
+	Dialogic.end_timeline()
+	animation_player_2.play("fade_out")
+	

@@ -15,8 +15,7 @@ func enter() -> void:
 	super()
 	parent.apply_gravity = false
 	parent.can_knock_back = false
-	parent.can_dash_attack = false
-	print(parent.can_dash_attack)
+	parent.damageable = false
 	parent.set_sword_texture(animation_name)
 	parent.set_outfit_texture(animation_name)
 	parent.timer.wait_time = PlayerStats.player_stats["Dash Duration"]

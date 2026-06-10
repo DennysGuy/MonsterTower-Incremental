@@ -71,6 +71,7 @@ func apply_direction(new_dir: int) -> void:
 
 func apply_slow_and_damage(damage : int, issued_slow_factor : float, slow_wait_time : float, is_crit : bool = false) -> void:
 	if PlayerStats.player_stats["Class"] == "Tyro":
+		event_multiplier = 0.1
 		increment_break_count()
 
 	apply_damage(damage, is_crit)

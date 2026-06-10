@@ -4,6 +4,8 @@
 [ext_resource type="Script" uid="uid://be6vh0qellkjq" path="res://src/Scripts/Questing/quest.gd" id="2_3nmly"]
 [ext_resource type="Script" uid="uid://deyfft0rbfjgk" path="res://src/Scripts/Questing/Tasks/task.gd" id="3_lc86r"]
 [ext_resource type="Resource" uid="uid://ml0a0ebuabfh" path="res://src/Resources/Quests/Intro/MainQuests/Introduction/6_TheThickOfIt/Tasks/ReachFloor1-5Task.tres" id="4_3nmly"]
+[ext_resource type="Resource" uid="uid://r6a275eopcel" path="res://src/Resources/Quests/Intro/MainQuests/Introduction/6_TheThickOfIt/Tasks/OpenMonsterPediaOnce.tres" id="4_3rlwb"]
+[ext_resource type="Resource" uid="uid://fd5fhkclnk6j" path="res://src/Resources/Quests/Intro/MainQuests/Introduction/6_TheThickOfIt/Tasks/OpenRecipeListOnce.tres" id="5_qk6ye"]
 
 [resource]
 script = ExtResource("2_3nmly")
@@ -11,5 +13,5 @@ quest_title = "The Thick of It"
 quest_id = 12
 status = 1
 next_quest = "A Mystery's Emergence"
-tasks = Array[ExtResource("3_lc86r")]([ExtResource("4_3nmly")])
+tasks = Array[ExtResource("3_lc86r")]([ExtResource("4_3rlwb"), ExtResource("5_qk6ye"), ExtResource("4_3nmly"), ExtResource("4_3nmly")])
 metadata/_custom_type_script = "uid://be6vh0qellkjq"

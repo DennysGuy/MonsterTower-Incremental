@@ -9,6 +9,9 @@ var doors_open : bool = false
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var move_to_next_room_label: Label = $MoveToNextRoomLabel
 @onready var needed_panel: Panel = $NeededPanel
+@onready var needed_title: Label = $NeededPanel/NeededTitle
+@onready var quest_name: Label = $NeededPanel/QuestName
+
 
 const BROKEN_FLOOR_ELEVATOR_BASE = preload("uid://bq5k4w7uwsgyy")
 const FLOOR_ELEVATOR_BASE = preload("uid://sm0sjtn0eenp")
@@ -21,6 +24,8 @@ const ABILITY_ROW_UNLOCKED = preload("uid://joo0a5xuf1pm")
 @onready var needed_items_container: GridContainer = $NeededPanel/NeededItemsContainer
 
 @onready var base: Sprite2D = $Base
+
+@export var quest_needed : String
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -40,6 +45,12 @@ func _ready() -> void:
 	if !current_room_data.hunt_challenge_completed and current_room_data.is_challenge_floor():
 		row_lock.show()
 
+	if !quest_needed.is_empty() and !QuestManager.get_quest(quest_needed).is_completed():
+		needed_panel.show()
+		needed_title.text = "Complete Quest"
+		quest_name.text = quest_needed
+		
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("interact") and player_in_range:
@@ -50,6 +61,12 @@ func _process(delta: float) -> void:
 			return
 
 		if current_room_data.is_expedition_floor() and current_room_data.unlock_recipe and !current_room_data.hunt_challenge_completed:
+			MusicPlayer.transitioning_floors = true
+			GameManager.spawn_location = 0
+			unlock_next_room()
+			return
+
+		if !quest_needed.is_empty() and QuestManager.get_quest(quest_needed).is_completed():
 			MusicPlayer.transitioning_floors = true
 			GameManager.spawn_location = 0
 			unlock_next_room()

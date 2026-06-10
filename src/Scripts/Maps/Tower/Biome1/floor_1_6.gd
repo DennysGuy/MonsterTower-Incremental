@@ -25,6 +25,7 @@ const TEST_DUNGEON_CHALLENGE_THEME = preload("uid://bmdcmdm835j2s")
 var keys_delivered : int = 0
 @onready var enter_door_notice: Label = $EnterDoorNotice
 
+var in_cutscene : bool = false
 
 @onready var activation_switch: ChallengeActivationSwitch = $ActivationSwitch
 const CRAFTING_NOTIFICATION = preload("uid://wyjbs57smen4")
@@ -94,12 +95,12 @@ func unlock_door() -> void:
 	play_sfx(RETRO_SWOOOSH_16,0.0)
 	final_key_lock.queue_free()
 	await get_tree().create_timer(2.0).timeout
+	QuestManager.check_general_task_for_completion.emit("Unlock Boss Door")
 	boss_door.play_door_open_animation()
 	SignalBus.shake_camera.emit(5.0)
 	await get_tree().create_timer(3.0).timeout
 	PlayerHudSignalBus.issue_big_notification.emit("The Boss Door Has been Unlocked!")
 	await get_tree().create_timer(3.0).timeout
-	QuestManager.check_general_task_for_completion.emit("Unlock Boss Door")
 	GameManager.player_can_move = true
 
 func start_challenge() -> void:

@@ -68,21 +68,30 @@ func emit_ready_spark() -> void:
 
 func set_icon() -> void:
 	if stored_ability:
-		icon.texture = stored_ability.icon
 		match stored_ability.ability_type:
 			stored_ability.ABILITY_TYPE.AIR_ATTACK:
+				if PlayerStats.facilities_unlocked["Arial Slash"]:
+					icon.texture = stored_ability.icon
 				lmb.show()
 			stored_ability.ABILITY_TYPE.DASH_ATTACK:
+				if PlayerStats.facilities_unlocked["Dash Attack"]:
+					icon.texture = stored_ability.icon
 				rmb.show()
 			stored_ability.ABILITY_TYPE.DOUBLE_JUMP:
+				if PlayerStats.facilities_unlocked["Double Jump"]:
+					icon.texture = stored_ability.icon				
 				space.show()
 			stored_ability.ABILITY_TYPE.COMBAT_ABILITY_1:
+				icon.texture = stored_ability.icon
 				button_1.show()
 			stored_ability.ABILITY_TYPE.COMBAT_ABILITY_2:
+				icon.texture = stored_ability.icon
 				button_2.show()
 			stored_ability.ABILITY_TYPE.COMBAT_ABILITY_3:
+				icon.texture = stored_ability.icon
 				button_3.show()
 			stored_ability.ABILITY_TYPE.COMBAT_ABILITY_4:
+				icon.texture = stored_ability.icon
 				button_4.show()
 
 func unlock(ability : Ability) -> void:

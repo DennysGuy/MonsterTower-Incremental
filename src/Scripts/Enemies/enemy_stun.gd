@@ -5,6 +5,8 @@ const ENEMY_STUN_BREAK = preload("uid://k4bl703t1udd")
 
 func enter() -> void:
 	super()
+	parent.knock_back_direction = 1
+	parent.event_multiplier = 1.0
 	parent.play_sfx(ENEMY_STUN_BREAK,-6)
 	parent.disable_hit_box()
 	parent.stun_timer.wait_time = PlayerStats.player_stats["Stun Length"]

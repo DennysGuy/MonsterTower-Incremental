@@ -564,6 +564,33 @@ tracks/1/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_dc783"]
+resource_name = "Boat_Out"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-264, 158), Vector2(-699, 158)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+
 [sub_resource type="Animation" id="Animation_ys33i"]
 length = 0.001
 tracks/0/type = "value"
@@ -582,6 +609,7 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ys33i"]
 _data = {
 &"Boat_In": SubResource("Animation_7kbtj"),
+&"Boat_Out": SubResource("Animation_dc783"),
 &"RESET": SubResource("Animation_ys33i")
 }
 
@@ -593,6 +621,9 @@ size = Vector2(20, 362)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gnglh"]
 size = Vector2(240, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dc783"]
+size = Vector2(34, 351)
 
 [node name="TutorialMap" type="Node2D" unique_id=1194992242 node_paths=PackedStringArray("camera", "sfx_player")]
 script = ExtResource("1_tymde")
@@ -734,6 +765,7 @@ limit_bottom = 750
 limit_smoothed = true
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
+drag_horizontal_offset = 1.0
 
 [node name="LadderMovementDirectionStone" type="Sprite2D" parent="." unique_id=460535527]
 position = Vector2(767, 398)
@@ -875,5 +907,13 @@ area_collision_shape = NodePath("CollisionShape2D")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MonsterSpawnArea" unique_id=51787661]
 shape = SubResource("RectangleShape2D_gnglh")
 
+[node name="BoatLeaveArea" type="Area2D" parent="." unique_id=116621446]
+position = Vector2(489, 425)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BoatLeaveArea" unique_id=418531151]
+position = Vector2(-7, -79.5)
+shape = SubResource("RectangleShape2D_dc783")
+
 [connection signal="body_entered" from="TowerEntranceArea" to="." method="_on_tower_entrance_area_body_entered"]
 [connection signal="body_exited" from="TowerEntranceArea" to="." method="_on_tower_entrance_area_body_exited"]
+[connection signal="body_entered" from="BoatLeaveArea" to="." method="_on_boat_leave_area_body_entered"]

@@ -9,6 +9,8 @@ var can_enter_tower : bool = false
 const BOAT_HORN = preload("uid://bt5y3hqi7vb37")
 const ENTER_TOWER_FIRST_TIME_SCENE = preload("uid://gjjq2iyol2am")
 const TUTORIAL_LICENSE_NOT_ACQUIRED = preload("uid://ctit5lunlhp2n")
+
+var boat_docked : bool = true
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super()
@@ -18,6 +20,7 @@ func _ready() -> void:
 	
 	#SignalBus.hide_tech_tree_canvas_layer.connect(hide_tech_tree_canvas_layer)
 	GameManager.player_can_move = true
+	GameManager.resupply_character= true
 	PlayerHudSignalBus.update_map_name_label.emit(map_name)
 	animation_player.play("Boat_In")
 	sfx_player.play_sfx(BOAT_HORN)
@@ -63,3 +66,11 @@ func issue_cross_fade() -> void:
 	await get_tree().create_timer(0.5).timeout
 	await spawn_player()
 	camera.player = get_tree().get_first_node_in_group("Player")
+
+
+func _on_boat_leave_area_body_entered(body: Node2D) -> void:
+	if body is Player:
+		if boat_docked:
+			sfx_player.play_sfx(BOAT_HORN)
+			animation_player.play("Boat_Out")
+			boat_docked = false

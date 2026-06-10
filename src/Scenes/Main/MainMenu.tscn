@@ -7,6 +7,21 @@
 [ext_resource type="FontFile" uid="uid://dr468m31loqrx" path="res://Assets/Fonts/Super Cartoon.ttf" id="5_gj8tx"]
 [ext_resource type="AudioStream" uid="uid://b4qmxdv5pxdpb" path="res://Audio/Music/NewMainMenuThemeDraft1.wav" id="6_06df4"]
 [ext_resource type="AudioStream" uid="uid://deidmmols8obd" path="res://Audio/SFX/MainMenuOceanAmbiencc.wav" id="7_gj8tx"]
+[ext_resource type="FontFile" uid="uid://stn4dtg0uw57" path="res://Assets/Fonts/FredokaOne-Regular.ttf" id="8_4c8q5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4c8q5"]
+bg_color = Color(0, 0.7051233, 0.5320225, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_36jow"]
+bg_color = Color(0.8667882, 0.4672013, 0.44627374, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [sub_resource type="Animation" id="Animation_58xxk"]
 resource_name = "FadeIn"
@@ -168,6 +183,78 @@ theme_override_fonts/font = ExtResource("5_gj8tx")
 theme_override_font_sizes/font_size = 52
 text = "Continue"
 
+[node name="StartNewGameNoticePanel" type="Panel" parent="." unique_id=364357020]
+visible = false
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -460.0
+offset_top = -204.0
+offset_right = 461.0
+offset_bottom = 178.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="StartNewGameNoticePanel" unique_id=734755584]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -360.0
+offset_top = -154.03616
+offset_right = 360.0
+offset_bottom = -41.036163
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("8_4c8q5")
+theme_override_font_sizes/font_size = 40
+text = "There is already an Existing save file
+Are you sure you want to start anew?"
+horizontal_alignment = 1
+
+[node name="YesButton" type="Button" parent="StartNewGameNoticePanel" unique_id=25793749]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -193.5
+offset_top = 29.963867
+offset_right = -28.5
+offset_bottom = 128.96387
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("8_4c8q5")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_4c8q5")
+text = "YES!"
+
+[node name="NoButton" type="Button" parent="StartNewGameNoticePanel" unique_id=489297626]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 20.5
+offset_top = 29.963867
+offset_right = 185.5
+offset_bottom = 128.96387
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("8_4c8q5")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_36jow")
+text = "NO!"
+
 [node name="TransitionRect" type="ColorRect" parent="." unique_id=1379323239]
 layout_mode = 1
 anchors_preset = 15
@@ -192,3 +279,5 @@ bus = &"Ambience"
 
 [connection signal="button_up" from="NewGame" to="." method="_on_button_button_up"]
 [connection signal="button_up" from="Continue" to="." method="_on_continue_button_up"]
+[connection signal="button_up" from="StartNewGameNoticePanel/YesButton" to="." method="_on_yes_button_button_up"]
+[connection signal="button_up" from="StartNewGameNoticePanel/NoButton" to="." method="_on_no_button_button_up"]

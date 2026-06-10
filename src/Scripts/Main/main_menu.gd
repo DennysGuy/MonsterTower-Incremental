@@ -6,6 +6,7 @@ class_name MainMenu extends Control
 @onready var ambience: AudioStreamPlayer = $Ambience
 
 @export var next_scene_path : String
+@onready var start_new_game_notice_panel: Panel = $StartNewGameNoticePanel
 
 func _ready() -> void:
 	if SaveManager.save_file_exists():
@@ -35,10 +36,23 @@ func go_to_starspire() -> void:
 	#get_tree().change_scene_to_file("uid://b0iw5pa4foen0")
 	
 func _on_button_button_up() -> void:
-	SaveManager.create_new_save()
-	go_to_next_scene()
+
+	if SaveManager.save_file_exists():
+		start_new_game_notice_panel.show()
+	else:
+		SaveManager.create_new_save()
+		go_to_next_scene()
 
 func _on_continue_button_up() -> void:
 	SaveManager.load_game()
 	SaveManager.save_player_stats()
 	go_to_starspire()
+
+
+func _on_yes_button_button_up() -> void:
+	SaveManager.create_new_save()
+	go_to_next_scene()
+
+
+func _on_no_button_button_up() -> void:
+	start_new_game_notice_panel.hide()

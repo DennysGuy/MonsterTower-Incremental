@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="GeneralTask" format=3 uid="uid://fd5fhkclnk6j"]
+
+[ext_resource type="Script" uid="uid://chhllu0ouv7r6" path="res://src/Scripts/Questing/Tasks/general_task.gd" id="1_wys4d"]
+
+[resource]
+script = ExtResource("1_wys4d")
+task_name = "Open Recipe Book Once"
+task_description = "Open Recipe Book Once"
+task_id = 46
+parent_quest = "The Thick of It"
+metadata/_custom_type_script = "uid://chhllu0ouv7r6"

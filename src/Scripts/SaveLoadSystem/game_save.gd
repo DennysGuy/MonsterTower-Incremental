@@ -842,6 +842,18 @@ TODO: We will add saves for classes as well
 	44:{
 		#Defeat the Grey Sentinel
 		"Completed": false
+	},
+	45: {
+		#Open Monsterpedia Once
+		"Completed": false
+	},
+	46: {
+		#Open Recipe Book Once
+		"Completed": false
+	},
+	47: {
+		#Turn In a Job Request
+		"Completed": false
 	}
 }
 

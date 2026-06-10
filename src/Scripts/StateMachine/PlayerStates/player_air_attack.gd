@@ -9,7 +9,10 @@ var equipped_air_attack : AirAttackBehavior
 func enter() -> void:
 	parent.can_knock_back = true
 	parent.damageable = false
+	
 	var selected_ability : Ability = PlayerStats.get_equipped_ability("Air Attack")
+	print("THIS IS AIR ATTACK %s" % selected_ability.ability_behavior)
+	print(selected_ability.mp_cost)
 	PlayerStats.player_stats["Current MP"] -= selected_ability.mp_cost
 	PlayerHudSignalBus.update_player_mp.emit()
 	equipped_air_attack = selected_ability.ability_behavior

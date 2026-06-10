@@ -300,6 +300,7 @@ position = Vector2(226, 897)
 next_room = ExtResource("22_rtqmp")
 next_room_data = ExtResource("23_ogel5")
 current_room_data = ExtResource("2_6kwyc")
+quest_needed = "The Thick of It"
 
 [node name="SfxPlayer" parent="." unique_id=126850837 instance=ExtResource("24_7a1vb")]
 
