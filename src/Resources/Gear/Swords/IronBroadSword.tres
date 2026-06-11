@@ -19,7 +19,7 @@ description = "This weighty weapon is built for true Warriors. While its slow at
 
 Master its momentum to clear out massive mobs efficiently and conquer the tower's toughest crowds."
 attack_bonus = 80.0
-defense_bonus = 15.0
+defense_bonus = -15.0
 attack_speed = 0.75
 crit_bonus = 0.15
 multi_enemies_bonus = 10.0

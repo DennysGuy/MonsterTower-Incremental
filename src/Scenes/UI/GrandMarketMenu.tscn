@@ -141,9 +141,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -74.0
+offset_left = -116.0
 offset_top = -37.0
-offset_right = 11.0
+offset_right = -31.0
 offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -152,6 +152,25 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5_oesmi")
 theme_override_font_sizes/font_size = 32
 text = "Sell 1"
+
+[node name="SellSlotButton" type="Button" parent="DetailsPanel" unique_id=382654307]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -18.0
+offset_top = -37.0
+offset_right = 116.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_oesmi")
+theme_override_font_sizes/font_size = 32
+text = "Sell Slot"
 
 [node name="Description" type="RichTextLabel" parent="DetailsPanel" unique_id=701032641]
 layout_mode = 0
@@ -475,7 +494,9 @@ theme_override_font_sizes/font_size = 24
 text = "Use"
 
 [connection signal="button_up" from="DetailsPanel/SellButton" to="." method="_on_sell_button_button_up"]
+[connection signal="button_up" from="DetailsPanel/SellSlotButton" to="." method="_on_sell_slot_button_button_up"]
 [connection signal="button_up" from="Close" to="." method="_on_close_button_up"]
+[connection signal="button_up" from="SellTabButton" to="." method="_on_sell_tab_button_button_up"]
 [connection signal="button_up" from="SellTabButton" to="." method="_on_sell_novelties_button_button_up"]
 [connection signal="button_up" from="SellBankButton" to="." method="_on_sell_novelties_button_2_button_up"]
 [connection signal="button_up" from="HBoxContainer/InventoryTab" to="." method="_on_novelties_tab_button_up"]

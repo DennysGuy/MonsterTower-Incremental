@@ -219,6 +219,7 @@ func _on_cancel_crafting_button_button_up() -> void:
 	stored_recipe = null
 
 func spawn_item(item : Item, offset : Vector2 = Vector2.ZERO) -> void:
+	craft_finished_tween()
 	var item_interactable : ItemInteractable = preload("uid://dgtobkubdjq27").instantiate()
 	item_interactable.item = item
 	item_interactable.perishable = false
@@ -268,3 +269,29 @@ func check_for_free_craft() -> bool:
 				return true
 		
 	return false
+
+func craft_finished_tween() -> void:
+	var tween := create_tween()
+
+	tween.tween_property(
+		station_graphic,
+		"scale",
+		Vector2(0.9, 0.9),
+		0.1
+	)
+
+	tween.tween_property(
+		station_graphic,
+		"scale",
+		Vector2(1.1, 1.1),
+		0.1
+	)
+
+	tween.tween_property(
+		station_graphic,
+		"scale",
+		Vector2(1.0, 1.0),
+		0.1
+	)
+
+	await tween.finished

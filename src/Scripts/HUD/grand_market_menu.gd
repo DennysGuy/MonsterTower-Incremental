@@ -173,6 +173,20 @@ func sell_all_items(container : GridContainer, inventory_name : String) -> void:
 	enable_tabs_and_buttons()
 	HubManager.check_for_node_purchase.emit()
 
+func sell_slot(container : GridContainer) -> void:
+	var inventory : Array = InventoryManager.inventories[selected_inventory]
+	var slot = inventory[stored_slot_index]
+	var starting_quantity : int = slot["quantity"]
+	for i in starting_quantity:
+		InventoryManager.remove_item(selected_inventory, slot["item"])
+		TechTreeManager.currency += slot["item"].sell_value
+		TechTreeManager.update_currency_label.emit()
+		InventoryManager.update_grid_container(container, selected_inventory)
+		currency.text = "Currency: %s" % [TechTreeManager.currency]
+		sfx_player.play_sfx(SELL_ITEM)
+		SaveManager.save_tech_tree_data()
+		await get_tree().create_timer(0.1).timeout
+
 func _on_sell_novelties_button_2_button_up() -> void:
 	sell_all_items(bank_container, "Bank")
 
@@ -215,3 +229,17 @@ func _on_use_tab_button_up() -> void:
 	inventory_bg.texture = GRAND_MARKET_MENU_USE_BG
 	inventory_label.text = selected_inventory
 	InventoryManager.update_grid_container(inventory_container, selected_inventory)
+
+
+func _on_sell_slot_button_button_up() -> void:
+	if !selected_item:
+		return
+	match selected_inventory:
+		"Bank":
+			sell_slot(bank_container)
+		_:
+			sell_slot(inventory_container)
+
+
+func _on_sell_tab_button_button_up() -> void:
+	pass # Replace with function body.

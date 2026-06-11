@@ -40,6 +40,7 @@ class_name Player extends Entity
 @onready var holder: Marker2D = $Holder
 
 @onready var ability_hit_box: Area2D = $AbilityHitBox
+const PICKAXE_SWING_STRIKE = preload("uid://djgxyv4i65ob4")
 
 var held_key : BossDoorKey
 
@@ -48,6 +49,7 @@ var stored_enemy : Enemy
 var stored_ore_rock : OreRock
 var in_ladder_area : bool = false
 var is_climbing : bool = false
+var in_mining_area : bool = false
 var prev_input : int
 var prev_move_speed : float
 var mining_area_position : Vector2
@@ -230,12 +232,17 @@ func _on_ladder_detector_area_exited(area: Area2D) -> void:
 		print("were have left ladder area and the stored ladder is %s " % [stored_ladder])
 
 func attack_ore_rock() -> void:
-	if stored_ore_rock:
-		SignalBus.shake_camera.emit(0.3)
+	var ore_rock : Array[Area2D] = mining_area.get_overlapping_areas()
+
+	for ore_rock_area in ore_rock:
+		var single_ore_rock : OreRock = ore_rock_area.get_parent()
+		SignalBus.shake_camera.emit(1.0)
 		var stats_damage : int = int(PlayerStats.player_stats["Mining Damage"])
 		var random_hit : int = randi_range(int(stats_damage * 0.8), stats_damage)
 		GameManager.remaining_bolt_chain_links = PlayerStats.player_stats["Mining Bolt Links"]
-		stored_ore_rock.damage_ore_rock(random_hit)
+		single_ore_rock.damage_ore_rock(random_hit)
+		play_sfx(PICKAXE_SWING_STRIKE,1.0)
+		await get_tree().create_timer(0.25).timeout
 
 
 func clear_effect_texture() -> void:
@@ -424,3 +431,15 @@ func knock_back_player() -> void:
 func play_levelup_visual() -> void:
 	var level_up_visual = preload("uid://bgddefvdr3k41").instantiate()
 	add_child(level_up_visual)
+
+
+func _on_mining_area_area_entered(area: Area2D) -> void:
+	var parent = area.get_parent()
+	if parent is OreRock:
+		in_mining_area = true
+
+
+func _on_mining_area_area_exited(area: Area2D) -> void:
+	var parent = area.get_parent()
+	if parent is OreRock:
+		in_mining_area = false

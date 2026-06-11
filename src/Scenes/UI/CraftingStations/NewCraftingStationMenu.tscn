@@ -250,7 +250,7 @@ anchor_bottom = 0.5
 offset_left = -55.0
 offset_top = -31.0
 offset_right = 155.0
-offset_bottom = 82.0
+offset_bottom = 73.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -284,7 +284,7 @@ text = "Crafting Station"
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HBoxContainer" unique_id=459266009]
 layout_mode = 2
 theme_override_constants/margin_top = 3
-theme_override_constants/margin_bottom = 12
+theme_override_constants/margin_bottom = 3
 
 [node name="PanelContainer" type="PanelContainer" parent="PanelContainer/MarginContainer/HBoxContainer/MarginContainer" unique_id=1864272674]
 layout_mode = 2
@@ -339,7 +339,7 @@ layout_mode = 0
 offset_left = -339.0
 offset_top = -198.0
 offset_right = -131.0
-offset_bottom = 121.0
+offset_bottom = 158.0
 mouse_filter = 0
 texture = ExtResource("5_bq5u8")
 
@@ -417,10 +417,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -81.0
-offset_top = 41.5
-offset_right = 33.0
-offset_bottom = 117.5
+offset_left = -62.0
+offset_top = 32.5
+offset_right = 52.0
+offset_bottom = 108.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 2
@@ -432,10 +432,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -91.0
-offset_top = -9.5
-offset_right = 89.0
-offset_bottom = 51.3255
+offset_left = -93.0
+offset_top = -18.5
+offset_right = 87.0
+offset_bottom = 42.3255
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 3
@@ -463,7 +463,7 @@ layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("1_hddue")
 theme_override_font_sizes/font_size = 16
-text = "Craft 1"
+text = "Craft"
 
 [node name="Craft5Button" type="Button" parent="CraftingStationItemSelectPanel/HBoxContainer2" unique_id=603814051]
 visible = false
@@ -564,6 +564,39 @@ theme_override_fonts/font = ExtResource("1_hddue")
 theme_override_font_sizes/font_size = 16
 text = "Failure: 10%"
 
+[node name="SliderAmount" type="HSlider" parent="CraftingStationItemSelectPanel" unique_id=1444911235]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -89.0
+offset_top = 126.0
+offset_right = 91.0
+offset_bottom = 142.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SliderAmountLabel" type="Label" parent="CraftingStationItemSelectPanel" unique_id=94172740]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -71.0
+offset_top = 105.0
+offset_right = 60.0
+offset_bottom = 121.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_hddue")
+text = "100/100"
+horizontal_alignment = 1
+
 [connection signal="button_up" from="CraftingStationItemSelectPanel/HBoxContainer2/Craft1Button" to="." method="_on_craft_1_button_button_up"]
 [connection signal="button_up" from="CraftingStationItemSelectPanel/HBoxContainer2/Craft5Button" to="." method="_on_craft_5_button_button_up"]
 [connection signal="button_up" from="CraftingStationItemSelectPanel/HBoxContainer2/CraftAllButton" to="." method="_on_craft_all_button_button_up"]
+[connection signal="value_changed" from="CraftingStationItemSelectPanel/SliderAmount" to="." method="_on_slider_amount_value_changed"]

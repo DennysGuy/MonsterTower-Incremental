@@ -14,6 +14,8 @@ class_name JobBoardMenu extends Control
 
 @export var stored_quest_data : Quest
 
+const JOB_BOARD_INTRO_SCENE = preload("uid://d2dt4jjtg5jil")
+
 const JOB_TURN_IN = preload("uid://crytbgxiowkp4")
 const JOB_ACCEPT_JINGLE = preload("uid://dinxl1rs2y55v")
 
@@ -28,6 +30,8 @@ func _ready() -> void:
 	GameManager.new_jobs_available = false
 	clear_description_panel()
 	initialize_available_jobs()
+	if SaveManager.get_floor_count("Floor 1-3") == 1 and QuestManager.active_quests["Job"].size() == 0:
+		Dialogic.start(JOB_BOARD_INTRO_SCENE)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

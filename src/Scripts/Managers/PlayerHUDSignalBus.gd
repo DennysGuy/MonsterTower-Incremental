@@ -108,3 +108,6 @@ signal update_boss_hp_bar(max_health : int, current_health : int)
 
 @warning_ignore("unused_signal")
 signal show_boss_hp_bar
+
+@warning_ignore("unused_signal")
+signal trigger_long_fade_in_out

@@ -112,9 +112,13 @@ func unlock_next_room() -> void:
 			
 		if current_room_data.unlock_recipe and !current_room_data.hunt_challenge_completed:
 			InventoryManager.remove_resources_from_inventory(current_room_data.unlock_recipe.recipe_list)
-			
-		needed_panel.hide()
+		PlayerHudSignalBus.trigger_long_fade_in_out.emit()
+		play_sfx(preload("uid://cveiqvxm5r0yw"))
+		await get_tree().create_timer(1.0).timeout
 		base.texture = FLOOR_ELEVATOR_BASE
+		await get_tree().create_timer(4.0).timeout
+		needed_panel.hide()
+		
 		GameManager.spawn_location = 0
 		current_room_data.hunt_challenge_completed = true
 		SaveManager.save_floor_data(current_room_data, current_room_data.floor_name)

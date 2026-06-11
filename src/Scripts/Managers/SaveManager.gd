@@ -147,6 +147,9 @@ func get_weapon_unlocked_status(weapon_id : int) -> bool:
 func get_weapon_tracked_status(weapon_id : int) -> bool:
 	return current_save_game.weapon_status[weapon_id]["Is Tracked"]
 
+func get_floor_count(floor_name : String) -> int:
+	return current_save_game.tower_entrance_data[floor_name]["Times Entered"]
+
 func load_equipped_abilities() -> void:
 	for key in current_save_game.equipped_abilities.keys():
 		var uid = current_save_game.equipped_abilities[key]

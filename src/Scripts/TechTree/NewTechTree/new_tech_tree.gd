@@ -56,6 +56,7 @@ func _ready() -> void:
 	TechTreeManager.update_currency_label.connect(update_progress)
 	expedition_time_tracker.text = "Expedition Time: %s seconds" % PlayerStats.player_stats["Expedition Time"]
 	update_progress()
+	print("THIS IS CURERENT PRESTIGE %s" % TechTreeManager.current_prestige)
 	if TechTreeManager.current_prestige > 0:
 		show_tech_tree_buttons()
 		add_combat_tech_tree()

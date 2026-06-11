@@ -7,6 +7,8 @@ class_name QuestTrackerItem extends MarginContainer
 @export var quest_title: RichTextLabel
 const QUEST_COMPLETED = preload("uid://om1y244uqbs")
 
+const TASK_WHOOSH_IN = preload("uid://bjtt00e54ppwb")
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	QuestManager.check_for_quest_completion.connect(update_quest_completion)
@@ -33,6 +35,13 @@ func build_task_list() -> void:
 		var new_task : TaskListItem = task.build_task_list_item()
 		checklist.add_child(new_task)
 		#await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(0.5).timeout
+	bring_in_tasks()
+
+func bring_in_tasks() -> void:
+	for task in checklist.get_children():
+		task.bring_in_task()
+		await get_tree().create_timer(0.15).timeout
 
 func clear_checklist() -> void:
 	for child in checklist.get_children():

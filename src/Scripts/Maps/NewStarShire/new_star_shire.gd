@@ -49,6 +49,7 @@ const LEVEL_UP_INSTRUCTION = preload("uid://7k2f4h2w0i08")
 const COOKING_STATION_UNLOCK_SCENE = preload("uid://gfqitaq4h4ol")
 const SMELTING_STATION_UNLOCK_SCENE = preload("uid://dknm38b28himr")
 const GEMS_STATION_UNLOCK_SCENE = preload("uid://blac36hlx22lb")
+const GO_TO_JOB_BOARD = preload("uid://iqw8ymk767kl")
 
 
 
@@ -95,9 +96,13 @@ func _ready() -> void:
 	show_ap_notice()
 	show_gem_station_notice()
 	check_for_node_purchase()
+	
 	if PlayerStats.player_stats["Level"] == 2 and PlayerStats.player_stats["Ability Points"] == 1:
 		#ability_station_notice()
 		Dialogic.start(LEVEL_UP_INSTRUCTION)
+	
+	if SaveManager.get_floor_count("Floor 1-3") and QuestManager.active_quests["Job"].size() == 0:
+		Dialogic.start(GO_TO_JOB_BOARD)
 
 func _exit_tree() -> void:
 	GameManager.event_speed_mod = 1.0

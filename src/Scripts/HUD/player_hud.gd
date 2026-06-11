@@ -79,6 +79,7 @@ func _ready() -> void:
 	PlayerHudSignalBus.enable_tower_map_button.connect(enable_tower_map_button)
 	PlayerHudSignalBus.show_hunt_challenge_button.connect(show_hunt_challenge_button)
 	PlayerHudSignalBus.flash_screen.connect(flash_screen)
+	PlayerHudSignalBus.trigger_long_fade_in_out.connect(trigger_long_fade_in_out)
 	
 	PlayerHudSignalBus.start_hunt_intro.connect(start_hunt_intro)
 	SignalBus.hide_hunt_challenge_button.connect(hide_hunt_challenge_button)
@@ -344,6 +345,8 @@ func quest_complete_notice() -> void:
 	await get_tree().create_timer(3.0).timeout
 	big_notification_label.hide()
 
+func trigger_long_fade_in_out() -> void:
+	animation_player.play("LongFadeInOut")
 
 func close_codex() -> void:
 	GameManager.player_can_move = true

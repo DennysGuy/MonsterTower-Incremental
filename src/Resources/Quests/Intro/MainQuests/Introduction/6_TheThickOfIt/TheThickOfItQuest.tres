@@ -13,5 +13,5 @@ quest_title = "The Thick of It"
 quest_id = 12
 status = 1
 next_quest = "A Mystery's Emergence"
-tasks = Array[ExtResource("3_lc86r")]([ExtResource("4_3rlwb"), ExtResource("5_qk6ye"), ExtResource("4_3nmly"), ExtResource("4_3nmly")])
+tasks = Array[ExtResource("3_lc86r")]([ExtResource("4_3rlwb"), ExtResource("5_qk6ye"), ExtResource("4_3nmly")])
 metadata/_custom_type_script = "uid://be6vh0qellkjq"

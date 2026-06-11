@@ -1409,7 +1409,7 @@ tracks/8/path = NodePath("../..")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0.2857143),
+"times": PackedFloat32Array(0.25),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -2527,6 +2527,7 @@ size = Vector2(20, 40)
 size = Vector2(20, 46)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5so87"]
+size = Vector2(53, 31)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mgyqt"]
 size = Vector2(52, 39)
@@ -2757,9 +2758,8 @@ libraries/ = SubResource("AnimationLibrary_pawjx")
 [node name="PlayerSprite" type="Sprite2D" parent="Sprites" unique_id=1041617266]
 material = SubResource("ShaderMaterial_8o5ax")
 position = Vector2(0, -32)
-texture = ExtResource("35_qf8dm")
-hframes = 4
-frame = 2
+texture = ExtResource("36_ysgjh")
+hframes = 17
 
 [node name="Outfit" type="Sprite2D" parent="Sprites" unique_id=411712928]
 position = Vector2(0, -32)
@@ -2831,12 +2831,12 @@ position = Vector2(0, -13)
 shape = SubResource("RectangleShape2D_hrnox")
 
 [node name="MiningArea" type="Area2D" parent="." unique_id=353797968]
-visible = false
 position = Vector2(19, -10)
 collision_layer = 256
 collision_mask = 256
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MiningArea" unique_id=339458740]
+position = Vector2(-2.5, -5.5)
 shape = SubResource("RectangleShape2D_5so87")
 
 [node name="CoinPurse" type="Marker2D" parent="." unique_id=900619047]
@@ -2898,3 +2898,5 @@ shape = SubResource("RectangleShape2D_0kjqt")
 [connection signal="area_entered" from="DashAttackHitBox" to="." method="_on_dash_attack_hit_box_area_entered"]
 [connection signal="area_entered" from="LadderDetector" to="." method="_on_ladder_detector_area_entered"]
 [connection signal="area_exited" from="LadderDetector" to="." method="_on_ladder_detector_area_exited"]
+[connection signal="area_entered" from="MiningArea" to="." method="_on_mining_area_area_entered"]
+[connection signal="area_exited" from="MiningArea" to="." method="_on_mining_area_area_exited"]

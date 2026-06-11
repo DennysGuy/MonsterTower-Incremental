@@ -204,6 +204,34 @@ tracks/1/keys = {
 "values": [Color(1, 1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_usdtc"]
+resource_name = "LongFadeInOut"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerHUD/Flash:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.96666664, 3.9666667, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerHUD/Flash:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_nt012"]
 length = 0.001
 tracks/0/type = "value"
@@ -367,6 +395,7 @@ _data = {
 &"CrossFade": SubResource("Animation_118cf"),
 &"FadeInOut": SubResource("Animation_hl0sk"),
 &"Flash": SubResource("Animation_bsjhc"),
+&"LongFadeInOut": SubResource("Animation_usdtc"),
 &"RESET": SubResource("Animation_nt012"),
 &"StartHuntChallenge": SubResource("Animation_6ndbt")
 }
@@ -1030,7 +1059,7 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 175.0
-offset_bottom = 175.00049
+offset_bottom = 175.00098
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2

@@ -74,7 +74,7 @@ func update_inventory_containers() -> void:
 func update_sword() -> void: #run this function when we upgrade the sword.
 	var tracked_index : int = PlayerStats.player_stats["Tracked Weapon"]
 
-	if tracked_index < PlayerStats.BEGINNGER_SWORD_COUNT:
+	if tracked_index < PlayerStats.BEGINNGER_SWORD_COUNT and tracked_index != -1:
 		sword = PlayerStats.get_sword(tracked_index)
 		sword_name.text = sword.sword_name
 		sword_stats.text = sword.get_stats_description()
