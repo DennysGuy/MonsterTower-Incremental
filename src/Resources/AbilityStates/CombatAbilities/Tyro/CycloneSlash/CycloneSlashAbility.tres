@@ -3,6 +3,7 @@
 [ext_resource type="Resource" uid="uid://bndomany2o2ix" path="res://src/Resources/AbilityStates/CombatAbilities/Tyro/CycloneSlash/CycloneSlashBehavior.tres" id="1_m2uou"]
 [ext_resource type="Script" uid="uid://bwqf7q51702b" path="res://src/Scripts/cability.gd" id="2_4ifdq"]
 [ext_resource type="Texture2D" uid="uid://dfn47ylk12xi" path="res://Assets/HUD/CombatAbilityIcons/CycloneSlashIcon.png" id="2_p885i"]
+[ext_resource type="Texture2D" uid="uid://cbw43e74ar1n2" path="res://Assets/HUD/CombatAbilityIcons/CycloneSlashIcon_Disabled.png" id="2_vr2m2"]
 
 [resource]
 script = ExtResource("2_4ifdq")
@@ -12,6 +13,8 @@ ability_type = 5
 attack_type = 2
 cooldown_time = 4.0
 icon = ExtResource("2_p885i")
+disabled_icon = ExtResource("2_vr2m2")
+is_combat_ability = true
 ability_description = "Mimick the nature of a cyclone, slashing in 360 degrees and pulling enemies towards you. 
 
 Enemies are silenced in the process rendering them unable to attack for a period of time."

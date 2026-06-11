@@ -3,6 +3,7 @@
 [ext_resource type="Resource" uid="uid://dhi66iebul1jy" path="res://src/Resources/AbilityStates/CombatAbilities/Tyro/CircleOfTruth/CircleOfTruthBehavior.tres" id="1_1pdb7"]
 [ext_resource type="Script" uid="uid://bwqf7q51702b" path="res://src/Scripts/cability.gd" id="1_sr2mo"]
 [ext_resource type="Texture2D" uid="uid://daut1glllti0r" path="res://Assets/HUD/CombatAbilityIcons/CircleofTruthIcon.png" id="2_d2wvs"]
+[ext_resource type="Texture2D" uid="uid://lsio3mhr7pkr" path="res://Assets/HUD/CombatAbilityIcons/CircleOfTruthIcon_Disabled.png" id="2_y8a6r"]
 
 [resource]
 script = ExtResource("1_sr2mo")
@@ -12,6 +13,8 @@ ability_type = 6
 attack_type = 1
 cooldown_time = 7.0
 icon = ExtResource("2_d2wvs")
+disabled_icon = ExtResource("2_y8a6r")
+is_combat_ability = true
 ability_description = "Conjure an energy field where enemies are damaged over time and slowed as long as they're inside the field."
 ability_behavior = ExtResource("1_1pdb7")
 mp_cost = 25.0

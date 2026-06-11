@@ -170,3 +170,8 @@ signal disable_tracked_icon(index : int)
 signal show_tracked_icon(index : int)
 @warning_ignore("unused_signal")
 signal update_held_weapon(weapon : Sword)
+
+@warning_ignore("unused_signal")
+signal set_combat_ability_icon_disabled
+@warning_ignore("unused_signal")
+signal set_combat_ability_icon_enabled

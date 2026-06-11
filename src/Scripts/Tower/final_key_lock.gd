@@ -39,6 +39,7 @@ func _on_enable_zone_area_entered(area: Area2D) -> void:
 		set_lock_filled()
 		ExpeditionTimer.stop_timer()
 		GameManager.boss_door_challenge_active = false
+		SignalBus.set_combat_ability_icon_enabled.emit()
 		MusicPlayer.stop_player()
 		parent.queue_free()
 		SignalBus.shake_camera.emit(3.0)

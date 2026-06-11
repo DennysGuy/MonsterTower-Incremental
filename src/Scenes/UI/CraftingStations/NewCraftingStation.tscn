@@ -188,7 +188,6 @@ offset_bottom = 19.0
 mouse_filter = 2
 
 [node name="ArrowAtOre" parent="." unique_id=347205072 instance=ExtResource("4_2ityt")]
-visible = true
 position = Vector2(-82, -75)
 
 [node name="CraftingProcessIcon" type="Panel" parent="." unique_id=1650907014]

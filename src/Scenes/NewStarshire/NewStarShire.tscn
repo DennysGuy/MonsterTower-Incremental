@@ -742,9 +742,9 @@ texture = ExtResource("25_nj75w")
 
 [node name="DojoAccessNotification" type="Label" parent="Dojo" unique_id=36395431]
 visible = false
-offset_left = -74.0
+offset_left = -109.0
 offset_top = -15.0
-offset_right = 78.0
+offset_right = 43.0
 offset_bottom = 1.0
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("27_e7ku4")

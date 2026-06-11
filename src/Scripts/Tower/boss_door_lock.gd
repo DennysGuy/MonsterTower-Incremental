@@ -23,6 +23,7 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("interact") and player and correct_key_detected:
 		stored_key = player.held_key
 		GameManager.can_issue_abilities = true
+		SignalBus.set_combat_ability_icon_enabled.emit()
 		player.held_key.go_to_key_lock(move_to_marker)
 		player.held_key = null
 		GameManager.event_speed_mod = 1.0

@@ -12,6 +12,7 @@ func enter() -> void:
 	var selected_ability : Ability = PlayerStats.get_equipped_ability("Combat Ability 3")
 	PlayerStats.player_stats["Current MP"] -= selected_ability.mp_cost
 	PlayerHudSignalBus.update_player_mp.emit()
+	PlayerHudSignalBus.check_if_can_cast_combat_ability.emit()
 	combat_ability_state = selected_ability.ability_behavior
 	parent.set_sword_texture(combat_ability_state.animation_name)
 	parent.set_outfit_texture(combat_ability_state.animation_name)

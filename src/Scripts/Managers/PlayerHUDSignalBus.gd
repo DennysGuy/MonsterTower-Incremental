@@ -111,3 +111,6 @@ signal show_boss_hp_bar
 
 @warning_ignore("unused_signal")
 signal trigger_long_fade_in_out
+
+@warning_ignore("unused_signal")
+signal check_if_can_cast_combat_ability

@@ -10,6 +10,8 @@ enum ATTACK_TYPE {NORMAL, SLOW, SILENCE}
 @export var attack_type : ATTACK_TYPE = ATTACK_TYPE.NORMAL
 @export var cooldown_time : float
 @export var icon : Texture2D
+@export var disabled_icon : Texture2D
+@export var is_combat_ability : bool = false
 @export_multiline var ability_description : String
 
 @export_group("Behavior Resource")
