@@ -82,7 +82,7 @@ func spawn_key() -> void:
 			spawn_final_key()	
 
 func spawn_disabled_notice() -> void:
-	play_sfx(TASK_COMPLETED,0.0)
+	play_sfx(TASK_COMPLETED,2.0)
 	var notice : DamageLabel = preload("uid://dkchs27qqogyy").instantiate()
 	notice.set_player_bg()
 	notice.label.text = "Combat Abilities Disabled!"

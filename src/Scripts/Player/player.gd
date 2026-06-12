@@ -41,6 +41,7 @@ class_name Player extends Entity
 
 @onready var ability_hit_box: Area2D = $AbilityHitBox
 const PICKAXE_SWING_STRIKE = preload("uid://djgxyv4i65ob4")
+const DENIED = preload("uid://672acnsycbfo")
 
 var held_key : BossDoorKey
 
@@ -443,3 +444,6 @@ func _on_mining_area_area_exited(area: Area2D) -> void:
 	var parent = area.get_parent()
 	if parent is OreRock:
 		in_mining_area = false
+
+func play_denied_sfx() -> void:
+	play_sfx(DENIED, 3.0)

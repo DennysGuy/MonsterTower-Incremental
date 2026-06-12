@@ -18,6 +18,6 @@ ExtResource("1_wj17q"): 2
 }])
 stat_relation = 1
 stat_name = "Defense"
-upgrade_interval = 15.0
+upgrade_interval = 8.0
 prereqs = Array[String](["Max HP 2:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

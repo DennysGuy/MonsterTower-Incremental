@@ -62,17 +62,29 @@ func process_physics(_delta: float) -> State:
 		if Input.is_action_just_pressed("special_attack") and PlayerStats.get_equipped_ability("Special Attack") and parent.can_issue_ability("Special Attack"):
 			return special_attack
 		
-		if Input.is_action_just_pressed("combat_ability_1") and PlayerStats.get_equipped_ability("Combat Ability 1") and parent.can_issue_ability("Combat Ability 1"):
-			return combat_ability_1
+		if Input.is_action_just_pressed("combat_ability_1") and PlayerStats.get_equipped_ability("Combat Ability 1"):
+			if parent.can_issue_ability("Combat Ability 1"):
+				return combat_ability_1
+			else:
+				parent.play_denied_sfx()
 
-		if Input.is_action_just_pressed("combat_ability_2") and PlayerStats.get_equipped_ability("Combat Ability 2") and parent.can_issue_ability("Combat Ability 2"):
-			return combat_ability_2
-		
-		if Input.is_action_just_pressed("combat_ability_3") and PlayerStats.get_equipped_ability("Combat Ability 3") and parent.can_issue_ability("Combat Ability 3"):
-			return combat_ability_3
-		
-		if Input.is_action_just_pressed("combat_ability_4") and PlayerStats.get_equipped_ability("Combat Ability 4") and parent.can_issue_ability("Combat Ability 4"):
-			return combat_ability_4
+		if Input.is_action_just_pressed("combat_ability_2") and PlayerStats.get_equipped_ability("Combat Ability 2"): 
+			if parent.can_issue_ability("Combat Ability 2"):
+				return combat_ability_2
+			else:
+				parent.play_denied_sfx()
+				
+		if Input.is_action_just_pressed("combat_ability_3") and PlayerStats.get_equipped_ability("Combat Ability 3"):
+			if parent.can_issue_ability("Combat Ability 3"):
+				return combat_ability_3
+			else:
+				parent.play_denied_sfx()
+				
+		if Input.is_action_just_pressed("combat_ability_4") and PlayerStats.get_equipped_ability("Combat Ability 4"):
+			if parent.can_issue_ability("Combat Ability 4"):
+				return combat_ability_4
+			else:
+				parent.play_denied_sfx()
 	
 	if !parent.is_on_floor():
 		parent.was_on_ledge = false

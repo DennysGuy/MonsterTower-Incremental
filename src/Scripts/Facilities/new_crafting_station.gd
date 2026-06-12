@@ -33,6 +33,9 @@ const FAILURE = preload("uid://cv5p7ufgqluno")
 const SUCCESS = preload("uid://dj3e1mi4ks8sr")
 const CRIT_SUCCESS_FAN_FARE = preload("uid://dg17w86m3muje")
 
+const TURN_OUT_ITEM = preload("uid://bd2rssv5wcn04")
+
+
 @onready var arrow_at_ore: Sprite2D = $ArrowAtOre
 
 
@@ -43,7 +46,7 @@ const CRIT_SUCCESS_FAN_FARE = preload("uid://dg17w86m3muje")
 @onready var crafting_tracker_player: AnimationPlayer = $CraftingTrackerPlayer
 
 var stored_crafting_menu : NewCraftingStationMenu = null
-	
+var current_pitch : float = 1.0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	match station_type:
@@ -190,11 +193,12 @@ func hide_crafting_tracker() -> void:
 func update_quantity_details() -> void:
 	crafting_station_menu_item.count_label.text = str(crafting_quantity)
 
-func play_sfx(sound: AudioStream, volume: float = 0.0):
+func play_sfx(sound: AudioStream, volume: float = 0.0, pitch_scale : float = 1.0):
 	var player := AudioStreamPlayer.new()
 	player.stream = sound
 	player.volume_db = volume
 	player.bus = &"SFX"
+	player.pitch_scale = pitch_scale
 	add_child(player)
 	player.play()
 	player.finished.connect(player.queue_free)
@@ -234,7 +238,9 @@ func spawn_item(item : Item, offset : Vector2 = Vector2.ZERO) -> void:
 	
 	#check if free range/heat hits
 	spawn_crafting_recipe_items()
-	
+	play_sfx(TURN_OUT_ITEM, 1.0, current_pitch)
+	if current_pitch < 2.0:
+		current_pitch += 0.2
 	get_parent().add_child(item_interactable)
 
 func spawn_crafting_recipe_items() -> void:
@@ -246,12 +252,8 @@ func spawn_crafting_recipe_items() -> void:
 		for num in range(crafting_quantity):
 			for key in ingredient.keys():
 				for i in range(ingredient[key]):
-					var spawn : ItemInteractable = preload("uid://dgtobkubdjq27").instantiate()
-					spawn.icon.texture = key.shop_icon
-					spawn.item = key
-					spawn.global_position = global_position + Vector2(global_position.x + offset, global_position.y)
+					spawn_item(key,Vector2(offset,self.global_position.y))
 					play_sfx(PULL_ITEM_1)
-					get_parent().add_child(spawn)
 					offset += 5
 					await get_tree().create_timer(0.1).timeout
 				

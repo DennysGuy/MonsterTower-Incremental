@@ -21,6 +21,7 @@ func exit() -> void:
 		parent.stored_recipe = null
 		parent.crafting_started = false
 		parent.hide_crafting_tracker()
+	parent.current_pitch = 1.0
 	parent.sfx_player.stop()
 	
 func process_input(_event: InputEvent) -> State:
@@ -46,7 +47,7 @@ func process_physics(_delta: float) -> State:
 				success_rate += PlayerStats.player_stats["Smelting Accuracy Bonus"]
 				
 		if num_check <= int(success_rate*100):
-			var crit_success_chance : float = 0
+			var crit_success_chance : float = 0.0
 			match parent.station_type:
 				parent.STATION_TYPE.COOKING:
 					crit_success_chance = PlayerStats.player_stats["Critical Cooking Chance"]

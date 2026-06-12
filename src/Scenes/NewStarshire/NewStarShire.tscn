@@ -1107,10 +1107,10 @@ offset_bottom = 698.0
 facility_name = "Smelting Station"
 
 [node name="CookingStationNotice" parent="." unique_id=2045831039 instance=ExtResource("23_0u15j")]
-offset_left = 1786.0
-offset_top = 511.0
-offset_right = 1940.0
-offset_bottom = 656.0
+offset_left = 1735.0
+offset_top = 545.0
+offset_right = 1889.0
+offset_bottom = 690.0
 facility_name = "Cooking Station"
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1529112079]

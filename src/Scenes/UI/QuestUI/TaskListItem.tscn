@@ -90,7 +90,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(339, 0)]
+"values": [Vector2(-350, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_fs0ym"]
@@ -106,7 +106,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(339, 0), Vector2(0, 0)]
+"values": [Vector2(-350, 0), Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_mjgud"]
@@ -158,19 +158,19 @@ _data = {
 }
 
 [node name="TaskListItem" type="Control" unique_id=1940233025 node_paths=PackedStringArray("label", "icon")]
-custom_minimum_size = Vector2(0, 10)
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 327.0
-offset_bottom = 41.0
+offset_bottom = 30.0
 script = ExtResource("1_bg5po")
 label = NodePath("PanelContainer/HBoxContainer/Label")
 icon = NodePath("PanelContainer/HBoxContainer/Icon")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=669899884]
 layout_mode = 0
-offset_left = 339.0
-offset_right = 682.0001
+offset_left = -350.0
+offset_right = -6.999878
 offset_bottom = 30.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer" unique_id=1330861788]

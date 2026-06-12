@@ -47,20 +47,31 @@ func process_input(_event: InputEvent) -> State:
 	elif Input.is_action_just_pressed("add_currency"):
 		parent.jump_buffer_timer = parent.jump_buffer_wait_time
 	#we can probably add the combat ability buffers here
-	elif Input.is_action_just_pressed("combat_ability_1") and PlayerStats.get_equipped_ability("Combat Ability 1") and parent.can_issue_ability("Combat Ability 1"):
-		parent.attack_friction = 400
-		parent.max_attack_drift = 200
-		parent.combat_ability_1_timer = parent.combat_ability_1_wait_time
+	elif Input.is_action_just_pressed("combat_ability_1") and PlayerStats.get_equipped_ability("Combat Ability 1"):
+		if parent.can_issue_ability("Combat Ability 1"):
+			parent.attack_friction = 1200
+			parent.max_attack_drift = 100
+			parent.combat_ability_1_timer = parent.combat_ability_1_wait_time
+		else:
+			parent.play_denied_sfx()
+			
+	elif Input.is_action_just_pressed("combat_ability_2") and PlayerStats.get_equipped_ability("Combat Ability 2"): 
+			if parent.can_issue_ability("Combat Ability 2"):
+				parent.combat_ability_2_timer = parent.combat_ability_2_wait_time
+			else:
+				parent.play_denied_sfx()
 		
-
-	elif Input.is_action_just_pressed("combat_ability_2") and PlayerStats.get_equipped_ability("Combat Ability 2") and parent.can_issue_ability("Combat Ability 2"):
-		parent.combat_ability_2_timer = parent.combat_ability_2_wait_time
+	elif Input.is_action_just_pressed("combat_ability_3") and PlayerStats.get_equipped_ability("Combat Ability 3"): 
+			if parent.can_issue_ability("Combat Ability 3"):
+				parent.combat_ability_3_timer = parent.combat_ability_3_wait_time
+			else:
+				parent.play_denied_sfx()
 		
-	elif Input.is_action_just_pressed("combat_ability_3")  and PlayerStats.get_equipped_ability("Combat Ability 3") and parent.can_issue_ability("Combat Ability 3"):
-		parent.combat_ability_3_timer = parent.combat_ability_3_wait_time
-		
-	elif Input.is_action_just_pressed("combat_ability_4")  and PlayerStats.get_equipped_ability("Combat Ability 4") and parent.can_issue_ability("Combat Ability 4"):
-		parent.combat_ability_4_timer = parent.combat_ability_4_wait_time
+	elif Input.is_action_just_pressed("combat_ability_4")  and PlayerStats.get_equipped_ability("Combat Ability 4"): 
+			if parent.can_issue_ability("Combat Ability 4"):
+				parent.combat_ability_4_timer = parent.combat_ability_4_wait_time
+			else:
+				parent.play_denied_sfx()
 		
 	return null
 

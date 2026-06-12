@@ -21,7 +21,7 @@ size = Vector2(82, 826)
 [node name="Laser" type="Node2D" unique_id=779217302]
 material = SubResource("ShaderMaterial_5p500")
 script = ExtResource("2_maj4h")
-attack_damage = 120
+attack_damage = 1000
 
 [node name="Line2D" type="Line2D" parent="." unique_id=840824354]
 material = SubResource("ShaderMaterial_p2ht8")

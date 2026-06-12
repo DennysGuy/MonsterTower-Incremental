@@ -42,7 +42,7 @@ func process_input(_event: InputEvent) -> State:
 	return null
 
 func process_physics(_delta: float) -> State:
-	
+
 	if !GameManager.player_can_move:
 		return idle_state
 	
@@ -62,19 +62,31 @@ func process_physics(_delta: float) -> State:
 			parent.max_attack_drift = 200
 			return attack_1_state
 
-		if Input.is_action_just_pressed("combat_ability_1") and PlayerStats.get_equipped_ability("Combat Ability 1") and parent.can_issue_ability("Combat Ability 1"):
-			parent.attack_friction = 400
-			parent.max_attack_drift = 200
-			return combat_ability_1
+		if Input.is_action_just_pressed("combat_ability_1") and PlayerStats.get_equipped_ability("Combat Ability 1"):
+			if parent.can_issue_ability("Combat Ability 1"):
+				parent.attack_friction = 400
+				parent.max_attack_drift = 200
+				return combat_ability_1
+			else:
+				parent.play_denied_sfx()
 
-		if Input.is_action_just_pressed("combat_ability_2") and PlayerStats.get_equipped_ability("Combat Ability 2") and parent.can_issue_ability("Combat Ability 2"):
-			return combat_ability_2
-		
-		if Input.is_action_just_pressed("combat_ability_3")  and PlayerStats.get_equipped_ability("Combat Ability 3") and parent.can_issue_ability("Combat Ability 3"):
-			return combat_ability_3
-		
-		if Input.is_action_just_pressed("combat_ability_4")  and PlayerStats.get_equipped_ability("Combat Ability 4") and parent.can_issue_ability("Combat Ability 4"):
-			return combat_ability_4
+		if Input.is_action_just_pressed("combat_ability_2") and PlayerStats.get_equipped_ability("Combat Ability 2"): 
+			if parent.can_issue_ability("Combat Ability 2"):
+				return combat_ability_2
+			else:
+				parent.play_denied_sfx()
+				
+		if Input.is_action_just_pressed("combat_ability_3") and PlayerStats.get_equipped_ability("Combat Ability 3"):
+			if parent.can_issue_ability("Combat Ability 3"):
+				return combat_ability_3
+			else:
+				parent.play_denied_sfx()
+				
+		if Input.is_action_just_pressed("combat_ability_4") and PlayerStats.get_equipped_ability("Combat Ability 4"):
+			if parent.can_issue_ability("Combat Ability 4"):
+				return combat_ability_4
+			else:
+				parent.play_denied_sfx()
 
 	var input := Input.get_axis("pan_cam_left", "pan_cam_right")
 	var max_speed = PlayerStats.player_stats["Movement Speed"] + PlayerStats.get_current_sword().movement_speed_bonus + PlayerStats.get_total_gem_bonus("Movement Speed Bonus")

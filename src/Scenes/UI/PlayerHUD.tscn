@@ -741,11 +741,19 @@ horizontal_alignment = 1
 
 [node name="PickUpNotifier" type="VBoxContainer" parent="PlayerHUD" unique_id=484786063]
 layout_mode = 1
-offset_left = 27.0
-offset_top = 117.0
-offset_right = 412.0
-offset_bottom = 429.0
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -397.0
+offset_top = -711.0
+offset_right = -12.0
+offset_bottom = -117.0
+grow_horizontal = 0
+grow_vertical = 0
 mouse_filter = 2
+alignment = 2
 
 [node name="StartHuntChallengeButton" type="Button" parent="PlayerHUD" unique_id=183096058]
 visible = false
@@ -845,9 +853,10 @@ horizontal_alignment = 1
 
 [node name="QuestHub" parent="PlayerHUD" unique_id=1129499445 instance=ExtResource("14_xxan5")]
 layout_mode = 1
-offset_left = -339.00012
-offset_top = -231.5
-offset_bottom = 231.5
+offset_left = 43.0
+offset_top = -435.0
+offset_right = 421.00012
+offset_bottom = 25.0
 
 [node name="RoomInfoBanner" parent="PlayerHUD" unique_id=1196855950 instance=ExtResource("16_fnmb5")]
 visible = false
@@ -1059,7 +1068,7 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 175.0
-offset_bottom = 175.00098
+offset_bottom = 175.00122
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2

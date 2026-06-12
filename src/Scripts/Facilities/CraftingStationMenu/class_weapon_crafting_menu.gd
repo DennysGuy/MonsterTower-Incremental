@@ -62,6 +62,7 @@ func _on_action_button_button_up() -> void:
 func craft_sequence() -> void:
 	SaveManager.save_weapon_unlocked_status(stored_weapon.index, true)
 	SaveManager.save_weapon_tracked_status(stored_weapon.index, false)
+	InventoryManager.remove_resources_from_inventory(stored_weapon.recipe.recipe_list)
 	PlayerStats.player_stats["Tracked Weapon"] = -1
 	SaveManager.save_player_stats()
 	

@@ -1,4 +1,5 @@
 do CutsceneManager.disable_player_functionality()
+join TowerGuide right
 TowerGuide: Congratulations on completing the Hunter Exam and acquiring your Hunter License!
 TowerGuide: You many now enter the Starspire Tower - may your bounty be plentiful!\
 But remember - for your own safety, you will only be granted a limited amount of time in the tower.
