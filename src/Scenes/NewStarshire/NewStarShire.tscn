@@ -7,9 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://c8ov03gkkda4k" path="res://src/Scenes/PlayerCamera.tscn" id="3_wtuhv"]
 [ext_resource type="PackedScene" uid="uid://bf6rganpst3po" path="res://src/Scenes/NewStarshire/StarspireBG.tscn" id="4_0u15j"]
 [ext_resource type="PackedScene" uid="uid://dkxkwr4us4aak" path="res://src/Scenes/NewStarshire/Facilities/TechTreeComputer.tscn" id="4_cldp6"]
+[ext_resource type="PackedScene" uid="uid://broo5gd1g4plw" path="res://src/Scenes/HubBG.tscn" id="5_hw86b"]
 [ext_resource type="Texture2D" uid="uid://dyxt1peu58oe3" path="res://Assets/NewShip.png" id="6_0u15j"]
 [ext_resource type="PackedScene" uid="uid://dks5oskfsmrau" path="res://src/Scenes/NewStarshire/GrandMarketSign.tscn" id="6_y20fx"]
-[ext_resource type="PackedScene" uid="uid://djr7ysw0olctc" path="res://src/Scenes/MainMenuBG.tscn" id="8_uhrlg"]
 [ext_resource type="PackedScene" uid="uid://crvhogk2bnq1s" path="res://src/Scenes/NewStarshire/TowerGuideSprite.tscn" id="9_636af"]
 [ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="10_636af"]
 [ext_resource type="Texture2D" uid="uid://bpmnfqs3ccdep" path="res://Assets/Facilities/TempGrandMarketStand.png" id="12_123hf"]
@@ -34,6 +34,7 @@
 [ext_resource type="Texture2D" uid="uid://dbg5n708oli7y" path="res://Assets/Facilities/SwordUpgradeStation.png" id="33_0u15j"]
 [ext_resource type="PackedScene" uid="uid://w1c2yn7s6sjx" path="res://src/Scenes/UI/CraftingStations/NewCraftingStation.tscn" id="33_d6jc3"]
 [ext_resource type="PackedScene" uid="uid://u2wlvgyx0mtu" path="res://src/Scenes/NewStarshire/Facilities/TaskBoard.tscn" id="36_4qs0c"]
+[ext_resource type="PackedScene" uid="uid://dllbbxwtrshxy" path="res://src/Scenes/NewStarshire/GrandMarketSignFrontLeg.tscn" id="36_g8ukf"]
 [ext_resource type="PackedScene" uid="uid://drvmmtbvnc785" path="res://src/Scenes/Tower/arrow_at_ore.tscn" id="36_hw86b"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bp3qg"]
@@ -495,8 +496,8 @@ tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_d72hs")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pdf0i"]
-size = Vector2(7.699991, 20)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4qs0c"]
+size = Vector2(13.949994, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l6435"]
 size = Vector2(168, 145)
@@ -513,6 +514,9 @@ size = Vector2(89, 46)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5xris"]
 size = Vector2(102, 64)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pdf0i"]
+size = Vector2(7.699991, 20)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jhqac"]
 size = Vector2(20, 375)
 
@@ -528,37 +532,55 @@ sfx_player = NodePath("SfxPlayer")
 [node name="SfxPlayer" parent="." unique_id=1032259464 instance=ExtResource("2_te0bi")]
 
 [node name="Node2D" parent="." unique_id=713020740 instance=ExtResource("4_0u15j")]
-position = Vector2(682, 151)
+position = Vector2(682, 97)
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=626834970]
 offset_left = 34.0
 offset_top = 187.0
-offset_right = 2599.0
+offset_right = 2783.0
 offset_bottom = 907.0
 stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=1380284373]
 transparent_bg = true
 handle_input_locally = false
-size = Vector2i(2565, 720)
+size = Vector2i(2749, 720)
 render_target_update_mode = 4
 
-[node name="MainMenuBg" parent="SubViewportContainer/SubViewport" unique_id=1206026906 instance=ExtResource("8_uhrlg")]
+[node name="MainMenuBg" parent="SubViewportContainer/SubViewport" unique_id=1206026906 instance=ExtResource("5_hw86b")]
 
 [node name="SubViewportContainer2" type="SubViewportContainer" parent="." unique_id=112298642]
-offset_left = 892.0
-offset_top = 254.0
-offset_right = 1892.0
-offset_bottom = 766.0
+offset_left = 658.0
+offset_top = 280.0
+offset_right = 1658.0
+offset_bottom = 792.0
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer2" unique_id=481602288]
 own_world_3d = true
 transparent_bg = true
 handle_input_locally = false
+canvas_item_default_texture_filter = 0
 size = Vector2i(1000, 512)
 render_target_update_mode = 4
 
 [node name="Node3D" parent="SubViewportContainer2/SubViewport" unique_id=1094455208 instance=ExtResource("6_y20fx")]
+
+[node name="SubViewportContainer3" type="SubViewportContainer" parent="." unique_id=873996231]
+z_index = 4096
+offset_left = 500.0
+offset_top = 83.0
+offset_right = 1500.0
+offset_bottom = 1083.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer3" unique_id=561475439]
+own_world_3d = true
+transparent_bg = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+size = Vector2i(1000, 1000)
+render_target_update_mode = 4
+
+[node name="Node3D" parent="SubViewportContainer3/SubViewport" unique_id=75522530 instance=ExtResource("36_g8ukf")]
 
 [node name="Ship" type="Sprite2D" parent="." unique_id=1188530412]
 position = Vector2(-270, 454)
@@ -569,7 +591,7 @@ position = Vector2(3041, 476)
 texture = ExtResource("6_0u15j")
 
 [node name="MarketStand" type="Node2D" parent="." unique_id=985249623]
-position = Vector2(1237, 491)
+position = Vector2(1190, 491)
 
 [node name="StorageArea" type="Sprite2D" parent="MarketStand" unique_id=893904591]
 position = Vector2(-27, 75)
@@ -608,7 +630,7 @@ tile_map_data = PackedByteArray("AAAaABAAAgABAAUAAAAbABAAAgACAAUAAAAcABAAAgADAAU
 tile_set = SubResource("TileSet_te0bi")
 
 [node name="Ladders" type="TileMapLayer" parent="TileSets" unique_id=762703337]
-tile_map_data = PackedByteArray("AABMACAAAQAcAAwAAABNACAAAQAdAAwAAABMACEAAQAcAA0AAABMACIAAQAcAA4AAABMACMAAQAcAA8AAABMACQAAQAcABAAAABMACUAAQAcABEAAABMACYAAQAcABIAAABNACEAAQAdAA0AAABNACIAAQAdAA4AAABNACMAAQAdAA8AAABNACQAAQAdABAAAABNACUAAQAdABEAAABNACYAAQAdABIAAABMACcAAQAcAA0AAABMACgAAQAcAA4AAABNACcAAQAdAA0AAABNACgAAQAdAA4AAABMACkAAQAcABMAAABNACkAAQAdABMAAAA=")
+tile_map_data = PackedByteArray("AABPACAAAQAcAAwAAABPACEAAQAcAA0AAABPACIAAQAcAA4AAABPACMAAQAcAA8AAABPACQAAQAcABAAAABPACUAAQAcABEAAABPACYAAQAcABIAAABPACcAAQAcAA0AAABPACgAAQAcAA4AAABPACkAAQAcABMAAABQACAAAQAdAAwAAABQACEAAQAdAA0AAABQACIAAQAdAA4AAABQACMAAQAdAA8AAABQACQAAQAdABAAAABQACUAAQAdABEAAABQACYAAQAdABIAAABQACcAAQAdAA0AAABQACgAAQAdAA4AAABQACkAAQAdABMAAAA=")
 tile_set = SubResource("TileSet_vdg01")
 
 [node name="ForeGround" type="TileMapLayer" parent="TileSets" unique_id=1345760135]
@@ -635,22 +657,22 @@ smoothing_distance = 6
 room_width = 2000
 
 [node name="TowerArea" type="Area2D" parent="." unique_id=409021533]
-position = Vector2(2459, 605)
+position = Vector2(2618, 605)
 scale = Vector2(20, 10)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TowerArea" unique_id=1322178143]
-position = Vector2(-2.861023e-06, 0)
+position = Vector2(-3.125, 0)
 scale = Vector2(0.99999976, 0.99999976)
-shape = SubResource("RectangleShape2D_pdf0i")
+shape = SubResource("RectangleShape2D_4qs0c")
 
 [node name="TowerGuideSprite" parent="." unique_id=1901348219 instance=ExtResource("9_636af")]
-position = Vector2(2447, 671)
+position = Vector2(2574, 671)
 
 [node name="TowerGuideSprite2" parent="." unique_id=283118128 instance=ExtResource("9_636af")]
 position = Vector2(107, 670)
 
 [node name="GrandMarketArea" type="Area2D" parent="." unique_id=1746715903]
-position = Vector2(1215, 622)
+position = Vector2(1168, 622)
 script = ExtResource("17_hw86b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GrandMarketArea" unique_id=495718423]
@@ -658,10 +680,9 @@ position = Vector2(1, 2)
 shape = SubResource("RectangleShape2D_l6435")
 
 [node name="EnterMarketLabel" type="Label" parent="." unique_id=2132180699]
-visible = false
-offset_left = 1099.0
+offset_left = 1051.0
 offset_top = 593.0
-offset_right = 1289.0
+offset_right = 1241.0
 offset_bottom = 616.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -670,7 +691,7 @@ theme_override_fonts/font = ExtResource("27_e7ku4")
 text = "Press E to enter Market"
 
 [node name="LadderArea" parent="." unique_id=1455959436 node_paths=PackedStringArray("ladder_top", "ladder_bottom") instance=ExtResource("17_jp6xg")]
-position = Vector2(1914, 571)
+position = Vector2(1962, 571)
 collision_layer = 8
 collision_mask = 8
 ladder_top = NodePath("Top")
@@ -686,17 +707,11 @@ position = Vector2(0, -59)
 [node name="Bot" type="Marker2D" parent="LadderArea" unique_id=1075106674]
 position = Vector2(1, 118)
 
-[node name="CookingRangePosition" type="Node2D" parent="." unique_id=1732992166]
-position = Vector2(1915, 593)
-
-[node name="SwordCraftingStationPosition" type="Node2D" parent="." unique_id=333549657]
-position = Vector2(1841, 482)
-
 [node name="WelcomSign" type="TextureRect" parent="." unique_id=389766217]
-offset_left = 1744.0
-offset_top = 530.0
-offset_right = 1905.6833
-offset_bottom = 639.0
+offset_left = 1629.0
+offset_top = 541.0
+offset_right = 1790.6833
+offset_bottom = 633.0
 texture = ExtResource("26_ejo2t")
 expand_mode = 1
 
@@ -708,18 +723,25 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -58.341675
-offset_top = -25.5
+offset_top = -19.5
 offset_right = 56.658325
-offset_bottom = 15.5
+offset_bottom = 21.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/shadow_offset_x = 0
 theme_override_constants/shadow_offset_y = 0
-theme_override_constants/outline_size = 6
+theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("27_e7ku4")
-theme_override_font_sizes/font_size = 18
-text = "STARSPIRE
-GRAND MARKET"
+theme_override_font_sizes/font_size = 16
+text = "ARTISAN'S
+CORNER"
+horizontal_alignment = 1
+
+[node name="CookingRangePosition" type="Node2D" parent="." unique_id=1732992166]
+position = Vector2(1915, 593)
+
+[node name="SwordCraftingStationPosition" type="Node2D" parent="." unique_id=333549657]
+position = Vector2(1841, 482)
 
 [node name="CookingStation" parent="." unique_id=179535965 instance=ExtResource("33_d6jc3")]
 position = Vector2(1834, 704)
@@ -727,18 +749,6 @@ station_type = 1
 
 [node name="Refinery" parent="." unique_id=763505504 instance=ExtResource("33_d6jc3")]
 position = Vector2(1619, 704)
-
-[node name="AccessCraftingStation" type="Label" parent="." unique_id=455459731]
-visible = false
-offset_left = 1118.0
-offset_top = 426.0
-offset_right = 1344.0
-offset_bottom = 442.0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 6
-theme_override_fonts/font = ExtResource("27_e7ku4")
-theme_override_font_sizes/font_size = 16
-text = "Press 'E' to Access Cooking Station"
 
 [node name="AccessSmeltingStation" type="Label" parent="." unique_id=1102055337]
 visible = false
@@ -857,7 +867,7 @@ position = Vector2(2, -5)
 shape = SubResource("RectangleShape2D_5xris")
 
 [node name="TechTreeComputer" parent="CraftingStationArea" unique_id=1878856969 instance=ExtResource("4_cldp6")]
-position = Vector2(411, 218)
+position = Vector2(371, 218)
 
 [node name="NameTag4" parent="CraftingStationArea/TechTreeComputer" unique_id=1013242585 instance=ExtResource("19_bl45m")]
 offset_left = -48.0
@@ -868,9 +878,9 @@ offset_right = 40.0
 text = "Upgrades PC"
 
 [node name="UpgradesPCNotice3" parent="." unique_id=1340485041 instance=ExtResource("23_0u15j")]
-offset_left = 2213.0
+offset_left = 2172.0
 offset_top = 555.0
-offset_right = 2367.0
+offset_right = 2326.0
 offset_bottom = 700.0
 facility_name = "Upgrades PC"
 
@@ -889,10 +899,10 @@ horizontal_alignment = 1
 
 [node name="GuideLog" type="Label" parent="." unique_id=1041000846]
 visible = false
-offset_left = 2310.0
-offset_top = 597.0
-offset_right = 2580.0
-offset_bottom = 614.0
+offset_left = 2362.0
+offset_top = 598.0
+offset_right = 2663.0
+offset_bottom = 615.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
@@ -911,6 +921,7 @@ scale = Vector2(0.99999976, 0.99999976)
 shape = SubResource("RectangleShape2D_pdf0i")
 
 [node name="GuideLog2" type="Label" parent="." unique_id=760539459]
+visible = false
 offset_left = -9.0
 offset_top = 613.0
 offset_right = 292.0
@@ -924,9 +935,9 @@ text = "You need a Tower pass before you can Enter..."
 horizontal_alignment = 1
 
 [node name="NameTag5" parent="." unique_id=895539879 instance=ExtResource("19_bl45m")]
-offset_left = 1228.0
+offset_left = 1138.0
 offset_top = 706.0
-offset_right = 1316.0
+offset_right = 1226.0
 offset_bottom = 719.0
 
 [node name="Tag" parent="NameTag5/Bg" parent_id_path=PackedInt32Array(895539879, 305804188) index="0" unique_id=725373759]
@@ -956,41 +967,14 @@ position = Vector2(0, -177.5)
 shape = SubResource("RectangleShape2D_jhqac")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=235853116]
-position = Vector2(2380, 710)
+position = Vector2(2596, 710)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=2086811692]
 position = Vector2(145, -177.5)
 shape = SubResource("RectangleShape2D_jhqac")
 
-[node name="DirectionSign2" type="Sprite2D" parent="." unique_id=63789470]
-position = Vector2(995, 675)
-texture = ExtResource("28_m7r5i")
-
-[node name="DirectionSignMessage" type="Sprite2D" parent="DirectionSign2" unique_id=946966967]
-position = Vector2(-2, -49)
-texture = ExtResource("29_hk4f7")
-
-[node name="Label" type="Label" parent="DirectionSign2/DirectionSignMessage" unique_id=109503014]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -64.0
-offset_top = -46.5
-offset_right = -24.0
-offset_bottom = -9.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("27_e7ku4")
-theme_override_font_sizes/font_size = 16
-text = "Market
-Center"
-metadata/_edit_use_anchors_ = true
-
 [node name="DirectionSign" type="Sprite2D" parent="." unique_id=1749775791]
-position = Vector2(2181, 676)
+position = Vector2(2359, 676)
 texture = ExtResource("28_m7r5i")
 
 [node name="DirectionSignMessage" type="Sprite2D" parent="DirectionSign" unique_id=552320084]
@@ -1070,7 +1054,7 @@ size = Vector2i(640, 360)
 render_target_update_mode = 0
 
 [node name="TaskBoard" parent="." unique_id=2038982980 instance=ExtResource("36_4qs0c")]
-position = Vector2(2065, 704)
+position = Vector2(2075, 704)
 
 [node name="TaskBoard2" parent="." unique_id=1076737153 instance=ExtResource("36_4qs0c")]
 position = Vector2(403, 704)
@@ -1097,9 +1081,9 @@ offset_bottom = 701.0
 facility_name = "Upgrades PC"
 
 [node name="UpgradesPCNotice2" parent="." unique_id=582724704 instance=ExtResource("23_0u15j")]
-offset_left = 1984.0
+offset_left = 1994.0
 offset_top = 536.0
-offset_right = 2138.0
+offset_right = 2148.0
 offset_bottom = 681.0
 facility_name = "Job Requests Board"
 
@@ -1125,10 +1109,10 @@ offset_bottom = 698.0
 facility_name = "Smelting Station"
 
 [node name="CookingStationNotice" parent="." unique_id=2045831039 instance=ExtResource("23_0u15j")]
-offset_left = 1735.0
-offset_top = 545.0
-offset_right = 1889.0
-offset_bottom = 690.0
+offset_left = 1722.0
+offset_top = 558.0
+offset_right = 1876.0
+offset_bottom = 703.0
 facility_name = "Cooking Station"
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1529112079]

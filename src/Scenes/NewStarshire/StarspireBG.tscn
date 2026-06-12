@@ -3,7 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://cshw60pd3stbh" path="res://Assets/EnvironmentalAssets/StarspireBG1/StarspireBG1_Sky.png" id="1_57e4k"]
 [ext_resource type="Texture2D" uid="uid://b38baquwhaxfl" path="res://Assets/EnvironmentalAssets/StarspireBG1/StarspireBG1_BlueClouds.png" id="2_kdhv2"]
 [ext_resource type="Texture2D" uid="uid://cpca4wpiuuqve" path="res://Assets/EnvironmentalAssets/StarspireBG1/StarspireBG1_WhiteClouds.png" id="3_8np33"]
-[ext_resource type="Texture2D" uid="uid://4wbesj8bqdpo" path="res://Assets/EnvironmentalAssets/StarspireBG1/StarspireBG1_Islands.png" id="4_ihj0j"]
 
 [node name="Node2D" type="Node2D" unique_id=713020740]
 
@@ -35,14 +34,4 @@ repeat_times = 3
 
 [node name="WhiteClouds" type="Sprite2D" parent="Parallax2D2" unique_id=1569885005]
 texture = ExtResource("3_8np33")
-centered = false
-
-[node name="Parallax2D4" type="Parallax2D" parent="." unique_id=145806005]
-scroll_scale = Vector2(0.5, 1)
-scroll_offset = Vector2(0.07, 0.07)
-repeat_size = Vector2(1280, 0)
-repeat_times = 3
-
-[node name="Islands" type="Sprite2D" parent="Parallax2D4" unique_id=160136285]
-texture = ExtResource("4_ihj0j")
 centered = false

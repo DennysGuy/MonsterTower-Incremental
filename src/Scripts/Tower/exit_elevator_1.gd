@@ -63,7 +63,8 @@ func _process(delta: float) -> void:
 		if current_room_data.is_expedition_floor() and current_room_data.unlock_recipe and !current_room_data.hunt_challenge_completed:
 			MusicPlayer.transitioning_floors = true
 			GameManager.spawn_location = 0
-			SignalBus.move_to_next_room.emit(next_room_data.scene_path)
+			#SignalBus.move_to_next_room.emit(next_room_data.scene_path)
+			unlock_next_room()
 			return
 
 		if !quest_needed.is_empty() and QuestManager.get_quest(quest_needed).is_completed():

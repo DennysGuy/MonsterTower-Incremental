@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://broo5gd1g4plw"]
+
+[ext_resource type="Shader" uid="uid://b46alngda0fw1" path="res://src/Scripts/Shaders/ToonWater.gdshader" id="1_n7hta"]
+[ext_resource type="PackedScene" uid="uid://jryfni8f0cro" path="res://Assets/Models/Tower.gltf" id="2_u5c04"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_g4fjb"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_p3j80"]
+sky_material = SubResource("ProceduralSkyMaterial_g4fjb")
+
+[sub_resource type="Environment" id="Environment_pv54o"]
+background_mode = 1
+background_energy_multiplier = 0.7
+sky = SubResource("Sky_p3j80")
+ambient_light_source = 2
+ambient_light_color = Color(0.73300546, 0.7330054, 0.7330054, 1)
+ambient_light_energy = 1.5
+tonemap_mode = 2
+glow_enabled = true
+fog_light_color = Color(0.52897584, 0.50451994, 0.4146226, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g4fjb"]
+render_priority = 0
+shader = ExtResource("1_n7hta")
+shader_parameter/WATER_COL = Vector4(0.04, 0.38, 0.88, 1)
+shader_parameter/WATER2_COL = Vector4(0.04, 0.35, 0.78, 1)
+shader_parameter/FOAM_COL = Vector4(0.8125, 0.9609, 0.9648, 1)
+shader_parameter/distortion_speed = 2.0
+shader_parameter/tile = Vector2(128, 128)
+shader_parameter/height = 0.0
+shader_parameter/wave_size = Vector2(128, 128)
+shader_parameter/wave_speed = 3.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_p3j80"]
+
+[node name="MainMenuBg" type="Node3D" unique_id=1206026906]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.4381237, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1943572123]
+environment = SubResource("Environment_pv54o")
+
+[node name="CSGBox3D" type="CSGMesh3D" parent="." unique_id=1200920201]
+transform = Transform3D(1271.2336, 0, 0, 0, -0.029270977, -17.352448, 0, 0.0006044496, -840.3067, 0, 0.59887475, 0)
+material_overlay = SubResource("ShaderMaterial_g4fjb")
+mesh = SubResource("BoxMesh_p3j80")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=628633170]
+transform = Transform3D(1, 0, 0, 0, 0.99992776, 0.012025006, 0, -0.012025006, 0.99992776, -93.69536, 8.13639, 24.720592)
+fov = 60.0
+
+[node name="blockbench_export" parent="." unique_id=2029808041 instance=ExtResource("2_u5c04")]
+transform = Transform3D(6.3549223, 0, 0, 0, 6.19217, 0, 0, 0, 5.1643133, 78.92131, 0.059088707, -95.592834)
