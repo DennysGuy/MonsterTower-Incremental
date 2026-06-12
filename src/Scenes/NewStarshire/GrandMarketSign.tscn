@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://dks5oskfsmrau"]
+
+[ext_resource type="PackedScene" uid="uid://baiblary2goqv" path="res://Assets/Models/StarspireSign.gltf" id="1_uu20a"]
+[ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="2_e227o"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_uu20a"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_e227o"]
+sky_material = SubResource("ProceduralSkyMaterial_uu20a")
+
+[sub_resource type="Environment" id="Environment_ujfdk"]
+background_mode = 3
+background_color = Color(1, 1, 1, 1)
+sky = SubResource("Sky_e227o")
+ambient_light_source = 2
+ambient_light_color = Color(0.9079417, 0.9079417, 0.90794164, 1)
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Node3D" type="Node3D" unique_id=1094455208]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=797250670]
+environment = SubResource("Environment_ujfdk")
+
+[node name="blockbench_export" parent="." unique_id=1948231979 instance=ExtResource("1_uu20a")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.5447875, 0.6547097, -0.87018085)
+
+[node name="Label3D" type="Label3D" parent="blockbench_export" unique_id=369018090]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.71307385, 4.924992, -1.5541847)
+text = "STARSPIRE GRAND MARKET"
+font = ExtResource("2_e227o")
+font_size = 139
+outline_size = 0
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1166718519]
+transform = Transform3D(0.96994, 0, 0.24334428, 0, 1, 0, -0.24334428, 0, 0.96994, 2.405746, 4.0514555, 4.913025)

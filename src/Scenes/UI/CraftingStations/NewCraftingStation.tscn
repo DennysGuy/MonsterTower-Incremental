@@ -285,7 +285,7 @@ offset_right = 136.0
 offset_bottom = -79.0
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("16_esdk2")
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 16
 text = "unlock x node to access"
 horizontal_alignment = 1
 

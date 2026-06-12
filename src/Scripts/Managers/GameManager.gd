@@ -163,3 +163,10 @@ func check_if_dodged() -> bool:
 		return true
 	
 	return false
+
+func get_control_mapping(action : String) -> String:
+	var events = InputMap.action_get_events(action)
+	var key = events[0]
+	var mapping : String = key.as_text()
+	mapping = mapping.substr(0,1)
+	return mapping

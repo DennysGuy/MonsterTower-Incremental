@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bf6rganpst3po" path="res://src/Scenes/NewStarshire/StarspireBG.tscn" id="4_0u15j"]
 [ext_resource type="PackedScene" uid="uid://dkxkwr4us4aak" path="res://src/Scenes/NewStarshire/Facilities/TechTreeComputer.tscn" id="4_cldp6"]
 [ext_resource type="Texture2D" uid="uid://dyxt1peu58oe3" path="res://Assets/NewShip.png" id="6_0u15j"]
+[ext_resource type="PackedScene" uid="uid://dks5oskfsmrau" path="res://src/Scenes/NewStarshire/GrandMarketSign.tscn" id="6_y20fx"]
 [ext_resource type="PackedScene" uid="uid://djr7ysw0olctc" path="res://src/Scenes/MainMenuBG.tscn" id="8_uhrlg"]
 [ext_resource type="PackedScene" uid="uid://crvhogk2bnq1s" path="res://src/Scenes/NewStarshire/TowerGuideSprite.tscn" id="9_636af"]
 [ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="10_636af"]
@@ -495,7 +496,7 @@ physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_d72hs")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pdf0i"]
-size = Vector2(9.100006, 20)
+size = Vector2(7.699991, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l6435"]
 size = Vector2(168, 145)
@@ -543,6 +544,21 @@ size = Vector2i(2565, 720)
 render_target_update_mode = 4
 
 [node name="MainMenuBg" parent="SubViewportContainer/SubViewport" unique_id=1206026906 instance=ExtResource("8_uhrlg")]
+
+[node name="SubViewportContainer2" type="SubViewportContainer" parent="." unique_id=112298642]
+offset_left = 892.0
+offset_top = 254.0
+offset_right = 1892.0
+offset_bottom = 766.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer2" unique_id=481602288]
+own_world_3d = true
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1000, 512)
+render_target_update_mode = 4
+
+[node name="Node3D" parent="SubViewportContainer2/SubViewport" unique_id=1094455208 instance=ExtResource("6_y20fx")]
 
 [node name="Ship" type="Sprite2D" parent="." unique_id=1188530412]
 position = Vector2(-270, 454)
@@ -647,9 +663,10 @@ offset_left = 1099.0
 offset_top = 593.0
 offset_right = 1289.0
 offset_bottom = 616.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 6
-theme_override_fonts/font = ExtResource("10_636af")
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("27_e7ku4")
 text = "Press E to enter Market"
 
 [node name="LadderArea" parent="." unique_id=1455959436 node_paths=PackedStringArray("ladder_top", "ladder_bottom") instance=ExtResource("17_jp6xg")]
@@ -719,8 +736,8 @@ offset_right = 1344.0
 offset_bottom = 442.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 6
-theme_override_fonts/font = ExtResource("10_636af")
-theme_override_font_sizes/font_size = 13
+theme_override_fonts/font = ExtResource("27_e7ku4")
+theme_override_font_sizes/font_size = 16
 text = "Press 'E' to Access Cooking Station"
 
 [node name="AccessSmeltingStation" type="Label" parent="." unique_id=1102055337]
@@ -731,8 +748,8 @@ offset_right = 1080.0
 offset_bottom = 441.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 6
-theme_override_fonts/font = ExtResource("10_636af")
-theme_override_font_sizes/font_size = 13
+theme_override_fonts/font = ExtResource("27_e7ku4")
+theme_override_font_sizes/font_size = 16
 text = "Press 'E' to Access SmeltingStation"
 horizontal_alignment = 1
 
@@ -839,6 +856,24 @@ position = Vector2(1878, 485)
 position = Vector2(2, -5)
 shape = SubResource("RectangleShape2D_5xris")
 
+[node name="TechTreeComputer" parent="CraftingStationArea" unique_id=1878856969 instance=ExtResource("4_cldp6")]
+position = Vector2(411, 218)
+
+[node name="NameTag4" parent="CraftingStationArea/TechTreeComputer" unique_id=1013242585 instance=ExtResource("19_bl45m")]
+offset_left = -48.0
+offset_top = 3.0
+offset_right = 40.0
+
+[node name="Tag" parent="CraftingStationArea/TechTreeComputer/NameTag4/Bg" parent_id_path=PackedInt32Array(1013242585, 305804188) index="0" unique_id=725373759]
+text = "Upgrades PC"
+
+[node name="UpgradesPCNotice3" parent="." unique_id=1340485041 instance=ExtResource("23_0u15j")]
+offset_left = 2213.0
+offset_top = 555.0
+offset_right = 2367.0
+offset_bottom = 700.0
+facility_name = "Upgrades PC"
+
 [node name="AccessSwordCraftingStation" type="Label" parent="." unique_id=457406049]
 visible = false
 offset_left = 1708.0
@@ -858,10 +893,11 @@ offset_left = 2310.0
 offset_top = 597.0
 offset_right = 2580.0
 offset_bottom = 614.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
-theme_override_fonts/font = ExtResource("10_636af")
-theme_override_font_sizes/font_size = 12
+theme_override_fonts/font = ExtResource("27_e7ku4")
+theme_override_font_sizes/font_size = 16
 text = "You need a Tower pass before you can Enter..."
 horizontal_alignment = 1
 
@@ -870,20 +906,20 @@ position = Vector2(86.000305, 605)
 scale = Vector2(20, 10)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TowerArea2" unique_id=1917140573]
-position = Vector2(-2.861023e-06, 0)
+position = Vector2(-0.7000098, 0)
 scale = Vector2(0.99999976, 0.99999976)
 shape = SubResource("RectangleShape2D_pdf0i")
 
 [node name="GuideLog2" type="Label" parent="." unique_id=760539459]
-visible = false
-offset_left = 77.0
-offset_top = 584.0
-offset_right = 347.0
-offset_bottom = 601.0
+offset_left = -9.0
+offset_top = 613.0
+offset_right = 292.0
+offset_bottom = 630.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
-theme_override_fonts/font = ExtResource("10_636af")
-theme_override_font_sizes/font_size = 12
+theme_override_fonts/font = ExtResource("27_e7ku4")
+theme_override_font_sizes/font_size = 16
 text = "You need a Tower pass before you can Enter..."
 horizontal_alignment = 1
 
@@ -895,17 +931,6 @@ offset_bottom = 719.0
 
 [node name="Tag" parent="NameTag5/Bg" parent_id_path=PackedInt32Array(895539879, 305804188) index="0" unique_id=725373759]
 text = "Trade Market"
-
-[node name="TechTreeComputer" parent="." unique_id=1878856969 instance=ExtResource("4_cldp6")]
-position = Vector2(2289, 703)
-
-[node name="NameTag4" parent="TechTreeComputer" unique_id=1013242585 instance=ExtResource("19_bl45m")]
-offset_left = -48.0
-offset_top = 3.0
-offset_right = 40.0
-
-[node name="Tag" parent="TechTreeComputer/NameTag4/Bg" parent_id_path=PackedInt32Array(1013242585, 305804188) index="0" unique_id=725373759]
-text = "Upgrades PC"
 
 [node name="TechTreeComputer2" parent="." unique_id=1424380866 instance=ExtResource("4_cldp6")]
 position = Vector2(252, 703)
@@ -1071,13 +1096,6 @@ offset_right = 326.0
 offset_bottom = 701.0
 facility_name = "Upgrades PC"
 
-[node name="UpgradesPCNotice3" parent="." unique_id=1340485041 instance=ExtResource("23_0u15j")]
-offset_left = 2213.0
-offset_top = 555.0
-offset_right = 2367.0
-offset_bottom = 700.0
-facility_name = "Upgrades PC"
-
 [node name="UpgradesPCNotice2" parent="." unique_id=582724704 instance=ExtResource("23_0u15j")]
 offset_left = 1984.0
 offset_top = 536.0
@@ -1129,13 +1147,13 @@ shape = SubResource("RectangleShape2D_hw86b")
 [connection signal="body_exited" from="GemStoneStationArea" to="." method="_on_gem_stone_station_area_body_exited"]
 [connection signal="body_entered" from="CraftingStationArea" to="." method="_on_crafting_station_area_body_entered"]
 [connection signal="body_exited" from="CraftingStationArea" to="." method="_on_crafting_station_area_body_exited"]
-[connection signal="body_entered" from="TowerArea2" to="." method="_on_tower_area_body_entered"]
-[connection signal="body_exited" from="TowerArea2" to="." method="_on_tower_area_body_exited"]
+[connection signal="body_entered" from="TowerArea2" to="." method="_on_tower_area_2_body_entered"]
+[connection signal="body_exited" from="TowerArea2" to="." method="_on_tower_area_2_body_exited"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 
 [editable path="Dojo/NameTag"]
 [editable path="SmithingStation/NameTag"]
 [editable path="GemStoneStation/NameTag"]
+[editable path="CraftingStationArea/TechTreeComputer/NameTag4"]
 [editable path="NameTag5"]
-[editable path="TechTreeComputer/NameTag4"]
 [editable path="TechTreeComputer2/NameTag4"]

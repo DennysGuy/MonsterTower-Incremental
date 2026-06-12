@@ -2,11 +2,13 @@ class_name NewStarShireMap extends Map
 
 @onready var sub_viewport: SubViewport = $CanvasLayer/Control/SubViewportContainer/SubViewport
 @onready var guide_log: Label = $GuideLog
+@onready var guide_log_2: Label = $GuideLog2
 @onready var control: Control = $CanvasLayer/Control
 @onready var enter_market_label: Label = $EnterMarketLabel
 @onready var access_crafting_station: Label = $AccessCraftingStation
 @onready var canvas_layer: CanvasLayer = $CanvasLayer
 @onready var dojo_position: Node2D = $DojoPosition
+
 
 const NOVELTY_ITEMS_SALE = preload("uid://bylwk3imxuh3i")
 
@@ -158,21 +160,22 @@ func add_tech_tree_to_scene() -> void:
 func hide_tech_tree_canvas_layer() -> void:
 	canvas_layer.hide()
 
-func set_guide_log(show_log : bool) -> void:
+func set_guide_log(guide_log : Label, show_log : bool) -> void:
 	if show_log:
 		guide_log.show()
 	else:
 		guide_log.hide()
 	
 	if PlayerStats.facilities_unlocked["Hunter License"]:
-		guide_log.text = "Press E to enter the tower!"
+		var mapping : String = GameManager.get_control_mapping("interact")
+		guide_log.text = "Press %s to enter the tower!" % mapping
 	else:
 		guide_log.text = "You need a Tower pass before you can Enter..."
 
 func _on_tower_area_body_entered(body: Node2D) -> void:
 	if body is Player:
 		player_in_tower_range = true
-		set_guide_log(true)
+		set_guide_log(guide_log, true)
 
 func show_ap_notice() -> void:
 	if PlayerStats.player_stats["Ability Points"] >= 1:
@@ -187,7 +190,7 @@ func show_gem_station_notice() -> void:
 func _on_tower_area_body_exited(body: Node2D) -> void:
 	if body is Player:
 		player_in_tower_range = false
-		set_guide_log(false)
+		set_guide_log(guide_log, false)
 
 func go_to_test_floor() -> void:
 	GameManager.spawn_location = 0
@@ -262,6 +265,8 @@ func _on_grand_market_area_body_entered(body: Node2D) -> void:
 		player_in_market_range = true
 		sell_novelty_items()
 		check_for_node_purchase()
+		var mapping : String = GameManager.get_control_mapping("interact")
+		enter_market_label.text = "Press %s to access the Grand Market" % mapping
 		enter_market_label.show()
 
 func _on_grand_market_area_body_exited(body: Node2D) -> void:
@@ -275,7 +280,8 @@ func _on_cooking_station_area_body_entered(body: Node2D) -> void:
 		if !PlayerStats.facilities_unlocked["Cooking Station"]:
 			access_crafting_station.text = "Cooking Range under construction!"
 		else:
-			access_crafting_station.text = "Press 'E' to access Cooking Range"
+			var mapping : String = GameManager.get_control_mapping("interact")
+			access_crafting_station.text = "Press %s to access Cooking Range" % mapping
 		access_crafting_station.show()
 
 func _on_cooking_station_area_body_exited(body: Node2D) -> void:
@@ -289,7 +295,8 @@ func _on_smelting_station_area_body_entered(body: Node2D) -> void:
 		if !PlayerStats.facilities_unlocked["Refinery Station"]:
 			access_smelting_station.text = "Refinery under construction!"
 		else:
-			access_smelting_station.text = "Press 'E' to access Refinery"
+			var mapping : String = GameManager.get_control_mapping("interact")
+			access_smelting_station.text = "Press %s to access Refinery" % mapping
 		access_smelting_station.show()
 
 func _on_smelting_station_area_body_exited(body: Node2D) -> void:
@@ -304,7 +311,8 @@ func _on_crafting_station_area_body_entered(body: Node2D) -> void:
 			access_sword_crafting_station.text = "Select your Class to Gain Access"
 		else:
 			player_in_crafting_range = true
-			access_sword_crafting_station.text = "Press 'E' to access Sword Crafting Station"
+			var mapping : String = GameManager.get_control_mapping("interact")
+			access_sword_crafting_station.text = "Press %s to access Sword Crafting Station" % mapping
 			
 		access_sword_crafting_station.show()
 	
@@ -426,7 +434,8 @@ func ability_station_notice() -> void:
 
 func _on_dojo_area_body_entered(body: Node2D) -> void:
 	if body is Player:
-		dojo_access_notification.text = "Press E to Access Dojo!"		
+		var mapping : String = GameManager.get_control_mapping("interact")
+		dojo_access_notification.text = "Press %s to Access Dojo!" % mapping
 		player_in_dojo_range = true
 		dojo_access_notification.show()
 
@@ -439,7 +448,8 @@ func _on_gem_stone_station_area_body_entered(body: Node2D) -> void:
 	if body is Player:
 		player_in_upgrade_station_range = true
 		if PlayerStats.facilities_unlocked["Gem Stone Station"]:
-			enter_upgrade_station_notice.text = "Press 'E' to Access\nGem Stone Station"
+			var mapping : String = GameManager.get_control_mapping("interact")
+			enter_upgrade_station_notice.text = "Press %s to Access\nGem Stone Station" % mapping
 		else:
 			enter_upgrade_station_notice.text = "Unlock Gem Stone\nStation Node to access!"
 		enter_upgrade_station_notice.show()
@@ -540,3 +550,15 @@ func has_resource_quantity(tech_node_stats : TechNodeStats) -> bool:
 						return false
 		
 	return true		
+
+
+func _on_tower_area_2_body_entered(body: Node2D) -> void:
+	if body is Player:
+		player_in_tower_range = true
+		set_guide_log(guide_log_2, true)
+
+
+func _on_tower_area_2_body_exited(body: Node2D) -> void:
+	if body is Player:
+		player_in_tower_range = false
+		set_guide_log(guide_log_2, false)

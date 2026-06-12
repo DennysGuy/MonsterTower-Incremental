@@ -8,6 +8,8 @@ var player_in_range : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	var mapping : String = GameManager.get_control_mapping("interact")
+	notice.text = "Press %s to access Job Board" % mapping
 	if GameManager.new_jobs_available:
 		notice_icon.show()
 		notice_icon_2.show()
