@@ -52,7 +52,7 @@ func _unhandled_input(event: InputEvent) -> void:
 func _on_ore_rock_area_body_entered(body: Node2D) -> void:
 	if body is Player:
 		if PlayerStats.facilities_unlocked["Refinery Station"]:
-			directions.text = "Press/Hold 'F' to Mine!"
+			directions.text = "Press/Hold %s to Mine!" % GameManager.get_control_mapping("swing_sword")
 			body.stored_ore_rock = self
 			set_outline_visible()
 		else:

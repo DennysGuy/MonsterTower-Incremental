@@ -1,0 +1,10 @@
+do CutsceneManager.disable_player_functionality()
+join TowerGuide center
+TowerGuide: Congratulations on making it this far, Rookie - but things are just beginning.
+TowerGuide: The Hunter's Guild is adament about managing who can traverse up the tower. It's only natural that they implement checkpoints to test a Hunter's capability. Trust me, things only get more dangerous from here.
+TowerGuide: To progress further up the tower, you will need to beat the Floor challenge. This usually is a test of combat prowess, wit, and efficiency!
+TowerGuide: The Combat Challenge will unlock once you've reached the top of the floor and discovered all of the checkpoint Campfires!\
+\
+Good luck and may your bounty be plentyful!
+do CutsceneManager.enable_player_functionality()
+do GameManager.enable_enemy_movement()

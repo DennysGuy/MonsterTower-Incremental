@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cb5m6ynmba10o"]
 
 [ext_resource type="Script" uid="uid://2ps7edg5d7hk" path="res://src/Scripts/Questing/Tasks/task_list_item.gd" id="1_bg5po"]
-[ext_resource type="FontFile" uid="uid://dgu1a66dfe8w" path="res://Assets/Fonts/Maplestory OTF Light.otf" id="1_rw0ve"]
+[ext_resource type="FontFile" uid="uid://stn4dtg0uw57" path="res://Assets/Fonts/FredokaOne-Regular.ttf" id="2_fs0ym"]
 
 [sub_resource type="Animation" id="Animation_bg5po"]
 resource_name = "Complete"
@@ -189,7 +189,7 @@ layout_mode = 2
 theme_override_colors/default_color = Color(0.9091122, 0.85196555, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 0
-theme_override_fonts/normal_font = ExtResource("1_rw0ve")
+theme_override_fonts/normal_font = ExtResource("2_fs0ym")
 theme_override_font_sizes/normal_font_size = 14
 text = "Corrupted Mushie: 5/25"
 vertical_alignment = 1

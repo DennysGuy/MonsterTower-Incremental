@@ -172,7 +172,7 @@ func trigger_cross_fade() -> void:
 	animation_player.play("CrossFade")
 
 func show_codex_message() -> void:
-	play_sfx(QUEST_COMPLETED)
+	#play_sfx(QUEST_COMPLETED)
 	var tween : Tween = get_tree().create_tween()
 	tween.tween_property(codex_notification_panel, "position", Vector2(26,453),0.1)
 	await get_tree().create_timer(6.0).timeout

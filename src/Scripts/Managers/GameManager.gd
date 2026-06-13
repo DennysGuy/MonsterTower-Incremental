@@ -152,6 +152,11 @@ func set_direction(dir : float):
 	else:
 		return 1
 
+func enable_enemy_movement() -> void:
+	enemies_can_move = true
+
+func disable_enemy_movement() -> void:
+	enemies_can_move = false
 
 func can_unlock_class() -> bool:
 	return PlayerStats.player_stats["Level"] >= 8 and PlayerStats.facilities_unlocked["Arial Slash"] and PlayerStats.facilities_unlocked["Dash Attack"] and PlayerStats.facilities_unlocked["Double Jump"] and PlayerStats.player_stats["Class"] == "Junior Hunter"
@@ -170,3 +175,14 @@ func get_control_mapping(action : String) -> String:
 	var mapping : String = key.as_text()
 	mapping = mapping.substr(0,1)
 	return mapping
+
+
+func play_sfx(sound: AudioStream, volume: float = 0.0, pitch_scale : float = 1.0):
+	var player := AudioStreamPlayer.new()
+	player.stream = sound
+	player.volume_db = volume
+	player.bus = &"SFX"
+	player.pitch_scale = pitch_scale
+	add_child(player)
+	player.play()
+	player.finished.connect(player.queue_free)

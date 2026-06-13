@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://bu2rhw7xf1a66"]
 
 [ext_resource type="Script" uid="uid://dbotowetbyw6u" path="res://src/Scripts/Questing/quest_tracker_item.gd" id="1_oio6f"]
-[ext_resource type="FontFile" uid="uid://dgu1a66dfe8w" path="res://Assets/Fonts/Maplestory OTF Light.otf" id="1_umesl"]
 [ext_resource type="Resource" uid="uid://56sc8x8gyyjy" path="res://src/Resources/Quests/Intro/MainQuests/TestMainQuest1/TestMainQuest.tres" id="2_4i7lb"]
+[ext_resource type="FontFile" uid="uid://stn4dtg0uw57" path="res://Assets/Fonts/FredokaOne-Regular.ttf" id="3_4i7lb"]
+[ext_resource type="PackedScene" uid="uid://cb5m6ynmba10o" path="res://src/Scenes/UI/QuestUI/TaskListItem.tscn" id="4_4i7lb"]
 
 [node name="QuestTrackerItem" type="MarginContainer" unique_id=1495447857 node_paths=PackedStringArray("checklist", "quest_title")]
 anchors_preset = 8
@@ -11,31 +12,27 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -269.0
-offset_top = -118.625
+offset_top = -109.0
 offset_right = 281.0
 offset_bottom = 136.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
-theme_override_constants/margin_bottom = 34
+theme_override_constants/margin_bottom = 10
 script = ExtResource("1_oio6f")
 quest_data = ExtResource("2_4i7lb")
-checklist = NodePath("PanelContainer/VBoxContainer/MarginContainer/Checklist")
-quest_title = NodePath("PanelContainer/VBoxContainer/QuestTitle")
+checklist = NodePath("PanelContainer2/VBoxContainer/MarginContainer/Checklist")
+quest_title = NodePath("PanelContainer2/VBoxContainer/QuestTitle")
 
-[node name="PanelContainer" type="Control" parent="." unique_id=610836170]
-self_modulate = Color(1, 1, 1, 0.48235294)
-custom_minimum_size = Vector2(0, 100)
+[node name="PanelContainer2" type="PanelContainer" parent="." unique_id=1828041099]
+self_modulate = Color(1, 1, 1, 0.21100001)
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=311012850]
-layout_mode = 0
-offset_left = -177.0
-offset_right = 373.0
-offset_bottom = 209.625
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer2" unique_id=311012850]
+layout_mode = 2
 theme_override_constants/separation = 2
 
-[node name="QuestTitle" type="RichTextLabel" parent="PanelContainer/VBoxContainer" unique_id=1215813679]
+[node name="QuestTitle" type="RichTextLabel" parent="PanelContainer2/VBoxContainer" unique_id=1215813679]
 custom_minimum_size = Vector2(300, 25)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -43,15 +40,26 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.74509805)
 theme_override_constants/shadow_outline_size = 4
 theme_override_constants/outline_size = 0
 theme_override_constants/table_v_separation = 3
-theme_override_fonts/normal_font = ExtResource("1_umesl")
+theme_override_fonts/normal_font = ExtResource("3_4i7lb")
 theme_override_font_sizes/normal_font_size = 16
 bbcode_enabled = true
 text = "[color=yellow]Newcomer's List[/color]"
+horizontal_alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer" unique_id=907432401]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer2/VBoxContainer" unique_id=907432401]
 layout_mode = 2
-theme_override_constants/margin_left = 29
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_bottom = 10
 
-[node name="Checklist" type="VBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer" unique_id=1252535657]
+[node name="Checklist" type="VBoxContainer" parent="PanelContainer2/VBoxContainer/MarginContainer" unique_id=1252535657]
 layout_mode = 2
-theme_override_constants/separation = 23
+theme_override_constants/separation = 10
+
+[node name="TaskListItem" parent="PanelContainer2/VBoxContainer/MarginContainer/Checklist" unique_id=1940233025 instance=ExtResource("4_4i7lb")]
+layout_mode = 2
+
+[node name="TaskListItem2" parent="PanelContainer2/VBoxContainer/MarginContainer/Checklist" unique_id=1683518180 instance=ExtResource("4_4i7lb")]
+layout_mode = 2
+
+[node name="TaskListItem3" parent="PanelContainer2/VBoxContainer/MarginContainer/Checklist" unique_id=587638254 instance=ExtResource("4_4i7lb")]
+layout_mode = 2

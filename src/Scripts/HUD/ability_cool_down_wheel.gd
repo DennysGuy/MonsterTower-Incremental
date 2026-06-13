@@ -37,6 +37,7 @@ func _ready() -> void:
 	PlayerHudSignalBus.check_if_can_cast_combat_ability.connect(check_if_can_cast)
 	ability_title.text = ability_name
 	stored_ability = PlayerStats.get_equipped_ability(ability_name)
+	print(stored_ability)
 	#description.text = PlayerStats.get_equipped_ability(ability_name).ability_description
 	set_icon()
 
@@ -121,7 +122,10 @@ func _on_texture_button_mouse_exited() -> void:
 		ability_description_panel.hide()
 
 func check_if_can_cast() -> void:
-	if !stored_ability.is_combat_ability:
+	if !stored_ability:
+		return
+	
+	if stored_ability and !stored_ability.is_combat_ability:
 		return
 	
 	if PlayerStats.player_stats["Current MP"] < stored_ability.mp_cost:

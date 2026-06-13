@@ -212,7 +212,6 @@ grow_horizontal = 2
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("6_micwh")
 theme_override_font_sizes/font_size = 16
-text = "Quest Name"
 horizontal_alignment = 1
 
 [node name="LockTexture" type="TextureRect" parent="NeededPanel" unique_id=1573999048]

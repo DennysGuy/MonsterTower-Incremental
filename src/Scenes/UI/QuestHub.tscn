@@ -1,43 +1,31 @@
 [gd_scene format=3 uid="uid://djwayx7h06hx3"]
 
-[ext_resource type="FontFile" uid="uid://dgu1a66dfe8w" path="res://Assets/Fonts/Maplestory OTF Light.otf" id="1_38rat"]
 [ext_resource type="Script" uid="uid://fpcoe7wlosse" path="res://src/Scripts/Questing/quest_hub.gd" id="1_ag3ob"]
 [ext_resource type="PackedScene" uid="uid://bu2rhw7xf1a66" path="res://src/Scenes/UI/QuestTrackerItem.tscn" id="2_ag3ob"]
-[ext_resource type="PackedScene" uid="uid://cb5m6ynmba10o" path="res://src/Scenes/UI/QuestUI/TaskListItem.tscn" id="4_ag3ob"]
+[ext_resource type="FontFile" uid="uid://stn4dtg0uw57" path="res://Assets/Fonts/FredokaOne-Regular.ttf" id="2_poutn"]
 
 [node name="QuestHub" type="Control" unique_id=1129499445]
+custom_minimum_size = Vector2(400, 1080)
 layout_mode = 3
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = -39.0
-offset_top = -487.0
-offset_right = 408.0
-offset_bottom = 193.0
 grow_vertical = 2
 script = ExtResource("1_ag3ob")
 
 [node name="QuestHubVBox" type="VBoxContainer" parent="." unique_id=616025058]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = 4
 anchor_top = 0.5
-anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -158.0
-offset_top = -225.25
-offset_right = 146.0
-offset_bottom = 304.5
-grow_horizontal = 2
+offset_top = -484.0
+offset_right = 388.5
+offset_bottom = 455.25
 grow_vertical = 2
 mouse_filter = 2
-theme_override_constants/separation = 15
+theme_override_constants/separation = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="QuestHubVBox" unique_id=1420018646]
-layout_mode = 2
-theme_override_constants/separation = 1
-
-[node name="MainQuestTitleMargin" type="MarginContainer" parent="QuestHubVBox/VBoxContainer" unique_id=164082339]
+[node name="MainQuestTitleMargin" type="MarginContainer" parent="QuestHubVBox" unique_id=164082339]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 mouse_filter = 2
@@ -46,102 +34,67 @@ theme_override_constants/margin_top = 3
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 1
 
-[node name="MainQuestTitle" type="RichTextLabel" parent="QuestHubVBox/VBoxContainer/MainQuestTitleMargin" unique_id=743626178]
+[node name="MainQuestTitle" type="RichTextLabel" parent="QuestHubVBox/MainQuestTitleMargin" unique_id=743626178]
 layout_mode = 2
 mouse_filter = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.92156863)
 theme_override_constants/shadow_offset_x = 1
 theme_override_constants/outline_size = 0
-theme_override_fonts/normal_font = ExtResource("1_38rat")
+theme_override_fonts/normal_font = ExtResource("2_poutn")
 theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "[color=yellow]Main Quests[/color]"
 horizontal_alignment = 1
 
-[node name="ColorRect" type="ColorRect" parent="QuestHubVBox/VBoxContainer" unique_id=280896136]
+[node name="ColorRect" type="ColorRect" parent="QuestHubVBox" unique_id=280896136]
 custom_minimum_size = Vector2(0, 5)
 layout_mode = 2
 color = Color(0.05471, 0.12719995, 0.24395797, 1)
 
-[node name="MainQuestListMargin" type="MarginContainer" parent="QuestHubVBox/VBoxContainer" unique_id=203040370]
+[node name="VBoxContainer" type="VBoxContainer" parent="QuestHubVBox" unique_id=1420018646]
 layout_mode = 2
-mouse_filter = 2
-theme_override_constants/margin_left = 4
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 0
-theme_override_constants/margin_bottom = 5
+theme_override_constants/separation = 1
 
-[node name="MainLineQuestVBox" type="VBoxContainer" parent="QuestHubVBox/VBoxContainer/MainQuestListMargin" unique_id=82294066]
-custom_minimum_size = Vector2(100, 100)
+[node name="QuestTrackerItem" parent="QuestHubVBox/VBoxContainer" unique_id=1495447857 instance=ExtResource("2_ag3ob")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 3
-mouse_filter = 2
+theme_override_constants/margin_top = 10
 
-[node name="QuestTrackerItem" parent="QuestHubVBox/VBoxContainer/MainQuestListMargin/MainLineQuestVBox" unique_id=1495447857 instance=ExtResource("2_ag3ob")]
-layout_mode = 2
-size_flags_vertical = 3
-mouse_filter = 2
-
-[node name="VBoxContainer" parent="QuestHubVBox/VBoxContainer/MainQuestListMargin/MainLineQuestVBox/QuestTrackerItem/PanelContainer" parent_id_path=PackedInt32Array(1495447857, 610836170) index="0" unique_id=311012850]
-offset_left = -161.5
-offset_top = 2.75
-offset_right = 388.5
-offset_bottom = 212.375
-
-[node name="TaskListItem" parent="QuestHubVBox/VBoxContainer/MainQuestListMargin/MainLineQuestVBox/QuestTrackerItem/PanelContainer/VBoxContainer/MarginContainer/Checklist" parent_id_path=PackedInt32Array(1495447857, 1252535657) index="0" unique_id=1940233025 instance=ExtResource("4_ag3ob")]
-layout_mode = 2
-
-[node name="TaskListItem2" parent="QuestHubVBox/VBoxContainer/MainQuestListMargin/MainLineQuestVBox/QuestTrackerItem/PanelContainer/VBoxContainer/MarginContainer/Checklist" parent_id_path=PackedInt32Array(1495447857, 1252535657) index="1" unique_id=817079970 instance=ExtResource("4_ag3ob")]
-layout_mode = 2
-
-[node name="TaskListItem3" parent="QuestHubVBox/VBoxContainer/MainQuestListMargin/MainLineQuestVBox/QuestTrackerItem/PanelContainer/VBoxContainer/MarginContainer/Checklist" parent_id_path=PackedInt32Array(1495447857, 1252535657) index="2" unique_id=175576540 instance=ExtResource("4_ag3ob")]
-layout_mode = 2
-
-[node name="JobsTracker" type="Control" parent="QuestHubVBox" unique_id=845711951]
-custom_minimum_size = Vector2(50, 100)
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="QuestHubVBox/JobsTracker" unique_id=1365694579]
-layout_mode = 0
-offset_right = 304.0
-offset_bottom = 40.0
-theme_override_constants/separation = 0
-
-[node name="JobTrackerTitleMargin" type="MarginContainer" parent="QuestHubVBox/JobsTracker/VBoxContainer" unique_id=1792347313]
-custom_minimum_size = Vector2(50, 20)
+[node name="MainQuestTitleMargin2" type="MarginContainer" parent="QuestHubVBox" unique_id=143264469]
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_left = 15
-theme_override_constants/margin_top = 2
+theme_override_constants/margin_top = 3
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 0
 
-[node name="JobTrackerTitle" type="RichTextLabel" parent="QuestHubVBox/JobsTracker/VBoxContainer/JobTrackerTitleMargin" unique_id=72914477]
-custom_minimum_size = Vector2(0, 40)
+[node name="JobTrackerTitle" type="RichTextLabel" parent="QuestHubVBox/MainQuestTitleMargin2" unique_id=72914477]
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
-theme_override_constants/outline_size = 6
-theme_override_fonts/normal_font = ExtResource("1_38rat")
-theme_override_font_sizes/normal_font_size = 22
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_poutn")
+theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "[color=aqua]Job Tracker[/color]"
+horizontal_alignment = 1
 
-[node name="JobsListMargin" type="MarginContainer" parent="QuestHubVBox/JobsTracker/VBoxContainer" unique_id=1445564799]
+[node name="ColorRect2" type="ColorRect" parent="QuestHubVBox" unique_id=542987695]
+custom_minimum_size = Vector2(0, 5)
 layout_mode = 2
-mouse_filter = 2
-theme_override_constants/margin_left = 4
-theme_override_constants/margin_top = 12
-theme_override_constants/margin_right = 0
-theme_override_constants/margin_bottom = 2
+color = Color(0.05471, 0.12719995, 0.24395797, 1)
 
-[node name="JobTrackerVBox" type="VBoxContainer" parent="QuestHubVBox/JobsTracker/VBoxContainer/JobsListMargin" unique_id=1842247726]
-custom_minimum_size = Vector2(100, 0)
+[node name="VBoxContainer2" type="VBoxContainer" parent="QuestHubVBox" unique_id=1314456147]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 3
 theme_override_constants/separation = 0
 
-[node name="QuestTrackerItem" parent="QuestHubVBox/JobsTracker/VBoxContainer/JobsListMargin/JobTrackerVBox" unique_id=1751588779 instance=ExtResource("2_ag3ob")]
+[node name="QuestTrackerItem" parent="QuestHubVBox/VBoxContainer2" unique_id=1932706946 instance=ExtResource("2_ag3ob")]
 layout_mode = 2
+theme_override_constants/margin_top = 10
 
-[editable path="QuestHubVBox/VBoxContainer/MainQuestListMargin/MainLineQuestVBox/QuestTrackerItem"]
+[node name="QuestTrackerItem2" parent="QuestHubVBox/VBoxContainer2" unique_id=1276459350 instance=ExtResource("2_ag3ob")]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+
+[node name="QuestTrackerItem3" parent="QuestHubVBox/VBoxContainer2" unique_id=775457670 instance=ExtResource("2_ag3ob")]
+layout_mode = 2
+theme_override_constants/margin_top = 10

@@ -1,8 +1,11 @@
 class_name QuestHub extends Control
 
-@onready var main_line_quest_v_box: VBoxContainer = $QuestHubVBox/VBoxContainer/MainQuestListMargin/MainLineQuestVBox
-@onready var job_tracker_v_box: VBoxContainer = $QuestHubVBox/JobsTracker/VBoxContainer/JobsListMargin/JobTrackerVBox
-@onready var job_tracker_title: RichTextLabel = $QuestHubVBox/JobsTracker/VBoxContainer/JobTrackerTitleMargin/JobTrackerTitle
+@onready var main_line_quest_v_box: VBoxContainer = $QuestHubVBox/VBoxContainer
+
+@onready var job_tracker_v_box: VBoxContainer = $QuestHubVBox/VBoxContainer2
+@onready var job_tracker_title: RichTextLabel = $QuestHubVBox/MainQuestTitleMargin2/JobTrackerTitle
+
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

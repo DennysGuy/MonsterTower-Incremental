@@ -405,18 +405,6 @@ resource_name = "QuestCompleteNotice"
 
 [sub_resource type="Animation" id="Animation_3voo3"]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../PlayerHUD/QuestHub:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"update": 0,
-"values": []
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3voo3"]
 _data = {
@@ -851,13 +839,6 @@ text = "Press 'B' To
 Open Bag!"
 horizontal_alignment = 1
 
-[node name="QuestHub" parent="PlayerHUD" unique_id=1129499445 instance=ExtResource("14_xxan5")]
-layout_mode = 1
-offset_left = 43.0
-offset_top = -435.0
-offset_right = 421.00012
-offset_bottom = 25.0
-
 [node name="RoomInfoBanner" parent="PlayerHUD" unique_id=1196855950 instance=ExtResource("16_fnmb5")]
 visible = false
 layout_mode = 1
@@ -1099,6 +1080,12 @@ libraries/ = SubResource("AnimationLibrary_3voo3")
 
 [node name="BagAnimationPlayer" type="AnimationPlayer" parent="." unique_id=1372864879]
 libraries/ = SubResource("AnimationLibrary_jyqen")
+
+[node name="QuestHub" parent="." unique_id=1129499445 instance=ExtResource("14_xxan5")]
+offset_left = -2.0
+offset_top = -490.0
+offset_right = 398.0
+offset_bottom = 590.0
 
 [connection signal="button_up" from="PlayerHUD/StartHuntChallengeButton" to="." method="_on_start_hunt_challenge_button_button_up"]
 [connection signal="button_up" from="PlayerHUD/OpenTowerMapButton" to="." method="_on_open_tower_map_button_button_up"]

@@ -44,6 +44,8 @@ var player : Player
 const TIER_UP = preload("uid://dhfdudbiidv7a")
 
 
+const BROKEN_ELEVATOR_SCENE = preload("uid://re8i72crov46")
+const FLOOR_CHALLENGE_CUTSCENE = preload("uid://c6chwv4cv6xt2")
 
 var kill_quota_hit : bool = false
 # Called when the node enters the scene tree for the first time.
@@ -99,11 +101,17 @@ func _ready() -> void:
 			GameManager.can_open_bag = true
 			if !GameManager.hunt_challenge_selected:
 				
-				if tower_entrance_data.is_expedition_floor() and tower_entrance_data.unlock_recipe and !tower_entrance_data.hunt_challenge_completed:
-					issue_repair_elevator_notice()
+				if tower_entrance_data.is_expedition_floor() and tower_entrance_data.unlock_recipe:
+					if !tower_entrance_data.hunt_challenge_completed and tower_entrance_data.times_entered == 1:
+						issue_repair_elevator_notice()
+					else:
+						CodexManager.send_codex_notification.emit("Repair the Elevator!")
 			
 				elif tower_entrance_data.is_challenge_floor() and not tower_entrance_data.hunt_challenge_completed:
-					issue_challenge_objective_notice()
+					if tower_entrance_data.times_entered == 1:
+						issue_challenge_objective_notice()
+					else:
+						CodexManager.send_codex_notification.emit("Complete the Floor Challenge!")
 				
 				SignalBus.show_bag_stats.emit()
 				
@@ -347,54 +355,22 @@ func play_level_up_sfx() -> void:
 
 func issue_repair_elevator_notice() -> void:
 	camera.player = null
-	GameManager.player_can_move = false
-	GameManager.can_pause_game = false
-	GameManager.can_open_bag = false
-	GameManager.enemies_can_move = false
-
 	player.send_to_idle_state()
 	#hud.animation_player.play("FadeInOut")
+	GameManager.enemies_can_move = false
 	await get_tree().create_timer(0.5).timeout
 	camera.position = exit_elevator_marker.position
 	await get_tree().create_timer(1.0).timeout
-	PlayerHudSignalBus.issue_big_notification.emit("Deliver required resource to repair the elevator!")
-	await get_tree().create_timer(3.0).timeout
-	PlayerHudSignalBus.hide_big_notification.emit()
-	#hud.animation_player.play("FadeInOut")
-	await get_tree().create_timer(0.5).timeout
+	Dialogic.start(BROKEN_ELEVATOR_SCENE)
+
+func return_camera_to_player() -> void:
 	camera.position = player.position
 	camera.player = player
-	
-	GameManager.player_can_move = true
-	GameManager.can_pause_game = true
-	GameManager.can_open_bag = true
-	GameManager.enemies_can_move = true
 
 func issue_challenge_objective_notice() -> void:
-	camera.player = null
-	GameManager.player_can_move = false
-	GameManager.can_pause_game = false
-	GameManager.can_open_bag = false
-	GameManager.enemies_can_move = false
-
 	player.send_to_idle_state()
-	#hud.animation_player.play("FadeInOut")
-	await get_tree().create_timer(0.5).timeout
-	camera.position = exit_elevator_marker.position
-	await get_tree().create_timer(1.0).timeout
-	PlayerHudSignalBus.issue_big_notification.emit("Beat the Floor Challenge to unlock the exit elevator!")
-	await get_tree().create_timer(3.0).timeout
-	SignalBus.hide_big_notification.emit()
-	#hud.animation_player.play("FadeInOut")
-	await get_tree().create_timer(0.5).timeout
-	PlayerHudSignalBus.hide_big_notification.emit()
-	camera.position = player.position
-	camera.player = player
-	
-	GameManager.player_can_move = true
-	GameManager.can_pause_game = true
-	GameManager.can_open_bag = true
-	GameManager.enemies_can_move = true
+	GameManager.disable_enemy_movement()
+	Dialogic.start(FLOOR_CHALLENGE_CUTSCENE)
 
 func play_unlock_elevator_sequence() -> void:
 	GameManager.can_pause_game = false

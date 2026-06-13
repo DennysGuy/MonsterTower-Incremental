@@ -809,7 +809,7 @@ base_offset = 30.0
 position = Vector2(616, 662)
 
 [node name="SmithingStation" parent="." unique_id=1664193682 instance=ExtResource("21_bl45m")]
-position = Vector2(1867, 431)
+position = Vector2(1813, 431)
 
 [node name="NameTag" parent="SmithingStation" unique_id=1368015789 instance=ExtResource("19_bl45m")]
 offset_left = -22.0
@@ -1088,9 +1088,9 @@ offset_bottom = 681.0
 facility_name = "Job Requests Board"
 
 [node name="WeaponCraftingStationNotice" parent="." unique_id=562227682 instance=ExtResource("23_0u15j")]
-offset_left = 1742.0
+offset_left = 1688.0
 offset_top = 351.0
-offset_right = 1896.0
+offset_right = 1842.0
 offset_bottom = 496.0
 facility_name = "Weapon Crafting Station"
 

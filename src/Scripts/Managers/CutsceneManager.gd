@@ -17,6 +17,8 @@ signal set_camera_to_player_pos
 signal set_camera_to_dojo_pos
 @warning_ignore("unused_signal")
 signal fly_boss_out
+@warning_ignore("unused_signal")
+signal return_camera_to_player
 
 func trigger_next_frame() -> void:
 	trigger_next_image.emit()
@@ -35,6 +37,9 @@ func set_camera_to_dojo_position() -> void:
 
 func fly_boss() -> void:
 	fly_boss_out.emit()
+
+func send_camera_to_player() -> void:
+	return_camera_to_player.emit()
 
 func disable_player_functionality() -> void:
 	stop_player.emit()

@@ -5,12 +5,14 @@ class_name CampFireCheckPoint extends Node2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var exit_notification: Label = $ExitNotification
 
+
 @export var unlocked : bool = false
 var just_unlocked : bool = false
 
 @export var campfire: Sprite2D
 
 var player_in_range : bool = false
+const DISCOVER_CAMP_FIRE = preload("uid://dlchhonlmn056")
 
 func _ready() -> void:
 	if GameManager.hunt_challenge_selected:
@@ -32,6 +34,9 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		entrance_data.camp_fires_reached += 1
 		animation_player.play("On")
 		HitStopManager.freeze()
+		GameManager.play_sfx(DISCOVER_CAMP_FIRE)
+		CodexManager.send_codex_notification.emit("Campfire Reached!")
+		PlayerHudSignalBus.flash_screen.emit()
 		SignalBus.update_monsters_left.emit("Campfires Discovered %s/%s" % [entrance_data.camp_fires_reached, entrance_data.total_camp_fires], false)
 		if entrance_data.camp_fires_reached >= entrance_data.total_camp_fires:
 			entrance_data.hunt_challenge_unlocked = true
@@ -41,6 +46,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		save_floor_data()
 		just_unlocked = true
 		
+		
 func save_floor_data() -> void:
 	var saved_data = SaveManager.current_save_game.tower_entrance_data
 	saved_data[entrance_data.floor_name]["Number of Spawn Locations"] = entrance_data.number_of_spawn_locations
@@ -48,7 +54,6 @@ func save_floor_data() -> void:
 	saved_data[entrance_data.floor_name]["Hunt Challenge Unlocked"] = entrance_data.hunt_challenge_unlocked
 	SaveManager.save_game()
 		
-
 
 func _on_exit_area_body_entered(body: Node2D) -> void:
 	if body is Player:

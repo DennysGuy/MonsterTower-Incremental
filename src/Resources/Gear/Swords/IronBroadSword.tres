@@ -18,7 +18,7 @@ index = 3
 description = "This weighty weapon is built for true Warriors. While its slow attack speed requires precise timing, it rewards you with the incredible ability to whack multiple enemies at once! 
 
 Master its momentum to clear out massive mobs efficiently and conquer the tower's toughest crowds."
-attack_bonus = 80.0
+attack_bonus = 65.0
 defense_bonus = -15.0
 attack_speed = 0.75
 crit_bonus = 0.15

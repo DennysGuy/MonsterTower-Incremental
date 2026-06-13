@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://c11hg5ijdrjjs" path="res://src/Scenes/Tower/TowerFloors/ExitElevator1.tscn" id="19_o851o"]
 [ext_resource type="PackedScene" uid="uid://clwlxx0dx6vgw" path="res://src/Scenes/Actors/Enemies/MossyDungeon/Batclopse/BatclopseLVL2.tscn" id="19_r1viy"]
 [ext_resource type="PackedScene" uid="uid://dj0ett15s3u5m" path="res://src/Scenes/Tower/TowerFloors/OreRockMarker.tscn" id="20_doarr"]
+[ext_resource type="Texture2D" uid="uid://b17pxws2g134y" path="res://Assets/EnvironmentalAssets/DirectionalSigns_Danger.png" id="21_24ioy"]
 [ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="21_bxd5n"]
 [ext_resource type="Resource" uid="uid://bnw174axn6kqa" path="res://src/Resources/OreRock/IronOreRock.tres" id="21_d5xan"]
 [ext_resource type="PackedScene" uid="uid://colj4ff1w8ij1" path="res://src/Scenes/Tower/OreRock.tscn" id="22_m77ug"]
@@ -33,6 +34,7 @@
 [ext_resource type="PackedScene" uid="uid://cm6ttxlrvgkvd" path="res://src/Scenes/Tower/TowerFloors/ChalicePositionMarker.tscn" id="27_24ioy"]
 [ext_resource type="PackedScene" uid="uid://bcb7mqtk7hdgw" path="res://src/Scenes/Tower/TowerFloors/Biome1/Floor1-4.tscn" id="31_ch8wb"]
 [ext_resource type="Resource" uid="uid://bv3no8c6bw4tm" path="res://src/Resources/TowerEntranceData/Floor1-4.tres" id="32_24ioy"]
+[ext_resource type="Texture2D" uid="uid://dqtpmapnhhq0a" path="res://Assets/GolemPitSign.png" id="35_4krbk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b4b1b"]
 size = Vector2(22, 350)
@@ -636,6 +638,14 @@ area_collision_shape = NodePath("CollisionShape2D")
 position = Vector2(27, 0)
 shape = SubResource("RectangleShape2D_5s1m6")
 
+[node name="DirectionalSignsDanger" type="Sprite2D" parent="." unique_id=270019333]
+position = Vector2(233, 1666)
+texture = ExtResource("21_24ioy")
+
+[node name="DirectionalSignsDanger2" type="Sprite2D" parent="." unique_id=973406426]
+position = Vector2(417, 1666)
+texture = ExtResource("21_24ioy")
+
 [node name="MonsterSpawnNode" type="Node" parent="." unique_id=728793847]
 
 [node name="OreRockMarkers" type="Node" parent="." unique_id=509141251]
@@ -810,3 +820,7 @@ next_room_data = ExtResource("32_24ioy")
 current_room_data = ExtResource("2_kuvlu")
 
 [node name="SfxPlayer" parent="." unique_id=126850837 instance=ExtResource("21_bxd5n")]
+
+[node name="GolemPitSign" type="Sprite2D" parent="." unique_id=1615242124]
+position = Vector2(322, 1548)
+texture = ExtResource("35_4krbk")

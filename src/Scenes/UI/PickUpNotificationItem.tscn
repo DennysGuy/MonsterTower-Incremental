@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cibmequrcfanu" path="res://src/Scripts/HUD/pick_up_notification_item.gd" id="1_gemre"]
 [ext_resource type="Texture2D" uid="uid://bkj0kj26ahgl8" path="res://Assets/Enemies/CorruptedMushie/PurifiedMushieCore.png" id="1_xe3ve"]
-[ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="3_gemre"]
+[ext_resource type="FontFile" uid="uid://stn4dtg0uw57" path="res://Assets/Fonts/FredokaOne-Regular.ttf" id="3_gemre"]
 
 [node name="PickNotifierItem" type="PanelContainer" unique_id=557560669 node_paths=PackedStringArray("icon", "label")]
 custom_minimum_size = Vector2(150, 20)

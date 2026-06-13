@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_ne8t2")
 drop_icon = ExtResource("1_sf8sl")
-drop_chance = 0.05
+drop_chance = 0.08
 item_name = "Beetle Claw"
 item_type = 2
 sell_value = 150

@@ -63,8 +63,10 @@ directories/dch_directory={
 "WarmongeAlaisha": "res://src/QuestTimeLines/Characters/WarmongeAlaisha.dch"
 }
 directories/dtl_directory={
+"BrokenElevatorScene": "res://src/QuestTimeLines/IntroScenes/BrokenElevatorScene.dtl",
 "CookingStationUnlockScene": "res://src/QuestTimeLines/IntroScenes/CookingStationUnlockScene.dtl",
 "EnterTowerFirstTimeScene": "res://src/QuestTimeLines/IntroScenes/EnterTowerFirstTimeScene.dtl",
+"FloorChallengeCutscene": "res://src/QuestTimeLines/IntroScenes/FloorChallengeCutscene.dtl",
 "GemsStationUnlockScene": "res://src/QuestTimeLines/IntroScenes/GemsStationUnlockScene.dtl",
 "GoToJobBoard": "res://src/QuestTimeLines/IntroScenes/GoToJobBoard.dtl",
 "GreySentinelBossIntro": "res://src/QuestTimeLines/IntroScenes/GreySentinelBossIntro.dtl",

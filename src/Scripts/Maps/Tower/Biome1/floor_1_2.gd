@@ -8,6 +8,7 @@ func _ready() -> void:
 	super()
 	#hud.animation_player.play("CloseIn")
 	SignalBus.spawn_enemies.emit()
+	CutsceneManager.return_camera_to_player.connect(return_camera_to_player)
 	
 	if ore_rock_markers and !GameManager.hunt_challenge_selected:
 		spawn_ore_rocks()

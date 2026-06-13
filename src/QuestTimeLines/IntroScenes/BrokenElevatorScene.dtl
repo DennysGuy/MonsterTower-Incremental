@@ -1,0 +1,9 @@
+do CutsceneManager.disable_player_functionality()
+join TowerGuide rightmost
+TowerGuide: Uh oh.. Looks like one of these darn Elevators broke down.. Again.
+TowerGuide: It's not a big deal - happens now and again. In fact, this can be a great learning opportunity!
+TowerGuide: Bring the required materials to elevator and we'll get it patched right up for you! Good luck!
+do CutsceneManager.send_camera_to_player()
+[wait time="1.0"]
+do CutsceneManager.enable_player_functionality()
+do GameManager.enable_enemy_movement()
