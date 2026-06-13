@@ -12,7 +12,7 @@ icon = ExtResource("2_kdikv")
 disabled_icon = ExtResource("1_qm4qm")
 description = "Increases chance to excavate ore from Ore Rock by 5% per level."
 max_level = 3
-currency_required = 6000
+currency_required = 3000
 materials_required = Array[Dictionary]([{
 ExtResource("3_kdikv"): 4
 }])

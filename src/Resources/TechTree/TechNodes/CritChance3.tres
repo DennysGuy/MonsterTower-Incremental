@@ -12,7 +12,7 @@ icon = ExtResource("2_6rhgm")
 disabled_icon = ExtResource("1_63f23")
 description = "Increase Crit Chance by 5% per level."
 max_level = 3
-currency_required = 2000
+currency_required = 1500
 materials_required = Array[Dictionary]([{
 ExtResource("2_6tren"): 2
 }])

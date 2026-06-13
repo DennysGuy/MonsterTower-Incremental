@@ -29,114 +29,101 @@ script = ExtResource("1_7vto7")
 position = Vector2(896, 256)
 
 [node name="CookingStationUnlock" parent="." unique_id=640777626 instance=ExtResource("3_aqpn3")]
-visible = false
 layout_mode = 1
 offset_left = -768.0
-offset_top = 165.0
+offset_top = 164.0
 offset_right = -768.0
-offset_bottom = 165.0
+offset_bottom = 164.0
 tech_node_stats = ExtResource("4_7vto7")
 node_type = 1
 
 [node name="CrticalCookingNode" parent="." unique_id=1176230901 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_aqpn3")]
-visible = false
 layout_mode = 1
-offset_left = -256.0
-offset_top = 165.0
-offset_right = -256.0
-offset_bottom = 165.0
+offset_left = -512.0
+offset_top = 164.0
+offset_right = -512.0
+offset_bottom = 164.0
 tech_node_stats = ExtResource("5_n6fqw")
 previous_node = NodePath("../CookingStationUnlock")
 node_type = 1
 
 [node name="FreeRange1Node" parent="." unique_id=601175576 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_aqpn3")]
-visible = false
 layout_mode = 1
-offset_left = -256.0
+offset_left = -512.0
 offset_top = -92.0
-offset_right = -256.0
+offset_right = -512.0
 offset_bottom = -92.0
 tech_node_stats = ExtResource("6_n6fqw")
 previous_node = NodePath("../CrticalCookingNode")
 node_type = 1
 
 [node name="CookingSpeed1Node" parent="." unique_id=1776225068 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_aqpn3")]
-visible = false
 layout_mode = 1
-offset_left = 256.0
-offset_top = 165.0
-offset_right = 256.0
-offset_bottom = 165.0
+offset_left = -255.0
+offset_top = 164.0
+offset_right = -255.0
+offset_bottom = 164.0
 tech_node_stats = ExtResource("5_7vto7")
 previous_node = NodePath("../CrticalCookingNode")
 node_type = 1
 
 [node name="CookingAccuracy1Node" parent="." unique_id=1331020484 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_aqpn3")]
-visible = false
 layout_mode = 1
-offset_left = 256.0
+offset_left = -255.0
 offset_top = -92.0
-offset_right = 256.0
+offset_right = -255.0
 offset_bottom = -92.0
 tech_node_stats = ExtResource("6_7vto7")
 previous_node = NodePath("../CookingSpeed1Node")
 
 [node name="CookingDrops1Node" parent="." unique_id=1302849726 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_aqpn3")]
-visible = false
 layout_mode = 1
-offset_left = 768.0
-offset_top = 165.0
-offset_right = 768.0
-offset_bottom = 165.0
+offset_top = 164.0
+offset_bottom = 164.0
 tech_node_stats = ExtResource("7_2lla6")
 previous_node = NodePath("../CookingSpeed1Node")
 
 [node name="CriticalCooking2Node" parent="." unique_id=1013238976 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_aqpn3")]
-visible = false
 layout_mode = 1
-offset_left = 1280.0
+offset_left = 257.0
 offset_top = 165.0
-offset_right = 1280.0
+offset_right = 257.0
 offset_bottom = 165.0
 tech_node_stats = ExtResource("10_lt521")
 previous_node = NodePath("../CookingSpeed1Node")
 
 [node name="FreeRange2Node" parent="." unique_id=1895718050 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_aqpn3")]
-visible = false
 layout_mode = 1
-offset_left = 1280.0
+offset_left = 257.0
 offset_top = -92.0
-offset_right = 1280.0
+offset_right = 257.0
 offset_bottom = -92.0
 tech_node_stats = ExtResource("11_aygh3")
 previous_node = NodePath("../CookingSpeed1Node")
 
 [node name="CookingSpeed2Node" parent="." unique_id=237876793 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_aqpn3")]
-visible = false
 layout_mode = 1
-offset_left = 1792.0
-offset_top = 165.0
-offset_right = 1792.0
-offset_bottom = 165.0
+offset_left = 512.0
+offset_top = 164.0
+offset_right = 512.0
+offset_bottom = 164.0
 tech_node_stats = ExtResource("12_mtqw8")
 previous_node = NodePath("../CookingSpeed1Node")
 
 [node name="CookingAccuracy2Node" parent="." unique_id=1233633221 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_aqpn3")]
-visible = false
 layout_mode = 1
-offset_left = 1792.0
-offset_top = -92.0
-offset_right = 1792.0
-offset_bottom = -92.0
+offset_left = 512.0
+offset_top = -93.0
+offset_right = 512.0
+offset_bottom = -93.0
 tech_node_stats = ExtResource("12_aygh3")
 previous_node = NodePath("../CookingSpeed1Node")
 
 [node name="CookingDrops2Node" parent="." unique_id=2065811101 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_aqpn3")]
-visible = false
 layout_mode = 1
-offset_left = 2304.0
-offset_top = 165.0
-offset_right = 2304.0
-offset_bottom = 165.0
+offset_left = 768.0
+offset_top = 164.0
+offset_right = 768.0
+offset_bottom = 164.0
 tech_node_stats = ExtResource("14_344e1")
 previous_node = NodePath("../CookingSpeed2Node")

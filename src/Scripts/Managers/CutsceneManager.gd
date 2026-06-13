@@ -19,6 +19,14 @@ signal set_camera_to_dojo_pos
 signal fly_boss_out
 @warning_ignore("unused_signal")
 signal return_camera_to_player
+@warning_ignore("unused_signal")
+signal send_camera_to_market
+@warning_ignore("unused_signal")
+signal send_camera_to_cooking_station
+@warning_ignore("unused_signal")
+signal send_camera_to_smelting_station
+@warning_ignore("unused_signal")
+signal send_camera_to_sword_crafting_station
 
 func trigger_next_frame() -> void:
 	trigger_next_image.emit()
@@ -60,3 +68,15 @@ func enable_player_functionality() -> void:
 
 func set_camera_to_player() -> void:
 	set_camera_to_player_pos.emit()
+
+func send_camera_to_market_pos() -> void:
+	send_camera_to_market.emit()
+
+func send_camera_to_smelting_station_pos() -> void:
+	send_camera_to_smelting_station.emit()
+
+func send_camera_to_cooking_station_pos() -> void:
+	send_camera_to_cooking_station.emit()
+
+func send_camera_to_sword_crafting_station_pos() -> void:
+	send_camera_to_sword_crafting_station.emit()

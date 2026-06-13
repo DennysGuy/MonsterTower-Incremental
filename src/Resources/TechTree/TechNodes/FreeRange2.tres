@@ -10,8 +10,8 @@ script = ExtResource("1_8b63k")
 node_name = "Free Range 2"
 icon = ExtResource("2_13m5k")
 disabled_icon = ExtResource("1_pbrl1")
-description = "Increase chance to dodge material consumption when cooking by 5%."
-currency_required = 1800
+description = "Increase chance to dodge material consumption when cooking by 5%. (Skill not quite working yet)"
+currency_required = 1200
 materials_required = Array[Dictionary]([{
 ExtResource("3_13m5k"): 1
 }])

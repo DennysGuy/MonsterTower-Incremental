@@ -16,5 +16,5 @@ currency_required = 300
 stat_relation = 5
 stat_name = "Mining Damage"
 upgrade_interval = 5.0
-prereqs = Array[String](["Refinery Speed 1:1"])
+prereqs = Array[String](["Refinery Station:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

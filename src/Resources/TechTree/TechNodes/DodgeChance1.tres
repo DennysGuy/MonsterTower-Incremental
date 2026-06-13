@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_boeto"]
 [ext_resource type="Texture2D" uid="uid://cq5yd4iixc0nh" path="res://Assets/TechTree/TraversalNodes/DodgeChance_Disabled_Base.png" id="1_bpktm"]
 [ext_resource type="Texture2D" uid="uid://hwhcdpqso670" path="res://Assets/TechTree/TraversalNodes/DodgeChance_Base.png" id="2_2k1da"]
-[ext_resource type="Resource" uid="uid://y4kiqe4pi2v5" path="res://src/Resources/CraftingResources/IronBar.tres" id="3_bpktm"]
 
 [resource]
 script = ExtResource("1_boeto")
@@ -13,9 +12,6 @@ disabled_icon = ExtResource("1_bpktm")
 description = "Increases chance to dodge an enemy attack by 2% per level."
 max_level = 2
 currency_required = 800
-materials_required = Array[Dictionary]([{
-ExtResource("3_bpktm"): 2
-}])
 stat_relation = 2
 stat_name = "Dodge Chance"
 upgrade_interval = 0.02

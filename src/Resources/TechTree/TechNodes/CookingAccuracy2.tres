@@ -12,7 +12,7 @@ icon = ExtResource("1_w2emr")
 disabled_icon = ExtResource("1_v82mo")
 description = "Increases chance to successfully cook a dish by 3% per level."
 max_level = 3
-currency_required = 2500
+currency_required = 1800
 materials_required = Array[Dictionary]([{
 ExtResource("1_1oei4"): 2
 }])

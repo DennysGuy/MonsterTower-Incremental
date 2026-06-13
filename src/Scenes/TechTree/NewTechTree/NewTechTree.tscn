@@ -303,9 +303,9 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -107.0
+offset_left = -223.0
 offset_top = 114.0
-offset_right = 115.7843
+offset_right = -0.21569824
 offset_bottom = 160.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -319,9 +319,9 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -16.0
+offset_left = -132.0
 offset_top = 42.0
-offset_right = 32.0
+offset_right = -84.0
 offset_bottom = 106.0
 grow_horizontal = 2
 texture = ExtResource("9_4khty")
@@ -418,6 +418,16 @@ offset_bottom = 171.0
 theme_override_fonts/font = ExtResource("6_lb8dx")
 theme_override_font_sizes/font_size = 36
 text = "Spirols: 1200"
+
+[node name="LicenseTier" type="Label" parent="." unique_id=266198628]
+layout_mode = 0
+offset_left = 956.0
+offset_top = 118.0
+offset_right = 1348.7896
+offset_bottom = 152.0
+theme_override_fonts/font = ExtResource("6_lb8dx")
+theme_override_font_sizes/font_size = 32
+text = "License Tier: 0"
 
 [node name="Tip" type="Label" parent="." unique_id=853621169]
 layout_mode = 0

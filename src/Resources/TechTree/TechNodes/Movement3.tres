@@ -10,7 +10,7 @@ script = ExtResource("3_x6iwr")
 node_name = "Movement 3"
 icon = ExtResource("2_x6iwr")
 disabled_icon = ExtResource("1_ganev")
-description = "For each level, increases movement speed by 5%"
+description = "For each level, increases movement speed by 20%"
 max_level = 3
 currency_required = 2000
 materials_required = Array[Dictionary]([{
@@ -18,6 +18,6 @@ ExtResource("2_atcea"): 2
 }])
 stat_relation = 2
 stat_name = "Movement Speed"
-upgrade_interval = 0.05
+upgrade_interval = 0.2
 prereqs = Array[String](["Movement 2:2"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

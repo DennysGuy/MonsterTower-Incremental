@@ -12,12 +12,12 @@ icon = ExtResource("2_qjs01")
 disabled_icon = ExtResource("1_ad88h")
 description = "+50 Max Health for each level"
 max_level = 5
-currency_required = 600
+currency_required = 700
 materials_required = Array[Dictionary]([{
 ExtResource("3_ad88h"): 1
 }])
 stat_relation = 1
 stat_name = "Max Health"
 upgrade_interval = 50.0
-prereqs = Array[String](["Max HP 1:1"])
+prereqs = Array[String](["Chalice of Welfare:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

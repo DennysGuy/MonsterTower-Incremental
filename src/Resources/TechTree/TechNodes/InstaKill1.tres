@@ -13,13 +13,13 @@ icon = ExtResource("2_x3n7x")
 disabled_icon = ExtResource("1_nts7i")
 description = "Increases Threshold to Insta-Kill an enemy for each level."
 max_level = 2
-currency_required = 4200
+currency_required = 2500
 materials_required = Array[Dictionary]([{
 ExtResource("3_2sxsh"): 2
 }, {
 ExtResource("4_nwice"): 2
 }])
 stat_name = "Insta Kill Threshold"
-upgrade_interval = 0.05
+upgrade_interval = 0.1
 prereqs = Array[String](["Attack4:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

@@ -671,6 +671,9 @@ position = Vector2(2574, 671)
 [node name="TowerGuideSprite2" parent="." unique_id=283118128 instance=ExtResource("9_636af")]
 position = Vector2(107, 670)
 
+[node name="GrandMarketPosition" type="Marker2D" parent="." unique_id=723859068]
+position = Vector2(1168, 622)
+
 [node name="GrandMarketArea" type="Area2D" parent="." unique_id=1746715903]
 position = Vector2(1168, 622)
 script = ExtResource("17_hw86b")

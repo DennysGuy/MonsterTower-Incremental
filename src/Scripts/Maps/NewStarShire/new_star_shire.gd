@@ -22,6 +22,7 @@ var player_in_upgrade_station_range : bool = false
 
 @onready var access_smelting_station: Label = $AccessSmeltingStation
 @onready var access_sword_crafting_station: Label = $AccessSwordCraftingStation
+@onready var dojo_area: Area2D = $Dojo/DojoArea
 
 @onready var cooking_range_position: Node2D = $CookingRangePosition
 @onready var refinery_position: Node2D = $RefineryPosition
@@ -40,6 +41,7 @@ var player_in_upgrade_station_range : bool = false
 @onready var enter_upgrade_station_notice: Label = $EnterUpgradeStationNotice
 
 @onready var gem_stone_station: Sprite2D = $GemStoneStation
+@onready var grand_market_position: Marker2D = $GrandMarketPosition
 
 const CLASS_UP_FANFARE = preload("uid://cw28u06grrwni")
 
@@ -53,6 +55,7 @@ const SMELTING_STATION_UNLOCK_SCENE = preload("uid://dknm38b28himr")
 const GEMS_STATION_UNLOCK_SCENE = preload("uid://blac36hlx22lb")
 const GO_TO_JOB_BOARD = preload("uid://iqw8ymk767kl")
 
+const STARSPIRE_MARKET_INTRO = preload("uid://b3l8f4fxsjhu6")
 
 
 # Called when the node enters the scene tree for the first time.
@@ -61,6 +64,10 @@ func _ready() -> void:
 	CutsceneManager.enable_player_functionality()
 	CutsceneManager.set_camera_to_player_pos.connect(set_camera_to_player_pos)
 	CutsceneManager.set_camera_to_dojo_pos.connect(set_camera_to_dojo_position)
+	CutsceneManager.send_camera_to_cooking_station.connect(send_camera_to_cooking_station)
+	CutsceneManager.send_camera_to_market.connect(send_camera_to_market)
+	CutsceneManager.send_camera_to_smelting_station.connect(send_camera_to_smelting_station)
+	CutsceneManager.send_camera_to_sword_crafting_station.connect(send_camera_to_sword_crafting_station)
 	SignalBus.spawn_tech_tree.connect(add_tech_tree_to_scene)
 	SignalBus.issue_can_craft_sword_scene.connect(new_sword_unlock_notice)
 	SignalBus.hide_tech_tree_canvas_layer.connect(hide_tech_tree_canvas_layer)
@@ -105,6 +112,8 @@ func _ready() -> void:
 	
 	if SaveManager.get_floor_count("Floor 1-3") and QuestManager.active_quests["Job"].size() == 0:
 		Dialogic.start(GO_TO_JOB_BOARD)
+	
+	Dialogic.start(STARSPIRE_MARKET_INTRO)
 
 func _exit_tree() -> void:
 	GameManager.event_speed_mod = 1.0
@@ -260,6 +269,26 @@ func spawn_job_board_menu() -> void:
 	
 	PlayerHudSignalBus.spawn_job_board_menu.emit()
 
+func send_camera_to_market() -> void:
+	camera.player = null
+	camera.global_position = grand_market_position.global_position
+
+func send_camera_to_smelting_station() -> void:
+	camera.player  = null
+	camera.global_position = refinery_position.global_position
+
+func send_camera_to_cooking_station() -> void:
+	camera.player  = null
+	camera.global_position = cooking_range_position.global_position
+
+func send_camera_to_sword_crafting_station() -> void:
+	camera.player  = null
+	camera.global_position = sword_crafting_station_position.global_position
+
+func send_camera_to_class_advancement_center() -> void:
+	camera.player  = null
+	camera.global_position = dojo_area.global_position
+	
 func _on_grand_market_area_body_entered(body: Node2D) -> void:
 	if body is Player:
 		player_in_market_range = true

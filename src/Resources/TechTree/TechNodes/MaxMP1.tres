@@ -15,5 +15,5 @@ currency_required = 500
 stat_relation = 1
 stat_name = "Max MP"
 upgrade_interval = 50.0
-prereqs = Array[String](["Max HP 1:3"])
+prereqs = Array[String](["Max HP 2:3"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

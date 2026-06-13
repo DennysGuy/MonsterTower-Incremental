@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_g4jlh"]
 [ext_resource type="Texture2D" uid="uid://b5jdh6hqbimah" path="res://Assets/TechTree/SurvivalNodes/MPUp_Disabled_Graphic.png" id="1_lly3w"]
-[ext_resource type="Resource" uid="uid://ctjyflf6qr4g" path="res://src/Resources/Dishes/MossyGoulash.tres" id="1_xy8xx"]
 [ext_resource type="Texture2D" uid="uid://dwlks8u8dpf3s" path="res://Assets/TechTree/SurvivalNodes/MPUp_Graphic.png" id="2_kl7cm"]
+[ext_resource type="Resource" uid="uid://dmmblpt46r1fs" path="res://src/Resources/Dishes/PupilCaviar.tres" id="3_lly3w"]
 
 [resource]
 script = ExtResource("1_g4jlh")
@@ -14,10 +14,10 @@ description = "Raises Max MP by 100 for each level."
 max_level = 4
 currency_required = 1000
 materials_required = Array[Dictionary]([{
-ExtResource("1_xy8xx"): 2
+ExtResource("3_lly3w"): 2
 }])
 stat_relation = 1
 stat_name = "Max MP"
 upgrade_interval = 100.0
-prereqs = Array[String](["Max MP 1:1"])
+prereqs = Array[String](["Max HP 2:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

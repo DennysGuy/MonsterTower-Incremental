@@ -12,12 +12,12 @@ icon = ExtResource("2_rf8nb")
 disabled_icon = ExtResource("1_c1kyn")
 description = "Increase Pickaxe Damage to ore rocks +8 for each level"
 max_level = 3
-currency_required = 5000
+currency_required = 2000
 materials_required = Array[Dictionary]([{
 ExtResource("3_rf8nb"): 4
 }])
 stat_relation = 5
 stat_name = "Mining Damage"
 upgrade_interval = 8.0
-prereqs = Array[String](["Refining Speed 2:1"])
+prereqs = Array[String](["Mining Bolt Chance 1:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

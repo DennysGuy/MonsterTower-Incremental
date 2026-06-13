@@ -71,7 +71,6 @@ func damage_ore_rock(damage : int) -> void:
 	enemy_health_bar.show()
 	health -= damage
 	enemy_health_bar.value = health
-	print("THIS IS HEALTH! %s" % health)
 	var damage_label : DamageLabel = preload("uid://dkchs27qqogyy").instantiate()
 	damage_label.label.text = str(damage)
 	damage_label.global_position = Vector2(global_position.x, global_position.y - 20)
@@ -97,7 +96,7 @@ func _on_ore_rock_area_area_entered(area: Area2D) -> void:
 	if area.get_parent() is Player:
 		if PlayerStats.facilities_unlocked["Refinery Station"]:
 			
-			directions.text = "Press/Hold 'F' to Mine!"
+			directions.text = "Press/Hold %s to Mine!" % GameManager.get_control_mapping("swing_sword",6)
 			await get_tree().physics_frame
 			area.get_parent().stored_ore_rock = self
 			set_outline_visible()

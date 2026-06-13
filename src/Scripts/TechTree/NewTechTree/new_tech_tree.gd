@@ -22,6 +22,7 @@ class_name NewTechTree extends Control
 
 @onready var close_button: Button = $CloseButton
 @onready var currency_label: Label = $CurrencyLabel
+@onready var license_tier: Label = $LicenseTier
 
 var stored_message_panel : TechTreeMessagePanel
 @onready var music_player: AudioStreamPlayer = $MusicPlayer
@@ -142,17 +143,21 @@ func update_progress() -> void:
 			GameManager.license_promotion_time = true
 			upgrade_button_notification_icon.show()
 			upgrade_tracker_button.text = "Promote License"
+			license_tier.text = "Promote License"
 		upgrade_tracker_button.disabled = false
+		
 	else:
 		upgrade_tracker_button.text = "%s/%s" % [TechTreeManager.current_upgrade_count, TechTreeManager.upgrade_count_to_prestige]
 		upgrade_tracker_button.disabled = true
+		license_tier.text = "License Tier: %s" % TechTreeManager.current_prestige
 		upgrade_button_notification_icon.hide()
 	
 	expedition_time_tracker.text = "Expedition Time: %s" % PlayerStats.player_stats["Expedition Time"]
 	currency_label.text = "Spirols %s" % [TechTreeManager.currency]
 	upgrade_progress_bar.max_value = TechTreeManager.upgrade_count_to_prestige
 	upgrade_progress_bar.value = TechTreeManager.current_upgrade_count
-
+	
+	
 func add_combat_tech_tree() -> void:
 	for child in sub_viewport.get_children():
 		child.queue_free()

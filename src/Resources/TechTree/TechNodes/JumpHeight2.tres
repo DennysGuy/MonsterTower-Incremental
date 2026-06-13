@@ -12,9 +12,9 @@ icon = ExtResource("2_vsx62")
 disabled_icon = ExtResource("1_nnbuj")
 description = "Increases Jump Height by 10% for each level"
 max_level = 2
-currency_required = 1200
+currency_required = 1000
 materials_required = Array[Dictionary]([{
-ExtResource("1_ek8tc"): 2
+ExtResource("1_ek8tc"): 1
 }])
 stat_relation = 2
 stat_name = "Jump Height"

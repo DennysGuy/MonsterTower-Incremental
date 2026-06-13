@@ -12,7 +12,7 @@ icon = ExtResource("1_rghtu")
 disabled_icon = ExtResource("1_soogs")
 description = "Increases the duration of your dash attack by 3ms"
 max_level = 3
-currency_required = 1500
+currency_required = 1200
 materials_required = Array[Dictionary]([{
 ExtResource("3_soogs"): 4
 }])

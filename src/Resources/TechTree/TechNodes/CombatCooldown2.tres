@@ -12,9 +12,9 @@ icon = ExtResource("2_cfgbn")
 disabled_icon = ExtResource("1_4afet")
 description = "Global Cooldown Reduction for all combat abilities by -0.5 sec for each level."
 max_level = 2
-currency_required = 3500
+currency_required = 2000
 materials_required = Array[Dictionary]([{
-ExtResource("3_cfgbn"): 4
+ExtResource("3_cfgbn"): 2
 }])
 stat_name = "Cooldown Reduction"
 upgrade_interval = 0.5

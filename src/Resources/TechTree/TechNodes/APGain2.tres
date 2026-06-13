@@ -12,7 +12,7 @@ node_name = "AP Gain 2"
 icon = ExtResource("2_s8l8g")
 disabled_icon = ExtResource("1_e7ite")
 description = "Increases AP Received upon leveling up."
-currency_required = 5000
+currency_required = 3000
 materials_required = Array[Dictionary]([{
 ExtResource("3_tfprr"): 1
 }, {

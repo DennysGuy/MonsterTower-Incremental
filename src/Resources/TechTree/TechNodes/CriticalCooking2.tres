@@ -11,7 +11,7 @@ node_name = "Critical Cooking 2"
 icon = ExtResource("2_vypl4")
 disabled_icon = ExtResource("1_qrfhl")
 description = "Increases chance to double item output when cooking."
-currency_required = 1500
+currency_required = 1000
 materials_required = Array[Dictionary]([{
 ExtResource("3_vypl4"): 2
 }])

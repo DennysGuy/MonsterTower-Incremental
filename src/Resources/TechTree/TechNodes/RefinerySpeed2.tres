@@ -13,7 +13,7 @@ icon = ExtResource("1_cq6yo")
 disabled_icon = ExtResource("1_rsqsp")
 description = "Decrease your wait time and Increase Smelting Speed by 15% per level."
 max_level = 2
-currency_required = 1500
+currency_required = 1300
 materials_required = Array[Dictionary]([{
 ExtResource("3_wlkyh"): 2
 }, {
@@ -22,5 +22,5 @@ ExtResource("4_3yu03"): 2
 stat_relation = 5
 stat_name = "Smelting Speed"
 upgrade_interval = 0.15
-prereqs = Array[String](["Critical Smelting 2:1"])
+prereqs = Array[String](["Mining Bolt Chance 1:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

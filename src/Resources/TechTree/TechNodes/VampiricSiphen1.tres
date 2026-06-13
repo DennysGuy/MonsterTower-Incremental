@@ -8,7 +8,7 @@ script = ExtResource("1_xbyhm")
 node_name = "Vampiric Siphen 1"
 description = "Increases The Amount of life that is stolen by a 3% per level."
 max_level = 3
-currency_required = 3600
+currency_required = 2500
 materials_required = Array[Dictionary]([{
 ExtResource("1_jrjfj"): 2
 }])

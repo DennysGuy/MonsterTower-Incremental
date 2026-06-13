@@ -12,7 +12,7 @@ icon = ExtResource("2_6p7l7")
 disabled_icon = ExtResource("1_m13gn")
 description = "Increases Bonus XP Acquired for each kill."
 max_level = 3
-currency_required = 5500
+currency_required = 3500
 materials_required = Array[Dictionary]([{
 ExtResource("3_6p7l7"): 2
 }])
