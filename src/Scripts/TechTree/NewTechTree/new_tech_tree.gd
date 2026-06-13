@@ -143,12 +143,13 @@ func update_progress() -> void:
 			GameManager.license_promotion_time = true
 			upgrade_button_notification_icon.show()
 			upgrade_tracker_button.text = "Promote License"
-			license_tier.text = "Promote License"
+			license_tier.hide()
 		upgrade_tracker_button.disabled = false
 		
 	else:
 		upgrade_tracker_button.text = "%s/%s" % [TechTreeManager.current_upgrade_count, TechTreeManager.upgrade_count_to_prestige]
 		upgrade_tracker_button.disabled = true
+		license_tier.show()
 		license_tier.text = "License Tier: %s" % TechTreeManager.current_prestige
 		upgrade_button_notification_icon.hide()
 	

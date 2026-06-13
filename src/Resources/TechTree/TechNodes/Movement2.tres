@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dpqmx3xdqw1up" path="res://Assets/TechTree/TraversalNodes/MovementSpeed_Disabled_Graphic.png" id="1_bgu3o"]
 [ext_resource type="Texture2D" uid="uid://q87r3t2lftlr" path="res://Assets/TechTree/TraversalNodes/MovementSpeed_Graphic.png" id="2_ac2cp"]
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="3_ac2cp"]
-[ext_resource type="Resource" uid="uid://dw722w0co7qrn" path="res://src/Resources/Recipes/DishRecipes/Tier 1/WrappedKababRecipe.tres" id="3_bgu3o"]
+[ext_resource type="Resource" uid="uid://b4owo1wr47wc" path="res://src/Resources/Dishes/WrappedKabab.tres" id="3_bgu3o"]
 
 [resource]
 script = ExtResource("3_ac2cp")

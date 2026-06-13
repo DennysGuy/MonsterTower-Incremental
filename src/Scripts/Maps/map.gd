@@ -100,19 +100,6 @@ func _ready() -> void:
 		if map_type == MAP_TYPE.CHECKPOINT_FLOOR:	
 			GameManager.can_open_bag = true
 			if !GameManager.hunt_challenge_selected:
-				
-				if tower_entrance_data.is_expedition_floor() and tower_entrance_data.unlock_recipe:
-					if !tower_entrance_data.hunt_challenge_completed and tower_entrance_data.times_entered == 1:
-						issue_repair_elevator_notice()
-					else:
-						CodexManager.send_codex_notification.emit("Repair the Elevator!")
-			
-				elif tower_entrance_data.is_challenge_floor() and not tower_entrance_data.hunt_challenge_completed:
-					if tower_entrance_data.times_entered == 1:
-						issue_challenge_objective_notice()
-					else:
-						CodexManager.send_codex_notification.emit("Complete the Floor Challenge!")
-				
 				SignalBus.show_bag_stats.emit()
 				
 			if monster_spawn_node and GameManager.hunt_challenge_selected:

@@ -48,6 +48,27 @@ offset_bottom = -92.0
 tech_node_stats = ExtResource("5_0yhyc")
 previous_node = NodePath("../MaxHP1Node")
 
+[node name="HPChaliceNode" parent="." unique_id=1302849726 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_0yhyc")]
+visible = false
+layout_mode = 1
+offset_left = -512.0
+offset_top = 164.0
+offset_right = -512.0
+offset_bottom = 164.0
+tech_node_stats = ExtResource("8_xyfu8")
+previous_node = NodePath("../MaxHP1Node")
+node_type = 1
+
+[node name="HPChaliceSpawnRateNode" parent="." unique_id=1305696302 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_0yhyc")]
+visible = false
+layout_mode = 1
+offset_left = -512.0
+offset_top = -92.0
+offset_right = -512.0
+offset_bottom = -92.0
+tech_node_stats = ExtResource("9_xyfu8")
+previous_node = NodePath("../HPChaliceNode")
+
 [node name="MaxHP2Node" parent="." unique_id=1776225068 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_0yhyc")]
 visible = false
 layout_mode = 1
@@ -67,27 +88,6 @@ offset_right = -255.0
 offset_bottom = -92.0
 tech_node_stats = ExtResource("7_bo66c")
 previous_node = NodePath("../MaxHP2Node")
-
-[node name="HPChaliceNode" parent="." unique_id=1302849726 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_0yhyc")]
-visible = false
-layout_mode = 1
-offset_left = -512.0
-offset_top = 164.0
-offset_right = -512.0
-offset_bottom = 164.0
-tech_node_stats = ExtResource("8_xyfu8")
-previous_node = NodePath("../MaxHP2Node")
-node_type = 1
-
-[node name="HPChaliceSpawnRateNode" parent="." unique_id=1305696302 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_0yhyc")]
-visible = false
-layout_mode = 1
-offset_left = -512.0
-offset_top = -92.0
-offset_right = -512.0
-offset_bottom = -92.0
-tech_node_stats = ExtResource("9_xyfu8")
-previous_node = NodePath("../HPChaliceNode")
 
 [node name="MaxMP1Node" parent="." unique_id=1548307285 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_0yhyc")]
 visible = false

@@ -22,7 +22,6 @@ func _process(delta : float) -> void:
 func _physics_process(delta: float) -> void:
 	pass
 
-
 func populate_node_container(container : HBoxContainer, ability_list : String) -> void:
 	var class_abilities : Dictionary = PlayerStats.class_ability_node_stats[PlayerStats.player_stats["Class"]][ability_list]
 	for i in class_abilities.keys():

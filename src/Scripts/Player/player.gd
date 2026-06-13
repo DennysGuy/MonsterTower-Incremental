@@ -71,16 +71,16 @@ var attack_buffer_timer : float = 0.0
 var attack_buffer_wait_time : float = 1.0
 
 var combat_ability_1_timer : float = 0.0
-var combat_ability_1_wait_time : float = 1.0
+var combat_ability_1_wait_time : float = 0.4
 
 var combat_ability_2_timer : float = 0.0
-var combat_ability_2_wait_time : float = 1.0
+var combat_ability_2_wait_time : float = 0.4
 
 var combat_ability_3_timer : float = 0.0
-var combat_ability_3_wait_time : float = 1.0
+var combat_ability_3_wait_time : float = 0.4
 
 var combat_ability_4_timer : float = 0.0
-var combat_ability_4_wait_time : float = 1.0
+var combat_ability_4_wait_time : float = 0.4
 
 var can_attack_cancel: bool = false
 

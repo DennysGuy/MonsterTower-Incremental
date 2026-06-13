@@ -1,3 +1,5 @@
+do ExpeditionTimer.stop_timer()
+do CutsceneManager.disable_enemy_spawn()
 do CutsceneManager.disable_player_functionality()
 join TowerGuide rightmost
 TowerGuide: Uh oh.. Looks like one of these darn Elevators broke down.. Again.
@@ -7,3 +9,5 @@ do CutsceneManager.send_camera_to_player()
 [wait time="1.0"]
 do CutsceneManager.enable_player_functionality()
 do GameManager.enable_enemy_movement()
+do ExpeditionTimer.start_timer()
+do CutsceneManager.enable_enemy_spawn()

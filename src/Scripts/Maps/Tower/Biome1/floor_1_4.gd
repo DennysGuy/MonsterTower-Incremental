@@ -65,6 +65,12 @@ func _ready() -> void:
 	PlayerHudSignalBus.update_map_name_label.emit(map_name)
 	SignalBus.update_banner_info.emit(tower_entrance_data)
 	
+	if !tower_entrance_data.hunt_challenge_completed:
+		if tower_entrance_data.times_entered == 1:
+			issue_challenge_objective_notice()
+		else:
+			CodexManager.send_codex_notification.emit("Complete the Floor Challenge!")
+	
 func _process(delta: float) -> void:
 	super(delta)
 	#if Input.is_action_just_pressed("interact") and in_check_point_area:

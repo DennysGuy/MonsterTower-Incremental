@@ -3,6 +3,7 @@ class_name PlayerDashAttackState extends State
 @export var idle_state : State
 @export var attack_1 : State
 @export var jump : State
+@export var climb_state : State
 
 @export var combat_ability_1 : State
 @export var combat_ability_2 : State
@@ -20,8 +21,9 @@ func enter() -> void:
 	parent.set_outfit_texture(animation_name)
 	parent.timer.wait_time = PlayerStats.player_stats["Dash Duration"]
 	parent.timer.start()
+	parent.grab_ladder_buffer_timer = 0
 	AbilityTimers.activate_ability_cooldown("Dash Attack")
-	#unique
+
 	var selected_ability : Ability = PlayerStats.get_equipped_ability("Dash Attack")
 	PlayerStats.player_stats["Current MP"] -= selected_ability.mp_cost
 	PlayerHudSignalBus.update_player_mp.emit()
@@ -42,6 +44,10 @@ func exit() -> void:
 	#parent.can_dash_attack = false
 	
 func process_input(_event: InputEvent) -> State:
+	
+	if Input.is_action_pressed("pan_cam_up") and parent.in_ladder_area and parent.global_position.y <= parent.stored_ladder.ladder_bottom_position and parent.global_position.y > parent.stored_ladder.ladder_top_position:
+		return climb_state
+	
 	if Input.is_action_pressed("swing_sword"):
 		parent.set_attack_buffer_timer()
 	elif Input.is_action_just_pressed("add_currency"):
@@ -49,8 +55,8 @@ func process_input(_event: InputEvent) -> State:
 	#we can probably add the combat ability buffers here
 	elif Input.is_action_just_pressed("combat_ability_1") and PlayerStats.get_equipped_ability("Combat Ability 1"):
 		if parent.can_issue_ability("Combat Ability 1"):
-			parent.attack_friction = 1200
-			parent.max_attack_drift = 100
+			parent.attack_friction = 2000
+			parent.max_attack_drift = 0
 			parent.combat_ability_1_timer = parent.combat_ability_1_wait_time
 		else:
 			parent.play_denied_sfx()

@@ -55,6 +55,13 @@ func _ready() -> void:
 		PlayerHudSignalBus.start_stop_watch.emit()
 	
 	PlayerHudSignalBus.update_map_name_label.emit(map_name)
+	
+	if !tower_entrance_data.hunt_challenge_completed:
+		if tower_entrance_data.times_entered == 1:
+			issue_repair_elevator_notice()
+		else:
+			CodexManager.send_codex_notification.emit("Repair the Elevator!")
+			
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	super(delta)

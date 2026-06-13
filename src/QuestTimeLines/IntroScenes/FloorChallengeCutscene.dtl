@@ -1,3 +1,5 @@
+do ExpeditionTimer.stop_timer()
+do CutsceneManager.disable_enemy_spawn()
 do CutsceneManager.disable_player_functionality()
 join TowerGuide center
 TowerGuide: Congratulations on making it this far, Rookie - but things are just beginning.
@@ -8,3 +10,5 @@ TowerGuide: The Combat Challenge will unlock once you've reached the top of the 
 Good luck and may your bounty be plentyful!
 do CutsceneManager.enable_player_functionality()
 do GameManager.enable_enemy_movement()
+do CutsceneManager.enable_enemy_spawn()
+do ExpeditionTimer.start_timer()

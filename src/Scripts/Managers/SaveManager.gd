@@ -71,6 +71,7 @@ func save_tech_tree_data() -> void:
 func load_progression_states() -> void:
 	GameManager.first_class_just_unlocked = load_progression_state("First Class Just Unlocked")
 	GameManager.first_quest_just_unlocked = load_progression_state("First Quest Just Unlocked")
+	GameManager.market_intro_cutscene_played = load_progression_state("Market Intro Cutscene Played")
 
 
 func save_equipped_abilities() -> void:

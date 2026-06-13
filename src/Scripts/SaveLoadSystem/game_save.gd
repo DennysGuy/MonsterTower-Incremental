@@ -898,10 +898,7 @@ TODO: We will add saves for classes as well
 ]
 
 @export var progression_states : Dictionary = {
-	"First Class Just Unlocked" : false,
+	"Market Intro Cutscene Played" : false,
+	"First Class Just Unlocked": false,
 	"First Quest Just Unlocked": false,
-	"Floor 2 Just Reached": false,
-	"Floor 4 Just Reached": false,
-	"Floor 6 Just Reached": false,
-	"Boss Room Just Reached": false	
 }

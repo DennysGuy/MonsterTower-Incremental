@@ -27,6 +27,10 @@ signal send_camera_to_cooking_station
 signal send_camera_to_smelting_station
 @warning_ignore("unused_signal")
 signal send_camera_to_sword_crafting_station
+@warning_ignore("unused_signal")
+signal stop_enemy_spawn
+@warning_ignore("unused_signal")
+signal start_enemy_spawn
 
 func trigger_next_frame() -> void:
 	trigger_next_image.emit()
@@ -80,3 +84,9 @@ func send_camera_to_cooking_station_pos() -> void:
 
 func send_camera_to_sword_crafting_station_pos() -> void:
 	send_camera_to_sword_crafting_station.emit()
+
+func enable_enemy_spawn() -> void:
+	start_enemy_spawn.emit()
+
+func disable_enemy_spawn() -> void:
+	stop_enemy_spawn.emit()

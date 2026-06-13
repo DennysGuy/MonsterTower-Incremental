@@ -393,7 +393,9 @@ func recover_hp(amount : int) -> void:
 	player_stats["Current Health"] += amount
 	if player_stats["Current Health"] > get_total_max_health():
 		player_stats["Current Health"] = get_total_max_health()
-	
+		
+	GameManager.current_player_health += amount
+	SaveManager.save_player_stats()
 	PlayerHudSignalBus.update_player_health.emit()
 		
 func recover_mp(amount : int) -> void:

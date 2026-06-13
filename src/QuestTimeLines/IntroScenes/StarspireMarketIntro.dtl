@@ -2,33 +2,35 @@ do CutsceneManager.disable_player_functionality()
 [wait time="2.0"]
 join TowerGuide rightmost
 TowerGuide: Welcome to the Starspire Grand Market! Glad you made it.
-TowerGuide: This location is the base of operations for the Starspire Hunters. Use the Grand Market to bolster your abilities, become rich, and go on expeditions to the tower.
+TowerGuide: This location is the base of operations for the Starspire Hunters. Use the Grand Market to bolster your abilities, become rich, and begin expeditions to the tower.
 TowerGuide: I will now give a brief overview of what the Starspire Grand Market has to offer.
 do CutsceneManager.send_camera_to_market_pos()
 [wait time="1.0"]
-TowerGuide: This is the Trade Market. Here you can sell all of the valuables found in the tower as well as crafted resources here. Simply passing by the market will sell all of your novelty items, but if you want to become more specific - you can sell anything further for extra and even more profitable spirol. It is up to your discretion!
+TowerGuide: This is the Trade Market. Here you can sell all of the valuables found in the tower as well as crafted resources here. Simply passing by the market will sell all of your novelty items, but if you want to become more specific - you can sell anything further for extra and even more profitable Spirol. It is up to your discretion!
 do CutsceneManager.send_camera_to_cooking_station_pos()
 [wait time="1.0"]
 TowerGuide: Welcome to Artisan's Corner! The back bone of the Starspire Operations.
 TowerGuide: This is a Hunter's bread and butter for becoming strong.
 TowerGuide: On the bottom, we have the smelting and cooking station.. eh, well we should!\
 Looks like they are currently under construction. We'll fix them up sooner or later.
-TowerGuide: These stations will be used to craft refined bars and food dishes made from monsters found in the Tower! they can be used for various purposes - to craft new gear, unlock new abilities, or simply sell for cash if you're strapped!
+TowerGuide: These stations will be used to craft refined bars and food dishes made from monsters found in the Tower! They can be used for various purposes - to craft new gear, unlock new abilities, or simply sell for cash if you're strapped!
 TowerGuide: On the very right, we have the Job Requests Board. This is where other Hunters can post any requests related to the tower - usually they will involve some sort of hunt or gathering objective.
 TowerGuide: They're ultimately not required to be a Starspire Hunter, but they can come in handy for acquiring extra rewards and a convenient way to add to your progression as a hunter.
 do CutsceneManager.send_camera_to_sword_crafting_station_pos()
 [wait time="1.0"]
 TowerGuide: On top here, we have the gem upgrade station and the Weapon Crafting Station.
-TowerGuide: Just as it sounds, these stations are here to upgrade your gear and become a more powerful hunter. \
+TowerGuide: Just as it sounds, these stations are here to upgrade your gear to become a more powerful hunter. \
 You will have immediate access to the Weapon Crafting Station.
 TowerGuide: But you'll need to prove to be a capable hunter before the Guild gives you access to the Gem Upgrade Station.
 do CutsceneManager.set_camera_to_dojo_position()
 [wait time="1.0"]
-TowerGuide: Lastly, the Class Advancement Center is the soul and heart of the Starspire Hunters Guild.
+TowerGuide: Lastly, the Class Advancement Center is the heart and soul of the Starspire Hunters Guild.
 TowerGuide: Here, you will unlock and upgrade new class abilities with AP that is acquired from leveling up while hunting inside the Tower.
 do CutsceneManager.set_camera_to_player()
 [wait time="1.0"]
 TowerGuide: Well, that's it for now! \
-We'll go over me as we go along, but this should give you a good jump start to becoming a Starspire Hunter!
+We'll go over things again as we go along, but this should give you a good jump start to becoming a Starspire Hunter!
 TowerGuide: Good Luck and may your bounty be plentiful!
+[wait time="1.0"]
+[wait time="1.0"]
 do CutsceneManager.enable_player_functionality()

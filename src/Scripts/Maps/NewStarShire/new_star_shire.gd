@@ -106,6 +106,12 @@ func _ready() -> void:
 	show_gem_station_notice()
 	check_for_node_purchase()
 	
+	if !GameManager.market_intro_cutscene_played:
+		Dialogic.start(STARSPIRE_MARKET_INTRO)
+		GameManager.market_intro_cutscene_played = true
+		SaveManager.save_progression_state("Market Intro Cutscene Played", true)
+
+	
 	if PlayerStats.player_stats["Level"] == 2 and PlayerStats.player_stats["Ability Points"] == 1:
 		#ability_station_notice()
 		Dialogic.start(LEVEL_UP_INSTRUCTION)
@@ -113,7 +119,8 @@ func _ready() -> void:
 	if SaveManager.get_floor_count("Floor 1-3") and QuestManager.active_quests["Job"].size() == 0:
 		Dialogic.start(GO_TO_JOB_BOARD)
 	
-	Dialogic.start(STARSPIRE_MARKET_INTRO)
+	
+	
 
 func _exit_tree() -> void:
 	GameManager.event_speed_mod = 1.0

@@ -420,6 +420,7 @@ theme_override_font_sizes/font_size = 36
 text = "Spirols: 1200"
 
 [node name="LicenseTier" type="Label" parent="." unique_id=266198628]
+visible = false
 layout_mode = 0
 offset_left = 956.0
 offset_top = 118.0
