@@ -2,10 +2,14 @@
 
 [ext_resource type="Resource" uid="uid://cnd7ngdtcfmgc" path="res://src/Resources/Actors/Enemies/Biome1/CorruptedMushie/PurifiedMushieCore.tres" id="1_wr1j2"]
 [ext_resource type="Resource" uid="uid://jn2dh2fyq5ep" path="res://src/Resources/Actors/Enemies/Biome1/CorruptedMushie/FiberousMushieStalk.tres" id="2_ndj3h"]
+[ext_resource type="AudioStream" uid="uid://bxqh5byuamqhb" path="res://Audio/SFX/Enemies/Mushie/MushieDeathVox.wav" id="3_f2ugo"]
 [ext_resource type="Texture2D" uid="uid://01qc3nbxsqb3" path="res://Assets/Enemies/CorruptedMushie/CorruptedMushie_Stand.png" id="3_jl34x"]
 [ext_resource type="Resource" uid="uid://rjdpo8po5vi0" path="res://src/Resources/Actors/Enemies/Biome1/CorruptedMushie/CorruptedSpore.tres" id="3_lxwxs"]
 [ext_resource type="Texture2D" uid="uid://doykjgx3b67qt" path="res://Assets/Enemies/CorruptedMushieIcon.png" id="4_2hjuk"]
 [ext_resource type="Script" uid="uid://cbjktr12qagl" path="res://src/Scripts/Enemies/enemy_stats.gd" id="4_iche6"]
+[ext_resource type="AudioStream" uid="uid://dlr2swcj4ftr8" path="res://Audio/SFX/Enemies/Mushie/MushieHit1.wav" id="4_l662f"]
+[ext_resource type="AudioStream" uid="uid://crahdg7af85x5" path="res://Audio/SFX/Enemies/Mushie/MushieHit2.wav" id="5_uu70x"]
+[ext_resource type="AudioStream" uid="uid://djo1jmq0q8uqq" path="res://Audio/SFX/Enemies/Mushie/MushieHit3.wav" id="6_ojcvf"]
 
 [resource]
 script = ExtResource("4_iche6")
@@ -22,6 +26,10 @@ attack = 22
 movement_speed = 50.0
 chase_speed = 60.0
 break_threshold = 3
+hit_vox_1 = ExtResource("4_l662f")
+hit_vox_2 = ExtResource("5_uu70x")
+hit_vox_3 = ExtResource("6_ojcvf")
+die_vox = ExtResource("3_f2ugo")
 novelty_item_drop = ExtResource("3_lxwxs")
 cooking_item_drop = ExtResource("1_wr1j2")
 crafting_item_drop = ExtResource("2_ndj3h")

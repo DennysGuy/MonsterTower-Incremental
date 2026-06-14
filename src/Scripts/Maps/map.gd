@@ -65,6 +65,7 @@ func _ready() -> void:
 	SignalBus.update_kill_quota.connect(update_hunt_quota)
 	SignalBus.play_sfx.connect(play_sfx)
 	LevelingManager.play_level_up_sfx.connect(play_level_up_sfx)
+	CutsceneManager.play_map_theme.connect(play_map_theme)
 	#hud.map_name_label.text = map_name
 	
 	
@@ -146,6 +147,9 @@ func _input(event: InputEvent) -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+func play_map_theme() -> void:
+	MusicPlayer.play_song(map_theme_song)
 
 func spawn_player() -> void:
 	var new_player : Player = preload("uid://wuy3aelq8aeg").instantiate()

@@ -5,7 +5,11 @@
 [ext_resource type="Resource" uid="uid://lyuo51uo7crd" path="res://src/Resources/Actors/Enemies/Biome1/GoblinThief/HiddenShiv.tres" id="2_tqppg"]
 [ext_resource type="Texture2D" uid="uid://dbrvytv1yscpw" path="res://Assets/Enemies/GoblinGuy/GoblinGuy_Stand.png" id="3_8oqu5"]
 [ext_resource type="Resource" uid="uid://bngtdvlfknn62" path="res://src/Resources/Actors/Enemies/Biome1/GoblinThief/SpoilsPack.tres" id="3_dtc7o"]
+[ext_resource type="AudioStream" uid="uid://dwd4dsbu14jon" path="res://Audio/SFX/Enemies/Goblin/GoblinDeathVox.wav" id="3_xj6lq"]
+[ext_resource type="AudioStream" uid="uid://dvymnd2v7kemq" path="res://Audio/SFX/Enemies/Goblin/GoblinHit1.wav" id="4_0dgtv"]
+[ext_resource type="AudioStream" uid="uid://dgdovuc6eb0ac" path="res://Audio/SFX/Enemies/Goblin/GoblinHit2.wav" id="5_5wrog"]
 [ext_resource type="Texture2D" uid="uid://m3x60greqbfs" path="res://Assets/Enemies/GoblinIcon.png" id="5_y2hcj"]
+[ext_resource type="AudioStream" uid="uid://c7cbdeckaxjrl" path="res://Audio/SFX/Enemies/Goblin/GoblinHit3.wav" id="6_e8clb"]
 
 [resource]
 script = ExtResource("1_02tsj")
@@ -22,6 +26,10 @@ defense = 12.0
 movement_speed = 50.0
 chase_speed = 70.0
 break_threshold = 12
+hit_vox_1 = ExtResource("4_0dgtv")
+hit_vox_2 = ExtResource("5_5wrog")
+hit_vox_3 = ExtResource("6_e8clb")
+die_vox = ExtResource("3_xj6lq")
 novelty_item_drop = ExtResource("3_dtc7o")
 cooking_item_drop = ExtResource("1_78oq2")
 crafting_item_drop = ExtResource("2_tqppg")

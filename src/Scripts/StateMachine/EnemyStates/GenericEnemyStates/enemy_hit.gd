@@ -16,6 +16,10 @@ func enter() -> void:
 	parent.disable_hit_box()
 	parent.timer.wait_time = parent.knock_back_wait_time
 	parent.timer.start()
+	var hit_sfx : AudioStream = parent.enemy_stats.get_random_hit_vox()
+	if hit_sfx and GameManager.monster_voices_toggled:
+		parent.play_sfx(hit_sfx)
+	
 	if parent.locked_on:
 		parent.remove_stun_marker()
 	

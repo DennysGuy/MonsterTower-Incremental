@@ -46,20 +46,18 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		save_floor_data()
 		just_unlocked = true
 		
-		
 func save_floor_data() -> void:
 	var saved_data = SaveManager.current_save_game.tower_entrance_data
 	saved_data[entrance_data.floor_name]["Number of Spawn Locations"] = entrance_data.number_of_spawn_locations
 	saved_data[entrance_data.floor_name]["Campfires Reached"] = entrance_data.camp_fires_reached
 	saved_data[entrance_data.floor_name]["Hunt Challenge Unlocked"] = entrance_data.hunt_challenge_unlocked
 	SaveManager.save_game()
-		
 
 func _on_exit_area_body_entered(body: Node2D) -> void:
 	if body is Player:
+		exit_notification.text = "Press %s to exit tower" % GameManager.get_control_mapping("interact")
 		exit_notification.show()
 		player_in_range = true
-
 
 func _on_exit_area_body_exited(body: Node2D) -> void:
 	if body is Player:

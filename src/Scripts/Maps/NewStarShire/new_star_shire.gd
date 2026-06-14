@@ -49,6 +49,7 @@ const CRAFT_SWORD = preload("uid://4c6l1w0kpar3")
 const UNLOCK_SHOP = preload("uid://cveiqvxm5r0yw")
 @onready var grand_market_area: Area2D = $GrandMarketArea
 
+const TUTORIAL_CUTSCENE = preload("uid://cvhk4xt8ju43w") 
 const LEVEL_UP_INSTRUCTION = preload("uid://7k2f4h2w0i08")
 const COOKING_STATION_UNLOCK_SCENE = preload("uid://gfqitaq4h4ol")
 const SMELTING_STATION_UNLOCK_SCENE = preload("uid://dknm38b28himr")
@@ -97,9 +98,9 @@ func _ready() -> void:
 	
 	GameManager.event_speed_mod = 2.5
 	PlayerHudSignalBus.update_map_name_label.emit(map_name)
-	PlayerHudSignalBus.update_player_health.emit()
 	PlayerStats.player_stats["Current MP"] = PlayerStats.player_stats["Max MP"] + PlayerStats.get_current_sword().max_mp_bonus + PlayerStats.get_total_gem_bonus("Max MP Bonus")
 	PlayerHudSignalBus.update_player_mp.emit()
+	PlayerHudSignalBus.update_player_health.emit()
 	SaveManager.save_player_stats()
 	QuestManager.check_map_name.emit(map_name)
 	show_ap_notice()
@@ -107,19 +108,21 @@ func _ready() -> void:
 	check_for_node_purchase()
 	
 	if !GameManager.market_intro_cutscene_played:
+		MusicPlayer.stop_player()
+		MusicPlayer.play_song(TUTORIAL_CUTSCENE)
 		Dialogic.start(STARSPIRE_MARKET_INTRO)
 		GameManager.market_intro_cutscene_played = true
 		SaveManager.save_progression_state("Market Intro Cutscene Played", true)
 
-	
 	if PlayerStats.player_stats["Level"] == 2 and PlayerStats.player_stats["Ability Points"] == 1:
 		#ability_station_notice()
+		MusicPlayer.stop_player()
+		MusicPlayer.play_song(TUTORIAL_CUTSCENE)
 		Dialogic.start(LEVEL_UP_INSTRUCTION)
 	
 	if SaveManager.get_floor_count("Floor 1-3") and QuestManager.active_quests["Job"].size() == 0:
+		MusicPlayer.stop_player()
 		Dialogic.start(GO_TO_JOB_BOARD)
-	
-	
 	
 
 func _exit_tree() -> void:

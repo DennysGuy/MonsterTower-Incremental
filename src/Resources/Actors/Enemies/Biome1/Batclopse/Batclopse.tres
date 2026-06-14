@@ -5,7 +5,11 @@
 [ext_resource type="Resource" uid="uid://d4k5o7mbmw8yw" path="res://src/Resources/Actors/Enemies/Biome1/Batclopse/BatclopseClaw.tres" id="2_vel66"]
 [ext_resource type="Texture2D" uid="uid://c5raqro6fpnfw" path="res://Assets/Enemies/CyclopsBat/CyclopseBat_Stand.png" id="3_fq27b"]
 [ext_resource type="Resource" uid="uid://sio2h1j85i5y" path="res://src/Resources/Actors/Enemies/Biome1/Batclopse/BatclopseEye.tres" id="3_q2e0m"]
+[ext_resource type="AudioStream" uid="uid://16kiplcqfa7j" path="res://Audio/SFX/Enemies/Batclopse/Batclopse_Death_Vox.wav" id="3_tb1xh"]
+[ext_resource type="AudioStream" uid="uid://dt0ddo4p0l03w" path="res://Audio/SFX/Enemies/Batclopse/BatclopseHit1.wav" id="4_ght2f"]
 [ext_resource type="Texture2D" uid="uid://ccr111d7lh2cy" path="res://Assets/Enemies/BatclopseIcon.png" id="4_vel66"]
+[ext_resource type="AudioStream" uid="uid://b1pfjqsau4d6s" path="res://Audio/SFX/Enemies/Batclopse/BatclopseHit2.wav" id="5_jgx5o"]
+[ext_resource type="AudioStream" uid="uid://cowu8mh3gwms2" path="res://Audio/SFX/Enemies/Batclopse/BatclopseHit3.wav" id="6_6qb2l"]
 
 [resource]
 script = ExtResource("1_m1ike")
@@ -23,6 +27,10 @@ attack = 32
 movement_speed = 65.0
 chase_speed = 80.0
 break_threshold = 4
+hit_vox_1 = ExtResource("4_ght2f")
+hit_vox_2 = ExtResource("5_jgx5o")
+hit_vox_3 = ExtResource("6_6qb2l")
+die_vox = ExtResource("3_tb1xh")
 novelty_item_drop = ExtResource("3_q2e0m")
 cooking_item_drop = ExtResource("1_bagc7")
 crafting_item_drop = ExtResource("2_vel66")

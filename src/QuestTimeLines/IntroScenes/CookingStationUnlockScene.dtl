@@ -1,3 +1,5 @@
+do MusicPlayer.pause_music()
+audio "res://Audio/Music/TutorialCutscene.wav" [bus="Music"]
 do CutsceneManager.disable_player_functionality()
 "Chef Nadene": Hey newbie! Names, Chef Nadene. I run the culinary department for the Starspire Hunters. I'm responsible for overseeing what keeps ya'll fed. So be gratful.. or don't be surprised if ya'lls rations shrink overtime.
 "Chef Nadene": HA HA HA! I'm just yanking your chain.\
@@ -13,3 +15,4 @@ Have it! And may your bounty be plentifyful.
 do CutsceneManager.set_camera_to_player()
 [wait time="1.0"]
 do CutsceneManager.enable_player_functionality()
+do MusicPlayer.unpause_music()

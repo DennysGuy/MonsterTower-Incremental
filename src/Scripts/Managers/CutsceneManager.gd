@@ -31,6 +31,8 @@ signal send_camera_to_sword_crafting_station
 signal stop_enemy_spawn
 @warning_ignore("unused_signal")
 signal start_enemy_spawn
+@warning_ignore("unused_signal")
+signal play_map_theme
 
 func trigger_next_frame() -> void:
 	trigger_next_image.emit()
@@ -90,3 +92,6 @@ func enable_enemy_spawn() -> void:
 
 func disable_enemy_spawn() -> void:
 	stop_enemy_spawn.emit()
+
+func play_map_theme_song() -> void:
+	play_map_theme.emit()

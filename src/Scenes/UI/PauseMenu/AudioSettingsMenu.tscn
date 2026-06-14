@@ -186,8 +186,36 @@ theme_override_fonts/font = ExtResource("2_0ty6x")
 theme_override_font_sizes/font_size = 32
 text = "Close"
 
+[node name="MonsterVoicesTitle" type="Label" parent="." unique_id=66455954]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -375.00006
+offset_top = 731.0
+offset_right = 13.999939
+offset_bottom = 769.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_0fwf8")
+theme_override_font_sizes/font_size = 42
+text = "Toggle Monster Voices"
+
+[node name="CheckBox" type="CheckBox" parent="." unique_id=1444966145]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 53.125916
+offset_top = -101.0
+offset_right = 77.125916
+offset_bottom = -77.0
+grow_vertical = 0
+scale = Vector2(3, 3)
+
 [connection signal="value_changed" from="MasterVolumeSlider" to="." method="_on_master_volume_slider_value_changed"]
 [connection signal="value_changed" from="MusicVolumeSlider" to="." method="_on_music_volume_slider_value_changed"]
 [connection signal="value_changed" from="SFXVolumeSlider" to="." method="_on_sfx_volume_slider_value_changed"]
 [connection signal="value_changed" from="AmbienceVolumeSlider" to="." method="_on_ambience_volume_slider_value_changed"]
 [connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
+[connection signal="toggled" from="CheckBox" to="." method="_on_check_box_toggled"]

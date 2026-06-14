@@ -902,3 +902,7 @@ TODO: We will add saves for classes as well
 	"First Class Just Unlocked": false,
 	"First Quest Just Unlocked": false,
 }
+
+@export var various_settings : Dictionary = {
+	"Monster Voices Toggled" : true
+}

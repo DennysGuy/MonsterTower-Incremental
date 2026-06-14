@@ -1,8 +1,12 @@
 [gd_resource type="Resource" script_class="EnemyStats" format=3 uid="uid://dwook5wtmbf8g"]
 
+[ext_resource type="AudioStream" uid="uid://d2ep2fhf3vigh" path="res://Audio/SFX/Enemies/Golem/GolemDeathVox.wav" id="1_1isq1"]
 [ext_resource type="Texture2D" uid="uid://ttjhuqdpf8dl" path="res://Assets/Enemies/MossGolem/MossGolem_Stand.png" id="1_4ai6q"]
 [ext_resource type="Texture2D" uid="uid://dxk40dnppe36a" path="res://Assets/Enemies/MossGolemIcon.png" id="1_fjdpe"]
 [ext_resource type="Script" uid="uid://cbjktr12qagl" path="res://src/Scripts/Enemies/enemy_stats.gd" id="1_p75h8"]
+[ext_resource type="AudioStream" uid="uid://cyjxt1ll8reo2" path="res://Audio/SFX/Enemies/Golem/GolemHit1.wav" id="2_wkoan"]
+[ext_resource type="AudioStream" uid="uid://b46yu3oy8jtju" path="res://Audio/SFX/Enemies/Golem/GolemHit2.wav" id="3_lvuoj"]
+[ext_resource type="AudioStream" uid="uid://dq1506t7f1ny0" path="res://Audio/SFX/Enemies/Golem/GolemHit3.wav" id="4_erkae"]
 
 [resource]
 script = ExtResource("1_p75h8")
@@ -20,4 +24,8 @@ defense = 10.0
 movement_speed = 30.0
 chase_speed = 45.0
 break_threshold = 30
+hit_vox_1 = ExtResource("2_wkoan")
+hit_vox_2 = ExtResource("3_lvuoj")
+hit_vox_3 = ExtResource("4_erkae")
+die_vox = ExtResource("1_1isq1")
 metadata/_custom_type_script = "uid://cbjktr12qagl"

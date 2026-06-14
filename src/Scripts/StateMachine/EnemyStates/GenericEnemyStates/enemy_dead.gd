@@ -15,6 +15,9 @@ func enter() -> void:
 	parent.damageable = false
 	parent.is_dead = true
 	
+	if parent.enemy_stats.die_vox and GameManager.monster_voices_toggled:
+		parent.play_sfx(parent.enemy_stats.die_vox)
+	
 	if parent.locked_on:
 		parent.remove_stun_marker()
 	

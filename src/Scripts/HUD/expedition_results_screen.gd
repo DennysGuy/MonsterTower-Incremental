@@ -13,6 +13,7 @@ class_name ExpeditionResultsScreen extends Control
 @onready var bank_notice: Label = $ResultsPanel/BankNotice
 @onready var bank_container: GridContainer = $ResultsPanel/BankContainer
 @onready var tips_and_tricks: Label = $ResultsPanel/TipsAndTricks
+@onready var to_town_instructions: Label = $ResultsPanel/ToTownInstructions
 
 
 @onready var inventory_tab: TextureButton = $ResultsPanel/HBoxContainer/InventoryTab
@@ -29,6 +30,7 @@ const RESULTS_SCREEN_PANEL_USE_BG = preload("uid://b88puwp4yertl")
 @onready var tabs : Array[TextureButton] = [ore_tab,gem_stone_tab,use_tab]
 @onready var to_town_bar: ProgressBar = $ResultsPanel/ToTownBar
 @onready var to_tower_bar: ProgressBar = $ResultsPanel/ToTowerBar
+@onready var to_tower_instructions: Label = $ResultsPanel/ToTowerInstructions
 
 const TRANSFER_TO_BANK = preload("uid://ddk7o6mnyi7ji")
 const CLOSE_IN = preload("uid://dc3va7knibxnb")
@@ -56,6 +58,8 @@ var tips : Array[String] = [
 func _ready() -> void:
 	init_containers()
 	init_tabs()
+	to_town_instructions.text = "Hold %s" % GameManager.get_control_mapping("dash_attack", 6)
+	to_tower_instructions.text = "Hold %s" % GameManager.get_control_mapping("swing_sword", 6)
 	animation_player.play("CloseOut")
 	tips_and_tricks.text = tips.pick_random()
 	floor_reached.text = "%s %s" %[GameManager.previous_map_data.biome, GameManager.previous_map_data.floor_name]

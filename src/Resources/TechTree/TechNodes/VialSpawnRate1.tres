@@ -19,5 +19,5 @@ ExtResource("1_lso7o"): 2
 stat_relation = 1
 stat_name = "Vial Spawn Rate"
 upgrade_interval = 0.1
-prereqs = Array[String](["Max MP 1:1"])
+prereqs = Array[String](["Vial of the Esoteric:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

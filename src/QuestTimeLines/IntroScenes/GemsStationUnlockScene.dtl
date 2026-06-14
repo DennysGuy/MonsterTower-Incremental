@@ -1,3 +1,5 @@
+do MusicPlayer.pause_music()
+audio "res://Audio/Music/TutorialCutscene.wav" [bus="Music"]
 CropDuster: Congrats, Newbie. You seem to be impressing the Guild for them to have given you access to the gem stone upgrade station.
 CropDuster: This station will give you more of an edge in combat with the ability to mount "Gem Stones"
 CropDuster: Gem Stone chests will now appear to you in the tower. Break 'em open and you might have the chance to obtain a gem that can enhance your weapons abilities.
@@ -6,3 +8,4 @@ CropDuster: It's just that, some might be tougher to find than others. If you're
 [wait time="1.0"]
 do CutsceneManager.enable_player_functionality()
 do CutsceneManager.set_camera_to_player()
+do MusicPlayer.unpause_music()

@@ -1,14 +1,19 @@
 [gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://cmjrkltv1tvv7"]
 
+[ext_resource type="Texture2D" uid="uid://cfwckchi67uwg" path="res://Assets/TechTree/SurvivalNodes/LifeSteal_Disabled_Graphic.png" id="1_ria4e"]
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_wnjq3"]
+[ext_resource type="Texture2D" uid="uid://dpo80r02os85i" path="res://Assets/TechTree/SurvivalNodes/LifeStealChanceUp_Graphic.png" id="2_0pkjq"]
 
 [resource]
 script = ExtResource("1_wnjq3")
 node_name = "Siphen Chance 1"
+icon = ExtResource("2_0pkjq")
+disabled_icon = ExtResource("1_ria4e")
 description = "Increases Chance to steal HP when Striking Enemy by 10% per level.
 "
 max_level = 2
 currency_required = 2000
+stat_relation = 1
 stat_name = "HP Siphen Chance"
 upgrade_interval = 0.1
 prereqs = Array[String](["Max MP 1:1"])

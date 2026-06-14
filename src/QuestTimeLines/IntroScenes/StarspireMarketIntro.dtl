@@ -34,3 +34,4 @@ TowerGuide: Good Luck and may your bounty be plentiful!
 [wait time="1.0"]
 [wait time="1.0"]
 do CutsceneManager.enable_player_functionality()
+do CutsceneManager.play_map_theme_song()

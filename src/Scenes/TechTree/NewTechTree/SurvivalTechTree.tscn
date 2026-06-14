@@ -128,7 +128,7 @@ offset_top = -92.0
 offset_right = 256.0
 offset_bottom = -92.0
 tech_node_stats = ExtResource("13_godpg")
-previous_node = NodePath("../DefenseUp2Node")
+previous_node = NodePath("../MPVialNode")
 
 [node name="SiphenChance1Node" parent="." unique_id=1271754428 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_0yhyc")]
 visible = false

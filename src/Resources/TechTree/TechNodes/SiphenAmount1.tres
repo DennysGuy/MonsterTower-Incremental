@@ -2,13 +2,19 @@
 
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_mrpgo"]
 [ext_resource type="Resource" uid="uid://d1pg7dveofnwm" path="res://src/Resources/Dishes/Svio.tres" id="1_t4cyy"]
+[ext_resource type="Texture2D" uid="uid://dpk2uaf8eorwk" path="res://Assets/TechTree/SurvivalNodes/LifeStealChanceUp_Disabled_Graphic.png" id="1_t22km"]
+[ext_resource type="Texture2D" uid="uid://caul2gcdkitk" path="res://Assets/TechTree/SurvivalNodes/LifeStealAmountUp_Graphic.png" id="2_ccyxk"]
 
 [resource]
 script = ExtResource("1_mrpgo")
 node_name = "Siphen Amount 1"
+icon = ExtResource("2_ccyxk")
+disabled_icon = ExtResource("1_t22km")
+description = "Increases the amount of HP that is siphened."
 currency_required = 9000
 materials_required = Array[Dictionary]([{
 ExtResource("1_t4cyy"): 2
 }])
+stat_relation = 1
 stat_name = "HP Siphen Amount"
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

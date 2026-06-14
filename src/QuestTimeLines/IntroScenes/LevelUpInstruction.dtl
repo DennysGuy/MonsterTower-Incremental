@@ -9,3 +9,4 @@ WarmongeAlaisha: In fact, head over to the AP Center now and see what's availabl
 [wait time="1.0"]
 do CutsceneManager.set_camera_to_player()
 do CutsceneManager.enable_player_functionality()
+do CutsceneManager.play_map_theme_song()

@@ -18,6 +18,7 @@ func _process(delta: float) -> void:
 	pass
 
 func go_to_starshire() -> void:
+	MusicPlayer.stop_player()
 	GameManager.spawn_location = 0
 	GameManager.resupply_character = true
 	get_tree().change_scene_to_file("uid://cq0un0c22235d")

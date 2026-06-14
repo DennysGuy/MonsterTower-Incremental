@@ -33,6 +33,7 @@ var floor_4_just_reached : bool = false
 var floor_6_just_reached : bool = false
 var boss_room_just_reached : bool = false
 var market_intro_cutscene_played : bool = false
+var monster_voices_toggled : bool = true
 var current_player_health : int = 0
 enum NOTIFICATION_TYPE {CRAFTING, COOKING, SMELTING, AP, QUEST}
 

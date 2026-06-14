@@ -72,7 +72,7 @@ func load_progression_states() -> void:
 	GameManager.first_class_just_unlocked = load_progression_state("First Class Just Unlocked")
 	GameManager.first_quest_just_unlocked = load_progression_state("First Quest Just Unlocked")
 	GameManager.market_intro_cutscene_played = load_progression_state("Market Intro Cutscene Played")
-
+	GameManager.monster_voices_toggled = load_various_settings("Monster Voices Toggled")
 
 func save_equipped_abilities() -> void:
 	for ability in PlayerStats.get_equipped_abilities().keys():
@@ -206,3 +206,9 @@ func load_progression_state(state_name : String) -> bool:
 		return current_save_game.progression_states[state_name]
 	
 	return false	
+
+func save_various_settings(setting : String, state : bool) -> void:
+	current_save_game.various_settings[setting] = state
+	save_game()
+func load_various_settings(setting : String) -> bool:
+	return current_save_game.various_settings[setting]
