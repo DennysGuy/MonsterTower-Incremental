@@ -103,7 +103,7 @@ var equipped_abilities : Dictionary = {
 	"Attack 1" : null, #sword swing 1
 	"Attack 2" : null, #sword swing 2
 	"Attack 3" : null, #sword swing 3
-	"Dash Attack" : null, #basic dash attack
+	"Dash" : null, #basic dash attack
 	"Air Attack" : null, #basic air attack
 	"Double Jump" : null, #basic double jump
 	"Special Attack" : null, #Not Going to Be Used
@@ -198,7 +198,7 @@ func set_tracked_weapon_index(new_index : int) -> void:
 	"Crafting Tab": false,
 	"Bank": false,
 	"Arial Slash" : false,
-	"Dash Attack": false,
+	"Dash": false,
 	"Double Jump" : false,
 	"Gem Stone Station": false,
 	"HP Chalice" : false,
@@ -220,7 +220,7 @@ var player_classes : Dictionary = {
 		"Attack 2": preload("uid://rbc7yawqcf3h"),
 		"Attack 3": preload("uid://7qd8qvg4bf73"),
 		"Air Attack": 	preload("uid://bukiike6rf6pl"),
-		"Dash Attack": preload("uid://b0lsgfuw8bp58"),
+		"Dash": preload("uid://b0lsgfuw8bp58"),
 		"Double Jump": preload("uid://rgwunwula5mv"),
 		"Special Attack": null
 	},
@@ -229,7 +229,7 @@ var player_classes : Dictionary = {
 		"Attack 2": preload("uid://rbc7yawqcf3h"),
 		"Attack 3": preload("uid://7qd8qvg4bf73"),
 		"Air Attack": 	preload("uid://bukiike6rf6pl"),
-		"Dash Attack": preload("uid://b0lsgfuw8bp58"),
+		"Dash": preload("uid://b0lsgfuw8bp58"),
 		"Double Jump": preload("uid://rgwunwula5mv"),
 		"Special Attack": preload("uid://cs0umnvsvjhnh"),
 		"Combat Ability 1" : null,
@@ -370,7 +370,7 @@ func load_abilities() -> void:
 	if SaveManager.current_save_game and SaveManager.current_save_game.player_stats["Class"] == "Junior Hunter":
 		return
 		
-	var ability_names : Array[String] = ["Air Attack", "Dash Attack", "Double Jump", "Special Attack", "Combat Ability 1", "Combat Ability 2", "Combat Ability 3", "Combat Ability 4"]
+	var ability_names : Array[String] = ["Air Attack", "Dash", "Double Jump", "Special Attack", "Combat Ability 1", "Combat Ability 2", "Combat Ability 3", "Combat Ability 4"]
 
 	for ability_name in ability_names:
 		var equipped_ability : Ability = get_equipped_ability(ability_name)
@@ -378,7 +378,7 @@ func load_abilities() -> void:
 			equipped_ability.load_stats()
 
 func check_needed_for_dojo() -> bool:
-	return PlayerStats.player_stats["Level"] >= 5 and PlayerStats.facilities_unlocked["Dash Attack"] and PlayerStats.facilities_unlocked["Arial Slash"] and PlayerStats.facilities_unlocked["Double Jump"]
+	return PlayerStats.player_stats["Level"] >= 5 and PlayerStats.facilities_unlocked["Dash"] and PlayerStats.facilities_unlocked["Arial Slash"] and PlayerStats.facilities_unlocked["Double Jump"]
 
 func check_level_for_dojo() -> bool:
 	return PlayerStats.player_stats["Level"] >= 5

@@ -6,12 +6,12 @@
 
 [resource]
 script = ExtResource("1_r4urb")
-ability_name = "Dash Attack"
+ability_name = "Dash"
 class_relation = "Junior Hunter"
 ability_type = 2
 cooldown_time = 1.5
 icon = ExtResource("2_ubhrq")
-ability_description = "Press 'Right Click' or 'Q' while moving to thrust yourself forward - dashing and stabbing the enemies in front of you."
+ability_description = "Press 'Right Click' while moving to thrust yourself forward - dashing and stabbing the enemies in front of you."
 ability_behavior = ExtResource("1_4rfuh")
 number_of_enemies_hit = 1.0
 max_hit_count = 1.0

@@ -14,7 +14,7 @@ func apply_physics(_delta : float) -> State:
 	if Input.is_action_just_pressed("swing_sword") and PlayerStats.facilities_unlocked["Arial Slash"]:
 		return parent.air_attack
 	
-	if Input.is_action_just_pressed("dash_attack") and PlayerStats.facilities_unlocked["Dash Attack"]:
+	if Input.is_action_just_pressed("dash_attack") and PlayerStats.facilities_unlocked["Dash"]:
 		return parent.dash_attack
 	
 	var movement = Input.get_axis("pan_cam_left","pan_cam_right") * PlayerStats.player_stats["Movement Speed"]

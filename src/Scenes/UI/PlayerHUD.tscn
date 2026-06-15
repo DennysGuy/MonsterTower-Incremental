@@ -889,7 +889,7 @@ theme_override_constants/separation = 50
 
 [node name="AbilityCoolDownWheel" parent="PlayerHUD/AbilityHub/HBoxContainer" unique_id=1023824424 instance=ExtResource("19_2jn0u")]
 layout_mode = 2
-ability_name = "Dash Attack"
+ability_name = "Dash"
 
 [node name="AbilityCoolDownWheel2" parent="PlayerHUD/AbilityHub/HBoxContainer" unique_id=661819295 instance=ExtResource("19_2jn0u")]
 layout_mode = 2

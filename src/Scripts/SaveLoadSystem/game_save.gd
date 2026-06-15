@@ -165,7 +165,7 @@ TODO: We will add saves for classes as well
 	"Crafting Tab": false,
 	"Bank": false,
 	"Arial Slash" : false,
-	"Dash Attack": false,
+	"Dash": false,
 	"Double Jump": false,
 	"Gem Stone Station": false,
 	"HP Chalice" : false,
@@ -230,7 +230,7 @@ TODO: We will add saves for classes as well
 	"Deeper Pockets 1":{"Level":0, "Unlocked": true},
 	"Deeper Pockets 2":{"Level":0, "Unlocked": false},
 	"Deeper Pockets 3":{"Level":0, "Unlocked": false},
-	"Dash Attack":{"Level":0, "Unlocked": true},
+	"Dash":{"Level":0, "Unlocked": true},
 	"Dash Attack Duration 1":{"Level":0, "Unlocked": false},
 	"Banking": {"Level":0, "Unlocked": false},
 	"Banking 2": {"Level":0, "Unlocked": false},
@@ -308,7 +308,7 @@ TODO: We will add saves for classes as well
 	"Attack 1" : "uid://c5hss1iq5ontu", #sword swing 1
 	"Attack 2" : "uid://rbc7yawqcf3h", #sword swing 2
 	"Attack 3" : "uid://7qd8qvg4bf73", #sword swing 3
-	"Dash Attack" : "uid://b0lsgfuw8bp58" , #sword dance - for testing purposes
+	"Dash" : "uid://b0lsgfuw8bp58" , #sword dance - for testing purposes
 	"Air Attack" : "uid://bukiike6rf6pl", #sword slam - for testing purposes
 	"Double Jump" : "uid://rgwunwula5mv", #sword soar - for testing purposes
 	"Special Attack" : null, #double cleave - here for testing purposes,
@@ -320,7 +320,7 @@ TODO: We will add saves for classes as well
 
 @export var abilities : Dictionary = {
 	"Junior Hunter" : {
-		"Dash Attack" : {
+		"Dash" : {
 			"Cooldown Time" : 1.5,
 			"HP Cost" : 0.0,
 			"MP Cost" : 0.0,

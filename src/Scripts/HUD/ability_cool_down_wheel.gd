@@ -78,8 +78,8 @@ func set_icon() -> void:
 				if PlayerStats.facilities_unlocked["Arial Slash"]:
 					icon.texture = stored_ability.icon
 				lmb.show()
-			stored_ability.ABILITY_TYPE.DASH_ATTACK:
-				if PlayerStats.facilities_unlocked["Dash Attack"]:
+			stored_ability.ABILITY_TYPE.DASH:
+				if PlayerStats.facilities_unlocked["Dash"]:
 					icon.texture = stored_ability.icon
 				rmb.show()
 			stored_ability.ABILITY_TYPE.DOUBLE_JUMP:

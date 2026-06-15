@@ -162,7 +162,7 @@ func disable_enemy_movement() -> void:
 	enemies_can_move = false
 
 func can_unlock_class() -> bool:
-	return PlayerStats.player_stats["Level"] >= 8 and PlayerStats.facilities_unlocked["Arial Slash"] and PlayerStats.facilities_unlocked["Dash Attack"] and PlayerStats.facilities_unlocked["Double Jump"] and PlayerStats.player_stats["Class"] == "Junior Hunter"
+	return PlayerStats.player_stats["Level"] >= 8 and PlayerStats.facilities_unlocked["Arial Slash"] and PlayerStats.facilities_unlocked["Dash"] and PlayerStats.facilities_unlocked["Double Jump"] and PlayerStats.player_stats["Class"] == "Junior Hunter"
 
 func check_if_dodged() -> bool:
 	var chance : int = int(PlayerStats.player_stats["Dodge Chance"] * 100)

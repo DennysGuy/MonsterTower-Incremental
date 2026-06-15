@@ -36,7 +36,7 @@ theme_override_constants/separation = 50
 
 [node name="AbilityCoolDownWheel" parent="HBoxContainer" unique_id=1023824424 instance=ExtResource("3_6u15c")]
 layout_mode = 2
-ability_name = "Dash Attack"
+ability_name = "Dash"
 
 [node name="AbilityCoolDownWheel2" parent="HBoxContainer" unique_id=661819295 instance=ExtResource("3_6u15c")]
 layout_mode = 2

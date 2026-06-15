@@ -51,7 +51,7 @@ func process_physics(_delta: float) -> State:
 		return jump_state
 	
 	if GameManager.can_issue_abilities:
-		if Input.is_action_just_pressed("dash_attack") and PlayerStats.facilities_unlocked["Dash Attack"] and parent.can_issue_ability("Dash Attack"):
+		if Input.is_action_just_pressed("dash_attack") and PlayerStats.facilities_unlocked["Dash"] and parent.can_issue_ability("Dash"):
 			return dash_attack_state
 
 		if Input.is_action_just_pressed("special_attack") and PlayerStats.get_equipped_ability("Special Attack") and parent.can_issue_ability("Special Attack"):

@@ -106,7 +106,7 @@ enum TECH_NODE_TYPE {ABILITY, FACILITY, CLASS_ABILITY}
 	"Deeper Pockets 1":0,
 	"Deeper Pockets 2":0,
 	"Deeper Pockets 3":0,
-	"Dash Attack":0,
+	"Dash":0,
 	"Dash Attack Duration 1":0,
 	"Banking":0,
 	"Banking 2":0,

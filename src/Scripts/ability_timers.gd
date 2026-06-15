@@ -14,7 +14,7 @@ extends Node
 signal start_ability_cooldown_timer(ability_name)
 
 @onready var ability_state : Dictionary = {
-	"Dash Attack" : {"Can Do": true, "Timer": dash_attack_timer},
+	"Dash" : {"Can Do": true, "Timer": dash_attack_timer},
 	"Air Attack":  {"Can Do": true, "Timer": air_attack_timer},
 	"Double Jump":  {"Can Do": true, "Timer": double_jump_timer},
 	"Special Attack":  {"Can Do": true, "Timer": special_attack_timer},
@@ -57,7 +57,7 @@ func start_buff_timer_1(wait_time : float, ability : Ability) -> void:
 	
 
 func _on_dash_attack_timer_timeout() -> void:
-	ability_state["Dash Attack"]["Can Do"] = true
+	ability_state["Dash"]["Can Do"] = true
 
 func _on_air_attack_timer_timeout() -> void:
 	ability_state["Air Attack"]["Can Do"] = true

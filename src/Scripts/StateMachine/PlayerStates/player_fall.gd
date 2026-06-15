@@ -49,7 +49,7 @@ func process_physics(_delta: float) -> State:
 	if Input.is_action_just_pressed("swing_sword") and PlayerStats.facilities_unlocked["Arial Slash"] and parent.can_issue_ability("Air Attack"):
 		return air_attack
 		
-	if Input.is_action_just_pressed("dash_attack") and PlayerStats.facilities_unlocked["Dash Attack"] and parent.can_issue_ability("Dash Attack"):
+	if Input.is_action_just_pressed("dash_attack") and PlayerStats.facilities_unlocked["Dash Attack"] and parent.can_issue_ability("Dash"):
 		return dash_attack
 		
 	if parent.is_on_floor():

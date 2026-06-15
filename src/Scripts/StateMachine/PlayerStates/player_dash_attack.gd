@@ -22,9 +22,9 @@ func enter() -> void:
 	parent.timer.wait_time = PlayerStats.player_stats["Dash Duration"]
 	parent.timer.start()
 	parent.grab_ladder_buffer_timer = 0
-	AbilityTimers.activate_ability_cooldown("Dash Attack")
+	AbilityTimers.activate_ability_cooldown("Dash")
 
-	var selected_ability : Ability = PlayerStats.get_equipped_ability("Dash Attack")
+	var selected_ability : Ability = PlayerStats.get_equipped_ability("Dash")
 	PlayerStats.player_stats["Current MP"] -= selected_ability.mp_cost
 	PlayerHudSignalBus.update_player_mp.emit()
 	equipped_dash_attack = selected_ability.ability_behavior
