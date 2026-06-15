@@ -10,8 +10,8 @@
 [ext_resource type="AudioStream" uid="uid://cp2iodtnnun5l" path="res://Audio/Music/MossyDungeonTestTheme1.wav" id="3_50mol"]
 [ext_resource type="TileSet" uid="uid://dr3ft3wh6mi6e" path="res://src/Scenes/Tower/TowerFloors/Biome1/Biome1BGSetPieces1.tres" id="3_ukbus"]
 [ext_resource type="AudioStream" uid="uid://bnfe0t36iu1dy" path="res://Audio/Music/TemporaryHuntMusic.mp3" id="4_nhahy"]
+[ext_resource type="AudioStream" uid="uid://bdv4pum2wfbbp" path="res://Audio/Music/NewVictoryTheme.wav" id="5_cfe63"]
 [ext_resource type="TileSet" uid="uid://flobhfna8te" path="res://src/Scenes/Tower/TowerFloors/Biome1/Biome1-Platforms.tres" id="5_f2nj7"]
-[ext_resource type="AudioStream" uid="uid://n4ky26neitxn" path="res://Audio/Music/TempVictoryTheme1.mp3" id="5_kbbvk"]
 [ext_resource type="PackedScene" uid="uid://cexhahnue1wh6" path="res://src/Scenes/Tower/TowerFloors/FloorGuideLog.tscn" id="7_acl6u"]
 [ext_resource type="PackedScene" uid="uid://dj0ett15s3u5m" path="res://src/Scenes/Tower/TowerFloors/OreRockMarker.tscn" id="8_ujmhj"]
 [ext_resource type="Resource" uid="uid://svq41nllat54" path="res://src/Resources/OreRock/CopperOreRock.tres" id="9_qrx52"]
@@ -568,7 +568,7 @@ exit_elevator_marker = NodePath("ExitElevatorMarker")
 tower_entrance_data = ExtResource("2_801hy")
 map_theme_song = ExtResource("3_50mol")
 hunt_theme_song = ExtResource("4_nhahy")
-hunt_victory_theme = ExtResource("5_kbbvk")
+hunt_victory_theme = ExtResource("5_cfe63")
 camera = NodePath("PlayerCamera")
 ore_rock_spawn_rate = 0.6
 ore_rock_markers = NodePath("OreRockMarkers")

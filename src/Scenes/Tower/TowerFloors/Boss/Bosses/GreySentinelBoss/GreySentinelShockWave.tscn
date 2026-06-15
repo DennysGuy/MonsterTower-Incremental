@@ -10,7 +10,7 @@ size = Vector2(143, 47)
 script = ExtResource("1_hf825")
 move_speed = 15.0
 flip_dir = true
-attack_damage = 300
+attack_damage = 450
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2117594761]
 position = Vector2(0, -51)

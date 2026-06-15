@@ -27,6 +27,8 @@ var keys_delivered : int = 0
 
 var in_cutscene : bool = false
 
+const CHALLENGE_COMPLETED_JINGLE = preload("uid://cjtvioifwy20x")
+
 @onready var activation_switch: ChallengeActivationSwitch = $ActivationSwitch
 const CRAFTING_NOTIFICATION = preload("uid://wyjbs57smen4")
 const DENIED = preload("uid://672acnsycbfo")
@@ -42,6 +44,7 @@ func _ready() -> void:
 	#checkpoint_campfire.play("default")
 	tower_entrance_data.activation_switch_unlocked = SaveManager.current_save_game.tower_entrance_data["Floor 1-6"]["Activation Switch Unlocked"]
 	MusicPlayer.stop_player()
+	ExpeditionTimer.stop_timer()
 	PlayerHudSignalBus.update_player_health.emit()
 	PlayerHudSignalBus.update_player_mp.emit()
 	SignalBus.unlock_boss_door.connect(unlock_door)
@@ -82,7 +85,7 @@ func _on_checkpoint_area_body_exited(body: Node2D) -> void:
 
 
 func unlock_door() -> void:
-	play_sfx(TEMP_VICTORY_THEME_1,0.0)
+	play_sfx(CHALLENGE_COMPLETED_JINGLE,0.0)
 	player.send_to_idle_state()
 	GameManager.player_can_move = false
 	await get_tree().create_timer(3.0).timeout

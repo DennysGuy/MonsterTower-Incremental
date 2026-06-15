@@ -17,9 +17,9 @@ quest_id = 5
 quest_type = 1
 level_needed = 5
 description = "Biologist Marquise
-[color=green]Gather 10 Orc Heads, 10 Serpant Tongues, 10 Beetle Eyes, 10 Bat Wings[/color]
+[color=green]Gather 5 Orc Heads, 5 Serpant Tongues, 5 Beetle Eyes, 5 Bat Wings[/color]
 
-\" Through all my years of studying the biology of Natural entities, I have not seen anything like this. Logically, it makes sense. The Tower seemingly appeared out of no where with properties unknown to man. But still, my brain has issues accepting what is true.
+\"Through all my years of studying the biology of Natural entities, I have not seen anything like this. Logically, it makes sense. The Tower seemingly appeared out of no where with properties unknown to man. But still, my brain has issues accepting what is true.
 
 This Tower, like most, I am extremely fascinated with it. The appearance of the tower is an enigma - but it's true nature, it eludes me. The people seem to look at it without question. Sure, they comment on its bizarre nature, but that is where the questioning stops. 
 
@@ -36,8 +36,8 @@ Please standby for the next request. We will uncover this mystery one request at
 chapter_relation = "Introduction"
 quest_line = "The True Nature of the Tower"
 tasks = Array[ExtResource("3_3mdpa")]([ExtResource("6_te3xl"), ExtResource("7_k18ed"), ExtResource("8_u3h7r"), ExtResource("9_ud7nj")])
-currency_reward = 2000
-xp_reward = 650
+currency_reward = 6000
+xp_reward = 1000
 item_reward = Dictionary[ExtResource("1_hnvg2"), int]({
 ExtResource("2_3mdpa"): 10,
 ExtResource("3_1phnn"): 10

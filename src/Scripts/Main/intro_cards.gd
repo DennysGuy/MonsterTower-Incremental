@@ -54,5 +54,6 @@ func trigger_next_frame() -> void:
 
 func _on_skip_button_button_up() -> void:
 	Dialogic.end_timeline()
+	MusicPlayer.play_tutorial_map_theme()
 	animation_player_2.play("fade_out")
 	

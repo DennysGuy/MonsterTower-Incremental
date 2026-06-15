@@ -50,7 +50,7 @@ const FLOOR_CHALLENGE_CUTSCENE = preload("uid://c6chwv4cv6xt2")
 var kill_quota_hit : bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if !MusicPlayer.transitioning_floors:
+	if !MusicPlayer.transitioning_floors and map_name != "Billy's Bootcamp":
 		MusicPlayer.stop_player()
 	GameManager.can_pause_game = true
 	if tower_entrance_data:
@@ -67,7 +67,6 @@ func _ready() -> void:
 	LevelingManager.play_level_up_sfx.connect(play_level_up_sfx)
 	CutsceneManager.play_map_theme.connect(play_map_theme)
 	#hud.map_name_label.text = map_name
-	
 	
 	load_floor_data()
 	
@@ -108,7 +107,6 @@ func _ready() -> void:
 				#else:
 					#SignalBus.update_monsters_left.emit("Campfires Discovered: %s/%s" % [tower_entrance_data.camp_fires_reached, tower_entrance_data.total_camp_fires],false)
 			
-			
 			PlayerStats.check_points_unlocked[map_name] = true
 			SaveManager.save_floor_data(tower_entrance_data, map_name)
 			SaveManager.save_player_stats()
@@ -132,7 +130,7 @@ func _ready() -> void:
 	if !GameManager.hunt_challenge_selected:
 		if map_theme_song:
 			if !MusicPlayer.transitioning_floors:
-				if !MusicPlayer.audio_stream_player.playing:
+				if !MusicPlayer.audio_stream_player.playing and map_theme_song:
 					MusicPlayer.play_song(map_theme_song)
 			else:
 				MusicPlayer.transitioning_floors = false

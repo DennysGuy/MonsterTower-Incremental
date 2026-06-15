@@ -123,10 +123,8 @@ Hunt, Train, Explore within you Hunter Class time limit!
 func set_mode_description_as_hunt_challenge() -> void:
 	drops_preview_panel.hide()
 	mode_description_label.text = "	 ~Hunt Challenge~
-
-Test your skills. 
-Race against the clock to meet the [color=green]hunt quota[/color] to unlock the [color=green]next floor[/color]. 
-No Drops, no Resources - just [color=red]pure combat[/color]!"
+defeat all of the [color=purple]MONSTERS[/color] on the floor to unlock the [color=green]NEXT FLOOR[/color]. 
+No Drops, no Resources - just [color=red]PURE COMBAT[/color]!"
 
 func populate_preview_container(preview_container : GridContainer, GraphicsArray : Array[Texture2D] ) -> void:
 	InventoryManager.clear_grid_container(preview_container)

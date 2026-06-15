@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://c1wrjow75bhab" path="res://src/Scripts/Main/main_menu.gd" id="1_lb6hv"]
 [ext_resource type="PackedScene" uid="uid://djr7ysw0olctc" path="res://src/Scenes/MainMenuBG.tscn" id="2_rsyx7"]
-[ext_resource type="Texture2D" uid="uid://b4xg7wcimcord" path="res://Assets/QuickMainMenuBGMockUp.png" id="3_06df4"]
 [ext_resource type="FontFile" uid="uid://cynitq2e6hghv" path="res://Assets/Fonts/Snake in the Boot.ttf" id="4_gj8tx"]
 [ext_resource type="FontFile" uid="uid://dr468m31loqrx" path="res://Assets/Fonts/Super Cartoon.ttf" id="5_gj8tx"]
 [ext_resource type="AudioStream" uid="uid://b4qmxdv5pxdpb" path="res://Audio/Music/NewMainMenuThemeDraft1.wav" id="6_06df4"]
@@ -115,14 +114,6 @@ render_target_update_mode = 4
 
 [node name="MainMenuBg" parent="MarginContainer/SubViewportContainer/SubViewport" unique_id=1206026906 instance=ExtResource("2_rsyx7")]
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=138066938]
-layout_mode = 0
-offset_left = 18.0
-offset_top = -29.0
-offset_right = 1938.0
-offset_bottom = 1051.0
-texture = ExtResource("3_06df4")
-
 [node name="Label" type="Label" parent="." unique_id=1445026577]
 layout_mode = 1
 anchors_preset = 5
@@ -152,9 +143,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -137.5
-offset_top = 361.0
+offset_top = 282.0
 offset_right = 137.5
-offset_bottom = 428.0
+offset_bottom = 349.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_default_cursor_shape = 2
@@ -162,6 +153,25 @@ theme_override_constants/outline_size = 0
 theme_override_fonts/font = ExtResource("5_gj8tx")
 theme_override_font_sizes/font_size = 52
 text = "New Game"
+
+[node name="ExitButton" type="Button" parent="." unique_id=1229451050]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -137.5
+offset_top = 368.0
+offset_right = 137.5
+offset_bottom = 435.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("5_gj8tx")
+theme_override_font_sizes/font_size = 52
+text = "Exit"
 
 [node name="Continue" type="Button" parent="." unique_id=1382076943]
 modulate = Color(3.85046e-07, 0.97184914, 0.35903677, 1)
@@ -171,10 +181,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -118.0
-offset_top = 265.0
-offset_right = 118.0
-offset_bottom = 332.0
+offset_left = -138.0
+offset_top = 195.0
+offset_right = 137.0
+offset_bottom = 262.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_default_cursor_shape = 2
@@ -255,6 +265,22 @@ theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxFlat_36jow")
 text = "NO!"
 
+[node name="Version" type="Label" parent="." unique_id=2118438097]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 60.0
+offset_top = -106.0
+offset_right = 309.0
+offset_bottom = -56.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 0.4143027, 0.44173592, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("8_4c8q5")
+theme_override_font_sizes/font_size = 38
+text = "Build 0.1.0-prealpha.1"
+
 [node name="TransitionRect" type="ColorRect" parent="." unique_id=1379323239]
 layout_mode = 1
 anchors_preset = 15
@@ -278,6 +304,7 @@ stream = ExtResource("7_gj8tx")
 bus = &"Ambience"
 
 [connection signal="button_up" from="NewGame" to="." method="_on_button_button_up"]
+[connection signal="button_up" from="ExitButton" to="." method="_on_exit_button_button_up"]
 [connection signal="button_up" from="Continue" to="." method="_on_continue_button_up"]
 [connection signal="button_up" from="StartNewGameNoticePanel/YesButton" to="." method="_on_yes_button_button_up"]
 [connection signal="button_up" from="StartNewGameNoticePanel/NoButton" to="." method="_on_no_button_button_up"]

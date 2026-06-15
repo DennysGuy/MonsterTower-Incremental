@@ -10,6 +10,7 @@ class_name GemStoneStation extends Control
 @onready var sword_name: Label = $SwordName
 @onready var equipped_sword_graphic: TextureRect = $EquippedSwordGraphic
 @onready var bag_bg_texture: TextureRect = $BagBGTexture
+const MOUNT_ABILITY = preload("uid://bi0i27cx48wbe")
 
 const GEM_STATION_BANK_BG = preload("uid://dqxjguhfoihw5")
 const GEM_STATION_GEM_BAG_BG = preload("uid://chft1dsfmivtq")
@@ -21,7 +22,6 @@ var stored_gem : GemStone
 var selected_bag : String
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	
 	SignalBus.update_gem_station_sockets.connect(update_socket_vbox)
 	InventoryManager.populate_market_menu.connect(populate_gem_details)
 	sword_name.text = PlayerStats.get_current_sword().sword_name
@@ -55,6 +55,7 @@ func clear_socket_v_box() -> void:
 		child.queue_free()
 
 func update_socket_vbox() -> void:
+	GameManager.play_sfx(MOUNT_ABILITY)
 	clear_socket_v_box()
 	for index in range(PlayerStats.get_current_sword().gem_stone_socket_count):
 		var socket : Socket = preload("uid://bkyhhrkmtnn61").instantiate()

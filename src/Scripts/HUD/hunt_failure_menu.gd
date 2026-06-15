@@ -10,7 +10,6 @@ const TEMP_RESULTS_SCREEN_THEME = preload("uid://cpyx2c4kjhkag")
 func _ready() -> void:
 	animation_player.play("CloseOut")
 	floor_reached.text = "Hunt Challenge - %s %s" %[GameManager.previous_map_data.biome, GameManager.previous_map_data.floor_name]
-	MusicPlayer.play_song(TEMP_RESULTS_SCREEN_THEME)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -447,3 +447,20 @@ func _on_mining_area_area_exited(area: Area2D) -> void:
 
 func play_denied_sfx() -> void:
 	play_sfx(DENIED, 3.0)
+
+func spawn_after_image() -> void:
+	var ghost : Sprite2D = Sprite2D.new()
+	ghost.texture = sprite.texture
+	ghost.hframes = sprite.hframes
+	ghost.vframes = sprite.vframes
+	ghost.frame = sprite.frame
+	
+	ghost.global_position = global_position - Vector2(0, 32)
+	ghost.scale = sprite.scale
+	ghost.flip_h = sprite.flip_h
+	ghost.modulate = Color(0,3.5,1.0,1.0)
+	get_parent().add_child(ghost)
+	var tween = create_tween()
+	await tween.tween_property(ghost, "modulate:a", 0.0, 0.3).finished
+	#tween.finished.connect(ghost.queue_free)
+	ghost.queue_free()

@@ -57,6 +57,7 @@ const GEMS_STATION_UNLOCK_SCENE = preload("uid://blac36hlx22lb")
 const GO_TO_JOB_BOARD = preload("uid://iqw8ymk767kl")
 
 const STARSPIRE_MARKET_INTRO = preload("uid://b3l8f4fxsjhu6")
+const HEAD_TO_JOB_ADVANCEMENT_CENTER_FOR_CLASS = preload("uid://bc68ocr4ayjpd")
 
 
 # Called when the node enters the scene tree for the first time.
@@ -124,6 +125,10 @@ func _ready() -> void:
 		MusicPlayer.stop_player()
 		Dialogic.start(GO_TO_JOB_BOARD)
 	
+	if PlayerStats.player_stats["Level"] >= 8 and PlayerStats.player_stats["Class"] == "Junior Hunter" and !GameManager.job_selection_notice_scene_played:
+		Dialogic.start(HEAD_TO_JOB_ADVANCEMENT_CENTER_FOR_CLASS)
+		GameManager.job_selection_notice_scene_played = true
+		SaveManager.save_progression_state("Job Selection Notice Cutscene Played", true)
 
 func _exit_tree() -> void:
 	GameManager.event_speed_mod = 1.0

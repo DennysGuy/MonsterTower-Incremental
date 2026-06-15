@@ -904,5 +904,6 @@ TODO: We will add saves for classes as well
 }
 
 @export var various_settings : Dictionary = {
-	"Monster Voices Toggled" : true
+	"Monster Voices Toggled" : true,
+	"Job Selection Notice Cutscene Played": false
 }

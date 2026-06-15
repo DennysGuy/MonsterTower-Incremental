@@ -11,7 +11,7 @@ node_name = "Banking 2"
 icon = ExtResource("2_myfl4")
 disabled_icon = ExtResource("1_dv4qv")
 description = "Bank Slots increased to 12"
-currency_required = 2000
+currency_required = 1500
 materials_required = Array[Dictionary]([{
 ExtResource("3_dv4qv"): 3
 }])

@@ -1,7 +1,6 @@
 [gd_scene format=4 uid="uid://c3y6ce3xriuwl"]
 
 [ext_resource type="Script" uid="uid://600rhhvqgcep" path="res://src/Scripts/Tower/tutorial_map.gd" id="1_tymde"]
-[ext_resource type="AudioStream" uid="uid://0nrbfbgv25o0" path="res://Audio/Music/IntroStageThemeTest.wav" id="2_7kbtj"]
 [ext_resource type="Texture2D" uid="uid://dyxt1peu58oe3" path="res://Assets/NewShip.png" id="3_7kbtj"]
 [ext_resource type="Texture2D" uid="uid://cshw60pd3stbh" path="res://Assets/EnvironmentalAssets/StarspireBG1/StarspireBG1_Sky.png" id="3_o3hak"]
 [ext_resource type="Texture2D" uid="uid://b38baquwhaxfl" path="res://Assets/EnvironmentalAssets/StarspireBG1/StarspireBG1_BlueClouds.png" id="4_506e5"]
@@ -627,8 +626,7 @@ size = Vector2(34, 351)
 
 [node name="TutorialMap" type="Node2D" unique_id=1194992242 node_paths=PackedStringArray("camera", "sfx_player")]
 script = ExtResource("1_tymde")
-map_name = "Billy's Bootcamp "
-map_theme_song = ExtResource("2_7kbtj")
+map_name = "Billy's Bootcamp"
 player_spawn = false
 camera = NodePath("PlayerCamera")
 sfx_player = NodePath("SfxPlayer")

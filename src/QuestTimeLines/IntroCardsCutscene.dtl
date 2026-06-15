@@ -20,7 +20,7 @@ do CutsceneManager.trigger_next_frame()
 Narrator: As more adventurers climbed the Tower and became seasoned Hunters, none have ever reached beyond the sixth floor, where a massive sealed door bars all passage.
 do CutsceneManager.trigger_next_frame()
 [wait time="2.0"]
+do MusicPlayer.play_tutorial_map_theme()
 Narrator: Your Hunter’s Exam begins today. Become a Starspire Hunter, conquer the Tower, uncover its secrets, and claim your fortune!
 do CutsceneManager.trigger_next_frame()
 [wait time="2.0"]
-do

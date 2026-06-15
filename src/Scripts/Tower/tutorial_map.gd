@@ -21,11 +21,13 @@ func _ready() -> void:
 	#SignalBus.hide_tech_tree_canvas_layer.connect(hide_tech_tree_canvas_layer)
 	GameManager.player_can_move = true
 	GameManager.resupply_character= true
+	await get_tree().process_frame
 	PlayerHudSignalBus.update_map_name_label.emit(map_name)
 	animation_player.play("Boat_In")
 	sfx_player.play_sfx(BOAT_HORN)
 	SignalBus.spawn_enemies.emit()
 	SignalBus.start_enemy_spawn.emit()
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

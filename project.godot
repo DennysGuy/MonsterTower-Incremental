@@ -70,6 +70,7 @@ directories/dtl_directory={
 "GemsStationUnlockScene": "res://src/QuestTimeLines/IntroScenes/GemsStationUnlockScene.dtl",
 "GoToJobBoard": "res://src/QuestTimeLines/IntroScenes/GoToJobBoard.dtl",
 "GreySentinelBossIntro": "res://src/QuestTimeLines/IntroScenes/GreySentinelBossIntro.dtl",
+"HeadToJobAdvancementCenterForClass": "res://src/QuestTimeLines/IntroScenes/HeadToJobAdvancementCenterForClass.dtl",
 "IntroCardsCutscene": "res://src/QuestTimeLines/IntroCardsCutscene.dtl",
 "JobBoardIntroScene": "res://src/QuestTimeLines/IntroScenes/JobBoardIntroScene.dtl",
 "LevelUpInstruction": "res://src/QuestTimeLines/IntroScenes/LevelUpInstruction.dtl",

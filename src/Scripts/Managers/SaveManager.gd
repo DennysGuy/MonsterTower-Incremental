@@ -1,6 +1,6 @@
 extends Node
 
-const SAVE_PATH : String = "user://game_save.tres"
+const SAVE_PATH : String = "user://game_save.res"
 var current_save_game : GameSave = null
 
 func save_game() -> void:
@@ -73,6 +73,7 @@ func load_progression_states() -> void:
 	GameManager.first_quest_just_unlocked = load_progression_state("First Quest Just Unlocked")
 	GameManager.market_intro_cutscene_played = load_progression_state("Market Intro Cutscene Played")
 	GameManager.monster_voices_toggled = load_various_settings("Monster Voices Toggled")
+	GameManager.job_selection_notice_scene_played = load_various_settings("Job Selection Notice Cutscene Played")
 
 func save_equipped_abilities() -> void:
 	for ability in PlayerStats.get_equipped_abilities().keys():

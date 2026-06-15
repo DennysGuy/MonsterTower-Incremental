@@ -54,7 +54,7 @@ const GEM_BAG_OPEN = preload("uid://c6mxc46l80hvc")
 const ORE_BAG_OPEN = preload("uid://b0prhy0pm7hwp")
 const USE_BAG_OPEN = preload("uid://caumwm7nf3s0t")
 const BUTTON_HOVER = preload("uid://dj4lg3rglma0j")
-const DROP = preload("uid://bli85jj3lnefb")
+
 const DROP_ITEM = preload("uid://b1l5d27bgd6wb")
 @onready var discard: TextureButton = $BagBG/Discard
 

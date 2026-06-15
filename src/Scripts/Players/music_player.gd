@@ -3,6 +3,7 @@ extends Node
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 var transitioning_floors : bool = false
+const INTRO_STAGE_THEME_TEST = preload("uid://0nrbfbgv25o0")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -13,8 +14,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func play_song(song : AudioStream) -> void:
-	audio_stream_player.volume_db = 0.0
+func play_song(song : AudioStream, db : float = 0.0) -> void:
+	audio_stream_player.volume_db = db
 	audio_stream_player.stream = song
 	audio_stream_player.play()
 
@@ -30,3 +31,7 @@ func pause_music() -> void:
 
 func unpause_music() -> void:
 	audio_stream_player.stream_paused = false
+
+func play_tutorial_map_theme() -> void:
+	audio_stream_player.stream = INTRO_STAGE_THEME_TEST
+	audio_stream_player.play()

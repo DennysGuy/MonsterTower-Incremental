@@ -1,7 +1,10 @@
 [gd_scene format=3 uid="uid://djr7ysw0olctc"]
 
 [ext_resource type="Shader" uid="uid://b46alngda0fw1" path="res://src/Scripts/Shaders/ToonWater.gdshader" id="1_grswv"]
+[ext_resource type="Script" uid="uid://k0o4fxyfvd62" path="res://src/Scripts/Main/main_menu_bg.gd" id="1_ru3xv"]
 [ext_resource type="PackedScene" uid="uid://jryfni8f0cro" path="res://Assets/Models/Tower.gltf" id="2_g4fjb"]
+[ext_resource type="PackedScene" uid="uid://d4gxnddeqrb2r" path="res://Assets/Models/MainMenuBoat.gltf" id="3_p3j80"]
+[ext_resource type="Texture2D" uid="uid://qbfu0pqvymra" path="res://Assets/PlayerCharacterMainMenuGraphic.png" id="4_pv54o"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_g4fjb"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -36,7 +39,46 @@ shader_parameter/wave_speed = 3.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_p3j80"]
 
+[sub_resource type="Animation" id="Animation_6a6hd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("blockbench_export2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(6.8620186, -0.020839691, 37.446068)]
+}
+
+[sub_resource type="Animation" id="Animation_jxql7"]
+resource_name = "boatbob"
+length = 6.633333
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("blockbench_export2:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.8, 3.7333333, 5.233333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(6.862, -0.021, 35), Vector3(6.862, -0.5, 35), Vector3(6.862, -0.5, 35), Vector3(6.862, -0.021, 35)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wcin0"]
+_data = {
+&"RESET": SubResource("Animation_6a6hd"),
+&"boatbob": SubResource("Animation_jxql7")
+}
+
 [node name="MainMenuBg" type="Node3D" unique_id=1206026906]
+script = ExtResource("1_ru3xv")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1943572123]
 environment = SubResource("Environment_pv54o")
@@ -52,3 +94,13 @@ fov = 60.0
 
 [node name="blockbench_export" parent="." unique_id=2029808041 instance=ExtResource("2_g4fjb")]
 transform = Transform3D(6.3549223, 0, 0, 0, 6.19217, 0, 0, 0, 5.1643133, -0.32235336, 0.059088707, -95.592834)
+
+[node name="blockbench_export2" parent="." unique_id=1007758171 instance=ExtResource("3_p3j80")]
+transform = Transform3D(-1.1826565, 0.04520568, 9.929717, 0.38195965, 9.9927025, 1.6695989e-08, -9.922471, 0.3792751, -1.1835202, 6.8620186, -0.020839691, 37.446068)
+
+[node name="Sprite3D" type="Sprite3D" parent="blockbench_export2" unique_id=1130254219]
+transform = Transform3D(-0.01548678, 0.0044143475, -0.09869486, 0.004414345, 0.09983127, 0.003772497, 0.09869486, -0.0037724937, -0.015655512, 1.7586446, 1.3282634, -0.04936385)
+texture = ExtResource("4_pv54o")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=153830340]
+libraries/ = SubResource("AnimationLibrary_wcin0")
