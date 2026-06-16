@@ -23,18 +23,25 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Player:
 		player_in_range = true
 		if !GameManager.hunt_challenge_selected:
-			doors_open = true
-			animation_player.play("DoorsOpen")
-			move_to_next_room_label.show()
+			if ExpeditionTimer.seconds <= 10:
+				move_to_next_room_label.modulate = Color.INDIAN_RED
+				move_to_next_room_label.text = "Insufficient Time Remaining"
+			else:
+				doors_open = true
+				move_to_next_room_label.modulate = Color.WHITE
+				animation_player.play("DoorsOpen")
+				move_to_next_room_label.text = "Press %s to Move to Previous Floor" % GameManager.get_control_mapping("interact")
+		
+		move_to_next_room_label.show()
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body is Player:
 		player_in_range = false
 		if doors_open:
 			animation_player.play("DoorsClose")
-			move_to_next_room_label.hide()
 			doors_open = false
-
+		move_to_next_room_label.hide()
+		
 func go_to_prev_floor() -> void:
 	if current_floor_data.is_boss_door():
 		MusicPlayer.transitioning_floors = false

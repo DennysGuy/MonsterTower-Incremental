@@ -67,20 +67,20 @@ func _process(delta: float) -> void:
 			unlock_next_room()
 			return
 
-		if !quest_needed.is_empty() and QuestManager.get_quest(quest_needed).is_completed():
+		if !quest_needed.is_empty() and QuestManager.get_quest(quest_needed).is_completed() and ExpeditionTimer.seconds > 10:
 			MusicPlayer.transitioning_floors = true
 			GameManager.spawn_location = 0
 			unlock_next_floor()
 			SignalBus.move_to_next_room.emit(next_room_data.scene_path)
 			return
 
-		if PlayerStats.check_points_unlocked[next_room_data.floor_name] == true:
+		if PlayerStats.check_points_unlocked[next_room_data.floor_name] == true and doors_open:
 			MusicPlayer.transitioning_floors = true
 			GameManager.spawn_location = 0
 			SignalBus.move_to_next_room.emit(next_room_data.scene_path)
 			return
 
-		if current_room_data.is_expedition_floor() and current_room_data.unlock_recipe == null:
+		if current_room_data.is_expedition_floor() and current_room_data.unlock_recipe == null and doors_open:
 			MusicPlayer.transitioning_floors = true
 			GameManager.spawn_location = 0
 			SignalBus.move_to_next_room.emit(next_room_data.scene_path)
@@ -90,18 +90,28 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Player:
 		player_in_range = true
 		var deliver_quantity : int = 0
+		
 		if current_room_data.unlock_recipe:
 			deliver_quantity = InventoryManager.calculate_quantity(current_room_data.unlock_recipe)
 		
 		if current_room_data.hunt_challenge_completed or current_room_data.is_expedition_floor() and !current_room_data.unlock_recipe:
-			move_to_next_room_label.text = "Press 'E' to advance to next floor!"
-			doors_open = true
-			animation_player.play("DoorsOpen")
+			if !GameManager.hunt_challenge_selected and ExpeditionTimer.seconds <= 10:
+				move_to_next_room_label.modulate = Color.INDIAN_RED
+				move_to_next_room_label.text = "Insufficient Time Remaining!"
+			else:
+				move_to_next_room_label.modulate = Color.WHITE
+				move_to_next_room_label.text = "Press %s to advance to next floor!" % GameManager.get_control_mapping("interact")
+				doors_open = true
+				animation_player.play("DoorsOpen")
 		else:
 			if current_room_data.is_challenge_floor():
 				move_to_next_room_label.text = "Beat the Floor Challenge to Unlock Elevator!"
 			if current_room_data.is_expedition_floor() and deliver_quantity >= 1:
-				move_to_next_room_label.text = "Press 'E' to repair the Elevator!"
+				print("HELLO I HEREER")
+				if ExpeditionTimer.seconds > 10:
+					move_to_next_room_label.text = "Press %s to repair the Elevator!" % GameManager.get_control_mapping("interact")
+				else:
+					move_to_next_room_label.text = "Insufficient Time Remaining!"
 		
 		move_to_next_room_label.show()
 		

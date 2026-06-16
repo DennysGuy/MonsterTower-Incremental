@@ -34,7 +34,7 @@ const CRAFTING_NOTIFICATION = preload("uid://wyjbs57smen4")
 const DENIED = preload("uid://672acnsycbfo")
 const RETRO_MAGIC_11 = preload("uid://cu0pel7wloamp")
 const RETRO_SWOOOSH_16 = preload("uid://dtrupd03y6qf7")
-const TEMP_VICTORY_THEME_1 = preload("uid://n4ky26neitxn")
+
 var lever_order : Array[String] = ["Yellow", "Green", "Red", "Blue"]
 var current_set_order : Array[String] = []
 # Called when the node enters the scene tree for the first time.

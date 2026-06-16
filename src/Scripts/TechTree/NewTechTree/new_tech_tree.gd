@@ -67,6 +67,13 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("close_menu") and can_close:
 		close_out()
+	
+	#if Input.is_action_just_pressed("add_currency"):
+		#TechTreeManager.currency += 500
+		#PlayerStats.player_stats["Current XP"] += 500
+		#LevelingManager.check_for_level_up()
+		#update_currency_label()
+		#TechTreeManager.check_if_can_purchase_node.emit()
 
 func _on_combat_page_button_mouse_entered() -> void:
 	expand_button(combat_page_button)

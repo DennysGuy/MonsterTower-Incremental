@@ -14,6 +14,6 @@ unlocked = true
 currency_required = 400
 ap_required = 3
 node_type = 2
-stat_name = "Dash Attack"
+stat_name = "Dash"
 prereqs = Array[String](["Attack 1:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

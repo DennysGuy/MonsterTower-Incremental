@@ -88,6 +88,7 @@ func apply_damage(incoming_damage : int, is_crit : bool, new_label_position : in
 	damage_label.global_position.x = global_position.x
 	damage_label.label.text = damage
 	if self is Enemy:
+		add_hit_stars()
 		self.drop_scene.add_child(damage_label)
 	else:
 		get_parent().add_child(damage_label)
@@ -123,7 +124,6 @@ func disable_box_on_frame(box : Area2D) -> void:
 		if not box is Area2D:
 			return
 	
-			
 		box.monitoring = false
 		box.monitorable = false
 
@@ -240,3 +240,8 @@ func issue_hit_flash(flash_material : ShaderMaterial) -> void:
 	hit_flash(flash_material, true)
 	await get_tree().create_timer(0.15).timeout
 	hit_flash(flash_material,false)
+
+func add_hit_stars() -> void:
+	var hit_stars : HitStarsVFX = preload("uid://c6odj1er23dhx").instantiate()
+	hit_stars.global_position = global_position - Vector2(0, hit_box.get_child(0).shape.size.y/2)
+	get_parent().add_child(hit_stars)

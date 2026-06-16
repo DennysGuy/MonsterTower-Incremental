@@ -3145,7 +3145,7 @@ material = SubResource("ShaderMaterial_8o5ax")
 position = Vector2(0, -32)
 texture = ExtResource("36_ysgjh")
 hframes = 17
-frame = 11
+frame = 1
 
 [node name="Outfit" type="Sprite2D" parent="Sprites" unique_id=411712928]
 position = Vector2(0, -32)
@@ -3276,6 +3276,9 @@ collision_mask = 2048
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ItemPickUpArea" unique_id=1369609700]
 position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_0kjqt")
+
+[node name="HitStarMarker" type="Marker2D" parent="." unique_id=26278095]
+position = Vector2(40, -11)
 
 [connection signal="timeout" from="InvincibilityTimer" to="." method="_on_invincibility_timer_timeout"]
 [connection signal="timeout" from="AbilityCoolDownTimer" to="." method="_on_ability_cool_down_timer_timeout"]
