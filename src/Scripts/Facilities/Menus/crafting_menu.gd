@@ -17,6 +17,7 @@ class_name CraftingStationMenu extends Control
 
 @onready var sfx_player: SFXPlayer = $SfxPlayer
 const CRAFT_SWORD = preload("uid://4c6l1w0kpar3")
+@onready var recipe: Label = $Recipe
 
 var sword : Sword
 @onready var button: Button = $Button
@@ -54,12 +55,13 @@ func upgrade_sword() -> void:
 	if next_sword_index < PlayerStats.BEGINNGER_SWORD_COUNT:
 		PlayerStats.set_tracked_weapon_index(next_sword_index)
 		sword = PlayerStats.get_sword(next_sword_index)
-		update_sword()
-		update_inventory_containers()
-		SignalBus.update_sword_texture.emit("Idle")
 	else:
 		PlayerStats.set_tracked_weapon_index(-1)
-		
+	
+	update_sword()
+	update_inventory_containers()
+	SignalBus.update_sword_texture.emit("Idle")
+	
 	SaveManager.save_player_stats()
 	SaveManager.save_inventories()	
 	
@@ -73,8 +75,16 @@ func update_inventory_containers() -> void:
 
 func update_sword() -> void: #run this function when we upgrade the sword.
 	var tracked_index : int = PlayerStats.player_stats["Tracked Weapon"]
-
-	if tracked_index < PlayerStats.BEGINNGER_SWORD_COUNT and tracked_index != -1:
+	
+	if tracked_index == -1:
+		sword = null
+		sword_graphic.texture = null
+		button.disabled = true
+		recipe.text = "More weapons when Combat Class selected!"
+		SignalBus.update_resource_needed_panel.emit()
+		return
+	
+	if tracked_index < PlayerStats.BEGINNGER_SWORD_COUNT:
 		sword = PlayerStats.get_sword(tracked_index)
 		sword_name.text = sword.sword_name
 		sword_stats.text = sword.get_stats_description()
@@ -108,6 +118,8 @@ func exit_menu() -> void:
 	CutsceneManager.enable_player_functionality()
 	SignalBus.check_can_sword_craft.emit()
 	SignalBus.hide_tech_tree_canvas_layer.emit()
+	SignalBus.update_resource_needed_panel.emit()
+	SignalBus.check_for_notification.emit(GameManager.NOTIFICATION_TYPE.CRAFTING)
 	queue_free()
 
 func _on_drops_bag_button_button_up() -> void:

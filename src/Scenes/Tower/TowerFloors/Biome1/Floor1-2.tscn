@@ -9,7 +9,6 @@
 [ext_resource type="TileSet" uid="uid://cbwyncwtk5kxk" path="res://src/Scenes/Tower/TowerFloors/Biome1/Biome1-Boundaries.tres" id="3_6ds7u"]
 [ext_resource type="AudioStream" uid="uid://cp2iodtnnun5l" path="res://Audio/Music/MossyDungeonTestTheme1.wav" id="3_50mol"]
 [ext_resource type="TileSet" uid="uid://dr3ft3wh6mi6e" path="res://src/Scenes/Tower/TowerFloors/Biome1/Biome1BGSetPieces1.tres" id="3_ukbus"]
-[ext_resource type="AudioStream" uid="uid://bnfe0t36iu1dy" path="res://Audio/Music/TemporaryHuntMusic.mp3" id="4_nhahy"]
 [ext_resource type="AudioStream" uid="uid://bdv4pum2wfbbp" path="res://Audio/Music/NewVictoryTheme.wav" id="5_cfe63"]
 [ext_resource type="TileSet" uid="uid://flobhfna8te" path="res://src/Scenes/Tower/TowerFloors/Biome1/Biome1-Platforms.tres" id="5_f2nj7"]
 [ext_resource type="PackedScene" uid="uid://cexhahnue1wh6" path="res://src/Scenes/Tower/TowerFloors/FloorGuideLog.tscn" id="7_acl6u"]
@@ -34,6 +33,9 @@
 [ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="31_41cgd"]
 [ext_resource type="PackedScene" uid="uid://dd63dgr038myr" path="res://src/Scenes/Tower/TowerFloors/PrevElevator1.tscn" id="33_kbbvk"]
 [ext_resource type="Resource" uid="uid://cnvnsw0143wep" path="res://src/Resources/TowerEntranceData/Floor1-1.tres" id="34_cfe63"]
+
+[sub_resource type="Resource" id="Resource_kbbvk"]
+metadata/__load_path__ = "res://Audio/Music/TemporaryHuntMusic.mp3"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6ds7u"]
 texture = ExtResource("2_aukmg")
@@ -567,7 +569,7 @@ map_id = 2
 exit_elevator_marker = NodePath("ExitElevatorMarker")
 tower_entrance_data = ExtResource("2_801hy")
 map_theme_song = ExtResource("3_50mol")
-hunt_theme_song = ExtResource("4_nhahy")
+hunt_theme_song = SubResource("Resource_kbbvk")
 hunt_victory_theme = ExtResource("5_cfe63")
 camera = NodePath("PlayerCamera")
 ore_rock_spawn_rate = 0.6

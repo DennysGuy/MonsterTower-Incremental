@@ -13,7 +13,6 @@
 [ext_resource type="Texture2D" uid="uid://b1k5jwyknpl4e" path="res://Assets/HUD/Bags/Market_Use_Button_Pressed.png" id="11_p8l1g"]
 [ext_resource type="Texture2D" uid="uid://cdnmf68j5a2ak" path="res://Assets/HUD/Bags/Market_Use_Button_Hover.png" id="12_vxqx5"]
 [ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="13_ckoov"]
-[ext_resource type="PackedScene" uid="uid://dil4081ni1hb3" path="res://src/Scenes/NewStarshire/Facilities/IngredientsMenuItem.tscn" id="14_luw6s"]
 [ext_resource type="Texture2D" uid="uid://coogimgiiqd7x" path="res://Assets/CraftingMiniGame/Swords/BronzeSword/BronzeSwordMoldWhole.png" id="15_f5kk3"]
 [ext_resource type="PackedScene" uid="uid://d0s6j8mvikv8c" path="res://src/Scenes/UI/ItemSlot.tscn" id="16_dx0t1"]
 
@@ -278,16 +277,15 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 252.0
-offset_top = 473.0
-offset_right = 342.0
-offset_bottom = 502.0
+offset_left = 244.0
+offset_top = 474.0
+offset_right = 704.0
+offset_bottom = 503.0
 grow_horizontal = 2
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("4_cswec")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 28
 text = "Recipe"
-horizontal_alignment = 1
 
 [node name="SwordDescription" type="RichTextLabel" parent="." unique_id=1976626916]
 layout_mode = 1
@@ -305,7 +303,6 @@ grow_vertical = 2
 theme_override_constants/outline_size = 4
 theme_override_fonts/normal_font = ExtResource("13_ckoov")
 theme_override_font_sizes/normal_font_size = 24
-text = "A sword made out slime jellies! Really dull. Really mull."
 
 [node name="SwordStats" type="RichTextLabel" parent="." unique_id=1325837385]
 layout_mode = 1
@@ -323,10 +320,6 @@ grow_vertical = 2
 theme_override_constants/outline_size = 4
 theme_override_fonts/normal_font = ExtResource("13_ckoov")
 theme_override_font_sizes/normal_font_size = 20
-text = "+50 Attack
-+10 Defense
-+1% Crit Chance
-+10% Crit Damage"
 
 [node name="IngredientsList" type="GridContainer" parent="." unique_id=96722626]
 layout_mode = 1
@@ -342,15 +335,6 @@ offset_bottom = 94.0
 grow_horizontal = 0
 grow_vertical = 2
 theme_override_constants/v_separation = 24
-
-[node name="IngredientItem" parent="IngredientsList" unique_id=419774735 instance=ExtResource("14_luw6s")]
-layout_mode = 2
-
-[node name="IngredientItem2" parent="IngredientsList" unique_id=112919579 instance=ExtResource("14_luw6s")]
-layout_mode = 2
-
-[node name="IngredientItem3" parent="IngredientsList" unique_id=2145521062 instance=ExtResource("14_luw6s")]
-layout_mode = 2
 
 [node name="SwordGraphic" type="TextureRect" parent="." unique_id=1382611568]
 layout_mode = 1

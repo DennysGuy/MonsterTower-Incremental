@@ -136,7 +136,6 @@ func enable_close_function() -> void:
 func _on_upgrade_tracker_button_mouse_entered() -> void:
 	expand_button(upgrade_tracker_button)
 
-
 func _on_upgrade_tracker_button_mouse_exited() -> void:
 	button_to_normal(upgrade_tracker_button)
 
@@ -164,7 +163,6 @@ func update_progress() -> void:
 	currency_label.text = "Spirols %s" % [TechTreeManager.currency]
 	upgrade_progress_bar.max_value = TechTreeManager.upgrade_count_to_prestige
 	upgrade_progress_bar.value = TechTreeManager.current_upgrade_count
-	
 	
 func add_combat_tech_tree() -> void:
 	for child in sub_viewport.get_children():
@@ -264,7 +262,6 @@ func _on_upgrade_tracker_button_button_up() -> void:
 	
 	play_license_upgrade_sequence()
 
-
 func close_out() -> void:
 	TechTreeManager.check_needed_item_panel_for_purchase.emit()
 	TechTreeManager.set_ability_hud_icon.emit()
@@ -277,6 +274,7 @@ func close_out() -> void:
 	if station_unlock_available():
 		TechTreeManager.unlock_station.emit()
 	#sfx_player.play_sfx(CLOSE_UPGRADE_PC)
+	HubManager.check_for_node_purchase.emit()
 	await get_tree().create_timer(0.3).timeout
 	
 	SignalBus.hide_tech_tree_canvas_layer.emit()

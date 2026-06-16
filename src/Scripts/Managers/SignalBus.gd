@@ -175,3 +175,7 @@ signal update_held_weapon(weapon : Sword)
 signal set_combat_ability_icon_disabled
 @warning_ignore("unused_signal")
 signal set_combat_ability_icon_enabled
+@warning_ignore("unused_signal")
+signal combat_class_menu_closed
+@warning_ignore("unused_signal")
+signal gem_stone_menu_closed()

@@ -77,6 +77,8 @@ func _ready() -> void:
 	SignalBus.spawn_tower_map.connect(spawn_tower_entrance_map)
 	SignalBus.play_warrior_unlock_animation.connect(warrior_class_unlocked_notice)
 	SignalBus.spawn_warrior_tech_tree.connect(warrior_class_unlocked_notice)
+	SignalBus.combat_class_menu_closed.connect(show_ap_notice)
+	SignalBus.gem_stone_menu_closed.connect(show_gem_station_notice)
 	TechTreeManager.unlock_station.connect(unlock_station)
 	HubManager.check_for_node_purchase.connect(check_for_node_purchase)
 	#SignalBus.show_ap_notice.connect(show_ap_notice)
@@ -86,15 +88,6 @@ func _ready() -> void:
 	CookingManager.can_craft_bar.emit()
 	#hud.animation_player.play("CloseIn")
 	
-	#if PlayerStats.player_stats["Equipped Sword"] < PlayerStats.BEGINNGER_SWORD_COUNT and PlayerStats.can_craft_next_sword():
-		#SignalBus.show_can_craft_sword.emit()
-		##await get_tree().create_timer(1.0).timeout
-		##new_sword_unlock_notice()
-	#else:
-		#SignalBus.hide_can_craft_sword.emit()
-	#show_ap_notice()
-	#hud.open_tower_map_button.show()
-
 	await get_tree().process_frame
 	
 	GameManager.event_speed_mod = 2.5
@@ -204,6 +197,8 @@ func _on_tower_area_body_entered(body: Node2D) -> void:
 func show_ap_notice() -> void:
 	if PlayerStats.player_stats["Ability Points"] >= 1:
 		HubManager.show_facility_notification.emit("Class Advance Center")
+	else:
+		HubManager.hide_facility_notification.emit("Class Advance Center")
 
 func show_gem_station_notice() -> void:
 	if InventoryManager.inventories["Gem Stones"].size() > 0:
@@ -560,8 +555,6 @@ func check_for_node_purchase() -> void:
 			return
 	HubManager.hide_facility_notification.emit("Upgrades PC")
 	
-
-
 func can_purchase(tech_node_stats : TechNodeStats) -> bool:
 	if SaveManager.current_save_game:
 		var tech_node_name : String = tech_node_stats.node_name
@@ -571,7 +564,6 @@ func can_purchase(tech_node_stats : TechNodeStats) -> bool:
 		TechTreeManager.tech_nodes[tech_node_stats.node_name] = saved_data["Level"]
 		
 	return TechTreeManager.currency >= tech_node_stats.currency_required and has_resource_quantity(tech_node_stats) and tech_node_stats.current_level < tech_node_stats.max_level and tech_node_stats.unlocked
-
 
 func has_resource_quantity(tech_node_stats : TechNodeStats) -> bool:
 	if tech_node_stats.materials_required.is_empty():

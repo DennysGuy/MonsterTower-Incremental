@@ -31,6 +31,8 @@ func close_out() -> void:
 	SignalBus.hide_tech_tree_canvas_layer.emit()
 	TechTreeManager.set_ability_hud_icon.emit()
 	CutsceneManager.enable_player_functionality()
+	SignalBus.check_for_notification.emit(GameManager.NOTIFICATION_TYPE.AP)
+	SignalBus.combat_class_menu_closed.emit()
 	queue_free()
 
 func update_ap_available() -> void:

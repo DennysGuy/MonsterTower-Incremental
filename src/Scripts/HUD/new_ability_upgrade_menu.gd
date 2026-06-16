@@ -35,6 +35,8 @@ func update_ap_label() -> void:
 
 func close_out() -> void:
 	CutsceneManager.enable_player_functionality()
+	SignalBus.check_for_notification.emit(GameManager.NOTIFICATION_TYPE.AP)
+	SignalBus.combat_class_menu_closed.emit()
 	SignalBus.hide_tech_tree_canvas_layer.emit()
 	if GameManager.first_class_just_unlocked:
 		Dialogic.start(NEW_WEAPON_CRAFTING_NOTICE_SCENE)
