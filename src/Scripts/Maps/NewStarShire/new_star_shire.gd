@@ -19,6 +19,7 @@ var player_in_smelting_range : bool = false
 var player_in_crafting_range : bool = false
 var player_in_dojo_range : bool = false
 var player_in_upgrade_station_range : bool = false
+const CRAFTING_STATION_OPEN = preload("uid://ccqpi3mcw8aww")
 
 @onready var access_smelting_station: Label = $AccessSmeltingStation
 @onready var access_sword_crafting_station: Label = $AccessSwordCraftingStation
@@ -186,6 +187,7 @@ func set_guide_log(guide_log : Label, show_log : bool) -> void:
 	if PlayerStats.facilities_unlocked["Hunter License"]:
 		var mapping : String = GameManager.get_control_mapping("interact")
 		guide_log.text = "Press %s to enter the tower!" % mapping
+		GameManager.play_sfx(CRAFTING_STATION_OPEN)
 	else:
 		guide_log.text = "You need a Tower pass before you can Enter..."
 
@@ -305,6 +307,7 @@ func _on_grand_market_area_body_entered(body: Node2D) -> void:
 		sell_novelty_items()
 		check_for_node_purchase()
 		var mapping : String = GameManager.get_control_mapping("interact")
+		GameManager.play_sfx(CRAFTING_STATION_OPEN)
 		enter_market_label.text = "Press %s to access the Grand Market" % mapping
 		enter_market_label.show()
 
@@ -350,6 +353,7 @@ func _on_crafting_station_area_body_entered(body: Node2D) -> void:
 			access_sword_crafting_station.text = "Select your Class to Gain Access"
 		else:
 			player_in_crafting_range = true
+			GameManager.play_sfx(CRAFTING_STATION_OPEN)
 			var mapping : String = GameManager.get_control_mapping("interact")
 			access_sword_crafting_station.text = "Press %s to access Sword Crafting Station" % mapping
 			
@@ -476,6 +480,7 @@ func _on_dojo_area_body_entered(body: Node2D) -> void:
 		var mapping : String = GameManager.get_control_mapping("interact")
 		dojo_access_notification.text = "Press %s to Access Dojo!" % mapping
 		player_in_dojo_range = true
+		GameManager.play_sfx(CRAFTING_STATION_OPEN)
 		dojo_access_notification.show()
 
 func _on_dojo_area_body_exited(body: Node2D) -> void:
@@ -489,6 +494,7 @@ func _on_gem_stone_station_area_body_entered(body: Node2D) -> void:
 		if PlayerStats.facilities_unlocked["Gem Stone Station"]:
 			var mapping : String = GameManager.get_control_mapping("interact")
 			enter_upgrade_station_notice.text = "Press %s to Access\nGem Stone Station" % mapping
+			GameManager.play_sfx(CRAFTING_STATION_OPEN)
 		else:
 			enter_upgrade_station_notice.text = "Unlock Gem Stone\nStation Node to access!"
 		enter_upgrade_station_notice.show()

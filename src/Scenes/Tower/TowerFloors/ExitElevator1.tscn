@@ -4,7 +4,6 @@
 [ext_resource type="Script" uid="uid://3hxdumxyuob1" path="res://src/Scripts/Tower/exit_elevator_1.gd" id="1_lw48p"]
 [ext_resource type="Texture2D" uid="uid://uvbw72m7upwd" path="res://Assets/Tower/FloorElevator/FloorElevator_LeftDoor.png" id="2_lw48p"]
 [ext_resource type="Texture2D" uid="uid://bx0n6ew6yeyjs" path="res://Assets/Tower/FloorElevator/FloorElevator_RightDoor.png" id="3_4on78"]
-[ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="5_4on78"]
 [ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="6_micwh"]
 [ext_resource type="Texture2D" uid="uid://c46iu8v75jaon" path="res://Assets/NodeGraphics/AbilitiesTechTree/RowLock.png" id="7_d23mi"]
 [ext_resource type="PackedScene" uid="uid://vo5sm7p34vo6" path="res://src/Scenes/Actors/Utilities/NameTag.tscn" id="8_8fvq5"]
@@ -174,8 +173,8 @@ offset_left = -78.0
 offset_right = 80.0
 offset_bottom = 23.0
 theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("5_4on78")
-theme_override_font_sizes/font_size = 12
+theme_override_fonts/font = ExtResource("6_micwh")
+theme_override_font_sizes/font_size = 16
 
 [node name="NeededPanel" type="Panel" parent="." unique_id=1441516242]
 visible = false

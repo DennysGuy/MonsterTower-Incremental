@@ -11,7 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://dyxt1peu58oe3" path="res://Assets/NewShip.png" id="6_0u15j"]
 [ext_resource type="PackedScene" uid="uid://dks5oskfsmrau" path="res://src/Scenes/NewStarshire/GrandMarketSign.tscn" id="6_y20fx"]
 [ext_resource type="PackedScene" uid="uid://crvhogk2bnq1s" path="res://src/Scenes/NewStarshire/TowerGuideSprite.tscn" id="9_636af"]
-[ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="10_636af"]
 [ext_resource type="Texture2D" uid="uid://bpmnfqs3ccdep" path="res://Assets/Facilities/TempGrandMarketStand.png" id="12_123hf"]
 [ext_resource type="Texture2D" uid="uid://c0hsdw5hnpef5" path="res://Assets/NPCs/FreeMarketNPCs/GearDealer_WithoutOutline.png" id="12_l6435"]
 [ext_resource type="Texture2D" uid="uid://0l7t1v2v8yge" path="res://Assets/NPCs/FreeMarketNPCs/DripDealer_NoOutline.png" id="13_sxpgj"]
@@ -683,6 +682,7 @@ position = Vector2(1, 2)
 shape = SubResource("RectangleShape2D_l6435")
 
 [node name="EnterMarketLabel" type="Label" parent="." unique_id=2132180699]
+visible = false
 offset_left = 1051.0
 offset_top = 593.0
 offset_right = 1241.0
@@ -895,8 +895,8 @@ offset_right = 1981.0
 offset_bottom = 429.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 6
-theme_override_fonts/font = ExtResource("10_636af")
-theme_override_font_sizes/font_size = 13
+theme_override_fonts/font = ExtResource("27_e7ku4")
+theme_override_font_sizes/font_size = 16
 text = "Press 'E' to Access Sword Crafting Station"
 horizontal_alignment = 1
 

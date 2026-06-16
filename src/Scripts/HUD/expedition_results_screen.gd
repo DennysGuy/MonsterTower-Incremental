@@ -81,7 +81,7 @@ func _process(delta: float) -> void:
 	else:
 		to_town_bar.value = 0
 	
-	if Input.is_action_pressed("interact") and !Input.is_action_just_pressed("pan_cam_left") and can_go_back:
+	if Input.is_action_pressed("swing_sword") and !Input.is_action_just_pressed("pan_cam_left") and can_go_back:
 		to_tower_bar.value += delta * 100
 		if to_tower_bar.value >= to_tower_bar.max_value:
 			go_to_tower()

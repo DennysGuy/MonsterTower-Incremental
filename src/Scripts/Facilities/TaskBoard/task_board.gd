@@ -5,7 +5,7 @@ var player_in_range : bool = false
 @onready var jobs_available_notice: Label = $JobsAvailableNotice
 @onready var notice_icon: Sprite2D = $NoticeIcon
 @onready var notice_icon_2: Sprite2D = $NoticeIcon2
-
+const CRAFTING_STATION_OPEN = preload("uid://ccqpi3mcw8aww")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var mapping : String = GameManager.get_control_mapping("interact")
@@ -17,6 +17,7 @@ func _ready() -> void:
 		HubManager.show_facility_notification.emit("Job Requests Board")
 	
 	await get_tree().process_frame
+	
 	
 	if QuestManager.check_for_available_job():
 		HubManager.show_facility_notification.emit("Job Requests Board")
@@ -32,6 +33,7 @@ func _process(delta: float) -> void:
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Player:
 		player_in_range = true
+		GameManager.play_sfx(CRAFTING_STATION_OPEN)
 		notice.show()
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
