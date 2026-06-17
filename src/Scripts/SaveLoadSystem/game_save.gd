@@ -59,9 +59,9 @@ TODO: We will add saves for classes as well
 	"Crit Damage" : 1.5,
 	"Accuracy" : 0.6,
 	"Max Health" : 50,
-	"Max MP": 200,
+	"Max MP": 150,
 	"Current Health":50,
-	"Current MP": 200,
+	"Current MP": 150,
 	"HP Recovery": 0.3,
 	"MP Recovery" : 0.4,
 	"Equipped Sword": 0,
@@ -488,7 +488,7 @@ TODO: We will add saves for classes as well
 			"Dash Cooldown" : 0.0,
 			"Dash Speed Modifier" : 0.0,
 			"Knock Back Modifier" : 0.0,
-			"Buff Limit Time": 0.0
+			"Buff Limit Time": 45.0
 		},
 		"Combat Ability 4": {
 			"Cooldown Time" : 5.0,

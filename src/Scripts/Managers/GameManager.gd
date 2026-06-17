@@ -53,7 +53,7 @@ func set_player_box_direction(flip_h : bool):
 	else:
 		return 1
 
-func attack_enemies(enemies_in_hitbox : Array, enemies_hit : int = 1, number_of_hits : int = 1, player : Player = null, incoming_damage : int = 0, is_crit : bool = false, is_warrior : bool = false, rep_delay : float = 0.1, ability : Ability = null) -> void:
+func attack_enemies(enemies_in_hitbox : Array, enemies_hit : int = 1, number_of_hits : int = 1, player : Player = null, incoming_damage : int = 0, is_crit : bool = false, is_warrior : bool = false, rep_delay : float = 0.1, ability : Ability = null, hit_freeze : float = 0.0) -> void:
 	var targets = calculate_targets(enemies_in_hitbox, player, enemies_hit)
 	for enemy in targets:
 		if is_instance_valid(enemy):

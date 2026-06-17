@@ -18,6 +18,6 @@ ExtResource("3_soogs"): 4
 }])
 stat_relation = 2
 stat_name = "Dash Duration"
-upgrade_interval = 0.2
+upgrade_interval = 0.1
 prereqs = Array[String](["Movement 2:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

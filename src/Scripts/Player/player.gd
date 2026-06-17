@@ -82,6 +82,9 @@ var combat_ability_3_wait_time : float = 0.4
 var combat_ability_4_timer : float = 0.0
 var combat_ability_4_wait_time : float = 0.4
 
+var dash_cancel_time_frame : float = 0.0
+var dash_cancel_wait_time : float = 0.25
+
 var can_attack_cancel: bool = false
 
 var was_on_ledge : bool = true
@@ -96,6 +99,8 @@ var is_silence_attack : bool = false
 @export var attack_1 : State
 @export var air_attack : State
 @export var dash_attack : State
+
+const DOUB_CLEAVE_NEW = preload("uid://bea00177gkvyb")
 
 func _ready() -> void:
 	super()
@@ -130,6 +135,9 @@ func _physics_process(delta: float) -> void:
 	
 	if grab_ladder_buffer_timer > 0:
 		grab_ladder_buffer_timer -= delta
+	
+	if dash_cancel_time_frame > 0:
+		dash_cancel_time_frame -= delta
 	
 	knock_back_player()
 	
@@ -245,6 +253,21 @@ func attack_ore_rock() -> void:
 		play_sfx(PICKAXE_SWING_STRIKE,1.0)
 		await get_tree().create_timer(0.25).timeout
 
+func issue_double_cleave() -> void:
+	var y_pos : int = -30
+	for i in range(0,2):
+		var cleave_sword : DoubleCleaveAttack = preload("uid://cmn8av6jpy31").instantiate()
+		if player_sprite.flip_h:
+			cleave_sword.flip_direction()
+		cleave_sword.player = self
+		cleave_sword.global_position = global_position + Vector2(20 * cleave_sword.move_dir, y_pos)
+		y_pos += 15
+		SignalBus.shake_camera.emit(1.0)
+		play_sfx(DOUB_CLEAVE_NEW)
+		get_parent().add_child(cleave_sword)
+		if is_inside_tree():
+			await get_tree().create_timer(0.15).timeout
+		
 
 func clear_effect_texture() -> void:
 	effect.texture = null

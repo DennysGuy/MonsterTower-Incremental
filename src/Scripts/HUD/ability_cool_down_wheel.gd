@@ -134,11 +134,16 @@ func check_if_can_cast() -> void:
 		icon.texture = stored_ability.icon
 
 func set_combat_ability_enabled() -> void:
+	if !stored_ability:
+		return
 	if !stored_ability.is_combat_ability:
 		return
 	icon.texture = stored_ability.icon
 
 func set_combat_ability_disabled() -> void:
+	if !stored_ability:
+		return
+	
 	if !stored_ability.is_combat_ability:
 		return
 	icon.texture = stored_ability.disabled_icon
