@@ -20,7 +20,9 @@ var in_check_point_area : bool = false
 @onready var final_key_alter: BossKeyAlter = $BossKeyAlter
 
 @onready var top_position: Marker2D = $TopPosition
-const TEST_DUNGEON_CHALLENGE_THEME = preload("uid://bmdcmdm835j2s")
+
+const DOOR_CHALLENGE_THEME_2 = preload("uid://dlop7xqoavdul")
+
 
 var keys_delivered : int = 0
 @onready var enter_door_notice: Label = $EnterDoorNotice
@@ -125,10 +127,11 @@ func start_challenge() -> void:
 	await get_tree().create_timer(1.0).timeout
 	camera.position = top_position.position
 	await get_tree().create_timer(1.0).timeout
-	MusicPlayer.play_song(TEST_DUNGEON_CHALLENGE_THEME)
+	
 	PlayerHudSignalBus.issue_big_notification.emit("Unlock the Door!")
 	SignalBus.spawn_enemies.emit()
 	SignalBus.start_enemy_spawn.emit()
+	MusicPlayer.play_song(DOOR_CHALLENGE_THEME_2)
 	await get_tree().create_timer(2.0).timeout
 	camera.player = player
 	await get_tree().create_timer(1.0).timeout
@@ -137,6 +140,7 @@ func start_challenge() -> void:
 	PlayerHudSignalBus.load_timer_label.emit()
 	PlayerHudSignalBus.issue_big_notification.emit("Ready?!")
 	await get_tree().create_timer(2.0).timeout
+	
 	PlayerHudSignalBus.issue_big_notification.emit("Go!")
 	
 	GameManager.player_can_move = true

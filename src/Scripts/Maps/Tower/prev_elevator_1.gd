@@ -23,7 +23,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Player:
 		player_in_range = true
 		if !GameManager.hunt_challenge_selected:
-			if ExpeditionTimer.seconds <= 10:
+			if ExpeditionTimer.seconds <= 10 and GameManager.expedition_timer_started:
 				move_to_next_room_label.modulate = Color.INDIAN_RED
 				move_to_next_room_label.text = "Insufficient Time Remaining"
 			else:

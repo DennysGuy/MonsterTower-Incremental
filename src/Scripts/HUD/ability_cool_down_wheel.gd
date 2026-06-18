@@ -141,7 +141,7 @@ func set_combat_ability_enabled() -> void:
 	icon.texture = stored_ability.icon
 
 func set_combat_ability_disabled() -> void:
-	if !stored_ability:
+	if !stored_ability: 
 		return
 	
 	if !stored_ability.is_combat_ability:
