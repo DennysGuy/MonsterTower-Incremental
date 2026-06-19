@@ -9,10 +9,12 @@ var in_menu : bool = false
 @export var audio_settings_menu : AudioSettingsMenu
 @export var control_settings_menu : ControlSettingsMenu
 @export var graphics_settings_menu : GraphicsSettingsMenu
+@export var pause_game : bool = true
 
 func _ready() -> void:
-	get_tree().paused = true
-	in_menu = true
+	if pause_game:
+		get_tree().paused = true
+		in_menu = true
 	
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("close_menu"):

@@ -209,7 +209,14 @@ func load_progression_state(state_name : String) -> bool:
 	return false	
 
 func save_various_settings(setting : String, state : bool) -> void:
+	if !current_save_game:
+		var save_file = get_existing_save_file()
+		if save_file:
+			current_save_game = save_file
+		return
+		
 	current_save_game.various_settings[setting] = state
 	save_game()
+	
 func load_various_settings(setting : String) -> bool:
 	return current_save_game.various_settings[setting]

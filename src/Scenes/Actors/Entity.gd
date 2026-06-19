@@ -242,6 +242,9 @@ func issue_hit_flash(flash_material : ShaderMaterial) -> void:
 	hit_flash(flash_material,false)
 
 func add_hit_stars() -> void:
+	if !hurt_box:
+		return
+		
 	var hit_stars : VFXSParks = preload("uid://dpcnaflfrbttl").instantiate()
 	hit_stars.global_position = global_position - Vector2(0, hurt_box.get_child(0).shape.size.y/2)
 	get_parent().add_child(hit_stars)

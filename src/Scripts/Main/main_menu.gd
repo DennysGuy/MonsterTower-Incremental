@@ -55,3 +55,12 @@ func _on_no_button_button_up() -> void:
 
 func _on_exit_button_button_up() -> void:
 	get_tree().quit()
+
+
+func _on_settings_button_button_up() -> void:
+	add_settings_menu()
+
+func add_settings_menu() -> void:
+	var settings_menu : PauseMenu = preload("uid://dlaq2oh2iuyjk").instantiate()
+	settings_menu.pause_game = false
+	add_child(settings_menu)

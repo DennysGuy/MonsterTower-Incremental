@@ -154,7 +154,7 @@ theme_override_fonts/font = ExtResource("5_gj8tx")
 theme_override_font_sizes/font_size = 52
 text = "New Game"
 
-[node name="ExitButton" type="Button" parent="." unique_id=1229451050]
+[node name="SettingsButton" type="Button" parent="." unique_id=1229451050]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -171,7 +171,7 @@ mouse_default_cursor_shape = 2
 theme_override_constants/outline_size = 0
 theme_override_fonts/font = ExtResource("5_gj8tx")
 theme_override_font_sizes/font_size = 52
-text = "Exit"
+text = "Settings"
 
 [node name="Continue" type="Button" parent="." unique_id=1382076943]
 modulate = Color(3.85046e-07, 0.97184914, 0.35903677, 1)
@@ -304,7 +304,7 @@ stream = ExtResource("7_gj8tx")
 bus = &"Ambience"
 
 [connection signal="button_up" from="NewGame" to="." method="_on_button_button_up"]
-[connection signal="button_up" from="ExitButton" to="." method="_on_exit_button_button_up"]
+[connection signal="button_up" from="SettingsButton" to="." method="_on_settings_button_button_up"]
 [connection signal="button_up" from="Continue" to="." method="_on_continue_button_up"]
 [connection signal="button_up" from="StartNewGameNoticePanel/YesButton" to="." method="_on_yes_button_button_up"]
 [connection signal="button_up" from="StartNewGameNoticePanel/NoButton" to="." method="_on_no_button_button_up"]
