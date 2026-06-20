@@ -50,7 +50,7 @@ const FLOOR_CHALLENGE_CUTSCENE = preload("uid://c6chwv4cv6xt2")
 var kill_quota_hit : bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if !MusicPlayer.transitioning_floors and map_name != "Billy's Bootcamp":
+	if !MusicPlayer.transitioning_floors and map_name != "Base of Starspire Tower":
 		MusicPlayer.stop_player()
 	GameManager.can_pause_game = true
 	if tower_entrance_data:

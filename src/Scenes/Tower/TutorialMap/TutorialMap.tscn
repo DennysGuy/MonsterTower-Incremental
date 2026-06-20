@@ -626,7 +626,7 @@ size = Vector2(34, 351)
 
 [node name="TutorialMap" type="Node2D" unique_id=1194992242 node_paths=PackedStringArray("camera", "sfx_player")]
 script = ExtResource("1_tymde")
-map_name = "Base of Starspire Tower "
+map_name = "Base of Starspire Tower"
 player_spawn = false
 camera = NodePath("PlayerCamera")
 sfx_player = NodePath("SfxPlayer")
