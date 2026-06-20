@@ -57,7 +57,7 @@ const GRAND_MARKET_MENU_USE_BG = preload("uid://chxbefqvlxayh")
 func _ready() -> void:
 	InventoryManager.populate_market_menu.connect(populate_details_panel)
 	InventoryManager.reset_stored_slot_index.connect(reset_stored_slot_index)
-	GameManager.can_pause_game = false
+	CutsceneManager.disable_player_functionality()
 	QuestManager.check_facility_name.emit("Grand Market")
 	init_market()
 
@@ -127,8 +127,11 @@ func close_out() -> void:
 	CutsceneManager.enable_player_functionality()
 	CookingManager.can_craft_bar.emit()
 	CookingManager.can_craft_dish.emit()
+	
+	PlayerHudSignalBus.hub_menu_exited.emit()
+	await get_tree().create_timer(0.3).timeout
 	SignalBus.hide_tech_tree_canvas_layer.emit()
-	queue_free()	
+	queue_free()
 
 func init_market() -> void:
 	clear_details()
@@ -205,7 +208,6 @@ func disable_tabs_and_buttons() -> void:
 	sell_tab_button.disabled = true
 	sell_bank_button.disabled = true
 	
-
 func _on_novelties_tab_button_up() -> void:
 	selected_inventory = "Inventory"
 	inventory_label.text = "Drops"

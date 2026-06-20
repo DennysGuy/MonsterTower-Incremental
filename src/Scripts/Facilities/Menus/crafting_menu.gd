@@ -117,9 +117,13 @@ func _on_close_button_up() -> void:
 func exit_menu() -> void:
 	CutsceneManager.enable_player_functionality()
 	SignalBus.check_can_sword_craft.emit()
-	SignalBus.hide_tech_tree_canvas_layer.emit()
+	
 	SignalBus.update_resource_needed_panel.emit()
 	SignalBus.check_for_notification.emit(GameManager.NOTIFICATION_TYPE.CRAFTING)
+	
+	PlayerHudSignalBus.hub_menu_exited.emit()
+	await get_tree().create_timer(0.3).timeout
+	SignalBus.hide_tech_tree_canvas_layer.emit()
 	queue_free()
 
 func _on_drops_bag_button_button_up() -> void:

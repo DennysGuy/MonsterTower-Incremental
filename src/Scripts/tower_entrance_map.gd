@@ -89,9 +89,13 @@ func store_entrance_data(entrance_data : TowerEntranceData) -> void:
 
 func _on_close_button_up() -> void:
 	CutsceneManager.enable_player_functionality()
-	SignalBus.hide_tech_tree_canvas_layer.emit()
+	
 	music_player.stop()
 	MusicPlayer.unpause_music()
+	
+	PlayerHudSignalBus.hub_menu_exited.emit()
+	await get_tree().create_timer(0.3).timeout
+	SignalBus.hide_tech_tree_canvas_layer.emit()
 	queue_free()
 	
 func update_entrance_map(index : int) -> void:

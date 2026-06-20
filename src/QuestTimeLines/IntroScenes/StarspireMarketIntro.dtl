@@ -1,6 +1,6 @@
 do CutsceneManager.disable_player_functionality()
 [wait time="2.0"]
-join TowerGuide rightmost
+join TowerGuide rightmost [animation="Slide In Up" wait="true"]
 TowerGuide: Welcome to the Starspire Grand Market! Glad you made it.
 TowerGuide: This location is the base of operations for the Starspire Hunters. Use the Grand Market to bolster your abilities, become rich, and begin expeditions to the tower.
 TowerGuide: I will now give a brief overview of what the Starspire Grand Market has to offer.

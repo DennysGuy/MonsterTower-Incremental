@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bwa06050yeebm" path="res://src/Scripts/Facilities/CraftingStationMenu/class_weapon_crafting_menu.gd" id="1_ht0u6"]
 [ext_resource type="Texture2D" uid="uid://b6jnfhuacvwtv" path="res://Assets/PlayerGraphics/Weapons/WeaponCraftingMenu/ClassWeaponCraftingMenuBackGround.png" id="2_bedrc"]
+[ext_resource type="PackedScene" uid="uid://dh4a1fdo4tblk" path="res://src/Scenes/NewStarshire/Facilities/FacilityBGs/SmithingStationBG.tscn" id="2_s3gec"]
 [ext_resource type="Texture2D" uid="uid://dqrwhfhixd1io" path="res://Assets/Facilities/GearCraftingStation/GearStationDropsBagBG.png" id="3_abbk0"]
 [ext_resource type="Texture2D" uid="uid://dev0bo6yx63cx" path="res://Assets/PlayerGraphics/Weapons/WeaponCraftingMenu/DescriptionPopInPanel.png" id="3_pw14l"]
 [ext_resource type="FontFile" uid="uid://bmc1mapdr27y8" path="res://Assets/Fonts/CatCafe.ttf" id="4_bc2o7"]
@@ -38,15 +39,19 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ht0u6")
 
-[node name="Panel" type="Panel" parent="." unique_id=41290153]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1523901549]
+layout_mode = 0
+offset_right = 1923.0
+offset_bottom = 1081.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=1231684794]
+own_world_3d = true
+size = Vector2i(1920, 1080)
+
+[node name="SmithingStationBG" parent="SubViewportContainer/SubViewport" unique_id=531201827 instance=ExtResource("2_s3gec")]
 
 [node name="Inventory" type="TextureRect" parent="." unique_id=314046144]
+self_modulate = Color(1, 1, 1, 0.96000004)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -256,6 +261,7 @@ theme_override_fonts/font = ExtResource("4_bc2o7")
 text = "Use"
 
 [node name="DescriptionPanel" type="TextureRect" parent="." unique_id=488408810]
+self_modulate = Color(1, 1, 1, 0.96000004)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -385,6 +391,7 @@ text = "+50 Attack
 +10% Crit Damage"
 
 [node name="ForeGround" type="TextureRect" parent="." unique_id=512444208]
+self_modulate = Color(1, 1, 1, 0.96000004)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -427,51 +434,39 @@ weapon = ExtResource("18_i3wby")
 
 [node name="WeaponIconButton4" parent="ForeGround/WarriorWeaponContainer" unique_id=500383786 instance=ExtResource("5_eouhx")]
 layout_mode = 2
-weapon = ExtResource("16_xx801")
 
 [node name="WeaponIconButton5" parent="ForeGround/WarriorWeaponContainer" unique_id=539432697 instance=ExtResource("5_eouhx")]
 layout_mode = 2
-weapon = ExtResource("17_i3wby")
 
 [node name="WeaponIconButton6" parent="ForeGround/WarriorWeaponContainer" unique_id=1443051333 instance=ExtResource("5_eouhx")]
 layout_mode = 2
-weapon = ExtResource("18_i3wby")
 
 [node name="WeaponIconButton7" parent="ForeGround/WarriorWeaponContainer" unique_id=934085744 instance=ExtResource("5_eouhx")]
 layout_mode = 2
-weapon = ExtResource("16_xx801")
 
 [node name="WeaponIconButton8" parent="ForeGround/WarriorWeaponContainer" unique_id=417664144 instance=ExtResource("5_eouhx")]
 layout_mode = 2
-weapon = ExtResource("17_i3wby")
 
 [node name="WeaponIconButton9" parent="ForeGround/WarriorWeaponContainer" unique_id=1478993099 instance=ExtResource("5_eouhx")]
 layout_mode = 2
-weapon = ExtResource("18_i3wby")
 
 [node name="WeaponIconButton10" parent="ForeGround/WarriorWeaponContainer" unique_id=277292426 instance=ExtResource("5_eouhx")]
 layout_mode = 2
-weapon = ExtResource("16_xx801")
 
 [node name="WeaponIconButton11" parent="ForeGround/WarriorWeaponContainer" unique_id=1517543998 instance=ExtResource("5_eouhx")]
 layout_mode = 2
-weapon = ExtResource("17_i3wby")
 
 [node name="WeaponIconButton12" parent="ForeGround/WarriorWeaponContainer" unique_id=324611320 instance=ExtResource("5_eouhx")]
 layout_mode = 2
-weapon = ExtResource("18_i3wby")
 
 [node name="WeaponIconButton13" parent="ForeGround/WarriorWeaponContainer" unique_id=2130605395 instance=ExtResource("5_eouhx")]
 layout_mode = 2
-weapon = ExtResource("16_xx801")
 
 [node name="WeaponIconButton14" parent="ForeGround/WarriorWeaponContainer" unique_id=1162822386 instance=ExtResource("5_eouhx")]
 layout_mode = 2
-weapon = ExtResource("17_i3wby")
 
 [node name="WeaponIconButton15" parent="ForeGround/WarriorWeaponContainer" unique_id=1380327103 instance=ExtResource("5_eouhx")]
 layout_mode = 2
-weapon = ExtResource("18_i3wby")
 
 [node name="Panel" type="Panel" parent="ForeGround" unique_id=1556720090]
 layout_mode = 1

@@ -1,6 +1,7 @@
 do MusicPlayer.pause_music()
 audio "res://Audio/Music/TutorialCutscene.wav" [bus="Music"]
 do CutsceneManager.disable_player_functionality()
+join "Chef Nadene" rightmost [animation="Slide In Up" wait="true"]
 "Chef Nadene": Hey newbie! Names, Chef Nadene. I run the culinary department for the Starspire Hunters. I'm responsible for overseeing what keeps ya'll fed. So be gratful.. or don't be surprised if ya'lls rations shrink overtime.
 "Chef Nadene": HA HA HA! I'm just yanking your chain.\
 \

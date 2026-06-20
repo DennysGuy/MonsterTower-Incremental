@@ -115,8 +115,8 @@ func _ready() -> void:
 		MusicPlayer.play_song(TUTORIAL_CUTSCENE)
 		Dialogic.start(LEVEL_UP_INSTRUCTION)
 	
-	if SaveManager.get_floor_count("Floor 1-3") and QuestManager.active_quests["Job"].size() == 0:
-		MusicPlayer.stop_player()
+	if SaveManager.get_floor_count("Floor 1-3") == 1 and QuestManager.active_quests["Job"].size() == 0:
+		#MusicPlayer.stop_player()
 		Dialogic.start(GO_TO_JOB_BOARD)
 	
 	if PlayerStats.player_stats["Level"] >= 8 and PlayerStats.player_stats["Class"] == "Junior Hunter" and !GameManager.job_selection_notice_scene_played:

@@ -25,11 +25,9 @@ func _ready() -> void:
 			else:
 				tracked_icon.hide()
 		
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-
 
 func _on_mouse_entered() -> void:
 	var tween : Tween = get_tree().create_tween()
@@ -42,11 +40,15 @@ func _on_mouse_exited() -> void:
 	in_range = false
 
 func hide_tracked_icon(index : int) -> void:
+	if !weapon:
+		return
 	if weapon.index != index:
 		return
 	tracked_icon.hide()
 
 func show_tracked_icon(index : int) -> void:
+	if !weapon:
+		return
 	if weapon.index != index:
 		return
 	tracked_icon.show()

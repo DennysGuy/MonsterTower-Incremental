@@ -68,13 +68,16 @@ func clear_description_panel() -> void:
 
 func close_out() -> void:
 	CutsceneManager.enable_player_functionality()
-	SignalBus.hide_tech_tree_canvas_layer.emit()
+	
 	QuestManager.initialize_job_quests.emit()
 	if QuestManager.check_for_available_job():
 		HubManager.show_facility_notification.emit("Job Requests Board")
 	else:
 		HubManager.hide_facility_notification.emit("Job Requests Board")
-		
+	
+	PlayerHudSignalBus.hub_menu_exited.emit()
+	await get_tree().create_timer(0.3).timeout
+	SignalBus.hide_tech_tree_canvas_layer.emit()
 	queue_free()
 
 func update_jobs_accepted_count_label() -> void:

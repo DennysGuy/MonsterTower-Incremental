@@ -3,23 +3,25 @@
 [ext_resource type="Texture2D" uid="uid://3kh4rdjcn7yx" path="res://Assets/NodeGraphics/ClassSelectNode.png" id="1_2c3pb"]
 [ext_resource type="Script" uid="uid://gtq5u0mtwu1y" path="res://src/Scripts/TechTree/class_selection_node.gd" id="1_42xko"]
 [ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="3_3t5hk"]
+[ext_resource type="FontFile" uid="uid://stn4dtg0uw57" path="res://Assets/Fonts/FredokaOne-Regular.ttf" id="4_n0s2n"]
 
 [node name="ClassSelectionNode" type="Node2D" unique_id=1934592524]
 script = ExtResource("1_42xko")
 
 [node name="Node" type="TextureButton" parent="." unique_id=162998439]
-offset_left = -31.0
-offset_top = -32.0
-offset_right = 33.0
-offset_bottom = 32.0
+offset_left = -82.0
+offset_top = -133.0
+offset_right = 84.0
+offset_bottom = 33.0
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("1_2c3pb")
+stretch_mode = 0
 
 [node name="Line2D5" type="Line2D" parent="." unique_id=960526346]
 position = Vector2(-142, -189)
 scale = Vector2(1, 1.3653846)
-points = PackedVector2Array(143, 161.85916, 143, 203.60565)
-width = 6.0
+points = PackedVector2Array(143, 161.85916, 143, 311.26764)
+width = 25.0
 
 [node name="LevelNeededPanel" type="Panel" parent="." unique_id=17107146]
 visible = false
@@ -42,12 +44,13 @@ Level 8"
 horizontal_alignment = 1
 
 [node name="Label" type="Label" parent="." unique_id=1190604733]
-offset_left = -67.0
-offset_top = -55.0
-offset_right = 71.0
-offset_bottom = -39.0
-theme_override_fonts/font = ExtResource("3_3t5hk")
-text = "Choose your class"
+offset_left = -291.0
+offset_top = -252.0
+offset_right = 268.0
+offset_bottom = -173.0
+theme_override_fonts/font = ExtResource("4_n0s2n")
+theme_override_font_sizes/font_size = 64
+text = "Choose your class!"
 horizontal_alignment = 1
 
 [connection signal="button_up" from="Node" to="." method="_on_node_button_up"]

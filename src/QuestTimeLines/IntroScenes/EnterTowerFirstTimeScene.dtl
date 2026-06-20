@@ -1,5 +1,5 @@
 do CutsceneManager.disable_player_functionality()
-join TowerGuide right
+join TowerGuide right [animation="Slide In Up" wait="true"]
 TowerGuide: Congratulations on completing the Hunter Exam and acquiring your Hunter License!
 TowerGuide: If the controls don't suit your taste, remember that you can change them in control settings (by hitting 'ESC' key) - Also, soon, full controller support will be implemented.
 TowerGuide: Good luck, and may your bounty be plentiful!

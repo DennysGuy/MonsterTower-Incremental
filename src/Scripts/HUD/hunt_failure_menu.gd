@@ -1,7 +1,6 @@
 class_name HuntFailureMenu extends Control
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-const TEMP_RESULTS_SCREEN_THEME = preload("uid://cpyx2c4kjhkag")
 @onready var floor_reached: Label = $ResultsPanel/GoalPanel/FloorReached
 @onready var to_town: Button = $ResultsPanel/ToTown
 @onready var new_run: Button = $ResultsPanel/NewRun

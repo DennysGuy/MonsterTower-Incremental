@@ -1,2 +1,2 @@
-join TowerGuide right
+join TowerGuide right [animation="Slide In Up" wait="true"]
 TowerGuide: There are some Job Requests available. Head over to Job Board to check them out!

@@ -41,6 +41,10 @@ func update_gem_bag_container(inventory : String) -> void:
 
 func close_out() -> void:
 	CutsceneManager.enable_player_functionality()
+	
+	
+	PlayerHudSignalBus.hub_menu_exited.emit()
+	await get_tree().create_timer(0.3).timeout
 	SignalBus.hide_tech_tree_canvas_layer.emit()
 	queue_free()
 

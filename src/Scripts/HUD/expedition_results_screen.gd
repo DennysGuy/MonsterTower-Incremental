@@ -182,7 +182,7 @@ func transfer_tab_to_bank(tab_name : String) -> void:
 				InventoryManager.update_grid_container(inventory_container, tab_name)
 				InventoryManager.update_grid_container(bank_container, "Bank")
 				sfx_player.play_sfx(TRANSFER_TO_BANK, 0, true)
-				await get_tree().create_timer(0.1).timeout
+				await get_tree().create_timer(0.05).timeout
 
 func play_close_out_sfx() -> void:
 	sfx_player.play_sfx(CLOSE_OUT)

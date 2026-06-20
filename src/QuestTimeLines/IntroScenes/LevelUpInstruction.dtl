@@ -1,5 +1,6 @@
 [wait time="1.0"]
 do CutsceneManager.disable_player_functionality()
+join WarmongeAlaisha right [animation="Slide From Right" wait="true"]
 WarmongeAlaisha: Hey! Alaisha here. I'm the Warmonger or Combat technician of the Starspire Hunters. It's a pleasure to meet you. It's always nice seeing new faces joining the ranks. Doin' God's work, son.
 WarmongeAlaisha: Looks like you've leveled up! That's exciting.
 WarmongeAlaisha: Leveling up will grant you Ability Points (AP) which can be spent over at the Class Advancement Center to your left.

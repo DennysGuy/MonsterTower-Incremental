@@ -1,3 +1,4 @@
+join CropDuster leftmost [animation="Slide In Up" wait="true"]
 CropDuster: Hey Newbie. \
 Now that you've selected a class, you have now gained access to that class's unique arsenal.
 CropDuster: On the right, you can see weapons that are currently available. Not much - but it is a start.

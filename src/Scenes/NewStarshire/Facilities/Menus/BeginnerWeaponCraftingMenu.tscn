@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cc1xppx3tkq4f"]
 
 [ext_resource type="Script" uid="uid://cbuffb253p3na" path="res://src/Scripts/Facilities/Menus/crafting_menu.gd" id="1_88p6l"]
+[ext_resource type="PackedScene" uid="uid://dh4a1fdo4tblk" path="res://src/Scenes/NewStarshire/Facilities/FacilityBGs/SmithingStationBG.tscn" id="2_88p6l"]
 [ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="2_rabgv"]
 [ext_resource type="Texture2D" uid="uid://cfo2whg1w2q42" path="res://Assets/Facilities/CraftingStationMenu.png" id="3_3ulfr"]
 [ext_resource type="FontFile" uid="uid://qgj228ltdttv" path="res://Assets/Fonts/alagard.ttf" id="4_cswec"]
@@ -75,17 +76,21 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_88p6l")
 
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1672008804]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1081.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=1801202365]
+own_world_3d = true
+size = Vector2i(1920, 1080)
+
+[node name="SmithingStationBG" parent="SubViewportContainer/SubViewport" unique_id=531201827 instance=ExtResource("2_88p6l")]
+
 [node name="SfxPlayer" parent="." unique_id=510219631 instance=ExtResource("2_rabgv")]
 
-[node name="Panel" type="Panel" parent="." unique_id=1458398501]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
 [node name="Background" type="TextureRect" parent="." unique_id=1078700021]
+self_modulate = Color(1, 1, 1, 0.96000004)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

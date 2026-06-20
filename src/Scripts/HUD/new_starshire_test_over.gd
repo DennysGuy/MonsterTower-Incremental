@@ -24,16 +24,22 @@ func _process(delta: float) -> void:
 
 func spawn_pause_menu() -> void:
 	canvas_layer.show()
+	PlayerHudSignalBus.hub_menu_accessed.emit()
+	await get_tree().create_timer(0.3).timeout
 	var pause_menu : PauseMenu = preload("uid://dlaq2oh2iuyjk").instantiate()
 	canvas_layer.add_child(pause_menu)
 	
 func spawn_tech_tree() -> void:
 	canvas_layer.show()
+	PlayerHudSignalBus.hub_menu_accessed.emit()
+	await get_tree().create_timer(0.3).timeout
 	var tech_tree : NewTechTree = preload("uid://diodc16waxg0q").instantiate()
 	sub_viewport.add_child(tech_tree)
 
 func spawn_tower_entrance_map() -> void:	
 	canvas_layer.show()
+	PlayerHudSignalBus.hub_menu_accessed.emit()
+	await get_tree().create_timer(0.3).timeout
 	var tower_entrance_map : TowerEntranceMap = preload("uid://bgurt44iah13x").instantiate()
 	control.add_child(tower_entrance_map)
 
@@ -42,6 +48,8 @@ func hide_tech_tree_canvas_layer() -> void:
 
 func spawn_grand_market() -> void:
 	canvas_layer.show()
+	PlayerHudSignalBus.hub_menu_accessed.emit()
+	await get_tree().create_timer(0.3).timeout
 	var market : GrandMarketMenu = preload("uid://cfuw5h0apwpq").instantiate()
 	control.add_child(market)
 
@@ -53,30 +61,41 @@ func spawn_sword_crafting_menu() -> void:
 		sword_crafting_station = preload("uid://cc1xppx3tkq4f").instantiate()
 	else:
 		sword_crafting_station = preload("uid://ctnmpc84yxlgj").instantiate()
-	
+	PlayerHudSignalBus.hub_menu_accessed.emit()
+	await get_tree().create_timer(0.3).timeout
 	control.add_child(sword_crafting_station)
 
 func spawn_gem_stone_menu() -> void:
 	canvas_layer.show()
+	PlayerHudSignalBus.hub_menu_accessed.emit()
+	await get_tree().create_timer(0.3).timeout
 	var gem_stone_station : GemStoneStation = preload("uid://v4skqw8t11ip").instantiate()
 	control.add_child(gem_stone_station)
 
 func spawn_beginner_tree() -> void:
 	canvas_layer.show()
+	PlayerHudSignalBus.hub_menu_accessed.emit()
+	await get_tree().create_timer(0.3).timeout
 	var beginner_ability_tree : BeginnerTechTree = preload("uid://y6ru08whvroa").instantiate()
 	sub_viewport.add_child(beginner_ability_tree)
 
 func spawn_warrior_tree() -> void:
 	canvas_layer.show()
+	PlayerHudSignalBus.hub_menu_accessed.emit()
+	await get_tree().create_timer(0.3).timeout
 	var warrior_tech_tree : NewAbilityUpgradeMenu = preload("uid://d0r1bngbqs2ch").instantiate()
 	control.add_child(warrior_tech_tree)
 
 func spawn_class_selection_menu() -> void:
 	canvas_layer.show()
+	PlayerHudSignalBus.hub_menu_accessed.emit()
+	await get_tree().create_timer(0.3).timeout
 	var class_selection_menu : ClassSelectionMenu = preload("uid://b404uvbhnmjxd").instantiate()
 	control.add_child(class_selection_menu)
 
 func spawn_job_board_menu() -> void:
 	canvas_layer.show()
+	PlayerHudSignalBus.hub_menu_accessed.emit()
+	await get_tree().create_timer(0.3).timeout
 	var job_board_menu : JobBoardMenu = preload("uid://e5wt3r6lpfow").instantiate()
 	control.add_child(job_board_menu)

@@ -31,8 +31,6 @@ render_target_update_mode = 4
 position = Vector2(0, 5)
 hud = NodePath("../../../HUD")
 
-[node name="HUD" parent="." unique_id=129498783 instance=ExtResource("2_46meg")]
-
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=51113824]
 visible = false
 
@@ -60,3 +58,5 @@ canvas_item_default_texture_filter = 0
 physics_object_picking = true
 size = Vector2i(1920, 1080)
 render_target_update_mode = 0
+
+[node name="HUD" parent="." unique_id=129498783 instance=ExtResource("2_46meg")]

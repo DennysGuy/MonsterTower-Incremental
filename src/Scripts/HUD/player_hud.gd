@@ -12,6 +12,7 @@ var bag_showing : bool = false
 var map_name : String = ""
 @onready var quest_hub: QuestHub = $PlayerHUD/QuestHub
 
+
 @onready var hunt_quota: RichTextLabel = $PlayerHUD/HuntQuota
 @export var expedition_timer: ExpeditionTimerLocal
 @onready var big_notification_label: Label = $PlayerHUD/BigNotificationLabel
@@ -60,6 +61,7 @@ var quests_showing : bool = false
 
 var codex_open : bool = false
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	PlayerHudSignalBus.update_player_health.connect(update_player_health)
@@ -91,6 +93,8 @@ func _ready() -> void:
 	#player_health_bar.value = PlayerStats.player_stats["Current Health"]
 	
 	PlayerHudSignalBus.show_boss_hp_bar.connect(show_boss_hp_bar)
+	PlayerHudSignalBus.hub_menu_accessed.connect(play_dip_in_up_transition)
+	PlayerHudSignalBus.hub_menu_exited.connect(play_dip_in_down_transition)
 	
 	CodexManager.show_codex.connect(toggle_codex_on)
 	CodexManager.hide_codex.connect(toggle_codex_off)
@@ -101,6 +105,10 @@ func _ready() -> void:
 	InventoryManager.show_open_bag_notice.connect(show_open_bag_notice)
 	InventoryManager.hide_open_bag_notice.connect(hide_open_bag_notice)
 	QuestManager.show_quest_complete_notice.connect(quest_complete_notice)
+	
+	PlayerHudSignalBus.hub_menu_accessed.connect(hide_hud)
+	PlayerHudSignalBus.hub_menu_exited.connect(show_hud)
+	
 	#player_mp_bar.max_value = PlayerStats.player_stats["Current MP"]
 	#player_mp_bar.value = player_mp_bar.max_value
 	update_xp_bar()
@@ -360,3 +368,17 @@ func open_codex() -> void:
 	var tween : Tween = get_tree().create_tween()
 	tween.tween_property(codex, "position", Vector2(960,540),0.3)
 	codex_open = true
+
+func play_dip_in_down_transition() -> void:
+	animation_player.play("DipInDown")
+
+func play_dip_in_up_transition() -> void:
+	animation_player.play("DipInUp")
+
+func hide_hud() -> void:
+	await get_tree().create_timer(0.3).timeout
+	player_hud.hide()
+
+func show_hud() -> void:
+	await get_tree().create_timer(0.3).timeout
+	player_hud.show()

@@ -1,5 +1,7 @@
+do CutsceneManager.disable_player_functionality()
 do MusicPlayer.pause_music()
 audio "res://Audio/Music/TutorialCutscene.wav" [bus="Music"]
+join CropDuster right [animation="Slide In Up" wait="true" mirrored="true"]
 CropDuster: Crop Duster here. \
 \
 I do everything related to Weapon Tech for the Starspire Hunters Guild. \

@@ -10,12 +10,22 @@
 "style": "ChefNadeneStyle",
 "suffix": ""
 },
-&"default_portrait": "",
+&"default_portrait": "Portrait",
 &"description": "",
 &"display_name": "Chef Nadene",
 &"mirror": false,
 &"nicknames": [""],
 &"offset": Vector2(0, 0),
-&"portraits": {},
+&"portraits": {
+"Portrait": {
+"export_overrides": {
+"image": "\"res://Assets/NPCs/ChefNadenePortrait.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+}
+},
 &"scale": 1.0
 }

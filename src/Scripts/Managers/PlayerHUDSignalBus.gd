@@ -114,3 +114,9 @@ signal trigger_long_fade_in_out
 
 @warning_ignore("unused_signal")
 signal check_if_can_cast_combat_ability
+
+@warning_ignore("unused_signal")
+signal hub_menu_accessed
+
+@warning_ignore("unused_signal")
+signal hub_menu_exited

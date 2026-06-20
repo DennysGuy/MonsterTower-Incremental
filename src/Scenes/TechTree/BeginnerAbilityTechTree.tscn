@@ -2,70 +2,105 @@
 
 [ext_resource type="Script" uid="uid://cgnvowy6po0ng" path="res://src/Scripts/TechTree/beginner_ability_tech_tree.gd" id="1_jigag"]
 [ext_resource type="PackedScene" uid="uid://bhimqkbcn26r2" path="res://src/Scenes/TechTree/TechNode.tscn" id="2_7au7t"]
+[ext_resource type="PackedScene" uid="uid://le1oweji7bum" path="res://src/Scenes/NewStarshire/Facilities/FacilityBGs/DojoInterior.tscn" id="2_25qaf"]
 [ext_resource type="Resource" uid="uid://bonlosm00p4kf" path="res://src/Resources/TechTree/TechNodes/DashAttack.tres" id="3_acel5"]
 [ext_resource type="Resource" uid="uid://cq5drdy7t8gas" path="res://src/Resources/TechTree/TechNodes/DoubleJump.tres" id="3_gvncw"]
 [ext_resource type="Resource" uid="uid://burkenucbrobr" path="res://src/Resources/TechTree/TechNodes/ArialAttack.tres" id="3_urnm2"]
 [ext_resource type="PackedScene" uid="uid://ctnd6nsfkdnpq" path="res://src/Scenes/TechTree/ClassSelectionNode.tscn" id="6_yrrks"]
-[ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="7_kcoxo"]
+[ext_resource type="FontFile" uid="uid://stn4dtg0uw57" path="res://Assets/Fonts/FredokaOne-Regular.ttf" id="9_2kjf1"]
 
 [node name="BeginnerAbilityTechTree" type="Node2D" unique_id=1152802901]
 script = ExtResource("1_jigag")
 
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1729285472]
+offset_left = 2.0
+offset_top = -1.0
+offset_right = 1942.0
+offset_bottom = 1094.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=872805039]
+own_world_3d = true
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+size_2d_override = Vector2i(1920, 1080)
+size_2d_override_stretch = true
+render_target_update_mode = 4
+
+[node name="Node3D" parent="SubViewportContainer/SubViewport" unique_id=980688464 instance=ExtResource("2_25qaf")]
+
 [node name="ColorRect" type="ColorRect" parent="." unique_id=389501912]
-offset_left = -742.0
-offset_top = -407.0
-offset_right = 1360.0
-offset_bottom = 778.0
+modulate = Color(1, 1, 1, 0.043)
+offset_left = -119.0
+offset_top = -75.0
+offset_right = 1983.0
+offset_bottom = 1175.0
 mouse_filter = 2
 color = Color(0.11858138, 0.11858138, 0.11858138, 1)
 
+[node name="Panel" type="Panel" parent="." unique_id=966798911]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 338.0
+offset_top = 285.0
+offset_right = 1621.0
+offset_bottom = 980.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="AirAttackNode" parent="." unique_id=310214223 instance=ExtResource("2_7au7t")]
-offset_left = 145.0
-offset_top = 252.0
-offset_right = 145.0
-offset_bottom = 252.0
+offset_left = 517.0
+offset_top = 852.0
+offset_right = 517.0
+offset_bottom = 852.0
 tech_node_stats = ExtResource("3_urnm2")
 node_type = 2
 
 [node name="DashAttackNode" parent="." unique_id=53768398 instance=ExtResource("2_7au7t")]
-offset_left = 501.0
-offset_top = 252.0
-offset_right = 501.0
-offset_bottom = 252.0
+offset_left = 1406.0
+offset_top = 854.0
+offset_right = 1406.0
+offset_bottom = 854.0
 tech_node_stats = ExtResource("3_acel5")
 node_type = 2
 
 [node name="DoubleJumpAttack" parent="." unique_id=1184687078 instance=ExtResource("2_7au7t")]
-offset_left = 330.0
-offset_top = 252.0
-offset_right = 330.0
-offset_bottom = 252.0
+offset_left = 962.0
+offset_top = 857.0
+offset_right = 962.0
+offset_bottom = 857.0
 tech_node_stats = ExtResource("3_gvncw")
 node_type = 2
 
 [node name="ClassSelectionNode" parent="." unique_id=1934592524 instance=ExtResource("6_yrrks")]
 visible = false
-position = Vector2(329, 84)
+position = Vector2(960, 447)
 
 [node name="Line2D" type="Line2D" parent="." unique_id=625943590]
-position = Vector2(0, 36)
-points = PackedVector2Array(142, 139, 504, 139)
-width = 5.0
+position = Vector2(735, 551)
+points = PackedVector2Array(-229, 139, 683, 139)
+width = 20.0
 
 [node name="Line2D2" type="Line2D" parent="." unique_id=1033140257]
-position = Vector2(2, 36)
-points = PackedVector2Array(143, 137, 143, 184)
-width = 6.0
+position = Vector2(373, 543)
+points = PackedVector2Array(143, 137, 143, 274)
+width = 20.0
 
 [node name="Line2D3" type="Line2D" parent="." unique_id=336424129]
-position = Vector2(358, 36)
-points = PackedVector2Array(143, 137, 143, 184)
-width = 6.0
+position = Vector2(1093, 437)
+width = 25.0
 
 [node name="Line2D4" type="Line2D" parent="." unique_id=1157426340]
-position = Vector2(187, 35)
-points = PackedVector2Array(143, 138, 143, 184)
-width = 6.0
+position = Vector2(818, 554)
+points = PackedVector2Array(143, 138, 143, 259)
+width = 20.0
+
+[node name="Line2D5" type="Line2D" parent="." unique_id=370362882]
+position = Vector2(1265, 554)
+points = PackedVector2Array(143, 138, 143, 259)
+width = 20.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1006028746]
 
@@ -73,49 +108,55 @@ width = 6.0
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -132.0
-offset_top = 10.0
-offset_right = -9.0
-offset_bottom = 26.0
+offset_left = -1860.0
+offset_top = 66.0
+offset_right = -1427.0
+offset_bottom = 130.0
 grow_horizontal = 0
 theme_override_colors/font_color = Color(0.7808215, 0.00047187388, 0.7808161, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("7_kcoxo")
+theme_override_fonts/font = ExtResource("9_2kjf1")
+theme_override_font_sizes/font_size = 48
 text = "AP Available: 1"
-horizontal_alignment = 2
 
 [node name="Marker2D" type="Marker2D" parent="CanvasLayer" unique_id=2080506174]
 position = Vector2(683, 182)
 
 [node name="ExitButton" type="Button" parent="CanvasLayer" unique_id=1982611885]
-offset_left = 276.0
-offset_top = 136.0
-offset_right = 391.0
-offset_bottom = 196.0
+offset_left = 1701.0
+offset_top = 48.0
+offset_right = 1848.0
+offset_bottom = 120.0
 theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("7_kcoxo")
+theme_override_fonts/font = ExtResource("9_2kjf1")
 theme_override_font_sizes/font_size = 52
 text = "Close"
 
 [node name="Label2" type="Label" parent="CanvasLayer" unique_id=1269328633]
-offset_left = 816.0
-offset_top = 207.0
-offset_right = 1080.0
-offset_bottom = 255.0
-theme_override_fonts/font = ExtResource("7_kcoxo")
-theme_override_font_sizes/font_size = 48
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -225.5
+offset_top = 66.0
+offset_right = 225.5
+offset_bottom = 149.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("9_2kjf1")
+theme_override_font_sizes/font_size = 82
 text = "Core Abilities"
 
 [node name="Label" type="Label" parent="CanvasLayer" unique_id=1508531494]
-offset_left = 228.0
-offset_top = 195.0
-offset_right = 499.0
-offset_bottom = 247.0
-theme_override_fonts/font = ExtResource("7_kcoxo")
-theme_override_font_sizes/font_size = 52
+offset_left = 1662.0
+offset_top = 129.0
+offset_right = 1862.0
+offset_bottom = 169.0
+theme_override_fonts/font = ExtResource("9_2kjf1")
+theme_override_font_sizes/font_size = 32
 text = "'Esc' to Close"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1156812690]
-position = Vector2(320, 180)
+position = Vector2(962, 539)
 
 [connection signal="button_up" from="CanvasLayer/ExitButton" to="." method="_on_exit_button_button_up"]

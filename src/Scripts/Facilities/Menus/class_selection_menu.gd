@@ -59,12 +59,9 @@ func set_new_class_outfit_graphic() -> void:
 	SaveManager.save_player_stats()
 
 func _on_exit_button_button_up() -> void:
-	
 	close_out()
 
 func close_out() -> void:
-	GameManager.can_pause_game = true
-	GameManager.player_can_move = true
-	GameManager.can_open_bag = true
-	GameManager.can_open_tower_map = true
+	CutsceneManager.enable_player_functionality()
+	SignalBus.hide_tech_tree_canvas_layer.emit()
 	queue_free()
