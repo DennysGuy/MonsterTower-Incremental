@@ -1,9 +1,11 @@
 class_name MainMenuBG extends Node3D
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var animation_player_2: AnimationPlayer = $AnimationPlayer2
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	animation_player_2.play("SwoopIn")
 	animation_player.play("boatbob")
 
 

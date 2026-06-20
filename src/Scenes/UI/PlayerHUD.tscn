@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dngkcgpb2st7c" path="res://src/Scenes/UI/ExpeditionTimer.tscn" id="7_g3oel"]
 [ext_resource type="Texture2D" uid="uid://d2lk756o7qqgx" path="res://Assets/HUD/NewPlayerHUD/NewMPBar_Fill.png" id="7_tjlva"]
 [ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="8_65fhw"]
+[ext_resource type="FontFile" uid="uid://stn4dtg0uw57" path="res://Assets/Fonts/FredokaOne-Regular.ttf" id="8_usdtc"]
 [ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="9_jyqen"]
 [ext_resource type="Texture2D" uid="uid://70adp83wjd4h" path="res://Assets/HUD/NewPlayerHUD/NewXPBar_Base.png" id="11_7qkr7"]
 [ext_resource type="Texture2D" uid="uid://q8w4d5mwenld" path="res://Assets/HUD/NewPlayerHUD/NewXPBar_Fill.png" id="12_7qkr7"]
@@ -670,22 +671,6 @@ theme_override_fonts/font = ExtResource("5_nt012")
 theme_override_font_sizes/font_size = 18
 text = "MP 100/100"
 
-[node name="MapeName" type="Label" parent="PlayerHUD" unique_id=727908015]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -132.0
-offset_top = 8.0
-offset_right = -9.0
-offset_bottom = 24.0
-grow_horizontal = 0
-theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("5_nt012")
-theme_override_font_sizes/font_size = 24
-text = "Floor 1 -1"
-horizontal_alignment = 2
-
 [node name="ExpeditionTimer" parent="PlayerHUD" unique_id=1374901185 instance=ExtResource("7_g3oel")]
 layout_mode = 1
 
@@ -767,6 +752,24 @@ theme_override_fonts/font = ExtResource("5_nt012")
 theme_override_font_sizes/font_size = 14
 text = "Level 1"
 horizontal_alignment = 2
+
+[node name="MapeName" type="Label" parent="PlayerHUD" unique_id=727908015]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.89635414
+anchor_right = 1.0
+anchor_bottom = 0.0129629625
+offset_left = -132.0
+offset_top = 8.0
+offset_right = -9.0
+offset_bottom = 24.0
+grow_horizontal = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("8_usdtc")
+theme_override_font_sizes/font_size = 24
+text = "Floor 1 -1"
+horizontal_alignment = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="CurrencyLabel" type="RichTextLabel" parent="PlayerHUD" unique_id=1726793478]
 visible = false

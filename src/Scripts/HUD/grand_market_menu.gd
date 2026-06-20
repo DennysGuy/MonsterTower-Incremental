@@ -124,13 +124,14 @@ func _on_close_button_up() -> void:
 	close_out()
 
 func close_out() -> void:
-	CutsceneManager.enable_player_functionality()
+	
 	CookingManager.can_craft_bar.emit()
 	CookingManager.can_craft_dish.emit()
 	
 	PlayerHudSignalBus.hub_menu_exited.emit()
 	await get_tree().create_timer(0.3).timeout
 	SignalBus.hide_tech_tree_canvas_layer.emit()
+	CutsceneManager.enable_player_functionality()
 	queue_free()
 
 func init_market() -> void:

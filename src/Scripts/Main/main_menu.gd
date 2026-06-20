@@ -17,6 +17,8 @@ func _ready() -> void:
 	audio_stream_player.play()
 	ambience.play()
 	animation_player.play("FadeIn")
+	await get_tree().create_timer(2.5).timeout
+	animation_player.play("FadeInMenu")
 	
 func go_to_next_scene() -> void:
 	animation_player.play("FadeOut")
