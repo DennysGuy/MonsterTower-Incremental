@@ -16,6 +16,7 @@ currency_required = 2500
 materials_required = Array[Dictionary]([{
 ExtResource("1_jrjfj"): 2
 }])
+stat_relation = 1
 stat_name = "HP Siphen Amount"
 upgrade_interval = 0.03
 prereqs = Array[String](["Siphen Chance 1:1"])

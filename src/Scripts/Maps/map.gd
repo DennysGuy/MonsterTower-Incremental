@@ -62,7 +62,7 @@ func _ready() -> void:
 	SignalBus.return_to_starshire.connect(go_to_starshire)
 	SignalBus.go_to_victory_hunt_menu.connect(go_to_victory_menu)
 	SignalBus.go_to_failure_hunt_menu.connect(go_to_failure_menu)
-	SignalBus.update_kill_quota.connect(update_hunt_quota)
+	SignalBus.update_kill_quota.connect(update_monster_count)
 	SignalBus.play_sfx.connect(play_sfx)
 	LevelingManager.play_level_up_sfx.connect(play_level_up_sfx)
 	CutsceneManager.play_map_theme.connect(play_map_theme)
@@ -80,7 +80,7 @@ func _ready() -> void:
 		
 		if map_type == MAP_TYPE.CHECKPOINT_FLOOR and tower_entrance_data.number_of_spawn_locations <= 0:
 			tower_entrance_data.number_of_spawn_locations += 1
-			SaveManager.save_floor_data(tower_entrance_data, map_name)
+			SaveManager.save_floor_data(tower_entrance_data, tower_entrance_data.floor_name)
 		
 		if campfire_list:
 			for i in range(0,tower_entrance_data.camp_fires_reached):
@@ -107,8 +107,8 @@ func _ready() -> void:
 				#else:
 					#SignalBus.update_monsters_left.emit("Campfires Discovered: %s/%s" % [tower_entrance_data.camp_fires_reached, tower_entrance_data.total_camp_fires],false)
 			
-			PlayerStats.check_points_unlocked[map_name] = true
-			SaveManager.save_floor_data(tower_entrance_data, map_name)
+			PlayerStats.check_points_unlocked[tower_entrance_data.floor_name] = true
+			SaveManager.save_floor_data(tower_entrance_data, tower_entrance_data.floor_name)
 			SaveManager.save_player_stats()
 		
 		if map_type ==	MAP_TYPE.FLOOR or map_type == MAP_TYPE.CHECKPOINT_FLOOR:
@@ -210,6 +210,13 @@ func go_to_starshire() -> void:
 		else:
 			tree.change_scene_to_file("res://src/Scenes/UI/ExpeditionResultsScreen.tscn")
 
+func update_monster_count() -> void:
+	PlayerHudSignalBus.update_monsters_left.emit("Monsters Left: %s" % int(get_tree().get_nodes_in_group("Enemy").size()))
+	await get_tree().process_frame
+	if get_tree().get_nodes_in_group("Enemy").is_empty():
+		print("WE MADE IT! BABY")
+		complete_hunt_challenge()
+
 func go_to_victory_menu() -> void:
 	MusicPlayer.stop_player(true)
 	player.damageable = false
@@ -300,26 +307,21 @@ func spawn_mp_vials() -> void:
 		if roll_challice_spawn_chance():
 			pos.spawn_mp_vial()
 
-func update_hunt_quota() -> void:
+func complete_hunt_challenge() -> void:
 	if !GameManager.hunt_challenge_selected:
 		return
 	
 	await get_tree().process_frame
-	if map_type == MAP_TYPE.CHECKPOINT_FLOOR:
-		if monster_spawn_node.get_children().is_empty():
-			sfx_player.play_sfx(TIER_UP)
-			MusicPlayer.stop_player()
-			#MusicPlayer.play_song(hunt_victory_theme)
-			GameManager.expedition_timer_started = false
-			tower_entrance_data.hunt_challenge_completed = true
-			SaveManager.save_floor_data(tower_entrance_data, map_name)
-			play_unlock_elevator_sequence()
-			SignalBus.unlock_next_room.emit()
-			SignalBus.update_kill_quota_text.emit("Hunt Challenge Completed! Head to the Exit Elevator!", true, false)
-			SignalBus.update_monsters_left.emit("Monsters Left: %s" % [monster_spawn_node.get_children().size()],false)
-		else:
-			SignalBus.update_kill_quota_text.emit("Defeat all Monsters to win!", false, false)	
-			SignalBus.update_monsters_left.emit("Monsters Left: %s" % [monster_spawn_node.get_children().size()],false)
+
+
+	sfx_player.play_sfx(TIER_UP)
+	MusicPlayer.stop_player()
+	#MusicPlayer.play_song(hunt_victory_theme)
+	GameManager.expedition_timer_started = false
+	tower_entrance_data.hunt_challenge_completed = true
+	SaveManager.save_floor_data(tower_entrance_data, tower_entrance_data.floor_name)
+	play_unlock_elevator_sequence()
+	SignalBus.unlock_next_room.emit()
 
 
 func load_floor_data() -> void:

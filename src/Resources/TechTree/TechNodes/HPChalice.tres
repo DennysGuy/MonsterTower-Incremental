@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bpuvul1oargs6" path="res://Assets/TechTree/SurvivalNodes/HPChalice_Disabled_Graphic.png" id="1_6savn"]
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_57xjm"]
 [ext_resource type="Texture2D" uid="uid://cnvwfik7o4eq0" path="res://Assets/TechTree/SurvivalNodes/HPChalice_Graphic.png" id="2_p52bn"]
+[ext_resource type="Resource" uid="uid://boeryxspsw8uq" path="res://src/Resources/Dishes/CookedGagootz.tres" id="3_6savn"]
 
 [resource]
 script = ExtResource("1_57xjm")
@@ -10,7 +11,9 @@ node_name = "Chalice of Welfare"
 icon = ExtResource("2_p52bn")
 disabled_icon = ExtResource("1_6savn")
 description = "Health Chalices will spawn in the tower healing the player for 10% of their current Health"
-currency_required = 300
+materials_required = Array[Dictionary]([{
+ExtResource("3_6savn"): 2
+}])
 node_type = 1
 stat_relation = 1
 stat_name = "HP Chalice"

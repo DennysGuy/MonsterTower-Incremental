@@ -108,7 +108,7 @@ func update_sword() -> void: #run this function when we upgrade the sword.
 		else:
 			button.disabled = true
 			sword_graphic.texture = sword.mold_graphic
-				
+		QuestManager.weapon_tracker_updated.emit()
 		SignalBus.update_resource_needed_panel.emit()
 
 func _on_close_button_up() -> void:

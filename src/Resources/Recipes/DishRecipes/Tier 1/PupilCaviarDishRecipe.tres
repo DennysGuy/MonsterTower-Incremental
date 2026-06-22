@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dbnkhofj0ddny" path="res://Assets/Facilities/CookingStation/PupilCaviar.png" id="1_3u60t"]
 [ext_resource type="Resource" uid="uid://dmmblpt46r1fs" path="res://src/Resources/Dishes/PupilCaviar.tres" id="2_3u60t"]
 [ext_resource type="Resource" uid="uid://dkjdh3ty2qqfp" path="res://src/Resources/Actors/Enemies/Biome1/BeetleKnight/BeetleEye.tres" id="3_83pi2"]
+[ext_resource type="Resource" uid="uid://dupi3hkqbevyx" path="res://src/Resources/Actors/Enemies/Biome1/BeetleKnight/BeetleShell.tres" id="4_8h70w"]
 [ext_resource type="Script" uid="uid://cljygiasf4103" path="res://src/Scripts/Facilities/crafting_recipe.gd" id="5_xwyc8"]
 
 [resource]
@@ -10,7 +11,7 @@ script = ExtResource("5_xwyc8")
 recipe_name = "Pupil Caviar"
 menu_icon = ExtResource("1_3u60t")
 index = 2
-description = "A delicacy to the elite; scrapped from the bottom of tower."
+description = "A delicacy to the elite; scraped from the bottom of tower."
 recipe_tier = 1
 crafting_time = 25.0
 recipe_type = 1
@@ -18,6 +19,9 @@ success_rate = 0.85
 output_item = ExtResource("2_3u60t")
 recipe_list = Array[Dictionary]([{
 ExtResource("3_83pi2"): 2
+}, {
+ExtResource("4_8h70w"): 1
 }])
 related_nodes = Array[String](["Item Bag 2", "Jump Height 2", "Vial Spawn Rate 1"])
+related_enemies = Array[String](["Beetle Knight", "Beetle Knight LVL2"])
 metadata/_custom_type_script = "uid://cljygiasf4103"

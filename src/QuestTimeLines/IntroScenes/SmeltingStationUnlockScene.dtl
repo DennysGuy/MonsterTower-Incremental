@@ -9,7 +9,7 @@ Thanks for fixing up the old Smelting Furnace, you did us a big favor. Let me kn
 CropDuster: Just like the Cooking Range, the Smelting Furnace works the same way. Bring your ingredients to the station, any related recipes will pop up - select one and the quanttiy, and off you go.
 CropDuster: Oh I almost forgot. Remember those big rocks in the tower? You can now mine those with a pick axe.
 CropDuster: *Hands you a stone pick axe* (SFX should play here in the future)
-CropDuster: It's not much, but it should be a start with excavating resources so you can actually use this damn thing here. Check out the upgrades in the tech tree - things can actually get pretty crazy there in terms of mining upgrades - eventually you'll be able to improve your pickaxe. If efficiency is your name, then them upgrades will be your game.
+CropDuster: It's not much, but it should be a start with excavating resources so you can actually use this damn thing here. To improve your ability to use the station and mine, check out the Crafting tree in the computer terminal!
 [wait time="1.0"]
 do CutsceneManager.set_camera_to_player()
 do CutsceneManager.enable_player_functionality()

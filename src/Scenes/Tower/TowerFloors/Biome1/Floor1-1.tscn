@@ -9,10 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://c8ov03gkkda4k" path="res://src/Scenes/PlayerCamera.tscn" id="3_aah8w"]
 [ext_resource type="AudioStream" uid="uid://cp2iodtnnun5l" path="res://Audio/Music/MossyDungeonTestTheme1.wav" id="3_rayuj"]
 [ext_resource type="TileSet" uid="uid://cuil6pmpg4xf1" path="res://src/Scenes/Tower/TowerFloors/Biome1/Biome1-Floor.tres" id="4_om3xh"]
-[ext_resource type="AudioStream" uid="uid://bnfe0t36iu1dy" path="res://Audio/Music/TemporaryHuntMusic.mp3" id="4_yalon"]
 [ext_resource type="PackedScene" uid="uid://cr6q5dxlkks" path="res://src/Scenes/Tower/LadderArea.tscn" id="5_c1fqw"]
 [ext_resource type="PackedScene" uid="uid://dj0ett15s3u5m" path="res://src/Scenes/Tower/TowerFloors/OreRockMarker.tscn" id="5_kpd6k"]
-[ext_resource type="AudioStream" uid="uid://n4ky26neitxn" path="res://Audio/Music/TempVictoryTheme1.mp3" id="5_pkrjl"]
 [ext_resource type="TileSet" uid="uid://cbwyncwtk5kxk" path="res://src/Scenes/Tower/TowerFloors/Biome1/Biome1-Boundaries.tres" id="5_tuy5g"]
 [ext_resource type="Resource" uid="uid://dxfrcyw0rux0q" path="res://src/Resources/OreRock/TinOreRock.tres" id="6_hvi06"]
 [ext_resource type="PackedScene" uid="uid://bethw5tnlxnnt" path="res://src/Scenes/Actors/Enemies/MossyDungeon/CorruptedMushie/CorruptedMushie.tscn" id="6_ko10l"]
@@ -36,6 +34,12 @@
 [ext_resource type="Texture2D" uid="uid://xd36daaflxhj" path="res://Assets/Tower/ExitAreaIcon.png" id="30_yeiuc"]
 [ext_resource type="Resource" uid="uid://d3ak1ilk1id2y" path="res://src/Resources/GemChests/Tier1GemChest.tres" id="35_rayuj"]
 [ext_resource type="Texture2D" uid="uid://cbhdcmbn14fcp" path="res://Assets/EnvironmentalAssets/DirectionalSigns_PressDown.png" id="36_rayuj"]
+
+[sub_resource type="Resource" id="Resource_83waj"]
+metadata/__load_path__ = "res://Audio/Music/TemporaryHuntMusic.mp3"
+
+[sub_resource type="Resource" id="Resource_pm5vn"]
+metadata/__load_path__ = "res://Audio/Music/TempVictoryTheme1.mp3"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c1fqw"]
 texture = ExtResource("2_hk0iw")
@@ -1068,13 +1072,13 @@ size = Vector2(297, 20)
 
 [node name="Floor1-1" type="Node2D" unique_id=1821431660 node_paths=PackedStringArray("exit_elevator", "camera", "ore_rock_markers", "gem_stone_chest_markers", "campfire_list", "hp_replenish_points", "mp_replenish_points", "sfx_player", "monster_spawn_node", "ambience_player")]
 script = ExtResource("1_u3nwm")
-map_name = "Floor 1-1"
+map_name = "M. Dungeon - F1"
 map_id = 1
 exit_elevator = NodePath("ExitElevator")
 tower_entrance_data = ExtResource("2_n5ad4")
 map_theme_song = ExtResource("3_rayuj")
-hunt_theme_song = ExtResource("4_yalon")
-hunt_victory_theme = ExtResource("5_pkrjl")
+hunt_theme_song = SubResource("Resource_83waj")
+hunt_victory_theme = SubResource("Resource_pm5vn")
 camera = NodePath("PlayerCamera")
 ore_rock_spawn_rate = 0.65
 ore_rock_markers = NodePath("OreRockMarkers")

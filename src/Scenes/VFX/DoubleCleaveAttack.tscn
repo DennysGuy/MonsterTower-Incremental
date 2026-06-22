@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://xsmgmpbxjc3b" path="res://src/Scenes/Actors/Utilities/HitBox.tscn" id="3_fr3md"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2fsd3"]
-size = Vector2(36, 24)
+size = Vector2(61, 24)
 
 [node name="DoubleCleaveAttack" type="Node2D" unique_id=1193083635]
 z_index = 4096
@@ -20,7 +20,7 @@ texture = ExtResource("2_gbqns")
 [node name="HitBox" parent="." unique_id=934295999 instance=ExtResource("3_fr3md")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=658636951]
-position = Vector2(27, -2)
+position = Vector2(33.5, -2)
 shape = SubResource("RectangleShape2D_2fsd3")
 
 [node name="Timer" type="Timer" parent="." unique_id=1720582926]

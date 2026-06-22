@@ -58,6 +58,12 @@ func _on_gui_input(event: InputEvent) -> void:
 		SignalBus.populate_weapon_description_panel.emit(weapon)		
 
 func update_stored_weapon(new_weapon : Sword) -> void:
+	if !weapon:
+		return
+	
+	if !new_weapon:
+		return
+	
 	if new_weapon.index != weapon.index:
 		return
 	

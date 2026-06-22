@@ -43,7 +43,7 @@ theme_override_constants/outline_size = 0
 theme_override_fonts/normal_font = ExtResource("2_poutn")
 theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
-text = "[color=yellow]Main Quests[/color]"
+text = "[color=yellow]Main Quest[/color]"
 horizontal_alignment = 1
 
 [node name="ColorRect" type="ColorRect" parent="QuestHubVBox" unique_id=280896136]
@@ -75,7 +75,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("2_poutn")
 theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
-text = "[color=aqua]Job Tracker[/color]"
+text = "[color=aqua] Weapon Tracker[/color]"
 horizontal_alignment = 1
 
 [node name="ColorRect2" type="ColorRect" parent="QuestHubVBox" unique_id=542987695]
@@ -86,15 +86,3 @@ color = Color(0.05471, 0.12719995, 0.24395797, 1)
 [node name="VBoxContainer2" type="VBoxContainer" parent="QuestHubVBox" unique_id=1314456147]
 layout_mode = 2
 theme_override_constants/separation = 0
-
-[node name="QuestTrackerItem" parent="QuestHubVBox/VBoxContainer2" unique_id=1932706946 instance=ExtResource("2_ag3ob")]
-layout_mode = 2
-theme_override_constants/margin_top = 10
-
-[node name="QuestTrackerItem2" parent="QuestHubVBox/VBoxContainer2" unique_id=1276459350 instance=ExtResource("2_ag3ob")]
-layout_mode = 2
-theme_override_constants/margin_top = 10
-
-[node name="QuestTrackerItem3" parent="QuestHubVBox/VBoxContainer2" unique_id=775457670 instance=ExtResource("2_ag3ob")]
-layout_mode = 2
-theme_override_constants/margin_top = 10

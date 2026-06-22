@@ -58,6 +58,9 @@ func process_physics(_delta: float) -> State:
 			return swing_pick_axe_state
 		return attack_1_state
 	
+	if Input.is_action_just_pressed("dash_attack")  and GameManager.player_can_move:
+		return dash_attack_state
+	
 	if GameManager.can_issue_abilities:
 		if Input.is_action_just_pressed("special_attack") and PlayerStats.get_equipped_ability("Special Attack") and parent.can_issue_ability("Special Attack"):
 			return special_attack

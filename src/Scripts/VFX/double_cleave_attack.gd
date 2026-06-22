@@ -14,7 +14,7 @@ func _ready() -> void:
 		double_cleave_sword.flip_h = true
 	attack_damage = int(ability.attack_damage_modifier * PlayerStats.player_stats["Attack Damage"])
 	var tween : Tween = create_tween()
-	tween.tween_property(double_cleave_sword, "modulate:a", 0.85, 0.1)
+	tween.tween_property(double_cleave_sword, "modulate:a", 0.95, 0.1)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

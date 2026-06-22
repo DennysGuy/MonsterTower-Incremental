@@ -49,10 +49,11 @@ func process_physics(_delta: float) -> State:
 	if parent.jump_buffer_timer > 0 and parent.is_on_floor():
 		parent.jump_buffer_timer = 0
 		return jump_state
-	
-	if GameManager.can_issue_abilities:
-		if Input.is_action_just_pressed("dash_attack") and PlayerStats.facilities_unlocked["Dash"] and parent.can_issue_ability("Dash"):
+		
+	if Input.is_action_just_pressed("dash_attack") and PlayerStats.facilities_unlocked["Dash"] and parent.can_issue_ability("Dash"):
 			return dash_attack_state
+			
+	if GameManager.can_issue_abilities:
 
 		if Input.is_action_just_pressed("special_attack") and PlayerStats.get_equipped_ability("Special Attack") and parent.can_issue_ability("Special Attack"):
 			return special_attack

@@ -28,7 +28,7 @@ TODO: We will add saves for classes as well
 	"Attack Damage" : 13.0,
 	"Tracked Weapon": 1,
 	"Boss Damage Bonus": 0.0,
-	"HP Siphen Amount": 0.0,
+	"HP Siphen Amount": 0.02,
 	"HP Siphen Chance": 0.0,
 	"Insta Kill Chance": 0.0,
 	"Insta Kill Threshold": 0.0,
@@ -369,7 +369,7 @@ TODO: We will add saves for classes as well
 			"Buff Limit Time": 0.0
 		},
 		"Double Jump": {
-			"Cooldown Time" : 0.5,
+			"Cooldown Time" : 0.3,
 			"HP Cost" : 0.0,
 			"MP Cost" : 0.0,
 			"Base Attack": 0.0,
@@ -421,7 +421,7 @@ TODO: We will add saves for classes as well
 		"Combat Ability 1" : {
 			"Cooldown Time" : 6.0,
 			"HP Cost" : 0.0,
-			"MP Cost" : 15.0,
+			"MP Cost" : 13.0,
 			"Base Attack": 50.0,
 			"Number of Enemies Hit" : 10.0,
 			"Max Hit Count": 1.0,
@@ -443,7 +443,7 @@ TODO: We will add saves for classes as well
 			"Buff Limit Time": 0.0
 		},
 		"Combat Ability 2": {
-			"Cooldown Time" : 8.0,
+			"Cooldown Time" : 7.0,
 			"HP Cost" : 0.0,
 			"MP Cost" : 15.0,
 			"Base Attack": 15.0,
@@ -492,11 +492,11 @@ TODO: We will add saves for classes as well
 		},
 		"Combat Ability 4": {
 			"Cooldown Time" : 5.0,
-			"HP Cost" :10.0,
-			"MP Cost" : 12.0,
+			"HP Cost" :0.0,
+			"MP Cost" : 16.0,
 			"Base Attack": 0.0,
 			"Number of Enemies Hit" : 1.0,
-			"Max Hit Count": 2.0,
+			"Max Hit Count": 1.0,
 			"Health Recovery" : 0.0,
 			"MP Recovery" : 0.0,
 			"Defense Modifier" : 0.0,

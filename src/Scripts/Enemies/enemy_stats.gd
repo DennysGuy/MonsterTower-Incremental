@@ -9,6 +9,7 @@ class_name EnemyStats extends Resource
 @export var can_attack : bool = false
 @export var can_move : bool = false
 @export var idle_animation : Texture2D
+@export var floor_locations : Array[String]
 @export_enum("Aggro", "PassiveAggro", "Passive") var enemy_type : int
 enum ENEMY_TYPE {AGGRO, PASSIVEAGGRO, PASSIVE}
 enum BIOME {MOSSY_DUNGEON}

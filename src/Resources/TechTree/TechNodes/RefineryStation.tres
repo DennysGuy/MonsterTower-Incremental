@@ -11,9 +11,8 @@ node_name = "Refinery Station"
 icon = ExtResource("2_f633c")
 disabled_icon = ExtResource("1_ym6ey")
 description = "Refinery Station allows you to smelt ore retrieved from rocks in the tower into craftable materials."
-currency_required = 1000
 materials_required = Array[Dictionary]([{
-ExtResource("2_qpohm"): 2
+ExtResource("2_qpohm"): 4
 }])
 node_type = 1
 stat_relation = 5

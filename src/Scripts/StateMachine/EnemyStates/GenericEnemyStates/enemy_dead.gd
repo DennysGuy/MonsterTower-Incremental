@@ -15,6 +15,9 @@ func enter() -> void:
 	parent.damageable = false
 	parent.is_dead = true
 	
+	if GameManager.hunt_challenge_selected:
+			SignalBus.update_kill_quota.emit()
+			
 	if parent.enemy_stats.die_vox and GameManager.monster_voices_toggled:
 		parent.play_sfx(parent.enemy_stats.die_vox)
 	

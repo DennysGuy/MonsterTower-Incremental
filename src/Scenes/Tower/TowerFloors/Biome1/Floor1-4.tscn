@@ -84,7 +84,7 @@ size = Vector2(347, 20)
 
 [node name="Floor1-4" type="Node2D" unique_id=1707445138 node_paths=PackedStringArray("exit_elevator_marker", "exit_elevator", "camera", "ore_rock_markers", "gem_stone_chest_markers", "campfire_list", "hp_replenish_points", "mp_replenish_points", "sfx_player", "monster_spawn_node", "ambience_player")]
 script = ExtResource("1_qpvn6")
-map_name = "Floor 1-4"
+map_name = "M.Dungeon - F4"
 map_id = 4
 exit_elevator_marker = NodePath("ExitElevatorMarker")
 exit_elevator = NodePath("ExitElevator")

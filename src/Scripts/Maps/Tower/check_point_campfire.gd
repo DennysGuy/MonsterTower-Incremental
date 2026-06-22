@@ -37,7 +37,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		GameManager.play_sfx(DISCOVER_CAMP_FIRE)
 		CodexManager.send_codex_notification.emit("Campfire Reached!")
 		PlayerHudSignalBus.flash_screen.emit()
-		SignalBus.update_monsters_left.emit("Campfires Discovered %s/%s" % [entrance_data.camp_fires_reached, entrance_data.total_camp_fires], false)
+		SignalBus.update_monsters_left.emit("Campfires Discovered %s/%s" % [entrance_data.camp_fires_reached, entrance_data.total_camp_fires])
 		if entrance_data.camp_fires_reached >= entrance_data.total_camp_fires:
 			entrance_data.hunt_challenge_unlocked = true
 			SignalBus.update_kill_quota_text.emit("", entrance_data.hunt_challenge_completed, entrance_data.hunt_challenge_unlocked)

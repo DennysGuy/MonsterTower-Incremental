@@ -22,4 +22,5 @@ ExtResource("2_mrkob"): 1
 ExtResource("4_l04ss"): 2
 }])
 related_nodes = Array[String](["Banking 2", "Deeper Pockets 2", "Max HP 2", "Max MP 2", "Pick Up Range 2"])
+related_enemies = Array[String](["Batclopse", "Corrupted Mushie"])
 metadata/_custom_type_script = "uid://cljygiasf4103"

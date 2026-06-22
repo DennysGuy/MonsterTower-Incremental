@@ -25,4 +25,5 @@ ExtResource("3_s1uvx"): 2
 ExtResource("4_81dc5"): 2
 }])
 related_nodes = Array[String](["Item Bag 3", "Banking 3", "Cooking Accuracy 2", "Critical Cooking 2", "Deeper Pockets 3", "Movement 3"])
+related_enemies = Array[String](["Goblin Thief", "Serpant Mimic", "Serpant Mimic LVL2"])
 metadata/_custom_type_script = "uid://cljygiasf4103"

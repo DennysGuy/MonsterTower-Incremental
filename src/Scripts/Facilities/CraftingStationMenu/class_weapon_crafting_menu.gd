@@ -93,6 +93,7 @@ func track_weapon_recipe() -> void:
 	SaveManager.save_weapon_tracked_status(stored_weapon.index, true)
 	SignalBus.update_resource_needed_panel.emit()
 	SignalBus.show_tracked_icon.emit(stored_weapon.index)
+	QuestManager.weapon_tracker_updated.emit()
 	select_weapon(stored_weapon)
 	play_sfx(JOB_ACCEPT_JINGLE)
 

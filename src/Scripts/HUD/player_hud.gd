@@ -28,6 +28,7 @@ var map_name : String = ""
 @onready var currency_label: RichTextLabel = $PlayerHUD/CurrencyLabel
 
 @onready var codex: Codex = $PlayerHUD/Codex
+@onready var big_label_animator: AnimationPlayer = $BigLabelAnimator
 
 const CLOSE_IN = preload("uid://dc3va7knibxnb")
 const CLOSE_OUT = preload("uid://caj0oih8j2sty")
@@ -274,6 +275,7 @@ func load_expedition_timer_with_hunt_time() -> void:
 
 func issue_big_notification(message : String) -> void:
 	big_notification_label.text = message
+	play_big_label_pop_in_anim()
 	big_notification_label.show()
 	
 func hide_big_notification_label() -> void:
@@ -295,11 +297,11 @@ func play_countdown_beep() -> void:
 func show_class_notice() -> void:
 	advance_class_notice.show()
 	
-func remaining_monsters(text : String, out_of_enmies : bool) -> void:
-	if !out_of_enmies:
-		monsters_left.text = text
-	else:
-		monsters_left.text = "[color=yellow]Out of Monsters!\nIncrease Cap![/color]"
+func remaining_monsters(text : String) -> void:
+	big_notification_label.show()
+	play_big_label_pop_in_anim()
+	big_notification_label.text = text
+
 
 func start_timer() -> void:
 	pass
@@ -382,3 +384,7 @@ func hide_hud() -> void:
 func show_hud() -> void:
 	await get_tree().create_timer(0.3).timeout
 	player_hud.show()
+
+
+func play_big_label_pop_in_anim() -> void:
+	big_label_animator.play("PopIn")

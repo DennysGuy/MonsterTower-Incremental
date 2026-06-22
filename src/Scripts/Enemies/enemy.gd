@@ -38,9 +38,8 @@ func _ready() -> void:
 		health_bar.value = health
 
 func _exit_tree() -> void:
-	if is_dead:
-		if GameManager.hunt_challenge_selected:
-			SignalBus.update_kill_quota.emit()
+	pass
+		
 
 func _process(delta: float) -> void:
 	super(delta)

@@ -46,17 +46,10 @@ func populate_quest_description_panel(quest : Quest) -> void:
 	chapter_relation.text = quest.chapter_relation
 	quest_line.text = quest.quest_line
 	log_description.text = quest.description
-	populate_deliverable_container(quest)
-	xp_reward.text = "XP Reward: %s" % quest.xp_reward
-	currency_reward.text = "Currency Reward: %s" % quest.currency_reward
 	status.text = quest.get_status_title()
 	
 func _on_main_quests_button_button_up() -> void:
 	stored_quest_type = "Main"
-	populate_quests_list(stored_quest_type, "Introduction")
-
-func _on_job_quests_button_button_up() -> void:
-	stored_quest_type = "Job"
 	populate_quests_list(stored_quest_type, "Introduction")
 
 func _on_fall_quests_button_button_up() -> void:

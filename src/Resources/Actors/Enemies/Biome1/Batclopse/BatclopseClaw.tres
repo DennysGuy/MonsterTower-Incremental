@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_2vg52")
 drop_icon = ExtResource("1_e08j4")
-drop_chance = 0.08
+drop_chance = 0.18
 item_name = "Batclopse Claw"
 item_type = 2
 sell_value = 135

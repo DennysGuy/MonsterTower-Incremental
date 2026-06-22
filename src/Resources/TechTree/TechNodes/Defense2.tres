@@ -12,12 +12,11 @@ icon = ExtResource("2_q5jdn")
 disabled_icon = ExtResource("1_1h2fj")
 description = "Increases defense by +5 for each level"
 max_level = 3
-currency_required = 800
 materials_required = Array[Dictionary]([{
 ExtResource("1_wj17q"): 2
 }])
 stat_relation = 1
 stat_name = "Defense"
 upgrade_interval = 8.0
-prereqs = Array[String](["Chalice of Welfare:1"])
+prereqs = Array[String](["Defense 1:2"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

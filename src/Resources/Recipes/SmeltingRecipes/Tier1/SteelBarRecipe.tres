@@ -24,4 +24,5 @@ ExtResource("4_unp75"): 1
 ExtResource("4_y01lj"): 2
 }])
 related_nodes = Array[String](["Attack 4", "Crit Chance 4", "Crit Damage 4", "Boss Damage 1", "Insta Kill Chance 1", "Insta Kill 1", "Mining Barrage 1", "Mining Speed 2", "Ore Drop Chance 2", "Refinery Accuracy 2", "Refinery Speed 2"])
+related_floors = Array[String](["Mossy Dungeon - Floor 5"])
 metadata/_custom_type_script = "uid://cljygiasf4103"

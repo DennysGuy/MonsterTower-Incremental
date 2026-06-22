@@ -21,6 +21,7 @@ touch_damage = true
 can_attack = true
 can_move = true
 idle_animation = ExtResource("3_njnt0")
+floor_locations = Array[String](["Mossy Dungeon - Floor 3"])
 enemy_type = 1
 max_health = 400
 attack = 37

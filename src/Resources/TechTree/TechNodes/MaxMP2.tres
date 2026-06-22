@@ -12,7 +12,6 @@ icon = ExtResource("2_kl7cm")
 disabled_icon = ExtResource("1_lly3w")
 description = "Raises Max MP by 100 for each level."
 max_level = 4
-currency_required = 1000
 materials_required = Array[Dictionary]([{
 ExtResource("3_lly3w"): 2
 }])

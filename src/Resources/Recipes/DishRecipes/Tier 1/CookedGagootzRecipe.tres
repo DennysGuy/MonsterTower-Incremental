@@ -19,4 +19,5 @@ recipe_list = Array[Dictionary]([{
 ExtResource("2_6roun"): 2
 }])
 related_nodes = Array[String](["Max HP 2", "Refinery Station"])
+related_enemies = Array[String](["Corrupted Mushie", "Corrupted Mushie LVL2"])
 metadata/_custom_type_script = "uid://cljygiasf4103"

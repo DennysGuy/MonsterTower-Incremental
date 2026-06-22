@@ -18,8 +18,9 @@ success_rate = 0.75
 critical_success_rate = 0.1
 failure_rate = 0.25
 output_item = ExtResource("2_pkrlu")
-recipe_list = Array[Dictionary]([{}, {
+recipe_list = Array[Dictionary]([{
 ExtResource("4_urnnc"): 2
 }])
 related_nodes = Array[String](["AP Gain 2", "Chalice Spawn Rate 1", "Siphen Chance 1"])
+related_enemies = Array[String](["Serpant Mimic", "Serpant Mimic LVL2"])
 metadata/_custom_type_script = "uid://cljygiasf4103"

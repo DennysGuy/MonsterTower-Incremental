@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_1c6sc")
 drop_icon = ExtResource("1_lruoo")
-drop_chance = 0.08
+drop_chance = 0.1
 item_name = "Hidden Shiv"
 item_type = 2
 sell_value = 170

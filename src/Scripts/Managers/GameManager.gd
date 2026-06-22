@@ -90,6 +90,7 @@ func attack_enemy(player : Player, enemy : Enemy, incoming_damage : int, is_crit
 		enemy.increment_break_count()
 	
 	if can_siphen():
+		print("I CAN SIPHEN!")
 		siphen_hp(incoming_damage)
 	
 	if ability:
@@ -106,16 +107,21 @@ func attack_enemy(player : Player, enemy : Enemy, incoming_damage : int, is_crit
 
 func can_siphen() -> bool:
 	var chance : int = int(PlayerStats.player_stats["HP Siphen Chance"]*100)
+	print(chance)
 	var rand_num : int = randi_range(0,100)
-	if chance <= rand_num:
+	if rand_num <= chance:
 		return true
 	return false
 
 func siphen_hp(amount : int) -> void:
-	var siphened_amount : int = int(amount * PlayerStats.player_stats["HP Siphen Amount"])
-	PlayerStats.player_stats["Current Health"] += siphened_amount
-	if PlayerStats.player_stats["Current Health"] >= PlayerStats.player_stats["Max Health"]:
-		PlayerStats.player_stats["Current Health"] = PlayerStats.player_stats["Max Health"]
+	#add heal label
+	var siphened_amount : int = int(PlayerStats.player_stats["Max Health"] * PlayerStats.player_stats["HP Siphen Amount"])
+	print(PlayerStats.player_stats["HP Siphen Amount"])
+	print("This is the amount siphened: %s" % siphened_amount) 
+	GameManager.current_player_health += siphened_amount
+	var total_max_hp : int = (PlayerStats.player_stats["Max Health"]+PlayerStats.get_current_sword().get_total_hp_bonus())
+	if GameManager.current_player_health >= total_max_hp:
+		GameManager.current_player_health = total_max_hp
 	PlayerHudSignalBus.update_player_health.emit() 
 
 func calculate_targets(enemies_in_hitbox : Array, player : Player, number_of_hits : int) -> Array[Entity]:

@@ -12,7 +12,7 @@ disabled_icon = ExtResource("1_jk8fh")
 description = "[color=red]Cook fancy dishes, make profit, or spend on upgrades![/color]
 "
 unlocked = true
-currency_required = 1000
+currency_required = 500
 node_type = 1
 stat_relation = 4
 stat_name = "Cooking Station"

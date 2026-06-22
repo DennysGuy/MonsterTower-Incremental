@@ -2,17 +2,12 @@ do MusicPlayer.pause_music()
 audio "res://Audio/Music/TutorialCutscene.wav" [bus="Music"]
 do CutsceneManager.disable_player_functionality()
 join "Chef Nadene" rightmost [animation="Slide In Up" wait="true"]
-"Chef Nadene": Hey newbie! Names, Chef Nadene. I run the culinary department for the Starspire Hunters. I'm responsible for overseeing what keeps ya'll fed. So be gratful.. or don't be surprised if ya'lls rations shrink overtime.
-"Chef Nadene": HA HA HA! I'm just yanking your chain.\
+"Chef Nadene": Hey newbie! Names, Chef Nadene. I run the culinary department for the Starspire Hunters. I'm responsible for overseeing what keeps ya'll fed., so be gratful.. or don't be surprised if ya'lls rations shrink overtime.
+"Chef Nadene": HA HA HA! I'm just yankin' your chain.\
 \
 Thanks for helping us repair the Cooking Range. This thing can get on the fritz sometimes - so it's important for us Hunters to keep on top of keeping this baby running. After all, this thing is the basis of our livelyhoods!
-"Chef Nadene": Anyways,\
-It's pretty simple to use. Bring the necessary ingredients to the Cooking range, and the relevant recipes will appear. Click on them, choose the amount you want to cook, and off you go. It's as simple as that.
-"Chef Nadene": Also, be sure to check out the cooking upgrades in the ol' Computer Terminal, they can certainly be great for assisting you in becoming a more sufficient Cook.
-"Chef Nadene": And who knows? Maybe one day you'll become a legendary Chef like your's truly. HA HA HA! Just kidding. \
-\
-Have it! And may your bounty be plentifyful.
-[wait time="1.0"]
+"Chef Nadene": Also, be sure to check out the cooking upgrades in the ol' Computer Terminal, they can certainly be great for assisting you in becoming a more proficient cook.
+"Chef Nadene": Have at it! And may your bounty be plentifyful.
 do CutsceneManager.set_camera_to_player()
 [wait time="1.0"]
 do CutsceneManager.enable_player_functionality()

@@ -55,7 +55,7 @@ func _on_go_to_floor_button_up() -> void:
 	get_tree().change_scene_to_file(stored_entrance_data.scene_path)
 
 func store_entrance_data(entrance_data : TowerEntranceData) -> void:
-	GameManager.spawn_location = 0
+	GameManager.spawn_location = entrance_data.camp_fires_reached
 	set_mode_description_as_expedition()
 	go_to_floor.disabled = false
 	stored_entrance_data = entrance_data

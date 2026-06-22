@@ -31,4 +31,5 @@ ExtResource("5_1v1wu"): 2
 ExtResource("6_r70v0"): 1
 }])
 related_nodes = Array[String](["Chalice of Welfare", "Vial of the Esoteric", "AP Gain 1", "XP Gain 1"])
+related_enemies = Array[String](["Batclopse", "Beetle Knight", "Beetle Knight LVL2", "Serpant Mimic", "Serpant Mimic LVL2"])
 metadata/_custom_type_script = "uid://cljygiasf4103"

@@ -40,6 +40,10 @@ signal check_node_name(selected_node_name : String)
 signal show_quest_complete_notice
 @warning_ignore("unused_signal")
 signal destroy_guide_box(task_id: int)
+@warning_ignore("unused_signal")
+signal recipe_objective_complete(recipe)
+@warning_ignore("unused_signal")
+signal weapon_tracker_updated
 
 @onready var quests : Dictionary = {
 	"Main": {

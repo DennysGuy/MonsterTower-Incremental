@@ -27,7 +27,7 @@ func _ready() -> void:
 	if monster_spawn_node:
 		if GameManager.hunt_challenge_selected:
 			#hud.animation_player.play("StartHuntChallnge")
-			SignalBus.update_monsters_left.emit("Defeat all Monsters to win!",false,false)
+			update_monster_count()
 		else:
 			SignalBus.update_monsters_left.emit("Campfires Discovered: %s/%s" % [tower_entrance_data.camp_fires_reached, tower_entrance_data.total_camp_fires],false)
 	

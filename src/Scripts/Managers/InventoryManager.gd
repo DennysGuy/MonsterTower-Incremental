@@ -289,6 +289,7 @@ func check_if_can_add_to_inventory(selected_item : Item, inventory_name : String
 func update_inventories(inventory_name : String) -> void:
 	update_inventory_bag.emit(inventory_name)
 	update_bank_inventory.emit()
+	SignalBus.inventory_changed.emit()
 	SaveManager.save_inventories()
 
 func update_grid_container(grid_container : GridContainer, inventory : String, is_shop : bool = true, inventory_array : Array = []) -> void:

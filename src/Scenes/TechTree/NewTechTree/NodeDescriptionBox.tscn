@@ -13,7 +13,7 @@ shadow_color = Color(0, 0, 0, 0.72300005)
 shadow_size = 1
 shadow_offset = Vector2(2, 2)
 
-[node name="NodeDescriptionBox" type="Control" unique_id=1427550260 node_paths=PackedStringArray("node_title", "current_benefits", "description", "cost")]
+[node name="NodeDescriptionBox" type="Control" unique_id=1427550260 node_paths=PackedStringArray("node_title", "current_benefits", "description", "cost", "license_promotion_notice")]
 z_index = 4096
 layout_mode = 3
 anchors_preset = 8
@@ -34,6 +34,7 @@ node_title = NodePath("Panel/NodeTitle")
 current_benefits = NodePath("Panel/CurrentBenefits")
 description = NodePath("Panel/Panel/Description")
 cost = NodePath("Panel/Cost")
+license_promotion_notice = NodePath("LicensePromotionNotice")
 
 [node name="Panel" type="Panel" parent="." unique_id=1835709407]
 layout_mode = 1
@@ -156,3 +157,31 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/h_separation = 50
 columns = 2
+
+[node name="LicensePromotionNotice" type="Panel" parent="." unique_id=210712848]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="LicensePromotionNotice" unique_id=1581987181]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -155.0
+offset_top = -11.5
+offset_right = 155.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.41364303
+pivot_offset = Vector2(150, 17)
+theme_override_fonts/font = ExtResource("1_ttc2g")
+theme_override_font_sizes/font_size = 22
+text = "License Promotion Needed."

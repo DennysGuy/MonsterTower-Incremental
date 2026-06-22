@@ -45,8 +45,9 @@ func process_physics(_delta: float) -> State:
 		return idle_state
 	
 	if parent.velocity.y == 0:
-		parent.animation_player.stop(false)
-		parent.sfx_player.stop()
+		if parent.animation_player.is_playing():
+			parent.animation_player.stop(false)
+			parent.sfx_player.stop()
 	else:
 		if !parent.sfx_player.playing:
 			parent.sfx_player.play_sfx(climb_sfx)

@@ -179,3 +179,7 @@ signal set_combat_ability_icon_enabled
 signal combat_class_menu_closed
 @warning_ignore("unused_signal")
 signal gem_stone_menu_closed()
+@warning_ignore("unused_signal")
+signal check_point_button_clicked(chosen_index : int)
+@warning_ignore("unused_signal")
+signal inventory_changed

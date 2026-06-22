@@ -493,6 +493,68 @@ _data = {
 &"StartHuntChallenge": SubResource("Animation_6ndbt")
 }
 
+[sub_resource type="Animation" id="Animation_t87gw"]
+resource_name = "PopIn"
+length = 0.2
+step = 0.02
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../PlayerHUD/BigNotificationLabel:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.75, 1.75), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../PlayerHUD/BigNotificationLabel:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.06, 0.14201327, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.27925268, 0.27925268, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_jde3i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../PlayerHUD/BigNotificationLabel:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../PlayerHUD/BigNotificationLabel:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jde3i"]
+_data = {
+&"PopIn": SubResource("Animation_t87gw"),
+&"RESET": SubResource("Animation_jde3i")
+}
+
 [sub_resource type="Animation" id="Animation_h7rl7"]
 resource_name = "QuestCompleteNotice"
 
@@ -1066,28 +1128,6 @@ bbcode_enabled = true
 text = "[color=purple]Select your Class at AP Center! [/color]"
 horizontal_alignment = 1
 
-[node name="BigNotificationLabel" type="Label" parent="PlayerHUD" unique_id=759498820]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -569.0
-offset_top = -114.5
-offset_right = 578.0
-offset_bottom = -58.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0.9835877, 0.818833, 0.7133627, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 25
-theme_override_fonts/font = ExtResource("19_tjlva")
-theme_override_font_sizes/font_size = 52
-text = "Quest Complete!"
-horizontal_alignment = 1
-
 [node name="BossHPBar" parent="PlayerHUD" unique_id=1981304713 instance=ExtResource("23_2jn0u")]
 visible = false
 layout_mode = 1
@@ -1112,6 +1152,29 @@ layout_mode = 1
 offset_left = -1834.0
 offset_right = -1834.0
 
+[node name="BigNotificationLabel" type="Label" parent="PlayerHUD" unique_id=759498820]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -569.0
+offset_top = -340.0
+offset_right = 578.0
+offset_bottom = -284.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(574, 33)
+theme_override_colors/font_color = Color(0.9835877, 0.818833, 0.7133627, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 25
+theme_override_fonts/font = ExtResource("19_tjlva")
+theme_override_font_sizes/font_size = 52
+text = "Quest Complete!"
+horizontal_alignment = 1
+
 [node name="CodexNotificationPanel" parent="PlayerHUD" unique_id=809726153 instance=ExtResource("26_118cf")]
 layout_mode = 0
 anchors_preset = 0
@@ -1131,6 +1194,10 @@ mouse_filter = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1863759790]
 libraries/ = SubResource("AnimationLibrary_g3oel")
+
+[node name="BigLabelAnimator" type="AnimationPlayer" parent="." unique_id=1717267204]
+root_node = NodePath("../AnimationPlayer")
+libraries/ = SubResource("AnimationLibrary_jde3i")
 
 [node name="QuestTrackerPlayer" type="AnimationPlayer" parent="." unique_id=1494020433]
 root_node = NodePath("../BagAnimationPlayer")
@@ -1179,7 +1246,7 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 175.0
-offset_bottom = 175.00488
+offset_bottom = 175.0044
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2

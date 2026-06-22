@@ -12,8 +12,10 @@ func _ready() -> void:
 	#QuestManager.connect_active_main_quest_signals()
 	QuestManager.initial_main_quests.connect(initialize_main_quests)
 	QuestManager.initialize_job_quests.connect(initialize_job_quests)
+	QuestManager.weapon_tracker_updated.connect(initialize_weapon_tracker)
 	initialize_main_quests()
-	initialize_job_quests()
+	initialize_weapon_tracker()
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -42,6 +44,16 @@ func initialize_job_quests() -> void:
 			selected_quest.status = SaveManager.current_save_game.quests[selected_quest.quest_id]["Status"]
 			quest_tracker_item.quest_data = selected_quest
 			job_tracker_v_box.add_child(quest_tracker_item)
+
+func initialize_weapon_tracker() -> void:
+	clear_quest_box(job_tracker_v_box)
+	var tracked_index : int = PlayerStats.player_stats["Tracked Weapon"]
+	if  tracked_index == -1:
+		return
+	
+	var weapon_tracker_item : WeaponTrackerItem = preload("uid://dmw22q7vkqtg6").instantiate()
+	weapon_tracker_item.weapon = PlayerStats.get_sword(tracked_index)
+	job_tracker_v_box.add_child(weapon_tracker_item)
 	
 func clear_quest_box(v_box : VBoxContainer) -> void:
 	for child in v_box.get_children():

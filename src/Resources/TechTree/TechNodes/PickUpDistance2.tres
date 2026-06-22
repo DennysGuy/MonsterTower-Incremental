@@ -2,7 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://ca08jajvtu3px" path="res://Assets/TechTree/InventoryNodes/PickUpDistance_Disabled_Graphic.png" id="1_nbrbe"]
 [ext_resource type="Texture2D" uid="uid://dunyas0t8avu0" path="res://Assets/TechTree/InventoryNodes/PickUpDistance_Graphic.png" id="2_272qm"]
-[ext_resource type="Resource" uid="uid://ctjyflf6qr4g" path="res://src/Resources/Dishes/MossyGoulash.tres" id="3_272qm"]
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="3_qrlkd"]
 
 [resource]
@@ -13,9 +12,6 @@ disabled_icon = ExtResource("1_nbrbe")
 description = "Increase Pick Up Damage by 20 for each level."
 max_level = 3
 currency_required = 1500
-materials_required = Array[Dictionary]([{
-ExtResource("3_272qm"): 2
-}])
 stat_relation = 3
 stat_name = "Pick Up Distance"
 upgrade_interval = 20.0

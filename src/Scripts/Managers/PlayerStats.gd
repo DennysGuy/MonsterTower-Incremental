@@ -27,7 +27,7 @@ const KNOCKBACK_FORCE : int = 100
 	"Tracked Weapon": 1,
 	"Attack Damage" : 13.0,
 	"Boss Damage Bonus": 0.0,
-	"HP Siphen Amount": 0.0,
+	"HP Siphen Amount": 0.2,
 	"HP Siphen Chance": 0.0,
 	"Insta Kill Chance": 0.0,
 	"Insta Kill Threshold": 0.0,

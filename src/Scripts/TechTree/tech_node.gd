@@ -184,9 +184,18 @@ func set_level_label() -> void:
 		level_label.text = "[color=yellow]Max[/color]"
 		return
 	if can_purchase():
-		level_label.text = "[color=green]%s/%s[/color]" % [tech_node_stats.current_level,tech_node_stats.max_level]
+		if if_ap_node():
+			level_label.text = "[color=green]%s/%s[/color]" % [tech_node_stats.current_level,tech_node_stats.ap_required]
+		else:
+			level_label.text = "[color=green]%s/%s[/color]" % [tech_node_stats.current_level,tech_node_stats.max_level]
 	else:
-		level_label.text = "[color=gray]%s/%s[/color]" % [tech_node_stats.current_level,tech_node_stats.max_level]
+		if if_ap_node():
+			level_label.text = "[color=gray]%s/%s[/color]" % [tech_node_stats.current_level,tech_node_stats.ap_required]
+		else:
+			level_label.text = "[color=gray]%s/%s[/color]" % [tech_node_stats.current_level,tech_node_stats.max_level]
+
+func if_ap_node() -> bool:
+	return tech_node_stats.ap_required >= 1
 
 func remove_tool_tip() -> void:
 	stored_node_description_box.close_out()
@@ -221,6 +230,7 @@ func create_tool_tip() -> void:
 			#tool_tip.panel.color = Color(tool_tip.locked)
 	if GameManager.license_promotion_time:
 		tool_tip.description.text = "Promote License to Continue."
+		tool_tip.show_license_promotion_notice()
 	else:
 		tool_tip.description.text = tech_node_stats.description
 	if node_type != TechTreeManager.TECH_NODE_TYPE.CLASS_ABILITY:
@@ -228,6 +238,9 @@ func create_tool_tip() -> void:
 			tool_tip.cost.text = "[color=green]Spirols: %s/%s[/color]" % [TechTreeManager.currency, tech_node_stats.currency_required]
 		else:
 			tool_tip.cost.text = "Spirols: %s/%s" % [TechTreeManager.currency, tech_node_stats.currency_required]
+	
+		if tech_node_stats.currency_required <= 0:
+			tool_tip.cost.text = ""
 	else:
 		if PlayerStats.player_stats["Ability Points"] >= tech_node_stats.ap_required:
 			tool_tip.cost.text = "[color=green]AP %s/%s[/color]" % [PlayerStats.player_stats["Ability Points"],tech_node_stats.ap_required]
@@ -291,7 +304,6 @@ func _on_gui_input(event: InputEvent) -> void:
 	if event.is_action_pressed("left_click") and in_range and !GameManager.license_promotion_time:
 		if node_type != TechTreeManager.TECH_NODE_TYPE.CLASS_ABILITY:
 			if can_click and TechTreeManager.currency < tech_node_stats.currency_required and has_resource_quantity():
-				print("Not enough currency!")
 				play_sfx(DENIED)
 				return
 		else:
