@@ -1,7 +1,6 @@
 [gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://ohr0gxoujtw2"]
 
 [ext_resource type="Texture2D" uid="uid://dpqmx3xdqw1up" path="res://Assets/TechTree/TraversalNodes/MovementSpeed_Disabled_Graphic.png" id="1_ganev"]
-[ext_resource type="Resource" uid="uid://b4owo1wr47wc" path="res://src/Resources/Dishes/WrappedKabab.tres" id="2_atcea"]
 [ext_resource type="Texture2D" uid="uid://q87r3t2lftlr" path="res://Assets/TechTree/TraversalNodes/MovementSpeed_Graphic.png" id="2_x6iwr"]
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="3_x6iwr"]
 
@@ -12,10 +11,7 @@ icon = ExtResource("2_x6iwr")
 disabled_icon = ExtResource("1_ganev")
 description = "For each level, increases movement speed by 20%"
 max_level = 3
-currency_required = 2000
-materials_required = Array[Dictionary]([{
-ExtResource("2_atcea"): 2
-}])
+currency_required = 7000
 stat_relation = 2
 stat_name = "Movement Speed"
 upgrade_interval = 0.2

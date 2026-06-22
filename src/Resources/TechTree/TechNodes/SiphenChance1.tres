@@ -12,7 +12,7 @@ disabled_icon = ExtResource("1_ria4e")
 description = "Increases Chance to steal HP when Striking Enemy by 10% per level.
 "
 max_level = 2
-currency_required = 2000
+currency_required = 8000
 stat_relation = 1
 stat_name = "HP Siphen Chance"
 upgrade_interval = 0.1

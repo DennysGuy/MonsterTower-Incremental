@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_kfwyn"]
 [ext_resource type="Texture2D" uid="uid://bvxem0v1wui70" path="res://Assets/TechTree/SmeltingNodes/MiningDistanceUpNode_Disabled_Graphic.png" id="1_kigdq"]
 [ext_resource type="Texture2D" uid="uid://1efmc175h7vl" path="res://Assets/TechTree/SmeltingNodes/MiningDistanceUpNode_Graphic.png" id="2_p5j2c"]
-[ext_resource type="Resource" uid="uid://buu8pdcooh3hc" path="res://src/Resources/CraftingResources/BronzeBar.tres" id="3_p5j2c"]
 
 [resource]
 script = ExtResource("1_kfwyn")
@@ -12,10 +11,7 @@ icon = ExtResource("2_p5j2c")
 disabled_icon = ExtResource("1_kigdq")
 description = "Increases a Mining Bolt's distance by +50 for each level."
 max_level = 3
-currency_required = 1600
-materials_required = Array[Dictionary]([{
-ExtResource("3_p5j2c"): 2
-}])
+currency_required = 3000
 stat_relation = 5
 stat_name = "Mining Bolt Distance"
 upgrade_interval = 50.0

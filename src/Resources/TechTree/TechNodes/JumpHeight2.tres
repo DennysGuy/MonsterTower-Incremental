@@ -1,7 +1,6 @@
 [gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://b4n8wh8pnsfi8"]
 
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_0tikt"]
-[ext_resource type="Resource" uid="uid://dmmblpt46r1fs" path="res://src/Resources/Dishes/PupilCaviar.tres" id="1_ek8tc"]
 [ext_resource type="Texture2D" uid="uid://j1qjvnd4te0r" path="res://Assets/TechTree/TraversalNodes/JumpHeight_Disabled_Graphic.png" id="1_nnbuj"]
 [ext_resource type="Texture2D" uid="uid://c4ejyou7turdo" path="res://Assets/TechTree/TraversalNodes/JumpHeight_Graphic.png" id="2_vsx62"]
 
@@ -12,10 +11,7 @@ icon = ExtResource("2_vsx62")
 disabled_icon = ExtResource("1_nnbuj")
 description = "Increases Jump Height by 10% for each level"
 max_level = 2
-currency_required = 1000
-materials_required = Array[Dictionary]([{
-ExtResource("1_ek8tc"): 1
-}])
+currency_required = 3000
 stat_relation = 2
 stat_name = "Jump Height"
 upgrade_interval = 0.1

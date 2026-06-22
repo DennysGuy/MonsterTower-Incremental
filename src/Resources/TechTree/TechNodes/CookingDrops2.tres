@@ -1,6 +1,5 @@
 [gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://dldvhuc6qmg2p"]
 
-[ext_resource type="Resource" uid="uid://d0wo8tvdfk8j1" path="res://src/Resources/Dishes/HuntersStew.tres" id="1_7w7xp"]
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="2_vtq7n"]
 
 [resource]
@@ -8,9 +7,6 @@ script = ExtResource("2_vtq7n")
 node_name = "Cooking Drops 2"
 description = "Increases chance to receive cooking drops by 10%"
 currency_required = 2000
-materials_required = Array[Dictionary]([{
-ExtResource("1_7w7xp"): 1
-}])
 stat_relation = 4
 stat_name = "Cooking Drop Chance Bonus"
 upgrade_interval = 0.1

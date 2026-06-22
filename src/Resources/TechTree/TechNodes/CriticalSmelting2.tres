@@ -11,7 +11,6 @@ node_name = "Critical Smelting 2"
 icon = ExtResource("2_3tryd")
 disabled_icon = ExtResource("1_s88wf")
 description = "Increases chance to double item output when smelting."
-currency_required = 1000
 materials_required = Array[Dictionary]([{
 ExtResource("3_3tryd"): 2
 }])

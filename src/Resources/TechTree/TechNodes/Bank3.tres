@@ -1,9 +1,8 @@
 [gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://c2do0e0poa4or"]
 
 [ext_resource type="Texture2D" uid="uid://b47i64hbhbsau" path="res://Assets/TechTree/InventoryNodes/BankExpansion_Disabled_Graphic.png" id="1_uc6y0"]
-[ext_resource type="Resource" uid="uid://b4owo1wr47wc" path="res://src/Resources/Dishes/WrappedKabab.tres" id="2_q5aq0"]
 [ext_resource type="Texture2D" uid="uid://dw7hc4m3rrhgw" path="res://Assets/TechTree/InventoryNodes/BankExpansion_Graphic.png" id="2_qqqri"]
-[ext_resource type="Resource" uid="uid://d1pg7dveofnwm" path="res://src/Resources/Dishes/Svio.tres" id="3_q5aq0"]
+[ext_resource type="Resource" uid="uid://cs6ojn6tc0alq" path="res://src/Resources/CraftingResources/SteelBar.tres" id="3_q5aq0"]
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="3_uc6y0"]
 
 [resource]
@@ -13,8 +12,6 @@ icon = ExtResource("2_qqqri")
 disabled_icon = ExtResource("1_uc6y0")
 description = "Bank Slots increased to 16"
 materials_required = Array[Dictionary]([{
-ExtResource("2_q5aq0"): 2
-}, {
 ExtResource("3_q5aq0"): 2
 }])
 stat_relation = 3

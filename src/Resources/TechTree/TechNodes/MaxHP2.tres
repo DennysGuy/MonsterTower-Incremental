@@ -2,7 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://cverklmq4oxwm" path="res://Assets/TechTree/SurvivalNodes/HPUp_Disabled_Graphic.png" id="1_ad88h"]
 [ext_resource type="Texture2D" uid="uid://b5ui2gldo822r" path="res://Assets/TechTree/SurvivalNodes/HPUp_Graphic.png" id="2_qjs01"]
-[ext_resource type="Resource" uid="uid://ctjyflf6qr4g" path="res://src/Resources/Dishes/MossyGoulash.tres" id="3_ad88h"]
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="3_qjs01"]
 
 [resource]
@@ -12,9 +11,6 @@ icon = ExtResource("2_qjs01")
 disabled_icon = ExtResource("1_ad88h")
 description = "+100 Max Health for each level"
 max_level = 5
-materials_required = Array[Dictionary]([{
-ExtResource("3_ad88h"): 1
-}])
 stat_relation = 1
 stat_name = "Max Health"
 upgrade_interval = 100.0

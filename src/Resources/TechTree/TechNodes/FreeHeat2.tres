@@ -11,7 +11,6 @@ node_name = "Free Heat 2"
 icon = ExtResource("2_nxx1i")
 disabled_icon = ExtResource("1_iju0p")
 description = "Increase chance to dodge material consumption when smetling by 5%. "
-currency_required = 1200
 materials_required = Array[Dictionary]([{
 ExtResource("1_dcthd"): 2
 }])

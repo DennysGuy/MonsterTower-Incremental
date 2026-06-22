@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_167cb"]
 [ext_resource type="Texture2D" uid="uid://bh8ntxhm4hxp" path="res://Assets/TechTree/CookingNodes/CriticalChanceUp_Disabled_Graphic.png" id="1_qrfhl"]
 [ext_resource type="Texture2D" uid="uid://baf1ppeom1s55" path="res://Assets/TechTree/CookingNodes/CriticalChanceUp_Graphic.png" id="2_vypl4"]
-[ext_resource type="Resource" uid="uid://b4owo1wr47wc" path="res://src/Resources/Dishes/WrappedKabab.tres" id="3_vypl4"]
 
 [resource]
 script = ExtResource("1_167cb")
@@ -12,9 +11,6 @@ icon = ExtResource("2_vypl4")
 disabled_icon = ExtResource("1_qrfhl")
 description = "Increases chance to double item output when cooking."
 currency_required = 1000
-materials_required = Array[Dictionary]([{
-ExtResource("3_vypl4"): 2
-}])
 stat_relation = 4
 stat_name = "Critical Cooking Chance"
 upgrade_interval = 0.05

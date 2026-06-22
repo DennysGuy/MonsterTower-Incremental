@@ -3,7 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://lqv6duhynala" path="res://Assets/TechTree/SmeltingNodes/MiningSpeed_Disabled_Graphic.png" id="1_c1kyn"]
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="2_c1kyn"]
 [ext_resource type="Texture2D" uid="uid://djdk26814s4ut" path="res://Assets/TechTree/SmeltingNodes/MiningSpeed_Graphic.png" id="2_rf8nb"]
-[ext_resource type="Resource" uid="uid://cs6ojn6tc0alq" path="res://src/Resources/CraftingResources/SteelBar.tres" id="3_rf8nb"]
 
 [resource]
 script = ExtResource("2_c1kyn")
@@ -12,10 +11,7 @@ icon = ExtResource("2_rf8nb")
 disabled_icon = ExtResource("1_c1kyn")
 description = "Increase Pickaxe Damage to ore rocks +8 for each level"
 max_level = 3
-currency_required = 2000
-materials_required = Array[Dictionary]([{
-ExtResource("3_rf8nb"): 4
-}])
+currency_required = 8000
 stat_relation = 5
 stat_name = "Mining Damage"
 upgrade_interval = 8.0
