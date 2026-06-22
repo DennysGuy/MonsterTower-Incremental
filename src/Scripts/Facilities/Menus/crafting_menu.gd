@@ -81,6 +81,7 @@ func update_sword() -> void: #run this function when we upgrade the sword.
 		sword_graphic.texture = null
 		button.disabled = true
 		recipe.text = "More weapons when Combat Class selected!"
+		clear_description_panel()
 		SignalBus.update_resource_needed_panel.emit()
 		return
 	
@@ -113,6 +114,13 @@ func update_sword() -> void: #run this function when we upgrade the sword.
 
 func _on_close_button_up() -> void:
 	exit_menu()
+
+func clear_description_panel() -> void:
+	sword_description.text = ""
+	sword_name.text = ""
+	sword_stats.text = ""
+	InventoryManager.clear_grid_container(ingredients_list)
+	button.disabled = true
 
 func exit_menu() -> void:
 	CutsceneManager.enable_player_functionality()

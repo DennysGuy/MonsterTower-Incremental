@@ -56,6 +56,7 @@ func process_physics(_delta: float) -> State:
 		parent.set_collision_mask_value(5, true)
 		if parent.jump_buffer_timer > 0:
 			parent.jump_buffer_timer = 0
+			parent.can_double_jump = true
 			return jump_state
 		if movement != 0:
 			return move_state

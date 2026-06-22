@@ -25,6 +25,7 @@ func notify_can_craft() -> void:
 func populate_resource_needed_list() -> void:
 	var tracked_index : int = PlayerStats.player_stats["Tracked Weapon"]
 	if tracked_index <= -1:
+		InventoryManager.clear_grid_container(resource_list)
 		return
 	
 	if tracked_index == PlayerStats.BEGINNGER_SWORD_COUNT and PlayerStats.player_stats["Class"] == "Junior Hunter":

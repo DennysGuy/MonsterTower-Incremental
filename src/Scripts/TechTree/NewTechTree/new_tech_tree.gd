@@ -4,7 +4,8 @@ class_name NewTechTree extends Control
 @onready var survival_page_button: Button = $TechTreeButtonsHBox/SurvivalPageButton
 @onready var traversal_page_button: Button = $TechTreeButtonsHBox/TraversalPageButton
 @onready var inventory_page_button: Button = $TechTreeButtonsHBox/InventoryPageButton
-@onready var cooking_page_button: Button = $TechTreeButtonsHBox/CookingPageButton
+@onready var junk_a_tron_page_button: Button = $TechTreeButtonsHBox/JunkATronPageButton
+
 @onready var crafting_page_button: Button = $TechTreeButtonsHBox/CraftingPageButton
 @onready var tech_tree_buttons_h_box: HBoxContainer = $TechTreeButtonsHBox
 
@@ -36,7 +37,7 @@ const CLICK_NODE = preload("uid://bawqj0b2h6vsu")
 @onready var survival_notification_icon: TextureRect = $TechTreeButtonsHBox/SurvivalPageButton/SurvivalNotificationIcon
 @onready var traversal_notification_icon: TextureRect = $TechTreeButtonsHBox/TraversalPageButton/TraversalNotificationIcon
 @onready var inventory_notification_icon: TextureRect = $TechTreeButtonsHBox/InventoryPageButton/InventoryNotificationIcon
-@onready var cooking_notification_icon: TextureRect = $TechTreeButtonsHBox/CookingPageButton/CookingNotificationIcon
+@onready var cooking_notification_icon: TextureRect = $TechTreeButtonsHBox/JunkATronPageButton/CookingNotificationIcon
 @onready var crafting_notification_icon: TextureRect = $TechTreeButtonsHBox/CraftingPageButton/CraftingNotificationIcon
 
 const TECH_TREE_EXPLANATION = preload("uid://g6243qefq3ht")
@@ -100,10 +101,10 @@ func _on_inventory_page_button_mouse_exited() -> void:
 	button_to_normal(inventory_page_button)
 
 func _on_cooking_page_button_mouse_entered() -> void:
-	expand_button(cooking_page_button)
+	expand_button(junk_a_tron_page_button)
 
 func _on_cooking_page_button_mouse_exited() -> void:
-	button_to_normal(cooking_page_button)
+	button_to_normal(junk_a_tron_page_button)
 
 func _on_crafting_page_button_mouse_entered() -> void:
 	expand_button(crafting_page_button)

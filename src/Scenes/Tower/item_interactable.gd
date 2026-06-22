@@ -3,6 +3,7 @@ class_name ItemInteractable extends Node2D
 @export var item : Item
 @export var icon : Sprite2D
 @export var perishable = true
+@export var speed : float = 300
 var player : Player
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
@@ -14,7 +15,10 @@ const PICKUP_ITEM = preload("uid://cjrrqc2534diu")
 var can_pick_up : bool = false
 var opt_to_pick_up : bool = false
 var player_in_range : bool = false
+var is_junk_drop : bool = false
+var junk_picked_up : bool = false
 var base_y : float
+var holder_offset : Vector2 = Vector2.ZERO
 var t : float = 0.0
 # Called when the node enters the scene tree for the first time.
 var pick_up_distance : int
@@ -31,21 +35,42 @@ func _process(delta: float) -> void:
 	
 	#if player_in_range and Input.is_action_just_pressed("pan_cam_up"):
 		#pick_up_item()
+	if is_junk_drop and junk_picked_up:
+		var holder = player.holder
+
+		# local right vector (handles flip/rotation)
+		
+		var right = holder.global_transform.x.normalized()
+		if player.sprite.flip_h:
+			right *= -1
+		else:
+			right *= 1
+		print(right)
+
+		# convert local offset to world space
+		var target_pos = holder.global_position + right * holder_offset.x
+
+		var dir = target_pos - global_position
+
+		if dir.length() > 1.0:
+			global_position += dir.normalized() * 600 * delta
 	
+	if !is_junk_drop:
+		if player.global_position.distance_to(global_position) <= pick_up_distance and opt_to_pick_up:
+			pick_up_item()
+			opt_to_pick_up = false
+		
+		if can_pick_up:
+			global_position = global_position.move_toward(player.coin_purse.global_position,3.0)
+			var tween : Tween = get_tree().create_tween()
+			tween.tween_property(self, "modulate:a", 0.0, 0.5)
+			if abs(global_position) == abs(player.coin_purse.global_position):
+				queue_free()
+		else:
+			t += delta * hover_speed
+			position.y = base_y + sin(t) * hover_height
 	
-	if player.global_position.distance_to(global_position) <= pick_up_distance and opt_to_pick_up:
-		pick_up_item()
-		opt_to_pick_up = false
-	
-	if can_pick_up:
-		global_position = global_position.move_toward(player.coin_purse.global_position,3.0)
-		var tween : Tween = get_tree().create_tween()
-		tween.tween_property(self, "modulate:a", 0.0, 0.5)
-		if abs(global_position) == abs(player.coin_purse.global_position):
-			queue_free()
-	else:
-		t += delta * hover_speed
-		position.y = base_y + sin(t) * hover_height
+
 
 func set_to_pick_up() -> void:
 	can_pick_up = true
@@ -79,6 +104,9 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Player:
 		#pick_up_item()
 		player_in_range = true
+		if is_junk_drop:
+			set_junk_offset()
+			junk_picked_up = true
 
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
@@ -93,3 +121,10 @@ func _on_destroy_timer_timeout() -> void:
 
 func _on_pick_up_timer_timeout() -> void:
 	opt_to_pick_up = true
+
+
+func set_junk_offset() -> void:
+	var index := player.junk_picked_up.size()
+	holder_offset = Vector2(-32 * index, 0)
+
+	player.junk_picked_up.append(self)

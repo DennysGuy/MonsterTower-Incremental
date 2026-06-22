@@ -42,10 +42,13 @@ func update_gem_bag_container(inventory : String) -> void:
 func close_out() -> void:
 	CutsceneManager.enable_player_functionality()
 	
-	
+	if InventoryManager.inventories["Gem Stones"] <= 0:
+		HubManager.hide_facility_notification.emit("Gem Stone Station")
+		
 	PlayerHudSignalBus.hub_menu_exited.emit()
 	await get_tree().create_timer(0.3).timeout
 	SignalBus.hide_tech_tree_canvas_layer.emit()
+
 	queue_free()
 
 func _on_close_button_button_up() -> void:

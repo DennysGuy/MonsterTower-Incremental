@@ -102,6 +102,8 @@ var is_silence_attack : bool = false
 
 const DOUB_CLEAVE_NEW = preload("uid://bea00177gkvyb")
 
+var junk_picked_up : Array[ItemInteractable] = []
+
 func _ready() -> void:
 	super()
 	SignalBus.update_sword_texture.connect(set_sword_texture)

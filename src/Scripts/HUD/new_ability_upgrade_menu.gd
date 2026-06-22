@@ -40,6 +40,8 @@ func close_out() -> void:
 	
 	if GameManager.first_class_just_unlocked:
 		Dialogic.start(NEW_WEAPON_CRAFTING_NOTICE_SCENE)
+	if PlayerStats.player_stats["Ability Points"] <= 0:
+		HubManager.hide_facility_notification.emit("Class Advance Center")
 	
 	PlayerHudSignalBus.hub_menu_exited.emit()
 	await get_tree().create_timer(0.3).timeout
