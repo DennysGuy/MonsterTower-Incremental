@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://w1c2yn7s6sjx"]
 
-[ext_resource type="Texture2D" uid="uid://bry4670ns2btd" path="res://Assets/Facilities/TempCookingRange.png" id="1_ojthx"]
 [ext_resource type="Script" uid="uid://fxn0d30mxe8q" path="res://src/Scripts/Facilities/new_crafting_station.gd" id="1_r2l52"]
+[ext_resource type="Texture2D" uid="uid://bhoricf6h50pj" path="res://Assets/Facilities/Junkatron/Junk-a-Tron.png" id="2_esdk2"]
 [ext_resource type="PackedScene" uid="uid://vo5sm7p34vo6" path="res://src/Scenes/Actors/Utilities/NameTag.tscn" id="3_jw3wv"]
 [ext_resource type="PackedScene" uid="uid://drvmmtbvnc785" path="res://src/Scenes/Tower/arrow_at_ore.tscn" id="4_2ityt"]
 [ext_resource type="Texture2D" uid="uid://dnng403ijo5uh" path="res://Assets/Facilities/CraftingStationMenuPointerBottom.png" id="6_4ythn"]
@@ -160,14 +160,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -115.0
-offset_top = -160.0
-offset_right = 109.0
+offset_left = -121.5
+offset_top = -173.5
+offset_right = 119.5
+offset_bottom = -0.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(111, 108)
 mouse_filter = 2
-texture = ExtResource("1_ojthx")
+texture = ExtResource("2_esdk2")
 stretch_mode = 2
 
 [node name="MenuLocation" type="Marker2D" parent="." unique_id=2018673744]

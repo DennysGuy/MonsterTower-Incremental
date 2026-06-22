@@ -16,8 +16,6 @@
 [ext_resource type="Resource" uid="uid://drs3wurlptmym" path="res://src/Resources/TechTree/TechNodes/Attack3.tres" id="12_j8abv"]
 [ext_resource type="Resource" uid="uid://bslp1vf8jqc7n" path="res://src/Resources/TechTree/TechNodes/CombatCooldown2.tres" id="13_7r8q4"]
 [ext_resource type="Resource" uid="uid://x04h2nhi8gdh" path="res://src/Resources/TechTree/TechNodes/CritChance3.tres" id="13_8fhfb"]
-[ext_resource type="Resource" uid="uid://dant3bywg07u" path="res://src/Resources/TechTree/TechNodes/LastBreadth1.tres" id="13_o18ej"]
-[ext_resource type="Resource" uid="uid://s42rn6aklaui" path="res://src/Resources/TechTree/TechNodes/BreadthThreshold1.tres" id="14_h55wc"]
 [ext_resource type="Resource" uid="uid://fr5bgjnd33a7" path="res://src/Resources/TechTree/TechNodes/CritDamage3.tres" id="14_yly43"]
 [ext_resource type="Resource" uid="uid://b218wsbjh7pyo" path="res://src/Resources/TechTree/TechNodes/Attack4.tres" id="15_075h1"]
 [ext_resource type="Resource" uid="uid://c3puqbrn253v0" path="res://src/Resources/TechTree/TechNodes/APGain1.tres" id="16_7hig2"]
@@ -142,26 +140,6 @@ offset_right = 1.0
 offset_bottom = 164.0
 tech_node_stats = ExtResource("12_fuu40")
 previous_node = NodePath("../GemStoneStationNode")
-node_type = 1
-
-[node name="BreadthThreshold1" parent="." unique_id=1813302441 node_paths=PackedStringArray("previous_node") instance=ExtResource("2_48m6i")]
-visible = false
-layout_mode = 1
-offset_top = -92.0
-offset_bottom = -92.0
-tech_node_stats = ExtResource("14_h55wc")
-previous_node = NodePath("../CoolDownReduction1Node")
-node_type = 1
-
-[node name="LastBreadth1" parent="." unique_id=1933234706 node_paths=PackedStringArray("previous_node") instance=ExtResource("2_48m6i")]
-visible = false
-layout_mode = 1
-offset_left = 1.0
-offset_top = -348.0
-offset_right = 1.0
-offset_bottom = -348.0
-tech_node_stats = ExtResource("13_o18ej")
-previous_node = NodePath("../BreadthThreshold1")
 node_type = 1
 
 [node name="Attack3Node" parent="." unique_id=1548307285 node_paths=PackedStringArray("previous_node") instance=ExtResource("2_48m6i")]

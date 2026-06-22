@@ -23,8 +23,8 @@ var stored_recipe : CraftingRecipe
 var player_in_range : bool = false
 var player : Player
 
-const TEMP_COOKING_RANGE = preload("uid://bry4670ns2btd")
-const TEMP_COOKING_RANGE_CONTSTRUCTION = preload("uid://53gha3pmge8a")
+const TEMP_COOKING_RANGE = preload("uid://bhoricf6h50pj")
+const TEMP_COOKING_RANGE_CONTSTRUCTION = preload("uid://lqprwtlaufoc")
 
 const SMELTING_STATION_CONTRUCTION_MODE = preload("uid://chhm5f5xmlr0j")
 const SMELTING_STATION = preload("uid://btbqj1pb1hac")
@@ -60,7 +60,7 @@ func _ready() -> void:
 				station_graphic.texture = SMELTING_STATION_CONTRUCTION_MODE
 			
 		STATION_TYPE.COOKING:
-			name_tag.tag.text = "Cooking Range"
+			name_tag.tag.text = "Junk-a-Tron"
 			station_graphic.texture = TEMP_COOKING_RANGE
 			if PlayerStats.facilities_unlocked["Cooking Station"]:
 				station_graphic.texture = TEMP_COOKING_RANGE

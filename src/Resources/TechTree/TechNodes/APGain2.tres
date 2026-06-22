@@ -3,8 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://ubyhc3clbivr" path="res://Assets/TechTree/CombatNodes/ApUp_Node_Disabled_Graphic.png" id="1_e7ite"]
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_hql8t"]
 [ext_resource type="Texture2D" uid="uid://nkrgnota7h4k" path="res://Assets/TechTree/CombatNodes/ApUp_Node_Graphic.png" id="2_s8l8g"]
-[ext_resource type="Resource" uid="uid://carrsm8pqm8fv" path="res://src/Resources/Dishes/LurkerCabeza.tres" id="3_tfprr"]
-[ext_resource type="Resource" uid="uid://b4owo1wr47wc" path="res://src/Resources/Dishes/WrappedKabab.tres" id="4_k1iuh"]
 
 [resource]
 script = ExtResource("1_hql8t")
@@ -12,12 +10,7 @@ node_name = "AP Gain 2"
 icon = ExtResource("2_s8l8g")
 disabled_icon = ExtResource("1_e7ite")
 description = "Increases AP Received upon leveling up."
-currency_required = 3000
-materials_required = Array[Dictionary]([{
-ExtResource("3_tfprr"): 1
-}, {
-ExtResource("4_k1iuh"): 1
-}])
+currency_required = 15000
 stat_name = "Bonus AP"
 upgrade_interval = 1.0
 prereqs = Array[String](["Attack 4:1"])

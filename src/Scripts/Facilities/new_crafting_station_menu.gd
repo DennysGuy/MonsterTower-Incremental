@@ -48,7 +48,7 @@ func _ready() -> void:
 		station_name.text = "Refinery"
 		populate_craftable_items_list(CookingManager.smelting_recipes)
 	elif station_type == STATION_TYPE.COOKING:
-		station_name.text = "Cooking Range"
+		station_name.text = "Junk-A-Tron"
 		populate_craftable_items_list(CookingManager.cooking_recipes)
 	play_sfx(CRAFTING_STATION_OPEN_2)
 	animation_player.play("Spawn In")
