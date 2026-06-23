@@ -13,7 +13,7 @@ var cool_down_speed_buff_mod : float = 0.0
 var dodge_chance_buff_mod : float = 0.0 # not a thing a yet
 
 const KNOCKBACK_FORCE : int = 100
-
+const BASE_TRANSFER_TIME : float = 3.0
 @onready var player_stats : Dictionary = {
 	"Level" : 1,
 	"Needed XP": 100,

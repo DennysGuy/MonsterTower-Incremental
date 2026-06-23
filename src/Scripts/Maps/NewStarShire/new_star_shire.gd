@@ -27,6 +27,8 @@ var sell_timer_set : bool = false
 
 const CRAFTING_STATION_OPEN = preload("uid://ccqpi3mcw8aww")
 
+
+
 @onready var access_smelting_station: Label = $AccessSmeltingStation
 @onready var access_sword_crafting_station: Label = $AccessSwordCraftingStation
 @onready var dojo_area: Area2D = $Dojo/DojoArea
@@ -67,6 +69,7 @@ const GO_TO_JOB_BOARD = preload("uid://iqw8ymk767kl")
 
 const STARSPIRE_MARKET_INTRO = preload("uid://b3l8f4fxsjhu6")
 const HEAD_TO_JOB_ADVANCEMENT_CENTER_FOR_CLASS = preload("uid://bc68ocr4ayjpd")
+
 
 
 # Called when the node enters the scene tree for the first time.
@@ -612,20 +615,23 @@ func has_resource_quantity(tech_node_stats : TechNodeStats) -> bool:
 		
 	return true		
 
-func sell_to_market(delta : float) -> void:
+func sell_to_market(delta: float) -> void:
 	if player.junk_picked_up.is_empty():
-		return 
-		
-	if !sell_timer_set:
-		sell_speed_timer = 100
-		sell_timer_set = true
-		
-	sell_speed_timer -= 100 * delta
-	print(sell_speed_timer)
-	if sell_speed_timer <= 0:
-		var novelty_invention : ItemInteractable = player.junk_picked_up.front()
-		novelty_invention.set_to_sold(grand_market_position)
-		sell_timer_set = false
+		return
+
+	sell_speed_timer += delta
+
+	var interval := get_sell_time()
+
+	if sell_speed_timer >= interval:
+		sell_speed_timer -= interval
+
+		var item: ItemInteractable = player.junk_picked_up.front()
+		item.set_to_sold(grand_market_position)
+
+func get_sell_time() -> float:
+	var sell_speed_level : int = SaveManager.get_tech_node_stat_level("Bulk Sell Transfer Speed")
+	return max(0.03, PlayerStats.BASE_TRANSFER_TIME * pow(0.9, sell_speed_level))
 
 func _on_tower_area_2_body_entered(body: Node2D) -> void:
 	if body is Player:

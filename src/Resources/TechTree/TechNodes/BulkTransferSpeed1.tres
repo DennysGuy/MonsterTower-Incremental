@@ -4,4 +4,9 @@
 
 [resource]
 script = ExtResource("1_srula")
+node_name = "Pro Mover 1"
+description = "Decreases time between delivering a Novelty Invention to the Grand Market."
+max_level = 3
+stat_name = "Bulk Sell Transfer Speed"
+upgrade_interval = 0.3
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

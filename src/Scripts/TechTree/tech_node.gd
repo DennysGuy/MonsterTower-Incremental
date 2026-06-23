@@ -52,8 +52,8 @@ var total_bonus : float = 0.0
 
 var stored_node_description_box : NodeDescriptionBox
 
-
-
+var current_cost : int = 0
+var resource_cost : int = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	match tech_node_stats.stat_relation:
@@ -89,6 +89,10 @@ func _ready() -> void:
 	TechTreeManager.check_if_can_purchase_node.connect(check_if_can_purchase)
 	TechTreeManager.save_node_data.connect(save_node_data)
 	set_level_label()
+	
+	if tech_node_stats.currency_required > 0:
+		current_cost = tech_node_stats.get_cost()
+	
 	if tech_node_stats.unlocked:
 		#show()
 		if GameManager.license_promotion_time:
@@ -130,8 +134,7 @@ func save_node_data() -> void:
 		SaveManager.save_game()
 
 func deduct_currency() -> void:
-	TechTreeManager.currency -= tech_node_stats.currency_required
-	
+	TechTreeManager.currency -= current_cost
 	
 func deduct_ap() -> void:
 	PlayerStats.player_stats["Ability Points"] -= tech_node_stats.ap_required
@@ -140,6 +143,7 @@ func deduct_ap() -> void:
 	#update an ap label here
 
 func deduct_resources() -> void:
+	
 	InventoryManager.remove_resources_from_inventory(tech_node_stats.materials_required)
 
 func check_if_can_purchase() -> void:
@@ -235,9 +239,9 @@ func create_tool_tip() -> void:
 		tool_tip.description.text = tech_node_stats.description
 	if node_type != TechTreeManager.TECH_NODE_TYPE.CLASS_ABILITY:
 		if TechTreeManager.currency >=  tech_node_stats.currency_required:
-			tool_tip.cost.text = "[color=green]Spirols: %s/%s[/color]" % [TechTreeManager.currency, tech_node_stats.currency_required]
+			tool_tip.cost.text = "[color=green]Spirols: %s/%s[/color]" % [TechTreeManager.currency, current_cost]
 		else:
-			tool_tip.cost.text = "Spirols: %s/%s" % [TechTreeManager.currency, tech_node_stats.currency_required]
+			tool_tip.cost.text = "Spirols: %s/%s" % [TechTreeManager.currency, current_cost]
 	
 		if tech_node_stats.currency_required <= 0:
 			tool_tip.cost.text = ""
@@ -316,10 +320,10 @@ func _on_gui_input(event: InputEvent) -> void:
 			#animation_player.play("clicked")
 			tech_node_stats.current_level += 1
 			
-			
 			PlayerStats.upgrade_player_stat(tech_node_stats.stat_name,tech_node_stats.upgrade_interval, node_type)
 			if node_type != TechTreeManager.TECH_NODE_TYPE.CLASS_ABILITY:
 				deduct_currency()
+				current_cost = tech_node_stats.get_cost()
 			else:
 				deduct_ap()
 				

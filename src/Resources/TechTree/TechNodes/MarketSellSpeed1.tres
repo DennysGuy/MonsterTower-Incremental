@@ -4,4 +4,8 @@
 
 [resource]
 script = ExtResource("1_183q0")
+node_name = "Proficient Vendor 1"
+description = "Increases market sell speed by +5 for each level. "
+stat_name = "Market Sell Speed"
+upgrade_interval = 5.0
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

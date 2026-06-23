@@ -4,4 +4,9 @@
 
 [resource]
 script = ExtResource("1_lv1cw")
+node_name = "Bulk Sale Slots 3"
+description = "Increases the number of slots available during Bulk Sales, allowing you to sell more items at once."
+stat_name = "Bulk Sell Slots"
+upgrade_interval = 1.0
+prereqs = Array[String](["Bulk Sale Slots 2:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

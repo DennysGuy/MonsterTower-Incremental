@@ -220,3 +220,7 @@ func save_various_settings(setting : String, state : bool) -> void:
 	
 func load_various_settings(setting : String) -> bool:
 	return current_save_game.various_settings[setting]
+
+
+func get_tech_node_stat_level(stat_name : String) -> int:
+	return current_save_game.tech_nodes[stat_name]["Level"]

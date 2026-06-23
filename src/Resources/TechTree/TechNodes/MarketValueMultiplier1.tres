@@ -4,4 +4,10 @@
 
 [resource]
 script = ExtResource("1_kqh7u")
+node_name = "Expert Marketeer 1"
+description = "Increases market value price of Novelty Inventions by %20 per level"
+max_level = 3
+price_scaler = 1.2
+stat_name = "Market Value Multiplier"
+upgrade_interval = 0.2
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"
