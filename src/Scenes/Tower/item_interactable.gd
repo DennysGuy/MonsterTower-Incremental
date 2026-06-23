@@ -125,7 +125,6 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			set_junk_offset()
 			junk_picked_up = true
 
-
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body is Player:
 		player_in_range = false

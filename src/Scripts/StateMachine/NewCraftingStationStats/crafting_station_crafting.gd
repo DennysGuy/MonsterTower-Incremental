@@ -9,7 +9,7 @@ const SMELTING_SFX = preload("uid://ds0to3h3m8yir")
 func enter() -> void:
 	parent.crafting_progressbar.value = 0
 	parent.update_quantity_details()
-	
+	parent.activate()
 	if parent.station_type == parent.STATION_TYPE.COOKING:
 		parent.sfx_player.play_sfx(COOKING_SFX)
 	else:
@@ -22,6 +22,7 @@ func exit() -> void:
 		parent.crafting_started = false
 		parent.hide_crafting_tracker()
 	parent.current_pitch = 1.0
+	parent.deactivate()
 	parent.sfx_player.stop()
 	
 func process_input(_event: InputEvent) -> State:

@@ -10,7 +10,7 @@ class_name NewStarShireMap extends Map
 @onready var dojo_position: Node2D = $DojoPosition
 
 var sell_speed_timer : float = 0.0
-var sell_speed : float = 0.5
+var sell_speed : float = 100
 
 const NOVELTY_ITEMS_SALE = preload("uid://bylwk3imxuh3i")
 
@@ -614,15 +614,13 @@ func has_resource_quantity(tech_node_stats : TechNodeStats) -> bool:
 
 func sell_to_market(delta : float) -> void:
 	if player.junk_picked_up.is_empty():
-		print(player.junk_picked_up)
-		print("Sorry Man")
 		return 
 		
 	if !sell_timer_set:
-		sell_speed_timer = sell_speed
+		sell_speed_timer = 100
 		sell_timer_set = true
 		
-	sell_speed_timer -= delta
+	sell_speed_timer -= 100 * delta
 	print(sell_speed_timer)
 	if sell_speed_timer <= 0:
 		var novelty_invention : ItemInteractable = player.junk_picked_up.front()

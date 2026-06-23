@@ -500,7 +500,7 @@ sources/1 = SubResource("TileSetAtlasSource_d72hs")
 size = Vector2(13.949994, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l6435"]
-size = Vector2(168, 145)
+size = Vector2(172, 145)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g8ukf"]
 size = Vector2(96, 110)
@@ -716,14 +716,14 @@ position = Vector2(2574, 671)
 position = Vector2(107, 670)
 
 [node name="GrandMarketPosition" type="Marker2D" parent="." unique_id=723859068]
-position = Vector2(1245, 625)
+position = Vector2(1178, 598)
 
 [node name="GrandMarketArea" type="Area2D" parent="." unique_id=1746715903]
 position = Vector2(1183, 622)
 script = ExtResource("17_hw86b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GrandMarketArea" unique_id=495718423]
-position = Vector2(1, 2)
+position = Vector2(-1, 2)
 shape = SubResource("RectangleShape2D_l6435")
 
 [node name="MarketKioskeArea" type="Area2D" parent="." unique_id=1827935840]
@@ -733,18 +733,6 @@ script = ExtResource("17_hw86b")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MarketKioskeArea" unique_id=978328660]
 position = Vector2(-25, 26)
 shape = SubResource("RectangleShape2D_g8ukf")
-
-[node name="EnterMarketLabel" type="Label" parent="." unique_id=2132180699]
-visible = false
-offset_left = 1093.0
-offset_top = 593.0
-offset_right = 1251.0
-offset_bottom = 612.12634
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 0
-theme_override_fonts/font = ExtResource("27_e7ku4")
-text = "Press E to enter Market"
 
 [node name="LadderArea" parent="." unique_id=1455959436 node_paths=PackedStringArray("ladder_top", "ladder_bottom") instance=ExtResource("17_jp6xg")]
 position = Vector2(2090, 589)
@@ -1160,11 +1148,22 @@ offset_bottom = 703.0
 facility_name = "Cooking Station"
 
 [node name="BulkGrandMarketMenu" parent="." unique_id=1254570894 node_paths=PackedStringArray("grand_market_position") instance=ExtResource("36_4qs0c")]
-offset_left = 1224.0
-offset_top = 593.0
-offset_right = 1224.0
-offset_bottom = 593.0
+offset_left = 1178.0
+offset_top = 595.0
+offset_right = 1178.0
+offset_bottom = 595.0
 grand_market_position = NodePath("../GrandMarketPosition")
+
+[node name="EnterMarketLabel" type="Label" parent="." unique_id=2132180699]
+offset_left = 1101.0
+offset_top = 541.0
+offset_right = 1259.0
+offset_bottom = 560.12634
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("27_e7ku4")
+text = "Press E to enter Market"
 
 [node name="EnterKioskeLabel" type="Label" parent="." unique_id=753905144]
 visible = false

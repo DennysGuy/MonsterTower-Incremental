@@ -9,7 +9,7 @@
 [ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="7_2xmov"]
 [ext_resource type="Texture2D" uid="uid://d5dcjea016ag" path="res://Assets/HUD/Facilities/BulkSaleRadialFill.png" id="8_chpex"]
 
-[node name="Slot" type="TextureRect" unique_id=782442892 node_paths=PackedStringArray("item_icon", "quantity_label")]
+[node name="Slot" type="TextureRect" unique_id=782442892 node_paths=PackedStringArray("item_icon", "texture_progress_bar", "quantity_label")]
 custom_minimum_size = Vector2(32, 32)
 offset_right = 32.0
 offset_bottom = 32.0
@@ -19,6 +19,7 @@ texture = ExtResource("1_o5fom")
 stretch_mode = 2
 script = ExtResource("2_o5fom")
 item_icon = NodePath("ItemIcon")
+texture_progress_bar = NodePath("TextureProgressBar")
 quantity_label = NodePath("QuantityLabel")
 
 [node name="IndicatorCooking" type="TextureRect" parent="." unique_id=700765514]
@@ -99,7 +100,7 @@ offset_right = 16.0
 offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
-max_value = 800.0
+max_value = 1000.0
 step = 0.0
 value = 30.0
 fill_mode = 4

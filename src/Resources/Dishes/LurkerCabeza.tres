@@ -9,4 +9,5 @@ item_name = "Lurker Cabeza"
 item_type = 5
 sell_value = 350
 shop_icon = ExtResource("2_hg4ts")
+sell_time = 3600.0
 description = "The texture is offputting to some - but a delicacy to many!"

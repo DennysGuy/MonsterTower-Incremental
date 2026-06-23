@@ -9,4 +9,5 @@ item_name = "Orc Svio"
 item_type = 5
 sell_value = 400
 shop_icon = ExtResource("2_j6wdw")
+sell_time = 3500.0
 description = "Grotesque to look at - but the flavor is of the gods!"

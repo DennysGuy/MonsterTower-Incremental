@@ -9,4 +9,5 @@ item_name = "Fried Gagootz"
 item_type = 5
 sell_value = 150
 shop_icon = ExtResource("2_d7a32")
+sell_time = 1000.0
 metadata/_custom_type_script = "uid://cu8drgivmhfn"

@@ -9,4 +9,5 @@ item_name = "Wrapped Kabab"
 item_type = 5
 sell_value = 350
 shop_icon = ExtResource("2_0bhtw")
+sell_time = 4200.0
 description = "Anyone down for BBQ? Always."

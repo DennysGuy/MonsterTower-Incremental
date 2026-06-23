@@ -9,4 +9,5 @@ item_name = "Pupil Caviar"
 item_type = 5
 sell_value = 300
 shop_icon = ExtResource("2_i88bs")
+sell_time = 3000.0
 description = "A delicacy to the elite; scrapped from the bottom of tower."

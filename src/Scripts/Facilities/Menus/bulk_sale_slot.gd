@@ -1,7 +1,7 @@
 class_name BulkSaleSlot extends TextureRect
 
 @export var item_icon: TextureRect
-@onready var texture_progress_bar: TextureProgressBar = $TextureProgressBar
+@export var texture_progress_bar: TextureProgressBar
 const SELL_ITEM = preload("uid://dasd38kajjc2r")
 @export var item : Item
 @export var grand_market_position : Marker2D
@@ -34,6 +34,7 @@ func add_item(selected_item : Item) -> void:
 	item = selected_item
 	quantity += 1
 	quantity_label.text = "%s/%s" % [quantity, int(PlayerStats.player_stats["Bulk Sell Slot Stack"])]
+	texture_progress_bar.max_value = item.sell_time
 
 func sell_item() -> void:
 	print("SOLD!")

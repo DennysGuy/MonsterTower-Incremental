@@ -9,4 +9,5 @@ item_name = "Hunter's Stew"
 item_type = 5
 sell_value = 600
 shop_icon = ExtResource("2_dei8g")
+sell_time = 5000.0
 description = "A stew made of a medley of cooking drops. Might be tedious to make - but it can certainly go for a buck or 2!"

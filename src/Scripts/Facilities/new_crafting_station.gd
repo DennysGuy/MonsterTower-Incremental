@@ -15,6 +15,7 @@ enum STATION_TYPE {SMELTING,COOKING}
 @onready var crafting_station_menu_item: CraftingStationMenuItem = $CraftingProcessIcon/CraftingStationMenuItem
 
 @onready var sfx_player: SFXPlayer = $SfxPlayer
+@onready var station_animation_player: AnimationPlayer = $StationAnimationPlayer
 
 var crafting_started : bool = false
 var crafting_quantity : int = 0
@@ -192,6 +193,12 @@ func hide_crafting_tracker() -> void:
 
 func update_quantity_details() -> void:
 	crafting_station_menu_item.count_label.text = str(crafting_quantity)
+
+func activate() -> void:
+	station_animation_player.play("Active")
+
+func deactivate() -> void:
+	station_animation_player.play("Deactive")
 
 func play_sfx(sound: AudioStream, volume: float = 0.0, pitch_scale : float = 1.0):
 	var player := AudioStreamPlayer.new()
