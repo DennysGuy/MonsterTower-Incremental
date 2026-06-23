@@ -97,6 +97,12 @@ const KNOCKBACK_FORCE : int = 100
 	"Pick Up Distance": 20.0,
 	"Cooldown Reduction":0.0,
 	"Extra Ore Drop Chance": 0.0,
+	"Bulk Sell Transfer Speed": 1.5,
+	"Market Sell Speed": 5.0,
+	"Auto Sell Transfer Speed": 2.0,
+	"Bulk Sell Slots": 1.0,
+	"Bulk Sell Slot Stack":4.0,
+	"Market Value Multiplier":1.0,
 }
 
 var equipped_abilities : Dictionary = {

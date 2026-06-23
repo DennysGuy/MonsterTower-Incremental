@@ -7,22 +7,32 @@ class_name ItemInteractable extends Node2D
 var player : Player
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
+
 @export var hover_height : float = 6.0
 @export var hover_speed : float = 2.0
 @onready var sfx_player: SFXPlayer = $SfxPlayer
 const PICKUP_ITEM = preload("uid://cjrrqc2534diu")
 
+var offset_distance := 32.0
 var can_pick_up : bool = false
 var opt_to_pick_up : bool = false
 var player_in_range : bool = false
 var is_junk_drop : bool = false
 var junk_picked_up : bool = false
+var is_sold : bool = false
 var base_y : float
 var holder_offset : Vector2 = Vector2.ZERO
 var t : float = 0.0
+var grand_market_position : Marker2D
+var sell_threshold := 5.0
+var sell_speed := 300.0
 # Called when the node enters the scene tree for the first time.
 var pick_up_distance : int
+
+var prev_item_interactable : ItemInteractable
+
 func _ready() -> void:
+	SignalBus.novelty_invention_sold.connect(move_forward)
 	pick_up_distance = PlayerStats.player_stats["Pick Up Distance"]
 	base_y = position.y
 	
@@ -35,26 +45,35 @@ func _process(delta: float) -> void:
 	
 	#if player_in_range and Input.is_action_just_pressed("pan_cam_up"):
 		#pick_up_item()
-	if is_junk_drop and junk_picked_up:
-		var holder = player.holder
+	if is_junk_drop: 
+		if junk_picked_up:
+			if !is_sold:
+				var offset = Vector2.LEFT * offset_distance
 
-		# local right vector (handles flip/rotation)
+				if player.sprite.flip_h:
+					offset = Vector2.RIGHT * offset_distance
+
+				var target_pos = player.global_position + offset
+
+				global_position = global_position.lerp(
+					target_pos,
+					10.0 * delta
+				)
+			elif is_sold and grand_market_position:
+				var target_pos = grand_market_position.global_position
+
+				global_position = global_position.move_toward(
+				target_pos,
+				sell_speed * delta
+				)
+
+				if global_position.distance_to(target_pos) < sell_threshold:
+					global_position = target_pos
+					sell_item()
 		
-		var right = holder.global_transform.x.normalized()
-		if player.sprite.flip_h:
-			right *= -1
-		else:
-			right *= 1
-		print(right)
-
-		# convert local offset to world space
-		var target_pos = holder.global_position + right * holder_offset.x
-
-		var dir = target_pos - global_position
-
-		if dir.length() > 1.0:
-			global_position += dir.normalized() * 600 * delta
-	
+		#t += delta * hover_speed
+		#position.y = base_y + sin(t) * hover_height
+		
 	if !is_junk_drop:
 		if player.global_position.distance_to(global_position) <= pick_up_distance and opt_to_pick_up:
 			pick_up_item()
@@ -70,8 +89,6 @@ func _process(delta: float) -> void:
 			t += delta * hover_speed
 			position.y = base_y + sin(t) * hover_height
 	
-
-
 func set_to_pick_up() -> void:
 	can_pick_up = true
 
@@ -104,7 +121,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Player:
 		#pick_up_item()
 		player_in_range = true
-		if is_junk_drop:
+		if is_junk_drop and !junk_picked_up:
 			set_junk_offset()
 			junk_picked_up = true
 
@@ -113,18 +130,71 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body is Player:
 		player_in_range = false
 
-
 func _on_destroy_timer_timeout() -> void:
 	if perishable:
 		queue_free()
 
-
 func _on_pick_up_timer_timeout() -> void:
 	opt_to_pick_up = true
 
-
 func set_junk_offset() -> void:
 	var index := player.junk_picked_up.size()
-	holder_offset = Vector2(-32 * index, 0)
-
+	offset_distance *= index
+	if index >= 1:
+		prev_item_interactable = player.junk_picked_up[index-1]
 	player.junk_picked_up.append(self)
+	print(player.junk_picked_up)
+
+func set_to_sold(market_position: Marker2D) -> void:
+	var bulk_sale_menu : BulkSellerGrandMarketMenu = get_tree().get_first_node_in_group("BulkGrandMarketMenu")
+	var bulk_slots : Array = bulk_sale_menu.grid_container.get_children()
+	if !can_add_to_bulk_menu(bulk_slots):
+		print("NO CAN DO")
+		return
+	player.junk_picked_up.pop_front()
+	is_sold = true
+	grand_market_position = market_position
+	SignalBus.novelty_invention_sold.emit()
+
+func move_forward() -> void:
+	if is_instance_valid(prev_item_interactable) and !is_sold:
+		offset_distance = prev_item_interactable.offset_distance
+
+func sell_item() -> void:
+	SignalBus.shake_camera.emit(1.0)
+	var bulk_sale_menu : BulkSellerGrandMarketMenu = get_tree().get_first_node_in_group("BulkGrandMarketMenu")
+	var bulk_slots : Array = bulk_sale_menu.grid_container.get_children()
+	add_item_to_bulk_menu(bulk_sale_menu, bulk_slots)
+	
+	queue_free()
+
+func can_add_to_bulk_menu(bulk_slots : Array) -> bool:
+	var can_add : bool = false
+	
+	if bulk_slots.is_empty():
+		can_add = true
+	
+	for slot in bulk_slots:
+		var bulk_slot : BulkSaleSlot = slot
+		if bulk_slot.item == item and bulk_slot.quantity < PlayerStats.player_stats["Bulk Sell Slot Stack"]:
+			can_add = true
+	
+	if !can_add:
+		if bulk_slots.size() < PlayerStats.player_stats["Bulk Sell Slots"]:
+			return true
+	
+	return can_add
+
+func add_item_to_bulk_menu(bulk_sale_menu : BulkSellerGrandMarketMenu, bulk_slots : Array) -> void:
+	var successfully_added : bool = false
+	if bulk_slots.is_empty():
+		bulk_sale_menu.create_bulk_sale_slot(item)
+		successfully_added = true
+	for slot in bulk_slots:
+		var bulk_slot : BulkSaleSlot = slot
+		if bulk_slot.item == item and bulk_slot.quantity < PlayerStats.player_stats["Bulk Sell Slot Stack"]:
+			bulk_slot.add_item(item)
+			successfully_added = true
+	if !successfully_added:
+		bulk_sale_menu.create_bulk_sale_slot(item)
+	

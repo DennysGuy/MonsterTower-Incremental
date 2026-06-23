@@ -98,6 +98,12 @@ TODO: We will add saves for classes as well
 	"Pick Up Distance": 20.0,
 	"Cooldown Reduction":0.0,
 	"Extra Ore Drop Chance": 0.0,
+	"Bulk Sell Transfer Speed": 1.5,
+	"Market Sell Speed": 5.0,
+	"Auto Sell Transfer Speed": 2.0,
+	"Bulk Sell Slots": 1.0,
+	"Bulk Sell Slot Stack":4.0,
+	"Market Value Multiplier":1.0,
 }
 
 #this will be loaded when we enter the tower entrance map or a map in and of itself

@@ -2910,7 +2910,7 @@ combat_ability_4 = NodePath("../CombatAbility4")
 jump_sfx = ExtResource("6_yawj3")
 animation_name = "Idle"
 
-[node name="Move" type="Node" parent="StateMachine" unique_id=64534103 node_paths=PackedStringArray("jump_state", "fall_state", "idle_state", "dash_attack_state", "attack_1_state", "special_attack", "combat_ability_1", "combat_ability_2", "combat_ability_3", "combat_ability_4")]
+[node name="Move" type="Node" parent="StateMachine" unique_id=64534103 node_paths=PackedStringArray("jump_state", "fall_state", "idle_state", "dash_attack_state", "attack_1_state", "special_attack", "pick_axe_state", "combat_ability_1", "combat_ability_2", "combat_ability_3", "combat_ability_4")]
 script = ExtResource("4_pp7ew")
 jump_state = NodePath("../Jump")
 fall_state = NodePath("../Fall")
@@ -2918,6 +2918,7 @@ idle_state = NodePath("../Idle")
 dash_attack_state = NodePath("../DashAttack")
 attack_1_state = NodePath("../Attack1")
 special_attack = NodePath("../SpecialAttack")
+pick_axe_state = NodePath("../SwingPickAxe")
 combat_ability_1 = NodePath("../CombatAbility1")
 combat_ability_2 = NodePath("../CombatAbility2")
 combat_ability_3 = NodePath("../CombatAbility3")

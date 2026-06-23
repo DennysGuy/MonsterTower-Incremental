@@ -85,6 +85,9 @@ var combat_ability_4_wait_time : float = 0.4
 var dash_cancel_time_frame : float = 0.0
 var dash_cancel_wait_time : float = 0.25
 
+var double_jump_buffer : float = 0.0
+var double_jump_buffer_wait_time : float = 0.1
+
 var can_attack_cancel: bool = false
 
 var was_on_ledge : bool = true
@@ -140,6 +143,8 @@ func _physics_process(delta: float) -> void:
 	
 	if dash_cancel_time_frame > 0:
 		dash_cancel_time_frame -= delta
+	if double_jump_buffer > 0:
+		double_jump_buffer -= delta
 	
 	knock_back_player()
 	

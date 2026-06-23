@@ -33,6 +33,7 @@
 [ext_resource type="AudioStream" uid="uid://br24s8y5lttep" path="res://Audio/SFX/Ambience/Starspire/StarspireAmbience.wav" id="30_fdeu8"]
 [ext_resource type="Texture2D" uid="uid://dbg5n708oli7y" path="res://Assets/Facilities/SwordUpgradeStation.png" id="33_0u15j"]
 [ext_resource type="PackedScene" uid="uid://w1c2yn7s6sjx" path="res://src/Scenes/UI/CraftingStations/NewCraftingStation.tscn" id="33_d6jc3"]
+[ext_resource type="PackedScene" uid="uid://gfchm8corigl" path="res://src/Scenes/UI/CraftingStations/BulkGrandMarketMenu.tscn" id="36_4qs0c"]
 [ext_resource type="PackedScene" uid="uid://dllbbxwtrshxy" path="res://src/Scenes/NewStarshire/GrandMarketSignFrontLeg.tscn" id="36_g8ukf"]
 [ext_resource type="PackedScene" uid="uid://drvmmtbvnc785" path="res://src/Scenes/Tower/arrow_at_ore.tscn" id="36_hw86b"]
 
@@ -501,6 +502,9 @@ size = Vector2(13.949994, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l6435"]
 size = Vector2(168, 145)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g8ukf"]
+size = Vector2(96, 110)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_05bdh"]
 size = Vector2(22, 154)
 
@@ -520,6 +524,9 @@ size = Vector2(7.699991, 20)
 size = Vector2(20, 375)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hw86b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y20fx"]
+size = Vector2(174, 8)
 
 [node name="NewStarShire" type="Node2D" unique_id=1923605450 node_paths=PackedStringArray("camera", "sfx_player")]
 script = ExtResource("1_gq00g")
@@ -709,22 +716,30 @@ position = Vector2(2574, 671)
 position = Vector2(107, 670)
 
 [node name="GrandMarketPosition" type="Marker2D" parent="." unique_id=723859068]
-position = Vector2(1168, 622)
+position = Vector2(1245, 625)
 
 [node name="GrandMarketArea" type="Area2D" parent="." unique_id=1746715903]
-position = Vector2(1275, 622)
+position = Vector2(1183, 622)
 script = ExtResource("17_hw86b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GrandMarketArea" unique_id=495718423]
 position = Vector2(1, 2)
 shape = SubResource("RectangleShape2D_l6435")
 
+[node name="MarketKioskeArea" type="Area2D" parent="." unique_id=1827935840]
+position = Vector2(1389, 622)
+script = ExtResource("17_hw86b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MarketKioskeArea" unique_id=978328660]
+position = Vector2(-25, 26)
+shape = SubResource("RectangleShape2D_g8ukf")
+
 [node name="EnterMarketLabel" type="Label" parent="." unique_id=2132180699]
 visible = false
-offset_left = 1051.0
+offset_left = 1093.0
 offset_top = 593.0
-offset_right = 1241.0
-offset_bottom = 616.0
+offset_right = 1251.0
+offset_bottom = 612.12634
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 0
@@ -975,13 +990,22 @@ text = "You need a Tower pass before you can Enter..."
 horizontal_alignment = 1
 
 [node name="NameTag5" parent="." unique_id=895539879 instance=ExtResource("19_bl45m")]
-offset_left = 1236.0
+offset_left = 1142.0
 offset_top = 706.0
-offset_right = 1324.0
+offset_right = 1230.0
 offset_bottom = 719.0
 
 [node name="Tag" parent="NameTag5/Bg" parent_id_path=PackedInt32Array(895539879, 305804188) index="0" unique_id=725373759]
-text = "Trade Market"
+text = "Bulk Seller"
+
+[node name="NameTag6" parent="." unique_id=1082551098 instance=ExtResource("19_bl45m")]
+offset_left = 1320.0
+offset_top = 706.0
+offset_right = 1408.0
+offset_bottom = 719.0
+
+[node name="Tag" parent="NameTag6/Bg" parent_id_path=PackedInt32Array(1082551098, 305804188) index="0" unique_id=725373759]
+text = "Trade Kioske"
 
 [node name="TechTreeComputer2" parent="." unique_id=1424380866 instance=ExtResource("4_cldp6")]
 position = Vector2(329, 703)
@@ -1135,16 +1159,47 @@ offset_right = 946.0
 offset_bottom = 703.0
 facility_name = "Cooking Station"
 
+[node name="BulkGrandMarketMenu" parent="." unique_id=1254570894 node_paths=PackedStringArray("grand_market_position") instance=ExtResource("36_4qs0c")]
+offset_left = 1224.0
+offset_top = 593.0
+offset_right = 1224.0
+offset_bottom = 593.0
+grand_market_position = NodePath("../GrandMarketPosition")
+
+[node name="EnterKioskeLabel" type="Label" parent="." unique_id=753905144]
+visible = false
+z_index = 4096
+offset_left = 1293.0
+offset_top = 593.0
+offset_right = 1451.0
+offset_bottom = 612.12634
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("27_e7ku4")
+text = "Press E to enter Trade Kioske"
+
 [node name="Area2D" type="Area2D" parent="." unique_id=1529112079]
 position = Vector2(828, 366)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=282890819]
 shape = SubResource("RectangleShape2D_hw86b")
 
+[node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=343085765]
+collision_layer = 18
+collision_mask = 18
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3" unique_id=1368147499]
+position = Vector2(519, 545)
+shape = SubResource("RectangleShape2D_y20fx")
+one_way_collision = true
+
 [connection signal="body_entered" from="TowerArea" to="." method="_on_tower_area_body_entered"]
 [connection signal="body_exited" from="TowerArea" to="." method="_on_tower_area_body_exited"]
 [connection signal="body_entered" from="GrandMarketArea" to="." method="_on_grand_market_area_body_entered"]
 [connection signal="body_exited" from="GrandMarketArea" to="." method="_on_grand_market_area_body_exited"]
+[connection signal="body_entered" from="MarketKioskeArea" to="." method="_on_market_kioske_area_body_entered"]
+[connection signal="body_exited" from="MarketKioskeArea" to="." method="_on_market_kioske_area_body_exited"]
 [connection signal="body_entered" from="Dojo/DojoArea" to="." method="_on_dojo_area_body_entered"]
 [connection signal="body_exited" from="Dojo/DojoArea" to="." method="_on_dojo_area_body_exited"]
 [connection signal="body_entered" from="GemStoneStationArea" to="." method="_on_gem_stone_station_area_body_entered"]
@@ -1160,4 +1215,5 @@ shape = SubResource("RectangleShape2D_hw86b")
 [editable path="GemStoneStation/NameTag"]
 [editable path="TechTreeComputer/NameTag4"]
 [editable path="NameTag5"]
+[editable path="NameTag6"]
 [editable path="TechTreeComputer2/NameTag4"]

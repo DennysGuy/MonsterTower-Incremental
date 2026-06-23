@@ -323,23 +323,22 @@ mouse_filter = 2
 columns = 4
 
 [node name="BankNotice" type="Label" parent="." unique_id=2054140885]
-visible = false
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -192.0
-offset_top = -8.0
-offset_right = -108.0
-offset_bottom = 19.0
+offset_left = -664.0
+offset_top = -82.0
+offset_right = -220.0
+offset_bottom = 41.0
 grow_horizontal = 0
 grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("2_oo3yc")
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 64
 text = "Unlock Bank 
 to Access Slots!"
 
@@ -502,8 +501,8 @@ text = "Use"
 [connection signal="button_up" from="DetailsPanel/SellButton" to="." method="_on_sell_button_button_up"]
 [connection signal="button_up" from="DetailsPanel/SellSlotButton" to="." method="_on_sell_slot_button_button_up"]
 [connection signal="button_up" from="Close" to="." method="_on_close_button_up"]
-[connection signal="button_up" from="SellTabButton" to="." method="_on_sell_tab_button_button_up"]
 [connection signal="button_up" from="SellTabButton" to="." method="_on_sell_novelties_button_button_up"]
+[connection signal="button_up" from="SellTabButton" to="." method="_on_sell_tab_button_button_up"]
 [connection signal="button_up" from="SellBankButton" to="." method="_on_sell_novelties_button_2_button_up"]
 [connection signal="button_up" from="HBoxContainer/InventoryTab" to="." method="_on_novelties_tab_button_up"]
 [connection signal="button_up" from="HBoxContainer/OreTab" to="." method="_on_ore_tab_button_up"]

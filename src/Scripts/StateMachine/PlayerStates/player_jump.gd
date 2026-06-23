@@ -14,7 +14,7 @@ func enter() -> void:
 	parent.sfx_player.play_sfx(jump_sfx)
 	parent.set_sword_texture(animation_name)
 	parent.set_outfit_texture(animation_name)
-
+	parent.double_jump_buffer = parent.double_jump_buffer_wait_time
 	parent.velocity.y = 0
 	parent.velocity.y -= (PlayerStats.player_stats["Jump Height"] + PlayerStats.get_total_gem_bonus("Jump Height Bonus") + PlayerStats.get_current_sword().jump_height_bonus)
 
@@ -23,8 +23,9 @@ func exit() -> void:
 
 func process_input(_event: InputEvent) -> State:
 	if Input.is_action_just_pressed("add_currency") and PlayerStats.facilities_unlocked["Double Jump"] and parent.can_issue_ability("Double Jump") and parent.can_double_jump and GameManager.can_issue_abilities:
-		parent.jump_buffer_timer = parent.jump_buffer_wait_time
-		return double_jump
+		if parent.double_jump_buffer <= 0:
+			parent.jump_buffer_timer = parent.jump_buffer_wait_time
+			return double_jump
 	return null
 
 func process_frame(_delta: float) -> State:

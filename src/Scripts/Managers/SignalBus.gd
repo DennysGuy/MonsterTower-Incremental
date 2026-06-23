@@ -183,3 +183,5 @@ signal gem_stone_menu_closed()
 signal check_point_button_clicked(chosen_index : int)
 @warning_ignore("unused_signal")
 signal inventory_changed
+@warning_ignore("unused_signal")
+signal novelty_invention_sold

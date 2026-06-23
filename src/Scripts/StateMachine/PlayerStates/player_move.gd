@@ -6,6 +6,7 @@ class_name PlayerMove extends State
 @export var dash_attack_state : State
 @export var attack_1_state : State
 @export var special_attack : State
+@export var pick_axe_state : State
 
 @export var combat_ability_1 : State
 @export var combat_ability_2 : State
@@ -61,6 +62,8 @@ func process_physics(_delta: float) -> State:
 		if Input.is_action_just_pressed("swing_sword") and GameManager.player_can_attack:
 			parent.attack_friction = 400
 			parent.max_attack_drift = 200
+			if parent.in_mining_area and PlayerStats.facilities_unlocked["Refinery Station"]:
+				return pick_axe_state
 			return attack_1_state
 
 		if Input.is_action_just_pressed("combat_ability_1") and PlayerStats.get_equipped_ability("Combat Ability 1"):

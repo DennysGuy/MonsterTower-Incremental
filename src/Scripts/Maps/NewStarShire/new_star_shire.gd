@@ -9,6 +9,8 @@ class_name NewStarShireMap extends Map
 @onready var canvas_layer: CanvasLayer = $CanvasLayer
 @onready var dojo_position: Node2D = $DojoPosition
 
+var sell_speed_timer : float = 0.0
+var sell_speed : float = 0.5
 
 const NOVELTY_ITEMS_SALE = preload("uid://bylwk3imxuh3i")
 
@@ -19,6 +21,10 @@ var player_in_smelting_range : bool = false
 var player_in_crafting_range : bool = false
 var player_in_dojo_range : bool = false
 var player_in_upgrade_station_range : bool = false
+var player_in_kioske_range : bool = false
+var can_sell_to_market : bool = false
+var sell_timer_set : bool = false
+
 const CRAFTING_STATION_OPEN = preload("uid://ccqpi3mcw8aww")
 
 @onready var access_smelting_station: Label = $AccessSmeltingStation
@@ -43,6 +49,8 @@ const CRAFTING_STATION_OPEN = preload("uid://ccqpi3mcw8aww")
 
 @onready var gem_stone_station: Sprite2D = $GemStoneStation
 @onready var grand_market_position: Marker2D = $GrandMarketPosition
+@onready var enter_kioske_label: Label = $EnterKioskeLabel
+@onready var bulk_grand_market_menu: BulkSellerGrandMarketMenu = $BulkGrandMarketMenu
 
 const CLASS_UP_FANFARE = preload("uid://cw28u06grrwni")
 
@@ -127,11 +135,17 @@ func _exit_tree() -> void:
 func _process(delta: float) -> void:
 	super(delta)
 	if Input.is_action_just_pressed("interact") and player_in_tower_range and GameManager.player_can_move and PlayerStats.facilities_unlocked["Hunter License"]:
+		player.velocity = Vector2.ZERO
 		spawn_tower_entrance_map()
 
-	if Input.is_action_just_pressed("interact") and player_in_market_range and GameManager.player_can_move:
+	if Input.is_action_just_pressed("interact") and player_in_kioske_range:
 		player.velocity = Vector2.ZERO
 		spawn_grand_market()
+
+	if Input.is_action_pressed("interact") and player_in_market_range and can_sell_to_market:
+		print("HIHI")
+		player.velocity = Vector2.ZERO
+		sell_to_market(delta)
 		
 	if Input.is_action_just_pressed("interact") and player_in_cooking_range and GameManager.player_can_move and PlayerStats.facilities_unlocked["Cooking Station"]:
 		player.velocity = Vector2.ZERO
@@ -300,16 +314,26 @@ func send_camera_to_class_advancement_center() -> void:
 func _on_grand_market_area_body_entered(body: Node2D) -> void:
 	if body is Player:
 		player_in_market_range = true
-		sell_novelty_items()
-		check_for_node_purchase()
+		#sell_novelty_items()
+		#check_for_node_purchase()
 		var mapping : String = GameManager.get_control_mapping("interact")
 		GameManager.play_sfx(CRAFTING_STATION_OPEN)
-		enter_market_label.text = "Press %s to access the Grand Market" % mapping
+		if player.junk_picked_up.size() > 0:
+			can_sell_to_market = true
+			enter_market_label.text = "Press and hold %s to sell Novelty Inventions! (%s)" % [mapping, player.junk_picked_up.size()]
+			bulk_grand_market_menu.fade_in()
+		else:
+			can_sell_to_market = false
+			enter_market_label.text = "Produce some Novelty Inventions to sell!" % mapping
 		enter_market_label.show()
+		
 
 func _on_grand_market_area_body_exited(body: Node2D) -> void:
 	if body is Player:
 		player_in_market_range = false
+		if can_sell_to_market:
+			bulk_grand_market_menu.fade_out()
+			can_sell_to_market = false
 		enter_market_label.hide()
 
 func _on_cooking_station_area_body_entered(body: Node2D) -> void:
@@ -588,6 +612,22 @@ func has_resource_quantity(tech_node_stats : TechNodeStats) -> bool:
 		
 	return true		
 
+func sell_to_market(delta : float) -> void:
+	if player.junk_picked_up.is_empty():
+		print(player.junk_picked_up)
+		print("Sorry Man")
+		return 
+		
+	if !sell_timer_set:
+		sell_speed_timer = sell_speed
+		sell_timer_set = true
+		
+	sell_speed_timer -= delta
+	print(sell_speed_timer)
+	if sell_speed_timer <= 0:
+		var novelty_invention : ItemInteractable = player.junk_picked_up.front()
+		novelty_invention.set_to_sold(grand_market_position)
+		sell_timer_set = false
 
 func _on_tower_area_2_body_entered(body: Node2D) -> void:
 	if body is Player:
@@ -599,3 +639,15 @@ func _on_tower_area_2_body_exited(body: Node2D) -> void:
 	if body is Player:
 		player_in_tower_range = false
 		set_guide_log(guide_log_2, false)
+
+
+func _on_market_kioske_area_body_entered(body: Node2D) -> void:
+	if body is Player:
+		player_in_kioske_range = true
+		enter_kioske_label.show()
+
+
+func _on_market_kioske_area_body_exited(body: Node2D) -> void:
+	if body is Player:
+		player_in_kioske_range = false
+		enter_kioske_label.hide()
