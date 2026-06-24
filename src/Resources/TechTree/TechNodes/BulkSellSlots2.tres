@@ -1,11 +1,17 @@
 [gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://dsx0fccwrnval"]
 
+[ext_resource type="Texture2D" uid="uid://ciyv3pcv5tvwe" path="res://Assets/TechTree/CookingNodes/Market_Slot_Up_Disabled_Graphic.png" id="1_2wxey"]
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_kpetb"]
+[ext_resource type="Texture2D" uid="uid://bfg0ohg4bsmn" path="res://Assets/TechTree/CookingNodes/Market_Slot_Up_Graphic.png" id="2_mobnn"]
 
 [resource]
 script = ExtResource("1_kpetb")
 node_name = "Bulk Sale Slots 2"
+icon = ExtResource("2_mobnn")
+disabled_icon = ExtResource("1_2wxey")
 description = "Increases the number of slots available during Bulk Sales, allowing you to sell more items at once."
+currency_required = 10000
+stat_relation = 4
 stat_name = "Bulk Sell Slots"
 upgrade_interval = 1.0
 prereqs = Array[String](["Bulk Sale Slots 1:1"])

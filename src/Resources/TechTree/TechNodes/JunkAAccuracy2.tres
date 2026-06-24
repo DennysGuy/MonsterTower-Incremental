@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://bl5fxhci5olcj"]
+
+[ext_resource type="Texture2D" uid="uid://cp3rom1d3p1om" path="res://Assets/TechTree/CookingNodes/JunkATron_Accuracy_Disabled_Graphic.png" id="1_oral2"]
+[ext_resource type="Texture2D" uid="uid://cwe44tsjll364" path="res://Assets/TechTree/CookingNodes/JunkATron_Accuracy_Graphic.png" id="2_6fv3k"]
+[ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="3_2dibl"]
+
+[resource]
+script = ExtResource("3_2dibl")
+node_name = "Junk-A-Accuracy 2"
+icon = ExtResource("2_6fv3k")
+disabled_icon = ExtResource("1_oral2")
+description = "Increases chance to successfully process a Novelty Invention by 3% per level."
+max_level = 3
+currency_required = 6000
+stat_relation = 4
+stat_name = "Cooking Accuracy Bonus"
+upgrade_interval = 0.03
+prereqs = Array[String](["Junk-A-Speedster 2:1"])
+metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

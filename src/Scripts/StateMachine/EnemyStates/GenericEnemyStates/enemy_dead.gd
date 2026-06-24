@@ -64,6 +64,9 @@ func drop_items() -> void:
 	if item:
 		var random_check : int = randi_range(0,100)
 		var drop_chance : float = item.drop_chance
+		
+		
+		
 		if random_check <= int(item.drop_chance * 100):
 			item_interactable = preload("uid://dgtobkubdjq27").instantiate()
 			item_interactable.item = item
@@ -86,7 +89,7 @@ func drop_items() -> void:
 		var random_check_2 : int = randi_range(0,100)
 		var drop_chance : float = crafting_item.drop_chance
 		
-		if PlayerStats.check_item_in_next_sword_recipe(parent.enemy_stats.crafting_item_drop):
+		if PlayerStats.check_item_in_tracked_sword_recipe(parent.enemy_stats.crafting_item_drop):
 			drop_chance += 0.15
 			
 		if random_check_2 <= int(drop_chance * 100):

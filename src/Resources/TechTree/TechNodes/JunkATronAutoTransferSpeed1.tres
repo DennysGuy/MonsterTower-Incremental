@@ -1,7 +1,18 @@
 [gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://c3dg2fxa12pr6"]
 
+[ext_resource type="Texture2D" uid="uid://bmww7j5ba4j1j" path="res://Assets/TechTree/CookingNodes/JunkATron_AutoSell_Speed_Disabled_Graphic.png" id="1_ms4jb"]
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_n0wmn"]
+[ext_resource type="Texture2D" uid="uid://0utjxoxeo1qc" path="res://Assets/TechTree/CookingNodes/JunkATron_AutoSell_Speed_Graphic.png" id="2_4mmef"]
 
 [resource]
 script = ExtResource("1_n0wmn")
+node_name = "Auto Sell Transfer Speed 1"
+icon = ExtResource("2_4mmef")
+disabled_icon = ExtResource("1_ms4jb")
+description = "Speed up the Junk-A-Tron's transfer process to the market. "
+max_level = 3
+currency_required = 30000
+stat_name = "Auto Sell Transfer Speed"
+upgrade_interval = 2.0
+prereqs = Array[String](["Junk-A-Auto-Transfer:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

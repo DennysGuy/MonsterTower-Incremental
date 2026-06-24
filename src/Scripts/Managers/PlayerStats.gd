@@ -198,7 +198,7 @@ func set_tracked_weapon_index(new_index : int) -> void:
 
 @onready var facilities_unlocked : Dictionary = {
 	"Hunter License" : false,
-	"Cooking Station" : false,
+	"Junk-A-Tron V1" : false,
 	"Crafting Station" : false,
 	"Refinery Station" : false,
 	"Crafting Tab": false,
@@ -208,7 +208,8 @@ func set_tracked_weapon_index(new_index : int) -> void:
 	"Double Jump" : false,
 	"Gem Stone Station": false,
 	"HP Chalice" : false,
-	"MP Vial" : false
+	"MP Vial" : false,
+	"Junk A Tron Auto Transfer": false
 }
 
 @onready var check_points_unlocked : Dictionary = {
@@ -295,8 +296,9 @@ func get_next_sword() -> Sword:
 		return get_sword(next_sword)
 	return null
 	
-func check_item_in_next_sword_recipe(item : Item) -> bool:
-	if get_next_sword():
+func check_item_in_tracked_sword_recipe(item : Item) -> bool:
+	var tracked_weapon_index : int = PlayerStats.player_stats["Tracked Weapon"]
+	if get_sword(tracked_weapon_index):
 		var next_sword_recipe : CraftingRecipe = get_next_sword().recipe
 		if next_sword_recipe:
 			return InventoryManager.item_in_recipe(item,next_sword_recipe)

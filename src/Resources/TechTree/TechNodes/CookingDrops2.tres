@@ -1,14 +1,18 @@
 [gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://dldvhuc6qmg2p"]
 
+[ext_resource type="Texture2D" uid="uid://wv44yuifx88" path="res://Assets/TechTree/CookingNodes/JunkATron_DropRate_Up_Disabled_Graphic.png" id="1_vtq7n"]
+[ext_resource type="Texture2D" uid="uid://c16ap03gp38cv" path="res://Assets/TechTree/CookingNodes/JunkATron_DropRate_Up_Graphic.png" id="2_m4grv"]
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="2_vtq7n"]
 
 [resource]
 script = ExtResource("2_vtq7n")
-node_name = "Cooking Drops 2"
+node_name = "Junk Drops 2"
+icon = ExtResource("2_m4grv")
+disabled_icon = ExtResource("1_vtq7n")
 description = "Increases chance to receive cooking drops by 10%"
 currency_required = 2000
 stat_relation = 4
 stat_name = "Cooking Drop Chance Bonus"
 upgrade_interval = 0.1
-prereqs = Array[String](["Cooking Speed 2:1"])
+prereqs = Array[String](["Junk Drops 1:2"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

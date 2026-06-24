@@ -1,7 +1,17 @@
 [gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://bd72e41vun0w"]
 
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_1r6lm"]
+[ext_resource type="Texture2D" uid="uid://bj11urm5f2721" path="res://Assets/TechTree/CookingNodes/Market_Slot_Stack_Up_Graphic.png" id="1_71yt5"]
+[ext_resource type="Texture2D" uid="uid://cqbqcbuleklfm" path="res://Assets/TechTree/CookingNodes/Market_Slot_Stack_Up_Disabled_Graphic.png" id="1_ahcwk"]
 
 [resource]
 script = ExtResource("1_1r6lm")
+node_name = "Bulk Sale Slot Stack 2"
+icon = ExtResource("1_71yt5")
+disabled_icon = ExtResource("1_ahcwk")
+description = "Increases max Bulk Sale Slot Stack by +8"
+currency_required = 12800
+stat_name = "Bulk Sell Slot Stack"
+upgrade_interval = 4.0
+prereqs = Array[String](["Bulk Sell Slot Stack 2:2"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

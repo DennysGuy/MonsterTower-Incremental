@@ -37,9 +37,8 @@ func add_item(selected_item : Item) -> void:
 	texture_progress_bar.max_value = item.sell_time
 
 func sell_item() -> void:
-	print("SOLD!")
 	GameManager.play_sfx(SELL_ITEM)
-	TechTreeManager.currency += item.sell_value
+	TechTreeManager.currency += item.sell_value * PlayerStats.player_stats["Market Value Multiplier"]
 	SaveManager.save_tech_tree_data()
 	HubManager.check_for_node_purchase.emit()
 	var damage_label : DamageLabel = preload("uid://dkchs27qqogyy").instantiate()

@@ -104,6 +104,7 @@ TODO: We will add saves for classes as well
 	"Bulk Sell Slots": 1.0,
 	"Bulk Sell Slot Stack":4.0,
 	"Market Value Multiplier":1.0,
+	"Misc Drop Reduction Multiplier": 0.0
 }
 
 #this will be loaded when we enter the tower entrance map or a map in and of itself
@@ -247,13 +248,13 @@ TODO: We will add saves for classes as well
 	"Banking": {"Level":0, "Unlocked": false},
 	"Banking 2": {"Level":0, "Unlocked": false},
 	"Banking 3": {"Level":0, "Unlocked": false},
-	"Cooking Station": {"Level":0, "Unlocked": true},
-	"Cooking Drops 1": {"Level":0, "Unlocked": false},
-	"Cooking Drops 2": {"Level":0, "Unlocked": false},
-	"Cooking Speed 1":{"Level":0, "Unlocked": false},
-	"Cooking Speed 2":{"Level":0, "Unlocked": false},
-	"Cooking Accuracy 1": {"Level":0, "Unlocked": false},
-	"Cooking Accuracy 2": {"Level":0, "Unlocked": false},
+	"Junk-A-Tron V1": {"Level":0, "Unlocked": true},
+	"Junk Drops 1": {"Level":0, "Unlocked": false},
+	"Junk Drops 2": {"Level":0, "Unlocked": false},
+	"Junk-A-Speedster 1":{"Level":0, "Unlocked": false},
+	"Junk-A-Speedster 2":{"Level":0, "Unlocked": false},
+	"Junk-A-Accuracy 1": {"Level":0, "Unlocked": false},
+	"Junk-A-Accuracy 2": {"Level":0, "Unlocked": false},
 	"Expert Marketeer 1": {"Level":0, "Unlocked": false},
 	"Refinery Station":{"Level":0, "Unlocked": true},
 	"Mining Speed 1": {"Level":0, "Unlocked": false},
@@ -299,8 +300,8 @@ TODO: We will add saves for classes as well
 	"Dodge Chance 2": {"Level":0,"Unlocked": false},
 	"Dash Distance 1": {"Level":0,"Unlocked": false},
 	"Dash Distance 2": {"Level":0,"Unlocked": false},
-	"Critical Cooking 1": {"Level":0,"Unlocked": false},
-	"Critical Cooking 2": {"Level":0,"Unlocked": false},
+	"Crit-A-Tron 1": {"Level":0,"Unlocked": false},
+	"Crit-A-Tron 2": {"Level":0,"Unlocked": false},
 	"Critical Smelting 1": {"Level":0,"Unlocked": false},
 	"Critical Smelting 2": {"Level":0,"Unlocked": false},
 	"Free Range 1": {"Level":0,"Unlocked": false},
@@ -315,7 +316,9 @@ TODO: We will add saves for classes as well
 	"Salvaged Junk 2": {"Level":0,"Unlocked": false},
 	"Extra Ore 1": {"Level":0,"Unlocked": false},
 	"Extra Ore 2": {"Level":0,"Unlocked": false},
-	
+	"Junk-A-Auto-Transfer":{"Level":0,"Unlocked": false},
+	"Auto Sell Transfer Speed 1":{"Level":0,"Unlocked": false},
+	"Pro Mover 1": {"Level":0,"Unlocked": false}
 }
 
 @export var equipped_abilities : Dictionary = {
