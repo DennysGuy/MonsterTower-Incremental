@@ -9,7 +9,7 @@ const COOKING_RANGE_CONTSTRUCTION = preload("uid://53gha3pmge8a")
 func _ready() -> void:
 	#SignalBus.unlock_cooking_station.connect(unlock_station)
 	CookingManager.can_craft_dish.connect(check_if_can_cook)
-	if PlayerStats.facilities_unlocked["Cooking Station"]:
+	if PlayerStats.facilities_unlocked["Junk-A-Tron"]:
 		texture = COOKING_RANGE
 		needed_unlocks.hide()
 	else:
@@ -29,7 +29,7 @@ func unlock_station() -> void:
 	needed_unlocks.hide()
 	
 func check_if_can_cook() -> void:
-	if PlayerStats.facilities_unlocked["Cooking Station"]:
+	if PlayerStats.facilities_unlocked["Junk-A-Tron"]:
 		if CookingManager.can_cook_recipe():
 			notification_icon.set_notice_icon()
 			SignalBus.show_can_cook_dish_label.emit()

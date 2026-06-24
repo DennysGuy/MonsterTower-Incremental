@@ -73,7 +73,7 @@ func drop_items() -> void:
 			item_interactable.icon.texture = item.drop_icon
 			item_interactable.global_position = parent.global_position
 	
-	if PlayerStats.facilities_unlocked["Cooking Station"]:
+	if PlayerStats.facilities_unlocked["Junk-A-Tron"]:
 		var cooking_item : EnemyDrop = parent.enemy_stats.cooking_item_drop
 		var cooking_item_interactable : ItemInteractable = preload("uid://dgtobkubdjq27").instantiate()
 		var random_check : int = randi_range(0, 100)

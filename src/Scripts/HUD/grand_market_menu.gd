@@ -149,7 +149,7 @@ func init_market() -> void:
 		bank_notice.show()
 
 func init_tabs() -> void:
-	if PlayerStats.facilities_unlocked["Cooking Station"]:
+	if PlayerStats.facilities_unlocked["Junk-A-Tron"]:
 		use_tab.show()
 	
 	if PlayerStats.facilities_unlocked["Gem Stone Station"]:

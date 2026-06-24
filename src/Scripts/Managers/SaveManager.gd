@@ -1,6 +1,6 @@
 extends Node
 
-const SAVE_PATH : String = "user://game_save.res"
+const SAVE_PATH : String = "user://game_save.tres"
 var current_save_game : GameSave = null
 
 func save_game() -> void:

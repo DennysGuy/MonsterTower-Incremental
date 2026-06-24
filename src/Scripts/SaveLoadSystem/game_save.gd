@@ -166,7 +166,7 @@ TODO: We will add saves for classes as well
 #loadded when we hit "continue game"
 @export var facilities_unlocked : Dictionary = {
 	"Hunter License" : false,
-	"Cooking Station" : false,
+	"Junk-A-Tron" : false,
 	"Crafting Station" : false,
 	"Refinery Station" : false,
 	"Crafting Tab": false,
@@ -209,6 +209,7 @@ TODO: We will add saves for classes as well
 	"Bulk Sale Slot Stack 1": {"Level":0, "Unlocked": false},
 	"Bulk Sale Slot Stack 2": {"Level":0, "Unlocked": false},
 	"Bulk Sale Slot Stack 3":{"Level":0, "Unlocked": false},
+	"Bulk Sell Transfer Speed":{"Level":1, "Unlocked": false},
 	"Crit Chance 1" : {"Level":0, "Unlocked": false},
 	"Crit Chance 2": {"Level":0, "Unlocked": false},
 	"Crit Chance 3": {"Level":0, "Unlocked":false},

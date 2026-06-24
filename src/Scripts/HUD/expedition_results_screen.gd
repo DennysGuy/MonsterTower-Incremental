@@ -125,7 +125,7 @@ func init_containers() -> void:
 
 func init_tabs() -> void:
 
-	if PlayerStats.facilities_unlocked["Cooking Station"]:
+	if PlayerStats.facilities_unlocked["Junk-A-Tron"]:
 		use_tab.show()
 	else:
 		use_tab.hide()

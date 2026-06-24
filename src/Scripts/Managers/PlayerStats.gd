@@ -13,7 +13,7 @@ var cool_down_speed_buff_mod : float = 0.0
 var dodge_chance_buff_mod : float = 0.0 # not a thing a yet
 
 const KNOCKBACK_FORCE : int = 100
-const BASE_TRANSFER_TIME : float = 3.0
+const BASE_TRANSFER_TIME : float = 2.0
 @onready var player_stats : Dictionary = {
 	"Level" : 1,
 	"Needed XP": 100,
@@ -198,7 +198,7 @@ func set_tracked_weapon_index(new_index : int) -> void:
 
 @onready var facilities_unlocked : Dictionary = {
 	"Hunter License" : false,
-	"Junk-A-Tron V1" : false,
+	"Junk-A-Tron" : false,
 	"Crafting Station" : false,
 	"Refinery Station" : false,
 	"Crafting Tab": false,
@@ -298,8 +298,12 @@ func get_next_sword() -> Sword:
 	
 func check_item_in_tracked_sword_recipe(item : Item) -> bool:
 	var tracked_weapon_index : int = PlayerStats.player_stats["Tracked Weapon"]
+	
+	if tracked_weapon_index == -1:
+		return false
+	
 	if get_sword(tracked_weapon_index):
-		var next_sword_recipe : CraftingRecipe = get_next_sword().recipe
+		var next_sword_recipe : CraftingRecipe = get_sword(tracked_weapon_index).recipe
 		if next_sword_recipe:
 			return InventoryManager.item_in_recipe(item,next_sword_recipe)
 		else:
@@ -349,7 +353,7 @@ func upgrade_player_stat(stat_name : String, interval : float, node_type : TechT
 		facilities_unlocked[stat_name] = true
 		print("stat name: %s is unclocked : %s" % [stat_name, facilities_unlocked[stat_name]])
 		SaveManager.save_game()
-		if stat_name == "Cooking Station":
+		if stat_name == "Junk-A-Tron":
 			show_cooking_station_unlock_animation = true
 		elif stat_name == "Refinery Station":
 			show_refinery_station_unlock_animation = true

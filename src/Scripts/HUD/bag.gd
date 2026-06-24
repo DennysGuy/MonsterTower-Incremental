@@ -157,10 +157,6 @@ func init_tabs() -> void:
 	
 	update_tab_label(novelty_tab_label,"Drops", "Inventory")
 	
-	if PlayerStats.facilities_unlocked["Cooking Station"]:
-		use_tab.show()
-		update_tab_label(use_tab_label,"Use", "Use")
-	
 	if PlayerStats.facilities_unlocked["Refinery Station"]:
 		ore.show()
 		update_tab_label(ore_tab_label,"Ore", "Ore")

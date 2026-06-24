@@ -63,7 +63,7 @@ func _ready() -> void:
 		STATION_TYPE.COOKING:
 			name_tag.tag.text = "Junk-a-Tron"
 			station_graphic.texture = TEMP_COOKING_RANGE
-			if PlayerStats.facilities_unlocked["Cooking Station"]:
+			if PlayerStats.facilities_unlocked["Junk-A-Tron"]:
 				station_graphic.texture = TEMP_COOKING_RANGE
 				arrow_at_ore.show()
 			else:
@@ -89,7 +89,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		var can_open_station : bool
 		match station_type:
 			STATION_TYPE.COOKING:
-				can_open_station = PlayerStats.facilities_unlocked["Cooking Station"]
+				can_open_station = PlayerStats.facilities_unlocked["Junk-A-Tron"]
 			STATION_TYPE.SMELTING:
 				can_open_station = PlayerStats.facilities_unlocked["Refinery Station"]
 
@@ -104,7 +104,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 				STATION_TYPE.SMELTING:
 					cant_open_notice.text = "Unlock Refinery Node to access"
 				STATION_TYPE.COOKING:
-					cant_open_notice.text = "Unlock Cooking Range Node to access"
+					cant_open_notice.text = "Unlock Junk-A-Tron Node to access"
 			cant_open_notice.show()
 
 func _on_area_2d_body_exited(body: Node2D) -> void:

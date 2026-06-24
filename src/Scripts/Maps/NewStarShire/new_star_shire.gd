@@ -150,7 +150,7 @@ func _process(delta: float) -> void:
 		player.velocity = Vector2.ZERO
 		sell_to_market(delta)
 		
-	if Input.is_action_just_pressed("interact") and player_in_cooking_range and GameManager.player_can_move and PlayerStats.facilities_unlocked["Cooking Station"]:
+	if Input.is_action_just_pressed("interact") and player_in_cooking_range and GameManager.player_can_move and PlayerStats.facilities_unlocked["Junk-A-Tron"]:
 		player.velocity = Vector2.ZERO
 		spawn_cooking_menu()
 	
@@ -342,8 +342,8 @@ func _on_grand_market_area_body_exited(body: Node2D) -> void:
 func _on_cooking_station_area_body_entered(body: Node2D) -> void:
 	if body is Player:
 		player_in_cooking_range = true
-		if !PlayerStats.facilities_unlocked["Cooking Station"]:
-			access_crafting_station.text = "Cooking Range under construction!"
+		if !PlayerStats.facilities_unlocked["Junk-A-Tron"]:
+			access_crafting_station.text = "Junk-A-Tron under construction!"
 		else:
 			var mapping : String = GameManager.get_control_mapping("interact")
 			access_crafting_station.text = "Press %s to access Cooking Range" % mapping
@@ -622,7 +622,7 @@ func sell_to_market(delta: float) -> void:
 	sell_speed_timer += delta
 
 	var interval := get_sell_time()
-
+	print(interval)
 	if sell_speed_timer >= interval:
 		sell_speed_timer -= interval
 
@@ -631,7 +631,7 @@ func sell_to_market(delta: float) -> void:
 
 func get_sell_time() -> float:
 	var sell_speed_level : int = SaveManager.get_tech_node_stat_level("Bulk Sell Transfer Speed")
-	return max(0.03, PlayerStats.BASE_TRANSFER_TIME * pow(0.9, sell_speed_level))
+	return max(0.03, PlayerStats.BASE_TRANSFER_TIME * pow(0.7, sell_speed_level))
 
 func _on_tower_area_2_body_entered(body: Node2D) -> void:
 	if body is Player:
