@@ -239,10 +239,12 @@ func spawn_item(item : Item, offset : Vector2 = Vector2.ZERO) -> void:
 	
 	match station_type:
 		STATION_TYPE.SMELTING:
-			CodexManager.increment_bar_recipe_list_item_count(stored_recipe.index)
+			if stored_recipe:
+				CodexManager.increment_bar_recipe_list_item_count(stored_recipe.index)
 		STATION_TYPE.COOKING:
 			item_interactable.is_junk_drop = true
-			CodexManager.increment_dish_recipe_list_item_count(stored_recipe.index)
+			if stored_recipe:
+				CodexManager.increment_dish_recipe_list_item_count(stored_recipe.index)
 	
 	#check if free range/heat hits
 	spawn_crafting_recipe_items()

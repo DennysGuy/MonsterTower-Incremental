@@ -619,19 +619,18 @@ func sell_to_market(delta: float) -> void:
 	if player.junk_picked_up.is_empty():
 		return
 
-	sell_speed_timer += delta
-
-	var interval := get_sell_time()
-	print(interval)
-	if sell_speed_timer >= interval:
-		sell_speed_timer -= interval
-
+	if sell_speed_timer <= 0:
 		var item: ItemInteractable = player.junk_picked_up.front()
 		item.set_to_sold(grand_market_position)
+		sell_speed_timer = get_sell_time()
+
+	sell_speed_timer -= delta
+
+	
 
 func get_sell_time() -> float:
-	var sell_speed_level : int = SaveManager.get_tech_node_stat_level("Bulk Sell Transfer Speed")
-	return max(0.03, PlayerStats.BASE_TRANSFER_TIME * pow(0.7, sell_speed_level))
+	var sell_speed_level : int = int(PlayerStats.player_stats["Bulk Sell Transfer Speed"])
+	return max(0.01, PlayerStats.BASE_TRANSFER_TIME * pow(0.7, sell_speed_level))
 
 func _on_tower_area_2_body_entered(body: Node2D) -> void:
 	if body is Player:

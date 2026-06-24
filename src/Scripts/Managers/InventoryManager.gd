@@ -140,6 +140,7 @@ func remove_item(inventory_name : String, item : Item, quantity : int = 1) -> bo
 
 			if slot["quantity"] <= 0:
 				selected_inventory.erase(slot)
+				reset_stored_slot_index.emit()
 			check_for_notification(item)
 			update_inventories(item.get_inventory_name())
 			SignalBus.update_resource_needed_panel.emit()
@@ -148,9 +149,10 @@ func remove_item(inventory_name : String, item : Item, quantity : int = 1) -> bo
 	return false
 
 func remove_item_from_slot(slot_index : int, inventory_name : String, quantity : int = 1) -> bool:
-	if not inventories.has(inventory_name) or slot_index == -1:
+	if not inventories.has(inventory_name) or slot_index == -1 or InventoryManager.inventories[inventory_name].is_empty():
 		return false
 	
+
 	var selected_inventory : Array = inventories[inventory_name]
 	var selected_slot : Dictionary = selected_inventory[slot_index]
 	if selected_slot["item"]:
@@ -161,6 +163,7 @@ func remove_item_from_slot(slot_index : int, inventory_name : String, quantity :
 			reset_stored_slot_index.emit()
 			check_for_notification(selected_slot["item"])
 			update_inventories(inventory_name)
+			
 			
 		SignalBus.update_resource_needed_panel.emit()
 		QuestManager.decrement_task_item_gather_count.emit(selected_slot["item"])

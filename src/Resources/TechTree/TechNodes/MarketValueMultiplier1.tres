@@ -16,5 +16,5 @@ stat_relation = 4
 price_scaler = 1.5
 stat_name = "Market Value Multiplier"
 upgrade_interval = 0.2
-prereqs = Array[String](["Proficient Vendor 1:1"])
+prereqs = Array[String](["Pro Mover 1:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

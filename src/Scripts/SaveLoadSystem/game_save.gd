@@ -98,7 +98,7 @@ TODO: We will add saves for classes as well
 	"Pick Up Distance": 20.0,
 	"Cooldown Reduction":0.0,
 	"Extra Ore Drop Chance": 0.0,
-	"Bulk Sell Transfer Speed": 1.5,
+	"Bulk Sell Transfer Speed": 1.0,
 	"Market Sell Speed": 5.0,
 	"Auto Sell Transfer Speed": 2.0,
 	"Bulk Sell Slots": 1.0,

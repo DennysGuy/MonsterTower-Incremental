@@ -323,6 +323,7 @@ mouse_filter = 2
 columns = 4
 
 [node name="BankNotice" type="Label" parent="." unique_id=2054140885]
+visible = false
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0

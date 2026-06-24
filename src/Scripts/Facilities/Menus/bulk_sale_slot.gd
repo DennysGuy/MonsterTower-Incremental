@@ -38,11 +38,12 @@ func add_item(selected_item : Item) -> void:
 
 func sell_item() -> void:
 	GameManager.play_sfx(SELL_ITEM)
-	TechTreeManager.currency += item.sell_value * PlayerStats.player_stats["Market Value Multiplier"]
+	var final_sale_value : int = int(item.sell_value * PlayerStats.player_stats["Market Value Multiplier"])
+	TechTreeManager.currency += final_sale_value
 	SaveManager.save_tech_tree_data()
 	HubManager.check_for_node_purchase.emit()
 	var damage_label : DamageLabel = preload("uid://dkchs27qqogyy").instantiate()
 	damage_label.set_crit_bg()
-	damage_label.label.text = "+%s Spirols" % item.sell_value
+	damage_label.label.text = "+%s Spirols" % final_sale_value
 	damage_label.global_position = grand_market_position.global_position
 	grand_market_position.get_parent().add_child(damage_label)

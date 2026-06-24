@@ -112,13 +112,14 @@ func _on_sell_button_button_up() -> void:
 func clear_details() -> void:
 	selected_item = null
 	item_icon.texture = null
-	item_title.text = "Selected an Item"
+	item_title.text = "Select an Item"
 	description.text = ""
 	value.text = "N/A"
 	indicator.texture = null
 
 func reset_stored_slot_index() -> void:
 	stored_slot_index = -1
+	#clear_details()
 
 func _on_close_button_up() -> void:
 	close_out()
@@ -179,6 +180,9 @@ func sell_all_items(container : GridContainer, inventory_name : String) -> void:
 
 func sell_slot(container : GridContainer) -> void:
 	var inventory : Array = InventoryManager.inventories[selected_inventory]
+	if inventory.is_empty():
+		return
+		
 	var slot = inventory[stored_slot_index]
 	var starting_quantity : int = slot["quantity"]
 	for i in starting_quantity:
@@ -190,6 +194,8 @@ func sell_slot(container : GridContainer) -> void:
 		sfx_player.play_sfx(SELL_ITEM)
 		SaveManager.save_tech_tree_data()
 		await get_tree().create_timer(0.1).timeout
+	
+	clear_details()
 
 func _on_sell_novelties_button_2_button_up() -> void:
 	sell_all_items(bank_container, "Bank")
