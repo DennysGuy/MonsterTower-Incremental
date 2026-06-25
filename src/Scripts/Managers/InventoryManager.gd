@@ -242,7 +242,7 @@ func check_for_notification(item : Item) -> void:
 	
 	if item.is_crafting() or item.is_use():
 		SignalBus.check_for_notification.emit(GameManager.NOTIFICATION_TYPE.CRAFTING)
-	elif item.is_cooking():
+	elif item.is_novelty():
 		SignalBus.check_for_notification.emit(GameManager.NOTIFICATION_TYPE.COOKING)
 	elif item.is_ore():
 		SignalBus.check_for_notification.emit(GameManager.NOTIFICATION_TYPE.SMELTING)

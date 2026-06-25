@@ -90,7 +90,7 @@ func _ready() -> void:
 	TechTreeManager.save_node_data.connect(save_node_data)
 	set_level_label()
 	
-	if tech_node_stats.currency_required > 0:
+	if tech_node_stats.get_cost() > 0:
 		current_cost = tech_node_stats.get_cost()
 	
 	if tech_node_stats.unlocked:
@@ -162,7 +162,7 @@ func check_if_can_purchase() -> void:
 		
 func can_purchase() -> bool:
 	if tech_node_stats.node_type != TechTreeManager.TECH_NODE_TYPE.CLASS_ABILITY:
-		return TechTreeManager.currency >= tech_node_stats.currency_required and has_resource_quantity()
+		return TechTreeManager.currency >= tech_node_stats.get_cost() and has_resource_quantity()
 	else:
 		return PlayerStats.player_stats["Ability Points"] >= tech_node_stats.ap_required and has_resource_quantity()
 
@@ -238,12 +238,12 @@ func create_tool_tip() -> void:
 	else:
 		tool_tip.description.text = tech_node_stats.description
 	if node_type != TechTreeManager.TECH_NODE_TYPE.CLASS_ABILITY:
-		if TechTreeManager.currency >=  tech_node_stats.currency_required:
+		if TechTreeManager.currency >=  tech_node_stats.get_cost():
 			tool_tip.cost.text = "[color=green]Spirols: %s/%s[/color]" % [TechTreeManager.currency, current_cost]
 		else:
 			tool_tip.cost.text = "Spirols: %s/%s" % [TechTreeManager.currency, current_cost]
 	
-		if tech_node_stats.currency_required <= 0:
+		if tech_node_stats.get_cost() <= 0:
 			tool_tip.cost.text = ""
 	else:
 		if PlayerStats.player_stats["Ability Points"] >= tech_node_stats.ap_required:
@@ -307,7 +307,7 @@ func _on_mouse_exited() -> void:
 func _on_gui_input(event: InputEvent) -> void:
 	if event.is_action_pressed("left_click") and in_range and !GameManager.license_promotion_time:
 		if node_type != TechTreeManager.TECH_NODE_TYPE.CLASS_ABILITY:
-			if can_click and TechTreeManager.currency < tech_node_stats.currency_required and has_resource_quantity():
+			if can_click and TechTreeManager.currency < tech_node_stats.get_cost() and has_resource_quantity():
 				play_sfx(DENIED)
 				return
 		else:

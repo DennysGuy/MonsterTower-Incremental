@@ -59,14 +59,14 @@ func set_icon() -> void:
 				if !is_enabled:
 					play_sfx(COOKING_NOTIFICATION)
 					icon.texture = COOKING_NOTIFICATION_ICON_ENABLED
-					notice.text = "Dish ready to cook!"
-					HubManager.show_facility_notification.emit("Cooking Station")
+					notice.text = "Recipes ready to craft!"
+					HubManager.show_facility_notification.emit("Junk-A-Tron")
 					is_enabled = true
 					start_pulse()
 			else:
 				stop_pulse()
 				icon.texture = COOKING_NOTIFICATION_ICON_DISABLED
-				HubManager.hide_facility_notification.emit("Cooking Station")
+				HubManager.hide_facility_notification.emit("Junk-A-Tron")
 				is_enabled = false
 					
 		ICON_TYPE.SMELTING:

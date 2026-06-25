@@ -781,7 +781,7 @@ CORNER"
 horizontal_alignment = 1
 
 [node name="CookingRangePosition" type="Node2D" parent="." unique_id=1732992166]
-position = Vector2(1915, 593)
+position = Vector2(861, 640)
 
 [node name="SwordCraftingStationPosition" type="Node2D" parent="." unique_id=333549657]
 position = Vector2(1841, 482)
@@ -1145,7 +1145,7 @@ offset_left = 792.0
 offset_top = 558.0
 offset_right = 946.0
 offset_bottom = 703.0
-facility_name = "Cooking Station"
+facility_name = "Junk-A-Tron"
 
 [node name="BulkGrandMarketMenu" parent="." unique_id=1254570894 node_paths=PackedStringArray("grand_market_position") instance=ExtResource("36_4qs0c")]
 offset_left = 1178.0

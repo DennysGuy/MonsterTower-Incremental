@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_0i4gu")
-node_name = "Junk-A-Tron"
+node_name = "Junk-A-Tron V1"
 task_id = 33
 parent_quest = "Tip of the Iceberg"
 task_type = 5
