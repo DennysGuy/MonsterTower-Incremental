@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CraftingRecipe" load_steps=6 format=3 uid="uid://bl128q5qwa5a6"]
+[gd_resource type="Resource" script_class="CraftingRecipe" format=3 uid="uid://bl128q5qwa5a6"]
 
 [ext_resource type="Script" uid="uid://cljygiasf4103" path="res://src/Scripts/Facilities/crafting_recipe.gd" id="1_jw1gy"]
 [ext_resource type="Texture2D" uid="uid://bbc7cupbuh156" path="res://Assets/Facilities/CookingStation/MushyFlan.png" id="1_v88f0"]

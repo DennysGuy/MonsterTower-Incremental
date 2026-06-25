@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="CraftingRecipe" format=3 uid="uid://ewuj36wenyg"]
+
+[ext_resource type="Texture2D" uid="uid://bga4fjww6oans" path="res://Assets/Facilities/Junkatron/WingeyUmbrella.png" id="1_xi4w1"]
+[ext_resource type="Resource" uid="uid://ctjyflf6qr4g" path="res://src/Resources/Dishes/WingeyUmbrella.tres" id="2_g2swd"]
+[ext_resource type="Resource" uid="uid://bxukrnl1bg7oo" path="res://src/Resources/Actors/Enemies/Biome1/Batclopse/BatclopseWing.tres" id="3_cpubd"]
+[ext_resource type="Resource" uid="uid://bsa2pu1rqjdkt" path="res://src/Resources/Actors/Enemies/Biome1/CorruptedMushie/MushiePuree.tres" id="4_xi4w1"]
+[ext_resource type="Script" uid="uid://cljygiasf4103" path="res://src/Scripts/Facilities/crafting_recipe.gd" id="5_c1e4s"]
+
+[resource]
+script = ExtResource("5_c1e4s")
+recipe_name = "Mossy Goulash"
+menu_icon = ExtResource("1_xi4w1")
+index = 1
+description = "It keeps you dry.. and an eye out for you, I guess."
+recipe_tier = 2
+crafting_time = 35.0
+success_rate = 0.85
+output_item = ExtResource("2_g2swd")
+recipe_list = Array[Dictionary]([{
+ExtResource("3_cpubd"): 2
+}, {
+ExtResource("4_xi4w1"): 1
+}])
+related_enemies = Array[String](["Batclopse", "Corrupted Mushie"])
+metadata/_custom_type_script = "uid://cljygiasf4103"

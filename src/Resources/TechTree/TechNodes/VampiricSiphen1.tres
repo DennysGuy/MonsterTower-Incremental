@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://8hkjeagafmg2"]
 
 [ext_resource type="Texture2D" uid="uid://cfwckchi67uwg" path="res://Assets/TechTree/SurvivalNodes/LifeSteal_Disabled_Graphic.png" id="1_byqkw"]
-[ext_resource type="Resource" uid="uid://d1pg7dveofnwm" path="res://src/Resources/Dishes/Svio.tres" id="1_jrjfj"]
+[ext_resource type="Resource" uid="uid://d1pg7dveofnwm" path="res://src/Resources/Dishes/FluffyGilleySuit.tres" id="1_jrjfj"]
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_xbyhm"]
 [ext_resource type="Texture2D" uid="uid://xstn5os4i83i" path="res://Assets/TechTree/SurvivalNodes/LifeSteal_Graphic.png" id="2_niev6"]
 

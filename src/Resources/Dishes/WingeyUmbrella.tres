@@ -1,13 +1,13 @@
 [gd_resource type="Resource" script_class="Item" format=3 uid="uid://ctjyflf6qr4g"]
 
-[ext_resource type="Script" uid="uid://cu8drgivmhfn" path="res://src/Scripts/item.gd" id="1_hmpup"]
-[ext_resource type="Texture2D" uid="uid://bd61e2on2n21b" path="res://Assets/Facilities/CookingStation/MossyGoulash.png" id="2_hw8x1"]
+[ext_resource type="Script" uid="uid://cu8drgivmhfn" path="res://src/Scripts/item.gd" id="1_ghjk0"]
+[ext_resource type="Texture2D" uid="uid://bga4fjww6oans" path="res://Assets/Facilities/Junkatron/WingeyUmbrella.png" id="2_yp2n5"]
 
 [resource]
-script = ExtResource("1_hmpup")
+script = ExtResource("1_ghjk0")
 item_name = "Mossy Goulash"
 item_type = 5
 sell_value = 200
-shop_icon = ExtResource("2_hw8x1")
+shop_icon = ExtResource("2_yp2n5")
 sell_time = 2000.0
 description = "Derived from the many monsters in the Mossy Dungeon Biome. It's.. not very appetizing -  but valuable.. for some reason."

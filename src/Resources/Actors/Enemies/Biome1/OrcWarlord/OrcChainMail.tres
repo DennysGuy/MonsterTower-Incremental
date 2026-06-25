@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("2_0wwsw")
 drop_icon = ExtResource("1_hss3b")
-drop_chance = 0.06
+drop_chance = 0.65
 item_name = "Chain Mail"
 item_type = 2
 sell_value = 220

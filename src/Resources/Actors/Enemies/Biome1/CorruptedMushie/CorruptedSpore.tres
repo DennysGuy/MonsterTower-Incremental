@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_2cbcc")
 drop_icon = ExtResource("1_sfm84")
-drop_chance = 0.9
+drop_chance = 0.8
 item_name = "Corrupted Mushie Spore"
 sell_value = 35
 shop_icon = ExtResource("1_sfm84")

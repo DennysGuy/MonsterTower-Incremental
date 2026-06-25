@@ -6,9 +6,9 @@
 [resource]
 script = ExtResource("1_6iyr8")
 drop_icon = ExtResource("1_plmhv")
-drop_chance = 0.8
+drop_chance = 0.77
 item_name = "Loot Drop"
-sell_value = 140
+sell_value = 90
 shop_icon = ExtResource("1_plmhv")
 description = "Trap Loot removed from the bowls of a Serpant Mimic. "
 metadata/_custom_type_script = "uid://cubudt76pshmm"

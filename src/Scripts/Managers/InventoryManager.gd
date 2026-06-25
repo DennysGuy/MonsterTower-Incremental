@@ -382,6 +382,8 @@ func calculate_quantity(recipe: CraftingRecipe) -> int:
 					inventory_amt = get_quantity(mat, "Ore")
 				mat.ITEM_TYPE.USE:
 					inventory_amt = get_quantity(mat, "Use")
+				mat.ITEM_TYPE.NOVELTY:
+					inventory_amt = get_quantity(mat, "Inventory")
 					
 			if inventory_amt < required:
 				return 0

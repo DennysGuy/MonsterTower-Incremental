@@ -6,8 +6,8 @@
 [resource]
 script = ExtResource("1_xit55")
 drop_icon = ExtResource("1_xseus")
-drop_chance = 0.9
+drop_chance = 75.0
 item_name = "Batclopse Eye"
-sell_value = 80
+sell_value = 50
 shop_icon = ExtResource("1_xseus")
 metadata/_custom_type_script = "uid://cubudt76pshmm"

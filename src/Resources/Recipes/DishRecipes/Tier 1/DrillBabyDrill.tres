@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="CraftingRecipe" format=3 uid="uid://ce00vbs14tnn6"]
+
+[ext_resource type="Texture2D" uid="uid://biynw8p02wk3p" path="res://Assets/Facilities/Junkatron/Drill-Baby-Drill.png" id="1_e3v6q"]
+[ext_resource type="Resource" uid="uid://dmmblpt46r1fs" path="res://src/Resources/Dishes/DrillBabyDrill.tres" id="2_e3v6q"]
+[ext_resource type="Resource" uid="uid://dupi3hkqbevyx" path="res://src/Resources/Actors/Enemies/Biome1/BeetleKnight/BeetleShell.tres" id="4_7opju"]
+[ext_resource type="Resource" uid="uid://icdg42cdhvkx" path="res://src/Resources/Actors/Enemies/Biome1/BeetleKnight/BeetleHelm.tres" id="4_tpb3m"]
+[ext_resource type="Script" uid="uid://cljygiasf4103" path="res://src/Scripts/Facilities/crafting_recipe.gd" id="5_dqc46"]
+
+[resource]
+script = ExtResource("5_dqc46")
+recipe_name = "Drill-Baby-Drill"
+menu_icon = ExtResource("1_e3v6q")
+index = 2
+description = "It'll pierce something if you hold it there long enough.."
+recipe_tier = 1
+crafting_time = 40.0
+recipe_type = 1
+success_rate = 0.8
+output_item = ExtResource("2_e3v6q")
+recipe_list = Array[Dictionary]([{
+ExtResource("4_7opju"): 1
+}, {
+ExtResource("4_tpb3m"): 2
+}])
+related_nodes = Array[String](["Item Bag 2", "Jump Height 2", "Vial Spawn Rate 1"])
+related_enemies = Array[String](["Beetle Knight", "Beetle Knight LVL2"])
+metadata/_custom_type_script = "uid://cljygiasf4103"

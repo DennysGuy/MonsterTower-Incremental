@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://b4owo1wr47wc"]
+
+[ext_resource type="Script" uid="uid://cu8drgivmhfn" path="res://src/Scripts/item.gd" id="1_bdnb1"]
+[ext_resource type="Texture2D" uid="uid://bdwstqsay7m55" path="res://Assets/Facilities/Junkatron/FauxGemMachine.png" id="2_bdnb1"]
+
+[resource]
+script = ExtResource("1_bdnb1")
+item_name = "Faux Gem Dispensor"
+item_type = 5
+sell_value = 350
+shop_icon = ExtResource("2_bdnb1")
+sell_time = 4200.0
+description = "Anyone down for BBQ? Always."

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://dmmblpt46r1fs"]
+
+[ext_resource type="Script" uid="uid://cu8drgivmhfn" path="res://src/Scripts/item.gd" id="1_5dyck"]
+[ext_resource type="Texture2D" uid="uid://biynw8p02wk3p" path="res://Assets/Facilities/Junkatron/Drill-Baby-Drill.png" id="2_5dyck"]
+
+[resource]
+script = ExtResource("1_5dyck")
+item_name = "Drill-Baby-Drill"
+item_type = 5
+sell_value = 300
+shop_icon = ExtResource("2_5dyck")
+sell_time = 3000.0
+description = "A delicacy to the elite; scrapped from the bottom of tower."

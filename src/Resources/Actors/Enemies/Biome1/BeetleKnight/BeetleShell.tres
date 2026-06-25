@@ -6,10 +6,10 @@
 [resource]
 script = ExtResource("1_b7rk4")
 drop_icon = ExtResource("1_xmu1d")
-drop_chance = 0.2
+drop_chance = 0.72
 item_name = "Beetle Shell"
 item_type = 1
-sell_value = 120
+sell_value = 56
 shop_icon = ExtResource("1_xmu1d")
 description = "The Back of A Beetle Knight. When cooked down, might make for a useful Stew Bowl."
 metadata/_custom_type_script = "uid://cubudt76pshmm"

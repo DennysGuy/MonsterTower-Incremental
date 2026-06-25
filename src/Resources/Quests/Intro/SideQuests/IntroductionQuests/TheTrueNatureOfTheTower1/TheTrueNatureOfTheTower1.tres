@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="Quest" format=3 uid="uid://dhd0m6uxot38q"]
 
 [ext_resource type="Script" uid="uid://cu8drgivmhfn" path="res://src/Scripts/item.gd" id="1_hnvg2"]
-[ext_resource type="Resource" uid="uid://ctjyflf6qr4g" path="res://src/Resources/Dishes/MossyGoulash.tres" id="2_3mdpa"]
+[ext_resource type="Resource" uid="uid://ctjyflf6qr4g" path="res://src/Resources/Dishes/WingeyUmbrella.tres" id="2_3mdpa"]
 [ext_resource type="Script" uid="uid://be6vh0qellkjq" path="res://src/Scripts/Questing/quest.gd" id="2_qsoro"]
-[ext_resource type="Resource" uid="uid://dmmblpt46r1fs" path="res://src/Resources/Dishes/PupilCaviar.tres" id="3_1phnn"]
+[ext_resource type="Resource" uid="uid://dmmblpt46r1fs" path="res://src/Resources/Dishes/DrillBabyDrill.tres" id="3_1phnn"]
 [ext_resource type="Script" uid="uid://deyfft0rbfjgk" path="res://src/Scripts/Questing/Tasks/task.gd" id="3_3mdpa"]
 [ext_resource type="Resource" uid="uid://cgme05e6spg06" path="res://src/Resources/Quests/Intro/SideQuests/IntroductionQuests/TheTrueNatureOfTheTower1/Tasks/Gather10BatWings.tres" id="6_te3xl"]
 [ext_resource type="Resource" uid="uid://bwv8lyqh25ay1" path="res://src/Resources/Quests/Intro/SideQuests/IntroductionQuests/TheTrueNatureOfTheTower1/Tasks/Gather10SerpantTongues.tres" id="7_k18ed"]

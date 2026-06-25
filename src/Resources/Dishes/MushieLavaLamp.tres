@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://boeryxspsw8uq"]
+
+[ext_resource type="Script" uid="uid://cu8drgivmhfn" path="res://src/Scripts/item.gd" id="1_6a6li"]
+[ext_resource type="Texture2D" uid="uid://cdh6tnn24pm31" path="res://Assets/Facilities/Junkatron/MushieLavaLamp.png" id="2_6a6li"]
+
+[resource]
+script = ExtResource("1_6a6li")
+item_name = "Mushie Lava Lamp"
+item_type = 5
+sell_value = 150
+shop_icon = ExtResource("2_6a6li")
+sell_time = 1000.0
+metadata/_custom_type_script = "uid://cu8drgivmhfn"

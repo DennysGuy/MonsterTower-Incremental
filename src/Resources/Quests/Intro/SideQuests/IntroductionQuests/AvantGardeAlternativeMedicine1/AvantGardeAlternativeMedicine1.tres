@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Quest" format=3 uid="uid://1iraf0ury1mv"]
 
 [ext_resource type="Script" uid="uid://cu8drgivmhfn" path="res://src/Scripts/item.gd" id="1_to1ue"]
-[ext_resource type="Resource" uid="uid://b4owo1wr47wc" path="res://src/Resources/Dishes/WrappedKabab.tres" id="2_25glh"]
+[ext_resource type="Resource" uid="uid://b4owo1wr47wc" path="res://src/Resources/Dishes/FauxGemMachine.tres" id="2_25glh"]
 [ext_resource type="Script" uid="uid://be6vh0qellkjq" path="res://src/Scripts/Questing/quest.gd" id="2_q7fhk"]
 [ext_resource type="Script" uid="uid://deyfft0rbfjgk" path="res://src/Scripts/Questing/Tasks/task.gd" id="3_25glh"]
 [ext_resource type="Resource" uid="uid://c5lshgfftefd2" path="res://src/Resources/Quests/Intro/SideQuests/IntroductionQuests/AvantGardeAlternativeMedicine1/Tasks/Gather5GoblinMeat.tres" id="5_m4eb2"]

@@ -1,6 +1,5 @@
 [gd_resource type="Resource" script_class="EnemyStats" format=3 uid="uid://du4so306s4lte"]
 
-[ext_resource type="Resource" uid="uid://sbvd7ewnpn0s" path="res://src/Resources/Actors/Enemies/Biome1/SerpantMimic/SerpantTongue.tres" id="1_migms"]
 [ext_resource type="Script" uid="uid://cbjktr12qagl" path="res://src/Scripts/Enemies/enemy_stats.gd" id="1_sttul"]
 [ext_resource type="Resource" uid="uid://bvpv4cq7bcds3" path="res://src/Resources/Actors/Enemies/Biome1/SerpantMimic/PurifiedChest.tres" id="2_h8lae"]
 [ext_resource type="AudioStream" uid="uid://ct10t46js4esq" path="res://Audio/SFX/Enemies/Mimic/MimicDeathVox.wav" id="3_f7xwf"]
@@ -32,6 +31,5 @@ hit_vox_2 = ExtResource("5_m67yi")
 hit_vox_3 = ExtResource("6_8ex1l")
 die_vox = ExtResource("3_f7xwf")
 novelty_item_drop = ExtResource("3_sa0ho")
-cooking_item_drop = ExtResource("1_migms")
 crafting_item_drop = ExtResource("2_h8lae")
 metadata/_custom_type_script = "uid://cbjktr12qagl"
