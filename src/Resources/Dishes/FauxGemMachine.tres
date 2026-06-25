@@ -7,7 +7,7 @@
 script = ExtResource("1_bdnb1")
 item_name = "Faux Gem Dispensor"
 item_type = 5
-sell_value = 350
+sell_value = 1200
 shop_icon = ExtResource("2_bdnb1")
 sell_time = 4200.0
 description = "Anyone down for BBQ? Always."

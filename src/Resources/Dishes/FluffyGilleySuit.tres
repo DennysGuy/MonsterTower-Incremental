@@ -7,6 +7,6 @@
 script = ExtResource("1_qhfa8")
 item_name = "Fluffy Gilley Suit"
 item_type = 5
-sell_value = 400
+sell_value = 1500
 shop_icon = ExtResource("2_qhfa8")
 sell_time = 4000.0

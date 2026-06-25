@@ -7,7 +7,7 @@
 script = ExtResource("1_5dyck")
 item_name = "Drill-Baby-Drill"
 item_type = 5
-sell_value = 300
+sell_value = 600
 shop_icon = ExtResource("2_5dyck")
 sell_time = 3000.0
 description = "A delicacy to the elite; scrapped from the bottom of tower."

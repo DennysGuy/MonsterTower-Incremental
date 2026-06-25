@@ -39,7 +39,6 @@ func enter() -> void:
 	parent.timer.start()
 	parent.start_fadeout()
 	
-	
 func exit() -> void:
 	pass
 

@@ -7,7 +7,7 @@
 script = ExtResource("1_ghjk0")
 item_name = "Mossy Goulash"
 item_type = 5
-sell_value = 200
+sell_value = 300
 shop_icon = ExtResource("2_yp2n5")
 sell_time = 2000.0
 description = "Derived from the many monsters in the Mossy Dungeon Biome. It's.. not very appetizing -  but valuable.. for some reason."

@@ -7,7 +7,7 @@
 script = ExtResource("1_6a6li")
 item_name = "Mushie Lava Lamp"
 item_type = 5
-sell_value = 150
+sell_value = 200
 shop_icon = ExtResource("2_6a6li")
 sell_time = 1000.0
 metadata/_custom_type_script = "uid://cu8drgivmhfn"
