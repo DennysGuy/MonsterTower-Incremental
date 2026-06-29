@@ -87,7 +87,9 @@ func drop_items() -> void:
 		var drop_chance : float = crafting_item.drop_chance
 		
 		if PlayerStats.check_item_in_tracked_sword_recipe(parent.enemy_stats.crafting_item_drop):
-			drop_chance += 0.15
+			drop_chance += 0.2
+			print("THIS IS DROP CHANCE %s" % drop_chance)
+			print("THIS IS RANDOM CHECK 2 %s" % random_check_2)
 			
 		if random_check_2 <= int(drop_chance * 100):
 			crafting_item_interactable.item = crafting_item
