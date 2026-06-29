@@ -15,15 +15,15 @@ sky_material = SubResource("ProceduralSkyMaterial_g4fjb")
 
 [sub_resource type="Environment" id="Environment_pv54o"]
 background_mode = 1
-background_color = Color(0.66, 0.55506, 0.31020004, 1)
+background_color = Color(0.62935245, 0.4301625, 0.99043685, 1)
 sky = SubResource("Sky_p3j80")
 ambient_light_source = 2
-ambient_light_color = Color(0.73300546, 0.7330054, 0.7330054, 1)
+ambient_light_color = Color(0.65012825, 0.65012825, 0.6501284, 1)
 ambient_light_energy = 3.27
 tonemap_mode = 2
 glow_enabled = true
 fog_enabled = true
-fog_light_color = Color(0.52897584, 0.50451994, 0.4146226, 1)
+fog_light_color = Color(0.63406277, 0.61872727, 1, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g4fjb"]
 render_priority = 0
@@ -121,7 +121,7 @@ script = ExtResource("1_ru3xv")
 environment = SubResource("Environment_pv54o")
 
 [node name="CSGBox3D" type="CSGMesh3D" parent="." unique_id=1200920201]
-transform = Transform3D(1271.2336, 0, 0, 0, -0.029270977, -17.352448, 0, 0.0006044496, -840.3067, 0, 0.59887475, 0)
+transform = Transform3D(1271.2336, 0, 0, 0, -0.029270977, -17.352448, 0, 0.0006044496, -840.3067, -15.413031, 0.59887475, 0)
 material_overlay = SubResource("ShaderMaterial_g4fjb")
 mesh = SubResource("BoxMesh_p3j80")
 

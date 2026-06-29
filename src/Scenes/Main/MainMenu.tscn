@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://djr7ysw0olctc" path="res://src/Scenes/MainMenuBG.tscn" id="2_rsyx7"]
 [ext_resource type="FontFile" uid="uid://cynitq2e6hghv" path="res://Assets/Fonts/Snake in the Boot.ttf" id="4_gj8tx"]
 [ext_resource type="FontFile" uid="uid://dr468m31loqrx" path="res://Assets/Fonts/Super Cartoon.ttf" id="5_gj8tx"]
-[ext_resource type="AudioStream" uid="uid://b4qmxdv5pxdpb" path="res://Audio/Music/NewMainMenuThemeDraft1.wav" id="6_06df4"]
+[ext_resource type="AudioStream" uid="uid://bvg651shrt35b" path="res://Audio/Music/TrueMainTheme.wav" id="7_4c8q5"]
 [ext_resource type="AudioStream" uid="uid://deidmmols8obd" path="res://Audio/SFX/MainMenuOceanAmbiencc.wav" id="7_gj8tx"]
 [ext_resource type="FontFile" uid="uid://stn4dtg0uw57" path="res://Assets/Fonts/FredokaOne-Regular.ttf" id="8_4c8q5"]
 [ext_resource type="Texture2D" uid="uid://bl4g0e5e5e6iy" path="res://Assets/SPH-LogoAttempt1.png" id="8_36jow"]
@@ -206,7 +206,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.40520903, 0.0012058679, 0.5956752, 1)
+color = Color(0, 0, 0, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1650630831]
 layout_mode = 0
@@ -265,7 +265,6 @@ offset_right = -359.5
 offset_bottom = 135.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_default_cursor_shape = 2
 theme_override_constants/outline_size = 0
 theme_override_fonts/font = ExtResource("5_gj8tx")
 theme_override_font_sizes/font_size = 52
@@ -285,7 +284,6 @@ offset_right = -359.5
 offset_bottom = 221.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_default_cursor_shape = 2
 theme_override_constants/outline_size = 0
 theme_override_fonts/font = ExtResource("5_gj8tx")
 theme_override_font_sizes/font_size = 52
@@ -305,7 +303,6 @@ offset_right = -360.0
 offset_bottom = 48.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_default_cursor_shape = 2
 theme_override_constants/outline_size = 0
 theme_override_fonts/font = ExtResource("5_gj8tx")
 theme_override_font_sizes/font_size = 52
@@ -423,7 +420,7 @@ color = Color(0, 0, 0, 1)
 libraries/ = SubResource("AnimationLibrary_gwjs1")
 
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=1807827256]
-stream = ExtResource("6_06df4")
+stream = ExtResource("7_4c8q5")
 volume_db = 10.0
 bus = &"Music"
 
@@ -432,7 +429,13 @@ stream = ExtResource("7_gj8tx")
 bus = &"Ambience"
 
 [connection signal="button_up" from="NewGame" to="." method="_on_button_button_up"]
+[connection signal="mouse_entered" from="NewGame" to="." method="_on_new_game_mouse_entered"]
+[connection signal="mouse_exited" from="NewGame" to="." method="_on_new_game_mouse_exited"]
 [connection signal="button_up" from="SettingsButton" to="." method="_on_settings_button_button_up"]
+[connection signal="mouse_entered" from="SettingsButton" to="." method="_on_settings_button_mouse_entered"]
+[connection signal="mouse_exited" from="SettingsButton" to="." method="_on_settings_button_mouse_exited"]
 [connection signal="button_up" from="Continue" to="." method="_on_continue_button_up"]
+[connection signal="mouse_entered" from="Continue" to="." method="_on_continue_mouse_entered"]
+[connection signal="mouse_exited" from="Continue" to="." method="_on_continue_mouse_exited"]
 [connection signal="button_up" from="StartNewGameNoticePanel/YesButton" to="." method="_on_yes_button_button_up"]
 [connection signal="button_up" from="StartNewGameNoticePanel/NoButton" to="." method="_on_no_button_button_up"]

@@ -61,15 +61,15 @@ func _process(delta: float) -> void:
 				)
 			elif is_sold and grand_market_position:
 				var target_pos = grand_market_position.global_position
-
+				var tween : Tween = create_tween()
+				tween.tween_property(self, "global_position", target_pos, get_sell_time())
 				global_position = global_position.move_toward(
 				target_pos,
 				sell_speed * delta
 				)
-
-				if global_position.distance_to(target_pos) < sell_threshold:
-					global_position = target_pos
-					sell_item()
+				await tween.finished
+				#global_position = target_pos
+				sell_item()
 		
 		#t += delta * hover_speed
 		#position.y = base_y + sin(t) * hover_height
@@ -154,6 +154,10 @@ func set_to_sold(market_position: Marker2D) -> void:
 	is_sold = true
 	grand_market_position = market_position
 	SignalBus.novelty_invention_sold.emit()
+
+func get_sell_time() -> float:
+	var sell_speed_level : int = int(PlayerStats.player_stats["Bulk Sell Transfer Speed"])
+	return max(0.01, PlayerStats.BASE_TRANSFER_TIME * pow(0.75, sell_speed_level))
 
 func move_forward() -> void:
 	if is_instance_valid(prev_item_interactable) and !is_sold:

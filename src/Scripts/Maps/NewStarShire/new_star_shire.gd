@@ -626,11 +626,10 @@ func sell_to_market(delta: float) -> void:
 
 	sell_speed_timer -= delta
 
-
 func get_sell_time() -> float:
 	var sell_speed_level : int = int(PlayerStats.player_stats["Bulk Sell Transfer Speed"])
-	return max(0.01, PlayerStats.BASE_TRANSFER_TIME * pow(0.85, sell_speed_level))
-
+	return max(0.01, PlayerStats.BASE_TRANSFER_TIME * pow(0.75, sell_speed_level))
+	
 func _on_tower_area_2_body_entered(body: Node2D) -> void:
 	if body is Player:
 		player_in_tower_range = true
