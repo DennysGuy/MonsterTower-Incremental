@@ -29,6 +29,7 @@ func _physics_process(delta: float) -> void:
 func exit_pause_menu() -> void:
 	get_tree().paused = false
 	SignalBus.hide_tech_tree_canvas_layer.emit()
+	PlayerHudSignalBus.hub_menu_exited.emit()
 	queue_free()
 
 func set_pause_subtree(root: Node, pause: bool) -> void:

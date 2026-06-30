@@ -4,6 +4,7 @@ class_name QuestHub extends Control
 
 @onready var job_tracker_v_box: VBoxContainer = $QuestHubVBox/VBoxContainer2
 @onready var job_tracker_title: RichTextLabel = $QuestHubVBox/MainQuestTitleMargin2/JobTrackerTitle
+@onready var v_box_container_3: VBoxContainer = $QuestHubVBox/VBoxContainer3
 
 
 
@@ -43,7 +44,7 @@ func initialize_job_quests() -> void:
 		if selected_quest:
 			selected_quest.status = SaveManager.current_save_game.quests[selected_quest.quest_id]["Status"]
 			quest_tracker_item.quest_data = selected_quest
-			job_tracker_v_box.add_child(quest_tracker_item)
+			v_box_container_3.add_child(quest_tracker_item)
 
 func initialize_weapon_tracker() -> void:
 	clear_quest_box(job_tracker_v_box)

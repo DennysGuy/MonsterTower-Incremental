@@ -197,7 +197,6 @@ func turn_in_quest() -> void:
 		HubManager.hide_facility_notification.emit("Job Requests Board")
 	
 func populate_item_rewards_container(quest : Quest) -> void:
-	
 	InventoryManager.clear_grid_container(item_rewards_container)
 	if quest.item_reward.size() <= 0:
 		return

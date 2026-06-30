@@ -36,6 +36,7 @@
 [ext_resource type="PackedScene" uid="uid://gfchm8corigl" path="res://src/Scenes/UI/CraftingStations/BulkGrandMarketMenu.tscn" id="36_4qs0c"]
 [ext_resource type="PackedScene" uid="uid://dllbbxwtrshxy" path="res://src/Scenes/NewStarshire/GrandMarketSignFrontLeg.tscn" id="36_g8ukf"]
 [ext_resource type="PackedScene" uid="uid://drvmmtbvnc785" path="res://src/Scenes/Tower/arrow_at_ore.tscn" id="36_hw86b"]
+[ext_resource type="PackedScene" uid="uid://u2wlvgyx0mtu" path="res://src/Scenes/NewStarshire/Facilities/TaskBoard.tscn" id="37_4qs0c"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bp3qg"]
 texture = ExtResource("17_uhrlg")
@@ -791,7 +792,7 @@ position = Vector2(868, 704)
 station_type = 1
 
 [node name="Refinery" parent="." unique_id=763505504 instance=ExtResource("33_d6jc3")]
-position = Vector2(1814, 704)
+position = Vector2(1775, 704)
 
 [node name="AccessSmeltingStation" type="Label" parent="." unique_id=1102055337]
 visible = false
@@ -1134,10 +1135,10 @@ offset_bottom = 476.0
 facility_name = "Gem Stone Station"
 
 [node name="SmeltingStationNotice" parent="." unique_id=20813922 instance=ExtResource("23_0u15j")]
-offset_left = 1723.0
-offset_top = 553.0
-offset_right = 1877.0
-offset_bottom = 698.0
+offset_left = 1698.0
+offset_top = 535.0
+offset_right = 1852.0
+offset_bottom = 680.0
 facility_name = "Smelting Station"
 
 [node name="CookingStationNotice" parent="." unique_id=2045831039 instance=ExtResource("23_0u15j")]
@@ -1200,6 +1201,9 @@ collision_mask = 18
 position = Vector2(519, 545)
 shape = SubResource("RectangleShape2D_y20fx")
 one_way_collision = true
+
+[node name="TaskBoard" parent="." unique_id=2038982980 instance=ExtResource("37_4qs0c")]
+position = Vector2(1999, 704)
 
 [connection signal="body_entered" from="TowerArea" to="." method="_on_tower_area_body_entered"]
 [connection signal="body_exited" from="TowerArea" to="." method="_on_tower_area_body_exited"]

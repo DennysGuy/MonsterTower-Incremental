@@ -77,10 +77,7 @@ func damage_ore_rock(damage : int) -> void:
 	get_parent().add_child(damage_label)
 	if GameManager.remaining_bolt_chain_links > 0:
 		cast_lightning_bolt()
-		
-		
-		
-	
+
 func drop_ore_rock() -> void:
 	var random_check : int = randi_range(0,100)
 	var num_to_win : int = int(100 * (ore_rock_stats.ore_drop_chance+PlayerStats.player_stats["Ore Drop Chance Bonus"]))

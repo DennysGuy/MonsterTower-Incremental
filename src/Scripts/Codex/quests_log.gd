@@ -100,6 +100,9 @@ func _on_outro_log_button_button_up() -> void:
 	
 	log_description.text = stored_quest.turn_in_description
 
-
 func initialize_quests_list() -> void:
+	populate_quests_list(stored_quest_type, "Introduction")
+
+func _on_job_quests_button_button_up() -> void:
+	stored_quest_type = "Job"
 	populate_quests_list(stored_quest_type, "Introduction")

@@ -102,7 +102,6 @@ signal weapon_tracker_updated
 	]
 }
 
-
 var quest_lines : Dictionary = {
 	"Novice's Starter List" : false,
 }

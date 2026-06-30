@@ -48,6 +48,13 @@ theme_override_colors/font_color = Color(2.4065375e-07, 0.3427977, 0.26134562, 1
 theme_override_fonts/font = ExtResource("3_wipak")
 text = "Main Quests"
 
+[node name="JobQuestsButton" type="Button" parent="HBoxContainer" unique_id=1493228304]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(2.4065375e-07, 0.3427977, 0.26134562, 1)
+theme_override_fonts/font = ExtResource("3_wipak")
+text = "Main Quests"
+
 [node name="HBoxContainer2" type="HBoxContainer" parent="." unique_id=466565997]
 layout_mode = 0
 offset_left = 66.0
@@ -248,6 +255,7 @@ grow_vertical = 0
 columns = 2
 
 [connection signal="button_up" from="HBoxContainer/MainQuestsButton" to="." method="_on_main_quests_button_button_up"]
+[connection signal="button_up" from="HBoxContainer/JobQuestsButton" to="." method="_on_job_quests_button_button_up"]
 [connection signal="button_up" from="HBoxContainer2/MainQuestsButton" to="." method="_on_main_quests_button_button_up"]
 [connection signal="button_up" from="HBoxContainer2/FallQuestsButton" to="." method="_on_fall_quests_button_button_up"]
 [connection signal="button_up" from="HBoxContainer2/WinterQuestsButton" to="." method="_on_winter_quests_button_button_up"]

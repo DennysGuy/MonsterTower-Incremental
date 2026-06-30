@@ -128,7 +128,6 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("open_bag") and GameManager.can_open_bag:
 		show_bag()
 	
-			
 	if Input.is_action_just_pressed("open_codex"):
 		if !codex_open:
 			open_codex()
@@ -145,7 +144,6 @@ func _process(delta: float) -> void:
 		CodexManager.open_a_codex_menu.emit(1)
 	
 	if Input.is_action_just_pressed("open_monsterpedia"):
-		
 		CodexManager.open_a_codex_menu.emit(2)
 		
 	if Input.is_action_just_pressed("open_quests_log"):
@@ -248,7 +246,6 @@ func show_bag() -> void:
 	if bag_showing:
 		InventoryManager.hide_open_bag_notice.emit()
 		SignalBus.stop_player.emit()
-		GameManager.player_can_move = false
 		bag.enable_tabs()
 		bag.update_bag()
 		play_sfx(BAG_OPEN)
@@ -362,13 +359,11 @@ func trigger_long_fade_in_out() -> void:
 	animation_player.play("LongFadeInOut")
 
 func close_codex() -> void:
-	CutsceneManager.enable_player_functionality()
 	var tween : Tween = get_tree().create_tween()
 	tween.tween_property(codex, "position", Vector2(-874,540),0.3)
 	codex_open = false
 
 func open_codex() -> void:
-	CutsceneManager.disable_player_functionality()
 	CodexManager.update_monster_cards.emit()
 	var tween : Tween = get_tree().create_tween()
 	tween.tween_property(codex, "position", Vector2(960,540),0.3)

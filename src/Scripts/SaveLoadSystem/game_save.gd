@@ -21,7 +21,7 @@ TODO: We will add saves for classes as well
 	"Current XP" : 0,
 	"Bonus XP" : 0,
 	"Bonus AP" : 0,
-	"Max Jobs Held": 3,
+	"Max Jobs Held": 1,
 	"Highest Floor": 0,
 	"Ability Points": 0,
 	"Class": "Junior Hunter",
