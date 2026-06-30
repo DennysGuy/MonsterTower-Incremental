@@ -70,8 +70,6 @@ const GO_TO_JOB_BOARD = preload("uid://iqw8ymk767kl")
 const STARSPIRE_MARKET_INTRO = preload("uid://b3l8f4fxsjhu6")
 const HEAD_TO_JOB_ADVANCEMENT_CENTER_FOR_CLASS = preload("uid://bc68ocr4ayjpd")
 
-
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super()
@@ -628,7 +626,7 @@ func sell_to_market(delta: float) -> void:
 
 func get_sell_time() -> float:
 	var sell_speed_level : int = int(PlayerStats.player_stats["Bulk Sell Transfer Speed"])
-	return max(0.01, PlayerStats.BASE_TRANSFER_TIME * pow(0.75, sell_speed_level))
+	return max(0.01, PlayerStats.BASE_TRANSFER_TIME * pow(0.65, sell_speed_level))
 	
 func _on_tower_area_2_body_entered(body: Node2D) -> void:
 	if body is Player:

@@ -56,7 +56,7 @@ func set_icon() -> void:
 					
 		ICON_TYPE.COOKING:
 			if populate_craftable_items_list(CookingManager.cooking_recipes):
-				if !is_enabled:
+				if !is_enabled and PlayerStats.facilities_unlocked["Junk-A-Tron"]:
 					play_sfx(COOKING_NOTIFICATION)
 					icon.texture = COOKING_NOTIFICATION_ICON_ENABLED
 					notice.text = "Recipes ready to craft!"

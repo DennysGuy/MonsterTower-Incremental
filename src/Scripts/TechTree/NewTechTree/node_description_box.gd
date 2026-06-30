@@ -22,24 +22,30 @@ func _process(delta: float) -> void:
 	pass
 
 func update_info(total_bonus : float) -> void:
+	
+	if tech_node_stats.node_type == TechTreeManager.TECH_NODE_TYPE.FACILITY or tech_node_stats.node_type == TechTreeManager.TECH_NODE_TYPE.CLASS_ABILITY:
+		return
+	
+	var true_total_bonus : float = PlayerStats.player_stats[tech_node_stats.stat_name]
+	
 	node_title.text = "%s (%s/%s)" % [tech_node_stats.node_name,tech_node_stats.current_level,tech_node_stats.max_level]
 	
 	if tech_node_stats.upgrade_interval > 0 and tech_node_stats.upgrade_interval < 1.0:
 		if tech_node_stats.current_level < tech_node_stats.max_level:
-			current_benefits.text = str(total_bonus*100)+"% -> "+str(total_bonus*100+tech_node_stats.upgrade_interval*100)+"%"
+			current_benefits.text = str(true_total_bonus*100)+"% -> "+str(true_total_bonus*100+tech_node_stats.upgrade_interval*100)+"%"
 		else:
 			current_benefits.text = "+"+str(total_bonus*100)+"%"
 	elif tech_node_stats.upgrade_interval >= 1.0:
 		if tech_node_stats.current_level < tech_node_stats.max_level:
-			current_benefits.text = "%s -> %s" % [int(total_bonus), int(total_bonus+tech_node_stats.upgrade_interval)]
+			current_benefits.text = "%s -> %s" % [int(true_total_bonus), int(true_total_bonus+tech_node_stats.upgrade_interval)]
 		else:
-			current_benefits.text = "+%s" %[int(total_bonus)]
+			current_benefits.text = "+%s" %[int(true_total_bonus)]
 	
 	description.text = tech_node_stats.description
 	if tech_node_stats.currency_required <= 0:
 		cost.text = ""
 	else:
-		cost.text = "Spirols: %s/%s" % [TechTreeManager.currency,tech_node_stats.currency_required]
+		cost.text = "Spirols: %s/%s" % [TechTreeManager.currency,tech_node_stats.get_cost()]
 	
 	populate_resources_needed_list()
 

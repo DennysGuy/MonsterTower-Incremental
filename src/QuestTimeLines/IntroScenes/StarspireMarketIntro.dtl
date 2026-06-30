@@ -6,16 +6,14 @@ TowerGuide: This location is the base of operations for the Starspire Hunters. U
 TowerGuide: I will now give a brief overview of what the Starspire Grand Market has to offer.
 do CutsceneManager.send_camera_to_market_pos()
 [wait time="1.0"]
-TowerGuide: This is the Trade Market. Here you can sell all of the valuables found in the tower as well as crafted resources here. Simply passing by the market will sell all of your novelty items, but if you want to become more specific - you can sell anything further for extra and even more profitable Spirol. It is up to your discretion!
-do CutsceneManager.send_camera_to_cooking_station_pos()
+TowerGuide: Come on over to the Trade Market to sell all of your plunder from the tower. Eventually, you'll be able to sell in bulk - making it easy to sell many valuable much more efficiently.
+do CutsceneManager.send_camera_to_smelting_station_pos()
 [wait time="1.0"]
 TowerGuide: Welcome to Artisan's Corner! The back bone of the Starspire Operations.
 TowerGuide: This is a Hunter's bread and butter for becoming strong.
-TowerGuide: On the bottom, we have the smelting and cooking station.. eh, well we should!\
-Looks like they are currently under construction. We'll fix them up sooner or later.
-TowerGuide: These stations will be used to craft refined bars and food dishes made from monsters found in the Tower! They can be used for various purposes - to craft new gear, unlock new abilities, or simply sell for cash if you're strapped!
+TowerGuide: On the bottom here, we have the Refinery Station.. At least we should. Looks like it is currently under construction. This happens on occasion. No worries. It will be fixed in no time. Maybe we can expedite it with your help?
+TowerGuide: Anyways. The Refinery will be handy for crafting new gear, and upgrading your combat stats. Once it's back up, we'll give you a pickaxe so you can go into the tower and bring back that precious ore.
 TowerGuide: On the very right, we have the Job Requests Board. This is where other Hunters can post any requests related to the tower - usually they will involve some sort of hunt or gathering objective.
-TowerGuide: They're ultimately not required to be a Starspire Hunter, but they can come in handy for acquiring extra rewards and a convenient way to add to your progression as a hunter.
 do CutsceneManager.send_camera_to_sword_crafting_station_pos()
 [wait time="1.0"]
 TowerGuide: On top here, we have the gem upgrade station and the Weapon Crafting Station.
@@ -24,14 +22,29 @@ You will have immediate access to the Weapon Crafting Station.
 TowerGuide: But you'll need to prove to be a capable hunter before the Guild gives you access to the Gem Upgrade Station.
 do CutsceneManager.set_camera_to_dojo_position()
 [wait time="1.0"]
-TowerGuide: Lastly, the Class Advancement Center is the heart and soul of the Starspire Hunters Guild.
+TowerGuide: Next, This is the Class Advancement Center - the heart and soul of the Starspire Hunters Guild.
 TowerGuide: Here, you will unlock and upgrade new class abilities with AP that is acquired from leveling up while hunting inside the Tower.
+do CutsceneManager.send_camera_to_cooking_station_pos()
+TowerGuide: Lastly, we have the -- uh, Junk-O... Junk-E..
+join ProfStooge leftmost [animation="Slide From Left" wait="true"]
+ProfStooge: Ahem..
+ProfStooge: Allow me to Explain!
+TowerGuide: (Oh boy.. Here we go)
+ProfStooge: My name is Professor A.E. Stooge - Or you can just call me Prof. Stooge.
+ProfStooge: The Magnificient Structure that stands before you is a side project I've been working on that I have dubbed the "Junk-A-Tron" - Pretty catchy name huh?!
+ProfStooge: What Ms. Guide has failed to queue you in on is that the Guild has been hurting for funds for a little while. The state of Velmoria has.. well, to put it shortly, lost their faith in the Starspire project as research has essentially stagnated for the last 14 months and, thus, have cut our funds nearly in half.
+ProfStooge: It's been a sor of a self-fulfilling prophecy, might I tell you. Since we lack the necessary funds, we have also been losing Hunters - and with lack of equipment and sufficient employment, progress is virtually impossible.
+ProfStooge: Fear not! The Junk-A-Tron is the answer to our problem.. I just need a little help finishing the last of development, and we'll have a little prototype to show the guild OUR VERY OWN SELF FUNDING ENGINE.
+ProfStooge: How might this work you may ask?
+TowerGuide: Sorry to interrupt your speil, it was very inspiring Prof. Stooge. We'll have to cut it here as we're out of time. We'll go into the specifics later.
+ProfStooge: I can count on you to help me finish this thing, right Sonny?
+leave ProfStooge [animation="Slide To Left" wait="true"]
+[wait time="1.0"]
 do CutsceneManager.set_camera_to_player()
 [wait time="1.0"]
 TowerGuide: Well, that's it for now! \
 We'll go over things again as we go along, but this should give you a good jump start to becoming a Starspire Hunter!
 TowerGuide: Good Luck and may your bounty be plentiful!
-[wait time="1.0"]
 [wait time="1.0"]
 do CutsceneManager.enable_player_functionality()
 do CutsceneManager.play_map_theme_song()

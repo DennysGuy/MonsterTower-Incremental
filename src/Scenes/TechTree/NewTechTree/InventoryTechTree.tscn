@@ -26,110 +26,114 @@ mouse_filter = 1
 script = ExtResource("1_5cioc")
 
 [node name="TechTreeCamera" parent="." unique_id=2137187773 instance=ExtResource("2_awpbw")]
-position = Vector2(896, 256)
+position = Vector2(896, 704)
 
-[node name="DeeperPockets1" parent="." unique_id=640777626 instance=ExtResource("3_umo85")]
+[node name="Bag1Node" parent="." unique_id=1804535485 instance=ExtResource("3_umo85")]
 visible = false
 layout_mode = 1
-offset_left = -767.0
-offset_top = 165.0
-offset_right = -767.0
-offset_bottom = 165.0
-tech_node_stats = ExtResource("4_5cioc")
-
-[node name="Bag1Node" parent="." unique_id=1804535485 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_umo85")]
-visible = false
-layout_mode = 1
-offset_left = -767.0
-offset_top = -89.0
-offset_right = -767.0
-offset_bottom = -89.0
+offset_left = -64.0
+offset_top = 356.0
+offset_right = -64.0
+offset_bottom = 356.0
 tech_node_stats = ExtResource("5_5cioc")
-previous_node = NodePath("../DeeperPockets1")
 
-[node name="BankUnlockNode" parent="." unique_id=1776225068 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_umo85")]
+[node name="Bag2Node" parent="." unique_id=1305696302 node_paths=PackedStringArray("previous_nodes") instance=ExtResource("3_umo85")]
 visible = false
 layout_mode = 1
-offset_left = -512.0
-offset_top = 165.0
-offset_right = -512.0
-offset_bottom = 165.0
+offset_left = 192.0
+offset_top = 356.0
+offset_right = 192.0
+offset_bottom = 356.0
+tech_node_stats = ExtResource("10_awpbw")
+previous_nodes = [NodePath("../Bag1Node")]
+
+[node name="Bag3Node" parent="." unique_id=515623900 node_paths=PackedStringArray("previous_nodes") instance=ExtResource("3_umo85")]
+visible = false
+layout_mode = 1
+offset_left = 384.0
+offset_top = 356.0
+offset_right = 384.0
+offset_bottom = 356.0
+tech_node_stats = ExtResource("12_umo85")
+previous_nodes = [NodePath("../Bag2Node")]
+
+[node name="DeeperPockets1" parent="." unique_id=640777626 node_paths=PackedStringArray("previous_nodes") instance=ExtResource("3_umo85")]
+visible = false
+layout_mode = 1
+offset_left = -64.0
+offset_top = 612.0
+offset_right = -64.0
+offset_bottom = 612.0
+tech_node_stats = ExtResource("4_5cioc")
+previous_nodes = [NodePath("../Bag1Node")]
+
+[node name="DeeperPockets2Node" parent="." unique_id=1302849726 node_paths=PackedStringArray("previous_nodes") instance=ExtResource("3_umo85")]
+visible = false
+layout_mode = 1
+offset_left = -64.0
+offset_top = 804.0
+offset_right = -64.0
+offset_bottom = 804.0
+tech_node_stats = ExtResource("9_awpbw")
+previous_nodes = [NodePath("../DeeperPockets1")]
+
+[node name="DeeperPockets3Node" parent="." unique_id=1548307285 node_paths=PackedStringArray("previous_nodes") instance=ExtResource("3_umo85")]
+visible = false
+layout_mode = 1
+offset_left = -64.0
+offset_top = 996.0
+offset_right = -64.0
+offset_bottom = 996.0
+tech_node_stats = ExtResource("11_awpbw")
+previous_nodes = [NodePath("../DeeperPockets2Node")]
+
+[node name="BankUnlockNode" parent="." unique_id=1776225068 node_paths=PackedStringArray("previous_nodes") instance=ExtResource("3_umo85")]
+visible = false
+layout_mode = 1
+offset_left = -64.0
+offset_top = 100.0
+offset_right = -64.0
+offset_bottom = 100.0
 tech_node_stats = ExtResource("6_5cioc")
-previous_node = NodePath("../DeeperPockets1")
+previous_nodes = [NodePath("../Bag1Node")]
 node_type = 1
 
-[node name="Bank2Node" parent="." unique_id=1331020484 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_umo85")]
+[node name="Bank2Node" parent="." unique_id=1331020484 node_paths=PackedStringArray("previous_nodes") instance=ExtResource("3_umo85")]
 visible = false
 layout_mode = 1
-offset_left = -512.0
-offset_top = -93.0
-offset_right = -512.0
-offset_bottom = -93.0
+offset_left = -64.0
+offset_top = -96.0
+offset_right = -64.0
+offset_bottom = -96.0
 tech_node_stats = ExtResource("7_5cioc")
-previous_node = NodePath("../BankUnlockNode")
+previous_nodes = [NodePath("../BankUnlockNode")]
 
-[node name="Bank3Node" parent="." unique_id=1062232054 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_umo85")]
+[node name="Bank3Node" parent="." unique_id=1062232054 node_paths=PackedStringArray("previous_nodes") instance=ExtResource("3_umo85")]
+visible = false
+layout_mode = 1
+offset_left = -64.0
+offset_top = -284.0
+offset_right = -64.0
+offset_bottom = -284.0
+tech_node_stats = ExtResource("8_awpbw")
+previous_nodes = [NodePath("../Bank2Node")]
+
+[node name="PickUpDistance1" parent="." unique_id=1447761114 node_paths=PackedStringArray("previous_nodes") instance=ExtResource("3_umo85")]
+visible = false
+layout_mode = 1
+offset_left = -319.0
+offset_top = 356.0
+offset_right = -319.0
+offset_bottom = 356.0
+tech_node_stats = ExtResource("8_4sy3s")
+previous_nodes = [NodePath("../Bag1Node")]
+
+[node name="PickUpDistance2" parent="." unique_id=1528260191 node_paths=PackedStringArray("previous_nodes") instance=ExtResource("3_umo85")]
 visible = false
 layout_mode = 1
 offset_left = -512.0
-offset_top = -352.0
+offset_top = 356.0
 offset_right = -512.0
-offset_bottom = -352.0
-tech_node_stats = ExtResource("8_awpbw")
-previous_node = NodePath("../BankUnlockNode")
-
-[node name="PickUpDistance1" parent="." unique_id=1447761114 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_umo85")]
-visible = false
-layout_mode = 1
-offset_left = -256.0
-offset_top = 165.0
-offset_right = -256.0
-offset_bottom = 165.0
-tech_node_stats = ExtResource("8_4sy3s")
-previous_node = NodePath("../BankUnlockNode")
-
-[node name="PickUpDistance2" parent="." unique_id=1528260191 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_umo85")]
-visible = false
-layout_mode = 1
-offset_left = -256.0
-offset_top = -89.0
-offset_right = -256.0
-offset_bottom = -89.0
+offset_bottom = 356.0
 tech_node_stats = ExtResource("9_4dl31")
-previous_node = NodePath("../PickUpDistance1")
-
-[node name="DeeperPockets2Node" parent="." unique_id=1302849726 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_umo85")]
-visible = false
-layout_mode = 1
-offset_top = 164.0
-offset_bottom = 164.0
-tech_node_stats = ExtResource("9_awpbw")
-previous_node = NodePath("../PickUpDistance1")
-
-[node name="Bag2Node" parent="." unique_id=1305696302 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_umo85")]
-visible = false
-layout_mode = 1
-offset_top = -92.0
-offset_bottom = -92.0
-tech_node_stats = ExtResource("10_awpbw")
-previous_node = NodePath("../DeeperPockets2Node")
-
-[node name="DeeperPockets3Node" parent="." unique_id=1548307285 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_umo85")]
-visible = false
-layout_mode = 1
-offset_left = 256.0
-offset_top = 164.0
-offset_right = 256.0
-offset_bottom = 164.0
-tech_node_stats = ExtResource("11_awpbw")
-previous_node = NodePath("../DeeperPockets2Node")
-
-[node name="Bag3Node" parent="." unique_id=515623900 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_umo85")]
-visible = false
-layout_mode = 1
-offset_left = 256.0
-offset_top = -93.0
-offset_right = 256.0
-offset_bottom = -93.0
-tech_node_stats = ExtResource("12_umo85")
-previous_node = NodePath("../DeeperPockets3Node")
+previous_nodes = [NodePath("../Bag1Node")]

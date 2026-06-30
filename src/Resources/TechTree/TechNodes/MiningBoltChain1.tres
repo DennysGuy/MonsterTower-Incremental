@@ -15,5 +15,5 @@ currency_required = 3500
 stat_relation = 5
 stat_name = "Mining Bolt Links"
 upgrade_interval = 1.0
-prereqs = Array[String](["Mining Bolt Distance 1:1"])
+prereqs = Array[String](["Mining Bolt Chance 1:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

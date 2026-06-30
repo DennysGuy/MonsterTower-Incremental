@@ -3047,10 +3047,14 @@ script = ExtResource("12_omh5u")
 hit = ExtResource("18_8xpqf")
 death_fanfare = ExtResource("20_geieu")
 
-[node name="SwingPickAxe" type="Node" parent="StateMachine" unique_id=1009786343 node_paths=PackedStringArray("idle_state")]
+[node name="SwingPickAxe" type="Node" parent="StateMachine" unique_id=1009786343 node_paths=PackedStringArray("idle_state", "attack_1_state", "move_state", "jump_state", "dash_attack_state")]
 script = ExtResource("13_1twwa")
 idle_state = NodePath("../Idle")
 pick_axe_swing = ExtResource("22_0qbij")
+attack_1_state = NodePath("../Attack1")
+move_state = NodePath("../Move")
+jump_state = NodePath("../Jump")
+dash_attack_state = NodePath("../DashAttack")
 animation_name = "PickaxeSwing"
 animation_duration = 0.5
 

@@ -181,6 +181,34 @@ ore_rock = ExtResource("16_klrm8")
 chance_to_spawn = 0.4
 spawn_parent = NodePath("../..")
 
+[node name="OreRockMarker8" parent="OreRockMarkers" unique_id=1190294851 node_paths=PackedStringArray("spawn_parent") instance=ExtResource("15_at0vg")]
+position = Vector2(144, 2273)
+ore_rock_resource = ExtResource("16_0c8cp")
+ore_rock = ExtResource("16_klrm8")
+chance_to_spawn = 0.4
+spawn_parent = NodePath("../..")
+
+[node name="OreRockMarker9" parent="OreRockMarkers" unique_id=394879256 node_paths=PackedStringArray("spawn_parent") instance=ExtResource("15_at0vg")]
+position = Vector2(185, 2273)
+ore_rock_resource = ExtResource("16_0c8cp")
+ore_rock = ExtResource("16_klrm8")
+chance_to_spawn = 0.4
+spawn_parent = NodePath("../..")
+
+[node name="OreRockMarker10" parent="OreRockMarkers" unique_id=1279216920 node_paths=PackedStringArray("spawn_parent") instance=ExtResource("15_at0vg")]
+position = Vector2(296, 2609)
+ore_rock_resource = ExtResource("16_0c8cp")
+ore_rock = ExtResource("16_klrm8")
+chance_to_spawn = 0.4
+spawn_parent = NodePath("../..")
+
+[node name="OreRockMarker11" parent="OreRockMarkers" unique_id=1696435572 node_paths=PackedStringArray("spawn_parent") instance=ExtResource("15_at0vg")]
+position = Vector2(240, 2465)
+ore_rock_resource = ExtResource("16_0c8cp")
+ore_rock = ExtResource("16_klrm8")
+chance_to_spawn = 0.4
+spawn_parent = NodePath("../..")
+
 [node name="OreRockMarker2" parent="OreRockMarkers" unique_id=108761510 node_paths=PackedStringArray("spawn_parent") instance=ExtResource("15_at0vg")]
 position = Vector2(274, 2112)
 ore_rock_resource = ExtResource("16_0c8cp")

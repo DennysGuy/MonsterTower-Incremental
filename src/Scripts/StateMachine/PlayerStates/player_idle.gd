@@ -54,11 +54,12 @@ func process_physics(_delta: float) -> State:
 		return jump_state
 
 	if Input.is_action_just_pressed("swing_sword") and GameManager.player_can_attack:
-		if parent.in_mining_area and PlayerStats.facilities_unlocked["Refinery Station"]:
-			return swing_pick_axe_state
 		return attack_1_state
 	
-	if Input.is_action_just_pressed("dash_attack")  and GameManager.player_can_move:
+	if Input.is_action_just_pressed("interact") and parent.in_mining_area and PlayerStats.facilities_unlocked["Refinery Station"]:
+		return swing_pick_axe_state
+	
+	if Input.is_action_just_pressed("dash_attack") and PlayerStats.facilities_unlocked["Dash"] and parent.can_issue_ability("Dash") and GameManager.player_can_move:
 		return dash_attack_state
 	
 	if GameManager.can_issue_abilities:

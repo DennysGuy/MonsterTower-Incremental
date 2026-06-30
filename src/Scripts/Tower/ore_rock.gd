@@ -96,7 +96,7 @@ func _on_ore_rock_area_area_entered(area: Area2D) -> void:
 	if area.get_parent() is Player:
 		if PlayerStats.facilities_unlocked["Refinery Station"]:
 			
-			directions.text = "Press/Hold %s to Mine!" % GameManager.get_control_mapping("swing_sword",6)
+			directions.text = "Press %s to Mine!" % GameManager.get_control_mapping("interact")
 			await get_tree().physics_frame
 			area.get_parent().stored_ore_rock = self
 			set_outline_visible()

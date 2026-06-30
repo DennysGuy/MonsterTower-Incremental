@@ -6,7 +6,6 @@
 [ext_resource type="Resource" uid="uid://peiyat841rxh" path="res://src/Resources/TechTree/TechNodes/RefineryStation.tres" id="4_nxs8t"]
 [ext_resource type="Resource" uid="uid://c6cb7c8bqn7ow" path="res://src/Resources/TechTree/TechNodes/RefinerySpeed1.tres" id="5_8pn5x"]
 [ext_resource type="Resource" uid="uid://c8v6iimoi7wcr" path="res://src/Resources/TechTree/TechNodes/CriticalSmelting1.tres" id="5_bcll4"]
-[ext_resource type="Resource" uid="uid://vg0n3dc6j08g" path="res://src/Resources/TechTree/TechNodes/FreeHeat1.tres" id="6_5r3ba"]
 [ext_resource type="Resource" uid="uid://licswcd54xsn" path="res://src/Resources/TechTree/TechNodes/RefineryAccuracy1.tres" id="6_8pn5x"]
 [ext_resource type="Resource" uid="uid://ddxgheqee7kmy" path="res://src/Resources/TechTree/TechNodes/MiningSpeed1.tres" id="7_n6gwq"]
 [ext_resource type="Resource" uid="uid://ctf4we33chvvs" path="res://src/Resources/TechTree/TechNodes/OreRockDrop1.tres" id="8_n6gwq"]
@@ -14,7 +13,6 @@
 [ext_resource type="Resource" uid="uid://fuiustuvb4gn" path="res://src/Resources/TechTree/TechNodes/MiningBoltDistance1.tres" id="9_n6gwq"]
 [ext_resource type="Resource" uid="uid://m6wlc2wayc45" path="res://src/Resources/TechTree/TechNodes/MiningBoltChain1.tres" id="10_8pn5x"]
 [ext_resource type="Resource" uid="uid://8x4upyxso8h3" path="res://src/Resources/TechTree/TechNodes/MiningBarrage1.tres" id="12_nxs8t"]
-[ext_resource type="Resource" uid="uid://b32ox2g2nto6q" path="res://src/Resources/TechTree/TechNodes/FreeHeat2.tres" id="15_2l71f"]
 [ext_resource type="Resource" uid="uid://bqx6q34qvy3hj" path="res://src/Resources/TechTree/TechNodes/CriticalSmelting2.tres" id="15_5mbgo"]
 [ext_resource type="Resource" uid="uid://bwka1lphbne68" path="res://src/Resources/TechTree/TechNodes/RefinerySpeed2.tres" id="17_jdf32"]
 [ext_resource type="Resource" uid="uid://4tjkp1pv61k7" path="res://src/Resources/TechTree/TechNodes/RefineryAccuracy2.tres" id="18_l10ly"]
@@ -32,171 +30,155 @@ mouse_filter = 1
 script = ExtResource("1_nxs8t")
 
 [node name="TechTreeCamera" parent="." unique_id=2137187773 instance=ExtResource("2_bcll4")]
-position = Vector2(896, 256)
+position = Vector2(1153, 704)
 
 [node name="SmeltingStationUnlockNode" parent="." unique_id=640777626 instance=ExtResource("3_5r3ba")]
 visible = false
 layout_mode = 1
-offset_left = -768.0
-offset_top = 165.0
-offset_right = -768.0
-offset_bottom = 165.0
+offset_left = 192.0
+offset_top = 356.0
+offset_right = 192.0
+offset_bottom = 356.0
 tech_node_stats = ExtResource("4_nxs8t")
 node_type = 1
 
-[node name="CriticalSmelt1Node" parent="." unique_id=1911411394 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_5r3ba")]
+[node name="RefinerySpeed1Node" parent="." unique_id=1302849726 node_paths=PackedStringArray("previous_nodes") instance=ExtResource("3_5r3ba")]
 visible = false
 layout_mode = 1
-offset_left = -512.0
-offset_top = 164.0
-offset_right = -512.0
-offset_bottom = 164.0
+offset_left = 192.0
+offset_top = 96.0
+offset_right = 192.0
+offset_bottom = 96.0
+tech_node_stats = ExtResource("5_8pn5x")
+previous_nodes = [NodePath("../SmeltingStationUnlockNode")]
+
+[node name="RefinerySpeed2Node" parent="." unique_id=965549083 node_paths=PackedStringArray("previous_nodes") instance=ExtResource("3_5r3ba")]
+visible = false
+layout_mode = 1
+offset_left = 320.0
+offset_top = -28.0
+offset_right = 320.0
+offset_bottom = -28.0
+tech_node_stats = ExtResource("17_jdf32")
+previous_nodes = [NodePath("../RefinerySpeed1Node")]
+
+[node name="RefineryAccuracy1Node" parent="." unique_id=1305696302 node_paths=PackedStringArray("previous_nodes") instance=ExtResource("3_5r3ba")]
+visible = false
+layout_mode = 1
+offset_left = 64.0
+offset_top = -28.0
+offset_right = 64.0
+offset_bottom = -28.0
+tech_node_stats = ExtResource("6_8pn5x")
+previous_nodes = [NodePath("../RefinerySpeed1Node")]
+
+[node name="RefineryAccuracy2Node" parent="." unique_id=632018552 node_paths=PackedStringArray("previous_nodes") instance=ExtResource("3_5r3ba")]
+visible = false
+layout_mode = 1
+offset_left = 64.0
+offset_top = -221.0
+offset_right = 64.0
+offset_bottom = -221.0
+tech_node_stats = ExtResource("18_l10ly")
+previous_nodes = [NodePath("../RefineryAccuracy1Node")]
+
+[node name="CriticalSmelt1Node" parent="." unique_id=1911411394 node_paths=PackedStringArray("previous_nodes") instance=ExtResource("3_5r3ba")]
+visible = false
+layout_mode = 1
+offset_left = -63.0
+offset_top = 356.0
+offset_right = -63.0
+offset_bottom = 356.0
 tech_node_stats = ExtResource("5_bcll4")
-previous_node = NodePath("../SmeltingStationUnlockNode")
+previous_nodes = [NodePath("../SmeltingStationUnlockNode")]
 
-[node name="FreeHeat1Node" parent="." unique_id=812860374 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_5r3ba")]
-visible = false
-layout_mode = 1
-offset_left = -512.0
-offset_top = -92.0
-offset_right = -512.0
-offset_bottom = -92.0
-tech_node_stats = ExtResource("6_5r3ba")
-previous_node = NodePath("../CriticalSmelt1Node")
-
-[node name="MiningDamage1" parent="." unique_id=1776225068 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_5r3ba")]
+[node name="CrticalSmelting2Node" parent="." unique_id=900327966 node_paths=PackedStringArray("previous_nodes") instance=ExtResource("3_5r3ba")]
 visible = false
 layout_mode = 1
 offset_left = -255.0
-offset_top = 164.0
+offset_top = 356.0
 offset_right = -255.0
-offset_bottom = 164.0
+offset_bottom = 356.0
+tech_node_stats = ExtResource("15_5mbgo")
+previous_nodes = [NodePath("../CriticalSmelt1Node")]
+
+[node name="MiningDamage1" parent="." unique_id=1776225068 node_paths=PackedStringArray("previous_nodes") instance=ExtResource("3_5r3ba")]
+visible = false
+layout_mode = 1
+offset_left = 448.0
+offset_top = 356.0
+offset_right = 448.0
+offset_bottom = 356.0
 tech_node_stats = ExtResource("7_n6gwq")
-previous_node = NodePath("../SmeltingStationUnlockNode")
+previous_nodes = [NodePath("../SmeltingStationUnlockNode")]
 node_type = 1
 
-[node name="OreRockDropRate1" parent="." unique_id=1331020484 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_5r3ba")]
+[node name="MiningSpeed2Node" parent="." unique_id=1072239972 node_paths=PackedStringArray("previous_nodes") instance=ExtResource("3_5r3ba")]
 visible = false
 layout_mode = 1
-offset_left = -255.0
-offset_top = -92.0
-offset_right = -255.0
-offset_bottom = -92.0
-tech_node_stats = ExtResource("8_n6gwq")
-previous_node = NodePath("../MiningDamage1")
-
-[node name="RefinerySpeed1Node" parent="." unique_id=1302849726 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_5r3ba")]
-visible = false
-layout_mode = 1
-offset_top = 164.0
-offset_bottom = 164.0
-tech_node_stats = ExtResource("5_8pn5x")
-previous_node = NodePath("../MiningDamage1")
-
-[node name="RefineryAccuracy1Node" parent="." unique_id=1305696302 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_5r3ba")]
-visible = false
-layout_mode = 1
-offset_top = -93.0
-offset_bottom = -93.0
-tech_node_stats = ExtResource("6_8pn5x")
-previous_node = NodePath("../RefinerySpeed1Node")
-
-[node name="MiningBolt1" parent="." unique_id=1809635083 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_5r3ba")]
-visible = false
-layout_mode = 1
-offset_left = 256.0
-offset_top = 164.0
-offset_right = 256.0
-offset_bottom = 164.0
-tech_node_stats = ExtResource("8_xeyfn")
-previous_node = NodePath("../RefinerySpeed1Node")
-
-[node name="MiningBoltDistance1" parent="." unique_id=201830242 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_5r3ba")]
-visible = false
-layout_mode = 1
-offset_left = 256.0
-offset_top = -29.0
-offset_right = 256.0
-offset_bottom = -29.0
-tech_node_stats = ExtResource("9_n6gwq")
-previous_node = NodePath("../MiningBolt1")
-
-[node name="MiningBoltChain1" parent="." unique_id=1065742209 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_5r3ba")]
-visible = false
-layout_mode = 1
-offset_left = 256.0
-offset_top = -221.0
-offset_right = 256.0
-offset_bottom = -221.0
-tech_node_stats = ExtResource("10_8pn5x")
-previous_node = NodePath("../MiningBoltDistance1")
-
-[node name="MiningBarrage1" parent="." unique_id=588245151 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_5r3ba")]
-visible = false
-layout_mode = 1
-offset_left = 256.0
-offset_top = -413.0
-offset_right = 256.0
-offset_bottom = -413.0
-tech_node_stats = ExtResource("12_nxs8t")
-previous_node = NodePath("../MiningBoltChain1")
-
-[node name="CrticalSmelting2Node" parent="." unique_id=900327966 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_5r3ba")]
-visible = false
-layout_mode = 1
-offset_left = 512.0
-offset_top = 164.0
-offset_right = 512.0
-offset_bottom = 164.0
-tech_node_stats = ExtResource("15_5mbgo")
-previous_node = NodePath("../MiningBolt1")
-
-[node name="FreeHeat2Node" parent="." unique_id=1757066992 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_5r3ba")]
-visible = false
-layout_mode = 1
-offset_left = 512.0
-offset_top = -92.0
-offset_right = 512.0
-offset_bottom = -92.0
-tech_node_stats = ExtResource("15_2l71f")
-previous_node = NodePath("../CrticalSmelting2Node")
-
-[node name="RefinerySpeed2Node" parent="." unique_id=965549083 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_5r3ba")]
-visible = false
-layout_mode = 1
-offset_left = 769.0
-offset_top = 159.0
-offset_right = 769.0
-offset_bottom = 159.0
-tech_node_stats = ExtResource("17_jdf32")
-previous_node = NodePath("../MiningBolt1")
-
-[node name="RefineryAccuracy2Node" parent="." unique_id=632018552 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_5r3ba")]
-visible = false
-layout_mode = 1
-offset_left = 769.0
-offset_top = -97.0
-offset_right = 769.0
-offset_bottom = -97.0
-tech_node_stats = ExtResource("18_l10ly")
-previous_node = NodePath("../RefinerySpeed2Node")
-
-[node name="MiningSpeed2Node" parent="." unique_id=1072239972 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_5r3ba")]
-visible = false
-layout_mode = 1
-offset_left = 1024.0
-offset_top = 164.0
-offset_right = 1024.0
-offset_bottom = 164.0
+offset_left = 576.0
+offset_top = 484.0
+offset_right = 576.0
+offset_bottom = 484.0
 tech_node_stats = ExtResource("19_qc023")
-previous_node = NodePath("../RefinerySpeed2Node")
+previous_nodes = [NodePath("../MiningDamage1")]
 
-[node name="OreDropChance2Node" parent="." unique_id=1258480634 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_5r3ba")]
+[node name="OreRockDropRate1" parent="." unique_id=1331020484 node_paths=PackedStringArray("previous_nodes") instance=ExtResource("3_5r3ba")]
 visible = false
 layout_mode = 1
-offset_left = 1024.0
-offset_top = -92.0
-offset_right = 1024.0
-offset_bottom = -92.0
+offset_left = 576.0
+offset_top = 228.0
+offset_right = 576.0
+offset_bottom = 228.0
+tech_node_stats = ExtResource("8_n6gwq")
+previous_nodes = [NodePath("../MiningDamage1")]
+
+[node name="OreDropChance2Node" parent="." unique_id=1258480634 node_paths=PackedStringArray("previous_nodes") instance=ExtResource("3_5r3ba")]
+visible = false
+layout_mode = 1
+offset_left = 768.0
+offset_top = 228.0
+offset_right = 768.0
+offset_bottom = 228.0
 tech_node_stats = ExtResource("20_r1lgf")
-previous_node = NodePath("../CrticalSmelting2Node")
+previous_nodes = [NodePath("../OreRockDropRate1")]
+
+[node name="MiningBolt1" parent="." unique_id=1809635083 node_paths=PackedStringArray("previous_nodes") instance=ExtResource("3_5r3ba")]
+visible = false
+layout_mode = 1
+offset_left = 193.0
+offset_top = 612.0
+offset_right = 193.0
+offset_bottom = 612.0
+tech_node_stats = ExtResource("8_xeyfn")
+previous_nodes = [NodePath("../SmeltingStationUnlockNode")]
+
+[node name="MiningBoltDistance1" parent="." unique_id=201830242 node_paths=PackedStringArray("previous_nodes") instance=ExtResource("3_5r3ba")]
+visible = false
+layout_mode = 1
+offset_left = 320.0
+offset_top = 740.0
+offset_right = 320.0
+offset_bottom = 740.0
+tech_node_stats = ExtResource("9_n6gwq")
+previous_nodes = [NodePath("../MiningBolt1")]
+
+[node name="MiningBoltChain1" parent="." unique_id=1065742209 node_paths=PackedStringArray("previous_nodes") instance=ExtResource("3_5r3ba")]
+visible = false
+layout_mode = 1
+offset_left = 64.0
+offset_top = 740.0
+offset_right = 64.0
+offset_bottom = 740.0
+tech_node_stats = ExtResource("10_8pn5x")
+previous_nodes = [NodePath("../MiningBolt1")]
+
+[node name="MiningBarrage1" parent="." unique_id=588245151 node_paths=PackedStringArray("previous_nodes") instance=ExtResource("3_5r3ba")]
+visible = false
+layout_mode = 1
+offset_left = 192.0
+offset_top = 868.0
+offset_right = 192.0
+offset_bottom = 868.0
+tech_node_stats = ExtResource("12_nxs8t")
+previous_nodes = [NodePath("../MiningBoltDistance1"), NodePath("../MiningBoltChain1")]

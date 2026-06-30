@@ -15,5 +15,5 @@ currency_required = 4000
 stat_relation = 5
 stat_name = "Multi Bolts"
 upgrade_interval = 1.0
-prereqs = Array[String](["Mining Bolt Chain 1:1"])
+prereqs = Array[String](["Mining Bolt Chain 1:1", "Mining Bolt Distance 1:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

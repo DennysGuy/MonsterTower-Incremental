@@ -17,5 +17,5 @@ ExtResource("3_nkphf"): 1
 }])
 stat_name = "Attack Damage"
 upgrade_interval = 0.4
-prereqs = Array[String](["Attack 1:4"])
+prereqs = Array[String](["Attack 1:5"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

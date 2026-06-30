@@ -1,7 +1,7 @@
 class_name TechNode extends Control
 
 @export var tech_node_stats : TechNodeStats
-@export var previous_node : TechNode
+@export var previous_nodes : Array[TechNode]
 
 @onready var bg: TextureRect = $BG
 @onready var icon: TextureRect = $Icon
@@ -105,9 +105,7 @@ func _ready() -> void:
 					set_graphic_as_purchased()
 				else:
 					set_graphic_as_disabled()
-	#else:
-		#hide()
-		
+
 	icon.texture = tech_node_stats.icon
 
 	node_type = tech_node_stats.node_type
@@ -143,7 +141,6 @@ func deduct_ap() -> void:
 	#update an ap label here
 
 func deduct_resources() -> void:
-	
 	InventoryManager.remove_resources_from_inventory(tech_node_stats.materials_required)
 
 func check_if_can_purchase() -> void:
@@ -214,16 +211,17 @@ func create_tool_tip() -> void:
 	elif node_type == TechTreeManager.TECH_NODE_TYPE.CLASS_ABILITY:
 		tool_tip.current_benefits.text = "Ability"
 	else:
+		var true_total : float = PlayerStats.player_stats[tech_node_stats.stat_name]
 		if tech_node_stats.upgrade_interval > 0 and tech_node_stats.upgrade_interval < 1.0:	
 			if tech_node_stats.current_level < tech_node_stats.max_level:
-				tool_tip.current_benefits.text = str(total_bonus*100)+"% -> "+str(total_bonus*100+tech_node_stats.upgrade_interval*100)+"%"
+				tool_tip.current_benefits.text = str(int(true_total))+"% -> "+str(int(true_total+tech_node_stats.upgrade_interval*100))+"%"
 			else:
-				tool_tip.current_benefits.text = "+"+str(total_bonus*100)+"%"
+				tool_tip.current_benefits.text = "+"+str(int(tech_node_stats.upgrade_interval * tech_node_stats.max_level*100))+"%"
 		elif tech_node_stats.upgrade_interval >= 1.0:
 			if tech_node_stats.current_level < tech_node_stats.max_level:
-				tool_tip.current_benefits.text = "%s -> %s" % [int(total_bonus), int(total_bonus+tech_node_stats.upgrade_interval)]
+				tool_tip.current_benefits.text = "%s -> %s" % [int(true_total), int(true_total+tech_node_stats.upgrade_interval)]
 			else:
-				tool_tip.current_benefits.text = "+%s" %[int(total_bonus)]
+				tool_tip.current_benefits.text = "+%s" %[int(true_total)]
 	
 	#if tech_node_stats.current_level >= tech_node_stats.max_level:
 		#tool_tip.panel.color = Color(tool_tip.unlocked)
@@ -355,17 +353,19 @@ func _on_gui_input(event: InputEvent) -> void:
 			TechTreeManager.update_currency_label.emit()
 			TechTreeManager.check_for_tech_node_purchases.emit()
 			HubManager.check_for_node_purchase.emit()
+			TechTreeManager.update_tool_tip_info.emit(0)
 		else:
 			play_sfx(DENIED)
 
 func show_node() -> void:
 	if tech_node_stats.unlocked:
-		if previous_node:
-			draw_node_line()
+		if !previous_nodes.is_empty():
+			for node in previous_nodes:
+				draw_node_line(node)
 
 		pop_in()
 
-func draw_node_line() -> void:
+func draw_node_line(previous_node : TechNode) -> void:
 	var line: Line2D = Line2D.new()
 	line.z_index = -1
 	line.width = 20

@@ -1147,18 +1147,26 @@ offset_right = 946.0
 offset_bottom = 703.0
 facility_name = "Junk-A-Tron"
 
+[node name="BulkSellerNotice" parent="." unique_id=512282250 instance=ExtResource("23_0u15j")]
+offset_left = 1107.0
+offset_top = 422.0
+offset_right = 1261.0
+offset_bottom = 567.0
+facility_name = "Bulk Seller"
+
 [node name="BulkGrandMarketMenu" parent="." unique_id=1254570894 node_paths=PackedStringArray("grand_market_position") instance=ExtResource("36_4qs0c")]
-offset_left = 1178.0
-offset_top = 595.0
-offset_right = 1178.0
-offset_bottom = 595.0
+offset_left = 1183.0
+offset_top = 566.0
+offset_right = 1183.0
+offset_bottom = 566.0
 grand_market_position = NodePath("../GrandMarketPosition")
 
 [node name="EnterMarketLabel" type="Label" parent="." unique_id=2132180699]
-offset_left = 1101.0
-offset_top = 541.0
-offset_right = 1259.0
-offset_bottom = 560.12634
+visible = false
+offset_left = 1107.0
+offset_top = 615.0
+offset_right = 1265.0
+offset_bottom = 634.12634
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 0

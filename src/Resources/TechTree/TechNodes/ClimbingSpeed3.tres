@@ -14,5 +14,5 @@ currency_required = 7000
 stat_relation = 2
 stat_name = "Climbing Speed"
 upgrade_interval = 0.1
-prereqs = Array[String](["Movement 2:2"])
+prereqs = Array[String](["Climb Speed 2:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

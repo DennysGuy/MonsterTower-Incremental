@@ -15,5 +15,5 @@ currency_required = 5600
 stat_relation = 4
 stat_name = "Cooking Speed"
 upgrade_interval = 0.1
-prereqs = Array[String](["Junk-A-Accuracy 1:2"])
+prereqs = Array[String](["Junk-A-Speedster 1:2"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

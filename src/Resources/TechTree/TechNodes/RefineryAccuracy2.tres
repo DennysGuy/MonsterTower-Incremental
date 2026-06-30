@@ -21,5 +21,5 @@ ExtResource("4_kb1r4"): 2
 stat_relation = 5
 stat_name = "Smelting Accuracy Bonus"
 upgrade_interval = 0.05
-prereqs = Array[String](["Critical Smelting 2:1"])
+prereqs = Array[String](["Refinery Accuracy 1:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

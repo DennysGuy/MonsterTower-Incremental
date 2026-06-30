@@ -14,5 +14,5 @@ currency_required = 1000
 stat_relation = 4
 stat_name = "Bulk Sell Slots"
 upgrade_interval = 1.0
-prereqs = Array[String](["Junk Drops 1:1"])
+prereqs = Array[String](["Junk-A-Tron V1:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

@@ -17,5 +17,5 @@ ExtResource("2_vfkmh"): 3
 }])
 stat_name = "Crit Damage"
 upgrade_interval = 0.05
-prereqs = Array[String](["Crit Chance 3:1"])
+prereqs = Array[String](["Combat Cooldown 2:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

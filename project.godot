@@ -57,6 +57,7 @@ directories/dch_directory={
 "GreySentinel": "res://src/QuestTimeLines/Characters/GreySentinel.dch",
 "MasterArcaneScribeAlphonse": "res://src/QuestTimeLines/Characters/MasterArcaneScribeAlphonse.dch",
 "Narrator": "res://src/QuestTimeLines/TextboxStyles/Narrator.dch",
+"ProfStooge": "res://src/QuestTimeLines/Characters/ProfStooge.dch",
 "TerminalComputer": "res://src/QuestTimeLines/Characters/TerminalComputer.dch",
 "TestCharacter": "res://src/QuestTimeLines/Characters/TestCharacter.dch",
 "TowerGuide": "res://src/QuestTimeLines/Characters/TowerGuide.dch",

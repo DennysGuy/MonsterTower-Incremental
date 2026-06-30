@@ -16,5 +16,5 @@ currency_required = 1500
 stat_relation = 5
 stat_name = "Mining Bolt Chance"
 upgrade_interval = 0.15
-prereqs = Array[String](["Mining Speed 1:1"])
+prereqs = Array[String](["Refinery Station:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

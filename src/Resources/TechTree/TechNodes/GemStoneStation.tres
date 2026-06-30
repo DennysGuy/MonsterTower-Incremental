@@ -13,5 +13,5 @@ description = "Unlocks 'Gem Stone Station'. Collect and mount gems to further em
 currency_required = 1000
 node_type = 1
 stat_name = "Gem Stone Station"
-prereqs = Array[String](["Attack 2:3"])
+prereqs = Array[String](["Attack 1:5"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

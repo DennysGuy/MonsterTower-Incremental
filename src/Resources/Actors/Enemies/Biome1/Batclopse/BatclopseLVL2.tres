@@ -2,7 +2,6 @@
 
 [ext_resource type="Resource" uid="uid://bxukrnl1bg7oo" path="res://src/Resources/Actors/Enemies/Biome1/Batclopse/BatclopseWing.tres" id="1_bv2lu"]
 [ext_resource type="Resource" uid="uid://d4k5o7mbmw8yw" path="res://src/Resources/Actors/Enemies/Biome1/Batclopse/BatclopseClaw.tres" id="2_o1oup"]
-[ext_resource type="Resource" uid="uid://sio2h1j85i5y" path="res://src/Resources/Actors/Enemies/Biome1/Batclopse/BatclopseEye.tres" id="3_hgnsb"]
 [ext_resource type="AudioStream" uid="uid://16kiplcqfa7j" path="res://Audio/SFX/Enemies/Batclopse/Batclopse_Death_Vox.wav" id="3_jwl83"]
 [ext_resource type="Texture2D" uid="uid://cduqtvionltwt" path="res://Assets/Enemies/CyclopsBat/CyclopseBat_LVL2_stand.png" id="3_njnt0"]
 [ext_resource type="AudioStream" uid="uid://dt0ddo4p0l03w" path="res://Audio/SFX/Enemies/Batclopse/BatclopseHit1.wav" id="4_4eqj6"]
@@ -33,7 +32,7 @@ hit_vox_1 = ExtResource("4_4eqj6")
 hit_vox_2 = ExtResource("5_mgiws")
 hit_vox_3 = ExtResource("6_s0w1q")
 die_vox = ExtResource("3_jwl83")
-novelty_item_drop = ExtResource("3_hgnsb")
+novelty_item_drop = ExtResource("1_bv2lu")
 cooking_item_drop = ExtResource("1_bv2lu")
 crafting_item_drop = ExtResource("2_o1oup")
 metadata/_custom_type_script = "uid://cbjktr12qagl"

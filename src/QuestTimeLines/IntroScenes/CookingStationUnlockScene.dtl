@@ -1,13 +1,21 @@
 do MusicPlayer.pause_music()
 audio "res://Audio/Music/TutorialCutscene.wav" [bus="Music"]
 do CutsceneManager.disable_player_functionality()
-join "Chef Nadene" rightmost [animation="Slide In Up" wait="true"]
-"Chef Nadene": Hey newbie! Names, Chef Nadene. I run the culinary department for the Starspire Hunters. I'm responsible for overseeing what keeps ya'll fed., so be gratful.. or don't be surprised if ya'lls rations shrink overtime.
-"Chef Nadene": HA HA HA! I'm just yankin' your chain.\
-\
-Thanks for helping us repair the Cooking Range. This thing can get on the fritz sometimes - so it's important for us Hunters to keep on top of keeping this baby running. After all, this thing is the basis of our livelyhoods!
-"Chef Nadene": Also, be sure to check out the cooking upgrades in the ol' Computer Terminal, they can certainly be great for assisting you in becoming a more proficient cook.
-"Chef Nadene": Have at it! And may your bounty be plentifyful.
+join ProfStooge rightmost [animation="Slide In Up" wait="true"]
+ProfStooge: You've done it! You, Sonny, have single handedly funded the Starspire Guild. We'll all officially be gazillionaires now that my signature Junk-A-Tron has officially been completed!
+join TowerGuide leftmost [animation="Slide From Left" mirrored="true"]
+TowerGuide: A little dramatic don't ya think?
+ProfStooge: On the contrary! Rest your doubts. I can assure you that with the help of our young rookie here that the Junk-A-Tron will surely be hit amongst the Guild. Turning scrap from the tower into Novelty Inventions the world MUST see! We'll be able to run operation indefinietly!
+TowerGuide: Well, you have done great work for us in the past.. the Guild is a bit desperate for funds right now...
+TowerGuide: How the heck does this thing work anyways?
+ProfStooge: It's simple really. Bring the resources to the machine, plop it in, hit start, and something shall pop out at the other end over there! When the Invention pops out, you can walk over to the market and sell it in bulk. It's real simple!
+TowerGuide: **Ridiciulous** *Rolls Eyes*
+ProfStooge: What was that there, sonny? My hearing not the greatest these days.
+TowerGuide: Oh it's nothing! It sounds kinda like magic to me.
+ProfStooge: You can rest assure that this isn't any sort of magic or tom foolery! This is THE state of the art technology built only with the finest drops discovered within the Starspire Tower. IT IS THE FUTURE!
+TowerGuide: Well, whatever you say. You boys enjoy your new toy. The guild is curious about where this goes. We have learned that you are no fool, Professor Stooge.
+leave TowerGuide [animation="Slide To Left" wait="true"]
+ProfStooge: It's just me and you now, Sonny. Let's show 'em what we're made of!
 do CutsceneManager.set_camera_to_player()
 [wait time="1.0"]
 do CutsceneManager.enable_player_functionality()

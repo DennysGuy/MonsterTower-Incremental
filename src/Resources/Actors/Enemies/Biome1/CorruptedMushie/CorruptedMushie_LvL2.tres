@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cudxjr3yw3imr" path="res://Assets/Enemies/CorruptedMushieLVL2Icon.png" id="4_doqwy"]
 [ext_resource type="AudioStream" uid="uid://crahdg7af85x5" path="res://Audio/SFX/Enemies/Mushie/MushieHit2.wav" id="5_cfsl4"]
 [ext_resource type="AudioStream" uid="uid://djo1jmq0q8uqq" path="res://Audio/SFX/Enemies/Mushie/MushieHit3.wav" id="6_kl8yc"]
-[ext_resource type="Resource" uid="uid://bsa2pu1rqjdkt" path="res://src/Resources/Actors/Enemies/Biome1/CorruptedMushie/MushiePuree.tres" id="8_rpslp"]
+[ext_resource type="Resource" uid="uid://rjdpo8po5vi0" path="res://src/Resources/Actors/Enemies/Biome1/CorruptedMushie/CorruptedSpore.tres" id="8_rpslp"]
 
 [resource]
 script = ExtResource("4_6sa1w")

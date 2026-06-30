@@ -17,5 +17,5 @@ ExtResource("3_cfgbn"): 2
 }])
 stat_name = "Cooldown Reduction"
 upgrade_interval = 0.5
-prereqs = Array[String](["Attack 4:1"])
+prereqs = Array[String](["Crit Damage 2:1", "Crit Chance 2:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

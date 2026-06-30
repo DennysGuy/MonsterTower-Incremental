@@ -14,5 +14,5 @@ currency_required = 800
 node_type = 1
 stat_relation = 3
 stat_name = "Bank"
-prereqs = Array[String](["Deeper Pockets 1:1"])
+prereqs = Array[String](["Item Bag 1:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

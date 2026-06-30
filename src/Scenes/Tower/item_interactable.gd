@@ -123,6 +123,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		player_in_range = true
 		if is_junk_drop and !junk_picked_up:
 			set_junk_offset()
+			HubManager.show_facility_notification.emit("Bulk Seller")
 			junk_picked_up = true
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
@@ -154,10 +155,16 @@ func set_to_sold(market_position: Marker2D) -> void:
 	is_sold = true
 	grand_market_position = market_position
 	SignalBus.novelty_invention_sold.emit()
+	
+	if player.junk_picked_up.is_empty():
+		HubManager.hide_facility_notification.emit("Bulk Seller")
+	else:
+		HubManager.show_facility_notification.emit("Bulk Seller")
+	
 
 func get_sell_time() -> float:
 	var sell_speed_level : int = int(PlayerStats.player_stats["Bulk Sell Transfer Speed"])
-	return max(0.01, PlayerStats.BASE_TRANSFER_TIME * pow(0.75, sell_speed_level))
+	return max(0.01, PlayerStats.BASE_TRANSFER_TIME * pow(0.65, sell_speed_level))
 
 func move_forward() -> void:
 	if is_instance_valid(prev_item_interactable) and !is_sold:
@@ -193,11 +200,14 @@ func add_item_to_bulk_menu(bulk_sale_menu : BulkSellerGrandMarketMenu, bulk_slot
 	if bulk_slots.is_empty():
 		bulk_sale_menu.create_bulk_sale_slot(item)
 		successfully_added = true
+		HubManager.hide_facility_notification.emit("Bulk Seller")
+	
 	for slot in bulk_slots:
 		var bulk_slot : BulkSaleSlot = slot
 		if bulk_slot.item == item and bulk_slot.quantity < PlayerStats.player_stats["Bulk Sell Slot Stack"]:
 			bulk_slot.add_item(item)
 			successfully_added = true
+			HubManager.hide_facility_notification.emit("Bulk Seller")
 	if !successfully_added:
 		bulk_sale_menu.create_bulk_sale_slot(item)
 	

@@ -15,5 +15,5 @@ currency_required = 10000
 stat_relation = 5
 stat_name = "Ore Drop Chance Bonus"
 upgrade_interval = 0.05
-prereqs = Array[String](["Refining Speed 2:1"])
+prereqs = Array[String](["Ore Drop Chance 1:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

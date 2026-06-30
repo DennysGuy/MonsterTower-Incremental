@@ -15,5 +15,5 @@ currency_required = 900
 stat_relation = 4
 stat_name = "Cooking Drop Chance Bonus"
 upgrade_interval = 0.05
-prereqs = Array[String](["Pro Mover 1:2"])
+prereqs = Array[String](["Junk-A-Tron V1:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

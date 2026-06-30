@@ -14,5 +14,5 @@ max_level = 3
 currency_required = 800
 stat_name = "Tier 1 Gem Drop Rate"
 upgrade_interval = 0.05
-prereqs = Array[String](["Tier 1 Gem Chest Rate Up:1"])
+prereqs = Array[String](["Gem Stone Station:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

@@ -17,5 +17,5 @@ ExtResource("3_3tryd"): 2
 stat_relation = 5
 stat_name = "Critical Smelting Chance"
 upgrade_interval = 0.05
-prereqs = Array[String](["Mining Bolt Chance 1:1"])
+prereqs = Array[String](["Critical Smelting 1:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

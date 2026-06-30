@@ -19,5 +19,5 @@ ExtResource("1_g7ncs"): 4
 }])
 stat_name = "Boss Damage Bonus"
 upgrade_interval = 0.1
-prereqs = Array[String](["Attack 4:1"])
+prereqs = Array[String](["Crit Damage 4:1", "Crit Chance 4:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"
