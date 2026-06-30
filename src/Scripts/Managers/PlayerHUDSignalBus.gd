@@ -120,3 +120,6 @@ signal hub_menu_accessed
 
 @warning_ignore("unused_signal")
 signal hub_menu_exited
+
+@warning_ignore("unused_signal")
+signal bag_closed

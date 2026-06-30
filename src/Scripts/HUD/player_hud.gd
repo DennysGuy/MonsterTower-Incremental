@@ -110,6 +110,8 @@ func _ready() -> void:
 	PlayerHudSignalBus.hub_menu_accessed.connect(hide_hud)
 	PlayerHudSignalBus.hub_menu_exited.connect(show_hud)
 	
+	PlayerHudSignalBus.bag_closed.connect(show_bag)
+	
 	#player_mp_bar.max_value = PlayerStats.player_stats["Current MP"]
 	#player_mp_bar.value = player_mp_bar.max_value
 	update_xp_bar()
@@ -136,6 +138,9 @@ func _process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("close_menu") and codex_open:
 		close_codex()
+	
+	if Input.is_action_just_pressed("close_menu") and bag_showing:
+		show_bag()
 	
 	if Input.is_action_just_pressed("open_player_stats"):
 		CodexManager.open_a_codex_menu.emit(0)
@@ -246,12 +251,16 @@ func show_bag() -> void:
 	if bag_showing:
 		InventoryManager.hide_open_bag_notice.emit()
 		SignalBus.stop_player.emit()
+		GameManager.can_pause_game = false
 		bag.enable_tabs()
 		bag.update_bag()
+		bag.close_button.disabled = false
 		play_sfx(BAG_OPEN)
 		bag_animation_player.play("ShowBag")
 	else:
 		GameManager.player_can_move = true
+		GameManager.can_pause_game = true
+		bag.close_button.disabled = true
 		play_sfx(BAG_CLOSED)
 		bag.disable_tabs()
 		bag_animation_player.play("HideBag")

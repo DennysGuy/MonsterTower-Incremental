@@ -63,6 +63,9 @@ const DENIED = preload("uid://672acnsycbfo")
 var bank_showing : bool = false
 @onready var to_bank: TextureButton = $BagBG/ToBank
 
+@onready var close_button: Button = $BagBG/CloseButton
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	InventoryManager.update_inventory_bag.connect(update_grid_container)
@@ -332,3 +335,6 @@ func _on_to_bank_button_up() -> void:
 	if InventoryManager.check_if_bank_full():
 		to_bank.disabled = true
 	update_bank_container()
+
+func _on_button_button_up() -> void:
+	PlayerHudSignalBus.bag_closed.emit()

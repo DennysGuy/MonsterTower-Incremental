@@ -3,7 +3,7 @@ class_name QuestHub extends Control
 @onready var main_line_quest_v_box: VBoxContainer = $QuestHubVBox/VBoxContainer
 
 @onready var job_tracker_v_box: VBoxContainer = $QuestHubVBox/VBoxContainer2
-@onready var job_tracker_title: RichTextLabel = $QuestHubVBox/MainQuestTitleMargin2/JobTrackerTitle
+@onready var job_tracker_title: RichTextLabel = $QuestHubVBox/MainQuestTitleMargin3/JobTrackerTitle
 @onready var v_box_container_3: VBoxContainer = $QuestHubVBox/VBoxContainer3
 
 
@@ -35,7 +35,7 @@ func initialize_main_quests() -> void:
 			main_line_quest_v_box.add_child(quest_tracker_item)
 
 func initialize_job_quests() -> void:
-	clear_quest_box(job_tracker_v_box)
+	clear_quest_box(v_box_container_3)
 	var active_jobs : Array = QuestManager.active_quests["Job"]
 	job_tracker_title.text = "[color=aqua]Job Tracker (%s/%s)[/color]" %[int(active_jobs.size()), PlayerStats.player_stats["Max Jobs Held"]]
 	for quest_name in active_jobs:

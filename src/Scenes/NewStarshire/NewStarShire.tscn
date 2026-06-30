@@ -887,9 +887,9 @@ position = Vector2(0, -13)
 
 [node name="EnterUpgradeStationNotice" type="Label" parent="." unique_id=885845539]
 visible = false
-offset_left = 1591.0
+offset_left = 1725.0
 offset_top = 420.0
-offset_right = 1712.0
+offset_right = 1846.0
 offset_bottom = 455.0
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("27_e7ku4")
@@ -930,10 +930,10 @@ facility_name = "Upgrades PC"
 
 [node name="AccessSwordCraftingStation" type="Label" parent="." unique_id=457406049]
 visible = false
-offset_left = 1708.0
-offset_top = 413.0
-offset_right = 1981.0
-offset_bottom = 429.0
+offset_left = 1879.0
+offset_top = 403.0
+offset_right = 2153.0
+offset_bottom = 419.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("27_e7ku4")

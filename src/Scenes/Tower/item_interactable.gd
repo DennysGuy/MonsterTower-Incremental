@@ -7,6 +7,8 @@ class_name ItemInteractable extends Node2D
 var player : Player
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
+const MOVE_TO_MARKET = preload("uid://ojrph7f6g0vw")
+const HIT_THE_MARKET = preload("uid://drf7id40p4ubo")
 
 @export var hover_height : float = 6.0
 @export var hover_speed : float = 2.0
@@ -70,7 +72,18 @@ func _process(delta: float) -> void:
 				await tween.finished
 				#global_position = target_pos
 				sell_item()
-		
+		if PlayerStats.facilities_unlocked["Junk A Tron Auto Transfer"]:
+			if is_sold and grand_market_position:
+				var target_pos = grand_market_position.global_position
+				var tween : Tween = create_tween()
+				tween.tween_property(self, "global_position", target_pos, get_sell_time())
+				global_position = global_position.move_toward(
+				target_pos,
+				sell_speed * delta
+				)
+				await tween.finished
+				#global_position = target_pos
+				sell_item()
 		#t += delta * hover_speed
 		#position.y = base_y + sin(t) * hover_height
 		
@@ -121,7 +134,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Player:
 		#pick_up_item()
 		player_in_range = true
-		if is_junk_drop and !junk_picked_up:
+		if is_junk_drop and !junk_picked_up and !PlayerStats.facilities_unlocked["Junk A Tron Auto Transfer"]:
 			set_junk_offset()
 			HubManager.show_facility_notification.emit("Bulk Seller")
 			junk_picked_up = true
@@ -155,6 +168,7 @@ func set_to_sold(market_position: Marker2D) -> void:
 	is_sold = true
 	grand_market_position = market_position
 	SignalBus.novelty_invention_sold.emit()
+	GameManager.play_sfx(MOVE_TO_MARKET, 0.0, randf_range(0.8,1.2))
 	
 	if player.junk_picked_up.is_empty():
 		HubManager.hide_facility_notification.emit("Bulk Seller")
@@ -210,4 +224,6 @@ func add_item_to_bulk_menu(bulk_sale_menu : BulkSellerGrandMarketMenu, bulk_slot
 			HubManager.hide_facility_notification.emit("Bulk Seller")
 	if !successfully_added:
 		bulk_sale_menu.create_bulk_sale_slot(item)
+	
+	GameManager.play_sfx(HIT_THE_MARKET,0.0,randf_range(0.8,1.2))
 	
