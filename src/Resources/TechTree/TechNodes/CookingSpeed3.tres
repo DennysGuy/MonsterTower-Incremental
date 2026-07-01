@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://lp20uphsdukm"]
+
+[ext_resource type="Texture2D" uid="uid://cdih0jn64ephh" path="res://Assets/TechTree/CookingNodes/JunkATronCraftingSpeed_Graphic_Disabled.png" id="1_vu1bo"]
+[ext_resource type="Texture2D" uid="uid://danl2vq4m130" path="res://Assets/TechTree/CookingNodes/JunkATronCraftingSpeed_Graphic.png" id="2_8e0b1"]
+[ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="3_nlssp"]
+
+[resource]
+script = ExtResource("3_nlssp")
+node_name = "Junk-A-Speedster 3"
+icon = ExtResource("2_8e0b1")
+disabled_icon = ExtResource("1_vu1bo")
+description = "Increases the Junk-A-Tron's manufactureriing speed by 20% per level."
+max_level = 5
+currency_required = 15200
+stat_relation = 4
+price_scaler = 1.15
+stat_name = "Cooking Speed"
+upgrade_interval = 0.2
+prereqs = Array[String](["Crit-A-Tron 2:1"])
+metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

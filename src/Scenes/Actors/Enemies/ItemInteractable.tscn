@@ -124,6 +124,10 @@ size = Vector2(24, 23)
 z_index = 4090
 script = ExtResource("1_7i62p")
 icon = NodePath("Icon")
+perishable = null
+speed = null
+hover_height = null
+hover_speed = null
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1194280253]
 root_node = NodePath("../Icon")

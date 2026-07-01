@@ -39,6 +39,9 @@ func _ready() -> void:
 	base_y = position.y
 	
 	animation_player.play("Spawn")
+	if PlayerStats.facilities_unlocked["Junk A Tron Auto Transfer"]:
+		grand_market_position = get_tree().get_first_node_in_group("GrandMarketPosition")
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -64,7 +67,7 @@ func _process(delta: float) -> void:
 			elif is_sold and grand_market_position:
 				var target_pos = grand_market_position.global_position
 				var tween : Tween = create_tween()
-				tween.tween_property(self, "global_position", target_pos, get_sell_time())
+				tween.tween_property(self, "global_position", target_pos, get_sell_time(int(PlayerStats.player_stats["Bulk Sell Transfer Speed"])))
 				global_position = global_position.move_toward(
 				target_pos,
 				sell_speed * delta
@@ -73,10 +76,10 @@ func _process(delta: float) -> void:
 				#global_position = target_pos
 				sell_item()
 		if PlayerStats.facilities_unlocked["Junk A Tron Auto Transfer"]:
-			if is_sold and grand_market_position:
+			if grand_market_position:
 				var target_pos = grand_market_position.global_position
 				var tween : Tween = create_tween()
-				tween.tween_property(self, "global_position", target_pos, get_sell_time())
+				tween.tween_property(self, "global_position", target_pos, get_sell_time(int(PlayerStats.player_stats["Auto Sell Transfer Speed"])))
 				global_position = global_position.move_toward(
 				target_pos,
 				sell_speed * delta
@@ -176,9 +179,8 @@ func set_to_sold(market_position: Marker2D) -> void:
 		HubManager.show_facility_notification.emit("Bulk Seller")
 	
 
-func get_sell_time() -> float:
-	var sell_speed_level : int = int(PlayerStats.player_stats["Bulk Sell Transfer Speed"])
-	return max(0.01, PlayerStats.BASE_TRANSFER_TIME * pow(0.65, sell_speed_level))
+func get_sell_time(move_speed : int) -> float:
+	return max(0.01, PlayerStats.BASE_TRANSFER_TIME * pow(0.65, move_speed))
 
 func move_forward() -> void:
 	if is_instance_valid(prev_item_interactable) and !is_sold:

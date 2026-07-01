@@ -26,6 +26,8 @@ TowerGuide: Next, This is the Class Advancement Center - the heart and soul of t
 TowerGuide: Here, you will unlock and upgrade new class abilities with AP that is acquired from leveling up while hunting inside the Tower.
 do CutsceneManager.send_camera_to_cooking_station_pos()
 TowerGuide: Lastly, we have the -- uh, Junk-O... Junk-E..
+do MusicPlayer.pause_music()
+audio music "res://Audio/Music/WackyJunkATron.wav" [bus="Music"]
 join ProfStooge leftmost [animation="Slide From Left" wait="true"]
 ProfStooge: Ahem..
 ProfStooge: Allow me to Explain!
@@ -36,6 +38,7 @@ ProfStooge: What Ms. Guide has failed to queue you in on is that the Guild has b
 ProfStooge: It's been a sor of a self-fulfilling prophecy, might I tell you. Since we lack the necessary funds, we have also been losing Hunters - and with lack of equipment and sufficient employment, progress is virtually impossible.
 ProfStooge: Fear not! The Junk-A-Tron is the answer to our problem.. I just need a little help finishing the last of development, and we'll have a little prototype to show the guild OUR VERY OWN SELF FUNDING ENGINE.
 ProfStooge: How might this work you may ask?
+audio music "res://Audio/Music/TutorialCutscene.wav" [bus="Music"]
 TowerGuide: Sorry to interrupt your speil, it was very inspiring Prof. Stooge. We'll have to cut it here as we're out of time. We'll go into the specifics later.
 ProfStooge: I can count on you to help me finish this thing, right Sonny?
 leave ProfStooge [animation="Slide To Left" wait="true"]

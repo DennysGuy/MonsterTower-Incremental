@@ -176,7 +176,8 @@ TODO: We will add saves for classes as well
 	"Double Jump": false,
 	"Gem Stone Station": false,
 	"HP Chalice" : false,
-	"MP Vial" : false
+	"MP Vial" : false,
+	"Junk A Tron Auto Transfer":false
 }
 
 @export var check_points_unlocked : Dictionary = {
@@ -254,6 +255,7 @@ TODO: We will add saves for classes as well
 	"Junk Drops 2": {"Level":0, "Unlocked": false},
 	"Junk-A-Speedster 1":{"Level":0, "Unlocked": false},
 	"Junk-A-Speedster 2":{"Level":0, "Unlocked": false},
+	"Junk-A-Speedster 3":{"Level":0, "Unlocked": false},
 	"Junk-A-Accuracy 1": {"Level":0, "Unlocked": false},
 	"Junk-A-Accuracy 2": {"Level":0, "Unlocked": false},
 	"Expert Marketeer 1": {"Level":0, "Unlocked": false},
@@ -313,6 +315,7 @@ TODO: We will add saves for classes as well
 	"Polished Turd 1": {"Level":0,"Unlocked": false},
 	"Polished Turd 2": {"Level":0,"Unlocked": false},
 	"Proficient Vendor 1": {"Level":0,"Unlocked": false},
+	"Proficient Vendor 2": {"Level":0,"Unlocked": false},
 	"Salvaged Junk 1": {"Level":0,"Unlocked": false},
 	"Salvaged Junk 2": {"Level":0,"Unlocked": false},
 	"Extra Ore 1": {"Level":0,"Unlocked": false},

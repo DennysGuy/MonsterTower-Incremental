@@ -11,7 +11,7 @@ node_name = "Siphen Amount 1"
 icon = ExtResource("2_ccyxk")
 disabled_icon = ExtResource("1_t22km")
 description = "Increases the amount of HP that is siphened."
-currency_required = 9000
+currency_required = 40000
 materials_required = Array[Dictionary]([{
 ExtResource("1_t4cyy"): 2
 }])

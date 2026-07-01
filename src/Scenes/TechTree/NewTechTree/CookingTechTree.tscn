@@ -18,10 +18,12 @@
 [ext_resource type="Resource" uid="uid://c2amp16srnwin" path="res://src/Resources/TechTree/TechNodes/CookingSpeed2.tres" id="12_mtqw8"]
 [ext_resource type="Resource" uid="uid://jgq47sewguxf" path="res://src/Resources/TechTree/TechNodes/BulkSellSlots3.tres" id="13_nmi6x"]
 [ext_resource type="Resource" uid="uid://dldvhuc6qmg2p" path="res://src/Resources/TechTree/TechNodes/CookingDrops2.tres" id="14_344e1"]
+[ext_resource type="Resource" uid="uid://bv1k0gu2j2aeo" path="res://src/Resources/TechTree/TechNodes/MarketSellSpeed2.tres" id="14_of0yu"]
 [ext_resource type="Resource" uid="uid://bd72e41vun0w" path="res://src/Resources/TechTree/TechNodes/BulkSellSlotStack3.tres" id="16_m1bfp"]
 [ext_resource type="Resource" uid="uid://dsx0fccwrnval" path="res://src/Resources/TechTree/TechNodes/BulkSellSlots2.tres" id="17_sibhk"]
 [ext_resource type="Resource" uid="uid://cxkvc17ad8t5t" path="res://src/Resources/TechTree/TechNodes/BulkSellSlotStack2.tres" id="18_nmi6x"]
 [ext_resource type="Resource" uid="uid://denk83487dyny" path="res://src/Resources/TechTree/TechNodes/JunkATronAutoTransfer.tres" id="21_oci3q"]
+[ext_resource type="Resource" uid="uid://lp20uphsdukm" path="res://src/Resources/TechTree/TechNodes/CookingSpeed3.tres" id="21_yqqwl"]
 [ext_resource type="Resource" uid="uid://c3dg2fxa12pr6" path="res://src/Resources/TechTree/TechNodes/JunkATronAutoTransferSpeed1.tres" id="22_ispgi"]
 
 [node name="CookingStationTechTree" type="Control" unique_id=220942998]
@@ -38,7 +40,6 @@ script = ExtResource("1_7vto7")
 position = Vector2(1024, 704)
 
 [node name="JunkATronStationUnlock" parent="." unique_id=640777626 instance=ExtResource("3_aqpn3")]
-visible = false
 layout_mode = 1
 offset_left = 64.0
 offset_top = 356.0
@@ -48,7 +49,6 @@ tech_node_stats = ExtResource("4_7vto7")
 node_type = 1
 
 [node name="BulkSaleSlots1Node" parent="." unique_id=462399319 node_paths=PackedStringArray("previous_nodes") instance=ExtResource("3_aqpn3")]
-visible = false
 layout_mode = 1
 offset_left = 64.0
 offset_top = 100.0
@@ -58,7 +58,6 @@ tech_node_stats = ExtResource("11_aba2s")
 previous_nodes = [NodePath("../JunkATronStationUnlock")]
 
 [node name="BulkSaleSlots2Node2" parent="." unique_id=1143940825 node_paths=PackedStringArray("previous_nodes") instance=ExtResource("3_aqpn3")]
-visible = false
 layout_mode = 1
 offset_left = 192.0
 offset_top = -28.0
@@ -68,7 +67,6 @@ tech_node_stats = ExtResource("17_sibhk")
 previous_nodes = [NodePath("../BulkSaleSlots1Node")]
 
 [node name="BulkSaleSlots2Node3" parent="." unique_id=1522912759 node_paths=PackedStringArray("previous_nodes") instance=ExtResource("3_aqpn3")]
-visible = false
 layout_mode = 1
 offset_left = 192.0
 offset_top = -220.0
@@ -78,7 +76,6 @@ tech_node_stats = ExtResource("13_nmi6x")
 previous_nodes = [NodePath("../BulkSaleSlots2Node2")]
 
 [node name="BulkSaleSlots2Node" parent="." unique_id=1432515855 node_paths=PackedStringArray("previous_nodes") instance=ExtResource("3_aqpn3")]
-visible = false
 layout_mode = 1
 offset_left = -64.0
 offset_top = -29.0
@@ -88,7 +85,6 @@ tech_node_stats = ExtResource("12_b830e")
 previous_nodes = [NodePath("../BulkSaleSlots1Node")]
 
 [node name="BulkSaleSlotStacks2Node" parent="." unique_id=2099889206 node_paths=PackedStringArray("previous_nodes") instance=ExtResource("3_aqpn3")]
-visible = false
 layout_mode = 1
 offset_left = -64.0
 offset_top = -220.0
@@ -98,7 +94,6 @@ tech_node_stats = ExtResource("18_nmi6x")
 previous_nodes = [NodePath("../BulkSaleSlots2Node")]
 
 [node name="BulkSaleSlotStacks2Node2" parent="." unique_id=1239120706 node_paths=PackedStringArray("previous_nodes") instance=ExtResource("3_aqpn3")]
-visible = false
 layout_mode = 1
 offset_left = -64.0
 offset_top = -412.0
@@ -108,7 +103,6 @@ tech_node_stats = ExtResource("16_m1bfp")
 previous_nodes = [NodePath("../BulkSaleSlotStacks2Node")]
 
 [node name="CrticalCookingNode" parent="." unique_id=1176230901 node_paths=PackedStringArray("previous_nodes") instance=ExtResource("3_aqpn3")]
-visible = false
 layout_mode = 1
 offset_left = -192.0
 offset_top = 356.0
@@ -119,7 +113,6 @@ previous_nodes = [NodePath("../JunkATronStationUnlock")]
 node_type = 1
 
 [node name="MarketTransferSpeed1Node2" parent="." unique_id=1921851010 node_paths=PackedStringArray("previous_nodes") instance=ExtResource("3_aqpn3")]
-visible = false
 layout_mode = 1
 offset_left = 320.0
 offset_top = 356.0
@@ -130,7 +123,6 @@ previous_nodes = [NodePath("../JunkATronStationUnlock")]
 node_type = 1
 
 [node name="MarketSellSpeed1Node2" parent="." unique_id=671106089 node_paths=PackedStringArray("previous_nodes") instance=ExtResource("3_aqpn3")]
-visible = false
 layout_mode = 1
 offset_left = 449.0
 offset_top = 228.0
@@ -140,8 +132,17 @@ tech_node_stats = ExtResource("5_mtqw8")
 previous_nodes = [NodePath("../MarketTransferSpeed1Node2")]
 node_type = 1
 
+[node name="MarketSellSpeed1Node3" parent="." unique_id=1901732601 node_paths=PackedStringArray("previous_nodes") instance=ExtResource("3_aqpn3")]
+layout_mode = 1
+offset_left = 641.0
+offset_top = 228.0
+offset_right = 641.0
+offset_bottom = 228.0
+tech_node_stats = ExtResource("14_of0yu")
+previous_nodes = [NodePath("../MarketSellSpeed1Node2")]
+node_type = 1
+
 [node name="MarketValueMultiplier1" parent="." unique_id=901193750 node_paths=PackedStringArray("previous_nodes") instance=ExtResource("3_aqpn3")]
-visible = false
 layout_mode = 1
 offset_left = 448.0
 offset_top = 484.0
@@ -152,7 +153,6 @@ previous_nodes = [NodePath("../MarketTransferSpeed1Node2")]
 node_type = 1
 
 [node name="CookingAccuracy1Node" parent="." unique_id=1331020484 node_paths=PackedStringArray("previous_nodes") instance=ExtResource("3_aqpn3")]
-visible = false
 layout_mode = 1
 offset_left = -320.0
 offset_top = 228.0
@@ -162,7 +162,6 @@ tech_node_stats = ExtResource("6_7vto7")
 previous_nodes = [NodePath("../CrticalCookingNode")]
 
 [node name="CookingAccuracy2Node" parent="." unique_id=1233633221 node_paths=PackedStringArray("previous_nodes") instance=ExtResource("3_aqpn3")]
-visible = false
 layout_mode = 1
 offset_left = -512.0
 offset_top = 227.0
@@ -172,7 +171,6 @@ tech_node_stats = ExtResource("12_aygh3")
 previous_nodes = [NodePath("../CookingAccuracy1Node")]
 
 [node name="CookingSpeed1Node" parent="." unique_id=1776225068 node_paths=PackedStringArray("previous_nodes") instance=ExtResource("3_aqpn3")]
-visible = false
 layout_mode = 1
 offset_left = -320.0
 offset_top = 484.0
@@ -183,7 +181,6 @@ previous_nodes = [NodePath("../CrticalCookingNode")]
 node_type = 1
 
 [node name="CookingSpeed2Node" parent="." unique_id=237876793 node_paths=PackedStringArray("previous_nodes") instance=ExtResource("3_aqpn3")]
-visible = false
 layout_mode = 1
 offset_left = -512.0
 offset_top = 484.0
@@ -193,7 +190,6 @@ tech_node_stats = ExtResource("12_mtqw8")
 previous_nodes = [NodePath("../CookingSpeed1Node")]
 
 [node name="CriticalCooking2Node" parent="." unique_id=1013238976 node_paths=PackedStringArray("previous_nodes") instance=ExtResource("3_aqpn3")]
-visible = false
 layout_mode = 1
 offset_left = -640.0
 offset_top = 356.0
@@ -202,27 +198,34 @@ offset_bottom = 356.0
 tech_node_stats = ExtResource("10_lt521")
 previous_nodes = [NodePath("../CookingAccuracy2Node"), NodePath("../CookingSpeed2Node")]
 
-[node name="JunkATronAutoTransferNode" parent="." unique_id=1954093433 node_paths=PackedStringArray("previous_nodes") instance=ExtResource("3_aqpn3")]
-visible = false
+[node name="CookingSpeed3Node" parent="." unique_id=1154352818 node_paths=PackedStringArray("previous_nodes") instance=ExtResource("3_aqpn3")]
 layout_mode = 1
 offset_left = -832.0
 offset_top = 356.0
 offset_right = -832.0
 offset_bottom = 356.0
-tech_node_stats = ExtResource("21_oci3q")
+tech_node_stats = ExtResource("21_yqqwl")
 previous_nodes = [NodePath("../CriticalCooking2Node")]
 
-[node name="JunkATronAutoTransferSpeedNode" parent="." unique_id=1833663503 instance=ExtResource("3_aqpn3")]
-visible = false
+[node name="JunkATronAutoTransferNode" parent="." unique_id=1954093433 node_paths=PackedStringArray("previous_nodes") instance=ExtResource("3_aqpn3")]
 layout_mode = 1
 offset_left = -1024.0
 offset_top = 356.0
 offset_right = -1024.0
 offset_bottom = 356.0
+tech_node_stats = ExtResource("21_oci3q")
+previous_nodes = [NodePath("../CriticalCooking2Node")]
+
+[node name="JunkATronAutoTransferSpeedNode" parent="." unique_id=1833663503 node_paths=PackedStringArray("previous_nodes") instance=ExtResource("3_aqpn3")]
+layout_mode = 1
+offset_left = -1216.0
+offset_top = 356.0
+offset_right = -1216.0
+offset_bottom = 356.0
 tech_node_stats = ExtResource("22_ispgi")
+previous_nodes = [NodePath("../JunkATronAutoTransferNode")]
 
 [node name="CookingDrops1Node" parent="." unique_id=1302849726 node_paths=PackedStringArray("previous_nodes") instance=ExtResource("3_aqpn3")]
-visible = false
 layout_mode = 1
 offset_left = 64.0
 offset_top = 612.0
@@ -232,7 +235,6 @@ tech_node_stats = ExtResource("7_2lla6")
 previous_nodes = [NodePath("../JunkATronStationUnlock")]
 
 [node name="CookingDrops2Node" parent="." unique_id=2065811101 node_paths=PackedStringArray("previous_nodes") instance=ExtResource("3_aqpn3")]
-visible = false
 layout_mode = 1
 offset_left = 64.0
 offset_top = 804.0

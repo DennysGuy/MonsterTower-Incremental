@@ -13,7 +13,7 @@ disabled_icon = ExtResource("1_uru8y")
 description = "Increase Crit Damage by 5% per level."
 max_level = 3
 materials_required = Array[Dictionary]([{
-ExtResource("2_a6m8i"): 4
+ExtResource("2_a6m8i"): 2
 }])
 stat_name = "Crit Damage"
 upgrade_interval = 0.05

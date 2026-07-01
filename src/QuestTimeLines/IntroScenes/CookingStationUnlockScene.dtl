@@ -1,4 +1,5 @@
 do MusicPlayer.pause_music()
+audio "res://Audio/Music/WackyJunkATron.wav"
 audio "res://Audio/Music/TutorialCutscene.wav" [bus="Music"]
 do CutsceneManager.disable_player_functionality()
 join ProfStooge rightmost [animation="Slide In Up" wait="true"]

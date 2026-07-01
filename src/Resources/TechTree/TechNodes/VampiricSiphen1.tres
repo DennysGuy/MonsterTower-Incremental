@@ -12,7 +12,7 @@ icon = ExtResource("2_niev6")
 disabled_icon = ExtResource("1_byqkw")
 description = "Increases The Amount of life that is stolen by a 3% per level."
 max_level = 3
-currency_required = 8000
+currency_required = 40000
 materials_required = Array[Dictionary]([{
 ExtResource("1_jrjfj"): 2
 }])

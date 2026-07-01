@@ -13,7 +13,7 @@ disabled_icon = ExtResource("1_nrmsl")
 description = "Increases Attack Damage by %45 for each level"
 max_level = 5
 materials_required = Array[Dictionary]([{
-ExtResource("2_0cud6"): 1
+ExtResource("2_0cud6"): 2
 }])
 stat_name = "Attack Damage"
 upgrade_interval = 0.45
