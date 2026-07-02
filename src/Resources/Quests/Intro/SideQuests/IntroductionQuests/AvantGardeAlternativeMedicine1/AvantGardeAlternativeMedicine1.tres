@@ -4,8 +4,8 @@
 [ext_resource type="Resource" uid="uid://b4owo1wr47wc" path="res://src/Resources/Dishes/FauxGemMachine.tres" id="2_25glh"]
 [ext_resource type="Script" uid="uid://be6vh0qellkjq" path="res://src/Scripts/Questing/quest.gd" id="2_q7fhk"]
 [ext_resource type="Script" uid="uid://deyfft0rbfjgk" path="res://src/Scripts/Questing/Tasks/task.gd" id="3_25glh"]
-[ext_resource type="Resource" uid="uid://c5lshgfftefd2" path="res://src/Resources/Quests/Intro/SideQuests/IntroductionQuests/AvantGardeAlternativeMedicine1/Tasks/Gather5GoblinMeat.tres" id="5_m4eb2"]
-[ext_resource type="Resource" uid="uid://bom53ck8rj43f" path="res://src/Resources/Quests/Intro/SideQuests/IntroductionQuests/AvantGardeAlternativeMedicine1/Tasks/Gather10BeetleShells.tres" id="6_gemyw"]
+[ext_resource type="Resource" uid="uid://cp87dya13d4em" path="res://src/Resources/Quests/Intro/SideQuests/IntroductionQuests/AvantGardeAlternativeMedicine1/Tasks/Slay25Goblins.tres" id="6_m4eb2"]
+[ext_resource type="Resource" uid="uid://bmku4bmh6fxfe" path="res://src/Resources/Quests/Intro/SideQuests/IntroductionQuests/AvantGardeAlternativeMedicine1/Tasks/Slay20OrcWarlords.tres" id="7_gemyw"]
 [ext_resource type="Resource" uid="uid://bd2wbe6h2son5" path="res://src/Resources/Quests/Intro/SideQuests/IntroductionQuests/AvantGardeAlternativeMedicine1/Tasks/Gather5SerpantTongues.tres" id="7_n4n72"]
 
 [resource]
@@ -15,7 +15,7 @@ quest_id = 6
 quest_type = 1
 level_needed = 5
 description = "Doctor Tharki
-[color=green](Gather 5 Beetle Shells, 5 Serpant Tongue, 5 Gobline Meat)[/color]
+[color=green](Gather 10 Serpant Tongue, Slay 25 Goblin Thiefs and 20 Orc Warlords)[/color ]
 
 \"Hi, I'm Doctor Tharki. 
 
@@ -38,8 +38,8 @@ turn_in_description = "Doctor Tharki
 Wish us luck. Humanity needs this as much as I do.\""
 chapter_relation = "Introduction"
 quest_line = "Cutting Edge Medicine"
-tasks = Array[ExtResource("3_25glh")]([ExtResource("5_m4eb2"), ExtResource("6_gemyw"), ExtResource("7_n4n72")])
-currency_reward = 4000
+tasks = Array[ExtResource("3_25glh")]([ExtResource("7_n4n72"), ExtResource("6_m4eb2"), ExtResource("7_gemyw")])
+currency_reward = 10000
 xp_reward = 1200
 item_reward = Dictionary[ExtResource("1_to1ue"), int]({
 ExtResource("2_25glh"): 7

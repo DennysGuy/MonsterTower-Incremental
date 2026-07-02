@@ -57,6 +57,7 @@ func _ready() -> void:
 		
 	PlayerHudSignalBus.update_map_name_label.emit(map_name)
 	
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	super(delta)

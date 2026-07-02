@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="GatheringTask" format=3 uid="uid://dr74wwc4p1ohp"]
 
 [ext_resource type="Script" uid="uid://b1r3golda0dn4" path="res://src/Scripts/Questing/Tasks/gathering_task.gd" id="1_jjvdr"]
-[ext_resource type="Resource" uid="uid://ctjyflf6qr4g" path="res://src/Resources/Dishes/WingeyUmbrella.tres" id="1_vm1y2"]
+[ext_resource type="Resource" uid="uid://rjdpo8po5vi0" path="res://src/Resources/Actors/Enemies/Biome1/CorruptedMushie/CorruptedSpore.tres" id="1_vm1y2"]
 
 [resource]
 script = ExtResource("1_jjvdr")

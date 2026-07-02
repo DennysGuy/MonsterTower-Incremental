@@ -13,6 +13,7 @@ description = "Increases MP Vial Spawn Rate by 10% for each level."
 max_level = 3
 currency_required = 6000
 stat_relation = 1
+price_scaler = 1.3
 stat_name = "Vial Spawn Rate"
 upgrade_interval = 0.1
 prereqs = Array[String](["Vial of the Esoteric:1"])

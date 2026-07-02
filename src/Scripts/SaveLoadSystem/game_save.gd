@@ -730,22 +730,27 @@ TODO: We will add saves for classes as well
 	},
 	11:{
 		#Gather 10 Bronze Bars
+		"Current Count":0,
 		"Completed": false
 	},
 	12:{
 		#Gather 10 Batclopse Claws
+		"Current Count":0,
 		"Completed": false
 	},
 	13:{
 		#Gather 10 Mushie Fibers
+		"Current Count":0,
 		"Completed": false
 	},
 	14:{
 		#Gather 10 Masks
+		"Current Count":0,
 		"Completed": false
 	},
 	15:{
 		#Gather 25 Bat Wings
+		"Current Count":0,
 		"Completed": false
 	},
 	16: {
@@ -754,22 +759,27 @@ TODO: We will add saves for classes as well
 	},
 	17:{
 		#Gather 20 Beetle Eyes
+		"Current Count":0,
 		"Completed": false
 	},
 	18:{
 		#Gather 10 Beetle Claws
+		"Current Count":0,
 		"Completed": false
 	},
 	19:{
 		#Gather 15 Beetle Shells
+		"Current Count":0,
 		"Completed": false
 	},
 	20:{
 		#Gather 20 Purified Mushie Core
+		"Current Count":0,
 		"Completed": false
 	},
 	21:{
 		#Gather 10 Serpant Tongues
+		"Current Count":0,
 		"Completed": false
 	},
 	22: {

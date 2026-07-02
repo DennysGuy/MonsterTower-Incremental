@@ -13,6 +13,7 @@ description = "Increases chance to receive Junk-A-Tron Crafting Drops by 5% per 
 max_level = 2
 currency_required = 900
 stat_relation = 4
+price_scaler = 1.3
 stat_name = "Cooking Drop Chance Bonus"
 upgrade_interval = 0.05
 prereqs = Array[String](["Junk-A-Tron V1:1"])

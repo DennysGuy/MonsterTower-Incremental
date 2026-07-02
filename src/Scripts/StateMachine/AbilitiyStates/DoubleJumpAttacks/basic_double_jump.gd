@@ -1,5 +1,7 @@
 class_name BasicDoubleJump extends DoubleJumpBehavior
 
+var after_image_timer : float = 0.1
+var after_image_interval : float = 0.1
 
 func on_enter(player : Player) -> void:
 	parent = player
@@ -8,6 +10,12 @@ func on_enter(player : Player) -> void:
 	parent.sfx_player.play_sfx(sfx)
 	
 func apply_physics(_delta : float) -> State:
+	
+	after_image_timer -= _delta
+	if after_image_timer <= 0:
+		parent.spawn_after_image()
+		after_image_timer = after_image_interval
+	
 	if parent.velocity.y > 0:
 		return parent.fall_state
 	

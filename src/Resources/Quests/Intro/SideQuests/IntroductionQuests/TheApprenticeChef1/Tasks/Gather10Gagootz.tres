@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="GatheringTask" format=3 uid="uid://c0si4wymq1ji6"]
 
 [ext_resource type="Script" uid="uid://b1r3golda0dn4" path="res://src/Scripts/Questing/Tasks/gathering_task.gd" id="1_6jqc6"]
-[ext_resource type="Resource" uid="uid://boeryxspsw8uq" path="res://src/Resources/Dishes/MushieLavaLamp.tres" id="1_yj2hc"]
+[ext_resource type="Resource" uid="uid://bxukrnl1bg7oo" path="res://src/Resources/Actors/Enemies/Biome1/Batclopse/BatclopseWing.tres" id="1_yj2hc"]
 
 [resource]
 script = ExtResource("1_6jqc6")

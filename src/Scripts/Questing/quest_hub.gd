@@ -15,6 +15,7 @@ func _ready() -> void:
 	QuestManager.initialize_job_quests.connect(initialize_job_quests)
 	QuestManager.weapon_tracker_updated.connect(initialize_weapon_tracker)
 	initialize_main_quests()
+	initialize_job_quests()
 	initialize_weapon_tracker()
 	
 

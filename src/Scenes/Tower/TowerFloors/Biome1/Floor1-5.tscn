@@ -54,7 +54,7 @@ size = Vector2(208, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4qnya"]
 size = Vector2(368, 20)
 
-[node name="Floor1-5" type="Node2D" unique_id=1707445138 node_paths=PackedStringArray("exit_elevator", "camera", "ore_rock_markers", "gem_stone_chest_markers", "campfire_list", "sfx_player", "ambience_player")]
+[node name="Floor1-5" type="Node2D" unique_id=1707445138 node_paths=PackedStringArray("exit_elevator", "camera", "ore_rock_markers", "gem_stone_chest_markers", "campfire_list", "hp_replenish_points", "mp_replenish_points", "sfx_player", "ambience_player")]
 script = ExtResource("1_cd2eo")
 map_name = "M. Dungeon - F5"
 map_id = 5
@@ -66,6 +66,8 @@ ore_rock_spawn_rate = 0.5
 ore_rock_markers = NodePath("OreRockMarkers")
 gem_stone_chest_markers = NodePath("GemStoneMarkers")
 campfire_list = NodePath("CampfireCheckpoints")
+hp_replenish_points = NodePath("HPChalices")
+mp_replenish_points = NodePath("MPVials")
 path = "F:/GodotProjects/MonsterTower-Incremental/src/Scenes/Tower/TowerFloors/Biome1/Floor1-5.tscn"
 sfx_player = NodePath("SfxPlayer")
 job_unlocks = Array[String](["Avant Garde Alt. Medicine 1"])
@@ -204,6 +206,48 @@ spawn_parent = NodePath("../..")
 
 [node name="OreRockMarker10" parent="OreRockMarkers" unique_id=1596191575 node_paths=PackedStringArray("spawn_parent") instance=ExtResource("14_l7but")]
 position = Vector2(176, 1889)
+ore_rock_resource = ExtResource("15_22mja")
+ore_rock = ExtResource("16_jijf8")
+chance_to_spawn = 0.4
+spawn_parent = NodePath("../..")
+
+[node name="OreRockMarker13" parent="OreRockMarkers" unique_id=454880003 node_paths=PackedStringArray("spawn_parent") instance=ExtResource("14_l7but")]
+position = Vector2(130, 2417)
+ore_rock_resource = ExtResource("15_22mja")
+ore_rock = ExtResource("16_jijf8")
+chance_to_spawn = 0.4
+spawn_parent = NodePath("../..")
+
+[node name="OreRockMarker15" parent="OreRockMarkers" unique_id=1711890446 node_paths=PackedStringArray("spawn_parent") instance=ExtResource("14_l7but")]
+position = Vector2(399, 2417)
+ore_rock_resource = ExtResource("15_22mja")
+ore_rock = ExtResource("16_jijf8")
+chance_to_spawn = 0.4
+spawn_parent = NodePath("../..")
+
+[node name="OreRockMarker16" parent="OreRockMarkers" unique_id=1826489155 node_paths=PackedStringArray("spawn_parent") instance=ExtResource("14_l7but")]
+position = Vector2(251, 2609)
+ore_rock_resource = ExtResource("15_jijf8")
+ore_rock = ExtResource("16_jijf8")
+chance_to_spawn = 0.4
+spawn_parent = NodePath("../..")
+
+[node name="OreRockMarker17" parent="OreRockMarkers" unique_id=1422167031 node_paths=PackedStringArray("spawn_parent") instance=ExtResource("14_l7but")]
+position = Vector2(292, 2609)
+ore_rock_resource = ExtResource("15_jijf8")
+ore_rock = ExtResource("16_jijf8")
+chance_to_spawn = 0.4
+spawn_parent = NodePath("../..")
+
+[node name="OreRockMarker18" parent="OreRockMarkers" unique_id=1054646330 node_paths=PackedStringArray("spawn_parent") instance=ExtResource("14_l7but")]
+position = Vector2(136, 2609)
+ore_rock_resource = ExtResource("15_jijf8")
+ore_rock = ExtResource("16_jijf8")
+chance_to_spawn = 0.4
+spawn_parent = NodePath("../..")
+
+[node name="OreRockMarker14" parent="OreRockMarkers" unique_id=705715436 node_paths=PackedStringArray("spawn_parent") instance=ExtResource("14_l7but")]
+position = Vector2(158, 2417)
 ore_rock_resource = ExtResource("15_22mja")
 ore_rock = ExtResource("16_jijf8")
 chance_to_spawn = 0.4
@@ -484,10 +528,7 @@ max_hunt_challenge_spawn = 4
 drop_scene = NodePath("..")
 spawn_root = NodePath("../MonsterSpawnNode")
 monster_list = Dictionary[PackedScene, int]({
-ExtResource("19_ekrv2"): 50
-})
-challenge_monster_list = Dictionary[PackedScene, int]({
-ExtResource("26_hyfg0"): 50
+ExtResource("26_hyfg0"): 100
 })
 area_collision_shape = NodePath("CollisionShape2D")
 
@@ -504,7 +545,7 @@ max_hunt_challenge_spawn = 4
 drop_scene = NodePath("..")
 spawn_root = NodePath("../MonsterSpawnNode")
 monster_list = Dictionary[PackedScene, int]({
-ExtResource("19_ekrv2"): 100
+ExtResource("26_hyfg0"): 100
 })
 area_collision_shape = NodePath("CollisionShape2D")
 

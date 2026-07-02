@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("2_7aml8")
 item_to_gather = ExtResource("1_07i8a")
-number_to_get = 5
-task_id = 21
+number_to_get = 10
+task_id = 16
 parent_quest = "Avant Garde Alt. Medicine 1"
 metadata/_custom_type_script = "uid://b1r3golda0dn4"

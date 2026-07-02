@@ -13,6 +13,7 @@ description = "Increases a Mining Bolt's distance by +50 for each level."
 max_level = 3
 currency_required = 3000
 stat_relation = 5
+price_scaler = 1.2
 stat_name = "Mining Bolt Distance"
 upgrade_interval = 50.0
 prereqs = Array[String](["Mining Bolt Chance 1:1"])

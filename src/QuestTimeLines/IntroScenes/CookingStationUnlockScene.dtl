@@ -1,6 +1,5 @@
 do MusicPlayer.pause_music()
-audio "res://Audio/Music/WackyJunkATron.wav"
-audio "res://Audio/Music/TutorialCutscene.wav" [bus="Music"]
+audio "res://Audio/Music/WackyJunkATron.wav" [volume="0.0" bus="Music"]
 do CutsceneManager.disable_player_functionality()
 join ProfStooge rightmost [animation="Slide In Up" wait="true"]
 ProfStooge: You've done it! You, Sonny, have single handedly funded the Starspire Guild. We'll all officially be gazillionaires now that my signature Junk-A-Tron has officially been completed!

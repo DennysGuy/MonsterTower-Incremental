@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="HuntingTask" format=3 uid="uid://cvcct5ml31ek3"]
+
+[ext_resource type="Resource" uid="uid://bq77ocfjc35gc" path="res://src/Resources/Actors/Enemies/Biome1/BeetleKnight/BeetleKnight.tres" id="1_w66fb"]
+[ext_resource type="Script" uid="uid://cx5q27bqrlaxf" path="res://src/Scripts/Questing/Tasks/hunting_task.gd" id="2_ys0wf"]
+
+[resource]
+script = ExtResource("2_ys0wf")
+enemy_to_hunt = ExtResource("1_w66fb")
+number_to_get = 25
+task_id = 12
+metadata/_custom_type_script = "uid://cx5q27bqrlaxf"

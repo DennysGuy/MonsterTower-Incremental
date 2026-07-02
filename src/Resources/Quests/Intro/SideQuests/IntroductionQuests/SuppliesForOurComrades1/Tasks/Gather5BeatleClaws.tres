@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="GatheringTask" format=3 uid="uid://cd7fixjybwy6d"]
 
-[ext_resource type="Resource" uid="uid://jn2dh2fyq5ep" path="res://src/Resources/Actors/Enemies/Biome1/CorruptedMushie/FiberousMushieStalk.tres" id="1_jt3py"]
+[ext_resource type="Resource" uid="uid://bwfenpkm4dc0g" path="res://src/Resources/Actors/Enemies/Biome1/BeetleKnight/BeetleClaw.tres" id="1_jt3py"]
 [ext_resource type="Script" uid="uid://b1r3golda0dn4" path="res://src/Scripts/Questing/Tasks/gathering_task.gd" id="2_do5kx"]
 
 [resource]

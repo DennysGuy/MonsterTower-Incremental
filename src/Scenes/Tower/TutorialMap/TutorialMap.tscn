@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://dyxt1peu58oe3" path="res://Assets/NewShip.png" id="3_7kbtj"]
 [ext_resource type="Texture2D" uid="uid://cshw60pd3stbh" path="res://Assets/EnvironmentalAssets/StarspireBG1/StarspireBG1_Sky.png" id="3_o3hak"]
 [ext_resource type="Texture2D" uid="uid://b38baquwhaxfl" path="res://Assets/EnvironmentalAssets/StarspireBG1/StarspireBG1_BlueClouds.png" id="4_506e5"]
-[ext_resource type="Texture2D" uid="uid://y80fw7n3ai66" path="res://Assets/Facilities/TempTower.png" id="4_sdyju"]
 [ext_resource type="PackedScene" uid="uid://c8ov03gkkda4k" path="res://src/Scenes/PlayerCamera.tscn" id="5_csukg"]
 [ext_resource type="Texture2D" uid="uid://cpca4wpiuuqve" path="res://Assets/EnvironmentalAssets/StarspireBG1/StarspireBG1_WhiteClouds.png" id="5_gnglh"]
 [ext_resource type="Texture2D" uid="uid://dsrb6mxocyvhe" path="res://Assets/EnvironmentalAssets/NewPalmTree.png" id="6_ye63i"]
@@ -15,6 +14,7 @@
 [ext_resource type="TileSet" uid="uid://dq684us71kbxw" path="res://src/Scenes/EnvironmentFloor1.tres" id="8_o3hak"]
 [ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="9_7kbtj"]
 [ext_resource type="Texture2D" uid="uid://c4t8gagwcs37p" path="res://Assets/EnvironmentalAssets/EnvironmentTileset.png" id="9_ye63i"]
+[ext_resource type="Texture2D" uid="uid://dne3exlpyj27k" path="res://Assets/NewIntroTowerGraphic.png" id="10_mncln"]
 [ext_resource type="Texture2D" uid="uid://dwhfqkskpj0pj" path="res://Assets/EnvironmentalAssets/LadderMovementDirectionStone.png" id="13_o3hak"]
 [ext_resource type="Texture2D" uid="uid://ctax5han2d4pp" path="res://Assets/EnvironmentalAssets/HitEnemyDirectionStone.png" id="14_mncln"]
 [ext_resource type="Texture2D" uid="uid://hjgf0n7ckpto" path="res://Assets/EnvironmentalAssets/OpenBagDirectionStone.png" id="15_dc783"]
@@ -704,8 +704,8 @@ offset_bottom = 524.0
 color = Color(0.23308343, 0.74218106, 0.99999994, 1)
 
 [node name="TempTower" type="Sprite2D" parent="." unique_id=1587782060]
-position = Vector2(3501, 302)
-texture = ExtResource("4_sdyju")
+position = Vector2(3479, 154.37164)
+texture = ExtResource("10_mncln")
 
 [node name="TileMaps" type="Node2D" parent="." unique_id=1514450296]
 

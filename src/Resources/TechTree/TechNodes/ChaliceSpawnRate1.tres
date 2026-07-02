@@ -13,6 +13,7 @@ description = "Increases chance for Healing Chalice to spawn 10% for each level.
 max_level = 3
 currency_required = 1500
 stat_relation = 1
+price_scaler = 1.35
 stat_name = "Chalice Spawn Rate"
 upgrade_interval = 0.1
 prereqs = Array[String](["Chalice of Welfare:1"])

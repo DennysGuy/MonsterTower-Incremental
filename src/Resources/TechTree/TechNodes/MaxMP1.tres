@@ -13,6 +13,7 @@ description = "Raises Max MP by 50 for each level."
 max_level = 4
 currency_required = 1200
 stat_relation = 1
+price_scaler = 1.15
 stat_name = "Max MP"
 upgrade_interval = 50.0
 prereqs = Array[String](["Max HP 2:1"])

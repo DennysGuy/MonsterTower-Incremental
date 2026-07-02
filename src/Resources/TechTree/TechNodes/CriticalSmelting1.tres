@@ -13,6 +13,7 @@ description = "Increases chance to double item output when smelting by 5% per le
 max_level = 2
 currency_required = 300
 stat_relation = 5
+price_scaler = 2.0
 stat_name = "Critical Smelting Chance"
 upgrade_interval = 0.05
 prereqs = Array[String](["Refinery Station:1"])

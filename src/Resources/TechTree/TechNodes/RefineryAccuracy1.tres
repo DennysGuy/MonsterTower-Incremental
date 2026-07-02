@@ -13,6 +13,7 @@ description = "Get more bars! Increases Smelting success rate bonus by 3% per le
 max_level = 5
 currency_required = 300
 stat_relation = 5
+price_scaler = 1.4
 stat_name = "Smelting Accuracy Bonus"
 upgrade_interval = 0.03
 prereqs = Array[String](["Refinery Speed 1:1"])

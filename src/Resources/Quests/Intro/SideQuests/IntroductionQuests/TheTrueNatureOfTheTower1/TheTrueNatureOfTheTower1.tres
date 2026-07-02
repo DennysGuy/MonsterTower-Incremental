@@ -1,14 +1,15 @@
 [gd_resource type="Resource" script_class="Quest" format=3 uid="uid://dhd0m6uxot38q"]
 
 [ext_resource type="Script" uid="uid://cu8drgivmhfn" path="res://src/Scripts/item.gd" id="1_hnvg2"]
-[ext_resource type="Resource" uid="uid://ctjyflf6qr4g" path="res://src/Resources/Dishes/WingeyUmbrella.tres" id="2_3mdpa"]
+[ext_resource type="Resource" uid="uid://cs6ojn6tc0alq" path="res://src/Resources/CraftingResources/SteelBar.tres" id="2_k18ed"]
 [ext_resource type="Script" uid="uid://be6vh0qellkjq" path="res://src/Scripts/Questing/quest.gd" id="2_qsoro"]
-[ext_resource type="Resource" uid="uid://dmmblpt46r1fs" path="res://src/Resources/Dishes/DrillBabyDrill.tres" id="3_1phnn"]
 [ext_resource type="Script" uid="uid://deyfft0rbfjgk" path="res://src/Scripts/Questing/Tasks/task.gd" id="3_3mdpa"]
-[ext_resource type="Resource" uid="uid://cgme05e6spg06" path="res://src/Resources/Quests/Intro/SideQuests/IntroductionQuests/TheTrueNatureOfTheTower1/Tasks/Gather10BatWings.tres" id="6_te3xl"]
-[ext_resource type="Resource" uid="uid://bwv8lyqh25ay1" path="res://src/Resources/Quests/Intro/SideQuests/IntroductionQuests/TheTrueNatureOfTheTower1/Tasks/Gather10SerpantTongues.tres" id="7_k18ed"]
-[ext_resource type="Resource" uid="uid://d3dmtbf67hxdh" path="res://src/Resources/Quests/Intro/SideQuests/IntroductionQuests/TheTrueNatureOfTheTower1/Tasks/Gather10BeetleEyes.tres" id="8_u3h7r"]
-[ext_resource type="Resource" uid="uid://dcg285reh705e" path="res://src/Resources/Quests/Intro/SideQuests/IntroductionQuests/TheTrueNatureOfTheTower1/Tasks/Gather10OrcHeads.tres" id="9_ud7nj"]
+[ext_resource type="Resource" uid="uid://y4kiqe4pi2v5" path="res://src/Resources/CraftingResources/IronBar.tres" id="3_u3h7r"]
+[ext_resource type="Resource" uid="uid://buu8pdcooh3hc" path="res://src/Resources/CraftingResources/BronzeBar.tres" id="4_ud7nj"]
+[ext_resource type="Resource" uid="uid://bmw0wgsubus1j" path="res://src/Resources/Quests/Intro/SideQuests/IntroductionQuests/TheTrueNatureOfTheTower1/Tasks/Slay50Goblins.tres" id="7_k18ed"]
+[ext_resource type="Resource" uid="uid://ccpbla1372ufx" path="res://src/Resources/Quests/Intro/SideQuests/IntroductionQuests/TheTrueNatureOfTheTower1/Tasks/Slay50PurpleMimics.tres" id="8_u3h7r"]
+[ext_resource type="Resource" uid="uid://p01358cvl122" path="res://src/Resources/Quests/Intro/SideQuests/IntroductionQuests/TheTrueNatureOfTheTower1/Tasks/Slay50PinkBats.tres" id="9_ud7nj"]
+[ext_resource type="Resource" uid="uid://clnn5aosfdjjq" path="res://src/Resources/Quests/Intro/SideQuests/IntroductionQuests/TheTrueNatureOfTheTower1/Tasks/Slay50Shrubs.tres" id="10_3cwon"]
 
 [resource]
 script = ExtResource("2_qsoro")
@@ -17,7 +18,7 @@ quest_id = 5
 quest_type = 1
 level_needed = 5
 description = "Biologist Marquise
-[color=green]Gather 5 Orc Heads, 5 Serpant Tongues, 5 Beetle Eyes, 5 Bat Wings[/color]
+[color=green]Slay 50 Goblin Thiefs, 50 Purple Mimics, 50 Pink Bats, 50 Shrubs[/color]
 
 \"Through all my years of studying the biology of Natural entities, I have not seen anything like this. Logically, it makes sense. The Tower seemingly appeared out of no where with properties unknown to man. But still, my brain has issues accepting what is true.
 
@@ -35,11 +36,12 @@ turn_in_description = "Biologist Marquise
 Please standby for the next request. We will uncover this mystery one request at a time.\""
 chapter_relation = "Introduction"
 quest_line = "The True Nature of the Tower"
-tasks = Array[ExtResource("3_3mdpa")]([ExtResource("6_te3xl"), ExtResource("7_k18ed"), ExtResource("8_u3h7r"), ExtResource("9_ud7nj")])
-currency_reward = 6000
-xp_reward = 1000
+tasks = Array[ExtResource("3_3mdpa")]([ExtResource("7_k18ed"), ExtResource("8_u3h7r"), ExtResource("9_ud7nj"), ExtResource("10_3cwon")])
+currency_reward = 100000
+xp_reward = 5000
 item_reward = Dictionary[ExtResource("1_hnvg2"), int]({
-ExtResource("2_3mdpa"): 10,
-ExtResource("3_1phnn"): 10
+ExtResource("2_k18ed"): 8,
+ExtResource("3_u3h7r"): 8,
+ExtResource("4_ud7nj"): 8
 })
 metadata/_custom_type_script = "uid://be6vh0qellkjq"

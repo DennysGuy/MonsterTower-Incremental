@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="HuntingTask" format=3 uid="uid://cp87dya13d4em"]
+
+[ext_resource type="Resource" uid="uid://cq7q6npjlayh1" path="res://src/Resources/Actors/Enemies/Biome1/GoblinThief/GoblinThief.tres" id="1_jc83a"]
+[ext_resource type="Script" uid="uid://cx5q27bqrlaxf" path="res://src/Scripts/Questing/Tasks/hunting_task.gd" id="2_wujvw"]
+
+[resource]
+script = ExtResource("2_wujvw")
+enemy_to_hunt = ExtResource("1_jc83a")
+number_to_get = 20
+task_id = 14
+parent_quest = "Avant Garde Alt. Medicine 1"
+task_type = 1
+metadata/_custom_type_script = "uid://cx5q27bqrlaxf"

@@ -1083,7 +1083,7 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(166, 704)
 
 [node name="RefineryPosition" type="Node2D" parent="." unique_id=1121494031]
-position = Vector2(1651, 679)
+position = Vector2(1772, 679)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=842259970]
 visible = false

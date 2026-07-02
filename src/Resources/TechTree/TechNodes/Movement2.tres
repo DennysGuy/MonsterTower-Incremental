@@ -13,6 +13,7 @@ description = "For each level, increases movement speed by 2%"
 max_level = 2
 currency_required = 15000
 stat_relation = 2
+price_scaler = 1.6
 stat_name = "Movement Speed"
 upgrade_interval = 0.02
 prereqs = Array[String](["Movement 1:3"])

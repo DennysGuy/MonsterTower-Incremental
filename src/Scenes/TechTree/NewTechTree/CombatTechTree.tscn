@@ -167,7 +167,7 @@ offset_top = 100.0
 offset_right = 64.0
 offset_bottom = 100.0
 tech_node_stats = ExtResource("12_j8abv")
-previous_nodes = [NodePath(".")]
+previous_nodes = [NodePath("../Attack2Node")]
 
 [node name="Attack4Node" parent="." unique_id=1480609517 node_paths=PackedStringArray("previous_nodes") instance=ExtResource("2_48m6i")]
 visible = false

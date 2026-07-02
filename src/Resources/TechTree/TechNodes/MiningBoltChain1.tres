@@ -13,6 +13,7 @@ description = "Increases mining bolt chain by 1 for each level."
 max_level = 2
 currency_required = 3500
 stat_relation = 5
+price_scaler = 1.4
 stat_name = "Mining Bolt Links"
 upgrade_interval = 1.0
 prereqs = Array[String](["Mining Bolt Chance 1:1"])

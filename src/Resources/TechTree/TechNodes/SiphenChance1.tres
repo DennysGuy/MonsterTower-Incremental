@@ -9,12 +9,13 @@ script = ExtResource("1_wnjq3")
 node_name = "Siphen Chance 1"
 icon = ExtResource("2_0pkjq")
 disabled_icon = ExtResource("1_ria4e")
-description = "Increases Chance to steal HP when Striking Enemy by 10% per level.
+description = "Increases Chance to steal HP when Striking Enemy by 5% per level.
 "
 max_level = 2
 currency_required = 30000
 stat_relation = 1
+price_scaler = 1.5
 stat_name = "HP Siphen Chance"
-upgrade_interval = 0.1
+upgrade_interval = 0.05
 prereqs = Array[String](["Max HP 1:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

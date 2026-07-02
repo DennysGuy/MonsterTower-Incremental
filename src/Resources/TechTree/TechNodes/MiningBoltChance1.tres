@@ -14,6 +14,7 @@ description = "Increases chance to cast a mining bolt by 15% per level.
 max_level = 5
 currency_required = 1500
 stat_relation = 5
+price_scaler = 1.5
 stat_name = "Mining Bolt Chance"
 upgrade_interval = 0.15
 prereqs = Array[String](["Refinery Station:1"])
