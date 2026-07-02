@@ -39,7 +39,6 @@ func play_completion_animation(task_id : int, check_for_quest_completion : bool)
 	if !expected_task_id(task_id):
 		return
 		
-	
 	animation_player.play("Complete")
 	await animation_player.animation_finished
 	if check_for_quest_completion:
