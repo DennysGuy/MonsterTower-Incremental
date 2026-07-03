@@ -7,7 +7,6 @@
 [ext_resource type="Script" uid="uid://deyfft0rbfjgk" path="res://src/Scripts/Questing/Tasks/task.gd" id="4_eht0u"]
 [ext_resource type="Resource" uid="uid://8q42adq4e1dk" path="res://src/Resources/Quests/Intro/SideQuests/IntroductionQuests/SuppliesForOurComrades1/Tasks/Slay35RedBeetles.tres" id="7_8ulna"]
 [ext_resource type="Resource" uid="uid://cd7fixjybwy6d" path="res://src/Resources/Quests/Intro/SideQuests/IntroductionQuests/SuppliesForOurComrades1/Tasks/Gather5BeatleClaws.tres" id="7_eht0u"]
-[ext_resource type="Resource" uid="uid://cvcct5ml31ek3" path="res://src/Resources/Quests/Intro/SideQuests/IntroductionQuests/SuppliesForOurComrades1/Tasks/Slay25BlueBeetles.tres" id="8_i5ivb"]
 
 [resource]
 script = ExtResource("3_7sppe")
@@ -37,7 +36,7 @@ I'll issue your next assignment shortly.
 Thanks again.\""
 chapter_relation = "Introduction"
 quest_line = "Gearing up for the Raid"
-tasks = Array[ExtResource("4_eht0u")]([ExtResource("7_eht0u"), ExtResource("7_8ulna"), ExtResource("8_i5ivb")])
+tasks = Array[ExtResource("4_eht0u")]([ExtResource("7_eht0u"), ExtResource("7_8ulna")])
 currency_reward = 3000
 xp_reward = 1000
 item_reward = Dictionary[ExtResource("1_p25gr"), int]({

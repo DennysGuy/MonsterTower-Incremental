@@ -1,9 +1,11 @@
 [gd_resource type="Resource" script_class="HuntingTask" format=3 uid="uid://ccpbla1372ufx"]
 
 [ext_resource type="Script" uid="uid://cx5q27bqrlaxf" path="res://src/Scripts/Questing/Tasks/hunting_task.gd" id="1_uopqr"]
+[ext_resource type="Resource" uid="uid://0y733wkj0ion" path="res://src/Resources/Actors/Enemies/Biome1/SerpantMimic/SerpantMimic.tres" id="1_yulog"]
 
 [resource]
 script = ExtResource("1_uopqr")
+enemy_to_hunt = ExtResource("1_yulog")
 number_to_get = 50
 task_id = 19
 metadata/_custom_type_script = "uid://cx5q27bqrlaxf"

@@ -39,6 +39,8 @@ class_name Player extends Entity
 @export var max_attack_drift : float = 220.0
 @onready var holder: Marker2D = $Holder
 
+@onready var junk_detector: Area2D = $JunkDetector
+
 @onready var ability_hit_box: Area2D = $AbilityHitBox
 const PICKAXE_SWING_STRIKE = preload("uid://djgxyv4i65ob4")
 const DENIED = preload("uid://672acnsycbfo")
@@ -105,7 +107,7 @@ var is_silence_attack : bool = false
 
 const DOUB_CLEAVE_NEW = preload("uid://bea00177gkvyb")
 
-var junk_picked_up : Array[ItemInteractable] = []
+var junk_picked_up : Array[JunkInteractable] = []
 
 func _ready() -> void:
 	super()
@@ -492,3 +494,19 @@ func spawn_after_image() -> void:
 	await tween.tween_property(ghost, "modulate:a", 0.0, 0.3).finished
 	#tween.finished.connect(ghost.queue_free)
 	ghost.queue_free()
+
+func _on_junk_detector_area_entered(area: Area2D) -> void:
+	var current_item : JunkInteractable = area.get_parent()
+	
+	if current_item.junk_picked_up:
+		return
+	
+	if junk_picked_up.size() == 0:
+		current_item.set_leader(self)
+	else:
+		current_item.set_leader(junk_picked_up.back())
+	
+	junk_picked_up.append(current_item)
+
+
+	

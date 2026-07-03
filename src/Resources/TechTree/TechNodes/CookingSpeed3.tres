@@ -16,5 +16,5 @@ stat_relation = 4
 price_scaler = 1.32
 stat_name = "Cooking Speed"
 upgrade_interval = 0.2
-prereqs = Array[String](["Crit-A-Tron 2:1"])
+prereqs = Array[String](["Junk-A-Speedster 2:1", "Junk-A-Accuracy 2:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

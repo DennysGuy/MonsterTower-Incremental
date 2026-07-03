@@ -1129,6 +1129,13 @@ offset_right = 2083.0
 offset_bottom = 496.0
 facility_name = "Weapon Crafting Station"
 
+[node name="JobBoardTrackingNotice" parent="." unique_id=408095664 instance=ExtResource("23_0u15j")]
+offset_left = 1923.0
+offset_top = 535.0
+offset_right = 2077.0
+offset_bottom = 680.0
+facility_name = "Job Requests Board"
+
 [node name="GemStoneStationNotice" parent="." unique_id=317350291 instance=ExtResource("23_0u15j")]
 offset_left = 1711.0
 offset_top = 331.0

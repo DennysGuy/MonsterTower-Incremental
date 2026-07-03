@@ -232,26 +232,38 @@ func _on_cancel_crafting_button_button_up() -> void:
 func spawn_item(item : Item, offset : Vector2 = Vector2.ZERO) -> void:
 	craft_finished_tween()
 	var item_interactable : ItemInteractable = preload("uid://dgtobkubdjq27").instantiate()
-	item_interactable.item = item
-	item_interactable.perishable = false
-	item_interactable.icon.texture = item.shop_icon
-	item_interactable.global_position = global_position + offset
+	var junk_interactable : JunkInteractable = preload("uid://cy553hhcfucv7").instantiate()
+	
+
+
 	
 	match station_type:
 		STATION_TYPE.SMELTING:
 			if stored_recipe:
 				CodexManager.increment_bar_recipe_list_item_count(stored_recipe.index)
+			
+			item_interactable.item = item
+			item_interactable.perishable = false
+			item_interactable.icon.texture = item.shop_icon
+			item_interactable.global_position = global_position + offset
+	
 		STATION_TYPE.COOKING:
-			item_interactable.is_junk_drop = true
 			if stored_recipe:
 				CodexManager.increment_dish_recipe_list_item_count(stored_recipe.index)
-	
-	#check if free range/heat hits
-	spawn_crafting_recipe_items()
+		
+			junk_interactable.item = item
+			junk_interactable.icon.texture = item.shop_icon
+			junk_interactable.global_position = global_position + offset
+
 	play_sfx(TURN_OUT_ITEM, 1.0, current_pitch)
 	if current_pitch < 2.0:
 		current_pitch += 0.2
-	get_parent().add_child(item_interactable)
+		
+	match station_type:
+		STATION_TYPE.SMELTING:
+			get_parent().add_child(item_interactable)
+		STATION_TYPE.COOKING:
+			get_parent().add_child(junk_interactable)
 
 func spawn_crafting_recipe_items() -> void:
 	if !check_for_free_craft():

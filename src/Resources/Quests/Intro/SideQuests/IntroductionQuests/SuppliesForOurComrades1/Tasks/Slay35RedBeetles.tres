@@ -6,6 +6,6 @@
 [resource]
 script = ExtResource("1_8vtoc")
 enemy_to_hunt = ExtResource("1_ac6t5")
-number_to_get = 35
+number_to_get = 40
 task_id = 11
 metadata/_custom_type_script = "uid://cx5q27bqrlaxf"

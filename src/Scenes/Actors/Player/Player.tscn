@@ -2863,6 +2863,9 @@ size = Vector2(203, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0kjqt"]
 size = Vector2(40, 20)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s0khh"]
+size = Vector2(37, 40)
+
 [node name="Player" type="CharacterBody2D" unique_id=1875939299 node_paths=PackedStringArray("idle_state", "jump_state", "fall_state", "climb_state", "swing_pick_axe", "attack_1", "air_attack", "dash_attack", "state_machine", "animation_player", "health_component", "sprite", "hurt_box", "hit_box", "hit_state", "dead_state", "sfx_player") groups=["Player"]]
 z_index = 4000
 collision_layer = 17
@@ -3226,6 +3229,14 @@ shape = SubResource("RectangleShape2D_0kjqt")
 [node name="HitStarMarker" type="Marker2D" parent="." unique_id=26278095]
 position = Vector2(40, -11)
 
+[node name="JunkDetector" type="Area2D" parent="." unique_id=1827175497]
+collision_layer = 4096
+collision_mask = 4096
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="JunkDetector" unique_id=1382597509]
+position = Vector2(0.5, -20)
+shape = SubResource("RectangleShape2D_s0khh")
+
 [connection signal="timeout" from="InvincibilityTimer" to="." method="_on_invincibility_timer_timeout"]
 [connection signal="timeout" from="AbilityCoolDownTimer" to="." method="_on_ability_cool_down_timer_timeout"]
 [connection signal="area_entered" from="SwordSoarHitBox" to="." method="_on_sword_soar_hit_box_area_entered"]
@@ -3234,3 +3245,4 @@ position = Vector2(40, -11)
 [connection signal="area_exited" from="LadderDetector" to="." method="_on_ladder_detector_area_exited"]
 [connection signal="area_entered" from="MiningArea" to="." method="_on_mining_area_area_entered"]
 [connection signal="area_exited" from="MiningArea" to="." method="_on_mining_area_area_exited"]
+[connection signal="area_entered" from="JunkDetector" to="." method="_on_junk_detector_area_entered"]

@@ -144,7 +144,6 @@ func _process(delta: float) -> void:
 		spawn_grand_market()
 
 	if Input.is_action_pressed("interact") and player_in_market_range and can_sell_to_market:
-		print("HIHI")
 		player.velocity = Vector2.ZERO
 		sell_to_market(delta)
 		
@@ -618,9 +617,14 @@ func sell_to_market(delta: float) -> void:
 		return
 
 	if sell_speed_timer <= 0:
-		var item: ItemInteractable = player.junk_picked_up.front()
-		item.set_to_sold(grand_market_position)
-		sell_speed_timer = get_sell_time()
+		var item : JunkInteractable = player.junk_picked_up.pop_front()
+		if is_instance_valid(item):
+			if !player.junk_picked_up.is_empty():
+				player.junk_picked_up[0].set_leader(player)
+				await get_tree().create_timer(0.1).timeout
+				item.set_to_sold(grand_market_position)
+				sell_speed_timer = get_sell_time()
+			
 
 	sell_speed_timer -= delta
 

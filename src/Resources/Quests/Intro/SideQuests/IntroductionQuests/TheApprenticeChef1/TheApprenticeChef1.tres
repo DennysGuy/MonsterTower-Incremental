@@ -2,9 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cu8drgivmhfn" path="res://src/Scripts/item.gd" id="1_lhq2l"]
 [ext_resource type="Script" uid="uid://be6vh0qellkjq" path="res://src/Scripts/Questing/quest.gd" id="2_tsf1b"]
-[ext_resource type="Resource" uid="uid://boeryxspsw8uq" path="res://src/Resources/Dishes/MushieLavaLamp.tres" id="2_wopt0"]
 [ext_resource type="Script" uid="uid://deyfft0rbfjgk" path="res://src/Scripts/Questing/Tasks/task.gd" id="3_j7deo"]
-[ext_resource type="Resource" uid="uid://ctjyflf6qr4g" path="res://src/Resources/Dishes/WingeyUmbrella.tres" id="3_qgavg"]
 [ext_resource type="Resource" uid="uid://c0si4wymq1ji6" path="res://src/Resources/Quests/Intro/SideQuests/IntroductionQuests/TheApprenticeChef1/Tasks/Gather10Gagootz.tres" id="4_j7deo"]
 [ext_resource type="Resource" uid="uid://dr74wwc4p1ohp" path="res://src/Resources/Quests/Intro/SideQuests/IntroductionQuests/TheApprenticeChef1/Tasks/Gather10Goulash.tres" id="5_yupbl"]
 
@@ -40,8 +38,4 @@ quest_line = "Inovating the Cooking Industry"
 tasks = Array[ExtResource("3_j7deo")]([ExtResource("4_j7deo"), ExtResource("5_yupbl")])
 currency_reward = 1200
 xp_reward = 500
-item_reward = Dictionary[ExtResource("1_lhq2l"), int]({
-ExtResource("2_wopt0"): 10,
-ExtResource("3_qgavg"): 10
-})
 metadata/_custom_type_script = "uid://be6vh0qellkjq"
