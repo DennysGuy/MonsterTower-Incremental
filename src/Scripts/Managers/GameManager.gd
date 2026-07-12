@@ -33,9 +33,11 @@ var floor_4_just_reached : bool = false
 var floor_6_just_reached : bool = false
 var boss_room_just_reached : bool = false
 var market_intro_cutscene_played : bool = false
+var can_open_scene : bool = true
 var job_selection_notice_scene_played : bool = false
 var monster_voices_toggled : bool = true
 var current_player_health : int = 0
+var current_player_mp : int = 0
 enum NOTIFICATION_TYPE {CRAFTING, COOKING, SMELTING, AP, QUEST}
 
 # Called when the node enters the scene tree for the first time.
@@ -45,7 +47,16 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if Input.is_action_just_pressed("screenshot"):
+		print("Screenshot Taken!")
+		take_screenshot()
+
+
+func take_screenshot(image_name : String = "screenshot") -> void:
+	var img = get_viewport().get_texture().get_image()
+	var base_path = "user://"
+	var final_path = base_path + image_name + ".png"
+	img.save_png(final_path)
 
 func set_player_box_direction(flip_h : bool):
 	if (flip_h):

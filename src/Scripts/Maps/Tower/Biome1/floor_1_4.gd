@@ -31,8 +31,8 @@ func _ready() -> void:
 		else:
 			SignalBus.update_monsters_left.emit("Campfires Discovered: %s/%s" % [tower_entrance_data.camp_fires_reached, tower_entrance_data.total_camp_fires],false)
 	
-	PlayerHudSignalBus.update_player_health.emit()
-	PlayerHudSignalBus.update_player_mp.emit()
+	#PlayerHudSignalBus.update_player_health.emit()
+	#PlayerHudSignalBus.update_player_mp.emit()
 
 	if GameManager.hunt_challenge_selected:
 		GameManager.enemies_can_move = false
@@ -56,9 +56,6 @@ func _ready() -> void:
 				PlayerHudSignalBus.show_hunt_challenge_button.emit()
 			else:
 				SignalBus.hide_hunt_challenge_button.emit()
-		
-		SignalBus.start_enemy_spawn.emit()
-		PlayerHudSignalBus.start_stop_watch.emit()
 	
 	unlock_quests()
 	
@@ -70,6 +67,12 @@ func _ready() -> void:
 			issue_challenge_objective_notice()
 		else:
 			CodexManager.send_codex_notification.emit("Complete the Floor Challenge!")
+			SignalBus.start_enemy_spawn.emit()
+			PlayerHudSignalBus.start_stop_watch.emit()
+	
+	else:
+		SignalBus.start_enemy_spawn.emit()
+		PlayerHudSignalBus.start_stop_watch.emit()
 	
 func _process(delta: float) -> void:
 	super(delta)

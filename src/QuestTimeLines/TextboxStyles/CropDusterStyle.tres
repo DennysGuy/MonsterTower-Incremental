@@ -38,7 +38,11 @@ script = ExtResource("2_2fy14")
 scene = ExtResource("6_mc817")
 overrides = {
 "box_margin_bottom": "30.0",
-"box_size": "Vector2(1400, 220)"
+"box_size": "Vector2(1400, 220)",
+"typing_sounds_every_nths_character": "2.0",
+"typing_sounds_pitch": "0.3",
+"typing_sounds_sounds_folder": "\"res://src/QuestTimeLines/DustBeep\"",
+"typing_sounds_volume": "6.0"
 }
 
 [sub_resource type="Resource" id="Resource_fqrlr"]
@@ -72,4 +76,4 @@ layer_info = {
 "16": SubResource("Resource_x2w16"),
 "17": SubResource("Resource_a2to1")
 }
-metadata/_latest_layer = ""
+metadata/_latest_layer = "13"

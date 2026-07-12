@@ -7,7 +7,7 @@
 
 [resource]
 script = ExtResource("5_c1e4s")
-recipe_name = "Mossy Goulash"
+recipe_name = "Wingey Umbrella"
 menu_icon = ExtResource("1_xi4w1")
 index = 1
 description = "It keeps you dry.. and an eye out for you, I guess."

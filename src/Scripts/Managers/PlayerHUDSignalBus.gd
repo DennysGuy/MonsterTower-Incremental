@@ -1,16 +1,19 @@
 extends Node
 
 @warning_ignore("unused_signal")
-signal update_player_health
+signal update_player_health(prev_health : int)
 
 @warning_ignore("unused_signal")
-signal update_player_mp
+signal update_player_mp(prev_mp: int)
 
 @warning_ignore("unused_signal")
 signal spawn_respawn_box
 
 @warning_ignore("unused_signal")
 signal flash_screen
+
+@warning_ignore("unused_signal")
+signal update_player_bars
 
 @warning_ignore("unused_signal")
 signal trigger_cross_fade

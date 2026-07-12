@@ -19,6 +19,8 @@ func _ready() -> void:
 	else:
 		continue_button.hide()
 	
+	await get_tree().process_frame
+	
 	audio_stream_player.play()
 	ambience.play()
 	animation_player.play("FadeIn")
@@ -105,6 +107,12 @@ func _on_continue_mouse_entered() -> void:
 	GameManager.play_sfx(MAIN_MENU_BUTTON_HOVER)
 	big_mode(continue_button)
 
-
 func _on_continue_mouse_exited() -> void:
 	small_mode(continue_button)
+
+func _on_steam_button_button_up() -> void:
+	OS.shell_open("https://store.steampowered.com/app/4937380/Starspire_Hunters/")
+
+
+func _on_discord_button_button_up() -> void:
+	OS.shell_open("https://discord.gg/gfFRPaCGFb")

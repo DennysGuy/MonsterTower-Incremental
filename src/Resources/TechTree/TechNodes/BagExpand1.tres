@@ -9,9 +9,8 @@ script = ExtResource("2_fd5oi")
 node_name = "Item Bag 1"
 icon = ExtResource("2_y4ce7")
 disabled_icon = ExtResource("1_fd5oi")
-description = "Expands Bag slots to 8
-
-[color=green]Shows Cooking and Refinery Station Nodes [/color]"
+description = "Expand Inventory Bag to 8 slots.
+"
 currency_required = 400
 stat_relation = 3
 stat_name = "Bag"

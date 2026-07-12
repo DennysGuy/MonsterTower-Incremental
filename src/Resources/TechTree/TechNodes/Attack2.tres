@@ -10,7 +10,7 @@ script = ExtResource("1_gpc2m")
 node_name = "Attack 2"
 icon = ExtResource("2_nkphf")
 disabled_icon = ExtResource("1_68363")
-description = "Increases Attack Damage by %40 for each level"
+description = "Increase base weapon damage against Monsters by 40% per level."
 max_level = 5
 materials_required = Array[Dictionary]([{
 ExtResource("3_nkphf"): 2

@@ -10,7 +10,7 @@ script = ExtResource("1_0dsy8")
 node_name = "Boss Damage 1"
 icon = ExtResource("2_q472v")
 disabled_icon = ExtResource("1_78sqh")
-description = "Increases bonus damage to boss by 10% for each level
+description = "Increase bonus damage against bosses by 10% per level.
 "
 max_level = 5
 currency_required = 20000

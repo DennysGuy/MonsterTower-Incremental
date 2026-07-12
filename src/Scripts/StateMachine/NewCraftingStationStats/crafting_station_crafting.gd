@@ -2,8 +2,9 @@ class_name CraftingStationCrafting extends State
 
 @export var idle_state : State
 
-const COOKING_SFX = preload("uid://bnslqqjqnb8y2")
 const SMELTING_SFX = preload("uid://ds0to3h3m8yir")
+
+const JUNK_A_TRON = preload("uid://bta8jkic20knc")
 
 
 func enter() -> void:
@@ -11,7 +12,7 @@ func enter() -> void:
 	parent.update_quantity_details()
 	parent.activate()
 	if parent.station_type == parent.STATION_TYPE.COOKING:
-		parent.sfx_player.play_sfx(COOKING_SFX)
+		parent.sfx_player.play_sfx(JUNK_A_TRON)
 	else:
 		parent.sfx_player.play_sfx(SMELTING_SFX)
 	
@@ -64,7 +65,8 @@ func process_physics(_delta: float) -> State:
 					#await get_tree().create_timer(0.3).timeout
 			else:
 				parent.play_success_sfx()
-				parent.spawn_item(parent.stored_recipe.output_item)
+				var random_offset : Vector2i = Vector2i(randi_range(-50,50),0)
+				parent.spawn_item(parent.stored_recipe.output_item, random_offset)
 		else:
 			var item : Item
 			match parent.station_type:

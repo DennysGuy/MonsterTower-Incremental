@@ -1252,7 +1252,14 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
+[node name="Timer" type="Timer" parent="." unique_id=637619050]
+process_callback = 0
+wait_time = 0.3
+one_shot = true
+autostart = true
+
 [connection signal="button_up" from="PlayerHUD/StartHuntChallengeButton" to="." method="_on_start_hunt_challenge_button_button_up"]
 [connection signal="button_up" from="PlayerHUD/OpenTowerMapButton" to="." method="_on_open_tower_map_button_button_up"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 
 [editable path="PlayerHUD/AbilityHub2"]

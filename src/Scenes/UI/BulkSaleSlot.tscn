@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://x2hshpeeawjm" path="res://Assets/HUD/ItemSlot_novelty.png" id="4_53j00"]
 [ext_resource type="Texture2D" uid="uid://dbe6piv0wn7lq" path="res://Assets/HUD/ItemSlot_crafting.png" id="5_583cg"]
 [ext_resource type="Texture2D" uid="uid://blepqdi1qq7bf" path="res://Assets/HUD/ItemSlot_na.png" id="6_dclvl"]
-[ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="7_2xmov"]
+[ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="7_chpex"]
 [ext_resource type="Texture2D" uid="uid://d5dcjea016ag" path="res://Assets/HUD/Facilities/BulkSaleRadialFill.png" id="8_chpex"]
 
 [node name="Slot" type="TextureRect" unique_id=782442892 node_paths=PackedStringArray("item_icon", "texture_progress_bar", "quantity_label")]
@@ -78,13 +78,13 @@ expand_mode = 1
 [node name="QuantityLabel" type="Label" parent="." unique_id=275770280]
 layout_mode = 0
 offset_left = -9.0
-offset_top = 48.0
+offset_top = 41.0
 offset_right = 64.0
-offset_bottom = 71.0
+offset_bottom = 64.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("7_2xmov")
-theme_override_font_sizes/font_size = 18
+theme_override_fonts/font = ExtResource("7_chpex")
+theme_override_font_sizes/font_size = 16
 horizontal_alignment = 2
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=2087206352]

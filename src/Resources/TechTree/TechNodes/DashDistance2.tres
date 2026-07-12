@@ -10,14 +10,13 @@ script = ExtResource("3_knj0w")
 node_name = "Dash Distance 2"
 icon = ExtResource("1_rghtu")
 disabled_icon = ExtResource("1_soogs")
-description = "Increases the duration of your dash attack by 3ms"
-max_level = 3
-currency_required = 1200
+description = "Increase the duration of your dash attack."
+currency_required = 10000
 materials_required = Array[Dictionary]([{
 ExtResource("3_soogs"): 1
 }])
 stat_relation = 2
 stat_name = "Dash Duration"
-upgrade_interval = 0.1
+upgrade_interval = 0.05
 prereqs = Array[String](["Movement 2:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

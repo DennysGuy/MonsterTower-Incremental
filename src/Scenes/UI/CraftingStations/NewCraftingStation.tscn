@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://w1c2yn7s6sjx"]
 
 [ext_resource type="Script" uid="uid://fxn0d30mxe8q" path="res://src/Scripts/Facilities/new_crafting_station.gd" id="1_r2l52"]
-[ext_resource type="Texture2D" uid="uid://bhoricf6h50pj" path="res://Assets/Facilities/Junkatron/Junk-a-Tron.png" id="2_esdk2"]
+[ext_resource type="Texture2D" uid="uid://btbqj1pb1hac" path="res://Assets/Facilities/SmeltingStation.png" id="2_k077q"]
 [ext_resource type="PackedScene" uid="uid://vo5sm7p34vo6" path="res://src/Scenes/Actors/Utilities/NameTag.tscn" id="3_jw3wv"]
 [ext_resource type="PackedScene" uid="uid://drvmmtbvnc785" path="res://src/Scenes/Tower/arrow_at_ore.tscn" id="4_2ityt"]
 [ext_resource type="Texture2D" uid="uid://dnng403ijo5uh" path="res://Assets/Facilities/CraftingStationMenuPointerBottom.png" id="6_4ythn"]
@@ -16,6 +16,8 @@
 [ext_resource type="Script" uid="uid://cqlkot53j3bue" path="res://src/Scripts/StateMachine/NewCraftingStationStats/crafting_station_crafting.gd" id="13_y86rf"]
 [ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="15_wv87p"]
 [ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="16_esdk2"]
+[ext_resource type="Texture2D" uid="uid://dyccwhd6jb1q4" path="res://Assets/DustBall.png" id="17_oeqbr"]
+[ext_resource type="Texture2D" uid="uid://ss7e3d230sw" path="res://Assets/SmokeBall.png" id="18_k077q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r2l52"]
 size = Vector2(72, 48)
@@ -288,6 +290,7 @@ _data = {
 }
 
 [node name="NewCraftingStation" type="Node2D" unique_id=179535965 node_paths=PackedStringArray("station_graphic", "state_machine")]
+visible = false
 script = ExtResource("1_r2l52")
 station_graphic = NodePath("StationGraphic")
 state_machine = NodePath("StateMachine")
@@ -306,7 +309,7 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(111, 108)
 mouse_filter = 2
-texture = ExtResource("2_esdk2")
+texture = ExtResource("2_k077q")
 stretch_mode = 2
 
 [node name="MenuLocation" type="Marker2D" parent="." unique_id=2018673744]
@@ -431,6 +434,58 @@ theme_override_fonts/font = ExtResource("16_esdk2")
 theme_override_font_sizes/font_size = 16
 text = "unlock x node to access"
 horizontal_alignment = 1
+
+[node name="DustBalls" type="CPUParticles2D" parent="." unique_id=1909729458]
+position = Vector2(0, -19)
+emitting = false
+amount = 50
+texture = ExtResource("17_oeqbr")
+explosiveness = 0.16
+lifetime_randomness = 0.29
+emission_shape = 3
+emission_rect_extents = Vector2(80, 10)
+direction = Vector2(0, 10)
+spread = 67.24
+gravity = Vector2(0, -40)
+initial_velocity_min = 23.53
+initial_velocity_max = 76.48
+angular_velocity_min = -643.76
+angular_velocity_max = 465.88
+radial_accel_min = 3.53
+radial_accel_max = 14.12
+damping_min = 2.353
+damping_max = 6.471
+angle_min = -270.0
+angle_max = 180.0
+scale_amount_min = 0.2
+scale_amount_max = 1.7
+
+[node name="SmokeCloudsJunka" type="CPUParticles2D" parent="." unique_id=2122131674]
+position = Vector2(34, -136)
+emitting = false
+texture = ExtResource("18_k077q")
+speed_scale = 0.15
+explosiveness = 0.04
+randomness = 0.12
+emission_shape = 1
+emission_sphere_radius = 15.0
+spread = 86.3
+gravity = Vector2(-500, -980)
+scale_amount_min = 0.5
+scale_amount_max = 3.0
+
+[node name="SmokeCloudsSmelting" type="CPUParticles2D" parent="." unique_id=441405471]
+position = Vector2(3, -147)
+emitting = false
+texture = ExtResource("18_k077q")
+speed_scale = 0.15
+explosiveness = 0.04
+randomness = 0.12
+emission_shape = 1
+emission_sphere_radius = 20.0
+spread = 86.3
+gravity = Vector2(0, -980)
+scale_amount_max = 3.0
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

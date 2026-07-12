@@ -10,7 +10,7 @@ script = ExtResource("3_vboa6")
 node_name = "Crit Chance 2"
 icon = ExtResource("2_vboa6")
 disabled_icon = ExtResource("1_p8gha")
-description = "Increase Crit Chance by 5% per level."
+description = "Improve your chance to hit increasingly higher numbers by 5% per level."
 max_level = 3
 materials_required = Array[Dictionary]([{
 ExtResource("2_28dln"): 1

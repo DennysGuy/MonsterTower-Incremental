@@ -63,6 +63,7 @@ func disable_player_functionality() -> void:
 	GameManager.can_open_bag = false
 	GameManager.can_open_tower_map = false
 	GameManager.can_pause_game = false
+	GameManager.can_open_scene = false
 
 func enable_player_functionality() -> void:
 	GameManager.player_can_move = true
@@ -71,6 +72,7 @@ func enable_player_functionality() -> void:
 	GameManager.can_open_bag = true
 	GameManager.can_open_tower_map = true
 	GameManager.can_pause_game = true
+	GameManager.can_open_scene = true
 
 func set_camera_to_player() -> void:
 	set_camera_to_player_pos.emit()

@@ -10,7 +10,7 @@ script = ExtResource("2_jrlte")
 node_name = "Banking 2"
 icon = ExtResource("2_myfl4")
 disabled_icon = ExtResource("1_dv4qv")
-description = "Bank Slots increased to 12"
+description = "Expand Bank to 12 slots."
 materials_required = Array[Dictionary]([{
 ExtResource("3_dv4qv"): 2
 }])

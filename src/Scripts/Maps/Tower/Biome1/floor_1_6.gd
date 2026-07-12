@@ -47,8 +47,8 @@ func _ready() -> void:
 	tower_entrance_data.activation_switch_unlocked = SaveManager.current_save_game.tower_entrance_data["Floor 1-6"]["Activation Switch Unlocked"]
 	MusicPlayer.stop_player()
 	ExpeditionTimer.stop_timer()
-	PlayerHudSignalBus.update_player_health.emit()
-	PlayerHudSignalBus.update_player_mp.emit()
+	#PlayerHudSignalBus.update_player_health.emit()
+	#PlayerHudSignalBus.update_player_mp.emit()
 	SignalBus.unlock_boss_door.connect(unlock_door)
 	SignalBus.start_boss_door_challenge_scene.connect(start_challenge)
 	SignalBus.increment_keys_delivered_tracker.connect(increment_key_tracker)

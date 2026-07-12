@@ -25,7 +25,8 @@ overrides = {
 "normal_font": "\"res://Assets/Fonts/FredokaOne-Regular.ttf\"",
 "text_size": "32.0",
 "text_use_global_size": "false",
-"typing_sounds_sounds_folder": "\"res://src/QuestTimeLines/Bleep1\""
+"typing_sounds_sounds_folder": "\"res://src/QuestTimeLines/Bleep1\"",
+"typing_sounds_volume": "-4.0"
 }
 
 [resource]

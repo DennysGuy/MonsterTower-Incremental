@@ -84,6 +84,8 @@ func _ready() -> void:
 	PlayerHudSignalBus.flash_screen.connect(flash_screen)
 	PlayerHudSignalBus.trigger_long_fade_in_out.connect(trigger_long_fade_in_out)
 	
+	PlayerHudSignalBus.update_player_bars.connect(update_player_bars)
+	
 	PlayerHudSignalBus.start_hunt_intro.connect(start_hunt_intro)
 	SignalBus.hide_hunt_challenge_button.connect(hide_hunt_challenge_button)
 	#PlayerHudSignalBus.show_stop_watch.connect(show_stop_watch)
@@ -118,7 +120,6 @@ func _ready() -> void:
 	#update_ap_label()
 	#update_player_health(int(PlayerStats.player_stats["Current Health"]))
 	#show_class_notice()
-	
 	animation_player.play("CloseIn")
 	if GameManager.can_unlock_class():
 		show_class_notice()
@@ -132,8 +133,10 @@ func _process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("open_codex"):
 		if !codex_open:
+			CutsceneManager.disable_player_functionality()
 			open_codex()
 		else:
+			CutsceneManager.enable_player_functionality()
 			close_codex()
 	
 	if Input.is_action_just_pressed("close_menu") and codex_open:
@@ -155,19 +158,24 @@ func _process(delta: float) -> void:
 		QuestManager.check_general_task_for_completion.emit("Open Recipe Book Once")
 		CodexManager.open_a_codex_menu.emit(3)
 	
-func update_player_health() -> void:
+func update_player_health(previous_hp : int = GameManager.current_player_health) -> void:
 	var current_hp : int = GameManager.current_player_health
 	var max_hp : int = PlayerStats.player_stats["Max Health"] + PlayerStats.get_current_sword().get_total_hp_bonus()
-	player_health_bar.value = current_hp
+	player_health_bar.value = previous_hp
 	player_health_bar.max_value = max_hp
+	var tween : Tween = create_tween()
+	tween.tween_property(player_health_bar, "value", GameManager.current_player_health, 0.15)
+
 	hp_label.text = "%s/%s" % [int(current_hp), int(max_hp)]
 
-func update_player_mp() -> void:
-	var current_mp : int = PlayerStats.player_stats["Current MP"]
-	var max_mp : int = PlayerStats.player_stats["Max MP"]
-	player_mp_bar.value = current_mp
+func update_player_mp(prev_mp : int = GameManager.current_player_mp) -> void:
+	var current_mp : int =  GameManager.current_player_mp
+	var max_mp : int = PlayerStats.player_stats["Max MP"] + PlayerStats.get_current_sword().get_total_mp_bonus()
+	player_mp_bar.value = prev_mp
 	player_mp_bar.max_value = max_mp
 	mp_label.text = "%s/%s" % [current_mp,max_mp]
+	var tween : Tween = create_tween()
+	tween.tween_property(player_mp_bar, "value", current_mp, 0.15)
 
 func update_xp_bar() -> void:
 	level_label.text = "Level %s" % [int(PlayerStats.player_stats["Level"])]
@@ -395,3 +403,10 @@ func show_hud() -> void:
 
 func play_big_label_pop_in_anim() -> void:
 	big_label_animator.play("PopIn")
+
+func update_player_bars() -> void:
+	update_player_health()
+	update_player_mp()
+
+func _on_timer_timeout() -> void:
+	update_player_bars()

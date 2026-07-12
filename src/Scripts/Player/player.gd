@@ -115,6 +115,7 @@ func _ready() -> void:
 	SignalBus.update_player_uniform.connect(set_outfit_texture)
 	SignalBus.stop_player.connect(stop_player)
 	SignalBus.play_level_up_visual.connect(play_levelup_visual)
+	SignalBus.novelty_invention_sold.connect(rebuild_junk_held_offsets)
 	health = PlayerStats.player_stats["Max Health"]
 	mining_area_position = mining_area.position
 	gem_chest_hit_area_position = gem_chest_hit_area.position
@@ -375,7 +376,7 @@ func can_issue_ability(ability_name : String) -> bool:
 	var selected_ability = PlayerStats.equipped_abilities[ability_name]
 	if selected_ability is String:
 		selected_ability = load(selected_ability)
-	return  AbilityTimers.ability_state[ability_name]["Can Do"] and PlayerStats.player_stats["Current MP"] >= selected_ability.mp_cost
+	return  AbilityTimers.ability_state[ability_name]["Can Do"] and GameManager.current_player_mp >= selected_ability.mp_cost
 
 func _on_sword_soar_hit_box_area_entered(area: Area2D) -> void:
 	#var parent = area.get_parent()
@@ -495,18 +496,8 @@ func spawn_after_image() -> void:
 	#tween.finished.connect(ghost.queue_free)
 	ghost.queue_free()
 
-func _on_junk_detector_area_entered(area: Area2D) -> void:
-	var current_item : JunkInteractable = area.get_parent()
-	
-	if current_item.junk_picked_up:
-		return
-	
-	if junk_picked_up.size() == 0:
-		current_item.set_leader(self)
-	else:
-		current_item.set_leader(junk_picked_up.back())
-	
-	junk_picked_up.append(current_item)
-
-
-	
+func rebuild_junk_held_offsets() -> void:
+	for i in range(junk_picked_up.size()):
+		junk_picked_up[i].offset_distance = 32
+		junk_picked_up[i].offset_distance *= i
+		

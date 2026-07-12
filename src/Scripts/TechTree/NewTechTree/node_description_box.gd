@@ -7,7 +7,8 @@ class_name NodeDescriptionBox extends Control
 @export var tech_node_stats : TechNodeStats
 @export var license_promotion_notice : Panel
 @onready var resources_list: GridContainer = $Panel/ResourcesList
-@onready var resrouces_title: Label = $Panel/ResroucesTitle
+@onready var resrouces_title: Label = $ResroucesTitle
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

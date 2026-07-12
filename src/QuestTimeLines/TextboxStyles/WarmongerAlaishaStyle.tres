@@ -38,7 +38,9 @@ script = ExtResource("2_wmabj")
 scene = ExtResource("6_ritn5")
 overrides = {
 "box_margin_bottom": "100.0",
-"box_size": "Vector2(1600, 220)"
+"box_size": "Vector2(1600, 220)",
+"typing_sounds_every_nths_character": "2.0",
+"typing_sounds_sounds_folder": "\"res://src/QuestTimeLines/AlaishaBeep\""
 }
 
 [sub_resource type="Resource" id="Resource_f7yab"]

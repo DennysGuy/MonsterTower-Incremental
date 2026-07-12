@@ -29,3 +29,9 @@ func process_physics(_delta: float) -> State:
 		
 func set_animation_name(animation_name : String):
 	self.animation_name = animation_name
+
+
+func update_mp_visuals(selected_ability : Ability) -> void:
+	var prev_mp : int = GameManager.current_player_mp
+	GameManager.current_player_mp -= int(selected_ability.mp_cost)
+	PlayerHudSignalBus.update_player_mp.emit(prev_mp)

@@ -66,6 +66,7 @@ func spawn_laser_ball() -> void:
 	laser_ball.enemy = self
 	laser_ball.global_position = head_position_marker.global_position
 	laser_ball.direction = head_position_marker.global_position.direction_to(spawned_player.global_position)
+	SignalBus.shake_camera.emit(3.0)
 	get_parent().add_child(laser_ball)
 
 func spawn_left_side_shock_waves() -> void:

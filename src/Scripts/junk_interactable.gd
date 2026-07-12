@@ -25,7 +25,7 @@ var selected_leader : Node2D
 func _ready() -> void:
 	pass # Replace with function body.
 	player = get_tree().get_first_node_in_group("Player")
-	#SignalBus.novelty_invention_sold.connect(move_forward)
+	
 	pick_up_distance = PlayerStats.player_stats["Pick Up Distance"]
 	base_y = position.y
 	
@@ -40,26 +40,24 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 		if junk_picked_up:
 			if !is_sold:
-				if not is_instance_valid(selected_leader):
-					return
-					
-				var dir = (global_position - selected_leader.global_position).normalized()
+				var offset = Vector2.LEFT * offset_distance
 
-				var desired_pos = selected_leader.global_position + dir * offset_distance
+				if player.sprite.flip_h:
+					offset = Vector2.RIGHT * offset_distance
 
-				global_position = global_position.lerp(desired_pos, 10.0 * delta)
+				var target_pos = player.global_position + offset
+
+				global_position = global_position.lerp(
+					target_pos,
+					10.0 * delta
+				)
 				
 			elif is_sold and grand_market_position:
 				var target_pos = grand_market_position.global_position
 				var tween : Tween = create_tween()
 				tween.tween_property(self, "global_position", target_pos, get_sell_time(int(PlayerStats.player_stats["Bulk Sell Transfer Speed"])))
-				#global_position = global_position.move_toward(
-				#target_pos,
-				#sell_speed * delta
-				#)
-
 				await tween.finished
-				#global_position = target_pos
+				global_position = target_pos
 
 				sell_item()
 				
@@ -87,22 +85,6 @@ func sell_item() -> void:
 	
 	queue_free()
 
-func can_add_to_bulk_menu(bulk_slots : Array) -> bool:
-	var can_add : bool = false
-	
-	if bulk_slots.is_empty():
-		can_add = true
-	
-	for slot in bulk_slots:
-		var bulk_slot : BulkSaleSlot = slot
-		if bulk_slot.item == item and bulk_slot.quantity < PlayerStats.player_stats["Bulk Sell Slot Stack"]:
-			can_add = true
-	
-	if !can_add:
-		if bulk_slots.size() < PlayerStats.player_stats["Bulk Sell Slots"]:
-			return true
-	
-	return can_add
 
 func add_item_to_bulk_menu(bulk_sale_menu : BulkSellerGrandMarketMenu, bulk_slots : Array) -> void:
 	var successfully_added : bool = false
@@ -127,12 +109,13 @@ func set_to_sold(market_position: Marker2D) -> void:
 	var bulk_sale_menu : BulkSellerGrandMarketMenu = get_tree().get_first_node_in_group("BulkGrandMarketMenu")
 	var bulk_slots : Array = bulk_sale_menu.grid_container.get_children()
 	if !can_add_to_bulk_menu(bulk_slots):
+		print("NO CAN DO")
 		return
-	#player.junk_picked_up.pop_front()
+	GameManager.play_sfx(MOVE_TO_MARKET)
+	player.junk_picked_up.pop_front()
 	is_sold = true
 	grand_market_position = market_position
 	SignalBus.novelty_invention_sold.emit()
-	GameManager.play_sfx(MOVE_TO_MARKET, 0.0, randf_range(0.8,1.2))
 
 func move_forward() -> void:
 	if is_instance_valid(prev_item_interactable) and !is_sold:
@@ -151,3 +134,36 @@ func set_leader(leader : Node2D) -> void:
 	var tween : Tween = create_tween()
 	tween.tween_property(self, "global_position", desired_pos, 0.2)
 	await tween.finished
+	
+func can_add_to_bulk_menu(bulk_slots : Array) -> bool:
+	var can_add : bool = false
+	
+	if bulk_slots.is_empty():
+		can_add = true
+	
+	for slot in bulk_slots:
+		var bulk_slot : BulkSaleSlot = slot
+		if bulk_slot.item == item and bulk_slot.quantity < PlayerStats.player_stats["Bulk Sell Slot Stack"]:
+			can_add = true
+	
+	if !can_add:
+		if bulk_slots.size() < PlayerStats.player_stats["Bulk Sell Slots"]:
+			return true
+	
+	return can_add
+
+func set_junk_offset() -> void:
+	if !is_sold:
+		var index := player.junk_picked_up.size()
+		offset_distance *= index
+		if index >= 1:
+			prev_item_interactable = player.junk_picked_up[index-1]
+		player.junk_picked_up.append(self)
+		print(player.junk_picked_up)
+
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body is Player and !junk_picked_up:
+		set_junk_offset()
+		junk_picked_up = true

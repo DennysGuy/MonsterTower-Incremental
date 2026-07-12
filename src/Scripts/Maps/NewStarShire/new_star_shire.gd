@@ -135,33 +135,33 @@ func _exit_tree() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	super(delta)
-	if Input.is_action_just_pressed("interact") and player_in_tower_range and GameManager.player_can_move and PlayerStats.facilities_unlocked["Hunter License"]:
+	if Input.is_action_just_pressed("interact") and GameManager.can_open_scene and player_in_tower_range and GameManager.player_can_move and PlayerStats.facilities_unlocked["Hunter License"]:
 		player.velocity = Vector2.ZERO
 		spawn_tower_entrance_map()
 
-	if Input.is_action_just_pressed("interact") and player_in_kioske_range:
+	if Input.is_action_just_pressed("interact") and player_in_kioske_range and GameManager.can_open_scene:
 		player.velocity = Vector2.ZERO
 		spawn_grand_market()
 
-	if Input.is_action_pressed("interact") and player_in_market_range and can_sell_to_market:
+	if Input.is_action_pressed("interact") and player_in_market_range and can_sell_to_market and GameManager.can_open_scene:
 		player.velocity = Vector2.ZERO
 		sell_to_market(delta)
 		
-	if Input.is_action_just_pressed("interact") and player_in_cooking_range and GameManager.player_can_move and PlayerStats.facilities_unlocked["Junk-A-Tron"]:
-		player.velocity = Vector2.ZERO
-		spawn_cooking_menu()
+	#if Input.is_action_just_pressed("interact") and player_in_cooking_range and GameManager.player_can_move and PlayerStats.facilities_unlocked["Junk-A-Tron"]:
+		#player.velocity = Vector2.ZERO
+		#spawn_cooking_menu()
+	#
+	#if Input.is_action_just_pressed("interact") and player_in_smelting_range and GameManager.player_can_move and PlayerStats.facilities_unlocked["Refinery Station"]:
+		#GameManager.player_can_move = false
+		#player.velocity = Vector2.ZERO
+		#spawn_smelting_menu()
 	
-	if Input.is_action_just_pressed("interact") and player_in_smelting_range and GameManager.player_can_move and PlayerStats.facilities_unlocked["Refinery Station"]:
-		GameManager.player_can_move = false
-		player.velocity = Vector2.ZERO
-		spawn_smelting_menu()
-	
-	if Input.is_action_just_pressed("interact") and player_in_crafting_range and GameManager.player_can_move:
+	if Input.is_action_just_pressed("interact") and GameManager.can_open_scene and player_in_crafting_range and GameManager.player_can_move:
 		GameManager.player_can_move = false
 		player.velocity = Vector2.ZERO
 		spawn_crafting_menu()
 
-	if Input.is_action_just_pressed("interact") and player_in_dojo_range:
+	if Input.is_action_just_pressed("interact") and GameManager.can_open_scene and player_in_dojo_range:
 		GameManager.player_can_move = false
 		player.velocity = Vector2.ZERO
 	
@@ -172,7 +172,7 @@ func _process(delta: float) -> void:
 				spawn_warrior_tech_tree()
 		#spawn_dojo_menu()
 		
-	if Input.is_action_just_pressed("interact") and player_in_upgrade_station_range and PlayerStats.facilities_unlocked["Gem Stone Station"]:
+	if Input.is_action_just_pressed("interact") and GameManager.can_open_scene and player_in_upgrade_station_range and PlayerStats.facilities_unlocked["Gem Stone Station"]:
 		GameManager.player_can_move = false
 		player.velocity = Vector2.ZERO
 		spawn_upgrade_menu()
@@ -207,10 +207,17 @@ func _on_tower_area_body_entered(body: Node2D) -> void:
 		set_guide_log(guide_log, true)
 
 func show_ap_notice() -> void:
-	if PlayerStats.player_stats["Ability Points"] >= 1:
+	if PlayerStats.player_stats["Ability Points"] >= 1 and PlayerStats.player_stats["Class"] != "Junior Hunter":
 		HubManager.show_facility_notification.emit("Class Advance Center")
 	else:
 		HubManager.hide_facility_notification.emit("Class Advance Center")
+	
+	if PlayerStats.player_stats["Class"] == "Junior Hunter" and TechTreeManager.check_if_can_purchase_base_ability():
+		HubManager.show_facility_notification.emit("Class Advance Center")
+	
+	else:
+		HubManager.hide_facility_notification.emit("Class Advance Center")
+
 
 func show_gem_station_notice() -> void:
 	if InventoryManager.inventories["Gem Stones"].size() > 0:
@@ -617,14 +624,9 @@ func sell_to_market(delta: float) -> void:
 		return
 
 	if sell_speed_timer <= 0:
-		var item : JunkInteractable = player.junk_picked_up.pop_front()
-		if is_instance_valid(item):
-			if !player.junk_picked_up.is_empty():
-				player.junk_picked_up[0].set_leader(player)
-				await get_tree().create_timer(0.1).timeout
-				item.set_to_sold(grand_market_position)
-				sell_speed_timer = get_sell_time()
-			
+		var item: JunkInteractable = player.junk_picked_up.front()
+		item.set_to_sold(grand_market_position)
+		sell_speed_timer = get_sell_time()
 
 	sell_speed_timer -= delta
 

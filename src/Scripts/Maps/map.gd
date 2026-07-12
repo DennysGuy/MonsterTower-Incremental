@@ -159,7 +159,7 @@ func spawn_player() -> void:
 	
 	var current_health : int = GameManager.current_player_health
 	#print("THIS IS THE CURRENT HEALTH: %s" % current_health)
-	var current_mp : int = PlayerStats.player_stats["Current MP"]
+	var current_mp : int = GameManager.current_player_mp
 	
 	if GameManager.resupply_character:
 		current_health = (
@@ -169,12 +169,11 @@ func spawn_player() -> void:
 		
 		current_mp = (
 			PlayerStats.player_stats["Max MP"]
-			# Replace if you have a real MP bonus function
-			+ PlayerStats.get_current_sword().get_total_defense_bonus()
+			+ PlayerStats.get_current_sword().get_total_mp_bonus()
 		)
 		
 		GameManager.current_player_health = current_health
-		PlayerStats.player_stats["Current MP"] = current_mp
+		GameManager.current_player_mp = current_mp
 		
 		GameManager.resupply_character = false
 	
@@ -325,7 +324,7 @@ func complete_hunt_challenge() -> void:
 
 
 func load_floor_data() -> void:
-	if tower_entrance_data:
+	if tower_entrance_data and SaveManager.current_save_game:
 		var saved_data = SaveManager.current_save_game.tower_entrance_data
 		var tower_data = saved_data.get(tower_entrance_data.floor_name)
 

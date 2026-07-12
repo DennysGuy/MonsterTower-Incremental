@@ -4,6 +4,7 @@ class_name WeaponIconButton extends Control
 
 @onready var weapon_icon: TextureRect = $WeaponIcon
 @onready var tracked_icon: TextureRect = $TrackedIcon
+@onready var track_notice: TextureRect = $TrackNotice
 
 var in_range : bool = false
 
@@ -22,7 +23,9 @@ func _ready() -> void:
 			weapon_icon.texture = weapon.menu_icon_disabled_graphic
 			if weapon.is_tracked:
 				tracked_icon.show()
+				track_notice.hide()
 			else:
+				track_notice.show()
 				tracked_icon.hide()
 		
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -4,10 +4,12 @@
 [ext_resource type="PackedScene" uid="uid://djr7ysw0olctc" path="res://src/Scenes/MainMenuBG.tscn" id="2_rsyx7"]
 [ext_resource type="FontFile" uid="uid://cynitq2e6hghv" path="res://Assets/Fonts/Snake in the Boot.ttf" id="4_gj8tx"]
 [ext_resource type="FontFile" uid="uid://dr468m31loqrx" path="res://Assets/Fonts/Super Cartoon.ttf" id="5_gj8tx"]
-[ext_resource type="AudioStream" uid="uid://bvg651shrt35b" path="res://Audio/Music/TrueMainTheme.wav" id="7_4c8q5"]
+[ext_resource type="Texture2D" uid="uid://cnm41tx7e04fp" path="res://Assets/Fonts/StarspireHuntersLogo_Library.png" id="6_i8a4m"]
+[ext_resource type="AudioStream" uid="uid://da21oqgki2pfa" path="res://Audio/Music/NewMainTheme.wav" id="7_4c8q5"]
+[ext_resource type="Texture2D" uid="uid://c8s6s6xlvw3dy" path="res://Assets/Fonts/SteamLogo.png" id="7_36jow"]
 [ext_resource type="AudioStream" uid="uid://deidmmols8obd" path="res://Audio/SFX/MainMenuOceanAmbiencc.wav" id="7_gj8tx"]
 [ext_resource type="FontFile" uid="uid://stn4dtg0uw57" path="res://Assets/Fonts/FredokaOne-Regular.ttf" id="8_4c8q5"]
-[ext_resource type="Texture2D" uid="uid://bl4g0e5e5e6iy" path="res://Assets/SPH-LogoAttempt1.png" id="8_36jow"]
+[ext_resource type="Texture2D" uid="uid://b7fk8gpudkf5e" path="res://Assets/Fonts/Discord-Symbol-Blurple.svg" id="8_i8a4m"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4c8q5"]
 bg_color = Color(0, 0.7051233, 0.5320225, 1)
@@ -259,16 +261,27 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -634.5
-offset_top = 68.0
-offset_right = -359.5
-offset_bottom = 135.0
+offset_left = -641.5
+offset_top = -35.0
+offset_right = -366.5
+offset_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 0
 theme_override_fonts/font = ExtResource("5_gj8tx")
 theme_override_font_sizes/font_size = 52
 text = "New Game"
+
+[node name="Label" type="Label" parent="NewGame" unique_id=1593392645]
+layout_mode = 0
+offset_left = 285.5
+offset_top = 14.0
+offset_right = 650.5
+offset_bottom = 53.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("8_4c8q5")
+theme_override_font_sizes/font_size = 28
+text = "Automatic Saves!"
 
 [node name="SettingsButton" type="Button" parent="." unique_id=1229451050]
 modulate = Color(1, 1, 1, 0)
@@ -278,10 +291,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -634.5
-offset_top = 154.0
-offset_right = -359.5
-offset_bottom = 221.0
+offset_left = -641.5
+offset_top = 51.0
+offset_right = -366.5
+offset_bottom = 118.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 0
@@ -297,10 +310,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -635.0
-offset_top = -19.0
-offset_right = -360.0
-offset_bottom = 48.0
+offset_left = -642.0
+offset_top = -122.0
+offset_right = -367.0
+offset_bottom = -55.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 0
@@ -311,12 +324,13 @@ text = "Continue"
 [node name="SphLogoAttempt1" type="TextureRect" parent="." unique_id=485859347]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = 16.0
-offset_top = 21.0
-offset_right = 2434.8638
-offset_bottom = 971.8637
+offset_left = -56.0
+offset_top = -38.0
+offset_right = 2546.4243
+offset_bottom = 1425.8636
 scale = Vector2(0.3859649, 0.3859649)
-texture = ExtResource("8_36jow")
+mouse_filter = 2
+texture = ExtResource("6_i8a4m")
 
 [node name="StartNewGameNoticePanel" type="Panel" parent="." unique_id=364357020]
 visible = false
@@ -395,10 +409,10 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 60.0
-offset_top = -106.0
-offset_right = 309.0
-offset_bottom = -56.0
+offset_left = 1487.0
+offset_top = -1044.0
+offset_right = 1872.0
+offset_bottom = -994.0
 grow_vertical = 0
 theme_override_colors/font_color = Color(1, 0.4143027, 0.44173592, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -406,27 +420,125 @@ theme_override_fonts/font = ExtResource("8_4c8q5")
 theme_override_font_sizes/font_size = 38
 text = "Build 0.1.0-prealpha.1"
 
-[node name="TransitionRect" type="ColorRect" parent="." unique_id=1379323239]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 1)
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1450711081]
 libraries/ = SubResource("AnimationLibrary_gwjs1")
 
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=77706881]
+layout_mode = 0
+offset_left = 62.0
+offset_top = 877.0
+offset_right = 268.0
+offset_bottom = 948.0
+color = Color(0.09019608, 0.101960786, 0.12941177, 1)
+
+[node name="SteamButton" type="TextureButton" parent="ColorRect2" unique_id=33854900]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -101.0
+offset_top = -30.0
+offset_right = 155.0
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.75, 0.75)
+texture_normal = ExtResource("7_36jow")
+
+[node name="DiscordButton" type="TextureButton" parent="." unique_id=537814398]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -376.0
+offset_top = 339.0
+offset_right = -249.0
+offset_bottom = 435.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.75, 0.75)
+texture_normal = ExtResource("8_i8a4m")
+
+[node name="LinkButton" type="LinkButton" parent="." unique_id=157308701]
+layout_mode = 0
+offset_left = 58.0
+offset_top = 976.0
+offset_right = 870.0
+offset_bottom = 1021.0
+theme_override_colors/font_color = Color(0.5996891, 0, 0.14260945, 1)
+theme_override_fonts/font = ExtResource("8_4c8q5")
+theme_override_font_sizes/font_size = 36
+text = "Sentinel Map Theme Song By Andrew Blemings"
+underline = 1
+
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=1807827256]
 stream = ExtResource("7_4c8q5")
-volume_db = 10.0
+volume_db = 5.0
 bus = &"Music"
 
 [node name="Ambience" type="AudioStreamPlayer" parent="." unique_id=469264660]
 stream = ExtResource("7_gj8tx")
 bus = &"Ambience"
+
+[node name="SteamLink" type="LinkButton" parent="." unique_id=1252801515]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -903.0
+offset_top = 278.0
+offset_right = -456.0
+offset_bottom = 327.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.09019608, 0.101960786, 0.12941177, 1)
+theme_override_colors/font_hover_color = Color(0.36273673, 0.63717866, 0.7000358, 1)
+theme_override_fonts/font = ExtResource("8_4c8q5")
+theme_override_font_sizes/font_size = 40
+text = "Wishlist on Steam Now!"
+underline = 1
+uri = "https://store.steampowered.com/app/4937380/Starspire_Hunters/"
+
+[node name="DiscordLink" type="LinkButton" parent="." unique_id=553924734]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -372.0
+offset_top = 277.0
+offset_right = 75.0
+offset_bottom = 326.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.34509805, 0.39607844, 0.9490196, 1)
+theme_override_colors/font_hover_color = Color(0.09114178, 0.7283745, 0.7207609, 1)
+theme_override_fonts/font = ExtResource("8_4c8q5")
+theme_override_font_sizes/font_size = 40
+text = "Join us on Discord!"
+underline = 1
+uri = "https://discord.gg/gfFRPaCGFb"
+
+[node name="TransitionRect" type="ColorRect" parent="." unique_id=1379323239]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 5.0
+offset_right = 4.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
 
 [connection signal="button_up" from="NewGame" to="." method="_on_button_button_up"]
 [connection signal="mouse_entered" from="NewGame" to="." method="_on_new_game_mouse_entered"]
@@ -439,3 +551,6 @@ bus = &"Ambience"
 [connection signal="mouse_exited" from="Continue" to="." method="_on_continue_mouse_exited"]
 [connection signal="button_up" from="StartNewGameNoticePanel/YesButton" to="." method="_on_yes_button_button_up"]
 [connection signal="button_up" from="StartNewGameNoticePanel/NoButton" to="." method="_on_no_button_button_up"]
+[connection signal="button_up" from="ColorRect2/SteamButton" to="." method="_on_steam_button_button_up"]
+[connection signal="button_up" from="DiscordButton" to="." method="_on_discord_button_button_up"]
+[connection signal="button_up" from="DiscordLink" to="." method="_on_discord_link_button_up"]

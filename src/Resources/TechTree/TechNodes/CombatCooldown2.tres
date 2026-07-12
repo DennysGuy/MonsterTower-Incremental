@@ -10,7 +10,7 @@ script = ExtResource("1_uxf76")
 node_name = "Combat Cooldown 2"
 icon = ExtResource("2_cfgbn")
 disabled_icon = ExtResource("1_4afet")
-description = "Global Cooldown Reduction for all combat abilities by -0.5 sec for each level."
+description = "Decrease Global Cooldown for all combat abilities by -0.5 sec for each level."
 max_level = 2
 materials_required = Array[Dictionary]([{
 ExtResource("3_cfgbn"): 2

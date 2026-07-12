@@ -7,7 +7,7 @@
 
 [resource]
 script = ExtResource("4_h58iy")
-recipe_name = "Fried Gagootz"
+recipe_name = "Mushie Lava Lamp"
 menu_icon = ExtResource("1_gjtol")
 description = "Ooh.. the pretty colors! Can I eat it too?"
 recipe_tier = 1

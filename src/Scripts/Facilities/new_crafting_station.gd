@@ -24,6 +24,10 @@ var stored_recipe : CraftingRecipe
 var player_in_range : bool = false
 var player : Player
 
+@onready var dust_balls: CPUParticles2D = $DustBalls
+@onready var smoke_clouds_junka: CPUParticles2D = $SmokeCloudsJunka
+@onready var smoke_clouds_smelting: CPUParticles2D = $SmokeCloudsSmelting
+
 const TEMP_COOKING_RANGE = preload("uid://bhoricf6h50pj")
 const TEMP_COOKING_RANGE_CONTSTRUCTION = preload("uid://lqprwtlaufoc")
 
@@ -35,7 +39,7 @@ const SUCCESS = preload("uid://dj3e1mi4ks8sr")
 const CRIT_SUCCESS_FAN_FARE = preload("uid://dg17w86m3muje")
 
 const TURN_OUT_ITEM = preload("uid://bd2rssv5wcn04")
-
+const JUNK_A_TRON_DEACTIVATE = preload("uid://8sn8e11vq65o")
 
 @onready var arrow_at_ore: Sprite2D = $ArrowAtOre
 
@@ -195,9 +199,23 @@ func update_quantity_details() -> void:
 	crafting_station_menu_item.count_label.text = str(crafting_quantity)
 
 func activate() -> void:
+	dust_balls.emitting = true
+	
+	if station_type == STATION_TYPE.SMELTING:
+		smoke_clouds_smelting.emitting = true
+	else:
+		smoke_clouds_junka.emitting = true
+	
 	station_animation_player.play("Active")
 
 func deactivate() -> void:
+	dust_balls.emitting = false
+	smoke_clouds_junka.emitting = false
+	smoke_clouds_smelting.emitting = false
+	
+	if station_type == STATION_TYPE.COOKING:
+		play_sfx(JUNK_A_TRON_DEACTIVATE)
+	
 	station_animation_player.play("Deactive")
 
 func play_sfx(sound: AudioStream, volume: float = 0.0, pitch_scale : float = 1.0):
@@ -234,9 +252,6 @@ func spawn_item(item : Item, offset : Vector2 = Vector2.ZERO) -> void:
 	var item_interactable : ItemInteractable = preload("uid://dgtobkubdjq27").instantiate()
 	var junk_interactable : JunkInteractable = preload("uid://cy553hhcfucv7").instantiate()
 	
-
-
-	
 	match station_type:
 		STATION_TYPE.SMELTING:
 			if stored_recipe:
@@ -254,7 +269,8 @@ func spawn_item(item : Item, offset : Vector2 = Vector2.ZERO) -> void:
 			junk_interactable.item = item
 			junk_interactable.icon.texture = item.shop_icon
 			junk_interactable.global_position = global_position + offset
-
+	
+	SignalBus.shake_camera.emit(2.0)
 	play_sfx(TURN_OUT_ITEM, 1.0, current_pitch)
 	if current_pitch < 2.0:
 		current_pitch += 0.2

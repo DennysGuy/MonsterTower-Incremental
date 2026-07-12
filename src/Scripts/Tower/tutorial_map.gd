@@ -31,7 +31,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("interact") and can_enter_tower:
+	if Input.is_action_just_pressed("interact") and can_enter_tower and GameManager.can_open_scene:
 		if PlayerStats.facilities_unlocked["Hunter License"]:
 			Dialogic.start(ENTER_TOWER_FIRST_TIME_SCENE)
 		else:
@@ -67,6 +67,8 @@ func issue_cross_fade() -> void:
 	PlayerHudSignalBus.trigger_cross_fade.emit()
 	await get_tree().create_timer(0.5).timeout
 	await spawn_player()
+	await get_tree().create_timer(0.3).timeout
+	PlayerHudSignalBus.update_player_bars.emit()
 	camera.player = get_tree().get_first_node_in_group("Player")
 
 

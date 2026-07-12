@@ -191,7 +191,7 @@ func load_active_quests() -> void:
 		QuestManager.active_quests = SaveManager.current_save_game.active_quests
 		
 func activate_task(task : Task) -> void:
-	if !task:
+	if !task or !SaveManager.current_save_game:
 		return
 		
 	if task is GatheringTask:

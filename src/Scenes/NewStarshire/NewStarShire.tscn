@@ -790,10 +790,12 @@ position = Vector2(861, 640)
 position = Vector2(1841, 482)
 
 [node name="CookingStation" parent="." unique_id=179535965 instance=ExtResource("33_d6jc3")]
+visible = true
 position = Vector2(868, 704)
 station_type = 1
 
 [node name="Refinery" parent="." unique_id=763505504 instance=ExtResource("33_d6jc3")]
+visible = true
 position = Vector2(1775, 704)
 
 [node name="AccessSmeltingStation" type="Label" parent="." unique_id=1102055337]
@@ -1145,16 +1147,16 @@ facility_name = "Gem Stone Station"
 
 [node name="SmeltingStationNotice" parent="." unique_id=20813922 instance=ExtResource("23_0u15j")]
 offset_left = 1698.0
-offset_top = 535.0
+offset_top = 492.0
 offset_right = 1852.0
-offset_bottom = 680.0
+offset_bottom = 637.0
 facility_name = "Smelting Station"
 
 [node name="CookingStationNotice" parent="." unique_id=2045831039 instance=ExtResource("23_0u15j")]
 offset_left = 792.0
-offset_top = 558.0
+offset_top = 507.0
 offset_right = 946.0
-offset_bottom = 703.0
+offset_bottom = 652.0
 facility_name = "Junk-A-Tron"
 
 [node name="BulkSellerNotice" parent="." unique_id=512282250 instance=ExtResource("23_0u15j")]

@@ -25,17 +25,18 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_timer_timeout() -> void:
-	issue_attack(hit_box, ability.attack_damage_modifier, ability, 0.2)
+	
+	if is_instance_valid(hit_box):
+		issue_attack(hit_box, ability.attack_damage_modifier, ability, 0.2)
 	var tween : Tween = create_tween()
 	tween.tween_property(double_cleave_sword, "modulate:a", 0.85, 0.1)
 	await tween.finished
 	queue_free()
-
 
 func _on_hit_box_area_entered(area: Area2D) -> void:
 	if area.get_parent() is Enemy and can_attack:
 		issue_attack(hit_box, ability.attack_damage_modifier, null, 0.2)
 		times_hit += 1
 		if times_hit == max_times_hit:
-			queue_free()	
+			hit_box.queue_free()
 	

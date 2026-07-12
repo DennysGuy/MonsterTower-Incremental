@@ -52,7 +52,7 @@ size = Vector2(24, 78)
 size = Vector2(22.5, 77.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bxd5n"]
-size = Vector2(21, 125)
+size = Vector2(21, 126)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r1viy"]
 size = Vector2(23, 285)
@@ -435,11 +435,11 @@ ladder_top = NodePath("Top")
 ladder_bottom = NodePath("Bottom")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LadderArea18" unique_id=1079652262]
-position = Vector2(0.5, 31.5)
+position = Vector2(0.5, 31)
 shape = SubResource("RectangleShape2D_bxd5n")
 
 [node name="Top" type="Marker2D" parent="LadderArea18" unique_id=1257474978]
-position = Vector2(0, -31)
+position = Vector2(0, -32)
 
 [node name="Bottom" type="Marker2D" parent="LadderArea18" unique_id=808298451]
 position = Vector2(0, 111)

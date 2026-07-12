@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://dqg50snvjqa3d" path="res://Assets/PlayerGraphics/Weapons/WeaponCraftingMenu/WeaponCraftingMenuIconBG.png" id="2_jcal0"]
 [ext_resource type="Texture2D" uid="uid://vg2fq23jnr70" path="res://Assets/PlayerGraphics/Weapons/WeaponCraftingMenu/IronBroadSword_Icon.png" id="3_d03f0"]
 [ext_resource type="Texture2D" uid="uid://bmj0cc2sc88u6" path="res://Assets/HUD/ItemSlot_Tracked.png" id="4_d03f0"]
+[ext_resource type="Texture2D" uid="uid://bggsgp4t53q5y" path="res://Assets/HUD/NoticeIcon.png" id="5_0mljg"]
+[ext_resource type="FontFile" uid="uid://stn4dtg0uw57" path="res://Assets/Fonts/FredokaOne-Regular.ttf" id="6_ewy7s"]
 
 [node name="WeaponIconButton" type="Control" unique_id=500383786]
 custom_minimum_size = Vector2(128, 128)
@@ -53,5 +55,25 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("4_d03f0")
+
+[node name="TrackNotice" type="TextureRect" parent="." unique_id=1172283885]
+visible = false
+layout_mode = 0
+offset_left = 93.0
+offset_top = 2.0
+offset_right = 133.0
+offset_bottom = 42.0
+mouse_filter = 2
+texture = ExtResource("5_0mljg")
+
+[node name="Label" type="Label" parent="TrackNotice" unique_id=1692366756]
+layout_mode = 0
+offset_left = -67.0
+offset_top = 10.0
+offset_right = 9.0
+offset_bottom = 33.0
+theme_override_colors/font_color = Color(0.70980394, 0.34901962, 0.27058825, 1)
+theme_override_fonts/font = ExtResource("6_ewy7s")
+text = "Trackable"
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]

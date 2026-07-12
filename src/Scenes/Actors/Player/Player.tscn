@@ -3093,8 +3093,8 @@ libraries/ = SubResource("AnimationLibrary_pawjx")
 [node name="PlayerSprite" type="Sprite2D" parent="Sprites" unique_id=1041617266]
 material = SubResource("ShaderMaterial_8o5ax")
 position = Vector2(0, -32)
-texture = ExtResource("49_f7qr4")
-hframes = 9
+texture = ExtResource("36_ysgjh")
+hframes = 17
 
 [node name="Outfit" type="Sprite2D" parent="Sprites" unique_id=411712928]
 position = Vector2(0, -32)

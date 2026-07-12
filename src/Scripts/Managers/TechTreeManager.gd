@@ -320,6 +320,20 @@ enum TECH_NODE_TYPE {ABILITY, FACILITY, CLASS_ABILITY}
 	#"Extra Ore 2": preload("uid://bchhcemqyw4lq"),
 }
 
+var beginner_base_abilities : Dictionary[int, TechNodeStats] = {
+	0 : preload("uid://burkenucbrobr"),
+	1 : preload("uid://cq5drdy7t8gas"),
+	2 : preload("uid://bonlosm00p4kf")
+}
+
+func check_if_can_purchase_base_ability() -> bool:
+	for ability in beginner_base_abilities.keys():
+		var selected_ability : TechNodeStats = beginner_base_abilities[ability]
+		if PlayerStats.player_stats["Ability Points"] >= selected_ability.ap_required and !PlayerStats.facilities_unlocked[selected_ability.node_name]:
+			return true
+	
+	return false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.

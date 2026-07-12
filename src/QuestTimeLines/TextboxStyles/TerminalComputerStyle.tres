@@ -48,7 +48,10 @@ overrides = {
 "normal_font": "\"res://Assets/Fonts/Perfect DOS VGA 437.ttf\"",
 "text_custom_color": "Color(0.34117648, 0.34117648, 0.34117648, 0.77254903)",
 "text_size": "34.0",
-"text_use_global_size": "false"
+"text_use_global_size": "false",
+"typing_sounds_every_nths_character": "2.0",
+"typing_sounds_sounds_folder": "\"res://src/QuestTimeLines/PCBleep\"",
+"typing_sounds_volume": "-7.0"
 }
 
 [sub_resource type="Resource" id="Resource_egj0f"]

@@ -10,7 +10,7 @@ script = ExtResource("1_eq60b")
 node_name = "Critical Smelting 2"
 icon = ExtResource("2_3tryd")
 disabled_icon = ExtResource("1_s88wf")
-description = "Increases chance to double item output when smelting."
+description = "Increases chance to double refined bar output when smelting by 5% per level."
 materials_required = Array[Dictionary]([{
 ExtResource("3_3tryd"): 2
 }])

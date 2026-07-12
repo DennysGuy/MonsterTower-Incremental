@@ -9,8 +9,7 @@ script = ExtResource("2_wiynt")
 node_name = "Mining Speed 1"
 icon = ExtResource("2_1l6iv")
 disabled_icon = ExtResource("1_wiynt")
-description = "Increase Pickaxe Damage to ore rocks +5 for each level
-"
+description = "Increase Pickaxe damage against ore rocks by +5 per level."
 max_level = 5
 currency_required = 300
 stat_relation = 5

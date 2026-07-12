@@ -35,8 +35,8 @@ func _ready() -> void:
 	
 	QuestManager.check_map_name.emit(tower_entrance_data.floor_name)
 	SignalBus.update_banner_info.emit(tower_entrance_data)
-	PlayerHudSignalBus.update_player_health.emit()
-	PlayerHudSignalBus.update_player_mp.emit()
+	#PlayerHudSignalBus.update_player_health.emit()
+	#PlayerHudSignalBus.update_player_mp.emit()
 	SaveManager.save_player_stats()
 	PlayerHudSignalBus.show_stop_watch.emit()
 	if GameManager.hunt_challenge_selected:

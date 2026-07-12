@@ -1,5 +1,5 @@
 do CutsceneManager.disable_player_functionality()
 join TowerGuide center [animation="Slide In Up" wait="true"]
-TowerGuide: Hey Rookie! Looks like you're eligible to select a Combat Class. Head on over to the Class Advancement Center to check things!
+TowerGuide: Hey, rookie! Looks like you've earned the right to select a Combat Class. Head over to the Class Advancement Center to check out your options!
 [wait time="1.0"]
 do CutsceneManager.enable_player_functionality()

@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_q7fbg")
 node_name = "Bonus AP 1"
-description = "Increases received AP from leveling up by 1"
+description = "Increase received AP from leveling up by 1."
 stat_name = "Bonus AP"
 upgrade_interval = 1.0
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

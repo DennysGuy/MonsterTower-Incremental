@@ -23,6 +23,9 @@ func enter() -> void:
 	if parent.locked_on:
 		parent.remove_stun_marker()
 	
+	if parent.name_tag:
+		parent.name_tag.show()
+	
 	#parent.sfx_player.play_sfx(impacts.pick_random())
 
 func exit() -> void:

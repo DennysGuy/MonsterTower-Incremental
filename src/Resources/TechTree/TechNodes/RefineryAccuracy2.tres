@@ -11,7 +11,7 @@ script = ExtResource("2_qth3v")
 node_name = "Refinery Accuracy 2"
 icon = ExtResource("2_ir678")
 disabled_icon = ExtResource("1_qth3v")
-description = "Get more bars! Increases Smelting success rate bonus by 5% per level."
+description = "Smelt more bars! Increase Smelting Success Rate by 5% per level."
 max_level = 3
 materials_required = Array[Dictionary]([{
 ExtResource("3_vathq"): 2

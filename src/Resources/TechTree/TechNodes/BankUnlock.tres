@@ -9,7 +9,7 @@ script = ExtResource("1_byv8u")
 node_name = "Banking"
 icon = ExtResource("2_sex3j")
 disabled_icon = ExtResource("1_5btic")
-description = "Grants you [color=green]8 off shore inventory slots[/color]."
+description = "Unlock your bank account, granting you [color=green]8 off shore inventory slots[/color]."
 currency_required = 800
 node_type = 1
 stat_relation = 3

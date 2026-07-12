@@ -11,7 +11,7 @@ script = ExtResource("2_rsqsp")
 node_name = "Refinery Speed 2"
 icon = ExtResource("1_cq6yo")
 disabled_icon = ExtResource("1_rsqsp")
-description = "Decrease your wait time and Increase Smelting Speed by 15% per level."
+description = "Smelt faster! Increase Smelting Speed by 15% per level."
 max_level = 2
 materials_required = Array[Dictionary]([{
 ExtResource("3_wlkyh"): 2

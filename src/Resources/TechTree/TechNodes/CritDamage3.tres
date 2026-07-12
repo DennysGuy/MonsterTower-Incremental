@@ -10,7 +10,8 @@ script = ExtResource("3_l4xsu")
 node_name = "Crit Damage 3"
 icon = ExtResource("2_l4xsu")
 disabled_icon = ExtResource("1_sosn7")
-description = "Increase Crit Damage by 5% per level."
+description = "Increase Critical Damage by 5% per level.
+(Scale your damage to even greater heights!)"
 max_level = 3
 materials_required = Array[Dictionary]([{
 ExtResource("2_vfkmh"): 3

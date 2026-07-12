@@ -26,7 +26,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("interact") and player_in_range:
+	if Input.is_action_just_pressed("interact") and player_in_range and GameManager.can_open_scene:
 		CutsceneManager.disable_player_functionality()
 		PlayerHudSignalBus.spawn_job_board_menu.emit()
 

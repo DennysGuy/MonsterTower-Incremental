@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://cu8drgivmhfn" path="res://src/Scripts/item.gd" id="1_p25gr"]
 [ext_resource type="Resource" uid="uid://y4kiqe4pi2v5" path="res://src/Resources/CraftingResources/IronBar.tres" id="2_7slj2"]
 [ext_resource type="Script" uid="uid://be6vh0qellkjq" path="res://src/Scripts/Questing/quest.gd" id="3_7sppe"]
-[ext_resource type="Resource" uid="uid://cs6ojn6tc0alq" path="res://src/Resources/CraftingResources/SteelBar.tres" id="3_8ulna"]
 [ext_resource type="Script" uid="uid://deyfft0rbfjgk" path="res://src/Scripts/Questing/Tasks/task.gd" id="4_eht0u"]
 [ext_resource type="Resource" uid="uid://8q42adq4e1dk" path="res://src/Resources/Quests/Intro/SideQuests/IntroductionQuests/SuppliesForOurComrades1/Tasks/Slay35RedBeetles.tres" id="7_8ulna"]
 [ext_resource type="Resource" uid="uid://cd7fixjybwy6d" path="res://src/Resources/Quests/Intro/SideQuests/IntroductionQuests/SuppliesForOurComrades1/Tasks/Gather5BeatleClaws.tres" id="7_eht0u"]
@@ -40,7 +39,6 @@ tasks = Array[ExtResource("4_eht0u")]([ExtResource("7_eht0u"), ExtResource("7_8u
 currency_reward = 3000
 xp_reward = 1000
 item_reward = Dictionary[ExtResource("1_p25gr"), int]({
-ExtResource("2_7slj2"): 4,
-ExtResource("3_8ulna"): 4
+ExtResource("2_7slj2"): 6
 })
 metadata/_custom_type_script = "uid://be6vh0qellkjq"

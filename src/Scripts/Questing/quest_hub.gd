@@ -26,6 +26,10 @@ func _process(delta: float) -> void:
 
 func initialize_main_quests() -> void:
 	clear_quest_box(main_line_quest_v_box)
+	
+	if !SaveManager.current_save_game:
+		return
+	
 	var active_main_quests : Array = QuestManager.active_quests["Main"]
 	for quest_name in active_main_quests:
 		var selected_quest : Quest = QuestManager.get_quest(quest_name)

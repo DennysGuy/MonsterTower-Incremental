@@ -14,8 +14,8 @@
 "pitch_variance": -0.5,
 "skip_characters": 1.0,
 "sound_path": "res://Audio/SFX/bleep001.wav",
-"volume_base": 1.0,
-"volume_variance": 0.1
+"volume_base": 3.0,
+"volume_variance": 1.5
 }
 },
 "style": "CutsceneStyle",
