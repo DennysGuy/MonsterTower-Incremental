@@ -15,13 +15,14 @@
 script = ExtResource("1_ktk7b")
 sword_name = "Lurker's Rapier"
 index = 4
+attack_speed_type = 4
 description = "This lethal masterpiece is engineered for hasty, single target combat where a single swing issues 2 strikes. 
 
 Although, with its ability for high powered output, you are left vulnerable to high damage. One might say - a glass canon's dream. 
 
 Great for targeting stronger foes of the tower!"
 attack_bonus = 10.0
-defense_bonus = -10.0
+defense_bonus = -15.0
 attack_speed = 0.5
 crit_bonus = 0.2
 hit_bonus = 1.0

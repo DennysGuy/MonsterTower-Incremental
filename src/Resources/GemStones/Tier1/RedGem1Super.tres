@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="GemStone" format=3 uid="uid://bj374y0i16bfj"]
+
+[ext_resource type="Script" uid="uid://bx7re57seek5i" path="res://src/Scripts/Facilities/gem_stone.gd" id="1_spva6"]
+[ext_resource type="Texture2D" uid="uid://c3yvypulnrc8d" path="res://Assets/Gems/PurpleGem.png" id="2_spva6"]
+[ext_resource type="Texture2D" uid="uid://bbsyti0xs76lc" path="res://Assets/Facilities/GearCraftingStation/GearSocket_PurpleGem.png" id="3_bsnkf"]
+
+[resource]
+script = ExtResource("1_spva6")
+socket_graphic = ExtResource("3_bsnkf")
+drop_rate = 15.0
+flat_attack_bonus = 15.0
+flat_defense_bonus = 10.0
+status_duration_bonus = 1.0
+crit_chance_bonus = 0.25
+crit_damage_bonus = 0.15
+hit_reps = 2.0
+item_name = "Gem of The Broken I"
+item_type = 4
+sell_value = 342
+shop_icon = ExtResource("2_spva6")
+description = "Embodying the Tower's nature of Courage. 
+Provides a small boost to one's combat effectiveness."
+metadata/_custom_type_script = "uid://bx7re57seek5i"

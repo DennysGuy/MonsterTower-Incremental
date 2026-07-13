@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://oonjrpabmces"]
 
 [ext_resource type="Script" uid="uid://dpqc54c34418w" path="res://src/Scripts/Maps/NewStarShire/new_star_shire.gd" id="1_gq00g"]
-[ext_resource type="AudioStream" uid="uid://btf2sjmbc010s" path="res://Audio/Music/TestStarspireTheme.wav" id="2_cxssj"]
+[ext_resource type="AudioStream" uid="uid://bd532h4dyly5v" path="res://Audio/Music/StarspireTheme1_Full_Draft.wav" id="2_g8ukf"]
 [ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="2_te0bi"]
 [ext_resource type="TileSet" uid="uid://b74l1awtkdty5" path="res://src/Scenes/NewStarshire/TempWallTiles.tres" id="3_oik5f"]
 [ext_resource type="PackedScene" uid="uid://c8ov03gkkda4k" path="res://src/Scenes/PlayerCamera.tscn" id="3_wtuhv"]
@@ -533,7 +533,7 @@ size = Vector2(174, 8)
 [node name="NewStarShire" type="Node2D" unique_id=1923605450 node_paths=PackedStringArray("camera", "sfx_player")]
 script = ExtResource("1_gq00g")
 map_name = "Starspire - Hub"
-map_theme_song = ExtResource("2_cxssj")
+map_theme_song = ExtResource("2_g8ukf")
 camera = NodePath("PlayerCamera")
 sfx_player = NodePath("SfxPlayer")
 

@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="CraftingRecipe" format=3 uid="uid://djnghsi47lfiv"]
+
+[ext_resource type="Script" uid="uid://cljygiasf4103" path="res://src/Scripts/Facilities/crafting_recipe.gd" id="1_dadxe"]
+[ext_resource type="Texture2D" uid="uid://bqktcef43wwng" path="res://Assets/Facilities/Junkatron/BatGliderPack.png" id="1_exsbc"]
+[ext_resource type="Resource" uid="uid://d0wo8tvdfk8j1" path="res://src/Resources/Dishes/BatGliderJetPack.tres" id="2_0oeyu"]
+[ext_resource type="Resource" uid="uid://bxukrnl1bg7oo" path="res://src/Resources/Actors/Enemies/Biome1/Batclopse/BatclopseWing.tres" id="3_tlu4r"]
+
+[resource]
+script = ExtResource("1_dadxe")
+recipe_name = "Bat Glider Jet Pack"
+menu_icon = ExtResource("1_exsbc")
+index = 5
+description = "A Jet pack glider made of batclopse wings - The jet propulsion system works I swear! "
+recipe_tier = 1
+crafting_time = 45.0
+recipe_type = 1
+success_rate = 0.7
+critical_success_rate = 0.1
+failure_rate = 0.3
+output_item = ExtResource("2_0oeyu")
+recipe_list = Array[Dictionary]([{
+ExtResource("3_tlu4r"): 3
+}])
+related_enemies = Array[String](["Batclopse", "Beetle Knight", "Beetle Knight LVL2", "Serpant Mimic", "Serpant Mimic LVL2"])
+metadata/_custom_type_script = "uid://cljygiasf4103"

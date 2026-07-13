@@ -295,7 +295,7 @@ func update_inventories(inventory_name : String) -> void:
 	SignalBus.inventory_changed.emit()
 	SaveManager.save_inventories()
 
-func update_grid_container(grid_container : GridContainer, inventory : String, is_shop : bool = true, inventory_array : Array = []) -> void:
+func update_grid_container(grid_container : GridContainer, inventory : String, is_shop : bool = true, inventory_array : Array = [], filter : String = "") -> void:
 	clear_grid_container(grid_container)
 	
 	var max_slots : int
@@ -319,12 +319,12 @@ func update_grid_container(grid_container : GridContainer, inventory : String, i
 		if inventory == "Bank":
 			slot.set_locale_as_bank()
 		
-		var potential_item
+		var potential_item = null
 		
 		if num < InventoryManager.inventories[inventory].size():
 			potential_item = InventoryManager.inventories[inventory][num]
 			
-		if potential_item:
+		if potential_item and check_filter(potential_item["item"], filter):
 			slot.item = potential_item["item"]
 			slot.slot_index = num
 			print(slot.slot_index)
@@ -334,6 +334,12 @@ func update_grid_container(grid_container : GridContainer, inventory : String, i
 			grid_container.add_child(slot)
 		else:
 			grid_container.add_child(slot)
+
+func check_filter(item : Item, filter : String) -> bool:
+	if filter.is_empty() or item.get_inventory_name() == filter:
+		return true
+	
+	return false
 
 func sort_inventory(grid_container : GridContainer, type : Item.ITEM_TYPE, is_shop : bool = false) -> void:
 	var inventory_snap_shot : Array = inventories["Inventory"].duplicate()

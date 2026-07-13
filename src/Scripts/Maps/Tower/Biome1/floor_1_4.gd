@@ -50,29 +50,34 @@ func _ready() -> void:
 		if tower_entrance_data.hunt_challenge_completed:
 			#SignalBus.unlock_next_room.emit()
 			PlayerHudSignalBus.update_kill_quota_text.emit("", tower_entrance_data.hunt_challenge_completed, tower_entrance_data.hunt_challenge_unlocked)
+			SignalBus.start_enemy_spawn.emit()
+			PlayerHudSignalBus.start_stop_watch.emit()
 		else:
 			#PlayerHudSignalBus.update_kill_quota_text.emit("", false, tower_entrance_data.hunt_challenge_unlocked)
 			if tower_entrance_data.is_challenge_floor() and tower_entrance_data.hunt_challenge_unlocked and !tower_entrance_data.hunt_challenge_completed:
 				PlayerHudSignalBus.show_hunt_challenge_button.emit()
 			else:
 				SignalBus.hide_hunt_challenge_button.emit()
+			
+			if tower_entrance_data.times_entered == 1:
+				issue_challenge_objective_notice()
+			else:
+				CodexManager.send_codex_notification.emit("Complete the Floor Challenge!")
+				SignalBus.start_enemy_spawn.emit()
+				PlayerHudSignalBus.start_stop_watch.emit()
+		
+
+			
 	
+
+
+		
 	unlock_quests()
 	
 	PlayerHudSignalBus.update_map_name_label.emit(map_name)
 	SignalBus.update_banner_info.emit(tower_entrance_data)
 	
-	if !tower_entrance_data.hunt_challenge_completed:
-		if tower_entrance_data.times_entered == 1:
-			issue_challenge_objective_notice()
-		else:
-			CodexManager.send_codex_notification.emit("Complete the Floor Challenge!")
-			SignalBus.start_enemy_spawn.emit()
-			PlayerHudSignalBus.start_stop_watch.emit()
-	
-	else:
-		SignalBus.start_enemy_spawn.emit()
-		PlayerHudSignalBus.start_stop_watch.emit()
+
 	
 func _process(delta: float) -> void:
 	super(delta)

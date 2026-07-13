@@ -690,7 +690,8 @@ monster_list = Dictionary[PackedScene, int]({
 ExtResource("24_3ad0h"): 100
 })
 challenge_monster_list = Dictionary[PackedScene, int]({
-ExtResource("24_3ad0h"): 100
+ExtResource("24_3ad0h"): 50,
+ExtResource("25_kc4q5"): 50
 })
 area_collision_shape = NodePath("CollisionShape2D")
 
@@ -713,8 +714,8 @@ ExtResource("24_3ad0h"): 50,
 ExtResource("25_kc4q5"): 50
 })
 challenge_monster_list = Dictionary[PackedScene, int]({
-ExtResource("24_3ad0h"): 50,
-ExtResource("25_kc4q5"): 50
+ExtResource("24_3ad0h"): 20,
+ExtResource("25_kc4q5"): 70
 })
 area_collision_shape = NodePath("CollisionShape2D")
 

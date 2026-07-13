@@ -931,10 +931,10 @@ text = "Open Tower Map"
 
 [node name="QuestHub" parent="PlayerHUD" unique_id=1129499445 instance=ExtResource("14_xxan5")]
 layout_mode = 1
-offset_left = -2.0
-offset_top = -490.0
-offset_right = 398.0
-offset_bottom = 590.0
+offset_left = 24.0
+offset_top = -426.0
+offset_right = 424.0
+offset_bottom = 654.0
 mouse_filter = 2
 
 [node name="NotificationHub" parent="PlayerHUD" unique_id=1685968631 instance=ExtResource("12_wldwa")]
@@ -1246,7 +1246,7 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 175.0
-offset_bottom = 175.0044
+offset_bottom = 175.00464
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2

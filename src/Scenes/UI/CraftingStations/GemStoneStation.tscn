@@ -5,8 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://d0dp50h7qg6xe" path="res://Assets/Facilities/GearCraftingStation/SwordSocketsBG.png" id="2_pchp5"]
 [ext_resource type="Texture2D" uid="uid://dqdnfqgin24gv" path="res://Assets/CraftingMiniGame/Swords/BronzeSword/BronzeSwordWhole.png" id="3_pchp5"]
 [ext_resource type="PackedScene" uid="uid://d0s6j8mvikv8c" path="res://src/Scenes/UI/ItemSlot.tscn" id="4_ad6b6"]
+[ext_resource type="FontFile" uid="uid://3dovpys2he1l" path="res://Assets/Fonts/Moodcake.ttf" id="5_36dn7"]
 [ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="5_u8s2g"]
-[ext_resource type="FontFile" uid="uid://qgj228ltdttv" path="res://Assets/Fonts/alagard.ttf" id="7_mcbss"]
+[ext_resource type="FontFile" uid="uid://stn4dtg0uw57" path="res://Assets/Fonts/FredokaOne-Regular.ttf" id="6_ln2ij"]
+[ext_resource type="Texture2D" uid="uid://bggsgp4t53q5y" path="res://Assets/HUD/NoticeIcon.png" id="7_jryx7"]
 [ext_resource type="Texture2D" uid="uid://chft1dsfmivtq" path="res://Assets/Facilities/GemStation_GemBagBG.png" id="7_miuig"]
 [ext_resource type="Texture2D" uid="uid://baqkrdd18p8ox" path="res://Assets/HUD/Bags/Market_Gem_Button.png" id="9_wygy5"]
 [ext_resource type="Texture2D" uid="uid://nof6fd2hbboi" path="res://Assets/HUD/Bags/Market_Gem_Button_Pressed.png" id="10_6vexu"]
@@ -151,8 +153,8 @@ offset_right = 65.5
 offset_bottom = 39.0
 grow_horizontal = 2
 theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("5_u8s2g")
-theme_override_font_sizes/font_size = 32
+theme_override_fonts/font = ExtResource("5_36dn7")
+theme_override_font_sizes/font_size = 20
 horizontal_alignment = 1
 
 [node name="IconPanel" type="Panel" parent="GemDescription" unique_id=743777555]
@@ -193,10 +195,19 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/paragraph_separation = 1
 theme_override_constants/outline_size = 5
-theme_override_fonts/normal_font = ExtResource("5_u8s2g")
-theme_override_font_sizes/normal_font_size = 26
+theme_override_fonts/normal_font = ExtResource("6_ln2ij")
+theme_override_font_sizes/normal_font_size = 20
 text = "
 "
+
+[node name="GemCanMountNotice" type="TextureRect" parent="GemDescription" unique_id=1782028644]
+visible = false
+layout_mode = 0
+offset_left = 232.0
+offset_top = 304.0
+offset_right = 272.0
+offset_bottom = 344.0
+texture = ExtResource("7_jryx7")
 
 [node name="MountButton" type="Button" parent="GemDescription" unique_id=660995532]
 layout_mode = 1
@@ -205,16 +216,16 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -19.0
-offset_top = -22.0
-offset_right = 19.0
-offset_bottom = -2.0
+offset_left = -54.0
+offset_top = -51.0
+offset_right = 54.0
+offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_default_cursor_shape = 2
 theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("5_u8s2g")
-theme_override_font_sizes/font_size = 26
+theme_override_fonts/font = ExtResource("6_ln2ij")
+theme_override_font_sizes/font_size = 32
 text = "Mount"
 
 [node name="BagBGTexture" type="TextureRect" parent="." unique_id=1094441741]
@@ -369,13 +380,13 @@ text = "Bank"
 
 [node name="SwordName" type="Label" parent="." unique_id=1865869356]
 layout_mode = 0
-offset_left = 613.0
+offset_left = 512.0
 offset_top = 150.0
-offset_right = 787.0
-offset_bottom = 180.0
+offset_right = 882.0
+offset_bottom = 185.0
 theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("7_mcbss")
-theme_override_font_sizes/font_size = 32
+theme_override_fonts/font = ExtResource("5_36dn7")
+theme_override_font_sizes/font_size = 28
 text = "Frail Sword"
 horizontal_alignment = 1
 
@@ -386,7 +397,7 @@ offset_top = 161.0
 offset_right = 1001.0
 offset_bottom = 191.0
 theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("7_mcbss")
+theme_override_fonts/font = ExtResource("5_36dn7")
 theme_override_font_sizes/font_size = 32
 text = "Stats"
 horizontal_alignment = 1
@@ -434,8 +445,8 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme_override_constants/outline_size = 3
-theme_override_fonts/normal_font = ExtResource("5_u8s2g")
-theme_override_font_sizes/normal_font_size = 32
+theme_override_fonts/normal_font = ExtResource("6_ln2ij")
+theme_override_font_sizes/normal_font_size = 22
 
 [node name="ResetButton" type="Button" parent="." unique_id=1808499052]
 layout_mode = 1
@@ -444,17 +455,17 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -434.0
-offset_top = -176.0
-offset_right = -383.0
-offset_bottom = -153.0
+offset_left = -442.0
+offset_top = -202.0
+offset_right = -91.0
+offset_bottom = -149.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_default_cursor_shape = 2
 theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("7_mcbss")
-theme_override_font_sizes/font_size = 32
-text = "Reset"
+theme_override_fonts/font = ExtResource("5_36dn7")
+theme_override_font_sizes/font_size = 42
+text = "Reset Sockets"
 
 [node name="Label" type="Label" parent="." unique_id=973245367]
 layout_mode = 1
@@ -463,14 +474,14 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -347.0
-offset_top = -189.0
-offset_right = 46.0
-offset_bottom = -162.0
+offset_left = -452.0
+offset_top = -141.0
+offset_right = -38.0
+offset_bottom = -106.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("7_mcbss")
+theme_override_fonts/font = ExtResource("6_ln2ij")
 theme_override_font_sizes/font_size = 28
 text = "(Socketed Gems Lost on Reset)"
 

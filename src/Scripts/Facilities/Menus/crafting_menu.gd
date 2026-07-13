@@ -90,7 +90,7 @@ func update_sword() -> void: #run this function when we upgrade the sword.
 		sword_name.text = sword.sword_name
 		sword_stats.text = sword.get_stats_description()
 		sword_description.text = sword.recipe.description
-			
+		
 		InventoryManager.clear_grid_container(ingredients_list)
 		for ingredient in sword.recipe.recipe_list:
 			var ingredient_menu_item : IngredientItem = preload("uid://dil4081ni1hb3").instantiate()

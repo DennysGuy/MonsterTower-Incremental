@@ -319,10 +319,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -132.0
-offset_top = 42.0
-offset_right = -84.0
-offset_bottom = 106.0
+offset_left = 102.0
+offset_top = 102.0
+offset_right = 150.0
+offset_bottom = 166.0
 grow_horizontal = 2
 texture = ExtResource("9_4khty")
 

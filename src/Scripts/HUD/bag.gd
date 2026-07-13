@@ -284,6 +284,7 @@ func update_bank_container() -> void:
 	for num in range(PlayerStats.player_stats["Max Bank Slots"]):
 		var slot : ItemSlot = preload("uid://d0s6j8mvikv8c").instantiate()
 		slot.set_as_bank_slot()
+		slot.set_locale_as_bank()
 		var potential_item
 		if num < InventoryManager.inventories["Bank"].size():
 			potential_item = InventoryManager.inventories["Bank"][num]

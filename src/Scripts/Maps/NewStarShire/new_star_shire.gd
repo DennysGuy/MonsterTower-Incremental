@@ -209,12 +209,13 @@ func _on_tower_area_body_entered(body: Node2D) -> void:
 func show_ap_notice() -> void:
 	if PlayerStats.player_stats["Ability Points"] >= 1 and PlayerStats.player_stats["Class"] != "Junior Hunter":
 		HubManager.show_facility_notification.emit("Class Advance Center")
+		return
 	else:
 		HubManager.hide_facility_notification.emit("Class Advance Center")
+		return
 	
 	if PlayerStats.player_stats["Class"] == "Junior Hunter" and TechTreeManager.check_if_can_purchase_base_ability():
 		HubManager.show_facility_notification.emit("Class Advance Center")
-	
 	else:
 		HubManager.hide_facility_notification.emit("Class Advance Center")
 
@@ -620,6 +621,7 @@ func has_resource_quantity(tech_node_stats : TechNodeStats) -> bool:
 	return true		
 
 func sell_to_market(delta: float) -> void:
+
 	if player.junk_picked_up.is_empty():
 		return
 

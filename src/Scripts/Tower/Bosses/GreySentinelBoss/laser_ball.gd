@@ -18,7 +18,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	global_position += velocity * delta
-	
+	rotation += 0.1
 
 func _on_timer_timeout() -> void:
 	queue_free()

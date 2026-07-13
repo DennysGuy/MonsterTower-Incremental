@@ -402,20 +402,22 @@ func get_total_max_mp() -> int:
 	return player_stats["Max MP"]  + get_current_sword().get_total_mp_bonus()
 
 func recover_hp(amount : int) -> void:
-	player_stats["Current Health"] += amount
-	if player_stats["Current Health"] > get_total_max_health():
-		player_stats["Current Health"] = get_total_max_health()
+	var prev_hp : int = GameManager.current_player_health
+	if GameManager.current_player_health > get_total_max_health():
+		GameManager.current_player_health = get_total_max_health()
+	else:
+		GameManager.current_player_health += amount
 		
-	GameManager.current_player_health += amount
-	SaveManager.save_player_stats()
-	PlayerHudSignalBus.update_player_health.emit()
+	PlayerHudSignalBus.update_player_health.emit(prev_hp)
 		
 func recover_mp(amount : int) -> void:
-	player_stats["Current MP"] += amount
-	if player_stats["Current MP"] > get_total_max_mp():
-		player_stats["Current MP"] = get_total_max_mp()
+	var prev_mp : int = GameManager.current_player_mp
+	if GameManager.current_player_mp > get_total_max_mp():
+		GameManager.current_player_mp = get_total_max_mp()
+	else:
+		GameManager.current_player_mp += amount
 	
-	PlayerHudSignalBus.update_player_mp.emit()
+	PlayerHudSignalBus.update_player_mp.emit(prev_mp)
 	
 func reset_global_stat_buffs() -> void:
 	attack_buff_mod = 1.0

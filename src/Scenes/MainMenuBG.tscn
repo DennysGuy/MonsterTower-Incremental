@@ -56,18 +56,32 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_wcin0"]
 resource_name = "SwoopIn"
-length = 2.0
+length = 3.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("../Camera3D:position")
-tracks/0/interp = 2
+tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 3, 3.2, 3.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 19.994747, 39.58576), Vector3(0, 14.403998, 24.720592)]
+"values": [Vector3(0, 7.8994884, -81.33631), Vector3(0, 39.420673, -79.63608), Vector3(0, 40.981, -79.636), Vector3(0, 14.403998, 24.720592)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_swoop_out"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_v4njr"]

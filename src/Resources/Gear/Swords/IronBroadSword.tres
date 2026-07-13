@@ -15,11 +15,12 @@
 script = ExtResource("1_stflx")
 sword_name = "Iron Broad Sword"
 index = 3
+attack_speed_type = 1
 description = "This weighty weapon is built for true Warriors. While its slow attack speed requires precise timing, it rewards you with the incredible ability to whack multiple enemies at once! 
 
 Master its momentum to clear out massive mobs efficiently and conquer the tower's toughest crowds."
 attack_bonus = 65.0
-defense_bonus = -15.0
+defense_bonus = -10.0
 attack_speed = 0.75
 crit_bonus = 0.15
 multi_enemies_bonus = 10.0

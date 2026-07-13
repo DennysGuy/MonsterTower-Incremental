@@ -138,17 +138,13 @@ func set_leader(leader : Node2D) -> void:
 func can_add_to_bulk_menu(bulk_slots : Array) -> bool:
 	var can_add : bool = false
 	
-	if bulk_slots.is_empty():
+	if bulk_slots.is_empty() or bulk_slots.size() < PlayerStats.player_stats["Bulk Sell Slots"]:
 		can_add = true
 	
 	for slot in bulk_slots:
 		var bulk_slot : BulkSaleSlot = slot
 		if bulk_slot.item == item and bulk_slot.quantity < PlayerStats.player_stats["Bulk Sell Slot Stack"]:
 			can_add = true
-	
-	if !can_add:
-		if bulk_slots.size() < PlayerStats.player_stats["Bulk Sell Slots"]:
-			return true
 	
 	return can_add
 

@@ -22,6 +22,5 @@ ExtResource("4_7opju"): 1
 }, {
 ExtResource("4_tpb3m"): 1
 }])
-related_nodes = Array[String](["Item Bag 2", "Jump Height 2", "Vial Spawn Rate 1"])
 related_enemies = Array[String](["Beetle Knight", "Beetle Knight LVL2"])
 metadata/_custom_type_script = "uid://cljygiasf4103"

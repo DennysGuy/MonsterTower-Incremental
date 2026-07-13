@@ -40,8 +40,16 @@ func process_physics(_delta: float) -> State:
 				parent.crafting_progressbar.value += PlayerStats.player_stats["Smelting Speed"]
 			
 	if parent.crafting_progressbar.value >= parent.crafting_progressbar.max_value:
+	
 		var num_check = randi_range(0,100)
-		var success_rate : float = parent.stored_recipe.success_rate
+		
+		var success_rate : float = 0
+		if parent.stored_recipe:
+			success_rate = parent.stored_recipe.success_rate
+		else:
+			success_rate = 0
+			num_check = 1000
+		
 		match parent.station_type:
 			parent.STATION_TYPE.COOKING:
 				success_rate += PlayerStats.player_stats["Cooking Accuracy Bonus"]

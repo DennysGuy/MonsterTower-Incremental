@@ -128,7 +128,7 @@ func check_if_can_cast() -> void:
 	if stored_ability and !stored_ability.is_combat_ability:
 		return
 	
-	if PlayerStats.player_stats["Current MP"] < stored_ability.mp_cost:
+	if GameManager.current_player_mp < stored_ability.mp_cost:
 		icon.texture = stored_ability.disabled_icon
 	else:
 		icon.texture = stored_ability.icon

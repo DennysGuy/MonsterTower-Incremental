@@ -2,6 +2,9 @@ class_name Sword extends Resource
 
 @export var sword_name : String
 @export var index : int
+enum ATTACK_SPEED {VERY_SLOW, SLOW, AVERAGE, FAST, VERY_FAST}
+@export var attack_speed_type : ATTACK_SPEED = ATTACK_SPEED.AVERAGE
+
 @export_multiline var description : String
 @export var attack_bonus : float
 @export var defense_bonus : float
@@ -61,20 +64,23 @@ func get_stats_dict() -> Dictionary:
 	}
 
 func get_stats_description() -> String:
-	var description : String = ""
+	var description : String = "Attack Speed: %s\n" % get_attack_speed_type()
 	var stat_dictionary : Dictionary = get_stats_dict()
 	for stat in stat_dictionary.keys():
+		if stat == "Attack Speed":
+			continue
+
 		if stat_dictionary[stat] != 0.0:
 			if stat_dictionary[stat] > 0:
 				if stat_dictionary[stat] < 1.0:
-					description += "%s: +%s \n" % [stat, stat_dictionary[stat]*100] 
+					description += "%s: +%s \n" % [stat, int(stat_dictionary[stat]*100)] 
 				else:
-					description += "%s: +%s\n" % [stat, stat_dictionary[stat]]
+					description += "%s: +%s\n" % [stat, int(stat_dictionary[stat])]
 			else:
 				if stat_dictionary[stat] > -1.0:
-					description += "%s: -%s \n" % [stat, stat_dictionary[stat]*100] 
+					description += "%s: %s \n" % [stat, int(stat_dictionary[stat]*100)] 
 				else:
-					description += "%s: -%s\n" % [stat, stat_dictionary[stat]]
+					description += "%s: %s\n" % [stat, int(stat_dictionary[stat])]
 	
 	return description
 
@@ -142,3 +148,18 @@ func get_total_stun_stacks_bonus() -> float:
 
 func get_total_multi_enemies_bonus() -> float:
 	return get_stats_dict()["Multi Enemies Bonus"] + PlayerStats.get_total_gem_bonus("Multi Enemies Bonus")
+
+func get_attack_speed_type() -> String:
+	match attack_speed_type:
+		ATTACK_SPEED.VERY_SLOW:
+			return "VERY SLOW"
+		ATTACK_SPEED.SLOW:
+			return "SLOW"
+		ATTACK_SPEED.AVERAGE:
+			return "AVERAGE"
+		ATTACK_SPEED.FAST:
+			return "FAST"
+		ATTACK_SPEED.VERY_FAST:
+			return "VERY FAST"
+		_:
+			return "AVERAGE"

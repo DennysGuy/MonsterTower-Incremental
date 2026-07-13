@@ -9,5 +9,5 @@ item_name = "ShellHelm"
 item_type = 5
 sell_value = 900
 shop_icon = ExtResource("2_hg4ts")
-sell_time = 3600.0
+sell_time = 3800.0
 description = "The texture is offputting to some - but a delicacy to many!"

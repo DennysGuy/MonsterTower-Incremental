@@ -2,6 +2,7 @@ class_name GemStoneStation extends Control
 
 @onready var gem_stone_container: GridContainer = $GemStoneContainer
 @onready var socket_v_box_container: VBoxContainer = $SocketSword/SocketVBoxContainer
+@onready var gem_can_mount_notice: TextureRect = $GemDescription/GemCanMountNotice
 
 @onready var gem_title: Label = $GemDescription/GemTitle
 @onready var gem_icon: TextureRect = $GemDescription/IconPanel/GemIcon
@@ -37,7 +38,7 @@ func _process(delta: float) -> void:
 		close_out()
 
 func update_gem_bag_container(inventory : String) -> void:
-	InventoryManager.update_grid_container(gem_stone_container, inventory, true)
+	InventoryManager.update_grid_container(gem_stone_container, inventory, true, [], "Gem Stones")
 
 func close_out() -> void:
 	CutsceneManager.enable_player_functionality()
@@ -80,6 +81,10 @@ func populate_gem_details(item : Item, location : String, slot_index : int) -> v
 		gem_title.text = stored_gem.item_name
 		gem_icon.texture = stored_gem.shop_icon
 		gem_description.text = generate_gem_stats()
+		if !PlayerStats.equipped_gem_sockets[3]:
+			gem_can_mount_notice.show()
+		else:
+			gem_can_mount_notice.hide()
 
 func _on_mount_button_button_up() -> void:
 	var equipped_gem : bool = PlayerStats.equip_gem_to_socket(stored_gem)
@@ -89,6 +94,7 @@ func _on_mount_button_button_up() -> void:
 		stored_slot_index = -1
 		update_sword_stats_description()
 		
+	gem_can_mount_notice.hide()
 	update_gem_bag_container(selected_bag)
 	update_socket_vbox()
 
@@ -114,12 +120,12 @@ func generate_gem_stats() -> String:
 				if stat_bonus < 1.0:
 					stats += "%s: +%s" % [stat, int(stat_bonus * 100)] + "%\n"
 				else:
-					stats += "%s: +%s\n" % [stat, stat_bonus]
+					stats += "%s: +%s\n" % [stat,int(stat_bonus)]
 			elif stat_bonus < 0:
 				if stat_bonus > -1.0:
-					stats += "%s: -%s" % [stat, int(stat_bonus * 100)] + "%\n"
+					stats += "%s: %s" % [stat, int(stat_bonus * 100)] + "%\n"
 				else:
-					stats += "%s: %s\n" % [stat, stat_bonus]
+					stats += "%s: %s\n" % [stat, int(stat_bonus)]
 	return stats
 
 func update_sword_stats_description() -> void:
@@ -129,4 +135,6 @@ func reset_sockets() -> void:
 	PlayerStats.reset_gem_sockets()
 	update_socket_vbox()
 	update_sword_stats_description()
+	if stored_gem:
+		gem_can_mount_notice.show()
 	
