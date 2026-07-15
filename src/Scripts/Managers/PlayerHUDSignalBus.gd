@@ -126,3 +126,6 @@ signal hub_menu_exited
 
 @warning_ignore("unused_signal")
 signal bag_closed
+
+@warning_ignore("unused_signal")
+signal show_sprint_notice

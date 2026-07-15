@@ -42,6 +42,7 @@ const QUEST_COMPLETED = preload("uid://om1y244uqbs")
 
 @onready var max_slot_stack: Label = $PlayerHUD/MaxSlotStack
 
+@onready var sprint_notice: Label = $PlayerHUD/SprintNotice
 
 @onready var pick_up_notifier: VBoxContainer = $PlayerHUD/PickUpNotifier
 @onready var class_notice: RichTextLabel = $PlayerHUD/ClassNotice
@@ -113,6 +114,9 @@ func _ready() -> void:
 	PlayerHudSignalBus.hub_menu_exited.connect(show_hud)
 	
 	PlayerHudSignalBus.bag_closed.connect(show_bag)
+	
+	PlayerHudSignalBus.show_sprint_notice.connect(func() -> void: 
+		sprint_notice.show())
 	
 	#player_mp_bar.max_value = PlayerStats.player_stats["Current MP"]
 	#player_mp_bar.value = player_mp_bar.max_value

@@ -70,6 +70,8 @@ const GO_TO_JOB_BOARD = preload("uid://iqw8ymk767kl")
 const STARSPIRE_MARKET_INTRO = preload("uid://b3l8f4fxsjhu6")
 const HEAD_TO_JOB_ADVANCEMENT_CENTER_FOR_CLASS = preload("uid://bc68ocr4ayjpd")
 
+var sprint_enabled : bool = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super()
@@ -92,21 +94,23 @@ func _ready() -> void:
 	TechTreeManager.unlock_station.connect(unlock_station)
 	HubManager.check_for_node_purchase.connect(check_for_node_purchase)
 	#SignalBus.show_ap_notice.connect(show_ap_notice)
-
+	
 	TechTreeManager.update_currency_label.emit()
 	InventoryManager.show_bank_button.emit()
 	CookingManager.can_craft_bar.emit()
 	#hud.animation_player.play("CloseIn")
-	
+	GameManager.can_sprint = true
 	await get_tree().process_frame
 	
-	GameManager.event_speed_mod = 2.5
+	#GameManager.event_speed_mod = 2.5
 	PlayerHudSignalBus.update_map_name_label.emit(map_name)
 	PlayerStats.player_stats["Current MP"] = PlayerStats.player_stats["Max MP"] + PlayerStats.get_current_sword().max_mp_bonus + PlayerStats.get_total_gem_bonus("Max MP Bonus")
-	PlayerHudSignalBus.update_player_mp.emit()
-	PlayerHudSignalBus.update_player_health.emit()
+	#PlayerHudSignalBus.update_player_mp.emit()
+	#PlayerHudSignalBus.update_player_health.emit()
+	PlayerHudSignalBus.show_sprint_notice.emit()
 	SaveManager.save_player_stats()
 	QuestManager.check_map_name.emit(map_name)
+	
 	show_ap_notice()
 	show_gem_station_notice()
 	check_for_node_purchase()
@@ -146,7 +150,14 @@ func _process(delta: float) -> void:
 	if Input.is_action_pressed("interact") and player_in_market_range and can_sell_to_market and GameManager.can_open_scene:
 		player.velocity = Vector2.ZERO
 		sell_to_market(delta)
-		
+	
+	if Input.is_action_just_pressed("sprint"):
+		sprint_enabled = !sprint_enabled
+		if sprint_enabled:
+			GameManager.event_speed_mod = 2.5
+		else:
+			GameManager.event_speed_mod = 1.0
+	
 	#if Input.is_action_just_pressed("interact") and player_in_cooking_range and GameManager.player_can_move and PlayerStats.facilities_unlocked["Junk-A-Tron"]:
 		#player.velocity = Vector2.ZERO
 		#spawn_cooking_menu()
@@ -207,18 +218,16 @@ func _on_tower_area_body_entered(body: Node2D) -> void:
 		set_guide_log(guide_log, true)
 
 func show_ap_notice() -> void:
-	if PlayerStats.player_stats["Ability Points"] >= 1 and PlayerStats.player_stats["Class"] != "Junior Hunter":
-		HubManager.show_facility_notification.emit("Class Advance Center")
-		return
-	else:
-		HubManager.hide_facility_notification.emit("Class Advance Center")
-		return
 	
 	if PlayerStats.player_stats["Class"] == "Junior Hunter" and TechTreeManager.check_if_can_purchase_base_ability():
 		HubManager.show_facility_notification.emit("Class Advance Center")
 	else:
 		HubManager.hide_facility_notification.emit("Class Advance Center")
-
+	
+	if PlayerStats.player_stats["Ability Points"] >= 1 and PlayerStats.player_stats["Class"] != "Junior Hunter":
+		HubManager.show_facility_notification.emit("Class Advance Center")
+	else:
+		HubManager.hide_facility_notification.emit("Class Advance Center")
 
 func show_gem_station_notice() -> void:
 	if InventoryManager.inventories["Gem Stones"].size() > 0:

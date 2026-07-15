@@ -21,9 +21,14 @@ ambient_light_source = 2
 ambient_light_color = Color(0.65012825, 0.65012825, 0.6501284, 1)
 ambient_light_energy = 3.27
 tonemap_mode = 2
-glow_enabled = true
 fog_enabled = true
 fog_light_color = Color(0.63406277, 0.61872727, 1, 1)
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.025
+adjustment_enabled = true
+adjustment_brightness = 0.82
+adjustment_contrast = 1.16
+adjustment_saturation = 0.93
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g4fjb"]
 render_priority = 0
@@ -128,6 +133,9 @@ _data = {
 &"boatbob": SubResource("Animation_jxql7")
 }
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ru3xv"]
+albedo_color = Color(1, 1, 0, 1)
+
 [node name="MainMenuBg" type="Node3D" unique_id=1206026906]
 script = ExtResource("1_ru3xv")
 
@@ -159,3 +167,8 @@ libraries/ = SubResource("AnimationLibrary_v4njr")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=153830340]
 libraries/ = SubResource("AnimationLibrary_wcin0")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="." unique_id=2065706557]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.859394, 70.04635, -178.43132)
+material_override = SubResource("StandardMaterial3D_ru3xv")
+radius = 41.00236

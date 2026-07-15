@@ -23,6 +23,7 @@ var room_speed_bonus : float = 1.0
 var new_jobs_available : bool = false
 var license_promotion_time : bool = false
 var in_last_breadth_mode : bool = false
+var can_sprint : bool = false
 var remaining_bolt_chain_links : int = 0
 var event_multiplier : float = 1.0
 
