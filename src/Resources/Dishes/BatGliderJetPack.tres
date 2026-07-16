@@ -7,7 +7,7 @@
 script = ExtResource("1_cvef5")
 item_name = "Bat Glider Jet Pack"
 item_type = 5
-sell_value = 600
+sell_value = 450
 shop_icon = ExtResource("2_dei8g")
 sell_time = 3000.0
 description = "A Jet pack glider made of batclopse wings - The jet propulsion system works I swear! Should you try it? Well, it's up to the owners descretion. 

@@ -11,7 +11,6 @@ icon = ExtResource("2_6s0hs")
 disabled_icon = ExtResource("1_qg1fb")
 description = "Enables you to jump again while midair. (How does it work? Who knows! But extra jumps are fun!)"
 unlocked = true
-currency_required = 600
 ap_required = 2
 node_type = 2
 stat_name = "Double Jump"

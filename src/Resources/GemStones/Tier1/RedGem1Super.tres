@@ -7,13 +7,13 @@
 [resource]
 script = ExtResource("1_spva6")
 socket_graphic = ExtResource("3_bsnkf")
-drop_rate = 15.0
+drop_rate = 5.0
 flat_attack_bonus = 15.0
-flat_defense_bonus = 10.0
+flat_defense_bonus = 15.0
 status_duration_bonus = 1.0
 crit_chance_bonus = 0.25
 crit_damage_bonus = 0.15
-hit_reps = 2.0
+hit_reps = 1.0
 item_name = "Gem of The Broken I"
 item_type = 4
 sell_value = 342

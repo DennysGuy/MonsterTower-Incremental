@@ -16,6 +16,7 @@
 [ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="13_ckoov"]
 [ext_resource type="Texture2D" uid="uid://coogimgiiqd7x" path="res://Assets/CraftingMiniGame/Swords/BronzeSword/BronzeSwordMoldWhole.png" id="15_f5kk3"]
 [ext_resource type="PackedScene" uid="uid://d0s6j8mvikv8c" path="res://src/Scenes/UI/ItemSlot.tscn" id="16_dx0t1"]
+[ext_resource type="PackedScene" uid="uid://ctt7tphvaylcx" path="res://src/Scenes/UI/CraftingStations/WeaponPreview.tscn" id="16_rabgv"]
 
 [sub_resource type="Animation" id="Animation_octel"]
 resource_name = "CraftingFlash"
@@ -358,6 +359,28 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("15_f5kk3")
 expand_mode = 1
+
+[node name="SwordViewer" type="SubViewportContainer" parent="." unique_id=646757369]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -185.0
+offset_top = -342.0
+offset_right = 186.0
+offset_bottom = 314.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="SwordViewer" unique_id=69959702]
+own_world_3d = true
+handle_input_locally = false
+size = Vector2i(376, 657)
+render_target_update_mode = 4
+
+[node name="WeaponPreviewer" parent="SwordViewer/SubViewport" unique_id=1167095521 instance=ExtResource("16_rabgv")]
 
 [node name="Button" type="Button" parent="." unique_id=1905573858]
 layout_mode = 1

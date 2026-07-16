@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://fxchlb1rbpw7" path="res://Assets/Enemies/BatclopseLVL2Icon.png" id="4_o1oup"]
 [ext_resource type="AudioStream" uid="uid://b1pfjqsau4d6s" path="res://Audio/SFX/Enemies/Batclopse/BatclopseHit2.wav" id="5_mgiws"]
 [ext_resource type="AudioStream" uid="uid://cowu8mh3gwms2" path="res://Audio/SFX/Enemies/Batclopse/BatclopseHit3.wav" id="6_s0w1q"]
+[ext_resource type="Resource" uid="uid://dwasueaasq7mq" path="res://src/Resources/Actors/Enemies/Biome1/Batclopse/BatclopseFoot.tres" id="8_jwl83"]
 
 [resource]
 script = ExtResource("4_njnt0")
@@ -32,7 +33,7 @@ hit_vox_1 = ExtResource("4_4eqj6")
 hit_vox_2 = ExtResource("5_mgiws")
 hit_vox_3 = ExtResource("6_s0w1q")
 die_vox = ExtResource("3_jwl83")
-novelty_item_drop = ExtResource("1_bv2lu")
+novelty_item_drop = ExtResource("8_jwl83")
 cooking_item_drop = ExtResource("1_bv2lu")
 crafting_item_drop = ExtResource("2_o1oup")
 metadata/_custom_type_script = "uid://cbjktr12qagl"

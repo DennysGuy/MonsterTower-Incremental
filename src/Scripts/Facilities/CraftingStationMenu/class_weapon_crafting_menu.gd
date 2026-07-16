@@ -20,6 +20,7 @@ class_name ClassWeaponCraftingMenu extends Control
 @onready var warrior_weapon_container: GridContainer = $ForeGround/WarriorWeaponContainer
 @onready var weapon_mold_graphic: TextureRect = $ForeGround/WeaponMoldGraphic
 @onready var action_button: Button = $ForeGround/ActionButton
+@onready var weapon_previewer: WeaponPreviewer = $ForeGround/SubViewportContainer2/SubViewport/WeaponPreviewer
 
 @export var stored_weapon : Sword
 
@@ -45,6 +46,11 @@ func _ready() -> void:
 		Dialogic.start(NEW_WEAPON_CRAFTING_STATION_UPDATE_SCENE)
 		GameManager.first_class_just_unlocked = false
 	
+	if PlayerStats.player_stats["Tracked Weapon"] != -1:
+		select_weapon(PlayerStats.get_sword(PlayerStats.player_stats["Tracked Weapon"]))
+	else:
+		select_weapon(PlayerStats.get_current_sword())
+		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("close_menu"):
@@ -136,13 +142,16 @@ func show_inventory(bag_name : String) -> void:
 	inventory_title.text = bag_name
 
 func select_weapon(weapon : Sword) -> void:
+	weapon.unlocked = SaveManager.get_weapon_unlocked_status(weapon.index)
+	weapon.is_tracked = SaveManager.get_weapon_tracked_status(weapon.index)
 	stored_weapon = weapon
 	weapon_name.text = stored_weapon.sword_name
 	if weapon.unlocked:
 		weapon_mold_graphic.texture = weapon.graphic
 	else:
 		weapon_mold_graphic.texture = weapon.mold_graphic
-		
+	
+	weapon_previewer.show_chosen_weapon(weapon)
 	description_label.text = stored_weapon.description
 	stat_bonuses_label.text = stored_weapon.get_stats_description()
 	populate_ingredients_list(stored_weapon)

@@ -254,7 +254,6 @@ HUNTERS"
 horizontal_alignment = 1
 
 [node name="NewGame" type="Button" parent="." unique_id=2136236947]
-visible = false
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 8
@@ -274,7 +273,6 @@ theme_override_font_sizes/font_size = 52
 text = "New Game"
 
 [node name="Label" type="Label" parent="NewGame" unique_id=1593392645]
-visible = false
 layout_mode = 0
 offset_left = 285.5
 offset_top = 14.0
@@ -286,7 +284,6 @@ theme_override_font_sizes/font_size = 28
 text = "Automatic Saves!"
 
 [node name="SettingsButton" type="Button" parent="." unique_id=1229451050]
-visible = false
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 8
@@ -306,7 +303,6 @@ theme_override_font_sizes/font_size = 52
 text = "Settings"
 
 [node name="Continue" type="Button" parent="." unique_id=1382076943]
-visible = false
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 8
@@ -326,7 +322,6 @@ theme_override_font_sizes/font_size = 52
 text = "Continue"
 
 [node name="SphLogoAttempt1" type="TextureRect" parent="." unique_id=485859347]
-visible = false
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = -56.0
@@ -410,7 +405,6 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_36jow")
 text = "NO!"
 
 [node name="Version" type="Label" parent="." unique_id=2118438097]
-visible = false
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -430,7 +424,6 @@ text = "Build 0.1.0-prealpha.1"
 libraries/ = SubResource("AnimationLibrary_gwjs1")
 
 [node name="ColorRect2" type="ColorRect" parent="." unique_id=77706881]
-visible = false
 layout_mode = 0
 offset_left = 62.0
 offset_top = 877.0
@@ -439,7 +432,6 @@ offset_bottom = 948.0
 color = Color(0.09019608, 0.101960786, 0.12941177, 1)
 
 [node name="SteamButton" type="TextureButton" parent="ColorRect2" unique_id=33854900]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -456,7 +448,6 @@ scale = Vector2(0.75, 0.75)
 texture_normal = ExtResource("7_36jow")
 
 [node name="DiscordButton" type="TextureButton" parent="." unique_id=537814398]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -473,7 +464,6 @@ scale = Vector2(0.75, 0.75)
 texture_normal = ExtResource("8_i8a4m")
 
 [node name="LinkButton" type="LinkButton" parent="." unique_id=157308701]
-visible = false
 layout_mode = 0
 offset_left = 58.0
 offset_top = 976.0
@@ -495,7 +485,6 @@ stream = ExtResource("7_gj8tx")
 bus = &"Ambience"
 
 [node name="SteamLink" type="LinkButton" parent="." unique_id=1252801515]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -517,7 +506,6 @@ underline = 1
 uri = "https://store.steampowered.com/app/4937380/Starspire_Hunters/"
 
 [node name="DiscordLink" type="LinkButton" parent="." unique_id=553924734]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -530,7 +518,7 @@ offset_right = 75.0
 offset_bottom = 326.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.34509805, 0.39607844, 0.9490196, 1)
+theme_override_colors/font_color = Color(0.20543182, 0.19488814, 0.7398409, 1)
 theme_override_colors/font_hover_color = Color(0.09114178, 0.7283745, 0.7207609, 1)
 theme_override_fonts/font = ExtResource("8_4c8q5")
 theme_override_font_sizes/font_size = 40

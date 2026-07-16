@@ -11,7 +11,6 @@ icon = ExtResource("2_er7tf")
 disabled_icon = ExtResource("1_3e0cb")
 description = "While airborne, swing your sword upward to strike enemies above you."
 unlocked = true
-currency_required = 200
 ap_required = 1
 node_type = 2
 stat_name = "Arial Slash"

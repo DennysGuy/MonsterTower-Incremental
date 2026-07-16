@@ -14,6 +14,7 @@ class_name CraftingStationMenu extends Control
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var bag_bg: TextureRect = $BagBG
 @onready var inventory_label: Label = $InventoryLabel
+@onready var weapon_previewer: WeaponPreviewer = $SwordViewer/SubViewport/WeaponPreviewer
 
 @onready var sfx_player: SFXPlayer = $SfxPlayer
 const CRAFT_SWORD = preload("uid://4c6l1w0kpar3")
@@ -24,6 +25,7 @@ var sword : Sword
 
 const GEAR_STATION_DROPS_BAG_BG = preload("uid://dqrwhfhixd1io")
 const GEAR_STATION_USE_BAG_BG = preload("uid://b5o4unayrrfi")
+
 
 var selected_bag : String = "Drops"
 
@@ -105,10 +107,11 @@ func update_sword() -> void: #run this function when we upgrade the sword.
 			
 		if can_craft:
 			button.disabled = false
-			sword_graphic.texture = sword.graphic
+			#sword_graphic.texture = sword.graphic
 		else:
 			button.disabled = true
-			sword_graphic.texture = sword.mold_graphic
+			#sword_graphic.texture = sword.mold_graphic
+		weapon_previewer.show_chosen_weapon(sword)
 		QuestManager.weapon_tracker_updated.emit()
 		SignalBus.update_resource_needed_panel.emit()
 

@@ -12,7 +12,7 @@ index = 4
 recipe_tier = 1
 recipe_type = 2
 recipe_list = Array[Dictionary]([{
-ExtResource("1_mpqa4"): 2
+ExtResource("1_mpqa4"): 4
 }, {
 ExtResource("2_cwajh"): 2
 }, {

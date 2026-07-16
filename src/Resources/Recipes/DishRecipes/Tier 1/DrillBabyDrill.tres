@@ -18,9 +18,9 @@ recipe_type = 1
 success_rate = 0.8
 output_item = ExtResource("2_e3v6q")
 recipe_list = Array[Dictionary]([{
-ExtResource("4_7opju"): 1
+ExtResource("4_7opju"): 2
 }, {
-ExtResource("4_tpb3m"): 1
+ExtResource("4_tpb3m"): 2
 }])
 related_enemies = Array[String](["Beetle Knight", "Beetle Knight LVL2"])
 metadata/_custom_type_script = "uid://cljygiasf4103"

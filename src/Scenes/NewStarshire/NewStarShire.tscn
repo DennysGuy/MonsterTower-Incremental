@@ -1110,13 +1110,6 @@ physics_object_picking = true
 size = Vector2i(640, 360)
 render_target_update_mode = 0
 
-[node name="ClassAdvanceCenterNotice" parent="." unique_id=9896759 instance=ExtResource("23_0u15j")]
-offset_left = 444.0
-offset_top = 473.0
-offset_right = 598.0
-offset_bottom = 618.0
-facility_name = "Class Advance Center"
-
 [node name="UpgradesPCNotice" parent="." unique_id=765676355 instance=ExtResource("23_0u15j")]
 offset_left = 245.0
 offset_top = 556.0
@@ -1158,6 +1151,13 @@ offset_top = 507.0
 offset_right = 946.0
 offset_bottom = 652.0
 facility_name = "Junk-A-Tron"
+
+[node name="ClassAdvanceCenterNotice" parent="." unique_id=9896759 instance=ExtResource("23_0u15j")]
+offset_left = 442.0
+offset_top = 464.5
+offset_right = 596.0
+offset_bottom = 609.5
+facility_name = "Class Advance Center"
 
 [node name="BulkSellerNotice" parent="." unique_id=512282250 instance=ExtResource("23_0u15j")]
 offset_left = 1107.0

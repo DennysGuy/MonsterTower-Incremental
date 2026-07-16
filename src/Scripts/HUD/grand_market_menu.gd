@@ -130,6 +130,7 @@ func close_out() -> void:
 	CookingManager.can_craft_dish.emit()
 	
 	PlayerHudSignalBus.hub_menu_exited.emit()
+	HubManager.check_for_node_purchase.emit()
 	await get_tree().create_timer(0.3).timeout
 	SignalBus.hide_tech_tree_canvas_layer.emit()
 	CutsceneManager.enable_player_functionality()

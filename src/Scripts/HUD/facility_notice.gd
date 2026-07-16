@@ -26,5 +26,7 @@ func show_notice_icon(facility_name : String) -> void:
 		notice_icon.show()
 
 func hide_notice_icon(facility_name : String) -> void:
+
 	if self.facility_name == facility_name:
+		print(facility_name)
 		notice_icon.hide()

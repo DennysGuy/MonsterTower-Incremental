@@ -8,6 +8,7 @@ class_name NewStarShireMap extends Map
 @onready var access_crafting_station: Label = $AccessCraftingStation
 @onready var canvas_layer: CanvasLayer = $CanvasLayer
 @onready var dojo_position: Node2D = $DojoPosition
+@onready var class_advance_center_notice: FacilityNotice = $ClassAdvanceCenterNotice
 
 var sell_speed_timer : float = 0.0
 var sell_speed : float = 100
@@ -99,7 +100,6 @@ func _ready() -> void:
 	InventoryManager.show_bank_button.emit()
 	CookingManager.can_craft_bar.emit()
 	#hud.animation_player.play("CloseIn")
-	GameManager.can_sprint = true
 	await get_tree().process_frame
 	
 	#GameManager.event_speed_mod = 2.5
@@ -114,6 +114,9 @@ func _ready() -> void:
 	show_ap_notice()
 	show_gem_station_notice()
 	check_for_node_purchase()
+	
+	sprint_enabled = true
+	GameManager.event_speed_mod = 2.5
 	
 	if !GameManager.market_intro_cutscene_played:
 		MusicPlayer.stop_player()
@@ -218,16 +221,12 @@ func _on_tower_area_body_entered(body: Node2D) -> void:
 		set_guide_log(guide_log, true)
 
 func show_ap_notice() -> void:
-	
 	if PlayerStats.player_stats["Class"] == "Junior Hunter" and TechTreeManager.check_if_can_purchase_base_ability():
 		HubManager.show_facility_notification.emit("Class Advance Center")
-	else:
-		HubManager.hide_facility_notification.emit("Class Advance Center")
 	
 	if PlayerStats.player_stats["Ability Points"] >= 1 and PlayerStats.player_stats["Class"] != "Junior Hunter":
 		HubManager.show_facility_notification.emit("Class Advance Center")
-	else:
-		HubManager.hide_facility_notification.emit("Class Advance Center")
+
 
 func show_gem_station_notice() -> void:
 	if InventoryManager.inventories["Gem Stones"].size() > 0:

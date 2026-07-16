@@ -37,6 +37,8 @@ func close_out() -> void:
 	PlayerHudSignalBus.hub_menu_exited.emit()
 	await get_tree().create_timer(0.3).timeout
 	SignalBus.hide_tech_tree_canvas_layer.emit()
+	if PlayerStats.player_stats["Ability Points"] <= 0:
+		HubManager.hide_facility_notification.emit("Class Advance Center")
 	queue_free()
 
 func update_ap_available() -> void:

@@ -83,7 +83,7 @@ TODO: We will add saves for classes as well
 	"Cooking Accuracy Bonus":0.0,
 	"Ore Drop Chance Bonus":0.0,
 	"Smelting Accuracy Bonus":0.0,
-	"Tier 1 Chest Spawn Rate": 0.25,
+	"Tier 1 Chest Spawn Rate": 0.18,
 	"Tier 1 Gem Drop Rate":0.3,
 	"Chalice Spawn Rate":0.12,
 	"Vial Spawn Rate": 0.12,

@@ -86,11 +86,12 @@ func attack_enemies(enemies_in_hitbox : Array, enemies_hit : int = 1, number_of_
 			var label_position : int = 60
 			while i < attack_reps:
 				#enemy.sfx_player.play()
-				attack_enemy(player, enemy, damage, is_crit, 0, is_warrior, label_position, ability)
+				if is_inside_tree() and  is_instance_valid(enemy) and is_instance_valid(player):
+					attack_enemy(player, enemy, damage, is_crit, 0, is_warrior, label_position, ability)
 
-				i += 1
-				label_position += 25
-				await player.get_tree().create_timer(0.1).timeout
+					i += 1
+					label_position += 25
+					await player.get_tree().create_timer(0.1).timeout
 			
 			if is_instance_valid(enemy) and enemy.health <= 0:
 				enemies_in_hitbox.erase(enemy)

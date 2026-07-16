@@ -11,7 +11,6 @@ icon = ExtResource("2_x24pw")
 disabled_icon = ExtResource("1_jo0k4")
 description = "Perform a quick dash to slip past enemies without taking damage - perfect for escaping dangerous situations!"
 unlocked = true
-currency_required = 400
 ap_required = 3
 node_type = 2
 stat_name = "Dash"
