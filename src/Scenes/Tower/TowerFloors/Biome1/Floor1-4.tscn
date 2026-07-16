@@ -308,7 +308,7 @@ position = Vector2(131, 913)
 position = Vector2(162, 2530)
 current_floor_data = ExtResource("2_2x8us")
 prev_floor_data = ExtResource("2_xkl8j")
-last_spawn_point = 3
+last_spawn_point = 2
 
 [node name="ExitElevator" parent="." unique_id=1919973186 instance=ExtResource("30_fpe1o")]
 position = Vector2(473, 320)
