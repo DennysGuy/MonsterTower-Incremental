@@ -47,7 +47,7 @@ var apply_gravity : bool = true
 var health : float
 
 func _ready() -> void:
-	if sprite:
+	if sprite and sprite.material:
 		sprite.material = sprite.material.duplicate()
 		
 	state_machine.init(self)

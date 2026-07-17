@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://cgvncy880e61b" path="res://src/Scripts/Enemies/Batclopse/batclopse.gd" id="1_c8xig"]
 [ext_resource type="Resource" uid="uid://0y733wkj0ion" path="res://src/Resources/Actors/Enemies/Biome1/SerpantMimic/SerpantMimic.tres" id="2_ti6sb"]
-[ext_resource type="Shader" uid="uid://cguloil4ymho" path="res://src/Scripts/Shaders/HitFlash.gdshader" id="3_fy5n3"]
 [ext_resource type="Texture2D" uid="uid://cpswhrjwnla1t" path="res://Assets/Enemies/CyclopsBat/CyclopseBat_Outline_IdleMove.png" id="3_jhieg"]
 [ext_resource type="PackedScene" uid="uid://vo5sm7p34vo6" path="res://src/Scenes/Actors/Utilities/NameTag.tscn" id="4_x7rds"]
 [ext_resource type="PackedScene" uid="uid://b8lilr7mgc8l1" path="res://src/Scenes/Actors/Enemies/EnemyHealthBar.tscn" id="5_dcpb5"]
@@ -33,11 +32,6 @@
 [ext_resource type="PackedScene" uid="uid://xsmgmpbxjc3b" path="res://src/Scenes/Actors/Utilities/HitBox.tscn" id="29_6ju2n"]
 [ext_resource type="PackedScene" uid="uid://dg5nyfcc7ja8v" path="res://src/Scenes/Actors/Enemies/StatusEffectIconBar.tscn" id="30_svh1v"]
 [ext_resource type="PackedScene" uid="uid://ducu4iluu5nv4" path="res://src/Scenes/UI/StatusEffectVBox.tscn" id="31_av6js"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1owtw"]
-shader = ExtResource("3_fy5n3")
-shader_parameter/active = false
-shader_parameter/flash_strength = 0.8
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f4ywy"]
 size = Vector2(39, 42)
@@ -430,7 +424,6 @@ sfx_player = NodePath("SfxPlayer")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=958977099]
 modulate = Color(1, 1, 1, 0)
-material = SubResource("ShaderMaterial_1owtw")
 position = Vector2(0, -36)
 texture = ExtResource("3_jhieg")
 hframes = 6

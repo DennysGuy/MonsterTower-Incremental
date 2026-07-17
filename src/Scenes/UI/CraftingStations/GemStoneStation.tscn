@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dqdnfqgin24gv" path="res://Assets/CraftingMiniGame/Swords/BronzeSword/BronzeSwordWhole.png" id="3_pchp5"]
 [ext_resource type="PackedScene" uid="uid://d0s6j8mvikv8c" path="res://src/Scenes/UI/ItemSlot.tscn" id="4_ad6b6"]
 [ext_resource type="FontFile" uid="uid://3dovpys2he1l" path="res://Assets/Fonts/Moodcake.ttf" id="5_36dn7"]
+[ext_resource type="PackedScene" uid="uid://ctt7tphvaylcx" path="res://src/Scenes/UI/CraftingStations/WeaponPreview.tscn" id="5_jryx7"]
 [ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="5_u8s2g"]
 [ext_resource type="FontFile" uid="uid://stn4dtg0uw57" path="res://Assets/Fonts/FredokaOne-Regular.ttf" id="6_ln2ij"]
 [ext_resource type="Texture2D" uid="uid://bggsgp4t53q5y" path="res://Assets/HUD/NoticeIcon.png" id="7_jryx7"]
@@ -130,6 +131,25 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_pchp5")
 expand_mode = 1
+
+[node name="SwordPreviewContainer" type="SubViewportContainer" parent="." unique_id=1132334265]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -445.0
+offset_top = -344.0
+offset_right = -65.0
+offset_bottom = 325.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="SwordPreviewContainer" unique_id=1794176672]
+size = Vector2i(376, 660)
+
+[node name="WeaponPreviewer" parent="SwordPreviewContainer/SubViewport" unique_id=1167095521 instance=ExtResource("5_jryx7")]
 
 [node name="GemDescription" type="Panel" parent="." unique_id=578922609]
 layout_mode = 1

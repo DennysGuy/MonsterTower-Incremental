@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://c18kl4e5qbfcn" path="res://Assets/Enemies/BeatleKnight/BeatleKnight_LVL2_Hurt.png" id="5_yhd3b"]
 [ext_resource type="Texture2D" uid="uid://b07gfvpouei6r" path="res://Assets/Enemies/BeatleKnight/BeatleKnight_LVL2_Idle.png" id="6_l8hmd"]
 [ext_resource type="Texture2D" uid="uid://bwsaud365nxdo" path="res://Assets/Enemies/CorruptedMushie/CorruptedMushie_Idle.png" id="7_jrw2w"]
-[ext_resource type="Shader" uid="uid://cguloil4ymho" path="res://src/Scripts/Shaders/HitFlash.gdshader" id="9_l8hmd"]
 [ext_resource type="PackedScene" uid="uid://vo5sm7p34vo6" path="res://src/Scenes/Actors/Utilities/NameTag.tscn" id="9_pgbw2"]
 [ext_resource type="Texture2D" uid="uid://1p5c2mnobrgm" path="res://Assets/Enemies/BeatleKnight/BeatleKnight_LVL2_Stun.png" id="9_yhd3b"]
 [ext_resource type="PackedScene" uid="uid://b8lilr7mgc8l1" path="res://src/Scenes/Actors/Enemies/EnemyHealthBar.tscn" id="10_ivfpa"]
@@ -387,11 +386,6 @@ _data = {
 &"Stun": SubResource("Animation_rxq5f")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_iu3cg"]
-shader = ExtResource("9_l8hmd")
-shader_parameter/active = false
-shader_parameter/flash_strength = 0.8
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s7mdw"]
 radius = 11.0
 height = 42.0
@@ -435,7 +429,6 @@ libraries/ = SubResource("AnimationLibrary_adl3q")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2103855697]
 modulate = Color(1, 1, 1, 0)
-material = SubResource("ShaderMaterial_iu3cg")
 position = Vector2(0, -41)
 texture = ExtResource("7_jrw2w")
 hframes = 8

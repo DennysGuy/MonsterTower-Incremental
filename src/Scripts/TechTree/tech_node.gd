@@ -85,10 +85,13 @@ func _ready() -> void:
 	
 	if not TechTreeManager.check_node_prereqs.is_connected(check_prereqs):
 		TechTreeManager.check_node_prereqs.connect(check_prereqs)
-
+	
+	SignalBus.novelty_invention_sold.connect(check_if_can_purchase)
 	TechTreeManager.check_if_can_purchase_node.connect(check_if_can_purchase)
 	TechTreeManager.save_node_data.connect(save_node_data)
 	set_level_label()
+	
+
 	
 	if tech_node_stats.get_cost() > 0:
 		current_cost = tech_node_stats.get_cost()

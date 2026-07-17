@@ -79,15 +79,15 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 49.0
-offset_top = 40.0
-offset_right = -217.0
-offset_bottom = -125.0
+offset_top = 17.0
+offset_right = -7.0
+offset_bottom = -94.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("2_17ifk")
 theme_override_font_sizes/font_size = 42
-text = "Welcome to Starspire Hunters!
+text = "Welcome to Starspire Hunters! 
 
 What you're about to play is an early Pre-Alpha proof-of-concept build designed to showcase the game's core vision and direction.
 

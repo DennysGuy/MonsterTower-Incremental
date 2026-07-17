@@ -23,6 +23,8 @@ class_name Enemy extends Entity
 var slow_factor : float = 1.0
 var current_break_count : int = 0
 
+const HIT_FLASH_MATERIAL = preload("uid://b754xqklvswat")
+
 
 func _ready() -> void:
 	super()
@@ -146,3 +148,6 @@ func give_xp() -> void:
 	drop_scene.add_child(xp_label)
 	SaveManager.save_player_stats()
 	LevelingManager.check_for_level_up()
+
+func set_enemy_hit_flash_material() -> void:
+	sprite.material = HIT_FLASH_MATERIAL.duplicate()

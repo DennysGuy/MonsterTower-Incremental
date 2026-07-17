@@ -12,7 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://bb4khjrwxs0h2" path="res://Assets/Enemies/CorruptedMushie/CorruptedMushie_lvl2_Stun.png" id="9_j4mso"]
 [ext_resource type="PackedScene" uid="uid://b8lilr7mgc8l1" path="res://src/Scenes/Actors/Enemies/EnemyHealthBar.tscn" id="9_q6dtb"]
 [ext_resource type="Script" uid="uid://drr0deykmfrvq" path="res://src/Scripts/StateMachine/state_machine.gd" id="10_8ggvx"]
-[ext_resource type="Shader" uid="uid://cguloil4ymho" path="res://src/Scripts/Shaders/HitFlash.gdshader" id="10_m3cxu"]
 [ext_resource type="Script" uid="uid://bwlb4547lknf" path="res://src/Scripts/StateMachine/EnemyStates/GenericEnemyStates/enemy_idle.gd" id="11_3wrxv"]
 [ext_resource type="Script" uid="uid://c6fw5ii2hdria" path="res://src/Scripts/StateMachine/EnemyStates/GenericEnemyStates/enemy_patrol.gd" id="12_4wuwh"]
 [ext_resource type="Script" uid="uid://bl81lc5if28vq" path="res://src/Scripts/StateMachine/EnemyStates/GenericEnemyStates/enemy_hit.gd" id="13_mcbq8"]
@@ -389,9 +388,6 @@ _data = {
 }
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_w04hu"]
-shader = ExtResource("10_m3cxu")
-shader_parameter/active = false
-shader_parameter/flash_strength = 0.850000040375
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s7mdw"]
 radius = 11.0
@@ -403,7 +399,7 @@ size = Vector2(23, 30)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v37cp"]
 size = Vector2(18, 24)
 
-[node name="CorruptedMushie" type="CharacterBody2D" unique_id=1085916055 node_paths=PackedStringArray("name_tag", "health_bar", "graphic", "status_effect_icon_bar", "vertical_status_icon_bar", "slow_timer", "silenced_timer", "wall_detector", "ground_detector", "state_machine", "animation_player", "health_component", "sprite", "blink_timer", "stun_timer", "hurt_box", "hit_box", "hit_state", "dead_state", "stun_state", "sfx_player") groups=["Enemy"]]
+[node name="CorruptedMushie" type="CharacterBody2D" unique_id=1085916055 node_paths=PackedStringArray("name_tag", "health_bar", "status_effect_icon_bar", "vertical_status_icon_bar", "slow_timer", "silenced_timer", "wall_detector", "ground_detector", "state_machine", "animation_player", "health_component", "sprite", "blink_timer", "stun_timer", "hurt_box", "hit_box", "hit_state", "dead_state", "stun_state", "sfx_player") groups=["Enemy"]]
 collision_layer = 128
 collision_mask = 2
 script = ExtResource("1_61466")
@@ -411,7 +407,6 @@ enemy_stats = ExtResource("2_61466")
 xp = 12
 name_tag = NodePath("NameTag")
 health_bar = NodePath("EnemyHealthBar")
-graphic = NodePath("Sprite2D")
 status_effect_icon_bar = NodePath("StatusEffectIconBar")
 vertical_status_icon_bar = NodePath("VBoxContainer")
 slow_timer = NodePath("SlowTimer")

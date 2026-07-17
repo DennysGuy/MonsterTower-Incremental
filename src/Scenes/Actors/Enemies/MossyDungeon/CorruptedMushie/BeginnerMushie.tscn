@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://bkkw4stqor8oa" path="res://Assets/Enemies/CorruptedMushie/CorruptedMushie_move.png" id="7_cnxh3"]
 [ext_resource type="Texture2D" uid="uid://c7tk2ex008crn" path="res://Assets/Enemies/CorruptedMushie/CorruptedMushie_Stun.png" id="8_hnkf4"]
 [ext_resource type="PackedScene" uid="uid://vo5sm7p34vo6" path="res://src/Scenes/Actors/Utilities/NameTag.tscn" id="9_26q2r"]
-[ext_resource type="Shader" uid="uid://cguloil4ymho" path="res://src/Scripts/Shaders/HitFlash.gdshader" id="9_v7hog"]
 [ext_resource type="PackedScene" uid="uid://b8lilr7mgc8l1" path="res://src/Scenes/Actors/Enemies/EnemyHealthBar.tscn" id="10_vlo5c"]
 [ext_resource type="Script" uid="uid://drr0deykmfrvq" path="res://src/Scripts/StateMachine/state_machine.gd" id="11_lp64k"]
 [ext_resource type="Script" uid="uid://bwlb4547lknf" path="res://src/Scripts/StateMachine/EnemyStates/GenericEnemyStates/enemy_idle.gd" id="12_22s4i"]
@@ -387,11 +386,6 @@ _data = {
 &"Stun": SubResource("Animation_rxq5f")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5qron"]
-shader = ExtResource("9_v7hog")
-shader_parameter/active = false
-shader_parameter/flash_strength = 0.8
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s7mdw"]
 radius = 11.0
 height = 42.0
@@ -435,7 +429,6 @@ libraries/ = SubResource("AnimationLibrary_adl3q")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2103855697]
 modulate = Color(1, 1, 1, 0)
-material = SubResource("ShaderMaterial_5qron")
 position = Vector2(0, -28)
 texture = ExtResource("6_18mxm")
 hframes = 8

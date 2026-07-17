@@ -635,8 +635,8 @@ func sell_to_market(delta: float) -> void:
 
 	if sell_speed_timer <= 0:
 		var item: JunkInteractable = player.junk_picked_up.front()
-		item.set_to_sold(grand_market_position)
-		sell_speed_timer = get_sell_time()
+		if item.set_to_sold(grand_market_position):
+			sell_speed_timer = get_sell_time()
 
 	sell_speed_timer -= delta
 

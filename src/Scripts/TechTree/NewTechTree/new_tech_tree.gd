@@ -49,9 +49,12 @@ func _ready() -> void:
 	TechTreeManager.check_for_tech_node_purchases.connect(check_for_purchases)
 	CutsceneManager.disable_close_function.connect(disable_close_function)
 	CutsceneManager.enable_close_function.connect(enable_close_function)
+	
+	SignalBus.novelty_invention_sold.connect(update_can_purchase)
 	check_for_purchases()
 	MusicPlayer.pause_music()
 	music_player.play()
+	
 	play_sfx(ENTER_TECH_TREE)
 	SignalBus.flash_screen.connect(flash_screen)
 	SignalBus.close_message_panel.connect(remove_message_panel)
@@ -397,6 +400,10 @@ func check_for_purchases() -> void:
 				TechTreeManager.STAT_RELATION.CRAFTING:
 					crafting_notification_icon.show()
 
+
+func update_can_purchase() -> void:
+	currency_label.text = "Spirols %s" % [TechTreeManager.currency]
+	check_for_purchases()
 
 func can_purchase(tech_node_stats : TechNodeStats) -> bool:
 	if SaveManager.current_save_game:

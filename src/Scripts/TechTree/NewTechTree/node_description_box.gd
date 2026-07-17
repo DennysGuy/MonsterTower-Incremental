@@ -13,9 +13,8 @@ class_name NodeDescriptionBox extends Control
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	TechTreeManager.update_tool_tip_info.connect(update_info)
-	
+	SignalBus.novelty_invention_sold.connect(update_info)
 
-	
 	populate_resources_needed_list()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.

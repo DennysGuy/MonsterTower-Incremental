@@ -18,6 +18,8 @@ const GEM_STATION_GEM_BAG_BG = preload("uid://chft1dsfmivtq")
 @onready var sword_details: RichTextLabel = $DescriptionPanel/SwordDetails
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
+@onready var weapon_previewer: WeaponPreviewer = $SwordPreviewContainer/SubViewport/WeaponPreviewer
+
 var stored_slot_index : int = -1
 var stored_gem : GemStone
 var selected_bag : String
@@ -27,6 +29,7 @@ func _ready() -> void:
 	InventoryManager.populate_market_menu.connect(populate_gem_details)
 	sword_name.text = PlayerStats.get_current_sword().sword_name
 	equipped_sword_graphic.texture = PlayerStats.get_current_sword().graphic
+	weapon_previewer.show_chosen_weapon(PlayerStats.get_current_sword())
 	update_sword_stats_description()
 	selected_bag = "Gem Stones"
 	update_gem_bag_container(selected_bag)

@@ -112,7 +112,7 @@ TODO: We will add saves for classes as well
 #loaded when entering a space that requires this
 @export var tower_entrance_data : Dictionary = {
 	"Floor 1-1" : {
-		"Number of Spawn Locations" : 0,
+		"Number of Spawn Locations" : 1,
 		"Campfires Reached": 0,
 		"Times Entered": 0,
 		"Hunt Challenge Unlocked": false,
@@ -181,7 +181,7 @@ TODO: We will add saves for classes as well
 }
 
 @export var check_points_unlocked : Dictionary = {
-	"Floor 1-1" : false,
+	"Floor 1-1" : true,
 	"Floor 1-2" : false,
 	"Floor 1-3" : false,
 	"Floor 1-4" : false,

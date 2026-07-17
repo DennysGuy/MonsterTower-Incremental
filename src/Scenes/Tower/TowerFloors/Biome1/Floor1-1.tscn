@@ -26,6 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://cm6ttxlrvgkvd" path="res://src/Scenes/Tower/TowerFloors/ChalicePositionMarker.tscn" id="21_rayuj"]
 [ext_resource type="PackedScene" uid="uid://cpb0pkf7ygatb" path="res://src/Scenes/Tower/TowerFloors/MonsterSpawnNode.tscn" id="23_6qxhp"]
 [ext_resource type="PackedScene" uid="uid://c6tv3t1cpeq8f" path="res://src/Scenes/PlayerSpawnPoint.tscn" id="23_jmmg4"]
+[ext_resource type="Texture2D" uid="uid://csolcgmvdd87r" path="res://Assets/EnvironmentalAssets/DirectionalSigns_BToOpenBag.png" id="23_pm5vn"]
 [ext_resource type="Texture2D" uid="uid://cjvogunuws1js" path="res://Assets/EnvironmentalAssets/DirectionalSigns_JumpNode.png" id="24_pm5vn"]
 [ext_resource type="Resource" uid="uid://dbb7k6hptjvyy" path="res://src/Resources/TowerEntranceData/Floor1-2.tres" id="26_cvbrj"]
 [ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="26_r86ak"]
@@ -1337,6 +1338,10 @@ position = Vector2(142, 926)
 [node name="DirectionalSignsJumpNode" type="Sprite2D" parent="." unique_id=700501072]
 position = Vector2(311, 576)
 texture = ExtResource("24_pm5vn")
+
+[node name="DirectionalSignsJumpNode2" type="Sprite2D" parent="." unique_id=658249902]
+position = Vector2(306, 928)
+texture = ExtResource("23_pm5vn")
 
 [node name="GuideLog" parent="." unique_id=555641949 instance=ExtResource("15_om3xh")]
 

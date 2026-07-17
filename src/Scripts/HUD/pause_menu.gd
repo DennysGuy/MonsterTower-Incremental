@@ -51,6 +51,8 @@ func _on_control_settings_button_up() -> void:
 func _on_save_and_menu_button_up() -> void:
 	SaveManager.save_game()
 	MusicPlayer.stop_player()
+	get_tree().paused = false
+	get_tree().process_frame
 	get_tree().change_scene_to_file("uid://babypuakc7i7y")
 
 func _on_quit_game_button_up() -> void:

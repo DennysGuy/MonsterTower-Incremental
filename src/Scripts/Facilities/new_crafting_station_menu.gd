@@ -118,6 +118,9 @@ func clear_ingredients_list() -> void:
 		child.queue_free()
 
 func _on_craft_1_button_button_up() -> void:
+	craft_1_button.disabled = true
+	craft_5_button.disabled = true
+	craft_all_button.disabled = true
 	station.start_crafting(stored_recipe, stored_amount)
 	play_spawn_out()
 

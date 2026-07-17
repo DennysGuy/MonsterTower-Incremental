@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://cgvncy880e61b" path="res://src/Scripts/Enemies/Batclopse/batclopse.gd" id="1_fhkns"]
 [ext_resource type="Resource" uid="uid://d4h3fsu5cbkti" path="res://src/Resources/Actors/Enemies/Biome1/Batclopse/BatclopseLVL2.tres" id="2_iaab1"]
 [ext_resource type="Texture2D" uid="uid://cpswhrjwnla1t" path="res://Assets/Enemies/CyclopsBat/CyclopseBat_Outline_IdleMove.png" id="3_kb5j1"]
-[ext_resource type="Shader" uid="uid://cguloil4ymho" path="res://src/Scripts/Shaders/HitFlash.gdshader" id="3_tfvaq"]
 [ext_resource type="PackedScene" uid="uid://vo5sm7p34vo6" path="res://src/Scenes/Actors/Utilities/NameTag.tscn" id="4_hcr1m"]
 [ext_resource type="PackedScene" uid="uid://b8lilr7mgc8l1" path="res://src/Scenes/Actors/Enemies/EnemyHealthBar.tscn" id="5_bug6g"]
 [ext_resource type="PackedScene" uid="uid://b73ndgmav7ja2" path="res://src/Scenes/Actors/Utilities/HealthComponent.tscn" id="6_muvs4"]
@@ -33,11 +32,6 @@
 [ext_resource type="PackedScene" uid="uid://xsmgmpbxjc3b" path="res://src/Scenes/Actors/Utilities/HitBox.tscn" id="29_yhhlf"]
 [ext_resource type="PackedScene" uid="uid://dg5nyfcc7ja8v" path="res://src/Scenes/Actors/Enemies/StatusEffectIconBar.tscn" id="30_t32ru"]
 [ext_resource type="PackedScene" uid="uid://ducu4iluu5nv4" path="res://src/Scenes/UI/StatusEffectVBox.tscn" id="31_y4gdm"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8ual2"]
-shader = ExtResource("3_tfvaq")
-shader_parameter/active = false
-shader_parameter/flash_strength = 0.800000038
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f4ywy"]
 size = Vector2(31, 52)
@@ -399,7 +393,6 @@ sfx_player = NodePath("SfxPlayer")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=958977099]
 modulate = Color(1, 1, 1, 0)
-material = SubResource("ShaderMaterial_8ual2")
 position = Vector2(0, -34)
 texture = ExtResource("3_kb5j1")
 hframes = 6

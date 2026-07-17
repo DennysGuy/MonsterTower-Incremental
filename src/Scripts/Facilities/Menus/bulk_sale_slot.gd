@@ -47,3 +47,4 @@ func sell_item() -> void:
 	damage_label.label.text = "+%s Spirols" % final_sale_value
 	damage_label.global_position = grand_market_position.global_position
 	grand_market_position.get_parent().add_child(damage_label)
+	SignalBus.novelty_invention_sold.emit()

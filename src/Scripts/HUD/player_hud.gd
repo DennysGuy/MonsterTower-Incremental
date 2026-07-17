@@ -380,11 +380,13 @@ func trigger_long_fade_in_out() -> void:
 	animation_player.play("LongFadeInOut")
 
 func close_codex() -> void:
+	CutsceneManager.enable_player_functionality()
 	var tween : Tween = get_tree().create_tween()
 	tween.tween_property(codex, "position", Vector2(-874,540),0.3)
 	codex_open = false
 
 func open_codex() -> void:
+	CutsceneManager.disable_player_functionality()
 	CodexManager.update_monster_cards.emit()
 	var tween : Tween = get_tree().create_tween()
 	tween.tween_property(codex, "position", Vector2(960,540),0.3)

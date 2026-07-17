@@ -388,11 +388,6 @@ _data = {
 &"Stun": SubResource("Animation_rxq5f")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1sxm0"]
-shader = ExtResource("11_mwoff")
-shader_parameter/active = false
-shader_parameter/flash_strength = 0.8
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s7mdw"]
 radius = 18.0
 height = 74.0
@@ -441,7 +436,6 @@ libraries/ = SubResource("AnimationLibrary_adl3q")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2103855697]
 modulate = Color(1, 1, 1, 0)
-material = SubResource("ShaderMaterial_1sxm0")
 position = Vector2(0, -47)
 texture = ExtResource("7_741ni")
 hframes = 8

@@ -1,0 +1,30 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://b754xqklvswat"]
+
+[sub_resource type="Shader" id="Shader_jkdaj"]
+code = "shader_type canvas_item;
+
+uniform bool active = false;
+uniform float flash_strength : hint_range(0.0, 1.0) = 0.45;
+
+void fragment() {
+	vec4 previous_color = texture(TEXTURE, UV);
+
+	vec3 flash_color = mix(
+		previous_color.rgb,
+		vec3(1.0),
+		flash_strength
+	);
+
+	vec3 final_color = previous_color.rgb;
+
+	if (active) {
+		final_color = flash_color;
+	}
+
+	COLOR = vec4(final_color, previous_color.a);
+}"
+
+[resource]
+shader = SubResource("Shader_jkdaj")
+shader_parameter/active = false
+shader_parameter/flash_strength = 0.800000038

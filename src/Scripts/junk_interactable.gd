@@ -81,6 +81,7 @@ func sell_item() -> void:
 	SignalBus.shake_camera.emit(1.0)
 	var bulk_sale_menu : BulkSellerGrandMarketMenu = get_tree().get_first_node_in_group("BulkGrandMarketMenu")
 	var bulk_slots : Array = bulk_sale_menu.grid_container.get_children()
+	SignalBus.novelty_invention_sold.emit()
 	add_item_to_bulk_menu(bulk_sale_menu, bulk_slots)
 	
 	queue_free()
@@ -105,17 +106,19 @@ func add_item_to_bulk_menu(bulk_sale_menu : BulkSellerGrandMarketMenu, bulk_slot
 	GameManager.play_sfx(HIT_THE_MARKET,0.0,randf_range(0.8,1.2))
 
 
-func set_to_sold(market_position: Marker2D) -> void:
+func set_to_sold(market_position: Marker2D) -> bool:
 	var bulk_sale_menu : BulkSellerGrandMarketMenu = get_tree().get_first_node_in_group("BulkGrandMarketMenu")
 	var bulk_slots : Array = bulk_sale_menu.grid_container.get_children()
 	if !can_add_to_bulk_menu(bulk_slots):
 		print("NO CAN DO")
-		return
+		return false
 	GameManager.play_sfx(MOVE_TO_MARKET)
 	player.junk_picked_up.pop_front()
 	is_sold = true
 	grand_market_position = market_position
 	SignalBus.novelty_invention_sold.emit()
+	
+	return true
 
 func move_forward() -> void:
 	if is_instance_valid(prev_item_interactable) and !is_sold:
@@ -135,18 +138,19 @@ func set_leader(leader : Node2D) -> void:
 	tween.tween_property(self, "global_position", desired_pos, 0.2)
 	await tween.finished
 	
-func can_add_to_bulk_menu(bulk_slots : Array) -> bool:
-	var can_add : bool = false
+func can_add_to_bulk_menu(bulk_slots: Array) -> bool:
+	if bulk_slots.is_empty():
+		return true
 	
-	if bulk_slots.is_empty() or bulk_slots.size() < PlayerStats.player_stats["Bulk Sell Slots"]:
-		can_add = true
+	if bulk_slots.size() < PlayerStats.player_stats["Bulk Sell Slots"]:
+		return true
 	
 	for slot in bulk_slots:
-		var bulk_slot : BulkSaleSlot = slot
+		var bulk_slot: BulkSaleSlot = slot
 		if bulk_slot.item == item and bulk_slot.quantity < PlayerStats.player_stats["Bulk Sell Slot Stack"]:
-			can_add = true
+			return true
 	
-	return can_add
+	return false
 
 func set_junk_offset() -> void:
 	if !is_sold:
