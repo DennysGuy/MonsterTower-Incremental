@@ -23,5 +23,7 @@ func apply_physics(_delta : float) -> State:
 		return null
 		
 func on_landing() -> State:
-	return parent.idle_state
+	if parent.animation_player.animation_finished:
+		return parent.idle_state
+	return null
 	

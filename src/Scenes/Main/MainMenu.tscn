@@ -418,7 +418,7 @@ theme_override_colors/font_color = Color(1, 0.4143027, 0.44173592, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("8_4c8q5")
 theme_override_font_sizes/font_size = 38
-text = "Build 0.1.0-prealpha.1"
+text = "Build 0.1.1-prealpha.1"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1450711081]
 libraries/ = SubResource("AnimationLibrary_gwjs1")

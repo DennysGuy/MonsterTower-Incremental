@@ -27,7 +27,7 @@ func show_chosen_weapon(weapon : Sword) -> void:
 			
 			weapon_preview.show()
 			var unlocked : bool = SaveManager.get_weapon_unlocked_status(weapon.index)
-			if unlocked or PlayerStats.can_craft_weapon():
+			if unlocked or PlayerStats.can_craft_weapon() or weapon == PlayerStats.get_current_sword():
 				weapon_preview.remove_disabled_material()
 		else:
 			weapon_preview.hide()

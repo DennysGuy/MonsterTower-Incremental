@@ -2,11 +2,11 @@ class_name PlayerClimb extends State
 
 @export var idle_state : State
 @export var jump_state : State 
-
+@export var ladder_state : State
 @export var climb_sfx : AudioStream
 
 @export var come_from_below : bool = false
-
+var can_move : bool = true
 func enter() -> void:
 	super()
 	parent.apply_gravity = false
@@ -31,7 +31,6 @@ func process_input(_event: InputEvent) -> State:
 	if Input.is_action_just_pressed("add_currency"):
 		parent.jump_buffer_timer = parent.jump_buffer_wait_time
 		
-		
 	return null
 
 func process_frame(_delta: float) -> State:
@@ -39,7 +38,14 @@ func process_frame(_delta: float) -> State:
 
 func process_physics(_delta: float) -> State:
 	var input : float  =  Input.get_axis("pan_cam_up","pan_cam_down")
-	parent.velocity.y = input * (PlayerStats.player_stats["Climbing Speed"] + PlayerStats.get_total_gem_bonus("Climb Speed Bonus")) * GameManager.event_speed_mod
+	
+	if can_move:
+		parent.velocity.y = input * (PlayerStats.player_stats["Climbing Speed"] + PlayerStats.get_total_gem_bonus("Climb Speed Bonus")) * GameManager.event_speed_mod
+	
+	
+	if Input.is_action_just_pressed("dash_attack"):
+		parent.prev_input = input
+		return ladder_state
 	
 	if !parent.stored_ladder:
 		return idle_state

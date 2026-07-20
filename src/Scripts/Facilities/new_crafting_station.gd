@@ -42,6 +42,7 @@ const TURN_OUT_ITEM = preload("uid://bd2rssv5wcn04")
 const JUNK_A_TRON_DEACTIVATE = preload("uid://8sn8e11vq65o")
 
 @onready var arrow_at_ore: Sprite2D = $ArrowAtOre
+@onready var arrow_at_ore_2: Sprite2D = $ArrowAtOre2
 
 
 @onready var cant_open_notice: Label = $CantOpenNotice
@@ -61,6 +62,7 @@ func _ready() -> void:
 			if PlayerStats.facilities_unlocked["Refinery Station"]:
 				station_graphic.texture = SMELTING_STATION
 				arrow_at_ore.show()
+				arrow_at_ore_2.show()
 			else:
 				station_graphic.texture = SMELTING_STATION_CONTRUCTION_MODE
 			
@@ -70,6 +72,7 @@ func _ready() -> void:
 			if PlayerStats.facilities_unlocked["Junk-A-Tron"]:
 				station_graphic.texture = TEMP_COOKING_RANGE
 				arrow_at_ore.show()
+				arrow_at_ore_2.show()
 			else:
 				station_graphic.texture = TEMP_COOKING_RANGE_CONTSTRUCTION
 				

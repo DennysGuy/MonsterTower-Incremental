@@ -90,6 +90,9 @@ var dash_cancel_wait_time : float = 0.25
 var double_jump_buffer : float = 0.0
 var double_jump_buffer_wait_time : float = 0.1
 
+var early_jump_cancel_wait_time : float = 0.15
+var early_jump_cancel_timer : float = 0.0
+
 var can_attack_cancel: bool = false
 
 var was_on_ledge : bool = true
@@ -146,8 +149,12 @@ func _physics_process(delta: float) -> void:
 	
 	if dash_cancel_time_frame > 0:
 		dash_cancel_time_frame -= delta
+	
 	if double_jump_buffer > 0:
 		double_jump_buffer -= delta
+	
+	if early_jump_cancel_timer > 0:
+		early_jump_cancel_timer -= delta
 	
 	knock_back_player()
 	
@@ -198,10 +205,10 @@ func send_to_hit_state() -> void:
 func set_attack_buffer_timer() -> void:
 	attack_buffer_timer = attack_buffer_wait_time
 
-func issue_attack(selected_hit_box : Area2D, multiplier : float = 1.0, ability : Ability = null) -> void:
+func issue_attack(selected_hit_box : Area2D, multiplier : float = 1.0, ability : Ability = null, hits : int = 1, o_hits_bonus : int = 0) -> void:
 	var enemies_in_range = selected_hit_box.get_overlapping_areas()
-	var overlapping_hits : int = int(PlayerStats.player_stats["Overlapping Hits"] + PlayerStats.get_current_sword().get_total_multi_enemies_bonus())
-	var number_of_hits : int = 1
+	var overlapping_hits : int = int(PlayerStats.player_stats["Overlapping Hits"] + PlayerStats.get_current_sword().get_total_multi_enemies_bonus()) + o_hits_bonus
+	var number_of_hits : int = hits
 	var rep_delay : float = 0.1
 	var incoming_damage : int = 0
 	var total_base_attack_damage = int(PlayerStats.player_stats["Attack Damage"] + PlayerStats.get_current_sword().attack_bonus + PlayerStats.get_total_gem_attack_bonus())
@@ -229,6 +236,9 @@ func issue_attack(selected_hit_box : Area2D, multiplier : float = 1.0, ability :
 
 func issue_sword_attack() -> void:
 	issue_attack(hit_box)
+
+func issue_air_attack() -> void:
+	issue_attack(hit_box,1.0,null,1,1)
 
 func issue_super_attack() -> void:
 	var multiplier : float = PlayerStats.get_equipped_ability("Combat Ability 4").attack_damage_modifier
@@ -345,6 +355,9 @@ func blink_effect() -> void:
 
 func send_to_idle_state() -> void:
 	state_machine.change_state(idle_state)
+	
+func send_to_climb_state() -> void:
+	state_machine.change_state(climb_state)
 
 func pass_through_floor() -> void:
 	set_collision_mask_value(5, false)
@@ -500,4 +513,3 @@ func rebuild_junk_held_offsets() -> void:
 	for i in range(junk_picked_up.size()):
 		junk_picked_up[i].offset_distance = 32
 		junk_picked_up[i].offset_distance *= i
-		

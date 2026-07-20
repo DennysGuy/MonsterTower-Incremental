@@ -63,7 +63,7 @@ func store_entrance_data(entrance_data : TowerEntranceData) -> void:
 		biome_preview.texture = entrance_data.preview_pictures[0]
 	floor_title.text = "%s" % [entrance_data.floor_name]
 	biome_title.text ="Biome: %s" % [entrance_data.biome]
-	selected_point.text = "Selected Point: %s - %s - Point: %s" % [entrance_data.biome, entrance_data.floor_name, GameManager.spawn_location+1]
+	selected_point.text = "Selected Point: %s - Floor %s - Check Point: %s" % [entrance_data.biome, entrance_data.floor_number, GameManager.spawn_location+1]
 	hunt_time_label.text = "Hunt Challenge Time Limit: %s seconds" % [stored_entrance_data.hunt_challenge_time]
 	for child in area_button_selector.get_children():
 		child.queue_free()
@@ -101,13 +101,13 @@ func _on_close_button_up() -> void:
 func update_entrance_map(index : int) -> void:
 	biome_preview.texture = stored_entrance_data.preview_pictures[index]
 	GameManager.spawn_location = index
-	selected_point.text = "Selected Point: %s - %s - Point: %s" % [stored_entrance_data.biome, stored_entrance_data.floor_name, GameManager.spawn_location+1]
+	selected_point.text = "Selected Point: %s - Floor %s - Point: %s" % [stored_entrance_data.biome, stored_entrance_data.floor_number, GameManager.spawn_location+1]
 	
 func _on_hunt_selection_button_up() -> void:
 	set_mode_description_as_hunt_challenge()
 	GameManager.spawn_location = 0
 	GameManager.hunt_challenge_selected = true
-	selected_point.text = "Selected Point: %s - %s - Hunt Point" % [stored_entrance_data.biome, stored_entrance_data.floor_name]
+	selected_point.text = "Selected Point: %s - Floor %s - Hunt Point" % [stored_entrance_data.biome, stored_entrance_data.floor_number]
 	show_hunt_time_label()
 	
 func show_hunt_time_label() -> void:

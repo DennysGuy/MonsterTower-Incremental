@@ -40,13 +40,11 @@ const TRANSITION_SCREEN_THEME = preload("uid://c4ecpklgehudy")
 
 var can_go_back : bool = true
 var tips : Array[String] = [
-	"Can't reach a ledge? Upgrade your jump!",
 	"Selling cooked items is the best way to make money!",
 	"Enemies beating you down? Upgrade your attack stats!",
 	"Low on inventory space? Unlock the bank! Upgrade your bag!",
 	"Life is like a box chocolates. It's tasty.",
 	"Feeling the grind? Yeah, so are we.",
-	"Jumping up ladders is the fastest way, but look out for enemies above!",
 	"Consecutive expedition runs are a great way to make money fast!",
 	"Sometimes taking on harm to progress is necessary..",
 	"Taking too much damage? Upgrade your health!",

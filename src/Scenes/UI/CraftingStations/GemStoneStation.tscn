@@ -141,13 +141,16 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -445.0
 offset_top = -344.0
-offset_right = -65.0
-offset_bottom = 325.0
+offset_right = -69.0
+offset_bottom = 316.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="SubViewport" type="SubViewport" parent="SwordPreviewContainer" unique_id=1794176672]
+own_world_3d = true
+handle_input_locally = false
 size = Vector2i(376, 660)
+render_target_update_mode = 4
 
 [node name="WeaponPreviewer" parent="SwordPreviewContainer/SubViewport" unique_id=1167095521 instance=ExtResource("5_jryx7")]
 
@@ -459,14 +462,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 3.0
 offset_top = 5.0
-offset_right = -3.0
+offset_right = 51.0
 offset_bottom = 211.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme_override_constants/line_separation = 15
 theme_override_constants/outline_size = 3
 theme_override_fonts/normal_font = ExtResource("6_ln2ij")
-theme_override_font_sizes/normal_font_size = 22
+theme_override_font_sizes/normal_font_size = 21
 
 [node name="ResetButton" type="Button" parent="." unique_id=1808499052]
 layout_mode = 1

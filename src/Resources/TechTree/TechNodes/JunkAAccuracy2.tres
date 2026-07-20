@@ -16,5 +16,5 @@ stat_relation = 4
 price_scaler = 1.8
 stat_name = "Cooking Accuracy Bonus"
 upgrade_interval = 0.03
-prereqs = Array[String](["Junk-A-Accuracy 2:1"])
+prereqs = Array[String](["Junk-A-Accuracy 1:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

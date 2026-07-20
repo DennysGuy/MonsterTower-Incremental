@@ -20,7 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://ss7e3d230sw" path="res://Assets/SmokeBall.png" id="18_k077q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r2l52"]
-size = Vector2(72, 48)
+size = Vector2(249, 48)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y86rf"]
 size = Vector2(8, 8)
@@ -290,7 +290,6 @@ _data = {
 }
 
 [node name="NewCraftingStation" type="Node2D" unique_id=179535965 node_paths=PackedStringArray("station_graphic", "state_machine")]
-visible = false
 script = ExtResource("1_r2l52")
 station_graphic = NodePath("StationGraphic")
 state_machine = NodePath("StateMachine")
@@ -316,10 +315,9 @@ stretch_mode = 2
 position = Vector2(-3, -103)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1099763276]
-position = Vector2(-76, -10)
+position = Vector2(-1, -24)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=236231587]
-position = Vector2(-8, -14)
 shape = SubResource("RectangleShape2D_r2l52")
 
 [node name="NameTag" parent="." unique_id=1236001114 instance=ExtResource("3_jw3wv")]
@@ -330,7 +328,10 @@ offset_bottom = 19.0
 mouse_filter = 2
 
 [node name="ArrowAtOre" parent="." unique_id=347205072 instance=ExtResource("4_2ityt")]
-position = Vector2(-82, -75)
+position = Vector2(-51, -86)
+
+[node name="ArrowAtOre2" parent="." unique_id=2067527573 instance=ExtResource("4_2ityt")]
+position = Vector2(57, -86)
 
 [node name="CraftingProcessIcon" type="Panel" parent="." unique_id=1650907014]
 visible = false

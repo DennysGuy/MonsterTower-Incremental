@@ -71,6 +71,7 @@ const GO_TO_JOB_BOARD = preload("uid://iqw8ymk767kl")
 const STARSPIRE_MARKET_INTRO = preload("uid://b3l8f4fxsjhu6")
 const HEAD_TO_JOB_ADVANCEMENT_CENTER_FOR_CLASS = preload("uid://bc68ocr4ayjpd")
 
+
 var sprint_enabled : bool = false
 
 # Called when the node enters the scene tree for the first time.
@@ -222,6 +223,9 @@ func _on_tower_area_body_entered(body: Node2D) -> void:
 
 func show_ap_notice() -> void:
 	if PlayerStats.player_stats["Class"] == "Junior Hunter" and TechTreeManager.check_if_can_purchase_base_ability():
+		HubManager.show_facility_notification.emit("Class Advance Center")
+	
+	if PlayerStats.player_stats["Class"] == "Junior Hunter" and PlayerStats.player_stats["Level"] >= 8:
 		HubManager.show_facility_notification.emit("Class Advance Center")
 	
 	if PlayerStats.player_stats["Ability Points"] >= 1 and PlayerStats.player_stats["Class"] != "Junior Hunter":

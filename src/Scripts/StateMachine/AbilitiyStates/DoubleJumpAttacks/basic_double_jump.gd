@@ -25,7 +25,7 @@ func apply_physics(_delta : float) -> State:
 	if Input.is_action_just_pressed("dash_attack") and PlayerStats.facilities_unlocked["Dash"]:
 		return parent.dash_attack
 	
-	var movement = Input.get_axis("pan_cam_left","pan_cam_right") * PlayerStats.player_stats["Movement Speed"]
+	var movement = Input.get_axis("pan_cam_left","pan_cam_right") * PlayerStats.player_stats["Movement Speed"] * GameManager.event_speed_mod
 
 	if movement != 0:
 		parent.flip_textures(movement < 0)

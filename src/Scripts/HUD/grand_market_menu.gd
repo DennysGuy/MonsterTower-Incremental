@@ -100,7 +100,7 @@ func _on_sell_button_button_up() -> void:
 			InventoryManager.update_grid_container(inventory_container, selected_inventory)
 				
 		SaveManager.save_tech_tree_data()		
-		currency.text = "Currency: %s" % [TechTreeManager.currency]
+		currency.text = "Spirols: %s" % [TechTreeManager.currency]
 		TechTreeManager.update_currency_label.emit()
 		if stored_slot_index == -1:
 			clear_details()
@@ -141,7 +141,7 @@ func init_market() -> void:
 	init_tabs()
 	selected_inventory = "Inventory"
 	inventory_label.text = selected_inventory
-	currency.text = "Currency: %s" % [TechTreeManager.currency]
+	currency.text = "Spirols: %s" % [TechTreeManager.currency]
 	InventoryManager.update_grid_container(inventory_container, selected_inventory)
 
 
