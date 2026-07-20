@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://7da4ax8ish1i"]
+
+[ext_resource type="Script" uid="uid://c3fmjqj5vec00" path="res://src/Scripts/boat.gd" id="1_o40pf"]
+[ext_resource type="PackedScene" uid="uid://djeitxtdealh6" path="res://Assets/Models/Boat.gltf" id="2_64gc1"]
+
+[sub_resource type="Animation" id="Animation_o40pf"]
+resource_name = "Bob"
+length = 6.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("blockbench_export2:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-95.133385, 6.5408998, 19.883965), Vector3(-95.13338, 6.42585, 19.883965), Vector3(-95.133385, 6.5408998, 19.883965), Vector3(-95.13338, 6.42585, 19.883965)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("blockbench_export2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.9841938, 4, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 1.5830137, 0), Vector3(-0.00045662659, 1.5830051, 0.037382163), Vector3(0, 1.5830137, -0.034906585), Vector3(0, 1.5830137, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_64gc1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("blockbench_export2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-95.133385, 6.5408998, 19.883965)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("blockbench_export2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.5830137, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yyaiw"]
+_data = {
+&"Bob": SubResource("Animation_o40pf"),
+&"RESET": SubResource("Animation_64gc1")
+}
+
+[node name="Boat" type="Node3D" unique_id=1326688067]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.9999999, 0, 0, 0)
+script = ExtResource("1_o40pf")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=456620398]
+libraries/ = SubResource("AnimationLibrary_yyaiw")
+
+[node name="blockbench_export2" parent="." unique_id=1880857217 instance=ExtResource("2_64gc1")]
+transform = Transform3D(-0.01214211, 0, 1.5209742, 0, 1.4520608, 0, -0.99379396, 0, -0.018583164, -95.133385, 6.5408998, 19.883965)

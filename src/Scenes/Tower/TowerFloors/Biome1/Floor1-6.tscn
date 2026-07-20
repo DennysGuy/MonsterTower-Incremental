@@ -329,7 +329,7 @@ position = Vector2(0, -35)
 position = Vector2(0, 67)
 
 [node name="LadderArea9" parent="." unique_id=187664525 node_paths=PackedStringArray("ladder_top", "ladder_bottom") instance=ExtResource("23_ivwjr")]
-position = Vector2(321, 1875)
+position = Vector2(273, 1875)
 collision_layer = 8
 collision_mask = 8
 ladder_top = NodePath("Top")

@@ -710,7 +710,7 @@ position = Vector2(682, 97)
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=626834970]
 offset_left = 34.0
-offset_top = 187.0
+offset_top = 99.0
 offset_right = 2783.0
 offset_bottom = 907.0
 stretch = true
@@ -718,7 +718,7 @@ stretch = true
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=1380284373]
 transparent_bg = true
 handle_input_locally = false
-size = Vector2i(2749, 720)
+size = Vector2i(2749, 808)
 render_target_update_mode = 4
 
 [node name="MainMenuBg" parent="SubViewportContainer/SubViewport" unique_id=1206026906 instance=ExtResource("5_hw86b")]
@@ -742,9 +742,9 @@ render_target_update_mode = 4
 [node name="Node3D" parent="SubViewportContainer4/SubViewport" unique_id=217320620 instance=ExtResource("6_hw86b")]
 
 [node name="SubViewportContainer5" type="SubViewportContainer" parent="." unique_id=1031876561]
-offset_left = -557.0
+offset_left = -207.0
 offset_top = 91.0
-offset_right = 306.0
+offset_right = 656.0
 offset_bottom = 811.0
 scale = Vector2(-1, 1)
 pivot_offset = Vector2(1259, 392)
