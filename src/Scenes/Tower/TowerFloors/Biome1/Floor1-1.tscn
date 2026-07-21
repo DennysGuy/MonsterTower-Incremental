@@ -35,6 +35,7 @@
 [ext_resource type="Texture2D" uid="uid://xd36daaflxhj" path="res://Assets/Tower/ExitAreaIcon.png" id="30_yeiuc"]
 [ext_resource type="Resource" uid="uid://d3ak1ilk1id2y" path="res://src/Resources/GemChests/Tier1GemChest.tres" id="35_rayuj"]
 [ext_resource type="Texture2D" uid="uid://cbhdcmbn14fcp" path="res://Assets/EnvironmentalAssets/DirectionalSigns_PressDown.png" id="36_rayuj"]
+[ext_resource type="FontFile" uid="uid://stn4dtg0uw57" path="res://Assets/Fonts/FredokaOne-Regular.ttf" id="36_rpt1x"]
 
 [sub_resource type="Resource" id="Resource_83waj"]
 metadata/__load_path__ = "res://Audio/Music/TemporaryHuntMusic.mp3"
@@ -1329,8 +1330,6 @@ texture = ExtResource("24_pm5vn")
 position = Vector2(306, 928)
 texture = ExtResource("23_pm5vn")
 
-[node name="GuideLog" parent="." unique_id=555641949 instance=ExtResource("15_om3xh")]
-
 [node name="TowerExitArea" parent="." unique_id=1017611977 instance=ExtResource("11_kpd6k")]
 position = Vector2(42, 936)
 
@@ -1358,7 +1357,7 @@ position = Vector2(-35.5, 0)
 shape = SubResource("RectangleShape2D_gib5v")
 
 [node name="MonsterSpawnArea2" parent="." unique_id=1503156114 node_paths=PackedStringArray("drop_scene", "spawn_root", "area_collision_shape") instance=ExtResource("9_gib5v")]
-position = Vector2(308, 606)
+position = Vector2(308, 605)
 max_monsters = 5
 respawn_wait_time = 15.0
 min_spawn = 2
@@ -1377,7 +1376,7 @@ position = Vector2(16.5, 2)
 shape = SubResource("RectangleShape2D_rayuj")
 
 [node name="MonsterSpawnArea4" parent="." unique_id=338647858 node_paths=PackedStringArray("drop_scene", "spawn_root", "area_collision_shape") instance=ExtResource("9_gib5v")]
-position = Vector2(308, 382)
+position = Vector2(308, 381)
 max_monsters = 5
 respawn_wait_time = 15.0
 min_spawn = 4
@@ -1419,6 +1418,11 @@ texture = ExtResource("30_yeiuc")
 [node name="DirectionalSignsPressDown" type="Sprite2D" parent="." unique_id=25722470]
 position = Vector2(425, 577)
 texture = ExtResource("36_rayuj")
+
+[node name="GuideLog" parent="." unique_id=555641949 instance=ExtResource("15_om3xh")]
+offset_left = 9.0
+offset_right = 162.0
+theme_override_fonts/font = ExtResource("36_rpt1x")
 
 [node name="LadderArea8" parent="." unique_id=1381427250 node_paths=PackedStringArray("ladder_top", "ladder_bottom") instance=ExtResource("5_c1fqw")]
 position = Vector2(192, 424)

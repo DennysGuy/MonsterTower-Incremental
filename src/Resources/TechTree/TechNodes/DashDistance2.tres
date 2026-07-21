@@ -10,7 +10,7 @@ script = ExtResource("3_knj0w")
 node_name = "Dash Distance 2"
 icon = ExtResource("1_rghtu")
 disabled_icon = ExtResource("1_soogs")
-description = "Increase the duration of your dash attack."
+description = "Increase the duration of your dash."
 currency_required = 10000
 materials_required = Array[Dictionary]([{
 ExtResource("3_soogs"): 1

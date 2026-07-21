@@ -559,7 +559,7 @@ area_collision_shape = NodePath("CollisionShape2D")
 shape = SubResource("RectangleShape2D_8ob7c")
 
 [node name="MonsterSpawnArea4" parent="." unique_id=434945524 node_paths=PackedStringArray("drop_scene", "spawn_root", "area_collision_shape") instance=ExtResource("26_c3xam")]
-position = Vector2(377, 2253)
+position = Vector2(377, 2256)
 respawn_wait_time = 12.0
 min_spawn = 2
 min_hunt_challenge_spawn = 3
@@ -575,7 +575,7 @@ area_collision_shape = NodePath("CollisionShape2D")
 shape = SubResource("RectangleShape2D_8ob7c")
 
 [node name="MonsterSpawnArea5" parent="." unique_id=530529367 node_paths=PackedStringArray("drop_scene", "spawn_root", "area_collision_shape") instance=ExtResource("26_c3xam")]
-position = Vector2(204, 2079)
+position = Vector2(204, 2080)
 respawn_wait_time = 12.0
 min_spawn = 2
 min_hunt_challenge_spawn = 3

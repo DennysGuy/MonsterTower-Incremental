@@ -544,7 +544,7 @@ position = Vector2(463, 1298)
 index = 1
 
 [node name="MonsterSpawnArea" parent="." unique_id=338647858 node_paths=PackedStringArray("drop_scene", "spawn_root", "area_collision_shape") instance=ExtResource("18_o851o")]
-position = Vector2(321, 1696)
+position = Vector2(321, 1695)
 max_monsters = 2
 respawn_wait_time = 45.0
 min_spawn = 1
@@ -563,7 +563,7 @@ position = Vector2(3.5, 0)
 shape = SubResource("RectangleShape2D_rdri6")
 
 [node name="MonsterSpawnArea4" parent="." unique_id=1349355903 node_paths=PackedStringArray("drop_scene", "spawn_root", "area_collision_shape") instance=ExtResource("18_o851o")]
-position = Vector2(321, 992)
+position = Vector2(321, 991)
 max_monsters = 4
 respawn_wait_time = 14.0
 min_spawn = 3
@@ -582,7 +582,7 @@ position = Vector2(-7, -5.5)
 shape = SubResource("RectangleShape2D_rdri6")
 
 [node name="MonsterSpawnArea6" parent="." unique_id=477137722 node_paths=PackedStringArray("drop_scene", "spawn_root", "area_collision_shape") instance=ExtResource("18_o851o")]
-position = Vector2(480, 704)
+position = Vector2(480, 703)
 respawn_wait_time = 14.0
 min_spawn = 2
 min_hunt_challenge_spawn = 1
@@ -600,7 +600,7 @@ position = Vector2(3.5, 0)
 shape = SubResource("RectangleShape2D_4krbk")
 
 [node name="MonsterSpawnArea7" parent="." unique_id=627152232 node_paths=PackedStringArray("drop_scene", "spawn_root", "area_collision_shape") instance=ExtResource("18_o851o")]
-position = Vector2(117, 512)
+position = Vector2(117, 511)
 respawn_wait_time = 14.0
 min_spawn = 2
 min_hunt_challenge_spawn = 1
@@ -618,7 +618,7 @@ position = Vector2(3.5, 0)
 shape = SubResource("RectangleShape2D_4krbk")
 
 [node name="MonsterSpawnArea5" parent="." unique_id=1646614993 node_paths=PackedStringArray("drop_scene", "spawn_root", "area_collision_shape") instance=ExtResource("18_o851o")]
-position = Vector2(321, 320)
+position = Vector2(321, 319)
 max_monsters = 4
 respawn_wait_time = 14.0
 min_spawn = 3
@@ -638,7 +638,7 @@ position = Vector2(-4.5, 0)
 shape = SubResource("RectangleShape2D_rdri6")
 
 [node name="MonsterSpawnArea2" parent="." unique_id=835306567 node_paths=PackedStringArray("drop_scene", "spawn_root", "area_collision_shape") instance=ExtResource("18_o851o")]
-position = Vector2(532, 2609)
+position = Vector2(532, 2608)
 max_monsters = 4
 respawn_wait_time = 30.0
 min_spawn = 3
@@ -658,7 +658,7 @@ position = Vector2(-39.5, 0)
 shape = SubResource("RectangleShape2D_phmds")
 
 [node name="MonsterSpawnArea3" parent="." unique_id=1411425651 node_paths=PackedStringArray("drop_scene", "spawn_root", "area_collision_shape") instance=ExtResource("18_o851o")]
-position = Vector2(296, 2209)
+position = Vector2(296, 2208)
 max_monsters = 4
 respawn_wait_time = 12.0
 min_spawn = 3

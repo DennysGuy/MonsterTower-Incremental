@@ -42,8 +42,7 @@ func process_physics(_delta: float) -> State:
 	if can_move:
 		parent.velocity.y = input * (PlayerStats.player_stats["Climbing Speed"] + PlayerStats.get_total_gem_bonus("Climb Speed Bonus")) * GameManager.event_speed_mod
 	
-	
-	if Input.is_action_just_pressed("dash_attack"):
+	if Input.is_action_just_pressed("dash_attack") and PlayerStats.facilities_unlocked["Dash"] and PlayerStats.facilities_unlocked["Ladder Dash"] and parent.can_issue_ability("Dash") and GameManager.player_can_move:
 		parent.prev_input = input
 		return ladder_state
 	

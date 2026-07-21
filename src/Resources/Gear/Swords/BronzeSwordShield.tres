@@ -23,6 +23,7 @@ defense_bonus = 10.0
 attack_speed = 0.6
 crit_bonus = 0.1
 crit_damage_bonus = 0.1
+knock_back_bonus = 0.4
 gem_stone_socket_count = 4
 recipe = ExtResource("6_8gnwt")
 graphic = ExtResource("2_r66es")

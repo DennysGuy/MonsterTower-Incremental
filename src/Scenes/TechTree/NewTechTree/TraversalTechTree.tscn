@@ -12,7 +12,8 @@
 [ext_resource type="Resource" uid="uid://cr15fmppvbijx" path="res://src/Resources/TechTree/TechNodes/ClimbingSpeed2.tres" id="9_0ccxk"]
 [ext_resource type="Resource" uid="uid://b6uimiiq8ow5u" path="res://src/Resources/TechTree/TechNodes/DodgeChance1.tres" id="9_syg7x"]
 [ext_resource type="Resource" uid="uid://ohr0gxoujtw2" path="res://src/Resources/TechTree/TechNodes/Movement3.tres" id="10_mtjln"]
-[ext_resource type="Resource" uid="uid://ccrpjjv60pjoe" path="res://src/Resources/TechTree/TechNodes/ClimbingSpeed3.tres" id="11_ijr5h"]
+[ext_resource type="Resource" uid="uid://bfcnex03bip3y" path="res://src/Resources/TechTree/TechNodes/LadderDash.tres" id="11_mtjln"]
+[ext_resource type="Resource" uid="uid://chr1ynm2qbnps" path="res://src/Resources/TechTree/TechNodes/LadderDashDistance1.tres" id="12_0ccxk"]
 [ext_resource type="Resource" uid="uid://b6a033jtmxfu3" path="res://src/Resources/TechTree/TechNodes/DashDistance2.tres" id="12_syg7x"]
 [ext_resource type="Resource" uid="uid://ctjnncini5jvl" path="res://src/Resources/TechTree/TechNodes/DodgeChance2.tres" id="13_mtjln"]
 
@@ -98,15 +99,26 @@ offset_bottom = 612.0
 tech_node_stats = ExtResource("9_0ccxk")
 previous_nodes = [NodePath("../ClimbSpeed1Node")]
 
-[node name="ClimbingSpeed3Node" parent="." unique_id=424016797 node_paths=PackedStringArray("previous_nodes") instance=ExtResource("3_s7m4j")]
+[node name="LadderDash" parent="." unique_id=736636385 node_paths=PackedStringArray("previous_nodes") instance=ExtResource("3_s7m4j")]
 visible = false
 layout_mode = 1
-offset_left = 576.0
-offset_top = 612.0
-offset_right = 576.0
-offset_bottom = 612.0
-tech_node_stats = ExtResource("11_ijr5h")
+offset_left = 512.0
+offset_top = 740.0
+offset_right = 512.0
+offset_bottom = 740.0
+tech_node_stats = ExtResource("11_mtjln")
 previous_nodes = [NodePath("../ClimbingSpeed2Node")]
+node_type = 1
+
+[node name="LadderDashDistance1" parent="." unique_id=1683949934 node_paths=PackedStringArray("previous_nodes") instance=ExtResource("3_s7m4j")]
+visible = false
+layout_mode = 1
+offset_left = 640.0
+offset_top = 864.0
+offset_right = 640.0
+offset_bottom = 864.0
+tech_node_stats = ExtResource("12_0ccxk")
+previous_nodes = [NodePath("../LadderDash")]
 
 [node name="DashDistance1Node" parent="." unique_id=1378694411 node_paths=PackedStringArray("previous_nodes") instance=ExtResource("3_s7m4j")]
 visible = false

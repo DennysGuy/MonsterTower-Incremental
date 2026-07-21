@@ -56,8 +56,8 @@ var tips : Array[String] = [
 func _ready() -> void:
 	init_containers()
 	init_tabs()
-	to_town_instructions.text = "Hold %s" % GameManager.get_control_mapping("dash_attack", 6)
-	to_tower_instructions.text = "Hold %s" % GameManager.get_control_mapping("swing_sword", 6)
+	to_town_instructions.text = "Hold %s" % GameManager.get_control_mapping("pan_cam_left")
+	to_tower_instructions.text = "Hold %s" % GameManager.get_control_mapping("pan_cam_right")
 	animation_player.play("CloseOut")
 	tips_and_tricks.text = tips.pick_random()
 	floor_reached.text = "%s %s" %[GameManager.previous_map_data.biome, GameManager.previous_map_data.floor_name]
@@ -72,14 +72,14 @@ func _ready() -> void:
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_pressed("dash_attack") and !Input.is_action_just_pressed("pan_cam_right") and can_go_back:
+	if Input.is_action_pressed("pan_cam_left") and !Input.is_action_just_pressed("pan_cam_right") and can_go_back:
 		to_town_bar.value += delta * 200
 		if to_town_bar.value >= to_tower_bar.max_value:
 			go_to_starshire()
 	else:
 		to_town_bar.value = 0
 	
-	if Input.is_action_pressed("swing_sword") and !Input.is_action_just_pressed("pan_cam_left") and can_go_back:
+	if Input.is_action_pressed("pan_cam_right") and !Input.is_action_just_pressed("pan_cam_left") and can_go_back:
 		to_tower_bar.value += delta * 100
 		if to_tower_bar.value >= to_tower_bar.max_value:
 			go_to_tower()

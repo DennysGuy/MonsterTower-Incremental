@@ -13,8 +13,9 @@ const DASH_ATTACK = preload("uid://girddg3nhreu")
 
 func enter() -> void:
 	parent.play_sfx(DASH_ATTACK,3.0)
-	dash_timer = dash_duration
-
+	dash_timer = PlayerStats.player_stats["Ladder Dash Duration"]
+	AbilityTimers.activate_ability_cooldown("Dash")
+	
 func exit() -> void:
 	parent.prev_input = 0
 

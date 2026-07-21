@@ -161,7 +161,7 @@ _data = {
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 3
 anchors_preset = 0
-offset_right = 327.0
+offset_right = 291.0
 offset_bottom = 30.0
 script = ExtResource("1_p5g6x")
 animation_player = NodePath("AnimationPlayer")
@@ -169,7 +169,7 @@ animation_player = NodePath("AnimationPlayer")
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=669899884]
 layout_mode = 0
 offset_left = -350.0
-offset_right = -6.999878
+offset_right = -76.0
 offset_bottom = 30.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer" unique_id=1330861788]
@@ -183,7 +183,7 @@ layout_mode = 2
 expand_mode = 1
 
 [node name="Label" type="RichTextLabel" parent="PanelContainer/HBoxContainer" unique_id=1256639664]
-custom_minimum_size = Vector2(300, 20)
+custom_minimum_size = Vector2(250, 20)
 layout_mode = 2
 theme_override_colors/default_color = Color(0.9091122, 0.85196555, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)

@@ -2,6 +2,7 @@ class_name EnemySpawnIn extends State
 
 @export var idle_state : State
 
+
 func enter() -> void:
 	parent.animation_player.play("SpawnIn")
 	parent.disable_hurt_box()
@@ -26,5 +27,7 @@ func process_physics(_delta: float) -> State:
 	
 	if parent.timer.time_left <= 0:
 		return idle_state
+	
+	parent.move_and_slide()
 	
 	return null

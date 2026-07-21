@@ -62,6 +62,8 @@ var quests_showing : bool = false
 @onready var boss_hp_bar: BossHPBar = $PlayerHUD/BossHPBar
 
 var codex_open : bool = false
+var quest_hub_showing : bool = true
+@onready var toggle_quest_hub: Label = $PlayerHUD/ToggleQuestHub
 
 
 # Called when the node enters the scene tree for the first time.
@@ -118,6 +120,7 @@ func _ready() -> void:
 	PlayerHudSignalBus.show_sprint_notice.connect(func() -> void: 
 		sprint_notice.show())
 	
+	toggle_quest_hub.text = "Press %s to toggle Quest Hub" % GameManager.get_control_mapping("open_codex",3)
 	#player_mp_bar.max_value = PlayerStats.player_stats["Current MP"]
 	#player_mp_bar.value = player_mp_bar.max_value
 	update_xp_bar()
@@ -136,12 +139,12 @@ func _process(delta: float) -> void:
 		show_bag()
 	
 	if Input.is_action_just_pressed("open_codex"):
-		if !codex_open:
-			CutsceneManager.disable_player_functionality()
-			open_codex()
+		quests_showing = !quests_showing
+		if !quests_showing:
+			show_quest_hub()
 		else:
-			CutsceneManager.enable_player_functionality()
-			close_codex()
+			hide_quest_hub()
+		
 	
 	if Input.is_action_just_pressed("close_menu") and codex_open:
 		close_codex()
@@ -201,10 +204,10 @@ func trigger_cross_fade() -> void:
 func show_codex_message() -> void:
 	#play_sfx(QUEST_COMPLETED)
 	var tween : Tween = get_tree().create_tween()
-	tween.tween_property(codex_notification_panel, "position", Vector2(26,453),0.1)
+	tween.tween_property(codex_notification_panel, "position", Vector2(1207,19),0.1)
 	await get_tree().create_timer(6.0).timeout
 	var tween_2 : Tween = get_tree().create_tween()
-	tween_2.tween_property(codex_notification_panel, "position", Vector2(-573,453),0.1)
+	tween_2.tween_property(codex_notification_panel, "position", Vector2(1207,-262),0.1)
 
 func show_boss_hp_bar() -> void:
 	boss_hp_bar.show()
@@ -269,6 +272,7 @@ func show_bag() -> void:
 		bag.close_button.disabled = false
 		play_sfx(BAG_OPEN)
 		bag_animation_player.play("ShowBag")
+		get_tree().paused = true
 	else:
 		GameManager.player_can_move = true
 		GameManager.can_pause_game = true
@@ -276,6 +280,7 @@ func show_bag() -> void:
 		play_sfx(BAG_CLOSED)
 		bag.disable_tabs()
 		bag_animation_player.play("HideBag")
+		get_tree().paused = false
 
 func start_expedition_timer() -> void:
 	expedition_timer.show()
@@ -391,6 +396,14 @@ func open_codex() -> void:
 	var tween : Tween = get_tree().create_tween()
 	tween.tween_property(codex, "position", Vector2(960,540),0.3)
 	codex_open = true
+
+func show_quest_hub() -> void:
+	var tween : Tween = get_tree().create_tween()
+	tween.tween_property(quest_hub, "position", Vector2(24,114),0.3)
+
+func hide_quest_hub() -> void:
+	var tween : Tween = get_tree().create_tween()
+	tween.tween_property(quest_hub, "position", Vector2(-409,114),0.3)
 
 func play_dip_in_down_transition() -> void:
 	animation_player.play("DipInDown")

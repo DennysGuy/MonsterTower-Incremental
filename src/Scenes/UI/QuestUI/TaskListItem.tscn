@@ -158,7 +158,7 @@ _data = {
 }
 
 [node name="TaskListItem" type="Control" unique_id=1940233025 node_paths=PackedStringArray("label", "icon")]
-custom_minimum_size = Vector2(0, 30)
+custom_minimum_size = Vector2(0, 25)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 327.0
@@ -170,21 +170,20 @@ icon = NodePath("PanelContainer/HBoxContainer/Icon")
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=669899884]
 layout_mode = 0
 offset_left = -350.0
-offset_right = -6.999878
+offset_right = -53.0
 offset_bottom = 30.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer" unique_id=1330861788]
 layout_mode = 2
-theme_override_constants/separation = 0
+theme_override_constants/separation = 6
 alignment = 1
 
 [node name="Icon" type="TextureRect" parent="PanelContainer/HBoxContainer" unique_id=1132492874]
-custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 expand_mode = 1
 
 [node name="Label" type="RichTextLabel" parent="PanelContainer/HBoxContainer" unique_id=1256639664]
-custom_minimum_size = Vector2(300, 20)
+custom_minimum_size = Vector2(250, 20)
 layout_mode = 2
 theme_override_colors/default_color = Color(0.9091122, 0.85196555, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)

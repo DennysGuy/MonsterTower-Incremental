@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://chr1ynm2qbnps"]
+
+[ext_resource type="Texture2D" uid="uid://bunexl63sygws" path="res://Assets/TechTree/TraversalNodes/LadderDashDistance_Disabled.png" id="1_fmcac"]
+[ext_resource type="Texture2D" uid="uid://duhc7wevcy2h8" path="res://Assets/TechTree/TraversalNodes/LadderDashDistance.png" id="2_fmcac"]
+[ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="4_b338j"]
+
+[resource]
+script = ExtResource("4_b338j")
+node_name = "Ladder Dash Distance 1"
+icon = ExtResource("2_fmcac")
+disabled_icon = ExtResource("1_fmcac")
+description = "Increases the duration of your ladder dash."
+max_level = 2
+currency_required = 10000
+stat_relation = 2
+price_scaler = 1.2
+stat_name = "Ladder Dash Duration"
+upgrade_interval = 0.05
+prereqs = Array[String](["Ladder Dash:1"])
+metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

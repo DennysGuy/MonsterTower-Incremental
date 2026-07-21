@@ -161,6 +161,8 @@ enum TECH_NODE_TYPE {ABILITY, FACILITY, CLASS_ABILITY}
 	"Dodge Chance 2": 0.0,
 	"Dash Distance 1": 0.0,
 	"Dash Distance 2": 0.0,
+	"Ladder Dash": 0.0,
+	"Ladder Dash Distance 1": 0.0,
 	"Critical Cooking 1": 0.0,
 	"Critical Cooking 2": 0.0,
 	"Critical Smelting 1": 0.0,
@@ -304,9 +306,9 @@ enum TECH_NODE_TYPE {ABILITY, FACILITY, CLASS_ABILITY}
 	"Junk-A-Auto-Transfer": preload("uid://denk83487dyny"),
 	"Auto Sell Transfer Speed 1": preload("uid://c3dg2fxa12pr6"),
 	"Expert Marketeer 1": preload("uid://p0w0h82t37py"),
+	"Ladder Dash": preload("uid://bfcnex03bip3y"),
+	"Ladder Dash Distance 1": preload("uid://chr1ynm2qbnps")
 
-	
-	
 	#"Free Range 1": preload("uid://bpdjvl0vrhdpa"),
 	#"Free Range 2": preload("uid://i8atxfm76kuo"),
 	#"Free Heat 1": preload("uid://vg0n3dc6j08g"),

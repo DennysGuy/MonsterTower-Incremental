@@ -87,11 +87,12 @@ func attack_enemies(enemies_in_hitbox : Array, enemies_hit : int = 1, number_of_
 			while i < attack_reps:
 				#enemy.sfx_player.play()
 				if is_inside_tree() and  is_instance_valid(enemy) and is_instance_valid(player):
+		
 					attack_enemy(player, enemy, damage, is_crit, 0, is_warrior, label_position, ability)
 
 					i += 1
 					label_position += 25
-					await player.get_tree().create_timer(0.1).timeout
+					await player.get_tree().create_timer(0.07).timeout
 			
 			if is_instance_valid(enemy) and enemy.health <= 0:
 				enemies_in_hitbox.erase(enemy)
@@ -115,6 +116,8 @@ func attack_enemy(player : Player, enemy : Enemy, incoming_damage : int, is_crit
 			ability.ATTACK_TYPE.SILENCE:
 				enemy.apply_silenced_and_damage(incoming_damage, ability.stun_wait_time, is_crit)
 		return
+	if enemy != Player:
+		enemy.knock_back_wait_time = PlayerStats.get_current_sword().knock_back_bonus
 	enemy.apply_damage(incoming_damage, is_crit, label_position)
 	#might need to break here so we don't collide with the function below
 

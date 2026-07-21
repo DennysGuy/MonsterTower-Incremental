@@ -853,6 +853,44 @@ bbcode_enabled = true
 text = "[color=aqua]currency: 1000000[/color]"
 horizontal_alignment = 2
 
+[node name="SprintNotice" type="Label" parent="PlayerHUD" unique_id=806469057]
+visible = false
+layout_mode = 0
+offset_left = 1328.0
+offset_top = 933.0
+offset_right = 1752.0
+offset_bottom = 973.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("8_usdtc")
+theme_override_font_sizes/font_size = 24
+text = "Press Shift to toggle Sprint!"
+horizontal_alignment = 1
+
+[node name="ToggleQuestHub" type="Label" parent="PlayerHUD" unique_id=2118394977]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 117.0
+offset_right = 493.0
+offset_bottom = 157.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("8_usdtc")
+theme_override_font_sizes/font_size = 24
+text = "Press Tab to toggle Quest Hub"
+
+[node name="ToggleQuestHub2" type="Label" parent="PlayerHUD" unique_id=1057816397]
+layout_mode = 0
+offset_left = 1368.0
+offset_top = 11.0
+offset_right = 1616.0
+offset_bottom = 51.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("8_usdtc")
+theme_override_font_sizes/font_size = 24
+text = "Build 0.2.0-prealpha.1"
+
 [node name="StartHuntLabel" type="Label" parent="PlayerHUD" unique_id=915542649]
 layout_mode = 1
 anchors_preset = 8
@@ -931,10 +969,10 @@ text = "Open Tower Map"
 
 [node name="QuestHub" parent="PlayerHUD" unique_id=1129499445 instance=ExtResource("14_xxan5")]
 layout_mode = 1
-offset_left = 24.0
-offset_top = -426.0
-offset_right = 424.0
-offset_bottom = 654.0
+offset_left = 27.0
+offset_top = -413.0
+offset_right = 427.0
+offset_bottom = 667.0
 mouse_filter = 2
 
 [node name="NotificationHub" parent="PlayerHUD" unique_id=1685968631 instance=ExtResource("12_wldwa")]
@@ -1161,9 +1199,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -569.0
-offset_top = -340.0
+offset_top = -427.0
 offset_right = 578.0
-offset_bottom = -284.0
+offset_bottom = -371.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(574, 33)
@@ -1171,7 +1209,7 @@ theme_override_colors/font_color = Color(0.9835877, 0.818833, 0.7133627, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 25
 theme_override_fonts/font = ExtResource("19_tjlva")
-theme_override_font_sizes/font_size = 52
+theme_override_font_sizes/font_size = 64
 text = "Quest Complete!"
 horizontal_alignment = 1
 
@@ -1182,26 +1220,13 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = -573.0
-offset_top = 453.0
-offset_right = -31.0
-offset_bottom = 701.0
+offset_left = 1207.0
+offset_top = -262.0
+offset_right = 1749.0
+offset_bottom = -14.0
 grow_horizontal = 1
 grow_vertical = 1
 mouse_filter = 2
-
-[node name="SprintNotice" type="Label" parent="PlayerHUD" unique_id=806469057]
-visible = false
-layout_mode = 0
-offset_left = 27.0
-offset_top = 118.0
-offset_right = 335.0
-offset_bottom = 158.0
-theme_override_colors/font_color = Color(1, 1, 0, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("8_usdtc")
-theme_override_font_sizes/font_size = 32
-text = "Press Shift to Sprint!"
 
 [node name="SfxPlayer" parent="." unique_id=2102076142 instance=ExtResource("8_65fhw")]
 

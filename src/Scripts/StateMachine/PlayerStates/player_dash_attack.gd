@@ -27,7 +27,7 @@ func enter() -> void:
 	AbilityTimers.activate_ability_cooldown("Dash")
 	parent.dash_cancel_time_frame = parent.dash_cancel_wait_time
 	var selected_ability : Ability = PlayerStats.get_equipped_ability("Dash")
-	PlayerStats.player_stats["Current MP"] -= selected_ability.mp_cost
+	#PlayerStats.player_stats["Current MP"] -= selected_ability.mp_cost
 	PlayerHudSignalBus.update_player_mp.emit()
 	equipped_dash_attack = selected_ability.ability_behavior
 	equipped_dash_attack.on_enter(parent)

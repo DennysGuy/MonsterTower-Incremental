@@ -30,6 +30,7 @@
 [ext_resource type="AudioStream" uid="uid://da4j7oibbpe1j" path="res://Audio/SFX/Biomes/MossyDungeon/GenericDeath3.wav" id="20_xk72l"]
 [ext_resource type="Script" uid="uid://dwvy67t8hx3" path="res://src/Scripts/Enemies/enemy_stun.gd" id="23_rxq5f"]
 [ext_resource type="Script" uid="uid://cx8e05eefws02" path="res://src/Scripts/StateMachine/EnemyStates/GenericEnemyStates/enemy_spawn_in.gd" id="24_0ll7g"]
+[ext_resource type="Script" uid="uid://b76huuoc8f6ro" path="res://src/Scripts/Enemies/enemy_hurt_buffer.gd" id="25_gxvih"]
 [ext_resource type="PackedScene" uid="uid://dg5nyfcc7ja8v" path="res://src/Scenes/Actors/Enemies/StatusEffectIconBar.tscn" id="28_hy0pi"]
 [ext_resource type="PackedScene" uid="uid://ducu4iluu5nv4" path="res://src/Scenes/UI/StatusEffectVBox.tscn" id="29_xoxmr"]
 
@@ -393,8 +394,8 @@ height = 42.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s7mdw"]
 size = Vector2(23, 30)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_v37cp"]
-size = Vector2(19, 26)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jkdaj"]
+height = 26.0
 
 [node name="CorruptedMushie" type="CharacterBody2D" unique_id=85927412 node_paths=PackedStringArray("name_tag", "health_bar", "status_effect_icon_bar", "vertical_status_icon_bar", "slow_timer", "silenced_timer", "wall_detector", "ground_detector", "state_machine", "animation_player", "health_component", "sprite", "blink_timer", "stun_timer", "hurt_box", "hit_box", "hit_state", "dead_state", "stun_state", "sfx_player") groups=["Enemy"]]
 collision_layer = 128
@@ -465,11 +466,12 @@ idle_state = NodePath("../Idle")
 chase_state = NodePath("../Chase")
 animation_name = "Patrol"
 
-[node name="Hit" type="Node" parent="StateMachine" unique_id=1992342087 node_paths=PackedStringArray("idle_state", "chase_state")]
+[node name="Hit" type="Node" parent="StateMachine" unique_id=1992342087 node_paths=PackedStringArray("idle_state", "chase_state", "hurt_buffer_state")]
 script = ExtResource("13_lht4k")
 idle_state = NodePath("../Idle")
 chase_state = NodePath("../Chase")
 wait_time = 0.35
+hurt_buffer_state = NodePath("../HurtBuffer")
 generic_impact_1 = ExtResource("14_70lv2")
 generic_impact_2 = ExtResource("15_gslgg")
 generic_impact_3 = ExtResource("16_x4o6m")
@@ -499,6 +501,12 @@ script = ExtResource("24_0ll7g")
 idle_state = NodePath("../Idle")
 animation_name = "SpawnIn"
 
+[node name="HurtBuffer" type="Node" parent="StateMachine" unique_id=647911689 node_paths=PackedStringArray("idle_state", "chase_state")]
+script = ExtResource("25_gxvih")
+idle_state = NodePath("../Idle")
+chase_state = NodePath("../Chase")
+buffer_time = 0.14
+
 [node name="HealthComponent" parent="." unique_id=2083111642 node_paths=PackedStringArray("parent", "health_bar") instance=ExtResource("10_srl2n")]
 parent = NodePath("..")
 health_bar = NodePath("../EnemyHealthBar")
@@ -518,7 +526,7 @@ position = Vector2(0, -20)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=233820395]
 position = Vector2(0.5, 7)
-shape = SubResource("RectangleShape2D_v37cp")
+shape = SubResource("CapsuleShape2D_jkdaj")
 
 [node name="GroundDetector" parent="." unique_id=664844787 instance=ExtResource("13_v37cp")]
 position = Vector2(17, -14)

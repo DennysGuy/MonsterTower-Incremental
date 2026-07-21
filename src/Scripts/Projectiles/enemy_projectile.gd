@@ -70,6 +70,7 @@ func issue_attack(selected_hit_box : Area2D, multiplier : float = 1.0, ability :
 	if is_crit:
 		incoming_damage = int((PlayerStats.player_stats["Crit Damage"] + PlayerStats.get_current_sword().crit_bonus + PlayerStats.get_total_gem_bonus("Crit Damage Bonus")) * incoming_damage)
 	
+	print("GAGA %s" % PlayerStats.get_current_sword().knock_back_bonus)
 	if PlayerStats.player_stats["Class"] == "Tyro":
 		GameManager.attack_enemies(enemies_in_range, overlapping_hits, number_of_hits, player, incoming_damage, is_crit, true, rep_delay,ability, hit_freeze)
 	else:
