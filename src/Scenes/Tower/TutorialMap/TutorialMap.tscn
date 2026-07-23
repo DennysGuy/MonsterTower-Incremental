@@ -23,6 +23,9 @@
 [ext_resource type="PackedScene" uid="uid://c6tv3t1cpeq8f" path="res://src/Scenes/PlayerSpawnPoint.tscn" id="18_ys33i"]
 [ext_resource type="PackedScene" uid="uid://cgq8ujrmlp0vo" path="res://src/Scenes/Actors/Enemies/MossyDungeon/CorruptedMushie/BeginnerMushie.tscn" id="20_jwogi"]
 [ext_resource type="PackedScene" uid="uid://crf0fypg7rf6a" path="res://src/Scenes/MonsterSpawnArea.tscn" id="22_506e5"]
+[ext_resource type="Texture2D" uid="uid://y4bigoom84g6" path="res://Assets/NPCs/FreeMarketNPCs/GearDealer_WithMobileMart.png" id="24_mncln"]
+[ext_resource type="PackedScene" uid="uid://drvmmtbvnc785" path="res://src/Scenes/Tower/arrow_at_ore.tscn" id="25_dc783"]
+[ext_resource type="PackedScene" uid="uid://vo5sm7p34vo6" path="res://src/Scenes/Actors/Utilities/NameTag.tscn" id="26_mpxre"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ye63i"]
 texture = ExtResource("9_ye63i")
@@ -623,6 +626,9 @@ size = Vector2(240, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dc783"]
 size = Vector2(34, 351)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mncln"]
+size = Vector2(80, 54)
+
 [node name="TutorialMap" type="Node2D" unique_id=1194992242 node_paths=PackedStringArray("camera", "sfx_player")]
 script = ExtResource("1_tymde")
 map_name = "Base of Starspire Tower"
@@ -840,10 +846,9 @@ libraries/ = SubResource("AnimationLibrary_ys33i")
 position = Vector2(3378, 414)
 
 [node name="TowerEntranceArea" type="Area2D" parent="." unique_id=1530195756]
-position = Vector2(2978, 438)
+position = Vector2(3482, 300)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TowerEntranceArea" unique_id=1738021198]
-position = Vector2(497, -137.5)
 shape = SubResource("RectangleShape2D_ytsg0")
 
 [node name="GuidLog" type="Label" parent="." unique_id=1121016156]
@@ -874,7 +879,7 @@ position = Vector2(0, -123)
 shape = SubResource("RectangleShape2D_cqx2w")
 
 [node name="TechTreeComputer" parent="." unique_id=1189367346 instance=ExtResource("16_cqx2w")]
-position = Vector2(3100, 446)
+position = Vector2(3010, 446)
 
 [node name="PlayerSpawnPoint" parent="." unique_id=1517225239 instance=ExtResource("18_ys33i")]
 position = Vector2(1713, 448)
@@ -907,6 +912,53 @@ position = Vector2(2164, 425)
 position = Vector2(-7, -79.5)
 shape = SubResource("RectangleShape2D_dc783")
 
+[node name="GearDealerWithMobileMart" type="Sprite2D" parent="." unique_id=1567652732]
+position = Vector2(3197, 410)
+texture = ExtResource("24_mncln")
+flip_h = true
+
+[node name="MobileShopArea" type="Area2D" parent="." unique_id=1409077368]
+position = Vector2(3192, 427)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MobileShopArea" unique_id=1702505681]
+position = Vector2(-5, -7)
+shape = SubResource("RectangleShape2D_mncln")
+
+[node name="ArrowAtOre" parent="MobileShopArea" unique_id=2067527573 instance=ExtResource("25_dc783")]
+visible = true
+position = Vector2(-19, -53)
+
+[node name="NameTag" parent="MobileShopArea" unique_id=1232323974 instance=ExtResource("26_mpxre")]
+offset_left = -60.0
+offset_top = 21.0
+offset_right = 80.0
+offset_bottom = 37.0
+
+[node name="Tag" parent="MobileShopArea/NameTag/Bg" parent_id_path=PackedInt32Array(1232323974, 305804188) index="0" unique_id=725373759]
+text = "Market Merchant"
+
+[node name="NameTag2" parent="MobileShopArea" unique_id=1706842441 instance=ExtResource("26_mpxre")]
+offset_left = 124.0
+offset_top = 21.0
+offset_right = 264.0
+offset_bottom = 37.0
+
+[node name="Tag" parent="MobileShopArea/NameTag2/Bg" parent_id_path=PackedInt32Array(1706842441, 305804188) index="0" unique_id=725373759]
+text = "Tower Guide"
+
+[node name="NameTag3" parent="MobileShopArea" unique_id=791391098 instance=ExtResource("26_mpxre")]
+offset_left = -252.0
+offset_top = 21.0
+offset_right = -112.0
+offset_bottom = 37.0
+
+[node name="Tag" parent="MobileShopArea/NameTag3/Bg" parent_id_path=PackedInt32Array(791391098, 305804188) index="0" unique_id=725373759]
+text = "Upgrades PC"
+
 [connection signal="body_entered" from="TowerEntranceArea" to="." method="_on_tower_entrance_area_body_entered"]
 [connection signal="body_exited" from="TowerEntranceArea" to="." method="_on_tower_entrance_area_body_exited"]
 [connection signal="body_entered" from="BoatLeaveArea" to="." method="_on_boat_leave_area_body_entered"]
+
+[editable path="MobileShopArea/NameTag"]
+[editable path="MobileShopArea/NameTag2"]
+[editable path="MobileShopArea/NameTag3"]

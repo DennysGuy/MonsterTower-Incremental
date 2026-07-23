@@ -41,6 +41,7 @@ grow_vertical = 2
 script = ExtResource("1_ht0u6")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1523901549]
+modulate = Color(0.47007585, 0.47007585, 0.47007585, 1)
 layout_mode = 0
 offset_right = 1923.0
 offset_bottom = 1081.0
@@ -529,7 +530,9 @@ grow_vertical = 2
 
 [node name="SubViewport" type="SubViewport" parent="ForeGround/SubViewportContainer2" unique_id=545311545]
 own_world_3d = true
+handle_input_locally = false
 size = Vector2i(310, 696)
+render_target_update_mode = 4
 
 [node name="WeaponPreviewer" parent="ForeGround/SubViewportContainer2/SubViewport" unique_id=1167095521 instance=ExtResource("22_cb4ed")]
 

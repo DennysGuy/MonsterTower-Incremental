@@ -28,6 +28,8 @@ const ITEM_SLOT_NOVELTY = preload("uid://x2hshpeeawjm")
 
 @onready var inventory_label: Label = $InventoryLabel
 
+@onready var sell_slot_button: Button = $DetailsPanel/SellSlotButton
+
 @onready var novelties_tab: TextureButton = $HBoxContainer/NoveltiesTab
 @onready var crafting_tab: TextureButton = $HBoxContainer/CraftingTab
 @onready var cooking_tab: TextureButton = $HBoxContainer/CookingTab

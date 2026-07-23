@@ -78,6 +78,7 @@ grow_vertical = 2
 script = ExtResource("1_88p6l")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1672008804]
+modulate = Color(0.38170326, 0.38170323, 0.38170323, 1)
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1081.0

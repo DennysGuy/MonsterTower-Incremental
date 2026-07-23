@@ -1,28 +1,27 @@
-[gd_scene format=3 uid="uid://cfuw5h0apwpq"]
+[gd_scene format=3 uid="uid://dtcluandasdb2"]
 
-[ext_resource type="Script" uid="uid://dlw0u5lkpm11w" path="res://src/Scripts/HUD/grand_market_menu.gd" id="1_72318"]
-[ext_resource type="Texture2D" uid="uid://cd4laeng77f8o" path="res://Assets/HUD/Facilities/GrandMarketMenu.png" id="1_gosvc"]
-[ext_resource type="PackedScene" uid="uid://cq5osrx532u3u" path="res://src/Scenes/NewStarshire/Facilities/FacilityBGs/GrandMarketArea.tscn" id="2_hiv0a"]
-[ext_resource type="FontFile" uid="uid://qgj228ltdttv" path="res://Assets/Fonts/alagard.ttf" id="2_oo3yc"]
-[ext_resource type="Texture2D" uid="uid://bkj0kj26ahgl8" path="res://Assets/Enemies/CorruptedMushie/PurifiedMushieCore.png" id="4_x7u5n"]
-[ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="5_oesmi"]
-[ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="6_cr4yk"]
-[ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="6_wwjc2"]
-[ext_resource type="Texture2D" uid="uid://b30bdn5uad13v" path="res://Assets/HUD/Facilities/GrandMarketMenu_DropsBG.png" id="7_6u5e3"]
-[ext_resource type="FontFile" uid="uid://dgu1a66dfe8w" path="res://Assets/Fonts/Maplestory OTF Light.otf" id="7_s3vug"]
-[ext_resource type="Texture2D" uid="uid://dkd4op7b7q1vp" path="res://Assets/HUD/Bags/Market_Drops_Button.png" id="8_uqeh6"]
-[ext_resource type="Texture2D" uid="uid://dbq8ligbspbbd" path="res://Assets/HUD/Bags/Market_Drops_Button_Pressed.png" id="9_6aebp"]
-[ext_resource type="FontFile" uid="uid://stn4dtg0uw57" path="res://Assets/Fonts/FredokaOne-Regular.ttf" id="9_jjc7q"]
-[ext_resource type="Texture2D" uid="uid://c0bf31w6yr3lk" path="res://Assets/HUD/Bags/Market_Drops_Button_Hover.png" id="10_4j6oi"]
-[ext_resource type="Texture2D" uid="uid://vlyepx1d3siq" path="res://Assets/HUD/Bags/Market_Ore_Button.png" id="11_f6wvv"]
-[ext_resource type="Texture2D" uid="uid://dxpv7rr7xigwu" path="res://Assets/HUD/Bags/Market_Ore_Button_Pressed.png" id="12_70xkk"]
-[ext_resource type="Texture2D" uid="uid://bh4ibkfm1a8lv" path="res://Assets/HUD/Bags/Market_Ore_Button_Hover.png" id="13_3hxl8"]
-[ext_resource type="Texture2D" uid="uid://baqkrdd18p8ox" path="res://Assets/HUD/Bags/Market_Gem_Button.png" id="14_in26l"]
-[ext_resource type="Texture2D" uid="uid://nof6fd2hbboi" path="res://Assets/HUD/Bags/Market_Gem_Button_Pressed.png" id="15_6u5e3"]
-[ext_resource type="Texture2D" uid="uid://yyyj7gu242ii" path="res://Assets/HUD/Bags/Market_Gem_Button_Hover.png" id="16_s3vug"]
-[ext_resource type="Texture2D" uid="uid://dcf34mnogdpat" path="res://Assets/HUD/Bags/Market_Use_Button.png" id="17_in26l"]
-[ext_resource type="Texture2D" uid="uid://b1k5jwyknpl4e" path="res://Assets/HUD/Bags/Market_Use_Button_Pressed.png" id="18_6u5e3"]
-[ext_resource type="Texture2D" uid="uid://cdnmf68j5a2ak" path="res://Assets/HUD/Bags/Market_Use_Button_Hover.png" id="19_s3vug"]
+[ext_resource type="Script" uid="uid://dlw0u5lkpm11w" path="res://src/Scripts/HUD/grand_market_menu.gd" id="1_kpolg"]
+[ext_resource type="Texture2D" uid="uid://cd4laeng77f8o" path="res://Assets/HUD/Facilities/GrandMarketMenu.png" id="3_clab5"]
+[ext_resource type="Texture2D" uid="uid://b30bdn5uad13v" path="res://Assets/HUD/Facilities/GrandMarketMenu_DropsBG.png" id="4_tpv8e"]
+[ext_resource type="Texture2D" uid="uid://bkj0kj26ahgl8" path="res://Assets/Enemies/CorruptedMushie/PurifiedMushieCore.png" id="5_jmjhk"]
+[ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="6_e32r2"]
+[ext_resource type="FontFile" uid="uid://dgu1a66dfe8w" path="res://Assets/Fonts/Maplestory OTF Light.otf" id="7_d2q85"]
+[ext_resource type="FontFile" uid="uid://qgj228ltdttv" path="res://Assets/Fonts/alagard.ttf" id="8_d0krj"]
+[ext_resource type="FontFile" uid="uid://stn4dtg0uw57" path="res://Assets/Fonts/FredokaOne-Regular.ttf" id="9_vm30v"]
+[ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="10_f8km2"]
+[ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="11_nmmd3"]
+[ext_resource type="Texture2D" uid="uid://dkd4op7b7q1vp" path="res://Assets/HUD/Bags/Market_Drops_Button.png" id="12_d3tos"]
+[ext_resource type="Texture2D" uid="uid://dbq8ligbspbbd" path="res://Assets/HUD/Bags/Market_Drops_Button_Pressed.png" id="13_t086i"]
+[ext_resource type="Texture2D" uid="uid://c0bf31w6yr3lk" path="res://Assets/HUD/Bags/Market_Drops_Button_Hover.png" id="14_va01l"]
+[ext_resource type="Texture2D" uid="uid://vlyepx1d3siq" path="res://Assets/HUD/Bags/Market_Ore_Button.png" id="15_7d4rr"]
+[ext_resource type="Texture2D" uid="uid://dxpv7rr7xigwu" path="res://Assets/HUD/Bags/Market_Ore_Button_Pressed.png" id="16_qpy8y"]
+[ext_resource type="Texture2D" uid="uid://bh4ibkfm1a8lv" path="res://Assets/HUD/Bags/Market_Ore_Button_Hover.png" id="17_0wcg6"]
+[ext_resource type="Texture2D" uid="uid://baqkrdd18p8ox" path="res://Assets/HUD/Bags/Market_Gem_Button.png" id="18_sj4ee"]
+[ext_resource type="Texture2D" uid="uid://nof6fd2hbboi" path="res://Assets/HUD/Bags/Market_Gem_Button_Pressed.png" id="19_xvtox"]
+[ext_resource type="Texture2D" uid="uid://yyyj7gu242ii" path="res://Assets/HUD/Bags/Market_Gem_Button_Hover.png" id="20_57xaa"]
+[ext_resource type="Texture2D" uid="uid://dcf34mnogdpat" path="res://Assets/HUD/Bags/Market_Use_Button.png" id="21_o103s"]
+[ext_resource type="Texture2D" uid="uid://b1k5jwyknpl4e" path="res://Assets/HUD/Bags/Market_Use_Button_Pressed.png" id="22_um7ni"]
+[ext_resource type="Texture2D" uid="uid://cdnmf68j5a2ak" path="res://Assets/HUD/Bags/Market_Use_Button_Hover.png" id="23_hjxjm"]
 
 [node name="GrandMarketMenu" type="Control" unique_id=1234613022 node_paths=PackedStringArray("tab_buttons")]
 layout_mode = 3
@@ -31,21 +30,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_72318")
+script = ExtResource("1_kpolg")
 tab_buttons = []
-
-[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=613157449]
-layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 1079.0
-
-[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=425049106]
-own_world_3d = true
-handle_input_locally = false
-size = Vector2i(1920, 1080)
-render_target_update_mode = 4
-
-[node name="GrandMarketArea" parent="SubViewportContainer/SubViewport" unique_id=531201827 instance=ExtResource("2_hiv0a")]
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=44738385]
 self_modulate = Color(1, 1, 1, 0.96000004)
@@ -55,7 +41,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_gosvc")
+texture = ExtResource("3_clab5")
 expand_mode = 1
 
 [node name="InventoryBG" type="TextureRect" parent="." unique_id=249039891]
@@ -67,7 +53,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("7_6u5e3")
+texture = ExtResource("4_tpv8e")
 expand_mode = 1
 
 [node name="DetailsPanel" type="Control" parent="." unique_id=2035819410]
@@ -110,7 +96,7 @@ offset_top = 9.0
 offset_right = 31.199997
 offset_bottom = 65.0
 grow_horizontal = 2
-texture = ExtResource("4_x7u5n")
+texture = ExtResource("5_jmjhk")
 
 [node name="ItemTitle" type="Label" parent="DetailsPanel" unique_id=912050387]
 layout_mode = 1
@@ -124,7 +110,7 @@ offset_bottom = 89.0
 grow_horizontal = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
-theme_override_fonts/font = ExtResource("5_oesmi")
+theme_override_fonts/font = ExtResource("6_e32r2")
 theme_override_font_sizes/font_size = 24
 text = "Purified Mushie Core"
 horizontal_alignment = 1
@@ -137,7 +123,7 @@ offset_right = 249.0
 offset_bottom = 383.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
-theme_override_fonts/font = ExtResource("5_oesmi")
+theme_override_fonts/font = ExtResource("6_e32r2")
 theme_override_font_sizes/font_size = 32
 text = "Value: 35"
 
@@ -156,7 +142,7 @@ grow_horizontal = 2
 grow_vertical = 0
 mouse_default_cursor_shape = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("5_oesmi")
+theme_override_fonts/font = ExtResource("6_e32r2")
 theme_override_font_sizes/font_size = 32
 text = "Sell x1"
 
@@ -175,7 +161,7 @@ grow_horizontal = 2
 grow_vertical = 0
 mouse_default_cursor_shape = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("5_oesmi")
+theme_override_fonts/font = ExtResource("6_e32r2")
 theme_override_font_sizes/font_size = 32
 text = "Sell Slot"
 
@@ -186,7 +172,7 @@ offset_top = 143.0
 offset_right = 421.0
 offset_bottom = 332.0
 theme_override_constants/outline_size = 5
-theme_override_fonts/normal_font = ExtResource("7_s3vug")
+theme_override_fonts/normal_font = ExtResource("7_d2q85")
 theme_override_font_sizes/normal_font_size = 22
 text = "The core of a corrupted mushie purified through a chemical process when dropped. Used in crafting exoctic dishes!"
 
@@ -202,7 +188,7 @@ offset_bottom = 140.0
 grow_horizontal = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("2_oo3yc")
+theme_override_fonts/font = ExtResource("8_d0krj")
 theme_override_font_sizes/font_size = 46
 text = "The Grand Market"
 horizontal_alignment = 2
@@ -219,7 +205,7 @@ offset_bottom = 218.0
 grow_horizontal = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("2_oo3yc")
+theme_override_fonts/font = ExtResource("8_d0krj")
 theme_override_font_sizes/font_size = 32
 text = "'ESC' to Exit"
 horizontal_alignment = 2
@@ -236,7 +222,7 @@ offset_bottom = 909.0
 grow_horizontal = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("2_oo3yc")
+theme_override_fonts/font = ExtResource("8_d0krj")
 theme_override_font_sizes/font_size = 28
 text = "Currency: 1000000000000"
 
@@ -248,7 +234,7 @@ offset_right = 308.0
 offset_bottom = 225.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
-theme_override_fonts/font = ExtResource("2_oo3yc")
+theme_override_fonts/font = ExtResource("8_d0krj")
 theme_override_font_sizes/font_size = 24
 text = "Click on Item slot to sell"
 
@@ -260,7 +246,7 @@ offset_right = 1748.0
 offset_bottom = 226.0
 mouse_default_cursor_shape = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("5_oesmi")
+theme_override_fonts/font = ExtResource("6_e32r2")
 theme_override_font_sizes/font_size = 32
 text = "Exit"
 
@@ -271,7 +257,7 @@ offset_top = 262.0
 offset_right = 780.0
 offset_bottom = 307.0
 theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("9_jjc7q")
+theme_override_fonts/font = ExtResource("9_vm30v")
 theme_override_font_sizes/font_size = 36
 text = "Drops"
 
@@ -282,7 +268,7 @@ offset_top = 264.0
 offset_right = 1323.0
 offset_bottom = 309.0
 theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("9_jjc7q")
+theme_override_fonts/font = ExtResource("9_vm30v")
 theme_override_font_sizes/font_size = 36
 text = "Bank"
 
@@ -294,7 +280,7 @@ offset_top = 114.0
 offset_right = 363.0
 offset_bottom = 128.0
 theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("6_wwjc2")
+theme_override_fonts/font = ExtResource("10_f8km2")
 theme_override_font_sizes/font_size = 13
 text = "Ore Bag"
 
@@ -339,12 +325,12 @@ grow_horizontal = 0
 grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
-theme_override_fonts/font = ExtResource("2_oo3yc")
+theme_override_fonts/font = ExtResource("8_d0krj")
 theme_override_font_sizes/font_size = 64
 text = "Unlock Bank 
 to Access Slots!"
 
-[node name="SfxPlayer" parent="." unique_id=2090409393 instance=ExtResource("6_cr4yk")]
+[node name="SfxPlayer" parent="." unique_id=2090409393 instance=ExtResource("11_nmmd3")]
 
 [node name="SellTabButton" type="Button" parent="." unique_id=1752495583]
 visible = false
@@ -362,7 +348,7 @@ grow_horizontal = 2
 grow_vertical = 0
 mouse_default_cursor_shape = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("5_oesmi")
+theme_override_fonts/font = ExtResource("6_e32r2")
 theme_override_font_sizes/font_size = 20
 text = "Sell Tab"
 
@@ -381,7 +367,7 @@ grow_horizontal = 2
 grow_vertical = 0
 mouse_default_cursor_shape = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("5_oesmi")
+theme_override_fonts/font = ExtResource("6_e32r2")
 theme_override_font_sizes/font_size = 16
 text = "Sell All Bank Items"
 
@@ -401,9 +387,9 @@ theme_override_constants/separation = 0
 custom_minimum_size = Vector2(93, 46)
 layout_mode = 2
 mouse_default_cursor_shape = 2
-texture_normal = ExtResource("8_uqeh6")
-texture_pressed = ExtResource("9_6aebp")
-texture_hover = ExtResource("10_4j6oi")
+texture_normal = ExtResource("12_d3tos")
+texture_pressed = ExtResource("13_t086i")
+texture_hover = ExtResource("14_va01l")
 stretch_mode = 0
 
 [node name="Label" type="Label" parent="HBoxContainer/InventoryTab" unique_id=296578205]
@@ -420,7 +406,7 @@ offset_bottom = 10.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("6_wwjc2")
+theme_override_fonts/font = ExtResource("10_f8km2")
 theme_override_font_sizes/font_size = 20
 text = "Drops"
 horizontal_alignment = 1
@@ -429,9 +415,9 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(96, 46)
 layout_mode = 2
 mouse_default_cursor_shape = 2
-texture_normal = ExtResource("11_f6wvv")
-texture_pressed = ExtResource("12_70xkk")
-texture_hover = ExtResource("13_3hxl8")
+texture_normal = ExtResource("15_7d4rr")
+texture_pressed = ExtResource("16_qpy8y")
+texture_hover = ExtResource("17_0wcg6")
 stretch_mode = 0
 
 [node name="Label" type="Label" parent="HBoxContainer/OreTab" unique_id=1734482125]
@@ -448,7 +434,7 @@ offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("6_wwjc2")
+theme_override_fonts/font = ExtResource("10_f8km2")
 theme_override_font_sizes/font_size = 24
 text = "Ore"
 
@@ -456,9 +442,9 @@ text = "Ore"
 custom_minimum_size = Vector2(96, 46)
 layout_mode = 2
 mouse_default_cursor_shape = 2
-texture_normal = ExtResource("14_in26l")
-texture_pressed = ExtResource("15_6u5e3")
-texture_hover = ExtResource("16_s3vug")
+texture_normal = ExtResource("18_sj4ee")
+texture_pressed = ExtResource("19_xvtox")
+texture_hover = ExtResource("20_57xaa")
 stretch_mode = 0
 
 [node name="Label" type="Label" parent="HBoxContainer/GemStonesTab" unique_id=2019106025]
@@ -469,7 +455,7 @@ offset_right = 59.0
 offset_bottom = 36.0
 theme_override_constants/line_spacing = -1
 theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("6_wwjc2")
+theme_override_fonts/font = ExtResource("10_f8km2")
 theme_override_font_sizes/font_size = 15
 text = "Gem 
 Stones"
@@ -478,9 +464,9 @@ Stones"
 custom_minimum_size = Vector2(96, 46)
 layout_mode = 2
 mouse_default_cursor_shape = 2
-texture_normal = ExtResource("17_in26l")
-texture_pressed = ExtResource("18_6u5e3")
-texture_hover = ExtResource("19_s3vug")
+texture_normal = ExtResource("21_o103s")
+texture_pressed = ExtResource("22_um7ni")
+texture_hover = ExtResource("23_hjxjm")
 stretch_mode = 0
 
 [node name="Label" type="Label" parent="HBoxContainer/UseTab" unique_id=1541491451]
@@ -497,7 +483,7 @@ offset_bottom = 12.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("6_wwjc2")
+theme_override_fonts/font = ExtResource("10_f8km2")
 theme_override_font_sizes/font_size = 24
 text = "Use"
 
