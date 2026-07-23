@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dlw0u5lkpm11w" path="res://src/Scripts/HUD/grand_market_menu.gd" id="1_72318"]
 [ext_resource type="Texture2D" uid="uid://cd4laeng77f8o" path="res://Assets/HUD/Facilities/GrandMarketMenu.png" id="1_gosvc"]
+[ext_resource type="PackedScene" uid="uid://cq5osrx532u3u" path="res://src/Scenes/NewStarshire/Facilities/FacilityBGs/GrandMarketArea.tscn" id="2_hiv0a"]
 [ext_resource type="FontFile" uid="uid://qgj228ltdttv" path="res://Assets/Fonts/alagard.ttf" id="2_oo3yc"]
 [ext_resource type="Texture2D" uid="uid://bkj0kj26ahgl8" path="res://Assets/Enemies/CorruptedMushie/PurifiedMushieCore.png" id="4_x7u5n"]
 [ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="5_oesmi"]
@@ -11,6 +12,7 @@
 [ext_resource type="FontFile" uid="uid://dgu1a66dfe8w" path="res://Assets/Fonts/Maplestory OTF Light.otf" id="7_s3vug"]
 [ext_resource type="Texture2D" uid="uid://dkd4op7b7q1vp" path="res://Assets/HUD/Bags/Market_Drops_Button.png" id="8_uqeh6"]
 [ext_resource type="Texture2D" uid="uid://dbq8ligbspbbd" path="res://Assets/HUD/Bags/Market_Drops_Button_Pressed.png" id="9_6aebp"]
+[ext_resource type="FontFile" uid="uid://stn4dtg0uw57" path="res://Assets/Fonts/FredokaOne-Regular.ttf" id="9_jjc7q"]
 [ext_resource type="Texture2D" uid="uid://c0bf31w6yr3lk" path="res://Assets/HUD/Bags/Market_Drops_Button_Hover.png" id="10_4j6oi"]
 [ext_resource type="Texture2D" uid="uid://vlyepx1d3siq" path="res://Assets/HUD/Bags/Market_Ore_Button.png" id="11_f6wvv"]
 [ext_resource type="Texture2D" uid="uid://dxpv7rr7xigwu" path="res://Assets/HUD/Bags/Market_Ore_Button_Pressed.png" id="12_70xkk"]
@@ -32,17 +34,21 @@ grow_vertical = 2
 script = ExtResource("1_72318")
 tab_buttons = []
 
-[node name="Panel" type="Panel" parent="." unique_id=945022329]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 1.0
-offset_right = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=613157449]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1079.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=425049106]
+own_world_3d = true
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="GrandMarketArea" parent="SubViewportContainer/SubViewport" unique_id=531201827 instance=ExtResource("2_hiv0a")]
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=44738385]
+self_modulate = Color(1, 1, 1, 0.96000004)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -53,6 +59,7 @@ texture = ExtResource("1_gosvc")
 expand_mode = 1
 
 [node name="InventoryBG" type="TextureRect" parent="." unique_id=249039891]
+self_modulate = Color(1, 1, 1, 0.96000004)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -141,9 +148,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -74.0
+offset_left = -156.0
 offset_top = -37.0
-offset_right = 11.0
+offset_right = -53.0
 offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -151,7 +158,26 @@ mouse_default_cursor_shape = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5_oesmi")
 theme_override_font_sizes/font_size = 32
-text = "Sell 1"
+text = "Sell x1"
+
+[node name="SellSlotButton" type="Button" parent="DetailsPanel" unique_id=382654307]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -49.0
+offset_top = -37.0
+offset_right = 126.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_oesmi")
+theme_override_font_sizes/font_size = 32
+text = "Sell Slot"
 
 [node name="Description" type="RichTextLabel" parent="DetailsPanel" unique_id=701032641]
 layout_mode = 0
@@ -240,24 +266,24 @@ text = "Exit"
 
 [node name="InventoryLabel" type="Label" parent="." unique_id=1376269875]
 layout_mode = 0
-offset_left = 685.0
-offset_top = 270.0
-offset_right = 788.0
-offset_bottom = 294.0
+offset_left = 677.0
+offset_top = 262.0
+offset_right = 780.0
+offset_bottom = 307.0
 theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("6_wwjc2")
-theme_override_font_sizes/font_size = 24
+theme_override_fonts/font = ExtResource("9_jjc7q")
+theme_override_font_sizes/font_size = 36
 text = "Drops"
 
 [node name="InventoryLabel2" type="Label" parent="." unique_id=362013724]
 layout_mode = 0
-offset_left = 1245.0
-offset_top = 270.0
-offset_right = 1307.0
-offset_bottom = 302.0
+offset_left = 1237.0
+offset_top = 264.0
+offset_right = 1323.0
+offset_bottom = 309.0
 theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("6_wwjc2")
-theme_override_font_sizes/font_size = 32
+theme_override_fonts/font = ExtResource("9_jjc7q")
+theme_override_font_sizes/font_size = 36
 text = "Bank"
 
 [node name="OreBagLabel" type="Label" parent="." unique_id=918684038]
@@ -305,22 +331,23 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -192.0
-offset_top = -8.0
-offset_right = -108.0
-offset_bottom = 19.0
+offset_left = -664.0
+offset_top = -82.0
+offset_right = -220.0
+offset_bottom = 41.0
 grow_horizontal = 0
 grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("2_oo3yc")
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 64
 text = "Unlock Bank 
 to Access Slots!"
 
 [node name="SfxPlayer" parent="." unique_id=2090409393 instance=ExtResource("6_cr4yk")]
 
 [node name="SellTabButton" type="Button" parent="." unique_id=1752495583]
+visible = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -475,8 +502,10 @@ theme_override_font_sizes/font_size = 24
 text = "Use"
 
 [connection signal="button_up" from="DetailsPanel/SellButton" to="." method="_on_sell_button_button_up"]
+[connection signal="button_up" from="DetailsPanel/SellSlotButton" to="." method="_on_sell_slot_button_button_up"]
 [connection signal="button_up" from="Close" to="." method="_on_close_button_up"]
 [connection signal="button_up" from="SellTabButton" to="." method="_on_sell_novelties_button_button_up"]
+[connection signal="button_up" from="SellTabButton" to="." method="_on_sell_tab_button_button_up"]
 [connection signal="button_up" from="SellBankButton" to="." method="_on_sell_novelties_button_2_button_up"]
 [connection signal="button_up" from="HBoxContainer/InventoryTab" to="." method="_on_novelties_tab_button_up"]
 [connection signal="button_up" from="HBoxContainer/OreTab" to="." method="_on_ore_tab_button_up"]

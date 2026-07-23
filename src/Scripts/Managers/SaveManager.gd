@@ -1,6 +1,6 @@
 extends Node
 
-const SAVE_PATH : String = "user://game_save.tres"
+const SAVE_PATH : String = "user://game_save.res"
 var current_save_game : GameSave = null
 
 func save_game() -> void:
@@ -45,11 +45,10 @@ func init_save_file() -> void:
 	
 	QuestManager.load_all_quest_status()
 	QuestManager.load_active_quests()
-	
+	load_progression_states()
 	load_equipped_abilities()
 	PlayerStats.load_abilities()
 	load_gem_sockets()
-
 
 func save_floor_data(tower_entrance_data : TowerEntranceData, map_name : String) -> void:
 	var saved_data = SaveManager.current_save_game
@@ -57,7 +56,7 @@ func save_floor_data(tower_entrance_data : TowerEntranceData, map_name : String)
 	saved_data.tower_entrance_data[tower_entrance_data.floor_name]["Campfires Reached"] = tower_entrance_data.camp_fires_reached
 	saved_data.tower_entrance_data[tower_entrance_data.floor_name]["Hunt Challenge Unlocked"] = tower_entrance_data.hunt_challenge_unlocked
 	saved_data.tower_entrance_data[tower_entrance_data.floor_name]["Hunt Challenge Completed"] = tower_entrance_data.hunt_challenge_completed
-	saved_data.check_points_unlocked[tower_entrance_data.floor_name] = PlayerStats.check_points_unlocked[map_name] 
+	saved_data.check_points_unlocked[tower_entrance_data.floor_name] = PlayerStats.check_points_unlocked[tower_entrance_data.floor_name] 
 	SaveManager.save_game()
 	SaveManager.save_player_stats()
 
@@ -68,6 +67,13 @@ func save_tech_tree_data() -> void:
 		current_save_game.upgrade_count_to_prestige = TechTreeManager.upgrade_count_to_prestige 
 		current_save_game.current_upgrade_count = TechTreeManager.current_upgrade_count
 		save_game()
+
+func load_progression_states() -> void:
+	GameManager.first_class_just_unlocked = load_progression_state("First Class Just Unlocked")
+	GameManager.first_quest_just_unlocked = load_progression_state("First Quest Just Unlocked")
+	GameManager.market_intro_cutscene_played = load_progression_state("Market Intro Cutscene Played")
+	GameManager.monster_voices_toggled = load_various_settings("Monster Voices Toggled")
+	GameManager.job_selection_notice_scene_played = load_various_settings("Job Selection Notice Cutscene Played")
 
 func save_equipped_abilities() -> void:
 	for ability in PlayerStats.get_equipped_abilities().keys():
@@ -119,6 +125,12 @@ func save_quest_status(quest_id : int, status : int, turned_in : bool) -> void:
 	current_save_game.quests[quest_id]["Turned In"] = turned_in
 	save_game()
 
+func get_floor_entered_count(floor_name : String) -> int:
+	return current_save_game.tower_entrance_data[floor_name]["Times Entered"] 
+
+func save_floor_entered_count(floor_name : String, count : int) -> void:
+	current_save_game.tower_entrance_data[floor_name]["Times Entered"] = count
+	save_game()
 
 func get_existing_save_file() -> GameSave:
 	return ResourceLoader.load(SAVE_PATH, "", ResourceLoader.CACHE_MODE_IGNORE)
@@ -136,6 +148,9 @@ func get_weapon_unlocked_status(weapon_id : int) -> bool:
 
 func get_weapon_tracked_status(weapon_id : int) -> bool:
 	return current_save_game.weapon_status[weapon_id]["Is Tracked"]
+
+func get_floor_count(floor_name : String) -> int:
+	return current_save_game.tower_entrance_data[floor_name]["Times Entered"]
 
 func load_equipped_abilities() -> void:
 	for key in current_save_game.equipped_abilities.keys():
@@ -181,3 +196,31 @@ func load_recipe_unlocks_status() -> void:
 	
 	CodexManager.bar_recipe_unlocks = current_save_game.bar_recipe_unlocks
 	CodexManager.dish_recipe_unlocks = current_save_game.dish_recipe_unlocks
+
+func save_progression_state(state_name : String, state : bool) -> void:
+	if current_save_game:
+		current_save_game.progression_states[state_name] = state
+		save_game()
+
+func load_progression_state(state_name : String) -> bool:
+	if current_save_game:
+		return current_save_game.progression_states[state_name]
+	
+	return false	
+
+func save_various_settings(setting : String, state : bool) -> void:
+	if !current_save_game:
+		var save_file = get_existing_save_file()
+		if save_file:
+			current_save_game = save_file
+		return
+		
+	current_save_game.various_settings[setting] = state
+	save_game()
+	
+func load_various_settings(setting : String) -> bool:
+	return current_save_game.various_settings[setting]
+
+
+func get_tech_node_stat_level(stat_name : String) -> int:
+	return current_save_game.tech_nodes[stat_name]["Level"]

@@ -14,13 +14,17 @@
 [resource]
 script = ExtResource("1_stflx")
 sword_name = "Iron Broad Sword"
-attack_bonus = 80.0
-defense_bonus = 15.0
+index = 3
+attack_speed_type = 1
+description = "The Iron broad might have a slow attack speed requires precise timing, but it rewards you with the incredible ability to whack multiple enemies at once with a larger knock back range to compensate! "
+attack_bonus = 70.0
+defense_bonus = -10.0
 attack_speed = 0.75
 crit_bonus = 0.15
-multi_enemies_bonus = 3.0
+multi_enemies_bonus = 10.0
 crit_damage_bonus = 0.15
 stun_stacks_bonus = 1.0
+knock_back_bonus = 0.6
 gem_stone_socket_count = 4
 recipe = ExtResource("4_msfqt")
 graphic = ExtResource("1_y5e8t")

@@ -1,0 +1,13 @@
+do ExpeditionTimer.stop_timer()
+do CutsceneManager.disable_enemy_spawn()
+do CutsceneManager.disable_player_functionality()
+join TowerGuide rightmost [animation="Slide In Down" wait="true"]
+TowerGuide: Uh oh... Looks like one of these darn elevators broke down... again.
+TowerGuide: It's not a big deal, happens every now and then. In fact, this could be a great learning opportunity!
+TowerGuide: Just bring the required materials to the elevator, and we'll have it patched up in no time! Good luck!
+do CutsceneManager.send_camera_to_player()
+[wait time="1.0"]
+do CutsceneManager.enable_player_functionality()
+do GameManager.enable_enemy_movement()
+do ExpeditionTimer.start_timer()
+do CutsceneManager.enable_enemy_spawn()

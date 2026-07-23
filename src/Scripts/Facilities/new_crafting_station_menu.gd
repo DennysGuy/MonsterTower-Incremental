@@ -22,11 +22,15 @@ enum STATION_TYPE {SMELTING, COOKING}
 @onready var success_rate: Label = $CraftingStationItemSelectPanel/RatePanel/SuccessRate
 @onready var failure_rate: Label = $CraftingStationItemSelectPanel/RatePanel/FailureRate
 
+@onready var slider_amount_label: Label = $CraftingStationItemSelectPanel/SliderAmountLabel
 
 @export var station_type : STATION_TYPE
+@onready var slider_amount: HSlider = $CraftingStationItemSelectPanel/SliderAmount
 
 @export var station : NewCraftingStation
 var stored_recipe : CraftingRecipe
+var stored_amount : int = 0
+var max_quantity : int = 0
 # Called when the node enters the scene tree for the first time.
 @onready var star_tier_h_box: HBoxContainer = $CraftingStationItemSelectPanel/StarTierHBox
 
@@ -44,7 +48,7 @@ func _ready() -> void:
 		station_name.text = "Refinery"
 		populate_craftable_items_list(CookingManager.smelting_recipes)
 	elif station_type == STATION_TYPE.COOKING:
-		station_name.text = "Cooking Range"
+		station_name.text = "Junk-A-Tron"
 		populate_craftable_items_list(CookingManager.cooking_recipes)
 	play_sfx(CRAFTING_STATION_OPEN_2)
 	animation_player.play("Spawn In")
@@ -82,8 +86,8 @@ func populate_description_panel(store_recipe : CraftingRecipe) -> void:
 	recipe_icon.texture = store_recipe.menu_icon
 	recipe_name.text = store_recipe.recipe_name
 	value.text = "Market Value: %s" % store_recipe.output_item.sell_value
-	var quantity : int = InventoryManager.calculate_quantity(store_recipe)
-	can_make.text = "Can Make: %s" % quantity
+	max_quantity = InventoryManager.calculate_quantity(store_recipe)
+	can_make.text = "Can Make: %s" % max_quantity
 	recipe_description.text = store_recipe.description
 	clear_ingredients_list()
 	for ingredient in store_recipe.recipe_list:
@@ -95,9 +99,14 @@ func populate_description_panel(store_recipe : CraftingRecipe) -> void:
 		
 		ingredients_h_box.add_child(ingredient_menu_item)
 	
-	if quantity > 1:
+	stored_amount = 1
+	
+	slider_amount_label.text = "%s/%s" % [stored_amount,max_quantity]
+	slider_amount.value = stored_amount
+	slider_amount.max_value = max_quantity
+	if max_quantity > 1:
 		craft_all_button.show()
-	if quantity >= 5:
+	if max_quantity >= 5:
 		craft_5_button.show()
 	
 	panel_animation_player.play("Phase In")
@@ -109,11 +118,15 @@ func clear_ingredients_list() -> void:
 		child.queue_free()
 
 func _on_craft_1_button_button_up() -> void:
-	station.start_crafting(stored_recipe, 1)
+	craft_1_button.disabled = true
+	craft_5_button.disabled = true
+	craft_all_button.disabled = true
+	station.start_crafting(stored_recipe, stored_amount)
 	play_spawn_out()
 
 func _on_craft_5_button_button_up() -> void:
-	station.start_crafting(stored_recipe, 5)
+	stored_amount = 5
+	station.start_crafting(stored_recipe, stored_amount)
 	play_spawn_out()
 
 func _on_craft_all_button_button_up() -> void:
@@ -142,3 +155,7 @@ func clear_tier_bar() -> void:
 	
 	for child in star_tier_h_box.get_children():
 		child.queue_free()
+
+func _on_slider_amount_value_changed(value: float) -> void:
+	slider_amount_label.text = "%s/%s" % [int(value), max_quantity]
+	stored_amount = int(value)

@@ -1,12 +1,12 @@
 [gd_resource type="Resource" script_class="GatheringTask" format=3 uid="uid://dr74wwc4p1ohp"]
 
 [ext_resource type="Script" uid="uid://b1r3golda0dn4" path="res://src/Scripts/Questing/Tasks/gathering_task.gd" id="1_jjvdr"]
-[ext_resource type="Resource" uid="uid://ctjyflf6qr4g" path="res://src/Resources/Dishes/MossyGoulash.tres" id="1_vm1y2"]
+[ext_resource type="Resource" uid="uid://rjdpo8po5vi0" path="res://src/Resources/Actors/Enemies/Biome1/CorruptedMushie/CorruptedSpore.tres" id="1_vm1y2"]
 
 [resource]
 script = ExtResource("1_jjvdr")
 item_to_gather = ExtResource("1_vm1y2")
-number_to_get = 5
+number_to_get = 15
 task_id = 10
 parent_quest = "The Apprentice Chef 1"
 metadata/_custom_type_script = "uid://b1r3golda0dn4"

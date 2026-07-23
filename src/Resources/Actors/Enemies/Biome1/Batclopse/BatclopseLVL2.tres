@@ -2,10 +2,14 @@
 
 [ext_resource type="Resource" uid="uid://bxukrnl1bg7oo" path="res://src/Resources/Actors/Enemies/Biome1/Batclopse/BatclopseWing.tres" id="1_bv2lu"]
 [ext_resource type="Resource" uid="uid://d4k5o7mbmw8yw" path="res://src/Resources/Actors/Enemies/Biome1/Batclopse/BatclopseClaw.tres" id="2_o1oup"]
-[ext_resource type="Resource" uid="uid://sio2h1j85i5y" path="res://src/Resources/Actors/Enemies/Biome1/Batclopse/BatclopseEye.tres" id="3_hgnsb"]
+[ext_resource type="AudioStream" uid="uid://16kiplcqfa7j" path="res://Audio/SFX/Enemies/Batclopse/Batclopse_Death_Vox.wav" id="3_jwl83"]
 [ext_resource type="Texture2D" uid="uid://cduqtvionltwt" path="res://Assets/Enemies/CyclopsBat/CyclopseBat_LVL2_stand.png" id="3_njnt0"]
+[ext_resource type="AudioStream" uid="uid://dt0ddo4p0l03w" path="res://Audio/SFX/Enemies/Batclopse/BatclopseHit1.wav" id="4_4eqj6"]
 [ext_resource type="Script" uid="uid://cbjktr12qagl" path="res://src/Scripts/Enemies/enemy_stats.gd" id="4_njnt0"]
 [ext_resource type="Texture2D" uid="uid://fxchlb1rbpw7" path="res://Assets/Enemies/BatclopseLVL2Icon.png" id="4_o1oup"]
+[ext_resource type="AudioStream" uid="uid://b1pfjqsau4d6s" path="res://Audio/SFX/Enemies/Batclopse/BatclopseHit2.wav" id="5_mgiws"]
+[ext_resource type="AudioStream" uid="uid://cowu8mh3gwms2" path="res://Audio/SFX/Enemies/Batclopse/BatclopseHit3.wav" id="6_s0w1q"]
+[ext_resource type="Resource" uid="uid://dwasueaasq7mq" path="res://src/Resources/Actors/Enemies/Biome1/Batclopse/BatclopseFoot.tres" id="8_jwl83"]
 
 [resource]
 script = ExtResource("4_njnt0")
@@ -17,6 +21,7 @@ touch_damage = true
 can_attack = true
 can_move = true
 idle_animation = ExtResource("3_njnt0")
+floor_locations = Array[String](["Mossy Dungeon - Floor 3"])
 enemy_type = 1
 max_health = 400
 attack = 37
@@ -24,7 +29,11 @@ defense = 1.0
 movement_speed = 65.0
 chase_speed = 80.0
 break_threshold = 6
-novelty_item_drop = ExtResource("3_hgnsb")
+hit_vox_1 = ExtResource("4_4eqj6")
+hit_vox_2 = ExtResource("5_mgiws")
+hit_vox_3 = ExtResource("6_s0w1q")
+die_vox = ExtResource("3_jwl83")
+novelty_item_drop = ExtResource("8_jwl83")
 cooking_item_drop = ExtResource("1_bv2lu")
 crafting_item_drop = ExtResource("2_o1oup")
 metadata/_custom_type_script = "uid://cbjktr12qagl"

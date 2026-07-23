@@ -7,9 +7,9 @@
 [resource]
 script = ExtResource("1_m2gpr")
 socket_graphic = ExtResource("3_d0fex")
-drop_rate = 20.0
-status_duration_bonus = 0.5
-cool_down_bonus = 0.25
+drop_rate = 35.0
+status_duration_bonus = 1.0
+multi_enemies_bonus = 1.0
 item_name = "Gem of the Tactile I"
 item_type = 4
 sell_value = 60

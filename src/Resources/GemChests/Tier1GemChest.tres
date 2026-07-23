@@ -8,6 +8,7 @@
 [ext_resource type="Resource" uid="uid://dqrychs61vg7a" path="res://src/Resources/GemStones/Tier1/GreenGem1.tres" id="5_8f1u8"]
 [ext_resource type="Resource" uid="uid://dbnhv2sbprspa" path="res://src/Resources/GemStones/Tier1/RedGem1.tres" id="6_nyn3y"]
 [ext_resource type="Resource" uid="uid://iqyn0e6ddyi6" path="res://src/Resources/GemStones/Tier1/YellowGem1.tres" id="7_3fspd"]
+[ext_resource type="Resource" uid="uid://bj374y0i16bfj" path="res://src/Resources/GemStones/Tier1/RedGem1Super.tres" id="8_8f1u8"]
 
 [resource]
 script = ExtResource("2_o2fxv")
@@ -15,5 +16,5 @@ gem_chest_name = "Gem Chest I"
 max_health = 300
 graphic_closed = ExtResource("1_o2fxv")
 graphic_opened = ExtResource("2_ov8yc")
-loot_table = Array[ExtResource("1_drqjs")]([ExtResource("4_6kt4f"), ExtResource("5_8f1u8"), ExtResource("6_nyn3y"), ExtResource("7_3fspd")])
+loot_table = Array[ExtResource("1_drqjs")]([ExtResource("4_6kt4f"), ExtResource("5_8f1u8"), ExtResource("6_nyn3y"), ExtResource("7_3fspd"), ExtResource("8_8f1u8")])
 metadata/_custom_type_script = "uid://be2p6ld85g5m3"

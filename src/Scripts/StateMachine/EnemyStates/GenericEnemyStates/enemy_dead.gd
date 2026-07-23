@@ -15,6 +15,12 @@ func enter() -> void:
 	parent.damageable = false
 	parent.is_dead = true
 	
+	if GameManager.hunt_challenge_selected:
+			SignalBus.update_kill_quota.emit()
+			
+	if parent.enemy_stats.die_vox and GameManager.monster_voices_toggled:
+		parent.play_sfx(parent.enemy_stats.die_vox)
+	
 	if parent.locked_on:
 		parent.remove_stun_marker()
 	
@@ -32,7 +38,6 @@ func enter() -> void:
 	parent.sfx_player.play_sfx(death_sounds.pick_random())
 	parent.timer.start()
 	parent.start_fadeout()
-	
 	
 func exit() -> void:
 	pass
@@ -58,21 +63,22 @@ func drop_items() -> void:
 	if item:
 		var random_check : int = randi_range(0,100)
 		var drop_chance : float = item.drop_chance
-		if random_check <= int(item.drop_chance * 100):
+		
+		if random_check <= int((item.drop_chance + PlayerStats.player_stats["Cooking Drop Chance Bonus"]) * 100):
 			item_interactable = preload("uid://dgtobkubdjq27").instantiate()
 			item_interactable.item = item
 			item_interactable.icon.texture = item.drop_icon
 			item_interactable.global_position = parent.global_position
 	
-	if PlayerStats.facilities_unlocked["Cooking Station"]:
-		var cooking_item : EnemyDrop = parent.enemy_stats.cooking_item_drop
-		var cooking_item_interactable : ItemInteractable = preload("uid://dgtobkubdjq27").instantiate()
-		var random_check : int = randi_range(0, 100)
-		if cooking_item and random_check <= int((cooking_item.drop_chance + PlayerStats.player_stats["Cooking Drop Chance Bonus"]) * 100):
-			cooking_item_interactable.item = cooking_item
-			cooking_item_interactable.icon.texture = cooking_item.drop_icon
-			cooking_item_interactable.global_position = Vector2(parent.global_position.x + 20,parent.global_position.y)
-			parent.drop_scene.add_child(cooking_item_interactable)
+	#if PlayerStats.facilities_unlocked["Junk-A-Tron"]:
+		#var cooking_item : EnemyDrop = parent.enemy_stats.cooking_item_drop
+		#var cooking_item_interactable : ItemInteractable = preload("uid://dgtobkubdjq27").instantiate()
+		#var random_check : int = randi_range(0, 100)
+		#if cooking_item and random_check <= int((cooking_item.drop_chance + PlayerStats.player_stats["Cooking Drop Chance Bonus"]) * 100):
+			#cooking_item_interactable.item = cooking_item
+			#cooking_item_interactable.icon.texture = cooking_item.drop_icon
+			#cooking_item_interactable.global_position = Vector2(parent.global_position.x + 20,parent.global_position.y)
+			#parent.drop_scene.add_child(cooking_item_interactable)
 	
 	if parent.enemy_stats.crafting_item_drop:
 		var crafting_item : EnemyDrop = parent.enemy_stats.crafting_item_drop
@@ -80,8 +86,10 @@ func drop_items() -> void:
 		var random_check_2 : int = randi_range(0,100)
 		var drop_chance : float = crafting_item.drop_chance
 		
-		if PlayerStats.check_item_in_next_sword_recipe(parent.enemy_stats.crafting_item_drop):
-			drop_chance += 0.15
+		if PlayerStats.check_item_in_tracked_sword_recipe(parent.enemy_stats.crafting_item_drop):
+			drop_chance += 0.2
+			print("THIS IS DROP CHANCE %s" % drop_chance)
+			print("THIS IS RANDOM CHECK 2 %s" % random_check_2)
 			
 		if random_check_2 <= int(drop_chance * 100):
 			crafting_item_interactable.item = crafting_item

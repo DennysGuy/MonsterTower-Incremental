@@ -1,12 +1,12 @@
 [gd_resource type="Resource" script_class="ClassAbilityNodeStats" format=3 uid="uid://b1tqtyjdmcrui"]
 
 [ext_resource type="Resource" uid="uid://cs0umnvsvjhnh" path="res://src/Resources/AbilityStates/CombatAbilities/Tyro/DoubleCleave/DoubleCleaveAbility.tres" id="1_4gtow"]
-[ext_resource type="Texture2D" uid="uid://ow347mqqj7tw" path="res://Assets/NodeGraphics/WarriorTechTree/Sigils/DoubleCleave_Upgrade_1.png" id="1_idw5g"]
+[ext_resource type="Texture2D" uid="uid://bsdqyqaedjmtt" path="res://Assets/HUD/CombatAbilityIcons/DoubleCleaveIcon.png" id="2_4gtow"]
 [ext_resource type="Script" uid="uid://b1fyuk5q3e08o" path="res://src/Resources/AbilityNodeStats/class_ability_node_stats.gd" id="3_vurwt"]
 
 [resource]
 script = ExtResource("3_vurwt")
-icon = ExtResource("1_idw5g")
+icon = ExtResource("2_4gtow")
 node_name = "Double Cleave"
 needed_level = 10
 max_upgrade_level = 5

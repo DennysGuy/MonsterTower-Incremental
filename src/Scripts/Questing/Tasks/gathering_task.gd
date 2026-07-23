@@ -54,5 +54,13 @@ func build_task_list_item() -> TaskListItem:
 	return new_task
 
 func remove_item_from_inventory() -> void:
+	var removed : int = 0
 	for i in range(number_to_get):
 		InventoryManager.remove_item(item_to_gather.get_inventory_name(), item_to_gather)
+		removed += 1
+	
+	if removed < number_to_get:
+		var remaining = number_to_get-removed
+		for i in range(remaining):
+			InventoryManager.remove_item("Bank",item_to_gather)
+	

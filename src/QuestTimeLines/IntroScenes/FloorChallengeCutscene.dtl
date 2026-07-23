@@ -1,0 +1,14 @@
+do ExpeditionTimer.stop_timer()
+do CutsceneManager.disable_enemy_spawn()
+do CutsceneManager.disable_player_functionality()
+join TowerGuide center [animation="Slide In Up" wait="true"]
+TowerGuide: Congratulations on making it this far, rookie, but this is only the beginning.
+TowerGuide: The Hunter's Guild is adamant about managing who can traverse the tower. It's only natural that they establish checkpoints to test a Hunter's abilities. Trust me, things only get more dangerous from here
+TowerGuide: To progress further up the tower, you'll need to complete the Floor Challenge. These challenges usually test your combat prowess, wit, and efficiency!
+TowerGuide: The Combat Challenge will become available once you've reached the top of the floor and discovered every checkpoint Campfire.\
+\
+Good luck, hunter, and may your bounty be plentiful!
+do CutsceneManager.enable_player_functionality()
+do GameManager.enable_enemy_movement()
+do CutsceneManager.enable_enemy_spawn()
+do ExpeditionTimer.start_timer()

@@ -92,14 +92,15 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -856.0
+offset_left = -869.0
 offset_top = 49.0
-offset_right = 719.0
+offset_right = 844.0
 offset_bottom = 100.0
 grow_horizontal = 2
 theme_override_constants/separation = 30
 
 [node name="CombatPageButton" type="Button" parent="TechTreeButtonsHBox" unique_id=507044323]
+visible = false
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0.990949, 0.40124372, 0.45694304, 1)
@@ -122,6 +123,7 @@ texture = ExtResource("9_4khty")
 expand_mode = 1
 
 [node name="SurvivalPageButton" type="Button" parent="TechTreeButtonsHBox" unique_id=193700924]
+visible = false
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0, 0.8750814, 0.8750814, 1)
@@ -144,6 +146,7 @@ texture = ExtResource("9_4khty")
 expand_mode = 1
 
 [node name="TraversalPageButton" type="Button" parent="TechTreeButtonsHBox" unique_id=1490222585]
+visible = false
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0, 0.9562344, 0.47072762, 1)
@@ -166,6 +169,7 @@ texture = ExtResource("9_4khty")
 expand_mode = 1
 
 [node name="InventoryPageButton" type="Button" parent="TechTreeButtonsHBox" unique_id=957454195]
+visible = false
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0.9999996, 0.86253643, 0.4670965, 1)
@@ -187,15 +191,16 @@ grow_horizontal = 2
 texture = ExtResource("9_4khty")
 expand_mode = 1
 
-[node name="CookingPageButton" type="Button" parent="TechTreeButtonsHBox" unique_id=145660522]
+[node name="JunkATronPageButton" type="Button" parent="TechTreeButtonsHBox" unique_id=145660522]
+visible = false
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0.56774014, 0.2835156, 0.15171379, 1)
 theme_override_fonts/font = ExtResource("6_lb8dx")
 theme_override_font_sizes/font_size = 42
-text = "Cooking"
+text = "Junk-A-Tron"
 
-[node name="CookingNotificationIcon" type="TextureRect" parent="TechTreeButtonsHBox/CookingPageButton" unique_id=294154055]
+[node name="CookingNotificationIcon" type="TextureRect" parent="TechTreeButtonsHBox/JunkATronPageButton" unique_id=294154055]
 visible = false
 layout_mode = 1
 anchors_preset = 5
@@ -210,6 +215,7 @@ texture = ExtResource("9_4khty")
 expand_mode = 1
 
 [node name="CraftingPageButton" type="Button" parent="TechTreeButtonsHBox" unique_id=1497180615]
+visible = false
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0.8490402, 0.26272827, 0.82052237, 1)
@@ -254,9 +260,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 1418.0
+offset_left = 1545.0
 offset_top = 44.0
-offset_right = 1692.0
+offset_right = 1819.0
 offset_bottom = 105.0
 grow_horizontal = 1
 grow_vertical = 1
@@ -271,7 +277,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 offset_left = 1183.0
 offset_top = 45.0
-offset_right = 1414.0
+offset_right = 1538.0
 offset_bottom = 105.0
 grow_horizontal = 1
 grow_vertical = 1
@@ -297,9 +303,9 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -107.0
+offset_left = -223.0
 offset_top = 114.0
-offset_right = 115.7843
+offset_right = -0.21569824
 offset_bottom = 160.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -313,10 +319,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -16.0
-offset_top = 42.0
-offset_right = 32.0
-offset_bottom = 106.0
+offset_left = 102.0
+offset_top = 102.0
+offset_right = 150.0
+offset_bottom = 166.0
 grow_horizontal = 2
 texture = ExtResource("9_4khty")
 
@@ -325,10 +331,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 752.0
-offset_top = 37.0
-offset_right = 893.0
-offset_bottom = 83.0
+offset_left = 801.0
+offset_top = 10.0
+offset_right = 942.0
+offset_bottom = 56.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("6_lb8dx")
@@ -413,6 +419,17 @@ theme_override_fonts/font = ExtResource("6_lb8dx")
 theme_override_font_sizes/font_size = 36
 text = "Spirols: 1200"
 
+[node name="LicenseTier" type="Label" parent="." unique_id=266198628]
+visible = false
+layout_mode = 0
+offset_left = 956.0
+offset_top = 118.0
+offset_right = 1348.7896
+offset_bottom = 152.0
+theme_override_fonts/font = ExtResource("6_lb8dx")
+theme_override_font_sizes/font_size = 32
+text = "License Tier: 0"
+
 [node name="Tip" type="Label" parent="." unique_id=853621169]
 layout_mode = 0
 offset_left = 87.0
@@ -470,9 +487,9 @@ bus = &"Music"
 [connection signal="button_up" from="TechTreeButtonsHBox/InventoryPageButton" to="." method="_on_inventory_page_button_button_up"]
 [connection signal="mouse_entered" from="TechTreeButtonsHBox/InventoryPageButton" to="." method="_on_inventory_page_button_mouse_entered"]
 [connection signal="mouse_exited" from="TechTreeButtonsHBox/InventoryPageButton" to="." method="_on_inventory_page_button_mouse_exited"]
-[connection signal="button_up" from="TechTreeButtonsHBox/CookingPageButton" to="." method="_on_cooking_page_button_button_up"]
-[connection signal="mouse_entered" from="TechTreeButtonsHBox/CookingPageButton" to="." method="_on_cooking_page_button_mouse_entered"]
-[connection signal="mouse_exited" from="TechTreeButtonsHBox/CookingPageButton" to="." method="_on_cooking_page_button_mouse_exited"]
+[connection signal="button_up" from="TechTreeButtonsHBox/JunkATronPageButton" to="." method="_on_cooking_page_button_button_up"]
+[connection signal="mouse_entered" from="TechTreeButtonsHBox/JunkATronPageButton" to="." method="_on_cooking_page_button_mouse_entered"]
+[connection signal="mouse_exited" from="TechTreeButtonsHBox/JunkATronPageButton" to="." method="_on_cooking_page_button_mouse_exited"]
 [connection signal="button_up" from="TechTreeButtonsHBox/CraftingPageButton" to="." method="_on_crafting_page_button_button_up"]
 [connection signal="mouse_entered" from="TechTreeButtonsHBox/CraftingPageButton" to="." method="_on_crafting_page_button_mouse_entered"]
 [connection signal="mouse_exited" from="TechTreeButtonsHBox/CraftingPageButton" to="." method="_on_crafting_page_button_mouse_exited"]

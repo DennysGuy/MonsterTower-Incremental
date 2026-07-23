@@ -121,23 +121,12 @@ theme_override_fonts/font = ExtResource("5_xbljf")
 theme_override_font_sizes/font_size = 26
 text = "Novelty Drop"
 
-[node name="CookingDropTitle" type="Label" parent="DetailsPanel" unique_id=2104714307]
-layout_mode = 0
-offset_left = 464.0
-offset_top = 487.0
-offset_right = 607.0
-offset_bottom = 517.0
-theme_override_colors/font_color = Color(0, 0.49019608, 0.36862746, 1)
-theme_override_fonts/font = ExtResource("5_xbljf")
-theme_override_font_sizes/font_size = 26
-text = "Cooking Drop"
-
 [node name="CraftingDropTitle" type="Label" parent="DetailsPanel" unique_id=1173006729]
 layout_mode = 0
 offset_left = 457.0
-offset_top = 592.0
+offset_top = 512.0
 offset_right = 600.0
-offset_bottom = 616.10114
+offset_bottom = 536.10114
 theme_override_colors/font_color = Color(0, 0.49019608, 0.36862746, 1)
 theme_override_fonts/font = ExtResource("5_xbljf")
 theme_override_font_sizes/font_size = 26
@@ -152,22 +141,13 @@ offset_right = 557.0
 offset_bottom = 460.0
 expand_mode = 1
 
-[node name="CookingDropGraphic" type="TextureRect" parent="DetailsPanel" unique_id=845318012]
-custom_minimum_size = Vector2(48, 48)
-layout_mode = 0
-offset_left = 509.0
-offset_top = 525.0
-offset_right = 557.0
-offset_bottom = 573.0
-expand_mode = 1
-
 [node name="CraftingDropGraphic" type="TextureRect" parent="DetailsPanel" unique_id=696621857]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 0
 offset_left = 511.0
-offset_top = 630.0
+offset_top = 550.0
 offset_right = 559.0
-offset_bottom = 678.0
+offset_bottom = 598.0
 expand_mode = 1
 
 [node name="NotesTitle" type="Label" parent="DetailsPanel" unique_id=314498508]

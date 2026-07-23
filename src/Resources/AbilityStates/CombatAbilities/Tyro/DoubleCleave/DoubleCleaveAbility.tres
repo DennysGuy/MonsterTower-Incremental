@@ -2,6 +2,7 @@
 
 [ext_resource type="Resource" uid="uid://byuwwns148kfq" path="res://src/Resources/AbilityStates/CombatAbilities/Tyro/DoubleCleave/DoubleCleaveBehavior.tres" id="1_1j8ta"]
 [ext_resource type="Script" uid="uid://bwqf7q51702b" path="res://src/Scripts/cability.gd" id="2_0hl1o"]
+[ext_resource type="Texture2D" uid="uid://3l2ktns88fru" path="res://Assets/HUD/CombatAbilityIcons/DoubleCleaveIcon_Disabled.png" id="2_ih5xy"]
 [ext_resource type="Texture2D" uid="uid://bsdqyqaedjmtt" path="res://Assets/HUD/CombatAbilityIcons/DoubleCleaveIcon.png" id="2_r8kyc"]
 
 [resource]
@@ -11,13 +12,14 @@ class_relation = "Tyro"
 ability_type = 8
 cooldown_time = 3.0
 icon = ExtResource("2_r8kyc")
+disabled_icon = ExtResource("2_ih5xy")
+is_combat_ability = true
 ability_description = "Issue 2 powerful focused strikes dealing high damage. Great for striking down powerful enemies."
 ability_behavior = ExtResource("1_1j8ta")
-hp_cost = 10.0
-mp_cost = 12.0
+mp_cost = 15.0
 base_attack = 30.0
 number_of_enemies_hit = 1.0
-max_hit_count = 2.0
+max_hit_count = 1.0
 attack_rep_delay = 0.2
 attack_damage_modifier = 2.0
 metadata/_custom_type_script = "uid://bwqf7q51702b"

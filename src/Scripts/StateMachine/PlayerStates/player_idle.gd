@@ -24,7 +24,8 @@ func enter() -> void:
 	parent.set_outfit_texture(animation_name)
 	parent.can_knock_back = true
 	parent.can_double_jump = true
-	print("AM I HERE???")
+	#parent.can_dash_attack = true
+	parent.velocity = Vector2.ZERO
 	super()
 
 func exit() -> void:
@@ -53,25 +54,41 @@ func process_physics(_delta: float) -> State:
 		return jump_state
 
 	if Input.is_action_just_pressed("swing_sword") and GameManager.player_can_attack:
-		if parent.stored_ore_rock and PlayerStats.facilities_unlocked["Refinery Station"]:
-			return swing_pick_axe_state
 		return attack_1_state
+	
+	if Input.is_action_just_pressed("interact") and parent.in_mining_area and PlayerStats.facilities_unlocked["Refinery Station"]:
+		return swing_pick_axe_state
+	
+	if Input.is_action_just_pressed("dash_attack") and PlayerStats.facilities_unlocked["Dash"] and parent.can_issue_ability("Dash") and GameManager.player_can_move:
+		return dash_attack_state
 	
 	if GameManager.can_issue_abilities:
 		if Input.is_action_just_pressed("special_attack") and PlayerStats.get_equipped_ability("Special Attack") and parent.can_issue_ability("Special Attack"):
 			return special_attack
 		
-		if Input.is_action_just_pressed("combat_ability_1") and PlayerStats.get_equipped_ability("Combat Ability 1") and parent.can_issue_ability("Combat Ability 1"):
-			return combat_ability_1
+		if Input.is_action_just_pressed("combat_ability_1") and PlayerStats.get_equipped_ability("Combat Ability 1"):
+			if parent.can_issue_ability("Combat Ability 1"):
+				return combat_ability_1
+			else:
+				parent.play_denied_sfx()
 
-		if Input.is_action_just_pressed("combat_ability_2") and PlayerStats.get_equipped_ability("Combat Ability 2") and parent.can_issue_ability("Combat Ability 2"):
-			return combat_ability_2
-		
-		if Input.is_action_just_pressed("combat_ability_3") and PlayerStats.get_equipped_ability("Combat Ability 3") and parent.can_issue_ability("Combat Ability 3"):
-			return combat_ability_3
-		
-		if Input.is_action_just_pressed("combat_ability_4") and PlayerStats.get_equipped_ability("Combat Ability 4") and parent.can_issue_ability("Combat Ability 4"):
-			return combat_ability_4
+		if Input.is_action_just_pressed("combat_ability_2") and PlayerStats.get_equipped_ability("Combat Ability 2"): 
+			if parent.can_issue_ability("Combat Ability 2"):
+				return combat_ability_2
+			else:
+				parent.play_denied_sfx()
+				
+		if Input.is_action_just_pressed("combat_ability_3") and PlayerStats.get_equipped_ability("Combat Ability 3"):
+			if parent.can_issue_ability("Combat Ability 3"):
+				return combat_ability_3
+			else:
+				parent.play_denied_sfx()
+				
+		if Input.is_action_just_pressed("combat_ability_4") and PlayerStats.get_equipped_ability("Combat Ability 4"):
+			if parent.can_issue_ability("Combat Ability 4"):
+				return combat_ability_4
+			else:
+				parent.play_denied_sfx()
 	
 	if !parent.is_on_floor():
 		parent.was_on_ledge = false

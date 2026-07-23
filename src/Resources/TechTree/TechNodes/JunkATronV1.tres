@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://bb7206hq4ygo3"]
+
+[ext_resource type="Texture2D" uid="uid://b5u2s3vbbfb31" path="res://Assets/TechTree/CookingNodes/JunkATronV1Unlock_Graphic_Disabled.png" id="1_ew32t"]
+[ext_resource type="Texture2D" uid="uid://t05grlfhyxb2" path="res://Assets/TechTree/CookingNodes/JunkATronV1Unlock_Graphic.png" id="2_0fnlj"]
+[ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="3_wtjol"]
+
+[resource]
+script = ExtResource("3_wtjol")
+node_name = "Junk-A-Tron V1"
+icon = ExtResource("2_0fnlj")
+disabled_icon = ExtResource("1_ew32t")
+description = "Professor Stooge's prized Junk-A-Tron, an odd machine assembled from salvaged Tower discoveries that can turn unwanted junk into something unexpectedly useful."
+unlocked = true
+currency_required = 500
+node_type = 1
+stat_relation = 4
+stat_name = "Junk-A-Tron"
+prereqs = Array[String](["Hunter License:1"])
+metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

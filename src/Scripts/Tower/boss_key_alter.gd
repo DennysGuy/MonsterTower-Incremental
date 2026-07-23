@@ -7,6 +7,7 @@ enum KEY_TYPE {DIAMOND, CARD, FINAL}
 @onready var notice: Label = $Notice
 
 var can_pick_up_key : bool = false
+const TASK_COMPLETED = preload("uid://u4g1ea4v5nkg")
 
 var stored_key : BossDoorKey
 var player : Player
@@ -20,8 +21,10 @@ func _process(delta: float) -> void:
 		stored_key.enable_can_pick_up()
 		stored_key.player = player
 		stored_key = null
+		spawn_disabled_notice()
 		GameManager.can_issue_abilities = false
 		GameManager.event_speed_mod = 0.75
+		SignalBus.set_combat_ability_icon_disabled.emit()
 
 func spawn_diamond_key() -> void:
 	await get_tree().process_frame
@@ -49,7 +52,6 @@ func spawn_final_key() -> void:
 	spawn_parent.add_child(boss_door_key)
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-
 	if body is Player:
 		notice.show()
 		player = body
@@ -78,3 +80,20 @@ func spawn_key() -> void:
 			spawn_card_key()
 		KEY_TYPE.FINAL:
 			spawn_final_key()	
+
+func spawn_disabled_notice() -> void:
+	play_sfx(TASK_COMPLETED,2.0)
+	var notice : DamageLabel = preload("uid://dkchs27qqogyy").instantiate()
+	notice.set_player_bg()
+	notice.label.text = "Combat Abilities Disabled!"
+	notice.global_position = player.global_position
+	get_parent().add_child(notice)
+
+func play_sfx(sound: AudioStream, volume: float):
+	var player := AudioStreamPlayer.new()
+	player.stream = sound
+	player.volume_db = volume
+	player.bus = &"SFX"
+	add_child(player)
+	player.play()
+	player.finished.connect(player.queue_free)

@@ -42,12 +42,10 @@ func _physics_process(delta: float) -> void:
 	if destination_marker:
 		global_position = global_position.move_toward(destination_marker.global_position,2.0)
 
-
 	if picked_up:
 		t += delta * hover_speed
 		graphic.position.y = base_y + sin(t) * hover_height
 	
-
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Player and body.held_key == null and destination_marker == null and can_pick_up:
 		picked_up = true

@@ -1,0 +1,16 @@
+do CutsceneManager.disable_player_functionality()
+do MusicPlayer.pause_music()
+audio "res://Audio/Music/TutorialCutscene.wav" [bus="Music"]
+join CropDuster right [animation="Slide In Up" wait="true" mirrored="true"]
+CropDuster: Crop Duster here.\
+\
+I handle anything weapon-related for the Starspire Hunters Guild.\
+Thanks for getting that old Smelting Furnace running again. You did us a real favor. If you need help with crafting, come find me.
+CropDuster: Same deal as the Junk-A-Tron. Bring your materials to the furnace, pick a recipe from the list, set the quantity, and you're good to go.
+CropDuster: Oh, almost forgot. Those big rocks you've been passing by in the tower? You can break them down now with a pickaxe.
+CropDuster: Hands over a stone pickaxe.
+CropDuster: It's not much, but it'll get the job done. Start gathering resources, put this thing to use, and if you want to get better at mining and crafting, check out the Crafting Tree in the Computer Terminal.
+[wait time="1.0"]
+do CutsceneManager.set_camera_to_player()
+do CutsceneManager.enable_player_functionality()
+do MusicPlayer.unpause_music()

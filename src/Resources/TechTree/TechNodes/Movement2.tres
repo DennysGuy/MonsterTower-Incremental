@@ -2,7 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://dpqmx3xdqw1up" path="res://Assets/TechTree/TraversalNodes/MovementSpeed_Disabled_Graphic.png" id="1_bgu3o"]
 [ext_resource type="Texture2D" uid="uid://q87r3t2lftlr" path="res://Assets/TechTree/TraversalNodes/MovementSpeed_Graphic.png" id="2_ac2cp"]
-[ext_resource type="Resource" uid="uid://boeryxspsw8uq" path="res://src/Resources/Dishes/CookedGagootz.tres" id="2_oo0nn"]
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="3_ac2cp"]
 
 [resource]
@@ -10,14 +9,12 @@ script = ExtResource("3_ac2cp")
 node_name = "Movement 2"
 icon = ExtResource("2_ac2cp")
 disabled_icon = ExtResource("1_bgu3o")
-description = "For each level, increases movement speed by 5%"
-max_level = 3
-currency_required = 1000
-materials_required = Array[Dictionary]([{
-ExtResource("2_oo0nn"): 1
-}])
+description = "Cover more ground! Increase Movement Speed by 2% per level."
+max_level = 2
+currency_required = 15000
 stat_relation = 2
+price_scaler = 1.6
 stat_name = "Movement Speed"
-upgrade_interval = 0.05
-prereqs = Array[String](["Movement 1:1"])
+upgrade_interval = 0.02
+prereqs = Array[String](["Movement 1:3"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

@@ -14,7 +14,7 @@ extends Node
 signal start_ability_cooldown_timer(ability_name)
 
 @onready var ability_state : Dictionary = {
-	"Dash Attack" : {"Can Do": true, "Timer": dash_attack_timer},
+	"Dash" : {"Can Do": true, "Timer": dash_attack_timer},
 	"Air Attack":  {"Can Do": true, "Timer": air_attack_timer},
 	"Double Jump":  {"Can Do": true, "Timer": double_jump_timer},
 	"Special Attack":  {"Can Do": true, "Timer": special_attack_timer},
@@ -39,12 +39,16 @@ func activate_ability_cooldown(ability_name : String) -> void:
 	if equipped_ability is String:
 		equipped_ability = load(equipped_ability)
 	
-	var cooldown_bonus : float = PlayerStats.player_stats["Combat Ability Cooldown Bonus"]
+	var cooldown_bonus : float = PlayerStats.player_stats["Cooldown Reduction"]
 	var total_cooldown : float = max(0, equipped_ability.cooldown_time - cooldown_bonus)
-	
+
 	var ability_timer : Timer = ability_state[ability_name]["Timer"]
 	
-	ability_timer.wait_time = total_cooldown
+	if !equipped_ability.is_combat_ability:
+		ability_timer.wait_time = equipped_ability.cooldown_time
+	else:
+		ability_timer.wait_time = total_cooldown
+		
 	start_ability_cooldown_timer.emit(ability_name)
 	
 	ability_timer.start()
@@ -57,7 +61,7 @@ func start_buff_timer_1(wait_time : float, ability : Ability) -> void:
 	
 
 func _on_dash_attack_timer_timeout() -> void:
-	ability_state["Dash Attack"]["Can Do"] = true
+	ability_state["Dash"]["Can Do"] = true
 
 func _on_air_attack_timer_timeout() -> void:
 	ability_state["Air Attack"]["Can Do"] = true

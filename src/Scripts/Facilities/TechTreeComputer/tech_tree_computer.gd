@@ -7,8 +7,9 @@ var player_in_range : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
-
+	var mapping : String = GameManager.get_control_mapping("interact")
+	press_e.text = "Press %s to Access Computer Terminal" % mapping
+ 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if GameManager.player_can_move and player_in_range and Input.is_action_just_pressed("interact"):

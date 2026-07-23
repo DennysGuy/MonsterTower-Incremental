@@ -5,6 +5,8 @@ class_name NewAbilityUpgradeMenu extends Control
 @onready var ap: Label = $AP
 @onready var classname: Label = $ClassName
 
+const NEW_WEAPON_CRAFTING_NOTICE_SCENE = preload("uid://bhd7f77giafvv")
+
 
 func _ready() -> void:
 	SignalBus.update_ap_label.connect(update_ap_label)
@@ -20,7 +22,6 @@ func _process(delta : float) -> void:
 func _physics_process(delta: float) -> void:
 	pass
 
-
 func populate_node_container(container : HBoxContainer, ability_list : String) -> void:
 	var class_abilities : Dictionary = PlayerStats.class_ability_node_stats[PlayerStats.player_stats["Class"]][ability_list]
 	for i in class_abilities.keys():
@@ -33,13 +34,20 @@ func update_ap_label() -> void:
 	ap.text = "AP: %s" % PlayerStats.player_stats["Ability Points"] 
 
 func close_out() -> void:
-	GameManager.player_can_move = true
-	GameManager.can_pause_game = true
-	GameManager.can_open_bag = true
-	GameManager.can_open_tower_map = true
+	CutsceneManager.enable_player_functionality()
+	SignalBus.check_for_notification.emit(GameManager.NOTIFICATION_TYPE.AP)
+	SignalBus.combat_class_menu_closed.emit()
+	
+	if GameManager.first_class_just_unlocked:
+		Dialogic.start(NEW_WEAPON_CRAFTING_NOTICE_SCENE)
+		
+	if PlayerStats.player_stats["Ability Points"] <= 0:
+		HubManager.hide_facility_notification.emit("Class Advance Center")
+	
+	PlayerHudSignalBus.hub_menu_exited.emit()
+	await get_tree().create_timer(0.3).timeout
 	SignalBus.hide_tech_tree_canvas_layer.emit()
 	queue_free()
-
 
 func _on_close_button_button_up() -> void:
 	close_out()

@@ -21,4 +21,5 @@ ExtResource("3_pi71e"): 1
 ExtResource("4_3j0td"): 1
 }])
 related_nodes = Array[String](["Attack 2", "Crit Chance 2", "Crit Damage 2", "Combat Cooldown 1", "Dash Distance 1", "Gem Stone Station"])
+related_floors = Array[String](["Mossy Dungeon - Floor 1", "Mossy Dungeon - Floor 2", "Mossy Dungeon - Floor 3"])
 metadata/_custom_type_script = "uid://cljygiasf4103"

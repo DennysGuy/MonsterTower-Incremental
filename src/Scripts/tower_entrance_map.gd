@@ -43,6 +43,7 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_go_to_floor_button_up() -> void:
+	CutsceneManager.enable_player_functionality()
 	PlayerHudSignalBus.play_close_out_animation.emit()
 	GameManager.player_can_move = true
 	GameManager.can_open_bag = true
@@ -54,7 +55,7 @@ func _on_go_to_floor_button_up() -> void:
 	get_tree().change_scene_to_file(stored_entrance_data.scene_path)
 
 func store_entrance_data(entrance_data : TowerEntranceData) -> void:
-	GameManager.spawn_location = 0
+	GameManager.spawn_location = entrance_data.camp_fires_reached
 	set_mode_description_as_expedition()
 	go_to_floor.disabled = false
 	stored_entrance_data = entrance_data
@@ -62,7 +63,7 @@ func store_entrance_data(entrance_data : TowerEntranceData) -> void:
 		biome_preview.texture = entrance_data.preview_pictures[0]
 	floor_title.text = "%s" % [entrance_data.floor_name]
 	biome_title.text ="Biome: %s" % [entrance_data.biome]
-	selected_point.text = "Selected Point: %s - %s - Point: %s" % [entrance_data.biome, entrance_data.floor_name, GameManager.spawn_location+1]
+	selected_point.text = "Selected Point: %s - Floor %s - Check Point: %s" % [entrance_data.biome, entrance_data.floor_number, GameManager.spawn_location+1]
 	hunt_time_label.text = "Hunt Challenge Time Limit: %s seconds" % [stored_entrance_data.hunt_challenge_time]
 	for child in area_button_selector.get_children():
 		child.queue_free()
@@ -87,24 +88,26 @@ func store_entrance_data(entrance_data : TowerEntranceData) -> void:
 	populate_preview_container(ore_preview_grid_container, stored_entrance_data.ore_rock_preview_graphics)
 
 func _on_close_button_up() -> void:
-	GameManager.player_can_move = true
-	GameManager.can_open_bag = true
-	GameManager.can_open_tower_map = true
-	SignalBus.hide_tech_tree_canvas_layer.emit()
+	CutsceneManager.enable_player_functionality()
+	
 	music_player.stop()
 	MusicPlayer.unpause_music()
+	
+	PlayerHudSignalBus.hub_menu_exited.emit()
+	await get_tree().create_timer(0.3).timeout
+	SignalBus.hide_tech_tree_canvas_layer.emit()
 	queue_free()
 	
 func update_entrance_map(index : int) -> void:
 	biome_preview.texture = stored_entrance_data.preview_pictures[index]
 	GameManager.spawn_location = index
-	selected_point.text = "Selected Point: %s - %s - Point: %s" % [stored_entrance_data.biome, stored_entrance_data.floor_name, GameManager.spawn_location+1]
+	selected_point.text = "Selected Point: %s - Floor %s - Point: %s" % [stored_entrance_data.biome, stored_entrance_data.floor_number, GameManager.spawn_location+1]
 	
 func _on_hunt_selection_button_up() -> void:
 	set_mode_description_as_hunt_challenge()
 	GameManager.spawn_location = 0
 	GameManager.hunt_challenge_selected = true
-	selected_point.text = "Selected Point: %s - %s - Hunt Point" % [stored_entrance_data.biome, stored_entrance_data.floor_name]
+	selected_point.text = "Selected Point: %s - Floor %s - Hunt Point" % [stored_entrance_data.biome, stored_entrance_data.floor_number]
 	show_hunt_time_label()
 	
 func show_hunt_time_label() -> void:
@@ -124,10 +127,8 @@ Hunt, Train, Explore within you Hunter Class time limit!
 func set_mode_description_as_hunt_challenge() -> void:
 	drops_preview_panel.hide()
 	mode_description_label.text = "	 ~Hunt Challenge~
-
-Test your skills. 
-Race against the clock to meet the [color=green]hunt quota[/color] to unlock the [color=green]next floor[/color]. 
-No Drops, no Resources - just [color=red]pure combat[/color]!"
+defeat all of the [color=purple]MONSTERS[/color] on the floor to unlock the [color=green]NEXT FLOOR[/color]. 
+No Drops, no Resources - just [color=red]PURE COMBAT[/color]!"
 
 func populate_preview_container(preview_container : GridContainer, GraphicsArray : Array[Texture2D] ) -> void:
 	InventoryManager.clear_grid_container(preview_container)

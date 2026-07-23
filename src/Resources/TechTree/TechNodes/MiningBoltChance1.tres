@@ -9,12 +9,12 @@ script = ExtResource("1_l4mcl")
 node_name = "Mining Bolt Chance 1"
 icon = ExtResource("2_dlhql")
 disabled_icon = ExtResource("1_10wx1")
-description = "Increases chance to cast a mining bolt by 15% per level.
-"
+description = "Increase the chance to cast a mining bolt by 15% per level."
 max_level = 5
 currency_required = 1500
 stat_relation = 5
+price_scaler = 1.5
 stat_name = "Mining Bolt Chance"
 upgrade_interval = 0.15
-prereqs = Array[String](["Mining Speed 1:1"])
+prereqs = Array[String](["Refinery Station:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

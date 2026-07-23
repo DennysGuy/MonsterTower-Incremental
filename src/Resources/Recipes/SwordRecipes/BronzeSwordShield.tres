@@ -11,6 +11,6 @@ index = 5
 recipe_list = Array[Dictionary]([{
 ExtResource("1_37jrp"): 4
 }, {
-ExtResource("2_h4s0d"): 2
+ExtResource("2_h4s0d"): 4
 }])
 metadata/_custom_type_script = "uid://cljygiasf4103"

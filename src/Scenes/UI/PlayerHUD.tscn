@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dngkcgpb2st7c" path="res://src/Scenes/UI/ExpeditionTimer.tscn" id="7_g3oel"]
 [ext_resource type="Texture2D" uid="uid://d2lk756o7qqgx" path="res://Assets/HUD/NewPlayerHUD/NewMPBar_Fill.png" id="7_tjlva"]
 [ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="8_65fhw"]
+[ext_resource type="FontFile" uid="uid://stn4dtg0uw57" path="res://Assets/Fonts/FredokaOne-Regular.ttf" id="8_usdtc"]
 [ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="9_jyqen"]
 [ext_resource type="Texture2D" uid="uid://70adp83wjd4h" path="res://Assets/HUD/NewPlayerHUD/NewXPBar_Base.png" id="11_7qkr7"]
 [ext_resource type="Texture2D" uid="uid://q8w4d5mwenld" path="res://Assets/HUD/NewPlayerHUD/NewXPBar_Fill.png" id="12_7qkr7"]
@@ -34,7 +35,7 @@ length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerHUD/BotBlackBar:position")
+tracks/0/path = NodePath("BotBlackBar:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -46,7 +47,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PlayerHUD/TopBlackBar:position")
+tracks/1/path = NodePath("TopBlackBar:position")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -75,7 +76,7 @@ resource_name = "CloseOut"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerHUD/BotBlackBar:position")
+tracks/0/path = NodePath("BotBlackBar:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -87,7 +88,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PlayerHUD/TopBlackBar:position")
+tracks/1/path = NodePath("TopBlackBar:position")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -111,12 +112,141 @@ tracks/2/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_118cf"]
+resource_name = "CrossFade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BotBlackBar:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 1080)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TopBlackBar:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -1080)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BlackFlash:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_dqfcb"]
+resource_name = "DipInDown"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TopBlackBar:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -1080)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BotBlackBar:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.23333333, 0.36666667, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -1080), Vector2(0, 0), Vector2(0, 0), Vector2(0, 1080)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.56666666),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"play_close_out_sfx"
+}, {
+"args": [],
+"method": &"play_close_out_sfx"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_cg85k"]
+resource_name = "DipInUp"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TopBlackBar:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -1080)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BotBlackBar:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.23333333, 0.36666667, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 1080), Vector2(0, 0), Vector2(0, 0), Vector2(0, -1080)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.56666666),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"play_close_in_sfx"
+}, {
+"args": [],
+"method": &"play_close_out_sfx"
+}]
+}
+
 [sub_resource type="Animation" id="Animation_hl0sk"]
 resource_name = "FadeInOut"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerHUD/Flash:modulate")
+tracks/0/path = NodePath("Flash:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -128,7 +258,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PlayerHUD/Flash:color")
+tracks/1/path = NodePath("Flash:color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -143,7 +273,7 @@ resource_name = "Flash"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerHUD/Flash:modulate")
+tracks/0/path = NodePath("Flash:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -155,7 +285,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PlayerHUD/Flash:color")
+tracks/1/path = NodePath("Flash:color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -165,12 +295,40 @@ tracks/1/keys = {
 "values": [Color(1, 1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_usdtc"]
+resource_name = "LongFadeInOut"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Flash:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.96666664, 3.9666667, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Flash:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_nt012"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerHUD/BotBlackBar:position")
+tracks/0/path = NodePath("BotBlackBar:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -182,7 +340,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PlayerHUD/TopBlackBar:position")
+tracks/1/path = NodePath("TopBlackBar:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -194,7 +352,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("PlayerHUD/Flash:modulate")
+tracks/2/path = NodePath("Flash:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -206,7 +364,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("PlayerHUD/Flash:color")
+tracks/3/path = NodePath("Flash:color")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -250,6 +408,18 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": ["Hunt Challenge!"]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("BlackFlash:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_6ndbt"]
@@ -313,10 +483,76 @@ tracks/3/keys = {
 _data = {
 &"CloseIn": SubResource("Animation_g1bs5"),
 &"CloseOut": SubResource("Animation_m8qo1"),
+&"CrossFade": SubResource("Animation_118cf"),
+&"DipInDown": SubResource("Animation_dqfcb"),
+&"DipInUp": SubResource("Animation_cg85k"),
 &"FadeInOut": SubResource("Animation_hl0sk"),
 &"Flash": SubResource("Animation_bsjhc"),
+&"LongFadeInOut": SubResource("Animation_usdtc"),
 &"RESET": SubResource("Animation_nt012"),
 &"StartHuntChallenge": SubResource("Animation_6ndbt")
+}
+
+[sub_resource type="Animation" id="Animation_t87gw"]
+resource_name = "PopIn"
+length = 0.2
+step = 0.02
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../PlayerHUD/BigNotificationLabel:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.75, 1.75), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../PlayerHUD/BigNotificationLabel:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.06, 0.14201327, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.27925268, 0.27925268, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_jde3i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../PlayerHUD/BigNotificationLabel:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../PlayerHUD/BigNotificationLabel:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jde3i"]
+_data = {
+&"PopIn": SubResource("Animation_t87gw"),
+&"RESET": SubResource("Animation_jde3i")
 }
 
 [sub_resource type="Animation" id="Animation_h7rl7"]
@@ -324,18 +560,6 @@ resource_name = "QuestCompleteNotice"
 
 [sub_resource type="Animation" id="Animation_3voo3"]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../PlayerHUD/QuestHub:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"update": 0,
-"values": []
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3voo3"]
 _data = {
@@ -509,22 +733,6 @@ theme_override_fonts/font = ExtResource("5_nt012")
 theme_override_font_sizes/font_size = 18
 text = "MP 100/100"
 
-[node name="MapeName" type="Label" parent="PlayerHUD" unique_id=727908015]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -132.0
-offset_top = 8.0
-offset_right = -9.0
-offset_bottom = 24.0
-grow_horizontal = 0
-theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("5_nt012")
-theme_override_font_sizes/font_size = 24
-text = "Floor 1 -1"
-horizontal_alignment = 2
-
 [node name="ExpeditionTimer" parent="PlayerHUD" unique_id=1374901185 instance=ExtResource("7_g3oel")]
 layout_mode = 1
 
@@ -607,16 +815,23 @@ theme_override_font_sizes/font_size = 14
 text = "Level 1"
 horizontal_alignment = 2
 
-[node name="Flash" type="ColorRect" parent="PlayerHUD" unique_id=1206488663]
-modulate = Color(1, 1, 1, 0)
+[node name="MapeName" type="Label" parent="PlayerHUD" unique_id=727908015]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
+anchor_left = 0.89635414
 anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 1)
+anchor_bottom = 0.0129629625
+offset_left = -132.0
+offset_top = 8.0
+offset_right = -9.0
+offset_bottom = 24.0
+grow_horizontal = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("8_usdtc")
+theme_override_font_sizes/font_size = 24
+text = "Floor 1 -1"
+horizontal_alignment = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="CurrencyLabel" type="RichTextLabel" parent="PlayerHUD" unique_id=1726793478]
 visible = false
@@ -637,6 +852,44 @@ theme_override_fonts/normal_font = ExtResource("9_jyqen")
 bbcode_enabled = true
 text = "[color=aqua]currency: 1000000[/color]"
 horizontal_alignment = 2
+
+[node name="SprintNotice" type="Label" parent="PlayerHUD" unique_id=806469057]
+visible = false
+layout_mode = 0
+offset_left = 1328.0
+offset_top = 933.0
+offset_right = 1752.0
+offset_bottom = 973.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("8_usdtc")
+theme_override_font_sizes/font_size = 24
+text = "Press Shift to toggle Sprint!"
+horizontal_alignment = 1
+
+[node name="ToggleQuestHub" type="Label" parent="PlayerHUD" unique_id=2118394977]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 117.0
+offset_right = 493.0
+offset_bottom = 157.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("8_usdtc")
+theme_override_font_sizes/font_size = 24
+text = "Press Tab to toggle Quest Hub"
+
+[node name="ToggleQuestHub2" type="Label" parent="PlayerHUD" unique_id=1057816397]
+layout_mode = 0
+offset_left = 1368.0
+offset_top = 11.0
+offset_right = 1616.0
+offset_bottom = 51.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("8_usdtc")
+theme_override_font_sizes/font_size = 24
+text = "Build 0.2.0-prealpha.1"
 
 [node name="StartHuntLabel" type="Label" parent="PlayerHUD" unique_id=915542649]
 layout_mode = 1
@@ -660,11 +913,19 @@ horizontal_alignment = 1
 
 [node name="PickUpNotifier" type="VBoxContainer" parent="PlayerHUD" unique_id=484786063]
 layout_mode = 1
-offset_left = 27.0
-offset_top = 117.0
-offset_right = 412.0
-offset_bottom = 429.0
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -397.0
+offset_top = -711.0
+offset_right = -12.0
+offset_bottom = -117.0
+grow_horizontal = 0
+grow_vertical = 0
 mouse_filter = 2
+alignment = 2
 
 [node name="StartHuntChallengeButton" type="Button" parent="PlayerHUD" unique_id=183096058]
 visible = false
@@ -705,6 +966,14 @@ theme_override_colors/font_color = Color(0.9411765, 0.15686275, 1, 1)
 theme_override_fonts/font = ExtResource("9_jyqen")
 theme_override_font_sizes/font_size = 12
 text = "Open Tower Map"
+
+[node name="QuestHub" parent="PlayerHUD" unique_id=1129499445 instance=ExtResource("14_xxan5")]
+layout_mode = 1
+offset_left = 27.0
+offset_top = -413.0
+offset_right = 427.0
+offset_bottom = 667.0
+mouse_filter = 2
 
 [node name="NotificationHub" parent="PlayerHUD" unique_id=1685968631 instance=ExtResource("12_wldwa")]
 layout_mode = 0
@@ -762,12 +1031,6 @@ text = "Press 'B' To
 Open Bag!"
 horizontal_alignment = 1
 
-[node name="QuestHub" parent="PlayerHUD" unique_id=1129499445 instance=ExtResource("14_xxan5")]
-layout_mode = 1
-offset_left = -339.00012
-offset_top = -231.5
-offset_bottom = 231.5
-
 [node name="RoomInfoBanner" parent="PlayerHUD" unique_id=1196855950 instance=ExtResource("16_fnmb5")]
 visible = false
 layout_mode = 1
@@ -818,7 +1081,7 @@ theme_override_constants/separation = 50
 
 [node name="AbilityCoolDownWheel" parent="PlayerHUD/AbilityHub/HBoxContainer" unique_id=1023824424 instance=ExtResource("19_2jn0u")]
 layout_mode = 2
-ability_name = "Dash Attack"
+ability_name = "Dash"
 
 [node name="AbilityCoolDownWheel2" parent="PlayerHUD/AbilityHub/HBoxContainer" unique_id=661819295 instance=ExtResource("19_2jn0u")]
 layout_mode = 2
@@ -903,28 +1166,6 @@ bbcode_enabled = true
 text = "[color=purple]Select your Class at AP Center! [/color]"
 horizontal_alignment = 1
 
-[node name="BigNotificationLabel" type="Label" parent="PlayerHUD" unique_id=759498820]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -569.0
-offset_top = -114.5
-offset_right = 578.0
-offset_bottom = -58.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0.9835877, 0.818833, 0.7133627, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 25
-theme_override_fonts/font = ExtResource("19_tjlva")
-theme_override_font_sizes/font_size = 52
-text = "Quest Complete!"
-horizontal_alignment = 1
-
 [node name="BossHPBar" parent="PlayerHUD" unique_id=1981304713 instance=ExtResource("23_2jn0u")]
 visible = false
 layout_mode = 1
@@ -949,8 +1190,84 @@ layout_mode = 1
 offset_left = -1834.0
 offset_right = -1834.0
 
-[node name="TopBlackBar" type="ColorRect" parent="PlayerHUD" unique_id=877174551]
+[node name="BigNotificationLabel" type="Label" parent="PlayerHUD" unique_id=759498820]
+visible = false
 layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -569.0
+offset_top = -427.0
+offset_right = 578.0
+offset_bottom = -371.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(574, 33)
+theme_override_colors/font_color = Color(0.9835877, 0.818833, 0.7133627, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 25
+theme_override_fonts/font = ExtResource("19_tjlva")
+theme_override_font_sizes/font_size = 64
+text = "Quest Complete!"
+horizontal_alignment = 1
+
+[node name="CodexNotificationPanel" parent="PlayerHUD" unique_id=809726153 instance=ExtResource("26_118cf")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 1207.0
+offset_top = -262.0
+offset_right = 1749.0
+offset_bottom = -14.0
+grow_horizontal = 1
+grow_vertical = 1
+mouse_filter = 2
+
+[node name="SfxPlayer" parent="." unique_id=2102076142 instance=ExtResource("8_65fhw")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1863759790]
+libraries/ = SubResource("AnimationLibrary_g3oel")
+
+[node name="BigLabelAnimator" type="AnimationPlayer" parent="." unique_id=1717267204]
+root_node = NodePath("../AnimationPlayer")
+libraries/ = SubResource("AnimationLibrary_jde3i")
+
+[node name="QuestTrackerPlayer" type="AnimationPlayer" parent="." unique_id=1494020433]
+root_node = NodePath("../BagAnimationPlayer")
+libraries/ = SubResource("AnimationLibrary_3voo3")
+
+[node name="BagAnimationPlayer" type="AnimationPlayer" parent="." unique_id=1372864879]
+libraries/ = SubResource("AnimationLibrary_jyqen")
+
+[node name="Flash" type="ColorRect" parent="." unique_id=1206488663]
+modulate = Color(1, 1, 1, 0)
+z_index = 4096
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="BlackFlash" type="ColorRect" parent="." unique_id=2118453460]
+modulate = Color(1, 1, 1, 0)
+z_index = 4096
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TopBlackBar" type="ColorRect" parent="." unique_id=877174551]
+z_index = 4096
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -961,45 +1278,26 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
-[node name="BotBlackBar" type="ColorRect" parent="PlayerHUD" unique_id=1251153564]
-layout_mode = 1
+[node name="BotBlackBar" type="ColorRect" parent="." unique_id=1251153564]
+z_index = 4096
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 175.0
-offset_bottom = 175.0
+offset_bottom = 175.0044
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
-[node name="CodexNotificationPanel" parent="PlayerHUD" unique_id=809726153 instance=ExtResource("26_118cf")]
-layout_mode = 0
-anchors_preset = 0
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = -573.0
-offset_top = 453.0
-offset_right = -31.0
-offset_bottom = 701.0
-grow_horizontal = 1
-grow_vertical = 1
-
-[node name="SfxPlayer" parent="." unique_id=2102076142 instance=ExtResource("8_65fhw")]
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1863759790]
-libraries/ = SubResource("AnimationLibrary_g3oel")
-
-[node name="QuestTrackerPlayer" type="AnimationPlayer" parent="." unique_id=1494020433]
-root_node = NodePath("../BagAnimationPlayer")
-libraries/ = SubResource("AnimationLibrary_3voo3")
-
-[node name="BagAnimationPlayer" type="AnimationPlayer" parent="." unique_id=1372864879]
-libraries/ = SubResource("AnimationLibrary_jyqen")
+[node name="Timer" type="Timer" parent="." unique_id=637619050]
+process_callback = 0
+wait_time = 0.3
+one_shot = true
+autostart = true
 
 [connection signal="button_up" from="PlayerHUD/StartHuntChallengeButton" to="." method="_on_start_hunt_challenge_button_button_up"]
 [connection signal="button_up" from="PlayerHUD/OpenTowerMapButton" to="." method="_on_open_tower_map_button_button_up"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 
 [editable path="PlayerHUD/AbilityHub2"]

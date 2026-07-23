@@ -13,7 +13,7 @@ var cool_down_speed_buff_mod : float = 0.0
 var dodge_chance_buff_mod : float = 0.0 # not a thing a yet
 
 const KNOCKBACK_FORCE : int = 100
-
+const BASE_TRANSFER_TIME : float = 2.0
 @onready var player_stats : Dictionary = {
 	"Level" : 1,
 	"Needed XP": 100,
@@ -27,7 +27,7 @@ const KNOCKBACK_FORCE : int = 100
 	"Tracked Weapon": 1,
 	"Attack Damage" : 13.0,
 	"Boss Damage Bonus": 0.0,
-	"HP Siphen Amount": 0.0,
+	"HP Siphen Amount": 0.2,
 	"HP Siphen Chance": 0.0,
 	"Insta Kill Chance": 0.0,
 	"Insta Kill Threshold": 0.0,
@@ -49,7 +49,8 @@ const KNOCKBACK_FORCE : int = 100
 	"Stun Stacks": 1.0,
 	"Dash Speed" : 350.0,
 	"Dash Cooldown" : 2.0,
-	"Dash Duration" : 0.3,
+	"Dash Duration" : 0.2,
+	"Ladder Dash Duration" : 0.15,
 	"Invincibility Duration": 2.5,
 	"Jump Height" : 270.0,
 	"Double Jump Height": 540.0,
@@ -97,13 +98,19 @@ const KNOCKBACK_FORCE : int = 100
 	"Pick Up Distance": 20.0,
 	"Cooldown Reduction":0.0,
 	"Extra Ore Drop Chance": 0.0,
+	"Bulk Sell Transfer Speed": 1.5,
+	"Market Sell Speed": 5.0,
+	"Auto Sell Transfer Speed": 2.0,
+	"Bulk Sell Slots": 1.0,
+	"Bulk Sell Slot Stack":4.0,
+	"Market Value Multiplier":1.0,
 }
 
 var equipped_abilities : Dictionary = {
 	"Attack 1" : null, #sword swing 1
 	"Attack 2" : null, #sword swing 2
 	"Attack 3" : null, #sword swing 3
-	"Dash Attack" : null, #basic dash attack
+	"Dash" : null, #basic dash attack
 	"Air Attack" : null, #basic air attack
 	"Double Jump" : null, #basic double jump
 	"Special Attack" : null, #Not Going to Be Used
@@ -173,8 +180,8 @@ func get_gem_socket(position : int) -> GemStone:
 func get_equipped_ability(slot : String) -> Ability:
 	var selected_slot = equipped_abilities[slot]
 	
-	#if selected_slot is String:
-		#selected_slot = load(selected_slot)
+	if selected_slot is String:
+		selected_slot = load(selected_slot)
 	
 	return selected_slot
 
@@ -192,17 +199,19 @@ func set_tracked_weapon_index(new_index : int) -> void:
 
 @onready var facilities_unlocked : Dictionary = {
 	"Hunter License" : false,
-	"Cooking Station" : false,
+	"Junk-A-Tron" : false,
 	"Crafting Station" : false,
 	"Refinery Station" : false,
 	"Crafting Tab": false,
 	"Bank": false,
 	"Arial Slash" : false,
-	"Dash Attack": false,
+	"Dash": false,
+	"Ladder Dash": false,
 	"Double Jump" : false,
 	"Gem Stone Station": false,
 	"HP Chalice" : false,
-	"MP Vial" : false
+	"MP Vial" : false,
+	"Junk A Tron Auto Transfer": false
 }
 
 @onready var check_points_unlocked : Dictionary = {
@@ -220,7 +229,7 @@ var player_classes : Dictionary = {
 		"Attack 2": preload("uid://rbc7yawqcf3h"),
 		"Attack 3": preload("uid://7qd8qvg4bf73"),
 		"Air Attack": 	preload("uid://bukiike6rf6pl"),
-		"Dash Attack": preload("uid://b0lsgfuw8bp58"),
+		"Dash": preload("uid://b0lsgfuw8bp58"),
 		"Double Jump": preload("uid://rgwunwula5mv"),
 		"Special Attack": null
 	},
@@ -229,7 +238,7 @@ var player_classes : Dictionary = {
 		"Attack 2": preload("uid://rbc7yawqcf3h"),
 		"Attack 3": preload("uid://7qd8qvg4bf73"),
 		"Air Attack": 	preload("uid://bukiike6rf6pl"),
-		"Dash Attack": preload("uid://b0lsgfuw8bp58"),
+		"Dash": preload("uid://b0lsgfuw8bp58"),
 		"Double Jump": preload("uid://rgwunwula5mv"),
 		"Special Attack": preload("uid://cs0umnvsvjhnh"),
 		"Combat Ability 1" : null,
@@ -289,9 +298,14 @@ func get_next_sword() -> Sword:
 		return get_sword(next_sword)
 	return null
 	
-func check_item_in_next_sword_recipe(item : Item) -> bool:
-	if get_next_sword():
-		var next_sword_recipe : CraftingRecipe = get_next_sword().recipe
+func check_item_in_tracked_sword_recipe(item : Item) -> bool:
+	var tracked_weapon_index : int = PlayerStats.player_stats["Tracked Weapon"]
+	
+	if tracked_weapon_index == -1:
+		return false
+	
+	if get_sword(tracked_weapon_index):
+		var next_sword_recipe : CraftingRecipe = get_sword(tracked_weapon_index).recipe
 		if next_sword_recipe:
 			return InventoryManager.item_in_recipe(item,next_sword_recipe)
 		else:
@@ -307,6 +321,11 @@ func can_craft_next_sword() -> bool:
 	var next_sword : Sword = get_sword(int(player_stats["Equipped Sword"])+1)
 	
 	var craft_amount : int = InventoryManager.calculate_quantity(next_sword.recipe)
+	return craft_amount >= 1
+
+func can_craft_weapon() -> bool:
+	var weapon : Sword = get_sword(player_stats["Tracked Weapon"])
+	var craft_amount : int = InventoryManager.calculate_quantity(weapon.recipe)
 	return craft_amount >= 1
 
 func get_pickaxe_name() -> String:
@@ -335,8 +354,8 @@ func upgrade_player_stat(stat_name : String, interval : float, node_type : TechT
 	if node_type == TechTreeManager.TECH_NODE_TYPE.FACILITY or node_type == TechTreeManager.TECH_NODE_TYPE.CLASS_ABILITY:
 		facilities_unlocked[stat_name] = true
 		print("stat name: %s is unclocked : %s" % [stat_name, facilities_unlocked[stat_name]])
-		
-		if stat_name == "Cooking Station":
+		SaveManager.save_game()
+		if stat_name == "Junk-A-Tron":
 			show_cooking_station_unlock_animation = true
 		elif stat_name == "Refinery Station":
 			show_refinery_station_unlock_animation = true
@@ -365,7 +384,7 @@ func load_abilities() -> void:
 	if SaveManager.current_save_game and SaveManager.current_save_game.player_stats["Class"] == "Junior Hunter":
 		return
 		
-	var ability_names : Array[String] = ["Air Attack", "Dash Attack", "Double Jump", "Special Attack", "Combat Ability 1", "Combat Ability 2", "Combat Ability 3", "Combat Ability 4"]
+	var ability_names : Array[String] = ["Air Attack", "Dash", "Double Jump", "Special Attack", "Combat Ability 1", "Combat Ability 2", "Combat Ability 3", "Combat Ability 4"]
 
 	for ability_name in ability_names:
 		var equipped_ability : Ability = get_equipped_ability(ability_name)
@@ -373,7 +392,7 @@ func load_abilities() -> void:
 			equipped_ability.load_stats()
 
 func check_needed_for_dojo() -> bool:
-	return PlayerStats.player_stats["Level"] >= 5 and PlayerStats.facilities_unlocked["Dash Attack"] and PlayerStats.facilities_unlocked["Arial Slash"] and PlayerStats.facilities_unlocked["Double Jump"]
+	return PlayerStats.player_stats["Level"] >= 5 and PlayerStats.facilities_unlocked["Dash"] and PlayerStats.facilities_unlocked["Arial Slash"] and PlayerStats.facilities_unlocked["Double Jump"]
 
 func check_level_for_dojo() -> bool:
 	return PlayerStats.player_stats["Level"] >= 5
@@ -385,18 +404,22 @@ func get_total_max_mp() -> int:
 	return player_stats["Max MP"]  + get_current_sword().get_total_mp_bonus()
 
 func recover_hp(amount : int) -> void:
-	player_stats["Current Health"] += amount
-	if player_stats["Current Health"] > get_total_max_health():
-		player_stats["Current Health"] = get_total_max_health()
-	
-	PlayerHudSignalBus.update_player_health.emit()
+	var prev_hp : int = GameManager.current_player_health
+	if GameManager.current_player_health > get_total_max_health():
+		GameManager.current_player_health = get_total_max_health()
+	else:
+		GameManager.current_player_health += amount
+		
+	PlayerHudSignalBus.update_player_health.emit(prev_hp)
 		
 func recover_mp(amount : int) -> void:
-	player_stats["Current MP"] += amount
-	if player_stats["Current MP"] > get_total_max_mp():
-		player_stats["Current MP"] = get_total_max_mp()
+	var prev_mp : int = GameManager.current_player_mp
+	if GameManager.current_player_mp > get_total_max_mp():
+		GameManager.current_player_mp = get_total_max_mp()
+	else:
+		GameManager.current_player_mp += amount
 	
-	PlayerHudSignalBus.update_player_mp.emit()
+	PlayerHudSignalBus.update_player_mp.emit(prev_mp)
 	
 func reset_global_stat_buffs() -> void:
 	attack_buff_mod = 1.0

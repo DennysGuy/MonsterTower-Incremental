@@ -1,7 +1,6 @@
 [gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://dnjct1360g838"]
 
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_hf7kk"]
-[ext_resource type="Resource" uid="uid://dmmblpt46r1fs" path="res://src/Resources/Dishes/PupilCaviar.tres" id="1_lso7o"]
 [ext_resource type="Texture2D" uid="uid://iyv54od14mxh" path="res://Assets/TechTree/SurvivalNodes/MPVial_ChanceUP_Disabled_Graphic.png" id="1_m3yk5"]
 [ext_resource type="Texture2D" uid="uid://bojk4dqja2lrt" path="res://Assets/TechTree/SurvivalNodes/MPVial_ChanceUP_Graphic.png" id="2_w7aw7"]
 
@@ -10,13 +9,11 @@ script = ExtResource("1_hf7kk")
 node_name = "Vial Spawn Rate 1"
 icon = ExtResource("2_w7aw7")
 disabled_icon = ExtResource("1_m3yk5")
-description = "Increases MP Vial Spawn Rate by 10% for each level."
+description = "Increases\\ MP Vial Spawn Rate by 10% per level."
 max_level = 3
-ap_required = 2200
-materials_required = Array[Dictionary]([{
-ExtResource("1_lso7o"): 2
-}])
+currency_required = 1500
 stat_relation = 1
+price_scaler = 1.3
 stat_name = "Vial Spawn Rate"
 upgrade_interval = 0.1
 prereqs = Array[String](["Vial of the Esoteric:1"])

@@ -1415,13 +1415,14 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g7hoo"]
 size = Vector2(405, 464)
 
-[node name="GreySentinelBoss" type="CharacterBody2D" unique_id=1387952457 node_paths=PackedStringArray("left_leg", "state_machine", "animation_player", "health_component", "hurt_box", "dead_state")]
+[node name="GreySentinelBoss" type="CharacterBody2D" unique_id=1387952457 node_paths=PackedStringArray("left_leg", "state_machine", "animation_player", "health_component", "sprite", "hurt_box", "dead_state")]
 script = ExtResource("1_gle20")
 left_leg = NodePath("BodyParts/LeftLeg")
 enemy_stats = ExtResource("2_p141u")
 state_machine = NodePath("StateMachine")
 animation_player = NodePath("AnimationPlayer")
 health_component = NodePath("HealthComponent")
+sprite = NodePath("BodyParts/LeftLeg")
 hurt_box = NodePath("HurtBox")
 dead_state = NodePath("StateMachine/Death")
 

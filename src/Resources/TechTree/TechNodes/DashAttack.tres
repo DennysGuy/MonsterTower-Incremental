@@ -6,14 +6,13 @@
 
 [resource]
 script = ExtResource("1_anjie")
-node_name = "Dash Attack"
+node_name = "Dash"
 icon = ExtResource("2_x24pw")
 disabled_icon = ExtResource("1_jo0k4")
-description = "Press the dash button to dodge enemies. Effective for getting out of tight jams!"
+description = "Perform a quick dash to slip past enemies without taking damage - perfect for escaping dangerous situations!"
 unlocked = true
-currency_required = 400
-ap_required = 3
+ap_required = 2
 node_type = 2
-stat_name = "Dash Attack"
+stat_name = "Dash"
 prereqs = Array[String](["Attack 1:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

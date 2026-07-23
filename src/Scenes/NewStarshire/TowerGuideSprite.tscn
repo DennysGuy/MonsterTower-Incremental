@@ -2,5 +2,5 @@
 
 [ext_resource type="Texture2D" uid="uid://pkete5yncm7c" path="res://Assets/NPCs/TowerChaprone/Recipe_Shop_Vendor_NoOutline.png" id="1_eldxg"]
 
-[node name="TowerGuideSprite" type="Sprite2D"]
+[node name="TowerGuideSprite" type="Sprite2D" unique_id=1012069462]
 texture = ExtResource("1_eldxg")

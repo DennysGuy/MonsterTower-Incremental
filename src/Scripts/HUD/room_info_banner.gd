@@ -61,6 +61,7 @@ func update_banner_info(tower_entrance_data : TowerEntranceData) -> void:
 			room_info_banner.texture = BOSS_ROOM_BANNER
 
 func update_kills_left(text : String) -> void:
+	
 	tracker_label.text = text
 
 func update_tracker_container(tower_entrance_data : TowerEntranceData) -> void:

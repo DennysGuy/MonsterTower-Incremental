@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://c4baymalbot54"]
+
+[ext_resource type="PackedScene" uid="uid://dpcnaflfrbttl" path="res://src/Scenes/UI/HitSparksVFX.tscn" id="1_ilwvd"]
+[ext_resource type="Script" uid="uid://bamc7nt1qkd5u" path="res://src/Scripts/VFX/star_sparks.gd" id="1_xbv1y"]
+
+[node name="Node2D" type="Node2D" unique_id=1738422740]
+script = ExtResource("1_xbv1y")
+
+[node name="InnerSparks" parent="." unique_id=591626416 instance=ExtResource("1_ilwvd")]
+lifetime = 0.09999999999999999
+emission_sphere_radius = 1.0
+initial_velocity_max = 20.0
+scale_amount_min = 0.1
+scale_amount_max = 0.3
+
+[node name="AvailableSparks2" parent="." unique_id=639494323 instance=ExtResource("1_ilwvd")]
+lifetime = 0.4

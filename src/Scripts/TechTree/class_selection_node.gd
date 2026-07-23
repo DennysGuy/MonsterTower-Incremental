@@ -20,5 +20,6 @@ func _on_node_gui_input(event: InputEvent) -> void:
 
 
 func _on_node_button_up() -> void:
-	SignalBus.spawn_class_selection_menu.emit()
-	get_parent().queue_free()
+	if PlayerStats.player_stats["Level"] >= 8:
+		SignalBus.spawn_class_selection_menu.emit()
+		get_parent().queue_free()

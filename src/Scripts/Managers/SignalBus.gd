@@ -91,7 +91,7 @@ signal show_class_notice
 @warning_ignore("unused_signal")
 signal set_icons
 @warning_ignore("unused_signal")
-signal play_sfx(audio_stream : AudioStream)
+signal play_sfx(audio_stream : AudioStream, volume : float)
 @warning_ignore("unused_signal")
 signal hide_tech_tree_canvas_layer
 @warning_ignore("unused_signal")
@@ -99,6 +99,8 @@ signal stop_player
 
 @warning_ignore("unused_signal")
 signal spawn_class_selection_menu
+@warning_ignore("unused_signal")
+signal play_level_up_visual
 @warning_ignore("unused_signal")
 signal show_ap_notice
 @warning_ignore("unused_signal")
@@ -159,4 +161,27 @@ signal go_to_outro_screen
 @warning_ignore("unused_signal")
 signal populate_weapon_description_panel(weapon : Sword)
 
+@warning_ignore("unused_signal")
 signal update_to_new_class_outfit
+
+@warning_ignore("unused_signal")
+signal disable_tracked_icon(index : int)
+@warning_ignore("unused_signal")
+signal show_tracked_icon(index : int)
+@warning_ignore("unused_signal")
+signal update_held_weapon(weapon : Sword)
+
+@warning_ignore("unused_signal")
+signal set_combat_ability_icon_disabled
+@warning_ignore("unused_signal")
+signal set_combat_ability_icon_enabled
+@warning_ignore("unused_signal")
+signal combat_class_menu_closed
+@warning_ignore("unused_signal")
+signal gem_stone_menu_closed()
+@warning_ignore("unused_signal")
+signal check_point_button_clicked(chosen_index : int)
+@warning_ignore("unused_signal")
+signal inventory_changed
+@warning_ignore("unused_signal")
+signal novelty_invention_sold

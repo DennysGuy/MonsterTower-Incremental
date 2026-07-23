@@ -10,13 +10,12 @@ script = ExtResource("3_vboa6")
 node_name = "Crit Chance 2"
 icon = ExtResource("2_vboa6")
 disabled_icon = ExtResource("1_p8gha")
-description = "Increase Crit Chance by 5% per level."
+description = "Improve your chance to hit increasingly higher numbers by 5% per level."
 max_level = 3
-currency_required = 550
 materials_required = Array[Dictionary]([{
-ExtResource("2_28dln"): 2
+ExtResource("2_28dln"): 1
 }])
 stat_name = "Crit Chance"
 upgrade_interval = 0.05
-prereqs = Array[String](["Attack 2:1"])
+prereqs = Array[String](["Combat Cooldown 1:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

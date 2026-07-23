@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://p0w0h82t37py"]
+
+[ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_kqh7u"]
+[ext_resource type="Texture2D" uid="uid://5sxoffx0h0wb" path="res://Assets/TechTree/CookingNodes/MarketValue_UP_Disabled_Graphic.png" id="1_yri81"]
+[ext_resource type="Texture2D" uid="uid://bqckhf8cufaax" path="res://Assets/TechTree/CookingNodes/MarketValue_UP_Graphic.png" id="2_ew224"]
+
+[resource]
+script = ExtResource("1_kqh7u")
+node_name = "Expert Marketeer 1"
+icon = ExtResource("2_ew224")
+disabled_icon = ExtResource("1_yri81")
+description = "Increase the Market value of Novelty Inventions by 40% per level."
+max_level = 3
+currency_required = 800
+stat_relation = 4
+price_scaler = 1.5
+stat_name = "Market Value Multiplier"
+upgrade_interval = 0.4
+prereqs = Array[String](["Pro Mover 1:1"])
+metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

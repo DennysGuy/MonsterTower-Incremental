@@ -1,0 +1,109 @@
+[gd_scene format=3 uid="uid://dh4a1fdo4tblk"]
+
+[ext_resource type="Script" uid="uid://bot18oasbt8m3" path="res://src/Scripts/Facilities/smithing_station_bg.gd" id="1_66y86"]
+[ext_resource type="Shader" uid="uid://b46alngda0fw1" path="res://src/Scripts/Shaders/ToonWater.gdshader" id="2_8osbi"]
+[ext_resource type="PackedScene" uid="uid://cce3n103xvdjo" path="res://Assets/Models/Locations/SmithingStationBG.gltf" id="4_66y86"]
+[ext_resource type="PackedScene" uid="uid://dbvatee527mp1" path="res://src/Scenes/NewStarshire/Facilities/FacilityBGs/PalmTree.tscn" id="4_oxiuv"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5k6ws"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_c6vye"]
+sky_material = SubResource("ProceduralSkyMaterial_5k6ws")
+
+[sub_resource type="Environment" id="Environment_vlci5"]
+background_mode = 1
+background_color = Color(0.15919161, 0.6230468, 0.99999994, 1)
+sky = SubResource("Sky_c6vye")
+ambient_light_source = 2
+ambient_light_color = Color(0.9191231, 0.9286207, 0.9193768, 1)
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vlci5"]
+render_priority = 0
+shader = ExtResource("2_8osbi")
+shader_parameter/WATER_COL = Vector4(0.04, 0.38, 0.88, 1)
+shader_parameter/WATER2_COL = Vector4(0.04, 0.35, 0.78, 1)
+shader_parameter/FOAM_COL = Vector4(0.8125, 0.9609, 0.9648, 1)
+shader_parameter/distortion_speed = 2.0
+shader_parameter/tile = Vector2(5, 5)
+shader_parameter/height = 2.0
+shader_parameter/wave_size = Vector2(2, 2)
+shader_parameter/wave_speed = 1.5
+
+[sub_resource type="BoxMesh" id="BoxMesh_5k6ws"]
+
+[sub_resource type="Animation" id="Animation_66y86"]
+resource_name = "PanIn"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(3.2672582, 1.5349905, 4.9455924), Vector3(1.8288169, 1.5349905, 3.8338528)]
+}
+
+[sub_resource type="Animation" id="Animation_6g8rg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(3.2672582, 1.5349905, 4.9455924)]
+}
+
+[sub_resource type="Animation" id="Animation_7ygbc"]
+resource_name = "Rotate"
+length = 180.0
+loop_mode = 1
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0pown"]
+_data = {
+&"PanIn": SubResource("Animation_66y86"),
+&"RESET": SubResource("Animation_6g8rg"),
+&"Rotate": SubResource("Animation_7ygbc")
+}
+
+[node name="SmithingStationBG" type="Node3D" unique_id=531201827]
+script = ExtResource("1_66y86")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1328218113]
+environment = SubResource("Environment_vlci5")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="." unique_id=641049463]
+transform = Transform3D(142.84644, 0, 0, 0, 1, 0, 0, 0, 77.95518, -0.98313594, -1.3794866, -29.736433)
+material_override = SubResource("ShaderMaterial_vlci5")
+mesh = SubResource("BoxMesh_5k6ws")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=591298792]
+transform = Transform3D(0.7868381, 0, 0.6171595, 0, 1, 0, -0.6171595, 0, 0.7868381, 3.2672582, 1.5349905, 4.9455924)
+fov = 40.0
+
+[node name="Node3D" parent="." unique_id=217320620 instance=ExtResource("4_oxiuv")]
+transform = Transform3D(-0.2017276, 0, 0.9794415, 0, 1.0000001, 0, -0.97944164, 0, -0.2017276, 6.5452776, -1.6828161, -2.6335802)
+
+[node name="Node3D2" parent="." unique_id=1247130052 instance=ExtResource("4_oxiuv")]
+transform = Transform3D(-0.93022555, 0, -0.36698827, 0, 1.0000001, 0, 0.36698848, 0, -0.9302257, -5.472001, -1.6699064, -6.7741137)
+
+[node name="Node3D3" parent="." unique_id=612776885 instance=ExtResource("4_oxiuv")]
+transform = Transform3D(0.08782634, 0, -1.1605682, 0, 1.0000001, 0, 0.86385924, 0, -0.029230429, -8.1407385, -2.7200246, 3.5449255)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2105560458]
+libraries/ = SubResource("AnimationLibrary_0pown")
+
+[node name="blockbench_export" parent="." unique_id=1327604142 instance=ExtResource("4_66y86")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07666993, 0, -0.90041685)

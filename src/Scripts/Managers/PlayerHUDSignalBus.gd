@@ -1,16 +1,22 @@
 extends Node
 
 @warning_ignore("unused_signal")
-signal update_player_health
+signal update_player_health(prev_health : int)
 
 @warning_ignore("unused_signal")
-signal update_player_mp
+signal update_player_mp(prev_mp: int)
 
 @warning_ignore("unused_signal")
 signal spawn_respawn_box
 
 @warning_ignore("unused_signal")
 signal flash_screen
+
+@warning_ignore("unused_signal")
+signal update_player_bars
+
+@warning_ignore("unused_signal")
+signal trigger_cross_fade
 
 @warning_ignore("unused_signal")
 signal populate_pick_notification_panel
@@ -105,3 +111,21 @@ signal update_boss_hp_bar(max_health : int, current_health : int)
 
 @warning_ignore("unused_signal")
 signal show_boss_hp_bar
+
+@warning_ignore("unused_signal")
+signal trigger_long_fade_in_out
+
+@warning_ignore("unused_signal")
+signal check_if_can_cast_combat_ability
+
+@warning_ignore("unused_signal")
+signal hub_menu_accessed
+
+@warning_ignore("unused_signal")
+signal hub_menu_exited
+
+@warning_ignore("unused_signal")
+signal bag_closed
+
+@warning_ignore("unused_signal")
+signal show_sprint_notice

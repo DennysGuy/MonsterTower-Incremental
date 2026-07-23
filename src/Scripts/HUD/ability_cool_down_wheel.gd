@@ -32,8 +32,12 @@ func _ready() -> void:
 	TechTreeManager.set_ability_hud_icon.connect(set_icon)
 	SignalBus.set_icons.connect(set_icon)
 	SignalBus.unlock_cool_down_wheel.connect(unlock)
+	SignalBus.set_combat_ability_icon_enabled.connect(set_combat_ability_enabled)
+	SignalBus.set_combat_ability_icon_disabled.connect(set_combat_ability_disabled)
+	PlayerHudSignalBus.check_if_can_cast_combat_ability.connect(check_if_can_cast)
 	ability_title.text = ability_name
 	stored_ability = PlayerStats.get_equipped_ability(ability_name)
+	print(stored_ability)
 	#description.text = PlayerStats.get_equipped_ability(ability_name).ability_description
 	set_icon()
 
@@ -50,6 +54,7 @@ func _physics_process(delta: float) -> void:
 		if progress_wheel.value <= 0:
 			count_down.hide()
 			emit_ready_spark()
+			check_if_can_cast()
 			timer_started = false
 
 func start_progress_wheel(selected_ability : String) -> void:
@@ -68,21 +73,30 @@ func emit_ready_spark() -> void:
 
 func set_icon() -> void:
 	if stored_ability:
-		icon.texture = stored_ability.icon
 		match stored_ability.ability_type:
 			stored_ability.ABILITY_TYPE.AIR_ATTACK:
+				if PlayerStats.facilities_unlocked["Arial Slash"]:
+					icon.texture = stored_ability.icon
 				lmb.show()
-			stored_ability.ABILITY_TYPE.DASH_ATTACK:
+			stored_ability.ABILITY_TYPE.DASH:
+				if PlayerStats.facilities_unlocked["Dash"]:
+					icon.texture = stored_ability.icon
 				rmb.show()
 			stored_ability.ABILITY_TYPE.DOUBLE_JUMP:
+				if PlayerStats.facilities_unlocked["Double Jump"]:
+					icon.texture = stored_ability.icon				
 				space.show()
 			stored_ability.ABILITY_TYPE.COMBAT_ABILITY_1:
+				icon.texture = stored_ability.icon
 				button_1.show()
 			stored_ability.ABILITY_TYPE.COMBAT_ABILITY_2:
+				icon.texture = stored_ability.icon
 				button_2.show()
 			stored_ability.ABILITY_TYPE.COMBAT_ABILITY_3:
+				icon.texture = stored_ability.icon
 				button_3.show()
 			stored_ability.ABILITY_TYPE.COMBAT_ABILITY_4:
+				icon.texture = stored_ability.icon
 				button_4.show()
 
 func unlock(ability : Ability) -> void:
@@ -106,3 +120,30 @@ func _on_texture_button_mouse_entered() -> void:
 func _on_texture_button_mouse_exited() -> void:
 	if ability_unlocked():
 		ability_description_panel.hide()
+
+func check_if_can_cast() -> void:
+	if !stored_ability:
+		return
+	
+	if stored_ability and !stored_ability.is_combat_ability:
+		return
+	
+	if GameManager.current_player_mp < stored_ability.mp_cost:
+		icon.texture = stored_ability.disabled_icon
+	else:
+		icon.texture = stored_ability.icon
+
+func set_combat_ability_enabled() -> void:
+	if !stored_ability:
+		return
+	if !stored_ability.is_combat_ability:
+		return
+	icon.texture = stored_ability.icon
+
+func set_combat_ability_disabled() -> void:
+	if !stored_ability: 
+		return
+	
+	if !stored_ability.is_combat_ability:
+		return
+	icon.texture = stored_ability.disabled_icon

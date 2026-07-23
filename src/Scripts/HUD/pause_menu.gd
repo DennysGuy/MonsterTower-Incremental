@@ -9,10 +9,12 @@ var in_menu : bool = false
 @export var audio_settings_menu : AudioSettingsMenu
 @export var control_settings_menu : ControlSettingsMenu
 @export var graphics_settings_menu : GraphicsSettingsMenu
+@export var pause_game : bool = true
 
 func _ready() -> void:
-	get_tree().paused = true
-	in_menu = true
+	if pause_game:
+		get_tree().paused = true
+		in_menu = true
 	
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("close_menu"):
@@ -27,6 +29,7 @@ func _physics_process(delta: float) -> void:
 func exit_pause_menu() -> void:
 	get_tree().paused = false
 	SignalBus.hide_tech_tree_canvas_layer.emit()
+	PlayerHudSignalBus.hub_menu_exited.emit()
 	queue_free()
 
 func set_pause_subtree(root: Node, pause: bool) -> void:
@@ -48,6 +51,8 @@ func _on_control_settings_button_up() -> void:
 func _on_save_and_menu_button_up() -> void:
 	SaveManager.save_game()
 	MusicPlayer.stop_player()
+	get_tree().paused = false
+	get_tree().process_frame
 	get_tree().change_scene_to_file("uid://babypuakc7i7y")
 
 func _on_quit_game_button_up() -> void:

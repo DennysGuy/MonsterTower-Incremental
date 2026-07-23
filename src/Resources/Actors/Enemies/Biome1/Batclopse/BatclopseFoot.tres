@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EnemyDrop" format=3 uid="uid://dwasueaasq7mq"]
+
+[ext_resource type="Texture2D" uid="uid://cuc8r2gcfwm54" path="res://Assets/Enemies/CyclopsBat/BatclopseDrops_Feet.png" id="1_o0tfi"]
+[ext_resource type="Script" uid="uid://cubudt76pshmm" path="res://src/Scripts/Enemies/enemy_drop.gd" id="2_lbf7g"]
+
+[resource]
+script = ExtResource("2_lbf7g")
+drop_icon = ExtResource("1_o0tfi")
+drop_chance = 0.6
+item_name = "Batclopse Foot"
+sell_value = 55
+shop_icon = ExtResource("1_o0tfi")
+description = "The foot of a batclopse.. What can we make of it?"
+metadata/_custom_type_script = "uid://cubudt76pshmm"

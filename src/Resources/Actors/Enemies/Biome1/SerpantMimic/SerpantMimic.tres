@@ -3,9 +3,12 @@
 [ext_resource type="Resource" uid="uid://sbvd7ewnpn0s" path="res://src/Resources/Actors/Enemies/Biome1/SerpantMimic/SerpantTongue.tres" id="1_4hnr7"]
 [ext_resource type="Script" uid="uid://cbjktr12qagl" path="res://src/Scripts/Enemies/enemy_stats.gd" id="1_cmsn0"]
 [ext_resource type="Resource" uid="uid://bvpv4cq7bcds3" path="res://src/Resources/Actors/Enemies/Biome1/SerpantMimic/PurifiedChest.tres" id="2_xc8py"]
-[ext_resource type="Resource" uid="uid://b5j8n0d41axk1" path="res://src/Resources/Actors/Enemies/Biome1/SerpantMimic/SerpantLoot.tres" id="3_makr1"]
+[ext_resource type="AudioStream" uid="uid://ct10t46js4esq" path="res://Audio/SFX/Enemies/Mimic/MimicDeathVox.wav" id="3_eojt1"]
 [ext_resource type="Texture2D" uid="uid://dlb1vvgjo7g7x" path="res://Assets/Enemies/MimicSerpant/MimicSerpant_Stand.png" id="3_sbh86"]
+[ext_resource type="AudioStream" uid="uid://bq7tex8pbimsj" path="res://Audio/SFX/Enemies/Mimic/MimicHit1.wav" id="4_4yy6y"]
 [ext_resource type="Texture2D" uid="uid://cmd1xfjwqwc26" path="res://Assets/Enemies/SerpantMimicIcon.png" id="5_5oeld"]
+[ext_resource type="AudioStream" uid="uid://fvmwj1s2e4h7" path="res://Audio/SFX/Enemies/Mimic/MimicHit2.wav" id="5_c2raw"]
+[ext_resource type="AudioStream" uid="uid://c1hrpqwqg1c11" path="res://Audio/SFX/Enemies/Mimic/MimicHit3.wav" id="6_m11du"]
 
 [resource]
 script = ExtResource("1_cmsn0")
@@ -15,14 +18,18 @@ index = 8
 preview_icon = ExtResource("5_5oeld")
 touch_damage = true
 idle_animation = ExtResource("3_sbh86")
+floor_locations = Array[String](["Mossy Dungeon - Floor 4"])
 enemy_type = 1
-max_health = 1500
+max_health = 2300
 attack = 55
 defense = 5.0
 movement_speed = 40.0
 chase_speed = 50.0
 break_threshold = 10
-novelty_item_drop = ExtResource("3_makr1")
-cooking_item_drop = ExtResource("1_4hnr7")
+hit_vox_1 = ExtResource("4_4yy6y")
+hit_vox_2 = ExtResource("5_c2raw")
+hit_vox_3 = ExtResource("6_m11du")
+die_vox = ExtResource("3_eojt1")
+novelty_item_drop = ExtResource("1_4hnr7")
 crafting_item_drop = ExtResource("2_xc8py")
 metadata/_custom_type_script = "uid://cbjktr12qagl"

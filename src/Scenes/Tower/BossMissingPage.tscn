@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bhdmpf736ro3j"]
 
 [ext_resource type="Script" uid="uid://c1lvvopcu1nip" path="res://src/Scripts/Tower/boss_missing_page.gd" id="1_q7qny"]
-[ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="2_q7qny"]
+[ext_resource type="FontFile" uid="uid://stn4dtg0uw57" path="res://Assets/Fonts/FredokaOne-Regular.ttf" id="2_q7qny"]
 
 [sub_resource type="Animation" id="Animation_q7qny"]
 resource_name = "FadeIn"
@@ -94,20 +94,31 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -273.0
-offset_top = -134.0
-offset_right = 294.0
-offset_bottom = 52.0
+offset_left = -679.5
+offset_top = -449.5
+offset_right = 679.5
+offset_bottom = 329.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_q7qny")
-theme_override_font_sizes/font_size = 45
-text = "Thanks for playing through the prototype content.
+theme_override_font_sizes/font_size = 34
+text = "Thanks for playing through the pre-alpha!
 
-In the future, you can expect the boss to actually
-drop stuff - useful stuff, more biomes, stronger
-class advancements, abilities, monsters, and more!"
-horizontal_alignment = 1
+This build is only a small glimpse of what's planned for Starspire Hunters. 
+In future updates, you can expect:
+
+• More Bosses with meaningful loot and rewards
+• New biomes to explore
+• Combat Class advancements and new abilities
+• More monsters, gear, crafting, and tech nodes
+
+If you enjoyed your time with the game, please consider wishlisting 
+Starspire Hunters on Steam and joining the Discord community to follow 
+development and playtest future builds.
+
+Your feedback directly influences the future of Starspire Hunters. 
+Thanks for being a part of the journey and we'll see you in the tower!
+"
 
 [node name="Button" type="Button" parent="." unique_id=989170433]
 layout_mode = 1
@@ -123,7 +134,32 @@ offset_bottom = -48.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 42
 text = "Go to Starspire"
+
+[node name="SteamPageLink" type="LinkButton" parent="." unique_id=996786430]
+layout_mode = 0
+offset_left = 292.0
+offset_top = 881.0
+offset_right = 565.0
+offset_bottom = 921.0
+theme_override_colors/font_color = Color(0.68096113, 0.52199066, 1, 1)
+theme_override_fonts/font = ExtResource("2_q7qny")
+theme_override_font_sizes/font_size = 32
+text = "Go to Steam Page"
+uri = "https://store.steampowered.com/app/4937380/Starspire_Hunters/"
+
+[node name="DiscordLink" type="LinkButton" parent="." unique_id=1895638650]
+layout_mode = 0
+offset_left = 616.0
+offset_top = 881.0
+offset_right = 825.0
+offset_bottom = 926.0
+theme_override_colors/font_color = Color(0.23955384, 0.9999998, 0.9165678, 1)
+theme_override_fonts/font = ExtResource("2_q7qny")
+theme_override_font_sizes/font_size = 32
+text = "Go to Discord"
+uri = "https://discord.gg/KwxDx5NC4U"
 
 [node name="ColorRect2" type="ColorRect" parent="." unique_id=597332443]
 layout_mode = 1
@@ -137,5 +173,19 @@ color = Color(0, 0, 0, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1832764515]
 libraries/ = SubResource("AnimationLibrary_1udua")
+
+[node name="Label2" type="Label" parent="." unique_id=1220171760]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -866.5
+offset_top = 7.0
+offset_right = 866.5
+offset_bottom = 41.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_q7qny")
+theme_override_font_sizes/font_size = 24
+text = "* Thanks to Dan Galletti, Andrew Blemmings, Stanislaus, and my girlfriend Kristine for play testing and giving feedback throughout the last 7 months!*"
 
 [connection signal="button_up" from="Button" to="." method="_on_button_button_up"]

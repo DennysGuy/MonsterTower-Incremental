@@ -24,6 +24,7 @@
 [ext_resource type="Script" uid="uid://b4xbaangfo4jo" path="res://src/Scripts/StateMachine/EnemyStates/GenericEnemyStates/enemy_chase.gd" id="22_18b7q"]
 [ext_resource type="Script" uid="uid://dwvy67t8hx3" path="res://src/Scripts/Enemies/enemy_stun.gd" id="23_huj61"]
 [ext_resource type="Script" uid="uid://cx8e05eefws02" path="res://src/Scripts/StateMachine/EnemyStates/GenericEnemyStates/enemy_spawn_in.gd" id="24_bjqae"]
+[ext_resource type="Script" uid="uid://b76huuoc8f6ro" path="res://src/Scripts/Enemies/enemy_hurt_buffer.gd" id="25_ffl6h"]
 [ext_resource type="PackedScene" uid="uid://b73ndgmav7ja2" path="res://src/Scenes/Actors/Utilities/HealthComponent.tscn" id="25_xpgnq"]
 [ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="26_thiue"]
 [ext_resource type="PackedScene" uid="uid://bg1ya0qiin47q" path="res://src/Scenes/Actors/Utilities/HurtBox.tscn" id="27_swlkm"]
@@ -464,11 +465,12 @@ idle_state = NodePath("../Idle")
 chase_state = NodePath("../Chase")
 animation_name = "Patrol"
 
-[node name="Hit" type="Node" parent="StateMachine" unique_id=1992342087 node_paths=PackedStringArray("idle_state", "chase_state")]
+[node name="Hit" type="Node" parent="StateMachine" unique_id=1992342087 node_paths=PackedStringArray("idle_state", "chase_state", "hurt_buffer_state")]
 script = ExtResource("14_ldwi8")
 idle_state = NodePath("../Idle")
 chase_state = NodePath("../Chase")
 wait_time = 0.35
+hurt_buffer_state = NodePath("../HurtBuffer")
 generic_impact_1 = ExtResource("15_r7axr")
 generic_impact_2 = ExtResource("16_2fnjy")
 generic_impact_3 = ExtResource("17_tvtwd")
@@ -497,6 +499,12 @@ animation_name = "Stun"
 script = ExtResource("24_bjqae")
 idle_state = NodePath("../Idle")
 animation_name = "SpawnIn"
+
+[node name="HurtBuffer" type="Node" parent="StateMachine" unique_id=1803624956 node_paths=PackedStringArray("idle_state", "chase_state")]
+script = ExtResource("25_ffl6h")
+idle_state = NodePath("../Idle")
+chase_state = NodePath("../Chase")
+buffer_time = 0.15
 
 [node name="HealthComponent" parent="." unique_id=2083111642 node_paths=PackedStringArray("parent", "health_bar") instance=ExtResource("25_xpgnq")]
 parent = NodePath("..")

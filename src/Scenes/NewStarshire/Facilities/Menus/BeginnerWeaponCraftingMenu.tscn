@@ -1,0 +1,498 @@
+[gd_scene format=3 uid="uid://cc1xppx3tkq4f"]
+
+[ext_resource type="Script" uid="uid://cbuffb253p3na" path="res://src/Scripts/Facilities/Menus/crafting_menu.gd" id="1_88p6l"]
+[ext_resource type="PackedScene" uid="uid://dh4a1fdo4tblk" path="res://src/Scenes/NewStarshire/Facilities/FacilityBGs/SmithingStationBG.tscn" id="2_88p6l"]
+[ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="2_rabgv"]
+[ext_resource type="Texture2D" uid="uid://cfo2whg1w2q42" path="res://Assets/Facilities/CraftingStationMenu.png" id="3_3ulfr"]
+[ext_resource type="FontFile" uid="uid://qgj228ltdttv" path="res://Assets/Fonts/alagard.ttf" id="4_cswec"]
+[ext_resource type="Texture2D" uid="uid://dqrwhfhixd1io" path="res://Assets/Facilities/GearCraftingStation/GearStationDropsBagBG.png" id="5_8hq8q"]
+[ext_resource type="Texture2D" uid="uid://dkd4op7b7q1vp" path="res://Assets/HUD/Bags/Market_Drops_Button.png" id="6_leimn"]
+[ext_resource type="Texture2D" uid="uid://dbq8ligbspbbd" path="res://Assets/HUD/Bags/Market_Drops_Button_Pressed.png" id="7_s3qnk"]
+[ext_resource type="Texture2D" uid="uid://c0bf31w6yr3lk" path="res://Assets/HUD/Bags/Market_Drops_Button_Hover.png" id="8_uyagt"]
+[ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="9_72cag"]
+[ext_resource type="Texture2D" uid="uid://dcf34mnogdpat" path="res://Assets/HUD/Bags/Market_Use_Button.png" id="10_svgv0"]
+[ext_resource type="Texture2D" uid="uid://b1k5jwyknpl4e" path="res://Assets/HUD/Bags/Market_Use_Button_Pressed.png" id="11_p8l1g"]
+[ext_resource type="Texture2D" uid="uid://cdnmf68j5a2ak" path="res://Assets/HUD/Bags/Market_Use_Button_Hover.png" id="12_vxqx5"]
+[ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="13_ckoov"]
+[ext_resource type="Texture2D" uid="uid://coogimgiiqd7x" path="res://Assets/CraftingMiniGame/Swords/BronzeSword/BronzeSwordMoldWhole.png" id="15_f5kk3"]
+[ext_resource type="PackedScene" uid="uid://d0s6j8mvikv8c" path="res://src/Scenes/UI/ItemSlot.tscn" id="16_dx0t1"]
+[ext_resource type="PackedScene" uid="uid://ctt7tphvaylcx" path="res://src/Scenes/UI/CraftingStations/WeaponPreview.tscn" id="16_rabgv"]
+
+[sub_resource type="Animation" id="Animation_octel"]
+resource_name = "CraftingFlash"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Flash:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"upgrade_sword"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_08er8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Flash:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_08er8"]
+_data = {
+&"CraftingFlash": SubResource("Animation_octel"),
+&"RESET": SubResource("Animation_08er8")
+}
+
+[node name="CraftingMenu" type="Control" unique_id=517779629]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_88p6l")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1672008804]
+modulate = Color(0.38170326, 0.38170323, 0.38170323, 1)
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1081.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=1801202365]
+own_world_3d = true
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="SmithingStationBG" parent="SubViewportContainer/SubViewport" unique_id=531201827 instance=ExtResource("2_88p6l")]
+
+[node name="SfxPlayer" parent="." unique_id=510219631 instance=ExtResource("2_rabgv")]
+
+[node name="Background" type="TextureRect" parent="." unique_id=1078700021]
+self_modulate = Color(1, 1, 1, 0.96000004)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_3ulfr")
+
+[node name="SwordName" type="Label" parent="." unique_id=1527731069]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -122.0
+offset_top = 151.0
+offset_right = 117.0
+offset_bottom = 191.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("4_cswec")
+theme_override_font_sizes/font_size = 42
+text = "Sword Name"
+horizontal_alignment = 1
+
+[node name="Bag" type="Label" parent="." unique_id=1096702730]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -455.0
+offset_top = 63.0
+offset_right = -401.0
+offset_bottom = 93.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("4_cswec")
+theme_override_font_sizes/font_size = 32
+text = "BAG"
+horizontal_alignment = 1
+
+[node name="BagBG" type="TextureRect" parent="." unique_id=1466262370]
+layout_mode = 0
+offset_left = 123.0
+offset_top = 124.0
+offset_right = 548.0
+offset_bottom = 522.0
+texture = ExtResource("5_8hq8q")
+
+[node name="InventoryLabel" type="Label" parent="." unique_id=1619377982]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -830.0
+offset_top = 125.0
+offset_right = -735.0
+offset_bottom = 154.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("4_cswec")
+theme_override_font_sizes/font_size = 30
+text = "Drops"
+
+[node name="DropsBagButton" type="TextureButton" parent="." unique_id=1049398797]
+custom_minimum_size = Vector2(96, 46)
+layout_mode = 0
+offset_left = 95.0
+offset_top = 51.0
+offset_right = 191.0
+offset_bottom = 97.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("6_leimn")
+texture_pressed = ExtResource("7_s3qnk")
+texture_hover = ExtResource("8_uyagt")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="DropsBagButton" unique_id=1653404290]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -9.5
+offset_top = -5.0
+offset_right = 9.5
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("9_72cag")
+theme_override_font_sizes/font_size = 24
+text = "Drops"
+
+[node name="UseBagButton" type="TextureButton" parent="." unique_id=748398286]
+custom_minimum_size = Vector2(96, 46)
+layout_mode = 0
+offset_left = 197.0
+offset_top = 51.0
+offset_right = 293.0
+offset_bottom = 97.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("10_svgv0")
+texture_pressed = ExtResource("11_p8l1g")
+texture_hover = ExtResource("12_vxqx5")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="UseBagButton" unique_id=252146317]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.5
+offset_top = -5.0
+offset_right = 5.5
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("9_72cag")
+theme_override_font_sizes/font_size = 24
+text = "Use"
+
+[node name="Bank" type="Label" parent="." unique_id=107098035]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -829.0
+offset_top = 524.0
+offset_right = -746.0
+offset_bottom = 558.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("4_cswec")
+theme_override_font_sizes/font_size = 36
+text = "Bank"
+
+[node name="BankNotice" type="Label" parent="." unique_id=1164100428]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -801.5
+offset_top = 698.0
+offset_right = -463.5
+offset_bottom = 728.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("4_cswec")
+theme_override_font_sizes/font_size = 32
+text = "Bank Account Locked..."
+
+[node name="Panel2" type="Panel" parent="." unique_id=1466711699]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -730.0
+offset_top = -348.0
+offset_right = -237.0
+offset_bottom = 320.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Details" type="Label" parent="." unique_id=782268928]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 383.0
+offset_top = 157.0
+offset_right = 532.0
+offset_bottom = 187.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("4_cswec")
+theme_override_font_sizes/font_size = 32
+text = "Details"
+horizontal_alignment = 1
+
+[node name="Recipe" type="Label" parent="." unique_id=562852534]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 244.0
+offset_top = 474.0
+offset_right = 704.0
+offset_bottom = 503.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("4_cswec")
+theme_override_font_sizes/font_size = 28
+text = "Recipe"
+
+[node name="SwordDescription" type="RichTextLabel" parent="." unique_id=1976626916]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -725.0
+offset_top = -332.0
+offset_right = -233.0
+offset_bottom = -123.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/outline_size = 4
+theme_override_fonts/normal_font = ExtResource("13_ckoov")
+theme_override_font_sizes/normal_font_size = 24
+
+[node name="SwordStats" type="RichTextLabel" parent="." unique_id=1325837385]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -707.0
+offset_top = 167.0
+offset_right = -261.0
+offset_bottom = 298.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/outline_size = 4
+theme_override_fonts/normal_font = ExtResource("13_ckoov")
+theme_override_font_sizes/normal_font_size = 20
+
+[node name="IngredientsList" type="GridContainer" parent="." unique_id=96722626]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -713.0
+offset_top = -26.0
+offset_right = -545.0
+offset_bottom = 94.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/v_separation = 24
+
+[node name="SwordGraphic" type="TextureRect" parent="." unique_id=1382611568]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -186.0
+offset_top = -343.0
+offset_right = 188.0
+offset_bottom = 310.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("15_f5kk3")
+expand_mode = 1
+
+[node name="SwordViewer" type="SubViewportContainer" parent="." unique_id=646757369]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -185.0
+offset_top = -342.0
+offset_right = 186.0
+offset_bottom = 314.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="SwordViewer" unique_id=69959702]
+own_world_3d = true
+handle_input_locally = false
+size = Vector2i(376, 657)
+render_target_update_mode = 4
+
+[node name="WeaponPreviewer" parent="SwordViewer/SubViewport" unique_id=1167095521 instance=ExtResource("16_rabgv")]
+
+[node name="Button" type="Button" parent="." unique_id=1905573858]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -828.0
+offset_top = -206.0
+offset_right = -677.0
+offset_bottom = -145.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("13_ckoov")
+theme_override_font_sizes/font_size = 46
+text = "Craft!"
+
+[node name="InventoryContainer" type="GridContainer" parent="." unique_id=1061583504]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 171.0
+offset_top = -386.0
+offset_right = 475.0
+offset_bottom = -30.0
+grow_vertical = 2
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 10
+columns = 4
+
+[node name="Slot" parent="InventoryContainer" unique_id=625281494 instance=ExtResource("16_dx0t1")]
+layout_mode = 2
+
+[node name="Slot2" parent="InventoryContainer" unique_id=494160612 instance=ExtResource("16_dx0t1")]
+layout_mode = 2
+
+[node name="Slot3" parent="InventoryContainer" unique_id=867797939 instance=ExtResource("16_dx0t1")]
+layout_mode = 2
+
+[node name="Slot4" parent="InventoryContainer" unique_id=2034137915 instance=ExtResource("16_dx0t1")]
+layout_mode = 2
+
+[node name="Slot5" parent="InventoryContainer" unique_id=347644668 instance=ExtResource("16_dx0t1")]
+layout_mode = 2
+
+[node name="Slot6" parent="InventoryContainer" unique_id=1205733163 instance=ExtResource("16_dx0t1")]
+layout_mode = 2
+
+[node name="Slot7" parent="InventoryContainer" unique_id=1723780674 instance=ExtResource("16_dx0t1")]
+layout_mode = 2
+
+[node name="Slot8" parent="InventoryContainer" unique_id=278189995 instance=ExtResource("16_dx0t1")]
+layout_mode = 2
+
+[node name="Slot9" parent="InventoryContainer" unique_id=438309233 instance=ExtResource("16_dx0t1")]
+layout_mode = 2
+
+[node name="Slot10" parent="InventoryContainer" unique_id=559496197 instance=ExtResource("16_dx0t1")]
+layout_mode = 2
+
+[node name="Slot11" parent="InventoryContainer" unique_id=2055577972 instance=ExtResource("16_dx0t1")]
+layout_mode = 2
+
+[node name="Slot12" parent="InventoryContainer" unique_id=549105592 instance=ExtResource("16_dx0t1")]
+layout_mode = 2
+
+[node name="BankContainer" type="GridContainer" parent="." unique_id=319526813]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 180.0
+offset_top = 32.0
+offset_right = 481.0
+offset_bottom = 375.0
+grow_vertical = 2
+columns = 4
+
+[node name="Flash" type="ColorRect" parent="." unique_id=1179529704]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=805724738]
+libraries/ = SubResource("AnimationLibrary_08er8")
+
+[node name="Close" type="Button" parent="." unique_id=694580689]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -138.0
+offset_top = 38.0
+offset_right = -54.0
+offset_bottom = 83.0
+grow_horizontal = 0
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("4_cswec")
+theme_override_font_sizes/font_size = 38
+text = "Exit"
+
+[connection signal="button_up" from="DropsBagButton" to="." method="_on_drops_bag_button_button_up"]
+[connection signal="button_up" from="UseBagButton" to="." method="_on_use_bag_button_button_up"]
+[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
+[connection signal="button_up" from="Close" to="." method="_on_close_button_up"]

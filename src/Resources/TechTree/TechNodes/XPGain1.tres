@@ -3,20 +3,17 @@
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_6dtt2"]
 [ext_resource type="Texture2D" uid="uid://jyb2a5ayc1yt" path="res://Assets/TechTree/CombatNodes/XPUp_Node_Disabled_Graphic.png" id="1_vs0j0"]
 [ext_resource type="Texture2D" uid="uid://b6e7to3exxpih" path="res://Assets/TechTree/CombatNodes/XPUp_Node_Graphic.png" id="2_wpgbq"]
-[ext_resource type="Resource" uid="uid://d0wo8tvdfk8j1" path="res://src/Resources/Dishes/HuntersStew.tres" id="3_wpgbq"]
 
 [resource]
 script = ExtResource("1_6dtt2")
 node_name = "XP Gain 1"
 icon = ExtResource("2_wpgbq")
 disabled_icon = ExtResource("1_vs0j0")
-description = "Increases Bonus XP Acquired for each kill."
-max_level = 5
-currency_required = 1000
-materials_required = Array[Dictionary]([{
-ExtResource("3_wpgbq"): 1
-}])
+description = "Increase bonus XP acquired from each kill."
+max_level = 3
+currency_required = 10000
+price_scaler = 1.4
 stat_name = "Bonus XP"
-upgrade_interval = 25.0
-prereqs = Array[String](["Attack 3:1"])
+upgrade_interval = 10.0
+prereqs = Array[String](["Gem Stone Station:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

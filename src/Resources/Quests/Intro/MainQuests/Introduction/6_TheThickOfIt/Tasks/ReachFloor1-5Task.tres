@@ -6,4 +6,5 @@
 script = ExtResource("1_7wtxd")
 map_name = "Floor 1-5"
 task_id = 40
+parent_quest = "The Thick of It"
 metadata/_custom_type_script = "uid://jcmtcld3k3ka"

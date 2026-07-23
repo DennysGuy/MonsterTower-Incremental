@@ -15,4 +15,4 @@ func player_tech_tree_intro() -> void:
 	await get_tree().create_timer(0.15).timeout
 	for node in get_tree().get_nodes_in_group("TechNodes"):
 		await node.show_node()
-		await get_tree().create_timer(0.12).timeout
+		await get_tree().create_timer(0.05).timeout

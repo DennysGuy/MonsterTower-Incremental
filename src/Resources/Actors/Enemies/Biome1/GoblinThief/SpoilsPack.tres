@@ -6,9 +6,9 @@
 [resource]
 script = ExtResource("1_h6udw")
 drop_icon = ExtResource("1_p5odj")
-drop_chance = 0.8
+drop_chance = 0.68
 item_name = "Spoils Bag"
-sell_value = 175
+sell_value = 77
 shop_icon = ExtResource("1_p5odj")
 description = "A Goblin Thief's Bag. What could be inside?"
 metadata/_custom_type_script = "uid://cubudt76pshmm"

@@ -20,18 +20,23 @@ var in_check_point_area : bool = false
 @onready var final_key_alter: BossKeyAlter = $BossKeyAlter
 
 @onready var top_position: Marker2D = $TopPosition
-const TEST_DUNGEON_CHALLENGE_THEME = preload("uid://bmdcmdm835j2s")
+
+const DOOR_CHALLENGE_THEME_2 = preload("uid://dlop7xqoavdul")
+
 
 var keys_delivered : int = 0
 @onready var enter_door_notice: Label = $EnterDoorNotice
 
+var in_cutscene : bool = false
+
+const CHALLENGE_COMPLETED_JINGLE = preload("uid://cjtvioifwy20x")
 
 @onready var activation_switch: ChallengeActivationSwitch = $ActivationSwitch
 const CRAFTING_NOTIFICATION = preload("uid://wyjbs57smen4")
 const DENIED = preload("uid://672acnsycbfo")
 const RETRO_MAGIC_11 = preload("uid://cu0pel7wloamp")
 const RETRO_SWOOOSH_16 = preload("uid://dtrupd03y6qf7")
-const TEMP_VICTORY_THEME_1 = preload("uid://n4ky26neitxn")
+
 var lever_order : Array[String] = ["Yellow", "Green", "Red", "Blue"]
 var current_set_order : Array[String] = []
 # Called when the node enters the scene tree for the first time.
@@ -41,8 +46,9 @@ func _ready() -> void:
 	#checkpoint_campfire.play("default")
 	tower_entrance_data.activation_switch_unlocked = SaveManager.current_save_game.tower_entrance_data["Floor 1-6"]["Activation Switch Unlocked"]
 	MusicPlayer.stop_player()
-	PlayerHudSignalBus.update_player_health.emit()
-	PlayerHudSignalBus.update_player_mp.emit()
+	ExpeditionTimer.stop_timer()
+	#PlayerHudSignalBus.update_player_health.emit()
+	#PlayerHudSignalBus.update_player_mp.emit()
 	SignalBus.unlock_boss_door.connect(unlock_door)
 	SignalBus.start_boss_door_challenge_scene.connect(start_challenge)
 	SignalBus.increment_keys_delivered_tracker.connect(increment_key_tracker)
@@ -59,7 +65,7 @@ func _ready() -> void:
 	
 	await get_tree().process_frame
 	
-	QuestManager.check_map_name.emit(map_name)
+	QuestManager.check_map_name.emit(tower_entrance_data.floor_name)
 	unlock_quests()
 	PlayerHudSignalBus.update_map_name_label.emit(map_name)
 
@@ -81,25 +87,25 @@ func _on_checkpoint_area_body_exited(body: Node2D) -> void:
 
 
 func unlock_door() -> void:
-	play_sfx(TEMP_VICTORY_THEME_1)
+	play_sfx(CHALLENGE_COMPLETED_JINGLE,0.0)
 	player.send_to_idle_state()
 	GameManager.player_can_move = false
 	await get_tree().create_timer(3.0).timeout
-	play_sfx(RETRO_SWOOOSH_16)
+	play_sfx(RETRO_SWOOOSH_16,0.0)
 	diamond_key_lock.queue_free()
 	await get_tree().create_timer(0.5).timeout
-	play_sfx(RETRO_SWOOOSH_16)
+	play_sfx(RETRO_SWOOOSH_16,0.0)
 	card_key_lock.queue_free()
 	await get_tree().create_timer(0.5).timeout
-	play_sfx(RETRO_SWOOOSH_16)
+	play_sfx(RETRO_SWOOOSH_16,0.0)
 	final_key_lock.queue_free()
 	await get_tree().create_timer(2.0).timeout
+	QuestManager.check_general_task_for_completion.emit("Unlock Boss Door")
 	boss_door.play_door_open_animation()
 	SignalBus.shake_camera.emit(5.0)
 	await get_tree().create_timer(3.0).timeout
 	PlayerHudSignalBus.issue_big_notification.emit("The Boss Door Has been Unlocked!")
 	await get_tree().create_timer(3.0).timeout
-	QuestManager.check_general_task_for_completion.emit("Unlock Boss Door")
 	GameManager.player_can_move = true
 
 func start_challenge() -> void:
@@ -111,20 +117,21 @@ func start_challenge() -> void:
 	camera.player = null
 	camera.position = diamond_key_position.position
 	await get_tree().create_timer(1.0).timeout
-	play_sfx(RETRO_MAGIC_11)
+	play_sfx(RETRO_MAGIC_11,0.0)
 	diamond_key_alter.unveil_alter()
 	await get_tree().create_timer(1.0).timeout
 	camera.position = card_key_position.position
 	await get_tree().create_timer(1.0).timeout
-	play_sfx(RETRO_MAGIC_11)
+	play_sfx(RETRO_MAGIC_11,0.0)
 	card_key_alter.unveil_alter()
 	await get_tree().create_timer(1.0).timeout
 	camera.position = top_position.position
 	await get_tree().create_timer(1.0).timeout
-	MusicPlayer.play_song(TEST_DUNGEON_CHALLENGE_THEME)
+	
 	PlayerHudSignalBus.issue_big_notification.emit("Unlock the Door!")
 	SignalBus.spawn_enemies.emit()
 	SignalBus.start_enemy_spawn.emit()
+	MusicPlayer.play_song(DOOR_CHALLENGE_THEME_2)
 	await get_tree().create_timer(2.0).timeout
 	camera.player = player
 	await get_tree().create_timer(1.0).timeout
@@ -133,6 +140,7 @@ func start_challenge() -> void:
 	PlayerHudSignalBus.load_timer_label.emit()
 	PlayerHudSignalBus.issue_big_notification.emit("Ready?!")
 	await get_tree().create_timer(2.0).timeout
+	
 	PlayerHudSignalBus.issue_big_notification.emit("Go!")
 	
 	GameManager.player_can_move = true
@@ -153,7 +161,7 @@ func check_current_set_order() -> void:
 	await get_tree().create_timer(1.0).timeout
 	
 	if current_set_order == lever_order:
-		play_sfx(CRAFTING_NOTIFICATION)
+		play_sfx(CRAFTING_NOTIFICATION,0.0)
 		show_activation_lever()
 	else:
 		current_set_order.clear()
@@ -174,7 +182,7 @@ func show_final_key_location() -> void:
 	await get_tree().create_timer(2.0).timeout
 	camera.position = final_key_position.position
 	await get_tree().create_timer(2.0).timeout
-	play_sfx(RETRO_MAGIC_11)
+	play_sfx(RETRO_MAGIC_11,0.0)
 	final_key_alter.unveil_alter()
 	await get_tree().create_timer(1.0).timeout
 	camera.player = player
@@ -191,7 +199,7 @@ func show_activation_lever() -> void:
 	camera.player = null
 	camera.position = activation_switch_position.position
 	await get_tree().create_timer(2.0).timeout
-	play_sfx(RETRO_MAGIC_11)
+	play_sfx(RETRO_MAGIC_11,0.0)
 	activation_switch.show()
 	await get_tree().create_timer(2.0).timeout
 	QuestManager.check_general_task_for_completion.emit("Find the Door Switch")

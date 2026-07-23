@@ -14,6 +14,8 @@ class_name JobBoardMenu extends Control
 
 @export var stored_quest_data : Quest
 
+const JOB_BOARD_INTRO_SCENE = preload("uid://d2dt4jjtg5jil")
+
 const JOB_TURN_IN = preload("uid://crytbgxiowkp4")
 const JOB_ACCEPT_JINGLE = preload("uid://dinxl1rs2y55v")
 
@@ -28,6 +30,8 @@ func _ready() -> void:
 	GameManager.new_jobs_available = false
 	clear_description_panel()
 	initialize_available_jobs()
+	if SaveManager.get_floor_count("Floor 1-3") == 1 and QuestManager.active_quests["Job"].size() == 0:
+		Dialogic.start(JOB_BOARD_INTRO_SCENE)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -63,13 +67,17 @@ func clear_description_panel() -> void:
 	accept_quest_button.hide()
 
 func close_out() -> void:
-	GameManager.player_can_move = true
-	GameManager.can_open_bag = true
-	GameManager.can_open_tower_map = true
-	GameManager.can_pause_game = true
+	CutsceneManager.enable_player_functionality()
 	
-	SignalBus.hide_tech_tree_canvas_layer.emit()
 	QuestManager.initialize_job_quests.emit()
+	if QuestManager.check_for_available_job():
+		HubManager.show_facility_notification.emit("Job Requests Board")
+	else:
+		HubManager.hide_facility_notification.emit("Job Requests Board")
+	
+	PlayerHudSignalBus.hub_menu_exited.emit()
+	await get_tree().create_timer(0.3).timeout
+	SignalBus.hide_tech_tree_canvas_layer.emit()
 	queue_free()
 
 func update_jobs_accepted_count_label() -> void:
@@ -150,6 +158,8 @@ func abandon_quest() -> void:
 		
 		initialize_available_jobs()
 	update_jobs_accepted_count_label()
+	if QuestManager.active_quests["Job"].size() > 0:
+		HubManager.hide_facility_notification.emit("Job Requests Board")
 
 func accept_quest() -> void:
 	#add quest to active quest
@@ -171,7 +181,7 @@ func turn_in_quest() -> void:
 	#We need to fix this so that it properly levels up character
 	PlayerStats.player_stats["Current XP"] += stored_quest_data.xp_reward
 	LevelingManager.check_for_level_up()
-	QuestManager.check_general_task_for_completion.emit("Turn In Job Request")
+	QuestManager.check_general_task_for_completion.emit("Turn In a Job Request")
 	TechTreeManager.currency += stored_quest_data.currency_reward
 	SaveManager.save_tech_tree_data()
 	add_item_rewards_to_inventory()
@@ -183,9 +193,10 @@ func turn_in_quest() -> void:
 	QuestManager.initialize_job_quests.emit()
 	SaveManager.save_game()
 	play_sfx(JOB_TURN_IN)
-
-func populate_item_rewards_container(quest : Quest) -> void:
+	if QuestManager.active_quests["Job"].size() > 0:
+		HubManager.hide_facility_notification.emit("Job Requests Board")
 	
+func populate_item_rewards_container(quest : Quest) -> void:
 	InventoryManager.clear_grid_container(item_rewards_container)
 	if quest.item_reward.size() <= 0:
 		return

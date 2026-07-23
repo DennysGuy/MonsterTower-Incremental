@@ -23,8 +23,22 @@ var room_speed_bonus : float = 1.0
 var new_jobs_available : bool = false
 var license_promotion_time : bool = false
 var in_last_breadth_mode : bool = false
+var can_sprint : bool = false
 var remaining_bolt_chain_links : int = 0
 var event_multiplier : float = 1.0
+
+var first_class_just_unlocked : bool = false
+var first_quest_just_unlocked : bool = false
+var floor_2_just_reached : bool = false
+var floor_4_just_reached : bool = false
+var floor_6_just_reached : bool = false
+var boss_room_just_reached : bool = false
+var market_intro_cutscene_played : bool = false
+var can_open_scene : bool = true
+var job_selection_notice_scene_played : bool = false
+var monster_voices_toggled : bool = true
+var current_player_health : int = 0
+var current_player_mp : int = 0
 enum NOTIFICATION_TYPE {CRAFTING, COOKING, SMELTING, AP, QUEST}
 
 # Called when the node enters the scene tree for the first time.
@@ -34,7 +48,16 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if Input.is_action_just_pressed("screenshot"):
+		print("Screenshot Taken!")
+		take_screenshot()
+
+
+func take_screenshot(image_name : String = "screenshot") -> void:
+	var img = get_viewport().get_texture().get_image()
+	var base_path = "user://"
+	var final_path = base_path + image_name + ".png"
+	img.save_png(final_path)
 
 func set_player_box_direction(flip_h : bool):
 	if (flip_h):
@@ -42,7 +65,7 @@ func set_player_box_direction(flip_h : bool):
 	else:
 		return 1
 
-func attack_enemies(enemies_in_hitbox : Array, enemies_hit : int = 1, number_of_hits : int = 1, player : Player = null, incoming_damage : int = 0, is_crit : bool = false, is_warrior : bool = false, rep_delay : float = 0.1, ability : Ability = null) -> void:
+func attack_enemies(enemies_in_hitbox : Array, enemies_hit : int = 1, number_of_hits : int = 1, player : Player = null, incoming_damage : int = 0, is_crit : bool = false, is_warrior : bool = false, rep_delay : float = 0.1, ability : Ability = null, hit_freeze : float = 0.0) -> void:
 	var targets = calculate_targets(enemies_in_hitbox, player, enemies_hit)
 	for enemy in targets:
 		if is_instance_valid(enemy):
@@ -63,11 +86,13 @@ func attack_enemies(enemies_in_hitbox : Array, enemies_hit : int = 1, number_of_
 			var label_position : int = 60
 			while i < attack_reps:
 				#enemy.sfx_player.play()
-				attack_enemy(player, enemy, damage, is_crit, 0, is_warrior, label_position, ability)
+				if is_inside_tree() and  is_instance_valid(enemy) and is_instance_valid(player):
+		
+					attack_enemy(player, enemy, damage, is_crit, 0, is_warrior, label_position, ability)
 
-				i += 1
-				label_position += 25
-				await player.get_tree().create_timer(0.1).timeout
+					i += 1
+					label_position += 25
+					await player.get_tree().create_timer(0.07).timeout
 			
 			if is_instance_valid(enemy) and enemy.health <= 0:
 				enemies_in_hitbox.erase(enemy)
@@ -79,6 +104,7 @@ func attack_enemy(player : Player, enemy : Enemy, incoming_damage : int, is_crit
 		enemy.increment_break_count()
 	
 	if can_siphen():
+		print("I CAN SIPHEN!")
 		siphen_hp(incoming_damage)
 	
 	if ability:
@@ -90,21 +116,28 @@ func attack_enemy(player : Player, enemy : Enemy, incoming_damage : int, is_crit
 			ability.ATTACK_TYPE.SILENCE:
 				enemy.apply_silenced_and_damage(incoming_damage, ability.stun_wait_time, is_crit)
 		return
+	if enemy != Player:
+		enemy.knock_back_wait_time = PlayerStats.get_current_sword().knock_back_bonus
 	enemy.apply_damage(incoming_damage, is_crit, label_position)
 	#might need to break here so we don't collide with the function below
 
 func can_siphen() -> bool:
 	var chance : int = int(PlayerStats.player_stats["HP Siphen Chance"]*100)
+	print(chance)
 	var rand_num : int = randi_range(0,100)
-	if chance <= rand_num:
+	if rand_num <= chance:
 		return true
 	return false
 
 func siphen_hp(amount : int) -> void:
-	var siphened_amount : int = int(amount * PlayerStats.player_stats["HP Siphen Amount"])
-	PlayerStats.player_stats["Current Health"] += siphened_amount
-	if PlayerStats.player_stats["Current Health"] >= PlayerStats.player_stats["Max Health"]:
-		PlayerStats.player_stats["Current Health"] = PlayerStats.player_stats["Max Health"]
+	#add heal label
+	var siphened_amount : int = int(PlayerStats.player_stats["Max Health"] * PlayerStats.player_stats["HP Siphen Amount"])
+	print(PlayerStats.player_stats["HP Siphen Amount"])
+	print("This is the amount siphened: %s" % siphened_amount) 
+	GameManager.current_player_health += siphened_amount
+	var total_max_hp : int = (PlayerStats.player_stats["Max Health"]+PlayerStats.get_current_sword().get_total_hp_bonus())
+	if GameManager.current_player_health >= total_max_hp:
+		GameManager.current_player_health = total_max_hp
 	PlayerHudSignalBus.update_player_health.emit() 
 
 func calculate_targets(enemies_in_hitbox : Array, player : Player, number_of_hits : int) -> Array[Entity]:
@@ -144,9 +177,14 @@ func set_direction(dir : float):
 	else:
 		return 1
 
+func enable_enemy_movement() -> void:
+	enemies_can_move = true
+
+func disable_enemy_movement() -> void:
+	enemies_can_move = false
 
 func can_unlock_class() -> bool:
-	return PlayerStats.player_stats["Level"] >= 8 and PlayerStats.facilities_unlocked["Arial Slash"] and PlayerStats.facilities_unlocked["Dash Attack"] and PlayerStats.facilities_unlocked["Double Jump"] and PlayerStats.player_stats["Class"] == "Junior Hunter"
+	return PlayerStats.player_stats["Level"] >= 8 and PlayerStats.facilities_unlocked["Arial Slash"] and PlayerStats.facilities_unlocked["Dash"] and PlayerStats.facilities_unlocked["Double Jump"] and PlayerStats.player_stats["Class"] == "Junior Hunter"
 
 func check_if_dodged() -> bool:
 	var chance : int = int(PlayerStats.player_stats["Dodge Chance"] * 100)
@@ -155,3 +193,21 @@ func check_if_dodged() -> bool:
 		return true
 	
 	return false
+
+func get_control_mapping(action : String,len : int = 1) -> String:
+	var events = InputMap.action_get_events(action)
+	var key = events[0]
+	var mapping : String = key.as_text()
+	mapping = mapping.substr(0,len)
+	return mapping
+
+
+func play_sfx(sound: AudioStream, volume: float = 0.0, pitch_scale : float = 1.0):
+	var player := AudioStreamPlayer.new()
+	player.stream = sound
+	player.volume_db = volume
+	player.bus = &"SFX"
+	player.pitch_scale = pitch_scale
+	add_child(player)
+	player.play()
+	player.finished.connect(player.queue_free)

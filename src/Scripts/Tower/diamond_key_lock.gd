@@ -34,5 +34,6 @@ func _on_enable_zone_area_entered(area: Area2D) -> void:
 	if parent is BossDoorKey and !parent.can_pick_up:
 		play_sfx(MOUNT_ABILITY)
 		set_lock_filled()
+		SignalBus.set_combat_ability_icon_enabled.emit()
 		SignalBus.increment_keys_delivered_tracker.emit()
 		parent.queue_free()

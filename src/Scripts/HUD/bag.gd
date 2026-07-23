@@ -54,7 +54,7 @@ const GEM_BAG_OPEN = preload("uid://c6mxc46l80hvc")
 const ORE_BAG_OPEN = preload("uid://b0prhy0pm7hwp")
 const USE_BAG_OPEN = preload("uid://caumwm7nf3s0t")
 const BUTTON_HOVER = preload("uid://dj4lg3rglma0j")
-const DROP = preload("uid://bli85jj3lnefb")
+
 const DROP_ITEM = preload("uid://b1l5d27bgd6wb")
 @onready var discard: TextureButton = $BagBG/Discard
 
@@ -62,6 +62,9 @@ const DENIED = preload("uid://672acnsycbfo")
 
 var bank_showing : bool = false
 @onready var to_bank: TextureButton = $BagBG/ToBank
+
+@onready var close_button: Button = $BagBG/CloseButton
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -78,7 +81,7 @@ func _process(delta: float) -> void:
 func init_bag() -> void:
 	update_bag()
 	item_icon.texture = null
-	gold_count.text = "Gold: %s" % TechTreeManager.currency
+	gold_count.text = "Spirols: %s" % TechTreeManager.currency
 	update_grid_container("Inventory")
 	clear_description_items()
 
@@ -157,10 +160,6 @@ func init_tabs() -> void:
 	
 	update_tab_label(novelty_tab_label,"Drops", "Inventory")
 	
-	if PlayerStats.facilities_unlocked["Cooking Station"]:
-		use_tab.show()
-		update_tab_label(use_tab_label,"Use", "Use")
-	
 	if PlayerStats.facilities_unlocked["Refinery Station"]:
 		ore.show()
 		update_tab_label(ore_tab_label,"Ore", "Ore")
@@ -182,7 +181,7 @@ func update_tab_label(tab_label : Label, tab_name : String, selected_inventory_n
 	tab_label.text = tab_name + " %s/%s" % [inventory_current_size,max_slot]
 
 func update_bag() -> void:
-	gold_count.text = "Gold: %s" % TechTreeManager.currency
+	gold_count.text = "Spirols: %s" % TechTreeManager.currency
 	if InventoryManager.check_if_bank_full():
 		to_bank.disabled = true
 	init_tabs()
@@ -285,6 +284,7 @@ func update_bank_container() -> void:
 	for num in range(PlayerStats.player_stats["Max Bank Slots"]):
 		var slot : ItemSlot = preload("uid://d0s6j8mvikv8c").instantiate()
 		slot.set_as_bank_slot()
+		slot.set_locale_as_bank()
 		var potential_item
 		if num < InventoryManager.inventories["Bank"].size():
 			potential_item = InventoryManager.inventories["Bank"][num]
@@ -336,3 +336,6 @@ func _on_to_bank_button_up() -> void:
 	if InventoryManager.check_if_bank_full():
 		to_bank.disabled = true
 	update_bank_container()
+
+func _on_button_button_up() -> void:
+	PlayerHudSignalBus.bag_closed.emit()

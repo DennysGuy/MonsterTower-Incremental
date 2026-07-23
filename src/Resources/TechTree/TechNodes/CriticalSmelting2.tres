@@ -10,13 +10,12 @@ script = ExtResource("1_eq60b")
 node_name = "Critical Smelting 2"
 icon = ExtResource("2_3tryd")
 disabled_icon = ExtResource("1_s88wf")
-description = "Increases chance to double item output when smelting."
-currency_required = 1400
+description = "Increases chance to double refined bar output when smelting by 5% per level."
 materials_required = Array[Dictionary]([{
 ExtResource("3_3tryd"): 2
 }])
 stat_relation = 5
 stat_name = "Critical Smelting Chance"
 upgrade_interval = 0.05
-prereqs = Array[String](["Mining Bolt Chance 1:1"])
+prereqs = Array[String](["Critical Smelting 1:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

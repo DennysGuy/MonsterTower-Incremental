@@ -5,12 +5,14 @@ class_name CampFireCheckPoint extends Node2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var exit_notification: Label = $ExitNotification
 
+
 @export var unlocked : bool = false
 var just_unlocked : bool = false
 
 @export var campfire: Sprite2D
 
 var player_in_range : bool = false
+const DISCOVER_CAMP_FIRE = preload("uid://dlchhonlmn056")
 
 func _ready() -> void:
 	if GameManager.hunt_challenge_selected:
@@ -32,7 +34,10 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		entrance_data.camp_fires_reached += 1
 		animation_player.play("On")
 		HitStopManager.freeze()
-		SignalBus.update_monsters_left.emit("Campfires Discovered %s/%s" % [entrance_data.camp_fires_reached, entrance_data.total_camp_fires], false)
+		GameManager.play_sfx(DISCOVER_CAMP_FIRE)
+		CodexManager.send_codex_notification.emit("Campfire Reached!")
+		PlayerHudSignalBus.flash_screen.emit()
+		SignalBus.update_monsters_left.emit("Campfires Discovered %s/%s" % [entrance_data.camp_fires_reached, entrance_data.total_camp_fires])
 		if entrance_data.camp_fires_reached >= entrance_data.total_camp_fires:
 			entrance_data.hunt_challenge_unlocked = true
 			SignalBus.update_kill_quota_text.emit("", entrance_data.hunt_challenge_completed, entrance_data.hunt_challenge_unlocked)
@@ -47,14 +52,12 @@ func save_floor_data() -> void:
 	saved_data[entrance_data.floor_name]["Campfires Reached"] = entrance_data.camp_fires_reached
 	saved_data[entrance_data.floor_name]["Hunt Challenge Unlocked"] = entrance_data.hunt_challenge_unlocked
 	SaveManager.save_game()
-		
-
 
 func _on_exit_area_body_entered(body: Node2D) -> void:
 	if body is Player:
+		exit_notification.text = "Press %s to exit tower" % GameManager.get_control_mapping("interact")
 		exit_notification.show()
 		player_in_range = true
-
 
 func _on_exit_area_body_exited(body: Node2D) -> void:
 	if body is Player:

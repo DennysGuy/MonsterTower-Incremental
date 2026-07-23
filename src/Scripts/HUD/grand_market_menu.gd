@@ -28,6 +28,8 @@ const ITEM_SLOT_NOVELTY = preload("uid://x2hshpeeawjm")
 
 @onready var inventory_label: Label = $InventoryLabel
 
+@onready var sell_slot_button: Button = $DetailsPanel/SellSlotButton
+
 @onready var novelties_tab: TextureButton = $HBoxContainer/NoveltiesTab
 @onready var crafting_tab: TextureButton = $HBoxContainer/CraftingTab
 @onready var cooking_tab: TextureButton = $HBoxContainer/CookingTab
@@ -57,7 +59,7 @@ const GRAND_MARKET_MENU_USE_BG = preload("uid://chxbefqvlxayh")
 func _ready() -> void:
 	InventoryManager.populate_market_menu.connect(populate_details_panel)
 	InventoryManager.reset_stored_slot_index.connect(reset_stored_slot_index)
-	GameManager.can_pause_game = false
+	CutsceneManager.disable_player_functionality()
 	QuestManager.check_facility_name.emit("Grand Market")
 	init_market()
 
@@ -100,43 +102,48 @@ func _on_sell_button_button_up() -> void:
 			InventoryManager.update_grid_container(inventory_container, selected_inventory)
 				
 		SaveManager.save_tech_tree_data()		
-		currency.text = "Currency: %s" % [TechTreeManager.currency]
+		currency.text = "Spirols: %s" % [TechTreeManager.currency]
 		TechTreeManager.update_currency_label.emit()
 		if stored_slot_index == -1:
 			clear_details()
 	else:
 		clear_details()
+		
+	HubManager.check_for_node_purchase.emit()
 	
 func clear_details() -> void:
 	selected_item = null
 	item_icon.texture = null
-	item_title.text = "Selected an Item"
+	item_title.text = "Select an Item"
 	description.text = ""
 	value.text = "N/A"
 	indicator.texture = null
 
 func reset_stored_slot_index() -> void:
 	stored_slot_index = -1
+	#clear_details()
 
 func _on_close_button_up() -> void:
 	close_out()
 
 func close_out() -> void:
-	GameManager.player_can_move = true
-	GameManager.can_pause_game = true
-	GameManager.can_open_bag = true
-	GameManager.can_open_tower_map = true
+	
 	CookingManager.can_craft_bar.emit()
 	CookingManager.can_craft_dish.emit()
+	
+	PlayerHudSignalBus.hub_menu_exited.emit()
+	HubManager.check_for_node_purchase.emit()
+	await get_tree().create_timer(0.3).timeout
 	SignalBus.hide_tech_tree_canvas_layer.emit()
-	queue_free()	
+	CutsceneManager.enable_player_functionality()
+	queue_free()
 
 func init_market() -> void:
 	clear_details()
 	init_tabs()
 	selected_inventory = "Inventory"
 	inventory_label.text = selected_inventory
-	currency.text = "Currency: %s" % [TechTreeManager.currency]
+	currency.text = "Spirols: %s" % [TechTreeManager.currency]
 	InventoryManager.update_grid_container(inventory_container, selected_inventory)
 
 
@@ -146,7 +153,7 @@ func init_market() -> void:
 		bank_notice.show()
 
 func init_tabs() -> void:
-	if PlayerStats.facilities_unlocked["Cooking Station"]:
+	if PlayerStats.facilities_unlocked["Junk-A-Tron"]:
 		use_tab.show()
 	
 	if PlayerStats.facilities_unlocked["Gem Stone Station"]:
@@ -172,6 +179,26 @@ func sell_all_items(container : GridContainer, inventory_name : String) -> void:
 				await get_tree().create_timer(0.1).timeout
 	
 	enable_tabs_and_buttons()
+	HubManager.check_for_node_purchase.emit()
+
+func sell_slot(container : GridContainer) -> void:
+	var inventory : Array = InventoryManager.inventories[selected_inventory]
+	if inventory.is_empty():
+		return
+		
+	var slot = inventory[stored_slot_index]
+	var starting_quantity : int = slot["quantity"]
+	for i in starting_quantity:
+		InventoryManager.remove_item(selected_inventory, slot["item"])
+		TechTreeManager.currency += slot["item"].sell_value
+		TechTreeManager.update_currency_label.emit()
+		InventoryManager.update_grid_container(container, selected_inventory)
+		currency.text = "Currency: %s" % [TechTreeManager.currency]
+		sfx_player.play_sfx(SELL_ITEM)
+		SaveManager.save_tech_tree_data()
+		await get_tree().create_timer(0.1).timeout
+	
+	clear_details()
 
 func _on_sell_novelties_button_2_button_up() -> void:
 	sell_all_items(bank_container, "Bank")
@@ -191,7 +218,6 @@ func disable_tabs_and_buttons() -> void:
 	sell_tab_button.disabled = true
 	sell_bank_button.disabled = true
 	
-
 func _on_novelties_tab_button_up() -> void:
 	selected_inventory = "Inventory"
 	inventory_label.text = "Drops"
@@ -215,3 +241,17 @@ func _on_use_tab_button_up() -> void:
 	inventory_bg.texture = GRAND_MARKET_MENU_USE_BG
 	inventory_label.text = selected_inventory
 	InventoryManager.update_grid_container(inventory_container, selected_inventory)
+
+
+func _on_sell_slot_button_button_up() -> void:
+	if !selected_item:
+		return
+	match selected_inventory:
+		"Bank":
+			sell_slot(bank_container)
+		_:
+			sell_slot(inventory_container)
+
+
+func _on_sell_tab_button_button_up() -> void:
+	pass # Replace with function body.

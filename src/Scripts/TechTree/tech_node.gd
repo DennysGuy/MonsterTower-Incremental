@@ -1,7 +1,7 @@
 class_name TechNode extends Control
 
 @export var tech_node_stats : TechNodeStats
-@export var previous_node : TechNode
+@export var previous_nodes : Array[TechNode]
 
 @onready var bg: TextureRect = $BG
 @onready var icon: TextureRect = $Icon
@@ -52,8 +52,8 @@ var total_bonus : float = 0.0
 
 var stored_node_description_box : NodeDescriptionBox
 
-
-
+var current_cost : int = 0
+var resource_cost : int = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	match tech_node_stats.stat_relation:
@@ -85,10 +85,17 @@ func _ready() -> void:
 	
 	if not TechTreeManager.check_node_prereqs.is_connected(check_prereqs):
 		TechTreeManager.check_node_prereqs.connect(check_prereqs)
-
+	
+	SignalBus.novelty_invention_sold.connect(check_if_can_purchase)
 	TechTreeManager.check_if_can_purchase_node.connect(check_if_can_purchase)
 	TechTreeManager.save_node_data.connect(save_node_data)
 	set_level_label()
+	
+
+	
+	if tech_node_stats.get_cost() > 0:
+		current_cost = tech_node_stats.get_cost()
+	
 	if tech_node_stats.unlocked:
 		#show()
 		if GameManager.license_promotion_time:
@@ -101,9 +108,7 @@ func _ready() -> void:
 					set_graphic_as_purchased()
 				else:
 					set_graphic_as_disabled()
-	#else:
-		#hide()
-		
+
 	icon.texture = tech_node_stats.icon
 
 	node_type = tech_node_stats.node_type
@@ -130,8 +135,7 @@ func save_node_data() -> void:
 		SaveManager.save_game()
 
 func deduct_currency() -> void:
-	TechTreeManager.currency -= tech_node_stats.currency_required
-	
+	TechTreeManager.currency -= current_cost
 	
 func deduct_ap() -> void:
 	PlayerStats.player_stats["Ability Points"] -= tech_node_stats.ap_required
@@ -158,7 +162,7 @@ func check_if_can_purchase() -> void:
 		
 func can_purchase() -> bool:
 	if tech_node_stats.node_type != TechTreeManager.TECH_NODE_TYPE.CLASS_ABILITY:
-		return TechTreeManager.currency >= tech_node_stats.currency_required and has_resource_quantity()
+		return TechTreeManager.currency >= tech_node_stats.get_cost() and has_resource_quantity()
 	else:
 		return PlayerStats.player_stats["Ability Points"] >= tech_node_stats.ap_required and has_resource_quantity()
 
@@ -184,9 +188,18 @@ func set_level_label() -> void:
 		level_label.text = "[color=yellow]Max[/color]"
 		return
 	if can_purchase():
-		level_label.text = "[color=green]%s/%s[/color]" % [tech_node_stats.current_level,tech_node_stats.max_level]
+		if if_ap_node():
+			level_label.text = "[color=green]%s/%s[/color]" % [tech_node_stats.current_level,tech_node_stats.ap_required]
+		else:
+			level_label.text = "[color=green]%s/%s[/color]" % [tech_node_stats.current_level,tech_node_stats.max_level]
 	else:
-		level_label.text = "[color=gray]%s/%s[/color]" % [tech_node_stats.current_level,tech_node_stats.max_level]
+		if if_ap_node():
+			level_label.text = "[color=gray]%s/%s[/color]" % [tech_node_stats.current_level,tech_node_stats.ap_required]
+		else:
+			level_label.text = "[color=gray]%s/%s[/color]" % [tech_node_stats.current_level,tech_node_stats.max_level]
+
+func if_ap_node() -> bool:
+	return tech_node_stats.ap_required >= 1
 
 func remove_tool_tip() -> void:
 	stored_node_description_box.close_out()
@@ -201,16 +214,17 @@ func create_tool_tip() -> void:
 	elif node_type == TechTreeManager.TECH_NODE_TYPE.CLASS_ABILITY:
 		tool_tip.current_benefits.text = "Ability"
 	else:
+		var true_total : float = PlayerStats.player_stats[tech_node_stats.stat_name]
 		if tech_node_stats.upgrade_interval > 0 and tech_node_stats.upgrade_interval < 1.0:	
 			if tech_node_stats.current_level < tech_node_stats.max_level:
-				tool_tip.current_benefits.text = str(total_bonus*100)+"% -> "+str(total_bonus*100+tech_node_stats.upgrade_interval*100)+"%"
+				tool_tip.current_benefits.text = str(int(true_total))+"% -> "+str(int(true_total+tech_node_stats.upgrade_interval*100))+"%"
 			else:
-				tool_tip.current_benefits.text = "+"+str(total_bonus*100)+"%"
+				tool_tip.current_benefits.text = "+"+str(int(tech_node_stats.upgrade_interval * tech_node_stats.max_level*100))+"%"
 		elif tech_node_stats.upgrade_interval >= 1.0:
 			if tech_node_stats.current_level < tech_node_stats.max_level:
-				tool_tip.current_benefits.text = "%s -> %s" % [int(total_bonus), int(total_bonus+tech_node_stats.upgrade_interval)]
+				tool_tip.current_benefits.text = "%s -> %s" % [int(true_total), int(true_total+tech_node_stats.upgrade_interval)]
 			else:
-				tool_tip.current_benefits.text = "+%s" %[int(total_bonus)]
+				tool_tip.current_benefits.text = "+%s" %[int(true_total)]
 	
 	#if tech_node_stats.current_level >= tech_node_stats.max_level:
 		#tool_tip.panel.color = Color(tool_tip.unlocked)
@@ -221,13 +235,17 @@ func create_tool_tip() -> void:
 			#tool_tip.panel.color = Color(tool_tip.locked)
 	if GameManager.license_promotion_time:
 		tool_tip.description.text = "Promote License to Continue."
+		tool_tip.show_license_promotion_notice()
 	else:
 		tool_tip.description.text = tech_node_stats.description
 	if node_type != TechTreeManager.TECH_NODE_TYPE.CLASS_ABILITY:
-		if TechTreeManager.currency >=  tech_node_stats.currency_required:
-			tool_tip.cost.text = "[color=green]Spirols: %s/%s[/color]" % [TechTreeManager.currency, tech_node_stats.currency_required]
+		if TechTreeManager.currency >=  tech_node_stats.get_cost():
+			tool_tip.cost.text = "[color=green]Spirols: %s/%s[/color]" % [TechTreeManager.currency, current_cost]
 		else:
-			tool_tip.cost.text = "Spirols: %s/%s" % [TechTreeManager.currency, tech_node_stats.currency_required]
+			tool_tip.cost.text = "Spirols: %s/%s" % [TechTreeManager.currency, current_cost]
+	
+		if tech_node_stats.get_cost() <= 0:
+			tool_tip.cost.text = ""
 	else:
 		if PlayerStats.player_stats["Ability Points"] >= tech_node_stats.ap_required:
 			tool_tip.cost.text = "[color=green]AP %s/%s[/color]" % [PlayerStats.player_stats["Ability Points"],tech_node_stats.ap_required]
@@ -290,8 +308,7 @@ func _on_mouse_exited() -> void:
 func _on_gui_input(event: InputEvent) -> void:
 	if event.is_action_pressed("left_click") and in_range and !GameManager.license_promotion_time:
 		if node_type != TechTreeManager.TECH_NODE_TYPE.CLASS_ABILITY:
-			if can_click and TechTreeManager.currency < tech_node_stats.currency_required and has_resource_quantity():
-				print("Not enough currency!")
+			if can_click and TechTreeManager.currency < tech_node_stats.get_cost() and has_resource_quantity():
 				play_sfx(DENIED)
 				return
 		else:
@@ -304,10 +321,10 @@ func _on_gui_input(event: InputEvent) -> void:
 			#animation_player.play("clicked")
 			tech_node_stats.current_level += 1
 			
-			
 			PlayerStats.upgrade_player_stat(tech_node_stats.stat_name,tech_node_stats.upgrade_interval, node_type)
 			if node_type != TechTreeManager.TECH_NODE_TYPE.CLASS_ABILITY:
 				deduct_currency()
+				current_cost = tech_node_stats.get_cost()
 			else:
 				deduct_ap()
 				
@@ -338,17 +355,20 @@ func _on_gui_input(event: InputEvent) -> void:
 			TechTreeManager.increment_upgrade_count()
 			TechTreeManager.update_currency_label.emit()
 			TechTreeManager.check_for_tech_node_purchases.emit()
+			HubManager.check_for_node_purchase.emit()
+			TechTreeManager.update_tool_tip_info.emit(0)
 		else:
 			play_sfx(DENIED)
 
 func show_node() -> void:
 	if tech_node_stats.unlocked:
-		if previous_node:
-			draw_node_line()
+		if !previous_nodes.is_empty():
+			for node in previous_nodes:
+				draw_node_line(node)
 
 		pop_in()
 
-func draw_node_line() -> void:
+func draw_node_line(previous_node : TechNode) -> void:
 	var line: Line2D = Line2D.new()
 	line.z_index = -1
 	line.width = 20

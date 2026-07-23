@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="GeneralTask" format=3 uid="uid://xycxei6qqp8v"]
+
+[ext_resource type="Script" uid="uid://chhllu0ouv7r6" path="res://src/Scripts/Questing/Tasks/general_task.gd" id="1_kv7be"]
+
+[resource]
+script = ExtResource("1_kv7be")
+task_name = "Turn in a Job Request"
+task_description = "Turn in a Job Request"
+task_id = 47
+parent_quest = "The Thick of It"
+metadata/_custom_type_script = "uid://chhllu0ouv7r6"

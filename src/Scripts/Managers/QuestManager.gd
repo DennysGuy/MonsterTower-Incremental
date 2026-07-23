@@ -40,6 +40,10 @@ signal check_node_name(selected_node_name : String)
 signal show_quest_complete_notice
 @warning_ignore("unused_signal")
 signal destroy_guide_box(task_id: int)
+@warning_ignore("unused_signal")
+signal recipe_objective_complete(recipe)
+@warning_ignore("unused_signal")
+signal weapon_tracker_updated
 
 @onready var quests : Dictionary = {
 	"Main": {
@@ -97,7 +101,6 @@ signal destroy_guide_box(task_id: int)
 		
 	]
 }
-
 
 var quest_lines : Dictionary = {
 	"Novice's Starter List" : false,
@@ -169,12 +172,26 @@ func load_all_quest_status() -> void:
 				if loaded_quest:
 					loaded_quest.load_quest_status()
 
+func check_for_available_job() -> bool:
+	var chapters : Array[String] = ["Introduction", "Spring", "Fall", "Winter"]
+	var job_quests : Dictionary = quests["Job"]
+	
+	for chapter in chapters:
+		for quest in job_quests[chapter]:
+			if quest:
+				var loaded_quest : Quest = get_quest(quest)
+				loaded_quest.load_quest_status()
+				if loaded_quest.is_available():
+					return true
+	
+	return false
+	
 func load_active_quests() -> void:
 	if SaveManager.current_save_game:
 		QuestManager.active_quests = SaveManager.current_save_game.active_quests
-
+		
 func activate_task(task : Task) -> void:
-	if !task:
+	if !task or !SaveManager.current_save_game:
 		return
 		
 	if task is GatheringTask:

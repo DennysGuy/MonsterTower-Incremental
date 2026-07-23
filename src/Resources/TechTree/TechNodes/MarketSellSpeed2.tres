@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://bv1k0gu2j2aeo"]
+
+[ext_resource type="Texture2D" uid="uid://s38mlwaeo5ha" path="res://Assets/TechTree/CookingNodes/MarketSellSpeed_Disabled_Graphic.png" id="1_gpgxw"]
+[ext_resource type="Texture2D" uid="uid://b2yvur0bj81ti" path="res://Assets/TechTree/CookingNodes/MarketSellSpeed_Graphic.png" id="2_dou6o"]
+[ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="3_h6pdo"]
+
+[resource]
+script = ExtResource("3_h6pdo")
+node_name = "Proficient Vendor 2"
+icon = ExtResource("2_dou6o")
+disabled_icon = ExtResource("1_gpgxw")
+description = "Increases market sell speed by +12 for each level. "
+max_level = 5
+currency_required = 10000
+stat_relation = 4
+price_scaler = 1.4
+stat_name = "Market Sell Speed"
+upgrade_interval = 12.0
+prereqs = Array[String](["Proficient Vendor 1:1"])
+metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

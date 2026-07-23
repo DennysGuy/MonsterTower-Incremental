@@ -3,21 +3,18 @@
 [ext_resource type="Texture2D" uid="uid://vhb0xk5w3giy" path="res://Assets/TechTree/SmeltingNodes/OreChanceUp_Disabled_Graphic.png" id="1_qm4qm"]
 [ext_resource type="Texture2D" uid="uid://cmq74rqxnx62d" path="res://Assets/TechTree/SmeltingNodes/OreChanceUp_Graphic.png" id="2_kdikv"]
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="3_10r7r"]
-[ext_resource type="Resource" uid="uid://cs6ojn6tc0alq" path="res://src/Resources/CraftingResources/SteelBar.tres" id="3_kdikv"]
 
 [resource]
 script = ExtResource("3_10r7r")
 node_name = "Ore Drop Chance 2"
 icon = ExtResource("2_kdikv")
 disabled_icon = ExtResource("1_qm4qm")
-description = "Increases chance to excavate ore from Ore Rock by 5% per level."
+description = "Increase the chance to excavate ore from Ore Rocks by 5% per level."
 max_level = 3
-currency_required = 6000
-materials_required = Array[Dictionary]([{
-ExtResource("3_kdikv"): 4
-}])
+currency_required = 10000
 stat_relation = 5
+price_scaler = 1.3
 stat_name = "Ore Drop Chance Bonus"
 upgrade_interval = 0.05
-prereqs = Array[String](["Refining Speed 2:1"])
+prereqs = Array[String](["Ore Drop Chance 1:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

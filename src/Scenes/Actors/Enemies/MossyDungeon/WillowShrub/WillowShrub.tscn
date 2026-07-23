@@ -26,6 +26,7 @@
 [ext_resource type="Script" uid="uid://cx8e05eefws02" path="res://src/Scripts/StateMachine/EnemyStates/GenericEnemyStates/enemy_spawn_in.gd" id="24_2hjo6"]
 [ext_resource type="PackedScene" uid="uid://b73ndgmav7ja2" path="res://src/Scenes/Actors/Utilities/HealthComponent.tscn" id="24_gkicx"]
 [ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="25_3xntj"]
+[ext_resource type="Script" uid="uid://b76huuoc8f6ro" path="res://src/Scripts/Enemies/enemy_hurt_buffer.gd" id="25_04tj5"]
 [ext_resource type="PackedScene" uid="uid://bg1ya0qiin47q" path="res://src/Scenes/Actors/Utilities/HurtBox.tscn" id="26_pu6dg"]
 [ext_resource type="PackedScene" uid="uid://xsmgmpbxjc3b" path="res://src/Scenes/Actors/Utilities/HitBox.tscn" id="27_uda7e"]
 [ext_resource type="PackedScene" uid="uid://crrtithryo2j6" path="res://src/Scenes/Actors/Utilities/GroundDetector.tscn" id="28_k8mjs"]
@@ -294,7 +295,8 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_k7oqd"]
 resource_name = "SpawnIn"
-step = 0.09
+length = 1.5
+step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -326,7 +328,7 @@ tracks/2/path = NodePath(".:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 1.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -430,7 +432,7 @@ libraries/ = SubResource("AnimationLibrary_adl3q")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2103855697]
 modulate = Color(1, 1, 1, 0)
 position = Vector2(0, -19)
-texture = ExtResource("3_k7oqd")
+texture = ExtResource("6_2hjo6")
 hframes = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=400191748]
@@ -463,11 +465,12 @@ idle_state = NodePath("../Idle")
 chase_state = NodePath("../Chase")
 animation_name = "Patrol"
 
-[node name="Hit" type="Node" parent="StateMachine" unique_id=1992342087 node_paths=PackedStringArray("idle_state", "chase_state")]
+[node name="Hit" type="Node" parent="StateMachine" unique_id=1992342087 node_paths=PackedStringArray("idle_state", "chase_state", "hurt_buffer_state")]
 script = ExtResource("14_myqnk")
 idle_state = NodePath("../Idle")
 chase_state = NodePath("../Chase")
 wait_time = 0.35
+hurt_buffer_state = NodePath("../HurtBuffer")
 generic_impact_1 = ExtResource("15_3pmi7")
 generic_impact_2 = ExtResource("16_xybr3")
 generic_impact_3 = ExtResource("17_7bfk0")
@@ -496,6 +499,11 @@ animation_name = "Stun"
 script = ExtResource("24_2hjo6")
 idle_state = NodePath("../Idle")
 animation_name = "SpawnIn"
+
+[node name="HurtBuffer" type="Node" parent="StateMachine" unique_id=719996763 node_paths=PackedStringArray("idle_state", "chase_state")]
+script = ExtResource("25_04tj5")
+idle_state = NodePath("../Idle")
+chase_state = NodePath("../Chase")
 
 [node name="HealthComponent" parent="." unique_id=2083111642 node_paths=PackedStringArray("parent", "health_bar") instance=ExtResource("24_gkicx")]
 parent = NodePath("..")

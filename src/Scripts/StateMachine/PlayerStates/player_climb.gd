@@ -2,11 +2,11 @@ class_name PlayerClimb extends State
 
 @export var idle_state : State
 @export var jump_state : State 
-
+@export var ladder_state : State
 @export var climb_sfx : AudioStream
 
 @export var come_from_below : bool = false
-
+var can_move : bool = true
 func enter() -> void:
 	super()
 	parent.apply_gravity = false
@@ -38,20 +38,28 @@ func process_frame(_delta: float) -> State:
 
 func process_physics(_delta: float) -> State:
 	var input : float  =  Input.get_axis("pan_cam_up","pan_cam_down")
-	parent.velocity.y = input * (PlayerStats.player_stats["Climbing Speed"] + PlayerStats.get_total_gem_bonus("Climb Speed Bonus")) * GameManager.event_speed_mod
+	
+	if can_move:
+		parent.velocity.y = input * (PlayerStats.player_stats["Climbing Speed"] + PlayerStats.get_total_gem_bonus("Climb Speed Bonus")) * GameManager.event_speed_mod
+	
+	if Input.is_action_just_pressed("dash_attack") and PlayerStats.facilities_unlocked["Dash"] and PlayerStats.facilities_unlocked["Ladder Dash"] and parent.can_issue_ability("Dash") and GameManager.player_can_move:
+		parent.prev_input = input
+		return ladder_state
 	
 	if !parent.stored_ladder:
 		return idle_state
 	
 	if parent.velocity.y == 0:
-		parent.animation_player.stop(false)
-		parent.sfx_player.stop()
+		if parent.animation_player.is_playing():
+			parent.animation_player.stop(false)
+			parent.sfx_player.stop()
 	else:
 		if !parent.sfx_player.playing:
 			parent.sfx_player.play_sfx(climb_sfx)
 		parent.animation_player.play()
 	
 	if parent.jump_buffer_timer > 0:
+		parent.grab_ladder_buffer_timer = parent.grab_ladder_buffer_wait_time
 		return idle_state
 	
 	if parent.ladder_top_position_detector.global_position.y <= parent.stored_ladder.ladder_top.global_position.y and Input.is_action_pressed("pan_cam_up") and parent.is_climbing:

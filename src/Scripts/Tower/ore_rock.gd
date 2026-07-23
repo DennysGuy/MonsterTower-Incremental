@@ -52,7 +52,7 @@ func _unhandled_input(event: InputEvent) -> void:
 func _on_ore_rock_area_body_entered(body: Node2D) -> void:
 	if body is Player:
 		if PlayerStats.facilities_unlocked["Refinery Station"]:
-			directions.text = "Press/Hold 'F' to Mine!"
+			directions.text = "Press/Hold %s to Mine!" % GameManager.get_control_mapping("swing_sword")
 			body.stored_ore_rock = self
 			set_outline_visible()
 		else:
@@ -71,17 +71,13 @@ func damage_ore_rock(damage : int) -> void:
 	enemy_health_bar.show()
 	health -= damage
 	enemy_health_bar.value = health
-	print("THIS IS HEALTH! %s" % health)
 	var damage_label : DamageLabel = preload("uid://dkchs27qqogyy").instantiate()
 	damage_label.label.text = str(damage)
 	damage_label.global_position = Vector2(global_position.x, global_position.y - 20)
 	get_parent().add_child(damage_label)
 	if GameManager.remaining_bolt_chain_links > 0:
 		cast_lightning_bolt()
-		
-		
-		
-	
+
 func drop_ore_rock() -> void:
 	var random_check : int = randi_range(0,100)
 	var num_to_win : int = int(100 * (ore_rock_stats.ore_drop_chance+PlayerStats.player_stats["Ore Drop Chance Bonus"]))
@@ -97,7 +93,7 @@ func _on_ore_rock_area_area_entered(area: Area2D) -> void:
 	if area.get_parent() is Player:
 		if PlayerStats.facilities_unlocked["Refinery Station"]:
 			
-			directions.text = "Press/Hold 'F' to Mine!"
+			directions.text = "Press %s to Mine!" % GameManager.get_control_mapping("interact")
 			await get_tree().physics_frame
 			area.get_parent().stored_ore_rock = self
 			set_outline_visible()

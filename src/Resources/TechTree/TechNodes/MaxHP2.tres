@@ -2,7 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://cverklmq4oxwm" path="res://Assets/TechTree/SurvivalNodes/HPUp_Disabled_Graphic.png" id="1_ad88h"]
 [ext_resource type="Texture2D" uid="uid://b5ui2gldo822r" path="res://Assets/TechTree/SurvivalNodes/HPUp_Graphic.png" id="2_qjs01"]
-[ext_resource type="Resource" uid="uid://ctjyflf6qr4g" path="res://src/Resources/Dishes/MossyGoulash.tres" id="3_ad88h"]
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="3_qjs01"]
 
 [resource]
@@ -10,14 +9,12 @@ script = ExtResource("3_qjs01")
 node_name = "Max HP 2"
 icon = ExtResource("2_qjs01")
 disabled_icon = ExtResource("1_ad88h")
-description = "+50 Max Health for each level"
+description = "Sustain more damage! Increase Max HP by 100 per level."
 max_level = 5
-currency_required = 600
-materials_required = Array[Dictionary]([{
-ExtResource("3_ad88h"): 1
-}])
+currency_required = 2000
 stat_relation = 1
+price_scaler = 1.8
 stat_name = "Max Health"
-upgrade_interval = 50.0
-prereqs = Array[String](["Max HP 1:1"])
+upgrade_interval = 100.0
+prereqs = Array[String](["Max HP 1:5"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

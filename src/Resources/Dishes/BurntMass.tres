@@ -9,5 +9,7 @@ item_name = "Burnt Mass"
 item_type = 5
 sell_value = 20
 shop_icon = ExtResource("2_6ikfb")
+item_tier = 0
+sell_time = 100.0
 description = "The result of a failed cooking attempt."
 metadata/_custom_type_script = "uid://cu8drgivmhfn"

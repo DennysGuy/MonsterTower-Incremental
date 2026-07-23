@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://d0wo8tvdfk8j1"]
+
+[ext_resource type="Script" uid="uid://cu8drgivmhfn" path="res://src/Scripts/item.gd" id="1_cvef5"]
+[ext_resource type="Texture2D" uid="uid://bqktcef43wwng" path="res://Assets/Facilities/Junkatron/BatGliderPack.png" id="2_dei8g"]
+
+[resource]
+script = ExtResource("1_cvef5")
+item_name = "Bat Glider Jet Pack"
+item_type = 5
+sell_value = 450
+shop_icon = ExtResource("2_dei8g")
+sell_time = 3000.0
+description = "A Jet pack glider made of batclopse wings - The jet propulsion system works I swear! Should you try it? Well, it's up to the owners descretion. 
+Do you recommend it? That, I cannot! It looks nice though!"

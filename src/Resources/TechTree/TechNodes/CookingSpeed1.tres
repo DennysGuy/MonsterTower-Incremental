@@ -1,19 +1,20 @@
 [gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://cud4tvd0agqm4"]
 
-[ext_resource type="Texture2D" uid="uid://ck4uslokmo453" path="res://Assets/TechTree/CookingNodes/CookingSpeed_Disabled_Graphic.png" id="1_p2e22"]
-[ext_resource type="Texture2D" uid="uid://bacripurdylhq" path="res://Assets/TechTree/CookingNodes/CookingSpeed_Graphic.png" id="2_8ohuu"]
+[ext_resource type="Texture2D" uid="uid://cdih0jn64ephh" path="res://Assets/TechTree/CookingNodes/JunkATronCraftingSpeed_Graphic_Disabled.png" id="1_p2e22"]
+[ext_resource type="Texture2D" uid="uid://danl2vq4m130" path="res://Assets/TechTree/CookingNodes/JunkATronCraftingSpeed_Graphic.png" id="2_8ohuu"]
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="2_p2e22"]
 
 [resource]
 script = ExtResource("2_p2e22")
-node_name = "Cooking Speed 1"
+node_name = "Junk-A-Speedster 1"
 icon = ExtResource("2_8ohuu")
 disabled_icon = ExtResource("1_p2e22")
-description = "Increases cooking speed by 10% for each level"
+description = "Increase the Junk-A-Tron's manufactureriing speed by 10% per level."
 max_level = 4
-currency_required = 700
+currency_required = 400
 stat_relation = 4
+price_scaler = 1.35
 stat_name = "Cooking Speed"
 upgrade_interval = 0.1
-prereqs = Array[String](["Critical Cooking 1:1"])
+prereqs = Array[String](["Crit-A-Tron 1:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

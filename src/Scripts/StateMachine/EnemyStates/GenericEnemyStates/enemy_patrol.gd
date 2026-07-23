@@ -12,7 +12,7 @@ func enter() -> void:
 	dir = directions.pick_random()
 
 	parent.velocity.x = 0
-	parent.timer.wait_time = randi_range(2, 5)
+	parent.timer.wait_time = randi_range(3, 8)
 
 	parent.apply_direction(dir)
 

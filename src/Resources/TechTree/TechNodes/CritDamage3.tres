@@ -10,13 +10,13 @@ script = ExtResource("3_l4xsu")
 node_name = "Crit Damage 3"
 icon = ExtResource("2_l4xsu")
 disabled_icon = ExtResource("1_sosn7")
-description = "Increase Crit Damage by 5% per level."
+description = "Increase Critical Damage by 5% per level.
+(Scale your damage to even greater heights!)"
 max_level = 3
-currency_required = 3000
 materials_required = Array[Dictionary]([{
-ExtResource("2_vfkmh"): 4
+ExtResource("2_vfkmh"): 3
 }])
 stat_name = "Crit Damage"
 upgrade_interval = 0.05
-prereqs = Array[String](["Crit Chance 3:1"])
+prereqs = Array[String](["Combat Cooldown 2:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

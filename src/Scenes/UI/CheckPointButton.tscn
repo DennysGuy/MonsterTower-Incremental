@@ -2,6 +2,7 @@
 
 [ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="1_p1t3v"]
 [ext_resource type="Script" uid="uid://obowalu5p52r" path="res://src/Scripts/HUD/check_point_button.gd" id="2_81f6i"]
+[ext_resource type="Texture2D" uid="uid://lxx2jn3wfb5k" path="res://Assets/HUD/AbilityRowSelectedArrow.png" id="3_0as5j"]
 
 [node name="CheckPointButton" type="Button" unique_id=868704952]
 offset_left = 378.0
@@ -14,5 +15,14 @@ theme_override_fonts/font = ExtResource("1_p1t3v")
 theme_override_font_sizes/font_size = 36
 text = "Checkpoint 1"
 script = ExtResource("2_81f6i")
+
+[node name="Arrow" type="TextureRect" parent="." unique_id=1446810995]
+visible = false
+layout_mode = 0
+offset_left = -71.0
+offset_top = -9.0
+offset_right = -7.0
+offset_bottom = 55.0
+texture = ExtResource("3_0as5j")
 
 [connection signal="button_up" from="." to="." method="_on_button_up"]

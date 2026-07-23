@@ -24,7 +24,6 @@ func _ready() -> void:
 		spawn_mp_vials()
 	
 	await get_tree().process_frame
-	
 	if GameManager.hunt_challenge_selected:
 		SignalBus.update_kill_quota_text.emit("Defeat all Monsters to win!", false, false)	
 	
@@ -34,10 +33,10 @@ func _ready() -> void:
 		else:
 			SignalBus.update_monsters_left.emit("Campfires Discovered: %s/%s" % [tower_entrance_data.camp_fires_reached, tower_entrance_data.total_camp_fires],false)
 	
-	QuestManager.check_map_name.emit(map_name)
+	QuestManager.check_map_name.emit(tower_entrance_data.floor_name)
 	SignalBus.update_banner_info.emit(tower_entrance_data)
-	PlayerHudSignalBus.update_player_health.emit()
-	PlayerHudSignalBus.update_player_mp.emit()
+	#PlayerHudSignalBus.update_player_health.emit()
+	#PlayerHudSignalBus.update_player_mp.emit()
 	SaveManager.save_player_stats()
 	PlayerHudSignalBus.show_stop_watch.emit()
 	if GameManager.hunt_challenge_selected:
@@ -57,6 +56,7 @@ func _ready() -> void:
 		PlayerHudSignalBus.start_stop_watch.emit()
 		
 	PlayerHudSignalBus.update_map_name_label.emit(map_name)
+	
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

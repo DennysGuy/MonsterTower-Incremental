@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://di6r36s37fj8d"]
+
+[ext_resource type="Texture2D" uid="uid://cr7uwdke64xqt" path="res://Assets/HUD/FacilityNotification.png" id="1_6dcma"]
+[ext_resource type="Script" uid="uid://cfsv71ava0ex8" path="res://src/Scripts/HUD/facility_notice.gd" id="1_twlab"]
+
+[node name="FacilityNotice" type="Control" unique_id=9896759]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -77.0
+offset_top = -72.5
+offset_right = 77.0
+offset_bottom = 72.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_twlab")
+
+[node name="NoticeIcon" type="TextureRect" parent="." unique_id=2065429911]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -39.0
+offset_top = -34.0
+offset_right = 39.0
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("1_6dcma")

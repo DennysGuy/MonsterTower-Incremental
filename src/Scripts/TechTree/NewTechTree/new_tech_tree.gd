@@ -4,7 +4,8 @@ class_name NewTechTree extends Control
 @onready var survival_page_button: Button = $TechTreeButtonsHBox/SurvivalPageButton
 @onready var traversal_page_button: Button = $TechTreeButtonsHBox/TraversalPageButton
 @onready var inventory_page_button: Button = $TechTreeButtonsHBox/InventoryPageButton
-@onready var cooking_page_button: Button = $TechTreeButtonsHBox/CookingPageButton
+@onready var junk_a_tron_page_button: Button = $TechTreeButtonsHBox/JunkATronPageButton
+
 @onready var crafting_page_button: Button = $TechTreeButtonsHBox/CraftingPageButton
 @onready var tech_tree_buttons_h_box: HBoxContainer = $TechTreeButtonsHBox
 
@@ -22,6 +23,7 @@ class_name NewTechTree extends Control
 
 @onready var close_button: Button = $CloseButton
 @onready var currency_label: Label = $CurrencyLabel
+@onready var license_tier: Label = $LicenseTier
 
 var stored_message_panel : TechTreeMessagePanel
 @onready var music_player: AudioStreamPlayer = $MusicPlayer
@@ -35,21 +37,31 @@ const CLICK_NODE = preload("uid://bawqj0b2h6vsu")
 @onready var survival_notification_icon: TextureRect = $TechTreeButtonsHBox/SurvivalPageButton/SurvivalNotificationIcon
 @onready var traversal_notification_icon: TextureRect = $TechTreeButtonsHBox/TraversalPageButton/TraversalNotificationIcon
 @onready var inventory_notification_icon: TextureRect = $TechTreeButtonsHBox/InventoryPageButton/InventoryNotificationIcon
-@onready var cooking_notification_icon: TextureRect = $TechTreeButtonsHBox/CookingPageButton/CookingNotificationIcon
+@onready var cooking_notification_icon: TextureRect = $TechTreeButtonsHBox/JunkATronPageButton/CookingNotificationIcon
 @onready var crafting_notification_icon: TextureRect = $TechTreeButtonsHBox/CraftingPageButton/CraftingNotificationIcon
+
+const TECH_TREE_EXPLANATION = preload("uid://g6243qefq3ht")
+
+var can_close = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	TechTreeManager.check_for_tech_node_purchases.connect(check_for_purchases)
+	CutsceneManager.disable_close_function.connect(disable_close_function)
+	CutsceneManager.enable_close_function.connect(enable_close_function)
+	
+	SignalBus.novelty_invention_sold.connect(update_can_purchase)
 	check_for_purchases()
 	MusicPlayer.pause_music()
 	music_player.play()
+	
 	play_sfx(ENTER_TECH_TREE)
 	SignalBus.flash_screen.connect(flash_screen)
 	SignalBus.close_message_panel.connect(remove_message_panel)
 	TechTreeManager.update_currency_label.connect(update_progress)
 	expedition_time_tracker.text = "Expedition Time: %s seconds" % PlayerStats.player_stats["Expedition Time"]
 	update_progress()
+	print("THIS IS CURERENT PRESTIGE %s" % TechTreeManager.current_prestige)
 	if TechTreeManager.current_prestige > 0:
 		show_tech_tree_buttons()
 		add_combat_tech_tree()
@@ -57,8 +69,15 @@ func _ready() -> void:
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("close_menu"):
+	if Input.is_action_just_pressed("close_menu") and can_close:
 		close_out()
+	
+	#if Input.is_action_just_pressed("add_currency"):
+		#TechTreeManager.currency += 500
+		#PlayerStats.player_stats["Current XP"] += 500
+		#LevelingManager.check_for_level_up()
+		#update_currency_label()
+		#TechTreeManager.check_if_can_purchase_node.emit()
 
 func _on_combat_page_button_mouse_entered() -> void:
 	expand_button(combat_page_button)
@@ -85,10 +104,10 @@ func _on_inventory_page_button_mouse_exited() -> void:
 	button_to_normal(inventory_page_button)
 
 func _on_cooking_page_button_mouse_entered() -> void:
-	expand_button(cooking_page_button)
+	expand_button(junk_a_tron_page_button)
 
 func _on_cooking_page_button_mouse_exited() -> void:
-	button_to_normal(cooking_page_button)
+	button_to_normal(junk_a_tron_page_button)
 
 func _on_crafting_page_button_mouse_entered() -> void:
 	expand_button(crafting_page_button)
@@ -110,10 +129,16 @@ func button_to_normal(button : Button) -> void:
 	var tween : Tween = get_tree().create_tween()
 	tween.tween_property(button, "scale",Vector2(1.0,1.0),0.1)
 
+func disable_close_function() -> void:
+	can_close = false
+	close_button.disabled = true
+
+func enable_close_function() -> void:
+	can_close = true
+	close_button.disabled = false
 
 func _on_upgrade_tracker_button_mouse_entered() -> void:
 	expand_button(upgrade_tracker_button)
-
 
 func _on_upgrade_tracker_button_mouse_exited() -> void:
 	button_to_normal(upgrade_tracker_button)
@@ -128,17 +153,21 @@ func update_progress() -> void:
 			GameManager.license_promotion_time = true
 			upgrade_button_notification_icon.show()
 			upgrade_tracker_button.text = "Promote License"
+			license_tier.hide()
 		upgrade_tracker_button.disabled = false
+		
 	else:
 		upgrade_tracker_button.text = "%s/%s" % [TechTreeManager.current_upgrade_count, TechTreeManager.upgrade_count_to_prestige]
 		upgrade_tracker_button.disabled = true
+		license_tier.show()
+		license_tier.text = "License Tier: %s" % TechTreeManager.current_prestige
 		upgrade_button_notification_icon.hide()
 	
 	expedition_time_tracker.text = "Expedition Time: %s" % PlayerStats.player_stats["Expedition Time"]
 	currency_label.text = "Spirols %s" % [TechTreeManager.currency]
 	upgrade_progress_bar.max_value = TechTreeManager.upgrade_count_to_prestige
 	upgrade_progress_bar.value = TechTreeManager.current_upgrade_count
-
+	
 func add_combat_tech_tree() -> void:
 	for child in sub_viewport.get_children():
 		child.queue_free()
@@ -237,7 +266,6 @@ func _on_upgrade_tracker_button_button_up() -> void:
 	
 	play_license_upgrade_sequence()
 
-
 func close_out() -> void:
 	TechTreeManager.check_needed_item_panel_for_purchase.emit()
 	TechTreeManager.set_ability_hud_icon.emit()
@@ -250,8 +278,9 @@ func close_out() -> void:
 	if station_unlock_available():
 		TechTreeManager.unlock_station.emit()
 	#sfx_player.play_sfx(CLOSE_UPGRADE_PC)
+	HubManager.check_for_node_purchase.emit()
+	PlayerHudSignalBus.hub_menu_exited.emit()
 	await get_tree().create_timer(0.3).timeout
-	
 	SignalBus.hide_tech_tree_canvas_layer.emit()
 	queue_free()
 
@@ -274,7 +303,7 @@ func unlock_hunter_license() -> void:
 	SaveManager.save_tech_tree_data()
 	SaveManager.save_player_stats()
 	SaveManager.save_game()
-
+	
 func update_currency_label() -> void:
 	update_progress()
 
@@ -304,6 +333,7 @@ func _on_cooking_page_button_button_up() -> void:
 
 
 func insert_message_panel() -> void:
+	disable_close_function()
 	var message_panel : TechTreeMessagePanel = preload("uid://bsqvfj57myih2").instantiate()
 
 	add_child(message_panel)
@@ -328,6 +358,10 @@ func remove_message_panel() -> void:
 		tween.tween_property(stored_message_panel, "global_position", Vector2(730,1140),0.2)
 		await tween.finished
 		stored_message_panel.queue_free()
+		if TechTreeManager.current_prestige == 1:
+			Dialogic.start(TECH_TREE_EXPLANATION)
+		else:
+			enable_close_function()
 	
 
 func play_sfx(sound: AudioStream, volume: float = 0.0):
@@ -366,6 +400,10 @@ func check_for_purchases() -> void:
 				TechTreeManager.STAT_RELATION.CRAFTING:
 					crafting_notification_icon.show()
 
+
+func update_can_purchase() -> void:
+	currency_label.text = "Spirols %s" % [TechTreeManager.currency]
+	check_for_purchases()
 
 func can_purchase(tech_node_stats : TechNodeStats) -> bool:
 	if SaveManager.current_save_game:

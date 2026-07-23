@@ -58,7 +58,7 @@ var current_prestige : int = 0
 var current_upgrade_count : int = 0
 var upgrade_count_to_prestige : int = 0
 
-enum STAT_RELATION {COMBAT, SURVIVAL, TRAVERSAL, INVENTORY, COOKING, CRAFTING}
+enum STAT_RELATION {COMBAT, SURVIVAL, TRAVERSAL, INVENTORY, COOKING, CRAFTING, LICENSE}
 enum TECH_NODE_TYPE {ABILITY, FACILITY, CLASS_ABILITY}
 
 @onready var tech_nodes : Dictionary = {
@@ -106,18 +106,18 @@ enum TECH_NODE_TYPE {ABILITY, FACILITY, CLASS_ABILITY}
 	"Deeper Pockets 1":0,
 	"Deeper Pockets 2":0,
 	"Deeper Pockets 3":0,
-	"Dash Attack":0,
+	"Dash":0,
 	"Dash Attack Duration 1":0,
 	"Banking":0,
 	"Banking 2":0,
 	"Banking 3":0,
-	"Cooking Station":0,
-	"Cooking Drops 1": 0,
-	"Cooking Drops 2": 0,
-	"Cooking Speed 1":0,
-	"Cooking Speed 2":0,
-	"Cooking Accuracy 1": 0,
-	"Cooking Accuracy 2": 0,
+	"Junk-A-Tron V1":0,
+	"Junk Drops 1": 0,
+	"Junk Drops 2": 0,
+	"Junk-A-Speedster 1":0,
+	"Junk-A-Speedster 2":0,
+	"Junk-A-Accuracy 1": 0,
+	"Junk-A-Accuracy 2": 0,
 	"Refinery Station":0,
 	"Mining Bolt Chance 1": 0,
 	"Mining Bolt Distance 1": 0,
@@ -161,6 +161,8 @@ enum TECH_NODE_TYPE {ABILITY, FACILITY, CLASS_ABILITY}
 	"Dodge Chance 2": 0.0,
 	"Dash Distance 1": 0.0,
 	"Dash Distance 2": 0.0,
+	"Ladder Dash": 0.0,
+	"Ladder Dash Distance 1": 0.0,
 	"Critical Cooking 1": 0.0,
 	"Critical Cooking 2": 0.0,
 	"Critical Smelting 1": 0.0,
@@ -176,6 +178,15 @@ enum TECH_NODE_TYPE {ABILITY, FACILITY, CLASS_ABILITY}
 	"Salvaged Junk 2": 0.0,
 	"Extra Ore 1": 0.0,
 	"Extra Ore 2": 0.0,
+	"Expert Marketeer 1": 0.0,
+	"Pro Mover 1": 0.0,
+	"Bulk Sale Slots 1": 0.0,
+	"Bulk Sale Slots 2": 0.0,
+	"Bulk Sale Slots 3": 0.0,
+	"Bulk Sale Slot Stack 1": 0.0,
+	"Bulk Sale Slot Stack 2": 0.0,
+	"Bulk Sale Slot Stack 3": 0.0,
+	"Auto Sell Transfer Speed 1": 0.0
 }
 
 @onready var warrior_tech_nodes : Dictionary = {
@@ -197,6 +208,12 @@ enum TECH_NODE_TYPE {ABILITY, FACILITY, CLASS_ABILITY}
 	#"Accuracy 2": preload("uid://bbvm0eijtrrvg") ,
 	"Bonus AP 1": preload("uid://crr0o1kpusnpn"),
 	"Bonus XP 1": preload("uid://c5surf2owculw"),
+	"Bulk Sale Slots 1": preload("uid://7moo103gixvj"),
+	"Bulk Sale Slots 2": preload("uid://dsx0fccwrnval"),
+	"Bulk Sale Slots 3": preload("uid://jgq47sewguxf"),
+	"Bulk Sale Slot Stack 1": preload("uid://xjx3q184mwsu"),
+	"Bulk Sale Slot Stack 2": preload("uid://cxkvc17ad8t5t"),
+	"Bulk Sale Slot Stack 3": preload("uid://bd72e41vun0w"),
 	"Crit Chance 1" : preload("uid://cmy8gsm0hbovg"),
 	"Crit Chance 2": preload("uid://ll3jw1v5omml"),
 	"Crit Chance 3": preload("uid://x04h2nhi8gdh"),
@@ -230,13 +247,14 @@ enum TECH_NODE_TYPE {ABILITY, FACILITY, CLASS_ABILITY}
 	"Banking":preload("uid://cmbxvekbk2uxx"),
 	"Banking 2":preload("uid://cqjeh0yqqse5c"),
 	"Banking 3":preload("uid://c2do0e0poa4or"),
-	"Cooking Station":preload("uid://bb7206hq4ygo3"),
-	"Cooking Drops 1": preload("uid://b1txboikgk5si"),
-	"Cooking Drops 2": preload("uid://dldvhuc6qmg2p"),
-	"Cooking Speed 1":preload("uid://cud4tvd0agqm4"),
-	"Cooking Speed 2":preload("uid://c2amp16srnwin"),
-	"Cooking Accuracy 1": preload("uid://ub5h4g7g447"),
-	"Cooking Accuracy 2": preload("uid://bl5fxhci5olcj"),
+	"Junk-A-Tron V1": preload("uid://bb7206hq4ygo3"),
+	"Junk Drops 1": preload("uid://b1txboikgk5si"),
+	"Junk Drops 2": preload("uid://dldvhuc6qmg2p"),
+	"Junk-A-Speedster 1":preload("uid://cud4tvd0agqm4"),
+	"Junk-A-Speedster 2":preload("uid://c2amp16srnwin"),
+	"Junk-A-Speedster 3":preload("uid://lp20uphsdukm"),
+	"Junk-A-Accuracy 1": preload("uid://ub5h4g7g447"),
+	"Junk-A-Accuracy 2": preload("uid://bl5fxhci5olcj"),
 	"Refinery Station":preload("uid://peiyat841rxh"),
 	"Mining Bolt Chance 1": preload("uid://bvv3ywp852v5r"),
 	"Mining Bolt Distance 1": preload("uid://fuiustuvb4gn"),
@@ -268,24 +286,33 @@ enum TECH_NODE_TYPE {ABILITY, FACILITY, CLASS_ABILITY}
 	"Insta Kill 1": preload("uid://coviifivetye5"),
 	"Insta Kill Chance 1": preload("uid://cvy8gppv7scd"),
 	"Vampiric Siphen 1": preload("uid://8hkjeagafmg2"),
+	"Proficient Vendor 1": preload("uid://df5ffuqkycbnv"),
+	"Proficient Vendor 2": preload("uid://bv1k0gu2j2aeo"),
 	"Siphen Chance 1": preload("uid://cmjrkltv1tvv7"),
 	"Siphen Amount 1": preload("uid://doyqag11dkuft"),
-	"Last Breadth 1": preload("uid://dant3bywg07u"),
-	"Breadth Threshold 1": preload("uid://s42rn6aklaui"),
+	#"Last Breadth 1": preload("uid://dant3bywg07u"),
+	#"Breadth Threshold 1": preload("uid://s42rn6aklaui"),
 	#"MP Dodge 1": preload("uid://chuy1qutjtk58"),
 	#"MP Dodge 2": preload("uid://b3otkclya332q"),
 	"Dodge Chance 1": preload("uid://b6uimiiq8ow5u"),
 	"Dodge Chance 2": preload("uid://ctjnncini5jvl"),
 	"Dash Distance 1": preload("uid://ioelpq1d2fhp"),
 	"Dash Distance 2": preload("uid://b6a033jtmxfu3"),
-	"Critical Cooking 1": preload("uid://qxgigmr20cqm"),
-	"Critical Cooking 2": preload("uid://cn6qldo3t53g7"),
+	"Crit-A-Tron 1": preload("uid://qxgigmr20cqm"),
+	"Crit-A-Tron 2": preload("uid://cn6qldo3t53g7"),
 	"Critical Smelting 1": preload("uid://c8v6iimoi7wcr"),
 	"Critical Smelting 2": preload("uid://bqx6q34qvy3hj"),
-	"Free Range 1": preload("uid://bpdjvl0vrhdpa"),
-	"Free Range 2": preload("uid://i8atxfm76kuo"),
-	"Free Heat 1": preload("uid://vg0n3dc6j08g"),
-	"Free Heat 2": preload("uid://b32ox2g2nto6q"),
+	"Pro Mover 1": preload("uid://bjgwlyybfrnxd"),
+	"Junk-A-Auto-Transfer": preload("uid://denk83487dyny"),
+	"Auto Sell Transfer Speed 1": preload("uid://c3dg2fxa12pr6"),
+	"Expert Marketeer 1": preload("uid://p0w0h82t37py"),
+	"Ladder Dash": preload("uid://bfcnex03bip3y"),
+	"Ladder Dash Distance 1": preload("uid://chr1ynm2qbnps")
+
+	#"Free Range 1": preload("uid://bpdjvl0vrhdpa"),
+	#"Free Range 2": preload("uid://i8atxfm76kuo"),
+	#"Free Heat 1": preload("uid://vg0n3dc6j08g"),
+	#"Free Heat 2": preload("uid://b32ox2g2nto6q"),
 	#"Range Threads 1": preload("uid://b7dcm5uxu82fc"),
 	#"Polished Turd 1": preload("uid://c4ii23l6kfvu2"),
 	#"Polished Turd 2": preload("uid://2lv0y4udpiss"),
@@ -294,6 +321,20 @@ enum TECH_NODE_TYPE {ABILITY, FACILITY, CLASS_ABILITY}
 	#"Extra Ore 1": preload("uid://dgdtvjb0k5drs"),
 	#"Extra Ore 2": preload("uid://bchhcemqyw4lq"),
 }
+
+var beginner_base_abilities : Dictionary[int, TechNodeStats] = {
+	0 : preload("uid://burkenucbrobr"),
+	1 : preload("uid://cq5drdy7t8gas"),
+	2 : preload("uid://bonlosm00p4kf")
+}
+
+func check_if_can_purchase_base_ability() -> bool:
+	for ability in beginner_base_abilities.keys():
+		var selected_ability : TechNodeStats = beginner_base_abilities[ability]
+		if PlayerStats.player_stats["Ability Points"] >= selected_ability.ap_required and !PlayerStats.facilities_unlocked[selected_ability.node_name]:
+			return true
+	
+	return false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -330,10 +371,11 @@ func upgrade_hunter_license() -> void:
 	QuestManager.check_general_task_for_completion.emit("Upgrade Hunter License")
 	current_prestige += 1
 	PlayerStats.player_stats["Expedition Time"] += 30
-	upgrade_count_to_prestige += 15
+	upgrade_count_to_prestige += 30
 	current_upgrade_count = 0
 	update_prestige_tier_label.emit()
 	update_prestige_tier_progress_label.emit()
+	SaveManager.save_tech_tree_data()
 
 func get_tech_node_status(node_name : String) -> bool:
 	return SaveManager.current_save_game.tech_nodes[node_name]["Unlocked"]

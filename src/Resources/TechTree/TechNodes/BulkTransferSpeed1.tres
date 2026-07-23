@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://bjgwlyybfrnxd"]
+
+[ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_srula"]
+[ext_resource type="Texture2D" uid="uid://dvw57l2xhxp1w" path="res://Assets/TechTree/CookingNodes/MarketTransferSpeed_Graphic_Disabled.png" id="1_v4ll6"]
+[ext_resource type="Texture2D" uid="uid://3j64dahiy8tp" path="res://Assets/TechTree/CookingNodes/MarketTransferSpeed_Graphic.png" id="2_cga7q"]
+
+[resource]
+script = ExtResource("1_srula")
+node_name = "Pro Mover 1"
+icon = ExtResource("2_cga7q")
+disabled_icon = ExtResource("1_v4ll6")
+description = "Decrease the time between delivering Novelty Inventions to the Grand Market."
+max_level = 5
+currency_required = 300
+stat_relation = 4
+price_scaler = 1.6
+stat_name = "Bulk Sell Transfer Speed"
+upgrade_interval = 1.0
+prereqs = Array[String](["Junk-A-Tron V1:1"])
+metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

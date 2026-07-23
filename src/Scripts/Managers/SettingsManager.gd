@@ -11,7 +11,7 @@ enum WINDOW_MODE {
 
 const VIDEO_SECTION := "Video"
 
-func set_window_mode(mode: WINDOW_MODE) -> void:
+func set_window_mode(mode: WINDOW_MODE, resolution : Vector2i = Vector2i(1280,720)) -> void:
 	match mode:
 		WINDOW_MODE.WINDOWED:
 			get_window().content_scale_size = Vector2i(1920, 1080)
@@ -21,28 +21,30 @@ func set_window_mode(mode: WINDOW_MODE) -> void:
 
 			await get_tree().process_frame
 
-			DisplayServer.window_set_size(Vector2i(1280, 720))
-
+			DisplayServer.window_set_size(resolution)
+			
 			await get_tree().process_frame
 
 			center_window()
 
 		WINDOW_MODE.FULLSCREEN:
-			get_window().content_scale_size = Vector2i(1920, 1080)
+			get_window().content_scale_size = Vector2i(1920,1080)
 
 			DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false)
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
 
 		WINDOW_MODE.BORDERLESS:
-			get_window().content_scale_size = Vector2i(1920, 1080)
+			get_window().content_scale_size = Vector2i(1920,1080)
 
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-
+			
 			await get_tree().process_frame
 
 			DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, true)
 			DisplayServer.window_set_size(DisplayServer.screen_get_size())
 			DisplayServer.window_set_position(DisplayServer.screen_get_position())
+
+	save_window_mode(mode, DisplayServer.window_get_size())
 
 func center_window() -> void:
 	var screen_rect := DisplayServer.screen_get_usable_rect()
@@ -51,7 +53,6 @@ func center_window() -> void:
 	DisplayServer.window_set_position(
 		screen_rect.position + ((screen_rect.size - window_size) / 2)
 	)
-
 
 func is_windowed_mode() -> bool:
 	return DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_WINDOWED \
@@ -64,31 +65,33 @@ func is_borderless_mode() -> bool:
 	return DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_WINDOWED \
 		and DisplayServer.window_get_flag(DisplayServer.WINDOW_FLAG_BORDERLESS)
 
-func save_window_mode(mode: WINDOW_MODE) -> void:
+func save_window_mode(mode: WINDOW_MODE, resolution : Vector2i) -> void:
 	var config := ConfigFile.new()
 	config.load(SETTINGS_PATH)
 
 	config.set_value(VIDEO_SECTION, "window_mode", mode)
+	config.set_value(VIDEO_SECTION, "resolution", resolution)
 	config.save(SETTINGS_PATH)
 
-func load_window_mode() -> void:
+func load_window_mode(saved_config_file : ConfigFile) -> void:
 	var config := ConfigFile.new()
 	var err := config.load(SETTINGS_PATH)
 
 	if err != OK:
-		set_window_mode(WINDOW_MODE.WINDOWED)
-		save_window_mode(WINDOW_MODE.WINDOWED)
+		set_window_mode(WINDOW_MODE.WINDOWED,Vector2i(1280,720))
+		save_window_mode(0, Vector2i(1280,720))
 		return
 
-	var mode: int = config.get_value(VIDEO_SECTION, "window_mode", WINDOW_MODE.WINDOWED)
-	set_window_mode(mode)
+	var mode: int = saved_config_file.get_value(VIDEO_SECTION, "window_mode")
+	var resolution : Vector2i = saved_config_file.get_value(VIDEO_SECTION, "resolution")
+	set_window_mode(mode,resolution)
 
 func set_default_settings() -> void:
 	var config : ConfigFile = ConfigFile.new()
 	
 	#audio setup
 	config.set_value("Audio", "Master", 0.0)
-	config.set_value("Audio", "Music", -12.0)
+	config.set_value("Audio", "Music", -8.0)
 	config.set_value("Audio", "SFX", -3.0)
 	config.set_value("Audio", "Ambience", -5.0)
 
@@ -110,6 +113,7 @@ func init_new_settings_config_file() -> void:
 
 	save_controls(saved_config_file)
 	load_controls(saved_config_file)
+	load_window_settings(saved_config_file)
 	#set_window_mode(WINDOW_MODE.BORDERLESS)
 
 func get_settings_config_file() -> ConfigFile:
@@ -151,7 +155,7 @@ func load_settings() -> void:
 	AudioServer.set_bus_volume_db(ambience_bus,saved_config_file.get_value("Audio", "Ambience"))
 	
 	load_controls(saved_config_file)
-	#load_window_mode()
+	load_window_settings(saved_config_file)
 		
 
 func update_key_binding(action : String, event : InputEvent, new_event : InputEvent) -> void:
@@ -197,7 +201,41 @@ func save_controls(config_file : ConfigFile) -> void:
 	
 	config_file.save(SETTINGS_PATH)
 	
-	
+
+func save_window_settings(saved_config_file : ConfigFile) -> void:
+	saved_config_file.set_value("Window Settings","Window Mode", DisplayServer.window_get_mode())
+	saved_config_file.set_value("Window Settings", "Resolution", DisplayServer.window_get_size())
+
+func load_window_settings(saved_config_file : ConfigFile) -> void:
+	if not saved_config_file.has_section(VIDEO_SECTION):
+		saved_config_file.set_value(
+			VIDEO_SECTION,
+			"window_mode",
+			SettingsManager.WINDOW_MODE.WINDOWED
+		)
+		saved_config_file.set_value(
+			VIDEO_SECTION,
+			"resolution",
+			Vector2i(1280, 720)
+		)
+
+		set_window_mode(
+		SettingsManager.WINDOW_MODE.WINDOWED,
+		Vector2i(1280, 720)
+		)
+	else:
+		var mode: int = saved_config_file.get_value(
+			VIDEO_SECTION,
+			"window_mode"
+		)
+
+		var resolution: Vector2i = saved_config_file.get_value(
+		VIDEO_SECTION,
+		"resolution"
+		)
+
+		set_window_mode(mode, resolution)
+
 func load_controls(saved_config_file: ConfigFile) -> void:
 	if not saved_config_file.has_section("Keyboard Bindings"):
 		return

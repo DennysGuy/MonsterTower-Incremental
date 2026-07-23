@@ -1,12 +1,12 @@
 [gd_resource type="Resource" script_class="Quest" format=3 uid="uid://1iraf0ury1mv"]
 
 [ext_resource type="Script" uid="uid://cu8drgivmhfn" path="res://src/Scripts/item.gd" id="1_to1ue"]
-[ext_resource type="Resource" uid="uid://b4owo1wr47wc" path="res://src/Resources/Dishes/WrappedKabab.tres" id="2_25glh"]
+[ext_resource type="Resource" uid="uid://b4owo1wr47wc" path="res://src/Resources/Dishes/FauxGemMachine.tres" id="2_25glh"]
 [ext_resource type="Script" uid="uid://be6vh0qellkjq" path="res://src/Scripts/Questing/quest.gd" id="2_q7fhk"]
 [ext_resource type="Script" uid="uid://deyfft0rbfjgk" path="res://src/Scripts/Questing/Tasks/task.gd" id="3_25glh"]
-[ext_resource type="Resource" uid="uid://c5lshgfftefd2" path="res://src/Resources/Quests/Intro/SideQuests/IntroductionQuests/AvantGardeAlternativeMedicine1/Tasks/Gather20PurifiedMushieCore.tres" id="5_m4eb2"]
-[ext_resource type="Resource" uid="uid://bom53ck8rj43f" path="res://src/Resources/Quests/Intro/SideQuests/IntroductionQuests/AvantGardeAlternativeMedicine1/Tasks/Gather15BeetleShells.tres" id="6_gemyw"]
-[ext_resource type="Resource" uid="uid://bd2wbe6h2son5" path="res://src/Resources/Quests/Intro/SideQuests/IntroductionQuests/AvantGardeAlternativeMedicine1/Tasks/Gather10SerpantTongues.tres" id="7_n4n72"]
+[ext_resource type="Resource" uid="uid://cp87dya13d4em" path="res://src/Resources/Quests/Intro/SideQuests/IntroductionQuests/AvantGardeAlternativeMedicine1/Tasks/Slay25Goblins.tres" id="6_m4eb2"]
+[ext_resource type="Resource" uid="uid://bmku4bmh6fxfe" path="res://src/Resources/Quests/Intro/SideQuests/IntroductionQuests/AvantGardeAlternativeMedicine1/Tasks/Slay20OrcWarlords.tres" id="7_gemyw"]
+[ext_resource type="Resource" uid="uid://bd2wbe6h2son5" path="res://src/Resources/Quests/Intro/SideQuests/IntroductionQuests/AvantGardeAlternativeMedicine1/Tasks/Gather5SerpantTongues.tres" id="7_n4n72"]
 
 [resource]
 script = ExtResource("2_q7fhk")
@@ -15,7 +15,8 @@ quest_id = 6
 quest_type = 1
 level_needed = 5
 description = "Doctor Tharki
-(Gather 20 Mushie Core, 15 Beetle Shells, 10 Serpant Tongue)
+
+[color=green](Gather 10 Serpant Tongue, Slay 25 Goblin Thiefs and 20 Orc Warlords)[/color ]
 
 \"Hi, I'm Doctor Tharki. 
 
@@ -38,10 +39,10 @@ turn_in_description = "Doctor Tharki
 Wish us luck. Humanity needs this as much as I do.\""
 chapter_relation = "Introduction"
 quest_line = "Cutting Edge Medicine"
-tasks = Array[ExtResource("3_25glh")]([ExtResource("5_m4eb2"), ExtResource("6_gemyw"), ExtResource("7_n4n72")])
-currency_reward = 3000
-xp_reward = 800
+tasks = Array[ExtResource("3_25glh")]([ExtResource("7_n4n72"), ExtResource("6_m4eb2"), ExtResource("7_gemyw")])
+currency_reward = 10000
+xp_reward = 1200
 item_reward = Dictionary[ExtResource("1_to1ue"), int]({
-ExtResource("2_25glh"): 3
+ExtResource("2_25glh"): 7
 })
 metadata/_custom_type_script = "uid://be6vh0qellkjq"

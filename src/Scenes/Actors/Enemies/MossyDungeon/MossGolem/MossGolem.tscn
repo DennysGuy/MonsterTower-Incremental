@@ -31,6 +31,7 @@
 [ext_resource type="AudioStream" uid="uid://da4j7oibbpe1j" path="res://Audio/SFX/Biomes/MossyDungeon/GenericDeath3.wav" id="22_0dfos"]
 [ext_resource type="PackedScene" uid="uid://bsd5w23h513t2" path="res://src/Scenes/Actors/Utilities/WallDetector.tscn" id="23_e8bss"]
 [ext_resource type="PackedScene" uid="uid://crrtithryo2j6" path="res://src/Scenes/Actors/Utilities/GroundDetector.tscn" id="24_qriu3"]
+[ext_resource type="Script" uid="uid://b76huuoc8f6ro" path="res://src/Scripts/Enemies/enemy_hurt_buffer.gd" id="28_w56a2"]
 
 [sub_resource type="Animation" id="Animation_obnqv"]
 resource_name = "Chase"
@@ -503,11 +504,12 @@ idle_state = NodePath("../Idle")
 chase_time = 3.0
 animation_name = "Chase"
 
-[node name="Hit" type="Node" parent="StateMachine" unique_id=1846295729 node_paths=PackedStringArray("idle_state", "chase_state")]
+[node name="Hit" type="Node" parent="StateMachine" unique_id=1846295729 node_paths=PackedStringArray("idle_state", "chase_state", "hurt_buffer_state")]
 script = ExtResource("7_obnqv")
 idle_state = NodePath("../Idle")
 chase_state = NodePath("../Chase")
 wait_time = 0.35
+hurt_buffer_state = NodePath("../HurtBuffer")
 generic_impact_1 = ExtResource("18_5w4p0")
 generic_impact_2 = ExtResource("19_83s5a")
 generic_impact_3 = ExtResource("20_w56a2")
@@ -530,6 +532,12 @@ animation_name = "Death"
 script = ExtResource("9_b2gpq")
 idle_state = NodePath("../Idle")
 animation_name = "SpawnIn"
+
+[node name="HurtBuffer" type="Node" parent="StateMachine" unique_id=1781994936 node_paths=PackedStringArray("idle_state", "chase_state")]
+script = ExtResource("28_w56a2")
+idle_state = NodePath("../Idle")
+chase_state = NodePath("../Chase")
+buffer_time = 0.1
 
 [node name="StatusEffectIconBar" parent="." unique_id=167981235 instance=ExtResource("20_vesba")]
 offset_left = -46.0

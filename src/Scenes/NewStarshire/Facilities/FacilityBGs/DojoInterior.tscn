@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://le1oweji7bum"]
+
+[ext_resource type="Script" uid="uid://daslyotb3ysi2" path="res://src/Scripts/Facilities/FacilitiesInterior/dojo_interior.gd" id="1_56p5k"]
+[ext_resource type="PackedScene" uid="uid://dks1pgavnxl3m" path="res://Assets/Models/Locations/DojoInterior2.gltf" id="1_qcdf5"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_56p5k"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_8m6ji"]
+sky_material = SubResource("ProceduralSkyMaterial_56p5k")
+
+[sub_resource type="Environment" id="Environment_vp26h"]
+background_energy_multiplier = 1.79
+sky = SubResource("Sky_8m6ji")
+ambient_light_source = 3
+ambient_light_energy = 1.16
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="Animation" id="Animation_qcdf5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.3072303, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_56p5k"]
+resource_name = "Rotate"
+length = 35.033333
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10.133333, 19.933332, 29.966667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.3072303, 0), Vector3(0, -0.41887903, 0), Vector3(0, -0.41887903, 0), Vector3(0, 0.3072303, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8m6ji"]
+_data = {
+&"RESET": SubResource("Animation_qcdf5"),
+&"Rotate": SubResource("Animation_56p5k")
+}
+
+[node name="Node3D" type="Node3D" unique_id=980688464]
+script = ExtResource("1_56p5k")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1855184482]
+environment = SubResource("Environment_vp26h")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1089031985]
+root_node = NodePath("../blockbench_export")
+libraries/ = SubResource("AnimationLibrary_8m6ji")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1716493160]
+transform = Transform3D(0.095394015, 0, -0.9954396, 0, 1, 0, 0.9954396, 0, 0.095394015, -5.1378894, 1.1617069, 0.47253203)
+fov = 60.0
+
+[node name="blockbench_export" parent="." unique_id=1665471941 instance=ExtResource("1_qcdf5")]
+transform = Transform3D(0.95317477, 0, 0.30241975, 0, 1, 0, -0.30241975, 0, 0.95317477, -2.0084267, 0, -0.43617082)

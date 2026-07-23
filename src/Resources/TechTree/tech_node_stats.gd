@@ -12,6 +12,8 @@ class_name TechNodeStats extends Resource
 @export var materials_required : Array[Dictionary]
 @export var node_type : TechTreeManager.TECH_NODE_TYPE
 @export var stat_relation : TechTreeManager.STAT_RELATION
+@export var price_scaler : float = 1.0
+
 
 @export_group("Player Stat Data")
 @export var stat_name : String
@@ -27,6 +29,9 @@ how things will be checked:
 '''
 
 @export var prereqs : Array[String] 
+
+func get_cost() -> int:
+	return round(currency_required * pow(price_scaler, current_level))
 
 '''
 Now that we have node handling, we need to actually mutate the world in some way

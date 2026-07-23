@@ -8,14 +8,13 @@
 script = ExtResource("3_6sc3t")
 node_name = "Defense 3"
 icon = ExtResource("1_oo6mk")
-description = "Increases defense by +5 for each level"
+description = "Reduce damage taken from Monsters by 12 per level!"
 max_level = 3
-currency_required = 1500
 materials_required = Array[Dictionary]([{
 ExtResource("2_oo6mk"): 2
 }])
 stat_relation = 1
 stat_name = "Defense"
-upgrade_interval = 5.0
-prereqs = Array[String](["Defense 2:1"])
+upgrade_interval = 12.0
+prereqs = Array[String](["Defense 2:2"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

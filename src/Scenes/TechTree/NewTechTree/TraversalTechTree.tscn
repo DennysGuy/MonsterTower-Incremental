@@ -12,7 +12,8 @@
 [ext_resource type="Resource" uid="uid://cr15fmppvbijx" path="res://src/Resources/TechTree/TechNodes/ClimbingSpeed2.tres" id="9_0ccxk"]
 [ext_resource type="Resource" uid="uid://b6uimiiq8ow5u" path="res://src/Resources/TechTree/TechNodes/DodgeChance1.tres" id="9_syg7x"]
 [ext_resource type="Resource" uid="uid://ohr0gxoujtw2" path="res://src/Resources/TechTree/TechNodes/Movement3.tres" id="10_mtjln"]
-[ext_resource type="Resource" uid="uid://ccrpjjv60pjoe" path="res://src/Resources/TechTree/TechNodes/ClimbingSpeed3.tres" id="11_ijr5h"]
+[ext_resource type="Resource" uid="uid://bfcnex03bip3y" path="res://src/Resources/TechTree/TechNodes/LadderDash.tres" id="11_mtjln"]
+[ext_resource type="Resource" uid="uid://chr1ynm2qbnps" path="res://src/Resources/TechTree/TechNodes/LadderDashDistance1.tres" id="12_0ccxk"]
 [ext_resource type="Resource" uid="uid://b6a033jtmxfu3" path="res://src/Resources/TechTree/TechNodes/DashDistance2.tres" id="12_syg7x"]
 [ext_resource type="Resource" uid="uid://ctjnncini5jvl" path="res://src/Resources/TechTree/TechNodes/DodgeChance2.tres" id="13_mtjln"]
 
@@ -27,123 +28,134 @@ mouse_filter = 1
 script = ExtResource("1_v5alw")
 
 [node name="TechTreeCamera" parent="." unique_id=2137187773 instance=ExtResource("2_jjd58")]
-position = Vector2(896, 256)
+position = Vector2(896, 832)
 
 [node name="JumpHeight1Node" parent="." unique_id=640777626 instance=ExtResource("3_s7m4j")]
 visible = false
 layout_mode = 1
-offset_left = -767.0
-offset_top = 164.0
-offset_right = -767.0
-offset_bottom = 164.0
+offset_left = -64.0
+offset_top = 484.0
+offset_right = -64.0
+offset_bottom = 484.0
 tech_node_stats = ExtResource("4_jjd58")
 
-[node name="JumpHeight2Node" parent="." unique_id=1804535485 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_s7m4j")]
+[node name="JumpHeight2Node" parent="." unique_id=1804535485 node_paths=PackedStringArray("previous_nodes") instance=ExtResource("3_s7m4j")]
 visible = false
 layout_mode = 1
-offset_left = -767.0
-offset_top = -92.0
-offset_right = -767.0
-offset_bottom = -92.0
+offset_left = -63.0
+offset_top = 228.0
+offset_right = -63.0
+offset_bottom = 228.0
 tech_node_stats = ExtResource("5_v5alw")
-previous_node = NodePath("../JumpHeight1Node")
+previous_nodes = [NodePath("../JumpHeight1Node")]
 
-[node name="MovementSpeed1Node" parent="." unique_id=1776225068 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_s7m4j")]
+[node name="MovementSpeed1Node" parent="." unique_id=1776225068 node_paths=PackedStringArray("previous_nodes") instance=ExtResource("3_s7m4j")]
 visible = false
 layout_mode = 1
-offset_left = -255.0
-offset_top = 164.0
-offset_right = -255.0
-offset_bottom = 164.0
+offset_left = 192.0
+offset_top = 356.0
+offset_right = 192.0
+offset_bottom = 356.0
 tech_node_stats = ExtResource("5_0ccxk")
-previous_node = NodePath("../JumpHeight1Node")
+previous_nodes = [NodePath("../JumpHeight1Node")]
 
-[node name="ClimbSpeed1Node" parent="." unique_id=1331020484 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_s7m4j")]
+[node name="MovementSpeed2Node" parent="." unique_id=1302849726 node_paths=PackedStringArray("previous_nodes") instance=ExtResource("3_s7m4j")]
 visible = false
 layout_mode = 1
-offset_left = -255.0
-offset_top = -92.0
-offset_right = -255.0
-offset_bottom = -92.0
-tech_node_stats = ExtResource("6_mtjln")
-previous_node = NodePath("../MovementSpeed1Node")
-
-[node name="DashDistance1Node" parent="." unique_id=1378694411 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_s7m4j")]
-visible = false
-layout_mode = 1
-offset_left = 256.0
-offset_top = 164.0
-offset_right = 256.0
-offset_bottom = 164.0
-tech_node_stats = ExtResource("8_qks27")
-previous_node = NodePath("../JumpHeight1Node")
-
-[node name="DodgeChance1Node" parent="." unique_id=568990658 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_s7m4j")]
-visible = false
-layout_mode = 1
-offset_left = 256.0
-offset_top = -92.0
-offset_right = 256.0
-offset_bottom = -92.0
-tech_node_stats = ExtResource("9_syg7x")
-previous_node = NodePath("../DashDistance1Node")
-
-[node name="MovementSpeed2Node" parent="." unique_id=1302849726 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_s7m4j")]
-visible = false
-layout_mode = 1
-offset_left = 768.0
-offset_top = 164.0
-offset_right = 768.0
-offset_bottom = 164.0
+offset_left = 384.0
+offset_top = 356.0
+offset_right = 384.0
+offset_bottom = 356.0
 tech_node_stats = ExtResource("8_0ccxk")
-previous_node = NodePath("../MovementSpeed1Node")
+previous_nodes = [NodePath("../MovementSpeed1Node")]
 
-[node name="ClimbingSpeed2Node" parent="." unique_id=1305696302 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_s7m4j")]
+[node name="MovementSpeed3Node" parent="." unique_id=1548307285 node_paths=PackedStringArray("previous_nodes") instance=ExtResource("3_s7m4j")]
 visible = false
 layout_mode = 1
-offset_left = 768.0
-offset_top = -93.0
-offset_right = 768.0
-offset_bottom = -93.0
-tech_node_stats = ExtResource("9_0ccxk")
-previous_node = NodePath("../MovementSpeed2Node")
-
-[node name="DashDistance2Node" parent="." unique_id=278369319 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_s7m4j")]
-visible = false
-layout_mode = 1
-offset_left = 1281.0
-offset_top = 165.0
-offset_right = 1281.0
-offset_bottom = 165.0
-tech_node_stats = ExtResource("12_syg7x")
-previous_node = NodePath("../MovementSpeed2Node")
-
-[node name="DodgeChance2Node" parent="." unique_id=1562557631 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_s7m4j")]
-visible = false
-layout_mode = 1
-offset_left = 1281.0
-offset_top = -92.0
-offset_right = 1281.0
-offset_bottom = -92.0
-tech_node_stats = ExtResource("13_mtjln")
-previous_node = NodePath("../DashDistance2Node")
-
-[node name="MovementSpeed3Node" parent="." unique_id=1548307285 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_s7m4j")]
-visible = false
-layout_mode = 1
-offset_left = 1792.0
-offset_top = 163.0
-offset_right = 1792.0
-offset_bottom = 163.0
+offset_left = 576.0
+offset_top = 356.0
+offset_right = 576.0
+offset_bottom = 356.0
 tech_node_stats = ExtResource("10_mtjln")
-previous_node = NodePath("../MovementSpeed2Node")
+previous_nodes = [NodePath(".")]
 
-[node name="ClimbingSpeed3Node" parent="." unique_id=424016797 node_paths=PackedStringArray("previous_node") instance=ExtResource("3_s7m4j")]
+[node name="ClimbSpeed1Node" parent="." unique_id=1331020484 node_paths=PackedStringArray("previous_nodes") instance=ExtResource("3_s7m4j")]
 visible = false
 layout_mode = 1
-offset_left = 1792.0
-offset_top = -92.0
-offset_right = 1792.0
-offset_bottom = -92.0
-tech_node_stats = ExtResource("11_ijr5h")
-previous_node = NodePath("../MovementSpeed3Node")
+offset_left = 193.0
+offset_top = 612.0
+offset_right = 193.0
+offset_bottom = 612.0
+tech_node_stats = ExtResource("6_mtjln")
+previous_nodes = [NodePath("../JumpHeight1Node")]
+
+[node name="ClimbingSpeed2Node" parent="." unique_id=1305696302 node_paths=PackedStringArray("previous_nodes") instance=ExtResource("3_s7m4j")]
+visible = false
+layout_mode = 1
+offset_left = 384.0
+offset_top = 612.0
+offset_right = 384.0
+offset_bottom = 612.0
+tech_node_stats = ExtResource("9_0ccxk")
+previous_nodes = [NodePath("../ClimbSpeed1Node")]
+
+[node name="LadderDash" parent="." unique_id=736636385 node_paths=PackedStringArray("previous_nodes") instance=ExtResource("3_s7m4j")]
+visible = false
+layout_mode = 1
+offset_left = 512.0
+offset_top = 740.0
+offset_right = 512.0
+offset_bottom = 740.0
+tech_node_stats = ExtResource("11_mtjln")
+previous_nodes = [NodePath("../ClimbingSpeed2Node")]
+node_type = 1
+
+[node name="LadderDashDistance1" parent="." unique_id=1683949934 node_paths=PackedStringArray("previous_nodes") instance=ExtResource("3_s7m4j")]
+visible = false
+layout_mode = 1
+offset_left = 640.0
+offset_top = 864.0
+offset_right = 640.0
+offset_bottom = 864.0
+tech_node_stats = ExtResource("12_0ccxk")
+previous_nodes = [NodePath("../LadderDash")]
+
+[node name="DashDistance1Node" parent="." unique_id=1378694411 node_paths=PackedStringArray("previous_nodes") instance=ExtResource("3_s7m4j")]
+visible = false
+layout_mode = 1
+offset_left = -64.0
+offset_top = 740.0
+offset_right = -64.0
+offset_bottom = 740.0
+tech_node_stats = ExtResource("8_qks27")
+previous_nodes = [NodePath("../JumpHeight1Node")]
+
+[node name="DashDistance2Node" parent="." unique_id=278369319 node_paths=PackedStringArray("previous_nodes") instance=ExtResource("3_s7m4j")]
+visible = false
+layout_mode = 1
+offset_left = -64.0
+offset_top = 932.0
+offset_right = -64.0
+offset_bottom = 932.0
+tech_node_stats = ExtResource("12_syg7x")
+previous_nodes = [NodePath("../DashDistance1Node")]
+
+[node name="DodgeChance1Node" parent="." unique_id=568990658 node_paths=PackedStringArray("previous_nodes") instance=ExtResource("3_s7m4j")]
+visible = false
+layout_mode = 1
+offset_left = -320.0
+offset_top = 484.0
+offset_right = -320.0
+offset_bottom = 484.0
+tech_node_stats = ExtResource("9_syg7x")
+previous_nodes = [NodePath("../JumpHeight1Node")]
+
+[node name="DodgeChance2Node" parent="." unique_id=1562557631 node_paths=PackedStringArray("previous_nodes") instance=ExtResource("3_s7m4j")]
+visible = false
+layout_mode = 1
+offset_left = -512.0
+offset_top = 484.0
+offset_right = -512.0
+offset_bottom = 484.0
+tech_node_stats = ExtResource("13_mtjln")
+previous_nodes = [NodePath("../DodgeChance1Node")]

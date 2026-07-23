@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="GeneralTask" format=3 uid="uid://r6a275eopcel"]
+
+[ext_resource type="Script" uid="uid://chhllu0ouv7r6" path="res://src/Scripts/Questing/Tasks/general_task.gd" id="1_fgf8e"]
+
+[resource]
+script = ExtResource("1_fgf8e")
+task_name = "Open Monsterpedia Once"
+task_description = "Open Monsterpedia Once"
+task_id = 45
+parent_quest = "The Thick of It"
+metadata/_custom_type_script = "uid://chhllu0ouv7r6"

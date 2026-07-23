@@ -19,7 +19,7 @@ class_name MonsterSpawnArea extends Area2D
 @onready var respawn_timer: Timer = $RespawnTimer
 @onready var monster_spawn_list: Node = $MonsterSpawnList
 
-
+var can_spawn : bool = true
 
 var spawn_count : int
 
@@ -27,8 +27,9 @@ var spawn_count : int
 func _ready() -> void:
 	SignalBus.spawn_enemies.connect(_spawn)
 	SignalBus.start_enemy_spawn.connect(start_enemy_spawn)
+	CutsceneManager.stop_enemy_spawn.connect(disable_spawn)
+	CutsceneManager.start_enemy_spawn.connect(start_enemy_spawn)
 
-		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
@@ -104,9 +105,17 @@ func respawn_monsters() -> void:
 		monster_spawn_list.add_child(monster)
 
 func start_enemy_spawn() -> void:
+	enable_spawn()
 	respawn_timer.wait_time = respawn_wait_time
 	respawn_timer.start()
 
 func _on_respawn_timer_timeout() -> void:
-	if monster_spawn_list.get_children().size() < max_monsters:
+	if monster_spawn_list.get_children().size() < max_monsters and can_spawn:
 		respawn_monsters()
+
+func enable_spawn() -> void:
+	can_spawn = true
+	
+
+func disable_spawn() -> void:
+	can_spawn = false

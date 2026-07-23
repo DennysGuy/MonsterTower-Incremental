@@ -21,14 +21,14 @@ TODO: We will add saves for classes as well
 	"Current XP" : 0,
 	"Bonus XP" : 0,
 	"Bonus AP" : 0,
-	"Max Jobs Held": 3,
+	"Max Jobs Held": 1,
 	"Highest Floor": 0,
 	"Ability Points": 0,
 	"Class": "Junior Hunter",
 	"Attack Damage" : 13.0,
 	"Tracked Weapon": 1,
 	"Boss Damage Bonus": 0.0,
-	"HP Siphen Amount": 0.0,
+	"HP Siphen Amount": 0.02,
 	"HP Siphen Chance": 0.0,
 	"Insta Kill Chance": 0.0,
 	"Insta Kill Threshold": 0.0,
@@ -50,7 +50,8 @@ TODO: We will add saves for classes as well
 	"Stun Stacks": 1.0,
 	"Dash Speed" : 350.0,
 	"Dash Cooldown" : 2.0,
-	"Dash Duration" : 0.3,
+	"Dash Duration" : 0.2,
+	"Ladder Dash Duration" : 0.15,
 	"Invincibility Duration": 2.5,
 	"Jump Height" : 270.0,
 	"Double Jump Height": 400.0,
@@ -58,10 +59,10 @@ TODO: We will add saves for classes as well
 	"Defense" : 0.0,
 	"Crit Damage" : 1.5,
 	"Accuracy" : 0.6,
-	"Max Health" : 80,
-	"Max MP": 200,
-	"Current Health":60,
-	"Current MP": 200,
+	"Max Health" : 50,
+	"Max MP": 150,
+	"Current Health":50,
+	"Current MP": 150,
 	"HP Recovery": 0.3,
 	"MP Recovery" : 0.4,
 	"Equipped Sword": 0,
@@ -77,13 +78,13 @@ TODO: We will add saves for classes as well
 	"Smelting Speed": 0.15,
 	"Mining Damage": 5,
 	"Monster Cap Bonus": 0,
-	"Expedition Time": 30.0,
+	"Expedition Time": 60.0,
 	"Hunt Time": 30.0,
 	"Cooking Drop Chance Bonus":0.0,
 	"Cooking Accuracy Bonus":0.0,
 	"Ore Drop Chance Bonus":0.0,
 	"Smelting Accuracy Bonus":0.0,
-	"Tier 1 Chest Spawn Rate": 0.25,
+	"Tier 1 Chest Spawn Rate": 0.18,
 	"Tier 1 Gem Drop Rate":0.3,
 	"Chalice Spawn Rate":0.12,
 	"Vial Spawn Rate": 0.12,
@@ -98,6 +99,13 @@ TODO: We will add saves for classes as well
 	"Pick Up Distance": 20.0,
 	"Cooldown Reduction":0.0,
 	"Extra Ore Drop Chance": 0.0,
+	"Bulk Sell Transfer Speed": 1.0,
+	"Market Sell Speed": 5.0,
+	"Auto Sell Transfer Speed": 2.0,
+	"Bulk Sell Slots": 1.0,
+	"Bulk Sell Slot Stack":4.0,
+	"Market Value Multiplier":1.0,
+	"Misc Drop Reduction Multiplier": 0.0
 }
 
 #this will be loaded when we enter the tower entrance map or a map in and of itself
@@ -105,38 +113,44 @@ TODO: We will add saves for classes as well
 #loaded when entering a space that requires this
 @export var tower_entrance_data : Dictionary = {
 	"Floor 1-1" : {
-		"Number of Spawn Locations" : 0,
+		"Number of Spawn Locations" : 1,
 		"Campfires Reached": 0,
+		"Times Entered": 0,
 		"Hunt Challenge Unlocked": false,
 		"Hunt Challenge Completed": false
 	},
 	"Floor 1-2" : {
 		"Number of Spawn Locations" : 0,
 		"Campfires Reached": 0,
+		"Times Entered": 0,
 		"Hunt Challenge Unlocked": false,
 		"Hunt Challenge Completed": false
 	},
 	"Floor 1-3" : {
 		"Number of Spawn Locations" : 0,
 		"Campfires Reached": 0,
+		"Times Entered": 0,
 		"Hunt Challenge Unlocked": false,
 		"Hunt Challenge Completed": false
 	},
 	"Floor 1-4" : {
 		"Number of Spawn Locations" : 0,
 		"Campfires Reached": 0,
+		"Times Entered": 0,
 		"Hunt Challenge Unlocked": false,
 		"Hunt Challenge Completed": false
 	},
 	"Floor 1-5" : {
 		"Number of Spawn Locations" : 0,
 		"Campfires Reached": 0,
+		"Times Entered": 0,
 		"Hunt Challenge Unlocked": false,
 		"Hunt Challenge Completed": false
 	},
 	"Floor 1-6" : {
 		"Number of Spawn Locations" : 0,
 		"Campfires Reached": 0,
+		"Times Entered": 0,
 		"Hunt Challenge Unlocked": false,
 		"Hunt Challenge Completed": false,
 		"Activation Switch Unlocked": false,
@@ -144,6 +158,7 @@ TODO: We will add saves for classes as well
 	"Floor 1-7" : {
 		"Number of Spawn Locations" : 0,
 		"Campfires Reached": 0,
+		"Times Entered": 0,
 		"Hunt Challenge Unlocked": false,
 		"Hunt Challenge Completed": false,
 	},
@@ -152,21 +167,23 @@ TODO: We will add saves for classes as well
 #loadded when we hit "continue game"
 @export var facilities_unlocked : Dictionary = {
 	"Hunter License" : false,
-	"Cooking Station" : false,
+	"Junk-A-Tron" : false,
 	"Crafting Station" : false,
 	"Refinery Station" : false,
 	"Crafting Tab": false,
 	"Bank": false,
 	"Arial Slash" : false,
-	"Dash Attack": false,
+	"Ladder Dash": false,
+	"Dash": false,
 	"Double Jump": false,
 	"Gem Stone Station": false,
 	"HP Chalice" : false,
-	"MP Vial" : false
+	"MP Vial" : false,
+	"Junk A Tron Auto Transfer":false
 }
 
 @export var check_points_unlocked : Dictionary = {
-	"Floor 1-1" : false,
+	"Floor 1-1" : true,
 	"Floor 1-2" : false,
 	"Floor 1-3" : false,
 	"Floor 1-4" : false,
@@ -189,6 +206,13 @@ TODO: We will add saves for classes as well
 	"Accuracy 2": {"Level":0, "Unlocked": false},
 	"Bonus AP 1":{"Level":0, "Unlocked": false},
 	"Bonus XP 1":{"Level":0, "Unlocked": false},
+	"Bulk Sale Slots 1": {"Level":0, "Unlocked": false},
+	"Bulk Sale Slots 2": {"Level":0, "Unlocked": false},
+	"Bulk Sale Slots 3": {"Level":0, "Unlocked": false},
+	"Bulk Sale Slot Stack 1": {"Level":0, "Unlocked": false},
+	"Bulk Sale Slot Stack 2": {"Level":0, "Unlocked": false},
+	"Bulk Sale Slot Stack 3":{"Level":0, "Unlocked": false},
+	"Bulk Sell Transfer Speed":{"Level":1, "Unlocked": false},
 	"Crit Chance 1" : {"Level":0, "Unlocked": false},
 	"Crit Chance 2": {"Level":0, "Unlocked": false},
 	"Crit Chance 3": {"Level":0, "Unlocked":false},
@@ -217,24 +241,26 @@ TODO: We will add saves for classes as well
 	"Monster Cap 1": {"Level":0, "Unlocked": false},
 	"Monster Cap 2": {"Level":0, "Unlocked": false},
 	"Crafting Tab":{"Level":0, "Unlocked": false},
-	"Item Bag 1":{"Level":0, "Unlocked": false},
+	"Item Bag 1":{"Level":0, "Unlocked": true},
 	"Item Bag 2":{"Level":0, "Unlocked": false},
 	"Item Bag 3":{"Level":0, "Unlocked": false},
-	"Deeper Pockets 1":{"Level":0, "Unlocked": true},
+	"Deeper Pockets 1":{"Level":0, "Unlocked": false},
 	"Deeper Pockets 2":{"Level":0, "Unlocked": false},
 	"Deeper Pockets 3":{"Level":0, "Unlocked": false},
-	"Dash Attack":{"Level":0, "Unlocked": true},
+	"Dash":{"Level":0, "Unlocked": true},
 	"Dash Attack Duration 1":{"Level":0, "Unlocked": false},
 	"Banking": {"Level":0, "Unlocked": false},
 	"Banking 2": {"Level":0, "Unlocked": false},
 	"Banking 3": {"Level":0, "Unlocked": false},
-	"Cooking Station": {"Level":0, "Unlocked": true},
-	"Cooking Drops 1": {"Level":0, "Unlocked": false},
-	"Cooking Drops 2": {"Level":0, "Unlocked": false},
-	"Cooking Speed 1":{"Level":0, "Unlocked": false},
-	"Cooking Speed 2":{"Level":0, "Unlocked": false},
-	"Cooking Accuracy 1": {"Level":0, "Unlocked": false},
-	"Cooking Accuracy 2": {"Level":0, "Unlocked": false},
+	"Junk-A-Tron V1": {"Level":0, "Unlocked": true},
+	"Junk Drops 1": {"Level":0, "Unlocked": false},
+	"Junk Drops 2": {"Level":0, "Unlocked": false},
+	"Junk-A-Speedster 1":{"Level":0, "Unlocked": false},
+	"Junk-A-Speedster 2":{"Level":0, "Unlocked": false},
+	"Junk-A-Speedster 3":{"Level":0, "Unlocked": false},
+	"Junk-A-Accuracy 1": {"Level":0, "Unlocked": false},
+	"Junk-A-Accuracy 2": {"Level":0, "Unlocked": false},
+	"Expert Marketeer 1": {"Level":0, "Unlocked": false},
 	"Refinery Station":{"Level":0, "Unlocked": true},
 	"Mining Speed 1": {"Level":0, "Unlocked": false},
 	"Mining Speed 2": {"Level":0, "Unlocked": false},
@@ -279,8 +305,10 @@ TODO: We will add saves for classes as well
 	"Dodge Chance 2": {"Level":0,"Unlocked": false},
 	"Dash Distance 1": {"Level":0,"Unlocked": false},
 	"Dash Distance 2": {"Level":0,"Unlocked": false},
-	"Critical Cooking 1": {"Level":0,"Unlocked": false},
-	"Critical Cooking 2": {"Level":0,"Unlocked": false},
+	"Ladder Dash": {"Level":0,"Unlocked": false},
+	"Ladder Dash Distance 1": {"Level":0,"Unlocked": false},
+	"Crit-A-Tron 1": {"Level":0,"Unlocked": false},
+	"Crit-A-Tron 2": {"Level":0,"Unlocked": false},
 	"Critical Smelting 1": {"Level":0,"Unlocked": false},
 	"Critical Smelting 2": {"Level":0,"Unlocked": false},
 	"Free Range 1": {"Level":0,"Unlocked": false},
@@ -290,18 +318,22 @@ TODO: We will add saves for classes as well
 	"Range Threads 1": {"Level":0,"Unlocked": false},
 	"Polished Turd 1": {"Level":0,"Unlocked": false},
 	"Polished Turd 2": {"Level":0,"Unlocked": false},
+	"Proficient Vendor 1": {"Level":0,"Unlocked": false},
+	"Proficient Vendor 2": {"Level":0,"Unlocked": false},
 	"Salvaged Junk 1": {"Level":0,"Unlocked": false},
 	"Salvaged Junk 2": {"Level":0,"Unlocked": false},
 	"Extra Ore 1": {"Level":0,"Unlocked": false},
 	"Extra Ore 2": {"Level":0,"Unlocked": false},
-	
+	"Junk-A-Auto-Transfer":{"Level":0,"Unlocked": false},
+	"Auto Sell Transfer Speed 1":{"Level":0,"Unlocked": false},
+	"Pro Mover 1": {"Level":0,"Unlocked": false}
 }
 
 @export var equipped_abilities : Dictionary = {
 	"Attack 1" : "uid://c5hss1iq5ontu", #sword swing 1
 	"Attack 2" : "uid://rbc7yawqcf3h", #sword swing 2
 	"Attack 3" : "uid://7qd8qvg4bf73", #sword swing 3
-	"Dash Attack" : "uid://b0lsgfuw8bp58" , #sword dance - for testing purposes
+	"Dash" : "uid://b0lsgfuw8bp58" , #sword dance - for testing purposes
 	"Air Attack" : "uid://bukiike6rf6pl", #sword slam - for testing purposes
 	"Double Jump" : "uid://rgwunwula5mv", #sword soar - for testing purposes
 	"Special Attack" : null, #double cleave - here for testing purposes,
@@ -313,7 +345,7 @@ TODO: We will add saves for classes as well
 
 @export var abilities : Dictionary = {
 	"Junior Hunter" : {
-		"Dash Attack" : {
+		"Dash" : {
 			"Cooldown Time" : 1.5,
 			"HP Cost" : 0.0,
 			"MP Cost" : 0.0,
@@ -362,7 +394,7 @@ TODO: We will add saves for classes as well
 			"Buff Limit Time": 0.0
 		},
 		"Double Jump": {
-			"Cooldown Time" : 0.5,
+			"Cooldown Time" : 0.3,
 			"HP Cost" : 0.0,
 			"MP Cost" : 0.0,
 			"Base Attack": 0.0,
@@ -414,7 +446,7 @@ TODO: We will add saves for classes as well
 		"Combat Ability 1" : {
 			"Cooldown Time" : 6.0,
 			"HP Cost" : 0.0,
-			"MP Cost" : 15.0,
+			"MP Cost" : 13.0,
 			"Base Attack": 50.0,
 			"Number of Enemies Hit" : 10.0,
 			"Max Hit Count": 1.0,
@@ -436,7 +468,7 @@ TODO: We will add saves for classes as well
 			"Buff Limit Time": 0.0
 		},
 		"Combat Ability 2": {
-			"Cooldown Time" : 8.0,
+			"Cooldown Time" : 7.0,
 			"HP Cost" : 0.0,
 			"MP Cost" : 15.0,
 			"Base Attack": 15.0,
@@ -481,15 +513,15 @@ TODO: We will add saves for classes as well
 			"Dash Cooldown" : 0.0,
 			"Dash Speed Modifier" : 0.0,
 			"Knock Back Modifier" : 0.0,
-			"Buff Limit Time": 0.0
+			"Buff Limit Time": 45.0
 		},
 		"Combat Ability 4": {
 			"Cooldown Time" : 5.0,
-			"HP Cost" :10.0,
-			"MP Cost" : 12.0,
+			"HP Cost" :0.0,
+			"MP Cost" : 16.0,
 			"Base Attack": 0.0,
 			"Number of Enemies Hit" : 1.0,
-			"Max Hit Count": 2.0,
+			"Max Hit Count": 1.0,
 			"Health Recovery" : 0.0,
 			"MP Recovery" : 0.0,
 			"Defense Modifier" : 0.0,
@@ -702,22 +734,27 @@ TODO: We will add saves for classes as well
 	},
 	11:{
 		#Gather 10 Bronze Bars
+		"Current Count":0,
 		"Completed": false
 	},
 	12:{
 		#Gather 10 Batclopse Claws
+		"Current Count":0,
 		"Completed": false
 	},
 	13:{
 		#Gather 10 Mushie Fibers
+		"Current Count":0,
 		"Completed": false
 	},
 	14:{
 		#Gather 10 Masks
+		"Current Count":0,
 		"Completed": false
 	},
 	15:{
 		#Gather 25 Bat Wings
+		"Current Count":0,
 		"Completed": false
 	},
 	16: {
@@ -726,22 +763,27 @@ TODO: We will add saves for classes as well
 	},
 	17:{
 		#Gather 20 Beetle Eyes
+		"Current Count":0,
 		"Completed": false
 	},
 	18:{
 		#Gather 10 Beetle Claws
+		"Current Count":0,
 		"Completed": false
 	},
 	19:{
 		#Gather 15 Beetle Shells
+		"Current Count":0,
 		"Completed": false
 	},
 	20:{
 		#Gather 20 Purified Mushie Core
+		"Current Count":0,
 		"Completed": false
 	},
 	21:{
 		#Gather 10 Serpant Tongues
+		"Current Count":0,
 		"Completed": false
 	},
 	22: {
@@ -835,12 +877,24 @@ TODO: We will add saves for classes as well
 	44:{
 		#Defeat the Grey Sentinel
 		"Completed": false
+	},
+	45: {
+		#Open Monsterpedia Once
+		"Completed": false
+	},
+	46: {
+		#Open Recipe Book Once
+		"Completed": false
+	},
+	47: {
+		#Turn In a Job Request
+		"Completed": false
 	}
 }
 
 @export var weapon_status : Dictionary = {
 	0: {"Unlocked":false, "Is Tracked": false},
-	1: {"Unlocked":false, "Is Tracked": false},
+	1: {"Unlocked":false, "Is Tracked": true},
 	2: {"Unlocked":false, "Is Tracked": false},
 	3: {"Unlocked":false, "Is Tracked": false},
 	4: {"Unlocked":false, "Is Tracked": false},
@@ -877,3 +931,14 @@ TODO: We will add saves for classes as well
 	{"Unlocked 1": false, "Unlocked 2": false, "Count": 0},
 	{"Unlocked 1": false, "Unlocked 2": false, "Count": 0},
 ]
+
+@export var progression_states : Dictionary = {
+	"Market Intro Cutscene Played" : false,
+	"First Class Just Unlocked": false,
+	"First Quest Just Unlocked": false,
+}
+
+@export var various_settings : Dictionary = {
+	"Monster Voices Toggled" : true,
+	"Job Selection Notice Cutscene Played": false
+}

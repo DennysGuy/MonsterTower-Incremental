@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_mhehp")
 node_name = "Bonus XP 1"
-description = "Increases  XP received by 2% for each level."
+description = "Increase  XP received by 2% per level."
 max_level = 5
 stat_name = "Bonus XP Multiplier"
 upgrade_interval = 0.02

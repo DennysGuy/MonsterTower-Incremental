@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://dbvatee527mp1"]
+
+[ext_resource type="PackedScene" uid="uid://f0evpo1w8eqi" path="res://Assets/Models/Locations/PalmTree.gltf" id="1_0pqbe"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0pqbe"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_3rseu"]
+sky_material = SubResource("ProceduralSkyMaterial_0pqbe")
+
+[sub_resource type="Environment" id="Environment_2nqri"]
+background_energy_multiplier = 1.8
+sky = SubResource("Sky_3rseu")
+ambient_light_source = 3
+ambient_light_energy = 2.63
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Node3D" type="Node3D" unique_id=217320620]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=938947437]
+environment = SubResource("Environment_2nqri")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1234214365]
+transform = Transform3D(-0.73293483, 0, 0.68029886, 0, 1, 0, -0.68029886, 0, -0.73293483, 5.5380087, 3.2818835, -6.448291)
+fov = 60.0
+
+[node name="blockbench_export" parent="." unique_id=45149431 instance=ExtResource("1_0pqbe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.234784, 0, -0.066853285)

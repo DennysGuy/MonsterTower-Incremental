@@ -5,6 +5,7 @@ class_name TaskListItem extends Control
 @export var icon: TextureRect
 
 var is_turn_in_notice : bool = false
+const TASK_WHOOSH_IN = preload("uid://bjtt00e54ppwb")
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 const TASK_COMPLETED = preload("uid://u4g1ea4v5nkg")
@@ -18,9 +19,18 @@ func _ready() -> void:
 		QuestManager.activate_task(task_data)
 		
 	#animation_player.play("SlideIn")	
+	#if task_data and task_data.completed:
+		#play_completion_animation(task_data.task_id,false)
+
+
+func bring_in_task() -> void:
+	animation_player.play("SlideIn")
+	play_sfx(TASK_WHOOSH_IN,-1.5)
+	await get_tree().create_timer(0.35).timeout
 	if task_data and task_data.completed:
 		play_completion_animation(task_data.task_id,false)
-		
+		await get_tree().create_timer(0.25).timeout
+			
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
@@ -29,7 +39,6 @@ func play_completion_animation(task_id : int, check_for_quest_completion : bool)
 	if !expected_task_id(task_id):
 		return
 		
-	
 	animation_player.play("Complete")
 	await animation_player.animation_finished
 	if check_for_quest_completion:

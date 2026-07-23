@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="HuntingTask" format=3 uid="uid://bjsrgb7yvhecb"]
+
+[ext_resource type="Script" uid="uid://cx5q27bqrlaxf" path="res://src/Scripts/Questing/Tasks/hunting_task.gd" id="1_8n4tp"]
+
+[resource]
+script = ExtResource("1_8n4tp")
+number_to_get = 50
+task_id = 20
+metadata/_custom_type_script = "uid://cx5q27bqrlaxf"

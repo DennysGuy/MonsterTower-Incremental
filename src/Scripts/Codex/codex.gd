@@ -52,8 +52,10 @@ func show_a_menu(menu_type : int) -> void:
 		0:
 			show_stats_page()
 		1:
+			QuestManager.check_general_task_for_completion.emit("Open Recipe Book Once")
 			show_recipe_book()
 		2:
+			QuestManager.check_general_task_for_completion.emit("Open Monsterpedia Once")
 			show_monsterpedia()
 		3:
 			show_quests_log()

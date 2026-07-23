@@ -10,6 +10,8 @@ icon = ExtResource("1_8pj81")
 node_name = "Cyclone Slash"
 max_upgrade_level = 5
 class_relation = "Tyro"
+description = "Mimick the nature of a cyclone, slashing in 360 degrees and pulling enemies towards you. 
+Enemies are silenced in the process rendering them unable to attack for a period of time."
 ap_cost = 1
 node_type = 1
 ability_category = "Combat Ability 1"

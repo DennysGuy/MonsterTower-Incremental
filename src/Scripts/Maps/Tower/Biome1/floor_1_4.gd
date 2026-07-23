@@ -27,12 +27,12 @@ func _ready() -> void:
 	if monster_spawn_node:
 		if GameManager.hunt_challenge_selected:
 			#hud.animation_player.play("StartHuntChallnge")
-			SignalBus.update_monsters_left.emit("Defeat all Monsters to win!",false,false)
+			update_monster_count()
 		else:
 			SignalBus.update_monsters_left.emit("Campfires Discovered: %s/%s" % [tower_entrance_data.camp_fires_reached, tower_entrance_data.total_camp_fires],false)
 	
-	PlayerHudSignalBus.update_player_health.emit()
-	PlayerHudSignalBus.update_player_mp.emit()
+	#PlayerHudSignalBus.update_player_health.emit()
+	#PlayerHudSignalBus.update_player_mp.emit()
 
 	if GameManager.hunt_challenge_selected:
 		GameManager.enemies_can_move = false
@@ -50,20 +50,34 @@ func _ready() -> void:
 		if tower_entrance_data.hunt_challenge_completed:
 			#SignalBus.unlock_next_room.emit()
 			PlayerHudSignalBus.update_kill_quota_text.emit("", tower_entrance_data.hunt_challenge_completed, tower_entrance_data.hunt_challenge_unlocked)
+			SignalBus.start_enemy_spawn.emit()
+			PlayerHudSignalBus.start_stop_watch.emit()
 		else:
 			#PlayerHudSignalBus.update_kill_quota_text.emit("", false, tower_entrance_data.hunt_challenge_unlocked)
 			if tower_entrance_data.is_challenge_floor() and tower_entrance_data.hunt_challenge_unlocked and !tower_entrance_data.hunt_challenge_completed:
 				PlayerHudSignalBus.show_hunt_challenge_button.emit()
 			else:
 				SignalBus.hide_hunt_challenge_button.emit()
+			
+			if tower_entrance_data.times_entered == 1:
+				issue_challenge_objective_notice()
+			else:
+				CodexManager.send_codex_notification.emit("Complete the Floor Challenge!")
+				SignalBus.start_enemy_spawn.emit()
+				PlayerHudSignalBus.start_stop_watch.emit()
 		
-		SignalBus.start_enemy_spawn.emit()
-		PlayerHudSignalBus.start_stop_watch.emit()
+
+			
 	
+
+
+		
 	unlock_quests()
 	
 	PlayerHudSignalBus.update_map_name_label.emit(map_name)
 	SignalBus.update_banner_info.emit(tower_entrance_data)
+	
+
 	
 func _process(delta: float) -> void:
 	super(delta)

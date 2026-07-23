@@ -2,16 +2,17 @@ class_name CraftingStationCrafting extends State
 
 @export var idle_state : State
 
-const COOKING_SFX = preload("uid://bnslqqjqnb8y2")
 const SMELTING_SFX = preload("uid://ds0to3h3m8yir")
+
+const JUNK_A_TRON = preload("uid://bta8jkic20knc")
 
 
 func enter() -> void:
 	parent.crafting_progressbar.value = 0
 	parent.update_quantity_details()
-	
+	parent.activate()
 	if parent.station_type == parent.STATION_TYPE.COOKING:
-		parent.sfx_player.play_sfx(COOKING_SFX)
+		parent.sfx_player.play_sfx(JUNK_A_TRON)
 	else:
 		parent.sfx_player.play_sfx(SMELTING_SFX)
 	
@@ -21,6 +22,8 @@ func exit() -> void:
 		parent.stored_recipe = null
 		parent.crafting_started = false
 		parent.hide_crafting_tracker()
+	parent.current_pitch = 1.0
+	parent.deactivate()
 	parent.sfx_player.stop()
 	
 func process_input(_event: InputEvent) -> State:
@@ -37,8 +40,16 @@ func process_physics(_delta: float) -> State:
 				parent.crafting_progressbar.value += PlayerStats.player_stats["Smelting Speed"]
 			
 	if parent.crafting_progressbar.value >= parent.crafting_progressbar.max_value:
+	
 		var num_check = randi_range(0,100)
-		var success_rate : float = parent.stored_recipe.success_rate
+		
+		var success_rate : float = 0
+		if parent.stored_recipe:
+			success_rate = parent.stored_recipe.success_rate
+		else:
+			success_rate = 0
+			num_check = 1000
+		
 		match parent.station_type:
 			parent.STATION_TYPE.COOKING:
 				success_rate += PlayerStats.player_stats["Cooking Accuracy Bonus"]
@@ -46,7 +57,7 @@ func process_physics(_delta: float) -> State:
 				success_rate += PlayerStats.player_stats["Smelting Accuracy Bonus"]
 				
 		if num_check <= int(success_rate*100):
-			var crit_success_chance : float = 0
+			var crit_success_chance : float = 0.0
 			match parent.station_type:
 				parent.STATION_TYPE.COOKING:
 					crit_success_chance = PlayerStats.player_stats["Critical Cooking Chance"]
@@ -62,7 +73,8 @@ func process_physics(_delta: float) -> State:
 					#await get_tree().create_timer(0.3).timeout
 			else:
 				parent.play_success_sfx()
-				parent.spawn_item(parent.stored_recipe.output_item)
+				var random_offset : Vector2i = Vector2i(randi_range(-50,50),0)
+				parent.spawn_item(parent.stored_recipe.output_item, random_offset)
 		else:
 			var item : Item
 			match parent.station_type:

@@ -2,7 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://bpuvul1oargs6" path="res://Assets/TechTree/SurvivalNodes/HPChalice_Disabled_Graphic.png" id="1_6savn"]
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_57xjm"]
-[ext_resource type="Resource" uid="uid://d0wo8tvdfk8j1" path="res://src/Resources/Dishes/HuntersStew.tres" id="1_b8hcr"]
 [ext_resource type="Texture2D" uid="uid://cnvwfik7o4eq0" path="res://Assets/TechTree/SurvivalNodes/HPChalice_Graphic.png" id="2_p52bn"]
 
 [resource]
@@ -10,13 +9,10 @@ script = ExtResource("1_57xjm")
 node_name = "Chalice of Welfare"
 icon = ExtResource("2_p52bn")
 disabled_icon = ExtResource("1_6savn")
-description = "Health Chalices will spawn in the tower healing the player for 10% of their current Health"
-currency_required = 1500
-materials_required = Array[Dictionary]([{
-ExtResource("1_b8hcr"): 1
-}])
+description = "Adds Health Chalices to the tower that heal you for 10% of your current Health."
+currency_required = 1000
 node_type = 1
 stat_relation = 1
 stat_name = "HP Chalice"
-prereqs = Array[String](["Max HP 2:1"])
+prereqs = Array[String](["Max HP 1:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

@@ -7,10 +7,10 @@
 [resource]
 script = ExtResource("1_vix55")
 socket_graphic = ExtResource("3_whw8m")
-drop_rate = 10.0
-attack_percentage_bonus = 0.05
-crit_chance_bonus = 0.03
-crit_damage_bonus = 0.03
+drop_rate = 20.0
+attack_percentage_bonus = 0.15
+crit_chance_bonus = 0.1
+crit_damage_bonus = 0.05
 item_name = "Gem of Courage I"
 item_type = 4
 sell_value = 100

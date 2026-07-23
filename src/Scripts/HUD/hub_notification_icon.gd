@@ -40,29 +40,33 @@ func _process(delta: float) -> void:
 func set_icon() -> void:
 	match icon_type:
 		ICON_TYPE.CRAFTING:
-			if PlayerStats.can_craft_next_sword():
+			if PlayerStats.can_craft_weapon():
 				if !is_enabled:
 					icon.texture = GEAR_NOTIFICATION_ICON_ENABLED
 					notice.text = "Gear ready to craft!"
 					is_enabled = true
+					HubManager.show_facility_notification.emit("Weapon Crafting Station")
 					play_sfx(CRAFTING_NOTIFICATION)
 					start_pulse()
 			else:
 				stop_pulse()
+				HubManager.hide_facility_notification.emit("Weapon Crafting Station")
 				icon.texture = GEAR_NOTIFICATION_ICON_DISABLED
 				is_enabled = false
 					
 		ICON_TYPE.COOKING:
 			if populate_craftable_items_list(CookingManager.cooking_recipes):
-				if !is_enabled:
+				if !is_enabled and PlayerStats.facilities_unlocked["Junk-A-Tron"]:
 					play_sfx(COOKING_NOTIFICATION)
 					icon.texture = COOKING_NOTIFICATION_ICON_ENABLED
-					notice.text = "Dish ready to cook!"
+					notice.text = "Recipes ready to craft!"
+					HubManager.show_facility_notification.emit("Junk-A-Tron")
 					is_enabled = true
 					start_pulse()
 			else:
 				stop_pulse()
 				icon.texture = COOKING_NOTIFICATION_ICON_DISABLED
+				HubManager.hide_facility_notification.emit("Junk-A-Tron")
 				is_enabled = false
 					
 		ICON_TYPE.SMELTING:
@@ -72,10 +76,12 @@ func set_icon() -> void:
 					notice.text= "Bar ready to smelt!"
 					icon.texture = SMELTING_NOTIFICATION_ICON_ENABLED
 					is_enabled = true
+					HubManager.show_facility_notification.emit("Smelting Station")
 					start_pulse()
 			else:
 				stop_pulse()
 				icon.texture = SMELTING_NOTIFICATION_ICON_DISABLED
+				HubManager.hide_facility_notification.emit("Smelting Station")
 				is_enabled = false
 				
 		ICON_TYPE.AP:

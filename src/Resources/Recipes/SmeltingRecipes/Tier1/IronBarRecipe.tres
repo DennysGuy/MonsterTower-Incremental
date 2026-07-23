@@ -20,4 +20,5 @@ recipe_list = Array[Dictionary]([{
 ExtResource("3_ftq1i"): 3
 }])
 related_nodes = Array[String](["Attack 3", "Crit Chance 3", "Crit Damage 3", "Breadth Threshold 1", "Combat Cooldown 2", "Critical Smelting 2", "Dash Distance 2", "Free Heat 2", "Insta Kill 1", "Last Breadth 1", "Mining Bolt Chain 1", "Refinery Accuracy 2", "Refinery Speed 2"])
+related_floors = Array[String](["Mossy Dungeon - Floor 3", "Mossy Dungeon - Floor 4", "Mossy Dungeon - Floor 5"])
 metadata/_custom_type_script = "uid://cljygiasf4103"

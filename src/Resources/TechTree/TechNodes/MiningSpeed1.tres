@@ -9,12 +9,12 @@ script = ExtResource("2_wiynt")
 node_name = "Mining Speed 1"
 icon = ExtResource("2_1l6iv")
 disabled_icon = ExtResource("1_wiynt")
-description = "Increase Pickaxe Damage to ore rocks +5 for each level
-"
+description = "Increase Pickaxe damage against ore rocks by +5 per level."
 max_level = 5
 currency_required = 300
 stat_relation = 5
+price_scaler = 1.3
 stat_name = "Mining Damage"
 upgrade_interval = 5.0
-prereqs = Array[String](["Refinery Speed 1:1"])
+prereqs = Array[String](["Refinery Station:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

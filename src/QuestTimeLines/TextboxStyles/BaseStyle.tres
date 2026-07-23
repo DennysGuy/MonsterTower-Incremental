@@ -17,7 +17,7 @@ script = ExtResource("2_p4q15")
 scene = ExtResource("1_ae3ch")
 overrides = {
 "global_bg_color": "Color(0.3227109, 0.11444092, 0.390625, 1)",
-"global_font": "\"res://Assets/Fonts/GrapeSoda.ttf\"",
+"global_font": "\"res://Assets/Fonts/FredokaOne-Regular.ttf\"",
 "global_font_size": "36.0"
 }
 
@@ -39,8 +39,10 @@ scene = ExtResource("6_wcsru")
 overrides = {
 "box_animation_in": "1",
 "box_animation_out": "1",
-"box_size": "Vector2(1200, 200)",
-"text_size": "24.0"
+"box_margin_bottom": "100.0",
+"box_size": "Vector2(1600, 220)",
+"typing_sounds_sounds_folder": "\"res://src/QuestTimeLines/TowerGuideBeep\"",
+"typing_sounds_volume": "20.0"
 }
 
 [sub_resource type="Resource" id="Resource_qnyx6"]

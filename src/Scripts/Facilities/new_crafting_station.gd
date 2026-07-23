@@ -15,6 +15,7 @@ enum STATION_TYPE {SMELTING,COOKING}
 @onready var crafting_station_menu_item: CraftingStationMenuItem = $CraftingProcessIcon/CraftingStationMenuItem
 
 @onready var sfx_player: SFXPlayer = $SfxPlayer
+@onready var station_animation_player: AnimationPlayer = $StationAnimationPlayer
 
 var crafting_started : bool = false
 var crafting_quantity : int = 0
@@ -23,8 +24,12 @@ var stored_recipe : CraftingRecipe
 var player_in_range : bool = false
 var player : Player
 
-const TEMP_COOKING_RANGE = preload("uid://bry4670ns2btd")
-const TEMP_COOKING_RANGE_CONTSTRUCTION = preload("uid://53gha3pmge8a")
+@onready var dust_balls: CPUParticles2D = $DustBalls
+@onready var smoke_clouds_junka: CPUParticles2D = $SmokeCloudsJunka
+@onready var smoke_clouds_smelting: CPUParticles2D = $SmokeCloudsSmelting
+
+const TEMP_COOKING_RANGE = preload("uid://bhoricf6h50pj")
+const TEMP_COOKING_RANGE_CONTSTRUCTION = preload("uid://lqprwtlaufoc")
 
 const SMELTING_STATION_CONTRUCTION_MODE = preload("uid://chhm5f5xmlr0j")
 const SMELTING_STATION = preload("uid://btbqj1pb1hac")
@@ -33,7 +38,11 @@ const FAILURE = preload("uid://cv5p7ufgqluno")
 const SUCCESS = preload("uid://dj3e1mi4ks8sr")
 const CRIT_SUCCESS_FAN_FARE = preload("uid://dg17w86m3muje")
 
+const TURN_OUT_ITEM = preload("uid://bd2rssv5wcn04")
+const JUNK_A_TRON_DEACTIVATE = preload("uid://8sn8e11vq65o")
+
 @onready var arrow_at_ore: Sprite2D = $ArrowAtOre
+@onready var arrow_at_ore_2: Sprite2D = $ArrowAtOre2
 
 
 @onready var cant_open_notice: Label = $CantOpenNotice
@@ -43,7 +52,7 @@ const CRIT_SUCCESS_FAN_FARE = preload("uid://dg17w86m3muje")
 @onready var crafting_tracker_player: AnimationPlayer = $CraftingTrackerPlayer
 
 var stored_crafting_menu : NewCraftingStationMenu = null
-	
+var current_pitch : float = 1.0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	match station_type:
@@ -53,15 +62,17 @@ func _ready() -> void:
 			if PlayerStats.facilities_unlocked["Refinery Station"]:
 				station_graphic.texture = SMELTING_STATION
 				arrow_at_ore.show()
+				arrow_at_ore_2.show()
 			else:
 				station_graphic.texture = SMELTING_STATION_CONTRUCTION_MODE
 			
 		STATION_TYPE.COOKING:
-			name_tag.tag.text = "Cooking Range"
+			name_tag.tag.text = "Junk-a-Tron"
 			station_graphic.texture = TEMP_COOKING_RANGE
-			if PlayerStats.facilities_unlocked["Cooking Station"]:
+			if PlayerStats.facilities_unlocked["Junk-A-Tron"]:
 				station_graphic.texture = TEMP_COOKING_RANGE
 				arrow_at_ore.show()
+				arrow_at_ore_2.show()
 			else:
 				station_graphic.texture = TEMP_COOKING_RANGE_CONTSTRUCTION
 				
@@ -85,7 +96,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		var can_open_station : bool
 		match station_type:
 			STATION_TYPE.COOKING:
-				can_open_station = PlayerStats.facilities_unlocked["Cooking Station"]
+				can_open_station = PlayerStats.facilities_unlocked["Junk-A-Tron"]
 			STATION_TYPE.SMELTING:
 				can_open_station = PlayerStats.facilities_unlocked["Refinery Station"]
 
@@ -100,7 +111,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 				STATION_TYPE.SMELTING:
 					cant_open_notice.text = "Unlock Refinery Node to access"
 				STATION_TYPE.COOKING:
-					cant_open_notice.text = "Unlock Cooking Range Node to access"
+					cant_open_notice.text = "Unlock Junk-A-Tron Node to access"
 			cant_open_notice.show()
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
@@ -190,11 +201,32 @@ func hide_crafting_tracker() -> void:
 func update_quantity_details() -> void:
 	crafting_station_menu_item.count_label.text = str(crafting_quantity)
 
-func play_sfx(sound: AudioStream, volume: float = 0.0):
+func activate() -> void:
+	dust_balls.emitting = true
+	
+	if station_type == STATION_TYPE.SMELTING:
+		smoke_clouds_smelting.emitting = true
+	else:
+		smoke_clouds_junka.emitting = true
+	
+	station_animation_player.play("Active")
+
+func deactivate() -> void:
+	dust_balls.emitting = false
+	smoke_clouds_junka.emitting = false
+	smoke_clouds_smelting.emitting = false
+	
+	if station_type == STATION_TYPE.COOKING:
+		play_sfx(JUNK_A_TRON_DEACTIVATE)
+	
+	station_animation_player.play("Deactive")
+
+func play_sfx(sound: AudioStream, volume: float = 0.0, pitch_scale : float = 1.0):
 	var player := AudioStreamPlayer.new()
 	player.stream = sound
 	player.volume_db = volume
 	player.bus = &"SFX"
+	player.pitch_scale = pitch_scale
 	add_child(player)
 	player.play()
 	player.finished.connect(player.queue_free)
@@ -219,22 +251,38 @@ func _on_cancel_crafting_button_button_up() -> void:
 	stored_recipe = null
 
 func spawn_item(item : Item, offset : Vector2 = Vector2.ZERO) -> void:
+	craft_finished_tween()
 	var item_interactable : ItemInteractable = preload("uid://dgtobkubdjq27").instantiate()
-	item_interactable.item = item
-	item_interactable.perishable = false
-	item_interactable.icon.texture = item.shop_icon
-	item_interactable.global_position = global_position + offset
+	var junk_interactable : JunkInteractable = preload("uid://cy553hhcfucv7").instantiate()
 	
 	match station_type:
 		STATION_TYPE.SMELTING:
-			CodexManager.increment_bar_recipe_list_item_count(stored_recipe.index)
+			if stored_recipe:
+				CodexManager.increment_bar_recipe_list_item_count(stored_recipe.index)
+			
+			item_interactable.item = item
+			item_interactable.perishable = false
+			item_interactable.icon.texture = item.shop_icon
+			item_interactable.global_position = global_position + offset
+	
 		STATION_TYPE.COOKING:
-			CodexManager.increment_dish_recipe_list_item_count(stored_recipe.index)
+			if stored_recipe:
+				CodexManager.increment_dish_recipe_list_item_count(stored_recipe.index)
+		
+			junk_interactable.item = item
+			junk_interactable.icon.texture = item.shop_icon
+			junk_interactable.global_position = global_position + offset
 	
-	#check if free range/heat hits
-	spawn_crafting_recipe_items()
-	
-	get_parent().add_child(item_interactable)
+	SignalBus.shake_camera.emit(2.0)
+	play_sfx(TURN_OUT_ITEM, 1.0, current_pitch)
+	if current_pitch < 2.0:
+		current_pitch += 0.2
+		
+	match station_type:
+		STATION_TYPE.SMELTING:
+			get_parent().add_child(item_interactable)
+		STATION_TYPE.COOKING:
+			get_parent().add_child(junk_interactable)
 
 func spawn_crafting_recipe_items() -> void:
 	if !check_for_free_craft():
@@ -245,12 +293,8 @@ func spawn_crafting_recipe_items() -> void:
 		for num in range(crafting_quantity):
 			for key in ingredient.keys():
 				for i in range(ingredient[key]):
-					var spawn : ItemInteractable = preload("uid://dgtobkubdjq27").instantiate()
-					spawn.icon.texture = key.shop_icon
-					spawn.item = key
-					spawn.global_position = global_position + Vector2(global_position.x + offset, global_position.y)
+					spawn_item(key,Vector2(offset,self.global_position.y))
 					play_sfx(PULL_ITEM_1)
-					get_parent().add_child(spawn)
 					offset += 5
 					await get_tree().create_timer(0.1).timeout
 				
@@ -268,3 +312,29 @@ func check_for_free_craft() -> bool:
 				return true
 		
 	return false
+
+func craft_finished_tween() -> void:
+	var tween := create_tween()
+
+	tween.tween_property(
+		station_graphic,
+		"scale",
+		Vector2(0.9, 0.9),
+		0.1
+	)
+
+	tween.tween_property(
+		station_graphic,
+		"scale",
+		Vector2(1.1, 1.1),
+		0.1
+	)
+
+	tween.tween_property(
+		station_graphic,
+		"scale",
+		Vector2(1.0, 1.0),
+		0.1
+	)
+
+	await tween.finished

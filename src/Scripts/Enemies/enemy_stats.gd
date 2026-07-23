@@ -9,6 +9,7 @@ class_name EnemyStats extends Resource
 @export var can_attack : bool = false
 @export var can_move : bool = false
 @export var idle_animation : Texture2D
+@export var floor_locations : Array[String]
 @export_enum("Aggro", "PassiveAggro", "Passive") var enemy_type : int
 enum ENEMY_TYPE {AGGRO, PASSIVEAGGRO, PASSIVE}
 enum BIOME {MOSSY_DUNGEON}
@@ -25,6 +26,10 @@ enum BIOME {MOSSY_DUNGEON}
 @export_group("Audio Files")
 @export var hit_sfx : AudioStream
 @export var die_sfx : AudioStream
+@export var hit_vox_1 : AudioStream
+@export var hit_vox_2 : AudioStream
+@export var hit_vox_3 : AudioStream
+@export var die_vox : AudioStream
 @export var movement_sfx : AudioStream
 
 @export_group("Item Drops")
@@ -47,3 +52,7 @@ func get_biome_name() -> String:
 			return "Mossy Dungeon"
 	
 	return ""
+
+func get_random_hit_vox() -> AudioStream:
+	var vox_range : Array[AudioStream] = [hit_vox_1,hit_vox_2,hit_vox_3]
+	return vox_range.pick_random()

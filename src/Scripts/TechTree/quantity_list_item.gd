@@ -1,7 +1,7 @@
 class_name QuantityListItem extends Panel
 
 @export var icon: TextureRect
-@export var quantity_label: Label
+@export var quantity_label: RichTextLabel
 
 
 func _ready() -> void:

@@ -14,17 +14,19 @@ func enter() -> void:
 	parent.sfx_player.play_sfx(jump_sfx)
 	parent.set_sword_texture(animation_name)
 	parent.set_outfit_texture(animation_name)
-
+	parent.double_jump_buffer = parent.double_jump_buffer_wait_time
 	parent.velocity.y = 0
-	parent.velocity.y -= (PlayerStats.player_stats["Jump Height"] + PlayerStats.get_total_gem_bonus("Jump Height Bonus") + PlayerStats.get_current_sword().jump_height_bonus)
+	parent.velocity.y -= (PlayerStats.player_stats["Jump Height"] +PlayerStats.get_current_sword().get_total_jump_height_bonus())
+	parent.early_jump_cancel_timer = 0.05
 
 func exit() -> void:
 	pass
 
 func process_input(_event: InputEvent) -> State:
 	if Input.is_action_just_pressed("add_currency") and PlayerStats.facilities_unlocked["Double Jump"] and parent.can_issue_ability("Double Jump") and parent.can_double_jump and GameManager.can_issue_abilities:
-		parent.jump_buffer_timer = parent.jump_buffer_wait_time
-		return double_jump
+		if parent.double_jump_buffer <= 0:
+			parent.jump_buffer_timer = parent.jump_buffer_wait_time
+			return double_jump
 	return null
 
 func process_frame(_delta: float) -> State:
@@ -35,10 +37,13 @@ func process_physics(_delta: float) -> State:
 	if parent.velocity.y > 0:
 		return fall_state
 	
-	if Input.is_action_just_pressed("swing_sword") and PlayerStats.facilities_unlocked["Arial Slash"] and parent.can_issue_ability("Air Attack") and GameManager.can_issue_abilities:
+	
+	
+	if Input.is_action_pressed("swing_sword") and parent.early_jump_cancel_timer < 0 and PlayerStats.facilities_unlocked["Arial Slash"] and parent.can_issue_ability("Air Attack") and GameManager.can_issue_abilities:
 		return air_attack
 	
-	if Input.is_action_just_pressed("dash_attack") and PlayerStats.facilities_unlocked["Dash Attack"]:
+	if Input.is_action_just_pressed("dash_attack") and PlayerStats.facilities_unlocked["Dash"] and parent.can_issue_ability("Dash"):
+		print("in jump state: %s"% parent.can_dash_attack)
 		return dash_attack
 	
 	var movement =  (Input.get_axis("pan_cam_left","pan_cam_right") * PlayerStats.player_stats["Movement Speed"] * 1.3)

@@ -4,6 +4,9 @@
 [ext_resource type="Script" uid="uid://bwqf7q51702b" path="res://src/Scripts/cability.gd" id="1_ilc24"]
 [ext_resource type="Texture2D" uid="uid://cbdaaeunx7tdl" path="res://Assets/HUD/CombatAbilityIcons/IronBodyIcon.png" id="2_oifkt"]
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bgk42"]
+load_path = "res://.godot/imported/IronBodyIcon_Disabled.png-bd72e74bb520ca71a35b392264155d6b.ctex"
+
 [resource]
 script = ExtResource("1_ilc24")
 ability_name = "Iron Body"
@@ -11,10 +14,12 @@ class_relation = "Tyro"
 ability_type = 7
 cooldown_time = 15.0
 icon = ExtResource("2_oifkt")
-ability_description = "Surround yourself with summoned energy. The summoned energy increases your defense and lowers your knockback distance for a brief period of time."
+disabled_icon = SubResource("CompressedTexture2D_bgk42")
+is_combat_ability = true
+ability_description = "Surround yourself with summoned energy for a limited amount of time (30 sec. starting). The summoned energy increases your defense and lowers your knockback distance for a brief period of time."
 ability_behavior = ExtResource("1_epghi")
-mp_cost = 25.0
+mp_cost = 30.0
 defense_modifier = 2.0
 knock_back_modifier = 0.4
-buff_limit_time = 20.0
+buff_limit_time = 45.0
 metadata/_custom_type_script = "uid://bwqf7q51702b"

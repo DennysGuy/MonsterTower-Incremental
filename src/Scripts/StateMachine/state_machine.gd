@@ -64,7 +64,8 @@ func process_physics(delta: float) -> void:
 		if parent.is_on_floor() or !parent.apply_gravity:
 			parent.velocity.y = 0
 		else:
-			parent.velocity.y += GameManager.gravity * delta
+			var gravity : float = GameManager.gravity if parent.velocity.y < 0.0 else GameManager.gravity + 700
+			parent.velocity.y += gravity * delta
 
 	if next_state != null:
 		change_state(next_state)

@@ -20,11 +20,13 @@ class_name ClassWeaponCraftingMenu extends Control
 @onready var warrior_weapon_container: GridContainer = $ForeGround/WarriorWeaponContainer
 @onready var weapon_mold_graphic: TextureRect = $ForeGround/WeaponMoldGraphic
 @onready var action_button: Button = $ForeGround/ActionButton
+@onready var weapon_previewer: WeaponPreviewer = $ForeGround/SubViewportContainer2/SubViewport/WeaponPreviewer
 
 @export var stored_weapon : Sword
 
 const GEAR_STATION_DROPS_BAG_BG = preload("uid://dqrwhfhixd1io")
 const GEAR_STATION_USE_BAG_BG = preload("uid://b5o4unayrrfi")
+const NEW_WEAPON_CRAFTING_STATION_UPDATE_SCENE = preload("uid://olt7ljpn0wpg")
 
 var selected_bag : String = "Drops"
 
@@ -33,8 +35,6 @@ var description_panel_showing : bool = false
 
 const JOB_ACCEPT_JINGLE = preload("uid://dinxl1rs2y55v")
 
-
-
 enum STATE {IDLE, CAN_CRAFT, CAN_TRACK, CAN_EQUIP}
 var state : STATE = STATE.IDLE
 
@@ -42,7 +42,15 @@ var state : STATE = STATE.IDLE
 func _ready() -> void:
 	SignalBus.populate_weapon_description_panel.connect(select_weapon)
 	update_inventory_containers()
+	if GameManager.first_class_just_unlocked:
+		Dialogic.start(NEW_WEAPON_CRAFTING_STATION_UPDATE_SCENE)
+		GameManager.first_class_just_unlocked = false
 	
+	if PlayerStats.player_stats["Tracked Weapon"] != -1:
+		select_weapon(PlayerStats.get_sword(PlayerStats.player_stats["Tracked Weapon"]))
+	else:
+		select_weapon(PlayerStats.get_current_sword())
+		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("close_menu"):
@@ -60,12 +68,19 @@ func _on_action_button_button_up() -> void:
 func craft_sequence() -> void:
 	SaveManager.save_weapon_unlocked_status(stored_weapon.index, true)
 	SaveManager.save_weapon_tracked_status(stored_weapon.index, false)
-	#Play crafting animation which then leads to the equipped animation
+	InventoryManager.remove_resources_from_inventory(stored_weapon.recipe.recipe_list)
+	PlayerStats.player_stats["Tracked Weapon"] = -1
+	SaveManager.save_player_stats()
+	
+	stored_weapon.is_tracked = SaveManager.get_weapon_tracked_status(stored_weapon.index)
+	stored_weapon.unlocked = SaveManager.get_weapon_unlocked_status(stored_weapon.index)
+	SignalBus.update_held_weapon.emit(stored_weapon)
+	SignalBus.disable_tracked_icon.emit(stored_weapon.index)
+	
 	equip_weapon()
 	spawn_crafting_sequence()
 	select_weapon(stored_weapon)
 	
-
 func equip_weapon() -> void:
 	PlayerStats.player_stats["Equipped Sword"] = stored_weapon.index
 	SaveManager.save_player_stats()
@@ -74,18 +89,28 @@ func equip_weapon() -> void:
 	spawn_equipped_sequence()
 
 func track_weapon_recipe() -> void:
+	if PlayerStats.player_stats["Tracked Weapon"] > -1:
+		var previous_weapon : Sword = PlayerStats.get_sword(PlayerStats.player_stats["Tracked Weapon"])
+		SaveManager.save_weapon_tracked_status(previous_weapon.index, false)
+		SignalBus.disable_tracked_icon.emit(previous_weapon.index)
+	
 	PlayerStats.set_tracked_weapon_index(stored_weapon.index) 
 	SaveManager.save_player_stats()
-	SaveManager.save_weapon_unlocked_status(stored_weapon.index, true)
+	SaveManager.save_weapon_tracked_status(stored_weapon.index, true)
 	SignalBus.update_resource_needed_panel.emit()
+	SignalBus.show_tracked_icon.emit(stored_weapon.index)
+	QuestManager.weapon_tracker_updated.emit()
 	select_weapon(stored_weapon)
 	play_sfx(JOB_ACCEPT_JINGLE)
 
 func exit_menu() -> void:
-	GameManager.player_can_move = true
-	GameManager.can_pause_game = true
-	GameManager.can_open_bag = true
-	GameManager.can_open_tower_map = true
+	CutsceneManager.enable_player_functionality()
+	
+	SignalBus.update_resource_needed_panel.emit()
+	SignalBus.check_for_notification.emit(GameManager.NOTIFICATION_TYPE.CRAFTING)
+	
+	PlayerHudSignalBus.hub_menu_exited.emit()
+	await get_tree().create_timer(0.3).timeout
 	SignalBus.hide_tech_tree_canvas_layer.emit()
 	queue_free()
 
@@ -117,12 +142,20 @@ func show_inventory(bag_name : String) -> void:
 	inventory_title.text = bag_name
 
 func select_weapon(weapon : Sword) -> void:
+	weapon.unlocked = SaveManager.get_weapon_unlocked_status(weapon.index)
+	weapon.is_tracked = SaveManager.get_weapon_tracked_status(weapon.index)
 	stored_weapon = weapon
 	weapon_name.text = stored_weapon.sword_name
+	if weapon.unlocked:
+		weapon_mold_graphic.texture = weapon.graphic
+	else:
+		weapon_mold_graphic.texture = weapon.mold_graphic
+	
+	weapon_previewer.show_chosen_weapon(weapon)
 	description_label.text = stored_weapon.description
 	stat_bonuses_label.text = stored_weapon.get_stats_description()
 	populate_ingredients_list(stored_weapon)
-	update_action_button()
+	update_action_button(weapon)
 	if !description_panel_showing:
 		show_description_panel()
 
@@ -158,7 +191,7 @@ func _on_show_details_button_button_up() -> void:
 func _on_show_details_button_2_button_up() -> void:
 	exit_menu()
 
-func update_action_button() -> void:
+func update_action_button(weapon : Sword) -> void:
 	var can_craft : int = InventoryManager.calculate_quantity(stored_weapon.recipe)
 	state = STATE.IDLE
 

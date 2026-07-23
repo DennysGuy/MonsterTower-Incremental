@@ -13,6 +13,7 @@ class_name Entity extends CharacterBody2D
 @export var locked_on : bool = false
 @export var label_position : float = 60
 
+
 @export_group("Detectors")
 @export var hurt_box : HurtBox
 @export var hit_box : HitBox
@@ -46,6 +47,9 @@ var apply_gravity : bool = true
 var health : float
 
 func _ready() -> void:
+	if sprite and sprite.material:
+		sprite.material = sprite.material.duplicate()
+		
 	state_machine.init(self)
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -84,10 +88,14 @@ func apply_damage(incoming_damage : int, is_crit : bool, new_label_position : in
 	damage_label.global_position.x = global_position.x
 	damage_label.label.text = damage
 	if self is Enemy:
+		add_hit_stars()
 		self.drop_scene.add_child(damage_label)
 	else:
 		get_parent().add_child(damage_label)
-
+	
+	if sprite:
+		issue_hit_flash(sprite.material)
+	
 func enable_hit_box() -> void:
 	if !is_inside_tree():
 		return
@@ -116,7 +124,6 @@ func disable_box_on_frame(box : Area2D) -> void:
 		if not box is Area2D:
 			return
 	
-			
 		box.monitoring = false
 		box.monitorable = false
 
@@ -219,3 +226,25 @@ func remove_stun_marker() -> void:
 	locked_on = false
 	event_damage_multiplier = 1.0
 	stored_stun_marker_icon.queue_free()
+
+func hit_flash(flash_material : ShaderMaterial, state : bool) -> void:
+	if !is_instance_valid(flash_material):
+		return
+	var shader_material : ShaderMaterial = flash_material.duplicate()
+	shader_material.set_shader_parameter("active", state)
+	sprite.material = shader_material
+
+func issue_hit_flash(flash_material : ShaderMaterial) -> void:
+	if !is_inside_tree():
+		return
+	hit_flash(flash_material, true)
+	await get_tree().create_timer(0.15).timeout
+	hit_flash(flash_material,false)
+
+func add_hit_stars() -> void:
+	if !hurt_box:
+		return
+		
+	var hit_stars : VFXSParks = preload("uid://dpcnaflfrbttl").instantiate()
+	hit_stars.global_position = global_position - Vector2(0, hurt_box.get_child(0).shape.size.y/2)
+	get_parent().add_child(hit_stars)

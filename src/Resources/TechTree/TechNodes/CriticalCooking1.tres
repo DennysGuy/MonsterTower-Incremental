@@ -1,18 +1,18 @@
 [gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://qxgigmr20cqm"]
 
-[ext_resource type="Texture2D" uid="uid://bh8ntxhm4hxp" path="res://Assets/TechTree/CookingNodes/CriticalChanceUp_Disabled_Graphic.png" id="1_sjytb"]
+[ext_resource type="Texture2D" uid="uid://cj6d8nj4umhi3" path="res://Assets/TechTree/CookingNodes/JunkATron_CriticalChance_DisabledGraphic.png" id="1_sjytb"]
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="1_tolct"]
-[ext_resource type="Texture2D" uid="uid://baf1ppeom1s55" path="res://Assets/TechTree/CookingNodes/CriticalChanceUp_Graphic.png" id="2_ysk8m"]
+[ext_resource type="Texture2D" uid="uid://c7ttfix4ebi0u" path="res://Assets/TechTree/CookingNodes/JunkATron_CriticalChance_Graphic.png" id="2_ysk8m"]
 
 [resource]
 script = ExtResource("1_tolct")
-node_name = "Critical Cooking 1"
+node_name = "Crit-A-Tron 1"
 icon = ExtResource("2_ysk8m")
 disabled_icon = ExtResource("1_sjytb")
-description = "Increases chance to double item output when cooking."
-currency_required = 500
+description = "Increase the chance to double Novelty Invention output in a single crafting cycle by 5%!"
+currency_required = 300
 stat_relation = 4
 stat_name = "Critical Cooking Chance"
 upgrade_interval = 0.05
-prereqs = Array[String](["Cooking Station:1"])
+prereqs = Array[String](["Junk-A-Tron V1:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

@@ -1,19 +1,20 @@
 [gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://b1txboikgk5si"]
 
-[ext_resource type="Texture2D" uid="uid://bxmp3b8k7rhwd" path="res://Assets/TechTree/CookingNodes/CookingDropUp_Disabled_Graphic.png" id="1_7m2ec"]
+[ext_resource type="Texture2D" uid="uid://wv44yuifx88" path="res://Assets/TechTree/CookingNodes/JunkATron_DropRate_Up_Disabled_Graphic.png" id="1_7m2ec"]
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="2_7m2ec"]
-[ext_resource type="Texture2D" uid="uid://chkoycnkasyuc" path="res://Assets/TechTree/CookingNodes/CookingDropUp_Graphic.png" id="2_dq5sm"]
+[ext_resource type="Texture2D" uid="uid://c16ap03gp38cv" path="res://Assets/TechTree/CookingNodes/JunkATron_DropRate_Up_Graphic.png" id="2_dq5sm"]
 
 [resource]
 script = ExtResource("2_7m2ec")
-node_name = "Cooking Drops 1"
+node_name = "Junk Drops 1"
 icon = ExtResource("2_dq5sm")
 disabled_icon = ExtResource("1_7m2ec")
-description = "Increases chance to receive cooking drops by 5%"
+description = "Increase the chance to receive Junk-A-Tron Crafting Drops by 5% per level"
 max_level = 2
-currency_required = 1000
+currency_required = 900
 stat_relation = 4
+price_scaler = 1.3
 stat_name = "Cooking Drop Chance Bonus"
 upgrade_interval = 0.05
-prereqs = Array[String](["Cooking Speed 1:1"])
+prereqs = Array[String](["Junk-A-Tron V1:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

@@ -43,19 +43,20 @@ func process_physics(_delta: float) -> State:
 	parent.velocity.x = movement
 	parent.move_and_slide()
 	
-	if Input.is_action_pressed("pan_cam_up") and parent.in_ladder_area and parent.global_position.y <= parent.stored_ladder.ladder_bottom_position and parent.global_position.y > parent.stored_ladder.ladder_top_position:
+	if Input.is_action_pressed("pan_cam_up") and parent.in_ladder_area and parent.global_position.y <= parent.stored_ladder.ladder_bottom_position and parent.global_position.y > parent.stored_ladder.ladder_top_position and parent.grab_ladder_buffer_timer <= 0:
 		return climb_state
 	
-	if Input.is_action_just_pressed("swing_sword") and PlayerStats.facilities_unlocked["Arial Slash"] and parent.can_issue_ability("Air Attack"):
+	if Input.is_action_pressed("swing_sword") and PlayerStats.facilities_unlocked["Arial Slash"] and parent.can_issue_ability("Air Attack"):
 		return air_attack
 		
-	if Input.is_action_just_pressed("dash_attack") and PlayerStats.facilities_unlocked["Dash Attack"]:
+	if Input.is_action_just_pressed("dash_attack") and PlayerStats.facilities_unlocked["Dash"] and parent.can_issue_ability("Dash"):
 		return dash_attack
 		
 	if parent.is_on_floor():
 		parent.set_collision_mask_value(5, true)
 		if parent.jump_buffer_timer > 0:
 			parent.jump_buffer_timer = 0
+			parent.can_double_jump = true
 			return jump_state
 		if movement != 0:
 			return move_state

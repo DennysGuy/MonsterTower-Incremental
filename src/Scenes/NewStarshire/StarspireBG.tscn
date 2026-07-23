@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://bf6rganpst3po"]
+
+[ext_resource type="Texture2D" uid="uid://cshw60pd3stbh" path="res://Assets/EnvironmentalAssets/StarspireBG1/StarspireBG1_Sky.png" id="1_57e4k"]
+[ext_resource type="Texture2D" uid="uid://b38baquwhaxfl" path="res://Assets/EnvironmentalAssets/StarspireBG1/StarspireBG1_BlueClouds.png" id="2_kdhv2"]
+[ext_resource type="Texture2D" uid="uid://cpca4wpiuuqve" path="res://Assets/EnvironmentalAssets/StarspireBG1/StarspireBG1_WhiteClouds.png" id="3_8np33"]
+
+[node name="Node2D" type="Node2D" unique_id=713020740]
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=770673525]
+scroll_scale = Vector2(0.5, 1)
+repeat_size = Vector2(1280, 0)
+repeat_times = 3
+
+[node name="Sky" type="Sprite2D" parent="Parallax2D" unique_id=1753195431]
+texture = ExtResource("1_57e4k")
+centered = false
+
+[node name="Parallax2D3" type="Parallax2D" parent="." unique_id=1181391581]
+scroll_scale = Vector2(0.5, 1)
+scroll_offset = Vector2(0.01, 0.01)
+repeat_size = Vector2(1280, 0)
+repeat_times = 3
+ignore_camera_scroll = true
+
+[node name="BlueClouds" type="Sprite2D" parent="Parallax2D3" unique_id=157874427]
+texture = ExtResource("2_kdhv2")
+centered = false
+
+[node name="Parallax2D2" type="Parallax2D" parent="." unique_id=1882923821]
+scroll_scale = Vector2(0.5, 1)
+scroll_offset = Vector2(0.05, 0.05)
+repeat_size = Vector2(1280, 0)
+repeat_times = 3
+
+[node name="WhiteClouds" type="Sprite2D" parent="Parallax2D2" unique_id=1569885005]
+texture = ExtResource("3_8np33")
+centered = false

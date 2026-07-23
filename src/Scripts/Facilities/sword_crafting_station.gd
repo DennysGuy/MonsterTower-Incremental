@@ -24,16 +24,26 @@ func notify_can_craft() -> void:
 
 func populate_resource_needed_list() -> void:
 	var tracked_index : int = PlayerStats.player_stats["Tracked Weapon"]
-	if tracked_index == 2 and PlayerStats.player_stats["Class"] == "Junior Hunter":
+	if tracked_index <= -1:
+		InventoryManager.clear_grid_container(resource_list)
 		return
 	
-	if tracked_index > 2 and PlayerStats.get_sword(tracked_index):
+	if tracked_index == PlayerStats.BEGINNGER_SWORD_COUNT and PlayerStats.player_stats["Class"] == "Junior Hunter":
+		return
+	
+	if  PlayerStats.get_sword(tracked_index):
 		var next_sword_recipe : CraftingRecipe = PlayerStats.get_sword(PlayerStats.player_stats["Tracked Weapon"]).recipe
 		InventoryManager.clear_grid_container(resource_list)
 		for item_dict in next_sword_recipe.recipe_list:
 			for item in item_dict.keys():
+				var selected_item : Item = item
 				var quantity_list_item : QuantityListItem = preload("uid://do7gmff4xat63").instantiate()
+				var needed_quantity : int = item_dict[item]
+				var current_quantity : int = InventoryManager.get_quantity(selected_item, selected_item.get_inventory_name())
 				quantity_list_item.icon.texture = item.shop_icon
-				quantity_list_item.quantity_label.text = "x%s" % [item_dict[item]]
+				if current_quantity >= needed_quantity:
+					quantity_list_item.quantity_label.text = "[color=green]%s/%s[/color]" % [current_quantity,needed_quantity]
+				else:
+					quantity_list_item.quantity_label.text = "%s/%s" % [current_quantity,needed_quantity]
 				resource_list.add_child(quantity_list_item)
 			

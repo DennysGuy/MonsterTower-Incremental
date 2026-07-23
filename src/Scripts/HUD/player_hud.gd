@@ -12,6 +12,7 @@ var bag_showing : bool = false
 var map_name : String = ""
 @onready var quest_hub: QuestHub = $PlayerHUD/QuestHub
 
+
 @onready var hunt_quota: RichTextLabel = $PlayerHUD/HuntQuota
 @export var expedition_timer: ExpeditionTimerLocal
 @onready var big_notification_label: Label = $PlayerHUD/BigNotificationLabel
@@ -27,6 +28,7 @@ var map_name : String = ""
 @onready var currency_label: RichTextLabel = $PlayerHUD/CurrencyLabel
 
 @onready var codex: Codex = $PlayerHUD/Codex
+@onready var big_label_animator: AnimationPlayer = $BigLabelAnimator
 
 const CLOSE_IN = preload("uid://dc3va7knibxnb")
 const CLOSE_OUT = preload("uid://caj0oih8j2sty")
@@ -40,6 +42,7 @@ const QUEST_COMPLETED = preload("uid://om1y244uqbs")
 
 @onready var max_slot_stack: Label = $PlayerHUD/MaxSlotStack
 
+@onready var sprint_notice: Label = $PlayerHUD/SprintNotice
 
 @onready var pick_up_notifier: VBoxContainer = $PlayerHUD/PickUpNotifier
 @onready var class_notice: RichTextLabel = $PlayerHUD/ClassNotice
@@ -59,6 +62,9 @@ var quests_showing : bool = false
 @onready var boss_hp_bar: BossHPBar = $PlayerHUD/BossHPBar
 
 var codex_open : bool = false
+var quest_hub_showing : bool = true
+@onready var toggle_quest_hub: Label = $PlayerHUD/ToggleQuestHub
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -67,6 +73,7 @@ func _ready() -> void:
 	PlayerHudSignalBus.issue_big_notification.connect(issue_big_notification)
 	PlayerHudSignalBus.hide_big_notification.connect(hide_big_notification_label)
 	PlayerHudSignalBus.play_close_out_animation.connect(play_close_out_animation)
+	PlayerHudSignalBus.trigger_cross_fade.connect(trigger_cross_fade)
 	
 	PlayerHudSignalBus.update_kill_quota_text.connect(update_kill_quota_text)
 	PlayerHudSignalBus.update_monsters_left.connect(remaining_monsters)
@@ -78,6 +85,9 @@ func _ready() -> void:
 	PlayerHudSignalBus.enable_tower_map_button.connect(enable_tower_map_button)
 	PlayerHudSignalBus.show_hunt_challenge_button.connect(show_hunt_challenge_button)
 	PlayerHudSignalBus.flash_screen.connect(flash_screen)
+	PlayerHudSignalBus.trigger_long_fade_in_out.connect(trigger_long_fade_in_out)
+	
+	PlayerHudSignalBus.update_player_bars.connect(update_player_bars)
 	
 	PlayerHudSignalBus.start_hunt_intro.connect(start_hunt_intro)
 	SignalBus.hide_hunt_challenge_button.connect(hide_hunt_challenge_button)
@@ -89,6 +99,8 @@ func _ready() -> void:
 	#player_health_bar.value = PlayerStats.player_stats["Current Health"]
 	
 	PlayerHudSignalBus.show_boss_hp_bar.connect(show_boss_hp_bar)
+	PlayerHudSignalBus.hub_menu_accessed.connect(play_dip_in_up_transition)
+	PlayerHudSignalBus.hub_menu_exited.connect(play_dip_in_down_transition)
 	
 	CodexManager.show_codex.connect(toggle_codex_on)
 	CodexManager.hide_codex.connect(toggle_codex_off)
@@ -99,13 +111,22 @@ func _ready() -> void:
 	InventoryManager.show_open_bag_notice.connect(show_open_bag_notice)
 	InventoryManager.hide_open_bag_notice.connect(hide_open_bag_notice)
 	QuestManager.show_quest_complete_notice.connect(quest_complete_notice)
+	
+	PlayerHudSignalBus.hub_menu_accessed.connect(hide_hud)
+	PlayerHudSignalBus.hub_menu_exited.connect(show_hud)
+	
+	PlayerHudSignalBus.bag_closed.connect(show_bag)
+	
+	PlayerHudSignalBus.show_sprint_notice.connect(func() -> void: 
+		sprint_notice.show())
+	
+	toggle_quest_hub.text = "Press %s to toggle Quest Hub" % GameManager.get_control_mapping("open_codex",3)
 	#player_mp_bar.max_value = PlayerStats.player_stats["Current MP"]
 	#player_mp_bar.value = player_mp_bar.max_value
 	update_xp_bar()
 	#update_ap_label()
 	#update_player_health(int(PlayerStats.player_stats["Current Health"]))
 	#show_class_notice()
-	
 	animation_player.play("CloseIn")
 	if GameManager.can_unlock_class():
 		show_class_notice()
@@ -117,12 +138,19 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("open_bag") and GameManager.can_open_bag:
 		show_bag()
 	
-			
 	if Input.is_action_just_pressed("open_codex"):
-		if !codex_open:
-			open_codex()
+		quests_showing = !quests_showing
+		if !quests_showing:
+			show_quest_hub()
 		else:
-			close_codex()
+			hide_quest_hub()
+		
+	
+	if Input.is_action_just_pressed("close_menu") and codex_open:
+		close_codex()
+	
+	if Input.is_action_just_pressed("close_menu") and bag_showing:
+		show_bag()
 	
 	if Input.is_action_just_pressed("open_player_stats"):
 		CodexManager.open_a_codex_menu.emit(0)
@@ -134,21 +162,27 @@ func _process(delta: float) -> void:
 		CodexManager.open_a_codex_menu.emit(2)
 		
 	if Input.is_action_just_pressed("open_quests_log"):
+		QuestManager.check_general_task_for_completion.emit("Open Recipe Book Once")
 		CodexManager.open_a_codex_menu.emit(3)
 	
-func update_player_health() -> void:
-	var current_hp : int = PlayerStats.player_stats["Current Health"]
+func update_player_health(previous_hp : int = GameManager.current_player_health) -> void:
+	var current_hp : int = GameManager.current_player_health
 	var max_hp : int = PlayerStats.player_stats["Max Health"] + PlayerStats.get_current_sword().get_total_hp_bonus()
-	player_health_bar.value = current_hp
+	player_health_bar.value = previous_hp
 	player_health_bar.max_value = max_hp
+	var tween : Tween = create_tween()
+	tween.tween_property(player_health_bar, "value", GameManager.current_player_health, 0.15)
+
 	hp_label.text = "%s/%s" % [int(current_hp), int(max_hp)]
 
-func update_player_mp() -> void:
-	var current_mp : int = PlayerStats.player_stats["Current MP"]
-	var max_mp : int = PlayerStats.player_stats["Max MP"]
-	player_mp_bar.value = current_mp
+func update_player_mp(prev_mp : int = GameManager.current_player_mp) -> void:
+	var current_mp : int =  GameManager.current_player_mp
+	var max_mp : int = PlayerStats.player_stats["Max MP"] + PlayerStats.get_current_sword().get_total_mp_bonus()
+	player_mp_bar.value = prev_mp
 	player_mp_bar.max_value = max_mp
 	mp_label.text = "%s/%s" % [current_mp,max_mp]
+	var tween : Tween = create_tween()
+	tween.tween_property(player_mp_bar, "value", current_mp, 0.15)
 
 func update_xp_bar() -> void:
 	level_label.text = "Level %s" % [int(PlayerStats.player_stats["Level"])]
@@ -164,13 +198,16 @@ func toggle_codex_on() -> void:
 func toggle_codex_off() -> void:
 	close_codex()
 
+func trigger_cross_fade() -> void:
+	animation_player.play("CrossFade")
+
 func show_codex_message() -> void:
-	play_sfx(QUEST_COMPLETED)
+	#play_sfx(QUEST_COMPLETED)
 	var tween : Tween = get_tree().create_tween()
-	tween.tween_property(codex_notification_panel, "position", Vector2(26,453),0.1)
+	tween.tween_property(codex_notification_panel, "position", Vector2(1207,19),0.1)
 	await get_tree().create_timer(6.0).timeout
 	var tween_2 : Tween = get_tree().create_tween()
-	tween_2.tween_property(codex_notification_panel, "position", Vector2(-573,453),0.1)
+	tween_2.tween_property(codex_notification_panel, "position", Vector2(1207,-262),0.1)
 
 func show_boss_hp_bar() -> void:
 	boss_hp_bar.show()
@@ -229,16 +266,21 @@ func show_bag() -> void:
 	if bag_showing:
 		InventoryManager.hide_open_bag_notice.emit()
 		SignalBus.stop_player.emit()
-		GameManager.player_can_move = false
+		GameManager.can_pause_game = false
 		bag.enable_tabs()
 		bag.update_bag()
+		bag.close_button.disabled = false
 		play_sfx(BAG_OPEN)
 		bag_animation_player.play("ShowBag")
+		get_tree().paused = true
 	else:
 		GameManager.player_can_move = true
+		GameManager.can_pause_game = true
+		bag.close_button.disabled = true
 		play_sfx(BAG_CLOSED)
 		bag.disable_tabs()
 		bag_animation_player.play("HideBag")
+		get_tree().paused = false
 
 func start_expedition_timer() -> void:
 	expedition_timer.show()
@@ -259,6 +301,7 @@ func load_expedition_timer_with_hunt_time() -> void:
 
 func issue_big_notification(message : String) -> void:
 	big_notification_label.text = message
+	play_big_label_pop_in_anim()
 	big_notification_label.show()
 	
 func hide_big_notification_label() -> void:
@@ -280,11 +323,11 @@ func play_countdown_beep() -> void:
 func show_class_notice() -> void:
 	advance_class_notice.show()
 	
-func remaining_monsters(text : String, out_of_enmies : bool) -> void:
-	if !out_of_enmies:
-		monsters_left.text = text
-	else:
-		monsters_left.text = "[color=yellow]Out of Monsters!\nIncrease Cap![/color]"
+func remaining_monsters(text : String) -> void:
+	big_notification_label.show()
+	play_big_label_pop_in_anim()
+	big_notification_label.text = text
+
 
 func start_timer() -> void:
 	pass
@@ -338,16 +381,51 @@ func quest_complete_notice() -> void:
 	await get_tree().create_timer(3.0).timeout
 	big_notification_label.hide()
 
+func trigger_long_fade_in_out() -> void:
+	animation_player.play("LongFadeInOut")
 
 func close_codex() -> void:
-	GameManager.player_can_move = true
+	CutsceneManager.enable_player_functionality()
 	var tween : Tween = get_tree().create_tween()
 	tween.tween_property(codex, "position", Vector2(-874,540),0.3)
 	codex_open = false
 
 func open_codex() -> void:
-	GameManager.player_can_move = false
+	CutsceneManager.disable_player_functionality()
 	CodexManager.update_monster_cards.emit()
 	var tween : Tween = get_tree().create_tween()
 	tween.tween_property(codex, "position", Vector2(960,540),0.3)
 	codex_open = true
+
+func show_quest_hub() -> void:
+	var tween : Tween = get_tree().create_tween()
+	tween.tween_property(quest_hub, "position", Vector2(24,114),0.3)
+
+func hide_quest_hub() -> void:
+	var tween : Tween = get_tree().create_tween()
+	tween.tween_property(quest_hub, "position", Vector2(-409,114),0.3)
+
+func play_dip_in_down_transition() -> void:
+	animation_player.play("DipInDown")
+
+func play_dip_in_up_transition() -> void:
+	animation_player.play("DipInUp")
+
+func hide_hud() -> void:
+	await get_tree().create_timer(0.3).timeout
+	player_hud.hide()
+
+func show_hud() -> void:
+	await get_tree().create_timer(0.3).timeout
+	player_hud.show()
+
+
+func play_big_label_pop_in_anim() -> void:
+	big_label_animator.play("PopIn")
+
+func update_player_bars() -> void:
+	update_player_health()
+	update_player_mp()
+
+func _on_timer_timeout() -> void:
+	update_player_bars()

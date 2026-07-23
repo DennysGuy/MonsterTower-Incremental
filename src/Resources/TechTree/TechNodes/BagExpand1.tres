@@ -9,12 +9,11 @@ script = ExtResource("2_fd5oi")
 node_name = "Item Bag 1"
 icon = ExtResource("2_y4ce7")
 disabled_icon = ExtResource("1_fd5oi")
-description = "Expands Bag slots to 8
-
-[color=green]Shows Cooking and Refinery Station Nodes [/color]"
-currency_required = 600
+description = "Expand Inventory Bag to 8 slots.
+"
+currency_required = 400
 stat_relation = 3
 stat_name = "Bag"
 upgrade_interval = 1.0
-prereqs = Array[String](["Deeper Pockets 1:1"])
+prereqs = Array[String](["Hunter License:1"])
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

@@ -25,7 +25,7 @@ grow_vertical = 2
 texture = ExtResource("2_2ikig")
 expand_mode = 1
 
-[node name="QuantityLabel" type="Label" parent="." unique_id=503395482]
+[node name="QuantityLabel" type="RichTextLabel" parent="." unique_id=803810184]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -38,7 +38,7 @@ offset_right = -3.8260803
 offset_bottom = 9.0
 grow_horizontal = 0
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_icrv7")
-theme_override_font_sizes/font_size = 16
+theme_override_fonts/normal_font = ExtResource("3_icrv7")
+bbcode_enabled = true
 text = "x100"
 horizontal_alignment = 2

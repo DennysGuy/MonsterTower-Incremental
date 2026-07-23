@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="CraftingRecipe" format=3 uid="uid://dvll2non4abwb"]
+
+[ext_resource type="Texture2D" uid="uid://d35aviwpxous1" path="res://Assets/Facilities/Junkatron/FluffyGilleySuit.png" id="1_74mir"]
+[ext_resource type="Resource" uid="uid://d1pg7dveofnwm" path="res://src/Resources/Dishes/FluffyGilleySuit.tres" id="2_8wyxv"]
+[ext_resource type="Resource" uid="uid://nf1ifjiq5bk" path="res://src/Resources/Actors/Enemies/Biome1/OrcWarlord/OrcPad.tres" id="3_8wyxv"]
+[ext_resource type="Script" uid="uid://cljygiasf4103" path="res://src/Scripts/Facilities/crafting_recipe.gd" id="4_38x0c"]
+[ext_resource type="Resource" uid="uid://bngtdvlfknn62" path="res://src/Resources/Actors/Enemies/Biome1/GoblinThief/SpoilsPack.tres" id="4_eogj8"]
+
+[resource]
+script = ExtResource("4_38x0c")
+recipe_name = "Fluffy Gilley Suit"
+menu_icon = ExtResource("1_74mir")
+index = 6
+description = "Not really enough material to blend into anything recognizable, but it could be an interesting Halloween costume!"
+recipe_tier = 1
+crafting_time = 50.0
+recipe_type = 1
+success_rate = 0.7
+critical_success_rate = 0.1
+failure_rate = 0.3
+output_item = ExtResource("2_8wyxv")
+recipe_list = Array[Dictionary]([{
+ExtResource("3_8wyxv"): 2
+}, {
+ExtResource("4_eogj8"): 1
+}])
+related_enemies = Array[String](["Orc Warlord"])
+metadata/_custom_type_script = "uid://cljygiasf4103"

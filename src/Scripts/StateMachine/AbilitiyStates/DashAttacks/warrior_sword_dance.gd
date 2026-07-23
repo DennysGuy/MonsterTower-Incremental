@@ -13,7 +13,7 @@ func apply_input() -> void:
 
 func apply_physics(_delta : float) -> State:
 	#parent.issue_attack(parent.dash_attack_hit_box)
-	parent.velocity.x = PlayerStats.get_equipped_ability("Dash Attack").dash_speed_modifier * GameManager.set_player_box_direction(parent.sprite.flip_h)
+	parent.velocity.x = PlayerStats.get_equipped_ability("Dash").dash_speed_modifier * GameManager.set_player_box_direction(parent.sprite.flip_h)
 	
 	return null
 

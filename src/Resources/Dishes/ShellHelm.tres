@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://carrsm8pqm8fv"]
+
+[ext_resource type="Script" uid="uid://cu8drgivmhfn" path="res://src/Scripts/item.gd" id="1_1r28s"]
+[ext_resource type="Texture2D" uid="uid://4mdaktdgoqwh" path="res://Assets/Facilities/Junkatron/ShellHelm.png" id="2_hg4ts"]
+
+[resource]
+script = ExtResource("1_1r28s")
+item_name = "ShellHelm"
+item_type = 5
+sell_value = 900
+shop_icon = ExtResource("2_hg4ts")
+sell_time = 3800.0
+description = "The texture is offputting to some - but a delicacy to many!"

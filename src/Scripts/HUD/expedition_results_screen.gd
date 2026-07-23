@@ -13,6 +13,7 @@ class_name ExpeditionResultsScreen extends Control
 @onready var bank_notice: Label = $ResultsPanel/BankNotice
 @onready var bank_container: GridContainer = $ResultsPanel/BankContainer
 @onready var tips_and_tricks: Label = $ResultsPanel/TipsAndTricks
+@onready var to_town_instructions: Label = $ResultsPanel/ToTownInstructions
 
 
 @onready var inventory_tab: TextureButton = $ResultsPanel/HBoxContainer/InventoryTab
@@ -29,21 +30,21 @@ const RESULTS_SCREEN_PANEL_USE_BG = preload("uid://b88puwp4yertl")
 @onready var tabs : Array[TextureButton] = [ore_tab,gem_stone_tab,use_tab]
 @onready var to_town_bar: ProgressBar = $ResultsPanel/ToTownBar
 @onready var to_tower_bar: ProgressBar = $ResultsPanel/ToTowerBar
+@onready var to_tower_instructions: Label = $ResultsPanel/ToTowerInstructions
 
 const TRANSFER_TO_BANK = preload("uid://ddk7o6mnyi7ji")
 const CLOSE_IN = preload("uid://dc3va7knibxnb")
 const CLOSE_OUT = preload("uid://caj0oih8j2sty")
 
-const TEMP_RESULTS_SCREEN_THEME = preload("uid://cpyx2c4kjhkag")
+const TRANSITION_SCREEN_THEME = preload("uid://c4ecpklgehudy")
+
 var can_go_back : bool = true
 var tips : Array[String] = [
-	"Can't reach a ledge? Upgrade your jump!",
 	"Selling cooked items is the best way to make money!",
 	"Enemies beating you down? Upgrade your attack stats!",
 	"Low on inventory space? Unlock the bank! Upgrade your bag!",
 	"Life is like a box chocolates. It's tasty.",
 	"Feeling the grind? Yeah, so are we.",
-	"Jumping up ladders is the fastest way, but look out for enemies above!",
 	"Consecutive expedition runs are a great way to make money fast!",
 	"Sometimes taking on harm to progress is necessary..",
 	"Taking too much damage? Upgrade your health!",
@@ -55,10 +56,12 @@ var tips : Array[String] = [
 func _ready() -> void:
 	init_containers()
 	init_tabs()
+	to_town_instructions.text = "Hold %s" % GameManager.get_control_mapping("pan_cam_left")
+	to_tower_instructions.text = "Hold %s" % GameManager.get_control_mapping("pan_cam_right")
 	animation_player.play("CloseOut")
 	tips_and_tricks.text = tips.pick_random()
 	floor_reached.text = "%s %s" %[GameManager.previous_map_data.biome, GameManager.previous_map_data.floor_name]
-	MusicPlayer.play_song(TEMP_RESULTS_SCREEN_THEME)
+	MusicPlayer.play_song(TRANSITION_SCREEN_THEME)
 
 	if PlayerStats.facilities_unlocked["Bank"]:
 		can_go_back = false
@@ -69,14 +72,14 @@ func _ready() -> void:
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_pressed("dash_attack") and !Input.is_action_just_pressed("pan_cam_right") and can_go_back:
+	if Input.is_action_pressed("pan_cam_left") and !Input.is_action_just_pressed("pan_cam_right") and can_go_back:
 		to_town_bar.value += delta * 200
 		if to_town_bar.value >= to_tower_bar.max_value:
 			go_to_starshire()
 	else:
 		to_town_bar.value = 0
 	
-	if Input.is_action_pressed("interact") and !Input.is_action_just_pressed("pan_cam_left") and can_go_back:
+	if Input.is_action_pressed("pan_cam_right") and !Input.is_action_just_pressed("pan_cam_left") and can_go_back:
 		to_tower_bar.value += delta * 100
 		if to_tower_bar.value >= to_tower_bar.max_value:
 			go_to_tower()
@@ -84,6 +87,7 @@ func _process(delta: float) -> void:
 		to_tower_bar.value = 0
 
 func go_to_starshire() -> void:
+	MusicPlayer.stop_player()
 	GameManager.spawn_location = 0
 	GameManager.resupply_character = true
 	get_tree().change_scene_to_file("uid://cq0un0c22235d")
@@ -119,7 +123,7 @@ func init_containers() -> void:
 
 func init_tabs() -> void:
 
-	if PlayerStats.facilities_unlocked["Cooking Station"]:
+	if PlayerStats.facilities_unlocked["Junk-A-Tron"]:
 		use_tab.show()
 	else:
 		use_tab.hide()
@@ -176,7 +180,7 @@ func transfer_tab_to_bank(tab_name : String) -> void:
 				InventoryManager.update_grid_container(inventory_container, tab_name)
 				InventoryManager.update_grid_container(bank_container, "Bank")
 				sfx_player.play_sfx(TRANSFER_TO_BANK, 0, true)
-				await get_tree().create_timer(0.1).timeout
+				await get_tree().create_timer(0.05).timeout
 
 func play_close_out_sfx() -> void:
 	sfx_player.play_sfx(CLOSE_OUT)

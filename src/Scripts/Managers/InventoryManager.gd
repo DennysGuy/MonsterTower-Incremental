@@ -89,6 +89,7 @@ func search_item(inventory_name : String, item : Item) -> bool:
 
 	return false
 
+
 func add_item(inventory_name : String, item : Item, quantity : int = 1) -> bool:
 	if not item:
 		return false
@@ -106,7 +107,7 @@ func add_item(inventory_name : String, item : Item, quantity : int = 1) -> bool:
 			selected_inventory[slot]["quantity"] += quantity
 			check_for_notification(item)
 			update_inventories(item.get_inventory_name())
-
+			SignalBus.update_resource_needed_panel.emit()
 			QuestManager.increment_task_item_gather_count.emit(item)
 			InventoryManager.show_open_bag_notice.emit()
 			return true
@@ -122,6 +123,7 @@ func add_item(inventory_name : String, item : Item, quantity : int = 1) -> bool:
 
 		QuestManager.increment_task_item_gather_count.emit(item)
 		InventoryManager.show_open_bag_notice.emit()
+		SignalBus.update_resource_needed_panel.emit()
 		return true
 		
 	return false
@@ -138,16 +140,19 @@ func remove_item(inventory_name : String, item : Item, quantity : int = 1) -> bo
 
 			if slot["quantity"] <= 0:
 				selected_inventory.erase(slot)
+				reset_stored_slot_index.emit()
 			check_for_notification(item)
 			update_inventories(item.get_inventory_name())
+			SignalBus.update_resource_needed_panel.emit()
 			return true
 
 	return false
 
 func remove_item_from_slot(slot_index : int, inventory_name : String, quantity : int = 1) -> bool:
-	if not inventories.has(inventory_name) or slot_index == -1:
+	if not inventories.has(inventory_name) or slot_index == -1 or InventoryManager.inventories[inventory_name].is_empty():
 		return false
 	
+
 	var selected_inventory : Array = inventories[inventory_name]
 	var selected_slot : Dictionary = selected_inventory[slot_index]
 	if selected_slot["item"]:
@@ -158,7 +163,9 @@ func remove_item_from_slot(slot_index : int, inventory_name : String, quantity :
 			reset_stored_slot_index.emit()
 			check_for_notification(selected_slot["item"])
 			update_inventories(inventory_name)
-
+			
+			
+		SignalBus.update_resource_needed_panel.emit()
 		QuestManager.decrement_task_item_gather_count.emit(selected_slot["item"])
 		return true
 	
@@ -235,7 +242,7 @@ func check_for_notification(item : Item) -> void:
 	
 	if item.is_crafting() or item.is_use():
 		SignalBus.check_for_notification.emit(GameManager.NOTIFICATION_TYPE.CRAFTING)
-	elif item.is_cooking():
+	elif item.is_novelty():
 		SignalBus.check_for_notification.emit(GameManager.NOTIFICATION_TYPE.COOKING)
 	elif item.is_ore():
 		SignalBus.check_for_notification.emit(GameManager.NOTIFICATION_TYPE.SMELTING)
@@ -285,9 +292,10 @@ func check_if_can_add_to_inventory(selected_item : Item, inventory_name : String
 func update_inventories(inventory_name : String) -> void:
 	update_inventory_bag.emit(inventory_name)
 	update_bank_inventory.emit()
+	SignalBus.inventory_changed.emit()
 	SaveManager.save_inventories()
 
-func update_grid_container(grid_container : GridContainer, inventory : String, is_shop : bool = true, inventory_array : Array = []) -> void:
+func update_grid_container(grid_container : GridContainer, inventory : String, is_shop : bool = true, inventory_array : Array = [], filter : String = "") -> void:
 	clear_grid_container(grid_container)
 	
 	var max_slots : int
@@ -311,12 +319,12 @@ func update_grid_container(grid_container : GridContainer, inventory : String, i
 		if inventory == "Bank":
 			slot.set_locale_as_bank()
 		
-		var potential_item
+		var potential_item = null
 		
 		if num < InventoryManager.inventories[inventory].size():
 			potential_item = InventoryManager.inventories[inventory][num]
 			
-		if potential_item:
+		if potential_item and check_filter(potential_item["item"], filter):
 			slot.item = potential_item["item"]
 			slot.slot_index = num
 			print(slot.slot_index)
@@ -326,6 +334,12 @@ func update_grid_container(grid_container : GridContainer, inventory : String, i
 			grid_container.add_child(slot)
 		else:
 			grid_container.add_child(slot)
+
+func check_filter(item : Item, filter : String) -> bool:
+	if filter.is_empty() or item.get_inventory_name() == filter:
+		return true
+	
+	return false
 
 func sort_inventory(grid_container : GridContainer, type : Item.ITEM_TYPE, is_shop : bool = false) -> void:
 	var inventory_snap_shot : Array = inventories["Inventory"].duplicate()
@@ -356,6 +370,9 @@ func clear_grid_container(grid_container : GridContainer) -> void:
 		child.queue_free()
 
 func calculate_quantity(recipe: CraftingRecipe) -> int:
+	if !recipe:
+		return 0
+		
 	var viable_amount := INF
 	
 	for craft_material in recipe.recipe_list:
@@ -371,6 +388,8 @@ func calculate_quantity(recipe: CraftingRecipe) -> int:
 					inventory_amt = get_quantity(mat, "Ore")
 				mat.ITEM_TYPE.USE:
 					inventory_amt = get_quantity(mat, "Use")
+				mat.ITEM_TYPE.NOVELTY:
+					inventory_amt = get_quantity(mat, "Inventory")
 					
 			if inventory_amt < required:
 				return 0

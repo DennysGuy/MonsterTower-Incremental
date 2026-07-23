@@ -27,14 +27,16 @@
 [ext_resource type="Script" uid="uid://cx8e05eefws02" path="res://src/Scripts/StateMachine/EnemyStates/GenericEnemyStates/enemy_spawn_in.gd" id="24_tqqft"]
 [ext_resource type="PackedScene" uid="uid://bsd5w23h513t2" path="res://src/Scenes/Actors/Utilities/WallDetector.tscn" id="25_qw42j"]
 [ext_resource type="PackedScene" uid="uid://crrtithryo2j6" path="res://src/Scenes/Actors/Utilities/GroundDetector.tscn" id="26_21pun"]
+[ext_resource type="Script" uid="uid://b76huuoc8f6ro" path="res://src/Scripts/Enemies/enemy_hurt_buffer.gd" id="26_fy5n3"]
 [ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="27_6jaj8"]
 [ext_resource type="PackedScene" uid="uid://bg1ya0qiin47q" path="res://src/Scenes/Actors/Utilities/HurtBox.tscn" id="28_4qtld"]
 [ext_resource type="PackedScene" uid="uid://xsmgmpbxjc3b" path="res://src/Scenes/Actors/Utilities/HitBox.tscn" id="29_6ju2n"]
 [ext_resource type="PackedScene" uid="uid://dg5nyfcc7ja8v" path="res://src/Scenes/Actors/Enemies/StatusEffectIconBar.tscn" id="30_svh1v"]
 [ext_resource type="PackedScene" uid="uid://ducu4iluu5nv4" path="res://src/Scenes/UI/StatusEffectVBox.tscn" id="31_av6js"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_f4ywy"]
-size = Vector2(39, 42)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ti6sb"]
+radius = 16.5
+height = 38.0
 
 [sub_resource type="Animation" id="Animation_xrh8g"]
 resource_name = "Chase"
@@ -429,8 +431,8 @@ texture = ExtResource("3_jhieg")
 hframes = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=351732613]
-position = Vector2(-1.5, -21)
-shape = SubResource("RectangleShape2D_f4ywy")
+position = Vector2(-1.5, -19)
+shape = SubResource("CapsuleShape2D_ti6sb")
 
 [node name="NameTag" parent="." unique_id=1709448218 instance=ExtResource("4_x7rds")]
 offset_left = -44.0
@@ -478,11 +480,12 @@ idle_state = NodePath("../Idle")
 chase_time = 1.5
 animation_name = "Chase"
 
-[node name="Hurt" type="Node" parent="StateMachine" unique_id=2056481976 node_paths=PackedStringArray("idle_state", "chase_state")]
+[node name="Hurt" type="Node" parent="StateMachine" unique_id=2056481976 node_paths=PackedStringArray("idle_state", "chase_state", "hurt_buffer_state")]
 script = ExtResource("15_os21w")
 idle_state = NodePath("../Idle")
 chase_state = NodePath("../Chase")
 wait_time = 0.32
+hurt_buffer_state = NodePath("../HurtBuffer")
 generic_impact_1 = ExtResource("16_niov8")
 generic_impact_2 = ExtResource("17_53n1w")
 generic_impact_3 = ExtResource("18_32c7q")
@@ -505,6 +508,12 @@ animation_name = "Stun"
 script = ExtResource("24_tqqft")
 idle_state = NodePath("../Idle")
 animation_name = "SpawnIn"
+
+[node name="HurtBuffer" type="Node" parent="StateMachine" unique_id=1556119597 node_paths=PackedStringArray("idle_state", "chase_state")]
+script = ExtResource("26_fy5n3")
+idle_state = NodePath("../Idle")
+chase_state = NodePath("../Chase")
+buffer_time = 0.12
 
 [node name="WallDetector" parent="." unique_id=761357575 instance=ExtResource("25_qw42j")]
 position = Vector2(13, -20)

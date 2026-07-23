@@ -164,6 +164,31 @@ offset_bottom = 655.0
 theme_override_constants/h_separation = 25
 columns = 2
 
+[node name="RelatedEnemiesTitle" type="Label" parent="DescriptionPanel" unique_id=1550631873]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -320.08203
+offset_top = 623.0
+offset_right = -101.08203
+offset_bottom = 667.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0.49019608, 0.36862746, 1)
+theme_override_fonts/font = ExtResource("1_lrnq1")
+theme_override_font_sizes/font_size = 32
+text = "Related Enemies"
+horizontal_alignment = 1
+
+[node name="RelatedEnemiesContainer" type="GridContainer" parent="DescriptionPanel" unique_id=1861269821]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 679.0
+offset_right = 735.0
+offset_bottom = 734.0
+theme_override_constants/h_separation = 25
+columns = 8
+
 [node name="RecipeTitle" type="Label" parent="DescriptionPanel" unique_id=1947637529]
 layout_mode = 1
 anchors_preset = 5
@@ -215,7 +240,6 @@ grow_vertical = 2
 theme_override_colors/default_color = Color(0, 0.49019608, 0.36862746, 1)
 theme_override_fonts/normal_font = ExtResource("4_dn0s5")
 theme_override_font_sizes/normal_font_size = 22
-text = "This is the Cooked Gagootz my boy! A Description."
 
 [node name="CanMake" type="Label" parent="DescriptionPanel" unique_id=1012161302]
 layout_mode = 1

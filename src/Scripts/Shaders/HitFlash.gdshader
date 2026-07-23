@@ -1,7 +1,7 @@
 shader_type canvas_item;
 
 uniform bool active = false;
-uniform float flash_strength : hint_range(0.0, 1.0) = 0.45;
+uniform float flash_strength : hint_range(0.0, 1.0) = 0.8;
 
 void fragment() {
 	vec4 previous_color = texture(TEXTURE, UV);

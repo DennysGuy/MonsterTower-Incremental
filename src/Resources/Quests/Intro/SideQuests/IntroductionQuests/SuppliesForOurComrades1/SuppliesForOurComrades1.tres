@@ -4,10 +4,8 @@
 [ext_resource type="Resource" uid="uid://y4kiqe4pi2v5" path="res://src/Resources/CraftingResources/IronBar.tres" id="2_7slj2"]
 [ext_resource type="Script" uid="uid://be6vh0qellkjq" path="res://src/Scripts/Questing/quest.gd" id="3_7sppe"]
 [ext_resource type="Script" uid="uid://deyfft0rbfjgk" path="res://src/Scripts/Questing/Tasks/task.gd" id="4_eht0u"]
-[ext_resource type="Resource" uid="uid://ct5tfbfuhnnp0" path="res://src/Resources/Quests/Intro/SideQuests/IntroductionQuests/SuppliesForOurComrades1/Tasks/Gather10BronzeBars.tres" id="5_8ulna"]
-[ext_resource type="Resource" uid="uid://dfnb6mbyog8uu" path="res://src/Resources/Quests/Intro/SideQuests/IntroductionQuests/SuppliesForOurComrades1/Tasks/Gather10BatclopseClaws.tres" id="6_i5ivb"]
-[ext_resource type="Resource" uid="uid://cd7fixjybwy6d" path="res://src/Resources/Quests/Intro/SideQuests/IntroductionQuests/SuppliesForOurComrades1/Tasks/Gather10MushieFiber.tres" id="7_i0au1"]
-[ext_resource type="Resource" uid="uid://tjyqd8jmyqak" path="res://src/Resources/Quests/Intro/SideQuests/IntroductionQuests/SuppliesForOurComrades1/Tasks/Gather10ShrubMasks.tres" id="8_i6xyh"]
+[ext_resource type="Resource" uid="uid://8q42adq4e1dk" path="res://src/Resources/Quests/Intro/SideQuests/IntroductionQuests/SuppliesForOurComrades1/Tasks/Slay35RedBeetles.tres" id="7_8ulna"]
+[ext_resource type="Resource" uid="uid://cd7fixjybwy6d" path="res://src/Resources/Quests/Intro/SideQuests/IntroductionQuests/SuppliesForOurComrades1/Tasks/Gather5BeatleClaws.tres" id="7_eht0u"]
 
 [resource]
 script = ExtResource("3_7sppe")
@@ -17,7 +15,7 @@ quest_type = 1
 level_needed = 5
 description = "Weapons Tech Engineer Crop Duster
 
-(Gather 10 Bronze Bars, 10 Batclopse Claws, 10 Mushie Stalks, 10 Shrub Masks)
+[color=green](gather 5 Beetle Claws, Slay 35 Red Beetles and 25 Blue Beetles)[/color]
 
 \"Hey Duster here, 
 
@@ -37,10 +35,10 @@ I'll issue your next assignment shortly.
 Thanks again.\""
 chapter_relation = "Introduction"
 quest_line = "Gearing up for the Raid"
-tasks = Array[ExtResource("4_eht0u")]([ExtResource("5_8ulna"), ExtResource("6_i5ivb"), ExtResource("7_i0au1"), ExtResource("8_i6xyh")])
-currency_reward = 2500
-xp_reward = 900
+tasks = Array[ExtResource("4_eht0u")]([ExtResource("7_eht0u"), ExtResource("7_8ulna")])
+currency_reward = 3000
+xp_reward = 1000
 item_reward = Dictionary[ExtResource("1_p25gr"), int]({
-ExtResource("2_7slj2"): 5
+ExtResource("2_7slj2"): 6
 })
 metadata/_custom_type_script = "uid://be6vh0qellkjq"

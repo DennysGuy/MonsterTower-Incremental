@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="TechNodeStats" load_steps=3 format=3 uid="uid://bpf2kexi3o22s"]
+[gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://bpf2kexi3o22s"]
 
 [ext_resource type="Texture2D" uid="uid://cx23s1l8uplye" path="res://Assets/NodeGraphics/NodeGraphicsV2/TowerPass_V2.png" id="1_d5ng1"]
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="2_3kp3h"]
@@ -7,8 +7,9 @@
 script = ExtResource("2_3kp3h")
 node_name = "Hunter License"
 icon = ExtResource("1_d5ng1")
-description = "Your Hunter License grants you limited access to the tower and its spoils. Guard it with our life!"
+description = "Your Hunter License grants you limited access to the tower and its spoils. Guard it with your life!"
 unlocked = true
 node_type = 1
+stat_relation = 6
 stat_name = "Hunter License"
 metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"

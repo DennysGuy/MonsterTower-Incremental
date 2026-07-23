@@ -2,11 +2,16 @@ class_name NewStarShireMap extends Map
 
 @onready var sub_viewport: SubViewport = $CanvasLayer/Control/SubViewportContainer/SubViewport
 @onready var guide_log: Label = $GuideLog
+@onready var guide_log_2: Label = $GuideLog2
 @onready var control: Control = $CanvasLayer/Control
 @onready var enter_market_label: Label = $EnterMarketLabel
 @onready var access_crafting_station: Label = $AccessCraftingStation
 @onready var canvas_layer: CanvasLayer = $CanvasLayer
 @onready var dojo_position: Node2D = $DojoPosition
+@onready var class_advance_center_notice: FacilityNotice = $ClassAdvanceCenterNotice
+
+var sell_speed_timer : float = 0.0
+var sell_speed : float = 100
 
 const NOVELTY_ITEMS_SALE = preload("uid://bylwk3imxuh3i")
 
@@ -17,9 +22,17 @@ var player_in_smelting_range : bool = false
 var player_in_crafting_range : bool = false
 var player_in_dojo_range : bool = false
 var player_in_upgrade_station_range : bool = false
+var player_in_kioske_range : bool = false
+var can_sell_to_market : bool = false
+var sell_timer_set : bool = false
+
+const CRAFTING_STATION_OPEN = preload("uid://ccqpi3mcw8aww")
+
+
 
 @onready var access_smelting_station: Label = $AccessSmeltingStation
 @onready var access_sword_crafting_station: Label = $AccessSwordCraftingStation
+@onready var dojo_area: Area2D = $Dojo/DojoArea
 
 @onready var cooking_range_position: Node2D = $CookingRangePosition
 @onready var refinery_position: Node2D = $RefineryPosition
@@ -38,6 +51,9 @@ var player_in_upgrade_station_range : bool = false
 @onready var enter_upgrade_station_notice: Label = $EnterUpgradeStationNotice
 
 @onready var gem_stone_station: Sprite2D = $GemStoneStation
+@onready var grand_market_position: Marker2D = $GrandMarketPosition
+@onready var enter_kioske_label: Label = $EnterKioskeLabel
+@onready var bulk_grand_market_menu: BulkSellerGrandMarketMenu = $BulkGrandMarketMenu
 
 const CLASS_UP_FANFARE = preload("uid://cw28u06grrwni")
 
@@ -45,10 +61,29 @@ const CRAFT_SWORD = preload("uid://4c6l1w0kpar3")
 const UNLOCK_SHOP = preload("uid://cveiqvxm5r0yw")
 @onready var grand_market_area: Area2D = $GrandMarketArea
 
+const TUTORIAL_CUTSCENE = preload("uid://cvhk4xt8ju43w") 
+const LEVEL_UP_INSTRUCTION = preload("uid://7k2f4h2w0i08")
+const COOKING_STATION_UNLOCK_SCENE = preload("uid://gfqitaq4h4ol")
+const SMELTING_STATION_UNLOCK_SCENE = preload("uid://dknm38b28himr")
+const GEMS_STATION_UNLOCK_SCENE = preload("uid://blac36hlx22lb")
+const GO_TO_JOB_BOARD = preload("uid://iqw8ymk767kl")
+
+const STARSPIRE_MARKET_INTRO = preload("uid://b3l8f4fxsjhu6")
+const HEAD_TO_JOB_ADVANCEMENT_CENTER_FOR_CLASS = preload("uid://bc68ocr4ayjpd")
+
+
+var sprint_enabled : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super()
+	CutsceneManager.enable_player_functionality()
+	CutsceneManager.set_camera_to_player_pos.connect(set_camera_to_player_pos)
+	CutsceneManager.set_camera_to_dojo_pos.connect(set_camera_to_dojo_position)
+	CutsceneManager.send_camera_to_cooking_station.connect(send_camera_to_cooking_station)
+	CutsceneManager.send_camera_to_market.connect(send_camera_to_market)
+	CutsceneManager.send_camera_to_smelting_station.connect(send_camera_to_smelting_station)
+	CutsceneManager.send_camera_to_sword_crafting_station.connect(send_camera_to_sword_crafting_station)
 	SignalBus.spawn_tech_tree.connect(add_tech_tree_to_scene)
 	SignalBus.issue_can_craft_sword_scene.connect(new_sword_unlock_notice)
 	SignalBus.hide_tech_tree_canvas_layer.connect(hide_tech_tree_canvas_layer)
@@ -56,35 +91,51 @@ func _ready() -> void:
 	SignalBus.spawn_tower_map.connect(spawn_tower_entrance_map)
 	SignalBus.play_warrior_unlock_animation.connect(warrior_class_unlocked_notice)
 	SignalBus.spawn_warrior_tech_tree.connect(warrior_class_unlocked_notice)
+	SignalBus.combat_class_menu_closed.connect(show_ap_notice)
+	SignalBus.gem_stone_menu_closed.connect(show_gem_station_notice)
 	TechTreeManager.unlock_station.connect(unlock_station)
-	
+	HubManager.check_for_node_purchase.connect(check_for_node_purchase)
 	#SignalBus.show_ap_notice.connect(show_ap_notice)
-
+	
 	TechTreeManager.update_currency_label.emit()
 	InventoryManager.show_bank_button.emit()
 	CookingManager.can_craft_bar.emit()
 	#hud.animation_player.play("CloseIn")
-	
-	#if PlayerStats.player_stats["Equipped Sword"] < PlayerStats.BEGINNGER_SWORD_COUNT and PlayerStats.can_craft_next_sword():
-		#SignalBus.show_can_craft_sword.emit()
-		##await get_tree().create_timer(1.0).timeout
-		##new_sword_unlock_notice()
-	#else:
-		#SignalBus.hide_can_craft_sword.emit()
-	#show_ap_notice()
-	#hud.open_tower_map_button.show()
-
 	await get_tree().process_frame
-	GameManager.event_speed_mod = 2.5
+	
+	#GameManager.event_speed_mod = 2.5
 	PlayerHudSignalBus.update_map_name_label.emit(map_name)
-	PlayerHudSignalBus.update_player_health.emit()
 	PlayerStats.player_stats["Current MP"] = PlayerStats.player_stats["Max MP"] + PlayerStats.get_current_sword().max_mp_bonus + PlayerStats.get_total_gem_bonus("Max MP Bonus")
-	PlayerHudSignalBus.update_player_mp.emit()
+	#PlayerHudSignalBus.update_player_mp.emit()
+	#PlayerHudSignalBus.update_player_health.emit()
+	PlayerHudSignalBus.show_sprint_notice.emit()
 	SaveManager.save_player_stats()
 	QuestManager.check_map_name.emit(map_name)
+	
 	show_ap_notice()
+	show_gem_station_notice()
+	check_for_node_purchase()
+	
+	sprint_enabled = true
+	GameManager.event_speed_mod = 2.5
+	
+	if !GameManager.market_intro_cutscene_played:
+		MusicPlayer.stop_player()
+		MusicPlayer.play_song(TUTORIAL_CUTSCENE)
+		Dialogic.start(STARSPIRE_MARKET_INTRO)
+		GameManager.market_intro_cutscene_played = true
+		SaveManager.save_progression_state("Market Intro Cutscene Played", true)
+
 	if PlayerStats.player_stats["Level"] == 2 and PlayerStats.player_stats["Ability Points"] == 1:
-		ability_station_notice()
+		#ability_station_notice()
+		MusicPlayer.stop_player()
+		MusicPlayer.play_song(TUTORIAL_CUTSCENE)
+		Dialogic.start(LEVEL_UP_INSTRUCTION)
+	
+	if PlayerStats.player_stats["Level"] >= 8 and PlayerStats.player_stats["Class"] == "Junior Hunter" and !GameManager.job_selection_notice_scene_played:
+		Dialogic.start(HEAD_TO_JOB_ADVANCEMENT_CENTER_FOR_CLASS)
+		GameManager.job_selection_notice_scene_played = true
+		SaveManager.save_progression_state("Job Selection Notice Cutscene Played", true)
 
 func _exit_tree() -> void:
 	GameManager.event_speed_mod = 1.0
@@ -92,30 +143,40 @@ func _exit_tree() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	super(delta)
-	if Input.is_action_just_pressed("interact") and player_in_tower_range and GameManager.player_can_move and PlayerStats.facilities_unlocked["Hunter License"]:
+	if Input.is_action_just_pressed("interact") and GameManager.can_open_scene and player_in_tower_range and GameManager.player_can_move and PlayerStats.facilities_unlocked["Hunter License"]:
+		player.velocity = Vector2.ZERO
 		spawn_tower_entrance_map()
 
-	if Input.is_action_just_pressed("interact") and player_in_market_range and GameManager.player_can_move:
-		GameManager.player_can_move = false
+	if Input.is_action_just_pressed("interact") and player_in_kioske_range and GameManager.can_open_scene:
 		player.velocity = Vector2.ZERO
 		spawn_grand_market()
-		
-	if Input.is_action_just_pressed("interact") and player_in_cooking_range and GameManager.player_can_move and PlayerStats.facilities_unlocked["Cooking Station"]:
-		GameManager.player_can_move = false
+
+	if Input.is_action_pressed("interact") and player_in_market_range and can_sell_to_market and GameManager.can_open_scene:
 		player.velocity = Vector2.ZERO
-		spawn_cooking_menu()
+		sell_to_market(delta)
 	
-	if Input.is_action_just_pressed("interact") and player_in_smelting_range and GameManager.player_can_move and PlayerStats.facilities_unlocked["Refinery Station"]:
-		GameManager.player_can_move = false
-		player.velocity = Vector2.ZERO
-		spawn_smelting_menu()
+	if Input.is_action_just_pressed("sprint"):
+		sprint_enabled = !sprint_enabled
+		if sprint_enabled:
+			GameManager.event_speed_mod = 2.5
+		else:
+			GameManager.event_speed_mod = 1.0
 	
-	if Input.is_action_just_pressed("interact") and player_in_crafting_range and GameManager.player_can_move:
+	#if Input.is_action_just_pressed("interact") and player_in_cooking_range and GameManager.player_can_move and PlayerStats.facilities_unlocked["Junk-A-Tron"]:
+		#player.velocity = Vector2.ZERO
+		#spawn_cooking_menu()
+	#
+	#if Input.is_action_just_pressed("interact") and player_in_smelting_range and GameManager.player_can_move and PlayerStats.facilities_unlocked["Refinery Station"]:
+		#GameManager.player_can_move = false
+		#player.velocity = Vector2.ZERO
+		#spawn_smelting_menu()
+	
+	if Input.is_action_just_pressed("interact") and GameManager.can_open_scene and player_in_crafting_range and GameManager.player_can_move:
 		GameManager.player_can_move = false
 		player.velocity = Vector2.ZERO
 		spawn_crafting_menu()
 
-	if Input.is_action_just_pressed("interact") and player_in_dojo_range:
+	if Input.is_action_just_pressed("interact") and GameManager.can_open_scene and player_in_dojo_range:
 		GameManager.player_can_move = false
 		player.velocity = Vector2.ZERO
 	
@@ -126,7 +187,7 @@ func _process(delta: float) -> void:
 				spawn_warrior_tech_tree()
 		#spawn_dojo_menu()
 		
-	if Input.is_action_just_pressed("interact") and player_in_upgrade_station_range and PlayerStats.facilities_unlocked["Gem Stone Station"]:
+	if Input.is_action_just_pressed("interact") and GameManager.can_open_scene and player_in_upgrade_station_range and PlayerStats.facilities_unlocked["Gem Stone Station"]:
 		GameManager.player_can_move = false
 		player.velocity = Vector2.ZERO
 		spawn_upgrade_menu()
@@ -142,34 +203,45 @@ func add_tech_tree_to_scene() -> void:
 func hide_tech_tree_canvas_layer() -> void:
 	canvas_layer.hide()
 
-func set_guide_log(show_log : bool) -> void:
+func set_guide_log(guide_log : Label, show_log : bool) -> void:
 	if show_log:
 		guide_log.show()
 	else:
 		guide_log.hide()
 	
 	if PlayerStats.facilities_unlocked["Hunter License"]:
-		guide_log.text = "Press E to enter the tower!"
+		var mapping : String = GameManager.get_control_mapping("interact")
+		guide_log.text = "Press %s to enter the tower!" % mapping
+		GameManager.play_sfx(CRAFTING_STATION_OPEN)
 	else:
 		guide_log.text = "You need a Tower pass before you can Enter..."
 
 func _on_tower_area_body_entered(body: Node2D) -> void:
 	if body is Player:
 		player_in_tower_range = true
-		set_guide_log(true)
+		set_guide_log(guide_log, true)
 
 func show_ap_notice() -> void:
-	if PlayerStats.player_stats["Ability Points"] >= 1:
-		#PlayerHudSignalBus.show_class_notice.emit()
-		ap_notice.show()
+	if PlayerStats.player_stats["Class"] == "Junior Hunter" and TechTreeManager.check_if_can_purchase_base_ability():
+		HubManager.show_facility_notification.emit("Class Advance Center")
+	
+	if PlayerStats.player_stats["Class"] == "Junior Hunter" and PlayerStats.player_stats["Level"] >= 8:
+		HubManager.show_facility_notification.emit("Class Advance Center")
+	
+	if PlayerStats.player_stats["Ability Points"] >= 1 and PlayerStats.player_stats["Class"] != "Junior Hunter":
+		HubManager.show_facility_notification.emit("Class Advance Center")
+
+
+func show_gem_station_notice() -> void:
+	if InventoryManager.inventories["Gem Stones"].size() > 0:
+		HubManager.show_facility_notification.emit("Gem Stone Station")
 	else:
-		PlayerHudSignalBus.show_class_notice.emit()
-		ap_notice.hide()
+		HubManager.hide_facility_notification.emit("Gem Stone Station")
 
 func _on_tower_area_body_exited(body: Node2D) -> void:
 	if body is Player:
 		player_in_tower_range = false
-		set_guide_log(false)
+		set_guide_log(guide_log, false)
 
 func go_to_test_floor() -> void:
 	GameManager.spawn_location = 0
@@ -182,19 +254,13 @@ func go_to_test_floor() -> void:
 	get_tree().change_scene_to_file("res://src/Scenes/Tower/TowerFloors/Biome1/Floor1-1.tscn")
 
 func spawn_tower_entrance_map() -> void:
-	GameManager.can_open_tower_map = false
-	GameManager.can_open_bag = false
-	GameManager.player_can_move = false
-	GameManager.can_pause_game = false
+	CutsceneManager.disable_player_functionality()
 	player.velocity = Vector2.ZERO
 
 	PlayerHudSignalBus.spawn_tower_entrance_map.emit()
 
 func spawn_grand_market() -> void:
-	GameManager.can_open_tower_map = false
-	GameManager.can_open_bag = false
-	GameManager.player_can_move = false
-	GameManager.can_pause_game = false
+	CutsceneManager.disable_player_functionality()
 	player.velocity = Vector2.ZERO
 	PlayerHudSignalBus.spawn_market.emit()
 
@@ -214,68 +280,90 @@ func spawn_smelting_menu() -> void:
 	control.add_child(smelting_station)
 
 func spawn_crafting_menu() -> void:
-	GameManager.can_open_tower_map = false
-	GameManager.can_open_bag = false
-	GameManager.can_pause_game = false
-	GameManager.player_can_move = false
+	CutsceneManager.disable_player_functionality()
 	player.velocity = Vector2.ZERO
 	PlayerHudSignalBus.spawn_sword_crafting_station.emit()
 
 func spawn_upgrade_menu() -> void:
-	GameManager.can_open_tower_map = false
-	GameManager.can_open_bag = false
-	GameManager.can_pause_game = false
+	CutsceneManager.disable_player_functionality()
 	player.velocity = Vector2.ZERO
 	PlayerHudSignalBus.spawn_gem_stone_station.emit()
 
 func spawn_beginner_tree() -> void:
-	GameManager.can_open_tower_map = false
-	GameManager.can_open_bag = false
-	GameManager.can_pause_game = false
+	CutsceneManager.disable_player_functionality()
 	player.velocity = Vector2.ZERO
 	PlayerHudSignalBus.spawn_beginner_tree.emit()
 
 func spawn_warrior_tech_tree() -> void:
-	GameManager.can_open_tower_map = false
-	GameManager.can_open_bag = false
-	GameManager.can_pause_game = false
+	CutsceneManager.disable_player_functionality()
 	player.velocity = Vector2.ZERO
 	PlayerHudSignalBus.spawn_warrior_menu.emit()
 
 func spawn_dojo_menu() -> void:
-	GameManager.can_open_tower_map = false
-	GameManager.can_open_bag = false
-	GameManager.can_pause_game = false
+	CutsceneManager.disable_player_functionality()
 	player.velocity = Vector2.ZERO
 	
 	PlayerHudSignalBus.spawn_class_selection_menu.emit()
 
 func spawn_job_board_menu() -> void:
-	GameManager.can_open_tower_map = false
-	GameManager.can_open_bag = false
-	GameManager.can_pause_game = false
+	CutsceneManager.disable_player_functionality()
 	player.velocity = Vector2.ZERO
 	
 	PlayerHudSignalBus.spawn_job_board_menu.emit()
 
+func send_camera_to_market() -> void:
+	camera.player = null
+	camera.global_position = grand_market_position.global_position
+
+func send_camera_to_smelting_station() -> void:
+	camera.player  = null
+	camera.global_position = refinery_position.global_position
+
+func send_camera_to_cooking_station() -> void:
+	camera.player  = null
+	camera.global_position = cooking_range_position.global_position
+
+func send_camera_to_sword_crafting_station() -> void:
+	camera.player  = null
+	camera.global_position = sword_crafting_station_position.global_position
+
+func send_camera_to_class_advancement_center() -> void:
+	camera.player  = null
+	camera.global_position = dojo_area.global_position
+	
 func _on_grand_market_area_body_entered(body: Node2D) -> void:
 	if body is Player:
 		player_in_market_range = true
-		sell_novelty_items()
+		#sell_novelty_items()
+		#check_for_node_purchase()
+		var mapping : String = GameManager.get_control_mapping("interact")
+		GameManager.play_sfx(CRAFTING_STATION_OPEN)
+		if player.junk_picked_up.size() > 0:
+			can_sell_to_market = true
+			enter_market_label.text = "Press and hold %s to sell Novelty Inventions! (%s)" % [mapping, player.junk_picked_up.size()]
+			bulk_grand_market_menu.fade_in()
+		else:
+			can_sell_to_market = false
+			enter_market_label.text = "Produce some Novelty Inventions to sell!" % mapping
 		enter_market_label.show()
+		
 
 func _on_grand_market_area_body_exited(body: Node2D) -> void:
 	if body is Player:
 		player_in_market_range = false
+		if can_sell_to_market:
+			bulk_grand_market_menu.fade_out()
+			can_sell_to_market = false
 		enter_market_label.hide()
 
 func _on_cooking_station_area_body_entered(body: Node2D) -> void:
 	if body is Player:
 		player_in_cooking_range = true
-		if !PlayerStats.facilities_unlocked["Cooking Station"]:
-			access_crafting_station.text = "Cooking Range under construction!"
+		if !PlayerStats.facilities_unlocked["Junk-A-Tron"]:
+			access_crafting_station.text = "Junk-A-Tron under construction!"
 		else:
-			access_crafting_station.text = "Press 'E' to access Cooking Range"
+			var mapping : String = GameManager.get_control_mapping("interact")
+			access_crafting_station.text = "Press %s to access Cooking Range" % mapping
 		access_crafting_station.show()
 
 func _on_cooking_station_area_body_exited(body: Node2D) -> void:
@@ -289,7 +377,8 @@ func _on_smelting_station_area_body_entered(body: Node2D) -> void:
 		if !PlayerStats.facilities_unlocked["Refinery Station"]:
 			access_smelting_station.text = "Refinery under construction!"
 		else:
-			access_smelting_station.text = "Press 'E' to access Refinery"
+			var mapping : String = GameManager.get_control_mapping("interact")
+			access_smelting_station.text = "Press %s to access Refinery" % mapping
 		access_smelting_station.show()
 
 func _on_smelting_station_area_body_exited(body: Node2D) -> void:
@@ -299,12 +388,14 @@ func _on_smelting_station_area_body_exited(body: Node2D) -> void:
 
 func _on_crafting_station_area_body_entered(body: Node2D) -> void:
 	if body is Player:
-		if PlayerStats.player_stats["Tracked Weapon"] == 2 and PlayerStats.player_stats["Class"] == "Junior Hunter":
+		if PlayerStats.player_stats["Tracked Weapon"] > 2 and PlayerStats.player_stats["Class"] == "Junior Hunter":
 			player_in_crafting_range = false
 			access_sword_crafting_station.text = "Select your Class to Gain Access"
 		else:
 			player_in_crafting_range = true
-			access_sword_crafting_station.text = "Press 'E' to access Sword Crafting Station"
+			GameManager.play_sfx(CRAFTING_STATION_OPEN)
+			var mapping : String = GameManager.get_control_mapping("interact")
+			access_sword_crafting_station.text = "Press %s to access Sword Crafting Station" % mapping
 			
 		access_sword_crafting_station.show()
 	
@@ -315,65 +406,51 @@ func _on_crafting_station_area_body_exited(body: Node2D) -> void:
 
 func unlock_cooking_station() -> void:
 	camera.player = null
-	player.send_to_idle_state()
+	CutsceneManager.disable_player_functionality()
 	#hud.animation_player.play("FadeInOut")
 	await get_tree().create_timer(0.5).timeout
 	sfx_player.play_sfx(UNLOCK_SHOP)
 	camera.position = cooking_range_position.position
 	await get_tree().create_timer(1.0).timeout
-	#hud.animation_player.play("Flash")
+	PlayerHudSignalBus.flash_screen.emit()
 	await get_tree().create_timer(0.5).timeout
 	cooking_station.unlock_cooking_station()
-	PlayerHudSignalBus.issue_big_notification.emit("Cook exotic dishes and sell for big cash!")
 	await get_tree().create_timer(2.0).timeout
-	PlayerHudSignalBus.issue_big_notification.emit("Cooking Resources Drop From Monsters!")
-	await get_tree().create_timer(3.0).timeout
-	PlayerHudSignalBus.hide_big_notification.emit()
-	hud.animation_player.play("FadeInOut")
-	await get_tree().create_timer(0.5).timeout
-	camera.position = player.position
-	camera.player = player
+	Dialogic.start(COOKING_STATION_UNLOCK_SCENE)
 	PlayerStats.show_cooking_station_unlock_animation = false
+
 	
 func unlock_refinery_station() -> void:
 	camera.player = null
-	player.send_to_idle_state()
-	#hud.animation_player.play("FadeInOut")
+	camera.position = refinery_position.position
+	CutsceneManager.disable_player_functionality()
 	await get_tree().create_timer(0.5).timeout
 	sfx_player.play_sfx(UNLOCK_SHOP)
-	camera.position = refinery_position.position
 	await get_tree().create_timer(1.0).timeout
 	hud.animation_player.play("Flash")
 	await get_tree().create_timer(0.5).timeout
 	refinery.unlock_refinery()
-	PlayerHudSignalBus.issue_big_notification.emit("Refine Raw Resources into Craftable Material!")
-	await get_tree().create_timer(2.0).timeout
-	PlayerHudSignalBus.issue_big_notification.emit("You have unlocked the stone pickaxe.")
 	await get_tree().create_timer(3.0).timeout
-	PlayerHudSignalBus.issue_big_notification.emit("Tin and Copper ore can now be mined in the Tower!")
-	await get_tree().create_timer(3.5).timeout
-	PlayerHudSignalBus.hide_big_notification.emit()
-	#hud.animation_player.play("FadeInOut")
-	await get_tree().create_timer(0.5).timeout
-	camera.position = player.position
-	camera.player = player
+	Dialogic.start(SMELTING_STATION_UNLOCK_SCENE)
 	PlayerStats.show_refinery_station_unlock_animation = false
 
 func unlock_station() -> void:
-	GameManager.player_can_move = false
 	if PlayerStats.show_cooking_station_unlock_animation:
+		CutsceneManager.disable_player_functionality()
 		await unlock_cooking_station()
 	
 	if PlayerStats.show_refinery_station_unlock_animation:
+		CutsceneManager.disable_player_functionality()
 		await unlock_refinery_station()
 	
 	if PlayerStats.show_gem_station_unlock_animation:
+		CutsceneManager.disable_player_functionality()
 		await gem_station_unlock_notice()
 	
-	GameManager.player_can_move = true
+	CutsceneManager.enable_player_functionality()
 
 func new_sword_unlock_notice() -> void:
-	GameManager.player_can_move = false
+	CutsceneManager.disable_player_functionality()
 	camera.player = null
 	player.send_to_idle_state()
 	#hud.animation_player.play("FadeInOut")
@@ -387,7 +464,7 @@ func new_sword_unlock_notice() -> void:
 	await get_tree().create_timer(0.5).timeout
 	camera.position = player.position
 	camera.player = player
-	GameManager.player_can_move = true
+	CutsceneManager.enable_player_functionality()
 
 func warrior_class_unlocked_notice() -> void:
 	#GameManager.player_can_move = false
@@ -411,19 +488,16 @@ func gem_station_unlock_notice() -> void:
 	await get_tree().create_timer(0.5).timeout
 	smithing_station.notify_can_craft()
 	camera.position = sword_crafting_station_position.position
-	
+	CutsceneManager.disable_player_functionality()
 	SignalBus.show_gem_station_arrow.emit()
-	PlayerHudSignalBus.issue_big_notification.emit("Your weapon can now be enhanced with Gem Stones.")
-	await get_tree().create_timer(2.0).timeout
-	PlayerHudSignalBus.issue_big_notification.emit("Access the Gem Stone station to mount gems onto your weapon!")
-	await get_tree().create_timer(3.5).timeout
-	PlayerHudSignalBus.hide_big_notification.emit()
-	#hud.animation_player.play("FadeInOut")
+	Dialogic.start(GEMS_STATION_UNLOCK_SCENE)
 	await get_tree().create_timer(0.5).timeout
-	camera.position = player.position
-	camera.player = player
 	PlayerStats.show_gem_station_unlock_animation = false
 
+func set_camera_to_player_pos() -> void:
+	camera.position = player.position
+	camera.player = player
+	
 func ability_station_notice() -> void:
 	camera.player = null
 	player.send_to_idle_state()
@@ -442,8 +516,10 @@ func ability_station_notice() -> void:
 
 func _on_dojo_area_body_entered(body: Node2D) -> void:
 	if body is Player:
-		dojo_access_notification.text = "Press E to Access Dojo!"		
+		var mapping : String = GameManager.get_control_mapping("interact")
+		dojo_access_notification.text = "Press %s to Access Dojo!" % mapping
 		player_in_dojo_range = true
+		GameManager.play_sfx(CRAFTING_STATION_OPEN)
 		dojo_access_notification.show()
 
 func _on_dojo_area_body_exited(body: Node2D) -> void:
@@ -455,7 +531,9 @@ func _on_gem_stone_station_area_body_entered(body: Node2D) -> void:
 	if body is Player:
 		player_in_upgrade_station_range = true
 		if PlayerStats.facilities_unlocked["Gem Stone Station"]:
-			enter_upgrade_station_notice.text = "Press 'E' to Access\nGem Stone Station"
+			var mapping : String = GameManager.get_control_mapping("interact")
+			enter_upgrade_station_notice.text = "Press %s to Access\nGem Stone Station" % mapping
+			GameManager.play_sfx(CRAFTING_STATION_OPEN)
 		else:
 			enter_upgrade_station_notice.text = "Unlock Gem Stone\nStation Node to access!"
 		enter_upgrade_station_notice.show()
@@ -504,7 +582,91 @@ func sell_novelty_items() -> void:
 		add_child(notification_label)
 		sfx_player.play_sfx(NOVELTY_ITEMS_SALE)
 
+func set_camera_to_dojo_position() -> void:
+	camera.player = null
+	camera.position = dojo_position.position
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Player:
 		Dialogic.start('uid://buaw4ymemp3ln')
+
+func check_for_node_purchase() -> void:
+	var tech_node_stats_dict := TechTreeManager.tech_node_stats
+	
+	for key in tech_node_stats_dict:
+		var tech_node_stats : TechNodeStats = tech_node_stats_dict[key]
+		if can_purchase(tech_node_stats) and tech_node_stats.stat_relation != TechTreeManager.STAT_RELATION.LICENSE:
+			HubManager.show_facility_notification.emit("Upgrades PC")
+			return
+	HubManager.hide_facility_notification.emit("Upgrades PC")
+	
+func can_purchase(tech_node_stats : TechNodeStats) -> bool:
+	if SaveManager.current_save_game:
+		var tech_node_name : String = tech_node_stats.node_name
+		var saved_data = SaveManager.current_save_game.tech_nodes.get(tech_node_name)
+		tech_node_stats.current_level = saved_data["Level"]
+		tech_node_stats.unlocked = saved_data["Unlocked"]
+		TechTreeManager.tech_nodes[tech_node_stats.node_name] = saved_data["Level"]
+		
+	return TechTreeManager.currency >= tech_node_stats.currency_required and has_resource_quantity(tech_node_stats) and tech_node_stats.current_level < tech_node_stats.max_level and tech_node_stats.unlocked
+
+func has_resource_quantity(tech_node_stats : TechNodeStats) -> bool:
+	if tech_node_stats.materials_required.is_empty():
+		return true
+
+	for resource in tech_node_stats.materials_required:
+		for item in resource.keys():
+			match item.item_type:
+				item.ITEM_TYPE.CRAFTING:
+					if InventoryManager.get_quantity(item, "Crafting Items") < resource[item]:
+						return false
+				item.ITEM_TYPE.COOKING:
+					if InventoryManager.get_quantity(item, "Cooking Items") < resource[item]:
+						return false
+				item.ITEM_TYPE.ORE:
+					if InventoryManager.get_quantity(item, "Ore") < resource[item]:
+						return false
+				item.ITEM_TYPE.USE:
+					if InventoryManager.get_quantity(item, "Use") < resource[item]:
+						return false
+		
+	return true		
+
+func sell_to_market(delta: float) -> void:
+
+	if player.junk_picked_up.is_empty():
+		return
+
+	if sell_speed_timer <= 0:
+		var item: JunkInteractable = player.junk_picked_up.front()
+		if item.set_to_sold(grand_market_position):
+			sell_speed_timer = get_sell_time()
+
+	sell_speed_timer -= delta
+
+func get_sell_time() -> float:
+	var sell_speed_level : int = int(PlayerStats.player_stats["Bulk Sell Transfer Speed"])
+	return max(0.01, PlayerStats.BASE_TRANSFER_TIME * pow(0.65, sell_speed_level))
+	
+func _on_tower_area_2_body_entered(body: Node2D) -> void:
+	if body is Player:
+		player_in_tower_range = true
+		set_guide_log(guide_log_2, true)
+
+
+func _on_tower_area_2_body_exited(body: Node2D) -> void:
+	if body is Player:
+		player_in_tower_range = false
+		set_guide_log(guide_log_2, false)
+
+
+func _on_market_kioske_area_body_entered(body: Node2D) -> void:
+	if body is Player:
+		player_in_kioske_range = true
+		enter_kioske_label.show()
+
+
+func _on_market_kioske_area_body_exited(body: Node2D) -> void:
+	if body is Player:
+		player_in_kioske_range = false
+		enter_kioske_label.hide()

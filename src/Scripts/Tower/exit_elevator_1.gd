@@ -9,6 +9,9 @@ var doors_open : bool = false
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var move_to_next_room_label: Label = $MoveToNextRoomLabel
 @onready var needed_panel: Panel = $NeededPanel
+@onready var needed_title: Label = $NeededPanel/NeededTitle
+@onready var quest_name: Label = $NeededPanel/QuestName
+
 
 const BROKEN_FLOOR_ELEVATOR_BASE = preload("uid://bq5k4w7uwsgyy")
 const FLOOR_ELEVATOR_BASE = preload("uid://sm0sjtn0eenp")
@@ -21,6 +24,8 @@ const ABILITY_ROW_UNLOCKED = preload("uid://joo0a5xuf1pm")
 @onready var needed_items_container: GridContainer = $NeededPanel/NeededItemsContainer
 
 @onready var base: Sprite2D = $Base
+
+@export var quest_needed : String
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -40,6 +45,12 @@ func _ready() -> void:
 	if !current_room_data.hunt_challenge_completed and current_room_data.is_challenge_floor():
 		row_lock.show()
 
+	if !quest_needed.is_empty() and !QuestManager.get_quest(quest_needed).is_completed():
+		needed_panel.show()
+		needed_title.text = "Complete Quest"
+		quest_name.text = quest_needed
+		
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("interact") and player_in_range:
@@ -52,52 +63,92 @@ func _process(delta: float) -> void:
 		if current_room_data.is_expedition_floor() and current_room_data.unlock_recipe and !current_room_data.hunt_challenge_completed:
 			MusicPlayer.transitioning_floors = true
 			GameManager.spawn_location = 0
+			#SignalBus.move_to_next_room.emit(next_room_data.scene_path)
 			unlock_next_room()
 			return
 
-		if PlayerStats.check_points_unlocked[next_room_data.floor_name] == true:
+		if !quest_needed.is_empty() and QuestManager.get_quest(quest_needed).is_completed() and ExpeditionTimer.seconds > 10 and doors_open:
+			MusicPlayer.transitioning_floors = true
+			GameManager.spawn_location = 0
+			unlock_next_floor()
+			SignalBus.move_to_next_room.emit(next_room_data.scene_path)
+			return
+
+		if PlayerStats.check_points_unlocked[next_room_data.floor_name] == true and doors_open:
 			MusicPlayer.transitioning_floors = true
 			GameManager.spawn_location = 0
 			SignalBus.move_to_next_room.emit(next_room_data.scene_path)
 			return
 
-		if current_room_data.is_expedition_floor() and current_room_data.unlock_recipe == null:
+		if current_room_data.is_expedition_floor() and current_room_data.unlock_recipe == null and doors_open:
 			MusicPlayer.transitioning_floors = true
 			GameManager.spawn_location = 0
 			SignalBus.move_to_next_room.emit(next_room_data.scene_path)
 			return
-
-		
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Player:
 		player_in_range = true
 		var deliver_quantity : int = 0
+		
+		if !quest_needed.is_empty() and QuestManager.get_quest(quest_needed).is_completed():
+			if !GameManager.hunt_challenge_selected and ExpeditionTimer.seconds <= 10:
+				move_to_next_room_label.modulate = Color.INDIAN_RED
+				move_to_next_room_label.text = "Insufficient Time Remaining!"
+				move_to_next_room_label.show()
+				return
+			else:
+				move_to_next_room_label.modulate = Color.WHITE
+				move_to_next_room_label.text = "Press %s to advance to next floor!" % GameManager.get_control_mapping("interact")
+				doors_open = true
+				animation_player.play("DoorsOpen")
+				move_to_next_room_label.show()
+				return
+		elif !quest_needed.is_empty() and !QuestManager.get_quest(quest_needed).is_completed():
+			move_to_next_room_label.text = "Complete the required quest to advance."
+			move_to_next_room_label.show()
+			return
+		
 		if current_room_data.unlock_recipe:
 			deliver_quantity = InventoryManager.calculate_quantity(current_room_data.unlock_recipe)
 		
 		if current_room_data.hunt_challenge_completed or current_room_data.is_expedition_floor() and !current_room_data.unlock_recipe:
-			move_to_next_room_label.text = "Press 'E' to advance to next floor!"
-			doors_open = true
-			animation_player.play("DoorsOpen")
+			if !GameManager.hunt_challenge_selected and ExpeditionTimer.seconds <= 10:
+				move_to_next_room_label.modulate = Color.INDIAN_RED
+				move_to_next_room_label.text = "Insufficient Time Remaining!"
+			else:
+				move_to_next_room_label.modulate = Color.WHITE
+				move_to_next_room_label.text = "Press %s to advance to next floor!" % GameManager.get_control_mapping("interact")
+				doors_open = true
+				animation_player.play("DoorsOpen")
+				move_to_next_room_label.show()
+				
 		else:
 			if current_room_data.is_challenge_floor():
 				move_to_next_room_label.text = "Beat the Floor Challenge to Unlock Elevator!"
 			if current_room_data.is_expedition_floor() and deliver_quantity >= 1:
-				move_to_next_room_label.text = "Press 'E' to repair the Elevator!"
+				if ExpeditionTimer.seconds > 10:
+					move_to_next_room_label.text = "Press %s to repair the Elevator!" % GameManager.get_control_mapping("interact")
+				else:
+					move_to_next_room_label.text = "Insufficient Time Remaining!"
 		
 		move_to_next_room_label.show()
 		
 func unlock_next_room() -> void:
+	
 	if current_room_data.is_expedition_floor():
 		if InventoryManager.calculate_quantity(current_room_data.unlock_recipe) < 1:
 			return
 			
 		if current_room_data.unlock_recipe and !current_room_data.hunt_challenge_completed:
 			InventoryManager.remove_resources_from_inventory(current_room_data.unlock_recipe.recipe_list)
-			
-		needed_panel.hide()
+		PlayerHudSignalBus.trigger_long_fade_in_out.emit()
+		play_sfx(preload("uid://cveiqvxm5r0yw"))
+		await get_tree().create_timer(1.0).timeout
 		base.texture = FLOOR_ELEVATOR_BASE
+		await get_tree().create_timer(4.0).timeout
+		needed_panel.hide()
+		
 		GameManager.spawn_location = 0
 		current_room_data.hunt_challenge_completed = true
 		SaveManager.save_floor_data(current_room_data, current_room_data.floor_name)
@@ -133,7 +184,13 @@ func populate_items_needed_list() -> void:
 		for item in item_dict.keys():
 			var quantity_list_item : QuantityListItem = preload("uid://do7gmff4xat63").instantiate()
 			quantity_list_item.icon.texture = item.shop_icon
-			quantity_list_item.quantity_label.text = "x%s" % [item_dict[item]]
+			var item_source : Item = item
+			var needed_quantity : int = item_dict[item]
+			var current_quantity : int = InventoryManager.get_quantity(item_source, item_source.get_inventory_name())
+			if current_quantity >= needed_quantity:
+				quantity_list_item.quantity_label.text = "[color=green]%s/%s[/color]" % [current_quantity,needed_quantity]
+			else:
+				quantity_list_item.quantity_label.text = "%s/%s" % [current_quantity,needed_quantity]
 			needed_items_container.add_child(quantity_list_item)
 
 func unlock_elevator() -> void:

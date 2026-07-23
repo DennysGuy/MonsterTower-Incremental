@@ -24,6 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://bl23rai5wfiu7" path="res://Assets/HUD/Bags/GemBag_Button_Hover.png" id="15_1u23v"]
 [ext_resource type="Texture2D" uid="uid://clrwsm2p7yodf" path="res://Assets/HUD/Bags/UseBag_Button.png" id="16_2eryp"]
 [ext_resource type="Texture2D" uid="uid://b78kv3lisgc5k" path="res://Assets/HUD/Bags/UseBag_Button_Hover.png" id="17_1u23v"]
+[ext_resource type="FontFile" uid="uid://stn4dtg0uw57" path="res://Assets/Fonts/FredokaOne-Regular.ttf" id="21_16b0i"]
 [ext_resource type="FontFile" uid="uid://dgu1a66dfe8w" path="res://Assets/Fonts/Maplestory OTF Light.otf" id="22_16b0i"]
 [ext_resource type="Texture2D" uid="uid://bkgajowh8nxc4" path="res://Assets/HUD/NewItemPreviewBG.png" id="27_16b0i"]
 
@@ -445,7 +446,7 @@ theme_override_constants/margin_right = 2
 [node name="InventoryName" type="Label" parent="BagBG/PanelContainer/MarginContainer" unique_id=1506160081]
 layout_mode = 2
 theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("4_4vhog")
+theme_override_fonts/font = ExtResource("21_16b0i")
 theme_override_font_sizes/font_size = 32
 text = "Inventory Bag"
 
@@ -456,7 +457,7 @@ offset_top = 593.75
 offset_right = 928.25
 offset_bottom = 621.75
 theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("22_16b0i")
+theme_override_fonts/font = ExtResource("21_16b0i")
 theme_override_font_sizes/font_size = 24
 text = "Press B to Close"
 
@@ -466,12 +467,12 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -459.75
-offset_top = 47.5
+offset_top = 61.5
 offset_right = -26.5
-offset_bottom = 88.5
+offset_bottom = 106.5
 grow_horizontal = 0
 theme_override_constants/outline_size = 12
-theme_override_fonts/font = ExtResource("4_4vhog")
+theme_override_fonts/font = ExtResource("21_16b0i")
 theme_override_font_sizes/font_size = 36
 text = "Mushie Core"
 horizontal_alignment = 1
@@ -482,9 +483,9 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -331.5
-offset_top = 101.5
+offset_top = 107.5
 offset_right = -159.5
-offset_bottom = 120.5
+offset_bottom = 126.5
 grow_horizontal = 0
 alignment = 1
 
@@ -520,7 +521,7 @@ offset_bottom = 325.5
 grow_horizontal = 0
 theme_override_constants/line_spacing = -1
 theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("22_16b0i")
+theme_override_fonts/font = ExtResource("21_16b0i")
 theme_override_font_sizes/font_size = 24
 text = "This is a description how do think this is supposed to work?"
 autowrap_mode = 3
@@ -533,9 +534,9 @@ anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
 offset_left = -320.5
-offset_top = 16.0
+offset_top = -26.0
 offset_right = -192.5
-offset_bottom = 144.0
+offset_bottom = 102.0
 grow_horizontal = 0
 grow_vertical = 2
 texture = ExtResource("27_16b0i")
@@ -546,10 +547,10 @@ layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -289.5
-offset_top = 49.0
-offset_right = -225.5
-offset_bottom = 113.0
+offset_left = -286.5
+offset_top = 12.0
+offset_right = -222.5
+offset_bottom = 76.0
 grow_horizontal = 0
 hover_height = 4.0
 hover_speed = 3.0
@@ -568,7 +569,7 @@ offset_bottom = 263.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("4_4vhog")
+theme_override_fonts/font = ExtResource("21_16b0i")
 theme_override_font_sizes/font_size = 28
 text = "Items permanently 
 LOST on discard."
@@ -616,8 +617,8 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = 222.87494
-offset_top = 148.0
-offset_right = 288.875
+offset_top = 124.0
+offset_right = 334.1322
 offset_bottom = 183.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -642,8 +643,9 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("4_4vhog")
-theme_override_font_sizes/font_size = 12
-text = "Discard"
+theme_override_font_sizes/font_size = 26
+text = "Drop"
+horizontal_alignment = 1
 
 [node name="ToBank" type="TextureButton" parent="BagBG" unique_id=1022483941]
 custom_minimum_size = Vector2(64, 0)
@@ -653,8 +655,8 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -326.5
-offset_top = -169.5
+offset_left = -379.52856
+offset_top = -198.5
 offset_right = -262.5
 offset_bottom = -134.5
 grow_horizontal = 0
@@ -672,15 +674,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -23.5
-offset_top = -8.5
-offset_right = 23.5
-offset_bottom = 6.5
+offset_left = -27.5
+offset_top = -9.0
+offset_right = 27.5
+offset_bottom = 7.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("4_4vhog")
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 24
 text = "To Bank"
 
 [node name="GoldCount" type="Label" parent="BagBG" unique_id=1673130369]
@@ -705,19 +707,33 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -381.5
-offset_top = -35.5
-offset_right = -0.5
-offset_bottom = -3.5
+offset_left = -501.5
+offset_top = 16.5
+offset_right = -120.5
+offset_bottom = 51.5
 grow_horizontal = 0
 
 [node name="InventoryName3" type="Label" parent="BagBG/PanelContainer2" unique_id=1863663635]
 layout_mode = 2
 theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("4_4vhog")
+theme_override_fonts/font = ExtResource("21_16b0i")
 theme_override_font_sizes/font_size = 28
 text = "Click on an item to select it."
 horizontal_alignment = 2
+
+[node name="CloseButton" type="Button" parent="BagBG" unique_id=61937882]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -104.5
+offset_top = 7.5
+offset_right = -11.5
+offset_bottom = 55.5
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("21_16b0i")
+theme_override_font_sizes/font_size = 32
+text = "Close"
 
 [node name="Bank" type="NinePatchRect" parent="." unique_id=1727735708]
 visible = false
@@ -867,3 +883,4 @@ text = "Bank"
 [connection signal="button_up" from="BagBG/Filters/FilterOff" to="." method="_on_filter_off_button_up"]
 [connection signal="button_up" from="BagBG/Discard" to="." method="_on_discard_button_up"]
 [connection signal="button_up" from="BagBG/ToBank" to="." method="_on_to_bank_button_up"]
+[connection signal="button_up" from="BagBG/CloseButton" to="." method="_on_button_button_up"]

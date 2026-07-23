@@ -1,0 +1,9 @@
+join CropDuster leftmost [animation="Slide In Up" wait="true"]
+CropDuster: Hey, newbie!\
+Now that you've selected a class, you've gained access to that class's unique arsenal.
+CropDuster: On the right, you'll see the weapons you've got access to. Ain't much right now... but it's a start.
+CropDuster: See here? Your class has access to a variety of weapons. Each one's made for a different way of fighting. Pick what suits you.
+CropDuster: These won't be the only weapons you'll have. Keep climbing the tower, and you'll unlock stronger versions of your starting arsenal. Give it time, and you'll become a seasoned Hunter.
+CropDuster: You can also track the recipe for any locked weapon by selecting it and hitting the "Track" button. It'll show you what resources you still need to craft it.
+CropDuster: Once you craft a weapon, it's yours for good. You can swap between any crafted weapons whenever you need.
+CropDuster: That's about it. Good luck, newbie. I reckon you'll do great things someday. May your bounty be plentiful!

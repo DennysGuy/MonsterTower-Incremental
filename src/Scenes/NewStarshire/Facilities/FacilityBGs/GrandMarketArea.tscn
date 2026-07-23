@@ -1,0 +1,114 @@
+[gd_scene format=3 uid="uid://cq5osrx532u3u"]
+
+[ext_resource type="PackedScene" uid="uid://bg6r5er5kmil4" path="res://Assets/Models/Locations/GrandMarketArea.gltf" id="1_5k6ws"]
+[ext_resource type="Script" uid="uid://q3d6l71uinoa" path="res://src/Scripts/Facilities/grand_market_bg.gd" id="1_6g8rg"]
+[ext_resource type="Shader" uid="uid://b46alngda0fw1" path="res://src/Scripts/Shaders/ToonWater.gdshader" id="1_c6vye"]
+[ext_resource type="PackedScene" uid="uid://dbvatee527mp1" path="res://src/Scenes/NewStarshire/Facilities/FacilityBGs/PalmTree.tscn" id="3_vlci5"]
+[ext_resource type="PackedScene" uid="uid://mwttdrt2cg71" path="res://src/Scenes/Players/ambience_player.tscn" id="5_7ygbc"]
+[ext_resource type="AudioStream" uid="uid://bbo4f1jb6k47v" path="res://Audio/SFX/CrowdedArea.wav" id="6_0pown"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5k6ws"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_c6vye"]
+sky_material = SubResource("ProceduralSkyMaterial_5k6ws")
+
+[sub_resource type="Environment" id="Environment_vlci5"]
+background_mode = 1
+background_color = Color(0.15919161, 0.6230468, 0.99999994, 1)
+sky = SubResource("Sky_c6vye")
+ambient_light_source = 2
+ambient_light_color = Color(0.9191231, 0.9286207, 0.9193768, 1)
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vlci5"]
+render_priority = 0
+shader = ExtResource("1_c6vye")
+shader_parameter/WATER_COL = Vector4(0.04, 0.38, 0.88, 1)
+shader_parameter/WATER2_COL = Vector4(0.04, 0.35, 0.78, 1)
+shader_parameter/FOAM_COL = Vector4(0.8125, 0.9609, 0.9648, 1)
+shader_parameter/distortion_speed = 2.0
+shader_parameter/tile = Vector2(5, 5)
+shader_parameter/height = 2.0
+shader_parameter/wave_size = Vector2(2, 2)
+shader_parameter/wave_speed = 1.5
+
+[sub_resource type="BoxMesh" id="BoxMesh_5k6ws"]
+
+[sub_resource type="Animation" id="Animation_6g8rg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("blockbench_export:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7ygbc"]
+resource_name = "Rotate"
+length = 180.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("blockbench_export:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 180),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.2831855, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0pown"]
+_data = {
+&"RESET": SubResource("Animation_6g8rg"),
+&"Rotate": SubResource("Animation_7ygbc")
+}
+
+[node name="GrandMarketArea" type="Node3D" unique_id=531201827]
+script = ExtResource("1_6g8rg")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1328218113]
+environment = SubResource("Environment_vlci5")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="." unique_id=641049463]
+transform = Transform3D(142.84644, 0, 0, 0, 1, 0, 0, 0, 77.95518, -0.98313594, -1.3794866, -29.736433)
+material_override = SubResource("ShaderMaterial_vlci5")
+mesh = SubResource("BoxMesh_5k6ws")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=591298792]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3764211, 0.98903584, 3.862742)
+fov = 50.0
+
+[node name="blockbench_export" parent="." unique_id=1620194128 instance=ExtResource("1_5k6ws")]
+transform = Transform3D(1.5446855, 0, 0, 0, 1.3854101, 0, 0, 0, 1.3044271, -0.40015483, 0, -0.7154243)
+
+[node name="Node3D" parent="blockbench_export" unique_id=217320620 instance=ExtResource("3_vlci5")]
+transform = Transform3D(-0.13059461, 0, 0.6340718, 0, 0.721808, 0, -0.7508596, 0, -0.15464842, 4.4963408, -1.2146701, -1.4704967)
+
+[node name="Node3D4" parent="blockbench_export" unique_id=1404514244 instance=ExtResource("3_vlci5")]
+transform = Transform3D(0.5192515, 0, 0.506448, 0, 0.721808, 0, -0.55787396, 0, 0.41167197, 3.4655898, -1.812338, 4.011018)
+
+[node name="Node3D2" parent="blockbench_export" unique_id=1247130052 instance=ExtResource("3_vlci5")]
+transform = Transform3D(-0.60221034, 0, -0.23758122, 0, 0.721808, 0, 0.28134072, 0, -0.71312964, -3.2834167, -1.2053517, -4.644713)
+
+[node name="Node3D3" parent="blockbench_export" unique_id=612776885 instance=ExtResource("3_vlci5")]
+transform = Transform3D(0.0568571, 0, -0.7513298, 0, 0.721808, 0, 0.66225183, 0, -0.022408633, -5.0111065, -1.9633354, 3.2660697)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2105560458]
+libraries/ = SubResource("AnimationLibrary_0pown")
+
+[node name="AmbiencePlayer" parent="." unique_id=1715752618 instance=ExtResource("5_7ygbc")]
+stream = ExtResource("6_0pown")
+volume_db = -3.0
+autoplay = true

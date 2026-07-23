@@ -44,11 +44,13 @@ var player : Player
 const TIER_UP = preload("uid://dhfdudbiidv7a")
 
 
+const BROKEN_ELEVATOR_SCENE = preload("uid://re8i72crov46")
+const FLOOR_CHALLENGE_CUTSCENE = preload("uid://c6chwv4cv6xt2")
 
 var kill_quota_hit : bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if !MusicPlayer.transitioning_floors:
+	if !MusicPlayer.transitioning_floors and map_name != "Base of Starspire Tower":
 		MusicPlayer.stop_player()
 	GameManager.can_pause_game = true
 	if tower_entrance_data:
@@ -60,18 +62,25 @@ func _ready() -> void:
 	SignalBus.return_to_starshire.connect(go_to_starshire)
 	SignalBus.go_to_victory_hunt_menu.connect(go_to_victory_menu)
 	SignalBus.go_to_failure_hunt_menu.connect(go_to_failure_menu)
-	SignalBus.update_kill_quota.connect(update_hunt_quota)
+	SignalBus.update_kill_quota.connect(update_monster_count)
 	SignalBus.play_sfx.connect(play_sfx)
 	LevelingManager.play_level_up_sfx.connect(play_level_up_sfx)
+	CutsceneManager.play_map_theme.connect(play_map_theme)
 	#hud.map_name_label.text = map_name
-	
 	
 	load_floor_data()
 	
 	if player_spawn:
+		if map_type != MAP_TYPE.HUB:
+			if tower_entrance_data:
+				tower_entrance_data.times_entered = SaveManager.get_floor_entered_count(tower_entrance_data.floor_name)
+				tower_entrance_data.times_entered += 1
+				SaveManager.save_floor_entered_count(tower_entrance_data.floor_name, tower_entrance_data.times_entered)
+				
+		
 		if map_type == MAP_TYPE.CHECKPOINT_FLOOR and tower_entrance_data.number_of_spawn_locations <= 0:
 			tower_entrance_data.number_of_spawn_locations += 1
-			SaveManager.save_floor_data(tower_entrance_data, map_name)
+			SaveManager.save_floor_data(tower_entrance_data, tower_entrance_data.floor_name)
 		
 		if campfire_list:
 			for i in range(0,tower_entrance_data.camp_fires_reached):
@@ -91,13 +100,6 @@ func _ready() -> void:
 		if map_type == MAP_TYPE.CHECKPOINT_FLOOR:	
 			GameManager.can_open_bag = true
 			if !GameManager.hunt_challenge_selected:
-				
-				if tower_entrance_data.is_expedition_floor() and tower_entrance_data.unlock_recipe and !tower_entrance_data.hunt_challenge_completed:
-					issue_repair_elevator_notice()
-			
-				elif tower_entrance_data.is_challenge_floor() and not tower_entrance_data.hunt_challenge_completed:
-					issue_challenge_objective_notice()
-				
 				SignalBus.show_bag_stats.emit()
 				
 			if monster_spawn_node and GameManager.hunt_challenge_selected:
@@ -105,9 +107,8 @@ func _ready() -> void:
 				#else:
 					#SignalBus.update_monsters_left.emit("Campfires Discovered: %s/%s" % [tower_entrance_data.camp_fires_reached, tower_entrance_data.total_camp_fires],false)
 			
-			
-			PlayerStats.check_points_unlocked[map_name] = true
-			SaveManager.save_floor_data(tower_entrance_data, map_name)
+			PlayerStats.check_points_unlocked[tower_entrance_data.floor_name] = true
+			SaveManager.save_floor_data(tower_entrance_data, tower_entrance_data.floor_name)
 			SaveManager.save_player_stats()
 		
 		if map_type ==	MAP_TYPE.FLOOR or map_type == MAP_TYPE.CHECKPOINT_FLOOR:
@@ -129,7 +130,7 @@ func _ready() -> void:
 	if !GameManager.hunt_challenge_selected:
 		if map_theme_song:
 			if !MusicPlayer.transitioning_floors:
-				if !MusicPlayer.audio_stream_player.playing:
+				if !MusicPlayer.audio_stream_player.playing and map_theme_song:
 					MusicPlayer.play_song(map_theme_song)
 			else:
 				MusicPlayer.transitioning_floors = false
@@ -145,6 +146,9 @@ func _input(event: InputEvent) -> void:
 func _process(delta: float) -> void:
 	pass
 
+func play_map_theme() -> void:
+	MusicPlayer.play_song(map_theme_song)
+
 func spawn_player() -> void:
 	var new_player : Player = preload("uid://wuy3aelq8aeg").instantiate()
 	player = new_player
@@ -153,8 +157,9 @@ func spawn_player() -> void:
 	player.position = selected_spawn_point.position
 	player.damageable = true
 	
-	var current_health : int = PlayerStats.player_stats["Current Health"]
-	var current_mp : int = PlayerStats.player_stats["Current MP"]
+	var current_health : int = GameManager.current_player_health
+	#print("THIS IS THE CURRENT HEALTH: %s" % current_health)
+	var current_mp : int = GameManager.current_player_mp
 	
 	if GameManager.resupply_character:
 		current_health = (
@@ -164,22 +169,21 @@ func spawn_player() -> void:
 		
 		current_mp = (
 			PlayerStats.player_stats["Max MP"]
-			# Replace if you have a real MP bonus function
-			+ PlayerStats.get_current_sword().get_total_defense_bonus()
+			+ PlayerStats.get_current_sword().get_total_mp_bonus()
 		)
 		
-		PlayerStats.player_stats["Current Health"] = current_health
-		PlayerStats.player_stats["Current MP"] = current_mp
+		GameManager.current_player_health = current_health
+		GameManager.current_player_mp = current_mp
 		
 		GameManager.resupply_character = false
 	
-	player.health = current_health
+	#player.health = current_health
 	
 	GameManager.in_last_breadth_mode = (
 		current_health <= PlayerStats.player_stats["Last Breadth Threshold"]
 	)
 	
-	print("THIS IS PLAYER HEALTH: " + str(player.health))
+	#print("THIS IS PLAYER HEALTH: " + str(player.health))
 	
 	add_child(player)
 	
@@ -204,6 +208,13 @@ func go_to_starshire() -> void:
 			tree.change_scene_to_file("uid://cq0un0c22235d")
 		else:
 			tree.change_scene_to_file("res://src/Scenes/UI/ExpeditionResultsScreen.tscn")
+
+func update_monster_count() -> void:
+	PlayerHudSignalBus.update_monsters_left.emit("Monsters Left: %s" % int(get_tree().get_nodes_in_group("Enemy").size()))
+	await get_tree().process_frame
+	if get_tree().get_nodes_in_group("Enemy").is_empty():
+		print("WE MADE IT! BABY")
+		complete_hunt_challenge()
 
 func go_to_victory_menu() -> void:
 	MusicPlayer.stop_player(true)
@@ -295,30 +306,25 @@ func spawn_mp_vials() -> void:
 		if roll_challice_spawn_chance():
 			pos.spawn_mp_vial()
 
-func update_hunt_quota() -> void:
+func complete_hunt_challenge() -> void:
 	if !GameManager.hunt_challenge_selected:
 		return
 	
 	await get_tree().process_frame
-	if map_type == MAP_TYPE.CHECKPOINT_FLOOR:
-		if monster_spawn_node.get_children().is_empty():
-			sfx_player.play_sfx(TIER_UP)
-			MusicPlayer.stop_player()
-			#MusicPlayer.play_song(hunt_victory_theme)
-			GameManager.expedition_timer_started = false
-			tower_entrance_data.hunt_challenge_completed = true
-			SaveManager.save_floor_data(tower_entrance_data, map_name)
-			play_unlock_elevator_sequence()
-			SignalBus.unlock_next_room.emit()
-			SignalBus.update_kill_quota_text.emit("Hunt Challenge Completed! Head to the Exit Elevator!", true, false)
-			SignalBus.update_monsters_left.emit("Monsters Left: %s" % [monster_spawn_node.get_children().size()],false)
-		else:
-			SignalBus.update_kill_quota_text.emit("Defeat all Monsters to win!", false, false)	
-			SignalBus.update_monsters_left.emit("Monsters Left: %s" % [monster_spawn_node.get_children().size()],false)
+
+
+	sfx_player.play_sfx(TIER_UP)
+	MusicPlayer.stop_player()
+	#MusicPlayer.play_song(hunt_victory_theme)
+	GameManager.expedition_timer_started = false
+	tower_entrance_data.hunt_challenge_completed = true
+	SaveManager.save_floor_data(tower_entrance_data, tower_entrance_data.floor_name)
+	play_unlock_elevator_sequence()
+	SignalBus.unlock_next_room.emit()
 
 
 func load_floor_data() -> void:
-	if tower_entrance_data:
+	if tower_entrance_data and SaveManager.current_save_game:
 		var saved_data = SaveManager.current_save_game.tower_entrance_data
 		var tower_data = saved_data.get(tower_entrance_data.floor_name)
 
@@ -333,65 +339,28 @@ func load_floor_data() -> void:
 		if exit_elevator:
 			exit_elevator.current_room_data = tower_entrance_data
 
-func play_sfx(audio_stream : AudioStream) -> void:
-	if sfx_player:
-		sfx_player.play_sfx(audio_stream)
-
 func play_level_up_sfx() -> void:
-	if sfx_player:
-		sfx_player.play_sfx(TIER_UP)
-
+	play_sfx(TIER_UP,0.0)
+	SignalBus.play_level_up_visual.emit()
 
 func issue_repair_elevator_notice() -> void:
 	camera.player = null
-	GameManager.player_can_move = false
-	GameManager.can_pause_game = false
-	GameManager.can_open_bag = false
-	GameManager.enemies_can_move = false
-
 	player.send_to_idle_state()
 	#hud.animation_player.play("FadeInOut")
+	GameManager.enemies_can_move = false
 	await get_tree().create_timer(0.5).timeout
 	camera.position = exit_elevator_marker.position
 	await get_tree().create_timer(1.0).timeout
-	PlayerHudSignalBus.issue_big_notification.emit("Deliver required resource to repair the elevator!")
-	await get_tree().create_timer(3.0).timeout
-	PlayerHudSignalBus.hide_big_notification.emit()
-	#hud.animation_player.play("FadeInOut")
-	await get_tree().create_timer(0.5).timeout
+	Dialogic.start(BROKEN_ELEVATOR_SCENE)
+
+func return_camera_to_player() -> void:
 	camera.position = player.position
 	camera.player = player
-	
-	GameManager.player_can_move = true
-	GameManager.can_pause_game = true
-	GameManager.can_open_bag = true
-	GameManager.enemies_can_move = true
 
 func issue_challenge_objective_notice() -> void:
-	camera.player = null
-	GameManager.player_can_move = false
-	GameManager.can_pause_game = false
-	GameManager.can_open_bag = false
-	GameManager.enemies_can_move = false
-
 	player.send_to_idle_state()
-	#hud.animation_player.play("FadeInOut")
-	await get_tree().create_timer(0.5).timeout
-	camera.position = exit_elevator_marker.position
-	await get_tree().create_timer(1.0).timeout
-	PlayerHudSignalBus.issue_big_notification.emit("Beat the Floor Challenge to unlock the exit elevator!")
-	await get_tree().create_timer(3.0).timeout
-	SignalBus.hide_big_notification.emit()
-	#hud.animation_player.play("FadeInOut")
-	await get_tree().create_timer(0.5).timeout
-	PlayerHudSignalBus.hide_big_notification.emit()
-	camera.position = player.position
-	camera.player = player
-	
-	GameManager.player_can_move = true
-	GameManager.can_pause_game = true
-	GameManager.can_open_bag = true
-	GameManager.enemies_can_move = true
+	GameManager.disable_enemy_movement()
+	Dialogic.start(FLOOR_CHALLENGE_CUTSCENE)
 
 func play_unlock_elevator_sequence() -> void:
 	GameManager.can_pause_game = false
@@ -428,3 +397,12 @@ func unlock_quests() -> void:
 		GameManager.new_jobs_available = true
 		SignalBus.check_for_notification.emit(GameManager.NOTIFICATION_TYPE.QUEST)
 		
+
+func play_sfx(sound: AudioStream, volume: float):
+	var player := AudioStreamPlayer.new()
+	player.stream = sound
+	player.volume_db = volume
+	player.bus = &"SFX"
+	add_child(player)
+	player.play()
+	player.finished.connect(player.queue_free)

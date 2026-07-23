@@ -1,0 +1,8 @@
+do CutsceneManager.disable_player_functionality()
+join TowerGuide right [animation="Slide In Up" wait="true"]
+TowerGuide: Congratulations! You've completed the Hunter Exam and earned your Hunter License!
+TowerGuide: If the default controls don't feel right, you can change them in the Control Settings by pressing ESC. Full controller support will be available soon!
+TowerGuide: Good luck in there, and may your bounty be plentiful!
+[wait time="2.0"]
+do CutsceneManager.enable_player_functionality()
+do CutsceneManager.to_first_floor()

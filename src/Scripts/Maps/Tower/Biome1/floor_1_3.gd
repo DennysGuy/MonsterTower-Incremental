@@ -26,7 +26,7 @@ func _ready() -> void:
 		
 	await get_tree().process_frame
 	
-	QuestManager.check_map_name.emit(map_name)
+	QuestManager.check_map_name.emit(tower_entrance_data.floor_name)
 	unlock_quests()
 	PlayerHudSignalBus.show_stop_watch.emit()
 
@@ -39,8 +39,8 @@ func _ready() -> void:
 	
 	PlayerHudSignalBus.update_map_name_label.emit(map_name)
 	SignalBus.update_banner_info.emit(tower_entrance_data)
-	PlayerHudSignalBus.update_player_health.emit()
-	PlayerHudSignalBus.update_player_mp.emit()
+	#PlayerHudSignalBus.update_player_health.emit()
+	#PlayerHudSignalBus.update_player_mp.emit()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

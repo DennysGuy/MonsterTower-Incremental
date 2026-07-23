@@ -14,15 +14,18 @@ class_name CraftingStationMenu extends Control
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var bag_bg: TextureRect = $BagBG
 @onready var inventory_label: Label = $InventoryLabel
+@onready var weapon_previewer: WeaponPreviewer = $SwordViewer/SubViewport/WeaponPreviewer
 
 @onready var sfx_player: SFXPlayer = $SfxPlayer
 const CRAFT_SWORD = preload("uid://4c6l1w0kpar3")
+@onready var recipe: Label = $Recipe
 
 var sword : Sword
 @onready var button: Button = $Button
 
 const GEAR_STATION_DROPS_BAG_BG = preload("uid://dqrwhfhixd1io")
 const GEAR_STATION_USE_BAG_BG = preload("uid://b5o4unayrrfi")
+
 
 var selected_bag : String = "Drops"
 
@@ -47,19 +50,23 @@ func upgrade_sword() -> void:
 	InventoryManager.remove_resources_from_inventory(sword.recipe.recipe_list)
 	QuestManager.check_general_task_for_completion.emit("Upgrade Sword")
 	
-	PlayerStats.player_stats["Equipped Sword"]+= 1
+	PlayerStats.player_stats["Equipped Sword"] = sword.index
 	SaveManager.save_player_stats()
 	
 	var next_sword_index : int = PlayerStats.player_stats["Equipped Sword"]+1
 	if next_sword_index < PlayerStats.BEGINNGER_SWORD_COUNT:
 		PlayerStats.set_tracked_weapon_index(next_sword_index)
-		PlayerStats.player_stats["Equipped Sword"] = next_sword_index
-		SaveManager.save_player_stats()
-		update_sword()
-		SaveManager.save_inventories()
-		update_inventory_containers()
-		SignalBus.update_sword_texture.emit("Idle")
-		
+		sword = PlayerStats.get_sword(next_sword_index)
+	else:
+		PlayerStats.set_tracked_weapon_index(-1)
+	
+	update_sword()
+	update_inventory_containers()
+	SignalBus.update_sword_texture.emit("Idle")
+	
+	SaveManager.save_player_stats()
+	SaveManager.save_inventories()	
+	
 func update_inventory_containers() -> void:
 	#InventoryManager.update_grid_container(inventory_container, "Inventory",false)
 	show_inventory(selected_bag)
@@ -70,13 +77,22 @@ func update_inventory_containers() -> void:
 
 func update_sword() -> void: #run this function when we upgrade the sword.
 	var tracked_index : int = PlayerStats.player_stats["Tracked Weapon"]
-
+	
+	if tracked_index == -1:
+		sword = null
+		sword_graphic.texture = null
+		button.disabled = true
+		recipe.text = "More weapons when Combat Class selected!"
+		clear_description_panel()
+		SignalBus.update_resource_needed_panel.emit()
+		return
+	
 	if tracked_index < PlayerStats.BEGINNGER_SWORD_COUNT:
 		sword = PlayerStats.get_sword(tracked_index)
 		sword_name.text = sword.sword_name
 		sword_stats.text = sword.get_stats_description()
 		sword_description.text = sword.recipe.description
-			
+		
 		InventoryManager.clear_grid_container(ingredients_list)
 		for ingredient in sword.recipe.recipe_list:
 			var ingredient_menu_item : IngredientItem = preload("uid://dil4081ni1hb3").instantiate()
@@ -91,23 +107,33 @@ func update_sword() -> void: #run this function when we upgrade the sword.
 			
 		if can_craft:
 			button.disabled = false
-			sword_graphic.texture = sword.graphic
+			#sword_graphic.texture = sword.graphic
 		else:
 			button.disabled = true
-			sword_graphic.texture = sword.mold_graphic
-				
+			#sword_graphic.texture = sword.mold_graphic
+		weapon_previewer.show_chosen_weapon(sword)
+		QuestManager.weapon_tracker_updated.emit()
 		SignalBus.update_resource_needed_panel.emit()
 
 func _on_close_button_up() -> void:
 	exit_menu()
 
+func clear_description_panel() -> void:
+	sword_description.text = ""
+	sword_name.text = ""
+	sword_stats.text = ""
+	InventoryManager.clear_grid_container(ingredients_list)
+	button.disabled = true
+
 func exit_menu() -> void:
-	GameManager.player_can_move = true
-	GameManager.can_pause_game = true
-	GameManager.can_open_bag = true
-	GameManager.can_open_tower_map = true
-	
+	CutsceneManager.enable_player_functionality()
 	SignalBus.check_can_sword_craft.emit()
+	
+	SignalBus.update_resource_needed_panel.emit()
+	SignalBus.check_for_notification.emit(GameManager.NOTIFICATION_TYPE.CRAFTING)
+	
+	PlayerHudSignalBus.hub_menu_exited.emit()
+	await get_tree().create_timer(0.3).timeout
 	SignalBus.hide_tech_tree_canvas_layer.emit()
 	queue_free()
 
@@ -127,10 +153,8 @@ func show_inventory(bag_name : String) -> void:
 			bag_bg.texture = GEAR_STATION_USE_BAG_BG
 			InventoryManager.update_grid_container(inventory_container, "Use", false)
 
-			
 	selected_bag = bag_name
 	inventory_label.text = bag_name
-
 
 func spawn_crafting_sequence() -> void:
 	var crafting_animation : CraftingAnimation = preload("uid://2bfb4gmhtb7").instantiate()

@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="CraftingRecipe" format=3 uid="uid://bl128q5qwa5a6"]
+
+[ext_resource type="Script" uid="uid://cljygiasf4103" path="res://src/Scripts/Facilities/crafting_recipe.gd" id="1_jw1gy"]
+[ext_resource type="Texture2D" uid="uid://bbc7cupbuh156" path="res://Assets/Facilities/CookingStation/MushyFlan.png" id="1_v88f0"]
+[ext_resource type="Resource" uid="uid://vbv5nct7kydl" path="res://src/Resources/Dishes/MushieFlan.tres" id="2_gvdty"]
+[ext_resource type="Resource" uid="uid://cnd7ngdtcfmgc" path="res://src/Resources/Actors/Enemies/Biome1/CorruptedMushie/PurifiedMushieCore.tres" id="3_7qu66"]
+[ext_resource type="Resource" uid="uid://bsa2pu1rqjdkt" path="res://src/Resources/Actors/Enemies/Biome1/CorruptedMushie/MushiePuree.tres" id="4_7qu66"]
+
+[resource]
+script = ExtResource("1_jw1gy")
+recipe_name = "Musie Flan"
+menu_icon = ExtResource("1_v88f0")
+description = "A delicacy to the rest of the world. To the hunters.. it's slop."
+recipe_tier = 1
+crafting_time = 150.0
+recipe_type = 1
+success_rate = 0.85
+output_item = ExtResource("2_gvdty")
+recipe_list = Array[Dictionary]([{
+ExtResource("3_7qu66"): 2
+}, {
+ExtResource("4_7qu66"): 1
+}])
+metadata/_custom_type_script = "uid://cljygiasf4103"

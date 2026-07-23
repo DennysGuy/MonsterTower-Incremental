@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="HuntingTask" format=3 uid="uid://bmw0wgsubus1j"]
+
+[ext_resource type="Resource" uid="uid://cq7q6npjlayh1" path="res://src/Resources/Actors/Enemies/Biome1/GoblinThief/GoblinThief.tres" id="1_egqp7"]
+[ext_resource type="Script" uid="uid://cx5q27bqrlaxf" path="res://src/Scripts/Questing/Tasks/hunting_task.gd" id="1_ptpeg"]
+
+[resource]
+script = ExtResource("1_ptpeg")
+enemy_to_hunt = ExtResource("1_egqp7")
+number_to_get = 50
+task_id = 21
+metadata/_custom_type_script = "uid://cx5q27bqrlaxf"

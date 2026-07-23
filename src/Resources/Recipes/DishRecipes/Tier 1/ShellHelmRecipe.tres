@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="CraftingRecipe" format=3 uid="uid://cf3i4kcwphgab"]
+
+[ext_resource type="Texture2D" uid="uid://4mdaktdgoqwh" path="res://Assets/Facilities/Junkatron/ShellHelm.png" id="1_m88vy"]
+[ext_resource type="Resource" uid="uid://carrsm8pqm8fv" path="res://src/Resources/Dishes/ShellHelm.tres" id="2_vjhy6"]
+[ext_resource type="Resource" uid="uid://sbvd7ewnpn0s" path="res://src/Resources/Actors/Enemies/Biome1/SerpantMimic/SerpantTongue.tres" id="3_3ic7n"]
+[ext_resource type="Script" uid="uid://cljygiasf4103" path="res://src/Scripts/Facilities/crafting_recipe.gd" id="4_fratc"]
+[ext_resource type="Resource" uid="uid://dupi3hkqbevyx" path="res://src/Resources/Actors/Enemies/Biome1/BeetleKnight/BeetleShell.tres" id="4_vjhy6"]
+
+[resource]
+script = ExtResource("4_fratc")
+recipe_name = "Shell Helm"
+menu_icon = ExtResource("1_m88vy")
+index = 4
+description = "Protects yer head - but the straps are a bit slimy"
+recipe_tier = 1
+crafting_time = 44.0
+recipe_type = 1
+success_rate = 0.75
+critical_success_rate = 0.1
+failure_rate = 0.25
+output_item = ExtResource("2_vjhy6")
+recipe_list = Array[Dictionary]([{
+ExtResource("3_3ic7n"): 2
+}, {
+ExtResource("4_vjhy6"): 1
+}])
+related_enemies = Array[String](["Serpant Mimic", "Serpant Mimic LVL2"])
+metadata/_custom_type_script = "uid://cljygiasf4103"

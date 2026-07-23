@@ -2,10 +2,13 @@ class_name QuestTrackerItem extends MarginContainer
 
 @export var quest_data : Quest
 @export var checklist: VBoxContainer
-@onready var v_box_container: VBoxContainer = $PanelContainer/VBoxContainer
+@onready var v_box_container: VBoxContainer = $PanelContainer2/VBoxContainer
+
 
 @export var quest_title: RichTextLabel
 const QUEST_COMPLETED = preload("uid://om1y244uqbs")
+
+const TASK_WHOOSH_IN = preload("uid://bjtt00e54ppwb")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -33,6 +36,13 @@ func build_task_list() -> void:
 		var new_task : TaskListItem = task.build_task_list_item()
 		checklist.add_child(new_task)
 		#await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(0.5).timeout
+	bring_in_tasks()
+
+func bring_in_tasks() -> void:
+	for task in checklist.get_children():
+		task.bring_in_task()
+		await get_tree().create_timer(0.15).timeout
 
 func clear_checklist() -> void:
 	for child in checklist.get_children():
@@ -47,6 +57,7 @@ func update_quest_completion(quest_name : String) -> void:
 	await get_tree().create_timer(1.5).timeout
 	if quest_data.is_main_quest():
 		quest_data.complete_quest()
+		GameManager.play_sfx(CodexManager.QUEST_COMPLETED)
 		CodexManager.send_codex_notification.emit("Main Quest: [color=yellow]%s[/color] \nHas been completed!" % quest_name) 
 		load_next_quest()
 	else:
@@ -55,8 +66,8 @@ func update_quest_completion(quest_name : String) -> void:
 		completed_text.is_turn_in_notice = true
 		quest_data.ready_for_turn_in()
 		checklist.add_child(completed_text)
+		GameManager.play_sfx(CodexManager.QUEST_COMPLETED)
 		CodexManager.send_codex_notification.emit("[color=red]%s[/color] is \nready for turn in!" % quest_name) 
-
 
 func undo_quest_completion(quest_name : String) -> void:
 	if quest_name != quest_data.quest_title or quest_data.is_in_progress():

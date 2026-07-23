@@ -35,8 +35,6 @@ func populate_description(monster_stats : EnemyStats) -> void:
 	stats.text = "Level %s\nAttack %s\nDefense %s\nHP %s\n" % [monster_stats.enemy_level, monster_stats.attack, monster_stats.defense, monster_stats.max_health]	
 	if monster_stats.novelty_item_drop:
 		novelty_drop_graphic.texture = monster_stats.novelty_item_drop.shop_icon
-	if monster_stats.cooking_item_drop:
-		cooking_drop_graphic.texture = monster_stats.cooking_item_drop.shop_icon
 	if monster_stats.crafting_item_drop:
 		crafting_drop_graphic.texture = monster_stats.crafting_item_drop.shop_icon
 	
@@ -59,6 +57,5 @@ func create_monster_cards() -> void:
 		await get_tree().create_timer(0.05).timeout
 
 func clear_drop_graphics() -> void:
-	cooking_drop_graphic.texture = null
 	crafting_drop_graphic.texture = null
 	novelty_drop_graphic.texture = null

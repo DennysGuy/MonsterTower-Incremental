@@ -7,6 +7,6 @@
 script = ExtResource("2_cgx8d")
 item_to_gather = ExtResource("1_4nsja")
 number_to_get = 5
-task_id = 17
+task_id = 18
 parent_quest = "The True Nature of the Tower 1"
 metadata/_custom_type_script = "uid://b1r3golda0dn4"

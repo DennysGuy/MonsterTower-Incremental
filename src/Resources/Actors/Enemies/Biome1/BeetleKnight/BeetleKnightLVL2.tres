@@ -3,7 +3,6 @@
 [ext_resource type="Resource" uid="uid://dupi3hkqbevyx" path="res://src/Resources/Actors/Enemies/Biome1/BeetleKnight/BeetleShell.tres" id="1_j5iuy"]
 [ext_resource type="Script" uid="uid://cbjktr12qagl" path="res://src/Scripts/Enemies/enemy_stats.gd" id="1_kw8av"]
 [ext_resource type="Texture2D" uid="uid://c2t2m05dorijs" path="res://Assets/Enemies/BeatleKnight/BeatleKnight_LVL2_Stand.png" id="2_4rgy4"]
-[ext_resource type="Resource" uid="uid://cekcxnint1huh" path="res://src/Resources/Actors/Enemies/Biome1/BeetleKnight/BeetleShoulderPad.tres" id="2_n1jal"]
 [ext_resource type="Texture2D" uid="uid://csia73ycbfkej" path="res://Assets/Enemies/BeetleKnightLvl2Icon.png" id="3_n1jal"]
 
 [resource]
@@ -14,13 +13,13 @@ index = 7
 preview_icon = ExtResource("3_n1jal")
 touch_damage = true
 idle_animation = ExtResource("2_4rgy4")
+floor_locations = Array[String](["Mossy Dungeon - Floor 3", "Mossy Dungeon - Floor 4"])
 enemy_type = 1
-max_health = 1200
-attack = 45
+max_health = 1300
+attack = 47
 defense = 3.0
 movement_speed = 70.0
 chase_speed = 75.0
 break_threshold = 9
-novelty_item_drop = ExtResource("2_n1jal")
-cooking_item_drop = ExtResource("1_j5iuy")
+novelty_item_drop = ExtResource("1_j5iuy")
 metadata/_custom_type_script = "uid://cbjktr12qagl"

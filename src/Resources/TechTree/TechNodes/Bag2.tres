@@ -3,19 +3,15 @@
 [ext_resource type="Texture2D" uid="uid://cimtp3bvrja8f" path="res://Assets/TechTree/InventoryNodes/BackPackExpansion_Disabled_Graphic.png" id="1_4us0l"]
 [ext_resource type="Texture2D" uid="uid://ck8r61vdy0ghi" path="res://Assets/TechTree/InventoryNodes/BackPackExpansion_Graphic.png" id="2_16w2l"]
 [ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="2_gc8yo"]
-[ext_resource type="Resource" uid="uid://dmmblpt46r1fs" path="res://src/Resources/Dishes/PupilCaviar.tres" id="3_4us0l"]
 
 [resource]
 script = ExtResource("2_gc8yo")
 node_name = "Item Bag 2"
 icon = ExtResource("2_16w2l")
 disabled_icon = ExtResource("1_4us0l")
-description = "Increase Item Bag slots to 12
+description = "Expand Inventory Bag to 12 slots.
 "
-currency_required = 1500
-materials_required = Array[Dictionary]([{
-ExtResource("3_4us0l"): 1
-}])
+currency_required = 3000
 stat_relation = 3
 stat_name = "Bag"
 upgrade_interval = 1.0

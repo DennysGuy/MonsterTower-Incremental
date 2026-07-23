@@ -8,6 +8,7 @@ func _ready() -> void:
 	super()
 	#hud.animation_player.play("CloseIn")
 	SignalBus.spawn_enemies.emit()
+	CutsceneManager.return_camera_to_player.connect(return_camera_to_player)
 	
 	if ore_rock_markers and !GameManager.hunt_challenge_selected:
 		spawn_ore_rocks()
@@ -30,30 +31,25 @@ func _ready() -> void:
 		else:
 			SignalBus.update_monsters_left.emit("Campfires Discovered: %s/%s" % [tower_entrance_data.camp_fires_reached, tower_entrance_data.total_camp_fires],false)
 	
-	QuestManager.check_map_name.emit(map_name)
+	QuestManager.check_map_name.emit(tower_entrance_data.floor_name)
 	SignalBus.update_banner_info.emit(tower_entrance_data)
-	PlayerHudSignalBus.update_player_health.emit()
-	PlayerHudSignalBus.update_player_mp.emit()
+	#PlayerHudSignalBus.update_player_health.emit()
+	#PlayerHudSignalBus.update_player_mp.emit()
 	SaveManager.save_player_stats()
-	PlayerHudSignalBus.show_stop_watch.emit()
-	if GameManager.hunt_challenge_selected:
-		GameManager.enemies_can_move = false
-		SignalBus.hide_hunt_challenge_button.emit()
-		var monster_count : int = monster_spawn_node.get_children().size()
-		SignalBus.update_monsters_left.emit("Monsters left: %s" % [monster_count])
-		player.damageable = false
-		await get_tree().create_timer(0.5).tidmeout
-		#hud.set_hunt_timer()
-		#hud.expedition_timer.update_timer_label()
-		#hud.animation_player.play("StartHuntChallenge")
-		await get_tree().create_timer(4.0).timeout
-		player.damageable = true
-		GameManager.player_can_move = true
+	PlayerHudSignalBus.show_stop_watch.emit()	
+	PlayerHudSignalBus.update_map_name_label.emit(map_name)
+	
+	if !tower_entrance_data.hunt_challenge_completed:
+		if tower_entrance_data.times_entered == 1:
+			issue_repair_elevator_notice()
+		else:
+			SignalBus.start_enemy_spawn.emit()
+			PlayerHudSignalBus.start_stop_watch.emit()
+			CodexManager.send_codex_notification.emit("Repair the Elevator!")
 	else:
 		SignalBus.start_enemy_spawn.emit()
 		PlayerHudSignalBus.start_stop_watch.emit()
-	
-	PlayerHudSignalBus.update_map_name_label.emit(map_name)
+		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	super(delta)

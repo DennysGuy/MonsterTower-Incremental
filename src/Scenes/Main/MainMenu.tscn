@@ -2,14 +2,32 @@
 
 [ext_resource type="Script" uid="uid://c1wrjow75bhab" path="res://src/Scripts/Main/main_menu.gd" id="1_lb6hv"]
 [ext_resource type="PackedScene" uid="uid://djr7ysw0olctc" path="res://src/Scenes/MainMenuBG.tscn" id="2_rsyx7"]
-[ext_resource type="Texture2D" uid="uid://b4xg7wcimcord" path="res://Assets/QuickMainMenuBGMockUp.png" id="3_06df4"]
 [ext_resource type="FontFile" uid="uid://cynitq2e6hghv" path="res://Assets/Fonts/Snake in the Boot.ttf" id="4_gj8tx"]
 [ext_resource type="FontFile" uid="uid://dr468m31loqrx" path="res://Assets/Fonts/Super Cartoon.ttf" id="5_gj8tx"]
-[ext_resource type="AudioStream" uid="uid://b4qmxdv5pxdpb" path="res://Audio/Music/NewMainMenuThemeDraft1.wav" id="6_06df4"]
+[ext_resource type="Texture2D" uid="uid://cnm41tx7e04fp" path="res://Assets/Fonts/StarspireHuntersLogo_Library.png" id="6_i8a4m"]
+[ext_resource type="AudioStream" uid="uid://da21oqgki2pfa" path="res://Audio/Music/NewMainTheme.wav" id="7_4c8q5"]
+[ext_resource type="Texture2D" uid="uid://c8s6s6xlvw3dy" path="res://Assets/Fonts/SteamLogo.png" id="7_36jow"]
 [ext_resource type="AudioStream" uid="uid://deidmmols8obd" path="res://Audio/SFX/MainMenuOceanAmbiencc.wav" id="7_gj8tx"]
+[ext_resource type="FontFile" uid="uid://stn4dtg0uw57" path="res://Assets/Fonts/FredokaOne-Regular.ttf" id="8_4c8q5"]
+[ext_resource type="Texture2D" uid="uid://b7fk8gpudkf5e" path="res://Assets/Fonts/Discord-Symbol-Blurple.svg" id="8_i8a4m"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4c8q5"]
+bg_color = Color(0, 0.7051233, 0.5320225, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_36jow"]
+bg_color = Color(0.8667882, 0.4672013, 0.44627374, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [sub_resource type="Animation" id="Animation_58xxk"]
 resource_name = "FadeIn"
+length = 1.3666667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -17,10 +35,74 @@ tracks/0/path = NodePath("TransitionRect:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 1.3333334),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4c8q5"]
+resource_name = "FadeInMenu"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TransitionRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SphLogoAttempt1:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("NewGame:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2.3333333, 2.6799998),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SettingsButton:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(2.5466666, 2.9133332),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Continue:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(2.1, 2.4199998),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_fcgj2"]
@@ -52,10 +134,59 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SphLogoAttempt1:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("NewGame:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SettingsButton:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Continue:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gwjs1"]
 _data = {
 &"FadeIn": SubResource("Animation_58xxk"),
+&"FadeInMenu": SubResource("Animation_4c8q5"),
 &"FadeOut": SubResource("Animation_fcgj2"),
 &"RESET": SubResource("Animation_gwjs1")
 }
@@ -77,7 +208,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.40520903, 0.0012058679, 0.5956752, 1)
+color = Color(0, 0, 0, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1650630831]
 layout_mode = 0
@@ -100,15 +231,8 @@ render_target_update_mode = 4
 
 [node name="MainMenuBg" parent="MarginContainer/SubViewportContainer/SubViewport" unique_id=1206026906 instance=ExtResource("2_rsyx7")]
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=138066938]
-layout_mode = 0
-offset_left = 18.0
-offset_top = -29.0
-offset_right = 1938.0
-offset_bottom = 1051.0
-texture = ExtResource("3_06df4")
-
 [node name="Label" type="Label" parent="." unique_id=1445026577]
+visible = false
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -130,65 +254,304 @@ HUNTERS"
 horizontal_alignment = 1
 
 [node name="NewGame" type="Button" parent="." unique_id=2136236947]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -137.5
-offset_top = 361.0
-offset_right = 137.5
-offset_bottom = 428.0
+offset_left = -641.5
+offset_top = -35.0
+offset_right = -366.5
+offset_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_default_cursor_shape = 2
 theme_override_constants/outline_size = 0
 theme_override_fonts/font = ExtResource("5_gj8tx")
 theme_override_font_sizes/font_size = 52
 text = "New Game"
 
-[node name="Continue" type="Button" parent="." unique_id=1382076943]
-modulate = Color(3.85046e-07, 0.97184914, 0.35903677, 1)
+[node name="Label" type="Label" parent="NewGame" unique_id=1593392645]
+layout_mode = 0
+offset_left = 285.5
+offset_top = 14.0
+offset_right = 650.5
+offset_bottom = 53.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("8_4c8q5")
+theme_override_font_sizes/font_size = 28
+text = "Automatic Saves!"
+
+[node name="SettingsButton" type="Button" parent="." unique_id=1229451050]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -118.0
-offset_top = 265.0
-offset_right = 118.0
-offset_bottom = 332.0
+offset_left = -641.5
+offset_top = 51.0
+offset_right = -366.5
+offset_bottom = 118.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_default_cursor_shape = 2
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("5_gj8tx")
+theme_override_font_sizes/font_size = 52
+text = "Settings"
+
+[node name="Continue" type="Button" parent="." unique_id=1382076943]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -642.0
+offset_top = -122.0
+offset_right = -367.0
+offset_bottom = -55.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/outline_size = 0
 theme_override_fonts/font = ExtResource("5_gj8tx")
 theme_override_font_sizes/font_size = 52
 text = "Continue"
 
-[node name="TransitionRect" type="ColorRect" parent="." unique_id=1379323239]
+[node name="SphLogoAttempt1" type="TextureRect" parent="." unique_id=485859347]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = -56.0
+offset_top = -38.0
+offset_right = 2546.4243
+offset_bottom = 1425.8636
+scale = Vector2(0.3859649, 0.3859649)
+mouse_filter = 2
+texture = ExtResource("6_i8a4m")
+
+[node name="StartNewGameNoticePanel" type="Panel" parent="." unique_id=364357020]
+visible = false
+self_modulate = Color(0, 0, 0, 1)
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -460.0
+offset_top = -204.0
+offset_right = 461.0
+offset_bottom = 178.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="StartNewGameNoticePanel" unique_id=734755584]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -360.0
+offset_top = -154.03616
+offset_right = 360.0
+offset_bottom = -41.036163
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("8_4c8q5")
+theme_override_font_sizes/font_size = 40
+text = "There is already an existing save file.
+Are you sure you want to start anew?"
+horizontal_alignment = 1
+
+[node name="YesButton" type="Button" parent="StartNewGameNoticePanel" unique_id=25793749]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -193.5
+offset_top = 29.963867
+offset_right = -28.5
+offset_bottom = 128.96387
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("8_4c8q5")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_4c8q5")
+text = "YES!"
+
+[node name="NoButton" type="Button" parent="StartNewGameNoticePanel" unique_id=489297626]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 20.5
+offset_top = 29.963867
+offset_right = 185.5
+offset_bottom = 128.96387
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("8_4c8q5")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_36jow")
+text = "NO!"
+
+[node name="Version" type="Label" parent="." unique_id=2118438097]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 1487.0
+offset_top = -1044.0
+offset_right = 1872.0
+offset_bottom = -994.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 0.4143027, 0.44173592, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("8_4c8q5")
+theme_override_font_sizes/font_size = 38
+text = "Build 0.2.0-prealpha.1"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1450711081]
 libraries/ = SubResource("AnimationLibrary_gwjs1")
 
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=77706881]
+layout_mode = 0
+offset_left = 62.0
+offset_top = 877.0
+offset_right = 268.0
+offset_bottom = 948.0
+color = Color(0.09019608, 0.101960786, 0.12941177, 1)
+
+[node name="SteamButton" type="TextureButton" parent="ColorRect2" unique_id=33854900]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -101.0
+offset_top = -30.0
+offset_right = 155.0
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.75, 0.75)
+texture_normal = ExtResource("7_36jow")
+
+[node name="DiscordButton" type="TextureButton" parent="." unique_id=537814398]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -376.0
+offset_top = 339.0
+offset_right = -249.0
+offset_bottom = 435.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.75, 0.75)
+texture_normal = ExtResource("8_i8a4m")
+
+[node name="LinkButton" type="LinkButton" parent="." unique_id=157308701]
+layout_mode = 0
+offset_left = 58.0
+offset_top = 976.0
+offset_right = 870.0
+offset_bottom = 1021.0
+theme_override_colors/font_color = Color(0.5996891, 0, 0.14260945, 1)
+theme_override_fonts/font = ExtResource("8_4c8q5")
+theme_override_font_sizes/font_size = 36
+text = "Sentinel Map Theme Song By Andrew Blemings"
+underline = 1
+uri = "https://linktr.ee/thesecretweapon"
+
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=1807827256]
-stream = ExtResource("6_06df4")
-volume_db = 10.0
+stream = ExtResource("7_4c8q5")
+volume_db = 5.0
 bus = &"Music"
 
 [node name="Ambience" type="AudioStreamPlayer" parent="." unique_id=469264660]
 stream = ExtResource("7_gj8tx")
 bus = &"Ambience"
 
+[node name="SteamLink" type="LinkButton" parent="." unique_id=1252801515]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -903.0
+offset_top = 278.0
+offset_right = -456.0
+offset_bottom = 327.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.09019608, 0.101960786, 0.12941177, 1)
+theme_override_colors/font_hover_color = Color(0.36273673, 0.63717866, 0.7000358, 1)
+theme_override_fonts/font = ExtResource("8_4c8q5")
+theme_override_font_sizes/font_size = 40
+text = "Wishlist on Steam Now!"
+underline = 1
+uri = "https://store.steampowered.com/app/4937380/Starspire_Hunters/"
+
+[node name="DiscordLink" type="LinkButton" parent="." unique_id=553924734]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -372.0
+offset_top = 277.0
+offset_right = 75.0
+offset_bottom = 326.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.20543182, 0.19488814, 0.7398409, 1)
+theme_override_colors/font_hover_color = Color(0.09114178, 0.7283745, 0.7207609, 1)
+theme_override_fonts/font = ExtResource("8_4c8q5")
+theme_override_font_sizes/font_size = 40
+text = "Join us on Discord!"
+underline = 1
+uri = "https://discord.gg/gfFRPaCGFb"
+
+[node name="TransitionRect" type="ColorRect" parent="." unique_id=1379323239]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 5.0
+offset_right = 4.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
 [connection signal="button_up" from="NewGame" to="." method="_on_button_button_up"]
+[connection signal="mouse_entered" from="NewGame" to="." method="_on_new_game_mouse_entered"]
+[connection signal="mouse_exited" from="NewGame" to="." method="_on_new_game_mouse_exited"]
+[connection signal="button_up" from="SettingsButton" to="." method="_on_settings_button_button_up"]
+[connection signal="mouse_entered" from="SettingsButton" to="." method="_on_settings_button_mouse_entered"]
+[connection signal="mouse_exited" from="SettingsButton" to="." method="_on_settings_button_mouse_exited"]
 [connection signal="button_up" from="Continue" to="." method="_on_continue_button_up"]
+[connection signal="mouse_entered" from="Continue" to="." method="_on_continue_mouse_entered"]
+[connection signal="mouse_exited" from="Continue" to="." method="_on_continue_mouse_exited"]
+[connection signal="button_up" from="StartNewGameNoticePanel/YesButton" to="." method="_on_yes_button_button_up"]
+[connection signal="button_up" from="StartNewGameNoticePanel/NoButton" to="." method="_on_no_button_button_up"]
+[connection signal="button_up" from="ColorRect2/SteamButton" to="." method="_on_steam_button_button_up"]
+[connection signal="button_up" from="DiscordButton" to="." method="_on_discord_button_button_up"]
+[connection signal="button_up" from="DiscordLink" to="." method="_on_discord_link_button_up"]

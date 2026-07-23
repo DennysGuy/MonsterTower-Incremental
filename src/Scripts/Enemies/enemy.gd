@@ -8,6 +8,7 @@ class_name Enemy extends Entity
 @export var player : Player
 @export var drop_scene : Map
 
+
 @export var status_effect_icon_bar : StatusEffectIconBar
 @export var vertical_status_icon_bar : StatusEffectVBox
 
@@ -22,6 +23,7 @@ class_name Enemy extends Entity
 var slow_factor : float = 1.0
 var current_break_count : int = 0
 
+const HIT_FLASH_MATERIAL = preload("uid://b754xqklvswat")
 
 
 func _ready() -> void:
@@ -31,6 +33,7 @@ func _ready() -> void:
 	health = enemy_stats.max_health
 	
 	if name_tag:
+		name_tag.hide()
 		name_tag.tag.text = "Lv.%s %s" % [enemy_stats.enemy_level, enemy_stats.enemy_name]
 	
 	if health_bar:
@@ -38,9 +41,8 @@ func _ready() -> void:
 		health_bar.value = health
 
 func _exit_tree() -> void:
-	if is_dead:
-		if GameManager.hunt_challenge_selected:
-			SignalBus.update_kill_quota.emit()
+	pass
+		
 
 func _process(delta: float) -> void:
 	super(delta)
@@ -71,6 +73,7 @@ func apply_direction(new_dir: int) -> void:
 
 func apply_slow_and_damage(damage : int, issued_slow_factor : float, slow_wait_time : float, is_crit : bool = false) -> void:
 	if PlayerStats.player_stats["Class"] == "Tyro":
+		event_multiplier = 0.1
 		increment_break_count()
 
 	apply_damage(damage, is_crit)
@@ -145,3 +148,6 @@ func give_xp() -> void:
 	drop_scene.add_child(xp_label)
 	SaveManager.save_player_stats()
 	LevelingManager.check_for_level_up()
+
+func set_enemy_hit_flash_material() -> void:
+	sprite.material = HIT_FLASH_MATERIAL.duplicate()
