@@ -889,6 +889,9 @@ TODO: We will add saves for classes as well
 	47: {
 		#Turn In a Job Request
 		"Completed": false
+	},
+	48: {
+		"Completed": false
 	}
 }
 

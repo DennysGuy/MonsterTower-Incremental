@@ -22,8 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="18_ye63i"]
 [ext_resource type="PackedScene" uid="uid://c6tv3t1cpeq8f" path="res://src/Scenes/PlayerSpawnPoint.tscn" id="18_ys33i"]
 [ext_resource type="PackedScene" uid="uid://cgq8ujrmlp0vo" path="res://src/Scenes/Actors/Enemies/MossyDungeon/CorruptedMushie/BeginnerMushie.tscn" id="20_jwogi"]
-[ext_resource type="PackedScene" uid="uid://crf0fypg7rf6a" path="res://src/Scenes/MonsterSpawnArea.tscn" id="22_506e5"]
-[ext_resource type="Texture2D" uid="uid://y4bigoom84g6" path="res://Assets/NPCs/FreeMarketNPCs/GearDealer_WithMobileMart.png" id="24_mncln"]
+[ext_resource type="Texture2D" uid="uid://dxooxg78j5xvf" path="res://Assets/NPCs/FreeMarketNPCs/DripDealerMobile.png" id="22_dc783"]
 [ext_resource type="PackedScene" uid="uid://drvmmtbvnc785" path="res://src/Scenes/Tower/arrow_at_ore.tscn" id="25_dc783"]
 [ext_resource type="PackedScene" uid="uid://vo5sm7p34vo6" path="res://src/Scenes/Actors/Utilities/NameTag.tscn" id="26_mpxre"]
 
@@ -620,9 +619,6 @@ size = Vector2(388, 295)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cqx2w"]
 size = Vector2(20, 362)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gnglh"]
-size = Vector2(240, 20)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dc783"]
 size = Vector2(34, 351)
 
@@ -864,6 +860,19 @@ text = "Press 'E' to Interact"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="MerchantEnterNotice" type="Label" parent="." unique_id=2127788652]
+visible = false
+offset_left = 3075.0
+offset_top = 365.0
+offset_right = 3309.0
+offset_bottom = 381.0
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("9_7kbtj")
+theme_override_font_sizes/font_size = 16
+text = "Press 'E' to Enter Market"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=651658705]
 position = Vector2(-10, 455)
 
@@ -888,23 +897,6 @@ position = Vector2(1713, 448)
 
 [node name="Node" type="Node" parent="." unique_id=913082316]
 
-[node name="MonsterSpawnArea" parent="." unique_id=338647858 node_paths=PackedStringArray("drop_scene", "spawn_root", "area_collision_shape") instance=ExtResource("22_506e5")]
-position = Vector2(2486, 319)
-respawn_wait_time = 12.0
-min_spawn = 2
-min_hunt_challenge_spawn = 1
-max_spawn = 3
-max_hunt_challenge_spawn = 3
-drop_scene = NodePath("..")
-spawn_root = NodePath("../Node")
-monster_list = Dictionary[PackedScene, int]({
-ExtResource("20_jwogi"): 100
-})
-area_collision_shape = NodePath("CollisionShape2D")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MonsterSpawnArea" unique_id=51787661]
-shape = SubResource("RectangleShape2D_gnglh")
-
 [node name="BoatLeaveArea" type="Area2D" parent="." unique_id=116621446]
 position = Vector2(2164, 425)
 
@@ -914,8 +906,7 @@ shape = SubResource("RectangleShape2D_dc783")
 
 [node name="GearDealerWithMobileMart" type="Sprite2D" parent="." unique_id=1567652732]
 position = Vector2(3197, 410)
-texture = ExtResource("24_mncln")
-flip_h = true
+texture = ExtResource("22_dc783")
 
 [node name="MobileShopArea" type="Area2D" parent="." unique_id=1409077368]
 position = Vector2(3192, 427)
@@ -955,9 +946,23 @@ offset_bottom = 37.0
 [node name="Tag" parent="MobileShopArea/NameTag3/Bg" parent_id_path=PackedInt32Array(791391098, 305804188) index="0" unique_id=725373759]
 text = "Upgrades PC"
 
+[node name="CorruptedMushie" parent="." unique_id=85927412 node_paths=PackedStringArray("drop_scene") instance=ExtResource("20_jwogi")]
+position = Vector2(2372, 319)
+drop_scene = NodePath("..")
+
+[node name="CorruptedMushie2" parent="." unique_id=214138274 node_paths=PackedStringArray("drop_scene") instance=ExtResource("20_jwogi")]
+position = Vector2(2469, 319)
+drop_scene = NodePath("..")
+
+[node name="CorruptedMushie3" parent="." unique_id=1001127391 node_paths=PackedStringArray("drop_scene") instance=ExtResource("20_jwogi")]
+position = Vector2(2569, 319)
+drop_scene = NodePath("..")
+
 [connection signal="body_entered" from="TowerEntranceArea" to="." method="_on_tower_entrance_area_body_entered"]
 [connection signal="body_exited" from="TowerEntranceArea" to="." method="_on_tower_entrance_area_body_exited"]
 [connection signal="body_entered" from="BoatLeaveArea" to="." method="_on_boat_leave_area_body_entered"]
+[connection signal="body_entered" from="MobileShopArea" to="." method="_on_mobile_shop_area_body_entered"]
+[connection signal="body_exited" from="MobileShopArea" to="." method="_on_mobile_shop_area_body_exited"]
 
 [editable path="MobileShopArea/NameTag"]
 [editable path="MobileShopArea/NameTag2"]

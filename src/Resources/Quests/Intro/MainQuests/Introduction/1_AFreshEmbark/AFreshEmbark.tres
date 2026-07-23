@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://cvg0d3e0v1oip" path="res://src/Resources/Quests/Intro/MainQuests/Introduction/1_AFreshEmbark/Tasks/UnlockHunterLicenseTask.tres" id="4_exp0v"]
 [ext_resource type="Resource" uid="uid://fu6tj4wsly8v" path="res://src/Resources/Quests/Intro/MainQuests/Introduction/1_AFreshEmbark/Tasks/EnterTheTower.tres" id="5_exp0v"]
 [ext_resource type="Resource" uid="uid://duoudtlde05xk" path="res://src/Resources/Quests/Intro/MainQuests/Introduction/1_AFreshEmbark/Tasks/EnterStarspire.tres" id="6_xyytm"]
+[ext_resource type="Resource" uid="uid://d3sd3wkn5mi2k" path="res://src/Resources/Quests/Intro/MainQuests/Introduction/1_AFreshEmbark/Tasks/UnlockAttack1Node.tres" id="7_qcoc5"]
 
 [resource]
 script = ExtResource("2_6vyqh")
@@ -14,5 +15,5 @@ quest_id = 7
 status = 1
 chapter_relation = "Introduction"
 next_quest = "Learning to Plunder"
-tasks = Array[ExtResource("3_3a50l")]([ExtResource("4_exp0v"), ExtResource("5_exp0v"), ExtResource("6_xyytm")])
+tasks = Array[ExtResource("3_3a50l")]([ExtResource("4_exp0v"), ExtResource("5_exp0v"), ExtResource("7_qcoc5"), ExtResource("6_xyytm")])
 metadata/_custom_type_script = "uid://be6vh0qellkjq"

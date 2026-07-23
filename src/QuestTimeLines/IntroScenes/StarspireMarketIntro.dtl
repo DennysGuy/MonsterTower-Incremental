@@ -11,17 +11,12 @@ do CutsceneManager.send_camera_to_smelting_station_pos()
 [wait time="1.0"]
 TowerGuide: Welcome to Artisan's Corner! The backbone of Starspire operations.
 TowerGuide: This is a Hunter's bread and butter for growing stronger!
-TowerGuide: Down here, we have the Refinery Station... Well, we should. Looks like it's currently under construction. This happens from time to time, so no worries! It'll be up and running before you know it. With a little help from you, we may be able to get it running sooner!
-TowerGuide: Anyways, the Refinery will be a valuable tool for crafting new gear and improving your combat abilities. Once it's back up and running, we'll provide you with a pickaxe so you can venture into the tower and bring back that precious ore!
-TowerGuide: On the far right, you'll find the Job Requests Board! This is where Hunters can post requests related to the tower. Most requests involve hunting monsters or gathering valuable resources.
+TowerGuide: Here, you'll be able to gain access to important stations that will help you with upgrading your weapon! We'll go through each station in more detail later on!
 do CutsceneManager.send_camera_to_sword_crafting_station_pos()
 [wait time="1.0"]
-TowerGuide: Up here, you'll find two important stations\: the Gem Upgrade Station and the Weapon Crafting Station!
-TowerGuide: Just as the name suggests, these stations are here to help upgrade your gear and make you a stronger Hunter.
-TowerGuide: You'll have immediate access to the Weapon Crafting Station, but you'll need to prove yourself as a capable Hunter before the Guild grants you access to the Gem Upgrade Station.
 do CutsceneManager.set_camera_to_dojo_position()
 [wait time="1.0"]
-TowerGuide: Next, we have the Class Advancement Center  - the heart and soul of the Starspire Hunters Guild.
+TowerGuide: Next, we have the Class Advancement Center - the heart and soul of the Starspire Hunters Guild.
 TowerGuide: Here, you'll use AP earned from leveling up while hunting in the Tower to unlock and upgrade new class abilities.
 do CutsceneManager.send_camera_to_cooking_station_pos()
 TowerGuide: Lastly, we have the... uh, Junk-O... Junk-E...
@@ -45,7 +40,7 @@ leave ProfStooge [animation="Slide To Left" wait="true"]
 do CutsceneManager.set_camera_to_player()
 [wait time="1.0"]
 TowerGuide: Well, that's it for now!\
-We'll go over things again as you continue your journey, but this should give you a great start on becoming a Starspire Hunter!
+We'll go over things again as you continue your journey, but this should give you a little taste of what it means to become a Starspire Hunter!
 TowerGuide: Good Luck and may your bounty be plentiful!
 [wait time="1.0"]
 do CutsceneManager.enable_player_functionality()

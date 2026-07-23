@@ -69,6 +69,8 @@ func drop_items() -> void:
 			item_interactable.item = item
 			item_interactable.icon.texture = item.drop_icon
 			item_interactable.global_position = parent.global_position
+			if parent is Enemy and parent.enemy_stats.enemy_name == "Beginner Mushie":
+				item_interactable.global_position.y -= 20
 	
 	#if PlayerStats.facilities_unlocked["Junk-A-Tron"]:
 		#var cooking_item : EnemyDrop = parent.enemy_stats.cooking_item_drop

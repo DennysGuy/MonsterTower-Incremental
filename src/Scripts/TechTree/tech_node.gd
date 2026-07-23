@@ -320,6 +320,8 @@ func _on_gui_input(event: InputEvent) -> void:
 			play_sfx(CLICK_NODE,3)
 			#animation_player.play("clicked")
 			tech_node_stats.current_level += 1
+			if tech_node_stats.node_name == "Attack 1" and tech_node_stats.current_level == 1:
+				Dialogic.start("uid://diefhny8oxyi4")
 			
 			PlayerStats.upgrade_player_stat(tech_node_stats.stat_name,tech_node_stats.upgrade_interval, node_type)
 			if node_type != TechTreeManager.TECH_NODE_TYPE.CLASS_ABILITY:

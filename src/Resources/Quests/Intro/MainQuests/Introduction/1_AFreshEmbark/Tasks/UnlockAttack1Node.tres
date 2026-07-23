@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="NodeUnlockTask" format=3 uid="uid://d3sd3wkn5mi2k"]
+
+[ext_resource type="Script" uid="uid://d4bl5pg2w0pp3" path="res://src/Scripts/Questing/Tasks/node_unlock_task.gd" id="1_3nqu8"]
+
+[resource]
+script = ExtResource("1_3nqu8")
+node_name = "Attack 1"
+task_id = 47
+metadata/_custom_type_script = "uid://d4bl5pg2w0pp3"

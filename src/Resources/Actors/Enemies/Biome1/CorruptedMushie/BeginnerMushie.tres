@@ -1,15 +1,16 @@
 [gd_resource type="Resource" script_class="EnemyStats" format=3 uid="uid://cgyfhwvphblrj"]
 
+[ext_resource type="Resource" uid="uid://cb32lu3fvujlc" path="res://src/Resources/Actors/Enemies/Biome1/CorruptedMushie/BeginnerCorruptedSpore.tres" id="1_ynpeq"]
 [ext_resource type="Script" uid="uid://cbjktr12qagl" path="res://src/Scripts/Enemies/enemy_stats.gd" id="4_jeera"]
 
 [resource]
 script = ExtResource("4_jeera")
 enemy_name = "Beginner Mushie"
-enemy_level = 1
 touch_damage = true
 enemy_type = 1
 max_health = 25
-attack = 2
+attack = -1
 movement_speed = 50.0
 chase_speed = 60.0
+novelty_item_drop = ExtResource("1_ynpeq")
 metadata/_custom_type_script = "uid://cbjktr12qagl"

@@ -3,6 +3,7 @@ class_name TutorialMap extends Map
 @onready var guid_log: Label = $GuidLog
 var can_enter_tower : bool = false
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var merchant_enter_notice: Label = $MerchantEnterNotice
 
 @onready var sub_viewport: SubViewport = $CanvasLayer/SubViewportContainer/SubViewport
 @onready var canvas_layer: CanvasLayer = $CanvasLayer
@@ -11,6 +12,7 @@ const ENTER_TOWER_FIRST_TIME_SCENE = preload("uid://gjjq2iyol2am")
 const TUTORIAL_LICENSE_NOT_ACQUIRED = preload("uid://ctit5lunlhp2n")
 
 var boat_docked : bool = true
+var can_enter_market : bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super()
@@ -28,14 +30,16 @@ func _ready() -> void:
 	SignalBus.spawn_enemies.emit()
 	SignalBus.start_enemy_spawn.emit()
 	
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("interact") and can_enter_tower and GameManager.can_open_scene:
-		if PlayerStats.facilities_unlocked["Hunter License"]:
+		if PlayerStats.facilities_unlocked["Hunter License"] and TechTreeManager.tech_nodes["Attack 1"] > 0:
 			Dialogic.start(ENTER_TOWER_FIRST_TIME_SCENE)
 		else:
 			Dialogic.start(TUTORIAL_LICENSE_NOT_ACQUIRED)
+	
+	if Input.is_action_just_pressed("interact") and can_enter_market:
+		spawn_grand_market()
 	
 
 func _on_tower_entrance_area_body_entered(body: Node2D) -> void:
@@ -48,6 +52,11 @@ func _on_tower_entrance_area_body_exited(body: Node2D) -> void:
 		guid_log.hide()
 		can_enter_tower = false
 
+
+func spawn_grand_market() -> void:
+	CutsceneManager.disable_player_functionality()
+	player.velocity = Vector2.ZERO
+	PlayerHudSignalBus.spawn_market.emit()
 
 func go_to_first_floor() -> void:
 	InventoryManager.clear_bag()
@@ -78,3 +87,14 @@ func _on_boat_leave_area_body_entered(body: Node2D) -> void:
 			sfx_player.play_sfx(BOAT_HORN)
 			animation_player.play("Boat_Out")
 			boat_docked = false
+
+
+func _on_mobile_shop_area_body_entered(body: Node2D) -> void:
+	if body is Player:
+		can_enter_market = true
+		merchant_enter_notice.show()
+
+func _on_mobile_shop_area_body_exited(body: Node2D) -> void:
+	if body is Player:
+		can_enter_market = false
+		merchant_enter_notice.hide()

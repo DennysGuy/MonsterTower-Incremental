@@ -41,8 +41,10 @@ const CLICK_NODE = preload("uid://bawqj0b2h6vsu")
 @onready var crafting_notification_icon: TextureRect = $TechTreeButtonsHBox/CraftingPageButton/CraftingNotificationIcon
 
 const TECH_TREE_EXPLANATION = preload("uid://g6243qefq3ht")
+const REPEAT_UNLOCK_STEPS = preload("uid://cfiuejjnr0kej")
 
 var can_close = true
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -61,7 +63,9 @@ func _ready() -> void:
 	TechTreeManager.update_currency_label.connect(update_progress)
 	expedition_time_tracker.text = "Expedition Time: %s seconds" % PlayerStats.player_stats["Expedition Time"]
 	update_progress()
-	print("THIS IS CURERENT PRESTIGE %s" % TechTreeManager.current_prestige)
+	if PlayerStats.facilities_unlocked["Hunter License"] and TechTreeManager.tech_nodes["Attack 1"] == 0:
+		Dialogic.start(REPEAT_UNLOCK_STEPS)
+	
 	if TechTreeManager.current_prestige > 0:
 		show_tech_tree_buttons()
 		add_combat_tech_tree()

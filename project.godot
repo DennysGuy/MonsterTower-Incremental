@@ -77,9 +77,11 @@ directories/dtl_directory={
 "LevelUpInstruction": "res://src/QuestTimeLines/IntroScenes/LevelUpInstruction.dtl",
 "NewWeaponCraftingNoticeScene": "res://src/QuestTimeLines/IntroScenes/NewWeaponCraftingNoticeScene.dtl",
 "NewWeaponCraftingStationUpdateScene": "res://src/QuestTimeLines/IntroScenes/NewWeaponCraftingStationUpdateScene.dtl",
+"RepeatUnlockSteps": "res://src/QuestTimeLines/IntroScenes/RepeatUnlockSteps.dtl",
 "SmeltingStationUnlockScene": "res://src/QuestTimeLines/IntroScenes/SmeltingStationUnlockScene.dtl",
 "StarspireMarketIntro": "res://src/QuestTimeLines/IntroScenes/StarspireMarketIntro.dtl",
 "TechTreeExplanation": "res://src/QuestTimeLines/IntroScenes/TechTreeExplanation.dtl",
+"TerminalExamCompletionNotice": "res://src/QuestTimeLines/IntroScenes/TerminalExamCompletionNotice.dtl",
 "TestTimeline": "res://src/QuestTimeLines/TestTimeline.dtl",
 "TutorialLicenseNotAcquired": "res://src/QuestTimeLines/IntroScenes/TutorialLicenseNotAcquired.dtl",
 "WarriorClassSelectionScene": "res://src/QuestTimeLines/IntroScenes/WarriorClassSelectionScene.dtl"
@@ -98,7 +100,9 @@ layout/style_directory={
 glossary/default_case_sensitive=true
 layout/style_list=["res://src/QuestTimeLines/TextboxStyles/BaseStyle.tres", "res://src/QuestTimeLines/TextboxStyles/CutsceneStyle.tres", "res://src/QuestTimeLines/TextboxStyles/TerminalComputerStyle.tres", "res://src/QuestTimeLines/Characters/ChefNadeneStyle.tres", "res://src/QuestTimeLines/TextboxStyles/CropDusterStyle.tres", "res://src/QuestTimeLines/TextboxStyles/WarmongerAlaishaStyle.tres", "res://src/QuestTimeLines/TextboxStyles/DoctorTharkiStyle.tres", "res://src/QuestTimeLines/TextboxStyles/GreySentinelStyle.tres"]
 layout/default_style="res://src/QuestTimeLines/TextboxStyles/BaseStyle.tres"
-variables={}
+variables={
+"current_spirol": 0
+}
 extensions_folder="res://addons/dialogic_additions"
 text/letter_speed=0.03
 text/initial_text_reveal_skippable=true

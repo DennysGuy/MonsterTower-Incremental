@@ -2,6 +2,7 @@ class_name MonsterSpawnArea extends Area2D
 
 @export var max_monsters : int = 3
 @export var respawn_wait_time : float = 1.0
+@export var can_respawn : bool = true
 
 @export var min_spawn : int
 @export var min_hunt_challenge_spawn : int

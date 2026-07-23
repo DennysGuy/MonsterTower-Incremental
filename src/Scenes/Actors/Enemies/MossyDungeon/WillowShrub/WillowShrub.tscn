@@ -396,7 +396,7 @@ height = 28.0
 size = Vector2(23, 23)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v37cp"]
-size = Vector2(19, 26)
+size = Vector2(19, 17)
 
 [node name="WillowShrub" type="CharacterBody2D" unique_id=85927412 node_paths=PackedStringArray("name_tag", "health_bar", "status_effect_icon_bar", "vertical_status_icon_bar", "slow_timer", "silenced_timer", "wall_detector", "ground_detector", "state_machine", "animation_player", "health_component", "sprite", "blink_timer", "stun_timer", "hurt_box", "hit_box", "hit_state", "dead_state", "stun_state", "sfx_player") groups=["Enemy"]]
 collision_layer = 128
@@ -519,11 +519,10 @@ position = Vector2(0.5, 8.5)
 shape = SubResource("RectangleShape2D_s7mdw")
 
 [node name="HitBox" parent="." unique_id=351431721 instance=ExtResource("27_uda7e")]
-visible = false
 position = Vector2(0, -20)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=233820395]
-position = Vector2(0.5, 7)
+position = Vector2(0.5, 11.5)
 shape = SubResource("RectangleShape2D_v37cp")
 
 [node name="GroundDetector" parent="." unique_id=664844787 instance=ExtResource("28_k8mjs")]

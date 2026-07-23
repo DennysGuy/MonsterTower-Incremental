@@ -17,6 +17,7 @@ func _process(delta: float) -> void:
 
 func _on_facility_interactable_body_entered(body: Node2D) -> void:
 	if body is Player:
+		Dialogic.VAR.current_spirol = TechTreeManager.currency
 		player_in_range = true
 		press_e.show()
 

@@ -1,0 +1,4 @@
+if {current_spirol} >= 50.0:
+	TerminalComputer: Good work, please purchase the 'Attack 1' node.
+else:
+	TerminalComputer: Hunt the Corrupted Mushies behind you, sell their loot to the merchant, and report back to this computer terminal to purchase the 'Attack 1' node.
