@@ -67,10 +67,13 @@ const COOKING_STATION_UNLOCK_SCENE = preload("uid://gfqitaq4h4ol")
 const SMELTING_STATION_UNLOCK_SCENE = preload("uid://dknm38b28himr")
 const GEMS_STATION_UNLOCK_SCENE = preload("uid://blac36hlx22lb")
 const GO_TO_JOB_BOARD = preload("uid://iqw8ymk767kl")
+const RETRO_MAGIC_11 = preload("uid://cu0pel7wloamp")
 
 const STARSPIRE_MARKET_INTRO = preload("uid://b3l8f4fxsjhu6")
 const HEAD_TO_JOB_ADVANCEMENT_CENTER_FOR_CLASS = preload("uid://bc68ocr4ayjpd")
+const CAN_CRAFT_FIRST_SWORD = preload("uid://d1fo5h4jtll43")
 
+@onready var chest_spawn_marker: Marker2D = $ChestSpawnMarker
 
 var sprint_enabled : bool = false
 
@@ -84,6 +87,7 @@ func _ready() -> void:
 	CutsceneManager.send_camera_to_market.connect(send_camera_to_market)
 	CutsceneManager.send_camera_to_smelting_station.connect(send_camera_to_smelting_station)
 	CutsceneManager.send_camera_to_sword_crafting_station.connect(send_camera_to_sword_crafting_station)
+	CutsceneManager.spawn_intro_gem_chest.connect(spawn_newcomer_chest)
 	SignalBus.spawn_tech_tree.connect(add_tech_tree_to_scene)
 	SignalBus.issue_can_craft_sword_scene.connect(new_sword_unlock_notice)
 	SignalBus.hide_tech_tree_canvas_layer.connect(hide_tech_tree_canvas_layer)
@@ -136,6 +140,9 @@ func _ready() -> void:
 		Dialogic.start(HEAD_TO_JOB_ADVANCEMENT_CENTER_FOR_CLASS)
 		GameManager.job_selection_notice_scene_played = true
 		SaveManager.save_progression_state("Job Selection Notice Cutscene Played", true)
+
+	if PlayerStats.get_current_sword().index == 0 and PlayerStats.can_craft_next_sword():
+		Dialogic.start(CAN_CRAFT_FIRST_SWORD)
 
 func _exit_tree() -> void:
 	GameManager.event_speed_mod = 1.0
@@ -670,3 +677,10 @@ func _on_market_kioske_area_body_exited(body: Node2D) -> void:
 	if body is Player:
 		player_in_kioske_range = false
 		enter_kioske_label.hide()
+
+func spawn_newcomer_chest() -> void:
+	var new_comer_chest : GemStoneChest = preload("uid://dfl8fkojivefu").instantiate()
+	new_comer_chest.chest_stats = preload("uid://ovvlphjveh3o")
+	new_comer_chest.global_position = chest_spawn_marker.global_position
+	GameManager.play_sfx(RETRO_MAGIC_11, -4)
+	add_child(new_comer_chest)

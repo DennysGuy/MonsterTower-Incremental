@@ -19,6 +19,8 @@ const GEM_STATION_GEM_BAG_BG = preload("uid://chft1dsfmivtq")
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 @onready var weapon_previewer: WeaponPreviewer = $SwordPreviewContainer/SubViewport/WeaponPreviewer
+const NEW_COMER_GEM = preload("uid://8nlqnmnbiiih")
+const GEM_STONE_IN_MENU_TUTORIAL = preload("uid://buumwg4y358rb")
 
 var stored_slot_index : int = -1
 var stored_gem : GemStone
@@ -34,6 +36,9 @@ func _ready() -> void:
 	selected_bag = "Gem Stones"
 	update_gem_bag_container(selected_bag)
 	update_socket_vbox()
+	
+	if InventoryManager.search_item("Gem Stones", NEW_COMER_GEM):
+		Dialogic.start(GEM_STONE_IN_MENU_TUTORIAL)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

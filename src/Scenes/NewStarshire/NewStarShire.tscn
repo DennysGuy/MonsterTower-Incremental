@@ -37,6 +37,8 @@
 [ext_resource type="PackedScene" uid="uid://dllbbxwtrshxy" path="res://src/Scenes/NewStarshire/GrandMarketSignFrontLeg.tscn" id="36_g8ukf"]
 [ext_resource type="PackedScene" uid="uid://drvmmtbvnc785" path="res://src/Scenes/Tower/arrow_at_ore.tscn" id="36_hw86b"]
 [ext_resource type="PackedScene" uid="uid://u2wlvgyx0mtu" path="res://src/Scenes/NewStarshire/Facilities/TaskBoard.tscn" id="37_4qs0c"]
+[ext_resource type="PackedScene" uid="uid://dfl8fkojivefu" path="res://src/Scenes/GemStoneChests/GemStoneChest.tscn" id="38_bp3qg"]
+[ext_resource type="Resource" uid="uid://ovvlphjveh3o" path="res://src/Resources/GemChests/IntroGemChest.tres" id="39_lrlyb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bp3qg"]
 texture = ExtResource("17_uhrlg")
@@ -981,7 +983,7 @@ horizontal_alignment = 1
 position = Vector2(1039, 648)
 
 [node name="SwordCraftingStationPosition" type="Node2D" parent="." unique_id=333549657]
-position = Vector2(1841, 482)
+position = Vector2(2003, 469)
 
 [node name="CookingStation" parent="." unique_id=179535965 instance=ExtResource("33_d6jc3")]
 position = Vector2(1042, 704)
@@ -1320,6 +1322,9 @@ theme_override_constants/outline_size = 0
 theme_override_fonts/font = ExtResource("27_e7ku4")
 text = "Press E to enter Trade Kioske"
 
+[node name="ChestSpawnMarker" type="Marker2D" parent="." unique_id=1354292684]
+position = Vector2(1715, 507)
+
 [node name="Area2D" type="Area2D" parent="." unique_id=1529112079]
 position = Vector2(828, 366)
 
@@ -1347,6 +1352,12 @@ offset_bottom = 724.0
 
 [node name="Tag" parent="NameTag/Bg" parent_id_path=PackedInt32Array(1996143425, 305804188) index="0" unique_id=725373759]
 text = "Tower Entrance"
+
+[node name="GemStoneChest" parent="." unique_id=1511035040 instance=ExtResource("38_bp3qg")]
+position = Vector2(1715, 511)
+chest_stats = ExtResource("39_lrlyb")
+no_drop_rate = 100.0
+will_drop = true
 
 [connection signal="body_entered" from="TowerArea" to="." method="_on_tower_area_body_entered"]
 [connection signal="body_exited" from="TowerArea" to="." method="_on_tower_area_body_exited"]

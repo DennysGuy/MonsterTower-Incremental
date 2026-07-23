@@ -6,9 +6,9 @@
 
 [resource]
 script = ExtResource("3_ur8n7")
-recipe_name = "Bronze Fang Blade"
+recipe_name = "Clopse Fang Blade"
 index = 2
-description = "A metalic sword made from refined bronze and tin ore. Great for getting started."
+description = "Made from the from the claws of a batclopse, and the fibre of a mushie. It is powerful, yet fast and nimble - excellent for a more experienced Junior Hunter."
 recipe_tier = 1
 recipe_type = 2
 recipe_list = Array[Dictionary]([{

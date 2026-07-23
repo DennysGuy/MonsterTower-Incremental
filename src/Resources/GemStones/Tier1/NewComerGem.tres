@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="GemStone" format=3 uid="uid://8nlqnmnbiiih"]
+
+[ext_resource type="Script" uid="uid://bx7re57seek5i" path="res://src/Scripts/Facilities/gem_stone.gd" id="1_oy8u2"]
+[ext_resource type="Texture2D" uid="uid://6vwjuci46r2b" path="res://Assets/Gems/RedGem.png" id="2_1mcsl"]
+[ext_resource type="Texture2D" uid="uid://cb7qav4l5tsb1" path="res://Assets/Facilities/GearCraftingStation/GearSocket_RedGem.png" id="2_xugv8"]
+
+[resource]
+script = ExtResource("1_oy8u2")
+socket_graphic = ExtResource("2_xugv8")
+drop_rate = 100.0
+attack_percentage_bonus = 0.05
+flat_defense_bonus = 0.05
+defense_bonus = 2.0
+max_hp_bonus = 20.0
+max_mp_bonus = 20.0
+crit_chance_bonus = 0.03
+crit_damage_bonus = 0.05
+multi_enemies_bonus = 1.0
+item_name = "Newcomer's Gem"
+item_type = 4
+shop_icon = ExtResource("2_1mcsl")
+description = "A unique gem reward to new Hunters who unlock the Gem Stone Station. It has no value, but it can give the player a little boost at the start."
+metadata/_custom_type_script = "uid://bx7re57seek5i"

@@ -91,13 +91,13 @@ func unlock_door() -> void:
 	player.send_to_idle_state()
 	GameManager.player_can_move = false
 	await get_tree().create_timer(3.0).timeout
-	play_sfx(RETRO_SWOOOSH_16,0.0)
+	play_sfx(RETRO_SWOOOSH_16,-4.0)
 	diamond_key_lock.queue_free()
 	await get_tree().create_timer(0.5).timeout
-	play_sfx(RETRO_SWOOOSH_16,0.0)
+	play_sfx(RETRO_SWOOOSH_16,-4.0)
 	card_key_lock.queue_free()
 	await get_tree().create_timer(0.5).timeout
-	play_sfx(RETRO_SWOOOSH_16,0.0)
+	play_sfx(RETRO_SWOOOSH_16,-4.0)
 	final_key_lock.queue_free()
 	await get_tree().create_timer(2.0).timeout
 	QuestManager.check_general_task_for_completion.emit("Unlock Boss Door")

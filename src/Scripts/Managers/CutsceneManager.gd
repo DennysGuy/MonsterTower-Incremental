@@ -33,6 +33,8 @@ signal stop_enemy_spawn
 signal start_enemy_spawn
 @warning_ignore("unused_signal")
 signal play_map_theme
+@warning_ignore("unused_signal")
+signal spawn_intro_gem_chest
 
 func trigger_next_frame() -> void:
 	trigger_next_image.emit()
@@ -54,6 +56,9 @@ func fly_boss() -> void:
 
 func send_camera_to_player() -> void:
 	return_camera_to_player.emit()
+
+func spawn_beginner_gem_chest() -> void:
+	spawn_intro_gem_chest.emit()
 
 func disable_player_functionality() -> void:
 	stop_player.emit()

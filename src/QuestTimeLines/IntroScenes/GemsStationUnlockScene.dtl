@@ -1,15 +1,15 @@
+do CutsceneManager.disable_player_functionality()
 do MusicPlayer.pause_music()
-audio "res://Audio/Music/TutorialCutscene.wav" [bus="Music"]
+audio "res://Audio/Music/TutorialCutscene.wav" [bus="Music" loop="false"]
 join CropDuster right [animation="Slide In Up" wait="true"]
 CropDuster: Well, congrats, newbie. You must be doing something right if the Guild decided to give you access to the Gemstone Upgrade Station.
 CropDuster: This station will give you an edge in combat by allowing you to mount Gemstones to your weapon.
-CropDuster: Gemstone Chests will now appear throughout the tower. Break them open, and you may discover Gemstones that enhance your weapon's abilities and grant you bonus stats!
-CropDuster: There are four types of Gems, each with a unique purpose\:\
-Red Diamonds enhance your combat prowess.\
-Blue Triangles improve your defensive capabilities.\
-Green Spheres increase your mobility.\
-Yellow Squares boost combat efficiency and status effects.
-CropDuster: Some Gems are rarer than others. If you're having trouble finding the ones you need, you can use the Computer Terminal to improve your chances.
+CropDuster: In fact...
+do CutsceneManager.send_camera_to_sword_crafting_station_pos()
+[wait time="1.0" skippable="true"]
+do CutsceneManager.spawn_beginner_gem_chest()
+[wait time="2.0" skippable="true"]
+CropDuster: Here's a little reward to appreciate all of your effort. Go ahead and break that chest open, take the contents, and access the Gem Stone Upgrade System.
 [wait time="1.0"]
 do CutsceneManager.enable_player_functionality()
 do CutsceneManager.set_camera_to_player()

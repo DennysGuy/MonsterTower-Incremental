@@ -197,7 +197,6 @@ enum TECH_NODE_TYPE {ABILITY, FACILITY, CLASS_ABILITY}
 	
 }
 
-
 @onready var tech_node_stats : Dictionary[String, TechNodeStats] = {
 	"Hunter License" : preload("uid://bpf2kexi3o22s"),
 	"Attack 1" : preload("uid://1gmjr0davgp4"),

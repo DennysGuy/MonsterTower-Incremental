@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="GemChestStats" format=3 uid="uid://ovvlphjveh3o"]
+
+[ext_resource type="Script" uid="uid://bx7re57seek5i" path="res://src/Scripts/Facilities/gem_stone.gd" id="1_0n7cq"]
+[ext_resource type="Texture2D" uid="uid://c5x6wtd2sujmk" path="res://Assets/EnvironmentalAssets/GemChests/Tier1GemChestClosed.png" id="1_qhphx"]
+[ext_resource type="Texture2D" uid="uid://etee3llr0x8w" path="res://Assets/EnvironmentalAssets/GemChests/Tier1GemChestOpen.png" id="2_7t6xw"]
+[ext_resource type="Script" uid="uid://be2p6ld85g5m3" path="res://src/Scripts/GemStoneChests/gem_chest.gd" id="2_ax186"]
+[ext_resource type="Resource" uid="uid://8nlqnmnbiiih" path="res://src/Resources/GemStones/Tier1/NewComerGem.tres" id="4_7t6xw"]
+
+[resource]
+script = ExtResource("2_ax186")
+gem_chest_name = "Newcomer's Chest"
+max_health = 100
+graphic_closed = ExtResource("1_qhphx")
+graphic_opened = ExtResource("2_7t6xw")
+loot_table = Array[ExtResource("1_0n7cq")]([ExtResource("4_7t6xw")])
+metadata/_custom_type_script = "uid://be2p6ld85g5m3"

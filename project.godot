@@ -65,9 +65,11 @@ directories/dch_directory={
 }
 directories/dtl_directory={
 "BrokenElevatorScene": "res://src/QuestTimeLines/IntroScenes/BrokenElevatorScene.dtl",
+"CanCraftFirstSword": "res://src/QuestTimeLines/IntroScenes/CanCraftFirstSword.dtl",
 "CookingStationUnlockScene": "res://src/QuestTimeLines/IntroScenes/CookingStationUnlockScene.dtl",
 "EnterTowerFirstTimeScene": "res://src/QuestTimeLines/IntroScenes/EnterTowerFirstTimeScene.dtl",
 "FloorChallengeCutscene": "res://src/QuestTimeLines/IntroScenes/FloorChallengeCutscene.dtl",
+"GemStoneInMenuTutorial": "res://src/QuestTimeLines/IntroScenes/GemStoneInMenuTutorial.dtl",
 "GemsStationUnlockScene": "res://src/QuestTimeLines/IntroScenes/GemsStationUnlockScene.dtl",
 "GoToJobBoard": "res://src/QuestTimeLines/IntroScenes/GoToJobBoard.dtl",
 "GreySentinelBossIntro": "res://src/QuestTimeLines/IntroScenes/GreySentinelBossIntro.dtl",

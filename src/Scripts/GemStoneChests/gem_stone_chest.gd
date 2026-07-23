@@ -16,6 +16,8 @@ const CHEST_HIT_3 = preload("uid://dxsantqowau0r")
 
 var can_hit : bool = true
 
+@export var will_drop : bool = false
+
 @onready var chest_hits : Array[AudioStream] = [CHEST_HIT_1, CHEST_HIT_2, CHEST_HIT_3]
 
 var health : int = 0
@@ -65,10 +67,15 @@ func damage_chest(damage : int) -> void:
 	get_parent().add_child(damage_label)
 
 func spawn_gem() -> void:
-	
 	var randi_num : int = randi_range(0, 100)
 	var drop_rate : int = int(PlayerStats.player_stats["Tier 1 Gem Drop Rate"] * 100)
 	if randi_num > drop_rate:
+		return
+	
+	if will_drop:
+		var gem : GemStone = chest_stats.loot_table[0]
+		await get_tree().process_frame
+		create_gem_drop(gem)
 		return
 	
 	var total_weight : int = 0
@@ -94,8 +101,14 @@ func create_gem_drop(gem_stone : GemStone) -> void:
 	item_interactable.item = gem_stone
 	item_interactable.icon.texture = gem_stone.shop_icon
 	item_interactable.global_position = global_position
+	await item_interactable.ready
 	get_parent().add_child(item_interactable)
+	print(item_interactable.is_inside_tree())  # Should be true
 
+	await get_tree().process_frame
+
+	print(item_interactable)
+	print(item_interactable.is_inside_tree())
 
 func play_sfx(sound: AudioStream, volume: float = 0.0):
 	var player := AudioStreamPlayer.new()
