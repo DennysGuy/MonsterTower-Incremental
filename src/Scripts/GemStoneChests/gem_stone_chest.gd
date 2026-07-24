@@ -67,7 +67,12 @@ func damage_chest(damage : int) -> void:
 	get_parent().add_child(damage_label)
 
 func spawn_gem() -> void:
+	print("PLL")
 	var randi_num : int = randi_range(0, 100)
+	
+	if will_drop:
+		randi_num = 0
+	
 	var drop_rate : int = int(PlayerStats.player_stats["Tier 1 Gem Drop Rate"] * 100)
 	if randi_num > drop_rate:
 		return
@@ -97,18 +102,19 @@ func spawn_gem() -> void:
 
 func create_gem_drop(gem_stone : GemStone) -> void:
 	play_sfx(CRAFTING_NOTIFICATION)
+	print("HOOOLLAA")
 	var item_interactable : ItemInteractable = preload("uid://dgtobkubdjq27").instantiate()
 	item_interactable.item = gem_stone
 	item_interactable.icon.texture = gem_stone.shop_icon
 	item_interactable.global_position = global_position
-	await item_interactable.ready
+	item_interactable.perishable = false
 	get_parent().add_child(item_interactable)
-	print(item_interactable.is_inside_tree())  # Should be true
+	print("I'm in tress %s" % item_interactable.is_inside_tree())  # Should be true
 
 	await get_tree().process_frame
 
-	print(item_interactable)
-	print(item_interactable.is_inside_tree())
+	print("THE GEME: %s" % item_interactable)
+	print("I'm in tree %s" % item_interactable.is_inside_tree())
 
 func play_sfx(sound: AudioStream, volume: float = 0.0):
 	var player := AudioStreamPlayer.new()
