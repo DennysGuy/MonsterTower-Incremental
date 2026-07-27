@@ -40,6 +40,7 @@ func check_can_purchase_node() -> bool:
 	if ability_node_stats.current_upgrade_level >= ability_node_stats.max_upgrade_level:
 		node_base.texture = ABILITY_NODE_PURCHASED
 		bg_color = locked
+		texture_button.disabled = true
 		return false
 	if PlayerStats.player_stats["Ability Points"] >= ability_node_stats.ap_cost and has_resource_quantity():
 		node_base.texture = ABILITY_NODE_ENABLED
@@ -54,21 +55,6 @@ func check_can_purchase_node() -> bool:
 	return false
 
 func _on_texture_button_button_up() -> void:
-	'''
-	if we can purchase the node -
-	we will check the type of node
-	
-	ABILITY_UNLOCK:
-		- when purchased, we equip the ability based on [class][ability name]
-	ABILITY_STAT_BOOST:
-		- we find the ability node based on [class][ability name]
-		= need to figure out a way to dynamically update stats
-	CHARACTER_STAT_BOOST:
-		- search the player stat dictionary for the stat names and apply stat boost
-	CLASS_ADVANCE:
-		- effectively does nothing but will unlock the next set of rows
-	'''
-	
 	increment_ability_level()
 	
 	match ability_node_stats.node_type:
