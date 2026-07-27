@@ -11,7 +11,8 @@ class_name NewTechTree extends Control
 
 @onready var upgrade_progress_bar: TextureProgressBar = $UpgradeProgressBar
 @onready var expedition_time_tracker: Label = $ExpeditionTimeTracker
-@onready var upgrade_tracker_button: Button = $UpgradeTrackerButton
+@onready var upgrade_tracker_button: UpgradeTrackerButton = $VBoxContainer/UpgradeTrackerButton
+
 
 @onready var card_view_port_container: SubViewportContainer = $CardViewPortContainer
 @onready var card_view_sub_viewport: SubViewport = $CardViewPortContainer/CardViewSubViewport
@@ -19,7 +20,8 @@ class_name NewTechTree extends Control
 @onready var sub_viewport: SubViewport = $SubViewportContainer/SubViewport
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
-@onready var upgrade_button_notification_icon: TextureRect = $UpgradeButtonNotificationIcon
+@onready var upgrade_button_notification_icon: TextureRect = $VBoxContainer/UpgradeButtonNotificationIcon
+@onready var to_do_list: VBoxContainer = $TodoPanel/ToDoList
 
 @onready var close_button: Button = $CloseButton
 @onready var currency_label: Label = $CurrencyLabel
@@ -45,12 +47,15 @@ const REPEAT_UNLOCK_STEPS = preload("uid://cfiuejjnr0kej")
 
 var can_close = true
 
+@onready var todo_panel: Panel = $TodoPanel
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	TechTreeManager.check_for_tech_node_purchases.connect(check_for_purchases)
 	CutsceneManager.disable_close_function.connect(disable_close_function)
 	CutsceneManager.enable_close_function.connect(enable_close_function)
+	CutsceneManager.show_all_tech_tree_buttons.connect(show_tech_tree_buttons)
+	QuestManager.update_node_task_tracker.connect(populate_to_do_list)
 	
 	SignalBus.novelty_invention_sold.connect(update_can_purchase)
 	check_for_purchases()
@@ -70,6 +75,7 @@ func _ready() -> void:
 		show_tech_tree_buttons()
 		add_combat_tech_tree()
 	
+	populate_to_do_list()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -158,17 +164,19 @@ func update_progress() -> void:
 			upgrade_button_notification_icon.show()
 			upgrade_tracker_button.text = "Promote License"
 			license_tier.hide()
+			
 		upgrade_tracker_button.disabled = false
-		
+		upgrade_tracker_button.start_pulse()
 	else:
 		upgrade_tracker_button.text = "%s/%s" % [TechTreeManager.current_upgrade_count, TechTreeManager.upgrade_count_to_prestige]
 		upgrade_tracker_button.disabled = true
 		license_tier.show()
+		upgrade_tracker_button.stop_pulse()
 		license_tier.text = "License Tier: %s" % TechTreeManager.current_prestige
 		upgrade_button_notification_icon.hide()
 	
 	expedition_time_tracker.text = "Expedition Time: %s" % PlayerStats.player_stats["Expedition Time"]
-	currency_label.text = "Spirols %s" % [TechTreeManager.currency]
+	currency_label.text = "%s" % [TechTreeManager.currency]
 	upgrade_progress_bar.max_value = TechTreeManager.upgrade_count_to_prestige
 	upgrade_progress_bar.value = TechTreeManager.current_upgrade_count
 	
@@ -232,10 +240,14 @@ func add_cooking_tech_tree() -> void:
 	sub_viewport.add_child(inventory_tech_tree)	
 
 func show_tech_tree_buttons() -> void:
-	for button in tech_tree_buttons_h_box.get_children():
-		button.show()
+	if GameManager.in_tech_tree_tutorial:
+		combat_page_button.show()
 		play_sfx(BUTTON_APPEAR)
-		await get_tree().create_timer(0.1).timeout
+	else:
+		for button in tech_tree_buttons_h_box.get_children():
+			button.show()
+			play_sfx(BUTTON_APPEAR)
+			await get_tree().create_timer(0.1).timeout
 	
 	play_sfx(BUTTON_APPEAR)
 	upgrade_progress_bar.show()
@@ -258,6 +270,20 @@ func play_license_upgrade_sequence() -> void:
 	GameManager.license_promotion_time = false
 	music_player.stream_paused = false
 
+func play_license_upgrade_sequence_tutorial() -> void:
+	card_view_port_container.show()
+	var hunter_license : HunterLicense = preload("uid://dta71ficj4siw").instantiate()
+	card_view_sub_viewport.add_child(hunter_license)
+	await get_tree().create_timer(5.0).timeout
+	update_progress()
+	combat_page_button.show()
+	card_view_port_container.hide()
+	add_combat_tech_tree()
+	await get_tree().process_frame
+	insert_message_panel()
+	GameManager.license_promotion_time = false
+	music_player.stream_paused = false
+
 func flash_screen() -> void:
 	animation_player.play("FlashScreen")
 
@@ -267,6 +293,7 @@ func _on_upgrade_tracker_button_button_up() -> void:
 	
 	if TechTreeManager.current_prestige == 0:
 		unlock_hunter_license()
+		#play_license_upgrade_sequence_tutorial()
 	
 	play_license_upgrade_sequence()
 
@@ -304,6 +331,7 @@ func unlock_hunter_license() -> void:
 	TechTreeManager.tech_nodes["Hunter License"] += 1
 	PlayerStats.facilities_unlocked["Hunter License"] = true
 	QuestManager.check_node_name.emit("Hunter License")
+	GameManager.in_tech_tree_tutorial = true
 	SaveManager.save_tech_tree_data()
 	SaveManager.save_player_stats()
 	SaveManager.save_game()
@@ -406,7 +434,7 @@ func check_for_purchases() -> void:
 
 
 func update_can_purchase() -> void:
-	currency_label.text = "Spirols %s" % [TechTreeManager.currency]
+	currency_label.text = "%s" % [TechTreeManager.currency]
 	check_for_purchases()
 
 func can_purchase(tech_node_stats : TechNodeStats) -> bool:
@@ -441,3 +469,23 @@ func has_resource_quantity(tech_node_stats : TechNodeStats) -> bool:
 						return false
 		
 	return true		
+
+func populate_to_do_list() -> void:
+	clear_to_do_list()
+	var current_quest : Quest = QuestManager.get_active_main_quest()
+	for task in current_quest.tasks:
+		if task is NodeUnlockTask:
+			var node_task_item : NodeTaskListItem = preload("uid://db7fsphv1gx3j").instantiate()
+			var completed : bool = SaveManager.current_save_game.tasks[task.task_id]["Completed"]
+			node_task_item.update_text(task, completed)
+			to_do_list.add_child(node_task_item)
+			
+	if !to_do_list.get_children().is_empty():
+		print(to_do_list.get_children())
+		todo_panel.show()
+	else:
+		todo_panel.hide()
+
+func clear_to_do_list() -> void:
+	for task_item in to_do_list.get_children():
+		task_item.queue_free()

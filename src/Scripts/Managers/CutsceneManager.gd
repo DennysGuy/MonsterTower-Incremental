@@ -35,6 +35,12 @@ signal start_enemy_spawn
 signal play_map_theme
 @warning_ignore("unused_signal")
 signal spawn_intro_gem_chest
+@warning_ignore("unused_signal")
+signal camera_zoomed(amount : float)
+@warning_ignore("unused_signal")
+signal unlock_ready_scene_ended
+@warning_ignore("unused_signal")
+signal show_all_tech_tree_buttons
 
 func trigger_next_frame() -> void:
 	trigger_next_image.emit()
@@ -79,6 +85,9 @@ func enable_player_functionality() -> void:
 	GameManager.can_pause_game = true
 	GameManager.can_open_scene = true
 
+func show_all_tech_buttons() -> void:
+	show_all_tech_tree_buttons.emit()
+
 func set_camera_to_player() -> void:
 	set_camera_to_player_pos.emit()
 
@@ -102,3 +111,21 @@ func disable_enemy_spawn() -> void:
 
 func play_map_theme_song() -> void:
 	play_map_theme.emit()
+
+func zoom_camera_standard() -> void:
+	camera_zoomed.emit(1.0)
+
+func zoom_camera_one_half() -> void:
+	camera_zoomed.emit(1.2)
+
+func zoom_camera_two_times() -> void:
+	camera_zoomed.emit(2.0)
+
+func zoom_camera_three_times() -> void:
+	camera_zoomed.emit(3.0)
+
+func zoom_camera_four_times() -> void:
+	camera_zoomed.emit(4.0)
+
+func check_for_another_unlock() -> void:
+	unlock_ready_scene_ended.emit()

@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://db7fsphv1gx3j"]
+
+[ext_resource type="FontFile" uid="uid://cv11ytsk7jf21" path="res://Assets/Fonts/Perfect DOS VGA 437.ttf" id="1_5nlel"]
+[ext_resource type="Script" uid="uid://ccdrjg3jv5pc0" path="res://src/Scripts/TechTree/node_task_list_item.gd" id="2_ym7pf"]
+
+[node name="NodeTaskListItem" type="RichTextLabel" unique_id=1050449339]
+custom_minimum_size = Vector2(200, 20)
+offset_right = 200.0
+offset_bottom = 20.0
+theme_override_fonts/normal_font = ExtResource("1_5nlel")
+bbcode_enabled = true
+text = "- Unlock Attack 1 Node"
+script = ExtResource("2_ym7pf")

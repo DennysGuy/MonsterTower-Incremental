@@ -19,6 +19,26 @@
 [ext_resource type="Texture2D" uid="uid://br7g3kguu7y52" path="res://Assets/HUD/NewTowerEntranceMap/DetailsPane.png" id="16_57mdb"]
 [ext_resource type="Resource" uid="uid://dhh4s0hmvwve3" path="res://src/Resources/TowerEntranceData/Floor1-7.tres" id="16_dg4db"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4n3ua"]
+bg_color = Color(0.475676, 0.6615341, 0.3943713, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.5130266, 0.9013493, 0.61829686, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hjq8i"]
+bg_color = Color(0.38601497, 0.68033415, 0.4135783, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.57706594, 0.88148963, 0.6863846, 1)
+
 [node name="TowerEntranceMap" type="Control" unique_id=1693392128]
 layout_mode = 3
 anchors_preset = 15
@@ -302,18 +322,43 @@ theme_override_fonts/font = ExtResource("4_fqkg3")
 theme_override_font_sizes/font_size = 22
 text = "Expedition Time Limit: 1130 seconds"
 
-[node name="SelectedPoint" type="Label" parent="." unique_id=1652789249]
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=557861554]
 layout_mode = 0
-offset_left = 626.0
-offset_top = 267.0
-offset_right = 1591.0
-offset_bottom = 321.0
+offset_left = 611.0
+offset_top = 282.0
+offset_right = 854.0
+offset_bottom = 322.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_4n3ua")
+
+[node name="SelectedPoint" type="Label" parent="PanelContainer" unique_id=1652789249]
+layout_mode = 2
 theme_override_colors/font_color = Color(0.9152519, 0.9678815, 0.9999998, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("3_m7ed0")
 theme_override_font_sizes/font_size = 36
 text = "Selected Point:"
+
+[node name="InventoryNoticePanel" type="PanelContainer" parent="." unique_id=1717197848]
+visible = false
+layout_mode = 0
+offset_left = 1496.0
+offset_top = 95.0
+offset_right = 1861.0
+offset_bottom = 214.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_hjq8i")
+
+[node name="InventoryNotice" type="Label" parent="InventoryNoticePanel" unique_id=2087148641]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9152519, 0.9678815, 0.9999998, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_m7ed0")
+theme_override_font_sizes/font_size = 26
+text = "*Don't Forget!*
+
+You still have items in bag 
+or AP to spend!"
 
 [node name="ModeDescription" type="Control" parent="." unique_id=927368343]
 anchors_preset = 0

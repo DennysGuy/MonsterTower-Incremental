@@ -27,6 +27,7 @@ const LIGHTNING_ZAP_4 = preload("uid://d3b6akqjch86h")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	directions.hide()
 	name_tag.tag.text = ore_rock_stats.ore_rock_name
 	ore_rock_graphic.texture = ore_rock_stats.graphic
 	health = ore_rock_stats.max_health

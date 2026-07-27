@@ -8,6 +8,7 @@ class_name NodeDescriptionBox extends Control
 @export var license_promotion_notice : Panel
 @onready var resources_list: GridContainer = $Panel/ResourcesList
 @onready var resrouces_title: Label = $ResroucesTitle
+@export var spirol_graphic: TextureRect
 
 
 # Called when the node enters the scene tree for the first time.
@@ -44,8 +45,11 @@ func update_info(total_bonus : float) -> void:
 	description.text = tech_node_stats.description
 	if tech_node_stats.currency_required <= 0:
 		cost.text = ""
+		spirol_graphic.hide()
+		
 	else:
-		cost.text = "Spirols: %s/%s" % [TechTreeManager.currency,tech_node_stats.get_cost()]
+		spirol_graphic.show()
+		cost.text = "Cost: %s/%s" % [TechTreeManager.currency,tech_node_stats.get_cost()]
 	
 	populate_resources_needed_list()
 

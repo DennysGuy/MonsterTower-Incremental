@@ -7,10 +7,13 @@ CropDuster: This station will give you an edge in combat by allowing you to moun
 CropDuster: In fact...
 do CutsceneManager.send_camera_to_sword_crafting_station_pos()
 [wait time="1.0" skippable="true"]
+do CutsceneManager.zoom_camera_one_half()
+[wait time="0.5" skippable="true"]
 do CutsceneManager.spawn_beginner_gem_chest()
 [wait time="2.0" skippable="true"]
 CropDuster: Here's a little reward to appreciate all of your effort. Go ahead and break that chest open, take the contents, and access the Gem Stone Upgrade System.
 [wait time="1.0"]
+do CutsceneManager.zoom_camera_standard()
 do CutsceneManager.enable_player_functionality()
 do CutsceneManager.set_camera_to_player()
 do MusicPlayer.unpause_music()

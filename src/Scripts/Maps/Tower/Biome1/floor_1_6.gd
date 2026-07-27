@@ -85,7 +85,6 @@ func _on_checkpoint_area_body_exited(body: Node2D) -> void:
 		in_check_point_area = false
 		checkpoint_log.hide()
 
-
 func unlock_door() -> void:
 	play_sfx(CHALLENGE_COMPLETED_JINGLE,0.0)
 	player.send_to_idle_state()

@@ -9,3 +9,4 @@ CropDuster: Head on over to the Sword Crafting Station, and I'll get you hooked 
 [wait time="0.3"]
 do CutsceneManager.set_camera_to_player()
 do CutsceneManager.enable_player_functionality()
+do CutsceneManager.check_for_another_unlock()

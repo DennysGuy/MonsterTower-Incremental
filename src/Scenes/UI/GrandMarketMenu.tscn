@@ -15,6 +15,7 @@
 [ext_resource type="FontFile" uid="uid://stn4dtg0uw57" path="res://Assets/Fonts/FredokaOne-Regular.ttf" id="9_jjc7q"]
 [ext_resource type="Texture2D" uid="uid://c0bf31w6yr3lk" path="res://Assets/HUD/Bags/Market_Drops_Button_Hover.png" id="10_4j6oi"]
 [ext_resource type="Texture2D" uid="uid://vlyepx1d3siq" path="res://Assets/HUD/Bags/Market_Ore_Button.png" id="11_f6wvv"]
+[ext_resource type="Texture2D" uid="uid://0rg0r2x8l23u" path="res://Assets/HUD/SpirolIcon.png" id="11_lk77h"]
 [ext_resource type="Texture2D" uid="uid://dxpv7rr7xigwu" path="res://Assets/HUD/Bags/Market_Ore_Button_Pressed.png" id="12_70xkk"]
 [ext_resource type="Texture2D" uid="uid://bh4ibkfm1a8lv" path="res://Assets/HUD/Bags/Market_Ore_Button_Hover.png" id="13_3hxl8"]
 [ext_resource type="Texture2D" uid="uid://baqkrdd18p8ox" path="res://Assets/HUD/Bags/Market_Gem_Button.png" id="14_in26l"]
@@ -229,16 +230,16 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -291.0
-offset_top = 882.0
-offset_right = 23.0
-offset_bottom = 909.0
+offset_left = -267.0
+offset_top = 883.0
+offset_right = 47.0
+offset_bottom = 910.0
 grow_horizontal = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_oo3yc")
 theme_override_font_sizes/font_size = 28
-text = "Currency: 1000000000000"
+text = "1000000000000"
 
 [node name="Special" type="Label" parent="." unique_id=728038650]
 layout_mode = 1
@@ -343,6 +344,21 @@ theme_override_fonts/font = ExtResource("2_oo3yc")
 theme_override_font_sizes/font_size = 64
 text = "Unlock Bank 
 to Access Slots!"
+
+[node name="SpirolGraphic" type="TextureRect" parent="." unique_id=68121203]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -315.0
+offset_top = 332.0
+offset_right = -267.0
+offset_bottom = 380.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_lk77h")
 
 [node name="SfxPlayer" parent="." unique_id=2090409393 instance=ExtResource("6_cr4yk")]
 

@@ -73,6 +73,7 @@ func _input(event: InputEvent) -> void:
 
 func populate_details_panel(item : Item, slot_location : String, slot_index : int) -> void:
 	if item:
+		sell_slot_button.disabled = false
 		selected_inventory = slot_location
 		selected_item = item
 		item_icon.texture = selected_item.shop_icon
@@ -102,7 +103,7 @@ func _on_sell_button_button_up() -> void:
 			InventoryManager.update_grid_container(inventory_container, selected_inventory)
 				
 		SaveManager.save_tech_tree_data()		
-		currency.text = "Spirols: %s" % [TechTreeManager.currency]
+		currency.text = "%s" % [TechTreeManager.currency]
 		TechTreeManager.update_currency_label.emit()
 		if stored_slot_index == -1:
 			clear_details()
@@ -143,7 +144,7 @@ func init_market() -> void:
 	init_tabs()
 	selected_inventory = "Inventory"
 	inventory_label.text = selected_inventory
-	currency.text = "Spirols: %s" % [TechTreeManager.currency]
+	currency.text = "%s" % [TechTreeManager.currency]
 	InventoryManager.update_grid_container(inventory_container, selected_inventory)
 
 
@@ -173,7 +174,7 @@ func sell_all_items(container : GridContainer, inventory_name : String) -> void:
 				TechTreeManager.currency += slot["item"].sell_value
 				TechTreeManager.update_currency_label.emit()
 				InventoryManager.update_grid_container(container, inventory_name)
-				currency.text = "Currency: %s" % [TechTreeManager.currency]
+				currency.text = "%s" % [TechTreeManager.currency]
 				sfx_player.play_sfx(SELL_ITEM)
 				SaveManager.save_tech_tree_data()
 				await get_tree().create_timer(0.1).timeout
@@ -182,6 +183,7 @@ func sell_all_items(container : GridContainer, inventory_name : String) -> void:
 	HubManager.check_for_node_purchase.emit()
 
 func sell_slot(container : GridContainer) -> void:
+	sell_slot_button.disabled = true
 	var inventory : Array = InventoryManager.inventories[selected_inventory]
 	if inventory.is_empty():
 		return
@@ -193,7 +195,7 @@ func sell_slot(container : GridContainer) -> void:
 		TechTreeManager.currency += slot["item"].sell_value
 		TechTreeManager.update_currency_label.emit()
 		InventoryManager.update_grid_container(container, selected_inventory)
-		currency.text = "Currency: %s" % [TechTreeManager.currency]
+		currency.text = "%s" % [TechTreeManager.currency]
 		sfx_player.play_sfx(SELL_ITEM)
 		SaveManager.save_tech_tree_data()
 		await get_tree().create_timer(0.1).timeout

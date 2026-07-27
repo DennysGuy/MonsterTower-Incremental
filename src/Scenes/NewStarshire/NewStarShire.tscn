@@ -915,6 +915,10 @@ position = Vector2(1365, 671)
 position = Vector2(638, 598)
 script = ExtResource("18_g8ukf")
 
+[node name="GrandMarketPosition2" type="Marker2D" parent="." unique_id=1500660870 groups=["GrandMarketPosition"]]
+position = Vector2(720, 688)
+script = ExtResource("18_g8ukf")
+
 [node name="GrandMarketArea" type="Area2D" parent="." unique_id=1746715903]
 position = Vector2(640, 622)
 script = ExtResource("17_hw86b")
@@ -978,10 +982,10 @@ CORNER"
 horizontal_alignment = 1
 
 [node name="CookingRangePosition" type="Node2D" parent="." unique_id=1732992166]
-position = Vector2(1039, 648)
+position = Vector2(1040, 680)
 
 [node name="SwordCraftingStationPosition" type="Node2D" parent="." unique_id=333549657]
-position = Vector2(2003, 469)
+position = Vector2(1784, 528)
 
 [node name="CookingStation" parent="." unique_id=179535965 instance=ExtResource("33_d6jc3")]
 position = Vector2(1042, 704)
@@ -1044,7 +1048,7 @@ position = Vector2(-33, -22)
 base_offset = 30.0
 
 [node name="DojoPosition" type="Node2D" parent="." unique_id=1300992314]
-position = Vector2(2372, 662)
+position = Vector2(2384, 680)
 
 [node name="SmithingStation" parent="." unique_id=1664193682 instance=ExtResource("21_bl45m")]
 position = Vector2(1981, 431)
@@ -1211,10 +1215,10 @@ AP"
 metadata/_edit_use_anchors_ = true
 
 [node name="PlayerSpawnPoint" parent="." unique_id=2052586156 instance=ExtResource("30_cxssj")]
-position = Vector2(1250, 704)
+position = Vector2(1227, 704)
 
 [node name="RefineryPosition" type="Node2D" parent="." unique_id=1121494031]
-position = Vector2(1772, 679)
+position = Vector2(1888, 672)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=842259970]
 visible = false

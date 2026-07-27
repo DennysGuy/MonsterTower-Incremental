@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://8srx2ataaeyf"]
+
+[ext_resource type="FontFile" uid="uid://dln8g51uvm22r" path="res://Assets/Fonts/Azonix-1VB0.otf" id="1_uw8wf"]
+[ext_resource type="Script" uid="uid://cs6lmvrsukoq6" path="res://src/Scripts/HUD/upgrade_tracker_button.gd" id="2_ll28d"]
+
+[sub_resource type="Animation" id="Animation_nplmv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ll28d"]
+resource_name = "pulse"
+length = 2.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.1, 1.6666666),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1, 1), Vector2(1.2, 1.2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nplmv"]
+_data = {
+&"RESET": SubResource("Animation_nplmv"),
+&"pulse": SubResource("Animation_ll28d")
+}
+
+[node name="UpgradeTrackerButton" type="Button" unique_id=1936219869]
+offset_right = 162.0
+offset_bottom = 46.0
+pivot_offset = Vector2(84, 22)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_uw8wf")
+theme_override_font_sizes/font_size = 36
+disabled = true
+text = "[50/50]"
+script = ExtResource("2_ll28d")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=69410116]
+libraries/ = SubResource("AnimationLibrary_nplmv")

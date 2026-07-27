@@ -18,12 +18,14 @@ var stored_entrance_data : TowerEntranceData
 @onready var mode_description_label: RichTextLabel = $ModeDescription/ModeDescriptionLabel
 
 @onready var hunt_notification: Control = $FloorDescriptionPanel/HuntNotification
-@onready var selected_point: Label = $SelectedPoint
+@onready var selected_point: Label = $PanelContainer/SelectedPoint
 @onready var drops_preview_panel: Control = $ModeDescription/DropsPreviewPanel
 
 @onready var enemies_preview_grid_container: GridContainer = $ModeDescription/DropsPreviewPanel/PanelContainer/EnemiesPreviewGridContainer
 @onready var ore_preview_grid_container: GridContainer = $ModeDescription/DropsPreviewPanel/PanelContainer2/OrePreviewGridContainer
 @onready var music_player: AudioStreamPlayer = $MusicPlayer
+
+@onready var inventory_notice_panel: PanelContainer = $InventoryNoticePanel
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -38,6 +40,12 @@ func _ready() -> void:
 	
 	drops_preview_panel.hide()
 	load_most_recent_floor()
+	
+	if still_have_stuff():
+		inventory_notice_panel.show()
+	
+	
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
@@ -70,7 +78,7 @@ func store_entrance_data(entrance_data : TowerEntranceData) -> void:
 	
 	for point in range(0,entrance_data.number_of_spawn_locations):
 		var check_point_button : CheckPointButton = preload("uid://bpikj7ilsaiqj").instantiate()
-		check_point_button.text = "Checkpoint %s" % [point+1]
+		check_point_button.text = "Check Point %s" % [point+1]
 		check_point_button.index = point
 		area_button_selector.add_child(check_point_button)
 	
@@ -101,7 +109,7 @@ func _on_close_button_up() -> void:
 func update_entrance_map(index : int) -> void:
 	biome_preview.texture = stored_entrance_data.preview_pictures[index]
 	GameManager.spawn_location = index
-	selected_point.text = "Selected Point: %s - Floor %s - Point: %s" % [stored_entrance_data.biome, stored_entrance_data.floor_number, GameManager.spawn_location+1]
+	selected_point.text = "Selected Point: %s - Floor %s - Check Point: %s" % [stored_entrance_data.biome, stored_entrance_data.floor_number, GameManager.spawn_location+1]
 	
 func _on_hunt_selection_button_up() -> void:
 	set_mode_description_as_hunt_challenge()
@@ -142,3 +150,6 @@ func load_most_recent_floor() -> void:
 		if floor_button.tower_entrance_data.floor_number == PlayerStats.player_stats["Highest Floor"]:
 			store_entrance_data(floor_button.tower_entrance_data)
 			return
+
+func still_have_stuff() -> bool:
+	return InventoryManager.inventories["Bank"].size() > 0 or InventoryManager.inventories["Inventory"].size() > 0 or InventoryManager.inventories["Ore"].size() > 0 or InventoryManager.inventories["Use"].size() or PlayerStats.player_stats["Ability Points"] > 0

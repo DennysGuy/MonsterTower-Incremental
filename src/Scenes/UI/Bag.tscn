@@ -27,6 +27,7 @@
 [ext_resource type="FontFile" uid="uid://stn4dtg0uw57" path="res://Assets/Fonts/FredokaOne-Regular.ttf" id="21_16b0i"]
 [ext_resource type="FontFile" uid="uid://dgu1a66dfe8w" path="res://Assets/Fonts/Maplestory OTF Light.otf" id="22_16b0i"]
 [ext_resource type="Texture2D" uid="uid://bkgajowh8nxc4" path="res://Assets/HUD/NewItemPreviewBG.png" id="27_16b0i"]
+[ext_resource type="Texture2D" uid="uid://0rg0r2x8l23u" path="res://Assets/HUD/SpirolIcon.png" id="28_k87pw"]
 
 [node name="Bag" type="Control" unique_id=668700631]
 layout_mode = 3
@@ -685,6 +686,14 @@ theme_override_fonts/font = ExtResource("4_4vhog")
 theme_override_font_sizes/font_size = 24
 text = "To Bank"
 
+[node name="SpirolGraphic" type="TextureRect" parent="BagBG" unique_id=516023287]
+layout_mode = 0
+offset_left = 13.25
+offset_top = 581.5
+offset_right = 61.25
+offset_bottom = 629.5
+texture = ExtResource("28_k87pw")
+
 [node name="GoldCount" type="Label" parent="BagBG" unique_id=1673130369]
 layout_mode = 1
 anchors_preset = 8
@@ -692,10 +701,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -446.125
-offset_top = 272.0
-offset_right = -238.125
-offset_bottom = 300.0
+offset_left = -409.125
+offset_top = 274.0
+offset_right = -135.125
+offset_bottom = 302.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 3

@@ -42,6 +42,7 @@ func _process(delta: float) -> void:
 		exit_menu()
 		
 func _on_button_button_up() -> void:
+	button.disabled = true
 	spawn_crafting_sequence()
 	await get_tree().create_timer(4.0).timeout
 	upgrade_sword()

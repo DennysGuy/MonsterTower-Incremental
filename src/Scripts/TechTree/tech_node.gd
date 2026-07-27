@@ -240,12 +240,16 @@ func create_tool_tip() -> void:
 		tool_tip.description.text = tech_node_stats.description
 	if node_type != TechTreeManager.TECH_NODE_TYPE.CLASS_ABILITY:
 		if TechTreeManager.currency >=  tech_node_stats.get_cost():
-			tool_tip.cost.text = "[color=green]Spirols: %s/%s[/color]" % [TechTreeManager.currency, current_cost]
+			tool_tip.cost.text = "[color=green]Cost: %s/%s[/color]" % [TechTreeManager.currency, current_cost]
 		else:
-			tool_tip.cost.text = "Spirols: %s/%s" % [TechTreeManager.currency, current_cost]
-	
+			tool_tip.cost.text = "Cost: %s/%s" % [TechTreeManager.currency, current_cost]
+		
+		
 		if tech_node_stats.get_cost() <= 0:
 			tool_tip.cost.text = ""
+			tool_tip.spirol_graphic.hide()
+		else:
+			tool_tip.spirol_graphic.show()
 	else:
 		if PlayerStats.player_stats["Ability Points"] >= tech_node_stats.ap_required:
 			tool_tip.cost.text = "[color=green]AP %s/%s[/color]" % [PlayerStats.player_stats["Ability Points"],tech_node_stats.ap_required]

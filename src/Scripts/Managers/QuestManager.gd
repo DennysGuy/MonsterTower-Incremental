@@ -44,6 +44,8 @@ signal destroy_guide_box(task_id: int)
 signal recipe_objective_complete(recipe)
 @warning_ignore("unused_signal")
 signal weapon_tracker_updated
+@warning_ignore("unused_signal")
+signal update_node_task_tracker
 
 @onready var quests : Dictionary = {
 	"Main": {
@@ -113,6 +115,9 @@ func swap_main_active_quest(quest : Quest) -> void:
 	SaveManager.save_active_quests()
 	#save active main quest
 
+func get_active_main_quest() -> Quest:
+	return get_quest(active_quests["Main"][0])
+	
 func get_quest(quest_name : String) -> Quest:
 	var chapters : Array[String] = ["Introduction", "Spring", "Fall", "Winter"]
 	var main_quests : Dictionary = quests["Main"]

@@ -17,6 +17,7 @@ TowerGuide: Well, whatever you say. You boys enjoy your new toy! The Guild is cu
 leave TowerGuide [animation="Slide To Left" wait="true"]
 ProfStooge: It's just you and me now, Sonny. Let's show 'em what we're made of!
 do CutsceneManager.set_camera_to_player()
+do CutsceneManager.zoom_camera_standard()
 [wait time="1.0"]
 do CutsceneManager.enable_player_functionality()
 do MusicPlayer.unpause_music()

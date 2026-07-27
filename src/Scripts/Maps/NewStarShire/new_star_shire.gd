@@ -28,7 +28,12 @@ var sell_timer_set : bool = false
 
 const CRAFTING_STATION_OPEN = preload("uid://ccqpi3mcw8aww")
 
+@onready var new_star_shire: NewStarShireMap = $"."
+@onready var grand_market_position_2: GrandMarketPosition = $GrandMarketPosition2
 
+
+var ability_unlock_notice_played : bool = false
+var next_sword_available_played : bool = false
 
 @onready var access_smelting_station: Label = $AccessSmeltingStation
 @onready var access_sword_crafting_station: Label = $AccessSwordCraftingStation
@@ -88,6 +93,9 @@ func _ready() -> void:
 	CutsceneManager.send_camera_to_smelting_station.connect(send_camera_to_smelting_station)
 	CutsceneManager.send_camera_to_sword_crafting_station.connect(send_camera_to_sword_crafting_station)
 	CutsceneManager.spawn_intro_gem_chest.connect(spawn_newcomer_chest)
+	CutsceneManager.camera_zoomed.connect(zoom_camera)
+	CutsceneManager.unlock_ready_scene_ended.connect(check_for_an_unlock)
+	
 	SignalBus.spawn_tech_tree.connect(add_tech_tree_to_scene)
 	SignalBus.issue_can_craft_sword_scene.connect(new_sword_unlock_notice)
 	SignalBus.hide_tech_tree_canvas_layer.connect(hide_tech_tree_canvas_layer)
@@ -120,6 +128,8 @@ func _ready() -> void:
 	show_gem_station_notice()
 	check_for_node_purchase()
 	
+	check_for_an_unlock()
+	
 	sprint_enabled = true
 	GameManager.event_speed_mod = 2.5
 	
@@ -130,19 +140,6 @@ func _ready() -> void:
 		GameManager.market_intro_cutscene_played = true
 		SaveManager.save_progression_state("Market Intro Cutscene Played", true)
 
-	if PlayerStats.player_stats["Level"] == 2 and PlayerStats.player_stats["Ability Points"] == 1:
-		#ability_station_notice()
-		MusicPlayer.stop_player()
-		MusicPlayer.play_song(TUTORIAL_CUTSCENE)
-		Dialogic.start(LEVEL_UP_INSTRUCTION)
-	
-	if PlayerStats.player_stats["Level"] >= 8 and PlayerStats.player_stats["Class"] == "Junior Hunter" and !GameManager.job_selection_notice_scene_played:
-		Dialogic.start(HEAD_TO_JOB_ADVANCEMENT_CENTER_FOR_CLASS)
-		GameManager.job_selection_notice_scene_played = true
-		SaveManager.save_progression_state("Job Selection Notice Cutscene Played", true)
-
-	if PlayerStats.get_current_sword().index == 0 and PlayerStats.can_craft_next_sword():
-		Dialogic.start(CAN_CRAFT_FIRST_SWORD)
 
 func _exit_tree() -> void:
 	GameManager.event_speed_mod = 1.0
@@ -320,7 +317,7 @@ func spawn_job_board_menu() -> void:
 
 func send_camera_to_market() -> void:
 	camera.player = null
-	camera.global_position = grand_market_position.global_position
+	camera.global_position = grand_market_position_2.global_position
 
 func send_camera_to_smelting_station() -> void:
 	camera.player  = null
@@ -354,7 +351,6 @@ func _on_grand_market_area_body_entered(body: Node2D) -> void:
 			enter_market_label.text = "Produce some Novelty Inventions to sell!" % mapping
 		enter_market_label.show()
 		
-
 func _on_grand_market_area_body_exited(body: Node2D) -> void:
 	if body is Player:
 		player_in_market_range = false
@@ -415,9 +411,11 @@ func unlock_cooking_station() -> void:
 	camera.player = null
 	CutsceneManager.disable_player_functionality()
 	#hud.animation_player.play("FadeInOut")
+	camera.position = cooking_range_position.position
+	await get_tree().create_timer(0.5).timeout
+	CutsceneManager.zoom_camera_one_half()
 	await get_tree().create_timer(0.5).timeout
 	sfx_player.play_sfx(UNLOCK_SHOP)
-	camera.position = cooking_range_position.position
 	await get_tree().create_timer(1.0).timeout
 	PlayerHudSignalBus.flash_screen.emit()
 	await get_tree().create_timer(0.5).timeout
@@ -431,6 +429,8 @@ func unlock_refinery_station() -> void:
 	camera.player = null
 	camera.position = refinery_position.position
 	CutsceneManager.disable_player_functionality()
+	await get_tree().create_timer(0.5).timeout
+	CutsceneManager.zoom_camera_one_half()
 	await get_tree().create_timer(0.5).timeout
 	sfx_player.play_sfx(UNLOCK_SHOP)
 	await get_tree().create_timer(1.0).timeout
@@ -494,7 +494,6 @@ func gem_station_unlock_notice() -> void:
 	hud.animation_player.play("FadeInOut")
 	await get_tree().create_timer(0.5).timeout
 	smithing_station.notify_can_craft()
-	camera.position = sword_crafting_station_position.position
 	CutsceneManager.disable_player_functionality()
 	SignalBus.show_gem_station_arrow.emit()
 	Dialogic.start(GEMS_STATION_UNLOCK_SCENE)
@@ -681,6 +680,30 @@ func _on_market_kioske_area_body_exited(body: Node2D) -> void:
 func spawn_newcomer_chest() -> void:
 	var new_comer_chest : GemStoneChest = preload("uid://dfl8fkojivefu").instantiate()
 	new_comer_chest.chest_stats = preload("uid://ovvlphjveh3o")
+	new_comer_chest.will_drop = true
 	new_comer_chest.global_position = chest_spawn_marker.global_position
 	GameManager.play_sfx(RETRO_MAGIC_11, -4)
 	add_child(new_comer_chest)
+
+func zoom_camera(amount : float) -> void:
+	camera.zoom = Vector2(amount,amount)
+
+func check_for_an_unlock() -> void:
+	if PlayerStats.player_stats["Level"] == 2 and PlayerStats.player_stats["Ability Points"] == 1 and !ability_unlock_notice_played:
+		#ability_station_notice()
+		MusicPlayer.stop_player()
+		MusicPlayer.play_song(TUTORIAL_CUTSCENE)
+		Dialogic.start(LEVEL_UP_INSTRUCTION)
+		ability_unlock_notice_played = true
+		return
+	
+	if PlayerStats.player_stats["Level"] >= 8 and PlayerStats.player_stats["Class"] == "Junior Hunter" and !GameManager.job_selection_notice_scene_played:
+		Dialogic.start(HEAD_TO_JOB_ADVANCEMENT_CENTER_FOR_CLASS)
+		GameManager.job_selection_notice_scene_played = true
+		SaveManager.save_progression_state("Job Selection Notice Cutscene Played", true)
+		return
+
+	if PlayerStats.get_current_sword().index == 0 and PlayerStats.can_craft_next_sword() and !next_sword_available_played:
+		Dialogic.start(CAN_CRAFT_FIRST_SWORD)
+		next_sword_available_played = true
+		return

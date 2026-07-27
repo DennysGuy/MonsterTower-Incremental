@@ -22,6 +22,7 @@ var on_boss_door_floor : bool = false
 var room_speed_bonus : float = 1.0
 var new_jobs_available : bool = false
 var license_promotion_time : bool = false
+var in_tech_tree_tutorial : bool = false
 var in_last_breadth_mode : bool = false
 var can_sprint : bool = false
 var remaining_bolt_chain_links : int = 0
@@ -139,6 +140,9 @@ func siphen_hp(amount : int) -> void:
 	if GameManager.current_player_health >= total_max_hp:
 		GameManager.current_player_health = total_max_hp
 	PlayerHudSignalBus.update_player_health.emit() 
+
+func end_tech_tree_tutorial() -> void:
+	in_tech_tree_tutorial = false
 
 func calculate_targets(enemies_in_hitbox : Array, player : Player, number_of_hits : int) -> Array[Entity]:
 	var targets: Array[Entity] = []

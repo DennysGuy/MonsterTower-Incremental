@@ -59,7 +59,7 @@ func process_physics(_delta: float) -> State:
 		if Input.is_action_just_pressed("special_attack") and PlayerStats.get_equipped_ability("Special Attack") and parent.can_issue_ability("Special Attack"):
 			return special_attack
 
-		if Input.is_action_just_pressed("swing_sword") and GameManager.player_can_attack:
+		if Input.is_action_pressed("swing_sword") and GameManager.player_can_attack:
 			parent.attack_friction = 400
 			parent.max_attack_drift = 200
 			return attack_1_state

@@ -11,6 +11,7 @@ CropDuster: Oh, almost forgot. Those big rocks you've been passing by in the tow
 CropDuster: Hands over a stone pickaxe.
 CropDuster: It's not much, but it'll get the job done. Start gathering resources, put this thing to use, and if you want to get better at mining and crafting, check out the Crafting Tree in the Computer Terminal.
 [wait time="1.0"]
+do CutsceneManager.zoom_camera_standard()
 do CutsceneManager.set_camera_to_player()
 do CutsceneManager.enable_player_functionality()
 do MusicPlayer.unpause_music()

@@ -71,7 +71,7 @@ func process_physics(_delta: float) -> State:
 
 	parent.move_and_slide()
 
-	if Input.is_action_pressed("pan_cam_left") and parent.can_attack_cancel or Input.is_action_pressed("pan_cam_right") and parent.can_attack_cancel:
+	if (Input.is_action_pressed("pan_cam_left") or Input.is_action_pressed("pan_cam_right")) and !Input.is_action_pressed("swing_sword") and parent.can_attack_cancel:
 		return idle_state
 	
 	if Input.is_action_pressed("add_currency") and parent.can_attack_cancel:

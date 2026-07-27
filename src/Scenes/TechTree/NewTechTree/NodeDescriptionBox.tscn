@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cxb34nqxsjk0j" path="res://src/Scripts/TechTree/NewTechTree/node_description_box.gd" id="1_5h007"]
 [ext_resource type="FontFile" uid="uid://cv11ytsk7jf21" path="res://Assets/Fonts/Perfect DOS VGA 437.ttf" id="1_ttc2g"]
+[ext_resource type="Texture2D" uid="uid://0rg0r2x8l23u" path="res://Assets/HUD/SpirolIcon.png" id="3_0wmhs"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cw315"]
 bg_color = Color(0.5372549, 0.11764706, 0.16862746, 1)
@@ -13,7 +14,7 @@ shadow_color = Color(0, 0, 0, 0.72300005)
 shadow_size = 1
 shadow_offset = Vector2(2, 2)
 
-[node name="NodeDescriptionBox" type="Control" unique_id=1427550260 node_paths=PackedStringArray("node_title", "current_benefits", "description", "cost", "license_promotion_notice")]
+[node name="NodeDescriptionBox" type="Control" unique_id=1427550260 node_paths=PackedStringArray("node_title", "current_benefits", "description", "cost", "license_promotion_notice", "spirol_graphic")]
 z_index = 4096
 layout_mode = 3
 anchors_preset = 8
@@ -35,6 +36,7 @@ current_benefits = NodePath("Panel/CurrentBenefits")
 description = NodePath("Panel/Panel/Description")
 cost = NodePath("Panel/Cost")
 license_promotion_notice = NodePath("LicensePromotionNotice")
+spirol_graphic = NodePath("Panel/SpirolGraphic")
 
 [node name="Panel" type="Panel" parent="." unique_id=1835709407]
 layout_mode = 1
@@ -78,6 +80,16 @@ theme_override_font_sizes/font_size = 20
 text = "5 -> 10"
 horizontal_alignment = 1
 
+[node name="SpirolGraphic" type="TextureRect" parent="Panel" unique_id=552095690]
+visible = false
+layout_mode = 0
+offset_left = 11.5
+offset_top = 287.0
+offset_right = 59.5
+offset_bottom = 335.0
+texture = ExtResource("3_0wmhs")
+stretch_mode = 2
+
 [node name="Cost" type="RichTextLabel" parent="Panel" unique_id=896252362]
 layout_mode = 1
 anchors_preset = 8
@@ -85,17 +97,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -213.2273
-offset_top = 111.0
-offset_right = 65.772705
-offset_bottom = 135.89142
+offset_left = -181.2273
+offset_top = 128.0
+offset_right = 278.7727
+offset_bottom = 164.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("1_ttc2g")
-theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
-text = "Currency: 1200/2500"
+text = "1200/2500"
 
 [node name="Panel" type="Panel" parent="Panel" unique_id=1442171782]
 layout_mode = 1

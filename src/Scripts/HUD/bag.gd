@@ -81,7 +81,7 @@ func _process(delta: float) -> void:
 func init_bag() -> void:
 	update_bag()
 	item_icon.texture = null
-	gold_count.text = "Spirols: %s" % TechTreeManager.currency
+	gold_count.text = "%s" % TechTreeManager.currency
 	update_grid_container("Inventory")
 	clear_description_items()
 
@@ -181,7 +181,7 @@ func update_tab_label(tab_label : Label, tab_name : String, selected_inventory_n
 	tab_label.text = tab_name + " %s/%s" % [inventory_current_size,max_slot]
 
 func update_bag() -> void:
-	gold_count.text = "Spirols: %s" % TechTreeManager.currency
+	gold_count.text = "%s" % TechTreeManager.currency
 	if InventoryManager.check_if_bank_full():
 		to_bank.disabled = true
 	init_tabs()

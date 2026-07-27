@@ -860,19 +860,6 @@ text = "Press 'E' to Interact"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MerchantEnterNotice" type="Label" parent="." unique_id=2127788652]
-visible = false
-offset_left = 3075.0
-offset_top = 365.0
-offset_right = 3309.0
-offset_bottom = 381.0
-theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("9_7kbtj")
-theme_override_font_sizes/font_size = 16
-text = "Press 'E' to Enter Market"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=651658705]
 position = Vector2(-10, 455)
 
@@ -945,6 +932,19 @@ offset_bottom = 37.0
 
 [node name="Tag" parent="MobileShopArea/NameTag3/Bg" parent_id_path=PackedInt32Array(791391098, 305804188) index="0" unique_id=725373759]
 text = "Upgrades PC"
+
+[node name="MerchantEnterNotice" type="Label" parent="." unique_id=2127788652]
+visible = false
+offset_left = 3075.0
+offset_top = 365.0
+offset_right = 3309.0
+offset_bottom = 381.0
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("9_7kbtj")
+theme_override_font_sizes/font_size = 16
+text = "Press 'E' to Enter Market"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="CorruptedMushie" parent="." unique_id=85927412 node_paths=PackedStringArray("drop_scene") instance=ExtResource("20_jwogi")]
 position = Vector2(2372, 319)

@@ -1,24 +1,34 @@
 do CutsceneManager.disable_player_functionality()
+do CutsceneManager.zoom_camera_one_half()
 [wait time="2.0"]
 join TowerGuide rightmost [animation="Slide In Up" wait="true"]
 TowerGuide: Welcome to the Starspire Grand Market! We're glad you made it!
 TowerGuide: This is the base of operations for the Starspire Hunters! Use the Grand Market to strengthen your abilities, grow your wealth, and prepare for your expeditions into the tower.
 TowerGuide: Let me give you a quick overview of everything the Starspire Grand Market has to offer!
+do CutsceneManager.zoom_camera_standard()
+[wait time="1.0" skippable="true"]
 do CutsceneManager.send_camera_to_market_pos()
-[wait time="1.0"]
+[wait time="1.0" skippable="true"]
+do CutsceneManager.zoom_camera_one_half()
 TowerGuide: Come on over to the Trade Market to sell your plunder from the tower! Eventually, you'll unlock bulk selling, making it much easier to sell large quantities of valuable goods.
 do CutsceneManager.send_camera_to_smelting_station_pos()
+do CutsceneManager.zoom_camera_standard()
 [wait time="1.0"]
+do CutsceneManager.zoom_camera_one_half()
 TowerGuide: Welcome to Artisan's Corner! The backbone of Starspire operations.
-TowerGuide: This is a Hunter's bread and butter for growing stronger!
 TowerGuide: Here, you'll be able to gain access to important stations that will help you with upgrading your weapon! We'll go through each station in more detail later on!
-do CutsceneManager.send_camera_to_sword_crafting_station_pos()
+do CutsceneManager.zoom_camera_standard()
 [wait time="1.0"]
 do CutsceneManager.set_camera_to_dojo_position()
 [wait time="1.0"]
-TowerGuide: Next, we have the Class Advancement Center - the heart and soul of the Starspire Hunters Guild.
-TowerGuide: Here, you'll use AP earned from leveling up while hunting in the Tower to unlock and upgrade new class abilities.
+do CutsceneManager.zoom_camera_one_half()
+do 
+TowerGuide: Next, we have the Class Advancement Center - the heart and soul of the Starspire Hunters Guild. Here, you'll use AP earned from leveling up while hunting in the Tower to unlock and upgrade new class abilities.
+do CutsceneManager.zoom_camera_standard()
+[wait time="1.0"]
 do CutsceneManager.send_camera_to_cooking_station_pos()
+[wait time="1.0" skippable="true"]
+do CutsceneManager.zoom_camera_one_half()
 TowerGuide: Lastly, we have the... uh, Junk-O... Junk-E...
 do MusicPlayer.pause_music()
 audio music "res://Audio/Music/WackyJunkATron.wav" [bus="Music"]
@@ -42,6 +52,8 @@ do CutsceneManager.set_camera_to_player()
 TowerGuide: Well, that's it for now!\
 We'll go over things again as you continue your journey, but this should give you a little taste of what it means to become a Starspire Hunter!
 TowerGuide: Good Luck and may your bounty be plentiful!
+do CutsceneManager.zoom_camera_standard()
 [wait time="1.0"]
 do CutsceneManager.enable_player_functionality()
 do CutsceneManager.play_map_theme_song()
+do CutsceneManager.check_for_another_unlock()

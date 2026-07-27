@@ -20,6 +20,8 @@ class_name MonsterSpawnArea extends Area2D
 @onready var respawn_timer: Timer = $RespawnTimer
 @onready var monster_spawn_list: Node = $MonsterSpawnList
 
+var player_in_range : bool = false
+
 var can_spawn : bool = true
 
 var spawn_count : int
@@ -86,21 +88,33 @@ func _spawn():
 			monster_spawn_list.add_child(monster)
 
 func respawn_monsters() -> void:
-	var cur_monsters : int = monster_spawn_list.get_children().size()
-	var monster_diff : int = randi_range(1, max_monsters-cur_monsters)
+	var cur_monsters: int = monster_spawn_list.get_children().size()
+	var missing_monsters := max_monsters - cur_monsters
+
+	if missing_monsters <= 0:
+		return
+
+	var monster_diff := randi_range(1, missing_monsters)
+
+	var player: Player = get_tree().get_first_node_in_group("Player")
+
+	var shape := area_collision_shape.shape as RectangleShape2D
+	var extents = shape.extents
+
 	for i in range(monster_diff):
 		var scene := choose_enemy()
 		if scene == null:
 			continue
 
-		var monster : Enemy = scene.instantiate()
+		var monster: Enemy = scene.instantiate()
 
-		var shape := area_collision_shape.shape as RectangleShape2D
-		var extents = shape.extents
+		var spawn_x: float
 
-		var spawn_x := randf_range(-extents.x, extents.x)
+		if player:
+			spawn_x = get_spawn_x(player, extents)
+
 		var world_pos := global_position + Vector2(spawn_x, 0)
-			
+
 		monster.drop_scene = drop_scene
 		monster.global_position = world_pos
 		monster_spawn_list.add_child(monster)
@@ -117,6 +131,35 @@ func _on_respawn_timer_timeout() -> void:
 func enable_spawn() -> void:
 	can_spawn = true
 	
-
 func disable_spawn() -> void:
 	can_spawn = false
+
+func get_spawn_x(player: Player, extents: Vector2) -> float:
+	if player:
+		var player_offset := player.global_position.x - global_position.x
+
+		if player_offset > 0:
+			# Player is right side, spawn left
+			return randf_range(-extents.x, 0)
+		else:
+			# Player is left side, spawn right
+			return randf_range(0, extents.x)
+	
+	return 0
+
+func _on_body_entered(body: Node2D) -> void:
+	if body is Player:
+		player_in_range = true
+
+
+func _on_body_exited(body: Node2D) -> void:
+	if body is Player:
+		player_in_range = false
+
+
+func get_player() -> Player:
+	for child in get_children():
+		if child is Player:
+			return child
+	
+	return null
