@@ -11,4 +11,5 @@ item_name = "Batclopse Claw"
 item_type = 2
 sell_value = 100
 shop_icon = ExtResource("1_e08j4")
+description = "The claw dropped from a Batclopse. This is dangerously sharp, maybe we can craft a weapon or two with it?"
 metadata/_custom_type_script = "uid://cubudt76pshmm"

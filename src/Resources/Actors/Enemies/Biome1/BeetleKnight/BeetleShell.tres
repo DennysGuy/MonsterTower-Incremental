@@ -11,5 +11,5 @@ item_name = "Beetle Shell"
 item_type = 1
 sell_value = 56
 shop_icon = ExtResource("1_xmu1d")
-description = "The Back of A Beetle Knight. When cooked down, might make for a useful Stew Bowl."
+description = "The shell of a Beetle Knight. Its hard shell can be useful to process into tools or something!"
 metadata/_custom_type_script = "uid://cubudt76pshmm"

@@ -10,5 +10,5 @@ drop_chance = 0.9
 item_name = "Shrub Core"
 sell_value = 30
 shop_icon = ExtResource("1_wwvvo")
-description = "The Core of a Willow Shrub. One of the most common items retrieved from the tower, so not worth much."
+description = "The Core of a Willow Shrub can be sold at the market for some quick profit."
 metadata/_custom_type_script = "uid://cubudt76pshmm"

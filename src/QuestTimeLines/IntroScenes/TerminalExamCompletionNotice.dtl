@@ -4,3 +4,4 @@ do CutsceneManager.show_all_tech_buttons()
 TerminalComputer: There are 5 more tech tree categories, boasting vastly different upgrades. Be sure to look through them. They are necessary for your climb up the Starspire.
 TerminalComputer: Please report to the tower guide to start your first expedition into the Starspire.
 TerminalComputer: Good luck Hunter. May your bounty be plentiful.
+do GameManager.check_can_complete_tech_tree_tutorial()

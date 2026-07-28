@@ -649,6 +649,7 @@ text = "Drop"
 horizontal_alignment = 1
 
 [node name="ToBank" type="TextureButton" parent="BagBG" unique_id=1022483941]
+visible = false
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 1
 anchors_preset = 3

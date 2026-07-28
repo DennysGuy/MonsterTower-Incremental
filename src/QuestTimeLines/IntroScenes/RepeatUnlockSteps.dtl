@@ -1,3 +1,6 @@
+[wait time="0.5" skippable="true"]
+do CutsceneManager.show_combat_tech_tree()
+[wait time="0.5" skippable="true"]
 if {current_spirol} >= 50.0:
 	TerminalComputer: Good work, please purchase the 'Attack 1' node.
 else:

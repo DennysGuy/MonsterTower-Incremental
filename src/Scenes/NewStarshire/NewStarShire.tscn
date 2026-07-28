@@ -709,10 +709,10 @@ sfx_player = NodePath("SfxPlayer")
 position = Vector2(682, 97)
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=626834970]
-offset_left = 34.0
-offset_top = 99.0
-offset_right = 2783.0
-offset_bottom = 907.0
+offset_left = 32.0
+offset_top = 216.0
+offset_right = 2781.0
+offset_bottom = 1024.0
 stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=1380284373]
@@ -830,6 +830,10 @@ texture = ExtResource("13_sxpgj")
 [node name="GrandMarket" type="Sprite2D" parent="MarketStand" unique_id=1815988518]
 position = Vector2(-64, 103)
 texture = ExtResource("12_123hf")
+
+[node name="ArrowAtOre" parent="MarketStand" unique_id=302957318 instance=ExtResource("36_hw86b")]
+visible = true
+position = Vector2(8, 101)
 
 [node name="TileSets" type="Node2D" parent="." unique_id=1260955196]
 position = Vector2(682, 0)

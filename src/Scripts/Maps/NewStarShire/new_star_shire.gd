@@ -110,11 +110,11 @@ func _ready() -> void:
 	#SignalBus.show_ap_notice.connect(show_ap_notice)
 	
 	TechTreeManager.update_currency_label.emit()
-	InventoryManager.show_bank_button.emit()
+	
 	CookingManager.can_craft_bar.emit()
 	#hud.animation_player.play("CloseIn")
 	await get_tree().process_frame
-	
+	InventoryManager.show_bank_button.emit()
 	#GameManager.event_speed_mod = 2.5
 	PlayerHudSignalBus.update_map_name_label.emit(map_name)
 	PlayerStats.player_stats["Current MP"] = PlayerStats.player_stats["Max MP"] + PlayerStats.get_current_sword().max_mp_bonus + PlayerStats.get_total_gem_bonus("Max MP Bonus")

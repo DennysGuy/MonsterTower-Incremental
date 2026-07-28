@@ -144,6 +144,10 @@ func siphen_hp(amount : int) -> void:
 func end_tech_tree_tutorial() -> void:
 	in_tech_tree_tutorial = false
 
+func check_can_complete_tech_tree_tutorial() -> void:
+	if PlayerStats.facilities_unlocked["Hunter License"] and TechTreeManager.tech_nodes["Attack 1"] > 0:
+		in_tech_tree_tutorial = false
+
 func calculate_targets(enemies_in_hitbox : Array, player : Player, number_of_hits : int) -> Array[Entity]:
 	var targets: Array[Entity] = []
 	

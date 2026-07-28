@@ -10,4 +10,5 @@ drop_chance = 0.78
 item_name = "Batclopse Wing"
 sell_value = 45
 shop_icon = ExtResource("1_3q7js")
+description = "The Wing of a Batclopse. Maybe we can use this to achieve flight?! Or it can be used to cover something?"
 metadata/_custom_type_script = "uid://cubudt76pshmm"

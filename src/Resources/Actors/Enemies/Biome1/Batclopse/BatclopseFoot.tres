@@ -10,5 +10,5 @@ drop_chance = 0.6
 item_name = "Batclopse Foot"
 sell_value = 55
 shop_icon = ExtResource("1_o0tfi")
-description = "The foot of a batclopse.. What can we make of it?"
+description = "The foot of a batclopse. Kinda reminds of chicken feet. I wonder what we can craft out of this?"
 metadata/_custom_type_script = "uid://cubudt76pshmm"

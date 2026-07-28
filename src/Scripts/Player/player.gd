@@ -390,6 +390,8 @@ func can_issue_ability(ability_name : String) -> bool:
 	var selected_ability = PlayerStats.equipped_abilities[ability_name]
 	if selected_ability is String:
 		selected_ability = load(selected_ability)
+	
+	print("THIS IS AP COST : %s" % selected_ability.mp_cost)
 	return  AbilityTimers.ability_state[ability_name]["Can Do"] and GameManager.current_player_mp >= selected_ability.mp_cost
 
 func _on_sword_soar_hit_box_area_entered(area: Area2D) -> void:

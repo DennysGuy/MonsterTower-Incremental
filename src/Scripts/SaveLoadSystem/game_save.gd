@@ -372,7 +372,7 @@ TODO: We will add saves for classes as well
 		"Air Attack": {
 			"Cooldown Time" : 0.7,
 			"HP Cost" : 0.0,
-			"MP Cost" : 7.0,
+			"MP Cost" : 0.0,
 			"Base Attack": 0.0,
 			"Number of Enemies Hit" : 1.0,
 			"Max Hit Count": 1.0,

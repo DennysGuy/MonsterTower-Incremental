@@ -41,6 +41,8 @@ signal camera_zoomed(amount : float)
 signal unlock_ready_scene_ended
 @warning_ignore("unused_signal")
 signal show_all_tech_tree_buttons
+@warning_ignore("unused_signal")
+signal show_tech_tree
 
 func trigger_next_frame() -> void:
 	trigger_next_image.emit()
@@ -65,6 +67,9 @@ func send_camera_to_player() -> void:
 
 func spawn_beginner_gem_chest() -> void:
 	spawn_intro_gem_chest.emit()
+
+func show_combat_tech_tree() -> void:
+	show_tech_tree.emit()
 
 func disable_player_functionality() -> void:
 	stop_player.emit()

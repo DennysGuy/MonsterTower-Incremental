@@ -326,7 +326,8 @@ func _on_show_bank_button_up() -> void:
 
 
 func show_to_bank_button() -> void:
-	to_bank.show()
+	if PlayerStats.facilities_unlocked["Bank"]:
+		to_bank.show()
 
 func _on_to_bank_button_up() -> void:
 	if InventoryManager.add_item("Bank", selected_item):
