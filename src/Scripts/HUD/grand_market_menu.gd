@@ -28,7 +28,8 @@ const ITEM_SLOT_NOVELTY = preload("uid://x2hshpeeawjm")
 
 @onready var inventory_label: Label = $InventoryLabel
 
-@onready var sell_slot_button: Button = $DetailsPanel/SellSlotButton
+@onready var sell_slot_button: Button = $SellSlotButton
+
 
 @onready var novelties_tab: TextureButton = $HBoxContainer/NoveltiesTab
 @onready var crafting_tab: TextureButton = $HBoxContainer/CraftingTab
@@ -45,7 +46,7 @@ var selected_inventory : String
 var stored_slot_index : int
 
 @onready var sell_tab_button: Button = $SellTabButton
-@onready var sell_bank_button: Button = $SellBankButton
+
 
 @onready var inventory_bg: TextureRect = $InventoryBG
 const GRAND_MARKET_MENU_DROPS_BG = preload("uid://b30bdn5uad13v")
@@ -97,10 +98,7 @@ func _on_sell_button_button_up() -> void:
 	if InventoryManager.remove_item_from_slot(stored_slot_index, selected_inventory):
 		sfx_player.play_sfx(SELL_ITEM)
 		TechTreeManager.currency += selected_item.sell_value
-		if selected_inventory == "Bank":
-			InventoryManager.update_grid_container(bank_container, "Bank")
-		else:
-			InventoryManager.update_grid_container(inventory_container, selected_inventory)
+		InventoryManager.update_grid_container(inventory_container, selected_inventory)
 				
 		SaveManager.save_tech_tree_data()		
 		currency.text = "%s" % [TechTreeManager.currency]
@@ -146,12 +144,6 @@ func init_market() -> void:
 	inventory_label.text = selected_inventory
 	currency.text = "%s" % [TechTreeManager.currency]
 	InventoryManager.update_grid_container(inventory_container, selected_inventory)
-
-
-	if PlayerStats.facilities_unlocked["Bank"]:
-		InventoryManager.update_grid_container(bank_container, "Bank")
-	else:
-		bank_notice.show()
 
 func init_tabs() -> void:
 	if PlayerStats.facilities_unlocked["Junk-A-Tron"]:
@@ -212,13 +204,13 @@ func enable_tabs_and_buttons() -> void:
 	for tab in tab_buttons:
 		tab.disabled = false
 	sell_tab_button.disabled = false
-	sell_bank_button.disabled = false
+
 
 func disable_tabs_and_buttons() -> void:
 	for tab in tab_buttons:
 		tab.disabled = true
 	sell_tab_button.disabled = true
-	sell_bank_button.disabled = true
+
 	
 func _on_novelties_tab_button_up() -> void:
 	selected_inventory = "Inventory"
@@ -248,12 +240,16 @@ func _on_use_tab_button_up() -> void:
 func _on_sell_slot_button_button_up() -> void:
 	if !selected_item:
 		return
-	match selected_inventory:
-		"Bank":
-			sell_slot(bank_container)
-		_:
-			sell_slot(inventory_container)
+
+	sell_slot(inventory_container)
 
 
 func _on_sell_tab_button_button_up() -> void:
 	pass # Replace with function body.
+
+
+func _on_bank_tab_button_up() -> void:
+	selected_inventory = "Bank"
+	inventory_bg.texture = GRAND_MARKET_MENU_USE_BG
+	inventory_label.text = selected_inventory
+	InventoryManager.update_grid_container(inventory_container, selected_inventory)
