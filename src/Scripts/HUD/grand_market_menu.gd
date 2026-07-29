@@ -95,6 +95,9 @@ func populate_details_panel(item : Item, slot_location : String, slot_index : in
 		description.text = item.description
 
 func _on_sell_button_button_up() -> void:
+	if !selected_item:
+		return
+	
 	if InventoryManager.remove_item_from_slot(stored_slot_index, selected_inventory):
 		sfx_player.play_sfx(SELL_ITEM)
 		TechTreeManager.currency += selected_item.sell_value

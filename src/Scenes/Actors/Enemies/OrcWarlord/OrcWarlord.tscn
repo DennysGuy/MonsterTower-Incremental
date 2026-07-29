@@ -510,7 +510,7 @@ animation_name = "SpawnIn"
 [node name="HurtBuffer" type="Node" parent="StateMachine" unique_id=70626581 node_paths=PackedStringArray("idle_state", "chase_state")]
 script = ExtResource("27_knjix")
 idle_state = NodePath("../Idle")
-chase_state = NodePath("../Patrol")
+chase_state = NodePath("../Chase")
 buffer_time = 0.14
 
 [node name="HealthComponent" parent="." unique_id=2083111642 node_paths=PackedStringArray("parent", "health_bar") instance=ExtResource("25_48vai")]

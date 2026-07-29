@@ -2,24 +2,29 @@
 
 [ext_resource type="Script" uid="uid://dlw0u5lkpm11w" path="res://src/Scripts/HUD/grand_market_menu.gd" id="1_72318"]
 [ext_resource type="PackedScene" uid="uid://cq5osrx532u3u" path="res://src/Scenes/NewStarshire/Facilities/FacilityBGs/GrandMarketArea.tscn" id="2_hiv0a"]
-[ext_resource type="FontFile" uid="uid://qgj228ltdttv" path="res://Assets/Fonts/alagard.ttf" id="2_oo3yc"]
 [ext_resource type="Texture2D" uid="uid://bkj0kj26ahgl8" path="res://Assets/Enemies/CorruptedMushie/PurifiedMushieCore.png" id="4_x7u5n"]
-[ext_resource type="Texture2D" uid="uid://cq87h5p2j7luv" path="res://Assets/NewUI/WoodenContainer1.png" id="5_70kpi"]
+[ext_resource type="Texture2D" uid="uid://bpsolb413xxb0" path="res://Assets/NewUI/TrackerBG.png" id="4_ytgai"]
 [ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="5_oesmi"]
 [ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="6_cr4yk"]
 [ext_resource type="Texture2D" uid="uid://cxwki0aipjjes" path="res://Assets/NewUI/DialogueBoxSmall.png" id="6_qwx61"]
 [ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="6_wwjc2"]
+[ext_resource type="Texture2D" uid="uid://bpvdgjkiwhklx" path="res://Assets/NewUI/MartBG.png" id="6_ytgai"]
 [ext_resource type="Texture2D" uid="uid://b30bdn5uad13v" path="res://Assets/HUD/Facilities/GrandMarketMenu_DropsBG.png" id="7_6u5e3"]
 [ext_resource type="Texture2D" uid="uid://dkd4op7b7q1vp" path="res://Assets/HUD/Bags/Market_Drops_Button.png" id="8_uqeh6"]
+[ext_resource type="Texture2D" uid="uid://dkxxocku12pl" path="res://Assets/NewUI/Sellx1.png" id="9_2g0tn"]
 [ext_resource type="Texture2D" uid="uid://dbq8ligbspbbd" path="res://Assets/HUD/Bags/Market_Drops_Button_Pressed.png" id="9_6aebp"]
+[ext_resource type="Texture2D" uid="uid://d0fxecr60fvst" path="res://Assets/NewUI/GrandMarketButton.png" id="9_aqgvg"]
 [ext_resource type="FontFile" uid="uid://stn4dtg0uw57" path="res://Assets/Fonts/FredokaOne-Regular.ttf" id="9_jjc7q"]
+[ext_resource type="Texture2D" uid="uid://dg8ofb40qy5r8" path="res://Assets/NewUI/BarterButton.png" id="10_2g0tn"]
 [ext_resource type="Texture2D" uid="uid://c0bf31w6yr3lk" path="res://Assets/HUD/Bags/Market_Drops_Button_Hover.png" id="10_4j6oi"]
 [ext_resource type="PackedScene" uid="uid://d0s6j8mvikv8c" path="res://src/Scenes/UI/ItemSlot.tscn" id="10_lk77h"]
 [ext_resource type="Texture2D" uid="uid://vlyepx1d3siq" path="res://Assets/HUD/Bags/Market_Ore_Button.png" id="11_f6wvv"]
 [ext_resource type="Texture2D" uid="uid://dxpv7rr7xigwu" path="res://Assets/HUD/Bags/Market_Ore_Button_Pressed.png" id="12_70xkk"]
 [ext_resource type="Texture2D" uid="uid://dxei6inwvycde" path="res://Assets/NewUI/SpirolIcon.png" id="12_qwx61"]
 [ext_resource type="Texture2D" uid="uid://bh4ibkfm1a8lv" path="res://Assets/HUD/Bags/Market_Ore_Button_Hover.png" id="13_3hxl8"]
+[ext_resource type="FontFile" uid="uid://3bof2n2443c7" path="res://Assets/Fonts/FantaisieArtistique.ttf" id="13_8xk8x"]
 [ext_resource type="Texture2D" uid="uid://baqkrdd18p8ox" path="res://Assets/HUD/Bags/Market_Gem_Button.png" id="14_in26l"]
+[ext_resource type="Texture2D" uid="uid://kosw65m4ecvo" path="res://Assets/NewUI/CloseButton.png" id="14_ytgai"]
 [ext_resource type="Texture2D" uid="uid://nof6fd2hbboi" path="res://Assets/HUD/Bags/Market_Gem_Button_Pressed.png" id="15_6u5e3"]
 [ext_resource type="Texture2D" uid="uid://yyyj7gu242ii" path="res://Assets/HUD/Bags/Market_Gem_Button_Hover.png" id="16_s3vug"]
 [ext_resource type="Texture2D" uid="uid://dcf34mnogdpat" path="res://Assets/HUD/Bags/Market_Use_Button.png" id="17_in26l"]
@@ -31,6 +36,13 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jjc7q"]
 bg_color = Color(0.5088358, 0.24881679, 0.22491434, 0.7764706)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_44bfx"]
+bg_color = Color(0.060530342, 0.060530365, 0.060530297, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
@@ -76,20 +88,20 @@ mouse_filter = 2
 texture = ExtResource("7_6u5e3")
 expand_mode = 1
 
-[node name="MoreDetailsPanel" type="NinePatchRect" parent="." unique_id=4457816]
+[node name="MoreDetailsPanel" type="TextureRect" parent="." unique_id=569945756]
 layout_mode = 0
 offset_left = 1291.0
 offset_top = 159.0
-offset_right = 1904.0
-offset_bottom = 742.0
-texture = ExtResource("5_70kpi")
+offset_right = 1901.0
+offset_bottom = 719.0
+texture = ExtResource("4_ytgai")
 
 [node name="Panel" type="Panel" parent="MoreDetailsPanel" unique_id=236036945]
 layout_mode = 0
-offset_left = 30.0
-offset_top = 57.0
-offset_right = 589.0
-offset_bottom = 98.0
+offset_left = 24.0
+offset_top = 121.0
+offset_right = 583.0
+offset_bottom = 162.0
 
 [node name="Label5" type="Label" parent="MoreDetailsPanel/Panel" unique_id=421737213]
 layout_mode = 1
@@ -97,11 +109,12 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 2.0
-offset_top = -35.0
+offset_top = -39.0
 offset_right = -256.0
-offset_bottom = -36.0
+offset_bottom = -40.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("9_jjc7q")
 theme_override_font_sizes/font_size = 32
 text = "Recent Sale History"
@@ -146,47 +159,31 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 58.0
-offset_top = 99.0
-offset_right = 5.0
-offset_bottom = 70.0
+offset_left = 26.0
+offset_top = 172.0
+offset_right = -27.0
+offset_bottom = -26.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="RecentSales" type="VBoxContainer" parent="MoreDetailsPanel/ScrollContainer" unique_id=513671370]
 layout_mode = 2
 
-[node name="Panel5" type="NinePatchRect" parent="." unique_id=668247718]
+[node name="Panel6" type="TextureRect" parent="." unique_id=2097298050]
 layout_mode = 0
 offset_left = 12.0
-offset_top = 527.0
+offset_top = 159.0
 offset_right = 502.0
-offset_bottom = 1027.0
-texture = ExtResource("5_70kpi")
+offset_bottom = 1024.0
+texture = ExtResource("6_ytgai")
 
-[node name="Panel" type="NinePatchRect" parent="Panel5" unique_id=601431779]
+[node name="Panel3" type="NinePatchRect" parent="." unique_id=601431779]
 layout_mode = 0
-offset_left = 31.0
-offset_top = 342.0
-offset_right = 460.0
-offset_bottom = 474.0
+offset_left = 43.0
+offset_top = 875.0
+offset_right = 472.0
+offset_bottom = 1007.0
 texture = ExtResource("6_qwx61")
-
-[node name="Panel2" type="Panel" parent="Panel5" unique_id=912396713]
-layout_mode = 0
-offset_left = 31.0
-offset_top = 35.0
-offset_right = 457.0
-offset_bottom = 339.0
-
-[node name="Panel6" type="NinePatchRect" parent="." unique_id=248527547]
-layout_mode = 0
-offset_left = 12.0
-offset_top = 174.0
-offset_right = 491.0
-offset_bottom = 526.0
-texture = ExtResource("5_70kpi")
-region_rect = Rect2(0, 0, 1024, 1025)
 
 [node name="DetailsPanel" type="Control" parent="." unique_id=2035819410]
 layout_mode = 1
@@ -297,25 +294,12 @@ offset_right = 1280.0
 offset_bottom = 1024.0
 texture = ExtResource("6_qwx61")
 
-[node name="Value4" type="Label" parent="." unique_id=2145602014]
-layout_mode = 1
-offset_left = 12.0
-offset_top = 205.0
-offset_right = 469.0
-offset_bottom = 271.0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 2
-theme_override_fonts/font = ExtResource("5_oesmi")
-theme_override_font_sizes/font_size = 58
-text = "Actions"
-horizontal_alignment = 1
-
 [node name="DirectionsLabel" type="Label" parent="." unique_id=668664362]
 layout_mode = 1
-offset_left = 53.0
-offset_top = 883.0
-offset_right = 448.0
-offset_bottom = 979.0
+offset_left = 60.0
+offset_top = 896.0
+offset_right = 455.0
+offset_bottom = 992.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("5_oesmi")
@@ -323,24 +307,21 @@ theme_override_font_sizes/font_size = 26
 text = "Click on an Item to begin sale. You can sell a single item or a whole stack!"
 autowrap_mode = 3
 
-[node name="SellButton" type="Button" parent="." unique_id=541231822]
+[node name="SellButton" type="TextureButton" parent="." unique_id=1793635817]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 150.0
-offset_top = -209.0
-offset_right = 312.0
-offset_bottom = -153.0
+offset_left = 120.0
+offset_top = -205.0
+offset_right = 280.0
+offset_bottom = -149.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_default_cursor_shape = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("5_oesmi")
-theme_override_font_sizes/font_size = 42
-text = "Sell x1"
+texture_normal = ExtResource("9_2g0tn")
 
 [node name="SellSlotButton" type="Button" parent="." unique_id=382654307]
 layout_mode = 1
@@ -349,10 +330,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 47.0
-offset_top = -140.0
-offset_right = 311.0
-offset_bottom = -73.0
+offset_left = 18.0
+offset_top = -143.0
+offset_right = 282.0
+offset_bottom = -76.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_default_cursor_shape = 2
@@ -361,57 +342,64 @@ theme_override_fonts/font = ExtResource("5_oesmi")
 theme_override_font_sizes/font_size = 52
 text = "Sell Stack"
 
-[node name="MarketButton" type="Button" parent="." unique_id=1724634276]
+[node name="MarketButton" type="TextureButton" parent="." unique_id=1381767144]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -846.0
-offset_top = -797.0
-offset_right = -582.0
-offset_bottom = -721.0
+offset_left = -832.0
+offset_top = -776.0
+offset_right = -572.0
+offset_bottom = -700.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_default_cursor_shape = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("5_oesmi")
-theme_override_font_sizes/font_size = 52
-text = "Market"
+texture_normal = ExtResource("9_aqgvg")
 
-[node name="MarketButton2" type="Button" parent="." unique_id=1043815521]
+[node name="BarterButton" type="TextureButton" parent="." unique_id=858278995]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -868.0
-offset_top = -707.0
-offset_right = -580.0
-offset_bottom = -609.0
+offset_left = -832.0
+offset_top = -688.0
+offset_right = -572.0
+offset_bottom = -612.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_default_cursor_shape = 2
+texture_normal = ExtResource("10_2g0tn")
+
+[node name="Value5" type="Label" parent="." unique_id=1336332032]
+layout_mode = 1
+offset_left = 156.0
+offset_top = 470.0
+offset_right = 318.0
+offset_bottom = 489.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("5_oesmi")
-theme_override_font_sizes/font_size = 40
-text = "Barter
-(Coming Soon)"
+theme_override_font_sizes/font_size = 16
+text = "(coming soon)"
+horizontal_alignment = 1
 
 [node name="Title" type="Label" parent="." unique_id=624241415]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -948.0
-offset_right = -458.0
-offset_bottom = 180.0
+offset_left = -960.0
+offset_top = -11.0
+offset_right = -470.0
+offset_bottom = 169.0
 grow_horizontal = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("2_oo3yc")
+theme_override_fonts/font = ExtResource("13_8xk8x")
 theme_override_font_sizes/font_size = 64
 text = "Starspire
 Grand Market"
@@ -423,14 +411,14 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 642.0
-offset_top = 37.0
-offset_right = 826.0
-offset_bottom = 67.0
+offset_left = 647.0
+offset_top = 33.0
+offset_right = 831.0
+offset_bottom = 66.0
 grow_horizontal = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("2_oo3yc")
+theme_override_fonts/font = ExtResource("13_8xk8x")
 theme_override_font_sizes/font_size = 32
 text = "'ESC' to Exit"
 horizontal_alignment = 2
@@ -441,6 +429,7 @@ offset_left = 1557.0
 offset_top = 78.0
 offset_right = 1897.0
 offset_bottom = 153.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_44bfx")
 
 [node name="Currency" type="Label" parent="." unique_id=2049901058]
 layout_mode = 1
@@ -458,29 +447,14 @@ theme_override_fonts/font = ExtResource("9_jjc7q")
 theme_override_font_sizes/font_size = 28
 text = "1000000000000"
 
-[node name="Special" type="Label" parent="." unique_id=728038650]
+[node name="Close" type="TextureButton" parent="." unique_id=689026297]
 layout_mode = 1
-offset_left = 997.0
-offset_top = 117.0
-offset_right = 1265.0
-offset_bottom = 140.0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 2
-theme_override_fonts/font = ExtResource("2_oo3yc")
-theme_override_font_sizes/font_size = 24
-text = "Click on Item slot to sell"
-
-[node name="Close" type="Button" parent="." unique_id=567962344]
-layout_mode = 1
-offset_left = 1815.0
-offset_top = 25.0
-offset_right = 1884.0
-offset_bottom = 70.0
+offset_left = 1827.0
+offset_top = 9.0
+offset_right = 1891.0
+offset_bottom = 73.0
 mouse_default_cursor_shape = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("5_oesmi")
-theme_override_font_sizes/font_size = 32
-text = "Exit"
+texture_normal = ExtResource("14_ytgai")
 
 [node name="InventoryLabel" type="Label" parent="." unique_id=1376269875]
 layout_mode = 0
@@ -776,7 +750,6 @@ text = "Bank"
 
 [connection signal="button_up" from="SellButton" to="." method="_on_sell_button_button_up"]
 [connection signal="button_up" from="SellSlotButton" to="." method="_on_sell_slot_button_button_up"]
-[connection signal="button_up" from="MarketButton2" to="." method="_on_sell_slot_button_button_up"]
 [connection signal="button_up" from="Close" to="." method="_on_close_button_up"]
 [connection signal="button_up" from="SellTabButton" to="." method="_on_sell_novelties_button_button_up"]
 [connection signal="button_up" from="SellTabButton" to="." method="_on_sell_tab_button_button_up"]
