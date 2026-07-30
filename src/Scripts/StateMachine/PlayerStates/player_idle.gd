@@ -17,6 +17,9 @@ class_name PlayerIdle extends State
 @export_group("Audio")
 @export var jump_sfx : AudioStream
 
+var drop_timer : float = 0.0
+var drop_wait_time : float = 0.1
+
 func enter() -> void:
 	parent.can_knock_back = true
 	parent.was_on_ledge = true
@@ -26,6 +29,7 @@ func enter() -> void:
 	parent.can_double_jump = true
 	#parent.can_dash_attack = true
 	parent.velocity = Vector2.ZERO
+	drop_timer = drop_wait_time
 	super()
 
 func exit() -> void:
@@ -40,10 +44,17 @@ func process_input(_event: InputEvent) -> State:
 func process_physics(_delta: float) -> State:
 	
 	if Input.is_action_pressed("pan_cam_down"):
-		parent.pass_through_floor()
-		parent.sfx_player.play_sfx(jump_sfx)
-		parent.can_double_jump = false
-		return fall_state
+		
+		drop_timer -= _delta
+		
+		if drop_timer <= 0:
+			parent.pass_through_floor()
+			parent.sfx_player.play_sfx(jump_sfx)
+			parent.can_double_jump = false
+			return fall_state
+	
+	if Input.is_action_just_released("pan_cam_down"):
+		drop_timer = drop_wait_time
 	
 	if !GameManager.player_can_move:
 		parent.move_and_slide()

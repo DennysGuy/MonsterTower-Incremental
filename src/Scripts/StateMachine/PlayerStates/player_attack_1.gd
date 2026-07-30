@@ -42,7 +42,6 @@ func enter() -> void:
 
 	# Clamp so sprint/dash doesn't slide forever
 
-
 	var swing : AudioStream = PlayerStats.get_sword(
 		int(PlayerStats.player_stats["Equipped Sword"])
 	).swing_1

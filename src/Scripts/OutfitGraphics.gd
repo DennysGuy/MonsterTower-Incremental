@@ -20,7 +20,8 @@ var outfit_graphics : Dictionary = {
 		"CycloneSlash": preload("uid://cwehmdaknb5ko"),
 		"IronBody": preload("uid://s3c87yot2mlq"),
 		"CircleOfTruth": preload("uid://crb6j81csruty"),
-		"BasicDash": preload("uid://dp8eilpd2k4li")
+		"BasicDash": preload("uid://dp8eilpd2k4li"),
+		"Punch": preload("uid://0w3eyeg5v6bf")
 	},
 	"Tyro" : {
 		"Idle": preload("uid://bsy5tgiwm7wxj"),

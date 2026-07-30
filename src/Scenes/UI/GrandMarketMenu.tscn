@@ -664,6 +664,7 @@ text = "Drops"
 horizontal_alignment = 1
 
 [node name="OreTab" type="TextureButton" parent="HBoxContainer" unique_id=392124376]
+visible = false
 custom_minimum_size = Vector2(96, 46)
 layout_mode = 2
 mouse_default_cursor_shape = 2
@@ -691,6 +692,7 @@ theme_override_font_sizes/font_size = 24
 text = "Ore"
 
 [node name="GemStonesTab" type="TextureButton" parent="HBoxContainer" unique_id=252733577]
+visible = false
 custom_minimum_size = Vector2(96, 46)
 layout_mode = 2
 mouse_default_cursor_shape = 2
@@ -713,6 +715,7 @@ text = "Gem
 Stones"
 
 [node name="UseTab" type="TextureButton" parent="HBoxContainer" unique_id=168834907]
+visible = false
 custom_minimum_size = Vector2(96, 46)
 layout_mode = 2
 mouse_default_cursor_shape = 2
@@ -740,6 +743,7 @@ theme_override_font_sizes/font_size = 24
 text = "Use"
 
 [node name="BankTab" type="TextureButton" parent="HBoxContainer" unique_id=1194268294]
+visible = false
 custom_minimum_size = Vector2(96, 46)
 layout_mode = 2
 mouse_default_cursor_shape = 2

@@ -37,6 +37,7 @@ const ITEM_SLOT_NOVELTY = preload("uid://x2hshpeeawjm")
 @onready var ore_tab: TextureButton = $HBoxContainer/OreTab
 @onready var gem_stones_tab: TextureButton = $HBoxContainer/GemStonesTab
 @onready var use_tab: TextureButton = $HBoxContainer/UseTab
+@onready var bank_tab: TextureButton = $HBoxContainer/BankTab
 
 var selling_all : bool = false
 var selling_novelties : bool = false
@@ -159,6 +160,10 @@ func init_tabs() -> void:
 	if PlayerStats.facilities_unlocked["Refinery Station"]:
 		ore_tab.show()
 		use_tab.show()
+	
+	if PlayerStats.facilities_unlocked["Bank"]:
+		bank_tab.show()
+	
 
 func sell_all_items(container : GridContainer, inventory_name : String) -> void:
 	var inventory : Array = InventoryManager.inventories[inventory_name]
