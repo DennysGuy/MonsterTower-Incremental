@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dlw0u5lkpm11w" path="res://src/Scripts/HUD/grand_market_menu.gd" id="1_72318"]
 [ext_resource type="PackedScene" uid="uid://cq5osrx532u3u" path="res://src/Scenes/NewStarshire/Facilities/FacilityBGs/GrandMarketArea.tscn" id="2_hiv0a"]
+[ext_resource type="Texture2D" uid="uid://btkbks5gjad32" path="res://Assets/NewUI/DropsBG.png" id="3_p1ih0"]
 [ext_resource type="Texture2D" uid="uid://bkj0kj26ahgl8" path="res://Assets/Enemies/CorruptedMushie/PurifiedMushieCore.png" id="4_x7u5n"]
 [ext_resource type="Texture2D" uid="uid://bpsolb413xxb0" path="res://Assets/NewUI/TrackerBG.png" id="4_ytgai"]
 [ext_resource type="FontFile" uid="uid://tbfsttkqr4tc" path="res://Assets/Fonts/Maplestory OTF Bold.otf" id="5_oesmi"]
@@ -9,10 +10,12 @@
 [ext_resource type="Texture2D" uid="uid://cxwki0aipjjes" path="res://Assets/NewUI/DialogueBoxSmall.png" id="6_qwx61"]
 [ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="6_wwjc2"]
 [ext_resource type="Texture2D" uid="uid://bpvdgjkiwhklx" path="res://Assets/NewUI/MartBG.png" id="6_ytgai"]
-[ext_resource type="Texture2D" uid="uid://b30bdn5uad13v" path="res://Assets/HUD/Facilities/GrandMarketMenu_DropsBG.png" id="7_6u5e3"]
+[ext_resource type="Texture2D" uid="uid://hmsojhxi2r0c" path="res://Assets/NPCs/MarketVendor.png" id="7_ebwkr"]
+[ext_resource type="Texture2D" uid="uid://cf1rp0ywreuri" path="res://Assets/NewUI/DescriptivePanel.png" id="8_p1ih0"]
 [ext_resource type="Texture2D" uid="uid://dkd4op7b7q1vp" path="res://Assets/HUD/Bags/Market_Drops_Button.png" id="8_uqeh6"]
 [ext_resource type="Texture2D" uid="uid://dkxxocku12pl" path="res://Assets/NewUI/Sellx1.png" id="9_2g0tn"]
 [ext_resource type="Texture2D" uid="uid://dbq8ligbspbbd" path="res://Assets/HUD/Bags/Market_Drops_Button_Pressed.png" id="9_6aebp"]
+[ext_resource type="Texture2D" uid="uid://cfpsqvbuqanu2" path="res://Assets/NewUI/BottomPanel.png" id="9_8xk8x"]
 [ext_resource type="Texture2D" uid="uid://d0fxecr60fvst" path="res://Assets/NewUI/GrandMarketButton.png" id="9_aqgvg"]
 [ext_resource type="FontFile" uid="uid://stn4dtg0uw57" path="res://Assets/Fonts/FredokaOne-Regular.ttf" id="9_jjc7q"]
 [ext_resource type="Texture2D" uid="uid://dg8ofb40qy5r8" path="res://Assets/NewUI/BarterButton.png" id="10_2g0tn"]
@@ -34,12 +37,12 @@
 [ext_resource type="Texture2D" uid="uid://d1cbctq2fhe3k" path="res://Assets/HUD/Bags/BagButtonPressed.png" id="26_qwx61"]
 [ext_resource type="Texture2D" uid="uid://b05lg3tfu6n0b" path="res://Assets/HUD/Bags/BagButtonHover.png" id="27_mvpl6"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jjc7q"]
-bg_color = Color(0.5088358, 0.24881679, 0.22491434, 0.7764706)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8xk8x"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_44bfx"]
 bg_color = Color(0.060530342, 0.060530365, 0.060530297, 1)
@@ -75,17 +78,19 @@ render_target_update_mode = 4
 [node name="InventoryBG" type="TextureRect" parent="." unique_id=249039891]
 self_modulate = Color(1, 1, 1, 0.96000004)
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -520.0
-offset_top = -154.0
-offset_right = 528.0
-offset_bottom = 32.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -448.0
+offset_top = -381.0
+offset_right = 312.0
+offset_bottom = 289.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("7_6u5e3")
+texture = ExtResource("3_p1ih0")
 expand_mode = 1
 
 [node name="MoreDetailsPanel" type="TextureRect" parent="." unique_id=569945756]
@@ -177,6 +182,15 @@ offset_right = 502.0
 offset_bottom = 1024.0
 texture = ExtResource("6_ytgai")
 
+[node name="TextureRect" type="TextureRect" parent="Panel6" unique_id=1675408721]
+layout_mode = 0
+offset_left = 67.0
+offset_top = 303.0
+offset_right = 500.0
+offset_bottom = 736.0
+texture = ExtResource("7_ebwkr")
+expand_mode = 1
+
 [node name="Panel3" type="NinePatchRect" parent="." unique_id=601431779]
 layout_mode = 0
 offset_left = 43.0
@@ -196,13 +210,14 @@ offset_right = 1847.0
 offset_bottom = 464.0
 grow_vertical = 2
 
-[node name="Panel3" type="Panel" parent="DetailsPanel" unique_id=1245062245]
+[node name="Panel3" type="TextureRect" parent="DetailsPanel" unique_id=48690445]
 layout_mode = 0
 offset_left = -144.0
-offset_top = 187.0
-offset_right = 469.0
-offset_bottom = 462.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_jjc7q")
+offset_top = 173.0
+offset_right = 466.0
+offset_bottom = 463.0
+texture = ExtResource("8_p1ih0")
+stretch_mode = 2
 
 [node name="Panel" type="Panel" parent="DetailsPanel" unique_id=417787661]
 layout_mode = 1
@@ -214,6 +229,7 @@ offset_top = 196.0
 offset_right = -188.42519
 offset_bottom = 346.0
 grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8xk8x")
 
 [node name="Indicator" type="TextureRect" parent="DetailsPanel" unique_id=1252480181]
 layout_mode = 0
@@ -281,18 +297,20 @@ offset_left = 30.0
 offset_top = 234.0
 offset_right = 428.0
 offset_bottom = 362.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/normal_font = ExtResource("9_jjc7q")
 theme_override_font_sizes/normal_font_size = 22
 text = "The core of a corrupted mushie purified through a chemical process when dropped. Used in crafting exoctic dishes!"
 
-[node name="Panel2" type="NinePatchRect" parent="." unique_id=157084455]
+[node name="Panel2" type="TextureRect" parent="." unique_id=1581777152]
 layout_mode = 0
 offset_left = 512.0
 offset_top = 848.0
 offset_right = 1280.0
 offset_bottom = 1024.0
-texture = ExtResource("6_qwx61")
+texture = ExtResource("9_8xk8x")
+stretch_mode = 2
 
 [node name="DirectionsLabel" type="Label" parent="." unique_id=668664362]
 layout_mode = 1
@@ -458,10 +476,10 @@ texture_normal = ExtResource("14_ytgai")
 
 [node name="InventoryLabel" type="Label" parent="." unique_id=1376269875]
 layout_mode = 0
-offset_left = 521.0
-offset_top = 159.0
-offset_right = 789.0
-offset_bottom = 204.0
+offset_left = 548.0
+offset_top = 167.0
+offset_right = 816.0
+offset_bottom = 212.0
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("9_jjc7q")
 theme_override_font_sizes/font_size = 36

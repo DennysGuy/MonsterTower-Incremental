@@ -33,14 +33,10 @@ func damage_player(area : Area2D) -> void:
 	area_parent.stored_enemy = enemy
 
 	var damage : int = randi_range(int(attack_damage * 0.8), attack_damage)
-	var defense : float = clamp(
-	((PlayerStats.player_stats["Defense"] + PlayerStats.get_current_sword().get_total_defense_bonus()) / 100.0) * PlayerStats.defense_buff_mod,
-	0.0,
-	0.9
-	)
-	
-	damage = int(damage * (1.0 - defense))
+	var defense = PlayerStats.player_stats["Defense"] + PlayerStats.get_current_sword().get_total_defense_bonus()
+	var reduction = defense / (defense + GameManager.DEFENSE_SCALE)
 
+	damage = int(damage * (1.0 - reduction))
 	damage = max(damage, 1)
 	area_parent.apply_damage(damage,false)
 

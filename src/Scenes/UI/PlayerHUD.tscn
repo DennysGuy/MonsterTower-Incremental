@@ -889,7 +889,7 @@ theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("8_usdtc")
 theme_override_font_sizes/font_size = 24
-text = "Build 0.2.1-prealpha.1"
+text = "Build 0.2.2-prealpha.1"
 
 [node name="StartHuntLabel" type="Label" parent="PlayerHUD" unique_id=915542649]
 layout_mode = 1

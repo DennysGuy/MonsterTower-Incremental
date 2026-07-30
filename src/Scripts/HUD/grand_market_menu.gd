@@ -49,10 +49,11 @@ var stored_slot_index : int
 
 
 @onready var inventory_bg: TextureRect = $InventoryBG
-const GRAND_MARKET_MENU_DROPS_BG = preload("uid://b30bdn5uad13v")
-const GRAND_MARKET_MENU_GEMS_BG = preload("uid://c17wtr3d835hl")
-const GRAND_MARKET_MENU_ORE_BG = preload("uid://mc5wr12ca83a")
-const GRAND_MARKET_MENU_USE_BG = preload("uid://chxbefqvlxayh")
+const GRAND_MARKET_MENU_DROPS_BG = preload("uid://btkbks5gjad32")
+const GRAND_MARKET_MENU_GEMS_BG = preload("uid://cgot6i6tet47s")
+const GRAND_MARKET_MENU_ORE_BG = preload("uid://6lvalmwhste")
+const GRAND_MARKET_MENU_USE_BG = preload("uid://bghyc8w5fosb8")
+const BANK_BG = preload("uid://csyqyixnhskln")
 
 @export var tab_buttons : Array[TextureButton] = [novelties_tab, ore_tab, gem_stones_tab, use_tab]
 
@@ -253,6 +254,6 @@ func _on_sell_tab_button_button_up() -> void:
 
 func _on_bank_tab_button_up() -> void:
 	selected_inventory = "Bank"
-	inventory_bg.texture = GRAND_MARKET_MENU_USE_BG
+	inventory_bg.texture = BANK_BG
 	inventory_label.text = selected_inventory
 	InventoryManager.update_grid_container(inventory_container, selected_inventory)

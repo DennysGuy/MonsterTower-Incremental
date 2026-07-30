@@ -41,7 +41,7 @@ var monster_voices_toggled : bool = true
 var current_player_health : int = 0
 var current_player_mp : int = 0
 enum NOTIFICATION_TYPE {CRAFTING, COOKING, SMELTING, AP, QUEST}
-
+const DEFENSE_SCALE : float = 150.0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	player_can_move = true
