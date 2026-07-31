@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="EnemyDrop" format=3 uid="uid://bldtweq85r3wg"]
+
+[ext_resource type="Texture2D" uid="uid://car57iuhehrle" path="res://Assets/Enemies/CorruptedMushie/MushieFiberousStalk.png" id="1_rxhyy"]
+[ext_resource type="Script" uid="uid://cubudt76pshmm" path="res://src/Scripts/Enemies/enemy_drop.gd" id="2_ukebb"]
+
+[resource]
+script = ExtResource("2_ukebb")
+drop_icon = ExtResource("1_rxhyy")
+drop_chance = 1.0
+item_name = "Mushie Stalk"
+item_type = 2
+sell_value = 45
+shop_icon = ExtResource("1_rxhyy")
+description = "Stalk scraped from a corrupted mushie's back. Used to craft into weapons."
+metadata/_custom_type_script = "uid://cubudt76pshmm"

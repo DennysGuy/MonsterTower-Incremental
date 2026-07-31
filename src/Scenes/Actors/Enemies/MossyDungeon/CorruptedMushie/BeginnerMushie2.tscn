@@ -1,38 +1,38 @@
-[gd_scene format=3 uid="uid://cgq8ujrmlp0vo"]
+[gd_scene format=3 uid="uid://dhsia3tlt8la6"]
 
-[ext_resource type="Script" uid="uid://cukvls0ec73td" path="res://src/Scripts/Enemies/general_enemy.gd" id="1_x0atg"]
-[ext_resource type="Resource" uid="uid://cgyfhwvphblrj" path="res://src/Resources/Actors/Enemies/Biome1/CorruptedMushie/BeginnerMushie.tres" id="2_x0atg"]
-[ext_resource type="Texture2D" uid="uid://bgyp10e7cisjy" path="res://Assets/Enemies/CorruptedMushie/CorruptedMushie_chase.png" id="3_5qron"]
-[ext_resource type="Texture2D" uid="uid://cj34l60xfqhrv" path="res://Assets/Enemies/CorruptedMushie/CorruptedMushie_die.png" id="4_cwmua"]
-[ext_resource type="Texture2D" uid="uid://dycev0cnx8xjh" path="res://Assets/Enemies/CorruptedMushie/CorruptedMushie_hit.png" id="5_lbm7s"]
-[ext_resource type="Texture2D" uid="uid://bwsaud365nxdo" path="res://Assets/Enemies/CorruptedMushie/CorruptedMushie_Idle.png" id="6_18mxm"]
-[ext_resource type="Texture2D" uid="uid://bkkw4stqor8oa" path="res://Assets/Enemies/CorruptedMushie/CorruptedMushie_move.png" id="7_cnxh3"]
-[ext_resource type="Texture2D" uid="uid://c7tk2ex008crn" path="res://Assets/Enemies/CorruptedMushie/CorruptedMushie_Stun.png" id="8_hnkf4"]
-[ext_resource type="PackedScene" uid="uid://vo5sm7p34vo6" path="res://src/Scenes/Actors/Utilities/NameTag.tscn" id="9_26q2r"]
-[ext_resource type="PackedScene" uid="uid://b8lilr7mgc8l1" path="res://src/Scenes/Actors/Enemies/EnemyHealthBar.tscn" id="10_vlo5c"]
-[ext_resource type="Script" uid="uid://drr0deykmfrvq" path="res://src/Scripts/StateMachine/state_machine.gd" id="11_lp64k"]
-[ext_resource type="Script" uid="uid://bwlb4547lknf" path="res://src/Scripts/StateMachine/EnemyStates/GenericEnemyStates/enemy_idle.gd" id="12_22s4i"]
-[ext_resource type="Script" uid="uid://c6fw5ii2hdria" path="res://src/Scripts/StateMachine/EnemyStates/GenericEnemyStates/enemy_patrol.gd" id="13_l4ioa"]
-[ext_resource type="Script" uid="uid://bl81lc5if28vq" path="res://src/Scripts/StateMachine/EnemyStates/GenericEnemyStates/enemy_hit.gd" id="14_ci7j3"]
-[ext_resource type="AudioStream" uid="uid://ffdv7g8jgp4y" path="res://Audio/SFX/Biomes/MossyDungeon/GenericImpact1.wav" id="15_k6h8d"]
-[ext_resource type="AudioStream" uid="uid://d1bxfv1bv8md8" path="res://Audio/SFX/Biomes/MossyDungeon/GenericImpact2.wav" id="16_ixiry"]
-[ext_resource type="AudioStream" uid="uid://c3puk7hyuliti" path="res://Audio/SFX/Biomes/MossyDungeon/GenericImpact3.wav" id="17_8qpud"]
-[ext_resource type="Script" uid="uid://733mi1gdyrrk" path="res://src/Scripts/StateMachine/EnemyStates/GenericEnemyStates/enemy_dead.gd" id="18_f67fx"]
-[ext_resource type="AudioStream" uid="uid://bgkrmxvnh87w" path="res://Audio/SFX/Biomes/MossyDungeon/GenericDeath1.wav" id="19_lao2d"]
-[ext_resource type="AudioStream" uid="uid://cc4bln4u3i6b8" path="res://Audio/SFX/Biomes/MossyDungeon/GenericDeath2.wav" id="20_8sifb"]
-[ext_resource type="AudioStream" uid="uid://da4j7oibbpe1j" path="res://Audio/SFX/Biomes/MossyDungeon/GenericDeath3.wav" id="21_65fvn"]
-[ext_resource type="Script" uid="uid://b4xbaangfo4jo" path="res://src/Scripts/StateMachine/EnemyStates/GenericEnemyStates/enemy_chase.gd" id="22_o6akt"]
-[ext_resource type="Script" uid="uid://dwvy67t8hx3" path="res://src/Scripts/Enemies/enemy_stun.gd" id="23_kwbir"]
-[ext_resource type="Script" uid="uid://cx8e05eefws02" path="res://src/Scripts/StateMachine/EnemyStates/GenericEnemyStates/enemy_spawn_in.gd" id="24_fngry"]
-[ext_resource type="PackedScene" uid="uid://b73ndgmav7ja2" path="res://src/Scenes/Actors/Utilities/HealthComponent.tscn" id="25_q1mvc"]
-[ext_resource type="Script" uid="uid://b76huuoc8f6ro" path="res://src/Scripts/Enemies/enemy_hurt_buffer.gd" id="25_v7hog"]
-[ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="26_kp4kp"]
-[ext_resource type="PackedScene" uid="uid://bg1ya0qiin47q" path="res://src/Scenes/Actors/Utilities/HurtBox.tscn" id="27_8hrin"]
-[ext_resource type="PackedScene" uid="uid://xsmgmpbxjc3b" path="res://src/Scenes/Actors/Utilities/HitBox.tscn" id="28_pgrlf"]
-[ext_resource type="PackedScene" uid="uid://crrtithryo2j6" path="res://src/Scenes/Actors/Utilities/GroundDetector.tscn" id="29_cuc6u"]
-[ext_resource type="PackedScene" uid="uid://bsd5w23h513t2" path="res://src/Scenes/Actors/Utilities/WallDetector.tscn" id="30_qsqow"]
-[ext_resource type="PackedScene" uid="uid://dg5nyfcc7ja8v" path="res://src/Scenes/Actors/Enemies/StatusEffectIconBar.tscn" id="31_7e42m"]
-[ext_resource type="PackedScene" uid="uid://ducu4iluu5nv4" path="res://src/Scenes/UI/StatusEffectVBox.tscn" id="32_rkhly"]
+[ext_resource type="Script" uid="uid://cukvls0ec73td" path="res://src/Scripts/Enemies/general_enemy.gd" id="1_hs1sr"]
+[ext_resource type="Resource" uid="uid://cf5vg21f0mpoi" path="res://src/Resources/Actors/Enemies/Biome1/CorruptedMushie/BeginnerMushie2.tres" id="2_hs1sr"]
+[ext_resource type="Texture2D" uid="uid://bgyp10e7cisjy" path="res://Assets/Enemies/CorruptedMushie/CorruptedMushie_chase.png" id="3_hqviq"]
+[ext_resource type="Texture2D" uid="uid://cj34l60xfqhrv" path="res://Assets/Enemies/CorruptedMushie/CorruptedMushie_die.png" id="4_lgj4g"]
+[ext_resource type="Texture2D" uid="uid://dycev0cnx8xjh" path="res://Assets/Enemies/CorruptedMushie/CorruptedMushie_hit.png" id="5_xoh7r"]
+[ext_resource type="Texture2D" uid="uid://bwsaud365nxdo" path="res://Assets/Enemies/CorruptedMushie/CorruptedMushie_Idle.png" id="6_yev6r"]
+[ext_resource type="Texture2D" uid="uid://bkkw4stqor8oa" path="res://Assets/Enemies/CorruptedMushie/CorruptedMushie_move.png" id="7_uy180"]
+[ext_resource type="Texture2D" uid="uid://c7tk2ex008crn" path="res://Assets/Enemies/CorruptedMushie/CorruptedMushie_Stun.png" id="8_7ukwu"]
+[ext_resource type="PackedScene" uid="uid://vo5sm7p34vo6" path="res://src/Scenes/Actors/Utilities/NameTag.tscn" id="9_tdr6f"]
+[ext_resource type="PackedScene" uid="uid://b8lilr7mgc8l1" path="res://src/Scenes/Actors/Enemies/EnemyHealthBar.tscn" id="10_4ahdu"]
+[ext_resource type="Script" uid="uid://drr0deykmfrvq" path="res://src/Scripts/StateMachine/state_machine.gd" id="11_41cjg"]
+[ext_resource type="Script" uid="uid://bwlb4547lknf" path="res://src/Scripts/StateMachine/EnemyStates/GenericEnemyStates/enemy_idle.gd" id="12_4oxer"]
+[ext_resource type="Script" uid="uid://c6fw5ii2hdria" path="res://src/Scripts/StateMachine/EnemyStates/GenericEnemyStates/enemy_patrol.gd" id="13_mkmf0"]
+[ext_resource type="Script" uid="uid://bl81lc5if28vq" path="res://src/Scripts/StateMachine/EnemyStates/GenericEnemyStates/enemy_hit.gd" id="14_jp86p"]
+[ext_resource type="AudioStream" uid="uid://ffdv7g8jgp4y" path="res://Audio/SFX/Biomes/MossyDungeon/GenericImpact1.wav" id="15_r3dgw"]
+[ext_resource type="AudioStream" uid="uid://d1bxfv1bv8md8" path="res://Audio/SFX/Biomes/MossyDungeon/GenericImpact2.wav" id="16_jyohy"]
+[ext_resource type="AudioStream" uid="uid://c3puk7hyuliti" path="res://Audio/SFX/Biomes/MossyDungeon/GenericImpact3.wav" id="17_l2oru"]
+[ext_resource type="Script" uid="uid://733mi1gdyrrk" path="res://src/Scripts/StateMachine/EnemyStates/GenericEnemyStates/enemy_dead.gd" id="18_hq78b"]
+[ext_resource type="AudioStream" uid="uid://bgkrmxvnh87w" path="res://Audio/SFX/Biomes/MossyDungeon/GenericDeath1.wav" id="19_oq3xn"]
+[ext_resource type="AudioStream" uid="uid://cc4bln4u3i6b8" path="res://Audio/SFX/Biomes/MossyDungeon/GenericDeath2.wav" id="20_onrrv"]
+[ext_resource type="AudioStream" uid="uid://da4j7oibbpe1j" path="res://Audio/SFX/Biomes/MossyDungeon/GenericDeath3.wav" id="21_o87qm"]
+[ext_resource type="Script" uid="uid://b4xbaangfo4jo" path="res://src/Scripts/StateMachine/EnemyStates/GenericEnemyStates/enemy_chase.gd" id="22_vu40g"]
+[ext_resource type="Script" uid="uid://dwvy67t8hx3" path="res://src/Scripts/Enemies/enemy_stun.gd" id="23_kinep"]
+[ext_resource type="Script" uid="uid://cx8e05eefws02" path="res://src/Scripts/StateMachine/EnemyStates/GenericEnemyStates/enemy_spawn_in.gd" id="24_okbix"]
+[ext_resource type="Script" uid="uid://b76huuoc8f6ro" path="res://src/Scripts/Enemies/enemy_hurt_buffer.gd" id="25_c1dp5"]
+[ext_resource type="PackedScene" uid="uid://b73ndgmav7ja2" path="res://src/Scenes/Actors/Utilities/HealthComponent.tscn" id="26_wp0qa"]
+[ext_resource type="PackedScene" uid="uid://d080wmb3mv021" path="res://src/Scenes/Players/SfxPlayer.tscn" id="27_ocv05"]
+[ext_resource type="PackedScene" uid="uid://bg1ya0qiin47q" path="res://src/Scenes/Actors/Utilities/HurtBox.tscn" id="28_g6v1k"]
+[ext_resource type="PackedScene" uid="uid://xsmgmpbxjc3b" path="res://src/Scenes/Actors/Utilities/HitBox.tscn" id="29_8m7m2"]
+[ext_resource type="PackedScene" uid="uid://crrtithryo2j6" path="res://src/Scenes/Actors/Utilities/GroundDetector.tscn" id="30_cxfi3"]
+[ext_resource type="PackedScene" uid="uid://bsd5w23h513t2" path="res://src/Scenes/Actors/Utilities/WallDetector.tscn" id="31_crdxi"]
+[ext_resource type="PackedScene" uid="uid://dg5nyfcc7ja8v" path="res://src/Scenes/Actors/Enemies/StatusEffectIconBar.tscn" id="32_asqtt"]
+[ext_resource type="PackedScene" uid="uid://ducu4iluu5nv4" path="res://src/Scenes/UI/StatusEffectVBox.tscn" id="33_5u7fr"]
 
 [sub_resource type="Animation" id="Animation_6al3p"]
 resource_name = "Chase"
@@ -73,7 +73,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_5qron")]
+"values": [ExtResource("3_hqviq")]
 }
 
 [sub_resource type="Animation" id="Animation_o87ao"]
@@ -114,7 +114,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("4_cwmua")]
+"values": [ExtResource("4_lgj4g")]
 }
 
 [sub_resource type="Animation" id="Animation_p06fi"]
@@ -155,7 +155,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("5_lbm7s")]
+"values": [ExtResource("5_xoh7r")]
 }
 
 [sub_resource type="Animation" id="Animation_uospo"]
@@ -197,7 +197,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("6_18mxm")]
+"values": [ExtResource("6_yev6r")]
 }
 
 [sub_resource type="Animation" id="Animation_adl3q"]
@@ -239,7 +239,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("7_cnxh3")]
+"values": [ExtResource("7_uy180")]
 }
 
 [sub_resource type="Animation" id="Animation_gol3t"]
@@ -278,7 +278,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("6_18mxm")]
+"values": [ExtResource("6_yev6r")]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -318,7 +318,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("6_18mxm")]
+"values": [ExtResource("6_yev6r")]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -348,7 +348,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("8_hnkf4")]
+"values": [ExtResource("8_7ukwu")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -400,8 +400,8 @@ size = Vector2(19, 26)
 [node name="CorruptedMushie" type="CharacterBody2D" unique_id=85927412 node_paths=PackedStringArray("name_tag", "health_bar", "status_effect_icon_bar", "vertical_status_icon_bar", "slow_timer", "silenced_timer", "wall_detector", "ground_detector", "state_machine", "animation_player", "health_component", "sprite", "blink_timer", "stun_timer", "hurt_box", "hit_box", "hit_state", "dead_state", "stun_state", "sfx_player") groups=["Enemy"]]
 collision_layer = 128
 collision_mask = 2
-script = ExtResource("1_x0atg")
-enemy_stats = ExtResource("2_x0atg")
+script = ExtResource("1_hs1sr")
+enemy_stats = ExtResource("2_hs1sr")
 xp = 1
 name_tag = NodePath("NameTag")
 health_bar = NodePath("EnemyHealthBar")
@@ -431,7 +431,7 @@ libraries/ = SubResource("AnimationLibrary_adl3q")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2103855697]
 modulate = Color(1, 1, 1, 0)
 position = Vector2(0, -28)
-texture = ExtResource("6_18mxm")
+texture = ExtResource("6_yev6r")
 hframes = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=400191748]
@@ -439,11 +439,11 @@ visible = false
 position = Vector2(0, -21)
 shape = SubResource("CapsuleShape2D_s7mdw")
 
-[node name="NameTag" parent="." unique_id=21780759 instance=ExtResource("9_26q2r")]
+[node name="NameTag" parent="." unique_id=21780759 instance=ExtResource("9_tdr6f")]
 offset_top = 4.0
 offset_bottom = 20.0
 
-[node name="EnemyHealthBar" parent="." unique_id=1067891350 instance=ExtResource("10_vlo5c")]
+[node name="EnemyHealthBar" parent="." unique_id=1067891350 instance=ExtResource("10_4ahdu")]
 visible = false
 offset_left = -32.0
 offset_top = -62.0
@@ -451,68 +451,68 @@ offset_right = 33.0
 offset_bottom = -52.0
 
 [node name="StateMachine" type="Node" parent="." unique_id=1432439984 node_paths=PackedStringArray("initial_state")]
-script = ExtResource("11_lp64k")
+script = ExtResource("11_41cjg")
 initial_state = NodePath("SpawnIn")
 
 [node name="Idle" type="Node" parent="StateMachine" unique_id=1074949887 node_paths=PackedStringArray("patrol_state")]
-script = ExtResource("12_22s4i")
+script = ExtResource("12_4oxer")
 patrol_state = NodePath("../Patrol")
 animation_name = "Idle"
 
 [node name="Patrol" type="Node" parent="StateMachine" unique_id=1682715568 node_paths=PackedStringArray("idle_state", "chase_state")]
-script = ExtResource("13_l4ioa")
+script = ExtResource("13_mkmf0")
 idle_state = NodePath("../Idle")
 chase_state = NodePath("../Chase")
 animation_name = "Patrol"
 
 [node name="Hit" type="Node" parent="StateMachine" unique_id=1992342087 node_paths=PackedStringArray("idle_state", "chase_state", "hurt_buffer_state")]
-script = ExtResource("14_ci7j3")
+script = ExtResource("14_jp86p")
 idle_state = NodePath("../Idle")
 chase_state = NodePath("../Chase")
 wait_time = 0.35
 hurt_buffer_state = NodePath("../HurtBuffer")
-generic_impact_1 = ExtResource("15_k6h8d")
-generic_impact_2 = ExtResource("16_ixiry")
-generic_impact_3 = ExtResource("17_8qpud")
+generic_impact_1 = ExtResource("15_r3dgw")
+generic_impact_2 = ExtResource("16_jyohy")
+generic_impact_3 = ExtResource("17_l2oru")
 animation_name = "Hit"
 
 [node name="Dead" type="Node" parent="StateMachine" unique_id=799979083]
-script = ExtResource("18_f67fx")
+script = ExtResource("18_hq78b")
 wait_time = 0.8
-death_sound_1 = ExtResource("19_lao2d")
-death_sound_2 = ExtResource("20_8sifb")
-death_sound_3 = ExtResource("21_65fvn")
+death_sound_1 = ExtResource("19_oq3xn")
+death_sound_2 = ExtResource("20_onrrv")
+death_sound_3 = ExtResource("21_o87qm")
 animation_name = "Die"
 
 [node name="Chase" type="Node" parent="StateMachine" unique_id=564274569 node_paths=PackedStringArray("idle_state")]
-script = ExtResource("22_o6akt")
+script = ExtResource("22_vu40g")
 idle_state = NodePath("../Idle")
 chase_time = 3.0
 animation_name = "Chase"
 
 [node name="Stun" type="Node" parent="StateMachine" unique_id=1971693936 node_paths=PackedStringArray("idle")]
-script = ExtResource("23_kwbir")
+script = ExtResource("23_kinep")
 idle = NodePath("../Idle")
 animation_name = "Stun"
 
 [node name="SpawnIn" type="Node" parent="StateMachine" unique_id=1321483564 node_paths=PackedStringArray("idle_state")]
-script = ExtResource("24_fngry")
+script = ExtResource("24_okbix")
 idle_state = NodePath("../Idle")
 animation_name = "SpawnIn"
 
 [node name="HurtBuffer" type="Node" parent="StateMachine" unique_id=319867756 node_paths=PackedStringArray("idle_state", "chase_state")]
-script = ExtResource("25_v7hog")
+script = ExtResource("25_c1dp5")
 idle_state = NodePath("../Idle")
 chase_state = NodePath("../Chase")
 buffer_time = 0.05
 
-[node name="HealthComponent" parent="." unique_id=2083111642 node_paths=PackedStringArray("parent", "health_bar") instance=ExtResource("25_q1mvc")]
+[node name="HealthComponent" parent="." unique_id=2083111642 node_paths=PackedStringArray("parent", "health_bar") instance=ExtResource("26_wp0qa")]
 parent = NodePath("..")
 health_bar = NodePath("../EnemyHealthBar")
 
-[node name="SfxPlayer" parent="." unique_id=1365625139 instance=ExtResource("26_kp4kp")]
+[node name="SfxPlayer" parent="." unique_id=1365625139 instance=ExtResource("27_ocv05")]
 
-[node name="HurtBox" parent="." unique_id=191034531 instance=ExtResource("27_8hrin")]
+[node name="HurtBox" parent="." unique_id=191034531 instance=ExtResource("28_g6v1k")]
 visible = false
 position = Vector2(0, -20)
 
@@ -520,20 +520,19 @@ position = Vector2(0, -20)
 position = Vector2(0.5, 5)
 shape = SubResource("RectangleShape2D_s7mdw")
 
-[node name="HitBox" parent="." unique_id=351431721 instance=ExtResource("28_pgrlf")]
+[node name="HitBox" parent="." unique_id=351431721 instance=ExtResource("29_8m7m2")]
 position = Vector2(0, -20)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=233820395]
 position = Vector2(0.5, 7)
 shape = SubResource("RectangleShape2D_v37cp")
 
-[node name="GroundDetector" parent="." unique_id=664844787 instance=ExtResource("29_cuc6u")]
+[node name="GroundDetector" parent="." unique_id=664844787 instance=ExtResource("30_cxfi3")]
 position = Vector2(17, -14)
 
-[node name="WallDetector" parent="." unique_id=75801488 instance=ExtResource("30_qsqow")]
+[node name="WallDetector" parent="." unique_id=75801488 instance=ExtResource("31_crdxi")]
 position = Vector2(14, -13)
 hit_from_inside = true
-collide_with_areas = true
 
 [node name="Timer" type="Timer" parent="." unique_id=2115053208]
 process_callback = 0
@@ -558,13 +557,13 @@ one_shot = true
 process_callback = 0
 one_shot = true
 
-[node name="StatusEffectIconBar" parent="." unique_id=167981235 instance=ExtResource("31_7e42m")]
+[node name="StatusEffectIconBar" parent="." unique_id=167981235 instance=ExtResource("32_asqtt")]
 custom_minimum_size = Vector2(80, 16)
 offset_top = -80.0
 offset_bottom = -64.0
 alignment = 1
 
-[node name="StatusEffectVBox" parent="." unique_id=657675300 instance=ExtResource("32_rkhly")]
+[node name="StatusEffectVBox" parent="." unique_id=657675300 instance=ExtResource("33_5u7fr")]
 offset_left = 39.0
 offset_top = -66.0
 offset_right = 55.0

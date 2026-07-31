@@ -577,21 +577,6 @@ TODO: We will add saves for classes as well
 	3: null
 }
 
-@export var class_ability_rows : Dictionary = {
-	"Tyro" : {
-		10 : {"Unlocked" : false,"Sigils Left": 0},
-		12 : {"Unlocked" : false,"Sigils Left": 2},
-		15 : {"Unlocked" : false,"Sigils Left": 0},
-		17 : {"Unlocked" : false,"Sigils Left": 2},
-		20 : {"Unlocked" : false,"Sigils Left": 0},
-		22 : {"Unlocked" : false,"Sigils Left": 2},
-		25 : {"Unlocked" : false,"Sigils Left": 0},
-		27 : {"Unlocked" : false,"Sigils Left": 2},
-		30 : {"Unlocked" : false,"Sigils Left": 0}
-	}
-		
-}
-
 @export var active_quests : Dictionary = {
 	"Main" : ["A Fresh Embarking"],
 	"Job" : []
@@ -896,8 +881,8 @@ TODO: We will add saves for classes as well
 }
 
 @export var weapon_status : Dictionary = {
-	0: {"Unlocked":false, "Is Tracked": false},
-	1: {"Unlocked":false, "Is Tracked": true},
+	0: {"Unlocked":false, "Is Tracked": true},
+	1: {"Unlocked":false, "Is Tracked": false},
 	2: {"Unlocked":false, "Is Tracked": false},
 	3: {"Unlocked":false, "Is Tracked": false},
 	4: {"Unlocked":false, "Is Tracked": false},

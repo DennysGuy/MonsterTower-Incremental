@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="EnemyStats" format=3 uid="uid://cf5vg21f0mpoi"]
+
+[ext_resource type="Resource" uid="uid://bldtweq85r3wg" path="res://src/Resources/Actors/Enemies/Biome1/CorruptedMushie/FiberousMushieStalk2.tres" id="1_t2ars"]
+[ext_resource type="Script" uid="uid://cbjktr12qagl" path="res://src/Scripts/Enemies/enemy_stats.gd" id="2_3qeat"]
+
+[resource]
+script = ExtResource("2_3qeat")
+enemy_name = "Beginner Mushie"
+touch_damage = true
+enemy_type = 1
+max_health = 35
+attack = -1
+movement_speed = 50.0
+chase_speed = 60.0
+novelty_item_drop = ExtResource("1_t2ars")
+metadata/_custom_type_script = "uid://cbjktr12qagl"

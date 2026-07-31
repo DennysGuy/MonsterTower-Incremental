@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://drvmmtbvnc785" path="res://src/Scenes/Tower/arrow_at_ore.tscn" id="25_dc783"]
 [ext_resource type="PackedScene" uid="uid://vo5sm7p34vo6" path="res://src/Scenes/Actors/Utilities/NameTag.tscn" id="26_mpxre"]
 [ext_resource type="Texture2D" uid="uid://bv7i100ulkewv" path="res://Assets/NPCs/WarmongerSprite.png" id="27_5cl4j"]
+[ext_resource type="Resource" uid="uid://cf5vg21f0mpoi" path="res://src/Resources/Actors/Enemies/Biome1/CorruptedMushie/BeginnerMushie2.tres" id="27_lbelh"]
 [ext_resource type="Texture2D" uid="uid://cev7whd13a4oc" path="res://Assets/Tower/Biom1/Blacksmith_NoOutline.png" id="28_20811"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ye63i"]
@@ -535,10 +536,10 @@ tile_size = Vector2i(32, 32)
 sources/1 = SubResource("TileSetAtlasSource_ys33i")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p0sy1"]
-size = Vector2(22, 82.5)
+size = Vector2(22, 80.875)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_20811"]
-size = Vector2(22, 81)
+size = Vector2(22, 80)
 
 [sub_resource type="Animation" id="Animation_7kbtj"]
 resource_name = "Boat_In"
@@ -633,6 +634,9 @@ size = Vector2(80, 54)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lbelh"]
 size = Vector2(112, 54)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r60dy"]
+size = Vector2(20, 71)
 
 [node name="TutorialMap" type="Node2D" unique_id=1194992242 node_paths=PackedStringArray("camera", "sfx_player")]
 script = ExtResource("1_tymde")
@@ -752,6 +756,7 @@ tile_map_data = PackedByteArray("AABAAA0AAAAFAAQAAABAAA4AAAAFAAUAAABBAA0AAAAFAAQ
 tile_set = ExtResource("8_o3hak")
 
 [node name="TopFloor" type="TileMapLayer" parent="TileMaps" unique_id=1362176727]
+position = Vector2(0, 1)
 tile_map_data = PackedByteArray("AAAlAAkAAAAJAAQAAAAiAAkAAAAGAAQAAAAjAAkAAAAHAAQAAAAgAAkAAAAEAAQAAAAhAAkAAAAFAAQAAAAkAAkAAAAIAAQAAAAmAAkAAAAKAAQAAAAmAAoAAAAKAAUAAAAlAAoAAAAJAAUAAAAkAAoAAAAIAAUAAAAjAAoAAAAHAAUAAAAiAAoAAAAGAAUAAAAhAAoAAAAFAAUAAAAgAAoAAAAEAAUAAAAPAAkAAAAEAAQAAAAPAAoAAAAEAAUAAAAQAAkAAAAFAAQAAAAQAAoAAAAFAAUAAAARAAkAAAAGAAQAAAARAAoAAAAGAAUAAAASAAkAAAAHAAQAAAASAAoAAAAHAAUAAAATAAkAAAAIAAQAAAATAAoAAAAIAAUAAAAUAAkAAAAJAAQAAAAUAAoAAAAJAAUAAAAVAAkAAAAFAAQAAAAVAAoAAAAFAAUAAAAWAAkAAAAGAAQAAAAWAAoAAAAGAAUAAAAXAAkAAAAHAAQAAAAXAAoAAAAHAAUAAAAYAAkAAAAIAAQAAAAYAAoAAAAIAAUAAAAZAAkAAAAJAAQAAAAZAAoAAAAJAAUAAAAaAAkAAAAFAAQAAAAaAAoAAAAFAAUAAAAbAAkAAAAGAAQAAAAbAAoAAAAGAAUAAAAcAAkAAAAHAAQAAAAcAAoAAAAHAAUAAAAdAAkAAAAIAAQAAAAdAAoAAAAIAAUAAAAeAAkAAAAJAAQAAAAeAAoAAAAJAAUAAAAfAAkAAAAKAAQAAAAfAAoAAAAKAAUAAAAzAAkAAAANAAcAAAAzAAoAAAANAAgAAAAzAAsAAAANAAkAAAA0AAkAAAAOAAcAAAA0AAoAAAAOAAgAAAA0AAsAAAAOAAkAAAA1AAkAAAAPAAcAAAA1AAoAAAAPAAgAAAA1AAsAAAAPAAkAAAA2AAkAAAAQAAcAAAA2AAoAAAAQAAgAAAA2AAsAAAAQAAkAAAA3AAkAAAAMAAcAAAA3AAoAAAAMAAgAAAA3AAsAAAAMAAkAAAA4AAkAAAANAAcAAAA4AAoAAAANAAgAAAA4AAsAAAANAAkAAAA5AAkAAAAOAAcAAAA5AAoAAAAOAAgAAAA5AAsAAAAOAAkAAAA6AAkAAAAPAAcAAAA6AAoAAAAPAAgAAAA6AAsAAAAPAAkAAAA7AAkAAAAQAAcAAAA7AAoAAAAQAAgAAAA7AAsAAAAQAAkAAAA8AAoAAAAMAAgAAAA8AAsAAAAMAAkAAAA9AAoAAAANAAgAAAA9AAsAAAANAAkAAAA+AAkAAAAOAAcAAAA+AAoAAAAOAAgAAAA+AAsAAAAOAAkAAAA/AAkAAAAPAAcAAAA/AAoAAAAPAAgAAAA/AAsAAAAPAAkAAABAAAkAAAAQAAcAAABAAAoAAAAQAAgAAABAAAsAAAAQAAkAAABBAAoAAAARAAgAAABBAAsAAAARAAkAAAAyAAkAAAAMAAcAAAAyAAoAAAAMAAgAAAAQAAsAAAABAAcAAAAQAAwAAAABAAgAAAAQAA0AAAABAAkAAAARAAsAAAACAAcAAAARAAwAAAACAAgAAAARAA0AAAACAAkAAAAyAAsAAAAMAAkAAAAwAA0AAAABAAYAAABMAAkAAAAEAAQAAABMAAoAAAAEAAUAAABNAAkAAAAFAAQAAABNAAoAAAAFAAUAAABOAAkAAAAGAAQAAABOAAoAAAAGAAUAAABPAAkAAAAHAAQAAABPAAoAAAAHAAUAAABQAAkAAAAIAAQAAABQAAoAAAAIAAUAAABRAAkAAAAJAAQAAABRAAoAAAAJAAUAAABSAAkAAAAFAAQAAABSAAoAAAAFAAUAAABTAAkAAAAGAAQAAABTAAoAAAAGAAUAAABUAAkAAAAHAAQAAABUAAoAAAAHAAUAAABVAAkAAAAIAAQAAABVAAoAAAAIAAUAAABWAAkAAAAJAAQAAABWAAoAAAAJAAUAAABXAAkAAAAFAAQAAABXAAoAAAAFAAUAAABYAAkAAAAGAAQAAABYAAoAAAAGAAUAAABZAAkAAAAHAAQAAABZAAoAAAAHAAUAAABaAAkAAAAIAAQAAABaAAoAAAAIAAUAAABbAAkAAAAJAAQAAABbAAoAAAAJAAUAAABcAAkAAAAKAAQAAABcAAoAAAAKAAUAAAA=")
 tile_set = SubResource("TileSet_506e5")
 
@@ -820,11 +825,11 @@ ladder_top = NodePath("Top")
 ladder_bottom = NodePath("Bottom")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LadderArea2" unique_id=661030438]
-position = Vector2(1, -39.5)
+position = Vector2(1, -38.5625)
 shape = SubResource("RectangleShape2D_p0sy1")
 
 [node name="Top" type="Marker2D" parent="LadderArea2" unique_id=2021550528]
-position = Vector2(0, -81)
+position = Vector2(1, -80)
 
 [node name="Bottom" type="Marker2D" parent="LadderArea2" unique_id=187998539]
 position = Vector2(1, 16)
@@ -837,11 +842,11 @@ ladder_top = NodePath("Top")
 ladder_bottom = NodePath("Bottom")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LadderArea3" unique_id=648335668]
-position = Vector2(1, -16.5)
+position = Vector2(1, -16)
 shape = SubResource("RectangleShape2D_20811")
 
 [node name="Top" type="Marker2D" parent="LadderArea3" unique_id=1292482039]
-position = Vector2(0, -57)
+position = Vector2(1, -56)
 
 [node name="Bottom" type="Marker2D" parent="LadderArea3" unique_id=239167458]
 position = Vector2(1, 40)
@@ -887,7 +892,7 @@ position = Vector2(507, -123)
 shape = SubResource("RectangleShape2D_cqx2w")
 
 [node name="TechTreeComputer" parent="." unique_id=1189367346 instance=ExtResource("16_cqx2w")]
-position = Vector2(3408, 446)
+position = Vector2(3400, 446)
 
 [node name="PlayerSpawnPoint" parent="." unique_id=1517225239 instance=ExtResource("18_ys33i")]
 position = Vector2(1713, 448)
@@ -944,9 +949,9 @@ offset_bottom = 464.0
 text = "Tower Guide"
 
 [node name="NameTag3" parent="." unique_id=791391098 instance=ExtResource("26_mpxre")]
-offset_left = 3336.0
+offset_left = 3328.0
 offset_top = 448.0
-offset_right = 3476.0
+offset_right = 3468.0
 offset_bottom = 464.0
 
 [node name="Tag" parent="NameTag3/Bg" parent_id_path=PackedInt32Array(791391098, 305804188) index="0" unique_id=725373759]
@@ -1025,7 +1030,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CorruptedMushie" parent="." unique_id=85927412 node_paths=PackedStringArray("drop_scene") instance=ExtResource("20_jwogi")]
-position = Vector2(2552, 319)
+position = Vector2(2552, 320)
 drop_scene = NodePath("..")
 
 [node name="CorruptedMushie2" parent="." unique_id=214138274 node_paths=PackedStringArray("drop_scene") instance=ExtResource("20_jwogi")]
@@ -1033,8 +1038,36 @@ position = Vector2(2696, 319)
 drop_scene = NodePath("..")
 
 [node name="CorruptedMushie3" parent="." unique_id=1001127391 node_paths=PackedStringArray("drop_scene") instance=ExtResource("20_jwogi")]
-position = Vector2(2808, 319)
+position = Vector2(2808, 320)
 drop_scene = NodePath("..")
+
+[node name="CorruptedMushie5" parent="." unique_id=1206269672 node_paths=PackedStringArray("drop_scene") instance=ExtResource("20_jwogi")]
+position = Vector2(2744, 448)
+enemy_stats = ExtResource("27_lbelh")
+drop_scene = NodePath("..")
+
+[node name="CorruptedMushie4" parent="." unique_id=816054657 node_paths=PackedStringArray("drop_scene") instance=ExtResource("20_jwogi")]
+position = Vector2(2616, 448)
+enemy_stats = ExtResource("27_lbelh")
+drop_scene = NodePath("..")
+
+[node name="MonsterBoundary" type="Area2D" parent="." unique_id=1582089874]
+position = Vector2(2464, 437)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MonsterBoundary" unique_id=1109879]
+position = Vector2(0, -25.5)
+shape = SubResource("RectangleShape2D_r60dy")
+
+[node name="MonsterBoundary2" type="Area2D" parent="." unique_id=1371357014]
+position = Vector2(2944, 437)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MonsterBoundary2" unique_id=673010087]
+position = Vector2(0, -25.5)
+shape = SubResource("RectangleShape2D_r60dy")
 
 [node name="WarmongerSprite" type="Sprite2D" parent="." unique_id=770455195]
 position = Vector2(2280, 412)

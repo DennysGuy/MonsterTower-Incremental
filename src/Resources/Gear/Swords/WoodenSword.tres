@@ -10,7 +10,7 @@
 [resource]
 script = ExtResource("1_g5sve")
 sword_name = "Stick"
-description = "The SGH is short on funds.. it's the best we can do for now, okay?"
+description = "The SHG is short on funds.. it's the best we can do for now, okay?"
 defense_bonus = 1.0
 attack_speed = 0.58
 knock_back_bonus = 0.32

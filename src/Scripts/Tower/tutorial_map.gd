@@ -7,6 +7,12 @@ var can_enter_tower : bool = false
 
 @onready var sub_viewport: SubViewport = $CanvasLayer/SubViewportContainer/SubViewport
 @onready var canvas_layer: CanvasLayer = $CanvasLayer
+
+@onready var alaisha_notice: Label = $AlaishaNotice
+@onready var sword_crafting_station_notice: Label = $SwordCraftingStationNotice
+
+@onready var boat_leave_area: Area2D = $BoatLeaveArea
+
 const BOAT_HORN = preload("uid://bt5y3hqi7vb37")
 const ENTER_TOWER_FIRST_TIME_SCENE = preload("uid://gjjq2iyol2am")
 const TUTORIAL_LICENSE_NOT_ACQUIRED = preload("uid://ctit5lunlhp2n")
@@ -14,6 +20,10 @@ const TUTORIAL_INTRO = preload("uid://du1s4dexjtxck")
 
 var boat_docked : bool = true
 var can_enter_market : bool = false
+
+var can_talk_to_alaisha : bool = false
+var can_enter_sword_crafting_station : bool = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super()
@@ -42,7 +52,12 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("interact") and can_enter_market:
 		spawn_grand_market()
 	
-
+	if Input.is_action_just_pressed("interact") and can_enter_sword_crafting_station:
+		PlayerHudSignalBus.spawn_sword_crafting_station.emit()
+	
+	if Input.is_action_just_pressed("interact") and can_talk_to_alaisha:
+		PlayerHudSignalBus.spawn_beginner_tree.emit()
+	
 func _on_tower_entrance_area_body_entered(body: Node2D) -> void:
 	if body is Player:
 		guid_log.show()
@@ -52,7 +67,6 @@ func _on_tower_entrance_area_body_exited(body: Node2D) -> void:
 	if body is Player:
 		guid_log.hide()
 		can_enter_tower = false
-
 
 func spawn_grand_market() -> void:
 	CutsceneManager.disable_player_functionality()
@@ -87,6 +101,9 @@ func _on_boat_leave_area_body_entered(body: Node2D) -> void:
 			animation_player.play("Boat_Out")
 			boat_docked = false
 		Dialogic.start(TUTORIAL_INTRO)
+		await get_tree().process_frame
+		boat_leave_area.queue_free()
+		
 
 func _on_mobile_shop_area_body_entered(body: Node2D) -> void:
 	if body is Player:
@@ -101,18 +118,23 @@ func _on_mobile_shop_area_body_exited(body: Node2D) -> void:
 func zoom_camera(amount : float) -> void:
 	camera.zoom = Vector2(amount,amount)
 
-
 func _on_sword_crafting_station_body_entered(body: Node2D) -> void:
-	pass # Replace with function body.
-
+	if body is Player:
+		can_enter_sword_crafting_station = true
+		sword_crafting_station_notice.show()
+		
 
 func _on_sword_crafting_station_body_exited(body: Node2D) -> void:
-	pass # Replace with function body.
-
+	if body is Player:
+		can_enter_sword_crafting_station = false
+		sword_crafting_station_notice.hide()
 
 func _on_alaisha_area_body_entered(body: Node2D) -> void:
-	pass # Replace with function body.
-
+	if body is Player:
+		can_talk_to_alaisha = true
+		alaisha_notice.show()
 
 func _on_alaisha_area_body_exited(body: Node2D) -> void:
-	pass # Replace with function body.
+	if body is Player:
+		can_talk_to_alaisha = false
+		alaisha_notice.hide()

@@ -24,7 +24,7 @@ const BASE_TRANSFER_TIME : float = 2.0
 	"Ability Points": 0,
 	"Max Jobs Held": 3,
 	"Class": "Junior Hunter",
-	"Tracked Weapon": 1,
+	"Tracked Weapon": 0,
 	"Attack Damage" : 13.0,
 	"Boss Damage Bonus": 0.0,
 	"HP Siphen Amount": 0.2,
@@ -316,6 +316,7 @@ func get_current_sword() -> Sword:
 	return get_sword(PlayerStats.player_stats["Equipped Sword"])
 
 func can_craft_next_sword() -> bool:
+	print(get_sword(int(player_stats["Equipped Sword"])+1))
 	if int(player_stats["Equipped Sword"])+1 > BEGINNGER_SWORD_COUNT:
 		return false
 	var next_sword : Sword = get_sword(int(player_stats["Equipped Sword"])+1)
