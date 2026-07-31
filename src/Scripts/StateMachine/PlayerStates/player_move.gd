@@ -5,6 +5,7 @@ class_name PlayerMove extends State
 @export var idle_state : State
 @export var dash_attack_state : State
 @export var attack_1_state : State
+@export var punch_state : State
 @export var special_attack : State
 @export var pick_axe_state : State
 
@@ -30,7 +31,8 @@ func enter() -> void:
 	parent.can_double_jump = true
 	parent.can_knock_back = true
 	#parent.can_dash_attack = true
-	parent.set_sword_texture(animation_name)
+	if PlayerStats.get_current_sword():
+		parent.set_sword_texture(animation_name)
 	parent.set_outfit_texture(animation_name)
 	parent.sfx_player.play_sfx(move_sfx)
 
@@ -62,6 +64,8 @@ func process_physics(_delta: float) -> State:
 		if Input.is_action_pressed("swing_sword") and GameManager.player_can_attack:
 			parent.attack_friction = 400
 			parent.max_attack_drift = 200
+			if PlayerStats.player_stats["Equipped Sword"] == -1:
+				return punch_state
 			return attack_1_state
 	
 		if Input.is_action_just_pressed("interact") and parent.in_mining_area and PlayerStats.facilities_unlocked["Refinery Station"]:

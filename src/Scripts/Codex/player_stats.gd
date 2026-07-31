@@ -42,7 +42,8 @@ func _process(delta: float) -> void:
 
 func update_stats_page() -> void:
 	outfit.texture = OutfitGraphics.get_outfit_graphic("Idle")
-	weapon.texture = SwordGraphics.get_sword_graphic("Idle")
+	if PlayerStats.get_current_sword():
+		weapon.texture = SwordGraphics.get_sword_graphic("Idle")
 	
 	hunter_license_tier.text = "Hunter License Tier: %s" % license_tier_text[TechTreeManager.current_prestige]
 	hunter_class.text = "Class: %s" % PlayerStats.player_stats["Class"]

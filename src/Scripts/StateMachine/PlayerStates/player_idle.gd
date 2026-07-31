@@ -4,6 +4,7 @@ class_name PlayerIdle extends State
 @export var jump_state : State
 @export var fall_state : State
 @export var attack_1_state : State
+@export var punch_state : State
 @export var dash_attack_state : State
 @export var swing_pick_axe_state : State
 @export var climb_state : State
@@ -23,7 +24,10 @@ var drop_wait_time : float = 0.1
 func enter() -> void:
 	parent.can_knock_back = true
 	parent.was_on_ledge = true
-	parent.set_sword_texture(animation_name)
+	if PlayerStats.get_current_sword():
+		print(PlayerStats.player_stats["Equipped Sword"])
+		print(PlayerStats.get_current_sword())
+		parent.set_sword_texture(animation_name)
 	parent.set_outfit_texture(animation_name)
 	parent.can_knock_back = true
 	parent.can_double_jump = true
@@ -65,6 +69,8 @@ func process_physics(_delta: float) -> State:
 		return jump_state
 
 	if Input.is_action_just_pressed("swing_sword") and GameManager.player_can_attack:
+		if PlayerStats.player_stats["Equipped Sword"] == -1:
+			return punch_state
 		return attack_1_state
 	
 	if Input.is_action_just_pressed("interact") and parent.in_mining_area and PlayerStats.facilities_unlocked["Refinery Station"]:

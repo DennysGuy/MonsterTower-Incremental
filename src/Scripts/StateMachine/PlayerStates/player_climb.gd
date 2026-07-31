@@ -13,7 +13,8 @@ func enter() -> void:
 	parent.can_double_jump = true
 	parent.can_knock_back = false
 	parent.velocity = Vector2.ZERO
-	parent.set_sword_texture(animation_name)
+	if PlayerStats.get_current_sword():
+		parent.set_sword_texture(animation_name)
 	parent.set_outfit_texture(animation_name)
 	if parent.stored_ladder:
 		parent.global_position.x = parent.stored_ladder.global_position.x

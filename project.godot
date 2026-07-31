@@ -85,6 +85,7 @@ directories/dtl_directory={
 "TechTreeExplanation": "res://src/QuestTimeLines/IntroScenes/TechTreeExplanation.dtl",
 "TerminalExamCompletionNotice": "res://src/QuestTimeLines/IntroScenes/TerminalExamCompletionNotice.dtl",
 "TestTimeline": "res://src/QuestTimeLines/TestTimeline.dtl",
+"TutorialIntro": "res://src/QuestTimeLines/IntroScenes/TutorialIntro.dtl",
 "TutorialLicenseNotAcquired": "res://src/QuestTimeLines/IntroScenes/TutorialLicenseNotAcquired.dtl",
 "WarriorClassSelectionScene": "res://src/QuestTimeLines/IntroScenes/WarriorClassSelectionScene.dtl"
 }

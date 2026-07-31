@@ -28,7 +28,10 @@ func _on_hit_box_area_entered(area: Area2D) -> void:
 	area_parent.stored_enemy = self
 
 	var damage : int = randi_range(int(enemy_stats.attack * 0.8), enemy_stats.attack)
-	var defense = PlayerStats.player_stats["Defense"] + PlayerStats.get_current_sword().get_total_defense_bonus()
+	var defense = PlayerStats.player_stats["Defense"]
+	if PlayerStats.get_current_sword():
+		defense +=  PlayerStats.get_current_sword().get_total_defense_bonus()
+	
 	var reduction = defense / (defense + GameManager.DEFENSE_SCALE)
 
 	damage = int(damage * (1.0 - reduction))

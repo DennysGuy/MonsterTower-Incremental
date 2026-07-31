@@ -1,7 +1,7 @@
 extends Node
 
 var sword_textures : Dictionary = {
-	"Wooden Sword": {
+	"Stick": {
 		"Idle": preload("uid://n5geiar8phy6"),
 		"Run": preload("uid://dwvt17upbk5hi"),
 		"Jump":preload("uid://bqdfkvfxebubj"),
@@ -122,6 +122,8 @@ var pickaxe_textures : Dictionary = {
 }
 
 func get_sword_graphic(texture_name : String) -> Texture2D:
+	if PlayerStats.player_stats["Equipped Sword"] == -1:
+		return null
 	var sword_index : int = int(PlayerStats.player_stats["Equipped Sword"])
 	var sword_name : String = PlayerStats.get_sword(sword_index).sword_name
 	return sword_textures[sword_name][texture_name]

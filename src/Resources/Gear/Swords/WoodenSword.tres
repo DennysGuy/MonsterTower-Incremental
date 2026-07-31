@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://im2igg6pop1u" path="res://src/Scripts/sword.gd" id="1_g5sve"]
 [ext_resource type="AudioStream" uid="uid://girddg3nhreu" path="res://Audio/SFX/Player/DashAttack.wav" id="1_ujw5s"]
+[ext_resource type="Resource" uid="uid://oxgq5xblplp1" path="res://src/Resources/Recipes/SwordRecipes/Stick.tres" id="2_0ljtm"]
 [ext_resource type="AudioStream" uid="uid://7m8clykuejiw" path="res://Audio/SFX/Player/SwordSwing1.wav" id="2_esloh"]
 [ext_resource type="AudioStream" uid="uid://d4hkg0vupj3mj" path="res://Audio/SFX/Player/SwordSwing2.wav" id="3_ujw5s"]
 [ext_resource type="AudioStream" uid="uid://bcc4lh1bponas" path="res://Audio/SFX/Player/SwordSwing3.wav" id="4_64xsp"]
@@ -9,10 +10,12 @@
 [resource]
 script = ExtResource("1_g5sve")
 sword_name = "Stick"
+description = "The SGH is short on funds.. it's the best we can do for now, okay?"
 defense_bonus = 1.0
 attack_speed = 0.58
 knock_back_bonus = 0.32
 gem_stone_socket_count = 4
+recipe = ExtResource("2_0ljtm")
 swing_1 = ExtResource("2_esloh")
 swing_2 = ExtResource("3_ujw5s")
 swing_3 = ExtResource("4_64xsp")

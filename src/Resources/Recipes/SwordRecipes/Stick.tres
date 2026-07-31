@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CraftingRecipe" format=3 uid="uid://oxgq5xblplp1"]
+
+[ext_resource type="Script" uid="uid://cljygiasf4103" path="res://src/Scripts/Facilities/crafting_recipe.gd" id="1_3tqj7"]
+[ext_resource type="Resource" uid="uid://jn2dh2fyq5ep" path="res://src/Resources/Actors/Enemies/Biome1/CorruptedMushie/FiberousMushieStalk.tres" id="1_5kkps"]
+
+[resource]
+script = ExtResource("1_3tqj7")
+recipe_name = "Stick"
+description = "The SGH is short on funds.. it's the best we can do for now, okay?"
+recipe_tier = 1
+recipe_list = Array[Dictionary]([{
+ExtResource("1_5kkps"): 2
+}])
+metadata/_custom_type_script = "uid://cljygiasf4103"

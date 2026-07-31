@@ -10,6 +10,7 @@ var can_enter_tower : bool = false
 const BOAT_HORN = preload("uid://bt5y3hqi7vb37")
 const ENTER_TOWER_FIRST_TIME_SCENE = preload("uid://gjjq2iyol2am")
 const TUTORIAL_LICENSE_NOT_ACQUIRED = preload("uid://ctit5lunlhp2n")
+const TUTORIAL_INTRO = preload("uid://du1s4dexjtxck")
 
 var boat_docked : bool = true
 var can_enter_market : bool = false
@@ -19,7 +20,7 @@ func _ready() -> void:
 	#hud.animation_player.play("CloseIn")
 	SignalBus.spawn_tech_tree.connect(add_tech_tree_to_scene)
 	CutsceneManager.go_to_first_floor.connect(go_to_first_floor)
-	
+	CutsceneManager.camera_zoomed.connect(zoom_camera)
 	#SignalBus.hide_tech_tree_canvas_layer.connect(hide_tech_tree_canvas_layer)
 	GameManager.player_can_move = true
 	GameManager.resupply_character= true
@@ -71,7 +72,6 @@ func add_tech_tree_to_scene() -> void:
 	player.velocity = Vector2.ZERO
 	PlayerHudSignalBus.spawn_tech_tree.emit()
 
-
 func issue_cross_fade() -> void:
 	PlayerHudSignalBus.trigger_cross_fade.emit()
 	await get_tree().create_timer(0.5).timeout
@@ -80,14 +80,13 @@ func issue_cross_fade() -> void:
 	PlayerHudSignalBus.update_player_bars.emit()
 	camera.player = get_tree().get_first_node_in_group("Player")
 
-
 func _on_boat_leave_area_body_entered(body: Node2D) -> void:
 	if body is Player:
 		if boat_docked:
 			sfx_player.play_sfx(BOAT_HORN)
 			animation_player.play("Boat_Out")
 			boat_docked = false
-
+		Dialogic.start(TUTORIAL_INTRO)
 
 func _on_mobile_shop_area_body_entered(body: Node2D) -> void:
 	if body is Player:
@@ -98,3 +97,22 @@ func _on_mobile_shop_area_body_exited(body: Node2D) -> void:
 	if body is Player:
 		can_enter_market = false
 		merchant_enter_notice.hide()
+
+func zoom_camera(amount : float) -> void:
+	camera.zoom = Vector2(amount,amount)
+
+
+func _on_sword_crafting_station_body_entered(body: Node2D) -> void:
+	pass # Replace with function body.
+
+
+func _on_sword_crafting_station_body_exited(body: Node2D) -> void:
+	pass # Replace with function body.
+
+
+func _on_alaisha_area_body_entered(body: Node2D) -> void:
+	pass # Replace with function body.
+
+
+func _on_alaisha_area_body_exited(body: Node2D) -> void:
+	pass # Replace with function body.

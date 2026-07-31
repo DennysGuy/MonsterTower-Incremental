@@ -64,7 +64,7 @@ const BASE_TRANSFER_TIME : float = 2.0
 	"Current MP": 50,
 	"HP Recovery": 0.3,
 	"MP Recovery" : 0.4,
-	"Equipped Sword": 0,
+	"Equipped Sword": -1,
 	"Equipped Pickaxe": 0,
 	"Overlapping Hits" : 1.0,
 	"Bag": 1,
