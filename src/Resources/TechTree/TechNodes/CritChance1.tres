@@ -12,6 +12,7 @@ disabled_icon = ExtResource("1_oy5eo")
 description = "Improve your chance to hit increasingly higher numbers by 5% per level."
 max_level = 3
 currency_required = 150
+price_scaler = 1.2
 stat_name = "Crit Chance"
 upgrade_interval = 0.05
 prereqs = Array[String](["Attack 1:1"])

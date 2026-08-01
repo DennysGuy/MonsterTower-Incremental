@@ -16,7 +16,7 @@ recipe_type = 1
 success_rate = 0.9
 output_item = ExtResource("2_if5nl")
 recipe_list = Array[Dictionary]([{
-ExtResource("4_ufqei"): 2
+ExtResource("4_ufqei"): 3
 }])
 related_enemies = Array[String](["Corrupted Mushie", "Corrupted Mushie LVL2"])
 metadata/_custom_type_script = "uid://cljygiasf4103"

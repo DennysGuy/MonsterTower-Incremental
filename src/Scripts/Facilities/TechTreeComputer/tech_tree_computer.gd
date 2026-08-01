@@ -17,6 +17,7 @@ func _process(delta: float) -> void:
 		if GameManager.in_tech_tree_tutorial:
 			if GameManager.tutorial_can_access_pc:
 				SignalBus.spawn_tech_tree.emit()
+				HubManager.hide_facility_notification.emit("Upgrades PC")
 			else:
 				Dialogic.start(PC_CANT_ACCESS)
 			return

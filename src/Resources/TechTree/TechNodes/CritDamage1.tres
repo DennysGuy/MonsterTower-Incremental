@@ -13,6 +13,7 @@ description = "Increase Critical Damage by 5% per level.
 (Scale your damage to even greater heights!)"
 max_level = 3
 currency_required = 250
+price_scaler = 1.2
 stat_name = "Crit Damage"
 upgrade_interval = 0.05
 prereqs = Array[String](["Attack 1:1"])

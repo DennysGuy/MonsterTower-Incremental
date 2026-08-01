@@ -13,6 +13,7 @@ description = "Increase ladder climbing speed by 20% per level!"
 max_level = 3
 currency_required = 150
 stat_relation = 2
+price_scaler = 1.4
 stat_name = "Climbing Speed"
 upgrade_interval = 0.2
 prereqs = Array[String](["Jump Height 1:1"])

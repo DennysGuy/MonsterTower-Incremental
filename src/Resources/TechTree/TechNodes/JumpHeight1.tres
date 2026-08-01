@@ -13,6 +13,7 @@ description = "Reach new heights! Increases Jump Height by 10% per level."
 max_level = 2
 currency_required = 100
 stat_relation = 2
+price_scaler = 2.0
 stat_name = "Jump Height"
 upgrade_interval = 0.1
 prereqs = Array[String](["Hunter License:1"])

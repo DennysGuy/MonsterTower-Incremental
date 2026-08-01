@@ -13,6 +13,7 @@ description = "Increase base weapon damage against Monsters by 20% per level."
 unlocked = true
 max_level = 5
 currency_required = 50
+price_scaler = 1.5
 stat_name = "Attack Damage"
 upgrade_interval = 0.2
 prereqs = Array[String](["Hunter License:1"])

@@ -4,6 +4,17 @@ do CutsceneManager.zoom_camera_one_half()
 join TowerGuide rightmost [animation="Slide In Up" wait="true"]
 TowerGuide: Welcome to the Starspire Grand Market! We're glad you made it!
 TowerGuide: This is the base of operations for the Starspire Hunters! Use the Grand Market to strengthen your abilities, grow your wealth, and prepare for your expeditions into the tower.
+TowerGuide: Would you like to continue with the Starspire Grand Market Tour?
+- Yes!
+	jump FullTour
+- Nah.
+	do CutsceneManager.zoom_camera_standard()
+	[wait time="1.0"]
+	do CutsceneManager.enable_player_functionality()
+	do CutsceneManager.play_map_theme_song()
+	do CutsceneManager.check_for_another_unlock()
+	[end_timeline]
+label FullTour
 TowerGuide: Let me give you a quick overview of everything the Starspire Grand Market has to offer!
 do CutsceneManager.zoom_camera_standard()
 [wait time="1.0" skippable="true"]
