@@ -37,6 +37,7 @@
 [ext_resource type="PackedScene" uid="uid://dllbbxwtrshxy" path="res://src/Scenes/NewStarshire/GrandMarketSignFrontLeg.tscn" id="36_g8ukf"]
 [ext_resource type="PackedScene" uid="uid://drvmmtbvnc785" path="res://src/Scenes/Tower/arrow_at_ore.tscn" id="36_hw86b"]
 [ext_resource type="PackedScene" uid="uid://u2wlvgyx0mtu" path="res://src/Scenes/NewStarshire/Facilities/TaskBoard.tscn" id="37_4qs0c"]
+[ext_resource type="PackedScene" uid="uid://brlwwkmn1pflb" path="res://src/Scenes/NPCs/WarmongerAlaisha.tscn" id="38_g8ukf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bp3qg"]
 texture = ExtResource("17_uhrlg")
@@ -896,7 +897,7 @@ smoothing_distance = 6
 room_width = 2000
 
 [node name="TowerArea" type="Area2D" parent="." unique_id=409021533]
-position = Vector2(1359, 657)
+position = Vector2(1440.0001, 657)
 scale = Vector2(20, 10)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TowerArea" unique_id=1322178143]
@@ -913,7 +914,7 @@ hover_speed = 1.0
 base_offset = 5.0
 
 [node name="TowerGuideSprite" parent="." unique_id=1901348219 instance=ExtResource("9_636af")]
-position = Vector2(1365, 671)
+position = Vector2(1424, 671)
 
 [node name="GrandMarketPosition" type="Marker2D" parent="." unique_id=723859068 groups=["GrandMarketPosition"]]
 position = Vector2(638, 598)
@@ -924,7 +925,7 @@ position = Vector2(720, 688)
 script = ExtResource("18_g8ukf")
 
 [node name="GrandMarketArea" type="Area2D" parent="." unique_id=1746715903]
-position = Vector2(640, 622)
+position = Vector2(664, 622)
 script = ExtResource("17_hw86b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GrandMarketArea" unique_id=495718423]
@@ -992,7 +993,7 @@ position = Vector2(1040, 680)
 position = Vector2(1784, 528)
 
 [node name="CookingStation" parent="." unique_id=179535965 instance=ExtResource("33_d6jc3")]
-position = Vector2(1042, 704)
+position = Vector2(1016, 704)
 station_type = 1
 
 [node name="Refinery" parent="." unique_id=763505504 instance=ExtResource("33_d6jc3")]
@@ -1113,7 +1114,7 @@ position = Vector2(2, -5)
 shape = SubResource("RectangleShape2D_5xris")
 
 [node name="TechTreeComputer" parent="." unique_id=1878856969 instance=ExtResource("4_cldp6")]
-position = Vector2(1497, 703)
+position = Vector2(1536, 703)
 
 [node name="NameTag4" parent="TechTreeComputer" unique_id=1013242585 instance=ExtResource("19_bl45m")]
 offset_left = -48.0
@@ -1124,9 +1125,9 @@ offset_right = 40.0
 text = "Upgrades PC"
 
 [node name="UpgradesPCNotice3" parent="." unique_id=1340485041 instance=ExtResource("23_0u15j")]
-offset_left = 1413.0
+offset_left = 1456.0
 offset_top = 558.0
-offset_right = 1567.0
+offset_right = 1610.0
 offset_bottom = 703.0
 facility_name = "Upgrades PC"
 
@@ -1219,7 +1220,7 @@ AP"
 metadata/_edit_use_anchors_ = true
 
 [node name="PlayerSpawnPoint" parent="." unique_id=2052586156 instance=ExtResource("30_cxssj")]
-position = Vector2(1227, 704)
+position = Vector2(1304, 704)
 
 [node name="RefineryPosition" type="Node2D" parent="." unique_id=1121494031]
 position = Vector2(1888, 672)
@@ -1276,9 +1277,9 @@ offset_bottom = 637.0
 facility_name = "Smelting Station"
 
 [node name="CookingStationNotice" parent="." unique_id=2045831039 instance=ExtResource("23_0u15j")]
-offset_left = 967.0
+offset_left = 944.0
 offset_top = 507.0
-offset_right = 1121.0
+offset_right = 1098.0
 offset_bottom = 652.0
 facility_name = "Junk-A-Tron"
 
@@ -1351,13 +1352,23 @@ one_way_collision = true
 position = Vector2(1999, 704)
 
 [node name="NameTag" parent="." unique_id=1996143425 instance=ExtResource("19_bl45m")]
-offset_left = 1291.0
-offset_top = 708.0
-offset_right = 1399.0
-offset_bottom = 724.0
+offset_left = 1377.0
+offset_top = 705.0
+offset_right = 1485.0
+offset_bottom = 721.0
 
 [node name="Tag" parent="NameTag/Bg" parent_id_path=PackedInt32Array(1996143425, 305804188) index="0" unique_id=725373759]
 text = "Tower Entrance"
+
+[node name="WarmongerSprite" parent="." unique_id=1287124457 instance=ExtResource("38_g8ukf")]
+position = Vector2(1176, 668)
+flip_h = true
+
+[node name="AlaishaArea" parent="WarmongerSprite" index="0" unique_id=1528653504]
+position = Vector2(8, 15)
+
+[node name="CollisionShape2D" parent="WarmongerSprite/AlaishaArea" index="0" unique_id=246290278]
+position = Vector2(16, -7)
 
 [connection signal="body_entered" from="TowerArea" to="." method="_on_tower_area_body_entered"]
 [connection signal="body_exited" from="TowerArea" to="." method="_on_tower_area_body_exited"]
@@ -1380,3 +1391,5 @@ text = "Tower Entrance"
 [editable path="NameTag5"]
 [editable path="NameTag6"]
 [editable path="NameTag"]
+[editable path="WarmongerSprite"]
+[editable path="WarmongerSprite/NameTag4"]

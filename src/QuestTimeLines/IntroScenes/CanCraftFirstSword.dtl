@@ -1,8 +1,5 @@
 do CutsceneManager.disable_player_functionality()
 join CropDuster left
-CropDuster: Crop Duster here.\
-\
-I handle anything weapon-related for the Starspire Hunters Guild.
 CropDuster: Looks like you have enough resources to craft a new sword!
 do CutsceneManager.send_camera_to_sword_crafting_station_pos()
 CropDuster: Head on over to the Sword Crafting Station, and I'll get you hooked up with a shiny new weapon.

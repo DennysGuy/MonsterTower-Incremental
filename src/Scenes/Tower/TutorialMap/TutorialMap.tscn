@@ -1033,31 +1033,31 @@ collision_mask = 2
 position = Vector2(0, -25.5)
 shape = SubResource("RectangleShape2D_r60dy")
 
-[node name="WarmongerSprite" type="Sprite2D" parent="." unique_id=770455195]
+[node name="WarmongerSprite" type="Sprite2D" parent="." unique_id=1287124457]
 position = Vector2(2280, 411)
 texture = ExtResource("27_5cl4j")
 
-[node name="AlaishaArea" type="Area2D" parent="WarmongerSprite" unique_id=329226111]
+[node name="AlaishaArea" type="Area2D" parent="WarmongerSprite" unique_id=1528653504]
 position = Vector2(0, 15)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WarmongerSprite/AlaishaArea" unique_id=1842263283]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WarmongerSprite/AlaishaArea" unique_id=246290278]
 position = Vector2(-16, -7)
 shape = SubResource("RectangleShape2D_lbelh")
 
-[node name="ArrowAtOre" parent="WarmongerSprite/AlaishaArea" unique_id=1056640823 instance=ExtResource("25_dc783")]
+[node name="ArrowAtOre" parent="WarmongerSprite/AlaishaArea" unique_id=297894111 instance=ExtResource("25_dc783")]
 visible = true
 position = Vector2(0, -53)
 
-[node name="NameTag4" parent="WarmongerSprite" unique_id=358591094 instance=ExtResource("26_mpxre")]
+[node name="NameTag4" parent="WarmongerSprite" unique_id=166620848 instance=ExtResource("26_mpxre")]
 offset_left = -64.0
 offset_top = 37.0
 offset_right = 76.0
 offset_bottom = 53.0
 
-[node name="Tag" parent="WarmongerSprite/NameTag4/Bg" parent_id_path=PackedInt32Array(358591094, 305804188) index="0" unique_id=725373759]
+[node name="Tag" parent="WarmongerSprite/NameTag4/Bg" parent_id_path=PackedInt32Array(166620848, 305804188) index="0" unique_id=725373759]
 text = "Warmonger Alaisha"
 
-[node name="AlaishaNotice" type="Label" parent="WarmongerSprite" unique_id=1653162218]
+[node name="AlaishaNotice" type="Label" parent="WarmongerSprite" unique_id=490916049]
 visible = false
 offset_left = -120.0
 offset_top = -47.0
@@ -1070,7 +1070,7 @@ text = "Press 'E' to Talk to Alaisha"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="FacilityNotice2" parent="WarmongerSprite" unique_id=1303478392 instance=ExtResource("30_r60dy")]
+[node name="FacilityNotice2" parent="WarmongerSprite" unique_id=9896759 instance=ExtResource("30_r60dy")]
 offset_left = -108.0
 offset_top = -194.0
 offset_right = 46.0
@@ -1081,7 +1081,7 @@ facility_name = "Alaisha"
 position = Vector2(3216, 410)
 texture = ExtResource("28_20811")
 
-[node name="FacilityNotice" parent="." unique_id=9896759 instance=ExtResource("30_r60dy")]
+[node name="FacilityNotice" parent="." unique_id=75224379 instance=ExtResource("30_r60dy")]
 offset_left = 3075.0
 offset_top = 275.0
 offset_right = 3229.0
@@ -1102,8 +1102,6 @@ facility_name = "Upgrades PC"
 [connection signal="body_exited" from="MobileShopArea" to="." method="_on_mobile_shop_area_body_exited"]
 [connection signal="body_entered" from="SwordCraftingStation" to="." method="_on_sword_crafting_station_body_entered"]
 [connection signal="body_exited" from="SwordCraftingStation" to="." method="_on_sword_crafting_station_body_exited"]
-[connection signal="body_entered" from="WarmongerSprite/AlaishaArea" to="." method="_on_alaisha_area_body_entered"]
-[connection signal="body_exited" from="WarmongerSprite/AlaishaArea" to="." method="_on_alaisha_area_body_exited"]
 
 [editable path="NameTag"]
 [editable path="NameTag5"]

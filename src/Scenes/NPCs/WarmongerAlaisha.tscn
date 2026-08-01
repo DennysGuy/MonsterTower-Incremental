@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://brlwwkmn1pflb"]
+
+[ext_resource type="Texture2D" uid="uid://bv7i100ulkewv" path="res://Assets/NPCs/WarmongerSprite.png" id="1_jkpmq"]
+[ext_resource type="PackedScene" uid="uid://drvmmtbvnc785" path="res://src/Scenes/Tower/arrow_at_ore.tscn" id="2_gqf7q"]
+[ext_resource type="PackedScene" uid="uid://vo5sm7p34vo6" path="res://src/Scenes/Actors/Utilities/NameTag.tscn" id="3_nak2m"]
+[ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="4_8w2fb"]
+[ext_resource type="PackedScene" uid="uid://di6r36s37fj8d" path="res://src/Scenes/NewStarshire/FacilityNotice.tscn" id="5_dnsu8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lbelh"]
+size = Vector2(112, 54)
+
+[node name="WarmongerSprite" type="Sprite2D" unique_id=1287124457]
+texture = ExtResource("1_jkpmq")
+
+[node name="AlaishaArea" type="Area2D" parent="." unique_id=1528653504]
+position = Vector2(0, 15)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AlaishaArea" unique_id=246290278]
+position = Vector2(-16, -7)
+shape = SubResource("RectangleShape2D_lbelh")
+
+[node name="ArrowAtOre" parent="AlaishaArea" unique_id=2067527573 instance=ExtResource("2_gqf7q")]
+visible = true
+position = Vector2(0, -53)
+
+[node name="NameTag4" parent="." unique_id=1232323974 instance=ExtResource("3_nak2m")]
+offset_left = -64.0
+offset_top = 37.0
+offset_right = 76.0
+offset_bottom = 53.0
+
+[node name="Tag" parent="NameTag4/Bg" parent_id_path=PackedInt32Array(1232323974, 305804188) index="0" unique_id=725373759]
+text = "Warmonger Alaisha"
+
+[node name="AlaishaNotice" type="Label" parent="." unique_id=490916049]
+visible = false
+offset_left = -120.0
+offset_top = -47.0
+offset_right = 114.0
+offset_bottom = -31.0
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("4_8w2fb")
+theme_override_font_sizes/font_size = 16
+text = "Press 'E' to Talk to Alaisha"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FacilityNotice2" parent="." unique_id=9896759 instance=ExtResource("5_dnsu8")]
+offset_left = -108.0
+offset_top = -194.0
+offset_right = 46.0
+offset_bottom = -49.0
+facility_name = "Alaisha"
+
+[editable path="NameTag4"]
