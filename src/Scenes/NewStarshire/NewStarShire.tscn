@@ -37,7 +37,7 @@
 [ext_resource type="PackedScene" uid="uid://dllbbxwtrshxy" path="res://src/Scenes/NewStarshire/GrandMarketSignFrontLeg.tscn" id="36_g8ukf"]
 [ext_resource type="PackedScene" uid="uid://drvmmtbvnc785" path="res://src/Scenes/Tower/arrow_at_ore.tscn" id="36_hw86b"]
 [ext_resource type="PackedScene" uid="uid://u2wlvgyx0mtu" path="res://src/Scenes/NewStarshire/Facilities/TaskBoard.tscn" id="37_4qs0c"]
-[ext_resource type="PackedScene" uid="uid://brlwwkmn1pflb" path="res://src/Scenes/NPCs/WarmongerAlaisha.tscn" id="38_g8ukf"]
+[ext_resource type="Texture2D" uid="uid://bv7i100ulkewv" path="res://Assets/NPCs/WarmongerSprite.png" id="38_g8ukf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bp3qg"]
 texture = ExtResource("17_uhrlg")
@@ -696,6 +696,9 @@ size = Vector2(20, 375)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y20fx"]
 size = Vector2(174, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lbelh"]
+size = Vector2(80, 54)
 
 [node name="NewStarShire" type="Node2D" unique_id=1923605450 node_paths=PackedStringArray("camera", "sfx_player")]
 script = ExtResource("1_gq00g")
@@ -1360,15 +1363,50 @@ offset_bottom = 721.0
 [node name="Tag" parent="NameTag/Bg" parent_id_path=PackedInt32Array(1996143425, 305804188) index="0" unique_id=725373759]
 text = "Tower Entrance"
 
-[node name="WarmongerSprite" parent="." unique_id=1287124457 instance=ExtResource("38_g8ukf")]
+[node name="WarmongerSprite" type="Sprite2D" parent="." unique_id=1287124457]
 position = Vector2(1176, 668)
+texture = ExtResource("38_g8ukf")
 flip_h = true
 
-[node name="AlaishaArea" parent="WarmongerSprite" index="0" unique_id=1528653504]
+[node name="AlaishaArea" type="Area2D" parent="WarmongerSprite" unique_id=1528653504]
 position = Vector2(8, 15)
 
-[node name="CollisionShape2D" parent="WarmongerSprite/AlaishaArea" index="0" unique_id=246290278]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WarmongerSprite/AlaishaArea" unique_id=246290278]
 position = Vector2(16, -7)
+shape = SubResource("RectangleShape2D_lbelh")
+
+[node name="ArrowAtOre" parent="WarmongerSprite/AlaishaArea" unique_id=136751919 instance=ExtResource("36_hw86b")]
+visible = true
+position = Vector2(0, -53)
+
+[node name="NameTag4" parent="WarmongerSprite" unique_id=1988415063 instance=ExtResource("19_bl45m")]
+offset_left = -64.0
+offset_top = 37.0
+offset_right = 76.0
+offset_bottom = 53.0
+
+[node name="Tag" parent="WarmongerSprite/NameTag4/Bg" parent_id_path=PackedInt32Array(1988415063, 305804188) index="0" unique_id=725373759]
+text = "Warmonger Alaisha"
+
+[node name="AlaishaNotice" type="Label" parent="WarmongerSprite" unique_id=490916049]
+visible = false
+offset_left = -120.0
+offset_top = -47.0
+offset_right = 114.0
+offset_bottom = -31.0
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("27_e7ku4")
+theme_override_font_sizes/font_size = 16
+text = "Press 'E' to Talk to Alaisha"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FacilityNotice2" parent="WarmongerSprite" unique_id=1873921011 instance=ExtResource("23_0u15j")]
+offset_left = -108.0
+offset_top = -194.0
+offset_right = 46.0
+offset_bottom = -49.0
+facility_name = "Class Advance Center"
 
 [connection signal="body_entered" from="TowerArea" to="." method="_on_tower_area_body_entered"]
 [connection signal="body_exited" from="TowerArea" to="." method="_on_tower_area_body_exited"]
@@ -1391,5 +1429,4 @@ position = Vector2(16, -7)
 [editable path="NameTag5"]
 [editable path="NameTag6"]
 [editable path="NameTag"]
-[editable path="WarmongerSprite"]
 [editable path="WarmongerSprite/NameTag4"]
