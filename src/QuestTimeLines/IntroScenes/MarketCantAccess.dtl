@@ -1,0 +1,4 @@
+do CutsceneManager.disable_player_functionality()
+WarmongeAlaisha: You have some pending objectives to complete before you can access the Market!
+[wait time="1.0"]
+do CutsceneManager.enable_player_functionality()

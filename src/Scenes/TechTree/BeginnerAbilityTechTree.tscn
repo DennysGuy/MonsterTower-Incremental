@@ -7,6 +7,7 @@
 [ext_resource type="Resource" uid="uid://cq5drdy7t8gas" path="res://src/Resources/TechTree/TechNodes/DoubleJump.tres" id="3_gvncw"]
 [ext_resource type="Resource" uid="uid://burkenucbrobr" path="res://src/Resources/TechTree/TechNodes/ArialAttack.tres" id="3_urnm2"]
 [ext_resource type="PackedScene" uid="uid://ctnd6nsfkdnpq" path="res://src/Scenes/TechTree/ClassSelectionNode.tscn" id="6_yrrks"]
+[ext_resource type="Resource" uid="uid://d0trkofh7kf0p" path="res://src/Resources/TechTree/TechNodes/Jump.tres" id="8_2kjf1"]
 [ext_resource type="FontFile" uid="uid://stn4dtg0uw57" path="res://Assets/Fonts/FredokaOne-Regular.ttf" id="9_2kjf1"]
 
 [node name="BeginnerAbilityTechTree" type="Node2D" unique_id=1152802901]
@@ -50,57 +51,76 @@ offset_bottom = 980.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="AirAttackNode" parent="." unique_id=310214223 instance=ExtResource("2_7au7t")]
-offset_left = 517.0
-offset_top = 852.0
-offset_right = 517.0
-offset_bottom = 852.0
+[node name="BeginnerNodes" type="Control" parent="." unique_id=1931917284]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1923.0
+offset_bottom = 1083.0
+
+[node name="AirAttackNode" parent="BeginnerNodes" unique_id=310214223 instance=ExtResource("2_7au7t")]
+layout_mode = 1
+offset_left = -444.5
+offset_top = 313.5
+offset_right = -444.5
+offset_bottom = 313.5
 tech_node_stats = ExtResource("3_urnm2")
 node_type = 2
 
-[node name="DashAttackNode" parent="." unique_id=53768398 instance=ExtResource("2_7au7t")]
-offset_left = 1406.0
-offset_top = 854.0
-offset_right = 1406.0
-offset_bottom = 854.0
+[node name="DashAttackNode" parent="BeginnerNodes" unique_id=53768398 instance=ExtResource("2_7au7t")]
+layout_mode = 1
+offset_left = 444.5
+offset_top = 315.5
+offset_right = 444.5
+offset_bottom = 315.5
 tech_node_stats = ExtResource("3_acel5")
 node_type = 2
 
-[node name="DoubleJumpAttack" parent="." unique_id=1184687078 instance=ExtResource("2_7au7t")]
-offset_left = 962.0
-offset_top = 857.0
-offset_right = 962.0
-offset_bottom = 857.0
+[node name="DoubleJumpAttack" parent="BeginnerNodes" unique_id=1184687078 instance=ExtResource("2_7au7t")]
+layout_mode = 1
+offset_left = 0.5
+offset_top = 318.5
+offset_right = 0.5
+offset_bottom = 318.5
 tech_node_stats = ExtResource("3_gvncw")
 node_type = 2
 
-[node name="ClassSelectionNode" parent="." unique_id=1934592524 instance=ExtResource("6_yrrks")]
+[node name="ClassSelectionNode" parent="BeginnerNodes" unique_id=1934592524 instance=ExtResource("6_yrrks")]
 visible = false
 position = Vector2(960, 447)
 
-[node name="Line2D" type="Line2D" parent="." unique_id=625943590]
+[node name="Line2D" type="Line2D" parent="BeginnerNodes" unique_id=625943590]
 position = Vector2(735, 551)
 points = PackedVector2Array(-229, 139, 683, 139)
 width = 20.0
 
-[node name="Line2D2" type="Line2D" parent="." unique_id=1033140257]
+[node name="Line2D2" type="Line2D" parent="BeginnerNodes" unique_id=1033140257]
 position = Vector2(373, 543)
 points = PackedVector2Array(143, 137, 143, 274)
 width = 20.0
 
-[node name="Line2D3" type="Line2D" parent="." unique_id=336424129]
+[node name="Line2D3" type="Line2D" parent="BeginnerNodes" unique_id=336424129]
 position = Vector2(1093, 437)
 width = 25.0
 
-[node name="Line2D4" type="Line2D" parent="." unique_id=1157426340]
+[node name="Line2D4" type="Line2D" parent="BeginnerNodes" unique_id=1157426340]
 position = Vector2(818, 554)
 points = PackedVector2Array(143, 138, 143, 259)
 width = 20.0
 
-[node name="Line2D5" type="Line2D" parent="." unique_id=370362882]
+[node name="Line2D5" type="Line2D" parent="BeginnerNodes" unique_id=370362882]
 position = Vector2(1265, 554)
 points = PackedVector2Array(143, 138, 143, 259)
 width = 20.0
+
+[node name="JumpNode" parent="." unique_id=640777626 instance=ExtResource("2_7au7t")]
+visible = false
+offset_left = 962.0
+offset_top = 617.0
+offset_right = 962.0
+offset_bottom = 617.0
+tech_node_stats = ExtResource("8_2kjf1")
+node_type = 2
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1006028746]
 

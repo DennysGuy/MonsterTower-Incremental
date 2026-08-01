@@ -8,10 +8,14 @@ class_name PlayerFall extends State
 @export var air_attack : State
 @export var dash_attack : State
 func enter() -> void:
-	super()
 	if not parent.was_on_ledge and not parent.is_on_floor():
 		parent.coyote_timer = parent.coyote_wait_time
 	parent.can_knock_back = true
+	if !PlayerStats.facilities_unlocked["Jump"]:
+		animation_name = "JumpFail"
+	else:
+		animation_name = "Fall"
+	parent.animation_player.play(animation_name)
 	parent.set_sword_texture(animation_name)
 	parent.set_outfit_texture(animation_name)
 	

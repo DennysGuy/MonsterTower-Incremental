@@ -1,0 +1,4 @@
+do CutsceneManager.disable_player_functionality()
+WarmongeAlaisha: Gather some of that Shroom Fibre and craft your first weapon over at the weapon crafting station!
+[wait time="1.0"]
+do CutsceneManager.enable_player_functionality()

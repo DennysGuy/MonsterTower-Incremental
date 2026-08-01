@@ -43,6 +43,8 @@ signal unlock_ready_scene_ended
 signal show_all_tech_tree_buttons
 @warning_ignore("unused_signal")
 signal show_tech_tree
+@warning_ignore("unused_signal")
+signal tech_tree_exited_during_tutorial
 
 func trigger_next_frame() -> void:
 	trigger_next_image.emit()

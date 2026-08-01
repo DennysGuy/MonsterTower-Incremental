@@ -4,6 +4,7 @@ class_name TechTreeComputer extends Node2D
 @onready var press_e: Label = $PressE
 
 var player_in_range : bool = false
+const PC_CANT_ACCESS = preload("uid://buwfjrtk8enkl")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -13,6 +14,13 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if GameManager.player_can_move and player_in_range and Input.is_action_just_pressed("interact"):
+		if GameManager.in_tech_tree_tutorial:
+			if GameManager.tutorial_can_access_pc:
+				SignalBus.spawn_tech_tree.emit()
+			else:
+				Dialogic.start(PC_CANT_ACCESS)
+			return
+	
 		SignalBus.spawn_tech_tree.emit()
 
 func _on_facility_interactable_body_entered(body: Node2D) -> void:

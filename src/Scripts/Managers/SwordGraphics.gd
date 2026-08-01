@@ -18,6 +18,8 @@ var sword_textures : Dictionary = {
 		"IronBody": preload("uid://cigmveocctl7m"),
 		"CircleOfTruth" : preload("uid://dtcrlkchqxhe0"),
 		"BasicDash" : preload("uid://d2bhjtp3erg2i"),
+		"Weapon Crafted": preload("uid://cykc8jfijvab8"),
+		"JumpFail": preload("uid://bjr8dvouteabr")
 		
 	},
 	"Shroom Fibre Blade" : {

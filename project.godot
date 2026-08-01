@@ -64,6 +64,11 @@ directories/dch_directory={
 "WarmongeAlaisha": "res://src/QuestTimeLines/Characters/WarmongeAlaisha.dch"
 }
 directories/dtl_directory={
+"AlaishaCraftFirstWeapon": "res://src/QuestTimeLines/IntroScenes/AlaishaCraftFirstWeapon.dtl",
+"AlaishaHeadToPC": "res://src/QuestTimeLines/IntroScenes/AlaishaHeadToPC.dtl",
+"AlaishaHeadToPCAfterWeaponCraftDone": "res://src/QuestTimeLines/IntroScenes/AlaishaHeadToPCAfterWeaponCraftDone.dtl",
+"AlaishaSellCoresUnlockNode": "res://src/QuestTimeLines/IntroScenes/AlaishaSellCoresUnlockNode.dtl",
+"AlaishaUnlockFirstAbility": "res://src/QuestTimeLines/IntroScenes/AlaishaUnlockFirstAbility.dtl",
 "BrokenElevatorScene": "res://src/QuestTimeLines/IntroScenes/BrokenElevatorScene.dtl",
 "CanCraftFirstSword": "res://src/QuestTimeLines/IntroScenes/CanCraftFirstSword.dtl",
 "CookingStationUnlockScene": "res://src/QuestTimeLines/IntroScenes/CookingStationUnlockScene.dtl",
@@ -77,8 +82,10 @@ directories/dtl_directory={
 "IntroCardsCutscene": "res://src/QuestTimeLines/IntroCardsCutscene.dtl",
 "JobBoardIntroScene": "res://src/QuestTimeLines/IntroScenes/JobBoardIntroScene.dtl",
 "LevelUpInstruction": "res://src/QuestTimeLines/IntroScenes/LevelUpInstruction.dtl",
+"MarketCantAccess": "res://src/QuestTimeLines/IntroScenes/MarketCantAccess.dtl",
 "NewWeaponCraftingNoticeScene": "res://src/QuestTimeLines/IntroScenes/NewWeaponCraftingNoticeScene.dtl",
 "NewWeaponCraftingStationUpdateScene": "res://src/QuestTimeLines/IntroScenes/NewWeaponCraftingStationUpdateScene.dtl",
+"PCCantAccess": "res://src/QuestTimeLines/IntroScenes/PCCantAccess.dtl",
 "RepeatUnlockSteps": "res://src/QuestTimeLines/IntroScenes/RepeatUnlockSteps.dtl",
 "SmeltingStationUnlockScene": "res://src/QuestTimeLines/IntroScenes/SmeltingStationUnlockScene.dtl",
 "StarspireMarketIntro": "res://src/QuestTimeLines/IntroScenes/StarspireMarketIntro.dtl",

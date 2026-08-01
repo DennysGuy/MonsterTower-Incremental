@@ -26,6 +26,7 @@ var sword : Sword
 const GEAR_STATION_DROPS_BAG_BG = preload("uid://dqrwhfhixd1io")
 const GEAR_STATION_USE_BAG_BG = preload("uid://b5o4unayrrfi")
 
+const ALAISHA_HEAD_TO_PC_AFTER_WEAPON_CRAFT_DONE = preload("uid://bhk8jkhx7i5ob")
 
 var selected_bag : String = "Drops"
 
@@ -55,6 +56,10 @@ func upgrade_sword() -> void:
 	SaveManager.save_player_stats()
 	
 	var next_sword_index : int = PlayerStats.player_stats["Equipped Sword"]+1
+	
+	if GameManager.in_tech_tree_tutorial:
+		GameManager.tutorial_can_access_pc = true
+	
 	if next_sword_index < PlayerStats.BEGINNGER_SWORD_COUNT:
 		PlayerStats.set_tracked_weapon_index(next_sword_index)
 		sword = PlayerStats.get_sword(next_sword_index)
@@ -103,9 +108,10 @@ func update_sword() -> void: #run this function when we upgrade the sword.
 				ingredient_menu_item.quantity.text = "%s x%s" % [key.item_name, ingredient[key]]
 				
 			ingredients_list.add_child(ingredient_menu_item)
-
+		
+		print("THIS IS SWORD RECIPE %s" % sword.recipe )
 		var can_craft : bool = InventoryManager.calculate_quantity(sword.recipe)
-			
+		print(can_craft)
 		if can_craft:
 			button.disabled = false
 			#sword_graphic.texture = sword.graphic
@@ -136,6 +142,9 @@ func exit_menu() -> void:
 	PlayerHudSignalBus.hub_menu_exited.emit()
 	await get_tree().create_timer(0.3).timeout
 	SignalBus.hide_tech_tree_canvas_layer.emit()
+	if GameManager.in_tech_tree_tutorial and GameManager.tutorial_can_access_pc:
+		HubManager.show_facility_notification.emit("Upgrades PC")
+		Dialogic.start(ALAISHA_HEAD_TO_PC_AFTER_WEAPON_CRAFT_DONE)
 	queue_free()
 
 func _on_drops_bag_button_button_up() -> void:

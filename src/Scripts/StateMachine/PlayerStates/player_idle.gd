@@ -19,7 +19,7 @@ class_name PlayerIdle extends State
 @export var jump_sfx : AudioStream
 
 var drop_timer : float = 0.0
-var drop_wait_time : float = 0.1
+var drop_wait_time : float = 0.08
 
 func enter() -> void:
 	parent.can_knock_back = true

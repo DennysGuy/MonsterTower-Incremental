@@ -207,6 +207,7 @@ func set_tracked_weapon_index(new_index : int) -> void:
 	"Arial Slash" : false,
 	"Dash": false,
 	"Ladder Dash": false,
+	"Jump": false,
 	"Double Jump" : false,
 	"Gem Stone Station": false,
 	"HP Chalice" : false,

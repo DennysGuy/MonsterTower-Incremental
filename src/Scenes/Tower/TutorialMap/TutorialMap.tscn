@@ -29,6 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://bv7i100ulkewv" path="res://Assets/NPCs/WarmongerSprite.png" id="27_5cl4j"]
 [ext_resource type="Resource" uid="uid://cf5vg21f0mpoi" path="res://src/Resources/Actors/Enemies/Biome1/CorruptedMushie/BeginnerMushie2.tres" id="27_lbelh"]
 [ext_resource type="Texture2D" uid="uid://cev7whd13a4oc" path="res://Assets/Tower/Biom1/Blacksmith_NoOutline.png" id="28_20811"]
+[ext_resource type="PackedScene" uid="uid://di6r36s37fj8d" path="res://src/Scenes/NewStarshire/FacilityNotice.tscn" id="30_r60dy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ye63i"]
 texture = ExtResource("9_ye63i")
@@ -536,10 +537,10 @@ tile_size = Vector2i(32, 32)
 sources/1 = SubResource("TileSetAtlasSource_ys33i")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p0sy1"]
-size = Vector2(22, 80.875)
+size = Vector2(22, 79.875)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_20811"]
-size = Vector2(22, 80)
+size = Vector2(22, 78)
 
 [sub_resource type="Animation" id="Animation_7kbtj"]
 resource_name = "Boat_In"
@@ -632,11 +633,11 @@ size = Vector2(34, 351)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mncln"]
 size = Vector2(80, 54)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lbelh"]
-size = Vector2(112, 54)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r60dy"]
 size = Vector2(20, 71)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lbelh"]
+size = Vector2(112, 54)
 
 [node name="TutorialMap" type="Node2D" unique_id=1194992242 node_paths=PackedStringArray("camera", "sfx_player")]
 script = ExtResource("1_tymde")
@@ -825,7 +826,7 @@ ladder_top = NodePath("Top")
 ladder_bottom = NodePath("Bottom")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LadderArea2" unique_id=661030438]
-position = Vector2(1, -38.5625)
+position = Vector2(1, -38.0625)
 shape = SubResource("RectangleShape2D_p0sy1")
 
 [node name="Top" type="Marker2D" parent="LadderArea2" unique_id=2021550528]
@@ -842,7 +843,7 @@ ladder_top = NodePath("Top")
 ladder_bottom = NodePath("Bottom")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LadderArea3" unique_id=648335668]
-position = Vector2(1, -16)
+position = Vector2(1, -15)
 shape = SubResource("RectangleShape2D_20811")
 
 [node name="Top" type="Marker2D" parent="LadderArea3" unique_id=1292482039]
@@ -930,15 +931,6 @@ offset_bottom = 464.0
 [node name="Tag" parent="NameTag5/Bg" parent_id_path=PackedInt32Array(282698329, 305804188) index="0" unique_id=725373759]
 text = "Market Merchant"
 
-[node name="NameTag4" parent="." unique_id=358591094 instance=ExtResource("26_mpxre")]
-offset_left = 2216.0
-offset_top = 448.0
-offset_right = 2356.0
-offset_bottom = 464.0
-
-[node name="Tag" parent="NameTag4/Bg" parent_id_path=PackedInt32Array(358591094, 305804188) index="0" unique_id=725373759]
-text = "Warmonger Alaisha"
-
 [node name="NameTag2" parent="." unique_id=1706842441 instance=ExtResource("26_mpxre")]
 offset_left = 3768.0
 offset_top = 448.0
@@ -975,21 +967,6 @@ position = Vector2(3160, 427)
 position = Vector2(-5, -7)
 shape = SubResource("RectangleShape2D_mncln")
 
-[node name="ArrowAtOre" parent="SwordCraftingStation" unique_id=2062505993 instance=ExtResource("25_dc783")]
-visible = true
-position = Vector2(0, -53)
-
-[node name="AlaishaArea" type="Area2D" parent="." unique_id=329226111]
-position = Vector2(2280, 427)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AlaishaArea" unique_id=1842263283]
-position = Vector2(-16, -7)
-shape = SubResource("RectangleShape2D_lbelh")
-
-[node name="ArrowAtOre" parent="AlaishaArea" unique_id=1056640823 instance=ExtResource("25_dc783")]
-visible = true
-position = Vector2(0, -53)
-
 [node name="MerchantEnterNotice" type="Label" parent="." unique_id=2127788652]
 visible = false
 offset_left = 3472.0
@@ -1000,19 +977,6 @@ theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("9_7kbtj")
 theme_override_font_sizes/font_size = 16
 text = "Press 'E' to Enter Market"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="AlaishaNotice" type="Label" parent="." unique_id=1653162218]
-visible = false
-offset_left = 2160.0
-offset_top = 365.0
-offset_right = 2394.0
-offset_bottom = 381.0
-theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("9_7kbtj")
-theme_override_font_sizes/font_size = 16
-text = "Press 'E' to Talk to Alaisha"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1070,12 +1034,66 @@ position = Vector2(0, -25.5)
 shape = SubResource("RectangleShape2D_r60dy")
 
 [node name="WarmongerSprite" type="Sprite2D" parent="." unique_id=770455195]
-position = Vector2(2280, 412)
+position = Vector2(2280, 411)
 texture = ExtResource("27_5cl4j")
+
+[node name="AlaishaArea" type="Area2D" parent="WarmongerSprite" unique_id=329226111]
+position = Vector2(0, 15)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WarmongerSprite/AlaishaArea" unique_id=1842263283]
+position = Vector2(-16, -7)
+shape = SubResource("RectangleShape2D_lbelh")
+
+[node name="ArrowAtOre" parent="WarmongerSprite/AlaishaArea" unique_id=1056640823 instance=ExtResource("25_dc783")]
+visible = true
+position = Vector2(0, -53)
+
+[node name="NameTag4" parent="WarmongerSprite" unique_id=358591094 instance=ExtResource("26_mpxre")]
+offset_left = -64.0
+offset_top = 37.0
+offset_right = 76.0
+offset_bottom = 53.0
+
+[node name="Tag" parent="WarmongerSprite/NameTag4/Bg" parent_id_path=PackedInt32Array(358591094, 305804188) index="0" unique_id=725373759]
+text = "Warmonger Alaisha"
+
+[node name="AlaishaNotice" type="Label" parent="WarmongerSprite" unique_id=1653162218]
+visible = false
+offset_left = -120.0
+offset_top = -47.0
+offset_right = 114.0
+offset_bottom = -31.0
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("9_7kbtj")
+theme_override_font_sizes/font_size = 16
+text = "Press 'E' to Talk to Alaisha"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FacilityNotice2" parent="WarmongerSprite" unique_id=1303478392 instance=ExtResource("30_r60dy")]
+offset_left = -108.0
+offset_top = -194.0
+offset_right = 46.0
+offset_bottom = -49.0
+facility_name = "Alaisha"
 
 [node name="BlacksmithNoOutline" type="Sprite2D" parent="." unique_id=794760684]
 position = Vector2(3216, 410)
 texture = ExtResource("28_20811")
+
+[node name="FacilityNotice" parent="." unique_id=9896759 instance=ExtResource("30_r60dy")]
+offset_left = 3075.0
+offset_top = 275.0
+offset_right = 3229.0
+offset_bottom = 420.0
+facility_name = "Weapon Crafting Station"
+
+[node name="FacilityNotice3" parent="." unique_id=297104060 instance=ExtResource("30_r60dy")]
+offset_left = 3322.0
+offset_top = 275.0
+offset_right = 3476.0
+offset_bottom = 420.0
+facility_name = "Upgrades PC"
 
 [connection signal="body_entered" from="TowerEntranceArea" to="." method="_on_tower_entrance_area_body_entered"]
 [connection signal="body_exited" from="TowerEntranceArea" to="." method="_on_tower_entrance_area_body_exited"]
@@ -1084,11 +1102,11 @@ texture = ExtResource("28_20811")
 [connection signal="body_exited" from="MobileShopArea" to="." method="_on_mobile_shop_area_body_exited"]
 [connection signal="body_entered" from="SwordCraftingStation" to="." method="_on_sword_crafting_station_body_entered"]
 [connection signal="body_exited" from="SwordCraftingStation" to="." method="_on_sword_crafting_station_body_exited"]
-[connection signal="body_entered" from="AlaishaArea" to="." method="_on_alaisha_area_body_entered"]
-[connection signal="body_exited" from="AlaishaArea" to="." method="_on_alaisha_area_body_exited"]
+[connection signal="body_entered" from="WarmongerSprite/AlaishaArea" to="." method="_on_alaisha_area_body_entered"]
+[connection signal="body_exited" from="WarmongerSprite/AlaishaArea" to="." method="_on_alaisha_area_body_exited"]
 
 [editable path="NameTag"]
 [editable path="NameTag5"]
-[editable path="NameTag4"]
 [editable path="NameTag2"]
 [editable path="NameTag3"]
+[editable path="WarmongerSprite/NameTag4"]

@@ -4,11 +4,12 @@ do CutsceneManager.zoom_camera_one_half()
 join WarmongeAlaisha left
 WarmongeAlaisha: ATTENTION!!!
 WarmongeAlaisha: Name's ALAISHA. I'm the Warmonger Technician of the Starspire Hunters and YOU'VE made the best mistake of your life.
-WarmongeAlaisha: You might be here for riches or adventure, but I'm here to tell you that being a Hunter is not all sunshine and rainbow.
+WarmongeAlaisha: You might be here for riches or adventure, but I'm here to tell you that being a Hunter is not all sunshine and rainbows.
 WarmongeAlaisha: IT IS PAIN. ONLY PAIN!
-WarmongeAlaisha: Okay, I might have been a little dramatic. I'll simmer down now.
-WarmongeAlaisha: ROOKIE! You're a pip-squeak! You look like you could barely hurt a fly!
-WarmongeAlaisha: Let's see what you're made of. Go beat up those mushies over there and bring me their FIBRE. PROMPTO!
+WarmongeAlaisha: Okay, I might have been a little dramatic.
+WarmongeAlaisha: ROOKIE! YOU DIDN'T BRING A WEAPON?!
+WarmongeAlaisha: You also look like you couldn't hurt a fly. Not looking so hot, I'm afraid.
+WarmongeAlaisha: Since our ranks are a little low at the moment, I'll give you a chance to show me what you're made of. Go beat up those mushies over there, pick up their FIBRE, and head over to the WEAPON CRAFTING STATION. PROMPTO!
 do CutsceneManager.zoom_camera_standard()
 [wait time="0.5"]
 do CutsceneManager.enable_player_functionality()

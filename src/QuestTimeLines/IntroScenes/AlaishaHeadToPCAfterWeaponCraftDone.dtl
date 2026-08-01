@@ -1,0 +1,5 @@
+do CutsceneManager.disable_player_functionality()
+WarmongeAlaisha: It's not much, but that stick will do you better than those excuse for fists! You have to be mad to show up here without a weapon. It's almost unheard of!
+WarmongeAlaisha: Now head to the Upgrades PC to receive the next steps for the exam.
+[wait time="1.0"]
+do CutsceneManager.enable_player_functionality()

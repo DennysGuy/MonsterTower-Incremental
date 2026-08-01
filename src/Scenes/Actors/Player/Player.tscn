@@ -60,11 +60,12 @@
 [ext_resource type="Texture2D" uid="uid://bp55p5onkrrkh" path="res://Assets/PlayerGraphics/VFX/IronBody_VFX.png" id="46_jqbe8"]
 [ext_resource type="Script" uid="uid://cvq0qwds1scf6" path="res://src/Scripts/Player/gem_chest_hit_area.gd" id="48_0hs1n"]
 [ext_resource type="Texture2D" uid="uid://b6nvmufdu1vs2" path="res://Assets/PlayerGraphics/NewPlayer/PlayerCycloneSpin.png" id="49_f7qr4"]
+[ext_resource type="Texture2D" uid="uid://3kbx5ecrbuds" path="res://Assets/PlayerGraphics/NewPlayer/PlayerJumpFail.png" id="51_4rxh1"]
 [ext_resource type="Texture2D" uid="uid://nevqk006orct" path="res://Assets/PlayerGraphics/VFX/PunchSwingEffect.png" id="53_expxj"]
 [ext_resource type="Texture2D" uid="uid://dlfu2m6gu34jj" path="res://Assets/PlayerGraphics/NewPlayer/PlayerIronBody.png" id="53_imoc0"]
 [ext_resource type="Shader" uid="uid://cguloil4ymho" path="res://src/Scripts/Shaders/HitFlash.gdshader" id="56_1kba4"]
 [ext_resource type="Texture2D" uid="uid://cx1hk3lchixqc" path="res://Assets/PlayerGraphics/NewPlayer/PlayerPunch.png" id="59_ceswy"]
-[ext_resource type="Texture2D" uid="uid://0w3eyeg5v6bf" path="res://Assets/PlayerGraphics/Outfits/AdventurersFit/AdventurersFit_Punch.png" id="60_ceswy"]
+[ext_resource type="Texture2D" uid="uid://cvx717tchelpg" path="res://Assets/PlayerGraphics/Outfits/AdventurersFit/AdventurersFit_JumpFail.png" id="62_4rxh1"]
 
 [sub_resource type="Animation" id="Animation_cq2ky"]
 resource_name = "AirAttack"
@@ -1543,6 +1544,130 @@ tracks/8/keys = {
 "values": [Vector2(1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_4rxh1"]
+resource_name = "JumpFail"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("51_4rxh1")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Sword:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Sword:hframes")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Outfit:hframes")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.0009999999),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 1]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Outfit:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.0009999999),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../Outfit:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("..:scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.13333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_a5kf2"]
 resource_name = "PickaxeSwing"
 length = 0.8
@@ -2115,6 +2240,18 @@ tracks/18/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, -32)]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("..:scale")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_c8gk4"]
@@ -3082,6 +3219,7 @@ _data = {
 &"Idle": SubResource("Animation_cgv26"),
 &"IronBody": SubResource("Animation_dg78g"),
 &"Jump": SubResource("Animation_pawjx"),
+&"JumpFail": SubResource("Animation_4rxh1"),
 &"PickaxeSwing": SubResource("Animation_a5kf2"),
 &"Punch": SubResource("Animation_expxj"),
 &"RESET": SubResource("Animation_0q2cn"),
@@ -3373,12 +3511,11 @@ position = Vector2(0, -1)
 [node name="PlayerSprite" type="Sprite2D" parent="Sprites" unique_id=1041617266]
 material = SubResource("ShaderMaterial_8o5ax")
 position = Vector2(0, -32)
-texture = ExtResource("59_ceswy")
-hframes = 5
+texture = ExtResource("51_4rxh1")
 
 [node name="Outfit" type="Sprite2D" parent="Sprites" unique_id=411712928]
 position = Vector2(0, -32)
-texture = ExtResource("60_ceswy")
+texture = ExtResource("62_4rxh1")
 
 [node name="Sword" type="Sprite2D" parent="Sprites" unique_id=1728017757]
 position = Vector2(0, -33)

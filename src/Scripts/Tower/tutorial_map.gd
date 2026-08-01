@@ -8,8 +8,10 @@ var can_enter_tower : bool = false
 @onready var sub_viewport: SubViewport = $CanvasLayer/SubViewportContainer/SubViewport
 @onready var canvas_layer: CanvasLayer = $CanvasLayer
 
-@onready var alaisha_notice: Label = $AlaishaNotice
+@onready var alaisha_notice: Label = $WarmongerSprite/AlaishaNotice
+
 @onready var sword_crafting_station_notice: Label = $SwordCraftingStationNotice
+@onready var warmonger_sprite: Sprite2D = $WarmongerSprite
 
 @onready var boat_leave_area: Area2D = $BoatLeaveArea
 
@@ -18,11 +20,20 @@ const ENTER_TOWER_FIRST_TIME_SCENE = preload("uid://gjjq2iyol2am")
 const TUTORIAL_LICENSE_NOT_ACQUIRED = preload("uid://ctit5lunlhp2n")
 const TUTORIAL_INTRO = preload("uid://du1s4dexjtxck")
 
+const MARKET_CANT_ACCESS = preload("uid://cqkfp46tew8pi")
+const ALAISHA_CRAFT_FIRST_WEAPON = preload("uid://dgrxildu3n8uw")
+const ALAISHA_HEAD_TO_PC = preload("uid://g4l6n3oxv7ee")
+const PC_CANT_ACCESS = preload("uid://buwfjrtk8enkl")
+
+
 var boat_docked : bool = true
 var can_enter_market : bool = false
 
 var can_talk_to_alaisha : bool = false
 var can_enter_sword_crafting_station : bool = false
+
+var fibre_count : int = 0
+var mushie_core_count : int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -40,6 +51,7 @@ func _ready() -> void:
 	sfx_player.play_sfx(BOAT_HORN)
 	SignalBus.spawn_enemies.emit()
 	SignalBus.start_enemy_spawn.emit()
+	CutsceneManager.tech_tree_exited_during_tutorial.connect(move_alaisha)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -50,13 +62,24 @@ func _process(delta: float) -> void:
 			Dialogic.start(TUTORIAL_LICENSE_NOT_ACQUIRED)
 	
 	if Input.is_action_just_pressed("interact") and can_enter_market:
-		spawn_grand_market()
+		if GameManager.tutorial_can_access_mart:
+			spawn_grand_market()
+		else:
+			Dialogic.start(MARKET_CANT_ACCESS)
 	
 	if Input.is_action_just_pressed("interact") and can_enter_sword_crafting_station:
 		PlayerHudSignalBus.spawn_sword_crafting_station.emit()
 	
 	if Input.is_action_just_pressed("interact") and can_talk_to_alaisha:
-		PlayerHudSignalBus.spawn_beginner_tree.emit()
+		if GameManager.tutorial_can_access_dojo:
+			#this means that we have crafted our sword, and talked to the PC once
+			PlayerHudSignalBus.spawn_beginner_tree.emit()
+		else:
+			#if we can't access the dojo that means we haven't crafted our sword yet or haven't talked to PC
+			if GameManager.tutorial_can_access_pc:
+				Dialogic.start(ALAISHA_HEAD_TO_PC)
+			else:
+				Dialogic.start(ALAISHA_CRAFT_FIRST_WEAPON)
 	
 func _on_tower_entrance_area_body_entered(body: Node2D) -> void:
 	if body is Player:
@@ -100,11 +123,11 @@ func _on_boat_leave_area_body_entered(body: Node2D) -> void:
 			sfx_player.play_sfx(BOAT_HORN)
 			animation_player.play("Boat_Out")
 			boat_docked = false
+		GameManager.in_tech_tree_tutorial = true
 		Dialogic.start(TUTORIAL_INTRO)
 		await get_tree().process_frame
 		boat_leave_area.queue_free()
 		
-
 func _on_mobile_shop_area_body_entered(body: Node2D) -> void:
 	if body is Player:
 		can_enter_market = true
@@ -138,3 +161,6 @@ func _on_alaisha_area_body_exited(body: Node2D) -> void:
 	if body is Player:
 		can_talk_to_alaisha = false
 		alaisha_notice.hide()
+
+func move_alaisha() -> void:
+	warmonger_sprite.global_position = Vector2i(3005,435)

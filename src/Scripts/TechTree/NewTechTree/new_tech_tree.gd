@@ -44,6 +44,7 @@ const CLICK_NODE = preload("uid://bawqj0b2h6vsu")
 
 const TECH_TREE_EXPLANATION = preload("uid://g6243qefq3ht")
 const REPEAT_UNLOCK_STEPS = preload("uid://cfiuejjnr0kej")
+const ALAISHA_UNLOCK_FIRST_ABILITY = preload("uid://dvdnp50g15r6s")
 
 var can_close = true
 
@@ -306,6 +307,12 @@ func close_out() -> void:
 	music_player.stop()
 	play_sfx(EXIT_TECH_TREE)
 	MusicPlayer.unpause_music()
+	
+	if GameManager.in_tech_tree_tutorial and !GameManager.tutorial_can_access_dojo:
+		Dialogic.start(ALAISHA_UNLOCK_FIRST_ABILITY)
+		GameManager.tutorial_can_access_dojo = true
+		CutsceneManager.tech_tree_exited_during_tutorial.emit()
+	
 	if station_unlock_available():
 		TechTreeManager.unlock_station.emit()
 	#sfx_player.play_sfx(CLOSE_UPGRADE_PC)

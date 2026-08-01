@@ -1,0 +1,5 @@
+do CutsceneManager.disable_player_functionality()
+WarmongeAlaisha: I noticed you're struggling a bit in the physique deparment. Having trouble reaching those ladders, huh?
+WarmongeAlaisha: Head on over to my location, and I'll teach you a thing or two about how to move vertically more effectively!
+[wait time="1.0"]
+do CutsceneManager.enable_player_functionality()

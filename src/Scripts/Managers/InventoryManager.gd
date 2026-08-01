@@ -164,7 +164,6 @@ func remove_item_from_slot(slot_index : int, inventory_name : String, quantity :
 			check_for_notification(selected_slot["item"])
 			update_inventories(inventory_name)
 			
-			
 		SignalBus.update_resource_needed_panel.emit()
 		QuestManager.decrement_task_item_gather_count.emit(selected_slot["item"])
 		return true

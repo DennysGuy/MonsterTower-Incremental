@@ -9,15 +9,22 @@ class_name PlayerJump extends State
 @export var dash_attack : State
 
 func enter() -> void:
-	super()
 	parent.can_knock_back = true
 	parent.sfx_player.play_sfx(jump_sfx)
-	parent.set_sword_texture(animation_name)
-	parent.set_outfit_texture(animation_name)
+
 	parent.double_jump_buffer = parent.double_jump_buffer_wait_time
 	parent.velocity.y = 0
-	parent.velocity.y -= (PlayerStats.player_stats["Jump Height"] +PlayerStats.get_current_sword().get_total_jump_height_bonus())
+	if !PlayerStats.facilities_unlocked["Jump"]:
+		animation_name = "JumpFail"
+		parent.velocity.y -= 80
+		
+	else:
+		animation_name = "Jump"
+		parent.velocity.y -= (PlayerStats.player_stats["Jump Height"] +PlayerStats.get_current_sword().get_total_jump_height_bonus())
 	parent.early_jump_cancel_timer = 0.05
+	parent.animation_player.play(animation_name)
+	parent.set_sword_texture(animation_name)
+	parent.set_outfit_texture(animation_name)
 
 func exit() -> void:
 	pass

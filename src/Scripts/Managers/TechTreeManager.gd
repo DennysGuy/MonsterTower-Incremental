@@ -52,6 +52,9 @@ signal play_license_upgrade_sequence
 @warning_ignore("unused_signal")
 signal check_for_tech_node_purchases
 
+@warning_ignore("unused_signal")
+signal jump_node_unlocked
+
 var currency : int = 0
 var current_prestige : int = 0
 
@@ -89,6 +92,7 @@ enum TECH_NODE_TYPE {ABILITY, FACILITY, CLASS_ABILITY}
 	"Jump Height 1":0,
 	"Jump Height 2":0,
 	"Jump Height 3":0,
+	"Jump":0,
 	"Max HP 1":0,
 	"Max HP 2": 0,
 	"Max MP 1":0,

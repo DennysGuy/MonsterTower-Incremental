@@ -1,31 +1,40 @@
 class_name BeginnerTechTree extends Node2D
 
-@onready var class_selection_node: ClassSelectionNode = $ClassSelectionNode
+@onready var class_selection_node: ClassSelectionNode = $BeginnerNodes/ClassSelectionNode
 @onready var available_ap_label: Label = $CanvasLayer/AvailableAPLabel
 @onready var marker_2d: Marker2D = $CanvasLayer/Marker2D
 @onready var canvas_layer: CanvasLayer = $CanvasLayer
 @onready var camera_2d: Camera2D = $Camera2D
+@onready var beginner_nodes: Control = $BeginnerNodes
+@onready var jump_node: TechNode = $JumpNode
+
+const ALAISHA_SELL_CORES_UNLOCK_NODE = preload("uid://bc10shbahumu7")
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	TechTreeManager.check_if_can_show_class_select_node.connect(check_to_unveil_class_selection_node)
 	TechTreeManager.update_available_ap_label.connect(update_ap_available)
 	TechTreeManager.add_tool_tip.connect(add_tool_tip)
+	TechTreeManager.jump_node_unlocked.connect(update_nodes)
 	update_ap_available()
 	check_to_unveil_class_selection_node()
 	camera_2d.make_current()
-
+	
+	if GameManager.in_tech_tree_tutorial and !PlayerStats.facilities_unlocked["Jump"]:
+		jump_node.show()
+	else:
+		beginner_nodes.show()
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("close_menu"):
 		close_out()
 
-
 func check_to_unveil_class_selection_node() -> void:
 	if PlayerStats.facilities_unlocked["Arial Slash"] and PlayerStats.facilities_unlocked["Dash"] and PlayerStats.facilities_unlocked["Double Jump"]:
 		QuestManager.check_general_task_for_completion.emit("Unlock All Base Abilities")
 		class_selection_node.show()
-
 
 func close_out() -> void:
 	
@@ -39,6 +48,11 @@ func close_out() -> void:
 	SignalBus.hide_tech_tree_canvas_layer.emit()
 	if PlayerStats.player_stats["Ability Points"] <= 0:
 		HubManager.hide_facility_notification.emit("Class Advance Center")
+	
+	if GameManager.in_tech_tree_tutorial and !GameManager.tutorial_can_access_mart:
+		GameManager.tutorial_can_access_mart = true
+		Dialogic.start(ALAISHA_SELL_CORES_UNLOCK_NODE)
+	
 	queue_free()
 
 func update_ap_available() -> void:
@@ -48,6 +62,11 @@ func add_tool_tip(tool_tip : ToolTip, on_right_hand : bool) -> void:
 	tool_tip.position = marker_2d.position
 	canvas_layer.add_child(tool_tip)
 
+func update_nodes() -> void:
+	await get_tree().create_timer(1.0).timeout
+	jump_node.hide()
+	await get_tree().create_timer(0.5).timeout
+	beginner_nodes.show()
 
 func _on_exit_button_button_up() -> void:
 	close_out()

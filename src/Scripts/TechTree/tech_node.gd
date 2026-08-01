@@ -353,6 +353,9 @@ func _on_gui_input(event: InputEvent) -> void:
 			if node_type == TechTreeManager.TECH_NODE_TYPE.CLASS_ABILITY and PlayerStats.player_stats["Class"] == "Junior Hunter":
 				TechTreeManager.check_if_can_show_class_select_node.emit()
 			
+			if GameManager.in_tech_tree_tutorial and tech_node_stats.node_name == "Jump":
+				TechTreeManager.jump_node_unlocked.emit()
+			
 			SaveManager.save_tech_tree_data()
 			SaveManager.save_player_stats()
 			SaveManager.save_inventories()

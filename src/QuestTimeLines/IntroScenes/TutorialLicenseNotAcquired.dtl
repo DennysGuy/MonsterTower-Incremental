@@ -1,4 +1,4 @@
 do CutsceneManager.disable_player_functionality()
 join TowerGuide right [animation="Slide In Up" wait="true" mirrored="true"]
-TowerGuide: Please access the computer terminal behind you to acquire your official Hunter License and purchase the 'Attack 1' node. Thanks!
+TowerGuide: Complete the Hunter Exam to gain access to the Tower!
 do CutsceneManager.enable_player_functionality()

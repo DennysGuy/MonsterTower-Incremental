@@ -28,6 +28,10 @@ var can_sprint : bool = false
 var remaining_bolt_chain_links : int = 0
 var event_multiplier : float = 1.0
 
+var tutorial_can_access_dojo : bool = false
+var tutorial_can_access_mart : bool = false
+var tutorial_can_access_pc : bool = false
+
 var first_class_just_unlocked : bool = false
 var first_quest_just_unlocked : bool = false
 var floor_2_just_reached : bool = false

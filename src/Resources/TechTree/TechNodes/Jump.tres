@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="TechNodeStats" format=3 uid="uid://d0trkofh7kf0p"]
+
+[ext_resource type="Texture2D" uid="uid://cacs4uia8kh7t" path="res://Assets/TechTree/CombatNodes/Jump_Node_Disabled_Graphic.png" id="1_ekh7y"]
+[ext_resource type="Texture2D" uid="uid://c88l1odaiobj0" path="res://Assets/TechTree/CombatNodes/Jump_Node_Graphic.png" id="2_mx1yo"]
+[ext_resource type="Script" uid="uid://c1rp1jxyuhhjk" path="res://src/Resources/TechTree/tech_node_stats.gd" id="3_wj57k"]
+
+[resource]
+script = ExtResource("3_wj57k")
+node_name = "Jump"
+icon = ExtResource("2_mx1yo")
+disabled_icon = ExtResource("1_ekh7y")
+description = "Gives you the ability to jump. Just like a normal human being can, I suppose."
+unlocked = true
+node_type = 2
+stat_name = "Jump"
+prereqs = Array[String](["Jump Height 1:1"])
+metadata/_custom_type_script = "uid://c1rp1jxyuhhjk"
