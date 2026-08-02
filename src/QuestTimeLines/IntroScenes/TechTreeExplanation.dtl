@@ -1,16 +1,13 @@
 TerminalComputer: Registering new Hunter candidate...
-TerminalComputer: You have now begun the Hunter's Exam. Listen closely.
 TerminalComputer: This terminal is reserved for all registered Hunters and is intended for internal use only.
 TerminalComputer: Through this terminal, you will become a more powerful Hunter and be granted access to the facilities that will assist you on your climb expeditions.
-TerminalComputer: At the top, you will see six colored buttons, each representing a particular skill category. Click on anyone of them to bring up a categories tech tree at any given point.
-[wait time="1.0" skippable="true"]
 [wait time="1.0" skippable="true"]
 do CutsceneManager.show_combat_tech_tree()
 TerminalComputer: In front of you is a basic 'Attack' Node. Once purchased, it will improve your base damage to monsters by a percentage.
 if {current_spirol} >= 50.0:
 	TerminalComputer: It appears you have acquired enough spirol to purchase this node. Go ahead and purchase the 'Attack 1' Node.
 else:
-	TerminalComputer: Hunt those three Mushies behind you. Sell their loot to the merchant and report back here to purchase the node.
+	TerminalComputer: Hunt those three Mushies up on the ledge, sell their cores to the merchant, and report back here to purchase the node.
 	TerminalComputer: Good luck.
 [wait time="1.0"]
 do CutsceneManager.enable_close_button()

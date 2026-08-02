@@ -672,7 +672,7 @@ sources/1 = SubResource("TileSetAtlasSource_d72hs")
 size = Vector2(5.674991, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l6435"]
-size = Vector2(172, 145)
+size = Vector2(127, 145)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g8ukf"]
 size = Vector2(96, 110)
@@ -687,7 +687,7 @@ size = Vector2(186, 76)
 size = Vector2(89, 46)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5xris"]
-size = Vector2(102, 64)
+size = Vector2(117, 64)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jhqac"]
 size = Vector2(20, 375)
@@ -713,9 +713,9 @@ sfx_player = NodePath("SfxPlayer")
 position = Vector2(682, 97)
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=626834970]
-offset_left = 32.0
+offset_left = 64.0
 offset_top = 216.0
-offset_right = 2781.0
+offset_right = 2813.0
 offset_bottom = 1024.0
 stretch = true
 
@@ -847,7 +847,7 @@ tile_set = ExtResource("3_oik5f")
 
 [node name="CliffBG" type="TileMapLayer" parent="TileSets" unique_id=2106598007]
 modulate = Color(0.8217887, 0.8217887, 0.8217885, 1)
-tile_map_data = PackedByteArray("AAAHAAkAAQAAAAEAAAAIAAkAAQABAAEAAAAHAAgAAQAAAAEAAAAIAAgAAQABAAEAAAAFAAgAAQAAAAEAAAAGAAgAAQABAAEAAAAFAAkAAQAAAAEAAAAGAAkAAQABAAEAAAADAAgAAQAAAAEAAAAEAAgAAQABAAEAAAADAAkAAQAAAAEAAAAEAAkAAQABAAEAAAABAAgAAQABAAEAAAACAAgAAQABAAEAAAABAAkAAQABAAEAAAACAAkAAQABAAEAAAAAAAgAAQAAAAEAAAAAAAkAAQAAAAEAAAAAAAcAAQAAAAAAAAABAAcAAQABAAAAAAACAAcAAQAAAAAAAAADAAcAAQABAAAAAAAEAAcAAQAAAAAAAAAFAAcAAQABAAAAAAAGAAcAAQAAAAAAAAAHAAcAAQABAAAAAAAIAAcAAQABAAAAAAAJAAkAAQAAAAEAAAAKAAkAAQABAAEAAAALAAkAAQAAAAEAAAAMAAkAAQABAAEAAAALAAgAAQAAAAAAAAAMAAgAAQABAAAAAAAJAAgAAQAAAAAAAAAKAAgAAQABAAAAAAANAAgAAQABAAAAAAANAAkAAQABAAEAAAAOAAgAAQAAAAAAAAAOAAkAAQAAAAEAAAAbABAAAwABAAYAAAAbABIAAwABAAYAAAAbABQAAwABAAYAAAAcABAAAwACAAYAAAAcABIAAwACAAYAAAAcABQAAwACAAYAAAAdABAAAwAHAAYAAAAdABIAAwAHAAYAAAAdABQAAwAHAAYAAAAeABAAAwABAAgAAAAeABEAAwABAAkAAAAeABIAAwABAAYAAAAeABMAAwABAAcAAAAeABQAAwABAAgAAAAeABUAAwABAAkAAAAfABAAAwACAAgAAAAfABEAAwACAAkAAAAfABIAAwACAAYAAAAfABMAAwACAAcAAAAfABQAAwACAAgAAAAfABUAAwACAAkAAAAgABAAAwADAAgAAAAgABEAAwADAAkAAAAgABIAAwADAAYAAAAgABMAAwADAAcAAAAgABQAAwADAAgAAAAgABUAAwADAAkAAAAhABAAAwAEAAgAAAAhABEAAwAEAAkAAAAhABIAAwAEAAYAAAAhABMAAwAEAAcAAAAhABQAAwAEAAgAAAAhABUAAwAEAAkAAAAiABAAAwAFAAgAAAAiABEAAwAFAAkAAAAiABIAAwAFAAYAAAAiABMAAwAFAAcAAAAiABQAAwAFAAgAAAAiABUAAwAFAAkAAAAjABAAAwAGAAgAAAAjABEAAwAGAAkAAAAjABIAAwAGAAYAAAAjABMAAwAGAAcAAAAjABQAAwAGAAgAAAAjABUAAwAGAAkAAAAkABAAAwACAAgAAAAkABEAAwACAAkAAAAkABIAAwACAAYAAAAkABMAAwACAAcAAAAkABQAAwACAAgAAAAkABUAAwACAAkAAAAlABAAAwADAAgAAAAlABEAAwADAAkAAAAlABIAAwADAAYAAAAlABMAAwADAAcAAAAlABQAAwADAAgAAAAlABUAAwADAAkAAAAmABAAAwAEAAgAAAAmABEAAwAEAAkAAAAmABIAAwAEAAYAAAAmABMAAwAEAAcAAAAmABQAAwAEAAgAAAAmABUAAwAEAAkAAAAnABAAAwAFAAgAAAAnABEAAwAFAAkAAAAnABIAAwAFAAYAAAAnABMAAwAFAAcAAAAnABQAAwAFAAgAAAAnABUAAwAFAAkAAAAoABAAAwAGAAgAAAAoABEAAwAGAAkAAAAoABIAAwAGAAYAAAAoABMAAwAGAAcAAAAoABQAAwAGAAgAAAAoABUAAwAGAAkAAAApABAAAwACAAgAAAApABEAAwACAAkAAAApABIAAwACAAYAAAApABMAAwACAAcAAAApABQAAwACAAgAAAApABUAAwACAAkAAAAqABAAAwADAAgAAAAqABEAAwADAAkAAAAqABIAAwADAAYAAAAqABMAAwADAAcAAAAqABQAAwADAAgAAAAqABUAAwADAAkAAAArABAAAwAEAAgAAAArABEAAwAEAAkAAAArABIAAwAEAAYAAAArABMAAwAEAAcAAAArABQAAwAEAAgAAAArABUAAwAEAAkAAAAsABAAAwAFAAgAAAAsABEAAwAFAAkAAAAsABIAAwAFAAYAAAAsABMAAwAFAAcAAAAsABQAAwAFAAgAAAAsABUAAwAFAAkAAAAtABAAAwAGAAgAAAAtABEAAwAGAAkAAAAtABIAAwAGAAYAAAAtABMAAwAGAAcAAAAtABQAAwAGAAgAAAAtABUAAwAGAAkAAAAuABAAAwAHAAgAAAAuABEAAwAHAAkAAAAuABIAAwAHAAYAAAAuABMAAwAHAAcAAAAuABQAAwAHAAgAAAAuABUAAwAHAAkAAAA=")
+tile_map_data = PackedByteArray("AAAHAAkAAQAAAAEAAAAIAAkAAQABAAEAAAAHAAgAAQAAAAEAAAAIAAgAAQABAAEAAAAFAAgAAQAAAAEAAAAGAAgAAQABAAEAAAAFAAkAAQAAAAEAAAAGAAkAAQABAAEAAAADAAgAAQAAAAEAAAAEAAgAAQABAAEAAAADAAkAAQAAAAEAAAAEAAkAAQABAAEAAAABAAgAAQABAAEAAAACAAgAAQABAAEAAAABAAkAAQABAAEAAAACAAkAAQABAAEAAAAAAAgAAQAAAAEAAAAAAAkAAQAAAAEAAAAAAAcAAQAAAAAAAAABAAcAAQABAAAAAAACAAcAAQAAAAAAAAADAAcAAQABAAAAAAAEAAcAAQAAAAAAAAAFAAcAAQABAAAAAAAGAAcAAQAAAAAAAAAHAAcAAQABAAAAAAAIAAcAAQABAAAAAAAJAAkAAQAAAAEAAAAKAAkAAQABAAEAAAALAAkAAQAAAAEAAAAMAAkAAQABAAEAAAALAAgAAQAAAAAAAAAMAAgAAQABAAAAAAAJAAgAAQAAAAAAAAAKAAgAAQABAAAAAAANAAgAAQABAAAAAAANAAkAAQABAAEAAAAOAAgAAQAAAAAAAAAOAAkAAQAAAAEAAAAhABAAAwABAAgAAAAhABEAAwABAAkAAAAhABIAAwABAAYAAAAhABMAAwABAAcAAAAhABQAAwABAAgAAAAhABUAAwABAAkAAAAiABAAAwACAAgAAAAiABEAAwACAAkAAAAiABIAAwACAAYAAAAiABMAAwACAAcAAAAiABQAAwACAAgAAAAiABUAAwACAAkAAAAjABAAAwADAAgAAAAjABEAAwADAAkAAAAjABIAAwADAAYAAAAjABMAAwADAAcAAAAjABQAAwADAAgAAAAjABUAAwADAAkAAAAkABAAAwAEAAgAAAAkABEAAwAEAAkAAAAkABIAAwAEAAYAAAAkABMAAwAEAAcAAAAkABQAAwAEAAgAAAAkABUAAwAEAAkAAAAlABAAAwAFAAgAAAAlABEAAwAFAAkAAAAlABIAAwAFAAYAAAAlABMAAwAFAAcAAAAlABQAAwAFAAgAAAAlABUAAwAFAAkAAAAmABAAAwAGAAgAAAAmABEAAwAGAAkAAAAmABIAAwAGAAYAAAAmABMAAwAGAAcAAAAmABQAAwAGAAgAAAAmABUAAwAGAAkAAAAnABAAAwACAAgAAAAnABEAAwACAAkAAAAnABIAAwACAAYAAAAnABMAAwACAAcAAAAnABQAAwACAAgAAAAnABUAAwACAAkAAAAoABAAAwADAAgAAAAoABEAAwADAAkAAAAoABIAAwADAAYAAAAoABMAAwADAAcAAAAoABQAAwADAAgAAAAoABUAAwADAAkAAAApABAAAwAEAAgAAAApABEAAwAEAAkAAAApABIAAwAEAAYAAAApABMAAwAEAAcAAAApABQAAwAEAAgAAAApABUAAwAEAAkAAAAqABAAAwAFAAgAAAAqABEAAwAFAAkAAAAqABIAAwAFAAYAAAAqABMAAwAFAAcAAAAqABQAAwAFAAgAAAAqABUAAwAFAAkAAAArABAAAwAGAAgAAAArABEAAwAGAAkAAAArABIAAwAGAAYAAAArABMAAwAGAAcAAAArABQAAwAGAAgAAAArABUAAwAGAAkAAAAsABAAAwACAAgAAAAsABEAAwACAAkAAAAsABIAAwACAAYAAAAsABMAAwACAAcAAAAsABQAAwACAAgAAAAsABUAAwACAAkAAAAtABAAAwADAAgAAAAtABEAAwADAAkAAAAtABIAAwADAAYAAAAtABMAAwADAAcAAAAtABQAAwADAAgAAAAtABUAAwADAAkAAAAuABAAAwAEAAgAAAAuABEAAwAEAAkAAAAuABIAAwAEAAYAAAAuABMAAwAEAAcAAAAuABQAAwAEAAgAAAAuABUAAwAEAAkAAAAvABAAAwAFAAgAAAAvABEAAwAFAAkAAAAvABIAAwAFAAYAAAAvABMAAwAFAAcAAAAvABQAAwAFAAgAAAAvABUAAwAFAAkAAAAwABAAAwAGAAgAAAAwABEAAwAGAAkAAAAwABIAAwAGAAYAAAAwABMAAwAGAAcAAAAwABQAAwAGAAgAAAAwABUAAwAGAAkAAAAxABAAAwAHAAgAAAAxABEAAwAHAAkAAAAxABIAAwAHAAYAAAAxABMAAwAHAAcAAAAxABQAAwAHAAgAAAAxABUAAwAHAAkAAAAeABAAAwABAAYAAAAeABIAAwABAAYAAAAeABQAAwABAAYAAAAfABAAAwACAAYAAAAfABIAAwACAAYAAAAfABQAAwACAAYAAAAgABAAAwAHAAYAAAAgABIAAwAHAAYAAAAgABQAAwAHAAYAAAA=")
 tile_set = SubResource("TileSet_jhqac")
 
 [node name="CliffBG2" type="TileMapLayer" parent="TileSets" unique_id=12005452]
@@ -856,7 +856,7 @@ tile_map_data = PackedByteArray("AAAHAAkAAQAAAAEAAAAIAAkAAQABAAEAAAAHAAgAAQAAAAE
 tile_set = SubResource("TileSet_jhqac")
 
 [node name="CliffPlatform" type="TileMapLayer" parent="TileSets" unique_id=1205144951]
-tile_map_data = PackedByteArray("AAAbABAAAgABAAUAAAAcABAAAgACAAUAAAAdABAAAgAHAAUAAAAeABAAAgABAAUAAAAfABAAAgACAAUAAAAgABAAAgADAAUAAAAhABAAAgAEAAUAAAAiABAAAgAFAAUAAAAjABAAAgAGAAUAAAAkABAAAgACAAUAAAAlABAAAgADAAUAAAAmABAAAgAEAAUAAAAnABAAAgAFAAUAAAAoABAAAgAGAAUAAAApABAAAgACAAUAAAAqABAAAgADAAUAAAAbAA8AAgABAAQAAAAbABEAAgABAAQAAAAbABIAAgABAAUAAAAbABMAAgABAAQAAAAbABQAAgABAAUAAAAcAA8AAgACAAQAAAAcABEAAgACAAQAAAAcABIAAgACAAUAAAAcABMAAgACAAQAAAAcABQAAgACAAUAAAAdAA8AAgAHAAQAAAAdABEAAgAHAAQAAAAdABIAAgAHAAUAAAAdABMAAgAHAAQAAAAdABQAAgAHAAUAAAArABAAAgAEAAUAAAAsABAAAgAFAAUAAAAtABAAAgAGAAUAAAAuABAAAgAHAAUAAAA=")
+tile_map_data = PackedByteArray("AAAhABAAAgABAAUAAAAiABAAAgACAAUAAAAjABAAAgADAAUAAAAkABAAAgAEAAUAAAAlABAAAgAFAAUAAAAmABAAAgAGAAUAAAAnABAAAgACAAUAAAAoABAAAgADAAUAAAApABAAAgAEAAUAAAAqABAAAgAFAAUAAAArABAAAgAGAAUAAAAsABAAAgACAAUAAAAtABAAAgADAAUAAAAuABAAAgAEAAUAAAAvABAAAgAFAAUAAAAwABAAAgAGAAUAAAAxABAAAgAHAAUAAAAeAA8AAgABAAQAAAAeABAAAgABAAUAAAAeABEAAgABAAQAAAAeABIAAgABAAUAAAAeABMAAgABAAQAAAAeABQAAgABAAUAAAAfAA8AAgACAAQAAAAfABAAAgACAAUAAAAfABEAAgACAAQAAAAfABIAAgACAAUAAAAfABMAAgACAAQAAAAfABQAAgACAAUAAAAgAA8AAgAHAAQAAAAgABAAAgAHAAUAAAAgABEAAgAHAAQAAAAgABIAAgAHAAUAAAAgABMAAgAHAAQAAAAgABQAAgAHAAUAAAA=")
 tile_set = SubResource("TileSet_te0bi")
 
 [node name="Ladders" type="TileMapLayer" parent="TileSets" unique_id=762703337]
@@ -900,7 +900,7 @@ smoothing_distance = 6
 room_width = 2000
 
 [node name="TowerArea" type="Area2D" parent="." unique_id=409021533]
-position = Vector2(1440.0001, 657)
+position = Vector2(1496.0001, 657)
 scale = Vector2(20, 10)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TowerArea" unique_id=1322178143]
@@ -917,7 +917,7 @@ hover_speed = 1.0
 base_offset = 5.0
 
 [node name="TowerGuideSprite" parent="." unique_id=1901348219 instance=ExtResource("9_636af")]
-position = Vector2(1424, 671)
+position = Vector2(1488, 671)
 
 [node name="GrandMarketPosition" type="Marker2D" parent="." unique_id=723859068 groups=["GrandMarketPosition"]]
 position = Vector2(638, 598)
@@ -932,7 +932,7 @@ position = Vector2(664, 622)
 script = ExtResource("17_hw86b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GrandMarketArea" unique_id=495718423]
-position = Vector2(-1, 2)
+position = Vector2(-23.5, 2)
 shape = SubResource("RectangleShape2D_l6435")
 
 [node name="MarketKioskeArea" type="Area2D" parent="." unique_id=1827935840]
@@ -993,14 +993,14 @@ horizontal_alignment = 1
 position = Vector2(1040, 680)
 
 [node name="SwordCraftingStationPosition" type="Node2D" parent="." unique_id=333549657]
-position = Vector2(1784, 528)
+position = Vector2(1920, 528)
 
 [node name="CookingStation" parent="." unique_id=179535965 instance=ExtResource("33_d6jc3")]
 position = Vector2(1016, 704)
 station_type = 1
 
 [node name="Refinery" parent="." unique_id=763505504 instance=ExtResource("33_d6jc3")]
-position = Vector2(1775, 704)
+position = Vector2(1872, 704)
 
 [node name="AccessSmeltingStation" type="Label" parent="." unique_id=1102055337]
 visible = false
@@ -1016,19 +1016,8 @@ text = "Press 'E' to Access SmeltingStation"
 horizontal_alignment = 1
 
 [node name="Dojo" type="Sprite2D" parent="." unique_id=1624820246]
-position = Vector2(2412, 623)
+position = Vector2(2498, 622)
 texture = ExtResource("25_nj75w")
-
-[node name="DojoAccessNotification" type="Label" parent="Dojo" unique_id=36395431]
-visible = false
-offset_left = -109.0
-offset_top = -15.0
-offset_right = 43.0
-offset_bottom = 1.0
-theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("27_e7ku4")
-theme_override_font_sizes/font_size = 16
-text = "Reach level 10 to access"
 
 [node name="DojoArea" type="Area2D" parent="Dojo" unique_id=1544644604]
 position = Vector2(-32, 23)
@@ -1048,7 +1037,7 @@ offset_left = -20.0
 offset_right = 20.0
 
 [node name="Tag" parent="Dojo/NameTag/Bg" index="0" unique_id=725373759]
-text = "Dojo"
+text = "Dojo (Depricated)"
 
 [node name="ArrowAtOre" parent="Dojo" unique_id=1275117717 instance=ExtResource("36_hw86b")]
 visible = true
@@ -1056,10 +1045,10 @@ position = Vector2(-33, -22)
 base_offset = 30.0
 
 [node name="DojoPosition" type="Node2D" parent="." unique_id=1300992314]
-position = Vector2(2384, 680)
+position = Vector2(1232, 704)
 
 [node name="SmithingStation" parent="." unique_id=1664193682 instance=ExtResource("21_bl45m")]
-position = Vector2(1981, 431)
+position = Vector2(1984, 431)
 
 [node name="NameTag" parent="SmithingStation" unique_id=1368015789 instance=ExtResource("19_bl45m")]
 offset_left = -22.0
@@ -1071,7 +1060,7 @@ offset_bottom = 96.0
 text = "Sword Crafting Station"
 
 [node name="GemStoneStation" type="Sprite2D" parent="." unique_id=314729123]
-position = Vector2(1785, 459.5)
+position = Vector2(1848, 459.5)
 texture = ExtResource("33_0u15j")
 script = ExtResource("29_4qs0c")
 
@@ -1103,21 +1092,21 @@ text = "Press 'E' to Access
 Upgrade Station"
 
 [node name="GemStoneStationArea" type="Area2D" parent="." unique_id=1774385008]
-position = Vector2(1786, 501)
+position = Vector2(1848, 501)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GemStoneStationArea" unique_id=1809110870]
 position = Vector2(1, -12)
 shape = SubResource("RectangleShape2D_d6jc3")
 
 [node name="CraftingStationArea" type="Area2D" parent="." unique_id=1122809104]
-position = Vector2(2001, 485)
+position = Vector2(2008, 485)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CraftingStationArea" unique_id=1510897452]
-position = Vector2(2, -5)
+position = Vector2(-5.5, -5)
 shape = SubResource("RectangleShape2D_5xris")
 
 [node name="TechTreeComputer" parent="." unique_id=1878856969 instance=ExtResource("4_cldp6")]
-position = Vector2(1536, 703)
+position = Vector2(1624, 703)
 
 [node name="NameTag4" parent="TechTreeComputer" unique_id=1013242585 instance=ExtResource("19_bl45m")]
 offset_left = -48.0
@@ -1128,9 +1117,9 @@ offset_right = 40.0
 text = "Upgrades PC"
 
 [node name="UpgradesPCNotice3" parent="." unique_id=1340485041 instance=ExtResource("23_0u15j")]
-offset_left = 1456.0
+offset_left = 1536.0
 offset_top = 558.0
-offset_right = 1610.0
+offset_right = 1690.0
 offset_bottom = 703.0
 facility_name = "Upgrades PC"
 
@@ -1148,10 +1137,9 @@ text = "Press 'E' to Access Sword Crafting Station"
 horizontal_alignment = 1
 
 [node name="GuideLog" type="Label" parent="." unique_id=1041000846]
-visible = false
-offset_left = 1228.0
+offset_left = 1328.0
 offset_top = 598.0
-offset_right = 1529.0
+offset_right = 1629.0
 offset_bottom = 615.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -1199,7 +1187,8 @@ position = Vector2(145, -177.5)
 shape = SubResource("RectangleShape2D_jhqac")
 
 [node name="DirectionSignMessage" type="Sprite2D" parent="." unique_id=505619255]
-position = Vector2(2548, 604)
+visible = false
+position = Vector2(2632, 604)
 texture = ExtResource("29_hk4f7")
 flip_h = true
 
@@ -1223,10 +1212,10 @@ AP"
 metadata/_edit_use_anchors_ = true
 
 [node name="PlayerSpawnPoint" parent="." unique_id=2052586156 instance=ExtResource("30_cxssj")]
-position = Vector2(1304, 704)
+position = Vector2(1360, 704)
 
 [node name="RefineryPosition" type="Node2D" parent="." unique_id=1121494031]
-position = Vector2(1888, 672)
+position = Vector2(2000, 672)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=842259970]
 visible = false
@@ -1252,30 +1241,30 @@ size = Vector2i(640, 360)
 render_target_update_mode = 0
 
 [node name="WeaponCraftingStationNotice" parent="." unique_id=562227682 instance=ExtResource("23_0u15j")]
-offset_left = 1929.0
+offset_left = 1936.0
 offset_top = 351.0
-offset_right = 2083.0
+offset_right = 2090.0
 offset_bottom = 496.0
 facility_name = "Weapon Crafting Station"
 
 [node name="JobBoardTrackingNotice" parent="." unique_id=408095664 instance=ExtResource("23_0u15j")]
-offset_left = 1923.0
+offset_left = 2104.0
 offset_top = 535.0
-offset_right = 2077.0
+offset_right = 2258.0
 offset_bottom = 680.0
 facility_name = "Job Requests Board"
 
 [node name="GemStoneStationNotice" parent="." unique_id=317350291 instance=ExtResource("23_0u15j")]
-offset_left = 1711.0
+offset_left = 1776.0
 offset_top = 331.0
-offset_right = 1865.0
+offset_right = 1930.0
 offset_bottom = 476.0
 facility_name = "Gem Stone Station"
 
 [node name="SmeltingStationNotice" parent="." unique_id=20813922 instance=ExtResource("23_0u15j")]
-offset_left = 1698.0
+offset_left = 1800.0
 offset_top = 492.0
-offset_right = 1852.0
+offset_right = 1954.0
 offset_bottom = 637.0
 facility_name = "Smelting Station"
 
@@ -1285,13 +1274,6 @@ offset_top = 507.0
 offset_right = 1098.0
 offset_bottom = 652.0
 facility_name = "Junk-A-Tron"
-
-[node name="ClassAdvanceCenterNotice" parent="." unique_id=9896759 instance=ExtResource("23_0u15j")]
-offset_left = 2303.0
-offset_top = 451.0
-offset_right = 2457.0
-offset_bottom = 596.0
-facility_name = "Class Advance Center"
 
 [node name="BulkSellerNotice" parent="." unique_id=512282250 instance=ExtResource("23_0u15j")]
 offset_left = 563.0
@@ -1333,7 +1315,7 @@ theme_override_fonts/font = ExtResource("27_e7ku4")
 text = "Press E to enter Trade Kioske"
 
 [node name="ChestSpawnMarker" type="Marker2D" parent="." unique_id=1354292684]
-position = Vector2(1715, 507)
+position = Vector2(1792, 507)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1529112079]
 position = Vector2(828, 366)
@@ -1342,7 +1324,7 @@ position = Vector2(828, 366)
 shape = SubResource("RectangleShape2D_hw86b")
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=343085765]
-position = Vector2(1861, 0)
+position = Vector2(1944, 0)
 collision_layer = 18
 collision_mask = 18
 
@@ -1352,19 +1334,19 @@ shape = SubResource("RectangleShape2D_y20fx")
 one_way_collision = true
 
 [node name="TaskBoard" parent="." unique_id=2038982980 instance=ExtResource("37_4qs0c")]
-position = Vector2(1999, 704)
+position = Vector2(2176, 704)
 
 [node name="NameTag" parent="." unique_id=1996143425 instance=ExtResource("19_bl45m")]
-offset_left = 1377.0
+offset_left = 1440.0
 offset_top = 705.0
-offset_right = 1485.0
+offset_right = 1548.0
 offset_bottom = 721.0
 
 [node name="Tag" parent="NameTag/Bg" parent_id_path=PackedInt32Array(1996143425, 305804188) index="0" unique_id=725373759]
 text = "Tower Entrance"
 
 [node name="WarmongerSprite" type="Sprite2D" parent="." unique_id=1287124457]
-position = Vector2(1176, 668)
+position = Vector2(1232, 668)
 texture = ExtResource("38_g8ukf")
 flip_h = true
 
@@ -1408,6 +1390,17 @@ offset_right = 46.0
 offset_bottom = -49.0
 facility_name = "Class Advance Center"
 
+[node name="DojoAccessNotification" type="Label" parent="WarmongerSprite" unique_id=36395431]
+visible = false
+offset_left = -72.0
+offset_top = -60.0
+offset_right = 80.0
+offset_bottom = -44.0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("27_e7ku4")
+theme_override_font_sizes/font_size = 16
+text = "Reach level 10 to access"
+
 [connection signal="body_entered" from="TowerArea" to="." method="_on_tower_area_body_entered"]
 [connection signal="body_exited" from="TowerArea" to="." method="_on_tower_area_body_exited"]
 [connection signal="body_entered" from="GrandMarketArea" to="." method="_on_grand_market_area_body_entered"]
@@ -1421,6 +1414,8 @@ facility_name = "Class Advance Center"
 [connection signal="body_entered" from="CraftingStationArea" to="." method="_on_crafting_station_area_body_entered"]
 [connection signal="body_exited" from="CraftingStationArea" to="." method="_on_crafting_station_area_body_exited"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="WarmongerSprite/AlaishaArea" to="." method="_on_alaisha_area_body_entered"]
+[connection signal="body_exited" from="WarmongerSprite/AlaishaArea" to="." method="_on_alaisha_area_body_exited"]
 
 [editable path="Dojo/NameTag"]
 [editable path="SmithingStation/NameTag"]

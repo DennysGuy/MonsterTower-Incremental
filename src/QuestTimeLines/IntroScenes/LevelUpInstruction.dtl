@@ -1,7 +1,6 @@
 [wait time="1.0"]
 do CutsceneManager.disable_player_functionality()
 join WarmongeAlaisha rightmost [animation="Slide From Right" wait="true"]
-WarmongeAlaisha: Hey! Alaisha here. I'm the Warmonger, the Combat Technician of the Starspire Hunters. It's a pleasure to meet you! It's always nice seeing new faces joining the ranks. You're doing great work, son.
 WarmongeAlaisha: Looks like you've leveled up! That's exciting!
 WarmongeAlaisha: Leveling up will grant you Ability Points (AP)! You can spend them at the Dojo to strengthen your abilities.
 do CutsceneManager.set_camera_to_dojo_position()

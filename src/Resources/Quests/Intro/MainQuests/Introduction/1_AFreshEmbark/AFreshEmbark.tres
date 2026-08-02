@@ -10,7 +10,7 @@
 
 [resource]
 script = ExtResource("2_6vyqh")
-quest_title = "A Fresh Embarking"
+quest_title = "The Hunter's Exam"
 quest_id = 7
 status = 1
 chapter_relation = "Introduction"

@@ -47,7 +47,7 @@ var next_sword_available_played : bool = false
 
 @onready var temp_cooking_range: CookingRangeGraphic = $TempCookingRange
 @onready var temp_smelting_station: SmeltingStationGraphic = $TempSmeltingStation
-@onready var dojo_access_notification: Label = $Dojo/DojoAccessNotification
+@onready var dojo_access_notification: Label = $WarmongerSprite/DojoAccessNotification
 @onready var ap_notice: TextureRect = $Dojo/APNotice
 
 @onready var cooking_station: NewCraftingStation = $CookingStation
@@ -707,3 +707,18 @@ func check_for_an_unlock() -> void:
 		Dialogic.start(CAN_CRAFT_FIRST_SWORD)
 		next_sword_available_played = true
 		return
+
+
+func _on_alaisha_area_body_entered(body: Node2D) -> void:
+	if body is Player:
+		var mapping : String = GameManager.get_control_mapping("interact")
+		dojo_access_notification.text = "Press %s to Access Dojo!" % mapping
+		player_in_dojo_range = true
+		GameManager.play_sfx(CRAFTING_STATION_OPEN)
+		dojo_access_notification.show()
+
+
+func _on_alaisha_area_body_exited(body: Node2D) -> void:
+	if body is Player:
+		player_in_dojo_range = false
+		dojo_access_notification.hide()
