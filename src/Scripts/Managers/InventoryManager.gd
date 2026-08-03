@@ -110,6 +110,8 @@ func add_item(inventory_name : String, item : Item, quantity : int = 1) -> bool:
 			SignalBus.update_resource_needed_panel.emit()
 			QuestManager.increment_task_item_gather_count.emit(item)
 			InventoryManager.show_open_bag_notice.emit()
+			if GameManager.in_tech_tree_tutorial and GameManager.tutorial_can_access_mart:
+				HubManager.show_facility_notification.emit("Market Merchant")
 			return true
 			
 	#if the prior code doesn't occur and inventory isn't maxed, we'll add the item
@@ -124,6 +126,8 @@ func add_item(inventory_name : String, item : Item, quantity : int = 1) -> bool:
 		QuestManager.increment_task_item_gather_count.emit(item)
 		InventoryManager.show_open_bag_notice.emit()
 		SignalBus.update_resource_needed_panel.emit()
+		if GameManager.in_tech_tree_tutorial and GameManager.tutorial_can_access_mart:
+			HubManager.show_facility_notification.emit("Market Merchant")
 		return true
 		
 	return false

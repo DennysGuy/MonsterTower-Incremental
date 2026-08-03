@@ -4,6 +4,7 @@ extends Node
 
 var transitioning_floors : bool = false
 const INTRO_STAGE_THEME_TEST = preload("uid://0nrbfbgv25o0")
+const BOOTCAMP_THEME = preload("uid://cyslu12povi21")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -34,4 +35,8 @@ func unpause_music() -> void:
 
 func play_tutorial_map_theme() -> void:
 	audio_stream_player.stream = INTRO_STAGE_THEME_TEST
+	audio_stream_player.play()
+
+func play_bootcamp_theme() -> void:
+	audio_stream_player.stream = BOOTCAMP_THEME
 	audio_stream_player.play()

@@ -1016,6 +1016,7 @@ text = "Press 'E' to Access SmeltingStation"
 horizontal_alignment = 1
 
 [node name="Dojo" type="Sprite2D" parent="." unique_id=1624820246]
+visible = false
 position = Vector2(2498, 622)
 texture = ExtResource("25_nj75w")
 
@@ -1137,6 +1138,7 @@ text = "Press 'E' to Access Sword Crafting Station"
 horizontal_alignment = 1
 
 [node name="GuideLog" type="Label" parent="." unique_id=1041000846]
+visible = false
 offset_left = 1328.0
 offset_top = 598.0
 offset_right = 1629.0
@@ -1324,6 +1326,7 @@ position = Vector2(828, 366)
 shape = SubResource("RectangleShape2D_hw86b")
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=343085765]
+visible = false
 position = Vector2(1944, 0)
 collision_layer = 18
 collision_mask = 18
@@ -1363,12 +1366,13 @@ position = Vector2(0, -53)
 
 [node name="NameTag4" parent="WarmongerSprite" unique_id=1988415063 instance=ExtResource("19_bl45m")]
 offset_left = -64.0
-offset_top = 37.0
+offset_top = 44.0
 offset_right = 76.0
-offset_bottom = 53.0
+offset_bottom = 76.0
 
 [node name="Tag" parent="WarmongerSprite/NameTag4/Bg" parent_id_path=PackedInt32Array(1988415063, 305804188) index="0" unique_id=725373759]
-text = "Warmonger Alaisha"
+text = "Warmonger Alaisha 
+(Spend AP)"
 
 [node name="AlaishaNotice" type="Label" parent="WarmongerSprite" unique_id=490916049]
 visible = false

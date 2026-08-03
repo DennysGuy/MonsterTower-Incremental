@@ -6,6 +6,14 @@ class_name PlayerPunch extends State
 var attack_velocity : float = 0.0
 
 var can_attack_cancel : bool = false
+const PUNCH_SWING_1 = preload("uid://bu7s4r6oa3kn6")
+const PUNCH_SWING_1_NO_VOICE = preload("uid://ci0pbs3ndnqfi")
+const PUNCH_SWING_2 = preload("uid://dmbeovrd6w055")
+const PUNCH_SWING_2_NO_VOICE = preload("uid://ummsp4sae333")
+const PUNCH_SWING_3 = preload("uid://lxwca85bapd3")
+const PUNCH_SWING_3_NO_VOICE = preload("uid://dg2fqhncfqw7p")
+
+@onready var punch_sfx : Array[AudioStream] = [PUNCH_SWING_1, PUNCH_SWING_1_NO_VOICE, PUNCH_SWING_2, PUNCH_SWING_2_NO_VOICE, PUNCH_SWING_3, PUNCH_SWING_3_NO_VOICE]
 
 func enter() -> void:
 	animation_name = "Punch"
@@ -28,7 +36,7 @@ func enter() -> void:
 			)
 
 			parent.velocity.x = attack_velocity
-
+	parent.play_sfx(punch_sfx.pick_random())
 	# Clamp so sprint/dash doesn't slide forever
 	#parent.sfx_player.play_sfx(swing, 3.0)
 

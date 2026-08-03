@@ -8,6 +8,13 @@ class_name PlayerJump extends State
 @export var double_jump : State
 @export var dash_attack : State
 
+const JUMP_GRUNT_1 = preload("uid://cit8hlycbanl4")
+const JUMP_GRUNT_2 = preload("uid://cmfrxhiqm7qe7")
+const JUMP_GRUNT_3 = preload("uid://v5blousqkp7s")
+const JUMP_GRUNT_4 = preload("uid://b4875wg8p12ip")
+
+@onready var jump_grunts : Array[AudioStream] = [JUMP_GRUNT_1, JUMP_GRUNT_2, JUMP_GRUNT_3, JUMP_GRUNT_4]
+
 func enter() -> void:
 	parent.can_knock_back = true
 	parent.sfx_player.play_sfx(jump_sfx)
@@ -17,7 +24,7 @@ func enter() -> void:
 	if !PlayerStats.facilities_unlocked["Jump"]:
 		animation_name = "JumpFail"
 		parent.velocity.y -= 80
-		
+		parent.play_sfx(jump_grunts.pick_random())
 	else:
 		animation_name = "Jump"
 		parent.velocity.y -= (PlayerStats.player_stats["Jump Height"] +PlayerStats.get_current_sword().get_total_jump_height_bonus())

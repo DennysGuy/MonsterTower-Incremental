@@ -140,6 +140,12 @@ func close_out() -> void:
 	await get_tree().create_timer(0.3).timeout
 	SignalBus.hide_tech_tree_canvas_layer.emit()
 	CutsceneManager.enable_player_functionality()
+	
+	if GameManager.in_tech_tree_tutorial:
+		if TechTreeManager.currency >= 50:
+			HubManager.hide_facility_notification.emit("Market Merchant")
+			HubManager.show_facility_notification.emit("Upgrades PC")
+	
 	queue_free()
 
 func init_market() -> void:

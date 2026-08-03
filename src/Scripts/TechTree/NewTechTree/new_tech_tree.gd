@@ -309,6 +309,7 @@ func close_out() -> void:
 	MusicPlayer.unpause_music()
 	
 	if GameManager.in_tech_tree_tutorial and !GameManager.tutorial_can_access_dojo:
+		HubManager.show_facility_notification.emit("Alaisha")
 		Dialogic.start(ALAISHA_UNLOCK_FIRST_ABILITY)
 		GameManager.tutorial_can_access_dojo = true
 		CutsceneManager.tech_tree_exited_during_tutorial.emit()

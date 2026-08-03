@@ -1,3 +1,4 @@
+do CutsceneManager.show_tower_guide_notice()
 TerminalComputer: Congratulations, you have completed the Hunter's Exam. You are officially a Starspire Hunter and have been granted the class title 'Junior Hunter'.
 do GameManager.end_tech_tree_tutorial()
 do CutsceneManager.show_all_tech_buttons()

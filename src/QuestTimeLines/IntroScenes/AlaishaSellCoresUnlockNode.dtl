@@ -1,3 +1,4 @@
+do CutsceneManager.hide_alaisha_notice()
 do CutsceneManager.disable_player_functionality()
 WarmongeAlaisha: Now you should be able to reach those ladders. Beat those Mushies up with your stick and pick up their cores. Head over to the Market Merchant and sell those drops and purchase that Attack node.
 WarmongeAlaisha: Rookie, with your level of persistence and dedication, you might have a chance as a Hunter. \

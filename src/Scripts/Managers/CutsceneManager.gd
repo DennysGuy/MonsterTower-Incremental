@@ -136,3 +136,9 @@ func zoom_camera_four_times() -> void:
 
 func check_for_another_unlock() -> void:
 	unlock_ready_scene_ended.emit()
+
+func show_tower_guide_notice() -> void:
+	HubManager.show_facility_notification.emit("Tower Guide")
+
+func hide_alaisha_notice() -> void:
+	HubManager.hide_facility_notification.emit("Alaisha")

@@ -1,3 +1,4 @@
+do MusicPlayer.play_bootcamp_theme()
 do CutsceneManager.disable_player_functionality()
 [wait time="1.0"]
 do CutsceneManager.zoom_camera_one_half()
