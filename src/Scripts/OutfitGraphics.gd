@@ -43,6 +43,27 @@ var outfit_graphics : Dictionary = {
 		"IronBody": preload("uid://s3c87yot2mlq"),
 		"CircleOfTruth": preload("uid://crb6j81csruty"),
 		"BasicDash": preload("uid://qg85t3wo7ly")
+	},
+	"Scribe Assistant": {
+		"Idle": preload("uid://5uc2u1d1le3p"),
+		"Run": preload("uid://dpum7yncmrj2x"),
+		"Jump": preload("uid://cdney1dm2y684"),
+		"Fall": preload("uid://8fvuln5x3iwa"),
+		"SwordSwing1": preload("uid://m0k16key62gx"),
+		"SwordSwing2": preload("uid://m0k16key62gx"),
+		"AirAttack": preload("uid://m0k16key62gx"),
+		"Climb": preload("uid://dlsry6yucic6j"),
+		"PickaxeSwing": preload("uid://t3htsoyocbhu"),
+		"BasicAttackEffect": preload("uid://cn3s2uyi5i0pn"),
+	}
+}
+
+var hat_graphics : Dictionary = {
+	"Tyro": {
+		
+	},
+	"Scribe Assistant": {
+		
 	}
 }
 

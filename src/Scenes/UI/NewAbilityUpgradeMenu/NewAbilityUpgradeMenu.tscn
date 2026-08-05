@@ -2,8 +2,16 @@
 
 [ext_resource type="Script" uid="uid://b0k7nn3634ew4" path="res://src/Scripts/HUD/new_ability_upgrade_menu.gd" id="1_noj7l"]
 [ext_resource type="PackedScene" uid="uid://le1oweji7bum" path="res://src/Scenes/NewStarshire/Facilities/FacilityBGs/DojoInterior.tscn" id="2_4i7kl"]
-[ext_resource type="FontFile" uid="uid://qgj228ltdttv" path="res://Assets/Fonts/alagard.ttf" id="2_mu6d8"]
-[ext_resource type="FontFile" uid="uid://mgnsqya2mtq3" path="res://Assets/Fonts/GrapeSoda.ttf" id="3_noj7l"]
+[ext_resource type="FontFile" uid="uid://stn4dtg0uw57" path="res://Assets/Fonts/FredokaOne-Regular.ttf" id="3_4i7kl"]
+[ext_resource type="Texture2D" uid="uid://kosw65m4ecvo" path="res://Assets/NewUI/CloseButton.png" id="4_4i7kl"]
+[ext_resource type="FontFile" uid="uid://n6qkolsetoqc" path="res://Assets/Fonts/ROADSTORE Dafont.ttf" id="4_idi4u"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4i7kl"]
+bg_color = Color(0, 0.21960784, 0.3882353, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
 [node name="AbilityUpgradeMenu" type="Control" unique_id=693918123]
 layout_mode = 3
@@ -40,133 +48,249 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="Panel" type="ColorRect" parent="MarginContainer" unique_id=115453966]
-modulate = Color(1, 1, 1, 0.17400001)
+[node name="Panel" type="Panel" parent="MarginContainer" unique_id=1013789345]
+modulate = Color(1, 1, 1, 0.98039216)
 layout_mode = 2
-color = Color(7.2196127e-07, 0.21438283, 0.30136865, 1)
+theme_override_styles/panel = SubResource("StyleBoxFlat_4i7kl")
 
-[node name="Title" type="Label" parent="." unique_id=1665319380]
+[node name="DojoTitlePanel" type="PanelContainer" parent="MarginContainer/Panel" unique_id=680374829]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 44.0
+offset_right = 364.0
+offset_bottom = 175.0
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/DojoTitlePanel" unique_id=1696863232]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_idi4u")
+theme_override_font_sizes/font_size = 64
+text = "Dojo"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OptionPanel" type="Panel" parent="MarginContainer/Panel" unique_id=587015500]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 44.0
+offset_top = -332.0
+offset_right = 364.0
+offset_bottom = 68.0
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/OptionPanel" unique_id=1582206185]
+layout_mode = 0
+offset_top = 32.0
+offset_right = 320.0
+offset_bottom = 79.0
+theme_override_fonts/font = ExtResource("3_4i7kl")
+theme_override_font_sizes/font_size = 38
+text = "Options"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel/OptionPanel" unique_id=219931165]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -137.0
+offset_top = -77.0
+offset_right = 137.0
+offset_bottom = 115.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 24
+
+[node name="ActiveAbilitiesButton" type="Button" parent="MarginContainer/Panel/OptionPanel/VBoxContainer" unique_id=1407655865]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_4i7kl")
+theme_override_font_sizes/font_size = 32
+text = "Active Abilities"
+
+[node name="PassiveAbilitiesButton" type="Button" parent="MarginContainer/Panel/OptionPanel/VBoxContainer" unique_id=315149495]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_4i7kl")
+theme_override_font_sizes/font_size = 32
+text = "Passive Abilities"
+
+[node name="ClassDescription" type="Button" parent="MarginContainer/Panel/OptionPanel/VBoxContainer" unique_id=955153509]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_4i7kl")
+theme_override_font_sizes/font_size = 32
+text = "Class Description"
+
+[node name="CharacterPanel" type="Panel" parent="MarginContainer/Panel" unique_id=1892206951]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 44.0
+offset_top = 84.0
+offset_right = 364.0
+offset_bottom = 484.0
+grow_vertical = 2
+
+[node name="AbilitiesPanel" type="Panel" parent="MarginContainer/Panel" unique_id=1439526770]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 380.0
+offset_top = -332.0
+offset_right = 1516.0
+offset_bottom = 484.0
+grow_vertical = 2
+
+[node name="DescriptionPanel" type="Panel" parent="MarginContainer/Panel" unique_id=48654183]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 1532.0
+offset_top = -331.0
+offset_right = 1868.0
+offset_bottom = 484.0
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/DescriptionPanel" unique_id=1813478784]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -85.5
-offset_top = 49.0
-offset_right = 76.5
-offset_bottom = 64.0
+offset_left = -157.0
+offset_top = 18.0
+offset_right = 152.0
+offset_bottom = 47.0
 grow_horizontal = 2
-theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("2_mu6d8")
+theme_override_fonts/font = ExtResource("4_idi4u")
+theme_override_font_sizes/font_size = 24
+text = "Ability Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="MarginContainer/Panel/DescriptionPanel" unique_id=381553773]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -138.0
+offset_top = 53.0
+offset_right = 128.3793
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_4i7kl")
+theme_override_font_sizes/font_size = 20
+text = "Level 1/5"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DescriptionPanelContainer" type="PanelContainer" parent="MarginContainer/Panel/DescriptionPanel" unique_id=723506026]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 298.0
+offset_right = 328.0
+offset_bottom = 436.0
+
+[node name="AbilityDescription" type="RichTextLabel" parent="MarginContainer/Panel/DescriptionPanel/DescriptionPanelContainer" unique_id=452383194]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("3_4i7kl")
+theme_override_font_sizes/normal_font_size = 22
+text = "This is the description for the ability okay!"
+
+[node name="StatsPanelContainer" type="PanelContainer" parent="MarginContainer/Panel/DescriptionPanel" unique_id=2126974293]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 451.0
+offset_right = 329.0
+offset_bottom = 596.0
+
+[node name="AbilityDescription" type="RichTextLabel" parent="MarginContainer/Panel/DescriptionPanel/StatsPanelContainer" unique_id=2091873920]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("3_4i7kl")
+theme_override_font_sizes/normal_font_size = 18
+text = "current stats:
+
+cooldown: 7 seconds
+damage multiplier : 1.5x
+circle size: 324px"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NextStatsContainer" type="PanelContainer" parent="MarginContainer/Panel/DescriptionPanel" unique_id=1383692307]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 608.0
+offset_right = 329.0
+offset_bottom = 745.0
+
+[node name="NextStatsContainer" type="RichTextLabel" parent="MarginContainer/Panel/DescriptionPanel/NextStatsContainer" unique_id=2129846970]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("3_4i7kl")
+theme_override_font_sizes/normal_font_size = 18
+text = "Next stats:
+
+cooldown: 7 seconds
+damage multiplier : 1.5x
+circle size: 324px"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="MarginContainer/Panel/DescriptionPanel" unique_id=950195201]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 761.0
+offset_right = 269.0
+offset_bottom = 805.0
+theme_override_fonts/font = ExtResource("3_4i7kl")
+theme_override_font_sizes/font_size = 29
+text = "Upgrade (5/5)"
+
+[node name="Label" type="Label" parent="MarginContainer/Panel" unique_id=537394952]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -527.0
+offset_top = 122.0
+offset_right = 591.0
+offset_bottom = 171.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("4_idi4u")
 theme_override_font_sizes/font_size = 42
-text = "Class Ability Upgrades"
+text = "Scribe Assistant | Mage"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="AP" type="Label" parent="." unique_id=1486382054]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -902.0
+offset_left = 728.0
 offset_top = 48.0
-offset_right = -740.0
-offset_bottom = 63.0
+offset_right = 825.0
+offset_bottom = 99.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0.82599366, 0.0016641689, 0.9612146, 1)
 theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("2_mu6d8")
+theme_override_fonts/font = ExtResource("3_4i7kl")
 theme_override_font_sizes/font_size = 42
 text = "AP: 1"
 
-[node name="ClassName" type="Label" parent="." unique_id=304738033]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -85.5
-offset_top = 98.0
-offset_right = 76.5
-offset_bottom = 135.0
-grow_horizontal = 2
-theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("2_mu6d8")
-theme_override_font_sizes/font_size = 38
-text = "~ TYRO ~"
-horizontal_alignment = 1
-
-[node name="ActiveTitle" type="Label" parent="." unique_id=246593380]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -85.0
-offset_top = 162.0
-offset_right = 77.0
-offset_bottom = 177.0
-grow_horizontal = 2
-theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("2_mu6d8")
-theme_override_font_sizes/font_size = 45
-text = "ACTIVE SKILLS"
-horizontal_alignment = 1
-
-[node name="PassiveTitle" type="Label" parent="." unique_id=880021457]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -182.5
-offset_top = 634.0
-offset_right = 174.5
-offset_bottom = 677.0
-grow_horizontal = 2
-theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("2_mu6d8")
-theme_override_font_sizes/font_size = 45
-text = "Passive Upgrades"
-horizontal_alignment = 1
-
-[node name="AbilityNodesHBoxContainer" type="HBoxContainer" parent="." unique_id=1072021767]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -503.0
-offset_top = -253.0
-offset_right = 604.0
-offset_bottom = -84.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 250
-
-[node name="StatUpgradesNodesHBoxContainer" type="HBoxContainer" parent="." unique_id=262204393]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -359.0
-offset_top = 171.0
-offset_right = 820.0
-offset_bottom = 361.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 250
-
-[node name="CloseButton" type="Button" parent="." unique_id=630897597]
+[node name="CloseButton" type="TextureButton" parent="." unique_id=2030496644]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -81.0
-offset_top = 29.0
-offset_right = -31.0
-offset_bottom = 53.0
+offset_left = -104.0
+offset_top = 40.0
+offset_right = -40.0
+offset_bottom = 104.0
 grow_horizontal = 0
 mouse_default_cursor_shape = 2
-theme_override_fonts/font = ExtResource("3_noj7l")
-theme_override_font_sizes/font_size = 38
-text = "Close"
+texture_normal = ExtResource("4_4i7kl")
 
 [connection signal="button_up" from="CloseButton" to="." method="_on_close_button_button_up"]
