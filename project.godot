@@ -47,6 +47,7 @@ CodexManager="*uid://bwmhpqxq6sj2r"
 SettingsManager="*uid://1of7lkddo2wr"
 CutsceneManager="*uid://b4qmgkkqv4wqj"
 HubManager="*uid://rxq3wijpk5qi"
+AbilitiesMenuManager="*uid://5o68l1ev3esk"
 
 [dialogic]
 

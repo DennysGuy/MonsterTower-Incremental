@@ -15,6 +15,10 @@ var can_enter_tower : bool = false
 
 @onready var boat_leave_area: Area2D = $BoatLeaveArea
 
+@onready var fall_through_platform_stone: Sprite2D = $TileMaps/FallThroughPlatformStone
+@onready var jump_direction_stone: Sprite2D = $TileMaps/JumpDirectionStone
+@onready var ladder_movement_direction_stone: Sprite2D = $TileMaps/LadderMovementDirectionStone
+
 const BOAT_HORN = preload("uid://bt5y3hqi7vb37")
 const ENTER_TOWER_FIRST_TIME_SCENE = preload("uid://gjjq2iyol2am")
 const TUTORIAL_LICENSE_NOT_ACQUIRED = preload("uid://ctit5lunlhp2n")
@@ -24,6 +28,7 @@ const MARKET_CANT_ACCESS = preload("uid://cqkfp46tew8pi")
 const ALAISHA_CRAFT_FIRST_WEAPON = preload("uid://dgrxildu3n8uw")
 const ALAISHA_HEAD_TO_PC = preload("uid://g4l6n3oxv7ee")
 const PC_CANT_ACCESS = preload("uid://buwfjrtk8enkl")
+
 
 
 var boat_docked : bool = true
@@ -42,6 +47,7 @@ func _ready() -> void:
 	SignalBus.spawn_tech_tree.connect(add_tech_tree_to_scene)
 	CutsceneManager.go_to_first_floor.connect(go_to_first_floor)
 	CutsceneManager.camera_zoomed.connect(zoom_camera)
+	CutsceneManager.jump_unlocked.connect(drop_vertical_movement_stones)
 	#SignalBus.hide_tech_tree_canvas_layer.connect(hide_tech_tree_canvas_layer)
 	GameManager.player_can_move = true
 	GameManager.resupply_character= true
@@ -164,3 +170,29 @@ func _on_alaisha_area_body_exited(body: Node2D) -> void:
 
 func move_alaisha() -> void:
 	warmonger_sprite.global_position = Vector2i(3005,435)
+
+
+func move_jump_stone() -> void:
+	var tween : Tween = create_tween()
+	tween.tween_property(jump_direction_stone, "global_position:y", 425,0.5)
+	await get_tree().create_timer(0.3).timeout
+	SignalBus.shake_camera.emit(1.0)
+
+func move_ladder_movement_stone() -> void:
+	var tween : Tween = create_tween()
+	tween.tween_property(ladder_movement_direction_stone, "global_position:y", 425,0.5)
+	await get_tree().create_timer(0.3).timeout
+	SignalBus.shake_camera.emit(1.0)
+
+func move_drop_through_platform_stone() -> void:
+	var tween : Tween = create_tween()
+	tween.tween_property(fall_through_platform_stone, "global_position:y", 294,0.5)
+	await get_tree().create_timer(0.3).timeout
+	SignalBus.shake_camera.emit(1.0)
+
+func drop_vertical_movement_stones() -> void:
+	move_jump_stone()
+	await get_tree().create_timer(0.5).timeout
+	move_ladder_movement_stone()
+	await get_tree().create_timer(0.5).timeout
+	move_drop_through_platform_stone()

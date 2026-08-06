@@ -7,13 +7,21 @@ class_name NewAbilityUpgradeMenu extends Control
 
 const NEW_WEAPON_CRAFTING_NOTICE_SCENE = preload("uid://bhd7f77giafvv")
 
+@onready var ability_name: Label = $MarginContainer/Panel/DescriptionPanel/AbilityName
+@onready var ability_level: Label = $MarginContainer/Panel/DescriptionPanel/AbilityLevel
+@onready var ability_description: RichTextLabel = $MarginContainer/Panel/DescriptionPanel/DescriptionPanelContainer/AbilityDescription
+@onready var current_stats: RichTextLabel = $MarginContainer/Panel/DescriptionPanel/StatsPanelContainer/CurrentStats
+@onready var next_stats: RichTextLabel = $MarginContainer/Panel/DescriptionPanel/NextStatsContainer/NextStats
+@onready var class_title: Label = $MarginContainer/Panel/ClassTitle
+
+
+var stored_class_ability_node_stats : ClassAbilityNodeStats
 
 func _ready() -> void:
 	SignalBus.update_ap_label.connect(update_ap_label)
-	classname.text = "~%s~" % PlayerStats.player_stats["Class"]
+	AbilitiesMenuManager.active_ability_button_pressed.connect(update_active_ability_description_panel)
+	class_title.text = "Tyro | Warrior"
 	update_ap_label()
-	populate_node_container(ability_nodes_h_box_container,"Abilities")
-	populate_node_container(stat_upgrades_nodes_h_box_container, "Stat Upgrades")
 
 func _process(delta : float) -> void:
 	if Input.is_action_just_pressed("close_menu"):
@@ -51,3 +59,13 @@ func close_out() -> void:
 
 func _on_close_button_button_up() -> void:
 	close_out()
+
+
+func update_active_ability_description_panel(ability_node_stats : ClassAbilityNodeStats) -> void:
+	ability_name.text = ability_node_stats.ability_resource.ability_name
+	ability_level.text = "Level %s/%s" % [ability_node_stats.current_upgrade_level, ability_node_stats.max_upgrade_level]
+	stored_class_ability_node_stats = ability_node_stats
+
+
+func _on_upgrade_button_button_up() -> void:
+	pass # Replace with function body.

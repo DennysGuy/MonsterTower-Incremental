@@ -10,6 +10,10 @@
 [ext_resource type="Texture2D" uid="uid://cbdaaeunx7tdl" path="res://Assets/HUD/CombatAbilityIcons/IronBodyIcon.png" id="7_fjd65"]
 [ext_resource type="Texture2D" uid="uid://bsdqyqaedjmtt" path="res://Assets/HUD/CombatAbilityIcons/DoubleCleaveIcon.png" id="8_c4jju"]
 [ext_resource type="Texture2D" uid="uid://c46iu8v75jaon" path="res://Assets/NodeGraphics/AbilitiesTechTree/RowLock.png" id="9_fjd65"]
+[ext_resource type="PackedScene" uid="uid://caca6mbqyjpaj" path="res://src/Scenes/UI/NewAbilityUpgradeMenu/AbilityButton.tscn" id="10_c4jju"]
+[ext_resource type="Resource" uid="uid://dm3c3phl6fkid" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/AbilityUnlocks/CycloneSlashNodeStats.tres" id="11_p6uwn"]
+[ext_resource type="Resource" uid="uid://cjc20n6ld53u3" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/AbilityUnlocks/CircleOfTruthNodeStats.tres" id="12_u6awe"]
+[ext_resource type="Resource" uid="uid://51yxkv0krgeq" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/AbilityUnlocks/DoubleStab.tres" id="13_sxfbe"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4i7kl"]
 bg_color = Color(0, 0.21960784, 0.3882353, 1)
@@ -487,21 +491,21 @@ grow_vertical = 2
 theme_override_constants/separation = 64
 alignment = 1
 
-[node name="CycloneSlash" type="TextureButton" parent="MarginContainer/Panel/WarriorActiveAbilitiesPanel/FirstClassAbilities/AbilitiesVBoxContainer" unique_id=1249399015]
+[node name="CycloneSlash" parent="MarginContainer/Panel/WarriorActiveAbilitiesPanel/FirstClassAbilities/AbilitiesVBoxContainer" unique_id=1297700001 instance=ExtResource("10_c4jju")]
 layout_mode = 2
-texture_normal = ExtResource("5_jfhsm")
+ability = ExtResource("11_p6uwn")
 
-[node name="CircleOfTruth" type="TextureButton" parent="MarginContainer/Panel/WarriorActiveAbilitiesPanel/FirstClassAbilities/AbilitiesVBoxContainer" unique_id=943301503]
+[node name="CircleOfTruth" parent="MarginContainer/Panel/WarriorActiveAbilitiesPanel/FirstClassAbilities/AbilitiesVBoxContainer" unique_id=1042137188 instance=ExtResource("10_c4jju")]
 layout_mode = 2
-texture_normal = ExtResource("6_vrgxw")
+ability = ExtResource("12_u6awe")
 
-[node name="IronBody" type="TextureButton" parent="MarginContainer/Panel/WarriorActiveAbilitiesPanel/FirstClassAbilities/AbilitiesVBoxContainer" unique_id=1404608987]
+[node name="IronBody" parent="MarginContainer/Panel/WarriorActiveAbilitiesPanel/FirstClassAbilities/AbilitiesVBoxContainer" unique_id=62522742 instance=ExtResource("10_c4jju")]
 layout_mode = 2
-texture_normal = ExtResource("7_fjd65")
+ability = ExtResource("13_sxfbe")
 
-[node name="DoubleCleave" type="TextureButton" parent="MarginContainer/Panel/WarriorActiveAbilitiesPanel/FirstClassAbilities/AbilitiesVBoxContainer" unique_id=779911839]
+[node name="DoubleCleave" parent="MarginContainer/Panel/WarriorActiveAbilitiesPanel/FirstClassAbilities/AbilitiesVBoxContainer" unique_id=749934162 instance=ExtResource("10_c4jju")]
 layout_mode = 2
-texture_normal = ExtResource("8_c4jju")
+ability = ExtResource("11_p6uwn")
 
 [node name="SecondClassAbilities" type="Panel" parent="MarginContainer/Panel/WarriorActiveAbilitiesPanel" unique_id=1798634161]
 layout_mode = 1
@@ -699,7 +703,7 @@ offset_right = 1868.0
 offset_bottom = 484.0
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="MarginContainer/Panel/DescriptionPanel" unique_id=1813478784]
+[node name="AbilityName" type="Label" parent="MarginContainer/Panel/DescriptionPanel" unique_id=1813478784]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -715,7 +719,7 @@ text = "Ability Name"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="MarginContainer/Panel/DescriptionPanel" unique_id=381553773]
+[node name="AbilityLevel" type="Label" parent="MarginContainer/Panel/DescriptionPanel" unique_id=381553773]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -751,7 +755,7 @@ offset_top = 424.0
 offset_right = 329.0
 offset_bottom = 561.0
 
-[node name="AbilityDescription" type="RichTextLabel" parent="MarginContainer/Panel/DescriptionPanel/StatsPanelContainer" unique_id=2091873920]
+[node name="CurrentStats" type="RichTextLabel" parent="MarginContainer/Panel/DescriptionPanel/StatsPanelContainer" unique_id=2091873920]
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("3_4i7kl")
 theme_override_font_sizes/normal_font_size = 18
@@ -770,7 +774,7 @@ offset_top = 577.0
 offset_right = 329.0
 offset_bottom = 700.0
 
-[node name="NextStatsContainer" type="RichTextLabel" parent="MarginContainer/Panel/DescriptionPanel/NextStatsContainer" unique_id=2129846970]
+[node name="NextStats" type="RichTextLabel" parent="MarginContainer/Panel/DescriptionPanel/NextStatsContainer" unique_id=2129846970]
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("3_4i7kl")
 theme_override_font_sizes/normal_font_size = 18
@@ -782,7 +786,7 @@ circle size: 324px"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="MarginContainer/Panel/DescriptionPanel" unique_id=950195201]
+[node name="UpgradeButton" type="Button" parent="MarginContainer/Panel/DescriptionPanel" unique_id=950195201]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -844,4 +848,5 @@ grow_horizontal = 0
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("4_4i7kl")
 
+[connection signal="button_up" from="MarginContainer/Panel/DescriptionPanel/UpgradeButton" to="." method="_on_upgrade_button_button_up"]
 [connection signal="button_up" from="CloseButton" to="." method="_on_close_button_button_up"]

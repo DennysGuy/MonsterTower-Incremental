@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcyb3oys6rvm6"
-path="res://.godot/imported/ProfFoolPortrait.png-cdd16193a1f71b6f190af5f01b0bd5ce.ctex"
+uid="uid://bm0qu1umoi022"
+path="res://.godot/imported/ProfStoogePortrait.png-126fc25679ac16f166f333b8cdfe6872.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/NPCs/ProfFoolPortrait.png"
-dest_files=["res://.godot/imported/ProfFoolPortrait.png-cdd16193a1f71b6f190af5f01b0bd5ce.ctex"]
+source_file="res://Assets/NPCs/ProfStoogePortrait.png"
+dest_files=["res://.godot/imported/ProfStoogePortrait.png-126fc25679ac16f166f333b8cdfe6872.ctex"]
 
 [params]
 

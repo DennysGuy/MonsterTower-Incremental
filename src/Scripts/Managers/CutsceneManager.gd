@@ -45,6 +45,8 @@ signal show_all_tech_tree_buttons
 signal show_tech_tree
 @warning_ignore("unused_signal")
 signal tech_tree_exited_during_tutorial
+@warning_ignore("unused_signal")
+signal jump_unlocked
 
 func trigger_next_frame() -> void:
 	trigger_next_image.emit()
@@ -142,3 +144,6 @@ func show_tower_guide_notice() -> void:
 
 func hide_alaisha_notice() -> void:
 	HubManager.hide_facility_notification.emit("Alaisha")
+
+func jump_node_unlocked() -> void:
+	jump_unlocked.emit()
