@@ -6,8 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://kosw65m4ecvo" path="res://Assets/NewUI/CloseButton.png" id="4_4i7kl"]
 [ext_resource type="FontFile" uid="uid://n6qkolsetoqc" path="res://Assets/Fonts/ROADSTORE Dafont.ttf" id="4_idi4u"]
 [ext_resource type="Texture2D" uid="uid://dfn47ylk12xi" path="res://Assets/HUD/CombatAbilityIcons/CycloneSlashIcon.png" id="5_jfhsm"]
+[ext_resource type="Resource" uid="uid://b3q7teodj24vf" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/CharacterBoosts/ArmoredCore1.tres" id="6_qk2pf"]
 [ext_resource type="Texture2D" uid="uid://daut1glllti0r" path="res://Assets/HUD/CombatAbilityIcons/CircleofTruthIcon.png" id="6_vrgxw"]
 [ext_resource type="Texture2D" uid="uid://cbdaaeunx7tdl" path="res://Assets/HUD/CombatAbilityIcons/IronBodyIcon.png" id="7_fjd65"]
+[ext_resource type="Resource" uid="uid://5yci1c1l1tb2" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/CharacterBoosts/WarriorsFlame1.tres" id="7_sptac"]
 [ext_resource type="Texture2D" uid="uid://bsdqyqaedjmtt" path="res://Assets/HUD/CombatAbilityIcons/DoubleCleaveIcon.png" id="8_c4jju"]
 [ext_resource type="Texture2D" uid="uid://c46iu8v75jaon" path="res://Assets/NodeGraphics/AbilitiesTechTree/RowLock.png" id="9_fjd65"]
 [ext_resource type="PackedScene" uid="uid://caca6mbqyjpaj" path="res://src/Scenes/UI/NewAbilityUpgradeMenu/AbilityButton.tscn" id="10_c4jju"]
@@ -143,6 +145,7 @@ offset_bottom = 484.0
 grow_vertical = 2
 
 [node name="WarriorPassiveAbilitiesPanel" type="Panel" parent="MarginContainer/Panel" unique_id=258071902]
+visible = false
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -195,9 +198,9 @@ anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
 offset_left = 128.0
-offset_top = -259.0
+offset_top = -264.0
 offset_right = 320.0
-offset_bottom = 381.0
+offset_bottom = 376.0
 grow_vertical = 2
 
 [node name="AbilitiesVBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel/WarriorPassiveAbilitiesPanel/FirstClassAbilities" unique_id=664990201]
@@ -216,31 +219,27 @@ grow_vertical = 2
 theme_override_constants/separation = 64
 alignment = 1
 
-[node name="ArmoredCore" type="TextureButton" parent="MarginContainer/Panel/WarriorPassiveAbilitiesPanel/FirstClassAbilities/AbilitiesVBoxContainer" unique_id=269151664]
+[node name="CycloneSlash2" parent="MarginContainer/Panel/WarriorPassiveAbilitiesPanel/FirstClassAbilities/AbilitiesVBoxContainer" unique_id=1297700001 instance=ExtResource("10_c4jju")]
 layout_mode = 2
-texture_normal = ExtResource("5_jfhsm")
+ability = ExtResource("6_qk2pf")
 
-[node name="FieldTactician" type="TextureButton" parent="MarginContainer/Panel/WarriorPassiveAbilitiesPanel/FirstClassAbilities/AbilitiesVBoxContainer" unique_id=220570612]
+[node name="CircleOfTruth2" parent="MarginContainer/Panel/WarriorPassiveAbilitiesPanel/FirstClassAbilities/AbilitiesVBoxContainer" unique_id=1479429593 instance=ExtResource("10_c4jju")]
 layout_mode = 2
-texture_normal = ExtResource("6_vrgxw")
+ability = ExtResource("7_sptac")
 
-[node name="WarriorsFlame" type="TextureButton" parent="MarginContainer/Panel/WarriorPassiveAbilitiesPanel/FirstClassAbilities/AbilitiesVBoxContainer" unique_id=1431563816]
+[node name="IronBody2" parent="MarginContainer/Panel/WarriorPassiveAbilitiesPanel/FirstClassAbilities/AbilitiesVBoxContainer" unique_id=1250948531 instance=ExtResource("10_c4jju")]
 layout_mode = 2
-texture_normal = ExtResource("7_fjd65")
-
-[node name="UniquePassive" type="TextureButton" parent="MarginContainer/Panel/WarriorPassiveAbilitiesPanel/FirstClassAbilities/AbilitiesVBoxContainer" unique_id=2137148271]
-layout_mode = 2
-texture_normal = ExtResource("8_c4jju")
+ability = ExtResource("7_sptac")
 
 [node name="SecondClassAbilities" type="Panel" parent="MarginContainer/Panel/WarriorPassiveAbilitiesPanel" unique_id=1877985597]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 482.0
-offset_top = -259.0
-offset_right = 674.0
-offset_bottom = 381.0
+offset_left = 480.0
+offset_top = -264.0
+offset_right = 672.0
+offset_bottom = 376.0
 grow_vertical = 2
 
 [node name="AbilitiesVBoxContainer2" type="VBoxContainer" parent="MarginContainer/Panel/WarriorPassiveAbilitiesPanel/SecondClassAbilities" unique_id=2118878621]
@@ -323,9 +322,9 @@ anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
 offset_left = 832.0
-offset_top = -259.0
+offset_top = -264.0
 offset_right = 1024.0
-offset_bottom = 381.0
+offset_bottom = 376.0
 grow_vertical = 2
 
 [node name="AbilitiesVBoxContainer3" type="VBoxContainer" parent="MarginContainer/Panel/WarriorPassiveAbilitiesPanel/ThirdClassAbilities" unique_id=56721194]
@@ -431,9 +430,9 @@ grow_vertical = 2
 [node name="I" type="Label" parent="MarginContainer/Panel/WarriorActiveAbilitiesPanel" unique_id=1718235072]
 layout_mode = 0
 offset_left = 198.0
-offset_top = 80.0
+offset_top = 70.0
 offset_right = 238.0
-offset_bottom = 159.0
+offset_bottom = 149.0
 theme_override_fonts/font = ExtResource("3_4i7kl")
 theme_override_font_sizes/font_size = 64
 text = "I"
@@ -443,9 +442,9 @@ vertical_alignment = 1
 [node name="II" type="Label" parent="MarginContainer/Panel/WarriorActiveAbilitiesPanel" unique_id=790898293]
 layout_mode = 0
 offset_left = 557.0
-offset_top = 80.0
+offset_top = 70.0
 offset_right = 597.0
-offset_bottom = 159.0
+offset_bottom = 149.0
 theme_override_fonts/font = ExtResource("3_4i7kl")
 theme_override_font_sizes/font_size = 64
 text = "II"
@@ -455,9 +454,9 @@ vertical_alignment = 1
 [node name="III" type="Label" parent="MarginContainer/Panel/WarriorActiveAbilitiesPanel" unique_id=1392112986]
 layout_mode = 0
 offset_left = 904.0
-offset_top = 80.0
+offset_top = 70.0
 offset_right = 953.0
-offset_bottom = 159.0
+offset_bottom = 149.0
 theme_override_fonts/font = ExtResource("3_4i7kl")
 theme_override_font_sizes/font_size = 64
 text = "III"
@@ -470,9 +469,9 @@ anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
 offset_left = 128.0
-offset_top = -249.0
+offset_top = -264.0
 offset_right = 320.0
-offset_bottom = 391.0
+offset_bottom = 375.0
 grow_vertical = 2
 
 [node name="AbilitiesVBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel/WarriorActiveAbilitiesPanel/FirstClassAbilities" unique_id=1715898272]
@@ -491,7 +490,7 @@ grow_vertical = 2
 theme_override_constants/separation = 64
 alignment = 1
 
-[node name="CycloneSlash" parent="MarginContainer/Panel/WarriorActiveAbilitiesPanel/FirstClassAbilities/AbilitiesVBoxContainer" unique_id=1297700001 instance=ExtResource("10_c4jju")]
+[node name="CycloneSlash" parent="MarginContainer/Panel/WarriorActiveAbilitiesPanel/FirstClassAbilities/AbilitiesVBoxContainer" unique_id=1960253424 instance=ExtResource("10_c4jju")]
 layout_mode = 2
 ability = ExtResource("11_p6uwn")
 
@@ -512,10 +511,10 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 482.0
-offset_top = -249.0
-offset_right = 674.0
-offset_bottom = 391.0
+offset_left = 480.0
+offset_top = -264.0
+offset_right = 672.0
+offset_bottom = 376.0
 grow_vertical = 2
 
 [node name="AbilitiesVBoxContainer2" type="VBoxContainer" parent="MarginContainer/Panel/WarriorActiveAbilitiesPanel/SecondClassAbilities" unique_id=86179504]
@@ -555,6 +554,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -598,9 +598,9 @@ anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
 offset_left = 832.0
-offset_top = -249.0
+offset_top = -264.0
 offset_right = 1024.0
-offset_bottom = 391.0
+offset_bottom = 376.0
 grow_vertical = 2
 
 [node name="AbilitiesVBoxContainer3" type="VBoxContainer" parent="MarginContainer/Panel/WarriorActiveAbilitiesPanel/ThirdClassAbilities" unique_id=456507525]
@@ -640,6 +640,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -745,7 +746,7 @@ offset_bottom = 410.0
 [node name="AbilityDescription" type="RichTextLabel" parent="MarginContainer/Panel/DescriptionPanel/DescriptionPanelContainer" unique_id=452383194]
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("3_4i7kl")
-theme_override_font_sizes/normal_font_size = 19
+theme_override_font_sizes/normal_font_size = 14
 text = "This is the description for the ability okay!"
 
 [node name="StatsPanelContainer" type="PanelContainer" parent="MarginContainer/Panel/DescriptionPanel" unique_id=2126974293]
@@ -801,7 +802,8 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("3_4i7kl")
 theme_override_font_sizes/font_size = 36
-text = "Upgrade (5/5)"
+disabled = true
+text = "Upgrade"
 
 [node name="ClassTitle" type="Label" parent="MarginContainer/Panel" unique_id=537394952]
 layout_mode = 1
@@ -848,5 +850,7 @@ grow_horizontal = 0
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("4_4i7kl")
 
+[connection signal="button_up" from="MarginContainer/Panel/OptionPanel/VBoxContainer/ActiveAbilitiesButton" to="." method="_on_active_abilities_button_button_up"]
+[connection signal="button_up" from="MarginContainer/Panel/OptionPanel/VBoxContainer/PassiveAbilitiesButton" to="." method="_on_passive_abilities_button_button_up"]
 [connection signal="button_up" from="MarginContainer/Panel/DescriptionPanel/UpgradeButton" to="." method="_on_upgrade_button_button_up"]
 [connection signal="button_up" from="CloseButton" to="." method="_on_close_button_button_up"]
