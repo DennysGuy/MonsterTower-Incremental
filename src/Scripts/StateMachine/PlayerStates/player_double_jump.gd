@@ -19,6 +19,7 @@ func enter() -> void:
 	double_jump_state = selected_ability.ability_behavior
 	parent.set_sword_texture(double_jump_state.animation_name)
 	parent.set_outfit_texture(double_jump_state.animation_name)
+	parent.set_hat_texture(double_jump_state.animation_name)
 	parent.animation_player.play(double_jump_state.animation_name)
 	double_jump_state.on_enter(parent)
 	

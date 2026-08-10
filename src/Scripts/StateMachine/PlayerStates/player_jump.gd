@@ -31,6 +31,7 @@ func enter() -> void:
 	parent.early_jump_cancel_timer = 0.05
 	parent.animation_player.play(animation_name)
 	parent.set_sword_texture(animation_name)
+	parent.set_hat_texture(animation_name)
 	parent.set_outfit_texture(animation_name)
 
 func exit() -> void:

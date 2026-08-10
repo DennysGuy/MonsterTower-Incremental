@@ -34,6 +34,7 @@ func enter() -> void:
 	if PlayerStats.get_current_sword():
 		parent.set_sword_texture(animation_name)
 	parent.set_outfit_texture(animation_name)
+	parent.set_hat_texture(animation_name)
 	parent.sfx_player.play_sfx(move_sfx)
 
 func exit() -> void:

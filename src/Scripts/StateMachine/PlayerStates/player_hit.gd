@@ -16,6 +16,7 @@ func enter() -> void:
 		parent.disable_hurt_box()
 		parent.set_sword_texture(animation_name)
 		parent.set_outfit_texture(animation_name)
+		parent.set_hat_texture(animation_name)
 		var total_knock_back : float = (parent.knock_back_wait_time * PlayerStats.knock_back_buff_mod)
 		parent.timer.wait_time = total_knock_back
 

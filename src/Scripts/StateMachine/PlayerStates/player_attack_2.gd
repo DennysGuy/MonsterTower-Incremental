@@ -1,6 +1,7 @@
 class_name PlayerAttack2State extends State
 
 @export var attack3_state : State
+@export var attack1_state : State
 @export var idle_state : State
 @export var jump_state : State
 
@@ -21,6 +22,7 @@ func enter() -> void:
 	parent.set_sword_texture("SwordSwing2")
 	parent.effect.texture = OutfitGraphics.get_outfit_graphic("BasicAttackEffect")
 	parent.set_outfit_texture(animation_name)
+	parent.set_hat_texture(animation_name)
 	parent.timer.wait_time = PlayerStats.get_current_sword().get_total_attack_speed_bonus()
 	parent.timer.start()
 	
@@ -58,6 +60,8 @@ func process_physics(_delta: float) -> State:
 
 	if parent.is_on_floor() and parent.timer.time_left <= 0:
 		if Input.is_action_pressed("swing_sword"):
+			if PlayerStats.player_stats["Class"] == "Scribe Assistant":
+				return attack1_state
 			return attack3_state
 		return idle_state
 

@@ -9,6 +9,7 @@ func enter() -> void:
 	selected_special_attack = PlayerStats.get_equipped_ability("Special Attack").ability_behavior
 	parent.set_sword_texture(selected_special_attack.animation_name)
 	parent.set_outfit_texture(selected_special_attack.animation_name)
+	parent.set_hat_texture(selected_special_attack.animation_name)
 	parent.animation_player.play(selected_special_attack.animation_name)
 	PlayerStats.player_stats["Current MP"] -= PlayerStats.get_equipped_ability("Special Attack").mp_cost
 	PlayerHudSignalBus.update_player_mp.emit()

@@ -19,6 +19,7 @@ func enter() -> void:
 	animation_name = "Punch"
 	parent.animation_player.play(animation_name)
 	parent.set_outfit_texture(animation_name)
+	parent.set_hat_texture(animation_name)
 	
 	parent.timer.wait_time = 0.7
 	parent.timer.start()

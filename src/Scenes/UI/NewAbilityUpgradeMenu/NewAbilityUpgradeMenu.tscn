@@ -15,7 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://caca6mbqyjpaj" path="res://src/Scenes/UI/NewAbilityUpgradeMenu/AbilityButton.tscn" id="10_c4jju"]
 [ext_resource type="Resource" uid="uid://dm3c3phl6fkid" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/AbilityUnlocks/CycloneSlashNodeStats.tres" id="11_p6uwn"]
 [ext_resource type="Resource" uid="uid://cjc20n6ld53u3" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/AbilityUnlocks/CircleOfTruthNodeStats.tres" id="12_u6awe"]
-[ext_resource type="Resource" uid="uid://51yxkv0krgeq" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/AbilityUnlocks/DoubleStab.tres" id="13_sxfbe"]
+[ext_resource type="Resource" uid="uid://js4itkff48rn" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/AbilityUnlocks/IronBodyNodeStats.tres" id="15_sptac"]
+[ext_resource type="Resource" uid="uid://b1tqtyjdmcrui" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/AbilityUnlocks/DoubleStab1.tres" id="16_sptac"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4i7kl"]
 bg_color = Color(0, 0.21960784, 0.3882353, 1)
@@ -500,11 +501,11 @@ ability = ExtResource("12_u6awe")
 
 [node name="IronBody" parent="MarginContainer/Panel/WarriorActiveAbilitiesPanel/FirstClassAbilities/AbilitiesVBoxContainer" unique_id=62522742 instance=ExtResource("10_c4jju")]
 layout_mode = 2
-ability = ExtResource("13_sxfbe")
+ability = ExtResource("15_sptac")
 
 [node name="DoubleCleave" parent="MarginContainer/Panel/WarriorActiveAbilitiesPanel/FirstClassAbilities/AbilitiesVBoxContainer" unique_id=749934162 instance=ExtResource("10_c4jju")]
 layout_mode = 2
-ability = ExtResource("11_p6uwn")
+ability = ExtResource("16_sptac")
 
 [node name="SecondClassAbilities" type="Panel" parent="MarginContainer/Panel/WarriorActiveAbilitiesPanel" unique_id=1798634161]
 layout_mode = 1
@@ -759,7 +760,7 @@ offset_bottom = 561.0
 [node name="CurrentStats" type="RichTextLabel" parent="MarginContainer/Panel/DescriptionPanel/StatsPanelContainer" unique_id=2091873920]
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("3_4i7kl")
-theme_override_font_sizes/normal_font_size = 18
+theme_override_font_sizes/normal_font_size = 16
 text = "current stats:
 
 cooldown: 7 seconds
@@ -778,7 +779,7 @@ offset_bottom = 700.0
 [node name="NextStats" type="RichTextLabel" parent="MarginContainer/Panel/DescriptionPanel/NextStatsContainer" unique_id=2129846970]
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("3_4i7kl")
-theme_override_font_sizes/normal_font_size = 18
+theme_override_font_sizes/normal_font_size = 16
 text = "Next stats:
 
 cooldown: 7 seconds

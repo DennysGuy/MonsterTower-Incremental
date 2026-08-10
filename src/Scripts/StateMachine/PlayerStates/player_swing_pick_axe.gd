@@ -11,6 +11,7 @@ func enter() -> void:
 	super()
 	parent.set_pickaxe_texture()
 	parent.set_outfit_texture(animation_name)
+	parent.set_hat_texture(animation_name)
 	parent.timer.wait_time = animation_duration
 	parent.timer.start()
 	parent.velocity = Vector2.ZERO

@@ -31,13 +31,13 @@ func _on_warrior_select_button_button_up() -> void:
 	selected_class = "Tyro"
 	warrior_panel.show()
 	mage_panel.hide()
-	select_button.disabled = false
+
 
 func _on_mage_select_button_button_up() -> void:
-	selected_class = "Mage"
+	selected_class = "Scribe Assistant"
 	mage_panel.show()
 	warrior_panel.hide()
-	select_button.disabled = true
+
 	
 func _on_select_button_button_up() -> void:
 	MusicPlayer.pause_music()

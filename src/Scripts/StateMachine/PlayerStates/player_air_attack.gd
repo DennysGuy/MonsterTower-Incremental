@@ -18,6 +18,7 @@ func enter() -> void:
 	
 	parent.set_outfit_texture(equipped_air_attack.animation_name)
 	parent.set_sword_texture(equipped_air_attack.animation_name)
+	parent.set_hat_texture(animation_name)
 	parent.animation_player.play(equipped_air_attack.animation_name)
 	equipped_air_attack.on_enter(parent)
 	AbilityTimers.activate_ability_cooldown("Air Attack")

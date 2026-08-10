@@ -116,6 +116,30 @@ var sword_textures : Dictionary = {
 		"CircleOfTruth": preload("uid://nevk1iohux2"),
 		"BasicDash": preload("uid://cwtljjmbafx03"),
 		"Weapon Crafted": preload("uid://bf3mnbmhjo2ho")
+	},
+	"Standard Wand": {
+		"Idle": preload("uid://bfd76yo68nwjp"),
+		"Run": preload("uid://bburlkto74sfp"),
+		"Jump": preload("uid://7qgkb2l8xmb0"),
+		"Fall": preload("uid://dj1q0dg8ej5kt"),
+		"SwordSwing1": preload("uid://cdbhi050amlxk"),
+		"SwordSwing2": preload("uid://cdbhi050amlxk"),
+		"AirAttack":preload("uid://cdbhi050amlxk"),
+		"Climb": preload("uid://cch8u8dkgi3mf"),
+		"BasicDash": preload("uid://cp7bhbiipdtae"),
+		"Weapon Crafted": preload("uid://df1oe32ggcusc")
+	},
+	"Standard Staff": {
+		"Idle": preload("uid://fwthk1u57bkr"),
+		"Run": preload("uid://w20ljovdcr1g"),
+		"Jump": preload("uid://bgg3ra7kubpg0"),
+		"Fall": preload("uid://buy5vxmbfwlba"),
+		"SwordSwing1": preload("uid://cjeiv7hihpag3"),
+		"SwordSwing2":preload("uid://cjeiv7hihpag3"),
+		"AirAttack": preload("uid://cjeiv7hihpag3"),
+		"Climb": preload("uid://d251xvarfp6ww"),
+		"BasicDash": preload("uid://diob0ejks0cy7"),
+		"Weapon Crafted": preload("uid://ohjx1phm38td")
 	}
 }
 

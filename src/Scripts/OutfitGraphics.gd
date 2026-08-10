@@ -17,12 +17,9 @@ var outfit_graphics : Dictionary = {
 		"SwordSoar": preload("uid://byycfcy4i7vap"),
 		"SwordSlam": preload("uid://c6outchyu637"),
 		"BasicAttackEffect": preload("uid://bvj4nyj0lqt7s"),
-		"CycloneSlash": preload("uid://cwehmdaknb5ko"),
-		"IronBody": preload("uid://s3c87yot2mlq"),
-		"CircleOfTruth": preload("uid://crb6j81csruty"),
-		"BasicDash": preload("uid://dp8eilpd2k4li"),
 		"Punch": preload("uid://0w3eyeg5v6bf"),
-		"JumpFail": preload("uid://cvx717tchelpg")
+		"JumpFail": preload("uid://cvx717tchelpg"),
+		"BasicDash": preload("uid://dp8eilpd2k4li")
 	},
 	"Tyro" : {
 		"Idle": preload("uid://bsy5tgiwm7wxj"),
@@ -54,19 +51,62 @@ var outfit_graphics : Dictionary = {
 		"AirAttack": preload("uid://m0k16key62gx"),
 		"Climb": preload("uid://dlsry6yucic6j"),
 		"PickaxeSwing": preload("uid://t3htsoyocbhu"),
-		"BasicAttackEffect": preload("uid://cn3s2uyi5i0pn"),
+		"BasicAttackEffect": preload("uid://dh3xfouvye3y4"),
+		"BasicDash": preload("uid://dmnues8rqj1ka")
 	}
 }
 
 var hat_graphics : Dictionary = {
+	"Junior Hunter": {
+		"Idle": preload("uid://bjp2s7yqooy8t"),
+		"Run": preload("uid://vmo8wokwkc8a"),
+		"Jump": preload("uid://p550rqpf4d83"),
+		"Fall": preload("uid://vmo8wokwkc8a"),
+		"SwordSwing1":preload("uid://cil485q0idseb"),
+		"SwordSwing2":preload("uid://cil485q0idseb"),
+		"SwordSwing3":preload("uid://cil485q0idseb"),
+		"AirAttack":preload("uid://cil485q0idseb"),
+		"Climb": preload("uid://c7ljgo002h40v"),
+		"PickaxeSwing": preload("uid://c1pbd4as0c2xc"),
+		"Punch": preload("uid://c4qqjbhlwokxy"),
+		"JumpFail": preload("uid://5qcvfukjlly"),
+		"BasicDash": preload("uid://ctal8l7td7fsb")
+	},
 	"Tyro": {
-		
+		"Idle": preload("uid://4i8u8xn7vxl4"),
+		"Run": preload("uid://csgymmtpck4u3"),
+		"Jump": preload("uid://dl55iycis7muh"),
+		"Fall": preload("uid://dfpgvbgtn7ndg"),
+		"SwordSwing1": preload("uid://jatbge31yk80"),
+		"SwordSwing2":preload("uid://jatbge31yk80"),
+		"SwordSwing3":preload("uid://jatbge31yk80"),
+		"AirAttack":preload("uid://jatbge31yk80"),
+		"Climb": preload("uid://dieqdywe5ie2g"),
+		"PickaxeSwing": preload("uid://curgsreedone"),
+		"DoubleCleave": preload("uid://cdjtkp032dh2e"),
+		"CycloneSlash": preload("uid://feb6oixixgfb"),
+		"IronBody": preload("uid://bm07q8trkuupd"),
+		"CircleOfTruth": preload("uid://dpccjvwg6fteh"),
+		"BasicDash": preload("uid://b4utpatx6logy")
 	},
 	"Scribe Assistant": {
-		
+		"Idle": preload("uid://cmvajffgy6ry5"),
+		"Run": preload("uid://bf75lajvldmuk"),
+		"Jump": preload("uid://2uti4pkgeg7f"),
+		"Fall": preload("uid://terep6wnsyl6"),
+		"SwordSwing1": preload("uid://hccmca18cxw"),
+		"SwordSwing2": preload("uid://hccmca18cxw"),
+		"AirAttack": preload("uid://hccmca18cxw"),
+		"Climb": preload("uid://cbwcus8dp1yhk"),
+		"PickaxeSwing": preload("uid://ce6typhyi1h8j"),
+		"BasicDash": preload("uid://dmnues8rqj1ka")
 	}
 }
 
 func get_outfit_graphic(animation_name : String) -> Texture2D:
 	var player_class : String = PlayerStats.player_stats["Class"]
 	return outfit_graphics[player_class][animation_name]
+
+func get_hat_graphic(animation_name : String) -> Texture2D:
+	var player_class : String = PlayerStats.player_stats["Class"]
+	return hat_graphics[player_class][animation_name]

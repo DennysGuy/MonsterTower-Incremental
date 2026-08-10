@@ -64,7 +64,7 @@ func take_screenshot(image_name : String = "screenshot") -> void:
 	var final_path = base_path + image_name + ".png"
 	img.save_png(final_path)
 
-func set_player_box_direction(flip_h : bool):
+func set_player_box_direction(flip_h : bool) -> int:
 	if (flip_h):
 		return -1
 	else:

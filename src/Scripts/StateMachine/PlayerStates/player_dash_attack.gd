@@ -21,6 +21,7 @@ func enter() -> void:
 	parent.damageable = false
 	parent.set_sword_texture(animation_name)
 	parent.set_outfit_texture(animation_name)
+	parent.set_hat_texture(animation_name)
 	parent.timer.wait_time = PlayerStats.player_stats["Dash Duration"]
 	parent.timer.start()
 	parent.grab_ladder_buffer_timer = 0

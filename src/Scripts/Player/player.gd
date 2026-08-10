@@ -15,6 +15,8 @@ class_name Player extends Entity
 
 @onready var hurtbox_collision_shape_2d : CollisionShape2D = $HurtBox/CollisionShape2D
 @onready var outfit: Sprite2D = $Sprites/Outfit
+@onready var hat: Sprite2D = $Sprites/Hat
+
 
 @onready var collision_shape_2d : CollisionShape2D = $CollisionShape2D
 @onready var dash_attack_collision_shape : CollisionShape2D = $DashAttackHitBox/CollisionShape2D
@@ -167,6 +169,9 @@ func set_sword_texture(animation_name : String) -> void:
 func set_outfit_texture(animation_name : String) -> void:
 	outfit.texture = OutfitGraphics.get_outfit_graphic(animation_name)
 
+func set_hat_texture(animation_name : String) -> void:
+	hat.texture = OutfitGraphics.get_hat_graphic(animation_name)
+
 func set_pickaxe_texture() -> void:
 	sword.texture = SwordGraphics.get_pickaxe_graphic()
 
@@ -243,6 +248,10 @@ func issue_attack(selected_hit_box : Area2D, multiplier : float = 1.0, ability :
 
 func issue_sword_attack() -> void:
 	issue_attack(hit_box)
+	
+	if PlayerStats.player_stats["Class"] == "Scribe Assistant":
+		spawn_basic_magic_ball()
+	
 
 func issue_air_attack() -> void:
 	issue_attack(hit_box,1.0,null,1,1)
@@ -528,3 +537,13 @@ func rebuild_junk_held_offsets() -> void:
 	for i in range(junk_picked_up.size()):
 		junk_picked_up[i].offset_distance = 32
 		junk_picked_up[i].offset_distance *= i
+
+func spawn_basic_magic_ball() -> void:
+	var magic_ball : BasicMagicBall = preload("uid://c18633yhicyro").instantiate()
+	var set_dir : int = GameManager.set_player_box_direction(player_sprite.flip_h)
+	magic_ball.player = self
+	magic_ball.move_dir = set_dir
+	magic_ball.flip_dir = player_sprite.flip_h
+	magic_ball.global_position = hit_box.global_position
+	get_parent().add_child(magic_ball)
+	

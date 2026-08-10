@@ -16,6 +16,7 @@ func enter() -> void:
 	combat_ability_state = selected_ability.ability_behavior
 	parent.set_sword_texture(combat_ability_state.animation_name)
 	parent.set_outfit_texture(combat_ability_state.animation_name)
+	parent.set_hat_texture(combat_ability_state.animation_name)
 	parent.animation_player.play(combat_ability_state.animation_name)
 	parent.timer.wait_time = combat_ability_state.animation_duration
 	parent.timer.start()

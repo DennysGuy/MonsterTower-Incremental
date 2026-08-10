@@ -64,11 +64,32 @@ func _on_close_button_button_up() -> void:
 	close_out()
 
 func update_active_ability_description_panel(ability_node_stats : ClassAbilityNodeStats) -> void:
-	
+	var node_type : String = ability_node_stats.get_ability_type_name()
+	var saved_node_data : Dictionary = SaveManager.current_save_game.ability_nodes[ability_node_stats.class_relation][node_type][ability_node_stats.node_name]
 	ability_name.text = ability_node_stats.node_name
-	ability_level.text = "Level %s/%s" % [ability_node_stats.current_upgrade_level, ability_node_stats.max_upgrade_level]
+	ability_level.text = "Level %s/%s" % [saved_node_data["Level"], ability_node_stats.max_upgrade_level]
 	stored_class_ability_node_stats = ability_node_stats
 	ability_description.text = ability_node_stats.description
+	
+	match ability_node_stats.get_ability_type_name():
+		"Ability Stat Boost":
+			display_stats_changes(current_stats, ability_node_stats.get_ability_modifiers(), saved_node_data["Level"])
+			if saved_node_data["Level"] < ability_node_stats.max_upgrade_level:
+				display_stats_changes(next_stats, ability_node_stats.get_ability_modifiers(), saved_node_data["Level"]+1,false)
+			else:
+				next_stats.text = "Max Level Hit!"
+		"Character Stat Boost":
+			display_stats_changes(current_stats, ability_node_stats.get_character_stat_modifiers(), saved_node_data["Level"])
+			if saved_node_data["Level"] < ability_node_stats.max_upgrade_level:
+				display_stats_changes(next_stats, ability_node_stats.get_character_stat_modifiers(), saved_node_data["Level"]+1,false)
+			else:
+				next_stats.text = "Max Level Hit!"
+			
+	if saved_node_data["Level"] <= 0 and node_type == "Ability Stat Boost":
+		upgrade_button.text = "Unlock"
+	else:
+		upgrade_button.text = "Upgrade"
+	
 	if PlayerStats.player_stats["Ability Points"] >= ability_node_stats.ap_cost:
 		upgrade_button.disabled = false
 	else:
@@ -76,13 +97,15 @@ func update_active_ability_description_panel(ability_node_stats : ClassAbilityNo
 
 func increment_ability_level() -> void:
 	var node_type : String = stored_class_ability_node_stats.get_ability_type_name()
-	SaveManager.current_save_game.ability_nodes[stored_class_ability_node_stats.class_relation][node_type][stored_class_ability_node_stats.node_name]["Level"] += 1
+	var saved_node_data : Dictionary = SaveManager.current_save_game.ability_nodes[stored_class_ability_node_stats.class_relation][node_type][stored_class_ability_node_stats.node_name]
+	saved_node_data["Level"] += 1
 	
 	stored_class_ability_node_stats.current_upgrade_level = SaveManager.current_save_game.ability_nodes[stored_class_ability_node_stats.class_relation][node_type][stored_class_ability_node_stats.node_name]["Level"]
 	
 	if stored_class_ability_node_stats.node_type == stored_class_ability_node_stats.NODE_TYPE.ABILITY_STAT_BOOST and stored_class_ability_node_stats.current_upgrade_level == 1:
 		PlayerStats.equipped_abilities[stored_class_ability_node_stats.ability_category] = stored_class_ability_node_stats.ability_resource
 		SignalBus.unlock_cool_down_wheel.emit(stored_class_ability_node_stats.ability_resource)
+		saved_node_data["Unlocked"] = true
 		SaveManager.save_equipped_abilities()
 	
 	ability_level.text = "level %s/%s" % [stored_class_ability_node_stats.current_upgrade_level, stored_class_ability_node_stats.max_upgrade_level]
@@ -102,6 +125,23 @@ func _on_upgrade_button_button_up() -> void:
 	deduct_ap()
 	
 	update_active_ability_description_panel(stored_class_ability_node_stats)
+
+func display_stats_changes(stats_label : RichTextLabel, stat_list : Dictionary, level : int, is_current: bool = true) -> void:
+	if is_current:
+		stats_label.text = "Current Stats\n"
+	else:
+		stats_label.text = "Next Stats\n"
+	
+	for stat in stat_list.keys():
+		if not stat_list[stat] is Vector2 and stat_list[stat] != 0.0:
+			if stat_list[stat] < 1.0:
+				stats_label.text += "+%"+str(int(stat_list[stat] * 100) * level) + " " + stat + "\n"
+			elif stat_list[stat] >= 1.0:
+				stats_label.text += "+%s %s\n" % [int(stat_list[stat] * level), stat]
+			elif stat_list[stat] > -1.0 and stat_list[stat] < 0.0:
+					stats_label.text += "+%"+str(int(stat_list[stat] * 100 * level)) + " " + stat + "\n"
+			else:
+				stats_label.text += "-%s %s\n" % [int(stat_list[stat] * level), stat]
 
 func deduct_ap() -> void:
 	PlayerStats.player_stats["Ability Points"] -= stored_class_ability_node_stats.ap_cost

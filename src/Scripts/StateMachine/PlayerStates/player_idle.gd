@@ -29,6 +29,7 @@ func enter() -> void:
 		print(PlayerStats.get_current_sword())
 		parent.set_sword_texture(animation_name)
 	parent.set_outfit_texture(animation_name)
+	parent.set_hat_texture(animation_name)
 	parent.can_knock_back = true
 	parent.can_double_jump = true
 	#parent.can_dash_attack = true
