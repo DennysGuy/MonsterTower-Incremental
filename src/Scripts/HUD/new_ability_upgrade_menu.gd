@@ -17,6 +17,9 @@ const NEW_WEAPON_CRAFTING_NOTICE_SCENE = preload("uid://bhd7f77giafvv")
 @onready var warrior_passive_abilities_panel: Panel = $MarginContainer/Panel/WarriorPassiveAbilitiesPanel
 @onready var warrior_active_abilities_panel: Panel = $MarginContainer/Panel/WarriorActiveAbilitiesPanel
 
+@onready var mage_passive_abilities_panel: Panel = $MarginContainer/Panel/MagePassiveAbilitiesPanel
+@onready var mage_active_abilities_panel: Panel = $MarginContainer/Panel/MageActiveAbilitiesPanel
+
 @onready var upgrade_button: Button = $MarginContainer/Panel/DescriptionPanel/UpgradeButton
 
 var stored_class_ability_node_stats : ClassAbilityNodeStats
@@ -24,8 +27,9 @@ var stored_class_ability_node_stats : ClassAbilityNodeStats
 func _ready() -> void:
 	SignalBus.update_ap_label.connect(update_ap_label)
 	AbilitiesMenuManager.active_ability_button_pressed.connect(update_active_ability_description_panel)
-	class_title.text = "Tyro | Warrior"
+	
 	update_ap_label()
+	_init_abilities_page()
 
 func _process(delta : float) -> void:
 	if Input.is_action_just_pressed("close_menu"):
@@ -114,16 +118,14 @@ func increment_ability_level() -> void:
 
 func _on_upgrade_button_button_up() -> void:
 	increment_ability_level()
+	deduct_ap()
 	match stored_class_ability_node_stats.node_type:
-
 		stored_class_ability_node_stats.NODE_TYPE.ABILITY_STAT_BOOST:
 			stored_class_ability_node_stats.upgrade_ability_stats()
 			
 		stored_class_ability_node_stats.NODE_TYPE.CHARACTER_STAT_BOOST:
 			stored_class_ability_node_stats.upgrade_character_stats()
-			
-	deduct_ap()
-	
+
 	update_active_ability_description_panel(stored_class_ability_node_stats)
 
 func display_stats_changes(stats_label : RichTextLabel, stat_list : Dictionary, level : int, is_current: bool = true) -> void:
@@ -149,10 +151,46 @@ func deduct_ap() -> void:
 	SaveManager.save_player_stats()
 
 func _on_passive_abilities_button_button_up() -> void:
-	warrior_passive_abilities_panel.show()
-	warrior_active_abilities_panel.hide()
+	match PlayerStats.player_stats["Class"]:
+		"Tyro":
+			warrior_active_abilities_panel.hide()
+			mage_active_abilities_panel.hide()
+			mage_passive_abilities_panel.hide()
+			warrior_passive_abilities_panel.show()
+		
+		"Scribe Assistant":
+			warrior_passive_abilities_panel.hide()
+			warrior_active_abilities_panel.hide()
+			mage_active_abilities_panel.hide()
+			mage_passive_abilities_panel.show()
 
 func _on_active_abilities_button_button_up() -> void:
-	#we will update this to consider multiple classes
-	warrior_active_abilities_panel.show()
-	warrior_passive_abilities_panel.hide()
+	match PlayerStats.player_stats["Class"]:
+		"Tyro":
+			warrior_passive_abilities_panel.hide()
+			warrior_active_abilities_panel.hide()
+			mage_active_abilities_panel.hide()
+			mage_passive_abilities_panel.show()
+			
+		"Scribe Assistant":
+			warrior_passive_abilities_panel.hide()
+			warrior_active_abilities_panel.hide()
+			mage_passive_abilities_panel.hide()
+			mage_active_abilities_panel.show()
+
+
+func _init_abilities_page() -> void:
+	match PlayerStats.player_stats["Class"]:
+		"Tyro":
+			class_title.text = "Tyro | Warrior"
+			warrior_passive_abilities_panel.hide()
+			warrior_active_abilities_panel.hide()
+			mage_active_abilities_panel.hide()
+			mage_passive_abilities_panel.show()
+			
+		"Scribe Assistant":
+			class_title.text = "Scribe Assistant | Mage"
+			warrior_passive_abilities_panel.hide()
+			warrior_active_abilities_panel.hide()
+			mage_passive_abilities_panel.hide()
+			mage_active_abilities_panel.show()

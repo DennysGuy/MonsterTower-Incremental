@@ -187,7 +187,7 @@ func _process(delta: float) -> void:
 		match PlayerStats.player_stats["Class"]:
 			"Junior Hunter":
 				spawn_beginner_tree()
-			"Tyro":
+			_:
 				spawn_warrior_tech_tree()
 		#spawn_dojo_menu()
 		

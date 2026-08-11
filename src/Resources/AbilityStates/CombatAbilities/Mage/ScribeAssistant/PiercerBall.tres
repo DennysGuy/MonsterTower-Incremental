@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="Ability" format=3 uid="uid://dmoqqvrwjfaoh"]
+
+[ext_resource type="Resource" uid="uid://vpq7hh0rm2wx" path="res://src/Resources/AbilityStates/CombatAbilities/Mage/ScribeAssistant/PiercerBallBehavior.tres" id="1_cl3ea"]
+[ext_resource type="Script" uid="uid://bwqf7q51702b" path="res://src/Scripts/cability.gd" id="1_vayfu"]
+[ext_resource type="Texture2D" uid="uid://p24q5hhe8vt" path="res://Assets/HUD/CombatAbilityIcons/PiercerBall_Disabled.png" id="2_ccalb"]
+[ext_resource type="Texture2D" uid="uid://bxqxewd0kwy62" path="res://Assets/HUD/CombatAbilityIcons/PiercerBallIcon.png" id="3_wt6gx"]
+
+[resource]
+script = ExtResource("1_vayfu")
+ability_name = "Piercer Ball"
+class_relation = "Scribe Assistant"
+ability_type = 5
+cooldown_time = 5.0
+icon = ExtResource("3_wt6gx")
+disabled_icon = ExtResource("2_ccalb")
+is_combat_ability = true
+ability_description = "A large energy ball is cast, dealing magic damage with an applied multiplier. Splash damage then occurs to a set number of monsters behind the initially struck target, with the multiplier decreasing with each subsequent hit. Any monsters left standing are marked with a target. The next basic magic ball will automatically target the marked monsters."
+ability_behavior = ExtResource("1_cl3ea")
+mp_cost = 6.0
+number_of_enemies_hit = 2.0
+projectile_distance = 0.3
+attack_damage_modifier = 1.5
+up_time = 0.3
+metadata/_custom_type_script = "uid://bwqf7q51702b"

@@ -546,4 +546,12 @@ func spawn_basic_magic_ball() -> void:
 	magic_ball.flip_dir = player_sprite.flip_h
 	magic_ball.global_position = hit_box.global_position
 	get_parent().add_child(magic_ball)
-	
+
+func spawn_piercer_ball() -> void:
+	var piercer_ball : PiercerBall = preload("uid://cm0nihe8vme51").instantiate()
+	var set_dir : int = GameManager.set_player_box_direction(player_sprite.flip_h)
+	piercer_ball.player = self
+	piercer_ball.move_dir = set_dir
+	piercer_ball.flip_dir = player_sprite.flip_h
+	piercer_ball.global_position = hit_box.global_position
+	get_parent().add_child(piercer_ball)

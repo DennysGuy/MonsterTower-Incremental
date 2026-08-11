@@ -52,7 +52,8 @@ var outfit_graphics : Dictionary = {
 		"Climb": preload("uid://dlsry6yucic6j"),
 		"PickaxeSwing": preload("uid://t3htsoyocbhu"),
 		"BasicAttackEffect": preload("uid://dh3xfouvye3y4"),
-		"BasicDash": preload("uid://dmnues8rqj1ka")
+		"BasicDash": preload("uid://dmnues8rqj1ka"),
+		"PiercerBall": preload("uid://b1dyp2h8seeja")
 	}
 }
 
@@ -99,7 +100,8 @@ var hat_graphics : Dictionary = {
 		"AirAttack": preload("uid://hccmca18cxw"),
 		"Climb": preload("uid://cbwcus8dp1yhk"),
 		"PickaxeSwing": preload("uid://ce6typhyi1h8j"),
-		"BasicDash": preload("uid://dmnues8rqj1ka")
+		"BasicDash": preload("uid://dmnues8rqj1ka"),
+		"PiercerBall": preload("uid://7jb14k43c70y")
 	}
 }
 

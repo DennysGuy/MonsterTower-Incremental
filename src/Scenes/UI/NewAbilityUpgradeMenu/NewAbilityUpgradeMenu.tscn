@@ -17,6 +17,7 @@
 [ext_resource type="Resource" uid="uid://cjc20n6ld53u3" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/AbilityUnlocks/CircleOfTruthNodeStats.tres" id="12_u6awe"]
 [ext_resource type="Resource" uid="uid://js4itkff48rn" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/AbilityUnlocks/IronBodyNodeStats.tres" id="15_sptac"]
 [ext_resource type="Resource" uid="uid://b1tqtyjdmcrui" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/AbilityUnlocks/DoubleStab1.tres" id="16_sptac"]
+[ext_resource type="Resource" uid="uid://ncugfd1bm6mr" path="res://src/Resources/AbilityNodeStats/Mage/ScribeAssistant/PiercerBallNodeStats.tres" id="17_4h6b7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4i7kl"]
 bg_color = Color(0, 0.21960784, 0.3882353, 1)
@@ -418,6 +419,7 @@ text = "Passive Abilities"
 horizontal_alignment = 1
 
 [node name="WarriorActiveAbilitiesPanel" type="Panel" parent="MarginContainer/Panel" unique_id=1439526770]
+visible = false
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -680,6 +682,555 @@ text = "Requires Level 60
 horizontal_alignment = 1
 
 [node name="AbilityTypeTitle" type="Label" parent="MarginContainer/Panel/WarriorActiveAbilitiesPanel" unique_id=1522383410]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -130.0
+offset_top = 21.0
+offset_right = 138.0
+offset_bottom = 59.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("4_idi4u")
+theme_override_font_sizes/font_size = 32
+text = "Active Abilities"
+horizontal_alignment = 1
+
+[node name="MagePassiveAbilitiesPanel" type="Panel" parent="MarginContainer/Panel" unique_id=1983343602]
+visible = false
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 364.0
+offset_top = -332.0
+offset_right = 1516.0
+offset_bottom = 484.0
+grow_vertical = 2
+
+[node name="I" type="Label" parent="MarginContainer/Panel/MagePassiveAbilitiesPanel" unique_id=163528269]
+layout_mode = 0
+offset_left = 198.0
+offset_top = 70.0
+offset_right = 238.0
+offset_bottom = 149.0
+theme_override_fonts/font = ExtResource("3_4i7kl")
+theme_override_font_sizes/font_size = 64
+text = "I"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="II" type="Label" parent="MarginContainer/Panel/MagePassiveAbilitiesPanel" unique_id=766958298]
+layout_mode = 0
+offset_left = 557.0
+offset_top = 70.0
+offset_right = 597.0
+offset_bottom = 149.0
+theme_override_fonts/font = ExtResource("3_4i7kl")
+theme_override_font_sizes/font_size = 64
+text = "II"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="III" type="Label" parent="MarginContainer/Panel/MagePassiveAbilitiesPanel" unique_id=1778835462]
+layout_mode = 0
+offset_left = 904.0
+offset_top = 70.0
+offset_right = 953.0
+offset_bottom = 149.0
+theme_override_fonts/font = ExtResource("3_4i7kl")
+theme_override_font_sizes/font_size = 64
+text = "III"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FirstClassAbilities" type="Panel" parent="MarginContainer/Panel/MagePassiveAbilitiesPanel" unique_id=282607022]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 128.0
+offset_top = -264.0
+offset_right = 320.0
+offset_bottom = 376.0
+grow_vertical = 2
+
+[node name="AbilitiesVBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel/MagePassiveAbilitiesPanel/FirstClassAbilities" unique_id=825735985]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -256.0
+offset_right = 40.0
+offset_bottom = 256.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 64
+alignment = 1
+
+[node name="CycloneSlash2" parent="MarginContainer/Panel/MagePassiveAbilitiesPanel/FirstClassAbilities/AbilitiesVBoxContainer" unique_id=1172802671 instance=ExtResource("10_c4jju")]
+layout_mode = 2
+ability = ExtResource("6_qk2pf")
+
+[node name="CircleOfTruth2" parent="MarginContainer/Panel/MagePassiveAbilitiesPanel/FirstClassAbilities/AbilitiesVBoxContainer" unique_id=2090264086 instance=ExtResource("10_c4jju")]
+layout_mode = 2
+ability = ExtResource("7_sptac")
+
+[node name="IronBody2" parent="MarginContainer/Panel/MagePassiveAbilitiesPanel/FirstClassAbilities/AbilitiesVBoxContainer" unique_id=1945227122 instance=ExtResource("10_c4jju")]
+layout_mode = 2
+ability = ExtResource("7_sptac")
+
+[node name="SecondClassAbilities" type="Panel" parent="MarginContainer/Panel/MagePassiveAbilitiesPanel" unique_id=880695981]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 480.0
+offset_top = -264.0
+offset_right = 672.0
+offset_bottom = 376.0
+grow_vertical = 2
+
+[node name="AbilitiesVBoxContainer2" type="VBoxContainer" parent="MarginContainer/Panel/MagePassiveAbilitiesPanel/SecondClassAbilities" unique_id=1800302338]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -256.0
+offset_right = 40.0
+offset_bottom = 256.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 64
+alignment = 1
+
+[node name="CycloneSlash" type="TextureButton" parent="MarginContainer/Panel/MagePassiveAbilitiesPanel/SecondClassAbilities/AbilitiesVBoxContainer2" unique_id=207246641]
+layout_mode = 2
+texture_normal = ExtResource("5_jfhsm")
+
+[node name="CircleOfTruth" type="TextureButton" parent="MarginContainer/Panel/MagePassiveAbilitiesPanel/SecondClassAbilities/AbilitiesVBoxContainer2" unique_id=1236812003]
+layout_mode = 2
+texture_normal = ExtResource("6_vrgxw")
+
+[node name="IronBody" type="TextureButton" parent="MarginContainer/Panel/MagePassiveAbilitiesPanel/SecondClassAbilities/AbilitiesVBoxContainer2" unique_id=658336777]
+layout_mode = 2
+texture_normal = ExtResource("7_fjd65")
+
+[node name="DoubleCleave" type="TextureButton" parent="MarginContainer/Panel/MagePassiveAbilitiesPanel/SecondClassAbilities/AbilitiesVBoxContainer2" unique_id=2005867999]
+layout_mode = 2
+texture_normal = ExtResource("8_c4jju")
+
+[node name="LockPanel" type="Panel" parent="MarginContainer/Panel/MagePassiveAbilitiesPanel/SecondClassAbilities" unique_id=907661463]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LockTexture" type="TextureRect" parent="MarginContainer/Panel/MagePassiveAbilitiesPanel/SecondClassAbilities/LockPanel" unique_id=1061522243]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -65.0
+offset_top = -65.0
+offset_right = 65.0
+offset_bottom = 65.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_fjd65")
+
+[node name="LevelNotice" type="Label" parent="MarginContainer/Panel/MagePassiveAbilitiesPanel/SecondClassAbilities/LockPanel" unique_id=332584748]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -107.0
+offset_right = 20.0
+offset_bottom = -84.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_4i7kl")
+theme_override_font_sizes/font_size = 20
+text = "Requires Level 30
+(Not in Demo)"
+horizontal_alignment = 1
+
+[node name="ThirdClassAbilities" type="Panel" parent="MarginContainer/Panel/MagePassiveAbilitiesPanel" unique_id=1922437156]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 832.0
+offset_top = -264.0
+offset_right = 1024.0
+offset_bottom = 376.0
+grow_vertical = 2
+
+[node name="AbilitiesVBoxContainer3" type="VBoxContainer" parent="MarginContainer/Panel/MagePassiveAbilitiesPanel/ThirdClassAbilities" unique_id=913144216]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -256.0
+offset_right = 40.0
+offset_bottom = 256.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 64
+alignment = 1
+
+[node name="CycloneSlash" type="TextureButton" parent="MarginContainer/Panel/MagePassiveAbilitiesPanel/ThirdClassAbilities/AbilitiesVBoxContainer3" unique_id=677235072]
+layout_mode = 2
+texture_normal = ExtResource("5_jfhsm")
+
+[node name="CircleOfTruth" type="TextureButton" parent="MarginContainer/Panel/MagePassiveAbilitiesPanel/ThirdClassAbilities/AbilitiesVBoxContainer3" unique_id=98941753]
+layout_mode = 2
+texture_normal = ExtResource("6_vrgxw")
+
+[node name="IronBody" type="TextureButton" parent="MarginContainer/Panel/MagePassiveAbilitiesPanel/ThirdClassAbilities/AbilitiesVBoxContainer3" unique_id=1163487018]
+layout_mode = 2
+texture_normal = ExtResource("7_fjd65")
+
+[node name="DoubleCleave" type="TextureButton" parent="MarginContainer/Panel/MagePassiveAbilitiesPanel/ThirdClassAbilities/AbilitiesVBoxContainer3" unique_id=1128722808]
+layout_mode = 2
+texture_normal = ExtResource("8_c4jju")
+
+[node name="LockPanel" type="Panel" parent="MarginContainer/Panel/MagePassiveAbilitiesPanel/ThirdClassAbilities" unique_id=329115663]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LockTexture" type="TextureRect" parent="MarginContainer/Panel/MagePassiveAbilitiesPanel/ThirdClassAbilities/LockPanel" unique_id=500800793]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -65.0
+offset_top = -65.0
+offset_right = 65.0
+offset_bottom = 65.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_fjd65")
+
+[node name="LevelNotice" type="Label" parent="MarginContainer/Panel/MagePassiveAbilitiesPanel/ThirdClassAbilities/LockPanel" unique_id=1683683021]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -107.0
+offset_right = 20.0
+offset_bottom = -84.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_4i7kl")
+theme_override_font_sizes/font_size = 20
+text = "Requires Level 60
+(Not in Demo)"
+horizontal_alignment = 1
+
+[node name="AbilityTypeTitle" type="Label" parent="MarginContainer/Panel/MagePassiveAbilitiesPanel" unique_id=893134370]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -134.0
+offset_top = 21.0
+offset_right = 134.0
+offset_bottom = 59.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("4_idi4u")
+theme_override_font_sizes/font_size = 32
+text = "Passive Abilities"
+horizontal_alignment = 1
+
+[node name="MageActiveAbilitiesPanel" type="Panel" parent="MarginContainer/Panel" unique_id=2050448725]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 364.0
+offset_top = -332.0
+offset_right = 1516.0
+offset_bottom = 484.0
+grow_vertical = 2
+
+[node name="I" type="Label" parent="MarginContainer/Panel/MageActiveAbilitiesPanel" unique_id=1069367882]
+layout_mode = 0
+offset_left = 198.0
+offset_top = 70.0
+offset_right = 238.0
+offset_bottom = 149.0
+theme_override_fonts/font = ExtResource("3_4i7kl")
+theme_override_font_sizes/font_size = 64
+text = "I"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="II" type="Label" parent="MarginContainer/Panel/MageActiveAbilitiesPanel" unique_id=1640943625]
+layout_mode = 0
+offset_left = 557.0
+offset_top = 70.0
+offset_right = 597.0
+offset_bottom = 149.0
+theme_override_fonts/font = ExtResource("3_4i7kl")
+theme_override_font_sizes/font_size = 64
+text = "II"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="III" type="Label" parent="MarginContainer/Panel/MageActiveAbilitiesPanel" unique_id=375363252]
+layout_mode = 0
+offset_left = 904.0
+offset_top = 70.0
+offset_right = 953.0
+offset_bottom = 149.0
+theme_override_fonts/font = ExtResource("3_4i7kl")
+theme_override_font_sizes/font_size = 64
+text = "III"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FirstClassAbilities" type="Panel" parent="MarginContainer/Panel/MageActiveAbilitiesPanel" unique_id=1482111531]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 128.0
+offset_top = -264.0
+offset_right = 320.0
+offset_bottom = 375.0
+grow_vertical = 2
+
+[node name="AbilitiesVBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel/MageActiveAbilitiesPanel/FirstClassAbilities" unique_id=470836076]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -256.0
+offset_right = 40.0
+offset_bottom = 256.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 64
+alignment = 1
+
+[node name="PiercerBall" parent="MarginContainer/Panel/MageActiveAbilitiesPanel/FirstClassAbilities/AbilitiesVBoxContainer" unique_id=1918433492 instance=ExtResource("10_c4jju")]
+layout_mode = 2
+ability = ExtResource("17_4h6b7")
+
+[node name="ArcaneMine" parent="MarginContainer/Panel/MageActiveAbilitiesPanel/FirstClassAbilities/AbilitiesVBoxContainer" unique_id=1606424984 instance=ExtResource("10_c4jju")]
+layout_mode = 2
+ability = ExtResource("12_u6awe")
+
+[node name="MPSiphon" parent="MarginContainer/Panel/MageActiveAbilitiesPanel/FirstClassAbilities/AbilitiesVBoxContainer" unique_id=187220846 instance=ExtResource("10_c4jju")]
+layout_mode = 2
+ability = ExtResource("15_sptac")
+
+[node name="DoubleSlash" parent="MarginContainer/Panel/MageActiveAbilitiesPanel/FirstClassAbilities/AbilitiesVBoxContainer" unique_id=399920020 instance=ExtResource("10_c4jju")]
+layout_mode = 2
+ability = ExtResource("16_sptac")
+
+[node name="SecondClassAbilities" type="Panel" parent="MarginContainer/Panel/MageActiveAbilitiesPanel" unique_id=1272272196]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 480.0
+offset_top = -264.0
+offset_right = 672.0
+offset_bottom = 376.0
+grow_vertical = 2
+
+[node name="AbilitiesVBoxContainer2" type="VBoxContainer" parent="MarginContainer/Panel/MageActiveAbilitiesPanel/SecondClassAbilities" unique_id=614848280]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -256.0
+offset_right = 40.0
+offset_bottom = 256.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 64
+alignment = 1
+
+[node name="CycloneSlash" type="TextureButton" parent="MarginContainer/Panel/MageActiveAbilitiesPanel/SecondClassAbilities/AbilitiesVBoxContainer2" unique_id=588455766]
+layout_mode = 2
+texture_normal = ExtResource("5_jfhsm")
+
+[node name="CircleOfTruth" type="TextureButton" parent="MarginContainer/Panel/MageActiveAbilitiesPanel/SecondClassAbilities/AbilitiesVBoxContainer2" unique_id=1908162783]
+layout_mode = 2
+texture_normal = ExtResource("6_vrgxw")
+
+[node name="IronBody" type="TextureButton" parent="MarginContainer/Panel/MageActiveAbilitiesPanel/SecondClassAbilities/AbilitiesVBoxContainer2" unique_id=1081966349]
+layout_mode = 2
+texture_normal = ExtResource("7_fjd65")
+
+[node name="DoubleCleave" type="TextureButton" parent="MarginContainer/Panel/MageActiveAbilitiesPanel/SecondClassAbilities/AbilitiesVBoxContainer2" unique_id=841678000]
+layout_mode = 2
+texture_normal = ExtResource("8_c4jju")
+
+[node name="LockPanel" type="Panel" parent="MarginContainer/Panel/MageActiveAbilitiesPanel/SecondClassAbilities" unique_id=758326116]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LockTexture" type="TextureRect" parent="MarginContainer/Panel/MageActiveAbilitiesPanel/SecondClassAbilities/LockPanel" unique_id=1904577543]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -65.0
+offset_top = -65.0
+offset_right = 65.0
+offset_bottom = 65.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_fjd65")
+
+[node name="LevelNotice" type="Label" parent="MarginContainer/Panel/MageActiveAbilitiesPanel/SecondClassAbilities/LockPanel" unique_id=1369430710]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -107.0
+offset_right = 20.0
+offset_bottom = -84.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_4i7kl")
+theme_override_font_sizes/font_size = 20
+text = "Requires Level 30
+(Not in Demo)"
+horizontal_alignment = 1
+
+[node name="ThirdClassAbilities" type="Panel" parent="MarginContainer/Panel/MageActiveAbilitiesPanel" unique_id=414921898]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 832.0
+offset_top = -264.0
+offset_right = 1024.0
+offset_bottom = 376.0
+grow_vertical = 2
+
+[node name="AbilitiesVBoxContainer3" type="VBoxContainer" parent="MarginContainer/Panel/MageActiveAbilitiesPanel/ThirdClassAbilities" unique_id=1266555502]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -256.0
+offset_right = 40.0
+offset_bottom = 256.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 64
+alignment = 1
+
+[node name="CycloneSlash" type="TextureButton" parent="MarginContainer/Panel/MageActiveAbilitiesPanel/ThirdClassAbilities/AbilitiesVBoxContainer3" unique_id=1856727695]
+layout_mode = 2
+texture_normal = ExtResource("5_jfhsm")
+
+[node name="CircleOfTruth" type="TextureButton" parent="MarginContainer/Panel/MageActiveAbilitiesPanel/ThirdClassAbilities/AbilitiesVBoxContainer3" unique_id=129900871]
+layout_mode = 2
+texture_normal = ExtResource("6_vrgxw")
+
+[node name="IronBody" type="TextureButton" parent="MarginContainer/Panel/MageActiveAbilitiesPanel/ThirdClassAbilities/AbilitiesVBoxContainer3" unique_id=1614465695]
+layout_mode = 2
+texture_normal = ExtResource("7_fjd65")
+
+[node name="DoubleCleave" type="TextureButton" parent="MarginContainer/Panel/MageActiveAbilitiesPanel/ThirdClassAbilities/AbilitiesVBoxContainer3" unique_id=2054164851]
+layout_mode = 2
+texture_normal = ExtResource("8_c4jju")
+
+[node name="LockPanel" type="Panel" parent="MarginContainer/Panel/MageActiveAbilitiesPanel/ThirdClassAbilities" unique_id=1204004948]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LockTexture" type="TextureRect" parent="MarginContainer/Panel/MageActiveAbilitiesPanel/ThirdClassAbilities/LockPanel" unique_id=991632686]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -65.0
+offset_top = -65.0
+offset_right = 65.0
+offset_bottom = 65.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_fjd65")
+
+[node name="LevelNotice" type="Label" parent="MarginContainer/Panel/MageActiveAbilitiesPanel/ThirdClassAbilities/LockPanel" unique_id=2677186]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -107.0
+offset_right = 20.0
+offset_bottom = -84.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_4i7kl")
+theme_override_font_sizes/font_size = 20
+text = "Requires Level 60
+(Not in Demo)"
+horizontal_alignment = 1
+
+[node name="AbilityTypeTitle" type="Label" parent="MarginContainer/Panel/MageActiveAbilitiesPanel" unique_id=1383145489]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5

@@ -69,9 +69,6 @@
 [ext_resource type="Texture2D" uid="uid://cx1hk3lchixqc" path="res://Assets/PlayerGraphics/NewPlayer/PlayerPunch.png" id="59_ceswy"]
 [ext_resource type="Texture2D" uid="uid://14o5458rbghb" path="res://Assets/PlayerGraphics/NewPlayer/PlayerPiercerBall.png" id="62_274uf"]
 [ext_resource type="Texture2D" uid="uid://q8irat2qcl6x" path="res://Assets/PlayerGraphics/NewPlayer/PlayerDoubleSlashl.png" id="62_yvgca"]
-[ext_resource type="Texture2D" uid="uid://b1dyp2h8seeja" path="res://Assets/PlayerGraphics/Outfits/ScribeAssistantFit/ScribeAssistantFit_PiercerBall.png" id="65_v34su"]
-[ext_resource type="Texture2D" uid="uid://7jb14k43c70y" path="res://Assets/PlayerGraphics/Outfits/ScribeAssistantFit/ScribeAssistantFit_Hat_PiercerBall.png" id="66_to43c"]
-[ext_resource type="Texture2D" uid="uid://miet442rgwjl" path="res://Assets/PlayerGraphics/Weapons/StandardStaff/StandardStaff_PiercerBall.png" id="67_3rnyq"]
 
 [sub_resource type="Animation" id="Animation_cq2ky"]
 resource_name = "AirAttack"
@@ -2290,7 +2287,7 @@ tracks/14/keys = {
 
 [sub_resource type="Animation" id="Animation_mbad1"]
 resource_name = "PiercerBall"
-length = 0.55
+length = 0.5
 step = 0.07
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -2435,6 +2432,20 @@ tracks/11/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [8]
+}
+tracks/12/type = "method"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("../..")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0.2857143),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"spawn_piercer_ball"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_expxj"]
@@ -4263,20 +4274,17 @@ position = Vector2(0, -1)
 [node name="PlayerSprite" type="Sprite2D" parent="Sprites" unique_id=1041617266]
 material = SubResource("ShaderMaterial_8o5ax")
 position = Vector2(0, -32)
-texture = ExtResource("62_yvgca")
+texture = ExtResource("62_274uf")
 hframes = 8
 
 [node name="Outfit" type="Sprite2D" parent="Sprites" unique_id=411712928]
 position = Vector2(0, -32)
-texture = ExtResource("65_v34su")
 
 [node name="Hat" type="Sprite2D" parent="Sprites" unique_id=638769298]
 position = Vector2(0, -32)
-texture = ExtResource("66_to43c")
 
 [node name="Sword" type="Sprite2D" parent="Sprites" unique_id=1728017757]
 position = Vector2(0, -33)
-texture = ExtResource("67_3rnyq")
 hframes = 15
 
 [node name="Effect" type="Sprite2D" parent="Sprites" unique_id=217080024]
@@ -4286,7 +4294,6 @@ hframes = 15
 
 [node name="Effect2" type="Sprite2D" parent="Sprites" unique_id=1464835839]
 position = Vector2(0, -33)
-texture = ExtResource("46_jqbe8")
 hframes = 7
 frame = 6
 

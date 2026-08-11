@@ -58,7 +58,8 @@ var sword_textures : Dictionary = {
 		"IronBody": preload("uid://ct5gcpqihh32b"),
 		"CircleOfTruth": preload("uid://ctcincrx7yf48"),
 		"BasicDash": preload("uid://d3pwnhrwyilch"),
-		"Weapon Crafted": preload("uid://clljhrjonsqlx")
+		"Weapon Crafted": preload("uid://clljhrjonsqlx"),
+		"PiercerBall": preload("uid://miet442rgwjl")
 	},
 	"Iron Broad Sword" : {
 		"Idle": preload("uid://dtvd0ax0xli76"),

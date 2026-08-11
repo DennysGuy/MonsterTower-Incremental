@@ -27,8 +27,6 @@ func enter() -> void:
 	parent.timer.start()
 	combat_ability_state.on_enter(parent)
 	
-	
-	
 func exit() -> void:
 	parent.can_knock_back = true
 	parent.damageable = true

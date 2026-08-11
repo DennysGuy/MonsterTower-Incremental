@@ -44,6 +44,9 @@ enum NODE_TYPE {ABILITY_UNLOCK, ABILITY_STAT_BOOST, CHARACTER_STAT_BOOST, CLASS_
 @export var dash_speed_modifier : float
 @export var hit_box_size_modifier : Vector2
 @export var buff_limit_time : float
+@export var aoe_range : float
+@export var cc_time_limit : float
+@export var up_time : float
 
 
 @export_group("Character Stats Modifiers")
@@ -90,7 +93,10 @@ func get_ability_modifiers() -> Dictionary:
 		"Dash Cooldown": dash_cooldown_modifier,
 		"Dash Speed": dash_speed_modifier,
 		"Hitbox Size": hit_box_size_modifier,
-		"Buff Limit Time": buff_limit_time
+		"Buff Limit Time": buff_limit_time,
+		"AOE Range": aoe_range,
+		"CC Time Limit": cc_time_limit,
+		"Up Time": up_time
 	}
 
 func get_character_stat_modifiers() -> Dictionary:
@@ -112,7 +118,7 @@ func get_character_stat_modifiers() -> Dictionary:
 		"Accuracy": accuracy_change,
 		"Max Health": max_health_change,
 		"Max MP": max_mp_change,
-		"Lock On Multiplier": lock_on_multiplier_change
+		"Lock On Multiplier": lock_on_multiplier_change,
 	}
 
 func upgrade_ability_stats() -> void:

@@ -369,7 +369,10 @@ TODO: We will add saves for classes as well
 			"Dash Cooldown" : 0.0,
 			"Dash Speed Modifier" : 1.0,
 			"Knock Back Modifier" : 0.0,
-			"Buff Limit Time": 0.0
+			"Buff Limit Time": 0.0,
+			"AOE Range": 0.0,
+			"CC Time Limit": 0.0,
+			"Up Time": 0.0
 		},
 		"Air Attack": {
 			"Cooldown Time" : 0.7,
@@ -393,7 +396,10 @@ TODO: We will add saves for classes as well
 			"Dash Cooldown" : 0.0,
 			"Dash Speed Modifier" : 0.0,
 			"Knock Back Modifier" : 0.0,
-			"Buff Limit Time": 0.0
+			"Buff Limit Time": 0.0,
+			"AOE Range": 0.0,
+			"CC Time Limit": 0.0,
+			"Up Time": 0.0
 		},
 		"Double Jump": {
 			"Cooldown Time" : 0.3,
@@ -417,7 +423,10 @@ TODO: We will add saves for classes as well
 			"Dash Cooldown" : 0.0,
 			"Dash Speed Modifier" : 0.0,
 			"Knock Back Modifier" : 0.0,
-			"Buff Limit Time": 0.0
+			"Buff Limit Time": 0.0,
+			"AOE Range": 0.0,
+			"CC Time Limit": 0.0,
+			"Up Time": 0.0
 		},
 		"Special Attack": {
 			"Cooldown Time" : 3.0,
@@ -441,7 +450,10 @@ TODO: We will add saves for classes as well
 			"Dash Cooldown" : 0.0,
 			"Dash Speed Modifier" : 0.0,
 			"Knock Back Modifier" : 0.0,
-			"Buff Limit Time": 0.0
+			"Buff Limit Time": 0.0,
+			"AOE Range": 0.0,
+			"CC Time Limit": 0.0,
+			"Up Time": 0.0
 		}
 	},
 	"Tyro" : {##NEED TO ADD BUFF LIMIT TIME
@@ -467,7 +479,10 @@ TODO: We will add saves for classes as well
 			"Dash Cooldown" : 0.0,
 			"Dash Speed Modifier" : 0.0,
 			"Knock Back Modifier" : 0.0,
-			"Buff Limit Time": 0.0
+			"Buff Limit Time": 0.0,
+			"AOE Range": 0.0,
+			"CC Time Limit": 0.0,
+			"Up Time": 0.0
 		},
 		"Combat Ability 2": {
 			"Cooldown Time" : 7.0,
@@ -491,7 +506,10 @@ TODO: We will add saves for classes as well
 			"Dash Cooldown" : 0.0,
 			"Dash Speed Modifier" : 0.0,
 			"Knock Back Modifier" : 0.0,
-			"Buff Limit Time": 0.0
+			"Buff Limit Time": 0.0,
+			"AOE Range": 0.0,
+			"CC Time Limit": 0.0,
+			"Up Time": 0.0
 		},
 		"Combat Ability 3": {
 			"Cooldown Time" : 15.0,
@@ -515,7 +533,10 @@ TODO: We will add saves for classes as well
 			"Dash Cooldown" : 0.0,
 			"Dash Speed Modifier" : 0.0,
 			"Knock Back Modifier" : 0.0,
-			"Buff Limit Time": 45.0
+			"Buff Limit Time": 45.0,
+			"AOE Range": 0.0,
+			"CC Time Limit": 0.0,
+			"Up Time": 0.0
 		},
 		"Combat Ability 4": {
 			"Cooldown Time" : 5.0,
@@ -539,7 +560,120 @@ TODO: We will add saves for classes as well
 			"Dash Cooldown" : 0.0,
 			"Dash Speed Modifier" : 0.0,
 			"Knock Back Modifier" : 0.0,
-			"Buff Limit Time": 0.0
+			"Buff Limit Time": 0.0,
+			"AOE Range": 0.0,
+			"CC Time Limit": 0.0,
+			"Up Time": 0.0
+		}
+	},
+	"Scribe Assistant" : {##NEED TO ADD BUFF LIMIT TIME
+		"Combat Ability 1" : {
+			"Cooldown Time" : 6.0,
+			"HP Cost" : 0.0,
+			"MP Cost" : 13.0,
+			"Base Attack": 50.0,
+			"Number of Enemies Hit" : 10.0,
+			"Max Hit Count": 1.0,
+			"Health Recovery" : 0.0,
+			"MP Recovery" : 0.0,
+			"Defense Modifier" : 0.0,
+			"Projectile Distance" : 0.0,
+			"Slow Wait Time" : 2.0,
+			"Stun Wait Time" : 2.0,
+			"Jump Height Modifier" : 0.0,
+			"Climb Speed Modifier" : 0.0,
+			"Attack Damage Modifier" : 1.25,
+			"Move Speed Modifier" : 0.0,
+			"Crit Damage Modifier" : 0.0,
+			"Crit Chance Modifier" : 0.0,
+			"Dash Cooldown" : 0.0,
+			"Dash Speed Modifier" : 0.0,
+			"Knock Back Modifier" : 0.0,
+			"Buff Limit Time": 0.0,
+			"AOE Range": 0.0,
+			"CC Time Limit": 0.0,
+			"Up Time": 0.0
+		},
+		"Combat Ability 2": {
+			"Cooldown Time" : 7.0,
+			"HP Cost" : 0.0,
+			"MP Cost" : 15.0,
+			"Base Attack": 15.0,
+			"Number of Enemies Hit" : 0.0,
+			"Max Hit Count": 0.0,
+			"Health Recovery" : 0.0,
+			"MP Recovery" : 0.0,
+			"Defense Modifier" : 0.0,
+			"Projectile Distance" : 100.0,
+			"Slow Wait Time" : 3.0,
+			"Stun Wait Time" : 0.0,
+			"Jump Height Modifier" : 0.0,
+			"Climb Speed Modifier" : 0.0,
+			"Attack Damage Modifier" : 0.3,
+			"Move Speed Modifier" : 0.4,
+			"Crit Damage Modifier" : 0.0,
+			"Crit Chance Modifier" : 0.0,
+			"Dash Cooldown" : 0.0,
+			"Dash Speed Modifier" : 0.0,
+			"Knock Back Modifier" : 0.0,
+			"Buff Limit Time": 0.0,
+			"AOE Range": 0.0,
+			"CC Time Limit": 0.0,
+			"Up Time": 0.0
+		},
+		"Combat Ability 3": {
+			"Cooldown Time" : 15.0,
+			"HP Cost" : 0.0,
+			"MP Cost" : 25.0,
+			"Base Attack": 0.0,
+			"Number of Enemies Hit" : 5.0,
+			"Max Hit Count": 1.0,
+			"Health Recovery" : 0.0,
+			"MP Recovery" : 0.0,
+			"Defense Modifier" : 2.0,
+			"Projectile Distance" : 0.0,
+			"Slow Wait Time" : 0.0,
+			"Stun Wait Time" : 0.0,
+			"Jump Height Modifier" : 0.0,
+			"Climb Speed Modifier" : 0.0,
+			"Attack Damage Modifier" : 0.0,
+			"Move Speed Modifier" : 0.0,
+			"Crit Damage Modifier" : 0.0,
+			"Crit Chance Modifier" : 0.0,
+			"Dash Cooldown" : 0.0,
+			"Dash Speed Modifier" : 0.0,
+			"Knock Back Modifier" : 0.0,
+			"Buff Limit Time": 45.0,
+			"AOE Range": 0.0,
+			"CC Time Limit": 0.0,
+			"Up Time": 0.0
+		},
+		"Combat Ability 4": {
+			"Cooldown Time" : 5.0,
+			"HP Cost" :0.0,
+			"MP Cost" : 16.0,
+			"Base Attack": 0.0,
+			"Number of Enemies Hit" : 1.0,
+			"Max Hit Count": 1.0,
+			"Health Recovery" : 0.0,
+			"MP Recovery" : 0.0,
+			"Defense Modifier" : 0.0,
+			"Projectile Distance" : 100.0,
+			"Slow Wait Time" : 1.5,
+			"Stun Wait Time" : 0.0,
+			"Jump Height Modifier" : 0.0,
+			"Climb Speed Modifier" : 0.0,
+			"Attack Damage Modifier" : 2.0,
+			"Move Speed Modifier" : 0.0,
+			"Crit Damage Modifier" : 0.0,
+			"Crit Chance Modifier" : 0.0,
+			"Dash Cooldown" : 0.0,
+			"Dash Speed Modifier" : 0.0,
+			"Knock Back Modifier" : 0.0,
+			"Buff Limit Time": 0.0,
+			"AOE Range": 0.0,
+			"CC Time Limit": 0.0,
+			"Up Time": 0.0
 		}
 	}
 }
@@ -560,6 +694,22 @@ TODO: We will add saves for classes as well
 			"Cyclone Slash": {"Unlocked":false, "Level": 0},
 			"Circle of Truth": {"Unlocked":false, "Level": 0},
 			"Iron Body": {"Unlocked":false, "Level": 0},
+		},
+		"Character Stat Boost" : {
+			"Armored Core": {"Unlocked":false, "Level": 0},
+			"Field Tactician" : {"Unlocked":false, "Level": 0},
+			"Warrior's Flame" : {"Unlocked":false, "Level": 0},
+		},
+		"Class Advancement" : {
+			
+		}
+	},
+	"Scribe Assistant": {
+		"Ability Stat Boost" : {
+			"Piercer Ball": {"Unlocked":false, "Level": 0},
+			"Arcane Mine": {"Unlocked":false, "Level": 0},
+			"MP Siphon": {"Unlocked":false, "Level": 0},
+			"Double Slash": {"Unlocked":false, "Level": 0},
 		},
 		"Character Stat Boost" : {
 			"Armored Core": {"Unlocked":false, "Level": 0},
