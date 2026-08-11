@@ -36,7 +36,7 @@ func _on_hit_box_area_entered(area: Area2D) -> void:
 
 	damage = int(damage * (1.0 - reduction))
 	damage = max(damage, 1)
-	area_parent.apply_damage(damage,false)
+
 	
 func _on_slow_timer_timeout() -> void:
 	animation_player.speed_scale = 1.0

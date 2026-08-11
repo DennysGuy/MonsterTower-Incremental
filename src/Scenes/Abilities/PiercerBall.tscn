@@ -70,6 +70,20 @@ tracks/4/keys = {
 "method": &"hide"
 }]
 }
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.23529412),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_drycm"]
 resource_name = "Fly"
@@ -187,6 +201,7 @@ _data = {
 size = Vector2(34, 32)
 
 [node name="PiercerBall" type="Node2D" unique_id=97114347]
+z_index = 4096
 script = ExtResource("1_6l3bc")
 move_speed = 10.0
 
@@ -198,6 +213,8 @@ hframes = 3
 libraries/ = SubResource("AnimationLibrary_52p66")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=55896630]
+collision_layer = 4
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=247607149]
 position = Vector2(7, 0)
