@@ -8,9 +8,9 @@ var outfit_graphics : Dictionary = {
 		"Jump": preload("uid://d2mhsxosuogyg"),
 		"Fall": preload("uid://da01x6ypb46we"),
 		"SwordSwing1": preload("uid://cshuuw4evmiqi"),
-		"SwordSwing2":preload("uid://cshuuw4evmiqi"),
-		"SwordSwing3":preload("uid://cshuuw4evmiqi"),
-		"AirAttack":preload("uid://cshuuw4evmiqi"),
+		"SwordSwing2": preload("uid://cshuuw4evmiqi"),
+		"SwordSwing3": preload("uid://cshuuw4evmiqi"),
+		"AirAttack": preload("uid://cshuuw4evmiqi"),
 		"Climb": preload("uid://cqmq21ket8vvt"),
 		"PickaxeSwing": preload("uid://cnf7idq4cexlj"),
 		"DoubleCleave": preload("uid://4vkwnouwrrvw"),
@@ -60,7 +60,7 @@ var outfit_graphics : Dictionary = {
 var hat_graphics : Dictionary = {
 	"Junior Hunter": {
 		"Idle": preload("uid://bjp2s7yqooy8t"),
-		"Run": preload("uid://vmo8wokwkc8a"),
+		"Run": preload("uid://cy4ivg63hski4"),
 		"Jump": preload("uid://p550rqpf4d83"),
 		"Fall": preload("uid://vmo8wokwkc8a"),
 		"SwordSwing1":preload("uid://cil485q0idseb"),

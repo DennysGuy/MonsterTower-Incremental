@@ -572,7 +572,7 @@ TODO: We will add saves for classes as well
 			"HP Cost" : 0.0,
 			"MP Cost" : 6.0,
 			"Base Attack": 0.0,
-			"Number of Enemies Hit" : 10.0,
+			"Number of Enemies Hit" : 2.0,
 			"Max Hit Count": 1.0,
 			"Health Recovery" : 0.0,
 			"MP Recovery" : 0.0,

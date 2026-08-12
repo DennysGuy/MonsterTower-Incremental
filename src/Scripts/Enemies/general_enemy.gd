@@ -19,25 +19,25 @@ func _on_hit_box_area_entered(area: Area2D) -> void:
 	if not area_parent is Player:
 		return
 	
-	if !area_parent.damageable or area_parent.is_dead:
-		return
-	
 	if not area is HurtBox:
 		return
 	
+	if !area_parent.damageable or area_parent.is_dead:
+		return
+			
 	area_parent.stored_enemy = self
-
 	var damage : int = randi_range(int(enemy_stats.attack * 0.8), enemy_stats.attack)
-	var defense = PlayerStats.player_stats["Defense"]
-	if PlayerStats.get_current_sword():
-		defense +=  PlayerStats.get_current_sword().get_total_defense_bonus()
-	
-	var reduction = defense / (defense + GameManager.DEFENSE_SCALE)
+	var defense : float = clamp(
+	((PlayerStats.player_stats["Defense"] + PlayerStats.get_current_sword().get_total_defense_bonus()) / 100.0) * PlayerStats.defense_buff_mod,
+	0.0,
+	0.9
+	)
 
-	damage = int(damage * (1.0 - reduction))
-	damage = max(damage, 1)
+	print("This is the defense: %s " % defense)
 
-	
+	damage = int(damage * (1.0 - defense))
+	area_parent.apply_damage(damage,false)
+
 func _on_slow_timer_timeout() -> void:
 	animation_player.speed_scale = 1.0
 	revert_slow_factor()

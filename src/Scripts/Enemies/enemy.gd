@@ -155,33 +155,39 @@ func set_enemy_hit_flash_material() -> void:
 func hit_surrounding_enemies(combat_ability: Ability) -> void:
 	var enemies_in_tree: Array[Node] = get_tree().get_nodes_in_group("Enemy")
 	var enemies_to_hit: Array[Enemy] = [self]
-	var max_enemies_to_hit: int = combat_ability.number_of_enemies_hit
+	var max_enemies_to_hit: int = int(combat_ability.number_of_enemies_hit)
 
-	var facing_direction: int = 1 if not sprite.flip_h else -1
+	var dir: int = sign(player.global_position.x - global_position.x)
 
 	for enemy in enemies_in_tree:
-		if enemy == self:
+		var selected_enemy: Enemy = enemy
+		
+		if selected_enemy == self:
 			continue
+		
+		if abs(global_position.y - selected_enemy.global_position.y) > 5.0:
+			continue
+		
+		var x_distance: float = selected_enemy.global_position.x - global_position.x
+		
+		if dir < 0:
+			if x_distance > 0 and x_distance <= 400:
+				enemies_to_hit.append(selected_enemy)
+		
+		elif dir > 0:
+			if x_distance < 0 and x_distance >= -400:
+				enemies_to_hit.append(selected_enemy)
 
-		var x_difference: float = enemy.global_position.x - global_position.x
-		var y_difference: float = abs(enemy.global_position.y - global_position.y)
+	var updated_enemy_hit_list: Array = enemies_to_hit.slice(0, max_enemies_to_hit)
 
-		if sign(x_difference) == facing_direction \
-		and abs(x_difference) <= combat_ability.aoe_range \
-		and y_difference <= 30 \
-		and max_enemies_to_hit > 0:
-			enemies_to_hit.append(enemy)
-			max_enemies_to_hit -= 1
-
-	if enemies_to_hit.size() > 0:
+	if not updated_enemy_hit_list.is_empty():
 		var multiplier: float = combat_ability.attack_damage_modifier
-		var total_damage: int = PlayerStats.player_stats["Attack Damage"]
-
-		for enemy in enemies_to_hit:
-			var damage: int = int(total_damage * multiplier)
-			enemy.health_component.apply_damage(damage, false)
-
+		
+		for enemy in updated_enemy_hit_list:
+			var selected_enemy: Enemy = enemy
+			selected_enemy.apply_damage(50 * multiplier, false)
+			
 			multiplier = max(1.0, multiplier - 0.2)
-
-			if is_inside_tree():
-				await get_tree().create_timer(0.2).timeout
+			
+			if is_inside_tree() and selected_enemy.is_inside_tree():
+				await get_tree().create_timer(0.1).timeout
