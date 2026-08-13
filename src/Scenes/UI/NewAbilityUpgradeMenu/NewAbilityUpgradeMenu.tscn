@@ -18,6 +18,7 @@
 [ext_resource type="Resource" uid="uid://js4itkff48rn" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/AbilityUnlocks/IronBodyNodeStats.tres" id="15_sptac"]
 [ext_resource type="Resource" uid="uid://b1tqtyjdmcrui" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/AbilityUnlocks/DoubleStab1.tres" id="16_sptac"]
 [ext_resource type="Resource" uid="uid://ncugfd1bm6mr" path="res://src/Resources/AbilityNodeStats/Mage/ScribeAssistant/PiercerBallNodeStats.tres" id="17_4h6b7"]
+[ext_resource type="Resource" uid="uid://6oxufnstkw17" path="res://src/Resources/AbilityNodeStats/Mage/ScribeAssistant/DoubleSlashNodeStats.tres" id="18_wcchj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4i7kl"]
 bg_color = Color(0, 0.21960784, 0.3882353, 1)
@@ -1056,7 +1057,7 @@ ability = ExtResource("15_sptac")
 
 [node name="DoubleSlash" parent="MarginContainer/Panel/MageActiveAbilitiesPanel/FirstClassAbilities/AbilitiesVBoxContainer" unique_id=399920020 instance=ExtResource("10_c4jju")]
 layout_mode = 2
-ability = ExtResource("16_sptac")
+ability = ExtResource("18_wcchj")
 
 [node name="SecondClassAbilities" type="Panel" parent="MarginContainer/Panel/MageActiveAbilitiesPanel" unique_id=1272272196]
 layout_mode = 1

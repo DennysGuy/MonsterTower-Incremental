@@ -1,0 +1,97 @@
+[gd_scene format=3 uid="uid://ba5vop5g5ysvx"]
+
+[ext_resource type="Script" uid="uid://b4devq1uw4n1n" path="res://src/Scripts/Abilities/double_slash.gd" id="1_fo8pv"]
+[ext_resource type="Texture2D" uid="uid://c0ijw6sarq7op" path="res://Assets/PlayerGraphics/VFX/DoubleSlash.png" id="2_yqijs"]
+
+[sub_resource type="Animation" id="Animation_yqijs"]
+resource_name = "DoubleSlash"
+length = 0.35
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Slash:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Slash:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.05, 0.15, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"damage_enemy"
+}, {
+"args": [],
+"method": &"damage_enemy"
+}, {
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_2lm1f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Slash:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Slash:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pki3y"]
+_data = {
+&"DoubleSlash": SubResource("Animation_yqijs"),
+&"RESET": SubResource("Animation_2lm1f")
+}
+
+[node name="DoubleSlash" type="Node2D" unique_id=1782875938]
+script = ExtResource("1_fo8pv")
+
+[node name="Slash" type="Sprite2D" parent="." unique_id=67430352]
+position = Vector2(0, -32)
+texture = ExtResource("2_yqijs")
+hframes = 8
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=155843435]
+libraries/ = SubResource("AnimationLibrary_pki3y")

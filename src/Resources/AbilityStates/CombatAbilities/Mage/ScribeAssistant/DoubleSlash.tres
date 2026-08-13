@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="Ability" format=3 uid="uid://dqib4q8pt8ulr"]
+
+[ext_resource type="Texture2D" uid="uid://cujju2pfuj272" path="res://Assets/HUD/CombatAbilityIcons/DoubleSlashIcon_Disabled.png" id="1_gtc4l"]
+[ext_resource type="Script" uid="uid://bwqf7q51702b" path="res://src/Scripts/cability.gd" id="1_nn3xf"]
+[ext_resource type="Resource" uid="uid://c62ej0x322tmp" path="res://src/Resources/AbilityStates/CombatAbilities/Mage/ScribeAssistant/DoubleSlashBehavior.tres" id="1_puvmi"]
+[ext_resource type="Texture2D" uid="uid://byj8bpgq670dv" path="res://Assets/HUD/CombatAbilityIcons/DoubleSlashIcon.png" id="2_puvmi"]
+
+[resource]
+script = ExtResource("1_nn3xf")
+ability_name = "Double Slash"
+class_relation = "Scribe Assistant"
+ability_type = 8
+cooldown_time = 2.5
+icon = ExtResource("2_puvmi")
+disabled_icon = ExtResource("1_gtc4l")
+is_combat_ability = true
+ability_description = "Cast arcane energy manifesting in the form of a \"slash\" that occurs twice doing magic damage with an applied multiplier"
+ability_behavior = ExtResource("1_puvmi")
+mp_cost = 6.0
+attack_damage_modifier = 1.5
+aoe_range = 200.0
+metadata/_custom_type_script = "uid://bwqf7q51702b"

@@ -231,7 +231,7 @@ func issue_attack(selected_hit_box : Area2D, multiplier : float = 1.0, ability :
 		number_of_hits = int(ability.max_hit_count)
 		rep_delay = ability.attack_rep_delay
 		min_damage = total_base_attack_damage * (PlayerStats.player_stats["Accuracy"] + PlayerStats.get_total_gem_bonus("Accuracy Bonus"))
-		max_damage = total_base_attack_damage  + ability.base_attack
+		max_damage = total_base_attack_damage + ability.base_attack
 		
 	incoming_damage  = int(randi_range(min_damage,max_damage) * multiplier)
 	
@@ -555,3 +555,38 @@ func spawn_piercer_ball() -> void:
 	piercer_ball.flip_dir = player_sprite.flip_h
 	piercer_ball.global_position = hit_box.global_position
 	get_parent().add_child(piercer_ball)
+
+
+func cast_double_slash() -> void:
+	var enemies_in_tree: Array[Node] = get_tree().get_nodes_in_group("Enemy")
+	var enemy_to_hit : Enemy = null
+
+	for enemy in enemies_in_tree:
+		var selected_enemy: Enemy = enemy
+		
+		if selected_enemy == self:
+			continue
+		
+		if abs(global_position.y - selected_enemy.global_position.y) > 40.0:
+			continue
+		
+		var x_distance: float = selected_enemy.global_position.x - global_position.x
+		
+		if !outfit.flip_h:
+			if x_distance > 0 and x_distance <= 400:
+				if enemy_to_hit: 
+					if abs(enemy.global_position.x - global_position.x) < abs(enemy_to_hit.global_position.x - global_position.x):
+						enemy_to_hit = enemy
+				else:
+					enemy_to_hit = selected_enemy
+		
+		elif outfit.flip_h:
+			if x_distance < 0 and x_distance >= -400:
+				if enemy_to_hit: 
+					if abs(enemy.global_position.x - global_position.x) < abs(enemy_to_hit.global_position.x - global_position.x):
+						enemy_to_hit = enemy
+				else:
+					enemy_to_hit = selected_enemy
+			
+	if enemy_to_hit:
+		enemy_to_hit.spawn_double_slash()

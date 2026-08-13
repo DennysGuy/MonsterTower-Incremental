@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="CircleOfTruthBehavior" format=3 uid="uid://c62ej0x322tmp"]
+
+[ext_resource type="Script" uid="uid://s0d0f11ckmg8" path="res://src/Scripts/StateMachine/AbilitiyStates/CombatAbilities/WarriorAbilities/TyroAbilities/circle_of_truth.gd" id="1_bpcmj"]
+
+[resource]
+script = ExtResource("1_bpcmj")
+animation_name = "DoubleSlash"
+animation_duration = 0.55
+metadata/_custom_type_script = "uid://s0d0f11ckmg8"

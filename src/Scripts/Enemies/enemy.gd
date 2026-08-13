@@ -191,3 +191,9 @@ func hit_surrounding_enemies(combat_ability: Ability) -> void:
 			
 			if is_inside_tree() and selected_enemy.is_inside_tree():
 				await get_tree().create_timer(0.1).timeout
+
+func spawn_double_slash() -> void:
+	var double_slash : DoubleSlash = preload("uid://ba5vop5g5ysvx").instantiate()
+	double_slash.global_position = global_position
+	double_slash.enemy = self
+	get_parent().add_child(double_slash)
