@@ -590,3 +590,15 @@ func cast_double_slash() -> void:
 			
 	if enemy_to_hit:
 		enemy_to_hit.spawn_double_slash()
+
+func cast_arcane_mine() -> void:
+	var ability : Ability = PlayerStats.get_equipped_ability("Combat Ability 2")
+	var base_speed : float = 200
+	for i in range(3):
+		var arcane_mine : ArcaneMine = preload("uid://f2sc6wnyug0f").instantiate()
+		arcane_mine.dir = GameManager.set_player_box_direction(outfit.flip_h)
+		arcane_mine.speed = base_speed
+		arcane_mine.global_position = hit_box.global_position
+		get_parent().add_child(arcane_mine)
+		base_speed += 300
+		await get_tree().create_timer(0.1).timeout

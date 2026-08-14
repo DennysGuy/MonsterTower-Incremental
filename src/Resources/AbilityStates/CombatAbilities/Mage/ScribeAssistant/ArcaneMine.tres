@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Ability" format=3 uid="uid://chjdthgotxjwi"]
+
+[ext_resource type="Resource" uid="uid://diderrm52tpbv" path="res://src/Resources/AbilityStates/CombatAbilities/Mage/ScribeAssistant/ArcaneMineBehavior.tres" id="1_42f83"]
+[ext_resource type="Script" uid="uid://bwqf7q51702b" path="res://src/Scripts/cability.gd" id="1_3486x"]
+[ext_resource type="Texture2D" uid="uid://b6c28ok4h1brm" path="res://Assets/HUD/CombatAbilityIcons/ArcaneMine_Disabled.png" id="1_rd7r2"]
+[ext_resource type="Texture2D" uid="uid://clrfhxngwkmkq" path="res://Assets/HUD/CombatAbilityIcons/ArcaneMineIcon.png" id="2_42f83"]
+
+[resource]
+script = ExtResource("1_3486x")
+ability_name = "Arcane Mine"
+class_relation = "Scribe Assistant"
+ability_type = 6
+cooldown_time = 7.0
+icon = ExtResource("2_42f83")
+disabled_icon = ExtResource("1_rd7r2")
+is_combat_ability = true
+ability_description = "Cast highly concentrated arcane magic simulating a \"mine\". When the arcane mine hits an enemy, the monster is ensnared temporarily. AOE damage is applied to surrounding enemies. After each level, you will be able to cast 1 extra mine effectively creating a mine field."
+ability_behavior = ExtResource("1_42f83")
+mp_cost = 7.0
+base_attack = 90.0
+projectile_quantity = 1.0
+stun_wait_time = 3.0
+aoe_range = 50.0
+cc_time_limit = 5.0
+up_time = 15.0
+metadata/_custom_type_script = "uid://bwqf7q51702b"

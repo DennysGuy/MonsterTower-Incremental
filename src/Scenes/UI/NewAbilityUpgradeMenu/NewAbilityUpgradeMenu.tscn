@@ -18,6 +18,7 @@
 [ext_resource type="Resource" uid="uid://js4itkff48rn" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/AbilityUnlocks/IronBodyNodeStats.tres" id="15_sptac"]
 [ext_resource type="Resource" uid="uid://b1tqtyjdmcrui" path="res://src/Resources/AbilityNodeStats/Warrior/Tyro/AbilityUnlocks/DoubleStab1.tres" id="16_sptac"]
 [ext_resource type="Resource" uid="uid://ncugfd1bm6mr" path="res://src/Resources/AbilityNodeStats/Mage/ScribeAssistant/PiercerBallNodeStats.tres" id="17_4h6b7"]
+[ext_resource type="Resource" uid="uid://bqoutaspkup0e" path="res://src/Resources/AbilityNodeStats/Mage/ScribeAssistant/ArcaneMineNodeStats.tres" id="18_7ubur"]
 [ext_resource type="Resource" uid="uid://6oxufnstkw17" path="res://src/Resources/AbilityNodeStats/Mage/ScribeAssistant/DoubleSlashNodeStats.tres" id="18_wcchj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4i7kl"]
@@ -1049,7 +1050,7 @@ ability = ExtResource("17_4h6b7")
 
 [node name="ArcaneMine" parent="MarginContainer/Panel/MageActiveAbilitiesPanel/FirstClassAbilities/AbilitiesVBoxContainer" unique_id=1606424984 instance=ExtResource("10_c4jju")]
 layout_mode = 2
-ability = ExtResource("12_u6awe")
+ability = ExtResource("18_7ubur")
 
 [node name="MPSiphon" parent="MarginContainer/Panel/MageActiveAbilitiesPanel/FirstClassAbilities/AbilitiesVBoxContainer" unique_id=187220846 instance=ExtResource("10_c4jju")]
 layout_mode = 2

@@ -221,6 +221,9 @@ position = Vector2(7, 0)
 shape = SubResource("RectangleShape2D_co6qk")
 
 [node name="Timer" type="Timer" parent="." unique_id=117585042]
+process_callback = 0
+wait_time = 0.3
+one_shot = true
 
 [node name="Trail" type="CPUParticles2D" parent="." unique_id=1841565806]
 amount = 50

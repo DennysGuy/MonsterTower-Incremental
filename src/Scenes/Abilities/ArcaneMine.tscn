@@ -1,0 +1,185 @@
+[gd_scene format=3 uid="uid://f2sc6wnyug0f"]
+
+[ext_resource type="Script" uid="uid://b0tjm1nrtfqx6" path="res://src/Scripts/Abilities/arcane_mine.gd" id="1_i32mh"]
+[ext_resource type="Texture2D" uid="uid://crhjekjc1ja1" path="res://Assets/PlayerGraphics/VFX/ArcaneMine.png" id="1_krgp2"]
+[ext_resource type="Texture2D" uid="uid://bmjcisgeq7u1t" path="res://Assets/PlayerGraphics/VFX/ArcaneMine_Burst.png" id="2_i32mh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i32mh"]
+radius = 13.152946
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_idvua"]
+radius = 15.033297
+
+[sub_resource type="Animation" id="Animation_i32mh"]
+resource_name = "Burst"
+length = 0.35
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ArcaneMine:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ArcaneMine:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.35),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ArcaneMine:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_i32mh")]
+}
+
+[sub_resource type="Animation" id="Animation_netm4"]
+resource_name = "Idle"
+length = 0.05
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ArcaneMine:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ArcaneMine:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ArcaneMine:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_krgp2")]
+}
+
+[sub_resource type="Animation" id="Animation_idvua"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ArcaneMine:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ArcaneMine:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ArcaneMine:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_krgp2")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_idvua"]
+_data = {
+&"Burst": SubResource("Animation_i32mh"),
+&"Idle": SubResource("Animation_netm4"),
+&"RESET": SubResource("Animation_idvua")
+}
+
+[node name="ArcaneMine" type="CharacterBody2D" unique_id=1280908684]
+z_index = 4096
+collision_layer = 128
+collision_mask = 2
+script = ExtResource("1_i32mh")
+
+[node name="ArcaneMine" type="Sprite2D" parent="." unique_id=153381932]
+texture = ExtResource("1_krgp2")
+hframes = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2103217671]
+position = Vector2(-1, 0)
+shape = SubResource("CircleShape2D_i32mh")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1910756509]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2026688489]
+shape = SubResource("CircleShape2D_idvua")
+disabled = true
+
+[node name="Timer" type="Timer" parent="." unique_id=1067954967]
+process_callback = 0
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=408973264]
+libraries/ = SubResource("AnimationLibrary_idvua")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

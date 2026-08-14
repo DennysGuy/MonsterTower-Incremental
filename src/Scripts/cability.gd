@@ -28,6 +28,7 @@ enum ATTACK_TYPE {NORMAL, SLOW, SILENCE}
 @export var mp_recover_amount : float
 @export var defense_modifier : float
 @export var projectile_distance : float
+@export var projectile_quantity : float
 @export var slow_wait_time : float
 @export var stun_wait_time : float
 @export var jump_height_modifier : float
@@ -100,4 +101,5 @@ func load_stats() -> void:
 	aoe_range = saved_ability["AOE Range"]
 	cc_time_limit = saved_ability["CC Time Limit"]
 	up_time = saved_ability["Up Time"]
+	projectile_quantity = saved_ability["Projectile Quantity"]
 	#knock_back_modifier = saved_ability["Knock Back Modifier"]

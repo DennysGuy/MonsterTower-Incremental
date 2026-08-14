@@ -60,7 +60,8 @@ var sword_textures : Dictionary = {
 		"BasicDash": preload("uid://d3pwnhrwyilch"),
 		"Weapon Crafted": preload("uid://clljhrjonsqlx"),
 		"PiercerBall": preload("uid://miet442rgwjl"),
-		"DoubleSlash": preload("uid://cgfqe6wff871x")
+		"DoubleSlash": preload("uid://cgfqe6wff871x"),
+		"ArcaneMine":  preload("uid://miet442rgwjl")
 	},
 	"Iron Broad Sword" : {
 		"Idle": preload("uid://dtvd0ax0xli76"),

@@ -47,6 +47,7 @@ enum NODE_TYPE {ABILITY_UNLOCK, ABILITY_STAT_BOOST, CHARACTER_STAT_BOOST, CLASS_
 @export var aoe_range : float
 @export var cc_time_limit : float
 @export var up_time : float
+@export var projectile_quantity : int
 
 
 @export_group("Character Stats Modifiers")
@@ -96,7 +97,8 @@ func get_ability_modifiers() -> Dictionary:
 		"Buff Limit Time": buff_limit_time,
 		"AOE Range": aoe_range,
 		"CC Time Limit": cc_time_limit,
-		"Up Time": up_time
+		"Up Time": up_time,
+		"Projectile Quantity": projectile_quantity
 	}
 
 func get_character_stat_modifiers() -> Dictionary:
@@ -145,6 +147,7 @@ func upgrade_ability_stats() -> void:
 	ability_stats["Dash Cooldown"] += dash_cooldown_modifier
 	ability_stats["Dash Speed Modifier"] += dash_speed_modifier
 	ability_stats["Buff Limit Time"] += buff_limit_time
+	ability_stats["Projectile Quantity"] += projectile_quantity
 	
 	var equipped_abilities : Dictionary = PlayerStats.get_equipped_abilities()
 	print(equipped_abilities[ability_category])

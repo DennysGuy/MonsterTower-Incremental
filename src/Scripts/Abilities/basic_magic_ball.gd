@@ -22,7 +22,7 @@ func _physics_process(delta: float) -> void:
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	var parent = area.get_parent()
-	if parent is Enemy:
+	if area is HurtBox and parent is Enemy:
 		issue_attack(area_2d)
 		animation_player.play("Burst")
 
