@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="IronBody" format=3 uid="uid://dy10rfeswgwop"]
+
+[ext_resource type="Script" uid="uid://b52dcwtamlkka" path="res://src/Scripts/StateMachine/AbilitiyStates/CombatAbilities/WarriorAbilities/TyroAbilities/iron_body.gd" id="1_ushdh"]
+
+[resource]
+script = ExtResource("1_ushdh")
+animation_name = "MPSiphon"
+metadata/_custom_type_script = "uid://b52dcwtamlkka"

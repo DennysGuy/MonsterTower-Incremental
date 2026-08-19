@@ -56,6 +56,7 @@ var outfit_graphics : Dictionary = {
 		"PiercerBall": preload("uid://b1dyp2h8seeja"),
 		"DoubleSlash":preload("uid://bo0wtwqpq8jut"),
 		"ArcaneMine":preload("uid://b1dyp2h8seeja"),
+		"MPSiphon": preload("uid://dy2jxp2n4g14i")
 	}
 }
 
@@ -105,7 +106,8 @@ var hat_graphics : Dictionary = {
 		"BasicDash": preload("uid://dmnues8rqj1ka"),
 		"PiercerBall": preload("uid://7jb14k43c70y"),
 		"DoubleSlash": preload("uid://8jg1ylc6jhqd"),
-		"ArcaneMine":  preload("uid://7jb14k43c70y")
+		"ArcaneMine":  preload("uid://7jb14k43c70y"),
+		"MPSiphon": preload("uid://fes5y1ca1i13")
 	}
 }
 

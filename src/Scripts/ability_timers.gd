@@ -89,3 +89,4 @@ func _on_buff_timer_1_timeout() -> void:
 	#1 stat buff abilities available at a given time though
 	#will need to remove the corresponding hud icon
 	PlayerStats.reset_global_stat_buffs()
+	GameManager.mp_siphon_activated = false

@@ -45,6 +45,7 @@ enum ATTACK_TYPE {NORMAL, SLOW, SILENCE}
 @export var aoe_range : float
 @export var cc_time_limit : float
 @export var up_time : float
+@export var siphon_amount : float
 
 func get_ability_type_name() -> String:
 	match ability_type:
@@ -102,4 +103,5 @@ func load_stats() -> void:
 	cc_time_limit = saved_ability["CC Time Limit"]
 	up_time = saved_ability["Up Time"]
 	projectile_quantity = saved_ability["Projectile Quantity"]
+	siphon_amount  = saved_ability["Siphon Amount"]
 	#knock_back_modifier = saved_ability["Knock Back Modifier"]

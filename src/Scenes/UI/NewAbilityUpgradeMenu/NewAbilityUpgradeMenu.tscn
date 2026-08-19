@@ -20,6 +20,7 @@
 [ext_resource type="Resource" uid="uid://ncugfd1bm6mr" path="res://src/Resources/AbilityNodeStats/Mage/ScribeAssistant/PiercerBallNodeStats.tres" id="17_4h6b7"]
 [ext_resource type="Resource" uid="uid://bqoutaspkup0e" path="res://src/Resources/AbilityNodeStats/Mage/ScribeAssistant/ArcaneMineNodeStats.tres" id="18_7ubur"]
 [ext_resource type="Resource" uid="uid://6oxufnstkw17" path="res://src/Resources/AbilityNodeStats/Mage/ScribeAssistant/DoubleSlashNodeStats.tres" id="18_wcchj"]
+[ext_resource type="Resource" uid="uid://cntmxh2c23mm4" path="res://src/Resources/AbilityNodeStats/Mage/ScribeAssistant/MPSiphonNodeStats.tres" id="19_xyt06"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4i7kl"]
 bg_color = Color(0, 0.21960784, 0.3882353, 1)
@@ -1054,7 +1055,7 @@ ability = ExtResource("18_7ubur")
 
 [node name="MPSiphon" parent="MarginContainer/Panel/MageActiveAbilitiesPanel/FirstClassAbilities/AbilitiesVBoxContainer" unique_id=187220846 instance=ExtResource("10_c4jju")]
 layout_mode = 2
-ability = ExtResource("15_sptac")
+ability = ExtResource("19_xyt06")
 
 [node name="DoubleSlash" parent="MarginContainer/Panel/MageActiveAbilitiesPanel/FirstClassAbilities/AbilitiesVBoxContainer" unique_id=399920020 instance=ExtResource("10_c4jju")]
 layout_mode = 2

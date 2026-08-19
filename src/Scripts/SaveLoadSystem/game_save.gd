@@ -373,7 +373,8 @@ TODO: We will add saves for classes as well
 			"AOE Range": 0.0,
 			"CC Time Limit": 0.0,
 			"Up Time": 0.0,
-			"Projectile Quantity": 0.0
+			"Projectile Quantity": 0.0,
+			"Siphon Amount": 0.0,
 		},
 		"Air Attack": {
 			"Cooldown Time" : 0.7,
@@ -401,7 +402,8 @@ TODO: We will add saves for classes as well
 			"AOE Range": 0.0,
 			"CC Time Limit": 0.0,
 			"Up Time": 0.0,
-			"Projectile Quantity": 0.0
+			"Projectile Quantity": 0.0,
+			"Siphon Amount": 0.0,
 		},
 		"Double Jump": {
 			"Cooldown Time" : 0.3,
@@ -429,7 +431,8 @@ TODO: We will add saves for classes as well
 			"AOE Range": 0.0,
 			"CC Time Limit": 0.0,
 			"Up Time": 0.0,
-			"Projectile Quantity": 0.0
+			"Projectile Quantity": 0.0,
+			"Siphon Amount": 0.0,
 		},
 		"Special Attack": {
 			"Cooldown Time" : 3.0,
@@ -457,7 +460,8 @@ TODO: We will add saves for classes as well
 			"AOE Range": 0.0,
 			"CC Time Limit": 0.0,
 			"Up Time": 0.0,
-			"Projectile Quantity": 0.0
+			"Projectile Quantity": 0.0,
+			"Siphon Amount": 0.0,
 		}
 	},
 	"Tyro" : {##NEED TO ADD BUFF LIMIT TIME
@@ -487,7 +491,8 @@ TODO: We will add saves for classes as well
 			"AOE Range": 0.0,
 			"CC Time Limit": 0.0,
 			"Up Time": 0.0,
-			"Projectile Quantity": 0.0
+			"Projectile Quantity": 0.0,
+			"Siphon Amount": 0.0,
 		},
 		"Combat Ability 2": {
 			"Cooldown Time" : 7.0,
@@ -515,7 +520,8 @@ TODO: We will add saves for classes as well
 			"AOE Range": 0.0,
 			"CC Time Limit": 0.0,
 			"Up Time": 0.0,
-			"Projectile Quantity": 2.0
+			"Projectile Quantity": 2.0,
+			"Siphon Amount": 0.0,
 		},
 		"Combat Ability 3": {
 			"Cooldown Time" : 15.0,
@@ -543,7 +549,8 @@ TODO: We will add saves for classes as well
 			"AOE Range": 0.0,
 			"CC Time Limit": 0.0,
 			"Up Time": 0.0,
-			"Projectile Quantity": 0.0
+			"Projectile Quantity": 0.0,
+			"Siphon Amount": 0.0,
 		},
 		"Combat Ability 4": {
 			"Cooldown Time" : 5.0,
@@ -571,7 +578,8 @@ TODO: We will add saves for classes as well
 			"AOE Range": 0.0,
 			"CC Time Limit": 0.0,
 			"Up Time": 0.0,
-			"Projectile Quantity": 0.0
+			"Projectile Quantity": 0.0,
+			"Siphon Amount": 0.0,
 		}
 	},
 	"Scribe Assistant" : {##NEED TO ADD BUFF LIMIT TIME
@@ -600,7 +608,8 @@ TODO: We will add saves for classes as well
 			"Buff Limit Time": 0.0,
 			"AOE Range": 0.0,
 			"CC Time Limit": 0.0,
-			"Up Time": 0.0
+			"Up Time": 0.0,
+			"Siphon Amount": 0.0,
 		},
 		"Combat Ability 2": {
 			"Cooldown Time" : 7.0,
@@ -627,7 +636,8 @@ TODO: We will add saves for classes as well
 			"Buff Limit Time": 0.0,
 			"AOE Range": 0.0,
 			"CC Time Limit": 0.0,
-			"Up Time": 0.0
+			"Up Time": 0.0,
+			"Siphon Amount": 0.0,
 		},
 		"Combat Ability 3": {
 			"Cooldown Time" : 15.0,
@@ -654,7 +664,8 @@ TODO: We will add saves for classes as well
 			"Buff Limit Time": 45.0,
 			"AOE Range": 0.0,
 			"CC Time Limit": 0.0,
-			"Up Time": 0.0
+			"Up Time": 0.0,
+			"Siphon Amount": 0.50,
 		},
 		"Combat Ability 4": {
 			"Cooldown Time" : 2.0,
@@ -681,7 +692,8 @@ TODO: We will add saves for classes as well
 			"Buff Limit Time": 0.0,
 			"AOE Range": 0.0,
 			"CC Time Limit": 0.0,
-			"Up Time": 0.0
+			"Up Time": 0.0,
+			"Siphon Amount": 0.0,
 		}
 	}
 }

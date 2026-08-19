@@ -24,6 +24,8 @@ var new_jobs_available : bool = false
 var license_promotion_time : bool = false
 var in_tech_tree_tutorial : bool = false
 var in_last_breadth_mode : bool = false
+var mp_siphon_activated : bool = false
+
 var can_sprint : bool = false
 var remaining_bolt_chain_links : int = 0
 var event_multiplier : float = 1.0

@@ -48,6 +48,7 @@ enum NODE_TYPE {ABILITY_UNLOCK, ABILITY_STAT_BOOST, CHARACTER_STAT_BOOST, CLASS_
 @export var cc_time_limit : float
 @export var up_time : float
 @export var projectile_quantity : int
+@export var mp_siphon_amount : float
 
 
 @export_group("Character Stats Modifiers")
@@ -69,6 +70,7 @@ enum NODE_TYPE {ABILITY_UNLOCK, ABILITY_STAT_BOOST, CHARACTER_STAT_BOOST, CLASS_
 @export var max_health_change : float
 @export var max_mp_change : float
 @export var lock_on_multiplier_change : float
+
 
 
 func get_ability_modifiers() -> Dictionary:
@@ -98,7 +100,8 @@ func get_ability_modifiers() -> Dictionary:
 		"AOE Range": aoe_range,
 		"CC Time Limit": cc_time_limit,
 		"Up Time": up_time,
-		"Projectile Quantity": projectile_quantity
+		"Projectile Quantity": projectile_quantity,
+		"MP Siphon Amount": mp_siphon_amount
 	}
 
 func get_character_stat_modifiers() -> Dictionary:
@@ -148,6 +151,7 @@ func upgrade_ability_stats() -> void:
 	ability_stats["Dash Speed Modifier"] += dash_speed_modifier
 	ability_stats["Buff Limit Time"] += buff_limit_time
 	ability_stats["Projectile Quantity"] += projectile_quantity
+	ability_stats["Siphon Amount"] += mp_siphon_amount
 	
 	var equipped_abilities : Dictionary = PlayerStats.get_equipped_abilities()
 	print(equipped_abilities[ability_category])

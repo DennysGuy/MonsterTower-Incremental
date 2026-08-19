@@ -61,7 +61,8 @@ var sword_textures : Dictionary = {
 		"Weapon Crafted": preload("uid://clljhrjonsqlx"),
 		"PiercerBall": preload("uid://miet442rgwjl"),
 		"DoubleSlash": preload("uid://cgfqe6wff871x"),
-		"ArcaneMine":  preload("uid://miet442rgwjl")
+		"ArcaneMine":  preload("uid://miet442rgwjl"),
+		"MPSiphon": preload("uid://ct5gcpqihh32b")
 	},
 	"Iron Broad Sword" : {
 		"Idle": preload("uid://dtvd0ax0xli76"),
@@ -130,7 +131,8 @@ var sword_textures : Dictionary = {
 		"AirAttack":preload("uid://cdbhi050amlxk"),
 		"Climb": preload("uid://cch8u8dkgi3mf"),
 		"BasicDash": preload("uid://cp7bhbiipdtae"),
-		"Weapon Crafted": preload("uid://df1oe32ggcusc")
+		"Weapon Crafted": preload("uid://df1oe32ggcusc"),
+		"MPSiphon": preload("uid://dt0ruqjv40jom")
 	},
 	"Standard Staff": {
 		"Idle": preload("uid://fwthk1u57bkr"),
@@ -142,7 +144,8 @@ var sword_textures : Dictionary = {
 		"AirAttack": preload("uid://cjeiv7hihpag3"),
 		"Climb": preload("uid://d251xvarfp6ww"),
 		"BasicDash": preload("uid://diob0ejks0cy7"),
-		"Weapon Crafted": preload("uid://ohjx1phm38td")
+		"Weapon Crafted": preload("uid://ohjx1phm38td"),
+		"MPSiphon": preload("uid://ctmdvxvjxha55")
 	}
 }
 

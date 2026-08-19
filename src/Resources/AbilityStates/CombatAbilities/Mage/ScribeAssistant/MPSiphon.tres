@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="Ability" format=3 uid="uid://c4882k3xc8s41"]
+
+[ext_resource type="Texture2D" uid="uid://3pfbb84uvyut" path="res://Assets/HUD/CombatAbilityIcons/MPSiphonIcon.png" id="1_0qqf4"]
+[ext_resource type="Resource" uid="uid://dy10rfeswgwop" path="res://src/Resources/AbilityStates/CombatAbilities/Mage/ScribeAssistant/MPSiphonBehavior.tres" id="1_7mkqe"]
+[ext_resource type="Texture2D" uid="uid://b1n87bkfnnxnc" path="res://Assets/HUD/CombatAbilityIcons/MPSiphonDisabledIcon.png" id="1_d3tut"]
+[ext_resource type="Script" uid="uid://bwqf7q51702b" path="res://src/Scripts/cability.gd" id="1_yeanx"]
+
+[resource]
+script = ExtResource("1_yeanx")
+ability_name = "MP Siphon"
+class_relation = "Scribe Assistant"
+ability_type = 7
+cooldown_time = 15.0
+icon = ExtResource("1_0qqf4")
+disabled_icon = ExtResource("1_d3tut")
+is_combat_ability = true
+ability_description = "When activated, you will retrieve a percentage of MP spent when slaying a monster. Each level increases duration of cast as well as the amount of MP gained from slaying an enemy."
+ability_behavior = ExtResource("1_7mkqe")
+mp_cost = 25.0
+buff_limit_time = 45.0
+siphon_amount = 0.5
+metadata/_custom_type_script = "uid://bwqf7q51702b"
